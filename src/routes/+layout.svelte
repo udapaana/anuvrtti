@@ -1,6 +1,14 @@
 <script lang="ts">
   import '../app.css';
+  import ScriptToggle from '$lib/components/ScriptToggle.svelte';
+  import { displayScript } from '$lib/stores/preferences';
+  import type { Script } from '$lib/transliteration';
+
   let { children } = $props();
+
+  function handleScriptChange(script: Script) {
+    displayScript.set(script);
+  }
 </script>
 
 <svelte:head>
@@ -16,11 +24,14 @@
         <span class="font-sanskrit">अनुवृत्ति</span>
         <span class="text-stone-400 text-sm ml-2">Aṣṭādhyāyī Explorer</span>
       </a>
-      <nav class="flex gap-6 text-sm">
-        <a href="/" class="hover:text-indigo-600">Browse</a>
-        <a href="/search" class="hover:text-indigo-600">Search</a>
-        <a href="/graph" class="hover:text-indigo-600">Graph</a>
-      </nav>
+      <div class="flex items-center gap-6">
+        <nav class="flex gap-6 text-sm">
+          <a href="/" class="hover:text-indigo-600">Browse</a>
+          <a href="/search" class="hover:text-indigo-600">Search</a>
+          <a href="/graph" class="hover:text-indigo-600">Graph</a>
+        </nav>
+        <ScriptToggle current={$displayScript} onChange={handleScriptChange} />
+      </div>
     </div>
   </header>
 

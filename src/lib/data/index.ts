@@ -1,7 +1,7 @@
-import { parseSutras, numericToDisplayId, displayToNumericId } from './parser';
-import type { Sutra, Commentary } from './types';
+import { parseSutras, numericToDisplayId, displayToNumericId } from "./parser";
+import type { Sutra, Commentary } from "./types";
 
-// We'll load these at build time / on demand
+// Caches for loaded data
 let sutrasCache: Sutra[] | null = null;
 let sutrasById: Map<string, Sutra> | null = null;
 let kashikaCache: Record<string, string> | null = null;
@@ -9,12 +9,21 @@ let vartikaCache: Record<string, string> | null = null;
 let englishShortCache: Record<string, string> | null = null;
 let englishFullCache: Record<string, string> | null = null;
 
+/** Fetch JSON from static data folder */
+async function fetchJson<T>(filename: string): Promise<T> {
+  const response = await fetch(`/data/${filename}`);
+  if (!response.ok) {
+    throw new Error(`Failed to load ${filename}: ${response.statusText}`);
+  }
+  return response.json();
+}
+
 /** Load and parse all sūtras */
 export async function loadSutras(): Promise<Sutra[]> {
   if (sutrasCache) return sutrasCache;
 
-  const rawData = await import('../../../raw_data/sutras.json');
-  sutrasCache = parseSutras(rawData.default || rawData);
+  const rawData = await fetchJson<{ data: unknown[] }>("sutras.json");
+  sutrasCache = parseSutras(rawData);
 
   // Build index by ID
   sutrasById = new Map();
@@ -35,44 +44,46 @@ export async function getSutra(id: string): Promise<Sutra | undefined> {
 /** Get all sūtras in an adhyāya */
 export async function getSutrasInAdhyaya(adhyaya: number): Promise<Sutra[]> {
   const sutras = await loadSutras();
-  return sutras.filter(s => s.adhyaya === adhyaya);
+  return sutras.filter((s) => s.adhyaya === adhyaya);
 }
 
 /** Get all sūtras in a pāda */
-export async function getSutrasInPada(adhyaya: number, pada: number): Promise<Sutra[]> {
+export async function getSutrasInPada(
+  adhyaya: number,
+  pada: number,
+): Promise<Sutra[]> {
   const sutras = await loadSutras();
-  return sutras.filter(s => s.adhyaya === adhyaya && s.pada === pada);
+  return sutras.filter((s) => s.adhyaya === adhyaya && s.pada === pada);
 }
 
 /** Load Kāśikā commentary */
 async function loadKashika(): Promise<Record<string, string>> {
   if (kashikaCache) return kashikaCache;
-  const data = await import('../../../raw_data/kashika.json');
-  kashikaCache = data.default || data;
+  kashikaCache = await fetchJson<Record<string, string>>("kashika.json");
   return kashikaCache;
 }
 
 /** Load vārttikas */
 async function loadVartika(): Promise<Record<string, string>> {
   if (vartikaCache) return vartikaCache;
-  const data = await import('../../../raw_data/vartika.json');
-  vartikaCache = data.default || data;
+  vartikaCache = await fetchJson<Record<string, string>>("vartika.json");
   return vartikaCache;
 }
 
 /** Load short English translations */
 async function loadEnglishShort(): Promise<Record<string, string>> {
   if (englishShortCache) return englishShortCache;
-  const data = await import('../../../raw_data/sutrartha_english.json');
-  englishShortCache = data.default || data;
+  englishShortCache = await fetchJson<Record<string, string>>(
+    "sutrartha_english.json",
+  );
   return englishShortCache;
 }
 
 /** Load full English translations (Vasu) */
 async function loadEnglishFull(): Promise<Record<string, string>> {
   if (englishFullCache) return englishFullCache;
-  const data = await import('../../../raw_data/vasu_english.json');
-  englishFullCache = data.default || data;
+  englishFullCache =
+    await fetchJson<Record<string, string>>("vasu_english.json");
   return englishFullCache;
 }
 
@@ -82,14 +93,14 @@ export async function getCommentary(numericId: string): Promise<Commentary> {
     loadKashika(),
     loadVartika(),
     loadEnglishShort(),
-    loadEnglishFull()
+    loadEnglishFull(),
   ]);
 
   return {
     kashika: kashika[numericId],
-    vartika: vartika[numericId]?.split('\n\n') || undefined,
+    vartika: vartika[numericId]?.split("\n\n") || undefined,
     englishShort: englishShort[numericId],
-    englishFull: englishFull[numericId]
+    englishFull: englishFull[numericId],
   };
 }
 
@@ -98,11 +109,12 @@ export async function searchSutras(query: string): Promise<Sutra[]> {
   const sutras = await loadSutras();
   const lowerQuery = query.toLowerCase();
 
-  return sutras.filter(s =>
-    s.text.includes(query) ||
-    s.textRoman.toLowerCase().includes(lowerQuery) ||
-    s.expanded.includes(query) ||
-    s.id.includes(query)
+  return sutras.filter(
+    (s) =>
+      s.text.includes(query) ||
+      s.textRoman.toLowerCase().includes(lowerQuery) ||
+      s.expanded.includes(query) ||
+      s.id.includes(query),
   );
 }
 
@@ -122,12 +134,12 @@ export async function getDependencies(id: string): Promise<Sutra[]> {
 /** Get sūtras that depend on this one */
 export async function getDependents(id: string): Promise<Sutra[]> {
   const sutras = await loadSutras();
-  const targetId = id.includes('.') ? id : numericToDisplayId(id);
+  const targetId = id.includes(".") ? id : numericToDisplayId(id);
 
-  return sutras.filter(s =>
-    s.anuvrtti.some(ref => ref.fromId === targetId)
+  return sutras.filter((s) =>
+    s.anuvrtti.some((ref) => ref.fromId === targetId),
   );
 }
 
 export { numericToDisplayId, displayToNumericId };
-export type { Sutra, Commentary, SutraType, AnuvrttiRef } from './types';
+export type { Sutra, Commentary, SutraType, AnuvrttiRef } from "./types";
