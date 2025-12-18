@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+:root {
+  --color-accent: #6366f1;
+  --color-accent-hover: #4f46e5;
+  --font-sanskrit: 'Noto Sans Devanagari', 'Siddhanta', sans-serif;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.font-sanskrit {
+  font-family: var(--font-sanskrit);
+}
+
+/* Sutra reference links */
+.sutra-ref {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  cursor: pointer;
+}
+
+.sutra-ref:hover {
+  color: var(--color-accent-hover);
+  text-decoration-style: solid;
+}
+
+/* Inherited terms (anuvrtti) styling */
+.anuvrtti {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.anuvrtti:hover {
+  opacity: 1;
+}
+
+/* Type badges */
+.badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-samjna { background-color: #dbeafe; color: #1e40af; }
+.badge-paribhasha { background-color: #fef3c7; color: #92400e; }
+.badge-vidhi { background-color: #d1fae5; color: #065f46; }
+.badge-adhikara { background-color: #ede9fe; color: #5b21b6; }

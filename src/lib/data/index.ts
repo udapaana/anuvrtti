@@ -1,0 +1,133 @@
+import { parseSutras, numericToDisplayId, displayToNumericId } from './parser';
+import type { Sutra, Commentary } from './types';
+
+// We'll load these at build time / on demand
+let sutrasCache: Sutra[] | null = null;
+let sutrasById: Map<string, Sutra> | null = null;
+let kashikaCache: Record<string, string> | null = null;
+let vartikaCache: Record<string, string> | null = null;
+let englishShortCache: Record<string, string> | null = null;
+let englishFullCache: Record<string, string> | null = null;
+
+/** Load and parse all sūtras */
+export async function loadSutras(): Promise<Sutra[]> {
+  if (sutrasCache) return sutrasCache;
+
+  const rawData = await import('../../../raw_data/sutras.json');
+  sutrasCache = parseSutras(rawData.default || rawData);
+
+  // Build index by ID
+  sutrasById = new Map();
+  for (const sutra of sutrasCache) {
+    sutrasById.set(sutra.id, sutra);
+    sutrasById.set(sutra.numericId, sutra);
+  }
+
+  return sutrasCache;
+}
+
+/** Get a sūtra by ID (either format) */
+export async function getSutra(id: string): Promise<Sutra | undefined> {
+  await loadSutras();
+  return sutrasById?.get(id);
+}
+
+/** Get all sūtras in an adhyāya */
+export async function getSutrasInAdhyaya(adhyaya: number): Promise<Sutra[]> {
+  const sutras = await loadSutras();
+  return sutras.filter(s => s.adhyaya === adhyaya);
+}
+
+/** Get all sūtras in a pāda */
+export async function getSutrasInPada(adhyaya: number, pada: number): Promise<Sutra[]> {
+  const sutras = await loadSutras();
+  return sutras.filter(s => s.adhyaya === adhyaya && s.pada === pada);
+}
+
+/** Load Kāśikā commentary */
+async function loadKashika(): Promise<Record<string, string>> {
+  if (kashikaCache) return kashikaCache;
+  const data = await import('../../../raw_data/kashika.json');
+  kashikaCache = data.default || data;
+  return kashikaCache;
+}
+
+/** Load vārttikas */
+async function loadVartika(): Promise<Record<string, string>> {
+  if (vartikaCache) return vartikaCache;
+  const data = await import('../../../raw_data/vartika.json');
+  vartikaCache = data.default || data;
+  return vartikaCache;
+}
+
+/** Load short English translations */
+async function loadEnglishShort(): Promise<Record<string, string>> {
+  if (englishShortCache) return englishShortCache;
+  const data = await import('../../../raw_data/sutrartha_english.json');
+  englishShortCache = data.default || data;
+  return englishShortCache;
+}
+
+/** Load full English translations (Vasu) */
+async function loadEnglishFull(): Promise<Record<string, string>> {
+  if (englishFullCache) return englishFullCache;
+  const data = await import('../../../raw_data/vasu_english.json');
+  englishFullCache = data.default || data;
+  return englishFullCache;
+}
+
+/** Get all commentary for a sūtra */
+export async function getCommentary(numericId: string): Promise<Commentary> {
+  const [kashika, vartika, englishShort, englishFull] = await Promise.all([
+    loadKashika(),
+    loadVartika(),
+    loadEnglishShort(),
+    loadEnglishFull()
+  ]);
+
+  return {
+    kashika: kashika[numericId],
+    vartika: vartika[numericId]?.split('\n\n') || undefined,
+    englishShort: englishShort[numericId],
+    englishFull: englishFull[numericId]
+  };
+}
+
+/** Search sūtras by text */
+export async function searchSutras(query: string): Promise<Sutra[]> {
+  const sutras = await loadSutras();
+  const lowerQuery = query.toLowerCase();
+
+  return sutras.filter(s =>
+    s.text.includes(query) ||
+    s.textRoman.toLowerCase().includes(lowerQuery) ||
+    s.expanded.includes(query) ||
+    s.id.includes(query)
+  );
+}
+
+/** Get sūtras that this one depends on (via anuvṛtti) */
+export async function getDependencies(id: string): Promise<Sutra[]> {
+  const sutra = await getSutra(id);
+  if (!sutra) return [];
+
+  const deps: Sutra[] = [];
+  for (const ref of sutra.anuvrtti) {
+    const dep = await getSutra(ref.fromId);
+    if (dep) deps.push(dep);
+  }
+  return deps;
+}
+
+/** Get sūtras that depend on this one */
+export async function getDependents(id: string): Promise<Sutra[]> {
+  const sutras = await loadSutras();
+  const targetId = id.includes('.') ? id : numericToDisplayId(id);
+
+  return sutras.filter(s =>
+    s.anuvrtti.some(ref => ref.fromId === targetId)
+  );
+}
+
+export { numericToDisplayId, displayToNumericId };
+export type { Sutra, Commentary, SutraType, AnuvrttiRef } from './types';
