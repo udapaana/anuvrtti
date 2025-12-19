@@ -27,6 +27,7 @@
       <div class="flex items-center gap-6">
         <nav class="flex gap-6 text-sm">
           <a href="/" class="hover:text-indigo-600">Browse</a>
+          <a href="/types" class="hover:text-indigo-600">By Type</a>
           <a href="/search" class="hover:text-indigo-600">Search</a>
           <a href="/graph" class="hover:text-indigo-600">Graph</a>
         </nav>
