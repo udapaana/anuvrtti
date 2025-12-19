@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation';
   import { getSutra, getCommentary, getDependencies, getDependents, type Sutra, type Commentary } from '$lib/data';
   import SutraCard from '$lib/components/SutraCard.svelte';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
 
   let sutra: Sutra | undefined = $state();
   let commentary: Commentary | undefined = $state();
@@ -111,7 +112,7 @@
               <div class="p-3 bg-white rounded border border-stone-200 hover:border-indigo-300 transition-colors">
                 <div class="flex items-start gap-3">
                   <span class="text-sm font-mono text-stone-400">{dep.id}</span>
-                  <p class="font-sanskrit">{dep.text}</p>
+                  <p><Sanskrit text={dep.text} /></p>
                 </div>
               </div>
             </a>
@@ -132,7 +133,7 @@
               <div class="p-3 bg-white rounded border border-stone-200 hover:border-indigo-300 transition-colors">
                 <div class="flex items-start gap-3">
                   <span class="text-sm font-mono text-stone-400">{dep.id}</span>
-                  <p class="font-sanskrit">{dep.text}</p>
+                  <p><Sanskrit text={dep.text} /></p>
                 </div>
               </div>
             </a>

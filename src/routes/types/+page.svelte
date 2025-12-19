@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { Sutra } from '$lib/data';
-  import SanskritText from '$lib/components/SanskritText.svelte';
-  import { displayScript } from '$lib/stores/preferences';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
 
   let { data } = $props();
 
@@ -54,7 +53,7 @@
         >
           <div class="flex items-center gap-3">
             <span class="badge badge-{group.type}">
-              <SanskritText text={group.labelSanskrit} targetScript={$displayScript} />
+              <Sanskrit text={group.labelSanskrit} />
             </span>
             <span class="font-medium">{group.label}</span>
             <span class="text-sm text-stone-500">({group.sutras.length})</span>
@@ -96,7 +95,7 @@
                             </td>
                             <td class="px-4 py-2">
                               <a href="/sutra/{sutra.id}" class="hover:text-indigo-600">
-                                <SanskritText text={sutra.text} targetScript={$displayScript} />
+                                <Sanskrit text={sutra.text} />
                               </a>
                             </td>
                           </tr>
@@ -127,13 +126,13 @@
                       <td class="px-4 py-2">
                         <a href="/sutra/{sutra.id}" class="block hover:text-indigo-600">
                           <span class="text-lg">
-                            <SanskritText text={sutra.text} targetScript={$displayScript} />
+                            <Sanskrit text={sutra.text} />
                           </span>
                         </a>
                       </td>
                       {#if group.type === 'samjna' && sutra.typeName}
                         <td class="px-4 py-2 text-stone-600">
-                          <SanskritText text={sutra.typeName} targetScript={$displayScript} />
+                          <Sanskrit text={sutra.typeName} />
                         </td>
                       {/if}
                     </tr>
