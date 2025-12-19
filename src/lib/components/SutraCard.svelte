@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Sutra, Commentary } from '$lib/data';
   import SanskritText from './SanskritText.svelte';
+  import MarkupText from './MarkupText.svelte';
   import { displayScript } from '$lib/stores/preferences';
 
   interface Props {
@@ -87,7 +88,7 @@
     <div class="border-t border-stone-200">
       {#if commentary.englishShort}
         <div class="px-4 py-3 border-b border-stone-100">
-          <p class="text-sm text-stone-600">{commentary.englishShort}</p>
+          <p class="text-sm text-stone-600"><MarkupText text={commentary.englishShort} /></p>
         </div>
       {/if}
 
@@ -108,7 +109,9 @@
             Vasu's Translation
           </summary>
           <div class="px-4 py-3 text-sm leading-relaxed bg-stone-50 prose prose-sm max-w-none">
-            {@html commentary.englishFull.replace(/\n/g, '<br>')}
+            {#each commentary.englishFull.split('\n') as para}
+              <p><MarkupText text={para} /></p>
+            {/each}
           </div>
         </details>
       {/if}
