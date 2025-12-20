@@ -59,14 +59,14 @@
       >
         All
       </button>
-      {#each adhyayas as a}
+      {#each adhyayas as adh}
         <button
           class="px-3 py-1.5 text-sm rounded-full transition-colors
-                 {selectedAdhyaya === a.number ? 'bg-indigo-600 text-white' : 'bg-stone-100 hover:bg-stone-200 text-stone-700'}"
-          onclick={() => selectedAdhyaya = a.number}
-          title={a.topic}
+                 {selectedAdhyaya === adh.number ? 'bg-indigo-600 text-white' : 'bg-stone-100 hover:bg-stone-200 text-stone-700'}"
+          onclick={() => selectedAdhyaya = adh.number}
+          title={adh.topic}
         >
-          {a.number}. <Sanskrit text={a.title} />
+          {adh.number}. <Sanskrit text={adh.title} />
         </button>
       {/each}
     </div>

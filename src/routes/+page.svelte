@@ -38,6 +38,8 @@
       <AdhyayaNav
         currentAdhyaya={selectedAdhyaya}
         currentPada={selectedPada}
+        onAdhyayaChange={(a) => { selectedAdhyaya = a; selectedPada = 1; }}
+        onPadaChange={(p) => { selectedPada = p; }}
       />
 
       <div class="mt-6 p-4 bg-white rounded-lg border border-stone-200">
@@ -64,30 +66,7 @@
         </dl>
       </div>
 
-      <!-- Quick navigation -->
-      <div class="mt-4">
-        <label class="block text-sm font-medium text-stone-500 mb-2">
-          Go to Pada
-        </label>
-        <div class="flex gap-2">
-          <select
-            bind:value={selectedAdhyaya}
-            class="flex-1 text-sm border border-stone-200 rounded px-2 py-1"
-          >
-            {#each [1,2,3,4,5,6,7,8] as a}
-              <option value={a}>Adhyaya {a}</option>
-            {/each}
-          </select>
-          <select
-            bind:value={selectedPada}
-            class="flex-1 text-sm border border-stone-200 rounded px-2 py-1"
-          >
-            {#each [1,2,3,4] as p}
-              <option value={p}>Pada {p}</option>
-            {/each}
-          </select>
-        </div>
-      </div>
+
     </div>
   </aside>
 
