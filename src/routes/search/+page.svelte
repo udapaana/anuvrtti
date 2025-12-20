@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { searchSutras, type Sutra } from '$lib/data';
+  import { searchSutras, searchByPada, type Sutra } from '$lib/data';
   import SutraCard from '$lib/components/SutraCard.svelte';
 
   let query = $state('');
+  let searchMode = $state<'all' | 'pada'>('all');
   let results: Sutra[] = $state([]);
   let searching = $state(false);
   let searched = $state(false);
@@ -20,7 +21,11 @@
 
     debounceTimer = setTimeout(async () => {
       searching = true;
-      results = await searchSutras(query);
+      if (searchMode === 'pada') {
+        results = await searchByPada(query);
+      } else {
+        results = await searchSutras(query);
+      }
       searching = false;
       searched = true;
     }, 300);
@@ -29,6 +34,13 @@
   function handleSutraClick(id: string) {
     window.location.href = `/sutra/${id}`;
   }
+
+  // Re-search when mode changes
+  $effect(() => {
+    if (query.length >= 2) {
+      handleSearch();
+    }
+  });
 </script>
 
 <svelte:head>
@@ -39,15 +51,28 @@
   <h1 class="text-2xl font-semibold mb-6">Search Sūtras</h1>
 
   <div class="mb-8">
-    <input
-      type="text"
-      bind:value={query}
-      oninput={handleSearch}
-      placeholder="Search by text, ID, or transliteration..."
-      class="w-full px-4 py-3 text-lg border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-    />
+    <div class="flex gap-2">
+      <input
+        type="text"
+        bind:value={query}
+        oninput={handleSearch}
+        placeholder={searchMode === 'pada' ? "Search by word (pada)..." : "Search by text, ID, or transliteration..."}
+        class="flex-1 px-4 py-3 text-lg border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+      />
+      <select
+        bind:value={searchMode}
+        class="px-3 py-2 border border-stone-300 rounded-lg text-sm"
+      >
+        <option value="all">All</option>
+        <option value="pada">By Pada</option>
+      </select>
+    </div>
     <p class="mt-2 text-sm text-stone-500">
-      Try: वृद्धि, guna, 1.1, संज्ञा
+      {#if searchMode === 'pada'}
+        Search for sutras containing a specific word: गुण, प्रत्यय, आदेश
+      {:else}
+        Try: वृद्धि, guna, 1.1, संज्ञा
+      {/if}
     </p>
   </div>
 

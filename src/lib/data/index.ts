@@ -141,5 +141,95 @@ export async function getDependents(id: string): Promise<Sutra[]> {
   );
 }
 
+/** Get leaf nodes - sutras that don't contribute anuvrtti to any later sutra */
+export async function getLeafSutras(): Promise<Sutra[]> {
+  const sutras = await loadSutras();
+
+  // Build set of all sutra IDs that are referenced by others
+  const referencedIds = new Set<string>();
+  for (const s of sutras) {
+    for (const ref of s.anuvrtti) {
+      referencedIds.add(ref.fromId);
+    }
+  }
+
+  // Leaf nodes are those not referenced by anyone
+  return sutras.filter((s) => !referencedIds.has(s.id));
+}
+
+/** Get root nodes - sutras that don't inherit from any other sutra */
+export async function getRootSutras(): Promise<Sutra[]> {
+  const sutras = await loadSutras();
+  return sutras.filter((s) => s.anuvrtti.length === 0);
+}
+
+/** Get sutras ranked by number of dependents (most connected first) */
+export async function getMostConnectedSutras(): Promise<
+  { sutra: Sutra; dependentCount: number }[]
+> {
+  const sutras = await loadSutras();
+
+  // Count how many sutras reference each sutra
+  const dependentCounts = new Map<string, number>();
+  for (const s of sutras) {
+    for (const ref of s.anuvrtti) {
+      dependentCounts.set(
+        ref.fromId,
+        (dependentCounts.get(ref.fromId) || 0) + 1,
+      );
+    }
+  }
+
+  // Build result with counts
+  const result: { sutra: Sutra; dependentCount: number }[] = [];
+  for (const s of sutras) {
+    const count = dependentCounts.get(s.id) || 0;
+    if (count > 0) {
+      result.push({ sutra: s, dependentCount: count });
+    }
+  }
+
+  // Sort by count descending
+  result.sort((a, b) => b.dependentCount - a.dependentCount);
+  return result;
+}
+
+/** Get all sutras under a specific adhikara */
+export async function getSutrasUnderAdhikara(
+  adhikaraId: string,
+): Promise<Sutra[]> {
+  const sutras = await loadSutras();
+  return sutras.filter((s) => s.adhikara.includes(adhikaraId));
+}
+
+/** Get all adhikaras with their scope */
+export async function getAdhikaras(): Promise<
+  { sutra: Sutra; scopeCount: number }[]
+> {
+  const sutras = await loadSutras();
+  const adhikaraSutras = sutras.filter((s) => s.type === "adhikara");
+
+  const result: { sutra: Sutra; scopeCount: number }[] = [];
+  for (const adhikara of adhikaraSutras) {
+    const scopeCount = sutras.filter((s) =>
+      s.adhikara.includes(adhikara.id),
+    ).length;
+    result.push({ sutra: adhikara, scopeCount });
+  }
+
+  return result;
+}
+
+/** Search sutras by pada (word) */
+export async function searchByPada(pada: string): Promise<Sutra[]> {
+  const sutras = await loadSutras();
+  return sutras.filter(
+    (s) =>
+      s.padaCcheda.some((p) => p.word.includes(pada)) ||
+      s.text.includes(pada) ||
+      s.expanded.includes(pada),
+  );
+}
+
 export { numericToDisplayId, displayToNumericId };
 export type { Sutra, Commentary, SutraType, AnuvrttiRef } from "./types";

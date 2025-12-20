@@ -25,11 +25,31 @@
         <span class="text-stone-400 text-sm ml-2">Aṣṭādhyāyī Explorer</span>
       </a>
       <div class="flex items-center gap-6">
-        <nav class="flex gap-6 text-sm">
+        <nav class="flex items-center gap-4 text-sm">
           <a href="/" class="hover:text-indigo-600">Browse</a>
-          <a href="/types" class="hover:text-indigo-600">By Type</a>
           <a href="/search" class="hover:text-indigo-600">Search</a>
-          <a href="/graph" class="hover:text-indigo-600">Graph</a>
+
+          <!-- Analysis dropdown -->
+          <div class="relative group">
+            <button class="hover:text-indigo-600 flex items-center gap-1">
+              Analysis
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="absolute right-0 top-full pt-2 hidden group-hover:block">
+              <div class="bg-white border border-stone-200 rounded shadow-lg py-1 min-w-40">
+                <a href="/types" class="block px-4 py-2 hover:bg-stone-50">By Type</a>
+                <a href="/adhikara" class="block px-4 py-2 hover:bg-stone-50">Adhikaras</a>
+                <a href="/connected" class="block px-4 py-2 hover:bg-stone-50">Most Connected</a>
+                <a href="/roots" class="block px-4 py-2 hover:bg-stone-50">Root Sutras</a>
+                <a href="/leaves" class="block px-4 py-2 hover:bg-stone-50">Leaf Sutras</a>
+                <a href="/graph" class="block px-4 py-2 hover:bg-stone-50">Graph</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/pratyahara" class="hover:text-indigo-600">Pratyahara</a>
         </nav>
         <ScriptToggle current={$displayScript} onChange={handleScriptChange} />
       </div>
