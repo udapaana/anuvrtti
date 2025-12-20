@@ -1,62 +1,15 @@
 <script lang="ts">
-  import { page } from '$app/stores';
   import { goto } from '$app/navigation';
-  import { onMount } from 'svelte';
-  import { getSutra, getCommentary, getDependencies, getDependents, type Sutra, type Commentary } from '$lib/data';
+  import type { Sutra, Commentary } from '$lib/data';
   import SutraCard from '$lib/components/SutraCard.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
 
-  let sutra: Sutra | undefined = $state();
-  let commentary: Commentary | undefined = $state();
-  let dependencies: Sutra[] = $state([]);
-  let dependents: Sutra[] = $state([]);
-  let loading = $state(true);
-  let lastLoadedId = '';
+  let { data } = $props();
 
-  async function loadData(id: string) {
-    if (!id || id === lastLoadedId) return;
-    lastLoadedId = id;
-    loading = true;
-
-    try {
-      const s = await getSutra(id);
-      if (!s) {
-        sutra = undefined;
-        loading = false;
-        return;
-      }
-
-      sutra = s;
-
-      const [c, deps, depts] = await Promise.all([
-        getCommentary(s.numericId),
-        getDependencies(id),
-        getDependents(id)
-      ]);
-
-      commentary = c;
-      dependencies = deps;
-      dependents = depts.slice(0, 10);
-      loading = false;
-    } catch (err) {
-      console.error('Error loading sutra:', err);
-      sutra = undefined;
-      loading = false;
-    }
-  }
-
-  onMount(() => {
-    loadData($page.params.id);
-
-    // Subscribe to page changes for client-side navigation
-    const unsubscribe = page.subscribe(p => {
-      if (p.params.id && p.params.id !== lastLoadedId) {
-        loadData(p.params.id);
-      }
-    });
-
-    return unsubscribe;
-  });
+  let sutra: Sutra | null = $derived(data.sutra);
+  let commentary: Commentary | null = $derived(data.commentary);
+  let dependencies: Sutra[] = $derived(data.dependencies);
+  let dependents: Sutra[] = $derived(data.dependents);
 
   function handleSutraClick(id: string) {
     goto(`/sutra/${id}`);
@@ -86,12 +39,10 @@
 </script>
 
 <svelte:head>
-  <title>{sutra ? `${sutra.id} ${sutra.text}` : 'Loading...'} | Aṣṭādhyāyī</title>
+  <title>{sutra ? `${sutra.id} ${sutra.text}` : 'Not Found'} | Ashtadhyayi</title>
 </svelte:head>
 
-{#if loading}
-  <div class="text-stone-500">Loading...</div>
-{:else if !sutra}
+{#if !sutra}
   <div class="text-red-600">Sūtra not found</div>
 {:else}
   <div class="max-w-3xl mx-auto">
