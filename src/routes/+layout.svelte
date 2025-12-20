@@ -1,6 +1,7 @@
 <script lang="ts">
   import '../app.css';
   import ScriptToggle from '$lib/components/ScriptToggle.svelte';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { displayScript } from '$lib/stores/preferences';
   import type { Script } from '$lib/transliteration';
 
@@ -22,8 +23,8 @@
   <header class="border-b border-stone-200 bg-white">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="/" class="text-xl font-semibold">
-        <span class="font-sanskrit">अनुवृत्ति</span>
-        <span class="text-stone-400 text-sm ml-2">Aṣṭādhyāyī Explorer</span>
+        <Sanskrit text="अनुवृत्ति" />
+        <span class="text-stone-400 text-sm ml-2">Ashtadhyayi Explorer</span>
       </a>
       <div class="flex items-center gap-6">
         <nav class="flex items-center gap-4 text-sm">

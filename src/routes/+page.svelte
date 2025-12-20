@@ -2,6 +2,7 @@
   import type { Sutra } from '$lib/data';
   import SutraCard from '$lib/components/SutraCard.svelte';
   import AdhyayaNav from '$lib/components/AdhyayaNav.svelte';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
 
   let { data } = $props();
 
@@ -93,7 +94,7 @@
   <!-- Main content -->
   <main class="lg:col-span-3">
     <h1 class="text-2xl font-semibold mb-6">
-      <span class="font-sanskrit">अष्टाध्यायी</span>
+      <Sanskrit text="अष्टाध्यायी" />
       <span class="text-stone-400 text-lg ml-2">{selectedAdhyaya}.{selectedPada}</span>
     </h1>
 
