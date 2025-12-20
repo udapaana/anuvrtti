@@ -87,6 +87,12 @@ async function loadEnglishFull(): Promise<Record<string, string>> {
   return englishFullCache;
 }
 
+/** Strip @deva[...] markers from text, keeping just the content */
+function stripDevaMarkers(text: string | undefined): string | undefined {
+  if (!text) return text;
+  return text.replace(/@deva\[([^\]]*)\]/g, "$1");
+}
+
 /** Get all commentary for a sūtra */
 export async function getCommentary(numericId: string): Promise<Commentary> {
   const [kashika, vartika, englishShort, englishFull] = await Promise.all([
@@ -99,8 +105,8 @@ export async function getCommentary(numericId: string): Promise<Commentary> {
   return {
     kashika: kashika[numericId],
     vartika: vartika[numericId]?.split("\n\n") || undefined,
-    englishShort: englishShort[numericId],
-    englishFull: englishFull[numericId],
+    englishShort: stripDevaMarkers(englishShort[numericId]),
+    englishFull: stripDevaMarkers(englishFull[numericId]),
   };
 }
 

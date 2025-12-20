@@ -45,7 +45,8 @@
       </a>
       <div class="flex items-center gap-6">
         <nav class="flex items-center gap-4 text-sm">
-          <a href="/" class="hover:text-indigo-600">Browse</a>
+          <a href="/" class="hover:text-indigo-600">Learn <span class="ml-1 px-1.5 py-0.5 text-[10px] font-medium bg-amber-100 text-amber-700 rounded">AI</span></a>
+          <a href="/browse" class="hover:text-indigo-600">Browse</a>
           <a href="/search" class="hover:text-indigo-600">Search</a>
 
           <!-- Analysis dropdown -->

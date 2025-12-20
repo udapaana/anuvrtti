@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-  <title>Anuvrtti | Ashtadhyayi Explorer</title>
+  <title>Learn | Ashtadhyayi Explorer</title>
 </svelte:head>
 
 <div class="max-w-4xl mx-auto">
