@@ -78,4 +78,19 @@
   <main class="max-w-6xl mx-auto px-4 py-8">
     {@render children()}
   </main>
+
+  <footer class="border-t border-stone-200 bg-white mt-16">
+    <div class="max-w-6xl mx-auto px-4 py-6">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-stone-500">
+        <div>
+          Data sourced from <a href="https://ashtadhyayi.com" target="_blank" rel="noopener" class="text-indigo-600 hover:underline">ashtadhyayi.com</a>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/udapaana/anuvrtti" target="_blank" rel="noopener" class="hover:text-stone-700">GitHub</a>
+          <span class="text-stone-300">|</span>
+          <span>Built by <a href="https://udapaana.in" target="_blank" rel="noopener" class="text-indigo-600 hover:underline">Udapaana</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
