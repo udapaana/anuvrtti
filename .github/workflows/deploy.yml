@@ -1,8 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy अनुवृत्ति to anuvrtti.udapaana.in
 
 on:
   push:
-    branches: ['main']
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
@@ -24,8 +24,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -33,10 +33,27 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          echo "🔍 Checking build output..."
+          if [ ! -d "build" ]; then
+            echo "❌ Build directory not found"
+            exit 1
+          fi
+          if [ ! -f "build/index.html" ]; then
+            echo "❌ index.html not found in build"
+            exit 1
+          fi
+          echo "✅ Build output looks good"
+          ls -la build/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'build'
+          path: "build"
 
   deploy:
     environment:
@@ -48,3 +65,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Notify deployment success
+        run: |
+          echo "🎉 अनुवृत्ति deployed successfully!"
+          echo "📍 GitHub Pages URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "🌐 Custom domain: https://anuvrtti.udapaana.in"
+          echo ""
+          echo "✅ Deployment complete!"
+          echo "📚 Ashtadhyayi Explorer with multi-script support"
