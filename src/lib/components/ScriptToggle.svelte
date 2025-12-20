@@ -11,11 +11,11 @@
   let open = $state(false);
 
   // Script options with "ka" character in each script
-  const scripts: { id: Script; ka: string }[] = [
-    { id: 'devanagari', ka: 'क' },
-    { id: 'iast', ka: 'ka' },
-    { id: 'slp1', ka: 'ka' },
-    { id: 'hk', ka: 'ka' },
+  const scripts: { id: Script; ka: string; label: string }[] = [
+    { id: 'devanagari', ka: 'क', label: 'Devanagari' },
+    { id: 'iast', ka: 'kā', label: 'IAST' },
+    { id: 'slp1', ka: 'kA', label: 'SLP1' },
+    { id: 'hk', ka: 'kA', label: 'Harvard-Kyoto' },
   ];
 
   function getCurrentKa(): string {
@@ -55,7 +55,7 @@
           onclick={() => selectScript(script.id)}
         >
           <span class="w-6 text-center text-base script-char">{script.ka}</span>
-          <span class="text-xs uppercase tracking-wide">{script.id}</span>
+          <span class="text-xs tracking-wide">{script.label}</span>
         </button>
       {/each}
     </div>
