@@ -1,18 +1,26 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { getAdhikaras, getSutrasUnderAdhikara, type Sutra } from '$lib/data';
+  import { adhyayas } from '$lib/adhyaya';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
 
-  let adhikaras: { sutra: Sutra; scopeCount: number }[] = $state([]);
+  let allAdhikaras: { sutra: Sutra; scopeCount: number }[] = $state([]);
   let loading = $state(true);
+  let selectedAdhyaya = $state<number>(0); // 0 = all
   let expanded = $state<string | null>(null);
   let expandedSutras = $state<Sutra[]>([]);
   let loadingExpanded = $state(false);
 
   onMount(async () => {
-    adhikaras = await getAdhikaras();
+    allAdhikaras = await getAdhikaras();
     loading = false;
   });
+
+  let adhikaraList = $derived(
+    selectedAdhyaya === 0
+      ? allAdhikaras
+      : allAdhikaras.filter(a => a.sutra.adhyaya === selectedAdhyaya)
+  );
 
   async function toggleExpand(id: string) {
     if (expanded === id) {
@@ -33,19 +41,44 @@
 
 <div>
   <div class="mb-6">
-    <h1 class="text-2xl font-semibold">Adhikaras</h1>
-    <p class="text-stone-500 text-sm mt-1">
-      Governing rules that apply to subsequent sutras within their scope
-    </p>
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-semibold">Adhikaras</h1>
+        <p class="text-stone-500 text-sm mt-1">
+          Governing rules that apply to subsequent sutras within their scope
+        </p>
+      </div>
+    </div>
+
+    <!-- Adhyaya filter -->
+    <div class="mt-4 flex flex-wrap gap-2">
+      <button
+        class="px-3 py-1.5 text-sm rounded-full transition-colors
+               {selectedAdhyaya === 0 ? 'bg-indigo-600 text-white' : 'bg-stone-100 hover:bg-stone-200 text-stone-700'}"
+        onclick={() => selectedAdhyaya = 0}
+      >
+        All
+      </button>
+      {#each adhyayas as a}
+        <button
+          class="px-3 py-1.5 text-sm rounded-full transition-colors
+                 {selectedAdhyaya === a.number ? 'bg-indigo-600 text-white' : 'bg-stone-100 hover:bg-stone-200 text-stone-700'}"
+          onclick={() => selectedAdhyaya = a.number}
+          title={a.topic}
+        >
+          {a.number}. <Sanskrit text={a.title} />
+        </button>
+      {/each}
+    </div>
   </div>
 
   {#if loading}
     <div class="text-stone-500">Loading...</div>
   {:else}
-    <p class="text-sm text-stone-600 mb-4">{adhikaras.length} adhikaras found</p>
+    <p class="text-sm text-stone-600 mb-4">{adhikaraList.length} adhikaras found</p>
 
     <div class="space-y-2">
-      {#each adhikaras as { sutra, scopeCount }}
+      {#each adhikaraList as { sutra, scopeCount }}
         <div class="bg-white rounded border border-stone-200">
           <button
             class="w-full p-3 text-left hover:bg-stone-50 transition-colors flex items-center gap-3"

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
   import { getSutra, getCommentary, getDependencies, getDependents, type Sutra, type Commentary } from '$lib/data';
   import SutraCard from '$lib/components/SutraCard.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
@@ -10,23 +11,51 @@
   let dependencies: Sutra[] = $state([]);
   let dependents: Sutra[] = $state([]);
   let loading = $state(true);
+  let lastLoadedId = '';
 
-  $effect(() => {
-    const id = $page.params.id;
+  async function loadData(id: string) {
+    if (!id || id === lastLoadedId) return;
+    lastLoadedId = id;
     loading = true;
 
-    Promise.all([
-      getSutra(id),
-      getSutra(id).then(s => s ? getCommentary(s.numericId) : undefined),
-      getDependencies(id),
-      getDependents(id)
-    ]).then(([s, c, deps, depts]) => {
+    try {
+      const s = await getSutra(id);
+      if (!s) {
+        sutra = undefined;
+        loading = false;
+        return;
+      }
+
       sutra = s;
+
+      const [c, deps, depts] = await Promise.all([
+        getCommentary(s.numericId),
+        getDependencies(id),
+        getDependents(id)
+      ]);
+
       commentary = c;
       dependencies = deps;
-      dependents = depts.slice(0, 10); // Limit to first 10
+      dependents = depts.slice(0, 10);
       loading = false;
+    } catch (err) {
+      console.error('Error loading sutra:', err);
+      sutra = undefined;
+      loading = false;
+    }
+  }
+
+  onMount(() => {
+    loadData($page.params.id);
+
+    // Subscribe to page changes for client-side navigation
+    const unsubscribe = page.subscribe(p => {
+      if (p.params.id && p.params.id !== lastLoadedId) {
+        loadData(p.params.id);
+      }
     });
+
+    return unsubscribe;
   });
 
   function handleSutraClick(id: string) {

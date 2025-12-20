@@ -1,18 +1,24 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { getMostConnectedSutras, type Sutra } from '$lib/data';
+  import { adhyayas } from '$lib/adhyaya';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
 
-  let data: { sutra: Sutra; dependentCount: number }[] = $state([]);
+  let allData: { sutra: Sutra; dependentCount: number }[] = $state([]);
   let loading = $state(true);
-  let limit = $state(50);
+  let selectedAdhyaya = $state<number>(0); // 0 = all
 
   onMount(async () => {
-    data = await getMostConnectedSutras();
+    allData = await getMostConnectedSutras();
     loading = false;
   });
 
-  let displayed = $derived(data.slice(0, limit));
+  let data = $derived(
+    selectedAdhyaya === 0
+      ? allData
+      : allData.filter(d => d.sutra.adhyaya === selectedAdhyaya)
+  );
+
   let maxCount = $derived(data[0]?.dependentCount || 1);
 
   const typeColors: Record<string, string> = {
@@ -30,23 +36,36 @@
 </svelte:head>
 
 <div>
-  <div class="flex items-center justify-between mb-6">
-    <div>
-      <h1 class="text-2xl font-semibold">Most Connected Sutras</h1>
-      <p class="text-stone-500 text-sm mt-1">
-        Sutras ranked by how many other sutras depend on them via anuvrtti
-      </p>
+  <div class="mb-6">
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-semibold">Most Connected Sutras</h1>
+        <p class="text-stone-500 text-sm mt-1">
+          Sutras ranked by how many other sutras depend on them via anuvrtti
+        </p>
+      </div>
     </div>
 
-    <select
-      bind:value={limit}
-      class="text-sm border border-stone-200 rounded px-3 py-1.5"
-    >
-      <option value={25}>Top 25</option>
-      <option value={50}>Top 50</option>
-      <option value={100}>Top 100</option>
-      <option value={999999}>All</option>
-    </select>
+    <!-- Adhyaya filter -->
+    <div class="mt-4 flex flex-wrap gap-2">
+      <button
+        class="px-3 py-1.5 text-sm rounded-full transition-colors
+               {selectedAdhyaya === 0 ? 'bg-indigo-600 text-white' : 'bg-stone-100 hover:bg-stone-200 text-stone-700'}"
+        onclick={() => selectedAdhyaya = 0}
+      >
+        All
+      </button>
+      {#each adhyayas as a}
+        <button
+          class="px-3 py-1.5 text-sm rounded-full transition-colors
+                 {selectedAdhyaya === a.number ? 'bg-indigo-600 text-white' : 'bg-stone-100 hover:bg-stone-200 text-stone-700'}"
+          onclick={() => selectedAdhyaya = a.number}
+          title={a.topic}
+        >
+          {a.number}. <Sanskrit text={a.title} />
+        </button>
+      {/each}
+    </div>
   </div>
 
   {#if loading}
@@ -57,7 +76,7 @@
     </p>
 
     <div class="space-y-2">
-      {#each displayed as { sutra, dependentCount }, i}
+      {#each data as { sutra, dependentCount }, i}
         <a
           href="/sutra/{sutra.id}"
           class="block p-3 bg-white rounded border border-stone-200 hover:border-stone-300 transition-colors"
@@ -89,14 +108,5 @@
         </a>
       {/each}
     </div>
-
-    {#if limit < data.length}
-      <button
-        class="mt-4 text-sm text-indigo-600 hover:text-indigo-700"
-        onclick={() => limit = Math.min(limit + 50, data.length)}
-      >
-        Show more...
-      </button>
-    {/if}
   {/if}
 </div>
