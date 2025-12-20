@@ -1,35 +1,64 @@
 <script lang="ts">
   import { shivaSutras, commonPratyaharas, expandPratyahara, type Pratyahara } from '$lib/pratyahara';
+  import { transliterate } from '$lib/transliteration';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
 
   let selectedPratyahara = $state<Pratyahara | null>(null);
   let customInput = $state('');
   let customResult = $state<string[] | null>(null);
   let customError = $state('');
+  let normalizedInput = $state('');
 
   function selectPratyahara(p: Pratyahara) {
     selectedPratyahara = p;
     customInput = p.name;
+    normalizedInput = p.name;
     customResult = p.sounds;
     customError = '';
   }
 
-  function handleCustomInput() {
+  async function handleCustomInput() {
     if (!customInput.trim()) {
       customResult = null;
       customError = '';
+      normalizedInput = '';
       return;
     }
 
-    const result = expandPratyahara(customInput.trim());
+    const input = customInput.trim();
+
+    // Try to expand directly first (if already Devanagari)
+    let result = expandPratyahara(input);
     if (result) {
+      normalizedInput = input;
       customResult = result;
       customError = '';
       selectedPratyahara = null;
-    } else {
-      customResult = null;
-      customError = 'Invalid pratyahara';
+      return;
     }
+
+    // Try transliterating from various romanization schemes
+    const schemes = ['iast', 'slp1', 'hk', 'itrans', 'velthuis'] as const;
+    for (const scheme of schemes) {
+      try {
+        const devaInput = await transliterate(input, scheme, 'devanagari');
+        result = expandPratyahara(devaInput);
+        if (result) {
+          normalizedInput = devaInput;
+          customResult = result;
+          customError = '';
+          selectedPratyahara = null;
+          return;
+        }
+      } catch {
+        // Try next scheme
+      }
+    }
+
+    // Nothing worked
+    customResult = null;
+    normalizedInput = '';
+    customError = 'Invalid pratyahara. Try: ac, hal, aN, ik, ec, yaR, Sal';
   }
 
   // Highlight sounds in the Shiva Sutras that are part of the current selection
@@ -88,19 +117,22 @@
             type="text"
             bind:value={customInput}
             oninput={handleCustomInput}
-            placeholder="Enter pratyahara (e.g., अच्)"
+            placeholder="Enter pratyahara (e.g., ac, hal, अच्, yaR)"
             class="flex-1 px-3 py-2 text-lg border border-stone-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
+        <p class="mt-2 text-xs text-stone-400">
+          Accepts Devanagari, IAST, SLP1, Harvard-Kyoto, ITRANS
+        </p>
         {#if customError}
-          <p class="mt-2 text-sm text-red-500">{customError}</p>
+          <p class="mt-1 text-sm text-red-500">{customError}</p>
         {/if}
       </div>
 
       {#if customResult}
         <div class="bg-indigo-50 rounded p-4 mb-6">
           <div class="text-sm text-indigo-600 mb-2">
-            {customInput} = {customResult.length} sounds:
+            <Sanskrit text={normalizedInput} /> = {customResult.length} sounds:
           </div>
           <div class="flex flex-wrap gap-2">
             {#each customResult as sound}
