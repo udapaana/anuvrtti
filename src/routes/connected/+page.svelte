@@ -69,7 +69,23 @@
   </div>
 
   {#if loading}
-    <div class="text-stone-500">Loading...</div>
+    <div class="space-y-2">
+      {#each Array(10) as _, i}
+        <div class="p-3 bg-white rounded border border-stone-200 animate-pulse">
+          <div class="flex items-center gap-4">
+            <div class="h-6 w-8 bg-stone-200 rounded"></div>
+            <div class="w-2 h-2 rounded-full bg-stone-200"></div>
+            <div class="flex-1">
+              <div class="flex items-baseline gap-2">
+                <div class="h-4 w-12 bg-stone-200 rounded"></div>
+                <div class="h-5 w-48 bg-stone-200 rounded"></div>
+              </div>
+            </div>
+            <div class="h-2 w-20 bg-stone-200 rounded"></div>
+          </div>
+        </div>
+      {/each}
+    </div>
   {:else}
     <p class="text-sm text-stone-600 mb-4">
       {data.length} sutras contribute anuvrtti to other sutras

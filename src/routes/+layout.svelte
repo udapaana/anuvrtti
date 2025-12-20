@@ -1,14 +1,31 @@
 <script lang="ts">
   import '../app.css';
+  import { page } from '$app/stores';
   import ScriptToggle from '$lib/components/ScriptToggle.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { displayScript } from '$lib/stores/preferences';
   import type { Script } from '$lib/transliteration';
 
   let { children } = $props();
+  let mobileMenuOpen = $state(false);
+  let analysisDropdownOpen = $state(false);
 
   function handleScriptChange(script: Script) {
     displayScript.set(script);
+  }
+
+  function isActive(path: string): boolean {
+    return $page.url.pathname === path;
+  }
+
+  function isAnalysisActive(): boolean {
+    const analysisPaths = ['/types', '/adhikara', '/connected', '/roots', '/leaves', '/graph'];
+    return analysisPaths.some(p => $page.url.pathname === p);
+  }
+
+  function closeMobileMenu() {
+    mobileMenuOpen = false;
+    analysisDropdownOpen = false;
   }
 </script>
 

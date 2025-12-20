@@ -3,6 +3,8 @@
   import type { Sutra, Commentary } from '$lib/data';
   import SutraCard from '$lib/components/SutraCard.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+  import { adhyayas } from '$lib/adhyaya';
 
   let { data } = $props();
 
@@ -36,7 +38,23 @@
     if (!sutra) return null;
     return `${sutra.adhyaya}.${sutra.pada}.${sutra.number + 1}`;
   }
+
+  // Keyboard navigation
+  function handleKeydown(e: KeyboardEvent) {
+    // Don't navigate if user is typing in an input
+    if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+
+    if (e.key === 'ArrowLeft' || e.key === 'h') {
+      const prev = prevSutra();
+      if (prev) goto(`/sutra/${prev}`);
+    } else if (e.key === 'ArrowRight' || e.key === 'l') {
+      const next = nextSutra();
+      if (next) goto(`/sutra/${next}`);
+    }
+  }
 </script>
+
+<svelte:window onkeydown={handleKeydown} />
 
 <svelte:head>
   <title>{sutra ? `${sutra.id} ${sutra.text}` : 'Not Found'} | Ashtadhyayi</title>
@@ -45,15 +63,21 @@
 {#if !sutra}
   <div class="text-red-600">Sūtra not found</div>
 {:else}
+  {@const adhyayaInfo = adhyayas.find(a => a.number === sutra.adhyaya)}
   <div class="max-w-3xl mx-auto">
+    <!-- Breadcrumbs -->
+    <Breadcrumbs crumbs={[
+      { label: `Adhyaya ${sutra.adhyaya}`, href: `/?a=${sutra.adhyaya}` },
+      { label: `Pada ${sutra.pada}`, href: `/?a=${sutra.adhyaya}&p=${sutra.pada}` },
+      { label: sutra.id }
+    ]} />
+
     <!-- Navigation -->
     <nav class="flex justify-between items-center mb-6">
-      <a
-        href="/"
-        class="text-sm text-stone-500 hover:text-stone-700"
-      >
-        ← Back to {sutra.adhyaya}.{sutra.pada}
-      </a>
+      <div class="text-sm text-stone-500">
+        <span class="hidden sm:inline">{adhyayaInfo?.topic || ''}</span>
+        <span class="text-xs text-stone-400 ml-2">← / → to navigate</span>
+      </div>
       <div class="flex gap-2">
         {#if prevSutra()}
           <a

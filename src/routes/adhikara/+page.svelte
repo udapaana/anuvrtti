@@ -73,7 +73,23 @@
   </div>
 
   {#if loading}
-    <div class="text-stone-500">Loading...</div>
+    <div class="space-y-2">
+      {#each Array(8) as _}
+        <div class="bg-white rounded border border-stone-200 p-3 animate-pulse">
+          <div class="flex items-center gap-3">
+            <div class="w-5 h-5 bg-stone-200 rounded"></div>
+            <div class="w-2 h-2 rounded-full bg-stone-200"></div>
+            <div class="flex-1">
+              <div class="flex items-baseline gap-2">
+                <div class="h-4 w-12 bg-stone-200 rounded"></div>
+                <div class="h-5 w-40 bg-stone-200 rounded"></div>
+              </div>
+            </div>
+            <div class="h-4 w-16 bg-stone-200 rounded"></div>
+          </div>
+        </div>
+      {/each}
+    </div>
   {:else}
     <p class="text-sm text-stone-600 mb-4">{adhikaraList.length} adhikaras found</p>
 

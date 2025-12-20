@@ -76,7 +76,22 @@
   </div>
 
   {#if loading}
-    <div class="text-stone-500">Loading...</div>
+    <div class="space-y-4">
+      {#each Array(5) as _}
+        <div class="p-3 bg-white rounded border border-stone-200 animate-pulse">
+          <div class="flex items-start gap-3">
+            <div class="w-2 h-2 rounded-full mt-2 bg-stone-200"></div>
+            <div class="flex-1">
+              <div class="flex items-baseline gap-2 mb-2">
+                <div class="h-4 w-12 bg-stone-200 rounded"></div>
+                <div class="h-5 w-48 bg-stone-200 rounded"></div>
+              </div>
+              <div class="h-4 w-full bg-stone-200 rounded"></div>
+            </div>
+          </div>
+        </div>
+      {/each}
+    </div>
   {:else}
     <p class="text-sm text-stone-600 mb-4">{sutras.length} leaf sutras found</p>
 
