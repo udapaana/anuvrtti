@@ -9,6 +9,9 @@
   import CommentaryText from '$lib/components/CommentaryText.svelte';
   import JargonLookup from '$lib/components/JargonLookup.svelte';
   import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
+  import DerivationViewer from '$lib/components/DerivationViewer.svelte';
+  import { getExampleForSutra, type PrakriyaExample } from '$lib/prakriya-examples';
+  import { deriveTinanta, deriveSubanta, type Prakriya } from '$lib/prakriya';
 
   let path: LearningPath | undefined = $state(undefined);
   let currentStepIndex = $state(0);
@@ -17,6 +20,12 @@
   let dependencies: Sutra[] = $state([]);
   let loading = $state(true);
   let completedSteps: number[] = $state([]);
+
+  // Prakriya example state
+  let prakriyaExample = $state<PrakriyaExample | null>(null);
+  let prakriya = $state<Prakriya | null>(null);
+  let prakriyaLoading = $state(false);
+  let showPrakriya = $state(false);
 
   onMount(() => {
     const pathId = $page.params.pathId;
@@ -54,6 +63,11 @@
 
   async function loadStepData(step: LearningStep) {
     loading = true;
+    // Reset prakriya state for new step
+    prakriyaExample = null;
+    prakriya = null;
+    showPrakriya = false;
+
     try {
       // Conceptual steps don't have sutra data
       if (step.sutraId === 'concept') {
@@ -65,12 +79,49 @@
         if (sutra) {
           commentary = await getCommentary(sutra.numericId);
           dependencies = await getDependencies(sutra.id);
+          // Check for prakriya example for this sutra
+          prakriyaExample = getExampleForSutra(step.sutraId);
         }
       }
     } catch (e) {
       console.error('Failed to load step data:', e);
     }
     loading = false;
+  }
+
+  async function loadPrakriya() {
+    if (!prakriyaExample || prakriyaLoading) return;
+
+    prakriyaLoading = true;
+    try {
+      let results: Prakriya[] = [];
+
+      if (prakriyaExample.type === 'tinanta') {
+        results = await deriveTinanta(
+          prakriyaExample.dhatu,
+          prakriyaExample.gana,
+          prakriyaExample.lakara,
+          prakriyaExample.prayoga || 'Kartari',
+          prakriyaExample.purusha || 'Prathama',
+          prakriyaExample.vacana || 'Eka'
+        );
+      } else if (prakriyaExample.type === 'subanta') {
+        results = await deriveSubanta(
+          prakriyaExample.pratipadika,
+          prakriyaExample.linga,
+          prakriyaExample.vibhakti,
+          prakriyaExample.vacana
+        );
+      }
+
+      if (results.length > 0) {
+        prakriya = results[0];
+        showPrakriya = true;
+      }
+    } catch (e) {
+      console.error('Failed to load prakriya:', e);
+    }
+    prakriyaLoading = false;
   }
 
   function nextStep() {
@@ -296,6 +347,63 @@
                 </div>
               {/if}
             </div>
+
+            <!-- Prakriya example -->
+            {#if prakriyaExample}
+              <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+                <button
+                  onclick={() => showPrakriya ? showPrakriya = false : loadPrakriya()}
+                  disabled={prakriyaLoading}
+                  class="w-full p-5 text-left hover:bg-stone-50 transition-colors disabled:opacity-50"
+                >
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs font-medium text-emerald-700 uppercase tracking-wide">prakriyā</span>
+                    <span class="text-stone-400 ml-auto">
+                      {#if prakriyaLoading}
+                        <svg class="w-4 h-4 animate-spin" viewBox="0 0 16 16" fill="none">
+                          <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" stroke-dasharray="28" stroke-dashoffset="8"/>
+                        </svg>
+                      {:else if showPrakriya}
+                        <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                          <path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      {:else}
+                        <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                          <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      {/if}
+                    </span>
+                  </div>
+                  <p class="text-stone-700">
+                    {#if prakriyaExample.type === 'tinanta'}
+                      <Sanskrit text={prakriyaExample.labelParts[0]} source="slp1" />
+                      <span class="text-stone-400 mx-1">+</span>
+                      <Sanskrit text={prakriyaExample.labelParts[1]} source="slp1" />
+                      <span class="text-stone-400 mx-1">→</span>
+                      <Sanskrit text={prakriyaExample.labelParts[2]} source="slp1" />
+                    {:else}
+                      <Sanskrit text={prakriyaExample.labelParts[0]} source="slp1" />
+                      <span class="text-stone-400 mx-1">→</span>
+                      <Sanskrit text={prakriyaExample.labelParts[1]} source="slp1" />
+                    {/if}
+                    {#if prakriyaExample.note}
+                      <span class="text-stone-400 ml-2">({prakriyaExample.note})</span>
+                    {/if}
+                  </p>
+                </button>
+
+                {#if showPrakriya && prakriya}
+                  <div class="p-5 border-t border-stone-100 bg-stone-50/50">
+                    <DerivationViewer
+                      {prakriya}
+                      highlightSutra={currentStep?.sutraId}
+                      expanded={true}
+                      mode="simple"
+                    />
+                  </div>
+                {/if}
+              </div>
+            {/if}
 
             <!-- Key terms -->
             {#if currentStep.keyTerms && currentStep.keyTerms.length > 0}
