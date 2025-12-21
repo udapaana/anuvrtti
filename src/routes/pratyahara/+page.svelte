@@ -103,7 +103,7 @@
         {/each}
       </div>
       <p class="mt-3 text-sm text-stone-500">
-        The <span class="text-red-600">red markers</span> (इत्) are not pronounced but serve as end-points for pratyaharas.
+        The <span class="text-red-600">red markers</span> (<Sanskrit text="इत्" />) are not pronounced but serve as end-points for pratyaharas.
       </p>
     </div>
 
@@ -117,7 +117,7 @@
             type="text"
             bind:value={customInput}
             oninput={handleCustomInput}
-            placeholder="Enter pratyahara (e.g., ac, hal, अच्, yaR)"
+            placeholder="Enter pratyahara (e.g., ac, hal, yaR)"
             class="flex-1 px-3 py-2 text-lg border border-stone-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>

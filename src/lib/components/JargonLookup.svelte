@@ -2,6 +2,7 @@
   import { searchTerms, getCategories, lookupTerm, type Term, type TermCategory } from '$lib/jargon';
   import { selectedTerm as selectedTermStore } from '$lib/stores/jargon';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import CommentaryText from '$lib/components/CommentaryText.svelte';
 
   let query = $state('');
   let results = $state<Term[]>([]);
@@ -112,7 +113,7 @@
         <Sanskrit text={selectedTerm.term} />
       </div>
       <div class="text-xs text-stone-500 mb-2">{selectedTerm.termRoman}</div>
-      <p class="text-sm text-stone-700 leading-relaxed">{selectedTerm.meaning}</p>
+      <p class="text-sm text-stone-700 leading-relaxed"><CommentaryText text={selectedTerm.meaning} /></p>
       {#if selectedTerm.sutraRef}
         <a href="/sutra/{selectedTerm.sutraRef}" class="text-xs text-indigo-600 hover:underline mt-2 inline-block">
           → {selectedTerm.sutraRef}

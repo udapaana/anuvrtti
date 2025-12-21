@@ -36,7 +36,7 @@ export const terms: Term[] = [
   {
     term: "वृद्धि",
     termRoman: "vṛddhi",
-    meaning: 'The "strengthened" vowel grade: ā, ai, au. Defined in 1.1.1.',
+    meaning: 'The "strengthened" vowel grade: @[ā], @[ai], @[au]. Defined in 1.1.1.',
     sutraRef: "1.1.1",
     category: "samjna",
     related: ["guṇa"],
@@ -44,7 +44,7 @@ export const terms: Term[] = [
   {
     term: "गुण",
     termRoman: "guṇa",
-    meaning: 'The "medium" vowel grade: a, e, o. Defined in 1.1.2.',
+    meaning: 'The "medium" vowel grade: @[a], @[e], @[o]. Defined in 1.1.2.',
     sutraRef: "1.1.2",
     category: "samjna",
     related: ["vṛddhi"],
@@ -52,7 +52,7 @@ export const terms: Term[] = [
   {
     term: "स्वर",
     termRoman: "svara",
-    meaning: 'Vowel. Defined as the pratyahara "ac" in 1.1.9.',
+    meaning: 'Vowel. Defined as the pratyahara "@[ac]" in 1.1.9.',
     sutraRef: "1.1.9",
     category: "samjna",
     related: ["vyañjana", "ac"],
@@ -60,7 +60,7 @@ export const terms: Term[] = [
   {
     term: "व्यञ्जन",
     termRoman: "vyañjana",
-    meaning: 'Consonant. Defined as the pratyahara "hal" in 1.1.10.',
+    meaning: 'Consonant. Defined as the pratyahara "@[hal]" in 1.1.10.',
     sutraRef: "1.1.10",
     category: "samjna",
     related: ["svara", "hal"],
@@ -178,7 +178,7 @@ export const terms: Term[] = [
   {
     term: "अच्",
     termRoman: "ac",
-    meaning: "All vowels: a, i, u, ṛ, ḷ, e, o, ai, au.",
+    meaning: "All vowels: @[a], @[i], @[u], @[ṛ], @[ḷ], @[e], @[o], @[ai], @[au].",
     category: "pratyahara",
   },
   {
@@ -190,7 +190,7 @@ export const terms: Term[] = [
   {
     term: "अण्",
     termRoman: "aṇ",
-    meaning: "Simple vowels: a, i, u.",
+    meaning: "Simple vowels: @[a], @[i], @[u].",
     category: "pratyahara",
   },
   {
@@ -203,14 +203,14 @@ export const terms: Term[] = [
   {
     term: "यण्",
     termRoman: "yaṇ",
-    meaning: "Semivowels: y, v, r, l.",
+    meaning: "Semivowels: @[y], @[v], @[r], @[l].",
     category: "pratyahara",
     related: ["ik"],
   },
   {
     term: "एच्",
     termRoman: "ec",
-    meaning: "Diphthongs: e, o, ai, au.",
+    meaning: "Diphthongs: @[e], @[o], @[ai], @[au].",
     category: "pratyahara",
   },
 
@@ -412,7 +412,7 @@ export const terms: Term[] = [
     term: "लिङ्",
     termRoman: "liṅ",
     meaning:
-      "Optative/potential mood. Has two forms: vidhiliṅ (prescription) and āśīrliṅ (benediction).",
+      "Optative/potential mood. Has two forms: @[vidhiliṅ] (prescription) and @[āśīrliṅ] (benediction).",
     sutraRef: "3.3.161",
     category: "lakara",
   },
@@ -489,66 +489,66 @@ export const terms: Term[] = [
     term: "भ्वादि",
     termRoman: "bhvādi",
     meaning:
-      "First class (class 1). Adds guṇa and śap vikaraṇa. E.g., bhū → bhavati.",
+      "First class (class 1). Adds @[guṇa] and śap vikaraṇa. E.g., @[bhū] → @[bhavati].",
     category: "gana",
   },
   {
     term: "अदादि",
     termRoman: "adādi",
     meaning:
-      "Second class (class 2). No vikaraṇa, root directly takes endings. E.g., ad → atti.",
+      "Second class (class 2). No vikaraṇa, root directly takes endings. E.g., @[ad] → @[atti].",
     category: "gana",
   },
   {
     term: "जुहोत्यादि",
     termRoman: "juhotyādi",
     meaning:
-      "Third class (class 3). Reduplication without vikaraṇa. E.g., hu → juhoti.",
+      "Third class (class 3). Reduplication without vikaraṇa. E.g., @[hu] → @[juhoti].",
     category: "gana",
   },
   {
     term: "दिवादि",
     termRoman: "divādi",
-    meaning: "Fourth class (class 4). Adds śyan vikaraṇa. E.g., div → dīvyati.",
+    meaning: "Fourth class (class 4). Adds śyan vikaraṇa. E.g., @[div] → @[dīvyati].",
     category: "gana",
   },
   {
     term: "स्वादि",
     termRoman: "svādi",
-    meaning: "Fifth class (class 5). Adds śnu vikaraṇa. E.g., su → sunoti.",
+    meaning: "Fifth class (class 5). Adds śnu vikaraṇa. E.g., @[su] → @[sunoti].",
     category: "gana",
   },
   {
     term: "तुदादि",
     termRoman: "tudādi",
     meaning:
-      "Sixth class (class 6). Adds śa vikaraṇa (accent on ending). E.g., tud → tudati.",
+      "Sixth class (class 6). Adds śa vikaraṇa (accent on ending). E.g., @[tud] → @[tudati].",
     category: "gana",
   },
   {
     term: "रुधादि",
     termRoman: "rudhādi",
     meaning:
-      "Seventh class (class 7). Inserts nasal (śnam) before final consonant. E.g., rudh → ruṇaddhi.",
+      "Seventh class (class 7). Inserts nasal (śnam) before final consonant. E.g., @[rudh] → @[ruṇaddhi].",
     category: "gana",
   },
   {
     term: "तनादि",
     termRoman: "tanādi",
-    meaning: "Eighth class (class 8). Adds u vikaraṇa. E.g., tan → tanoti.",
+    meaning: "Eighth class (class 8). Adds u vikaraṇa. E.g., @[tan] → @[tanoti].",
     category: "gana",
   },
   {
     term: "क्र्यादि",
     termRoman: "kryādi",
-    meaning: "Ninth class (class 9). Adds śnā vikaraṇa. E.g., krī → krīṇāti.",
+    meaning: "Ninth class (class 9). Adds śnā vikaraṇa. E.g., @[krī] → @[krīṇāti].",
     category: "gana",
   },
   {
     term: "चुरादि",
     termRoman: "curādi",
     meaning:
-      "Tenth class (class 10). Adds ṇic (causative-like). E.g., cur → corayati.",
+      "Tenth class (class 10). Adds ṇic (causative-like). E.g., @[cur] → @[corayati].",
     category: "gana",
   },
 
@@ -572,7 +572,7 @@ export const terms: Term[] = [
     term: "कर्मधारय",
     termRoman: "karmadhāraya",
     meaning:
-      "Appositional compound. Both members refer to the same thing (subset of tatpuruṣa).",
+      "Appositional compound. Both members refer to the same thing (subset of @[tatpuruṣa]).",
     sutraRef: "1.2.42",
     category: "samasa",
   },
@@ -580,7 +580,7 @@ export const terms: Term[] = [
     term: "द्विगु",
     termRoman: "dvigu",
     meaning:
-      "Numeral compound. First member is a number (subset of tatpuruṣa).",
+      "Numeral compound. First member is a number (subset of @[tatpuruṣa]).",
     sutraRef: "2.1.52",
     category: "samasa",
   },
@@ -620,7 +620,7 @@ export const terms: Term[] = [
     term: "क्त",
     termRoman: "kta",
     meaning:
-      "Past passive participle suffix. Forms adjectives meaning 'was done' (niṣṭhā).",
+      "Past passive participle suffix. Forms adjectives meaning 'was done' (@[niṣṭhā]).",
     sutraRef: "3.2.102",
     category: "pratyaya",
     related: ["ktavatu"],
@@ -629,7 +629,7 @@ export const terms: Term[] = [
     term: "क्तवतु",
     termRoman: "ktavatu",
     meaning:
-      "Past active participle suffix. Forms adjectives meaning 'one who did' (niṣṭhā).",
+      "Past active participle suffix. Forms adjectives meaning 'one who did' (@[niṣṭhā]).",
     sutraRef: "3.2.102",
     category: "pratyaya",
     related: ["kta"],
@@ -663,7 +663,7 @@ export const terms: Term[] = [
     term: "शतृ",
     termRoman: "śatṛ",
     meaning:
-      "Present active participle suffix (parasmaipada). 'One who is doing'.",
+      "Present active participle suffix (@[parasmaipada]). 'One who is doing'.",
     sutraRef: "3.2.124",
     category: "pratyaya",
     related: ["śānac"],
@@ -672,7 +672,7 @@ export const terms: Term[] = [
     term: "शानच्",
     termRoman: "śānac",
     meaning:
-      "Present participle suffix (ātmanepada). 'One who is doing' (middle voice).",
+      "Present participle suffix (@[ātmanepada]). 'One who is doing' (middle voice).",
     sutraRef: "3.2.124",
     category: "pratyaya",
     related: ["śatṛ"],
@@ -720,28 +720,28 @@ export const terms: Term[] = [
   {
     term: "शप्",
     termRoman: "śap",
-    meaning: "Vikaraṇa for class 1 (bhvādi). Adds 'a' to stem.",
+    meaning: "Vikaraṇa for class 1 (bhvādi). Adds @[a] to stem.",
     sutraRef: "3.1.68",
     category: "pratyaya",
   },
   {
     term: "श्यन्",
     termRoman: "śyan",
-    meaning: "Vikaraṇa for class 4 (divādi). Adds 'ya' to stem.",
+    meaning: "Vikaraṇa for class 4 (divādi). Adds @[ya] to stem.",
     sutraRef: "3.1.69",
     category: "pratyaya",
   },
   {
     term: "श्नु",
     termRoman: "śnu",
-    meaning: "Vikaraṇa for class 5 (svādi). Adds 'nu/no' to stem.",
+    meaning: "Vikaraṇa for class 5 (svādi). Adds @[nu]/@[no] to stem.",
     sutraRef: "3.1.73",
     category: "pratyaya",
   },
   {
     term: "श्ना",
     termRoman: "śnā",
-    meaning: "Vikaraṇa for class 9 (kryādi). Adds 'nā/nī' to stem.",
+    meaning: "Vikaraṇa for class 9 (kryādi). Adds @[nā]/@[nī] to stem.",
     sutraRef: "3.1.81",
     category: "pratyaya",
   },
@@ -759,7 +759,7 @@ export const terms: Term[] = [
     term: "मतुप्",
     termRoman: "matup",
     meaning:
-      "Possessive suffix meaning 'having X'. Forms adjectives like dhana → dhanavat.",
+      "Possessive suffix meaning 'having X'. Forms adjectives like @[dhana] → @[dhanavat].",
     sutraRef: "5.2.94",
     category: "pratyaya",
   },
@@ -791,7 +791,7 @@ export const terms: Term[] = [
     term: "णिच्",
     termRoman: "ṇic",
     meaning:
-      "Causative suffix. Makes verbs causative: paca → pācayati 'causes to cook'.",
+      "Causative suffix. Makes verbs causative: @[paca] → @[pācayati] 'causes to cook'.",
     sutraRef: "3.1.26",
     category: "pratyaya",
   },
@@ -799,7 +799,7 @@ export const terms: Term[] = [
     term: "सन्",
     termRoman: "san",
     meaning:
-      "Desiderative suffix. Expresses desire to do: piba → pipāsati 'wishes to drink'.",
+      "Desiderative suffix. Expresses desire to do: @[piba] → @[pipāsati] 'wishes to drink'.",
     sutraRef: "3.1.7",
     category: "pratyaya",
   },
@@ -817,7 +817,7 @@ export const terms: Term[] = [
     term: "उपसर्ग",
     termRoman: "upasarga",
     meaning:
-      "Verbal prefix. Preverbs like pra, parā, apa, sam, etc. that modify verb meaning.",
+      "Verbal prefix. Preverbs like @[pra], @[parā], @[apa], @[sam], etc. that modify verb meaning.",
     sutraRef: "1.4.59",
     category: "samjna",
   },
@@ -846,7 +846,7 @@ export const terms: Term[] = [
     term: "घि",
     termRoman: "ghi",
     meaning:
-      "Technical name for stems ending in short i/u (except sakhi and pati in certain uses).",
+      "Technical name for stems ending in short i/u (except @[sakhi] and @[pati] in certain uses).",
     sutraRef: "1.4.7",
     category: "samjna",
   },
@@ -854,7 +854,7 @@ export const terms: Term[] = [
     term: "घु",
     termRoman: "ghu",
     meaning:
-      "Technical name for the roots dā 'give' and dhā 'place' (and their derivatives).",
+      "Technical name for the roots @[dā] 'give' and @[dhā] 'place' (and their derivatives).",
     sutraRef: "1.1.20",
     category: "samjna",
   },
@@ -883,7 +883,7 @@ export const terms: Term[] = [
   {
     term: "सम्प्रसारण",
     termRoman: "samprasāraṇa",
-    meaning: "Semivowel-to-vowel change: y→i, v→u, r→ṛ, l→ḷ.",
+    meaning: "Semivowel-to-vowel change: @[y]→@[i], @[v]→@[u], @[r]→@[ṛ], @[l]→@[ḷ].",
     sutraRef: "1.1.45",
     category: "samjna",
   },
@@ -898,7 +898,7 @@ export const terms: Term[] = [
   {
     term: "इट्",
     termRoman: "iṭ",
-    meaning: "Augment 'i' added before certain affixes (seṭ roots).",
+    meaning: "Augment @[i] added before certain affixes (@[seṭ] roots).",
     sutraRef: "7.2.35",
     category: "samjna",
     related: ["aniṭ"],
@@ -914,19 +914,19 @@ export const terms: Term[] = [
   {
     term: "आट्",
     termRoman: "āṭ",
-    meaning: "Augment 'ā' added in certain formations.",
+    meaning: "Augment @[ā] added in certain formations.",
     category: "samjna",
   },
   {
     term: "औट्",
     termRoman: "auṭ",
-    meaning: "Augment 'au' added before certain endings.",
+    meaning: "Augment @[au] added before certain endings.",
     category: "samjna",
   },
   {
     term: "नुम्",
     termRoman: "num",
-    meaning: "Nasal augment 'n' inserted in certain forms.",
+    meaning: "Nasal augment @[n] inserted in certain forms.",
     sutraRef: "7.1.58",
     category: "samjna",
   },
@@ -942,21 +942,21 @@ export const terms: Term[] = [
   {
     term: "कित्",
     termRoman: "kit",
-    meaning: "Having k as marker. Prevents guṇa/vṛddhi.",
+    meaning: "Having k as marker. Prevents @[guṇa]/@[vṛddhi].",
     category: "samjna",
     related: ["pit", "ṅit"],
   },
   {
     term: "ङित्",
     termRoman: "ṅit",
-    meaning: "Having ṅ as marker. Prevents guṇa/vṛddhi; indicates ātmanepada.",
+    meaning: "Having ṅ as marker. Prevents @[guṇa]/@[vṛddhi]; indicates @[ātmanepada].",
     category: "samjna",
     related: ["pit", "kit"],
   },
   {
     term: "शित्",
     termRoman: "śit",
-    meaning: "Having ś as marker. Indicates sārvadhātuka affix.",
+    meaning: "Having ś as marker. Indicates @[sārvadhātuka] affix.",
     category: "samjna",
   },
 
@@ -974,7 +974,7 @@ export const terms: Term[] = [
     term: "श्लु",
     termRoman: "ślu",
     meaning:
-      "Deletion that leaves a trace (sthānivat). The deleted element still triggers some rules.",
+      "Deletion that leaves a trace (@[sthānivat]). The deleted element still triggers some rules.",
     sutraRef: "1.1.62",
     category: "samjna",
     related: ["luk"],
@@ -1005,7 +1005,7 @@ export const terms: Term[] = [
     term: "सार्वधातुक",
     termRoman: "sārvadhātuka",
     meaning:
-      "Conjugational affixes - affixes marked with ś or tiṅ endings. Cause guṇa.",
+      "Conjugational affixes - affixes marked with ś or tiṅ endings. Cause @[guṇa].",
     sutraRef: "3.4.113",
     category: "samjna",
     related: ["ārdhadhātuka"],
@@ -1014,7 +1014,7 @@ export const terms: Term[] = [
     term: "आर्धधातुक",
     termRoman: "ārdhadhātuka",
     meaning:
-      "Non-conjugational affixes - affixes not marked with ś. Include kṛt affixes. Cause vṛddhi.",
+      "Non-conjugational affixes - affixes not marked with ś. Include kṛt affixes. Cause @[vṛddhi].",
     sutraRef: "3.4.114",
     category: "samjna",
     related: ["sārvadhātuka"],
@@ -1074,7 +1074,7 @@ export const terms: Term[] = [
     term: "विसर्ग",
     termRoman: "visarga",
     meaning:
-      "The sound ḥ (visarjanīya). Final aspiration that undergoes sandhi changes.",
+      "The sound @[ḥ] (@[visarjanīya]). Final aspiration that undergoes sandhi changes.",
     category: "sandhi",
   },
 

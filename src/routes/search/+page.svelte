@@ -1,6 +1,7 @@
 <script lang="ts">
   import { searchSutras, searchByPada, type Sutra } from '$lib/data';
   import SutraCard from '$lib/components/SutraCard.svelte';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
 
   let query = $state('');
   let searchMode = $state<'all' | 'pada'>('all');
@@ -69,9 +70,9 @@
     </div>
     <p class="mt-2 text-sm text-stone-500">
       {#if searchMode === 'pada'}
-        Search for sutras containing a specific word: गुण, प्रत्यय, आदेश
+        Search for sutras containing a specific word: <Sanskrit text="गुण" />, <Sanskrit text="प्रत्यय" />, <Sanskrit text="आदेश" />
       {:else}
-        Try: वृद्धि, guna, 1.1, संज्ञा
+        Try: <Sanskrit text="वृद्धि" />, guna, 1.1, <Sanskrit text="संज्ञा" />
       {/if}
     </p>
   </div>
