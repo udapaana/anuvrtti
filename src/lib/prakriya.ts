@@ -144,8 +144,9 @@ export async function initPrakriya(): Promise<boolean> {
       const module = await import(/* @vite-ignore */ wasmPath);
       vidyutModule = module as VidyutModule;
 
-      // Initialize the WASM binary
-      await module.initWasm();
+      // Initialize the WASM binary - pass explicit path since import.meta.url won't work correctly
+      const wasmBinaryPath = "/wasm/vidyut-prakriya/vidyut_prakriya_bg.wasm";
+      await module.initWasm(wasmBinaryPath);
 
       // Create the Vidyut instance
       vidyutInstance = new module.Vidyut();
