@@ -202,20 +202,23 @@ export async function deriveTinanta(
   purusha: Purusha,
   vacana: Vacana,
 ): Promise<Prakriya[]> {
-  if (!(await initPrakriya()) || !vidyutInstance) {
+  if (!(await initPrakriya()) || !vidyutInstance || !vidyutModule) {
     return [];
   }
 
   try {
+    // Use enum values from the module (not string keys)
+    const { Gana, Lakara, Prayoga, Purusha, Vacana } = vidyutModule;
+
     const results = vidyutInstance.deriveTinantas({
       dhatu: {
         aupadeshika: dhatuSlp1,
-        gana,
+        gana: Gana[gana],
       },
-      lakara,
-      prayoga,
-      purusha,
-      vacana,
+      lakara: Lakara[lakara],
+      prayoga: Prayoga[prayoga],
+      purusha: Purusha[purusha],
+      vacana: Vacana[vacana],
     });
 
     return results.map(toPrakriya);
@@ -238,16 +241,19 @@ export async function deriveSubanta(
   vibhakti: Vibhakti,
   vacana: Vacana,
 ): Promise<Prakriya[]> {
-  if (!(await initPrakriya()) || !vidyutInstance) {
+  if (!(await initPrakriya()) || !vidyutInstance || !vidyutModule) {
     return [];
   }
 
   try {
+    // Use enum values from the module (not string keys)
+    const { Linga, Vibhakti, Vacana } = vidyutModule;
+
     const results = vidyutInstance.deriveSubantas({
       pratipadika: { basic: pratipadikaSlp1 },
-      linga,
-      vibhakti,
-      vacana,
+      linga: Linga[linga],
+      vibhakti: Vibhakti[vibhakti],
+      vacana: Vacana[vacana],
     });
 
     return results.map(toPrakriya);
