@@ -8,6 +8,14 @@ estimatedTime: 2-3 hours
 prerequisites: []
 ---
 
+## About Anuvrtti
+
+**Key Terms:** anuvrtti
+
+@deva[अनुवृत्ति] means "continuation" or "carrying forward." Panini's sutras are extremely compressed—words from earlier rules implicitly continue into later ones until explicitly cancelled. When you see a sutra like @deva[तस्य लोपः] @ref[1.3.9], the word @deva[इत्] from @ref[1.3.2] carries forward, making the full meaning "the @deva[इत्] of that is elided." We show each sutra's full text with its @[anuvrtt]i filled in.
+
+---
+
 ## 1.1.1 - Vrddhi defined
 
 **Key Terms:** vRddi, AT, Ec

@@ -28,7 +28,7 @@
 
 <article class="bg-white rounded-lg border border-stone-200 overflow-hidden">
   <!-- Header -->
-  <header class="px-4 py-3 border-b border-stone-100 flex items-center justify-between">
+  <header class="px-4 py-3 border-b border-stone-100/50 flex items-center justify-between">
     <div class="flex items-center gap-3">
       <span class="text-sm font-mono text-stone-500">{sutra.id}</span>
       {#if sutra.type !== 'other'}
@@ -45,19 +45,23 @@
       <Sanskrit text={sutra.text} />
     </p>
 
-    {#if expanded && sutra.expanded && sutra.expanded !== sutra.text}
-      <div class="mt-3 pt-3 border-t border-stone-100">
-        <p class="text-sm text-stone-500 mb-1">With anuvrtti:</p>
-        <p class="text-lg text-stone-700">
-          <Sanskrit text={sutra.expanded} />
-        </p>
-      </div>
-    {/if}
   </div>
+
+  <!-- Expanded with anuvrtti -->
+  {#if expanded && sutra.expanded && sutra.expanded !== sutra.text}
+    <div class="px-4 py-3 border-t border-stone-100/50">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xs font-medium text-indigo-600 uppercase tracking-wide">With Anuvrtti</span>
+      </div>
+      <p class="text-stone-700 leading-relaxed">
+        <Sanskrit text={sutra.expanded} />
+      </p>
+    </div>
+  {/if}
 
   <!-- Anuvrtti references -->
   {#if sutra.anuvrtti.length > 0}
-    <div class="px-4 py-2 bg-stone-50 border-t border-stone-100">
+    <div class="px-4 py-2 bg-stone-50/50 border-t border-stone-100/50">
       <p class="text-xs text-stone-500 mb-1">Inherits from:</p>
       <div class="flex flex-wrap gap-2">
         {#each sutra.anuvrtti as ref}
@@ -75,17 +79,20 @@
 
   <!-- Commentary (if expanded) -->
   {#if expanded && commentary}
-    <div class="border-t border-stone-200">
+    <div class="border-t border-stone-100/50">
       {#if commentary.englishShort}
-        <div class="px-4 py-3 border-b border-stone-100">
+        <div class="px-4 py-3 border-b border-stone-100/50">
           <p class="text-sm text-stone-600"><MarkupText text={commentary.englishShort} /></p>
         </div>
       {/if}
 
       {#if commentary.kashika}
         <details class="group">
-          <summary class="px-4 py-2 text-sm font-medium text-stone-600 cursor-pointer hover:bg-stone-50">
-            Kashika Vrtti
+          <summary class="px-4 py-3 cursor-pointer hover:bg-stone-50 flex items-center gap-2">
+            <span class="text-xs font-medium text-emerald-700 uppercase tracking-wide">Kashika Vrtti</span>
+            <svg class="w-3 h-3 text-stone-400 group-open:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
           </summary>
           <div class="px-4 py-3 text-sm leading-relaxed bg-stone-50">
             <Sanskrit text={commentary.kashika} />
@@ -95,8 +102,11 @@
 
       {#if commentary.englishFull}
         <details class="group">
-          <summary class="px-4 py-2 text-sm font-medium text-stone-600 cursor-pointer hover:bg-stone-50">
-            Vasu's Translation
+          <summary class="px-4 py-3 cursor-pointer hover:bg-stone-50 flex items-center gap-2">
+            <span class="text-xs font-medium text-purple-700 uppercase tracking-wide">Vasu's Translation</span>
+            <svg class="w-3 h-3 text-stone-400 group-open:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
           </summary>
           <div class="px-4 py-3 text-sm leading-relaxed bg-stone-50 space-y-2">
             {#each commentary.englishFull.split('\n') as para}

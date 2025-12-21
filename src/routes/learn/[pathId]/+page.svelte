@@ -55,10 +55,17 @@
   async function loadStepData(step: LearningStep) {
     loading = true;
     try {
-      sutra = await getSutra(step.sutraId);
-      if (sutra) {
-        commentary = await getCommentary(sutra.numericId);
-        dependencies = await getDependencies(sutra.id);
+      // Conceptual steps don't have sutra data
+      if (step.sutraId === 'concept') {
+        sutra = undefined;
+        commentary = undefined;
+        dependencies = [];
+      } else {
+        sutra = await getSutra(step.sutraId);
+        if (sutra) {
+          commentary = await getCommentary(sutra.numericId);
+          dependencies = await getDependencies(sutra.id);
+        }
       }
     } catch (e) {
       console.error('Failed to load step data:', e);
@@ -185,6 +192,71 @@
               <div class="h-24 bg-stone-200 rounded"></div>
             </div>
           </div>
+        {:else if currentStep && currentStep.sutraId === 'concept'}
+          <!-- Conceptual step (no sutra) -->
+          <div class="space-y-6">
+            <div class="text-center py-6 bg-gradient-to-b from-indigo-50/50 to-transparent rounded-lg">
+              <div class="text-2xl font-medium">
+                {currentStep.title}
+              </div>
+            </div>
+
+            {#if currentStep.commentary}
+              <div class="bg-white rounded-lg border border-stone-200 overflow-hidden p-5">
+                <p class="text-stone-700 leading-relaxed">
+                  <CommentaryText text={currentStep.commentary} />
+                </p>
+              </div>
+            {/if}
+
+            <!-- Key terms -->
+            {#if currentStep.keyTerms && currentStep.keyTerms.length > 0}
+              <div class="flex flex-wrap gap-2 justify-center">
+                {#each currentStep.keyTerms as term}
+                  <span class="px-3 py-1 bg-stone-100 rounded-full text-sm text-stone-600">
+                    <Sanskrit text={term} source="slp1" />
+                  </span>
+                {/each}
+              </div>
+            {/if}
+
+            <!-- Navigation - large arrows -->
+            <div class="flex items-center justify-between pt-6">
+              <button
+                onclick={prevStep}
+                disabled={currentStepIndex === 0}
+                class="w-14 h-14 flex items-center justify-center rounded-full border-2 border-stone-200 text-stone-400 hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
+                aria-label="Previous"
+              >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <span class="text-sm text-stone-400">
+                {currentStepIndex + 1} / {path.steps.length}
+              </span>
+
+              <button
+                onclick={nextStep}
+                class="w-14 h-14 flex items-center justify-center rounded-full border-2 transition-colors
+                       {currentStepIndex === path.steps.length - 1
+                         ? 'border-green-500 bg-green-500 text-white hover:bg-green-600'
+                         : 'border-indigo-500 bg-indigo-500 text-white hover:bg-indigo-600'}"
+                aria-label={currentStepIndex === path.steps.length - 1 ? 'Complete' : 'Next'}
+              >
+                {#if currentStepIndex === path.steps.length - 1}
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                {:else}
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                {/if}
+              </button>
+            </div>
+          </div>
         {:else if currentStep && sutra}
           <div class="space-y-6">
             <!-- The sutra - hero element -->
@@ -202,7 +274,7 @@
 
             <!-- Meaning and Commentary - refined -->
             <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
-              <div class="p-5 border-b border-stone-100">
+              <div class="p-5 border-b border-stone-100/50">
                 <div class="flex items-center gap-2 mb-2">
                   <span class="text-xs font-medium text-indigo-600 uppercase tracking-wide">Meaning</span>
                 </div>
