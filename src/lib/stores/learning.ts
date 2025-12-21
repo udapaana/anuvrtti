@@ -2,8 +2,8 @@
  * Learning progress store
  * Tracks which paths and steps the user has completed
  */
-import { writable } from 'svelte/store';
-import { browser } from '$app/environment';
+import { writable } from "svelte/store";
+import { browser } from "$app/environment";
 
 export interface LearningProgress {
   completedPaths: string[];
@@ -16,12 +16,12 @@ const defaultProgress: LearningProgress = {
   completedPaths: [],
   pathProgress: {},
   currentPath: null,
-  currentStep: 0
+  currentStep: 0,
 };
 
 function loadProgress(): LearningProgress {
   if (!browser) return defaultProgress;
-  const stored = localStorage.getItem('anuvrtti-learning-progress');
+  const stored = localStorage.getItem("anuvrtti-learning-progress");
   if (stored) {
     try {
       return JSON.parse(stored);
@@ -37,8 +37,8 @@ function createLearningStore() {
 
   // Persist to localStorage on every update
   if (browser) {
-    subscribe(value => {
-      localStorage.setItem('anuvrtti-learning-progress', JSON.stringify(value));
+    subscribe((value) => {
+      localStorage.setItem("anuvrtti-learning-progress", JSON.stringify(value));
     });
   }
 
@@ -46,40 +46,62 @@ function createLearningStore() {
     subscribe,
 
     startPath(pathId: string) {
-      update(p => ({
+      update((p) => ({
         ...p,
         currentPath: pathId,
-        currentStep: p.pathProgress[pathId]?.length || 0
+        currentStep: p.pathProgress[pathId]?.length || 0,
       }));
     },
 
     completeStep(pathId: string, stepIndex: number) {
-      update(p => {
+      update((p) => {
+        const progress = p.pathProgress[pathId] || [];
+        // Ensure all steps up to and including stepIndex are marked complete
+        for (let i = 0; i <= stepIndex; i++) {
+          if (!progress.includes(i)) {
+            progress.push(i);
+          }
+        }
+        return {
+          ...p,
+          pathProgress: {
+            ...p.pathProgress,
+            [pathId]: progress.sort((a, b) => a - b),
+          },
+          currentStep: stepIndex + 1,
+        };
+      });
+    },
+
+    completePath(pathId: string) {
+      update((p) => ({
+        ...p,
+        completedPaths: p.completedPaths.includes(pathId)
+          ? p.completedPaths
+          : [...p.completedPaths, pathId],
+        currentPath: null,
+        currentStep: 0,
+      }));
+    },
+
+    goToStep(stepIndex: number) {
+      update((p) => ({ ...p, currentStep: stepIndex }));
+    },
+
+    markStepComplete(pathId: string, stepIndex: number) {
+      update((p) => {
         const progress = p.pathProgress[pathId] || [];
         if (!progress.includes(stepIndex)) {
           progress.push(stepIndex);
         }
         return {
           ...p,
-          pathProgress: { ...p.pathProgress, [pathId]: progress },
-          currentStep: stepIndex + 1
+          pathProgress: {
+            ...p.pathProgress,
+            [pathId]: progress.sort((a, b) => a - b),
+          },
         };
       });
-    },
-
-    completePath(pathId: string) {
-      update(p => ({
-        ...p,
-        completedPaths: p.completedPaths.includes(pathId)
-          ? p.completedPaths
-          : [...p.completedPaths, pathId],
-        currentPath: null,
-        currentStep: 0
-      }));
-    },
-
-    goToStep(stepIndex: number) {
-      update(p => ({ ...p, currentStep: stepIndex }));
     },
 
     reset() {
@@ -88,7 +110,7 @@ function createLearningStore() {
 
     isStepCompleted(pathId: string, stepIndex: number): boolean {
       let result = false;
-      subscribe(p => {
+      subscribe((p) => {
         result = p.pathProgress[pathId]?.includes(stepIndex) || false;
       })();
       return result;
@@ -96,11 +118,11 @@ function createLearningStore() {
 
     getPathProgress(pathId: string): number {
       let completed = 0;
-      subscribe(p => {
+      subscribe((p) => {
         completed = p.pathProgress[pathId]?.length || 0;
       })();
       return completed;
-    }
+    },
   };
 }
 

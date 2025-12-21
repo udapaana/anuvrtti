@@ -1,6 +1,6 @@
 ---
 id: kridanta-kta-ktavatu
-title: Past Participles (Kta/Ktavatu)
+title: Past Participles
 titleSanskrit: क्तक्तवतू
 description: Derive past passive participle (kta) and past active participle (ktavatu). Essential forms for describing completed actions.
 difficulty: intermediate
@@ -10,88 +10,72 @@ prerequisites:
   - dhatu-ganas
 ---
 
-## 3.2.102 - Niṣṭhā
+## @ref[3.2.102] - निष्ठा
 
-**Key Terms:** nizWA, kta, ktavatu
+**Key Terms:** @deva[निष्ठा], @deva[क्त], @deva[क्तवतु]
 
-The term 'niṣṭhā' covers both kta and ktavatu suffixes. Past participial forms.
-
----
-
-## 3.4.114 - Bhāve ktaḥ
-
-**Key Terms:** BAve, kta
-
-The suffix 'kta' primarily expresses bhāva (abstract action) or karma (object). "kṛtam" = done.
+The affixes called @deva[निष्ठा] come after a verbal root used in the sense of past time. @deva[कृ] + @deva[क्त] = @deva[कृतम्] "made"; @deva[कृ] + @deva[क्तवतु] = @deva[कृतवान्] "one who made." Also @deva[भुक्तम्], @deva[भुक्तवान्] "eaten."
 
 ---
 
-## 3.4.72 - Kartuḥ ktavatu
+## @ref[3.4.114] - आर्धधातुकं शेषः
 
-**Key Terms:** kartuH, ktavatu
+**Key Terms:** @deva[आर्धधातुक], @deva[क्त]
 
-The suffix 'ktavatu' (= -tavat) expresses the agent of completed action. "kṛtavān" = one who did.
-
----
-
-## 7.2.14 - Ḍato'nityasya...
-
-**Key Terms:** Ta, iT, kta
-
-The augment 'iṭ' is added before kta after certain roots. "patitam, gatam."
+Affixes other than @deva[तिङ्] and those with indicatory @deva[श्] are called @deva[आर्धधातुक]. @deva[तृ], @deva[तुम्], @deva[तव्य], @deva[क्त], @deva[क्तवतु] are @deva[आर्धधातुक]. @deva[लविता], @deva[लवितुम्], @deva[लवितव्यम्].
 
 ---
 
-## 7.2.16 - Ato'dantād ḍaḥ
+## @ref[3.4.72] - गत्यर्थाकर्मकश्लिषशीङ्स्थाऽऽसवसजनरुहजीर्यतिभ्यश्च
 
-**Key Terms:** at, Ta, kta
+**Key Terms:** @deva[क्त], @deva[कर्तृ], @deva[गति]
 
-After roots ending in 'at', the 'ṭ' of kta changes to 'ḍ'. Creates "-na" forms.
-
----
-
-## 6.4.52 - Niṣṭhātasya na se
-
-**Key Terms:** nizWA, ta, na
-
-In niṣṭhā, the 't' of certain roots becomes 'n'. "glāna" not "*glāta".
+The affix @deva[क्त] denotes the agent as well as act and object after verbs of motion, intransitive roots, and @deva[श्लिष्], @deva[शी], @deva[स्था], @deva[आस्], @deva[वस्], @deva[जन्], @deva[रुह्], @deva[जृ]. @deva[गतः] "one who went."
 
 ---
 
-## 8.2.42 - Ṛduraśi...
+## @ref[7.2.14] - श्वीदितो निष्ठायाम्
 
-**Key Terms:** Ft, uz, kta
+**Key Terms:** @deva[श्वि], @deva[ईदित्], @deva[इट्]
 
-After roots in 'ṛ/ṝ', kta becomes "-ṛta". Creates forms like "kṛta, smṛta."
-
----
-
-## 7.2.24 - Arditah...
-
-**Key Terms:** ardit, kta
-
-Roots marked 'ardit' optionally take 'iṭ'. Allows variant forms.
+The participial affixes @deva[क्त] and @deva[क्तवतु] do not get @deva[इट्] after @deva[श्वि] and roots with indicatory @deva[ई]. @deva[शूनः], @deva[लग्नः], @deva[उद्विग्नः].
 
 ---
 
-## 6.4.64 - Āto lopa iṭi ca
+## @ref[8.2.42] - रदाभ्यां निष्ठातो नः पूर्वस्य च दः
 
-**Key Terms:** At, lopa, iT
+**Key Terms:** @deva[र], @deva[द], @deva[न]
 
-Final 'ā' of a root is deleted when 'iṭ' follows. "dā + i + ta = datta."
-
----
-
-## 1.2.26 - Kartari ktaḥ
-
-**Key Terms:** kartari, kta
-
-Sometimes kta expresses kartr̥ (agent) sense in intransitive verbs. "gataḥ" = one who went.
+After @deva[र] and @deva[द], the @deva[त] of @deva[निष्ठा] becomes @deva[न], and preceding @deva[द] also becomes @deva[न]. After @deva[र]: @deva[आस्तीर्णम्], @deva[विस्तीर्णम्]. After @deva[द]: @deva[भिन्नः], @deva[छिन्नः] from @deva[भिद्], @deva[छिद्].
 
 ---
 
-## 6.1.15 - Vacivapivadāṁ...
+## @ref[6.4.64] - आतो लोप इटि च
 
-**Key Terms:** vac, vap, kta
+**Key Terms:** @deva[आ], @deva[लोप], @deva[इट्]
 
-Roots vac, vap show samprasāraṇa before kta. "ukta, upta."
+The final @deva[आ] of a root is elided before an @deva[आर्धधातुक] affix with @deva[इट्] or beginning with a vowel having indicatory @deva[क्] or @deva[ङ्]. @deva[पपिथ], @deva[तस्थिथ]; @deva[पपतुः], @deva[तस्थुः].
+
+---
+
+## @ref[6.1.15] - वचिस्वपियजादीनां किति
+
+**Key Terms:** @deva[वच्], @deva[स्वप्], @deva[सम्प्रसारण]
+
+The semi-vowels of @deva[वच्], @deva[स्वप्], and @deva[यजादि] verbs are vocalized before affixes with indicatory @deva[क्]. @deva[वच्] → @deva[उक्तम्], @deva[वप्] → @deva[उप्तम्].
+
+---
+
+## @ref[6.4.52] - निष्ठायां सेटि
+
+**Key Terms:** @deva[णि], @deva[निष्ठा], @deva[इट्]
+
+The affix @deva[णि] is elided before @deva[क्त] and @deva[क्तवतु] when these take the augment @deva[इट्]. @deva[कारितम्], @deva[हारितम्], @deva[गणितम्].
+
+---
+
+## @ref[7.3.84] - सार्वधातुकार्धधातुकयोः
+
+**Key Terms:** @deva[गुण], @deva[क्त]
+
+@deva[गुण] substitutes for the final @deva[इक्] of a stem before @deva[आर्धधातुक] affixes. But @deva[क्त] and @deva[क्तवतु] are @deva[कित्], preventing @deva[गुण]: @deva[भुक्त] not \*@deva[भोक्त].

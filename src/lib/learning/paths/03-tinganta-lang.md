@@ -1,8 +1,8 @@
 ---
 id: tinganta-lang
-title: Imperfect (Lang Lakara)
+title: Imperfect
 titleSanskrit: लङ्लकारः
-description: Derive past imperfect tense forms. Learn the augment 'a' and how past tenses are marked in Paninian grammar.
+description: Derive past imperfect forms with the augment अ.
 difficulty: beginner
 estimatedTime: 2-3 hours
 prerequisites:
@@ -13,23 +13,23 @@ prerequisites:
 
 **Key Terms:** anadyatane, laN
 
-The suffix 'laṅ' expresses past action not of today (anadyatana). This is the imperfect tense.
+@deva[लङ्] comes after a root for past action not of today. @deva[अनद्यतन] means "not during the current day." @deva[अकरोत्] "he did"; @deva[अहरत्] "he took."
 
 ---
 
-## 6.4.71 - Luṅlaṅlr̥ṅṣv aḍ udāttaḥ
+## 6.4.71 - Luṅlaṅlṛṅṣv aḍ udāttaḥ
 
 **Key Terms:** aT, udAttaH, laN
 
-The augment 'aṭ' (= 'a') is prefixed to the dhātu in laṅ, luṅ, and lr̥ṅ. This 'a' marks past tense.
+@deva[अट्] augments the verbal stem in @deva[लुङ्], @deva[लङ्], and @deva[लृङ्]. @deva[अकार्षीत्], @deva[अकरोत्], @deva[अहरत्].
 
 ---
 
 ## 3.4.100 - Itaś ca
 
-**Key Terms:** itaH, ca, laN
+**Key Terms:** itaH, ca, lopa
 
-In laṅ (and other past tenses), the endings undergo 'it' substitutions. The 'i' of endings is handled specially.
+The @deva[इ] of @deva[परस्मैपद] endings is elided when they substitute for a @deva[ल] with indicatory @deva[ङ्]. Thus @deva[ति] becomes @deva[त्], @deva[सि] becomes @deva[स्]. @deva[आत्मनेपद] @deva[इ] is not elided: @deva[अपचावहि], @deva[अपचामहि].
 
 ---
 
@@ -37,31 +37,31 @@ In laṅ (and other past tenses), the endings undergo 'it' substitutions. The 'i
 
 **Key Terms:** tas, Tas, TAm, mip
 
-The endings tas, thas, tha, mip are replaced by tām, tam, ta, am respectively in laṅ. Key ending transformations.
+@deva[ताम्], @deva[तम्], @deva[त], @deva[आम्] replace @deva[तस्], @deva[थस्], @deva[थ], @deva[मिप्] for @deva[ल] with indicatory @deva[ङ्]. @deva[अपचताम्], @deva[अपचतम्], @deva[अपचत], @deva[अपचम्].
 
 ---
 
-## 3.4.102 - Jherjus
+## 3.4.108 - Jherjus
 
 **Key Terms:** JeH, jus
 
-The ending 'jhi' (3rd plural P) is replaced by 'jus' (→ 'an') in laṅ. So 'bhavanti' becomes 'abhavan'.
+@deva[जुस्] replaces @deva[झि] (3rd plural P) in @deva[लिङ्] and @deva[लङ्]. This blocks @deva[अन्त] @ref[7.1.3]. @deva[पचेयुः], @deva[अपचन्].
 
 ---
 
-## 7.2.79 - Liṅāśiṣi
+## 6.4.72 - Āḍ ajādīnām
 
-**Key Terms:** liN, ASizi
+**Key Terms:** AT, ajAdi
 
-In liṅ lakāra expressing wishes (āśīḥ), specific ending changes occur. Distinguishes optative from potential.
+@deva[आट्] augments stems beginning with a vowel in @deva[लुङ्], @deva[लङ्], @deva[लृङ्]. @deva[ऐक्षत], @deva[ऐज्यत]. @deva[वृद्धि] occurs by @ref[6.1.90].
 
 ---
 
-## 6.4.72 - Āḍajādīnām
+## 7.2.79 - Liṅaḥ salopah
 
-**Key Terms:** AT, ajAdInAm
+**Key Terms:** liNaH, salopaH
 
-When the dhātu begins with a vowel, the augment 'āṭ' (long ā) is used instead of 'aṭ'. Maintains vowel sandhi.
+The @deva[स्] of non-final positions is elided in @deva[लिङ्]. This converts @deva[यास्] to @deva[या] in the optative.
 
 ---
 
@@ -69,4 +69,4 @@ When the dhātu begins with a vowel, the augment 'āṭ' (long ā) is used inste
 
 **Key Terms:** aH, aH
 
-Two short 'a' vowels in proximity coalesce. Basic sandhi rule applying to augmented forms.
+Two short @deva[अ] in proximity interact. Basic @deva[सन्धि] rule for augmented forms.

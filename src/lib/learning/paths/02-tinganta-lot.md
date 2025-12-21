@@ -1,8 +1,8 @@
 ---
 id: tinganta-lot
-title: Imperative (Lot Lakara)
+title: Imperative
 titleSanskrit: लोट्लकारः
-description: Derive imperative (command) forms. Building on laṭ, you'll see how lakāras share structure but differ in endings.
+description: Derive imperative forms for commands, invitations, and blessings.
 difficulty: beginner
 estimatedTime: 2-3 hours
 prerequisites:
@@ -13,7 +13,7 @@ prerequisites:
 
 **Key Terms:** loT, viDi
 
-The suffix 'loṭ' expresses commands, requests, and benedictions (āśīḥ). This is the imperative mood.
+@deva[लोट्] comes after a root for commands and related senses. @deva[कटं] @deva[भवान्] @deva[करोतु] "make the mat"; @deva[अमुत्र] @deva[भवान्] @deva[आस्ताम्] "you may sit there."
 
 ---
 
@@ -21,7 +21,7 @@ The suffix 'loṭ' expresses commands, requests, and benedictions (āśīḥ). T
 
 **Key Terms:** loTaH, laNvat
 
-Loṭ endings undergo the same substitutions as laṅ endings. This links the imperative to the imperfect system.
+@deva[लोट्] endings are like @deva[लङ्] endings. Thus @deva[ताम्], @deva[तम्], @deva[त], @deva[व], @deva[म] appear: @deva[पचताम्], @deva[पचतम्], @deva[पचत]. The analogy is limited—@deva[अट्] augment and @deva[जुस्] substitution don't apply.
 
 ---
 
@@ -29,44 +29,44 @@ Loṭ endings undergo the same substitutions as laṅ endings. This links the im
 
 **Key Terms:** eH, uH
 
-In loṭ, the 'e' of the endings is replaced by 'u'. So 'te' becomes 'tu', 'se' becomes 'su'.
+In @deva[लोट्], @deva[उ] replaces @deva[इ]. Thus @deva[ति] becomes @deva[तु], @deva[अन्ति] becomes @deva[अन्तु]. Exception: @deva[हि] and @deva[नि] keep their @deva[इ].
 
 ---
 
 ## 3.4.87 - Ser hy apic ca
 
-**Key Terms:** seH, hi
+**Key Terms:** seH, hi, apit
 
-The 'si' ending (2nd singular P) becomes 'hi' in loṭ. Hence 'bhavasi' → 'bhava' (with hi dropped after 'a').
+In @deva[लोट्], @deva[हि] replaces @deva[सि], and this @deva[हि] is not @deva[पित्]. Being @deva[अपित्], it becomes @deva[ङित्] by @ref[1.2.4], preventing @deva[गुण]: @deva[लुनीहि], @deva[पुनीहि].
 
 ---
 
-## 3.4.88 - Svādiṣu sārvadhātuke ṣṭhāluṅ
+## 3.4.88 - Vā chandasi
 
-**Key Terms:** svAdiSu, sArvaDAtukaH
+**Key Terms:** vA, Candasi
 
-Before sārvadhātuka affixes beginning with certain sounds, specific changes occur. Governs consonant modifications.
+In @deva[छन्दस्], @deva[हि] optionally keeps @deva[पित्] behavior. Thus @deva[प्रीणाहि] or @deva[प्रीणीहि]; @deva[युयुधि] or @deva[युयोधि].
 
 ---
 
 ## 6.4.105 - Ato heḥ
 
-**Key Terms:** ataH, heH
+**Key Terms:** ataH, heH, lopa
 
-After a stem ending in 'a', the 'hi' of loṭ is deleted. So 'bhava + hi' → 'bhava'.
+After a stem ending in short @deva[अ], @deva[हि] is elided. @deva[पच], @deva[पठ], @deva[गच्छ]. But not after @deva[उ]: @deva[युहि], @deva[रुहि]. Not after long @deva[आ]: @deva[लुनीहि].
 
 ---
 
-## 3.4.89 - Māṅ loṭi
+## 3.4.89 - Mā loṭi
 
 **Key Terms:** mAN, loTi
 
-The particle 'mā' is used with loṭ lakāra for prohibitions (mā bhūḥ = don't be). Negative commands.
+The particle @deva[मा] with @deva[लोट्] expresses prohibition. @deva[मा] @deva[भूत्] "don't be."
 
 ---
 
-## 7.1.35 - Tuhyostātaṅ āśiṣi
+## 7.1.35 - Tuhyos tātaṅ āśiṣi
 
 **Key Terms:** tu, hi, tAtaN, ASizi
 
-In benedictions (āśīḥ), 'tu' and 'hi' endings are optionally replaced by 'tāt'. Formal blessing forms.
+In benediction, @deva[तातङ्] optionally replaces @deva[तु] and @deva[हि]. @deva[जीवताद्] @deva[भवान्] or @deva[जीवतु] @deva[भवान्]; @deva[जीवतात्] @deva[त्वम्] or @deva[जीव] @deva[त्वम्]. The @deva[ङ्] prevents @deva[गुण] and @deva[वृद्धि].

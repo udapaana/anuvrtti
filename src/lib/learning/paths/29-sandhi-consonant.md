@@ -1,6 +1,6 @@
 ---
 id: sandhi-consonant
-title: Consonant Sandhi (Hal Sandhi)
+title: Consonant Sandhi
 titleSanskrit: हल्सन्धिः
 description: Master consonant junction rules. How stops, nasals, and other consonants interact at boundaries.
 difficulty: intermediate
@@ -9,88 +9,72 @@ prerequisites:
   - sandhi-vowel
 ---
 
-## 8.4.40 - Stoḥ ścunā ścuḥ
+## @ref[8.4.40] - स्तोः श्चुना श्चुः
 
-**Key Terms:** stu, Scu, Scu
+**Key Terms:** @deva[स्तु], @deva[श्चु]
 
-Before palatals (c, ch, j, jh, ñ), dentals become palatals. "sat + cit = saccit."
-
----
-
-## 8.4.41 - Ṣṭunā ṣṭuḥ
-
-**Key Terms:** ztu, ztu
-
-Before retroflexes (ṭ, ṭh, ḍ, ḍh, ṇ), dentals become retroflexes. "tat + ṭīkā = taṭṭīkā."
+@deva[स्] and dentals, when contacting @deva[श्] and palatals, become @deva[श्] and palatals respectively. @deva[सत्] + @deva[चित्] = @deva[सच्चित्], @deva[तत्] + @deva[जय] = @deva[तज्जय].
 
 ---
 
-## 8.4.53 - Jhalāṁ jaś jhaśi
+## @ref[8.4.41] - ष्टुना ष्टुः
 
-**Key Terms:** Jal, jaS, JaS
+**Key Terms:** @deva[ष्टु]
 
-Before voiced non-aspirates, stops voice. "vāk + ghāta = vāg ghāta."
-
----
-
-## 8.4.54 - Abhyāse car ca
-
-**Key Terms:** aBvyAsa, car
-
-In reduplication, voiced aspirates become voiced non-aspirates.
+@deva[स्] and dentals, when contacting @deva[ष्] and retroflexes, become @deva[ष्] and retroflexes respectively. @deva[तत्] + @deva[टीका] = @deva[तट्टीका].
 
 ---
 
-## 8.4.55 - Khari ca
+## @ref[8.4.53] - झलां जश् झशि
 
-**Key Terms:** Kar
+**Key Terms:** @deva[झल्], @deva[जश्], @deva[झश्]
 
-Before voiceless sounds, voiced stops become voiceless. "vāg + ca = vāk ca."
-
----
-
-## 8.2.30 - Coḥ kuḥ
-
-**Key Terms:** cu, ku, pada
-
-Word-final palatals (c, j) become velars (k, g). "vāc → vāk."
+For @deva[झल्] letters, @deva[जश्] letters substitute when @deva[झश्] letters follow. A mute becomes a voiced non-aspirate before a voiced mute. @deva[लभ्] + @deva[ता] = @deva[लब्धा].
 
 ---
 
-## 8.2.39 - Jhalaṁ jaśo'nte
+## @ref[8.4.55] - खरि च
 
-**Key Terms:** Jal, jaS, ante
+**Key Terms:** @deva[झल्], @deva[चर्], @deva[खर्]
 
-Word-finally, aspirated stops lose aspiration. "labh → lab (→ lap before voiceless)."
-
----
-
-## 8.4.45 - Yaro'nunāsike'nunāsiko vā
-
-**Key Terms:** yar, anunAsika, vA
-
-Before nasals, stops optionally become nasal. "vāk + mātram = vāṅ mātram."
+For @deva[झल्], @deva[चर्] substitutes when @deva[खर्] follows. A voiced mute becomes voiceless before a voiceless consonant. @deva[भेद्] + @deva[ता] = @deva[भेत्ता].
 
 ---
 
-## 8.3.23 - Mo'nusvāraḥ
+## @ref[8.2.30] - चोः कुः
 
-**Key Terms:** ma, anusvAra
+**Key Terms:** @deva[चु], @deva[कु], @deva[पद]
 
-Final 'm' becomes anusvāra before consonants. "phalam + karoti = phalaṁ karoti."
-
----
-
-## 8.4.58 - Anusvārasya yayi parasavarṇaḥ
-
-**Key Terms:** anusvAra, yay, parasavarRa
-
-Anusvāra before stops becomes homorganic nasal. "saṁkhyā = saṅkhyā."
+A guttural substitutes for a palatal before @deva[झल्] or at word-end. @deva[पच्] → @deva[पक्ता], @deva[वच्] → @deva[वाक्].
 
 ---
 
-## 8.4.2 - Aṭkupvāṅnumyāccalācāṁ pratyaye
+## @ref[8.2.39] - झलां जशोऽन्ते
 
-**Key Terms:** aT, Nit, pratyaya
+**Key Terms:** @deva[झल्], @deva[जश्], @deva[अन्त]
 
-'N' becomes retroflex 'ṇ' after r/ṣ with intervening aṭ-sounds. Ṇatva rule.
+A corresponding @deva[जश्] (@deva[ज], @deva[ब], @deva[ग], @deva[ड], @deva[द]) substitutes for all @deva[झल्] consonants at word-end. @deva[वाच्] → @deva[वाग्], @deva[अग्निचित्] → @deva[अग्निचिद्].
+
+---
+
+## @ref[8.4.45] - यरोऽनुनासिकेऽनुनासिको वा
+
+**Key Terms:** @deva[यर्], @deva[अनुनासिक], @deva[वा]
+
+For a word-final @deva[यर्] letter before a nasal, there is optionally a nasal substitute. @deva[वाक्] + @deva[नयति] = @deva[वाग्नयति] or @deva[वाङ्नयति].
+
+---
+
+## @ref[8.4.2] - अट्कुप्वाङ्नुम्व्यवायेऽपि
+
+**Key Terms:** @deva[अट्], @deva[ण], @deva[न]
+
+@deva[ण्] substitutes for @deva[न्] when @deva[र्] or @deva[ष्] precedes, even with intervening @deva[अट्] (vowels, @deva[ह्], @deva[य्], @deva[व्]), gutturals, labials, @deva[आङ्], or @deva[नुम्]. @deva[करणम्], @deva[ब्राह्मण].
+
+---
+
+## @ref[8.3.23] - मोऽनुस्वारः
+
+**Key Terms:** @deva[म], @deva[अनुस्वार]
+
+@deva[अनुस्वार] substitutes for word-final @deva[म्] before consonants. @deva[फलम्] + @deva[करोति] = @deva[फलं करोति].

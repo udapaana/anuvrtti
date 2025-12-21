@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { searchTerms, getCategories, type Term, type TermCategory } from '$lib/jargon';
+  import { searchTerms, getCategories, lookupTerm, type Term, type TermCategory } from '$lib/jargon';
+  import { selectedTerm as selectedTermStore } from '$lib/stores/jargon';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
 
   let query = $state('');
@@ -8,6 +9,28 @@
   let selectedCategory = $state<TermCategory | null>(null);
 
   const categories = getCategories();
+
+  // Listen for external term selection (from CommentaryText clicks)
+  $effect(() => {
+    const unsubscribe = selectedTermStore.subscribe(termQuery => {
+      if (termQuery) {
+        const found = lookupTerm(termQuery);
+        if (found) {
+          selectedTerm = found;
+          query = '';
+          selectedCategory = null;
+          results = [];
+        } else {
+          // If not found, put it in the search box
+          query = termQuery;
+          handleSearch();
+        }
+        // Clear the store after handling
+        selectedTermStore.set('');
+      }
+    });
+    return unsubscribe;
+  });
 
   function handleSearch() {
     if (query.trim()) {

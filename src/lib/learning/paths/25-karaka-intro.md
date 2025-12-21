@@ -9,96 +9,96 @@ prerequisites:
   - subanta-pratipadika
 ---
 
-## 1.4.23 - Kārakaṁ karoti yaḥ
+## @ref[1.4.23] - कारके
 
-**Key Terms:** kAraka, karoti
+**Key Terms:** @deva[कारक], @deva[क्रिया]
 
-A karaka is that which brings about (karoti) the action. The participant roles in verbal action.
-
----
-
-## 1.4.24 - Dhruvam apāye'pādānam
-
-**Key Terms:** Druva, apAya, apAdAna
-
-Apādāna (source/ablative) is the fixed point from which separation occurs. "grāmāt āgacchati."
+The phrase @deva[कारक] governs the following rules. Anything that helps accomplish an action is a @deva[कारक]—fire, furnace, vessel, cook all help in the act of cooking.
 
 ---
 
-## 1.4.32 - Karmaṇā yam abhipraiti sa sampradānam
+## @ref[1.4.54] - स्वतन्त्रः कर्ता
 
-**Key Terms:** karma, aBipraiti, sampradAna
+**Key Terms:** @deva[स्वतन्त्र], @deva[कर्तृ]
 
-Sampradāna (recipient/dative) is that which the agent intends to reach through the action. "bālakāya dadāti."
-
----
-
-## 1.4.42 - Sādhakatamaṁ karaṇam
-
-**Key Terms:** sADakatamam, karaNa
-
-Karaṇa (instrument) is the most effective means of accomplishing the action. "daṇḍena hanti."
+Whatever the speaker chooses as the independent, principal, and absolute source of action is called @deva[कर्ता]. @deva[देवदत्तः पचति] "Devadatta cooks." @deva[स्थाली पचति] "the pot cooks."
 
 ---
 
-## 1.4.45 - Ādhāro'dhikaraṇam
+## @ref[1.4.49] - कर्तुरीप्सिततमं कर्म
 
-**Key Terms:** ADAra, aDikaraNa
+**Key Terms:** @deva[कर्तृ], @deva[ईप्सिततम], @deva[कर्मन्]
 
-Adhikaraṇa (locus/locative) is the location or support of the action. "ghare tiṣṭhati."
-
----
-
-## 1.4.49 - Karturīpsitatamaṁ karma
-
-**Key Terms:** kartF, Ipsitatamam, karma
-
-Karma (object) is what the agent most desires to attain through the action. "grāmaṁ gacchati."
+That which the agent especially desires to accomplish through the action is called @deva[कर्मन्]. @deva[कटं करोति] "he makes the mat." @deva[ग्रामं गच्छति] "he goes to the village."
 
 ---
 
-## 1.4.54 - Svatantraḥ kartā
+## @ref[1.4.42] - साधकतमं करणम्
 
-**Key Terms:** svatantra, kartF
+**Key Terms:** @deva[साधकतम], @deva[करण]
 
-Kartṛ (agent) is the independent actor. The one who controls the action.
-
----
-
-## 2.3.1 - Anabhihite
-
-**Key Terms:** anaBihite, kAraka
-
-Vibhaktis (case endings) express karakas when not already expressed by the verb.
+That which is especially auxiliary in accomplishing the action is called @deva[करण]. @deva[दात्रेण लुनाति] "he cuts with the sickle." @deva[परशुना छिनत्ति] "he divides with the axe."
 
 ---
 
-## 2.3.2 - Karmapravacanīyayukte dvitīyā
+## @ref[1.4.32] - कर्मणा यमभिप्रैति स सम्प्रदानम्
 
-**Key Terms:** karmapravacanIya, dvitIyA
+**Key Terms:** @deva[कर्मन्], @deva[अभिप्रैति], @deva[सम्प्रदान]
 
-The second case (accusative) is used with karmapravacanīya (certain particles).
-
----
-
-## 2.3.18 - Kartṛkaraṇayos tṛtīyā
-
-**Key Terms:** kartF, karaNa, tFtIyA
-
-The third case (instrumental) expresses kartṛ (in passive) and karaṇa (means).
+The person whom one wishes to connect with the object of giving is called @deva[सम्प्रदान]. @deva[उपाध्यायाय गां ददाति] "he gives the cow to the teacher."
 
 ---
 
-## 2.3.28 - Apādāne pañcamī
+## @ref[1.4.24] - ध्रुवमपायेऽपादानम्
 
-**Key Terms:** apAdAna, paJcamI
+**Key Terms:** @deva[ध्रुव], @deva[अपाय], @deva[अपादान]
 
-The fifth case (ablative) expresses apādāna (source of separation).
+A noun whose relation to action is that of a fixed point from which departure takes place is called @deva[अपादान]. @deva[ग्रामादागच्छति] "he comes from the village." @deva[पर्वतादवरोहति] "he descends from the mountain."
 
 ---
 
-## 2.3.36 - Ṣaṣṭhī śeṣe
+## @ref[1.4.45] - आधारोऽधिकरणम्
 
-**Key Terms:** zazWI, Seze
+**Key Terms:** @deva[आधार], @deva[अधिकरण]
 
-The sixth case (genitive) expresses remaining relations not covered by other cases.
+That which is the site where the action is performed is called @deva[अधिकरण]. @deva[कटे आस्ते] "he sits on the mat." @deva[स्थाल्यां पचति] "he cooks in the pot."
+
+---
+
+## @ref[2.3.1] - अनभिहिते
+
+**Key Terms:** @deva[अनभिहित], @deva[कारक]
+
+The word @deva[अनभिहित] "not being specified" governs the following rules. Case-affixes apply to nouns only when the case meaning is not otherwise denoted by the verb ending.
+
+---
+
+## @ref[2.3.2] - कर्मणि द्वितीया
+
+**Key Terms:** @deva[कर्मन्], @deva[द्वितीया]
+
+When the object is not denoted by the verb termination, the 2nd case-affix is used. @deva[कटं करोति] "he makes the mat." @deva[ग्रामं गच्छति] "he goes to the village."
+
+---
+
+## @ref[2.3.18] - कर्तृकरणयोस्तृतीया
+
+**Key Terms:** @deva[कर्तृ], @deva[करण], @deva[तृतीया]
+
+In denoting agent or instrument, the 3rd case is used. @deva[देवदत्तेन कृतम्] "done by Devadatta." @deva[दात्रेण लुनाति] "he cuts with the sickle."
+
+---
+
+## @ref[2.3.28] - अपादाने पञ्चमी
+
+**Key Terms:** @deva[अपादान], @deva[पञ्चमी]
+
+When @deva[अपादान] @deva[कारक] is denoted, the 5th case-affix is used. @deva[ग्रामादागच्छति] "he comes from the village."
+
+---
+
+## @ref[2.3.36] - सप्तम्यधिकरणे च
+
+**Key Terms:** @deva[सप्तमी], @deva[अधिकरण]
+
+The 7th case expresses @deva[अधिकरण] and other relations. @deva[कटे आस्ते] "he sits on the mat."

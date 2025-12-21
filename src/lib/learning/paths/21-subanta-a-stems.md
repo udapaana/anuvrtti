@@ -1,6 +1,6 @@
 ---
 id: subanta-a-stems
-title: A-stem Declension (Ajanta Pum/Napum)
+title: A-stem Declension
 titleSanskrit: अकारान्तपुंनपुंसकम्
 description: Master the most common declension - masculine and neuter a-stems like deva, phala. The paradigm foundation.
 difficulty: beginner
@@ -9,88 +9,72 @@ prerequisites:
   - subanta-pratipadika
 ---
 
-## 7.1.9 - Ato bhisa ais
+## @ref[7.1.9] - अतो भिस ऐस्
 
-**Key Terms:** at, Bis, Es
+**Key Terms:** @deva[अत्], @deva[भिस्], @deva[ऐस्]
 
-After a-stems, the ending 'bhis' (I.pl) becomes 'ais'. "devais" not "*devabhis."
-
----
-
-## 7.3.102 - Supi ca
-
-**Key Terms:** sup, at, o
-
-Before certain sup endings, 'a' becomes 'o'. Affects genitive/locative dual.
+After a nominal stem ending in @deva[अ], @deva[ऐस्] substitutes for the case-ending @deva[भिस्] (I.pl). @deva[वृक्षैः], @deva[देवैः] not \*@deva[देवभिः].
 
 ---
 
-## 7.3.103 - Bahuvacane jhaly et
+## @ref[7.3.102] - सुपि च
 
-**Key Terms:** bahuvacanam, Jal, et
+**Key Terms:** @deva[सुप्], @deva[अत्], @deva[ओ]
 
-In plural, before jhal-initial endings, 'a' becomes 'e'. "devebhyaḥ."
-
----
-
-## 7.1.12 - Ṭāṅasi ṅasāminām...
-
-**Key Terms:** NAsim, at
-
-The endings ṭā, ṅasi, ṅasāminam have special forms after a-stems.
+Before certain @deva[सुप्] endings, @deva[अ] becomes @deva[ओ]. Affects genitive/locative dual: @deva[देवयोः].
 
 ---
 
-## 7.3.105 - Ṅisi ca
+## @ref[7.3.103] - बहुवचने झल्येत्
 
-**Key Terms:** Nisi, at, Au
+**Key Terms:** @deva[बहुवचन], @deva[झल्], @deva[एत्]
 
-Before ṅi (L.sg), 'a' becomes 'e'. "deve" (in the god).
-
----
-
-## 6.1.102 - Prathamayoḥ pūrvasavarṇam
-
-**Key Terms:** praTama, pUrva, savarRa
-
-In N.sg and V.sg, vowel sandhi applies between stem and ending.
+In plural, before @deva[झल्]-initial endings (@deva[भ्यस्], @deva[सुप्]), @deva[अ] becomes @deva[ए]. @deva[देवेभ्यः], @deva[देवेषु].
 
 ---
 
-## 7.1.24 - Ato'nupasarge kaḥ
+## @ref[7.3.105] - आङि चापः
 
-**Key Terms:** at, ka, sambodhana
+**Key Terms:** @deva[आङ्], @deva[ए]
 
-In vocative singular, a-stems take special treatment. "he deva."
-
----
-
-## 7.1.20 - Jaśśasau śiḥ
-
-**Key Terms:** Jas, Sas, Si
-
-The N.pl ending 'jas' and A.pl 'śas' become 'śi' after certain stems.
+Before @deva[ङि] (L.sg), @deva[अ] becomes @deva[ए]. @deva[देवे] "in the god."
 
 ---
 
-## 7.1.11 - Napaṁsakasya jhaly acaḥ
+## @ref[6.1.102] - प्रथमयोः पूर्वसवर्णः
 
-**Key Terms:** napuMsaka, Jal, ac
+**Key Terms:** @deva[प्रथमा], @deva[पूर्व], @deva[सवर्ण]
 
-For neuters, before jhal-endings, the final 'a' has special behavior.
-
----
-
-## 7.1.19 - Napuṁsakāc ca
-
-**Key Terms:** napuMsaka, Si
-
-Neuter N/A plural takes 'śi' → 'i'. "phalāni" with lengthening.
+For the vowel of a nominal stem and the vowel of Nominative/Accusative endings, there is substitution of a long vowel corresponding to the first. @deva[देव] + @deva[सु] = @deva[देवः].
 
 ---
 
-## 7.1.72 - Napuṁsakasya a pañcamyāḥ
+## @ref[7.1.24] - अतोऽम्
 
-**Key Terms:** napuMsaka, paJcamI
+**Key Terms:** @deva[अत्], @deva[अम्], @deva[नपुंसक]
 
-Neuter stems have special ablative/genitive singular forms.
+After a neuter stem ending in @deva[अ], @deva[अम्] substitutes for @deva[सु] and @deva[अम्] (N.sg, A.sg). @deva[कुण्डम्] "the pot," @deva[वनम्] "the forest."
+
+---
+
+## @ref[7.1.20] - जश्शसोः शिः
+
+**Key Terms:** @deva[जस्], @deva[शस्], @deva[शि]
+
+After a neuter stem, @deva[इ] substitutes for @deva[जस्] and @deva[शस्] (N.pl, A.pl). @deva[कुण्डानि], @deva[वनानि].
+
+---
+
+## @ref[7.1.19] - नपुंसकाच्च
+
+**Key Terms:** @deva[नपुंसक], @deva[ई]
+
+After a neuter stem, @deva[ई] substitutes for dual endings @deva[औ] (N.du, A.du). @deva[कुण्डे] "the two pots."
+
+---
+
+## @ref[7.1.72] - नपुंसकस्य झलचः
+
+**Key Terms:** @deva[नपुंसक], @deva[झल्]
+
+For neuters before @deva[झल्]-initial endings, the augment @deva[नुम्] is added. Creates @deva[कुण्डानि] with the @deva[न्].

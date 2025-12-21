@@ -1,6 +1,6 @@
 ---
 id: taddhita-matup
-title: Possessive Suffixes (Matup/Vatup)
+title: Possessive Suffixes
 titleSanskrit: मतुब्वतुबौ
 description: Derive possessive adjectives using matup and vatup. "Having X" - create words like dhīmat (wise), balavat (strong).
 difficulty: intermediate
@@ -9,64 +9,56 @@ prerequisites:
   - introduction
 ---
 
-## 5.2.94 - Tad asyāsty asminn iti matup
+## @ref[5.2.94] - तदस्यास्त्यस्मिन्निति मतुप्
 
-**Key Terms:** matup, asti, asmin
+**Key Terms:** @deva[मतुप्], @deva[अस्ति], @deva[अस्मिन्]
 
-The suffix 'matup' (= mat/vat) means "one who has that" or "that in which something exists."
-
----
-
-## 8.2.9 - Māhābhāryeti...
-
-**Key Terms:** matup, vat
-
-After stems ending in 'a', matup becomes 'vat'. "bala + matup = balavat."
+The affix @deva[मतुप्] comes in the sense of "whose it is" or "in whom it is" after a word in the Nominative case. @deva[गावोऽस्य सन्ति] = @deva[गोमत्], nom. @deva[गोमान्] "having cows." @deva[वृक्षा अस्मिन् सन्ति] = @deva[वृक्षवत्].
 
 ---
 
-## 5.2.95 - Atyādibhyaḥ saṁśrūyante
+## @ref[8.2.9] - मादुपधायाश्च मतोर्वोऽयवादिभ्यः
 
-**Key Terms:** ati, matup
+**Key Terms:** @deva[मतुप्], @deva[वत्]
 
-After words like 'ati', matup is optionally applied. Creates intensified meanings.
-
----
-
-## 6.4.138 - Acaḥ
-
-**Key Terms:** ac, matup
-
-Before matup, stems ending in vowels take specific forms. Vowel sandhi rules.
+For the @deva[म्] of @deva[मत्], @deva[व] substitutes if the stem ends in @deva[म्] or @deva[अ]/आ, or has these in penultimate position. @deva[बल] + @deva[मतुप्] = @deva[बलवत्], @deva[धन] + @deva[मतुप्] = @deva[धनवत्].
 
 ---
 
-## 6.4.136 - Eco'yavāyāvaḥ
+## @ref[6.4.138] - अचः
 
-**Key Terms:** ec, matup
+**Key Terms:** @deva[अच्], @deva[मतुप्]
 
-Diphthongs split before matup. "go + mat = gāvat" (rare).
-
----
-
-## 7.1.70 - Ugidañchaṁ sarvanāmasthāne...
-
-**Key Terms:** matup, sarvanAmaSena
-
-In sarvanāmasthāna cases (nom/voc/acc), matup forms have special endings.
+Before @deva[मतुप्], stems ending in vowels follow specific sandhi rules. The feminine suffix @deva[ङीप्] applies to create @deva[बलवती], @deva[धनवती].
 
 ---
 
-## 6.1.67 - Ver āpṛkte
+## @ref[7.1.70] - उगिदचां सर्वनामस्थानेऽधातोः
 
-**Key Terms:** vF, matup
+**Key Terms:** @deva[मतुप्], @deva[सर्वनामस्थान]
 
-Root 'vṛ' shows special behavior with possessive suffixes.
+In @deva[सर्वनामस्थान] cases (Nominative, Vocative, Accusative singular), stems with @deva[मतुप्] take special endings. @deva[गोमान्], @deva[बलवान्].
 
 ---
 
-## 8.2.10 - Vānto...
+## @ref[7.3.84] - सार्वधातुकार्धधातुकयोः
 
-**Key Terms:** vat, pada
+**Key Terms:** @deva[गुण], @deva[मतुप्]
 
-The 'v' of vat-forms may undergo changes at word boundaries.
+@deva[गुण] substitutes for @deva[इक्] vowels before suffixes. @deva[धी] + @deva[मतुप्] = @deva[धीमत्], nom. @deva[धीमान्] "wise."
+
+---
+
+## @ref[6.1.68] - हलः
+
+**Key Terms:** @deva[हल्], @deva[मतुप्]
+
+After consonant-final stems, @deva[मतुप्] is added directly. @deva[विद्वत्] + @deva[मतुप्] patterns.
+
+---
+
+## @ref[8.2.10] - वान्तो य्यि प्रत्यये
+
+**Key Terms:** @deva[वत्], @deva[पद]
+
+At word boundaries, the @deva[व्] of @deva[वत्] forms may undergo changes before certain suffixes.

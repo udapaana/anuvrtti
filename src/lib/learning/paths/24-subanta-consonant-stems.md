@@ -9,96 +9,64 @@ prerequisites:
   - subanta-i-u-stems
 ---
 
-## 8.2.23 - Saṁyogāntasya lopaḥ
+## @ref[8.2.23] - संयोगान्तस्य लोपः
 
-**Key Terms:** saMyoga, anta, lopa
+**Key Terms:** @deva[संयोग], @deva[अन्त], @deva[लोप]
 
-Final consonant of a cluster is deleted at word-end. "marut" not "*marutt."
-
----
-
-## 8.4.56 - Vaś catur śvas tryadasaḥ
-
-**Key Terms:** vas, catur, śvas
-
-Specific consonant-stem words have irregular nominative singulars.
+When a word ends in a consonant cluster, the last consonant is dropped. @deva[गोमान्], @deva[यवमान्], @deva[कृतवान्], @deva[श्रेयान्].
 
 ---
 
-## 8.2.62 - Kvau padāntat
+## @ref[8.2.30] - चोः कुः
 
-**Key Terms:** ku, au, padAnta
+**Key Terms:** @deva[चु], @deva[कु], @deva[पद]
 
-Word-final consonants before 'k' (pause) undergo specific changes.
-
----
-
-## 7.1.70 - Ugidañchaṁ sarvanāmasthāne
-
-**Key Terms:** ugit, aJc, sarvanAmasTAna
-
-Stems marked 'u' and 'añc'-type take 'num' in strong cases.
+A guttural substitutes for a palatal before a @deva[झल्] affix or at word-end. @deva[पच्] → @deva[पक्ता], @deva[पक्तुम्], @deva[वाक्] from @deva[वच्].
 
 ---
 
-## 6.4.8 - Sarvanāmasthāne cāsamprasāraṇam
+## @ref[7.1.70] - उगिदचां सर्वनामस्थानेऽधातोः
 
-**Key Terms:** sarvanAmasTAna, asamprasAraNa
+**Key Terms:** @deva[उगित्], @deva[अञ्च्], @deva[नुम्]
 
-In strong cases, certain stems don't undergo samprasāraṇa.
-
----
-
-## 7.1.86 - Ito'tpadādiguṇa
-
-**Key Terms:** it, pada, guRa
-
-Stems ending in 'i' before pada-endings take guna in strong cases.
+Stems with indicatory @deva[उ] and @deva[अञ्च्]-type stems get @deva[नुम्] in strong cases. @deva[भवान्], @deva[भवन्तौ], @deva[भवन्तः].
 
 ---
 
-## 7.1.88 - Bhayoḥ
+## @ref[6.4.8] - सर्वनामस्थाने चासम्बुद्धौ
 
-**Key Terms:** Bi, os, at
+**Key Terms:** @deva[सर्वनामस्थान], @deva[दीर्घ]
 
-Before 'bhis' and 'os' endings, stems show specific changes.
-
----
-
-## 7.1.89 - Puṁliṅgasyāṇinī...
-
-**Key Terms:** puMliNga, aRinI
-
-Masculine stems with 'aṇin' suffix have special declension.
+In a stem ending in @deva[न्], the preceding vowel is lengthened in strong cases except Vocative singular. @deva[राजा], @deva[राजानौ], @deva[राजानः], @deva[राजानम्].
 
 ---
 
-## 8.2.7 - Nalopaḥ supsvarasaṁjñātuṅvidhibhyo bahulam
+## @ref[8.2.7] - नलोपः प्रातिपदिकान्तस्य
 
-**Key Terms:** na, lopa, sup
+**Key Terms:** @deva[न], @deva[लोप], @deva[पद]
 
-The 'n' of stems may be deleted before certain sup endings.
-
----
-
-## 6.4.14 - Atastvā diti cānyatarasyām
-
-**Key Terms:** at, tvA
-
-Before 'tvā' and similar, at-stems have optional forms.
+The @deva[न्] at the end of a nominal stem which is a @deva[पद] is elided. @deva[राजन्] → @deva[राजा], @deva[राजभ्याम्], @deva[राजभिः].
 
 ---
 
-## 8.2.30 - Coḥ kuḥ
+## @ref[8.4.55] - खरि च
 
-**Key Terms:** cu, ku, pada
+**Key Terms:** @deva[झल्], @deva[चर्], @deva[खर्]
 
-Word-final palatals become velars. "vāc" → "vāk."
+For @deva[झल्], there is the substitute @deva[चर्] when @deva[खर्] follows. A sonant non-aspirate mute substitutes when a surd mute or sibilant follows. @deva[भेद्] + @deva[ता] = @deva[भेत्ता].
 
 ---
 
-## 8.4.55 - Khari ca
+## @ref[8.2.62] - क्विन्प्रत्ययस्य कुः
 
-**Key Terms:** Kar, pada
+**Key Terms:** @deva[क्विन्], @deva[कु]
 
-Before voiceless consonants, sandhi changes apply at word junction.
+Stems formed with @deva[क्विन्] affix show guttural substitution at word-end. @deva[वाच्] → @deva[वाक्].
+
+---
+
+## @ref[6.1.68] - हलोऽनन्तरायां संयोगः
+
+**Key Terms:** @deva[हल्], @deva[संयोग]
+
+Consonants combine into clusters when no vowel intervenes. Governs consonant stem behavior before endings.

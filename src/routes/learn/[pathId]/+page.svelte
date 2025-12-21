@@ -6,6 +6,7 @@
   import { learningProgress } from '$lib/stores/learning';
   import { getSutra, getCommentary, getDependencies, type Sutra, type Commentary } from '$lib/data';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import CommentaryText from '$lib/components/CommentaryText.svelte';
   import JargonLookup from '$lib/components/JargonLookup.svelte';
   import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
 
@@ -68,11 +69,13 @@
   function nextStep() {
     if (!path) return;
 
-    // Mark current step as completed
-    learningProgress.completeStep(path.id, currentStepIndex);
+    const nextIndex = currentStepIndex + 1;
 
-    if (currentStepIndex < path.steps.length - 1) {
-      learningProgress.goToStep(currentStepIndex + 1);
+    // Mark current step as completed
+    learningProgress.markStepComplete(path.id, currentStepIndex);
+
+    if (nextIndex < path.steps.length) {
+      learningProgress.goToStep(nextIndex);
     } else {
       // Path completed
       learningProgress.completePath(path.id);
@@ -95,14 +98,7 @@
   }
 
   function isStepAccessible(index: number): boolean {
-    // Can access if it's completed, current, or all previous are completed
-    if (index === 0) return true;
-    if (isStepCompleted(index)) return true;
-    if (index === currentStepIndex) return true;
-    // Check if all previous steps are completed
-    for (let i = 0; i < index; i++) {
-      if (!isStepCompleted(i)) return false;
-    }
+    // All steps are always accessible - no gatekeeping
     return true;
   }
 
@@ -222,7 +218,9 @@
                   <div class="flex items-center gap-2 mb-2">
                     <span class="text-xs font-medium text-amber-700 uppercase tracking-wide">Commentary</span>
                   </div>
-                  <p class="text-stone-700 leading-relaxed">{currentStep.commentary}</p>
+                  <p class="text-stone-700 leading-relaxed">
+                    <CommentaryText text={currentStep.commentary} />
+                  </p>
                 </div>
               {/if}
             </div>

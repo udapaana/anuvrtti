@@ -1,6 +1,6 @@
 ---
 id: subanta-aa-stems
-title: Aa-stem Declension (Feminine)
+title: Aa-stem Declension
 titleSanskrit: आकारान्तस्त्री
 description: Decline feminine ā-stems like senā, vidyā, kanyā. The primary feminine noun pattern.
 difficulty: beginner
@@ -9,80 +9,64 @@ prerequisites:
   - subanta-pratipadika
 ---
 
-## 7.3.105 - Ṅisi ca
+## @ref[7.3.105] - आङि चापः
 
-**Key Terms:** Nisi, At, Am
+**Key Terms:** @deva[ओस्], @deva[आ], @deva[ए]
 
-Before ṅi (L.sg), long 'ā' takes special form. "senāyām" (in the army).
-
----
-
-## 7.3.106 - Saṃbuddhi ca
-
-**Key Terms:** sambudDi, At
-
-In vocative singular, ā-stems have distinctive addressing form.
+Before the case-ending @deva[ओस्] and before @deva[आ] of the Instrumental (3rd case), @deva[ए] substitutes for the final @deva[आ] of the feminine affix. @deva[सेनया], @deva[सेनयोः].
 
 ---
 
-## 7.1.18 - Ṅe prathamayoḥ supāḥ
+## @ref[7.3.106] - सम्बुद्धौ च
 
-**Key Terms:** Ne, praTama, At
+**Key Terms:** @deva[सम्बुद्धि], @deva[आ]
 
-Before ṅe (D.sg), nominative plural endings interact with ā-stems.
-
----
-
-## 7.3.104 - Osidyuthoḥ
-
-**Key Terms:** os, At
-
-Before 'os' endings (G/L dual), ā-stem sandhi applies.
+In Vocative singular, @deva[आ]-stems have a distinctive addressing form. @deva[हे सेने] "O army!"
 
 ---
 
-## 6.1.102 - Prathamayoḥ pūrvasavarṇaḥ
+## @ref[6.1.102] - प्रथमयोः पूर्वसवर्णः
 
-**Key Terms:** praTama, At, savarRa
+**Key Terms:** @deva[प्रथमा], @deva[आ]
 
-In N.sg, the stem-final ā and ending merge. "senā + su = senā."
-
----
-
-## 7.3.112 - Aṁnīnāṅit
-
-**Key Terms:** Am, nI, At
-
-The accusative plural 'śas' becomes 'ḥ' after ā. "senāḥ."
+In Nominative singular, the stem-final @deva[आ] and ending merge. @deva[सेना] + @deva[सु] = @deva[सेना].
 
 ---
 
-## 7.1.54 - Hrasvasya dīrghaḥ syāt
+## @ref[7.1.18] - औङ आपः
 
-**Key Terms:** hrasva, dIrGa, At
+**Key Terms:** @deva[औ], @deva[आप्]
 
-Short vowels lengthen in certain environments before endings.
-
----
-
-## 6.4.3 - Nāmi
-
-**Key Terms:** nAmi, At
-
-Before 'num'-augmented endings, ā-stems show specific behavior.
+Before @deva[औ] (N.du, A.du), @deva[आप्] stems show specific behavior. @deva[सेने] "the two armies."
 
 ---
 
-## 7.1.50 - Āto ṅiti
+## @ref[7.3.104] - ओसि च
 
-**Key Terms:** At, Nit
+**Key Terms:** @deva[ओस्], @deva[आ]
 
-Before ṅit-marked endings, ā-final stems have characteristic forms.
+Before @deva[ओस्] endings (G.du, L.du), @deva[आ]-stem sandhi applies. @deva[सेनयोः] "of/in the two armies."
 
 ---
 
-## 7.3.108 - Hrasvanadyāpo numācārye
+## @ref[7.3.112] - आण्नद्याः
 
-**Key Terms:** hrasva, nadI, Ap
+**Key Terms:** @deva[आम्], @deva[नदी]
 
-Short feminine stems (nadī, etc.) take 'num' before certain endings.
+The accusative plural @deva[शस्] and genitive plural @deva[आम्] have specific forms after @deva[आ]-stems. @deva[सेनाः] (A.pl), @deva[सेनानाम्] (G.pl).
+
+---
+
+## @ref[7.1.54] - ह्रस्वनद्यापो नुट्
+
+**Key Terms:** @deva[ह्रस्व], @deva[नदी], @deva[नुट्]
+
+Short feminine stems (@deva[नदी], etc.) take @deva[नुट्] augment before certain endings. Affects G.pl: @deva[नदीनाम्].
+
+---
+
+## @ref[7.1.50] - आज्जसेरसुक्
+
+**Key Terms:** @deva[आ], @deva[जस्], @deva[असुक्]
+
+After @deva[आ]-final stems, @deva[जस्] (N.pl) takes @deva[असुक्] augment. @deva[सेनाः] "the armies."

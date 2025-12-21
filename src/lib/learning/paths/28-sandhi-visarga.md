@@ -9,80 +9,64 @@ prerequisites:
   - sandhi-vowel
 ---
 
-## 8.3.15 - Kharavasānayoḥ visarjanīyaḥ
+## @ref[8.2.66] - ससजुषो रुः
 
-**Key Terms:** Kar, avasAna, visarjanIya
+**Key Terms:** @deva[सस्], @deva[रु]
 
-Before voiceless consonants or pause, 's' and 'r' become visarga. "rāmas + tiṣṭhati = rāmaḥ tiṣṭhati."
-
----
-
-## 8.3.17 - Bhobhagoaghoapūrvasya yo'śi
-
-**Key Terms:** Bo, yo, aSi
-
-Before voiced consonants, visarga from 'as/aḥ' becomes 'o'. "rāmaḥ + gacchati = rāmo gacchati."
+For final @deva[स्] (and the @deva[ष्] of @deva[ससजुष्]), @deva[रु] substitutes at word-end. @deva[अग्निस्] → @deva[अग्निरु] → @deva[अग्निरत्र], @deva[वायुरत्र]. This is an intermediate stage before visarga.
 
 ---
 
-## 8.3.22 - Hasi ca
+## @ref[8.3.15] - खरवसानयोर्विसर्जनीयः
 
-**Key Terms:** ha, visarga
+**Key Terms:** @deva[खर्], @deva[अवसान], @deva[विसर्जनीय]
 
-Before 'h', special sandhi applies. The visarga assimilates.
-
----
-
-## 8.3.34 - Visarjanīyasya saḥ
-
-**Key Terms:** visarjanIya, sa
-
-Visarga before 's' becomes 's'. "rāmaḥ + sevate = rāmas sevate."
+@deva[विसर्ग] substitutes for @deva[र्] (from @deva[रु]) before voiceless consonants (@deva[खर्]) or at pause. @deva[रामस्] + @deva[तिष्ठति] = @deva[रामः तिष्ठति].
 
 ---
 
-## 8.2.66 - Sasajuṣo ruḥ
+## @ref[8.3.17] - भोभगोअघोअपूर्वस्य योऽशि
 
-**Key Terms:** sas, ru
+**Key Terms:** @deva[भो], @deva[य्], @deva[अश्]
 
-Final 's' (in certain environments) becomes 'ru'. Intermediate stage.
-
----
-
-## 8.3.36 - Vā śari
-
-**Key Terms:** vA, Sari, visarga
-
-Before 'ś' (sibilants), visarga optionally becomes 'ś'. "rāmaḥ + śete = rāmaś śete."
+@deva[य्] substitutes for @deva[रु] when preceded by @deva[भो], @deva[भगो], @deva[अघो], @deva[अ], or @deva[आ], before voiced sounds (@deva[अश्]). @deva[भो अत्र], @deva[रामो गच्छति].
 
 ---
 
-## 6.1.114 - Hrasvād dhaṁsi ca
+## @ref[8.3.19] - लोपः शाकल्यस्य
 
-**Key Terms:** hrasva, Dasi
+**Key Terms:** @deva[लोप], @deva[अस्], @deva[रु]
 
-After short vowels, before 'dh', special treatment of visarga.
-
----
-
-## 8.3.23 - Mo'nusvāraḥ
-
-**Key Terms:** ma, anusvAra
-
-Final 'm' before consonants becomes anusvāra (ṁ). Related to visarga system.
+@deva[व्] and @deva[य्] preceded by @deva[अ] or @deva[आ] at word-end are optionally elided before voiced sounds according to Śākalya. @deva[क आस्ते] or @deva[कयास्ते].
 
 ---
 
-## 8.3.4 - Anunāsikāt paro'nusvāraḥ
+## @ref[8.3.34] - विसर्जनीयस्य सः
 
-**Key Terms:** anunAsika, anusvAra
+**Key Terms:** @deva[विसर्जनीय], @deva[स]
 
-After nasals, anusvāra may appear. Nasal+visarga interactions.
+@deva[स्] substitutes for @deva[विसर्ग] before a voiceless consonant that precedes a sibilant. @deva[वृक्षः] + @deva[छादयति] = @deva[वृक्षश्छादयति].
 
 ---
 
-## 8.3.19 - Lopo'dasyorvaḥ
+## @ref[8.3.36] - वा शरि
 
-**Key Terms:** lopa, as, ru
+**Key Terms:** @deva[वा], @deva[शर्], @deva[विसर्ग]
 
-The 'u' of 'ru' (from visarga) is deleted before voiced sounds.
+@deva[विसर्ग] optionally remains unchanged before sibilants. @deva[वृक्षः शेते] or @deva[वृक्षश्शेते], @deva[वृक्षः षण्डे] or @deva[वृक्षष्षण्डे].
+
+---
+
+## @ref[8.3.23] - मोऽनुस्वारः
+
+**Key Terms:** @deva[म], @deva[अनुस्वार]
+
+@deva[अनुस्वार] substitutes for @deva[म्] at word-end before a consonant. @deva[कुण्डं हसति], @deva[वनं याति]. The @deva[म्] must be at word-end (@deva[पद]).
+
+---
+
+## @ref[8.4.58] - अनुस्वारस्य ययि परसवर्णः
+
+**Key Terms:** @deva[अनुस्वार], @deva[यय्], @deva[परसवर्ण]
+
+For @deva[अनुस्वार] before stops (@deva[यय्]), a homorganic nasal substitutes. @deva[सं] + @deva[खिता] = @deva[शङ्किता], @deva[सं] + @deva[चित] = @deva[सञ्चित].

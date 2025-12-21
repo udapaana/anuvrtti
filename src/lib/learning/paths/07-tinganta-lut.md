@@ -1,6 +1,6 @@
 ---
 id: tinganta-lut
-title: Periphrastic Future (Lut Lakara)
+title: Periphrastic Future
 titleSanskrit: लुट्लकारः
 description: Derive periphrastic future forms using the 'tā' suffix. This future emphasizes the agent and uses a different formation strategy.
 difficulty: intermediate
@@ -9,64 +9,40 @@ prerequisites:
   - tinganta-lrt
 ---
 
-## 3.3.15 - Anadyatane luṭ
+## @ref[3.3.15] - अनद्यतने लुट्
 
-**Key Terms:** anadyatane, luT
+**Key Terms:** @deva[अनद्यतन], @deva[लुट्]
 
-The suffix 'luṭ' expresses future action not occurring today. More definite than lṛṭ.
-
----
-
-## 3.1.33 - Syatāsī lṛluṭoḥ
-
-**Key Terms:** tAsI, luT
-
-In luṭ, the 'tāsī' suffix is used (realized as 'tā'). Creates forms like 'kartā'.
+The affix @deva[लुट्] comes after a verbal root in the sense of what will happen but not in the course of the current day. @deva[श्वः कर्ता] "he will do tomorrow." @deva[श्वो भोक्ता] "he will eat tomorrow." This debars @deva[लृट्].
 
 ---
 
-## 2.4.85 - Luṭaḥ prathamasya ḍāraurasaḥ
+## @ref[3.1.33] - स्यतासी लृलुटोः
 
-**Key Terms:** luT, praTama, qA
+**Key Terms:** @deva[तासि], @deva[लुट्]
 
-In luṭ first person, the ending is replaced by 'ḍā', 'rau', 'ras'. Special first-person forms.
-
----
-
-## 3.3.16 - Parasmaipadeṣūdātto...
-
-**Key Terms:** parasmEpadezu, udAttaH
-
-Parasmaipada forms in luṭ have specific accent patterns. Distinguishes from ātmanepada.
+When @deva[लृ] or @deva[लुट्] follows, @deva[स्य] and @deva[तासि] are respectively the affixes. For @deva[लुट्], the @deva[तासि] suffix is used (realized as @deva[ता]). @deva[कृ] + @deva[तासि] → @deva[कर्ता] "he will do." The @deva[इ] of @deva[तासि] is indicatory, showing the nasal of the root is not dropped: @deva[मन्ता] "he will think."
 
 ---
 
-## 3.1.34 - Hetuhetumator liṅ
+## @ref[2.4.85] - लुटः प्रथमस्य डारौरसः
 
-**Key Terms:** hetu, hetumat, liN
+**Key Terms:** @deva[लुट्], @deva[प्रथम], @deva[डा]
 
-When cause-effect relationship is expressed, liṅ (not luṭ) may be used. Semantic distinction.
-
----
-
-## 7.2.10 - Ekāhalmadhye...iṭ
-
-**Key Terms:** iT, tAs
-
-The 'iṭ' augment applies before 'tās' just as with 'sya'. Parallel formation.
+@deva[डा], @deva[रौ], and @deva[रस्] are substituted for the three affixes of the 3rd person of @deva[लुट्], in both @deva[परस्मैपद] and @deva[आत्मनेपद]. Thus: @deva[कर्ता] "he will do," @deva[कर्तारौ] "they two will do," @deva[कर्तारः] "they will do." Also @deva[अध्येता], @deva[अध्येतारौ], @deva[अध्येतारः].
 
 ---
 
-## 3.4.78 - Tiptasjhisipthasthamibvasmas
+## @ref[3.4.78] - तिप्तस्झिसिप्थस्थमिब्वस्मस्तातांझथासाथांध्वमिड्वहिमहिङ्
 
-**Key Terms:** tip, luT
+**Key Terms:** @deva[तिप्], @deva[लुट्]
 
-The tiṅ endings replace 'l' of luṭ as usual, but then undergo special luṭ substitutions.
+These are the conjugational affixes (@deva[तिङ्]) that substitute for @deva[ल] in all ten tenses. In @deva[लुट्], the 3rd person endings are replaced by @deva[डा], @deva[रौ], @deva[रस्] per @ref[2.4.85].
 
 ---
 
-## 2.4.84 - Aste bhūḥ
+## @ref[7.2.10] - एकाच उपदेशेऽनुदात्तात्
 
-**Key Terms:** asti, BU, luT
+**Key Terms:** @deva[इट्], @deva[अनुदात्त]
 
-The verb 'as' (to be) is replaced by 'bhū' in certain luṭ contexts. Auxiliary formation.
+The augment @deva[इट्] is not added before an affix joined to a root which in the @deva[धातुपाठ] is monosyllabic and @deva[अनुदात्त]. These @deva[अनिट्] roots directly take @deva[तासि]: @deva[कर्ता] not \*@deva[करिता].

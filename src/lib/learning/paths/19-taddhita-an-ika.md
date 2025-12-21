@@ -1,6 +1,6 @@
 ---
 id: taddhita-an-ika
-title: Relational Suffixes (An/Ika/Thak)
+title: Relational Suffixes
 titleSanskrit: अण्ठक्
 description: Derive words expressing relation, origin, or connection. Create patronymics, place-derivatives, and professional terms.
 difficulty: intermediate
@@ -9,80 +9,64 @@ prerequisites:
   - introduction
 ---
 
-## 4.1.83 - Tasyāpatyam
+## @ref[4.1.83] - प्राग्दीव्यतोऽण्
 
-**Key Terms:** apatya, aR
+**Key Terms:** @deva[अण्], @deva[तद्धित]
 
-The suffix 'aṇ' (= a) creates patronymics - "descendant of X." "Dakṣa + aṇ = Dākṣa."
-
----
-
-## 4.1.92 - Tasyedaṁ
-
-**Key Terms:** idam, aR
-
-The suffix also expresses "belonging to, relating to." General relational sense.
+The affix @deva[अण्] governs the rules up to @ref[4.4.2]. This is the primary relational suffix creating derivatives with @deva[वृद्धि] of the first vowel.
 
 ---
 
-## 4.2.80 - Tena dīvyati
+## @ref[4.1.92] - तस्यापत्यम्
 
-**Key Terms:** dIvyati, Wak
+**Key Terms:** @deva[अपत्य], @deva[अण्]
 
-The suffix 'ṭhak' (= ika) expresses "one who plays/deals with X." Professional terms.
-
----
-
-## 4.3.120 - Tatrabhavaḥ
-
-**Key Terms:** tatra, Tak
-
-The suffix 'ṭhak' creates "native of X" words. Place-of-origin derivatives.
+The affix @deva[अण्] and those following denote "the descendant of someone." @deva[उपगु] + @deva[अण्] = @deva[औपगवः] "descendant of Upagu."
 
 ---
 
-## 7.3.1 - Añaḥ
+## @ref[7.2.117] - तद्धितेष्वचामादेः
 
-**Key Terms:** aJ, vFddi
+**Key Terms:** @deva[तद्धित], @deva[वृद्धि]
 
-Before aṇ suffix, the first vowel of the base takes vṛddhi. "Diti + aṇ = Daiteya."
-
----
-
-## 6.4.148 - Yasyeti ca
-
-**Key Terms:** ya, aR
-
-Final 'ya' of a stem is deleted before aṇ. Stem simplification.
+@deva[वृद्धि] substitutes for the first vowel of the stem when a @deva[तद्धित] affix with indicatory @deva[ञ्] or @deva[ण्] follows. @deva[गर्ग] + @deva[यञ्] = @deva[गार्ग्यः], @deva[दक्ष] + @deva[इञ्] = @deva[दाक्षिः].
 
 ---
 
-## 4.2.1 - Tena raktaṁ rāgāt
+## @ref[4.1.95] - अत इञ्
 
-**Key Terms:** rakta, rAga, aR
+**Key Terms:** @deva[अत्], @deva[इञ्]
 
-Words expressing "dyed with X" take aṇ. Color derivatives.
-
----
-
-## 7.2.117 - Taddhiteṣv acām ādeḥ
-
-**Key Terms:** tadDita, ac, vFddi
-
-In taddhita derivatives, the initial vowel of the base undergoes vṛddhi.
+The affix @deva[इञ्] (= @deva[इ]) comes after stems ending in short @deva[अ] to denote a descendant. This debars @deva[अण्]. @deva[दक्षस्यापत्यम्] = @deva[दाक्षिः] "descendant of Daksha."
 
 ---
 
-## 4.1.95 - Ata iñ
+## @ref[4.3.120] - तस्येदम्
 
-**Key Terms:** at, iJ
+**Key Terms:** @deva[इदम्], @deva[अण्]
 
-After certain a-stems, 'iñ' (= i) is used instead of aṇ. "Atri + iñ = Ātreya."
+After a word in the Genitive case, an affix comes in the sense of "this is his." @deva[उपगोरिदम्] = @deva[औपगवम्] "of Upagu."
 
 ---
 
-## 4.3.53 - Prāgvahaṭaḥ ṭhañ
+## @ref[4.3.53] - तत्र भवः
 
-**Key Terms:** WaJ, prAgvahaT
+**Key Terms:** @deva[भव], @deva[ठक्]
 
-The suffix 'ṭhañ' (= ika) creates various relational derivatives.
+An affix comes after a word in the Locative case in the sense of "who stays there." @deva[स्रुघ्ने भवः] = @deva[स्रौघ्नः] "one who stays in Srughna." @deva[माथुरः] "of Mathura."
+
+---
+
+## @ref[6.4.148] - यस्येति च
+
+**Key Terms:** @deva[य], @deva[अण्]
+
+Final @deva[य] of a stem is deleted before @deva[अण्]. Stem simplification before the suffix.
+
+---
+
+## @ref[4.2.80] - वुञ्छण्कठजिलसेनिरढञ्...
+
+**Key Terms:** @deva[ठक्], @deva[वुञ्]
+
+Various suffixes like @deva[ठक्] (= @deva[इक]) create professional and relational terms. @deva[नाविकः] "boatman," @deva[वैदिकः] "relating to the Vedas."

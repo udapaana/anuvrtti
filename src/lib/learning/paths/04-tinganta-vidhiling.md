@@ -1,72 +1,72 @@
 ---
 id: tinganta-vidhiling
-title: Optative (Vidhiliṅ Lakara)
+title: Optative
 titleSanskrit: विधिलिङ्
-description: Derive optative/potential mood forms. The liṅ lakāra with its distinctive 'yā' marker expresses possibility, obligation, and wishes.
+description: Derive optative/potential forms expressing commands, wishes, and possibilities.
 difficulty: beginner
 estimatedTime: 2-3 hours
 prerequisites:
   - tinganta-lat
 ---
 
-## 3.3.161 - Vidhinimantraṇādhīṣṭa...
+## 3.3.161 - Vidhinimantraṇāmantraṇādhīṣṭasampraśnaprārthanēṣu liṅ
 
-**Key Terms:** viDi, liN
+**Key Terms:** viDi, liN, nimantraRa
 
-The suffix 'liṅ' expresses injunction (vidhi), invitation (nimantraṇa), instruction (adhīṣṭa), and more. The optative/potential mood.
+@deva[लिङ्] comes after a verb for: command (@deva[विधि]), invitation (@deva[निमन्त्रण]), permission (@deva[आमन्त्रण]), polite wish (@deva[अधीष्ट]), question (@deva[सम्प्रश्न]), prayer (@deva[प्रार्थना]). @deva[कटं] @deva[कुर्यात्] "let him make the mat"; @deva[इह] @deva[भवान्] @deva[भुञ्जीत] "you may dine here."
+
+---
+
+## 3.4.103 - Yāsuṭ parasmaipadēṣūdāttō ṅicca
+
+**Key Terms:** yAsut, parasmEpade, Nit
+
+@deva[यासुट्] augments @deva[परस्मैपद] affixes in the Potential. The endings are treated as @deva[ङित्]. The @deva[स्] is elided by @ref[7.2.79]: @deva[कुर्यात्], @deva[कुर्याताम्], @deva[कुर्युस्].
 
 ---
 
 ## 3.4.116 - Liṅāśiṣi
 
-**Key Terms:** liN, ASizi, yAsut
+**Key Terms:** liN, ASizi, ArDaDAtukaH
 
-The augment 'yāsuṭ' is added after the dhātu in liṅ for āśīḥ (benedictive). Distinguishes benedictive from optative.
-
----
-
-## 3.4.103 - Yāsuṭ parasmaipadeyoḥ
-
-**Key Terms:** yAsut, parasmEpade
-
-In parasmaipada, 'yāsuṭ' is the characteristic marker before endings. Creates the 'yā' of optative forms.
+In benediction (@deva[आशीः]), @deva[लिङ्] substitutes are @deva[आर्धधातुक]. They take @deva[इट्] and don't require @deva[शप्]. From @deva[लू]: @deva[लविसीष्ट]; from @deva[पू]: @deva[पविषीष्ट]. But in @deva[विधिलिङ्]: @deva[लुनीयात्], @deva[पुनीयात्].
 
 ---
 
-## 3.4.104 - Kintve sīyuṭ
+## 3.4.104 - Kidāśiṣi
 
-**Key Terms:** sIyut, liN, Atmanepade
+**Key Terms:** kit, ASizi, yAsut
 
-In ātmanepada liṅ, 'sīyuṭ' replaces 'yāsuṭ'. Different optative marker for middle voice.
-
----
-
-## 3.4.105 - Jhusjusjhasāṁ jhantayaḥ
-
-**Key Terms:** JuH, jus, Ja, jhant
-
-The endings jhi, jus, jha are replaced by 'jh-ant' forms in certain contexts. Ending modifications.
+In benediction, @deva[यासुट्] also applies, and substitutes are treated as @deva[कित्]. Both @deva[ङित्] and @deva[कित्] block @deva[गुण] and @deva[वृद्धि], but differ in other effects. @deva[इष्यात्], @deva[जागर्यात्]. In Potential: @deva[वच्यात्]; in Benedictive: @deva[उच्यात्].
 
 ---
 
-## 7.2.79 - Liṅāśiṣi iṭ
+## 3.4.105 - Jhasya ran
 
-**Key Terms:** liN, ASizi, iT
+**Key Terms:** Ja, ran, liN
 
-The augment 'iṭ' is inserted in liṅ āśīḥ forms. Distinguishes benedictive morphology.
-
----
-
-## 3.4.106 - Itaś ca lopaḥ parasmaipadesūs
-
-**Key Terms:** itaH, lopaH, parasmEpadezu
-
-The 'i' of endings undergoes lopa in parasmaipada. Affects final vowels of endings.
+@deva[रन्] replaces @deva[झ] (3rd plural Ā) in @deva[लिङ्]. Elsewhere @deva[झ] becomes @deva[अन्त] @ref[7.1.3], but in @deva[लिङ्]: @deva[पचेरन्], @deva[यजेरन्], @deva[कृषीरन्].
 
 ---
 
-## 7.1.5 - Ātmanepadāni śeṣṣaḥ
+## 3.4.106 - Iṭōt
 
-**Key Terms:** Atmanepadayozu, SezaH
+**Key Terms:** iT, at, Atmanepade
 
-Remaining rules apply to ātmanepada endings. Completes the ending transformation picture.
+Short @deva[अ] replaces @deva[इ] of @deva[आत्मनेपद] 1st singular in Potential and Benedictive. @deva[पचेय], @deva[यजेय], @deva[कृषीय].
+
+---
+
+## 7.2.79 - Liṅaḥ salōpōnantyasya
+
+**Key Terms:** liNaH, salopaH, anantya
+
+In @deva[सार्वधातुक] @deva[लिङ्], non-final @deva[स्] (from @deva[यासुट्], @deva[सीयुट्]) is elided. @deva[कुर्यात्], @deva[कुर्वीत]. But final @deva[स्] remains: @deva[कुर्युः], @deva[कुर्याः]. In Benedictive, @deva[स्] stays: @deva[क्रियास्ताम्].
+
+---
+
+## 7.1.5 - Ātmanēpadēṣvanataḥ
+
+**Key Terms:** Atmanepada, anataH
+
+@deva[आत्मनेपद] endings not ending in @deva[अ] receive special treatment for the optative middle forms.

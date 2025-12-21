@@ -9,96 +9,80 @@ prerequisites:
   - karaka-intro
 ---
 
-## 2.1.4 - Saha supā
+## @ref[2.1.4] - सह सुपा
 
-**Key Terms:** saha, sup, samAsa
+**Key Terms:** @deva[सह], @deva[सुप्], @deva[समास]
 
-A compound (samāsa) is formed when words come together with (saha) case endings.
-
----
-
-## 2.1.6 - Avyayībhāvaḥ
-
-**Key Terms:** avyayIBAva
-
-Avyayībhāva - indeclinable compound. First member is an avyaya, compound is neuter singular.
+The words @deva[सह सुपा] meaning "with a word ending in a case-affix" govern the succeeding rules. This establishes that compounds are formed from case-inflected words.
 
 ---
 
-## 2.1.22 - Tatpuruṣaḥ
+## @ref[2.1.6] - अव्ययं विभक्तिसमीपसमृद्धि...
 
-**Key Terms:** tatpuruza
+**Key Terms:** @deva[अव्ययीभाव]
 
-Tatpuruṣa - determinative compound. Second member is primary, first qualifies it.
-
----
-
-## 2.1.23 - Vibhāṣā
-
-**Key Terms:** viBAzA, samAsa
-
-Compounding is often optional (vibhāṣā). Same meaning can be expressed analytically.
+An @deva[अव्यय] forms a compound with a case-inflected word when expressing case-relation, nearness, prosperity, diversity, absence, departure, etc. The compound is neuter singular.
 
 ---
 
-## 2.2.6 - Nañ
+## @ref[2.1.22] - तत्पुरुषः
 
-**Key Terms:** naJ, tatpuruza
+**Key Terms:** @deva[तत्पुरुष]
 
-The negative particle 'na' (nañ) forms tatpuruṣa compounds. "abrāhmaṇa" = non-brahmin.
-
----
-
-## 2.2.24 - Anekam anyapadārthe
-
-**Key Terms:** aneka, anyapadArTe, bahuvIhi
-
-Bahuvrīhi - possessive compound. Multiple words describe something external. "bahuvrīhi" = having much rice.
+From this @deva[सूत्र] through @ref[2.2.23], the word @deva[तत्पुरुष] governs. In @deva[तत्पुरुष], the second member is primary and the first qualifies it. @deva[राजपुरुषः] "king's man."
 
 ---
 
-## 2.2.29 - Cārthe dvandvaḥ
+## @ref[2.2.6] - नञ्
 
-**Key Terms:** ca, arTe, dvandva
+**Key Terms:** @deva[नञ्], @deva[तत्पुरुष]
 
-Dvandva - copulative compound. Members connected by 'and'. "rāmalakṣmaṇau" = Rama and Lakshmana.
-
----
-
-## 2.1.57 - Viśeṣaṇaṁ viśeṣyeṇa bahulam
-
-**Key Terms:** vizezaRa, vizezya, karmaDAra
-
-Karmadhāraya - descriptive compound. Members in same case, qualifying relation.
+The negative particle @deva[नञ्] is compounded with a case-inflected word, and the compound is @deva[तत्पुरुष]. @deva[न ब्राह्मणः] = @deva[अब्राह्मणः] "non-Brahmin."
 
 ---
 
-## 2.1.61 - Saṁkhyāpūrvo dviguh
+## @ref[2.2.24] - अनेकमन्यपदार्थे
 
-**Key Terms:** saNKyA, pUrva, dvigu
+**Key Terms:** @deva[अनेक], @deva[अन्यपदार्थ], @deva[बहुव्रीहि]
 
-Dvigu - numeral compound. Number as first member. "pañcagava" = five cows.
-
----
-
-## 6.1.223 - Asamāse
-
-**Key Terms:** asamAse, udAtta
-
-Outside compounds, accent behaves differently. Compound accent rules are special.
+Two or more words ending in case-affixes form a compound denoting something new not connoted individually—this is called @deva[बहुव्रीहि]. @deva[प्राप्तोदकः ग्रामः] "a village to which water has come."
 
 ---
 
-## 6.2.1 - Bahuvīhau prakṛtyā pūrvapadam
+## @ref[2.2.29] - चार्थे द्वन्द्वः
 
-**Key Terms:** bahuvIhi, pUrvapadam
+**Key Terms:** @deva[च], @deva[अर्थ], @deva[द्वन्द्व]
 
-In bahuvrīhi, the first member retains its original form. Preservation rule.
+When words ending in case-affixes stand in a relation expressible by "and," the compound is called @deva[द्वन्द्व]. Four types: @deva[समुच्चय], @deva[अन्वाचय], @deva[इतरेतरयोग], @deva[समाहार].
 
 ---
 
-## 2.4.71 - Supo dhātuprātipadikayoḥ
+## @ref[2.1.57] - विशेषणं विशेष्येण बहुलम्
 
-**Key Terms:** sup, DAtu, lopa
+**Key Terms:** @deva[विशेषण], @deva[विशेष्य], @deva[कर्मधारय]
 
-Case endings are deleted when forming compounds. "rāja + putra → rājaputra."
+An adjective optionally compounds with its substantive—this is @deva[कर्मधारय]. Both members are in the same case. @deva[नीलोत्पलम्] "blue lotus."
+
+---
+
+## @ref[2.1.61] - सन्महत्परमोत्तमोत्कृष्टाः पूज्यमानैः
+
+**Key Terms:** @deva[सत्], @deva[महत्], @deva[दिगु]
+
+Words like @deva[सत्], @deva[महत्], @deva[परम] compound with what is being honored. @deva[दिगु]: number as first member. @deva[पञ्चगवम्] "five cows."
+
+---
+
+## @ref[2.4.71] - सुपो धातुप्रातिपदिकयोः
+
+**Key Terms:** @deva[सुप्], @deva[धातु], @deva[लुक्]
+
+There is @deva[लुक्] of the case-affix when a word becomes a root (@deva[धातु]) or crude-form (@deva[प्रातिपदिक]). Case endings are deleted in compound formation: @deva[राज + पुरुष → राजपुरुषः].
+
+---
+
+## @ref[6.2.1] - बहुव्रीहौ प्रकृत्या पूर्वपदम्
+
+**Key Terms:** @deva[बहुव्रीहि], @deva[पूर्वपद]
+
+In @deva[बहुव्रीहि], the first member retains its original form. This is a preservation rule for possessive compounds.

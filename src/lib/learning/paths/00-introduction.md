@@ -2,7 +2,7 @@
 id: introduction
 title: Introduction to Paninian Grammar
 titleSanskrit: व्याकरणप्रवेशः
-description: Essential technical terms (samjna) you need before starting any prakriya. These 27 foundational concepts are prerequisites for all derivation work.
+description: Essential technical terms (samjna) you need before starting any prakriya.
 difficulty: beginner
 estimatedTime: 2-3 hours
 prerequisites: []
@@ -10,9 +10,9 @@ prerequisites: []
 
 ## 1.1.1 - Vrddhi defined
 
-**Key Terms:** vRddi, AT,Ec
+**Key Terms:** vRddi, AT, Ec
 
-The Ashtadhyayi begins with definitions. Vrddhi refers to the "strengthened" vowel grades: ā, ai, au. These appear in specific grammatical operations like causal formation.
+@deva[आ], @deva[ऐ], and @deva[औ] are called @deva[वृद्धि]. These are the "strengthened" vowel grades. They appear in derivatives like @deva[आङ्गः] from @deva[अङ्ग], or @deva[औपगवः] from @deva[उपगु].
 
 ---
 
@@ -20,7 +20,7 @@ The Ashtadhyayi begins with definitions. Vrddhi refers to the "strengthened" vow
 
 **Key Terms:** guRa, at, eN
 
-Guna refers to the "medium" vowel grades: a, e, o. Along with vrddhi, this establishes the vowel gradation (ablaut) system central to Sanskrit morphology.
+@deva[अ], @deva[ए], and @deva[ओ] are called @deva[गुण]. These are the "medium" vowel grades. They appear when roots change before endings: @deva[ऋ] becomes @deva[अर्] in @deva[अर्त्ति], @deva[इ] becomes @deva[ए] in @deva[एति].
 
 ---
 
@@ -28,15 +28,15 @@ Guna refers to the "medium" vowel grades: a, e, o. Along with vrddhi, this estab
 
 **Key Terms:** iK, guRa, vRddi
 
-When guna or vrddhi substitution is prescribed, it replaces the vowels i, u, ṛ, ḷ (the pratyahara iK). This tells us where vowel strengthening applies.
+When @deva[गुण] or @deva[वृद्धि] is prescribed without specifying where, it replaces @deva[इक्] (@deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ]). The @deva[गुण] of @deva[इ] is @deva[ए]; of @deva[उ] is @deva[ओ]; of @deva[ऋ] is @deva[अर्]. Thus @deva[नी] + @deva[अति] = @deva[नयति].
 
 ---
 
-## 1.1.68 - Svan defines accent domain
+## 1.1.68 - Svarupa: word form, not meaning
 
 **Key Terms:** svaM, rUpam
 
-"One's own form" - when a rule mentions a sound, it refers to that sound along with its accent (svara) variations. This is a fundamental interpretive principle.
+In grammar, a word denotes its own form, not its meaning—except for technical terms. Rule @deva[अग्नेर्ढक्] @ref[4.2.33] applies to the word @deva[अग्नि] itself, not to synonyms like @deva[पावक].
 
 ---
 
@@ -44,7 +44,7 @@ When guna or vrddhi substitution is prescribed, it replaces the vowels i, u, ṛ
 
 **Key Terms:** aRudit, savarRa
 
-A vowel marked with anudātta (unmarked) in a rule includes all its homogeneous (savarna) variants. This expands the scope of rules efficiently.
+@deva[अण्] vowels and letters marked with @deva[उ] include their @deva[सवर्ण] forms. Thus @deva[अ] includes @deva[आ]; @deva[कु] includes all five gutturals. Rule @deva[आद्गुणः] @ref[6.1.87] applies to both @deva[अ] and @deva[आ].
 
 ---
 
@@ -52,31 +52,31 @@ A vowel marked with anudātta (unmarked) in a rule includes all its homogeneous 
 
 **Key Terms:** taparaH, kAla
 
-When a vowel is followed by 't' marker, it refers only to that specific vowel length, not its savarnas. This restricts scope when needed.
+A letter followed by @deva[त्] refers only to forms with the same prosodial length. @deva[अत्] means short @deva[अ] only, excluding @deva[आ]. Thus @deva[अतो भिस ऐस्] @ref[7.1.9] applies to @deva[वृक्ष] but not @deva[खट्वा].
 
 ---
 
-## 1.3.2 - Final consonants are it (markers)
+## 1.3.2 - Nasal vowels are it
 
-**Key Terms:** it, hal, antyam
+**Key Terms:** upadeSe, anunAsika, ac, it
 
-In grammatical terms (pratyayas, etc.), a final consonant is an 'it' (marker). It conveys grammatical information but is deleted in the final form.
-
----
-
-## 1.3.3 - Initial ṣ, s, h are markers
-
-**Key Terms:** halantyam, AdiH
-
-Initial sibilants (ṣ, s) and h in affixes are also it-markers. For example, in 'ṣṇa' suffix, the ṣ is deleted.
+In @deva[उपदेश], a nasal vowel is @deva[इत्]. In @deva[क्विन्] or @deva[विद्], the nasal @deva[इ] is a marker, not part of the actual affix.
 
 ---
 
-## 1.3.9 - Tasya lopah - Markers are deleted
+## 1.3.3 - Final consonants are it
+
+**Key Terms:** hal, antyam, it
+
+The final consonant of an @deva[उपदेश] is @deva[इत्]. In the @deva[प्रत्याहार] @deva[अइउण्], the @deva[ण्] is indicatory. In @deva[ऋऌक्], the @deva[क्] is indicatory.
+
+---
+
+## 1.3.9 - Tasya lopah
 
 **Key Terms:** tasya, lopaH, it
 
-Whatever is designated as 'it' undergoes lopa (deletion). The markers exist only to trigger rules and classify elements.
+@deva[इत्] letters are elided. They serve only as mnemonics and indicators—they are not part of the final form. The @deva[लोप] applies to the whole @deva[इत्], not just its final letter.
 
 ---
 
@@ -84,28 +84,28 @@ Whatever is designated as 'it' undergoes lopa (deletion). The markers exist only
 
 **Key Terms:** sup, tiN, padam
 
-A 'pada' (complete word) is defined as that which ends in sup (nominal endings) or tiṅ (verbal endings). This defines what constitutes a word.
+A @deva[पद] is what ends in @deva[सुप्] or @deva[तिङ्]. @deva[ब्राह्मणाः] ends in @deva[जस्], a @deva[सुप्]; @deva[पचन्ति] ends in @deva[झि], a @deva[तिङ्].
 
 ---
 
-## 1.4.109 - Samhita: close contact
+## 1.4.109 - Samhita defined
 
 **Key Terms:** saMhitA, padasya
 
-Samhita means extreme proximity of sounds. Sandhi rules apply specifically when sounds are in samhita. This defines the domain of phonological rules.
+@deva[संहिता] is the closest proximity of letters. When sounds are within half a @deva[मात्रा] of each other, @deva[सन्धि] rules apply. @deva[दधि] + @deva[अत्र] = @deva[दद्ध्यत्र].
 
 ---
 
-## 3.1.1 - Pratyayah (suffixes follow)
+## 3.1.1 - Pratyayah
 
 **Key Terms:** pratyayaH, paraH
 
-Pratyayas (suffixes/affixes) are placed after the base they attach to. This adhikara governs the entire suffix system.
+From here to the end of Book 5, what we treat is called @deva[प्रत्यय]. This excludes @deva[प्रकृति], @deva[उपपद], and @deva[उपधि].
 
 ---
 
-## 3.1.2 - Dhatoh (after verbal roots)
+## 3.1.2 - Paraś ca
 
-**Key Terms:** DAtuH, pratyaya
+**Key Terms:** DAtuH, pratyaya, paraH
 
-The suffixes taught in this section come specifically after dhatus (verbal roots). This sets up the tiṅanta (verb conjugation) system.
+@deva[प्रत्यय] comes after the @deva[धातु] or @deva[प्रातिपदिक]. The word @deva[च] indicates that while affixes normally follow, they may sometimes appear initially or medially.

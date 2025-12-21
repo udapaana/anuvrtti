@@ -9,88 +9,56 @@ prerequisites:
   - subanta-pratipadika
 ---
 
-## 7.3.111 - Ghiseḥ sāpadādau
+## @ref[7.3.111] - घेर्ङिति
 
-**Key Terms:** Gi, seH, guRa
+**Key Terms:** @deva[घि], @deva[गुण]
 
-Before 'ṅi' and 'se' (D/Ab.sg), guna applies to i/u stems. "agnaye, gurave."
-
----
-
-## 7.3.110 - Ṛto ṅisi
-
-**Key Terms:** Ft, Nisi
-
-Before ṅi (L.sg), stems in 'ṛ' (and by extension i/u) take specific forms.
+For the @deva[इ] and @deva[उ] of stems called @deva[घि], @deva[गुण] substitutes in Dative, Ablative, and Genitive singular. @deva[अग्नये], @deva[वायवे], @deva[अग्नेः], @deva[वायोः].
 
 ---
 
-## 7.1.73 - Iko'ci vibhaktau
+## @ref[7.3.110] - ऋतो ङिसर्वनामस्थानयोः
 
-**Key Terms:** ik, ac, vibhakti
+**Key Terms:** @deva[ऋ], @deva[गुण], @deva[सर्वनामस्थान]
 
-Before vowel-initial vibhakti, 'iK' vowels (i, u, ṛ, ḷ) undergo sandhi.
-
----
-
-## 6.4.77 - Aco'ñīti
-
-**Key Terms:** ac, JI
-
-Before vowel-initial ṅit endings, stem-final vowels change.
+@deva[गुण] substitutes for the final @deva[ऋ] of a stem in Locative singular and in strong cases. @deva[मातरि], @deva[पितरि]; @deva[मातरौ], @deva[पितरौ], @deva[कर्तारः].
 
 ---
 
-## 6.1.77 - Iko yaṇ aci
+## @ref[7.1.73] - इकोऽचि विभक्तौ
 
-**Key Terms:** ik, yaN, ac
+**Key Terms:** @deva[इक्], @deva[अच्], @deva[विभक्ति]
 
-Before vowels, i→y, u→v, ṛ→r, ḷ→l. Key sandhi for i/u stems.
-
----
-
-## 7.3.117 - At eḥ śeṣe
-
-**Key Terms:** at, eH, Seze
-
-In remaining cases (not covered above), 'a' of 'at' endings applies.
+The augment @deva[नुम्] is added to a neuter stem ending in a simple vowel (except @deva[अ]) before a case-affix beginning with a vowel. @deva[वारि] + @deva[इ] = @deva[वारिणि].
 
 ---
 
-## 7.1.90 - Gotrasya chau
+## @ref[6.1.77] - इको यणचि
 
-**Key Terms:** gotra, Cu
+**Key Terms:** @deva[इक्], @deva[यण्], @deva[अच्]
 
-Gotra (lineage) terms with i-ending have special vocative.
-
----
-
-## 7.3.118 - Ṅe pratyayavatyadhātoḥ
-
-**Key Terms:** Ne, pratyaya
-
-Before ṅe, stems with pratyaya suffixes behave distinctively.
+The semi-vowels @deva[य्], @deva[व्], @deva[र्], @deva[ल्] substitute for the corresponding vowels @deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ] when followed by a vowel. @deva[दधि] + @deva[अत्र] = @deva[दध्यत्र].
 
 ---
 
-## 7.3.119 - Acas trīstyadeś catuṣṣu
+## @ref[7.1.75] - अस्थिदधिसक्थ्यक्ष्णामनङुदात्तः
 
-**Key Terms:** ac, strI, catus
+**Key Terms:** @deva[अस्थि], @deva[दधि], @deva[अनङ्]
 
-Vowel-final feminine stems show specific patterns in certain cases.
-
----
-
-## 6.4.83 - Nā nadyāḥ
-
-**Key Terms:** nA, nadI
-
-Before 'nā' (I.sg), nadī-type feminines lengthen.
+The acutely accented @deva[अन्] (@deva[अनङ्]) substitutes for the finals of @deva[अस्थि], @deva[दधि], @deva[सक्थि], and @deva[अक्षि] before Instrumental and following cases beginning with a vowel. @deva[अस्थ्ना], @deva[दध्ना], @deva[अक्ष्णा].
 
 ---
 
-## 7.1.75 - Asthi dadhi sakthyakṣṇām anaṅ udāttaḥ
+## @ref[6.4.77] - अचि श्नुधातुभ्रुवां य्वोरियङुवङौ
 
-**Key Terms:** asTi, daDi, anaD
+**Key Terms:** @deva[अच्], @deva[इयङ्], @deva[उवङ्]
 
-Special neuter i-stems (asthi, dadhi) take 'an' in certain forms.
+Before vowel-initial endings, @deva[इ] becomes @deva[इय्] and @deva[उ] becomes @deva[उव्] in certain contexts. @deva[भ्रू] → @deva[भ्रुवः].
+
+---
+
+## @ref[7.1.70] - उगिदचां सर्वनामस्थानेऽधातोः
+
+**Key Terms:** @deva[उगित्], @deva[सर्वनामस्थान], @deva[नुम्]
+
+Stems with indicatory @deva[उ], @deva[ऋ], @deva[ऌ] and @deva[अञ्च्] stems get augment @deva[नुम्] in strong cases. @deva[भवान्], @deva[भवन्तौ], @deva[भवन्तः]; @deva[श्रेयान्].

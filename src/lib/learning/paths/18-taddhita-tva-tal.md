@@ -1,6 +1,6 @@
 ---
 id: taddhita-tva-tal
-title: Abstract Noun Suffixes (Tva/Tal)
+title: Abstract Noun Suffixes
 titleSanskrit: त्वतलौ
 description: Derive abstract nouns using tva and tal. Create "-ness/-ity" words like gurutva (heaviness), gurutā.
 difficulty: intermediate
@@ -9,64 +9,56 @@ prerequisites:
   - introduction
 ---
 
-## 5.1.119 - Tasya bhāvas tvataloḥ
+## @ref[5.1.119] - तस्य भावस्त्वतलौ
 
-**Key Terms:** BAva, tva, tal
+**Key Terms:** @deva[भाव], @deva[त्व], @deva[तल्]
 
-The suffixes 'tva' and 'tal' (= tā) express bhāva - the abstract quality of something. "guru + tva = gurutva."
-
----
-
-## 5.1.120 - Aṇo dvitīyāyāṁ ca
-
-**Key Terms:** aR, tva, dvitIyA
-
-When derived from an 'aṇ' (a-ending) stem, tva/tal may express comparison.
+The affixes @deva[त्व] and @deva[तल्] (= @deva[ता]) come in the sense of "the nature thereof" after a word in the Genitive case. @deva[अश्वस्य भावः] = @deva[अश्वत्वम्] or @deva[अश्वता], @deva[गोत्वम्] or @deva[गोता].
 
 ---
 
-## 6.4.164 - Co ku
+## @ref[6.4.164] - इनण्यनपत्ये
 
-**Key Terms:** cu, ku, tva
+**Key Terms:** @deva[इन्], @deva[त्व]
 
-Before tva, palatal consonants (c, ch, j, jh) revert to gutturals. "yāci + tva = yākitva."
-
----
-
-## 7.4.32 - Et tvaṭṭve
-
-**Key Terms:** e, tva
-
-The vowel 'e' of a stem shortens before tva. Affects e-ending stems.
+The final @deva[इन्] of a stem remains unaltered before non-Patronymic @deva[अण्] affix. @deva[सांकुटिनम्], @deva[स्राग्विणम्].
 
 ---
 
-## 6.4.155 - Tvaṭṭālo...
+## @ref[6.4.155] - त्वातलोः
 
-**Key Terms:** tva, tA
+**Key Terms:** @deva[त्व], @deva[ता]
 
-Specific stem changes before tva and tā. Parallel formation rules.
-
----
-
-## 7.2.83 - Iditaś ca
-
-**Key Terms:** idit, tva
-
-Roots marked 'idit' show specific changes before tva.
+Specific stem changes occur before @deva[त्व] and @deva[ता]. These suffixes follow parallel formation patterns.
 
 ---
 
-## 5.1.121 - Teḥ samudāye
+## @ref[7.4.32] - अस्य च्वौ
 
-**Key Terms:** te, samudAya, tva
+**Key Terms:** @deva[अ], @deva[त्व]
 
-The suffix may express collective sense. "bahutva" = plurality/manyness.
+The @deva[अ] of certain stems undergoes changes before @deva[त्व]. Affects a-ending stems.
 
 ---
 
-## 6.1.66 - Lopoyaṁ ca...
+## @ref[6.1.66] - लोपो व्योर्वलि
 
-**Key Terms:** lopa, tva
+**Key Terms:** @deva[लोप], @deva[त्व]
 
-Certain final elements are deleted before tva/tal.
+The semi-vowels @deva[व्] and @deva[य्] are elided before @deva[वल्] consonants. Affects junction with @deva[त्व].
+
+---
+
+## @ref[7.3.84] - सार्वधातुकार्धधातुकयोः
+
+**Key Terms:** @deva[गुण], @deva[त्व]
+
+@deva[गुण] substitutes for @deva[इक्] before certain affixes. @deva[गुरु] + @deva[त्व] = @deva[गुरुत्वम्] "heaviness."
+
+---
+
+## @ref[5.1.121] - तेः समुदाये
+
+**Key Terms:** @deva[समुदाय], @deva[त्व]
+
+The suffix may express collective sense. @deva[बहुत्वम्] = "plurality, manyness."

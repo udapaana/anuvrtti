@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { shivaSutras, commonPratyaharas, expandPratyahara, type Pratyahara } from '$lib/pratyahara';
+  import { shivaSutras, commonPratyaharas, expandPratyahara, romanPratyaharaMap, type Pratyahara } from '$lib/pratyahara';
   import { transliterate } from '$lib/transliteration';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
 
@@ -25,13 +25,26 @@
 
     const input = customInput.trim();
 
-    // Try direct expansion first
+    // Try direct expansion first (for Devanagari input)
     let result = expandPratyahara(input);
     if (result) {
       normalizedInput = input;
       customResult = result;
       selectedPratyahara = commonPratyaharas.find(p => p.name === input) || null;
       return;
+    }
+
+    // Try looking up in Roman pratyahara map (case-insensitive)
+    const lowerInput = input.toLowerCase();
+    const mappedDeva = romanPratyaharaMap[lowerInput];
+    if (mappedDeva) {
+      result = expandPratyahara(mappedDeva);
+      if (result) {
+        normalizedInput = mappedDeva;
+        customResult = result;
+        selectedPratyahara = commonPratyaharas.find(p => p.name === mappedDeva) || null;
+        return;
+      }
     }
 
     // Try transliterating from various schemes

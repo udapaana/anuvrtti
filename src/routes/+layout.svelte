@@ -1,6 +1,8 @@
 <script lang="ts">
   import '../app.css';
   import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
   import ScriptToggle from '$lib/components/ScriptToggle.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { displayScript } from '$lib/stores/preferences';
@@ -9,6 +11,15 @@
   let { children } = $props();
   let mobileMenuOpen = $state(false);
   let analysisDropdownOpen = $state(false);
+
+  // Handle GitHub Pages SPA redirect
+  onMount(() => {
+    const redirect = sessionStorage.getItem('redirect');
+    if (redirect && redirect !== '/') {
+      sessionStorage.removeItem('redirect');
+      goto(redirect);
+    }
+  });
 
   function handleScriptChange(script: Script) {
     displayScript.set(script);

@@ -1,6 +1,6 @@
 ---
 id: kridanta-tavya-aniya
-title: Future Passive Participles (Tavya/Aniya/Ya)
+title: Future Passive Participles
 titleSanskrit: तव्यानीययाः
 description: Derive gerundives expressing necessity or obligation. "To be done" - essential for expressing duty and propriety.
 difficulty: intermediate
@@ -10,80 +10,64 @@ prerequisites:
   - dhatu-ganas
 ---
 
-## 3.1.96 - Tavyattvyānīyaraḥ
+## @ref[3.1.96] - तव्यत्तव्यानीयरः
 
-**Key Terms:** tavya, tvya, anIya
+**Key Terms:** @deva[तव्य], @deva[अनीयर्]
 
-The suffixes tavya, tvya (= tya), and anīya express obligation or necessity. Gerundives.
-
----
-
-## 3.1.97 - Acaḥ kārtsye
-
-**Key Terms:** yat, kArtsye
-
-The suffix 'yat' (= ya) also creates gerundives, often with sense of completeness.
+The affixes @deva[तव्यत्], @deva[तव्य], and @deva[अनीयर्] come after verbal roots. The final @deva[त्] and @deva[र्] are indicatory for accent. @deva[कर्तव्यम्] "to be done," @deva[करणीयम्] "to be done."
 
 ---
 
-## 3.4.68 - Bhāveṣu tavyadyāḥ
+## @ref[3.1.97] - अचो यत्
 
-**Key Terms:** BAve, tavya
+**Key Terms:** @deva[यत्], @deva[अच्]
 
-These suffixes primarily express bhāva but agree with karma. "kartavyam" = to be done.
-
----
-
-## 7.2.35 - Ārdhadhātukasyeḍ valādeḥ
-
-**Key Terms:** ArDaDAtukaH, iT, tavya
-
-The augment 'iṭ' applies before tavya etc. when needed. "kartitavya/kartavya."
+The affix @deva[यत्] comes after a root ending in a vowel. @deva[गा] + @deva[यत्] = @deva[गेयम्] "to be sung," @deva[पेयम्] "to be drunk," @deva[जेयम्] "to be conquered."
 
 ---
 
-## 6.1.54 - Ḍyapo valādeḥ
+## @ref[3.4.114] - आर्धधातुकं शेषः
 
-**Key Terms:** yat, valAdeH
+**Key Terms:** @deva[आर्धधातुक], @deva[तव्य]
 
-Before ya(t), specific sandhi rules apply. Affects consonant+ya junction.
-
----
-
-## 6.4.56 - Guptijuṣi...
-
-**Key Terms:** gup, anIya
-
-Roots gup, jus, etc. have special treatment before anīya.
+Affixes other than @deva[तिङ्] and @deva[शित्] are @deva[आर्धधातुक]. @deva[तव्य], @deva[अनीय], @deva[यत्] are @deva[आर्धधातुक], so @deva[इट्] and @deva[गुण] rules apply.
 
 ---
 
-## 7.3.84 - Sārvadhātukārdhadhātukayoḥ
+## @ref[7.2.35] - आर्धधातुकस्येड् वलादेः
 
-**Key Terms:** guRa, tavya
+**Key Terms:** @deva[आर्धधातुक], @deva[इट्], @deva[तव्य]
 
-Guna applies before these ārdhadhātuka suffixes. Root vowel strengthens.
-
----
-
-## 6.1.48 - Eco'yavāyāvaḥ
-
-**Key Terms:** ec, yat
-
-Diphthongs (e, o, ai, au) split before ya(t). "ne + ya = nāya."
+An @deva[आर्धधातुक] affix beginning with a consonant (except @deva[य]) gets @deva[इट्]. @deva[लवितव्यम्], @deva[पवितव्यम्].
 
 ---
 
-## 3.1.100 - Ṛhaloṣ ṭhak
+## @ref[7.3.84] - सार्वधातुकार्धधातुकयोः
 
-**Key Terms:** Tak, FhaloH
+**Key Terms:** @deva[गुण], @deva[तव्य]
 
-After roots ending in 'ṛ' or consonants, 'ṭhak' (= eya) is an alternative gerundive.
+@deva[गुण] substitutes for the final @deva[इक्] of a stem before @deva[आर्धधातुक] affixes. @deva[भवितव्यम्] from @deva[भू], @deva[नेतव्यम्] from @deva[नी].
 
 ---
 
-## 6.4.66 - Ghumascā...anīyareṣu
+## @ref[6.4.65] - एचोऽयवायावः
 
-**Key Terms:** Gum, anIya
+**Key Terms:** @deva[एच्], @deva[यत्]
 
-Roots marked 'ghu' (dā, dhā) show special changes before anīya. "deya, dheya."
+Before @deva[यत्], the diphthongs @deva[ए], @deva[ओ], @deva[ऐ], @deva[औ] undergo @deva[आयादेश]. @deva[गा] + @deva[यत्] = @deva[गेयम्] (via @deva[ग् + आय् + य]).
+
+---
+
+## @ref[6.4.66] - घुमास्थागापाजहातिसां हलि
+
+**Key Terms:** @deva[घु], @deva[अनीय]
+
+For @deva[घु] roots (@deva[दा], @deva[धा]) and @deva[मा], @deva[स्था], @deva[गा], @deva[पा], @deva[हा], @deva[सा]—@deva[ई] substitutes before consonant-initial @deva[कित्] or @deva[ङित्] affixes. @deva[देयम्], @deva[धेयम्].
+
+---
+
+## @ref[3.1.100] - गदमदचरयमश्चानुपसर्गे
+
+**Key Terms:** @deva[ण्यत्], @deva[गद्]
+
+After certain roots without @deva[उपसर्ग], @deva[ण्यत्] (= @deva[य]) with @deva[वृद्धि] applies. @deva[गद्यम्], @deva[मद्यम्].

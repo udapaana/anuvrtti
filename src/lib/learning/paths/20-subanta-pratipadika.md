@@ -1,6 +1,6 @@
 ---
 id: subanta-pratipadika
-title: Nominal Stems (Pratipadika)
+title: Nominal Stems
 titleSanskrit: प्रातिपदिकम्
 description: Understand nominal stems before adding case endings. What qualifies as a pratipadika and how stems are classified.
 difficulty: beginner
@@ -9,64 +9,64 @@ prerequisites:
   - introduction
 ---
 
-## 1.2.45 - Arthavad adhātur apratyayaḥ prātipadikam
+## @ref[1.2.45] - अर्थवदधातुरप्रत्ययः प्रातिपदिकम्
 
-**Key Terms:** arTavat, aDAtu, prAtipadikam
+**Key Terms:** @deva[अर्थवत्], @deva[अधातु], @deva[प्रातिपदिक]
 
-A meaningful element that is neither a dhatu nor a pratyaya is called prātipadika. Basic noun stems.
-
----
-
-## 1.2.46 - Kṛttaddhitasamāsāś ca
-
-**Key Terms:** kFt, tadDita, samAsa
-
-Words formed with kṛt suffixes, taddhita suffixes, or compounds are also prātipadikas.
+A significant form of a word, not being a verbal root (@deva[धातु]) or an affix (@deva[प्रत्यय]), is called @deva[प्रातिपदिक]. This is the intermediate stage capable of receiving case-affixes.
 
 ---
 
-## 1.4.14 - Suptiṅantaṁ padam
+## @ref[1.2.46] - कृत्तद्धितसमासाश्च
 
-**Key Terms:** sup, tiN, padam
+**Key Terms:** @deva[कृत्], @deva[तद्धित], @deva[समास]
 
-A complete word (pada) ends in either sup (nominal) or tiṅ (verbal) endings.
-
----
-
-## 4.1.1 - Ṅyāpprātipadikāt
-
-**Key Terms:** Ni, Ap, prAtipadikAt
-
-From a prātipadika, feminine suffixes (ṅī, āp) and other derivations proceed.
+Forms ending in @deva[कृत्] affixes, @deva[तद्धित] affixes, or compounds are also called @deva[प्रातिपदिक]. Primary suffixes derive nouns from roots; secondary suffixes derive nouns from other nouns.
 
 ---
 
-## 4.1.2 - Svaujasamauṭ...
+## @ref[1.4.14] - सुप्तिङन्तं पदम्
 
-**Key Terms:** sup, svaujas
+**Key Terms:** @deva[सुप्], @deva[तिङ्], @deva[पद]
 
-The 21 sup endings (7 cases × 3 numbers): su, au, jas, am, auṭ, śas, ṭā, bhyām, bhis, ṅe, bhyām, bhyas, ṅasi, bhyām, bhyas, ṅas, os, ām, ṅi, os, sup.
-
----
-
-## 1.4.103 - Sup ca
-
-**Key Terms:** sup, vibhakti
-
-The sup endings are called vibhakti. They express case relations.
+That which ends in @deva[सुप्] or @deva[तिङ्] is called @deva[पद]. @deva[ब्राह्मण] + @deva[जस्] = @deva[ब्राह्मणाः] "the Brahmanas."
 
 ---
 
-## 2.3.2 - Karmapravacanīyayukte dvitīyā
+## @ref[4.1.1] - ङ्याप्प्रातिपदिकात्
 
-**Key Terms:** karma, dvitIyA
+**Key Terms:** @deva[ङी], @deva[आप्], @deva[प्रातिपदिक]
 
-The second case (accusative) is used with karma and certain preverbs.
+From this point forward, what we teach should be understood to come after feminine affixes @deva[ङी] or @deva[आप्], or after a @deva[प्रातिपदिक]. This governs the entire noun formation section.
 
 ---
 
-## 1.1.68 - Svaṁ rūpam
+## @ref[4.1.2] - स्वौजसमौट्छष्टाभ्याम्भिस्ङेभ्याम्भ्यस्ङसिभ्याम्भ्यस्ङसोसाङ्ङ्योस्सुप्
 
-**Key Terms:** svaM, rUpam
+**Key Terms:** @deva[सुप्], @deva[विभक्ति]
 
-A word denotes its own form unless context indicates otherwise. Self-reference principle.
+The 21 @deva[सुप्] endings (7 cases × 3 numbers):
+
+- 1st: @deva[सु], @deva[औ], @deva[जस्]
+- 2nd: @deva[अम्], @deva[औट्], @deva[शस्]
+- 3rd: @deva[टा], @deva[भ्याम्], @deva[भिस्]
+- 4th: @deva[ङे], @deva[भ्याम्], @deva[भ्यस्]
+- 5th: @deva[ङसि], @deva[भ्याम्], @deva[भ्यस्]
+- 6th: @deva[ङस्], @deva[ओस्], @deva[आम्]
+- 7th: @deva[ङि], @deva[ओस्], @deva[सुप्]
+
+---
+
+## @ref[1.4.103] - सुपः
+
+**Key Terms:** @deva[सुप्], @deva[विभक्ति]
+
+The @deva[सुप्] endings are called @deva[विभक्ति]. They express case relations between nouns and verbs in a sentence.
+
+---
+
+## @ref[1.1.68] - स्वं रूपं शब्दस्याशब्दसंज्ञा
+
+**Key Terms:** @deva[स्व], @deva[रूप]
+
+A word denotes its own form unless context indicates otherwise. In grammar, technical terms refer to themselves, not their meanings.
