@@ -36,7 +36,8 @@ export const terms: Term[] = [
   {
     term: "वृद्धि",
     termRoman: "vṛddhi",
-    meaning: 'The "strengthened" vowel grade: @[ā], @[ai], @[au]. Defined in 1.1.1.',
+    meaning:
+      'The "strengthened" vowel grade: @[ā], @[ai], @[au]. Defined in 1.1.1.',
     sutraRef: "1.1.1",
     category: "samjna",
     related: ["guṇa"],
@@ -178,7 +179,8 @@ export const terms: Term[] = [
   {
     term: "अच्",
     termRoman: "ac",
-    meaning: "All vowels: @[a], @[i], @[u], @[ṛ], @[ḷ], @[e], @[o], @[ai], @[au].",
+    meaning:
+      "All vowels: @[a], @[i], @[u], @[ṛ], @[ḷ], @[e], @[o], @[ai], @[au].",
     category: "pratyahara",
   },
   {
@@ -509,13 +511,15 @@ export const terms: Term[] = [
   {
     term: "दिवादि",
     termRoman: "divādi",
-    meaning: "Fourth class (class 4). Adds śyan vikaraṇa. E.g., @[div] → @[dīvyati].",
+    meaning:
+      "Fourth class (class 4). Adds śyan vikaraṇa. E.g., @[div] → @[dīvyati].",
     category: "gana",
   },
   {
     term: "स्वादि",
     termRoman: "svādi",
-    meaning: "Fifth class (class 5). Adds śnu vikaraṇa. E.g., @[su] → @[sunoti].",
+    meaning:
+      "Fifth class (class 5). Adds śnu vikaraṇa. E.g., @[su] → @[sunoti].",
     category: "gana",
   },
   {
@@ -535,13 +539,15 @@ export const terms: Term[] = [
   {
     term: "तनादि",
     termRoman: "tanādi",
-    meaning: "Eighth class (class 8). Adds u vikaraṇa. E.g., @[tan] → @[tanoti].",
+    meaning:
+      "Eighth class (class 8). Adds u vikaraṇa. E.g., @[tan] → @[tanoti].",
     category: "gana",
   },
   {
     term: "क्र्यादि",
     termRoman: "kryādi",
-    meaning: "Ninth class (class 9). Adds śnā vikaraṇa. E.g., @[krī] → @[krīṇāti].",
+    meaning:
+      "Ninth class (class 9). Adds śnā vikaraṇa. E.g., @[krī] → @[krīṇāti].",
     category: "gana",
   },
   {
@@ -883,7 +889,8 @@ export const terms: Term[] = [
   {
     term: "सम्प्रसारण",
     termRoman: "samprasāraṇa",
-    meaning: "Semivowel-to-vowel change: @[y]→@[i], @[v]→@[u], @[r]→@[ṛ], @[l]→@[ḷ].",
+    meaning:
+      "Semivowel-to-vowel change: @[y]→@[i], @[v]→@[u], @[r]→@[ṛ], @[l]→@[ḷ].",
     sutraRef: "1.1.45",
     category: "samjna",
   },
@@ -949,7 +956,8 @@ export const terms: Term[] = [
   {
     term: "ङित्",
     termRoman: "ṅit",
-    meaning: "Having ṅ as marker. Prevents @[guṇa]/@[vṛddhi]; indicates @[ātmanepada].",
+    meaning:
+      "Having ṅ as marker. Prevents @[guṇa]/@[vṛddhi]; indicates @[ātmanepada].",
     category: "samjna",
     related: ["pit", "kit"],
   },
@@ -1108,6 +1116,22 @@ export const terms: Term[] = [
     termRoman: "akṣara",
     meaning: "Syllable - a vowel with optional consonants.",
     category: "general",
+  },
+  {
+    term: "प्रक्रिया",
+    termRoman: "prakriyā",
+    meaning:
+      "Derivation or grammatical procedure. The step-by-step application of rules to derive a word form from its base elements (@[dhātu], @[prātipadika]) and affixes (@[pratyaya]).",
+    category: "general",
+    related: ["dhātu", "pratyaya", "prātipadika"],
+  },
+  {
+    term: "व्युत्पत्ति",
+    termRoman: "vyutpatti",
+    meaning:
+      "Etymology or derivation. The origin and formation of a word through grammatical rules.",
+    category: "general",
+    related: ["prakriyā"],
   },
 ];
 

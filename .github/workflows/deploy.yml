@@ -30,6 +30,25 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Setup Rust
+        uses: dtolnay/rust-action@stable
+
+      - name: Install wasm-pack
+        run: cargo install wasm-pack
+
+      - name: Build vidyut-prakriya WASM
+        run: |
+          echo "🔧 Building vidyut-prakriya WASM..."
+          git clone --depth 1 https://github.com/ambuda-org/vidyut.git /tmp/vidyut
+          cd /tmp/vidyut/vidyut-prakriya
+          wasm-pack build --target web --out-dir $GITHUB_WORKSPACE/static/wasm/vidyut-prakriya
+          # Copy the high-level wrapper
+          cp www/static/vidyut-prakriya.js $GITHUB_WORKSPACE/static/wasm/vidyut-prakriya/
+          # Fix import path in wrapper
+          sed -i 's|from "./wasm/vidyut_prakriya.js"|from "./vidyut_prakriya.js"|' $GITHUB_WORKSPACE/static/wasm/vidyut-prakriya/vidyut-prakriya.js
+          echo "✅ WASM build complete"
+          ls -la $GITHUB_WORKSPACE/static/wasm/vidyut-prakriya/
+
       - name: Build
         run: npm run build
 
@@ -44,8 +63,14 @@ jobs:
             echo "❌ index.html not found in build"
             exit 1
           fi
+          if [ ! -f "build/wasm/vidyut-prakriya/vidyut_prakriya_bg.wasm" ]; then
+            echo "❌ vidyut-prakriya WASM not found in build"
+            exit 1
+          fi
           echo "✅ Build output looks good"
           ls -la build/
+          echo "📦 WASM files:"
+          ls -la build/wasm/vidyut-prakriya/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

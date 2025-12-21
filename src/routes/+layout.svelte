@@ -30,7 +30,7 @@
   }
 
   function isAnalysisActive(): boolean {
-    const analysisPaths = ['/types', '/adhikara', '/connected', '/roots', '/leaves', '/pratyahara'];
+    const analysisPaths = ['/types', '/adhikara', '/connected', '/roots', '/leaves', '/pratyahara', '/prakriya'];
     return analysisPaths.some(p => $page.url.pathname === p);
   }
 
@@ -70,6 +70,7 @@
             </button>
             <div class="absolute right-0 top-full pt-2 hidden group-hover:block z-50">
               <div class="bg-white border border-stone-200 rounded shadow-lg py-1 min-w-40">
+                <a href="/prakriya" class="block px-4 py-2 hover:bg-stone-50">Prakriya</a>
                 <a href="/pratyahara" class="block px-4 py-2 hover:bg-stone-50">Pratyahara</a>
                 <a href="/adhikara" class="block px-4 py-2 hover:bg-stone-50">Adhikaras</a>
                 <a href="/connected" class="block px-4 py-2 hover:bg-stone-50">Most Connected</a>
