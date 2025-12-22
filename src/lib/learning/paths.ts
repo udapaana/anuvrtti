@@ -1741,63 +1741,63 @@ export const vibhaktiBasicsPath: LearningPath = {
       sutraId: "concept",
       title: "Understanding विभक्ति",
       commentary:
-        "@deva[विभक्ति] (case ending) shows the relationship between a noun and the action. Sanskrit has seven @deva[विभक्ति]s, each expressing a different @deva[कारक] (semantic role). The endings attach to the @deva[प्रातिपदिक] (nominal stem) to form complete words. @deva[राम] + @deva[स्] (प्रथमा) = @deva[रामः].",
+        "@deva[विभक्ति] shows the relationship between a @deva[प्रातिपदिक] (nominal stem) and the @deva[क्रिया] (action). Sanskrit has seven @deva[विभक्ति]s, each expressing a different @deva[कारक] (semantic role). The @deva[सुप्] endings attach to the stem: @deva[राम] + @deva[सु] → @deva[रामः]. This path covers @deva[प्रथमा] and @deva[द्वितीया]—the two most fundamental cases.",
       keyTerms: ["vibhakti", "kAraka", "prAtipadika"],
     },
     {
       sutraId: "2.3.46",
-      title: "प्रथमा: The First विभक्ति",
+      title: "प्रथमा",
       commentary:
-        "@deva[प्रातिपदिकार्थलिङ्गपरिमाणवचनमात्रे प्रथमा] — @deva[प्रथमा] expresses the basic meaning of a noun—its identity, @deva[लिङ्ग] (gender), and @deva[वचन] (number). @deva[देवः] 'a/the god' (@deva[एकवचन]), @deva[देवौ] 'two gods' (@deva[द्विवचन]), @deva[देवाः] 'gods' (@deva[बहुवचन]). It marks the @deva[कर्ता] in @deva[कर्तरि प्रयोग] (active voice).",
+        "@deva[प्रातिपदिकार्थलिङ्गपरिमाणवचनमात्रे प्रथमा] — Breaking this down: @deva[प्रातिपदिकार्थ] = the meaning of the stem; @deva[लिङ्ग] = gender; @deva[परिमाण] = measure/size; @deva[वचन] = number; @deva[मात्रे] (@deva[सप्तमी] of @deva[मात्रा]) = 'only in expressing'. The @deva[सूत्र] says: '@deva[प्रथमा] is used when expressing only the stem's meaning, gender, measure, or number'—with no @deva[कारक] relation to a @deva[क्रिया]. Examples: @deva[देवः] 'a god', @deva[देवौ] 'two gods', @deva[देवाः] 'gods'.",
       keyTerms: ["prathamA", "liNga", "vacana"],
     },
     {
       sutraId: "1.4.54",
-      title: "कर्ता: The Agent",
+      title: "कर्ता",
       commentary:
-        "@deva[स्वतन्त्रः कर्ता] — The @deva[कर्ता] is the @deva[स्वतन्त्र] (independent) entity performing the @deva[क्रिया] (action). In @deva[कर्तरि प्रयोग], the @deva[कर्ता] takes @deva[प्रथमा]: @deva[रामः गच्छति] 'Rama goes.' @deva[बालकाः क्रीडन्ति] 'The boys play.' The @deva[कर्ता] controls the action.",
+        "@deva[स्वतन्त्रः कर्ता] — @deva[स्वतन्त्रः] (@deva[प्रथमा] of @deva[स्वतन्त्र]) = 'independent'; @deva[कर्ता] = 'is called @deva[कर्ता]'. The @deva[सूत्र] defines: 'The independent one [in an action] is @deva[कर्ता].' @deva[स्वतन्त्र] means acting of one's own will, not as an instrument of another. In @deva[रामः गच्छति] 'Rama goes', @deva[राम] is @deva[स्वतन्त्र]—he initiates and controls the going. In @deva[कर्तरि प्रयोग], @deva[कर्ता] takes @deva[प्रथमा].",
       keyTerms: ["kartR", "svatantra", "kriyA"],
     },
     {
       sutraId: "2.3.47",
-      title: "सम्बोधन: Direct Address",
+      title: "सम्बोधन",
       commentary:
-        "@deva[सम्बोधने च] — @deva[प्रथमा] is also used for @deva[सम्बोधन] (calling/addressing). @deva[हे राम] 'O Rama!', @deva[हे बालकाः] 'O boys!'. In @deva[एकवचन], @deva[सम्बोधन] often differs: @deva[देव] (address) vs @deva[देवः] (statement). @deva[सम्बोधन] has no @deva[कारक] role—it's outside the action.",
+        "@deva[सम्बोधने च] — @deva[सम्बोधने] (@deva[सप्तमी] of @deva[सम्बोधन]) = 'in addressing'; @deva[च] = 'also'. With @deva[अनुवृत्ति] of @deva[प्रथमा] from the previous @deva[सूत्र], this means: '@deva[प्रथमा] is also used in @deva[सम्बोधन].' When calling someone directly: @deva[हे राम] 'O Rama!', @deva[हे देव] 'O god!'. Note: @deva[सम्बोधन] @deva[एकवचन] often has a distinct form (@deva[देव] not @deva[देवः]).",
       keyTerms: ["sambodhana", "AmantraNa"],
     },
     {
       sutraId: "2.3.2",
-      title: "द्वितीया: The Second विभक्ति",
+      title: "द्वितीया",
       commentary:
-        "@deva[कर्मणि द्वितीया] — @deva[द्वितीया] marks the @deva[कर्मन्] (object of action). @deva[रामः ग्रन्थं पठति] 'Rama reads the book.' @deva[सीता फलानि खादति] 'Sita eats fruits.' The @deva[कर्मन्] is what the @deva[क्रिया] acts upon.",
+        "@deva[कर्मणि द्वितीया] — @deva[कर्मणि] (@deva[सप्तमी] of @deva[कर्मन्]) = 'when there is a @deva[कर्मन्]'; @deva[द्वितीया] = '@deva[द्वितीया] is used'. The @deva[सूत्र] prescribes: 'To express @deva[कर्मन्], use @deva[द्वितीया].' In @deva[रामः ग्रन्थं पठति] 'Rama reads the book', @deva[ग्रन्थ] is @deva[कर्मन्] (what the reading acts upon), so it takes @deva[द्वितीया]: @deva[ग्रन्थम्].",
       keyTerms: ["dvitIyA", "karma"],
     },
     {
       sutraId: "1.4.49",
-      title: "कर्मन्: The Object",
+      title: "कर्मन्",
       commentary:
-        "@deva[कर्तुरीप्सिततमं कर्म] — The @deva[कर्मन्] is what the @deva[कर्ता] most desires to affect (@deva[ईप्सिततम]) through the action. In @deva[देवदत्तः कटं करोति] 'Devadatta makes a mat', the mat (@deva[कट]) is the @deva[कर्मन्]—what he wishes to bring into existence. @deva[कर्मन्] receives the result of the @deva[क्रिया].",
+        "@deva[कर्तुरीप्सिततमं कर्म] — @deva[कर्तुः] (@deva[षष्ठी] of @deva[कर्ता]) = 'of the @deva[कर्ता]'; @deva[ईप्सिततमम्] = 'most desired to obtain/affect'; @deva[कर्म] = 'is called @deva[कर्मन्]'. The @deva[सूत्र] defines: 'That which the @deva[कर्ता] most desires to affect is @deva[कर्मन्].' In @deva[देवदत्तः कटं करोति] 'Devadatta makes a mat', Devadatta most wants to bring the mat into being—so @deva[कट] is @deva[कर्मन्].",
       keyTerms: ["karma", "Ipsitatama"],
     },
     {
       sutraId: "2.3.12",
-      title: "गति with द्वितीया",
+      title: "गत्यर्थकर्मन्",
       commentary:
-        "@deva[गत्यर्थकर्मणि द्वितीयाचतुर्थ्यौ] — With @deva[गत्यर्थ] verbs (verbs of motion), the destination takes @deva[द्वितीया]: @deva[ग्रामं गच्छति] 'goes to the village', @deva[नगरं याति] 'goes to the city', @deva[वनं प्रविशति] 'enters the forest.' The destination is treated as @deva[कर्मन्].",
+        "@deva[गत्यर्थकर्मणि द्वितीयाचतुर्थ्यौ] — @deva[गत्यर्थ] = 'having the meaning of motion' (@deva[गम्], @deva[या], etc.); @deva[कर्मणि] = 'for the @deva[कर्मन्]'; @deva[द्वितीया-चतुर्थ्यौ] = '@deva[द्वितीया] or @deva[चतुर्थी]'. The @deva[सूत्र] says: 'With verbs of motion, the destination (as @deva[कर्मन्]) takes @deva[द्वितीया] or @deva[चतुर्थी].' @deva[ग्रामं गच्छति] or @deva[ग्रामाय गच्छति] 'goes to the village'. @deva[द्वितीया] is more common.",
       keyTerms: ["gati", "gatyartha"],
     },
     {
       sutraId: "2.3.5",
-      title: "काल and अध्वन् with द्वितीया",
+      title: "कालाध्वनोः द्वितीया",
       commentary:
-        "@deva[कालाध्वनोरत्यन्तसंयोगे] — @deva[द्वितीया] expresses duration of @deva[काल] (time) or extent of @deva[अध्वन्] (distance): @deva[मासं वसति] 'stays for a month', @deva[क्रोशं गच्छति] 'goes one @deva[क्रोश]', @deva[संवत्सरं पठति] 'studies for a year.' The @deva[अत्यन्तसंयोग] means complete connection throughout.",
+        "@deva[कालाध्वनोरत्यन्तसंयोगे] — @deva[काल-अध्वनोः] (@deva[षष्ठी] @deva[द्विवचन]) = 'of time and distance'; @deva[अत्यन्तसंयोगे] (@deva[सप्तमी]) = 'when there is complete/continuous connection'. With @deva[अनुवृत्ति] of @deva[द्वितीया]: '@deva[द्वितीया] is used for @deva[काल] or @deva[अध्वन्] when expressing unbroken extent.' @deva[मासं वसति] 'stays for a month' (throughout the month). @deva[क्रोशं गच्छति] 'goes a @deva[क्रोश]' (the entire distance).",
       keyTerms: ["kAla", "adhvan", "atyantasaMyoga"],
     },
     {
       sutraId: "concept",
-      title: "अभ्यास: Practice",
+      title: "अभ्यास",
       commentary:
-        "Identify @deva[कर्ता] (@deva[प्रथमा]) and @deva[कर्मन्] (@deva[द्वितीया]): @deva[विद्यार्थी ग्रन्थं पठति] — @deva[विद्यार्थी] is @deva[कर्ता], @deva[ग्रन्थम्] is @deva[कर्मन्]. @deva[माता पुत्रं पश्यति] — @deva[माता] is @deva[कर्ता], @deva[पुत्रम्] is @deva[कर्मन्]. @deva[नृपः प्रजाः रक्षति] — @deva[नृपः] is @deva[कर्ता], @deva[प्रजाः] is @deva[कर्मन्].",
+        "Identify @deva[कर्ता] and @deva[कर्मन्]: @deva[विद्यार्थी ग्रन्थं पठति] — @deva[विद्यार्थी] is @deva[स्वतन्त्र] (reads by own will) → @deva[कर्ता] → @deva[प्रथमा]. @deva[ग्रन्थ] is @deva[ईप्सिततम] (what he wants to engage with) → @deva[कर्मन्] → @deva[द्वितीया]. @deva[नृपः प्रजाः रक्षति] 'The king protects the subjects' — @deva[नृपः] = @deva[कर्ता]; @deva[प्रजाः] = @deva[कर्मन्].",
       keyTerms: ["abhyAsa"],
     },
   ],
@@ -1817,58 +1817,58 @@ export const vibhaktiThirdFourthPath: LearningPath = {
   steps: [
     {
       sutraId: "2.3.18",
-      title: "तृतीया: The Third विभक्ति",
+      title: "तृतीया",
       commentary:
-        "@deva[कर्तृकरणयोस्तृतीया] — @deva[तृतीया] marks the @deva[करण] (instrument) or the @deva[कर्ता] in @deva[कर्मणि प्रयोग] (passive voice). @deva[लेखन्या लिखति] 'writes with a pen', @deva[खड्गेन छिनत्ति] 'cuts with a sword', @deva[रामेण कृतम्] 'done by Rama' (passive).",
+        "@deva[कर्तृकरणयोस्तृतीया] — @deva[कर्तृ-करणयोः] (@deva[षष्ठी] @deva[द्विवचन]) = 'of @deva[कर्ता] and @deva[करण]'; @deva[तृतीया] = '@deva[तृतीया] is used'. The @deva[सूत्र] says: '@deva[तृतीया] expresses @deva[कर्ता] or @deva[करण].' For @deva[करण]: @deva[लेखन्या लिखति] 'writes with a pen.' For @deva[कर्ता] (in @deva[कर्मणि प्रयोग]): @deva[रामेण कृतम्] 'done by Rama'—here @deva[राम] is the @deva[कर्ता], but since the sentence is passive, he takes @deva[तृतीया].",
       keyTerms: ["tRtIyA", "karaNa"],
     },
     {
       sutraId: "1.4.42",
-      title: "करण: The Instrument",
+      title: "करण",
       commentary:
-        "@deva[साधकतमं करणम्] — The @deva[करण] is the @deva[साधकतम] (most effective means) of accomplishing the @deva[क्रिया]. In @deva[दात्रेण लुनाति] 'cuts with a sickle', the sickle is the @deva[करण]—what enables the cutting. The @deva[करण] is always an accessory to the @deva[कर्ता].",
+        "@deva[साधकतमं करणम्] — @deva[साधकतमम्] = 'most instrumental/effective'; @deva[करणम्] = 'is called @deva[करण]'. The @deva[सूत्र] defines: 'That which is most effective in accomplishing the action is @deva[करण].' In @deva[दात्रेण लुनाति] 'cuts with a sickle', the @deva[कर्ता] (cutter) uses many things, but the sickle is @deva[साधकतम]—most directly enabling the cutting. The @deva[करण] is always subordinate to the @deva[कर्ता].",
       keyTerms: ["karaNa", "sAdhakatama"],
     },
     {
-      sutraId: "2.3.21",
-      title: "सहार्थ: Accompaniment",
+      sutraId: "2.3.19",
+      title: "सहार्थ",
       commentary:
-        "@deva[इत्थंभूतलक्षणे] — @deva[तृतीया] expresses @deva[सहार्थ] (accompaniment): @deva[पुत्रेण सह गच्छति] 'goes with the son.' The word @deva[सह] governs @deva[तृतीया]. @deva[मित्रेण सह वदति] 'speaks with a friend.' @deva[भार्यया सह वसति] 'lives with wife.'",
+        "@deva[सहयुक्तेऽप्रधाने] — @deva[सह-युक्ते] = 'joined with @deva[सह]'; @deva[अप्रधाने] = 'for the non-principal'. With @deva[अनुवृत्ति] of @deva[तृतीया]: 'When @deva[सह] is used, @deva[तृतीया] marks the accompanying (non-principal) entity.' @deva[पुत्रेण सह गच्छति] 'goes with the son'—the son accompanies but isn't the main actor. @deva[मित्रेण सह वदति] 'speaks with a friend.'",
       keyTerms: ["saha", "sahArtha"],
     },
     {
       sutraId: "2.3.13",
-      title: "चतुर्थी: The Fourth विभक्ति",
+      title: "चतुर्थी",
       commentary:
-        "@deva[चतुर्थी सम्प्रदाने] — @deva[चतुर्थी] marks the @deva[सम्प्रदान] (recipient or beneficiary). @deva[ब्राह्मणाय गां ददाति] 'gives a cow to the brahmin', @deva[विप्राय धनं यच्छति] 'offers wealth to the learned one.' The @deva[सम्प्रदान] receives what is given.",
+        "@deva[चतुर्थी सम्प्रदाने] — @deva[सम्प्रदाने] (@deva[सप्तमी] of @deva[सम्प्रदान]) = 'when there is a @deva[सम्प्रदान]'; @deva[चतुर्थी] = '@deva[चतुर्थी] is used'. The @deva[सूत्र] prescribes: 'To express @deva[सम्प्रदान], use @deva[चतुर्थी].' @deva[ब्राह्मणाय गां ददाति] 'gives a cow to the brahmin'—the brahmin is @deva[सम्प्रदान] (recipient), so takes @deva[चतुर्थी]: @deva[ब्राह्मणाय].",
       keyTerms: ["caturthI", "sampradAna"],
     },
     {
       sutraId: "1.4.32",
-      title: "सम्प्रदान: The Recipient",
+      title: "सम्प्रदान",
       commentary:
-        "@deva[कर्मणा यमभिप्रैति स सम्प्रदानम्] — The @deva[सम्प्रदान] is whom one wishes to connect with the @deva[कर्मन्] (object). In @deva[दान] (giving), it's the receiver; in dedication, it's the deity: @deva[देवाय बलिं हरति] 'offers worship to the god.' The @deva[सम्प्रदान] is the intended beneficiary.",
+        "@deva[कर्मणा यमभिप्रैति स सम्प्रदानम्] — @deva[कर्मणा] (@deva[तृतीया]) = 'by means of the @deva[कर्मन्]'; @deva[यम्] = 'whom'; @deva[अभिप्रैति] = 'one intends to reach/benefit'; @deva[सः] = 'that one'; @deva[सम्प्रदानम्] = 'is @deva[सम्प्रदान]'. The @deva[सूत्र] defines: 'The one whom the @deva[कर्ता] intends to benefit through the @deva[कर्मन्] is @deva[सम्प्रदान].' In @deva[विप्राय गां ददाति], the cow (@deva[कर्मन्]) is the means; the @deva[विप्र] is whom he wishes to benefit.",
       keyTerms: ["sampradAna", "dAna"],
     },
     {
       sutraId: "2.3.14",
-      title: "प्रयोजन: Purpose",
+      title: "प्रयोजन",
       commentary:
-        "@deva[क्रियार्थोपपदस्य च कर्मणि स्थानिनः] — @deva[चतुर्थी] also expresses @deva[प्रयोजन] (purpose): @deva[विद्यायै गच्छति] 'goes for knowledge', @deva[मोक्षाय तपस्यति] 'does @deva[तपस्] for liberation', @deva[पुत्राय धनम्] 'wealth for the son.' Here @deva[चतुर्थी] marks not a person but a goal.",
+        "@deva[क्रियार्थोपपदस्य च कर्मणि स्थानिनः] — This @deva[सूत्र] (with context) allows @deva[चतुर्थी] for @deva[प्रयोजन] (purpose). @deva[विद्यायै गच्छति] 'goes for knowledge'—here @deva[विद्या] isn't a recipient but the goal. @deva[मोक्षाय तपस्यति] 'does @deva[तपस्] for @deva[मोक्ष]'. @deva[चतुर्थी] can mark purpose as well as recipient.",
       keyTerms: ["kriyArtha", "prayojana"],
     },
     {
       sutraId: "2.3.16",
-      title: "चतुर्थी with Special Words",
+      title: "नमःस्वाहादि",
       commentary:
-        "@deva[नमः स्वाहास्वधालंवषड्योगाच्च] — Certain words govern @deva[चतुर्थी]: @deva[नमो गुरवे] 'salutation to the teacher', @deva[स्वाहा अग्नये] 'offering to fire.' Also verbs like @deva[रुच्] (please), @deva[कुप्] (be angry), @deva[क्रुध्] (be angry) take @deva[चतुर्थी]: @deva[मह्यं रोचते] 'it pleases me.'",
+        "@deva[नमःस्वाहास्वधालंवषड्योगाच्च] — @deva[नमः], @deva[स्वाहा], @deva[स्वधा], @deva[अलम्], @deva[वषट्] + @deva[योगात्] = 'in connection with these words'; @deva[च] = 'also' (i.e., @deva[चतुर्थी] is used). These ritual/respectful expressions govern @deva[चतुर्थी]: @deva[नमो गुरवे] 'salutation to the teacher', @deva[स्वाहा अग्नये] 'offering to fire.' Also @deva[रुच्], @deva[कुप्], @deva[क्रुध्] take @deva[चतुर्थी]: @deva[मह्यं रोचते] 'it pleases me.'",
       keyTerms: ["namaH", "svAhA"],
     },
     {
       sutraId: "concept",
-      title: "अभ्यास: Practice",
+      title: "अभ्यास",
       commentary:
-        "Identify @deva[करण] (@deva[तृतीया]) and @deva[सम्प्रदान] (@deva[चतुर्थी]): @deva[हस्तेन लिखति] — @deva[हस्त] is @deva[करण]. @deva[छात्राय पुस्तकं ददाति] — @deva[छात्र] is @deva[सम्प्रदान]. @deva[रामेण बाणेन राक्षसः हतः] — @deva[राम] is @deva[कर्ता] (passive), @deva[बाण] is @deva[करण]. @deva[विद्यायै यत्नं करोति] — @deva[विद्या] is @deva[प्रयोजन].",
+        "Apply the @deva[सूत्र]s: @deva[हस्तेन लिखति] — @deva[हस्त] is @deva[साधकतम] (most effective for writing) → @deva[करण] → @deva[तृतीया]. @deva[छात्राय पुस्तकं ददाति] — @deva[छात्र] is whom the giver wishes to benefit through the book → @deva[सम्प्रदान] → @deva[चतुर्थी]. @deva[रामेण बाणेन राक्षसः हतः] — @deva[राम] = @deva[कर्ता] in @deva[कर्मणि प्रयोग] → @deva[तृतीया]; @deva[बाण] = @deva[करण] → @deva[तृतीया].",
       keyTerms: ["abhyAsa"],
     },
   ],
@@ -1889,49 +1889,49 @@ export const vibhaktiFifthSixthPath: LearningPath = {
       sutraId: "2.3.28",
       title: "पञ्चमी",
       commentary:
-        "@deva[अपादाने पञ्चमी] — @deva[पञ्चमी] marks the @deva[अपादान]. @deva[ग्रामात् आगच्छति] 'comes from the village', @deva[वृक्षात् पतति] 'falls from the tree', @deva[गृहात् निर्गच्छति] 'exits from the house.'",
+        "@deva[अपादाने पञ्चमी] — @deva[अपादाने] (@deva[सप्तमी] of @deva[अपादान]) = 'when there is an @deva[अपादान]'; @deva[पञ्चमी] = '@deva[पञ्चमी] is used'. The @deva[सूत्र] prescribes: 'To express @deva[अपादान], use @deva[पञ्चमी].' @deva[ग्रामात् आगच्छति] 'comes from the village'—the village is the @deva[अपादान] (starting point), so takes @deva[पञ्चमी]: @deva[ग्रामात्].",
       keyTerms: ["pancamI", "apAdAna"],
     },
     {
       sutraId: "1.4.24",
       title: "अपादान",
       commentary:
-        "@deva[ध्रुवमपायेऽपादानम्] — The @deva[अपादान] is the @deva[ध्रुव] (fixed point) from which separation occurs. In @deva[पर्वतात् अवरोहति] 'descends from the mountain', the mountain is @deva[अपादान]—it remains @deva[ध्रुव] while the @deva[कर्ता] moves away.",
+        "@deva[ध्रुवमपायेऽपादानम्] — @deva[ध्रुवम्] = 'the fixed/stationary one'; @deva[अपाये] (@deva[सप्तमी] of @deva[अपाय]) = 'in separation/departure'; @deva[अपादानम्] = 'is called @deva[अपादान]'. The @deva[सूत्र] defines: 'The fixed point in a separation is @deva[अपादान].' In @deva[पर्वतात् अवरोहति] 'descends from the mountain', the mountain stays fixed (@deva[ध्रुव]) while the @deva[कर्ता] moves away—so the mountain is @deva[अपादान].",
       keyTerms: ["apAdAna", "dhruva"],
     },
     {
       sutraId: "2.3.29",
-      title: "भय and त्राण",
+      title: "भयहेतु",
       commentary:
-        "@deva[भीत्रार्थानां भयहेतुः] — @deva[पञ्चमी] marks the cause of @deva[भय]: @deva[चोरात् बिभेति] 'fears the thief', @deva[सिंहात् त्रायते] 'is protected from the lion.' Also @deva[उपमान]: @deva[रामात् बलवान्] 'stronger than Rama.'",
+        "@deva[भीत्रार्थानां भयहेतुः] — @deva[भी-त्रा-अर्थानाम्] = 'of words meaning fear (@deva[भी]) or protection (@deva[त्रा])'; @deva[भयहेतुः] = 'the cause of fear'. With @deva[अनुवृत्ति] of @deva[पञ्चमी]: '@deva[पञ्चमी] is used for the cause of fear/protection.' @deva[चोरात् बिभेति] 'fears the thief'—the thief causes fear. @deva[सिंहात् त्रायते] 'is protected from the lion.' Also @deva[उपमान] (comparison): @deva[रामात् बलवान्] 'stronger than Rama.'",
       keyTerms: ["bhI", "bhaya"],
     },
     {
       sutraId: "2.3.50",
       title: "षष्ठी",
       commentary:
-        "@deva[षष्ठी शेषे] — @deva[षष्ठी] expresses @deva[शेष] (the remaining relation)—typically @deva[सम्बन्ध]: @deva[रामस्य पुत्रः] 'Rama's son', @deva[वृक्षस्य फलम्] 'fruit of the tree', @deva[नगरस्य राजा] 'king of the city.'",
+        "@deva[षष्ठी शेषे] — @deva[शेषे] (@deva[सप्तमी] of @deva[शेष]) = 'in the remainder'; @deva[षष्ठी] = '@deva[षष्ठी] is used'. The @deva[सूत्र] says: '@deva[षष्ठी] is used for the remaining relations'—those not covered by the other @deva[कारक]s. This is typically @deva[सम्बन्ध] (relation/possession): @deva[रामस्य पुत्रः] 'Rama's son', @deva[वृक्षस्य फलम्] 'fruit of the tree.'",
       keyTerms: ["SaSTI", "sambandha"],
     },
     {
       sutraId: "2.3.51",
       title: "सम्बन्धभेदाः",
       commentary:
-        "@deva[षष्ठी] expresses many types of @deva[सम्बन्ध]: @deva[स्वामित्व] @deva[मम गृहम्] 'my house', @deva[अवयव] @deva[वृक्षस्य शाखा] 'branch of tree', @deva[जन्म] @deva[कश्मीरस्य राजा] 'king of Kashmir', @deva[विकार] @deva[सुवर्णस्य भूषणम्] 'ornament of gold.'",
+        "@deva[षष्ठी] expresses many types of @deva[सम्बन्ध]: @deva[स्वामित्व] (ownership): @deva[मम गृहम्] 'my house'. @deva[अवयव] (part-whole): @deva[वृक्षस्य शाखा] 'branch of tree'. @deva[उत्पत्ति] (origin): @deva[कश्मीरस्य राजा] 'king of Kashmir'. @deva[विकार] (transformation): @deva[सुवर्णस्य भूषणम्] 'ornament of gold.' All are @deva[शेष]—relations outside the six @deva[कारक]s.",
       keyTerms: ["svAmin", "aMsha"],
     },
     {
-      sutraId: "2.3.52",
+      sutraId: "2.3.65",
       title: "कृति षष्ठी",
       commentary:
-        "@deva[कर्तृकर्मणोः कृति] — With @deva[कृत्] forms, the @deva[कर्ता] or @deva[कर्मन्] takes @deva[षष्ठी]: @deva[रामस्य गमनम्] 'Rama's going' (@deva[राम] = @deva[कर्ता]), @deva[ग्रामस्य दर्शनम्] 'seeing of the village' (@deva[ग्राम] = @deva[कर्मन्]).",
+        "@deva[कर्तृकर्मणोः कृति] — @deva[कर्तृ-कर्मणोः] (@deva[षष्ठी] @deva[द्विवचन]) = 'of @deva[कर्ता] and @deva[कर्मन्]'; @deva[कृति] (@deva[सप्तमी]) = 'when a @deva[कृत्] suffix is present'. The @deva[सूत्र] says: 'With @deva[कृत्] forms (verbal nouns), @deva[कर्ता] or @deva[कर्मन्] takes @deva[षष्ठी].' @deva[रामस्य गमनम्] 'Rama's going'—@deva[राम] is @deva[कर्ता] of @deva[गम्], takes @deva[षष्ठी]. @deva[ग्रामस्य दर्शनम्] 'seeing of village'—@deva[ग्राम] is @deva[कर्मन्] of @deva[दृश्], takes @deva[षष्ठी].",
       keyTerms: ["kartR", "karma", "kRt"],
     },
     {
       sutraId: "concept",
       title: "अभ्यास",
       commentary:
-        "Identify @deva[अपादान] and @deva[सम्बन्ध]: @deva[नद्याः जलं पिबति] — @deva[नदी] is @deva[अपादान]. @deva[पितुः पुत्रः] — @deva[पितृ] shows @deva[सम्बन्ध]. @deva[अधर्मात् भयं भवति] — @deva[अधर्म] is @deva[अपादान]. @deva[वेदस्य अध्ययनम्] — @deva[वेद] is @deva[कर्मन्] with @deva[षष्ठी].",
+        "Apply the @deva[सूत्र]s: @deva[नद्याः जलं पिबति] — Is @deva[नदी] @deva[ध्रुव] in a separation? Yes, water comes from it → @deva[अपादान] → @deva[पञ्चमी]. @deva[पितुः पुत्रः] — @deva[पितृ] has @deva[सम्बन्ध] with @deva[पुत्र] (no @deva[कारक] relation to a @deva[क्रिया]) → @deva[षष्ठी]. @deva[अधर्मात् भयं भवति] — @deva[अधर्म] is @deva[भयहेतु] → @deva[पञ्चमी]. @deva[वेदस्य अध्ययनम्] — @deva[वेद] is @deva[कर्मन्] of the @deva[कृत्] form @deva[अध्ययन] → @deva[षष्ठी].",
       keyTerms: ["abhyAsa"],
     },
   ],
@@ -1952,49 +1952,49 @@ export const vibhaktiSeventhPath: LearningPath = {
       sutraId: "2.3.36",
       title: "सप्तमी",
       commentary:
-        "@deva[सप्तम्यधिकरणे च] — @deva[सप्तमी] marks the @deva[अधिकरण]. @deva[गृहे वसति] 'lives in the house', @deva[वने वृक्षाः] 'trees in the forest', @deva[आकाशे पक्षी उड्डीयते] 'the bird flies in the sky.'",
+        "@deva[सप्तम्यधिकरणे च] — @deva[अधिकरणे] (@deva[सप्तमी] of @deva[अधिकरण]) = 'when there is an @deva[अधिकरण]'; @deva[सप्तमी] (from @deva[अनुवृत्ति]) = '@deva[सप्तमी] is used'; @deva[च] = 'also'. The @deva[सूत्र] prescribes: 'To express @deva[अधिकरण], use @deva[सप्तमी].' @deva[गृहे वसति] 'lives in the house'—the house is @deva[अधिकरण] (locus of living), so takes @deva[सप्तमी]: @deva[गृहे].",
       keyTerms: ["saptamI", "adhikaraNa"],
     },
     {
       sutraId: "1.4.45",
       title: "अधिकरण",
       commentary:
-        "@deva[आधारोऽधिकरणम्] — The @deva[अधिकरण] is the @deva[आधार] (container/substratum) of @deva[क्रिया]. Three types: @deva[औपश्लेषिक] (contact: @deva[कटे आस्ते] 'sits on mat'), @deva[वैषयिक] (domain: @deva[मोक्षे इच्छा] 'desire for @deva[मोक्ष]'), @deva[अभिव्यापक] (pervading: @deva[तिलेषु तैलम्] 'oil in sesame').",
+        "@deva[आधारोऽधिकरणम्] — @deva[आधारः] = 'the container/support'; @deva[अधिकरणम्] = 'is called @deva[अधिकरण]'. The @deva[सूत्र] defines: 'That which contains or supports [the action] is @deva[अधिकरण].' Three types: @deva[औपश्लेषिक] (contact)—@deva[कटे आस्ते] 'sits on mat' (body contacts mat). @deva[वैषयिक] (domain)—@deva[मोक्षे इच्छा] 'desire regarding @deva[मोक्ष]'. @deva[अभिव्यापक] (pervading)—@deva[तिलेषु तैलम्] 'oil in sesame' (oil pervades the seeds).",
       keyTerms: ["adhikaraNa", "AdhAra"],
     },
     {
       sutraId: "2.3.37",
       title: "कालाधिकरण",
       commentary:
-        "@deva[सप्तमी] expresses @deva[काल] (time-when): @deva[प्रातःकाले उत्तिष्ठति] 'rises at dawn', @deva[सायंकाले गच्छति] 'goes in the evening', @deva[वर्षाकाले वृष्टिः] 'rain in @deva[वर्षा]', @deva[बाल्ये पठति] 'studies in childhood.'",
+        "@deva[यस्मिन्काले] (from context) — @deva[सप्तमी] expresses @deva[काल] (time-when) as a type of @deva[अधिकरण]. The time 'contains' the action. @deva[प्रातःकाले उत्तिष्ठति] 'rises at dawn'—@deva[प्रातःकाल] is @deva[आधार] of the rising. @deva[बाल्ये पठति] 'studies in childhood'—childhood contains the studying.",
       keyTerms: ["kAla", "samaya"],
     },
     {
-      sutraId: "2.3.38",
+      sutraId: "2.3.37",
       title: "निमित्तसप्तमी",
       commentary:
-        "@deva[सप्तमी] indicates @deva[निमित्त] (circumstance): @deva[त्वयि गते] 'when you went', @deva[सति शक्तौ] 'if there is @deva[शक्ति]', @deva[धर्मे स्थिते] 'when @deva[धर्म] is established.' This is the @deva[सति सप्तमी] construction.",
+        "@deva[यस्मिन्निमित्ते] — @deva[सप्तमी] also expresses @deva[निमित्त] (occasion/circumstance). This yields the @deva[सति सप्तमी] construction: @deva[त्वयि गते] 'you having gone' = 'when you went'. Here @deva[त्वम्] (@deva[कर्ता]) and @deva[गत] (@deva[कृदन्त] from @deva[गम्]) both take @deva[सप्तमी], expressing a circumstantial clause.",
       keyTerms: ["sati", "nimitte"],
     },
     {
-      sutraId: "2.3.39",
+      sutraId: "2.3.41",
       title: "विषयसप्तमी",
       commentary:
-        "@deva[सप्तमी] expresses @deva[विषय] (domain/regarding): @deva[व्याकरणे निपुणः] 'skilled in @deva[व्याकरण]', @deva[शास्त्रे पण्डितः] 'learned in @deva[शास्त्र]', @deva[मयि विश्वासः] 'trust in me.'",
+        "@deva[यतश्च विद्याधिगमः] and similar @deva[सूत्र]s allow @deva[सप्तमी] for @deva[विषय] (domain/subject matter). @deva[व्याकरणे निपुणः] 'skilled in @deva[व्याकरण]'—@deva[व्याकरण] is the domain of skill. @deva[शास्त्रे पण्डितः] 'learned in @deva[शास्त्र]'. @deva[मयि विश्वासः] 'trust in me'—I am the domain of the trust.",
       keyTerms: ["viSaya", "adhikRta"],
     },
     {
       sutraId: "concept",
       title: "सति सप्तमी",
       commentary:
-        "The @deva[सति सप्तमी] expresses simultaneous @deva[निमित्त]: @deva[सूर्ये उदिते] 'the sun having risen', @deva[राजनि गते] 'the king having gone', @deva[धर्मे रक्षिते] '@deva[धर्म] being protected.' Both @deva[कर्ता] and @deva[क्रिया] (as @deva[कृदन्त]) take @deva[सप्तमी].",
+        "The @deva[सति सप्तमी] (also called @deva[निमित्तसप्तमी]) expresses a simultaneous or conditional circumstance. Both the @deva[कर्ता] and the @deva[कृदन्त] (participle) take @deva[सप्तमी]: @deva[सूर्ये उदिते] (@deva[सूर्य] + @deva[उदित]) = 'the sun having risen'. @deva[राजनि गते] = 'the king having gone'. @deva[धर्मे रक्षिते] = '@deva[धर्म] being protected.' This functions like a dependent clause.",
       keyTerms: ["sati saptamI", "nishedha"],
     },
     {
       sutraId: "concept",
       title: "अभ्यास",
       commentary:
-        "Identify @deva[अधिकरण] types: @deva[जले मत्स्याः तरन्ति] — @deva[जल] is @deva[औपश्लेषिक]. @deva[मध्याह्ने सूर्यः तीव्रः] — @deva[मध्याह्न] is @deva[कालाधिकरण]. @deva[गुरौ भक्तिः] — @deva[गुरु] is @deva[वैषयिक]. @deva[सूर्ये उदिते गच्छति] — @deva[सति सप्तमी].",
+        "Apply the @deva[सूत्र]s: @deva[जले मत्स्याः तरन्ति] — @deva[जल] is @deva[आधार] of swimming (fish contact water) → @deva[औपश्लेषिक] @deva[अधिकरण] → @deva[सप्तमी]. @deva[मध्याह्ने सूर्यः तीव्रः] — @deva[मध्याह्न] is @deva[काल] containing the intensity → @deva[कालाधिकरण] → @deva[सप्तमी]. @deva[गुरौ भक्तिः] — @deva[गुरु] is @deva[विषय] of devotion → @deva[वैषयिक] → @deva[सप्तमी]. @deva[सूर्ये उदिते गच्छति] — @deva[सति सप्तमी] expressing 'when the sun has risen, he goes.'",
       keyTerms: ["abhyAsa"],
     },
   ],
