@@ -1133,6 +1133,345 @@ export const terms: Term[] = [
     category: "general",
     related: ["prakriyā"],
   },
+
+  // Prayoga - Voice/Construction
+  {
+    term: "प्रयोग",
+    termRoman: "prayoga",
+    meaning:
+      "Voice or construction. The way a verb relates to its @[kartṛ] and @[karman].",
+    category: "general",
+  },
+  {
+    term: "कर्तरि प्रयोग",
+    termRoman: "kartari prayoga",
+    meaning:
+      "Active voice. The @[kartṛ] (agent) is the grammatical subject and takes @[prathamā]. The verb agrees with the @[kartṛ].",
+    category: "general",
+    related: ["karmaṇi prayoga", "kartṛ"],
+  },
+  {
+    term: "कर्मणि प्रयोग",
+    termRoman: "karmaṇi prayoga",
+    meaning:
+      "Passive voice. The @[karman] (object) becomes the grammatical subject and takes @[prathamā]. The @[kartṛ] takes @[tṛtīyā].",
+    category: "general",
+    related: ["kartari prayoga", "karman"],
+  },
+  {
+    term: "भावे प्रयोग",
+    termRoman: "bhāve prayoga",
+    meaning:
+      "Impersonal passive. Used with intransitive verbs. The verb is always third person singular neuter. @[मया गम्यते] 'going is done by me'.",
+    category: "general",
+    related: ["karmaṇi prayoga"],
+  },
+
+  // Additional karaka-related terms
+  {
+    term: "सहार्थ",
+    termRoman: "sahārtha",
+    meaning:
+      "Accompaniment. Expressed by @[tṛtīyā] with @[saha]: @[पुत्रेण सह गच्छति] 'goes with the son'.",
+    category: "karaka",
+    related: ["tṛtīyā"],
+  },
+  {
+    term: "प्रयोजन",
+    termRoman: "prayojana",
+    meaning:
+      "Purpose or goal. Expressed by @[caturthī]: @[विद्यायै गच्छति] 'goes for knowledge'.",
+    category: "karaka",
+    related: ["caturthī", "sampradāna"],
+  },
+  {
+    term: "दान",
+    termRoman: "dāna",
+    meaning:
+      "Giving. The prototypical action for @[sampradāna] (recipient): @[ब्राह्मणाय गां ददाति] 'gives a cow to the brahmin'.",
+    category: "karaka",
+  },
+  {
+    term: "साधकतम",
+    termRoman: "sādhakatama",
+    meaning:
+      "Most effective means. The defining quality of @[karaṇa] (instrument): @[दात्रेण लुनाति] 'cuts with the sickle'.",
+    sutraRef: "1.4.42",
+    category: "karaka",
+    related: ["karaṇa"],
+  },
+  {
+    term: "ईप्सिततम",
+    termRoman: "īpsitatama",
+    meaning:
+      "Most desired (to affect). The defining quality of @[karman]: what the @[kartṛ] most wishes to accomplish.",
+    sutraRef: "1.4.49",
+    category: "karaka",
+    related: ["karman"],
+  },
+  {
+    term: "स्वतन्त्र",
+    termRoman: "svatantra",
+    meaning:
+      "Independent. The defining quality of @[kartṛ]: the agent acts of their own accord, not as instrument of another.",
+    sutraRef: "1.4.54",
+    category: "karaka",
+    related: ["kartṛ"],
+  },
+  {
+    term: "आधार",
+    termRoman: "ādhāra",
+    meaning:
+      "Container or support. The defining quality of @[adhikaraṇa] (locus): where the action takes place.",
+    sutraRef: "1.4.45",
+    category: "karaka",
+    related: ["adhikaraṇa"],
+  },
+  {
+    term: "ध्रुव",
+    termRoman: "dhruva",
+    meaning:
+      "Fixed point. The defining quality of @[apādāna]: the stationary point from which separation occurs.",
+    sutraRef: "1.4.24",
+    category: "karaka",
+    related: ["apādāna"],
+  },
+
+  // Vibhakti usages
+  {
+    term: "सम्बोधन",
+    termRoman: "sambodhana",
+    meaning:
+      "Vocative or direct address. Uses @[prathamā] endings but with special forms: @[हे राम] 'O Rama!'",
+    category: "vibhakti",
+    related: ["prathamā"],
+  },
+  {
+    term: "सति सप्तमी",
+    termRoman: "sati saptamī",
+    meaning:
+      "Locative absolute. A construction where both subject and participle take @[saptamī] to express circumstance: @[सूर्ये उदिते] 'the sun having risen'.",
+    category: "vibhakti",
+    related: ["saptamī", "adhikaraṇa"],
+  },
+  {
+    term: "गत्यर्थ",
+    termRoman: "gatyartha",
+    meaning:
+      "Motion meaning. Verbs of motion (@[गम्], @[या], etc.) whose destination takes @[dvitīyā]: @[ग्रामं गच्छति] 'goes to the village'.",
+    category: "vibhakti",
+    related: ["dvitīyā"],
+  },
+  {
+    term: "काल",
+    termRoman: "kāla",
+    meaning:
+      "Time. Duration takes @[dvitīyā]: @[मासं वसति] 'stays for a month'. Time-when takes @[saptamī]: @[प्रातःकाले] 'in the morning'.",
+    category: "vibhakti",
+  },
+  {
+    term: "अध्वन्",
+    termRoman: "adhvan",
+    meaning:
+      "Distance or path. Extent of distance takes @[dvitīyā]: @[क्रोशं गच्छति] 'goes one krośa'.",
+    category: "vibhakti",
+    related: ["dvitīyā"],
+  },
+  {
+    term: "अत्यन्तसंयोग",
+    termRoman: "atyantasaṃyoga",
+    meaning:
+      "Complete connection. When @[dvitīyā] expresses duration, the action pervades the entire time/distance.",
+    sutraRef: "2.3.5",
+    category: "vibhakti",
+  },
+
+  // Linga (gender)
+  {
+    term: "लिङ्ग",
+    termRoman: "liṅga",
+    meaning:
+      "Gender. Sanskrit has three: @[puṃliṅga] (masculine), @[strīliṅga] (feminine), @[napuṃsakaliṅga] (neuter).",
+    category: "samjna",
+  },
+  {
+    term: "पुंलिङ्ग",
+    termRoman: "puṃliṅga",
+    meaning: "Masculine gender. E.g., @[देवः] 'god', @[नरः] 'man'.",
+    category: "samjna",
+    related: ["liṅga"],
+  },
+  {
+    term: "स्त्रीलिङ्ग",
+    termRoman: "strīliṅga",
+    meaning: "Feminine gender. E.g., @[देवी] 'goddess', @[नदी] 'river'.",
+    category: "samjna",
+    related: ["liṅga"],
+  },
+  {
+    term: "नपुंसकलिङ्ग",
+    termRoman: "napuṃsakaliṅga",
+    meaning: "Neuter gender. E.g., @[फलम्] 'fruit', @[वनम्] 'forest'.",
+    category: "samjna",
+    related: ["liṅga"],
+  },
+
+  // Vacana (number) - already have these but adding alternate forms
+  {
+    term: "वचन",
+    termRoman: "vacana",
+    meaning:
+      "Number. Sanskrit has three: @[ekavacana] (singular), @[dvivacana] (dual), @[bahuvacana] (plural).",
+    category: "vibhakti",
+  },
+
+  // Additional useful terms
+  {
+    term: "तपस्",
+    termRoman: "tapas",
+    meaning:
+      "Austerity or penance. Spiritual practice involving self-discipline.",
+    category: "general",
+  },
+  {
+    term: "सह",
+    termRoman: "saha",
+    meaning:
+      "With (together with). Governs @[tṛtīyā]: @[पुत्रेण सह] 'with the son'.",
+    category: "general",
+    related: ["sahārtha", "tṛtīyā"],
+  },
+
+  // Additional terms for vibhakti paths
+  {
+    term: "शेष",
+    termRoman: "śeṣa",
+    meaning:
+      "Remainder. षष्ठी (genitive) expresses relations not covered by other कारकs.",
+    sutraRef: "2.3.50",
+    category: "karaka",
+    related: ["ṣaṣṭhī"],
+  },
+  {
+    term: "उपमान",
+    termRoman: "upamāna",
+    meaning:
+      "Standard of comparison. Takes पञ्चमी (ablative): @[रामात् बलवान्] 'stronger than Rama'.",
+    category: "karaka",
+    related: ["pañcamī"],
+  },
+  {
+    term: "स्वामित्व",
+    termRoman: "svāmitva",
+    meaning:
+      "Ownership. A type of सम्बन्ध expressed by षष्ठी: @[मम गृहम्] 'my house'.",
+    category: "karaka",
+    related: ["ṣaṣṭhī", "sambandha"],
+  },
+  {
+    term: "अवयव",
+    termRoman: "avayava",
+    meaning:
+      "Part or limb. Part-whole relation expressed by षष्ठी: @[वृक्षस्य शाखा] 'branch of tree'.",
+    category: "karaka",
+    related: ["ṣaṣṭhī"],
+  },
+  {
+    term: "विकार",
+    termRoman: "vikāra",
+    meaning:
+      "Modification or transformation. Material relation in षष्ठी: @[सुवर्णस्य भूषणम्] 'ornament of gold'.",
+    category: "karaka",
+    related: ["ṣaṣṭhī"],
+  },
+  {
+    term: "औपश्लेषिक",
+    termRoman: "aupaśleṣika",
+    meaning:
+      "Contact-based अधिकरण. The आधार touches the action: @[कटे आस्ते] 'sits on the mat'.",
+    category: "karaka",
+    related: ["adhikaraṇa"],
+  },
+  {
+    term: "वैषयिक",
+    termRoman: "vaiṣayika",
+    meaning:
+      "Domain-based अधिकरण. Abstract location: @[मोक्षे इच्छा] 'desire for liberation', @[व्याकरणे निपुणः] 'skilled in grammar'.",
+    category: "karaka",
+    related: ["adhikaraṇa"],
+  },
+  {
+    term: "अभिव्यापक",
+    termRoman: "abhivyāpaka",
+    meaning:
+      "Pervading अधिकरण. The located thing pervades the locus: @[तिलेषु तैलम्] 'oil in sesame seeds'.",
+    category: "karaka",
+    related: ["adhikaraṇa"],
+  },
+  {
+    term: "कालाधिकरण",
+    termRoman: "kālādhikaraṇa",
+    meaning:
+      "Temporal location. सप्तमी (locative) expressing time-when: @[प्रातःकाले] 'at dawn', @[मध्याह्ने] 'at midday'.",
+    category: "karaka",
+    related: ["adhikaraṇa", "kāla", "saptamī"],
+  },
+  {
+    term: "निमित्त",
+    termRoman: "nimitta",
+    meaning:
+      "Occasion or circumstance. Expressed by सप्तमी in constructions like सति सप्तमी.",
+    category: "karaka",
+    related: ["saptamī"],
+  },
+  {
+    term: "विषय",
+    termRoman: "viṣaya",
+    meaning:
+      "Domain or subject matter. सप्तमी meaning 'regarding': @[शास्त्रे पण्डितः] 'learned in शास्त्र'.",
+    category: "karaka",
+    related: ["saptamī"],
+  },
+  {
+    term: "देश",
+    termRoman: "deśa",
+    meaning:
+      "Place or location. Spatial अधिकरण: @[गृहे वसति] 'lives in the house'.",
+    category: "karaka",
+    related: ["adhikaraṇa"],
+  },
+  {
+    term: "कृदन्त",
+    termRoman: "kṛdanta",
+    meaning:
+      "Word ending in a कृत् suffix. Verbal derivative like @[गत] 'gone', @[कृत] 'done'.",
+    category: "pratyaya",
+    related: ["kṛt"],
+  },
+  {
+    term: "सम्बन्ध",
+    termRoman: "sambandha",
+    meaning:
+      "Relation or connection. The general meaning of षष्ठी (genitive): @[रामस्य पुत्रः] 'Rama's son'.",
+    category: "karaka",
+    related: ["ṣaṣṭhī"],
+  },
+  {
+    term: "भय",
+    termRoman: "bhaya",
+    meaning:
+      "Fear. The cause of fear takes पञ्चमी: @[चोरात् बिभेति] 'fears the thief'.",
+    category: "general",
+    related: ["pañcamī"],
+  },
+  {
+    term: "त्राण",
+    termRoman: "trāṇa",
+    meaning:
+      "Protection. The source of danger takes पञ्चमी: @[सिंहात् त्रायते] 'is protected from the lion'.",
+    category: "general",
+    related: ["pañcamī"],
+  },
 ];
 
 // Build search index

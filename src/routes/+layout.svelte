@@ -29,9 +29,9 @@
     return $page.url.pathname === path;
   }
 
-  function isAnalysisActive(): boolean {
-    const analysisPaths = ['/types', '/adhikara', '/connected', '/roots', '/leaves', '/pratyahara', '/prakriya'];
-    return analysisPaths.some(p => $page.url.pathname === p);
+  function isReferenceActive(): boolean {
+    const referencePaths = ['/types', '/adhikara', '/connected', '/roots', '/leaves', '/pratyahara', '/prakriya'];
+    return referencePaths.some(p => $page.url.pathname === p);
   }
 
   function closeMobileMenu() {
@@ -56,14 +56,20 @@
       </a>
       <div class="flex items-center gap-6">
         <nav class="flex items-center gap-4 text-sm">
+          <a href="/tour" class="hover:text-indigo-600 flex items-center gap-1 text-indigo-600">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Tour
+          </a>
           <a href="/" class="hover:text-indigo-600">Learn <span class="ml-1 px-1.5 py-0.5 text-[10px] font-medium bg-amber-100 text-amber-700 rounded">AI</span></a>
           <a href="/browse" class="hover:text-indigo-600">Browse</a>
           <a href="/search" class="hover:text-indigo-600">Search</a>
 
-          <!-- Analysis dropdown -->
+          <!-- Reference dropdown -->
           <div class="relative group">
             <button class="hover:text-indigo-600 flex items-center gap-1">
-              Analysis
+              Reference
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
