@@ -2,6 +2,9 @@
 id: kridanta-kta-ktavatu
 title: Past Participles
 titleSanskrit: क्तक्तवतू
+label: क्त
+track: grammar
+category: kridanta
 description: Derive past passive participle (kta) and past active participle (ktavatu). Essential forms for describing completed actions.
 difficulty: intermediate
 estimatedTime: 3 hours

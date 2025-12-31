@@ -2,6 +2,9 @@
 id: tinganta-lrng
 title: Conditional
 titleSanskrit: लृङ्लकारः
+label: लृङ्
+track: grammar
+category: tinganta
 description: Derive conditional mood forms expressing "would have" - unrealized conditions and hypotheticals.
 difficulty: intermediate
 estimatedTime: 2 hours

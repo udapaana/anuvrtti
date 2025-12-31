@@ -62,7 +62,7 @@
             </svg>
             Tour
           </a>
-          <a href="/" class="hover:text-indigo-600">Learn <span class="ml-1 px-1.5 py-0.5 text-[10px] font-medium bg-amber-100 text-amber-700 rounded">AI</span></a>
+          <a href="/learn" class="hover:text-indigo-600">Learn <span class="ml-1 px-1.5 py-0.5 text-[10px] font-medium bg-amber-100 text-amber-700 rounded">AI</span></a>
           <a href="/browse" class="hover:text-indigo-600">Browse</a>
           <a href="/search" class="hover:text-indigo-600">Search</a>
 
@@ -75,7 +75,12 @@
               </svg>
             </button>
             <div class="absolute right-0 top-full pt-2 hidden group-hover:block z-50">
-              <div class="bg-white border border-stone-200 rounded shadow-lg py-1 min-w-40">
+              <div class="bg-white border border-stone-200 rounded shadow-lg py-1 min-w-48">
+                <a href="/reference" class="block px-4 py-2 hover:bg-stone-50 font-medium text-indigo-600">
+                  Quick Reference <sup class="text-[9px] text-amber-600 font-semibold">DRAFT</sup>
+                </a>
+                <div class="border-t border-stone-100 my-1"></div>
+                <div class="px-4 py-1 text-xs text-stone-400 uppercase">Analysis</div>
                 <a href="/prakriya" class="block px-4 py-2 hover:bg-stone-50">Prakriya</a>
                 <a href="/pratyahara" class="block px-4 py-2 hover:bg-stone-50">Pratyahara</a>
                 <a href="/adhikara" class="block px-4 py-2 hover:bg-stone-50">Adhikaras</a>

@@ -2,6 +2,9 @@
 id: dhatu-ganas
 title: The Ten Verb Classes
 titleSanskrit: दशगणाः
+label: गणाः
+track: grammar
+category: tinganta
 description: Learn how the 10 dhatu classes (ganas) affect verb conjugation. Each gana has its own vikarana that appears between root and ending.
 difficulty: intermediate
 estimatedTime: 3-4 hours

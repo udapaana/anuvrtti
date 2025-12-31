@@ -1,5 +1,5 @@
 import { parseSutras, numericToDisplayId, displayToNumericId } from "./parser";
-import type { Sutra, Commentary } from "./types";
+import type { Sutra, Commentary, LayeredSutraCommentary } from "./types";
 
 // Caches for loaded data
 let sutrasCache: Sutra[] | null = null;
@@ -8,6 +8,10 @@ let kashikaCache: Record<string, string> | null = null;
 let vartikaCache: Record<string, string> | null = null;
 let englishShortCache: Record<string, string> | null = null;
 let englishFullCache: Record<string, string> | null = null;
+let englishRewrittenCache: Record<string, string> | null = null;
+let kashikaEnglishCache: Record<string, string> | null = null;
+let layeredCommentaryCache: Record<string, LayeredSutraCommentary> | null =
+  null;
 
 /** Fetch JSON from static data folder */
 async function fetchJson<T>(filename: string): Promise<T> {
@@ -87,6 +91,40 @@ async function loadEnglishFull(): Promise<Record<string, string>> {
   return englishFullCache;
 }
 
+/** Load rewritten English translations (cleaner Vasu rewrites) */
+async function loadEnglishRewritten(): Promise<Record<string, string>> {
+  if (englishRewrittenCache) return englishRewrittenCache;
+  englishRewrittenCache = await fetchJson<Record<string, string>>(
+    "vasu_rewritten.json",
+  );
+  return englishRewrittenCache;
+}
+
+/** Load Kāśikā English translations (concise Zinsser-style) */
+async function loadKashikaEnglish(): Promise<Record<string, string>> {
+  if (kashikaEnglishCache) return kashikaEnglishCache;
+  kashikaEnglishCache = await fetchJson<Record<string, string>>(
+    "kashika_english.json",
+  );
+  return kashikaEnglishCache;
+}
+
+/** Load layered commentary (learner-focused, three depth levels) */
+async function loadLayeredCommentary(): Promise<
+  Record<string, LayeredSutraCommentary>
+> {
+  if (layeredCommentaryCache) return layeredCommentaryCache;
+  try {
+    layeredCommentaryCache = await fetchJson<
+      Record<string, LayeredSutraCommentary>
+    >("layered_commentary.json");
+  } catch {
+    // File may not exist yet
+    layeredCommentaryCache = {};
+  }
+  return layeredCommentaryCache;
+}
+
 /** Strip @deva[...] markers from text, keeping just the content */
 function stripDevaMarkers(text: string | undefined): string | undefined {
   if (!text) return text;
@@ -95,19 +133,40 @@ function stripDevaMarkers(text: string | undefined): string | undefined {
 
 /** Get all commentary for a sūtra */
 export async function getCommentary(numericId: string): Promise<Commentary> {
-  const [kashika, vartika, englishShort, englishFull] = await Promise.all([
+  const [
+    kashika,
+    kashikaEnglish,
+    vartika,
+    englishShort,
+    englishFull,
+    englishRewritten,
+  ] = await Promise.all([
     loadKashika(),
+    loadKashikaEnglish(),
     loadVartika(),
     loadEnglishShort(),
     loadEnglishFull(),
+    loadEnglishRewritten(),
   ]);
+
+  // Use rewritten translation if available, otherwise fall back to original Vasu
+  const fullTranslation = englishRewritten[numericId] || englishFull[numericId];
 
   return {
     kashika: kashika[numericId],
+    kashikaEnglish: kashikaEnglish[numericId],
     vartika: vartika[numericId]?.split("\n\n") || undefined,
     englishShort: stripDevaMarkers(englishShort[numericId]),
-    englishFull: stripDevaMarkers(englishFull[numericId]),
+    englishFull: stripDevaMarkers(fullTranslation),
   };
+}
+
+/** Get layered commentary for a sūtra (if available) */
+export async function getLayeredCommentary(
+  numericId: string,
+): Promise<LayeredSutraCommentary | undefined> {
+  const layered = await loadLayeredCommentary();
+  return layered[numericId];
 }
 
 /** Search sūtras by text */
@@ -238,4 +297,11 @@ export async function searchByPada(pada: string): Promise<Sutra[]> {
 }
 
 export { numericToDisplayId, displayToNumericId };
-export type { Sutra, Commentary, SutraType, AnuvrttiRef } from "./types";
+export type {
+  Sutra,
+  Commentary,
+  SutraType,
+  AnuvrttiRef,
+  LayeredSutraCommentary,
+  CommentaryDepth,
+} from "./types";

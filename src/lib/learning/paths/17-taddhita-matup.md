@@ -2,6 +2,9 @@
 id: taddhita-matup
 title: Possessive Suffixes
 titleSanskrit: मतुब्वतुबौ
+label: मतुब्वतुबौ
+track: grammar
+category: taddhita
 description: Derive possessive adjectives using matup and vatup. "Having X" - create words like dhīmat (wise), balavat (strong).
 difficulty: intermediate
 estimatedTime: 2-3 hours

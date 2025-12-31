@@ -2,6 +2,9 @@
 id: tinganta-lut
 title: Periphrastic Future
 titleSanskrit: लुट्लकारः
+label: लुट्
+track: grammar
+category: tinganta
 description: Derive periphrastic future forms using the 'tā' suffix. This future emphasizes the agent and uses a different formation strategy.
 difficulty: intermediate
 estimatedTime: 2 hours

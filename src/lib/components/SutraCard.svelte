@@ -80,7 +80,11 @@
   <!-- Commentary (if expanded) -->
   {#if expanded && commentary}
     <div class="border-t border-stone-100/50">
-      {#if commentary.englishShort}
+      {#if commentary.kashikaEnglish}
+        <div class="px-4 py-3 border-b border-stone-100/50">
+          <p class="text-sm text-stone-700 leading-relaxed"><MarkupText text={commentary.kashikaEnglish} /></p>
+        </div>
+      {:else if commentary.englishShort}
         <div class="px-4 py-3 border-b border-stone-100/50">
           <p class="text-sm text-stone-600"><MarkupText text={commentary.englishShort} /></p>
         </div>
@@ -103,7 +107,7 @@
       {#if commentary.englishFull}
         <details class="group">
           <summary class="px-4 py-3 cursor-pointer hover:bg-stone-50 flex items-center gap-2">
-            <span class="text-xs font-medium text-purple-700 uppercase tracking-wide">Vasu's Translation</span>
+            <span class="text-xs font-medium text-purple-700 uppercase tracking-wide">Translation</span>
             <svg class="w-3 h-3 text-stone-400 group-open:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>

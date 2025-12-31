@@ -2,6 +2,9 @@
 id: tinganta-vidhiling
 title: Optative
 titleSanskrit: विधिलिङ्
+label: विधिलिङ्
+track: grammar
+category: tinganta
 description: Derive optative/potential forms expressing commands, wishes, and possibilities.
 difficulty: beginner
 estimatedTime: 2-3 hours

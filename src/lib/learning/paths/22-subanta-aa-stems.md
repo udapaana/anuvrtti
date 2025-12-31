@@ -2,6 +2,9 @@
 id: subanta-aa-stems
 title: Aa-stem Declension
 titleSanskrit: आकारान्तस्त्री
+label: आकारान्तस्त्री
+track: grammar
+category: subanta
 description: Decline feminine ā-stems like senā, vidyā, kanyā. The primary feminine noun pattern.
 difficulty: beginner
 estimatedTime: 2-3 hours

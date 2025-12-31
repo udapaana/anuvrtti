@@ -2,6 +2,9 @@
 id: kridanta-shatr-shanac
 title: Present Participles
 titleSanskrit: शतृशानचौ
+label: शतृ
+track: grammar
+category: kridanta
 description: Derive present active and middle participles. These verbal adjectives describe ongoing action.
 difficulty: intermediate
 estimatedTime: 3 hours

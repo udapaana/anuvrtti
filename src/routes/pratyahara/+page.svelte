@@ -1,11 +1,18 @@
 <script lang="ts">
-  import { shivaSutras, commonPratyaharas, expandPratyahara, type Pratyahara } from '$lib/pratyahara';
+  import { shivaSutras, commonPratyaharas, expandPratyahara, lookupPratyaharaCanonical, getAllPratyaharaSounds, type Pratyahara } from '$lib/pratyahara';
   import { transliterate } from '$lib/transliteration';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
 
+  interface Interpretation {
+    sounds: string[];
+    sutraIndex: number;
+    startIdx: number;
+    endIdx: number;
+  }
+
   let selectedPratyahara = $state<Pratyahara | null>(null);
   let customInput = $state('');
-  let customResult = $state<string[] | null>(null);
+  let interpretations = $state<Interpretation[]>([]);
   let customError = $state('');
   let normalizedInput = $state('');
 
@@ -13,25 +20,45 @@
     selectedPratyahara = p;
     customInput = p.name;
     normalizedInput = p.name;
-    customResult = p.sounds;
     customError = '';
+    // Use precomputed lookup for accurate indices
+    const results = getAllPratyaharaSounds(p.name);
+    if (results) {
+      interpretations = results;
+    } else {
+      interpretations = [{ sounds: p.sounds, sutraIndex: 0, startIdx: 0, endIdx: p.sounds.length - 1 }];
+    }
   }
 
   async function handleCustomInput() {
     if (!customInput.trim()) {
-      customResult = null;
+      interpretations = [];
       customError = '';
       normalizedInput = '';
+      selectedPratyahara = null;
       return;
     }
 
     const input = customInput.trim();
 
-    // Try to expand directly first (if already Devanagari)
+    // Try precomputed canonical lookup first
+    const canonicalName = lookupPratyaharaCanonical(input);
+    if (canonicalName) {
+      const results = getAllPratyaharaSounds(canonicalName);
+      if (results && results.length > 0) {
+        normalizedInput = canonicalName;
+        interpretations = results;
+        customError = '';
+        selectedPratyahara = commonPratyaharas.find(p => p.name === canonicalName) || null;
+        return;
+      }
+    }
+
+    // Fallback: try direct expansion
     let result = expandPratyahara(input);
     if (result) {
       normalizedInput = input;
-      customResult = result;
+      interpretations = [{ sounds: result, sutraIndex: 0, startIdx: 0, endIdx: result.length - 1 }];
       customError = '';
       selectedPratyahara = null;
       return;
@@ -42,10 +69,10 @@
     for (const scheme of schemes) {
       try {
         const devaInput = await transliterate(input, scheme, 'devanagari');
-        result = expandPratyahara(devaInput);
-        if (result) {
+        const results = getAllPratyaharaSounds(devaInput);
+        if (results && results.length > 0) {
           normalizedInput = devaInput;
-          customResult = result;
+          interpretations = results;
           customError = '';
           selectedPratyahara = null;
           return;
@@ -56,14 +83,33 @@
     }
 
     // Nothing worked
-    customResult = null;
+    interpretations = [];
     normalizedInput = '';
     customError = 'Invalid pratyahara. Try: ac, hal, aN, ik, ec, yaR, Sal';
   }
 
-  // Highlight sounds in the Shiva Sutras that are part of the current selection
-  function isHighlighted(sound: string): boolean {
-    return customResult ? customResult.includes(sound) : false;
+  // Check if a sound at given index is within any interpretation's range
+  function isHighlighted(soundIdx: number): boolean {
+    return interpretations.some(i => soundIdx >= i.startIdx && soundIdx <= i.endIdx);
+  }
+
+  // Check if this position is a start point for any interpretation
+  function isStartPoint(soundIdx: number): boolean {
+    return interpretations.some(i => i.startIdx === soundIdx);
+  }
+
+  // Check if this position is an end point for any interpretation
+  function isEndPoint(soundIdx: number): boolean {
+    return interpretations.some(i => i.endIdx === soundIdx);
+  }
+
+  // Get the global index of a sound within a sutra
+  function getSoundGlobalIndex(sutraIndex: number, soundIndexInSutra: number): number {
+    let idx = 0;
+    for (let i = 0; i < sutraIndex - 1; i++) {
+      idx += shivaSutras[i].sounds.length;
+    }
+    return idx + soundIndexInSutra;
   }
 </script>
 
@@ -88,9 +134,17 @@
           <div class="p-3 flex items-center gap-4">
             <span class="text-stone-400 font-mono text-sm w-6">{sutra.index}</span>
             <div class="flex-1 flex items-center gap-1 flex-wrap">
-              {#each sutra.sounds as sound}
+              {#each sutra.sounds as sound, soundIdx}
+                {@const globalIdx = getSoundGlobalIndex(sutra.index, soundIdx)}
+                {@const highlighted = isHighlighted(globalIdx)}
+                {@const isStart = isStartPoint(globalIdx)}
+                {@const isEnd = isEndPoint(globalIdx)}
                 <span
-                  class="text-xl px-1.5 py-0.5 rounded transition-colors {isHighlighted(sound) ? 'bg-indigo-100 text-indigo-700' : ''}"
+                  class="text-xl px-3 py-1 transition-colors {highlighted ? 'text-indigo-700' : ''}"
+                  class:sound-start={isStart && !isEnd}
+                  class:sound-end={isEnd && !isStart}
+                  class:sound-both={isStart && isEnd}
+                  class:sound-middle={highlighted && !isStart && !isEnd}
                 >
                   <Sanskrit text={sound} />
                 </span>
@@ -107,20 +161,18 @@
       </p>
     </div>
 
-    <!-- Pratyahara Input & Results -->
+    <!-- Pratyahara Input -->
     <div>
       <h2 class="text-lg font-medium mb-4">Expand a Pratyahara</h2>
 
       <div class="mb-6">
-        <div class="flex gap-2">
-          <input
-            type="text"
-            bind:value={customInput}
-            oninput={handleCustomInput}
-            placeholder="Enter pratyahara (e.g., ac, hal, yaR)"
-            class="flex-1 px-3 py-2 text-lg border border-stone-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
+        <input
+          type="text"
+          bind:value={customInput}
+          oninput={handleCustomInput}
+          placeholder="Enter pratyahara (e.g., ac, hal, yaR)"
+          class="w-full px-3 py-2 text-lg border border-stone-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
         <p class="mt-2 text-xs text-stone-400">
           Accepts Devanagari, IAST, SLP1, Harvard-Kyoto, ITRANS
         </p>
@@ -128,24 +180,6 @@
           <p class="mt-1 text-sm text-red-500">{customError}</p>
         {/if}
       </div>
-
-      {#if customResult}
-        <div class="bg-indigo-50 rounded p-4 mb-6">
-          <div class="text-sm text-indigo-600 mb-2">
-            <Sanskrit text={normalizedInput} /> = {customResult.length} sounds:
-          </div>
-          <div class="flex flex-wrap gap-2">
-            {#each customResult as sound}
-              <span class="text-2xl bg-white px-2 py-1 rounded border border-indigo-200">
-                <Sanskrit text={sound} />
-              </span>
-            {/each}
-          </div>
-          {#if selectedPratyahara}
-            <p class="mt-3 text-sm text-stone-600">{selectedPratyahara.description}</p>
-          {/if}
-        </div>
-      {/if}
 
       <h3 class="text-md font-medium mb-3">Common Pratyaharas</h3>
       <div class="grid grid-cols-2 gap-2">
@@ -165,3 +199,46 @@
     </div>
   </div>
 </div>
+
+<style>
+  /* Start point: right-pointing arrow shape (green) */
+  .sound-start {
+    background: linear-gradient(135deg, #22c55e 0%, #22c55e 50%, #dcfce7 50%, #dcfce7 100%);
+    background-size: 8px 100%;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-color: #dcfce7;
+    padding-left: 0.75rem;
+    border-radius: 3px;
+  }
+
+  /* End point: left-pointing arrow shape (red) */
+  .sound-end {
+    background: linear-gradient(45deg, #fecaca 0%, #fecaca 50%, #ef4444 50%, #ef4444 100%);
+    background-size: 8px 100%;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: #fecaca;
+    padding-right: 0.75rem;
+    border-radius: 3px;
+  }
+
+  /* Both start and end: diamond-ish shape */
+  .sound-both {
+    background: linear-gradient(135deg, #22c55e 0%, #22c55e 50%, #fef3c7 50%, #fef3c7 100%),
+                linear-gradient(45deg, #fef3c7 0%, #fef3c7 50%, #ef4444 50%, #ef4444 100%);
+    background-size: 8px 100%, 8px 100%;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left, right;
+    background-color: #fef3c7;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border-radius: 3px;
+  }
+
+  /* Middle highlighted sounds */
+  .sound-middle {
+    background-color: #e0e7ff;
+    border-radius: 3px;
+  }
+</style>

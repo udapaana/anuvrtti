@@ -2,6 +2,9 @@
 id: tinganta-ashirling
 title: Benedictive
 titleSanskrit: आशीर्लिङ्
+label: आशीर्लिङ्
+track: grammar
+category: tinganta
 description: Derive benedictive forms expressing blessings and wishes. This special use of liṅ has its own distinctive formation.
 difficulty: intermediate
 estimatedTime: 2 hours

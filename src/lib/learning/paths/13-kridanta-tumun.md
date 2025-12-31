@@ -2,6 +2,9 @@
 id: kridanta-tumun
 title: Infinitive
 titleSanskrit: तुमन्तम्
+label: तुमुन्
+track: grammar
+category: kridanta
 description: Derive infinitive forms (to do X). The tumun suffix creates purpose expressions and complements.
 difficulty: intermediate
 estimatedTime: 2 hours

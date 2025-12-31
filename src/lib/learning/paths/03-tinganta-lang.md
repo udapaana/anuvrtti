@@ -2,6 +2,9 @@
 id: tinganta-lang
 title: Imperfect
 titleSanskrit: लङ्लकारः
+label: लङ्
+track: grammar
+category: tinganta
 description: Derive past imperfect forms with the augment अ.
 difficulty: beginner
 estimatedTime: 2-3 hours

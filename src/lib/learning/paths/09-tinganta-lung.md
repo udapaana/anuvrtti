@@ -2,6 +2,9 @@
 id: tinganta-lung
 title: Aorist
 titleSanskrit: लुङ्लकारः
+label: लुङ्
+track: grammar
+category: tinganta
 description: Derive aorist (past tense) forms. The luṅ has multiple formation types - this path covers the seven aorist varieties.
 difficulty: advanced
 estimatedTime: 4-5 hours

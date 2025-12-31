@@ -1,0 +1,81 @@
+{
+  "source": {
+    "id": "subhasitas",
+    "title": "Subhāṣitas",
+    "titleSanskrit": "सुभाषितानि",
+    "genre": "other",
+    "difficulty": 1,
+    "description": "Short aphoristic verses conveying wisdom. Their brevity and self-contained nature make them ideal for beginning readers."
+  },
+  "passages": [
+    {
+      "id": "subhasita-vidya-1",
+      "source": "subhasitas",
+      "reference": "vidyā.1",
+      "title": "The Fruit of Learning",
+      "sanskrit": "विद्या ददाति विनयं विनयाद्याति पात्रताम् ।\nपात्रत्वाद्धनमाप्नोति धनाद्धर्मं ततः सुखम् ॥",
+      "padaccheda": "विद्या ददाति विनयम् विनयात् याति पात्रताम् पात्रत्वात् धनम् आप्नोति धनात् धर्मम् ततः सुखम्",
+      "transliteration": "vidyā dadāti vinayaṃ vinayād yāti pātratām |\npātratvād dhanam āpnoti dhanād dharmaṃ tataḥ sukham ||",
+      "translation": "Learning gives humility; from humility comes worthiness; from worthiness one obtains wealth; from wealth, dharma; and from that, happiness.",
+      "vocabulary": [
+        {"wordId": "daa", "formInText": "ददाति", "formRoman": "dadāti", "glossHint": "gives (3rd class present)"},
+        {"wordId": "gam", "formInText": "याति", "formRoman": "yāti", "glossHint": "goes, comes (root class present)"}
+      ],
+      "grammarNotes": "A chain of ablatives showing cause and effect:\n\n1. **Ablative of source/cause**: विनयात्, पात्रत्वात्, धनात् - \"from X\" showing what leads to what\n\n2. **Abstract noun formation**: पात्रता \"worthiness\" (from पात्र + ता suffix)\n\n3. **Present tense verbs**: ददाति (√दा, 3rd class), याति (√या), आप्नोति (√आप्, 5th class)",
+      "difficulty": 1,
+      "prerequisiteGrammar": ["vibhakti-ablative", "tinganta-lat"],
+      "meterInfo": "anuṣṭubh (8 syllables per quarter)"
+    },
+    {
+      "id": "subhasita-mitra-1",
+      "source": "subhasitas",
+      "reference": "mitra.1",
+      "title": "The Test of Friendship",
+      "sanskrit": "आपदि मित्रपरीक्षा शूरपरीक्षा रणाङ्गणे ।\nविनये वंशपरीक्षा शीलपरीक्षा धनक्षये ॥",
+      "padaccheda": "आपदि मित्र-परीक्षा शूर-परीक्षा रण-अङ्गणे विनये वंश-परीक्षा शील-परीक्षा धन-क्षये",
+      "transliteration": "āpadi mitra-parīkṣā śūra-parīkṣā raṇāṅgaṇe |\nvinaye vaṃśa-parīkṣā śīla-parīkṣā dhana-kṣaye ||",
+      "translation": "In calamity is the test of a friend; in the battlefield, the test of a hero; in conduct, the test of lineage; in loss of wealth, the test of character.",
+      "vocabulary": [],
+      "grammarNotes": "This verse is a series of locative-nominative pairs:\n\n1. **Locative of circumstance**: आपदि \"in calamity\", रणाङ्गणे \"on the battlefield\", विनये \"in conduct\", धनक्षये \"in loss of wealth\"\n\n2. **Tatpuruṣa compounds**: मित्रपरीक्षा \"test of a friend\" (genitive tatpuruṣa)\n\n3. **Nominal sentence**: No verb - the structure is \"in X [is] the Y\" (implied अस्ति)",
+      "difficulty": 1,
+      "prerequisiteGrammar": ["vibhakti-locative", "compounds-tatpurusha"],
+      "meterInfo": "anuṣṭubh"
+    },
+    {
+      "id": "subhasita-satya-1",
+      "source": "subhasitas",
+      "reference": "satya.1",
+      "title": "Truth and Kindness",
+      "sanskrit": "सत्यं ब्रूयात् प्रियं ब्रूयात् न ब्रूयात् सत्यमप्रियम् ।\nप्रियं च नानृतं ब्रूयात् एष धर्मः सनातनः ॥",
+      "padaccheda": "सत्यम् ब्रूयात् प्रियम् ब्रूयात् न ब्रूयात् सत्यम् अप्रियम् प्रियम् च न अनृतम् ब्रूयात् एषः धर्मः सनातनः",
+      "transliteration": "satyaṃ brūyāt priyaṃ brūyāt na brūyāt satyam apriyam |\npriyaṃ ca nānṛtaṃ brūyāt eṣa dharmaḥ sanātanaḥ ||",
+      "translation": "One should speak the truth; one should speak pleasantly; one should not speak truth that is unpleasant; nor should one speak pleasant falsehood—this is the eternal dharma.",
+      "vocabulary": [
+        {"wordId": "na", "formInText": "न", "formRoman": "na"},
+        {"wordId": "ca", "formInText": "च", "formRoman": "ca"}
+      ],
+      "grammarNotes": "Optative (vidhi-liṅ) expressing prescription:\n\n1. **Optative mood**: ब्रूयात् \"one should speak\" - 3rd person singular optative of √ब्रू\n\n2. **Negation patterns**: न ब्रूयात् \"one should not speak\"\n\n3. **Sandhi**: नानृतम् = न + अनृतम् (vowel sandhi)",
+      "difficulty": 2,
+      "prerequisiteGrammar": ["tinganta-lin"],
+      "meterInfo": "anuṣṭubh"
+    },
+    {
+      "id": "subhasita-kala-1",
+      "source": "subhasitas",
+      "reference": "kāla.1",
+      "title": "Time Devours All",
+      "sanskrit": "कालः पचति भूतानि कालः संहरते प्रजाः ।\nकालः सुप्तेषु जागर्ति कालो हि दुरतिक्रमः ॥",
+      "padaccheda": "कालः पचति भूतानि कालः संहरते प्रजाः कालः सुप्तेषु जागर्ति कालः हि दुरतिक्रमः",
+      "transliteration": "kālaḥ pacati bhūtāni kālaḥ saṃharate prajāḥ |\nkālaḥ supteṣu jāgarti kālo hi duratikramaḥ ||",
+      "translation": "Time cooks (ripens/destroys) beings; Time gathers up creatures; Time stays awake while [all] sleep; Time indeed is hard to overcome.",
+      "vocabulary": [
+        {"wordId": "pac", "formInText": "पचति", "formRoman": "pacati", "glossHint": "cooks, ripens (metaphor for destroying)"},
+        {"wordId": "eva", "formInText": "हि", "formRoman": "hi", "glossHint": "indeed, for (emphatic particle)"}
+      ],
+      "grammarNotes": "Personification through present tense verbs:\n\n1. **Active present**: पचति \"cooks\", जागर्ति \"stays awake\"\n\n2. **Middle present**: संहरते \"gathers to itself\" (ātmanepada)\n\n3. **Locative absolute sense**: सुप्तेषु \"while [beings are] asleep\" - locative plural of the past participle\n\n4. **Bahuvrīhi compound**: दुरतिक्रमः \"hard to cross over\" = दुस् + अतिक्रम",
+      "difficulty": 2,
+      "prerequisiteGrammar": ["tinganta-lat", "krt-kta", "compounds-bahuvrihi"],
+      "meterInfo": "anuṣṭubh"
+    }
+  ]
+}

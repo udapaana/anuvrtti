@@ -9,14 +9,21 @@
   let selectedTerm = $state<Term | null>(null);
   let selectedCategory = $state<TermCategory | null>(null);
 
+  // History for back navigation
+  let termHistory = $state<Term[]>([]);
+
   const categories = getCategories();
 
-  // Listen for external term selection (from CommentaryText clicks)
+  // Listen for external term selection (from CommentaryText clicks or ClickableSanskrit)
   $effect(() => {
     const unsubscribe = selectedTermStore.subscribe(termQuery => {
       if (termQuery) {
         const found = lookupTerm(termQuery);
         if (found) {
+          // Save current term to history before switching
+          if (selectedTerm && selectedTerm.termRoman !== found.termRoman) {
+            termHistory = [...termHistory, selectedTerm];
+          }
           selectedTerm = found;
           query = '';
           selectedCategory = null;
@@ -32,6 +39,16 @@
     });
     return unsubscribe;
   });
+
+  function goBack() {
+    if (termHistory.length > 0) {
+      const prev = termHistory[termHistory.length - 1];
+      termHistory = termHistory.slice(0, -1);
+      selectedTerm = prev;
+    } else {
+      selectedTerm = null;
+    }
+  }
 
   function handleSearch() {
     if (query.trim()) {
@@ -109,6 +126,21 @@
   <!-- Selected term detail -->
   {#if selectedTerm}
     <div class="mt-3 pt-3 border-t border-stone-100">
+      <!-- Back button -->
+      <button
+        onclick={goBack}
+        class="flex items-center gap-1 text-xs text-stone-500 hover:text-indigo-600 mb-2 transition-colors"
+      >
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        {#if termHistory.length > 0}
+          Back to <Sanskrit text={termHistory[termHistory.length - 1].term} class="ml-1" />
+        {:else}
+          Close
+        {/if}
+      </button>
+
       <div class="text-lg font-medium mb-1">
         <Sanskrit text={selectedTerm.term} />
       </div>

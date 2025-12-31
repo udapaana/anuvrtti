@@ -19,27 +19,27 @@
   let currentTarget = $state<Script>('devanagari');
   let mounted = $state(false);
 
-  // Map script to appropriate Noto Sans font
-  const scriptFonts: Record<Script, string> = {
-    devanagari: "'Noto Sans Devanagari'",
-    telugu: "'Noto Sans Telugu'",
-    kannada: "'Noto Sans Kannada'",
-    malayalam: "'Noto Sans Malayalam'",
-    tamil: "'Noto Sans Tamil'",
-    bengali: "'Noto Sans Bengali'",
-    gujarati: "'Noto Sans Gujarati'",
-    gurmukhi: "'Noto Sans Gurmukhi'",
-    odia: "'Noto Sans Oriya'",
-    sinhala: "'Noto Sans Sinhala'",
-    iast: "'Noto Sans'",
-    iso15919: "'Noto Sans'",
-    slp1: "'Noto Sans'",
-    hk: "'Noto Sans'",
-    itrans: "'Noto Sans'",
-    velthuis: "'Noto Sans'",
+  // Map script to CSS class for font styling
+  const scriptClasses: Record<Script, string> = {
+    devanagari: 'font-devanagari',
+    telugu: 'font-telugu',
+    kannada: 'font-kannada',
+    malayalam: 'font-malayalam',
+    tamil: 'font-tamil',
+    bengali: 'font-bengali',
+    gujarati: 'font-gujarati',
+    gurmukhi: 'font-gurmukhi',
+    odia: 'font-odia',
+    sinhala: 'font-sinhala',
+    iast: 'font-iast',
+    iso15919: 'font-iast',
+    slp1: 'font-iast',
+    hk: 'font-iast',
+    itrans: 'font-iast',
+    velthuis: 'font-iast',
   };
 
-  let fontFamily = $derived(scriptFonts[currentTarget] + ', sans-serif');
+  let fontClass = $derived(scriptClasses[currentTarget]);
 
   onMount(() => {
     mounted = true;
@@ -77,4 +77,4 @@
   });
 </script>
 
-<span class={className} style="font-family: {fontFamily}">{displayText || text}</span>
+<span class="{fontClass} {className}">{displayText || text}</span>

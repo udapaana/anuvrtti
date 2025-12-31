@@ -2,6 +2,9 @@
 id: subanta-a-stems
 title: A-stem Declension
 titleSanskrit: अकारान्तपुंनपुंसकम्
+label: अकारान्तपुंनपुंसकम्
+track: grammar
+category: subanta
 description: Master the most common declension - masculine and neuter a-stems like deva, phala. The paradigm foundation.
 difficulty: beginner
 estimatedTime: 3 hours

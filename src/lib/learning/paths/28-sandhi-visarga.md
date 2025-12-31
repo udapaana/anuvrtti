@@ -2,6 +2,9 @@
 id: sandhi-visarga
 title: Visarga Sandhi
 titleSanskrit: विसर्गसन्धिः
+label: विसर्गसन्धिः
+track: grammar
+category: sandhi
 description: Learn the complex rules governing visarga (ḥ). How final -s and -r transform at word junctions.
 difficulty: intermediate
 estimatedTime: 2-3 hours

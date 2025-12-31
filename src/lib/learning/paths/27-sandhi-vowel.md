@@ -2,6 +2,9 @@
 id: sandhi-vowel
 title: Vowel Sandhi
 titleSanskrit: अच्सन्धिः
+label: स्वरसन्धिः
+track: grammar
+category: sandhi
 description: Master the rules of vowel combination. When vowels meet at word boundaries or within words, these rules apply.
 difficulty: intermediate
 estimatedTime: 3 hours

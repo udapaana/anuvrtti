@@ -2,6 +2,9 @@
 id: kridanta-ktva
 title: Absolutive
 titleSanskrit: क्त्वान्तम्
+label: क्त्वा
+track: grammar
+category: kridanta
 description: Derive absolutive forms (having done X). The ktva and lyap suffixes create indeclinable forms expressing prior action.
 difficulty: intermediate
 estimatedTime: 2-3 hours

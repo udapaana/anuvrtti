@@ -2,6 +2,9 @@
 id: tinganta-lrt
 title: Simple Future
 titleSanskrit: लृट्लकारः
+label: लृट्
+track: grammar
+category: tinganta
 description: Derive simple future tense forms. This is the first ardhadhatuka lakara - note the different vikarana and ending patterns.
 difficulty: intermediate
 estimatedTime: 2-3 hours

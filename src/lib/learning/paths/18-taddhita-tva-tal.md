@@ -2,6 +2,9 @@
 id: taddhita-tva-tal
 title: Abstract Noun Suffixes
 titleSanskrit: त्वतलौ
+label: त्वतलौ
+track: grammar
+category: taddhita
 description: Derive abstract nouns using tva and tal. Create "-ness/-ity" words like gurutva (heaviness), gurutā.
 difficulty: intermediate
 estimatedTime: 2 hours

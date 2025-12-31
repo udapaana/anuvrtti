@@ -2,6 +2,9 @@
 id: subanta-i-u-stems
 title: I-stem and U-stem Declension
 titleSanskrit: इकारोकारान्तम्
+label: इकारोकारान्तम्
+track: grammar
+category: subanta
 description: Decline i-stems (agni, kavi) and u-stems (guru, madhu). Important patterns with guna and vrddhi changes.
 difficulty: intermediate
 estimatedTime: 3 hours

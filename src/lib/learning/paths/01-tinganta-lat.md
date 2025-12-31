@@ -2,6 +2,9 @@
 id: tinganta-lat
 title: Present Tense
 titleSanskrit: लट्लकारः
+label: लट्
+track: grammar
+category: tinganta
 description: Learn to derive present tense verb forms—the most common forms you'll encounter.
 difficulty: beginner
 estimatedTime: 3-4 hours

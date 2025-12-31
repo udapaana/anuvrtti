@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Subanta Generation</title></head>
+<body>
+<script type="module">
+import { initWasm, Vidyut, Linga, Vibhakti, Vacana } from '/wasm/vidyut-prakriya/vidyut-prakriya.js';
+
+await initWasm('/wasm/vidyut-prakriya/vidyut_prakriya_bg.wasm');
+const v = new Vidyut();
+
+// Test generating all forms of "savarRa" (सवर्ण)
+const stem = "savarRa";
+const lingas = ["Pum", "Napumsaka"];
+const vibhaktis = ["Prathama", "Dvitiya", "Trtiya", "Caturthi", "Panchami", "Sasthi", "Saptami"];
+const vacanas = ["Eka", "Dvi", "Bahu"];
+
+const forms = [];
+for (const linga of lingas) {
+  for (const vibhakti of vibhaktis) {
+    for (const vacana of vacanas) {
+      try {
+        const results = v.deriveSubantas({
+          pratipadika: { basic: stem },
+          linga: Linga[linga],
+          vibhakti: Vibhakti[vibhakti],
+          vacana: Vacana[vacana]
+        });
+        for (const r of results) {
+          forms.push({ form: r.text, linga, vibhakti, vacana });
+        }
+      } catch (e) {
+        console.error(`Error for ${linga}/${vibhakti}/${vacana}:`, e);
+      }
+    }
+  }
+}
+
+console.log("All forms of savarṇa:", forms);
+document.body.innerHTML = `<pre>${JSON.stringify(forms, null, 2)}</pre>`;
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { learningPaths, type LearningPath, type PathCategory } from '$lib/learning/paths';
+  import { learningPaths, type LearningPath, type PathCategory, type Track } from '$lib/learning/paths';
   import { learningProgress } from '$lib/stores/learning';
   import { categoryColors } from '$lib/learning/tree';
   import { displayScript } from '$lib/stores/preferences';
@@ -7,34 +7,19 @@
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
 
-  // View mode: 'reading' (breadth-first) or 'scholarship' (depth-first by category)
-  let viewMode: 'reading' | 'scholarship' = $state('reading');
+  // View mode: 'reading' (reading track) or 'grammar' (grammar track by category)
+  let viewMode: Track = $state('reading');
 
-  // Reading path - curated linear sequence for reading fluency
-  const readingPathIds = [
-    'varnamala',           // 1. Alphabet basics
-    'basic-vocabulary',    // 2. Essential words
-    'simple-sentences',    // 3. Basic sentence structure
-    'vibhakti-basics',     // 4. Subject/object (cases 1 & 2)
-    'tinganta-lat',        // 5. Present tense verbs
-    'sandhi-vowel',        // 6. Vowel sandhi (most common)
-    'samasa-intro',        // 7. Compound basics
-    'vibhakti-3-4',        // 8. Instrument/recipient
-    'tinganta-lang',       // 9. Past tense (imperfect)
-    'samasa-tatpurusha',   // 10. Common compounds
-    'vibhakti-5-6',        // 11. Source/possession
-    'sandhi-visarga',      // 12. Visarga sandhi
-    'vibhakti-7',          // 13. Location
-    'samasa-bahuvrihi',    // 14. Possessive compounds
-    'kridanta-kta-ktavatu', // 15. Past participles
-    'tinganta-lot',        // 16. Imperative
-    'kridanta-shatr-shanac', // 17. Present participles
-    'sandhi-consonant',    // 18. Consonant sandhi
-  ];
+  // Get paths by track
+  function getPathsByTrack(track: Track): LearningPath[] {
+    return learningPaths.filter(p => p.track === track);
+  }
 
-  const readingPath = readingPathIds
-    .map(id => learningPaths.find(p => p.id === id))
-    .filter((p): p is LearningPath => p !== undefined);
+  // Reading track paths (filtered from learningPaths by track field)
+  const readingPath = getPathsByTrack('reading');
+
+  // Grammar track paths
+  const grammarPaths = getPathsByTrack('grammar');
 
   // Group paths by category for scholarship view
   const categories: { id: PathCategory; label: string; labelSanskrit: string }[] = [
@@ -51,7 +36,7 @@
   const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
 
   function getPathsByCategory(category: PathCategory): LearningPath[] {
-    return learningPaths
+    return grammarPaths
       .filter(p => p.category === category)
       .sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]);
   }
@@ -147,7 +132,7 @@
 </script>
 
 <div class="learning-tree">
-  <!-- Mode Toggle -->
+  <!-- Track Toggle -->
   <div class="mode-toggle">
     <button
       class="mode-btn"
@@ -155,15 +140,15 @@
       onclick={() => viewMode = 'reading'}
     >
       <span class="mode-sanskrit">पठनम्</span>
-      <span class="mode-english">Reading Path</span>
+      <span class="mode-english">Reading Track</span>
     </button>
     <button
       class="mode-btn"
-      class:active={viewMode === 'scholarship'}
-      onclick={() => viewMode = 'scholarship'}
+      class:active={viewMode === 'grammar'}
+      onclick={() => viewMode = 'grammar'}
     >
-      <span class="mode-sanskrit">पाण्डित्यम्</span>
-      <span class="mode-english">Full Topics</span>
+      <span class="mode-sanskrit">व्याकरणम्</span>
+      <span class="mode-english">Grammar Track</span>
     </button>
   </div>
 
@@ -212,9 +197,9 @@
       {/each}
     </ol>
   {:else}
-    <!-- Scholarship View (by category) -->
-    <div class="scholarship-header">
-      <p class="scholarship-desc">Deep dive into each topic — master one area before moving on.</p>
+    <!-- Grammar Track View (by category) -->
+    <div class="grammar-header">
+      <p class="grammar-desc">Systematic Pāṇinian grammar — organized by topic following traditional prakaraṇa structure.</p>
     </div>
 
     <div class="learning-paths">
@@ -330,7 +315,7 @@
     gap: 0.5rem;
   }
 
-  .reading-desc, .scholarship-desc {
+  .reading-desc, .grammar-desc {
     font-size: 0.8rem;
     color: #78716c;
     margin: 0;
@@ -483,8 +468,8 @@
     color: #78716c;
   }
 
-  /* Scholarship View */
-  .scholarship-header {
+  /* Grammar Track View */
+  .grammar-header {
     margin-bottom: 0.5rem;
   }
 

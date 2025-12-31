@@ -2,6 +2,9 @@
 id: samasa-intro
 title: Samasa - Compound Formation
 titleSanskrit: समासप्रकरणम्
+label: समासः
+track: grammar
+category: samasa
 description: Learn the four main types of Sanskrit compounds. How words combine to form new semantic units.
 difficulty: intermediate
 estimatedTime: 3-4 hours

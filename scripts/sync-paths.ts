@@ -23,10 +23,24 @@ interface LearningStep {
   keyTerms?: string[];
 }
 
+type Track = "reading" | "grammar";
+type PathCategory =
+  | "foundation"
+  | "tinganta"
+  | "subanta"
+  | "taddhita"
+  | "kridanta"
+  | "sandhi"
+  | "karaka"
+  | "samasa";
+
 interface LearningPath {
   id: string;
   title: string;
   titleSanskrit: string;
+  label: string;
+  track: Track;
+  category: PathCategory;
   description: string;
   difficulty: "beginner" | "intermediate" | "advanced";
   estimatedTime: string;
@@ -39,7 +53,11 @@ function parseFrontmatter(content: string): { frontmatter: any; body: string } {
   if (!match) throw new Error("Invalid markdown: missing frontmatter");
 
   const [, yaml, body] = match;
-  const frontmatter: any = { prerequisites: [] };
+  const frontmatter: any = {
+    prerequisites: [],
+    track: "grammar",
+    category: "foundation",
+  };
 
   let inPrereqs = false;
   for (const line of yaml.split("\n")) {
@@ -54,7 +72,15 @@ function parseFrontmatter(content: string): { frontmatter: any; body: string } {
     if (colonIndex === -1) continue;
 
     const key = line.slice(0, colonIndex).trim();
-    const value = line.slice(colonIndex + 1).trim();
+    let value = line.slice(colonIndex + 1).trim();
+
+    // Strip surrounding quotes from values
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
 
     if (key === "prerequisites") {
       inPrereqs = true;
@@ -71,6 +97,11 @@ function parseFrontmatter(content: string): { frontmatter: any; body: string } {
     }
   }
 
+  // Default label to titleSanskrit if not specified
+  if (!frontmatter.label && frontmatter.titleSanskrit) {
+    frontmatter.label = frontmatter.titleSanskrit;
+  }
+
   return { frontmatter, body };
 }
 
@@ -81,21 +112,21 @@ function parseStep(section: string): LearningStep | null {
   // Try to match sutra format: ## X.X.X - Title or ## @ref[X.X.X] - Title
   const sutraMatch = lines[0].match(/^##\s+(\d+\.\d+\.\d+)\s*-\s*(.+)$/);
   const refMatch = lines[0].match(/^##\s+@ref\[(\d+\.\d+\.\d+)\]\s*-\s*(.+)$/);
-  // Also match conceptual sections: ## Title (without sutra ID or @ref)
-  const conceptMatch = lines[0].match(/^##\s+([A-Za-z].*)$/);
+  // Match typed sections: ## concept - Title or ## reading - Title
+  const typedMatch = lines[0].match(/^##\s+(concept|reading)\s*-\s*(.+)$/i);
 
-  if (!sutraMatch && !refMatch && !conceptMatch) return null;
+  if (!sutraMatch && !refMatch && !typedMatch) return null;
 
   const sutraId = sutraMatch
     ? sutraMatch[1]
     : refMatch
       ? refMatch[1]
-      : "concept";
+      : typedMatch![1].toLowerCase();
   const title = sutraMatch
     ? sutraMatch[2]
     : refMatch
       ? refMatch[2]
-      : conceptMatch![1];
+      : typedMatch![2];
 
   let keyTerms: string[] = [];
   let commentaryLines: string[] = [];
@@ -136,6 +167,9 @@ function parseMarkdown(content: string): LearningPath {
     id: frontmatter.id,
     title: frontmatter.title,
     titleSanskrit: frontmatter.titleSanskrit,
+    label: frontmatter.label,
+    track: frontmatter.track,
+    category: frontmatter.category,
     description: frontmatter.description,
     difficulty: frontmatter.difficulty,
     estimatedTime: frontmatter.estimatedTime,
@@ -149,6 +183,9 @@ function pathToMarkdown(p: LearningPath): string {
   lines.push(`id: ${p.id}`);
   lines.push(`title: ${p.title}`);
   lines.push(`titleSanskrit: ${p.titleSanskrit}`);
+  lines.push(`label: ${p.label}`);
+  lines.push(`track: ${p.track}`);
+  lines.push(`category: ${p.category}`);
   lines.push(`description: ${p.description}`);
   lines.push(`difficulty: ${p.difficulty}`);
   lines.push(`estimatedTime: ${p.estimatedTime}`);
@@ -185,6 +222,18 @@ function generateTypeScript(paths: LearningPath[]): string {
     " * To edit, modify the .md files and run: npx tsx scripts/sync-paths.ts --to-ts",
     " */",
     "",
+    'export type Track = "reading" | "grammar";',
+    "",
+    "export type PathCategory =",
+    '  | "foundation"',
+    '  | "tinganta"',
+    '  | "subanta"',
+    '  | "taddhita"',
+    '  | "kridanta"',
+    '  | "sandhi"',
+    '  | "karaka"',
+    '  | "samasa";',
+    "",
     "export interface LearningStep {",
     "  sutraId: string;",
     "  title: string;",
@@ -196,6 +245,12 @@ function generateTypeScript(paths: LearningPath[]): string {
     "  id: string;",
     "  title: string;",
     "  titleSanskrit: string;",
+    "  /** Short label for tree node display (Sanskrit) */",
+    "  label: string;",
+    "  /** Track this path belongs to: reading (fluency) or grammar (systematic) */",
+    "  track: Track;",
+    "  /** Category for color-coding in tree view */",
+    "  category: PathCategory;",
     "  description: string;",
     '  difficulty: "beginner" | "intermediate" | "advanced";',
     "  estimatedTime: string;",
@@ -212,6 +267,9 @@ function generateTypeScript(paths: LearningPath[]): string {
     lines.push(`  id: "${p.id}",`);
     lines.push(`  title: "${escapeString(p.title)}",`);
     lines.push(`  titleSanskrit: "${escapeString(p.titleSanskrit)}",`);
+    lines.push(`  label: "${escapeString(p.label)}",`);
+    lines.push(`  track: "${p.track}",`);
+    lines.push(`  category: "${p.category}",`);
     lines.push(`  description: "${escapeString(p.description)}",`);
     lines.push(`  difficulty: "${p.difficulty}",`);
     lines.push(`  estimatedTime: "${p.estimatedTime}",`);

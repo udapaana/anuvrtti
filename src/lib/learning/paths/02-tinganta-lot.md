@@ -2,6 +2,9 @@
 id: tinganta-lot
 title: Imperative
 titleSanskrit: लोट्लकारः
+label: लोट्
+track: grammar
+category: tinganta
 description: Derive imperative forms for commands, invitations, and blessings.
 difficulty: beginner
 estimatedTime: 2-3 hours

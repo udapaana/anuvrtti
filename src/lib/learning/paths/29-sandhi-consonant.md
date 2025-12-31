@@ -2,6 +2,9 @@
 id: sandhi-consonant
 title: Consonant Sandhi
 titleSanskrit: हल्सन्धिः
+label: व्यञ्जनसन्धिः
+track: grammar
+category: sandhi
 description: Master consonant junction rules. How stops, nasals, and other consonants interact at boundaries.
 difficulty: intermediate
 estimatedTime: 3 hours

@@ -2,6 +2,9 @@
 id: taddhita-an-ika
 title: Relational Suffixes
 titleSanskrit: अण्ठक्
+label: अण्ठक्
+track: grammar
+category: taddhita
 description: Derive words expressing relation, origin, or connection. Create patronymics, place-derivatives, and professional terms.
 difficulty: intermediate
 estimatedTime: 2-3 hours

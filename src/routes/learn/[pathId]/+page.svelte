@@ -6,6 +6,7 @@
   import { learningProgress } from '$lib/stores/learning';
   import { getSutra, getCommentary, getDependencies, type Sutra, type Commentary } from '$lib/data';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import ClickableSanskrit from '$lib/components/ClickableSanskrit.svelte';
   import CommentaryText from '$lib/components/CommentaryText.svelte';
   import JargonLookup from '$lib/components/JargonLookup.svelte';
   import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
@@ -315,34 +316,65 @@
               <a href="/sutra/{sutra.id}" class="font-mono text-sm text-indigo-600 hover:underline">
                 {sutra.id}
               </a>
-              <div class="text-3xl font-medium mt-3 mb-3">
+              <div class="text-3xl font-medium mt-3">
                 <Sanskrit text={sutra.text} />
-              </div>
-              <div class="text-base text-stone-500">
-                <Sanskrit text={sutra.expanded} />
               </div>
             </div>
 
-            <!-- Meaning and Commentary - refined -->
-            <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
-              <div class="p-5 border-b border-stone-100/50">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="text-xs font-medium text-indigo-600 uppercase tracking-wide">Meaning</span>
+            <!-- Anuvṛtti section -->
+            {#if sutra.expanded && sutra.expanded !== sutra.text}
+              <div class="bg-white rounded-lg border border-stone-200 overflow-hidden p-5">
+                <div class="mb-3">
+                  <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">अनुवृत्ति · With Continuation</span>
                 </div>
-                {#if commentary?.englishShort}
-                  <p class="text-stone-700 leading-relaxed">{commentary.englishShort}</p>
-                {:else}
-                  <p class="text-stone-400 italic text-sm">Translation not available</p>
-                {/if}
+                <div class="text-lg leading-relaxed">
+                  <ClickableSanskrit text={sutra.expanded} />
+                </div>
               </div>
+            {/if}
 
+            <!-- Commentary, Meaning, Kashika -->
+            <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
               {#if currentStep.commentary}
-                <div class="p-5 bg-stone-50/50">
+                <div class="p-5 border-b border-stone-100/50">
                   <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-medium text-amber-700 uppercase tracking-wide">Commentary</span>
+                    <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Commentary</span>
                   </div>
                   <p class="text-stone-700 leading-relaxed">
                     <CommentaryText text={currentStep.commentary} />
+                  </p>
+                </div>
+              {/if}
+
+              {#if commentary?.englishShort}
+                <div class="p-5 border-b border-stone-100/50 bg-indigo-50/30">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs font-medium text-indigo-700 uppercase tracking-wide">Meaning</span>
+                  </div>
+                  <p class="text-stone-700 leading-relaxed">
+                    <CommentaryText text={commentary.englishShort} />
+                  </p>
+                </div>
+              {/if}
+
+              {#if commentary?.kashika || currentStep.kashika}
+                <div class="p-5 border-b border-stone-100/50 bg-amber-50/30">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs font-medium text-amber-700 uppercase tracking-wide">काशिका · Kāśikāvṛtti</span>
+                  </div>
+                  <p class="text-stone-700 leading-relaxed">
+                    <CommentaryText text={commentary?.kashika || currentStep.kashika || ''} />
+                  </p>
+                </div>
+              {/if}
+
+              {#if commentary?.englishFull || currentStep.kashikaTranslation}
+                <div class="p-5 bg-amber-50/20">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs font-medium text-amber-600 uppercase tracking-wide">Kāśikā Translation</span>
+                  </div>
+                  <p class="text-stone-700 leading-relaxed">
+                    <CommentaryText text={commentary?.englishFull || currentStep.kashikaTranslation || ''} />
                   </p>
                 </div>
               {/if}

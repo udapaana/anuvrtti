@@ -2,6 +2,9 @@
 id: tinganta-lit
 title: Perfect
 titleSanskrit: लिट्लकारः
+label: लिट्
+track: grammar
+category: tinganta
 description: Derive perfect tense forms with reduplication. The liṭ is unique - it requires doubling the root and has special endings.
 difficulty: intermediate
 estimatedTime: 3-4 hours

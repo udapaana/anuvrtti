@@ -2,6 +2,9 @@
 id: subanta-pratipadika
 title: Nominal Stems
 titleSanskrit: प्रातिपदिकम्
+label: प्रातिपदिकम्
+track: grammar
+category: subanta
 description: Understand nominal stems before adding case endings. What qualifies as a pratipadika and how stems are classified.
 difficulty: beginner
 estimatedTime: 2 hours

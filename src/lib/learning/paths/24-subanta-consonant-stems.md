@@ -2,6 +2,9 @@
 id: subanta-consonant-stems
 title: Consonant Stem Declension
 titleSanskrit: हलन्तम्
+label: हलन्तम्
+track: grammar
+category: subanta
 description: Decline consonant-ending stems - the complex patterns of stems ending in stops, nasals, and sibilants.
 difficulty: advanced
 estimatedTime: 4 hours

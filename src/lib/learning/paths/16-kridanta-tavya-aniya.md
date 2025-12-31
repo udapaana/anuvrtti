@@ -2,6 +2,9 @@
 id: kridanta-tavya-aniya
 title: Future Passive Participles
 titleSanskrit: तव्यानीययाः
+label: तव्य
+track: grammar
+category: kridanta
 description: Derive gerundives expressing necessity or obligation. "To be done" - essential for expressing duty and propriety.
 difficulty: intermediate
 estimatedTime: 2-3 hours
