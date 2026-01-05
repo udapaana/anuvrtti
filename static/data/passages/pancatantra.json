@@ -20,14 +20,46 @@
       "transliteration": "asti dakṣiṇā-pathe mahilāropyan nāma nagaram | tatra amaraśaktiḥ nāma rājā babhūva |",
       "translation": "In the southern region there is a city named Mahilāropya. There, a king named Amaraśakti lived.",
       "vocabulary": [
-        {"wordId": "as", "formInText": "अस्ति", "formRoman": "asti", "glossHint": "there is (present tense)"},
-        {"wordId": "raja", "formInText": "राजा", "formRoman": "rājā", "glossHint": "king (nominative)"},
-        {"wordId": "bhoo", "formInText": "बभूव", "formRoman": "babhūva", "glossHint": "was, lived (perfect tense)"}
+        {
+          "wordId": "as",
+          "formInText": "अस्ति",
+          "formRoman": "asti",
+          "glossHint": "there is (present tense)"
+        },
+        {
+          "wordId": "raja",
+          "formInText": "राजा",
+          "formRoman": "rājā",
+          "glossHint": "king (nominative)"
+        },
+        {
+          "wordId": "bhoo",
+          "formInText": "बभूव",
+          "formRoman": "babhūva",
+          "glossHint": "was, lived (perfect tense)"
+        }
       ],
       "grammarNotes": "This is a classic story-opening formula:\n\n1. **अस्ति + locative**: Standard narrative opener \"there is/was in [place]\"\n\n2. **नाम**: Indeclinable meaning \"by name\" or \"named\"\n\n3. **Perfect tense**: बभूव (from √भू) - the reduplicated perfect, used for past narrative",
       "difficulty": 1,
       "prerequisiteGrammar": ["tinganta-lat", "tinganta-lit"],
-      "meterInfo": null
+      "meterInfo": null,
+      "sutraRefs": [
+        {
+          "sutraId": "3.2.123",
+          "label": "लट् (present tense)",
+          "relevantText": "अस्ति"
+        },
+        {
+          "sutraId": "3.2.115",
+          "label": "liṭ (perfect tense)",
+          "relevantText": "बभूव"
+        },
+        {
+          "sutraId": "2.3.36",
+          "label": "Locative of location",
+          "relevantText": "दक्षिणापथे"
+        }
+      ]
     },
     {
       "id": "pancatantra-1-intro-2",
@@ -39,14 +71,41 @@
       "transliteration": "tasya trayaḥ putrāḥ parama-durmedhasaḥ babhūvuḥ | tān dṛṣṭvā rājā cintayām āsa |",
       "translation": "He had three sons who were extremely dull-witted. Seeing them, the king reflected.",
       "vocabulary": [
-        {"wordId": "tad", "formInText": "तस्य", "formRoman": "tasya", "glossHint": "his (genitive)"},
-        {"wordId": "raja", "formInText": "राजा", "formRoman": "rājā"},
-        {"wordId": "drsh", "formInText": "दृष्ट्वा", "formRoman": "dṛṣṭvā", "glossHint": "having seen (absolutive)"}
+        {
+          "wordId": "tad",
+          "formInText": "तस्य",
+          "formRoman": "tasya",
+          "glossHint": "his (genitive)"
+        },
+        { "wordId": "raja", "formInText": "राजा", "formRoman": "rājā" },
+        {
+          "wordId": "drsh",
+          "formInText": "दृष्ट्वा",
+          "formRoman": "dṛṣṭvā",
+          "glossHint": "having seen (absolutive)"
+        }
       ],
       "grammarNotes": "Key constructions:\n\n1. **Genitive of possession**: तस्य पुत्राः \"his sons\" - genitive shows relationship\n\n2. **Absolutive/gerund**: दृष्ट्वा \"having seen\" - from √दृश् + त्वा. Indicates action completed before the main verb\n\n3. **Periphrastic perfect**: चिन्तयामास (चिन्तय + आम् + आस) - common for causatives and denominatives",
       "difficulty": 1,
       "prerequisiteGrammar": ["vibhakti-genitive", "krt-ktva"],
-      "meterInfo": null
+      "meterInfo": null,
+      "sutraRefs": [
+        {
+          "sutraId": "2.3.50",
+          "label": "Genitive of possession",
+          "relevantText": "तस्य"
+        },
+        {
+          "sutraId": "3.4.21",
+          "label": "क्त्वा (absolutive)",
+          "relevantText": "दृष्ट्वा"
+        },
+        {
+          "sutraId": "3.2.115",
+          "label": "liṭ (perfect tense)",
+          "relevantText": "बभूवुः"
+        }
+      ]
     },
     {
       "id": "pancatantra-1-intro-3",
@@ -58,15 +117,37 @@
       "transliteration": "kim ebhiḥ putraiḥ yaiḥ na vidyā na vinayaḥ adhigataḥ | jāta-mātraḥ khalu gardabhaḥ api mātṛ-pitṛbhyām bahumanyate |",
       "translation": "What use are these sons by whom neither learning nor discipline has been acquired? Even a donkey, as soon as born, is valued by its mother and father.",
       "vocabulary": [
-        {"wordId": "na", "formInText": "न", "formRoman": "na"},
-        {"wordId": "api", "formInText": "अपि", "formRoman": "api"},
-        {"wordId": "mata", "formInText": "मातृ", "formRoman": "mātṛ"},
-        {"wordId": "pita", "formInText": "पितृभ्याम्", "formRoman": "pitṛbhyām", "glossHint": "by mother and father (dual instrumental)"}
+        { "wordId": "na", "formInText": "न", "formRoman": "na" },
+        { "wordId": "api", "formInText": "अपि", "formRoman": "api" },
+        { "wordId": "mata", "formInText": "मातृ", "formRoman": "mātṛ" },
+        {
+          "wordId": "pita",
+          "formInText": "पितृभ्याम्",
+          "formRoman": "pitṛbhyām",
+          "glossHint": "by mother and father (dual instrumental)"
+        }
       ],
       "grammarNotes": "Rhetorical techniques:\n\n1. **किम् + instrumental**: \"What [use] with...?\" - rhetorical question expressing futility\n\n2. **Relative-correlative**: यैः...अधिगतः \"by whom...was acquired\" - relative clause\n\n3. **Dual instrumental**: मातृपितृभ्याम् \"by both mother and father\" - the dual number\n\n4. **मात्र suffix**: जातमात्र \"just born, as soon as born\"",
       "difficulty": 2,
       "prerequisiteGrammar": ["vibhakti-instrumental", "relative-clauses"],
-      "meterInfo": null
+      "meterInfo": null,
+      "sutraRefs": [
+        {
+          "sutraId": "2.3.18",
+          "label": "Instrumental of agent",
+          "relevantText": "यैः"
+        },
+        {
+          "sutraId": "2.3.19",
+          "label": "Instrumental (dual)",
+          "relevantText": "मातृपितृभ्याम्"
+        },
+        {
+          "sutraId": "5.4.52",
+          "label": "मात्रच् suffix",
+          "relevantText": "जातमात्रः"
+        }
+      ]
     },
     {
       "id": "pancatantra-1-lion-bull-1",
@@ -78,13 +159,35 @@
       "transliteration": "asti mathurāyāṃ vardhamāno nāma vaṇik | sa ekadā gāḍībhyāṃ bahu-dhanaṃ gṛhītvā vyāpārāya prasthitaḥ |",
       "translation": "In Mathura there is a merchant named Vardhamāna. One day, taking much wealth in two carts, he set out for trade.",
       "vocabulary": [
-        {"wordId": "as", "formInText": "अस्ति", "formRoman": "asti"},
-        {"wordId": "tad", "formInText": "स", "formRoman": "sa", "glossHint": "he (masculine nominative)"}
+        { "wordId": "as", "formInText": "अस्ति", "formRoman": "asti" },
+        {
+          "wordId": "tad",
+          "formInText": "स",
+          "formRoman": "sa",
+          "glossHint": "he (masculine nominative)"
+        }
       ],
       "grammarNotes": "Narrative progression:\n\n1. **Same opening formula**: अस्ति + locative + नाम\n\n2. **Dative of purpose**: व्यापाराय \"for trade\" - the dative case expressing purpose\n\n3. **Absolutive sequence**: गृहीत्वा...प्रस्थितः \"having taken...set out\" - action sequence\n\n4. **Past passive participle**: प्रस्थितः \"set out, departed\" (from प्र + √स्था)",
       "difficulty": 1,
       "prerequisiteGrammar": ["vibhakti-dative", "krt-ktva", "krt-kta"],
-      "meterInfo": null
+      "meterInfo": null,
+      "sutraRefs": [
+        {
+          "sutraId": "2.3.13",
+          "label": "Dative of purpose",
+          "relevantText": "व्यापाराय"
+        },
+        {
+          "sutraId": "3.4.21",
+          "label": "क्त्वा (absolutive)",
+          "relevantText": "गृहीत्वा"
+        },
+        {
+          "sutraId": "3.4.72",
+          "label": "क्त (past participle)",
+          "relevantText": "प्रस्थितः"
+        }
+      ]
     }
   ]
 }

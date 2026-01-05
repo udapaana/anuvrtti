@@ -147,6 +147,16 @@ export interface PassageVocabulary {
 /** Reading passage difficulty (1-5 scale) */
 export type PassageDifficulty = 1 | 2 | 3 | 4 | 5;
 
+/** A reference to a sūtra that applies to a reading passage */
+export interface SutraRef {
+  /** Sūtra ID in dotted format (e.g., "3.2.115") */
+  sutraId: string;
+  /** Human-readable label (e.g., "liṭ (perfect tense)") */
+  label?: string;
+  /** The word/form in the passage this applies to */
+  relevantText?: string;
+}
+
 /** A reading passage from classical Sanskrit literature */
 export interface ReadingPassage {
   id: string;
@@ -162,6 +172,7 @@ export interface ReadingPassage {
   difficulty: PassageDifficulty;
   prerequisiteGrammar?: string[]; // Path IDs needed to understand this passage
   meterInfo?: string; // If verse, name of meter (e.g., "mandākrāntā")
+  sutraRefs?: SutraRef[]; // Specific sūtras that apply to this passage
 }
 
 /** User's vocabulary learning progress (stored in localStorage) */

@@ -63,6 +63,7 @@
             Tour
           </a>
           <a href="/learn" class="hover:text-indigo-600">Learn <span class="ml-1 px-1.5 py-0.5 text-[10px] font-medium bg-amber-100 text-amber-700 rounded">AI</span></a>
+          <a href="/passages" class="hover:text-indigo-600">Read</a>
           <a href="/browse" class="hover:text-indigo-600">Browse</a>
           <a href="/search" class="hover:text-indigo-600">Search</a>
 

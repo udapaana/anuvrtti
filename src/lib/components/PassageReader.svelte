@@ -1,19 +1,22 @@
 <script lang="ts">
   import type { ReadingPassage, PassageVocabulary } from '$lib/data/types';
   import Sanskrit from './Sanskrit.svelte';
+  import SutraBreadcrumbs from './SutraBreadcrumbs.svelte';
 
   interface Props {
     passage: ReadingPassage;
     showTranslation?: boolean;
     showVocabulary?: boolean;
     showGrammarNotes?: boolean;
+    showSutraRefs?: boolean;
   }
 
   let {
     passage,
     showTranslation = true,
     showVocabulary = true,
-    showGrammarNotes = true
+    showGrammarNotes = true,
+    showSutraRefs = true
   }: Props = $props();
 
   let translationVisible = $state(false);
@@ -105,6 +108,15 @@
       <div class="grammar-notes">
         {@html passage.grammarNotes.replace(/\n/g, '<br>')}
       </div>
+    </details>
+  {/if}
+
+  {#if showSutraRefs && passage.sutraRefs && passage.sutraRefs.length > 0}
+    <details class="sutra-section">
+      <summary class="section-summary">
+        Sūtra References ({passage.sutraRefs.length})
+      </summary>
+      <SutraBreadcrumbs refs={passage.sutraRefs} />
     </details>
   {/if}
 </article>
@@ -226,7 +238,7 @@
     padding: 0.5rem 0;
   }
 
-  .vocab-section, .notes-section {
+  .vocab-section, .notes-section, .sutra-section {
     border-top: 1px solid #f5f5f4;
     padding-top: 0.5rem;
     margin-top: 0.5rem;
