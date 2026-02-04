@@ -11,6 +11,8 @@
     commentary?: Commentary;
     layeredCommentary?: LayeredSutraCommentary;
     depth?: CommentaryDepth;
+    fallbackCommentary?: string;
+    onDepthChange?: (depth: CommentaryDepth) => void;
     href?: string;
     onClick?: (id: string) => void;
   }
@@ -21,6 +23,8 @@
     commentary,
     layeredCommentary,
     depth = 'standard',
+    fallbackCommentary,
+    onDepthChange,
     href,
     onClick
   }: Props = $props();
@@ -33,12 +37,22 @@
     atidesa: 'अतिदेश',
   };
 
+  const depthLabels: Record<CommentaryDepth, string> = {
+    simple: 'Simple',
+    standard: 'Standard',
+    advanced: 'Advanced'
+  };
+
   function handleClick() {
     if (onClick) onClick(sutra.id);
   }
 
+  function setDepth(d: CommentaryDepth) {
+    if (onDepthChange) onDepthChange(d);
+  }
+
   let layeredText = $derived(layeredCommentary?.en[depth]);
-  let hasCommentary = $derived(layeredText || commentary?.kashikaEnglish || commentary?.englishShort);
+  let hasCommentary = $derived(layeredText || fallbackCommentary || commentary?.kashikaEnglish || commentary?.englishShort);
 </script>
 
 {#if variant === 'compact'}
@@ -123,20 +137,37 @@
       </section>
     {/if}
 
-    {#if hasCommentary}
+    {#if hasCommentary || onDepthChange}
       <section class="section commentary-section">
-        <h3 class="section-label">
-          {depth === 'simple' ? 'Explanation' : depth === 'standard' ? 'Explanation' : 'Advanced Explanation'}
-        </h3>
-        <div class="commentary-content">
-          {#if layeredText}
-            <CommentaryText text={layeredText} expandableRefs={depth === 'advanced'} />
-          {:else if commentary?.kashikaEnglish}
-            <CommentaryText text={commentary.kashikaEnglish} />
-          {:else if commentary?.englishShort}
-            <CommentaryText text={commentary.englishShort} />
-          {/if}
-        </div>
+        {#if onDepthChange}
+          <div class="depth-toggle">
+            <span class="section-label" style="margin: 0;">Explanation Depth</span>
+            <div class="depth-buttons">
+              {#each (['simple', 'standard', 'advanced'] as const) as d}
+                <button
+                  onclick={() => setDepth(d)}
+                  class="depth-btn"
+                  class:active={depth === d}
+                >
+                  {depthLabels[d]}
+                </button>
+              {/each}
+            </div>
+          </div>
+        {/if}
+        {#if hasCommentary}
+          <div class="commentary-content">
+            {#if layeredText}
+              <CommentaryText text={layeredText} expandableRefs={depth === 'advanced'} />
+            {:else if fallbackCommentary}
+              <CommentaryText text={fallbackCommentary} />
+            {:else if commentary?.kashikaEnglish}
+              <CommentaryText text={commentary.kashikaEnglish} />
+            {:else if commentary?.englishShort}
+              <CommentaryText text={commentary.englishShort} />
+            {/if}
+          </div>
+        {/if}
       </section>
     {/if}
 
@@ -347,6 +378,33 @@
   }
   .commentary-section .section-label {
     color: #a16207;
+  }
+  .depth-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .depth-buttons {
+    display: flex;
+    gap: 0.25rem;
+  }
+  .depth-btn {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    background: #f5f5f4;
+    color: #57534e;
+    transition: all 0.1s;
+  }
+  .depth-btn:hover {
+    background: #e7e5e4;
+  }
+  .depth-btn.active {
+    background: #4f46e5;
+    color: white;
   }
   .commentary-content {
     font-size: 0.9375rem;

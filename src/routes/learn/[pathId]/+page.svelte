@@ -9,8 +9,8 @@
   import { getSutra, getCommentary, getLayeredCommentary, getDependencies, type Sutra, type Commentary, type LayeredSutraCommentary, type CommentaryDepth } from '$lib/data';
   import { commentaryDepth as commentaryDepthStore } from '$lib/stores/preferences';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
-  import ClickableSanskrit from '$lib/components/ClickableSanskrit.svelte';
   import CommentaryText from '$lib/components/CommentaryText.svelte';
+  import SutraDisplay from '$lib/components/SutraDisplay.svelte';
   import JargonLookup from '$lib/components/JargonLookup.svelte';
   import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
   import DerivationViewer from '$lib/components/DerivationViewer.svelte';
@@ -230,20 +230,7 @@
   let currentStep = $derived(path?.steps[currentStepIndex]);
   let progress = $derived(path ? (completedSteps.length / path.steps.length) * 100 : 0);
 
-  // Get the appropriate commentary text based on selected depth
-  let currentLayeredText = $derived(layeredCommentary?.en[commentaryDepth]);
 
-  const depthLabels: Record<CommentaryDepth, string> = {
-    simple: 'Simple',
-    standard: 'Standard',
-    advanced: 'Advanced'
-  };
-
-  const depthDescriptions: Record<CommentaryDepth, string> = {
-    simple: 'One sentence, no jargon',
-    standard: 'Full explanation with examples',
-    advanced: 'Technical details and cross-references'
-  };
 </script>
 
 <svelte:head>
@@ -507,110 +494,16 @@
           </div>
         {:else if currentStep && sutra}
           <div class="space-y-6">
-            <!-- The sutra - hero element -->
-            <div class="text-center py-6 bg-gradient-to-b from-indigo-50/50 to-transparent rounded-lg">
-              <a href="/ref/{sutra.id}" class="font-mono text-sm text-indigo-600 hover:underline">
-                {sutra.id}
-              </a>
-              <div class="text-3xl font-medium mt-3">
-                <Sanskrit text={sutra.text} />
-              </div>
-            </div>
-
-            <!-- Anuvṛtti section -->
-            {#if sutra.expanded && sutra.expanded !== sutra.text}
-              <div class="bg-white rounded-lg border border-stone-200 overflow-hidden p-5">
-                <div class="mb-3">
-                  <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">अनुवृत्ति · With Continuation</span>
-                </div>
-                <div class="text-lg leading-relaxed">
-                  <ClickableSanskrit text={sutra.expanded} />
-                </div>
-              </div>
-            {/if}
-
-            <!-- Layered Commentary with depth selector -->
-            <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
-              <!-- Depth selector -->
-              {#if layeredCommentary}
-                <div class="p-4 border-b border-stone-100 bg-stone-50/50">
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Explanation Depth</span>
-                    <div class="flex gap-1">
-                      {#each (['simple', 'standard', 'advanced'] as const) as depth}
-                        <button
-                          onclick={() => { commentaryDepth = depth; commentaryDepthStore.set(depth); }}
-                          class="px-3 py-1 text-xs rounded-full transition-colors
-                                 {commentaryDepth === depth
-                                   ? 'bg-indigo-500 text-white'
-                                   : 'bg-stone-100 text-stone-600 hover:bg-stone-200'}"
-                          title={depthDescriptions[depth]}
-                        >
-                          {depthLabels[depth]}
-                        </button>
-                      {/each}
-                    </div>
-                  </div>
-                </div>
-              {/if}
-
-              <!-- Layered commentary content -->
-              {#if currentLayeredText}
-                <div class="p-5 border-b border-stone-100/50 bg-indigo-50/30">
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-medium text-indigo-700 uppercase tracking-wide">
-                      {depthLabels[commentaryDepth]} Explanation
-                    </span>
-                  </div>
-                  <div class="text-stone-700 leading-relaxed">
-                    <CommentaryText text={currentLayeredText} />
-                  </div>
-                </div>
-              {:else if currentStep.commentary}
-                <!-- Fallback to step commentary if no layered -->
-                <div class="p-5 border-b border-stone-100/50">
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Commentary</span>
-                  </div>
-                  <div class="text-stone-700 leading-relaxed">
-                    <CommentaryText text={currentStep.commentary} />
-                  </div>
-                </div>
-              {:else if commentary?.englishShort}
-                <!-- Fallback to short meaning -->
-                <div class="p-5 border-b border-stone-100/50 bg-indigo-50/30">
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-medium text-indigo-700 uppercase tracking-wide">Meaning</span>
-                  </div>
-                  <p class="text-stone-700 leading-relaxed">
-                    <CommentaryText text={commentary.englishShort} />
-                  </p>
-                </div>
-              {/if}
-
-              <!-- Kāśikā (always show if available, in advanced mode or as supplementary) -->
-              {#if commentaryDepth === 'advanced' && (commentary?.kashika || currentStep.kashika)}
-                <div class="p-5 border-b border-stone-100/50 bg-amber-50/30">
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-medium text-amber-700 uppercase tracking-wide">काशिका · Kāśikāvṛtti</span>
-                  </div>
-                  <p class="text-stone-700 leading-relaxed">
-                    <CommentaryText text={commentary?.kashika || currentStep.kashika || ''} />
-                  </p>
-                </div>
-              {/if}
-
-              {#if commentaryDepth === 'advanced' && (commentary?.kashikaEnglish || currentStep.kashikaTranslation)}
-                <div class="p-5 bg-amber-50/20">
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-medium text-amber-600 uppercase tracking-wide">Kāśikā Translation</span>
-                  </div>
-                  <p class="text-stone-700 leading-relaxed">
-                    <CommentaryText text={commentary?.kashikaEnglish || currentStep.kashikaTranslation || ''} />
-                  </p>
-                </div>
-              {/if}
-            </div>
+            <!-- Sutra display with commentary and depth toggle -->
+            <SutraDisplay
+              {sutra}
+              variant="full"
+              {commentary}
+              {layeredCommentary}
+              depth={commentaryDepth}
+              fallbackCommentary={currentStep.commentary}
+              onDepthChange={(d) => { commentaryDepth = d; commentaryDepthStore.set(d); }}
+            />
 
             <!-- Prakriya example -->
             {#if prakriyaExample}

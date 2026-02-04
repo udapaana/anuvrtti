@@ -49,6 +49,11 @@
   let depth: CommentaryDepth = $state('standard');
   commentaryDepthStore.subscribe(d => { depth = d; });
 
+  function handleDepthChange(d: CommentaryDepth) {
+    depth = d;
+    commentaryDepthStore.set(d);
+  }
+
   function handleKeydown(e: KeyboardEvent) {
     if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
     if (e.key === 'ArrowLeft' || e.key === 'h') {
@@ -140,6 +145,7 @@
         {commentary}
         {layeredCommentary}
         {depth}
+        onDepthChange={handleDepthChange}
       />
 
       <!-- Anuvrtti inheritance graph (advanced view) -->
