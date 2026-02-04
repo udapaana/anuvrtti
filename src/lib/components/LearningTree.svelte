@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { learningPaths, type LearningPath, type PathCategory, type Track } from '$lib/learning/paths';
+  import { loadPathIndex, type PathMeta } from '$lib/content';
+  import type { PathCategory, Track } from '$lib/learning/paths';
   import { learningProgress } from '$lib/stores/learning';
   import { categoryColors } from '$lib/learning/tree';
   import { displayScript } from '$lib/stores/preferences';
@@ -7,21 +8,18 @@
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
 
-  // View mode: 'reading' (reading track) or 'grammar' (grammar track by category)
+  // View mode: 'reading' (guided path) or 'grammar' (by topic)
   let viewMode: Track = $state('reading');
 
-  // Get paths by track
-  function getPathsByTrack(track: Track): LearningPath[] {
-    return learningPaths.filter(p => p.track === track);
-  }
+  // Paths loaded from content index
+  let allPaths: PathMeta[] = $state([]);
+  let loading = $state(true);
 
-  // Reading track paths (filtered from learningPaths by track field)
-  const readingPath = getPathsByTrack('reading');
+  // Derived path lists
+  let readingPaths = $derived(allPaths.filter(p => p.track === 'reading'));
+  let grammarPaths = $derived(allPaths.filter(p => p.track === 'grammar'));
 
-  // Grammar track paths
-  const grammarPaths = getPathsByTrack('grammar');
-
-  // Group paths by category for scholarship view
+  // Group paths by category for topic view
   const categories: { id: PathCategory; label: string; labelSanskrit: string }[] = [
     { id: 'foundation', label: 'Foundations', labelSanskrit: 'आधारः' },
     { id: 'tinganta', label: 'Verbs', labelSanskrit: 'तिङन्त' },
@@ -35,39 +33,38 @@
 
   const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
 
-  function getPathsByCategory(category: PathCategory): LearningPath[] {
+  function getPathsByCategory(category: PathCategory): PathMeta[] {
     return grammarPaths
       .filter(p => p.category === category)
       .sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]);
   }
 
-  // Reactive state
+  // Progress state
   let completedPaths: string[] = $state([]);
-  let currentScript: Script = $state('devanagari');
-  let transliteratedLabels: Map<string, string> = $state(new Map());
+  let pathProgress: Record<string, number[]> = $state({});
 
   learningProgress.subscribe(p => {
     completedPaths = p.completedPaths;
+    pathProgress = p.pathProgress;
   });
-
-  function getProgress(pathId: string): number {
-    return learningProgress.getPathProgress(pathId);
-  }
 
   function isCompleted(pathId: string): boolean {
     return completedPaths.includes(pathId);
   }
 
-  function getProgressPercent(path: LearningPath): number {
-    const progress = getProgress(path.id);
-    const total = path.steps.length;
-    if (total === 0) return 0;
-    return (progress / total) * 100;
+  function getProgressPercent(path: PathMeta): number {
+    const steps = pathProgress[path.id] || [];
+    if (path.stepCount === 0) return 0;
+    return (steps.length / path.stepCount) * 100;
   }
+
+  // Script/transliteration state
+  let currentScript: Script = $state('devanagari');
+  let transliteratedLabels: Map<string, string> = $state(new Map());
 
   async function updateLabels(script: Script) {
     const newLabels = new Map<string, string>();
-    for (const path of learningPaths) {
+    for (const path of allPaths) {
       if (script === 'devanagari') {
         newLabels.set(path.id, path.label);
       } else {
@@ -86,7 +83,16 @@
     transliteratedLabels = newLabels;
   }
 
-  onMount(() => {
+  onMount(async () => {
+    // Load path index
+    try {
+      allPaths = await loadPathIndex();
+    } catch (e) {
+      console.error('Failed to load path index:', e);
+    }
+    loading = false;
+
+    // Setup script handling
     updateLabels($displayScript);
     const unsubscribe = displayScript.subscribe(script => {
       currentScript = script;
@@ -99,7 +105,7 @@
     return transliteratedLabels.get(id) || fallback;
   }
 
-  function handlePathClick(path: LearningPath) {
+  function handlePathClick(path: PathMeta) {
     goto(`/learn/${path.id}`);
   }
 
@@ -122,143 +128,174 @@
 
   // Reading path progress
   function getReadingProgress(): { completed: number; total: number } {
-    const completed = readingPath.filter(p => isCompleted(p.id)).length;
-    return { completed, total: readingPath.length };
+    const completed = readingPaths.filter(p => isCompleted(p.id)).length;
+    return { completed, total: readingPaths.length };
   }
 
   function getNextUncompletedIndex(): number {
-    return readingPath.findIndex(p => !isCompleted(p.id));
+    return readingPaths.findIndex(p => !isCompleted(p.id));
   }
 </script>
 
-<div class="learning-tree">
-  <!-- Track Toggle -->
-  <div class="mode-toggle">
-    <button
-      class="mode-btn"
-      class:active={viewMode === 'reading'}
-      onclick={() => viewMode = 'reading'}
-    >
-      <span class="mode-sanskrit">पठनम्</span>
-      <span class="mode-english">Reading Track</span>
-    </button>
-    <button
-      class="mode-btn"
-      class:active={viewMode === 'grammar'}
-      onclick={() => viewMode = 'grammar'}
-    >
-      <span class="mode-sanskrit">व्याकरणम्</span>
-      <span class="mode-english">Grammar Track</span>
-    </button>
+{#if loading}
+  <div class="loading">
+    <div class="spinner"></div>
+    <span>Loading paths...</span>
   </div>
-
-  {#if viewMode === 'reading'}
-    <!-- Reading Path View -->
-    {@const progress = getReadingProgress()}
-    {@const nextIndex = getNextUncompletedIndex()}
-
-    <div class="reading-header">
-      <p class="reading-desc">A curated path to reading fluency — learn a little from each topic.</p>
-      <div class="reading-progress">
-        <span class="progress-text">{progress.completed}/{progress.total} complete</span>
-        <div class="progress-track">
-          <div class="progress-fill" style="width: {(progress.completed / progress.total) * 100}%"></div>
-        </div>
-      </div>
+{:else}
+  <div class="learning-tree">
+    <!-- Track Toggle -->
+    <div class="mode-toggle">
+      <button
+        class="mode-btn"
+        class:active={viewMode === 'reading'}
+        onclick={() => viewMode = 'reading'}
+      >
+        <span class="mode-sanskrit">पठनम्</span>
+        <span class="mode-english">Reading</span>
+      </button>
+      <button
+        class="mode-btn"
+        class:active={viewMode === 'grammar'}
+        onclick={() => viewMode = 'grammar'}
+      >
+        <span class="mode-sanskrit">व्याकरणम्</span>
+        <span class="mode-english">Grammar</span>
+      </button>
     </div>
 
-    <ol class="reading-list">
-      {#each readingPath as path, i}
-        {@const complete = isCompleted(path.id)}
-        {@const progressPct = getProgressPercent(path)}
-        {@const isCurrent = i === nextIndex}
-        {@const colors = categoryColors[path.category]}
+    {#if viewMode === 'reading'}
+      <!-- Guided Path View -->
+      {@const progress = getReadingProgress()}
+      {@const nextIndex = getNextUncompletedIndex()}
 
-        <li class="reading-item" class:completed={complete} class:current={isCurrent}>
-          <button
-            class="reading-btn"
-            onclick={() => handlePathClick(path)}
-          >
-            <span class="reading-number" class:complete style="border-color: {colors.medium}; {complete ? `background: ${colors.medium}` : ''}">
-              {#if complete}✓{:else}{i + 1}{/if}
-            </span>
-            <div class="reading-content">
-              <span class="reading-label">{getLabel(path.id, path.label)}</span>
-              <span class="reading-title">{path.title}</span>
+      <div class="reading-header">
+        <p class="reading-desc">A structured path through the essentials — recommended for beginners.</p>
+        {#if progress.total > 0}
+          <div class="reading-progress">
+            <span class="progress-text">{progress.completed}/{progress.total} complete</span>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: {(progress.completed / progress.total) * 100}%"></div>
             </div>
-            <span class="reading-category" style="color: {colors.medium};">{path.category}</span>
-            {#if !complete && progressPct > 0}
-              <span class="reading-progress-mini">
-                <span class="progress-bar-mini" style="width: {progressPct}%; background: {colors.medium};"></span>
-              </span>
-            {/if}
-          </button>
-        </li>
-      {/each}
-    </ol>
-  {:else}
-    <!-- Grammar Track View (by category) -->
-    <div class="grammar-header">
-      <p class="grammar-desc">Systematic Pāṇinian grammar — organized by topic following traditional prakaraṇa structure.</p>
-    </div>
-
-    <div class="learning-paths">
-      {#each categories as cat}
-        {@const paths = getPathsByCategory(cat.id)}
-        {@const colors = categoryColors[cat.id]}
-        {@const collapsed = isCollapsed(cat.id)}
-
-        {#if paths.length > 0}
-          <div class="category">
-            <button
-              class="category-header"
-              onclick={() => toggleCategory(cat.id)}
-            >
-              <span class="category-icon" style="background: {colors.medium};"></span>
-              <span class="category-label">{getLabel(cat.id, cat.labelSanskrit)}</span>
-              <span class="category-english">{cat.label}</span>
-              <span class="category-count">{paths.length}</span>
-              <span class="category-toggle">{collapsed ? '▸' : '▾'}</span>
-            </button>
-
-            {#if !collapsed}
-              <div class="paths-list">
-                {#each paths as path}
-                  {@const complete = isCompleted(path.id)}
-                  {@const progress = getProgressPercent(path)}
-
-                  <button
-                    class="path-item"
-                    class:completed={complete}
-                    onclick={() => handlePathClick(path)}
-                  >
-                    <span class="path-bullet" style="background: {colors.medium};"></span>
-                    <span class="path-label">{getLabel(path.id, path.label)}</span>
-                    <span class="path-title">{path.title}</span>
-
-                    {#if complete}
-                      <span class="path-check">✓</span>
-                    {:else if progress > 0}
-                      <span class="path-progress">
-                        <span class="progress-bar" style="width: {progress}%; background: {colors.medium};"></span>
-                      </span>
-                    {/if}
-
-                    <span class="path-difficulty" class:beginner={path.difficulty === 'beginner'} class:intermediate={path.difficulty === 'intermediate'} class:advanced={path.difficulty === 'advanced'}>
-                      {path.difficulty === 'beginner' ? '●' : path.difficulty === 'intermediate' ? '●●' : '●●●'}
-                    </span>
-                  </button>
-                {/each}
-              </div>
-            {/if}
           </div>
         {/if}
-      {/each}
-    </div>
-  {/if}
-</div>
+      </div>
+
+      <ol class="reading-list">
+        {#each readingPaths as path, i}
+          {@const complete = isCompleted(path.id)}
+          {@const progressPct = getProgressPercent(path)}
+          {@const isCurrent = i === nextIndex}
+          {@const colors = categoryColors[path.category] || categoryColors.foundation}
+
+          <li class="reading-item" class:completed={complete} class:current={isCurrent}>
+            <button
+              class="reading-btn"
+              onclick={() => handlePathClick(path)}
+            >
+              <span class="reading-number" class:complete style="border-color: {colors.medium}; {complete ? `background: ${colors.medium}` : ''}">
+                {#if complete}✓{:else}{i + 1}{/if}
+              </span>
+              <div class="reading-content">
+                <span class="reading-label">{getLabel(path.id, path.label)}</span>
+                <span class="reading-title">{path.title}</span>
+              </div>
+              <span class="reading-category" style="color: {colors.medium};">{path.category}</span>
+              {#if !complete && progressPct > 0}
+                <span class="reading-progress-mini">
+                  <span class="progress-bar-mini" style="width: {progressPct}%; background: {colors.medium};"></span>
+                </span>
+              {/if}
+            </button>
+          </li>
+        {/each}
+      </ol>
+    {:else}
+      <!-- By Topic View -->
+      <div class="grammar-header">
+        <p class="grammar-desc">Systematic Pāṇinian grammar — organized by topic following traditional prakaraṇa structure.</p>
+      </div>
+
+      <div class="learning-paths">
+        {#each categories as cat}
+          {@const paths = getPathsByCategory(cat.id)}
+          {@const colors = categoryColors[cat.id] || categoryColors.foundation}
+          {@const collapsed = isCollapsed(cat.id)}
+
+          {#if paths.length > 0}
+            <div class="category">
+              <button
+                class="category-header"
+                onclick={() => toggleCategory(cat.id)}
+              >
+                <span class="category-icon" style="background: {colors.medium};"></span>
+                <span class="category-label">{getLabel(cat.id, cat.labelSanskrit)}</span>
+                <span class="category-english">{cat.label}</span>
+                <span class="category-count">{paths.length}</span>
+                <span class="category-toggle">{collapsed ? '▸' : '▾'}</span>
+              </button>
+
+              {#if !collapsed}
+                <div class="paths-list">
+                  {#each paths as path}
+                    {@const complete = isCompleted(path.id)}
+                    {@const progress = getProgressPercent(path)}
+
+                    <button
+                      class="path-item"
+                      class:completed={complete}
+                      onclick={() => handlePathClick(path)}
+                    >
+                      <span class="path-bullet" style="background: {colors.medium};"></span>
+                      <span class="path-label">{getLabel(path.id, path.label)}</span>
+                      <span class="path-title">{path.title}</span>
+
+                      {#if complete}
+                        <span class="path-check">✓</span>
+                      {:else if progress > 0}
+                        <span class="path-progress">
+                          <span class="progress-bar" style="width: {progress}%; background: {colors.medium};"></span>
+                        </span>
+                      {/if}
+
+                      <span class="path-difficulty" class:beginner={path.difficulty === 'beginner'} class:intermediate={path.difficulty === 'intermediate'} class:advanced={path.difficulty === 'advanced'}>
+                        {path.difficulty === 'beginner' ? '●' : path.difficulty === 'intermediate' ? '●●' : '●●●'}
+                      </span>
+                    </button>
+                  {/each}
+                </div>
+              {/if}
+            </div>
+          {/if}
+        {/each}
+      </div>
+    {/if}
+  </div>
+{/if}
 
 <style>
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 2rem;
+    color: #78716c;
+  }
+
+  .spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #e7e5e4;
+    border-top-color: #6366f1;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
   .learning-tree {
     display: flex;
     flex-direction: column;

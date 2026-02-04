@@ -2,9 +2,12 @@
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import { getPath, type LearningPath, type LearningStep } from '$lib/learning/paths';
+  import { browser } from '$app/environment';
+  import { loadPath, loadPathIndex, type PathMeta } from '$lib/content';
+  import type { LearningPath, LearningStep } from '$lib/learning/paths';
   import { learningProgress } from '$lib/stores/learning';
   import { getSutra, getCommentary, getLayeredCommentary, getDependencies, type Sutra, type Commentary, type LayeredSutraCommentary, type CommentaryDepth } from '$lib/data';
+  import { commentaryDepth as commentaryDepthStore } from '$lib/stores/preferences';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import ClickableSanskrit from '$lib/components/ClickableSanskrit.svelte';
   import CommentaryText from '$lib/components/CommentaryText.svelte';
@@ -15,14 +18,22 @@
   import { deriveTinanta, deriveSubanta, type Prakriya } from '$lib/prakriya';
 
   let path: LearningPath | undefined = $state(undefined);
+  let pathLoading = $state(true);
   let currentStepIndex = $state(0);
   let sutra: Sutra | undefined = $state(undefined);
   let commentary: Commentary | undefined = $state(undefined);
   let layeredCommentary: LayeredSutraCommentary | undefined = $state(undefined);
   let commentaryDepth: CommentaryDepth = $state('standard');
+
+  // Sync with global preference store (bidirectional)
+  commentaryDepthStore.subscribe(d => { commentaryDepth = d; });
   let dependencies: Sutra[] = $state([]);
   let loading = $state(true);
   let completedSteps: number[] = $state([]);
+
+  // Path completion state
+  let showCompletion = $state(false);
+  let nextPath: PathMeta | null = $state(null);
 
   // Prakriya example state
   let prakriyaExample = $state<PrakriyaExample | null>(null);
@@ -30,12 +41,27 @@
   let prakriyaLoading = $state(false);
   let showPrakriya = $state(false);
 
-  onMount(() => {
+  onMount(async () => {
     const pathId = $page.params.pathId;
-    path = getPath(pathId);
-    if (!path) {
+
+    // Load path from markdown content
+    const loadedPath = await loadPath(pathId);
+    if (!loadedPath) {
       goto('/learn');
       return;
+    }
+    path = loadedPath;
+    pathLoading = false;
+
+    // Check for ?step= URL parameter (from resume link)
+    const stepParam = $page.url.searchParams.get('step');
+    if (stepParam !== null) {
+      const stepIndex = parseInt(stepParam, 10);
+      if (!isNaN(stepIndex) && stepIndex >= 0 && stepIndex < loadedPath.steps.length) {
+        currentStepIndex = stepIndex;
+        learningProgress.startPath(pathId);
+        learningProgress.goToStep(stepIndex);
+      }
     }
 
     // Subscribe to progress
@@ -134,7 +160,7 @@
     prakriyaLoading = false;
   }
 
-  function nextStep() {
+  async function nextStep() {
     if (!path) return;
 
     const nextIndex = currentStepIndex + 1;
@@ -145,9 +171,28 @@
     if (nextIndex < path.steps.length) {
       learningProgress.goToStep(nextIndex);
     } else {
-      // Path completed
+      // Path completed — show interstitial
       learningProgress.completePath(path.id);
-      goto('/learn');
+
+      // Find the next path to suggest
+      try {
+        const index = await loadPathIndex();
+        const currentMeta = index.find(p => p.id === path!.id);
+        if (currentMeta) {
+          // Look for the next path in the same track by order
+          const sameTracks = index
+            .filter(p => p.track === currentMeta.track)
+            .sort((a, b) => a.order - b.order);
+          const currentIdx = sameTracks.findIndex(p => p.id === path!.id);
+          if (currentIdx >= 0 && currentIdx < sameTracks.length - 1) {
+            nextPath = sameTracks[currentIdx + 1];
+          }
+        }
+      } catch (e) {
+        // Non-critical — just won't show next path suggestion
+      }
+
+      showCompletion = true;
     }
   }
 
@@ -169,6 +214,18 @@
     // All steps are always accessible - no gatekeeping
     return true;
   }
+
+  // Store learning context in sessionStorage so ref pages can show "return to path" banner
+  $effect(() => {
+    if (browser && path && !showCompletion) {
+      sessionStorage.setItem('anuvrtti-learning-context', JSON.stringify({
+        pathId: path.id,
+        pathTitle: path.title,
+        stepIndex: currentStepIndex,
+        stepTotal: path.steps.length,
+      }));
+    }
+  });
 
   let currentStep = $derived(path?.steps[currentStepIndex]);
   let progress = $derived(path ? (completedSteps.length / path.steps.length) * 100 : 0);
@@ -193,7 +250,57 @@
   <title>{path?.title || 'Learning'} | Ashtadhyayi Explorer</title>
 </svelte:head>
 
-{#if path}
+{#if pathLoading}
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-white rounded-lg border border-stone-200 p-8">
+      <div class="flex items-center justify-center gap-3 text-stone-500">
+        <div class="w-5 h-5 border-2 border-stone-300 border-t-indigo-500 rounded-full animate-spin"></div>
+        <span>Loading path...</span>
+      </div>
+    </div>
+  </div>
+{:else if path && showCompletion}
+  <!-- Path completion interstitial -->
+  <div class="max-w-2xl mx-auto py-12 text-center">
+    <div class="bg-white rounded-xl border border-stone-200 p-10">
+      <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h1 class="text-2xl font-semibold mb-2">Path Complete</h1>
+      <p class="text-stone-600 mb-2">
+        <Sanskrit text={path.titleSanskrit} />
+        <span class="text-stone-400 ml-1">{path.title}</span>
+      </p>
+      <p class="text-sm text-stone-500 mb-8">
+        {path.steps.length} steps completed
+      </p>
+
+      <div class="space-y-3">
+        {#if nextPath}
+          <a
+            href="/learn/{nextPath.id}"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors font-medium"
+          >
+            Next: {nextPath.title}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        {/if}
+        <div>
+          <a
+            href="/learn"
+            class="inline-flex items-center gap-1 px-4 py-2 text-sm text-stone-600 hover:text-indigo-600 transition-colors"
+          >
+            ← All learning paths
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{:else if path}
   <div class="max-w-7xl mx-auto">
     <!-- Header -->
     <div class="mb-6">
@@ -218,6 +325,45 @@
         ></div>
       </div>
     </div>
+
+    <!-- Mobile step navigation (visible below lg breakpoint) -->
+    <details class="mb-4 bg-white rounded-lg border border-stone-200 lg:hidden">
+      <summary class="flex items-center justify-between px-4 py-3 cursor-pointer text-sm select-none">
+        <span class="font-medium text-stone-700">
+          Step {currentStepIndex + 1} of {path.steps.length}
+          {#if currentStep}
+            <span class="text-stone-400 ml-1">— {currentStep.title}</span>
+          {/if}
+        </span>
+        <svg class="w-4 h-4 text-stone-400 details-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </summary>
+      <nav class="px-4 pb-3 space-y-1 max-h-60 overflow-y-auto border-t border-stone-100 pt-2">
+        {#each path.steps as step, i}
+          {@const completed = isStepCompleted(i)}
+          {@const current = i === currentStepIndex}
+          <button
+            onclick={() => goToStep(i)}
+            class="w-full text-left px-2 py-1.5 rounded text-sm transition-colors
+                   {current ? 'bg-indigo-50 text-indigo-700 font-medium' : ''}
+                   {completed && !current ? 'text-stone-600' : ''}
+                   hover:bg-stone-50"
+          >
+            <div class="flex items-center gap-2">
+              {#if completed}
+                <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs flex-shrink-0">✓</span>
+              {:else if current}
+                <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
+              {:else}
+                <span class="w-5 h-5 rounded-full bg-stone-200 text-stone-500 flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
+              {/if}
+              <span class="truncate">{step.title}</span>
+            </div>
+          </button>
+        {/each}
+      </nav>
+    </details>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
       <!-- Left sidebar: Jargon lookup -->
@@ -279,9 +425,9 @@
 
             {#if currentStep.commentary}
               <div class="bg-white rounded-lg border border-stone-200 overflow-hidden p-5">
-                <p class="text-stone-700 leading-relaxed">
+                <div class="text-stone-700 leading-relaxed">
                   <CommentaryText text={currentStep.commentary} />
-                </p>
+                </div>
               </div>
             {/if}
 
@@ -337,7 +483,7 @@
           <div class="space-y-6">
             <!-- The sutra - hero element -->
             <div class="text-center py-6 bg-gradient-to-b from-indigo-50/50 to-transparent rounded-lg">
-              <a href="/sutra/{sutra.id}" class="font-mono text-sm text-indigo-600 hover:underline">
+              <a href="/ref/{sutra.id}" class="font-mono text-sm text-indigo-600 hover:underline">
                 {sutra.id}
               </a>
               <div class="text-3xl font-medium mt-3">
@@ -367,7 +513,7 @@
                     <div class="flex gap-1">
                       {#each (['simple', 'standard', 'advanced'] as const) as depth}
                         <button
-                          onclick={() => commentaryDepth = depth}
+                          onclick={() => { commentaryDepth = depth; commentaryDepthStore.set(depth); }}
                           class="px-3 py-1 text-xs rounded-full transition-colors
                                  {commentaryDepth === depth
                                    ? 'bg-indigo-500 text-white'
@@ -390,7 +536,7 @@
                       {depthLabels[commentaryDepth]} Explanation
                     </span>
                   </div>
-                  <div class="text-stone-700 leading-relaxed prose prose-sm max-w-none">
+                  <div class="text-stone-700 leading-relaxed">
                     <CommentaryText text={currentLayeredText} />
                   </div>
                 </div>
@@ -400,9 +546,9 @@
                   <div class="flex items-center gap-2 mb-2">
                     <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Commentary</span>
                   </div>
-                  <p class="text-stone-700 leading-relaxed">
+                  <div class="text-stone-700 leading-relaxed">
                     <CommentaryText text={currentStep.commentary} />
-                  </p>
+                  </div>
                 </div>
               {:else if commentary?.englishShort}
                 <!-- Fallback to short meaning -->

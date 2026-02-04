@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
+    "build:paths": "npx tsx scripts/build-path-index.ts",
+    "dev": "npm run build:paths && vite dev",
+    "build": "npm run build:paths && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -14,11 +15,16 @@
     "@tailwindcss/vite": "^4.0.0",
     "svelte": "^5.0.0",
     "tailwindcss": "^4.0.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.0.0",
     "vite": "^6.0.0"
   },
   "type": "module",
   "dependencies": {
+    "@types/dagre": "^0.7.53",
+    "cytoscape": "^3.33.1",
+    "cytoscape-dagre": "^2.5.0",
+    "dagre": "^0.8.5",
     "marked": "^17.0.1",
     "shlesha": "^0.5.4"
   }

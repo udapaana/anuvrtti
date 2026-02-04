@@ -7,14 +7,15 @@
   <title>Learn | Ashtadhyayi Explorer</title>
 </svelte:head>
 
-<div class="max-w-6xl mx-auto">
+<div class="max-w-4xl mx-auto">
   <div class="mb-6 text-center">
     <h1 class="text-2xl font-semibold mb-2">
       <Sanskrit text="अध्ययनम्" />
       <span class="text-stone-400 ml-2">Learning Paths</span>
     </h1>
     <p class="text-stone-600 max-w-xl mx-auto">
-      Explore the Ashtadhyayi through structured paths. Start with the introduction, then follow any branch based on what you want to learn.
+      Structured paths through the Ashtadhyayi based on Pushpa Dikshit's prakriya method.
+      Start with the introduction, then explore systematically or follow the reading track.
     </p>
   </div>
 

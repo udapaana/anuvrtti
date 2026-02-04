@@ -296,6 +296,19 @@ export async function searchByPada(pada: string): Promise<Sutra[]> {
   );
 }
 
+/** Get the adjacent sutra by offset (-1 for previous, +1 for next) */
+export async function getAdjacentSutra(
+  id: string,
+  offset: number,
+): Promise<Sutra | undefined> {
+  const sutras = await loadSutras();
+  const index = sutras.findIndex((s) => s.id === id || s.numericId === id);
+  if (index < 0) return undefined;
+  const target = index + offset;
+  if (target < 0 || target >= sutras.length) return undefined;
+  return sutras[target];
+}
+
 export { numericToDisplayId, displayToNumericId };
 export type {
   Sutra,
