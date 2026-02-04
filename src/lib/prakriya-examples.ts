@@ -251,6 +251,28 @@ export const SUTRA_EXAMPLES: Record<string, PrakriyaExample> = {
     note: "it-letters elided",
   },
 
+  // === Root substitution ===
+
+  // 7.3.77 iSugamiyamAM CaH - ch-substitution for gam/iS/yam
+  "7.3.77": {
+    type: "tinanta",
+    dhatu: "ga\\mx~",
+    gana: "Bhvadi",
+    lakara: "Lat",
+    labelParts: ["gam", "law", "gacCati"],
+    note: "gam → gacch before śap",
+  },
+
+  // 6.1.73 Che ca - tuk augment before ch
+  "6.1.73": {
+    type: "tinanta",
+    dhatu: "ga\\mx~",
+    gana: "Bhvadi",
+    lakara: "Lat",
+    labelParts: ["gam", "law", "gacCati"],
+    note: "t inserted before ch",
+  },
+
   // === Subanta (nominal forms) ===
 
   // 4.1.2 svaujasamauT... - sup endings after pratipadika
