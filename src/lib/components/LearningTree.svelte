@@ -52,6 +52,18 @@
     return completedPaths.includes(pathId);
   }
 
+  function arePrereqsMet(path: PathMeta): boolean {
+    if (path.prerequisites.length === 0) return true;
+    return path.prerequisites.every(id => completedPaths.includes(id));
+  }
+
+  function getUnmetPrereqs(path: PathMeta): PathMeta[] {
+    return path.prerequisites
+      .filter(id => !completedPaths.includes(id))
+      .map(id => allPaths.find(p => p.id === id))
+      .filter((p): p is PathMeta => p != null);
+  }
+
   function getProgressPercent(path: PathMeta): number {
     const steps = pathProgress[path.id] || [];
     if (path.stepCount === 0) return 0;
@@ -240,13 +252,16 @@
                   {#each paths as path}
                     {@const complete = isCompleted(path.id)}
                     {@const progress = getProgressPercent(path)}
+                    {@const unlocked = arePrereqsMet(path)}
+                    {@const unmet = getUnmetPrereqs(path)}
 
                     <button
                       class="path-item"
                       class:completed={complete}
+                      class:locked={!unlocked && !complete}
                       onclick={() => handlePathClick(path)}
                     >
-                      <span class="path-bullet" style="background: {colors.medium};"></span>
+                      <span class="path-bullet" style="background: {unlocked || complete ? colors.medium : '#d6d3d1'};"></span>
                       <span class="path-label">{getLabel(path.id, path.label)}</span>
                       <span class="path-title">{path.title}</span>
 
@@ -255,6 +270,12 @@
                       {:else if progress > 0}
                         <span class="path-progress">
                           <span class="progress-bar" style="width: {progress}%; background: {colors.medium};"></span>
+                        </span>
+                      {:else if !unlocked}
+                        <span class="path-prereqs" title="Requires: {unmet.map(p => p.title).join(', ')}">
+                          {#each unmet as req}
+                            <span class="prereq-tag">{req.label || req.title}</span>
+                          {/each}
                         </span>
                       {/if}
 
@@ -597,6 +618,26 @@
 
   .path-item.completed {
     opacity: 0.7;
+  }
+
+  .path-item.locked {
+    opacity: 0.55;
+  }
+
+  .path-prereqs {
+    display: flex;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .prereq-tag {
+    font-size: 0.6rem;
+    padding: 0.05rem 0.35rem;
+    background: #f5f5f4;
+    border: 1px solid #e7e5e4;
+    border-radius: 0.25rem;
+    color: #a8a29e;
+    white-space: nowrap;
   }
 
   .path-bullet {
