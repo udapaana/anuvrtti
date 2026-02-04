@@ -327,43 +327,69 @@
     </div>
 
     <!-- Mobile step navigation (visible below lg breakpoint) -->
-    <details class="mb-4 bg-white rounded-lg border border-stone-200 lg:hidden">
-      <summary class="flex items-center justify-between px-4 py-3 cursor-pointer text-sm select-none">
-        <span class="font-medium text-stone-700">
-          Step {currentStepIndex + 1} of {path.steps.length}
-          {#if currentStep}
-            <span class="text-stone-400 ml-1">— {currentStep.title}</span>
-          {/if}
-        </span>
-        <svg class="w-4 h-4 text-stone-400 details-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-      </summary>
-      <nav class="px-4 pb-3 space-y-1 max-h-60 overflow-y-auto border-t border-stone-100 pt-2">
-        {#each path.steps as step, i}
-          {@const completed = isStepCompleted(i)}
-          {@const current = i === currentStepIndex}
-          <button
-            onclick={() => goToStep(i)}
-            class="w-full text-left px-2 py-1.5 rounded text-sm transition-colors
-                   {current ? 'bg-indigo-50 text-indigo-700 font-medium' : ''}
-                   {completed && !current ? 'text-stone-600' : ''}
-                   hover:bg-stone-50"
-          >
-            <div class="flex items-center gap-2">
-              {#if completed}
-                <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs flex-shrink-0">✓</span>
-              {:else if current}
-                <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
-              {:else}
-                <span class="w-5 h-5 rounded-full bg-stone-200 text-stone-500 flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
-              {/if}
-              <span class="truncate">{step.title}</span>
-            </div>
-          </button>
-        {/each}
-      </nav>
-    </details>
+    <div class="mb-4 lg:hidden space-y-2">
+      <details class="bg-white rounded-lg border border-stone-200">
+        <summary class="flex items-center justify-between px-4 py-3 cursor-pointer text-sm select-none">
+          <span class="font-medium text-stone-700">
+            Step {currentStepIndex + 1} of {path.steps.length}
+            {#if currentStep}
+              <span class="text-stone-400 ml-1">— {currentStep.title}</span>
+            {/if}
+          </span>
+          <svg class="w-4 h-4 text-stone-400 details-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <nav class="px-4 pb-3 space-y-1 max-h-60 overflow-y-auto border-t border-stone-100 pt-2">
+          {#each path.steps as step, i}
+            {@const completed = isStepCompleted(i)}
+            {@const current = i === currentStepIndex}
+            <button
+              onclick={() => goToStep(i)}
+              class="w-full text-left px-2 py-1.5 rounded text-sm transition-colors
+                     {current ? 'bg-indigo-50 text-indigo-700 font-medium' : ''}
+                     {completed && !current ? 'text-stone-600' : ''}
+                     hover:bg-stone-50"
+            >
+              <div class="flex items-center gap-2">
+                {#if completed}
+                  <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs flex-shrink-0">✓</span>
+                {:else if current}
+                  <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
+                {:else}
+                  <span class="w-5 h-5 rounded-full bg-stone-200 text-stone-500 flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
+                {/if}
+                <span class="truncate">{step.title}</span>
+              </div>
+            </button>
+          {/each}
+        </nav>
+      </details>
+
+      <!-- Mobile tools: Jargon Lookup & Pratyahara -->
+      <div class="flex gap-2">
+        <details class="flex-1 bg-white rounded-lg border border-stone-200">
+          <summary class="flex items-center justify-center gap-1.5 px-3 py-2 cursor-pointer text-sm text-stone-600 select-none">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            Jargon
+          </summary>
+          <div class="px-3 pb-3 border-t border-stone-100 pt-2 max-h-72 overflow-y-auto">
+            <JargonLookup />
+          </div>
+        </details>
+        <details class="flex-1 bg-white rounded-lg border border-stone-200">
+          <summary class="flex items-center justify-center gap-1.5 px-3 py-2 cursor-pointer text-sm text-stone-600 select-none">
+            <span class="text-xs font-bold">ac</span>
+            Pratyahara
+          </summary>
+          <div class="px-3 pb-3 border-t border-stone-100 pt-2 max-h-72 overflow-y-auto">
+            <PratyaharaViewer />
+          </div>
+        </details>
+      </div>
+    </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
       <!-- Left sidebar: Jargon lookup -->

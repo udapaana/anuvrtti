@@ -48,6 +48,7 @@ interface PathMeta {
 function parseFrontmatter(content: string): {
   meta: Record<string, any>;
   stepCount: number;
+  sutraIds: string[];
 } {
   const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!match) {
@@ -107,12 +108,41 @@ function parseFrontmatter(content: string): {
   // Count steps (## headers that aren't in frontmatter)
   const stepCount = (body.match(/^## /gm) || []).length;
 
-  return { meta, stepCount };
+  // Extract sutra IDs from step headers: ## 1.1.1 - Title
+  const nonSutraTypes = [
+    "concept",
+    "reading",
+    "practice",
+    "summary",
+    "exercise",
+  ];
+  const sutraIds: string[] = [];
+  const stepHeaders = body.matchAll(/^## (\S+)\s*-\s*.+$/gm);
+  for (const m of stepHeaders) {
+    let id = m[1];
+    // Normalize @ref[X.Y.Z] -> X.Y.Z
+    const refMatch = id.match(/^@ref\[(.+)\]$/);
+    if (refMatch) {
+      id = refMatch[1];
+    }
+    if (!nonSutraTypes.includes(id.toLowerCase())) {
+      sutraIds.push(id);
+    }
+  }
+
+  return { meta, stepCount, sutraIds };
+}
+
+// Maps sutra ID -> [{pathId, pathTitle}]
+interface SutraPathEntry {
+  pathId: string;
+  pathTitle: string;
 }
 
 async function buildIndex() {
   const pathsDir = join(process.cwd(), "static/content/paths");
   const paths: PathMeta[] = [];
+  const sutraPathMap: Record<string, SutraPathEntry[]> = {};
 
   // Iterate over track folders (pathana, vyakarana)
   for (const [trackFolder, track] of Object.entries(TRACK_FOLDERS)) {
@@ -140,14 +170,17 @@ async function buildIndex() {
       const pathMdFile = join(pathDir, "path.md");
       try {
         const content = await readFile(pathMdFile, "utf-8");
-        const { meta, stepCount } = parseFrontmatter(content);
+        const { meta, stepCount, sutraIds } = parseFrontmatter(content);
+
+        const pathId = meta.id || pathFolder;
+        const pathTitle = meta.title;
 
         paths.push({
-          id: meta.id || pathFolder, // Use folder name as fallback
+          id: pathId,
           track,
           folder: pathFolder,
           trackFolder,
-          title: meta.title,
+          title: pathTitle,
           titleSanskrit: meta.titleSanskrit,
           label: meta.label || meta.titleSanskrit,
           category: meta.category,
@@ -158,6 +191,17 @@ async function buildIndex() {
           stepCount,
           order: meta.order,
         });
+
+        // Build sutra-to-path mapping
+        for (const sutraId of sutraIds) {
+          if (!sutraPathMap[sutraId]) {
+            sutraPathMap[sutraId] = [];
+          }
+          // Avoid duplicates (same path listed twice for same sutra)
+          if (!sutraPathMap[sutraId].some((e) => e.pathId === pathId)) {
+            sutraPathMap[sutraId].push({ pathId, pathTitle });
+          }
+        }
       } catch (e: any) {
         if (e.code === "ENOENT") {
           console.warn(
@@ -186,7 +230,12 @@ async function buildIndex() {
   const indexPath = join(process.cwd(), "static/content/paths-index.json");
   await writeFile(indexPath, JSON.stringify(paths, null, 2));
 
+  const sutraPathsPath = join(process.cwd(), "static/content/sutra-paths.json");
+  await writeFile(sutraPathsPath, JSON.stringify(sutraPathMap));
+
+  const sutraCount = Object.keys(sutraPathMap).length;
   console.log(`Generated paths-index.json with ${paths.length} paths`);
+  console.log(`Generated sutra-paths.json with ${sutraCount} sutra mappings`);
 }
 
 buildIndex().catch(console.error);

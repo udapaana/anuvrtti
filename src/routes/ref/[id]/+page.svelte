@@ -43,6 +43,7 @@
   let dependents: Sutra[] = $derived(data.dependents);
   let prevSutraId: string | null = $derived(data.prevSutraId);
   let nextSutraId: string | null = $derived(data.nextSutraId);
+  let learningPaths: { pathId: string; pathTitle: string }[] = $derived(data.learningPaths);
 
   // Depth selector - synced with global preference
   let depth: CommentaryDepth = $state('standard');
@@ -76,6 +77,30 @@
     <a href="/ref">Back to Reference</a>
   </div>
 {:else}
+  <!-- Mobile tools (visible below lg breakpoint) -->
+  <div class="mobile-tools">
+    <details class="mobile-tool-panel">
+      <summary class="mobile-tool-summary">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        Jargon
+      </summary>
+      <div class="mobile-tool-content">
+        <JargonLookup />
+      </div>
+    </details>
+    <details class="mobile-tool-panel">
+      <summary class="mobile-tool-summary">
+        <span class="text-xs font-bold">ac</span>
+        Pratyahara
+      </summary>
+      <div class="mobile-tool-content">
+        <PratyaharaViewer />
+      </div>
+    </details>
+  </div>
+
   <div class="detail-layout">
     <!-- Left sidebar: Jargon lookup -->
     <aside class="left-sidebar">
@@ -123,6 +148,16 @@
           <h3 class="section-label">Anuvrtti Inheritance</h3>
           <AnuvrttiGraph {sutra} />
         </section>
+      {/if}
+
+      <!-- Learning path cross-links -->
+      {#if learningPaths.length > 0}
+        <div class="learn-links">
+          <span class="learn-links-label">Learn this in:</span>
+          {#each learningPaths as lp}
+            <a href="/learn/{lp.pathId}" class="learn-link">{lp.pathTitle}</a>
+          {/each}
+        </div>
       {/if}
 
       <!-- Navigation -->
@@ -297,5 +332,79 @@
   .banner-dismiss:hover {
     color: #4338ca;
     background: #c7d2fe;
+  }
+
+  /* Learn cross-links */
+  .learn-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 0.375rem;
+    font-size: 0.8125rem;
+  }
+
+  .learn-links-label {
+    color: #15803d;
+    font-weight: 500;
+  }
+
+  .learn-link {
+    color: #15803d;
+    text-decoration: none;
+    padding: 0.125rem 0.5rem;
+    background: #dcfce7;
+    border-radius: 0.25rem;
+  }
+
+  .learn-link:hover {
+    background: #bbf7d0;
+    text-decoration: underline;
+  }
+
+  /* Mobile tools */
+  .mobile-tools {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-tools {
+      display: none;
+    }
+  }
+
+  .mobile-tool-panel {
+    flex: 1;
+    background: white;
+    border: 1px solid #e7e5e4;
+    border-radius: 0.5rem;
+  }
+
+  .mobile-tool-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: #57534e;
+    user-select: none;
+  }
+
+  .mobile-tool-content {
+    padding: 0.75rem;
+    border-top: 1px solid #f5f5f4;
+    max-height: 18rem;
+    overflow-y: auto;
   }
 </style>

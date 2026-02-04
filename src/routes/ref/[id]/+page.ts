@@ -1,5 +1,27 @@
 export const ssr = false;
 
+// Cache the sutra-paths index
+let sutraPathsCache: Record<
+  string,
+  { pathId: string; pathTitle: string }[]
+> | null = null;
+
+async function loadSutraPaths(): Promise<
+  Record<string, { pathId: string; pathTitle: string }[]>
+> {
+  if (sutraPathsCache) return sutraPathsCache;
+  try {
+    const resp = await fetch("/content/sutra-paths.json");
+    if (resp.ok) {
+      sutraPathsCache = await resp.json();
+      return sutraPathsCache!;
+    }
+  } catch {
+    /* non-critical */
+  }
+  return {};
+}
+
 export async function load({ params }) {
   const {
     getSutra,
@@ -22,6 +44,7 @@ export async function load({ params }) {
       dependents: [],
       prevSutraId: null,
       nextSutraId: null,
+      learningPaths: [],
     };
   }
 
@@ -32,6 +55,7 @@ export async function load({ params }) {
     dependents,
     prevSutra,
     nextSutra,
+    sutraPaths,
   ] = await Promise.all([
     getCommentary(sutra.numericId),
     getLayeredCommentary(sutra.numericId),
@@ -39,7 +63,10 @@ export async function load({ params }) {
     getDependents(id),
     getAdjacentSutra(sutra.id, -1),
     getAdjacentSutra(sutra.id, 1),
+    loadSutraPaths(),
   ]);
+
+  const learningPaths = sutraPaths[id] || [];
 
   return {
     sutra,
@@ -49,5 +76,6 @@ export async function load({ params }) {
     dependents: dependents.slice(0, 20),
     prevSutraId: prevSutra?.id ?? null,
     nextSutraId: nextSutra?.id ?? null,
+    learningPaths,
   };
 }
