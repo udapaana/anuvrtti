@@ -250,6 +250,41 @@ export const SUTRA_EXAMPLES: Record<string, PrakriyaExample> = {
     labelParts: ["BU", "law", "Bavati"],
     note: "it-letters elided",
   },
+
+  // === Subanta (nominal forms) ===
+
+  // 4.1.2 svaujasamauT... - sup endings after pratipadika
+  "4.1.2": {
+    type: "subanta",
+    pratipadika: "rAma",
+    linga: "Pum",
+    vibhakti: "Sasthi",
+    vacana: "Eka",
+    labelParts: ["rAma", "rAmasya"],
+    note: "genitive singular of a-stem",
+  },
+
+  // 7.1.12 TAngasiNasamInAtsyAH - special endings for a-stems
+  "7.1.12": {
+    type: "subanta",
+    pratipadika: "rAma",
+    linga: "Pum",
+    vibhakti: "Sasthi",
+    vacana: "Eka",
+    labelParts: ["rAma", "rAmasya"],
+    note: "Nas → sya for a-stems",
+  },
+
+  // 2.3.50 SaSThI Seze - genitive for remaining relations
+  "2.3.50": {
+    type: "subanta",
+    pratipadika: "rAma",
+    linga: "Pum",
+    vibhakti: "Sasthi",
+    vacana: "Eka",
+    labelParts: ["rAma", "rAmasya"],
+    note: "genitive case assignment",
+  },
 };
 
 /**
