@@ -26,14 +26,14 @@ Rules 1.4.23–55 define six @term[kāraka] roles. These rules don't directly as
 
 ## concept - The Six Kārakas
 
-| @term[kāraka] | Semantic Role | Primary Case |
-|---------------|---------------|--------------|
-| @term[kartṛ] | Agent | @term[prathamā] (nom.) |
-| @term[karman] | Patient/Object | @term[dvitīyā] (acc.) |
-| @term[karaṇa] | Instrument | @term[tṛtīyā] (inst.) |
-| @term[sampradāna] | Recipient | @term[caturthī] (dat.) |
-| @term[apādāna] | Source | @term[pañcamī] (abl.) |
-| @term[adhikaraṇa] | Locus | @term[saptamī] (loc.) |
+| @term[kāraka]     | Semantic Role  | Primary Case           |
+| ----------------- | -------------- | ---------------------- |
+| @term[kartṛ]      | Agent          | @term[prathamā] (nom.) |
+| @term[karman]     | Patient/Object | @term[dvitīyā] (acc.)  |
+| @term[karaṇa]     | Instrument     | @term[tṛtīyā] (inst.)  |
+| @term[sampradāna] | Recipient      | @term[caturthī] (dat.) |
+| @term[apādāna]    | Source         | @term[pañcamī] (abl.)  |
+| @term[adhikaraṇa] | Locus          | @term[saptamī] (loc.)  |
 
 Note: @term[sambandha] (genitive relation) is NOT a @term[kāraka] — it expresses possession and other relations outside the action structure.
 
@@ -350,6 +350,7 @@ Rāma has autonomous control — he's @term[svatantra] ("self-powered").
 @sutra[1.4.55]
 
 In causatives, there are two "agents":
+
 - The instigator (@term[hetu]//@term[prayojaka]) — true @term[kartṛ]
 - The original agent — now @term[karman] (by 1.4.52)
 
@@ -361,14 +362,14 @@ Yajñadatta is @term[hetu] (causative agent); Devadatta is @term[karman] (caused
 
 ## concept - The Complete Kāraka Architecture
 
-| Rule | @term[kāraka] | Core Definition |
-|------|--------------|-----------------|
-| 1.4.24 | @term[apādāna] | Fixed point in separation |
-| 1.4.32 | @term[sampradāna] | Recipient of the object |
-| 1.4.42 | @term[karaṇa] | Most effective means |
-| 1.4.45 | @term[adhikaraṇa] | Container/locus |
-| 1.4.49 | @term[karman] | Most desired to affect |
-| 1.4.54 | @term[kartṛ] | Independent agent |
+| Rule   | @term[kāraka]     | Core Definition           |
+| ------ | ----------------- | ------------------------- |
+| 1.4.24 | @term[apādāna]    | Fixed point in separation |
+| 1.4.32 | @term[sampradāna] | Recipient of the object   |
+| 1.4.42 | @term[karaṇa]     | Most effective means      |
+| 1.4.45 | @term[adhikaraṇa] | Container/locus           |
+| 1.4.49 | @term[karman]     | Most desired to affect    |
+| 1.4.54 | @term[kartṛ]      | Independent agent         |
 
 These six roles capture the semantic structure of any action. The @term[kāraka] system is Pāṇini's contribution to universal semantic theory.
 
@@ -378,14 +379,14 @@ These six roles capture the semantic structure of any action. The @term[kāraka]
 
 @term[kāraka] roles don't directly equal cases. Rules in 2.3 map them:
 
-| @term[kāraka] | Default Case | But also... |
-|--------------|--------------|-------------|
-| @term[kartṛ] | @term[prathamā] | @term[tṛtīyā] (passive) |
-| @term[karman] | @term[dvitīyā] | @term[prathamā] (passive) |
-| @term[karaṇa] | @term[tṛtīyā] | |
-| @term[sampradāna] | @term[caturthī] | |
-| @term[apādāna] | @term[pañcamī] | |
-| @term[adhikaraṇa] | @term[saptamī] | |
+| @term[kāraka]     | Default Case    | But also...               |
+| ----------------- | --------------- | ------------------------- |
+| @term[kartṛ]      | @term[prathamā] | @term[tṛtīyā] (passive)   |
+| @term[karman]     | @term[dvitīyā]  | @term[prathamā] (passive) |
+| @term[karaṇa]     | @term[tṛtīyā]   |                           |
+| @term[sampradāna] | @term[caturthī] |                           |
+| @term[apādāna]    | @term[pañcamī]  |                           |
+| @term[adhikaraṇa] | @term[saptamī]  |                           |
 
 The @term[kāraka] is the meaning; the @term[vibhakti] is the form. The mapping isn't always one-to-one.
 
@@ -396,12 +397,44 @@ The @term[kāraka] is the meaning; the @term[vibhakti] is the form. The mapping 
 @term[kāraka] assignments in real sentences:
 
 **@deva[रामो वनं गच्छति]** "Rāma goes to the forest"
+
 - @deva[रामः] = @term[kartṛ] (agent) → @term[prathamā]
 - @deva[वनम्] = @term[karman] (goal) → @term[dvitīyā]
 
 **@deva[रामेण बाणेन रावणो हतः]** "Rāvaṇa was killed by Rāma with an arrow"
+
 - @deva[रामेण] = @term[kartṛ] (agent in passive) → @term[tṛtīyā]
 - @deva[बाणेन] = @term[karaṇa] (instrument) → @term[tṛtīyā]
 - @deva[रावणः] = @term[karman] (patient in passive) → @term[prathamā]
 
 The @term[kāraka] roles explain WHY the cases are chosen.
+
+---
+
+## quiz - Check Your Understanding
+
+**Question:** In @deva[विप्राय गां ददाति] "he gives a cow to the brahmin," which @term[kāraka] is @deva[विप्राय]?
+
+**Options:**
+
+- [ ] @term[karman] — the object of the action
+- [ ] @term[karaṇa] — the instrument
+- [x] @term[sampradāna] — the recipient
+- [ ] @term[apādāna] — the source
+
+**Explanation:** The brahmin (@deva[विप्र]) is the recipient toward whom the cow moves. By @ref[1.4.32], the one whom the agent approaches through the @term[karman] is @term[sampradāna]. This takes @term[caturthī] (dative), giving @deva[विप्राय].
+
+---
+
+## quiz - Identify the Kārakas
+
+**Question:** In @deva[कुठारेण वृक्षं छिनत्ति] "he cuts the tree with an axe," which @term[kāraka] is @deva[कुठारेण]?
+
+**Options:**
+
+- [ ] @term[kartṛ] — the agent
+- [x] @term[karaṇa] — the instrument
+- [ ] @term[karman] — the object
+- [ ] @term[adhikaraṇa] — the locus
+
+**Explanation:** The axe is the most effective means (@term[sādhakatama]) for accomplishing the cutting. By @ref[1.4.42], this makes it @term[karaṇa], which takes @term[tṛtīyā] (instrumental).

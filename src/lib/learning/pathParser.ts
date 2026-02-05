@@ -38,7 +38,14 @@
  * ...
  */
 
-import type { LearningPath, LearningStep, Track, PathCategory } from "./paths";
+import type {
+  LearningPath,
+  LearningStep,
+  Track,
+  PathCategory,
+  QuizData,
+  QuizOption,
+} from "./paths";
 
 interface PathFrontmatter {
   id: string;
@@ -151,17 +158,19 @@ function parseFrontmatter(content: string): {
  *   ## 1.1.1 - Sūtra Title (grammar step)
  *   ## concept - Concept Title (conceptual explanation)
  *   ## reading - Passage Title (reading passage)
+ *   ## quiz - Quiz Title (self-check question)
  */
 function parseStep(section: string): LearningStep | null {
   const lines = section.trim().split("\n");
   if (lines.length === 0) return null;
 
-  // Parse header: ## 1.1.1 - Step Title  OR  ## concept - Step Title  OR  ## reading - Title
+  // Parse header: ## 1.1.1 - Step Title  OR  ## concept - Step Title  OR  ## reading - Title  OR  ## quiz - Title
   const sutraMatch = lines[0].match(/^##\s+(\d+\.\d+\.\d+)\s*-\s*(.+)$/);
   const conceptMatch = lines[0].match(/^##\s+(concept)\s*-\s*(.+)$/i);
   const readingMatch = lines[0].match(/^##\s+(reading)\s*-\s*(.+)$/i);
+  const quizMatch = lines[0].match(/^##\s+(quiz)\s*-\s*(.+)$/i);
 
-  const headerMatch = sutraMatch || conceptMatch || readingMatch;
+  const headerMatch = sutraMatch || conceptMatch || readingMatch || quizMatch;
   if (!headerMatch) return null;
 
   const [, sutraId, title] = headerMatch;
@@ -170,6 +179,15 @@ function parseStep(section: string): LearningStep | null {
   let commentaryLines: string[] = [];
   let source: string | undefined;
   let inCommentary = false;
+
+  // Quiz-specific parsing
+  let quizQuestion: string | undefined;
+  let quizOptions: QuizOption[] = [];
+  let quizAnswer: string | undefined;
+  let quizExplanation: string | undefined;
+  let inOptions = false;
+  let inExplanation = false;
+  const isQuiz = sutraId.toLowerCase() === "quiz";
 
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i];
@@ -193,6 +211,69 @@ function parseStep(section: string): LearningStep | null {
       continue;
     }
 
+    // Quiz-specific parsing
+    if (isQuiz) {
+      // Parse question: **Question:** ...
+      const questionMatch = line.match(/^\*\*Question:\*\*\s*(.+)$/);
+      if (questionMatch) {
+        quizQuestion = questionMatch[1].trim();
+        inOptions = false;
+        inExplanation = false;
+        continue;
+      }
+
+      // Parse answer (for short answer): **Answer:** ...
+      const answerMatch = line.match(/^\*\*Answer:\*\*\s*(.+)$/);
+      if (answerMatch) {
+        quizAnswer = answerMatch[1].trim();
+        inOptions = false;
+        inExplanation = false;
+        continue;
+      }
+
+      // Start of options section
+      if (line.match(/^\*\*Options:\*\*\s*$/)) {
+        inOptions = true;
+        inExplanation = false;
+        continue;
+      }
+
+      // Parse option: - [ ] text  OR  - [x] text (correct)
+      if (inOptions) {
+        const optionMatch = line.match(/^-\s*\[([ x])\]\s*(.+)$/);
+        if (optionMatch) {
+          const isCorrect = optionMatch[1] === "x";
+          quizOptions.push({
+            text: optionMatch[2].trim(),
+            correct: isCorrect || undefined,
+          });
+          continue;
+        }
+        // Empty line ends options
+        if (line.trim() === "") {
+          inOptions = false;
+        }
+      }
+
+      // Start of explanation section
+      if (line.match(/^\*\*Explanation:\*\*\s*(.*)$/)) {
+        const explMatch = line.match(/^\*\*Explanation:\*\*\s*(.*)$/);
+        if (explMatch && explMatch[1]) {
+          quizExplanation = explMatch[1].trim();
+        }
+        inExplanation = true;
+        inOptions = false;
+        continue;
+      }
+
+      // Continue explanation on subsequent lines
+      if (inExplanation && line.trim()) {
+        quizExplanation =
+          (quizExplanation || "") + (quizExplanation ? " " : "") + line.trim();
+        continue;
+      }
+    }
+
     // Skip empty lines before commentary starts
     if (!inCommentary && line.trim() === "") continue;
 
@@ -214,6 +295,16 @@ function parseStep(section: string): LearningStep | null {
   if (source && sutraId.toLowerCase() === "reading") {
     // Prefix commentary with source info for reading steps
     step.commentary = source + (commentary ? "\n\n" + commentary : "");
+  }
+
+  // Add quiz data for quiz steps
+  if (isQuiz && quizQuestion) {
+    step.quiz = {
+      question: quizQuestion,
+      options: quizOptions.length > 0 ? quizOptions : undefined,
+      answer: quizAnswer,
+      explanation: quizExplanation,
+    };
   }
 
   return step;

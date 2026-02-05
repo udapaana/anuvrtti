@@ -14,6 +14,7 @@
   import JargonLookup from '$lib/components/JargonLookup.svelte';
   import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
   import DerivationViewer from '$lib/components/DerivationViewer.svelte';
+  import QuizStep from '$lib/components/QuizStep.svelte';
   import { getExampleForSutra, type PrakriyaExample } from '$lib/prakriya-examples';
   import { deriveTinanta, deriveSubanta, type Prakriya } from '$lib/prakriya';
 
@@ -454,6 +455,54 @@
                 {/each}
               </div>
             {/if}
+
+            <!-- Navigation - large arrows -->
+            <div class="flex items-center justify-between pt-6">
+              <button
+                onclick={prevStep}
+                disabled={currentStepIndex === 0}
+                class="w-14 h-14 flex items-center justify-center rounded-full border-2 border-stone-200 text-stone-400 hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
+                aria-label="Previous"
+              >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <span class="text-sm text-stone-400">
+                {currentStepIndex + 1} / {path.steps.length}
+              </span>
+
+              <button
+                onclick={nextStep}
+                class="w-14 h-14 flex items-center justify-center rounded-full border-2 transition-colors
+                       {currentStepIndex === path.steps.length - 1
+                         ? 'border-green-500 bg-green-500 text-white hover:bg-green-600'
+                         : 'border-indigo-500 bg-indigo-500 text-white hover:bg-indigo-600'}"
+                aria-label={currentStepIndex === path.steps.length - 1 ? 'Complete' : 'Next'}
+              >
+                {#if currentStepIndex === path.steps.length - 1}
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                {:else}
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                {/if}
+              </button>
+            </div>
+          </div>
+        {:else if currentStep && currentStep.sutraId.toLowerCase() === 'quiz' && currentStep.quiz}
+          <!-- Quiz step -->
+          <div class="space-y-6">
+            <div class="text-center py-4">
+              <div class="text-xl font-medium text-stone-700">
+                {currentStep.title}
+              </div>
+            </div>
+
+            <QuizStep quiz={currentStep.quiz} />
 
             <!-- Navigation - large arrows -->
             <div class="flex items-center justify-between pt-6">

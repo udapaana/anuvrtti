@@ -17,6 +17,18 @@ export type PathCategory =
   | "karaka"
   | "samasa";
 
+export interface QuizOption {
+  text: string;
+  correct?: boolean;
+}
+
+export interface QuizData {
+  question: string;
+  options?: QuizOption[];
+  answer?: string;
+  explanation?: string;
+}
+
 export interface LearningStep {
   sutraId: string;
   title: string;
@@ -26,6 +38,8 @@ export interface LearningStep {
   kashika?: string;
   /** Optional kashika English translation */
   kashikaTranslation?: string;
+  /** Quiz data for quiz-type steps */
+  quiz?: QuizData;
 }
 
 export interface LearningPath {
