@@ -34,11 +34,11 @@ Paths live in `static/content/paths/[track]/[pathId]/path.md`. YAML frontmatter 
 
 Stored in `static/data/layered_commentary.json`. Each sutra has simple/standard/advanced. Guidelines:
 
-| Level | Audience | Term definitions | Cross-references | Edge cases |
-|-------|----------|-----------------|-----------------|------------|
-| Simple | Beginners | Define every term inline (Sanskrit first, English gloss) | Few or none | Omit |
-| Standard | Some exposure | Define uncommon terms; assume basics | Occasional | Common ones only |
-| Advanced | Grammar students | Minimal definitions; jargon lookup suffices | Thorough | Comprehensive |
+| Level    | Audience         | Term definitions                                         | Cross-references | Edge cases       |
+| -------- | ---------------- | -------------------------------------------------------- | ---------------- | ---------------- |
+| Simple   | Beginners        | Define every term inline (Sanskrit first, English gloss) | Few or none      | Omit             |
+| Standard | Some exposure    | Define uncommon terms; assume basics                     | Occasional       | Common ones only |
+| Advanced | Grammar students | Minimal definitions; jargon lookup suffices              | Thorough         | Comprehensive    |
 
 All levels: Sanskrit terms tagged with `@deva[]`. Cross-references use `@ref[]`. No untagged Sanskrit.
 
@@ -49,6 +49,7 @@ All levels: Sanskrit terms tagged with `@deva[]`. Cross-references use `@ref[]`.
 ### What's done
 
 **UX (Phase 1) — Complete:**
+
 - [x] 1A. Return-to-path context (sessionStorage + banner on ref pages)
 - [x] 1B. Path completion flow (interstitial with next-path suggestion)
 - [x] 1C. Resume learning card on home page
@@ -56,13 +57,16 @@ All levels: Sanskrit terms tagged with `@deva[]`. Cross-references use `@ref[]`.
 - [x] 1F. Safe prev/next navigation (index-based lookup)
 - [x] Unified SutraDisplay component (compact/card/full variants)
 - [x] Prerequisite status in learning tree
+- [x] B1. Mobile step navigation (collapsible drawer with JargonLookup/Pratyahara)
 
 **Content enrichment (Phase 2A) — Grammar paths complete:**
+
 - [x] All 56 grammar paths enriched to 150+ lines each
 - [x] Paradigm tables, concept sections, worked examples, practice exercises
 - [x] Total path content: ~10,000 lines across 56 paths
 
 **Commentary rewrite — Through pada 4.1:**
+
 - [x] Padas 1.1–1.4 complete
 - [x] Padas 2.1–2.4 complete
 - [x] Padas 3.1–3.4 complete
@@ -70,6 +74,7 @@ All levels: Sanskrit terms tagged with `@deva[]`. Cross-references use `@ref[]`.
 - [x] Pada 6.1.1–90 complete
 
 **Ashtadhyayi flow (Phase 3) — Started:**
+
 - [x] 3 prakriya paths (bhavati, ramasya, gacchati)
 - [x] 2 pada reading paths (1.1, 1.3) + generation script
 - [x] 1 prakarana path (it-samjna)
@@ -90,30 +95,31 @@ Sanskrit grammatical terms must be primary throughout. English glosses are secon
 **Problem:** Many paths use English terms as primary ("present tense," "root," "suffix," "vowel," "noun," "first person") instead of Sanskrit (@term[लट्], @term[धातु], @term[प्रत्यय], @term[स्वर], @term[प्रातिपदिक], @term[उत्तम पुरुष]).
 
 **Work:**
+
 - Audit all 56 path files. Replace English-primary usage with Sanskrit-primary + English gloss pattern
 - Pattern to follow: "@deva[धातु] (verbal root)" on first mention, then just "@deva[धातु]" or "@term[धातु]"
 - The karaka-intro and sandhi-vowel paths are good models — follow their pattern
 
 **Specific terms needing systematic replacement across paths:**
 
-| English (current) | Sanskrit (should be primary) |
-|---|---|
-| present tense | @deva[लट्] / @term[वर्तमान] |
-| past tense / imperfect | @deva[लङ्] / @term[अनद्यतन भूत] |
-| future tense | @deva[लृट्] / @term[भविष्यत्] |
-| root | @deva[धातु] / @term[धातु] |
-| suffix / affix | @deva[प्रत्यय] / @term[प्रत्यय] |
-| vowel | @deva[स्वर] / @term[अच्] |
-| consonant | @deva[व्यञ्जन] / @term[हल्] |
-| noun | @term[प्रातिपदिक] / @term[सुबन्त] |
-| verb / verbal form | @term[तिङन्त] / @term[धातु] |
-| augment | @term[आगम] (e.g., @deva[अट्], @deva[इट्], @deva[नुम्]) |
-| first person | @term[उत्तम पुरुष] |
-| second person | @term[मध्यम पुरुष] |
-| third person | @term[प्रथम पुरुष] |
-| singular / dual / plural | @term[एकवचन] / @term[द्विवचन] / @term[बहुवचन] |
-| participle | @term[कृदन्त] / @term[निष्ठा] |
-| compound | @term[समास] |
+| English (current)        | Sanskrit (should be primary)                           |
+| ------------------------ | ------------------------------------------------------ |
+| present tense            | @deva[लट्] / @term[वर्तमान]                            |
+| past tense / imperfect   | @deva[लङ्] / @term[अनद्यतन भूत]                        |
+| future tense             | @deva[लृट्] / @term[भविष्यत्]                          |
+| root                     | @deva[धातु] / @term[धातु]                              |
+| suffix / affix           | @deva[प्रत्यय] / @term[प्रत्यय]                        |
+| vowel                    | @deva[स्वर] / @term[अच्]                               |
+| consonant                | @deva[व्यञ्जन] / @term[हल्]                            |
+| noun                     | @term[प्रातिपदिक] / @term[सुबन्त]                      |
+| verb / verbal form       | @term[तिङन्त] / @term[धातु]                            |
+| augment                  | @term[आगम] (e.g., @deva[अट्], @deva[इट्], @deva[नुम्]) |
+| first person             | @term[उत्तम पुरुष]                                     |
+| second person            | @term[मध्यम पुरुष]                                     |
+| third person             | @term[प्रथम पुरुष]                                     |
+| singular / dual / plural | @term[एकवचन] / @term[द्विवचन] / @term[बहुवचन]          |
+| participle               | @term[कृदन्त] / @term[निष्ठा]                          |
+| compound                 | @term[समास]                                            |
 
 #### A2. Add missing jargon entries
 
@@ -133,21 +139,22 @@ The jargon lookup system needs these terms added:
 
 Padas with placeholder or thin commentary:
 
-| Pada | Status | Priority |
-|------|--------|----------|
-| 4.1 | In progress | Continue |
-| 4.2–4.4 | Not started | Medium |
-| 5.1–5.4 | Not started | Medium |
-| 6.1.91+ | Not started | High (sandhi rules) |
-| 6.2–6.4 | Not started | High |
+| Pada    | Status              | Priority                                         |
+| ------- | ------------------- | ------------------------------------------------ |
+| 4.1     | In progress         | Continue                                         |
+| 4.2–4.4 | Not started         | Medium                                           |
+| 5.1–5.4 | Not started         | Medium                                           |
+| 6.1.91+ | Not started         | High (sandhi rules)                              |
+| 6.2–6.4 | Not started         | High                                             |
 | 7.1–7.4 | Placeholder content | **Critical** — 7.3 has identical simple/standard |
-| 8.1–8.4 | Not started | High (tripadi) |
+| 8.1–8.4 | Not started         | High (tripadi)                                   |
 
 #### A4. Prakriya example diversification
 
 Current 25 examples are clustered: 56% from pada 3, 64% tinanta, heavy bhU-root bias.
 
 **Needed:**
+
 - Pada 2 examples (compound formation rules)
 - Pada 5 examples (taddhita)
 - More pada 6 examples (sandhi in action)
@@ -157,17 +164,12 @@ Current 25 examples are clustered: 56% from pada 3, 64% tinanta, heavy bhU-root 
 
 ### B. UX & Mobile
 
-#### B1. Mobile step navigation
-
-**Problem:** Step sidebar is `hidden lg:block` — invisible on phones. Users can't see the step list or navigate between steps.
-
-**Fix:** Add a collapsible drawer at top of learn path page (below progress bar). Use `<details>` with summary showing "Step 3 of 12 — @deva[वर्तमाने लट्]". Expanding reveals the full step list. JargonLookup: floating button → bottom sheet on mobile.
-
 #### B2. Inline self-check questions
 
 **Problem:** Paths teach but never test understanding. Passive reading without active recall.
 
 **Fix:** Add a `## quiz` step type to paths. Simple question formats:
+
 - "Which @deva[कारक] is @deva[रामेण] in @deva[रामेण कृतम्]?" (multiple choice)
 - "Derive @deva[गच्छति] — what rule produces the @deva[च्छ]?" (short answer with reveal)
 - "Identify the @deva[समास] type: @deva[नीलकण्ठः]" (classification)
@@ -227,6 +229,7 @@ Current: 1.1 and 1.3. The generation script exists. Generate:
 Current: ~14 passages across 3 texts. Need 50+.
 
 Sources to add:
+
 - Hitopadesha (graded fables)
 - Ramayana Balakanda (narrative)
 - Bhagavad Gita chapter 2 (philosophical)
@@ -262,6 +265,7 @@ Structure: stem, gender, meaning, paradigm class, example sentence, frequency ti
 #### E3. Tests
 
 Currently zero tests. Add at minimum:
+
 - Path loading and parsing (frontmatter, step extraction)
 - Inline markup parsing (@deva, @ref, @sutra, @prakriya)
 - Learning progress store (complete/resume)
@@ -273,18 +277,17 @@ Currently zero tests. Add at minimum:
 
 Roughly ordered by impact and dependency:
 
-1. **A1 + A2** — Terminology audit + jargon entries (content accuracy, high impact)
-2. **B1** — Mobile step navigation (fundamental UX gap)
-3. **A3** — Commentary rewrite for pada 7 (critical quality gap)
-4. **C1** — Prakarana paths (unique pedagogical value)
-5. **A4** — Prakriya example diversification
-6. **B2** — Inline self-check questions
-7. **C2** — Concept cross-reference paths
-8. **B3** — Guided sentence analysis
-9. **C3 + C4** — More prakriya and pada reading paths
-10. **D1 + D2** — Reading corpus and vocabulary expansion
-11. **A3 continued** — Commentary rewrite for remaining padas
-12. **E1–E3** — Accessibility, error handling, tests
+1. **A1 + A2** — Terminology audit + jargon entries (content accuracy, high impact) _(A2 done)_
+2. **A3** — Commentary rewrite for pada 7 (critical quality gap)
+3. **C1** — Prakarana paths (unique pedagogical value)
+4. **A4** — Prakriya example diversification
+5. **B2** — Inline self-check questions
+6. **C2** — Concept cross-reference paths
+7. **B3** — Guided sentence analysis
+8. **C3 + C4** — More prakriya and pada reading paths
+9. **D1 + D2** — Reading corpus and vocabulary expansion
+10. **A3 continued** — Commentary rewrite for remaining padas
+11. **E1–E3** — Accessibility, error handling, tests
 
 ---
 
@@ -323,17 +326,17 @@ Separated by `---`. Each starts with `## `.
 
 ### Inline extensions
 
-| Syntax | Renders |
-|--------|---------|
-| `@deva[देवनागरी]` | Devanagari with transliteration on hover |
-| `@[iast]` | IAST with Devanagari on hover |
-| `@ref[1.1.1]` | Cross-reference link with preview |
-| `@term[word]` | Jargon lookup trigger |
-| `@sutra[1.1.1]` | Embedded sutra block |
-| `@sutra[1.1.1]{depth=simple}` | With specified depth |
-| `@prakriya[bhU + laT + tip]` | Embedded derivation |
-| `@prakriya[spec]{highlight=7.3.84}` | With rule highlight |
-| `@pratyahara[ac]` | Pratyahara expansion |
+| Syntax                              | Renders                                  |
+| ----------------------------------- | ---------------------------------------- |
+| `@deva[देवनागरी]`                   | Devanagari with transliteration on hover |
+| `@[iast]`                           | IAST with Devanagari on hover            |
+| `@ref[1.1.1]`                       | Cross-reference link with preview        |
+| `@term[word]`                       | Jargon lookup trigger                    |
+| `@sutra[1.1.1]`                     | Embedded sutra block                     |
+| `@sutra[1.1.1]{depth=simple}`       | With specified depth                     |
+| `@prakriya[bhU + laT + tip]`        | Embedded derivation                      |
+| `@prakriya[spec]{highlight=7.3.84}` | With rule highlight                      |
+| `@pratyahara[ac]`                   | Pratyahara expansion                     |
 
 ### Best practices
 
@@ -365,25 +368,25 @@ Before committing commentary changes:
 
 ## Commentary Rewrite Progress
 
-| Pada | Sutras | Status |
-|------|--------|--------|
-| 1.1 | 1–75 | Complete |
-| 1.2 | 1–73 | Complete |
-| 1.3 | 1–93 | Complete |
-| 1.4 | 1–110 | Complete |
-| 2.1 | 1–72 | Complete |
-| 2.2 | 1–38 | Complete |
-| 2.3 | 1–73 | Complete |
-| 2.4 | 1–85 | Complete |
-| 3.1 | 1–150 | Complete |
-| 3.2 | 1–188 | Complete |
-| 3.3 | 1–176 | Complete |
-| 3.4 | 1–117 | Complete |
-| 4.1 | 1–178 | In progress |
-| 4.2–4.4 | | Not started |
-| 5.1–5.4 | | Not started |
-| 6.1 | 1–90 | Complete |
-| 6.1 | 91+ | Not started |
-| 6.2–6.4 | | Not started |
-| 7.1–7.4 | | Placeholder (critical) |
-| 8.1–8.4 | | Not started |
+| Pada    | Sutras | Status                 |
+| ------- | ------ | ---------------------- |
+| 1.1     | 1–75   | Complete               |
+| 1.2     | 1–73   | Complete               |
+| 1.3     | 1–93   | Complete               |
+| 1.4     | 1–110  | Complete               |
+| 2.1     | 1–72   | Complete               |
+| 2.2     | 1–38   | Complete               |
+| 2.3     | 1–73   | Complete               |
+| 2.4     | 1–85   | Complete               |
+| 3.1     | 1–150  | Complete               |
+| 3.2     | 1–188  | Complete               |
+| 3.3     | 1–176  | Complete               |
+| 3.4     | 1–117  | Complete               |
+| 4.1     | 1–178  | In progress            |
+| 4.2–4.4 |        | Not started            |
+| 5.1–5.4 |        | Not started            |
+| 6.1     | 1–90   | Complete               |
+| 6.1     | 91+    | Not started            |
+| 6.2–6.4 |        | Not started            |
+| 7.1–7.4 |        | Placeholder (critical) |
+| 8.1–8.4 |        | Not started            |
