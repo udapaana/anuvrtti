@@ -203,15 +203,15 @@ Trace a concept across the entire text:
 - "The life of a pratyaya" — from introduction (3.1.1) through it-deletion (1.3.9) to final form
 - "Exceptions and counter-exceptions" — utsarga vs. apavada pattern
 
-#### C3. More prakriya paths
+#### C3. More prakriya paths ✅
 
-Current 3 (bhavati, ramasya, gacchati). Add:
+~~Current 3~~ Now 7 prakriya paths (was 3: bhavati, ramasya, gacchati):
 
-- kRtvA (absolutive — shows krt suffix derivation)
-- babhUva (perfect — shows reduplication chain)
-- nayati (present — shows guna + yan sandhi)
-- akarot (imperfect — shows augment + secondary endings)
-- rAmasya + genitive path already exists; add dative, instrumental
+- [x] kRtvA (absolutive — shows krt suffix derivation)
+- [x] babhUva (perfect — shows reduplication chain)
+- [x] nayati (present — shows guna + yan sandhi)
+- [x] akarot (imperfect — shows augment + secondary endings)
+- [ ] rAmasya + genitive path already exists; add dative, instrumental
 
 #### C4. More pada reading paths
 
