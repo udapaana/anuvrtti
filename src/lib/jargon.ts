@@ -372,6 +372,15 @@ export const terms: Term[] = [
     termRoman: "sup",
     meaning: "Nominal case endings (21 total: 7 cases × 3 numbers).",
     category: "pratyaya",
+    related: ["subanta"],
+  },
+  {
+    term: "सुबन्त",
+    termRoman: "subanta",
+    meaning:
+      "A word ending in @[sup] (nominal endings). Declined nouns, adjectives, and pronouns. Contrasts with @[tiṅanta].",
+    category: "samjna",
+    related: ["sup", "tiṅanta", "prātipadika"],
   },
   {
     term: "तिङ्",
@@ -379,6 +388,15 @@ export const terms: Term[] = [
     meaning:
       "Verbal personal endings (18 total: 3 persons × 3 numbers × 2 padas).",
     category: "pratyaya",
+    related: ["tiṅanta"],
+  },
+  {
+    term: "तिङन्त",
+    termRoman: "tiṅanta",
+    meaning:
+      "A word ending in @[tiṅ] (verbal endings). Conjugated finite verbs. Contrasts with @[subanta].",
+    category: "samjna",
+    related: ["tiṅ", "subanta", "dhātu"],
   },
   {
     term: "कृत्",
@@ -1096,23 +1114,56 @@ export const terms: Term[] = [
 
   // Purusa (person)
   {
+    term: "पुरुष",
+    termRoman: "puruṣa",
+    meaning:
+      "Grammatical person. Sanskrit has three: @[prathama] (third), @[madhyama] (second), @[uttama] (first). Note: Sanskrit counts from the one spoken about.",
+    category: "vibhakti",
+    related: ["prathama", "madhyama", "uttama"],
+  },
+  {
     term: "प्रथम",
     termRoman: "prathama",
     meaning:
-      "Third person (in Sanskrit grammar, 'first' purusa refers to the one spoken about).",
+      "Third person (in Sanskrit grammar, 'first' puruṣa refers to the one spoken about).",
     category: "vibhakti",
+    related: ["puruṣa", "madhyama", "uttama"],
+  },
+  {
+    term: "प्रथमपुरुष",
+    termRoman: "prathama puruṣa",
+    meaning:
+      "Third person. The one spoken about (he/she/it/they). Called 'first' because grammatically primary.",
+    category: "vibhakti",
+    related: ["puruṣa", "prathama"],
   },
   {
     term: "मध्यम",
     termRoman: "madhyama",
     meaning: "Second person (the one spoken to).",
     category: "vibhakti",
+    related: ["puruṣa", "prathama", "uttama"],
+  },
+  {
+    term: "मध्यमपुरुष",
+    termRoman: "madhyama puruṣa",
+    meaning: "Second person. The one spoken to (you).",
+    category: "vibhakti",
+    related: ["puruṣa", "madhyama"],
   },
   {
     term: "उत्तम",
     termRoman: "uttama",
     meaning: "First person (the speaker).",
     category: "vibhakti",
+    related: ["puruṣa", "prathama", "madhyama"],
+  },
+  {
+    term: "उत्तमपुरुष",
+    termRoman: "uttama puruṣa",
+    meaning: "First person. The speaker (I/we).",
+    category: "vibhakti",
+    related: ["puruṣa", "uttama"],
   },
 
   // Sandhi
