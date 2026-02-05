@@ -1,12 +1,12 @@
 ---
 id: tinganta-lrng
 order: 11
-title: Conditional
+title: लृङ् — Conditional
 titleSanskrit: लृङ्लकारः
 label: लृङ्
 track: grammar
 category: tinganta
-description: Derive conditional mood forms expressing "would have" - unrealized conditions and hypotheticals.
+description: Derive @deva[लृङ्] forms expressing "would have" — unrealized conditions and hypotheticals.
 difficulty: intermediate
 estimatedTime: 2 hours
 prerequisites:
@@ -14,9 +14,9 @@ prerequisites:
   - tinganta-lang
 ---
 
-## concept - The Conditional Mood (@deva[लृङ्])
+## concept - @deva[लृङ्] — The Conditional
 
-The conditional (@deva[लृङ्]) expresses counterfactual or unrealized conditions — "would have," "if X had happened, Y would have happened." It combines the future @deva[स्य] vikaraṇa with the past augment @deva[अट्], creating a "past future" — something that was going to happen but did not.
+@deva[लृङ्] expresses counterfactual or unrealized conditions — "would have," "if X had happened, Y would have happened." It combines the @term[bhaviṣyat] @term[vikaraṇa] @deva[स्य] with the @term[bhūta] @term[āgama] @deva[अट्], creating a "past future" — something that was going to happen but did not.
 
 **Core pattern:** @deva[अट्] + root + (@deva[इट्]) + @deva[स्य] + secondary ending
 

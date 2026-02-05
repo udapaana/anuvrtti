@@ -1,21 +1,21 @@
 ---
 id: tinganta-lung
 order: 9
-title: Aorist
+title: लुङ् — Aorist
 titleSanskrit: लुङ्लकारः
 label: लुङ्
 track: grammar
 category: tinganta
-description: Derive aorist (past tense) forms. The luṅ has multiple formation types - this path covers the seven aorist varieties.
+description: Derive @deva[लुङ्] (@term[bhūta]) forms. Seven aorist varieties — the most complex @deva[लकार].
 difficulty: advanced
 estimatedTime: 4-5 hours
 prerequisites:
   - tinganta-lit
 ---
 
-## concept - The Aorist (@deva[लुङ्])
+## concept - @deva[लुङ्] — The Aorist
 
-The aorist (@deva[लुङ्]) is the general past tense, referring to action in past time without specifying when. It is the most complex @deva[लकार] because **seven different formation types** exist, each applying to different root classes.
+@deva[लुङ्] is the general @term[bhūta] (past), referring to action in past time without specifying when. It is the most complex @deva[लकार] because **seven different formation types** exist, each applying to different @term[dhātu] classes.
 
 **The seven aorist types:**
 

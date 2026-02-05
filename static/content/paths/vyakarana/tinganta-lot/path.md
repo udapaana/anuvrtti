@@ -1,12 +1,12 @@
 ---
 id: tinganta-lot
 order: 2
-title: Imperative
+title: लोट् — Imperative
 titleSanskrit: लोट्लकारः
 label: लोट्
 track: grammar
 category: tinganta
-description: Derive imperative forms for commands, invitations, and blessings.
+description: Derive @deva[लोट्] forms for commands, invitations, and blessings.
 difficulty: beginner
 estimatedTime: 2-3 hours
 prerequisites:
@@ -15,7 +15,7 @@ prerequisites:
 
 ## concept - Commands, Requests, and Blessings
 
-The imperative (@deva[लोट्]) expresses commands, requests, invitations, and blessings — any situation where the speaker wants the action to happen:
+@deva[लोट्] expresses commands, requests, invitations, and blessings — any situation where the speaker wants the action to happen:
 
 - **Command**: @deva[गच्छ] "go!" @deva[पठ] "read!"
 - **Polite request**: @deva[भवान् आगच्छतु] "please come"
@@ -26,9 +26,9 @@ Unlike @deva[लट्] (present), @deva[लोट्] doesn't describe what's h
 
 ---
 
-## concept - The Imperative Paradigm
+## concept - The @deva[लोट्] Paradigm
 
-Here's @deva[भू] "to be" in the imperative:
+Here's @deva[भू] "to be" in @deva[लोट्]:
 
 **@deva[परस्मैपद]:**
 | | Singular | Dual | Plural |

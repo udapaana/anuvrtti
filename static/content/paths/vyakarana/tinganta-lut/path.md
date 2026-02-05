@@ -1,21 +1,21 @@
 ---
 id: tinganta-lut
 order: 7
-title: Periphrastic Future
+title: लुट् — Periphrastic Future
 titleSanskrit: लुट्लकारः
 label: लुट्
 track: grammar
 category: tinganta
-description: Derive periphrastic future forms using the 'tā' suffix. This future emphasizes the agent and uses a different formation strategy.
+description: Derive @deva[लुट्] (@term[anadyatana] @term[bhaviṣyat]) forms using @deva[तासि]. Agent-noun based future formation.
 difficulty: intermediate
 estimatedTime: 2 hours
 prerequisites:
   - tinganta-lrt
 ---
 
-## concept - The Periphrastic Future (@deva[लुट्])
+## concept - @deva[लुट्] — Periphrastic Future
 
-@deva[लुट्] is the "second future" or periphrastic future, used for events **not happening today** — typically a more remote or definite future. Unlike @deva[लृट्] (which uses the @deva[स्य] vikaraṇa), @deva[लुट्] uses the agent noun suffix @deva[तासि] (= @deva[ता]) combined with forms of @deva[अस्] "to be."
+@deva[लुट्] is used for events **not happening today** (@term[anadyatana]) — typically a more remote or definite @term[bhaviṣyat] (future). Unlike @deva[लृट्] (which uses the @deva[स्य] @term[vikaraṇa]), @deva[लुट्] uses the agent noun @term[pratyaya] @deva[तासि] (= @deva[ता]) combined with forms of @deva[अस्] "to be."
 
 **Core pattern:** root + (@deva[इ]) + @deva[ता] (+ auxiliary @deva[अस्])
 

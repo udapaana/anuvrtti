@@ -1,21 +1,21 @@
 ---
 id: tinganta-lit
 order: 8
-title: Perfect
+title: लिट् — Perfect
 titleSanskrit: लिट्लकारः
 label: लिट्
 track: grammar
 category: tinganta
-description: Derive perfect tense forms with reduplication. The liṭ is unique - it requires doubling the root and has special endings.
+description: Derive @deva[लिट्] (@term[parokṣa]) forms with @term[abhyāsa] (reduplication). Unique doubling rules and special endings.
 difficulty: intermediate
 estimatedTime: 3-4 hours
 prerequisites:
   - tinganta-lrt
 ---
 
-## concept - The Perfect Tense (@deva[लिट्])
+## concept - @deva[लिट्] — The Perfect
 
-The perfect (@deva[लिट्]) expresses past action that is remote and **unwitnessed** by the speaker. Its most distinctive feature is **reduplication** — the root is doubled according to specific rules, producing forms like @deva[चकार] (from @deva[कृ]) and @deva[जगाम] (from @deva[गम्]).
+@deva[लिट्] expresses @term[parokṣa] (unwitnessed) past action. Its most distinctive feature is @term[abhyāsa] (reduplication) — the @term[dhātu] is doubled according to specific rules, producing forms like @deva[चकार] (from @deva[कृ]) and @deva[जगाम] (from @deva[गम्]).
 
 **Paradigm of @deva[कृ] (do) — @deva[लिट्] @deva[परस्मैपद]:**
 

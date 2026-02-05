@@ -1,12 +1,12 @@
 ---
 id: tinganta-lat
 order: 1
-title: Present Tense
+title: लट् — Present
 titleSanskrit: लट्लकारः
 label: लट्
 track: grammar
 category: tinganta
-description: Learn to derive present tense verb forms—the most common forms you'll encounter.
+description: Derive @deva[लट्] (present tense) verb forms — the most common @deva[तिङन्त] forms you'll encounter.
 difficulty: beginner
 estimatedTime: 3-4 hours
 prerequisites:
@@ -15,7 +15,7 @@ prerequisites:
 
 ## concept - What You'll Learn
 
-The present tense (@deva[लट्]) is the most common verb form in Sanskrit. By the end of this path, you'll understand:
+@deva[लट्] (@term[vartamāna]) is the most common verb form in Sanskrit. By the end of this path, you'll understand:
 
 - How @deva[भू] becomes @deva[भवति] "he is"
 - How @deva[पच्] becomes @deva[पचति] "he cooks"
@@ -50,18 +50,18 @@ The @deva[लट्] is just a placeholder — it gets replaced by actual ending
 
 Pāṇini uses ten abstract markers called @deva[लकार] to represent tense/mood:
 
-| @deva[लकार]      | Meaning             | Example          |
-| ---------------- | ------------------- | ---------------- |
-| @deva[लट्]       | Present             | @deva[भवति]      |
-| @deva[लिट्]      | Perfect             | @deva[बभूव]      |
-| @deva[लुट्]      | Periphrastic Future | @deva[भविता]     |
-| @deva[लृट्]      | Simple Future       | @deva[भविष्यति]  |
-| @deva[लोट्]      | Imperative          | @deva[भवतु]      |
-| @deva[लङ्]       | Imperfect           | @deva[अभवत्]     |
-| @deva[विधिलिङ्]  | Optative            | @deva[भवेत्]     |
-| @deva[आशीर्लिङ्] | Benedictive         | @deva[भूयात्]    |
-| @deva[लुङ्]      | Aorist              | @deva[अभूत्]     |
-| @deva[लृङ्]      | Conditional         | @deva[अभविष्यत्] |
+| @deva[लकार]      | Meaning                           | Example          |
+| ---------------- | --------------------------------- | ---------------- |
+| @deva[लट्]       | @term[vartamāna] (present)        | @deva[भवति]      |
+| @deva[लिट्]      | @term[parokṣa] (perfect)          | @deva[बभूव]      |
+| @deva[लुट्]      | @term[anadyatana] (periphr. fut.) | @deva[भविता]     |
+| @deva[लृट्]      | @term[bhaviṣyat] (simple future)  | @deva[भविष्यति]  |
+| @deva[लोट्]      | imperative                        | @deva[भवतु]      |
+| @deva[लङ्]       | @term[anadyatana] @term[bhūta]    | @deva[अभवत्]     |
+| @deva[विधिलिङ्]  | @term[vidhiliṅ] (optative)        | @deva[भवेत्]     |
+| @deva[आशीर्लिङ्] | @term[āśīrliṅ] (benedictive)      | @deva[भूयात्]    |
+| @deva[लुङ्]      | @term[bhūta] (aorist)             | @deva[अभूत्]     |
+| @deva[लृङ्]      | conditional                       | @deva[अभविष्यत्] |
 
 The @deva[ल] in each is replaced by personal endings. That's what the next rules establish.
 

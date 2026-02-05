@@ -1,21 +1,21 @@
 ---
 id: tinganta-lang
 order: 3
-title: Imperfect
+title: लङ् — Imperfect
 titleSanskrit: लङ्लकारः
 label: लङ्
 track: grammar
 category: tinganta
-description: Derive past imperfect forms with the augment अ.
+description: Derive @deva[लङ्] (@term[anadyatana] @term[bhūta]) forms with the @term[āgama] @deva[अट्].
 difficulty: beginner
 estimatedTime: 2-3 hours
 prerequisites:
   - tinganta-lat
 ---
 
-## concept - The Simple Past Tense
+## concept - @deva[लङ्] — The Narrative Past
 
-The imperfect (@deva[लङ्]) is the most common past tense in Sanskrit narrative. While @deva[लट्] describes what's happening now, @deva[लङ्] describes what happened — specifically, past actions **not of the current day**:
+@deva[लङ्] is the most common @term[bhūta] (past) @deva[लकार] in Sanskrit narrative. While @deva[लट्] describes what's happening now, @deva[लङ्] describes what happened — specifically, past actions **not of the current day** (@term[anadyatana]):
 
 - @deva[अभवत्] "he was, he became"
 - @deva[अपचत्] "he cooked"
@@ -28,9 +28,9 @@ Two features distinguish @deva[लङ्] from @deva[लट्]:
 
 ---
 
-## concept - The Imperfect Paradigm
+## concept - The @deva[लङ्] Paradigm
 
-Here's @deva[भू] "to be" in the imperfect:
+Here's @deva[भू] "to be" in @deva[लङ्]:
 
 **@deva[परस्मैपद]:**
 | | Singular | Dual | Plural |

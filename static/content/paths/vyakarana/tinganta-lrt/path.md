@@ -1,12 +1,12 @@
 ---
 id: tinganta-lrt
 order: 6
-title: Simple Future
+title: लृट् — Simple Future
 titleSanskrit: लृट्लकारः
 label: लृट्
 track: grammar
 category: tinganta
-description: Derive simple future tense forms. This is the first ardhadhatuka lakara - note the different vikarana and ending patterns.
+description: Derive @deva[लृट्] (@term[bhaviṣyat]) forms. The first @term[ārdhadhātuka] @deva[लकार] — different @term[vikaraṇa] and ending patterns.
 difficulty: intermediate
 estimatedTime: 2-3 hours
 prerequisites:
@@ -14,9 +14,9 @@ prerequisites:
   - dhatu-ganas
 ---
 
-## concept - The Simple Future (@deva[लृट्])
+## concept - @deva[लृट्] — Simple Future
 
-@deva[लृट्] is the simple future tense, expressing an action that will happen. Unlike @deva[लट्] (present) and @deva[लङ्] (imperfect) which use @deva[सार्वधातुक] endings, @deva[लृट्] uses the @deva[आर्धधातुक] vikaraṇa @deva[स्य], making it structurally different.
+@deva[लृट्] expresses @term[bhaviṣyat] (future) action. Unlike @deva[लट्] and @deva[लङ्] which use @term[sārvadhātuka] endings, @deva[लृट्] uses the @term[ārdhadhātuka] @term[vikaraṇa] @deva[स्य], making it structurally different.
 
 **Core pattern:** root + (@deva[इट्]) + @deva[स्य] + ending
 

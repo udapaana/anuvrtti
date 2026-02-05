@@ -1,21 +1,21 @@
 ---
 id: tinganta-vidhiling
 order: 4
-title: Optative
+title: विधिलिङ् — Optative
 titleSanskrit: विधिलिङ्
 label: विधिलिङ्
 track: grammar
 category: tinganta
-description: Derive optative/potential forms expressing commands, wishes, and possibilities.
+description: Derive @deva[विधिलिङ्] forms expressing commands, wishes, and possibilities.
 difficulty: beginner
 estimatedTime: 2-3 hours
 prerequisites:
   - tinganta-lat
 ---
 
-## concept - The Optative Mood (@deva[विधिलिङ्])
+## concept - @deva[विधिलिङ्] — The Optative
 
-The optative (@deva[विधिलिङ्]) is one of the most versatile moods in Sanskrit, covering commands, invitations, wishes, possibilities, and polite requests. It corresponds roughly to English "should," "would," "may," "let him," or "ought to."
+@deva[विधिलिङ्] is one of the most versatile moods in Sanskrit, covering commands, invitations, wishes, possibilities, and polite requests. It corresponds roughly to English "should," "would," "may," "let him," or "ought to."
 
 **Paradigm of @deva[भू] (be) — @deva[विधिलिङ्]:**
 

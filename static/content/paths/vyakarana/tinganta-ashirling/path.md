@@ -1,21 +1,21 @@
 ---
 id: tinganta-ashirling
 order: 10
-title: Benedictive
+title: आशीर्लिङ् — Benedictive
 titleSanskrit: आशीर्लिङ्
 label: आशीर्लिङ्
 track: grammar
 category: tinganta
-description: Derive benedictive forms expressing blessings and wishes. This special use of liṅ has its own distinctive formation.
+description: Derive @deva[आशीर्लिङ्] forms expressing blessings and wishes. This special @deva[लिङ्] has distinctive @term[ārdhadhātuka] formation.
 difficulty: intermediate
 estimatedTime: 2 hours
 prerequisites:
   - tinganta-vidhiling
 ---
 
-## concept - The Benedictive (@deva[आशीर्लिङ्])
+## concept - @deva[आशीर्लिङ्] — The Benedictive
 
-The benedictive is a special mood used exclusively for expressing blessings, prayers, and solemn wishes. It shares the @deva[लिङ्] designation with the optative (@deva[विधिलिङ्]) but has fundamentally different formation rules — the endings are @deva[आर्धधातुक] (not @deva[सार्वधातुक]), so no vikaraṇa like @deva[शप्] is used.
+@deva[आशीर्लिङ्] is a special mood used exclusively for expressing blessings, prayers, and solemn wishes. It shares the @deva[लिङ्] designation with @deva[विधिलिङ्] but has fundamentally different formation rules — the endings are @term[ārdhadhātuka] (not @term[sārvadhātuka]), so no @term[vikaraṇa] like @deva[शप्] is used.
 
 **Paradigm of @deva[भू] (be) — @deva[आशीर्लिङ्] @deva[परस्मैपद]:**
 
