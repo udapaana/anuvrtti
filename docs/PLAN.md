@@ -164,17 +164,18 @@ Current 25 examples are clustered: 56% from pada 3, 64% tinanta, heavy bhU-root 
 
 ### B. UX & Mobile
 
-#### B2. Inline self-check questions
+#### B2. Inline self-check questions ✅
 
-**Problem:** Paths teach but never test understanding. Passive reading without active recall.
+~~**Problem:** Paths teach but never test understanding. Passive reading without active recall.~~
 
-**Fix:** Add a `## quiz` step type to paths. Simple question formats:
+**Implemented:** `## quiz` step type with:
 
-- "Which @deva[कारक] is @deva[रामेण] in @deva[रामेण कृतम्]?" (multiple choice)
-- "Derive @deva[गच्छति] — what rule produces the @deva[च्छ]?" (short answer with reveal)
-- "Identify the @deva[समास] type: @deva[नीलकण्ठः]" (classification)
+- Multiple choice questions (checkbox format in markdown)
+- Short answer with reveal
+- Explanation after answering
+- Sample quizzes added to karaka prakarana path
 
-Start with 2-3 quiz steps per path, at natural checkpoints.
+Remaining: Add quiz steps to more paths (2-3 per path at natural checkpoints).
 
 #### B3. Guided sentence analysis
 
