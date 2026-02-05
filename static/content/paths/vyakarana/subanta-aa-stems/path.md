@@ -1,21 +1,21 @@
 ---
 id: subanta-aa-stems
 order: 22
-title: Aa-stem Declension
+title: आकारान्त — Ā-stem Declension
 titleSanskrit: आकारान्तस्त्री
 label: आकारान्तस्त्री
 track: grammar
 category: subanta
-description: Decline feminine ā-stems like senā, vidyā, kanyā. The primary feminine noun pattern.
+description: Decline @term[strīliṅga] @deva[आ]-stems like @deva[सेना], @deva[विद्या], @deva[कन्या]. The primary feminine pattern.
 difficulty: beginner
 estimatedTime: 2-3 hours
 prerequisites:
   - subanta-pratipadika
 ---
 
-## concept - Feminine @deva[आ]-stems
+## concept - @term[strīliṅga] @deva[आ]-stems
 
-Stems ending in @deva[आ] form the largest class of feminine nouns in Sanskrit. Most feminine adjectives and many common nouns follow this pattern.
+Stems ending in @deva[आ] form the largest class of @term[strīliṅga] (feminine) nouns in Sanskrit. Most feminine adjectives and many common nouns follow this pattern.
 
 **@deva[सेना] (army, f.) — full paradigm:**
 

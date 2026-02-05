@@ -1,32 +1,32 @@
 ---
 id: subanta-pratipadika
 order: 20
-title: Nominal Stems
+title: प्रातिपदिक — Nominal Stems
 titleSanskrit: प्रातिपदिकम्
 label: प्रातिपदिकम्
 track: grammar
 category: subanta
-description: Understand nominal stems before adding case endings. What qualifies as a pratipadika and how stems are classified.
+description: Understand @term[prātipadika] before adding @term[sup]. What qualifies as a @term[prātipadika] and how stems are classified.
 difficulty: beginner
 estimatedTime: 2 hours
 prerequisites:
   - introduction
 ---
 
-## concept - What is a Nominal Stem?
+## concept - What is a @term[prātipadika]?
 
-In English, the word "king" can stand alone in a sentence: "The king rules." In Sanskrit, it cannot. The stem @deva[राज] ("king") is not a usable word by itself — it needs a case ending to tell you its role in the sentence:
+In English, the word "king" can stand alone in a sentence: "The king rules." In Sanskrit, it cannot. The stem @deva[राज] ("king") is not a usable word by itself — it needs a @term[vibhakti] to tell you its role in the sentence:
 
-| Form           | Ending added          | Meaning              |
-| -------------- | --------------------- | -------------------- |
-| @deva[राजा]    | nominative singular   | "the king" (subject) |
-| @deva[राजानम्] | accusative singular   | "the king" (object)  |
-| @deva[राज्ञा]  | instrumental singular | "by the king"        |
-| @deva[राज्ञः]  | genitive singular     | "of the king"        |
+| Form           | @term[vibhakti]                  | Meaning              |
+| -------------- | -------------------------------- | -------------------- |
+| @deva[राजा]    | @term[prathamā] @term[ekavacana] | "the king" (subject) |
+| @deva[राजानम्] | @term[dvitīyā] @term[ekavacana]  | "the king" (object)  |
+| @deva[राज्ञा]  | @term[tṛtīyā] @term[ekavacana]   | "by the king"        |
+| @deva[राज्ञः]  | @term[ṣaṣṭhī] @term[ekavacana]   | "of the king"        |
 
-The bare form — the part that carries the meaning before any ending is attached — is called @deva[प्रातिपदिक] (pratipadika), the **nominal stem**.
+The bare form — the part that carries the meaning before any ending is attached — is called @term[prātipadika] (nominal stem).
 
-Think of it this way: the stem is like a root vegetable still in the ground. You can't eat it yet. You need to pull it up and prepare it — that preparation is the case ending. Once the ending is attached, you have a @deva[पद] (pada), a complete, usable word.
+Think of it this way: the stem is like a root vegetable still in the ground. You can't eat it yet. You need to pull it up and prepare it — that preparation is the @term[sup] ending. Once the ending is attached, you have a @term[pada], a complete @term[subanta].
 
 **Why does this matter?** Everything in the noun system flows from here. Before you can decline @deva[देव] into @deva[देवः], @deva[देवम्], @deva[देवेन], you must first understand what @deva[देव] is and why it qualifies as a stem.
 

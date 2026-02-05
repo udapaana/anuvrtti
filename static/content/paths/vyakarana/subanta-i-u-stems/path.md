@@ -1,21 +1,21 @@
 ---
 id: subanta-i-u-stems
 order: 23
-title: I-stem and U-stem Declension
+title: इकारान्त / उकारान्त — I/U-stem Declension
 titleSanskrit: इकारोकारान्तम्
 label: इकारोकारान्तम्
 track: grammar
 category: subanta
-description: Decline i-stems (agni, kavi) and u-stems (guru, madhu). Important patterns with guna and vrddhi changes.
+description: Decline @deva[इ]/[@deva[उ]-stems (@deva[अग्नि], @deva[गुरु]). Important patterns with @term[guṇa] and @term[yaṇ] changes.
 difficulty: intermediate
 estimatedTime: 3 hours
 prerequisites:
   - subanta-pratipadika
 ---
 
-## concept - I-stems and U-stems
+## concept - @deva[इकारान्त] and @deva[उकारान्त] Stems
 
-Stems ending in @deva[इ] / @deva[ई] and @deva[उ] / @deva[ऊ] form one of the most important declension classes. The key feature is vowel gradation: the stem-final vowel undergoes @deva[गुण] (→ @deva[ए] / @deva[ओ]) or @deva[वृद्धि] (→ @deva[ऐ] / @deva[औ]) in certain cases, and @deva[यण्] substitution (@deva[इ] → @deva[य्], @deva[उ] → @deva[व्]) before vowel-initial endings.
+Stems ending in @deva[इ] / @deva[ई] and @deva[उ] / @deva[ऊ] form one of the most important declension classes. The key feature is vowel gradation: the stem-final @term[svara] undergoes @term[guṇa] (→ @deva[ए] / @deva[ओ]) or @term[vṛddhi] (→ @deva[ऐ] / @deva[औ]) in certain cases, and @term[yaṇ] substitution (@deva[इ] → @deva[य्], @deva[उ] → @deva[व्]) before @term[ac]-initial endings.
 
 **@deva[अग्नि] (fire, m.) — full paradigm:**
 

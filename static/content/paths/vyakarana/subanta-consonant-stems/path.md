@@ -1,21 +1,21 @@
 ---
 id: subanta-consonant-stems
 order: 24
-title: Consonant Stem Declension
+title: हलन्त — Consonant Stem Declension
 titleSanskrit: हलन्तम्
 label: हलन्तम्
 track: grammar
 category: subanta
-description: Decline consonant-ending stems - the complex patterns of stems ending in stops, nasals, and sibilants.
+description: Decline @term[hal]-ending @term[prātipadika] — complex patterns with @term[sandhi] and strong/weak alternation.
 difficulty: advanced
 estimatedTime: 4 hours
 prerequisites:
   - subanta-i-u-stems
 ---
 
-## concept - Consonant-ending Stems
+## concept - @deva[हलन्त] @term[prātipadika]
 
-Consonant stems (@deva[हलन्त]) are the most complex declension class. The stem-final consonant interacts with case endings through sandhi, assimilation, and special rules. Major sub-types include:
+@deva[हलन्त] (consonant stems) are the most complex declension class. The stem-final @term[vyañjana] interacts with @term[sup] endings through @term[sandhi], assimilation, and special rules. Major sub-types include:
 
 **1. @deva[-अन्] stems (राजन्, आत्मन्):**
 
