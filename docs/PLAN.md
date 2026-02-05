@@ -184,15 +184,15 @@ Start with 2-3 quiz steps per path, at natural checkpoints.
 
 ### C. New Path Types
 
-#### C1. More prakarana paths
+#### C1. More prakarana paths ✅
 
-Only it-samjna exists. Build:
+~~Only it-samjna exists.~~ Built 5 new prakarana paths:
 
-- Samjna prakarana (1.1.1–1.1.75) — all technical definitions
-- Atmanepada prakarana (1.3.12–1.3.93) — voice assignment
-- Karaka prakarana (1.4.23–1.4.55) — semantic roles
-- Tripadi (8.2–8.4) — the special final section
-- Sandhi prakarana (6.1.1–6.1.158) — the great sandhi section
+- [x] Samjna prakarana (1.1.1–1.1.75) — all technical definitions
+- [x] Atmanepada prakarana (1.3.12–1.3.93) — voice assignment
+- [x] Karaka prakarana (1.4.23–1.4.55) — semantic roles
+- [x] Tripadi (8.2–8.4) — the special final section
+- [x] Sandhi prakarana (6.1.72–6.1.109) — vowel sandhi section
 
 #### C2. Cross-reference / concept paths
 
