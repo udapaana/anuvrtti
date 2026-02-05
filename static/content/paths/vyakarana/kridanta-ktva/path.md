@@ -1,12 +1,12 @@
 ---
 id: kridanta-ktva
 order: 12
-title: Absolutive
+title: क्त्वा / ल्यप् — Absolutive
 titleSanskrit: क्त्वान्तम्
 label: क्त्वा
 track: grammar
 category: kridanta
-description: Derive absolutive forms (having done X). The ktva and lyap suffixes create indeclinable forms expressing prior action.
+description: Derive @deva[क्त्वान्त] forms (having done X). @deva[क्त्वा] and @deva[ल्यप्] create @term[avyaya] forms expressing prior action.
 difficulty: intermediate
 estimatedTime: 2-3 hours
 prerequisites:
@@ -16,17 +16,17 @@ prerequisites:
 
 ## concept - "Having Done X, He Did Y"
 
-Sanskrit has a compact way to chain actions: the **absolutive** (@deva[क्त्वान्त]). Where English uses "having done X" or "after doing X," Sanskrit uses a single indeclinable word:
+Sanskrit has a compact way to chain actions: the @deva[क्त्वान्त] (absolutive). Where English uses "having done X" or "after doing X," Sanskrit uses a single @term[avyaya] (indeclinable) word:
 
 - @deva[भुक्त्वा व्रजति] "having eaten, he goes"
 - @deva[स्नात्वा पूजयति] "having bathed, he worships"
 - @deva[गत्वा पश्यति] "having gone, he sees"
 
-The absolutive is formed with @deva[क्त्वा] (for simple roots) or @deva[ल्यप्] (for roots with prefixes). Both produce indeclinable forms — they don't change for gender, number, or case.
+The absolutive is formed with @deva[क्त्वा] (for simple @term[dhātu]) or @deva[ल्यप्] (for @term[dhātu] with @term[upasarga]). Both produce @term[avyaya] forms — they don't change for @term[liṅga], @term[vacana], or @term[vibhakti].
 
 **Key properties:**
 
-- The agent of the absolutive must be the **same** as the agent of the main verb
+- The @term[kartṛ] of the absolutive must be the **same** as the @term[kartṛ] of the main verb
 - The absolutive action happens **before** the main verb's action
 - You can chain multiple: @deva[स्नात्वा पीत्वा भुक्त्वा गच्छति] "having bathed, drunk, and eaten, he goes"
 

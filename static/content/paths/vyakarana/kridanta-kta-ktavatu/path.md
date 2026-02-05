@@ -1,12 +1,12 @@
 ---
 id: kridanta-kta-ktavatu
 order: 15
-title: Past Participles
+title: क्त / क्तवतु — Past Participles
 titleSanskrit: क्तक्तवतू
 label: क्त
 track: grammar
 category: kridanta
-description: Derive past passive participle (kta) and past active participle (ktavatu). Essential forms for describing completed actions.
+description: Derive @term[niṣṭhā] forms — @deva[क्त] (past passive) and @deva[क्तवतु] (past active). Essential @term[kṛdanta] for completed actions.
 difficulty: intermediate
 estimatedTime: 3 hours
 prerequisites:
@@ -14,18 +14,18 @@ prerequisites:
   - dhatu-ganas
 ---
 
-## concept - The Most Common Verbal Forms
+## concept - The Most Common @term[kṛdanta] Forms
 
-Past participles are everywhere in Sanskrit. Open any text and you'll find @deva[कृतम्] "done," @deva[उक्तम्] "said," @deva[गतः] "gone," @deva[दृष्टम्] "seen" on nearly every page. They're more frequent than finite verb forms.
+@term[niṣṭhā] (@deva[क्त] and @deva[क्तवतु]) forms are everywhere in Sanskrit. Open any text and you'll find @deva[कृतम्] "done," @deva[उक्तम्] "said," @deva[गतः] "gone," @deva[दृष्टम्] "seen" on nearly every page. They're more frequent than @term[tiṅanta] forms.
 
-Sanskrit has two past participle affixes:
+Sanskrit has two @term[niṣṭhā] @term[pratyaya]:
 
-| Affix         | Name                          | Meaning               | Example                       |
-| ------------- | ----------------------------- | --------------------- | ----------------------------- |
-| @deva[क्त]    | Past passive participle (PPP) | "that which was X-ed" | @deva[कृतम्] "done/made"      |
-| @deva[क्तवतु] | Past active participle        | "one who has X-ed"    | @deva[कृतवान्] "one who made" |
+| @term[pratyaya] | Type                     | Meaning               | Example                       |
+| --------------- | ------------------------ | --------------------- | ----------------------------- |
+| @deva[क्त]      | @term[karmaṇi] (passive) | "that which was X-ed" | @deva[कृतम्] "done/made"      |
+| @deva[क्तवतु]   | @term[kartari] (active)  | "one who has X-ed"    | @deva[कृतवान्] "one who made" |
 
-Both are **@deva[कृत्]** affixes — they attach directly to the root and create **adjectives** (or noun-like forms) that decline like regular nouns.
+Both are @term[kṛt] @term[pratyaya] — they attach directly to the @term[dhātu] and create adjectives that decline like regular @term[subanta].
 
 Key difference:
 

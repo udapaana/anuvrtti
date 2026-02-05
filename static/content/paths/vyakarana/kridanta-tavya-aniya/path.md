@@ -1,12 +1,12 @@
 ---
 id: kridanta-tavya-aniya
 order: 16
-title: Future Passive Participles
+title: तव्य / अनीय / य — Gerundives
 titleSanskrit: तव्यानीययाः
 label: तव्य
 track: grammar
 category: kridanta
-description: Derive gerundives expressing necessity or obligation. "To be done" - essential for expressing duty and propriety.
+description: Derive @term[kṛtya] (@deva[तव्य], @deva[अनीय], @deva[य]) expressing necessity or obligation. Essential for @term[vidhi].
 difficulty: intermediate
 estimatedTime: 2-3 hours
 prerequisites:
@@ -14,9 +14,9 @@ prerequisites:
   - dhatu-ganas
 ---
 
-## concept - Gerundives: "To Be Done"
+## concept - @term[kṛtya] — "To Be Done"
 
-The gerundive (future passive participle) expresses necessity, obligation, or fitness — "X should/must/ought to be done." Three suffixes create gerundives: @deva[तव्यत्], @deva[अनीयर्], and @deva[यत्] / @deva[ण्यत्].
+@term[kṛtya] (gerundive/future passive participle) expresses necessity, obligation, or fitness — "X should/must/ought to be done." Three @term[pratyaya] create @term[kṛtya]: @deva[तव्यत्], @deva[अनीयर्], and @deva[यत्] / @deva[ण्यत्].
 
 **Core pattern:** root + suffix → adjective meaning "to be X-ed"
 

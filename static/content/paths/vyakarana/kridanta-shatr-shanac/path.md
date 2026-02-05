@@ -1,12 +1,12 @@
 ---
 id: kridanta-shatr-shanac
 order: 14
-title: Present Participles
+title: शतृ / शानच् — Present Participles
 titleSanskrit: शतृशानचौ
 label: शतृ
 track: grammar
 category: kridanta
-description: Derive present active and middle participles. These verbal adjectives describe ongoing action.
+description: Derive @term[sat] (@deva[शतृ] and @deva[शानच्]) @term[kṛdanta]. Verbal adjectives for ongoing action.
 difficulty: intermediate
 estimatedTime: 3 hours
 prerequisites:
@@ -14,16 +14,16 @@ prerequisites:
   - dhatu-ganas
 ---
 
-## concept - Present Participles (@deva[शतृ] and @deva[शानच्])
+## concept - @term[sat] — Present Participles
 
-Present participles are verbal adjectives that describe an ongoing action. They combine a verb's meaning with adjective-like declension, enabling complex sentences that would otherwise require relative clauses.
+@term[sat] (@deva[शतृ] and @deva[शानच्]) forms are verbal adjectives describing ongoing action. They combine a verb's meaning with adjective-like declension, enabling complex sentences that would otherwise require relative clauses.
 
-**Two types based on voice:**
+**Two types based on @term[pada]:**
 
-| Suffix       | Voice                    | Ending                      | Example                   | Translation      |
-| ------------ | ------------------------ | --------------------------- | ------------------------- | ---------------- |
-| @deva[शतृ]   | Active (@deva[परस्मैपद]) | @deva[-अत्] / @deva[-अन्त्] | @deva[पचत्] → @deva[पचन्] | cooking (active) |
-| @deva[शानच्] | Middle (@deva[आत्मनेपद]) | @deva[-मान]                 | @deva[पचमानः]             | cooking (middle) |
+| @term[pratyaya] | @term[pada]         | Ending                      | Example                   | Translation      |
+| --------------- | ------------------- | --------------------------- | ------------------------- | ---------------- |
+| @deva[शतृ]      | @term[parasmaipada] | @deva[-अत्] / @deva[-अन्त्] | @deva[पचत्] → @deva[पचन्] | cooking (active) |
+| @deva[शानच्]    | @term[ātmanepada]   | @deva[-मान]                 | @deva[पचमानः]             | cooking (middle) |
 
 **Common active participles (@deva[शतृ]):**
 

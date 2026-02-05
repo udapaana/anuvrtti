@@ -1,12 +1,12 @@
 ---
 id: kridanta-tumun
 order: 13
-title: Infinitive
+title: तुमुन् — Infinitive
 titleSanskrit: तुमन्तम्
 label: तुमुन्
 track: grammar
 category: kridanta
-description: Derive infinitive forms (to do X). The tumun suffix creates purpose expressions and complements.
+description: Derive @deva[तुमन्त] (infinitive) forms. The @deva[तुमुन्] @term[pratyaya] creates purpose expressions.
 difficulty: intermediate
 estimatedTime: 2 hours
 prerequisites:
@@ -14,9 +14,9 @@ prerequisites:
   - dhatu-ganas
 ---
 
-## concept - The Sanskrit Infinitive
+## concept - @deva[तुमन्त] — The Infinitive
 
-The infinitive (@deva[तुमन्तम्]) is a verbal noun ending in @deva[-तुम्] that expresses purpose ("in order to do X") or serves as a complement to verbs like "to be able," "to wish," "to begin." It is indeclinable and always takes the accusative sense.
+The @deva[तुमन्त] (infinitive) is a verbal noun ending in @deva[-तुम्] that expresses purpose ("in order to do X") or serves as a complement to verbs like "to be able," "to wish," "to begin." It is @term[avyaya] (indeclinable) and always takes the @term[karman] sense.
 
 **Core pattern:** root + (@deva[इ]) + @deva[तुम्]
 
