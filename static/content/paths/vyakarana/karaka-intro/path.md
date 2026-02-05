@@ -1,12 +1,12 @@
 ---
 id: karaka-intro
 order: 25
-title: Karaka - Semantic Roles
+title: कारकम् — Semantic Roles
 titleSanskrit: कारकप्रकरणम्
 label: कारकम्
 track: grammar
 category: karaka
-description: Understand the six karakas - the semantic roles that link nouns to verbal action. Foundation of Sanskrit case syntax.
+description: Understand the six @term[kāraka] — the semantic roles linking @term[subanta] to @term[kriyā]. Foundation of case syntax.
 difficulty: intermediate
 estimatedTime: 3-4 hours
 prerequisites:

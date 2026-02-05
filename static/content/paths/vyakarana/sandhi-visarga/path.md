@@ -1,12 +1,12 @@
 ---
 id: sandhi-visarga
 order: 28
-title: Visarga Sandhi
+title: विसर्गसन्धि — Visarga Sandhi
 titleSanskrit: विसर्गसन्धिः
 label: विसर्गसन्धिः
 track: grammar
 category: sandhi
-description: Learn the complex rules governing visarga (ḥ). How final -s and -r transform at word junctions.
+description: Learn @term[visarga] @term[sandhi] rules. How final @deva[-स्] and @deva[-र्] transform at @term[pada] junctions.
 difficulty: intermediate
 estimatedTime: 2-3 hours
 prerequisites:
@@ -39,12 +39,12 @@ Visarga sandhi in Panini is not a single rule — it is a **chain** of substitut
 
 **Step 2:** The @deva[रु] then becomes one of several sounds depending on what follows:
 
-| What Follows | Result | Example |
-|---|---|---|
-| Voiceless stop or pause | @deva[ः] (visarga) | @deva[रामः तिष्ठति] |
-| Voiced sound after @deva[अ/आ] | @deva[ओ] | @deva[रामो गच्छति] |
-| Voiced sound after other vowels | @deva[र्] | @deva[मुनिरागच्छति] |
-| @deva[श/ष/स] | assimilated sibilant | @deva[नरश्चरति] |
+| What Follows                    | Result               | Example             |
+| ------------------------------- | -------------------- | ------------------- |
+| Voiceless stop or pause         | @deva[ः] (visarga)   | @deva[रामः तिष्ठति] |
+| Voiced sound after @deva[अ/आ]   | @deva[ओ]             | @deva[रामो गच्छति]  |
+| Voiced sound after other vowels | @deva[र्]            | @deva[मुनिरागच्छति] |
+| @deva[श/ष/स]                    | assimilated sibilant | @deva[नरश्चरति]     |
 
 Understanding this two-step process is the key. The rules below trace each step in order.
 
@@ -60,12 +60,12 @@ The @deva[रु] is a technical substitute — you never actually hear "ru" in 
 
 Why @deva[रु] and not simply @deva[र्]? The @deva[उ] in @deva[रु] is an @deva[इत्] (marker). It triggers @ref[1.1.52] (@deva[अलोऽन्त्यस्य]), ensuring that only the final @deva[स्] is replaced, not the entire word. Once the substitution is done, the @deva[उ] drops away, leaving @deva[र्] as the operative sound.
 
-| Underlying Form | After @ref[8.2.66] | Next Step |
-|---|---|---|
-| @deva[रामस्] | @deva[रामर्] (from @deva[रु]) | further rules apply |
-| @deva[अग्निस्] | @deva[अग्निर्] | further rules apply |
-| @deva[वायुस्] | @deva[वायुर्] | further rules apply |
-| @deva[तपस्] | @deva[तपर्] | further rules apply |
+| Underlying Form | After @ref[8.2.66]            | Next Step           |
+| --------------- | ----------------------------- | ------------------- |
+| @deva[रामस्]    | @deva[रामर्] (from @deva[रु]) | further rules apply |
+| @deva[अग्निस्]  | @deva[अग्निर्]                | further rules apply |
+| @deva[वायुस्]   | @deva[वायुर्]                 | further rules apply |
+| @deva[तपस्]     | @deva[तपर्]                   | further rules apply |
 
 In the Mahabhasya, Patanjali explains that the @deva[रु]-substitution captures the historical connection between @deva[स्] and @deva[र्] — both are coronal continuants, and their alternation is one of the oldest features of Indo-Aryan phonology.
 
@@ -81,12 +81,12 @@ This is the rule that produces the visarga you see in most written Sanskrit. Whe
 
 Note the pratyahara @deva[खर्] — it covers all voiceless consonants including the voiceless sibilants @deva[श], @deva[ष], @deva[स]. However, before sibilants, later rules (@ref[8.3.34], @ref[8.3.36]) may override this with sibilant-assimilation.
 
-| Input | Following Sound | Result |
-|---|---|---|
-| @deva[रामस्] + @deva[तिष्ठति] | @deva[त] (voiceless) | @deva[रामः तिष्ठति] |
-| @deva[नरस्] + @deva[करोति] | @deva[क] (voiceless) | @deva[नरः करोति] |
+| Input                          | Following Sound      | Result               |
+| ------------------------------ | -------------------- | -------------------- |
+| @deva[रामस्] + @deva[तिष्ठति]  | @deva[त] (voiceless) | @deva[रामः तिष्ठति]  |
+| @deva[नरस्] + @deva[करोति]     | @deva[क] (voiceless) | @deva[नरः करोति]     |
 | @deva[वायुस्] + @deva[प्रवहति] | @deva[प] (voiceless) | @deva[वायुः प्रवहति] |
-| @deva[रामस्] + (pause) | sentence-end | @deva[रामः] |
+| @deva[रामस्] + (pause)         | sentence-end         | @deva[रामः]          |
 
 From the Ramayana: @deva[रामः कमलपत्राक्षः] — "Rama, whose eyes are like lotus petals." The visarga in @deva[रामः] stays because @deva[क] follows.
 
@@ -107,13 +107,13 @@ This is the **most frequently encountered** visarga sandhi rule in Sanskrit. Her
 
 When @deva[अ] follows (i.e., @deva[अः] + @deva[अ]), the @deva[ओ] absorbs the following @deva[अ], and an avagraha @deva[ऽ] marks the absorbed vowel: @deva[रामोऽस्ति].
 
-| Input | Following Sound | Result |
-|---|---|---|
+| Input                        | Following Sound   | Result             |
+| ---------------------------- | ----------------- | ------------------ |
 | @deva[रामस्] + @deva[गच्छति] | @deva[ग] (voiced) | @deva[रामो गच्छति] |
-| @deva[नरस्] + @deva[वदति] | @deva[व] (voiced) | @deva[नरो वदति] |
-| @deva[देवस्] + @deva[अस्ति] | @deva[अ] (voiced) | @deva[देवोऽस्ति] |
-| @deva[बालस्] + @deva[हसति] | @deva[ह] (voiced) | @deva[बालो हसति] |
-| @deva[कालस्] + @deva[हि] | @deva[ह] (voiced) | @deva[कालो हि] |
+| @deva[नरस्] + @deva[वदति]    | @deva[व] (voiced) | @deva[नरो वदति]    |
+| @deva[देवस्] + @deva[अस्ति]  | @deva[अ] (voiced) | @deva[देवोऽस्ति]   |
+| @deva[बालस्] + @deva[हसति]   | @deva[ह] (voiced) | @deva[बालो हसति]   |
+| @deva[कालस्] + @deva[हि]     | @deva[ह] (voiced) | @deva[कालो हि]     |
 
 This rule does **not** apply when the preceding vowel is @deva[इ], @deva[उ], @deva[ऋ], etc. In those cases, the @deva[र्] remains as @deva[र्] before voiced sounds: @deva[मुनिर् गच्छति] = @deva[मुनिर्गच्छति].
 
@@ -130,16 +130,17 @@ From the Bhagavad Gita (2.47): @deva[कर्मण्येवाधिका�
 When @ref[8.3.17] produces @deva[य्] after @deva[अ], Shakalya allows an alternative: simply drop the @deva[य्], leaving @deva[अ] in contact with the following vowel. This produces a hiatus (two vowels side by side without combination).
 
 For example, from @deva[सः] + @deva[आस्ते]:
+
 - By @ref[8.3.17]: @deva[सोऽऽस्ते] (the standard form)
 - By @ref[8.3.19]: @deva[स आस्ते] (with elision — the @deva[य्] drops, leaving @deva[अ] + @deva[आ] without sandhi)
 
 This option is mainly found in Vedic recitation. In classical Sanskrit, the @ref[8.3.17] result (@deva[ओ]) is overwhelmingly standard. But Shakalya's option explains why some Vedic passages show forms like @deva[स एव] instead of @deva[सोऽव] or @deva[सैव].
 
-| Standard (@ref[8.3.17]) | Shakalya Option (@ref[8.3.19]) |
-|---|---|
-| @deva[सो अस्ति] → @deva[सोऽस्ति] | @deva[स अस्ति] |
-| @deva[को अत्र] | @deva[क अत्र] |
-| @deva[एषो अग्निः] | @deva[एष अग्निः] |
+| Standard (@ref[8.3.17])          | Shakalya Option (@ref[8.3.19]) |
+| -------------------------------- | ------------------------------ |
+| @deva[सो अस्ति] → @deva[सोऽस्ति] | @deva[स अस्ति]                 |
+| @deva[को अत्र]                   | @deva[क अत्र]                  |
+| @deva[एषो अग्निः]                | @deva[एष अग्निः]               |
 
 ---
 
@@ -148,6 +149,7 @@ This option is mainly found in Vedic recitation. In classical Sanskrit, the @ref
 When visarga meets a sibilant (@deva[श], @deva[ष], @deva[स]), special assimilation rules apply. The visarga does not simply remain @deva[ः] — it transforms to match the place of articulation of the following sibilant. Two rules govern this: @ref[8.3.34] provides the mandatory sibilant substitution, and @ref[8.3.36] offers an optional alternative where visarga may remain unchanged.
 
 These rules produce the very common patterns:
+
 - @deva[नरः] + @deva[च] = @deva[नरश्च] (via sibilant assimilation)
 - @deva[नरः] + @deva[तत्र] = @deva[नरस्तत्र] (via sibilant assimilation)
 - @deva[नमः] + @deva[ते] = @deva[नमस्ते] (a form everyone knows)
@@ -168,13 +170,13 @@ When visarga stands before a voiceless consonant that is itself followed by (or 
 
 The logic is simple: the breath-sound reshapes itself to match the tongue position required for the next consonant.
 
-| Input | Following | Sibilant | Result |
-|---|---|---|---|
-| @deva[नरः] + @deva[चरति] | @deva[च] (palatal) | @deva[श्] | @deva[नरश्चरति] |
-| @deva[नरः] + @deva[छायायाम्] | @deva[छ] (palatal) | @deva[श्] | @deva[नरश्छायायाम्] |
-| @deva[नरः] + @deva[टीकते] | @deva[ट] (retroflex) | @deva[ष्] | @deva[नरष्टीकते] |
-| @deva[नरः] + @deva[तिष्ठति] | @deva[त] (dental) | @deva[स्] | @deva[नरस्तिष्ठति] |
-| @deva[नमः] + @deva[ते] | @deva[त] (dental) | @deva[स्] | @deva[नमस्ते] |
+| Input                        | Following            | Sibilant  | Result              |
+| ---------------------------- | -------------------- | --------- | ------------------- |
+| @deva[नरः] + @deva[चरति]     | @deva[च] (palatal)   | @deva[श्] | @deva[नरश्चरति]     |
+| @deva[नरः] + @deva[छायायाम्] | @deva[छ] (palatal)   | @deva[श्] | @deva[नरश्छायायाम्] |
+| @deva[नरः] + @deva[टीकते]    | @deva[ट] (retroflex) | @deva[ष्] | @deva[नरष्टीकते]    |
+| @deva[नरः] + @deva[तिष्ठति]  | @deva[त] (dental)    | @deva[स्] | @deva[नरस्तिष्ठति]  |
+| @deva[नमः] + @deva[ते]       | @deva[त] (dental)    | @deva[स्] | @deva[नमस्ते]       |
 
 The famous greeting @deva[नमस्ते] is nothing but @deva[नमः] + @deva[ते] with this rule applied: visarga becomes @deva[स्] before the dental @deva[त].
 
@@ -190,11 +192,11 @@ Before @deva[क], @deva[ख], @deva[प], @deva[फ] (gutturals and labials), t
 
 This rule provides a choice when visarga directly precedes @deva[श], @deva[ष], or @deva[स] (not when it precedes a stop that happens to be palatal/retroflex/dental — that case is handled by @ref[8.3.34]).
 
-| Input | Option 1 (visarga stays) | Option 2 (assimilation) |
-|---|---|---|
-| @deva[नरः] + @deva[शेते] | @deva[नरः शेते] | @deva[नरश्शेते] |
-| @deva[नरः] + @deva[षण्डे] | @deva[नरः षण्डे] | @deva[नरष्षण्डे] |
-| @deva[नरः] + @deva[स्मरति] | @deva[नरः स्मरति] | @deva[नरस्स्मरति] |
+| Input                      | Option 1 (visarga stays) | Option 2 (assimilation) |
+| -------------------------- | ------------------------ | ----------------------- |
+| @deva[नरः] + @deva[शेते]   | @deva[नरः शेते]          | @deva[नरश्शेते]         |
+| @deva[नरः] + @deva[षण्डे]  | @deva[नरः षण्डे]         | @deva[नरष्षण्डे]        |
+| @deva[नरः] + @deva[स्मरति] | @deva[नरः स्मरति]        | @deva[नरस्स्मरति]       |
 
 In classical printed texts, Option 1 (keeping visarga) is far more common. Assimilation with doubling of the sibilant is seen primarily in certain South Indian manuscripts and in careful Vedic recitation traditions.
 
@@ -210,13 +212,13 @@ Though not strictly a "visarga" rule, this rule belongs to the same section of t
 
 The @deva[म्] must be @deva[पदान्त] (word-final). Inside a word, @deva[म्] before a consonant may or may not become anusvara depending on convention, but at word boundaries, this rule is obligatory.
 
-| Input | Result |
-|---|---|
-| @deva[फलम्] + @deva[करोति] | @deva[फलं करोति] |
-| @deva[वनम्] + @deva[गच्छति] | @deva[वनं गच्छति] |
+| Input                        | Result             |
+| ---------------------------- | ------------------ |
+| @deva[फलम्] + @deva[करोति]   | @deva[फलं करोति]   |
+| @deva[वनम्] + @deva[गच्छति]  | @deva[वनं गच्छति]  |
 | @deva[कुण्डम्] + @deva[हसति] | @deva[कुण्डं हसति] |
-| @deva[सत्यम्] + @deva[वद] | @deva[सत्यं वद] |
-| @deva[धर्मम्] + @deva[चर] | @deva[धर्मं चर] |
+| @deva[सत्यम्] + @deva[वद]    | @deva[सत्यं वद]    |
+| @deva[धर्मम्] + @deva[चर]    | @deva[धर्मं चर]    |
 
 From the Taittiriya Upanishad: @deva[सत्यं वद। धर्मं चर।] — "Speak truth. Practice dharma." Both show @ref[8.3.23] in action.
 
@@ -232,13 +234,13 @@ Before vowels, @deva[म्] remains @deva[म्]: @deva[फलम् अस्
 
 This rule converts the "generic nasal" (anusvara) into the specific nasal of the same place of articulation as the consonant that follows. The five vargas produce five nasals:
 
-| Anusvara + | Varga | Homorganic Nasal | Example |
-|---|---|---|---|
-| @deva[क/ख/ग/घ] | guttural | @deva[ङ्] | @deva[सं] + @deva[गच्छति] = @deva[सङ्गच्छति] |
-| @deva[च/छ/ज/झ] | palatal | @deva[ञ्] | @deva[सं] + @deva[चित] = @deva[सञ्चित] |
-| @deva[ट/ठ/ड/ढ] | retroflex | @deva[ण्] | @deva[सं] + @deva[डमरु] = @deva[सण्डमरु] |
-| @deva[त/थ/द/ध] | dental | @deva[न्] | @deva[सं] + @deva[तोष] = @deva[सन्तोष] |
-| @deva[प/फ/ब/भ] | labial | @deva[म्] | @deva[सं] + @deva[भवति] = @deva[सम्भवति] |
+| Anusvara +     | Varga     | Homorganic Nasal | Example                                      |
+| -------------- | --------- | ---------------- | -------------------------------------------- |
+| @deva[क/ख/ग/घ] | guttural  | @deva[ङ्]        | @deva[सं] + @deva[गच्छति] = @deva[सङ्गच्छति] |
+| @deva[च/छ/ज/झ] | palatal   | @deva[ञ्]        | @deva[सं] + @deva[चित] = @deva[सञ्चित]       |
+| @deva[ट/ठ/ड/ढ] | retroflex | @deva[ण्]        | @deva[सं] + @deva[डमरु] = @deva[सण्डमरु]     |
+| @deva[त/थ/द/ध] | dental    | @deva[न्]        | @deva[सं] + @deva[तोष] = @deva[सन्तोष]       |
+| @deva[प/फ/ब/भ] | labial    | @deva[म्]        | @deva[सं] + @deva[भवति] = @deva[सम्भवति]     |
 
 This rule is @deva[वा] (optional) — both @deva[संगच्छति] and @deva[सङ्गच्छति] are correct. In practice, printed texts vary: Devanagari texts often prefer anusvara (@deva[ं]) for simplicity, while careful grammatical works and South Indian scripts tend to write the explicit nasal.
 
@@ -281,18 +283,18 @@ And @deva[रामः] + @deva[हि] (from a typical sentence @deva[राम
 
 Here is a complete reference for visarga sandhi outcomes:
 
-| Context | Rule | Result | Example |
-|---|---|---|---|
-| @deva[स्] at word-end | @ref[8.2.66] | → @deva[रु] (intermediate) | @deva[रामस्] → @deva[रामर्] |
-| @deva[र्] before voiceless / pause | @ref[8.3.15] | → @deva[ः] | @deva[रामः तिष्ठति] |
-| @deva[अ/आ] + @deva[र्] before voiced | @ref[8.3.17] | → @deva[ओ] | @deva[रामो गच्छति] |
-| @deva[इ/उ/ऋ] + @deva[र्] before voiced | (no special rule) | → @deva[र्] remains | @deva[मुनिर्गच्छति] |
-| @deva[ः] before @deva[च/छ] | @ref[8.3.34] | → @deva[श्] | @deva[नरश्चरति] |
-| @deva[ः] before @deva[ट/ठ] | @ref[8.3.34] | → @deva[ष्] | @deva[नरष्टीकते] |
-| @deva[ः] before @deva[त/थ] | @ref[8.3.34] | → @deva[स्] | @deva[नमस्ते] |
-| @deva[ः] before @deva[श/ष/स] | @ref[8.3.36] | → optionally stays or assimilates | @deva[नरः शेते] / @deva[नरश्शेते] |
-| @deva[म्] before consonant | @ref[8.3.23] | → @deva[ं] | @deva[वनं गच्छति] |
-| @deva[ं] before stop | @ref[8.4.58] | → homorganic nasal (optional) | @deva[सन्तोषः] / @deva[संतोषः] |
+| Context                                | Rule              | Result                            | Example                           |
+| -------------------------------------- | ----------------- | --------------------------------- | --------------------------------- |
+| @deva[स्] at word-end                  | @ref[8.2.66]      | → @deva[रु] (intermediate)        | @deva[रामस्] → @deva[रामर्]       |
+| @deva[र्] before voiceless / pause     | @ref[8.3.15]      | → @deva[ः]                        | @deva[रामः तिष्ठति]               |
+| @deva[अ/आ] + @deva[र्] before voiced   | @ref[8.3.17]      | → @deva[ओ]                        | @deva[रामो गच्छति]                |
+| @deva[इ/उ/ऋ] + @deva[र्] before voiced | (no special rule) | → @deva[र्] remains               | @deva[मुनिर्गच्छति]               |
+| @deva[ः] before @deva[च/छ]             | @ref[8.3.34]      | → @deva[श्]                       | @deva[नरश्चरति]                   |
+| @deva[ः] before @deva[ट/ठ]             | @ref[8.3.34]      | → @deva[ष्]                       | @deva[नरष्टीकते]                  |
+| @deva[ः] before @deva[त/थ]             | @ref[8.3.34]      | → @deva[स्]                       | @deva[नमस्ते]                     |
+| @deva[ः] before @deva[श/ष/स]           | @ref[8.3.36]      | → optionally stays or assimilates | @deva[नरः शेते] / @deva[नरश्शेते] |
+| @deva[म्] before consonant             | @ref[8.3.23]      | → @deva[ं]                        | @deva[वनं गच्छति]                 |
+| @deva[ं] before stop                   | @ref[8.4.58]      | → homorganic nasal (optional)     | @deva[सन्तोषः] / @deva[संतोषः]    |
 
 ---
 

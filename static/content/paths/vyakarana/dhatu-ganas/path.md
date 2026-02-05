@@ -1,12 +1,12 @@
 ---
 id: dhatu-ganas
 order: 5
-title: The Ten Verb Classes
+title: दशगणाः — The Ten Verb Classes
 titleSanskrit: दशगणाः
 label: गणाः
 track: grammar
 category: tinganta
-description: Learn how the 10 dhatu classes (ganas) affect verb conjugation. Each gana has its own vikarana that appears between root and ending.
+description: Learn how the 10 @term[dhātu] classes (@term[gaṇa]) affect verb conjugation. Each @term[gaṇa] has its own @term[vikaraṇa].
 difficulty: intermediate
 estimatedTime: 3-4 hours
 prerequisites:
@@ -15,9 +15,9 @@ prerequisites:
 
 ## concept - Why Ten Classes?
 
-In the @deva[लट्] path, you learned that the affix @deva[शप्] (= @deva[अ]) goes between root and ending: @deva[भू] + @deva[अ] + @deva[ति] = @deva[भवति]. This works for Class 1 roots. But Sanskrit has **ten classes** of roots, and each class uses a different affix in that slot.
+In the @deva[लट्] path, you learned that the @term[pratyaya] @deva[शप्] (= @deva[अ]) goes between @term[dhātu] and ending: @deva[भू] + @deva[अ] + @deva[ति] = @deva[भवति]. This works for Class 1 @term[dhātu]. But Sanskrit has **ten classes**, and each class uses a different @term[pratyaya] in that slot.
 
-This intermediate affix is called the @deva[विकरण] ("class marker"). It's the single feature that distinguishes the conjugation classes. The root @deva[भू] takes @deva[शप्] (= @deva[अ]), but @deva[तुद्] takes @deva[श] (= @deva[अ] with accent difference), @deva[तन्] takes @deva[उ], and @deva[क्री] takes @deva[श्ना] (= @deva[ना]).
+This intermediate @term[pratyaya] is called the @term[vikaraṇa] (class marker). It's the single feature that distinguishes the conjugation classes. @deva[भू] takes @deva[शप्] (= @deva[अ]), but @deva[तुद्] takes @deva[श] (= @deva[अ] with accent difference), @deva[तन्] takes @deva[उ], and @deva[क्री] takes @deva[श्ना] (= @deva[ना]).
 
 Pāṇini groups all ~2000 roots in the @deva[धातुपाठ] (root catalog) into ten lists. The first root of each list names the class: @deva[भू] starts Class 1 → @deva[भ्वादि], @deva[अद्] starts Class 2 → @deva[अदादि], etc.
 
