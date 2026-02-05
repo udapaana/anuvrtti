@@ -1,241 +1,218 @@
+#!/usr/bin/env npx tsx
 /**
  * Build path index from markdown files
  *
- * Paths are organized by track under static/content/paths/:
- *   static/content/paths/
- *     pathana/                <- reading track
- *       01-alphabet/
- *         path.md
- *       02-simple-sentences/
- *         path.md
- *     vyakarana/              <- grammar track
- *       introduction/
- *         path.md
- *       tinganta-lat/
- *         path.md
- *
- * Each path folder contains a path.md with frontmatter and content.
- *
- * Run: npx tsx scripts/build-path-index.ts
+ * Scans static/content/paths/ for path.md files and generates:
+ * - static/content/paths-index.json (metadata for all paths)
+ * - static/content/sutra-paths.json (sutra -> path mappings)
  */
 
-import { readdir, readFile, writeFile, stat } from "fs/promises";
-import { join } from "path";
+import * as fs from 'fs';
+import * as path from 'path';
 
-// Track folder names mapped to track values
-const TRACK_FOLDERS: Record<string, "reading" | "grammar"> = {
-  pathana: "reading",
-  vyakarana: "grammar",
-};
+const CONTENT_DIR = path.join(process.cwd(), 'static/content/paths');
+const INDEX_OUTPUT = path.join(process.cwd(), 'static/content/paths-index.json');
+const SUTRA_PATHS_OUTPUT = path.join(process.cwd(), 'static/content/sutra-paths.json');
 
 interface PathMeta {
   id: string;
-  track: "reading" | "grammar";
-  folder: string; // Just the path folder name (e.g., "tinganta-lat")
-  trackFolder: string; // The track folder (e.g., "vyakarana")
+  track: string;
+  folder: string;
+  trackFolder: string;
   title: string;
   titleSanskrit: string;
   label: string;
   category: string;
   description: string;
-  difficulty: "beginner" | "intermediate" | "advanced";
+  difficulty: string;
   estimatedTime: string;
   prerequisites: string[];
   stepCount: number;
   order: number;
 }
 
-function parseFrontmatter(content: string): {
-  meta: Record<string, any>;
-  stepCount: number;
-  sutraIds: string[];
-} {
+interface SutraPathMapping {
+  [sutraId: string]: { pathId: string; stepIndex: number }[];
+}
+
+function parseFrontmatter(content: string): { frontmatter: Record<string, any>; body: string } {
   const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!match) {
-    throw new Error("Invalid markdown format: missing frontmatter");
+    throw new Error('Invalid markdown format: missing frontmatter');
   }
 
-  const [, yaml, body] = match;
-  const meta: Record<string, any> = {
-    prerequisites: [],
-    track: "grammar",
-    category: "foundation",
-    order: 999,
-  };
+  const yamlContent = match[1];
+  const body = match[2];
 
-  let inPrereqs = false;
-  for (const line of yaml.split("\n")) {
-    if (line.startsWith("  - ")) {
-      if (inPrereqs) {
-        meta.prerequisites.push(line.replace("  - ", "").trim());
-      }
+  // Simple YAML parser for our use case
+  const frontmatter: Record<string, any> = {};
+  let currentKey = '';
+  let inArray = false;
+  let arrayItems: string[] = [];
+
+  for (const line of yamlContent.split('\n')) {
+    if (line.trim() === '') continue;
+
+    // Check for array item
+    if (line.match(/^\s+-\s+/)) {
+      const value = line.replace(/^\s+-\s+/, '').trim();
+      arrayItems.push(value);
       continue;
     }
 
-    inPrereqs = false;
-    const colonIndex = line.indexOf(":");
-    if (colonIndex === -1) continue;
+    // If we were collecting array items, save them
+    if (inArray && currentKey) {
+      frontmatter[currentKey] = arrayItems;
+      arrayItems = [];
+      inArray = false;
+    }
 
-    const key = line.slice(0, colonIndex).trim();
-    const value = line.slice(colonIndex + 1).trim();
+    // Check for key: value
+    const keyMatch = line.match(/^(\w+):\s*(.*)$/);
+    if (keyMatch) {
+      currentKey = keyMatch[1];
+      const value = keyMatch[2].trim();
 
-    if (key === "prerequisites") {
-      inPrereqs = true;
-      if (value.startsWith("[") && value.endsWith("]")) {
-        meta.prerequisites = value
-          .slice(1, -1)
-          .split(",")
-          .map((s) => s.trim())
-          .filter(Boolean);
-        inPrereqs = false;
+      if (value === '') {
+        // Start of array
+        inArray = true;
+        arrayItems = [];
+      } else {
+        // Simple value
+        frontmatter[currentKey] = value.replace(/^["']|["']$/g, '');
       }
-    } else if (key === "order") {
-      const parsed = parseInt(value, 10);
-      meta[key] = isNaN(parsed) ? 999 : parsed;
-    } else {
-      // Strip surrounding quotes from values
-      let cleanValue = value;
-      if (
-        (value.startsWith('"') && value.endsWith('"')) ||
-        (value.startsWith("'") && value.endsWith("'"))
-      ) {
-        cleanValue = value.slice(1, -1);
-      }
-      meta[key] = cleanValue;
     }
   }
 
-  // Count steps (## headers that aren't in frontmatter)
-  const stepCount = (body.match(/^## /gm) || []).length;
+  // Handle trailing array
+  if (inArray && currentKey) {
+    frontmatter[currentKey] = arrayItems;
+  }
 
-  // Extract sutra IDs from step headers: ## 1.1.1 - Title
-  const nonSutraTypes = [
-    "concept",
-    "reading",
-    "practice",
-    "summary",
-    "exercise",
-  ];
-  const sutraIds: string[] = [];
-  const stepHeaders = body.matchAll(/^## (\S+)\s*-\s*.+$/gm);
-  for (const m of stepHeaders) {
-    let id = m[1];
-    // Normalize @ref[X.Y.Z] -> X.Y.Z
-    const refMatch = id.match(/^@ref\[(.+)\]$/);
-    if (refMatch) {
-      id = refMatch[1];
-    }
-    if (!nonSutraTypes.includes(id.toLowerCase())) {
-      sutraIds.push(id);
+  return { frontmatter, body };
+}
+
+function countSteps(body: string): number {
+  // Count ## headings that represent steps
+  const stepMatches = body.match(/^## /gm);
+  return stepMatches ? stepMatches.length : 0;
+}
+
+function extractSutraRefs(body: string): string[] {
+  // Extract sutra IDs from step headers like "## 1.1.1 - Title" or "## @ref[1.1.1] - Title"
+  const refs: string[] = [];
+  const lines = body.split('\n');
+
+  for (const line of lines) {
+    if (line.startsWith('## ')) {
+      // Match patterns like "## 1.1.1 - " or "## @ref[1.1.1] - "
+      const directMatch = line.match(/^## (\d+\.\d+\.\d+)\s*-/);
+      const refMatch = line.match(/^## @ref\[(\d+\.\d+\.\d+)\]/);
+
+      if (directMatch) {
+        refs.push(directMatch[1]);
+      } else if (refMatch) {
+        refs.push(refMatch[1]);
+      }
     }
   }
 
-  return { meta, stepCount, sutraIds };
+  return refs;
 }
 
-// Maps sutra ID -> [{pathId, pathTitle}]
-interface SutraPathEntry {
-  pathId: string;
-  pathTitle: string;
+function getTrackFolder(track: string): string {
+  switch (track) {
+    case 'grammar': return 'vyakarana';
+    case 'reading': return 'pathana';
+    default: return track;
+  }
 }
 
-async function buildIndex() {
-  const pathsDir = join(process.cwd(), "static/content/paths");
+function scanPaths(): { paths: PathMeta[]; sutraMappings: SutraPathMapping } {
   const paths: PathMeta[] = [];
-  const sutraPathMap: Record<string, SutraPathEntry[]> = {};
+  const sutraMappings: SutraPathMapping = {};
 
-  // Iterate over track folders (pathana, vyakarana)
-  for (const [trackFolder, track] of Object.entries(TRACK_FOLDERS)) {
-    const trackDir = join(pathsDir, trackFolder);
+  // Scan track directories
+  const trackDirs = fs.readdirSync(CONTENT_DIR);
 
-    let trackEntries: string[];
-    try {
-      trackEntries = await readdir(trackDir);
-    } catch (e: any) {
-      if (e.code === "ENOENT") {
-        console.warn(`Track folder ${trackFolder} not found, skipping`);
-        continue;
-      }
-      throw e;
-    }
+  for (const trackDir of trackDirs) {
+    const trackPath = path.join(CONTENT_DIR, trackDir);
+    if (!fs.statSync(trackPath).isDirectory()) continue;
 
-    for (const pathFolder of trackEntries) {
-      const pathDir = join(trackDir, pathFolder);
-      const pathStat = await stat(pathDir);
+    // Scan path directories within track
+    const pathDirs = fs.readdirSync(trackPath);
 
-      // Only process directories
-      if (!pathStat.isDirectory()) continue;
+    for (const pathDir of pathDirs) {
+      const pathDirPath = path.join(trackPath, pathDir);
+      if (!fs.statSync(pathDirPath).isDirectory()) continue;
 
-      // Look for path.md in the folder
-      const pathMdFile = join(pathDir, "path.md");
+      const pathFile = path.join(pathDirPath, 'path.md');
+      if (!fs.existsSync(pathFile)) continue;
+
       try {
-        const content = await readFile(pathMdFile, "utf-8");
-        const { meta, stepCount, sutraIds } = parseFrontmatter(content);
+        const content = fs.readFileSync(pathFile, 'utf-8');
+        const { frontmatter, body } = parseFrontmatter(content);
 
-        const pathId = meta.id || pathFolder;
-        const pathTitle = meta.title;
+        // Determine track from folder name
+        const track = trackDir === 'vyakarana' ? 'grammar' :
+                      trackDir === 'pathana' ? 'reading' : trackDir;
 
-        paths.push({
-          id: pathId,
+        const pathMeta: PathMeta = {
+          id: frontmatter.id || pathDir,
           track,
-          folder: pathFolder,
-          trackFolder,
-          title: pathTitle,
-          titleSanskrit: meta.titleSanskrit,
-          label: meta.label || meta.titleSanskrit,
-          category: meta.category,
-          description: meta.description,
-          difficulty: meta.difficulty,
-          estimatedTime: meta.estimatedTime,
-          prerequisites: meta.prerequisites,
-          stepCount,
-          order: meta.order,
+          folder: pathDir,
+          trackFolder: trackDir,
+          title: frontmatter.title || '',
+          titleSanskrit: frontmatter.titleSanskrit || '',
+          label: frontmatter.label || '',
+          category: frontmatter.category || 'foundation',
+          description: frontmatter.description || '',
+          difficulty: frontmatter.difficulty || 'beginner',
+          estimatedTime: frontmatter.estimatedTime || '',
+          prerequisites: frontmatter.prerequisites || [],
+          stepCount: countSteps(body),
+          order: parseInt(frontmatter.order) || 999,
+        };
+
+        paths.push(pathMeta);
+
+        // Extract sutra mappings
+        const sutraRefs = extractSutraRefs(body);
+        sutraRefs.forEach((sutraId, stepIndex) => {
+          if (!sutraMappings[sutraId]) {
+            sutraMappings[sutraId] = [];
+          }
+          sutraMappings[sutraId].push({
+            pathId: pathMeta.id,
+            stepIndex,
+          });
         });
 
-        // Build sutra-to-path mapping
-        for (const sutraId of sutraIds) {
-          if (!sutraPathMap[sutraId]) {
-            sutraPathMap[sutraId] = [];
-          }
-          // Avoid duplicates (same path listed twice for same sutra)
-          if (!sutraPathMap[sutraId].some((e) => e.pathId === pathId)) {
-            sutraPathMap[sutraId].push({ pathId, pathTitle });
-          }
-        }
-      } catch (e: any) {
-        if (e.code === "ENOENT") {
-          console.warn(
-            `Skipping ${trackFolder}/${pathFolder}: no path.md found`,
-          );
-        } else {
-          console.error(
-            `Error parsing ${trackFolder}/${pathFolder}/path.md:`,
-            e,
-          );
-        }
+      } catch (err) {
+        console.error(`Error processing ${pathFile}:`, err);
       }
     }
   }
 
-  // Sort by track, then order, then id
-  paths.sort((a, b) => {
-    // Grammar (vyakarana) before reading (pathana)
-    if (a.track !== b.track) {
-      return a.track === "grammar" ? -1 : 1;
-    }
-    if (a.order !== b.order) return a.order - b.order;
-    return a.id.localeCompare(b.id);
-  });
+  // Sort by order
+  paths.sort((a, b) => a.order - b.order);
 
-  const indexPath = join(process.cwd(), "static/content/paths-index.json");
-  await writeFile(indexPath, JSON.stringify(paths, null, 2));
-
-  const sutraPathsPath = join(process.cwd(), "static/content/sutra-paths.json");
-  await writeFile(sutraPathsPath, JSON.stringify(sutraPathMap));
-
-  const sutraCount = Object.keys(sutraPathMap).length;
-  console.log(`Generated paths-index.json with ${paths.length} paths`);
-  console.log(`Generated sutra-paths.json with ${sutraCount} sutra mappings`);
+  return { paths, sutraMappings };
 }
 
-buildIndex().catch(console.error);
+function main() {
+  console.log('Building path index...');
+
+  const { paths, sutraMappings } = scanPaths();
+
+  // Write paths index
+  fs.writeFileSync(INDEX_OUTPUT, JSON.stringify(paths, null, 2));
+  console.log(`Wrote ${paths.length} paths to ${INDEX_OUTPUT}`);
+
+  // Write sutra mappings
+  fs.writeFileSync(SUTRA_PATHS_OUTPUT, JSON.stringify(sutraMappings, null, 2));
+  const sutraCount = Object.keys(sutraMappings).length;
+  console.log(`Wrote ${sutraCount} sutra mappings to ${SUTRA_PATHS_OUTPUT}`);
+}
+
+main();
