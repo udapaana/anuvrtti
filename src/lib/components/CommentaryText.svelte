@@ -1,6 +1,6 @@
 <script lang="ts">
   import { selectedTerm } from '$lib/stores/jargon';
-  import { commentaryDepth } from '$lib/stores/preferences';
+  import { commentaryDepth, displayScript } from '$lib/stores/preferences';
   import { learnerTerms } from '$lib/stores/learner-terms';
   import { getCommentaryAtDepth, type SutraCommentaryData, type CommentaryDepth } from '$lib/data/types';
   import { marked } from 'marked';
@@ -181,21 +181,38 @@
     }
   }
 
-  // Transliterate after render
+  // Transliterate all .deva-term elements to current display script.
+  // Runs on mount (to convert SLP1 source terms) and on every script change.
   $effect(() => {
     if (!container) return;
+    const targetScript = $displayScript; // reactive dependency
+    // Also depend on renderedHtml so we re-run when content changes
+    void renderedHtml;
 
-    const slp1Terms = container.querySelectorAll('.deva-term[data-script="slp1"]');
-    slp1Terms.forEach(async (el) => {
-      const term = el.getAttribute('data-term') || el.textContent;
-      if (term && el.textContent === term) {
-        el.textContent = await transliterate(term, 'slp1', 'devanagari');
-        el.removeAttribute('data-script');
+    // Step 1: ensure every .deva-term has data-deva (canonical Devanagari source)
+    const allTerms = container.querySelectorAll<HTMLElement>('.deva-term');
+    allTerms.forEach(async (el) => {
+      // First-time: convert SLP1 source to Devanagari and store as data-deva
+      if (el.dataset.script === 'slp1') {
+        const slp1 = el.dataset.term || el.textContent || '';
+        const deva = await transliterate(slp1, 'slp1', 'devanagari');
+        el.dataset.deva = deva;
+        delete el.dataset.script;
+      } else if (!el.dataset.deva) {
+        // Already Devanagari — store it
+        el.dataset.deva = el.dataset.term || el.textContent || '';
+        delete el.dataset.script;
+      }
+
+      // Step 2: transliterate from Devanagari to target script
+      const deva = el.dataset.deva || '';
+      if (!deva) return;
+      if (targetScript === 'devanagari') {
+        el.textContent = deva;
+      } else {
+        el.textContent = await transliterate(deva, 'devanagari', targetScript);
       }
     });
-
-    const devaTerms = container.querySelectorAll('.deva-term[data-script="deva"]');
-    devaTerms.forEach((el) => el.removeAttribute('data-script'));
   });
 </script>
 

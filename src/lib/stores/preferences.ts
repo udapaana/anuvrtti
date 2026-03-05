@@ -3,8 +3,28 @@ import { browser } from "$app/environment";
 import type { Script } from "$lib/transliteration";
 import type { CommentaryDepth } from "$lib/data/types";
 
+const SCRIPT_KEY = "anuvrtti-display-script";
+
+function getStoredScript(): Script {
+  if (!browser) return "devanagari";
+  const stored = localStorage.getItem(SCRIPT_KEY) as Script | null;
+  if (stored) return stored;
+  return "devanagari";
+}
+
+function createDisplayScriptStore() {
+  const { subscribe, set } = writable<Script>(getStoredScript());
+  return {
+    subscribe,
+    set: (value: Script) => {
+      if (browser) localStorage.setItem(SCRIPT_KEY, value);
+      set(value);
+    },
+  };
+}
+
 /** User's preferred display script */
-export const displayScript = writable<Script>("devanagari");
+export const displayScript = createDisplayScriptStore();
 
 /** User's preferred commentary depth */
 const DEPTH_KEY = "anuvrtti-commentary-depth";

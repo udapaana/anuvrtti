@@ -1,21 +1,43 @@
 export const ssr = false;
 
-// Cache the sutra-paths index
+// Cache the sutra-paths index (enriched with path titles)
 let sutraPathsCache: Record<
   string,
-  { pathId: string; pathTitle: string }[]
+  { pathId: string; pathTitle: string; stepIndex: number }[]
 > | null = null;
 
 async function loadSutraPaths(): Promise<
-  Record<string, { pathId: string; pathTitle: string }[]>
+  Record<string, { pathId: string; pathTitle: string; stepIndex: number }[]>
 > {
   if (sutraPathsCache) return sutraPathsCache;
   try {
-    const resp = await fetch("/content/sutra-paths.json");
-    if (resp.ok) {
-      sutraPathsCache = await resp.json();
-      return sutraPathsCache!;
+    const [sutraResp, indexResp] = await Promise.all([
+      fetch("/content/sutra-paths.json"),
+      fetch("/content/paths-index.json"),
+    ]);
+    if (!sutraResp.ok) return {};
+
+    const raw: Record<string, { pathId: string; stepIndex: number }[]> =
+      await sutraResp.json();
+
+    // Build a title lookup from paths-index.json
+    const titleMap: Record<string, string> = {};
+    if (indexResp.ok) {
+      const index: { id: string; title: string }[] = await indexResp.json();
+      for (const p of index) titleMap[p.id] = p.title;
     }
+
+    // Enrich raw entries with titles
+    const enriched: typeof sutraPathsCache = {};
+    for (const [sutraId, entries] of Object.entries(raw)) {
+      enriched[sutraId] = entries.map((e) => ({
+        ...e,
+        pathTitle: titleMap[e.pathId] || e.pathId,
+      }));
+    }
+
+    sutraPathsCache = enriched;
+    return sutraPathsCache;
   } catch {
     /* non-critical */
   }
