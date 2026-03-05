@@ -62,19 +62,13 @@
     }
   });
 
-  // Show learning tree directly if user has progress
-  let showLearningTree = $state(false);
-
-  function startLearning() {
-    showLearningTree = true;
-  }
 </script>
 
 <svelte:head>
   <title>Anuvrtti | Learn Sanskrit through the Ashtadhyayi</title>
 </svelte:head>
 
-{#if hasProgress || showLearningTree}
+{#if hasProgress}
   <!-- Returning user: show resume card + learning tree -->
   <div class="max-w-4xl mx-auto">
 
@@ -163,8 +157,8 @@
     <!-- Two Modes -->
     <div class="grid md:grid-cols-2 gap-6 mb-10">
       <!-- Learn -->
-      <button
-        onclick={startLearning}
+      <a
+        href="/learn"
         class="group block bg-white rounded-xl border border-stone-200 p-8 hover:border-indigo-300 hover:shadow-lg transition-all text-left w-full"
       >
         <div class="w-14 h-14 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
@@ -191,7 +185,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </div>
-      </button>
+      </a>
 
       <!-- Reference -->
       <a
