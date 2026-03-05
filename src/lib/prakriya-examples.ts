@@ -49,15 +49,8 @@ export const SUTRA_EXAMPLES: Record<string, PrakriyaExample> = {
   // === Samjna (technical terms) ===
 
   // 1.1.1 vRddhir Ad aic - vrddhi vowels
-  "1.1.1": {
-    type: "subanta",
-    pratipadika: "upagu",
-    linga: "Pum",
-    vibhakti: "Prathama",
-    vacana: "Eka",
-    labelParts: ["upagu", "OpagavaH"],
-    note: "vṛddhi in taddhita",
-  },
+  // Definitional sūtra: names the vṛddhi vowels (ā, ai, au).
+  // No prakriyā example — the sūtra itself is the definition.
 
   // 1.1.2 ad eN guNaH - guna vowels
   "1.1.2": {
