@@ -167,17 +167,11 @@ function parseStep(section: string): LearningStep | null {
 
   const commentary = commentaryLines.join("\n").trim();
 
-  // Determine sutraId: 'concept' for non-sutra steps like 'concept', 'reading', 'practice', etc.
-  const nonSutraTypes = [
-    "concept",
-    "reading",
-    "practice",
-    "summary",
-    "exercise",
-  ];
+  // Determine sutraId: preserve 'concept', 'reading', 'quiz' as-is; collapse others to 'concept'
+  const knownTypes = ["concept", "reading", "quiz", "practice", "summary", "exercise"];
   const normalizedId = sutraId.toLowerCase();
-  const finalSutraId = nonSutraTypes.includes(normalizedId)
-    ? "concept"
+  const finalSutraId = knownTypes.includes(normalizedId)
+    ? normalizedId
     : sutraId;
 
   return {

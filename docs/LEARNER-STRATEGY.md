@@ -1,259 +1,198 @@
 # Anuvrtti: Learner-First Strategy
 
-## The Problem
+*Last updated: 2026-03*
 
-The Ashtadhyayi is a compression algorithm, not a textbook. Sutra 1.1.1 references pratyaharas (defined in 1.1.71), indicatory letters (1.3.2-9), and prosodial length (1.1.70). A learner hitting 1.1.1 cold faces:
+## The Core Problem
 
-```
-"The vowels आ, ऐ, and औ are called वृद्धि."
-     ↓
-"What's ऐच् (pratyahara)?" → needs 1.1.71
-"What's indicatory त्?" → needs 1.3.2-9
-"What's a mātrā?" → assumed knowledge
-"Why does this matter?" → needs 7.2.1, etc.
-```
+The Ashtadhyayi is a compression algorithm, not a textbook. Panini wrote for students who already had a guru. We have 3983 sūtras, excellent infrastructure, and 50 learning paths — but most grammar paths are thin wrappers around sūtra citations. A learner who opens the present tense path gets 10 sūtra numbers with one-line descriptions. That is a reference, not a lesson.
 
-The system has **circular dependencies by design**. Panini assumed oral transmission with a guru unpacking meaning incrementally. We have no guru.
+**The gap is almost entirely content quality in the grammar track, not technology.**
 
-## What We Have
+## What We Actually Have (Honest Audit, 2026-03)
 
-### Infrastructure (solid)
-- 45 learning paths with prerequisite tracking
-- Interactive tree visualization
-- Jargon lookup (100+ terms)
-- Pratyahara viewer
-- Prakriya derivation engine (WASM)
-- Progress tracking
-- Rich markup system (@deva[], @ref[], @[])
+### Infrastructure: solid and underused
+- 50 learning paths (30 grammar + 20 reading track)
+- Path parser supports: sutra steps, concept steps, reading steps, quiz steps
+- Markup system: `@deva[]`, `@ref[]`, `@prakriya[]`, `@sutra[]` — all work
+- Three-tier layered commentary (simple/standard/advanced) for all 3983 sūtras
+- Prakriya WASM engine, pratyahara viewer, jargon lookup
 
-### Content (needs work)
-- Learning path commentary is thin
-- vasu_rewritten.json assumes expert knowledge
-- No "concept" steps that teach without sutras
-- No graduated depth levels
-- Forward references unexplained
+### Reading track: decent foundation, needs quizzes and more practice sentences
+
+The 20 reading paths use real Sanskrit texts (Pañcatantra, Meghadūta, subhāṣitas). The pattern is good:
+- Concept steps explain the grammar
+- Reading steps give glossed source text
+- Summary steps close each lesson
+
+What's missing: **quiz steps** in every path, and the practice paths (03, 06, 09, 11, 15, 17) could each use 2–3 more reading passages with progressively less hand-holding.
+
+### Grammar track: mostly thin
+
+| Quality | Grammar paths (30 total) |
+|---------|--------------------------|
+| Rich | 1 — introduction (00) |
+| Medium | ~8 — sandhi (27-29), karaka (25), samasa (26), dhatu ganas (05), lit (08), kta/ktavatu (15) |
+| Thin | ~21 — most tinganta (01-04, 06-07, 09-11), all taddhita (17-19), most subanta (22-24), most kridanta (12-14, 16) |
+
+**Specific problems in grammar paths:**
+- Bare sūtra citations with 1–2 line descriptions, no derivation chains
+- Zero quiz steps exist despite full parser support
+- Zero `@prakriya[]` embedded examples despite engine support
+- `tinganta-lat` (01) ends with 6.4.71 (the augment rule for *laṅ/luṅ*) — that rule doesn't belong in a *lat* path at all
 
 ## The Strategy
 
-### 1. Concept-First Learning Paths
+### What does a good grammar path look like?
 
-**Current approach:** Jump into sutras with brief context
-**New approach:** Build concepts before introducing rules
+Take `tinganta-lat` as the exemplar to fix. Currently it is: sūtra, one line, next sūtra. It should be:
 
-Example for "Introduction" path:
+```
+[concept step] What is a lakāra?
+  - Sanskrit has 10 "tense/mood markers" called lakāras
+  - लट् is for present action: "he cooks", "she goes"
+  - The lakāra is replaced by personal endings — लट् is never pronounced
 
-```markdown
-## Step 1: What is a vowel grade? (concept)
+[sutra step] 3.2.123 — लट् for present action
+  - Rule: Use लट् for an action that is begun but not finished
+  - Example: पचति = "he is cooking"
+  - Compare: पचेत् (optative) vs पचति (present) — different mood, different meaning
 
-Sanskrit vowels come in three "grades":
+[concept step] The 18 personal endings
+  - Table of tip/tas/jhi... with English glosses
+  - Parasmaipada vs Ātmanepada split
 
-| Grade | इ-series | उ-series | ऋ-series |
-|-------|----------|----------|----------|
-| Basic | इ/ई | उ/ऊ | ऋ/ॠ |
-| Guna | ए | ओ | अर् |
-| Vrddhi | ऐ | औ | आर् |
+[sutra step] 3.4.78 — The 18 tiṅ endings
+  - These replace the lakāra (by 3.4.77)
+  - [embed the full table here, not just the sūtra text]
 
-When you derive words, vowels "strengthen":
-- उपगु → औपगवः "son of Upagu" (उ → औ)
-- अङ्ग → आङ्गः "bodily" (अ → आ)
+[sutra step] 3.1.68 — śap vikaraṇa
+  - For bhvādi verbs, insert अ between root and ending
+  - Derivation: भू + शप् + ति → भ् + अ + ति → भवति (with guna by 7.3.84)
+  - This अ is what makes "bhavati" not "bhūti"
 
-Now let's see how Panini defines these...
+[sutra step] 7.3.84 — guṇa before sārvadhātuka
+  - The final vowel of the stem strengthens: इ→ए, उ→ओ, ऋ→अर्
+  - Example: नी + अ + ति → ने + अ + ति → नयति
 
----
-
-## Step 2: 1.1.1 - Vrddhi defined
-
-आ, ऐ, and औ are called वृद्धि.
-
-[Now the sutra makes sense because you understand *why* we need this term]
+[quiz] Identify these forms: भवति, पचतः, गच्छन्ति, पठामि, वदसि
+[quiz] What is the vikaraṇa of भू? of दिव्? of सु?
+[quiz] Derive पठति step by step
 ```
 
-### 2. Layered Commentary Depth
+This is what every grammar path should look like.
 
-Each sutra should have three depth levels:
+### Priority 1: Rewrite the grammar paths with derivations
 
-```typescript
-interface SutraCommentary {
-  // Level 0: One sentence, no jargon
-  simple: string;
+Work through paths in this order:
 
-  // Level 1: Full explanation, defines terms inline
-  standard: string;
+**Batch 1 — Tinganta (highest learner demand)**
+1. `01-tinganta-lat` — the entry point; must be excellent
+2. `03-tinganta-lang` — contrast with lat is the key lesson
+3. `02-tinganta-lot` — imperative; common in texts and dialogue
 
-  // Level 2: Technical details, cross-references, exceptions
-  advanced: string;
-}
+**Batch 2 — Subanta (nouns are used in every sentence)**
+4. `21-subanta-a-stems` — the most common noun type
+5. `20-subanta-pratipadika` — foundation step before a-stems
+6. `24-subanta-consonant-stems` — the irregular ones learners struggle with
+
+**Batch 3 — Kṛdanta (participles are everywhere in prose)**
+7. `15-kridanta-kta-ktavatu` — past participle; essential for reading
+8. `12-kridanta-ktva` — absolutive ("having done X, then..."); very common
+
+**Batch 4 — Remaining tinganta**
+9. `04-tinganta-vidhiling` — optative; needed for understanding rules
+10. `08-tinganta-lit` — perfect; common in epics
+
+**Batch 5 — Taddhita + remaining**
+- Lowest priority; complex, less common in basic reading
+
+### Priority 2: Add quiz steps to every path
+
+The parser supports quizzes fully. Three quiz types to rotate:
+1. **Identify** — given a form, what is it? (recognition)
+2. **Produce** — given a stem and context, write the form (production)
+3. **Trace** — given a derivation step, which sūtra applies? (rule knowledge)
+
+Target: 3 quiz steps at the end of every grammar path, 2 at the end of every reading path.
+
+### Priority 3: Reading track — add quizzes + fill out practice paths
+
+The reading paths use real texts, which is great. What's missing:
+- Quiz steps in every path (check comprehension of the passage)
+- Practice paths (03, 06, 09, 11, 15, 17) could each use 1–2 more glossed sentences with less hand-holding as the path progresses
+- `reading-20` (final practice) uses Meghadūta, which is quite hard — consider adding an easier intermediate passage before it
+
+### Priority 4: Concept steps before dense sūtra clusters
+
+Any time a path introduces a new mechanism (vikaraṇas, augments, case endings, guṇa), a concept step should precede the first sūtra. This is already done well in `00-introduction.md`. The pattern:
+
+```
+[concept] What is this? Plain English + table + 2 examples
+[sutra] First rule establishing the thing
+[sutra] Main operational rule
+[concept] What to notice / how to recognize this in text
+[quiz] Check understanding
 ```
 
-**Example for 1.1.1:**
+## Content Writing Guidelines
 
-```json
-{
-  "simple": "The long vowels आ, ऐ, and औ are grouped under the name \"vrddhi\" for use in later rules.",
+### For every sūtra step
 
-  "standard": "The vowels आ, ऐ, and औ are called वृद्धि (\"strengthening\"). This is a technical label—when later rules say \"apply vrddhi,\" they mean substitute one of these vowels. For example, उपगु → औपगवः (the उ \"strengthens\" to औ).",
+1. **One plain English sentence** — what the rule does, no unexplained jargon
+2. **A derivation** — show the input, intermediate steps, and output
+3. **Key mechanic** — what the learner should notice and remember
+4. **Common words** — 2–3 real Sanskrit words this rule produces
 
-  "advanced": "The sūtra has three words: वृद्धिः (the term), आत् (long आ with indicatory त्), and ऐच् (pratyāhāra for ऐ/औ). The indicatory त् in आत् restricts to the two-mātrā form by 1.1.70. The term वृद्धि appears in operational rules like 7.2.1 सिचिवृद्धिपरस्मैपदेषु."
-}
+### Derivation format
+
+```
+भू + शप् + तिप्
+→ भू + अ + ति        (śap inserted: 3.1.68)
+→ भो + अ + ति        (guṇa of ū: 7.3.84)
+→ भव + अ + ति        (av-substitute: 6.1.78)
+→ भवति               (vowel sandhi: 6.1.101)
 ```
 
-### 3. Progressive Jargon Introduction
+Show intermediate steps. Label each step with the sūtra number. Don't jump from root to final form.
 
-Track which terms a learner has encountered. Show inline definitions on first use, tooltips thereafter.
+### Style rules
 
-```typescript
-interface LearnerState {
-  knownTerms: Set<string>;  // e.g., {"guna", "vrddhi", "pratyahara"}
-  currentDepth: "simple" | "standard" | "advanced";
-}
-```
-
-When rendering commentary:
-- If term is unknown → show inline definition + add to knownTerms
-- If term is known → show as clickable link to jargon
-
-### 4. Prerequisite Expansion
-
-Current paths list prerequisites by path ID. Add **concept prerequisites**:
-
-```yaml
-prerequisites:
-  paths:
-    - introduction
-  concepts:
-    - vowel-grades      # Must understand guna/vrddhi
-    - pratyahara-basics # Must understand sound groups
-```
-
-On path load, check if prerequisite concepts are mastered. If not, offer to cover them first.
-
-### 5. Reference on Demand
-
-Replace forward references with expandable previews:
-
-**Current:**
-> By @ref[1.1.70], it restricts vowels to standard length
-
-**New:**
-> By 1.1.70 [expand: "A letter with त् before/after refers only to same-length forms"], it restricts vowels to standard length
-
-Implementation: `@ref[1.1.70|preview]` renders with hover/click expansion.
-
-### 6. Example-Driven Learning
-
-Every abstract rule should immediately show a concrete derivation.
-
-**Current:**
-> When गुण or वृद्धि is prescribed, it replaces इक्
-
-**New:**
-> When गुण or वृद्धि is prescribed, it replaces इक्:
->
-> नी + अति → ने + अति → नयति "he leads"
->      ↑
->   इ → ए (guna)
->
-> [Interactive: Try with भू, कृ, श्रु]
-
-### 7. Curated "Reading Fluency" Track
-
-The existing 45 paths are comprehensive but overwhelming. Create a focused 10-lesson sequence for reading ability:
-
-1. **Alphabet & Sounds** - varnamala + pratyahara basics
-2. **Word Structure** - pratipadika, dhatu, pratyaya
-3. **Basic Verb Forms** - lat lakara only, all 10 ganas
-4. **Basic Noun Forms** - a-stems, all 7 cases
-5. **Vowel Sandhi** - the 5 most common rules
-6. **Simple Compounds** - tatpurusha basics
-7. **Past & Future** - lang + lrt
-8. **Participles** - kta, shatr, shanac
-9. **Visarga Sandhi** - completing the sandhi picture
-10. **Reading Practice** - actual texts with annotation
-
-Each lesson = 30-45 minutes, practical exercises, immediate application.
-
-## Implementation Priorities
-
-### Phase 1: Foundation (2-3 weeks)
-1. Create concept-first introduction path
-2. Add layered depth to first 20 sutras (1.1.1-1.1.20)
-3. Implement term-tracking for progressive jargon
-4. Build reference preview component
-
-### Phase 2: Core Grammar (4-6 weeks)
-5. Rewrite verb paths (tinganta) with examples
-6. Rewrite noun paths (subanta) with examples
-7. Add interactive derivation exercises
-8. Create "Reading Fluency" track
-
-### Phase 3: Polish (2-3 weeks)
-9. Add prerequisite concept checking
-10. Build progress dashboard
-11. Create assessment/quiz system
-12. Mobile-optimize the interface
-
-## Content Guidelines
-
-### Writing Style
-- Active voice, present tense
-- One idea per paragraph
 - Concrete before abstract
-- Always show, then tell
-
-### Structure
-```markdown
-## [Sutra Number] - [English Title]
-
-[One-sentence summary in plain English]
-
-[Concrete example showing the rule in action]
-
-[Explanation of why this rule exists]
-
-[Technical details for advanced learners - collapsible]
-
-[Related rules - as links]
-```
+- Show before tell
+- One new idea per step
+- Never use a technical term without defining it first in that path (or linking via `@deva[]` to jargon)
+- Every sūtra step needs at least one worked example
 
 ### Avoid
-- Assuming knowledge not yet introduced
-- Unexpanded technical terms
-- Forward references without context
-- Abstract explanations without examples
-- Walls of text
+
+- Sūtra dumps (5+ sūtras with no worked examples between them)
+- Jargon without inline definition
+- Citing a sūtra that belongs to a different topic (e.g., the augment rule in the present tense path)
+- Concept steps with no examples
+
+## Sequencing: Week-by-Week Plan
+
+**Week 1:** Rewrite `01-tinganta-lat` as the model
+**Week 2:** Rewrite `21-subanta-a-stems` + `20-subanta-pratipadika`
+**Week 3:** Add quizzes to reading paths 01–06
+**Week 4:** Rewrite `03-tinganta-lang`, `02-tinganta-lot`
+**Week 5:** Rewrite `15-kridanta-kta-ktavatu`, `12-kridanta-ktva`
+**Week 6:** Add quizzes to remaining reading paths + grammar paths done so far
+**Week 7+:** Remaining tinganta, subanta, kridanta
 
 ## Measuring Success
 
-1. **Completion rates** - Do learners finish paths?
-2. **Time per step** - Are they stuck or flowing?
-3. **Return rate** - Do they come back?
-4. **Reading ability** - Can they parse unseen text?
-
-## File Changes Required
-
-### New Files
-- `src/lib/learning/concepts/` - Standalone concept explanations
-- `src/lib/stores/learner-state.ts` - Track known terms, depth preference
-- `src/lib/components/RefPreview.svelte` - Expandable sutra references
-- `docs/CONTENT-STYLE-GUIDE.md` - Writing guidelines for contributors
-
-### Modified Files
-- `src/lib/data/types.ts` - Add layered commentary types
-- `src/lib/learning/pathParser.ts` - Support concept steps
-- `src/lib/components/CommentaryText.svelte` - Progressive term handling
-- `static/data/vasu_rewritten.json` - Convert to layered format
-
-### Deprecated
-- Current vasu_rewritten.json format (migrate to layered)
+- A learner who finishes the reading track should parse basic subhāṣita without glosses
+- A learner who finishes tinganta-lat should recognize and produce all 9 parasmaipada present forms for any bhvādi verb
+- Each grammar path: 30–60 minutes at standard depth
+- Each reading path: 20–30 minutes
 
 ## Open Questions
 
-1. **Depth toggle:** Per-sutra or global preference?
-2. **Assessment:** Quiz after each path or just practice?
-3. **Community:** Allow user-contributed examples?
-4. **Audio:** Add pronunciation for Sanskrit terms?
-5. **Gamification:** Badges, streaks, leaderboards?
+1. Should derivations show Devanagari only, or always pair with transliteration?
+2. Should practice sentences be constructed (controlled vocabulary) or real texts (authentic but harder)?
+3. How strict are prerequisites — block learners from paths or just recommend?
 
 ---
 
-*This document is a living plan. Update as we learn what works.*
+*Living document. Update as priorities shift.*
