@@ -10,7 +10,6 @@
 
   // View mode: 'reading' (guided path) or 'grammar' (by topic)
   let viewMode: Track = $state('reading');
-  let isReadingMode = $derived(viewMode === 'reading');
 
   // Paths loaded from content index
   let allPaths: PathMeta[] = $state([]);
@@ -177,7 +176,7 @@
       </button>
     </div>
 
-    {#if isReadingMode}
+    {#if viewMode === 'reading'}
       <!-- Guided Path View -->
       {@const progress = getReadingProgress()}
       {@const nextIndex = getNextUncompletedIndex()}
