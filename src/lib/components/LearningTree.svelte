@@ -9,7 +9,8 @@
   import { onMount } from 'svelte';
 
   // View mode: 'reading' (guided path) or 'grammar' (by topic)
-  let viewMode: Track = $state('reading');
+  let viewMode: Track = $state<Track>('reading');
+  let isReadingMode = $derived(viewMode === 'reading');
 
   // Paths loaded from content index
   let allPaths: PathMeta[] = $state([]);
@@ -160,23 +161,23 @@
     <div class="mode-toggle">
       <button
         class="mode-btn"
-        class:active={viewMode === 'reading'}
-        onclick={() => viewMode = 'reading'}
+        class:active={isReadingMode}
+        onclick={() => { viewMode = 'reading'; }}
       >
         <span class="mode-sanskrit">पठनम्</span>
         <span class="mode-english">Reading</span>
       </button>
       <button
         class="mode-btn"
-        class:active={viewMode === 'grammar'}
-        onclick={() => viewMode = 'grammar'}
+        class:active={!isReadingMode}
+        onclick={() => { viewMode = 'grammar'; }}
       >
         <span class="mode-sanskrit">व्याकरणम्</span>
         <span class="mode-english">Grammar</span>
       </button>
     </div>
 
-    {#if viewMode === 'reading'}
+    {#if isReadingMode}
       <!-- Guided Path View -->
       {@const progress = getReadingProgress()}
       {@const nextIndex = getNextUncompletedIndex()}
