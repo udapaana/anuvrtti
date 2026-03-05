@@ -5,41 +5,19 @@
   import { categoryColors } from '$lib/learning/tree';
   import { displayScript } from '$lib/stores/preferences';
   import { transliterate, type Script } from '$lib/transliteration';
-  import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
 
-  // View mode: 'reading' (guided path) or 'grammar' (by topic)
-  let viewMode: Track = $state('reading');
-
-  // Paths loaded from content index
+  // All paths loaded from index
   let allPaths: PathMeta[] = $state([]);
   let loading = $state(true);
 
-  // Derived path lists
-  let readingPaths = $derived(allPaths.filter(p => p.track === 'reading'));
-  let grammarPaths = $derived(allPaths.filter(p => p.track === 'grammar'));
+  // View mode toggled via a simple boolean
+  let showGrammar = $state(false);
 
-  // Group paths by category for topic view
-  const categories: { id: PathCategory; label: string; labelSanskrit: string }[] = [
-    { id: 'foundation', label: 'Foundations', labelSanskrit: 'आधारः' },
-    { id: 'tinganta', label: 'Verbs', labelSanskrit: 'तिङन्त' },
-    { id: 'subanta', label: 'Nouns', labelSanskrit: 'सुबन्त' },
-    { id: 'karaka', label: 'Cases', labelSanskrit: 'कारक' },
-    { id: 'kridanta', label: 'Participles', labelSanskrit: 'कृदन्त' },
-    { id: 'taddhita', label: 'Derivation', labelSanskrit: 'तद्धित' },
-    { id: 'sandhi', label: 'Sandhi', labelSanskrit: 'सन्धि' },
-    { id: 'samasa', label: 'Compounds', labelSanskrit: 'समास' },
-  ];
+  // Collapsed categories (grammar view)
+  let collapsed: Set<string> = $state(new Set());
 
-  const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
-
-  function getPathsByCategory(category: PathCategory): PathMeta[] {
-    return grammarPaths
-      .filter(p => p.category === category)
-      .sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]);
-  }
-
-  // Progress state
+  // Progress
   let completedPaths: string[] = $state([]);
   let pathProgress: Record<string, number[]> = $state({});
 
@@ -48,104 +26,78 @@
     pathProgress = p.pathProgress;
   });
 
-  function isCompleted(pathId: string): boolean {
-    return completedPaths.includes(pathId);
-  }
+  // Transliterated labels
+  let labels: Map<string, string> = $state(new Map());
 
-  function arePrereqsMet(path: PathMeta): boolean {
-    if (path.prerequisites.length === 0) return true;
-    return path.prerequisites.every(id => completedPaths.includes(id));
-  }
-
-  function getUnmetPrereqs(path: PathMeta): PathMeta[] {
-    return path.prerequisites
-      .filter(id => !completedPaths.includes(id))
-      .map(id => allPaths.find(p => p.id === id))
-      .filter((p): p is PathMeta => p != null);
-  }
-
-  function getProgressPercent(path: PathMeta): number {
-    const steps = pathProgress[path.id] || [];
-    if (path.stepCount === 0) return 0;
-    return (steps.length / path.stepCount) * 100;
-  }
-
-  // Script/transliteration state
-  let currentScript: Script = $state('devanagari');
-  let transliteratedLabels: Map<string, string> = $state(new Map());
-
-  async function updateLabels(script: Script) {
-    const newLabels = new Map<string, string>();
-    for (const path of allPaths) {
-      if (script === 'devanagari') {
-        newLabels.set(path.id, path.label);
-      } else {
-        const transliterated = await transliterate(path.label, 'devanagari', script);
-        newLabels.set(path.id, transliterated);
-      }
-    }
-    for (const cat of categories) {
-      if (script === 'devanagari') {
-        newLabels.set(cat.id, cat.labelSanskrit);
-      } else {
-        const transliterated = await transliterate(cat.labelSanskrit, 'devanagari', script);
-        newLabels.set(cat.id, transliterated);
-      }
-    }
-    transliteratedLabels = newLabels;
-  }
+  const categories: { id: PathCategory; label: string; san: string }[] = [
+    { id: 'foundation', label: 'Foundations', san: 'आधारः' },
+    { id: 'tinganta',   label: 'Verbs',        san: 'तिङन्त' },
+    { id: 'subanta',    label: 'Nouns',         san: 'सुबन्त' },
+    { id: 'karaka',     label: 'Cases',         san: 'कारक' },
+    { id: 'kridanta',   label: 'Participles',   san: 'कृदन्त' },
+    { id: 'taddhita',   label: 'Derivation',    san: 'तद्धित' },
+    { id: 'sandhi',     label: 'Sandhi',        san: 'सन्धि' },
+    { id: 'samasa',     label: 'Compounds',     san: 'समास' },
+  ];
 
   onMount(async () => {
-    // Load path index
     try {
       allPaths = await loadPathIndex();
     } catch (e) {
       console.error('Failed to load path index:', e);
     }
     loading = false;
-
-    // Setup script handling
-    updateLabels($displayScript);
-    const unsubscribe = displayScript.subscribe(script => {
-      currentScript = script;
-      updateLabels(script);
-    });
-    return unsubscribe;
+    rebuildLabels($displayScript);
+    return displayScript.subscribe(s => rebuildLabels(s));
   });
 
-  function getLabel(id: string, fallback: string): string {
-    return transliteratedLabels.get(id) || fallback;
-  }
-
-  function handlePathClick(path: PathMeta) {
-    goto(`/learn/${path.id}`);
-  }
-
-  // Collapsed state per category
-  let collapsedCategories: Set<PathCategory> = $state(new Set());
-
-  function toggleCategory(catId: PathCategory) {
-    const newSet = new Set(collapsedCategories);
-    if (newSet.has(catId)) {
-      newSet.delete(catId);
-    } else {
-      newSet.add(catId);
+  async function rebuildLabels(script: Script) {
+    const m = new Map<string, string>();
+    for (const p of allPaths) {
+      m.set(p.id, script === 'devanagari' ? p.label : await transliterate(p.label, 'devanagari', script));
     }
-    collapsedCategories = newSet;
+    for (const c of categories) {
+      m.set(c.id, script === 'devanagari' ? c.san : await transliterate(c.san, 'devanagari', script));
+    }
+    labels = m;
   }
 
-  function isCollapsed(catId: PathCategory): boolean {
-    return collapsedCategories.has(catId);
+  function label(id: string, fallback: string) {
+    return labels.get(id) || fallback;
   }
 
-  // Reading path progress
-  function getReadingProgress(): { completed: number; total: number } {
-    const completed = readingPaths.filter(p => isCompleted(p.id)).length;
-    return { completed, total: readingPaths.length };
+  function pct(path: PathMeta) {
+    const steps = pathProgress[path.id] || [];
+    return path.stepCount === 0 ? 0 : (steps.length / path.stepCount) * 100;
   }
 
-  function getNextUncompletedIndex(): number {
-    return readingPaths.findIndex(p => !isCompleted(p.id));
+  function done(id: string) { return completedPaths.includes(id); }
+
+  function prereqsMet(path: PathMeta) {
+    return path.prerequisites.every(id => completedPaths.includes(id));
+  }
+
+  function unmetLabels(path: PathMeta): string {
+    return path.prerequisites
+      .filter(id => !completedPaths.includes(id))
+      .map(id => allPaths.find(p => p.id === id)?.label || id)
+      .join(', ');
+  }
+
+  let readingPaths = $derived(allPaths.filter(p => p.track === 'reading'));
+  let readingDone = $derived(readingPaths.filter(p => done(p.id)).length);
+  let nextIdx = $derived(readingPaths.findIndex(p => !done(p.id)));
+
+  function grammarPaths(cat: PathCategory) {
+    return allPaths
+      .filter(p => p.track === 'grammar' && p.category === cat)
+      .sort((a, b) => ({ beginner: 0, intermediate: 1, advanced: 2 }[a.difficulty] - { beginner: 0, intermediate: 1, advanced: 2 }[b.difficulty]));
+  }
+
+  function toggleCollapse(id: string) {
+    const s = new Set(collapsed);
+    s.has(id) ? s.delete(id) : s.add(id);
+    collapsed = s;
   }
 </script>
 
@@ -156,38 +108,38 @@
   </div>
 {:else}
   <div class="learning-tree">
+
     <!-- Track Toggle -->
     <div class="mode-toggle">
-      <button
+      <a
+        href="#reading"
         class="mode-btn"
-        class:active={viewMode === 'reading'}
-        onclick={() => viewMode = 'reading'}
+        class:active={!showGrammar}
+        onclick={(e) => { e.preventDefault(); showGrammar = false; }}
       >
         <span class="mode-sanskrit">पठनम्</span>
         <span class="mode-english">Reading</span>
-      </button>
-      <button
+      </a>
+      <a
+        href="#grammar"
         class="mode-btn"
-        class:active={viewMode === 'grammar'}
-        onclick={() => viewMode = 'grammar'}
+        class:active={showGrammar}
+        onclick={(e) => { e.preventDefault(); showGrammar = true; }}
       >
         <span class="mode-sanskrit">व्याकरणम्</span>
         <span class="mode-english">Grammar</span>
-      </button>
+      </a>
     </div>
 
-    {#if viewMode === 'reading'}
-      <!-- Guided Path View -->
-      {@const progress = getReadingProgress()}
-      {@const nextIndex = getNextUncompletedIndex()}
-
+    {#if !showGrammar}
+      <!-- Reading Path -->
       <div class="reading-header">
         <p class="reading-desc">A structured path through the essentials — recommended for beginners.</p>
-        {#if progress.total > 0}
+        {#if readingPaths.length > 0}
           <div class="reading-progress">
-            <span class="progress-text">{progress.completed}/{progress.total} complete</span>
+            <span class="progress-text">{readingDone}/{readingPaths.length} complete</span>
             <div class="progress-track">
-              <div class="progress-fill" style="width: {(progress.completed / progress.total) * 100}%"></div>
+              <div class="progress-fill" style="width: {(readingDone / readingPaths.length) * 100}%"></div>
             </div>
           </div>
         {/if}
@@ -195,94 +147,85 @@
 
       <ol class="reading-list">
         {#each readingPaths as path, i}
-          {@const complete = isCompleted(path.id)}
-          {@const progressPct = getProgressPercent(path)}
-          {@const isCurrent = i === nextIndex}
+          {@const complete = done(path.id)}
+          {@const isCurrent = i === nextIdx}
           {@const colors = categoryColors[path.category] || categoryColors.foundation}
-
           <li class="reading-item" class:completed={complete} class:current={isCurrent}>
-            <button
-              class="reading-btn"
-              onclick={() => handlePathClick(path)}
-            >
+            <a href="/learn/{path.id}" class="reading-btn">
               <span class="reading-number" class:complete style="border-color: {colors.medium}; {complete ? `background: ${colors.medium}` : ''}">
                 {#if complete}✓{:else}{i + 1}{/if}
               </span>
               <div class="reading-content">
-                <span class="reading-label">{getLabel(path.id, path.label)}</span>
+                <span class="reading-label">{label(path.id, path.label)}</span>
                 <span class="reading-title">{path.title}</span>
               </div>
               <span class="reading-category" style="color: {colors.medium};">{path.category}</span>
-              {#if !complete && progressPct > 0}
+              {#if !complete && pct(path) > 0}
                 <span class="reading-progress-mini">
-                  <span class="progress-bar-mini" style="width: {progressPct}%; background: {colors.medium};"></span>
+                  <span class="progress-bar-mini" style="width: {pct(path)}%; background: {colors.medium};"></span>
                 </span>
               {/if}
-            </button>
+            </a>
           </li>
         {/each}
       </ol>
+
     {:else}
-      <!-- By Topic View -->
+      <!-- Grammar View -->
       <div class="grammar-header">
         <p class="grammar-desc">Systematic Pāṇinian grammar — organized by topic following traditional prakaraṇa structure.</p>
       </div>
 
       <div class="learning-paths">
         {#each categories as cat}
-          {@const paths = getPathsByCategory(cat.id)}
+          {@const paths = grammarPaths(cat.id)}
           {@const colors = categoryColors[cat.id] || categoryColors.foundation}
-          {@const collapsed = isCollapsed(cat.id)}
-
           {#if paths.length > 0}
             <div class="category">
-              <button
+              <a
+                href="#cat-{cat.id}"
                 class="category-header"
-                onclick={() => toggleCategory(cat.id)}
+                onclick={(e) => { e.preventDefault(); toggleCollapse(cat.id); }}
               >
                 <span class="category-icon" style="background: {colors.medium};"></span>
-                <span class="category-label">{getLabel(cat.id, cat.labelSanskrit)}</span>
+                <span class="category-label">{label(cat.id, cat.san)}</span>
                 <span class="category-english">{cat.label}</span>
                 <span class="category-count">{paths.length}</span>
-                <span class="category-toggle">{collapsed ? '▸' : '▾'}</span>
-              </button>
+                <span class="category-toggle">{collapsed.has(cat.id) ? '▸' : '▾'}</span>
+              </a>
 
-              {#if !collapsed}
+              {#if !collapsed.has(cat.id)}
                 <div class="paths-list">
                   {#each paths as path}
-                    {@const complete = isCompleted(path.id)}
-                    {@const progress = getProgressPercent(path)}
-                    {@const unlocked = arePrereqsMet(path)}
-                    {@const unmet = getUnmetPrereqs(path)}
-
-                    <button
+                    {@const complete = done(path.id)}
+                    {@const unlocked = prereqsMet(path)}
+                    <a
+                      href="/learn/{path.id}"
                       class="path-item"
                       class:completed={complete}
                       class:locked={!unlocked && !complete}
-                      onclick={() => handlePathClick(path)}
+                      title={!unlocked && !complete ? `Requires: ${unmetLabels(path)}` : ''}
                     >
-                      <span class="path-bullet" style="background: {unlocked || complete ? colors.medium : '#d6d3d1'};"></span>
-                      <span class="path-label">{getLabel(path.id, path.label)}</span>
+                      <span class="path-bullet" style="background: {unlocked || complete ? (categoryColors[path.category] || categoryColors.foundation).medium : '#d6d3d1'};"></span>
+                      <span class="path-label">{label(path.id, path.label)}</span>
                       <span class="path-title">{path.title}</span>
-
                       {#if complete}
                         <span class="path-check">✓</span>
-                      {:else if progress > 0}
+                      {:else if pct(path) > 0}
                         <span class="path-progress">
-                          <span class="progress-bar" style="width: {progress}%; background: {colors.medium};"></span>
+                          <span class="progress-bar" style="width: {pct(path)}%; background: {(categoryColors[path.category] || categoryColors.foundation).medium};"></span>
                         </span>
                       {:else if !unlocked}
-                        <span class="path-prereqs" title="Requires: {unmet.map(p => p.title).join(', ')}">
-                          {#each unmet as req}
-                            <span class="prereq-tag">{req.label || req.title}</span>
+                        <span class="path-prereqs">
+                          {#each path.prerequisites.filter(id => !completedPaths.includes(id)) as reqId}
+                            <span class="prereq-tag">{allPaths.find(p => p.id === reqId)?.label || reqId}</span>
                           {/each}
                         </span>
                       {/if}
-
                       <span class="path-difficulty" class:beginner={path.difficulty === 'beginner'} class:intermediate={path.difficulty === 'intermediate'} class:advanced={path.difficulty === 'advanced'}>
                         {path.difficulty === 'beginner' ? '●' : path.difficulty === 'intermediate' ? '●●' : '●●●'}
                       </span>
-                    </button>
+                    </a>
                   {/each}
                 </div>
               {/if}
@@ -291,6 +234,7 @@
         {/each}
       </div>
     {/if}
+
   </div>
 {/if}
 
@@ -339,11 +283,10 @@
     align-items: center;
     gap: 0.1rem;
     padding: 0.5rem 1rem;
-    border: none;
-    background: transparent;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.15s;
+    text-decoration: none;
   }
 
   .mode-btn:hover {
@@ -444,11 +387,9 @@
     gap: 0.75rem;
     width: 100%;
     padding: 0.5rem;
-    background: none;
-    border: none;
     border-radius: 6px;
-    cursor: pointer;
     text-align: left;
+    text-decoration: none;
     transition: background 0.1s;
   }
 
@@ -549,10 +490,9 @@
     width: 100%;
     padding: 0.5rem 0.75rem;
     background: #fafaf9;
-    border: none;
     border-radius: 6px;
-    cursor: pointer;
     text-align: left;
+    text-decoration: none;
     transition: background 0.1s;
   }
 
@@ -604,10 +544,8 @@
     gap: 0.5rem;
     width: 100%;
     padding: 0.4rem 0.75rem 0.4rem 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
     text-align: left;
+    text-decoration: none;
     transition: background 0.1s;
     border-radius: 4px;
   }
@@ -689,15 +627,7 @@
     opacity: 0.5;
   }
 
-  .path-difficulty.beginner {
-    color: #22c55e;
-  }
-
-  .path-difficulty.intermediate {
-    color: #eab308;
-  }
-
-  .path-difficulty.advanced {
-    color: #ef4444;
-  }
+  .path-difficulty.beginner { color: #22c55e; }
+  .path-difficulty.intermediate { color: #eab308; }
+  .path-difficulty.advanced { color: #ef4444; }
 </style>
