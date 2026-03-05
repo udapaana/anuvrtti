@@ -1,3 +1,5 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
   import { loadPathIndex, type PathMeta } from '$lib/content';
   import type { PathCategory, Track } from '$lib/learning/paths';
@@ -40,14 +42,17 @@
     { id: 'samasa',     label: 'Compounds',     san: 'समास' },
   ];
 
-  onMount(async () => {
-    try {
-      allPaths = await loadPathIndex();
-    } catch (e) {
-      console.error('Failed to load path index:', e);
-    }
-    loading = false;
-    rebuildLabels($displayScript);
+  onMount(() => {
+    loadPathIndex()
+      .then(paths => {
+        allPaths = paths;
+        loading = false;
+        rebuildLabels($displayScript);
+      })
+      .catch(e => {
+        console.error('Failed to load path index:', e);
+        loading = false;
+      });
     return displayScript.subscribe(s => rebuildLabels(s));
   });
 
@@ -74,11 +79,13 @@
   function done(id: string) { return completedPaths.includes(id); }
 
   function prereqsMet(path: PathMeta) {
-    return path.prerequisites.every(id => completedPaths.includes(id));
+    const prereqs = Array.isArray(path.prerequisites) ? path.prerequisites : [];
+    return prereqs.every(id => completedPaths.includes(id));
   }
 
   function unmetLabels(path: PathMeta): string {
-    return path.prerequisites
+    const prereqs = Array.isArray(path.prerequisites) ? path.prerequisites : [];
+    return prereqs
       .filter(id => !completedPaths.includes(id))
       .map(id => allPaths.find(p => p.id === id)?.label || id)
       .join(', ');
@@ -217,7 +224,7 @@
                         </span>
                       {:else if !unlocked}
                         <span class="path-prereqs">
-                          {#each path.prerequisites.filter(id => !completedPaths.includes(id)) as reqId}
+                          {#each (Array.isArray(path.prerequisites) ? path.prerequisites : []).filter(id => !completedPaths.includes(id)) as reqId}
                             <span class="prereq-tag">{allPaths.find(p => p.id === reqId)?.label || reqId}</span>
                           {/each}
                         </span>

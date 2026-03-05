@@ -11,7 +11,7 @@
     "description": "Learn the Sanskrit alphabet and sound system.",
     "difficulty": "beginner",
     "estimatedTime": "30 minutes",
-    "prerequisites": "[]",
+    "prerequisites": [],
     "stepCount": 5,
     "order": 1
   },
@@ -761,6 +761,25 @@
     "order": 21
   },
   {
+    "id": "reader-02",
+    "track": "reading",
+    "folder": "reader-02",
+    "trackFolder": "pathana",
+    "title": "Reader: A Subhāṣita",
+    "titleSanskrit": "पाठः २",
+    "label": "पाठः २",
+    "category": "foundation",
+    "description": "Read a complete Sanskrit maxim (subhāṣita) with vowel sandhi and instrumental case.",
+    "difficulty": "beginner",
+    "estimatedTime": "25 minutes",
+    "prerequisites": [
+      "reader-01",
+      "vowel-sandhi"
+    ],
+    "stepCount": 7,
+    "order": 22
+  },
+  {
     "id": "subanta-aa-stems",
     "track": "grammar",
     "folder": "subanta-aa-stems",
@@ -777,6 +796,25 @@
     ],
     "stepCount": 10,
     "order": 22
+  },
+  {
+    "id": "reader-03",
+    "track": "reading",
+    "folder": "reader-03",
+    "trackFolder": "pathana",
+    "title": "Reader: Pañcatantra Narrative",
+    "titleSanskrit": "पाठः ३",
+    "label": "पाठः ३",
+    "category": "foundation",
+    "description": "Read a connected Pañcatantra passage with past tense, sandhi, and compound words.",
+    "difficulty": "intermediate",
+    "estimatedTime": "30 minutes",
+    "prerequisites": [
+      "reader-02",
+      "past-tense"
+    ],
+    "stepCount": 7,
+    "order": 23
   },
   {
     "id": "subanta-i-u-stems",
@@ -1196,64 +1234,8 @@
     "description": "The essential concepts you need before any prakriya. We build understanding step by step.",
     "difficulty": "beginner",
     "estimatedTime": "2-3 hours",
-    "prerequisites": "[]",
+    "prerequisites": [],
     "stepCount": 22,
     "order": 999
-  },
-  {
-    "id": "reader-01",
-    "track": "reading",
-    "folder": "reader-01",
-    "trackFolder": "pathana",
-    "title": "Reader: First Steps",
-    "titleSanskrit": "पाठः १",
-    "label": "पाठः १",
-    "category": "foundation",
-    "description": "Read two complete Sanskrit sentences with full word-by-word analysis. No sandhi, present tense only.",
-    "difficulty": "beginner",
-    "estimatedTime": "20 minutes",
-    "prerequisites": [
-      "nom-acc"
-    ],
-    "stepCount": 5,
-    "order": 21
-  },
-  {
-    "id": "reader-02",
-    "track": "reading",
-    "folder": "reader-02",
-    "trackFolder": "pathana",
-    "title": "Reader: A Subhāṣita",
-    "titleSanskrit": "पाठः २",
-    "label": "पाठः २",
-    "category": "foundation",
-    "description": "Read a complete Sanskrit maxim (subhāṣita) with vowel sandhi and ablative case.",
-    "difficulty": "beginner",
-    "estimatedTime": "25 minutes",
-    "prerequisites": [
-      "reader-01",
-      "vowel-sandhi"
-    ],
-    "stepCount": 7,
-    "order": 22
-  },
-  {
-    "id": "reader-03",
-    "track": "reading",
-    "folder": "reader-03",
-    "trackFolder": "pathana",
-    "title": "Reader: Pañcatantra Narrative",
-    "titleSanskrit": "पाठः ३",
-    "label": "पाठः ३",
-    "category": "foundation",
-    "description": "Read a connected Pañcatantra passage with past tense, sandhi, and compound words.",
-    "difficulty": "intermediate",
-    "estimatedTime": "30 minutes",
-    "prerequisites": [
-      "reader-02",
-      "past-tense"
-    ],
-    "stepCount": 7,
-    "order": 23
   }
 ]

@@ -73,10 +73,11 @@ function parseFrontmatter(content: string): { frontmatter: Record<string, any>; 
       currentKey = keyMatch[1];
       const value = keyMatch[2].trim();
 
-      if (value === '') {
-        // Start of array
-        inArray = true;
+      if (value === '' || value === '[]') {
+        // Start of (possibly empty) array
+        inArray = value === '';
         arrayItems = [];
+        if (value === '[]') frontmatter[currentKey] = [];
       } else {
         // Simple value
         frontmatter[currentKey] = value.replace(/^["']|["']$/g, '');

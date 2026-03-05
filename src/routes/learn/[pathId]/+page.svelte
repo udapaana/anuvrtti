@@ -1,7 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
-  import { onMount } from 'svelte';
   import { browser } from '$app/environment';
   import { loadPath, loadPathIndex, type PathMeta } from '$lib/content';
   import type { LearningPath, LearningStep } from '$lib/learning/paths';
@@ -17,6 +16,8 @@
   import QuizStep from '$lib/components/QuizStep.svelte';
   import { getExampleForSutra, type PrakriyaExample } from '$lib/prakriya-examples';
   import { deriveTinanta, deriveSubanta, type Prakriya } from '$lib/prakriya';
+
+  let { data } = $props();
 
   let path: LearningPath | undefined = $state(undefined);
   let pathLoading = $state(true);
@@ -42,10 +43,25 @@
   let prakriyaLoading = $state(false);
   let showPrakriya = $state(false);
 
-  onMount(async () => {
-    const pathId = $page.params.pathId;
+  // Progress subscription cleanup
+  let unsubscribeProgress: (() => void) | undefined;
 
-    // Load path from markdown content
+  // React to pathId changes (fires on navigation between paths too)
+  $effect(() => {
+    const pathId = data.pathId;
+
+    // Reset state for new path
+    path = undefined;
+    pathLoading = true;
+    currentStepIndex = 0;
+    showCompletion = false;
+    nextPath = null;
+    if (unsubscribeProgress) { unsubscribeProgress(); unsubscribeProgress = undefined; }
+
+    loadPathData(pathId);
+  });
+
+  async function loadPathData(pathId: string) {
     const loadedPath = await loadPath(pathId);
     if (!loadedPath) {
       goto('/learn');
@@ -66,10 +82,9 @@
     }
 
     // Subscribe to progress
-    const unsubscribe = learningProgress.subscribe(p => {
+    unsubscribeProgress = learningProgress.subscribe(p => {
       if (path) {
         completedSteps = p.pathProgress[path.id] || [];
-        // Only update if different to avoid loops
         if (p.currentStep !== currentStepIndex) {
           currentStepIndex = p.currentStep;
         }
@@ -77,12 +92,10 @@
     });
 
     // Load initial step
-    if (path.steps[currentStepIndex]) {
-      loadStepData(path.steps[currentStepIndex]);
+    if (loadedPath.steps[currentStepIndex]) {
+      loadStepData(loadedPath.steps[currentStepIndex]);
     }
-
-    return unsubscribe;
-  });
+  }
 
   // Load sutra data when step changes
   $effect(() => {
