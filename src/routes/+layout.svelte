@@ -8,7 +8,8 @@
   import { displayScript } from '$lib/stores/preferences';
   import type { Script } from '$lib/transliteration';
 
-  let { children } = $props();
+  let { children, data } = $props();
+  let user = $derived(data.user as { login: string; avatar_url: string } | null);
 
   onMount(() => {
     const redirect = sessionStorage.getItem('redirect');
@@ -62,7 +63,22 @@
         </a>
       </nav>
 
-      <ScriptToggle current={$displayScript} onChange={handleScriptChange} />
+      <div class="flex items-center gap-3">
+        <ScriptToggle current={$displayScript} onChange={handleScriptChange} />
+        {#if user}
+          <div class="auth-user">
+            <img src={user.avatar_url} alt={user.login} class="avatar" />
+            <span class="username">{user.login}</span>
+            <form method="POST" action="/auth/logout?returnTo={$page.url.pathname}">
+              <button type="submit" class="logout-btn">Sign out</button>
+            </form>
+          </div>
+        {:else}
+          <a href="/auth/github?returnTo={$page.url.pathname}" class="signin-btn">
+            Sign in with GitHub
+          </a>
+        {/if}
+      </div>
     </div>
   </header>
 
@@ -101,5 +117,56 @@
   .nav-link.active {
     color: #4f46e5;
     background: #eef2ff;
+  }
+
+  .auth-user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: #57534e;
+  }
+
+  .avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 1px solid #e7e5e4;
+  }
+
+  .username {
+    font-weight: 500;
+    color: #1c1917;
+  }
+
+  .logout-btn {
+    font-size: 0.8125rem;
+    color: #78716c;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .logout-btn:hover {
+    color: #44403c;
+  }
+
+  .signin-btn {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #4f46e5;
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 0.375rem;
+    padding: 0.3125rem 0.75rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.1s;
+  }
+  .signin-btn:hover {
+    background: #e0e7ff;
+    border-color: #a5b4fc;
   }
 </style>

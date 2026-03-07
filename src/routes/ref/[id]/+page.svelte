@@ -3,13 +3,16 @@
   import { browser } from '$app/environment';
   import type { Sutra, Commentary, LayeredSutraCommentary, CommentaryDepth } from '$lib/data/types';
   import SutraDisplay from '$lib/components/SutraDisplay.svelte';
+  import CommentaryEditor from '$lib/components/CommentaryEditor.svelte';
   import AnuvrttiGraph from '$lib/components/AnuvrttiGraph.svelte';
   import JargonLookup from '$lib/components/JargonLookup.svelte';
   import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { commentaryDepth as commentaryDepthStore } from '$lib/stores/preferences';
+  import { pendingEdits } from '$lib/stores/edits';
 
   let { data } = $props();
+  let user = $derived(data.user as { login: string; avatar_url: string } | null);
 
   // Learning context: show "return to path" banner if user came from a learning path
   interface LearningContext {
@@ -52,6 +55,42 @@
   function handleDepthChange(d: CommentaryDepth) {
     depth = d;
     commentaryDepthStore.set(d);
+  }
+
+  // Edit mode
+  let editing = $state(false);
+  let showSignInPrompt = $state(false);
+  let submitState: 'idle' | 'loading' | 'done' | 'error' = $state('idle');
+  let prUrl = $state('');
+  let submitError = $state('');
+  let editCount = $derived(Object.keys($pendingEdits).length);
+
+  function handleEditClick() {
+    if (!user) {
+      showSignInPrompt = true;
+      return;
+    }
+    editing = true;
+    showSignInPrompt = false;
+  }
+
+  async function submitEdits() {
+    submitState = 'loading';
+    try {
+      const res = await fetch('/api/suggest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ edits: pendingEdits.snapshot(), note: '' }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const { prUrl: url } = await res.json();
+      prUrl = url;
+      pendingEdits.clear();
+      submitState = 'done';
+    } catch (e) {
+      submitError = e instanceof Error ? e.message : 'Unknown error';
+      submitState = 'error';
+    }
   }
 
   function handleKeydown(e: KeyboardEvent) {
@@ -139,14 +178,40 @@
       </div>
 
       <!-- Main sutra display -->
-      <SutraDisplay
-        {sutra}
-        variant="full"
-        {commentary}
-        {layeredCommentary}
-        {depth}
-        onDepthChange={handleDepthChange}
-      />
+      {#if editing && layeredCommentary && sutra}
+        <CommentaryEditor
+          sutraId={sutra.id}
+          numericId={sutra.numericId}
+          {layeredCommentary}
+          {depth}
+          onDone={() => (editing = false)}
+        />
+      {:else}
+        <SutraDisplay
+          {sutra}
+          variant="full"
+          {commentary}
+          {layeredCommentary}
+          {depth}
+          onDepthChange={handleDepthChange}
+        />
+        {#if layeredCommentary}
+          <div class="edit-row">
+            {#if showSignInPrompt}
+              <span class="sign-in-prompt">
+                <a href="/auth/github?returnTo={sutra?.id ? `/ref/${sutra.id}` : '/ref'}" class="sign-in-link">Sign in with GitHub</a> to suggest edits
+              </span>
+            {:else}
+              <button class="edit-btn" onclick={handleEditClick}>
+                <svg class="edit-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.992.596l-2.502.834a.25.25 0 0 1-.315-.316l.834-2.501c.12-.361.32-.686.596-.993z" />
+                </svg>
+                Suggest edit
+              </button>
+            {/if}
+          </div>
+        {/if}
+      {/if}
 
       <!-- Anuvrtti inheritance graph (advanced view) -->
       {#if depth === 'advanced'}
@@ -163,6 +228,24 @@
           {#each learningPaths as lp}
             <a href="/learn/{lp.pathId}" class="learn-link">{lp.pathTitle}</a>
           {/each}
+        </div>
+      {/if}
+
+      <!-- Pending edits chip (fixed bottom-right) -->
+      {#if editCount > 0 || submitState === 'done'}
+        <div class="pending-chip">
+          {#if submitState === 'done'}
+            <span class="chip-text">PR opened!</span>
+            <a href={prUrl} target="_blank" rel="noopener" class="chip-pr-link">View PR →</a>
+          {:else if submitState === 'error'}
+            <span class="chip-text chip-error">{submitError}</span>
+            <button class="chip-btn" onclick={() => (submitState = 'idle')}>Dismiss</button>
+          {:else}
+            <span class="chip-text">{editCount} edit{editCount === 1 ? '' : 's'} pending</span>
+            <button class="chip-btn" onclick={submitEdits} disabled={submitState === 'loading'}>
+              {submitState === 'loading' ? 'Submitting…' : 'Submit PR'}
+            </button>
+          {/if}
         </div>
       {/if}
 
@@ -370,6 +453,97 @@
   .learn-link:hover {
     background: #bbf7d0;
     text-decoration: underline;
+  }
+
+  .edit-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f5f5f4;
+  }
+
+  .edit-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: #a8a29e;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.1s;
+  }
+  .edit-btn:hover {
+    color: #6366f1;
+  }
+
+  .edit-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .sign-in-prompt {
+    font-size: 0.8125rem;
+    color: #a8a29e;
+  }
+
+  .sign-in-link {
+    color: #6366f1;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .pending-chip {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #4f46e5;
+    color: white;
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+    z-index: 50;
+  }
+
+  .chip-text {
+    font-weight: 500;
+  }
+
+  .chip-error {
+    color: #fca5a5;
+  }
+
+  .chip-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .chip-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .chip-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .chip-pr-link {
+    color: white;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   /* Mobile tools */
