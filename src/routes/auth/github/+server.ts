@@ -7,7 +7,7 @@ export function GET({ url }) {
 
   const params = new URLSearchParams({
     client_id: GITHUB_CLIENT_ID,
-    scope: 'public_repo',
+    scope: 'read:user',
     state: returnTo,
   });
 

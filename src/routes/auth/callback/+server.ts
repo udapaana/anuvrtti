@@ -7,7 +7,7 @@ export async function GET({ url, cookies }) {
 
   if (!code) error(400, 'Missing OAuth code');
 
-  // Exchange code for access token
+  // Exchange code for access token (read:user scope only — no write access)
   const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
     method: 'POST',
     headers: {
@@ -24,7 +24,7 @@ export async function GET({ url, cookies }) {
   const tokenData = await tokenRes.json();
   if (!tokenData.access_token) error(400, 'GitHub OAuth failed');
 
-  // Fetch basic user info
+  // Fetch basic user info (login + avatar only)
   const userRes = await fetch('https://api.github.com/user', {
     headers: {
       Authorization: `Bearer ${tokenData.access_token}`,
@@ -33,17 +33,9 @@ export async function GET({ url, cookies }) {
   });
 
   const user = await userRes.json();
+  if (!user.login) error(400, 'Failed to fetch GitHub user');
 
-  // Store token in httpOnly cookie (never exposed to JS)
-  cookies.set('gh_token', tokenData.access_token, {
-    path: '/',
-    httpOnly: true,
-    secure: true,
-    sameSite: 'lax',
-    maxAge: 60 * 60 * 8, // 8 hours
-  });
-
-  // Store non-sensitive user info in a readable cookie for the UI
+  // Store only identity — no token cookie (user has no write access anyway)
   cookies.set('gh_user', JSON.stringify({ login: user.login, avatar_url: user.avatar_url }), {
     path: '/',
     httpOnly: false,

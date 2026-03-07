@@ -1,4 +1,5 @@
 import { json, error } from '@sveltejs/kit';
+import { GITHUB_APP_TOKEN } from '$env/static/private';
 
 // Public repo — not a secret
 const GITHUB_REPO = 'udapaana/anuvrtti';
@@ -18,11 +19,11 @@ interface SuggestRequest {
 const COMMENTARY_PATH = 'static/data/layered_commentary.json';
 const API = 'https://api.github.com';
 
-async function ghFetch(path: string, token: string, options: RequestInit = {}) {
+async function ghFetch(path: string, options: RequestInit = {}) {
   const res = await fetch(`${API}${path}`, {
     ...options,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${GITHUB_APP_TOKEN}`,
       Accept: 'application/vnd.github+json',
       'X-GitHub-Api-Version': '2022-11-28',
       'Content-Type': 'application/json',
@@ -37,25 +38,26 @@ async function ghFetch(path: string, token: string, options: RequestInit = {}) {
 }
 
 export async function POST({ request, cookies }) {
-  const token = cookies.get('gh_token');
-  if (!token) error(401, 'Not authenticated');
+  // Require the user to be identified (read:user OAuth), but we use our app token for writes
+  const rawUser = cookies.get('gh_user');
+  if (!rawUser) error(401, 'Not authenticated');
+
+  let username: string;
+  try {
+    username = (JSON.parse(rawUser) as { login: string }).login;
+  } catch {
+    error(401, 'Invalid session');
+  }
 
   const { edits, note }: SuggestRequest = await request.json();
   if (!edits || Object.keys(edits).length === 0) error(400, 'No edits provided');
 
-  // Get authenticated user
-  const ghUser = await ghFetch('/user', token);
-  const username: string = ghUser.login;
-
   // Get current main branch SHA
-  const mainRef = await ghFetch(`/repos/${GITHUB_REPO}/git/ref/heads/main`, token);
+  const mainRef = await ghFetch(`/repos/${GITHUB_REPO}/git/ref/heads/main`);
   const mainSha: string = mainRef.object.sha;
 
   // Get commentary file (content + sha for update)
-  const fileInfo = await ghFetch(
-    `/repos/${GITHUB_REPO}/contents/${COMMENTARY_PATH}`,
-    token
-  );
+  const fileInfo = await ghFetch(`/repos/${GITHUB_REPO}/contents/${COMMENTARY_PATH}`);
   const fileSha: string = fileInfo.sha;
   const commentary = JSON.parse(Buffer.from(fileInfo.content, 'base64').toString('utf-8'));
 
@@ -76,7 +78,7 @@ export async function POST({ request, cookies }) {
   const date = new Date().toISOString().slice(0, 10);
   const branch = `edit/${date}-${username}-${shortHash}`;
 
-  await ghFetch(`/repos/${GITHUB_REPO}/git/refs`, token, {
+  await ghFetch(`/repos/${GITHUB_REPO}/git/refs`, {
     method: 'POST',
     body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: mainSha }),
   });
@@ -89,7 +91,7 @@ export async function POST({ request, cookies }) {
 
   const commitMessage = `Commentary edit: ${editedIds.join(', ')} — ${username}${note ? `\n\n${note}` : ''}`;
 
-  await ghFetch(`/repos/${GITHUB_REPO}/contents/${COMMENTARY_PATH}`, token, {
+  await ghFetch(`/repos/${GITHUB_REPO}/contents/${COMMENTARY_PATH}`, {
     method: 'PUT',
     body: JSON.stringify({
       message: commitMessage,
@@ -99,7 +101,7 @@ export async function POST({ request, cookies }) {
     }),
   });
 
-  // Open PR
+  // Open PR — bot opens it, contributor credited in body
   const sutraList = editedIds.length <= 3
     ? editedIds.join(', ')
     : `${editedIds.slice(0, 3).join(', ')} +${editedIds.length - 3} more`;
@@ -108,10 +110,10 @@ export async function POST({ request, cookies }) {
     `**Contributor:** @${username}`,
     `**Sūtras edited:** ${editedIds.join(', ')}`,
     note ? `\n**Note from contributor:**\n${note}` : '',
-    '\n---\n*Submitted via anuvrtti.vercel.app*',
+    '\n---\n*Submitted via anuvrtti.udapaana.in*',
   ].filter(Boolean).join('\n');
 
-  const pr = await ghFetch(`/repos/${GITHUB_REPO}/pulls`, token, {
+  const pr = await ghFetch(`/repos/${GITHUB_REPO}/pulls`, {
     method: 'POST',
     body: JSON.stringify({
       title: `Commentary edit: ${sutraList} — ${username}`,
