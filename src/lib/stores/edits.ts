@@ -6,6 +6,7 @@ export interface PendingEdit {
   numericId: string;    // JSON key e.g. "11001"
   simple?: string;
   standard?: string;
+  advanced?: string;
 }
 
 type EditMap = Record<string, PendingEdit>; // keyed by numericId

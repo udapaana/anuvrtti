@@ -1,17 +1,16 @@
----
-id: dative
-order: 8
-title: "Dative Case"
-titleSanskrit: चतुर्थी
-label: चतुर्थी
-track: reading
-category: subanta
-description: Express purpose and recipients with the fourth case.
-difficulty: beginner
-estimatedTime: 15 minutes
-prerequisites:
-  - instrumental
----
++++
+id = "dative"
+order = 8
+title = "Dative Case"
+titleSanskrit = "चतुर्थी"
+label = "चतुर्थी"
+track = "reading"
+category = "subanta"
+description = "Express purpose and recipients with the fourth case."
+difficulty = "beginner"
+estimatedTime = "15 minutes"
+prerequisites = ["instrumental"]
++++
 
 ## concept - The Dative Case
 

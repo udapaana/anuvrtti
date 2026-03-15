@@ -1,17 +1,16 @@
----
-id: tinganta-lut
-order: 7
-title: लुट् — Periphrastic Future
-titleSanskrit: लुट्लकारः
-label: लुट्
-track: grammar
-category: tinganta
-description: Derive @deva[लुट्] (@term[anadyatana] @term[bhaviṣyat]) forms using @deva[तासि]. Agent-noun based future formation.
-difficulty: intermediate
-estimatedTime: 2 hours
-prerequisites:
-  - tinganta-lrt
----
++++
+id = "tinganta-lut"
+order = 7
+title = "लुट् — Periphrastic Future"
+titleSanskrit = "लुट्लकारः"
+label = "लुट्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[लुट्] (@term[anadyatana] @term[bhaviṣyat]) forms using @deva[तासि]. Agent-noun based future formation."
+difficulty = "intermediate"
+estimatedTime = "2 hours"
+prerequisites = ["tinganta-lrt"]
++++
 
 ## concept - @deva[लुट्] — Periphrastic Future
 

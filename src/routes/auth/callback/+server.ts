@@ -39,7 +39,7 @@ export async function GET({ url, cookies }) {
   cookies.set('gh_user', JSON.stringify({ login: user.login, avatar_url: user.avatar_url }), {
     path: '/',
     httpOnly: false,
-    secure: true,
+    secure: url.hostname !== 'localhost',
     sameSite: 'lax',
     maxAge: 60 * 60 * 8,
   });

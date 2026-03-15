@@ -1,17 +1,16 @@
----
-id: prakriya-gacchati
-order: 52
-title: "Prakriyā: Derive गच्छति"
-titleSanskrit: गच्छतिप्रक्रिया
-label: प्र:गच्छति
-track: grammar
-category: tinganta
-description: Trace the derivation of गच्छति (he goes) — a root that undergoes a special stem substitution before the class affix.
-difficulty: intermediate
-estimatedTime: 45 minutes
-prerequisites:
-  - prakriya-bhavati
----
++++
+id = "prakriya-gacchati"
+order = 53
+title = "Prakriyā: Derive गच्छति"
+titleSanskrit = "गच्छतिप्रक्रिया"
+label = "प्र:गच्छति"
+track = "grammar"
+category = "prakriya"
+description = "Trace the derivation of गच्छति (he goes) — a root that undergoes a special stem substitution before the class affix."
+difficulty = "intermediate"
+estimatedTime = "45 minutes"
+prerequisites = ["prakriya-bhavati"]
++++
 
 ## concept - A Derivation With a Twist
 

@@ -1,18 +1,16 @@
----
-id: kridanta-kta-ktavatu
-order: 15
-title: क्त / क्तवतु — Past Participles
-titleSanskrit: क्तक्तवतू
-label: क्त
-track: grammar
-category: kridanta
-description: Derive @term[niṣṭhā] forms — @deva[क्त] (past passive) and @deva[क्तवतु] (past active). Essential @term[kṛdanta] for completed actions.
-difficulty: intermediate
-estimatedTime: 3 hours
-prerequisites:
-  - tinganta-lat
-  - dhatu-ganas
----
++++
+id = "kridanta-kta-ktavatu"
+order = 15
+title = "क्त / क्तवतु — Past Participles"
+titleSanskrit = "क्तक्तवतू"
+label = "क्त"
+track = "grammar"
+category = "kridanta"
+description = "Derive @term[niṣṭhā] forms — @deva[क्त] (past passive) and @deva[क्तवतु] (past active). Essential @term[kṛdanta] for completed actions."
+difficulty = "intermediate"
+estimatedTime = "3 hours"
+prerequisites = ["tinganta-lat", "dhatu-ganas"]
++++
 
 ## concept - The Most Common @term[kṛdanta] Forms
 

@@ -1,19 +1,16 @@
----
-id: prakarana-tripadi
-order: 65
-title: "Prakaraṇa: The Tripādī"
-titleSanskrit: त्रिपादीप्रकरणम्
-label: त्रिपादी
-track: grammar
-category: advanced
-description: Deep dive into the final three pādas of the Aṣṭādhyāyī — the special domain where rules operate "invisibly."
-difficulty: advanced
-estimatedTime: 2-3 hours
-prerequisites:
-  - introduction
-  - prakarana-sandhi
-  - prakarana-it-samjna
----
++++
+id = "prakarana-tripadi"
+order = 65
+title = "Prakaraṇa: The Tripādī"
+titleSanskrit = "त्रिपादीप्रकरणम्"
+label = "त्रिपादी"
+track = "grammar"
+category = "prakarana"
+description = "Deep dive into the final three pādas of the Aṣṭādhyāyī — the special domain where rules operate \"invisibly.\""
+difficulty = "advanced"
+estimatedTime = "2-3 hours"
+prerequisites = ["introduction", "prakarana-sandhi", "prakarana-it-samjna"]
++++
 
 ## concept - The Special Final Section
 

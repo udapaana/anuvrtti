@@ -5,6 +5,7 @@
  * No compilation step needed - just add markdown files.
  */
 
+import { parse as parseToml } from 'smol-toml';
 import type {
   LearningPath,
   LearningStep,
@@ -67,62 +68,24 @@ export async function getPathsByCategory(
 }
 
 /**
- * Parse YAML-like frontmatter from markdown
+ * Parse TOML frontmatter (+++ delimiters) from markdown
  */
 function parseFrontmatter(content: string): {
   frontmatter: Record<string, any>;
   body: string;
 } {
-  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  const match = content.match(/^\+\+\+\n([\s\S]*?)\n\+\+\+\n([\s\S]*)$/);
   if (!match) {
-    throw new Error("Invalid markdown format: missing frontmatter");
+    throw new Error("Invalid markdown format: missing +++ TOML frontmatter");
   }
 
-  const [, yaml, body] = match;
-  const frontmatter: Record<string, any> = {
-    prerequisites: [],
-    track: "grammar",
-    category: "foundation",
-  };
+  const [, toml, body] = match;
+  const frontmatter = parseToml(toml) as Record<string, any>;
 
-  let inPrereqs = false;
-  for (const line of yaml.split("\n")) {
-    if (line.startsWith("  - ")) {
-      if (inPrereqs) {
-        frontmatter.prerequisites.push(line.replace("  - ", "").trim());
-      }
-      continue;
-    }
-
-    inPrereqs = false;
-    const colonIndex = line.indexOf(":");
-    if (colonIndex === -1) continue;
-
-    const key = line.slice(0, colonIndex).trim();
-    const value = line.slice(colonIndex + 1).trim();
-
-    if (key === "prerequisites") {
-      inPrereqs = true;
-      if (value.startsWith("[") && value.endsWith("]")) {
-        frontmatter.prerequisites = value
-          .slice(1, -1)
-          .split(",")
-          .map((s) => s.trim())
-          .filter(Boolean);
-        inPrereqs = false;
-      }
-    } else {
-      // Strip surrounding quotes from values
-      let cleanValue = value;
-      if (
-        (value.startsWith('"') && value.endsWith('"')) ||
-        (value.startsWith("'") && value.endsWith("'"))
-      ) {
-        cleanValue = value.slice(1, -1);
-      }
-      frontmatter[key] = cleanValue;
-    }
-  }
+  // Ensure defaults
+  if (!frontmatter.prerequisites) frontmatter.prerequisites = [];
+  if (!frontmatter.track) frontmatter.track = "grammar";
+  if (!frontmatter.category) frontmatter.category = "foundation";
 
   return { frontmatter, body };
 }

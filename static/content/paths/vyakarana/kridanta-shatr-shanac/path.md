@@ -1,18 +1,16 @@
----
-id: kridanta-shatr-shanac
-order: 14
-title: शतृ / शानच् — Present Participles
-titleSanskrit: शतृशानचौ
-label: शतृ
-track: grammar
-category: kridanta
-description: Derive @term[sat] (@deva[शतृ] and @deva[शानच्]) @term[kṛdanta]. Verbal adjectives for ongoing action.
-difficulty: intermediate
-estimatedTime: 3 hours
-prerequisites:
-  - tinganta-lat
-  - dhatu-ganas
----
++++
+id = "kridanta-shatr-shanac"
+order = 14
+title = "शतृ / शानच् — Present Participles"
+titleSanskrit = "शतृशानचौ"
+label = "शतृ"
+track = "grammar"
+category = "kridanta"
+description = "Derive @term[sat] (@deva[शतृ] and @deva[शानच्]) @term[kṛdanta]. Verbal adjectives for ongoing action."
+difficulty = "intermediate"
+estimatedTime = "3 hours"
+prerequisites = ["tinganta-lat", "dhatu-ganas"]
++++
 
 ## concept - @term[sat] — Present Participles
 

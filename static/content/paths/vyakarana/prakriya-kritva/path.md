@@ -1,18 +1,16 @@
----
-id: prakriya-kritva
-order: 51
-title: "Prakriyā: Derive कृत्वा"
-titleSanskrit: कृत्वाप्रक्रिया
-label: प्र:कृत्वा
-track: grammar
-category: kridanta
-description: Trace the derivation of कृत्वा "having done" — the absolutive form showing kṛt suffix attachment.
-difficulty: intermediate
-estimatedTime: 30 minutes
-prerequisites:
-  - prakarana-it-samjna
-  - kridanta-ktva
----
++++
+id = "prakriya-kritva"
+order = 51
+title = "Prakriyā: Derive कृत्वा"
+titleSanskrit = "कृत्वाप्रक्रिया"
+label = "प्र:कृत्वा"
+track = "grammar"
+category = "prakriya"
+description = "Trace the derivation of कृत्वा \"having done\" — the absolutive form showing kṛt suffix attachment."
+difficulty = "intermediate"
+estimatedTime = "30 minutes"
+prerequisites = ["prakarana-it-samjna", "kridanta-ktva"]
++++
 
 ## concept - The Absolutive: "Having Done X..."
 

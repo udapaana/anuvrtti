@@ -1,18 +1,16 @@
----
-id: prakarana-karaka
-order: 64
-title: "Prakaraṇa: The Kāraka System"
-titleSanskrit: कारकप्रकरणम्
-label: कारक
-track: grammar
-category: foundation
-description: Deep dive into Pāṇini's semantic role system — the kārakas that connect meaning to case endings.
-difficulty: intermediate
-estimatedTime: 2-3 hours
-prerequisites:
-  - introduction
-  - subanta-a-stem
----
++++
+id = "prakarana-karaka"
+order = 64
+title = "Prakaraṇa: The Kāraka System"
+titleSanskrit = "कारकप्रकरणम्"
+label = "कारक"
+track = "grammar"
+category = "prakarana"
+description = "Deep dive into Pāṇini's semantic role system — the kārakas that connect meaning to case endings."
+difficulty = "intermediate"
+estimatedTime = "2-3 hours"
+prerequisites = ["introduction", "subanta-a-stem"]
++++
 
 ## concept - The Bridge Between Meaning and Form
 

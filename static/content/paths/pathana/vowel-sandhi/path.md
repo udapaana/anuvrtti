@@ -1,17 +1,16 @@
----
-id: vowel-sandhi
-order: 14
-title: "Vowel Sandhi"
-titleSanskrit: स्वरसन्धिः
-label: स्वरसन्धिः
-track: reading
-category: sandhi
-description: Understand how vowels merge at word boundaries.
-difficulty: beginner
-estimatedTime: 20 minutes
-prerequisites:
-  - locative
----
++++
+id = "vowel-sandhi"
+order = 14
+title = "Vowel Sandhi"
+titleSanskrit = "स्वरसन्धिः"
+label = "स्वरसन्धिः"
+track = "reading"
+category = "sandhi"
+description = "Understand how vowels merge at word boundaries."
+difficulty = "beginner"
+estimatedTime = "20 minutes"
+prerequisites = ["locative"]
++++
 
 ## concept - What is Sandhi?
 

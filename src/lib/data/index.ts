@@ -1,3 +1,4 @@
+import { parse as parseToml } from 'smol-toml';
 import { parseSutras, numericToDisplayId, displayToNumericId } from "./parser";
 import type { Sutra, Commentary, LayeredSutraCommentary } from "./types";
 
@@ -10,8 +11,16 @@ let englishShortCache: Record<string, string> | null = null;
 let englishFullCache: Record<string, string> | null = null;
 let englishRewrittenCache: Record<string, string> | null = null;
 let kashikaEnglishCache: Record<string, string> | null = null;
-let layeredCommentaryCache: Record<string, LayeredSutraCommentary> | null =
-  null;
+// Per-sūtra commentary cache (keyed by numericId)
+const layeredCommentaryCache = new Map<string, LayeredSutraCommentary>();
+
+/** Convert a numeric sūtra ID to its TOML file path e.g. "11001" → "/data/commentary/1/1/1.toml" */
+function commentaryPath(numericId: string): string {
+  const a = numericId[0];
+  const p = numericId[1];
+  const s = parseInt(numericId.slice(2));
+  return `/data/commentary/${a}/${p}/${s}.toml`;
+}
 
 /** Fetch JSON from static data folder */
 async function fetchJson<T>(filename: string): Promise<T> {
@@ -109,20 +118,25 @@ async function loadKashikaEnglish(): Promise<Record<string, string>> {
   return kashikaEnglishCache;
 }
 
-/** Load layered commentary (learner-focused, three depth levels) */
-async function loadLayeredCommentary(): Promise<
-  Record<string, LayeredSutraCommentary>
-> {
-  if (layeredCommentaryCache) return layeredCommentaryCache;
-  try {
-    layeredCommentaryCache = await fetchJson<
-      Record<string, LayeredSutraCommentary>
-    >("layered_commentary.json");
-  } catch {
-    // File may not exist yet
-    layeredCommentaryCache = {};
+/** Load layered commentary for a single sūtra from its TOML file */
+async function loadLayeredCommentaryForSutra(
+  numericId: string,
+): Promise<LayeredSutraCommentary | undefined> {
+  if (layeredCommentaryCache.has(numericId)) {
+    return layeredCommentaryCache.get(numericId);
   }
-  return layeredCommentaryCache;
+  try {
+    const res = await fetch(commentaryPath(numericId));
+    if (!res.ok) return undefined;
+    const toml = parseToml(await res.text()) as unknown as {
+      en: { simple: string; standard: string; advanced: string };
+    };
+    const entry: LayeredSutraCommentary = { en: toml.en };
+    layeredCommentaryCache.set(numericId, entry);
+    return entry;
+  } catch {
+    return undefined;
+  }
 }
 
 /** Strip @deva[...] markers from text, keeping just the content */
@@ -165,8 +179,7 @@ export async function getCommentary(numericId: string): Promise<Commentary> {
 export async function getLayeredCommentary(
   numericId: string,
 ): Promise<LayeredSutraCommentary | undefined> {
-  const layered = await loadLayeredCommentary();
-  return layered[numericId];
+  return loadLayeredCommentaryForSutra(numericId);
 }
 
 /** Search sūtras by text */

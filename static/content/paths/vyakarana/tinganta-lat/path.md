@@ -1,17 +1,16 @@
----
-id: tinganta-lat
-order: 1
-title: लट् — Present
-titleSanskrit: लट्लकारः
-label: लट्
-track: grammar
-category: tinganta
-description: Derive @deva[लट्] (present tense) verb forms — the most common @deva[तिङन्त] forms you'll encounter.
-difficulty: beginner
-estimatedTime: 3-4 hours
-prerequisites:
-  - introduction
----
++++
+id = "tinganta-lat"
+order = 1
+title = "लट् — Present"
+titleSanskrit = "लट्लकारः"
+label = "लट्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[लट्] (present tense) verb forms — the most common @deva[तिङन्त] forms you'll encounter."
+difficulty = "beginner"
+estimatedTime = "3-4 hours"
+prerequisites = ["introduction"]
++++
 
 ## concept - What You'll Learn
 

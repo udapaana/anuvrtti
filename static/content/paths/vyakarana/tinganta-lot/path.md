@@ -1,17 +1,16 @@
----
-id: tinganta-lot
-order: 2
-title: लोट् — Imperative
-titleSanskrit: लोट्लकारः
-label: लोट्
-track: grammar
-category: tinganta
-description: Derive @deva[लोट्] forms for commands, invitations, and blessings.
-difficulty: beginner
-estimatedTime: 2-3 hours
-prerequisites:
-  - tinganta-lat
----
++++
+id = "tinganta-lot"
+order = 2
+title = "लोट् — Imperative"
+titleSanskrit = "लोट्लकारः"
+label = "लोट्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[लोट्] forms for commands, invitations, and blessings."
+difficulty = "beginner"
+estimatedTime = "2-3 hours"
+prerequisites = ["tinganta-lat"]
++++
 
 ## concept - Commands, Requests, and Blessings
 

@@ -1,17 +1,16 @@
----
-id: read-1-3
-order: 113
-title: "Read Adhyāya 1, Pāda 3"
-titleSanskrit: प्रथमाध्यायस्य तृतीयपादः
-label: 1.3 पाठः
-track: grammar
-category: foundation
-description: "The it-saṃjñā rules: how marker letters in affixes encode grammatical information, and the voice assignment (parasmaipada/ātmanepada) rules."
-difficulty: intermediate
-estimatedTime: 7-10 hours
-prerequisites:
-  - introduction
----
++++
+id = "read-1-3"
+order = 113
+title = "Read Adhyāya 1, Pāda 3"
+titleSanskrit = "प्रथमाध्यायस्य तृतीयपादः"
+label = "1.3 पाठः"
+track = "grammar"
+category = "prakarana"
+description = "The it-saṃjñā rules: how marker letters in affixes encode grammatical information, and the voice assignment (parasmaipada/ātmanepada) rules."
+difficulty = "intermediate"
+estimatedTime = "7-10 hours"
+prerequisites = ["introduction"]
++++
 
 ## concept - Overview: Adhyāya 1, Pāda 3
 

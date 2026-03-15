@@ -1,17 +1,16 @@
----
-id: subanta-consonant-stems
-order: 24
-title: हलन्त — Consonant Stem Declension
-titleSanskrit: हलन्तम्
-label: हलन्तम्
-track: grammar
-category: subanta
-description: Decline @term[hal]-ending @term[prātipadika] — complex patterns with @term[sandhi] and strong/weak alternation.
-difficulty: advanced
-estimatedTime: 4 hours
-prerequisites:
-  - subanta-i-u-stems
----
++++
+id = "subanta-consonant-stems"
+order = 24
+title = "हलन्त — Consonant Stem Declension"
+titleSanskrit = "हलन्तम्"
+label = "हलन्तम्"
+track = "grammar"
+category = "subanta"
+description = "Decline @term[hal]-ending @term[prātipadika] — complex patterns with @term[sandhi] and strong/weak alternation."
+difficulty = "advanced"
+estimatedTime = "4 hours"
+prerequisites = ["subanta-i-u-stems"]
++++
 
 ## concept - @deva[हलन्त] @term[prātipadika]
 

@@ -1,18 +1,16 @@
----
-id: tinganta-lrng
-order: 11
-title: लृङ् — Conditional
-titleSanskrit: लृङ्लकारः
-label: लृङ्
-track: grammar
-category: tinganta
-description: Derive @deva[लृङ्] forms expressing "would have" — unrealized conditions and hypotheticals.
-difficulty: intermediate
-estimatedTime: 2 hours
-prerequisites:
-  - tinganta-lrt
-  - tinganta-lang
----
++++
+id = "tinganta-lrng"
+order = 11
+title = "लृङ् — Conditional"
+titleSanskrit = "लृङ्लकारः"
+label = "लृङ्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[लृङ्] forms expressing \"would have\" — unrealized conditions and hypotheticals."
+difficulty = "intermediate"
+estimatedTime = "2 hours"
+prerequisites = ["tinganta-lrt", "tinganta-lang"]
++++
 
 ## concept - @deva[लृङ्] — The Conditional
 

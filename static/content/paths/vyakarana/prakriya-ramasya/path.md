@@ -1,17 +1,16 @@
----
-id: prakriya-ramasya
-order: 51
-title: "Prakriyā: Derive रामस्य"
-titleSanskrit: रामस्यप्रक्रिया
-label: प्र:रामस्य
-track: grammar
-category: subanta
-description: Trace the derivation of रामस्य (of Rāma) from stem to finished word. See how nominal forms are built.
-difficulty: intermediate
-estimatedTime: 30 minutes
-prerequisites:
-  - subanta-pratipadika
----
++++
+id = "prakriya-ramasya"
+order = 56
+title = "Prakriyā: Derive रामस्य"
+titleSanskrit = "रामस्यप्रक्रिया"
+label = "प्र:रामस्य"
+track = "grammar"
+category = "prakriya"
+description = "Trace the derivation of रामस्य (of Rāma) from stem to finished word. See how nominal forms are built."
+difficulty = "intermediate"
+estimatedTime = "30 minutes"
+prerequisites = ["subanta-pratipadika"]
++++
 
 ## concept - Deriving a Noun Form
 

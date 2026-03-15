@@ -1,17 +1,16 @@
----
-id: tinganta-lit
-order: 8
-title: लिट् — Perfect
-titleSanskrit: लिट्लकारः
-label: लिट्
-track: grammar
-category: tinganta
-description: Derive @deva[लिट्] (@term[parokṣa]) forms with @term[abhyāsa] (reduplication). Unique doubling rules and special endings.
-difficulty: intermediate
-estimatedTime: 3-4 hours
-prerequisites:
-  - tinganta-lrt
----
++++
+id = "tinganta-lit"
+order = 8
+title = "लिट् — Perfect"
+titleSanskrit = "लिट्लकारः"
+label = "लिट्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[लिट्] (@term[parokṣa]) forms with @term[abhyāsa] (reduplication). Unique doubling rules and special endings."
+difficulty = "intermediate"
+estimatedTime = "3-4 hours"
+prerequisites = ["tinganta-lrt"]
++++
 
 ## concept - @deva[लिट्] — The Perfect
 

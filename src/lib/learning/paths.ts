@@ -15,7 +15,9 @@ export type PathCategory =
   | "kridanta"
   | "sandhi"
   | "karaka"
-  | "samasa";
+  | "samasa"
+  | "prakarana"
+  | "prakriya";
 
 export interface QuizOption {
   text: string;

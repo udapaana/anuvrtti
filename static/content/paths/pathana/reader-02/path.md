@@ -1,18 +1,16 @@
----
-id: reader-02
-order: 22
-title: "Reader: A Subhāṣita"
-titleSanskrit: पाठः २
-label: पाठः २
-track: reading
-category: foundation
-description: Read a complete Sanskrit maxim (subhāṣita) with vowel sandhi and instrumental case.
-difficulty: beginner
-estimatedTime: 25 minutes
-prerequisites:
-  - reader-01
-  - vowel-sandhi
----
++++
+id = "reader-02"
+order = 22
+title = "Reader: A Subhāṣita"
+titleSanskrit = "पाठः २"
+label = "पाठः २"
+track = "reading"
+category = "foundation"
+description = "Read a complete Sanskrit maxim (subhāṣita) with vowel sandhi and instrumental case."
+difficulty = "beginner"
+estimatedTime = "25 minutes"
+prerequisites = ["reader-01", "vowel-sandhi"]
++++
 
 ## reading - विद्या ददाति विनयम्
 

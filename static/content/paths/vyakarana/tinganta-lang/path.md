@@ -1,17 +1,16 @@
----
-id: tinganta-lang
-order: 3
-title: लङ् — Imperfect
-titleSanskrit: लङ्लकारः
-label: लङ्
-track: grammar
-category: tinganta
-description: Derive @deva[लङ्] (@term[anadyatana] @term[bhūta]) forms with the @term[āgama] @deva[अट्].
-difficulty: beginner
-estimatedTime: 2-3 hours
-prerequisites:
-  - tinganta-lat
----
++++
+id = "tinganta-lang"
+order = 3
+title = "लङ् — Imperfect"
+titleSanskrit = "लङ्लकारः"
+label = "लङ्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[लङ्] (@term[anadyatana] @term[bhūta]) forms with the @term[āgama] @deva[अट्]."
+difficulty = "beginner"
+estimatedTime = "2-3 hours"
+prerequisites = ["tinganta-lat"]
++++
 
 ## concept - @deva[लङ्] — The Narrative Past
 

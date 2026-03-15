@@ -1,17 +1,16 @@
----
-id: practice-3
-order: 9
-title: "Reading Practice: Subhāṣitas"
-titleSanskrit: सुभाषितम्
-label: अभ्यासः ३
-track: reading
-category: foundation
-description: Read wisdom verses using all four cases learned so far.
-difficulty: beginner
-estimatedTime: 20 minutes
-prerequisites:
-  - dative
----
++++
+id = "practice-3"
+order = 9
+title = "Reading Practice: Subhāṣitas"
+titleSanskrit = "सुभाषितम्"
+label = "अभ्यासः ३"
+track = "reading"
+category = "foundation"
+description = "Read wisdom verses using all four cases learned so far."
+difficulty = "beginner"
+estimatedTime = "20 minutes"
+prerequisites = ["dative"]
++++
 
 ## reading - Learning Gives Humility
 

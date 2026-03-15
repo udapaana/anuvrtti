@@ -1,16 +1,16 @@
----
-id: introduction
-order: 0
-title: Introduction to Paninian Grammar
-titleSanskrit: व्याकरणप्रवेशः
-label: प्रवेशः
-track: grammar
-category: foundation
-description: The essential concepts you need before any prakriya. We build understanding step by step.
-difficulty: beginner
-estimatedTime: 2-3 hours
-prerequisites: []
----
++++
+id = "introduction"
+order = 0
+title = "Introduction to Paninian Grammar"
+titleSanskrit = "व्याकरणप्रवेशः"
+label = "प्रवेशः"
+track = "grammar"
+category = "foundation"
+description = "The essential concepts you need before any prakriya. We build understanding step by step."
+difficulty = "beginner"
+estimatedTime = "2-3 hours"
+prerequisites = []
++++
 
 ## concept - Welcome to Paninian Grammar
 

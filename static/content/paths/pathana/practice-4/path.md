@@ -1,17 +1,16 @@
----
-id: practice-4
-order: 11
-title: "Reading Practice: Narrative"
-titleSanskrit: कथा
-label: अभ्यासः ४
-track: reading
-category: foundation
-description: Read continuous narrative using past tense.
-difficulty: beginner
-estimatedTime: 20 minutes
-prerequisites:
-  - past-tense
----
++++
+id = "practice-4"
+order = 11
+title = "Reading Practice: Narrative"
+titleSanskrit = "कथा"
+label = "अभ्यासः ४"
+track = "reading"
+category = "foundation"
+description = "Read continuous narrative using past tense."
+difficulty = "beginner"
+estimatedTime = "20 minutes"
+prerequisites = ["past-tense"]
++++
 
 ## reading - The Lion and Bull Story Begins
 

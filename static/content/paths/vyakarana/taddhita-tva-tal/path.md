@@ -1,17 +1,16 @@
----
-id: taddhita-tva-tal
-order: 18
-title: त्व / तल् — Abstract Noun Suffixes
-titleSanskrit: त्वतलौ
-label: त्वतलौ
-track: grammar
-category: taddhita
-description: Derive abstract @term[taddhita] with @deva[त्व] and @deva[तल्]. Create "-ness/-ity" forms like @deva[गुरुत्व], @deva[गुरुता].
-difficulty: intermediate
-estimatedTime: 2 hours
-prerequisites:
-  - introduction
----
++++
+id = "taddhita-tva-tal"
+order = 18
+title = "त्व / तल् — Abstract Noun Suffixes"
+titleSanskrit = "त्वतलौ"
+label = "त्वतलौ"
+track = "grammar"
+category = "taddhita"
+description = "Derive abstract @term[taddhita] with @deva[त्व] and @deva[तल्]. Create \"-ness/-ity\" forms like @deva[गुरुत्व], @deva[गुरुता]."
+difficulty = "intermediate"
+estimatedTime = "2 hours"
+prerequisites = ["introduction"]
++++
 
 ## concept - Abstract Nouns in Sanskrit
 

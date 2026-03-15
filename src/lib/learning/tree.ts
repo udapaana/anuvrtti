@@ -76,6 +76,18 @@ export const posCategories: Array<{
     labelSanskrit: "समास",
     description: "Compound formation",
   },
+  {
+    id: "prakarana",
+    label: "Deep Dives",
+    labelSanskrit: "प्रकरण",
+    description: "Systematic topic explorations",
+  },
+  {
+    id: "prakriya",
+    label: "Derivations",
+    labelSanskrit: "प्रक्रिया",
+    description: "Step-by-step rule application",
+  },
 ];
 
 /**
@@ -133,6 +145,18 @@ export const categoryColors: Record<
     light: "#ffedd5", // orange-100
     medium: "#f97316", // orange-500
     dark: "#c2410c", // orange-700
+  },
+  prakarana: {
+    base: "teal",
+    light: "#ccfbf1", // teal-100
+    medium: "#14b8a6", // teal-500
+    dark: "#0f766e", // teal-700
+  },
+  prakriya: {
+    base: "fuchsia",
+    light: "#fae8ff", // fuchsia-100
+    medium: "#d946ef", // fuchsia-500
+    dark: "#a21caf", // fuchsia-700
   },
 };
 

@@ -1,17 +1,16 @@
----
-id: final-practice
-order: 20
-title: "Reading Practice: Extended Passage"
-titleSanskrit: समाप्तिः
-label: समाप्तिः
-track: reading
-category: foundation
-description: Apply everything you've learned to read an extended passage.
-difficulty: intermediate
-estimatedTime: 30 minutes
-prerequisites:
-  - visarga-sandhi
----
++++
+id = "final-practice"
+order = 20
+title = "Reading Practice: Extended Passage"
+titleSanskrit = "समाप्तिः"
+label = "समाप्तिः"
+track = "reading"
+category = "foundation"
+description = "Apply everything you've learned to read an extended passage."
+difficulty = "intermediate"
+estimatedTime = "30 minutes"
+prerequisites = ["visarga-sandhi"]
++++
 
 ## concept - What You've Learned
 

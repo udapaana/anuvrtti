@@ -1,18 +1,16 @@
----
-id: prakriya-akarot
-order: 54
-title: "Prakriyā: Derive अकरोत्"
-titleSanskrit: अकरोत्प्रक्रिया
-label: प्र:अकरोत्
-track: grammar
-category: tinganta
-description: Trace the derivation of अकरोत् "he did" — the imperfect showing augment and secondary endings.
-difficulty: intermediate
-estimatedTime: 45 minutes
-prerequisites:
-  - prakriya-bhavati
-  - tinganta-lan
----
++++
+id = "prakriya-akarot"
+order = 54
+title = "Prakriyā: Derive अकरोत्"
+titleSanskrit = "अकरोत्प्रक्रिया"
+label = "प्र:अकरोत्"
+track = "grammar"
+category = "prakriya"
+description = "Trace the derivation of अकरोत् \"he did\" — the imperfect showing augment and secondary endings."
+difficulty = "intermediate"
+estimatedTime = "45 minutes"
+prerequisites = ["prakriya-bhavati", "tinganta-lan"]
++++
 
 ## concept - The Imperfect: Witnessed Past
 

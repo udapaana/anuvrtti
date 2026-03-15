@@ -1,18 +1,16 @@
----
-id: prakarana-sandhi
-order: 61
-title: "Prakaraṇa: The Sandhi System"
-titleSanskrit: सन्धिप्रकरणम्
-label: सन्धिः
-track: grammar
-category: foundation
-description: Deep dive into Pāṇini's sound-combination rules. How @term[ac] and @term[hal] interact at morpheme and word boundaries.
-difficulty: intermediate
-estimatedTime: 2-3 hours
-prerequisites:
-  - sandhi-vowel
-  - sandhi-consonant
----
++++
+id = "prakarana-sandhi"
+order = 61
+title = "Prakaraṇa: The Sandhi System"
+titleSanskrit = "सन्धिप्रकरणम्"
+label = "सन्धिः"
+track = "grammar"
+category = "prakarana"
+description = "Deep dive into Pāṇini's sound-combination rules. How @term[ac] and @term[hal] interact at morpheme and word boundaries."
+difficulty = "intermediate"
+estimatedTime = "2-3 hours"
+prerequisites = ["sandhi-vowel", "sandhi-consonant"]
++++
 
 ## concept - The Architecture of Sandhi
 

@@ -1,17 +1,16 @@
----
-id: read-1-1
-order: 111
-title: "Read Adhyāya 1, Pāda 1"
-titleSanskrit: प्रथमाध्यायस्य प्रथमपादः
-label: 1.1 पाठः
-track: grammar
-category: foundation
-description: "Sequential reading of the saṃjñā-paribhāṣā foundation: vowel grades, sound classes, and the core definitions that all later rules depend on."
-difficulty: intermediate
-estimatedTime: 5-8 hours
-prerequisites:
-  - introduction
----
++++
+id = "read-1-1"
+order = 111
+title = "Read Adhyāya 1, Pāda 1"
+titleSanskrit = "प्रथमाध्यायस्य प्रथमपादः"
+label = "1.1 पाठः"
+track = "grammar"
+category = "prakarana"
+description = "Sequential reading of the saṃjñā-paribhāṣā foundation: vowel grades, sound classes, and the core definitions that all later rules depend on."
+difficulty = "intermediate"
+estimatedTime = "5-8 hours"
+prerequisites = ["introduction"]
++++
 
 ## concept - Overview: Adhyāya 1, Pāda 1
 

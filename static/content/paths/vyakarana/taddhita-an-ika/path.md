@@ -1,17 +1,16 @@
----
-id: taddhita-an-ika
-order: 19
-title: अण् / ठक् — Relational Suffixes
-titleSanskrit: अण्ठक्
-label: अण्ठक्
-track: grammar
-category: taddhita
-description: Derive relational @term[taddhita] expressing @term[apatya], origin, or connection. Patronymics, place-derivatives.
-difficulty: intermediate
-estimatedTime: 2-3 hours
-prerequisites:
-  - introduction
----
++++
+id = "taddhita-an-ika"
+order = 19
+title = "अण् / ठक् — Relational Suffixes"
+titleSanskrit = "अण्ठक्"
+label = "अण्ठक्"
+track = "grammar"
+category = "taddhita"
+description = "Derive relational @term[taddhita] expressing @term[apatya], origin, or connection. Patronymics, place-derivatives."
+difficulty = "intermediate"
+estimatedTime = "2-3 hours"
+prerequisites = ["introduction"]
++++
 
 ## concept - Relational Derivation with @deva[अण्] and @deva[ठक्]
 

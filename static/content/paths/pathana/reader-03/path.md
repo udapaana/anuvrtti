@@ -1,18 +1,16 @@
----
-id: reader-03
-order: 23
-title: "Reader: Pañcatantra Narrative"
-titleSanskrit: पाठः ३
-label: पाठः ३
-track: reading
-category: foundation
-description: Read a connected Pañcatantra passage with past tense, sandhi, and compound words.
-difficulty: intermediate
-estimatedTime: 30 minutes
-prerequisites:
-  - reader-02
-  - past-tense
----
++++
+id = "reader-03"
+order = 23
+title = "Reader: Pañcatantra Narrative"
+titleSanskrit = "पाठः ३"
+label = "पाठः ३"
+track = "reading"
+category = "foundation"
+description = "Read a connected Pañcatantra passage with past tense, sandhi, and compound words."
+difficulty = "intermediate"
+estimatedTime = "30 minutes"
+prerequisites = ["reader-02", "past-tense"]
++++
 
 ## reading - अस्ति मगधदेशे
 

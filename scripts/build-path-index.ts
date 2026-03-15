@@ -9,6 +9,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+import { parse as parseToml } from 'smol-toml';
 
 const CONTENT_DIR = path.join(process.cwd(), 'static/content/paths');
 const INDEX_OUTPUT = path.join(process.cwd(), 'static/content/paths-index.json');
@@ -36,61 +37,23 @@ interface SutraPathMapping {
 }
 
 function parseFrontmatter(content: string): { frontmatter: Record<string, any>; body: string } {
-  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!match) {
+  // Support +++ TOML frontmatter
+  const tomlMatch = content.match(/^\+\+\+\n([\s\S]*?)\n\+\+\+\n([\s\S]*)$/);
+  if (tomlMatch) {
+    const frontmatter = parseToml(tomlMatch[1]) as Record<string, any>;
+    return { frontmatter, body: tomlMatch[2] };
+  }
+  // Fallback: --- YAML frontmatter (legacy)
+  const yamlMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!yamlMatch) {
     throw new Error('Invalid markdown format: missing frontmatter');
   }
-
-  const yamlContent = match[1];
-  const body = match[2];
-
-  // Simple YAML parser for our use case
   const frontmatter: Record<string, any> = {};
-  let currentKey = '';
-  let inArray = false;
-  let arrayItems: string[] = [];
-
-  for (const line of yamlContent.split('\n')) {
-    if (line.trim() === '') continue;
-
-    // Check for array item
-    if (line.match(/^\s+-\s+/)) {
-      const value = line.replace(/^\s+-\s+/, '').trim();
-      arrayItems.push(value);
-      continue;
-    }
-
-    // If we were collecting array items, save them
-    if (inArray && currentKey) {
-      frontmatter[currentKey] = arrayItems;
-      arrayItems = [];
-      inArray = false;
-    }
-
-    // Check for key: value
+  for (const line of yamlMatch[1].split('\n')) {
     const keyMatch = line.match(/^(\w+):\s*(.*)$/);
-    if (keyMatch) {
-      currentKey = keyMatch[1];
-      const value = keyMatch[2].trim();
-
-      if (value === '' || value === '[]') {
-        // Start of (possibly empty) array
-        inArray = value === '';
-        arrayItems = [];
-        if (value === '[]') frontmatter[currentKey] = [];
-      } else {
-        // Simple value
-        frontmatter[currentKey] = value.replace(/^["']|["']$/g, '');
-      }
-    }
+    if (keyMatch) frontmatter[keyMatch[1]] = keyMatch[2].trim().replace(/^["']|["']$/g, '');
   }
-
-  // Handle trailing array
-  if (inArray && currentKey) {
-    frontmatter[currentKey] = arrayItems;
-  }
-
-  return { frontmatter, body };
+  return { frontmatter, body: yamlMatch[2] };
 }
 
 function countSteps(body: string): number {

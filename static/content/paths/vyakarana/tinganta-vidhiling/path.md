@@ -1,17 +1,16 @@
----
-id: tinganta-vidhiling
-order: 4
-title: विधिलिङ् — Optative
-titleSanskrit: विधिलिङ्
-label: विधिलिङ्
-track: grammar
-category: tinganta
-description: Derive @deva[विधिलिङ्] forms expressing commands, wishes, and possibilities.
-difficulty: beginner
-estimatedTime: 2-3 hours
-prerequisites:
-  - tinganta-lat
----
++++
+id = "tinganta-vidhiling"
+order = 4
+title = "विधिलिङ् — Optative"
+titleSanskrit = "विधिलिङ्"
+label = "विधिलिङ्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[विधिलिङ्] forms expressing commands, wishes, and possibilities."
+difficulty = "beginner"
+estimatedTime = "2-3 hours"
+prerequisites = ["tinganta-lat"]
++++
 
 ## concept - @deva[विधिलिङ्] — The Optative
 

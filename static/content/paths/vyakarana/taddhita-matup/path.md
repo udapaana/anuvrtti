@@ -1,17 +1,16 @@
----
-id: taddhita-matup
-order: 17
-title: मतुप् / वतुप् — Possessive Suffixes
-titleSanskrit: मतुब्वतुबौ
-label: मतुब्वतुबौ
-track: grammar
-category: taddhita
-description: Derive possessive @term[taddhita] with @deva[मतुप्] and @deva[वतुप्]. "Having X" — @deva[धीमत्], @deva[बलवत्].
-difficulty: intermediate
-estimatedTime: 2-3 hours
-prerequisites:
-  - introduction
----
++++
+id = "taddhita-matup"
+order = 17
+title = "मतुप् / वतुप् — Possessive Suffixes"
+titleSanskrit = "मतुब्वतुबौ"
+label = "मतुब्वतुबौ"
+track = "grammar"
+category = "taddhita"
+description = "Derive possessive @term[taddhita] with @deva[मतुप्] and @deva[वतुप्]. \"Having X\" — @deva[धीमत्], @deva[बलवत्]."
+difficulty = "intermediate"
+estimatedTime = "2-3 hours"
+prerequisites = ["introduction"]
++++
 
 ## concept - Possessive Derivation with @deva[मतुप्]
 

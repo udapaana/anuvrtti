@@ -1,17 +1,16 @@
----
-id: nom-acc
-order: 5
-title: "Nominative & Accusative"
-titleSanskrit: प्रथमाद्वितीये
-label: प्रथमा
-track: reading
-category: subanta
-description: Master the two most common cases — subject and object.
-difficulty: beginner
-estimatedTime: 20 minutes
-prerequisites:
-  - more-verbs
----
++++
+id = "nom-acc"
+order = 5
+title = "Nominative & Accusative"
+titleSanskrit = "प्रथमाद्वितीये"
+label = "प्रथमा"
+track = "reading"
+category = "subanta"
+description = "Master the two most common cases — subject and object."
+difficulty = "beginner"
+estimatedTime = "20 minutes"
+prerequisites = ["more-verbs"]
++++
 
 ## concept - The Two Essential Cases
 

@@ -1,17 +1,16 @@
----
-id: visarga-sandhi
-order: 19
-title: "Visarga Sandhi"
-titleSanskrit: विसर्गसन्धिः
-label: विसर्गः
-track: reading
-category: sandhi
-description: How the visarga changes before different sounds.
-difficulty: intermediate
-estimatedTime: 20 minutes
-prerequisites:
-  - participles
----
++++
+id = "visarga-sandhi"
+order = 19
+title = "Visarga Sandhi"
+titleSanskrit = "विसर्गसन्धिः"
+label = "विसर्गः"
+track = "reading"
+category = "sandhi"
+description = "How the visarga changes before different sounds."
+difficulty = "intermediate"
+estimatedTime = "20 minutes"
+prerequisites = ["participles"]
++++
 
 ## concept - The Visarga (ः)
 

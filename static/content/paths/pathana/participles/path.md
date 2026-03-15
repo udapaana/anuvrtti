@@ -1,17 +1,16 @@
----
-id: participles
-order: 18
-title: "Participles"
-titleSanskrit: कृदन्तम्
-label: कृदन्तम्
-track: reading
-category: kridanta
-description: Verbal adjectives that describe actions completed or ongoing.
-difficulty: intermediate
-estimatedTime: 20 minutes
-prerequisites:
-  - practice-6
----
++++
+id = "participles"
+order = 18
+title = "Participles"
+titleSanskrit = "कृदन्तम्"
+label = "कृदन्तम्"
+track = "reading"
+category = "kridanta"
+description = "Verbal adjectives that describe actions completed or ongoing."
+difficulty = "intermediate"
+estimatedTime = "20 minutes"
+prerequisites = ["practice-6"]
++++
 
 ## concept - What Are Participles?
 

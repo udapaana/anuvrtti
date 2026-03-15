@@ -1,17 +1,16 @@
----
-id: samasa-intro
-order: 26
-title: समासः — Compound Formation
-titleSanskrit: समासप्रकरणम्
-label: समासः
-track: grammar
-category: samasa
-description: Learn the four main @term[samāsa] types. How @term[pada] combine to form new semantic units.
-difficulty: intermediate
-estimatedTime: 3-4 hours
-prerequisites:
-  - karaka-intro
----
++++
+id = "samasa-intro"
+order = 26
+title = "समासः — Compound Formation"
+titleSanskrit = "समासप्रकरणम्"
+label = "समासः"
+track = "grammar"
+category = "samasa"
+description = "Learn the four main @term[samāsa] types. How @term[pada] combine to form new semantic units."
+difficulty = "intermediate"
+estimatedTime = "3-4 hours"
+prerequisites = ["karaka-intro"]
++++
 
 ## concept - Sanskrit Compounds (@deva[समास])
 

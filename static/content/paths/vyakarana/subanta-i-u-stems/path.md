@@ -1,17 +1,16 @@
----
-id: subanta-i-u-stems
-order: 23
-title: इकारान्त / उकारान्त — I/U-stem Declension
-titleSanskrit: इकारोकारान्तम्
-label: इकारोकारान्तम्
-track: grammar
-category: subanta
-description: Decline @deva[इ]/[@deva[उ]-stems (@deva[अग्नि], @deva[गुरु]). Important patterns with @term[guṇa] and @term[yaṇ] changes.
-difficulty: intermediate
-estimatedTime: 3 hours
-prerequisites:
-  - subanta-pratipadika
----
++++
+id = "subanta-i-u-stems"
+order = 23
+title = "इकारान्त / उकारान्त — I/U-stem Declension"
+titleSanskrit = "इकारोकारान्तम्"
+label = "इकारोकारान्तम्"
+track = "grammar"
+category = "subanta"
+description = "Decline @deva[इ]/[@deva[उ]-stems (@deva[अग्नि], @deva[गुरु]). Important patterns with @term[guṇa] and @term[yaṇ] changes."
+difficulty = "intermediate"
+estimatedTime = "3 hours"
+prerequisites = ["subanta-pratipadika"]
++++
 
 ## concept - @deva[इकारान्त] and @deva[उकारान्त] Stems
 

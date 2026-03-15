@@ -12,27 +12,31 @@
 
   let { sutraId, numericId, layeredCommentary, depth, onDone }: Props = $props();
 
-  // Start with current values; only the active depth tier is shown by default
   let simpleText = $state(layeredCommentary.en.simple);
   let standardText = $state(layeredCommentary.en.standard);
+  let advancedText = $state(layeredCommentary.en.advanced);
   let showAllTiers = $state(false);
-  let note = $state('');
 
-  // Show the currently active tier; "Edit all tiers" reveals the rest
-  let activeTier: 'simple' | 'standard' = $derived(
-    depth === 'advanced' ? 'standard' : (depth as 'simple' | 'standard')
+  let activeTier: 'simple' | 'standard' | 'advanced' = $derived(
+    depth as 'simple' | 'standard' | 'advanced'
   );
 
   function save() {
-    const edit = {
+    const edit: { sutraId: string; numericId: string; simple?: string; standard?: string; advanced?: string } = {
       sutraId,
       numericId,
-      ...(showAllTiers
-        ? { simple: simpleText, standard: standardText }
-        : activeTier === 'simple'
-          ? { simple: simpleText }
-          : { standard: standardText }),
     };
+    if (showAllTiers) {
+      edit.simple = simpleText;
+      edit.standard = standardText;
+      edit.advanced = advancedText;
+    } else if (activeTier === 'simple') {
+      edit.simple = simpleText;
+    } else if (activeTier === 'standard') {
+      edit.standard = standardText;
+    } else {
+      edit.advanced = advancedText;
+    }
     pendingEdits.upsert(edit);
     onDone();
   }
@@ -46,43 +50,27 @@
   {#if showAllTiers || activeTier === 'simple'}
     <div class="tier">
       <label class="tier-label" for="edit-simple">Simple</label>
-      <textarea
-        id="edit-simple"
-        class="tier-textarea"
-        bind:value={simpleText}
-        rows={4}
-        spellcheck
-      ></textarea>
+      <textarea id="edit-simple" class="tier-textarea" bind:value={simpleText} rows={4} spellcheck></textarea>
     </div>
   {/if}
 
   {#if showAllTiers || activeTier === 'standard'}
     <div class="tier">
       <label class="tier-label" for="edit-standard">Standard</label>
-      <textarea
-        id="edit-standard"
-        class="tier-textarea"
-        bind:value={standardText}
-        rows={5}
-        spellcheck
-      ></textarea>
+      <textarea id="edit-standard" class="tier-textarea" bind:value={standardText} rows={5} spellcheck></textarea>
+    </div>
+  {/if}
+
+  {#if showAllTiers || activeTier === 'advanced'}
+    <div class="tier">
+      <label class="tier-label" for="edit-advanced">Advanced</label>
+      <textarea id="edit-advanced" class="tier-textarea" bind:value={advancedText} rows={6} spellcheck></textarea>
     </div>
   {/if}
 
   {#if !showAllTiers}
-    <button class="expand-btn" onclick={() => (showAllTiers = true)}>
-      Edit all tiers
-    </button>
+    <button class="expand-btn" onclick={() => (showAllTiers = true)}>Edit all tiers</button>
   {/if}
-
-  <div class="note-row">
-    <input
-      class="note-input"
-      type="text"
-      placeholder="Optional note for the reviewer…"
-      bind:value={note}
-    />
-  </div>
 
   <div class="actions">
     <button class="btn-cancel" onclick={cancel}>Cancel</button>
@@ -116,7 +104,6 @@
   }
 
   .tier-textarea {
-    /* Match commentary prose exactly */
     font-family: inherit;
     font-size: 0.9375rem;
     line-height: 1.625;
@@ -130,7 +117,6 @@
     outline: none;
     transition: border-color 0.1s;
   }
-
   .tier-textarea:focus {
     border-color: #6366f1;
     box-shadow: 0 0 0 2px #eef2ff;
@@ -147,29 +133,7 @@
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .expand-btn:hover {
-    color: #4338ca;
-  }
-
-  .note-row {
-    margin-top: 0.25rem;
-  }
-
-  .note-input {
-    font-family: inherit;
-    font-size: 0.875rem;
-    color: #44403c;
-    background: white;
-    border: 1px solid #e7e5e4;
-    border-radius: 0.375rem;
-    padding: 0.375rem 0.625rem;
-    width: 100%;
-    outline: none;
-    transition: border-color 0.1s;
-  }
-  .note-input:focus {
-    border-color: #6366f1;
-  }
+  .expand-btn:hover { color: #4338ca; }
 
   .actions {
     display: flex;
@@ -187,10 +151,7 @@
     cursor: pointer;
     transition: all 0.1s;
   }
-  .btn-cancel:hover {
-    border-color: #d6d3d1;
-    color: #44403c;
-  }
+  .btn-cancel:hover { border-color: #d6d3d1; color: #44403c; }
 
   .btn-save {
     font-size: 0.875rem;
@@ -202,7 +163,5 @@
     cursor: pointer;
     transition: background 0.1s;
   }
-  .btn-save:hover {
-    background: #4338ca;
-  }
+  .btn-save:hover { background: #4338ca; }
 </style>

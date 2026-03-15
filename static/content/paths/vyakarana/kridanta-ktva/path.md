@@ -1,18 +1,16 @@
----
-id: kridanta-ktva
-order: 12
-title: क्त्वा / ल्यप् — Absolutive
-titleSanskrit: क्त्वान्तम्
-label: क्त्वा
-track: grammar
-category: kridanta
-description: Derive @deva[क्त्वान्त] forms (having done X). @deva[क्त्वा] and @deva[ल्यप्] create @term[avyaya] forms expressing prior action.
-difficulty: intermediate
-estimatedTime: 2-3 hours
-prerequisites:
-  - tinganta-lat
-  - dhatu-ganas
----
++++
+id = "kridanta-ktva"
+order = 12
+title = "क्त्वा / ल्यप् — Absolutive"
+titleSanskrit = "क्त्वान्तम्"
+label = "क्त्वा"
+track = "grammar"
+category = "kridanta"
+description = "Derive @deva[क्त्वान्त] forms (having done X). @deva[क्त्वा] and @deva[ल्यप्] create @term[avyaya] forms expressing prior action."
+difficulty = "intermediate"
+estimatedTime = "2-3 hours"
+prerequisites = ["tinganta-lat", "dhatu-ganas"]
++++
 
 ## concept - "Having Done X, He Did Y"
 

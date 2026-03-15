@@ -1,17 +1,16 @@
----
-id: practice-2
-order: 6
-title: "Reading Practice: Narrative"
-titleSanskrit: अभ्यासः
-label: अभ्यासः २
-track: reading
-category: foundation
-description: Read narrative prose with subjects, objects, and verbs.
-difficulty: beginner
-estimatedTime: 20 minutes
-prerequisites:
-  - nom-acc
----
++++
+id = "practice-2"
+order = 6
+title = "Reading Practice: Narrative"
+titleSanskrit = "अभ्यासः"
+label = "अभ्यासः २"
+track = "reading"
+category = "foundation"
+description = "Read narrative prose with subjects, objects, and verbs."
+difficulty = "beginner"
+estimatedTime = "20 minutes"
+prerequisites = ["nom-acc"]
++++
 
 ## reading - The Foolish Princes
 

@@ -13,6 +13,8 @@
     depth?: CommentaryDepth;
     fallbackCommentary?: string;
     onDepthChange?: (depth: CommentaryDepth) => void;
+    onEdit?: () => void;
+    user?: { login: string; avatar_url: string } | null;
     href?: string;
     onClick?: (id: string) => void;
   }
@@ -25,6 +27,8 @@
     depth = 'standard',
     fallbackCommentary,
     onDepthChange,
+    onEdit,
+    user = null,
     href,
     onClick
   }: Props = $props();
@@ -141,17 +145,34 @@
       <section class="section commentary-section">
         {#if onDepthChange}
           <div class="depth-toggle">
-            <span class="section-label" style="margin: 0;">Explanation Depth</span>
-            <div class="depth-buttons">
-              {#each (['simple', 'standard', 'advanced'] as const) as d}
-                <button
-                  onclick={() => setDepth(d)}
-                  class="depth-btn"
-                  class:active={depth === d}
-                >
-                  {depthLabels[d]}
-                </button>
-              {/each}
+            <span class="section-label" style="margin: 0;">Explanation</span>
+            <div class="depth-toggle-right">
+              <div class="depth-buttons">
+                {#each (['simple', 'standard', 'advanced'] as const) as d}
+                  <button
+                    onclick={() => setDepth(d)}
+                    class="depth-btn"
+                    class:active={depth === d}
+                  >
+                    {depthLabels[d]}
+                  </button>
+                {/each}
+              </div>
+              {#if onEdit}
+                {#if user}
+                  <button class="edit-btn" onclick={onEdit} title="Suggest edit">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.992.596l-2.502.834a.25.25 0 0 1-.315-.316l.834-2.501c.12-.361.32-.686.596-.993z" />
+                    </svg>
+                  </button>
+                {:else}
+                  <a href="/auth/github?returnTo=/ref/{sutra.id}" class="edit-btn edit-btn-signin" title="Sign in to suggest edits">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.992.596l-2.502.834a.25.25 0 0 1-.315-.316l.834-2.501c.12-.361.32-.686.596-.993z" />
+                    </svg>
+                  </a>
+                {/if}
+              {/if}
             </div>
           </div>
         {/if}
@@ -384,6 +405,41 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.75rem;
+  }
+  .depth-toggle-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .edit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #a8a29e;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 0.25rem;
+    transition: color 0.1s, background 0.1s;
+    text-decoration: none;
+  }
+  .edit-btn:hover {
+    color: #6366f1;
+    background: #eef2ff;
+  }
+  .edit-btn svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  .edit-btn-signin {
+    color: #d6d3d1;
+  }
+  .edit-btn-signin:hover {
+    color: #a8a29e;
+    background: #f5f5f4;
   }
   .depth-buttons {
     display: flex;

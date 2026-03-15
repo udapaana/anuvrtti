@@ -1,17 +1,16 @@
----
-id: subanta-aa-stems
-order: 22
-title: आकारान्त — Ā-stem Declension
-titleSanskrit: आकारान्तस्त्री
-label: आकारान्तस्त्री
-track: grammar
-category: subanta
-description: Decline @term[strīliṅga] @deva[आ]-stems like @deva[सेना], @deva[विद्या], @deva[कन्या]. The primary feminine pattern.
-difficulty: beginner
-estimatedTime: 2-3 hours
-prerequisites:
-  - subanta-pratipadika
----
++++
+id = "subanta-aa-stems"
+order = 22
+title = "आकारान्त — Ā-stem Declension"
+titleSanskrit = "आकारान्तस्त्री"
+label = "आकारान्तस्त्री"
+track = "grammar"
+category = "subanta"
+description = "Decline @term[strīliṅga] @deva[आ]-stems like @deva[सेना], @deva[विद्या], @deva[कन्या]. The primary feminine pattern."
+difficulty = "beginner"
+estimatedTime = "2-3 hours"
+prerequisites = ["subanta-pratipadika"]
++++
 
 ## concept - @term[strīliṅga] @deva[आ]-stems
 

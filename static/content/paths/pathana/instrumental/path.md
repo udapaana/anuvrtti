@@ -1,17 +1,16 @@
----
-id: instrumental
-order: 7
-title: "Instrumental Case"
-titleSanskrit: तृतीया
-label: तृतीया
-track: reading
-category: subanta
-description: Express "by means of" or "with" using the third case.
-difficulty: beginner
-estimatedTime: 20 minutes
-prerequisites:
-  - practice-2
----
++++
+id = "instrumental"
+order = 7
+title = "Instrumental Case"
+titleSanskrit = "तृतीया"
+label = "तृतीया"
+track = "reading"
+category = "subanta"
+description = "Express \"by means of\" or \"with\" using the third case."
+difficulty = "beginner"
+estimatedTime = "20 minutes"
+prerequisites = ["practice-2"]
++++
 
 ## concept - The Instrumental Case
 

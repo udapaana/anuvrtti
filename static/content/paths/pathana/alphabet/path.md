@@ -1,16 +1,16 @@
----
-id: alphabet
-order: 1
-title: "Alphabet & Sounds"
-titleSanskrit: वर्णमाला
-label: वर्णाः
-track: reading
-category: foundation
-description: Learn the Sanskrit alphabet and sound system.
-difficulty: beginner
-estimatedTime: 30 minutes
-prerequisites: []
----
++++
+id = "alphabet"
+order = 1
+title = "Alphabet & Sounds"
+titleSanskrit = "वर्णमाला"
+label = "वर्णाः"
+track = "reading"
+category = "foundation"
+description = "Learn the Sanskrit alphabet and sound system."
+difficulty = "beginner"
+estimatedTime = "30 minutes"
+prerequisites = []
++++
 
 ## concept - The Sanskrit Alphabet
 

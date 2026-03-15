@@ -1,17 +1,16 @@
----
-id: locative
-order: 13
-title: "Locative Case"
-titleSanskrit: सप्तमी
-label: सप्तमी
-track: reading
-category: subanta
-description: Express location and time with the seventh case.
-difficulty: beginner
-estimatedTime: 15 minutes
-prerequisites:
-  - gen-abl
----
++++
+id = "locative"
+order = 13
+title = "Locative Case"
+titleSanskrit = "सप्तमी"
+label = "सप्तमी"
+track = "reading"
+category = "subanta"
+description = "Express location and time with the seventh case."
+difficulty = "beginner"
+estimatedTime = "15 minutes"
+prerequisites = ["gen-abl"]
++++
 
 ## concept - The Locative Case
 

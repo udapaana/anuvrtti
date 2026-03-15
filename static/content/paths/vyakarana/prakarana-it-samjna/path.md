@@ -1,17 +1,16 @@
----
-id: prakarana-it-samjna
-order: 60
-title: "Prakaraṇa: The It-saṃjñā System"
-titleSanskrit: इत्संज्ञाप्रकरणम्
-label: इत्संज्ञा
-track: grammar
-category: foundation
-description: Deep dive into how Pāṇini's marker letters (it) encode grammatical information. Eight rules that power the entire system.
-difficulty: beginner
-estimatedTime: 1-2 hours
-prerequisites:
-  - introduction
----
++++
+id = "prakarana-it-samjna"
+order = 60
+title = "Prakaraṇa: The It-saṃjñā System"
+titleSanskrit = "इत्संज्ञाप्रकरणम्"
+label = "इत्संज्ञा"
+track = "grammar"
+category = "prakarana"
+description = "Deep dive into how Pāṇini's marker letters (it) encode grammatical information. Eight rules that power the entire system."
+difficulty = "beginner"
+estimatedTime = "1-2 hours"
+prerequisites = ["introduction"]
++++
 
 ## concept - The Hidden Layer of the Ashtadhyayi
 

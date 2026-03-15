@@ -1,17 +1,16 @@
----
-id: more-verbs
-order: 4
-title: "More Present Tense"
-titleSanskrit: लट्लकारः
-label: क्रियाः
-track: reading
-category: tinganta
-description: Learn all three persons and numbers for present tense verbs.
-difficulty: beginner
-estimatedTime: 25 minutes
-prerequisites:
-  - practice-1
----
++++
+id = "more-verbs"
+order = 4
+title = "More Present Tense"
+titleSanskrit = "लट्लकारः"
+label = "क्रियाः"
+track = "reading"
+category = "tinganta"
+description = "Learn all three persons and numbers for present tense verbs."
+difficulty = "beginner"
+estimatedTime = "25 minutes"
+prerequisites = ["practice-1"]
++++
 
 ## concept - Person and Number
 

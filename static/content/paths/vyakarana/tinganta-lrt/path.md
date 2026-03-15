@@ -1,18 +1,16 @@
----
-id: tinganta-lrt
-order: 6
-title: लृट् — Simple Future
-titleSanskrit: लृट्लकारः
-label: लृट्
-track: grammar
-category: tinganta
-description: Derive @deva[लृट्] (@term[bhaviṣyat]) forms. The first @term[ārdhadhātuka] @deva[लकार] — different @term[vikaraṇa] and ending patterns.
-difficulty: intermediate
-estimatedTime: 2-3 hours
-prerequisites:
-  - tinganta-lat
-  - dhatu-ganas
----
++++
+id = "tinganta-lrt"
+order = 6
+title = "लृट् — Simple Future"
+titleSanskrit = "लृट्लकारः"
+label = "लृट्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[लृट्] (@term[bhaviṣyat]) forms. The first @term[ārdhadhātuka] @deva[लकार] — different @term[vikaraṇa] and ending patterns."
+difficulty = "intermediate"
+estimatedTime = "2-3 hours"
+prerequisites = ["tinganta-lat", "dhatu-ganas"]
++++
 
 ## concept - @deva[लृट्] — Simple Future
 

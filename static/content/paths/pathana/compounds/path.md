@@ -1,17 +1,16 @@
----
-id: compounds
-order: 16
-title: "Simple Compounds"
-titleSanskrit: समासः
-label: समासः
-track: reading
-category: samasa
-description: Recognize and split common compound types.
-difficulty: intermediate
-estimatedTime: 20 minutes
-prerequisites:
-  - practice-5
----
++++
+id = "compounds"
+order = 16
+title = "Simple Compounds"
+titleSanskrit = "समासः"
+label = "समासः"
+track = "reading"
+category = "samasa"
+description = "Recognize and split common compound types."
+difficulty = "intermediate"
+estimatedTime = "20 minutes"
+prerequisites = ["practice-5"]
++++
 
 ## concept - Why Compounds?
 

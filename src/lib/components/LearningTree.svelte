@@ -40,6 +40,8 @@
     { id: 'taddhita',   label: 'Derivation',    san: 'तद्धित' },
     { id: 'sandhi',     label: 'Sandhi',        san: 'सन्धि' },
     { id: 'samasa',     label: 'Compounds',     san: 'समास' },
+    { id: 'prakarana',  label: 'Deep Dives',    san: 'प्रकरण' },
+    { id: 'prakriya',   label: 'Derivations',   san: 'प्रक्रिया' },
   ];
 
   onMount(() => {
@@ -96,9 +98,13 @@
   let nextIdx = $derived(readingPaths.findIndex(p => !done(p.id)));
 
   function grammarPaths(cat: PathCategory) {
+    const diffRank = { beginner: 0, intermediate: 1, advanced: 2 };
     return allPaths
       .filter(p => p.track === 'grammar' && p.category === cat)
-      .sort((a, b) => ({ beginner: 0, intermediate: 1, advanced: 2 }[a.difficulty] - { beginner: 0, intermediate: 1, advanced: 2 }[b.difficulty]));
+      .sort((a, b) => {
+        const d = diffRank[a.difficulty] - diffRank[b.difficulty];
+        return d !== 0 ? d : a.order - b.order;
+      });
   }
 
   function toggleCollapse(id: string) {
@@ -166,7 +172,7 @@
                 <span class="reading-label">{label(path.id, path.label)}</span>
                 <span class="reading-title">{path.title}</span>
               </div>
-              <span class="reading-category" style="color: {colors.medium};">{path.category}</span>
+              <span class="reading-category" style="color: {colors.medium};">{label(path.category, path.category)}</span>
               {#if !complete && pct(path) > 0}
                 <span class="reading-progress-mini">
                   <span class="progress-bar-mini" style="width: {pct(path)}%; background: {colors.medium};"></span>

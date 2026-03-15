@@ -1,17 +1,16 @@
----
-id: tinganta-lung
-order: 9
-title: लुङ् — Aorist
-titleSanskrit: लुङ्लकारः
-label: लुङ्
-track: grammar
-category: tinganta
-description: Derive @deva[लुङ्] (@term[bhūta]) forms. Seven aorist varieties — the most complex @deva[लकार].
-difficulty: advanced
-estimatedTime: 4-5 hours
-prerequisites:
-  - tinganta-lit
----
++++
+id = "tinganta-lung"
+order = 9
+title = "लुङ् — Aorist"
+titleSanskrit = "लुङ्लकारः"
+label = "लुङ्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[लुङ्] (@term[bhūta]) forms. Seven aorist varieties — the most complex @deva[लकार]."
+difficulty = "advanced"
+estimatedTime = "4-5 hours"
+prerequisites = ["tinganta-lit"]
++++
 
 ## concept - @deva[लुङ्] — The Aorist
 

@@ -1,17 +1,16 @@
----
-id: subanta-pratipadika
-order: 20
-title: प्रातिपदिक — Nominal Stems
-titleSanskrit: प्रातिपदिकम्
-label: प्रातिपदिकम्
-track: grammar
-category: subanta
-description: Understand @term[prātipadika] before adding @term[sup]. What qualifies as a @term[prātipadika] and how stems are classified.
-difficulty: beginner
-estimatedTime: 2 hours
-prerequisites:
-  - introduction
----
++++
+id = "subanta-pratipadika"
+order = 20
+title = "प्रातिपदिक — Nominal Stems"
+titleSanskrit = "प्रातिपदिकम्"
+label = "प्रातिपदिकम्"
+track = "grammar"
+category = "subanta"
+description = "Understand @term[prātipadika] before adding @term[sup]. What qualifies as a @term[prātipadika] and how stems are classified."
+difficulty = "beginner"
+estimatedTime = "2 hours"
+prerequisites = ["introduction"]
++++
 
 ## concept - What is a @term[prātipadika]?
 

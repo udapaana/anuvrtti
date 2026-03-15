@@ -1,17 +1,16 @@
----
-id: tinganta-ashirling
-order: 10
-title: आशीर्लिङ् — Benedictive
-titleSanskrit: आशीर्लिङ्
-label: आशीर्लिङ्
-track: grammar
-category: tinganta
-description: Derive @deva[आशीर्लिङ्] forms expressing blessings and wishes. This special @deva[लिङ्] has distinctive @term[ārdhadhātuka] formation.
-difficulty: intermediate
-estimatedTime: 2 hours
-prerequisites:
-  - tinganta-vidhiling
----
++++
+id = "tinganta-ashirling"
+order = 10
+title = "आशीर्लिङ् — Benedictive"
+titleSanskrit = "आशीर्लिङ्"
+label = "आशीर्लिङ्"
+track = "grammar"
+category = "tinganta"
+description = "Derive @deva[आशीर्लिङ्] forms expressing blessings and wishes. This special @deva[लिङ्] has distinctive @term[ārdhadhātuka] formation."
+difficulty = "intermediate"
+estimatedTime = "2 hours"
+prerequisites = ["tinganta-vidhiling"]
++++
 
 ## concept - @deva[आशीर्लिङ्] — The Benedictive
 

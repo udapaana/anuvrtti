@@ -1,18 +1,16 @@
----
-id: kridanta-tumun
-order: 13
-title: तुमुन् — Infinitive
-titleSanskrit: तुमन्तम्
-label: तुमुन्
-track: grammar
-category: kridanta
-description: Derive @deva[तुमन्त] (infinitive) forms. The @deva[तुमुन्] @term[pratyaya] creates purpose expressions.
-difficulty: intermediate
-estimatedTime: 2 hours
-prerequisites:
-  - tinganta-lat
-  - dhatu-ganas
----
++++
+id = "kridanta-tumun"
+order = 13
+title = "तुमुन् — Infinitive"
+titleSanskrit = "तुमन्तम्"
+label = "तुमुन्"
+track = "grammar"
+category = "kridanta"
+description = "Derive @deva[तुमन्त] (infinitive) forms. The @deva[तुमुन्] @term[pratyaya] creates purpose expressions."
+difficulty = "intermediate"
+estimatedTime = "2 hours"
+prerequisites = ["tinganta-lat", "dhatu-ganas"]
++++
 
 ## concept - @deva[तुमन्त] — The Infinitive
 

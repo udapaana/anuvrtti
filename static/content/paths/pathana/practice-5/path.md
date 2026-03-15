@@ -1,17 +1,16 @@
----
-id: practice-5
-order: 15
-title: "Reading Practice: Verses"
-titleSanskrit: पद्यानि
-label: अभ्यासः ५
-track: reading
-category: foundation
-description: Read Sanskrit verses, splitting sandhi as you go.
-difficulty: intermediate
-estimatedTime: 25 minutes
-prerequisites:
-  - vowel-sandhi
----
++++
+id = "practice-5"
+order = 15
+title = "Reading Practice: Verses"
+titleSanskrit = "पद्यानि"
+label = "अभ्यासः ५"
+track = "reading"
+category = "foundation"
+description = "Read Sanskrit verses, splitting sandhi as you go."
+difficulty = "intermediate"
+estimatedTime = "25 minutes"
+prerequisites = ["vowel-sandhi"]
++++
 
 ## reading - Time Devours All
 

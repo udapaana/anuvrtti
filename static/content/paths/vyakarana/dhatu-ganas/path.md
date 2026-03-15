@@ -1,17 +1,16 @@
----
-id: dhatu-ganas
-order: 5
-title: दशगणाः — The Ten Verb Classes
-titleSanskrit: दशगणाः
-label: गणाः
-track: grammar
-category: tinganta
-description: Learn how the 10 @term[dhātu] classes (@term[gaṇa]) affect verb conjugation. Each @term[gaṇa] has its own @term[vikaraṇa].
-difficulty: intermediate
-estimatedTime: 3-4 hours
-prerequisites:
-  - tinganta-lat
----
++++
+id = "dhatu-ganas"
+order = 5
+title = "दशगणाः — The Ten Verb Classes"
+titleSanskrit = "दशगणाः"
+label = "गणाः"
+track = "grammar"
+category = "tinganta"
+description = "Learn how the 10 @term[dhātu] classes (@term[gaṇa]) affect verb conjugation. Each @term[gaṇa] has its own @term[vikaraṇa]."
+difficulty = "intermediate"
+estimatedTime = "3-4 hours"
+prerequisites = ["tinganta-lat"]
++++
 
 ## concept - Why Ten Classes?
 

@@ -1,18 +1,16 @@
----
-id: kridanta-tavya-aniya
-order: 16
-title: तव्य / अनीय / य — Gerundives
-titleSanskrit: तव्यानीययाः
-label: तव्य
-track: grammar
-category: kridanta
-description: Derive @term[kṛtya] (@deva[तव्य], @deva[अनीय], @deva[य]) expressing necessity or obligation. Essential for @term[vidhi].
-difficulty: intermediate
-estimatedTime: 2-3 hours
-prerequisites:
-  - tinganta-lat
-  - dhatu-ganas
----
++++
+id = "kridanta-tavya-aniya"
+order = 16
+title = "तव्य / अनीय / य — Gerundives"
+titleSanskrit = "तव्यानीययाः"
+label = "तव्य"
+track = "grammar"
+category = "kridanta"
+description = "Derive @term[kṛtya] (@deva[तव्य], @deva[अनीय], @deva[य]) expressing necessity or obligation. Essential for @term[vidhi]."
+difficulty = "intermediate"
+estimatedTime = "2-3 hours"
+prerequisites = ["tinganta-lat", "dhatu-ganas"]
++++
 
 ## concept - @term[kṛtya] — "To Be Done"
 

@@ -1,17 +1,16 @@
----
-id: sandhi-vowel
-order: 27
-title: अच्सन्धि — Vowel Sandhi
-titleSanskrit: अच्सन्धिः
-label: स्वरसन्धिः
-track: grammar
-category: sandhi
-description: Master @term[ac] (vowel) @term[sandhi] rules. When @term[svara] meet at @term[pada] boundaries, these rules apply.
-difficulty: intermediate
-estimatedTime: 3 hours
-prerequisites:
-  - introduction
----
++++
+id = "sandhi-vowel"
+order = 27
+title = "अच्सन्धि — Vowel Sandhi"
+titleSanskrit = "अच्सन्धिः"
+label = "स्वरसन्धिः"
+track = "grammar"
+category = "sandhi"
+description = "Master @term[ac] (vowel) @term[sandhi] rules. When @term[svara] meet at @term[pada] boundaries, these rules apply."
+difficulty = "intermediate"
+estimatedTime = "3 hours"
+prerequisites = ["introduction"]
++++
 
 ## concept - What Is Sandhi?
 

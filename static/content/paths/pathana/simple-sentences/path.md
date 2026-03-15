@@ -1,17 +1,16 @@
----
-id: simple-sentences
-order: 2
-title: "Simple Sentences"
-titleSanskrit: वाक्यानि
-label: वाक्यम्
-track: reading
-category: foundation
-description: Read your first Sanskrit sentences with present tense verbs.
-difficulty: beginner
-estimatedTime: 25 minutes
-prerequisites:
-  - alphabet
----
++++
+id = "simple-sentences"
+order = 2
+title = "Simple Sentences"
+titleSanskrit = "वाक्यानि"
+label = "वाक्यम्"
+track = "reading"
+category = "foundation"
+description = "Read your first Sanskrit sentences with present tense verbs."
+difficulty = "beginner"
+estimatedTime = "25 minutes"
+prerequisites = ["alphabet"]
++++
 
 ## concept - Subject + Verb
 

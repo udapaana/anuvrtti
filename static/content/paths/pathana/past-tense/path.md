@@ -1,17 +1,16 @@
----
-id: past-tense
-order: 10
-title: "Past Tense (laṅ)"
-titleSanskrit: लङ्लकारः
-label: लङ्
-track: reading
-category: tinganta
-description: Read about past events with the imperfect tense.
-difficulty: beginner
-estimatedTime: 20 minutes
-prerequisites:
-  - practice-3
----
++++
+id = "past-tense"
+order = 10
+title = "Past Tense (laṅ)"
+titleSanskrit = "लङ्लकारः"
+label = "लङ्"
+track = "reading"
+category = "tinganta"
+description = "Read about past events with the imperfect tense."
+difficulty = "beginner"
+estimatedTime = "20 minutes"
+prerequisites = ["practice-3"]
++++
 
 ## concept - The Past Tense
 

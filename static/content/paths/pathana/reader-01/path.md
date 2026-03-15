@@ -1,17 +1,16 @@
----
-id: reader-01
-order: 21
-title: "Reader: First Steps"
-titleSanskrit: पाठः १
-label: पाठः १
-track: reading
-category: foundation
-description: Read two complete Sanskrit sentences with full word-by-word analysis. No sandhi, present tense only.
-difficulty: beginner
-estimatedTime: 20 minutes
-prerequisites:
-  - nom-acc
----
++++
+id = "reader-01"
+order = 21
+title = "Reader: First Steps"
+titleSanskrit = "पाठः १"
+label = "पाठः १"
+track = "reading"
+category = "foundation"
+description = "Read two complete Sanskrit sentences with full word-by-word analysis. No sandhi, present tense only."
+difficulty = "beginner"
+estimatedTime = "20 minutes"
+prerequisites = ["nom-acc"]
++++
 
 ## reading - बालकः पठति
 

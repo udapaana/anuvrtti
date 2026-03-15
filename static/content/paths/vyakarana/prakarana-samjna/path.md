@@ -1,18 +1,16 @@
----
-id: prakarana-samjna
-order: 62
-title: "Prakaraṇa: The Saṃjñā System"
-titleSanskrit: संज्ञाप्रकरणम्
-label: संज्ञा
-track: grammar
-category: foundation
-description: Deep dive into Pāṇini's technical terminology — the definitional foundation of the Aṣṭādhyāyī.
-difficulty: beginner
-estimatedTime: 2-3 hours
-prerequisites:
-  - introduction
-  - prakarana-it-samjna
----
++++
+id = "prakarana-samjna"
+order = 62
+title = "Prakaraṇa: The Saṃjñā System"
+titleSanskrit = "संज्ञाप्रकरणम्"
+label = "संज्ञा"
+track = "grammar"
+category = "prakarana"
+description = "Deep dive into Pāṇini's technical terminology — the definitional foundation of the Aṣṭādhyāyī."
+difficulty = "beginner"
+estimatedTime = "2-3 hours"
+prerequisites = ["introduction", "prakarana-it-samjna"]
++++
 
 ## concept - The Vocabulary of Grammar
 

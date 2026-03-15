@@ -1,17 +1,16 @@
----
-id: gen-abl
-order: 12
-title: "Genitive & Ablative"
-titleSanskrit: षष्ठीपञ्चम्यौ
-label: षष्ठी
-track: reading
-category: subanta
-description: Express possession and source with the fifth and sixth cases.
-difficulty: beginner
-estimatedTime: 20 minutes
-prerequisites:
-  - practice-4
----
++++
+id = "gen-abl"
+order = 12
+title = "Genitive & Ablative"
+titleSanskrit = "षष्ठीपञ्चम्यौ"
+label = "षष्ठी"
+track = "reading"
+category = "subanta"
+description = "Express possession and source with the fifth and sixth cases."
+difficulty = "beginner"
+estimatedTime = "20 minutes"
+prerequisites = ["practice-4"]
++++
 
 ## concept - Genitive Case (षष्ठी)
 

@@ -1,18 +1,16 @@
----
-id: prakarana-atmanepada
-order: 63
-title: "Prakaraṇa: The Ātmanepada System"
-titleSanskrit: आत्मनेपदप्रकरणम्
-label: आत्मनेपद
-track: grammar
-category: foundation
-description: Deep dive into Pāṇini's voice assignment — when verbs take ātmanepada vs. parasmaipada endings.
-difficulty: intermediate
-estimatedTime: 2-3 hours
-prerequisites:
-  - introduction
-  - tinganta-lat
----
++++
+id = "prakarana-atmanepada"
+order = 63
+title = "Prakaraṇa: The Ātmanepada System"
+titleSanskrit = "आत्मनेपदप्रकरणम्"
+label = "आत्मनेपद"
+track = "grammar"
+category = "prakarana"
+description = "Deep dive into Pāṇini's voice assignment — when verbs take ātmanepada vs. parasmaipada endings."
+difficulty = "intermediate"
+estimatedTime = "2-3 hours"
+prerequisites = ["introduction", "tinganta-lat"]
++++
 
 ## concept - Two Sets of Endings
 

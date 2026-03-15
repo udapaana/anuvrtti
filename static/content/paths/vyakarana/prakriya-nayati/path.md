@@ -1,18 +1,16 @@
----
-id: prakriya-nayati
-order: 53
-title: "Prakriyā: Derive नयति"
-titleSanskrit: नयतिप्रक्रिया
-label: प्र:नयति
-track: grammar
-category: tinganta
-description: Trace the derivation of नयति "he leads" — showing guṇa and yaṇ-sandhi in action.
-difficulty: intermediate
-estimatedTime: 30 minutes
-prerequisites:
-  - prakriya-bhavati
-  - prakarana-sandhi
----
++++
+id = "prakriya-nayati"
+order = 54
+title = "Prakriyā: Derive नयति"
+titleSanskrit = "नयतिप्रक्रिया"
+label = "प्र:नयति"
+track = "grammar"
+category = "prakriya"
+description = "Trace the derivation of नयति \"he leads\" — showing guṇa and yaṇ-sandhi in action."
+difficulty = "intermediate"
+estimatedTime = "30 minutes"
+prerequisites = ["prakriya-bhavati", "prakarana-sandhi"]
++++
 
 ## concept - Guṇa + Semivowel Sandhi
 

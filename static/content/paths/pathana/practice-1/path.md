@@ -1,17 +1,16 @@
----
-id: practice-1
-order: 3
-title: "Reading Practice: Simple Sentences"
-titleSanskrit: अभ्यासः
-label: अभ्यासः १
-track: reading
-category: foundation
-description: Apply what you've learned to read simple prose.
-difficulty: beginner
-estimatedTime: 15 minutes
-prerequisites:
-  - simple-sentences
----
++++
+id = "practice-1"
+order = 3
+title = "Reading Practice: Simple Sentences"
+titleSanskrit = "अभ्यासः"
+label = "अभ्यासः १"
+track = "reading"
+category = "foundation"
+description = "Apply what you've learned to read simple prose."
+difficulty = "beginner"
+estimatedTime = "15 minutes"
+prerequisites = ["simple-sentences"]
++++
 
 ## reading - Pañcatantra Opening
 

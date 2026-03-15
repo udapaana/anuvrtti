@@ -1,17 +1,16 @@
----
-id: subanta-a-stems
-order: 21
-title: अकारान्त — A-stem Declension
-titleSanskrit: अकारान्तपुंनपुंसकम्
-label: अकारान्तपुंनपुंसकम्
-track: grammar
-category: subanta
-description: Master @deva[अकारान्त] @term[prātipadika] — @term[puṃliṅga] and @term[napuṃsakaliṅga] stems like @deva[देव], @deva[फल].
-difficulty: beginner
-estimatedTime: 3 hours
-prerequisites:
-  - subanta-pratipadika
----
++++
+id = "subanta-a-stems"
+order = 21
+title = "अकारान्त — A-stem Declension"
+titleSanskrit = "अकारान्तपुंनपुंसकम्"
+label = "अकारान्तपुंनपुंसकम्"
+track = "grammar"
+category = "subanta"
+description = "Master @deva[अकारान्त] @term[prātipadika] — @term[puṃliṅga] and @term[napuṃsakaliṅga] stems like @deva[देव], @deva[फल]."
+difficulty = "beginner"
+estimatedTime = "3 hours"
+prerequisites = ["subanta-pratipadika"]
++++
 
 ## concept - The Most Common Declension
 

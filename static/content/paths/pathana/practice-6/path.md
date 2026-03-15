@@ -1,17 +1,16 @@
----
-id: practice-6
-order: 17
-title: "Reading Practice: Kāvya"
-titleSanskrit: काव्यम्
-label: अभ्यासः ६
-track: reading
-category: foundation
-description: Read verses from Kālidāsa's Meghadūta.
-difficulty: intermediate
-estimatedTime: 25 minutes
-prerequisites:
-  - compounds
----
++++
+id = "practice-6"
+order = 17
+title = "Reading Practice: Kāvya"
+titleSanskrit = "काव्यम्"
+label = "अभ्यासः ६"
+track = "reading"
+category = "foundation"
+description = "Read verses from Kālidāsa's Meghadūta."
+difficulty = "intermediate"
+estimatedTime = "25 minutes"
+prerequisites = ["compounds"]
++++
 
 ## reading - The Exiled Yakṣa
 

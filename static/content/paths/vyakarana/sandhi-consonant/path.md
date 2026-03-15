@@ -1,17 +1,16 @@
----
-id: sandhi-consonant
-order: 29
-title: हल्सन्धि — Consonant Sandhi
-titleSanskrit: हल्सन्धिः
-label: व्यञ्जनसन्धिः
-track: grammar
-category: sandhi
-description: Master @term[hal] (@term[vyañjana]) @term[sandhi] rules. How stops, nasals, and other consonants interact.
-difficulty: intermediate
-estimatedTime: 3 hours
-prerequisites:
-  - sandhi-vowel
----
++++
+id = "sandhi-consonant"
+order = 29
+title = "हल्सन्धि — Consonant Sandhi"
+titleSanskrit = "हल्सन्धिः"
+label = "व्यञ्जनसन्धिः"
+track = "grammar"
+category = "sandhi"
+description = "Master @term[hal] (@term[vyañjana]) @term[sandhi] rules. How stops, nasals, and other consonants interact."
+difficulty = "intermediate"
+estimatedTime = "3 hours"
+prerequisites = ["sandhi-vowel"]
++++
 
 ## concept - How Consonants Interact at Boundaries
 

@@ -1,17 +1,16 @@
----
-id: sandhi-visarga
-order: 28
-title: विसर्गसन्धि — Visarga Sandhi
-titleSanskrit: विसर्गसन्धिः
-label: विसर्गसन्धिः
-track: grammar
-category: sandhi
-description: Learn @term[visarga] @term[sandhi] rules. How final @deva[-स्] and @deva[-र्] transform at @term[pada] junctions.
-difficulty: intermediate
-estimatedTime: 2-3 hours
-prerequisites:
-  - sandhi-vowel
----
++++
+id = "sandhi-visarga"
+order = 28
+title = "विसर्गसन्धि — Visarga Sandhi"
+titleSanskrit = "विसर्गसन्धिः"
+label = "विसर्गसन्धिः"
+track = "grammar"
+category = "sandhi"
+description = "Learn @term[visarga] @term[sandhi] rules. How final @deva[-स्] and @deva[-र्] transform at @term[pada] junctions."
+difficulty = "intermediate"
+estimatedTime = "2-3 hours"
+prerequisites = ["sandhi-vowel"]
++++
 
 ## concept - What Is Visarga?
 
