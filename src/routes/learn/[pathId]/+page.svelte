@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation';
   import { browser } from '$app/environment';
   import { loadPath, loadPathIndex, type PathMeta } from '$lib/content';
+  import { editModal } from '$lib/stores/editModal';
   import type { LearningPath, LearningStep } from '$lib/learning/paths';
   import { learningProgress } from '$lib/stores/learning';
   import { getSutra, getCommentary, getLayeredCommentary, getDependencies, type Sutra, type Commentary, type LayeredSutraCommentary, type CommentaryDepth } from '$lib/data';
@@ -20,6 +21,7 @@
   let { data } = $props();
 
   let path: LearningPath | undefined = $state(undefined);
+  let pathMeta: PathMeta | undefined = $state(undefined);
   let pathLoading = $state(true);
   let currentStepIndex = $state(0);
   let sutra: Sutra | undefined = $state(undefined);
@@ -62,12 +64,13 @@
   });
 
   async function loadPathData(pathId: string) {
-    const loadedPath = await loadPath(pathId);
+    const [loadedPath, index] = await Promise.all([loadPath(pathId), loadPathIndex()]);
     if (!loadedPath) {
       goto('/learn');
       return;
     }
     path = loadedPath;
+    pathMeta = index.find(m => m.id === pathId);
     pathLoading = false;
 
     // Check for ?step= URL parameter (from resume link)
@@ -96,6 +99,14 @@
       loadStepData(loadedPath.steps[currentStepIndex]);
     }
   }
+
+  // Register edit context for navbar button
+  $effect(() => {
+    if (pathMeta) {
+      editModal.setPageContext(`static/content/paths/${pathMeta.trackFolder}/${pathMeta.folder}/path.md`);
+    }
+    return () => editModal.setPageContext(undefined);
+  });
 
   // Load sutra data when step changes
   $effect(() => {
@@ -241,8 +252,8 @@
     }
   });
 
-  let currentStep = $derived(path?.steps[currentStepIndex]);
-  let progress = $derived(path ? (completedSteps.length / path.steps.length) * 100 : 0);
+  let currentStep = $derived((path as LearningPath | undefined)?.steps[currentStepIndex]);
+  let progress = $derived(path ? (completedSteps.length / (path as LearningPath).steps.length) * 100 : 0);
 
 
 </script>
@@ -313,9 +324,24 @@
           <Sanskrit text={path.titleSanskrit} />
           <span class="text-stone-400 ml-2">{path.title}</span>
         </h1>
-        <span class="text-sm text-stone-500">
-          {completedSteps.length}/{path.steps.length}
-        </span>
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-stone-500">
+            {completedSteps.length}/{path.steps.length}
+          </span>
+          {#if pathMeta}
+            <button
+              class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-indigo-600 transition-colors"
+              onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}
+              title="Edit this path"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              Edit path
+            </button>
+          {/if}
+        </div>
       </div>
 
       <!-- Progress bar -->

@@ -10,6 +10,7 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { commentaryDepth as commentaryDepthStore } from '$lib/stores/preferences';
   import { pendingEdits } from '$lib/stores/edits';
+  import { editModal } from '$lib/stores/editModal';
 
   let { data } = $props();
   let user = $derived(data.user as { login: string; avatar_url: string } | null);
@@ -40,8 +41,8 @@
   }
 
   let sutra: Sutra | null = $derived(data.sutra);
-  let commentary: Commentary | null = $derived(data.commentary);
-  let layeredCommentary: LayeredSutraCommentary | null = $derived(data.layeredCommentary);
+  let commentary: Commentary | undefined = $derived(data.commentary ?? undefined);
+  let layeredCommentary: LayeredSutraCommentary | undefined = $derived(data.layeredCommentary ?? undefined);
   let dependencies: Sutra[] = $derived(data.dependencies);
   let dependents: Sutra[] = $derived(data.dependents);
   let prevSutraId: string | null = $derived(data.prevSutraId);
@@ -57,21 +58,31 @@
     commentaryDepthStore.set(d);
   }
 
+  // Register edit context for navbar button
+  $effect(() => {
+    if (sutra) {
+      const a = sutra.numericId[0];
+      const p = sutra.numericId[1];
+      const s = parseInt(sutra.numericId.slice(2));
+      editModal.setPageContext(`static/data/commentary/${a}/${p}/${s}.toml`);
+    }
+    return () => editModal.setPageContext(undefined);
+  });
+
   // Edit mode
   let editing = $state(false);
-  let showSignInPrompt = $state(false);
   let submitState: 'idle' | 'loading' | 'done' | 'error' = $state('idle');
   let prUrl = $state('');
   let submitError = $state('');
   let editCount = $derived(Object.keys($pendingEdits).length);
 
   function handleEditClick() {
-    if (!user) {
-      showSignInPrompt = true;
-      return;
+    if (sutra) {
+      const a = sutra.numericId[0];
+      const p = sutra.numericId[1];
+      const s = parseInt(sutra.numericId.slice(2));
+      editModal.open(`static/data/commentary/${a}/${p}/${s}.toml`);
     }
-    editing = true;
-    showSignInPrompt = false;
   }
 
   async function submitEdits() {
@@ -102,11 +113,6 @@
     }
   }
 
-  const depthLabels: Record<CommentaryDepth, string> = {
-    simple: 'Simple',
-    standard: 'Standard',
-    advanced: 'Advanced'
-  };
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -193,24 +199,10 @@
           {commentary}
           {layeredCommentary}
           {depth}
+          {user}
           onDepthChange={handleDepthChange}
+          onEdit={layeredCommentary ? handleEditClick : undefined}
         />
-        {#if layeredCommentary}
-          <div class="edit-row">
-            {#if showSignInPrompt}
-              <span class="sign-in-prompt">
-                <a href="/auth/github?returnTo={sutra?.id ? `/ref/${sutra.id}` : '/ref'}" class="sign-in-link">Sign in with GitHub</a> to suggest edits
-              </span>
-            {:else}
-              <button class="edit-btn" onclick={handleEditClick}>
-                <svg class="edit-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.992.596l-2.502.834a.25.25 0 0 1-.315-.316l.834-2.501c.12-.361.32-.686.596-.993z" />
-                </svg>
-                Suggest edit
-              </button>
-            {/if}
-          </div>
-        {/if}
       {/if}
 
       <!-- Anuvrtti inheritance graph (advanced view) -->
@@ -455,46 +447,6 @@
     text-decoration: underline;
   }
 
-  .edit-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid #f5f5f4;
-  }
-
-  .edit-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
-    font-size: 0.8125rem;
-    color: #a8a29e;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: color 0.1s;
-  }
-  .edit-btn:hover {
-    color: #6366f1;
-  }
-
-  .edit-icon {
-    width: 0.875rem;
-    height: 0.875rem;
-  }
-
-  .sign-in-prompt {
-    font-size: 0.8125rem;
-    color: #a8a29e;
-  }
-
-  .sign-in-link {
-    color: #6366f1;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
 
   .pending-chip {
     position: fixed;

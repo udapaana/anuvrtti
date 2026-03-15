@@ -1,10 +1,11 @@
 export const ssr = false;
 
 // Cache the sutra-paths index (enriched with path titles)
-let sutraPathsCache: Record<
+type SutraPathMap = Record<
   string,
   { pathId: string; pathTitle: string; stepIndex: number }[]
-> | null = null;
+>;
+let sutraPathsCache: SutraPathMap | null = null;
 
 async function loadSutraPaths(): Promise<
   Record<string, { pathId: string; pathTitle: string; stepIndex: number }[]>
@@ -28,7 +29,7 @@ async function loadSutraPaths(): Promise<
     }
 
     // Enrich raw entries with titles
-    const enriched: typeof sutraPathsCache = {};
+    const enriched: SutraPathMap = {};
     for (const [sutraId, entries] of Object.entries(raw)) {
       enriched[sutraId] = entries.map((e) => ({
         ...e,

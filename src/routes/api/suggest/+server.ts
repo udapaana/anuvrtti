@@ -1,23 +1,27 @@
 import { json, error } from '@sveltejs/kit';
 import { GITHUB_APP_TOKEN } from '$env/static/private';
+import { parse as parseToml } from 'smol-toml';
+import { validateMarkupInObject } from '$lib/markup/validate';
 
-// Public repo — not a secret
 const GITHUB_REPO = 'udapaana/anuvrtti';
+const API = 'https://api.github.com';
 
-interface PendingEdit {
-  sutraId: string;
-  numericId: string;
-  simple?: string;
-  standard?: string;
+// Only paths under these prefixes may be edited
+const ALLOWED_PREFIXES = [
+  'static/data/',
+  'static/content/',
+];
+
+interface FileEdit {
+  path: string;    // repo-relative e.g. "static/data/commentary/1/1/1.toml"
+  content: string;
+  label: string;   // human-readable e.g. "Commentary 1.1.1"
 }
 
 interface SuggestRequest {
-  edits: Record<string, PendingEdit>;
+  files: FileEdit[];
   note: string;
 }
-
-const COMMENTARY_PATH = 'static/data/layered_commentary.json';
-const API = 'https://api.github.com';
 
 async function ghFetch(path: string, options: RequestInit = {}) {
   const res = await fetch(`${API}${path}`, {
@@ -37,8 +41,38 @@ async function ghFetch(path: string, options: RequestInit = {}) {
   return res.json();
 }
 
+function validatePath(path: string): string | null {
+  if (!ALLOWED_PREFIXES.some(p => path.startsWith(p))) {
+    return `path not allowed: ${path}`;
+  }
+  if (path.includes('..') || path.includes('//')) {
+    return `invalid path: ${path}`;
+  }
+  if (!/\.(toml|md|json)$/.test(path)) {
+    return `unsupported file type: ${path}`;
+  }
+  return null;
+}
+
+function validateContent(path: string, content: string): string | null {
+  if (!content.trim()) return `empty content for ${path}`;
+
+  if (path.endsWith('.toml')) {
+    try {
+      const parsed = parseToml(content) as Record<string, unknown>;
+      const result = validateMarkupInObject(parsed);
+      if (!result.valid) {
+        return `markup errors in ${path}:\n${result.errors.join('\n')}`;
+      }
+    } catch (e) {
+      return `TOML parse error in ${path}: ${e instanceof Error ? e.message : String(e)}`;
+    }
+  }
+
+  return null;
+}
+
 export async function POST({ request, cookies }) {
-  // Require the user to be identified (read:user OAuth), but we use our app token for writes
   const rawUser = cookies.get('gh_user');
   if (!rawUser) error(401, 'Not authenticated');
 
@@ -49,29 +83,20 @@ export async function POST({ request, cookies }) {
     error(401, 'Invalid session');
   }
 
-  const { edits, note }: SuggestRequest = await request.json();
-  if (!edits || Object.keys(edits).length === 0) error(400, 'No edits provided');
+  const { files, note }: SuggestRequest = await request.json();
+  if (!files || files.length === 0) error(400, 'No files provided');
 
-  // Get current main branch SHA
-  const mainRef = await ghFetch(`/repos/${GITHUB_REPO}/git/ref/heads/main`);
-  const mainSha: string = mainRef.object.sha;
-
-  // Get commentary file (content + sha for update)
-  const fileInfo = await ghFetch(`/repos/${GITHUB_REPO}/contents/${COMMENTARY_PATH}`);
-  const fileSha: string = fileInfo.sha;
-  const commentary = JSON.parse(Buffer.from(fileInfo.content, 'base64').toString('utf-8'));
-
-  // Apply all edits
-  const editedIds: string[] = [];
-  for (const edit of Object.values(edits)) {
-    const entry = commentary[edit.numericId];
-    if (!entry) continue;
-    if (edit.simple !== undefined) entry.en.simple = edit.simple;
-    if (edit.standard !== undefined) entry.en.standard = edit.standard;
-    editedIds.push(edit.sutraId);
+  // Validate all paths and content before touching GitHub
+  for (const f of files) {
+    const pathErr = validatePath(f.path);
+    if (pathErr) error(400, pathErr);
+    const contentErr = validateContent(f.path, f.content);
+    if (contentErr) error(422, contentErr);
   }
 
-  if (editedIds.length === 0) error(400, 'No valid sūtra IDs found in edits');
+  // Get main branch SHA
+  const mainRef = await ghFetch(`/repos/${GITHUB_REPO}/git/ref/heads/main`);
+  const mainSha: string = mainRef.object.sha;
 
   // Create branch
   const shortHash = Math.random().toString(36).slice(2, 7);
@@ -83,32 +108,46 @@ export async function POST({ request, cookies }) {
     body: JSON.stringify({ ref: `refs/heads/${branch}`, sha: mainSha }),
   });
 
-  // Commit updated file to new branch
-  const updatedContent = Buffer.from(
-    JSON.stringify(commentary, null, 2),
-    'utf-8'
-  ).toString('base64');
+  // Commit each file to the branch (supports both edits and new files)
+  for (const f of files) {
+    const encodedContent = Buffer.from(f.content, 'utf-8').toString('base64');
 
-  const commitMessage = `Commentary edit: ${editedIds.join(', ')} — ${username}${note ? `\n\n${note}` : ''}`;
+    // Try to get existing file SHA; if 404, this is a new file
+    let fileSha: string | undefined;
+    try {
+      const fileInfo = await ghFetch(
+        `/repos/${GITHUB_REPO}/contents/${f.path}?ref=${branch}`
+      );
+      fileSha = fileInfo.sha;
+    } catch (e) {
+      // File doesn't exist yet — that's fine for new paths
+      if (!(e instanceof Error && e.message.includes('404'))) throw e;
+    }
 
-  await ghFetch(`/repos/${GITHUB_REPO}/contents/${COMMENTARY_PATH}`, {
-    method: 'PUT',
-    body: JSON.stringify({
-      message: commitMessage,
-      content: updatedContent,
-      sha: fileSha,
+    const commitBody: Record<string, unknown> = {
+      message: `${fileSha ? 'Edit' : 'Create'}: ${f.label} — ${username}`,
+      content: encodedContent,
       branch,
-    }),
-  });
+    };
+    if (fileSha) commitBody.sha = fileSha;
 
-  // Open PR — bot opens it, contributor credited in body
-  const sutraList = editedIds.length <= 3
-    ? editedIds.join(', ')
-    : `${editedIds.slice(0, 3).join(', ')} +${editedIds.length - 3} more`;
+    await ghFetch(`/repos/${GITHUB_REPO}/contents/${f.path}`, {
+      method: 'PUT',
+      body: JSON.stringify(commitBody),
+    });
+  }
+
+  // Build PR
+  const fileList = files.map(f => `- ${f.label} (\`${f.path}\`)`).join('\n');
+  const hasNew = files.some(f => f.path.includes('/new-') || f.label.startsWith('New:'));
+  const verb = hasNew ? 'Suggest' : 'Edit';
+  const titleFiles = files.length === 1
+    ? files[0].label
+    : `${files.length} files`;
 
   const prBody = [
     `**Contributor:** @${username}`,
-    `**Sūtras edited:** ${editedIds.join(', ')}`,
+    `\n**Files edited:**\n${fileList}`,
     note ? `\n**Note from contributor:**\n${note}` : '',
     '\n---\n*Submitted via anuvrtti.udapaana.in*',
   ].filter(Boolean).join('\n');
@@ -116,7 +155,7 @@ export async function POST({ request, cookies }) {
   const pr = await ghFetch(`/repos/${GITHUB_REPO}/pulls`, {
     method: 'POST',
     body: JSON.stringify({
-      title: `Commentary edit: ${sutraList} — ${username}`,
+      title: `${verb}: ${titleFiles} — ${username}`,
       body: prBody,
       head: branch,
       base: 'main',

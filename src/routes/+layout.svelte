@@ -5,7 +5,9 @@
   import { onMount } from 'svelte';
   import ScriptToggle from '$lib/components/ScriptToggle.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import EditModal from '$lib/components/EditModal.svelte';
   import { displayScript } from '$lib/stores/preferences';
+  import { editModal } from '$lib/stores/editModal';
   import type { Script } from '$lib/transliteration';
 
   let { children, data } = $props();
@@ -66,6 +68,20 @@
       <div class="flex items-center gap-3">
         <ScriptToggle current={$displayScript} onChange={handleScriptChange} />
         {#if user}
+          <button
+            class="edit-toggle"
+            class:active={$editModal.open}
+            onclick={() => $editModal.open ? editModal.close() : editModal.open()}
+            title="Edit content"
+            aria-label="Toggle content editor"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+        {/if}
+        {#if user}
           <div class="auth-user">
             <img src={user.avatar_url} alt={user.login} class="avatar" />
             <span class="username">{user.login}</span>
@@ -85,6 +101,10 @@
   <main class="max-w-6xl mx-auto px-4 py-6">
     {@render children()}
   </main>
+
+  {#if $editModal.open}
+    <EditModal {user} />
+  {/if}
 
   <footer class="border-t border-stone-200 bg-white mt-12">
     <div class="max-w-6xl mx-auto px-4 py-4">
@@ -128,10 +148,11 @@
   }
 
   .avatar {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
     border-radius: 50%;
-    border: 1px solid #e7e5e4;
+    border: 2px solid #22c55e;
+    box-shadow: 0 0 0 1px #dcfce7;
   }
 
   .username {
@@ -168,5 +189,29 @@
   .signin-btn:hover {
     background: #e0e7ff;
     border-color: #a5b4fc;
+  }
+
+  .edit-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.375rem;
+    border: 1px solid #e7e5e4;
+    background: none;
+    color: #78716c;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .edit-toggle:hover {
+    color: #4f46e5;
+    border-color: #c7d2fe;
+    background: #eef2ff;
+  }
+  .edit-toggle.active {
+    color: #4f46e5;
+    border-color: #a5b4fc;
+    background: #eef2ff;
   }
 </style>
