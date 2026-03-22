@@ -9,7 +9,7 @@ category = "tinganta"
 description = "Derive @deva[लट्] (present tense) verb forms — the most common @deva[तिङन्त] forms you'll encounter."
 difficulty = "beginner"
 estimatedTime = "3-4 hours"
-prerequisites = ["introduction"]
+prerequisites = ["introduction", "dhatu-parichaya"]
 +++
 
 ## concept - What You'll Learn

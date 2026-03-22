@@ -121,6 +121,15 @@ function parseStep(section: string): LearningStep | null {
       continue;
     }
 
+    // Parse lesson ref: **Lesson:** balabodhini-1-07
+    const lessonRefMatch = line.match(/^\*\*Lesson:\*\*\s*(.+)$/);
+    if (lessonRefMatch) {
+      // stored in commentary lines for now, extracted below
+      commentaryLines.push(line);
+      inCommentary = true;
+      continue;
+    }
+
     // Skip empty lines before commentary starts
     if (!inCommentary && line.trim() === "") continue;
 
@@ -130,18 +139,32 @@ function parseStep(section: string): LearningStep | null {
 
   const commentary = commentaryLines.join("\n").trim();
 
-  // Determine sutraId: preserve 'concept', 'reading', 'quiz' as-is; collapse others to 'concept'
-  const knownTypes = ["concept", "reading", "quiz", "practice", "summary", "exercise"];
+  // Determine sutraId: preserve known types as-is; collapse others to sutraId (for sūtra refs)
+  const knownTypes = ["concept", "reading", "quiz", "practice", "summary", "exercise", "lesson"];
   const normalizedId = sutraId.toLowerCase();
   const finalSutraId = knownTypes.includes(normalizedId)
     ? normalizedId
     : sutraId;
 
+  // Extract lessonRef from commentary lines if present
+  let lessonRef: string | undefined;
+  const lessonRefLine = commentaryLines.find(l => l.match(/^\*\*Lesson:\*\*\s*/));
+  if (lessonRefLine) {
+    const m = lessonRefLine.match(/^\*\*Lesson:\*\*\s*(.+)$/);
+    if (m) lessonRef = m[1].trim();
+  }
+  // Remove the **Lesson:** line from commentary
+  const cleanCommentary = commentaryLines
+    .filter(l => !l.match(/^\*\*Lesson:\*\*\s*/))
+    .join("\n")
+    .trim();
+
   return {
     sutraId: finalSutraId,
     title: title.trim(),
-    commentary: commentary || undefined,
+    commentary: cleanCommentary || undefined,
     keyTerms: keyTerms.length > 0 ? keyTerms : undefined,
+    lessonRef,
   };
 }
 

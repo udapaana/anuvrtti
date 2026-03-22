@@ -14,7 +14,8 @@
   let loading = $state(true);
 
   // View mode toggled via a simple boolean
-  let showGrammar = $state(false);
+  type View = 'reading' | 'grammar' | 'balabodhini';
+  let view = $state<View>('reading');
 
   // Collapsed categories (grammar view)
   let collapsed: Set<string> = $state(new Set());
@@ -93,7 +94,12 @@
       .join(', ');
   }
 
-  let readingPaths = $derived(allPaths.filter(p => p.track === 'reading'));
+  let balabodhiniPaths = $derived(
+    allPaths.filter(p => p.id.startsWith('balabodhini-')).sort((a, b) => a.order - b.order)
+  );
+  let readingPaths = $derived(
+    allPaths.filter(p => p.track === 'reading' && !p.id.startsWith('balabodhini-'))
+  );
   let readingDone = $derived(readingPaths.filter(p => done(p.id)).length);
   let nextIdx = $derived(readingPaths.findIndex(p => !done(p.id)));
 
@@ -124,27 +130,24 @@
 
     <!-- Track Toggle -->
     <div class="mode-toggle">
-      <a
-        href="#reading"
-        class="mode-btn"
-        class:active={!showGrammar}
-        onclick={(e) => { e.preventDefault(); showGrammar = false; }}
-      >
+      <a href="#reading" class="mode-btn" class:active={view === 'reading'}
+         onclick={(e) => { e.preventDefault(); view = 'reading'; }}>
         <span class="mode-sanskrit">पठनम्</span>
         <span class="mode-english">Reading</span>
       </a>
-      <a
-        href="#grammar"
-        class="mode-btn"
-        class:active={showGrammar}
-        onclick={(e) => { e.preventDefault(); showGrammar = true; }}
-      >
+      <a href="#grammar" class="mode-btn" class:active={view === 'grammar'}
+         onclick={(e) => { e.preventDefault(); view = 'grammar'; }}>
         <span class="mode-sanskrit">व्याकरणम्</span>
         <span class="mode-english">Grammar</span>
       </a>
+      <a href="#balabodhini" class="mode-btn" class:active={view === 'balabodhini'}
+         onclick={(e) => { e.preventDefault(); view = 'balabodhini'; }}>
+        <span class="mode-sanskrit font-telugu">బాలబోధిని</span>
+        <span class="mode-english">Bālabodhini</span>
+      </a>
     </div>
 
-    {#if !showGrammar}
+    {#if view === 'reading'}
       <!-- Reading Path -->
       <div class="reading-header">
         <p class="reading-desc">A structured path through the essentials — recommended for beginners.</p>
@@ -183,7 +186,7 @@
         {/each}
       </ol>
 
-    {:else}
+    {:else if view === 'grammar'}
       <!-- Grammar View -->
       <div class="grammar-header">
         <p class="grammar-desc">Systematic Pāṇinian grammar — organized by topic following traditional prakaraṇa structure.</p>
@@ -246,6 +249,30 @@
           {/if}
         {/each}
       </div>
+    {:else}
+      <!-- Bālabodhini -->
+      <div class="reading-header">
+        <p class="reading-desc">A complete Telugu-medium Sanskrit primer — 38 lessons building from basic verbs to connected reading.</p>
+      </div>
+
+      <ol class="reading-list">
+        {#each balabodhiniPaths as path, i}
+          {@const complete = done(path.id)}
+          {@const colors = categoryColors['prakarana'] || categoryColors.foundation}
+          <li class="reading-item" class:completed={complete}>
+            <a href="/learn/{path.id}" class="reading-btn">
+              <span class="reading-number" class:complete style="border-color: {colors.medium}; {complete ? `background: ${colors.medium}` : ''}">
+                {#if complete}✓{:else}{i + 1}{/if}
+              </span>
+              <div class="reading-content">
+                <span class="reading-label font-telugu">{path.titleSanskrit}</span>
+                <span class="reading-title">{path.title}</span>
+              </div>
+              <span class="reading-category" style="color: {colors.medium}; font-size: 0.6rem;">{path.description?.split(';')[0]?.slice(0, 30)}</span>
+            </a>
+          </li>
+        {/each}
+      </ol>
     {/if}
 
   </div>

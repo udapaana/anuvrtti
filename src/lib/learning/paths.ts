@@ -42,6 +42,8 @@ export interface LearningStep {
   kashikaTranslation?: string;
   /** Quiz data for quiz-type steps */
   quiz?: QuizData;
+  /** Reference to a Bālabodhini structured lesson, e.g. "balabodhini-1-07" */
+  lessonRef?: string;
 }
 
 export interface LearningPath {

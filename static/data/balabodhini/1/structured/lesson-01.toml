@@ -1,0 +1,181 @@
+id = "balabodhini-1-01"
+source = "balabodhini"
+part = 1
+number = 1
+title_sanskrit = "ప్రథమః పాఠః"
+title_telugu = "మొదటి పాఠము"
+title_english = "First Lesson"
+grammar_focus = "as-present singular (asti, asi, asmi)"
+
+# Ordered sections model the book's pedagogical flow.
+# Each section has:
+#   type      — what kind of content this is
+#   language  — script/language of the primary content
+#                 "telugu"           = Telugu prose or exercises
+#                 "bilingual"        = Sanskrit=Telugu gloss pairs
+#                 "meta"             = grammar explanation in Telugu about Sanskrit
+# Items within a section carry their own fields as needed.
+
+[[sections]]
+type = "vocabulary"
+language = "bilingual"
+# Sanskrit words in Telugu script with Telugu glosses.
+# The student sees: Sanskrit term = Telugu meaning
+# Both scripts are in the Telugu Unicode block; Sanskrit is identified by grammar, not script.
+
+[[sections.items]]
+sanskrit_telugu = "సః"
+telugu_gloss = "వాఁడు"
+english = "he"
+
+[[sections.items]]
+sanskrit_telugu = "కుత్ర"
+telugu_gloss = "ఎక్కడ?"
+english = "where?"
+
+[[sections.items]]
+sanskrit_telugu = "అస్తి"
+telugu_gloss = "ఉన్నాఁడు"
+english = "he is"
+
+[[sections.items]]
+sanskrit_telugu = "త్వం"
+telugu_gloss = "నీవు"
+english = "you"
+
+[[sections.items]]
+sanskrit_telugu = "తత్ర"
+telugu_gloss = "అక్కడ"
+english = "there"
+
+[[sections.items]]
+sanskrit_telugu = "అసి"
+telugu_gloss = "ఉన్నావు"
+english = "you are"
+
+[[sections.items]]
+sanskrit_telugu = "అహం"
+telugu_gloss = "నేను"
+english = "I"
+
+[[sections.items]]
+sanskrit_telugu = "అత్ర"
+telugu_gloss = "ఇక్కడ"
+english = "here"
+
+[[sections.items]]
+sanskrit_telugu = "అస్మి"
+telugu_gloss = "ఉన్నాను"
+english = "I am"
+
+[[sections]]
+type = "reading"
+language = "sanskrit"
+# Sanskrit sentences written in Telugu script.
+# Student reads aloud, understands meaning.
+
+[[sections.items]]
+n = 1
+sanskrit_telugu = "సః అస్తి"
+english = "He is."
+
+[[sections.items]]
+n = 2
+sanskrit_telugu = "అహం తత్ర అస్మి."
+english = "I am there."
+
+[[sections.items]]
+n = 3
+sanskrit_telugu = "త్వం కుత్ర అసి?"
+english = "Where are you?"
+
+[[sections.items]]
+n = 4
+sanskrit_telugu = "సః తత్ర అస్తి"
+english = "He is there."
+
+[[sections.items]]
+n = 5
+sanskrit_telugu = "అహం అత్ర అస్మి."
+english = "I am here."
+
+[[sections.items]]
+n = 6
+sanskrit_telugu = "త్వం తత్ర అసి."
+english = "You are there."
+
+[[sections.items]]
+n = 7
+sanskrit_telugu = "సః కుత్ర అస్తి?"
+english = "Where is he?"
+
+[[sections.items]]
+n = 8
+sanskrit_telugu = "సః అత్ర అస్తి."
+english = "He is here."
+
+[[sections.items]]
+n = 9
+sanskrit_telugu = "త్వం అత్ర అసి."
+english = "You are here."
+
+[[sections.items]]
+n = 10
+sanskrit_telugu = "అహం కుత్ర అస్మి?"
+english = "Where am I?"
+
+[[sections]]
+type = "exercises"
+language = "telugu"
+# Telugu sentences for the student to translate into Sanskrit.
+# The student writes Sanskrit; english gives the meaning of the Telugu prompt.
+
+[[sections.items]]
+n = 1
+telugu = "నీవు ఎక్కడ నున్నావు?"
+english = "Where are you?"
+
+[[sections.items]]
+n = 2
+telugu = "నేను ఇక్కడ నున్నాను."
+english = "I am here."
+
+[[sections.items]]
+n = 3
+telugu = "వాఁడు అక్కడ నున్నాఁడు."
+english = "He is there."
+
+[[sections.items]]
+n = 4
+telugu = "నీవు ఇక్కడ నున్నావు."
+english = "You are here."
+
+[[sections.items]]
+n = 5
+telugu = "నేను ఎక్కడ నున్నాను?"
+english = "Where am I?"
+
+[[sections.items]]
+n = 6
+telugu = "నీ వున్నావు."
+english = "You are."
+
+[[sections.items]]
+n = 7
+telugu = "నే నున్నాను."
+english = "I am."
+
+[[sections.items]]
+n = 8
+telugu = "వాఁ డున్నాడు."
+english = "He is."
+
+[[sections.items]]
+n = 9
+telugu = "నే నక్కడ నున్నాను."
+english = "I am there."
+
+[[sections.items]]
+n = 10
+telugu = "నీ వక్కడ నున్నావు."
+english = "You are there."

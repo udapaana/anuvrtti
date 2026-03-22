@@ -92,75 +92,88 @@ function getTrackFolder(track: string): string {
   }
 }
 
+function processPathFile(
+  pathFile: string,
+  trackDir: string,
+  folder: string,
+  trackFolder: string,
+  paths: PathMeta[],
+  sutraMappings: SutraPathMapping,
+) {
+  try {
+    const content = fs.readFileSync(pathFile, 'utf-8');
+    const { frontmatter, body } = parseFrontmatter(content);
+
+    const track = trackDir === 'vyakarana' ? 'grammar' :
+                  trackDir === 'pathana' ? 'reading' : trackDir;
+
+    const pathMeta: PathMeta = {
+      id: frontmatter.id || folder,
+      track,
+      folder,
+      trackFolder,
+      title: frontmatter.title || '',
+      titleSanskrit: frontmatter.titleSanskrit || '',
+      label: frontmatter.label || '',
+      category: frontmatter.category || 'foundation',
+      description: frontmatter.description || '',
+      difficulty: frontmatter.difficulty || 'beginner',
+      estimatedTime: frontmatter.estimatedTime || '',
+      prerequisites: frontmatter.prerequisites || [],
+      stepCount: countSteps(body),
+      order: parseInt(frontmatter.order) || 999,
+    };
+
+    paths.push(pathMeta);
+
+    const sutraRefs = extractSutraRefs(body);
+    sutraRefs.forEach((sutraId, stepIndex) => {
+      if (!sutraMappings[sutraId]) sutraMappings[sutraId] = [];
+      sutraMappings[sutraId].push({ pathId: pathMeta.id, stepIndex });
+    });
+
+  } catch (err) {
+    console.error(`Error processing ${pathFile}:`, err);
+  }
+}
+
 function scanPaths(): { paths: PathMeta[]; sutraMappings: SutraPathMapping } {
   const paths: PathMeta[] = [];
   const sutraMappings: SutraPathMapping = {};
 
-  // Scan track directories
   const trackDirs = fs.readdirSync(CONTENT_DIR);
 
   for (const trackDir of trackDirs) {
     const trackPath = path.join(CONTENT_DIR, trackDir);
     if (!fs.statSync(trackPath).isDirectory()) continue;
 
-    // Scan path directories within track
-    const pathDirs = fs.readdirSync(trackPath);
+    const entries = fs.readdirSync(trackPath);
 
-    for (const pathDir of pathDirs) {
-      const pathDirPath = path.join(trackPath, pathDir);
-      if (!fs.statSync(pathDirPath).isDirectory()) continue;
+    for (const entry of entries) {
+      const entryPath = path.join(trackPath, entry);
+      if (!fs.statSync(entryPath).isDirectory()) continue;
 
-      const pathFile = path.join(pathDirPath, 'path.md');
-      if (!fs.existsSync(pathFile)) continue;
+      // Direct path.md at this level: trackDir/entry/path.md
+      const directPathFile = path.join(entryPath, 'path.md');
+      if (fs.existsSync(directPathFile)) {
+        processPathFile(directPathFile, trackDir, entry, trackDir, paths, sutraMappings);
+        continue;
+      }
 
-      try {
-        const content = fs.readFileSync(pathFile, 'utf-8');
-        const { frontmatter, body } = parseFrontmatter(content);
-
-        // Determine track from folder name
-        const track = trackDir === 'vyakarana' ? 'grammar' :
-                      trackDir === 'pathana' ? 'reading' : trackDir;
-
-        const pathMeta: PathMeta = {
-          id: frontmatter.id || pathDir,
-          track,
-          folder: pathDir,
-          trackFolder: trackDir,
-          title: frontmatter.title || '',
-          titleSanskrit: frontmatter.titleSanskrit || '',
-          label: frontmatter.label || '',
-          category: frontmatter.category || 'foundation',
-          description: frontmatter.description || '',
-          difficulty: frontmatter.difficulty || 'beginner',
-          estimatedTime: frontmatter.estimatedTime || '',
-          prerequisites: frontmatter.prerequisites || [],
-          stepCount: countSteps(body),
-          order: parseInt(frontmatter.order) || 999,
-        };
-
-        paths.push(pathMeta);
-
-        // Extract sutra mappings
-        const sutraRefs = extractSutraRefs(body);
-        sutraRefs.forEach((sutraId, stepIndex) => {
-          if (!sutraMappings[sutraId]) {
-            sutraMappings[sutraId] = [];
-          }
-          sutraMappings[sutraId].push({
-            pathId: pathMeta.id,
-            stepIndex,
-          });
-        });
-
-      } catch (err) {
-        console.error(`Error processing ${pathFile}:`, err);
+      // One level deeper: trackDir/entry/subEntry/path.md (e.g. pathana/balabodhini-1/lesson-01/path.md)
+      const subEntries = fs.readdirSync(entryPath);
+      for (const subEntry of subEntries) {
+        const subPath = path.join(entryPath, subEntry);
+        if (!fs.statSync(subPath).isDirectory()) continue;
+        const nestedPathFile = path.join(subPath, 'path.md');
+        if (fs.existsSync(nestedPathFile)) {
+          processPathFile(nestedPathFile, trackDir, subEntry, `${trackDir}/${entry}`, paths, sutraMappings);
+        }
       }
     }
   }
 
-  // Sort by order
   paths.sort((a, b) => a.order - b.order);
-
   return { paths, sutraMappings };
 }
 

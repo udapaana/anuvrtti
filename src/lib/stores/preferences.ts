@@ -69,3 +69,27 @@ function createCommentaryDepthStore() {
 
 /** User's preferred commentary depth level */
 export const commentaryDepth = createCommentaryDepthStore();
+
+/** User's preferred support language for Bālabodhini lessons */
+export type LessonLanguage = 'telugu' | 'english';
+const LESSON_LANG_KEY = 'balabodhini-lang';
+
+function getStoredLessonLanguage(): LessonLanguage {
+  if (!browser) return 'telugu';
+  const stored = localStorage.getItem(LESSON_LANG_KEY);
+  if (stored === 'telugu' || stored === 'english') return stored;
+  return 'telugu';
+}
+
+function createLessonLanguageStore() {
+  const { subscribe, set } = writable<LessonLanguage>(getStoredLessonLanguage());
+  return {
+    subscribe,
+    set: (value: LessonLanguage) => {
+      if (browser) localStorage.setItem(LESSON_LANG_KEY, value);
+      set(value);
+    },
+  };
+}
+
+export const lessonLanguage = createLessonLanguageStore();

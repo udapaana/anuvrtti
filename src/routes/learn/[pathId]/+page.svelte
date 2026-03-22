@@ -5,7 +5,6 @@
   import { loadPath, loadPathIndex, type PathMeta } from '$lib/content';
   import { editModal } from '$lib/stores/editModal';
   import type { LearningPath, LearningStep } from '$lib/learning/paths';
-  import { learningProgress } from '$lib/stores/learning';
   import { getSutra, getCommentary, getLayeredCommentary, getDependencies, type Sutra, type Commentary, type LayeredSutraCommentary, type CommentaryDepth } from '$lib/data';
   import { commentaryDepth as commentaryDepthStore } from '$lib/stores/preferences';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
@@ -15,6 +14,7 @@
   import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
   import DerivationViewer from '$lib/components/DerivationViewer.svelte';
   import QuizStep from '$lib/components/QuizStep.svelte';
+  import LessonStep from '$lib/components/LessonStep.svelte';
   import { getExampleForSutra, type PrakriyaExample } from '$lib/prakriya-examples';
   import { deriveTinanta, deriveSubanta, type Prakriya } from '$lib/prakriya';
 
@@ -23,43 +23,28 @@
   let path: LearningPath | undefined = $state(undefined);
   let pathMeta: PathMeta | undefined = $state(undefined);
   let pathLoading = $state(true);
-  let currentStepIndex = $state(0);
-  let sutra: Sutra | undefined = $state(undefined);
-  let commentary: Commentary | undefined = $state(undefined);
-  let layeredCommentary: LayeredSutraCommentary | undefined = $state(undefined);
   let commentaryDepth: CommentaryDepth = $state('standard');
 
-  // Sync with global preference store (bidirectional)
   commentaryDepthStore.subscribe(d => { commentaryDepth = d; });
-  let dependencies: Sutra[] = $state([]);
-  let loading = $state(true);
-  let completedSteps: number[] = $state([]);
 
-  // Path completion state
-  let showCompletion = $state(false);
-  let nextPath: PathMeta | null = $state(null);
+  // Per-step loaded data
+  type StepData = {
+    sutra?: Sutra;
+    commentary?: Commentary;
+    layeredCommentary?: LayeredSutraCommentary;
+    dependencies?: Sutra[];
+    prakriyaExample?: PrakriyaExample | null;
+    prakriya?: Prakriya | null;
+    showPrakriya?: boolean;
+    prakriyaLoading?: boolean;
+  };
+  let stepData: Record<number, StepData> = $state({});
 
-  // Prakriya example state
-  let prakriyaExample = $state<PrakriyaExample | null>(null);
-  let prakriya = $state<Prakriya | null>(null);
-  let prakriyaLoading = $state(false);
-  let showPrakriya = $state(false);
-
-  // Progress subscription cleanup
-  let unsubscribeProgress: (() => void) | undefined;
-
-  // React to pathId changes (fires on navigation between paths too)
   $effect(() => {
     const pathId = data.pathId;
-
-    // Reset state for new path
     path = undefined;
     pathLoading = true;
-    currentStepIndex = 0;
-    showCompletion = false;
-    nextPath = null;
-    if (unsubscribeProgress) { unsubscribeProgress(); unsubscribeProgress = undefined; }
-
+    stepData = {};
     loadPathData(pathId);
   });
 
@@ -73,34 +58,12 @@
     pathMeta = index.find(m => m.id === pathId);
     pathLoading = false;
 
-    // Check for ?step= URL parameter (from resume link)
-    const stepParam = $page.url.searchParams.get('step');
-    if (stepParam !== null) {
-      const stepIndex = parseInt(stepParam, 10);
-      if (!isNaN(stepIndex) && stepIndex >= 0 && stepIndex < loadedPath.steps.length) {
-        currentStepIndex = stepIndex;
-        learningProgress.startPath(pathId);
-        learningProgress.goToStep(stepIndex);
-      }
-    }
-
-    // Subscribe to progress
-    unsubscribeProgress = learningProgress.subscribe(p => {
-      if (path) {
-        completedSteps = p.pathProgress[path.id] || [];
-        if (p.currentStep !== currentStepIndex) {
-          currentStepIndex = p.currentStep;
-        }
-      }
-    });
-
-    // Load initial step
-    if (loadedPath.steps[currentStepIndex]) {
-      loadStepData(loadedPath.steps[currentStepIndex]);
-    }
+    // Load all sutra steps in parallel
+    await Promise.all(
+      loadedPath.steps.map((step, i) => loadStepData(step, i))
+    );
   }
 
-  // Register edit context for navbar button
   $effect(() => {
     if (pathMeta) {
       editModal.setPageContext(`static/content/paths/${pathMeta.trackFolder}/${pathMeta.folder}/path.md`);
@@ -108,154 +71,71 @@
     return () => editModal.setPageContext(undefined);
   });
 
-  // Load sutra data when step changes
-  $effect(() => {
-    if (path && path.steps[currentStepIndex]) {
-      loadStepData(path.steps[currentStepIndex]);
+  async function loadStepData(step: LearningStep, index: number) {
+    if (step.sutraId === 'concept' || step.sutraId === 'reading' || step.sutraId === 'lesson') {
+      stepData[index] = {};
+      return;
     }
-  });
-
-  async function loadStepData(step: LearningStep) {
-    loading = true;
-    // Reset prakriya state for new step
-    prakriyaExample = null;
-    prakriya = null;
-    showPrakriya = false;
-
     try {
-      // Conceptual and reading steps don't have sutra data
-      if (step.sutraId === 'concept' || step.sutraId.toLowerCase() === 'reading') {
-        sutra = undefined;
-        commentary = undefined;
-        layeredCommentary = undefined;
-        dependencies = [];
+      const sutra = await getSutra(step.sutraId);
+      if (sutra) {
+        const [comm, layered, deps] = await Promise.all([
+          getCommentary(sutra.numericId),
+          getLayeredCommentary(sutra.numericId),
+          getDependencies(sutra.id),
+        ]);
+        const prakriyaExample = getExampleForSutra(step.sutraId);
+        stepData[index] = { sutra, commentary: comm, layeredCommentary: layered, dependencies: deps, prakriyaExample };
       } else {
-        sutra = await getSutra(step.sutraId);
-        if (sutra) {
-          const [comm, layered, deps] = await Promise.all([
-            getCommentary(sutra.numericId),
-            getLayeredCommentary(sutra.numericId),
-            getDependencies(sutra.id)
-          ]);
-          commentary = comm;
-          layeredCommentary = layered;
-          dependencies = deps;
-          // Check for prakriya example for this sutra
-          prakriyaExample = getExampleForSutra(step.sutraId);
-        }
+        stepData[index] = {};
       }
-    } catch (e) {
-      console.error('Failed to load step data:', e);
+    } catch {
+      stepData[index] = {};
     }
-    loading = false;
   }
 
-  async function loadPrakriya() {
-    if (!prakriyaExample || prakriyaLoading) return;
-
-    prakriyaLoading = true;
+  async function loadPrakriya(stepIndex: number) {
+    const sd = stepData[stepIndex];
+    if (!sd?.prakriyaExample || sd.prakriyaLoading) return;
+    stepData[stepIndex] = { ...sd, prakriyaLoading: true };
     try {
+      const ex = sd.prakriyaExample;
       let results: Prakriya[] = [];
-
-      if (prakriyaExample.type === 'tinanta') {
-        results = await deriveTinanta(
-          prakriyaExample.dhatu,
-          prakriyaExample.gana,
-          prakriyaExample.lakara,
-          prakriyaExample.prayoga || 'Kartari',
-          prakriyaExample.purusha || 'Prathama',
-          prakriyaExample.vacana || 'Eka'
-        );
-      } else if (prakriyaExample.type === 'subanta') {
-        results = await deriveSubanta(
-          prakriyaExample.pratipadika,
-          prakriyaExample.linga,
-          prakriyaExample.vibhakti,
-          prakriyaExample.vacana
-        );
+      if (ex.type === 'tinanta') {
+        results = await deriveTinanta(ex.dhatu, ex.gana, ex.lakara, ex.prayoga || 'Kartari', ex.purusha || 'Prathama', ex.vacana || 'Eka');
+      } else if (ex.type === 'subanta') {
+        results = await deriveSubanta(ex.pratipadika, ex.linga, ex.vibhakti, ex.vacana);
       }
-
-      if (results.length > 0) {
-        prakriya = results[0];
-        showPrakriya = true;
-      }
-    } catch (e) {
-      console.error('Failed to load prakriya:', e);
+      stepData[stepIndex] = { ...stepData[stepIndex], prakriya: results[0] ?? null, showPrakriya: results.length > 0, prakriyaLoading: false };
+    } catch {
+      stepData[stepIndex] = { ...stepData[stepIndex], prakriyaLoading: false };
     }
-    prakriyaLoading = false;
   }
 
-  async function nextStep() {
-    if (!path) return;
-
-    const nextIndex = currentStepIndex + 1;
-
-    // Mark current step as completed
-    learningProgress.markStepComplete(path.id, currentStepIndex);
-
-    if (nextIndex < path.steps.length) {
-      learningProgress.goToStep(nextIndex);
+  function togglePrakriya(stepIndex: number) {
+    const sd = stepData[stepIndex];
+    if (!sd) return;
+    if (sd.showPrakriya) {
+      stepData[stepIndex] = { ...sd, showPrakriya: false };
     } else {
-      // Path completed — show interstitial
-      learningProgress.completePath(path.id);
-
-      // Find the next path to suggest
-      try {
-        const index = await loadPathIndex();
-        const currentMeta = index.find(p => p.id === path!.id);
-        if (currentMeta) {
-          // Look for the next path in the same track by order
-          const sameTracks = index
-            .filter(p => p.track === currentMeta.track)
-            .sort((a, b) => a.order - b.order);
-          const currentIdx = sameTracks.findIndex(p => p.id === path!.id);
-          if (currentIdx >= 0 && currentIdx < sameTracks.length - 1) {
-            nextPath = sameTracks[currentIdx + 1];
-          }
-        }
-      } catch (e) {
-        // Non-critical — just won't show next path suggestion
-      }
-
-      showCompletion = true;
+      loadPrakriya(stepIndex);
     }
   }
 
-  function prevStep() {
-    if (currentStepIndex > 0) {
-      learningProgress.goToStep(currentStepIndex - 1);
-    }
+  function scrollToStep(i: number) {
+    if (!browser) return;
+    document.getElementById(`step-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  function goToStep(index: number) {
-    learningProgress.goToStep(index);
-  }
-
-  function isStepCompleted(index: number): boolean {
-    return completedSteps.includes(index);
-  }
-
-  function isStepAccessible(index: number): boolean {
-    // All steps are always accessible - no gatekeeping
-    return true;
-  }
-
-  // Store learning context in sessionStorage so ref pages can show "return to path" banner
+  // Store learning context for "return to path" banner on ref pages
   $effect(() => {
-    if (browser && path && !showCompletion) {
+    if (browser && path) {
       sessionStorage.setItem('anuvrtti-learning-context', JSON.stringify({
         pathId: path.id,
         pathTitle: path.title,
-        stepIndex: currentStepIndex,
-        stepTotal: path.steps.length,
       }));
     }
   });
-
-  let currentStep = $derived((path as LearningPath | undefined)?.steps[currentStepIndex]);
-  let progress = $derived(path ? (completedSteps.length / (path as LearningPath).steps.length) * 100 : 0);
-
-
 </script>
 
 <svelte:head>
@@ -271,47 +151,6 @@
       </div>
     </div>
   </div>
-{:else if path && showCompletion}
-  <!-- Path completion interstitial -->
-  <div class="max-w-2xl mx-auto py-12 text-center">
-    <div class="bg-white rounded-xl border border-stone-200 p-10">
-      <div class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-6">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-        </svg>
-      </div>
-      <h1 class="text-2xl font-semibold mb-2">Path Complete</h1>
-      <p class="text-stone-600 mb-2">
-        <Sanskrit text={path.titleSanskrit} />
-        <span class="text-stone-400 ml-1">{path.title}</span>
-      </p>
-      <p class="text-sm text-stone-500 mb-8">
-        {path.steps.length} steps completed
-      </p>
-
-      <div class="space-y-3">
-        {#if nextPath}
-          <a
-            href="/learn/{nextPath.id}"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors font-medium"
-          >
-            Next: {nextPath.title}
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        {/if}
-        <div>
-          <a
-            href="/learn"
-            class="inline-flex items-center gap-1 px-4 py-2 text-sm text-stone-600 hover:text-indigo-600 transition-colors"
-          >
-            ← All learning paths
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
 {:else if path}
   <div class="max-w-7xl mx-auto">
     <!-- Header -->
@@ -324,68 +163,42 @@
           <Sanskrit text={path.titleSanskrit} />
           <span class="text-stone-400 ml-2">{path.title}</span>
         </h1>
-        <div class="flex items-center gap-3">
-          <span class="text-sm text-stone-500">
-            {completedSteps.length}/{path.steps.length}
-          </span>
-          {#if pathMeta}
-            <button
-              class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-indigo-600 transition-colors"
-              onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}
-              title="Edit this path"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-              </svg>
-              Edit path
-            </button>
-          {/if}
-        </div>
+        {#if pathMeta}
+          <button
+            class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-indigo-600 transition-colors"
+            onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}
+            title="Edit this path"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+            Edit path
+          </button>
+        {/if}
       </div>
-
-      <!-- Progress bar -->
-      <div class="mt-3 h-1.5 bg-stone-100 rounded-full overflow-hidden">
-        <div
-          class="h-full bg-indigo-500 rounded-full transition-all duration-300"
-          style="width: {progress}%"
-        ></div>
-      </div>
+      {#if path.description}
+        <p class="text-sm text-stone-500 mt-1">{path.description}</p>
+      {/if}
     </div>
 
-    <!-- Mobile step navigation (visible below lg breakpoint) -->
+    <!-- Mobile TOC + tools -->
     <div class="mb-4 lg:hidden space-y-2">
       <details class="bg-white rounded-lg border border-stone-200">
         <summary class="flex items-center justify-between px-4 py-3 cursor-pointer text-sm select-none">
-          <span class="font-medium text-stone-700">
-            Step {currentStepIndex + 1} of {path.steps.length}
-            {#if currentStep}
-              <span class="text-stone-400 ml-1">— {currentStep.title}</span>
-            {/if}
-          </span>
-          <svg class="w-4 h-4 text-stone-400 details-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span class="font-medium text-stone-700">Contents ({path.steps.length})</span>
+          <svg class="w-4 h-4 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </summary>
         <nav class="px-4 pb-3 space-y-1 max-h-60 overflow-y-auto border-t border-stone-100 pt-2">
           {#each path.steps as step, i}
-            {@const completed = isStepCompleted(i)}
-            {@const current = i === currentStepIndex}
             <button
-              onclick={() => goToStep(i)}
-              class="w-full text-left px-2 py-1.5 rounded text-sm transition-colors
-                     {current ? 'bg-indigo-50 text-indigo-700 font-medium' : ''}
-                     {completed && !current ? 'text-stone-600' : ''}
-                     hover:bg-stone-50"
+              onclick={() => scrollToStep(i)}
+              class="w-full text-left px-2 py-1.5 rounded text-sm hover:bg-stone-50 transition-colors text-stone-600"
             >
               <div class="flex items-center gap-2">
-                {#if completed}
-                  <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs flex-shrink-0">✓</span>
-                {:else if current}
-                  <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
-                {:else}
-                  <span class="w-5 h-5 rounded-full bg-stone-200 text-stone-500 flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
-                {/if}
+                <span class="w-5 h-5 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
                 <span class="truncate">{step.title}</span>
               </div>
             </button>
@@ -393,7 +206,6 @@
         </nav>
       </details>
 
-      <!-- Mobile tools: Jargon Lookup & Pratyahara -->
       <div class="flex gap-2">
         <details class="flex-1 bg-white rounded-lg border border-stone-200">
           <summary class="flex items-center justify-center gap-1.5 px-3 py-2 cursor-pointer text-sm text-stone-600 select-none">
@@ -419,35 +231,21 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-      <!-- Left sidebar: Jargon lookup -->
+      <!-- Left sidebar: TOC + Jargon -->
       <aside class="hidden lg:block lg:col-span-3">
         <div class="sticky top-8 space-y-4">
           <JargonLookup />
 
-          <!-- Steps nav (compact) -->
           <div class="bg-white rounded-lg border border-stone-200 p-4">
-            <h3 class="text-sm font-medium text-stone-500 mb-3">Steps</h3>
-            <nav class="space-y-1 max-h-48 overflow-y-auto">
+            <h3 class="text-xs font-medium text-stone-400 uppercase tracking-wide mb-3">Contents</h3>
+            <nav class="space-y-0.5 max-h-[60vh] overflow-y-auto">
               {#each path.steps as step, i}
-                {@const accessible = isStepAccessible(i)}
-                {@const completed = isStepCompleted(i)}
-                {@const current = i === currentStepIndex}
                 <button
-                  onclick={() => accessible && goToStep(i)}
-                  disabled={!accessible}
-                  class="w-full text-left px-2 py-1 rounded text-xs transition-colors
-                         {current ? 'bg-indigo-50 text-indigo-700 font-medium' : ''}
-                         {completed && !current ? 'text-stone-600' : ''}
-                         {!accessible ? 'text-stone-300 cursor-not-allowed' : 'hover:bg-stone-50'}"
+                  onclick={() => scrollToStep(i)}
+                  class="w-full text-left px-2 py-1.5 rounded text-xs hover:bg-stone-50 transition-colors text-stone-600 hover:text-stone-800"
                 >
                   <div class="flex items-center gap-2">
-                    {#if completed}
-                      <span class="w-4 h-4 rounded-full bg-indigo-500 text-white flex items-center justify-center text-[10px]">✓</span>
-                    {:else if current}
-                      <span class="w-4 h-4 rounded-full bg-indigo-500 text-white flex items-center justify-center text-[10px]">{i + 1}</span>
-                    {:else}
-                      <span class="w-4 h-4 rounded-full bg-stone-200 text-stone-500 flex items-center justify-center text-[10px]">{i + 1}</span>
-                    {/if}
+                    <span class="w-4 h-4 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center text-[10px] flex-shrink-0">{i + 1}</span>
                     <span class="truncate">{step.title}</span>
                   </div>
                 </button>
@@ -457,307 +255,159 @@
         </div>
       </aside>
 
-      <!-- Main content -->
-      <main class="lg:col-span-6">
-        {#if loading}
-          <div class="bg-white rounded-lg border border-stone-200 p-8">
-            <div class="animate-pulse space-y-4">
-              <div class="h-6 w-48 bg-stone-200 rounded"></div>
-              <div class="h-8 w-64 bg-stone-200 rounded"></div>
-              <div class="h-24 bg-stone-200 rounded"></div>
-            </div>
-          </div>
-        {:else if currentStep && currentStep.sutraId === 'concept'}
-          <!-- Conceptual step (no sutra) -->
-          <div class="space-y-6">
-            <div class="text-center py-6 bg-gradient-to-b from-indigo-50/50 to-transparent rounded-lg">
-              <div class="text-2xl font-medium">
-                {currentStep.title}
-              </div>
-            </div>
+      <!-- Main content: all steps in sequence -->
+      <main class="lg:col-span-6 space-y-10">
+        {#each path.steps as step, i}
+          {@const sd = stepData[i] ?? {}}
+          <section id="step-{i}" class="scroll-mt-8">
+            {#if step.sutraId === 'lesson' && step.lessonRef}
+              <LessonStep lessonRef={step.lessonRef} />
 
-            {#if currentStep.commentary}
-              <div class="bg-white rounded-lg border border-stone-200 overflow-hidden p-5">
-                <div class="text-stone-700 leading-relaxed">
-                  <CommentaryText text={currentStep.commentary} />
-                </div>
-              </div>
-            {/if}
+            {:else if step.sutraId === 'concept'}
+              <div class="space-y-4">
+                <h2 class="text-xl font-medium text-stone-800 pt-2">{step.title}</h2>
 
-            <!-- Key terms -->
-            {#if currentStep.keyTerms && currentStep.keyTerms.length > 0}
-              <div class="flex flex-wrap gap-2 justify-center">
-                {#each currentStep.keyTerms as term}
-                  <span class="px-3 py-1 bg-stone-100 rounded-full text-sm text-stone-600">
-                    <Sanskrit text={term} source="slp1" />
-                  </span>
-                {/each}
-              </div>
-            {/if}
-
-            <!-- Navigation - large arrows -->
-            <div class="flex items-center justify-between pt-6">
-              <button
-                onclick={prevStep}
-                disabled={currentStepIndex === 0}
-                class="w-14 h-14 flex items-center justify-center rounded-full border-2 border-stone-200 text-stone-400 hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
-                aria-label="Previous"
-              >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <span class="text-sm text-stone-400">
-                {currentStepIndex + 1} / {path.steps.length}
-              </span>
-
-              <button
-                onclick={nextStep}
-                class="w-14 h-14 flex items-center justify-center rounded-full border-2 transition-colors
-                       {currentStepIndex === path.steps.length - 1
-                         ? 'border-green-500 bg-green-500 text-white hover:bg-green-600'
-                         : 'border-indigo-500 bg-indigo-500 text-white hover:bg-indigo-600'}"
-                aria-label={currentStepIndex === path.steps.length - 1 ? 'Complete' : 'Next'}
-              >
-                {#if currentStepIndex === path.steps.length - 1}
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                {:else}
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                {/if}
-              </button>
-            </div>
-          </div>
-        {:else if currentStep && currentStep.sutraId.toLowerCase() === 'reading'}
-          <!-- Reading passage step -->
-          <div class="space-y-6">
-            <div class="text-center py-6 bg-gradient-to-b from-amber-50/60 to-transparent rounded-lg">
-              <div class="text-xs font-medium text-amber-700 uppercase tracking-widest mb-2">पाठः · Passage</div>
-              <div class="text-2xl font-medium">
-                {currentStep.title}
-              </div>
-            </div>
-
-            {#if currentStep.commentary}
-              <div class="bg-white rounded-lg border border-stone-200 overflow-hidden p-5">
-                <div class="text-stone-700 leading-relaxed">
-                  <CommentaryText text={currentStep.commentary} />
-                </div>
-              </div>
-            {/if}
-
-            <!-- Navigation - large arrows -->
-            <div class="flex items-center justify-between pt-6">
-              <button
-                onclick={prevStep}
-                disabled={currentStepIndex === 0}
-                class="w-14 h-14 flex items-center justify-center rounded-full border-2 border-stone-200 text-stone-400 hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
-                aria-label="Previous"
-              >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <span class="text-sm text-stone-400">
-                {currentStepIndex + 1} / {path.steps.length}
-              </span>
-
-              <button
-                onclick={nextStep}
-                class="w-14 h-14 flex items-center justify-center rounded-full border-2 transition-colors
-                       {currentStepIndex === path.steps.length - 1
-                         ? 'border-green-500 bg-green-500 text-white hover:bg-green-600'
-                         : 'border-indigo-500 bg-indigo-500 text-white hover:bg-indigo-600'}"
-                aria-label={currentStepIndex === path.steps.length - 1 ? 'Complete' : 'Next'}
-              >
-                {#if currentStepIndex === path.steps.length - 1}
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                {:else}
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                {/if}
-              </button>
-            </div>
-          </div>
-        {:else if currentStep && currentStep.sutraId.toLowerCase() === 'quiz' && currentStep.quiz}
-          <!-- Quiz step -->
-          <div class="space-y-6">
-            <div class="text-center py-4">
-              <div class="text-xl font-medium text-stone-700">
-                {currentStep.title}
-              </div>
-            </div>
-
-            <QuizStep quiz={currentStep.quiz} />
-
-            <!-- Navigation - large arrows -->
-            <div class="flex items-center justify-between pt-6">
-              <button
-                onclick={prevStep}
-                disabled={currentStepIndex === 0}
-                class="w-14 h-14 flex items-center justify-center rounded-full border-2 border-stone-200 text-stone-400 hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
-                aria-label="Previous"
-              >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <span class="text-sm text-stone-400">
-                {currentStepIndex + 1} / {path.steps.length}
-              </span>
-
-              <button
-                onclick={nextStep}
-                class="w-14 h-14 flex items-center justify-center rounded-full border-2 transition-colors
-                       {currentStepIndex === path.steps.length - 1
-                         ? 'border-green-500 bg-green-500 text-white hover:bg-green-600'
-                         : 'border-indigo-500 bg-indigo-500 text-white hover:bg-indigo-600'}"
-                aria-label={currentStepIndex === path.steps.length - 1 ? 'Complete' : 'Next'}
-              >
-                {#if currentStepIndex === path.steps.length - 1}
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                {:else}
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                {/if}
-              </button>
-            </div>
-          </div>
-        {:else if currentStep && sutra}
-          <div class="space-y-6">
-            <!-- Sutra display with commentary and depth toggle -->
-            <SutraDisplay
-              {sutra}
-              variant="full"
-              {commentary}
-              {layeredCommentary}
-              depth={commentaryDepth}
-              fallbackCommentary={currentStep.commentary}
-              onDepthChange={(d) => { commentaryDepth = d; commentaryDepthStore.set(d); }}
-            />
-
-            <!-- Prakriya example -->
-            {#if prakriyaExample}
-              <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
-                <button
-                  onclick={() => showPrakriya ? showPrakriya = false : loadPrakriya()}
-                  disabled={prakriyaLoading}
-                  class="w-full p-5 text-left hover:bg-stone-50 transition-colors disabled:opacity-50"
-                >
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-medium text-emerald-700 uppercase tracking-wide">prakriyā</span>
-                    <span class="text-stone-400 ml-auto">
-                      {#if prakriyaLoading}
-                        <svg class="w-4 h-4 animate-spin" viewBox="0 0 16 16" fill="none">
-                          <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" stroke-dasharray="28" stroke-dashoffset="8"/>
-                        </svg>
-                      {:else if showPrakriya}
-                        <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                          <path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                      {:else}
-                        <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                          <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                      {/if}
-                    </span>
+                {#if step.commentary}
+                  <div class="bg-white rounded-lg border border-stone-200 p-5">
+                    <div class="text-stone-700 leading-relaxed">
+                      <CommentaryText text={step.commentary} />
+                    </div>
                   </div>
-                  <p class="text-stone-700">
-                    {#if prakriyaExample.type === 'tinanta'}
-                      <Sanskrit text={prakriyaExample.labelParts[0]} source="slp1" />
-                      <span class="text-stone-400 mx-1">+</span>
-                      <Sanskrit text={prakriyaExample.labelParts[1]} source="slp1" />
-                      <span class="text-stone-400 mx-1">→</span>
-                      <Sanskrit text={prakriyaExample.labelParts[2]} source="slp1" />
-                    {:else}
-                      <Sanskrit text={prakriyaExample.labelParts[0]} source="slp1" />
-                      <span class="text-stone-400 mx-1">→</span>
-                      <Sanskrit text={prakriyaExample.labelParts[1]} source="slp1" />
-                    {/if}
-                    {#if prakriyaExample.note}
-                      <span class="text-stone-400 ml-2">({prakriyaExample.note})</span>
-                    {/if}
-                  </p>
-                </button>
+                {/if}
 
-                {#if showPrakriya && prakriya}
-                  <div class="p-5 border-t border-stone-100 bg-stone-50/50">
-                    <DerivationViewer
-                      {prakriya}
-                      highlightSutra={currentStep?.sutraId}
-                      expanded={true}
-                      mode="simple"
-                    />
+                {#if step.keyTerms && step.keyTerms.length > 0}
+                  <div class="flex flex-wrap gap-2">
+                    {#each step.keyTerms as term}
+                      <span class="px-3 py-1 bg-stone-100 rounded-full text-sm text-stone-600">
+                        <Sanskrit text={term} source="slp1" />
+                      </span>
+                    {/each}
                   </div>
                 {/if}
               </div>
-            {/if}
 
-            <!-- Key terms -->
-            {#if currentStep.keyTerms && currentStep.keyTerms.length > 0}
-              <div class="flex flex-wrap gap-2 justify-center">
-                {#each currentStep.keyTerms as term}
-                  <span class="px-3 py-1 bg-stone-100 rounded-full text-sm text-stone-600">
-                    <Sanskrit text={term} source="slp1" />
-                  </span>
-                {/each}
+            {:else if step.sutraId === 'reading'}
+              <div class="space-y-4">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-medium text-amber-700 uppercase tracking-widest">पाठः · Passage</span>
+                </div>
+                <h2 class="text-xl font-medium text-stone-800">{step.title}</h2>
+
+                {#if step.commentary}
+                  <div class="bg-white rounded-lg border border-stone-200 p-5">
+                    <div class="text-stone-700 leading-relaxed">
+                      <CommentaryText text={step.commentary} />
+                    </div>
+                  </div>
+                {/if}
+              </div>
+
+            {:else if step.sutraId === 'quiz' && step.quiz}
+              <div class="space-y-4">
+                <h2 class="text-xl font-medium text-stone-700">{step.title}</h2>
+                <QuizStep quiz={step.quiz} />
+              </div>
+
+            {:else if sd.sutra}
+              <div class="space-y-4">
+                <SutraDisplay
+                  sutra={sd.sutra}
+                  variant="full"
+                  commentary={sd.commentary}
+                  layeredCommentary={sd.layeredCommentary}
+                  depth={commentaryDepth}
+                  fallbackCommentary={step.commentary}
+                  onDepthChange={(d) => { commentaryDepth = d; commentaryDepthStore.set(d); }}
+                />
+
+                {#if sd.prakriyaExample}
+                  <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+                    <button
+                      onclick={() => togglePrakriya(i)}
+                      disabled={sd.prakriyaLoading}
+                      class="w-full p-5 text-left hover:bg-stone-50 transition-colors disabled:opacity-50"
+                    >
+                      <div class="flex items-center gap-2 mb-2">
+                        <span class="text-xs font-medium text-emerald-700 uppercase tracking-wide">prakriyā</span>
+                        <span class="text-stone-400 ml-auto">
+                          {#if sd.prakriyaLoading}
+                            <svg class="w-4 h-4 animate-spin" viewBox="0 0 16 16" fill="none">
+                              <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" stroke-dasharray="28" stroke-dashoffset="8"/>
+                            </svg>
+                          {:else if sd.showPrakriya}
+                            <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                              <path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                          {:else}
+                            <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                          {/if}
+                        </span>
+                      </div>
+                      <p class="text-stone-700">
+                        {#if sd.prakriyaExample.type === 'tinanta'}
+                          <Sanskrit text={sd.prakriyaExample.labelParts[0]} source="slp1" />
+                          <span class="text-stone-400 mx-1">+</span>
+                          <Sanskrit text={sd.prakriyaExample.labelParts[1]} source="slp1" />
+                          <span class="text-stone-400 mx-1">→</span>
+                          <Sanskrit text={sd.prakriyaExample.labelParts[2]} source="slp1" />
+                        {:else}
+                          <Sanskrit text={sd.prakriyaExample.labelParts[0]} source="slp1" />
+                          <span class="text-stone-400 mx-1">→</span>
+                          <Sanskrit text={sd.prakriyaExample.labelParts[1]} source="slp1" />
+                        {/if}
+                        {#if sd.prakriyaExample.note}
+                          <span class="text-stone-400 ml-2">({sd.prakriyaExample.note})</span>
+                        {/if}
+                      </p>
+                    </button>
+
+                    {#if sd.showPrakriya && sd.prakriya}
+                      <div class="p-5 border-t border-stone-100 bg-stone-50/50">
+                        <DerivationViewer
+                          prakriya={sd.prakriya}
+                          highlightSutra={step.sutraId}
+                          expanded={true}
+                          mode="simple"
+                        />
+                      </div>
+                    {/if}
+                  </div>
+                {/if}
+
+                {#if step.keyTerms && step.keyTerms.length > 0}
+                  <div class="flex flex-wrap gap-2">
+                    {#each step.keyTerms as term}
+                      <span class="px-3 py-1 bg-stone-100 rounded-full text-sm text-stone-600">
+                        <Sanskrit text={term} source="slp1" />
+                      </span>
+                    {/each}
+                  </div>
+                {/if}
+              </div>
+
+            {:else}
+              <!-- Sutra not found / still loading -->
+              <div class="bg-white rounded-lg border border-stone-200 p-6 text-center text-stone-400 text-sm">
+                {step.title}
               </div>
             {/if}
 
-            <!-- Navigation - large arrows -->
-            <div class="flex items-center justify-between pt-6">
-              <button
-                onclick={prevStep}
-                disabled={currentStepIndex === 0}
-                class="w-14 h-14 flex items-center justify-center rounded-full border-2 border-stone-200 text-stone-400 hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
-                aria-label="Previous"
-              >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
+            <!-- Step divider (not after last) -->
+            {#if i < path.steps.length - 1}
+              <div class="pt-6 border-b border-stone-100"></div>
+            {/if}
+          </section>
+        {/each}
 
-              <span class="text-sm text-stone-400">
-                {currentStepIndex + 1} / {path.steps.length}
-              </span>
-
-              <button
-                onclick={nextStep}
-                class="w-14 h-14 flex items-center justify-center rounded-full border-2 transition-colors
-                       {currentStepIndex === path.steps.length - 1
-                         ? 'border-green-500 bg-green-500 text-white hover:bg-green-600'
-                         : 'border-indigo-500 bg-indigo-500 text-white hover:bg-indigo-600'}"
-                aria-label={currentStepIndex === path.steps.length - 1 ? 'Complete' : 'Next'}
-              >
-                {#if currentStepIndex === path.steps.length - 1}
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                {:else}
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                {/if}
-              </button>
-            </div>
-          </div>
-        {:else}
-          <div class="bg-white rounded-lg border border-stone-200 p-8 text-center text-stone-500">
-            Sutra not found
-          </div>
-        {/if}
+        <!-- End of path marker -->
+        <div class="text-center py-10 text-stone-300 text-sm">
+          <div class="text-2xl mb-2">॥</div>
+          <a href="/learn" class="text-indigo-400 hover:text-indigo-600 transition-colors text-xs">
+            ← All learning paths
+          </a>
+        </div>
       </main>
 
       <!-- Right sidebar: Pratyahara viewer -->
