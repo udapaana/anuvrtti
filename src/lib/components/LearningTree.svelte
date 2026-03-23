@@ -254,7 +254,7 @@
     {:else}
       <!-- Bālabodhini -->
       <div class="reading-header">
-        <p class="reading-desc">A digitization of the first volume of Kāśī Kṛṣṇācārya's <em>Bālabodhini</em> in Telugu.</p>
+        <p class="reading-desc">Here is a digitization of the first volume of Kāśī Kṛṣṇācārya's <em>Bālabodhini</em> in Telugu.</p>
       </div>
 
       <ol class="reading-list">

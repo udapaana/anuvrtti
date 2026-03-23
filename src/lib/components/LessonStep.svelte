@@ -169,6 +169,13 @@
       </div>
     </div>
 
+    <!-- Grammar focus callout -->
+    {#if lessonData.grammar_focus}
+      <div class="text-xs text-stone-500 bg-stone-50 border border-stone-100 rounded px-3 py-2 leading-relaxed">
+        <span class="font-medium text-stone-400 uppercase tracking-wide mr-2">{showTelugu ? 'పాఠ విషయము' : 'focus'}</span>{lessonData.grammar_focus}
+      </div>
+    {/if}
+
     <!-- Language selector + indicator -->
     <div class="flex items-center gap-2">
       {#each ([['telugu', 'తెలుగు'], ['english', 'English']] as const) as [val, label]}
