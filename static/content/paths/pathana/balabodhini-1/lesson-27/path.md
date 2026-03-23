@@ -2,11 +2,11 @@
 id = "balabodhini-1-27"
 order = 1027
 title = "Twenty-Seventh Lesson"
-titleSanskrit = "ఇరువదియేడవ పాఠము"
+titleSanskrit = "సప్తవింశః పాఠః"
 label = "Lesson 27"
 track = "reading"
 category = "prakarana"
-description = "infinitives gantum, netum; gerund ānīya; new verbs vadati (says), āhvāyati (calls), āhvāsyati (will call)"
+description = "@deva[तुमुन्] @[gantum, netum]; @deva[ल्यप्] @[ānīya]; @deva[धातु] @[vad], @[āhvā]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

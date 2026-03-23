@@ -2,11 +2,11 @@
 id = "balabodhini-1-23"
 order = 1023
 title = "Twenty-third Lesson"
-titleSanskrit = "ఇరువదిమూఁడవ పాఠము"
+titleSanskrit = "త్రయోవింశః పాఠః"
 label = "Lesson 23"
 track = "reading"
 category = "prakarana"
-description = "khād imperative (all persons/numbers); genitive singular bālakasya and bālakānām; causal connectives kutaḥ / tataḥ / ataḥ; noun dantaḥ"
+description = "@[khād] @deva[लोट्] (@deva[सर्वपुरुष]); @deva[षष्ठी] @[bālakasya], @[bālakānām]; @[kutaḥ, tataḥ, ataḥ]; @[dantaḥ]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

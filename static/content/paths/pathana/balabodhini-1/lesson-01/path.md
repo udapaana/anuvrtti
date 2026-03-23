@@ -2,11 +2,11 @@
 id = "balabodhini-1-01"
 order = 1001
 title = "First Lesson"
-titleSanskrit = "మొదటి పాఠము"
+titleSanskrit = "ప్రథమః పాఠః"
 label = "Lesson 1"
 track = "reading"
 category = "prakarana"
-description = "as-present singular (asti, asi, asmi)"
+description = "@[as] @deva[लट्] @deva[एकवचन] (@[asti, asi, asmi])"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

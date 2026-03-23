@@ -2,11 +2,11 @@
 id = "balabodhini-1-25"
 order = 1025
 title = "Twenty-Fifth Lesson"
-titleSanskrit = "ఇరువదియైదవ పాఠము"
+titleSanskrit = "పంచవింశః పాఠః"
 label = "Lesson 25"
 track = "reading"
 category = "prakarana"
-description = "gerunds in -itvā (khāditvā, kṛtvā); infinitives in -tum (khāditum, kartum); root gam (gacchati), nī (nayati), ā+gam (āgacchati)"
+description = "@deva[क्त्वा] (@[khāditvā, kṛtvā]); @deva[तुमुन्] (@[khāditum, kartum]); @deva[धातु] @[gam], @[nī], @[ā+gam]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

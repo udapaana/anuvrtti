@@ -1,6 +1,19 @@
 <script lang="ts">
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import LearningTree from '$lib/components/LearningTree.svelte';
+  import JargonLookup from '$lib/components/JargonLookup.svelte';
+  import { selectedTerm } from '$lib/stores/jargon';
+  import { lookupTerm } from '$lib/jargon';
+
+  let jargonVisible = $state(false);
+
+  selectedTerm.subscribe(term => {
+    if (term && lookupTerm(term)) jargonVisible = true;
+  });
+
+  function closeJargon() {
+    jargonVisible = false;
+  }
 </script>
 
 <svelte:head>
@@ -23,4 +36,17 @@
   <section class="bg-white rounded-lg border border-stone-200 p-6 overflow-visible">
     <LearningTree />
   </section>
+
+  <!-- Jargon panel -->
+  {#if jargonVisible}
+    <section class="mt-4 bg-white rounded-lg border border-stone-200 overflow-hidden">
+      <div class="flex items-center justify-between px-4 py-2 border-b border-stone-100 bg-stone-50">
+        <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Dictionary</span>
+        <button onclick={closeJargon} class="text-stone-400 hover:text-stone-600 text-lg leading-none">×</button>
+      </div>
+      <div class="p-4">
+        <JargonLookup />
+      </div>
+    </section>
+  {/if}
 </div>

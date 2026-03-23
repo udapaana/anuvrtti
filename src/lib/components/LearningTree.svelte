@@ -8,6 +8,7 @@
   import { displayScript } from '$lib/stores/preferences';
   import { transliterate, type Script } from '$lib/transliteration';
   import { onMount } from 'svelte';
+  import InlineMarkup from '$lib/components/InlineMarkup.svelte';
 
   // All paths loaded from index
   let allPaths: PathMeta[] = $state([]);
@@ -15,7 +16,7 @@
 
   // View mode toggled via a simple boolean
   type View = 'reading' | 'grammar' | 'balabodhini';
-  let view = $state<View>('reading');
+  let view = $state<View>('balabodhini');
 
   // Collapsed categories (grammar view)
   let collapsed: Set<string> = $state(new Set());
@@ -63,10 +64,18 @@
     const m = new Map<string, string>();
     for (const p of allPaths) {
       m.set(p.id, script === 'devanagari' ? p.label : await transliterate(p.label, 'devanagari', script));
+      if (p.titleSanskrit) {
+        m.set(`title-${p.id}`, script === 'telugu' ? p.titleSanskrit : await transliterate(p.titleSanskrit, 'telugu', script));
+      }
     }
     for (const c of categories) {
       m.set(c.id, script === 'devanagari' ? c.san : await transliterate(c.san, 'devanagari', script));
     }
+    // Tab labels
+    const balaTab = 'బాలబోధిని';
+    const gramTab = 'व्याकरणम्';
+    m.set('balabodhini-tab', script === 'telugu' ? balaTab : await transliterate(balaTab, 'telugu', script));
+    m.set('grammar-tab', script === 'devanagari' ? gramTab : await transliterate(gramTab, 'devanagari', script));
     labels = m;
   }
 
@@ -130,20 +139,13 @@
 
     <!-- Track Toggle -->
     <div class="mode-toggle">
-      <a href="#reading" class="mode-btn" class:active={view === 'reading'}
-         onclick={(e) => { e.preventDefault(); view = 'reading'; }}>
-        <span class="mode-sanskrit">पठनम्</span>
-        <span class="mode-english">Reading</span>
+      <a href="#balabodhini" class="mode-btn" class:active={view === 'balabodhini'}
+         onclick={(e) => { e.preventDefault(); view = 'balabodhini'; }}>
+        <span class="mode-sanskrit font-telugu">{label('balabodhini-tab', 'బాలబోధిని')}</span>
       </a>
       <a href="#grammar" class="mode-btn" class:active={view === 'grammar'}
          onclick={(e) => { e.preventDefault(); view = 'grammar'; }}>
-        <span class="mode-sanskrit">व्याकरणम्</span>
-        <span class="mode-english">Grammar</span>
-      </a>
-      <a href="#balabodhini" class="mode-btn" class:active={view === 'balabodhini'}
-         onclick={(e) => { e.preventDefault(); view = 'balabodhini'; }}>
-        <span class="mode-sanskrit font-telugu">బాలబోధిని</span>
-        <span class="mode-english">Bālabodhini</span>
+        <span class="mode-sanskrit">{label('grammar-tab', 'व्याकरणम्')}</span>
       </a>
     </div>
 
@@ -252,7 +254,7 @@
     {:else}
       <!-- Bālabodhini -->
       <div class="reading-header">
-        <p class="reading-desc">A complete Telugu-medium Sanskrit primer — 38 lessons building from basic verbs to connected reading.</p>
+        <p class="reading-desc">A digitization of the first volume of Kāśī Kṛṣṇācārya's <em>Bālabodhini</em> in Telugu.</p>
       </div>
 
       <ol class="reading-list">
@@ -265,10 +267,12 @@
                 {#if complete}✓{:else}{i + 1}{/if}
               </span>
               <div class="reading-content">
-                <span class="reading-label font-telugu">{path.titleSanskrit}</span>
+                <span class="reading-label">{label(`title-${path.id}`, path.titleSanskrit)}</span>
                 <span class="reading-title">{path.title}</span>
+                {#if path.description}
+                  <span class="reading-desc-inline" style="color: {colors.medium};"><InlineMarkup text={path.description} /></span>
+                {/if}
               </div>
-              <span class="reading-category" style="color: {colors.medium}; font-size: 0.6rem;">{path.description?.split(';')[0]?.slice(0, 30)}</span>
             </a>
           </li>
         {/each}
@@ -488,6 +492,13 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+  }
+
+  .reading-desc-inline {
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.9;
   }
 
   .reading-progress-mini {

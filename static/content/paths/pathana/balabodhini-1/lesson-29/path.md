@@ -2,11 +2,11 @@
 id = "balabodhini-1-29"
 order = 1029
 title = "Twenty-Ninth Lesson"
-titleSanskrit = "ఇరువదితొమ్మిదవ పాఠము"
+titleSanskrit = "ఏకోనత్రింశః పాఠః"
 label = "Lesson 29"
 track = "reading"
 category = "prakarana"
-description = "accusative asmān; ablative vṛkṣāt, vṛkṣebhyaḥ; infinitive pātum; gerund pṛṣṭvā, āhūya; verbs pāsyati (will drink), vadati, carati"
+description = "@deva[द्वितीया] @[asmān]; @deva[पञ्चमी] @[vṛkṣāt, vṛkṣebhyaḥ]; @deva[तुमुन्] @[pātum]; @deva[क्त्वा] @[pṛṣṭvā, āhūya]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

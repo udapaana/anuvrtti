@@ -2,11 +2,11 @@
 id = "balabodhini-1-32"
 order = 1032
 title = "Thirty-Second Lesson"
-titleSanskrit = "ముప్పదిరెండవ పాఠము"
+titleSanskrit = "ద్వాత్రింశః పాఠః"
 label = "Lesson 32"
 track = "reading"
 category = "prakarana"
-description = "dative tasmai, tebhyaḥ; ablative tasmāt, tvat, mat; gerunds bhūtvā, calitvā, uṣitvā; infinitives bhavitum, calitum, vastum; causative kārayati; yacchati/dāsyati (gives/will give)"
+description = "@deva[चतुर्थी] @[tasmai, tebhyaḥ]; @deva[पञ्चमी] @[tasmāt, tvat, mat]; @deva[क्त्वा] @[bhūtvā, calitvā]; @deva[णिच्] @[kārayati]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

@@ -2,11 +2,11 @@
 id = "balabodhini-1-12"
 order = 1012
 title = "Twelfth Lesson"
-titleSanskrit = "పన్నెండవ పాఠము"
+titleSanskrit = "ద్వాదశః పాఠః"
 label = "Lesson 12"
 track = "reading"
 category = "prakarana"
-description = "kṛ imperfect singular (akarot / akaroḥ / akaravam); manner adverbs katham (how?), evaṃ (thus), ittham (in this way)"
+description = "@[kṛ] @deva[लङ्] @deva[एकवचन] (@[akarot, akaroḥ, akaravam]); @deva[अव्यय] @[katham], @[evaṃ], @[ittham]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

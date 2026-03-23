@@ -2,11 +2,11 @@
 id = "balabodhini-1-09"
 order = 1009
 title = "Ninth Lesson"
-titleSanskrit = "తొమ్మిదవ పాఠము"
+titleSanskrit = "నవమః పాఠః"
 label = "Lesson 9"
 track = "reading"
 category = "prakarana"
-description = "kṛ present singular (karoti / karoṣi / karomi); particles kila (reportedly) and eva (indeed, only)"
+description = "@[kṛ] @deva[लट्] @deva[एकवचन] (@[karoti, karoṣi, karomi]); @deva[निपात] @[kila], @[eva]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

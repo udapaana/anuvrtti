@@ -2,11 +2,11 @@
 id = "balabodhini-1-15"
 order = 1015
 title = "Fifteenth Lesson"
-titleSanskrit = "పదునేనవ పాఠము"
+titleSanskrit = "పంచదశః పాఠః"
 label = "Lesson 15"
 track = "reading"
 category = "prakarana"
-description = "kṛ imperative plural (kurvantu / kuruta / karavāma); yuṣmat/asmat possessive compounds (yuṣmad-gṛhe / asmat-gṛhe); tūṣṇīm (silently, doing nothing)"
+description = "@[kṛ] @deva[लोट्] @deva[बहुवचन] (@[kurvantu, kuruta, karavāma]); @[yuṣmad/asmat] @deva[समास]; @[tūṣṇīm]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

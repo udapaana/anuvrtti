@@ -2,11 +2,11 @@
 id = "balabodhini-1-13"
 order = 1013
 title = "Thirteenth Lesson"
-titleSanskrit = "పదుమూఁడవ పాఠము"
+titleSanskrit = "త్రయోదశః పాఠః"
 label = "Lesson 13"
 track = "reading"
 category = "prakarana"
-description = "kṛ imperfect plural (akuryan / akuruta / akurma); time adverbs divā (by day), tathāpi (even so), sarvathā (entirely, absolutely)"
+description = "@[kṛ] @deva[लङ्] @deva[बहुवचन] (@[akuryan, akuruta, akurma]); @deva[कालवाची] @[divā], @[tathāpi], @[sarvathā]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

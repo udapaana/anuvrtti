@@ -2,11 +2,11 @@
 id = "balabodhini-1-31"
 order = 1031
 title = "Thirty-First Lesson"
-titleSanskrit = "ముప్పదియొకటవ పాఠము"
+titleSanskrit = "ఏకత్రింశః పాఠః"
 label = "Lesson 31"
 track = "reading"
 category = "prakarana"
-description = "instrumental yuṣmābhiḥ, mārjālena, mūṣakaiḥ; gerunds dṛṣṭvā, pītvā; infinitives draṣṭum, praṣṭum; mā'stu (let it be); verbs vasati, bhavati, calati"
+description = "@deva[तृतीया] @[yuṣmābhiḥ, mārjālena, mūṣakaiḥ]; @deva[क्त्वा] @[dṛṣṭvā, pītvā]; @deva[तुमुन्] @[draṣṭum]; @deva[धातु] @[vas], @[bhū], @[cal]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

@@ -2,11 +2,11 @@
 id = "balabodhini-1-21"
 order = 1021
 title = "Twenty-first Lesson"
-titleSanskrit = "ఇరువదియొకటవ పాఠము"
+titleSanskrit = "ఏకవింశః పాఠః"
 label = "Lesson 21"
 track = "reading"
 category = "prakarana"
-description = "khād imperfect (all persons/numbers); genitive plurals yuṣmākam, asmākam, teṣām; correlative yathā…tathā; adverb vṛthā; familiar address re/are"
+description = "@[khād] @deva[लङ्] (@deva[सर्वपुरुष]); @deva[षष्ठी] @deva[बहुवचन] @[yuṣmākam, asmākam, teṣām]; @[yathā…tathā]; @[vṛthā]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

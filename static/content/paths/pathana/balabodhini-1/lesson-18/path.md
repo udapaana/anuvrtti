@@ -2,11 +2,11 @@
 id = "balabodhini-1-18"
 order = 1018
 title = "Eighteenth Lesson"
-titleSanskrit = "పదునెనిమిదవ పాఠము"
+titleSanskrit = "అష్టాదశః పాఠః"
 label = "Lesson 18"
 track = "reading"
 category = "prakarana"
-description = "kṛ simple future (kariṣyati, kariṣyasi, kariṣyāmi); genitive pronouns tava and mama; adverbs bahiḥ and antaḥ"
+description = "@[kṛ] @deva[लृट्] @deva[एकवचन] (@[kariṣyati, kariṣyasi, kariṣyāmi]); @deva[षष्ठी] @[tava], @[mama]; @[bahiḥ], @[antaḥ]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

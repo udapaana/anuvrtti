@@ -2,11 +2,11 @@
 id = "balabodhini-1-19"
 order = 1019
 title = "Nineteenth Lesson"
-titleSanskrit = "పంధొమ్మిదవ పాఠము"
+titleSanskrit = "ఏకోనవింశః పాఠః"
 label = "Lesson 19"
 track = "reading"
 category = "prakarana"
-description = "kṛ future plural (kariṣyanti, kariṣyatha, kariṣyāmaḥ); demonstrative etat; vocatives bhoḥ and he; question particle nu"
+description = "@[kṛ] @deva[लृट्] @deva[बहुवचन] (@[kariṣyanti, kariṣyatha, kariṣyāmaḥ]); @[etat]; @deva[सम्बोधन] @[bhoḥ], @[he]; @[nu]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

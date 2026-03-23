@@ -2,11 +2,11 @@
 id = "balabodhini-1-33"
 order = 1033
 title = "Thirty-Third Lesson"
-titleSanskrit = "ముప్పదిమూఁడవ పాఠము"
+titleSanskrit = "త్రయస్త్రింశః పాఠః"
 label = "Lesson 33"
 track = "reading"
 category = "prakarana"
-description = "Complete declension paradigms for a-stem masculine (rāma), a-stem neuter (phala), and ā-stem feminine (ambā) nouns"
+description = "@deva[अकारान्त] @deva[पुंलिङ्ग] (@[rāma]), @deva[नपुंसकलिङ्ग] (@[phala]), @deva[आकारान्त] @deva[स्त्रीलिङ्ग] (@[ambā]) — @deva[सुबन्त]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

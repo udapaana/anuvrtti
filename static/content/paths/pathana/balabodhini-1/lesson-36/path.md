@@ -2,11 +2,11 @@
 id = "balabodhini-1-36"
 order = 1036
 title = "Thirty-Sixth Lesson"
-titleSanskrit = "ముప్పదియాఱవ పాఠము"
+titleSanskrit = "షట్త్రింశః పాఠః"
 label = "Lesson 36"
 track = "reading"
 category = "prakarana"
-description = "Causative verbs (ṇijanta dhātus) in -ayati/-ayate; basic verbs paṭh, likh, dhāv; causative formation and meaning"
+description = "@deva[णिजन्त] @deva[धातु] (@[-ayati/-ayate]); @deva[धातु] @[paṭh, likh, dhāv]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

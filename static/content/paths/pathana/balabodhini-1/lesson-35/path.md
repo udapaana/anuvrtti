@@ -2,11 +2,11 @@
 id = "balabodhini-1-35"
 order = 1035
 title = "Thirty-Fifth Lesson"
-titleSanskrit = "ముప్పదియైదవ పాఠము"
+titleSanskrit = "పంచత్రింశః పాఠః"
 label = "Lesson 35"
 track = "reading"
 category = "prakarana"
-description = "Complete verb paradigms for √as (to be), √kṛ (to do), and √bhū (to become/be) across five moods: present, imperfect, imperative, optative, future"
+description = "@deva[तिङन्त] @[√as], @[√kṛ], @[√bhū] — @deva[लट्], @deva[लङ्], @deva[लोट्], @deva[लिङ्], @deva[लृट्]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

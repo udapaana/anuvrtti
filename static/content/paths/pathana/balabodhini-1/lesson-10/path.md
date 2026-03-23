@@ -2,11 +2,11 @@
 id = "balabodhini-1-10"
 order = 1010
 title = "Tenth Lesson"
-titleSanskrit = "పదియవ పాఠము"
+titleSanskrit = "దశమః పాఠః"
 label = "Lesson 10"
 track = "reading"
 category = "prakarana"
-description = "kṛ present plural (kurvanti / kurutha / kurmaḥ); noun declension devaḥ / devam / devān (nom/acc sg and pl)"
+description = "@[kṛ] @deva[लट्] @deva[बहुवचन] (@[kurvanti, kurutha, kurmaḥ]); @deva[अकारान्त] @deva[पुंलिङ्ग] (@[devaḥ, devam, devān])"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

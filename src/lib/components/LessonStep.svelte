@@ -2,6 +2,69 @@
   import { parse as parseToml } from 'smol-toml';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { lessonLanguage } from '$lib/stores/preferences';
+  import { selectedTerm } from '$lib/stores/jargon';
+
+  // Map English person labels to Sanskrit IAST for display + jargon + Telugu gloss
+  const personMap: Record<string, { iast: string; deva: string; telugu: string; english: string }> = {
+    '1st': { iast: 'uttama',   deva: 'उत्तम',   telugu: 'ఉత్తమ',   english: '1st' },
+    '2nd': { iast: 'madhyama', deva: 'मध्यम',   telugu: 'మధ్యమ',   english: '2nd' },
+    '3rd': { iast: 'prathama', deva: 'प्रथम',   telugu: 'ప్రథమ',   english: '3rd' },
+  };
+
+  // Mood IAST → Devanagari for jargon lookup
+  const moodDeva: Record<string, string> = {
+    'laṭ': 'लट्', 'laṅ': 'लङ्', 'loṭ': 'लोट्', 'liṅ': 'लिङ्', 'lṛṭ': 'लृट्',
+  };
+
+  // Case IAST → Devanagari jargon term + Telugu gloss
+
+  const caseMap: Record<string, { iast: string; deva: string; telugu: string; english: string }> = {
+    'prathamā':  { iast: 'prathamā',  deva: 'प्रथमा',   telugu: 'ప్రథమా',   english: 'nominative' },
+    'dvitīyā':   { iast: 'dvitīyā',   deva: 'द्वितीया', telugu: 'ద్వితీయా', english: 'accusative' },
+    'tṛtīyā':    { iast: 'tṛtīyā',    deva: 'तृतीया',   telugu: 'తృతీయా',   english: 'instrumental' },
+    'caturthī':  { iast: 'caturthī',  deva: 'चतुर्थी',  telugu: 'చతుర్థీ',  english: 'dative' },
+    'pañcamī':   { iast: 'pañcamī',   deva: 'पञ्चमी',   telugu: 'పంచమీ',    english: 'ablative' },
+    'ṣaṣṭhī':    { iast: 'ṣaṣṭhī',    deva: 'षष्ठी',    telugu: 'షష్ఠీ',    english: 'genitive' },
+    'saptamī':   { iast: 'saptamī',   deva: 'सप्तमी',   telugu: 'సప్తమీ',   english: 'locative' },
+    'sambodhana':{ iast: 'sambodhana',deva: 'सम्बोधन',  telugu: 'సంబోధన',   english: 'vocative' },
+  };
+
+  // Mood IAST → Telugu gloss
+  const moodTelugu: Record<string, string> = {
+    'laṭ': 'వర్తమాన',
+    'laṅ': 'భూతకాల',
+    'loṭ': 'ఆజ్ఞార్థక',
+    'liṅ': 'విధ్యర్థక',
+    'lṛṭ': 'భవిష్యత్',
+  };
+
+  // Paradigm label English → Telugu translations
+  const labelTeluguMap: Record<string, string> = {
+    'first person (I / we)':              'ఉత్తమ పురుష (నేను / మేము)',
+    'second person (you / you all)':      'మధ్యమ పురుష (నీవు / మీరు)',
+    'all/every; pronominal adjective':    'సర్వ; సర్వనామ విశేషణము',
+    'one; singular only':                 'ఏక; ఏకవచనమాత్రము',
+    'how many?; plural only':             'కతి?; బహువచనమాత్రము',
+    'many; plural only':                  'అనేక; బహువచనమాత్రము',
+    'he/that; third person pronoun':      'తత్/సః; ప్రథమ పురుష సర్వనామము',
+    'a-stem masculine':                   'అకారాంత పుంలింగము',
+    'a-stem neuter':                      'అకారాంత నపుంసకలింగము',
+    'ā-stem feminine':                    'ఆకారాంత స్త్రీలింగము',
+    'present':                            'వర్తమాన కాలము',
+    'imperfect':                          'భూతకాలము',
+    'imperative':                         'ఆజ్ఞార్థకము',
+    'optative':                           'విధ్యర్థకము',
+    'future':                             'భవిష్యత్కాలము',
+    'future; uses √bhū forms':            'భవిష్యత్కాలము (√భూ రూపాలు)',
+    'dual (two subjects)':                'ద్వివచనము (ఇద్దరు కర్తలు)',
+  };
+
+  // Split a paradigm label "sanskrit — english description" into parts
+  function splitLabel(label: string): { sanskrit: string; english: string } {
+    const idx = label.indexOf(' — ');
+    if (idx === -1) return { sanskrit: label, english: '' };
+    return { sanskrit: label.slice(0, idx), english: label.slice(idx + 3) };
+  }
 
   interface Props {
     lessonRef: string; // e.g. "balabodhini-1-07"
@@ -56,6 +119,17 @@
 
   const showTelugu = $derived(lang === 'telugu');
 
+  // Language-aware UI strings (not Sanskrit content — these are UI chrome)
+  const ui = $derived({
+    vocabulary:  showTelugu ? 'పదకోశము'         : 'Vocabulary',
+    paradigm:    showTelugu ? 'రూపమాల'           : 'Paradigm',
+    passage:     showTelugu ? 'పాఠ్యభాగము'       : 'Passage',
+    translation: showTelugu ? 'తెలుగు అనువాదము' : 'Translation',
+    exercises:   showTelugu ? 'అభ్యాసములు'       : 'Exercises',
+    matchLabel:  showTelugu ? 'జతపరచుము — సంస్కృతము · తెలుగు' : 'Match — Sanskrit · English',
+    translatePrompt: showTelugu ? 'సంస్కృతంలోకి అనువదించుము' : 'Translate into Sanskrit',
+  });
+
   // Per-item reveal state for reading sentences (key = sectionIndex + '-' + itemN)
   let revealed = $state(new Set<string>());
 
@@ -81,22 +155,22 @@
 
     <!-- Lesson header -->
     <div class="pb-2 border-b border-stone-100">
-      <div class="text-xs font-medium text-amber-700 uppercase tracking-widest mb-1">
-        బాలబోధిని · Bālabodhini
+      <div class="text-xs font-medium text-amber-700 uppercase tracking-widest mb-1 flex items-baseline gap-2">
+        <Sanskrit text="బాలబోధిని" source="telugu" />
+        <span class="font-normal normal-case text-amber-500 tracking-normal">Kāśī Kṛṣṇācārya</span>
       </div>
       <div class="text-xl font-semibold text-stone-800">
-        {lessonData.title_english}
-        {#if lessonData.title_telugu}
-          <span class="text-base font-normal text-stone-400 ml-2 font-telugu">{lessonData.title_telugu}</span>
+        {showTelugu ? (lessonData.title_telugu ?? lessonData.title_english) : lessonData.title_english}
+        {#if lessonData.title_sanskrit}
+          <span class="text-base font-normal text-stone-400 ml-2">
+            <Sanskrit text={lessonData.title_sanskrit} source="telugu" />
+          </span>
         {/if}
       </div>
-      {#if lessonData.grammar_focus}
-        <div class="text-xs text-stone-400 mt-1">{lessonData.grammar_focus}</div>
-      {/if}
     </div>
 
-    <!-- Language selector -->
-    <div class="flex items-center gap-1">
+    <!-- Language selector + indicator -->
+    <div class="flex items-center gap-2">
       {#each ([['telugu', 'తెలుగు'], ['english', 'English']] as const) as [val, label]}
         <button
           onclick={() => setLang(val)}
@@ -105,24 +179,29 @@
                               : 'border-stone-200 text-stone-400 hover:border-stone-300 hover:text-stone-600'}"
         >{label}</button>
       {/each}
+      <span class="text-xs text-stone-300 ml-1">{showTelugu ? 'వివరణలు తెలుగులో' : 'glosses in English'}</span>
     </div>
 
     <!-- Sections -->
     {#each (lessonData.sections ?? []) as section, si}
 
       {#if section.type === 'grammar_note'}
-        <div class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3 text-sm space-y-1">
-          {#if showTelugu && section.items?.[0]?.telugu}
+        <div class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3 text-sm space-y-0.5">
+          {#if section.items?.[0]?.telugu}
             <p class="font-telugu text-indigo-900 leading-relaxed">{section.items[0].telugu}</p>
-          {:else if !showTelugu && section.items?.[0]?.english}
-            <p class="text-indigo-700 leading-relaxed">{section.items[0].english}</p>
+          {/if}
+          {#if !showTelugu && section.items?.[0]?.english}
+            <p class="text-indigo-500 text-xs leading-relaxed">{section.items[0].english}</p>
           {/if}
         </div>
 
       {:else if section.type === 'vocabulary'}
         <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
-          <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Vocabulary</span>
+          <div class="px-4 py-2 border-b border-stone-100 bg-stone-50 flex items-center gap-6">
+            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.vocabulary}</span>
+            <span class="text-xs text-stone-300 font-medium uppercase tracking-wide">
+              <Sanskrit text="śabda" source="iast" /> · {showTelugu ? 'అర్థము' : 'meaning'}
+            </span>
           </div>
           <div class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}
@@ -147,45 +226,48 @@
         {@const prevSection = (lessonData.sections ?? [])[si - 1]}
         {@const isMatching = prevSection?.type === 'reading'}
         {#if isMatching}
-          <!-- Matching exercise: Sanskrit column vs Telugu/English column -->
+          <!-- Matching exercise: flat grid, left+right cells are siblings so rows align -->
+          {@const sanskritItems = prevSection.items ?? []}
+          {@const teluguItems = section.items ?? []}
+          {@const rowCount = Math.max(sanskritItems.length, teluguItems.length)}
           <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
             <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Match — Sanskrit · {showTelugu ? 'తెలుగు' : 'English'}</span>
+              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.matchLabel}</span>
             </div>
-            <div class="grid grid-cols-2 divide-x divide-stone-100">
-              <!-- Sanskrit column -->
-              <ol class="divide-y divide-stone-50">
-                {#each (prevSection.items ?? []) as item}
-                  <li class="px-3 py-2.5 flex items-start gap-2">
-                    <span class="text-xs text-stone-300 mt-0.5 w-4 flex-shrink-0 text-right">{item.n}.</span>
+            <div class="grid grid-cols-2" style="grid-auto-rows: auto;">
+              {#each {length: rowCount} as _, ri}
+                {@const s = sanskritItems[ri]}
+                {@const t = teluguItems[ri]}
+                <!-- Sanskrit cell -->
+                <div class="px-3 py-3 flex items-center gap-2 border-r border-stone-100 {ri < rowCount - 1 ? 'border-b border-stone-50' : ''}">
+                  {#if s}
+                    <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right">{s.n}.</span>
                     <div class="text-base leading-snug">
-                      <Sanskrit text={item.sanskrit_telugu} source="telugu" />
+                      <Sanskrit text={s.sanskrit_telugu} source="telugu" />
                     </div>
-                  </li>
-                {/each}
-              </ol>
-              <!-- Telugu / English column -->
-              <ol class="divide-y divide-stone-50">
-                {#each (section.items ?? []) as item}
-                  <li class="px-3 py-2.5 flex items-start gap-2">
-                    <span class="text-xs text-stone-300 mt-0.5 w-4 flex-shrink-0 text-right">{item.n}.</span>
+                  {/if}
+                </div>
+                <!-- Telugu / English cell -->
+                <div class="px-3 py-3 flex items-center gap-2 {ri < rowCount - 1 ? 'border-b border-stone-50' : ''}">
+                  {#if t}
+                    <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right">{t.n}.</span>
                     <div class="leading-snug">
-                      {#if showTelugu && item.telugu}
-                        <span class="font-telugu text-stone-800">{item.telugu}</span>
-                      {:else if !showTelugu && item.english}
-                        <span class="text-stone-700 text-sm">{item.english}</span>
+                      {#if showTelugu && t.telugu}
+                        <span class="font-telugu text-stone-800">{t.telugu}</span>
+                      {:else if !showTelugu && t.english}
+                        <span class="text-stone-700 text-sm">{t.english}</span>
                       {/if}
                     </div>
-                  </li>
-                {/each}
-              </ol>
+                  {/if}
+                </div>
+              {/each}
             </div>
           </div>
         {:else}
           <!-- Standalone exercises (no paired reading) -->
           <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
             <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Exercises — Translate into Sanskrit</span>
+              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.exercises} — {ui.translatePrompt}</span>
             </div>
             <ol class="divide-y divide-stone-50">
               {#each (section.items ?? []) as item}
@@ -205,37 +287,151 @@
         {/if}
 
       {:else if section.type === 'paradigm'}
+        {@const lbl = section.label ? splitLabel(section.label) : null}
         <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
           <div class="px-4 py-2 border-b border-stone-100 bg-stone-50 flex items-center gap-3">
-            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Paradigm</span>
-            {#if section.label}
-              <span class="text-xs text-stone-600 font-iast">{section.label}</span>
+            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.paradigm}</span>
+            {#if lbl}
+              {@const desc = lbl.english ? (showTelugu ? (labelTeluguMap[lbl.english] ?? lbl.english) : lbl.english) : ''}
+              <span class="text-sm text-stone-700">
+                <Sanskrit text={lbl.sanskrit} source="iast" />
+                {#if desc}
+                  <span class="text-stone-400 ml-1">—</span>
+                  <span class="text-stone-500 ml-1 {showTelugu ? 'font-telugu' : ''}">{desc}</span>
+                {/if}
+              </span>
             {/if}
           </div>
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="border-b border-stone-100 bg-stone-50/50">
-                <th class="px-4 py-2 text-left text-xs text-stone-400 font-normal w-16">Person</th>
-                <th class="px-4 py-2 text-left text-xs text-stone-400 font-normal">Singular</th>
-                <th class="px-4 py-2 text-left text-xs text-stone-400 font-normal">Plural</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-stone-50">
-              {#each (section.items ?? []) as row}
-                <tr>
-                  <td class="px-4 py-2 text-xs text-stone-400">{row.person}</td>
-                  <td class="px-4 py-2"><Sanskrit text={row.singular} source="iast" /></td>
-                  <td class="px-4 py-2"><Sanskrit text={row.plural ?? '—'} source="iast" /></td>
+          {#if section.layout === 'moods' && section.moods}
+            <!-- Multi-mood layout: one column per mood -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-stone-200 bg-stone-50">
+                    <th class="px-4 py-3 text-left font-normal w-12">
+                      <button class="jargon-term" onclick={() => selectedTerm.set('पुरुष')}>
+                        <Sanskrit text="puruṣa" source="iast" />
+                        <span class="jargon-en">{showTelugu ? 'పురుష' : 'person'}</span>
+                      </button>
+                    </th>
+                    {#each (section.moods ?? []) as mood}
+                      {@const deva = moodDeva[mood]}
+                      <th class="px-3 py-3 text-left font-normal">
+                        <button class="jargon-term" onclick={() => deva && selectedTerm.set(deva)}>
+                          <Sanskrit text={mood} source="iast" />
+                          <span class="jargon-en">{showTelugu ? (moodTelugu[mood] ?? mood) : mood}</span>
+                        </button>
+                      </th>
+                    {/each}
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-stone-50">
+                  {#each (section.items ?? []) as row}
+                    {@const p = personMap[row.person]}
+                    <tr class="hover:bg-stone-50/50">
+                      <td class="px-4 py-3">
+                        <button class="jargon-term" onclick={() => p && selectedTerm.set(p.deva)}>
+                          <Sanskrit text={p?.iast ?? row.person} source="iast" />
+                          <span class="jargon-en">{showTelugu ? (p?.telugu ?? row.person) : (p?.english ?? row.person)}</span>
+                        </button>
+                      </td>
+                      {#each (row.forms ?? []) as form}
+                        <td class="px-3 py-3 text-base"><Sanskrit text={form} source="iast" /></td>
+                      {/each}
+                    </tr>
+                  {/each}
+                </tbody>
+              </table>
+            </div>
+          {:else if (section.items ?? [])[0]?.case}
+            <!-- Case/declension layout -->
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-stone-200 bg-stone-50">
+                  <th class="px-4 py-3 text-left font-normal w-24">
+                    <button class="jargon-term" onclick={() => selectedTerm.set('विभक्ति')}>
+                      <Sanskrit text="vibhakti" source="iast" />
+                      <span class="jargon-en">{showTelugu ? 'విభక్తి' : 'case'}</span>
+                    </button>
+                  </th>
+                  <th class="px-4 py-3 text-left font-normal">
+                    <button class="jargon-term" onclick={() => selectedTerm.set('एकवचन')}>
+                      <Sanskrit text="ekavacana" source="iast" />
+                      <span class="jargon-en">{showTelugu ? 'ఏకవచన' : 'singular'}</span>
+                    </button>
+                  </th>
+                  <th class="px-4 py-3 text-left font-normal">
+                    <button class="jargon-term" onclick={() => selectedTerm.set('बहुवचन')}>
+                      <Sanskrit text="bahuvacana" source="iast" />
+                      <span class="jargon-en">{showTelugu ? 'బహువచన' : 'plural'}</span>
+                    </button>
+                  </th>
                 </tr>
-              {/each}
-            </tbody>
-          </table>
+              </thead>
+              <tbody class="divide-y divide-stone-50">
+                {#each (section.items ?? []) as row}
+                  {@const c = caseMap[row.case]}
+                  <tr class="hover:bg-stone-50/50">
+                    <td class="px-4 py-3">
+                      <button class="jargon-term" onclick={() => c && selectedTerm.set(c.deva)}>
+                        <Sanskrit text={c?.iast ?? row.case} source="iast" />
+                        <span class="jargon-en">{showTelugu ? (c?.telugu ?? row.case) : (c?.english ?? row.case)}</span>
+                      </button>
+                    </td>
+                    <td class="px-4 py-3 text-base"><Sanskrit text={row.singular || '—'} source="iast" /></td>
+                    <td class="px-4 py-3 text-base"><Sanskrit text={row.plural || '—'} source="iast" /></td>
+                  </tr>
+                {/each}
+              </tbody>
+            </table>
+          {:else}
+            <!-- Standard person/singular/plural layout -->
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-stone-200 bg-stone-50">
+                  <th class="px-4 py-3 text-left font-normal w-16">
+                    <button class="jargon-term" onclick={() => selectedTerm.set('पुरुष')}>
+                      <Sanskrit text="puruṣa" source="iast" />
+                      <span class="jargon-en">{showTelugu ? 'పురుష' : 'person'}</span>
+                    </button>
+                  </th>
+                  <th class="px-4 py-3 text-left font-normal">
+                    <button class="jargon-term" onclick={() => selectedTerm.set('एकवचन')}>
+                      <Sanskrit text="ekavacana" source="iast" />
+                      <span class="jargon-en">{showTelugu ? 'ఏకవచన' : 'singular'}</span>
+                    </button>
+                  </th>
+                  <th class="px-4 py-3 text-left font-normal">
+                    <button class="jargon-term" onclick={() => selectedTerm.set('बहुवचन')}>
+                      <Sanskrit text="bahuvacana" source="iast" />
+                      <span class="jargon-en">{showTelugu ? 'బహువచన' : 'plural'}</span>
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-stone-50">
+                {#each (section.items ?? []) as row}
+                  {@const p = personMap[row.person]}
+                  <tr class="hover:bg-stone-50/50">
+                    <td class="px-4 py-3">
+                      <button class="jargon-term" onclick={() => p && selectedTerm.set(p.deva)}>
+                        <Sanskrit text={p?.iast ?? row.person} source="iast" />
+                        <span class="jargon-en">{showTelugu ? (p?.telugu ?? row.person) : (p?.english ?? row.person)}</span>
+                      </button>
+                    </td>
+                    <td class="px-4 py-3 text-base"><Sanskrit text={row.singular} source="iast" /></td>
+                    <td class="px-4 py-3 text-base"><Sanskrit text={row.plural ?? '—'} source="iast" /></td>
+                  </tr>
+                {/each}
+              </tbody>
+            </table>
+          {/if}
         </div>
 
       {:else if section.type === 'passage'}
         <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
           <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">Passage</span>
+            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.passage}</span>
           </div>
           <div class="px-4 py-4 space-y-3">
             {#each (section.items ?? []) as item}
@@ -251,10 +447,10 @@
           </div>
         </div>
 
-      {:else if section.type === 'passage_translation' && showTelugu}
+      {:else if section.type === 'passage_translation'}
         <div class="bg-amber-50/40 rounded-lg border border-amber-100 overflow-hidden">
           <div class="px-4 py-2 border-b border-amber-100">
-            <span class="text-xs font-medium text-amber-700 uppercase tracking-wide">తెలుగు అనువాదము</span>
+            <span class="text-xs font-medium text-amber-700 uppercase tracking-wide">{ui.translation}</span>
           </div>
           <div class="px-4 py-4 space-y-2">
             {#each (section.items ?? []) as item}
@@ -267,3 +463,31 @@
     {/each}
   </div>
 {/if}
+
+<style>
+  .jargon-term {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    cursor: pointer;
+    border-bottom: 1px dashed #a78bfa;
+    padding-bottom: 1px;
+    transition: background-color 0.1s;
+    border-radius: 2px;
+    padding-inline: 2px;
+  }
+
+  .jargon-term:hover {
+    background-color: #ede9fe;
+  }
+
+  .jargon-en {
+    font-size: 0.6rem;
+    color: #7c6cb0;
+    font-family: inherit;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+</style>

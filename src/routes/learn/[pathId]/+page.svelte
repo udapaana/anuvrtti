@@ -8,6 +8,7 @@
   import { getSutra, getCommentary, getLayeredCommentary, getDependencies, type Sutra, type Commentary, type LayeredSutraCommentary, type CommentaryDepth } from '$lib/data';
   import { commentaryDepth as commentaryDepthStore } from '$lib/stores/preferences';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import InlineMarkup from '$lib/components/InlineMarkup.svelte';
   import CommentaryText from '$lib/components/CommentaryText.svelte';
   import SutraDisplay from '$lib/components/SutraDisplay.svelte';
   import JargonLookup from '$lib/components/JargonLookup.svelte';
@@ -22,6 +23,7 @@
 
   let path: LearningPath | undefined = $state(undefined);
   let pathMeta: PathMeta | undefined = $state(undefined);
+  let pathIndex: PathMeta[] = $state([]);
   let pathLoading = $state(true);
   let commentaryDepth: CommentaryDepth = $state('standard');
 
@@ -56,6 +58,7 @@
     }
     path = loadedPath;
     pathMeta = index.find(m => m.id === pathId);
+    pathIndex = index;
     pathLoading = false;
 
     // Load all sutra steps in parallel
@@ -127,6 +130,21 @@
     document.getElementById(`step-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  // Prev/next navigation for Bālabodhini lesson sequences
+  const siblingPaths = $derived.by(() => {
+    if (!pathMeta) return { prev: null, next: null };
+    // Group by trackFolder — siblings share the same folder (e.g. pathana/balabodhini-1)
+    const siblings = pathIndex
+      .filter(m => m.trackFolder === pathMeta!.trackFolder)
+      .sort((a, b) => a.order - b.order);
+    const idx = siblings.findIndex(m => m.id === pathMeta!.id);
+    if (idx === -1) return { prev: null, next: null };
+    return {
+      prev: idx > 0 ? siblings[idx - 1] : null,
+      next: idx < siblings.length - 1 ? siblings[idx + 1] : null,
+    };
+  });
+
   // Store learning context for "return to path" banner on ref pages
   $effect(() => {
     if (browser && path) {
@@ -160,7 +178,7 @@
       </a>
       <div class="flex items-center justify-between">
         <h1 class="text-2xl font-semibold">
-          <Sanskrit text={path.titleSanskrit} />
+          <Sanskrit text={path.titleSanskrit} source={pathMeta?.trackFolder?.startsWith('pathana/balabodhini') ? 'telugu' : 'slp1'} />
           <span class="text-stone-400 ml-2">{path.title}</span>
         </h1>
         {#if pathMeta}
@@ -178,7 +196,7 @@
         {/if}
       </div>
       {#if path.description}
-        <p class="text-sm text-stone-500 mt-1">{path.description}</p>
+        <p class="text-sm text-stone-500 mt-1"><InlineMarkup text={path.description} /></p>
       {/if}
     </div>
 
@@ -401,12 +419,46 @@
           </section>
         {/each}
 
-        <!-- End of path marker -->
-        <div class="text-center py-10 text-stone-300 text-sm">
-          <div class="text-2xl mb-2">॥</div>
-          <a href="/learn" class="text-indigo-400 hover:text-indigo-600 transition-colors text-xs">
-            ← All learning paths
-          </a>
+        <!-- End of path marker + prev/next nav -->
+        <div class="pt-8 border-t border-stone-100">
+          {#if siblingPaths.prev || siblingPaths.next}
+            <div class="flex items-center justify-between gap-4 mb-6">
+              {#if siblingPaths.prev}
+                <a
+                  href="/learn/{siblingPaths.prev.id}"
+                  class="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors text-sm group"
+                >
+                  <span class="text-stone-400 group-hover:text-amber-600">←</span>
+                  <div class="text-left">
+                    <div class="text-xs text-stone-400">Previous</div>
+                    <div class="text-stone-700 font-medium">{siblingPaths.prev.label || siblingPaths.prev.title}</div>
+                  </div>
+                </a>
+              {:else}
+                <div></div>
+              {/if}
+              {#if siblingPaths.next}
+                <a
+                  href="/learn/{siblingPaths.next.id}"
+                  class="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors text-sm group text-right"
+                >
+                  <div>
+                    <div class="text-xs text-stone-400">Next</div>
+                    <div class="text-stone-700 font-medium">{siblingPaths.next.label || siblingPaths.next.title}</div>
+                  </div>
+                  <span class="text-stone-400 group-hover:text-amber-600">→</span>
+                </a>
+              {:else}
+                <div></div>
+              {/if}
+            </div>
+          {/if}
+          <div class="text-center text-stone-300 text-sm">
+            <div class="text-2xl mb-2">॥</div>
+            <a href="/learn" class="text-indigo-400 hover:text-indigo-600 transition-colors text-xs">
+              ← All learning paths
+            </a>
+          </div>
         </div>
       </main>
 

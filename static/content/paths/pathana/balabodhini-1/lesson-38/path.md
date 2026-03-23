@@ -2,11 +2,11 @@
 id = "balabodhini-1-38"
 order = 1038
 title = "Thirty-Eighth Lesson"
-titleSanskrit = "ముప్పదియెనిమిదవ పాఠము"
+titleSanskrit = "అష్టత్రింశః పాఠః"
 label = "Lesson 38"
 track = "reading"
 category = "prakarana"
-description = "Dual forms of pronouns (tad, etad, yuṣmad, asmad) and dual verb paradigms (as, kṛ, bhū); Rāmāyaṇa narrative passage"
+description = "@deva[द्विवचन] @deva[सर्वनाम] और @deva[तिङन्त] (@[as, kṛ, bhū]); @deva[रामायण] @deva[पाठ]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

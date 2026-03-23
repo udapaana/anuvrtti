@@ -2,11 +2,11 @@
 id = "balabodhini-1-06"
 order = 1006
 title = "Sixth Lesson"
-titleSanskrit = "ఆరవ పాఠము"
+titleSanskrit = "షష్ఠః పాఠః"
 label = "Lesson 6"
 track = "reading"
 category = "prakarana"
-description = "relative pronoun ya-; prabhṛti (from, since); days: hyaḥ, śvaḥ; plural imperatives (santu, stha, asāma)"
+description = "@deva[सम्बन्धवाची] @[ya-]; @[prabhṛti]; @deva[कालवाची] @[hyaḥ, śvaḥ]; @[as] @deva[लोट्] @deva[बहुवचन] (@[santu, stha, asāma])"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

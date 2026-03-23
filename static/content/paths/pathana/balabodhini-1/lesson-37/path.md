@@ -2,11 +2,11 @@
 id = "balabodhini-1-37"
 order = 1037
 title = "Thirty-Seventh Lesson"
-titleSanskrit = "ముప్పదియేడవ పాఠము"
+titleSanskrit = "సప్తత్రింశః పాఠః"
 label = "Lesson 37"
 track = "reading"
 category = "prakarana"
-description = "Vocabulary by declension class (a-stem m., a-stem n., ā-stem f.); avyaya (indeclinable) words"
+description = "@deva[लिङ्ग] @deva[अनुसार] @deva[शब्द]; @deva[अव्यय]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

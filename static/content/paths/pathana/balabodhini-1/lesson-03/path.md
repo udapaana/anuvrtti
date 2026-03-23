@@ -2,11 +2,11 @@
 id = "balabodhini-1-03"
 order = 1003
 title = "Third Lesson"
-titleSanskrit = "మూఁడవ పాఠము"
+titleSanskrit = "తృతీయః పాఠః"
 label = "Lesson 3"
 track = "reading"
 category = "prakarana"
-description = "as-imperfect singular (āsīt, āseḥ, āsam); interrogatives; negation"
+description = "@[as] @deva[लङ्] @deva[एकवचन] (@[āsīt, āseḥ, āsam]); @deva[प्रश्न]; @deva[निषेध]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []

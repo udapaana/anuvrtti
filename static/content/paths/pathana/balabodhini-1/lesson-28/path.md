@@ -2,11 +2,11 @@
 id = "balabodhini-1-28"
 order = 1028
 title = "Twenty-Eighth Lesson"
-titleSanskrit = "ఇరువదియెనిమిదవ పాఠము"
+titleSanskrit = "అష్టావింశః పాఠః"
 label = "Lesson 28"
 track = "reading"
 category = "prakarana"
-description = "accusative pronouns tvām, mām, yuṣmān; gerund uditvā; infinitive āhvātum; new verbs pṛcchati (asks), prakṣyati (will ask), pibati (drinks)"
+description = "@deva[द्वितीया] @deva[सर्वनाम] @[tvām, mām, yuṣmān]; @deva[क्त्वा] @[uditvā]; @deva[तुमुन्] @[āhvātum]; @deva[धातु] @[pṛch], @[pā]"
 difficulty = "beginner"
 estimatedTime = "15 minutes"
 prerequisites = []
