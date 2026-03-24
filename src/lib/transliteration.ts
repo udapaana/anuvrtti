@@ -21,7 +21,15 @@ export type Script =
   | "slp1"
   | "hk"
   | "itrans"
-  | "velthuis";
+  | "velthuis"
+  | "english";  // passthrough — not an Indic script, never transliterated
+
+/** Scripts that can be transliterated between. English and other non-Indic values are passthroughs. */
+export const INDIC_SCRIPTS = new Set<Script>([
+  "devanagari", "telugu", "kannada", "malayalam", "tamil",
+  "bengali", "gujarati", "gurmukhi", "odia", "sinhala",
+  "iast", "iso15919", "slp1", "hk", "itrans", "velthuis",
+]);
 
 const scriptLabels: Record<Script, string> = {
   devanagari: "देवनागरी",
@@ -47,6 +55,7 @@ export async function transliterate(
   from: Script,
   to: Script,
 ): Promise<string> {
+  if (!INDIC_SCRIPTS.has(from)) return text;
   await initTransliteration();
   if (from === to) return text;
   return shleshaTransliterate(text, from, to);

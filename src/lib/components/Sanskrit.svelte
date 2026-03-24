@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { transliterate, type Script } from '$lib/transliteration';
+  import { transliterate, INDIC_SCRIPTS, type Script } from '$lib/transliteration';
   import { displayScript } from '$lib/stores/preferences';
   import { get } from 'svelte/store';
   import { onMount } from 'svelte';
@@ -37,9 +37,11 @@
     hk: 'font-iast',
     itrans: 'font-iast',
     velthuis: 'font-iast',
+    english: '',
   };
 
-  let fontClass = $derived(scriptClasses[currentTarget]);
+  // Non-Indic sources always render as-is in the source's own script class
+  let fontClass = $derived(INDIC_SCRIPTS.has(source) ? scriptClasses[currentTarget] : scriptClasses[source]);
 
   onMount(() => {
     mounted = true;
@@ -64,7 +66,7 @@
       return;
     }
 
-    if (src === target) {
+    if (!INDIC_SCRIPTS.has(src) || src === target) {
       displayText = input;
     } else {
       transliterate(input, src, target)
