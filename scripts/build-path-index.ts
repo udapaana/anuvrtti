@@ -121,7 +121,7 @@ function processPathFile(
       estimatedTime: frontmatter.estimatedTime || '',
       prerequisites: frontmatter.prerequisites || [],
       stepCount: countSteps(body),
-      order: parseInt(frontmatter.order) || 999,
+      order: frontmatter.order !== undefined ? parseInt(frontmatter.order) : 999,
     };
 
     paths.push(pathMeta);

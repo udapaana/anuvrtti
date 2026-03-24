@@ -6,10 +6,10 @@ import type { CommentaryDepth } from "$lib/data/types";
 const SCRIPT_KEY = "anuvrtti-display-script";
 
 function getStoredScript(): Script {
-  if (!browser) return "devanagari";
+  if (!browser) return "iast";
   const stored = localStorage.getItem(SCRIPT_KEY) as Script | null;
   if (stored) return stored;
-  return "devanagari";
+  return "iast";
 }
 
 function createDisplayScriptStore() {

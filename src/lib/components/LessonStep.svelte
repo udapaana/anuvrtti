@@ -126,7 +126,6 @@
     passage:     showTelugu ? 'పాఠ్యభాగము'       : 'Passage',
     translation: showTelugu ? 'తెలుగు అనువాదము' : 'Translation',
     exercises:   showTelugu ? 'అభ్యాసములు'       : 'Exercises',
-    matchLabel:  showTelugu ? 'జతపరచుము — సంస్కృతము · తెలుగు' : 'Match — Sanskrit · English',
     translatePrompt: showTelugu ? 'సంస్కృతంలోకి అనువదించుము' : 'Translate into Sanskrit',
   });
 
@@ -226,72 +225,76 @@
           </div>
         </div>
 
-      {:else if section.type === 'reading' && (lessonData.sections ?? [])[si + 1]?.type === 'exercises'}
-        <!-- skip: rendered as matching exercise together with the exercises section below -->
-
-      {:else if section.type === 'exercises'}
-        {@const prevSection = (lessonData.sections ?? [])[si - 1]}
-        {@const isMatching = prevSection?.type === 'reading'}
-        {#if isMatching}
-          <!-- Matching exercise: flat grid, left+right cells are siblings so rows align -->
-          {@const sanskritItems = prevSection.items ?? []}
-          {@const teluguItems = section.items ?? []}
-          {@const rowCount = Math.max(sanskritItems.length, teluguItems.length)}
-          <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
-            <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.matchLabel}</span>
-            </div>
-            <div class="grid grid-cols-2" style="grid-auto-rows: auto;">
-              {#each {length: rowCount} as _, ri}
-                {@const s = sanskritItems[ri]}
-                {@const t = teluguItems[ri]}
-                <!-- Sanskrit cell -->
-                <div class="px-3 py-3 flex items-center gap-2 border-r border-stone-100 {ri < rowCount - 1 ? 'border-b border-stone-50' : ''}">
-                  {#if s}
-                    <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right">{s.n}.</span>
-                    <div class="text-base leading-snug">
-                      <Sanskrit text={s.sanskrit_telugu} source="telugu" />
-                    </div>
-                  {/if}
-                </div>
-                <!-- Telugu / English cell -->
-                <div class="px-3 py-3 flex items-center gap-2 {ri < rowCount - 1 ? 'border-b border-stone-50' : ''}">
-                  {#if t}
-                    <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right">{t.n}.</span>
-                    <div class="leading-snug">
-                      {#if showTelugu && t.telugu}
-                        <span class="font-telugu text-stone-800">{t.telugu}</span>
-                      {:else if !showTelugu && t.english}
-                        <span class="text-stone-700 text-sm">{t.english}</span>
-                      {/if}
-                    </div>
-                  {/if}
-                </div>
-              {/each}
-            </div>
+      {:else if section.type === 'reading'}
+        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+          <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
+            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{showTelugu ? 'పఠనము' : 'Reading'}</span>
           </div>
-        {:else}
-          <!-- Standalone exercises (no paired reading) -->
-          <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
-            <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.exercises} — {ui.translatePrompt}</span>
-            </div>
-            <ol class="divide-y divide-stone-50">
-              {#each (section.items ?? []) as item}
-                <li class="px-4 py-3 flex items-start gap-3">
-                  <span class="text-xs text-stone-300 mt-0.5 w-5 flex-shrink-0 text-right">{item.n}.</span>
-                  <div class="flex-1">
-                    {#if showTelugu && item.telugu}
-                      <div class="font-telugu text-stone-800">{item.telugu}</div>
-                    {:else if !showTelugu && item.english}
-                      <div class="text-stone-700">{item.english}</div>
+          <ol class="divide-y divide-stone-50">
+            {#each (section.items ?? []) as item}
+              {@const key = `${si}-${item.n}`}
+              {@const gloss = showTelugu ? item.telugu : item.english}
+              <li class="px-4 py-2.5 flex items-center gap-3">
+                <span class="text-xs text-stone-300 w-5 flex-shrink-0 text-right">{item.n}.</span>
+                <div class="flex-1 text-base leading-snug">
+                  <Sanskrit text={item.sanskrit_telugu} source="telugu" />
+                </div>
+                {#if gloss}
+                  <div class="w-64 flex-shrink-0 flex items-center gap-2 justify-end">
+                    {#if revealed.has(key)}
+                      <span class="text-sm text-stone-400 {showTelugu ? 'font-telugu' : 'italic'} text-right leading-snug">{gloss}</span>
+                      <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-300 hover:text-stone-500 transition-colors" aria-label="hide">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z"/><path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z"/></svg>
+                      </button>
+                    {:else}
+                      <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-200 hover:text-stone-400 transition-colors" aria-label="reveal meaning">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+                      </button>
                     {/if}
                   </div>
-                </li>
-              {/each}
-            </ol>
+                {/if}
+              </li>
+            {/each}
+          </ol>
+        </div>
+
+      {:else if section.type === 'exercises'}
+        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+          <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
+            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.exercises} — {ui.translatePrompt}</span>
           </div>
-        {/if}
+          <ol class="divide-y divide-stone-50">
+            {#each (section.items ?? []) as item}
+              {@const key = `ex-${si}-${item.n}`}
+              <li class="px-4 py-2.5 flex items-center gap-3">
+                <span class="text-xs text-stone-300 w-5 flex-shrink-0 text-right">{item.n}.</span>
+                <div class="flex-1">
+                  {#if showTelugu && item.telugu}
+                    <div class="font-telugu text-stone-800 leading-snug">{item.telugu}</div>
+                  {:else if !showTelugu && item.english}
+                    <div class="text-stone-700 leading-snug">{item.english}</div>
+                  {/if}
+                </div>
+                {#if item.sanskrit_telugu}
+                  <div class="w-64 flex-shrink-0 flex items-center gap-2 justify-end">
+                    {#if revealed.has(key)}
+                      <span class="text-base text-stone-700 text-right leading-snug">
+                        <Sanskrit text={item.sanskrit_telugu} source="telugu" />
+                      </span>
+                      <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-300 hover:text-stone-500 transition-colors" aria-label="hide">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z"/><path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z"/></svg>
+                      </button>
+                    {:else}
+                      <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-200 hover:text-stone-400 transition-colors" aria-label="reveal answer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+                      </button>
+                    {/if}
+                  </div>
+                {/if}
+              </li>
+            {/each}
+          </ol>
+        </div>
 
       {:else if section.type === 'paradigm'}
         {@const lbl = section.label ? splitLabel(section.label) : null}

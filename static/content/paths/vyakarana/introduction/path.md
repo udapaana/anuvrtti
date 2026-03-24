@@ -55,7 +55,7 @@ Pāṇini needs names for these vowel sets. That's what the first two sūtras do
 
 ## 1.1.1 - Vṛddhi Defined
 
-**Key Terms:** vRddi
+**Key Terms:** vṛddhi
 
 @deva[वृद्धिरादैच्] — The vowels @deva[आ], @deva[ऐ], and @deva[औ] are called @deva[वृद्धि].
 
