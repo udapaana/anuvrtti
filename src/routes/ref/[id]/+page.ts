@@ -1,15 +1,12 @@
 export const ssr = false;
 
 // Cache the sutra-paths index (enriched with path titles)
-type SutraPathMap = Record<
-  string,
-  { pathId: string; pathTitle: string; stepIndex: number }[]
->;
+type SutraPathEntry = { type: 'path'; pathId: string; pathTitle: string; stepIndex: number };
+type SutraLessonEntry = { type: 'lesson'; lessonRef: string; lessonNumber: number; part: number; title: string };
+type SutraPathMap = Record<string, (SutraPathEntry | SutraLessonEntry)[]>;
 let sutraPathsCache: SutraPathMap | null = null;
 
-async function loadSutraPaths(): Promise<
-  Record<string, { pathId: string; pathTitle: string; stepIndex: number }[]>
-> {
+async function loadSutraPaths(): Promise<SutraPathMap> {
   if (sutraPathsCache) return sutraPathsCache;
   try {
     const [sutraResp, indexResp] = await Promise.all([
@@ -18,8 +15,7 @@ async function loadSutraPaths(): Promise<
     ]);
     if (!sutraResp.ok) return {};
 
-    const raw: Record<string, { pathId: string; stepIndex: number }[]> =
-      await sutraResp.json();
+    const raw: Record<string, any[]> = await sutraResp.json();
 
     // Build a title lookup from paths-index.json
     const titleMap: Record<string, string> = {};
@@ -28,13 +24,13 @@ async function loadSutraPaths(): Promise<
       for (const p of index) titleMap[p.id] = p.title;
     }
 
-    // Enrich raw entries with titles
+    // Enrich raw entries — path entries get pathTitle, lesson entries pass through
     const enriched: SutraPathMap = {};
     for (const [sutraId, entries] of Object.entries(raw)) {
-      enriched[sutraId] = entries.map((e) => ({
-        ...e,
-        pathTitle: titleMap[e.pathId] || e.pathId,
-      }));
+      enriched[sutraId] = entries.map((e) => {
+        if (e.type === 'lesson') return e as SutraLessonEntry;
+        return { ...e, type: 'path', pathTitle: titleMap[e.pathId] || e.pathId } as SutraPathEntry;
+      });
     }
 
     sutraPathsCache = enriched;
@@ -89,7 +85,9 @@ export async function load({ params }) {
     loadSutraPaths(),
   ]);
 
-  const learningPaths = sutraPaths[id] || [];
+  const allEntries = sutraPaths[id] || [];
+  const learningPaths = allEntries.filter(e => e.type === 'path') as SutraPathEntry[];
+  const balabodhiniLessons = allEntries.filter(e => e.type === 'lesson') as SutraLessonEntry[];
 
   return {
     sutra,
@@ -100,5 +98,6 @@ export async function load({ params }) {
     prevSutraId: prevSutra?.id ?? null,
     nextSutraId: nextSutra?.id ?? null,
     learningPaths,
+    balabodhiniLessons,
   };
 }

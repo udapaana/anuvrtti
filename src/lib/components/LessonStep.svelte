@@ -175,6 +175,19 @@
       </div>
     {/if}
 
+    <!-- Sūtra links -->
+    {#if lessonData.sutras?.length}
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="text-xs text-stone-400 uppercase tracking-wide">{showTelugu ? 'సూత్రములు' : 'sūtras'}</span>
+        {#each lessonData.sutras as sutra}
+          <a href="/ref/{sutra}"
+             class="text-xs font-mono px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100 transition-colors">
+            {sutra}
+          </a>
+        {/each}
+      </div>
+    {/if}
+
     <!-- Language selector + indicator -->
     <div class="flex items-center gap-2">
       {#each ([['telugu', 'తెలుగు'], ['english', 'English']] as const) as [val, label]}

@@ -14,6 +14,7 @@ import { parse as parseToml } from 'smol-toml';
 const CONTENT_DIR = path.join(process.cwd(), 'static/content/paths');
 const INDEX_OUTPUT = path.join(process.cwd(), 'static/content/paths-index.json');
 const SUTRA_PATHS_OUTPUT = path.join(process.cwd(), 'static/content/sutra-paths.json');
+const BALABODHINI_DIR = path.join(process.cwd(), 'static/data/balabodhini');
 
 interface PathMeta {
   id: string;
@@ -32,8 +33,22 @@ interface PathMeta {
   order: number;
 }
 
+interface SutraPathEntry {
+  type: 'path';
+  pathId: string;
+  stepIndex: number;
+}
+
+interface SutraLessonEntry {
+  type: 'lesson';
+  lessonRef: string;  // e.g. "balabodhini-1-07"
+  lessonNumber: number;
+  part: number;
+  title: string;
+}
+
 interface SutraPathMapping {
-  [sutraId: string]: { pathId: string; stepIndex: number }[];
+  [sutraId: string]: (SutraPathEntry | SutraLessonEntry)[];
 }
 
 function parseFrontmatter(content: string): { frontmatter: Record<string, any>; body: string } {
@@ -129,7 +144,7 @@ function processPathFile(
     const sutraRefs = extractSutraRefs(body);
     sutraRefs.forEach((sutraId, stepIndex) => {
       if (!sutraMappings[sutraId]) sutraMappings[sutraId] = [];
-      sutraMappings[sutraId].push({ pathId: pathMeta.id, stepIndex });
+      sutraMappings[sutraId].push({ type: 'path', pathId: pathMeta.id, stepIndex });
     });
 
   } catch (err) {
@@ -177,10 +192,51 @@ function scanPaths(): { paths: PathMeta[]; sutraMappings: SutraPathMapping } {
   return { paths, sutraMappings };
 }
 
+function scanBalabodhiniSutras(sutraMappings: SutraPathMapping) {
+  if (!fs.existsSync(BALABODHINI_DIR)) return;
+
+  const parts = fs.readdirSync(BALABODHINI_DIR);
+  for (const part of parts) {
+    const partNum = parseInt(part);
+    if (isNaN(partNum)) continue;
+    const structuredDir = path.join(BALABODHINI_DIR, part, 'structured');
+    if (!fs.existsSync(structuredDir)) continue;
+
+    const files = fs.readdirSync(structuredDir).filter(f => f.endsWith('.toml'));
+    for (const file of files) {
+      try {
+        const content = fs.readFileSync(path.join(structuredDir, file), 'utf-8');
+        const data = parseToml(content) as Record<string, any>;
+        const sutras: string[] = Array.isArray(data.sutras) ? data.sutras : [];
+        if (!sutras.length) continue;
+
+        const lessonNum = data.number as number;
+        const padded = String(lessonNum).padStart(2, '0');
+        const lessonRef = `balabodhini-${partNum}-${padded}`;
+        const title = (data.title_english as string) || `Lesson ${lessonNum}`;
+
+        for (const sutraId of sutras) {
+          if (!sutraMappings[sutraId]) sutraMappings[sutraId] = [];
+          sutraMappings[sutraId].push({
+            type: 'lesson',
+            lessonRef,
+            lessonNumber: lessonNum,
+            part: partNum,
+            title,
+          });
+        }
+      } catch (err) {
+        console.error(`Error processing ${file}:`, err);
+      }
+    }
+  }
+}
+
 function main() {
   console.log('Building path index...');
 
   const { paths, sutraMappings } = scanPaths();
+  scanBalabodhiniSutras(sutraMappings);
 
   // Write paths index
   fs.writeFileSync(INDEX_OUTPUT, JSON.stringify(paths, null, 2));

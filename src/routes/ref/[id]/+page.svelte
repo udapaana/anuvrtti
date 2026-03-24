@@ -48,6 +48,7 @@
   let prevSutraId: string | null = $derived(data.prevSutraId);
   let nextSutraId: string | null = $derived(data.nextSutraId);
   let learningPaths: { pathId: string; pathTitle: string }[] = $derived(data.learningPaths);
+  let balabodhiniLessons: { lessonRef: string; lessonNumber: number; part: number; title: string }[] = $derived(data.balabodhiniLessons ?? []);
 
   // Depth selector - synced with global preference
   let depth: CommentaryDepth = $state('standard');
@@ -214,11 +215,16 @@
       {/if}
 
       <!-- Learning path cross-links -->
-      {#if learningPaths.length > 0}
+      {#if learningPaths.length > 0 || balabodhiniLessons.length > 0}
         <div class="learn-links">
           <span class="learn-links-label">Learn this in:</span>
           {#each learningPaths as lp}
             <a href="/learn/{lp.pathId}" class="learn-link">{lp.pathTitle}</a>
+          {/each}
+          {#each balabodhiniLessons as ll}
+            <a href="/learn/{ll.lessonRef}" class="learn-link learn-link-bala">
+              Bālabodhini {ll.part}.{ll.lessonNumber}
+            </a>
           {/each}
         </div>
       {/if}
@@ -445,6 +451,15 @@
   .learn-link:hover {
     background: #bbf7d0;
     text-decoration: underline;
+  }
+
+  .learn-link-bala {
+    color: #92400e;
+    background: #fef3c7;
+  }
+
+  .learn-link-bala:hover {
+    background: #fde68a;
   }
 
 
