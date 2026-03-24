@@ -160,9 +160,9 @@
       </div>
       <div class="text-xl font-semibold text-stone-800">
         {showTelugu ? (lessonData.title_telugu ?? lessonData.title_english) : lessonData.title_english}
-        {#if lessonData.title_sanskrit}
+        {#if lessonData.title_sanskrit_telugu}
           <span class="text-base font-normal text-stone-400 ml-2">
-            <Sanskrit text={lessonData.title_sanskrit} source="telugu" />
+            <Sanskrit text={lessonData.title_sanskrit_telugu} source="telugu" />
           </span>
         {/if}
       </div>
@@ -345,7 +345,7 @@
                           <span class="jargon-en">{showTelugu ? (p?.telugu ?? row.person) : (p?.english ?? row.person)}</span>
                         </button>
                       </td>
-                      {#each (row.forms ?? []) as form}
+                      {#each (row.forms_iast ?? []) as form}
                         <td class="px-3 py-3 text-base"><Sanskrit text={form} source="iast" /></td>
                       {/each}
                     </tr>
@@ -388,8 +388,8 @@
                         <span class="jargon-en">{showTelugu ? (c?.telugu ?? row.case) : (c?.english ?? row.case)}</span>
                       </button>
                     </td>
-                    <td class="px-4 py-3 text-base"><Sanskrit text={row.singular || '—'} source="iast" /></td>
-                    <td class="px-4 py-3 text-base"><Sanskrit text={row.plural || '—'} source="iast" /></td>
+                    <td class="px-4 py-3 text-base"><Sanskrit text={row.singular_iast || '—'} source="iast" /></td>
+                    <td class="px-4 py-3 text-base"><Sanskrit text={row.plural_iast || '—'} source="iast" /></td>
                   </tr>
                 {/each}
               </tbody>
@@ -429,8 +429,8 @@
                         <span class="jargon-en">{showTelugu ? (p?.telugu ?? row.person) : (p?.english ?? row.person)}</span>
                       </button>
                     </td>
-                    <td class="px-4 py-3 text-base"><Sanskrit text={row.singular} source="iast" /></td>
-                    <td class="px-4 py-3 text-base"><Sanskrit text={row.plural ?? '—'} source="iast" /></td>
+                    <td class="px-4 py-3 text-base"><Sanskrit text={row.singular_iast} source="iast" /></td>
+                    <td class="px-4 py-3 text-base"><Sanskrit text={row.plural_iast ?? '—'} source="iast" /></td>
                   </tr>
                 {/each}
               </tbody>
