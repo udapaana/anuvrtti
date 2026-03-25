@@ -188,12 +188,13 @@
 
   // Language-aware UI strings (not Sanskrit content — these are UI chrome)
   const ui = $derived({
-    vocabulary:  showTelugu ? 'పదకోశము'         : 'Vocabulary',
-    paradigm:    showTelugu ? 'రూపమాల'           : 'Paradigm',
-    passage:     showTelugu ? 'పాఠ్యభాగము'       : 'Passage',
-    translation: showTelugu ? 'తెలుగు అనువాదము' : 'Translation',
-    exercises:   showTelugu ? 'అభ్యాసములు'       : 'Exercises',
-    translatePrompt: showTelugu ? 'సంస్కృతంలోకి అనువదించుము' : 'Translate into Sanskrit',
+    vocabulary:      showTelugu ? 'పదకోశము'                    : 'Vocabulary',
+    paradigm:        showTelugu ? 'రూపమాల'                     : 'Paradigm',
+    passage:         showTelugu ? 'పాఠ్యభాగము'                 : 'Passage',
+    translation:     showTelugu ? 'అనువాదము'                   : 'Translation',
+    exercises:       showTelugu ? 'అభ్యాసములు'                 : 'Exercises',
+    translatePrompt: showTelugu ? 'సంస్కృతంలోకి అనువదించుము'  : 'Translate into Sanskrit',
+    reading:         showTelugu ? 'పఠనము'                      : 'Reading',
   });
 
   // Per-item reveal state for reading sentences (key = sectionIndex + '-' + itemN)
@@ -251,10 +252,9 @@
       <div class="flex items-center gap-3 bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3">
         <div class="flex-1 text-sm {showTelugu ? 'font-telugu text-indigo-900' : 'text-indigo-800'}">
           {showTelugu
-            ? 'మీకు నచ్చిన లిపిని ఎంచుకోండి — ఈ పాఠం ఆ లిపిలో కనిపిస్తుంది.'
-            : 'Choose your script — all examples in this lesson will display in it.'}
+            ? 'అన్ని ఉదాహరణలు మీరు ఎంచుకున్న లిపిలో కనిపిస్తాయి — పై కుడి మూలలో లిపిని మార్చండి.'
+            : 'All examples display in your chosen script. Use the script selector in the top-right corner ↗ to switch scripts.'}
         </div>
-        <ScriptToggle current={$displayScript} onChange={(s: Script) => displayScript.set(s)} />
       </div>
     {/if}
 
@@ -271,8 +271,9 @@
       </div>
     {/if}
 
-    <!-- Language selector + indicator -->
+    <!-- Language selector: controls prose language (glosses & explanations) -->
     <div class="flex items-center gap-2">
+      <span class="text-xs text-stone-400 mr-1">{showTelugu ? 'వివరణలు:' : 'explanations:'}</span>
       {#each ([['telugu', 'తెలుగు'], ['english', 'English']] as const) as [val, label]}
         <button
           onclick={() => setLang(val)}
@@ -281,7 +282,6 @@
                               : 'border-stone-200 text-stone-400 hover:border-stone-300 hover:text-stone-600'}"
         >{label}</button>
       {/each}
-      <span class="text-xs text-stone-300 ml-1">{showTelugu ? 'వివరణలు తెలుగులో' : 'glosses in English'}</span>
     </div>
 
     <!-- Sections -->
@@ -337,7 +337,7 @@
       {:else if section.type === 'reading'}
         <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
           <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{showTelugu ? 'పఠనము' : 'Reading'}</span>
+            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.reading}</span>
           </div>
           <ol class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}

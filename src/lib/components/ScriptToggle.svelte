@@ -53,38 +53,39 @@
 
 <div class="script-toggle relative">
   <button
-    class="w-9 h-9 flex items-center justify-center rounded border border-stone-200 hover:border-stone-300 bg-white text-lg"
-    style="font-family: '{getCurrentScript().font}', sans-serif"
+    class="min-w-9 h-9 px-2 flex items-center gap-1.5 rounded border border-stone-200 hover:border-stone-300 bg-white"
     onclick={() => open = !open}
-    aria-label="Select script"
+    aria-label="Select script: {getCurrentScript().label}"
   >
-    {getCurrentScript().ka}
+    <span class="text-lg leading-none" style="font-family: '{getCurrentScript().font}', sans-serif">{getCurrentScript().ka}</span>
+    <span class="text-[10px] text-stone-400 leading-none hidden sm:block">{getCurrentScript().label}</span>
   </button>
 
   {#if open}
-    <div class="absolute right-0 top-full mt-1 bg-white border border-stone-200 rounded shadow-lg py-0.5 z-50 max-h-96 overflow-y-auto">
+    <div class="absolute right-0 top-full mt-1 bg-white border border-stone-200 rounded shadow-lg py-0.5 z-50 w-44 max-h-96 overflow-y-auto">
       <!-- Indic Scripts -->
-      <div class="px-2 py-0.5 text-[10px] text-stone-400 uppercase tracking-widest text-center">Indic</div>
+      <div class="px-3 py-1 text-[10px] text-stone-400 uppercase tracking-widest">Indic</div>
       {#each scripts.filter(s => !['iast', 'iso15919', 'slp1', 'hk', 'itrans', 'velthuis'].includes(s.id)) as script}
         <button
-          class="w-full px-4 py-1 hover:bg-stone-50 text-center text-lg
+          class="w-full px-3 py-1.5 hover:bg-stone-50 flex items-center gap-2.5
                  {current === script.id ? 'text-indigo-600 bg-indigo-50' : 'text-stone-700'}"
           onclick={() => selectScript(script.id)}
-          style="font-family: '{script.font}', sans-serif"
         >
-          {script.ka}
+          <span class="text-lg w-7 text-center flex-shrink-0" style="font-family: '{script.font}', sans-serif">{script.ka}</span>
+          <span class="text-xs text-stone-500 {current === script.id ? 'text-indigo-500' : ''}">{script.label}</span>
         </button>
       {/each}
 
       <!-- Romanization -->
-      <div class="px-2 py-0.5 text-[10px] text-stone-400 uppercase tracking-widest text-center mt-1 border-t border-stone-100 pt-1">Roman</div>
+      <div class="px-3 py-1 text-[10px] text-stone-400 uppercase tracking-widest mt-1 border-t border-stone-100 pt-1">Roman</div>
       {#each scripts.filter(s => ['iast', 'iso15919', 'slp1', 'hk', 'itrans', 'velthuis'].includes(s.id)) as script}
         <button
-          class="w-full px-4 py-1 hover:bg-stone-50 text-center text-[11px] uppercase tracking-widest font-medium
+          class="w-full px-3 py-1.5 hover:bg-stone-50 flex items-center gap-2.5
                  {current === script.id ? 'text-indigo-600 bg-indigo-50' : 'text-stone-700'}"
           onclick={() => selectScript(script.id)}
         >
-          {script.label}
+          <span class="text-xs font-mono font-semibold w-7 text-center flex-shrink-0">{script.ka}</span>
+          <span class="text-xs text-stone-500 {current === script.id ? 'text-indigo-500' : ''}">{script.label}</span>
         </button>
       {/each}
     </div>
