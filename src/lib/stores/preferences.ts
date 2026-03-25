@@ -75,10 +75,10 @@ export type LessonLanguage = 'telugu' | 'english';
 const LESSON_LANG_KEY = 'balabodhini-lang';
 
 function getStoredLessonLanguage(): LessonLanguage {
-  if (!browser) return 'telugu';
+  if (!browser) return 'english';
   const stored = localStorage.getItem(LESSON_LANG_KEY);
   if (stored === 'telugu' || stored === 'english') return stored;
-  return 'telugu';
+  return 'english';
 }
 
 function createLessonLanguageStore() {
