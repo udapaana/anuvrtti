@@ -14,7 +14,67 @@
   // Mood IAST → Devanagari for jargon lookup
   const moodDeva: Record<string, string> = {
     'laṭ': 'लट्', 'laṅ': 'लङ्', 'loṭ': 'लोट्', 'liṅ': 'लिङ्', 'lṛṭ': 'लृट्',
+    'vidhiliṅ': 'विधिलिङ्', 'āśīrliṅ': 'आशीर्लिङ्', 'liṭ': 'लिट्', 'luṅ': 'लुङ्', 'luṭ': 'लुट्',
   };
+
+  // All known jargon-linkable terms in grammar_focus, mapped to their Devanagari lookup key
+  const focusTermDeva: Record<string, string> = {
+    ...moodDeva,
+    // Abbreviations
+    'p.p.': 'प्र.पु.', 'm.p.': 'म.पु.', 'u.p.': 'उ.पु.',
+    'e.v.': 'ए.व.', 'bahu.v.': 'बहु.व.', 'dvi.v.': 'द्वि.व.',
+    // Puruṣa full names
+    'prathama puruṣa': 'प्रथमपुरुष', 'madhyama puruṣa': 'मध्यमपुरुष', 'uttama puruṣa': 'उत्तमपुरुष',
+    // Vacana
+    'ekavacana': 'एकवचन', 'bahuvacana': 'बहुवचन', 'dvivacana': 'द्विवचन',
+    // Vibhakti
+    'prathamā': 'प्रथमा', 'dvitīyā': 'द्वितीया', 'tṛtīyā': 'तृतीया',
+    'caturthī': 'चतुर्थी', 'pañcamī': 'पञ्चमी', 'ṣaṣṭhī': 'षष्ठी',
+    'saptamī': 'सप्तमी', 'sambodhana': 'सम्बोधन',
+    // Common terms
+    'subanta': 'सुबन्त', 'tiṅanta': 'तिङन्त', 'ktvānta': 'क्त्वान्त',
+    'tumanta': 'तुमन्त', 'ṇijanta': 'णिजन्त', 'sarvanāman': 'सर्वनामन्',
+    'avyaya': 'अव्यय', 'nipāta': 'निपात', 'dhātu': 'धातु',
+  };
+
+  // Tokenize grammar_focus into spans of [text | {term, deva}]
+  type FocusToken = string | { text: string; deva: string };
+  function tokenizeGrammarFocus(focus: string): FocusToken[] {
+    // Sort terms longest-first so multi-word terms match before their parts
+    const terms = Object.keys(focusTermDeva).sort((a, b) => b.length - a.length);
+    const result: FocusToken[] = [];
+    let remaining = focus;
+    while (remaining.length > 0) {
+      let matched = false;
+      for (const term of terms) {
+        if (remaining.toLowerCase().startsWith(term.toLowerCase())) {
+          result.push({ text: remaining.slice(0, term.length), deva: focusTermDeva[term] });
+          remaining = remaining.slice(term.length);
+          matched = true;
+          break;
+        }
+      }
+      if (!matched) {
+        // Append char to last text span or create new one
+        if (result.length > 0 && typeof result[result.length - 1] === 'string') {
+          (result[result.length - 1] as any); // type narrowing
+          result[result.length - 1] = (result[result.length - 1] as string) + remaining[0];
+        } else {
+          result.push(remaining[0]);
+        }
+        remaining = remaining.slice(1);
+      }
+    }
+    return result;
+  }
+
+  // Parse a tag string like "p.p. e.v. vidhiliṅ" into clickable tokens
+  function parseTag(tag: string): { text: string; deva: string }[] {
+    return tag.split(/\s+/).filter(Boolean).map(t => ({
+      text: t,
+      deva: focusTermDeva[t] ?? ''
+    }));
+  }
 
   // Case IAST → Devanagari jargon term + Telugu gloss
 
@@ -36,10 +96,13 @@
     'loṭ': 'ఆజ్ఞార్థక',
     'liṅ': 'విధ్యర్థక',
     'lṛṭ': 'భవిష్యత్',
+    'vidhiliṅ': 'విధ్యర్థక',
+    'āśīrliṅ': 'ఆశీర్లిఙ్',
   };
 
-  // Paradigm label English → Telugu translations
+  // Paradigm label description → Telugu translations (the part after " — " in a label)
   const labelTeluguMap: Record<string, string> = {
+    // English descriptions (legacy, kept for any unconverted labels)
     'first person (I / we)':              'ఉత్తమ పురుష (నేను / మేము)',
     'second person (you / you all)':      'మధ్యమ పురుష (నీవు / మీరు)',
     'all/every; pronominal adjective':    'సర్వ; సర్వనామ విశేషణము',
@@ -50,13 +113,15 @@
     'a-stem masculine':                   'అకారాంత పుంలింగము',
     'a-stem neuter':                      'అకారాంత నపుంసకలింగము',
     'ā-stem feminine':                    'ఆకారాంత స్త్రీలింగము',
-    'present':                            'వర్తమాన కాలము',
-    'imperfect':                          'భూతకాలము',
-    'imperative':                         'ఆజ్ఞార్థకము',
-    'optative':                           'విధ్యర్థకము',
-    'future':                             'భవిష్యత్కాలము',
-    'future; uses √bhū forms':            'భవిష్యత్కాలము (√భూ రూపాలు)',
     'dual (two subjects)':                'ద్వివచనము (ఇద్దరు కర్తలు)',
+    // Pāṇinian lacāra names → Telugu gloss
+    'laṭ':        'వర్తమాన కాలము',
+    'laṅ':        'భూతకాలము',
+    'loṭ':        'ఆజ్ఞార్థకము',
+    'vidhiliṅ':   'విధ్యర్థకము',
+    'lṛṭ':        'భవిష్యత్కాలము',
+    'liṅ':        'విధ్యర్థకము',
+    'laṭ · laṅ':  'వర్తమాన · భూతకాల',
   };
 
   // Split a paradigm label "sanskrit — english description" into parts
@@ -170,8 +235,12 @@
 
     <!-- Grammar focus callout -->
     {#if lessonData.grammar_focus}
+      {@const tokens = tokenizeGrammarFocus(lessonData.grammar_focus)}
       <div class="text-xs text-stone-500 bg-stone-50 border border-stone-100 rounded px-3 py-2 leading-relaxed">
-        <span class="font-medium text-stone-400 uppercase tracking-wide mr-2">{showTelugu ? 'పాఠ విషయము' : 'focus'}</span>{lessonData.grammar_focus}
+        <span class="font-medium text-stone-400 uppercase tracking-wide mr-2">{showTelugu ? 'పాఠ విషయము' : 'focus'}</span>{#each tokens as token}{#if typeof token === 'string'}{token}{:else}<button
+            class="focus-term"
+            onclick={() => selectedTerm.set(token.deva)}
+          ><Sanskrit text={token.text} source="iast" /></button>{/if}{/each}
       </div>
     {/if}
 
@@ -232,6 +301,20 @@
                   <span class="font-telugu text-stone-700 text-sm">{item.telugu_gloss}</span>
                 {:else if !showTelugu && item.english}
                   <span class="text-stone-600 text-sm">{item.english}</span>
+                {/if}
+                {#if item.tag}
+                  <span class="flex items-center gap-0.5 ml-auto">
+                    {#each parseTag(item.tag) as t}
+                      {#if t.deva}
+                        <button
+                          class="morph-tag"
+                          onclick={() => selectedTerm.set(t.deva)}
+                        ><Sanskrit text={t.text} source="iast" /></button>
+                      {:else}
+                        <span class="morph-tag-plain">{t.text}</span>
+                      {/if}
+                    {/each}
+                  </span>
                 {/if}
               </div>
             {/each}
@@ -326,23 +409,40 @@
             {/if}
           </div>
           {#if section.layout === 'moods' && section.moods}
-            <!-- Multi-mood layout: one column per mood -->
+            <!-- Multi-mood layout: two sub-columns (sg | pl) per mood -->
+            {@const moods = section.moods ?? []}
             <div class="overflow-x-auto">
               <table class="w-full text-sm">
                 <thead>
                   <tr class="border-b border-stone-200 bg-stone-50">
-                    <th class="px-4 py-3 text-left font-normal w-12">
+                    <th class="px-4 py-3 text-left font-normal w-20" rowspan="2">
                       <button class="jargon-term" onclick={() => selectedTerm.set('पुरुष')}>
                         <Sanskrit text="puruṣa" source="iast" />
                         <span class="jargon-en">{showTelugu ? 'పురుష' : 'person'}</span>
                       </button>
                     </th>
-                    {#each (section.moods ?? []) as mood}
+                    {#each moods as mood}
                       {@const deva = moodDeva[mood]}
-                      <th class="px-3 py-3 text-left font-normal">
+                      <th class="px-3 py-2 text-center font-normal border-l border-stone-100" colspan="2">
                         <button class="jargon-term" onclick={() => deva && selectedTerm.set(deva)}>
                           <Sanskrit text={mood} source="iast" />
                           <span class="jargon-en">{showTelugu ? (moodTelugu[mood] ?? mood) : mood}</span>
+                        </button>
+                      </th>
+                    {/each}
+                  </tr>
+                  <tr class="border-b border-stone-200 bg-stone-50/60">
+                    {#each moods as _mood, mi}
+                      <th class="px-3 py-1.5 text-left font-normal {mi > 0 ? 'border-l border-stone-100' : ''}">
+                        <button class="jargon-term text-xs" onclick={() => selectedTerm.set('एकवचन')}>
+                          <Sanskrit text="eka°" source="iast" />
+                          <span class="jargon-en">{showTelugu ? 'ఏకవచన' : 'sg'}</span>
+                        </button>
+                      </th>
+                      <th class="px-3 py-1.5 text-left font-normal">
+                        <button class="jargon-term text-xs" onclick={() => selectedTerm.set('बहुवचन')}>
+                          <Sanskrit text="bahu°" source="iast" />
+                          <span class="jargon-en">{showTelugu ? 'బహువచన' : 'pl'}</span>
                         </button>
                       </th>
                     {/each}
@@ -351,6 +451,8 @@
                 <tbody class="divide-y divide-stone-50">
                   {#each (section.items ?? []) as row}
                     {@const p = personMap[row.person]}
+                    {@const sgArr = Array.isArray(row.singular_iast) ? row.singular_iast : (row.singular_iast != null ? [row.singular_iast] : [])}
+                    {@const plArr = Array.isArray(row.plural_iast) ? row.plural_iast : (row.plural_iast != null ? [row.plural_iast] : [])}
                     <tr class="hover:bg-stone-50/50">
                       <td class="px-4 py-3">
                         <button class="jargon-term" onclick={() => p && selectedTerm.set(p.deva)}>
@@ -358,8 +460,13 @@
                           <span class="jargon-en">{showTelugu ? (p?.telugu ?? row.person) : (p?.english ?? row.person)}</span>
                         </button>
                       </td>
-                      {#each (row.forms_iast ?? []) as form}
-                        <td class="px-3 py-3 text-base"><Sanskrit text={form} source="iast" /></td>
+                      {#each moods as _mood, mi}
+                        <td class="px-3 py-3 text-base {mi > 0 ? 'border-l border-stone-100' : ''}">
+                          <Sanskrit text={sgArr[mi] ?? '—'} source="iast" />
+                        </td>
+                        <td class="px-3 py-3 text-base text-stone-400">
+                          <Sanskrit text={plArr[mi] ?? '—'} source="iast" />
+                        </td>
                       {/each}
                     </tr>
                   {/each}
@@ -470,6 +577,57 @@
           </div>
         </div>
 
+      {:else if section.type === 'script_table'}
+        {@const lbl = showTelugu ? (section.label_telugu ?? section.label) : section.label}
+        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+          {#if lbl}
+            <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
+              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{lbl}</span>
+            </div>
+          {/if}
+          <div class="divide-y divide-stone-50">
+            {#each (section.items ?? []) as item}
+              <div class="px-4 py-2.5 grid grid-cols-[3rem_5rem_1fr] items-baseline gap-4">
+                <span class="text-xl font-medium text-stone-800 font-telugu">{item.telugu}</span>
+                <span class="text-sm font-mono text-indigo-700">{item.iast}</span>
+                {#if item.note}
+                  <span class="text-xs text-stone-500 italic">{item.note}</span>
+                {/if}
+              </div>
+            {/each}
+          </div>
+        </div>
+
+      {:else if section.type === 'sandhi_table'}
+        {@const lbl = showTelugu ? (section.label_telugu ?? section.label) : section.label}
+        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+          {#if lbl}
+            <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
+              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{lbl}</span>
+            </div>
+          {/if}
+          <div class="divide-y divide-stone-100">
+            {#each (section.items ?? []) as item}
+              <div class="px-4 py-3 space-y-1.5">
+                <div class="flex items-center gap-3 flex-wrap">
+                  <span class="text-xs font-mono font-semibold text-violet-700 bg-violet-50 border border-violet-200 rounded px-2 py-0.5">{item.pattern}</span>
+                  <span class="font-telugu text-stone-700">{item.telugu_before}</span>
+                  <span class="text-stone-300">→</span>
+                  <span class="font-telugu font-medium text-stone-800">{item.telugu_after}</span>
+                </div>
+                <div class="flex items-center gap-3 flex-wrap pl-1">
+                  <span class="text-xs font-mono text-stone-400">{item.iast_before}</span>
+                  <span class="text-stone-300">→</span>
+                  <span class="text-xs font-mono font-medium text-stone-600">{item.iast_after}</span>
+                </div>
+                {#if item.english}
+                  <p class="text-xs text-stone-500 italic pl-1">{item.english}</p>
+                {/if}
+              </div>
+            {/each}
+          </div>
+        </div>
+
       {:else if section.type === 'passage_translation'}
         <div class="bg-amber-50/40 rounded-lg border border-amber-100 overflow-hidden">
           <div class="px-4 py-2 border-b border-amber-100">
@@ -512,5 +670,53 @@
     line-height: 1;
     letter-spacing: 0.02em;
     text-transform: uppercase;
+  }
+
+  /* Grammar focus: inline clickable terms */
+  .focus-term {
+    display: inline;
+    cursor: pointer;
+    border-bottom: 1px dashed #c4b5fd;
+    color: #44403c;
+    border-radius: 2px;
+    padding-inline: 1px;
+    transition: background-color 0.1s;
+  }
+
+  .focus-term:hover {
+    background-color: #ede9fe;
+  }
+
+  /* Morphological tag badges on vocabulary items */
+  .morph-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.65rem;
+    padding: 0 5px;
+    height: 1.4rem;
+    border-radius: 3px;
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    color: #7c3aed;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    font-family: inherit;
+    letter-spacing: 0.01em;
+  }
+
+  .morph-tag:hover {
+    background-color: #ede9fe;
+  }
+
+  .morph-tag-plain {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.65rem;
+    padding: 0 5px;
+    height: 1.4rem;
+    border-radius: 3px;
+    background: #f5f3ff;
+    border: 1px solid #ddd6fe;
+    color: #7c3aed;
   }
 </style>
