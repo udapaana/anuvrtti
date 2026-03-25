@@ -585,7 +585,7 @@
               {@const note = showTelugu ? (item.note_telugu ?? item.note) : (item.note_english ?? item.note)}
               <div class="px-4 py-2.5 grid grid-cols-[3.5rem_1fr] items-baseline gap-4">
                 <span class="text-xl font-medium text-stone-800">
-                  <Sanskrit text={item.iast} source="iast" fallback="" />
+                  <Sanskrit text={item.iast} source="iast" fallback={item.iast} />
                 </span>
                 {#if note}
                   <span class="text-xs text-stone-500 italic">{note}</span>
