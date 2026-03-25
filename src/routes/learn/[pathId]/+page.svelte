@@ -6,7 +6,9 @@
   import { editModal } from '$lib/stores/editModal';
   import type { LearningPath, LearningStep } from '$lib/learning/paths';
   import { getSutra, getCommentary, getLayeredCommentary, getDependencies, type Sutra, type Commentary, type LayeredSutraCommentary, type CommentaryDepth } from '$lib/data';
-  import { commentaryDepth as commentaryDepthStore } from '$lib/stores/preferences';
+  import { commentaryDepth as commentaryDepthStore, lessonLanguage, type LessonLanguage } from '$lib/stores/preferences';
+  import ScriptToggle from '$lib/components/ScriptToggle.svelte';
+  import { displayScript } from '$lib/stores/preferences';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
   import CommentaryText from '$lib/components/CommentaryText.svelte';
@@ -20,6 +22,10 @@
   import { deriveTinanta, deriveSubanta, type Prakriya } from '$lib/prakriya';
 
   let { data } = $props();
+
+  let lang: LessonLanguage = $state('telugu');
+  lessonLanguage.subscribe(v => { lang = v; });
+  function setLang(l: LessonLanguage) { lessonLanguage.set(l); }
 
   let path: LearningPath | undefined = $state(undefined);
   let pathMeta: PathMeta | undefined = $state(undefined);
@@ -176,24 +182,37 @@
       <a href="/learn" class="text-sm text-indigo-600 hover:underline mb-2 inline-block">
         ← Back to Learning Paths
       </a>
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between gap-4">
         <h1 class="text-2xl font-semibold">
           <Sanskrit text={path.titleSanskrit} source={pathMeta?.trackFolder?.startsWith('pathana/balabodhini') ? 'telugu' : 'slp1'} />
           <span class="text-stone-400 ml-2">{path.title}</span>
         </h1>
-        {#if pathMeta}
-          <button
-            class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-indigo-600 transition-colors"
-            onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}
-            title="Edit this path"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-            </svg>
-            Edit path
-          </button>
-        {/if}
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <!-- Language toggle: controls gloss/explanation language -->
+          <div class="flex items-center rounded border border-stone-200 overflow-hidden text-xs">
+            {#each ([['telugu', 'తె'] as const, ['english', 'En'] as const]) as [val, label]}
+              <button
+                onclick={() => setLang(val)}
+                class="px-2.5 py-1.5 transition-colors
+                       {lang === val ? 'bg-amber-100 text-amber-800 font-medium' : 'bg-white text-stone-400 hover:text-stone-600 hover:bg-stone-50'}"
+                title="{val === 'telugu' ? 'Explanations in Telugu' : 'Explanations in English'}"
+              >{label}</button>
+            {/each}
+          </div>
+          {#if pathMeta}
+            <button
+              class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-indigo-600 transition-colors"
+              onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}
+              title="Edit this path"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              Edit path
+            </button>
+          {/if}
+        </div>
       </div>
       {#if path.description}
         <p class="text-sm text-stone-500 mt-1"><InlineMarkup text={path.description} /></p>

@@ -17,9 +17,19 @@
 
   let { text, source = 'devanagari', class: className = '', fallback = undefined }: Props = $props();
 
-  /** Returns true if shlesha returned an unparsed-token marker like [ḷ] */
-  function hasUnparsedTokens(s: string): boolean {
-    return /\[.+?\]/.test(s);
+  // IAST diacritics that shlesha may silently pass through when a sound has no
+  // representation in the target script (instead of wrapping in [...])
+  const IAST_DIACRITICS = /[āīūṛṝḷḹṅñṭḍṇśṣḥṃḻ]/i;
+
+  /** Returns true if shlesha signalled a rendering failure — either via [token]
+   *  markers or by silently passing through IAST diacritics into Indic output. */
+  function hasRenderingFailure(result: string, src: Script, tgt: Script): boolean {
+    if (/\[.+?\]/.test(result)) return true;
+    // If we asked for an Indic script but IAST diacritics survived, it's partial
+    const indicScripts = new Set(['devanagari','telugu','kannada','malayalam','tamil',
+      'bengali','gujarati','gurmukhi','odia','sinhala']);
+    if (src === 'iast' && indicScripts.has(tgt) && IAST_DIACRITICS.test(result)) return true;
+    return false;
   }
 
   let displayText = $state<string | null>(null);
@@ -78,7 +88,7 @@
     } else {
       transliterate(input, src, target)
         .then(result => {
-          if (hasUnparsedTokens(result)) {
+          if (hasRenderingFailure(result, src, target)) {
             // shlesha couldn't render this sound in target script
             displayText = fallback !== undefined ? (fallback ?? '') : input;
           } else {

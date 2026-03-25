@@ -1,7 +1,6 @@
 <script lang="ts">
   import { parse as parseToml } from 'smol-toml';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
-  import ScriptToggle from '$lib/components/ScriptToggle.svelte';
   import { lessonLanguage, displayScript } from '$lib/stores/preferences';
   import { selectedTerm } from '$lib/stores/jargon';
   import type { Script } from '$lib/transliteration';
@@ -148,11 +147,6 @@
 
   lessonLanguage.subscribe(v => { lang = v as Language; });
 
-  function setLang(l: Language) {
-    lang = l;
-    lessonLanguage.set(l);
-  }
-
   $effect(() => {
     if (!lessonRef) return;
     loading = true;
@@ -271,18 +265,6 @@
       </div>
     {/if}
 
-    <!-- Language selector: controls prose language (glosses & explanations) -->
-    <div class="flex items-center gap-2">
-      <span class="text-xs text-stone-400 mr-1">{showTelugu ? 'వివరణలు:' : 'explanations:'}</span>
-      {#each ([['telugu', 'తెలుగు'], ['english', 'English']] as const) as [val, label]}
-        <button
-          onclick={() => setLang(val)}
-          class="px-3 py-1 text-xs rounded-full border transition-colors
-                 {lang === val ? 'bg-amber-100 border-amber-300 text-amber-800 font-medium'
-                              : 'border-stone-200 text-stone-400 hover:border-stone-300 hover:text-stone-600'}"
-        >{label}</button>
-      {/each}
-    </div>
 
     <!-- Sections -->
     {#each (lessonData.sections ?? []) as section, si}
