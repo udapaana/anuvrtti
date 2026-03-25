@@ -275,10 +275,9 @@
 
       {#if section.type === 'grammar_note'}
         <div class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3 text-sm space-y-0.5">
-          {#if section.items?.[0]?.telugu}
+          {#if showTelugu && section.items?.[0]?.telugu}
             <p class="font-telugu text-indigo-900 leading-relaxed">{section.items[0].telugu}</p>
-          {/if}
-          {#if !showTelugu && section.items?.[0]?.english}
+          {:else if !showTelugu && section.items?.[0]?.english}
             <p class="text-indigo-500 text-xs leading-relaxed">{section.items[0].english}</p>
           {/if}
         </div>
