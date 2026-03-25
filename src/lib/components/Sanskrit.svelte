@@ -11,11 +11,18 @@
     source?: Script;
     /** Optional CSS class */
     class?: string;
+    /** Text to show when target script cannot render this sound (default: same as text) */
+    fallback?: string | null;
   }
 
-  let { text, source = 'devanagari', class: className = '' }: Props = $props();
+  let { text, source = 'devanagari', class: className = '', fallback = undefined }: Props = $props();
 
-  let displayText = $state('');
+  /** Returns true if shlesha returned an unparsed-token marker like [ḷ] */
+  function hasUnparsedTokens(s: string): boolean {
+    return /\[.+?\]/.test(s);
+  }
+
+  let displayText = $state<string | null>(null);
   let currentTarget = $state<Script>('devanagari');
   let mounted = $state(false);
 
@@ -62,7 +69,7 @@
     const input = text;
 
     if (!mounted || !input) {
-      displayText = input || '';
+      displayText = input || null;
       return;
     }
 
@@ -70,13 +77,20 @@
       displayText = input;
     } else {
       transliterate(input, src, target)
-        .then(result => { displayText = result; })
+        .then(result => {
+          if (hasUnparsedTokens(result)) {
+            // shlesha couldn't render this sound in target script
+            displayText = fallback !== undefined ? (fallback ?? '') : input;
+          } else {
+            displayText = result;
+          }
+        })
         .catch((e) => {
           console.error('Transliteration error:', e);
-          displayText = input;
+          displayText = fallback !== undefined ? (fallback ?? '') : input;
         });
     }
   });
 </script>
 
-<span class="{fontClass} {className}">{displayText || text}</span>
+<span class="{fontClass} {className}">{displayText !== null ? displayText : text}</span>
