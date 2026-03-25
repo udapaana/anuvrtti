@@ -1,5 +1,5 @@
 import { json, error } from '@sveltejs/kit';
-import { GITHUB_APP_TOKEN } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { parse as parseToml } from 'smol-toml';
 import { validateMarkupInObject } from '$lib/markup/validate';
 
@@ -27,7 +27,7 @@ async function ghFetch(path: string, options: RequestInit = {}) {
   const res = await fetch(`${API}${path}`, {
     ...options,
     headers: {
-      Authorization: `Bearer ${GITHUB_APP_TOKEN}`,
+      Authorization: `Bearer ${env.GITHUB_APP_TOKEN}`,
       Accept: 'application/vnd.github+json',
       'X-GitHub-Api-Version': '2022-11-28',
       'Content-Type': 'application/json',
