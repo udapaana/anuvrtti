@@ -1,8 +1,10 @@
 <script lang="ts">
   import { parse as parseToml } from 'smol-toml';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
-  import { lessonLanguage } from '$lib/stores/preferences';
+  import ScriptToggle from '$lib/components/ScriptToggle.svelte';
+  import { lessonLanguage, displayScript } from '$lib/stores/preferences';
   import { selectedTerm } from '$lib/stores/jargon';
+  import type { Script } from '$lib/transliteration';
 
   // Map English person labels to Sanskrit IAST for display + jargon + Telugu gloss
   const personMap: Record<string, { iast: string; deva: string; telugu: string; english: string }> = {
@@ -241,6 +243,18 @@
             class="focus-term"
             onclick={() => selectedTerm.set(token.deva)}
           ><Sanskrit text={token.text} source="iast" /></button>{/if}{/each}
+      </div>
+    {/if}
+
+    <!-- Script picker prompt — only on lesson 0 -->
+    {#if lessonData.number === 0}
+      <div class="flex items-center gap-3 bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3">
+        <div class="flex-1 text-sm {showTelugu ? 'font-telugu text-indigo-900' : 'text-indigo-800'}">
+          {showTelugu
+            ? 'మీకు నచ్చిన లిపిని ఎంచుకోండి — ఈ పాఠం ఆ లిపిలో కనిపిస్తుంది.'
+            : 'Choose your script — all examples in this lesson will display in it.'}
+        </div>
+        <ScriptToggle current={$displayScript} onChange={(s: Script) => displayScript.set(s)} />
       </div>
     {/if}
 
@@ -586,15 +600,13 @@
           {/if}
           <div class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}
-              <div class="px-4 py-2.5 grid grid-cols-[3rem_5rem_1fr] items-baseline gap-4">
+              {@const note = showTelugu ? (item.note_telugu ?? item.note) : (item.note_english ?? item.note)}
+              <div class="px-4 py-2.5 grid grid-cols-[3.5rem_1fr] items-baseline gap-4">
                 <span class="text-xl font-medium text-stone-800">
-                  <Sanskrit text={item.telugu} source="telugu" />
-                </span>
-                <span class="text-sm font-mono text-indigo-700">
                   <Sanskrit text={item.iast} source="iast" />
                 </span>
-                {#if item.note}
-                  <span class="text-xs text-stone-500 italic">{item.note}</span>
+                {#if note}
+                  <span class="text-xs text-stone-500 italic">{note}</span>
                 {/if}
               </div>
             {/each}
@@ -614,14 +626,9 @@
               <div class="px-4 py-3 space-y-1.5">
                 <div class="flex items-center gap-3 flex-wrap">
                   <span class="text-xs font-mono font-semibold text-violet-700 bg-violet-50 border border-violet-200 rounded px-2 py-0.5">{item.pattern}</span>
-                  <span class="text-stone-700"><Sanskrit text={item.telugu_before} source="telugu" /></span>
+                  <span class="text-stone-700"><Sanskrit text={item.iast_before} source="iast" /></span>
                   <span class="text-stone-300">→</span>
-                  <span class="font-medium text-stone-800"><Sanskrit text={item.telugu_after} source="telugu" /></span>
-                </div>
-                <div class="flex items-center gap-3 flex-wrap pl-1">
-                  <span class="text-xs font-mono text-stone-400">{item.iast_before}</span>
-                  <span class="text-stone-300">→</span>
-                  <span class="text-xs font-mono font-medium text-stone-600">{item.iast_after}</span>
+                  <span class="font-medium text-stone-800"><Sanskrit text={item.iast_after} source="iast" /></span>
                 </div>
                 {#if item.english}
                   <p class="text-xs text-stone-500 italic pl-1">{item.english}</p>
