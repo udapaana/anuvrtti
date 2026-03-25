@@ -588,8 +588,12 @@
           <div class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}
               <div class="px-4 py-2.5 grid grid-cols-[3rem_5rem_1fr] items-baseline gap-4">
-                <span class="text-xl font-medium text-stone-800 font-telugu">{item.telugu}</span>
-                <span class="text-sm font-mono text-indigo-700">{item.iast}</span>
+                <span class="text-xl font-medium text-stone-800">
+                  <Sanskrit text={item.telugu} source="telugu" />
+                </span>
+                <span class="text-sm font-mono text-indigo-700">
+                  <Sanskrit text={item.iast} source="iast" />
+                </span>
                 {#if item.note}
                   <span class="text-xs text-stone-500 italic">{item.note}</span>
                 {/if}
@@ -611,9 +615,9 @@
               <div class="px-4 py-3 space-y-1.5">
                 <div class="flex items-center gap-3 flex-wrap">
                   <span class="text-xs font-mono font-semibold text-violet-700 bg-violet-50 border border-violet-200 rounded px-2 py-0.5">{item.pattern}</span>
-                  <span class="font-telugu text-stone-700">{item.telugu_before}</span>
+                  <span class="text-stone-700"><Sanskrit text={item.telugu_before} source="telugu" /></span>
                   <span class="text-stone-300">→</span>
-                  <span class="font-telugu font-medium text-stone-800">{item.telugu_after}</span>
+                  <span class="font-medium text-stone-800"><Sanskrit text={item.telugu_after} source="telugu" /></span>
                 </div>
                 <div class="flex items-center gap-3 flex-wrap pl-1">
                   <span class="text-xs font-mono text-stone-400">{item.iast_before}</span>
