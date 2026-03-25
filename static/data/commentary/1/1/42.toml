@@ -1,0 +1,40 @@
+id = "1.1.42"
+numericId = "11042"
+
+[en]
+simple = """
+The affix @deva[शि] is called @deva[सर्वनामस्थान]. @deva[शि] is the special ending used for neuter nominative/accusative plural — the @deva[श्] is just a marker, so the actual ending is @deva[इ].
+
+This label matters because @deva[सर्वनामस्थान] endings trigger changes in the stem they attach to, such as lengthening the vowel before them.
+
+**Example:** @deva[फल] "fruit" → @deva[फलानि] "fruits." The @deva[अ] of @deva[फल] lengthens to @deva[आ], and @deva[न्] is inserted — both triggered by the @deva[सर्वनामस्थान] label on @deva[शि].
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] declares @deva[शि] a @deva[सर्वनामस्थान]. @deva[शि] (@ref[7.1.20]) replaces @deva[जस्] and @deva[शस्] for neuter nouns, giving the nom./acc. plural ending. The @deva[श्] is @deva[इत्]; the actual affix is @deva[इ].
+
+**Effects of @deva[सर्वनामस्थान] on the stem:**
+- @ref[6.4.8] (@deva[सर्वनामस्थाने चासम्बुद्धौ]): penultimate vowel lengthens
+- @ref[7.1.72] (@deva[नपुंसकस्य झलचः]): @deva[न्] is inserted after the stem-final consonant
+
+**Example:** @deva[फल] + @deva[शि] → @deva[फल] → @deva[फलान्] (by @ref[7.1.72]) → @deva[फलानि] "fruits."
+
+**Other examples:** @deva[कुण्ड] → @deva[कुण्डानि] "pots," @deva[मधु] → @deva[मधूनि] "honeys," @deva[त्रपु] → @deva[त्रपूणि] "tin (pl.)."
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this begins the @deva[सर्वनामस्थान] section.
+
+@deva[शि सर्वनामस्थानम्] — @deva[शि] is @deva[सर्वनामस्थान].
+
+**What is @deva[शि]?** @ref[7.1.20] (@deva[जश्शसोः शिः]) prescribes @deva[शि] as the replacement for @deva[जस्] (nom. pl.) and @deva[शस्] (acc. pl.) in the neuter. The @deva[श्] is @deva[इत्] by @ref[1.3.8]; the operative affix is @deva[इ].
+
+**Rules that reference @deva[सर्वनामस्थान]:**
+- @ref[6.4.8] (@deva[सर्वनामस्थाने चासम्बुद्धौ]): lengthens penultimate vowel — @deva[फल] → @deva[फाल] is prevented by other conditions, but @deva[मधु] → @deva[मधू]
+- @ref[7.1.72] (@deva[नपुंसकस्य झलचः]): inserts @deva[न्] — @deva[फल] → @deva[फलान्] + @deva[इ] → @deva[फलानि]
+- @ref[7.1.73]: further stem modifications before @deva[सर्वनामस्थान]
+
+**Why a separate @deva[संज्ञा]?** @deva[शि] and the endings in @ref[1.1.43] trigger identical stem modifications. The @deva[सर्वनामस्थान] label unifies them — any rule targeting @deva[सर्वनामस्थान] applies to both @deva[शि] (neuter) and the @deva[सुट्] endings (non-neuter) without separate statements.
+
+**Relation to @ref[1.1.43]:** That rule adds the non-neuter nom./acc. endings to @deva[सर्वनामस्थान]. Together, @ref[1.1.42]–@ref[1.1.43] cover all nominative and accusative endings across genders.
+"""

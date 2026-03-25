@@ -1,0 +1,33 @@
+id = "1.1.25"
+numericId = "11025"
+
+[en]
+simple = """
+Words ending in the affix @deva[डति] are also called @deva[षट्]. These words — like @deva[कति] "how many" — were already classified as @deva[संख्या] (numerals) by @ref[1.1.23]. This rule adds the @deva[षट्] label on top, giving them the same special behavior as the numerals 5–10.
+
+**Example:** @deva[कति पठन्ति] "how many are reading?" — @deva[कति] loses its plural ending (by @ref[7.1.22]), just like @deva[पञ्च] or @deva[षट्] do.
+"""
+
+standard = """
+@deva[डति]-ending words are @deva[षट्], in addition to being @deva[संख्या] (by @ref[1.1.23]). The @deva[च] ("and") connects this to @ref[1.1.24].
+
+**Words covered:** @deva[कति] "how many," @deva[तति] "so many" — all words formed with the affix @deva[डति] (@ref[5.2.41]).
+
+**Effect:** @ref[7.1.22] deletes nominative/accusative plural endings: @deva[कति पठन्ति] "how many read," @deva[कति पश्य] "see how many."
+
+**Why a separate rule?** @deva[डति]-ending words end in @deva[इ], not in @deva[ष्] or @deva[न्]. So they do not qualify as @deva[षट्] under @ref[1.1.24]. This rule extends the designation to them explicitly.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[संख्या] from @ref[1.1.23]; @deva[षट्] from @ref[1.1.24].
+
+@deva[डति च] — @deva[डति]-ending @deva[संख्या] words are also @deva[षट्]. The @deva[च] adds this class alongside the @deva[ष्]/@deva[न्]-ending words of @ref[1.1.24].
+
+**Why needed:** @deva[डति] words (@deva[कति], @deva[तति]) end in @deva[इ], not @deva[ष्] or @deva[न्], so @ref[1.1.24] does not cover them. Without this rule, @ref[7.1.22] (@deva[षड्भ्यो लुक्]) would not delete their plural endings, producing *@deva[कतयः] instead of @deva[कति].
+
+**Effect:** @ref[7.1.22] applies: @deva[कति पठन्ति], @deva[कति पश्य] — plural endings deleted.
+
+**Double designation:** @deva[डति] words carry two @deva[संज्ञा]s simultaneously: @deva[संख्या] (by @ref[1.1.23]) and @deva[षट्] (by this rule). Both labels are independently relevant — @deva[संख्या] enables affixes like @deva[कृत्वसुच्] and @deva[धा]; @deva[षट्] triggers ending-deletion.
+
+**Design note:** @deva[पाणिनि] could have included @deva[डति] in @ref[1.1.24] by broadening its condition. The separate rule suggests the @deva[षट्] designation for @deva[डति] words was a later addition or reflects a distinct grammatical insight about interrogative numerals.
+"""

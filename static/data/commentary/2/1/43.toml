@@ -1,0 +1,51 @@
+id = "2.1.43"
+numericId = "21043"
+
+[en]
+simple = """
+A word in the locative case (@deva[सप्तमी]) **optionally** compounds with a @deva[कृत्य] word (a future passive participle expressing obligation — "ought to be done") to form @deva[तत्पुरुष]. The locative gives the time or place within which the obligation applies.
+
+**Examples:**
+- @deva[मासदेयम्] "payable within a month" (= @deva[मासे देयम्])
+- @deva[संवत्सरदेयम्] "payable within a year"
+- @deva[त्र्यहदेयम्] "payable within three days"
+- @deva[पूर्वाह्णगेयं साम] "a @deva[साम] hymn to be sung in the forenoon"
+- @deva[प्रातरध्येयोऽनुवाकः] "a chapter to be studied in the morning"
+
+The compound expresses a deadline or occasion: something **to be done** within a certain time or at a certain place.
+"""
+
+standard = """
+@deva[सप्तम्यन्त] + @deva[कृत्यान्त] → @deva[विभाषा] @deva[तत्पुरुष] — @deva[कृत्येन].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[मासदेयम्] = @deva[मासे देयम्] "payable within a month"
+- @deva[संवत्सरदेयम्] "payable within a year"
+- @deva[त्र्यहदेयम्] "payable within three days"
+- @deva[पूर्वाह्णगेयम्] "to be sung in the forenoon"
+- @deva[प्रातरध्येयः] "to be studied in the morning"
+
+**@deva[कृत्य] affixes:** The second member ends in @deva[यत्] or @deva[ण्यत्] — the @deva[कृत्य] affixes producing "ought to be done" words (@deva[देय] "payable," @deva[गेय] "to be sung," @deva[अध्येय] "to be studied").
+
+**Counter-example:** @deva[मासे देया भिक्षा] "alms to be given each month" — here the locative has a repeated/distributive sense, not a deadline sense, so no compound.
+
+**Generalized scope:** Though the @deva[काशिका] uses @deva[ऋण] "debt" as the prototypical example, the rule applies to any time-bound obligation — study schedules, ritual timing, etc.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सप्तमी] from @ref[2.1.40]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[कृत्येन] — @deva[सप्तम्यन्त] optionally compounds with a @deva[कृत्यान्त] word as @deva[तत्पुरुष].
+
+**@deva[कृत्य] scope:** The @deva[काशिका] restricts this to @deva[यत्] and @deva[ण्यत्] affixes specifically, as in @ref[2.1.33]. @deva[तव्य] and @deva[अनीयर्] forms do not compound: @deva[मासे दातव्यम्] stays uncompounded.
+
+**@deva[ऋण] as prototype, not restriction:** The @deva[काशिका] initially illustrates with debt (@deva[ऋण]) examples (@deva[मासदेयम्]) but then notes that @deva[ऋण] is mentioned only to suggest an appointed time (@deva[अवधि]) in general. So non-debt examples qualify: @deva[पूर्वाह्णगेयं साम], @deva[प्रातरध्येयोऽनुवाकः].
+
+**Counter-example analysis:** @deva[मासे देया भिक्षा] "alms to be given each month" — the locative has a distributive sense ("every month"), not a within-deadline sense ("within one month"). The compound requires the @deva[अवधि] reading.
+
+**Contrast with @ref[2.1.33]:** That rule combined @deva[तृतीया] + @deva[कृत्य] with @deva[अतिशय] (hyperbole). This rule combines @deva[सप्तमी] + @deva[कृत्य] with time/place obligation — same affix class, different case and semantic condition.
+
+**Relation to @ref[2.3.70]:** That rule teaches @deva[कृत्य] words governing @deva[षष्ठी] or @deva[सप्तमी] in uncompounded syntax. This compounding rule complements it by allowing the @deva[सप्तमी] variant to form a compound.
+"""

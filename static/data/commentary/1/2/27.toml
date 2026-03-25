@@ -1,0 +1,43 @@
+id = "1.2.27"
+numericId = "12027"
+
+[en]
+simple = """
+Vowels are classified by how long they take to pronounce. A vowel taking one beat (@deva[मात्रा]) is called @deva[ह्रस्व] (short). A vowel taking two beats is @deva[दीर्घ] (long). A vowel taking three beats is @deva[प्लुत] (prolonged — used when calling someone from a distance).
+
+**Short (@deva[ह्रस्व]):** @deva[अ], @deva[इ], @deva[उ] — as in @deva[दधि] "curd," @deva[मधु] "honey"
+**Long (@deva[दीर्घ]):** @deva[आ], @deva[ई], @deva[ऊ], @deva[ए], @deva[ओ] — as in @deva[कुमारी] "girl," @deva[भू] "earth"
+**Prolonged (@deva[प्लुत]):** @deva[आ३] — as in @deva[देवदत्ता३] "O Devadatta!" (calling from afar)
+
+These three durations are fundamental to how the grammar tracks and manipulates vowels.
+"""
+
+standard = """
+A vowel with one @deva[मात्रा] is @deva[ह्रस्व] (short), with two is @deva[दीर्घ] (long), with three is @deva[प्लुत] (prolonged). This is a @deva[संज्ञा] (definitional) rule.
+
+| Duration | @deva[मात्रा] | Examples |
+|----------|-------------|----------|
+| @deva[ह्रस्व] | 1 | @deva[अ], @deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ] |
+| @deva[दीर्घ] | 2 | @deva[आ], @deva[ई], @deva[ऊ], @deva[ॠ], @deva[ए], @deva[ऐ], @deva[ओ], @deva[औ] |
+| @deva[प्लुत] | 3 | @deva[आ३], @deva[ई३] (in calling) |
+
+**In words:** @deva[दधि] — final @deva[इ] is @deva[ह्रस्व]; @deva[कुमारी] — final @deva[ई] is @deva[दीर्घ]; @deva[देवदत्ता३] (calling from a distance) — @deva[आ] is @deva[प्लुत].
+
+**@deva[ए], @deva[ऐ], @deva[ओ], @deva[औ] are @deva[दीर्घ]:** These diphthongs take two @deva[मात्रा]s. There are no short versions of these vowels.
+
+**Grammatical note:** The compound @deva[ह्रस्वदीर्घप्लुतः] is a @deva[द्वन्द्व] taking singular number, contrary to the normal @deva[द्वन्द्व] rule @ref[2.4.17].
+"""
+
+advanced = """
+@deva[एकमात्रो ह्रस्वो द्विमात्रो दीर्घस्त्रिमात्रः प्लुतः] — a vowel of one, two, or three @deva[मात्रा]s is @deva[ह्रस्व], @deva[दीर्घ], or @deva[प्लुत] respectively.
+
+**Topic shift:** This rule begins a new section (@ref[1.2.27]–@ref[1.2.31]) defining vowel properties — duration and accent. The @deva[कित्]/@deva[ङित्] extension rules of @ref[1.2.1]–@ref[1.2.26] are complete.
+
+**@deva[संज्ञा] rule:** These three terms are designations that other rules reference. For example, @ref[7.4.25] prescribes @deva[दीर्घ]; @ref[1.2.47] prescribes @deva[ह्रस्व]; @ref[8.2.82] prescribes @deva[प्लुत]. The next rule (@ref[1.2.28]) will clarify that these terms always target vowels.
+
+**@deva[मात्रा] as a unit:** One @deva[मात्रा] is the time needed to pronounce a short vowel — roughly the snap of a finger or the blink of an eye (traditional definitions). All duration measurements in the grammar are relative to this unit.
+
+**@deva[प्लुत] in practice:** @deva[प्लुत] appears primarily in Vedic recitation and in calling someone from a distance (@ref[8.2.82]–@ref[8.2.84]). It is rare in ordinary speech. The numeral @deva[३] written after a vowel indicates @deva[प्लुत] duration.
+
+**Diphthongs:** @deva[ए], @deva[ऐ], @deva[ओ], @deva[औ] are inherently @deva[दीर्घ] — there is no @deva[ह्रस्व] form of these vowels. By @ref[1.1.48] (@deva[एच इग्घ्रस्वादेशे]), when a rule prescribes a @deva[ह्रस्व] substitute for @deva[ए]/@deva[ओ]/@deva[ऐ]/@deva[औ], the result is @deva[इ]/@deva[उ]/@deva[इ]/@deva[उ] respectively.
+"""

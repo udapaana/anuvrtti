@@ -1,0 +1,55 @@
+id = "2.3.56"
+numericId = "23056"
+
+[en]
+simple = """
+With a specific set of verbs meaning "to injure" or "to strike," the object takes the genitive case (@deva[षष्ठी]) instead of the usual accusative. The verbs are: @deva[जासि] (to exhaust/strike), @deva[निहन्] (to strike down), @deva[प्रहन्] (to strike at), @deva[नाट्] (to injure, with @deva[उद्] prefix), @deva[क्राथ्] (to hurt, in causative), and @deva[पिष्] (to crush).
+
+**Examples:**
+- @deva[चौरस्य उज्जासयति] — "he injures the thief"
+- @deva[चौरस्य निहन्ति] — "he strikes down the thief"
+- @deva[चौरस्य पिनष्टि] — "he crushes the thief"
+
+**When the rule does NOT apply:**
+- @deva[धानाः पिनष्टि] — "he pounds the grain" — here @deva[पिष्] means "to grind," not "to injure a person," so the regular accusative is used
+
+Both genitive and accusative are acceptable, so @deva[चौरमुज्जासयति] (accusative) is also valid.
+"""
+
+standard = """
+@deva[जासिनिप्रहणनाटक्राथपिषां हिंसायाम्] — "of @deva[जासि], @deva[निहन्], @deva[प्रहन्], @deva[नाट्], @deva[क्राथ्], and @deva[पिष्], when meaning @deva[हिंसा] (injury), [@deva[षष्ठी] is used in the @deva[कर्मन्]]."
+
+**Rule type — @deva[विधि]:** Assigns @deva[षष्ठी] to the object of six specified verb forms when they carry the meaning of bodily harm or injury.
+
+**The six verbs:**
+1. @deva[जासि] — @deva[जसु] in causative (@deva[उज्जासयति])
+2. @deva[निहन्] — @deva[हन्] with prefix @deva[नि] (@deva[निहन्ति])
+3. @deva[प्रहन्] — @deva[हन्] with prefix @deva[प्र] (@deva[प्रहन्ति])
+4. @deva[नाट्] — with prefix @deva[उद्] (@deva[उन्नाटयति])
+5. @deva[क्राथ्] — in causative (@deva[क्राथयति])
+6. @deva[पिष्] — @deva[पिनष्टि]
+
+**Key condition — @deva[हिंसायाम्]:** The rule applies only when these verbs denote injury to a living being. When used in other senses (grinding, pounding, etc.), the regular @deva[द्वितीया] applies.
+
+**Examples:**
+- @deva[चौरस्य उज्जासयति / निहन्ति / प्रहन्ति / उन्नाटयति / क्राथयति / पिनष्टि] — "he injures/strikes/crushes the thief"
+
+**Counterexample:**
+- @deva[धानाः पिनष्टि] — "he pounds the grain" — not @deva[हिंसा], so @deva[द्वितीया]
+
+**Optionality:** @deva[शेष] in @deva[अनुवृत्ति] preserves the @deva[द्वितीया] alternative: @deva[चौरमुज्जासयति] is valid.
+"""
+
+advanced = """
+@deva[जासिनिप्रहणनाटक्राथपिषां हिंसायाम्] — @deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.3.50], @deva[शेषे] from @ref[2.3.50], @deva[कर्मणि] from @ref[2.3.52].
+
+**Compound analysis:** The @deva[सूत्र] lists six items in a @deva[द्वन्द्व]: @deva[जासि], @deva[नि]-@deva[हन्], @deva[प्र]-@deva[हन्], @deva[नाट्], @deva[क्राथ्], @deva[पिष्]. The reading @deva[हण] (not @deva[हन्]) in @deva[निप्रहण] represents a @deva[सूत्र]-internal form; the actual root is @deva[हन्] with the prefixes @deva[नि] and @deva[प्र] respectively.
+
+**Contrast with @ref[2.3.54]:** That rule requires the subject to be a @deva[भाववचन] (abstract condition). This rule has no such restriction on the subject — a concrete agent can injure the object, and the genitive still applies. The distinguishing factor here is the enumerated verb list plus the @deva[हिंसा] semantic condition.
+
+**@deva[क्राथ्] morphology:** The causative form @deva[क्राथयति] shows @deva[वृद्धि] of the root vowel under @deva[णिच्]. The form is noted as irregular by some commentators because @deva[क्राथ्] is @deva[मित्] (cf. @ref[6.4.92]), which would normally prevent @deva[वृद्धि] in the @deva[णिच्]-derivation. The tradition accepts the long-vowel form as established usage.
+
+**@deva[हिंसा] restriction:** Without @deva[हिंसायाम्], @deva[पिष्] in @deva[धानाः पिनष्टि] ("he grinds grain") would incorrectly trigger @deva[षष्ठी]. The semantic condition ensures the rule targets interpersonal violence, not general physical actions on inert objects.
+
+**Cross-reference:** @ref[2.3.54] (affliction-verbs with abstract subjects) and this rule together cover the domain of harm/injury verbs. The two rules differ in their conditions: @ref[2.3.54] restricts the subject; this rule restricts the verb.
+"""

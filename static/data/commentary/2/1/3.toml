@@ -1,0 +1,41 @@
+id = "2.1.3"
+numericId = "21003"
+
+[en]
+simple = """
+From this rule through @ref[2.2.38], the word @deva[समास] "compound" is understood in every rule. This is a heading (@deva[अधिकार]) that governs all the compound-formation rules that follow.
+
+In Sanskrit, two or more words can merge into a single compound word. The rules from here onward specify exactly which words can compound, under what conditions, and what type of compound results.
+
+**Why this matters:** Without this heading, each compound rule would need to repeat "forms a compound." Instead, @deva[समास] is automatically supplied — a characteristic @[pāṇinian] economy of expression.
+
+When @ref[2.1.7] says "@deva[यथा] when not meaning likeness," the full meaning is: "@deva[यथा] forms a **compound** when not meaning likeness."
+"""
+
+standard = """
+The term @deva[समास] is @deva[अधिकार] (governing heading) through @ref[2.2.38] — @deva[प्राक् कडारात् समासः].
+
+**Rule type — @deva[अधिकार]:** The word @deva[समास] is understood in every subsequent @deva[सूत्र] through @ref[2.2.38] (@deva[कडाराः कर्मधारये]).
+
+**@deva[प्राक्] = "up to (but not including)":** The @deva[अधिकार] extends up to the @deva[सूत्र] containing @deva[कडार], which is @ref[2.2.38]. That rule itself falls within the scope.
+
+**Scope:** All compound types are defined within this @deva[अधिकार]:
+- @deva[अव्ययीभाव] (@ref[2.1.5]–@ref[2.1.21])
+- @deva[तत्पुरुष] (@ref[2.1.22]–@ref[2.1.72])
+- @deva[बहुव्रीहि] (@ref[2.2.23]–@ref[2.2.38])
+- @deva[द्वन्द्व] (@ref[2.2.29]–@ref[2.2.34])
+
+**Function:** Each rule within the scope specifies conditions for compound formation. The word @deva[समास] need not be repeated — it is automatically supplied by this @deva[अधिकार].
+"""
+
+advanced = """
+@deva[प्राक् कडारात् समासः] — the term @deva[समास] is @deva[अधिकार] up to and including @ref[2.2.38].
+
+**@deva[प्राक्]-type @deva[अधिकार]:** This parallels @ref[1.4.56] (@deva[प्राग्रीश्वरान्निपाताः]). The @deva[प्राक्] construction defines scope by naming a boundary marker. The @deva[अधिकार] terminates at the rule containing @deva[कडार].
+
+**@deva[समास] @deva[संज्ञा]:** The @deva[अधिकार] also functions as a @deva[संज्ञा] — it assigns the designation @deva[समास] to the compound types defined within its scope. This is necessary because rules like @ref[2.4.71] (@deva[सुपो धातुप्रातिपदिकयोः]) reference @deva[समास] to trigger @deva[सुप्]-deletion within compounds.
+
+**What @deva[समास] means operationally:** A @deva[समास] is a single @deva[प्रातिपदिक] formed from multiple words. After compounding, the component @deva[सुप्] endings are deleted by @ref[2.4.71], and the compound receives fresh @deva[सुप्] endings as a single unit by @ref[4.1.2].
+
+**Relationship to @ref[2.1.1]:** The @deva[समर्थ] requirement from @ref[2.1.1] applies to all @deva[समास] rules within this @deva[अधिकार] — compound components must be semantically connected.
+"""

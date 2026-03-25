@@ -1,0 +1,15 @@
+id = "3.1.98"
+numericId = "31098"
+
+[en]
+simple = """
+This rule says that the affix @deva[यत्] is added after roots ending in a labial consonant (@deva[प्], @deva[फ्], @deva[ब्], @deva[भ्], @deva[म्]) when preceded by short @deva[अ]. This overrides @deva[ण्यत्]. Examples: @deva[शप्] + @deva[यत्] = @deva[शप्यम्] 'to be sworn'; @deva[लभ्] + @deva[यत्] = @deva[लभ्यम्] 'to be obtained'. But @deva[पच्] takes @deva[ण्यत्] → @deva[पाक्यम्] (labial but not labial-final), and @deva[कुप्] takes @deva[ण्यत्] → @deva[कोप्यम्] (not preceded by @deva[अ]).
+"""
+
+standard = """
+The affix @deva[यत्] is added after roots ending in a labial (@deva[पवर्ग]: @deva[प्], @deva[फ्], @deva[ब्], @deva[भ्], @deva[म्]) preceded by short @deva[अ]. This overrides the general @deva[ण्यत्] of @ref[3.1.124]. Examples: @deva[शप्यम्] 'to be sworn', @deva[लभ्यम्] 'to be obtained'. Counter-examples: @deva[पच्] (ends in @deva[च्], not labial) → @deva[पाक्यम्]; @deva[कुप्]/​@deva[गुप्] (preceded by @deva[उ], not @deva[अ]) → @deva[कोप्यम्], @deva[गोप्यम्]. The @deva[अत्] specifies short @deva[अ] only (one @[mātrā] per @ref[1.1.70]); long @deva[आ] doesn't qualify: @deva[आप्] → @deva[आप्यम्] (takes @deva[ण्यत्]).
+"""
+
+advanced = """
+This @[sūtra] prescribes @deva[यत्] after @deva[पवर्गान्त] (labial-final) roots with preceding @deva[अत्] (short @deva[अ], one @[mātrā] per @ref[1.1.70]). This is an @deva[अपवाद] to @deva[ण्यत्] (@ref[3.1.124]). Derivations: @deva[शप्] + @deva[य] → @deva[शप्यम्]; @deva[लभ्] + @deva[य] → @deva[लभ्यम्]. The conditions must be conjoint: @deva[पच्] (palatal-final) → @deva[पाक्यम्] (@deva[ण्यत्]); @deva[कुप्] (@deva[उ]-preceded) → @deva[कोप्यम्] (@deva[ण्यत्] with @[vṛddhi]); @deva[आप्] (long @deva[आ]) → @deva[आप्यम्] (@deva[ण्यत्]). The specification @deva[अत्] excludes @deva[आ] since @deva[तकारे तस्य एकमात्रत्वम्] restricts to short vowels.
+"""

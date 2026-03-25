@@ -1,0 +1,50 @@
+id = "2.3.52"
+numericId = "23052"
+
+[en]
+simple = """
+With verbs meaning "to remember," with the verb @deva[दय्] (to pity, protect, or give), and with @deva[ईश्] (to rule or be master of), the object takes the genitive case (@deva[षष्ठी]) instead of the usual accusative (@deva[द्वितीया]).
+
+**Examples:**
+- @deva[मातुः स्मरति] — "he remembers his mother" (mother is the object, but takes genitive)
+- @deva[सर्पिषो दयते] — "he takes pity on / gives ghee"
+- @deva[गात्राणामीष्टे] — "he rules over his limbs" (i.e., has control over his body)
+
+Both genitive and accusative are valid here — this rule makes the genitive available as an alternative. So @deva[मातरं स्मरति] (with accusative) is equally correct.
+
+The rule applies to any verb that carries the meaning of remembering, not just the root @deva[स्मृ] itself — so @deva[अधि] + @deva[इ] ("to study/remember") and similar verbs qualify.
+"""
+
+standard = """
+@deva[अधीगर्थदयेशां कर्मणि] — "of [verbs having the meaning of] @deva[अधीग] (remembering), @deva[दय्], and @deva[ईश्], [the @deva[षष्ठी] is used] in the @deva[कर्मन्]."
+
+**Rule type — @deva[विधि]:** Overrides the default @deva[द्वितीया] for @deva[कर्मन्] (@ref[2.3.2]) with @deva[षष्ठी] for three verb groups.
+
+**The three groups:**
+1. @deva[अधीगर्थ] — verbs meaning "to remember/recollect": @deva[स्मृ], @deva[अधि] + @deva[इ], @deva[चिन्त्], etc.
+2. @deva[दय्] — "to pity, protect, give"
+3. @deva[ईश्] — "to rule, be master of"
+
+**Examples:**
+- @deva[मातुः स्मरति] / @deva[मातुरध्येति] — "he remembers his mother"
+- @deva[सर्पिषो दयते] — "he pitied the ghee" / "he gave the ghee"
+- @deva[गात्राणामीष्टे] — "he is master of his limbs"
+
+**Optionality:** Since @deva[शेषे] carries forward from @ref[2.3.50], the @deva[द्वितीया] alternative remains valid: @deva[मातरं स्मरति] is equally grammatical. The genitive and accusative are interchangeable here.
+
+**Scope of @deva[अधीगर्थ]:** The compound @deva[अधीगर्थ] is a @deva[बहुव्रीहि] — "those [verbs] whose meaning is that of @deva[अधीग]" — so it extends to all synonymous roots, not just @deva[अधि] + @deva[इ] itself.
+"""
+
+advanced = """
+@deva[अधीगर्थदयेशां कर्मणि] — @deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.3.50], @deva[शेषे] from @ref[2.3.50].
+
+**Key structural point:** This rule begins the @deva[कर्मणि षष्ठी] sub-section (@ref[2.3.52]–@ref[2.3.57]), where genitive replaces accusative for the object of specific verbs. The word @deva[कर्मणि] introduced here carries forward by @deva[अनुवृत्ति] into @ref[2.3.53]–@ref[2.3.57].
+
+**Why a separate rule is needed:** Under @ref[2.3.50], @deva[षष्ठी] applies only in @deva[शेष] — residual relations outside @deva[कारक]. But @deva[कर्मन्] is a @deva[कारक] relation, normally taking @deva[द्वितीया] by @ref[2.3.2]. This rule must therefore explicitly extend @deva[षष्ठी] into @deva[कारक] territory for these verbs.
+
+**@deva[शेष]-based optionality:** The continued @deva[अनुवृत्ति] of @deva[शेषे] creates optionality: the speaker can treat the relationship as @deva[कर्मन्] (→ @deva[द्वितीया]) or invoke this rule (→ @deva[षष्ठी]). Hence @deva[मातुः स्मरति] and @deva[मातरं स्मरति] are both valid. This @deva[विभाषा]-like behavior is characteristic of the entire @deva[कर्मणि षष्ठी] section.
+
+**@deva[अधीगर्थ] as @deva[बहुव्रीहि]:** The compound is analyzed as @deva[अधीगः अर्थो येषाम्] — "those whose meaning is [that of] @deva[अधीग]." This makes the rule apply to all verbs sharing the "remembering" sense, including @deva[स्मृ], @deva[चिन्त्], and @deva[ध्यै]. The use of an @deva[अर्थग्रहण] (meaning-based designation) rather than listing individual roots is a hallmark of @[pāṇinian] economy.
+
+**Cross-reference:** Compare @ref[2.3.51], which assigns @deva[षष्ठी] to @deva[करण] (not @deva[कर्मन्]) with @deva[ज्ञा]. The shift from @deva[करणे] to @deva[कर्मणि] marks the boundary between the two sub-sections.
+"""

@@ -1,0 +1,46 @@
+id = "1.2.39"
+numericId = "12039"
+
+[en]
+simple = """
+In continuous recitation (@deva[संहिता] — reading without pause), an @deva[अनुदात्त] (low-pitched) vowel that comes after a @deva[स्वरित] (circumflex) vowel becomes @deva[एकश्रुति] (monotone). The pitch goes flat after the circumflex.
+
+**Example:** In the Vedic verse @deva[इमं मे गङ्गे यमुने सरस्वती] "this for me, O rivers":
+- @deva[इमं] ends with @deva[उदात्त] (high pitch)
+- @deva[मे] becomes @deva[स्वरित] (the syllable after @deva[उदात्त])
+- @deva[गङ्गे], @deva[यमुने], @deva[सरस्वती] — all @deva[अनुदात्त] syllables after the @deva[स्वरित] — become monotone
+
+This means that once the pitch falls from the @deva[स्वरित] peak, it stays flat until the next accent.
+"""
+
+standard = """
+In @deva[संहिता] (continuous recitation, defined at @ref[1.4.109] as @deva[परः संनिकर्षः]), @deva[अनुदात्त] following @deva[स्वरित] becomes @deva[एकश्रुति].
+
+**Example:** @deva[इमं मे गङ्गे यमुने सरस्वती] (RV 10.75.5)
+- @deva[इमं]: @deva[उदात्त] on @deva[मं]
+- @deva[मे]: becomes @deva[स्वरित] by @ref[8.4.66] (@deva[अनुदात्त] after @deva[उदात्त] → @deva[स्वरित])
+- @deva[गङ्गे], @deva[यमुने], etc.: @deva[अनुदात्त] (mid-sentence vocatives by @ref[8.1.19]) → @deva[एकश्रुति] by this rule
+
+**Condition:** @deva[संहिता] — no pause between the @deva[स्वरित] and following @deva[अनुदात्त]. If there is a hiatus, the @deva[अनुदात्त] remains @deva[अनुदात्त].
+
+**Effect on recitation:** After a @deva[स्वरित] peak, the voice settles into a monotone until the next @deva[उदात्त] or @deva[स्वरित] interrupts it.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकश्रुति] from @ref[1.2.33].
+
+@deva[स्वरितात्संहितायामनुदात्तानाम्] — in @deva[संहिता], @deva[अनुदात्त] after @deva[स्वरित] → @deva[एकश्रुति].
+
+**@deva[संहिता] condition:** By @ref[1.4.109], @deva[संहिता] is the closest possible proximity (@deva[परः संनिकर्षः]) — continuous recitation without pause. If a pause intervenes between the @deva[स्वरित] and the following @deva[अनुदात्त], the change does not occur.
+
+**Derivation for the example:**
+@deva[इमं मे गङ्गे यमुने सरस्वती] (RV 10.75.5):
+1. @deva[मं] = @deva[उदात्त]
+2. @deva[मे] = originally @deva[अनुदात्त] → @deva[स्वरित] by @ref[8.4.66]
+3. @deva[गङ्गे] = @deva[अनुदात्त] by @ref[8.1.19] (@deva[आमन्त्रितम् अवरोऽन्यतरस्याम्])
+4. @deva[गङ्गे], @deva[यमुने], etc. → @deva[एकश्रुति] by this rule (they follow @deva[स्वरित] @deva[मे])
+
+**Phonological picture:** The accent contour in Vedic recitation is: ... @deva[उदात्त] → @deva[स्वरित] → @deva[एकश्रुति] (flat) ... until the next @deva[उदात्त] rises. This rule formalizes the "post-peak flattening" of the tonal curve.
+
+**Relationship to @ref[1.2.40]:** The next rule modifies this picture: @deva[अनुदात्त] that immediately precedes an @deva[उदात्त] or @deva[स्वरित] becomes @deva[सन्नतर] (extra-low) — the pitch dips before rising again.
+"""

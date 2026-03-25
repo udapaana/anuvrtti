@@ -1,0 +1,15 @@
+id = "3.1.86"
+numericId = "31086"
+
+[en]
+simple = """
+This rule says that in Vedic Sanskrit, the affix @deva[अङ्] is used when benedictive (@deva[आशीर्लिङ्]) affixes follow. This replaces the default @deva[शप्]. The rule applies to specific roots like @deva[स्था], @deva[गा], @deva[गम्], @deva[वच्], @deva[वद्], @deva[शक्], and @deva[रुह्]. Examples: @deva[उपस्थेयम्], @deva[गमेम], @deva[वोचेम], @deva[शकेयम्], @deva[आरुहेयम्].
+"""
+
+standard = """
+In @deva[छन्दस्], the affix @deva[अङ्] replaces @deva[शप्] before @deva[आशीर्लिङ्] (benedictive) affixes. By @ref[3.4.116], benedictive affixes are normally @deva[आर्धधातुक], but in Vedic they can also be @deva[सार्वधातुक] per @ref[3.4.117]. This rule applies to roots @deva[स्था], @deva[गा], @deva[गम्], @deva[वच्], @deva[वद्], @deva[शक्], @deva[रुह्]. Examples: @deva[उपस्थेयम्], @deva[सत्यमुपगेयम्], @deva[गमेम], @deva[मन्त्र वोचेमाग्नये], @deva[विदेयम्], @deva[शकेयम्], @deva[आरुहेयम्]. For @deva[दृश्], @deva[अक्] is used instead to block @[guṇa]: @deva[दृशेयम्].
+"""
+
+advanced = """
+The affix @deva[अङ्] is prescribed in @deva[छन्दस्] before @deva[आशीर्लिङ्] affixes, replacing @deva[शप्]. The @deva[ङ्] is an @deva[इत्] marker indicating @deva[ङित्], which blocks @[guṇa]. Benedictive affixes are @deva[आर्धधातुक] by @ref[3.4.116] but additionally @deva[सार्वधातुक] in Vedic by @ref[3.4.117], triggering this @deva[विकरण]. The rule targets @deva[स्था], @deva[गा], @deva[गम्], @deva[वच्], @deva[वद्], @deva[शक्], @deva[रुह्]. For @deva[दृश्], @deva[अक्] (not @deva[अङ्]) is used to prevent @[guṇa] that @ref[7.4.16] would otherwise cause; hence @deva[दृशेयम्] not *@deva[दर्शेयम्].
+"""

@@ -1,0 +1,39 @@
+id = "4.3.108"
+numericId = "43108"
+
+[en]
+simple = """
+The affix @deva[अण्] comes in the @deva[प्रोक्त] (enounced) sense after the word @deva[कलापिन्]. This overrides @deva[णिनि] that would come by the earlier rule.
+
+**Example:** @deva[कलापाः] 'those who study the work taught by @[kalāpin]'
+
+**Derivation:** @deva[कलापिन्] + @deva[अण्]. The @deva[इन्] ending is deleted before the affix. Normally @ref[6.4.164] would prevent this deletion before non-patronymic @deva[अण्], but a special rule (@deva[वार्त्तिक]) requires deletion of the @deva[टि] portion for words like @deva[कलापिन्], @deva[कुथुमिन्], @deva[तैतिलिन्], etc., when a @deva[तद्धित] follows.
+
+Result: @deva[कलापिन्] → @deva[कलाप] + @deva[अण्] → @deva[कालाप] → @deva[कलापाः] (nominative plural).
+"""
+
+standard = """
+The affix @deva[अण्] comes after @deva[कलापिन्] in the @deva[प्रोक्त] sense, debarring @deva[णिनि] of @ref[4.3.104].
+
+**Example:** @deva[कलापाः]
+
+**Derivation:** @deva[कलापिन्] + @deva[अण्]. By @ref[6.4.144], @deva[इन्] should be deleted before @deva[तद्धित]. Though @ref[6.4.164] would prevent this for non-patronymic @deva[अण्], a @deva[वार्त्तिक] overrides:
+
+@deva[टि]-deletion applies to: @deva[सब्रह्मचारिन्], @deva[पीठसर्पिन्], @deva[कलापिन्], @deva[कुथुमिन्], @deva[तैतिलिन्], @deva[जाजलिन्], @deva[जाङ्गलिन्], @deva[लाङ्गलिन्], @deva[शिलालिन्], @deva[शिखण्डिन्], @deva[सूकरसद्मन्], @deva[सुपर्वण्].
+
+Thus: @deva[कलापिन्] → @deva[कलाप] + @deva[अण्] → @deva[कलापाः].
+"""
+
+advanced = """
+This @deva[सूत्र] prescribes @deva[अण्] after @deva[कलापिन्] in the @deva[प्रोक्त] sense, as @deva[अपवाद] to @deva[णिनि] of @ref[4.3.104].
+
+**Example:** @deva[कलापाः]
+
+**Derivation:** @deva[कलापिन्] + @deva[अण्]
+
+By @ref[6.4.144], @deva[इन्] of @deva[कलापिन्] should delete before @deva[तद्धित]. However, @ref[6.4.164] blocks deletion when non-@deva[अपत्य]-denoting @deva[अण्] follows @deva[इन्]-ending words.
+
+**@[vārtika]:** @deva[टि]-deletion before @deva[तद्धित] for: @deva[सब्रह्मचारिन्], @deva[पीठसर्पिन्], @deva[कलापिन्], @deva[कुथुमिन्], @deva[तैतिलिन्], @deva[जाजलिन्], @deva[जाङ्गलिन्], @deva[लाङ्गलिन्], @deva[शिलालिन्], @deva[शिखण्डिन्], @deva[सूकरसद्मन्], @deva[सुपर्वण्].
+
+Thus @deva[ईन्] is deleted: @deva[कलाप] + @deva[अण्] → @deva[कलापाः].
+"""

@@ -1,0 +1,45 @@
+id = "1.3.31"
+numericId = "13031"
+
+[en]
+simple = """
+The verb @deva[ह्वे] "to call" takes @deva[आत्मनेपद] when preceded by @deva[आ] and meaning "to challenge" or "to emulate."
+
+**@deva[आत्मनेपद] (challenging):**
+- @deva[मल्लो मल्लम् आह्वयते] "a wrestler challenges a wrestler"
+- @deva[योद्धा योद्धारम् आह्वयते] "a warrior challenges a warrior"
+
+**@deva[परस्मैपद] (simply calling):**
+- @deva[गाम् आह्वयति गोपालः] "the cowherd calls the cow"
+
+Only the "challenge" meaning triggers @deva[आत्मनेपद]; ordinary "calling" uses @deva[परस्मैपद].
+"""
+
+standard = """
+After @deva[आङ्] + @deva[ह्वे] meaning @deva[स्पर्धा] (challenge, emulation, desire to conquer), @deva[आत्मनेपद] — even when the fruit does not accrue to the agent.
+
+**Challenge — @deva[आत्मनेपद]:**
+- @deva[मल्लो मल्लम् आह्वयते] "a wrestler challenges a wrestler"
+- @deva[योद्धा योद्धारम् आह्वयते] "a warrior challenges a warrior"
+
+**Simple calling — @deva[परस्मैपद]:**
+- @deva[गाम् आह्वयति गोपालः] "the cowherd calls the cow"
+
+**Relation to @ref[1.3.30]:** The previous rule gave @deva[आत्मनेपद] for @deva[ह्वे] with @deva[नि]/@deva[सम्]/@deva[उप]/@deva[वि] unconditionally. This rule adds the prefix @deva[आ] but restricts it to the "challenge" meaning.
+
+**Why a separate rule?** @deva[आ] + @deva[ह्वे] has multiple meanings — "to call toward" (ordinary), "to challenge" (competitive). Only the competitive sense triggers @deva[आत्मनेपद].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[स्पर्धायामाङ्] — after @deva[आङ्] + @deva[ह्वे] in the sense of @deva[स्पर्धा] (challenge/emulation), @deva[आत्मनेपद].
+
+**Meaning-conditioned rule:** Unlike @ref[1.3.30] where four prefixes trigger @deva[आत्मनेपद] unconditionally, @deva[आ] + @deva[ह्वे] requires the specific meaning of challenge or emulation. Without @deva[स्पर्धा], @deva[ह्वे] reverts to its @deva[ञित्]-based behavior under @ref[1.3.72] — @deva[आत्मनेपद] only when the agent benefits.
+
+**@deva[स्पर्धा] defined:** @deva[स्पर्धा] = the desire to equal or surpass another; competitive emulation. The agent inherently engages for self-benefit in competition, which aligns with @deva[आत्मनेपद] semantics — but the rule applies even without explicit self-benefit.
+
+**@deva[ह्वे] coverage complete:** @ref[1.3.30] (four prefixes, unconditional) and @ref[1.3.31] (this: @deva[आ], challenge-only) together cover all prefix-specific @deva[आत्मनेपद] assignments for @deva[ह्वे]. Other prefix combinations follow the default @ref[1.3.72] rule.
+
+**Transition:** @ref[1.3.32] shifts to @deva[कृ], beginning a new block of meaning-specific @deva[आत्मनेपद] rules.
+"""

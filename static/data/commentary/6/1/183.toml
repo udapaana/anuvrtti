@@ -1,0 +1,15 @@
+id = "6.1.183"
+numericId = "61183"
+
+[en]
+simple = """
+After @deva[दिव्] ('heaven/sky'), case endings beginning with @deva[भ्] or @deva[स्] are unaccented. So @deva[द्युभ्याम्] and @deva[द्युभिः] have accent on @deva[द्यु], not on the endings.
+"""
+
+standard = """
+This @[sūtra] assigns @deva[अनुदात्त] (unaccented) status to @deva[भस्] (@deva[भ]/@deva[स]-initial) case endings after @deva[दिव्]. Examples: @deva[द्यु꣡भ्याम्], @deva[द्यु꣡भिः]—the stem retains accent, endings are unaccented. This overrides @ref[6.1.168] and @ref[6.1.171].
+"""
+
+advanced = """
+The @deva[भसि] specification targets @deva[भ्याम्/भिस्/भ्यस्] and @deva[सु]. After @deva[दिव्] (becoming @deva[द्यु] by @ref[6.1.131]), these endings lose accent. This creates @deva[द्यु꣡भिः], @deva[द्यु꣡षु] vs. expected @deva[द्युभि꣡ः]. The @deva[भसि] condition doesn't affect @deva[अजादि] (vowel-initial) endings, which follow other rules.
+"""

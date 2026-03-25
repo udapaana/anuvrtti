@@ -1,0 +1,45 @@
+id = "3.1.57"
+numericId = "31057"
+
+[en]
+simple = """
+This rule says that @deva[अङ्] optionally replaces @deva[च्लि] after roots marked with indicatory @deva[इर्] (@deva[इरित्]) when @deva[परस्मैपद] endings are used.
+
+Since @deva[अङ्] is optional, these roots can form their aorist in two ways:
+
+For @deva[भिद्] (to divide, marked as @deva[भिदिर्]):
+- With @deva[अङ्]: @deva[अभिदत्]
+- With @deva[सिच्]: @deva[अभैत्सीत्]
+
+For @deva[छिद्] (to cut, marked as @deva[छिदिर्]):
+- With @deva[अङ्]: @deva[अच्छिदत्]
+- With @deva[सिच्]: @deva[अच्छैत्सीत्]
+
+In @deva[आत्मनेपद], only @deva[सिच्] is used: @deva[अभित्त] (not *@deva[अभिदत]).
+"""
+
+standard = """
+@deva[अङ्] optionally (@deva[विभाषा]) substitutes for @deva[च्लि] after @deva[इरित्] roots in @deva[परस्मैपद].
+
+Alternate forms:
+- @deva[भिदिर्] (@deva[भिद्]): @deva[अभिदत्] (@deva[अङ्]) / @deva[अभैत्सीत्] (@deva[सिच्])
+- @deva[छिदिर्] (@deva[छिद्]): @deva[अच्छिदत्] (@deva[अङ्]) / @deva[अच्छैत्सीत्] (@deva[सिच्])
+
+In @deva[आत्मनेपद], @deva[सिच्] is obligatory: @deva[अभित्त].
+
+The @deva[इर्] marker (@deva[इ] + @deva[र्] as @deva[इत्]) identifies roots eligible for this optional @deva[अङ्]-aorist.
+"""
+
+advanced = """
+@deva[अङ्] optionally applies after @deva[इरित्] roots in @deva[परस्मैपद लुङ्].
+
+Alternate forms:
+- @deva[भिदिर्]: @deva[अभिदत्] / @deva[अभैत्सीत्]
+- @deva[छिदिर्]: @deva[अच्छिदत्] / @deva[अच्छैत्सीत्]
+
+@deva[आत्मनेपद] takes @deva[सिच्] only: @deva[अभित्त].
+
+The @deva[इर्] (@deva[इरित्]) designation on roots like @deva[भिद्], @deva[छिद्] serves multiple purposes in the grammar; here it licenses optional @deva[अङ्] in @deva[परस्मैपद].
+
+@note[type=observation]: The optionality allows speakers to choose between the thematic @deva[अङ्]-aorist (@deva[अभिदत्]) and the sigmatic @deva[सिच्]-aorist (@deva[अभैत्सीत्]) in active voice.
+"""

@@ -1,0 +1,45 @@
+id = "3.1.139"
+numericId = "31139"
+
+[en]
+simple = """
+The affix @deva[श] is **optionally** used after @deva[दा] 'to give' and @deva[धा] 'to hold' when there is no @deva[उपसर्ग] (prefix).
+
+**Examples:**
+- @deva[दा] + @deva[श] → @deva[ददः] 'giver'
+- @deva[दा] + @deva[ण] → @deva[दायः] 'inheritance'
+- @deva[धा] + @deva[श] → @deva[दधः] 'holder'
+- @deva[धा] + @deva[ण] → @deva[धायः] 'possessor'
+
+With a prefix, only @deva[ण] is used: @deva[प्रदः], @deva[प्रधः].
+"""
+
+standard = """
+The affix @deva[श] is optionally used after @deva[दा] 'to give' and @deva[धा] 'to hold' when there is no @deva[उपसर्ग].
+
+This is an @deva[अपवाद] (exception) to @deva[ण].
+
+| Root | With @deva[श] | With @deva[ण] |
+|------|---------------|---------------|
+| @deva[दा] | @deva[ददः] 'giver' | @deva[दायः] 'inheritance' |
+| @deva[धा] | @deva[दधः] 'holder' | @deva[धायः] 'possessor' |
+
+**Condition:** @deva[अनुपसर्गात्] (without prefix) continues from @ref[3.1.138].
+
+With a prefix, @deva[श] is not used: @deva[प्रदः], @deva[प्रधः] (only @deva[ण]).
+"""
+
+advanced = """
+The affix @deva[श] is optionally used after @deva[दा] 'to give' and @deva[धा] 'to hold' when there is no @deva[उपसर्ग].
+
+This debars @deva[ण].
+
+| Root | With @deva[श] | With @deva[ण] | Meaning |
+|------|---------------|---------------|----------|
+| @deva[दा] | @deva[ददः] | @deva[दायः] | giver / inheritance |
+| @deva[धा] | @deva[दधः] | @deva[धायः] | holder / possessor |
+
+**@deva[अनुपसर्गात्]** continues from @ref[3.1.138]: when a prefix is used, @deva[श] is not employed.
+
+**With prefix:** @deva[प्रदः], @deva[प्रधः] (only @deva[ण] applies, no option).
+"""

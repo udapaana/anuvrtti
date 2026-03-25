@@ -1,0 +1,43 @@
+id = "1.1.2"
+numericId = "11002"
+
+[en]
+simple = """
+The vowels @deva[अ], @deva[ए], and @deva[ओ] are given the technical name @deva[गुण] ("medium grade"). Together with @deva[वृद्धि] (defined in the previous rule), this establishes Sanskrit's three-level vowel system: a basic vowel like @deva[इ] can be strengthened to @deva[ए] (@deva[गुण]) or further to @deva[ऐ] (@deva[वृद्धि]).
+
+@deva[गुण] is the most common vowel change in the grammar — it appears whenever verb roots combine with most affixes. Without this definition, none of the hundreds of rules that prescribe @deva[गुण] would work.
+
+**Example:** @deva[नी] "to lead" → @deva[नयति] "he leads" — the root vowel @deva[ई] is replaced by @deva[ए] (@deva[गुण]), which then becomes @deva[अय] by sandhi.
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] assigns the term @deva[गुण] to @deva[अ], @deva[ए], and @deva[ओ], whether original or derived. The @deva[सूत्र] uses @deva[अत्] (short @deva[अ] with indicatory @deva[त्]) and @deva[एङ्] (the @deva[प्रत्याहार] covering @deva[ए] and @deva[ओ]).
+
+As with @ref[1.1.1], the indicatory @deva[त्] restricts to two-@deva[मात्रा] vowels via @ref[1.1.70].
+
+**The vowel grade system:**
+- @deva[इ]/@deva[ई] → @deva[ए] (@deva[गुण]) → @deva[ऐ] (@deva[वृद्धि])
+- @deva[उ]/@deva[ऊ] → @deva[ओ] (@deva[गुण]) → @deva[औ] (@deva[वृद्धि])
+- @deva[ऋ]/@deva[ॠ] → @deva[अर्] (@deva[गुण]) → @deva[आर्] (@deva[वृद्धि])
+- @deva[ऌ] → @deva[अल्] (@deva[गुण]) → @deva[आल्] (@deva[वृद्धि])
+
+**Examples:**
+- @deva[भू] + @deva[तिप्] → @deva[भो] + @deva[ति] → @deva[भवति] "he is" (@deva[ऊ] → @deva[ओ])
+- @deva[नी] + @deva[तिप्] → @deva[ने] + @deva[ति] → @deva[नयति] "he leads" (@deva[ई] → @deva[ए])
+- @deva[कृ] + @deva[तिप्] → @deva[कर्] + @deva[ति] → @deva[करोति] "he does" (@deva[ऋ] → @deva[अर्])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None directly. This is a fresh @deva[संज्ञासूत्र] parallel to @ref[1.1.1].
+
+The @deva[प्रत्याहार] @deva[एङ्] is formed from @deva[ए ओ ङ्] in the @deva[माहेश्वरसूत्राणि]. The @deva[तपर] restriction from @ref[1.1.70] applies here as it does to @ref[1.1.1].
+
+**Key rules invoking @deva[गुण]:**
+- @ref[7.3.84] @deva[सार्वधातुकार्धधातुकयोः] — @deva[गुण] before both @deva[सार्वधातुक] and @deva[आर्धधातुक] affixes (the most broadly applied @deva[गुण] rule)
+- @ref[7.3.82] @deva[मिदेर्गुणः] — @deva[गुण] for root @deva[मिद्]
+- @ref[7.3.86] @deva[पुगन्तलघूपधस्य] — @deva[गुण] of a light penultimate vowel
+
+**Why @deva[अ] is included:** @deva[अ] is listed as @deva[गुण] even though it is also a basic vowel. This matters because @deva[अ] functions as the @deva[गुण] of @deva[ऋ]/@deva[ॠ] and @deva[ऌ] — when @deva[गुण] is prescribed for these vowels, @deva[अ] appears (as @deva[अर्] or @deva[अल्]). Without listing @deva[अ] here, these replacements would lack authority.
+
+**Ordering note:** @deva[गुण] is defined after @deva[वृद्धि] because @deva[वृद्धि] is needed first — it appears at @ref[1.1.73] @deva[वृद्धिरदाचि], while @deva[गुण] first appears later. The @deva[काशिका] confirms this ordering rationale.
+"""

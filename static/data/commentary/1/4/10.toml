@@ -1,0 +1,56 @@
+id = "1.4.10"
+numericId = "14010"
+
+[en]
+simple = """
+A short vowel (@deva[ह्रस्व]) is called @deva[लघु] "light."
+
+In Sanskrit prosody and grammar, syllable weight matters. A syllable with a short vowel (not followed by a consonant cluster) is "light." This classification affects both metre and grammatical rules.
+
+**Examples of @deva[लघु] syllables:**
+- The @deva[इ] in @deva[भिद्] — short vowel, light syllable
+- The @deva[अ] in @deva[न] — short vowel, light syllable
+
+**Why it matters:** @deva[लघु] penultimate vowels undergo @deva[गुण] (strengthening) before certain affixes (by @ref[7.3.86]):
+- @deva[भिद्] + @deva[तृच्] → @deva[भेत्तृ] "cutter" (the @deva[लघु] @deva[इ] strengthens to @deva[ए])
+- @deva[छिद्] + @deva[तृच्] → @deva[छेत्तृ] "cutter"
+
+A short vowel becomes @deva[गुरु] "heavy" when followed by a conjunct consonant (by @ref[1.4.11]) — the same vowel changes its name depending on context.
+"""
+
+standard = """
+A @deva[ह्रस्व] (short vowel) is @deva[लघु] "light" — @deva[ह्रस्वं लघु].
+
+**Rule type — @deva[संज्ञा]:** Assigns the technical name @deva[लघु] to short vowels for prosodic and grammatical purposes.
+
+**Effect — @ref[7.3.86]:** @deva[लघु] penultimate vowels take @deva[गुण] before @deva[सार्वधातुक]/@deva[आर्धधातुक] affixes:
+- @deva[भिद्] + @deva[तृच्] → @deva[भेत्तृ] (short @deva[इ] → @deva[ए])
+- @deva[छिद्] + @deva[तृच्] → @deva[छेत्तृ]
+
+**Condition for @deva[लघु]:** The vowel must be short AND not followed by a conjunct consonant. If followed by a conjunct, it becomes @deva[गुरु] by @ref[1.4.11].
+
+**Relation to @ref[1.4.1]:** By the one-name rule, a syllable is either @deva[लघु] or @deva[गुरु], never both. The @deva[इ] in @deva[भिद्] is @deva[लघु]; the same @deva[इ] in @deva[शिक्षा] (before @deva[क्ष]) is @deva[गुरु].
+
+**Prosodic use:** In metre, @deva[लघु] syllables occupy specific positions in verse patterns.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[संज्ञा] context from @ref[1.4.1].
+
+@deva[ह्रस्वं लघु] — a short vowel is @deva[लघु].
+
+**@deva[संज्ञा] for syllable weight:** @deva[लघु] and @deva[गुरु] (@ref[1.4.11]–@ref[1.4.12]) classify syllables by weight. This three-rule series establishes the prosodic foundation used in both grammar and metre.
+
+**Grammatical applications:**
+- @ref[7.3.86]: @deva[गुण] of @deva[लघु] penultimate before @deva[सार्वधातुक]/@deva[आर्धधातुक]
+- @ref[8.4.68]: @deva[णत्व] optionality after @deva[लघु]
+
+**Prosodic applications:** The @deva[लघु]/@deva[गुरु] distinction is fundamental to Vedic and classical metre. @deva[लघु] = one @deva[मात्रा]; @deva[गुरु] = two @deva[मात्रा]s.
+
+**Interaction with @ref[1.4.11]:** @ref[1.4.11] overrides this rule: a short vowel followed by a @deva[संयोग] (conjunct) is @deva[गुरु], not @deva[लघु]. By @ref[1.4.1], only one name applies — the later rule (@ref[1.4.11]) prevails by @ref[1.4.2].
+
+**@deva[लघु]/@deva[गुरु] series (@ref[1.4.10]–@ref[1.4.12]):**
+- @ref[1.4.10] (this): short vowel → @deva[लघु]
+- @ref[1.4.11]: before @deva[संयोग] → @deva[गुरु] (overrides this)
+- @ref[1.4.12]: long vowel / @deva[प्लुत] → @deva[गुरु]
+"""

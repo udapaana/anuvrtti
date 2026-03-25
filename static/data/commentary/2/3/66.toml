@@ -1,0 +1,40 @@
+id = "2.3.66"
+numericId = "23066"
+
+[en]
+simple = """
+When a verbal noun (formed with a @deva[कृत्] affix) has both its agent and object expressed in the same sentence, only the object gets the genitive (@deva[षष्ठी]). The agent must take the instrumental (@deva[तृतीया]) instead.
+
+The previous rule (@ref[2.3.65]) says both agent and object can take the genitive with @deva[कृत्]-words. But if both appear together, ambiguity would arise — you would not know which genitive is the agent and which is the object. This rule resolves that: the object keeps the genitive, and the agent shifts to the instrumental.
+
+**Examples:**
+- @deva[गवां दोहोऽगोपालकेन] — 'the milking of cows by a non-cowherd' (@deva[गवाम्] = object in genitive, @deva[अगोपालकेन] = agent in instrumental)
+- @deva[ओदनस्य भोजनं देवदत्तेन] — 'the eating of rice by @[devadatta]' (@deva[ओदनस्य] = object in genitive, @deva[देवदत्तेन] = agent in instrumental)
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule), restricting @ref[2.3.65].
+
+When both @deva[कर्तृ] (agent) and @deva[कर्मन्] (object) of a @deva[कृत्]-formed word are simultaneously expressed, @deva[कर्मन्] alone takes @deva[षष्ठी]; @deva[कर्तृ] takes @deva[तृतीया] (instrumental).
+
+**Rationale:** @ref[2.3.65] licenses @deva[षष्ठी] for both @deva[कर्तृ] and @deva[कर्मन्], but using genitive for both would create semantic ambiguity. This rule disambiguates by reserving @deva[षष्ठी] for @deva[कर्मन्] and assigning @deva[तृतीया] to @deva[कर्तृ].
+
+**Examples:**
+- @deva[आश्चर्यो गवां दोहोऽगोपालकेन] — 'the milking of cows by a non-cowherd is a wonder'
+- @deva[ओदनस्य भोजनं देवदत्तेन] — 'the eating of rice by @[devadatta]'
+- @deva[पयसः पानं यज्ञदत्तेन] — 'the drinking of milk by @[yajñadatta]'
+
+**Note:** When only one of the two (@deva[कर्तृ] or @deva[कर्मन्]) is expressed, @ref[2.3.65] applies normally and either may take @deva[षष्ठी].
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]), @deva[कृत्] (from @ref[2.3.65]).
+
+This rule is a @[niyama] (restriction) on @ref[2.3.65]. It does not introduce a new case-assignment but constrains the distribution when both @deva[कारक] roles are overtly expressed. The priority given to @deva[कर्मन्] for @deva[षष्ठी] is motivated by the principle of disambiguation: since the genitive is unmarked for role (it can signal either agent or object with @deva[कृत्]-words), the grammar resolves the conflict by fixing the assignment.
+
+The @deva[कर्तृ] receives @deva[तृतीया] — the same case it would receive if the sentence used a finite passive verb (@deva[कर्तरि तृतीया] by @ref[2.3.18]). This creates a structural parallel between nominal and verbal passives.
+
+**@[vārttika]:** With feminine @deva[कृत्]-words (those ending in @deva[क्तिन्] etc.), the @deva[कर्तृ] optionally takes @deva[षष्ठी] or @deva[तृतीया] even when both are expressed: @deva[जगतः कृतिर्हरेः] or @deva[जगतः कृतिर्हरिणा] ('the creation of the world by @[hari]'), and @deva[सूत्रस्य कृतिः पाणिनेः] or @deva[सूत्रस्य कृतिः पाणिनिना] ('the composition of @[sūtras] by @[pāṇini]'). This @[vārttika] relaxes the strict rule for a specific morphological subclass.
+
+Cross-reference @ref[2.3.65] for the general rule, and @ref[2.3.69] for cases where @deva[षष्ठी] is blocked entirely.
+"""

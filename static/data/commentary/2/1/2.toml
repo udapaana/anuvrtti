@@ -1,0 +1,46 @@
+id = "2.1.2"
+numericId = "21002"
+
+[en]
+simple = """
+A case-inflected word (@deva[सुबन्त]) that comes before a vocative (@deva[आमन्त्रित] "form of address") is treated as if it were part of that vocative — for accent purposes.
+
+Normally, a vocative gets a high pitch (@deva[उदात्त]) on its first syllable. When a case-inflected word precedes it, both words are treated as a single unit for accent, so the high pitch falls on the first syllable of the entire group.
+
+**Examples:**
+- @deva[शुभस्पती] "O lords of prosperity" — @deva[उदात्त] on @deva[शु], not on @deva[प]
+- @deva[कुण्डेनाटन्] "O you wandering with a bowl"
+- @deva[मद्राणां राजन्] "O king of the Madras"
+
+This only works with case-inflected words, not verbs. @deva[पीड्ये पीड्यमान] "O you being tormented — I am suffering" does not merge, because @deva[पीड्ये] is a verb form.
+"""
+
+standard = """
+A @deva[सुबन्त] before an @deva[आमन्त्रित] (vocative) is treated as the @deva[अङ्ग] of that vocative — @deva[सुबामन्त्रिते पराङ्गवत्].
+
+**Rule type — @deva[विधि]:** @deva[पराङ्गवद्भाव] (treating one word as part of the following word's body).
+
+**Effect:** By @ref[6.1.198], vocatives take initial @deva[उदात्त]. This accent extends to cover the preceding @deva[सुबन्त]: @deva[शुभस्पती] accents @deva[शु].
+
+**Conditions:**
+- Must be @deva[सुबन्त] (not @deva[तिङन्त]): @deva[पीड्ये पीड्यमान] does not merge
+- Must precede the vocative: @deva[गेहे गार्ग्यः] "@[gārgya] is at home" — not a vocative context
+- Merges with the following vocative: in @deva[देवदत्त कुण्डेन अटन्], @deva[कुण्डेन] joins @deva[अटन्] (not @deva[देवदत्त])
+
+**@deva[वत्] = "as if":** The word @deva[वत्] signals limits — the merger is for accent only, not for all grammatical purposes. For @ref[8.1.55], @deva[कुण्डेन] remains a separate word.
+"""
+
+advanced = """
+@deva[सुबामन्त्रिते पराङ्गवत्] — a @deva[सुबन्त] before @deva[आमन्त्रित] is treated as if it were part of the vocative's @deva[अङ्ग].
+
+**@deva[पराङ्गवद्भाव]:** This is one of the @deva[पदविधि] types mentioned in @ref[2.1.1]. The @deva[सुबन्त] is treated "as if" (@deva[वत्]) it were the @deva[अङ्ग] of the following vocative — a fiction for the purpose of accent rules.
+
+**@deva[वत्] limits the fiction:** The @deva[काशिका] notes that @deva[वत्] restricts the scope:
+- **Applies for:** @ref[6.1.198] accent (initial @deva[उदात्त] on the merged unit)
+- **Does not apply for:** @ref[8.1.55] (where @deva[कुण्डेन] must count as a separate intervening word after @deva[आम्])
+- **Does not apply for:** @ref[7.4.2] @deva[ण]-substitution — @deva[कूपे सिञ्चन्], @deva[चर्म नमन्] do not trigger @deva[ण]
+
+**@deva[वार्त्तिक] — appositives:** Appositive words (@deva[विशेषण]) do not break the immediacy requirement: @deva[तीक्ष्णया सूच्या सीव्यन्] "O you sewing with a sharp needle" — @deva[तीक्ष्णया] qualifies @deva[सूच्या], and the whole unit merges with @deva[सीव्यन्].
+
+**@deva[वार्त्तिक] — indeclinables excluded:** @deva[उच्चैः अधीयान] "O you reading loudly" — @deva[उच्चैः] is @deva[अव्यय] (indeclinable), not @deva[सुबन्त], so no merger.
+"""

@@ -1,0 +1,62 @@
+id = "1.4.7"
+numericId = "14007"
+
+[en]
+simple = """
+Words ending in short @deva[इ] or @deva[उ] that are not @deva[नदी] are called @deva[घि] — except @deva[सखि] "friend."
+
+**Why it matters:** @deva[घि] words undergo @deva[गुण] (vowel strengthening) before certain endings (by @ref[7.3.111]): short @deva[इ] becomes @deva[ए], short @deva[उ] becomes @deva[ओ].
+
+**Examples (@deva[घि] → @deva[गुण]):**
+- @deva[अग्नि] "fire" + @deva[ङे] → @deva[अग्नये] "to fire"
+- @deva[वायु] "wind" + @deva[ङे] → @deva[वायवे] "to wind"
+
+**Exception — @deva[सखि] (not @deva[घि]):**
+- @deva[सखि] + @deva[ङे] → @deva[सख्ये] (no @deva[गुण] — the @deva[इ] becomes a semivowel instead)
+- @deva[सखि] + @deva[टा] → @deva[सख्या]
+
+@deva[सखि] declines irregularly because it is excluded from @deva[घि] — it follows its own pattern.
+"""
+
+standard = """
+Short @deva[इ]/@deva[उ]-stems that are not @deva[नदी] are called @deva[घि] — except @deva[सखि].
+
+**Rule type — @deva[संज्ञा]:** Defines @deva[घि] as the complement of @deva[नदी] among short @deva[इ]/@deva[उ]-stems.
+
+**Effect — @ref[7.3.111]:** @deva[घि] stems take @deva[गुण] before @deva[ङित्] affixes:
+- @deva[अग्नि] + @deva[ङे] → @deva[अग्नये] (dat. sg.)
+- @deva[वायु] + @deva[ङे] → @deva[वायवे] (dat. sg.)
+- @deva[अग्नि] + @deva[ङसि] → @deva[अग्नेः] (gen./abl. sg.)
+
+**Exception — @deva[सखि]:**
+- @deva[सखि] + @deva[ङे] → @deva[सख्ये] (semivowel, no @deva[गुण])
+- @deva[सखि] + @deva[टा] → @deva[सख्या]
+- @deva[सखि] + @deva[ङसि] → @deva[सख्युः]
+- @deva[सखि] + @deva[ङि] → @deva[सख्यौ]
+
+**Scope:** Covers all masculine, feminine (when not @deva[नदी]), and neuter short @deva[इ]/@deva[उ]-stems. The @deva[नदी] exclusion ensures feminine short stems have two options via @ref[1.4.6].
+
+**Relation to @ref[1.4.1]:** By the one-name restriction, a word is either @deva[नदी] or @deva[घि], never both simultaneously.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[संज्ञा] context from @ref[1.4.1].
+
+@deva[शेषो घ्यसखि] — remaining short @deva[इ]/@deva[उ]-stems (not @deva[नदी]) are @deva[घि], except @deva[सखि].
+
+**@deva[शेष] (residual) definition:** @deva[घि] is defined as what's left after @deva[नदी] claims its members. This ensures complete coverage — every short @deva[इ]/@deva[उ]-stem is either @deva[नदी] or @deva[घि] (or @deva[सखि]).
+
+**Key rules triggered by @deva[घि]:**
+- @ref[7.3.111]: @deva[गुण] before @deva[ङित्] affixes
+- @ref[7.3.119]: @deva[अच्] substitution patterns
+- @ref[7.3.120]: @deva[आङ्] substitution before @deva[ङि]
+
+**Why exclude @deva[सखि]?** @deva[सखि] has an irregular declension that matches neither @deva[घि] (@deva[गुण] pattern) nor @deva[नदी] (@deva[आट्] pattern). Its forms (@deva[सख्ये], @deva[सख्या], @deva[सख्युः]) require semivowel substitution by separate rules.
+
+**@deva[घि] series (@ref[1.4.7]–@ref[1.4.9]):**
+- @ref[1.4.7] (this): base @deva[घि] definition
+- @ref[1.4.8]: @deva[पति] is @deva[घि] only in compounds
+- @ref[1.4.9]: Vedic optionality for @deva[पति] with genitive
+
+**Three-way classification of short @deva[इ]/@deva[उ]-stems:** @deva[नदी] (feminine, before @deva[ङित्] optionally), @deva[घि] (everything else except @deva[सखि]), @deva[सखि] (neither).
+"""

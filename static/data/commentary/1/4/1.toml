@@ -1,0 +1,46 @@
+id = "1.4.1"
+numericId = "14001"
+
+[en]
+simple = """
+From this rule through @ref[2.2.38], each item receives only one technical name (@deva[संज्ञा]) at a time.
+
+In Sanskrit grammar, the same element can potentially qualify for multiple technical names. This rule says: pick one. An element cannot hold two names simultaneously within this section's scope.
+
+**Example:** A short vowel is called @deva[लघु] "light" (by @ref[1.4.10]). But before a conjunct consonant, it qualifies as @deva[गुरु] "heavy" (by @ref[1.4.11]).
+
+- In @deva[भिद्]: the @deva[इ] is @deva[लघु]
+- In @deva[शिक्षा]: the @deva[इ] (before @deva[क्ष]) is @deva[गुरु] — not both
+
+The @deva[इ] in @deva[शिक्षा] has exactly one name: @deva[गुरु]. The next rule (@ref[1.4.2]) explains which name wins when there's a conflict.
+"""
+
+standard = """
+From here through @ref[2.2.38], each item receives only one @deva[संज्ञा] — @deva[आ कडारात् एका संज्ञा].
+
+**Rule type — @deva[परिभाषा] (metarule):** This governs how all @deva[संज्ञा] rules in its scope interact. When multiple @deva[संज्ञा] rules could apply to the same element, only one designation holds.
+
+**Example:** @deva[इ] is @deva[लघु] by @ref[1.4.10], but @deva[गुरु] before a conjunct by @ref[1.4.11].
+- @deva[भिद्]: @deva[इ] is @deva[लघु]
+- @deva[शिक्षा]: @deva[इ] is @deva[गुरु] (before @deva[क्ष]) — not both
+
+**Conflict resolution:** When two names compete, @ref[1.4.2] determines the winner: the later rule prevails.
+
+**Scope:** @deva[आ कडारात्] — "up to @deva[कडार]" — means up to @ref[2.2.38] (@deva[कडाराः कर्मधारये]). All @deva[संज्ञा] rules within this range are governed by the one-name restriction.
+
+**Why needed:** Without this, an element could simultaneously be @deva[लघु] and @deva[गुरु], or @deva[सर्वनाम] and @deva[अव्यय] — causing contradictory rule applications.
+"""
+
+advanced = """
+@deva[आ कडारात् एका संज्ञा] — from here through @ref[2.2.38], one @deva[संज्ञा] only.
+
+**@deva[अधिकार] scope:** This is a governing rule for all @deva[संज्ञा] definitions from @ref[1.4.1] to @ref[2.2.38]. It does not apply to @deva[संज्ञा] rules outside this range (e.g., @ref[1.1.1]–@ref[1.1.75], @ref[1.2.1]–@ref[1.2.73]).
+
+**@deva[कडार] = @ref[2.2.38]:** The compound @deva[कडार] refers to @deva[कडाराः कर्मधारये] (@ref[2.2.38]), marking the endpoint. The @deva[आ] ("up to") is inclusive.
+
+**Interaction with @ref[1.4.2]:** When multiple @deva[संज्ञा]s compete, this rule mandates choosing one. @ref[1.4.2] provides the selection criterion: @deva[विप्रतिषेधे परं कार्यम्] — the later rule prevails. Together they form a two-part conflict-resolution system.
+
+**What this does NOT cover:** @deva[संज्ञा]s defined before @ref[1.4.1] (like @deva[वृद्धि], @deva[गुण], @deva[प्रत्याहार]s) and after @ref[2.2.38] are not subject to the one-name restriction. Those @deva[संज्ञा]s can coexist — an element can be simultaneously @deva[वृद्धि] and @deva[गुरु].
+
+**Practical impact:** This affects @deva[कारक] assignments (@ref[1.4.23]–@ref[1.4.55]), @deva[लघु]/@deva[गुरु] (@ref[1.4.10]–@ref[1.4.12]), @deva[नदी]/@deva[घि] (@ref[1.4.3]–@ref[1.4.8]), and compound classifications (@ref[2.1]–@ref[2.2.38]).
+"""

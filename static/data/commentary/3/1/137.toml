@@ -1,0 +1,55 @@
+id = "3.1.137"
+numericId = "31137"
+
+[en]
+simple = """
+The affix @deva[श] (= @deva[अ]) is used after certain roots when an @deva[उपसर्ग] (prefix) is present.
+
+**Roots covered:**
+- @deva[पा] 'to drink'
+- @deva[घ्रा] 'to smell'
+- @deva[ध्मा] 'to blow'
+- @deva[धेट्] 'to suck'
+- @deva[दृश्] 'to see'
+
+**Examples:**
+- @deva[उत्] + @deva[पा] → @deva[उत्पिबः] 'one who drinks up'
+- @deva[उत्] + @deva[घ्रा] → @deva[उज्जिघ्रः] 'one who smells out'
+- @deva[उत्] + @deva[ध्मा] → @deva[उद्धमः] 'one who blows up'
+- @deva[उत्] + @deva[दृश्] → @deva[उत्पश्यः] 'one who sees clearly'
+
+The @deva[श्] in @deva[श] is indicatory; the actual affix is @deva[अ].
+"""
+
+standard = """
+The affix @deva[श] (= @deva[अ]) is used after the roots @deva[पा], @deva[घ्रा], @deva[ध्मा], @deva[धेट्], and @deva[दृश्] when an @deva[उपसर्ग] is present.
+
+The @deva[श्] is indicatory (@deva[इत्]); the real affix is @deva[अ]. Being @deva[शित्], the affix is @deva[सार्वधातुक] (@ref[3.4.113]), causing the root to undergo the same changes as in special tenses (@ref[7.3.78]).
+
+| Root | Prefix | Formation | Result |
+|------|--------|-----------|--------|
+| @deva[पा] | @deva[उत्] | @deva[उत्] + @deva[पिब्] + @deva[अ] | @deva[उत्पिबः] |
+| @deva[घ्रा] | @deva[उत्] | @deva[उत्] + @deva[जिघ्र्] + @deva[अ] | @deva[उज्जिघ्रः] |
+| @deva[ध्मा] | @deva[उत्] | @deva[उत्] + @deva[धम्] + @deva[अ] | @deva[उद्धमः] |
+| @deva[धेट्] | @deva[उत्] | @deva[उत्] + @deva[धय्] + @deva[अ] | @deva[उद्धयः] |
+| @deva[दृश्] | @deva[उत्] | @deva[उत्] + @deva[पश्य्] + @deva[अ] | @deva[उत्पश्यः] |
+
+**@[vārtika]:** For @deva[घ्रा] when forming a name, @deva[क] is used instead: @deva[वि] + @deva[आ] + @deva[घ्रा] + @deva[क] → @deva[व्याघ्रः] 'tiger'.
+"""
+
+advanced = """
+The affix @deva[श] (= @deva[अ]) is used after @deva[पा], @deva[घ्रा], @deva[ध्मा], @deva[धेट्], and @deva[दृश्] when an @deva[उपसर्ग] is present.
+
+The @deva[श्] is @deva[इत्]; the real affix is @deva[अ]. Being @deva[शित्], the affix is @deva[सार्वधातुक] (@ref[3.4.113]), causing the root to undergo changes prescribed for special tenses by @ref[7.3.78].
+
+**Derivations:**
+- @deva[उत्] + @deva[पा] + @deva[श] = @deva[उत्] + @deva[पिब्] + @deva[अ] @ref[7.3.78] → @deva[उत्पिबः]
+- @deva[उत्] + @deva[घ्रा] + @deva[श] = @deva[उत्] + @deva[जिघ्र्] + @deva[अ] → @deva[उज्जिघ्रः]
+- @deva[उत्] + @deva[ध्मा] + @deva[श] = @deva[उत्] + @deva[धम्] + @deva[अ] → @deva[उद्धमः]
+- @deva[उत्] + @deva[धेट्] + @deva[श] = @deva[उत्] + @deva[धय्] + @deva[अ] → @deva[उद्धयः]
+- @deva[उत्] + @deva[दृश्] + @deva[श] = @deva[उत्] + @deva[पश्य्] + @deva[अ] → @deva[उत्पश्यः]
+
+**Note:** Some commentators do not read @deva[उपसर्गे] into this @[sūtra]; according to them, forms like @deva[पश्यः] can also be formed without a prefix.
+
+**@[vārtika]:** Prohibition for @deva[घ्रा] when the word is a name: @deva[वि] + @deva[आ] + @deva[घ्रा] + @deva[क] → @deva[व्याघ्रः] 'tiger' (one who goes about smelling).
+"""

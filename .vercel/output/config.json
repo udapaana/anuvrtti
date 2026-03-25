@@ -1,0 +1,85 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": ".*",
+			"continue": true,
+			"transforms": [
+				{
+					"type": "request.query",
+					"op": "delete",
+					"target": {
+						"key": "__pathname"
+					}
+				}
+			]
+		},
+		{
+			"src": "/_app/immutable/.+",
+			"headers": {
+				"cache-control": "public, immutable, max-age=31536000"
+			}
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "/_app/immutable/.+",
+			"status": 404,
+			"continue": false
+		},
+		{
+			"src": "^/?(?:/__data.json)?$",
+			"dest": "/"
+		},
+		{
+			"src": "^/api/suggest/?(?:/__data.json)?$",
+			"dest": "/api/suggest"
+		},
+		{
+			"src": "^/auth/callback/?(?:/__data.json)?$",
+			"dest": "/auth/callback"
+		},
+		{
+			"src": "^/auth/github/?(?:/__data.json)?$",
+			"dest": "/auth/github"
+		},
+		{
+			"src": "^/auth/logout/?(?:/__data.json)?$",
+			"dest": "/auth/logout"
+		},
+		{
+			"src": "^/learn/?(?:/__data.json)?$",
+			"dest": "/learn"
+		},
+		{
+			"src": "^/learn/([^/]+?)/?(?:/__data.json)?$",
+			"dest": "/learn/[pathId]"
+		},
+		{
+			"src": "^/ref/?(?:/__data.json)?$",
+			"dest": "/ref"
+		},
+		{
+			"src": "^/ref/prakriya/?(?:/__data.json)?$",
+			"dest": "/ref/prakriya"
+		},
+		{
+			"src": "^/ref/pratyahara/?(?:/__data.json)?$",
+			"dest": "/ref/pratyahara"
+		},
+		{
+			"src": "^/ref/tables/?(?:/__data.json)?$",
+			"dest": "/ref/tables"
+		},
+		{
+			"src": "^/ref/([^/]+?)/?(?:/__data.json)?$",
+			"dest": "/ref/[id]"
+		},
+		{
+			"src": "/.*",
+			"dest": "/![-]/catchall"
+		}
+	],
+	"overrides": {}
+}

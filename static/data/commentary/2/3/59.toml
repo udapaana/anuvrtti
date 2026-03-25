@@ -1,0 +1,44 @@
+id = "2.3.59"
+numericId = "23059"
+
+[en]
+simple = """
+When the verb @deva[दिव्] (to stake/deal) is preceded by a preverb (@deva[उपसर्ग]) such as @deva[प्रति], @deva[परि], etc., the object may take either the genitive (@deva[षष्ठी]) or the accusative (@deva[द्वितीया]). The choice is optional.
+
+**Examples (both valid):**
+- @deva[शतस्य प्रतिदीव्यति] — "he stakes a hundred" (genitive)
+- @deva[शतं प्रतिदीव्यति] — "he stakes a hundred" (accusative)
+
+**Contrast — without a preverb:**
+- @deva[शतस्य दीव्यति] — only genitive, as required by @ref[2.3.58]
+
+The presence of a preverb relaxes the genitive requirement into an option. Without a preverb, the genitive is obligatory (per the preceding rule).
+"""
+
+standard = """
+@deva[विभाषोपसर्गे] — "optionally when [there is] an @deva[उपसर्ग] (preverb)."
+
+**Rule type — @deva[विधि] with @deva[विभाषा]:** Makes the @deva[षष्ठी] optional (rather than obligatory) for the object of @deva[दिव्] when a preverb is present.
+
+**Key term — @deva[विभाषा]:** This establishes a genuine option — both @deva[षष्ठी] and @deva[द्वितीया] are equally valid.
+
+**Key term — @deva[उपसर्ग]:** Any preverb (@deva[प्र], @deva[परा], @deva[अप], @deva[सम्], @deva[अनु], @deva[अव], @deva[निस्], @deva[निर्], @deva[दुस्], @deva[दुर्], @deva[वि], @deva[आ], @deva[नि], @deva[अधि], @deva[अपि], @deva[अति], @deva[सु], @deva[उद्], @deva[अभि], @deva[प्रति], @deva[परि], @deva[उप]) attached to @deva[दिव्].
+
+**Examples:**
+- @deva[शतस्य प्रतिदीव्यति] or @deva[शतं प्रतिदीव्यति] — both valid with preverb @deva[प्रति]
+
+**Without @deva[उपसर्ग]:**
+- @deva[शतस्य दीव्यति] — only @deva[षष्ठी], per @ref[2.3.58]
+"""
+
+advanced = """
+@deva[विभाषोपसर्गे] — @deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.3.50], @deva[शेषे] from @ref[2.3.50], @deva[कर्मणि] from @ref[2.3.52], @deva[दिवः] from @ref[2.3.58], @deva[तदर्थस्य] from @ref[2.3.58].
+
+**Relation to @ref[2.3.58]:** Without this rule, @ref[2.3.58] would assign @deva[षष्ठी] to the object of @deva[दिव्] (in the transactional sense) regardless of preverb presence. This rule carves out an exception: when a preverb is present, the @deva[षष्ठी] becomes optional, and @deva[द्वितीया] is equally available.
+
+**Why preverbs matter:** The presence of an @deva[उपसर्ग] often modifies verbal meaning significantly. @deva[प्रतिदीव्यति] ("he counter-stakes") and @deva[दीव्यति] ("he stakes") differ subtly in semantic nuance. The grammar acknowledges this by relaxing the case requirement when the preverb is present, allowing the speaker to choose based on emphasis or style.
+
+**@deva[विभाषा] scope:** The @deva[विभाषा] here is @deva[प्राप्तविभाषा] — it makes optional something that would otherwise be obligatory. In the @deva[पक्ष] where @deva[षष्ठी] does not apply, the default @deva[द्वितीया] from @ref[2.3.2] takes over.
+
+**Cross-reference:** Compare @ref[2.3.60], which goes further for @deva[ब्राह्मण] literature: there, @deva[द्वितीया] is mandated (not just optional) for simple @deva[दिव्] — but with a preverb, this rule's optionality still holds even in @deva[ब्राह्मण] texts.
+"""

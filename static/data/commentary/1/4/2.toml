@@ -1,0 +1,57 @@
+id = "1.4.2"
+numericId = "14002"
+
+[en]
+simple = """
+When two rules of equal strength conflict, the later rule prevails.
+
+@deva[विप्रतिषेध] means "mutual prohibition" — a situation where two equally strong rules both try to apply at the same step, and each would block the other. This rule breaks the tie: the one that appears later in the @[aṣṭādhyāyī] wins.
+
+**Example:** Before the ending @deva[भ्यस्]:
+- @ref[7.3.102] says: lengthen the final @deva[अ] before @deva[यञ्]-initial affixes
+- @ref[7.3.103] says: replace the final @deva[अ] with @deva[ए] before @deva[झल्]-initial plural affixes
+
+Since @deva[भ्यस्] qualifies under both rules, the later one (@ref[7.3.103]) wins:
+@deva[वृक्ष] + @deva[भ्यस्] → @deva[वृक्षेभ्यः] "to/from the trees"
+
+This rule only applies when the competing rules are equally strong. When they differ in strength — for example, an exception versus a general rule — the stronger one wins regardless of position.
+"""
+
+standard = """
+In @deva[विप्रतिषेध] (conflict between equally strong rules), the later rule prevails — @deva[विप्रतिषेधे परं कार्यम्].
+
+**Scope of application:** Only when rules are of equal force. Unequal conflicts are resolved by inherent strength:
+- @deva[अपवाद] (exception) defeats @deva[उत्सर्ग] (general rule) — regardless of position
+- @deva[नित्य] (invariable) defeats @deva[अनित्य] (conditioned)
+- @deva[अन्तरङ्ग] (inner operation) defeats @deva[बहिरङ्ग] (outer operation)
+
+**Example of equal conflict:** @ref[7.3.102] vs @ref[7.3.103] before @deva[भ्यस्]:
+- @ref[7.3.102]: long vowel replaces final @deva[अ] before @deva[यञ्]-initial affixes
+- @ref[7.3.103]: @deva[ए] replaces final @deva[अ] before @deva[झल्]-initial plural affixes
+- @deva[वृक्ष] + @deva[भ्यस्] → @deva[वृक्षेभ्यः] (@ref[7.3.103] wins as later rule)
+
+**Rule type — @deva[परिभाषा]:** This is one of the most important metarules in the system, governing rule-conflict resolution throughout the grammar.
+
+**Relation to @ref[1.4.1]:** @ref[1.4.1] mandates one @deva[संज्ञा]; this rule determines which one prevails in a conflict.
+"""
+
+advanced = """
+@deva[विप्रतिषेधे परं कार्यम्] — in mutual prohibition, the later operation prevails.
+
+**@deva[परिभाषा] scope:** Though stated in the @ref[1.4.1]–@ref[2.2.38] @deva[संज्ञा] section, this metarule is applied throughout the entire grammar. It governs @deva[संज्ञा] conflicts (its immediate context) and also @deva[विधि] (operational rule) conflicts.
+
+**"Later" = later in @[sūtra] order:** @deva[पर] here means "later in the sequential arrangement of the @[aṣṭādhyāyī]," not "later in the derivation."
+
+**Hierarchy of conflict resolution:**
+1. @deva[अपवाद]/​@deva[उत्सर्ग]: exception always wins over general — no positional comparison needed
+2. @deva[नित्य]/​@deva[अनित्य]: the rule that applies invariably wins over the conditioned one
+3. @deva[अन्तरङ्ग]/​@deva[बहिरङ्ग]: the rule whose conditions are met with less material wins
+4. @deva[विप्रतिषेध] (this rule): when none of the above apply, the later rule wins
+
+**@deva[कात्यायन]'s refinement:** The @deva[वार्त्तिक] tradition discusses whether this applies only to @deva[संज्ञा] conflicts or universally. The @deva[सिद्धान्तकौमुदी] applies it broadly.
+
+**Critical applications:**
+- @deva[कारक] conflicts: when an element qualifies as both @deva[करण] and @deva[अपादान], the later @deva[संज्ञा] wins
+- @deva[समास] type conflicts: when a compound qualifies as both @deva[तत्पुरुष] and @deva[कर्मधारय]
+- Substitution conflicts: when two @deva[आदेश] rules target the same element
+"""

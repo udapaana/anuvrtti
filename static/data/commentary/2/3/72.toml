@@ -1,0 +1,51 @@
+id = "2.3.72"
+numericId = "23072"
+
+[en]
+simple = """
+When you use a word meaning "like" or "resembling" (@deva[सादृश्य]), the standard of comparison can take either the instrumental (@deva[तृतीया]) or the genitive (@deva[षष्ठी]).
+
+However, with the specific words @deva[तुला] ('equal, match') and @deva[उपमा] ('comparison'), only the genitive is allowed.
+
+**Examples (either case works):**
+- @deva[तुल्यो देवदत्तेन] or @deva[तुल्यो देवदत्तस्य] — 'equal to @[devadatta]'
+- @deva[सदृशो देवदत्तेन] or @deva[सदृशो देवदत्तस्य] — 'resembling @[devadatta]'
+
+**Examples (genitive only):**
+- @deva[तुला देवदत्तस्य नास्ति] — 'there is no match for @[devadatta]' (not *@deva[देवदत्तेन])
+- @deva[उपमा कृष्णस्य न विद्यते] — 'there is no comparison to @[kṛṣṇa]' (not *@deva[कृष्णेन])
+
+This rule is useful because comparison constructions are common in Sanskrit literature, and knowing whether to use instrumental or genitive (or both) is essential for correct expression.
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule) with partial optionality.
+
+With words expressing @deva[सादृश्य] (resemblance/similarity) — such as @deva[तुल्य], @deva[सदृश], @deva[सम], @deva[सख्य] — both @deva[तृतीया] (instrumental) and @deva[षष्ठी] (genitive) are optionally used for the standard of comparison.
+
+**Exception:** @deva[तुला] ('equal, match') and @deva[उपमा] ('comparison, simile') require @deva[षष्ठी] only — @deva[तृतीया] is not permitted with these two words.
+
+**Examples (optional):**
+- @deva[तुल्यो देवदत्तेन] / @deva[तुल्यो देवदत्तस्य] — 'equal to @[devadatta]'
+- @deva[सदृशो देवदत्तेन] / @deva[सदृशो देवदत्तस्य] — 'resembling @[devadatta]'
+
+**Examples (@deva[षष्ठी] only):**
+- @deva[तुला देवदत्तस्य नास्ति] — 'there is no equal of @[devadatta]'
+- @deva[उपमा कृष्णस्य न विद्यते] — 'there is no comparison of @[kṛṣṇa]'
+
+**Scope:** The @deva[तृतीया] option here does not conflict with @ref[2.3.18] (instrumental for @deva[करण]) — the @deva[तृतीया] in comparison constructions is specifically for the @deva[सादृश्य] relation, not for instrument.
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]), @deva[अन्यतरस्याम्] (from @ref[2.3.71]).
+
+The @deva[अन्यतरस्याम्] (optionality) carries forward from @ref[2.3.71], establishing that @deva[षष्ठी] alternates with another case — here @deva[तृतीया] — for the standard of comparison with @deva[सादृश्य]-meaning words.
+
+The carve-out for @deva[तुला] and @deva[उपमा] reflects a lexical restriction: these two words, unlike the adjectives @deva[तुल्य] and @deva[सदृश], are nouns that inherently take a genitive complement. The @deva[तृतीया] option is syntactically available with adjectives of comparison but not with these nominal forms.
+
+The @deva[सादृश्य] domain includes words like @deva[तुल्य], @deva[सदृश], @deva[सम], @deva[समान], @deva[सख्य], and related forms. The rule does not enumerate them — it uses the semantic category @deva[सादृश्य] as the trigger.
+
+The @deva[अन्यतरस्याम्] from this rule also carries into @ref[2.3.73] by @deva[अनुवृत्ति], maintaining the optionality thread through the final @[sūtra] of this section.
+
+Cross-reference @ref[2.3.18] for the general @deva[तृतीया] rule (instrument), which is distinct from the @deva[तृतीया] of comparison licensed here. Also see @ref[2.3.73] for the continuation of the optionality pattern.
+"""

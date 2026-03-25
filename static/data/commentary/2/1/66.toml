@@ -1,0 +1,43 @@
+id = "2.1.66"
+numericId = "21066"
+
+[en]
+simple = """
+A genus-word (@deva[जाति]) compounds with a conventionalized praise-word (@deva[रूढि]) to form @deva[तत्पुरुष]. These praise-words have shifted from their original meanings to become fixed expressions of excellence — they signal "the best of its kind."
+
+**Examples:**
+- @deva[गोप्रकाण्डम्] "an excellent cow" — @deva[प्रकाण्ड] literally means "trunk (of a tree)" but is used conventionally to mean "outstanding"
+- @deva[अश्वमतल्लिका] "an excellent horse"
+- @deva[गोमचर्चिका] "an excellent cow"
+
+**Genus required:** @deva[कुमारी मतल्लिका] "an excellent maiden" does not compound — @deva[कुमारी] is not a genus-word in the relevant sense.
+"""
+
+standard = """
+@deva[जातिवाचक] + @deva[रूढिप्रशंसावाचक] → @deva[तत्पुरुष] in @deva[समानाधिकरण] — @deva[रूढिप्रशंसावाचकैः].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[गोप्रकाण्डम्] "an outstanding cow"
+- @deva[अश्वमतल्लिका] "an outstanding horse"
+- @deva[गोमचर्चिका] "an outstanding cow"
+
+**@deva[रूढि] = conventionalized:** These praise-words retain their specific grammatical gender even when used with nouns of a different gender — they are @deva[रूढ] (fixed by convention), not transparent in meaning.
+
+**@deva[जाति] restriction:** The first member must denote a genus. @deva[कुमारी मतल्लिका] fails because @deva[कुमारी] is used as a specific referent, not a genus term.
+
+**Relation to @ref[2.1.62]:** @ref[2.1.62] used three specific words (@deva[वृन्दारक], @deva[नाग], @deva[कुञ्जर]). This rule extends to any @deva[रूढि] praise-word — a broader class.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[जातिः] from @ref[2.1.65]; @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[रूढिप्रशंसावाचकैः] — a @deva[जाति]-word compounds with a @deva[रूढि] praise-word as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**@deva[रूढि] words:** The @deva[काशिका] explains that @deva[रूढि] praise-words are terms that have conventionalized (@deva[रूढ]) into markers of excellence. @deva[प्रकाण्ड] (originally "tree trunk"), @deva[मतल्लिका], @deva[मचर्चिका] — all retain their grammatical gender and declension even when used with words of different gender in apposition. This gender mismatch is permitted because the words are @deva[रूढ].
+
+**Gender retention:** @deva[गोप्रकाण्डम्] — @deva[प्रकाण्ड] is neuter, while @deva[गो] can be feminine. The compound follows @deva[प्रकाण्ड]'s neuter gender because it is the @deva[विशेष्य] (principal member).
+
+**Relation to @ref[2.1.61]–@ref[2.1.62]:** The praise-compound rules form a series: @ref[2.1.61] (five laudatory first members), @ref[2.1.62] (three laudatory second members from a fixed list), @ref[2.1.66] (open-ended @deva[रूढि] praise second members). Each extends the range of praise-compounds.
+"""

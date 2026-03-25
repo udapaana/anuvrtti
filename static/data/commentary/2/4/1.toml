@@ -1,0 +1,41 @@
+id = "2.4.1"
+numericId = "24001"
+
+[en]
+simple = """
+When a numeral compound (@deva[द्विगु]) expresses a collective group, the whole compound is treated as a single unit and takes the singular number (@deva[एकवचन]).
+
+The idea is that when you combine a number with a noun to mean "a group of X things," the result is one collective entity, not many individual items.
+
+**Examples:**
+- @deva[पञ्चगवम्] 'a group of five cows' — singular, because it refers to the group as a whole
+- @deva[पञ्चपूली] 'a group of five @[pulī]s' — still singular, even though five items are involved
+- @deva[पञ्चपूलीयं शोभना] 'a beautiful thing related to a five-@[pulī] group' — singular is retained even when further affixes are added
+
+This rule matters because without it, a compound like @deva[पञ्चगवम्] might be expected to take plural endings to match the five individual cows. By treating the aggregate as one unit, the grammar simplifies compound inflection.
+"""
+
+standard = """
+This is a @deva[विधि] (operational rule) that assigns @deva[एकवचन] (singular number) to @deva[द्विगु] compounds — specifically the @deva[समाहार-द्विगु] (collective numeral compound) type.
+
+A @deva[द्विगु] is a @deva[तत्पुरुष] compound whose first member is a numeral (@ref[2.1.52]). When it denotes a collective aggregate (@deva[समाहार]), the compound as a whole takes singular number.
+
+**Examples:**
+- @deva[पञ्चगवम्] 'an aggregate of five cows'
+- @deva[पञ्चपूली] 'an aggregate of five @[pulī]s' (feminine by @ref[4.1.21])
+
+The singular sense persists even when the compound is further modified by derivative affixes:
+- @deva[पञ्चपूलीयं शोभना] 'a beautiful thing pertaining to the five-@[pulī] aggregate'
+
+**Scope:** This applies only to @deva[समाहार-द्विगु] (collective). When the numeral compound is non-collective (@deva[उत्तरपदार्थप्रधान]), the number follows the individual items.
+"""
+
+advanced = """
+The @deva[अनुवृत्ति] of @deva[एकवचन] from this sūtra carries forward into subsequent rules in this section (@ref[2.4.2] through @ref[2.4.16]), establishing the general topic of singular-number assignment to compounds.
+
+This rule specifically targets @deva[समाहार-द्विगु], where the compound denotes a collective aggregate. The @deva[द्विगु] designation comes from @ref[2.1.52], and the @deva[समाहार] sense is what triggers the singular — the collection is conceived as a single semantic unit.
+
+The gender of such compounds is governed by @ref[2.4.17], which assigns @deva[नपुंसकलिङ्ग] (neuter) to @deva[द्विगु] and @deva[द्वन्द्व] compounds that take @deva[एकवचन]. However, several @deva[वार्त्तिक]s qualify this: short-@deva[अ]-ending @deva[द्विगु] compounds take feminine gender (@deva[पञ्चपूली], @deva[दशरथी]), and @deva[आप्]-ending stems are optionally feminine (@deva[पञ्चखट्वम्] or @deva[पञ्चखट्वी]).
+
+The persistence of singular even after further affixation is significant: it shows that @deva[एकवचन] is assigned to the @deva[प्रातिपदिक] (nominal stem) itself, not merely to a particular inflected form.
+"""

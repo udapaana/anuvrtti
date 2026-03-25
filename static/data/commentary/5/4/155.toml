@@ -1,0 +1,34 @@
+id = "5.4.155"
+numericId = "54155"
+
+[en]
+simple = """
+When a @deva[बहुव्रीहि] compound is used as a proper name (someone's name), the suffix @deva[कप्] is NOT added. So @deva[विश्वदेवः] as a proper name stays as is, without @deva[कप्].
+"""
+
+standard = """
+@[sūtra] @ref[5.4.155] prohibits @deva[कप्] when the @deva[बहुव्रीहि] compound denotes a proper name (@deva[संज्ञा]). This is an explicit debarment (@deva[निषेध]) overriding the general optional rule @ref[5.4.154].
+
+**Rationale:** Proper names are fixed forms; adding @deva[कप्] would alter the name itself. @deva[विश्वदेवः] "@[viśvadeva]" (a person's name) does not become *@deva[विश्वदेवकः] — that would be a different word (an appellative meaning "one who has all the gods").
+
+**Worked example:** @deva[विश्व] + @deva[देव] → @deva[बहुव्रीहि] → when this is a proper name → no @deva[कप्] → @deva[विश्वदेवः]. Similarly, @deva[विश्वयशाः] (proper name, @deva[यशस्]-final) takes no @deva[कप्].
+
+When the SAME compound is used appellatively (not as a name), @deva[कप्] is again optional by @ref[5.4.154]: @deva[विश्वदेवकः] = "one in whom all gods reside" (descriptive).
+"""
+
+advanced = """
+@[sūtra] @ref[5.4.155]: @deva[संज्ञायाम्] — in the sense of a proper name, @deva[कप्] does not apply (the entire @deva[कप्]-system of @ref[5.4.151]–@ref[5.4.154] is suspended).
+
+**Scope of @deva[संज्ञा]:** This covers personal names (@deva[व्यक्तिसंज्ञा]), place names, and titles used as fixed designations — not generic descriptors.
+
+**Examples:**
+- @deva[विश्वदेवः] — proper name "@[viśvadeva]" (no @deva[कप्])
+- @deva[विश्वयशाः] — proper name "@[viśvayaśas]" (no @deva[कप्]; @deva[यशस्]-final @deva[बहुव्रीहि] stays without @deva[कप्])
+- @deva[सुभ्राता] — if used as a name (no @deva[कप्]; also separately blocked by @ref[5.4.157] for "praised" sense)
+
+**Ambiguity resolution:** When the same compound functions both as a name and as an appellative, the form with @deva[कप्] signals appellative use and the form without signals proper-name use: @deva[बहुदेवः] (name) vs. @deva[बहुदेवकः] (one who worships many gods, appellative).
+
+**Relationship to @ref[5.4.154]:** The word @deva[वा] in @ref[5.4.154] makes @deva[कप्] optional; the present rule @ref[5.4.155] removes even that optionality — @deva[कप्] is simply unavailable.
+
+**@[pāribhāṣika] principle:** A specific prohibition (@deva[निषेध]) always wins over a general permission (@deva[विधि]), per the @[paribhāṣā] @deva[विशेषविहितं बाधते सामान्यविहितम्].
+"""

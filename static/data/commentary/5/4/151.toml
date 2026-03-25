@@ -1,0 +1,27 @@
+id = "5.4.151"
+numericId = "54151"
+
+[en]
+simple = """
+When a compound describes a person by a body part or special noun (like "having a broad chest"), a small suffix @deva[कप्] is added to make the compound clearly adjectival. For example, "having a broad chest" becomes @deva[व्यूढोरस्कः] rather than just @deva[व्यूढोरस्].
+"""
+
+standard = """
+This @[sūtra] (@ref[5.4.151]) prescribes the @[taddhita] affix @deva[कप्] after @deva[बहुव्रीहि] compounds whose final member belongs to the @[urasādi] class (@deva[उरस्] and similar words). The @deva[प्] of @deva[कप्] is @[anubandha] (marker), leaving only @deva[क] in the output, which triggers @deva[अ]-vocalism and masculine @deva[अ]-stem inflection.
+
+**Worked example:** @deva[व्यूढ] (broad) + @deva[उरस्] (chest) → @deva[बहुव्रीहि] compounding → @deva[व्यूढोरस्] + @deva[कप्] (by this rule) → @deva[व्यूढोरस्क] + case endings → nom. sg. @deva[व्यूढोरस्कः] "one whose chest is broad."
+
+Additional examples: @deva[प्रियसर्पिष्कः] "one who loves ghee," @deva[अवमुक्तोपानत्कः] "one who has removed his sandals." Words like @deva[पुमान्] and @deva[नौः] appear in the @[urasādi] list in nominative singular form, so @deva[कप्] applies only in singular; dual and plural are optional by @ref[5.4.154].
+"""
+
+advanced = """
+@[sūtra] @ref[5.4.151] reads: @deva[उरसादिभ्यः कप्] — the affix @deva[कप्] is added after @deva[बहुव्रीहि] compounds whose final member is in the @[urasādi] @[gaṇa] (group). The @deva[प्] is @deva[हलन्त्य]-@[anubandha] (by @ref[1.3.3]), so the realized affix is @deva[क].
+
+**Morphological cascade:** @deva[व्यूढ] + @deva[उरस्] → @deva[बहुव्रीहि] (@ref[2.2.24]) → final @deva[स्] sandhi → @deva[कप्] added → @deva[व्यूढोरस्क] → @deva[सु] (nom. sg.) → @deva[व्यूढोरस्कः].
+
+**The @[urasādi] list** includes: @deva[उरस्], @deva[सर्पिस्], @deva[उपानह्], @deva[पयस्], @deva[नौ], @deva[पुमस्] (= @deva[पुमान्]), @deva[अनड्वह्], @deva[लक्ष्मी] and others. Notably @deva[पुमान्], @deva[अनड्वान्], @deva[पयः], @deva[नौः], and @deva[लक्ष्मीः] are listed in nominative singular form, not crude (@[prātipadika]) form. This signals that @deva[कप्] attaches only in singular number contexts; dual and plural are governed by the optional rule @ref[5.4.154].
+
+**Interaction with phonology:** @deva[अवमुक्तोपानत्कः] — the @deva[ह्] of @deva[उपानह्] undergoes @deva[झलां जशोऽन्ते] (@ref[8.2.39]) → @deva[द्], then final-position assimilation gives @deva[त्]; adding @deva[कप्] then gives @deva[उपानत्क].
+
+**@[vārttika]:** A @[vārttika] notes that @deva[नौ] in the list produces @deva[बहुनावकः] with the compound treated as @deva[बहुव्रीहि] only when the boat sense is secondary (attributive).
+"""

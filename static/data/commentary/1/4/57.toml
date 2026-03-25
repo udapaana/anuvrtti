@@ -1,0 +1,51 @@
+id = "1.4.57"
+numericId = "14057"
+
+[en]
+simple = """
+Words in the @deva[चादिगण] (the list beginning with @deva[च]) are called @deva[निपात] "particle" — but only when they do not denote a substance or thing.
+
+The @deva[चादिगण] is a long list of function words that includes:
+- Conjunctions: @deva[च] "and," @deva[वा] "or"
+- Emphatics: @deva[एव] "only/indeed," @deva[खलु] "certainly," @deva[किल] "indeed"
+- Negatives: @deva[नञ्] "not," @deva[माङ्] "don't"
+- Relatives and correlatives: @deva[यत्र] "where," @deva[तत्र] "there," @deva[यावत्] "as much as," @deva[तावत्] "so much"
+- Ritual calls: @deva[स्वाहा], @deva[स्वधा], @deva[वषट्]
+- Discourse markers: @deva[अथ] "now," @deva[इति] "thus," @deva[इव] "like"
+
+**Example:** In @deva[देवदत्तश्च] "and Devadatta," @deva[च] is a @deva[निपात].
+
+The condition "not denoting a substance" (@deva[असत्त्वे]) means that if one of these words happens to refer to a thing, it loses its @deva[निपात] status in that usage.
+"""
+
+standard = """
+Words in the @deva[चादिगण] are @deva[निपात] when not denoting a substance — @deva[चादयोऽसत्त्वे].
+
+**Rule type — @deva[संज्ञा]:** Assigns the @deva[निपात] label to the @deva[च]-list words under a semantic condition.
+
+**Major @deva[चादि] members:**
+- Conjunctions: @deva[च], @deva[वा]
+- Emphatics: @deva[एव], @deva[खलु], @deva[किल], @deva[नूनम्]
+- Negatives: @deva[नञ्], @deva[माङ्]
+- Temporal/spatial: @deva[यत्र], @deva[तत्र], @deva[यावत्], @deva[तावत्], @deva[शश्वत्], @deva[युगपत्]
+- Ritual: @deva[स्वाहा], @deva[स्वधा], @deva[वषट्]
+- Discourse: @deva[अथ], @deva[इति], @deva[इव], @deva[वत्], @deva[चेत्], @deva[नेत्]
+
+**@deva[असत्त्व] = "not denoting a substance":** This condition excludes substance-denoting uses. When @deva[परा] means "excellent" (modifying a noun), it denotes a quality of a substance and is not @deva[निपात].
+
+**Distinction from @ref[1.4.58]:** @deva[चादि] words are a separate list from @deva[प्रादि] words. @deva[चादि] words never become @deva[उपसर्ग] (verbal prefixes). @deva[प्रादि] words get their own rule because they can.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[निपाताः] from @ref[1.4.56].
+
+@deva[चादयोऽसत्त्वे] — @deva[चादि] words are @deva[निपात] when not signifying @deva[सत्त्व] (substance/entity).
+
+**@deva[असत्त्व] condition:** @deva[सत्त्व] in @deva[पाणिनि]'s system means "entity" — a substance or thing that can be a referent. @deva[निपात]s are function words that modify, connect, or qualify — they don't refer to things. When a @deva[चादि] word happens to denote an entity (e.g., @deva[परा] as adjective meaning "excellent"), it is not @deva[निपात] in that usage.
+
+**Why separate from @ref[1.4.58]?** The @deva[प्रादि] words (listed in @ref[1.4.58]) overlap functionally but have an additional capability: they can become @deva[उपसर्ग] with verbs (@ref[1.4.59]). Keeping @deva[चादि] and @deva[प्रादि] in separate rules ensures @deva[उपसर्ग] status is available only to @deva[प्रादि] words, not @deva[चादि].
+
+**@deva[निपात] and @deva[अव्यय]:** @ref[1.1.37] makes @deva[निपात]s @deva[अव्यय] (indeclinable). This means @deva[चादि] words don't take case endings — they are morphologically frozen.
+
+**Scope of the @deva[चादिगण]:** The list is extensive and includes words that might seem like adverbs or pronouns. The @deva[गण] is a closed list — only the enumerated words qualify. The @deva[काशिका] provides the full enumeration.
+"""

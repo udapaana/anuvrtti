@@ -1,0 +1,47 @@
+id = "1.2.71"
+numericId = "12071"
+
+[en]
+simple = """
+When "father-in-law" (@deva[श्वशुर]) and "mother-in-law" (@deva[श्वश्रू]) appear together, @deva[श्वशुर] may optionally be retained through @deva[एकशेष], giving @deva[श्वशुरौ] "parents-in-law."
+
+**Both valid:**
+- @deva[श्वशुरौ] "parents-in-law" (@deva[एकशेष] — @deva[श्वशुर] retained, dual)
+- @deva[श्वश्रूश्वशुरौ] "mother-in-law and father-in-law" (@deva[द्वन्द्व] compound)
+
+This parallels @ref[1.2.70] (@deva[पितृ]/@deva[मातृ]) — both are optional, giving the speaker a choice between @deva[एकशेष] and @deva[द्वन्द्व].
+"""
+
+standard = """
+An optional @deva[एकशेष] applies to the pair @deva[श्वशुर]/@deva[श्वश्रू]: the masculine @deva[श्वशुर] is retained, yielding @deva[श्वशुरौ] "parents-in-law" (dual).
+
+**Alternative:** The @deva[द्वन्द्व] compound @deva[श्वश्रूश्वशुरौ] is available when @deva[एकशेष] is not chosen.
+
+**@deva[विकल्प]:** Like @ref[1.2.70] (@deva[पितृ]/@deva[मातृ]), this is optional. The speaker chooses between the two outputs.
+
+**Why a special rule?** @deva[श्वशुर] and @deva[श्वश्रू] have different stems, so @ref[1.2.67] (same-stem gender retention) cannot apply. This named-pair rule extends @deva[एकशेष] to this specific kinship term.
+
+**Pattern — kinship @deva[एकशेष] rules:**
+- @ref[1.2.68]: @deva[भ्रातृ]/@deva[स्वसृ], @deva[पुत्र]/@deva[दुहितृ] — obligatory
+- @ref[1.2.70]: @deva[पितृ]/@deva[मातृ] — optional
+- @ref[1.2.71] (this): @deva[श्वशुर]/@deva[श्वश्रू] — optional
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकशेष] from @ref[1.2.64].
+
+@deva[श्वशुरः श्वश्र्वा] — @deva[श्वशुर] is optionally retained when paired with @deva[श्वश्रू].
+
+**Completing the kinship pairs:** This is the last named-pair @deva[एकशेष] rule. Together with @ref[1.2.68] and @ref[1.2.70], it covers the major kinship pairs where masculine and feminine have suppletive (different) stems:
+
+| Rule | Pair | Retained | Type |
+|------|------|----------|------|
+| @ref[1.2.68] | @deva[भ्रातृ]/@deva[स्वसृ] | @deva[भ्रातृ] | obligatory |
+| @ref[1.2.68] | @deva[पुत्र]/@deva[दुहितृ] | @deva[पुत्र] | obligatory |
+| @ref[1.2.70] | @deva[पितृ]/@deva[मातृ] | @deva[पितृ] | optional |
+| @ref[1.2.71] (this) | @deva[श्वशुर]/@deva[श्वश्रू] | @deva[श्वशुर] | optional |
+
+**Why @deva[विकल्प]?** As with @ref[1.2.70], the established @deva[द्वन्द्व] form (@deva[श्वश्रूश्वशुरौ]) is in common use, so @deva[पाणिनि] makes @deva[एकशेष] optional rather than obligatory.
+
+**Transition:** @ref[1.2.72]–@ref[1.2.73] close the @deva[एकशेष] section with rules about pronoun retention and feminine retention for domestic animal groups.
+"""

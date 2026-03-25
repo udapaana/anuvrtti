@@ -1,0 +1,53 @@
+id = "2.1.65"
+numericId = "21065"
+
+[en]
+simple = """
+A word denoting a genus or class (@deva[जाति]) compounds with certain listed words — @deva[पोटा] "young female animal," @deva[युवति] "young woman," @deva[स्तोक] "a little," @deva[कतिपय] "a few," @deva[गृष्टि] "a cow that has calved once," @deva[धेनु] "milch cow," @deva[वशा] "barren cow," @deva[वेहत्] "a cow that miscarries," @deva[बष्कयणी] "a cow with a full-grown calf," @deva[प्रवक्तृ] "expounder," @deva[श्रोत्रिय] "learned @deva[ब्राह्मण]," @deva[अध्यापक] "teacher," and @deva[धूर्त] "expert/cunning" — to form @deva[तत्पुरुष].
+
+**Examples:**
+- @deva[इभपोटा] "a young female elephant"
+- @deva[इभयुवतिः] "a young female elephant"
+- @deva[अग्निस्तोकः] "a little fire"
+- @deva[गोगृष्टिः] "a cow that has calved once"
+- @deva[गोधेनुः] "a milch cow"
+- @deva[कठप्रवक्ता] "an expounder of the @deva[कठ] branch"
+- @deva[कठश्रोत्रियः] "a @deva[ब्राह्मण] versed in the @deva[कठ] branch"
+
+**Genus required:** @deva[देवदत्तः प्रवक्ता] "@deva[देवदत्त] the expounder" does not compound — @deva[देवदत्त] is a proper name, not a genus.
+"""
+
+standard = """
+@deva[जातिवाचक] + @deva[पोटा]/\u200b@deva[युवति]/\u200b@deva[स्तोक]/\u200b@deva[कतिपय]/\u200b@deva[गृष्टि]/\u200b@deva[धेनु]/\u200b@deva[वशा]/\u200b@deva[वेहत्]/\u200b@deva[बष्कयणी]/\u200b@deva[प्रवक्तृ]/\u200b@deva[श्रोत्रिय]/\u200b@deva[अध्यापक]/\u200b@deva[धूर्त] → @deva[तत्पुरुष] in @deva[समानाधिकरण] — @deva[जातिरप्राणिनां पोटायुवतिस्तोककतिपयगृष्टिधेनुवशावेहद्बष्कयणीप्रवक्तृश्रोत्रियाध्यापकधूर्तैः].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[इभपोटा] "young female elephant," @deva[इभयुवतिः] "young female elephant"
+- @deva[अग्निस्तोकः] "a small fire," @deva[उदश्वित्कतिपयम्] "a little buttermilk"
+- @deva[गोगृष्टिः] "once-calved cow," @deva[गोधेनुः] "milch cow," @deva[गोवशा] "barren cow"
+- @deva[गोवेहत्] "miscarrying cow," @deva[गोबष्कयणी] "cow with grown calf"
+- @deva[कठप्रवक्ता] "expounder of @deva[कठ]," @deva[कठश्रोत्रियः] "learned in @deva[कठ]"
+- @deva[कठाध्यापकः] "teacher of @deva[कठ]"
+
+**@deva[जाति] condition:** The first member must denote a genus or class — @deva[गो] (cow), @deva[इभ] (elephant), @deva[कठ] (branch of study), @deva[अग्नि] (fire). Proper names like @deva[देवदत्त] do not qualify.
+
+**@deva[धूर्त] without censure:** In this rule, @deva[धूर्त] means "expert/skilled" (positive), not "cunning" (negative). @deva[कठधूर्तः] = "one well-versed in the @deva[कठ] branch."
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[जातिरप्राणिनां पोटायुवतिस्तोककतिपयगृष्टिधेनुवशावेहद्बष्कयणीप्रवक्तृश्रोत्रियाध्यापकधूर्तैः] — a @deva[जाति]-word compounds with these thirteen words as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**@deva[जाति] vs proper name:** The @deva[काशिका] restricts the first member to @deva[जाति] (genus/class). @deva[गो] "cow," @deva[इभ] "elephant," @deva[कठ] "the @deva[कठ] school" are @deva[जाति]. @deva[देवदत्त] is a @deva[व्यक्ति] (individual) — @deva[देवदत्तः प्रवक्ता] does not compound.
+
+**Thirteen specific second members:** The list covers:
+- Animal sub-classifications: @deva[पोटा] (young female), @deva[युवति] (young), @deva[गृष्टि] (once-calved), @deva[धेनु] (milch), @deva[वशा] (barren), @deva[वेहत्] (miscarrying), @deva[बष्कयणी] (with grown calf)
+- Quantity: @deva[स्तोक] (a little), @deva[कतिपय] (a few)
+- Scholarship: @deva[प्रवक्तृ] (expounder), @deva[श्रोत्रिय] (learned), @deva[अध्यापक] (teacher), @deva[धूर्त] (expert)
+
+**@deva[धूर्त] polysemy:** @deva[धूर्त] normally means "cunning/deceptive" (as in @ref[2.1.40] @deva[शौण्डादि]). Here the @deva[काशिका] notes it means "skilled/expert" — a positive sense. @deva[कठधूर्तः] = "one thoroughly versed in the @deva[कठ] branch," not "one cunning in @deva[कठ]."
+
+**Order:** The @deva[जाति] word comes first: @deva[गोगृष्टिः], @deva[कठप्रवक्ता]. The second member specifies a sub-category or role within the genus — a specializing @deva[विशेषण].
+"""

@@ -1,0 +1,45 @@
+id = "3.1.54"
+numericId = "31054"
+
+[en]
+simple = """
+This rule says that @deva[अङ्] optionally replaces @deva[च्लि] after @deva[लिप्], @deva[सिच्], and @deva[ह्वे] when @deva[आत्मनेपद] (middle voice) endings follow.
+
+Since @deva[अङ्] is optional, these roots can form their @deva[आत्मनेपद] aorist in two ways:
+
+For @deva[लिप्] (to paint):
+- With @deva[अङ्]: @deva[अलिपत] (he painted himself)
+- With @deva[सिच्]: @deva[अलिप्त]
+
+For @deva[सिच्] (to sprinkle):
+- With @deva[अङ्]: @deva[असिचत] (he sprinkled himself)
+- With @deva[सिच्]: @deva[असिक्त]
+
+For @deva[ह्वे] (to call):
+- With @deva[अङ्]: @deva[आह्वत] (he challenged)
+- With @deva[सिच्]: @deva[आह्वास्त]
+"""
+
+standard = """
+@deva[अङ्] optionally (@deva[विभाषा]) substitutes for @deva[च्लि] after @deva[लिप्], @deva[सिच्], and @deva[ह्वे] when @deva[आत्मनेपद] endings follow.
+
+Alternate forms:
+- @deva[लिप्]: @deva[अलिपत] (@deva[अङ्]) / @deva[अलिप्त] (@deva[सिच्])
+- @deva[सिच्]: @deva[असिचत] (@deva[अङ्]) / @deva[असिक्त] (@deva[सिच्])
+- @deva[ह्वे]: @deva[आह्वत] (@deva[अङ्]) / @deva[आह्वास्त] (@deva[सिच्])
+
+This extends @ref[3.1.53] with optional status for @deva[आत्मनेपद]. In @deva[परस्मैपद], @deva[अङ्] is obligatory by @ref[3.1.53]; in @deva[आत्मनेपद], either @deva[अङ्] or @deva[सिच्] may be used.
+"""
+
+advanced = """
+@deva[अङ्] optionally applies after @deva[लिप्], @deva[सिच्], and @deva[ह्वे] in @deva[आत्मनेपद लुङ्].
+
+Alternate forms:
+- @deva[लिप्]: @deva[अलिपत] / @deva[अलिप्त]
+- @deva[सिच्]: @deva[असिचत] / @deva[असिक्त]
+- @deva[ह्वे]: @deva[आह्वत] / @deva[आह्वास्त]
+
+This rule modifies @ref[3.1.53]: while @deva[अङ्] is obligatory in @deva[परस्मैपद], it becomes optional (@deva[विभाषा]) in @deva[आत्मनेपद], allowing @deva[सिच्] as an alternative.
+
+@note[type=observation]: The optionality in @deva[आत्मनेपद] reflects a general tendency where middle voice forms show more variation than @deva[कर्तरिप्रयोग] (active voice) forms in the aorist system.
+"""

@@ -1,0 +1,52 @@
+id = "2.1.31"
+numericId = "21031"
+
+[en]
+simple = """
+A word in the instrumental case (@deva[तृतीया]) **optionally** compounds with certain specific words to form @deva[तत्पुरुष]. The words are: @deva[पूर्व] "prior," @deva[सदृश] and @deva[सम] "similar/like," words meaning "less" (@deva[ऊन], @deva[विकल], etc.), @deva[कलह] "quarrel," @deva[निपुण] "skilled," @deva[मिश्र] "mixed," and @deva[श्लक्ष्ण] "polished."
+
+**Examples:**
+- @deva[मासपूर्वः] "prior by a month" — born a month earlier
+- @deva[मातृसदृशः] "like the mother"
+- @deva[माषोनम्] "less by a @deva[माष]" (a unit of weight)
+- @deva[वाक्कलहः] "a quarrel of words, word-fight"
+- @deva[वाङ्निपुणः] "skilled in speech"
+- @deva[तिलमिश्रः] "mixed with sesame"
+- @deva[आचारश्लक्ष्णः] "polished in conduct"
+
+This rule also incidentally teaches that these words govern the instrumental case — the first member stands in @deva[तृतीया] because each of these words takes an instrumental complement.
+"""
+
+standard = """
+@deva[तृतीयान्त] + @deva[पूर्व]/\u200b@deva[सदृश]/\u200b@deva[सम]/\u200b@deva[ऊनार्थक]/\u200b@deva[कलह]/\u200b@deva[निपुण]/\u200b@deva[मिश्र]/\u200b@deva[श्लक्ष्ण] → @deva[विभाषा] @deva[तत्पुरुष] — @deva[पूर्वसदृशसमोनार्थकलहनिपुणमिश्रश्लक्ष्णैः].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[मासपूर्वः], @deva[संवत्सरपूर्वः] "prior by a month/year"
+- @deva[मातृसदृशः], @deva[पितृसदृशः] "like mother/father"
+- @deva[मातृसमः], @deva[पितृसमः] "similar to mother/father"
+- @deva[माषोनम्], @deva[माषविकलम्] "less by a @deva[माष]"
+- @deva[असिकलहः] "sword-fight," @deva[वाक्कलहः] "word-fight"
+- @deva[वाङ्निपुणः], @deva[आचारनिपुणः] "skilled in speech/conduct"
+- @deva[तिलमिश्रः], @deva[गुडमिश्रः] "mixed with sesame/jaggery"
+- @deva[आचारश्लक्ष्णः] "polished in conduct"
+
+**@deva[ऊनार्थ]:** Not just @deva[ऊन] but any word meaning "less" — @deva[विकल], @deva[हीन], etc. The @deva[अर्थ] suffix makes it a class, not a single word.
+
+**Incidental @deva[विभक्ति] teaching:** This rule indirectly establishes that @deva[पूर्व], @deva[सदृश], @deva[सम], etc. govern @deva[तृतीया] — a fact used elsewhere in derivation.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[तृतीया] from @ref[2.1.30]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[पूर्वसदृशसमोनार्थकलहनिपुणमिश्रश्लक्ष्णैः] — a @deva[तृतीयान्त] word optionally compounds with these eight words (or word-classes) as @deva[तत्पुरुष].
+
+**Enumerated second members:** Unlike @ref[2.1.30] (which used the class term @deva[गुणवचन]), this rule explicitly lists eight items. The list is a @deva[द्वन्द्व] compound in the @[sūtra] text. @deva[ऊनार्थ] is a class — any word meaning "less" qualifies.
+
+**@deva[वार्त्तिक] — @deva[अवर]:** The @deva[वार्त्तिककार] adds @deva[अवर] "later, inferior" to the list: @deva[मासावरः] "later than a month." This is not in @deva[पाणिनि]'s original enumeration.
+
+**@deva[तृतीया] governance:** The @deva[काशिका] notes that this rule incidentally teaches the @deva[विभक्ति] these words govern. @deva[पूर्व] takes @deva[तृतीया] for "prior by X" (@deva[मासेन पूर्वः]); @deva[सदृश]/@deva[सम] take @deva[तृतीया] for "similar to X" (@deva[मात्रा सदृशः]). This @deva[विभक्ति] information is used by @ref[2.3.17] ff.
+
+**End of @deva[तृतीया] @deva[तत्पुरुष]:** @ref[2.1.30]–@ref[2.1.31] cover @deva[तृतीया] first members — only two rules, compared to six for @deva[द्वितीया] (@ref[2.1.24]–@ref[2.1.29]). The next rules (@ref[2.1.32]–@ref[2.1.35]) continue with @deva[तृतीया] in more specialized contexts (@deva[कर्तृ]/@deva[करण], @deva[कृत्य], food compounds).
+"""

@@ -1,0 +1,54 @@
+id = "2.3.37"
+numericId = "23037"
+
+[en]
+simple = """
+When the action of one thing marks the time at which another action takes place, @deva[सप्तमी] (locative, seventh case-ending) is used. This is the **locative absolute** construction — equivalent to English "while..." or "when..." clauses.
+
+The key requirement is that the locative clause describes the action of a *different* subject from the main verb.
+
+**Examples:**
+- @deva[गोषु दुह्यमानासु गतः] "he left while the cows were being milked" — the milking (one action) marks the time of leaving (another action)
+- @deva[दुग्धासु गोषु आगतः] "he arrived when the cows had been milked"
+- @deva[सूर्ये उदिते गतः] "he left when the sun had risen"
+
+The construction requires two separate actions with (typically) two separate agents. If the same person performs both actions, the locative absolute is generally not used.
+"""
+
+standard = """
+@deva[यस्य च भावेन भावलक्षणम्] — when the action (@deva[भाव]) of something characterizes (marks the time of) another action, @deva[सप्तमी] is used. This is the **locative absolute**.
+
+**Rule type — @deva[विधि]:** Assigns @deva[सप्तमी] in temporal-conditional clauses.
+
+**Condition — "action characterizes action":** Both the subordinate and main clause must involve actions (@deva[भाव]). The subordinate action provides the temporal frame for the main action.
+
+**Examples:**
+- @deva[गोषु दुह्यमानासु गतः] "the cows being milked, he went" (present participle — simultaneous)
+- @deva[दुग्धासु गोषु आगतः] "the cows having been milked, he came" (past participle — completed)
+- @deva[अग्निषु हूयमानेषु गतः] "while oblations were being offered, he left"
+- @deva[हुतेषु अग्निषु आगतः] "when the oblations had been offered, he arrived"
+
+**Counterexamples:**
+- @deva[यो जटाभिः स भुक्ते] "he who has matted hair eats" — @deva[जटा] (matted hair) is not an action, so no locative absolute applies
+- @deva[यो भुक्ते स देवदत्तः] "he who eats is @deva[देवदत्त]" — the eating does not mark the time of another action; it identifies a person
+
+**Scope:** The word @deva[यस्य] ("of whatsoever") allows broad application — any noun whose action provides the temporal frame.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1]; @deva[सप्तमी] from @ref[2.3.36].
+
+@deva[यस्य च भावेन भावलक्षणम्] — when the @deva[भाव] (action/state) of X marks the time (@deva[लक्षण]) of another @deva[भाव], the participant X takes @deva[सप्तमी]. This produces the **locative absolute** (@deva[सति सप्तमी]).
+
+**Parsing:** @deva[यस्य] (of whatsoever) + @deva[भावेन] (by the action) + @deva[भावलक्षणम्] (characterization of [another] action). Both @deva[भाव] occurrences are load-bearing: the first ensures the locative clause describes an action, and the second ensures the main clause also involves an action.
+
+**Why @deva[भाव] twice?**
+1. **First @deva[भाव] (subordinate clause must be an action):** Excludes non-actions: @deva[यो जटाभिः स भुक्ते] — @deva[जटा] is a static property, not a @deva[भाव], so no locative absolute.
+2. **Second @deva[भाव] (main clause must be an action being temporally characterized):** Excludes identification: @deva[यो भुक्ते स देवदत्तः] — the main clause is an identity statement, not an action whose time is being marked.
+
+**Different-subject requirement (@deva[भिन्नकर्तृक]):** The locative absolute typically requires that the subordinate and main clauses have different subjects. When the same agent performs both actions, a @deva[ल्यप्] (absolutive) or @deva[क्त्वा] construction is preferred: @deva[भुक्त्वा गतः] "having eaten, he went" — not *@deva[भुक्ते गतः].
+
+**Examples:** @deva[गोषु दुह्यमानासु गतः], @deva[दुग्धासु गोषु आगतः], @deva[अग्निषु हूयमानेषु गतः], @deva[हुतेषु अग्निषु आगतः].
+
+**Cross-references:** @ref[2.3.36] (@deva[सप्तमी] for @deva[अधिकरण] — base rule), @ref[2.3.38]–@ref[2.3.49] (further @deva[सप्तमी] extensions).
+"""

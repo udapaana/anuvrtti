@@ -1,0 +1,39 @@
+id = "2.4.51"
+numericId = "24051"
+
+[en]
+simple = """
+The root @deva[इङ्] 'to study' is optionally replaced by @deva[गाङ्] when the causal (@deva[णि]) takes the desiderative (@deva[सन्]) or the causal aorist (@deva[चङ्]).
+
+**With @deva[गाङ्] substitution:**
+- @deva[अधिजिगापयिषति] 'he desires to teach'
+- @deva[अध्यजीगपत्] 'he taught'
+
+**Without substitution:**
+- @deva[अध्यापिपयिषति] 'he desires to teach'
+- @deva[अध्यापिपत्] 'he taught'
+"""
+
+standard = """
+The root @deva[इङ्] is optionally replaced by @deva[गाङ्] when the causal @deva[णि] takes @deva[सन्] (desiderative of causal) or @deva[चङ्] (aorist of causal).
+
+**With @deva[गाङ्]:**
+- Desiderative: @deva[अधिजिगापयिषति] 'he desires to teach'
+- Aorist: @deva[अध्यजीगपत्] 'he taught'
+
+**Without @deva[गाङ्]:**
+- Desiderative: @deva[अध्यापिपयिषति]
+- Aorist: @deva[अध्यापिपत्]
+
+**Derivation:** @deva[गा] + @deva[णिच्] = @deva[गापि] (by @ref[7.3.36]). The @deva[ई] of @deva[इ] changes to @deva[आ] by @ref[6.1.48]: @deva[इ] + @deva[णिच्] = @deva[आपि].
+"""
+
+advanced = """
+@deva[गाङ्] optionally replaces @deva[इङ्] when the causal @deva[णि] takes the affix @deva[सन्] (desiderative of causal) or @deva[चङ्] (aorist of causal).
+
+With substitution: @deva[गा] + @deva[णिच्] = @deva[गापि] (@ref[7.3.36]), then @deva[सन्] yields @deva[अधिजिगापयिषति] 'he desires to teach'; @deva[चङ्] yields @deva[अध्यजीगपत्] 'he taught.'
+
+Without substitution: @deva[इ] + @deva[णिच्] = @deva[आ] + @deva[णिच्] (@deva[ई] → @deva[आ] by @ref[6.1.48]) = @deva[आपि], giving @deva[अध्यापिपयिषति] and @deva[अध्यापिपत्].
+
+The rule is restricted to the desiderative and aorist of the causal specifically.
+"""

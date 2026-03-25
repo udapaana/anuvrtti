@@ -1,0 +1,37 @@
+id = "3.1.39"
+numericId = "31039"
+
+[en]
+simple = """
+This rule says that the affix @deva[आम्] is optionally added in the perfect tense (@deva[लिट्]) after four roots: @deva[भी] (to fear), @deva[ह्री] (to be ashamed), @deva[भृ] (to nourish), and @deva[हु] (to sacrifice). When @deva[आम्] is used, the form behaves as if @deva[श्लु] deletion occurred and the root belonged to the @deva[ह्वादि] (third conjugation) class—this triggers reduplication.
+
+Examples (with @deva[आम्] / without @deva[आम्]):
+- @deva[भी]: @deva[विभयाञ्चकार] / @deva[विभाय]
+- @deva[ह्री]: @deva[जिह्रयाञ्चकार] / @deva[जिह्राय]
+- @deva[भृ]: @deva[विभराञ्चकार] / @deva[बभार]
+- @deva[हु]: @deva[जुहवाञ्चकार] / @deva[जुहाव]
+"""
+
+standard = """
+The affix @deva[आम्] is optionally added before @deva[लिट्] after @deva[भी] (to fear), @deva[ह्री] (to be ashamed), @deva[भृ] (to nourish), and @deva[हु] (to sacrifice). When @deva[आम्] applies, the roots are treated as if @deva[श्लु] (@deva[विकरण]-deletion) occurred and they belonged to the @deva[ह्वादि] class, triggering reduplication per @ref[6.1.10].
+
+Alternate forms:
+- @deva[भी]: @deva[विभयाञ्चकार] / @deva[विभाय]
+- @deva[ह्री]: @deva[जिह्रयाञ्चकार] / @deva[जिह्राय]
+- @deva[भृ]: @deva[विभराञ्चकार] / @deva[बभार]
+- @deva[हु]: @deva[जुहवाञ्चकार] / @deva[जुहाव]
+
+The periphrastic forms show reduplication (@deva[विभय-], @deva[जिह्रय-], etc.) before @deva[आम्].
+"""
+
+advanced = """
+The affix @deva[आम्] optionally applies before @deva[लिट्] after @deva[भी], @deva[ह्री], @deva[भृ], and @deva[हु]. When @deva[आम्] is added, the derivation proceeds as if @deva[श्लु] deletion had occurred (@ref[2.4.75]) and the roots were @deva[ह्वादि]-class (@deva[जुहोत्यादि]), triggering reduplication by @ref[6.1.10] @deva[श्लौ].
+
+Alternate forms:
+- @deva[भी]: @deva[विभयाञ्चकार] / @deva[विभाय]
+- @deva[ह्री]: @deva[जिह्रयाञ्चकार] / @deva[जिह्राय]
+- @deva[भृ]: @deva[विभराञ्चकार] / @deva[बभार]
+- @deva[हु]: @deva[जुहवाञ्चकार] / @deva[जुहाव]
+
+@note[type=observation]: The @deva[श्लुवत्] and @deva[ह्वादिवत्] provisions ensure the periphrastic forms show proper reduplication. Without this specification, @deva[आम्] alone would not trigger the reduplicated base seen in @deva[विभय-], @deva[जिह्रय-], etc.
+"""

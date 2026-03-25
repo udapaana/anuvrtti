@@ -1,0 +1,55 @@
+id = "1.4.19"
+numericId = "14019"
+
+[en]
+simple = """
+A word ending in @deva[त्] or @deva[स्] is called @deva[भ] when a @deva[मत्वर्थीय] affix (a possessive suffix meaning "having X") follows.
+
+**Examples:**
+- @deva[विद्युत्] + @deva[वतुप्] → @deva[विद्युत्वान्] "having lightning"
+- @deva[यशस्] + @deva[विनि] → @deva[यशस्वी] "famous (having fame)"
+- @deva[पयस्] + @deva[विनि] → @deva[पयस्वी] "milky (having milk)"
+
+As @deva[भ], the final @deva[त्] or @deva[स्] is preserved before the possessive affix. If the word were @deva[पद], the @deva[स्] might change to @deva[विसर्ग] or the @deva[त्] might undergo other @deva[पद]-final modifications.
+"""
+
+standard = """
+A @deva[त्]/@deva[स्]-final word is @deva[भ] before @deva[मत्वर्थीय] affixes (possessive suffixes from @ref[5.2.94]ff) — @deva[तसौ मत्वर्थे].
+
+**Rule type — @deva[संज्ञा]:** Assigns @deva[भ] to @deva[त्]/@deva[स्]-final stems in a specific context.
+
+**Examples:**
+- @deva[विद्युत्] + @deva[वतुप्] → @deva[विद्युत्वान्] "having lightning"
+- @deva[यशस्] + @deva[विनि] → @deva[यशस्वी] "famous"
+- @deva[पयस्] + @deva[विनि] → @deva[पयस्वी] "milky"
+
+**Why @deva[भ]?** As @deva[भ], @deva[पद]-final rules don't apply — the @deva[त्]/@deva[स्] is preserved unchanged before the @deva[मत्वर्थीय] affix. If the stem were @deva[पद], the final @deva[स्] would become @deva[विसर्ग] or undergo @deva[संधि].
+
+**@deva[मत्वर्थीय] affixes:** These include @deva[मतुप्] "having," @deva[वतुप्] "having," and @deva[विनि] "possessing" — all from @ref[5.2.94] onward. They express possession: "X-having" = "possessing X."
+
+**Scope:** Only @deva[त्]/@deva[स्]-final stems. Other consonant-final stems before @deva[मत्वर्थीय] follow @ref[1.4.17]'s general @deva[पद] assignment.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[भ] from @ref[1.4.18].
+
+@deva[तसौ मत्वर्थे] — @deva[त्]/@deva[स्]-final stems are @deva[भ] before @deva[मत्वर्थीय] affixes.
+
+**Specific override:** This rule creates a narrow exception: only @deva[त्]/@deva[स्]-final stems, only before possessive affixes. Other consonant-final stems (@deva[न्]-final, @deva[म्]-final, etc.) remain @deva[पद] by @ref[1.4.17].
+
+**Why @deva[त्] and @deva[स्] specifically?** These are the consonants most affected by @deva[पद]-final rules:
+- @deva[स्] → @deva[विसर्ग] (@ref[8.3.15])
+- @deva[त्] → voiceless stop simplification
+
+As @deva[भ], these changes are blocked, preserving the original consonant before the possessive affix.
+
+**Interaction with @deva[मत्वर्थीय] affixes:** @deva[वतुप्] begins with @deva[व्] (a consonant, not vowel/@deva[य्]), so @ref[1.4.18] would not apply anyway. @deva[विनि] also begins with @deva[व्]. This rule is therefore not about overriding @ref[1.4.18] but about explicitly assigning @deva[भ] status to prevent @deva[पद]-final changes.
+
+**@deva[पद]/@deva[भ] series position:**
+- @ref[1.4.14]–@ref[1.4.15]: base @deva[पद] definition
+- @ref[1.4.16]: @deva[सित्] → @deva[पद]
+- @ref[1.4.17]: @deva[सु]–@deva[कप्] → @deva[पद]
+- @ref[1.4.18]: vowel/@deva[य्]-initial → @deva[भ]
+- @ref[1.4.19] (this): @deva[त्]/@deva[स्]-final + @deva[मत्वर्थीय] → @deva[भ]
+- @ref[1.4.20]: Vedic variant
+"""

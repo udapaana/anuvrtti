@@ -1,0 +1,49 @@
+id = "2.2.25"
+numericId = "22025"
+
+[en]
+simple = """
+Indeclinables (@deva[अव्यय]), the words @deva[आसन्न] "near," @deva[अदूर] "not far," @deva[अधिक] "more than," and numeral words (@deva[संख्या]) form a @deva[बहुव्रीहि] compound with another numeral word — but only when the resulting compound has a numerical meaning.
+
+**Examples:**
+- @deva[उपदशाः] "about ten" (nine or eleven) — @deva[उप] (near) + @deva[दशन्] (ten)
+- @deva[आसन्नदशाः] "close to ten"
+- @deva[अधिकदशाः] "more than ten" (i.e., eleven)
+- @deva[द्वित्राः] "two or three"
+- @deva[द्विदशाः] "twenty" (two tens)
+"""
+
+standard = """
+@deva[अव्यय]/@deva[आसन्न]/@deva[अदूर]/@deva[अधिक]/@deva[संख्या] + @deva[संख्या] → @deva[बहुव्रीहि] when @deva[संख्यार्थ] — @deva[संख्ययाव्ययासन्नादूराधिकसंख्याः संख्येये].
+
+**Rule type — @deva[विधि]:** Compounding rule for numerical @deva[बहुव्रीहि].
+
+**Examples:**
+- @deva[उपदशाः] "about ten" — @ref[5.4.73] governs the form
+- @deva[उपविंशः] "about twenty" — @ref[6.4.142] governs the form
+- @deva[आसन्नदशाः] "near ten"
+- @deva[अधिकदशाः] "more than ten (= eleven)"
+- @deva[द्वित्राः] "two or three"
+- @deva[द्विदशाः] "twenty (= two tens)"
+
+**Three restrictions:**
+1. **Second member must be @deva[संख्या]:** @deva[पञ्च ब्राह्मणाः] "five Brahmins" — no compound; @deva[ब्राह्मण] is not a numeral.
+2. **First member must be from the listed classes:** @deva[ब्राह्मणाः पञ्च] — no compound; @deva[ब्राह्मण] is not @deva[अव्यय]/numeral.
+3. **Numerical meaning required:** @deva[अधिका विंशतिर्गवाम्] "more than twenty of cows" — not a purely numerical sense, so no compound.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[बहुव्रीहिः] from @ref[2.2.23]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[संख्ययाव्ययासन्नादूराधिकसंख्याः संख्येये] — @deva[अव्यय], @deva[आसन्न], @deva[अदूर], @deva[अधिक], and @deva[संख्या] words compound with @deva[संख्या] words when the meaning is numerical (@deva[संख्येय]).
+
+**@deva[बहुव्रीहि] character:** These are @deva[बहुव्रीहि] because the compound denotes not the number itself but the entities characterized by that number: @deva[उपदशाः] "those who are about ten" — the referent is the group of people/things, not the number.
+
+**@deva[अव्यय] examples:** @deva[उप] "near": @deva[उपदशाः]. The @deva[अव्यय] modifies the numeral to express approximation.
+
+**@deva[संख्या] + @deva[संख्या]:** @deva[द्वित्राः] "two or three" (a range), @deva[द्विदशाः] "twenty" (multiplicative: 2 × 10). These are @deva[बहुव्रीहि] because they describe a group characterized by the numerical value, not the numbers themselves.
+
+**@deva[संख्यार्थ] restriction:** The compound must have a purely numerical meaning. @deva[अधिका विंशतिर्गवाम्] "the twenty-plus (cows) of (his) cows" — the sense goes beyond pure number to quantity-within-a-set, so no compound.
+
+**Morphophonemic:** @ref[5.4.73] and @ref[6.4.142] govern the specific forms: @deva[उपदशाः] (with @deva[डच्] affix), @deva[उपविंशः] (with @deva[डट्] replacement).
+"""

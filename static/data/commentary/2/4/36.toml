@@ -1,0 +1,39 @@
+id = "2.4.36"
+numericId = "24036"
+
+[en]
+simple = """
+The root @deva[अद्] 'to eat' is replaced by @deva[जग्धि] before the affix @deva[ल्यप्] or before any @deva[कित्] (having indicatory @deva[क्]) @deva[आर्धधातुक] affix that begins with @deva[त्].
+
+**Examples:**
+- @deva[प्र] + @deva[अद्] + @deva[ल्यप्] → @deva[प्रजग्ध्य] 'having eaten'
+- @deva[अद्] + @deva[क्त] → @deva[जग्ध] 'eaten'
+
+The @deva[इ] in @deva[जग्धि] is just for pronunciation—it is not an @deva[अनुबन्ध].
+"""
+
+standard = """
+The root @deva[अद्] 'to eat' is replaced by @deva[जग्धि] when @deva[ल्यप्] (@ref[7.1.37]) follows, or when a @deva[कित्] @deva[आर्धधातुक] affix beginning with @deva[त्] follows.
+
+**Examples:**
+- @deva[प्र] + @deva[अद्] + @deva[ल्यप्] → @deva[प्रजग्ध्य] 'having eaten'
+- @deva[अद्] + @deva[क्त] → @deva[जग्ध] 'eaten'
+
+The @deva[इ] in @deva[जग्धि] is for articulation only, not an @deva[अनुबन्ध]; otherwise @deva[नुम्] would be inserted.
+
+**Counter-examples:**
+- @deva[अद्यते] 'is eaten' — affix doesn't begin with @deva[त्]
+- @deva[अत्तव्यम्] 'to be eaten' — affix is not @deva[कित्]
+
+@note[type=exception] @deva[अद्] + @deva[क्त] = @deva[अन्नः] 'food' is an irregularity.
+"""
+
+advanced = """
+@deva[जग्धि] replaces @deva[अद्] 'to eat' when the affix @deva[ल्यप्] (@deva[समासेऽनञ्पूर्वे क्त्वो ल्यप्], @ref[7.1.37]) follows, or when an @deva[आर्धधातुक] @deva[कित्] affix beginning with @deva[त्] follows. @deva[प्रजग्ध्य] 'having eaten' (@deva[प्र] + @deva[अद्] + @deva[ल्यप्] = @deva[प्र] + @deva[जग्ध्] + @deva[य]); @deva[जग्ध] 'eaten' (@deva[अद्] + @deva[क्त] = @deva[जग्ध्] + @deva[त]).
+
+The @deva[इ] in @deva[जग्धि] is purely for articulation, not an @deva[अनुबन्ध]—otherwise @deva[नुम्] insertion would follow. The same applies to the @deva[इ] in @deva[वचि], etc. The form @deva[अद्] + @deva[क्त] = @deva[अन्नः] 'food' is an irregularity.
+
+The separate mention of @deva[ल्यप्] in this @[sūtra] implies the @deva[परिभाषा]: 'a @deva[बहिरङ्ग] substitution involving @deva[ल्यप्] supersedes even @deva[अन्तरङ्ग] rules.' Without this maxim, the substitution of @deva[जग्ध्] before @deva[ल्यप्] would already follow from the word @deva[किति] in this rule—@deva[जग्ध्] would first replace @deva[अद्] before @deva[क्त] (by the @deva[बहिरङ्ग]/@deva[अन्तरङ्ग] maxim), and @deva[ल्यप्] would then replace @deva[क्त].
+
+The condition 'beginning with @deva[त्]' excludes forms like @deva[अद्यते] 'is eaten' (affix does not begin with @deva[त्]). The condition '@deva[कित्]' excludes @deva[अत्तव्यम्] 'to be eaten' (affix is not @deva[कित्]).
+"""

@@ -1,0 +1,51 @@
+id = "1.3.12"
+numericId = "13012"
+
+[en]
+simple = """
+Roots that carry an @deva[अनुदात्त] (low-pitched) vowel as a marker or a @deva[ङ्] as a marker take @deva[आत्मनेपद] endings ("endings for oneself") — not @deva[परस्मैपद] ("endings for another").
+
+This is the most general rule for determining which roots take @deva[आत्मनेपद]. If a root in the @deva[धातुपाठ] is listed with a low-pitched vowel marker (@deva[अनुदात्तेत्]) or with final @deva[ङ्] marker (@deva[ङित्]), it takes @deva[आत्मनेपद].
+
+**@deva[अनुदात्तेत्] examples:**
+- @deva[आस्] "to sit" (the final @deva[अ] is @deva[अनुदात्त] and @deva[इत्]) → @deva[आस्ते] "he sits"
+- @deva[ग्लै] "to languish" → @deva[ग्लायते]
+
+**@deva[ङित्] examples:**
+- @deva[षूङ्] "to give birth" (final @deva[ङ्] is @deva[इत्]) → @deva[सूते]
+- @deva[शीङ्] "to lie down" → @deva[शेते]
+"""
+
+standard = """
+After @deva[अनुदात्तेत्] (roots with @deva[अनुदात्त]-marked vowel) or @deva[ङित्] (roots with indicatory @deva[ङ्]), @deva[आत्मनेपद] affixes are used.
+
+**@deva[अधिकार]:** The word @deva[आत्मनेपदम्] governs all @deva[सूत्र]s through @ref[1.3.77]. Every rule in that range either assigns @deva[आत्मनेपद] or creates exceptions to it.
+
+**@deva[अनुदात्तेत्] roots:**
+- @deva[आस्] (final @deva[अ] is @deva[अनुदात्त] @deva[इत्]): @deva[आस्ते] "he sits"
+- @deva[ग्लै]: @deva[ग्लायते] "he is weary"
+- @deva[एधँ] (the @deva[अ] is @deva[अनुदात्त] @deva[इत्]): @deva[एधते] "he prospers"
+
+**@deva[ङित्] roots:**
+- @deva[षूङ्]: @deva[सूते] "she gives birth"
+- @deva[शीङ्]: @deva[शेते] "he lies down"
+- @deva[डुवप्] → @deva[वपते] (the @deva[डु] is @deva[इत्] by @ref[1.3.5])
+
+**Restriction — @deva[कर्तरि] only:** This rule applies when the agent (@deva[कर्तृ]) is the subject. For @deva[भाव] and @deva[कर्मन्], @ref[1.3.13] governs separately.
+"""
+
+advanced = """
+@deva[अनुदात्तङित आत्मनेपदम्] — after @deva[अनुदात्तेत्] or @deva[ङित्] roots, @deva[आत्मनेपद] affixes are used.
+
+**@deva[अधिकार] scope:** @deva[आत्मनेपदम्] is an @deva[अधिकार] (by @ref[1.3.11]) governing through @ref[1.3.77]. The complementary @deva[अधिकार] @deva[परस्मैपदम्] begins at @ref[1.3.78] and governs through @ref[1.3.93].
+
+**Two independent conditions:** The @deva[सूत्र] gives an @deva[इतरेतरयोग] (disjunction): either @deva[अनुदात्तेत्] or @deva[ङित्] suffices. A root need not be both.
+
+**How to identify @deva[अनुदात्तेत्]:** In the @deva[धातुपाठ], root vowels are marked with accents. A root whose vowel is @deva[अनुदात्त] and serves as @deva[इत्] (by @ref[1.3.2] if nasalized, or by accent convention) is @deva[अनुदात्तेत्]. Most @deva[आत्मनेपदिन्] roots are identified this way.
+
+**How to identify @deva[ङित्]:** A root ending in @deva[ङ्] in the @deva[धातुपाठ] (e.g., @deva[शीङ्], @deva[षूङ्]) — the @deva[ङ्] is @deva[इत्] by @ref[1.3.3].
+
+**Interaction with @ref[1.3.72](@deva[स्वरितञितः]):** Roots with @deva[स्वरित] or @deva[ञ्] markers are @deva[उभयपदिन्] — they take @deva[आत्मनेपद] when the fruit of the action accrues to the agent, @deva[परस्मैपद] otherwise. @deva[अनुदात्तेत्]/@deva[ङित्] roots, by contrast, are obligatorily @deva[आत्मनेपदिन्].
+
+**System role:** This is the foundational @deva[पद]-assignment rule. All subsequent rules in @ref[1.3.13]–@ref[1.3.93] either refine, extend, or create exceptions to this basic classification.
+"""

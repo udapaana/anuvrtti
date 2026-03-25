@@ -1,0 +1,48 @@
+id = "2.3.14"
+numericId = "23014"
+
+[en]
+simple = """
+When someone goes somewhere to do something, and the purpose ("to bring," "to fetch") is left unsaid, the object of that unsaid purpose takes the @deva[चतुर्थी] (dative).
+
+**Examples:**
+- @deva[फलेभ्यो व्रजति] "he goes for fruits" — the full meaning is "he goes to bring fruits" (@deva[फलानि आहर्तुं व्रजति]), but the "to bring" part is dropped. Since "fruits" is the object of the unstated purpose, it takes the dative.
+- @deva[एधेभ्यो व्रजति] "he goes for firewood" — understood as "he goes to fetch firewood"
+
+If the purpose is actually stated, the object takes the normal accusative: @deva[एधानाहर्तुं व्रजति] "he goes to fetch firewood" — @deva[एधस्] is accusative because the infinitive is present.
+"""
+
+standard = """
+@deva[क्रियार्थोपपदस्य च कर्मणि स्थानिनः] — when a purposive verb (@deva[क्रियार्थोपपद]) is suppressed (@deva[स्थानिन्]), its @deva[कर्मन्] takes @deva[चतुर्थी].
+
+**Rule type — @deva[विधि]:** Extends @deva[चतुर्थी] to the object of a suppressed infinitive of purpose.
+
+**Examples:**
+- @deva[फलेभ्यो व्रजति] = @deva[फलान्याहर्तुं व्रजति] "he goes for fruits"
+- @deva[एधेभ्यो व्रजति] = @deva[एधानाहर्तुं व्रजति] "he goes for firewood"
+
+**Three conditions:**
+1. **@deva[क्रियार्थोपपद]** — a purposive verb (infinitive) must be contextually understood
+2. **@deva[स्थानिन्]** — that verb must be unexpressed (suppressed)
+3. **@deva[कर्मणि]** — only the object of the suppressed verb takes dative; other @deva[कारक]-s retain their normal cases
+
+**Counter-examples:**
+- @deva[एधानाहर्तुं व्रजति] — infinitive expressed, so @deva[एधस्] takes accusative (not dative)
+- @deva[एधेभ्यो व्रजति शकटेन] — @deva[शकट] (vehicle) remains instrumental; only the object (@deva[एधस्]) takes dative
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[चतुर्थी] from @ref[2.3.13]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[क्रियार्थोपपदस्य च कर्मणि स्थानिनः] — when a @deva[क्रियार्थोपपद] (purpose-denoting verb) is @deva[स्थानिन्] (suppressed), its @deva[कर्मन्] takes @deva[चतुर्थी].
+
+**@deva[क्रियार्थोपपद] — purposive verb:** Defined with reference to @ref[3.3.10] — a subordinate verb expressing purpose. In @deva[एधानाहर्तुं व्रजति] "he goes to fetch firewood," @deva[आहर्तुम्] is the @deva[क्रियार्थोपपद] and @deva[एधस्] is its @deva[कर्मन्].
+
+**@deva[स्थानिन्] — suppressed, not absent:** The purposive verb must be recoverable from context. @deva[एधेभ्यो व्रजति] works because @deva[आहर्तुम्] is contextually obvious. In @deva[प्रविश पिण्डीम्] "enter the corridor," there is no suppressed purpose-verb — @deva[पिण्डी] takes accusative as the direct object of @deva[प्रविश].
+
+**Why only @deva[कर्मन्]?** The rule specifies @deva[कर्मणि] — only the object of the suppressed verb shifts to @deva[चतुर्थी]. Other @deva[कारक]-s of the suppressed verb retain their normal cases. @deva[एधेभ्यो व्रजति शकटेन] — @deva[शकट] is @deva[करण] (instrument of fetching), so it remains @deva[तृतीया].
+
+**Why expressed verb blocks @deva[चतुर्थी]?** When the infinitive is present, @ref[2.3.2] applies: @deva[एधानाहर्तुं व्रजति] — @deva[एधस्] is @deva[कर्मन्] of @deva[आहृ], taking @deva[द्वितीया]. The @deva[चतुर्थी] option arises only because the infinitive's absence leaves the @deva[कर्मन्]-relation @deva[अनभिहित] by the verb form.
+
+**Relationship to @ref[2.3.13]:** @ref[2.3.13] assigns @deva[चतुर्थी] to @deva[सम्प्रदान]. This rule extends @deva[चतुर्थी] to a different semantic role — @deva[कर्मन्] of a suppressed purposive verb — which is technically not @deva[सम्प्रदान] but a purpose-object.
+"""

@@ -1,0 +1,49 @@
+id = "2.3.48"
+numericId = "23048"
+
+[en]
+simple = """
+A word that ends in @deva[प्रथमा] (nominative) and is used in the sense of @deva[सम्बोधन] (addressing someone) receives the technical name @deva[आमन्त्रित] (vocative).
+
+**Example:**
+- In @deva[हे राम] "O @deva[राम]!", the word @deva[राम] is called @deva[आमन्त्रित].
+- In @deva[हे रामौ] "O @deva[राम]-s!", the dual form @deva[रामौ] is @deva[आमन्त्रित].
+- In @deva[हे रामाः] "O @deva[राम]-s!", the plural form @deva[रामाः] is @deva[आमन्त्रित].
+
+This is a naming rule — it assigns a technical label so that later rules in the grammar can refer specifically to vocative words and apply special operations to them (such as accent changes).
+"""
+
+standard = """
+@deva[सम्बोधने प्रथमान्तं आमन्त्रितम्] — A @deva[प्रथमान्त] (nominative-ending) word used in @deva[सम्बोधन] (address) is termed @deva[आमन्त्रित] (vocative).
+
+**Rule type — @deva[संज्ञा]:** Assigns the technical name @deva[आमन्त्रित] to vocative words.
+
+**Examples:**
+- @deva[हे राम] — @deva[राम] is @deva[आमन्त्रित] (singular)
+- @deva[हे रामौ] — @deva[रामौ] is @deva[आमन्त्रित] (dual)
+- @deva[हे रामाः] — @deva[रामाः] is @deva[आमन्त्रित] (plural)
+
+**Purpose of the @deva[संज्ञा]:** The label @deva[आमन्त्रित] is referenced by later rules for:
+- Accent: @ref[2.3.49] further distinguishes the singular as @deva[सम्बुद्धि]
+- Phonological operations that apply specifically to vocative forms
+- @deva[आमन्त्रित] forms receive special accentual treatment — they are typically @deva[अनुदात्त] (unaccented) in connected speech
+
+**Scope:** Covers all three numbers — singular, dual, and plural vocatives are all @deva[आमन्त्रित].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सम्बोधने] from @ref[2.3.47]; @deva[प्रथमा] from @ref[2.3.46].
+
+@deva[सा आमन्त्रितम्] — A @deva[प्रथमान्त] word in @deva[सम्बोधन] sense receives the @deva[संज्ञा] @deva[आमन्त्रित].
+
+**@deva[संज्ञा] rule:** This does not assign a case — @ref[2.3.47] already assigns @deva[प्रथमा] for @deva[सम्बोधन]. This rule merely labels the resulting form. The label then serves as an operational trigger for subsequent rules.
+
+**Triggered operations:**
+- @ref[2.3.49]: The @deva[एकवचन] of @deva[आमन्त्रित] is called @deva[सम्बुद्धि], enabling further specialization.
+- @ref[8.1.19]: @deva[आमन्त्रितं पूर्वमविद्यमानवत्] — a sentence-initial @deva[आमन्त्रित] is treated as if absent for accent purposes.
+- @ref[8.1.72]: @deva[आमन्त्रितस्य च] — accent rules for @deva[आमन्त्रित] in sentence context.
+
+**All three numbers:** The @deva[संज्ञा] @deva[आमन्त्रित] applies to singular, dual, and plural vocatives alike. The singular is then further named @deva[सम्बुद्धि] by @ref[2.3.49].
+
+**Cross-references:** @ref[2.3.47] (@deva[प्रथमा] for @deva[सम्बोधन]), @ref[2.3.49] (@deva[सम्बुद्धि] for singular), @ref[8.1.19] (accent of sentence-initial vocative).
+"""

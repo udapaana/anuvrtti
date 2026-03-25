@@ -1,0 +1,48 @@
+id = "1.3.57"
+numericId = "13057"
+
+[en]
+simple = """
+When the desiderative suffix @deva[सन्] is added to the verbs @deva[ज्ञा] "to know," @deva[श्रु] "to hear," @deva[स्मृ] "to remember," or @deva[दृश्] "to see," the resulting verb takes @deva[आत्मनेपद].
+
+**Examples:**
+- @deva[जिज्ञासते] "he wishes to know" (from @deva[ज्ञा])
+- @deva[शुश्रूषते] "he wishes to hear / to serve" (from @deva[श्रु])
+- @deva[सुस्मूर्षते] "he wishes to remember" (from @deva[स्मृ])
+- @deva[दिदृक्षते] "he wishes to see" (from @deva[दृश्])
+
+The original verbs are @deva[परस्मैपदिन्]: @deva[जानाति], @deva[शृणोति], @deva[स्मरति], @deva[पश्यति]. The desiderative shifts them to @deva[आत्मनेपद].
+"""
+
+standard = """
+After desideratives (@deva[सन्]-formations) of @deva[ज्ञा]/@deva[श्रु]/@deva[स्मृ]/@deva[दृश्], @deva[आत्मनेपद].
+
+**Examples:**
+- @deva[जिज्ञासते] "he wishes to know" (from @deva[ज्ञा])
+- @deva[शुश्रूषते] "he wishes to serve" (from @deva[श्रु])
+- @deva[सुस्मूर्षते] "he wishes to remember" (from @deva[स्मृ])
+- @deva[दिदृक्षते] "he wishes to see" (from @deva[दृश्])
+
+**Relation to prior rules:** @deva[ज्ञा] already had @deva[आत्मनेपद] in specific senses (@ref[1.3.44]–@ref[1.3.46]). @deva[श्रु] and @deva[दृश्] had @deva[आत्मनेपद] with @deva[सम्] by @ref[1.3.29] @deva[वार्त्तिक]. This rule generalizes: all desideratives of these four roots take @deva[आत्मनेपद] regardless of prefix or meaning.
+
+**New for @deva[स्मृ]:** @deva[स्मृ] had no prior @deva[आत्मनेपद] rule. This @deva[सूत्र] newly ordains @deva[आत्मनेपद] for its desiderative.
+
+**Exceptions follow:** @ref[1.3.58] and @ref[1.3.59] carve out specific prefix combinations that block this rule.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[ज्ञाश्रुस्मृदृशां सनः] — after desideratives of @deva[ज्ञा]/@deva[श्रु]/@deva[स्मृ]/@deva[दृश्], @deva[आत्मनेपद].
+
+**Desiderative-level rule:** This rule operates on the @deva[सन्]-derived secondary root, not the primitive root. The primitive roots are all @deva[परस्मैपदिन्] by @ref[1.3.78]. The @deva[सन्] suffix shifts the @deva[पद] assignment.
+
+**Generalization vs. prior rules:**
+- @deva[ज्ञा]: @ref[1.3.44]–@ref[1.3.46] gave @deva[आत्मनेपद] for denial, intransitive, and @deva[सम्]/@deva[प्रति] senses. This rule covers all desideratives of @deva[ज्ञा] without meaning restriction.
+- @deva[श्रु], @deva[दृश्]: @ref[1.3.29] @deva[वार्त्तिक] gave @deva[आत्मनेपद] with @deva[सम्] intransitively. This generalizes to all desideratives.
+- @deva[स्मृ]: No prior @deva[आत्मनेपद] rule — newly ordained here.
+
+**Semantic motivation:** Desiring to know, hear, remember, or see are inherently self-directed cognitive activities — the fruit of the desire accrues to the desiring agent. @deva[आत्मनेपद] naturally follows.
+
+**Exceptions:** @ref[1.3.58] (@deva[अनु] + @deva[ज्ञा]-desiderative) and @ref[1.3.59] (@deva[प्रति]/@deva[आ] + @deva[श्रु]-desiderative) carve out specific prefix contexts where @deva[परस्मैपद] returns.
+"""

@@ -1,0 +1,49 @@
+id = "2.3.7"
+numericId = "23007"
+
+[en]
+simple = """
+Words denoting time or distance take the @deva[सप्तमी] (locative) or @deva[पञ्चमी] (ablative) when expressing the gap between two events or between an agent and the object of action.
+
+**Examples:**
+- @deva[अद्य भुक्त्वा देवदत्तो द्व्यहे भोक्ता] "having eaten today, @deva[देवदत्त] will eat again in two days" — the two days are the interval between meals (locative)
+- @deva[अद्य भुक्त्वा देवदत्तो द्व्यहाद् भोक्ता] — same meaning, with ablative
+- @deva[क्रोशे लक्ष्यं विध्यति] "he hits the target at a @deva[क्रोश] (league)" — the @deva[क्रोश] is the spatial gap between archer and target (locative)
+
+Either case — locative or ablative — can be used; the meaning is the same. The interval can be temporal (between two actions) or spatial (between two positions).
+"""
+
+standard = """
+@deva[कालाध्वनोः] + @deva[व्यवधान] → @deva[सप्तमी] or @deva[पञ्चमी] — @deva[सप्तमीपञ्चम्यौ कालाध्वनोरत्यन्तसंयोगे].
+
+**Rule type — @deva[विभक्तिविधि]:** Assigns @deva[सप्तमी] or @deva[पञ्चमी] to time/distance words when the sense is @deva[व्यवधान] (interval between two @deva[कारक]-s or actions).
+
+**@deva[व्यवधान] defined:** A gap — temporal or spatial — separating two actions, two agents, or an agent and its object.
+
+**Time example:**
+@deva[अद्य भुक्त्वा देवदत्तो द्व्यहे द्व्यहाद् वा भोक्ता] "having eaten today, @deva[देवदत्त] will eat in/after two days" — the two days intervene between the two acts of eating.
+
+**Distance example:**
+@deva[इहस्थोऽयम् इष्वासः क्रोशे क्रोशाद् वा लक्ष्यं विध्यति] "this archer standing here hits a target at/from a @deva[क्रोश] distance" — the @deva[क्रोश] is the spatial interval between @deva[कर्तृ] and @deva[कर्मन्].
+
+**@deva[विकल्प]:** Both @deva[सप्तमी] and @deva[पञ्चमी] are equally valid — free alternation with no meaning difference.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कालाध्वनोः] from @ref[2.3.5]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[सप्तमीपञ्चम्यौ कालाध्वनोरत्यन्तसंयोगे] — @deva[सप्तमी] or @deva[पञ्चमी] is assigned to time/distance words when the relation is @deva[व्यवधान] (interval).
+
+**@deva[व्यवधान] — interval between @deva[कारक]-s:** The @deva[काशिका] explains that the time or distance word expresses the gap separating two @deva[कारक]-s or two actions:
+- Temporal: @deva[द्व्यहे/द्व्यहाद् भोक्ता] — two days intervene between eating-1 and eating-2
+- Spatial: @deva[क्रोशे/क्रोशात् लक्ष्यं विध्यति] — the @deva[क्रोश] intervenes between @deva[कर्तृ] (archer) and @deva[कर्मन्] (target), or between @deva[कर्मन्] and @deva[अधिकरण]
+
+**Three-rule sequence for time/distance words:**
+1. @ref[2.3.5]: @deva[द्वितीया] — continuous connection (@deva[अत्यन्तसंयोग])
+2. @ref[2.3.6]: @deva[तृतीया] — completion within limit (@deva[अपवर्ग])
+3. This rule: @deva[सप्तमी]/@deva[पञ्चमी] — interval (@deva[व्यवधान])
+
+**@deva[विकल्प] — free alternation:** The @deva[वा] (implicit) allows both cases with identical meaning. This is @deva[विभाषा] in the broader sense — the speaker may choose either.
+
+**Not @deva[अधिकरण] or @deva[अपादान]:** The locative here is not the @deva[अधिकरण]-@deva[कारक] locative of @ref[2.3.36], nor is the ablative the @deva[अपादान]-@deva[कारक] ablative of @ref[2.3.28]. Both are special non-@deva[कारक] assignments, like the non-@deva[कारक] accusative and instrumental of @ref[2.3.5] and @ref[2.3.6].
+"""

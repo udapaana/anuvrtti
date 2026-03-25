@@ -1,0 +1,62 @@
+id = "2.1.51"
+numericId = "21051"
+
+[en]
+simple = """
+Direction words (@deva[दिश्]) and numerals (@deva[सङ्ख्या]) also compound in three additional contexts: (1) when the compound has the force of a @deva[तद्धित] affix, (2) when an additional member follows (@deva[उत्तरपद]), or (3) when a collective meaning (@deva[समाहार]) is expressed.
+
+**@deva[तद्धित] force:**
+- @deva[पौर्वशालः] "one from the eastern hall" — @deva[पूर्व] + @deva[शाला] with @deva[तद्धित] @deva[अण्] force
+- @deva[पाञ्चनापितिः] "relating to five barbers"
+- @deva[पाञ्चकपालः] "offering in five cups"
+
+**@deva[उत्तरपद] (additional member follows):**
+- @deva[पूर्वशालप्रियः] "loving the eastern hall"
+- @deva[पञ्चनावप्रियः] "loving five ships"
+
+**@deva[समाहार] (collective):**
+- @deva[पञ्चफली] "collection of five fruits"
+- @deva[दशपूली] "aggregate of ten bundles"
+- @deva[त्रिलोकी] "the three worlds"
+
+These three conditions extend the @deva[संज्ञा]-restricted compounding of @ref[2.1.50] to much broader usage.
+"""
+
+standard = """
+@deva[दिक्-सङ्ख्ये] + @deva[समानाधिकरण सुबन्त] → @deva[तत्पुरुष] in @deva[तद्धितार्थ], @deva[उत्तरपद], and @deva[समाहार] — @deva[तद्धितार्थोत्तरपदसमाहारे च].
+
+**Rule type — @deva[विधि]:** Extends @ref[2.1.50] beyond @deva[संज्ञा].
+
+**@deva[तद्धितार्थ] (force of a @deva[तद्धित] affix):**
+- @deva[पौर्वशालः] = @deva[पूर्वस्यां शालायां भवः] "one from the eastern hall" — the @deva[तद्धित] @deva[अण्] by @ref[4.2.107] is applied, then by @ref[4.1.88] it undergoes @deva[लुक्]
+- @deva[पाञ्चकपालः] "offering in five cups" — @deva[अण्] by @ref[4.2.16]
+
+**@deva[उत्तरपद] (further member):**
+- @deva[पूर्वशालप्रियः] "fond of the eastern hall" — @deva[नित्यसमास] because the compound cannot be decomposed once a further member follows
+- @deva[द्विनावरूप्यम्] "money from two ships"
+
+**@deva[समाहार] (aggregate):**
+- @deva[पञ्चफली] "five-fruit collection" — feminine by @ref[4.1.21]
+- @deva[त्रिलोकी] "the three worlds"
+- @deva[पञ्चकुमारि] "five maidens" — neuter by @ref[2.4.17], @deva[ई] shortened by @ref[1.2.47]
+
+**Note:** @deva[दिक्] words cannot form @deva[समाहार] compounds (directions are not aggregable), so @deva[समाहार] applies only to @deva[सङ्ख्या].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[दिक्सङ्ख्ये] from @ref[2.1.50]; @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[तद्धितार्थोत्तरपदसमाहारे च] — @deva[दिक्] and @deva[सङ्ख्या] words also compound in @deva[तद्धितार्थ], @deva[उत्तरपद], and @deva[समाहार] contexts.
+
+**Three extensions beyond @ref[2.1.50]:** @ref[2.1.50] restricted these compounds to @deva[संज्ञा]. This rule opens three additional pathways:
+
+1. **@deva[तद्धितार्थ]:** When the compound carries the semantic force of a @deva[तद्धित] affix. @deva[पूर्वशाल] + @deva[अण्] (@ref[4.2.107]) → @deva[पौर्वशालः]. The compound forms first, then the @deva[तद्धित] applies to the compound as a base.
+
+2. **@deva[उत्तरपद]:** When a further member is compounded after. @deva[पूर्वशाल] + @deva[प्रिय] → @deva[पूर्वशालप्रियः]. These are @deva[नित्य] because the inner compound cannot be split once embedded in a larger compound.
+
+3. **@deva[समाहार]:** Collective meaning. @deva[पञ्चफली] = "the collection of five fruits." This pathway connects directly to @ref[2.1.52] (@deva[द्विगु] definition), which specifically names @deva[सङ्ख्यापूर्व] @deva[समाहार] compounds as @deva[द्विगु].
+
+**@deva[दिक्] restricted from @deva[समाहार]:** Direction words cannot express @deva[समाहार] — one cannot "aggregate" directions. So @deva[समाहार] applies to @deva[सङ्ख्या] only.
+
+**Relation to @ref[2.1.52]:** The @deva[समाहार] branch of this rule feeds directly into @ref[2.1.52]'s @deva[द्विगु] @deva[संज्ञा] — numeral-first @deva[समाहार] compounds receive the @deva[द्विगु] designation.
+"""

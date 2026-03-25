@@ -1,0 +1,51 @@
+id = "1.1.57"
+numericId = "11057"
+
+[en]
+simple = """
+When a vowel is replaced because of what follows it, the substitute acts like the original — even for rules that check specific letters — as long as those rules affect something that comes before the substitution site.
+
+In other words, elements to the left of the substitution still "see" the original vowel, even though it has been replaced.
+
+**Example:** @deva[पटु] "sharp" + @deva[णिच्] (causative suffix). The @deva[उ] of @deva[पटु] changes to @deva[अव्] before @deva[णिच्] (by @ref[7.4.21]). But @ref[7.2.116] needs to apply @deva[वृद्धि] to the @deva[अ] of @deva[पट्], which comes before @deva[उ]. For that rule, the @deva[अव्] still counts as @deva[उ], so @deva[वृद्धि] applies: @deva[पटु] → @deva[पाटवयति] "he sharpens."
+"""
+
+standard = """
+This rule extends @deva[स्थानिवद्भाव] beyond what @ref[1.1.56] allows. Under @ref[1.1.56], the substitute does not act like the original for @deva[अल्विधि] (rules checking specific letters). This rule creates an exception: when a vowel (@deva[अच्]) is replaced due to a following element (@deva[परनिमित्त]), the substitute is @deva[स्थानिवत्] even for @deva[अल्विधि] — but only for rules that affect elements preceding the substitution site.
+
+**Conditions:**
+1. The original must be a vowel (@deva[अच्])
+2. The replacement must be caused by a following element (@deva[परनिमित्त])
+3. The benefiting rule must affect what precedes (@deva[पूर्वविधि])
+
+**Example:** @deva[पटु] + @deva[णिच्]:
+- @deva[उ] → @deva[अव्] by @ref[7.4.21] (caused by following @deva[णिच्])
+- @ref[7.2.116] applies @deva[वृद्धि] to the penultimate vowel — this is a @deva[पूर्वविधि]
+- For this rule, @deva[अव्] acts like @deva[उ], so @deva[अ] is still penultimate
+- @deva[वृद्धि]: @deva[अ] → @deva[आ] → @deva[पाटवयति]
+
+**Without this rule:** @deva[अव्] would be seen as @deva[अ] + @deva[व्] (two sounds), breaking the penultimate vowel count. @deva[वृद्धि] would target the wrong vowel or fail entirely.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[स्थानिवत्] and @deva[आदेशः] from @ref[1.1.56].
+
+@deva[अचः परस्मिन् पूर्वविधौ] — a vowel-substitute caused by what follows is @deva[स्थानिवत्] for rules operating on what precedes, even for @deva[अल्विधि].
+
+**This narrows the @deva[अल्विधि] exception of @ref[1.1.56].** Under @ref[1.1.56], @deva[अल्विधि] rules always see the substitute's actual form. This rule says: not always. When a vowel changes due to a following trigger, preceding rules still see the original.
+
+**Three conditions must all be met:**
+1. @deva[अच्]: the @deva[स्थानिन्] is a vowel
+2. @deva[परस्मिन्]: the cause (@deva[निमित्त]) is a following element
+3. @deva[पूर्वविधौ]: the rule benefiting from @deva[स्थानिवद्भाव] operates on preceding elements
+
+**Example:** @deva[पटु] + @deva[णिच्]:
+- @deva[उ] → @deva[अव्] by @ref[7.4.21] (following @deva[णिच्] is the @deva[परनिमित्त])
+- @ref[7.2.116] applies @deva[वृद्धि] to penultimate vowel (a @deva[पूर्वविधि])
+- @deva[अव्] counts as @deva[उ] for this purpose → @deva[अ] of @deva[पट्] gets @deva[वृद्धि]
+- Result: @deva[पाटवयति]
+
+**Why only vowels?** Consonant substitutes generally preserve enough phonetic structure that @ref[1.1.56]'s @deva[अल्विधि] exception works correctly. Vowel substitutes (especially @deva[अय्/अव्/आय्/आव्] for @deva[ए/ओ/ऐ/औ]) can radically change the syllable structure, disrupting rules that count vowels or identify penultimate positions.
+
+**Limitations:** @ref[1.1.58] lists ten types of operations where this @deva[स्थानिवद्भाव] does not apply, even when all three conditions are met. @ref[1.1.59] then restores it partially for reduplication.
+"""

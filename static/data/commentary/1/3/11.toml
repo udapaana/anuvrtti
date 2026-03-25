@@ -1,0 +1,50 @@
+id = "1.3.11"
+numericId = "13011"
+
+[en]
+simple = """
+A @deva[सूत्र] pronounced with @deva[स्वरित] (circumflex) accent is an @deva[अधिकार] — a governing rule. Its terms carry forward into subsequent @deva[सूत्र]s until a new @deva[अधिकार] replaces them.
+
+Think of it as a heading: once stated, it applies to everything that follows until the topic changes.
+
+**Major @deva[अधिकार] @deva[सूत्र]s:**
+- @deva[प्रत्ययः] (@ref[3.1.1]) — "affix" understood in all following rules
+- @deva[धातोः] (@ref[3.1.91]) — "after a root"
+- @deva[अङ्गस्य] (@ref[6.4.1]) — "of the stem"
+- @deva[भस्य] (@ref[6.4.129]) — "of the @deva[भ]-portion"
+
+The @deva[सूत्र]s themselves do not visually display accents; the accent information comes from the commentarial tradition.
+"""
+
+standard = """
+A @deva[स्वरित]-accented @deva[सूत्र] is an @deva[अधिकार] (governing rule) — its terms continue into subsequent @deva[सूत्र]s. This is a @deva[परिभाषा] about how to read the @deva[सूत्रपाठ].
+
+**Key @deva[अधिकार] @deva[सूत्र]s:**
+- @deva[प्रत्ययः] (@ref[3.1.1]) — governs through @ref[5.4.151]
+- @deva[धातोः] (@ref[3.1.91]) — governs through @ref[3.4.117]
+- @deva[अङ्गस्य] (@ref[6.4.1]) — governs through @ref[6.4.175]
+- @deva[भस्य] (@ref[6.4.129]) — governs through @ref[6.4.175]
+- @deva[आत्मनेपदम्] (@ref[1.3.12]) — governs through @ref[1.3.77]
+- @deva[परस्मैपदम्] (@ref[1.3.78]) — governs through @ref[1.3.93]
+
+**Scope:** An @deva[अधिकार] defines a domain — all rules within that domain inherit its terms without restating them. This is how @deva[पाणिनि] achieves brevity.
+
+**Accent source:** The @deva[सूत्रपाठ] as transmitted does not mark accents visually. The @deva[स्वरित] marking is preserved in the @deva[काशिका], @deva[महाभाष्य], and other commentaries.
+"""
+
+advanced = """
+@deva[स्वरितेनाधिकारः] — @deva[स्वरित] accent indicates @deva[अधिकार].
+
+**@deva[परिभाषा]:** This rule establishes how @deva[अधिकार] @deva[सूत्र]s are identified. Without it, there would be no structural principle marking which @deva[सूत्र]s are headings vs. operational rules.
+
+**How @deva[अधिकार] works:** The terms of an @deva[अधिकार] @deva[सूत्र] are understood (@deva[अनुवृत्ति]) in every subsequent @deva[सूत्र] within its domain. The domain ends when a new @deva[अधिकार] on the same topic begins, or when explicitly terminated.
+
+**Types of @deva[अधिकार]:**
+1. **Term-supplying:** @deva[प्रत्ययः] (@ref[3.1.1]) supplies the word "affix" to all @deva[सूत्र]s through @ref[5.4.151]
+2. **Scope-defining:** @deva[अङ्गस्य] (@ref[6.4.1]) defines that all following operations apply to the @deva[अङ्ग] (stem)
+3. **Value-setting:** @deva[आत्मनेपदम्] (@ref[1.3.12]) sets the value "@deva[आत्मनेपद]" for all rules through @ref[1.3.77]
+
+**@deva[स्वरित] as metalinguistic device:** @deva[पाणिनि] repurposes the accent system — which he defines at @ref[1.2.29]–@ref[1.2.31] for speech — as a metalinguistic tool for organizing his own @deva[सूत्र]s. This is an elegant dual use of the accent mechanism.
+
+**Position:** This rule sits between the @deva[इत्] section (@ref[1.3.2]–@ref[1.3.9]) and the @deva[पद]-assignment section (@ref[1.3.12] onward). It provides the structural key to reading the rest of the @deva[पाद].
+"""

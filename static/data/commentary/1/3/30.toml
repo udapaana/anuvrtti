@@ -1,0 +1,48 @@
+id = "1.3.30"
+numericId = "13030"
+
+[en]
+simple = """
+The verb @deva[ह्वे] "to call" takes @deva[आत्मनेपद] when preceded by @deva[नि], @deva[सम्], @deva[उप], or @deva[वि] — even when the action benefits someone else, not the agent.
+
+**Examples:**
+- @deva[निह्वयते] "he calls down"
+- @deva[संह्वयते] "he calls together"
+- @deva[उपह्वयते] "he invites"
+- @deva[विह्वयते] "he calls apart"
+
+Without these prefixes, @deva[ह्वे] takes @deva[आत्मनेपद] only when the agent benefits: @deva[ह्वयते] "he calls (for himself)" vs. @deva[ह्वयति] "he calls (for another)."
+"""
+
+standard = """
+After @deva[नि]/@deva[सम्]/@deva[उप]/@deva[वि] + @deva[ह्वे] "to call," @deva[आत्मनेपद] — even when the fruit does not accrue to the agent.
+
+**Examples:**
+- @deva[निह्वयते] "he calls down"
+- @deva[संह्वयते] "he calls together"
+- @deva[उपह्वयते] "he invites"
+- @deva[विह्वयते] "he calls apart, challenges"
+
+**Why this rule is needed:** @deva[ह्वे] is marked @deva[ञ्] in the @deva[धातुपाठ], making it @deva[उभयपदिन्] by @ref[1.3.72]. Normally, @deva[आत्मनेपद] applies only when the fruit accrues to the agent (@deva[स्वार्थ]). This rule removes that condition for these four prefixes — @deva[आत्मनेपद] applies regardless.
+
+**New section begins:** From this rule onward, the @deva[अकर्मक] (intransitivity) condition of @ref[1.3.26]–@ref[1.3.29] no longer applies. @deva[ह्वे] takes @deva[आत्मनेपद] whether transitive or intransitive.
+
+**@deva[वार्त्तिक]:** @deva[अस्] "to throw" and @deva[ऊह्] "to note" optionally take @deva[आत्मनेपद] with @deva[उपसर्ग]s: @deva[निरस्यति]/\
+@deva[निरस्यते], @deva[समूहति]/@deva[समूहते].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[निसमुपविभ्यो ह्वः] — after @deva[नि]/@deva[सम्]/@deva[उप]/@deva[वि] + @deva[ह्वे], @deva[आत्मनेपद].
+
+**Structural shift — @deva[अकर्मक] drops out:** @ref[1.3.26]–@ref[1.3.29] required intransitive usage for @deva[आत्मनेपद]. This rule does not carry @deva[अकर्मक] forward. The prefix alone triggers @deva[आत्मनेपद], regardless of transitivity. This marks the beginning of a new subsection in the @deva[आत्मनेपद] rules.
+
+**Overriding @ref[1.3.72]:** @deva[ह्वे] is @deva[ञित्] (@deva[उभयपदिन्]), so @ref[1.3.72] (@deva[स्वरितञितः कर्त्रभिप्राये क्रियाफले]) normally restricts @deva[आत्मनेपद] to cases where the agent benefits. This rule overrides that @deva[स्वार्थ] condition for the four listed prefixes — @deva[आत्मनेपद] applies unconditionally.
+
+**Semantic motivation:** The prefixed forms @deva[निह्वयते], @deva[संह्वयते], @deva[उपह्वयते], @deva[विह्वयते] have specialized, conventionalized meanings where the calling action inherently concerns the agent, even without explicit self-benefit.
+
+**@deva[वार्त्तिक]:** @deva[अस्] "to throw" and @deva[ऊह्] "to reason/note" optionally take @deva[आत्मनेपद] with @deva[उपसर्ग]s: @deva[निरस्यति]/@deva[निरस्यते], @deva[समूहति]/@deva[समूहते]. The optionality distinguishes these from @deva[ह्वे], where @deva[आत्मनेपद] is obligatory.
+
+**Position:** Transitional rule between the @deva[अकर्मक] block (@ref[1.3.26]–@ref[1.3.29]) and the prefix-specific overrides that follow (@ref[1.3.31] onward).
+"""

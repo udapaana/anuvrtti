@@ -1,0 +1,40 @@
+id = "2.4.71"
+numericId = "24071"
+
+[en]
+simple = """
+Case-affixes (@deva[सुप्]) are elided by @deva[लुक्] when a word becomes a @deva[धातु] (root) or remains a @deva[प्रातिपदिक] (crude form).
+
+**As @deva[धातु] (denominative):**
+- @deva[पुत्रम्] @deva[इच्छति] → @deva[पुत्रीयति] 'he wishes for a son' (@ref[3.1.8])
+- The accusative ending @deva[अम्] is elided
+
+**As @deva[प्रातिपदिक] (in compounds):**
+- @deva[राजपुरुषः] 'king's man'
+- @deva[कष्टश्रितः] 'having recourse to pain'
+"""
+
+standard = """
+Case-affixes (@deva[सुप्]) undergo @deva[लुक्] elision when a word gets the designation @deva[धातु] 'root' or @deva[प्रातिपदिक] 'crude form'.
+
+**Denominative verbs (@deva[धातु]):**
+- @deva[पुत्रम्] @deva[इच्छति] = @deva[पुत्रीयति] (@ref[3.1.8]) 'he desires a son'
+- The accusative @deva[अम्] is elided when @deva[पुत्र] becomes a @deva[धातु]
+
+**Compounds (@deva[प्रातिपदिक]):**
+- @deva[कष्टश्रितः] = @deva[कष्टम्] @deva[श्रितः] (case-affix elided, @ref[1.2.46])
+- @deva[राजपुरुषः] = @deva[राज्ञः] @deva[पुरुषः]
+
+**No elision when word gets other designations:**
+- @deva[वृक्षः], @deva[प्लक्षः] (designated @deva[अङ्ग], not @deva[धातु]/[@deva[प्रातिपदिक]])
+"""
+
+advanced = """
+Case-affixes (@deva[सुप्]) undergo @deva[लुक्] elision when a word receives the designation @deva[धातु] or @deva[प्रातिपदिक].
+
+**As @deva[धातु] (denominative):** A noun becomes a @deva[धातु] in denominative formation. @deva[पुत्रम् इच्छति] = @deva[पुत्रीयति] (@ref[3.1.8]) 'he wishes for a son'—the @deva[द्वितीया] case-affix is elided.
+
+**As @deva[प्रातिपदिक] (in compounds):** A noun forming part of a compound becomes a @deva[प्रातिपदिक] (@ref[1.2.46]): @deva[कष्टश्रितः] 'having recourse to pain' (@deva[कष्टम् श्रितः]); @deva[राजपुरुषः] 'king's man' (@deva[राज्ञः पुरुषः]). In each case, the case-affix is elided.
+
+When a word receives a different designation (such as @deva[अङ्ग]), the case-affix is not elided: @deva[वृक्षः], @deva[प्लक्षः].
+"""

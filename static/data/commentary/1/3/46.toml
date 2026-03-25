@@ -1,0 +1,52 @@
+id = "1.3.46"
+numericId = "13046"
+
+[en]
+simple = """
+The verb @deva[ज्ञा] "to know" takes @deva[आत्मनेपद] when preceded by @deva[सम्] or @deva[प्रति] — except when meaning "remembering with regret."
+
+**@deva[आत्मनेपद] (recognizing, promising):**
+- @deva[शतं संजानीते] "he recognizes/seeks a hundred"
+- @deva[सहस्रं प्रतिजानीते] "he promises a thousand"
+
+**@deva[परस्मैपद] (remembering with regret):**
+- @deva[मातुः संजानाति] "he remembers his mother with regret"
+- @deva[पितुः संजानाति] "he remembers his father with regret"
+
+The grief-laden remembrance is excluded — in all other senses of @deva[सम्]/@deva[प्रति] + @deva[ज्ञा], @deva[आत्मनेपद] applies.
+"""
+
+standard = """
+After @deva[सम्]/@deva[प्रति] + @deva[ज्ञा] (not meaning @deva[अनुतापस्मरण] — remembering with regret), @deva[आत्मनेपद].
+
+**@deva[आत्मनेपद]:**
+- @deva[शतं संजानीते] "he recognizes a hundred"
+- @deva[सहस्रं प्रतिजानीते] "he promises a thousand"
+- @deva[संजानीते] "he recognizes, agrees"
+
+**Exception — regretful remembrance → @deva[परस्मैपद]:**
+- @deva[मातुः संजानाति] "he remembers his (deceased) mother with sorrow"
+- @deva[पितुः संजानाति] "he remembers his father regretfully"
+
+**@deva[अनुतापस्मरण] defined:** Remembrance accompanied by grief or regret (@deva[अनुताप]). The agent recalls a deceased or lost person with sorrow — the emotional quality, not the cognitive act, determines the exception.
+
+**Continuation from @ref[1.3.44]–@ref[1.3.45]:** These added @deva[आत्मनेपद] for @deva[ज्ञा] in denial and intransitive senses. This rule adds two more prefixes (@deva[सम्], @deva[प्रति]) with a meaning-exception.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[सम्प्रतिभ्यामनुतापे ज्ञः] — after @deva[सम्]/@deva[प्रति] + @deva[ज्ञा], @deva[आत्मनेपद] — except in @deva[अनुताप] (regretful remembrance).
+
+**Meaning-exception rule:** The structure is "X applies except in Y" — @deva[आत्मनेपद] is the default for these prefixes, with @deva[अनुतापस्मरण] as the sole exception reverting to @deva[परस्मैपद].
+
+**@deva[अनुतापस्मरण] — grief-laden recall:** @deva[संजानाति मातुः] — the agent remembers a deceased person with sorrow. The grief component (@deva[अनुताप]) is essential. Simple recognition (@deva[संजानीते] "he recognizes") or promising (@deva[प्रतिजानीते]) lack this emotional quality and take @deva[आत्मनेपद].
+
+**@deva[ज्ञा] coverage summary:**
+- @ref[1.3.44]: denial → @deva[आत्मनेपद]
+- @ref[1.3.45]: intransitive → @deva[आत्मनेपद]
+- @ref[1.3.46] (this): @deva[सम्]/@deva[प्रति] (not grief) → @deva[आत्मनेपद]
+- Default (@ref[1.3.78]): all other senses → @deva[परस्मैपद]
+
+**Transition:** @ref[1.3.47] moves to @deva[वद्], beginning a five-rule block (@ref[1.3.47]–@ref[1.3.51]).
+"""

@@ -1,0 +1,15 @@
+id = "6.4.100"
+numericId = "64100"
+
+[en]
+simple = """
+In Vedic Sanskrit, the root vowel of @deva[घस्] ('to eat') and @deva[भस्] ('to chew') is elided before ANY @deva[क्]/@deva[ङ्]-marked affix, whether consonant-initial or vowel-initial. This broader scope distinguishes this rule from the vowel-initial-only rule of the previous @[sūtra]. Example: @deva[घस् + क्तिन्] → @deva[सग्धिः] ('food/eating'); @deva[भस्] → @deva[बब्धांते].
+"""
+
+standard = """
+Unlike @ref[6.4.99] which restricts elision to vowel-initial affixes, this rule elides the root vowel of @deva[घस्] and @deva[भस्] before any @deva[क्]/@deva[ङ^]-marked @deva[आर्धधातुक] affix regardless of its initial sound. The scope — @deva[सर्वत्र] (everywhere, consonant- or vowel-initial) — is the defining feature. Examples from Vedic: @deva[सग्धिश्चमे] (from @deva[घस्] + @deva[क्तिन्]), @deva[बब्धांते] (from @deva[भस्]). Both roots are rare in classical Sanskrit and primarily attested in Vedic.
+"""
+
+advanced = """
+The root-vowel of @deva[घस्] and @deva[भस्] is elided in the @deva[छन्दस्] before any @deva[क्]/@deva[ङ्]-marked affix, whether vowel- or consonant-initial. Vedic attestations: @deva[सग्धिश्चमे] @deva[सपीतिश्च] @deva[मे], @deva[बब्धांते] @deva[हरी] @deva[धानाः]. Derivation of @deva[सग्धिः]: @deva[क्तिन्] is added to @deva[अद्]; by @ref[2.4.39], @deva[घस्] replaces @deva[अद्]; @deva[घस्] + @deva[ति] → @deva[घस] + @deva[ति] (root-vowel elided by the present rule) → @deva[घ्] + @deva[ति] (@deva[स्] elided by @ref[8.2.26]); @deva[त] → @deva[ध] and @deva[घ] → @deva[ग], yielding @deva[ग्धिः]; then @deva[समाना] @deva[ग्धिः] = @deva[सग्धिः] (@deva[समान] → @deva[स] by @ref[6.3.84]). Derivation of @deva[बब्धाम्] (Imperative of @deva[भस्]): @deva[भस्] + @deva[श्लु] + @deva[ताम्] → @deva[भ] @deva[भस्] + @deva[ताम्] → @deva[ब] @deva[भ्स्] + @deva[ताम्] (by @ref[6.4.100]) → @deva[बभ्] + @deva[ताम्] (by @ref[8.2.26]) → @deva[ब] @deva[ब्] + @deva[धाम्] → @deva[बब्धाम्]. Although this elision rule, being @[nitya] and a subsequent rule, should have operated first, reduplication takes place first as a Vedic anomaly; see @ref[7.2.67]. The specification "before a consonant-initial affix also" (@deva[सर्वत्र]) highlights that elision applies before vowel-initial affixes as well: @deva[बप्सति] = @deva[भस्] + @deva[श्लु] + @deva[झि] → @deva[ब] @deva[भस्] + @deva[अति] (by @ref[7.1.4]) → @deva[बप्सति] (by @ref[8.4.55]). Without the @deva[क्]/@deva[ङ्] condition: @deva[अंशून्] @deva[बभस्ति] (no elision). The @deva[च] in the @[sūtra] was added by the @[vārtikakāra].
+"""

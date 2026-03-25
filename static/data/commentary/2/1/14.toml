@@ -1,0 +1,53 @@
+id = "2.1.14"
+numericId = "21014"
+
+[en]
+simple = """
+The words @deva[अभि] "toward" and @deva[प्रति] "toward" **optionally** compound with a case-inflected word (@deva[सुबन्त]) to form @deva[अव्ययीभाव] when they express "direction toward a goal" (@deva[लक्षण]).
+
+@deva[लक्षण] here means that something moves or is oriented toward a specific target.
+
+**Example:** @deva[अभ्यग्नि पतन्ति शलभाः] "moths fall toward the fire" — the fire is the goal the moths are drawn to. The compound @deva[अभ्यग्नि] = @deva[अग्निम् अभि].
+
+**No compound when not @deva[लक्षण]:**
+- @deva[स्रुग्घ्नं प्रति गतः] "he went toward Srughna" — direction but not a fixed goal, so no @deva[अव्ययीभाव]
+- @deva[अभ्यङ्का गावः] "recently branded cows" — @deva[अभि] is not directional here
+"""
+
+standard = """
+@deva[अभि] or @deva[प्रति] in the @deva[लक्षण] (goal/aim) sense + @deva[सुबन्त] → optional @deva[अव्ययीभाव] — @deva[अभिप्रती लक्षणे].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Example:** @deva[अभ्यग्नि पतन्ति शलभाः] / @deva[अग्निम् अभि पतन्ति शलभाः] "moths fall toward the fire"
+
+**@deva[लक्षण] = "goal-directed aim":** The governed noun is the target — something toward which an action is directed. This is the same @deva[लक्षण] sense from @ref[1.4.84] and @ref[1.4.90].
+
+**No compound in non-@deva[लक्षण] senses:**
+- @deva[स्रुग्घ्नं प्रति गतः] — general direction, not fixed goal
+- @deva[अभ्यङ्का गावः] "recently branded cows" — @deva[अभि] is temporal, not directional
+
+**@deva[सुबन्त] (not @deva[पञ्चम्यन्त]):** Unlike @ref[2.1.12]–@ref[2.1.13] which require ablative, this rule takes any @deva[सुबन्त] — typically accusative, since @deva[अभि]/\u200b@deva[प्रति] as @deva[कर्मप्रवचनीय] govern accusative by @ref[2.3.8].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[अव्ययीभावः] from @ref[2.1.5].
+
+@deva[अभिप्रती लक्षणे] — @deva[अभि] and @deva[प्रति] in the @deva[लक्षण] (goal) sense optionally compound with @deva[सुबन्त] as @deva[अव्ययीभाव].
+
+**@deva[लक्षण] across the grammar:** The @deva[लक्षण] sense appears at:
+- @ref[1.4.84]: @deva[अनु] as @deva[कर्मप्रवचनीय] in @deva[लक्षण]
+- @ref[1.4.90]: @deva[प्रति]/etc. as @deva[कर्मप्रवचनीय] in @deva[लक्षण]
+- This rule: @deva[अभि]/\u200b@deva[प्रति] form @deva[अव्ययीभाव] in @deva[लक्षण]
+
+The @deva[कर्मप्रवचनीय] rules define the designation; this rule teaches the optional compound form.
+
+**@deva[पञ्चमी] not continued:** @ref[2.1.12]–@ref[2.1.13] specify @deva[पञ्चम्यन्त] (ablative). This rule restates @deva[सुबन्त] generally, indicating that @deva[पञ्चमी] from the previous rules does not carry forward. The governed noun is typically in the accusative (governed by @deva[अभि]/\u200b@deva[प्रति] as @deva[कर्मप्रवचनीय] by @ref[2.3.8]).
+
+**Counter-examples establish scope:**
+- @deva[स्रुग्घ्नं प्रति गतः] — mere direction, not fixed @deva[लक्ष्य] (target)
+- @deva[अभ्यङ्का गावः] — @deva[अभि] here is temporal ("recently"), not directional
+- @deva[प्रत्यङ्का गावः] — same, temporal use
+
+These show that only the true @deva[लक्षण] (goal-oriented) sense triggers @deva[अव्ययीभाव].
+"""

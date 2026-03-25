@@ -1,0 +1,49 @@
+id = "1.1.20"
+numericId = "11020"
+
+[en]
+simple = """
+Roots that take the form @deva[दा] "to give" or @deva[धा] "to place" receive the technical name @deva[घु]. This label triggers special behavior in several later rules — most notably, it causes @deva[न] to become @deva[ण] in certain environments.
+
+Six roots qualify: @deva[डुदाञ्] "to give," @deva[दाण्] "to give," @deva[दो] "to cut," @deva[देङ्] "to pity" (all taking @deva[दा]-form), and @deva[डुधाञ्] "to place," @deva[धेट्] "to feed" (taking @deva[धा]-form).
+
+**Example:** @deva[प्रणिददाति] "he gives forth" — the @deva[न] of @deva[प्रणि] becomes @deva[ण] because @deva[दा] is @deva[घु], triggering @ref[8.4.17].
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] assigns the name @deva[घु] to roots of the form @deva[दा] or @deva[धा], excluding @deva[दाप्].
+
+**The six @deva[घु] roots:**
+- @deva[डुदाञ्] "to give" → @deva[प्रणिददाति]
+- @deva[दाण्] "to give" → @deva[प्रणिदाता]
+- @deva[दो] "to cut" → @deva[प्रणिद्यति] (assumes @deva[दा]-form by @ref[6.1.45])
+- @deva[देङ्] "to pity" → @deva[प्रणिदयते] (assumes @deva[दा]-form by @ref[6.1.45])
+- @deva[डुधाञ्] "to place" → @deva[प्रणिदधाति]
+- @deva[धेट्] "to feed" → @deva[प्रणिधयति]
+
+**Primary effect:** @deva[घु] roots trigger @deva[ण]-substitution by @ref[8.4.17] — @deva[न] → @deva[ण] after @deva[र/ष] when a @deva[घु] root intervenes.
+
+**Why exclude @deva[दाप्]?** @deva[दाप्] "to cut" has the form @deva[दा] but is explicitly excluded (@deva[अदाप्]). So @deva[दाप्] + @deva[क्त] = @deva[दातम्] "what is cut" — @ref[7.4.46] does not apply.
+
+**@deva[घु]-specific rules:** @ref[7.4.46] (@deva[दो घ्]): @deva[दा] + @deva[क्त] = @deva[दत्तः] "given." @ref[7.4.47]: @deva[प्र] + @deva[दा] + @deva[क्त] = @deva[प्रत्तम्] "offered."
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this begins a new topic (root classification).
+
+@deva[दाधा घ्वदाप्] — roots of the form @deva[दा] or @deva[धा] are @deva[घु], except @deva[दाप्]. The @deva[अदाप्] excludes @deva[दाप्] "to cut" and, by the @deva[परिभाषा] of @ref[3.4.19], also @deva[दैप्] "to clean."
+
+**The six @deva[घु] roots:**
+- @deva[दा]-form: @deva[डुदाञ्], @deva[दाण्] (inherently @deva[दा]); @deva[दो], @deva[देङ्] (assume @deva[दा]-form by @ref[6.1.45] before certain affixes)
+- @deva[धा]-form: @deva[डुधाञ्] (inherently @deva[धा]); @deva[धेट्] (assumes @deva[धा]-form)
+
+**Rules that reference @deva[घु]:**
+- @ref[8.4.17]: @deva[न] → @deva[ण] after @deva[र/ष] when @deva[घु] intervenes: @deva[प्रणिददाति], @deva[प्रणिदधाति]
+- @ref[7.4.46] (@deva[दो घ्]): @deva[दा]-@deva[घु] + @deva[कित्] affix → root replaced by @deva[द्]: @deva[दा] + @deva[क्त] = @deva[दत्तः]
+- @ref[7.4.47]: with @deva[प्र]/@deva[परि] prefixes: @deva[प्र] + @deva[दा] + @deva[क्त] = @deva[प्रत्तम्]
+- @ref[6.4.66] and others use @deva[घु] as a trigger condition
+
+**Why exclude @deva[दाप्]?** @deva[दाप्] "to cut" has the form @deva[दा] but should not trigger @deva[घु]-specific operations: @deva[दाप्] + @deva[क्त] = @deva[दातम्] (not *@deva[दत्तम्]). The explicit exclusion prevents @ref[7.4.46] from applying. Similarly, @deva[अवदातम्] "washed" retains @deva[दा] without reduction.
+
+**@deva[दैप्] exclusion:** @deva[दैप्] "to clean" is excluded by the @deva[परिभाषा] that extends exclusions to phonetically similar items. Though @deva[दैप्] does not have the form @deva[दा] in citation, it could assume it after @deva[वृद्धि] reduction.
+"""

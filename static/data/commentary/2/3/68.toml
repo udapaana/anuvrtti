@@ -1,0 +1,46 @@
+id = "2.3.68"
+numericId = "23068"
+
+[en]
+simple = """
+When a past participle (formed with @deva[क्त]) denotes a location — specifically from roots meaning fixedness, motion, or eating — the genitive (@deva[षष्ठी]) is used.
+
+This covers cases where a @deva[क्त]-form does not describe a completed action on some object, but rather names a place associated with the action. "Their seat" or "their sleeping place" — here the @deva[क्त]-form functions as a locative noun, and the people associated with that place take the genitive.
+
+**Examples:**
+- @deva[इदमेषामासितम्] — 'this is their seat' (literally: 'this is the sat-place of them')
+- @deva[इदमेषां शयितम्] — 'this is their sleeping place' (literally: 'this is the lain-place of them')
+
+The genitive @deva[एषाम्] ('of them') marks the people who use the place — they are not objects or patients, but the people for whom the location is defined.
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule), exception to @ref[2.3.69].
+
+When @deva[क्त] denotes @deva[अधिकरण] (location), specifically from roots expressing @deva[ध्रौव्य] (fixedness/staying), @deva[गति] (motion), or @deva[प्रत्यवसान] (eating/consuming) — as described by @ref[3.4.76] — @deva[षष्ठी] is used.
+
+**Examples:**
+- @deva[इदमेषामासितम्] — 'this is their seat' (@deva[आस्] = to sit, @deva[ध्रौव्य])
+- @deva[इदमेषां शयितम्] — 'this is their sleeping place' (@deva[शी] = to lie, @deva[ध्रौव्य])
+
+**Interaction with @ref[2.3.69]:** @ref[2.3.69] blocks @deva[षष्ठी] with @deva[निष्ठा] (@deva[क्त/क्तवतु]) in general. This rule overrides that block when @deva[क्त] expresses @deva[अधिकरण] sense.
+
+**With @deva[द्विकर्मक] (double-object) verbs:** Both objects take @deva[षष्ठी]:
+- @deva[नेताऽश्वस्य ग्रामस्य चैत्रः] — '@[caitra] leads the horse to the village' (both @deva[अश्वस्य] and @deva[ग्रामस्य] in genitive)
+- If one object is treated as principal: @deva[नेताऽश्वस्य ग्रामं चैत्रः] — the secondary object keeps genitive, the principal takes accusative
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]).
+
+Like @ref[2.3.67], this rule is an @[apavāda] (exception) to @ref[2.3.69], which blocks @deva[षष्ठी] for @deva[निष्ठा] forms. Here the exception targets @deva[क्त] when it denotes @deva[अधिकरण] (location) per @ref[3.4.76] — a specialized use where the @deva[क्त]-form names a place rather than describing a completed action.
+
+The roots covered fall into three semantic classes per @ref[3.4.76]:
+- @deva[ध्रौव्य] (fixedness): @deva[आस्] (sit), @deva[शी] (lie), @deva[स्था] (stand)
+- @deva[गति] (motion): @deva[गम्] (go), @deva[चर्] (move)
+- @deva[प्रत्यवसान] (eating): @deva[भुज्] (eat), @deva[अद्] (consume)
+
+The @deva[द्विकर्मक] discussion extends the rule to double-object constructions. When a verb like @deva[नी] (lead) takes two objects (the thing led and the destination), both can appear in @deva[षष्ठी] with a @deva[कृत्]-word: @deva[नेताऽश्वस्य ग्रामस्य चैत्रः]. But when one object is treated as @deva[मुख्य] (principal), it takes @deva[द्वितीया] while the secondary retains @deva[षष्ठी]: @deva[नेताऽश्वस्य ग्रामं चैत्रः]. This distribution follows from the interaction of @ref[2.3.65] with the @deva[द्विकर्मक] analysis of @ref[1.4.51].
+
+Cross-reference @ref[2.3.67] for the parallel @deva[क्त]-exception involving present-tense sense, and @ref[2.3.69] for the general @deva[निष्ठा] block.
+"""

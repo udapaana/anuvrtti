@@ -1,0 +1,52 @@
+id = "2.1.68"
+numericId = "21068"
+
+[en]
+simple = """
+Words formed with @deva[कृत्] affixes (verbal derivatives) and the word @deva[तुल्य] "equal" (along with its synonyms like @deva[सदृश]) compound with a co-referential word to form @deva[तत्पुरुष] — but only when the second member does **not** denote a genus (@deva[जाति]).
+
+**Examples:**
+- @deva[भोज्योष्णम्] "food that is edibly warm" — @deva[भोज्य] (a @deva[कृत्]-derivative meaning "edible") + @deva[उष्ण] "hot"
+- @deva[भोज्यलवणम्] "food that is edibly salty"
+- @deva[पानीयशीतलम्] "a drink that is drinkably cool"
+- @deva[तुल्यश्वेतः] "equally white"
+- @deva[सदृशश्वेतः] "similarly white"
+- @deva[सदृशमहान्] "equally great"
+
+**No compound with genus:** @deva[भोज्य ओदनः] "edible rice" does not compound — @deva[ओदन] is a genus-word (@deva[जाति]).
+"""
+
+standard = """
+@deva[कृदन्त]/@deva[तुल्यार्थ] + @deva[अजातिवाचक] → @deva[तत्पुरुष] in @deva[समानाधिकरण] — @deva[कृत्तुल्याख्याजातिभिरजातौ].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[भोज्योष्णम्] "edibly hot" — @deva[भोज्य] (@deva[कृत्]-derived) + @deva[उष्ण] (not a @deva[जाति])
+- @deva[भोज्यलवणम्] "edibly salty"
+- @deva[पानीयशीतलम्] "drinkably cool"
+- @deva[तुल्यश्वेतः] "equally white"
+- @deva[सदृशश्वेतः] "similarly white"
+
+**@deva[अजातौ] restriction:** The second member must not be a @deva[जाति]-word. @deva[भोज्य ओदनः] fails: @deva[ओदन] (rice) is @deva[जाति]. This prevents overlap with @ref[2.1.65] and @ref[2.1.57].
+
+**Two classes of first member:**
+1. @deva[कृदन्त] — verbal derivatives: @deva[भोज्य] "edible," @deva[पानीय] "drinkable"
+2. @deva[तुल्यार्थ] — @deva[तुल्य] and synonyms (@deva[सदृश], @deva[समान])
+
+Both must be in @deva[समानाधिकरण] with the second member.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[कृत्तुल्याख्याजातिभिरजातौ] — @deva[कृदन्त], @deva[तुल्यार्थ], @deva[आख्या] (name-words), and @deva[जाति] words compound with a non-@deva[जाति] second member as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**@deva[अजातौ] = non-genus second member:** The @deva[काशिका] explains: @deva[भोज्य] is used as a qualifier (adjective), not as a common noun denoting a genus. When paired with a genus-word like @deva[ओदन] (rice), @deva[भोज्य] functions as a mere adjective under @ref[2.1.57]. This rule specifically covers cases where the second member is NOT @deva[जाति] — qualities, states, properties.
+
+**@deva[कृत्] as qualifier:** @deva[भोज्य] "edible" (from @deva[भुज्] + @deva[ण्यत्]) is a @deva[कृत्]-derivative used as an attributive qualifier. @deva[भोज्योष्णम्]: "the warmth that is of the edible kind" — the @deva[कृत्] word specifies a mode of the quality.
+
+**@deva[तुल्य] and synonyms:** @deva[तुल्य], @deva[सदृश], @deva[समान] — these compound with quality-words to express similarity: @deva[तुल्यश्वेतः] "white to the same degree."
+
+**Within the @deva[कर्मधारय] hierarchy:** This rule complements @ref[2.1.65] (which required @deva[जाति] first members with listed second members) and @ref[2.1.57] (general @deva[विशेषण]-@deva[विशेष्य]). It carves out a specific domain: @deva[कृत्]/@deva[तुल्य] first members with non-@deva[जाति] second members.
+"""

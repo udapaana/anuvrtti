@@ -1,0 +1,55 @@
+id = "1.4.17"
+numericId = "14017"
+
+[en]
+simple = """
+Before affixes in the range from @deva[सु] (the first case ending, @ref[4.1.2]) through @deva[कप्] (@ref[5.4.151]) — excluding @deva[सर्वनामस्थान] affixes — the preceding word is called @deva[पद] "complete word."
+
+This covers most case endings and @deva[तद्धित] (secondary derivative) affixes.
+
+**Examples:**
+- @deva[राजन्] + @deva[भ्याम्] → @deva[राजभ्याम्] "by the two kings" (@deva[न्] drops because @deva[राजन्] is @deva[पद])
+- @deva[राजन्] + @deva[भिस्] → @deva[राजभिः] "by the kings"
+- @deva[राजन्] + @deva[त्व] → @deva[राजत्वम्] "kingship"
+
+**Why exclude @deva[सर्वनामस्थान]?** Before strong case endings (nominative/accusative singular and plural), @deva[न्] is retained:
+- @deva[राजन्] + @deva[सु] → @deva[राजा] (not *@deva[राजः])
+"""
+
+standard = """
+Before affixes from @deva[सु] (@ref[4.1.2]) through @deva[कप्] (@ref[5.4.151]), excluding @deva[सर्वनामस्थान], the preceding element is @deva[पद] — @deva[स्वादिष्वसर्वनामस्थाने].
+
+**Rule type — @deva[संज्ञा] extension:** Broadens @deva[पद] status to elements before a wide range of affixes — case endings and @deva[तद्धित] suffixes.
+
+**Examples:**
+- @deva[राजन्] + @deva[भ्याम्] → @deva[राजभ्याम्] (@deva[नलोप] by @ref[8.2.7])
+- @deva[राजन्] + @deva[भिस्] → @deva[राजभिः]
+- @deva[राजन्] + @deva[त्व] → @deva[राजत्वम्]
+
+**@deva[सर्वनामस्थान] exclusion:** @deva[सर्वनामस्थान] affixes are the "strong" case endings (nom./acc. sg. and pl. for consonant stems). Before these, @deva[पद] does not apply, so @deva[न्] is retained: @deva[राजन्] + @deva[सु] → @deva[राजा].
+
+**Scope — @deva[सु] through @deva[कप्]:** This covers:
+- All 21 @deva[सुप्] affixes (case endings)
+- @deva[तद्धित] affixes from chapters 4–5
+- Ends at @deva[कप्] (@ref[5.4.151])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[पद] from @ref[1.4.14].
+
+@deva[स्वादिष्वसर्वनामस्थाने] — before @deva[सु]–@deva[कप्] affixes (non-@deva[सर्वनामस्थान]), @deva[पद] applies.
+
+**Central @deva[पद]-assignment rule:** This is the primary rule determining when a nominal stem is @deva[पद]. It enables the massive @deva[पद]-final rule system (@ref[8.1.16]ff) to apply during nominal inflection.
+
+**@deva[सर्वनामस्थान] = strong cases:** Defined by @ref[1.1.42]–@ref[1.1.43]. Before these, the stem is not @deva[पद] — this prevents @deva[नलोप] and other @deva[पद]-final changes, preserving the "strong" stem form.
+
+**Interaction with @ref[1.4.18]:** @ref[1.4.18] carves out an exception: before vowel/@deva[य्]-initial affixes within this range, the element is @deva[भ] (not @deva[पद]). @ref[1.4.16] re-overrides for @deva[सित्] affixes.
+
+**@deva[पद] vs @deva[भ] classification system:**
+1. @ref[1.4.17] (this): general rule — @deva[पद] before @deva[सु]–@deva[कप्]
+2. @ref[1.4.18]: exception — @deva[भ] before vowel/@deva[य्]-initial
+3. @ref[1.4.16]: counter-exception — @deva[पद] before @deva[सित्]
+4. @ref[1.4.19]: @deva[भ] for @deva[त्]/@deva[स्]-final before @deva[मत्वर्थीय]
+
+**Why this range?** @deva[सु] begins the @deva[सुबन्त] system; @deva[कप्] is the last @deva[तद्धित] affix in @deva[पाणिनि]'s arrangement. The range captures all inflectional and most derivational affixes.
+"""

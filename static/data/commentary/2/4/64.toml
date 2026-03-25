@@ -1,0 +1,45 @@
+id = "2.4.64"
+numericId = "24064"
+
+[en]
+simple = """
+The @deva[गोत्र] affixes @deva[यञ्] and @deva[अञ्] are elided by @deva[लुक्] in the plural—when the plural is inherent (not from a compound) and the word is not feminine.
+
+**Examples:**
+- @deva[गार्ग्यः] (singular, @deva[गर्ग] + @deva[यञ्]) → @deva[गर्गाः] (plural, affix elided)
+- @deva[वैदः] (singular, @deva[विद] + @deva[अञ्]) → @deva[विदाः] (plural, affix elided)
+
+**No elision in compounds:** @deva[प्रियगार्ग्याः] 'those who love @[gārgya]' (affix retained)
+"""
+
+standard = """
+The @deva[गोत्र] affixes @deva[यञ्] (@ref[4.1.105]) and @deva[अञ्] (@ref[4.1.104]) undergo @deva[लुक्] elision when:
+1. The word takes plural inherently (not from compound dependency)
+2. The word is not feminine
+
+**Examples:**
+- @deva[गर्ग] + @deva[यञ्] = @deva[गार्ग्यः]; plural: @deva[गर्गाः]
+- @deva[वत्स] + @deva[यञ्] = @deva[वात्स्यः]; plural: @deva[वत्साः]
+- @deva[विद] + @deva[अञ्] = @deva[वैदः]; plural: @deva[विदाः]
+
+**No elision:**
+- In compounds: @deva[प्रियगार्ग्याः], @deva[प्रियवैदाः]
+- In feminine: @deva[गार्ग्यः], @deva[वैद्यः]
+- Non-@deva[गोत्र] use: @deva[द्वैप्याः] 'island-dwellers' (plural of @deva[द्वैप्यः])
+
+@note[type=@[vārtika]]{In @deva[तत्पुरुष] compounds with singular/dual genitive, @deva[यञ्]/[@deva[अञ्]] are optionally elided: @deva[गार्ग्यकुलम्] or @deva[गर्गकुलम्].}
+"""
+
+advanced = """
+The @deva[गोत्र] affixes @deva[यञ्] (@deva[गर्गादिभ्यो यञ्], @ref[4.1.105]) and @deva[अञ्] (@deva[अनृष्यानन्तर्ये बिदादिभ्योऽञ्], @ref[4.1.104]) undergo @deva[लुक्] elision when the word independently (not as part of a compound) takes the plural, excluding the feminine.
+
+@deva[गर्ग] + @deva[यञ्] = @deva[गार्ग्यः]; plural @deva[गर्गाः] 'the male descendants of @deva[गर्ग].' Similarly @deva[वात्स्यः] → @deva[वत्साः]; @deva[विद] + @deva[अञ्] = @deva[वैदः] (@ref[4.1.104]) → plural @deva[विदाः] (not @deva[वैदाः]); @deva[और्वः] → @deva[और्वाः].
+
+**No elision in compounds:** @deva[प्रियगार्ग्याः] 'those to whom @deva[गार्ग्य] is dear'; @deva[प्रियवैदाः].
+
+**No elision in feminine:** @deva[गार्ग्यः], @deva[वैद्यः] (feminine plurals retain the affix).
+
+The affixes must be @deva[गोत्र] affixes; otherwise no elision occurs. @deva[द्वीप] + @deva[यञ्] = @deva[द्वैप्यः] 'island-dweller' → plural @deva[द्वैप्याः] (affix retained, not @deva[गोत्र]). @deva[उत्स] + @deva[यञ्] = @deva[औत्सः] 'pupil of @deva[उत्स]' → @deva[औत्साः].
+
+@deva[वार्त्तिक]: In @deva[षष्ठीतत्पुरुष] compounds with singular or dual genitive, @deva[यञ्] and @deva[अञ्] are optionally elided: @deva[गार्ग्यस्य कुलम्] = @deva[गार्ग्यकुलम्] or @deva[गर्गकुलम्]; @deva[वैदस्य कुलम्] = @deva[वैदकुलम्] or @deva[विदकुलम्]. Other affixes are not elided in @deva[तत्पुरुष]: @deva[आङ्गकुलम्]. In plural @deva[तत्पुरुष], elision is mandatory, not optional: @deva[गर्गाणां कुलम्] = @deva[गर्गकुलम्]. In non-@deva[तत्पुरुष] compounds, no elision: @deva[उपगार्ग्य] (@deva[अव्ययीभाव], = @deva[गार्ग्यस्य समीपम्]). The rule applies only to @deva[षष्ठीतत्पुरुष], not @deva[कर्मधारय]: @deva[परमगार्ग्यः].
+"""

@@ -1,0 +1,48 @@
+id = "1.3.3"
+numericId = "13003"
+
+[en]
+simple = """
+The final consonant of a root, affix, or other grammatical item in @deva[उपदेश] (technical listing) is @deva[इत्] — an indicatory marker that gets deleted.
+
+This is how @deva[प्रत्याहार]s (abbreviations) work. In the @deva[शिवसूत्र]s:
+- @deva[अइउण्]: the final @deva[ण्] is @deva[इत्] — only @deva[अ], @deva[इ], @deva[उ] are the real content
+- @deva[ऋलृक्]: the final @deva[क्] is @deva[इत्]
+- @deva[एओङ्]: the final @deva[ङ्] is @deva[इत्]
+
+**Not in finished words:** @deva[अग्निचित्] "fire-piler" and @deva[सोमसुत्] "soma-presser" are complete words in actual use — their final consonants are real, not @deva[इत्].
+"""
+
+standard = """
+In @deva[उपदेश], a final consonant (@deva[हल्]) is @deva[इत्]. @deva[उपदेशे] and @deva[इत्] continue from @ref[1.3.2].
+
+**In @deva[प्रत्याहार] @deva[सूत्र]s:**
+- @deva[अइउण्]: @deva[ण्] is @deva[इत्] — serves as the end-marker for @deva[प्रत्याहार]s like @deva[अण्]
+- @deva[ऋलृक्]: @deva[क्] is @deva[इत्]
+- @deva[हयवरट्]: @deva[ट्] is @deva[इत्]
+
+**In affixes:**
+- @deva[क्त्वा]: initial @deva[क्] is @deva[इत्] (by @ref[1.3.8]), final @deva[आ] is not a consonant
+- @deva[शतृ]: final @deva[ऋ] is not a consonant — but the @deva[श्] is initial @deva[इत्] by @ref[1.3.8]
+
+**Only in @deva[उपदेश]:** @deva[अग्निचित्] "fire-piler," @deva[सोमसुत्] "soma-presser" — final consonants remain because these are complete words, not grammatical listings.
+
+**Scope:** This rule covers all @deva[उपदेश] contexts: @deva[सूत्रपाठ], @deva[धातुपाठ], @deva[गणपाठ], @deva[प्रत्याहारसूत्र]s.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[उपदेशे] and @deva[इत्] from @ref[1.3.2].
+
+@deva[हलन्त्यम्] — a final consonant in @deva[उपदेश] is @deva[इत्].
+
+**Foundation of the @deva[प्रत्याहार] system:** This rule makes the @deva[शिवसूत्र]s work. Each @deva[शिवसूत्र] ends in a consonant that serves as the @deva[इत्] marker — the starting point for @deva[प्रत्याहार] formation. @deva[अण्] = @deva[अ], @deva[इ], @deva[उ] (from @deva[अइउण्]); @deva[अक्] = @deva[अ], @deva[इ], @deva[उ], @deva[ऋ], @deva[लृ] (through @deva[ऋलृक्]).
+
+**@deva[अन्त्यम्] ("final"):** Only the last consonant is @deva[इत्]. In @deva[अइउण्], only @deva[ण्] is @deva[इत्] — @deva[उ] (a vowel) is not covered by this rule (it could be @deva[इत्] only if nasalized, by @ref[1.3.2]).
+
+**Exception at @ref[1.3.4]:** Final dentals, @deva[स्], and @deva[म्] in @deva[विभक्ति] endings are not @deva[इत्]. Without this exception, @deva[जस्], @deva[ताम्], @deva[तम्] would lose their final consonants.
+
+**Why this matters for affixes:** An affix's @deva[इत्] letters determine its behavior:
+- Final @deva[प्] (@deva[क्त्वा] → @deva[ककारः इत्]): triggers @deva[कित्] properties
+- Final @deva[ट्] in @deva[ल्युट्]: triggers @deva[टित्] properties (feminine @deva[ई] by @ref[4.1.15])
+- These @deva[इत्]-based classifications (@deva[कित्], @deva[ङित्], @deva[णित्], etc.) control accent, @deva[गुण]/@deva[वृद्धि], and augmentation throughout the grammar
+"""

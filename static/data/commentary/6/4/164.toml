@@ -1,0 +1,15 @@
+id = "6.4.164"
+numericId = "64164"
+
+[en]
+simple = """
+When a @deva[भ] stem ends in @deva[इन्], that @deva[इन्] remains unchanged (is not altered) before the @deva[तद्धित] affix @deva[अण्] when @deva[अण्] is not a Patronymic affix. So @deva[संकुटिन्] gives @deva[सांकुटिनम्], and @deva[संराविन्] gives @deva[सांराविणम्]. The rules of @ref[3.3.44] and @ref[5.4.15] are relevant to the derivation of these forms.
+"""
+
+standard = """
+For @deva[भ] stems ending in @deva[इन्], the default behaviour before @deva[अण्] would be to elide or alter the @deva[इन्]; this rule blocks that, keeping @deva[इन्] intact when @deva[अण्] is non-Patronymic. The conditioning environment: stem in @deva[भ] position, final @deva[इन्], followed by @deva[अण्] that is not a @[patronymic] (@deva[गोत्र]) affix. Results (with non-Patronymic @deva[अण्]): @deva[सांकुटिनम्] (from @deva[संकुटिन्], @ref[3.3.44]), @deva[सांराविणम्], @deva[सांमार्जिनम्] (@ref[5.4.15]). When @deva[अण्] is Patronymic, separate rules govern the treatment of the @deva[इन्]-ending.
+"""
+
+advanced = """
+The final @deva[इन्] of a @deva[भ] stem remains unchanged before a non-Patronymic @deva[अण्] affix. Examples: @deva[सांकुटिनम्], @deva[सांराविणम्], @deva[सांमार्जिनम्] (formed by @[kṛt]-affix @deva[इनुण्] by @ref[3.3.44], then @deva[अण्] in @deva[स्वार्थ] by @ref[5.4.15]); @deva[स्राग्विणम्] (from @deva[स्रग्विन्]). The restriction to @deva[अण्]: before @deva[अञ्], @deva[इन्] is altered — @deva[दण्डिनां] @deva[समूहः] = @deva[दाण्डम्] (by @ref[4.2.44]). The restriction to non-Patronymic: before Patronymic @deva[अण्], @deva[इन्] is altered — @deva[मेधाविनोऽपत्यं] = @deva[मैधावः].
+"""

@@ -1,0 +1,58 @@
+id = "1.2.4"
+numericId = "12004"
+
+[en]
+simple = """
+A @deva[सार्वधातुक] affix (a type of verbal ending used in the present, imperfect, imperative, and optative) that does not carry the marker @deva[प्] is treated as @deva[ङित्]. This blocks @deva[गुण] (vowel strengthening) of the root vowel.
+
+The @deva[सार्वधातुक] affixes include the 18 @deva[तिङ्] verb endings and affixes marked with @deva[श्].
+
+**@deva[पित्] endings — @deva[गुण] applies:** @deva[कृ] "to do" → @deva[करोति] "he does." The ending @deva[तिप्] carries @deva[प्], so @deva[गुण] turns @deva[ऋ] into @deva[अर्].
+
+**Non-@deva[पित्] endings — no @deva[गुण]:** @deva[कृ] → @deva[कुरुतः] "they two do." The ending @deva[तस्] has no @deva[प्], so it is @deva[ङित्], and the root vowel stays unchanged.
+"""
+
+standard = """
+A @deva[सार्वधातुक] affix not marked with @deva[प्] is treated as @deva[ङित्]. @deva[सार्वधातुक] affixes are defined by @ref[3.4.113]: @deva[तिङ्] endings and affixes marked with @deva[श्].
+
+**@deva[पित्] endings (@deva[तिप्], @deva[सिप्], @deva[मिप्]) — @deva[गुण] applies:**
+- @deva[कृ] + @deva[उ] + @deva[तिप्] → @deva[करोति] "he does"
+- @deva[कृ] + @deva[उ] + @deva[सिप्] → @deva[करोषि] "you do"
+
+**Non-@deva[पित्] endings — @deva[ङित्], no @deva[गुण]:**
+- @deva[कृ] + @deva[उ] + @deva[तस्] → @deva[कुरुतः] "they two do" (@deva[अ] → @deva[उ] by @ref[6.4.110])
+- @deva[कृ] + @deva[उ] + @deva[अन्ति] → @deva[कुर्वन्ति] "they do"
+
+**Why only @deva[सार्वधातुक]?** @deva[आर्धधातुक] affixes without @deva[प्] are not made @deva[ङित्]. So @deva[कर्ता] "doer," @deva[कर्तुम्] "to do," @deva[कर्तव्यम्] "to be done" all show @deva[गुण] — their affixes are @deva[आर्धधातुक].
+
+**Scope:** This rule affects verb conjugation across all four @deva[सार्वधातुक] @deva[लकार]s: @deva[लट्] (present), @deva[लङ्] (imperfect), @deva[लोट्] (imperative), @deva[लिङ्] (optative).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[ङित्] from @ref[1.2.1].
+
+@deva[सार्वधातुकमपित्] — a @deva[सार्वधातुक] affix that is @deva[अपित्] (not @deva[पित्]) is @deva[ङित्].
+
+**This is the most consequential rule in the @deva[ङित्] extension series.** It governs vowel alternation across the entire @deva[सार्वधातुक] verb paradigm — the distinction between strong forms (with @deva[गुण]) and weak forms (without) in the present system.
+
+**The @deva[तिङ्] paradigm and @deva[पित्] status:**
+
+@deva[परस्मैपद]:
+| | Sg. | Du. | Pl. |
+|---|-----|-----|-----|
+| 3rd | @deva[तिप्] (P) | @deva[तस्] | @deva[झि] |
+| 2nd | @deva[सिप्] (P) | @deva[थस्] | @deva[थ] |
+| 1st | @deva[मिप्] (P) | @deva[वस्] | @deva[मस्] |
+
+Only @deva[तिप्], @deva[सिप्], @deva[मिप्] are @deva[पित्] (marked with P above). All others are @deva[अपित्] → @deva[ङित्] by this rule.
+
+**@deva[आत्मनेपद]:** All @deva[आत्मनेपद] endings lack @deva[प्] → all are @deva[ङित्].
+
+**Effect on @deva[कृ] conjugation:**
+- @deva[करोति] (3sg, @deva[पित्] → @deva[गुण]) vs. @deva[कुरुतः] (3du, @deva[अपित्] → @deva[ङित्] → no @deva[गुण])
+- This creates the strong/weak alternation: @deva[करोति/कुरुतः/कुर्वन्ति]
+
+**@deva[शित्] affixes:** @deva[शप्] (the class marker between root and ending) is @deva[शित्] → @deva[सार्वधातुक] (@ref[3.4.113]). Since @deva[शप्] lacks @deva[प्], it is @deva[ङित्] by this rule. This affects roots of the @deva[दिवादि] class and others where @deva[शप्] intervenes.
+
+**Interaction with @ref[1.1.5]:** @ref[1.1.5] says @deva[ङित्] and @deva[कित्] block @deva[गुण]/@deva[वृद्धि]. This rule feeds into @ref[1.1.5] by providing the @deva[ङित्] designation.
+"""

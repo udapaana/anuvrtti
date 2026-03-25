@@ -1,0 +1,43 @@
+id = "2.3.26"
+numericId = "23026"
+
+[en]
+simple = """
+When the word @deva[हेतु] (cause, reason) is explicitly used in a sentence, the noun expressing the cause takes @deva[षष्ठी] (genitive, sixth case-ending) instead of the instrumental.
+
+**Examples:**
+- @deva[अन्नस्य हेतोर्वसति] "he dwells for the sake of food" — @deva[अन्न] (food) takes genitive because @deva[हेतु] is present
+- @deva[धनस्य हेतोः प्रयतते] "he strives for the sake of wealth"
+
+Without the word @deva[हेतु], the cause would take @deva[तृतीया] (instrumental) under @ref[2.3.23]. The presence of @deva[हेतु] as a separate word shifts the cause-noun to the genitive, expressing "for the sake of X."
+"""
+
+standard = """
+@deva[हेतौ] — when the word @deva[हेतु] "cause, purpose" is explicitly used, the noun denoting the cause takes @deva[षष्ठी] instead of @deva[तृतीया].
+
+**Rule type — @deva[विधि]:** Overrides @ref[2.3.23] (which assigns @deva[तृतीया] to @deva[हेतु]-denoting words) when the word @deva[हेतु] itself appears.
+
+**Examples:**
+- @deva[अन्नस्य हेतोर्वसति] "he dwells for the sake of food"
+- @deva[धनस्य हेतोः प्रयतते] "he strives for the sake of wealth"
+
+**Contrast with @ref[2.3.23]:**
+- @deva[अन्नेन वसति] "he dwells because of food" — @deva[तृतीया] (no word @deva[हेतु])
+- @deva[अन्नस्य हेतोर्वसति] "he dwells for food's sake" — @deva[षष्ठी] (word @deva[हेतु] present)
+
+**Scope:** This applies only when @deva[हेतु] itself is used as a separate word in the sentence, not when the cause is merely implied.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[हेतौ] — when the word @deva[हेतु] is used, the cause-noun takes @deva[षष्ठी].
+
+**Relation to @ref[2.3.23]:** That rule assigns @deva[तृतीया] to a @deva[हेतु]-expressing word. This rule carves out an exception: when @deva[हेतु] appears as an independent word in the sentence, the cause-noun shifts to @deva[षष्ठी]. The genitive establishes a possessive-like relation between the cause and @deva[हेतु] — "the reason *of* food" rather than "by food."
+
+**Examples:** @deva[अन्नस्य हेतोर्वसति], @deva[धनस्य हेतोः प्रयतते].
+
+**Why @deva[षष्ठी] and not @deva[तृतीया]?** When @deva[हेतु] is present, the @deva[कारक] relation of cause is expressed through @deva[हेतु] itself (which takes @deva[पञ्चमी] or another case). The cause-noun relates to @deva[हेतु] as a qualifier, hence @deva[षष्ठी] by @ref[2.3.50] (the residual genitive rule). This @[sūtra] makes that assignment explicit to prevent confusion with @ref[2.3.23].
+
+**Position in @deva[तृतीया] section:** This is the penultimate rule of the @deva[तृतीया] sub-section (@ref[2.3.18]–@ref[2.3.27]), handling a specific interaction between cause-expression and case-assignment.
+"""

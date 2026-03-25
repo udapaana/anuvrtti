@@ -1,0 +1,45 @@
+id = "2.3.4"
+numericId = "23004"
+
+[en]
+simple = """
+Words governed by the particles @deva[अन्तरा] "between" or @deva[अन्तरेण] "without, except" take the @deva[द्वितीया] (accusative).
+
+**Examples:**
+- @deva[अन्तरा त्वां च मां च कमण्डलुः] "the water-pot is between you and me"
+- @deva[अन्तरेण पुरुषकारं न किञ्चिल्लभ्यते] "nothing is obtained without effort"
+- @deva[कोऽन्यस्त्वामन्तरेण शक्तः] "who else except you is capable?"
+"""
+
+standard = """
+@deva[अन्तरा]/@deva[अन्तरेण] + governed word → @deva[द्वितीया] — @deva[अन्तराऽन्तरेण युक्ते].
+
+**Rule type — @deva[विधि]:** Assigns @deva[द्वितीया] to words governed by these two particles.
+
+**Meanings:**
+- @deva[अन्तरा] = "between" (spatial)
+- @deva[अन्तरेण] = "without," "except," "with reference to"
+
+**Examples:**
+- @deva[अन्तरा त्वां च मां च कमण्डलुः] "the pot is between you and me"
+- @deva[अन्तरेण पुरुषकारं न किञ्चिल्लभ्यते] "nothing is gained without effort"
+
+**@deva[युक्त] condition:** The word must actually be governed by (@deva[युक्त]) the particle. In @deva[अन्तरा तक्षशिलां च पाटलिपुत्रं च स्रुघ्नस्य प्राकारः] "the wall of Srughna is between @[takṣaśilā] and @[pāṭaliputra]" — @deva[स्रुघ्नस्य] takes genitive because it is not governed by @deva[अन्तरा].
+
+**Override of @deva[षष्ठी]:** Without this rule, these words might take @deva[षष्ठी] (genitive) under @ref[2.3.50]. This rule specifically assigns @deva[द्वितीया].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[द्वितीया] from @ref[2.3.2]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[अन्तराऽन्तरेण युक्ते] — @deva[द्वितीया] is assigned to words governed by @deva[अन्तरा] or @deva[अन्तरेण].
+
+**@deva[युक्त] — syntactic government:** The word @deva[युक्त] ensures that only words directly governed by these particles take @deva[द्वितीया]. This prevents the accusative from spreading to other words in the same sentence. In @deva[अन्तरा तक्षशिलां च पाटलिपुत्रं स्रुघ्नस्य प्राकारः] — @deva[तक्षशिला] and @deva[पाटलिपुत्र] take @deva[द्वितीया] (governed by @deva[अन्तरा]), but @deva[स्रुघ्न] takes @deva[षष्ठी] (not governed by @deva[अन्तरा]).
+
+**Semantic range of @deva[अन्तरेण]:**
+1. "Without": @deva[अन्तरेण पुरुषकारम्] "without effort"
+2. "Except": @deva[कोऽन्यस्त्वामन्तरेण] "who other than you"
+3. "With reference to": @deva[किमन्तरेण भवन्तम्] "what is it about you?"
+
+**Non-@deva[कारक] case-assignment:** These particles are @deva[कर्मप्रवचनीय] (see @ref[1.4.86]–@ref[1.4.97]) — they govern case without establishing a @deva[कारक] relationship. The @deva[द्वितीया] here is not because the governed word is a @deva[कर्मन्], but because the particle directly prescribes accusative.
+"""

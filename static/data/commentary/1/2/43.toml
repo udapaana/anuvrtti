@@ -1,0 +1,47 @@
+id = "1.2.43"
+numericId = "12043"
+
+[en]
+simple = """
+In rules about compound formation (@deva[समास]), a word that is shown in the nominative case (@deva[प्रथमा विभक्ति]) is called @deva[उपसर्जन] — the "subordinate" member of the compound. By @ref[2.2.30], the @deva[उपसर्जन] stands first in the compound.
+
+**Example:** The rule @ref[2.1.24] says: "A word in the accusative case is compounded with @deva[श्रित], @deva[अतीत]..." Here, "a word in the accusative" (@deva[द्वितीया]) appears in the nominative case in the rule — so the accusative word is the @deva[उपसर्जन]:
+
+@deva[कष्टम्] (accusative) + @deva[श्रितः] → @deva[कष्टश्रितः] "arrived at difficulty" — @deva[कष्ट] stands first because it is @deva[उपसर्जन].
+"""
+
+standard = """
+In @deva[समास] rules, a word exhibited in @deva[प्रथमा] (nominative) is @deva[उपसर्जन] (the subordinate member). This is a @deva[संज्ञा] rule.
+
+**How it works:** In compound-formation rules, @deva[पाणिनि] states two words — one in @deva[प्रथमा] and one in another case. The one in @deva[प्रथमा] is @deva[उपसर्जन].
+
+**Example — @ref[2.1.24]:** @deva[द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः]
+- @deva[द्वितीया] is in @deva[प्रथमा] → the accusative word is @deva[उपसर्जन]
+- @deva[कष्टम्] + @deva[श्रितः] → @deva[कष्टश्रितः] — @deva[कष्ट] stands first
+
+**Other @deva[तत्पुरुष] examples:**
+- @deva[यूपदारु] "wood for a sacrificial post" (dative)
+- @deva[वृकभयम्] "fear of a wolf" (ablative)
+- @deva[राजपुरुषः] "king's man" (genitive)
+
+**Placement rule — @ref[2.2.30]:** @deva[उपसर्जनं पूर्वम्] — the @deva[उपसर्जन] stands first in the compound.
+
+**What @deva[उपसर्जन] means:** The member that loses its independent syntactic role and becomes subordinate to the principal member (@deva[प्रधान]).
+"""
+
+advanced = """
+@deva[प्रथमानिर्दिष्टं समास उपसर्जनम्] — in @deva[समास] rules, the word exhibited in @deva[प्रथमा] is @deva[उपसर्जन].
+
+**@deva[संज्ञा] rule:** Defines how to identify the subordinate member of a compound from the way @deva[पाणिनि] formulates his @deva[समास] rules.
+
+**Mechanism:** In @deva[समास] @deva[सूत्र]s, @deva[पाणिनि] typically mentions two items — one in @deva[प्रथमा] and one in another @deva[विभक्ति] (usually @deva[तृतीया] = instrumental). The item in @deva[प्रथमा] identifies which member is @deva[उपसर्जन].
+
+**Why it matters:**
+1. **Placement:** By @ref[2.2.30] (@deva[उपसर्जनं पूर्वम्]), @deva[उपसर्जन] comes first
+2. **Accent:** By @ref[6.2.139], in certain compounds the @deva[उपसर्जन] loses its accent
+3. **Vowel shortening:** @deva[उपसर्जन] status triggers shortening of final long vowels in some contexts (e.g., @deva[ई] → @deva[इ] in @deva[बहुव्रीहि])
+
+**Relation to @ref[1.2.44]:** The next rule defines another type of @deva[उपसर्जन] — a word with fixed case — which does not follow the "stands first" placement rule.
+
+**@deva[उपसर्जन] as a concept:** The term literally means "that which serves" — the component that gives up its syntactic independence to support the meaning of the principal (@deva[प्रधान]) member.
+"""

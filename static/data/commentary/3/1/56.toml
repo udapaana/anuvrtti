@@ -1,0 +1,39 @@
+id = "3.1.56"
+numericId = "31056"
+
+[en]
+simple = """
+This rule says that @deva[अङ्] replaces @deva[च्लि] after the roots @deva[सृ] (to go), @deva[शास्] (to order), and @deva[ऋ] (to go) in both @deva[परस्मैपद] and @deva[आत्मनेपद].
+
+Examples:
+- @deva[सृ]: @deva[असरत्] (he went)
+- @deva[शास्]: @deva[अशिषत्] (he ordered)
+- @deva[ऋ]: @deva[आरत्] (he went)
+
+This rule extends @deva[अङ्] to @deva[आत्मनेपद] as well. For example, by @ref[1.3.29], @deva[सृ] with @deva[सम्] takes @deva[आत्मनेपद]: @deva[समरन्त] (they went together).
+"""
+
+standard = """
+@deva[अङ्] substitutes for @deva[च्लि] after @deva[सृ] (to go), @deva[शास्] (to order), and @deva[ऋ] (to go) in both @deva[परस्मैपद] and @deva[आत्मनेपद].
+
+Examples:
+- @deva[सृ]: @deva[असरत्]
+- @deva[शास्]: @deva[अशिषत्]
+- @deva[ऋ]: @deva[आरत्]
+
+This separate rule extends @deva[अङ्] to @deva[आत्मनेपद], which @ref[3.1.55] did not cover. Example: @deva[सम्] + @deva[सृ] takes @deva[आत्मनेपद] by @ref[1.3.29], yielding @deva[समरन्त].
+
+The @deva[च] marker in the @[sūtra] draws @deva[परस्मैपद] @deva[अनुवृत्ति] from @ref[3.1.55] and extends it forward.
+"""
+
+advanced = """
+@deva[अङ्] applies after @deva[सृ], @deva[शास्], and @deva[ऋ] in both @deva[परस्मैपद] and @deva[आत्मनेपद लुङ्].
+
+Examples: @deva[असरत्], @deva[अशिषत्], @deva[आरत्].
+
+This rule is stated separately to extend @deva[अङ्] to @deva[आत्मनेपद], which @ref[3.1.55] restricted to @deva[परस्मैपद]. @deva[सृ] with @deva[सम्] takes @deva[आत्मनेपद] by @ref[1.3.29] @deva[समवप्रविभ्यः स्तुत्यर्थाच्छ्लाघहुङ्क्रियाऽचार्यकर्माद्यर्था उपसर्गात्करणे], yielding @deva[समरन्त].
+
+The @deva[च] particle draws @deva[परस्मैपद] @deva[अनुवृत्ति] from @ref[3.1.55], ensuring both voices are covered.
+
+@note[type=observation]: The explicit statement of both voices for these three roots reflects their frequent use in @deva[आत्मनेपद] contexts (especially @deva[सृ] with prefixes).
+"""

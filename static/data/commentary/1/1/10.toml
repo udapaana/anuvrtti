@@ -1,0 +1,35 @@
+id = "1.1.10"
+numericId = "11010"
+
+[en]
+simple = """
+A vowel and a consonant are never @deva[सवर्ण] (homogeneous) with each other, even if they come from the same place in the mouth. @deva[अ] and @deva[क] are both throat sounds, but they are fundamentally different — @deva[अ] is produced with an open vocal tract, @deva[क] with full contact. This rule makes that distinction explicit.
+
+Without this rule, sandhi rules that apply to "@deva[सवर्ण] sounds" might incorrectly merge vowels with consonants from the same place. The rule prevents that.
+
+**Example:** @deva[अ] (throat vowel) and @deva[क] (throat consonant) are not @deva[सवर्ण], despite both being @deva[कण्ठ्य] (guttural). So @ref[6.1.101] (@deva[सवर्ण]-merger) cannot merge @deva[अ] with @deva[क].
+"""
+
+standard = """
+This rule restricts @ref[1.1.9]: a vowel (@deva[अच्]) and a consonant (@deva[हल्]) are never @deva[सवर्ण].
+
+The particle @deva[तु] marks an exception. Even when a vowel and consonant share the same @deva[स्थान] (place), they differ in @deva[आभ्यन्तरप्रयत्न] (internal effort): vowels are @deva[विवृत] (open), stops are @deva[स्पृष्ट] (full contact), sibilants are @deva[ईषद्विवृत] (slightly open).
+
+**Pairs that share place but are not @deva[सवर्ण]:**
+- @deva[अ] and @deva[क] — both @deva[कण्ठ्य], but @deva[विवृत] vs. @deva[स्पृष्ट]
+- @deva[इ] and @deva[च] — both @deva[तालव्य], but @deva[विवृत] vs. @deva[स्पृष्ट]
+- @deva[उ] and @deva[प] — both @deva[ओष्ठ्य], but @deva[विवृत] vs. @deva[स्पृष्ट]
+- @deva[ऋ] and @deva[ट] — both @deva[मूर्धन्य], but @deva[विवृत] vs. @deva[स्पृष्ट]
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सवर्णम्] from @ref[1.1.9]. The @deva[तु] (but) signals an exception to the definition just given.
+
+@deva[नाजर्हल्सवर्णौ] — a vowel (@deva[अच्]) and consonant (@deva[हल्]) are not @deva[सवर्ण]. This might seem unnecessary since @ref[1.1.9] already requires matching @deva[प्रयत्न], and vowels (@deva[विवृत]) never match consonants (@deva[स्पृष्ट]). The rule exists to handle edge cases:
+
+**Why the explicit statement?** The @deva[शिक्षा] tradition sometimes classifies certain sounds ambiguously. @deva[ह] is @deva[ईषद्विवृत] (like sibilants) but voiced (like vowels). Without this rule, @deva[ह] and @deva[अ] (both @deva[कण्ठ्य]) might be argued as @deva[सवर्ण] if @deva[प्रयत्न] classification were disputed.
+
+**Consequence for @deva[प्रत्याहार]s:** In @deva[अच्] (all vowels) or @deva[अक्] (vowels + some consonants), the initial @deva[अ] does not represent consonants by @deva[सवर्ण] — it works through the @deva[प्रत्याहार] mechanism of @ref[1.1.71] and the @deva[माहेश्वरसूत्राणि], not through @deva[सवर्ण] inclusion.
+
+**Interaction with @ref[1.1.69]:** That rule says @deva[अणुदित्सवर्णस्य] — a sound in a @deva[सूत्र] denotes itself and its @deva[सवर्ण]s. Without @ref[1.1.10], @deva[अ] in a rule could potentially denote @deva[क], @deva[ख], etc. (same place). This rule prevents that interpretation.
+"""

@@ -1,0 +1,52 @@
+id = "2.1.30"
+numericId = "21030"
+
+[en]
+simple = """
+A word in the instrumental case (@deva[तृतीया]) **optionally** compounds with a quality-word (@deva[गुणवचन]) to form @deva[तत्पुरुष] — but only when the instrumental word is the **cause** of the quality.
+
+**Examples:**
+- @deva[शङ्कुलाखण्डः] "cut by nippers" — the nippers caused the cutting
+- @deva[किरिकाणः] "blinded by a boar" — the boar caused the blindness
+
+**No compound when not the cause:** @deva[अक्ष्णा काणः] "blind in one eye" — the eye did not cause the blindness, so no compound is formed.
+
+This rule also allows compounding with @deva[अर्थ] "wealth": @deva[धान्यार्थः] "wealth from grain."
+
+This is the **first @deva[तृतीया] @deva[तत्पुरुष] rule** — the @deva[द्वितीया] (accusative) section ended at @ref[2.1.29].
+"""
+
+standard = """
+@deva[तृतीयान्त] + @deva[गुणवचन] → @deva[विभाषा] @deva[तत्पुरुष], when the @deva[तृतीया] word is the cause of the quality. Also with @deva[अर्थ] — @deva[तृतीया कृतार्थेन गुणवचनेन].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[शङ्कुलाखण्डः] "cut by nippers"
+- @deva[किरिकाणः] "made one-eyed by a boar"
+- @deva[धान्यार्थः] "wealth acquired through grain"
+
+**Counter-example:** @deva[अक्ष्णा काणः] "blind in one eye" — the eye is not the cause of blindness, so the compound @deva[अक्षिकाणः] is blocked.
+
+**@deva[गुणवचन] defined:** Quality-words — adjectives expressing an inherent quality or state (@deva[खण्ड] "broken," @deva[काण] "one-eyed," etc.). Excluded: @deva[कृदन्त], @deva[तद्धितान्त], @deva[सङ्ख्या], @deva[सर्वनामन्], @deva[जातिवाचक], and @deva[समास] forms.
+
+**Transition to @deva[तृतीया]:** This rule begins the @deva[तृतीया] @deva[तत्पुरुष] section (@ref[2.1.30]–@ref[2.1.31]), following the @deva[द्वितीया] section (@ref[2.1.24]–@ref[2.1.29]).
+
+**Accent:** @ref[6.2.2] governs these compounds.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[तृतीया कृतार्थेन गुणवचनेन] — a @deva[तृतीयान्त] word optionally compounds with a @deva[गुणवचन] or @deva[अर्थ] as @deva[तत्पुरुष], when the @deva[तृतीया] expresses the instrumental cause of the quality.
+
+**Case transition:** @ref[2.1.24]–@ref[2.1.29] covered @deva[द्वितीया] first members. This rule introduces @deva[तृतीया] first members. The systematic progression through cases (@deva[द्वितीया] → @deva[तृतीया] → @deva[चतुर्थी] → ...) is a hallmark of the @deva[तत्पुरुष] section.
+
+**Causation condition:** The @deva[काशिका] specifies @deva[कृतार्थेन] — "by which the quality was produced." @deva[शङ्कुलाखण्डः]: the nippers caused the breaking. @deva[अक्ष्णा काणः]: the eye did not cause the one-eyedness — the @deva[तृतीया] here expresses the locus of the defect, not its cause. So no compound.
+
+**@deva[गुणवचन] scope:** The @deva[काशिका] defines @deva[गुणवचन] by exclusion: it is a quality-expressing word that is NOT a @deva[कृत्] derivative, @deva[तद्धित] derivative, @deva[सङ्ख्या], @deva[सर्वनामन्], @deva[जातिवाचक], or @deva[समास]. Words like @deva[खण्ड], @deva[काण], @deva[खञ्ज], @deva[वामन] are prototypical @deva[गुणवचन].
+
+**@deva[अर्थ] extension:** @deva[धान्यार्थः] "wealth from grain" — @deva[अर्थ] ("wealth, purpose") is separately authorized alongside @deva[गुणवचन]. The instrumental here expresses the means of acquiring wealth.
+
+**Contrast with @ref[2.1.31]:** The next rule (@ref[2.1.31]) extends @deva[तृतीया] @deva[तत्पुरुष] to @deva[कर्तृकरण] (agent/instrument) relations — a broader semantic domain than the quality-causation of this rule.
+"""

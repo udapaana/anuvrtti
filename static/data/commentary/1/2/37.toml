@@ -1,0 +1,45 @@
+id = "1.2.37"
+numericId = "12037"
+
+[en]
+simple = """
+In the @deva[सुब्रह्मण्य] hymns (special Vedic prayers used in ritual), two special rules apply:
+
+1. There is no @deva[एकश्रुति] (monotone) — accents must be used
+2. Vowels that would normally become @deva[स्वरित] (circumflex) instead become @deva[उदात्त] (high-pitched)
+
+The @deva[सुब्रह्मण्य] hymns are specific prayers from the @deva[ऋग्वेद], referenced in the @deva[शतपथब्राह्मण], used to invoke @deva[इन्द्र] during sacrifice.
+
+**Example:** @deva[सुब्रह्मण्योम् इन्द्रागच्छ हरिव आगच्छ] — the vowels that would normally glide down (@deva[स्वरित]) instead stay high (@deva[उदात्त]).
+"""
+
+standard = """
+In @deva[सुब्रह्मण्य] hymns, @deva[एकश्रुति] is prohibited and @deva[स्वरित] becomes @deva[उदात्त].
+
+**@deva[सुब्रह्मण्य]:** Specific Vedic prayers from the @deva[ऋग्वेद], cited in the @deva[शतपथब्राह्मण], used during @deva[सोम] sacrifice to invoke @deva[इन्द्र].
+
+**Two effects:**
+1. Exception to @ref[1.2.34]/@ref[1.2.36] — no monotone allowed
+2. @deva[स्वरित] → @deva[उदात्त] — syllables that would receive circumflex accent (e.g., by @ref[8.4.66], the syllable after @deva[उदात्त]) become high-pitched instead
+
+**Example:** @deva[सुब्रह्मण्योम् इन्द्रागच्छ हरिव आगच्छ]
+- @deva[सुब्रह्मण्य]: the @deva[य] would be @deva[स्वरित] by @ref[6.1.185] (affix @deva[यत्] has indicatory @deva[त्]) — here it becomes @deva[उदात्त]
+- @deva[इन्द्र]: @deva[इ] is @deva[उदात्त] (vocative by @ref[6.1.198]); @deva[द्र] would normally be @deva[स्वरित] by @ref[8.4.66] — here it becomes @deva[उदात्त]
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकश्रुति] from @ref[1.2.33].
+
+@deva[सुब्रह्मण्ये स्वरितोदात्तः] — in @deva[सुब्रह्मण्य] hymns, no @deva[एकश्रुति]; @deva[स्वरित] → @deva[उदात्त].
+
+**Two operations in one rule:**
+1. **@deva[एकश्रुति] prohibition:** This overrides both @ref[1.2.34] (sacrifice) and @ref[1.2.36] (Vedic recitation generally). The @deva[सुब्रह्मण्य] must always be recited with full accent.
+2. **@deva[स्वरित] → @deva[उदात्त]:** Every vowel that would receive @deva[स्वरित] by any rule instead takes @deva[उदात्त]. This creates an unusually accent-heavy recitation — multiple consecutive @deva[उदात्त] syllables.
+
+**Accent derivation for @deva[इन्द्रागच्छ]:**
+- @deva[इ] = @deva[उदात्त] by @ref[6.1.198] (@deva[आमन्त्रितस्य च])
+- @deva[न्द्रा] = normally @deva[अनुदात्त] → @deva[स्वरित] by @ref[8.4.66] → @deva[उदात्त] by this rule
+- Result: both syllables are @deva[उदात्त]
+
+**Context:** The @deva[सुब्रह्मण्य] is a liturgical invocation to @deva[इन्द्र], performed by the @deva[सुब्रह्मण्य] priest. The heightened accent pattern (@deva[उदात्त] replacing @deva[स्वरित]) gives the hymn a distinctive, elevated tonal quality appropriate to its ritual importance.
+"""

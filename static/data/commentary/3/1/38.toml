@@ -1,0 +1,40 @@
+id = "3.1.38"
+numericId = "31038"
+
+[en]
+simple = """
+This rule says that the affix @deva[आम्] is optionally added in the perfect tense (@deva[लिट्]) after three roots: @deva[उष्] (to burn), @deva[विद्] (to know), and @deva[जागृ] (to wake).
+
+Since @deva[आम्] is optional, these roots can form either the periphrastic perfect (with @deva[आम्]) or the regular reduplicated perfect.
+
+Examples:
+- @deva[उष्]: @deva[ओषाञ्चकार] (periphrastic) or @deva[उवोष] (regular)
+- @deva[विद्]: @deva[विदाञ्चकार] (periphrastic) or @deva[विवेद] (regular)
+- @deva[जागृ]: @deva[जागराञ्चकार] (periphrastic) or @deva[जजागार] (regular)
+
+Note: When @deva[विद्] takes @deva[आम्], it is treated as ending in short @deva[अ], so @deva[गुण] strengthening does not apply (which would otherwise occur by @ref[7.3.86]).
+"""
+
+standard = """
+The affix @deva[आम्] is optionally (@deva[विभाषा]) added before @deva[लिट्] after @deva[उष्] (to burn), @deva[विद्] (to know), and @deva[जागृ] (to wake). Both periphrastic and regular perfect forms are thus available.
+
+Examples:
+- @deva[उष्]: @deva[ओषाञ्चकार] / @deva[उवोष]
+- @deva[विद्]: @deva[विदाञ्चकार] / @deva[विवेद]
+- @deva[जागृ]: @deva[जागराञ्चकार] / @deva[जजागार]
+
+For @deva[विद्], when @deva[आम्] is used, the root is treated as @deva[अकारान्त] (ending in short @deva[अ]), blocking @deva[गुण] that would otherwise apply by @ref[7.3.86].
+"""
+
+advanced = """
+The affix @deva[आम्] is optionally applied before @deva[लिट्] after @deva[उष्], @deva[विद्], and @deva[जागृ].
+
+Alternate forms:
+- @deva[उष्]: @deva[ओषाञ्चकार] / @deva[उवोष]
+- @deva[विद्]: @deva[विदाञ्चकार] / @deva[विवेद]
+- @deva[जागृ]: @deva[जागराञ्चकार] / @deva[जजागार]
+
+@note[type=observation]: For @deva[विद्] with @deva[आम्], there is a convention (@deva[संप्रतिज्ञा]) to treat the root as @deva[अकारान्त], preventing @deva[गुण] substitution that @ref[7.3.86] @deva[पुगन्तलघूपधस्य च] would otherwise require.
+
+@note[type=observation]: The optionality here provides stylistic flexibility. The regular @deva[लिट्] forms (@deva[उवोष], @deva[विवेद], @deva[जजागार]) are more common in classical usage.
+"""

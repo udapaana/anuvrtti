@@ -1,0 +1,48 @@
+id = "2.3.46"
+numericId = "23046"
+
+[en]
+simple = """
+@deva[प्रथमा] (nominative, first case-ending) is used when the meaning to be expressed is one of four things: @deva[प्रातिपदिकार्थ] (the inherent meaning of a noun stem), @deva[लिङ्ग] (grammatical gender), @deva[परिमाण] (measure or quantity), or @deva[वचन] (grammatical number).
+
+**Examples:**
+- @deva[वृक्षः] "a tree" — the nominative expresses the bare meaning of the stem @deva[वृक्ष]
+- @deva[कुमारी] "a girl" — the feminine ending conveys gender
+- @deva[द्रोणः] "a @deva[द्रोण] (a unit of measure)" — the nominative expresses quantity
+- @deva[एकः] "one," @deva[द्वौ] "two," @deva[बहवः] "many" — singular, dual, and plural express number
+
+This is the default case. When no other @deva[कारक] (semantic role like agent, object, instrument, etc.) applies, and no other rule assigns a different case, the nominative is used to express the word's basic meaning along with its gender and number.
+"""
+
+standard = """
+@deva[प्रातिपदिकार्थलिङ्गपरिमाणवचनमात्रे प्रथमा] — @deva[प्रथमा] (nominative) is used when only @deva[प्रातिपदिकार्थ] (stem-meaning), @deva[लिङ्ग] (gender), @deva[परिमाण] (measure), or @deva[वचन] (number) is to be expressed.
+
+**Rule type — @deva[विधि]:** Core case-assignment for @deva[प्रथमा], the default case.
+
+**Key terms:**
+- **@deva[प्रातिपदिकार्थ]:** The inherent meaning of the nominal stem, per @ref[1.2.45] — @deva[अर्थवदधातुरप्रत्ययः प्रातिपदिकम्] (a meaningful element that is neither a root nor an affix).
+- **@deva[लिङ्ग]:** Grammatical gender — masculine, feminine, or neuter.
+- **@deva[परिमाण]:** Measure words — @deva[द्रोणः], @deva[खारी], @deva[आढकः].
+- **@deva[वचन]:** Grammatical number — @deva[एकवचन] (singular), @deva[द्विवचन] (dual), @deva[बहुवचन] (plural).
+
+**Examples:**
+- @deva[वृक्षः] — stem-meaning "tree" + masculine gender + singular number
+- @deva[कुमार्यौ] — stem-meaning "girl" + feminine gender + dual number
+- @deva[द्रोणः] — measure "a @deva[द्रोण]" + masculine + singular
+
+**@deva[मात्रे] — "only":** The nominative applies when nothing beyond these four categories is expressed — no @deva[कारक] relation (agent, object, etc.) and no other semantic function that would trigger a different case.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1] does NOT carry here — @deva[प्रथमा] applies regardless of whether the sense is expressed by the verb ending.
+
+@deva[प्रातिपदिकार्थलिङ्गपरिमाणवचनमात्रे प्रथमा] — @deva[प्रथमा] is assigned when only stem-meaning, gender, measure, or number is expressed.
+
+**Departure from @deva[अनभिहित] domain:** This rule and the following @deva[प्रथमा] rules (@ref[2.3.47]–@ref[2.3.49]) break from the @deva[अनभिहिते] @deva[अधिकार] of @ref[2.3.1]. The nominative applies whether or not the verb ending expresses the same meaning. This is why @deva[प्रथमा] appears in both active and passive: @deva[देवदत्तः पचति] and @deva[ओदनः पच्यते] — the agent and patient both take @deva[प्रथमा] when they are the syntactic subject.
+
+**@deva[मात्रे] — exclusion condition:** The word @deva[मात्र] restricts @deva[प्रथमा] to cases where no @deva[कारक] relation or other semantic function triggers a different case. When the word bears a @deva[कारक] role (agent, object, etc.), the relevant @deva[विभक्ति] from @ref[2.3.1]ff. takes precedence.
+
+**@deva[प्रातिपदिक] definition:** @ref[1.2.45] — @deva[अर्थवदधातुरप्रत्ययः प्रातिपदिकम्]. Also, @deva[कृत्तद्धितसमासाश्च] (@ref[1.2.46]) — @deva[कृत्], @deva[तद्धित], and @deva[समास] forms are @deva[प्रातिपदिक].
+
+**Cross-references:** @ref[1.2.45]–@ref[1.2.46] (@deva[प्रातिपदिक] definitions), @ref[2.3.47] (@deva[प्रथमा] for @deva[सम्बोधन]), @ref[2.3.1] (@deva[अनभिहिते] @deva[अधिकार]).
+"""

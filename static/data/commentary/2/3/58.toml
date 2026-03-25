@@ -1,0 +1,47 @@
+id = "2.3.58"
+numericId = "23058"
+
+[en]
+simple = """
+When the verb @deva[दिव्] (to play, gamble, or deal) is used in the same transactional sense as @deva[व्यवहृ] and @deva[पण्] in the preceding rule — meaning "to stake" or "to deal in" — the object takes the genitive case (@deva[षष्ठी]).
+
+**Example:**
+- @deva[शतस्य दीव्यति] — "he stakes a hundred" or "he deals in a hundred"
+
+**When the rule does NOT apply:**
+- @deva[ब्राह्मणं दीव्यति] — "he plays with / jokes with the @deva[ब्राह्मण]" — here @deva[दिव्] means "to play/joke," not "to stake," so the regular accusative is used
+
+This rule exists as a separate @[sūtra] from @ref[2.3.57] so that @deva[दिव्] can carry forward into the next two rules, which modify its behavior.
+"""
+
+standard = """
+@deva[दिवस्तदर्थस्य] — "of @deva[दिव्] when having that [same transactional] meaning, [@deva[षष्ठी] is used in the @deva[कर्मन्]]."
+
+**Rule type — @deva[विधि]:** Assigns @deva[षष्ठी] to the object of @deva[दिव्] in the @deva[द्यूत] / @deva[क्रयविक्रय] sense.
+
+**Key term — @deva[तदर्थस्य]:** "Having that meaning" — referring back to the transactional sense of @ref[2.3.57] (@deva[व्यवहृपणोः समर्थयोः]). The genitive applies only when @deva[दिव्] means "to stake" or "to deal," not when it means "to play," "to shine," "to joke," etc.
+
+**Example:**
+- @deva[शतस्य दीव्यति] — "he stakes a hundred"
+
+**Counterexample:**
+- @deva[ब्राह्मणं दीव्यति] — "he plays/jokes with the @deva[ब्राह्मण]" — not the staking sense, so @deva[द्वितीया]
+
+**Why a separate @[sūtra]?** This is a @deva[योगविभाग] — @deva[दिव्] is stated separately from @ref[2.3.57] so that it can carry forward by @deva[अनुवृत्ति] into @ref[2.3.59] (optional genitive with preverb) and @ref[2.3.60] (accusative in @deva[ब्राह्मण] literature). If @deva[दिव्] had been included in @ref[2.3.57], it could not have been singled out for modification.
+"""
+
+advanced = """
+@deva[दिवस्तदर्थस्य] — @deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.3.50], @deva[शेषे] from @ref[2.3.50], @deva[कर्मणि] from @ref[2.3.52]. Additionally, @deva[व्यवहृपणोः] from @ref[2.3.57] supplies the semantic reference for @deva[तदर्थस्य].
+
+**@deva[योगविभाग] analysis:** The key design decision here is separation. @deva[दिव्] could have been listed alongside @deva[व्यवहृ] and @deva[पण्] in @ref[2.3.57], creating a single three-verb rule. Instead, @[pāṇini] splits it off so that:
+- @ref[2.3.59] can introduce optionality for @deva[उपसर्ग] + @deva[दिव्]
+- @ref[2.3.60] can override with @deva[द्वितीया] in @deva[ब्राह्मण] literature
+
+Both subsequent rules need @deva[दिव्] in @deva[अनुवृत्ति], which is only possible if @deva[दिव्] appears in its own @[sūtra].
+
+**@deva[तदर्थस्य] as back-reference:** The pronoun @deva[तद्] refers to the meaning established by @deva[समर्थयोः] in @ref[2.3.57] — the shared transactional sense of buying/selling/gambling. This back-reference technique (@deva[प्रत्यवमर्श]) is common in the @[aṣṭādhyāyī] for extending conditions across @[sūtras] without restating them.
+
+**Senses of @deva[दिव्]:** The @deva[दिवादि] root @deva[दिवु] has multiple senses: @deva[क्रीडा] (play), @deva[विजिगीषा] (desire to win), @deva[व्यवहार] (dealing), @deva[द्युति] (shining), @deva[स्तुति] (praise), @deva[मोद] (delight), @deva[मद] (intoxication), @deva[स्वप्न] (sleep), @deva[कान्ति] (beauty), @deva[गति] (motion). Only the @deva[व्यवहार] / @deva[विजिगीषा] senses qualify here.
+
+**Cross-reference:** This rule feeds @ref[2.3.59] and @ref[2.3.60], which modify the case-assignment for @deva[दिव्] based on the presence of a preverb and the literary register respectively.
+"""

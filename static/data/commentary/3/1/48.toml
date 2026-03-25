@@ -1,0 +1,61 @@
+id = "3.1.48"
+numericId = "31048"
+
+[en]
+simple = """
+This rule says that @deva[चङ्] replaces @deva[च्लि] in the aorist when the agent is signified, after:
+1. Roots ending in @deva[णि] (causative affix from @ref[3.1.20] and @ref[3.1.21])
+2. The roots @deva[श्रि] (to serve), @deva[द्रु] (to run), and @deva[स्रु] (to flow)
+
+This creates the reduplicated aorist. When @deva[चङ्] is added, the root is reduplicated (by @ref[6.1.11]), and the imperfect endings are used.
+
+The @deva[ङ्] in @deva[चङ्] prevents @deva[गुण] and @deva[वृद्धि] strengthening. The @deva[च्] distinguishes it from @deva[अङ्].
+
+Examples:
+- Causative of @deva[कृ]: @deva[अचीकरत्] (he caused to make)
+- @deva[श्रि]: @deva[अशिश्रियत्] (he served)
+- @deva[द्रु]: @deva[अदुद्रुवत्] (he ran)
+- @deva[स्रु]: @deva[असुस्रुवत्] (it flowed)
+
+Note: @deva[चङ्] is not used in the passive. The passive aorist uses @deva[सिच्]: @deva[अकारयिषाताम्].
+
+The root @deva[कम्] (to love) is also included: @deva[अचकमत्] (he loved), or @deva[अचीकमत्] when @deva[कम्] takes @deva[णिङ्].
+"""
+
+standard = """
+@deva[चङ्] substitutes for @deva[च्लि] when the agent (@deva[कर्तरि]) is signified, after:
+1. @deva[णि]-final roots (causatives per @ref[3.1.20]-@ref[3.1.21])
+2. @deva[श्रि], @deva[द्रु], @deva[स्रु]
+
+This forms the reduplicated aorist. @deva[चङ्] triggers reduplication by @ref[6.1.11], and imperfect (@deva[लङ्]-like) endings are used.
+
+The @deva[ङ्] is @deva[इत्], blocking @deva[गुण]/@deva[वृद्धि] by @ref[1.1.5]. The @deva[च्] differentiates @deva[चङ्] from @deva[अङ्].
+
+Examples:
+- @deva[कृ] + @deva[णि]: @deva[अचीकरत्] (he caused to make)
+- @deva[श्रि]: @deva[अशिश्रियत्]
+- @deva[द्रु]: @deva[अदुद्रुवत्]
+- @deva[स्रु]: @deva[असुस्रुवत्]
+
+Passive uses @deva[सिच्]: @deva[अकारयिषाताम्] (not @deva[चङ्]).
+
+@note[type=@[vārtika]]: @deva[कम्] (to love) is included even without @deva[णिङ्]: @deva[अचकमत्]. With @deva[णिङ्] (per @ref[3.1.30]): @deva[अचीकमत्] (by @ref[7.4.93], @ref[7.4.94]).
+"""
+
+advanced = """
+@deva[चङ्] is the @deva[आदेश] for @deva[च्लि] after @deva[णि]-final stems (causatives) and the roots @deva[श्रि], @deva[द्रु], @deva[स्रु], when @deva[कर्तरि] (active voice) is intended.
+
+@deva[इत्]-analysis: @deva[ङ्] is @deva[इत्], triggering @ref[1.1.5] @deva[क्ङिति च] (blocking @deva[गुण]/@deva[वृद्धि]). The @deva[च्] is @deva[इत्] for accent (@ref[6.1.162]) and serves to distinguish @deva[चङ्] from @deva[अङ्].
+
+Reduplication occurs by @ref[6.1.11] @deva[चङि]. The endings are @deva[लङ्]-like (imperfect terminations).
+
+Examples:
+- @deva[कृ] + @deva[णि] + @deva[चङ्]: @deva[अचीकरत्]
+- @deva[श्रि] + @deva[चङ्]: @deva[अशिश्रियत्]
+- @deva[द्रु] + @deva[चङ्]: @deva[अदुद्रुवत्]
+- @deva[स्रु] + @deva[चङ्]: @deva[असुस्रुवत्]
+
+Passive (@deva[कर्मणि]) takes @deva[सिच्]: @deva[अकारयिषाताम्].
+
+@note[type=@[vārtika]]: @deva[कमेश्च] — @deva[कम्] is included even when not @deva[णि]-final: @deva[अचकमत्]. When @deva[कम्] takes @deva[णिङ्] by @ref[3.1.30], the aorist is @deva[अचीकमत्] (reduplication rules @ref[7.4.93], @ref[7.4.79], @ref[7.4.94] apply).
+"""

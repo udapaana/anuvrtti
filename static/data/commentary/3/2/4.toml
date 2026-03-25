@@ -1,0 +1,49 @@
+id = "3.2.4"
+numericId = "32004"
+
+[en]
+simple = """
+The affix @deva[क] is used after @deva[स्था] 'to stand' when any case-inflected word (@deva[सुप्]) is in composition — not just the accusative.
+
+**Examples:**
+- @deva[समे तिष्ठति] = @deva[समस्थः] 'standing in accessible position'
+- @deva[विषमे तिष्ठति] = @deva[विषमस्थः] 'standing in inaccessible position'
+- @deva[द्वाभ्यां पिबति] = @deva[द्विपः] 'elephant' (drinks with two organs)
+- @deva[पादेन पिबति] = @deva[पादपः] 'plant' (drinks through the foot)
+"""
+
+standard = """
+The affix @deva[क] comes after @deva[स्था] when in composition with a word ending in any case-affix (@deva[सुप्]).
+
+This extends the scope from accusative-only (@deva[कर्मणि]) to any case.
+
+| Sentence | Compound | Meaning |
+|----------|----------|--------|
+| @deva[समे तिष्ठति] | @deva[समस्थः] | standing in accessible position |
+| @deva[विषमे तिष्ठति] | @deva[विषमस्थः] | having inaccessible position |
+
+**@deva[योगविभाग] (rule-splitting):** This @[sūtra] is divided into two parts:
+1. **@deva[सुपि]:** @deva[क] after any @deva[आ]-final root with a case-inflected word — for agent nouns: @deva[द्विपः] 'elephant', @deva[पादपः] 'plant', @deva[कच्छपः] 'tortoise'
+2. **@deva[सुपि स्थः]:** @deva[क] after @deva[स्था] — for condition nouns: @deva[आखूत्थः] 'swarm of rats', @deva[शलभोत्थः] 'swarm of locusts'
+"""
+
+advanced = """
+The affix @deva[क] comes after the root @deva[स्था] when in composition with a word ending in a case-affix (@deva[सुप्]).
+
+In the previous @[sūtras], the word in composition was always in the accusative case. This @[sūtra] declares that with @deva[स्था], the @deva[उपपद] may have any case, not necessarily the accusative.
+
+**Examples:** @deva[समस्थः] = @deva[समे तिष्ठति] 'who dwells in accessible position'; @deva[विषमस्थः] 'having inaccessible position'.
+
+**@deva[योगविभाग]:** This @[sūtra] should be divided into two:
+
+1. **@deva[सुपि]:** The affix @deva[क] comes after every root ending in long @deva[आ], when in composition with a case-inflected word:
+   - @deva[द्वाभ्यां पिबति] = @deva[द्विपः] (by @ref[6.4.64]) 'who drinks with two organs' (an elephant)
+   - @deva[पादपः] 'a plant' (drinks through the foot)
+   - @deva[कच्छपः] 'a tortoise' (protects its mouth)
+
+2. **@deva[सुपि स्थः]:** The affix @deva[क] comes after @deva[स्था] when in composition with a case-inflected word. The first rule applies where the agent is indicated; the second where condition is denoted:
+   - @deva[आखूनामुत्थानम्] = @deva[आखूत्थः] 'a swarm of rats'
+   - @deva[शलभोत्थः] 'a swarm of locusts'
+
+**Note:** Both @deva[कर्मणि] and @deva[सुपि] are understood in the following @[sūtras]: @deva[कर्मणि] for transitive verbs, @deva[सुपि] elsewhere.
+"""

@@ -1,0 +1,49 @@
+id = "1.3.19"
+numericId = "13019"
+
+[en]
+simple = """
+The verb @deva[जि] "to conquer" takes @deva[आत्मनेपद] when preceded by @deva[वि] or @deva[परा].
+
+**Examples:**
+- @deva[विजयते] "he conquers, is victorious"
+- @deva[पराजयते] "he defeats"
+
+Without these prefixes, @deva[जि] takes @deva[परस्मैपद]: @deva[जयति] "he wins."
+
+**Must be @deva[उपसर्ग]:**
+- @deva[बहुविजयति वनम्] — @deva[वि] is part of the noun @deva[बहुवि], not a prefix → @deva[परस्मैपद]
+- @deva[पराजयति सेना] — @deva[परा] is used as a noun → @deva[परस्मैपद]
+"""
+
+standard = """
+After @deva[वि]/@deva[परा] + @deva[जि] "to conquer," @deva[आत्मनेपद] is used.
+
+**Examples:**
+- @deva[विजयते] "he is victorious"
+- @deva[पराजयते] "he defeats"
+
+**Default:** @deva[जि] is a @deva[परस्मैपदिन्] root: @deva[जयति]. The prefixes @deva[वि] and @deva[परा] override this.
+
+**@deva[उपसर्ग] requirement:**
+- @deva[बहुविजयति वनम्] — @deva[वि] is part of compound noun → @deva[परस्मैपद]
+- @deva[पराजयति सेना] — @deva[परा] used as noun → @deva[परस्मैपद]
+
+**Semantic motivation:** @deva[विजयते] "he conquers (for himself)" — victory inherently benefits the agent. @deva[पराजयते] "he defeats (achieving mastery)" — similarly self-directed. The @deva[आत्मनेपद] reflects the self-benefiting nature of these compound verbs.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[विपराभ्यां जेः] — after @deva[वि]/@deva[परा] + @deva[जि], @deva[आत्मनेपद].
+
+**Root classification:** @deva[जि] is @deva[परस्मैपदिन्] (not @deva[अनुदात्तेत्] or @deva[ङित्]). This rule creates a prefix-conditioned override.
+
+**Comparison with @ref[1.3.18]:** @deva[क्री] was already @deva[ञित्] (@deva[उभयपदिन्]); @ref[1.3.18] simply removed the @deva[स्वार्थ] condition. Here, @deva[जि] is inherently @deva[परस्मैपदिन्], so the override is stronger — the prefix changes the root's @deva[पद] entirely.
+
+**@deva[विजयते] in literature:** This form is extremely common in epic and classical literature (@deva[विजयते] as a benediction). The rule codifies well-established usage.
+
+**@deva[उपसर्ग] condition:** As with @ref[1.3.17]–@ref[1.3.18], the prefix must function as an @deva[उपसर्ग], not as part of a compound noun.
+
+**Position:** Part of the @deva[उपसर्ग]-specific @deva[आत्मनेपद] section (@ref[1.3.17]–@ref[1.3.21]).
+"""

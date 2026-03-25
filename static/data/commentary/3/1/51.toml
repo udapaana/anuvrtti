@@ -1,0 +1,46 @@
+id = "3.1.51"
+numericId = "31051"
+
+[en]
+simple = """
+This rule blocks @deva[चङ्] from replacing @deva[च्लि] (the aorist marker) after the causative forms of four specific roots in Vedic Sanskrit: @deva[ऊण्] (to decrease), @deva[ध्वन्] (to sound), @deva[इल्] (to send), and @deva[अर्द्] (to go, to beg).
+
+In classical Sanskrit, causative verbs form their aorist with @deva[चङ्] (the reduplicated aorist). But in Vedic texts, these four causatives instead use @deva[सिच्] (the sigmatic aorist), producing forms like:
+- @deva[ऊनयीः] (he caused to decrease), instead of classical @deva[औनिनत्]
+- @deva[ध्वनयीत्] (he caused to sound), instead of classical @deva[अदिध्वनत्]
+
+This rule matters because it preserves archaic Vedic forms that differ from the standard causative aorist pattern established by @ref[3.1.48].
+"""
+
+standard = """
+This is a @deva[प्रतिषेध] (prohibition) rule. It blocks @deva[चङ्] after the @deva[णिजन्त] (causative) forms of @deva[ऊण्], @deva[ध्वन्], @deva[इल्], and @deva[अर्द्] in Vedic usage (@deva[छन्दसि]).
+
+Without this prohibition, @ref[3.1.48] would assign @deva[चङ्] to all causatives in the aorist. This rule creates an exception: in Vedic, these four causatives take @deva[सिच्] instead.
+
+Vedic forms (with @deva[सिच्]):
+- @deva[ऊनयीः] (from @deva[ऊण्] causative)
+- @deva[ध्वनयीत्] (from @deva[ध्वन्] causative)
+- @deva[ऐलयीः] (from @deva[इल्] causative)
+- @deva[अर्दयीत्] (from @deva[अर्द्] causative)
+
+Classical forms (with @deva[चङ्]):
+- @deva[औनिनत्]
+- @deva[अदिध्वनत्]
+- @deva[ऐलिलत्]
+- @deva[आर्दिदत्]
+
+Vedic attestations include passages from the Rig Veda (1.53.3, 1.162.15).
+"""
+
+advanced = """
+This @deva[प्रतिषेधसूत्र] blocks the @deva[चङ्]-substitution for @deva[च्लि] after @deva[णिजन्त] forms of @deva[ऊण्], @deva[ध्वन्], @deva[इल्], and @deva[अर्द्] in @deva[छन्दसि]. The @deva[अनुवृत्ति] of @deva[च्लेः] and @deva[चङ्] carries from @ref[3.1.48].
+
+In Vedic, these causatives retain the @deva[सिच्]-aorist (the default from @ref[3.1.44]), while in classical Sanskrit they follow the general @deva[णिजन्त] pattern of @ref[3.1.48] and take @deva[चङ्].
+
+Vedic (@deva[सिच्]): @deva[ऊनयीः], @deva[ध्वनयीत्], @deva[ऐलयीः], @deva[अर्दयीत्].
+Classical (@deva[चङ्]): @deva[औनिनत्], @deva[अदिध्वनत्], @deva[ऐलिलत्], @deva[आर्दिदत्].
+
+Vedic attestations: RV 1.53.3, RV 1.162.15.
+
+The prohibition creates an inversion of the normal pattern: in Vedic, these causatives use the non-reduplicated @deva[सिच्]-aorist; in classical Sanskrit, they use the reduplicated @deva[चङ्]-aorist per @ref[3.1.48]. See @ref[7.2.5] for related @deva[इट्]-insertion behavior with these roots.
+"""

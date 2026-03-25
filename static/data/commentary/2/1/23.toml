@@ -1,0 +1,48 @@
+id = "2.1.23"
+numericId = "21023"
+
+[en]
+simple = """
+A @deva[द्विगु] (numeral compound like @deva[पञ्चगवम्] "five cows") is also classified as @deva[तत्पुरुष].
+
+Why does this matter? Certain affixes called @deva[समासान्त] "compound-final affixes" (taught at @ref[5.4.68]–@ref[5.4.160]) apply specifically to @deva[तत्पुरुष] compounds. By classifying @deva[द्विगु] as @deva[तत्पुरुष], these affixes can apply to numeral compounds too.
+
+**Examples:**
+- @deva[पञ्चराज्ञम्] "aggregate of five kings" — receives the @deva[अच्] @deva[समासान्त] affix by @ref[5.4.91]
+- @deva[पञ्चगवम्] "five-cow group" — receives affix by @ref[5.4.92]
+- @deva[द्व्यहः] "two-day period" — receives affix by @ref[5.4.89]
+
+Without this rule, @deva[द्विगु] would not get these affixes since they target @deva[तत्पुरुष].
+"""
+
+standard = """
+@deva[द्विगु] is also @deva[तत्पुरुष] — @deva[द्विगुश्च].
+
+**Rule type — @deva[संज्ञा]:** Classifies @deva[द्विगु] as a subtype of @deva[तत्पुरुष].
+
+**Purpose:** @deva[समासान्त] affixes (@ref[5.4.68]–@ref[5.4.160]) are specified for @deva[तत्पुरुष]. Without this rule, @deva[द्विगु] (defined separately at @ref[2.1.52]) would not receive them.
+
+**Examples with @deva[समासान्त]:**
+- @deva[पञ्चराज्ञम्] — @deva[अच्] affix by @ref[5.4.91]; feminine @deva[पञ्चराज्ञी] by @ref[4.1.15]/@ref[4.1.21]
+- @deva[द्व्यहः] — affix by @ref[5.4.89]
+- @deva[पञ्चगवम्], @deva[दशगवम्] — affix by @ref[5.4.92]
+
+**@deva[द्विगु] defined at @ref[2.1.52]:** That rule creates the @deva[द्विगु] @deva[संज्ञा] for numeral-first @deva[तत्पुरुष] compounds in the @deva[समाहार] (collective) sense. This rule ensures those compounds also carry the parent @deva[तत्पुरुष] designation.
+
+**Subset relationship:** @deva[द्विगु] ⊂ @deva[तत्पुरुष] — every @deva[द्विगु] is a @deva[तत्पुरुष], but not every @deva[तत्पुरुष] is @deva[द्विगु].
+"""
+
+advanced = """
+@deva[द्विगुश्च] — @deva[द्विगु] is also @deva[तत्पुरुष].
+
+**@deva[अनुवृत्ति]:** @deva[तत्पुरुषः] from @ref[2.1.22].
+
+**Operational necessity:** The primary purpose is to extend @deva[समासान्त] affixes to @deva[द्विगु]. @ref[5.4.68] ff. specify @deva[तत्पुरुषे] as the domain for these affixes. Without this rule:
+- @deva[पञ्चराज्ञम्] would not get @deva[अच्] by @ref[5.4.91]
+- @deva[द्व्यहः] would not get the affix by @ref[5.4.89]
+- @deva[पञ्चगवम्] would not get the affix by @ref[5.4.92]
+
+**@ref[2.1.52] vs this rule:** @ref[2.1.52] defines @deva[द्विगु] as a @deva[संज्ञा] for @deva[सङ्ख्यापूर्वो द्विगुः] (numeral-first compounds in @deva[समाहार]). This rule (@ref[2.1.23]) then classifies that @deva[द्विगु] as @deva[तत्पुरुष], creating a dual designation: the compound is simultaneously @deva[द्विगु] and @deva[तत्पुरुष].
+
+**No @deva[एकासंज्ञा] conflict:** @ref[1.4.1] (@deva[एकासंज्ञा]) blocks multiple designations only within @ref[1.4.1]–@ref[1.4.97]. @deva[द्विगु] and @deva[तत्पुरुष] are defined in @deva[अध्याय] 2, so both designations can coexist.
+"""

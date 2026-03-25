@@ -1,0 +1,43 @@
+id = "2.2.8"
+numericId = "22008"
+
+[en]
+simple = """
+A word in the genitive case (@deva[षष्ठी]) compounds with another case-inflected word to form @deva[तत्पुरुष]. This is the general rule for genitive compounds — the most common type of @deva[तत्पुरुष] in Sanskrit.
+
+**Examples:**
+- @deva[राजपुरुषः] "the king's man" — from @deva[राज्ञः पुरुषः]
+- @deva[ब्राह्मणकम्बलः] "the Brahmin's blanket" — from @deva[ब्राह्मणस्य कम्बलः]
+
+The genitive relationship can express possession, belonging, origin, or any of the many senses conveyed by "of" in English.
+"""
+
+standard = """
+@deva[षष्ठ्यन्त] + @deva[सुबन्त] → @deva[तत्पुरुष] — @deva[षष्ठी].
+
+**Rule type — @deva[विधि]:** The general @deva[षष्ठीतत्पुरुष] compounding rule.
+
+**Examples:**
+- @deva[राजपुरुषः] "the king's man" — @deva[राज्ञः पुरुषः]
+- @deva[ब्राह्मणकम्बलः] "the Brahmin's blanket" — @deva[ब्राह्मणस्य कम्बलः]
+
+**Scope:** This rule covers any genitive-case relationship not blocked by @ref[2.2.10]–@ref[2.2.15] (which list specific prohibitions). It is the broadest @deva[तत्पुरुष] rule in @[pāda] 2.2.
+
+**@deva[वार्त्तिक]:** When a @deva[षष्ठी] is governed by a @deva[कृदन्त] word (per @ref[2.3.65]), the compound is also valid: @deva[इध्मप्रवश्चनः] "fuel-cutter," @deva[पलाशशातनः] "leaf-destroyer."
+
+**Ordering:** The genitive-case word (the "possessor") becomes the first member, and the head noun becomes the second member. Earlier rules (@ref[2.2.1]–@ref[2.2.5]) override this order for specific first members.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[षष्ठी] — a @deva[षष्ठ्यन्त] word compounds with a @deva[सुबन्त] word as @deva[षष्ठीतत्पुरुष].
+
+**Central rule of @[pāda] 2.2:** This is the anchor for the genitive compound section. Rules @ref[2.2.1]–@ref[2.2.5] specified ordering overrides (certain words must be first despite the default @deva[षष्ठी] order). Rules @ref[2.2.10]–@ref[2.2.15] specify prohibitions — cases where the genitive compound is blocked.
+
+**@deva[वार्त्तिक] — @deva[कृदन्त]-governed @deva[षष्ठी]:** @ref[2.3.65] assigns @deva[षष्ठी] when the genitive is governed by a @deva[कृत्]-derived word (agent/action noun). The @deva[वार्त्तिक] confirms these can compound: @deva[इध्मप्रवश्चनः] "fuel-cutter" (@deva[इध्मानां प्रवश्चनः]), @deva[पलाशशातनः] "leaf-destroyer."
+
+**@deva[प्रतिपदविधान]-@deva[षष्ठी] restriction:** A genitive ordained by rules other than @ref[2.3.50] (the general @deva[षष्ठी] rule @deva[शेषे]) — such as @ref[2.3.38], @ref[2.3.51], @ref[2.3.52] — cannot compound. This restriction comes from a @deva[वार्त्तिक] under @ref[2.2.10]. Example: @deva[सर्पिषो ज्ञानम्] "knowledge of ghee" (genitive by a specific rule) does not compound.
+
+**Overridden by @ref[2.2.1]–@ref[2.2.5]:** Those rules placed specific words (@deva[पूर्व], @deva[अर्ध], ordinals, @deva[प्राप्त]/@deva[आपन्न], time-measures) as the first member, overriding the default @deva[षष्ठी] order where the genitive-word is first.
+"""

@@ -1,0 +1,47 @@
+id = "1.2.68"
+numericId = "12068"
+
+[en]
+simple = """
+When "brother" (@deva[भ्रातृ]) and "sister" (@deva[स्वसृ]) appear together, the masculine @deva[भ्रातृ] is retained: @deva[भ्रातरौ] means "brother and sister." Similarly, when "son" (@deva[पुत्र]) and "daughter" (@deva[दुहितृ]) appear together, @deva[पुत्र] is retained: @deva[पुत्रौ] means "son and daughter."
+
+**Why a special rule?** The stems @deva[भ्रातृ] and @deva[स्वसृ] are entirely different words — they do not share a base. The general rule (@ref[1.2.67]) only works when masculine and feminine share the same stem (like @deva[ब्राह्मणः]/@deva[ब्राह्मणी]). So these kinship pairs need their own rule.
+
+**Legal usage:** In the @deva[याज्ञवल्क्यस्मृति], @deva[भ्रातरः] in inheritance contexts means "brothers and sisters together."
+"""
+
+standard = """
+This rule names two specific kinship pairs for @deva[एकशेष]: @deva[भ्रातृ] is retained over @deva[स्वसृ], and @deva[पुत्र] over @deva[दुहितृ].
+
+**Examples:**
+- @deva[भ्रातृ] + @deva[स्वसृ] → @deva[भ्रातरौ] "brother and sister"
+- @deva[पुत्र] + @deva[दुहितृ] → @deva[पुत्रौ] "son and daughter"
+- @deva[भ्रातृ] + @deva[भ्रातृ] + @deva[स्वसृ] → @deva[भ्रातरः] "brothers and sister(s)"
+
+**Why needed:** @ref[1.2.67] requires shared stems. @deva[भ्रातृ] and @deva[स्वसृ] have entirely different stems, so the general rule cannot apply. This rule explicitly lists the pairs.
+
+**Legal significance:** The @deva[याज्ञवल्क्यस्मृति] uses @deva[भ्रातरः] in inheritance rules to mean "brothers and sisters" — demonstrating that @deva[एकशेष] is not merely a grammatical convenience but affects legal interpretation.
+
+**Contrast with @ref[1.2.70]:** @deva[पितृ]/@deva[मातृ] is optional @deva[एकशेष]; @deva[भ्रातृ]/@deva[स्वसृ] and @deva[पुत्र]/@deva[दुहितृ] here are obligatory.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकशेष] from @ref[1.2.64].
+
+@deva[भ्रातरश्च ज्यायसः] / @deva[पुत्रश्च दुहितृभ्यः] — @deva[भ्रातृ] is retained over @deva[स्वसृ], @deva[पुत्र] over @deva[दुहितृ].
+
+**Named-pair @deva[एकशेष]:** Unlike @ref[1.2.67] (same-stem gender retention) or @ref[1.2.64] (identical forms), this rule operates on specific lexical pairs with different stems. The masculine kinship term subsumes the feminine.
+
+**Why not @ref[1.2.67]?** @deva[भ्रातृ] and @deva[स्वसृ] do not share a @deva[प्रातिपदिक] — they are suppletive pairs (like English "brother"/"sister"). @ref[1.2.67] requires the words to differ only in @deva[स्त्रीप्रत्यय], which is not the case here.
+
+**@deva[ज्यायस्] ("elder"):** The @deva[सूत्र] uses @deva[ज्यायस्] to indicate that when age differs, the elder @deva[भ्रातृ] is retained. This has implications for the @deva[वचन] of the result.
+
+**Legal application:** In @deva[धर्मशास्त्र], @deva[भ्रातरः] (plural) can denote "brothers and sisters" collectively. This @deva[एकशेष] is the grammatical basis for that legal interpretation — the feminine @deva[स्वसृ] is subsumed under the masculine @deva[भ्रातृ].
+
+**Position in @deva[एकशेष] hierarchy:**
+- @ref[1.2.64]: identical forms (general)
+- @ref[1.2.65]: @deva[गोत्र] over @deva[युवन्] (same base, different affix)
+- @ref[1.2.66]: feminine @deva[गोत्र] + @deva[युवन्] (gender mismatch)
+- @ref[1.2.67]: masculine over feminine (same stem)
+- @ref[1.2.68] (this): specific kinship pairs (different stems)
+"""

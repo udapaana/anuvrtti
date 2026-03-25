@@ -1,0 +1,47 @@
+id = "1.1.46"
+numericId = "11046"
+
+[en]
+simple = """
+This rule governs where augments (@deva[आगम]s — extra sounds inserted during word formation) are placed. An augment marked with @deva[ट्] is placed before the element it augments. An augment marked with @deva[क्] is placed after it.
+
+**Before (@deva[टित्]):** The augment @deva[इट्] (a short @deva[इ]) is inserted before certain affixes. @deva[भू] "to be" + future affix → @deva[भू] + @deva[इट्] + @deva[स्यति] → @deva[भविष्यति] "he will be." The @deva[इ] goes before the affix because @deva[इट्] is marked with @deva[ट्].
+
+**After (@deva[कित्]):** The Vedic augment @deva[तुक्] is placed after the element. @deva[कुर्व] + @deva[तुक्] → @deva[कुर्वतुक्कः] "the performer."
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] governs augment placement: @deva[आगम]s marked with @deva[ट्] (@deva[टित्]) are prefixed to their host; those marked with @deva[क्] (@deva[कित्]) are suffixed.
+
+**@deva[टित्] augments (prefixed):**
+- @deva[इट्] (@ref[7.2.35]): inserted before @deva[आर्धधातुक] affixes beginning with a consonant (except @deva[य]): @deva[भू] + @deva[इट्] + @deva[स्यति] = @deva[भविष्यति]
+- @deva[आट्] (@ref[6.4.72]): @deva[अ] prefixed to @deva[लुङ्] endings: @deva[अभूत्]
+- @deva[सुट्] (@ref[7.3.32]): @deva[स्] prefixed before certain @deva[कित्] affixes
+
+**@deva[कित्] augments (suffixed):**
+- @deva[तुक्] (@ref[7.3.40]): Vedic @deva[तुक्] follows — @deva[कुर्वतुक्कः]
+- @deva[नुक्] (@ref[7.4.71]): @deva[न्] suffixed after root in certain forms
+
+**What about @deva[मित्]?** Augments marked with @deva[म्] are covered by @ref[1.1.47] — they insert after the final vowel.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this begins the augment-placement rules.
+
+@deva[आद्यन्तौ टकितौ] — @deva[टित्] augments are placed at the beginning (@deva[आदि]) and @deva[कित्] augments at the end (@deva[अन्त]) of their host.
+
+**The three placement rules for @deva[आगम]s:** @ref[1.1.46] (@deva[टित्] = prefix, @deva[कित्] = suffix), @ref[1.1.47] (@deva[मित्] = after final vowel). Together these exhaustively specify augment position.
+
+**@deva[टित्] examples:**
+- @deva[इट्] (@ref[7.2.35]): @deva[भू] + @deva[इट्] + @deva[स्यति] → @deva[भविष्यति]
+- @deva[आट्] (@ref[6.4.72]): @deva[अ]-augment before @deva[लुङ्] endings — @deva[अभूत्]
+- @deva[सुट्] (@ref[7.3.32]): @deva[स्] before certain affixes
+
+**@deva[कित्] examples:**
+- @deva[तुक्] (@ref[7.3.40]): Vedic — @deva[कुर्वतुक्कः]
+- @deva[नुक्] (@ref[7.4.71]): @deva[न्] after root
+
+**"Host" (@deva[स्थानिन्]):** The host is the element the augment is prescribed for. If the rule says "before X, add Y," the host is X. @deva[टित्] augments precede X; @deva[कित्] augments follow X.
+
+**Interaction with @ref[1.1.5]:** @deva[कित्] augments carry the @deva[क्] marker. This is an augment-placement marker, not the @deva[कित्] of @ref[1.1.5] (which blocks @deva[गुण]). The @deva[क्] in @deva[इट्] is also @deva[इत्] but indicates prefix-placement, distinct from its effect in @ref[1.1.5].
+"""

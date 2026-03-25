@@ -1,0 +1,32 @@
+id = "4.2.9"
+numericId = "42009"
+
+[en]
+simple = """
+After the name @deva[वामदेव], the affixes @deva[ड्यत्] or @deva[ड्य] are used instead of @deva[अण्], meaning "the @deva[साम] revealed to @deva[वामदेव]."
+
+**Example:** @deva[वामदेवेन दृष्टं साम] "the @deva[साम] seen by @deva[वामदेव]" becomes @deva[वामदेव्यम्]. The two affixes differ only in accent: @deva[ड्यत्] gives @deva[उदात्त] on the affix, @deva[ड्य] on the base.
+"""
+
+standard = """
+This @[vidhi] rule overrides @ref[4.2.7] for @deva[वामदेव], prescribing @deva[ड्यत्] or @deva[ड्य] instead of @deva[अण्] in the "@deva[साम] seen by" sense.
+
+**Worked example:**
+- @deva[वामदेवेन दृष्टं साम] → @deva[वामदेव्यम्]. Derivation: @deva[वामदेव] + @deva[य] (the operative portion of both affixes) = @deva[वामदेव्य].
+
+The indicatory @deva[ड्] in both affixes causes @deva[वृद्धि] of the first syllable — but since @deva[वामदेव] already begins with @deva[वा] (long @deva[आ]), no visible change occurs. The two affixes produce accent differences:
+- @deva[ड्यत्]: @deva[वामदेव्य॑म्] — @deva[उदात्त] on the affix (via @deva[त्]-marker).
+- @deva[ड्य]: @deva[वामदे॑व्यम्] — @deva[उदात्त] on the base.
+
+The @deva[कारिका] asks: why mark @deva[ड्] when simple @deva[इ]-elision (@deva[येति लोपेन]) would yield the same surface form? Answer: to prevent the @deva[नञ्]-accent rule from applying to @deva[वामदेव्य].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तेन दृष्टं साम] from @ref[4.2.7].
+
+This @[apavāda] provides two competing affixes for @deva[वामदेव]: @deva[ड्यत्] and @deva[ड्य]. The operative portion of both is @deva[य]; the difference is purely accentual.
+
+The @deva[ड्] marker triggers @deva[वृद्धि] of the first vowel (@ref[7.2.117]), but @deva[वामदेव] begins with @deva[वा], where @deva[आ] is already @deva[वृद्धि] — so the substitution is vacuous. The @deva[त्] in @deva[ड्यत्] marks @deva[आद्युदात्त] per @ref[3.1.3].
+
+The @deva[कारिका] probes the purpose of the @deva[ड्]-marker: @deva[ड्] prevents the @deva[नञ्]-compound accent rule (@ref[6.2.145]) from applying when @deva[वामदेव्य] appears in a @deva[नञ्]-compound. Without @deva[ड्], the form could be analyzed as derived by plain @deva[य], and @deva[नञ्]-accent rules would apply differently. This is an instance where @deva[इत्]-markers serve accent-regulatory rather than morphological functions.
+"""

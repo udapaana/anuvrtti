@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WASM Test</title>
+  </head>
+  <body>
+    <h1>Vidyut-Prakriya WASM Test</h1>
+    <div id="output">Loading...</div>
+    <script type="module">
+      const output = document.getElementById("output");
+
+      try {
+        output.innerHTML = "Importing module...";
+        const module = await import("/wasm/vidyut-prakriya/vidyut-prakriya.js");
+
+        output.innerHTML = "Module imported.<br>";
+
+        // Check enum values
+        const { Gana, Lakara, Prayoga, Purusha, Vacana } = module;
+        output.innerHTML += "Gana.Bhvadi = " + Gana.Bhvadi + "<br>";
+        output.innerHTML += "Lakara.Lat = " + Lakara.Lat + "<br>";
+
+        output.innerHTML += "Initializing WASM...<br>";
+        await module.initWasm("/wasm/vidyut-prakriya/vidyut_prakriya_bg.wasm");
+
+        output.innerHTML += "WASM initialized. Creating Vidyut instance...<br>";
+        const vidyut = new module.Vidyut();
+
+        output.innerHTML += "Vidyut created. Deriving bhU + laT...<br>";
+
+        // Use enum values directly like the unit tests do
+        const results = vidyut.deriveTinantas({
+          dhatu: {
+            aupadeshika: "BU",
+            gana: Gana.Bhvadi, // Use enum value directly
+          },
+          lakara: Lakara.Lat,
+          prayoga: Prayoga.Kartari,
+          purusha: Purusha.Prathama,
+          vacana: Vacana.Eka,
+        });
+
+        output.innerHTML =
+          "<h2>Results:</h2><pre>" +
+          JSON.stringify(results, null, 2) +
+          "</pre>";
+      } catch (e) {
+        output.innerHTML +=
+          '<h2>Error:</h2><pre style="color:red">' +
+          e.message +
+          "\n\n" +
+          e.stack +
+          "</pre>";
+        console.error(e);
+      }
+    </script>
+  </body>
+</html>

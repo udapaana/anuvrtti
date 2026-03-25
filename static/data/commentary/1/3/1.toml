@@ -1,0 +1,52 @@
+id = "1.3.1"
+numericId = "13001"
+
+[en]
+simple = """
+Words that denote action, beginning with @deva[भू] "to become," are called @deva[धातु] (verbal root). The @deva[धातुपाठ] (root catalog) lists about two thousand roots organized into ten classes (@deva[गण]):
+
+1. @deva[भ्वादि] (starting with @deva[भू])
+2. @deva[अदादि] (starting with @deva[अद्])
+3. @deva[जुहोत्यादि] (starting with @deva[हु])
+4. @deva[दिवादि] (starting with @deva[दिव्])
+5. @deva[स्वादि] (starting with @deva[सु])
+6. @deva[तुदादि] (starting with @deva[तुद्])
+7. @deva[रुधादि] (starting with @deva[रुध्])
+8. @deva[तनादि] (starting with @deva[तन्])
+9. @deva[क्र्यादि] (starting with @deva[क्री])
+10. @deva[चुरादि] (starting with @deva[चुर्])
+
+These classes differ in how they form present-tense stems. Every Sanskrit verb traces back to one of these roots. This chapter (@deva[पाद] 1.3) mainly determines which endings — @deva[परस्मैपद] ("for another") or @deva[आत्मनेपद] ("for oneself") — a root takes.
+"""
+
+standard = """
+Words denoting action, beginning with @deva[भू], are called @deva[धातु]. The term predates @deva[पाणिनि] — the @deva[धातुपाठ] is an appendix to the @deva[अष्टाध्यायी] listing ~2000 roots.
+
+**Ten @deva[गण]s:** The roots are divided into ten classes based on how they form the present stem (@deva[विकरण] insertion): @deva[भ्वादि], @deva[अदादि], @deva[जुहोत्यादि], @deva[दिवादि], @deva[स्वादि], @deva[तुदादि], @deva[रुधादि], @deva[तनादि], @deva[क्र्यादि], @deva[चुरादि].
+
+**Scope of @deva[पाद] 1.3:** This chapter primarily assigns @deva[परस्मैपद] or @deva[आत्मनेपद] to roots. Some roots are @deva[उभयपदिन्] (taking either set of endings depending on meaning).
+
+**@deva[वा] in the @deva[सूत्र]:** The @deva[सूत्र] reads @deva[भूवादयो धातवः]. The @deva[वा] is @deva[मङ्गलार्थ] (auspicious) — regular @deva[सन्धि] of @deva[भू] + @deva[आदि] would give @deva[भ्वादि], not @deva[भूवादि].
+
+**@deva[संज्ञा] rule:** This defines the technical term @deva[धातु]. The term is used throughout the @deva[अष्टाध्यायी] to trigger affix-attachment, @deva[गुण]/@deva[वृद्धि] operations, and @deva[पद] assignment.
+"""
+
+advanced = """
+@deva[भूवादयो धातवः] — action-denoting words beginning with @deva[भू] are @deva[धातु].
+
+**@deva[संज्ञा] rule:** Defines @deva[धातु], the fundamental building block of the verbal system. Every @deva[तिङन्त] (finite verb) and @deva[कृदन्त] (verbal derivative) traces back to a @deva[धातु].
+
+**"Beginning with @deva[भू]":** This refers to the @deva[धातुपाठ] — an ordered list that begins with @deva[भू सत्तायाम्] "to be/become" and ends with the @deva[चुरादि] roots. The @deva[आदि] makes this a @deva[गण]-style definition: any word listed in the @deva[धातुपाठ] is a @deva[धातु].
+
+**@deva[क्रियावचन] ("denoting action"):** This qualifier excludes @deva[प्रातिपदिक]s (nominal stems) that happen to appear root-like. A @deva[धातु] must denote @deva[क्रिया] (action/process/state).
+
+**@deva[वा] = @deva[मङ्गलार्थ]:** The @deva[वा] prevents @deva[यण्]-@deva[सन्धि] (@deva[भू] + @deva[आदि] → @deva[भ्वादि]). It serves an auspicious function, marking the beginning of a new @deva[अध्याय] — parallel to @deva[वृद्धिरादैच्] (@ref[1.1.1]) opening @deva[अध्याय] 1.
+
+**System role:** The @deva[धातु] @deva[संज्ञा] triggers:
+- Affix assignment: @deva[लकार]s (@ref[3.2.111] ff.), @deva[कृत्] affixes (@ref[3.1.91] ff.)
+- @deva[गुण]/@deva[वृद्धि]: @ref[7.3.84]–@ref[7.3.86]
+- @deva[पद] assignment: @ref[1.3.12]–@ref[1.3.93] (this chapter)
+- @deva[इत्] interpretation: @ref[1.3.2]–@ref[1.3.9] (immediately following)
+
+**Transition:** Having defined @deva[धातु], @deva[पाणिनि] next defines @deva[इत्] markers (@ref[1.3.2]–@ref[1.3.9]), then the @deva[इत्]-deletion rule (@ref[1.3.9]), then @deva[पद] assignment (@ref[1.3.12] onward).
+"""

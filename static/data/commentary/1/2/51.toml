@@ -1,0 +1,43 @@
+id = "1.2.51"
+numericId = "12051"
+
+[en]
+simple = """
+When a @deva[तद्धित] affix (secondary suffix) is deleted by @deva[लुप्] (a type of elision), the resulting word keeps the gender and number of the original word it was derived from.
+
+**Example:** @deva[पञ्चालाः] originally refers to the @deva[पञ्चाल] people (masculine plural). The country they live in is also called @deva[पञ्चालाः] — it keeps the masculine plural form even though a country is normally neuter singular. This happens because the affix meaning "country" was @deva[लुप्]-elided (by @ref[4.2.81]), and the derived word preserves the gender and number of the base.
+
+Similarly: @deva[शिरीषाः] "village near @deva[शिरीष] trees" — stays masculine plural.
+"""
+
+standard = """
+When a @deva[तद्धित] is @deva[लुप्]-elided, the derivative retains the gender and number of the primitive word. This is a rule about @deva[लुप्] specifically (not @deva[लुक्]).
+
+**@deva[लुप्] vs. @deva[लुक्]:**
+- @deva[लुप्]: derivative keeps primitive's gender/number
+- @deva[लुक्]: derivative takes its own gender/number from context
+
+**@deva[लुप्] examples (by @ref[4.2.81]):**
+- @deva[पञ्चालाः] (people, m. pl.) → @deva[पञ्चालाः] (country, still m. pl.)
+- @deva[शिरीषाः] (trees, m. pl.) → @deva[शिरीषाः] (village, still m. pl.)
+
+**@deva[लुक्] contrast (by @ref[4.4.24]):**
+- @deva[लवण] + @deva[उक्] (@deva[लुक्]) → @deva[लवणः सूपः] "salted soup" (m.) / @deva[लवणं शाकम्] "salted vegetable" (n.)
+- Here the derivative takes the gender of what it modifies — not fixed.
+"""
+
+advanced = """
+@deva[लुपि युक्तवद्व्यक्तिवचने] — when @deva[तद्धित] is @deva[लुप्]-elided, the derivative retains the gender (@deva[व्यक्ति]) and number (@deva[वचन]) of the primitive.
+
+**@deva[लुप्] and @deva[लुक्] distinguished:** Both are types of affix-elision (defined at @ref[1.1.61]–@ref[1.1.63]), but they differ in what the derived word inherits:
+- @deva[लुप्]: gender and number are "frozen" from the base word
+- @deva[लुक्]: no such freezing — the word behaves freely
+
+**Example derivation:**
+@deva[पञ्चालाः] (people, m. pl.) + @deva[अण्] (meaning "country") → @deva[पाञ्चालः] (country)
+But @ref[4.2.81] elides @deva[अण्] by @deva[लुप्] → @deva[पञ्चालाः] (country, retaining m. pl. from "people")
+
+**Philosophical qualification:** Rules @ref[1.2.53]–@ref[1.2.55] will argue that these gender/number retentions are actually conventional (@deva[रूढि]), not derived — the @deva[लुप्] analysis is pedagogically useful but not strictly necessary.
+
+**Scope:** This rule and the next two (@ref[1.2.52]–@ref[1.2.53]) form a cluster discussing how @deva[लुप्]-derived words interact with agreement and convention.
+"""

@@ -1,0 +1,29 @@
+id = "5.4.156"
+numericId = "54156"
+
+[en]
+simple = """
+When a @deva[बहुव्रीहि] compound ends in a comparative form (like "better" or "greater"), the suffix @deva[कप्] is NOT added. So @deva[बहुश्रेयान्] "one with much excellence" keeps its form without @deva[कप्].
+"""
+
+standard = """
+@[sūtra] @ref[5.4.156] prohibits @deva[कप्] after a @deva[बहुव्रीहि] compound whose final member ends in the comparative suffix @deva[ईयस्] (the @[taddhita] affix producing forms like @deva[श्रेयस्], @deva[ज्यायस्], @deva[वरीयस्]). This debarment overrides all @deva[कप्] rules, including @ref[5.4.153] and @ref[5.4.154].
+
+**Worked example:** @deva[बहु] + @deva[श्रेयस्] (@deva[ईयस्]-final, masculine nom. sg. @deva[श्रेयान्]) → @deva[बहुव्रीहि] → no @deva[कप्] → @deva[बहुश्रेयान्] "one who has great excellence." The feminine @deva[बहुश्रेयसी] (where @deva[नदी]-@deva[ई] forms) also takes no @deva[कप्] despite @ref[5.4.153], because the @deva[ई] here belongs to @deva[ईयस्]-feminine, not to an independent @deva[नदी]-type word.
+
+**Note:** @ref[1.2.48] would shorten @deva[ई] in @[upasarjana] position, but a @[vārttika] notes that @[puṃvad bhāva] applies here and prevents shortening in @deva[बहुश्रेयसी].
+"""
+
+advanced = """
+@[sūtra] @ref[5.4.156]: @deva[ईयसश्च] — @deva[कप्] is not added after a @deva[बहुव्रीहि] whose final member ends in @deva[ईयस्]. The @deva[च] (and) connects this prohibition to the preceding @ref[5.4.155].
+
+**@deva[ईयस्] morphology:** The suffix @deva[ईयस्] is a @[taddhita] comparative affix. In the @deva[बहुव्रीहि] context, examples include @deva[श्रेयस्] (from @deva[प्रशस्य]), @deva[ज्यायस्] (from @deva[वृद्ध]), @deva[वरीयस्] (from @deva[उरु]), @deva[लघीयस्] (from @deva[लघु]).
+
+**Why block @deva[कप्]?** @deva[ईयस्]-stems already carry the comparative semantics; adding @deva[कप्] would create an ambiguous morphological structure. The @deva[बहुव्रीहि] reading and comparative reading must remain distinct.
+
+**Interaction with @ref[5.4.153]:** @deva[बहुश्रेयसी] has @deva[ई]-final (feminine of @deva[ईयस्]). Normally @ref[5.4.153] would trigger @deva[कप्] for @deva[नदी]-type words. This rule explicitly blocks that.
+
+**@deva[पुंवद्भाव] @[vārttika] on @deva[बहुश्रेयसी]:** A @[vārttika] (@deva[ईयसः पुंवद्भावोऽभ्यासलोपश्च]) notes that in @deva[बहुव्रीहि], the @deva[ई] of @deva[ईयस्]-feminine does NOT shorten (unlike regular @deva[नदी] per @ref[1.2.48]) because @[puṃvad bhāva] (treating the feminine as masculine in @[upasarjana]) applies. The @[vārttika] also mentions @deva[अभ्यासलोप] (reduplication-drop) for intensive formations.
+
+**Examples:** @deva[बहुश्रेयान्] (masc.), @deva[बहुश्रेयसी] (fem.), @deva[बहुश्रेयः] (neut.) — all without @deva[कप्].
+"""

@@ -1,0 +1,43 @@
+id = "2.4.66"
+numericId = "24066"
+
+[en]
+simple = """
+The @deva[गोत्र] affix @deva[इञ्] (@ref[4.1.95]) is elided in the plural after polysyllabic words denoting the @deva[गोत्र] of @deva[प्राच्य] (Eastern) or @deva[भरत] people.
+
+**Examples:**
+- @deva[पान्नागरिः] → @deva[पान्नागराः] (plural, affix elided)
+- @deva[यौधिष्ठिरिः] → @deva[युधिष्ठिराः] 'descendants of @[yudhiṣṭhira]'
+
+**No elision (monosyllabic):** @deva[यैकिः] → @deva[यैक्यः] (affix retained)
+"""
+
+standard = """
+The @deva[गोत्र] affix @deva[इञ्] (@ref[4.1.95]) undergoes @deva[लुक्] elision in the plural after polysyllabic words denoting @deva[प्राच्य] (Eastern) or @deva[भरत] @deva[गोत्र].
+
+**Polysyllabic (affix elided):**
+- @deva[पान्नागरिः] → @deva[पान्नागराः]
+- @deva[नान्थरैषणिः] → @deva[नन्थरेषणाः]
+- @deva[यौधिष्ठिरिः] → @deva[युधिष्ठिराः]
+
+**Monosyllabic (no elision):**
+- @deva[यैकिः] → @deva[यैक्यः]
+- @deva[पौष्पिः] → @deva[पौष्प्यः]
+
+**Non-@deva[प्राच्य]/[@deva[भरत]] @deva[गोत्र] (no elision):**
+- @deva[बालाकिः] → @deva[बालाकयः]
+
+Note: @deva[भरत] is specified separately from @deva[प्राच्य] to indicate that rules using '@deva[प्राच्य]' elsewhere (like @ref[5.4.60]) exclude @deva[भरत].
+"""
+
+advanced = """
+The @deva[गोत्र] affix @deva[इञ्] (@deva[गोत्राद्यून्यस्त्रियाम्], @ref[4.1.95]) undergoes @deva[लुक्] elision in the plural after polysyllabic words denoting the @deva[गोत्र] of @deva[प्राच्य] or @deva[भरत] people.
+
+@deva[पान्नागरिः] → plural @deva[पान्नागराः] (@deva[इञ्] elided); @deva[नान्थरैषणिः] → @deva[नन्थरेषणाः]; @deva[यौधिष्ठिरिः] → @deva[युधिष्ठिराः] 'descendants of @deva[युधिष्ठिर].'
+
+Monosyllabic words are excluded: @deva[यैकिः] → plural @deva[यैक्यः]; @deva[पौष्पिः] → @deva[पौष्प्यः] (affixes retained).
+
+When the @deva[गोत्र] is not of @deva[प्राच्य] or @deva[भरत] people, no elision: @deva[बालाकिः] → @deva[बालाकयः]; @deva[हस्तिदासिः] → @deva[हस्तिदासयः].
+
+Though the @deva[भरत]s are @deva[प्राच्य], their separate specification here indicates that elsewhere (as in @ref[5.4.60]) the term @deva[प्राच्य] does not include @deva[भरत]. Accordingly, the @deva[युवन्] affix of @deva[भरत] families is not elided there: @deva[आर्जुनिः] (father) vs. @deva[आर्जुनायनः] (son).
+"""

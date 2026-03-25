@@ -1,0 +1,39 @@
+id = "2.1.15"
+numericId = "21015"
+
+[en]
+simple = """
+The word @deva[अनु] "near" **optionally** compounds with a case-inflected word (@deva[सुबन्त]) to form @deva[अव्ययीभाव] when it means "nearness" (@deva[समीप]).
+
+**Example:** @deva[अनुवनम् अशनिर्गतः] "the thunderbolt fell near the forest" — the compound @deva[अनुवनम्] = @deva[वनं समीपे] "in the vicinity of the forest."
+
+**No compound when @deva[अनु] means "toward" (direction):** @deva[वृक्षम् अनु विद्योतते विद्युत्] "lightning flashes toward the tree" — this is @deva[लक्षण] (directional), not @deva[समीप] (nearness), so no @deva[अव्ययीभाव].
+
+Though "nearness" is already listed in @ref[2.1.6], this separate rule specifies that @deva[अनु] + @deva[समीप] is **optional** (falling under the @ref[2.1.11] @deva[विभाषा] heading), not obligatory.
+"""
+
+standard = """
+@deva[अनु] in the @deva[समीप] (nearness) sense + @deva[सुबन्त] → optional @deva[अव्ययीभाव] — @deva[अनुः समीपे].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Example:** @deva[अनुवनम् अशनिर्गतः] / @deva[वनम् अनु अशनिर्गतः] "the thunderbolt fell near the forest"
+
+**No compound in @deva[लक्षण] sense:** @deva[वृक्षम् अनु विद्योतते विद्युत्] "lightning toward the tree" — directional, not nearness.
+
+**Why repeat @deva[समीप]?** @ref[2.1.6] lists @deva[समीपवचन] as one of the sixteen @deva[नित्य] senses (with @deva[उप] — e.g., @deva[उपकुम्भम्]). This rule restates @deva[समीप] for @deva[अनु] specifically, placing it under the @deva[विभाषा] heading — showing that @deva[अनु] + @deva[समीप] is optional, while @deva[उप] + @deva[समीप] remains obligatory.
+
+**@deva[अनु] across compound rules:** @deva[अनु] has @deva[कर्मप्रवचनीय] status for @deva[लक्षण] (@ref[1.4.84]), @deva[तृतीया] (@ref[1.4.85]), and @deva[हीन] (@ref[1.4.86]). Here it forms @deva[अव्ययीभाव] only in the @deva[समीप] sense — the other senses do not trigger this compound type.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[अव्ययीभावः] from @ref[2.1.5].
+
+@deva[अनुः समीपे] — @deva[अनु] in the @deva[समीप] sense optionally compounds with @deva[सुबन्त] as @deva[अव्ययीभाव].
+
+**@deva[नित्य] vs @deva[विभाषा] for the same sense:** @ref[2.1.6] lists @deva[समीपवचन] as a @deva[नित्य] @deva[अव्ययीभाव] sense, with examples like @deva[उपकुम्भम्] using @deva[उप]. This rule shows that @deva[अनु] in the same @deva[समीप] sense is @deva[विभाषा] — different @deva[अव्यय] particles have different compound obligations for the same semantic function.
+
+**Why the difference?** The @deva[काशिका] explains: @deva[उप] + noun in the @deva[समीप] sense cannot be meaningfully paraphrased without the compound (@deva[उपकुम्भम्] is @deva[नित्य]). But @deva[अनु] + noun can be expressed uncompounded (@deva[वनम् अनु]) without loss of meaning, making it @deva[विभाषा].
+
+**Scope restriction — @deva[समीप] only:** @deva[अनु] has multiple senses (@deva[लक्षण], @deva[तृतीया]-sense, @deva[हीन], @deva[पश्चात्], etc.). Only the @deva[समीप] sense triggers @deva[अव्ययीभाव] by this rule. The @deva[लक्षण] and other senses of @deva[अनु] either form @deva[तत्पुरुष] compounds or remain uncompounded.
+"""

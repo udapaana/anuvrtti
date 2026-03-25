@@ -1,0 +1,39 @@
+id = "4.3.1"
+numericId = "43001"
+
+[en]
+simple = """
+The affix @deva[खञ्] is optionally added after the pronouns @deva[युष्मद्] ("you") and @deva[अस्मद्] ("I/we") to express any remaining relation not covered by earlier rules. The word @deva[च] ("and") brings in the affix @deva[छ] as well, and the general default affix @deva[अण्] also applies. So there are three possible affixes for each pronoun.
+
+Since there are three affixes available but only two base words, the principle of one-to-one correspondence (@deva[यथासंख्य]) does not apply — each pronoun can freely take any of the three.
+
+Both pronouns belong to the @deva[त्यदादि] class and so count as @deva[वृद्ध] (having an initial @deva[वृद्धि] vowel). Before @deva[अण्] and @deva[खञ्], special stem substitutes apply: @deva[युष्मद्] becomes @deva[युष्माक], and @deva[अस्मद्] becomes @deva[अस्माक] (by @ref[4.3.2]).
+
+Examples: @deva[यौष्माकः] ("yours," with @deva[अण्]), @deva[युष्मदीयः] ("yours," with @deva[छ]), @deva[यौष्माकीणः] ("yours," with @deva[खञ्]). Parallel forms for "ours": @deva[आस्माकः], @deva[अस्मदीयः], @deva[आस्माकीनः].
+
+This matters because it opens pāda 4.3 — the @deva[शेष] ("remainder") section of @deva[तद्धित] affixation, covering relations not expressly handled by earlier semantic categories.
+"""
+
+standard = """
+This @deva[विधिसूत्र] ordains the affix @deva[खञ्] optionally after @deva[युष्मद्] and @deva[अस्मद्] in @deva[शेष] senses. The particle @deva[च] draws in @deva[छ] by @deva[अनुवृत्ति], and the general @deva[अण्] also applies. With three affixes available for two bases, @deva[यथासंख्य] (@ref[1.3.10]) does not operate.
+
+Both pronouns are @deva[वृद्ध] via @ref[1.1.74] (membership in the @deva[त्यदादि] class) and would normally take only @deva[छ] by @ref[4.2.114]. This rule extends the options to @deva[खञ्] and @deva[अण्].
+
+Derivations:
+• With @deva[अण्]: @deva[युष्मद्] → @deva[युष्माक] (@ref[4.3.2]) + @deva[अ] → @deva[यौष्माकः].
+• With @deva[छ]: @deva[युष्मद्] + @deva[ईय] → @deva[युष्मदीयः] (@ref[7.1.2]).
+• With @deva[खञ्]: @deva[युष्मद्] → @deva[युष्माक] + @deva[ईन] → @deva[यौष्माकीणः] (@ref[7.1.2], @ref[8.4.2]).
+• Parallel: @deva[आस्माकः], @deva[अस्मदीयः], @deva[आस्माकीनः].
+
+Scope: This rule opens the @deva[शेषे] domain of pāda 4.3, terminating the @deva[देशे] heading from @ref[4.2.52].
+"""
+
+advanced = """
+This @deva[विधिसूत्र] inaugurates the @deva[शेष]-@deva[अधिकार] of pāda 4.3, terminating the scope of @deva[देशे] from @ref[4.2.52]. The @deva[अनुवृत्ति] of @deva[छ] enters via @deva[च]; @deva[वा] makes both @deva[खञ्] and @deva[छ] optional alongside the general @deva[अण्].
+
+@deva[युष्मद्] and @deva[अस्मद्] are @deva[वृद्ध] via @ref[1.1.74] (as @deva[त्यदादि] members); @ref[4.2.114] would otherwise mandate @deva[छ] alone. Since three affixes apply to two bases, @deva[यथासंख्य] (@ref[1.3.10]) is defeated — the @deva[परिभाषा] requires equal cardinality.
+
+Derivations: @deva[युष्मद्] + @deva[अण्] → @deva[युष्माक] (@ref[4.3.2]) + @deva[अ] → @deva[यौष्माकः]. @deva[युष्मद्] + @deva[छ] → @deva[युष्मदीयः] (@ref[7.1.2]). @deva[युष्मद्] + @deva[खञ्] → @deva[युष्माक] + @deva[ईन] → @deva[यौष्माकीणः] (@ref[7.1.2], @ref[8.4.2]). Parallel: @deva[आस्माकः], @deva[अस्मदीयः], @deva[आस्माकीनः].
+
+Cross-references: @ref[4.3.2] (stem substitution), @ref[4.3.3] (singular-referent forms @deva[तवक]/@deva[ममक]).
+"""

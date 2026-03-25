@@ -1,0 +1,17 @@
+id = "8.3.99"
+numericId = "83099"
+
+[en]
+simple = """
+In personal names, when the consonant s before the word for 'army' is preceded by the vowels i or u, it becomes retroflex. However, if the consonant g immediately precedes, the change is blocked.
+"""
+
+standard = """
+The @deva[स्] before @deva[सेन] is replaced by @deva[ष्] when the preceding compound member ends in a sound from @deva[इण्] or @deva[कु], in proper names. Thus @deva[हरिषेणः], @deva[वारिषेणः]. The substitution is blocked when @deva[ग्] intervenes, as in @deva[विष्वक्सेनः] (here @deva[ग्] is the immediate predecessor of @deva[स्]). This rule follows @ref[8.3.98] and is conditioned by @ref[8.3.57].
+"""
+
+advanced = """
+@deva[ष्] replaces @deva[स्] when followed by @deva[ए], preceded by @deva[इण्] or @deva[कु], in a proper name, provided @deva[ग्] does not immediately precede. Examples: @deva[हरयः] @deva[सेना] @deva[अस्य] = @deva[हरिषेणः]; @deva[परितः] @deva[सेना] @deva[अस्य] = @deva[परिषेणः]; similarly @deva[वारिषेणः], @deva[जानुषेणी].
+
+The condition "followed by @deva[ए]": @deva[हरिसक्थम्] (no @deva[ए] following). The condition "in a name": @deva[पृथुसेनो] @deva[राजा] (@ref[6.3.34]—not a @deva[संज्ञा]). The condition "not preceded by @deva[ग्]": @deva[विष्वक्सेनः]. The @deva[इण्कोः] condition carries over, excluding @deva[सर्वसेनः].
+"""

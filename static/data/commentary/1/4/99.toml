@@ -1,0 +1,46 @@
+id = "1.4.99"
+numericId = "14099"
+
+[en]
+simple = """
+The substitutes for @deva[ल] (the abstract tense-mood marker) are called @deva[परस्मैपद] "active endings" — literally "words for another."
+
+Every finite verb in Sanskrit uses one of ten @deva[ल]-markers (@deva[लट्] present, @deva[लङ्] imperfect, @deva[लृट्] future, etc.). Each @deva[ल] is replaced by eighteen personal endings — the first nine are @deva[परस्मैपद]:
+
+| Person | Singular | Dual | Plural |
+|--------|----------|------|--------|
+| 3rd | @deva[तिप्] | @deva[तस्] | @deva[झि] |
+| 2nd | @deva[सिप्] | @deva[थस्] | @deva[थ] |
+| 1st | @deva[मिप्] | @deva[वस्] | @deva[मस्] |
+
+The participle affixes @deva[शतृ] and @deva[क्वसु] are also @deva[परस्मैपद].
+"""
+
+standard = """
+The substitutes of @deva[ल] are called @deva[परस्मैपद] — @deva[लस्य परस्मैपदम्].
+
+**Rule type — @deva[संज्ञा]:** Names the first set of nine @deva[ल]-replacement endings.
+
+**@deva[परस्मैपद] endings (the @deva[तिङ्] @deva[प्रत्याहार] first nine):**
+- 3rd person: @deva[तिप्], @deva[तस्], @deva[झि]
+- 2nd person: @deva[सिप्], @deva[थस्], @deva[थ]
+- 1st person: @deva[मिप्], @deva[वस्], @deva[मस्]
+
+**Participle affixes:** @deva[शतृ] (@ref[3.2.124]) and @deva[क्वसु] (@ref[3.2.107]) are also @deva[परस्मैपद] — they replace @deva[ल] in participial constructions.
+
+**@deva[ल]-system:** @deva[ल] is the abstract placeholder for all ten tense-mood markers (@deva[लट्], @deva[लिट्], @deva[लुट्], @deva[लृट्], @deva[लेट्], @deva[लोट्], @deva[लङ्], @deva[लिङ्], @deva[लुङ्], @deva[लृङ्]). @ref[3.4.78] replaces @deva[ल] with the eighteen @deva[तिङ्] endings — this rule names the first nine.
+
+**Paired with @ref[1.4.100]:** Together these two rules name the complete set of eighteen endings: @deva[परस्मैपद] (this rule) and @deva[आत्मनेपद] (@ref[1.4.100]).
+"""
+
+advanced = """
+@deva[लस्य] = @deva[ल] in the genitive, meaning "of @deva[ल]." The substitutes (@deva[आदेश]) that replace @deva[ल] are named @deva[परस्मैपद].
+
+**@deva[परस्मैपद] = "word for another":** The name literally means the verbal form is oriented toward another person (the action benefits someone other than the agent). This contrasts with @deva[आत्मनेपद] "word for oneself" — though the semantic distinction is not always maintained in classical usage.
+
+**Scope of @deva[ल]:** By @ref[3.4.77]–@ref[3.4.78], @deva[ल] is replaced by the eighteen @deva[तिङ्] affixes. The first nine (@deva[तिप्] through @deva[मस्]) form the @deva[परस्मैपद] set; the remaining nine (@deva[त] through @deva[महिङ्]) form @deva[आत्मनेपद] (@ref[1.4.100]).
+
+**@deva[शतृ] and @deva[क्वसु]:** These participial affixes are @deva[परस्मैपद] because they replace @deva[ल] in the @deva[परस्मैपद] paradigm. @deva[शतृ] gives present active participles (@deva[पचन्] "cooking"), @deva[क्वसु] gives perfect active participles (@deva[पचिवान्] "having cooked").
+
+**Why this @deva[संज्ञा] matters:** The @deva[परस्मैपद]/@deva[आत्मनेपद] distinction governs which endings a verb takes. Rules like @ref[1.3.12]–@ref[1.3.93] specify when @deva[आत्मनेपद] applies; @deva[परस्मैपद] is the default by @ref[1.3.78] (@deva[शेषात् कर्तरि परस्मैपदम्]).
+"""

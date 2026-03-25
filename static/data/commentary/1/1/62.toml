@@ -1,0 +1,44 @@
+id = "1.1.62"
+numericId = "11062"
+
+[en]
+simple = """
+When an affix undergoes ordinary @deva[लोप] (deletion, @ref[1.1.60]), the affix is gone — you cannot hear or see it. But the grammatical effects it would have caused still happen. The word behaves as if the affix were still there.
+
+**Example:** A @deva[पद] (complete word) is defined as something that ends in a case affix or verb ending. When a case affix is deleted by @deva[लोप], the word is still a @deva[पद] — because the affix's grammatical influence survives its deletion.
+
+@deva[अग्निचित्] "fire-builder" has no visible case ending, but it is still a @deva[पद] because the case affix was @deva[लोप]-elided, not removed entirely.
+
+This is what makes @deva[लोप] different from @deva[लुक्]/@deva[श्लु]/@deva[लुप्] (@ref[1.1.61]): with @deva[लोप], the affix's power lives on.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] states that when an affix undergoes @deva[लोप] (as defined in @ref[1.1.60]), the operations (@deva[कार्य]) dependent on that affix still apply. The affix is phonetically absent but grammatically present.
+
+**Example 1:** @deva[पद] designation — @ref[1.4.14] defines a @deva[पद] as ending in @deva[सुप्] or @deva[तिङ्]. When a @deva[सुप्] affix is @deva[लोप]-elided, the stem is still a @deva[पद]. @deva[अग्निचित्] has @deva[सु] (nominative singular) @deva[लोप]-elided, yet remains a @deva[पद].
+
+**Example 2:** @deva[अधोक्] "he milked" — @deva[दुह्] + @deva[लङ्] (@deva[अट्] + @deva[दुह्] + @deva[त्]). The @deva[त्] ending undergoes @deva[लोप]. Despite the absent ending, the form is still treated as a @deva[पद], so @deva[पदान्त] rules apply: @deva[ह्] → @deva[घ्] (by @ref[8.2.32]) → further changes → @deva[अधोक्].
+
+**Contrast with @ref[1.1.63]:** @deva[लुक्]/@deva[श्लु]/@deva[लुप्]-elided affixes do not trigger @deva[अङ्गकार्य]. @deva[लोप]-elided affixes do. This is the key distinction in the elision system.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रत्ययस्य] from @ref[1.1.61].
+
+@deva[प्रत्ययलोपे प्रत्ययलक्षणम्] — when an affix undergoes @deva[लोप], operations characterized by (@deva[लक्षण]) that affix still apply.
+
+**Scope of @deva[प्रत्ययलक्षण]:** Any rule whose trigger or condition is the presence of a specific affix. If that affix has been @deva[लोप]-elided, the rule still fires as though the affix were present.
+
+**This is a consequence of @deva[स्थानिवद्भाव] (@ref[1.1.56]).** Since @deva[लोप] is an @deva[आदेश] (substitute, @ref[1.1.60]), the zero-substitute inherits the original affix's properties. This rule makes that consequence explicit for affix elision.
+
+**Examples:**
+- @deva[पद] status: @deva[सुप्]/@deva[तिङ्] undergoes @deva[लोप] → stem still qualifies as @deva[पद] (@ref[1.4.14])
+- @deva[अग्निचित्]: @deva[सु] (@deva[लोप]) → still a @deva[पद] → @deva[पदान्त] rules apply
+- @deva[अधोक्]: @deva[त्] ending (@deva[लोप]) → @deva[पद] → @ref[8.2.32] applies to final @deva[ह्]
+
+**Contrast with @ref[1.1.63]:**
+- @deva[लोप]: affix gone, effects preserved (this rule)
+- @deva[लुक्]/@deva[श्लु]/@deva[लुप्]: affix gone, @deva[अङ्गकार्य] cancelled (@ref[1.1.63])
+
+**Why this distinction matters:** The grammar needs both behaviors. Sometimes an affix must disappear without trace (@deva[लुक्] — as when a patronymic affix vanishes in the plural, undoing @deva[वृद्धि]). Other times the affix must disappear while preserving its grammatical effects (@deva[लोप] — as when a case ending vanishes but the word must still undergo @deva[पदान्त] sandhi). This rule and @ref[1.1.63] encode that distinction.
+"""

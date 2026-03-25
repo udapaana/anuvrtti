@@ -1,0 +1,64 @@
+id = "1.3.87"
+numericId = "13087"
+
+[en]
+simple = """
+Causative forms of verbs take @deva[परस्मैपद] (active endings) — unless the verb means "eating/swallowing" (@deva[निगरण]) or "moving/shaking" (@deva[चलन]). This applies even when the fruit of the action accrues to the agent.
+
+**@deva[परस्मैपद] (no eating/moving sense):**
+- @deva[हारयति] "he causes to take"
+- @deva[गमयति] "he causes to go"
+- @deva[कारयति] "he causes to do"
+
+**@deva[आत्मनेपद] (eating/swallowing senses):**
+- @deva[भोजयते] "he feeds"
+- @deva[आशयते] "he causes to eat"
+- @deva[निगारयते] "he causes to swallow"
+
+**@deva[आत्मनेपद] (moving/shaking senses):**
+- @deva[चलयते] "he causes to move"
+- @deva[कम्पयते] "he causes to tremble"
+
+This is the broadest causative rule — it covers most causatives with @deva[परस्मैपद], excluding only two semantic categories.
+"""
+
+standard = """
+Causatives (@deva[णिच्]) of verbs not meaning @deva[निगरण] (eating/swallowing) or @deva[चलन] (moving/shaking) take @deva[परस्मैपद] — even when fruit accrues to the agent.
+
+**Non-eating/moving → @deva[परस्मैपद]:**
+- @deva[हारयति] "he causes to take"
+- @deva[गमयति] "he causes to go"
+
+**Eating/swallowing → @deva[आत्मनेपद] (by @ref[1.3.74]):**
+- @deva[भोजयते] "he feeds"
+- @deva[निगारयते] "he causes to swallow"
+
+**Moving/shaking → @deva[आत्मनेपद] (by @ref[1.3.74]):**
+- @deva[चलयते] "he causes to move"
+- @deva[कम्पयते] "he causes to tremble"
+
+**Rule type — @deva[अपवाद] of @ref[1.3.74]:** This is a broad semantic override. @ref[1.3.74] assigns @deva[आत्मनेपद] to all @deva[णिच्] causatives with @deva[स्वार्थ]. This rule carves out the majority of causatives (all except eating and moving senses) for @deva[परस्मैपद].
+
+**Scope:** Applies to transitive causatives. Intransitive causatives with sentient agents are covered more specifically by @ref[1.3.88].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78]; @deva[णौ] from @ref[1.3.86].
+
+@deva[निगरणचलनार्थदाधाभक्षार्थेषु अन्यतरस्याम्] — for causatives not meaning eating or moving, @deva[परस्मैपद].
+
+**Override of @ref[1.3.74]:** @ref[1.3.74] assigns @deva[आत्मनेपद] to @deva[णिच्] with @deva[स्वार्थ]. This rule exempts the vast majority of causatives — only @deva[निगरण] and @deva[चलन] senses retain @deva[आत्मनेपद].
+
+**Semantic basis:** Eating and moving are inherently self-directed actions — food enters the eater, movement involves the mover's body. Their causatives retain a self-benefit quality that @deva[आत्मनेपद] captures. Other causative actions (causing to take, go, know, etc.) are more outward-directed.
+
+**Interaction with @ref[1.3.86]:** @ref[1.3.86] enumerates eight specific roots. @ref[1.3.87] provides the general semantic principle. Some overlap exists (e.g., @deva[द्रु] "to run" is a motion root but gets @deva[परस्मैपद] by @ref[1.3.86]'s enumeration, which overrides @ref[1.3.87]'s @deva[चलन] exclusion).
+
+**@deva[वार्त्तिक]:** The root @deva[अद्] "to eat" takes @deva[आत्मनेपद] in causative: @deva[आदयते] — it falls under @deva[निगरण].
+
+**Causative @deva[पद] hierarchy:**
+1. @ref[1.3.86]: eight enumerated roots → @deva[परस्मैपद] (most specific)
+2. @ref[1.3.87] (this): non-eating/non-moving → @deva[परस्मैपद] (broad semantic)
+3. @ref[1.3.88]: intransitive + sentient → @deva[परस्मैपद]
+4. @ref[1.3.89]: enumerated exceptions → @deva[आत्मनेपद]
+5. @ref[1.3.74]: default causative + @deva[स्वार्थ] → @deva[आत्मनेपद]
+"""

@@ -1,0 +1,56 @@
+id = "2.1.36"
+numericId = "21036"
+
+[en]
+simple = """
+A word in the dative case (@deva[चतुर्थी]) **optionally** compounds with certain words to form @deva[तत्पुरुष]. The second member can be:
+- A word denoting "what serves that purpose" (@deva[तदर्थ]) — specifically when material transforms into a product
+- Or the words @deva[अर्थ] "for the sake of," @deva[बलि] "offering," @deva[हित] "beneficial," @deva[सुख] "pleasant," or @deva[रक्षित] "kept for"
+
+**Examples:**
+- @deva[यूपदारु] "wood for a sacrificial post" — the wood will become the post
+- @deva[कुण्डलहिरण्यम्] "gold for earrings" — the gold will become earrings
+- @deva[गोहितम्] "beneficial for cows"
+- @deva[गोसुखम्] "pleasant for cows"
+- @deva[गोरक्षितम्] "grass kept for cows"
+- @deva[कुवेरबलिः] "an offering for @deva[कुबेर]"
+
+**No compound when no transformation:** @deva[रन्धनाय स्थाली] "a pot for cooking" — the pot does not become the cooking, so no compound.
+
+This is the **first @deva[चतुर्थी] @deva[तत्पुरुष] rule** — the @deva[तृतीया] section ended at @ref[2.1.35].
+"""
+
+standard = """
+@deva[चतुर्थ्यन्त] + @deva[तदर्थवाचक]/@deva[अर्थ]/@deva[बलि]/@deva[हित]/@deva[सुख]/@deva[रक्षित] → @deva[विभाषा] @deva[तत्पुरुष] — @deva[चतुर्थी तदर्थार्थबलिहितसुखरक्षितैः].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[यूपदारु] = @deva[यूपाय दारु] "wood for a sacrificial post"
+- @deva[कुण्डलहिरण्यम्] "gold for earrings"
+- @deva[ब्राह्मणार्थम् पयः] "milk for @deva[ब्राह्मण]s"
+- @deva[कुवेरबलिः] "offering for @deva[कुबेर]"
+- @deva[गोहितम्] "good for cows"
+- @deva[गोसुखम्] "pleasant for cows"
+- @deva[गोरक्षितम्] "kept for cows"
+
+**@deva[तदर्थ] — material-to-product:** The @deva[चतुर्थी] first member names the purpose, and the second member names the material that will be transformed to serve that purpose. @deva[यूपदारु]: wood (material) → sacrificial post (product). Counter-example: @deva[रन्धनाय स्थाली] — the pot does not become the cooking, so @deva[तदर्थ] does not apply.
+
+**Accent:** @ref[6.2.44] and @ref[6.2.45] govern accent in these compounds.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[चतुर्थी तदर्थार्थबलिहितसुखरक्षितैः] — a @deva[चतुर्थ्यन्त] word optionally compounds with these words as @deva[तत्पुरुष].
+
+**@deva[तदर्थ] defined:** The @deva[महाभाष्य] defines @deva[तदर्थ] as the material-to-product relation: @deva[तस्मै प्रकृतिभूताय विकृतिभूतम्] — "what exists in modified form for what exists as raw material." @deva[यूपदारु]: wood (@deva[प्रकृति]) transforms into a post (@deva[विकृति]). @deva[रन्धनाय स्थाली] fails: the pot is not raw material for cooking.
+
+**@deva[अर्थ] — @deva[नित्यसमास]:** The @deva[वार्त्तिककार] notes that compounds with @deva[अर्थ] are @deva[नित्य] and agree in gender/number with the qualified noun: @deva[ब्राह्मणार्थम् पयः] (neuter), @deva[ब्राह्मणार्था यवागूः] (feminine).
+
+**Case transition:** @ref[2.1.30]–@ref[2.1.35] covered @deva[तृतीया]; this rule begins @deva[चतुर्थी]. The case-based @deva[तत्पुरुष] section (@ref[2.1.24]–@ref[2.1.48]) proceeds: @deva[द्वितीया] (@ref[2.1.24]–@ref[2.1.29]), @deva[तृतीया] (@ref[2.1.30]–@ref[2.1.35]), @deva[चतुर्थी] (@ref[2.1.36]), @deva[पञ्चमी] (@ref[2.1.37]–@ref[2.1.39]), @deva[षष्ठी] (@ref[2.1.40]–@ref[2.1.43]), @deva[सप्तमी] (@ref[2.1.44]–@ref[2.1.48]).
+
+**Single rule for @deva[चतुर्थी]:** Unlike @deva[द्वितीया] (6 rules) and @deva[तृतीया] (6 rules), @deva[चतुर्थी] has only this one rule. The dative relationship in compounds is largely captured by this single enumeration.
+
+**Accent:** @ref[6.2.44] (@deva[तदर्थ]) and @ref[6.2.45] (@deva[बलि] etc.) specify accent patterns for these compounds.
+"""

@@ -1,0 +1,48 @@
+id = "3.1.120"
+numericId = "31120"
+
+[en]
+simple = """
+The affix @deva[क्यप्] is **optionally** used after @deva[कृञ्] 'to do' and @deva[वृष्] 'to rain'.
+
+**Both forms valid:**
+- @deva[कृ] + @deva[क्यप्] = @deva[कृत्यम्] 'to be done'
+- @deva[कृ] + @deva[ण्यत्] = @deva[कार्यम्] 'to be done'
+
+- @deva[वृष्] + @deva[क्यप्] = @deva[वृष्यम्] 'stimulating'
+- @deva[वृष्] + @deva[ण्यत्] = @deva[वर्ष्यम्] 'stimulating'
+"""
+
+standard = """
+The affix @deva[क्यप्] is **optionally** used after @deva[कृञ्] 'to do' and @deva[वृष्] 'to rain'.
+
+**Why this option?**
+- @deva[कृ] would take @deva[ण्यत्] by @ref[3.1.124] (consonant-final)
+- @deva[वृष्] would take @deva[क्यप्] by @ref[3.1.110] (penultimate @deva[ऋ])
+
+This @[sūtra] provides an option for both.
+
+**Both forms:**
+| Root | @deva[क्यप्] | @deva[ण्यत्] | Meaning |
+|------|---------|---------|------|
+| @deva[कृ] | @deva[कृत्यम्] | @deva[कार्यम्] | 'to be done' |
+| @deva[वृष्] | @deva[वृष्यम्] | @deva[वर्ष्यम्] | 'stimulating, aphrodisiac' |
+"""
+
+advanced = """
+The affix @deva[क्यप्] is optionally used after @deva[कृञ्] 'to do' and @deva[वृष्] 'to rain'.
+
+**Analysis:**
+- @deva[कृ] would normally take @deva[ण्यत्] by @ref[3.1.124] (consonant-final root)
+- @deva[वृष्] would necessarily take @deva[क्यप्] by @ref[3.1.110] (penultimate short @deva[ऋ])
+
+This @[sūtra] establishes @deva[विभाषा] (option) for both:
+
+**@deva[कृ]:**
+- @deva[कृ] + @deva[क्यप्] = @deva[कृत्यम्] 'to be done'
+- @deva[कृ] + @deva[ण्यत्] = @deva[कार्यम्] 'to be done' (with @deva[वृद्धि])
+
+**@deva[वृष्]:**
+- @deva[वृष्] + @deva[क्यप्] = @deva[वृष्यम्] 'stimulating, aphrodisiac'
+- @deva[वृष्] + @deva[ण्यत्] = @deva[वर्ष्यम्] 'stimulating' (with @deva[वृद्धि] @deva[ऋ] → @deva[अर्])
+"""

@@ -1,0 +1,55 @@
+id = "2.3.18"
+numericId = "23018"
+
+[en]
+simple = """
+The @deva[कर्तृ] (agent, the doer of an action) and the @deva[करण] (instrument, the means by which an action is accomplished) both take the @deva[तृतीया] (instrumental, third case-ending).
+
+**Agent examples (typically in passive constructions):**
+- @deva[देवदत्तेन कृतम्] "done by @deva[देवदत्त]" — @deva[देवदत्त] is the agent, marked with instrumental
+- @deva[यज्ञदत्तेन भुक्तम्] "eaten by @deva[यज्ञदत्त]"
+
+**Instrument examples:**
+- @deva[दात्रेण लुनाति] "he cuts with a sickle" — the sickle is the instrument
+- @deva[परशुना छिनत्ति] "he splits with an axe"
+
+The instrumental answers both "by whom?" (agent in passive) and "with what?" (instrument in active or passive).
+"""
+
+standard = """
+@deva[कर्तृकरणयोस्तृतीया] — @deva[तृतीया] expresses @deva[कर्तृ] (agent) and @deva[करण] (instrument).
+
+**Rule type — @deva[विधि]:** Core case-assignment for @deva[तृतीया].
+
+**@deva[कर्तृ] — @ref[1.4.54]:** @deva[स्वतन्त्रः कर्ता] — the independent agent. Takes @deva[तृतीया] when the verb form does not express the agent (typically in passive constructions):
+- @deva[देवदत्तेन कृतम्] "done by @deva[देवदत्त]"
+- @deva[यज्ञदत्तेन भुक्तम्] "eaten by @deva[यज्ञदत्त]"
+
+**@deva[करण] — @ref[1.4.42]:** @deva[साधकतमं करणम्] — the most effective means. Takes @deva[तृतीया] in any voice:
+- @deva[दात्रेण लुनाति] "he cuts with a sickle"
+- @deva[परशुना छिनत्ति] "he splits with an axe"
+
+**@deva[वार्त्तिक] extensions:** Several additional words take @deva[तृतीया] by @deva[वार्त्तिक]: @deva[प्रकृति] "by nature" (@deva[प्रकृत्या याज्ञिकः]), @deva[प्राय] "mostly" (@deva[प्रायेण याज्ञिकः]), @deva[गोत्र] "by lineage" (@deva[गार्ग्योऽस्मि गोत्रेण]), @deva[सम]/@ deva[@deva[विषम]] "equally/unequally" (@deva[समेन धावति]).
+
+**Scope:** This is the primary @deva[तृतीया] rule. Subsequent rules (@ref[2.3.19]–@ref[2.3.27]) extend @deva[तृतीया] to additional contexts beyond @deva[कर्तृ] and @deva[करण].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[कर्तृकरणयोस्तृतीया] — @deva[तृतीया] is assigned to @deva[कर्तृ] and @deva[करण].
+
+**@deva[कर्तृ] — @ref[1.4.54]: @deva[स्वतन्त्रः कर्ता]:** The entity that is independent (@deva[स्वतन्त्र]) in performing the action. In active voice, the agent takes @deva[प्रथमा] (because the @deva[तिङ्] ending expresses the agent — @deva[अभिहित]). In passive voice, the @deva[तिङ्] expresses @deva[कर्मन्] instead, leaving the agent @deva[अनभिहित] — hence @deva[तृतीया]: @deva[देवदत्तेन कटः क्रियते].
+
+**@deva[करण] — @ref[1.4.42]: @deva[साधकतमं करणम्]:** The most effective enabler of the action — not the agent, but the means. @deva[दात्रेण लुनाति] — the sickle is what most effectively accomplishes the cutting. @deva[करण] takes @deva[तृतीया] in both active and passive, since verb endings never express @deva[करण].
+
+**@deva[अनभिहित] interaction:** The @deva[कर्तृ] takes @deva[तृतीया] only when @deva[अनभिहित] — not expressed by the verb ending. In @deva[देवदत्तः करोति] (active), the @deva[तिप्] ending expresses the agent, so @deva[देवदत्त] takes @deva[प्रथमा]. In @deva[देवदत्तेन क्रियते] (passive), the agent is unexpressed by the verb, so @deva[तृतीया] applies.
+
+**@deva[वार्त्तिक] extensions:** Additional words prescribed for @deva[तृतीया]:
+- @deva[प्रकृति]: @deva[प्रकृत्या याज्ञिकः] "a ritualist by nature"
+- @deva[प्राय]: @deva[प्रायेण याज्ञिकः] "mostly a ritualist"
+- @deva[गोत्र]: @deva[गार्ग्योऽस्मि गोत्रेण] "I am @deva[गार्ग्य] by lineage"
+- @deva[सम]/@deva[विषम]: @deva[समेन विषमेण वा धावति] "runs equally/unequally"
+
+**First @deva[तृतीया] rule:** This begins the @deva[तृतीया] sub-section (@ref[2.3.18]–@ref[2.3.27]). It provides the core @deva[कारक]-based assignments; subsequent rules handle specific extensions (accompaniment, body-part defects, cause, manner, etc.).
+"""

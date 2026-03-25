@@ -1,0 +1,63 @@
+id = "1.4.23"
+numericId = "14023"
+
+[en]
+simple = """
+The term @deva[कारक] "case-relation" governs the rules from here onward. A @deva[कारक] is any entity that contributes to accomplishing an action.
+
+In the sentence @deva[रामः अग्निना स्थाल्यां ओदनं पचति स्वामिने] "@[rāma] cooks rice in a pot, by fire, for his master," every participant plays a role:
+
+| Role | Sanskrit name | Example |
+|------|--------------|---------|
+| Agent (doer) | @deva[कर्तृ] | @[rāma] |
+| Object (acted upon) | @deva[कर्मन्] | rice |
+| Instrument (means) | @deva[करण] | fire |
+| Recipient (for whom) | @deva[सम्प्रदान] | master |
+| Source (from where) | @deva[अपादान] | (furnace) |
+| Location (where) | @deva[अधिकरण] | pot |
+
+These six @deva[कारक]s are the building blocks of Sanskrit sentence structure. Each one determines which case ending a noun receives.
+"""
+
+standard = """
+The @deva[कारकाधिकार] begins here — @deva[कारके].
+
+**Rule type — @deva[अधिकार] (governing rule):** This @deva[अधिकार] extends through @ref[1.4.55]. All @deva[कारक] definitions fall within this scope.
+
+**Six @deva[कारक]s:**
+
+| @deva[कारक] | Definition | Case | Defined at |
+|--------|-----------|------|-----------|
+| @deva[अपादान] | Source of departure | @deva[पञ्चमी] | @ref[1.4.24] |
+| @deva[सम्प्रदान] | Recipient | @deva[चतुर्थी] | @ref[1.4.32] |
+| @deva[करण] | Most effective instrument | @deva[तृतीया] | @ref[1.4.42] |
+| @deva[अधिकरण] | Locus of action | @deva[सप्तमी] | @ref[1.4.45] |
+| @deva[कर्मन्] | What agent most seeks to attain | @deva[द्वितीया] | @ref[1.4.49] |
+| @deva[कर्तृ] | Independent agent | @deva[प्रथमा] | @ref[1.4.54] |
+
+**@deva[कारक] → @deva[विभक्ति] mapping:** Each @deva[कारक] is linked to a case ending by rules in @ref[2.3.1]ff. The @deva[कारक] is the semantic role; the @deva[विभक्ति] is the morphological expression.
+"""
+
+advanced = """
+@deva[कारके] — the @deva[कारक] @deva[अधिकार] begins.
+
+**@deva[अधिकार] scope:** @ref[1.4.23]–@ref[1.4.55]. All @deva[कारक] @deva[संज्ञा] definitions fall within this governing rule.
+
+**@deva[कारक] theory:** A @deva[कारक] is defined as @deva[क्रियानिमित्तकं सम्बन्धम्] — a relation motivated by the action. Every participant in an action that has a direct role in its accomplishment is a @deva[कारक]. Entities not directly contributing (like the @deva[सम्बन्ध] "possessor" or @deva[सम्बोधन] "addressee") are not @deva[कारक]s.
+
+**Order of definition — @deva[अपादान] first:** @deva[पाणिनि] defines @deva[कारक]s in a specific order that reflects the @ref[1.4.2] conflict-resolution principle. When an element qualifies as multiple @deva[कारक]s, the later-defined one prevails:
+1. @deva[अपादान] (@ref[1.4.24]–@ref[1.4.31])
+2. @deva[सम्प्रदान] (@ref[1.4.32]–@ref[1.4.41])
+3. @deva[करण] (@ref[1.4.42]–@ref[1.4.44])
+4. @deva[अधिकरण] (@ref[1.4.45]–@ref[1.4.48])
+5. @deva[कर्मन्] (@ref[1.4.49]–@ref[1.4.53])
+6. @deva[कर्तृ] (@ref[1.4.54]–@ref[1.4.55])
+
+**@deva[कारक] → case mapping (@ref[2.3.1]ff):**
+- @deva[कर्तृ] → @deva[प्रथमा] (active) / @deva[तृतीया] (passive)
+- @deva[कर्मन्] → @deva[द्वितीया]
+- @deva[करण] → @deva[तृतीया]
+- @deva[सम्प्रदान] → @deva[चतुर्थी]
+- @deva[अपादान] → @deva[पञ्चमी]
+- @deva[अधिकरण] → @deva[सप्तमी]
+"""

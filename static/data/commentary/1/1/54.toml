@@ -1,0 +1,44 @@
+id = "1.1.54"
+numericId = "11054"
+
+[en]
+simple = """
+When a substitute is prescribed for a following element (not the term itself, but what comes after it), the substitute replaces only the first letter of that following element — not the last letter, as @ref[1.1.52] would normally require.
+
+**Example:** @ref[6.3.97] says @deva[ई] replaces @deva[अप्] when it follows @deva[द्वि]. Here @deva[अप्] is the "following element." The @deva[ई] replaces the initial @deva[अ] of @deva[अप्]: @deva[द्वि] + @deva[अप्] → @deva[द्वीप्] → @deva[द्वीपम्] "island."
+
+This is the mirror image of the default: normally substitutes target the end, but when the rule specifies "for what follows," they target the beginning.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] modifies the default substitution scope: when a substitute is prescribed for the @deva[परनिमित्त] (the following element), it replaces the @deva[आदि] (initial sound), not the @deva[अन्त्य] (final).
+
+**Example 1:** @ref[6.3.97] — @deva[ई] replaces @deva[अप्] after @deva[द्वि]:
+- @deva[द्वि] + @deva[अप्]: @deva[ई] replaces initial @deva[अ] → @deva[द्वीप्] → @deva[द्वीपम्] "island"
+
+**Example 2:** @ref[6.1.89] — @deva[एच्] vowels before a following vowel: when the substitute targets the following vowel, it replaces the initial sound of that following element.
+
+**Contrast with @ref[1.1.52]:** The default rule says a substitute replaces the final of the @deva[स्थानिन्]. This rule flips the target to the initial — but only when the substitute is prescribed specifically for a following element.
+
+**Scope:** This applies only when the rule's genitive term refers to what follows the trigger, not to the trigger itself.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[स्थाने] from @ref[1.1.49]; @deva[अल्] from @ref[1.1.52].
+
+@deva[आदेः परस्य] — a substitute prescribed for the @deva[पर] (following element) replaces its @deva[आदि] (initial sound).
+
+**How to identify a @deva[परादेश]:** When the genitive in a substitution rule refers not to the element being modified, but to what follows it, the substitute targets the initial of that following element.
+
+**Example:** @ref[6.3.97] (@deva[अप ईत्]) — @deva[ई] replaces @deva[अप्] after @deva[द्वि]/upasargas. @deva[अप्] is the @deva[पर] (following element). @deva[ई] replaces its initial @deva[अ]: @deva[द्वि] + @deva[अप्] → @deva[द्वीप्] → @deva[द्वीपम्] "island."
+
+**Position in the substitution system:**
+- @ref[1.1.52]: default — replace the final
+- @ref[1.1.53]: @deva[ङित्] — also final, even if multi-letter (overrides @ref[1.1.55])
+- @ref[1.1.54] (this rule): following element — replace the initial
+- @ref[1.1.55]: multi-letter/@deva[शित्] — replace everything
+
+**Why initial, not final?** When a rule modifies what follows, the junction point is the beginning of the following element. The initial sound is the contact point between the two elements, so it is the natural target for modification.
+
+**Interaction with @ref[1.1.55]:** If the substitute for a following element is multi-letter, does it replace just the initial (by this rule) or the whole thing (by @ref[1.1.55])? @ref[1.1.55] prevails for multi-letter substitutes, since it is a later rule in the sequence.
+"""

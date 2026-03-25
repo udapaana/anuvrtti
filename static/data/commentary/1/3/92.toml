@@ -1,0 +1,56 @@
+id = "1.3.92"
+numericId = "13092"
+
+[en]
+simple = """
+The @deva[वृतादि] group of 5 roots — @deva[वृत्] "to exist," @deva[वृध्] "to grow," @deva[शृध्] "to blow," @deva[स्यन्द्] "to flow," and @deva[कृप्] "to be fit" — optionally take @deva[परस्मैपद] (active endings) with the future/conditional (@deva[स्य]) and desiderative (@deva[सन्]) affixes.
+
+**Both are correct:**
+- Future: @deva[वर्त्स्यति] / @deva[वर्तिष्यते] "he will exist"
+- Conditional: @deva[अवर्त्स्यत्] / @deva[अवर्तिष्यत] "he would have existed"
+- Desiderative: @deva[विवृत्सति] / @deva[विवर्तिषते] "he wishes to exist"
+
+**Other tenses — @deva[आत्मनेपद] only:**
+- @deva[वर्तते] "he exists" (present)
+
+These 5 roots are a subset of the @deva[द्युतादि] group. The previous rule (@ref[1.3.91]) already allows @deva[परस्मैपद] in the aorist for all 22 @deva[द्युतादि] roots. This rule extends the option to future and desiderative for these 5 roots specifically.
+"""
+
+standard = """
+@deva[वृतादि] roots (5 roots within @deva[द्युतादि]: @deva[वृत्], @deva[वृध्], @deva[शृध्], @deva[स्यन्द्], @deva[कृप्]) optionally take @deva[परस्मैपद] with @deva[स्य] (future/conditional) and @deva[सन्] (desiderative) — @deva[विभाषा].
+
+**Both valid:**
+- Future: @deva[वर्त्स्यति] / @deva[वर्तिष्यते] "he will exist"
+- Conditional: @deva[अवर्त्स्यत्] / @deva[अवर्तिष्यत] "he would have existed"
+- Desiderative: @deva[विवृत्सति] / @deva[विवर्तिषते] "he wishes to exist"
+
+**Other tenses — @deva[आत्मनेपद] only:**
+- @deva[वर्तते] "he exists" (present — @deva[लट्])
+
+**Rule type — @deva[विभाषा] extending @ref[1.3.91]:** @ref[1.3.91] covers all @deva[द्युतादि] roots in @deva[लुङ्]. This rule extends the @deva[परस्मैपद] option to @deva[स्य] and @deva[सन्] for 5 roots. Combined, these 5 roots have optionality in @deva[लुङ्] (by @ref[1.3.91]) + @deva[स्य]/@deva[सन्] (by this rule).
+
+**Scope:** @deva[स्य] covers both @deva[लृट्] (simple future) and @deva[लृङ्] (conditional), since both use @deva[स्य] as their tense marker.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78].
+
+@deva[वृतादिभ्यश्च स्यसनोः] — @deva[वृतादि] roots optionally take @deva[परस्मैपद] with @deva[स्य] and @deva[सन्].
+
+**Subset narrowing:** @deva[वृतादि] (5 roots) ⊂ @deva[द्युतादि] (22 roots). @ref[1.3.91] gives all 22 roots optionality in @deva[लुङ्]. This rule gives only 5 roots additional optionality with @deva[स्य] and @deva[सन्].
+
+**Cumulative tense coverage for @deva[वृतादि]:**
+- @deva[लुङ्]: optional by @ref[1.3.91]
+- @deva[लृट्]/@deva[लृङ्] (both use @deva[स्य]): optional by @ref[1.3.92] (this)
+- @deva[सन्] (desiderative): optional by @ref[1.3.92] (this)
+- All other @deva[लकार]s: @deva[आत्मनेपद] only (by @ref[1.3.12])
+
+**Progressive widening pattern:**
+- @ref[1.3.91]: 22 roots × 1 tense (@deva[लुङ्])
+- @ref[1.3.92] (this): 5 roots × 2 more contexts (@deva[स्य], @deva[सन्])
+- @ref[1.3.93]: 1 root (@deva[क्लिप्]) × 1 more context (@deva[लुट्])
+
+Each rule narrows the root set while widening the tense range — an elegant tapering structure.
+
+**@deva[स्य] coverage:** @deva[स्य] is the @deva[विकरण] for both @deva[लृट्] (simple future) and @deva[लृङ्] (conditional). Both are covered by a single mention.
+"""

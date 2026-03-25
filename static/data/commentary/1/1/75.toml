@@ -1,0 +1,50 @@
+id = "1.1.75"
+numericId = "11075"
+
+[en]
+simple = """
+A word naming a place in eastern India (@deva[प्राची]) is called @deva[वृद्ध] if its first vowel is @deva[ए] or @deva[ओ]. Normally, only @deva[आ], @deva[ऐ], @deva[औ] count as @deva[वृद्धि] (@ref[1.1.1]), so words with @deva[ए] or @deva[ओ] would not qualify as @deva[वृद्ध] under the general rule (@ref[1.1.73]). This rule extends the designation for eastern place names.
+
+**Example:** @deva[गोनर्द] (an eastern region) has @deva[ओ] as its first vowel. By this rule, it is @deva[वृद्ध] → @deva[गोनर्द] + @deva[छ्] → @deva[गोनर्दीयः] "of/from @deva[गोनर्द]."
+
+Three conditions must all be met: (1) the word names a place, (2) the place is in the east, and (3) the first vowel is @deva[ए] or @deva[ओ]. A river name with @deva[ओ] (like @deva[गोमती]) does not qualify because it is not a place name. A western town with @deva[ओ] does not qualify because it is not eastern.
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] extends the @deva[वृद्ध] designation to eastern place names whose first vowel is @deva[एङ्] (@deva[ए] or @deva[ओ]).
+
+**Three conditions:**
+1. **@deva[जनपद]** — the word names a country or region (not a river, mountain, etc.)
+2. **@deva[प्राची]** — the region is in the east
+3. **@deva[एङ्] first vowel** — the first vowel is @deva[ए] or @deva[ओ]
+
+**Examples:**
+- @deva[गोनर्द] (eastern region, first vowel @deva[ओ]) → @deva[वृद्ध] → + @deva[छ्] → @deva[गोनर्दीयः]
+- @deva[एणीपचन] (eastern region, first vowel @deva[ए]) → @deva[वृद्ध] → + @deva[छ्] → @deva[एणीपचनीयम्]
+
+**Non-qualifying cases:**
+- @deva[गोमती] (river, not @deva[जनपद]) → not @deva[वृद्ध] by this rule → @deva[गौमतेयः] (regular @deva[तद्धित])
+- A western town with @deva[ओ] → not eastern → not @deva[वृद्ध] by this rule
+
+**Why @deva[एङ्] and not @deva[वृद्धि]?** @deva[ए] and @deva[ओ] are @deva[गुण] vowels, not @deva[वृद्धि]. In the eastern dialect, these vowels carry a prestige similar to @deva[वृद्धि] vowels, leading @deva[पाणिनि] to grant the @deva[वृद्ध] status to such place names.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[वृद्धम्] from @ref[1.1.73].
+
+@deva[एङ् प्राचां देशे] — @deva[एङ्] (@deva[ए], @deva[ओ]) as the first vowel qualifies as @deva[वृद्ध] for words naming eastern places.
+
+**This is the last of three @deva[वृद्ध] rules:**
+1. @ref[1.1.73]: general — first vowel is @deva[वृद्धि] (@deva[आ/ऐ/औ])
+2. @ref[1.1.74]: conventional — @deva[त्यदादि] pronouns
+3. @ref[1.1.75] (this rule): regional — eastern place names with @deva[एङ्]
+
+**Why a special rule for the east?** The @deva[काशिका] notes that in eastern regions, place names with @deva[ए/ओ] initial vowels are common and treated as @deva[वृद्ध] in local usage. @deva[पाणिनि] accommodates this dialectal convention.
+
+**Strict conditions:**
+- **@deva[देश] (place/country):** Rivers (@deva[गोमती]), people (@deva[गोपाल]), or objects are excluded. Only @deva[जनपद] (country/region) names qualify.
+- **@deva[प्राची] (eastern):** The @deva[सिद्धान्तकौमुदी] identifies @deva[प्राची] as the eastern region, roughly corresponding to Bengal, @deva[अङ्ग], @deva[वङ्ग], @deva[कलिङ्ग], etc.
+- **@deva[एङ्] first vowel:** Only @deva[ए] and @deva[ओ] — not @deva[ऐ] or @deva[औ] (which already qualify under @ref[1.1.73]).
+
+**This rule concludes @deva[पाद] 1.1.** The 75 @[sūtras] of this @deva[पाद] have defined the fundamental technical apparatus: @deva[संज्ञा]s (designations), @deva[परिभाषा]s (interpretive principles), substitution mechanics, elision types, positional terms, metalinguistic conventions, and scope rules. All subsequent @deva[पाद]s build on this foundation.
+"""

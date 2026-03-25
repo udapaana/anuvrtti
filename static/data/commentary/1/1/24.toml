@@ -1,0 +1,39 @@
+id = "1.1.24"
+numericId = "11024"
+
+[en]
+simple = """
+Numeral words (@deva[संख्या]) that end in @deva[ष्] or @deva[न्] receive the technical name @deva[षट्]. In practice, these are the numbers 5 through 10: @deva[पञ्चन्] (5), @deva[षष्] (6), @deva[सप्तन्] (7), @deva[अष्टन्] (8), @deva[नवन्] (9), @deva[दशन्] (10).
+
+The @deva[षट्] label triggers a distinctive behavior: these words lose their nominative and accusative plural endings entirely. That is why you say @deva[पञ्च गच्छन्ति] "five go" — not *@deva[पञ्चानि गच्छन्ति].
+
+**Example:** @deva[षट् तिष्ठन्ति] "six stand" — the plural ending disappears by @ref[7.1.22].
+"""
+
+standard = """
+@deva[संख्या] words (defined at @ref[1.1.23]) ending in @deva[ष्] or @deva[न्] are termed @deva[षट्].
+
+**The six @deva[षट्] words:** @deva[पञ्चन्] (5), @deva[षष्] (6), @deva[सप्तन्] (7), @deva[अष्टन्] (8), @deva[नवन्] (9), @deva[दशन्] (10).
+
+**Effect:** @ref[7.1.22] deletes nominative and accusative plural endings for @deva[षट्] words: @deva[षट् तिष्ठन्ति] "six stand," @deva[पञ्च गच्छन्ति] "five go."
+
+**Why @deva[अन्त] ("ending")?** The @deva[ष्] or @deva[न्] must be part of the original (@deva[औपदेशिक]) form of the word, not an augment added later. @deva[शत] "hundred" takes a @deva[न्] augment in plural (@deva[शतानि]), but that @deva[न्] is not original — so @deva[शत] is not @deva[षट्].
+
+**Why @deva[संख्या] first?** The word must already be @deva[संख्या] by @ref[1.1.23]. A non-numeral word ending in @deva[न्] (like @deva[राजन्] "king") does not qualify.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[संख्या] from @ref[1.1.23].
+
+@deva[ष्णान्ता षट्] — @deva[संख्या] words ending in @deva[ष्] or @deva[न्] are @deva[षट्]. The compound @deva[ष्णान्ता] means "@deva[ष्]-ending or @deva[न्]-ending."
+
+**The six words:** @deva[पञ्चन्], @deva[षष्], @deva[सप्तन्], @deva[अष्टन्], @deva[नवन्], @deva[दशन्].
+
+**Primary rule that references @deva[षट्]:** @ref[7.1.22] (@deva[षड्भ्यो लुक्]) — @deva[जस्] and @deva[शस्] (nom./acc. plural endings) are deleted for @deva[षट्] words: @deva[षट् तिष्ठन्ति], @deva[पञ्च गच्छन्ति].
+
+**@deva[अन्त] = @deva[औपदेशिक]:** The @deva[ष्]/@deva[न्] must be in the original cited form (@deva[उपदेश]), not an augment. @deva[शतानि] "hundreds" has @deva[न्] as an augment (@deva[नुम्]-@deva[आगम]), not as part of the base form @deva[शत]. So @deva[शत] is not @deva[षट्], and @ref[7.1.22] does not apply — we get @deva[शतानि], not *@deva[शत].
+
+**Why not @deva[राजन्]?** @deva[राजन्] ends in @deva[न्] but is not @deva[संख्या] by @ref[1.1.23], so it fails the prerequisite. The @deva[संख्या] restriction ensures only numerals qualify.
+
+**Relation to @ref[1.1.25]:** @deva[डति]-ending @deva[संख्या] words (like @deva[कति]) are separately designated @deva[षट्] by the next rule, since they end in @deva[इ] rather than @deva[ष्]/@deva[न्].
+"""

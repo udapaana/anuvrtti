@@ -1,0 +1,50 @@
+id = "1.2.49"
+numericId = "12049"
+
+[en]
+simple = """
+When a @deva[तद्धित] affix (secondary suffix) is completely deleted by @deva[लुक्] (a type of elision), the feminine suffix of the subordinate word (@deva[उपसर्जन]) is also completely deleted — not just shortened as in @ref[1.2.48].
+
+**Example:** @deva[श्रविष्ठा] (a star name, feminine) + patronymic affix @deva[अण्] → but @deva[अण्] is @deva[लुक्]-elided by @ref[4.3.34] → the feminine @deva[आ] of @deva[श्रविष्ठा] also vanishes → @deva[श्रविष्ठः] "born under the star @deva[श्रविष्ठा]"
+
+Similarly: @deva[फल्गुनी] → @deva[फल्गुनः] (the @deva[ई] vanishes entirely).
+"""
+
+standard = """
+When a @deva[तद्धित] is @deva[लुक्]-elided, the feminine affix of the @deva[उपसर्जन] is also @deva[लुक्]-elided (not merely shortened). This goes beyond @ref[1.2.48].
+
+**Star-name patronymics (by @ref[4.3.34]):**
+- @deva[श्रविष्ठा] + @deva[अण्] (@deva[लुक्]) → @deva[श्रविष्ठः] (not *@deva[श्राविष्ठाः])
+- @deva[फल्गुनी] + @deva[अण्] (@deva[लुक्]) → @deva[फल्गुनः]
+
+**@deva[द्विगु] with @deva[इन्द्राणी] (by @ref[4.1.88]):**
+- @deva[पञ्च] + @deva[इन्द्राणी] + @deva[अण्] → @deva[पञ्चेन्द्रः] "cake for five @deva[इन्द्राणी]s"
+- Both @deva[आनुक्] and @deva[ङीष्] (the feminine affixes in @deva[इन्द्राणी]) vanish along with the @deva[तद्धित]
+
+**Not @deva[तद्धित] @deva[लुक्] — feminine remains:**
+- @deva[गार्ग्याः कुलम्] → @deva[गार्गीकुलम्] — here the @deva[लुक्] applies to a case affix, not a @deva[तद्धित], so the feminine @deva[ई] stays.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[उपसर्जन] from @ref[1.2.48]; @deva[स्त्री] from @ref[1.2.48].
+
+@deva[तद्धिते लुकि] — when a @deva[तद्धित] is @deva[लुक्]-elided, the @deva[उपसर्जन]'s feminine affix is also @deva[लुक्]-elided.
+
+**Escalation from @ref[1.2.48]:** @ref[1.2.48] shortened the feminine vowel; this rule deletes it entirely. The trigger is @deva[तद्धित] @deva[लुक्] — specifically the @deva[लुक्] type of elision (by @ref[1.1.61]), not @deva[लुप्] or @deva[श्लु].
+
+**Why @deva[तद्धित] @deva[लुक्] specifically?** When a @deva[तद्धित] is @deva[लुक्]-elided, its meaning is retained but its form vanishes. The feminine affix, which was part of the base before the @deva[तद्धित] was added, also loses its formal expression — both affixes disappear together.
+
+**Star-name derivation:**
+@deva[श्रविष्ठा] + @deva[अण्]:
+1. @deva[अण्] is @deva[लुक्] by @ref[4.3.34]
+2. Feminine @deva[आ] (from @deva[टाप्]) is also @deva[लुक्] by this rule
+3. → @deva[श्रविष्ठ] + @deva[सुप्] → @deva[श्रविष्ठः]
+
+**@deva[द्विगु] derivation:**
+@deva[पञ्च] + @deva[इन्द्राणी] + @deva[अण्]:
+1. @deva[अण्] is @deva[लुक्] by @ref[4.1.88]
+2. @deva[इन्द्राणी] = @deva[इन्द्र] + @deva[आनुक्] + @deva[ङीष्] — both feminine affixes vanish
+3. → @deva[पञ्चेन्द्र] → @deva[पञ्चेन्द्रः]
+
+**Contrast:** When @deva[लुक्] applies to a @deva[सुप्] (case ending) rather than a @deva[तद्धित], this rule does not apply: @deva[गार्गीकुलम्] — the case affix is @deva[लुक्], but the feminine @deva[ई] survives.
+"""

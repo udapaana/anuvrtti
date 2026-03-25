@@ -1,0 +1,45 @@
+id = "2.3.67"
+numericId = "23067"
+
+[en]
+simple = """
+When a past participle (formed with @deva[क्त]) is used with a present-tense meaning — specifically from roots meaning respect, understanding, or inclination — the agent takes the genitive (@deva[षष्ठी]).
+
+Normally, @deva[क्त] (the past participle suffix) produces past-tense meanings like "gone" or "done." But certain roots use @deva[क्त] to express ongoing states: "honored," "regarded," "desired." With these present-sense @deva[क्त]-forms, the agent appears in the genitive rather than the instrumental.
+
+**Examples:**
+- @deva[राज्ञां पूजितः] — 'honored by kings' (= @deva[राजभिः पूज्यते], 'he is honored by kings') — the agent @deva[राज्ञाम्] is in genitive
+- @deva[अहमेवं मतो महीपतेः] — 'I am so regarded by the king' — the agent @deva[महीपतेः] is in genitive
+
+This would not work with past-tense @deva[क्त]: @deva[ग्रामं गतः] ('gone to the village') keeps the standard case pattern because @deva[गत] here means a completed action, not an ongoing state.
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule), exception to @ref[2.3.69].
+
+When @deva[क्त] carries present-tense (@deva[वर्तमान]) meaning — as licensed by @ref[3.2.187] and @ref[3.2.188] for roots expressing @deva[मति] (thought/opinion), @deva[बुद्धि] (understanding), and @deva[पूजा] (respect/honor) — the @deva[कर्तृ] (agent) takes @deva[षष्ठी].
+
+**Condition:** The @deva[क्त]-form must be functioning as a present-tense expression, not as a true past participle.
+
+**Examples:**
+- @deva[राज्ञां पूजितः] — 'honored by kings' (= @deva[राजभिः पूज्यते]) — root @deva[पूज्] (respect)
+- @deva[अहमेवं मतो महीपतेः] — 'I am so regarded by the king' — root @deva[मन्] (think)
+
+**Counterexamples:**
+- @deva[ओदनं पचमानः] — not a @deva[क्त]-form at all (@deva[शानच्] participle)
+- @deva[ग्रामं गतः] — 'gone to the village' — @deva[क्त] in past sense, not present; @deva[गम्] is not a @deva[मति/बुद्धि/पूजा] root
+
+**Interaction with @ref[2.3.69]:** That rule blocks @deva[षष्ठी] with @deva[निष्ठा] (@deva[क्त/क्तवतु]) generally. This rule overrides that block for the specific case of present-tense @deva[क्त].
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]), @deva[कर्तृ/कर्मन्] (from @ref[2.3.65]).
+
+This rule is an @[apavāda] (exception) to @ref[2.3.69], which prohibits @deva[षष्ठी] with @deva[निष्ठा] forms (@deva[क्त] and @deva[क्तवतु]). The exception is narrowly scoped: it applies only when @deva[क्त] carries @deva[वर्तमान] (present-tense) sense as defined by @ref[3.2.187] (@deva[मति]-meaning roots) and @ref[3.2.188] (@deva[बुद्धि/पूजा]-meaning roots).
+
+The mechanism is: @ref[2.3.69] blocks @deva[षष्ठी] for @deva[कर्तृ/कर्मन्] with @deva[निष्ठा]; this rule reinstates @deva[षष्ठी] for @deva[कर्तृ] when the @deva[क्त]-form expresses an ongoing state rather than a completed past action. The @deva[कर्मन्] is not addressed here — it follows the general @deva[निष्ठा] block of @ref[2.3.69].
+
+**@[vārttika]:** When @deva[क्त] forms abstract neuter nouns denoting the action itself (rather than qualifying a patient), @deva[षष्ठी] is used for the agent: @deva[मयूरस्य नृत्तम्] ('the dancing of the peacock'), @deva[छात्रस्य हसितम्] ('the laughing of the student'). When emphasis on the agent is intended, @deva[तृतीया] is used instead: @deva[छात्रेण हसितम्] ('the laughing was done by the student'). This @[vārttika] extends the genitive-for-agent pattern to a distinct morphosyntactic environment.
+
+Cross-reference @ref[2.3.69] for the general @deva[निष्ठा] block, and @ref[2.3.68] for another @deva[क्त]-based exception.
+"""

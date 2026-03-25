@@ -1,0 +1,53 @@
+id = "1.2.45"
+numericId = "12045"
+
+[en]
+simple = """
+A meaningful word that is neither a verbal root (@deva[धातु]) nor an affix (@deva[प्रत्यय]) is called @deva[प्रातिपदिक] — a "nominal stem." This is the base form of a noun, adjective, or pronoun before case endings are added.
+
+**Examples:** @deva[डित्थ] "a name," @deva[कुण्ड] "bowl," @deva[पीठ] "seat," @deva[राम] "Rama"
+
+**Why "meaningful"?** In @deva[वनम्] "forest," if we split off the case ending @deva[अम्], the remainder @deva[वन्] has no independent meaning. So @deva[वन्] alone is not @deva[प्रातिपदिक] — the whole @deva[वन] is.
+
+**Why "not a root"?** @deva[अहन्] "he killed" looks like it ends in @deva[न्], but it's a verb form (from @deva[हन्]), not a noun stem.
+
+**Why "not an affix"?** @deva[कुण्डे] "in the bowl" ends in @deva[इ], but that @deva[इ] is a case ending, not part of the stem.
+"""
+
+standard = """
+A meaningful form that is neither @deva[धातु] nor @deva[प्रत्यय] is @deva[प्रातिपदिक] (nominal stem). This is a @deva[संज्ञा] rule — one of the most fundamental definitions in the grammar.
+
+**Three conditions:**
+1. **@deva[अर्थवत्]** (meaningful): has independent denotation
+2. **@deva[अधातु]** (not a root): excludes verbal roots listed in the @deva[धातुपाठ]
+3. **@deva[अप्रत्यय]** (not an affix): excludes @deva[सुप्], @deva[तिङ्], @deva[कृत्], @deva[तद्धित], etc.
+
+**Why @deva[अर्थवत्]?** @deva[वन्] in @deva[वनम्] has no meaning alone. If it were @deva[प्रातिपदिक], @ref[8.2.7] (@deva[नलोपः प्रातिपदिकान्तस्य]) would delete the @deva[न्], producing wrong forms.
+
+**Why @deva[अधातु]?** @deva[अहन्] (3sg imperfect of @deva[हन्]) — the @deva[न्] must not be deleted by @ref[8.2.7], because this is a verb form, not a nominal stem.
+
+**Why @deva[अप्रत्यय]?** @deva[कुण्डे] (locative "in the bowl") — the final @deva[ए] is a case ending. If the whole were @deva[प्रातिपदिक], @ref[1.2.47] would wrongly shorten it.
+
+**@deva[निपात]s (particles):** The @deva[महाभाष्य] includes @deva[निपात]s like @deva[अधि], @deva[प्र] as @deva[प्रातिपदिक] — they are meaningful, not roots, not affixes.
+"""
+
+advanced = """
+@deva[अर्थवदधातुरप्रत्ययः प्रातिपदिकम्] — a meaningful form, not @deva[धातु], not @deva[प्रत्यय], is @deva[प्रातिपदिक].
+
+**Foundational @deva[संज्ञा]:** This definition is prerequisite for the entire @deva[सुप्] (nominal inflection) system. By @ref[4.1.1] (@deva[ङ्याप्प्रातिपदिकात्]), case endings are added only to @deva[प्रातिपदिक]s. Without this definition, the grammar cannot begin nominal inflection.
+
+**The three negative conditions analyzed:**
+
+1. **@deva[अर्थवत्]:** Prevents meaningless fragments from being treated as stems. @deva[वन्] in @deva[वनम्] — splitting @deva[वनम्] as @deva[वन्] + @deva[अम्] gives a meaningless @deva[वन्]. But @deva[वन] (with inherent @deva[अ]) is the @deva[प्रातिपदिक].
+
+2. **@deva[अधातु]:** Roots like @deva[पच्], @deva[भू], @deva[कृ] are not @deva[प्रातिपदिक] even though they have meaning. They receive @deva[तिङ्] endings, not @deva[सुप्].
+
+3. **@deva[अप्रत्यय]:** Affixes (@deva[सुप्], @deva[तिङ्], @deva[कृत्], @deva[तद्धित]) are meaningful but are not @deva[प्रातिपदिक]. The locative ending @deva[इ] in @deva[कुण्डे] has meaning (location) but is an affix.
+
+**Complemented by @ref[1.2.46]:** The next rule adds that forms ending in @deva[कृत्] or @deva[तद्धित] affixes, or forms in @deva[समास], are also @deva[प्रातिपदिक]. So the full definition is: @deva[प्रातिपदिक] = (meaningful, non-root, non-affix) OR (@deva[कृत्]-derived) OR (@deva[तद्धित]-derived) OR (compound).
+
+**Rules referencing @deva[प्रातिपदिक]:**
+- @ref[4.1.1]: @deva[सुप्] after @deva[प्रातिपदिक]
+- @ref[1.2.47]: neuter @deva[प्रातिपदिक] takes @deva[ह्रस्व]
+- @ref[8.2.7]: @deva[न्]-deletion at end of @deva[प्रातिपदिक]
+"""

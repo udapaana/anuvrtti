@@ -1,0 +1,46 @@
+id = "1.1.67"
+numericId = "11067"
+
+[en]
+simple = """
+When a grammatical rule uses the ablative case (@deva[पञ्चमी विभक्ति]) — meaning "after X" — the operation happens to what comes immediately after that element.
+
+This is the mirror of @ref[1.1.66]: the locative points backward (to what precedes), and the ablative points forward (to what follows).
+
+**Example:** @ref[8.4.61] prescribes a change "after @deva[उद्]" (the prefix meaning "up"). @deva[उद्] + @deva[स्थानम्] → @deva[उत्थानम्] "rising." The @deva[स्] that follows @deva[उद्] is the target of the operation.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] establishes how the ablative case functions in rules: a term in the @deva[पञ्चमी] (ablative) indicates that the operation applies to the immediately following element.
+
+**The formula:** "After X [ablative], do Y to what follows X."
+
+**Example 1:** @ref[8.4.61] — after @deva[उद्], certain consonant changes apply:
+- @deva[उद्] + @deva[स्थानम्]: the @deva[स्] following @deva[उद्] changes → @deva[उत्थानम्] "rising"
+
+**Example 2:** @ref[8.2.18] (@deva[तिङ् ङतिङः]) — a @deva[तिङन्त] (verb form) following a @deva[ङतिङ्] (non-verb word) receives @deva[अनुदात्त] accent:
+- @deva[ओदनं पचति] "he cooks rice" — @deva[पचति] follows @deva[ओदनम्], so it becomes @deva[अनुदात्त]
+- But in @deva[पचति ओदनम्], @deva[ओदनम्] is not a verb following a non-verb — the rule does not apply in this direction
+
+**Pair with @ref[1.1.66]:** Locative = operation on preceding. Ablative = operation on following. Together they define the directionality of grammatical operations.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[निर्दिष्टे] from @ref[1.1.66].
+
+@deva[तस्मादित्युत्तरस्य] — when a term is exhibited in the ablative (@deva[तस्मात्]), the operation applies to the following element (@deva[उत्तरस्य]).
+
+**Paired system with @ref[1.1.66]:**
+- @ref[1.1.66]: @deva[तस्मिन्] (locative) → @deva[पूर्वस्य] (preceding)
+- @ref[1.1.67] (this rule): @deva[तस्मात्] (ablative) → @deva[उत्तरस्य] (following)
+
+**Examples:**
+- @ref[8.4.61]: after @deva[उद्] (ablative), consonant assimilation → @deva[उद्] + @deva[स्थानम्] → @deva[उत्थानम्]
+- @ref[8.2.18]: @deva[तिङ्] after @deva[ङतिङ्] (ablative) → @deva[अनुदात्त] accent
+
+**Adjacency applies here too:** Just as @ref[1.1.66] requires immediate adjacency for the locative, this rule requires that the target immediately follow the ablative term. No intervening element is permitted.
+
+**Why two separate rules?** Sanskrit grammatical rules use case endings to encode structural information. The locative and ablative naturally convey the notions of "in the presence of" and "from/after" respectively. @deva[पाणिनि] harnesses these case meanings as directional operators: the locative looks left, the ablative looks right. This pair eliminates the need for explicit "preceding" or "following" in each rule.
+
+**Interaction with @ref[1.1.66]:** When a rule uses both locative and ablative terms, the locative identifies the environment to the right, and the ablative identifies the environment to the left, with the operation applying between them.
+"""

@@ -1,0 +1,27 @@
+id = "4.3.6"
+numericId = "43006"
+
+[en]
+simple = """
+The affix @deva[ठञ्] (as well as @deva[यत्]) comes after @deva[अर्ध] (half) when the prior word denotes a direction. This replaces the general @deva[अण्].
+
+The word @deva[च] (and) indicates that @deva[यत्] from the previous @[sūtra] also applies. So both affixes are options.
+
+Examples: @deva[पूर्वार्ध्यम्] or @deva[पौर्वार्धिकम्] (belonging to the eastern half), @deva[दक्षिणार्ध्यम्] or @deva[दाक्षिणार्धिकम्] (belonging to the southern half).
+"""
+
+standard = """
+When @deva[पूर्वपद] denotes direction, both @deva[ठञ्] and @deva[यत्] (via @deva[च]) apply after @deva[अर्ध], debarring @deva[अण्].
+
+Examples: @deva[पूर्वार्ध्यम्] / @deva[पौर्वार्धिकम्], @deva[दक्षिणार्ध्यम्] / @deva[दाक्षिणार्धिकम्].
+
+The term @deva[पद] prevents misreading: without it, @deva[दिक्पूर्वात्] might mean 'preceded by the word @deva[दिक्]' via @deva[स्वरूपविधि] (@ref[1.1.68]), allowing @deva[दिगर्धे जातः] to take the affix.
+"""
+
+advanced = """
+@deva[ठञ्] (plus @deva[यत्] via @deva[च]) applies after @deva[अर्ध] when @deva[पूर्वपद] is @deva[दिक्]-denoting.
+
+Examples: @deva[पूर्वार्ध्यम्] / @deva[पौर्वार्धिकम्], @deva[दक्षिणार्ध्यम्] / @deva[दाक्षिणार्धिकम्].
+
+The inclusion of @deva[पद] blocks @deva[स्वरूपविधि] (@ref[1.1.68]): otherwise @deva[दिक्पूर्वात्] would be parsed as 'after @deva[दिक्]-word + @deva[अर्ध]', and @deva[दिगर्धे जातः] would incorrectly take the affix.
+"""

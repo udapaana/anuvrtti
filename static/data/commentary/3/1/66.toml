@@ -1,0 +1,42 @@
+id = "3.1.66"
+numericId = "31066"
+
+[en]
+simple = """
+This rule says that @deva[चिण्] replaces @deva[च्लि] when the third person singular @deva[आत्मनेपद] ending @deva[त] follows, in constructions that denote the action (@deva[भाव]) or the object (@deva[कर्मन्]).
+
+A verb denotes @deva[भाव] (action) when used impersonally (no grammatical subject).
+A verb denotes @deva[कर्मन्] (object) when used in the passive sense.
+
+Examples:
+- @deva[भावे] (impersonal): @deva[अशयि भवता] (it was lain by you = you lay)
+- @deva[कर्मणि] (passive): @deva[अकारि कटो देवदत्तेन] (the mat was made by Devadatta)
+
+The @deva[चिण्] affix is repeated here for clarity and emphasis.
+"""
+
+standard = """
+@deva[चिण्] substitutes for @deva[च्लि] when @deva[आत्मनेपद] 3rd singular @deva[त] follows in @deva[भावे] (impersonal, denoting action) or @deva[कर्मणि] (passive, denoting object) constructions.
+
+Examples:
+- @deva[भावे]: @deva[अशयि भवता] (it was lain by you)
+- @deva[कर्मणि]: @deva[अकारि कटो देवदत्तेन] (the mat was made by Devadatta)
+
+This rule establishes @deva[चिण्] as the standard aorist formation for passive and impersonal constructions in the 3rd singular.
+
+The repetition of @deva[चिण्] serves to clearly demarcate this rule from the preceding @deva[कर्मकर्तरि] rules.
+"""
+
+advanced = """
+@deva[चिण्] is the @deva[आदेश] for @deva[च्लि] in @deva[भावे] and @deva[कर्मणि] when @deva[आत्मनेपद] 3rd singular @deva[त] follows.
+
+Examples:
+- @deva[भावे] (impersonal): @deva[अशयि भवता]
+- @deva[कर्मणि] (passive): @deva[अकारि कटो देवदत्तेन]
+
+This rule generalizes @deva[चिण्] for passive and impersonal aorist formations. The prior rules (@ref[3.1.60]-@ref[3.1.65]) dealt with @deva[कर्मकर्तरि] (reflexive); this rule covers @deva[भावे] and @deva[कर्मणि] proper.
+
+The repetition of @deva[चिण्] (@deva[चिणेत्याचारो विप्रकृष्टार्थः]) marks a new topic: the standard passive/impersonal aorist.
+
+@note[type=observation]: @deva[चिण्] + @deva[त] → @deva[इ] (by @ref[6.4.104]) gives the characteristic @deva[-इ] ending of the passive aorist 3rd singular.
+"""

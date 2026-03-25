@@ -1,0 +1,44 @@
+id = "1.1.26"
+numericId = "11026"
+
+[en]
+simple = """
+The affixes @deva[क्त] and @deva[क्तवतु] receive the technical name @deva[निष्ठा] (past participle affixes). The @deva[क्] is just a grammatical marker — the actual affixes are @deva[त] and @deva[तवत्].
+
+@deva[क्त] forms the past participle: @deva[कृ] "to do" + @deva[क्त] → @deva[कृतः] "done." @deva[क्तवतु] forms the active past participle: @deva[कृ] + @deva[क्तवतु] → @deva[कृतवान्] "one who did."
+
+Because the @deva[क्] marker makes these affixes @deva[कित्] (see @ref[1.1.5]), they block @deva[गुण] vowel strengthening. The root vowel stays unchanged: @deva[कृतः] (not *@deva[कर्तः]).
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] assigns the name @deva[निष्ठा] to @deva[क्त] and @deva[क्तवतु]. The @deva[क्] is @deva[इत्] (making them @deva[कित्], which blocks @deva[गुण] by @ref[1.1.5]). The @deva[उ] in @deva[क्तवतु] is also @deva[इत्].
+
+**Actual affixes:** @deva[त] (past participle) and @deva[तवत्] (active past participle).
+
+**Examples:**
+- @deva[कृ] + @deva[क्त] → @deva[कृतः] "done" (not *@deva[कर्तः] — @deva[गुण] blocked)
+- @deva[भुज्] + @deva[क्त] → @deva[भुक्तः] "eaten"
+- @deva[कृ] + @deva[क्तवतु] → @deva[कृतवान्] "one who did"
+
+**Feminine formation:** The @deva[इत्]-@deva[उ] in @deva[क्तवतु] triggers @deva[ङीप्] (@deva[ई]) by @ref[4.1.6]: @deva[कृतवान्] (m.) → @deva[कृतवती] (f.).
+
+**Why the label?** The term @deva[निष्ठा] is used in rules like @ref[7.2.14] and @ref[7.2.15] to apply operations to both affixes simultaneously.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is an independent @deva[संज्ञासूत्र].
+
+@deva[क्तक्तवतू निष्ठा] — @deva[क्त] and @deva[क्तवतु] are @deva[निष्ठा]. The dual @deva[क्तक्तवतू] names both affixes; they share the @deva[क्]-@deva[इत्] marker.
+
+**@deva[कित्] consequences:** Being @deva[कित्], @deva[निष्ठा] affixes block @deva[गुण]/@deva[वृद्धि] of @deva[इक्] vowels (@ref[1.1.5]): @deva[कृतः] (not *@deva[कर्तः]), @deva[भुक्तः] (not *@deva[भोक्तः]).
+
+**@deva[इत्]-@deva[उ] in @deva[क्तवतु]:** The @deva[उ] is @deva[इत्] by @ref[1.3.2]. Its purpose: it triggers @deva[ङीप्] for feminine formation by @ref[4.1.6] — @deva[कृतवान्] → @deva[कृतवती]. Without the @deva[उ], @deva[क्तवत्] would form feminines differently.
+
+**Rules referencing @deva[निष्ठा]:**
+- @ref[7.2.14] (@deva[निष्ठायां सेटि]): governs @deva[इट्]-augment before @deva[निष्ठा]
+- @ref[7.2.15]: further conditions on @deva[इट्] before @deva[निष्ठा]
+- @ref[3.2.102]: prescribes @deva[निष्ठा] affixes after certain roots
+- @ref[3.4.72]: @deva[निष्ठा] in @deva[भावे] and @deva[कर्मणि]
+
+**@deva[क्त] vs. @deva[क्तवतु] semantically:** @deva[क्त] is @deva[कर्मणि] (passive) by default: @deva[कृतः] "done (by someone)." @deva[क्तवतु] is @deva[कर्तरि] (active): @deva[कृतवान्] "one who did." However, @deva[क्त] of intransitive roots is @deva[कर्तरि]: @deva[गतः] "one who went."
+"""

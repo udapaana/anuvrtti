@@ -1,0 +1,53 @@
+id = "1.1.70"
+numericId = "11070"
+
+[en]
+simple = """
+The previous rule (@ref[1.1.69]) says that a vowel in a rule includes all its homogeneous sounds — so @deva[अ] includes @deva[आ], @deva[इ] includes @deva[ई], and so on. But sometimes the grammar needs to specify an exact length. This rule provides the mechanism: when a vowel is followed by @deva[त्] (the @deva[तपर] marker), it refers only to vowels of that exact duration.
+
+**Example:** @deva[अत्] means only short @deva[अ] (one @deva[मात्रा]), excluding long @deva[आ]. So in @ref[7.1.9] (@deva[अतो भिस ऐस्]), @deva[अत्] means "after short @deva[अ]" — the rule applies to @deva[देव] + @deva[भिस्] → @deva[देवैः] but not to @deva[सेना] + @deva[भिस्] (which ends in @deva[आ], not @deva[अ]).
+
+Sanskrit has three vowel durations: short (@deva[ह्रस्व], 1 @deva[मात्रा]), long (@deva[दीर्घ], 2 @deva[मात्रा]s), and prolonged (@deva[प्लुत], 3 @deva[मात्रा]s). The @deva[तपर] marker selects exactly one of these.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] qualifies @ref[1.1.69]: when a vowel is marked with @deva[त्] (@deva[तपर]), it denotes only @deva[सवर्ण] sounds of the same prosodic length — not all homogeneous sounds regardless of duration.
+
+**How @deva[तपर] works:**
+- @deva[अत्] = short @deva[अ] only (1 @deva[मात्रा])
+- @deva[आत्] = long @deva[आ] only (2 @deva[मात्रा]s)
+- @deva[इत्] = short @deva[इ] only
+- @deva[ईत्] = long @deva[ई] only
+
+**The three durations:**
+- @deva[ह्रस्व] (short): 1 @deva[मात्रा]
+- @deva[दीर्घ] (long): 2 @deva[मात्रा]s
+- @deva[प्लुत] (prolonged): 3+ @deva[मात्रा]s
+
+**Example:** @ref[7.1.9] (@deva[अतो भिस ऐस्]) — @deva[अत्] means "after short @deva[अ]":
+- @deva[देव] + @deva[भिस्] → @deva[देवैः] (short @deva[अ] — rule applies)
+- @deva[सेना] + @deva[भिस्] → @deva[सेनाभिः] (long @deva[आ] — rule does not apply)
+
+**What @deva[तपर] preserves:** Within the specified length, the vowel still includes all @deva[सवर्ण] variants — different accents (@deva[उदात्त]/@deva[अनुदात्त]/@deva[स्वरित]) and nasal/non-nasal. Only the duration is restricted.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent @deva[परिभाषा].
+
+@deva[तपरस्तत्कालस्य] — a sound with @deva[तपर] (@deva[त्] following) denotes only the @deva[सवर्ण] sounds of that same duration (@deva[तत्काल]).
+
+**Interaction with @ref[1.1.69]:** @ref[1.1.69] extends @deva[अ] to include @deva[आ]. This rule restricts: @deva[अत्] means only @deva[ह्रस्व] @deva[अ]. The @deva[तपर] marker overrides @ref[1.1.69]'s automatic @deva[सवर्ण] extension for duration, while preserving it for accent and nasality.
+
+**What "same duration" includes:** @deva[अत्] denotes all variants of short @deva[अ]:
+- @deva[उदात्त अ], @deva[अनुदात्त अ], @deva[स्वरित अ]
+- @deva[अनुनासिक अ], @deva[अननुनासिक अ]
+- But NOT @deva[आ] (long) or @deva[अ३] (prolonged)
+
+**Example:** @ref[1.1.1] (@deva[वृद्धिरादैच्]) — @deva[आत्] means specifically long @deva[आ] (2 @deva[मात्रा]s), including its accent and nasality variants, but not short @deva[अ] or prolonged @deva[आ३].
+
+**The @deva[तपर] mechanism:** @deva[त्] is not an @deva[इत्] (marker to be discarded) here. It is a metalinguistic device: a @deva[त्] placed after a vowel signals "restrict to this exact duration." The @deva[त्] itself is not pronounced and has no grammatical function beyond restricting the scope.
+
+**Why this is needed:** Many rules are sensitive to vowel length. @ref[7.3.86] (@deva[पुगन्तलघूपधस्य च]) applies only to @deva[लघु] (@deva[ह्रस्व]) @deva[उपधा] vowels. @ref[6.4.2] (@deva[हलः]) applies after consonants. Without @deva[तपर], rules could not distinguish "short @deva[अ]" from "any @deva[अ]-class vowel."
+
+**Scope of @deva[तपर]:** The @deva[काशिका] notes that @deva[तपर] applies wherever it appears — in @[sūtras], @deva[गणपाठ] entries, and @deva[धातुपाठ] entries. It is a universal metalinguistic convention, not limited to the @deva[अष्टाध्यायी]'s @[sūtras].
+"""

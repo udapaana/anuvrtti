@@ -1,0 +1,44 @@
+id = "3.1.4"
+numericId = "31004"
+
+[en]
+simple = """
+Case endings and affixes marked with an indicatory @deva[प्] are @deva[अनुदात्त] (low-pitched). They do not carry the high-pitched accent that @ref[3.1.3] assigns as the default.
+
+There are two categories covered:
+1. @deva[सुप्] (case endings) — the 21 endings like @deva[सु], @deva[औ], @deva[जस्] that mark nominative, accusative, etc.
+2. @deva[पित्] affixes — any affix whose technical name includes an indicatory @deva[प्]
+
+**Examples:**
+- @deva[दृषदौ] "two stones" — the dual nominative ending @deva[औ] is @deva[अनुदात्त] because it is a @deva[सुप्]
+- @deva[पचति] "he cooks" — the verb ending @deva[तिप्] has indicatory @deva[प्], so it is @deva[अनुदात्त]
+"""
+
+standard = """
+This rule is an exception to @ref[3.1.3]. Two categories of affixes receive @deva[अनुदात्त] (grave accent) instead of the default @deva[उदात्त]:
+
+1. **@deva[सुप्]** — the 21 case affixes taught in @ref[4.1.2] (@deva[सु], @deva[औ], @deva[जस्], @deva[अम्], @deva[औट्], @deva[शस्], etc.)
+2. **@deva[पित्]** — affixes bearing indicatory @deva[प्] (e.g., @deva[तिप्], @deva[सिप्], @deva[मिप्])
+
+**Examples:**
+- @deva[दृषदौ] "two stones" — @deva[औ] (dual nominative) is @deva[अनुदात्त]
+- @deva[पचति] "he cooks" — @deva[तिप्] (3rd singular @deva[परस्मैपद]) has indicatory @deva[प्], hence @deva[अनुदात्त]
+
+**Contrast:** @deva[पचतः] "they two cook" — @deva[तस्] lacks indicatory @deva[प्], so the default @deva[उदात्त] from @ref[3.1.3] applies.
+
+**Rule type:** @deva[अपवाद] (exception) to @ref[3.1.3].
+"""
+
+advanced = """
+Exception to @ref[3.1.3]. @deva[सुप्] (all 21 case affixes from @ref[4.1.2]) and @deva[पित्] (affixes marked with indicatory @deva[प्]) are @deva[अनुदात्त].
+
+**@deva[सुप्]:** All case endings — @deva[सु], @deva[औ], @deva[जस्], @deva[अम्], @deva[औट्], @deva[शस्], @deva[टा], @deva[भ्याम्], @deva[भिस्], @deva[ङे], @deva[भ्याम्], @deva[भ्यस्], @deva[ङसि], @deva[भ्याम्], @deva[भ्यस्], @deva[ङस्], @deva[ओस्], @deva[आम्], @deva[ङि], @deva[ओस्], @deva[सुप्] — are uniformly @deva[अनुदात्त]. This means nominal accent is determined entirely by the stem, not the case ending.
+
+**@deva[पित्]:** @deva[परस्मैपद] endings @deva[तिप्], @deva[सिप्], @deva[मिप्], @deva[तामिप्], @deva[झिप्], etc. The @deva[आत्मनेपद] endings vary — many lack indicatory @deva[प्] and therefore retain @deva[उदात्त] by @ref[3.1.3].
+
+**Contrast pair:**
+- @deva[पचति] — @deva[तिप्] is @deva[पित्], hence @deva[अनुदात्त]
+- @deva[पचतः] — @deva[तस्] is not @deva[पित्], hence @deva[उदात्त] by @ref[3.1.3]
+
+**Systemic role:** This rule, paired with @ref[3.1.3], means that the verbal accent system distinguishes @deva[पित्] endings (unaccented) from non-@deva[पित्] endings (accented). This distinction is phonologically real in Vedic and drives numerous accent patterns. See @ref[6.1.186] for further accent interactions with @deva[पित्] affixes.
+"""

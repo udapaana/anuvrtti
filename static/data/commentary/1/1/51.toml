@@ -1,0 +1,46 @@
+id = "1.1.51"
+numericId = "11051"
+
+[en]
+simple = """
+When a substitute vowel replaces @deva[ऋ] (or @deva[ऌ]), the substitute always carries @deva[र्] (or @deva[ल्]) after it. The substitute is not just the bare vowel — it includes the semivowel.
+
+This is how @deva[गुण] and @deva[वृद्धि] of @deva[ऋ] work. The @deva[गुण] of @deva[ऋ] is not just @deva[अ], but @deva[अर्]. The @deva[वृद्धि] is not just @deva[आ], but @deva[आर्].
+
+**Example:** @deva[कृ] "to do" + @deva[ता] (agent affix) → @deva[कर्ता] "doer." The @deva[ऋ] becomes @deva[अर्] (not just @deva[अ]).
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] states that when an @deva[अण्] vowel (@deva[अ], @deva[इ], @deva[उ]) substitutes for @deva[ऋ], the substitute is @deva[रपर] — followed by @deva[र्]. Similarly, substitutes for @deva[ऌ] are @deva[लपर] — followed by @deva[ल्].
+
+**@deva[गुण] of @deva[ऋ]:** @deva[अ] + @deva[र्] = @deva[अर्]
+- @deva[कृ] + @deva[ता] → @deva[कर्ता] "doer"
+- @deva[हृ] + @deva[ता] → @deva[हर्ता] "taker"
+
+**@deva[वृद्धि] of @deva[ऋ]:** @deva[आ] + @deva[र्] = @deva[आर्]
+- @deva[कृ] + @deva[ण्यत्] → @deva[कार्यम्] "to be done"
+
+**Other substitutes:** When @deva[ऋ] → @deva[इ] (by @ref[7.1.100]): @deva[इ] + @deva[र्] = @deva[इर्]
+- @deva[पितृ] + @deva[भ्याम्] → @deva[पितिर्भ्याम्] (Vedic)
+
+**Why needed?** Without this rule, @deva[गुण] of @deva[ऋ] would produce just @deva[अ], losing the @deva[र्]-element entirely. @deva[कृ] + @deva[ता] would become *@deva[कता], not @deva[कर्ता].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[स्थाने] from @ref[1.1.49].
+
+@deva[उरण् रपरः] — when an @deva[अण्] vowel substitutes for @deva[ऋ], it is @deva[रपर] (followed by @deva[र्]). By extension, substitutes for @deva[ऌ] are @deva[लपर] (followed by @deva[ल्]).
+
+**The mechanism:** @deva[ऋ] is phonetically @deva[र्] + a vowel element. When @deva[गुण] or @deva[वृद्धि] replaces @deva[ऋ], the vowel component changes but the @deva[र्] persists. This rule ensures that persistence.
+
+**Applications:**
+- @deva[गुण]: @deva[ऋ] → @deva[अर्] — @deva[कृ] + @deva[ता] → @deva[कर्ता]; @deva[हृ] + @deva[ता] → @deva[हर्ता]
+- @deva[वृद्धि]: @deva[ऋ] → @deva[आर्] — @deva[कृ] + @deva[ण्यत्] → @deva[कार्यम्]
+- Other substitutes: @deva[ऋ] → @deva[इर्] (by @ref[7.1.100]) — @deva[पितृ] + @deva[भ्याम्] → @deva[पितिर्भ्याम्]
+
+**@deva[ऌ]-analogy:** @deva[ऌ] → @deva[अल्] — though @deva[ऌ]-containing roots are rare (@deva[कॢप्] etc.), the principle applies: @deva[कॢप्] + @deva[गुण] → @deva[कल्प्].
+
+**Interaction with @ref[1.1.50]:** @ref[1.1.50] selects @deva[अ] as the @deva[गुण] of @deva[ऋ] (by @deva[अन्तरतम]). This rule then appends @deva[र्], yielding @deva[अर्]. The two rules work in sequence.
+
+**Scope of @deva[अण्]:** The @deva[प्रत्याहार] @deva[अण्] covers @deva[अ], @deva[इ], @deva[उ] — the three simple short vowels. Long vowels (@deva[आ], @deva[ई], @deva[ऊ]) substituting for @deva[ऋ] are also @deva[रपर] by extension (for @deva[वृद्धि]).
+"""

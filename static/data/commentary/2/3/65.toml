@@ -1,0 +1,52 @@
+id = "2.3.65"
+numericId = "23065"
+
+[en]
+simple = """
+When a word is formed with a @deva[कृत्] affix (a suffix that turns a verb root into a noun or adjective), both the agent (doer) and the object of that verbal noun take the genitive (@deva[षष्ठी]).
+
+This is how Sanskrit expresses what English handles with "of": "the destruction of cities" or "the composition of @[kālidāsa]." In these phrases, "cities" is the object and "@[kālidāsa]" is the agent — yet both appear in the genitive.
+
+**Examples:**
+- @deva[कालिदासस्य क्रिया] — 'the composition of @[kālidāsa]' (agent in genitive)
+- @deva[पुरां भेत्ता] — 'destroyer of cities' (object in genitive)
+- @deva[अपां स्रष्टा] — 'creator of waters' (object in genitive)
+
+This rule does not apply to other @deva[कारक] relations like instrument — @deva[शस्त्रेण भेत्ता] ('cutter with a weapon') keeps the instrumental, not genitive.
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule).
+
+With @deva[कृत्]-ending words (affixes governed by @ref[3.1.93] @deva[कृदतिङ्]), both @deva[कर्तृ] (agent) and @deva[कर्मन्] (object) take @deva[षष्ठी]. This produces what Western grammar calls subjective and objective genitives.
+
+**Scope:** Only @deva[कृत्] affixes, not @deva[तद्धित]. The rule covers the full range of @deva[कृत्] suffixes: @deva[तृच्], @deva[ल्युट्], @deva[घञ्], @deva[क्तिन्], etc.
+
+**Examples (subjective genitive — agent):**
+- @deva[कालिदासस्य क्रिया] — 'the composition of @[kālidāsa]'
+- @deva[वज्रस्य भर्त्ता] — 'the wielder of the thunderbolt'
+
+**Examples (objective genitive — object):**
+- @deva[पुरां भेत्ता] — 'the destroyer of cities'
+- @deva[अपां स्रष्टा] — 'the creator of waters'
+
+**Counterexample:**
+- @deva[शस्त्रेण भेत्ता] — 'cutter with a weapon' — @deva[करण] takes @deva[तृतीया], not @deva[षष्ठी]; this rule only covers @deva[कर्तृ] and @deva[कर्मन्]
+
+**Not with @deva[तद्धित]:** The rule excludes @deva[तद्धित]-formed words — @deva[षष्ठी] does not apply in such cases.
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]).
+
+This is the foundational rule for genitive case-assignment with @deva[कृत्]-formed nominals. It licenses @deva[षष्ठी] for both @deva[कर्तृ] and @deva[कर्मन्] relations — the two primary @deva[कारक] roles — when the governing word bears a @deva[कृत्] affix as defined by @ref[3.1.93] (@deva[कृदतिङ्]).
+
+The rule is broad by design: it covers all @deva[कृत्] affixes without restriction. The subsequent @[sūtras] (@ref[2.3.66]–@ref[2.3.71]) then progressively restrict and refine this general permission:
+- @ref[2.3.66] resolves the conflict when both @deva[कर्तृ] and @deva[कर्मन्] are expressed
+- @ref[2.3.69] blocks @deva[षष्ठी] for specific @deva[कृत्] categories (@deva[ल्], @deva[उ], @deva[उक्], @deva[निष्ठा], @deva[खलर्थ], @deva[तृन्])
+- @ref[2.3.71] restores optional @deva[षष्ठी] for @deva[कर्तृ] with @deva[कृत्य] forms
+
+The exclusion of @deva[तद्धित] is implicit: @deva[कृत्] in the @[sūtra] specifically means non-@deva[तद्धित] suffixes. This follows from the definition at @ref[3.1.93], which establishes the @deva[कृत्] domain as distinct from @deva[तद्धित].
+
+The rule does not extend to @deva[करण], @deva[सम्प्रदान], @deva[अपादान], or @deva[अधिकरण] — those @deva[कारक] relations retain their respective case-assignments even with @deva[कृत्]-words.
+"""

@@ -1,0 +1,39 @@
+id = "2.2.21"
+numericId = "22021"
+
+[en]
+simple = """
+An @deva[उपपद] in the instrumental case (or another non-nominative case, as specified by @ref[3.4.47] onwards) optionally compounds with an @deva[अम्]-ending indeclinable (@deva[अव्यय]).
+
+**Examples:**
+- @deva[मूलकोपदंशम्] or @deva[मूलकेनोपदंशं भुङ्क्ते] — "he eats having relished with radish"
+- @deva[पार्श्वोपपीडम्] or @deva[पार्श्वयोरुपपीडं शेते] — "he sleeps pressing his ribs"
+
+Because the rule is optional, the uncompounded form is equally valid.
+"""
+
+standard = """
+@deva[तृतीयादि]-@deva[उपपद] + @deva[अमन्त]-@deva[अव्यय] → @deva[विभाषा] @deva[तत्पुरुष] — @deva[तृतीयादिभिश्चानमन्ते].
+
+**Rule type — @deva[विभाषा] (option):** Optional compounding for @deva[उपपद]s in @deva[तृतीया] and subsequent cases with @deva[अम्]-ending @deva[अव्यय]s.
+
+**Examples:**
+- @deva[मूलकोपदंशम्] ~ @deva[मूलकेनोपदंशम्] "relishing with radish"
+- @deva[पार्श्वोपपीडम्] ~ @deva[पार्श्वयोरुपपीडम्] "pressing the ribs" (by @ref[3.4.49])
+
+**Difference from @ref[2.2.20]:** @ref[2.2.20] required @deva[अम्] to be the sole ordained affix (@deva[एवकार]). This rule applies even when @deva[अम्] is not the sole affix — it extends to cases where @deva[क्त्वा] is co-ordained. The @deva[विभाषा] here is @deva[अप्राप्तविभाषा] (granting what @ref[2.2.20] did not reach).
+
+**@deva[तृतीयादि] condition:** The @deva[उपपद] must be in @deva[तृतीया] or a subsequent case (@deva[चतुर्थी], @deva[पञ्चमी], @deva[षष्ठी], @deva[सप्तमी]). @deva[उपपद]s in @deva[द्वितीया] are handled by @ref[2.2.20].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[उपपदम्] from @ref[2.2.19]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3].
+
+@deva[तृतीयादिभिश्चानमन्ते] — @deva[उपपद]s in @deva[तृतीया] and subsequent cases optionally compound with @deva[अमन्त]-@deva[अव्यय]s.
+
+**@deva[अप्राप्तविभाषा]:** @ref[2.2.20] restricted @deva[उपपद] compounds with @deva[अव्यय]s to cases where @deva[अम्] is the sole ordained affix. @ref[2.2.21] extends the option to @deva[तृतीयादि]-@deva[उपपद]s even where @deva[अम्] is co-ordained with @deva[क्त्वा]. This makes it an @deva[अप्राप्तविभाषा] — granting what was not otherwise available.
+
+**Dual scope:** The @deva[विभाषा] operates in both @deva[प्राप्त] (where @ref[2.2.20] already applied) and @deva[अप्राप्त] (where @ref[2.2.20] did not reach) domains. In the @deva[प्राप्त] domain, it converts the @deva[नित्य] compound of @ref[2.2.19]–@ref[2.2.20] into an option.
+
+**Case references:** The @deva[उपपद] case is determined by the @deva[कृत्] affix rules: @ref[3.4.47] (instrumental), @ref[3.4.49] (other cases). @deva[मूलकोपदंशम्] has @deva[मूलक] in @deva[तृतीया] (by @ref[3.4.47]); @deva[पार्श्वोपपीडम्] has @deva[पार्श्व] in @deva[षष्ठी]/@deva[सप्तमी] (by @ref[3.4.49]).
+"""

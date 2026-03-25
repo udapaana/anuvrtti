@@ -1,0 +1,43 @@
+id = "2.2.3"
+numericId = "22003"
+
+[en]
+simple = """
+The ordinal numbers @deva[द्वितीय] "second," @deva[तृतीय] "third," @deva[चतुर्थ] "fourth," and @deva[तुर्य] "fourth (alternate form)" optionally compound with a word denoting something that has parts. Because the compound is optional, either order is possible.
+
+**Examples:**
+- @deva[द्वितीयभिक्षा] or @deva[भिक्षाद्वितीयम्] — "the second portion of alms"
+- @deva[तृतीयभिक्षा] "the third portion of alms"
+- @deva[चतुर्थभिक्षा] "the fourth portion of alms"
+
+When this rule does not apply (the optional "no" case), the genitive compound of @ref[2.2.8] gives the alternative order with the ordinal last.
+"""
+
+standard = """
+@deva[द्वितीय]/@deva[तृतीय]/@deva[चतुर्थ]/@deva[तुर्य] + @deva[एकदेशिन्] → @deva[विभाषा] @deva[तत्पुरुष] when @deva[एकाधिकरण] — @deva[द्वितीयतृतीयचतुर्थतुर्याण्यन्यतरस्याम्].
+
+**Rule type — @deva[विभाषा] (option):** When applied, the ordinal is placed first; when not applied, @ref[2.2.8] gives the alternative: @deva[भिक्षाद्वितीयम्].
+
+**Examples:**
+- @deva[द्वितीयभिक्षा] ~ @deva[भिक्षाद्वितीयम्] "second portion of alms"
+- @deva[तृतीयभिक्षा] ~ @deva[भिक्षातृतीयम्]
+- @deva[चतुर्थभिक्षा] ~ @deva[भिक्षाचतुर्थम्]
+
+**Contrast with @ref[2.2.1]:** @ref[2.2.1] makes compounding obligatory for @deva[पूर्व] etc. This rule makes it optional for these ordinals — either order is valid.
+
+**Scope of @ref[2.2.11]:** @ref[2.2.11] prohibits genitive @deva[तत्पुरुष] with ordinal-sense words. That prohibition finds scope with ordinals not listed here — @deva[पञ्चम], @deva[षष्ठ], @deva[सप्तम], etc. For these four, this rule provides its own authorization.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकदेशिनि] and @deva[एकाधिकरणे] from @ref[2.2.1]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[द्वितीयतृतीयचतुर्थतुर्याण्यन्यतरस्याम्] — these four ordinals optionally compound with @deva[एकदेशिन्] words as @deva[तत्पुरुष].
+
+**@deva[विभाषा] mechanism:** @deva[अन्यतरस्याम्] signals optionality. When the option applies, the ordinal is first: @deva[द्वितीयभिक्षा]. When it does not, @ref[2.2.8] applies, yielding @deva[भिक्षाद्वितीयम्] with genitive-first order.
+
+**Interaction with @ref[2.2.11]:** @ref[2.2.11] bars genitive @deva[तत्पुरुष] with @deva[पूरणार्थ] (ordinal-meaning) words. This creates a potential conflict: if @ref[2.2.11] blocks the genitive compound for all ordinals, how does the alternative @deva[भिक्षाद्वितीयम्] work? The answer is that @ref[2.2.11] finds its scope with ordinals like @deva[पञ्चम], @deva[षष्ठ], @deva[सप्तम] — ordinals not listed in @ref[2.2.1] or @ref[2.2.3]. For @deva[द्वितीय] through @deva[तुर्य], this specific @deva[विभाषा] rule governs.
+
+**@deva[वार्त्तिक]:** @deva[तुरीय] "fourth" (an alternative form to @deva[तुर्य]) should also be included: @deva[तुरीयभिक्षा] ~ @deva[भिक्षातुरीयम्].
+
+**Why only these four?** @deva[पूर्व] and @deva[अपर] are covered by @ref[2.2.1] (obligatory). The higher ordinals (@deva[पञ्चम] and above) denoting parts of something have more limited application, so they are left to @ref[2.2.8] or blocked by @ref[2.2.11].
+"""

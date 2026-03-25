@@ -1,0 +1,46 @@
+id = "2.3.32"
+numericId = "23032"
+
+[en]
+simple = """
+With @deva[पृथक्] (separately), @deva[विना] (without), or @deva[नाना] (variously, separately), the noun they govern can take any of three cases: @deva[तृतीया] (instrumental), @deva[पञ्चमी] (ablative), or @deva[द्वितीया] (accusative).
+
+**Examples:**
+- @deva[रामेण विना] "without @deva[राम]" (instrumental)
+- @deva[रामाद् विना] "without @deva[राम]" (ablative)
+- @deva[रामं विना] "without @deva[राम]" (accusative)
+- @deva[रामेण पृथक्] / @deva[रामात् पृथक्] / @deva[रामं पृथक्] "separately from @deva[राम]"
+
+All three forms are equally correct. This three-way freedom is unusual — most words govern only one or two cases.
+"""
+
+standard = """
+@deva[पृथग्विनानानाभिस्तृतीयान्यतरस्याम्] — with @deva[पृथक्] "separately," @deva[विना] "without," or @deva[नाना] "variously," @deva[तृतीया] is optionally used; @deva[पञ्चमी] and @deva[द्वितीया] are also possible.
+
+**Rule type — @deva[विधि] (optional):** Three-way case option.
+
+**Examples:**
+- @deva[रामेण विना] (@deva[तृतीया]) / @deva[रामाद् विना] (@deva[पञ्चमी]) / @deva[रामं विना] (@deva[द्वितीया])
+- @deva[रामेण पृथक्] / @deva[रामात् पृथक्] / @deva[रामं पृथक्] "separately from @deva[राम]"
+- @deva[रामेण नाना] / @deva[रामान्नाना] / @deva[रामं नाना] "distinct from @deva[राम]"
+
+**Literary example:** @deva[विना वातं विना वर्षं विद्युत्प्रपतनं विना। विना हस्तिकृतान्दोषान् केनेमौ पातितौ द्रुमौ॥] "Without wind, without rain, without lightning, without elephant-caused damage — by whom were these two trees felled?" (all @deva[द्वितीया])
+
+**Contrast with @deva[ऋते]:** Under @ref[2.3.29], @deva[ऋते] takes only @deva[पञ्चमी] — @deva[ऋते देवदत्तात्]. No three-way option.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[पृथग्विनानानाभिस्तृतीयान्यतरस्याम्] — with @deva[पृथक्], @deva[विना], or @deva[नाना], @deva[तृतीया] is optional; @deva[पञ्चमी] and @deva[द्वितीया] are the alternatives.
+
+**Parsing:** @deva[पृथक्] + @deva[विना] + @deva[नाना] (as an @deva[इतरेतरद्वन्द्व]) + @deva[तृतीया] + @deva[अन्यतरस्याम्]. The @deva[अन्यतरस्याम्] makes @deva[तृतीया] optional; the alternatives (@deva[पञ्चमी] from @ref[2.3.28]/@ref[2.3.29], @deva[द्वितीया] by implication) fill the non-@deva[तृतीया] option.
+
+**Why three cases?** These words express separation (→ @deva[पञ्चमी] via @deva[अपादान]), accompaniment/means (→ @deva[तृतीया]), and extent/object of the separation (→ @deva[द्वितीया]). The grammar permits all three semantic framings.
+
+**Contrast with @deva[ऋते]:** @deva[ऋते] is listed under @ref[2.3.29] and takes only @deva[पञ्चमी]. Despite being near-synonymous with @deva[विना], @deva[ऋते] does not receive the three-way option. This is a deliberate grammatical distinction.
+
+**@deva[विना] placement:** @deva[विना] can precede or follow its governed noun: @deva[विना रामेण] = @deva[रामेण विना].
+
+**Cross-references:** @ref[2.3.29] (@deva[ऋते] — @deva[पञ्चमी] only), @ref[2.3.18] (@deva[तृतीया] base rule), @ref[2.3.28] (@deva[पञ्चमी] base rule).
+"""

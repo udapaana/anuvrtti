@@ -1,0 +1,46 @@
+id = "1.3.2"
+numericId = "13002"
+
+[en]
+simple = """
+A nasalized vowel in a grammatical teaching (@deva[उपदेश]) is @deva[इत्] — an indicatory marker. It gets deleted from the final form and serves only to trigger other rules.
+
+**What is @deva[उपदेश]?** The original statement of a root, affix, or augment as listed in grammar texts — not a finished word ready for use in a sentence.
+
+**Examples:**
+- @deva[क्विँप्]: the nasalized @deva[इ] (written @deva[इँ]) is @deva[इत्] — it marks something but disappears
+- @deva[एधँ] "to prosper": the nasalized @deva[अ] is @deva[इत्] — the real root is just @deva[एध्]
+
+**Not in finished words:** In Vedic @deva[अभ्रँ आँ अपः], the nasalized vowels are real — they appear in actual speech, not in a grammatical listing, so they are not @deva[इत्].
+"""
+
+standard = """
+In @deva[उपदेश] (original enunciation of a @deva[धातु], @deva[प्रत्यय], or @deva[आगम]), a nasalized vowel (@deva[अनुनासिक]) is @deva[इत्].
+
+This is the first of eight rules (@ref[1.3.2]–@ref[1.3.9]) defining @deva[इत्] markers.
+
+**@deva[उपदेश]:** The technical first mention — a root in the @deva[धातुपाठ], an affix in a @deva[सूत्र], an augment in its defining rule. Not a word in actual use.
+
+**Examples:**
+- @deva[क्विँन्]: nasal @deva[इ] is @deva[इत्]
+- @deva[एधँ]: nasal @deva[अ] is @deva[इत्]; real root = @deva[एध्]
+- @deva[ञिमिदा]: the @deva[ञि] is @deva[इत्] by @ref[1.3.5]; the nasal marking on @deva[अ] is @deva[इत्] by this rule
+
+**Not @deva[उपदेश] — not @deva[इत्]:** In Vedic @deva[अभ्रँ आँ अपः], the nasalized @deva[आ] is a real particle in speech, not an indicatory marker.
+
+**Only vowels:** In @deva[मनिँन्] (@ref[3.2.74]), the nasality falls on @deva[इ] (a vowel), not on @deva[न्] (a consonant). Only the nasal vowel is @deva[इत्].
+"""
+
+advanced = """
+@deva[उपदेशेऽजनुनासिक इत्] — in @deva[उपदेश], a nasalized vowel is @deva[इत्].
+
+**Beginning the @deva[इत्] section:** @ref[1.3.2]–@ref[1.3.9] define which letters are @deva[इत्] (indicatory). @ref[1.3.9] (@deva[तस्य लोपः]) then deletes them. Together, these rules establish the @deva[इत्]-@deva[संज्ञा] and @deva[इत्]-@deva[लोप] system that underpins the entire @deva[अष्टाध्यायी].
+
+**@deva[उपदेश] scope:** The @deva[सप्तमी] (@deva[उपदेशे]) restricts @deva[इत्] status to the original enunciation — the @deva[धातुपाठ], @deva[गणपाठ], or the @deva[सूत्र] that introduces an affix. A nasalized vowel in ordinary speech or in a finished form is not @deva[इत्].
+
+**Why nasalize?** Nasalization is a convenient physical marker — it modifies the vowel's articulation without changing its identity. @deva[पाणिनि] uses it to encode information: a nasalized final @deva[अ] in a root (e.g., @deva[एधँ]) typically indicates @deva[आत्मनेपद] assignment or other properties.
+
+**Interaction with @ref[1.3.3]:** A root like @deva[एधँ] has both a nasal @deva[अ] (@deva[इत्] by this rule) and a final consonant (not @deva[इत्] because the @deva[अ] is final after @deva[ध्]). The two @deva[इत्] rules do not conflict — each identifies different letters.
+
+**@deva[अनुनासिक] vs. @deva[अनुस्वार]:** @deva[अनुनासिक] is nasalization of the vowel itself (the vowel is pronounced through the nose). @deva[अनुस्वार] (@deva[ं]) is a separate nasal sound following a vowel. Only @deva[अनुनासिक] vowels trigger this rule.
+"""

@@ -1,0 +1,51 @@
+id = "2.2.1"
+numericId = "22001"
+
+[en]
+simple = """
+The words @deva[पूर्व] "front," @deva[अपर] "back," @deva[अधर] "lower," and @deva[उत्तर] "upper" compound with a word denoting something that has parts — but only when that thing is a single entity. The compound is @deva[तत्पुरुष], with the direction-word placed first.
+
+**Examples:**
+- @deva[पूर्वकायः] "the front part of the body" — @deva[पूर्व] "front" + @deva[काय] "body"
+- @deva[अपरकायः] "the back part of the body"
+- @deva[अधरकायः] "the lower part of the body"
+- @deva[उत्तरकायः] "the upper part of the body"
+
+**Two conditions must hold:**
+1. The whole must have parts (@deva[एकदेशिन्]) — so @deva[पूर्वं छात्राणाम्] "the foremost among students" does not compound, because students are not parts of a whole.
+2. The whole must be a single entity (@deva[एकाधिकरण]) — so @deva[पूर्वं नाभेः कायस्य] "the front of the body before the navel" does not compound, because the reference point is split.
+"""
+
+standard = """
+@deva[पूर्व]/@deva[अपर]/@deva[अधर]/@deva[उत्तर] + @deva[एकदेशिन्] (thing-with-parts) → @deva[तत्पुरुष] when @deva[एकाधिकरण] (single substratum) — @deva[पूर्वापराधरोत्तरमेकदेशिनैकाधिकरणे].
+
+**Rule type — @deva[विधि]:** Compounding rule that overrides the genitive @deva[तत्पुरुष] of @ref[2.2.8].
+
+**Examples:**
+- @deva[पूर्वकायः] "front of the body" — @deva[कायस्य पूर्वम्] → @deva[पूर्वकायः]
+- @deva[अपरकायः] "back of the body"
+- @deva[अधरकायः] "lower body"
+- @deva[उत्तरकायः] "upper body"
+
+**Why override @ref[2.2.8]?** Under @ref[2.2.8] (genitive @deva[तत्पुरुष]), these would yield *@deva[कायपूर्वम्] with the direction-word last. This rule places them first — the natural word order for directional part-descriptions.
+
+**@deva[एकदेशिन्] restriction:** The second member must denote something with distinguishable parts. @deva[पूर्वं छात्राणाम्] "foremost of students" fails — students are independent individuals, not parts of a whole.
+
+**@deva[एकाधिकरण] restriction:** The substratum must be singular. @deva[पूर्वं नाभेः कायस्य] "the front of the body from the navel" fails — multiple reference points split the substratum.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[पूर्वापराधरोत्तरमेकदेशिनैकाधिकरणे] — @deva[पूर्व], @deva[अपर], @deva[अधर], @deva[उत्तर] compound with @deva[एकदेशिन्] words when @deva[एकाधिकरण], forming @deva[तत्पुरुष] with the direction-word as prior member.
+
+**Override of @ref[2.2.8]:** Under the general genitive @deva[तत्पुरुष] rule (@ref[2.2.8]), @deva[कायस्य पूर्वम्] would compound as *@deva[कायपूर्वम्] (genitive-first order). This rule specifically places @deva[पूर्व] etc. as the first member, per @ref[2.2.30] (which governs member-ordering in compounds).
+
+**@deva[एकदेशिन्] — thing with parts:** The @deva[काशिका] explains that @deva[एकदेशिन्] means something that naturally has distinguishable regions or parts. A body (@deva[काय]) has front, back, upper, lower parts. A group of students does not have spatial "parts" — they are discrete individuals, so @deva[पूर्वं छात्राणाम्] does not compound.
+
+**@deva[एकाधिकरण] — single substratum:** When the reference involves multiple substrata (e.g., "front of the body relative to the navel"), the compound is blocked. The whole entity must be treated as one undivided substratum.
+
+**Related:** @ref[6.3.110] accounts for compounds like @deva[मध्याह्नः] "noon" and @deva[सायाह्नः] "evening," where @deva[अह्न] "day" compounds with its part-denoting words through a separate mechanism.
+
+**Section context:** This rule begins @[pāda] 2.2, which continues the @deva[समास] section. While @ref[2.1.22]–@ref[2.1.72] covered @deva[तत्पुरुष] with case-based and @deva[कर्मधारय] subcategories, @[pāda] 2.2 handles ordering rules, genitive @deva[तत्पुरुष] (@ref[2.2.8]), prohibitions, @deva[बहुव्रीहि] (@ref[2.2.23]), and residual compound types.
+"""

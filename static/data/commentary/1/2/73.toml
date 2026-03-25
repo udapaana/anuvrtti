@@ -1,0 +1,63 @@
+id = "1.2.73"
+numericId = "12073"
+
+[en]
+simple = """
+For groups of adult domestic animals, the feminine form is retained — the opposite of the usual rule. So @deva[गावः] "cows" refers to both cows and bulls together, and @deva[अजाः] "she-goats" refers to he-goats and she-goats together.
+
+This applies only when three conditions are met: the animals are (1) domestic, (2) adult, and (3) referred to as a group (not a pair).
+
+**Domestic animals — feminine retained:**
+- @deva[गावः] "cows (and bulls)"
+- @deva[अजाः] "goats (male and female)"
+
+**Wild animals — masculine retained (normal rule):**
+- @deva[रुरवः] "deer (male and female)"
+
+**Humans — masculine retained:**
+- @deva[ब्राह्मणाः] "@deva[ब्राह्मण]s (male and female)"
+
+**Young animals — masculine retained:**
+- @deva[वत्साः] "calves," @deva[बर्कराः] "kids"
+
+**Not a herd (just a pair):**
+- @deva[एतौ गावौ चरतः] "these two cows graze" — dual, normal masculine retention applies
+"""
+
+standard = """
+This rule creates an exception to @ref[1.2.67] (masculine retention): for adult domestic animals (@deva[ग्राम्यपशु]) referred to as a group, the feminine @deva[प्रातिपदिक] is retained in @deva[एकशेष].
+
+**Conditions:** (1) domestic species, (2) adult (not young), (3) group reference (plural, not dual).
+
+**Examples — feminine retained:**
+- @deva[गावः] "cows" = bulls + cows
+- @deva[अजाः] "goats" = he-goats + she-goats
+
+**Exceptions within the exception (masculine retained):**
+1. **Wild animals:** @deva[रुरवः] "deer (both sexes)"
+2. **Humans:** @deva[ब्राह्मणाः] "@deva[ब्राह्मण]s (male and female)"
+3. **Young animals:** @deva[वत्साः] "calves," @deva[बर्कराः] "kids"
+
+**Dual — no feminine preference:** @deva[एतौ गावौ चरतः] "these two cows graze" — when only two animals are referred to, the standard masculine retention (@ref[1.2.67]) applies.
+
+**@deva[वार्त्तिक]:** The rule is restricted to cloven-hoofed (@deva[विशफ]) animals. So @deva[अश्वाः] "horses" retains masculine, even though horses are domestic.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकशेष] from @ref[1.2.64].
+
+@deva[ग्राम्यपश्वनड्वाह्यविषये स्त्री] — for groups of domestic animals (excluding draft oxen in certain readings), the feminine is retained.
+
+**Exception to @ref[1.2.67]:** The general rule retains masculine over feminine. This rule reverses that for a specific semantic domain — adult domestic animal herds. The feminine form becomes the generic collective term.
+
+**Three conditions:**
+1. **@deva[ग्राम्य]** (domestic): Excludes wild animals (@deva[आरण्य]). @deva[रुरवः] "deer" → masculine retained.
+2. **@deva[पशु]** (animal, adult): Excludes young animals. @deva[वत्साः] "calves" → masculine retained.
+3. **Group reference** (plural): Excludes dual. @deva[गावौ] in dual follows @ref[1.2.67].
+
+**@deva[वार्त्तिक] — @deva[विशफ] restriction:** The @deva[वार्त्तिक] limits the rule to cloven-hoofed animals. @deva[अश्व] (horse) is domestic but not cloven-hoofed, so @deva[अश्वाः] retains masculine.
+
+**Why feminine for herds?** In pastoral Sanskrit, a herd is typically named by the female members — the productive animals. @deva[गावः] "cows" names the herd because cows (not bulls) are the majority and the economic focus. Grammar here reflects social usage.
+
+**Closing the @deva[एकशेष]/@deva[वचन] section:** This is the last rule of @deva[पाद] 1.2. The @deva[वचन] (number) section began at @ref[1.2.58] with @deva[जाति] word plurals, moved through @deva[एकशेष] rules (@ref[1.2.64]–@ref[1.2.72]), and ends here with the domestic-animal exception. @deva[पाद] 1.3 begins the @deva[इत्] (marker) section.
+"""

@@ -1,0 +1,47 @@
+id = "1.2.42"
+numericId = "12042"
+
+[en]
+simple = """
+A @deva[तत्पुरुष] compound (where one word depends on another) is called @deva[कर्मधारय] when both members refer to the same thing and would take the same grammatical case if separated. The first member describes or qualifies the second.
+
+**Examples:**
+- @deva[नीलम् उत्पलम्] "a blue lotus" → @deva[नीलोत्पलम्] — both "blue" and "lotus" are nominative, referring to the same object
+- @deva[परमः आत्मा] "the supreme soul" → @deva[परमात्मा]
+
+This is different from other @deva[तत्पुरुष] compounds where the members have different case relationships (like "king's son" → @deva[राजपुरुषः], where the first member is genitive).
+"""
+
+standard = """
+A @deva[तत्पुरुष] with @deva[समानाधिकरण] (co-referential members in the same case) is @deva[कर्मधारय]. This is a @deva[संज्ञा] rule — a subtype of @deva[तत्पुरुष].
+
+**Examples:**
+- @deva[नीलोत्पलम्] "blue lotus" — adjective + noun, both nominative
+- @deva[परमात्मा] "supreme soul"
+- @deva[महाराजः] "great king"
+
+**Contrast with other @deva[तत्पुरुष]:**
+- @deva[राजपुरुषः] "king's man" — genitive @deva[तत्पुरुष] (different cases: king = genitive, man = nominative)
+- @deva[कष्टश्रितः] "gone to difficulty" — accusative @deva[तत्पुरुष]
+
+**Why it matters:**
+- @ref[6.2.130]: accent rules differ in @deva[कर्मधारय] — @deva[परमराज्यम्] (no special accent) vs. @deva[ब्राह्मणराज्यम्] (non-@deva[कर्मधारय], with accent)
+- @ref[6.3.42]: feminine adjective becomes masculine in @deva[कर्मधारय] — @deva[पाचिका] + @deva[वृन्दारिका] → @deva[पाचकवृन्दारिका]
+"""
+
+advanced = """
+@deva[तत्पुरुषः समानाधिकरणः कर्मधारयः] — a @deva[तत्पुरुष] with @deva[समानाधिकरण] is @deva[कर्मधारय].
+
+**@deva[संज्ञा] rule:** @deva[कर्मधारय] is defined as a subtype of @deva[तत्पुरुष]. Both members denote the same referent and would bear the same @deva[विभक्ति] (case ending) when uncompounded.
+
+**@deva[समानाधिकरण]:** The members share the same @deva[अधिकरण] (substratum/referent). In @deva[नीलम् उत्पलम्], both "blue" and "lotus" refer to the same object and both are nominative.
+
+**Key rules that reference @deva[कर्मधारय]:**
+- @ref[2.1.49]–@ref[2.1.72]: the compound formation rules for @deva[कर्मधारय] types
+- @ref[6.2.130] (@deva[अकर्मधारये राज्यम्]): accent distinctions
+- @ref[6.3.42] (@deva[पुंवत्कर्मधारयजातीयदेशीयेषु]): feminine → masculine in @deva[कर्मधारय]
+
+**Distinction from @deva[बहुव्रीहि]:** Both can have @deva[समानाधिकरण] members, but @deva[बहुव्रीहि] denotes an external referent: @deva[पाचिकाभार्याः] "one whose wife is a cook" — the compound denotes the husband, not the wife. @deva[कर्मधारय] denotes the thing described by both members.
+
+**@deva[कर्मधारय] subtypes:** The tradition recognizes several: @deva[विशेषण-विशेष्य] (adjective-noun), @deva[उपमान-उपमेय] (comparison: @deva[मुखम् इव चन्द्रः] → @deva[मुखचन्द्रः]), @deva[अवधारण] (emphatic: @deva[विद्या एव धनम्] → @deva[विद्याधनम्]).
+"""

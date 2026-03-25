@@ -1,0 +1,15 @@
+id = "6.1.110"
+numericId = "61110"
+
+[en]
+simple = """
+When @deva[ए] or @deva[ओ] inside a word is followed by the @deva[अ] of the ablative or genitive singular ending @deva[अस्], the @deva[ए/ओ] is retained. So @deva[गो + अस्] becomes @deva[गोः] (genitive 'of a cow').
+"""
+
+standard = """
+This @[sūtra] extends @deva[पूर्वरूप] to word-internal @deva[ए/ओ] followed by the @deva[अ] of @deva[अस्] (5th/6th case singular). Unlike @ref[6.1.109] which handles @deva[पद]-final contexts, this applies within the word during declension. Thus @deva[गो + अस्] → @deva[गोस्] → @deva[गोः] (with @deva[विसर्ग]). The @deva[अ] of @deva[अस्] is absorbed by the preceding @deva[ओ].
+"""
+
+advanced = """
+The specification @deva[ङसि] (ablative/genitive singular marker) restricts this @deva[पूर्वरूप] to a particular morphological context. This prevents overgeneralization—word-internal @deva[ए/ओ + अ] in other environments follows different rules. The interaction with @deva[विसर्ग] formation (@ref[8.3.15]) produces the final @deva[गोः]. Compare with @deva[पदान्त] rule @ref[6.1.109]: both yield @deva[पूर्वरूप], but operate at different morphological boundaries.
+"""

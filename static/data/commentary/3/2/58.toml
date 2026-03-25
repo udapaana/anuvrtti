@@ -1,0 +1,44 @@
+id = "3.2.58"
+numericId = "32058"
+
+[en]
+simple = """
+The affix @deva[क्विन्] comes after @deva[स्पृश्] 'to touch' when in composition with a case-ending word **other than** @deva[उदक] 'water'.
+
+**Derivation:** @deva[घृतं स्पृशति] = @deva[घृतस्पृक्] 'one who touches ghee'
+
+**Examples:**
+- @deva[घृतस्पृक्] 'one who touches ghee'
+- @deva[मन्त्रस्पृक्] 'one who touches with hymns'
+- @deva[जलस्पृक्] 'one who touches with water'
+
+**With @deva[उदक]:** @deva[उदकस्पर्शः] (uses general @deva[अण्]).
+"""
+
+standard = """
+The affix @deva[क्विन्] comes after @deva[स्पृश्] 'to touch' when a @deva[सुप्]-ending word (other than @deva[उदक]) is in composition.
+
+@deva[सुपि] from @ref[3.2.4] is understood here.
+
+**Derivation:** @deva[घृतं स्पृशति] = @deva[घृतस्पृश्], nom. @deva[घृतस्पृक्]
+- @deva[स्पृश्] + @deva[क्विन्] + @deva[सु] = @deva[स्पृश्] + @deva[वि] + @deva[०] (@ref[6.1.68]) = @deva[स्पृक्] (@ref[6.1.67], @ref[8.2.62])
+
+**Examples:** @deva[घृतस्पृक्], @deva[मन्त्रस्पृक्], @deva[जलस्पृक्]
+
+**Exception:** @deva[उदकेन स्पृशति] = @deva[उदकस्पर्शः] (uses @deva[अण्])
+
+**Why @deva[न्] in @deva[क्विन्]?** To distinguish from @deva[क्विप्] in @ref[8.2.62].
+"""
+
+advanced = """
+The affix @deva[क्विन्] comes after @deva[स्पृश्] when @deva[सुप्]-ending word (except @deva[उदक]) is in composition.
+
+@deva[सुपि] from @ref[3.2.4] understood. Why not @deva[कर्म]? Because @deva[कर्तरि] from previous @[sūtra] indicates all agent types (objects, instruments, etc.), requiring @deva[सुप्] in general.
+
+**Derivation:** @deva[घृतं स्पृशति] = @deva[घृतस्पृश्], nom. @deva[घृतस्पृक्]
+- @deva[स्पृश्] + @deva[क्विन्] + @deva[सु] = @deva[स्पृक्] (by @ref[6.1.68], @ref[6.1.67], @ref[8.2.62])
+
+**Exception:** @deva[उदकेन स्पृशति] = @deva[उदकस्पर्शः] (general @deva[अण्])
+
+**Why @deva[न्] in @deva[क्विन्]?** To distinguish from @deva[क्विप्]. Otherwise @ref[8.2.62] (@deva[क्वि प्रत्ययस्य कुः]) would be ambiguous. The @deva[न्] is not for accent—monosyllabic verbs get final accent anyway (@ref[6.1.117]).
+"""

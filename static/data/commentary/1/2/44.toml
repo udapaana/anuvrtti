@@ -1,0 +1,48 @@
+id = "1.2.44"
+numericId = "12044"
+
+[en]
+simple = """
+A word that stays in one fixed grammatical case — while its companion in the compound takes different cases — is also called @deva[उपसर्जन] (subordinate). But unlike the previous rule (@ref[1.2.43]), it does not have to stand first in the compound.
+
+**Example:** @deva[निः] + @deva[कौशाम्बी] (always in the ablative sense "from @deva[कौशाम्बी]"):
+- @deva[निष्कौशाम्बिः] (nominative) "one who has come from @deva[कौशाम्बी]"
+- @deva[निष्कौशाम्बिम्] (accusative)
+- @deva[निष्कौशाम्बौ] (locative)
+
+@deva[कौशाम्बी] always has ablative meaning regardless of the compound's case — so it is @deva[उपसर्जन]. Its @deva[ई] shortens to @deva[इ] (an effect of @deva[उपसर्जन] status). But it stays last in the compound, not first.
+"""
+
+standard = """
+A word with one fixed case (@deva[एकविभक्ति]) — while its companion varies — is @deva[उपसर्जन], but the "stands first" rule (@ref[2.2.30]) does not apply. This is expressed as @deva[अपूर्वनिपाते] — the placement rule is suspended.
+
+**Example:** @deva[निः] + @deva[कौशाम्बी] (ablative sense: "from @deva[कौशाम्बी]"):
+- @deva[निष्कौशाम्बिः] (nom.), @deva[निष्कौशाम्बिम्] (acc.), @deva[निष्कौशाम्बौ] (loc.)
+- @deva[कौशाम्बी] is fixed in ablative sense; the compound's case varies
+- @deva[कौशाम्बी] is @deva[उपसर्जन] → @deva[ई] shortens to @deva[इ]
+- But it stays last (no first-position requirement)
+
+**Not @deva[उपसर्जन]:** @deva[राजकुमारी] — @deva[कुमारी] varies with the compound's case (@deva[राजकुमारी], @deva[राजकुमारीम्], @deva[राजकुमार्या]), so it is not @deva[एकविभक्ति] → @deva[ई] stays long.
+"""
+
+advanced = """
+@deva[एकविभक्ति चापूर्वनिपाते] — a word fixed in one case is @deva[उपसर्जन], but placement is excepted (@deva[अपूर्वनिपाते]).
+
+**Two types of @deva[उपसर्जन]:**
+1. @ref[1.2.43]: word in @deva[प्रथमा] in a @deva[समास] rule → @deva[उपसर्जन], stands first
+2. This rule: word with fixed case → @deva[उपसर्जन], position not constrained
+
+**@deva[एकविभक्ति] test:** If one member keeps the same case-meaning regardless of the compound's inflection, it is "fixed." The other member varies — it takes whatever case the compound requires.
+
+**Derivation for @deva[निष्कौशाम्बिः]:**
+- @deva[निष्क्रान्तः कौशाम्ब्याः] "gone out from @deva[कौशाम्बी]"
+- @deva[कौशाम्बी] always ablative → @deva[उपसर्जन]
+- @deva[उपसर्जन] triggers @deva[ई] → @deva[इ] (vowel shortening in compounds)
+- But @deva[कौशाम्बी] stays last: @deva[निष्कौशाम्बिः] (not *@deva[कौशाम्बिनिः])
+
+**Contrast — @deva[राजकुमारी]:**
+- @deva[राजकुमारी] (nom.), @deva[राजकुमारीम्] (acc.), @deva[राजकुमार्या] (instr.)
+- @deva[कुमारी] varies with compound's case → not @deva[एकविभक्ति] → not @deva[उपसर्जन] → @deva[ई] unchanged
+
+**Significance:** This rule captures a different structural property of compounds — not how the rule is formulated (as in @ref[1.2.43]), but how the compound itself behaves in inflection.
+"""

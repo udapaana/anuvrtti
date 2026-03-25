@@ -1,0 +1,15 @@
+id = "6.1.180"
+numericId = "61180"
+
+[en]
+simple = """
+The same numerals, when taking case endings beginning with @deva[भ्] or @deva[स्], receive acute accent on the penultimate syllable if the numeral has three or more syllables. So @deva[सप्तभिः] is accented @deva[सप्त꣡भिः] (not on @deva[भ्]).
+"""
+
+standard = """
+This @[sūtra] modifies @ref[6.1.179]: when @deva[षट्]-numerals or @deva[त्रि/चतुर्] take @deva[भसि] (beginning with @deva[भ्]) or @deva[स्] endings, and the numeral form has @deva[त्र्यादि] (three+ syllables), the @deva[उपोत्तम] (penultimate) syllable is accented. Example: @deva[सप्꣡तभिः] with accent before the ending.
+"""
+
+advanced = """
+The @deva[त्र्यादौ भसि सकारे] condition: when the numeral + ending yields three+ syllables, and the ending begins with @deva[भ्/स्], the @deva[उपोत्तम] (second-to-last) syllable takes @deva[उदात्त]. This overrides @ref[6.1.179]'s ending accent for longer forms. @deva[सप्तभिः] → @deva[सप्त꣡भिः]; @deva[सप्तसु] → @deva[सप्त꣡सु]. The three-syllable threshold determines which accent rule applies.
+"""

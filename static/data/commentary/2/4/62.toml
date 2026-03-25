@@ -1,0 +1,32 @@
+id = "2.4.62"
+numericId = "24062"
+
+[en]
+simple = """
+The @deva[तद्राज] affix (@ref[4.1.174], marking royal descendants) undergoes @deva[लुक्] elision in the plural—but only when:
+1. The plural belongs to the base itself (not as part of a compound)
+2. The word is not feminine
+
+**Example:**
+- @deva[आङ्गः] 'a prince of @[aṅga]' (singular)
+- @deva[अङ्गाः] 'the princes of @[aṅga]' (plural—affix elided, @deva[वृद्धि] lost)
+- @deva[आङ्ग्यः] 'princesses of @[aṅga]' (feminine plural—no elision)
+"""
+
+standard = """
+The @deva[तद्राज] affix (@ref[4.1.174]) is elided by @deva[लुक्] when the word takes plural, provided:
+1. The plural is inherent to the base (not from compound dependency)
+2. The word is not feminine
+
+**Examples:**
+- Singular: @deva[आङ्गः] (@deva[अङ्ग] + @deva[अण्], @ref[4.1.170]) 'prince of @[aṅga]'
+- Plural: @deva[अङ्गाः] 'princes of @[aṅga]' (affix elided, @deva[वृद्धि] lost by @ref[1.1.63])
+- Feminine: @deva[आङ्ग्यः] 'princesses' (no elision)
+
+**No elision in compounds:**
+- @deva[प्रियवाङ्गाः] 'those whose beloved is the prince of @[vaṅga]' (plural from compound, affix retained)
+"""
+
+advanced = """
+There is @deva[लुक्] elision of @deva[तद्राज] -- @deva[ते] @deva[तद्राजाः] @ref[4.1.174], affix, when the word is used in the @deva[बहुवचन] (plural) number, provided that the @deva[बहुवचन] (plural) number is taken by the base itself and not by its standing as a compound epithet dependent upon another word and provided that the base is not used in the feminine. @deva[आङ्गः] = @deva[अंग] + @deva[अण्] @ref[4.1.170] 'a prince of @[anga]'; @deva[अङ्गाः] 'the princes of @[anga].' The affix @deva[अण्] is elided by present rule, and the @[vriddhih] vanishes with it too @ref[1.1.63]; but @deva[आङ्ग्यः] 'the princesses of @[anga],' plural of @deva[आंगी] 'a princess of @[anga].' But @deva[प्रियवांगः] 'he to whom the prince of @[vanga] is beloved' forms its plural @deva[प्रियवांगाः] 'they whose beloved is the prince of @[vanga],' there being no elision.
+"""

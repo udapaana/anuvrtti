@@ -1,0 +1,43 @@
+id = "2.1.4"
+numericId = "21004"
+
+[en]
+simple = """
+This rule provides the basic template for compounding: a case-inflected word (@deva[सुप्]) combines with another case-inflected word (@deva[सुपा]) to form a compound.
+
+The words @deva[सुप्] "a case-ending word" and @deva[सुपा] "with a case-ending word" carry forward into every compound rule that follows. This establishes that compounding is fundamentally a process of joining two inflected words.
+
+**Example:** @deva[राज्ञः पुरुषः] "king's man" → @deva[राजपुरुषः] — both @deva[राज्ञः] and @deva[पुरुषः] are case-inflected words that compound together.
+
+After compounding, the original case endings of the internal members are deleted (by @ref[2.4.71]), and the compound receives new endings as a single word.
+"""
+
+standard = """
+@deva[सुप्] and @deva[सुपा] are @deva[अनुवृत्ति] in subsequent @deva[सूत्र] — @deva[सह सुपा].
+
+**Rule type — @deva[अधिकार]/@deva[विधि]:** Establishes the basic compound template: @deva[सुबन्त] + @deva[सुबन्त] → @deva[समास].
+
+**Two readings extracted:**
+1. @deva[सुप् सुपा सह समस्यते] — a @deva[सुबन्त] compounds with another @deva[सुबन्त] (the standard reading)
+2. @deva[सुप् सह समर्थेन समस्यते] — a @deva[सुबन्त] compounds with a semantically connected word (broader reading covering verb-compounds)
+
+**Verb-compound cases:** The second reading accounts for constructions like @deva[अनुव्यचलत्] and @deva[अनुप्रावर्षत्], where a @deva[सुबन्त] compounds with a verbal form for accent purposes.
+
+**@deva[अनुवृत्ति] supply:** The words @deva[सुप्], @deva[सह], and @deva[सुपा] are drawn into subsequent rules individually or jointly as needed. @deva[समर्थ] continues from @ref[2.1.1]; @deva[समास] continues from @ref[2.1.3].
+
+**Post-compound operations:** After @deva[समास], @ref[2.4.71] deletes internal @deva[सुप्] endings, and @ref[4.1.2] supplies fresh @deva[सुप्] to the compound as a whole.
+"""
+
+advanced = """
+@deva[सह सुपा] — @deva[सुप्], @deva[सह], and @deva[सुपा] are @deva[अनुवृत्त] in subsequent compound rules.
+
+**Composite @deva[सूत्र]:** The @deva[महाभाष्य] extracts two distinct rules from this @deva[सूत्र] combined with @ref[2.1.1] and @ref[2.1.3]:
+1. @deva[सुप् सुपा सह समस्यते] — @deva[सुबन्त] + @deva[सुबन्त] compound (covers all nominal compounds)
+2. @deva[सुप् सह समर्थेन समस्यते] — @deva[सुबन्त] + any semantically connected word (covers @deva[गतिसमास] and verb-compounds for accent)
+
+**@deva[सह] enables the broader reading:** Without @deva[सह], only @deva[सुप् सुपा] would be available — restricting compounding to two @deva[सुबन्त] words. The word @deva[सह] allows a more general "compounding with" that includes verb-compound cases.
+
+**Residual compound rule:** Compounds not covered by specific types (@deva[अव्ययीभाव], @deva[तत्पुरुष], @deva[बहुव्रीहि], @deva[द्वन्द्व]) fall under this general template. The @deva[काशिका] treats this as a @deva[समासविधि] in its own right, not merely a heading.
+
+**Interaction with @ref[2.4.71]:** @deva[सुपो धातुप्रातिपदिकयोः] — after @deva[समास], the @deva[सुप्] endings of internal members are deleted. The compound becomes a single @deva[प्रातिपदिक] that then receives fresh @deva[सुप्] by @ref[4.1.2].
+"""

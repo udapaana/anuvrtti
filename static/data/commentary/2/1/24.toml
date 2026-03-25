@@ -1,0 +1,50 @@
+id = "2.1.24"
+numericId = "21024"
+
+[en]
+simple = """
+A word in the accusative case (@deva[द्वितीया]) **optionally** compounds with the words @deva[श्रित] "resorted to," @deva[अतीत] "gone past," @deva[पतित] "fallen into," @deva[गत] "gone to," @deva[अत्यस्त] "surpassed," @deva[प्राप्त] "obtained," or @deva[आपन्न] "reached" to form a @deva[तत्पुरुष] compound.
+
+**Examples:**
+- @deva[कष्टं श्रितः] → @deva[कष्टश्रितः] "one who resorted to hardship"
+- @deva[कान्तारम् अतीतः] → @deva[कान्तारातीतः] "one who passed through the forest"
+- @deva[नरकं पतितः] → @deva[नरकपतितः] "fallen into hell"
+- @deva[ग्रामं गतः] → @deva[ग्रामगतः] "gone to the village"
+- @deva[सुखं प्राप्तः] → @deva[सुखप्राप्तः] "one who obtained happiness"
+
+This is the first of the case-based @deva[तत्पुरुष] rules. It begins with the accusative — the @deva[द्वितीया तत्पुरुष].
+"""
+
+standard = """
+@deva[द्वितीयान्त] + @deva[श्रित]/\u200b@deva[अतीत]/\u200b@deva[पतित]/\u200b@deva[गत]/\u200b@deva[अत्यस्त]/\u200b@deva[प्राप्त]/\u200b@deva[आपन्न] → optional @deva[तत्पुरुष] — @deva[द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding.
+
+**Examples:**
+- @deva[कष्टश्रितः], @deva[नरकश्रितः] — "resorted to X"
+- @deva[कान्तारातीतः] — "past the forest"
+- @deva[नरकपतितः] — "fallen to hell"
+- @deva[ग्रामगतः] — "gone to village"
+- @deva[तरङ्गात्यस्तः] — "surpassed by waves"
+- @deva[सुखप्राप्तः], @deva[सुखापन्नः] — "who obtained happiness"
+
+**Also:** @deva[गमी], @deva[गामी] (future participle forms): @deva[ग्रामगमी], @deva[ग्रामगामी] "one who will go to the village."
+
+**First case-based @deva[तत्पुरुष]:** @ref[2.1.24]–@ref[2.1.48] teach @deva[तत्पुरुष] compounds where the first member stands in a specific case relationship to the second. This rule starts with @deva[द्वितीया] (accusative).
+
+**@deva[विभाषा]:** Both @deva[कष्टश्रितः] (compound) and @deva[कष्टं श्रितः] (uncompounded) are valid.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः] — an accusative-ending word optionally compounds with these seven past-participial forms as @deva[तत्पुरुष].
+
+**@deva[द्वितीया तत्पुरुष] — first case-based rule:** @ref[2.1.24]–@ref[2.1.31] cover @deva[द्वितीया] first members. @ref[2.1.30]–@ref[2.1.31] cover @deva[तृतीया]. @ref[2.1.36]–@ref[2.1.39] cover @deva[चतुर्थी]. And so on through @deva[सप्तमी]. The case of the first member corresponds to its @deva[कारक] relationship to the action expressed by the second member.
+
+**Why these seven words?** All seven are past participles or related forms expressing motion or attainment. The accusative first member represents the @deva[कर्मन्] (object) — the destination or goal: @deva[कष्टं श्रितः] = "one who resorted to hardship" (hardship is the object of resorting).
+
+**Extension to @deva[गमी]/\u200b@deva[गामी]:** The @deva[काशिका] extends the rule to future-participial forms of @deva[गम्]: @deva[ग्रामगमी] "one who will go to the village." This is by @deva[अनुवृत्ति] of the @deva[गत] stem's meaning.
+
+**@ref[2.1.1] @deva[समर्थ] applies:** The accusative word and the participle must be semantically connected — the accusative must be the object of the action denoted by the participle.
+"""

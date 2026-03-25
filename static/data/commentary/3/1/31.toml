@@ -1,0 +1,40 @@
+id = "3.1.31"
+numericId = "31031"
+
+[en]
+simple = """
+The affixes @deva[आय], @deva[ईयङ्], and @deva[णिङ्] (from the preceding rules) are optional when an @deva[आर्धधातुक] affix follows.
+
+**Examples:**
+- @deva[गोपायिता] or @deva[गोप्ता] "will protect" (future)
+- @deva[ऋतीयिता] or @deva[अर्तिता]
+- @deva[कामयिता] or @deva[कमिता]
+
+You can either keep or drop these affixes before certain verb forms.
+"""
+
+standard = """
+The affixes @deva[आय], @deva[ईयङ्], @deva[णिङ्] (from @ref[3.1.28]-@ref[3.1.30]) are optional before @deva[आर्धधातुक] affixes.
+
+**Examples with @deva[ता] (future):**
+- @deva[गोपायिता] / @deva[गोप्ता] "will protect"
+- @deva[ऋतीयिता] / @deva[अर्तिता]
+- @deva[कामयिता] / @deva[कमिता]
+
+**Effect on derived nouns:** When retained, use @deva[अ] (@ref[3.3.102]); when dropped, use @deva[क्तिन्] (@ref[3.3.95]): @deva[गोपाया] / @deva[गुप्तिः].
+
+Without this rule, these affixes would always appear before @deva[आर्धधातुक].
+"""
+
+advanced = """
+@deva[आय], @deva[ईयङ्], @deva[णिङ्] are @deva[विभाषा] (optional) before @deva[आर्धधातुक] affixes.
+
+**Examples:**
+- @deva[गोपायिता] / @deva[गोप्ता]
+- @deva[ऋतीयिता] / @deva[अर्तिता]
+- @deva[कामयिता] / @deva[कमिता]
+
+**Affix selection:** When @deva[आय] etc. are retained, proper @deva[आर्धधातुक] affixes apply. For feminines: @deva[अ] (@ref[3.3.102]) with @deva[आय] retained = @deva[गोपाया]; @deva[क्तिन्] (@ref[3.3.95]) without @deva[आय] = @deva[गुप्तिः].
+
+**Purpose:** Without this @deva[सूत्र], @deva[आय] etc. would obligatorily appear before all @deva[आर्धधातुक] affixes.
+"""

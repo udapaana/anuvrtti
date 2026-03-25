@@ -1,0 +1,39 @@
+id = "1.1.16"
+numericId = "11016"
+
+[en]
+simple = """
+When you address someone in Sanskrit (vocative singular), the word often ends in @deva[ओ] — for example, @deva[वायो] "O @deva[वायु]." Normally, @deva[ओ] before a vowel would undergo @deva[सन्धि]. But according to the grammarian @deva[शाकल्य], when this vocative @deva[ओ] appears before @deva[इति], it is optionally @deva[प्रगृह्य] in non-Vedic usage. Both forms are correct.
+
+**Example:** @deva[वायो इति] (no @deva[सन्धि]) or @deva[वायविति] (with @deva[सन्धि]) — both acceptable.
+
+In Vedic texts, there is no option: @deva[सन्धि] is obligatory.
+"""
+
+standard = """
+In non-Vedic (@deva[अनार्ष]) literature, the final @deva[ओ] of a vocative singular (@deva[सम्बुद्धि]) before @deva[इति] is optionally @deva[प्रगृह्य], according to @deva[शाकल्य].
+
+**Both forms valid:** @deva[वायो इति] ~ @deva[वायविति]
+
+**Why optional?** The convention @deva[आचार्योपज्ञे विभाषा] — citing a teacher's name signals that the rule is @deva[विभाषा] (optional), not mandatory.
+
+**Why "non-Vedic" (@deva[अनार्षे])?** In Vedic, @deva[सन्धि] is obligatory: @deva[एता गा ब्रह्मबन्धवित्यब्रवीत्] — the @deva[ओ] of the vocative merges with @deva[इति] without exception.
+
+**Why "before @deva[इति]"?** Vocative @deva[ओ] before other vowel-initial words follows @ref[1.1.15] (if the word is a particle) or normal @deva[सन्धि] rules. The @deva[इति] condition narrows this to reported speech contexts.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रगृह्यम्] from @ref[1.1.11].
+
+@deva[सम्बुद्धौ शाकल्यस्येतावनार्षे] — the @deva[ओ] of a @deva[सम्बुद्धि] (vocative singular) before @deva[इति] is optionally @deva[प्रगृह्य] in non-@deva[आर्ष] literature, per @deva[शाकल्य].
+
+**The @deva[विभाषा] convention:** Mentioning @deva[शाकल्य] by name makes this rule optional (@deva[आचार्योपज्ञे विभाषा]). This convention is distinct from @ref[1.2.15], where @deva[काश्यप] is mentioned @deva[पूजार्थम्] (honorifically) without creating optionality.
+
+**Option:** @deva[वायो इति] (no @deva[सन्धि]) ~ @deva[वायविति] (@deva[ओ] + @deva[इ] → @deva[अव् + इ] by @ref[6.1.78])
+
+**Vedic restriction (@deva[अनार्षे]):** In @deva[आर्ष] (Vedic) texts, @deva[सन्धि] is obligatory, not optional: @deva[एता गा ब्रह्मबन्धवित्यब्रवीत्]. The @deva[ओ] of the vocative merges with @deva[इति] without exception.
+
+**Scope of @deva[इति]:** The rule applies specifically before @deva[इति], not before any vowel-initial word. Before other words, the vocative @deva[ओ] follows normal @deva[सन्धि] or @ref[1.1.15] (if the vocative form is also a @deva[निपात]).
+
+**Position in the @deva[प्रगृह्य] series:** This introduces the @deva[शाकल्य] attribution and the @deva[इति] condition, both of which carry forward by @deva[अनुवृत्ति] into @ref[1.1.17] and @ref[1.1.18].
+"""

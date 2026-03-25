@@ -1,0 +1,50 @@
+id = "2.2.11"
+numericId = "22011"
+
+[en]
+simple = """
+A word in the genitive case does **not** form a compound in seven specific situations. Each involves a second member that has a particular grammatical character:
+
+1. **Ordinal words** (@deva[पूरण]): @deva[छात्राणां पञ्चमः] "fifth among students"
+2. **Quality-words** (@deva[गुणवचन]): @deva[काकस्य कार्ष्ण्यम्] "the blackness of the crow"
+3. **Words meaning 'satisfied'** (@deva[तृप्त्यर्थ]): @deva[फलानां सुहितः] "satisfied with fruits"
+4. **Present participles** (@deva[सत्] forms): @deva[ब्राह्मणस्य कुर्वन्] "one doing (something) for the Brahmin"
+5. **Indeclinables** (@deva[अव्यय]): @deva[ब्राह्मणस्य कृत्वा] "having done for the Brahmin"
+6. **@deva[तव्य]-words**: @deva[ब्राह्मणस्य कर्तव्यम्] "to be done by the Brahmin" — though @deva[तव्यत्]-affixed words (by @ref[3.1.96]) do compound: @deva[ब्राह्मणकर्तव्यम्]
+7. **Co-referential words** (@deva[समानाधिकरण]): @deva[राज्ञः पाटलिपुत्रकस्य] "of the king who is from @[pāṭaliputra]"
+
+In all these cases, the genitive-case word stays separate — it cannot merge into a compound.
+"""
+
+standard = """
+@deva[षष्ठी] does not compound with seven categories — @deva[पूरणगुणसुह्यसुखत्यक्तरसतृप्त्यर्थैः...].
+
+**Rule type — @deva[प्रतिषेध] (prohibition):** Blocks @ref[2.2.8] for these specific second members.
+
+**The seven prohibitions:**
+1. **@deva[पूरणार्थ]** (ordinals): @deva[छात्राणां पञ्चमः], @deva[छात्राणां दशमः] — ordinals not covered by @ref[2.2.3]
+2. **@deva[गुणवचन]** (quality-abstracts): @deva[काकस्य कार्ष्ण्यम्] "blackness of crow," @deva[वलाकायाः शौक्ल्यम्] "whiteness of crane"
+3. **@deva[तृप्त्यर्थ]** (satisfaction): @deva[फलानां सुहितः], @deva[फलानां तृप्तः]
+4. **@deva[सदन्त]** (present participle by @ref[3.2.127]): @deva[ब्राह्मणस्य कुर्वन्], @deva[ब्राह्मणस्य कुर्वाणः]
+5. **@deva[अव्यय]**: @deva[ब्राह्मणस्य कृत्वा], @deva[ब्राह्मणस्य हुत्वा]
+6. **@deva[तव्य]**: @deva[ब्राह्मणस्य कर्तव्यम्] — but @deva[तव्यत्] (by @ref[3.1.96]) compounds: @deva[ब्राह्मणकर्तव्यम्]
+7. **@deva[समानाधिकरण]**: @deva[राज्ञः पाटलिपुत्रकस्य], @deva[पाणिनेः सूत्रकारस्य]
+
+**Note on @deva[समानाधिकरण]:** Though genitive co-referential compounds are blocked here, @deva[कर्मधारय] compounds with the same words are possible under @ref[2.1.57]: @deva[सूत्रकारपाणिनिः] — there the order and compound type differ.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.2.8]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[न] from @ref[2.2.10].
+
+This rule lists seven categories of second members with which a @deva[षष्ठ्यन्त] word cannot compound, continuing the prohibition series begun at @ref[2.2.10].
+
+**@deva[पूरणार्थ] — finding scope:** @ref[2.2.3] already authorized optional compounding for @deva[द्वितीय], @deva[तृतीय], @deva[चतुर्थ], @deva[तुर्य]. This prohibition finds scope with remaining ordinals — @deva[पञ्चम], @deva[षष्ठ], @deva[सप्तम], @deva[अष्टम], @deva[दशम], etc. These higher ordinals cannot form genitive compounds.
+
+**@deva[गुणवचन] — abstract qualities:** The prohibition covers quality-abstracts (@deva[कार्ष्ण्यम्] "blackness," @deva[शौक्ल्यम्] "whiteness"). This contrasts with the @deva[वार्त्तिक] under @ref[2.2.9] that allows compounds where a quality inheres in the referent (@deva[चन्दनगन्धः]). The distinction: inherent qualities compound (@ref[2.2.9] @deva[वार्त्तिक]); abstract quality-nouns do not (this rule).
+
+**@deva[तव्य] vs. @deva[तव्यत्]:** The @[sūtra] blocks @deva[तव्य] (from @ref[3.1.96] @deva[तव्यत्]) from compounding but allows @deva[तव्यत्]-affixed forms to compound. The @deva[काशिका] explains: @deva[ब्राह्मणकर्तव्यम्] is valid because the @deva[तव्यत्] form (with @deva[इत्]-@deva[त्]) is treated differently from the homophonous @deva[तव्य] form.
+
+**@deva[समानाधिकरण] prohibition:** When two words in genitive are co-referential (@deva[राज्ञः पाटलिपुत्रकस्य] — "the king" = "the one from @[pāṭaliputra]"), they cannot form a genitive compound. But they can form a @deva[कर्मधारय] compound under @ref[2.1.57], with reversed word order: @deva[सूत्रकारपाणिनिः].
+
+**Comprehensive prohibition:** This single rule blocks seven distinct compound patterns, making it one of the broadest @deva[प्रतिषेध] rules in the @deva[समास] section. Each prohibition targets a specific grammatical or semantic context where compounding would obscure the underlying relationship.
+"""

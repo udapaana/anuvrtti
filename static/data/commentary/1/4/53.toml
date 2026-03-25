@@ -1,0 +1,49 @@
+id = "1.4.53"
+numericId = "14053"
+
+[en]
+simple = """
+With causatives of @deva[हृ] "to take" and @deva[कृ] "to make," the original agent can optionally be treated as @deva[कर्मन्] "object" (accusative) or left as @deva[करण] "instrument" (instrumental).
+
+**Examples:**
+- @deva[देवदत्तं कटं कारयति] "he makes Devadatta make a mat" (accusative — @deva[देवदत्त] as @deva[कर्मन्])
+- @deva[देवदत्तेन कटं कारयति] "he has a mat made by Devadatta" (instrumental — @deva[देवदत्त] as @deva[करण])
+- @deva[माणवकं भारं हारयति] or @deva[माणवकेन भारं हारयति] "he has the boy carry the load"
+
+Both constructions are equally valid.
+"""
+
+standard = """
+With causatives of @deva[हृ] and @deva[कृ], the primitive agent is optionally @deva[कर्मन्] — @deva[हृक्रोर्विभाषा].
+
+**Rule type — @deva[विभाषा] (option):** The primitive agent may be either @deva[कर्मन्] (accusative) or @deva[करण] (instrumental).
+
+**Examples:**
+- @deva[देवदत्तं कटं कारयति] (@deva[कर्मन्], accusative) / @deva[देवदत्तेन कटं कारयति] (@deva[करण], instrumental)
+- @deva[माणवकं भारं हारयति] / @deva[माणवकेन भारं हारयति]
+
+**Contrast with @ref[1.4.52]:** @ref[1.4.52] makes @deva[कर्मन्] obligatory for causatives of motion/knowledge/eating/intransitive verbs. This rule makes it optional for @deva[हृ] and @deva[कृ] — both accusative and instrumental are grammatical.
+
+**Why @deva[हृ]/@deva[कृ] are special:** These are ordinary transitive verbs (not in the five @ref[1.4.52] categories), so the default would be instrumental for the primitive agent. This rule adds the accusative as an option.
+
+**End of @deva[कर्मन्] section:** This closes @ref[1.4.49]–@ref[1.4.53]. @ref[1.4.54] begins the @deva[कर्तृ] definition.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्म] from @ref[1.4.49]; @deva[णौ] from @ref[1.4.52]; @deva[कारके] from @ref[1.4.23].
+
+@deva[हृक्रोर्विभाषा] — with causatives of @deva[हृ]/@deva[कृ], the primitive agent is optionally @deva[कर्मन्].
+
+**Position between @ref[1.4.52] and general causatives:** @ref[1.4.52] makes five verb-categories obligatorily assign @deva[कर्मन्] to the primitive agent. For all other transitive verbs, the primitive agent defaults to @deva[करण] (instrumental). @deva[हृ] and @deva[कृ] fall between — neither in the @ref[1.4.52] categories nor fully defaulting to instrumental.
+
+**@deva[वार्त्तिक] extensions:** @deva[अभिवद्] "to greet" and @deva[दृश्] (@deva[आत्मनेपद]) "to see" also take optional accusative/instrumental for the primitive agent in causative constructions, by @deva[वार्त्तिक].
+
+**Completing the @deva[कर्मन्] section (@ref[1.4.49]–@ref[1.4.53]):**
+1. @ref[1.4.49]: core definition — most desired by agent
+2. @ref[1.4.50]: extension to undesired objects
+3. @ref[1.4.51]: @deva[अकथित] — second object in double-accusative verbs
+4. @ref[1.4.52]: causatives of five verb-types — primitive agent → @deva[कर्मन्]
+5. @ref[1.4.53] (this): @deva[हृ]/@deva[कृ] causatives — optional
+
+**Transition:** @ref[1.4.54] defines @deva[कर्तृ] (agent) — the last @deva[कारक] in @deva[पाणिनि]'s order.
+"""

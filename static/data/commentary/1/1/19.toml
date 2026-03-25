@@ -1,0 +1,41 @@
+id = "1.1.19"
+numericId = "11019"
+
+[en]
+simple = """
+In Vedic Sanskrit, when a word's final @deva[ई] or @deva[ऊ] expresses locative meaning — replacing the original case ending — it is @deva[प्रगृह्य]. The vowel does not undergo @deva[सन्धि] with the next word.
+
+This happens because Vedic grammar sometimes replaces case endings with a vowel that matches the stem's final vowel (by @ref[7.1.39]). When that replacement vowel is @deva[ई] or @deva[ऊ] and carries locative sense, it is protected.
+
+**Example:** @deva[तनू] "in the body" — the locative ending has been absorbed into the @deva[ऊ] of the stem. In @deva[अध्यस्यां मामकीतनू], the @deva[ऊ] stays intact before the next word.
+"""
+
+standard = """
+In Vedic, @deva[ई] or @deva[ऊ] expressing locative sense (where the case ending has been replaced by a homogeneous vowel via @ref[7.1.39]) are @deva[प्रगृह्य].
+
+**Examples:**
+- @deva[तनू] "in the body": the locative @deva[इ] merges with the stem's @deva[ऊ] → @deva[तनू]: @deva[अध्यस्यां मामकीतनू]
+- @deva[गौरी] "on the @deva[गौरी]": @deva[सोमो गौरी अधिश्रितः] (RV IX.12.3)
+
+**Why only @deva[ई] and @deva[ऊ]?** When the locative replacement is @deva[आ] (via @deva[डा]), @deva[सन्धि] applies normally: @deva[अग्ना] + @deva[इति] = @deva[अग्नेति].
+
+**Why "@deva[अर्थे]" (expressing locative sense)?** The locative meaning must be actively expressed. In a compound, the prior member no longer independently expresses case meaning: @deva[वापी] + @deva[अश्व] = @deva[वाप्यश्वः] — @deva[सन्धि] applies because @deva[ई] no longer has locative force.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रगृह्यम्] from @ref[1.1.11].
+
+@deva[ईदूतौ च सप्तम्यर्थे] — @deva[ई] and @deva[ऊ] expressing locative (@deva[सप्तमी]) sense are @deva[प्रगृह्य]. This is a Vedic rule.
+
+**Mechanism:** @ref[7.1.39] prescribes that Vedic case affixes may be replaced by a vowel homogeneous (@deva[सवर्ण]) with the preceding stem-final vowel. When the stem ends in @deva[ई] or @deva[ऊ] and the replaced ending is locative, the resulting vowel is @deva[प्रगृह्य].
+
+**Examples:** @deva[तनू] (loc. of @deva[तनू]) in @deva[अध्यस्यां मामकीतनू]; @deva[गौरी] (loc. of @deva[गौरी]) in @deva[सोमो गौरी अधिश्रितः] (RV IX.12.3).
+
+**Why not @deva[आ]?** @deva[डा] (@deva[आ]) as locative replacement undergoes @deva[सन्धि] normally: @deva[अग्ना] (loc. of @deva[अग्नि] by @deva[डा]) + @deva[इति] = @deva[अग्नेति] by @ref[6.1.87]. @deva[पाणिनि] deliberately excludes @deva[आ] from @deva[प्रगृह्य] protection here.
+
+**Why @deva[अर्थे] (expressing sense)?** The word @deva[अर्थे] restricts this to vowels that actively express locative meaning. In compounds, the prior member loses independent case significance: @deva[वापी] + @deva[अश्व] = @deva[वाप्यश्वः] — the @deva[ई] of @deva[वापी] no longer carries locative sense, so @deva[सन्धि] applies.
+
+**Instrumental @deva[ई] excluded:** @deva[मति] + @deva[टा] → @deva[मती] (instrumental). This @deva[ई] expresses @deva[तृतीया] (instrumental), not @deva[सप्तमी] (locative), so it is not @deva[प्रगृह्य]: @deva[मती] + @deva[इति] = @deva[मतीति].
+
+**Position:** This is sometimes grouped with the @deva[प्रगृह्य] series (@ref[1.1.11]–@ref[1.1.18]) as a Vedic supplement. The @deva[च] ("and") connects it to the preceding block.
+"""

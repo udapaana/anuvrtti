@@ -1,0 +1,33 @@
+id = "4.2.2"
+numericId = "42002"
+
+[en]
+simple = """
+For four specific color-words — @deva[लाक्षा] (lac), @deva[रोचना] (yellow ochre), @deva[शकल] (a type of dye), and @deva[कर्दम] (mud-color) — the affix @deva[ठक्] is used instead of the default @deva[अण्], still meaning "dyed with that."
+
+**Examples:** @deva[लाक्षया रक्तम्] "dyed with lac" becomes @deva[लाक्षिकम्], not *@deva[लाक्षम्]. Similarly: @deva[रौचनिकम्] (ochre-dyed), @deva[शाकलिकम्], @deva[कार्दमिकम्].
+
+This is an exception to the general rule @ref[4.2.1], which would otherwise give @deva[अण्] for all color-words.
+"""
+
+standard = """
+This @[vidhi] rule overrides @ref[4.2.1] for a closed list of four words: @deva[लाक्षा] (lac dye), @deva[रोचना] (yellow ochre), @deva[शकल] (a specific dye), @deva[कर्दम] (mud-color). After these, @deva[ठक्] (@deva[इक]) applies instead of @deva[अण्], in the same "dyed thereby" sense.
+
+**Worked examples:**
+- @deva[लाक्षया रक्तम्] → @deva[लाक्षिकम्] — lac-dyed.
+- @deva[रोचनया रक्तम्] → @deva[रौचनिकम्] — ochre-dyed.
+- @deva[शकलेन रक्तम्] → @deva[शाकलिकम्].
+- @deva[कर्दमेन रक्तम्] → @deva[कार्दमिकम्].
+
+Per @[patañjali], @deva[अण्] is optionally retained after @deva[शकल] and @deva[कर्दम], yielding @deva[शाकलम्] and @deva[कार्दमम्] as alternate forms alongside the @deva[ठक्] forms.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अण्] from @ref[4.1.83]; @deva[तेन रक्तम्] from @ref[4.2.1].
+
+This rule provides @deva[ठक्] as an @[apavāda] (exception) to @deva[अण्] for the @deva[लाक्षादि] group (four words). The @deva[ठक्] affix yields @deva[इक] after @deva[वृद्धि] of the first syllable.
+
+@[patañjali] in the @deva[महाभाष्य] discusses optionality for @deva[शकल] and @deva[कर्दम]: both @deva[अण्] and @deva[ठक्] apply, giving doublets @deva[शाकलम्] / @deva[शाकलिकम्] and @deva[कार्दमम्] / @deva[कार्दमिकम्]. For @deva[लाक्षा] and @deva[रोचना], only @deva[ठक्] applies — no option.
+
+The @deva[काशिका] notes that the restriction to these four words implies that all other @deva[रागशब्द] take @deva[अण्] by @ref[4.2.1]. This @[apavāda] relationship between @ref[4.2.1] and @ref[4.2.2] is a standard instance of @deva[विप्रतिषेध] resolved by the principle that the more specific rule wins.
+"""

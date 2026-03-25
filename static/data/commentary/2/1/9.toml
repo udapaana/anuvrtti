@@ -1,0 +1,45 @@
+id = "2.1.9"
+numericId = "21009"
+
+[en]
+simple = """
+A case-inflected word (@deva[सुबन्त]) compounds with the word @deva[प्रति] to form an @deva[अव्ययीभाव] when @deva[प्रति] means "a small amount" (@deva[मात्रा]).
+
+**Examples:**
+- @deva[शाकप्रति] "a little vegetable"
+- @deva[सूपप्रति] "a little soup"
+
+**No compound (other senses):** @deva[वृक्षं प्रति विद्योतते विद्युत्] "lightning flashes toward the tree" — here @deva[प्रति] means "toward" (direction), not "a little," so no @deva[अव्ययीभाव] compound.
+
+Notice that unlike other @deva[अव्ययीभाव] rules, here the @deva[सुबन्त] comes **first** and @deva[प्रति] comes **second** — @deva[शाकप्रति], not @deva[प्रतिशाक].
+"""
+
+standard = """
+@deva[सुबन्त] + @deva[प्रति] in the @deva[मात्रा] (small quantity) sense → @deva[अव्ययीभाव] — @deva[सुप्प्रतिना मात्रयोगे].
+
+**Rule type — @deva[विधि]:** @deva[अव्ययीभाव] with @deva[प्रति] in the "a little" sense.
+
+**Examples:**
+- @deva[शाकप्रति] "a little vegetable"
+- @deva[सूपप्रति] "a little soup"
+
+**No compound:** @deva[वृक्षं प्रति विद्योतते विद्युत्] — directional sense, not @deva[मात्रा].
+
+**@deva[सुप्] repeated:** The @deva[सूत्र] restates @deva[सुप्] to signal that @deva[अव्यय] from @ref[2.1.6] does not carry forward by @deva[अनुवृत्ति]. The first member here is a @deva[सुबन्त] (noun), not an @deva[अव्यय].
+
+**Word order — @deva[प्रति] final:** @deva[प्रति] stands last in the compound (@deva[शाकप्रति], not @deva[प्रतिशाक]) because @deva[प्रति] with @deva[तृतीया] (@deva[प्रतिना]) is not @deva[उपसर्जन], so @ref[2.2.30] places the non-@deva[उपसर्जन] member last.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समासः] from @ref[2.1.3]; @deva[अव्ययीभावः] from @ref[2.1.5].
+
+@deva[सुप्प्रतिना मात्रयोगे] — a @deva[सुबन्त] compounds with @deva[प्रति] (instrumental @deva[प्रतिना]) in the @deva[मात्रा] (small amount) sense.
+
+**@deva[सुप्] restated to block @deva[अव्यय] @deva[अनुवृत्ति]:** @ref[2.1.6] specifies @deva[अव्ययम्] as the first member. By restating @deva[सुप्] here, the rule signals a different first member — a regular @deva[सुबन्त] (noun), not necessarily an @deva[अव्यय]. This is a standard @[pāṇinian] technique: restating a term blocks the @deva[अनुवृत्ति] of a competing term.
+
+**@deva[प्रतिना] = instrumental of @deva[प्रति]:** The @deva[सूत्र] uses the instrumental form @deva[प्रतिना] to indicate that @deva[प्रति] is the second member (the "with" element). This explains the reversed word order.
+
+**Word order by @ref[2.2.30]:** @ref[2.2.30] (@deva[उपसर्जनं पूर्वम्]) places the subordinate (@deva[उपसर्जन]) member first. Since @deva[प्रति] (instrumental) is not @deva[उपसर्जन] by @ref[1.2.43], it goes to the end: @deva[शाकप्रति], @deva[सूपप्रति].
+
+**Unique among @deva[अव्ययीभाव]:** Most @deva[अव्ययीभाव] compounds have the @deva[अव्यय] first (@deva[उपकुम्भम्], @deva[निर्मक्षिकम्]). This rule is exceptional — the @deva[अव्यय] (@deva[प्रति]) comes second. The compound is still @deva[अव्ययीभाव] because it functions as an indeclinable.
+"""

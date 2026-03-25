@@ -1,0 +1,48 @@
+id = "1.2.7"
+numericId = "12007"
+
+[en]
+simple = """
+After the roots @deva[मृड्] "to be gracious," @deva[मृद्] "to squeeze," @deva[गुध्] "to wrap," @deva[कुष्] "to tear," @deva[क्लिश्] "to suffer," @deva[वद्] "to speak," and @deva[वस्] "to dwell," the gerund affix @deva[क्त्वा] ("having done X") is treated as @deva[कित्]. This blocks @deva[गुण] (vowel strengthening) of the root vowel.
+
+**Examples:**
+- @deva[मृडित्वा] "having been gracious"
+- @deva[गुधित्वा] "having wrapped"
+- @deva[उदित्वा] "having spoken" (the @deva[व्] of @deva[वद्] becomes @deva[उ] by @deva[सम्प्रसारण])
+- @deva[उषित्वा] "having dwelt"
+"""
+
+standard = """
+After @deva[मृड्], @deva[मृद्], @deva[गुध्], @deva[कुष्], @deva[क्लिश्], @deva[वद्], and @deva[वस्], the affix @deva[क्त्वा] is @deva[कित्].
+
+**Why this rule is needed:** These are @deva[सेट्] roots (they take the @deva[इट्] augment). By @ref[1.2.18], @deva[क्त्वा] after @deva[सेट्] roots loses its @deva[कित्] nature. This rule overrides @ref[1.2.18] for these seven roots, keeping @deva[क्त्वा] as @deva[कित्].
+
+**Examples:**
+- @deva[मृडित्वा] "having been gracious," @deva[मृदित्वा] "having squeezed"
+- @deva[कुषित्वा] "having torn," @deva[क्लिशित्वा] "having suffered"
+- @deva[उदित्वा] "having spoken" (@deva[व्] → @deva[उ] by @deva[सम्प्रसारण], @ref[6.1.15])
+- @deva[उषित्वा] "having dwelt" (@deva[व्] → @deva[उ])
+
+**Additional note:** For @deva[गुध्], @deva[कुष्], @deva[क्लिश्], @ref[1.2.26] would make @deva[क्त्वा] optionally @deva[कित्]. This rule makes it obligatorily @deva[कित्] for all seven roots.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5].
+
+@deva[मृडमृदगुधकुषक्लिशवदवसां क्त्वा] — @deva[क्त्वा] is @deva[कित्] after these seven roots.
+
+**This rule anticipates @ref[1.2.18].** @ref[1.2.18] will cancel @deva[कित्] status for @deva[क्त्वा] after @deva[सेट्] roots. Since all seven roots here are @deva[सेट्], @ref[1.2.18] would otherwise override. This rule, being more specific (@deva[विशेषविधि]), prevails by @ref[1.4.2] (@deva[विप्रतिषेधे परं कार्यम्]).
+
+**The seven roots:**
+1. @deva[मृड्] (@deva[तुदादि]) — @deva[मृडित्वा]
+2. @deva[मृद्] (@deva[तुदादि]) — @deva[मृदित्वा]
+3. @deva[गुध्] (@deva[दिवादि]) — @deva[गुधित्वा]
+4. @deva[कुष्] (@deva[तुदादि]) — @deva[कुषित्वा]
+5. @deva[क्लिश्] (@deva[दिवादि]) — @deva[क्लिशित्वा]
+6. @deva[वद्] (@deva[भ्वादि]) — @deva[उदित्वा] (@deva[सम्प्रसारण] by @ref[6.1.15])
+7. @deva[वस्] (@deva[भ्वादि]) — @deva[उषित्वा] (@deva[सम्प्रसारण])
+
+**For @deva[गुध्], @deva[कुष्], @deva[क्लिश्]:** @ref[1.2.26] makes @deva[क्त्वा] optionally @deva[कित्] after roots with @deva[उपधा] @deva[इक्] and final @deva[झल्]. This rule supersedes with obligatory @deva[कित्].
+
+**Effect of @deva[कित्] on these roots:** Blocks @deva[गुण], so the @deva[उपधा] vowel is preserved unchanged. For @deva[वद्] and @deva[वस्], @deva[कित्] additionally triggers @deva[सम्प्रसारण]: @deva[व्] → @deva[उ].
+"""

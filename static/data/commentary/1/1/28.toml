@@ -1,0 +1,37 @@
+id = "1.1.28"
+numericId = "11028"
+
+[en]
+simple = """
+When @deva[सर्वनाम] words appear in @deva[बहुव्रीहि] (possessive) compounds that express direction, they optionally keep their pronominal declension. Both pronominal and regular endings are acceptable.
+
+**Example:** @deva[उत्तरपूर्वा] "north-east" (feminine) — the dative can be either @deva[उत्तरपूर्वस्यै] (pronominal) or @deva[उत्तरपूर्वायै] (regular). Both are correct.
+
+This is an exception to @ref[1.1.29], which normally strips @deva[सर्वनाम] status in @deva[बहुव्रीहि] compounds.
+"""
+
+standard = """
+In directional @deva[बहुव्रीहि] compounds (@ref[2.2.26]), @deva[सर्वादि] words are optionally @deva[सर्वनाम]. This partially overrides @ref[1.1.29].
+
+**Example:** @deva[उत्तरपूर्वा] "north-east" (f.): dative @deva[उत्तरपूर्वस्यै] ~ @deva[उत्तरपूर्वायै].
+
+**Why "direction" (@deva[दिशि])?** The option is limited to directional @deva[बहुव्रीहि] compounds. Other @deva[बहुव्रीहि] types fall under the absolute prohibition of @ref[1.1.29].
+
+**Why "compound" (@deva[समासवचने])?** Excludes @deva[बहुव्रीहिवत्] constructions (treated as if @deva[बहुव्रीहि] by @ref[8.1.9]) — these retain pronominal declension unconditionally: @deva[एकैकस्मै], @deva[दक्षिणदक्षिणस्यै].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सर्वनामानि] from @ref[1.1.27]; @deva[बहुव्रीहि] from @ref[1.1.29] (read forward by context).
+
+@deva[विभाषा दिशि समासवचने] — optionally @deva[सर्वनाम] in directional @deva[बहुव्रीहि] compounds.
+
+**This is an exception to @ref[1.1.29]:** @ref[1.1.29] categorically denies @deva[सर्वनाम] status in @deva[बहुव्रीहि]. This rule carves out an option for the subset involving direction (@deva[दिक्]).
+
+**@deva[दिशि]:** Refers to @deva[बहुव्रीहि] compounds formed under @ref[2.2.26] — compounds expressing directional orientation. Example: @deva[उत्तरपूर्वा] "north-east."
+
+**Option:** @deva[उत्तरपूर्वस्यै] (pronominal) ~ @deva[उत्तरपूर्वायै] (regular).
+
+**@deva[समासवचने]:** The word @deva[समास] restricts the option to actual compounds. @deva[बहुव्रीहिवत्] constructions (@ref[8.1.9]) — items that behave as-if @deva[बहुव्रीहि] without being true compounds — retain pronominal declension without option: @deva[एकैकस्मै देहि].
+
+**Why not @deva[द्वन्द्व]?** Directional @deva[द्वन्द्व] compounds fall under @ref[1.1.31], which prohibits @deva[सर्वनाम] status absolutely: @deva[दक्षिणोत्तरपूर्वाणाम्] — no option.
+"""

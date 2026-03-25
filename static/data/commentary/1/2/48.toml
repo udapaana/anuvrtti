@@ -1,0 +1,53 @@
+id = "1.2.48"
+numericId = "12048"
+
+[en]
+simple = """
+The word @deva[गो] "cow" and words ending in a feminine affix shorten their final vowel when they are @deva[उपसर्जन] (subordinate) in a compound.
+
+**@deva[गो] in compounds:**
+- @deva[चित्र] + @deva[गो] → @deva[चित्रगुः] "having a brindled cow" — @deva[ओ] becomes @deva[उ]
+- @deva[शबल] + @deva[गो] → @deva[शबलगुः] "having a spotted cow"
+
+**Feminine-affix words in compounds:**
+- @deva[निः] + @deva[कौशाम्बी] → @deva[निष्कौशाम्बिः] "from outside @deva[कौशाम्बी]" — @deva[ई] becomes @deva[इ]
+- @deva[अति] + @deva[खट्वा] → @deva[अतिखट्वः] "beyond a cot" — @deva[आ] becomes @deva[अ]
+
+**Not subordinate — no shortening:** @deva[राजकुमारी] "princess" — @deva[कुमारी] is the principal member, not @deva[उपसर्जन], so @deva[ई] stays long.
+"""
+
+standard = """
+The final vowel of @deva[गो] and of feminine-affix-ending stems is shortened when the word is @deva[उपसर्जन] in a compound.
+
+**@deva[गो] (@deva[ओ] → @deva[उ]):**
+- @deva[चित्रगुः] "having a brindled cow" (@deva[बहुव्रीहि])
+- @deva[शबलगुः] "having a spotted cow"
+
+**Feminine affix (long → short):**
+- @deva[निष्कौशाम्बिः] (from @deva[कौशाम्बी], @deva[ई] → @deva[इ])
+- @deva[निर्वाराणसिः] (from @deva[वाराणसी])
+- @deva[अतिखट्वः] (from @deva[खट्वा], @deva[आ] → @deva[अ])
+- @deva[अतिमालः] (from @deva[माला])
+
+**Not @deva[उपसर्जन]:** @deva[राजकुमारी] — @deva[राजन्] is @deva[उपसर्जन], not @deva[कुमारी]; @deva[ई] unchanged.
+
+**Inherently feminine (no feminine affix):** @deva[लक्ष्मी], @deva[श्री] — these are not derived by a feminine affix → @deva[अतिलक्ष्मीः], @deva[अतिश्रीः] (no shortening). The rule targets only words where the final long vowel comes from a feminine affix (@deva[टाप्], @deva[ङीप्], @deva[ङीष्]).
+"""
+
+advanced = """
+@deva[गोश्च प्रातिपदिकस्य स्त्र्युपसर्जनस्य] — the final of @deva[गो] and of feminine-affix-ending @deva[उपसर्जन] @deva[प्रातिपदिक]s is shortened.
+
+**@deva[अनुवृत्ति]:** @deva[ह्रस्व] from @ref[1.2.47]; @deva[प्रातिपदिक] from @ref[1.2.47].
+
+**Two separate operations:**
+1. @deva[गो] → @deva[गु] when @deva[उपसर्जन]: @deva[चित्रगुः], @deva[शबलगुः]
+2. Feminine-affix-ending → short when @deva[उपसर्जन]: @deva[निष्कौशाम्बिः], @deva[अतिखट्वः]
+
+**@deva[स्त्री] = "ending in feminine affix":** The word @deva[स्त्री] here (with @deva[स्वरित] accent) means "ending in a feminine affix" — not "any feminine word." Words that are inherently feminine without a feminine affix (@deva[लक्ष्मी], @deva[श्री]) are excluded: @deva[अतिलक्ष्मीः], @deva[अतिश्रीः] retain their long vowel.
+
+**Feminine affixes covered:** @deva[टाप्] (→ @deva[आ]), @deva[ङीप्] (→ @deva[ई]), @deva[ङीष्] (→ @deva[ई]) — these are the three feminine suffixes by @ref[4.1.3]–@ref[4.1.6].
+
+**@deva[उपसर्जन] requirement:** Only the subordinate member shortens. In @deva[राजकुमारी], @deva[कुमारी] is the principal (@deva[प्रधान]) — it does not shorten. Compare @deva[निष्कौशाम्बिः] where @deva[कौशाम्बी] is @deva[उपसर्जन] (by @ref[1.2.44], fixed in one case).
+
+**Connection to @ref[1.2.49]:** The next rule goes further — when a @deva[तद्धित] is @deva[लुक्]-elided, the feminine affix is not merely shortened but completely deleted.
+"""

@@ -1,0 +1,48 @@
+id = "1.4.16"
+numericId = "14016"
+
+[en]
+simple = """
+Before an affix that has an indicatory @deva[स्] (@deva[सित्]), the preceding word is treated as @deva[पद] "complete word."
+
+**Example:**
+- @deva[भवत्] + @deva[छस्] → @deva[भवदीयः] "belonging to you"
+
+The affix @deva[छस्] (ordained by @ref[4.2.115]) has @deva[स्] as its indicator letter. Because @deva[भवत्] is treated as @deva[पद], @deva[पद]-final rules apply — the final @deva[त्] voices to @deva[द्] before the vowel-initial affix.
+
+Without this rule, @ref[1.4.18] would make @deva[भवत्] a @deva[भ] (since the affix begins with a vowel), and different operations would apply.
+"""
+
+standard = """
+Before a @deva[सित्] affix (one with indicatory @deva[स्]), the preceding word is @deva[पद] — @deva[सिति च].
+
+**Rule type — @deva[अपवाद] of @ref[1.4.18]:** @ref[1.4.18] makes the preceding word @deva[भ] before vowel/@deva[य्]-initial affixes. This rule overrides that: if the affix is @deva[सित्], the preceding word is @deva[पद] instead.
+
+**Example:** @deva[भवत्] + @deva[छस्] (@ref[4.2.115]) → @deva[भवदीयः] "belonging to you"
+- As @deva[पद]: @deva[त्] → @deva[द्] by voicing before vowel
+- If it were @deva[भ]: @ref[6.4.148] would elide final vowel differently
+
+**Why @deva[सित्]?** The indicatory @deva[स्] serves specifically to trigger @deva[पद] status. It is a device by which @deva[पाणिनि] controls the @deva[पद]/@deva[भ] classification.
+
+**Scope:** Applies within the @deva[सु]–@deva[कप्] range established by @ref[1.4.17].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[पद] from @ref[1.4.14].
+
+@deva[सिति च] — before @deva[सित्] affixes, @deva[पद] status applies.
+
+**Override of @ref[1.4.18]:** @ref[1.4.18] assigns @deva[भ] before vowel/@deva[य्]-initial affixes. @deva[सित्] affixes may begin with a vowel or @deva[य्], yet the preceding element is @deva[पद], not @deva[भ].
+
+**@deva[सित्] as a classification device:** The indicatory @deva[स्] in affixes like @deva[छस्] has no phonological role — it serves solely to control the @deva[पद]/@deva[भ] distinction. This is a prime example of @deva[पाणिनि]'s use of @deva[इत्] markers for meta-grammatical purposes.
+
+**Order of application:** @ref[1.4.16] (this) is stated before @ref[1.4.17]–@ref[1.4.18], but applies as an exception to @ref[1.4.18]. The @deva[अपवाद] relationship holds: @ref[1.4.16] is more specific (requires @deva[सित्]) than @ref[1.4.18] (any vowel/@deva[य्]-initial affix).
+
+**@deva[पद]/@deva[भ] series (@ref[1.4.14]–@ref[1.4.20]):**
+- @ref[1.4.14]: @deva[सुप्]/@deva[तिङ्]-final → @deva[पद]
+- @ref[1.4.15]: @deva[न्]-final before @deva[क्य] → @deva[पद]
+- @ref[1.4.16] (this): before @deva[सित्] → @deva[पद]
+- @ref[1.4.17]: before @deva[सु]–@deva[कप्] (non-@deva[सर्वनामस्थान]) → @deva[पद]
+- @ref[1.4.18]: before vowel/@deva[य्]-initial (within above) → @deva[भ]
+- @ref[1.4.19]: @deva[त्]/@deva[स्]-final before @deva[मत्वर्थीय] → @deva[भ]
+"""

@@ -1,0 +1,45 @@
+id = "2.2.2"
+numericId = "22002"
+
+[en]
+simple = """
+The word @deva[अर्ध] "half," when neuter and meaning an exact bisection, compounds with a word denoting something that has parts to form @deva[तत्पुरुष]. The compound names one half of a divisible whole.
+
+**Examples:**
+- @deva[अर्धपिप्पली] "half a pepper" — @deva[अर्ध] "half" + @deva[पिप्पली] "long pepper"
+- @deva[अर्धकोशातकी] "half a gourd"
+
+When @deva[अर्ध] is masculine (meaning "a portion" in a general sense rather than exact half), it follows the genitive compound pattern instead: @deva[ग्रामार्धः] "a portion of the village," @deva[नगरार्धः] "a portion of the city."
+"""
+
+standard = """
+@deva[अर्ध] (@deva[नपुंसक], exact bisection) + @deva[एकदेशिन्] → @deva[तत्पुरुष] when @deva[एकाधिकरण] — @deva[अर्धं नपुंसकम्].
+
+**Rule type — @deva[विधि]:** Compounding rule, continuing conditions from @ref[2.2.1].
+
+**Examples:**
+- @deva[अर्धपिप्पली] "half a pepper"
+- @deva[अर्धकोशातकी] "half a gourd"
+
+**Neuter restriction:** Only neuter @deva[अर्ध] (meaning exact halving) triggers this rule. Masculine @deva[अर्ध] (meaning "portion" generally) follows @ref[2.2.8] instead: @deva[ग्रामार्धः] "village-portion," @deva[नगरार्धः] "city-portion."
+
+**@deva[एकदेशिन्] required:** @deva[अर्धं पशोर्देवदत्तस्य] "half the animal is Devadatta's" does not compound — @deva[देवदत्त] is not a part of the animal.
+
+**@deva[एकाधिकरण] required:** @deva[अर्धं पिप्पलीनाम्] "half of the peppers (collectively)" does not compound — the substratum is plural.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकदेशिनि] and @deva[एकाधिकरणे] from @ref[2.2.1]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[अर्धं नपुंसकम्] — neuter @deva[अर्ध] denoting exact bisection compounds with an @deva[एकदेशिन्] word as @deva[तत्पुरुष], overriding @ref[2.2.8].
+
+**Gender-based split:** The @[sūtra] specifies @deva[नपुंसकम्] to distinguish two senses of @deva[अर्ध]:
+- Neuter @deva[अर्ध] = exact half (@deva[समविभाग]) → this rule: @deva[अर्धपिप्पली]
+- Masculine @deva[अर्ध] = portion, share (@deva[एकदेश]) → @ref[2.2.8]: @deva[ग्रामार्धः], @deva[नगरार्धः]
+
+The gender difference marks a semantic distinction: exact halving (neuter) vs. general portioning (masculine).
+
+**Override of @ref[2.2.8]:** Like @ref[2.2.1], this rule places @deva[अर्ध] as the first member. Under @ref[2.2.8], the genitive compound would yield *@deva[पिप्पल्यर्धम्] with @deva[अर्ध] last.
+
+**Continued restrictions from @ref[2.2.1]:** Both @deva[एकदेशिन्] and @deva[एकाधिकरण] carry forward by @deva[अनुवृत्ति]. The pepper must be treated as one entity with distinguishable halves, and the substratum must be singular.
+"""

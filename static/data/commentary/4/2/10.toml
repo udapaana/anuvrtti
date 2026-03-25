@@ -1,0 +1,32 @@
+id = "4.2.10"
+numericId = "42010"
+
+[en]
+simple = """
+The affix @deva[अण्] is added after a material-word in the instrumental case, meaning "a chariot covered/surrounded by that material." This rule applies specifically to chariots, not to other objects.
+
+**Example:** @deva[वस्त्रेण परिवृतो रथः] "a chariot covered with cloth" becomes @deva[वास्त्रो रथः]. Similarly: @deva[काम्बलो रथः] (covered with a blanket), @deva[चार्मणो रथः] (covered with leather).
+
+The rule does not apply to non-chariot contexts — you cannot say *@deva[वास्त्रः कायः] for "a body covered with cloth."
+"""
+
+standard = """
+This @[vidhi] rule extends @deva[अण्] (from @ref[4.1.83]) to material-words in the instrumental case, with the meaning @deva[तेन परिवृतो रथः] — "a chariot surrounded/covered by that material."
+
+**Worked examples:**
+- @deva[वस्त्रेण परिवृतो रथः] → @deva[वास्त्रः] — cloth-covered chariot.
+- @deva[कम्बलेन परिवृतः] → @deva[काम्बलः] — blanket-covered chariot.
+- @deva[चर्मणा परिवृतः] → @deva[चार्मणः] — leather-covered chariot.
+
+**Restrictions:** @deva[परिवृत] means "covered from all sides," not merely draped. The semantic domain is specifically @deva[रथ] (chariot) — a covering on any other object (body, pot, etc.) does not trigger this affix. This specificity is evident from the @deva[सूत्र]'s wording itself, which mentions @deva[रथ].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अण्] from @ref[4.1.83].
+
+This @[sūtra] introduces the semantic domain @deva[तेन परिवृतो रथः] — chariots covered with specified materials. @deva[परिवृत] implies complete enclosure (@deva[सर्वतः आवृत]), distinguishing this from partial covering.
+
+The restriction to @deva[रथ] is significant: the @deva[काशिका] uses the counter-example @deva[वस्त्रेण परिवृतः कायः] (body covered with cloth) to show that the affix does not apply beyond chariots. This is a case of @deva[प्रकृत्यर्थनियम] — the meaning of the derived word constrains application.
+
+@ref[4.2.11] provides @deva[इनि] for @deva[पाण्डुकम्बलादि], and @ref[4.2.12] provides @deva[अञ्] for @deva[द्वैप]/@deva[वैयाघ्र] — both in the same chariot-covering sense but overriding @deva[अण्] for specific bases. Together, @ref[4.2.10]–@ref[4.2.12] form a block governing chariot-covering derivations.
+"""

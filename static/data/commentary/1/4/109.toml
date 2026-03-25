@@ -1,0 +1,46 @@
+id = "1.4.109"
+numericId = "14109"
+
+[en]
+simple = """
+When sounds are pronounced in the closest possible proximity — with no more than half a @deva[मात्रा] "time-unit" of pause between them — this condition is called @deva[संहिता] "junction" or "close contact."
+
+@deva[संहिता] is the condition that triggers sandhi (euphonic combination). When two sounds are in @deva[संहिता], the grammar's sound-change rules apply.
+
+**Example:** @deva[दधि] "curd" + @deva[अत्र] "here" → @deva[दध्यत्र] "curd here"
+
+The @deva[इ] at the end of @deva[दधि] and the @deva[अ] at the start of @deva[अत्र] are in @deva[संहिता] (closest proximity), so the sandhi rule changes @deva[इ] to @deva[य्] (by @ref[6.1.77]).
+
+Without @deva[संहिता] — if there is a pause between words — no sandhi occurs and each word keeps its original form.
+"""
+
+standard = """
+@deva[संहिता] is defined as @deva[परः सन्निकर्षः] "utmost proximity" between sounds — @deva[परः सन्निकर्षः संहिता].
+
+**Rule type — @deva[संज्ञा]:** Defines the condition under which sandhi rules operate.
+
+**Example:** @deva[दधि] + @deva[अत्र] → @deva[दध्यत्र] — @deva[इ] and @deva[अ] are in @deva[संहिता], triggering @deva[इ] → @deva[य्] by @ref[6.1.77].
+
+**@deva[परः सन्निकर्षः] = "utmost proximity":** The @deva[काशिका] explains this as half a @deva[मात्रा] or less of separation. In practical terms: sounds pronounced without a perceptible pause.
+
+**Scope of @deva[संहिता]:**
+- Within a word: always in @deva[संहिता] (sandhi is obligatory)
+- Between words in continuous speech: in @deva[संहिता] (sandhi applies)
+- At a sentence boundary or pause: not in @deva[संहिता] (no sandhi)
+
+**Foundational for the sixth @deva[अध्याय]:** Most rules in @ref[6.1.1]–@ref[6.1.158] operate specifically in @deva[संहिता]. Without this definition, those rules would have no trigger condition.
+"""
+
+advanced = """
+@deva[परः सन्निकर्षः संहिता] — the utmost proximity of sounds is called @deva[संहिता].
+
+**@deva[संहिता] as @deva[अधिकार]:** While this rule is formally a @deva[संज्ञा], it functions as a defining condition for a massive portion of the grammar. @ref[6.1.72] states @deva[संहितायाम्] "in @deva[संहिता]," which is an @deva[अधिकार] governing sandhi rules through @ref[6.1.158]. This definition is the key that activates that entire section.
+
+**@deva[परः] = "utmost, maximum":** The proximity must be maximal — the sounds are as close as possible. The @deva[काशिका] specifies @deva[अर्धमात्रा] (half a @deva[मात्रा]) or less. The @deva[सिद्धान्तकौमुदी] interprets this as the natural flow of connected speech.
+
+**Obligatory vs optional sandhi:** Within a @deva[पद] (word), sounds are always in @deva[संहिता] — internal sandhi is obligatory. Between @deva[पद] in continuous speech, @deva[संहिता] holds by default, but a speaker can introduce a pause (@deva[अवग्रह]) to break @deva[संहिता] and prevent external sandhi.
+
+**Relationship to @ref[1.4.110]:** The next rule defines @deva[अवसान] "pause" — the absence of a following sound. @deva[अवसान] is the opposite condition to @deva[संहिता]: where @deva[संहिता] triggers sandhi, @deva[अवसान] triggers word-final rules (like @ref[8.4.56] @deva[वचनान्तस्य] for final @deva[न्] → @deva[ं]).
+
+**Placement in @[pāda] 1.4:** @deva[संहिता] appears near the end of the @deva[संज्ञा]-heavy @[pāda] 1.4, providing the foundational definition needed before the operational rules of later @deva[अध्याय].
+"""

@@ -1,0 +1,42 @@
+id = "3.2.1"
+numericId = "32001"
+
+[en]
+simple = """
+This rule establishes the default affix for a large section of Pāṇini's grammar. When a verb root is compounded with its object (@deva[कर्मन्], the thing acted upon) as an accompanying word (@deva[उपपद]), the affix @deva[अण्] (which yields the sound @[a]) is added after the root. The resulting compound names the agent — the person or thing that performs the action.
+
+For example, @deva[कुम्भं करोति] (one who makes pots) becomes @deva[कुम्भकारः] (a potter). Similarly, @deva[नगरं करोति] (one who builds a city) becomes @deva[नगरकारः] (a city-builder), and @deva[वेदम् अधीते] (one who studies the Veda) becomes @deva[वेदाध्यायः] (a Veda-reader).
+
+This is an @deva[अधिकार] (governing rule) that controls the default behaviour for much of @[pāda] 3.2. The many rules that follow override this default by prescribing different affixes for specific root-and-object combinations.
+"""
+
+standard = """
+This is a @deva[विधि] (operational rule) that also functions as an @deva[अधिकार] (governing rule) for the section. The affix @deva[अण्] is prescribed after a @deva[धातु] (verbal root) when the @deva[कर्मन्] (object) is in composition with it as an @deva[उपपद].
+
+Three types of @deva[कर्मन्] are recognized:
+
+- @deva[निवर्त्य] — the object is brought into existence; the material cause remains unexpressed. Example: @deva[कुम्भकारः] (potter) — the clay is not mentioned.
+- @deva[विकार्य] — the object undergoes modification or transformation. Example: @deva[काण्डलावः] (branch-cutter).
+- @deva[प्राप्य] — the object is reached but remains unaffected. Example: @deva[वेदाध्यायः] (Veda-reader).
+
+Usage restriction: Not every verb-object sentence permits compound formation. Sentences like @deva[ग्रामं गच्छति] (he goes to the village) do not yield such compounds because linguistic convention (@deva[लोक]) does not sanction them.
+
+A @[vārtika] adds that the affix @deva[ण] (= @deva[अ]) also comes after @deva[शील्], @deva[काम्], @deva[भक्ष्], @deva[आचर्], @deva[ईक्ष्], and @deva[क्षम्] with the @deva[उपपद] retaining its accent: @deva[मांसशीलः] (flesh-addicted), @deva[सुखप्रतीक्षः] (expecting happiness).
+"""
+
+advanced = """
+This @[sūtra] serves a dual function: it is both a @deva[विधि] prescribing @deva[अण्] and an @deva[अधिकार] governing the entire @deva[उपपद]-compound section of @[pāda] 3.2. The term @deva[कर्मणि] (object in composition) and @deva[उपपदे] (accompanying word) carry forward by @deva[अनुवृत्ति] into subsequent rules.
+
+Three types of @deva[कर्मन्] apply:
+1. @deva[निवर्त्य] — object created, material cause unexpressed: @deva[कुम्भं करोति] yields @deva[कुम्भकारः] (the clay is unexpressed).
+2. @deva[विकार्य] — material cause itself transformed: @deva[काण्डलावः] (branch-cutter), @deva[शरलावः] (reed-cutter).
+3. @deva[प्राप्य] — object unaffected, always constant: @deva[वेदाध्यायः] (Veda-reader), @deva[चर्चापाठः] (Charcha-reader).
+
+Usage restriction: Compounds cannot be formed from sentences like @deva[ग्रामं गच्छति] or @deva[आदित्यं पश्यति] — such formations are against established usage (@deva[लोक]).
+
+@[vārtika] 1: The affix @deva[ण] comes after @deva[शील्], @deva[काम्], @deva[भक्ष्], @deva[आचर्] with the @deva[उपपद] retaining its original accent: @deva[मांसशीलः] (fem. @deva[मांसशीला]) (flesh-addicted), @deva[मांसकामः] (flesh-loving), @deva[मांसभक्षः] (carnivorous), @deva[कल्याणाचारः] (well-conducted).
+
+@[vārtika] 2: @deva[ण] also after @deva[ईक्ष्] and @deva[क्षम्]: @deva[सुखप्रतीक्षः] (fem. @deva[सुखप्रतीक्षा]) (expecting happiness), @deva[बहुक्षमः] (much-forbearing).
+
+The scope of @deva[कर्मणि] from this rule continues through much of the section, supplemented by @deva[सुपि] (any case-inflected word) from @ref[3.2.4] where needed.
+"""

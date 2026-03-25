@@ -1,0 +1,35 @@
+id = "1.1.6"
+numericId = "11006"
+
+[en]
+simple = """
+Two specific roots — @deva[दीधी] "to shine" and @deva[वेवी] "to go" — and the augment @deva[इट्] (a short @deva[इ] inserted before certain affixes) are permanently exempt from @deva[गुण] and @deva[वृद्धि] vowel changes. No matter what affix follows, their vowels stay as they are.
+
+This is an absolute block, unlike the conditional blocks in @ref[1.1.4] and @ref[1.1.5]. Those rules depend on circumstances (root-deletion or affix markers); this one applies always.
+
+**Example:** @deva[चर्] "to move" + future affix → @deva[चरिष्यामि] "I will move" — the @deva[इ] of @deva[इट्] stays @deva[इ], never becoming @deva[ए].
+"""
+
+standard = """
+This @deva[निषेधसूत्र] permanently exempts three items from @deva[गुण]/@deva[वृद्धि]:
+
+1. **@deva[दीधीङ्]** "to shine": @deva[आदीधी] + @deva[ण्वुल्] → @deva[आदीध्यकः] (not *@deva[आदैध्यकः])
+2. **@deva[वेवीङ्]** "to go": @deva[आवेवी] + @deva[ल्युट्] → @deva[आवेव्यनम्] (not *@deva[आवैव्यनम्])
+3. **@deva[इट्]** (augment @deva[इ] added by @ref[7.2.35] before @deva[वल्]-initial @deva[आर्धधातुक] affixes): @deva[चर्] + @deva[इट्] + @deva[स्यामि] → @deva[चरिष्यामि]
+
+Unlike @ref[1.1.4]–@ref[1.1.5], this block is unconditional. Even affixes that normally force @deva[वृद्धि] (like @deva[ण्वुल्]) cannot override it.
+
+**Vedic note:** In Vedic, @deva[दीधी] and @deva[वेवी] do take @deva[गुण]: @deva[अदीधेत्] (RV X.98.7). The @deva[पाणिनीय] rule restricts to classical Sanskrit.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[गुणवृद्धी] and @deva[इकः] from @ref[1.1.3].
+
+This completes the series of @deva[गुण]/@deva[वृद्धि] blocks: @ref[1.1.4] (root-deletion), @ref[1.1.5] (@deva[कित्]/@deva[ङित्]/@deva[गित्] markers), and now @ref[1.1.6] (absolute exemptions). The three rules form a graded system — conditional, marker-based, and absolute.
+
+**Why @deva[दीधी] and @deva[वेवी] need special treatment:** These are @deva[यङन्त] (intensive) forms already containing strengthened vowels. Further @deva[गुण]/@deva[वृद्धि] would produce illegal vowel sequences. The roots are listed with @deva[ङ्] (@deva[दीधीङ्], @deva[वेवीङ्]) making them @deva[आत्मनेपदिन्].
+
+**Why @deva[इट्] is listed separately:** @deva[इट्] could theoretically undergo @deva[गुण] (@deva[इ] → @deva[ए]) via @ref[7.3.84]. This rule preempts that. @deva[वृद्धि] of @deva[इट्] (@deva[इ] → @deva[ऐ]) is never prescribed by any rule, so the @deva[वृद्धि] prohibition is technically redundant for @deva[इट्] — but @deva[पाणिनि] includes it for symmetry with @deva[दीधी]/@deva[वेवी].
+
+**Vedic divergence:** The @deva[ऋग्वेद] attests @deva[गुण] forms of @deva[दीधी]: @deva[अदीधेत्] (X.98.7), @deva[अदीधयुः] (V.40.5). The classical restriction reflects the grammar's focus on @deva[भाषा] (standard usage) over @deva[छन्दस्] (Vedic).
+"""

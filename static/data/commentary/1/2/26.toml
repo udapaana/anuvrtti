@@ -1,0 +1,52 @@
+id = "1.2.26"
+numericId = "12026"
+
+[en]
+simple = """
+For roots that (1) begin with a consonant, (2) end in a consonant other than @deva[य्] or @deva[व्], and (3) have @deva[इ] or @deva[उ] as the second-to-last sound, the @deva[सेट्] @deva[क्त्वा] ("having done") and @deva[सन्] (desiderative, "wishes to") are optionally @deva[कित्]. When @deva[कित्], @deva[गुण] (vowel strengthening) is blocked.
+
+**Both forms valid:**
+- @deva[लिखित्वा] or @deva[लेखित्वा] "having written" (from @deva[लिख्])
+- @deva[द्युतित्वा] or @deva[द्योतित्वा] "having shone" (from @deva[द्युत्])
+- @deva[लिलिखिषति] or @deva[लिलेखिषति] "he wishes to write"
+
+**Roots that don't qualify — no option:**
+- @deva[दिव्] ends in @deva[व्] → @deva[देवित्वा] only (@deva[गुण] always applies)
+- @deva[एष्] begins with a vowel → @deva[एषित्वा] only
+"""
+
+standard = """
+@deva[सेट्] @deva[क्त्वा] and @deva[सन्] are optionally @deva[कित्] after roots meeting three conditions:
+1. **@deva[हलादि]** — begins with a consonant
+2. **@deva[रल्] final** — ends in a consonant (specifically the @deva[रल्] class, excluding @deva[य्]/@deva[व्])
+3. **@deva[व्युपध]** — penultimate is @deva[इ] or @deva[उ] (or their long variants @deva[ई], @deva[ऊ])
+
+**@deva[क्त्वा] examples (both valid):**
+- @deva[लिख्]: @deva[लिखित्वा] ~ @deva[लेखित्वा] "having written"
+- @deva[द्युत्]: @deva[द्युतित्वा] ~ @deva[द्योतित्वा] "having shone"
+
+**@deva[सन्] examples (both valid):**
+- @deva[लिख्]: @deva[लिलिखिषति] ~ @deva[लिलेखिषति] "wishes to write"
+- @deva[द्युत्]: @deva[दिद्युतिषते] ~ @deva[दिद्योतिषते] "wishes to shine"
+
+**Excluded cases — no option:**
+- Non-@deva[रल्] final: @deva[दिव्] → @deva[देवित्वा] only, @deva[दिदेविषति] only
+- Non-@deva[इ]/@deva[उ] penultimate: @deva[वृत्] → @deva[वर्तित्वा] only
+- Vowel-initial: @deva[एष्] → @deva[एषित्वा] only
+- @deva[अनिट्]: @deva[भुज्] → @deva[भुक्त्वा] only (no @deva[इट्], so not @deva[सेट्])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[सेट्] @deva[क्त्वा] from @ref[1.2.22]; @deva[विभाषा] from @ref[1.2.23].
+
+@deva[रलो व्युपधाद्धलादेः सन्वल्लक्षणे क्त्वार्थे] — @deva[सेट्] @deva[क्त्वा] and @deva[सन्] are optionally @deva[कित्] after consonant-initial roots ending in @deva[रल्] with penultimate @deva[इ]/@deva[उ].
+
+**This is the most general optional @deva[कित्] rule for @deva[क्त्वा]/@deva[सन्].** The previous rules (@ref[1.2.23]–@ref[1.2.25]) listed specific roots; this rule captures a broad class defined by phonological shape. It also extends to @deva[सन्], which re-enters the @deva[कित्] discussion after being absent since @ref[1.2.10].
+
+**Three conditions analyzed:**
+1. **@deva[हलादि]:** Excludes vowel-initial roots like @deva[एष्], @deva[इष्]
+2. **@deva[रल्] final:** The @deva[रल्] @deva[प्रत्याहार] covers consonants from @deva[र्] to @deva[ल्] in the @deva[शिवसूत्र]s — effectively all consonants except @deva[य्] and @deva[व्]. So roots ending in @deva[व्] (@deva[दिव्]) are excluded.
+3. **@deva[व्युपध]:** Penultimate must be @deva[इ], @deva[ई], @deva[उ], or @deva[ऊ]. Roots with @deva[ऋ] or @deva[अ] penultimate are excluded.
+
+**End of the @deva[कित्]/@deva[ङित्] extension block.** Rules @ref[1.2.1]–@ref[1.2.26] form a complete unit covering which affixes receive @deva[ङित्] or @deva[कित्] designation beyond their inherent indicatory letters. After this, the @deva[अधिकार] shifts to vowel duration (@ref[1.2.27]–@ref[1.2.31]) and accent definitions (@ref[1.2.29]–@ref[1.2.31]).
+"""

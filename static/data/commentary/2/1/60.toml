@@ -1,0 +1,49 @@
+id = "2.1.60"
+numericId = "21060"
+
+[en]
+simple = """
+A word ending in the past participle affix @deva[क्त] (without the negative @deva[नञ्]) compounds with the same word preceded by @deva[नञ्] to form @deva[तत्पुरुष]. The compound expresses partial or incomplete action — "done and not done."
+
+**Examples:**
+- @deva[कृताकृतम्] "done and undone" — partially accomplished
+- @deva[भुक्ताभुक्तम्] "eaten and not eaten" — partially consumed
+- @deva[पीतापीतम्] "drunk and not drunk" — partially drunk
+- @deva[उदितानुदितम्] "said and unsaid" — partially expressed
+
+The compound captures the idea that something is in an in-between state — neither fully done nor fully undone.
+"""
+
+standard = """
+@deva[क्तान्त] (without @deva[नञ्]) + @deva[नञ् + क्तान्त] (same root) → @deva[तत्पुरुष] — @deva[क्तेन नञ्विशिष्टेनानञ्विशिष्टम्].
+
+**Rule type — @deva[विधि]:** Compounding rule.
+
+**Examples:**
+- @deva[कृताकृतम्] "done and undone"
+- @deva[भुक्ताभुक्तम्] "eaten and uneaten"
+- @deva[पीतापीतम्] "drunk and undrunk"
+- @deva[उदितानुदितम्] "spoken and unspoken"
+
+**Same root required:** Both members must derive from the same verbal root with @deva[क्त]. @deva[कृत] (positive) + @deva[अकृत] (negative) → @deva[कृताकृतम्]. The positive form comes first, the @deva[नञ्]-prefixed form second.
+
+**Intermediate elements preserved:** @deva[अशितानशितम्] "eaten and uneaten" — the @deva[इट्] augment does not prevent the compound. @deva[क्लिष्टाक्लिशितम्] "struggled with partially" — variant forms with @deva[इट्] are also valid.
+
+**@deva[वार्त्तिक] — @deva[कृतापकृतादि]:** Compounds like @deva[कृतापकृतम्] "done and undone" (with @deva[अप] prefix instead of @deva[नञ्]) are also included. This is an @deva[आकृतिगण] list: @deva[भुक्तविभुक्तम्], @deva[पीतवीपितम्], @deva[गतप्रत्यागतम्], etc.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[क्तेन नञ्विशिष्टेनानञ्विशिष्टम्] — a @deva[क्तान्त] word without @deva[नञ्] compounds with the @deva[नञ्]-prefixed @deva[क्तान्त] of the same root as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**Order:** The positive (@deva[अनञ्विशिष्ट]) form comes first: @deva[कृत] + @deva[अकृत] → @deva[कृताकृतम्]. This follows the general principle that the more prominent meaning leads.
+
+**@deva[समानाधिकरण]:** Both members describe the same entity — it is simultaneously "done" and "not done" (i.e., partially done). This satisfies the @deva[कर्मधारय] requirement of co-reference.
+
+**Intermediate @deva[इट्] and variant forms:** The @deva[काशिका] notes that insertions like @deva[इट्] or variant participial forms do not block the compound: @deva[अशितानशितम्] (with @deva[इट्] in @deva[अशित]), @deva[क्लिष्टाक्लिशितम्] (with alternative @deva[इट्]-form). The identity condition is based on the root, not surface form.
+
+**@deva[वार्त्तिक] — @deva[कृतापकृतादि]:** The @deva[वार्त्तिककार] extends this to compounds where the negative is expressed by a prefix other than @deva[नञ्]: @deva[कृतापकृतम्] (with @deva[अप]), @deva[भुक्तविभुक्तम्] (with @deva[वि]), @deva[पीतवीपितम्], @deva[गतप्रत्यागतम्] (with @deva[प्रत्या]). This is an @deva[आकृतिगण].
+
+**@deva[वार्त्तिक] — @deva[शाकपार्थिवादि]:** A separate extension lists compounds with @deva[लुक्] (member deletion): @deva[शाकपार्थिवः] = @deva[शाकप्रियः पार्थिवः] "a king beloved by his era." Also @deva[कुतपसौश्रुतम्], @deva[अजातौल्वलिः]. These are @deva[आकृतिगण].
+"""

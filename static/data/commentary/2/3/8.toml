@@ -1,0 +1,53 @@
+id = "2.3.8"
+numericId = "23008"
+
+[en]
+simple = """
+A word governed by a @deva[कर्मप्रवचनीय] (a particle that functions like a case-marker rather than a verb prefix) takes the @deva[द्वितीया] (accusative).
+
+@deva[कर्मप्रवचनीय]-s are particles like @deva[अनु], @deva[प्रति], and others that express a relationship between a noun and the action — similar to English prepositions like "after," "toward," or "following."
+
+**Examples:**
+- @deva[शाकल्यस्य संहितामनु प्रावर्षत्] "it rained following @deva[शाकल्य]'s recitation" — @deva[अनु] governs @deva[संहिताम्] (accusative)
+- @deva[वृक्षं प्रति विद्योतते विद्युत्] "lightning flashes toward the tree" — @deva[प्रति] governs @deva[वृक्षम्] (accusative)
+
+The accusative is required because the particle, not the verb, governs the noun.
+"""
+
+standard = """
+@deva[कर्मप्रवचनीययुक्ते द्वितीया] — words governed by @deva[कर्मप्रवचनीय]-s take @deva[द्वितीया].
+
+**Rule type — @deva[विधि]:** General case-assignment for all @deva[कर्मप्रवचनीय]-governed nouns. Overridden by @ref[2.3.9] (locative) and @ref[2.3.10] (ablative) for specific particles.
+
+**@deva[कर्मप्रवचनीय] defined:** Particles designated by @ref[1.4.83]–@ref[1.4.97] that govern a noun directly, expressing a @deva[कारक]-like relation without modifying the verb.
+
+**Examples:**
+- @deva[शाकल्यस्य संहितामनु प्रावर्षत्] "it rained following @deva[शाकल्य]'s recitation" — @deva[अनु] per @ref[1.4.84]
+- @deva[आगस्त्यमन्वसिञ्चत् प्रजाः] "he consecrated the people after @deva[अगस्त्य]" — @deva[अनु] per @ref[1.4.84]
+- @deva[वृक्षं प्रति विद्योतते विद्युत्] "lightning flashes toward the tree" — @deva[प्रति] per @ref[1.4.90]
+
+**Scope:** This is the default rule for @deva[कर्मप्रवचनीय]-governed words. Specific overrides: @ref[2.3.9] assigns @deva[सप्तमी] for @deva[उप]/@deva[अधि], and @ref[2.3.10] assigns @deva[पञ्चमी] for @deva[अप]/@deva[आङ्]/@deva[परि].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[द्वितीया] from @ref[2.3.2]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[कर्मप्रवचनीययुक्ते द्वितीया] — @deva[द्वितीया] is assigned to words governed by @deva[कर्मप्रवचनीय]-s.
+
+**@deva[कर्मप्रवचनीय] vs. @deva[उपसर्ग]:** The same particles (@deva[अनु], @deva[प्रति], @deva[परि], etc.) can function either as @deva[उपसर्ग]-s (verb prefixes, per @ref[1.4.59]) or @deva[कर्मप्रवचनीय]-s (noun-governing particles, per @ref[1.4.83]ff.). The designation depends on whether the particle modifies the verb or governs a noun independently. In @deva[अनुगच्छति] "he follows," @deva[अनु] is an @deva[उपसर्ग]. In @deva[संहितामनु प्रावर्षत्] "it rained following the recitation," @deva[अनु] is a @deva[कर्मप्रवचनीय] governing @deva[संहिताम्].
+
+**@deva[कर्मप्रवचनीय] designations (@ref[1.4.83]–@ref[1.4.97]):**
+- @ref[1.4.84]: @deva[अनु] with "following" sense
+- @ref[1.4.86]: @deva[अनु]/etc. with "governing" sense
+- @ref[1.4.87]: @deva[उप] with "excess" sense → overridden to @deva[सप्तमी] by @ref[2.3.9]
+- @ref[1.4.88]: @deva[परि] with "exclusion" sense → overridden to @deva[पञ्चमी] by @ref[2.3.10]
+- @ref[1.4.90]: @deva[प्रति]/etc. with "surrounding/toward" sense
+- @ref[1.4.97]: @deva[अधि] with "lordship" sense → overridden to @deva[सप्तमी] by @ref[2.3.9]
+
+**Not true @deva[कर्मन्]:** The @deva[द्वितीया] here is not because the governed word is @deva[कर्मन्] of the verb. The particle prescribes the case directly — a non-@deva[कारक] use of the accusative.
+
+**Hierarchy of @deva[कर्मप्रवचनीय] case-rules:**
+1. @ref[2.3.8] (this rule): default @deva[द्वितीया] — general
+2. @ref[2.3.9]: @deva[सप्तमी] for @deva[उप]/@deva[अधि] — specific override
+3. @ref[2.3.10]: @deva[पञ्चमी] for @deva[अप]/@deva[आङ्]/@deva[परि] — specific override
+"""

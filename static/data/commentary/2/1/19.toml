@@ -1,0 +1,42 @@
+id = "2.1.19"
+numericId = "21019"
+
+[en]
+simple = """
+A numeral (@deva[सङ्ख्या]) may **optionally** compound with a word denoting a family member or lineage (@deva[वंश्य]) to form @deva[अव्ययीभाव].
+
+@deva[वंश] "lineage" means an unbroken succession — either by birth (family descent) or by knowledge (teacher-student succession).
+
+**Examples:**
+- @deva[द्विमुनि व्याकरणस्य] "grammar has two sages" (@[pāṇini] and @[patañjali] in the grammatical lineage)
+- @deva[त्रिमुनि व्याकरणस्य] "grammar has three sages" (adding @[kātyāyana])
+- @deva[एकविंशति भारद्वाजम्] "twenty-one @[bhāradvājas]" (twenty-one members in the @[bhāradvāja] birth-lineage)
+"""
+
+standard = """
+@deva[सङ्ख्या] + @deva[वंश्य] (lineage member) → optional @deva[अव्ययीभाव] — @deva[सङ्ख्यया वंश्ये].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**@deva[वंश] = "unbroken succession":** Two types:
+1. **Knowledge lineage** (@deva[विद्यावंश]): teacher-student succession — @deva[द्विमुनि व्याकरणस्य] "two sages in the grammar lineage"
+2. **Birth lineage** (@deva[जातिवंश]): family descent — @deva[एकविंशति भारद्वाजम्] "twenty-one @[bhāradvājas]"
+
+**Resemblance to @deva[द्विगु]:** These compounds structurally resemble @deva[द्विगु] (numeral + noun). The distinction is that @deva[द्विगु] is a subtype of @deva[तत्पुरुष] (last-member principal), while these are @deva[अव्ययीभाव] (first-member principal — the number is the important information).
+
+**Equality construction:** @deva[द्विमुनि व्याकरणम्] "grammar is two-sage" (the number equals the count of sages) — same compound, different syntactic relationship.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[अव्ययीभावः] from @ref[2.1.5].
+
+@deva[सङ्ख्यया वंश्ये] — a numeral compounds with a @deva[वंश्य] (lineage member) as optional @deva[अव्ययीभाव].
+
+**@deva[वंश] dual definition:** The @deva[काशिका] defines @deva[वंश] as @deva[अविच्छिन्ना परम्परा] "unbroken succession":
+- @deva[विद्यावंश]: succession through knowledge — @deva[द्विमुनि], @deva[त्रिमुनि] counting sages in a scholarly tradition
+- @deva[जातिवंश]: succession through birth — @deva[एकविंशति भारद्वाजम्] counting members of a family
+
+**@deva[द्विगु] vs @deva[अव्ययीभाव]:** Structurally, @deva[द्विमुनि] could be @deva[द्विगु] (@deva[समाहार] — "a group of two sages"). This rule explicitly classifies it as @deva[अव्ययीभाव], making the numeral (the first member) semantically principal. In @deva[द्विगु], the group itself (the last member's referent) would be principal.
+
+**Scope — @deva[वंश्य] only:** The compound forms only when the second member denotes a lineage member. @deva[द्विवृक्ष] "two trees" would be @deva[द्विगु] (not @deva[अव्ययीभाव]) because trees are not lineage members.
+"""

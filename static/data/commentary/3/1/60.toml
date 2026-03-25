@@ -1,0 +1,41 @@
+id = "3.1.60"
+numericId = "31060"
+
+[en]
+simple = """
+This rule says that @deva[चिण्] replaces @deva[च्लि] after the root @deva[पद्] (to go) when the ending @deva[त] follows. The @deva[त] here means the third person singular @deva[आत्मनेपद] ending.
+
+Derivation: @deva[अट्] + @deva[पद्] + @deva[चिण्] + @deva[त] → @deva[अपादि] (the @deva[त] is deleted by @ref[6.4.104]).
+
+Result: @deva[अपादि] (he went).
+
+This special @deva[चिण्] formation only applies in the third person singular. In dual and plural, the regular @deva[सिच्]-aorist is used:
+- Dual: @deva[अपसाताम्] (they two went)
+- Plural: @deva[अपत्सत्] (they went)
+"""
+
+standard = """
+@deva[चिण्] substitutes for @deva[च्लि] after @deva[पद्] (to go) when @deva[आत्मनेपद] 3rd singular @deva[त] follows.
+
+Derivation: @deva[अट्] + @deva[पद्] + @deva[चिण्] + @deva[त] → @deva[अ] + @deva[पाद्] + @deva[त] → @deva[अपादि] (by @ref[6.4.104], @deva[त] undergoes @deva[लोप]).
+
+Result: @deva[अपादि] (he went).
+
+This @deva[चिण्]-aorist is restricted to 3rd singular; dual and plural use @deva[सिच्]:
+- @deva[अपसाताम्] (3rd dual)
+- @deva[अपत्सत्] (3rd plural)
+
+The @deva[ण्] of @deva[चिण्] is @deva[इत्], and the @deva[इ] of the affix causes lengthening of the root vowel (@deva[अ] → @deva[आ]).
+"""
+
+advanced = """
+@deva[चिण्] is the @deva[आदेश] for @deva[च्लि] after @deva[पद्] when @deva[आत्मनेपद] 3rd singular @deva[त] follows.
+
+Derivation: @deva[अट्] + @deva[पद्] + @deva[चिण्] + @deva[त] → @deva[अपाद्] + @deva[त] (by @deva[चिण्] causing @deva[वृद्धि]) → @deva[अपादि] (by @ref[6.4.104] @deva[तश्च])
+
+The @deva[ण्] is @deva[इत्] by @ref[1.3.3]. @deva[चिण्] triggers @deva[वृद्धि] of the root vowel (@deva[अ] → @deva[आ]) per @ref[7.2.1].
+
+Restriction: Only 3rd singular. Dual/plural use @deva[सिच्]: @deva[अपसाताम्], @deva[अपत्सत्].
+
+@note[type=observation]: The @deva[चिण्]-aorist is a specialized passive-like formation. This rule extends it to @deva[पद्] in active intransitive meaning ("he went"), limited to 3rd singular where the @deva[त] ending appears.
+"""

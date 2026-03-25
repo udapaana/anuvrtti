@@ -1,0 +1,48 @@
+id = "1.2.23"
+numericId = "12023"
+
+[en]
+simple = """
+For roots that end in @deva[थ्] or @deva[फ्] and have a nasal (@deva[न्] or @deva[म्]) as the second-to-last sound, the @deva[सेट्] @deva[क्त्वा] ("having done") is optionally @deva[कित्]. When @deva[कित्], the nasal drops; when not @deva[कित्], the nasal stays but @deva[गुण] may apply.
+
+**Both forms valid:**
+- @deva[ग्रथित्वा] or @deva[ग्रन्थित्वा] "having strung/twisted" (from @deva[ग्रन्थ्])
+- @deva[गुफित्वा] or @deva[गुम्फित्वा] "having tied/strung together" (from @deva[गुम्फ्])
+- @deva[श्रथित्वा] or @deva[श्रन्थित्वा] "having loosened" (from @deva[श्रन्थ्])
+"""
+
+standard = """
+@deva[सेट्] @deva[क्त्वा] is optionally @deva[कित्] after roots ending in @deva[थ्] or @deva[फ्] with a penultimate nasal. This is a @deva[विभाषा] rule. The @deva[कित्] option triggers nasal deletion by @ref[6.4.24].
+
+**Forms (both valid):**
+- @deva[ग्रन्थ्]: @deva[ग्रथित्वा] (@deva[कित्], nasal dropped) ~ @deva[ग्रन्थित्वा] (not @deva[कित्])
+- @deva[गुम्फ्]: @deva[गुफित्वा] (@deva[कित्]) ~ @deva[गुम्फित्वा] (not @deva[कित्])
+- @deva[श्रन्थ्]: @deva[श्रथित्वा] (@deva[कित्]) ~ @deva[श्रन्थित्वा] (not @deva[कित्])
+
+**Two conditions required:**
+1. Root must end in @deva[थ्] or @deva[फ्]
+2. The penultimate sound must be a nasal (@deva[न्] before @deva[थ्], @deva[म्] before @deva[फ्])
+
+**Without penultimate nasal — no option:** @deva[रिफ्] → @deva[रेफित्वा] only (@deva[गुण] by @ref[1.2.18]).
+
+**Not ending in @deva[थ्]/@deva[फ्] — no option:** @deva[स्रंस्] → @deva[स्रंसित्वा] only.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[सेट्] @deva[क्त्वा] from @ref[1.2.22].
+
+@deva[थफान्तोपधानसस्य विभाषा] — @deva[सेट्] @deva[क्त्वा] is optionally @deva[कित्] after roots ending in @deva[थ्]/@deva[फ्] with penultimate nasal.
+
+**Scope:** @deva[निष्ठा] does not continue from @ref[1.2.22]; only @deva[क्त्वा] is governed here. The @deva[विभाषा] is freshly stated, confirming that the @deva[विभाषा] of @ref[1.2.21] did not carry into @ref[1.2.22].
+
+**@deva[कित्] effect here:** The nasal deletion by @ref[6.4.24] (@deva[अनुनासिकस्य क्विझलोः क्ङिति]) — when the affix is @deva[कित्], the penultimate nasal of the root is deleted. This is the same mechanism as in @ref[1.2.13]–@ref[1.2.16] for @deva[गम्]/@deva[यम्].
+
+**Why @deva[थ्]/@deva[फ्] specifically?** These are aspirated consonants that historically coexist with a preceding nasal in certain root shapes (@deva[ग्रन्थ्], @deva[गुम्फ्], @deva[श्रन्थ्]). The grammar allows both the nasal-retaining and nasal-deleting forms, reflecting attested variation.
+
+**Contrast:**
+- Roots ending in @deva[थ्]/@deva[फ्] without penultimate nasal: no option (@deva[रिफ्] → @deva[रेफित्वा])
+- Roots with penultimate nasal but not ending in @deva[थ्]/@deva[फ्]: no option (@deva[स्रंस्] → @deva[स्रंसित्वा])
+- Both conditions met: optional (@deva[ग्रन्थ्] → @deva[ग्रथित्वा] ~ @deva[ग्रन्थित्वा])
+
+**This rule begins a cluster** (@ref[1.2.23]–@ref[1.2.25]) of optional @deva[कित्] rules for @deva[सेट्] @deva[क्त्वा] after specific root shapes.
+"""

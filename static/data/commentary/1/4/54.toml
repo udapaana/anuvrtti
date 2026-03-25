@@ -1,0 +1,50 @@
+id = "1.4.54"
+numericId = "14054"
+
+[en]
+simple = """
+The independent source of the action — the one the speaker treats as the primary doer — is called @deva[कर्तृ] "agent."
+
+The agent is whoever or whatever the speaker presents as performing the action. It doesn't have to be a person — even an inanimate object can be the agent if the speaker frames it that way.
+
+**Examples:**
+- @deva[देवदत्तः पचति] "Devadatta cooks" (@deva[देवदत्त] is @deva[कर्तृ] — the human doer)
+- @deva[स्थाली पचति] "the pot cooks" (@deva[स्थाली] is @deva[कर्तृ] — the pot is presented as the doer)
+
+In both sentences, the grammar treats the nominative subject as @deva[कर्तृ]. The speaker's choice of who to foreground as the doer determines the @deva[कर्तृ].
+"""
+
+standard = """
+The independent entity the speaker treats as the primary source of action is @deva[कर्तृ] — @deva[स्वतन्त्रः कर्ता].
+
+**Rule type — @deva[संज्ञा]:** Defines the sixth and final @deva[कारक] — the agent.
+
+**Examples:**
+- @deva[देवदत्तः पचति] "Devadatta cooks" (human agent)
+- @deva[स्थाली पचति] "the pot cooks" (inanimate agent)
+- @deva[वायुः प्रवहति] "the wind blows" (natural force as agent)
+
+**@deva[स्वतन्त्र] = "independent":** The agent acts autonomously — not dependent on another entity for the initiation of the action. This distinguishes @deva[कर्तृ] from @deva[करण] (instrument), which acts only through the agent's will.
+
+**Speaker-dependent assignment:** Whether @deva[देवदत्त] or the pot is @deva[कर्तृ] depends on the speaker's construal (@deva[विवक्षा]). The grammar models the speaker's perspective, not objective reality.
+
+**Case marking:** @deva[कर्तृ] takes @deva[प्रथमा] (nominative) in active voice by @ref[2.3.46], and @deva[तृतीया] (instrumental) in passive by @ref[2.3.18].
+
+**Position:** Defined last among the six @deva[कारक]s. By @ref[1.4.2], @deva[कर्तृ] prevails over all others in a conflict.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कारके] from @ref[1.4.23].
+
+@deva[स्वतन्त्रः कर्ता] — the independent one is @deva[कर्तृ].
+
+**@deva[स्वतन्त्र] analysis:** "Self-governed" — acting by its own will, not subordinate to another participant. The sickle (@deva[करण]) acts only because the agent wields it. The agent acts independently. This criterion separates @deva[कर्तृ] from @deva[करण] in cases where both "do" something.
+
+**@deva[विवक्षा]-driven @deva[कारक]:** @deva[पाणिनि]'s @deva[कारक] system is speaker-oriented. In @deva[स्थाली पचति] "the pot cooks," the pot is objectively an instrument, but the speaker presents it as @deva[कर्तृ]. The grammar follows the speaker's intention (@deva[विवक्षा]), not the real-world role.
+
+**@deva[कर्तृ] as the last @deva[कारक]:** The order in @ref[1.4.23]–@ref[1.4.55]: @deva[अपादान] → @deva[सम्प्रदान] → @deva[करण] → @deva[अधिकरण] → @deva[कर्मन्] → @deva[कर्तृ]. By @ref[1.4.2] (@deva[विप्रतिषेधे परं कार्यम्]), the later definition prevails. So @deva[कर्तृ], being last, overrides all others.
+
+**Interaction with @ref[1.4.55]:** The next rule defines @deva[हेतु] (causer) as also @deva[कर्तृ]. The causer is the agent of the causative; the original agent is demoted (to @deva[कर्मन्] or @deva[करण] depending on the verb type).
+
+**No extensions:** Unlike @deva[अपादान] (8 extensions) or @deva[सम्प्रदान] (10 extensions), @deva[कर्तृ] needs only two rules — the core definition and the @deva[हेतु] addition. The @deva[स्वतन्त्र] criterion is broad enough to cover all agent scenarios.
+"""

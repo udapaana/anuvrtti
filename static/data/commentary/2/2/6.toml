@@ -1,0 +1,54 @@
+id = "2.2.6"
+numericId = "22006"
+
+[en]
+simple = """
+The negative particle @deva[नञ्] compounds with a case-inflected word to form @deva[तत्पुरुष]. The result negates or modifies the meaning of the base word. The consonant @deva[न्] of @deva[नञ्] drops out (by @ref[6.3.73]), leaving @deva[अ] or @deva[अन्] as the prefix.
+
+**Examples:**
+- @deva[अब्राह्मणः] "not a Brahmin" — from @deva[न ब्राह्मणः]
+- @deva[अज्ञानम्] "non-knowledge, ignorance" — from @deva[न ज्ञानम्]
+- @deva[अनीतिः] "immorality" — from @deva[न ईतिः]
+
+The @deva[नञ्] compound carries six possible senses:
+1. **Resemblance** (@deva[सादृश्य]): @deva[अब्राह्मणः] "someone who looks like a Brahmin but isn't"
+2. **Absence** (@deva[अभाव]): @deva[अज्ञानम्] "absence of knowledge"
+3. **Difference** (@deva[भेद]): @deva[अपटः] "something other than cloth"
+4. **Diminution** (@deva[अल्पता]): @deva[अनुदरा] "slim-waisted" (having little belly)
+5. **Unfitness** (@deva[अप्राशस्त्य]): @deva[अकालः] "wrong time, bad time"
+6. **Opposition** (@deva[विरोध]): @deva[अनीतिः] "the opposite of morality"
+"""
+
+standard = """
+@deva[नञ्] + @deva[सुबन्त] → @deva[तत्पुरुष] — @deva[नञ्].
+
+**Rule type — @deva[विधि]:** Compounding rule for @deva[नञ्तत्पुरुष].
+
+**Morphophonemic:** @ref[6.3.73] elides the @deva[न्] of @deva[नञ्], leaving @deva[अ] before consonants (@deva[अब्राह्मणः]) and @deva[अन्] before vowels (@deva[अनीतिः], @deva[अनर्थः]).
+
+**Six senses of @deva[नञ्]:**
+1. @deva[सादृश्य] (resemblance): @deva[अब्राह्मणः] — wears the sacred thread but is @deva[क्षत्रिय] or @deva[वैश्य]
+2. @deva[अभाव] (absence): @deva[अज्ञानम्] — non-knowledge
+3. @deva[भेद] (difference): @deva[अपटः] — something other than cloth
+4. @deva[अल्पता] (diminution): @deva[अनुदरा] — thin-waisted
+5. @deva[अप्राशस्त्य] (unfitness): @deva[अकालः] — wrong time
+6. @deva[विरोध] (opposition): @deva[अनीतिः] — immorality
+
+**@deva[वार्त्तिक]:** @deva[न्] is also elided with verb forms when censure is implied: @deva[अपचसि त्वं जाल्म] "you don't even cook, O fool!" — though this is not a @deva[समास] proper.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[नञ्] — the negative particle compounds with @deva[सुबन्त] words to form @deva[नञ्तत्पुरुष].
+
+**Morphophonemic chain:** @ref[6.3.73] (@deva[नलोपो नञः]) elides the @deva[न्] of @deva[नञ्]. The remaining @deva[अ] prefixes consonant-initial words; before vowel-initial words, @deva[अन्] appears (the @deva[न्] is retained by @ref[6.3.74]).
+
+**Six senses — commentarial tradition:** The @deva[काशिका] and later commentaries enumerate six senses for @deva[नञ्]. This semantic analysis is not @[pāṇini]'s — the @[sūtra] merely authorizes the compound. The six-fold classification (@deva[सादृश्य], @deva[अभाव], @deva[भेद], @deva[अल्पता], @deva[अप्राशस्त्य], @deva[विरोध]) comes from the commentarial tradition and helps disambiguate compounds in context.
+
+**Scope:** @deva[नञ्] compounds with any @deva[सुबन्त] — nouns, adjectives, participles. This creates one of the most productive compound types in Sanskrit.
+
+**@deva[वार्त्तिक] — verbal negation:** @deva[अपचसि त्वं जाल्म] — @deva[न्]-elision with verbs in @deva[क्षेप] (censure). This extends the phonological rule beyond compounds to verbal negation in specific pragmatic contexts.
+
+**Relation to @ref[2.2.7]:** The next rule handles @deva[ईषत्] "slightly" — another particle that prefixes to form compounds. Together @ref[2.2.6]–@ref[2.2.7] cover the two main prefix-type @deva[तत्पुरुष] compounds: negation (@deva[नञ्]) and diminution (@deva[ईषत्]).
+"""

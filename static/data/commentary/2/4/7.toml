@@ -1,0 +1,41 @@
+id = "2.4.7"
+numericId = "24007"
+
+[en]
+simple = """
+A @deva[द्वन्द्व] of different-gender river or country names (not towns) takes @deva[एकवचन].
+
+**Examples:**
+- @deva[गङ्गाशोणम्] '@[gaṅgā] and @[śoṇa] rivers'
+- @deva[कुरुकुरुक्षेत्रम्] 'Kuru country and @[kurukṣetra]'
+
+**Counter-examples:**
+- @deva[गङ्गायमुने] (same gender—both feminine)
+- @deva[जाम्बवशालूकिन्यौ] (towns, not rivers/countries)
+"""
+
+standard = """
+A @deva[द्वन्द्व] of different-gender river or country names takes @deva[एकवचन], excluding towns (@deva[ग्राम]).
+
+**Examples:**
+- @deva[गङ्गाशोणम्] '@[gaṅgā] (fem.) and @[śoṇa] (masc.)'
+- @deva[कुरुकुरुक्षेत्रम्] 'Kuru and @[kurukṣetra]'
+
+**Counter-examples:**
+- @deva[गङ्गायमुने] (same gender, dual)
+- @deva[मद्रकेकयाः] (same gender)
+- @deva[जाम्बवशालूकिन्यौ] (villages)
+- @deva[कैलासगन्धमादने] (mountains, not included)
+
+@note[type=@[vārtika]] Cities (@deva[नगर]) allowed: @deva[मथुरापाटलिपुत्रम्]. Mixed town+city: @deva[सौर्यकेतवते] (dual).
+"""
+
+advanced = """
+@deva[द्वन्द्व] of different-gender river/country names (not @deva[ग्राम]) takes @deva[एकवचन].
+
+**Examples:** @deva[गङ्गाशोणम्], @deva[कुरुकुरुक्षेत्रम्].
+
+Same gender: @deva[गङ्गायमुने], @deva[मद्रकेकयाः]. Towns: @deva[जाम्बवशालूकिन्यौ]. Mountains excluded: @deva[कैलासगन्धमादने].
+
+@note[type=@[vārtika]] @deva[नगर] allowed: @deva[मथुरापाटलिपुत्रम्]. @deva[ग्राम]+@deva[नगर]: @deva[सौर्यकेतवते].
+"""

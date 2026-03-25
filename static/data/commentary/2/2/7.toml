@@ -1,0 +1,48 @@
+id = "2.2.7"
+numericId = "22007"
+
+[en]
+simple = """
+The word @deva[ईषत्] "slightly" compounds with a quality-word (but not one formed by a @deva[कृत्] affix) to form @deva[तत्पुरुष]. The compound describes a slight degree of a quality.
+
+**Examples:**
+- @deva[ईषत्कडारः] "somewhat tawny"
+- @deva[ईषत्पिङ्गलः] "slightly brown"
+- @deva[ईषद्विकटः] "a little hideous"
+- @deva[ईषत्पीतम्] "slightly yellow"
+- @deva[ईषद्रक्तम्] "slightly red"
+
+@deva[ईषत्] compounds only with quality-words — not with substantives like @deva[गार्ग्य] (a personal name), so *@deva[ईषद्गार्ग्यः] is not valid.
+"""
+
+standard = """
+@deva[ईषत्] + @deva[अकृदन्त] @deva[गुणवाचक] → @deva[तत्पुरुष] — @deva[ईषदकृतेन].
+
+**Rule type — @deva[विधि]:** Compounding rule for @deva[ईषत्]-prefixed compounds.
+
+**Examples:**
+- @deva[ईषत्कडारः] "somewhat tawny"
+- @deva[ईषत्पिङ्गलः] "slightly brown"
+- @deva[ईषद्विकटः] "a little hideous"
+- @deva[ईषदुन्नतः] "slightly raised"
+- @deva[ईषत्पीतम्] "slightly yellow"
+- @deva[ईषद्रक्तम्] "slightly red"
+
+**@deva[अकृत्] restriction:** The second member must not be formed by a @deva[कृत्] affix. @deva[कृदन्त] words like @deva[पक्व] "cooked" or @deva[भुक्त] "eaten" are excluded from this rule.
+
+**Quality-word restriction:** The @deva[काशिका] specifies that @deva[ईषत्] compounds only with @deva[गुणवाचिन्] (quality-denoting) words. @deva[ईषद्गार्ग्यः] fails because @deva[गार्ग्य] is a @deva[द्रव्यवाचिन्] (substance-word), not a quality.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[ईषदकृतेन] — @deva[ईषत्] compounds with a non-@deva[कृत्] @deva[सुबन्त] word as @deva[तत्पुरुष].
+
+**@deva[अकृत्] condition:** The @[sūtra] specifies @deva[अकृत] — the second member must not be a @deva[कृदन्त]. This blocks compounds like *@deva[ईषत्पक्वम्] from this rule. Such compounds may still be formed under other rules or by @deva[बहुलम्] sanction.
+
+**@deva[गुणवाचिन्] restriction:** The @deva[काशिका] adds that the second member should be a @deva[गुणवाचिन्] (quality-word). This blocks *@deva[ईषद्गार्ग्यः] — @deva[गार्ग्य] denotes a substance (@deva[द्रव्य]), not a quality (@deva[गुण]). The restriction ensures that @deva[ईषत्] compounds express "slightly X" where X is a gradable quality.
+
+**Parallel with @ref[2.2.6]:** @ref[2.2.6] authorizes @deva[नञ्]-@deva[तत्पुरुष] (negation prefix), and this rule authorizes @deva[ईषत्]-@deva[तत्पुरुष] (diminutive prefix). Both are prefix-type compounds where a particle attaches to a nominal base.
+
+**Semantic scope:** @deva[ईषत्] expresses a slight degree — the quality is present but not fully. This differs from @deva[नञ्]'s @deva[अल्पता] sense (which implies minimal presence of a quality): @deva[ईषत्कडारः] "somewhat tawny" vs. @deva[अकडारः] "barely tawny / not really tawny."
+"""

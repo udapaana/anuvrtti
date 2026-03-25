@@ -1,0 +1,47 @@
+id = "2.3.64"
+numericId = "23064"
+
+[en]
+simple = """
+When a sentence contains a word ending in @deva[कृत्वसुच्] (meaning "so many times"), any word expressing time takes the genitive (@deva[षष्ठी]) instead of the locative (@deva[सप्तमी]).
+
+Normally, a time-word like "day" takes the locative to express "during the day." But when paired with a frequency word like "five times" or "twice," the time-word shifts to the genitive.
+
+**Examples:**
+- @deva[पञ्चकृत्वोऽह्नो भुङ्क्ते] — 'he eats five times a day' (@deva[अह्नः] in genitive, not locative @deva[अह्नि])
+- @deva[द्विरह्नोऽधीते] — 'he studies twice a day' (@deva[अह्नः] in genitive)
+
+**Why not locative?** Without the frequency word, the locative is standard: @deva[अह्नि शेते] — 'he sleeps during the day.' The genitive only appears when a @deva[कृत्वसुच्]-ending word is present.
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule).
+
+When a @deva[कृत्वसुच्]-ending word (@ref[5.4.17]: expressing frequency, "so many times") is present, the @deva[काल] (time) word takes @deva[षष्ठी] instead of the default @deva[सप्तमी] for @deva[अधिकरण] (locative) sense.
+
+**Conditions:** Both must hold:
+1. A @deva[कृत्वसुच्]-ending word is present (e.g., @deva[पञ्चकृत्वः], @deva[द्विः])
+2. The word in question denotes @deva[काल] (time)
+
+**Examples:**
+- @deva[पञ्चकृत्वोऽह्नो भुङ्क्ते] — 'he eats five times a day'
+- @deva[द्विरह्नोऽधीते] — 'he studies twice a day'
+
+**Counterexamples:**
+- @deva[अह्नि शेते] — 'he sleeps in the day' — no @deva[कृत्वसुच्] word, so @deva[सप्तमी] applies normally
+- @deva[द्विः कांस्यपात्र्यां भुङ्क्ते] — 'he eats twice from a brass vessel' — @deva[कांस्यपात्री] is not a @deva[काल]-word, so @deva[सप्तमी] stands
+
+Since @deva[शेष] (@ref[2.3.50]) applies as a residual, @deva[सप्तमी] also remains possible: @deva[द्विरहन्यधीते] is grammatically valid alongside the genitive form.
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]).
+
+This rule carves out a special domain for @deva[षष्ठी] within what would normally be @deva[सप्तमी] territory (@ref[2.3.36] ff.). The trigger is the co-occurrence of a @deva[कृत्वसुच्]-ending word (@ref[5.4.17]) with a @deva[काल]-denoting word. The @deva[अधिकरण] relation itself remains — only the case-marker changes.
+
+The two conditions are conjunctive: remove either the @deva[कृत्वसुच्] word or the @deva[काल]-denotation, and the rule fails. This is why @deva[अह्नि शेते] (no frequency word) and @deva[द्विः कांस्यपात्र्यां भुङ्क्ते] (not a time-word) both retain @deva[सप्तमी].
+
+The optionality with @deva[सप्तमी] (@deva[द्विरहन्यधीते]) arises because @ref[2.3.50] (@deva[षष्ठी शेषे]) provides a residual genitive option. The @deva[कृत्वसुच्] rule does not block @deva[सप्तमी] — it licenses an additional @deva[षष्ठी] possibility. This is consistent with the general principle that @deva[शेषे षष्ठी] operates alongside specific @deva[विभक्ति] rules rather than being overridden by them.
+
+Cross-reference @ref[2.3.36] for the default @deva[सप्तमी] assignment in @deva[अधिकरण], and @ref[5.4.17] for the formation of @deva[कृत्वसुच्] words.
+"""

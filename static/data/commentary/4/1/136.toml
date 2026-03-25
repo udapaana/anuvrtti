@@ -1,0 +1,39 @@
+id = "4.1.136"
+numericId = "41136"
+
+[en]
+simple = """
+Words in the @deva[गृष्टि] class take the affix @deva[ढञ्] to form patronymics (meaning "descendant of"). This is a fixed list of eight words.
+
+**Examples:**
+- @deva[गृष्टि] (a woman who has borne only one child) + @deva[ढञ्] → @deva[गार्ष्टेयः] — "descendant of @[gṛṣṭi]"
+- @deva[हृष्टि] + @deva[ढञ्] → @deva[हार्ष्टेयः] — "descendant of @[hṛṣṭi]"
+
+Note the distinction: when @deva[गृष्टि] means 'cow' (a quadruped), it takes @deva[ढञ्] by the previous rule @ref[4.1.135]. This rule handles @deva[गृष्टि] in its human sense — 'a woman who has borne one child only'.
+"""
+
+standard = """
+After @deva[गृष्टयादि] words, @deva[ढञ्] is used for @deva[अपत्य] meaning, debarring both @deva[अण्] (@ref[4.1.83]) and @deva[ढक्].
+
+**Rule type:** @deva[अपवाद] (exception) to the default affix.
+
+**Examples:**
+- @deva[गृष्टि] + @deva[ढञ्] → @deva[गार्ष्टेयः]
+- @deva[हृष्टि] + @deva[ढञ्] → @deva[हार्ष्टेयः]
+
+**The eight-word list (@deva[गृष्टयादि गण]):** @deva[गृष्टि], @deva[हृष्टि], @deva[बलि], @deva[हलि], @deva[विश्रि], @deva[कुद्रि], @deva[अजवस्ति], @deva[मित्रयु].
+
+**Scope:** This rule applies specifically when these words denote humans. @deva[गृष्टि] meaning 'cow' already takes @deva[ढञ्] by @ref[4.1.135] (the quadruped rule). This @[sūtra] is needed for the sense 'woman with one child' — without it, the default @deva[अण्] would apply.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अपत्यम्] from @ref[4.1.92], @deva[ढञ्] from @ref[4.1.135].
+
+This @[sūtra] provides @deva[ढञ्] for the @deva[गृष्टयादि] @deva[गण], debarring @deva[अण्] and @deva[ढक्].
+
+**Semantic split with @ref[4.1.135]:** @deva[गृष्टि] as 'cow' (quadruped) → @deva[ढञ्] by @ref[4.1.135]; @deva[गृष्टि] as 'woman with one child' (human) → @deva[ढञ्] by this @[sūtra]. The result is identical (@deva[गार्ष्टेयः]), but the derivational path differs.
+
+**The @deva[गण] (8 words):** @deva[गृष्टि], @deva[हृष्टि], @deva[बलि], @deva[हलि], @deva[विश्रि], @deva[कुद्रि], @deva[अजवस्ति], @deva[मित्रयु].
+
+**Cross-references:** @ref[4.1.135] (quadruped @deva[ढञ्]), @ref[4.1.83] (@deva[अण्] default).
+"""

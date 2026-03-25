@@ -1,0 +1,55 @@
+id = "1.4.15"
+numericId = "14015"
+
+[en]
+simple = """
+A word ending in @deva[न्] is treated as @deva[पद] "complete word" when followed by the denominative affixes @deva[क्यच्], @deva[क्यङ्], or @deva[क्यष्].
+
+These affixes create verbs from nouns (denominative verbs). When they attach to a @deva[न्]-final stem, the stem is treated as a @deva[पद] so that @deva[पद]-final sound changes can apply to the @deva[न्].
+
+**Examples:**
+- @deva[राजन्] + @deva[क्यच्] → @deva[राजीयति] "he acts like a king"
+- @deva[राजन्] + @deva[क्यङ्] → @deva[राजायते] "he wishes to be a king"
+- @deva[चर्मन्] + @deva[क्यष्] → @deva[चर्मायते] "it becomes leather-like"
+
+Normally, only words with @deva[सुप्] or @deva[तिङ्] endings are @deva[पद] (by @ref[1.4.14]). This rule extends @deva[पद] status to @deva[न्]-final stems before denominative affixes — even though no case or verb ending is present.
+"""
+
+standard = """
+A @deva[न्]-final word is @deva[पद] before @deva[क्यच्], @deva[क्यङ्], or @deva[क्यष्] — @deva[नः क्ये].
+
+**Rule type — @deva[संज्ञा] extension:** Extends @deva[पद] status beyond @ref[1.4.14]'s definition to a specific context.
+
+**Examples:**
+- @deva[राजन्] + @deva[क्यच्] → @deva[राजीयति] "he acts like a king"
+- @deva[राजन्] + @deva[क्यङ्] → @deva[राजायते] "he wishes to be a king"
+- @deva[चर्मन्] + @deva[क्यष्] → @deva[चर्मायते] "it becomes leather-like"
+
+**Why needed?** @deva[राजन्] before @deva[क्यच्] has no @deva[सुप्] ending, so @ref[1.4.14] doesn't apply. Without @deva[पद] status, @deva[पद]-final rules wouldn't apply to the @deva[न्].
+
+**Effect of @deva[पद] status:** The @deva[न्] undergoes @deva[पद]-final operations:
+- @ref[8.2.7]: @deva[नलोप] (deletion of @deva[न्]) in certain environments
+- @ref[8.4.37]ff: @deva[पद]-final consonant adjustments
+
+**Scope:** Only @deva[न्]-final stems. Other consonant-final stems before @deva[क्य]-affixes do not get @deva[पद] status by this rule.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[पद] from @ref[1.4.14].
+
+@deva[नः क्ये] — a @deva[न्]-final element is @deva[पद] before @deva[क्य]-initial affixes.
+
+**Extension of @ref[1.4.14]:** @ref[1.4.14] defines @deva[पद] as @deva[सुप्]/@deva[तिङ्]-final. This rule adds a special case: @deva[न्]-final stems before denominative @deva[क्य]-affixes.
+
+**Why only @deva[न्]-final?** Stems like @deva[राजन्], @deva[चर्मन्], @deva[ब्रह्मन्] end in @deva[न्] in their stem form. Without @deva[पद] status, the @deva[न्] wouldn't undergo @deva[पद]-final @deva[नलोप] (@ref[8.2.7]), leading to incorrect forms.
+
+**@deva[क्य]-affixes:**
+- @deva[क्यच्] (@ref[3.1.8]): "acts like X" — @deva[राजीयति]
+- @deva[क्यङ्] (@ref[3.1.11]): "wishes to be X" — @deva[राजायते]
+- @deva[क्यष्] (@ref[3.1.12]): "becomes intensely X" — @deva[चर्मायते]
+
+**@deva[पद] extension series (@ref[1.4.14]–@ref[1.4.18]):**
+- @ref[1.4.14]: base definition — @deva[सुप्]/@deva[तिङ्]-final
+- @ref[1.4.15] (this): @deva[न्]-final before @deva[क्य]-affixes
+- @ref[1.4.16]–@ref[1.4.18]: further extensions for specific compound and affix contexts
+"""

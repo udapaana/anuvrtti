@@ -1,0 +1,49 @@
+id = "2.3.70"
+numericId = "23070"
+
+[en]
+simple = """
+The genitive (@deva[षष्ठी]) is NOT used with two specific types of suffixed words when they carry particular meanings:
+
+1. Words ending in @deva[अक] (like @deva[कारकः], 'maker') when they express a future action
+2. Words ending in @deva[इन्] (like @deva[गमी], 'one who will go') when they express futurity or debt
+
+In these cases, the object takes the accusative instead of the genitive, just as it would with a finite verb.
+
+**Examples:**
+- @deva[कटं कारको व्रजति] — 'he goes to make a mat' (accusative @deva[कटम्], not *@deva[कटस्य])
+- @deva[ग्रामं गमी] — 'one who must go to the village' (accusative @deva[ग्रामम्])
+- @deva[शतं दायी] — 'he owes a hundred' (accusative @deva[शतम्])
+
+When the same suffixes are used without the sense of futurity or debt, the genitive is fine: @deva[यवानां लावकः] ('cutter of barley') uses genitive because it describes an established role, not a future action.
+"""
+
+standard = """
+**Rule type:** @[niṣedha] (prohibition), extending the block of @ref[2.3.69].
+
+@deva[षष्ठी] is NOT used for @deva[कर्तृ/कर्मन्] with:
+
+1. **@deva[अक्]** (@deva[ण्वुल्], @deva[वुञ्], etc.) when denoting @deva[भविष्यत्] (futurity): @deva[कटं कारको व्रजति] — 'he goes intending to make a mat'
+2. **@deva[इन्]** (@deva[णिनि], per @ref[3.3.3] and @ref[3.3.170]) when denoting @deva[भविष्यत्] (futurity) or @deva[ऋण] (debt): @deva[ग्रामं गमी] — 'one who must go to the village'; @deva[शतं दायी] — 'he owes a hundred'
+
+**Key restriction:** The prohibition is conditional on the meaning. When the same affixes express a general or habitual sense (not futurity/debt), @deva[षष्ठी] applies normally:
+- @deva[यवानां लावकः] — 'reaper of barley' — genitive valid (habitual agent, not future)
+- @deva[वर्षशतस्य पूरकः] — 'one who completes a hundred years' — genitive valid
+- @deva[पुत्रपौत्राणां दर्शकः] — 'one who sees sons and grandsons' — genitive valid
+
+The meaning-sensitive nature of this prohibition distinguishes it from the purely morphological blocks of @ref[2.3.69].
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]), @deva[कर्तृ/कर्मन्] (from @ref[2.3.65]).
+
+This rule supplements @ref[2.3.69] with two additional suffix classes that block @deva[षष्ठी], but unlike that rule, the block here is meaning-dependent. The suffixes @deva[अक्] and @deva[इन्] are not categorically excluded — only when they carry @deva[भविष्यत्] (future) or @deva[ऋण] (debt) meaning.
+
+The @deva[अक्]-affix in question is primarily @deva[ण्वुल्] in its future-action sense. When the same @deva[ण्वुल्] produces a habitual agent noun (e.g., @deva[लावकः] from @ref[3.1.133]), @deva[षष्ठी] is permitted because the form does not denote futurity.
+
+For @deva[इन्], two distinct @[sūtras] generate the relevant forms: @ref[3.3.3] (futurity sense) and @ref[3.3.170] (debt sense). The prohibition covers both: @deva[ग्रामं गमी] (future) and @deva[शतं दायी] (debt).
+
+This meaning-conditioned approach reflects a broader pattern in the @deva[अष्टाध्यायी]: morphological identity is not always sufficient to determine case-assignment — the semantic value of the affix matters. The same @deva[अक्]-ending word can trigger or block @deva[षष्ठी] depending on whether it expresses a future intention or an established characteristic.
+
+Cross-reference @ref[2.3.69] for the general morphological blocks, and @ref[2.3.65] for the rule being restricted.
+"""

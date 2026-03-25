@@ -1,0 +1,47 @@
+id = "2.2.24"
+numericId = "22024"
+
+[en]
+simple = """
+Two or more case-inflected words form a @deva[बहुव्रीहि] compound when together they describe an external entity — someone or something characterized by the relationship between those words. The compound can express all case-relationships except the nominative.
+
+**Examples:**
+- @deva[प्राप्तोदको ग्रामः] "a village to which water has come" — @deva[प्राप्तम् उदकं यं ग्रामम्] (accusative sense)
+- @deva[ऊढरथोऽनड्वान्] "a bull by whom a cart has been drawn" — (instrumental sense)
+- @deva[उपहृतपशूरुद्रः] "Rudra, to whom cattle has been offered" — (dative sense)
+- @deva[उद्धृतौदना स्थाली] "a pot from which rice has been taken out" — (ablative sense)
+- @deva[चित्रगुर्देवदत्तः] "Devadatta who has a spotted cow" — (genitive sense)
+- @deva[वीरपुरुषको ग्रामः] "a village in which there are heroic men" — (locative sense)
+"""
+
+standard = """
+@deva[बहूनि सुबन्तानि] → @deva[बहुव्रीहि] when @deva[अन्यपदार्थ] and @deva[अप्रथमार्थ] — @deva[अनेकमन्यपदार्थे].
+
+**Rule type — @deva[विधि]:** Compounding rule for @deva[बहुव्रीहि].
+
+**Examples across all non-nominative cases:**
+- @deva[द्वितीया]: @deva[प्राप्तोदको ग्रामः] — @deva[प्राप्तमुदकं यं ग्रामम्]
+- @deva[तृतीया]: @deva[ऊढरथोऽनड्वान्] — @deva[ऊढो रथो येन]
+- @deva[चतुर्थी]: @deva[उपहृतपशूरुद्रः] — @deva[उपहृतः पशुः यस्मै]
+- @deva[पञ्चमी]: @deva[उद्धृतौदना स्थाली] — @deva[उद्धृतः ओदनः यस्याः]
+- @deva[षष्ठी]: @deva[चित्रगुर्देवदत्तः] — @deva[चित्रा गौः यस्य]
+- @deva[सप्तमी]: @deva[वीरपुरुषको ग्रामः] — @deva[वीराः पुरुषाः यस्मिन्]
+
+**@deva[अप्रथमार्थ] condition:** The compound cannot express @deva[प्रथमा] (nominative) case of the external referent. @deva[वृष्टे देवे गतः] "gone when it had rained" — @deva[प्रथमा] sense, so no @deva[बहुव्रीहि].
+
+**@deva[अनेक] "more than one":** Multiple words can compound: @deva[सुसूक्ष्मजटकेशेन सुभाजिनवाससा] — a multi-member @deva[बहुव्रीहि].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[बहुव्रीहिः] from @ref[2.2.23]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[अनेकमन्यपदार्थे] — two or more @deva[सुबन्त] words form @deva[बहुव्रीहि] when denoting @deva[अन्यपदार्थ] (the meaning of an external word) and expressing non-@deva[प्रथमा] case-relationships.
+
+**@deva[अन्यपदार्थ] — core principle:** The compound's referent is not denoted by any of its members. @deva[चित्रगुः] — neither @deva[चित्र] nor @deva[गो] is the referent; the person who possesses the spotted cow is. This "other-word-meaning" is the hallmark that distinguishes @deva[बहुव्रीहि] from @deva[तत्पुरुष].
+
+**@deva[अप्रथमार्थ] exclusion:** The @deva[काशिका] explains that @deva[बहुव्रीहि] expresses the external referent in all cases except @deva[प्रथमा]. @deva[वृष्टे देवे गतः] — if analyzed as @deva[बहुव्रीहि], the external referent would be in @deva[प्रथमा] (the subject of @deva[गतः]). This is blocked. The restriction ensures @deva[बहुव्रीहि] always implies a case-relationship between the compound and its external referent.
+
+**@deva[अनेक] — multi-member compounds:** The word @deva[अनेकम्] allows compounds with more than two members. The verse cited: @deva[सुसूक्ष्मजटकेशेन सुभाजिनवाससा | पुत्री पर्वतराजस्य कुतो हेतोर्विवाहिता] — shows multi-word @deva[बहुव्रीहि] compounds describing the groom's attributes.
+
+**Semantic breadth:** @deva[बहुव्रीहि] is the most versatile compound type — it can express any case-relationship (except nominative) between the compound and its external referent. This makes it essential for attributive description in Sanskrit.
+"""

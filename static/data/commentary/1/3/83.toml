@@ -1,0 +1,52 @@
+id = "1.3.83"
+numericId = "13083"
+
+[en]
+simple = """
+The verb @deva[रम्] "to sport, delight" takes @deva[परस्मैपद] (active endings) when preceded by @deva[वि] "apart," @deva[आ] "toward," or @deva[परि] "around."
+
+**@deva[परस्मैपद] (always with these prefixes):**
+- @deva[विरमति] "he ceases, he rests"
+- @deva[आरमति] "he delights in"
+- @deva[परिरमति] "he sports"
+
+**@deva[आत्मनेपद] (other prefixes):**
+- @deva[अभिरमते] "he delights"
+- @deva[संरमते] "he sports together"
+
+@deva[रम्] is a root that normally always takes @deva[आत्मनेपद] (reflexive endings). This rule creates an exception for three specific prefixes — when @deva[वि], @deva[आ], or @deva[परि] precedes, the verb switches to @deva[परस्मैपद].
+"""
+
+standard = """
+After @deva[वि]/@deva[आङ्]/@deva[परि] + @deva[रम्], @deva[परस्मैपद].
+
+**Always @deva[परस्मैपद]:**
+- @deva[विरमति] "he ceases / rests"
+- @deva[आरमति] "he delights in"
+- @deva[परिरमति] "he sports"
+
+**Other prefixes — @ref[1.3.12] applies:**
+- @deva[अभिरमते] "he delights" (@deva[आत्मनेपद])
+- @deva[संरमते] "he sports together" (@deva[आत्मनेपद])
+
+**Rule type — @deva[अपवाद]:** @deva[रम्] is @deva[अनुदात्तेत्], so @ref[1.3.12] makes it always @deva[आत्मनेपदिन्]. This rule overrides @ref[1.3.12] — a stronger override than @ref[1.3.79]–@ref[1.3.82], which only override @ref[1.3.72].
+
+**Scope:** Three prefixes only. @deva[उप] + @deva[रम्] is handled separately in @ref[1.3.84] to allow @ref[1.3.85] to apply only to that combination.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78].
+
+@deva[व्याङ्परिभ्यो रमः] — after @deva[वि]/@deva[आङ्]/@deva[परि] + @deva[रम्], @deva[परस्मैपद].
+
+**Override of @ref[1.3.12]:** @deva[रम्] is @deva[अनुदात्तेत्], so @ref[1.3.12] makes it unconditionally @deva[आत्मनेपदिन्]. This is a stronger override than @ref[1.3.79]–@ref[1.3.82], which merely override the conditional @ref[1.3.72]. Here, @deva[परस्मैपद] overrides an unconditional @deva[आत्मनेपद] assignment.
+
+**Why @deva[उप] is excluded:** @deva[उप] + @deva[रम्] is given @deva[परस्मैपद] separately in @ref[1.3.84] so that @ref[1.3.85] can restrict its scope to @deva[उप] + @deva[रम्] alone (intransitive optionality). If @deva[उप] were included here, @ref[1.3.85] would have to explicitly exclude @deva[वि], @deva[आ], and @deva[परि] — unnecessary complexity.
+
+**@deva[रम्] series (@ref[1.3.83]–@ref[1.3.85]):**
+- @ref[1.3.83] (this): @deva[वि]/@deva[आ]/@deva[परि] → @deva[परस्मैपद] (mandatory)
+- @ref[1.3.84]: @deva[उप] → @deva[परस्मैपद] (mandatory)
+- @ref[1.3.85]: @deva[उप] + intransitive → optional
+
+**Transition:** @ref[1.3.79]–@ref[1.3.82] overrode @ref[1.3.72] (@deva[स्वरितेत्] roots). @ref[1.3.83]–@ref[1.3.85] override @ref[1.3.12] (@deva[अनुदात्तेत्] roots) — a more powerful exception.
+"""

@@ -1,0 +1,45 @@
+id = "2.1.45"
+numericId = "21045"
+
+[en]
+simple = """
+Words denoting divisions of the day or night — like @deva[पूर्वाह्ण] "forenoon," @deva[अपराह्ण] "afternoon," @deva[पूर्वरात्र] "first part of the night," @deva[अपररात्र] "last part of the night" — in the locative **optionally** compound with a past participle (@deva[क्त]-ending word) to form @deva[तत्पुरुष].
+
+**Examples:**
+- @deva[पूर्वाह्णकृतम्] "done in the forenoon"
+- @deva[अपराह्णकृतम्] "done in the afternoon"
+- @deva[पूर्वरात्रकृतम्] "done in the first part of the night"
+- @deva[अपररात्रकृतम्] "done in the last part of the night"
+
+**Not for whole-day or whole-night words:** @deva[अहनि भुक्तम्] "eaten during the day" and @deva[रात्रौ वृत्तम्] "occurring at night" do not compound under this rule, because @deva[अहन्] and @deva[रात्रि] are whole periods, not divisions.
+"""
+
+standard = """
+@deva[अहोरात्रावयवाः] (@deva[सप्तम्यन्त]) + @deva[क्तान्त] → @deva[विभाषा] @deva[तत्पुरुष] — @deva[अहोरात्राभ्यां च कालवाचिना क्तेन].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[पूर्वाह्णकृतम्] "done in the forenoon"
+- @deva[अपराह्णकृतम्] "done in the afternoon"
+- @deva[पूर्वरात्रकृतम्] "done in the first watch"
+- @deva[अपररात्रकृतम्] "done in the last watch"
+
+**Restriction to @deva[अवयव]:** The first member must be a *division* of day or night (@deva[पूर्वाह्ण], @deva[अपराह्ण], @deva[पूर्वरात्र], @deva[अपररात्र]), not the whole period. @deva[अहनि भुक्तम्] "eaten during the day" does not compound because @deva[अहन्] is the entire day.
+
+**@deva[बहुलम्] extension:** The @deva[काशिका] notes that under the @deva[बहुलम्] of @ref[2.1.32], broader compounds like @deva[रात्रिवृत्तम्] "occurring at night" and @deva[सन्ध्यागर्जितम्] "thundered at twilight" are also attested — but these operate diversely, not by this specific rule.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सप्तमी] from @ref[2.1.40]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[अहोरात्राभ्यां च कालवाचिना क्तेन] — divisions of day (@deva[अहन्]) and night (@deva[रात्रि]) in @deva[सप्तमी] optionally compound with @deva[क्तान्त] as @deva[तत्पुरुष].
+
+**@deva[अवयव] restriction:** The @deva[काशिका] clarifies that @deva[अहोरात्राभ्याम्] means "divisions of day and night" — not @deva[अहन्] and @deva[रात्रि] themselves. @deva[पूर्वाह्ण], @deva[अपराह्ण], @deva[मध्याह्न] are @deva[अहन्]-divisions; @deva[पूर्वरात्र], @deva[अपररात्र] are @deva[रात्रि]-divisions. The whole-period words @deva[अहन्] and @deva[रात्रि] are excluded: @deva[अहनि भुक्तम्] does not compound.
+
+**@deva[बहुलम्] via @ref[2.1.32]:** Despite the restriction, the @deva[काशिका] notes that @deva[रात्रिवृत्तम्] and @deva[सन्ध्यागर्जितम्] are attested compounds. These operate under @ref[2.1.32]'s @deva[बहुलम्] — the irregular, usage-governed provision that can extend beyond specific rules.
+
+**Relation to @ref[2.1.28]–@ref[2.1.29]:** Those rules covered @deva[द्वितीया] time-words with @deva[क्तान्त] (point-in-time) and @deva[सुबन्त] (duration). This rule covers @deva[सप्तमी] time-divisions with @deva[क्तान्त] — a different case expressing "within/during" rather than "at/for."
+
+**@deva[कालवाचिन]:** The @deva[कालवाचिन] in the @[sūtra] text clarifies that the @deva[अहोरात्र] divisions are being taken as time-denoting words, connecting this to the broader class of temporal compounds.
+"""

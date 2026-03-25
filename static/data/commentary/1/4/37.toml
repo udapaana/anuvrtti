@@ -1,0 +1,48 @@
+id = "1.4.37"
+numericId = "14037"
+
+[en]
+simple = """
+With verbs meaning "to be angry" (@deva[क्रुध्]), "to bear malice" (@deva[द्रुह्]), "to envy" (@deva[ईर्ष्य]), and "to find fault" (@deva[असूय]) — the person at whom the feeling is directed is called @deva[सम्प्रदान] "recipient."
+
+When you are angry at someone, that person "receives" your anger. The target of these negative emotions is the @deva[सम्प्रदान].
+
+**Examples:**
+- @deva[देवदत्ताय क्रुध्यति] "he is angry at Devadatta"
+- @deva[देवदत्ताय द्रुह्यति] "he bears malice toward Devadatta"
+- @deva[देवदत्ताय ईर्ष्यति] "he envies Devadatta"
+- @deva[देवदत्ताय असूयति] "he finds fault with Devadatta"
+
+In each case, @deva[देवदत्त] takes the dative — the emotion is directed toward him.
+"""
+
+standard = """
+With @deva[क्रुध्] "anger," @deva[द्रुह्] "malice," @deva[ईर्ष्य] "envy," @deva[असूय] "fault-finding" — the target of the feeling is @deva[सम्प्रदान] — @deva[क्रुधद्रुहेर्ष्यासूयार्थानां यं प्रति कोपः].
+
+**Rule type — @deva[संज्ञा] extension of @ref[1.4.32]:** The target "receives" the hostile emotion — parallel to receiving a gift, but with negative affect.
+
+**Examples:**
+- @deva[देवदत्ताय क्रुध्यति] "he is angry at Devadatta"
+- @deva[देवदत्ताय द्रुह्यति] "he bears malice toward Devadatta"
+- @deva[देवदत्ताय असूयति] "he finds fault with Devadatta"
+
+**@deva[यं प्रति कोपः] = "toward whom the hostility":** The @deva[सम्प्रदान] is the target — the person toward whom anger, malice, envy, or censure is directed.
+
+**Scope:** Covers four specific roots plus their synonyms (@deva[अर्थ]-class). Any verb with the meaning of anger, malice, envy, or fault-finding qualifies.
+
+**Important exception:** @ref[1.4.38] overrides this for @deva[क्रुध्] and @deva[द्रुह्] when prefixed — the target becomes @deva[कर्मन्] (accusative) instead.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सम्प्रदान] from @ref[1.4.32]; @deva[कारके] from @ref[1.4.23].
+
+@deva[क्रुधद्रुहेर्ष्यासूयार्थानां यं प्रति कोपः] — with verbs of anger/malice/envy/fault-finding, the target of hostility is @deva[सम्प्रदान].
+
+**@deva[अर्थ]-class designation:** The @[sūtra] names four roots but uses @deva[अर्थ] — "those having the meaning of." This extends coverage to synonymous roots: @deva[रुष्] "to be angry," @deva[मन्यु] "to rage," etc. The @deva[कारक] assignment follows meaning, not root identity.
+
+**Interaction with @ref[1.4.38]:** The very next rule restricts this: when @deva[क्रुध्] or @deva[द्रुह्] take an @deva[उपसर्ग] (preverb), the target becomes @deva[कर्मन्] rather than @deva[सम्प्रदान]. Compare: @deva[देवदत्ताय क्रुध्यति] (dative, by this rule) vs. @deva[देवदत्तम् अभिक्रुध्यति] (accusative, by @ref[1.4.38]). This split applies only to @deva[क्रुध्]/@deva[द्रुह्]; @deva[ईर्ष्य] and @deva[असूय] always take dative regardless of preverbs.
+
+**@deva[सम्प्रदान] series position:** Sixth extension. The metaphor of "receiving" now covers hostile emotions — the target "receives" anger/malice/envy/censure. This is the emotional @deva[सम्प्रदान], contrasting with the communicative type at @ref[1.4.34].
+
+**Practical consequence:** These four verbs govern @deva[चतुर्थी] (dative) by @ref[2.3.13], not @deva[द्वितीया] (accusative). Students often mistranslate "he is angry at X" with accusative — the dative is required.
+"""

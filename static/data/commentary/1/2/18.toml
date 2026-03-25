@@ -1,0 +1,53 @@
+id = "1.2.18"
+numericId = "12018"
+
+[en]
+simple = """
+The affix @deva[क्त्वा] ("having done") normally blocks vowel strengthening because it is @deva[कित्] — its @deva[क्] is an indicatory letter. But when @deva[क्त्वा] takes the augment @deva[इट्] (becoming @deva[इत्वा]), it loses its @deva[कित्] status. Now @deva[गुण] (vowel strengthening) can apply.
+
+**Without @deva[इट्] — @deva[कित्], no strengthening:**
+- @deva[कृत्वा] "having done" — @deva[ऋ] stays as @deva[ऋ]
+- @deva[हुत्वा] "having sacrificed" — @deva[उ] stays as @deva[उ]
+
+**With @deva[इट्] — not @deva[कित्], @deva[गुण] applies:**
+- @deva[स्वेदित्वा] "having sweated" — @deva[इ] of @deva[स्विद्] becomes @deva[ए]
+- @deva[वर्तित्वा] "having turned" — @deva[ऋ] of @deva[वृत्] becomes @deva[अर्]
+"""
+
+standard = """
+@deva[क्त्वा] is inherently @deva[कित्] (its @deva[क्] is @deva[इत्] by @ref[1.3.8]). But when @deva[क्त्वा] receives the @deva[इट्] augment — making it @deva[सेट्] — it loses @deva[कित्] status, and @deva[गुण] applies to the root vowel.
+
+**@deva[अनिट्] @deva[क्त्वा] — @deva[कित्], no @deva[गुण]:**
+- @deva[कृ] → @deva[कृत्वा] "having done"
+- @deva[हु] → @deva[हुत्वा] "having sacrificed"
+- @deva[भिद्] → @deva[भित्त्वा] "having split"
+
+**@deva[सेट्] @deva[क्त्वा] — not @deva[कित्], @deva[गुण] applies:**
+- @deva[स्विद्] → @deva[स्वेदित्वा] "having sweated"
+- @deva[वृत्] → @deva[वर्तित्वा] "having turned"
+- @deva[दिव्] → @deva[देवित्वा] "having shone"
+
+**Scope:** This rule applies only to @deva[क्त्वा]. Other @deva[कित्] affixes like @deva[क्तिन्] remain @deva[कित्] even when @deva[सेट्]: @deva[निगृहीतिः] "restraint" (from @deva[ग्रह्] + @deva[इ] + @deva[क्तिन्], with @deva[गुण] blocked despite @deva[इट्]).
+
+**Why does @deva[इट्] matter?** When @deva[इट्] is inserted, the affix effectively begins with a vowel rather than the consonant @deva[त्]. The @deva[कित्] nature of the original @deva[क्] is overridden by this structural change.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5].
+
+@deva[न क्त्वा सेट्] — @deva[सेट्] @deva[क्त्वा] is not @deva[कित्].
+
+**Topic shift:** This rule leaves the @deva[सिच्]/@deva[लिङ्] domain of @ref[1.2.11]–@ref[1.2.17] and addresses @deva[क्त्वा], which is inherently @deva[कित्] by @ref[1.3.8] (@deva[क्] as @deva[इत्]). The rule carves out an exception: when @deva[इट्] intervenes, the @deva[कित्] designation is nullified.
+
+**Derivation of @deva[स्वेदित्वा]:**
+@deva[स्विद्] + @deva[इट्] + @deva[त्वा]:
+1. @deva[क्त्वा] is @deva[सेट्] → not @deva[कित्] by this rule
+2. @deva[गुण] applies: @deva[इ] → @deva[ए]
+3. → @deva[स्वेदित्वा]
+
+**Contrast with @deva[क्तिन्]:** @deva[ग्रह्] + @deva[इ] + @deva[क्तिन्] → @deva[गृहीतिः] (not *@deva[ग्रहीतिः]). The @deva[क्तिन्] affix keeps its @deva[कित्] nature even with @deva[इट्] because this rule specifically targets @deva[क्त्वा] alone.
+
+**Why single out @deva[क्त्वा]?** @deva[क्त्वा] is a @deva[कृत्] affix used in absolutive constructions ("having done X"). When @deva[इट्] is present, the root-affix boundary changes phonologically — the @deva[इट्] vowel creates a buffer that makes the @deva[गुण]-blocking effect of @deva[क्] unnecessary. The grammar adjusts by removing @deva[कित्] status.
+
+**Connection to @ref[1.2.19]–@ref[1.2.20]:** The next two rules similarly restrict @deva[कित्] status — but for @deva[निष्ठा] (@deva[क्त]/@deva[क्तवतु]) after specific roots. Together, @ref[1.2.18]–@ref[1.2.20] form a cluster of exceptions to the general @deva[कित्] designation of @deva[क्]-initial affixes.
+"""

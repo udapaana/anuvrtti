@@ -1,0 +1,50 @@
+id = "1.2.19"
+numericId = "12019"
+
+[en]
+simple = """
+The past participle affixes @deva[क्त] and @deva[क्तवतु] (called @deva[निष्ठा]) normally block vowel strengthening because they are @deva[कित्]. But after five specific roots — @deva[शीङ्] "to lie down," @deva[स्विद्] "to sweat," @deva[मिद्] "to melt/grow fat," @deva[क्ष्विद्] "to be unctuous," and @deva[धृष्] "to be bold" — the @deva[सेट्] forms of @deva[निष्ठा] are not @deva[कित्], so @deva[गुण] applies.
+
+**Examples:**
+- @deva[शयितः] "lain down" (from @deva[शीङ्] — @deva[ई] → @deva[अय्])
+- @deva[प्रस्वेदितः] "sweated" (from @deva[स्विद्] — @deva[इ] → @deva[ए])
+- @deva[प्रमेदितः] "grown fat" (from @deva[मिद्] — @deva[इ] → @deva[ए])
+- @deva[प्रधर्षितः] "violated" (from @deva[धृष्] — @deva[ऋ] → @deva[अर्])
+"""
+
+standard = """
+@deva[सेट्] @deva[निष्ठा] (@deva[क्त], @deva[क्तवतु]) is not @deva[कित्] after @deva[शीङ्], @deva[स्विद्], @deva[मिद्], @deva[क्ष्विद्], and @deva[धृष्]. @deva[गुण] applies to the root vowel.
+
+**Forms (@deva[क्त] and @deva[क्तवतु]):**
+- @deva[शीङ्]: @deva[शयितः], @deva[शयितवान्] "lain down"
+- @deva[स्विद्]: @deva[प्रस्वेदितः], @deva[प्रस्वेदितवान्] "sweated"
+- @deva[मिद्]: @deva[प्रमेदितः], @deva[प्रमेदितवान्] "grown fat"
+- @deva[क्ष्विद्]: @deva[प्रक्ष्वेदितः], @deva[प्रक्ष्वेदितवान्] "become unctuous"
+- @deva[धृष्]: @deva[प्रधर्षितः], @deva[प्रधर्षितवान्] "violated"
+
+**When does @deva[निष्ठा] become @deva[सेट्]?** These roots are normally @deva[अनिट्] (their @deva[धातुपाठ] entries have indicatory @deva[ञि] and @deva[आ]). But by @ref[7.2.17], @deva[निष्ठा] optionally takes @deva[इट्] when expressing @deva[भाव] (state) or @deva[आदिकर्मन्] (beginning of action). This rule applies in that optional @deva[सेट्] case.
+
+**@deva[अनिट्] forms still exist:** @deva[स्विन्नः] "sweated," @deva[मिन्नः] "melted" — these are the @deva[अनिट्] @deva[निष्ठा] forms where @deva[कित्] status is intact. The two sets coexist.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[सेट्] from @ref[1.2.18].
+
+@deva[शीङ्स्विदिमिदिक्ष्विदिधृषां सेण्निष्ठायाम्] — @deva[सेट्] @deva[निष्ठा] is not @deva[कित्] after @deva[शीङ्], @deva[स्विद्], @deva[मिद्], @deva[क्ष्विद्], and @deva[धृष्].
+
+**@deva[धातुपाठ] entries:** @deva[ञिष्विदा] (sweat), @deva[ञिमिदा] (melt/grow fat), @deva[ञिक्ष्विदा] (be unctuous), @deva[ञिधृषा] (be bold). All have indicatory @deva[ञि] and @deva[आ], making them @deva[अनिट्] by @ref[7.2.16]. @deva[शीङ्] is separately @deva[अनिट्].
+
+**The @deva[सेट्] trigger:** By @ref[7.2.17], @deva[निष्ठा] optionally takes @deva[इट्] after these roots when expressing @deva[भाव] or @deva[आदिकर्मन्]. Only in this @deva[सेट्] option does the present rule apply.
+
+**Two parallel form sets:**
+| Root | @deva[अनिट्] (@deva[कित्]) | @deva[सेट्] (not @deva[कित्]) |
+|------|---------------------------|-------------------------------|
+| @deva[स्विद्] | @deva[स्विन्नः] | @deva[स्वेदितः] |
+| @deva[मिद्] | @deva[मिन्नः] | @deva[मेदितः] |
+| @deva[क्ष्विद्] | @deva[क्ष्विन्नः] | @deva[क्ष्वेदितः] |
+| @deva[धृष्] | @deva[धृष्टः] | @deva[धर्षितः] |
+
+**Why these five roots?** They share a pattern: all are normally @deva[अनिट्] roots that optionally become @deva[सेट्] in @deva[निष्ठा]. Without this rule, the @deva[सेट्] forms would still be @deva[कित्] (since @deva[क्त]/@deva[क्तवतु] have indicatory @deva[क्]), blocking @deva[गुण] and producing forms like *@deva[स्विदितः] instead of the attested @deva[स्वेदितः].
+
+**Connection:** This rule and @ref[1.2.20] both restrict @deva[कित्] for @deva[सेट्] @deva[निष्ठा] after specific roots. Together with @ref[1.2.18] (which does the same for @deva[क्त्वा]), they form a set of exceptions to the general @deva[कित्] nature of @deva[क्]-initial affixes.
+"""

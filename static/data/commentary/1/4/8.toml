@@ -1,0 +1,59 @@
+id = "1.4.8"
+numericId = "14008"
+
+[en]
+simple = """
+The word @deva[पति] "lord, husband" is @deva[घि] only when it appears as the final member of a compound. When used as a standalone word, it is not @deva[घि] and declines irregularly.
+
+**In a compound (@deva[घि] — regular @deva[गुण]):**
+- @deva[प्रजापति] + @deva[ङे] → @deva[प्रजापतये] "to the lord of creatures"
+- @deva[प्रजापति] + @deva[टा] → @deva[प्रजापतिना] "by the lord of creatures"
+
+**Standalone (not @deva[घि] — irregular):**
+- @deva[पति] + @deva[ङे] → @deva[पत्ये] "to the husband"
+- @deva[पति] + @deva[टा] → @deva[पत्या] "by the husband"
+
+Notice the difference: compound @deva[प्रजापतये] (with @deva[गुण]) vs standalone @deva[पत्ये] (without @deva[गुण], with semivowel). The compound form behaves like @deva[अग्नि]; the standalone form behaves like @deva[सखि].
+"""
+
+standard = """
+@deva[पति] is @deva[घि] only in compounds (@deva[समास]) — restricting @ref[1.4.7].
+
+**In compound (@deva[घि] applies):**
+
+| Case | Form |
+|------|------|
+| Inst. sg. | @deva[प्रजापतिना] |
+| Dat. sg. | @deva[प्रजापतये] |
+| Gen. sg. | @deva[प्रजापतेः] |
+| Loc. sg. | @deva[प्रजापतौ] |
+
+**Standalone (not @deva[घि]):**
+
+| Case | Form |
+|------|------|
+| Inst. sg. | @deva[पत्या] |
+| Dat. sg. | @deva[पत्ये] |
+| Gen. sg. | @deva[पत्युः] |
+| Loc. sg. | @deva[पत्यौ] |
+
+**Rule type — @deva[नियम] (restriction):** @deva[पति] ends in short @deva[इ], so @ref[1.4.7] would make it @deva[घि] unconditionally. This rule restricts @deva[घि] to compound contexts only.
+
+**Standalone behavior:** Without @deva[घि] status, standalone @deva[पति] declines like @deva[सखि] — with semivowel substitution and no @deva[गुण].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[घि] from @ref[1.4.7].
+
+@deva[पतिः समास एव] — @deva[पति] is @deva[घि] only in @deva[समास].
+
+**Restriction of @ref[1.4.7]:** @ref[1.4.7] defines all short @deva[इ]/@deva[उ]-stems (except @deva[सखि]) as @deva[घि]. This rule further restricts: @deva[पति] is @deva[घि] only when it appears as a compound member — typically the @deva[उत्तरपद] (final member) of a @deva[तत्पुरुष] compound.
+
+**Standalone @deva[पति]:** Without @deva[घि] status, @deva[पति] effectively behaves like @deva[सखि] — semivowel substitution in oblique cases: @deva[पत्ये], @deva[पत्या], @deva[पत्युः], @deva[पत्यौ].
+
+**Compound @deva[पति]:** With @deva[घि] status, @deva[गुण] by @ref[7.3.111] applies normally: @deva[प्रजापतये], @deva[प्रजापतेः], @deva[प्रजापतौ].
+
+**Why the split?** Standalone @deva[पति] "husband" has an archaic, irregular paradigm preserved by convention. In compounds (@deva[प्रजापति], @deva[सेनापति], @deva[गणपति]), the word is regularized to the standard @deva[इ]-stem pattern.
+
+**Vedic extension:** @ref[1.4.9] adds a Vedic optionality — @deva[पति] with a genitive dependent is optionally @deva[घि] in Vedic texts.
+"""

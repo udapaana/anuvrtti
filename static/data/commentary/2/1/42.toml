@@ -1,0 +1,44 @@
+id = "2.1.42"
+numericId = "21042"
+
+[en]
+simple = """
+A word in the locative case (@deva[सप्तमी]) **optionally** compounds with @deva[ध्वाङ्क्ष] "crow" (or its synonyms @deva[काक], @deva[वायस]) to form @deva[तत्पुरुष] — but only when the meaning is contempt (@deva[अवज्ञा]).
+
+**Examples:**
+- @deva[तीर्थध्वाङ्क्षः] "a crow at the sacred bathing place" — used contemptuously for someone who frequents holy places like a scavenger, never staying long
+- @deva[तीर्थकाकः] "a crow at the pilgrimage site" — same meaning with the synonym @deva[काक]
+- @deva[तीर्थवायसः] "a crow at the bathing site" — with the synonym @deva[वायस]
+
+**No compound without contempt:** @deva[तीर्थे ध्वाङ्क्षः तिष्ठति] "a crow is sitting at the bathing place" — this is a neutral, literal statement about an actual bird, so no compound.
+"""
+
+standard = """
+@deva[सप्तम्यन्त] + @deva[ध्वाङ्क्ष] (and crow-synonyms) → @deva[विभाषा] @deva[तत्पुरुष] when @deva[अवज्ञा] (contempt) is intended — @deva[ध्वाङ्क्षेणावज्ञायाम्].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[तीर्थध्वाङ्क्षः] "crow at the pilgrimage site" — contemptuous epithet for a restless, greedy person
+- @deva[तीर्थकाकः], @deva[तीर्थवायसः] — same meaning with @deva[काक] and @deva[वायस]
+
+**Counter-example:** @deva[तीर्थे ध्वाङ्क्षः तिष्ठति] "a crow sits at the bathing place" — literal, no contempt, no compound.
+
+**@deva[अवज्ञा] condition:** The compound must convey a metaphorical, contemptuous meaning — comparing a person to a crow. Without this condition, it would be a straightforward locative description.
+
+**Synonyms:** @deva[ध्वाङ्क्ष] includes its synonyms @deva[काक] and @deva[वायस] by @deva[अर्थग्रहण] — the rule targets the meaning "crow," not just the specific word.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सप्तमी] from @ref[2.1.40]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[ध्वाङ्क्षेणावज्ञायाम्] — @deva[सप्तम्यन्त] optionally compounds with @deva[ध्वाङ्क्ष] (and synonyms) as @deva[तत्पुरुष] when @deva[अवज्ञा] is intended.
+
+**Pragmatic condition:** The @deva[अवज्ञा] restriction is a semantic/pragmatic constraint — the compound form is reserved for the contemptuous metaphorical reading. The literal reading ("an actual crow at a location") stays uncompounded. This is similar to @ref[2.1.26] (@deva[खट्वा] with @deva[क्षेप]) — both rules restrict compounding to figurative, pejorative uses.
+
+**@deva[अर्थग्रहण] for synonyms:** The @deva[काशिका] confirms that @deva[ध्वाङ्क्ष] extends to @deva[काक] and @deva[वायस] by taking the word in its meaning-sense. Thus @deva[तीर्थकाकः] and @deva[तीर्थवायसः] are both valid compounds.
+
+**Cultural context:** The @deva[काशिका] explains: @deva[तीर्थकाकः] is a person who goes to a teacher (@deva[तीर्थ] = place of learning) but does not stay long, just as a crow at a bathing place hops from spot to spot without settling. The image conveys fickleness and superficiality.
+
+**Relation to @ref[2.1.53]:** That later rule (@deva[कर्मधारय] section) also involves semantic nuance restricting compound formation. The principle is the same: compounds can be blocked or enabled by the intended pragmatic reading, not just by formal grammatical conditions.
+"""

@@ -1,0 +1,53 @@
+id = "1.1.9"
+numericId = "11009"
+
+[en]
+simple = """
+Sounds that share the same place of articulation and the same articulatory effort are called @deva[सवर्ण] (homogeneous). This concept is fundamental — many rules in the grammar say "a sound and its @deva[सवर्ण]s," meaning the rule applies to an entire group of similar sounds rather than just one specific sound.
+
+For example, all five consonants in the @deva[क]-class (@deva[क], @deva[ख], @deva[ग], @deva[घ], @deva[ङ]) are @deva[सवर्ण] with each other — they all come from the throat and share the same type of articulatory contact. Similarly, @deva[अ] and @deva[आ] are @deva[सवर्ण] — same place, same effort, differing only in length.
+
+**Example:** @ref[6.1.101] says @deva[अकः सवर्णे दीर्घः] — when @deva[अ] meets a @deva[सवर्ण] vowel, both merge into the long form: @deva[दैत्य] + @deva[अरिः] → @deva[दैत्यारिः] (@deva[अ] + @deva[अ] = @deva[आ]).
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] defines @deva[सवर्ण]: sounds with equal @deva[आस्य] (place of articulation) and @deva[प्रयत्न] (articulatory effort).
+
+**Places of articulation (@deva[स्थान]):**
+- @deva[कण्ठ] (throat): @deva[क]-@deva[वर्ग], @deva[अ], @deva[आ], @deva[ह], @deva[विसर्ग]
+- @deva[तालु] (palate): @deva[च]-@deva[वर्ग], @deva[इ], @deva[ई], @deva[य], @deva[श]
+- @deva[मूर्धा] (roof): @deva[ट]-@deva[वर्ग], @deva[ऋ], @deva[ॠ], @deva[र], @deva[ष]
+- @deva[दन्त] (teeth): @deva[त]-@deva[वर्ग], @deva[ऌ], @deva[ल], @deva[स]
+- @deva[ओष्ठ] (lips): @deva[प]-@deva[वर्ग], @deva[उ], @deva[ऊ]
+
+**Both conditions required:**
+- @deva[च] and @deva[श] share palate but differ in effort (@deva[स्पृष्ट] vs. @deva[ईषद्विवृत]) — not @deva[सवर्ण]
+- @deva[क] and @deva[च] share effort type but differ in place (throat vs. palate) — not @deva[सवर्ण]
+
+**@deva[सवर्ण] groupings:**
+- Vowels: @deva[अ]/@deva[आ] are @deva[सवर्ण]; @deva[इ]/@deva[ई]; @deva[उ]/@deva[ऊ]; @deva[ऋ]/@deva[ॠ]
+- Consonants: all five members of each @deva[वर्ग] are @deva[सवर्ण]
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is a fresh @deva[संज्ञा] definition.
+
+@deva[तुल्यास्यप्रयत्नं सवर्णम्] — sounds with equal @deva[आस्य] (place) and @deva[प्रयत्न] (effort) are @deva[सवर्ण]. Both @deva[आभ्यन्तर] (internal) and @deva[बाह्य] (external) effort must match.
+
+**@deva[आभ्यन्तरप्रयत्न] (internal effort):**
+- @deva[स्पृष्ट] (full contact) — stops @deva[क] through @deva[म]
+- @deva[ईषत्स्पृष्ट] (slight contact) — semivowels @deva[य], @deva[र], @deva[ल], @deva[व]
+- @deva[विवृत] (open) — vowels
+- @deva[ईषद्विवृत] (slightly open) — @deva[श], @deva[ष], @deva[स], @deva[ह]
+
+**@deva[बाह्यप्रयत्न] (external effort):** @deva[अघोष]/@deva[घोष] (voiceless/voiced), @deva[अल्पप्राण]/@deva[महाप्राण] (unaspirated/aspirated), @deva[अनुनासिक] (nasal per @ref[1.1.8])
+
+**Semivowels have no @deva[सवर्ण]s:** Each semivowel (@deva[य], @deva[र], @deva[ल], @deva[व]) has a unique combination of place + effort. No other sound matches, so they are @deva[सवर्ण] only with themselves.
+
+**@deva[वार्त्तिक] — @deva[ऋ]/@deva[ऌ] exception:** @deva[ऋ] (@deva[मूर्धन्य]) and @deva[ऌ] (@deva[दन्त्य]) are declared @deva[सवर्ण] by special @deva[वार्त्तिक] despite different places. This enables forms like @deva[होतृ] + @deva[ऌकारः] → @deva[होतॄकारः] via @ref[6.1.101].
+
+**Key rules using @deva[सवर्ण]:**
+- @ref[6.1.101] @deva[अकः सवर्णे दीर्घः] — @deva[सवर्ण] vowel sandhi
+- @ref[8.4.58] @deva[अनुस्वारस्य ययि परसवर्णः] — @deva[अनुस्वार] becomes @deva[सवर्ण] nasal
+- @ref[1.1.69] @deva[अणुदित्सवर्णस्य चाप्रत्ययः] — @deva[सवर्ण] in @deva[प्रत्याहार] interpretation
+"""

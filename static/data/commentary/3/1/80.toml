@@ -1,0 +1,15 @@
+id = "3.1.80"
+numericId = "31080"
+
+[en]
+simple = """
+This rule says that the affix @deva[उ] is added after the roots @deva[धिन्व्] 'to please' and @deva[कृणि] 'to hurt', when an affix marking the agent follows. Additionally, the final @deva[इ] of these roots is replaced by @deva[अ]. For example: @deva[धिन्व्] + @deva[उ] + @deva[ति] → @deva[धिनोति] 'he pleases'. The @deva[अ] replacement prevents @[guṇa] of the preceding @deva[इ].
+"""
+
+standard = """
+The affix @deva[उ] is added after @deva[धिन्व्] 'to please' and @deva[कृणि] 'to hurt' before @deva[सार्वधातुक] affixes signifying the agent. The final @deva[इ] is replaced by @deva[अ], which then undergoes elision before @deva[उ] by @ref[6.4.48]. Though @deva[धिन्व्] belongs to the @deva[भ्वादि] class, this rule gives it @deva[उ] instead of @deva[शप्]. The @deva[अ] substitute (a blank after elision) is treated as @deva[स्थानिवत्] by @ref[1.1.57], blocking @[guṇa] that @ref[7.3.86] would otherwise require.
+"""
+
+advanced = """
+The affix @deva[उ] is prescribed after @deva[धिन्व्] and @deva[कृणि] before @deva[सार्वधातुक] @deva[कर्तरि] affixes, with simultaneous replacement of final @deva[इ] by @deva[अ]. The derivation: @deva[धिन्व्] + @deva[उ] + @deva[ति] → @deva[धिन्] + @deva[अ] + @deva[उ] + @deva[ति] → @deva[धिन्] + @deva[उ] + @deva[ति] (by @ref[6.4.48] @deva[अतोऽलोपः]) → @deva[धिनोति]. The @deva[अ]-substitute functions as @deva[स्थानिवत्] per @ref[1.1.57], blocking the @[guṇa] that @ref[7.3.86] would otherwise require before @deva[सार्वधातुक]/@deva[आर्धधातुक] affixes.
+"""

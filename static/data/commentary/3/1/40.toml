@@ -1,0 +1,38 @@
+id = "3.1.40"
+numericId = "31040"
+
+[en]
+simple = """
+This rule explains how to complete the periphrastic perfect. After a verb stem that has received the @deva[आम्] affix, the perfect tense of the auxiliary verb @deva[कृ] (to do) is added when @deva[लिट्] (perfect) follows.
+
+The term @deva[कृ] here includes two other auxiliary verbs: @deva[भू] (to be) and @deva[अस्] (to be). Any of these three can serve as the auxiliary.
+
+Examples from @deva[पच्] + @deva[आम्]:
+- @deva[पाचयाञ्चकार] (with @deva[कृ])
+- @deva[पाचयाम्बभूव] (with @deva[भू])
+- @deva[पाचयामास] (with @deva[अस्])
+
+Note: When @deva[अस्] is used as an auxiliary, it is not replaced by @deva[भू] (as would normally happen by @ref[3.4.52]) because the @deva[लिट्] endings are @deva[आर्धधातुक].
+"""
+
+standard = """
+After a verbal stem ending in @deva[आम्], the @deva[लिट्] of the auxiliary verb @deva[कृ] is added to form the periphrastic perfect. The term @deva[कृ] encompasses @deva[भू] and @deva[अस्] as well—all three serve as auxiliaries.
+
+Examples: @deva[पाचयाञ्चकार], @deva[पाचयाम्बभूव], @deva[पाचयामास].
+
+When @deva[अस्] serves as auxiliary, the substitution of @deva[भू] for @deva[अस्] by @ref[3.4.52] does not apply, since @deva[लिट्] endings are @deva[आर्धधातुक] (not @deva[सार्वधातुक]).
+
+This rule completes the periphrastic perfect formation: root + @deva[आम्] (by @ref[3.1.35]-@ref[3.1.39]) + auxiliary @deva[लिट्].
+"""
+
+advanced = """
+After a stem ending in @deva[आम्], the @deva[लिट्] of @deva[कृ] (including @deva[भू] and @deva[अस्] by @deva[उपसंख्यान]) is added.
+
+Examples: @deva[पाचयाञ्चकार], @deva[पाचयाम्बभूव], @deva[पाचयामास].
+
+@ref[3.4.52] @deva[अस्तेर्भूः] normally replaces @deva[अस्] with @deva[भू] before @deva[सार्वधातुक] affixes. Since @deva[लिट्] endings are @deva[आर्धधातुक] by @ref[3.4.115], this substitution does not occur, allowing @deva[आस] forms.
+
+@note[type=observation]: The three auxiliaries (@deva[कृ], @deva[भू], @deva[अस्]) provide stylistic variation without semantic difference. @deva[चकार] forms are most common; @deva[आस] forms appear frequently in epic and later Sanskrit.
+
+@note[type=observation]: This rule, combined with @ref[2.4.81] @deva[आमः] (which deletes the original @deva[लिट्] endings after @deva[आम्]), completes the periphrastic perfect mechanism.
+"""

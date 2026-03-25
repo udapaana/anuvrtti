@@ -1,0 +1,57 @@
+id = "1.4.55"
+numericId = "14055"
+
+[en]
+simple = """
+The person who causes an independent agent to act is called @deva[हेतु] "causer" — and this causer is also @deva[कर्तृ] "agent."
+
+When you make someone else do something, you are the @deva[हेतु] — the one who sets the action in motion. You become the new agent, and the person you made act is demoted from agent to object or instrument.
+
+**Examples:**
+- @deva[देवदत्तः कारयति] "Devadatta causes (someone) to make (something)" (@deva[देवदत्त] is @deva[हेतु] and @deva[कर्तृ])
+- @deva[माता बालकं भोजयति] "the mother feeds the child" (the mother is @deva[हेतु]; the child, originally the eater, is demoted)
+
+The verb takes the causative form (@deva[णिच्]) when the @deva[हेतु] is the agent.
+"""
+
+standard = """
+The mover of an independent agent is @deva[हेतु] "causer" — and is also @deva[कर्तृ] — @deva[तत्प्रयोजको हेतुश्च].
+
+**Rule type — @deva[संज्ञा] extension of @ref[1.4.54]:** The causer receives two names: @deva[हेतु] (causer) and @deva[कर्तृ] (agent).
+
+**Examples:**
+- @deva[देवदत्तः कारयति कटं माणवकम्] "Devadatta has the boy make a mat" (@deva[देवदत्त] is @deva[हेतु] and @deva[कर्तृ])
+- @deva[माता बालकं भोजयति] "the mother feeds the child"
+
+**@deva[तत्प्रयोजक] = "one who instigates him":** @deva[तत्] refers to the @deva[स्वतन्त्र] (independent agent) of @ref[1.4.54]. The @deva[हेतु] is the one who sets that agent in motion.
+
+**@deva[च] = "also":** The causer gets both designations — @deva[हेतु] (used in @ref[3.1.26] to trigger @deva[णिच्]) and @deva[कर्तृ] (used for case assignment — nominative in active, instrumental in passive).
+
+**Morphological consequence:** When @deva[हेतु] is the agent, the verb takes @deva[णिच्] (causative affix) by @ref[3.1.26]: @deva[कृ] → @deva[कारय], @deva[भुज्] → @deva[भोजय], @deva[गम्] → @deva[गमय].
+
+**End of @deva[कारक] section:** This is the last rule of the @deva[कारक] system (@ref[1.4.23]–@ref[1.4.55]).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्ता] from @ref[1.4.54]; @deva[कारके] from @ref[1.4.23].
+
+@deva[तत्प्रयोजको हेतुश्च] — the instigator of the (@deva[स्वतन्त्र]) agent is @deva[हेतु] and also @deva[कर्तृ].
+
+**Dual @deva[संज्ञा]:** The @deva[च] ensures both names apply simultaneously. @deva[हेतु] is needed for @ref[3.1.26] (triggering @deva[णिच्]). @deva[कर्तृ] is needed for case assignment (@ref[2.3.46] nominative, @ref[2.3.18] instrumental in passive). Without the @deva[च], the causer would be @deva[हेतु] but not @deva[कर्तृ], and case rules wouldn't apply.
+
+**@deva[कारक] reassignment in causatives:** The causer becomes @deva[कर्तृ]. The original @deva[कर्तृ] is demoted:
+- To @deva[कर्मन्] (accusative) for verbs in @ref[1.4.52] categories
+- To @deva[करण] (instrumental) for other transitive verbs
+- Optionally to either for @deva[हृ]/@deva[कृ] by @ref[1.4.53]
+
+**Completing the @deva[कारक] system (@ref[1.4.23]–@ref[1.4.55]):**
+The six @deva[कारक]s in @deva[पाणिनि]'s order:
+1. @deva[अपादान] (@ref[1.4.24]–@ref[1.4.31]) — source of departure
+2. @deva[सम्प्रदान] (@ref[1.4.32]–@ref[1.4.41]) — recipient
+3. @deva[करण] (@ref[1.4.42]–@ref[1.4.44]) — instrument
+4. @deva[अधिकरण] (@ref[1.4.45]–@ref[1.4.48]) — locus
+5. @deva[कर्मन्] (@ref[1.4.49]–@ref[1.4.53]) — object
+6. @deva[कर्तृ] (@ref[1.4.54]–@ref[1.4.55]) — agent
+
+**Post-@deva[कारक] transition:** @ref[1.4.56] onward shifts to non-@deva[कारक] technical terms — @deva[प्रातिपदिक], @deva[सर्वनाम], etc.
+"""

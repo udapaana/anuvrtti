@@ -1,0 +1,48 @@
+id = "2.1.58"
+numericId = "21058"
+
+[en]
+simple = """
+Nine specific words — @deva[पूर्व] "prior," @deva[अपर] "subsequent," @deva[प्रथम] "first," @deva[चरम] "last," @deva[जघन्य] "hindmost," @deva[समान] "equal," @deva[मध्य] "middle," @deva[मध्यम] "middlemost," and @deva[वीर] "hero" — compound with a word in the same case to form @deva[तत्पुरुष].
+
+**Examples:**
+- @deva[पूर्वपुरुषः] "ancestor" (a prior person — father, grandfather, or great-grandfather)
+- @deva[अपरपुरुषः] "successor"
+- @deva[चरमपुरुषः] "the last person"
+- @deva[जघन्यपुरुषः] "the hindmost person"
+- @deva[समानपुरुषः] "an equal person"
+- @deva[मध्यमपुरुषः] "a middle person"
+- @deva[वीरपुरुषः] "a heroic person"
+"""
+
+standard = """
+@deva[पूर्व-अपर-प्रथम-चरम-जघन्य-समान-मध्य-मध्यम-वीराः] + @deva[समानाधिकरण सुबन्त] → @deva[तत्पुरुष] — @deva[पूर्वापरप्रथमचरमजघन्यसमानमध्यमध्यमवीराश्च].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[पूर्वपुरुषः] "ancestor," @deva[अपरपुरुषः] "successor"
+- @deva[प्रथमपुरुषः] "first person," @deva[चरमपुरुषः] "last person"
+- @deva[जघन्यपुरुषः] "hindmost person"
+- @deva[समानपुरुषः] "equal person," @deva[समानशीलः] "one of equal character"
+- @deva[मध्यपुरुषः], @deva[मध्यमपुरुषः] "middle person"
+- @deva[वीरपुरुषः] "heroic person"
+
+**Why a separate list?** These nine words could in principle compound under the general @ref[2.1.57] (@deva[विशेषण]-@deva[विशेष्य]). Their separate listing ensures compounding is not subject to @ref[2.1.57]'s @deva[बहुलम्] restriction — for these nine, compounding is regular.
+
+**@deva[च] = addition:** The @deva[च] adds these to the @deva[कर्मधारय] rules already stated. They follow the @deva[समानाधिकरण] condition from @ref[2.1.49].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[पूर्वापरप्रथमचरमजघन्यसमानमध्यमध्यमवीराश्च] — these nine words compound with @deva[समानाधिकरण] @deva[सुबन्त] as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**Why list separately from @ref[2.1.57]?** @ref[2.1.57] operates under @deva[बहुलम्] — irregular, sometimes blocked. This rule provides specific authority for these nine words, removing the @deva[बहुलम्] uncertainty. For these, compounding is regular (@deva[विधि]).
+
+**Ordinal/positional semantics:** Most of these nine express position in a sequence or hierarchy: @deva[पूर्व]/\u200b@deva[अपर] (before/after), @deva[प्रथम]/\u200b@deva[चरम]/\u200b@deva[जघन्य] (first/last/hindmost), @deva[मध्य]/\u200b@deva[मध्यम] (middle/middlemost), @deva[समान] (equal). @deva[वीर] ("hero") is the exception — it is a quality word.
+
+**@deva[पूर्व] here vs @ref[2.1.49]:** @ref[2.1.49] listed @deva[पूर्वकाल] (temporal priority). This rule lists @deva[पूर्व] as a word (not meaning-based). The two overlap: @deva[पूर्वपुरुषः] could be formed under either rule. The separate listing here ensures coverage of non-temporal uses of @deva[पूर्व] (e.g., positional "prior").
+
+**@deva[समानाधिकरण] required:** Both members must be in the same case and co-referential: @deva[पूर्वः पुरुषः] → @deva[पूर्वपुरुषः]. If the cases differ (@deva[पूर्वस्य पुरुषः]), it would be a @deva[षष्ठी] @deva[तत्पुरुष], not @deva[कर्मधारय].
+"""

@@ -1,0 +1,45 @@
+id = "2.1.25"
+numericId = "21025"
+
+[en]
+simple = """
+The word @deva[स्वयम्] "oneself" compounds with a past participle (a word ending in the @deva[क्त] affix) to form a @deva[तत्पुरुष] compound.
+
+**Examples:**
+- @deva[स्वयं धौतौ पादौ] → @deva[स्वयंधौतौ पादौ] "feet washed by oneself"
+- @deva[स्वयं कृतम्] → @deva[स्वयंकृतम्] "self-made"
+- @deva[स्वयं विलीनम् आज्यम्] → @deva[स्वयंविलीनम् आज्यम्] "ghee melted by itself"
+
+The compound looks identical to the uncompounded phrase, but it matters: compound status makes the two words a single unit for accent purposes — the compound receives one unified accent by @ref[6.1.223], rather than each word carrying its own.
+"""
+
+standard = """
+@deva[स्वयम्] + @deva[क्तान्त] → @deva[तत्पुरुष] — @deva[स्वयं क्तेन].
+
+**Rule type — @deva[विधि]:** Compounding rule.
+
+**Examples:**
+- @deva[स्वयंधौतौ पादौ] "feet washed by oneself"
+- @deva[स्वयंविलीनम् आज्यम्] "ghee melted by itself"
+- @deva[स्वयंकृतम्] "self-made"
+
+**Why @deva[स्वयम्] specifically?** @deva[स्वयम्] is an @deva[अव्यय] (indeclinable) — it cannot take @deva[सुप्] endings. The @deva[द्वितीया] that continues from @ref[2.1.24] therefore does not apply here, since @deva[स्वयम्] cannot be "in the accusative." This rule independently authorizes the compound.
+
+**@deva[क्त] = @deva[निष्ठा]:** The second member must end in the @deva[क्त] affix (past passive participle) — @deva[धौत], @deva[कृत], @deva[विलीन], etc.
+
+**No visible change:** The compound looks identical to the phrase, but gains single-word status (@deva[एकपद]) and unified accent by @ref[6.1.223].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[स्वयं क्तेन] — @deva[स्वयम्] compounds with a @deva[क्तान्त] word as @deva[तत्पुरुष].
+
+**@deva[द्वितीया] @deva[अनुवृत्ति] blocked:** @ref[2.1.24] required the first member to be @deva[द्वितीयान्त] (accusative-ending). @deva[स्वयम्] is @deva[अव्यय] — it has no @deva[सुप्] and therefore no case. This rule is needed precisely because @ref[2.1.24] cannot cover @deva[स्वयम्]. The @deva[काशिका] notes: @deva[स्वयम् इत्यव्ययम्, न द्वितीयान्तम्].
+
+**@deva[सुप् सुपा] from @ref[2.1.4]:** Since @deva[स्वयम्] is @deva[अव्यय], the question arises whether it qualifies as @deva[सुबन्त]. By @ref[2.4.82] (@deva[अव्ययादाप्सुपः]), the @deva[सुप्] on an @deva[अव्यय] is deleted — but the @deva[सुप्]-@deva[प्रत्यय] is still understood to have been present (@deva[स्थानिवद्भाव] by @ref[1.1.56]). So @deva[स्वयम्] qualifies as @deva[सुबन्त] for compounding purposes.
+
+**Scope of @deva[क्त]:** Only @deva[क्त] (@ref[3.2.102]), not @deva[क्तवतु] — @deva[स्वयंकृतवान्] would not be authorized by this rule. The @deva[सिद्धान्तकौमुदी] confirms the restriction to @deva[निष्ठा] @deva[क्त] specifically.
+
+**Contrast with @ref[2.1.24]:** That rule listed seven specific @deva[क्तान्त] words (@deva[श्रित], @deva[गत], etc.) with @deva[द्वितीया] first members. This rule is more general in the second member (any @deva[क्तान्त]) but more specific in the first member (only @deva[स्वयम्]).
+"""

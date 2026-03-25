@@ -1,0 +1,45 @@
+id = "2.1.47"
+numericId = "21047"
+
+[en]
+simple = """
+A word in the locative case (@deva[सप्तमी]) **optionally** compounds with a past participle (@deva[क्त]-ending word) to form @deva[तत्पुरुष] when the meaning is censure (@deva[क्षेप]) — specifically, when the compound describes something absurd or impossible.
+
+**Examples:**
+- @deva[उदकेविशीर्णम्] "rotted in water" — something that should not rot in water, used figuratively for anything unheard-of or impossible
+- @deva[प्रवाहेमूत्रितम्] "urinated in a flowing stream" — figuratively, a useless action
+- @deva[भस्मनिहुतम्] "offered oblation in ashes" — a fruitless action
+
+These compounds express censure through absurdity — the combination describes something that defies expectations or is utterly pointless.
+"""
+
+standard = """
+@deva[सप्तम्यन्त] + @deva[क्तान्त] → @deva[विभाषा] @deva[तत्पुरुष] when @deva[क्षेप] (censure through absurdity) is intended — @deva[क्षेपे].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[उदकेविशीर्णम्] "decomposed in water" — figuratively, something incredible or unexpected
+- @deva[प्रवाहेमूत्रितम्] "urinated in a stream" — a completely useless action
+- @deva[भस्मनिहुतम्] "offered in ashes" — a fruitless sacrifice
+
+**@deva[क्षेप] condition:** The compound must express censure or mockery through an absurd or impossible scenario. Without @deva[क्षेप], the locative + @deva[क्तान्त] compound would need authority from another rule (like @ref[2.1.41] or @ref[2.1.45]).
+
+**Case retention:** By @ref[6.3.14], the @deva[सप्तमी] case affix is not elided in these compounds — hence @deva[उदके]-@deva[विशीर्णम्], @deva[भस्मनि]-@deva[हुतम्] (not @deva[उदक]-/@deva[भस्म]-).
+
+**Parallel to @ref[2.1.26]:** Just as @ref[2.1.26] restricted @deva[खट्वा] + @deva[क्तान्त] to @deva[क्षेप], this rule restricts locative + @deva[क्तान्त] to @deva[क्षेप] — both use censure as the semantic trigger for compounding.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सप्तमी] from @ref[2.1.40]; @deva[क्तेन] continues; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[क्षेपे] — @deva[सप्तम्यन्त] + @deva[क्तान्त] → @deva[विभाषा] @deva[तत्पुरुष] when @deva[क्षेप] (censure) is the intended meaning.
+
+**@deva[क्षेप] compounds as @deva[रूढ]:** Like @ref[2.1.26] (@deva[खट्वारूढः]), the censure meaning belongs to the compound as a whole — it is @deva[रूढ] (conventionalized). @deva[उदकेविशीर्णम्] means "something incredible" — this figurative meaning cannot be recovered from the uncompounded @deva[उदके विशीर्णम्].
+
+**@ref[6.3.14] — @deva[अलुक्]:** The @deva[सप्तमी] case affix is retained in these compounds. @deva[उदके]-@deva[विशीर्णम्] preserves the locative @deva[ए]; @deva[भस्मनि]-@deva[हुतम्] preserves @deva[इ]. This @deva[अलुक्] makes the locative relationship visible within the compound.
+
+**List from the @deva[काशिका]:** The @deva[काशिका] provides a @deva[गण]-style list of these compounds, which also serves as a subdivision of the @deva[युक्तारोह्यादि] class at @ref[6.2.81] for accent purposes — the first member receives @deva[उदात्त] on its initial syllable.
+
+**Relation to @ref[2.1.42]:** That rule covered @deva[सप्तमी] + @deva[ध्वाङ्क्ष] with @deva[अवज्ञा] (contempt). This rule covers @deva[सप्तमी] + @deva[क्तान्त] with @deva[क्षेप] (censure through absurdity). Both restrict compounding to pejorative readings — a recurring pattern in the @deva[तत्पुरुष] section.
+"""

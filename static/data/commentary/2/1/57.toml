@@ -1,0 +1,53 @@
+id = "2.1.57"
+numericId = "21057"
+
+[en]
+simple = """
+A qualifying word (@deva[विशेषण], an adjective) compounds "diversely" (@deva[बहुलम्]) with the word it qualifies (@deva[विशेष्य], a noun), when both are in the same case, to form @deva[तत्पुरुष]. This is the core @deva[कर्मधारय] rule — the most general adjective-noun compound.
+
+**Examples:**
+- @deva[नीलोत्पलम्] "blue lotus" — @deva[नील] "blue" + @deva[उत्पल] "lotus"
+- @deva[रक्तोत्पलम्] "red lotus"
+- @deva[कृष्णसर्पः] "black snake"
+- @deva[लोहितशालिः] "red rice"
+
+**"Diversely" means:** sometimes compounding is obligatory (@deva[कृष्णसर्पः] — always a compound), sometimes optional (@deva[नीलमुत्पलम्] or @deva[नीलोत्पलम्]), and sometimes blocked (@deva[रामो जामदग्न्यः] does not compound).
+"""
+
+standard = """
+@deva[विशेषणं विशेष्येण बहुलम्] — a qualifier (@deva[विशेषण]) diversely compounds with what it qualifies (@deva[विशेष्य]) in @deva[समानाधिकरण] as @deva[तत्पुरुष].
+
+**Rule type — @deva[विधि] (@deva[बहुलम्]):** Diverse/irregular application — sometimes obligatory, sometimes optional, sometimes blocked.
+
+**Examples:**
+- @deva[नीलोत्पलम्] "blue lotus," @deva[रक्तोत्पलम्] "red lotus" — optional
+- @deva[कृष्णसर्पः] "black snake," @deva[लोहितशालिः] "red rice" — obligatory (@deva[नित्य])
+- @deva[रामो जामदग्न्यः] "@deva[राम] the descendant of @deva[जमदग्नि]" — blocked (both are proper names, not qualifier-qualified)
+
+**@deva[विशेषण] vs @deva[विशेष्य]:** @deva[विशेषण] = discriminator/qualifier (the adjective). @deva[विशेष्य] = what is discriminated/qualified (the noun). Both must be in the same case (@deva[समानाधिकरण]).
+
+**Counter-examples:**
+- @deva[तक्षकः सर्पः] "the snake @deva[तक्षक]" — @deva[तक्षक] is a proper name, not a @deva[विशेषण]
+- @deva[लोहितस्तक्षकः] "the red @deva[तक्षक]" — @deva[तक्षक] is @deva[विशेष्य] but is a specific individual, not a class
+
+**This is the core @deva[कर्मधारय] rule.** All @deva[कर्मधारय] compounds are @deva[समानाधिकरण] @deva[तत्पुरुष] by @ref[1.2.42].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[विशेषणं विशेष्येण बहुलम्] — a @deva[विशेषण] diversely compounds with its @deva[विशेष्य] in @deva[समानाधिकरण] as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**@deva[बहुलम्] — three-way behavior:** The @deva[काशिका] explains:
+1. @deva[नित्य] (obligatory): @deva[कृष्णसर्पः], @deva[लोहितशालिः] — these exist only as compounds
+2. @deva[विभाषा] (optional): @deva[नीलोत्पलम्] / @deva[नीलम् उत्पलम्] — both forms are valid
+3. @deva[निषेध] (blocked): @deva[रामो जामदग्न्यः] — proper name apposition, not qualifier-qualified
+
+**Central @deva[कर्मधारय] rule:** This is the most productive compound rule in the @deva[कर्मधारय] section. The specific rules (@ref[2.1.49]–@ref[2.1.56]) handle special first members (@deva[पूर्वकाल], @deva[एक], direction/numeral, @deva[कुत्सित], @deva[उपमान]/@deva[उपमित]). This rule covers the general case: any @deva[विशेषण]-@deva[विशेष्य] pair.
+
+**@deva[विशेषण] definition:** A @deva[विशेषण] is what discriminates — it narrows the referent. @deva[नील] in @deva[नीलोत्पलम्] selects blue lotuses from all lotuses. @deva[तक्षक] in @deva[तक्षकः सर्पः] is a proper name identifying a specific snake, not a quality — so it is not @deva[विशेषण] in the relevant sense.
+
+**Relation to @ref[2.1.53]–@ref[2.1.56]:** The preceding rules handled special types of qualification: contempt (@ref[2.1.53]–@ref[2.1.54]), comparison (@ref[2.1.55]–@ref[2.1.56]). This rule is the residual category — any adjective-noun pair not covered by those special rules.
+
+**@ref[2.2.30] order:** By @ref[2.2.30] (@deva[उपसर्जनं पूर्वम्]), the @deva[विशेषण] (qualifier = @deva[उपसर्जन]) stands first: @deva[नील] before @deva[उत्पल].
+"""

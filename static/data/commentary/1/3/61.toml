@@ -1,0 +1,55 @@
+id = "1.3.61"
+numericId = "13061"
+
+[en]
+simple = """
+The verb @deva[मृ] "to die" takes @deva[आत्मनेपद] when followed by @deva[शित्] affixes (affixes marked with @deva[श्]), the aorist (@deva[लुङ्]), or the benedictive (@deva[आशीर्लिङ्]).
+
+**@deva[आत्मनेपद]:**
+- @deva[म्रियते] "he dies" (present — @deva[शप्] is @deva[शित्])
+- @deva[अमृत] "he died" (@deva[लुङ्])
+- @deva[मृषीष्ट] "may he die" (@deva[आशीर्लिङ्])
+
+**@deva[परस्मैपद] (other tenses):**
+- @deva[मरिष्यति] "he will die" (future)
+- @deva[अमरिष्यत्] "he would have died" (conditional)
+
+Even though @deva[मृ] is marked @deva[ङ्] (which normally makes it always @deva[आत्मनेपदिन्]), this rule restricts @deva[आत्मनेपद] to certain tenses only.
+"""
+
+standard = """
+After @deva[मृ] with @deva[शित्] affixes, @deva[लुङ्], or @deva[आशीर्लिङ्], @deva[आत्मनेपद].
+
+**@deva[आत्मनेपद]:**
+- @deva[म्रियते] "he dies" (@deva[शप्] is @deva[शित्])
+- @deva[अमृत] "he died" (@deva[लुङ्])
+- @deva[मृषीष्ट] "may he die" (@deva[आशीर्लिङ्])
+
+**@deva[परस्मैपद] (future, conditional):**
+- @deva[मरिष्यति] "he will die"
+- @deva[अमरिष्यत्] "he would have died"
+
+**Rule type — @deva[नियम] (restriction):** @deva[मृङ्] has the marker @deva[ङ्], which by @ref[1.3.12] should make it @deva[आत्मनेपदिन्] in all tenses. This rule restricts that to only @deva[शित्]/@deva[लुङ्]/@deva[आशीर्लिङ्] — overriding the general @ref[1.3.12] for other tenses.
+
+**Derivation:** @deva[मृ + शप् + ते] → @deva[म्रिय + अ + ते] → @deva[म्रियते] (by @ref[7.4.28] and @ref[6.4.77]).
+
+**Parallel to @ref[1.3.60]:** Like @deva[शद्], @deva[मृ] has a tense-dependent @deva[पद] split.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[मृजेर्लुङ्लिङोश्च] — after @deva[मृ] with @deva[शित्]/@deva[लुङ्]/@deva[आशीर्लिङ्], @deva[आत्मनेपद].
+
+**@deva[नियम] overriding @ref[1.3.12]:** @deva[मृङ्] bears @deva[ङ्], making it @deva[आत्मनेपदिन्] by @ref[1.3.12]. This rule restricts that designation to specific tenses/affixes. In futures (@deva[लृट्]), conditional (@deva[लृङ्]), and periphrastic perfect (@deva[लिट्]), @deva[मृ] reverts to @deva[परस्मैपद]: @deva[मरिष्यति], @deva[अमरिष्यत्].
+
+**Why restrict a @deva[ङित्] root?** The restriction follows actual usage — @deva[मरिष्यति] (not *@deva[मरिष्यते]) is the attested future form. @deva[पाणिनि] accommodates this by limiting the @deva[ङ्]-marker's force.
+
+**@deva[शित्]/@deva[लुङ्]/@deva[लिङ्] scope:**
+- @deva[शित्]: conjugational tenses (present, imperfect, imperative, optative)
+- @deva[लुङ्]: aorist
+- @deva[आशीर्लिङ्]: benedictive
+All three take @deva[आत्मनेपद]. All other @deva[लकार]s take @deva[परस्मैपद].
+
+**Pair with @ref[1.3.60]:** @ref[1.3.60] (@deva[शद्] with @deva[शित्] only) and @ref[1.3.61] (this: @deva[मृ] with @deva[शित्]/@deva[लुङ्]/@deva[लिङ्]) form a pair of tense-conditioned @deva[पद] rules. @deva[मृ] gets @deva[आत्मनेपद] in more tenses than @deva[शद्] because of its @deva[ङ्]-marker.
+"""

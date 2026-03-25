@@ -1,0 +1,45 @@
+id = "2.4.58"
+numericId = "24058"
+
+[en]
+simple = """
+This @[sūtra] ends the section on root substitutions before @deva[आर्धधातुक] affixes. From here, rules about @deva[लुक्] (elision) of nominal affixes begin.
+
+The @deva[युवन्] affix (denoting a younger descendant) is elided after:
+1. Words formed with the @deva[गोत्र] affix @deva[ण्य]
+2. @deva[गोत्र] words of @deva[क्षत्रिय] or @deva[ऋषि] descendants
+3. Words with @deva[गोत्र] affixes having indicatory @deva[ञ्]
+
+**Example:** @deva[कौरव्यः] means both 'grandson of Kuru' (@deva[गोत्र]) and 'great-grandson' (@deva[युवन्])—the @deva[युवन्] affix @deva[इञ्] is elided.
+"""
+
+standard = """
+This @[sūtra] marks the end of the @deva[आर्धधातुके] @deva[अधिकार] (domain of @ref[2.4.35]). Now begin rules on @deva[लुक्] elision of nominal affixes.
+
+The @deva[युवन्] affixes @deva[अण्] and @deva[इञ्] (@ref[4.1.163]) are elided after:
+1. @deva[गोत्र] words ending in @deva[ण्य] (@ref[4.1.151]): @deva[कौरव्यः] = both father and son
+2. @deva[गोत्र] words of @deva[क्षत्रिय]/[@deva[ऋषि]] family: @deva[श्वाफल्कः], @deva[वासिष्ठः]
+3. @deva[गोत्र] words with @deva[ञित्] affixes (@deva[अञ्], @ref[4.1.104]): @deva[वैदः]
+
+**Why elision?** After @deva[कौरव्य] + @deva[इञ्], the @deva[इञ्] is elided, so @deva[कौरव्यः] denotes both @deva[गोत्र] and @deva[युवन्].
+
+**Counter-example:** @deva[कौहडिः] 'son of Kauhada'—no elision since @deva[कौहड] isn't formed by @deva[ण्य] nor denotes @deva[क्षत्रिय]/[@deva[ऋषि]].
+"""
+
+advanced = """
+The @deva[युवन्] affixes @deva[अण्] and @deva[इञ्] (@deva[जीवति तु वंश्ये युवा], @ref[4.1.163]) undergo @deva[लुक्] elision after three categories of @deva[गोत्र] words:
+
+**1. After @deva[ण्य]-formed @deva[गोत्र] words** (@deva[कुर्वादिभ्यो ण्यः], @ref[4.1.151]): @deva[कुरु] + @deva[ण्य] = @deva[कौरव्यः] (@ref[7.2.117]) 'grandson of @deva[कुरु]' (@deva[गोत्र], @ref[4.1.162]). For a lower descendant, @deva[इञ्] (@ref[4.1.95]) is added: @deva[कौरव्य] + @deva[इञ्]—but this @deva[इञ्] is elided, so @deva[कौरव्यः] denotes both @deva[गोत्र] and @deva[युवन्]. The objection that @deva[कौरव्यः] belongs to the @deva[तिकादि] class and should take @deva[फिञ्] (@ref[4.1.154]), yielding @deva[कौरव्यायणिः] (@ref[7.1.2]), is answered: the @deva[कौरव्यः] in the @deva[तिकादि] list is formed by @deva[ण्य] under @ref[4.1.172] and is confined to @deva[क्षत्रिय]; the @deva[कौरव्यः] here denotes a @deva[ब्राह्मण] @deva[गोत्र] formed by @ref[4.1.151].
+
+**2. After @deva[क्षत्रिय]/@deva[ऋषि] @deva[गोत्र] words:** By @ref[4.1.114], @deva[अण्] is added after names of @deva[ऋषि]s or members of the @deva[आन्धक], @deva[वृष्णि], or @deva[कुरु] families. The @deva[आन्धक] family is @deva[क्षत्रिय]; @deva[श्वफल्क] + @deva[अण्] = @deva[श्वाफल्कः] 'descendant of @deva[श्वफल्क]' (@deva[गोत्र]). The @deva[युवन्] affix @deva[इञ्] is then elided, so @deva[श्वाफल्कः] denotes both father and son. Similarly for @deva[ऋषि] families: @deva[वसिष्ठ] + @deva[अण्] = @deva[वासिष्ठः]; @deva[इञ्] is elided, giving @deva[वासिष्ठः] for both father and son.
+
+**3. After @deva[ञित्] @deva[गोत्र] affixes:** @ref[4.1.104] prescribes @deva[अञ्] after @deva[विद्], etc.: @deva[विद] + @deva[अञ्] = @deva[वैदः]; @deva[इञ्] is elided, so @deva[वैदः] denotes both. For @deva[अण्] elision: @ref[4.1.154] gives @deva[तिक] + @deva[फिञ्] = @deva[तैकायनिः] (@ref[7.1.2]); @deva[युवन्] @deva[अण्] (@ref[4.1.83]) is elided, so @deva[तैकायनिः] applies to both father and son.
+
+**Counter-examples:** After words not in these categories, @deva[युवन्] affixes are retained. @ref[4.1.112]: @deva[कौहड] + @deva[इञ्] (@ref[4.1.95]) = @deva[कौहडिः] 'son of @deva[कौहड]'—no elision, since @deva[कौहड] is not formed by @deva[ण्य], does not denote @deva[क्षत्रिय]/@deva[ऋषि], and has no @deva[ञित्] affix.
+
+Non-@deva[युवन्] affixes are not elided: @deva[वामरथ] + @deva[ण्य] = @deva[वामरथ्यः] (@ref[4.1.115]); @deva[अण्] denoting pupils (@ref[4.2.111]) is retained: @deva[वामरथ्यः] 'pupil of @deva[वामरथ्य].'
+
+Only @deva[अण्] and @deva[इञ्] are elided; other @deva[युवन्] affixes are not. The @deva[युवन्] descendant of @deva[दाक्षि] takes @deva[फक्] (@ref[4.1.101]): @deva[दाक्षायणः]—@deva[फक्] is not elided.
+
+@deva[वार्त्तिक]: All @deva[युवन्] affixes are elided after @deva[गोत्र] words not denoting @deva[ब्राह्मण] @deva[गोत्र]s: @deva[वौधिः], @deva[जाबालिः], @deva[औदुम्बरिः], @deva[भाण्डीजङ्घेः] each apply to both father and son. Here @deva[इञ्] is first added by @ref[4.1.173], then @deva[फक्] for @deva[युवन्]—and this @deva[फक्] is elided.
+"""

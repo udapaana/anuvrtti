@@ -1,0 +1,52 @@
+id = "1.4.110"
+numericId = "14110"
+
+[en]
+simple = """
+The absence of a following sound is called @deva[अवसान] "pause" or "cessation."
+
+@deva[अवसान] occurs at the end of a sentence, before a silence, or whenever speech stops and no next sound follows.
+
+**Why it matters:** Several rules apply specifically at @deva[अवसान] — when a word ends and nothing comes after it. For example, a final @deva[र्] may change, or a final stop may be treated differently at the end of an utterance than in the middle of continuous speech.
+
+**Example:** In @deva[रामः] said in isolation (at the end of a sentence), the final @deva[ः] (@deva[विसर्ग]) is at @deva[अवसान] — no sound follows. Different rules apply here than when @deva[रामः] is followed by another word.
+
+This is the **last rule of @[pāda] 1.4**, completing the @deva[संज्ञा] definitions that began at @ref[1.4.1].
+"""
+
+standard = """
+The absence of a following sound is called @deva[अवसान] — @deva[विरामोऽवसानम्].
+
+**Rule type — @deva[संज्ञा]:** Defines the pause condition for word-final rules.
+
+**@deva[विराम] = "cessation, stopping":** When speech halts and no subsequent sound follows, the preceding sound is at @deva[अवसान]. This is the opposite of @deva[संहिता] (@ref[1.4.109]).
+
+**Where @deva[अवसान] applies:**
+- End of sentence: @deva[रामः] (pause) — @deva[विसर्ग] at @deva[अवसान]
+- Before silence in recitation
+- End of an utterance
+
+**Rules conditioned on @deva[अवसान]:** Several @deva[त्रिपादी] rules reference @deva[अवसान]:
+- @ref[8.4.56]: final consonant rules at @deva[अवसान]
+- @ref[8.3.15]: @deva[ष]-related rules before @deva[अवसान]
+
+**Final rule of @[pāda] 1.4:** This @deva[संज्ञा] closes the fourth @deva[पाद] of the first @deva[अध्याय]. @[pāda] 1.4 defined @deva[संज्ञा] for: @deva[एकासंज्ञा] constraint, nominal categories (@deva[नदी], @deva[घि], @deva[अङ्ग], @deva[पद], @deva[भ]), @deva[कारक] roles, particles (@deva[निपात], @deva[उपसर्ग], @deva[गति], @deva[कर्मप्रवचनीय]), inflectional categories (@deva[परस्मैपद], @deva[आत्मनेपद], @deva[पुरुष], @deva[वचन], @deva[विभक्ति]), and now @deva[संहिता]/@deva[अवसान].
+"""
+
+advanced = """
+@deva[विरामोऽवसानम्] — @deva[विराम] (cessation of sound) is called @deva[अवसान].
+
+**@deva[अवसान] = the complement of @deva[संहिता]:** @ref[1.4.109] defined @deva[संहिता] as utmost proximity of sounds. @deva[अवसान] is the condition where no following sound exists — the boundary condition. Together, these two @deva[संज्ञा] partition all phonological contexts: every sound is either in @deva[संहिता] with a following sound or at @deva[अवसान].
+
+**@deva[खरवसानयोर्विसर्जनीयः] (@ref[8.3.15]):** One of the most frequently applied rules referencing @deva[अवसान] — @deva[स्] becomes @deva[विसर्ग] before @deva[खर्] consonants or at @deva[अवसान]. This is why @deva[रामस्] → @deva[रामः] at sentence-end.
+
+**@deva[त्रिपादी] relevance:** @deva[अवसान] is primarily referenced in the @deva[त्रिपादी] (@ref[8.2.1]–@ref[8.4.68]), where word-final phonological adjustments are concentrated. The definition here in @[pāda] 1.4 establishes the term well before it is operationally needed.
+
+**@[pāda] 1.4 summary:** This @[pāda] contains 110 rules defining the core @deva[संज्ञा] of the grammar:
+- @ref[1.4.1]–@ref[1.4.2]: @deva[एकासंज्ञा] constraint
+- @ref[1.4.3]–@ref[1.4.22]: nominal @deva[संज्ञा] (@deva[नदी], @deva[घि], @deva[लघु], @deva[गुरु], @deva[अङ्ग], @deva[पद], @deva[बहु], @deva[एकवचन] etc.)
+- @ref[1.4.23]–@ref[1.4.55]: @deva[कारक] system (six semantic roles)
+- @ref[1.4.56]–@ref[1.4.97]: particle classifications (@deva[निपात], @deva[उपसर्ग], @deva[गति], @deva[कर्मप्रवचनीय])
+- @ref[1.4.98]–@ref[1.4.108]: inflectional @deva[संज्ञा] (voice, person, number, @deva[विभक्ति])
+- @ref[1.4.109]–@ref[1.4.110]: phonological conditions (@deva[संहिता], @deva[अवसान])
+"""

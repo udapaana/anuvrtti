@@ -1,0 +1,49 @@
+id = "1.3.75"
+numericId = "13075"
+
+[en]
+simple = """
+The verb @deva[यम्] "to restrain" takes @deva[आत्मनेपद] when preceded by @deva[सम्], @deva[उद्], or @deva[आ] (not referring to a book or treatise) and the fruit of the action accrues to the agent.
+
+**@deva[आत्मनेपद] (agent benefits):**
+- @deva[ब्रीहीन् संयच्छते] "he gathers rice for himself"
+- @deva[भारम् उद्यच्छते] "he lifts the load for himself"
+- @deva[वस्त्रम् आयच्छते] "he draws out the cloth for himself"
+
+**@deva[परस्मैपद] — exceptions:**
+- @deva[उद्यच्छति चिकित्सां वैद्यः] "the physician studies medicine diligently" (book/treatise → always @deva[परस्मैपद])
+- @deva[संयच्छति] "he restrains (for another)" (fruit not to agent)
+"""
+
+standard = """
+After @deva[सम्]/@deva[उद्]/@deva[आङ्] + @deva[यम्] (not referring to a @deva[ग्रन्थ]), @deva[आत्मनेपद] when the @deva[क्रियाफल] accrues to the @deva[कर्ता].
+
+**Agent benefits — @deva[आत्मनेपद]:**
+- @deva[ब्रीहीन् संयच्छते] "he gathers rice for himself"
+- @deva[भारम् उद्यच्छते] "he lifts the burden for himself"
+- @deva[वस्त्रम् आयच्छते] "he draws the cloth for himself"
+
+**@deva[ग्रन्थ] exception — always @deva[परस्मैपद]:**
+- @deva[उद्यच्छति चिकित्सां वैद्यः] "the physician studies medicine diligently"
+
+**Fruit not to agent — @deva[परस्मैपद]:**
+- @deva[संयच्छति], @deva[उद्यच्छति], @deva[आयच्छति]
+
+**Relation to @ref[1.3.28]:** @ref[1.3.28] gave @deva[आत्मनेपद] for @deva[आ] + @deva[यम्] intransitively (from the @deva[अकर्मक] block). This rule covers transitive uses — where @deva[यम्] takes an object — with the @deva[स्वार्थ] condition.
+
+**@deva[ग्रन्थ] = book or treatise:** When the effort is directed toward studying a @deva[ग्रन्थ], @deva[परस्मैपद] applies regardless of benefit — the exception overrides the @deva[स्वार्थ] condition.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12]; @deva[कर्त्रभिप्राये क्रियाफले] from @ref[1.3.72].
+
+@deva[समुदाङ्भ्यो यमोऽग्रन्थे] — after @deva[सम्]/@deva[उद्]/@deva[आङ्] + @deva[यम्] (not with @deva[ग्रन्थ]), @deva[आत्मनेपद] when the fruit accrues to the agent.
+
+**Transitive counterpart to @ref[1.3.28]:** @ref[1.3.28] covered @deva[आ] + @deva[यम्]/@deva[हन्] intransitively (from the @deva[अकर्मक] block at @ref[1.3.26]). That rule had no @deva[स्वार्थ] condition — @deva[आत्मनेपद] was unconditional. This rule covers the transitive case, where @deva[यम्] takes an object, and adds the @deva[कर्त्रभिप्राय] condition.
+
+**@deva[ग्रन्थ] exception:** Studying a book is considered an altruistic or impersonal activity — the knowledge gained is for the benefit of others (patients, students). Hence @deva[परस्मैपद] applies even when the agent appears to benefit.
+
+**Three prefixes:** @deva[सम्] (gathering), @deva[उद्] (lifting), @deva[आ] (drawing toward) — each produces a transitive @deva[यम्] form with the object affected. The @deva[स्वार्थ] condition distinguishes self-benefiting from other-benefiting.
+
+**@deva[स्वार्थ] block position:** Fourth in the series (@ref[1.3.72]–@ref[1.3.77]).
+"""

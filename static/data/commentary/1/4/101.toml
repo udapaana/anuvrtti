@@ -1,0 +1,47 @@
+id = "1.4.101"
+numericId = "14101"
+
+[en]
+simple = """
+The eighteen @deva[तिङ्] verb endings are arranged in groups of three. Each group of three is assigned a person name:
+
+1. **@deva[प्रथम] "first"** — what Western grammar calls 3rd person (he/she/it/they)
+2. **@deva[मध्यम] "middle"** — 2nd person (you)
+3. **@deva[उत्तम] "highest"** — 1st person (I/we)
+
+The order is reversed from what English speakers expect: @[pāṇini] starts with the person farthest from the speaker.
+
+**Example with @deva[पच्] "to cook" (present tense):**
+- @deva[प्रथम]: @deva[पचति] "he cooks," @deva[पचतः] "they two cook," @deva[पचन्ति] "they cook"
+- @deva[मध्यम]: @deva[पचसि] "you cook," @deva[पचथः] "you two cook," @deva[पचथ] "you all cook"
+- @deva[उत्तम]: @deva[पचामि] "I cook," @deva[पचावः] "we two cook," @deva[पचामः] "we cook"
+"""
+
+standard = """
+The @deva[तिङ्] endings are grouped into triads called @deva[प्रथम], @deva[मध्यम], and @deva[उत्तम] — @deva[तिङस्त्रीणि त्रीणि प्रथममध्यमोत्तमाः].
+
+**Rule type — @deva[संज्ञा]:** Names three person-designations for verb endings.
+
+**Person assignment:**
+- @deva[प्रथम] (first triad) = 3rd person: @deva[तिप्]/etc. and @deva[त]/etc.
+- @deva[मध्यम] (second triad) = 2nd person: @deva[सिप्]/etc. and @deva[थास्]/etc.
+- @deva[उत्तम] (third triad) = 1st person: @deva[मिप्]/etc. and @deva[इट्]/etc.
+
+**Applies to both voices:** Each of @deva[परस्मैपद] (@ref[1.4.99]) and @deva[आत्मनेपद] (@ref[1.4.100]) has three triads, giving six triads total (eighteen endings).
+
+**Why @deva[प्रथम] = 3rd person:** @[pāṇini] orders from the non-participant (3rd) to the speaker (1st). The @deva[प्रत्याहार] @deva[तिङ्] lists endings in this order: @deva[तिप्] (3rd sg.) comes first.
+
+**Used throughout the grammar:** Rules specify person via these names — e.g., @ref[3.4.78] introduces @deva[ल]-replacement, and the person names determine which triad replaces @deva[ल] in a given context.
+"""
+
+advanced = """
+@deva[तिङस्त्रीणि त्रीणि प्रथममध्यमोत्तमाः] — the eighteen @deva[तिङ्] endings, taken in successive groups of three, are called @deva[प्रथम], @deva[मध्यम], @deva[उत्तम].
+
+**Triad structure:** The @deva[तिङ्] list runs: @deva[तिप्], @deva[तस्], @deva[झि] | @deva[सिप्], @deva[थस्], @deva[थ] | @deva[मिप्], @deva[वस्], @deva[मस्] (for @deva[परस्मैपद]) and @deva[त], @deva[आताम्], @deva[झ] | @deva[थास्], @deva[आथाम्], @deva[ध्वम्] | @deva[इट्], @deva[वहि], @deva[महिङ्] (for @deva[आत्मनेपद]). Each pipe-delimited group is one @deva[पुरुष].
+
+**@deva[पुरुष] = @deva[संज्ञा] for person:** Though the @deva[सूत्र] uses @deva[प्रथम]/etc. directly, the tradition groups them under the cover term @deva[पुरुष] "person." @ref[1.4.105]–@ref[1.4.108] assign specific @deva[पुरुष] values based on the subject.
+
+**Numbering convention reversed from Western grammar:** @[pāṇini]'s @deva[प्रथम] = 3rd person because the @deva[तिङ्] @deva[प्रत्याहार] starts with @deva[तिप्] (3rd sg.). The ordering follows the arrangement in the @deva[धातुपाठ] suffix list, not semantic proximity to the speaker.
+
+**Interaction with @ref[1.4.104]:** Each triad constitutes a @deva[विभक्ति] (inflectional set). So @deva[प्रथमा विभक्ति] in the verbal domain = the three 3rd-person endings.
+"""

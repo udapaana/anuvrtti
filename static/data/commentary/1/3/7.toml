@@ -1,0 +1,64 @@
+id = "1.3.7"
+numericId = "13007"
+
+[en]
+simple = """
+Initial palatal consonants (@deva[च्], @deva[छ्], @deva[ज्], @deva[झ्], @deva[ञ्]) and retroflex consonants (@deva[ट्], @deva[ठ्], @deva[ड्], @deva[ढ्], @deva[ण्]) of an affix are @deva[इत्] — markers that get deleted.
+
+**Examples:**
+- @deva[जस्] (nominative plural): @deva[ज्] is @deva[इत्] → the real affix is @deva[अस्] → @deva[ब्राह्मणाः]
+- @deva[ण] (@ref[4.4.85]): @deva[ण्] is @deva[इत्], causes @deva[वृद्धि] → @deva[आन्नः] "relating to food"
+- @deva[झि] (3rd person plural): @deva[झ्] is @deva[इत्] → replaced by @deva[अन्त] (by @ref[7.1.3]) → @deva[भवन्ति]
+
+**Some @deva[इत्] consonants are themselves replaced:**
+- @deva[छ्] → @deva[ईय] (by @ref[7.1.2])
+- @deva[ठ्] → @deva[इक] (by @ref[7.3.50])
+- @deva[ढ्] → @deva[एय] (by @ref[7.1.2])
+"""
+
+standard = """
+Initial @deva[चु] (palatals: @deva[च्], @deva[छ्], @deva[ज्], @deva[झ्], @deva[ञ्]) and @deva[टु] (retroflexes: @deva[ट्], @deva[ठ्], @deva[ड्], @deva[ढ्], @deva[ण्]) of a @deva[प्रत्यय] are @deva[इत्]. @deva[प्रत्यय] continues from @ref[1.3.6].
+
+**Palatal examples:**
+- @deva[च्]: @deva[च्फञ्] (@ref[4.1.98]) → @deva[कौञ्जायन्यः]
+- @deva[छ्]: replaced by @deva[ईय] (@ref[7.1.2])
+- @deva[ज्]: @deva[जस्] → @deva[ब्राह्मणाः]
+- @deva[झ्]: @deva[झि] → @deva[अन्ति] (by @ref[7.1.3]) → @deva[भवन्ति]
+- @deva[ञ्]: @deva[ञ्य] (@ref[4.3.92]) — @deva[ञित्] triggers @deva[वृद्धि] by @ref[7.2.115]
+
+**Retroflex examples:**
+- @deva[ट्]: @deva[ट] (@ref[3.2.16]) — @deva[टित्] triggers @deva[ङीप्] by @ref[4.1.15]
+- @deva[ठ्]: replaced by @deva[इक] (@ref[7.3.50])
+- @deva[ड्]: @deva[ड] (@ref[3.2.97])
+- @deva[ढ्]: replaced by @deva[एय] (@ref[7.1.2])
+- @deva[ण्]: @deva[ण] (@ref[4.4.85]) — @deva[णित्] triggers @deva[वृद्धि] by @ref[7.2.115]
+
+**@deva[अनित्य] status:** In @deva[चुञ्चुप्] and @deva[चणप्] (@ref[5.2.26]), the initial @deva[च्] is not @deva[इत्]: @deva[विद्याचुञ्चुः]. In @deva[टीटच्] (@ref[5.2.31]), the initial @deva[ट्] is not @deva[इत्]: @deva[अवटीटम्].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[उपदेशे] and @deva[इत्] from @ref[1.3.2]; @deva[प्रत्ययस्य] from @ref[1.3.6].
+
+@deva[चुटू] — initial palatals and retroflexes of an affix are @deva[इत्].
+
+**@deva[चु] and @deva[टु] as @deva[प्रत्याहार]s:** @deva[चु] = @deva[च्], @deva[छ्], @deva[ज्], @deva[झ्], @deva[ञ्]; @deva[टु] = @deva[ट्], @deva[ठ्], @deva[ड्], @deva[ढ्], @deva[ण्]. These are the two @deva[वर्ग]s not covered by @ref[1.3.8] (which handles @deva[कु], @deva[ल्], @deva[श्]).
+
+**Why @deva[पाणिनि] uses these as @deva[इत्]:** The palatal and retroflex consonants serve as a rich classification system. An affix's initial @deva[इत्] consonant determines its grammatical behavior:
+- @deva[ञित्] / @deva[णित्]: trigger @deva[वृद्धि] of the base (@ref[7.2.115]–@ref[7.2.117])
+- @deva[टित्]: trigger feminine @deva[ङीप्] (@ref[4.1.15])
+- @deva[जित्]: no @deva[गुण]/@deva[वृद्धि] (blocks @ref[7.3.86])
+
+**@deva[अनित्य] (non-universal):** Certain affixes retain their initial palatal/retroflex as meaningful content:
+- @deva[चुञ्चुप्], @deva[चणप्] (@ref[5.2.26]): @deva[च्] is not @deva[इत्] → @deva[विद्याचुञ्चुः]
+- @deva[टीटच्] (@ref[5.2.31]): @deva[ट्] is not @deva[इत्] → @deva[अवटीटम्]
+
+**Complete @deva[इत्] consonant map for affixes:**
+| Position | Rule | Consonants | Scope |
+|----------|------|-----------|-------|
+| Initial | @ref[1.3.6] | @deva[ष्] | all affixes |
+| Initial | @ref[1.3.7] (this) | @deva[चु], @deva[टु] | all affixes |
+| Initial | @ref[1.3.8] | @deva[कु], @deva[ल्], @deva[श्] | non-@deva[तद्धित] only |
+| Final | @ref[1.3.3] | any consonant | all @deva[उपदेश] |
+
+This distribution means every consonant of the @deva[वर्णसमाम्नाय] can serve as an @deva[इत्] marker in some position, giving @deva[पाणिनि] maximum encoding capacity.
+"""

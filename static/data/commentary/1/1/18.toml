@@ -1,0 +1,37 @@
+id = "1.1.18"
+numericId = "11018"
+
+[en]
+simple = """
+The particle @deva[ऊँ] (a nasalized long @deva[ऊ]) is also optionally @deva[प्रगृह्य] before @deva[इति], according to @deva[शाकल्य]. @deva[ऊँ] is the non-Vedic counterpart of @deva[उञ्] from the previous rule.
+
+**Example:** @deva[ऊँ इति] (no @deva[सन्धि]) or @deva[विति] (with @deva[सन्धि], where @deva[ऊ] + @deva[इ] → @deva[वि])
+
+The @deva[च] ("and") in the @deva[सूत्र] connects this to @ref[1.1.17], giving both @deva[उञ्] and @deva[ऊँ] the same optional treatment.
+"""
+
+standard = """
+@deva[ऊँ] (nasalized long @deva[ऊ], the non-Vedic replacement of @deva[उञ्]) is optionally @deva[प्रगृह्य] before @deva[इति], per @deva[शाकल्य]. The @deva[च] connects this to @ref[1.1.17].
+
+**Both forms valid:**
+- @deva[ऊँ इति] — @deva[प्रगृह्य] applies, no @deva[सन्धि]
+- @deva[विति] — @deva[सन्धि] applies, @deva[ऊ] + @deva[इ] → @deva[वि] by @ref[6.1.77]
+
+**Why a separate rule?** @deva[उञ्] (@ref[1.1.17]) is the Vedic form; @deva[ऊँ] is its @deva[लौकिक] (non-Vedic) counterpart. They are grammatically distinct particles, so each needs its own provision.
+
+**@deva[योगविभाग]:** Some authorities hold that @ref[1.1.17] and @ref[1.1.18] were originally a single @deva[सूत्र], divided to allow each particle to be referenced independently.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रगृह्यम्] from @ref[1.1.11]; @deva[इति], @deva[शाकल्य], and @deva[अनार्षे] from @ref[1.1.16]; the optionality carries from @ref[1.1.17].
+
+@deva[ऊँ च] — @deva[ऊँ] (nasalized long @deva[ऊ]) is also optionally @deva[प्रगृह्य] before @deva[इति], per @deva[शाकल्य].
+
+**Option:** @deva[ऊँ इति] (no @deva[सन्धि]) ~ @deva[विति] (@deva[ऊ] + @deva[इ] → @deva[वि] by @ref[6.1.77])
+
+**@deva[उञ्] vs. @deva[ऊँ]:** @deva[उञ्] is the @deva[आर्ष] (Vedic) form; @deva[ऊँ] is its @deva[लौकिक] counterpart. The @deva[अनुनासिक] (nasalization, defined at @ref[1.1.8]) on @deva[ऊँ] distinguishes it from a plain long @deva[ऊ]. Both particles express assent or affirmation.
+
+**@deva[योगविभाग]:** The @deva[काशिका] and other commentators note that @ref[1.1.17]–@ref[1.1.18] may originally have been one @deva[सूत्र] (@deva[उञ ऊँ च शाकल्यस्य]), later split by @deva[योगविभाग]. The split allows each particle to be independently referenced by later rules.
+
+**End of the @deva[प्रगृह्य] series:** This is the last rule in the @deva[प्रगृह्य] block that began at @ref[1.1.11]. The series defines eight categories of @deva[प्रगृह्य] vowels: dual @deva[ई/ऊ/ए] (@ref[1.1.11]), @deva[अदस्] forms (@ref[1.1.12]), @deva[शे] (@ref[1.1.13]), single-vowel particles (@ref[1.1.14]), @deva[ओ]-final particles (@ref[1.1.15]), vocative @deva[ओ] before @deva[इति] (@ref[1.1.16]), @deva[उञ्] before @deva[इति] (@ref[1.1.17]), and @deva[ऊँ] before @deva[इति] (@ref[1.1.18]). From @ref[1.1.19], the topic shifts.
+"""

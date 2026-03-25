@@ -1,0 +1,46 @@
+id = "1.2.65"
+numericId = "12065"
+
+[en]
+simple = """
+When a @deva[गोत्र] word (clan name, designating descent from a great-grandfather or earlier) and a @deva[युवन्] word (junior-branch name, derived from the @deva[गोत्र] word) stand together, the @deva[गोत्र] word is retained and the @deva[युवन्] word is dropped.
+
+**Example:**
+- @deva[गार्ग्यः] (@deva[गोत्र], "descendant of @deva[गर्ग]") + @deva[गार्ग्यायणः] (@deva[युवन्]) → @deva[गार्ग्यौ] "both the senior and junior @deva[गार्ग्य]s" (dual)
+
+The @deva[युवन्] form @deva[गार्ग्यायणः] is dropped; the @deva[गोत्र] form @deva[गार्ग्यः] survives with dual ending.
+
+**They must share the same base:** @deva[गार्ग्यः] + @deva[वात्स्यायनः] → @deva[गार्ग्यवात्स्यायनौ] — different bases, so @deva[एकशेष] does not apply (use @deva[द्वन्द्व] instead).
+"""
+
+standard = """
+In @deva[एकशेष], a @deva[वृद्ध] (= @deva[गोत्र]) word is retained over a @deva[युवन्] word when the two differ only in affix. The @deva[सूत्र] uses the older term @deva[वृद्ध] for what @deva[पाणिनि] defines as @deva[गोत्र] at @ref[4.1.162].
+
+**@deva[गोत्र]:** A patronymic designating descent from a founder — e.g., @deva[गार्ग्यः] "descendant of @deva[गर्ग]."
+**@deva[युवन्]:** A junior-branch form derived from the @deva[गोत्र] word — e.g., @deva[गार्ग्यायणः] (from @deva[गार्ग्य] + @deva[फक्]).
+
+**Examples:**
+- @deva[गार्ग्यः] + @deva[गार्ग्यायणः] → @deva[गार्ग्यौ]
+- @deva[वात्स्यः] + @deva[वात्स्यायनः] → @deva[वात्स्यौ]
+
+**Conditions that block the rule:**
+1. **Different bases:** @deva[गार्ग्यः] + @deva[वात्स्यायनः] → @deva[गार्ग्यवात्स्यायनौ] (no shared radical form)
+2. **Not @deva[वृद्ध] + @deva[युवन्]:** @deva[गर्गः] + @deva[गार्ग्यायणः] → @deva[गर्गगार्ग्यायणौ] (@deva[गर्ग] is the founder, not a @deva[गोत्र] derivative)
+3. **Additional affix meaning:** @deva[भागवित्तिः] + @deva[भागवित्तिकः] (where @deva[ठक्] adds contempt per @ref[4.1.148]) → @deva[भागवित्तिभागवित्तिकौ] — the affix carries extra meaning beyond @deva[युवन्], so @deva[एकशेष] is blocked
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकशेष] from @ref[1.2.64].
+
+@deva[वृद्धो युना] — the @deva[वृद्ध] (@deva[गोत्र]) word is retained when paired with a @deva[युवन्] word.
+
+**Terminology:** The @deva[सूत्र] uses @deva[वृद्ध] (an older term for senior clan member) rather than @deva[गोत्र]. @deva[पाणिनि] defines @deva[गोत्र] at @ref[4.1.162] (@deva[अपत्यं पौत्रप्रभृति गोत्रम्]) and @deva[युवन्] at @ref[4.1.163].
+
+**"Differing only in affix":** The @deva[गोत्र] and @deva[युवन्] words must share the same base (@deva[प्रकृति]) and differ only in affix (@deva[प्रत्यय]). @deva[गार्ग्यः] (base @deva[गर्ग] + @deva[यञ्]) and @deva[गार्ग्यायणः] (base @deva[गार्ग्य] + @deva[फक्]) share the radical @deva[गर्ग]. But @deva[गार्ग्यः] and @deva[वात्स्यायनः] have different bases, so @deva[एकशेष] is blocked.
+
+**Why @deva[वृद्ध] survives:** In @deva[एकशेष] between non-identical forms, @deva[पाणिनि] must specify which word is retained. The @deva[गोत्र] word is senior (more general) and subsumes the @deva[युवन्] (more specific). @deva[गार्ग्यौ] can refer to both a @deva[गोत्र] and a @deva[युवन्] @deva[गार्ग्य]; the reverse (@deva[गार्ग्यायणौ]) cannot.
+
+**@deva[एव] restriction (from @deva[भागवित्ति] example):** When the @deva[युवन्]-like affix carries additional meaning (e.g., @deva[ठक्] per @ref[4.1.148] adding contempt), the word is not a pure @deva[युवन्]. The implicit @deva[एव] in the rule blocks @deva[एकशेष] in such cases.
+
+**Position in @deva[एकशेष] section:** @ref[1.2.64] gives the general rule (identical forms). @ref[1.2.65] (this) begins specifying which word survives when forms are not identical — here, @deva[गोत्र] over @deva[युवन्]. Subsequent rules continue: @ref[1.2.67]–@ref[1.2.68] address gender-based retention.
+"""

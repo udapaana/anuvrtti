@@ -1,0 +1,35 @@
+id = "3.1.72"
+numericId = "31072"
+
+[en]
+simple = """
+This rule says that the affix @deva[श्यन्] is optionally used after the root @deva[यस्] (to strive) when it is preceded by the prefix @deva[सम्] and when a @deva[सार्वधातुक] affix denoting the agent follows.
+
+Since @deva[श्यन्] is optional with @deva[सम्] + @deva[यस्]:
+- @deva[संयस्यति] (@deva[श्यन्]) or @deva[संयसति] (@deva[शप्]) – both mean "he strives together"
+
+This extends the @deva[शप्] option from @ref[3.1.71] to include the prefix @deva[सम्].
+"""
+
+standard = """
+The affix @deva[श्यन्] is optionally (@deva[विभाषा]) used after @deva[यस्] when preceded by @deva[सम्] and when @deva[सार्वधातुक] follows in @deva[कर्तरि].
+
+Alternate forms:
+- @deva[संयस्यति] (@deva[श्यन्]) / @deva[संयसति] (@deva[शप्])
+
+This extends @ref[3.1.71]: that rule allowed @deva[शप्] for unprefixed @deva[यस्]; this rule extends the option to @deva[सम्] + @deva[यस्]. Other prefixes (@deva[आ-], @deva[प्र-], etc.) still require @deva[श्यन्] obligatorily.
+"""
+
+advanced = """
+@deva[श्यन्] optionally applies after @deva[सम्] + @deva[यस्] in @deva[कर्तरि सार्वधातुक].
+
+Alternate forms:
+- @deva[संयस्यति] / @deva[संयसति]
+
+This rule (@deva[समश्च]) extends the @deva[शप्] option of @ref[3.1.71] to @deva[सम्]-prefixed @deva[यस्]. The scope of optionality is now:
+- @deva[अनुपसर्ग]: optional (@ref[3.1.71])
+- @deva[सम्] + @deva[यस्]: optional (this rule)
+- Other @deva[उपसर्ग]s: @deva[श्यन्] @deva[नित्य]
+
+@note[type=observation]: The @deva[च] in @deva[समश्च] draws @deva[विभाषा] from @ref[3.1.71], indicating @deva[सम्] + @deva[यस्] shares the optionality of unprefixed @deva[यस्].
+"""

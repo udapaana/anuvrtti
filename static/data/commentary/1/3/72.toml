@@ -1,0 +1,57 @@
+id = "1.3.72"
+numericId = "13072"
+
+[en]
+simple = """
+Verbs whose roots are marked with @deva[स्वरित] accent (circumflex) or with the indicator @deva[ञ्] take @deva[आत्मनेपद] when the fruit of the action accrues to the agent — that is, when the agent acts for his own benefit.
+
+**@deva[आत्मनेपद] (agent benefits):**
+- @deva[यजते] "he sacrifices for himself"
+- @deva[क्रीणीते] "he buys for himself"
+
+**@deva[परस्मैपद] (agent acts for another):**
+- @deva[यजति] "he sacrifices (as priest, for a patron)"
+- @deva[क्रीणाति] "he buys for another"
+
+These roots are called @deva[उभयपदिन्] ("having both voices") because they can take either @deva[आत्मनेपद] or @deva[परस्मैपद] depending on who benefits.
+"""
+
+standard = """
+After @deva[स्वरितेत्] or @deva[ञित्] roots, @deva[आत्मनेपद] applies when the @deva[क्रियाफल] (fruit of action) accrues to the @deva[कर्ता] (agent).
+
+**@deva[स्वरितेत्]:** Roots with @deva[स्वरित] (circumflex) accent on their vowel in the @deva[धातुपाठ] — e.g., @deva[यज्], @deva[पच्], @deva[वप्].
+**@deva[ञित्]:** Roots with indicatory @deva[ञ्] — e.g., @deva[डुक्रीञ्] (@deva[क्री]).
+
+**Agent benefits → @deva[आत्मनेपद]:**
+- @deva[यजते] "he sacrifices for himself"
+- @deva[पचते] "he cooks for himself"
+- @deva[क्रीणीते] "he buys for himself"
+
+**Agent acts for another → @deva[परस्मैपद]:**
+- @deva[यजति] "he sacrifices (as priest)"
+- @deva[पचति] "he cooks for another"
+- @deva[क्रीणाति] "he buys for another"
+
+**Foundational rule:** This is the master rule for @deva[उभयपदिन्] roots. @ref[1.3.12] handles roots that are always @deva[आत्मनेपदिन्] (@deva[अनुदात्तेत्]/@deva[ङित्]). This rule handles roots that alternate between both @deva[पद]s based on who benefits.
+
+**@deva[णिच्], @deva[सन्], @deva[यङ्]:** These suffixes are also @deva[स्वरित]-marked. Causatives, desideratives, and intensives are therefore @deva[उभयपदिन्] by this rule.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[स्वरितञितः कर्त्रभिप्राये क्रियाफले] — after @deva[स्वरितेत्]/@deva[ञित्] roots, @deva[आत्मनेपद] when the @deva[क्रियाफल] is intended for the @deva[कर्ता].
+
+**Three-way @deva[पद] classification:**
+1. @deva[अनुदात्तेत्]/@deva[ङित्] → always @deva[आत्मनेपदिन्] (@ref[1.3.12])
+2. @deva[स्वरितेत्]/@deva[ञित्] → @deva[उभयपदिन्] (this rule: @deva[आत्मनेपद] when agent benefits)
+3. All others → @deva[परस्मैपदिन्] (@ref[1.3.78])
+
+**@deva[कर्त्रभिप्राय] = agent-intended:** The @deva[क्रियाफल] must be intended for the agent. This is the @deva[स्वार्थ] ("for oneself") condition. Many rules in @ref[1.3.17]–@ref[1.3.71] override this condition by specifying @deva[आत्मनेपद] "even when the fruit does not accrue to the agent."
+
+**@deva[स्वरित]-marked affixes:** @deva[णिच्] (causative), @deva[सन्] (desiderative), and @deva[यङ्] (intensive) are @deva[स्वरितेत्]. All derived verbs formed with these suffixes are therefore @deva[उभयपदिन्] — they take @deva[आत्मनेपद] when the agent benefits and @deva[परस्मैपद] otherwise.
+
+**Scope of overrides:** Rules @ref[1.3.17]–@ref[1.3.71] override this rule for specific root + prefix + meaning combinations by removing the @deva[स्वार्थ] condition. @ref[1.3.72] is the default for @deva[उभयपदिन्] roots not covered by those specific rules.
+
+**Central importance:** This rule, together with @ref[1.3.12] and @ref[1.3.78], forms the backbone of the entire @deva[पद]-assignment system.
+"""

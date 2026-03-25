@@ -1,0 +1,56 @@
+id = "3.1.126"
+numericId = "31126"
+
+[en]
+simple = """
+The affix @deva[ण्यत्] is used after these specific roots:
+
+- @deva[आसु] 'to distill' → @deva[आसाव्यम्]
+- @deva[यु] 'to join' → @deva[याव्यम्]
+- @deva[वप्] 'to sow' → @deva[वाप्यम्]
+- @deva[रप्] 'to speak' → @deva[राप्यम्]
+- @deva[लप्] 'to prate' → @deva[लाप्यम्]
+- @deva[त्रप्] 'to be ashamed' → @deva[त्राप्यम्]
+- @deva[चम्] 'to drink' → @deva[आचाम्यम्]
+
+This overrides @deva[यत्] which would otherwise apply.
+"""
+
+standard = """
+The affix @deva[ण्यत्] comes after the following roots:
+
+| Root | Meaning | + @deva[ण्यत्] | Result |
+|------|---------|---------|--------|
+| @deva[आसु] | 'to distill' | @deva[आसाव्य] | @deva[आसाव्यम्] |
+| @deva[यु] | 'to join' | @deva[याव्य] | @deva[याव्यम्] |
+| @deva[वप्] | 'to sow' | @deva[वाप्य] | @deva[वाप्यम्] |
+| @deva[रप्] | 'to speak' | @deva[राप्य] | @deva[राप्यम्] |
+| @deva[लप्] | 'to prate' | @deva[लाप्य] | @deva[लाप्यम्] |
+| @deva[त्रप्] | 'to be ashamed' | @deva[त्राप्य] | @deva[त्राप्यम्] |
+| @deva[चम्] | 'to drink' | @deva[चाम्य] | @deva[आचाम्यम्] |
+
+This debars @deva[यत्] which would otherwise apply by @ref[3.1.97]–98.
+
+**Note:** @deva[आसु] = @deva[आङ्] + @deva[सु] (compound verb).
+
+**Extended by @deva[च]:** @deva[दभ्] + @deva[ण्यत्] = @deva[दाभ्यम्]
+"""
+
+advanced = """
+The affix @deva[ण्यत्] comes after the roots @deva[आसु] 'to distill', @deva[यु] 'to join', @deva[वप्] 'to sow', @deva[रप्] 'to speak distinctly', @deva[लप्] 'to prate', @deva[त्रप्] 'to be ashamed', and @deva[चम्] 'to drink'.
+
+This debars @deva[यत्] that would otherwise apply by @ref[3.1.97]–98.
+
+**Note:** @deva[आसु] is a compound verb: @deva[आङ्] + @deva[सु].
+
+**Examples:**
+- @deva[आसु] + @deva[ण्यत्] = @deva[आसाव्यम्] @ref[7.2.115], @ref[6.1.79]
+- @deva[यु] + @deva[ण्यत्] = @deva[याव्यम्]
+- @deva[वप्] + @deva[ण्यत्] = @deva[वाप्यम्]
+- @deva[रप्] + @deva[ण्यत्] = @deva[राप्यम्]
+- @deva[लप्] + @deva[ण्यत्] = @deva[लाप्यम्]
+- @deva[त्रप्] + @deva[ण्यत्] = @deva[त्राप्यम्]
+- @deva[चम्] + @deva[ण्यत्] = @deva[आचाम्यम्]
+
+**Extension by @deva[च]:** The @deva[च] 'and' in the @[sūtra] indicates the list is extendable. Thus: @deva[दभ्] + @deva[ण्यत्] = @deva[दाभ्यम्].
+"""

@@ -1,0 +1,49 @@
+id = "2.1.39"
+numericId = "21039"
+
+[en]
+simple = """
+The words @deva[स्तोक] "a little," @deva[अन्तिक] "near," @deva[दूर] "far," and @deva[कृच्छ्र] "difficulty" — when in the ablative (@deva[पञ्चमी]) — **optionally** compound with a past participle (@deva[क्त]-ending word) to form @deva[तत्पुरुष].
+
+**Examples:**
+- @deva[स्तोकान्मुक्तः] → @deva[स्तोकमुक्तः] "freed from a small (amount)" — barely escaped
+- @deva[दूरादागतः] → @deva[दूरागतः] "come from far"
+- @deva[अन्तिकादागतः] → @deva[अन्तिकागतः] "come from nearby"
+- @deva[कृच्छ्रान्मुक्तः] → @deva[कृच्छ्रमुक्तः] "freed with difficulty"
+- @deva[कृच्छ्राल्लब्धः] → @deva[कृच्छ्रलब्धः] "obtained with difficulty"
+
+A special feature: by @ref[6.3.2], the ablative case ending is **not** dropped in these compounds — the @deva[पञ्चमी] marker is retained.
+
+This is the **last @deva[पञ्चमी] @deva[तत्पुरुष] rule**.
+"""
+
+standard = """
+@deva[स्तोक]/@deva[अन्तिक]/@deva[दूर]/@deva[कृच्छ्र] (@deva[पञ्चम्यन्त]) + @deva[क्तान्त] → @deva[विभाषा] @deva[तत्पुरुष] — @deva[स्तोकान्तिकदूरार्थकृच्छ्राभिः क्तेन].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[स्तोकमुक्तः] "barely freed"
+- @deva[अन्तिकागतः] "come from nearby"
+- @deva[दूरागतः] "come from far"
+- @deva[कृच्छ्रमुक्तः] "saved with difficulty"
+- @deva[कृच्छ्रलब्धः] "obtained with difficulty"
+
+**Synonyms included:** @deva[अन्तिक] also covers @deva[अभ्याश] "near"; @deva[दूर] also covers @deva[विप्रकृष्ट] "distant." Thus @deva[अभ्याशागतः] and @deva[विप्रकृष्टागतः] are also valid.
+
+**Case retention by @ref[6.3.2]:** Normally, case endings are deleted in compounds (@ref[2.4.71]). But @ref[6.3.2] specifically preserves the @deva[पञ्चमी] ending in these compounds — an unusual feature.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[पञ्चमी] from @ref[2.1.37]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[स्तोकान्तिकदूरार्थकृच्छ्राभिः क्तेन] — @deva[स्तोक], @deva[अन्तिक], @deva[दूर] (and synonyms), and @deva[कृच्छ्र] in @deva[पञ्चमी] optionally compound with @deva[क्तान्त] as @deva[तत्पुरुष].
+
+**@deva[अर्थ]-@deva[ग्रहण] for synonyms:** The compound @deva[दूरार्थ] in the @[sūtra] text uses @deva[अर्थ] to include synonyms of @deva[दूर] (namely @deva[विप्रकृष्ट]) and by extension @deva[अन्तिक] synonyms (@deva[अभ्याश], @deva[समीप]). The @deva[काशिका] lists: @deva[अभ्याशादागतः], @deva[विप्रकृष्टादागतः].
+
+**@ref[6.3.2] — case retention:** @deva[अलुक्] by @ref[6.3.2] prevents the @deva[सुप्]-@deva[लुक्] of @ref[2.4.71] in these compounds. The ablative morpheme is retained within the compound. This is a marked exception to the general rule that case endings delete in @deva[समास].
+
+**@deva[वार्त्तिक] — @deva[शत]/@deva[सहस्र] + @deva[पर]:** The @deva[वार्त्तिककार] extends this pattern: @deva[शतात् परे] → @deva[परशताः] "beyond a hundred"; @deva[सहस्रात् परे] → @deva[परसहस्राः] "beyond a thousand." These compounds show reversed order (@deva[उपसर्जन] stands second), classified under the @deva[राजदन्तादि] @deva[गण] by @ref[2.2.31]. An irregular augment @deva[सुट्] is also interposed.
+
+**End of @deva[पञ्चमी] section:** @ref[2.1.37]–@ref[2.1.39] = three @deva[पञ्चमी] rules. The progression: @deva[भय] (@ref[2.1.37]), separation participles (@ref[2.1.38]), degree/distance words (@ref[2.1.39]). The next section begins @deva[सप्तमी] @deva[तत्पुरुष] at @ref[2.1.40].
+"""

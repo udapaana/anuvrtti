@@ -1,0 +1,46 @@
+id = "1.4.38"
+numericId = "14038"
+
+[en]
+simple = """
+When @deva[क्रुध्] "to be angry" or @deva[द्रुह्] "to bear malice" are used with a prefix (@deva[उपसर्ग]), the target person takes the accusative case instead of the dative.
+
+Without a prefix, the target is @deva[सम्प्रदान] (dative) by @ref[1.4.37]. But adding a prefix like @deva[अभि] changes the construction — the target becomes @deva[कर्मन्] "object" (accusative).
+
+**Examples:**
+- @deva[देवदत्तम् अभिक्रुध्यति] "he is angry at Devadatta" (accusative — with prefix @deva[अभि])
+- @deva[देवदत्तम् अभिद्रुह्यति] "he bears malice toward Devadatta" (accusative)
+
+Compare without prefix: @deva[देवदत्ताय क्रुध्यति] (dative, by @ref[1.4.37]).
+"""
+
+standard = """
+@deva[क्रुध्] and @deva[द्रुह्] with @deva[उपसर्ग] (preverb): the target becomes @deva[कर्मन्] (accusative), not @deva[सम्प्रदान] — @deva[क्रुधद्रुहोरुपसृष्टयोः कर्म].
+
+**Rule type — @deva[अपवाद] (exception) to @ref[1.4.37]:** Overrides the @deva[सम्प्रदान] assignment specifically for prefixed @deva[क्रुध्] and @deva[द्रुह्].
+
+**Examples:**
+- @deva[देवदत्तम् अभिक्रुध्यति] "he is angry at Devadatta" (@deva[कर्मन्], accusative)
+- @deva[देवदत्तम् अभिद्रुह्यति] "he bears malice toward Devadatta" (@deva[कर्मन्])
+
+**Contrast (without prefix):**
+- @deva[देवदत्ताय क्रुध्यति] "he is angry at Devadatta" (@deva[सम्प्रदान], dative — @ref[1.4.37])
+
+**Scope:** Only @deva[क्रुध्] and @deva[द्रुह्] are affected. @deva[ईर्ष्य] and @deva[असूय] (also in @ref[1.4.37]) always retain @deva[सम्प्रदान] regardless of preverbs.
+
+**@deva[उपसृष्ट] = "prefixed":** Any @deva[उपसर्ग] (@deva[अभि], @deva[प्रति], @deva[वि], etc.) triggers the switch to accusative.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कारके] from @ref[1.4.23]. Note: @deva[सम्प्रदान] does NOT carry forward — this rule assigns @deva[कर्मन्] instead.
+
+@deva[क्रुधद्रुहोरुपसृष्टयोः कर्म] — with prefixed @deva[क्रुध्]/@deva[द्रुह्], the target is @deva[कर्मन्].
+
+**@deva[अपवाद] mechanism:** @ref[1.4.37] assigns @deva[सम्प्रदान] to the target of anger/malice verbs. This rule carves out an exception: when @deva[क्रुध्] or @deva[द्रुह्] are @deva[उपसृष्ट] (prefixed), the target shifts from @deva[सम्प्रदान] to @deva[कर्मन्]. The case changes from @deva[चतुर्थी] to @deva[द्वितीया].
+
+**Why only @deva[क्रुध्]/@deva[द्रुह्]?** The exclusion of @deva[ईर्ष्य] and @deva[असूय] is significant. Preverbs make anger and malice more "transitive" — @deva[अभिक्रुध्यति] is more action-directed than @deva[क्रुध्यति]. Envy and fault-finding remain experiential regardless of prefix.
+
+**Interaction with @ref[1.4.2] (@deva[विप्रतिषेधे]):** If @ref[1.4.37] and this rule both potentially apply, this rule prevails as the more specific (@deva[अपवाद]). The @deva[विप्रतिषेध] metarule is not needed — specificity resolves the conflict.
+
+**Passive consequence:** When the prefixed verb is passivized, the @deva[कर्मन्] (target) becomes the nominative subject: @deva[देवदत्तः अभिक्रुध्यते] "Devadatta is treated with anger." This would not happen if the target were @deva[सम्प्रदान].
+"""

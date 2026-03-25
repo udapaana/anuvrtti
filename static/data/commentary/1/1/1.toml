@@ -1,0 +1,38 @@
+id = "1.1.1"
+numericId = "11001"
+
+[en]
+simple = """
+The vowels @deva[आ], @deva[ऐ], and @deva[औ] are given the technical name @deva[वृद्धि] ("strengthened grade"). This is the strongest form a vowel can take in Sanskrit's vowel-grade system, which has three levels: basic, @deva[गुण] (medium), and @deva[वृद्धि] (strongest).
+
+When a later rule prescribes @deva[वृद्धि], it means: replace the current vowel with one of these three. Which one depends on the original vowel — @deva[इ] or @deva[ई] strengthens to @deva[ऐ], @deva[उ] or @deva[ऊ] to @deva[औ], and @deva[अ] to @deva[आ].
+
+**Example:** @deva[अङ्ग] "body" → @deva[आङ्गः] "bodily" — the @deva[अ] strengthens to @deva[आ] when a suffix requiring @deva[वृद्धि] is added.
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] (definitional rule) assigns the term @deva[वृद्धि] to three vowels: @deva[आ], @deva[ऐ], and @deva[औ].
+
+The @deva[सूत्र] has three words: @deva[वृद्धिः] (the term being defined), @deva[आत्] (long @deva[आ] with indicatory @deva[त्]), and @deva[ऐच्] (the @deva[प्रत्याहार] covering @deva[ऐ] and @deva[औ]). The indicatory @deva[त्] in @deva[आत्] invokes @ref[1.1.70] (@deva[तपरस्तत्कालस्य]), restricting this to the two-@deva[मात्रा] @deva[आ] and excluding prolonged (@deva[प्लुत]) forms.
+
+**Examples of @deva[वृद्धि] substitution:**
+- @deva[अङ्ग] → @deva[आङ्गः] "bodily" (@deva[अ] → @deva[आ])
+- @deva[इच्छा] → @deva[ऐच्छिकः] "optional" (@deva[इ] → @deva[ऐ])
+- @deva[उपगु] → @deva[औपगवः] "son of @deva[उपगु]" (@deva[उ] → @deva[औ])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is the first @deva[सूत्र] of the @deva[अष्टाध्यायी].
+
+This @deva[संज्ञासूत्र] establishes @deva[वृद्धि] as a technical term. The @deva[प्रत्याहार] @deva[ऐच्] is formed from @deva[ऐ औ च्] in the @deva[माहेश्वरसूत्राणि], spanning @deva[ऐ] and @deva[औ].
+
+The @deva[त्] in @deva[आत्] is @deva[इत्] by @ref[1.3.3], triggering @ref[1.1.70] (@deva[तपरस्तत्कालस्य]): only the two-@deva[मात्रा] @deva[आ] qualifies, not @deva[प्लुत]. This @deva[तपर] restriction extends to @deva[ऐ] and @deva[औ] as well.
+
+The term @deva[वृद्धि] is invoked by numerous rules:
+- @ref[7.2.1] @deva[सिचि वृद्धिः परस्मैपदेषु] — @deva[वृद्धि] before @deva[सिच्] in @deva[परस्मैपद]
+- @ref[7.2.114] @deva[मृजेर्वृद्धिः] — @deva[वृद्धि] for root @deva[मृज्]
+- @ref[7.2.115] @deva[अचो ञ्णिति] — @deva[वृद्धि] of a vowel before @deva[ञित्]/@deva[णित्] affixes
+- @ref[6.1.88] @deva[वृद्धिरेचि] — @deva[वृद्धि] in @deva[एच्]-sandhi
+
+The @deva[काशिका] notes that @deva[वृद्धि] is defined first (before @deva[गुण] in @ref[1.1.2]) because the term appears earlier in the @deva[सूत्रपाठ] at @ref[1.1.73] @deva[वृद्धिरदाचि].
+"""

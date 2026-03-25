@@ -1,0 +1,53 @@
+id = "3.1.59"
+numericId = "31059"
+
+[en]
+simple = """
+This rule says that @deva[अङ्] replaces @deva[च्लि] after the roots @deva[कृ] (to do), @deva[मृ] (to die), @deva[दॄ] (to tear, 9th class), and @deva[रुह] (to rise) in Vedic Sanskrit.
+
+Vedic forms:
+- @deva[कृ]: @deva[अकरत्] (he did)
+- @deva[मृ]: @deva[अमरत्] (he died)
+- @deva[दॄ]: @deva[अदरत्] (he tore)
+- @deva[रुह]: @deva[आरुहत्] (he rose)
+
+Vedic attestations: Rig Veda 10.85.17, 10.44.6.
+
+In classical Sanskrit, these roots use different aorist formations:
+- @deva[कृ]: @deva[अकार्षीत्] (@deva[सिच्])
+- @deva[मृ]: @deva[अमृत] (@deva[सिच्])
+- @deva[दॄ]: @deva[अदारीत्] (@deva[सिच्])
+- @deva[रुह]: @deva[अरुक्षत्] (@deva[क्स])
+"""
+
+standard = """
+@deva[अङ्] substitutes for @deva[च्लि] after @deva[कृ], @deva[मृ], @deva[दॄ] (9th class), and @deva[रुह] in Vedic (@deva[छन्दसि]).
+
+Vedic forms: @deva[अकरत्], @deva[अमरत्], @deva[अदरत्], @deva[आरुहत्].
+
+Vedic attestations: RV 10.85.17, RV 10.44.6.
+
+Classical forms use different aorist types:
+- @deva[कृ]: @deva[अकार्षीत्] (@deva[सिच्]-aorist)
+- @deva[मृ]: @deva[अमृत] (@deva[सिच्]-aorist)
+- @deva[दॄ]: @deva[अदारीत्] (@deva[सिच्]-aorist)
+- @deva[रुह]: @deva[अरुक्षत्] (@deva[क्स]-aorist)
+
+The @deva[छन्दसि] restriction confines these @deva[अङ्]-aorist forms to Vedic texts.
+"""
+
+advanced = """
+@deva[अङ्] applies after @deva[कृ], @deva[मृ], @deva[दॄ] (@deva[क्र्यादि]), and @deva[रुह] in @deva[छन्दसि लुङ्].
+
+Vedic forms: @deva[अकरत्], @deva[अमरत्], @deva[अदरत्], @deva[आरुहत्].
+
+Vedic attestations: RV 10.85.17, RV 10.44.6.
+
+Classical equivalents:
+- @deva[कृ]: @deva[अकार्षीत्] (@deva[सिच्])
+- @deva[मृ]: @deva[अमृत] (@deva[सिच्] with @deva[इट्]-@deva[लुक्])
+- @deva[दॄ]: @deva[अदारीत्] (@deva[सिच्])
+- @deva[रुह]: @deva[अरुक्षत्] (@deva[क्स] by @ref[3.1.45])
+
+@note[type=observation]: This rule preserves archaic @deva[अङ्]-aorist forms for these common roots. In classical Sanskrit, each root follows a different aorist pattern—demonstrating how the Vedic @deva[अङ्]-aorist has been largely replaced by @deva[सिच्] or @deva[क्स] in later usage.
+"""

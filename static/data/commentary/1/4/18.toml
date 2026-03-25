@@ -1,0 +1,50 @@
+id = "1.4.18"
+numericId = "14018"
+
+[en]
+simple = """
+When an affix (within the @deva[सु]–@deva[कप्] range, excluding @deva[सर्वनामस्थान]) begins with @deva[य्] or a vowel, the preceding word is called @deva[भ] — not @deva[पद].
+
+@deva[भ] is a technical name for a specific type of base. When a word is @deva[भ], different operations apply to it than when it is @deva[पद].
+
+**Examples (@deva[य्]-initial affixes):**
+- @deva[गर्ग] + @deva[यञ्] → @deva[गार्ग्यः] "descendant of Garga" (final @deva[अ] elided)
+
+**Examples (vowel-initial affixes):**
+- @deva[दक्ष] + @deva[इञ्] → @deva[दाक्षिः] "descendant of @[dakṣa]"
+
+As @deva[भ], the final @deva[अ] of the stem is deleted by @ref[6.4.148]. If the stem were @deva[पद], this deletion would not occur.
+"""
+
+standard = """
+Before @deva[य्]-initial or vowel-initial affixes (within @deva[सु]–@deva[कप्], excluding @deva[सर्वनामस्थान]), the preceding element is @deva[भ] — @deva[यचि भम्].
+
+**Rule type — @deva[अपवाद] of @ref[1.4.17]:** @ref[1.4.17] assigns @deva[पद] broadly. This rule overrides it for affixes beginning with @deva[य्] or a vowel.
+
+**Examples:**
+- @deva[गर्ग] + @deva[यञ्] → @deva[गार्ग्यः] (final @deva[अ] elided by @ref[6.4.148])
+- @deva[दक्ष] + @deva[इञ्] → @deva[दाक्षिः] (final @deva[अ] elided)
+- @deva[शिव] + @deva[अण्] → @deva[शैवः] (final @deva[अ] elided, @deva[वृद्धि])
+
+**Key effect of @deva[भ] status:** @ref[6.4.148] (@deva[यस्येति च]) elides the final vowel of a @deva[भ] before a vowel-initial affix. This is the primary reason for the @deva[पद]/@deva[भ] distinction.
+
+**Counter-exception:** @ref[1.4.16] overrides this rule for @deva[सित्] affixes — those retain @deva[पद] status despite beginning with a vowel.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: context from @ref[1.4.17].
+
+@deva[यचि भम्] — before @deva[य्]-initial or vowel-initial affixes (in the @deva[सु]–@deva[कप्] range), @deva[भ] applies.
+
+**@deva[भ] @deva[संज्ञा] purpose:** @deva[भ] is defined to enable @ref[6.4.148] (@deva[यस्येति च]) — the elision of a stem-final vowel before a vowel/​@deva[य्]-initial affix. Without the @deva[भ] designation, @ref[6.4.148] would have no trigger.
+
+**Why @deva[य्] is grouped with vowels:** @deva[य्] is the semivowel corresponding to @deva[इ]. In @deva[तद्धित] formation, @deva[य्]-initial affixes like @deva[यञ्], @deva[यत्] behave like vowel-initial affixes with respect to the preceding stem — the final vowel elides.
+
+**@deva[भ] vs @deva[पद] — practical difference:**
+- @deva[भ]: @ref[6.4.148] applies → final vowel elision
+- @deva[पद]: @ref[6.4.148] does not apply → final vowel retained, @deva[पद]-final consonant rules apply
+
+**@ref[1.4.16] counter-exception:** @deva[सित्] affixes (with indicatory @deva[स्]) restore @deva[पद] status even when they begin with a vowel or @deva[य्]. The @deva[सित्] marker is @deva[पाणिनि]'s device for affix-by-affix control.
+
+**@ref[1.4.1] interaction:** By the one-name restriction, an element is either @deva[पद] or @deva[भ] — never both. The hierarchy: @ref[1.4.16] (@deva[सित्] → @deva[पद]) > @ref[1.4.18] (this: vowel/@deva[य्] → @deva[भ]) > @ref[1.4.17] (general → @deva[पद]).
+"""

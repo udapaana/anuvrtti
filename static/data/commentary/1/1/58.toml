@@ -1,0 +1,68 @@
+id = "1.1.58"
+numericId = "11058"
+
+[en]
+simple = """
+The previous rule (@ref[1.1.57]) said that a vowel-substitute acts like the original for rules affecting what precedes. This rule lists ten exceptions — ten types of operations where the substitute does not act like the original, even when @ref[1.1.57] would otherwise allow it.
+
+The ten exceptions are:
+1. Word-final rules (@deva[पदान्तविधि])
+2. Reduplication (@deva[द्वित्व])
+3. The affix @deva[वरच्]
+4. Deletion of @deva[य्] (@deva[यकारलोप])
+5. Accent rules (@deva[स्वरविधि])
+6. Homogeneous-sound rules (@deva[सवर्णविधि])
+7. @deva[अनुस्वार] rules
+8. Vowel lengthening (@deva[दीर्घविधि])
+9. @deva[जश्त्व] (voicing of stops)
+10. @deva[चर्त्व] (devoicing of stops)
+
+For these operations, the grammar sees the substitute as it actually is, not as the original.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] carves out ten exceptions to @ref[1.1.57]. Even though @ref[1.1.57] extends @deva[स्थानिवद्भाव] to @deva[अल्विधि] rules affecting what precedes, these ten operation types are excluded.
+
+**The ten exceptions:**
+1. **@deva[पदान्तविधि]:** Word-final sandhi rules see the substitute, not the original
+2. **@deva[द्वित्व]:** Reduplication uses the substitute's actual form
+3. **@deva[वरच्]:** Rules involving the affix @deva[वरच्]
+4. **@deva[यकारलोप]:** Deletion of @deva[य्]
+5. **@deva[स्वरविधि]:** Accent assignment rules
+6. **@deva[सवर्णविधि]:** Homogeneous-sound grouping
+7. **@deva[अनुस्वारविधि]:** @deva[अनुस्वार] insertion rules
+8. **@deva[दीर्घविधि]:** Vowel lengthening operations
+9. **@deva[जश्त्वविधि]:** Voicing substitutions (@deva[जश्] for @deva[झल्])
+10. **@deva[चर्त्वविधि]:** Devoicing substitutions (@deva[चर्] for @deva[झल्])
+
+**Example (@deva[पदान्तविधि]):** @deva[अस्] "to be" loses its @deva[अ] before @deva[तस्]/other endings by @ref[6.4.111]: @deva[अस्] → @deva[स्तः] "they two are." The deleted @deva[अ] is replaced by @deva[लोप]. For word-final sandhi, this @deva[लोप] does not count as @deva[अ] — so @deva[कौ स्तः] "who two are" shows no vowel sandhi between @deva[कौ] and @deva[स्तः].
+
+**Why these exceptions?** These operations are highly sensitive to the actual phonetic form. Treating a deleted or transformed vowel as still present would produce incorrect sandhi, accent, or reduplication.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अचः परस्मिन् पूर्वविधौ] from @ref[1.1.57]; @deva[स्थानिवत्] from @ref[1.1.56].
+
+@deva[न पदान्तद्वित्ववरचां...] — @deva[स्थानिवद्भाव] does not apply in these ten domains, even when the conditions of @ref[1.1.57] are met.
+
+**The ten exceptions and their rationale:**
+
+1. **@deva[पदान्तविधि]:** Sandhi at word boundaries must see actual sounds. If @deva[लोप] of @deva[अ] were @deva[स्थानिवत्], phantom vowels would trigger sandhi.
+2. **@deva[द्वित्व]:** Reduplication copies actual phonetic material. (But see @ref[1.1.59] for a partial restoration.)
+3. **@deva[वरच्]:** The affix @deva[वरच्] has specific conditioning that must see the real form.
+4. **@deva[यकारलोप]:** @deva[य्]-deletion rules must see whether @deva[य्] is actually present.
+5. **@deva[स्वरविधि]:** Accent depends on actual syllable structure after substitution.
+6. **@deva[सवर्णविधि]:** @deva[सवर्ण] grouping is defined by actual phonetic properties — place and effort of articulation.
+7. **@deva[अनुस्वारविधि]:** @deva[अनुस्वार] insertion (@ref[8.4.58]) depends on whether a nasal actually precedes a consonant.
+8. **@deva[दीर्घविधि]:** Lengthening must target actual vowels, not phantom ones.
+9. **@deva[जश्त्वविधि]:** @ref[8.4.53] voices stops before voiced sounds — must see actual voicing.
+10. **@deva[चर्त्वविधि]:** @ref[8.4.55] devoices stops in certain contexts — same phonetic sensitivity.
+
+**Example (@deva[पदान्तविधि]):** @deva[कौ स्तः] "who two are" — @deva[अस्] → @deva[स्तः] (the @deva[अ] undergoes @deva[लोप]). The @deva[लोप] is not @deva[स्थानिवत्] for word-final sandhi, so no vowel sandhi occurs between @deva[कौ] and the invisible @deva[अ].
+
+**Structure of @ref[1.1.56]–@ref[1.1.59]:**
+- @ref[1.1.56]: @deva[स्थानिवद्भाव] applies, except @deva[अल्विधि]
+- @ref[1.1.57]: extends to @deva[अल्विधि] for @deva[पूर्वविधि] of vowel substitutes
+- @ref[1.1.58] (this rule): ten exceptions to @ref[1.1.57]
+- @ref[1.1.59]: partial restoration for reduplication (excepting the @deva[द्वित्व] exception here)
+"""

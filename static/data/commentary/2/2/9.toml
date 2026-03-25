@@ -1,0 +1,43 @@
+id = "2.2.9"
+numericId = "22009"
+
+[en]
+simple = """
+A word in the genitive case compounds with @deva[याजक] "sacrificer" and other similar words to form @deva[तत्पुरुष]. The compound names a professional who performs a service for the person denoted by the genitive word.
+
+**Examples:**
+- @deva[ब्राह्मणयाजकः] "one who sacrifices for Brahmins" — @deva[ब्राह्मणानां याजकः]
+- @deva[क्षत्रिययाजकः] "one who sacrifices for @[kṣatriyas]"
+
+The @deva[याजकादि] list includes service-roles like @deva[याजक] "sacrificer," @deva[पूजक] "worshipper," @deva[अध्यापक] "teacher," @deva[परिचारक] "attendant," and others.
+"""
+
+standard = """
+@deva[षष्ठ्यन्त] + @deva[याजकादि] → @deva[तत्पुरुष] — @deva[याजकादिभिश्च].
+
+**Rule type — @deva[विधि]:** Compounding rule that overrides the prohibition of @ref[2.2.16].
+
+**Examples:**
+- @deva[ब्राह्मणयाजकः] "Brahmin-sacrificer"
+- @deva[क्षत्रिययाजकः] "@[kṣatriya-sacrificer]"
+
+**Override of @ref[2.2.16]:** @ref[2.2.16] blocks genitive @deva[तत्पुरुष] when the second member is a @deva[कर्तृ]-denoting @deva[अक]-word (agent noun with @deva[ण्वुल्]). Since @deva[याजक] etc. are @deva[ण्वुल्]-derived agent nouns, they would normally be blocked. This rule specifically authorizes them.
+
+**@deva[याजकादि] list:** @deva[याजक], @deva[पूजक], @deva[परिचारक], @deva[परिवेषक], @deva[परिषेचक], @deva[स्नापक]/@deva[स्नातक], @deva[अध्यापक], @deva[उत्साहक]/@deva[उत्सादक], @deva[उद्वर्तक], @deva[होतृ], @deva[नर्तृ], @deva[रथगणक], @deva[पत्तिगणक], @deva[पोतृ], @deva[हर्तृ], @deva[वर्तक].
+
+**@deva[वार्त्तिक] — quality inhering in referent:** A genitive also compounds when the second member expresses a quality belonging to the genitive referent: @deva[ब्राह्मणवर्णः] "Brahmin-caste," @deva[चन्दनगन्धः] "sandal-scent," @deva[कपित्थरसः] "wood-apple flavour."
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.2.8]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[याजकादिभिश्च] — a @deva[षष्ठ्यन्त] word compounds with @deva[याजकादि] words as @deva[षष्ठीतत्पुरुष].
+
+**Interaction with @ref[2.2.16]:** @ref[2.2.16] prohibits genitive compounds where the second member is a @deva[कर्तृ]-denoting word formed with @deva[अक] (@deva[ण्वुल्]). The @deva[याजकादि] words are precisely such agent nouns — @deva[याजक] from @deva[यज्] + @deva[ण्वुल्], @deva[पूजक] from @deva[पूज्] + @deva[ण्वुल्], etc. This rule is an exception (@deva[अपवाद]) to that prohibition.
+
+**@deva[वार्त्तिक] — @deva[गुणवाचक] compounds:** The @deva[काशिका] records a @deva[वार्त्तिक] that a genitive also compounds when the second member denotes a quality inherent in the genitive referent: @deva[ब्राह्मणवर्णः] "the colour/caste of a Brahmin," @deva[चन्दनगन्धः] "the scent of sandal." The quality (@deva[वर्ण], @deva[गन्ध]) inheres in the substance (@deva[ब्राह्मण], @deva[चन्दन]).
+
+**@deva[वार्त्तिक] — comparative elision:** When a comparative suffix @deva[तर] is elided in compounds, the genitive can compound: @deva[सर्वेषां श्वेततरः] → @deva[सर्वश्वेतः] "whitest of all," @deva[सर्वमहान्] "greatest of all." This is an exception to @ref[2.2.10]'s prohibition on @deva[निर्धारण]-genitive compounds.
+
+**Why a specific list?** The @deva[याजकादि] words denote professional roles where the genitive expresses the client/beneficiary. This semantic pattern is productive enough to warrant a @deva[गण] but specific enough to need explicit authorization against @ref[2.2.16].
+"""

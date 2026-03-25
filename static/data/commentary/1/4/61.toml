@@ -1,0 +1,52 @@
+id = "1.4.61"
+numericId = "14061"
+
+[en]
+simple = """
+Words in the @deva[ऊर्यादिगण] (the list beginning with @deva[ऊरी]), along with words ending in @deva[च्वि] and @deva[डाच्], are called @deva[गति] "prefix" when combined with the verbs @deva[कृ] "to make," @deva[भू] "to become," or @deva[अस्] "to be."
+
+These are words that combine with @deva[कृ]/@deva[भू]/@deva[अस्] to form compound expressions meaning "to make/become X."
+
+**Examples:**
+- @deva[ऊरीकृत्य] "having assented" (@deva[ऊरी] + @deva[कृ])
+- @deva[शुक्लीकृत्य] "having whitened" (@deva[शुक्ल] + @deva[च्वि] + @deva[कृ] — "making white what was not white before")
+- @deva[पटपटाकृत्य] "having made the sound @deva[पटपट]" (@deva[डाच्]-ending onomatopoeia + @deva[कृ])
+
+The @deva[गति] designation ensures the gerund uses @deva[ल्यप्] (@deva[कृत्य]) instead of @deva[त्वा] (@deva[कृत्वा]).
+"""
+
+standard = """
+@deva[ऊर्यादि] words, @deva[च्वि]-ending words (by @ref[5.4.50]), and @deva[डाच्]-ending words (by @ref[5.4.57]) are @deva[गति] when combined with @deva[कृ]/@deva[भू]/@deva[अस्] — @deva[ऊर्यादिच्विडाचश्च].
+
+**Rule type — @deva[संज्ञा] extension of @deva[गति]:** Extends @deva[गति] beyond @deva[प्रादि] to additional word classes.
+
+**Examples:**
+- @deva[ऊरीकृत्य] "having assented" (@deva[ल्यप्] by @ref[7.1.37])
+- @deva[ऊरीकृतम्] "assented" (accent by @ref[6.2.49])
+- @deva[शुक्लीकृत्य] "having whitened" (@deva[च्वि] marks change of state: "what was not white becomes white")
+- @deva[पटपटाकृत्य] "having made the @deva[पटपट] sound"
+
+**@deva[ऊर्यादिगण] members:** @deva[ऊरी], @deva[उररी], @deva[पापी], @deva[धूसी], @deva[फली], @deva[ताली], @deva[शकला], @deva[आताली], @deva[वेताली], @deva[सजूः], etc.
+
+**@deva[च्वि] (@ref[5.4.50]):** Affix added to words before @deva[कृ]/@deva[भू] to express change of state. @deva[शुक्ल] → @deva[शुक्ली] (by @deva[च्वि]) → @deva[शुक्लीकरोति] "makes white."
+
+**@deva[डाच्] (@ref[5.4.57]):** Affix added to onomatopoeic bases before @deva[कृ]/@deva[भू].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[गतिः] from @ref[1.4.60]; @deva[क्रियायोगे] from @ref[1.4.59]; @deva[निपाताः] from @ref[1.4.56].
+
+@deva[ऊर्यादिच्विडाचश्च] — @deva[ऊर्यादि], @deva[च्वि]-ending, and @deva[डाच्]-ending words are also @deva[गति].
+
+**First non-@deva[प्रादि] @deva[गति] rule:** @ref[1.4.60] gave @deva[गति] to @deva[प्रादि] words. This rule extends @deva[गति] to entirely different word-classes. These words are @deva[गति] but NOT @deva[उपसर्ग] — confirming why @ref[1.4.59]–@ref[1.4.60] were split.
+
+**@deva[गति] effects apply identically:**
+- @ref[2.2.18]: compound formation with @deva[गति]
+- @ref[7.1.37]: @deva[त्वा] → @deva[ल्यप्] in compound with @deva[गति]
+- @ref[6.2.49]: accent retention on @deva[गति] element
+- @ref[8.2.71]: verb loses accent after @deva[गति]
+
+**@deva[कृ]/@deva[भू]/@deva[अस्] restriction:** The @deva[गति] status applies only with these three verbs. @deva[ऊरी] with other verbs would not be @deva[गति]. This restriction follows from the nature of @deva[च्वि] and @deva[डाच्], which are defined only in the context of @deva[कृ]/@deva[भू]/@deva[अस्].
+
+**@deva[ऊर्यादिगण]:** A closed list (@deva[गण]). Membership is determined by enumeration in the @deva[गणपाठ], not by semantic criteria.
+"""

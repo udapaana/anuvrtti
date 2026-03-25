@@ -1,0 +1,54 @@
+id = "1.3.6"
+numericId = "13006"
+
+[en]
+simple = """
+The initial @deva[ष्] of an affix is @deva[इत्] — a marker that gets deleted.
+
+**Example:**
+- @deva[नृत्] "to dance" + @deva[ष्वुन्] (@ref[3.1.145]) → @deva[नर्तकः] "dancer"
+  - @deva[ष्] is @deva[इत्] (deleted); @deva[न्] is @deva[इत्] (deleted); @deva[वु] → @deva[अक] by @ref[7.1.1]
+
+**What @deva[षित्] triggers:** An affix marked with @deva[ष्] causes the feminine to take @deva[ङीष्] (by @ref[4.1.41]): @deva[नर्तकी] "female dancer."
+
+**Only in affixes:** In words like @deva[षोडश] "sixteen," the @deva[ष्] is part of the word itself, not an affix marker.
+
+**Must be initial:** In the affix @deva[टिषच्], the @deva[ष्] is not at the beginning, so it is not @deva[इत्].
+"""
+
+standard = """
+Initial @deva[ष्] of a @deva[प्रत्यय] (affix) is @deva[इत्]. The word @deva[प्रत्यय] is carried forward and governs @ref[1.3.6]–@ref[1.3.8].
+
+**Example:**
+- @deva[ष्वुन्] (@ref[3.1.145]): @deva[ष्] is @deva[इत्]; @deva[वु] → @deva[अक] by @ref[7.1.1]
+- @deva[नृत्] + @deva[ष्वुन्] → @deva[नर्तकः] "dancer"
+
+**@deva[षित्] property — triggers @deva[ङीष्]:** By @ref[4.1.41] (@deva[षिद्गौरादिभ्यश्च]), @deva[षित्] affixes cause feminine @deva[ङीष्]: @deva[नर्तकी], @deva[रजकी].
+
+**Only in affixes:** @deva[षोडश] "sixteen," @deva[षडिक] — the @deva[ष्] is not in an affix, so it stays.
+
+**Must be initial:** In @deva[टिषच्], the @deva[ष्] is medial, not initial — so it is not @deva[इत्]. Result: @deva[अविषः] "ocean," @deva[महिषः] "buffalo."
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[उपदेशे] and @deva[इत्] from @ref[1.3.2].
+
+@deva[षः प्रत्ययस्य] — initial @deva[ष्] of an affix is @deva[इत्].
+
+**Introduction of @deva[प्रत्यय] restriction:** This is the first rule to restrict @deva[इत्] status to affixes specifically. @ref[1.3.2]–@ref[1.3.5] applied to all @deva[उपदेश] contexts (roots, affixes, augments). From @ref[1.3.6] onward through @ref[1.3.8], only affix-initial letters are @deva[इत्].
+
+**@deva[षित्] as a classification:** The @deva[ष्]-marker creates a class of affixes called @deva[षित्]. This classification triggers:
+- @ref[4.1.41]: feminine @deva[ङीष्] after @deva[षित्] affixes (@deva[नर्तकी])
+- Accent properties in certain contexts
+
+**@deva[अनित्य] status:** Like @ref[1.3.7], this rule has exceptions. Some @deva[ष्]-initial elements are not treated as @deva[इत्] when the @deva[ष्] is part of the meaningful content.
+
+**Position in the @deva[इत्] system:**
+- @ref[1.3.2]: nasal vowels (all @deva[उपदेश])
+- @ref[1.3.3]: final consonants (all @deva[उपदेश])
+- @ref[1.3.4]: exception for @deva[विभक्ति]
+- @ref[1.3.5]: initial @deva[ञि]/@deva[टु]/@deva[डु] (roots)
+- @ref[1.3.6] (this): initial @deva[ष्] (affixes only)
+- @ref[1.3.7]: initial @deva[चु]/@deva[टु] (affixes only)
+- @ref[1.3.8]: initial @deva[ल्]/@deva[श्]/@deva[कु] (non-@deva[तद्धित] affixes only)
+"""

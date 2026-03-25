@@ -1,0 +1,57 @@
+id = "1.4.12"
+numericId = "14012"
+
+[en]
+simple = """
+A long vowel (@deva[दीर्घ]) or an extra-long vowel (@deva[प्लुत]) is also called @deva[गुरु] "heavy."
+
+This completes the syllable weight system:
+- Short vowel (no following conjunct) → @deva[लघु] "light" (by @ref[1.4.10])
+- Short vowel + conjunct → @deva[गुरु] "heavy" (by @ref[1.4.11])
+- Long or extra-long vowel → @deva[गुरु] "heavy" (by this rule)
+
+**Example:** The @deva[ई] in @deva[ईक्ष्] "to see" is long and therefore @deva[गुरु]. This triggers the @deva[आम्] augment in the perfect tense (by @ref[3.1.36]):
+- @deva[ईक्ष्] → @deva[ईक्षांचक्रे] "he saw"
+
+Every syllable in Sanskrit is classified as either @deva[लघु] or @deva[गुरु] — there is no third category.
+"""
+
+standard = """
+A @deva[दीर्घ] (long) or @deva[प्लुत] (extra-long) vowel is @deva[गुरु] "heavy" — @deva[दीर्घं च].
+
+**Complete syllable weight system:**
+
+| Vowel type | Name | By |
+|------------|------|----|
+| Short, no following conjunct | @deva[लघु] | @ref[1.4.10] |
+| Short + @deva[संयोग] | @deva[गुरु] | @ref[1.4.11] |
+| Long / @deva[प्लुत] | @deva[गुरु] | @ref[1.4.12] (this) |
+
+**Grammatical effect — @ref[3.1.36]:** Roots beginning with a @deva[गुरु] vowel take @deva[आम्] in @deva[लिट्] (perfect):
+- @deva[ईक्ष्] → @deva[ईक्षांचक्रे] "he saw"
+- @deva[ईह्] → @deva[ईहांचक्रे] "he desired"
+
+**@deva[प्लुत] inclusion:** @deva[प्लुत] (three-@deva[मात्रा]) vowels are @deva[गुरु] as well. Since @deva[प्लुत] is longer than @deva[दीर्घ], its heaviness is expected.
+
+**Prosodic use:** In metre, both @deva[दीर्घ] and @deva[प्लुत] scan as @deva[गुरु] (two @deva[मात्रा]s for metrical purposes).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[गुरु] from @ref[1.4.11].
+
+@deva[दीर्घं च] — a long vowel is also @deva[गुरु].
+
+**Completing the @deva[लघु]/@deva[गुरु] system:** @ref[1.4.10]–@ref[1.4.12] together classify every vowel occurrence as either @deva[लघु] or @deva[गुरु]. The system is exhaustive:
+- @ref[1.4.10]: @deva[ह्रस्व] → @deva[लघु] (default for short)
+- @ref[1.4.11]: @deva[ह्रस्व] + @deva[संयोग] → @deva[गुरु] (override)
+- @ref[1.4.12] (this): @deva[दीर्घ]/@deva[प्लुत] → @deva[गुरु]
+
+**Key rules dependent on @deva[गुरु]:**
+- @ref[3.1.36]: @deva[आम्] in @deva[लिट्] after @deva[गुरु]-initial roots
+- @ref[3.3.103]: affix @deva[अ] after @deva[गुरु] penultimate
+- @ref[7.3.86]: @deva[गुण] restricted to @deva[लघु] penultimate — @deva[गुरु] blocks it
+
+**@deva[प्लुत] (@ref[1.2.27]):** The three-@deva[मात्रा] vowel used in calling from a distance (@deva[दूरात् आह्वाने]). It is naturally @deva[गुरु] — heavier than @deva[दीर्घ].
+
+**Transition:** @ref[1.4.13] begins the @deva[अङ्ग] definition — shifting from prosodic @deva[संज्ञा]s to structural ones.
+"""

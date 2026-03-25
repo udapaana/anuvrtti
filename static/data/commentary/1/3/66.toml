@@ -1,0 +1,49 @@
+id = "1.3.66"
+numericId = "13066"
+
+[en]
+simple = """
+The verb @deva[भुज्] "to eat, to enjoy" takes @deva[आत्मनेपद] — except when meaning "to protect."
+
+**@deva[आत्मनेपद] (eating, enjoying):**
+- @deva[अन्नं भुङ्क्ते] "he eats food"
+- @deva[राज्यं भुङ्क्ते] "he enjoys the kingdom"
+
+**@deva[परस्मैपद] (protecting):**
+- @deva[पुत्रान् भुनक्ति पिता] "the father protects his sons"
+
+This is @deva[भुज्] of the @deva[रुधादि] class (7th class). A different @deva[भुज्] in the @deva[तुदादि] class (6th class) meaning "to bend" is always @deva[परस्मैपदिन्].
+"""
+
+standard = """
+After @deva[भुज्] (@deva[रुधादिगण]) except in the "protect" meaning, @deva[आत्मनेपद].
+
+**Eating/enjoying — @deva[आत्मनेपद]:**
+- @deva[भुङ्क्ते], @deva[भुञ्जाते], @deva[भुञ्जते]
+
+**Protecting — @deva[परस्मैपद]:**
+- @deva[पुत्रान् भुनक्ति पिता] "the father protects his sons"
+- @deva[भुनक्त्येनम् अग्निः आहितः] "the consecrated fire protects him"
+
+**Which @deva[भुज्]?** @deva[भुज्] (@deva[रुधादि]) means "to eat, enjoy, protect." @deva[भुज्] (@deva[तुदादि]) means "to bend" — always @deva[परस्मैपदिन्], never affected by this rule.
+
+**Rule type — meaning-exception:** @deva[आत्मनेपद] is the default for this root; only the "protect" meaning reverts to @deva[परस्मैपद]. This is the inverse of most rules in this section, which add @deva[आत्मनेपद] to otherwise @deva[परस्मैपदिन्] roots.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[भुजो ऽनवने] — after @deva[भुज्] (not meaning "to protect"), @deva[आत्मनेपद].
+
+**Inverse pattern:** Most rules in @ref[1.3.17]–@ref[1.3.65] add @deva[आत्मनेपद] to @deva[परस्मैपदिन्] roots. This rule does the reverse — it gives @deva[आत्मनेपद] as default to a root that would otherwise follow @ref[1.3.78], with one meaning excluded.
+
+**@deva[अनवन] = not protecting:** @deva[अवन] means "protection." @deva[अनवन] = "not protection." In all senses except protection, @deva[भुज्] takes @deva[आत्मनेपद].
+
+**Two @deva[भुज्] roots:**
+- @deva[भुज्] (@deva[रुधादि], 7th class): "to eat, enjoy, protect" — governed by this rule
+- @deva[भुज्] (@deva[तुदादि], 6th class): "to bend" — always @deva[परस्मैपदिन्] by @ref[1.3.78]
+
+**Semantic motivation:** Eating and enjoying are paradigmatically self-benefiting actions — the agent consumes for himself. Protecting, by contrast, is directed toward the well-being of others. This semantic distinction drives the @deva[पद] split.
+
+**Position:** This rule shifts from prefix-specific rules to root-level rules that apply regardless of prefix — a transition toward the general @deva[पद]-assignment rules at @ref[1.3.72]–@ref[1.3.78].
+"""

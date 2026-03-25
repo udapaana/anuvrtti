@@ -1,0 +1,50 @@
+id = "1.4.108"
+numericId = "14108"
+
+[en]
+simple = """
+When the subject is anything other than "you" (@deva[युष्मद्]) or "I/we" (@deva[अस्मद्]), the verb takes @deva[प्रथम] "third person" endings.
+
+This is the default: any noun, proper name, or pronoun other than the first- and second-person pronouns triggers third person.
+
+**Examples:**
+- @deva[देवदत्तः पचति] "Devadatta cooks" (singular)
+- @deva[देवदत्तौ पचतः] "the two Devadattas cook" (dual)
+- @deva[देवदत्ताः पचन्ति] "the Devadattas cook" (plural)
+- @deva[सः पचति] "he cooks"
+- @deva[वृक्षः पतति] "the tree falls"
+
+Any subject that is not "you" or "I" — whether a person, animal, thing, or abstract concept — takes @deva[प्रथम] endings.
+"""
+
+standard = """
+When the subject is other than @deva[युष्मद्] or @deva[अस्मद्], @deva[प्रथम] (3rd person) endings are used — @deva[शेषे प्रथमः].
+
+**Rule type — @deva[विधि]:** Default person assignment.
+
+**Examples:**
+- @deva[देवदत्तः पचति] "Devadatta cooks" (@deva[एकवचन])
+- @deva[देवदत्तौ पचतः] "the two Devadattas cook" (@deva[द्विवचन])
+- @deva[देवदत्ताः पचन्ति] "the Devadattas cook" (@deva[बहुवचन])
+
+**@deva[शेष] = "the remainder":** After @ref[1.4.105] handles @deva[युष्मद्] and @ref[1.4.107] handles @deva[अस्मद्], everything left over (@deva[शेष]) gets @deva[प्रथम]. This is the default, unmarked person.
+
+**Scope:** Covers all nouns, demonstrative pronouns (@deva[सः], @deva[एषः]), interrogative pronouns (@deva[कः]), relative pronouns (@deva[यः]), and any other non-personal-pronoun subject.
+
+**Completes the person system:** @ref[1.4.105] (@deva[मध्यम]) + @ref[1.4.107] (@deva[उत्तम]) + this rule (@deva[प्रथम]) = exhaustive assignment of person to every possible subject.
+"""
+
+advanced = """
+@deva[शेषे प्रथमः] — in the remainder (subjects other than @deva[युष्मद्]/@deva[अस्मद्]), @deva[प्रथम पुरुष] applies.
+
+**@deva[शेष] as a technical device:** @[pāṇini] uses @deva[शेष] ("remainder") to create a catch-all default. By first carving out @deva[मध्यम] (@ref[1.4.105]) and @deva[उत्तम] (@ref[1.4.107]), this rule assigns @deva[प्रथम] to everything else without needing to enumerate subjects. This is a standard @[pāṇinian] technique: specific rules first, then a residual rule.
+
+**@deva[प्रथम] as unmarked person:** In the @[pāṇinian] system, @deva[प्रथम] is the default — assigned when no specific condition triggers @deva[मध्यम] or @deva[उत्तम]. This mirrors the linguistic reality that third person is the unmarked category cross-linguistically.
+
+**Person hierarchy and override:** When multiple subjects are present:
+- @deva[अस्मद्] + 3rd person → @deva[उत्तम] (1st person wins): @deva[अहं च देवदत्तश्च पचावः]
+- @deva[युष्मद्] + 3rd person → @deva[मध्यम] (2nd person wins): @deva[त्वं च देवदत्तश्च पचथः]
+The more participant-oriented person prevails.
+
+**End of @[pāda] 1.4 inflectional @deva[संज्ञा] rules:** @ref[1.4.99]–@ref[1.4.108] form a complete system for naming verb endings by voice (@deva[परस्मैपद]/\u200b@deva[आत्मनेपद]), person (@deva[प्रथम]/\u200b@deva[मध्यम]/\u200b@deva[उत्तम]), and number (@deva[एकवचन]/\u200b@deva[द्विवचन]/\u200b@deva[बहुवचन]).
+"""

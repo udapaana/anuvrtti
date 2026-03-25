@@ -1,0 +1,31 @@
+id = "3.1.33"
+numericId = "31033"
+
+[en]
+simple = """
+This rule introduces two affixes for future tenses. When @deva[लृ] (which covers both the second future and the conditional) follows, the affix @deva[स्य] is added to the root. When @deva[लुट्] (the first future, also called the periphrastic future) follows, the affix @deva[तासि] is added.
+
+Example: From @deva[कृ] (to do), adding @deva[स्य] gives @deva[करिष्यति] (he will do) for the second future. For the periphrastic future with @deva[तासि], we get @deva[कर्ता] (he will do, literally "he is a doer").
+
+The @deva[इ] in @deva[तासि] is an @deva[इत्] (indicatory marker). It prevents the nasal of certain roots from being dropped. For example, @deva[मन्] (to think) keeps its nasal: @deva[मन्ता] (he will think), not *@deva[मता].
+"""
+
+standard = """
+The affixes @deva[स्य] and @deva[तासि] are introduced for future tense formations. @deva[स्य] is added when @deva[लृ] follows—this @deva[प्रत्याहार] covers both @deva[लृङ्] (second future) and @deva[लृट्] (conditional), formed by dropping their distinguishing @deva[अनुबन्ध]s. @deva[तासि] is added when @deva[लुट्] (periphrastic future) follows.
+
+Examples: @deva[कृ] + @deva[स्य] + @deva[ति] → @deva[करिष्यति] (he will do); @deva[कृ] + @deva[तासि] → @deva[कर्ता] (he will do).
+
+The @deva[इ] in @deva[तासि] is @deva[इत्] by @ref[1.3.3], serving to block nasal deletion: @deva[मन्] + @deva[तासि] → @deva[मन्ता] (not *@deva[मता]).
+"""
+
+advanced = """
+This rule assigns @deva[स्य] to roots before @deva[लृ] and @deva[तासि] before @deva[लुट्]. The term @deva[लृ] is a @deva[प्रत्याहार] encompassing both @deva[लृङ्] (second future) and @deva[लृट्] (conditional)—the specific @deva[अनुबन्ध]s @deva[ङ्] and @deva[ट्] being stripped to form the common designation.
+
+@deva[स्य] examples: @deva[करिष्यति] (second future), @deva[अकरिष्यत्] (conditional).
+
+@deva[तासि] example: @deva[कर्ता] (periphrastic future).
+
+The @deva[इ] of @deva[तासि] is @deva[इत्] by @ref[1.3.3]. Its @deva[इत्]-status triggers @ref[1.1.5] @deva[क्ङिति च], blocking operations that would otherwise apply (such as nasal loss): @deva[मन्] + @deva[तासि] → @deva[मन्ता].
+
+@note[type=observation]: Both @deva[स्य] and @deva[तासि] are @deva[आर्धधातुक] affixes, triggering @deva[गुण] by @ref[7.3.84] where applicable.
+"""

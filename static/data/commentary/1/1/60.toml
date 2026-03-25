@@ -1,0 +1,48 @@
+id = "1.1.60"
+numericId = "11060"
+
+[en]
+simple = """
+When a sound or group of sounds disappears — it is not heard, not pronounced, and not written — that disappearance is called @deva[लोप] (elision). @deva[लोप] is not nothing: it is a grammatical zero, a substitute that replaces the original with silence.
+
+Because @deva[लोप] is treated as a substitute, it follows the rules of substitution. The deleted element can still trigger or block other rules, depending on @deva[स्थानिवद्भाव] (@ref[1.1.56]).
+
+**Example:** When @deva[अस्] "to be" loses its @deva[अ] before certain endings, the @deva[अ] undergoes @deva[लोप]. It is gone from pronunciation, but the grammar still knows something was there.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] defines @deva[लोप]: the complete disappearance of a sound or morpheme. Crucially, @deva[लोप] is classified as an @deva[आदेश] (substitute) — not mere absence. The deleted element is replaced by a zero that retains grammatical presence.
+
+**@deva[लोप] vs. related terms:**
+- @deva[लोप]: general elision — applies to any sound or morpheme
+- @deva[लुक्]: elision of an affix, where the affix's grammatical effects are also cancelled
+- @deva[श्लु]: elision of an affix, with specific conditions (@ref[1.1.61])
+- @deva[लुप्]: elision of an affix, where the affix's effects are preserved (@ref[1.1.62])
+
+**Example:** @ref[6.4.111] prescribes @deva[लोप] of @deva[अ] in @deva[अस्] before @deva[तस्] etc.: @deva[अस्] → @deva[स्तः] "they two are." The @deva[अ] is replaced by @deva[लोप] — a zero substitute.
+
+**Why it matters that @deva[लोप] is an @deva[आदेश]:** Since @deva[लोप] is a substitute, @deva[स्थानिवद्भाव] (@ref[1.1.56]) applies: the zero inherits the original's grammatical properties. This determines whether other rules can "see through" the deletion or not.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent definition.
+
+@deva[अदर्शनं लोपः] — non-appearance (@deva[अदर्शन]) is @deva[लोप].
+
+**@deva[लोप] as @deva[आदेश]:** This definition establishes @deva[लोप] within the substitution framework. When a rule says "let X undergo @deva[लोप]," it means "let zero replace X." The zero is a legitimate substitute, subject to all substitution rules (@ref[1.1.49]–@ref[1.1.56]).
+
+**Consequences of @deva[आदेश] status:**
+- @deva[स्थानिवद्भाव] (@ref[1.1.56]) applies: the @deva[लोप] inherits the original's properties
+- @ref[1.1.52] applies: @deva[लोप] as a single-letter substitute replaces the final of the @deva[स्थानिन्]
+- @ref[1.1.55] applies: if @deva[लोप] is @deva[शित्], it replaces the entire @deva[स्थानिन्]
+
+**The four types of elision in the @deva[अष्टाध्यायी]:**
+1. @deva[लोप] (this rule): general disappearance — the @deva[लोप]-substitute has @deva[स्थानिवद्भाव]
+2. @deva[लुक्] (@ref[1.1.61]): affix elision — the affix and its grammatical effects both disappear
+3. @deva[श्लु] (@ref[1.1.62]): affix elision — similar to @deva[लुक्] but with different conditions
+4. @deva[लुप्] (@ref[1.1.63]): affix elision — the affix disappears but its effects (accent, designation) remain
+
+**@deva[लोप] is not @deva[अभाव] (absence).** @deva[अभाव] means something was never there. @deva[लोप] means something was there and was actively removed. This distinction matters: a @deva[लोप]-ed element can still influence the derivation through @deva[स्थानिवद्भाव], while an absent element has no grammatical presence at all.
+
+**Example:** @deva[अस्] → @deva[स्तः]. The @deva[अ] undergoes @deva[लोप]. For @deva[पदान्तविधि] (word-final rules), the @deva[लोप] is not @deva[स्थानिवत्] (by @ref[1.1.58]), so sandhi rules do not see the phantom @deva[अ]. But for other rules, the @deva[अ]'s grammatical presence may still be felt.
+"""

@@ -1,0 +1,51 @@
+id = "1.4.59"
+numericId = "14059"
+
+[en]
+simple = """
+Words in the @deva[प्रादिगण] are called @deva[उपसर्ग] "verbal prefix" when they are combined with a verb.
+
+When @deva[प्र], @deva[परि], @deva[अभि], @deva[उप], etc. appear with a verb, they modify its meaning and are called @deva[उपसर्ग]. When not with a verb, they remain just @deva[निपात] (particle).
+
+**Examples:**
+- @deva[प्रणयति] "he leads forth" — @deva[प्र] is @deva[उपसर्ग] (with verb @deva[नी])
+- @deva[परिणयति] "he marries" — @deva[परि] is @deva[उपसर्ग] (with verb @deva[नी])
+
+The @deva[उपसर्ग] status matters because it triggers phonological rules. For example, @deva[न] becomes @deva[ण] after @deva[प्र] (by @ref[8.4.14]) — but only when @deva[प्र] is an @deva[उपसर्ग].
+"""
+
+standard = """
+@deva[प्रादि] words combined with a verb are @deva[उपसर्ग] — @deva[उपसर्गाः क्रियायोगे].
+
+**Rule type — @deva[संज्ञा]:** Assigns the @deva[उपसर्ग] label to @deva[प्रादि] words in verbal context.
+
+**Examples:**
+- @deva[प्रणयति] "leads forth" (@deva[न] → @deva[ण] by @ref[8.4.14] — triggered by @deva[उपसर्ग] status)
+- @deva[प्रणायकः] "leader" (@deva[ण]-substitution applies because @deva[प्र] is @deva[उपसर्ग] with verbal derivative)
+
+**Contrast (not @deva[उपसर्ग]):**
+- @deva[प्रनायकः] "leaderless" (from @deva[प्रगतो नायकः] — @deva[प्र] is with a noun, not a verb, so no @deva[उपसर्ग] status, no @deva[ण])
+
+**@deva[क्रियायोग] = "connection with a verb":** The prefix must be syntactically connected to a verbal form — finite verb, participle, or verbal derivative. Connection with a noun does not qualify.
+
+**Operational significance:** @deva[उपसर्ग] status triggers @deva[ण]-substitution (@ref[8.4.14]), accent rules, and other phonological processes that depend specifically on the @deva[उपसर्ग] designation.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[निपाताः] from @ref[1.4.56]; @deva[प्रादयः] from @ref[1.4.58].
+
+@deva[उपसर्गाः क्रियायोगे] — @deva[प्रादि] words are @deva[उपसर्ग] when connected with a verb.
+
+**@deva[क्रियायोग] scope:** "Connection with a verb" (@deva[क्रिया]) includes finite verbs, participles (@deva[कृत्] forms), and verbal derivatives. The @deva[काशिका] notes that even when the verbal root is embedded in a derived form, the @deva[उपसर्ग] relationship holds.
+
+**@deva[उपसर्ग]-specific rules:**
+- @ref[8.4.14]: @deva[ण]-substitution after @deva[उपसर्ग]-final @deva[र]/@ deva[@deva[ष]]
+- @ref[6.3.122]ff: @deva[उपसर्ग] compound accent
+- @ref[1.3.12]ff: several @deva[आत्मनेपद]/@deva[परस्मैपद] rules reference @deva[उपसर्ग]
+
+**@deva[वार्त्तिक]s:**
+- @deva[मरुत्] is treated as @deva[उपसर्ग]: @deva[मरुत्तः] "given by the Maruts" — @ref[7.4.47] expects @deva[उपसर्ग] to be vowel-ending, but @deva[मरुत्] is consonant-ending; the @deva[वार्त्तिक] waives this.
+- @deva[श्रत्] is @deva[उपसर्ग]: @deva[श्रद्धा] "faith" — @deva[श्रत्] + @deva[धा] by @ref[3.3.106].
+
+**Distinction from @deva[गति]:** @ref[1.4.60] gives the same @deva[प्रादि] words the @deva[गति] designation with verbs. The split allows other words (not @deva[प्रादि]) to be @deva[गति] without being @deva[उपसर्ग] — see @ref[1.4.61]ff.
+"""

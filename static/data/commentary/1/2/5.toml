@@ -1,0 +1,52 @@
+id = "1.2.5"
+numericId = "12005"
+
+[en]
+simple = """
+The @deva[लिट्] (perfect tense) affixes are treated as @deva[कित्] when they follow a root that ends in a single consonant (not a consonant cluster). @deva[कित्] blocks @deva[गुण] (vowel strengthening), just like @deva[ङित्]. But affixes marked with @deva[प्] are excluded — they still cause @deva[गुण].
+
+**Single consonant — no @deva[गुण]:** @deva[भिद्] "to split" → @deva[बिभिदतुः] "they two have split" — the @deva[इ] stays short.
+
+**@deva[पित्] affix — @deva[गुण] applies:** @deva[भिद्] → @deva[बिभेद] "he has split" — the singular @deva[णल्] is @deva[पित्], so @deva[इ] → @deva[ए].
+
+**Consonant cluster — not @deva[कित्]:** @deva[स्रंस्] "to fall" → @deva[सस्रंसतुः] "they two have fallen" — the root ends in a cluster (@deva[स्]), so the rule does not apply.
+"""
+
+standard = """
+@deva[लिट्] (perfect) affixes are @deva[कित्] after roots not ending in @deva[संयोग] (consonant cluster), excluding @deva[पित्] affixes. The @deva[अपित्] condition carries over from @ref[1.2.4].
+
+**Non-conjunct roots — @deva[कित्], no @deva[गुण]:**
+- @deva[भिद्] → @deva[बिभिदतुः] "they two have split" (@deva[इ] preserved)
+- @deva[छिद्] → @deva[चिच्छिदुः] "they have cut"
+- @deva[भुज्] → @deva[बुभुजतुः] "they two have enjoyed"
+
+**Conjunct-final roots — not @deva[कित्]:**
+- @deva[स्रंस्] → @deva[सस्रंसतुः] (if @deva[कित्] applied, @ref[6.4.24] would delete the nasal @deva[न्])
+- @deva[ध्वंस्] → @deva[दध्वंसे]
+
+**@deva[पित्] affixes — @deva[गुण] applies:**
+- @deva[भिद्] → @deva[बिभेद] "he has split" (3sg @deva[णल्] is @deva[पित्] as substitute of @deva[तिप्])
+
+**Strong/weak pattern in @deva[लिट्]:** This creates the same alternation as @ref[1.2.4] does for the present system: @deva[पित्] singular forms show @deva[गुण], non-@deva[पित्] forms do not.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अपित्] from @ref[1.2.4].
+
+@deva[असंयोगाल्लिट् कित्] — @deva[लिट्] affixes are @deva[कित्] after non-@deva[संयोग]-final roots, excluding @deva[पित्] affixes.
+
+**This shifts from @deva[ङित्] to @deva[कित्] extension.** @ref[1.2.1]–@ref[1.2.4] extended @deva[ङित्]; this rule extends @deva[कित्]. Both block @deva[गुण]/@deva[वृद्धि] by @ref[1.1.5], so the practical effect is the same.
+
+**Why @deva[कित्] and not @deva[ङित्]?** @deva[कित्] has additional effects beyond blocking @deva[गुण]. For instance, @ref[6.4.24] (@deva[अनिदिताम्]) deletes the @deva[उपधा] nasal before @deva[कित्] affixes. By making @deva[लिट्] affixes @deva[कित्], this deletion is triggered for non-conjunct roots:
+- @deva[भञ्ज्] → @deva[बभञ्ज] (but if @deva[कित्]: nasal would delete — the @deva[संयोग] exception prevents this)
+
+**Why the @deva[संयोग] exception?** Conjunct-final roots already have complex consonant behavior. Making their @deva[लिट्] affixes @deva[कित्] would trigger unwanted nasal deletion:
+- @deva[स्रंस्]: if @deva[कित्], @ref[6.4.24] → *@deva[सस्रसतुः] (nasal deleted) — wrong
+- Without @deva[कित्]: @deva[सस्रंसतुः] (nasal retained) — correct
+
+**The strong/weak pattern in @deva[लिट्]:**
+- Strong (@deva[पित्]): 3sg @deva[णल्]/1sg @deva[णल्] → @deva[गुण]: @deva[बिभेद], @deva[बिभेद]
+- Weak (non-@deva[पित्]): 3du, 3pl, all @deva[आत्मनेपद] → no @deva[गुण]: @deva[बिभिदतुः], @deva[बिभिदुः]
+
+**Interaction with @ref[1.2.6]:** The next rule further extends @deva[कित्] to @deva[लिट्] affixes of @deva[इ/उ]-final @deva[अनिट्] roots, covering cases not handled here.
+"""

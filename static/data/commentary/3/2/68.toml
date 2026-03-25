@@ -1,0 +1,37 @@
+id = "3.2.68"
+numericId = "32068"
+
+[en]
+simple = """
+The affix @deva[विट्] comes after @deva[अद्] 'to eat' when a case-ending word **other than** @deva[अन्न] 'food' is in composition.
+
+**Examples:**
+- @deva[आममत्ति] = @deva[आमात्] 'eating raw food'
+- @deva[शस्यात्] 'granivorous'
+
+**With @deva[अन्न]:** @deva[अन्नादः] 'food-eater' (uses general @deva[अण्] by @ref[3.2.1])
+
+This rule applies in both Vedic and modern Sanskrit (not just @deva[छन्दस्]).
+"""
+
+standard = """
+The affix @deva[विट्] comes after @deva[अद्] 'to eat' with @deva[सुप्]-ending word **except** @deva[अन्न] 'food'.
+
+@deva[छन्दसि] does **not** extend here—applies in modern Sanskrit too.
+
+**Examples:**
+- @deva[आममत्ति] = @deva[आमात्] 'eating raw food'
+- @deva[शस्यात्] 'granivorous'
+
+**Exception:** @deva[अन्न] + @deva[अद्] = @deva[अन्नादः] 'food-eater' (general @deva[अण्] by @ref[3.2.1])
+"""
+
+advanced = """
+The affix @deva[विट्] comes after @deva[अद्] 'to eat' with @deva[सुप्]-ending word except @deva[अन्न].
+
+@deva[छन्दसि] does **not** extend here.
+
+**Examples:** @deva[आमात्] 'raw-food-eater', @deva[शस्यात्] 'granivorous'
+
+**Exception:** @deva[अन्नादः] 'food-eater' (by @deva[अण्], @ref[3.2.1])
+"""

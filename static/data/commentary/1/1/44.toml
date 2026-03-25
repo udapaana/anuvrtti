@@ -1,0 +1,42 @@
+id = "1.1.44"
+numericId = "11044"
+
+[en]
+simple = """
+The term @deva[विभाषा] means "optionally" — when a rule uses this word, it means the rule may or may not apply. Both outcomes are grammatically correct.
+
+This is an important meta-concept in the grammar. Many rules produce two acceptable forms. The word @deva[विभाषा] (or sometimes a teacher's name, like @deva[शाकल्य]) signals this optionality.
+
+**Example:** @ref[1.1.16] makes vocative @deva[ओ] before @deva[इति] optionally @deva[प्रगृह्य]. So @deva[वायो इति] (no @deva[सन्धि]) and @deva[वायविति] (with @deva[सन्धि]) are both valid.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] defines @deva[विभाषा]: "may or may not" — when a rule is @deva[विभाषा], both its application and non-application produce correct forms.
+
+**Three types of @deva[विभाषा]:**
+1. **@deva[प्राप्तविभाषा]** — a general rule already applies; the option restricts it. The non-application falls back to the general rule.
+2. **@deva[अप्राप्तविभाषा]** — no prior rule applies; the option introduces a new possibility. Non-application means no change.
+3. **@deva[प्राप्ताप्राप्तविभाषा]** — intermediate cases where the applicability is itself debated.
+
+**Example:** @ref[1.1.32] (@deva[विभाषा जसि]) — @deva[सर्वादि] words in @deva[द्वन्द्व] optionally take pronominal nom. pl.: @deva[वर्णाश्रमेतरे] ~ @deva[वर्णाश्रमेतराः].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is an independent @deva[परिभाषा].
+
+@deva[न वेति विभाषा] — "not" and "or" together constitute @deva[विभाषा] (option). The word encodes both @deva[निषेध] (prohibition) and @deva[विधि] (prescription): the rule applies or does not, at the speaker's discretion.
+
+**How @deva[विभाषा] is signaled:**
+- Explicitly: the word @deva[विभाषा] appears (e.g., @ref[1.1.28], @ref[1.1.32])
+- By teacher's name: citing @deva[शाकल्य], @deva[स्फोटायन], etc. signals optionality (@deva[आचार्योपज्ञे विभाषा]) — e.g., @ref[1.1.16]
+- By @deva[वा]: the particle @deva[वा] "or" in a rule makes it optional
+
+**Three types (from @deva[सिद्धान्तकौमुदी]):**
+1. @deva[प्राप्तविभाषा]: a general rule (@deva[उत्सर्ग]) already provides one outcome; the option allows an alternative
+2. @deva[अप्राप्तविभाषा]: without the option rule, nothing would apply; it introduces a new possibility
+3. @deva[प्राप्ताप्राप्तविभाषा]: the applicability of the underlying rule is itself disputed
+
+**Consequence for @deva[प्रक्रिया]:** When @deva[विभाषा] applies, the grammar generates two valid forms. A speaker may use either. Neither is "more correct" — the option is genuine.
+
+**Interaction with @deva[बाध]/@deva[अपवाद]:** @deva[विभाषा] rules can be overridden by more specific rules. If an @deva[अपवाद] applies without option, the @deva[विभाषा] is neutralized.
+"""

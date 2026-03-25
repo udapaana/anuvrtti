@@ -1,0 +1,55 @@
+id = "1.1.73"
+numericId = "11073"
+
+[en]
+simple = """
+A word whose first vowel is a @deva[वृद्धि] vowel (@deva[आ], @deva[ऐ], or @deva[औ]) is called @deva[वृद्ध] (literally "grown" or "mature"). This designation determines which affixes can be added to the word.
+
+**Examples:** @deva[माला] "garland" — first vowel is @deva[आ] (@deva[वृद्धि]) → @deva[वृद्ध]. @deva[शाला] "hall" — first vowel is @deva[आ] → @deva[वृद्ध].
+
+**Why it matters:** @deva[वृद्ध] words receive special @deva[तद्धित] (secondary) affixes. For instance, @ref[4.2.114] prescribes @deva[छ्] after @deva[वृद्ध] words: @deva[माला] + @deva[छ्] → @deva[मालीयः] "relating to a garland."
+
+Only the first vowel counts. @deva[सभा] "assembly" has @deva[आ] as its second vowel, not the first — so it is not @deva[वृद्ध].
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] defines @deva[वृद्ध]: a word whose first vowel is @deva[वृद्धि] (@deva[आ], @deva[ऐ], or @deva[औ], as defined in @ref[1.1.1]).
+
+**Examples of @deva[वृद्ध] words:**
+- @deva[माला] (first vowel @deva[आ]) → @deva[वृद्ध]
+- @deva[शाला] (first vowel @deva[आ]) → @deva[वृद्ध]
+- @deva[कैलास] (first vowel @deva[ऐ]) → @deva[वृद्ध]
+- @deva[कौशल] (first vowel @deva[औ]) → @deva[वृद्ध]
+
+**Non-@deva[वृद्ध] examples:**
+- @deva[गुरु] (first vowel @deva[उ]) → not @deva[वृद्ध]
+- @deva[सभा] (first vowel @deva[अ], not @deva[आ]) → not @deva[वृद्ध]
+
+**Application:** @deva[वृद्ध] words take @deva[छ्] by @ref[4.2.114]: @deva[माला] + @deva[छ्] → @deva[मालीयः].
+
+**Extensions in @ref[1.1.74]–@ref[1.1.75]:** The next two rules expand the @deva[वृद्ध] designation:
+- @ref[1.1.74]: @deva[त्यदादि] (pronoun) words are @deva[वृद्ध] regardless of their first vowel
+- @ref[1.1.75]: eastern place names with first vowel @deva[ए] or @deva[ओ] are @deva[वृद्ध]
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent @deva[संज्ञा].
+
+@deva[वृद्धिर्यस्याचामादिस्तद्वृद्धम्] — a word whose first (@deva[आदि]) vowel (@deva[अच्]) is @deva[वृद्धि] is @deva[वृद्ध].
+
+**The @deva[वृद्ध] designation governs @deva[तद्धित] affix selection.** Many @deva[तद्धित] rules are conditioned on whether the base is @deva[वृद्ध] or not. This creates a systematic split in secondary derivation.
+
+**Key rules sensitive to @deva[वृद्ध]:**
+- @ref[4.2.114]: @deva[वृद्ध] words take @deva[छ्]
+- @ref[4.1.157]: @deva[वृद्ध] patronymics take specific affixes
+- @ref[4.2.67]: certain @deva[तद्धित] rules apply only to @deva[वृद्ध] bases
+
+**Why "first vowel"?** The @deva[काशिका] explains that the first vowel is diagnostic because @deva[वृद्धि] in the initial syllable typically results from prior derivation (e.g., a @deva[तद्धित] affix that caused @deva[वृद्धि] of the first vowel). The designation thus tracks derivational history.
+
+**@ref[1.1.73]–@ref[1.1.75] form a @deva[वृद्ध] system:**
+1. @ref[1.1.73] (this rule): general definition — first vowel is @deva[वृद्धि]
+2. @ref[1.1.74]: @deva[त्यदादि] words are @deva[वृद्ध] by convention
+3. @ref[1.1.75]: eastern place names with @deva[एङ्] first vowel are @deva[वृद्ध]
+
+**@deva[वार्त्तिक]:** Proper nouns are optionally @deva[वृद्ध]: @deva[देवदत्त] + @deva[छ्] → @deva[देवदत्तीयः] (treating as @deva[वृद्ध]) or @deva[दैवदत्तः] (regular @deva[तद्धित] with @deva[वृद्धि]).
+"""

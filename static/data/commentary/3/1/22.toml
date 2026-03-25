@@ -1,0 +1,43 @@
+id = "3.1.22"
+numericId = "31022"
+
+[en]
+simple = """
+The affix @deva[यङ्] is used to express repetition or intensity of an action. The root must have a single vowel and begin with a consonant. This forms the @deva[यङन्त] (intensive/frequentative).
+
+**Examples:**
+- @deva[पापच्यते] "cooks again and again" (from @deva[पच्])
+- @deva[जाज्वल्यते] "shines intensely" (from @deva[ज्वल्])
+
+The root is reduplicated and takes @deva[आत्मनेपद] endings.
+"""
+
+standard = """
+The @deva[यङ्] affix expresses @deva[क्रियासमभिहार] (repetition or intensity). Requirements:
+1. Root must have a single vowel (@deva[एकाच्])
+2. Root must begin with a consonant (@deva[हलादि])
+3. Root must be simple (no @deva[उपसर्ग])
+
+**Examples:**
+- @deva[पच्] -> @deva[पापच्यते] "cooks repeatedly"
+- @deva[ज्वल्] -> @deva[जाज्वल्यते] "blazes intensely"
+
+**Excluded:** @deva[प्राट्] (has @deva[उपसर्ग]), @deva[जागृ] (two vowels), @deva[ईक्ष्] (vowel-initial).
+
+**Voice:** @deva[आत्मनेपद] due to @deva[ङित्] (@deva[ङ्] in @deva[यङ्]).
+"""
+
+advanced = """
+@deva[यङ्] expresses @deva[क्रियासमभिहार] (repetition/intensity) after @deva[एकाच्] (single-vowel), @deva[हलादि] (consonant-initial) @deva[धातु]s.
+
+**Requirements:**
+- @deva[एकाच्]: single vowel. Excludes @deva[जागृ]
+- @deva[हलादि]: consonant-initial. Excludes @deva[ईक्ष्]
+- Simple root: no @deva[उपसर्ग]. Excludes @deva[प्राट्]
+
+**Examples:** @deva[पापच्यते], @deva[जाज्वल्यते]
+
+**@[vārtika]:** @deva[यङ्] also after @deva[सुचि], @deva[सूत्रि], @deva[मूत्रि], @deva[अटि], @deva[अर्ति], @deva[अश], @deva[अर्ण] (despite multiple vowels or vowel-initial): @deva[सोसूच्यते], @deva[सोसूत्र्यते], @deva[मोमूत्र्यते], @deva[अटाट्यते], @deva[अरार्यते], @deva[अशाश्यते], @deva[पोर्णोनूयते].
+
+**Usage note:** Some roots like @deva[शुभ्], @deva[रुच्] take @deva[यङ्] only for repetition (@deva[शोशुभ्यते], @deva[रोरुच्यते]), not intensity - intensity requires @deva[भृशं शोभते].
+"""

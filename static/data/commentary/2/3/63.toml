@@ -1,0 +1,42 @@
+id = "2.3.63"
+numericId = "23063"
+
+[en]
+simple = """
+In the Vedas, the genitive (@deva[षष्ठी]) can replace the instrumental (@deva[तृतीया]) when expressing the instrument of sacrificing (@deva[यज्]).
+
+Normally, when you say "he sacrifices with ghee," the word "ghee" takes the instrumental case because it is the means (@deva[करण]) of the action. But in Vedic passages, the genitive sometimes appears instead. Like the previous rule, this substitution is irregular — it does not always happen.
+
+**Examples:**
+- @deva[घृतस्य यजते] — 'he sacrifices with ghee' (genitive @deva[घृतस्य] where instrumental @deva[घृतेन] would be expected)
+- @deva[सोमस्य यजते] — 'he sacrifices with soma' (genitive @deva[सोमस्य] for instrumental @deva[सोमेन])
+
+This rule is limited to the root @deva[यज्] (to sacrifice). With other verbs, the instrumental remains standard even in Vedic language.
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule), Vedic domain.
+
+In @deva[छन्दस्], @deva[षष्ठी] is diversely (@deva[बहुलम्], continuing from @ref[2.3.62]) used for @deva[करण] (instrument) specifically with the root @deva[यज्] (to sacrifice). This overrides the standard @deva[तृतीया] assignment of @ref[2.3.18].
+
+**Key restriction:** The rule applies only to the @deva[करण]-@deva[कारक] of @deva[यज्], not to @deva[करण] with other verbs.
+
+**Examples:**
+- @deva[घृतस्य यजते] for @deva[घृतेन यजते] — 'he sacrifices with ghee'
+- @deva[सोमस्य यजते] for @deva[सोमेन यजते] — 'he sacrifices with soma'
+
+**Counterexample:**
+- @deva[अग्निना पचति] — 'he cooks with fire' — here @deva[षष्ठी] is not licensed because the verb is @deva[पच्], not @deva[यज्]
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]), @deva[छन्दसि] and @deva[बहुलम्] (from @ref[2.3.62]).
+
+This rule narrows the Vedic @deva[षष्ठी]-substitution to a single domain: the @deva[करण]-@deva[कारक] of the root @deva[यज्]. Where @ref[2.3.62] covered @deva[चतुर्थी]-for-@deva[षष्ठी] broadly, this rule targets @deva[तृतीया]-for-@deva[षष्ठी] with a specific verb.
+
+The restriction to @deva[यज्] is significant. Vedic ritual language uses @deva[यज्] extensively, and the genitive-for-instrumental pattern is well-attested in the @deva[संहिता] and @deva[ब्राह्मण] texts. The rule does not extend to other @deva[करण] relations — @deva[शस्त्रेण हन्ति] remains instrumental even in Vedic contexts.
+
+@deva[बहुलम्] carries forward from @ref[2.3.62], so the substitution remains irregular. The instrumental @deva[सोमेन यजते] and genitive @deva[सोमस्य यजते] are both grammatically valid in @deva[छन्दस्].
+
+This concludes the Vedic exception block (@ref[2.3.62]–63). The next rule (@ref[2.3.64]) returns to general (@deva[भाषा]) grammar.
+"""

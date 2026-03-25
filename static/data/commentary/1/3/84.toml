@@ -1,0 +1,42 @@
+id = "1.3.84"
+numericId = "13084"
+
+[en]
+simple = """
+The verb @deva[रम्] "to sport, delight" also takes @deva[परस्मैपद] (active endings) when preceded by @deva[उप] "near."
+
+**@deva[परस्मैपद]:**
+- @deva[देवदत्तम् उपरमति] "he causes Devadatta to desist"
+- @deva[उपरमति] "he ceases"
+
+The previous rule (@ref[1.3.83]) covered @deva[वि], @deva[आ], and @deva[परि] with @deva[रम्]. This rule adds @deva[उप] separately. The reason for the split is the next rule (@ref[1.3.85]), which makes @deva[परस्मैपद] optional specifically for @deva[उप] + @deva[रम्] in intransitive use — an exception that only applies here, not to the other three prefixes.
+"""
+
+standard = """
+After @deva[उप] + @deva[रम्], @deva[परस्मैपद].
+
+**@deva[परस्मैपद]:**
+- @deva[देवदत्तम् उपरमति] "he causes Devadatta to desist" (transitive)
+- @deva[उपरमति] "he ceases" (intransitive — but see @ref[1.3.85])
+
+**Rule type — @deva[अपवाद] of @ref[1.3.12]:** Like @ref[1.3.83], this overrides the unconditional @deva[आत्मनेपद] of @deva[अनुदात्तेत्] @deva[रम्].
+
+**Why separate from @ref[1.3.83]?** @ref[1.3.85] makes @deva[परस्मैपद] optional for intransitive @deva[उप] + @deva[रम्]. If @deva[उप] were included in @ref[1.3.83], @ref[1.3.85] would need to exclude @deva[वि], @deva[आ], and @deva[परि] explicitly. Separating @deva[उप] into its own rule keeps the system clean.
+
+**Transitive use:** @deva[उपरमति] with an object has causative force: "he causes X to desist" — the verb implies @deva[उपरमयति] without the @deva[णिच्] affix.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78].
+
+@deva[उपाच्च] — also after @deva[उप] + @deva[रम्], @deva[परस्मैपद].
+
+**Separate @[sūtra] for @ref[1.3.85]:** The sole reason @deva[उप] is excluded from @ref[1.3.83] and given its own rule is to provide a target for @ref[1.3.85]'s restriction. @ref[1.3.85] makes @deva[पद] optional for intransitive @deva[उप] + @deva[रम्] — this optionality applies only to @ref[1.3.84], not to @ref[1.3.83].
+
+**Causative force without @deva[णिच्]:** In transitive use, @deva[उपरमति] carries causative meaning: @deva[देवदत्तम् उपरमति] "he causes Devadatta to desist." The @deva[कर्मन्] (Devadatta) receives the action directly. This resembles @deva[उपरमयति] but uses the base root.
+
+**@deva[रम्] series position:**
+- @ref[1.3.83]: @deva[वि]/@deva[आ]/@deva[परि] → @deva[परस्मैपद] (mandatory, no exceptions)
+- @ref[1.3.84] (this): @deva[उप] → @deva[परस्मैपद] (mandatory, but see next)
+- @ref[1.3.85]: @deva[उप] + intransitive → optional (@deva[विभाषा])
+"""

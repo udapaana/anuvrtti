@@ -1,0 +1,50 @@
+id = "1.2.10"
+numericId = "12010"
+
+[en]
+simple = """
+After a consonant-final root whose second-to-last letter (@deva[उपधा]) is an @deva[इक्] vowel (@deva[इ], @deva[उ], @deva[ऋ], or @deva[ऌ]), the desiderative affix @deva[सन्] is treated as @deva[कित्] — but only when no @deva[इट्] augment has been added. @deva[कित्] blocks @deva[गुण] (vowel strengthening).
+
+**@deva[उपधा] @deva[इक्] — no @deva[गुण]:** @deva[भिद्] "to split" → @deva[बिभित्सति] "he wishes to split" — the @deva[इ] stays short.
+
+**@deva[उपधा] non-@deva[इक्] — @deva[गुण] applies:** @deva[यज्] "to sacrifice" → @deva[यियक्षते] "he wishes to sacrifice" — the @deva[अ] of @deva[यज्] is not @deva[इक्], so the rule does not apply. (If it did, unwanted @deva[सम्प्रसारण] would produce *@deva[इयक्षते].)
+"""
+
+standard = """
+After consonant-final roots with @deva[उपधा] @deva[इक्], @deva[झलादि] @deva[सन्] is @deva[कित्].
+
+**@deva[उपधा] @deva[इक्] — @deva[कित्], no @deva[गुण]:**
+- @deva[भिद्] → @deva[बिभित्सति] "wishes to split"
+- @deva[बुध्] → @deva[बुभुत्सते] "wishes to know"
+- @deva[मुच्] → @deva[मुमुक्षति] "wishes to be free"
+
+**@deva[उपधा] non-@deva[इक्] — not @deva[कित्]:**
+- @deva[यज्] → @deva[यियक्षते] (not *@deva[इयक्षते] — @deva[कित्] would trigger @deva[सम्प्रसारण] via @ref[6.1.16])
+
+**With @deva[इट्] — not @deva[झलादि], @deva[गुण] applies:**
+- @deva[वृत्] + @deva[इ] + @deva[सन्] → @deva[विवर्तिषते] "wishes to exist"
+
+**Conjunct-final roots also covered:** The rule says @deva[हल्] (consonant-final), which includes clusters:
+- @deva[दम्भ्] → @deva[धीप्सति] or @deva[धिप्सति] (by @ref[7.4.56])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[सन्] and @deva[झलादि] from context.
+
+@deva[हलन्तादिकोपधात् सनः] — after consonant-final roots with @deva[इक्] @deva[उपधा], @deva[झलादि] @deva[सन्] is @deva[कित्].
+
+**Complements @ref[1.2.9].** Together, @ref[1.2.9] and this rule cover the two main root shapes:
+- @ref[1.2.9]: vowel-final roots ending in @deva[इक्] → @deva[सन्] is @deva[कित्]
+- @ref[1.2.10] (this rule): consonant-final roots with @deva[इक्] @deva[उपधा] → @deva[सन्] is @deva[कित्]
+
+**Why @deva[इक्] @deva[उपधा] only?** Roots with non-@deva[इक्] @deva[उपधा] (like @deva[यज्], @deva[उपधा] = @deva[अ]) must not be @deva[कित्] — otherwise @ref[6.1.16] would trigger unwanted @deva[सम्प्रसारण]: @deva[यज्] → *@deva[इज्] → *@deva[इयक्षते] (wrong). The correct form @deva[यियक्षते] requires non-@deva[कित्] treatment.
+
+**@deva[हल्] as @deva[जाति] (class term):** @deva[हल्] covers any consonant-final root, including those ending in a cluster (@deva[संयोग]). So @deva[दम्भ्] (ending in @deva[म्भ्]) is covered: @deva[दम्भ्] → @deva[धीप्सति]/@deva[धिप्सति] (by @ref[7.4.56]).
+
+**With @deva[इट्]:** @deva[वृत्] + @deva[इसन्] → @deva[विवर्तिषते]. The @deva[इट्] makes @deva[सन्] non-@deva[झलादि], so this rule does not apply, and @deva[गुण] proceeds: @deva[ऋ] → @deva[अर्].
+
+**The @deva[कित्] extension for @deva[सन्] — summary:**
+- @ref[1.2.8]: six specific roots → @deva[सन्] @deva[कित्]
+- @ref[1.2.9]: all @deva[इक्]-final roots → @deva[झलादि] @deva[सन्] @deva[कित्]
+- @ref[1.2.10] (this rule): consonant-final with @deva[इक्] @deva[उपधा] → @deva[झलादि] @deva[सन्] @deva[कित्]
+"""

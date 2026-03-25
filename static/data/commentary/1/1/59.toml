@@ -1,0 +1,56 @@
+id = "1.1.59"
+numericId = "11059"
+
+[en]
+simple = """
+The previous rule (@ref[1.1.58]) said reduplication does not benefit from @deva[स्थानिवद्भाव] — the substitute's actual form is used. This rule makes a partial exception: when the reduplicating affix begins with a vowel, the substitute does act like the original for reduplication purposes.
+
+**Example:** @deva[दा] "to give" + @deva[लिट्] (perfect tense). Before @deva[लिट्], the long @deva[आ] of @deva[दा] is deleted. But @deva[लिट्] triggers reduplication, and since @deva[लिट्] begins with a vowel-initial affix, the deleted @deva[आ] "reappears" for reduplication: the grammar reduplicates @deva[दा] as @deva[ददा], then the @deva[आ] deletes again, yielding @deva[ददौ] "he gave."
+
+Without this rule, the grammar would try to reduplicate @deva[द्] alone (after @deva[आ] deletion), which would fail.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] partially restores @deva[स्थानिवद्भाव] for reduplication (@deva[द्वित्व]), which @ref[1.1.58] had excluded.
+
+**Condition:** The reduplicating affix must begin with a vowel (@deva[अजादि]). When it does, the vowel-substitute acts like the original during the reduplication process.
+
+**Example 1:** @deva[दा] + @deva[लिट्] (perfect):
+- @deva[आ] of @deva[दा] is deleted before @deva[लिट्] endings
+- But @deva[लिट्] triggers @deva[द्वित्व], and its replacement begins with a vowel
+- For @deva[द्वित्व], the deleted @deva[आ] is @deva[स्थानिवत्]: @deva[दा] → @deva[ददा]
+- After reduplication, @deva[आ] deletion proceeds: @deva[ददौ] "he gave"
+
+**Example 2:** @deva[ए/ओ/ऐ/औ] → @deva[अय्/अव्/आय्/आव्] before vowel-initial affixes. For reduplication, the substitute acts like the original diphthong, ensuring the correct syllable is copied.
+
+**Why only vowel-initial affixes?** When the affix begins with a consonant, the vowel-substitute's actual form is needed to determine how the consonant cluster behaves. With vowel-initial affixes, the junction is vowel-to-vowel, and the original's identity matters more than the substitute's phonetic shape.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अचः परस्मिन् पूर्वविधौ] from @ref[1.1.57]; @deva[स्थानिवत्] from @ref[1.1.56].
+
+@deva[द्वित्वे चाजादेः] — @deva[स्थानिवद्भाव] applies in @deva[द्वित्व] when the affix is @deva[अजादि] (vowel-initial).
+
+**This rule is an exception to the exception.** @ref[1.1.58] excluded @deva[द्वित्व] from @deva[स्थानिवद्भाव]. This rule restores it under a specific condition: the @deva[द्वित्व]-triggering affix begins with a vowel.
+
+**The logical chain:**
+1. @ref[1.1.56]: substitute is @deva[स्थानिवत्] (except @deva[अल्विधि])
+2. @ref[1.1.57]: extends to @deva[अल्विधि] for @deva[पूर्वविधि] of vowel substitutes
+3. @ref[1.1.58]: ten exceptions, including @deva[द्वित्व]
+4. @ref[1.1.59] (this rule): restores @deva[स्थानिवद्भाव] for @deva[द्वित्व] when the affix is @deva[अजादि]
+
+**Example:** @deva[दा] + @deva[लिट्]:
+- @deva[आ] → @deva[लोप] before @deva[लिट्] endings
+- @deva[लिट्] triggers @deva[द्वित्व]; the relevant affix replacement begins with a vowel
+- @deva[लोप] is @deva[स्थानिवत्] for @deva[द्वित्व]: grammar sees @deva[दा], reduplicates to @deva[ददा]
+- @deva[आ] deletion then applies: @deva[ददौ] "he gave"
+
+**Scope of vowel changes covered:**
+- @deva[दीर्घलोप]: long vowel deletion (@deva[दा] → @deva[द्])
+- @deva[उपधालोप]: penultimate vowel deletion
+- @deva[णिच्-लोप]: causative @deva[इ] deletion
+- @deva[सम्प्रसारण]: semivowel → vowel changes
+- @deva[एच्] → @deva[अय्/अव्/आय्/आव्] by @ref[6.1.78]
+
+**Why the @deva[अजादि] condition?** Before consonant-initial affixes, the substitute's actual form determines consonant-cluster behavior and syllable boundaries. Before vowel-initial affixes, the junction is smoother and the original's identity is what matters for correct reduplication.
+"""

@@ -1,0 +1,45 @@
+id = "2.3.71"
+numericId = "23071"
+
+[en]
+simple = """
+With future passive participles (@deva[कृत्य] forms, such as @deva[कर्तव्य], 'to be done'), the agent optionally takes the genitive (@deva[षष्ठी]) — meaning either genitive or instrumental is acceptable. The object, however, always takes the genitive.
+
+This is the Sanskrit equivalent of choosing between "the mat is to be made by you" (instrumental for agent) and "the mat is to be made of yours" (genitive for agent). Both are grammatically correct.
+
+**Examples:**
+- @deva[भवतः कटः कर्तव्यः] or @deva[भवता कटः कर्तव्यः] — 'the mat is to be made by you' (agent @deva[भवत्] in either genitive or instrumental)
+- @deva[गेयो माणवकः साम्नाम्] — 'the student is to be taught @[sāman]-s' (object @deva[साम्नाम्] in genitive — this is obligatory, not optional)
+
+The optionality applies only to the agent. The object must take the genitive, following the general rule of @ref[2.3.65].
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule), partially overriding @ref[2.3.69].
+
+With @deva[कृत्य] (future passive participle) forms — the class of affixes defined starting at @ref[3.1.95] (@deva[तव्यत्], @deva[अनीयर्], @deva[यत्], @deva[ण्यत्], @deva[क्यप्], etc.) — the following case-distribution applies:
+
+- **@deva[कर्तृ]:** optionally @deva[षष्ठी] or @deva[तृतीया] (the @deva[अन्यतरस्याम्] of the @[sūtra])
+- **@deva[कर्मन्]:** obligatorily @deva[षष्ठी] (by @ref[2.3.65], since @deva[कृत्य] is a @deva[कृत्] class not blocked by @ref[2.3.69])
+
+**Examples:**
+- @deva[भवतः कटः कर्तव्यः] — genitive for agent (option 1)
+- @deva[भवता कटः कर्तव्यः] — instrumental for agent (option 2)
+- @deva[गेयो माणवकः साम्नाम्] — 'the student is to be taught @[sāman]-s' — @deva[साम्नाम्] (object) obligatorily in @deva[षष्ठी]
+
+**Note:** @ref[2.3.69] blocks @deva[षष्ठी] for @deva[निष्ठा], @deva[शतृ], etc., but @deva[कृत्य] is not in that enumerated list. This rule specifically addresses @deva[कर्तृ] optionality — the @deva[कर्मन्] simply follows the unblocked general rule.
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]), @deva[कर्तृ/कर्मन्] (from @ref[2.3.65]).
+
+This rule addresses a gap left by @ref[2.3.69]: @deva[कृत्य] forms are not enumerated in that prohibition (which lists @deva[ल्], @deva[उ], @deva[उक्], @deva[अव्यय], @deva[निष्ठा], @deva[खलर्थ], @deva[तृन्]). Therefore @ref[2.3.65] applies to @deva[कृत्य] forms by default, licensing @deva[षष्ठी] for both @deva[कर्तृ] and @deva[कर्मन्]. This rule then introduces @deva[अन्यतरस्याम्] (optionality) for @deva[कर्तृ] specifically — the agent may take either @deva[षष्ठी] or @deva[तृतीया].
+
+The @deva[कर्मन्] is not mentioned because it needs no special rule: @ref[2.3.65] already assigns @deva[षष्ठी], and @ref[2.3.69] does not block it for @deva[कृत्य].
+
+**@[vārttika]:** With @deva[द्विकर्मक] (double-object) verbs, @deva[षष्ठी] is prohibited for the @deva[कर्मन्] — both objects take their standard case: @deva[क्रष्टव्या ग्रामं शाखा देवदत्तेन] ('the branch is to be dragged to the village by @[devadatta]'), @deva[नेतव्या ग्रामम् अजा देवदत्तेन] ('the goat is to be led to the village by @[devadatta]'). This @[vārttika] prevents the ambiguity that would arise from multiple genitives.
+
+The @deva[अन्यतरस्याम्] of this rule carries into @ref[2.3.72] by @deva[अनुवृत्ति], establishing optionality as a continuing thread through the final @[sūtras] of @[pāda] 2.3.
+
+Cross-reference @ref[2.3.65] for the general @deva[कृत्]-genitive rule, @ref[2.3.69] for the prohibition list, and @ref[3.1.95] for the definition of @deva[कृत्य].
+"""

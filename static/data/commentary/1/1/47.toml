@@ -1,0 +1,45 @@
+id = "1.1.47"
+numericId = "11047"
+
+[en]
+simple = """
+An augment marked with @deva[म्] is inserted after the last vowel of the element it augments — not at the very end, but specifically after the final vowel.
+
+The most common example is @deva[नुम्] (an @deva[न्]-augment). When @deva[नुम्] is added to @deva[मुच्] "to release," the @deva[न्] goes after the @deva[उ] (the last vowel), producing @deva[मुन्च्], which becomes @deva[मुञ्चति] "he releases."
+
+**Another example:** @deva[पयस्] "milk" + @deva[नुम्] + @deva[इ] → @deva[पयान्सि] "milks" — the @deva[न्] inserts after @deva[अ] (the last vowel of @deva[पयस्]), not at the very end.
+"""
+
+standard = """
+@deva[मित्] augments are placed after the final vowel (@deva[अन्त्य अच्]) of their host. This contrasts with @ref[1.1.46], where @deva[टित्] and @deva[कित्] augments go at the beginning or end.
+
+**The key augment: @deva[नुम्]** (actual sound: @deva[न्]; the @deva[उ] and @deva[म्] are @deva[इत्].)
+
+**Examples:**
+- @deva[मुच्] + @deva[शप्] + @deva[ति]: @deva[नुम्] inserts after @deva[उ] → @deva[मुन्च्] + @deva[अ] + @deva[ति] → @deva[मुञ्चति] "he releases" (by @ref[7.1.58])
+- @deva[पयस्] + @deva[शि]: @deva[नुम्] inserts after @deva[अ] (last vowel of @deva[पयस्]) → @deva[पयान्] + @deva[सि] → @deva[पयान्सि] "milks" (by @ref[7.1.72])
+
+**Why "after the last vowel"?** If @deva[नुम्] were placed at the end of the word (like a @deva[कित्] augment), @deva[मुच्] would become *@deva[मुच्न्], which is phonotactically impossible. Placing after the vowel ensures the @deva[न्] is in a pronounceable position.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this complements @ref[1.1.46].
+
+@deva[मिदचोऽन्त्यात् परः] — a @deva[मित्] augment comes after (@deva[परः]) the final (@deva[अन्त्यात्]) vowel (@deva[अचः]) of its host.
+
+**Primary augment: @deva[नुम्]** (@deva[न्]; @deva[उ] and @deva[म्] are @deva[इत्]). The @deva[म्] marker tells us to use this rule for placement.
+
+**Examples:**
+- @ref[7.1.58] (@deva[इदितो नुम् धातोः]): @deva[मुच्] → @deva[मु]-@deva[न्]-@deva[च्] → @deva[मुञ्चति]
+- @ref[7.1.72] (@deva[नपुंसकस्य झलचः]): @deva[पयस्] → @deva[पय]-@deva[न्]-@deva[स्] → @deva[पयान्सि]
+- @ref[7.1.70] (@deva[उगिदचां सर्वनामस्थानेऽधातोः]): @deva[राजन्] + @deva[सुँ] → @deva[राजा]-@deva[न्] → @deva[राजान्]
+
+**Three-way augment placement system:**
+- @deva[टित्] → before the host (@ref[1.1.46])
+- @deva[कित्] → after the host (@ref[1.1.46])
+- @deva[मित्] → after the host's final vowel (this rule)
+
+The @deva[मित्] placement is intermediate: neither at the very beginning nor the very end, but at a phonologically natural boundary — after the last vowel, before any trailing consonants. This ensures the augment consonant (@deva[न्]) forms a cluster with the following consonant rather than being stranded.
+
+**Scope:** The host's "final vowel" is determined within the scope of whatever the augment-prescribing rule targets. If the rule targets a root, the final vowel is the root's last vowel. If it targets a @deva[पद], the final vowel is the @deva[पद]'s last vowel.
+"""

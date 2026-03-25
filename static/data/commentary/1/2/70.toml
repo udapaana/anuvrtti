@@ -1,0 +1,50 @@
+id = "1.2.70"
+numericId = "12070"
+
+[en]
+simple = """
+When "father" (@deva[पितृ]) and "mother" (@deva[मातृ]) appear together, @deva[पितृ] may optionally be retained through @deva[एकशेष], giving @deva[पितरौ] "parents."
+
+**Both valid:**
+- @deva[पितरौ] "parents" (@deva[एकशेष] — @deva[पितृ] retained, dual)
+- @deva[मातापितरौ] "mother and father" (@deva[द्वन्द्व] compound — no @deva[एकशेष])
+
+The @deva[याज्ञवल्क्यस्मृति] uses @deva[पितरौ] to mean "father and mother" — a usage that depends on this grammatical rule.
+
+**Why optional?** Unlike @deva[भ्रातृ]/@deva[स्वसृ] at @ref[1.2.68] (which is obligatory), this rule gives a choice. Both @deva[एकशेष] and @deva[द्वन्द्व] are available.
+"""
+
+standard = """
+An optional @deva[एकशेष] is prescribed for the pair @deva[पितृ]/@deva[मातृ]: the masculine @deva[पितृ] is retained, yielding @deva[पितरौ] "parents" (dual).
+
+**Alternative:** The @deva[द्वन्द्व] compound @deva[मातापितरौ] is always available as the non-@deva[एकशेष] option.
+
+**@deva[विकल्प]:** This is explicitly optional — the speaker chooses between @deva[पितरौ] (@deva[एकशेष]) and @deva[मातापितरौ] (@deva[द्वन्द्व]).
+
+**Legal usage:** The @deva[याज्ञवल्क्यस्मृति] employs @deva[पितरौ] in the sense of "both parents" — @deva[एकशेष] is the grammatical basis for this legal reading.
+
+**Contrast with @ref[1.2.68]:** @deva[भ्रातृ]/@deva[स्वसृ] and @deva[पुत्र]/@deva[दुहितृ] are obligatory @deva[एकशेष]. @deva[पितृ]/@deva[मातृ] is optional — reflecting that @deva[मातापितरौ] is a well-established @deva[द्वन्द्व] in common usage.
+
+**Why @deva[पितृ] survives:** @deva[पितृ] is masculine, @deva[मातृ] is feminine. The masculine is retained, consistent with the general principle at @ref[1.2.67].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकशेष] from @ref[1.2.64].
+
+@deva[पिता मात्रा] — @deva[पितृ] is optionally retained when paired with @deva[मातृ].
+
+**Why a separate rule?** @deva[पितृ] and @deva[मातृ] have different stems, so @ref[1.2.67] (same-stem gender retention) cannot apply. Like @ref[1.2.68] (@deva[भ्रातृ]/@deva[स्वसृ]), this is a named-pair @deva[एकशेष] for suppletive kinship terms.
+
+**@deva[विकल्प] vs. @deva[नित्य]:** @ref[1.2.68] is obligatory (@deva[नित्य]) — @deva[भ्रातरौ] is the only option. This rule is optional (@deva[विकल्प]) — both @deva[पितरौ] and @deva[मातापितरौ] are correct. The optionality reflects the well-established @deva[द्वन्द्व] @deva[मातापितरौ] in usage.
+
+**@deva[धर्मशास्त्र] application:** @deva[पितरौ] in @deva[स्मृति] texts unambiguously means "father and mother" — the @deva[एकशेष] reading. Without this rule, @deva[पितरौ] would mean "two fathers" (standard dual of @deva[पितृ]).
+
+**Completing the kinship @deva[एकशेष] rules:**
+| Rule | Pair | Retained | Type |
+|------|------|----------|------|
+| @ref[1.2.68] | @deva[भ्रातृ]/@deva[स्वसृ] | @deva[भ्रातृ] | obligatory |
+| @ref[1.2.68] | @deva[पुत्र]/@deva[दुहितृ] | @deva[पुत्र] | obligatory |
+| @ref[1.2.70] (this) | @deva[पितृ]/@deva[मातृ] | @deva[पितृ] | optional |
+
+**Transition:** From @ref[1.2.71] onward, the @deva[एकशेष] section shifts to technical scope questions — which @deva[विभक्ति] endings qualify, and the @deva[गण] designations.
+"""

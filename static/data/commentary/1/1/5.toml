@@ -1,0 +1,42 @@
+id = "1.1.5"
+numericId = "11005"
+
+[en]
+simple = """
+@deva[गुण] and @deva[वृद्धि] vowel changes are blocked when the affix carries certain marker letters: @deva[क्], @deva[ङ्], or @deva[ग्]. These markers are part of the grammar's control system — they don't appear in the final word, but they tell you that the root vowel must remain unchanged.
+
+This is how the grammar handles irregular forms. Most affixes trigger vowel strengthening, but some preserve the original vowel. The markers @deva[क्], @deva[ङ्], and @deva[ग्] are the signal.
+
+**Example:** @deva[चि] "to collect" + @deva[क्त] (past participle affix) → @deva[चितः] "collected" — the @deva[इ] stays as @deva[इ], not strengthening to @deva[ए], because the @deva[क्] in @deva[क्त] blocks @deva[गुण].
+"""
+
+standard = """
+Affixes marked with indicatory @deva[क्] (@deva[कित्]), @deva[ङ्] (@deva[ङित्]), or @deva[ग्] (@deva[गित्]) block @deva[गुण]/@deva[वृद्धि] of @deva[इक्] vowels. This is an exception to the general @deva[गुण] rules like @ref[7.3.84].
+
+**@deva[कित्] affixes** (@deva[क्त], @deva[क्तवतु], @deva[क्त्वा], @deva[क्तिन्]):
+- @deva[चि] + @deva[क्त] = @deva[चितः] "collected" (not *@deva[चेतः])
+- @deva[भृ] + @deva[क्त्वा] = @deva[भृत्वा] "having borne" (not *@deva[भर्त्वा])
+
+**@deva[ङित्] affixes** (@deva[अङ्]; also by @ref[1.2.4], all @deva[सार्वधातुक] affixes without @deva[प्]):
+- @deva[विद्] + @deva[अङ्] = @deva[विदः] "knowing"
+- @deva[चि] + @deva[नु] + @deva[तः] = @deva[चिनुतः] "they two collect" (@deva[नु] treated as @deva[ङित्] by @ref[1.2.4])
+
+**@deva[गित्] affixes** (@deva[ग्स्नु]):
+- @deva[जि] + @deva[ग्स्नु] = @deva[जिष्णुः] "victorious" (not *@deva[जेष्णुः])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[गुणवृद्धी] and @deva[इकः] from @ref[1.1.3]; the @deva[निषेध] pattern from @ref[1.1.4].
+
+The locative @deva[कितिङिति] ("when a @deva[कित्] or @deva[ङित्] [affix is present]") indicates occasion — the blocking applies whenever such an affix is in the derivation, affecting both final and penultimate @deva[इक्] vowels:
+- @deva[भिद्] + @deva[क्त] = @deva[भिन्नः] "broken" — penultimate @deva[इ] also protected from @deva[गुण]
+
+**The @deva[इक्] restriction continues from @ref[1.1.3]:** Non-@deva[इक्] vowels undergo @deva[वृद्धि] even before @deva[कित्]/@deva[ङित्] affixes:
+- @deva[कम्] + @deva[णिङ्] = @deva[कामयते] "he desires" — @deva[अ] → @deva[आ] proceeds despite @deva[ङ्], because @deva[अ] is not @deva[इक्]
+
+**@deva[लकार] exception:** The @deva[ङ्] in tense markers (@deva[लङ्], @deva[लिङ्], @deva[लुङ्], @deva[लृङ्]) does not make them @deva[ङित्]. This is inferred from @ref[3.4.104], which replaces the @deva[लकार] entirely — the @deva[ङ्] serves only as a @deva[संज्ञा] marker for the tense, not as an affix-internal @deva[इत्].
+
+**@deva[वार्त्तिक] — @deva[मृज्] exception:** @deva[मृज्] "to wipe" optionally takes @deva[वृद्धि] even before @deva[कित्]/@deva[ङित्] affixes beginning with a vowel: @deva[परिमृजन्ति] or @deva[परिमार्जन्ति]. This is a @deva[वार्त्तिक] to @ref[7.2.114].
+
+**Interaction with @ref[1.1.4]:** Both this rule and @ref[1.1.4] independently block @deva[गुण]/@deva[वृद्धि]. This rule checks affix markers; @ref[1.1.4] checks root-deletion. If either condition is met, strengthening is blocked.
+"""

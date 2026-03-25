@@ -1,0 +1,46 @@
+id = "2.2.32"
+numericId = "22032"
+
+[en]
+simple = """
+In a @deva[द्वन्द्व] compound, a @deva[घि]-ending word — one ending in short @deva[इ] or short @deva[उ] (as defined by @ref[1.4.7]) — is placed first.
+
+**Examples:**
+- @deva[हरिहरौ] "Hari and Hara" — @deva[हरि] (ends in @deva[इ]) goes before @deva[हर] (ends in @deva[अ])
+- @deva[पटुगुप्तौ] "@[paṭu] and Gupta" — @deva[पटु] (ends in @deva[उ]) goes first
+- @deva[मृदुगुप्तौ] "@[mṛdu] and Gupta"
+
+When both words are @deva[घि]-ending, further ordering rules (like @ref[2.2.34], fewer vowels first) apply.
+"""
+
+standard = """
+@deva[घि]-word (@ref[1.4.7]) placed first in @deva[द्वन्द्व] — @deva[द्वन्द्वे घि].
+
+**Rule type — @deva[विधि] (ordering rule):** Determines member-order in @deva[द्वन्द्व] compounds.
+
+**Examples:**
+- @deva[हरिहरौ] — @deva[हरि] (@deva[इ]-final) before @deva[हर] (@deva[अ]-final)
+- @deva[पटुगुप्तौ] — @deva[पटु] (@deva[उ]-final) before @deva[गुप्त] (@deva[अ]-final)
+- @deva[मृदुगुप्तौ] — @deva[मृदु] (@deva[उ]-final) before @deva[गुप्त]
+
+**@deva[घि] defined by @ref[1.4.7]:** A @deva[प्रातिपदिक] ending in short @deva[इ] or short @deva[उ], excluding words in the @deva[नदी] and @deva[सखि] classes.
+
+**Multiple @deva[घि]-words:** @deva[मृदुपटुगुप्ताः] — both @deva[मृदु] and @deva[पटु] are @deva[घि]; further ordering by @ref[2.2.34] (fewer vowels first). @deva[गुप्त] (non-@deva[घि]) goes last.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[पूर्वम्] from @ref[2.2.30]; @deva[समासे] implied.
+
+@deva[द्वन्द्वे घि] — in @deva[द्वन्द्व], a @deva[घि]-ending word is placed first.
+
+**@deva[घि] — @ref[1.4.7]:** @deva[इदुदुपधस्य चाप्रत्ययस्य] — a @deva[प्रातिपदिक] ending in @deva[इ] or @deva[उ] (excluding @deva[नदी] forms and @deva[सखि]). This covers stems like @deva[हरि], @deva[पटु], @deva[मृदु], @deva[गुरु].
+
+**Ordering hierarchy in @deva[द्वन्द्व]:** The series @ref[2.2.32]–@ref[2.2.34] establishes a priority chain:
+1. @ref[2.2.32]: @deva[घि]-ending first
+2. @ref[2.2.33]: Vowel-initial + short-@deva[अ]-final first
+3. @ref[2.2.34]: Fewer vowels first
+
+When the first criterion does not distinguish (both are @deva[घि] or neither is), the next criterion applies. This gives a deterministic ordering for most @deva[द्वन्द्व] pairs.
+
+**Scope:** This ordering rule applies only within @deva[द्वन्द्व] — not to @deva[तत्पुरुष] or @deva[बहुव्रीहि], which have their own ordering rules.
+"""

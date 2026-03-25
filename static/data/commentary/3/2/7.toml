@@ -1,0 +1,31 @@
+id = "3.2.7"
+numericId = "32007"
+
+[en]
+simple = """
+The affix @deva[क] is used after @deva[ख्या] 'to tell/count' when preceded by the prefix @deva[सम्], with the object in composition.
+
+**Example:**
+- @deva[गाः सञ्चष्टे] = @deva[गोसङ्ख्यः] 'cowherd' (one who counts cows)
+
+Without this rule, @deva[सम्] + @deva[ख्या] would take @deva[अण्] (since it has an @deva[उपसर्ग]).
+"""
+
+standard = """
+The affix @deva[क] comes after @deva[ख्या] 'to tell/count' when preceded by @deva[सम्], with the object in composition.
+
+**Example:** @deva[गाः सञ्चष्टे] = @deva[गोसङ्ख्यः] 'a cowherd' (one who counts cows)
+
+The verb @deva[ख्या] ends in long @deva[आ]. By @ref[3.2.3], when compounded with an @deva[उपसर्ग], it would take @deva[अण्]. This rule debars @deva[अण्] specifically for @deva[सम्] + @deva[ख्या].
+
+The long @deva[आ] is elided by @ref[6.4.64].
+"""
+
+advanced = """
+The affix @deva[क] comes after root @deva[ख्या] 'to tell', when preceded by the preposition @deva[सम्] and the object is in composition.
+
+The verb @deva[ख्या] ends in long @deva[आ] and by @ref[3.2.3] when compounded with an @deva[उपसर्ग], it would take the affix @deva[अण्]. This rule debars @deva[अण्].
+
+**Example:**
+@deva[गोसङ्ख्यः] (by @ref[6.4.64]) 'a cowherd' (@deva[गाः सञ्चष्टे] 'he who counts the cows').
+"""

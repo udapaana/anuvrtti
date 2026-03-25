@@ -1,0 +1,33 @@
+id = "3.3.133"
+numericId = "33133"
+
+[en]
+simple = """
+When words meaning "quickly" — such as @deva[क्षिप्र], @deva[आशु], or @deva[तूर्णम्] — accompany a verb in a sentence expressing hope or expectation, the second future tense (@deva[लृट्]) must be used. The previous rule (@ref[3.3.132]) allowed the aorist (@deva[लुङ्]) for hopeful statements, but this rule overrides that when quickness is emphasized.
+
+**Example:** @deva[उपाध्यायश्चेत्क्षिप्रमागमिष्यति क्षिप्रं व्याकरणमध्येष्यामहे] "If the teacher comes quickly, we will soon study grammar." The verb @deva[आगमिष्यति] takes @deva[लृट्] because the sentence combines hope (@deva[चेत्] "if") with the idea of quickness (@deva[क्षिप्रम्]).
+
+This matters because it fine-tunes how Sanskrit encodes the speaker's attitude: when you hope something will happen soon, the grammar forces the second future rather than the aorist.
+"""
+
+standard = """
+This rule is an exception (@deva[अपवाद]) to @ref[3.3.132], which permits @deva[लुङ्] for expressions of hope (@deva[आशंसा]). When @deva[क्षिप्र] or any synonym denoting quickness serves as the @deva[उपपद] (accompanying word) in a conditional hope-expression, @deva[लृट्] alone applies.
+
+The rule type is @deva[नियम] (restriction) — it narrows the tense choice to @deva[लृट्] exclusively when quickness is involved.
+
+**Examples:**
+- @deva[उपाध्यायश्चेत्क्षिप्रमागमिष्यति] "If the teacher comes quickly..." — @deva[लृट्] is mandated by this rule.
+- @deva[चेदाशु प्रतियास्यति] "If he returns swiftly..." — @deva[आशु] triggers the same restriction.
+
+The scope is limited to @deva[आशंसा]-contexts with @deva[चेद्]-clauses or equivalent conditional constructions. Without a quickness-word, @ref[3.3.132] governs and @deva[लुङ्] remains available.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आशंसायाम्] from @ref[3.3.132].
+
+This is an @deva[अपवाद] to @ref[3.3.132]. The @deva[उपपद] @deva[क्षिप्र] and its @deva[पर्याय]-s (@deva[आशु], @deva[तूर्णम्], @deva[शीघ्रम्], etc.) restrict tense-selection to @deva[लृट्] alone when @deva[आशंसा] is expressed in a conditional construction. The @deva[लुङ्] that @ref[3.3.132] otherwise permits is excluded.
+
+The @deva[तत्पर्यायश्च] phrase extends the rule beyond @deva[क्षिप्र] to all synonyms conveying speed or immediacy. The @deva[नित्यत्व] of @deva[लृट्] here means no @deva[विकल्प] with @deva[लुङ्] — the second future is obligatory.
+
+This rule is itself overridden by @ref[3.3.134], which mandates @deva[लिङ्] when hope resides in the @deva[उपपद] rather than the verb, even in the presence of @deva[क्षिप्र].
+"""

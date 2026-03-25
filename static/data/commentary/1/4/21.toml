@@ -1,0 +1,47 @@
+id = "1.4.21"
+numericId = "14021"
+
+[en]
+simple = """
+@deva[बहुवचन] (plural) affixes are used to express multiplicity — more than two.
+
+**Example:** @deva[ब्राह्मणाः पठन्ति] "the Brahmins read" — plural subject, plural verb.
+
+Sanskrit has three numbers: singular (one), dual (two), and plural (more than two). This rule defines when plural affixes are selected.
+
+Indeclinables (@deva[अव्यय]) have no number distinction — they always appear in singular form regardless of how many things they refer to.
+"""
+
+standard = """
+@deva[बहुवचन] (plural) affixes express multiplicity (more than two) — @deva[बहुषु बहुवचनम्].
+
+**Rule type — @deva[संज्ञा]/@deva[विधि]:** Defines the condition for selecting plural affixes.
+
+**Example:** @deva[ब्राह्मणाः पठन्ति] "the Brahmins read"
+
+**Number system:** Sanskrit inflection distinguishes three numbers:
+- @deva[एकवचन] (singular): one entity
+- @deva[द्विवचन] (dual): exactly two entities
+- @deva[बहुवचन] (plural): more than two entities
+
+**@deva[अव्यय] exception:** Indeclinables lack number variation — @deva[सह] "with" is the same whether referring to one or many.
+
+**Scope:** Applies to both @deva[सुप्] (nominal) and @deva[तिङ्] (verbal) affixes — subject-verb agreement requires matching number.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[संज्ञा] context from @ref[1.4.1].
+
+@deva[बहुषु बहुवचनम्] — plural affixes express multiplicity.
+
+**Number @deva[संज्ञा] pair:** @ref[1.4.21] (plural) and @ref[1.4.22] (dual and singular) together assign number to all affix positions. The three @deva[वचन]s map to the three columns of the @deva[सुप्] and @deva[तिङ्] paradigms.
+
+**Affix selection:** Number determines which of the three affixes in each case/person row is selected:
+- 1st column: @deva[एकवचन] (e.g., @deva[सु], @deva[तिप्])
+- 2nd column: @deva[द्विवचन] (e.g., @deva[औ], @deva[तस्])
+- 3rd column: @deva[बहुवचन] (e.g., @deva[जस्], @deva[झि])
+
+**@deva[जात्येकवचनम्] (@ref[1.2.58]):** When a noun is used generically (denoting the class), singular suffices even for multiple referents: @deva[ब्राह्मणो वसति] can mean "Brahmins (in general) dwell."
+
+**Transition:** @ref[1.4.23] begins the @deva[कारक] @deva[अधिकार] — the semantic role system.
+"""

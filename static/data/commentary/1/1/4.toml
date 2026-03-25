@@ -1,0 +1,41 @@
+id = "1.1.4"
+numericId = "11004"
+
+[en]
+simple = """
+@deva[गुण] (medium-grade) and @deva[वृद्धि] (strengthened-grade) vowel changes do not happen when a certain type of affix — called @deva[आर्धधातुक] — causes part of the root itself to be deleted. The deletion signals that the root is being restructured, so the normal vowel strengthening is suppressed.
+
+**Normal case:** @deva[जि] "to conquer" + future affix → @deva[जेष्यामि] "I will conquer" — @deva[गुण] applies normally, @deva[इ] → @deva[ए].
+
+**This rule blocks it:** @deva[लोलूय] (intensive of @deva[लू] "to cut") + @deva[अच्] → the @deva[य] is deleted → @deva[लोलुवः] "great cutter." Because part of the root was deleted by the affix, the @deva[ऊ] stays unchanged instead of becoming @deva[ओ].
+"""
+
+standard = """
+This @deva[विधिसूत्र] creates an exception to @ref[1.1.3]. When an @deva[आर्धधातुक] affix causes @deva[लोप] (deletion) of a portion of the @deva[धातु], @deva[गुण]/@deva[वृद्धि] is blocked.
+
+**Normal — @deva[गुण] applies:**
+- @deva[जि] + @deva[स्यामि] → @deva[जेष्यामि] "I will conquer"
+
+**Blocked — root-portion deleted by @deva[आर्धधातुक]:**
+- @deva[लोलूय] + @deva[अच्] → @deva[लोलू] + @deva[अ] (@deva[य] deleted by @ref[2.4.74]) → @deva[लोलुवः] "great cutter"
+
+**Why @deva[धातु] is specified:** Deletion of an @deva[अनुबन्ध] (indicatory letter) or of an affix does not trigger this block:
+- @deva[लूञ्] + @deva[इता] → @deva[लविता] — @deva[ञ्] is @deva[अनुबन्ध], not a root-portion; @deva[गुण] applies
+- @deva[रिष्] + @deva[विच्] → @deva[रेड्] — @deva[व्] (affix-portion) deleted by @ref[6.1.67]; @deva[गुण] applies
+
+**Why @deva[आर्धधातुक] is specified:** @deva[सार्वधातुक] affixes that delete root-portions do not block @deva[गुण]:
+- @deva[रोरूय] + @deva[तिप्] → @deva[रोरवीति] "he roars loudly" — @deva[य] deleted, but @deva[गुण] applies because @deva[तिप्] is @deva[सार्वधातुक]
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[गुणवृद्धी] and @deva[इकः] from @ref[1.1.3]. This rule creates a @deva[निषेध] (prohibition) — @deva[गुण]/@deva[वृद्धि] of @deva[इक्] vowels is blocked under specific conditions.
+
+The three conditions must all hold: (1) the affix is @deva[आर्धधातुक]; (2) it causes @deva[लोप]; (3) the deleted element is part of the @deva[धातु] itself.
+
+**The @deva[इक्] restriction continues from @ref[1.1.3]:** Non-@deva[इक्] vowels can still undergo @deva[वृद्धि] even when root-deletion occurs:
+- @deva[भञ्ज्] + @deva[चिण्] → @deva[अभाजि] — @deva[ञ्] deleted, but @deva[अ] → @deva[आ] proceeds because @deva[अ] is not @deva[इक्]
+
+**@deva[वार्त्तिक]:** The @deva[भाष्य] clarifies that "root-portion" means a @deva[स्थानिन्]-element that was part of the original @deva[धातु] as listed in the @deva[धातुपाठ], not elements added by derivation. This prevents the rule from over-applying in complex @deva[सन्नन्त] and @deva[यङन्त] formations.
+
+**Interaction with @ref[1.1.5]:** Both this rule and @ref[1.1.5] block @deva[गुण]/@deva[वृद्धि], but for different reasons. This rule responds to root-deletion; @ref[1.1.5] responds to affix markers. They can apply independently.
+"""

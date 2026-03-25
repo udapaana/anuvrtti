@@ -1,0 +1,42 @@
+id = "3.1.43"
+numericId = "31043"
+
+[en]
+simple = """
+This rule introduces the affix @deva[च्लि] when @deva[लुङ्] (aorist tense) follows. The @deva[च्लि] affix serves as the general marker for all aorist formations.
+
+Breaking down the affix name:
+- The @deva[इ] is for ease of pronunciation (@deva[उच्चारणार्थ])
+- The @deva[च्] is an indicatory marker (@deva[इत्]) that, by @ref[6.1.162], indicates the affix has @deva[उदात्त] (high pitch) on its final syllable
+- What remains is @deva[ल्], which is then replaced by specific aorist affixes taught in subsequent rules
+
+@deva[च्लि] is essentially a placeholder—the common designation for all aorist affixes that will substitute for it.
+"""
+
+standard = """
+The affix @deva[च्लि] is added to roots when @deva[लुङ्] (aorist) follows. This serves as the generic aorist marker.
+
+Analysis of @deva[च्लि]:
+- @deva[इ] is @deva[उच्चारणार्थ] (for articulation only)
+- @deva[च्] is @deva[इत्] by @ref[1.3.3]; by @ref[6.1.162], @deva[चित्] affixes have @deva[उदात्त] on the final
+- The operative portion is @deva[ल्], which undergoes substitution by specific aorist affixes
+
+@deva[च्लि] functions as the @deva[सामान्यप्रत्यय] (general affix) for the aorist. Subsequent rules (@ref[3.1.44] ff.) specify which particular affixes replace @deva[च्लि] in different environments.
+"""
+
+advanced = """
+The affix @deva[च्लि] is introduced before @deva[लुङ्] as the generic aorist affix.
+
+@deva[इत्]-analysis:
+- @deva[च्] is @deva[इत्] by @ref[1.3.3], triggering @ref[6.1.162] @deva[चितः] — final @deva[उदात्त]
+- @deva[इ] is @deva[उच्चारणार्थ]
+- Operative: @deva[ल्]
+
+@deva[च्लि] is the @deva[सामान्यप्रत्यय] for @deva[लुङ्], replaced by specific aorist affixes:
+- @deva[च्लेः सिच्] (@ref[3.1.44]) — @deva[सिच्] aorist (sigmatic)
+- @deva[चङ्] (@ref[3.1.48]) — reduplicated aorist
+- @deva[अङ्] (@ref[3.1.52]) — root aorist
+- @deva[च्लि लुक्] (@ref[2.4.81]) — @deva[लुक्] deletion
+
+@note[type=observation]: The @deva[ल्] of @deva[च्लि] never surfaces directly—it is invariably replaced. The affix exists to provide a locus for the substitution rules that follow.
+"""

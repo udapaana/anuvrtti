@@ -1,0 +1,15 @@
+id = "6.4.150"
+numericId = "64150"
+
+[en]
+simple = """
+When a @deva[तद्धित] suffix contains @deva[य्] that is preceded by a consonant and stands second-to-last in the stem, that @deva[य्] is dropped before the feminine suffix @deva[ई]. For example, @deva[गार्ग्य] ("descendant of Garga") loses the @deva[य्] to give @deva[गार्गी], and @deva[वात्स्य] gives @deva[वात्सी]. The resulting form is the feminine of the patronymic.
+"""
+
+standard = """
+This rule specifies elision of the @deva[तद्धित] @deva[य्] when it is penultimate in a @deva[भ] @deva[अङ्ग] stem and is preceded by a consonant, conditioning on the following feminine suffix @deva[ई]. The @deva[य्] here belongs to a @deva[तद्धित] affix (typically a patronymic or relational affix), not to the root itself. From @deva[गार्ग्य] (where @deva[य्] is from affix @deva[यञ्]), the @deva[य्] is elided before @deva[ई], giving @deva[गार्गी]. Similarly @deva[वात्स्य] → @deva[वात्सी]. The consonant-precedence condition ensures that only consonant-cluster contexts trigger the elision.
+"""
+
+advanced = """
+The penultimate @deva[य्] of a @deva[तद्धित] affix, when preceded by a consonant, is elided before the feminine @deva[ई]. The @[anuvṛtti] of @deva[तद्धित] ceases here (it is re-mentioned in the next @[sūtra]), so this rule applies only before feminine @deva[ई]. Examples: @deva[गार्गी], @deva[वात्सी] (from @deva[गार्ग्य] and @deva[वात्स्य]). When @deva[य्] is not preceded by a consonant, elision is blocked: @deva[कारिकेयी]. When @deva[य्] does not belong to a @deva[तद्धित], elision is blocked: @deva[वैद्यस्य] @deva[भार्या] = @deva[वैद्यी].
+"""

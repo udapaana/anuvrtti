@@ -1,0 +1,44 @@
+id = "3.2.67"
+numericId = "32067"
+
+[en]
+simple = """
+In the Vedas, the affix @deva[विट्] (which is entirely deleted) comes after @deva[जन्] 'to be born', @deva[सन्] 'to bestow', @deva[खन्] 'to dig', @deva[क्रम्] 'to pace', @deva[गम्] 'to go'—and the final nasal becomes long @deva[आ].
+
+**Examples:**
+- @deva[अब्जाः] 'born in water' (from @deva[अप्] + @deva[जन्])
+- @deva[गोषाः] 'acquiring cows' (from @deva[गो] + @deva[सन्])
+- @deva[दधिक्राः] 'who gets milk' (from @deva[क्रम्])
+- @deva[अग्रेगाः] 'leader' (from @deva[गम्])
+"""
+
+standard = """
+In @deva[छन्दस्], the affix @deva[विट्] comes after @deva[जन्], @deva[सन्], @deva[खन्], @deva[क्रम्], @deva[गम्] with @deva[सुप्]/[@deva[उपसर्ग]]. The final nasal → long @deva[आ], and the affix is entirely deleted.
+
+**Affix structure:** @deva[ट्] is @deva[इत्], triggering @ref[6.4.41] (nasal → @deva[आ]). Affix deleted by @ref[6.1.67].
+
+| Root | Example | Reference |
+|------|---------|-----------|
+| @deva[जन्] | @deva[अब्जाः] 'water-born' | @deva[ऋग्वेद] VII.34.16 |
+| @deva[सन्] | @deva[गोषाः] 'cow-giver' | @deva[ऋग्वेद] IX.2.10 |
+| @deva[खन्] | @deva[विसखाः] 'lotus-digger' | — |
+| @deva[क्रम्] | @deva[दधिक्राः] 'milk-getter' | @deva[ऋग्वेद] IV.39.1 |
+| @deva[गम्] | @deva[अग्रेगाः] 'leader' | — |
+
+**Note:** @deva[जन्] includes 'to be born' and 'to happen'; @deva[सन्] includes 'to give' and 'to worship'.
+"""
+
+advanced = """
+In @deva[छन्दस्], the affix @deva[विट्] comes after @deva[जन्], @deva[सन्], @deva[खन्], @deva[क्रम्], @deva[गम्] with @deva[सुप्]/[@deva[उपसर्ग]]. Final nasal → long @deva[आ]; affix entirely deleted.
+
+**Affix mechanism:** @deva[ट्] is @deva[इत्] and qualifies as in @ref[6.4.41], causing nasal → @deva[आ]. Whole affix deleted by @ref[6.1.67].
+
+**Examples:**
+- @deva[अप्] + @deva[जन्] + @deva[विट्] = @deva[अब्जाः] 'water-born' (@deva[ऋग्वेद] VII.34.16)
+- @deva[गो] + @deva[सन्] + @deva[विट्] = @deva[गोषाः] 'cow-giver' (@ref[8.3.108], @deva[ऋग्वेद] IX.2.10)
+- @deva[खन्]: @deva[विसखाः] 'lotus-digger', @deva[कपूखाः] 'well-digger'
+- @deva[क्रम्]: @deva[दधिक्राः] 'milk-getter' (@deva[ऋग्वेद] IV.39.1, 40.5)
+- @deva[गम्]: @deva[अग्रेगा उन्नेतॄणाम्] 'leader'
+
+**Root scope:** @deva[जन्] = 'to be born' and 'to happen'; @deva[सन्] = 'to give' and 'to worship'.
+"""

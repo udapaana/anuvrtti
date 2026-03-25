@@ -1,0 +1,47 @@
+id = "1.2.67"
+numericId = "12067"
+
+[en]
+simple = """
+When a masculine and a feminine noun share the same base and differ only in the feminine suffix, the masculine is retained through @deva[एकशेष] ("retention of one"). The result is masculine dual.
+
+**Examples:**
+- @deva[ब्राह्मणः] "a male @deva[ब्राह्मण]" + @deva[ब्राह्मणी] "a female @deva[ब्राह्मण]" → @deva[ब्राह्मणौ] "a @deva[ब्राह्मण] couple"
+- @deva[कुक्कुटः] "rooster" + @deva[कुक्कुटी] "hen" → @deva[कुक्कुटौ] "rooster and hen"
+
+**Different bases — no @deva[एकशेष]:** @deva[कुक्कुटः] + @deva[मयूरी] "peahen" → @deva[कुक्कुटमयूर्यौ] (a @deva[द्वन्द्व] compound instead, since the bases differ).
+
+**Feminine suffix with extra meaning — blocked:** @deva[गणकः] "astrologer" + @deva[गणकी] "wife of an astrologer" → @deva[गणकगणक्यौ] — here @deva[गणकी] does not mean "female astrologer" but "wife of," so the suffix carries additional meaning and @deva[एकशेष] is blocked.
+"""
+
+standard = """
+In @deva[एकशेष], the masculine is retained over the feminine when the two words share the same @deva[प्रातिपदिक] (stem) and differ only in the @deva[स्त्रीप्रत्यय] (feminine affix).
+
+**Examples:**
+- @deva[ब्राह्मणः] + @deva[ब्राह्मणी] → @deva[ब्राह्मणौ] "a @deva[ब्राह्मण] couple"
+- @deva[कुक्कुटः] + @deva[कुक्कुटी] → @deva[कुक्कुटौ] "rooster and hen"
+
+**Conditions that block the rule:**
+1. **Different bases:** @deva[कुक्कुटः] + @deva[मयूरी] → @deva[कुक्कुटमयूर्यौ] (use @deva[द्वन्द्व])
+2. **Feminine affix with extra meaning:** @deva[गणकः] + @deva[गणकी] → @deva[गणकगणक्यौ] — @deva[गणकी] means "wife of a @deva[गणक]" (per @deva[ङीष्] with relational meaning), not "female @deva[गणक]"
+
+**@deva[पुंवद्भाव]:** The result behaves as masculine — this is the general principle that masculine subsumes feminine in @deva[एकशेष], just as it does in @deva[द्वन्द्व] compounds.
+
+**Scope:** This is the general gender-based @deva[एकशेष] rule. @ref[1.2.66] handled the specific @deva[गोत्र]/@deva[युवन्] case; @ref[1.2.68] handles specific kinship pairs with different stems.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकशेष] from @ref[1.2.64].
+
+@deva[पुमान् स्त्रिया] — the masculine is retained when paired with a feminine differing only in @deva[स्त्रीप्रत्यय].
+
+**"Differing only in feminine affix":** The rule requires that the masculine and feminine words share the same @deva[प्रातिपदिक] and differ only by the presence of a @deva[स्त्रीप्रत्यय] (@deva[ङीप्], @deva[ङीष्], @deva[ऊङ्], etc.). If the feminine affix carries additional meaning beyond gender (e.g., @deva[गणकी] = "wife of"), the words are not @deva[सरूप] in the relevant sense and @deva[एकशेष] is blocked.
+
+**Relation to @ref[1.2.64]:** The general @deva[एकशेष] rule requires identical forms (@deva[सरूप]). @deva[ब्राह्मणः] and @deva[ब्राह्मणी] are not identical, so @ref[1.2.64] alone would not apply. This rule extends @deva[एकशेष] to masculine/feminine pairs that differ only by gender marking.
+
+**Why masculine survives:** The masculine form is unmarked (no @deva[स्त्रीप्रत्यय]); the feminine is marked. In retention, the unmarked form subsumes the marked — parallel to @deva[पुंवद्भाव] in compounds.
+
+**Contrast with @ref[1.2.68]:** That rule lists specific kinship pairs (@deva[भ्रातृ]/@deva[स्वसृ], @deva[पुत्र]/@deva[दुहितृ]) where the stems are entirely different. This rule covers only same-stem pairs.
+
+**Contrast with @ref[1.2.69]:** The next rule introduces the neuter as an optional competitor — when neuter is present, it can optionally override masculine retention.
+"""

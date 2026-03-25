@@ -1,0 +1,45 @@
+id = "2.2.14"
+numericId = "22014"
+
+[en]
+simple = """
+A word in the genitive case does **not** form a compound when the genitive expresses the object of an action-noun (@deva[कृदन्त]), and the agent is also expressed separately. In such sentences, the object takes the genitive by a special rule, and that genitive cannot compound.
+
+**Examples (no compound):**
+- @deva[आश्चर्यो गवां दोहोऽगोपालकेन] "the milking of cows by a non-cowherd is a wonder" — @deva[गवाम्] (object in genitive) stays separate from @deva[दोह] (action-noun)
+- @deva[रोचते ओदनस्य भोजनं देवदत्तेन] "eating of rice by Devadatta is agreeable"
+- @deva[विचित्रा सूत्रस्य कृतिः पाणिनिना] "the composition of @[sūtras] by @[pāṇini] is wonderful"
+
+The genitive here means "of" in the object sense (the cows are milked, the rice is eaten), not possession.
+"""
+
+standard = """
+@deva[कर्मणि षष्ठी] does not compound — @deva[कर्मणि च].
+
+**Rule type — @deva[प्रतिषेध] (prohibition):** Blocks @ref[2.2.8] when the genitive has object-force (@deva[कर्मार्थ]).
+
+**Source of object-genitive:** @ref[2.3.65]–@ref[2.3.66] assign @deva[षष्ठी] to the object of a @deva[कृदन्त] when the agent is also expressed (typically in the instrumental). The genitive replaces what would otherwise be an accusative.
+
+**Examples:**
+- @deva[गवां दोहोऽगोपालकेन] — @deva[गवाम्] = object (@deva[कर्मन्]), @deva[अगोपालकेन] = agent (@deva[कर्तृ])
+- @deva[ओदनस्य भोजनं देवदत्तेन] — @deva[ओदनस्य] = object
+- @deva[सूत्रस्य कृतिः पाणिनिना] — @deva[सूत्रस्य] = object
+
+**No @deva[क्त] @deva[अनुवृत्ति]:** The @deva[अनुवृत्ति] of @deva[क्त] from @ref[2.2.12]–@ref[2.2.13] does not continue. This prohibition applies to any @deva[कृदन्त] second member, not just @deva[क्त].
+
+**Why block?** When both agent and object are present, compounding the object with the action-noun would leave the agent stranded syntactically, creating ambiguity about the roles.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.2.8]; @deva[न] from @ref[2.2.10]; @deva[तत्पुरुषः] from @ref[2.1.22].
+
+@deva[कर्मणि च] — @deva[षष्ठी] expressing the object (@deva[कर्मन्]) does not compound.
+
+**Break in @deva[अनुवृत्ति]:** The @deva[क्त] from @ref[2.2.12]–@ref[2.2.13] does not carry forward. The word @deva[कर्मणि] introduces a new condition that applies to any @deva[कृदन्त] — @deva[दोह] (from @deva[दुह्] + @deva[घञ्]), @deva[भोजन] (from @deva[भुज्] + @deva[ल्युट्]), @deva[कृति] (from @deva[कृ] + @deva[क्तिन्]).
+
+**Why the object-genitive cannot compound:** When @ref[2.3.65]–@ref[2.3.66] assign @deva[षष्ठी] to the @deva[कर्मन्] in the presence of a separately expressed @deva[कर्तृ], the sentence has a three-part structure: agent (instrumental) + object (genitive) + action-noun. Compounding the object with the action-noun (e.g., *@deva[गोदोहः]) would collapse two of the three elements, potentially creating a @deva[षष्ठीतत्पुरुष] that looks possessive rather than objective.
+
+**Contrast with single-referent cases:** When the agent is not separately expressed, the genitive object can compound: @deva[गोदोहः] "cow-milking" is valid when no agent is mentioned. This prohibition targets specifically the dual-referent construction where both @deva[कर्तृ] and @deva[कर्मन्] are present.
+
+**Continuing the prohibition chain:** @ref[2.2.10] (@deva[निर्धारण]), @ref[2.2.11] (seven categories), @ref[2.2.12]–@ref[2.2.13] (@deva[क्त] in special senses), @ref[2.2.14] (object-genitive) — systematically blocking genitive compounds where the semantic relationship would be obscured.
+"""

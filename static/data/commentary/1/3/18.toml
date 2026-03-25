@@ -1,0 +1,45 @@
+id = "1.3.18"
+numericId = "13018"
+
+[en]
+simple = """
+The verb @deva[क्री] "to buy" takes @deva[आत्मनेपद] when preceded by @deva[परि], @deva[वि], or @deva[अव].
+
+**Examples:**
+- @deva[परिक्रीणीते] "he purchases"
+- @deva[विक्रीणीते] "he sells"
+- @deva[अवक्रीणीते] "he buys"
+
+The root @deva[डुक्रीञ्] already has @deva[ञ्] as a marker, which by @ref[1.3.72] makes it @deva[आत्मनेपद] when the fruit of the action benefits the agent. This rule goes further — with these prefixes, @deva[आत्मनेपद] applies even when the action does not benefit the agent.
+
+**Must be @deva[उपसर्ग]:** @deva[बहुविक्रीणाति वनम्] — here @deva[बहुवि] is a noun, not a prefix, so @deva[परस्मैपद].
+"""
+
+standard = """
+After @deva[परि]/@deva[वि]/@deva[अव] + @deva[क्री] "to buy," @deva[आत्मनेपद] applies regardless of whether the fruit accrues to the agent.
+
+**Examples:**
+- @deva[परिक्रीणीते] "he purchases"
+- @deva[विक्रीणीते] "he sells"
+- @deva[अवक्रीणीते] "he buys"
+
+**Relation to @ref[1.3.72]:** @deva[डुक्रीञ्] is @deva[ञित्], making it @deva[उभयपदिन्] by @ref[1.3.72] — @deva[आत्मनेपद] when @deva[स्वार्थ] (agent benefits), @deva[परस्मैपद] otherwise. This rule removes the @deva[स्वार्थ] condition for these three prefixes, making @deva[आत्मनेपद] obligatory.
+
+**@deva[उपसर्ग] requirement:** @deva[वि] must function as a prefix. In @deva[बहुविक्रीणाति वनम्], @deva[वि] is part of the noun @deva[बहुवि] — @deva[परस्मैपद].
+
+**Scope:** Only @deva[परि], @deva[वि], and @deva[अव] trigger this. @deva[क्री] with other prefixes (or without a prefix) follows the default @ref[1.3.72] rule.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[परिव्यवेभ्यः क्रियः] — after @deva[परि]/@deva[वि]/@deva[अव] + @deva[क्री], @deva[आत्मनेपद].
+
+**Overriding @ref[1.3.72]:** @deva[क्रीञ्] is @deva[ञित्], so @ref[1.3.72] (@deva[स्वरितञितः कर्त्रभिप्राये क्रियाफले]) would give @deva[आत्मनेपद] only when the action's fruit benefits the agent. This rule makes @deva[आत्मनेपद] obligatory with these prefixes — the @deva[स्वार्थ] condition is dropped.
+
+**Why these three prefixes?** @deva[परिक्री] "to purchase," @deva[विक्री] "to sell," and @deva[अवक्री] "to buy" are well-established compound verbs in commercial usage. The @deva[आत्मनेपद] is lexicalized — it reflects conventional usage rather than a live semantic rule.
+
+**@deva[उपसर्ग] condition:** The prefix must function as an @deva[उपसर्ग] (@ref[1.4.59]). When @deva[वि] is part of a compound noun (@deva[बहुवि]), it is not an @deva[उपसर्ग] and the rule does not apply.
+
+**Pattern:** This is one of several @deva[उपसर्ग]-specific @deva[आत्मनेपद] rules in @ref[1.3.17]–@ref[1.3.21]. Each names a specific prefix + root combination, overriding the default @deva[पद] assignment.
+"""

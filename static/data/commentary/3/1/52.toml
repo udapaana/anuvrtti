@@ -1,0 +1,47 @@
+id = "3.1.52"
+numericId = "31052"
+
+[en]
+simple = """
+This rule assigns @deva[अङ्] as the replacement for @deva[च्लि] (the aorist marker) after three roots -- @deva[अस्] (to throw), @deva[वच्] (to speak), and @deva[ख्या] (to tell) -- when the verb expresses the agent (active voice).
+
+The @deva[अङ्]-aorist (also called the root aorist) is a formation where the root appears directly with endings, without @deva[सिच्] (the sigmatic element) or @deva[चङ्] (reduplication). The @deva[ङ्] in @deva[अङ्] is a technical marker that prevents vowel-strengthening (@deva[गुण] and @deva[वृद्धि]).
+
+Examples:
+- @deva[अस्] (to throw): @deva[पर्यास्थत] (he threw around)
+- @deva[वच्] (to speak): @deva[अवोचत्] (he spoke)
+- @deva[ख्या] (to tell): @deva[आख्यत्] (he told)
+
+Note that @deva[वच्] can also serve as a substitute for the root @deva[ब्रू] (to say), and @deva[ख्या] as a substitute for @deva[चक्ष्] (to see/tell). In passive constructions, these roots use @deva[सिच्] instead: @deva[पर्यासिषाताम्].
+"""
+
+standard = """
+This is a @deva[विधि] (injunctive) rule. @deva[अङ्] substitutes for @deva[च्लि] after @deva[अस्] (to throw), @deva[वच्] (to speak), and @deva[ख्या] (to tell) when @deva[कर्तरि] (agent/active voice).
+
+The @deva[ङ्] is @deva[इत्] (a technical marker), blocking @deva[गुण] and @deva[वृद्धि] by @ref[1.1.5] @deva[क्ङिति च].
+
+Examples:
+- @deva[अस्]: @deva[पर्यास्थत] (by @ref[7.4.17], @deva[स्] → @deva[स्थ्] before @deva[अङ्])
+- @deva[वच्]: @deva[अवोचत्] (with @deva[गुण] of @deva[उ] → @deva[ओ], since @deva[वच्] has @deva[सम्प्रसारण])
+- @deva[ख्या]: @deva[आख्यत्]
+
+@deva[वच्] may be the original root or a substitute for @deva[ब्रू] (by @ref[2.4.53]); @deva[ख्या] may be original or a substitute for @deva[चक्ष्] (by @ref[2.4.54]).
+
+@deva[अस्] belongs to the @deva[पुषादि] subdivision of @deva[दिवादि] (4th class), which would already take @deva[अङ्] in @deva[परस्मैपद] by @ref[3.1.55]. Its mention here extends @deva[अङ्] to @deva[आत्मनेपद] as well.
+
+In passive (@deva[कर्मणि]), @deva[सिच्] applies instead: @deva[पर्यासिषाताम्].
+"""
+
+advanced = """
+@deva[अङ्] is the @deva[आदेश] (substitute) for @deva[च्लि] after @deva[अस्], @deva[वच्], and @deva[ख्या] in @deva[कर्तरि लुङ्]. The @deva[अनुवृत्ति] of @deva[च्लेः] continues from @ref[3.1.44].
+
+The @deva[ङ्] is @deva[इत्] per @ref[1.3.3], triggering @ref[1.1.5] @deva[क्ङिति च] to block vowel strengthening.
+
+@deva[वच्] = root or @deva[ब्रू]-substitute (@ref[2.4.53]); @deva[ख्या] = root or @deva[चक्ष्]-substitute (@ref[2.4.54]).
+
+@deva[अस्] belongs to the @deva[पुषादि] group within @deva[दिवादि], which would take @deva[अङ्] in @deva[परस्मैपद] by @ref[3.1.55]. Its explicit inclusion here extends @deva[अङ्] to @deva[आत्मनेपद] contexts as well -- otherwise, @deva[आत्मनेपद] forms of @deva[अस्] would default to @deva[सिच्].
+
+Passive (@deva[कर्मणि]) reverts to the @deva[सिच्]-aorist: @deva[पर्यासिषाताम्].
+
+The @deva[अङ्]-aorist (root aorist) is characterized by the absence of any vikarana-like element between root and ending. The thematic @deva[अ] of @deva[अङ्] is added directly to the root, producing forms like @deva[अवोचत्], @deva[आख्यत्]. Compare with the @deva[सिच्]-aorist (@ref[3.1.44]) and @deva[चङ्]-aorist (@ref[3.1.48]) which insert distinctive elements.
+"""

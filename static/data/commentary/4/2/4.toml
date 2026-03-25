@@ -1,0 +1,30 @@
+id = "4.2.4"
+numericId = "42004"
+
+[en]
+simple = """
+The affix prescribed by @ref[4.2.3] is dropped (@deva[लुप्], "elision") when no specific portion of time — such as day or night — is mentioned. In that case, the bare asterism name is used directly.
+
+**Example:** @deva[अद्य पुष्यः] "today is @deva[पुष्य]" — the moon is in @deva[पुष्य] today, without specifying whether during the day or night. But when a specific time-portion is named, the affix stays: @deva[पौष्यी रात्रिः] "the @deva[पुष्य] night," @deva[पौष्यमहः] "the @deva[पुष्य] day."
+"""
+
+standard = """
+This @[vidhi] rule provides @deva[लुप्]-elision (complete dropping) of the @deva[अण्] affix ordained by @ref[4.2.3] when there is no specification of a particular time-portion (@deva[कालविशेष] — day, night, @deva[मुहूर्त], etc.).
+
+**Worked examples:**
+- Without specification: @deva[अद्य पुष्यः] — "today is @[puṣya]." The affix is elided, so the bare stem @deva[पुष्य] appears.
+- With specification: @deva[पौष्यी रात्रिः] — "the @[puṣya] night." Here @deva[अण्] is retained (yielding @deva[पौष्य], with feminine @deva[ई] agreeing with @deva[रात्रि]).
+- @deva[पौष्यमहः] — "the @[puṣya] day." Affix retained.
+
+**Key distinction:** @deva[लुप्]-elision differs from @deva[लोप] (general deletion) in that the elided affix is treated as still present for certain purposes (@deva[स्थानिवत्], @ref[1.1.62]). This preserves gender agreement and other downstream effects.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[नक्षत्रेण युक्तः कालः] from @ref[4.2.3]; @deva[अण्] from @ref[4.1.83].
+
+@deva[लुप्] is one of the five types of affix-elision (@deva[लुक्], @deva[श्लु], @deva[लुप्], @deva[लोप], @deva[प्रत्ययलोप]). Here @deva[लुप्] applies specifically when the time is @deva[अनिर्दिष्ट] (unspecified as to @deva[कालविशेष]). The elided affix remains @deva[स्थानिवत्] by @ref[1.1.62], meaning it is treated as present for purposes like gender assignment.
+
+When @deva[निर्दिष्ट] (a specific time-portion is named), the affix surfaces: @deva[पौष्यी रात्रिः], @deva[पौष्यमहः]. The feminine @deva[ई] in @deva[पौष्यी] comes via @deva[ङीप्] (@ref[4.1.15]) agreeing with @deva[रात्रि].
+
+@ref[4.2.5] carves out an exception for @deva[श्रवण] and @deva[अश्वत्थ], where @deva[लुप्] applies even with specification, provided the expression is a @deva[संज्ञा] (proper name).
+"""

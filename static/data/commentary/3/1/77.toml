@@ -1,0 +1,43 @@
+id = "3.1.77"
+numericId = "31077"
+
+[en]
+simple = """
+This rule says that the affix @deva[श] is added after roots of the @deva[तुदादि] class (6th conjugation) when a @deva[सार्वधातुक] affix denoting the agent follows.
+
+This @deva[श] blocks the general @deva[शप्] affix.
+
+The @deva[श] marker makes this a @deva[सार्वधातुक] affix, and the actual affix added is @deva[अ].
+
+Example derivation: @deva[तुद्] + @deva[श] + @deva[तिप्] → @deva[तुद्] + @deva[अ] + @deva[ति] → @deva[तुदति] (he pains/torments).
+
+The @deva[तुदादि] class is the 6th conjugational class, and by @ref[1.2.4], their @deva[विकरण] causes accent shifts.
+"""
+
+standard = """
+The affix @deva[श] is added after @deva[तुदादि] (6th class) roots when @deva[सार्वधातुक] follows in @deva[कर्तरि]. This @deva[विकरण] replaces @deva[शप्] for this class.
+
+@deva[इत्]-analysis:
+- @deva[श] itself is the @deva[इत्] marker, making this a @deva[सार्वधातुक] affix by @ref[3.4.113]
+- Operative portion: @deva[अ]
+
+Derivation: @deva[तुद्] + @deva[श] + @deva[तिप्] → @deva[तुद्] + @deva[अ] + @deva[ति] → @deva[तुदति].
+
+By @ref[1.2.4] @deva[सार्वधातुकमपित्], this affix (being @deva[अपित्], i.e., without @deva[प्]) is @deva[ङिद्वत्], blocking @deva[गुण] of the root vowel.
+
+Examples: @deva[तुदति] (he strikes), @deva[विशति] (he enters), @deva[मुचति] (he releases).
+"""
+
+advanced = """
+The affix @deva[श] is introduced after @deva[तुदादि] (@deva[गण] 6) roots when @deva[सार्वधातुक] follows in @deva[कर्तरि]. This is the @deva[विकरण] for the 6th conjugational class.
+
+@deva[इत्]-analysis:
+- @deva[श] is both the marker name and @deva[इत्], triggering @ref[3.4.113] (@deva[सार्वधातुक])
+- Operative: @deva[अ]
+
+Derivation: @deva[तुद्] + @deva[श] + @deva[तिप्] → @deva[तुद्] + @deva[अ] + @deva[ति] → @deva[तुदति].
+
+@ref[1.2.4] @deva[सार्वधातुकमपित्] applies: @deva[श] is @deva[अपित्] (lacks @deva[प्]-marker), so it is @deva[ङिद्वत्], blocking @deva[गुण] by @ref[1.1.5]. This explains why @deva[तुदादि] roots do not undergo @deva[गुण]: @deva[तुदति], not *@deva[तोदति].
+
+@note[type=observation]: @deva[तुदादि] differs from @deva[भ्वादि] precisely in the @deva[पित्]/@deva[अपित्] distinction: @deva[शप्] is @deva[पित्] (triggering @deva[गुण]: @deva[भवति]); @deva[श] is @deva[अपित्] (blocking @deva[गुण]: @deva[तुदति]).
+"""

@@ -1,0 +1,45 @@
+id = "4.3.151"
+numericId = "43151"
+
+[en]
+simple = """
+In Vedic literature (@deva[छन्दस्]), the affix @deva[मयट्] does not come after disyllabic words containing a short @deva[उ], nor after @deva[वर्ध्र] and @deva[बिल्व].
+
+**Examples:**
+- @deva[मुञ्ज] → @deva[मौञ्जं शिक्यम्] (with @deva[अण्], not @deva[मयट्])
+- @deva[गर्मुत्] → @deva[गार्मुतं चक्रम्] (with @deva[अञ्])
+- @deva[वर्ध्र] → @deva[वार्ध्री बालप्रग्रथिता भवति]
+- @deva[बिल्व] → @deva[बैल्वो ब्रह्मवर्चसकामेन कार्यः]
+
+The rule says @deva[उत्वत्] ('having short @deva[उ]'), not just 'ending in @deva[उ].' The @deva[वत्] indicates the rule applies to words with @deva[उ] anywhere, including @deva[वेणु]: @deva[वैणवी यष्टिः] (by @ref[4.3.136]).
+
+For words with long @deva[ऊ], @deva[मयट्] applies: @deva[भूममयान्यभ्राणि].
+"""
+
+standard = """
+In @deva[छन्दस्], @deva[मयट्] is blocked after @deva[द्व्यच्] words containing @deva[उ] (short), and after @deva[वर्ध्र] and @deva[बिल्व].
+
+**Examples:**
+- @deva[मुञ्ज] → @deva[मौञ्जं शिक्यम्] (@deva[अण्]; @deva[मुञ्ज] is @deva[आद्युदात्त] by @[phiṭ] II.4 (@deva[तृणधान्यानाम्]))
+- @deva[गर्मुत्] → @deva[गार्मुतं चक्रम्] (@deva[अञ्] by @ref[4.3.140]; @deva[गर्मुत्] formed by @deva[उत्] + @deva[मुट्] per @[uṇ]. I.94-95)
+- @deva[वार्ध्री] (@deva[वर्ध्र] is @deva[आद्युदात्त] by @[phiṭ] II.19; feminine by @deva[ङीप्] @ref[4.1.15])
+- @deva[बैल्वः]
+
+**@deva[उत्वत्]:** The @deva[वत्] shows the rule applies to words *having* @deva[उ] (not just ending in it), hence @deva[वेणु] also: @deva[वैणवी यष्टिः] (@ref[4.3.136]).
+
+Long @deva[ऊ] doesn't block: @deva[भूममयान्यभ्राणि].
+"""
+
+advanced = """
+In @deva[छन्दस्], @deva[मयट्] is blocked after @deva[द्व्यच्] words with @deva[उ] (@deva[ह्रस्व]), and after @deva[वर्ध्र], @deva[बिल्व].
+
+**Examples:**
+- @deva[मुञ्ज]: @deva[आद्युदात्त] (@[phiṭ] II.4) → @deva[अण्] → @deva[मौञ्जम्]
+- @deva[गर्मुत्]: @deva[अन्त्योदात्त] (@deva[उत्] + @deva[मुट्], @[uṇ]. I.94-95) → @deva[अञ्] (@ref[4.3.140]) → @deva[गार्मुतम्]
+- @deva[वर्ध्र]: @deva[आद्युदात्त] (@[phiṭ] II.19) → @deva[अण्] → @deva[वार्ध्री] (@deva[ङीप्])
+- @deva[बैल्वः]
+
+**@deva[उत्वत्]:** @deva[वत्] blocks @deva[तदन्तविधि]; rule applies to words *containing* @deva[उ], not just ending in it. Hence @deva[वेणु] (@ref[4.3.136]): @deva[वैणवी].
+
+@deva[दीर्घ ऊ] doesn't block: @deva[भूममयानि].
+"""

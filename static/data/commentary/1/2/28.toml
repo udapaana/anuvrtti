@@ -1,0 +1,36 @@
+id = "1.2.28"
+numericId = "12028"
+
+[en]
+simple = """
+When a rule says "replace with @deva[ह्रस्व] (short)," "@deva[दीर्घ] (long)," or "@deva[प्लुत] (prolonged)," the replacement always targets a vowel — never a consonant. This clarifies that duration terms apply only to vowels.
+
+**Example:** The rule @ref[1.2.47] says "the final of a neuter stem becomes @deva[ह्रस्व]." This means the final *vowel* is shortened — not any consonant that might appear.
+- @deva[रै] → @deva[रि] (the vowel @deva[ऐ] shortens to @deva[इ])
+
+Without this clarification, the grammar might wrongly try to shorten a consonant.
+"""
+
+standard = """
+When @deva[ह्रस्व], @deva[दीर्घ], or @deva[प्लुत] is prescribed as a substitute, it replaces a vowel (@deva[अच्]) only. This is a @deva[परिभाषा] (interpretive metarule).
+
+**Examples:**
+- @ref[1.2.47]: @deva[ह्रस्व] replaces the final vowel in neuter @deva[प्रातिपदिक]s: @deva[अति] + @deva[रै] → @deva[अतिरि] (@deva[ऐ] → @deva[इ]); @deva[अति] + @deva[नौ] → @deva[अतिनु] (@deva[औ] → @deva[उ])
+- @ref[7.4.25]: @deva[दीर्घ] before @deva[य]-initial non-@deva[कृत्], non-@deva[सार्वधातुक] affixes: @deva[चि] + @deva[यङ्] → @deva[चीयते] "is gathered"
+- @ref[8.2.82]: @deva[प्लुत] in calling from a distance: @deva[देवदत्ता३] "O Devadatta!"
+
+**Why needed?** Without this rule, @deva[दीर्घ] in @ref[7.4.25] could wrongly apply to a consonant: @deva[भिद्] + @deva[य] might become *@deva[भीद्यते]. The @deva[परिभाषा] ensures only the vowel is targeted: @deva[भिद्यते] (correct).
+"""
+
+advanced = """
+@deva[अचोऽस्ति ह्रस्वदीर्घप्लुतः] — when @deva[ह्रस्व], @deva[दीर्घ], or @deva[प्लुत] is prescribed, it substitutes for a vowel (@deva[अच्]).
+
+**@deva[परिभाषा] rule:** This is an interpretive principle that constrains all rules using duration terms. Whenever a rule says "X becomes @deva[दीर्घ]" or "X becomes @deva[ह्रस्व]," understand: "the vowel portion of X becomes @deva[दीर्घ]/@deva[ह्रस्व]."
+
+**Why this is needed — the @deva[भिद्] case:**
+@ref[7.4.25] prescribes @deva[दीर्घ] before @deva[य]-initial @deva[आर्धधातुक] affixes. For @deva[चि] + @deva[य], the @deva[इ] lengthens to @deva[ई] → @deva[चीयते]. But for @deva[भिद्] + @deva[य], without this @deva[परिभाषा], the rule might try to lengthen the consonant @deva[द्]. This rule clarifies: only the vowel @deva[इ] could be affected — and since @deva[इ] is the @deva[उपधा] (not the final), the @deva[दीर्घ] rule applies only when the target is actually a vowel.
+
+**Interaction with @ref[1.2.27]:** That rule defined the three duration categories. This rule specifies their operational domain — they are substitutes for vowels only.
+
+**Scope:** This @deva[परिभाषा] governs every rule in the @deva[अष्टाध्यायी] that uses @deva[ह्रस्व], @deva[दीर्घ], or @deva[प्लुत] as prescribed operations. Examples include @ref[1.2.47] (@deva[ह्रस्व] in neuter), @ref[6.3.111] (@deva[दीर्घ] in @deva[समास]), @ref[7.4.25] (@deva[दीर्घ] before @deva[य]-affixes), @ref[8.2.82]–@ref[8.2.84] (@deva[प्लुत] in calling).
+"""

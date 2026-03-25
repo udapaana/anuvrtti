@@ -1,0 +1,51 @@
+id = "2.3.61"
+numericId = "23061"
+
+[en]
+simple = """
+When the imperative forms @deva[प्रेष्य] ("send!") or @deva[ब्रूहि] ("announce!") are used in a sacrificial context, and the thing being sent or announced is a @deva[हविस्] (sacrificial offering) destined for a deity, the object — the offering itself — takes the genitive case (@deva[षष्ठी]) instead of the accusative.
+
+**Example:**
+- @deva[अग्नये छागस्य हविषो वपायाः मेदसः अनुब्रूहि] — "announce to Agni: the goat, the oblation, the omentum, the fat" — all the offerings take genitive because they are @deva[हविस्] destined for the deity @deva[अग्नि]
+
+**When the rule does NOT apply:**
+- @deva[अग्नये छागं हविर्वपां मेदो जुहुधि] — "offer to Agni the goat, oblation, omentum, fat" — the verb is @deva[जुहु] (offer), not @deva[प्रेष्य] / @deva[ब्रूहि], so accusative is used
+- @deva[माणवकाय पुरोडाशं प्रेष्य] — "send the rice-cake for the student" — the recipient is not a deity, so accusative
+- @deva[अग्नये गोमयान् प्रेष्य] — "send the cow-dung for Agni" — cow-dung is not @deva[हविस्] (sacrificial offering), so accusative
+"""
+
+standard = """
+@deva[प्रेष्यब्रुवोर्हविषो देवतासम्प्रदाने] — "of @deva[प्रेष्य] and @deva[ब्रूहि], [the @deva[षष्ठी] is used for] the @deva[हविस्] when the @deva[सम्प्रदान] (recipient) is a deity."
+
+**Rule type — @deva[विधि]:** Assigns @deva[षष्ठी] to the @deva[हविस्] (object) of @deva[प्रेष्य] / @deva[ब्रूहि] under specific ritual conditions.
+
+**Three conditions — all must hold:**
+1. The verb must be @deva[प्रेष्य] or @deva[ब्रूहि] (specifically these imperative forms)
+2. The object must be a @deva[हविस्] — a recognized sacrificial offering (goat, oblation, ghee, omentum, etc.)
+3. The recipient (@deva[सम्प्रदान]) must be a deity (@deva[देवता])
+
+**Example:**
+- @deva[अग्नये छागस्य हविषो वपायाः मेदसः अनुब्रूहि / प्रेष्य] — "announce/send to Agni: the goat, the oblation, the omentum, the fat"
+
+**Counterexamples (each violating one condition):**
+- @deva[अग्नये छागं हविर्वपां मेदो जुहुधि] — wrong verb (not @deva[प्रेष्य] / @deva[ब्रूहि])
+- @deva[अग्नये गोमयान् प्रेष्य] — object is not @deva[हविस्]
+- @deva[माणवकाय पुरोडाशं प्रेष्य] — recipient is not a deity
+
+**Context:** This rule governs the formal ritual announcement of offerings, a specific liturgical speech-act.
+"""
+
+advanced = """
+@deva[प्रेष्यब्रुवोर्हविषो देवतासम्प्रदाने] — @deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.3.50], @deva[शेषे] from @ref[2.3.50], @deva[कर्मणि] from @ref[2.3.52].
+
+**Ritual context:** This rule governs the @deva[प्रेषण] and @deva[अनुवचन] — the formal sending and announcing of oblations in Vedic ritual. The @deva[अध्वर्यु] (officiating priest) commands the @deva[आग्नीध्र] or @deva[होतृ] with @deva[प्रेष्य] or @deva[अनुब्रूहि], listing the offerings destined for a deity. In this liturgical formula, the offerings take genitive.
+
+**Three simultaneous conditions:** The rule is tightly restricted by the conjunction of three conditions:
+1. **Verb restriction** — only the imperative forms @deva[प्रेष्य] (from @deva[प्र] + @deva[इष्] with @deva[य]) and @deva[ब्रूहि] (from @deva[ब्रू], @deva[लोट्] @deva[मध्यमपुरुष] @deva[एकवचन]). Other imperative forms (@deva[जुहुधि], @deva[यज], etc.) do not qualify.
+2. **Object restriction** — the item must be a @deva[हविस्] (ritually sanctioned offering). Non-sacred items like @deva[गोमय] (cow-dung) are excluded.
+3. **Recipient restriction** — the @deva[सम्प्रदान] must be a @deva[देवता]. A human recipient (@deva[माणवक]) disqualifies the construction.
+
+**@[vārttika]:** When the @deva[हविस्] is @deva[प्रस्थित] (already dispatched / in progress), the genitive does not apply: @deva[इन्द्राग्निभ्यां छागं हविर्वपां मेदः प्रस्थितं प्रेष्य] — the accusative is used because the offering has already been set in motion.
+
+**Cross-reference:** This rule marks the transition from the general @deva[कर्मणि षष्ठी] rules (@ref[2.3.52]–@ref[2.3.60]) to more specialized genitive assignments. Unlike the preceding rules, which deal with general language, this one is entirely Vedic-ritual in scope. Compare @ref[2.3.50] for the general @deva[शेषे षष्ठी] principle, of which this is a highly specific extension into @deva[कारक] territory.
+"""

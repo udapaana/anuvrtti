@@ -1,0 +1,55 @@
+id = "1.3.13"
+numericId = "13013"
+
+[en]
+simple = """
+@deva[आत्मनेपद] endings are used when the verb expresses @deva[भाव] (the action itself, without a specific agent as subject) or @deva[कर्मन्] (the object as subject — passive voice).
+
+**@deva[भाव] — impersonal construction (no named subject):**
+- @deva[ग्लायते भवता] "there is languishing by you" = "you languish"
+- @deva[सुप्यते भवता] "there is sleeping by you" = "you sleep"
+
+**@deva[कर्मन्] — passive (object is the grammatical subject):**
+- @deva[क्रियते कटः] "the mat is made"
+- @deva[ह्रियते भारः] "the load is carried"
+
+This applies to all roots — even roots that normally take @deva[परस्मैपद] in active voice use @deva[आत्मनेपद] when expressing @deva[भाव] or @deva[कर्मन्].
+"""
+
+standard = """
+@deva[आत्मनेपद] replaces @deva[ल] (the abstract tense-marker from @ref[3.4.69]) when the sentence denotes @deva[भाव] (action/condition — impersonal) or @deva[कर्मन्] (object — passive).
+
+**@deva[भाव] (impersonal):**
+- @deva[ग्लायते भवता] "you languish"
+- @deva[सुप्यते भवता] "you sleep"
+- @deva[आस्यते भवता] "you sit" (impersonal)
+
+**@deva[कर्मन्] (passive):**
+- @deva[क्रियते कटः] "the mat is made"
+- @deva[ह्रियते भारः] "the load is carried"
+- @deva[पच्यते ओदनः] "rice is cooked"
+
+**@deva[कर्मकर्तरि] (reflexive-passive):** @deva[लूयते केदारः स्वयमेव] "the field reaps itself" — object acts as its own agent (@ref[1.3.78]).
+
+**Scope:** This rule applies to all roots regardless of their inherent @deva[पद] assignment. Even @deva[परस्मैपदिन्] roots use @deva[आत्मनेपद] in @deva[भाव]/@deva[कर्म] constructions.
+
+**Connection to @ref[3.4.69]:** That rule assigns @deva[ल]-affixes after roots. This rule determines that the @deva[आत्मनेपद] set of @deva[ल]-replacements is used for @deva[भाव] and @deva[कर्मन्].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[भावकर्मणोः] — @deva[आत्मनेपद] in @deva[भाव] and @deva[कर्मन्] constructions.
+
+**Universal scope:** Unlike @ref[1.3.12] (which applies only to @deva[अनुदात्तेत्]/@deva[ङित्] roots), this rule applies to all roots. The passive and impersonal constructions always use @deva[आत्मनेपद] — this is not dependent on the root's inherent @deva[पद] classification.
+
+**@deva[भाव] vs. @deva[कर्मन्]:**
+- @deva[भाव]: intransitive or impersonal — the action itself is the subject. Agent in @deva[तृतीया] (instrumental). Verb always 3rd singular.
+- @deva[कर्मन्]: passive — the grammatical object (@deva[कर्मन्]) becomes the subject. Agent in @deva[तृतीया]. Verb agrees with the @deva[कर्मन्] in person/number.
+
+**Interaction with @deva[यक्]:** The passive marker @deva[यक्] (@ref[3.1.67]) is the @deva[विकरण] that signals @deva[कर्मणि]/@deva[भावे] construction. This rule (@ref[1.3.13]) determines the @deva[आत्मनेपद] endings that follow @deva[यक्].
+
+**@deva[कर्तरि] exclusion:** When the sentence denotes the agent (@deva[कर्तृ]) as subject (active voice), this rule does not apply. Active @deva[पद] assignment is governed by @ref[1.3.12] (root-specific) and @ref[1.3.72] (@deva[उभयपदिन्]).
+
+**Relation to @ref[1.3.14]–@ref[1.3.77]:** The subsequent rules address @deva[कर्तरि] @deva[आत्मनेपद] — specific meanings and constructions where @deva[आत्मनेपद] is used even though the agent is the subject. Those are the more interesting cases; @ref[1.3.13] handles the straightforward @deva[भाव]/@deva[कर्मन्] assignment.
+"""

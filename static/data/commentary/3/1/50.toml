@@ -1,0 +1,43 @@
+id = "3.1.50"
+numericId = "31050"
+
+[en]
+simple = """
+This rule says that @deva[चङ्] optionally replaces @deva[च्लि] after the root @deva[गुप्] (to protect) in Vedic Sanskrit.
+
+This applies when @deva[गुप्] does not take the @deva[आय] affix (from @ref[3.1.28]).
+
+Vedic example: @deva[इमान् नो मित्रावरुणौ यत् गृहान् अजुगुपतम्] (Mitra and @[varuṇa] protected these our houses).
+
+In classical (non-Vedic) Sanskrit, @deva[गुप्] uses other aorist forms:
+- @deva[अगौप्तम्] (root aorist)
+- @deva[अगोपिष्टम्] or @deva[आगोपायिष्टम्] (sigmatic aorist)
+
+The reduplicated form @deva[अजुगुपतम्] is Vedic only.
+"""
+
+standard = """
+@deva[चङ्] optionally substitutes for @deva[च्लि] after @deva[गुप्] (to protect) in Vedic (@deva[छन्दसि]), when @deva[गुप्] has not taken @deva[आय] (@ref[3.1.28]).
+
+Vedic: @deva[अजुगुपतम्] (reduplicated @deva[चङ्]-aorist) — @deva[इमान् नो मित्रावरुणौ यत् गृहान् अजुगुपतम्].
+
+Classical alternatives:
+- @deva[अगौप्तम्] (root aorist)
+- @deva[अगोपिष्टम्] (@deva[सिच्]-aorist)
+- @deva[आगोपायिष्टम्] (@deva[आय] + @deva[सिच्])
+
+The reduplicated @deva[चङ्] form is restricted to Vedic usage; classical Sanskrit uses the other three.
+"""
+
+advanced = """
+@deva[चङ्] optionally applies after @deva[गुप्] in @deva[छन्दसि], provided @deva[आय] (@ref[3.1.28]) has not been added.
+
+Vedic attestation: @deva[अजुगुपतम्] — @deva[इमान् नो मित्रावरुणौ यत् गृहान् अजुगुपतम्].
+
+Classical (@deva[भाषा]) forms:
+- @deva[अगौप्तम्] (@deva[अङ्]-aorist with @deva[वृद्धि])
+- @deva[अगोपिष्टम्] (@deva[सिच्]-aorist)
+- @deva[आगोपायिष्टम्] (@deva[गुप्] + @deva[आय] + @deva[सिच्])
+
+@note[type=observation]: The @deva[छन्दसि] restriction confines the reduplicated @deva[चङ्]-aorist of @deva[गुप्] to Vedic texts. Classical usage employs the @deva[अङ्] or @deva[सिच्] formations.
+"""

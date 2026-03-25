@@ -1,0 +1,60 @@
+id = "2.3.10"
+numericId = "23010"
+
+[en]
+simple = """
+When the particles @deva[अप] ("away from, except"), @deva[आङ्] ("up to, as far as"), or @deva[परि] ("excluding") function as @deva[कर्मप्रवचनीय]-s (case-governing particles), the governed word takes the @deva[पञ्चमी] (ablative).
+
+**Examples:**
+- @deva[अप पाटलिपुत्राद् आवृष्टो देवः] "it rained except for @deva[पाटलिपुत्र]" — @deva[अप] governs ablative
+- @deva[आ पाटलिपुत्राद् आवृष्टो देवः] "it rained as far as @deva[पाटलिपुत्र]" — @deva[आङ्] governs ablative
+- @deva[परि पाटलिपुत्राद् आवृष्टो देवः] "it rained excluding @deva[पाटलिपुत्र]" — @deva[परि] governs ablative
+
+Without this rule, these words would take the accusative under the general rule (@ref[2.3.8]).
+"""
+
+standard = """
+@deva[अप]/  @deva[आङ्]/@deva[परि] + governed word → @deva[पञ्चमी] — @deva[अपाङ्परिभिः पञ्चमी].
+
+**Rule type — @deva[अपवाद]:** Overrides the default @deva[द्वितीया] of @ref[2.3.8] with @deva[पञ्चमी] for these three particles.
+
+**Particle senses:**
+- @deva[अप] = "exception, away from" (per @ref[1.4.88])
+- @deva[आङ्] = "up to, as far as, limit" (per @ref[1.4.89])
+- @deva[परि] = "exclusion" (per @ref[1.4.88])
+
+**Examples:**
+- @deva[अप पाटलिपुत्राद् आवृष्टो देवः] "it rained everywhere except @deva[पाटलिपुत्र]"
+- @deva[आ पाटलिपुत्राद् आवृष्टो देवः] "it rained up to @deva[पाटलिपुत्र]"
+- @deva[परि पाटलिपुत्राद् आवृष्टो देवः] "it rained excluding @deva[पाटलिपुत्र]"
+
+**Restriction on @deva[परि]:** This rule applies only when @deva[परि] has the "exclusion" sense of @ref[1.4.88]. When @deva[परि] means "around" (@ref[1.4.90]), it governs @deva[द्वितीया] under @ref[2.3.8]: @deva[वृक्षं परि विद्योतते विद्युत्] "lightning flashes around the tree."
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्मप्रवचनीययुक्ते] from @ref[2.3.8]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[अपाङ्परिभिः पञ्चमी] — @deva[पञ्चमी] is assigned to words governed by @deva[अप], @deva[आङ्], or @deva[परि] when functioning as @deva[कर्मप्रवचनीय]-s.
+
+**@deva[कर्मप्रवचनीय] designations:**
+- @deva[अप]: @ref[1.4.88] — exclusion sense
+- @deva[आङ्]: @ref[1.4.89] — limit/extent sense (@deva[मर्यादावचन])
+- @deva[परि]: @ref[1.4.88] — exclusion sense (same @[sūtra] as @deva[अप])
+
+**@deva[परि] — two designations, two cases:** @deva[परि] can be a @deva[कर्मप्रवचनीय] under two different @[sūtras]:
+- @ref[1.4.88] (exclusion): governs @deva[पञ्चमी] by this rule — @deva[परि पाटलिपुत्राद् आवृष्टो देवः]
+- @ref[1.4.90] (surrounding): governs @deva[द्वितीया] by @ref[2.3.8] — @deva[वृक्षं परि विद्योतते विद्युत्]
+
+The sense of the particle determines which @deva[कर्मप्रवचनीय] designation applies, which in turn determines the case.
+
+**@deva[आङ्] — limit marker:** @deva[आ पाटलिपुत्राद् आवृष्टो देवः] — rain extended up to @deva[पाटलिपुत्र] as a boundary. The ablative marks the limit-point. This is the @deva[मर्यादावचन] (boundary-expression) use of @deva[आङ्].
+
+**Complete @deva[कर्मप्रवचनीय] case hierarchy:**
+1. @ref[2.3.8]: @deva[द्वितीया] — default for all @deva[कर्मप्रवचनीय]-governed words
+2. @ref[2.3.9]: @deva[सप्तमी] — override for @deva[उप] (excess) and @deva[अधि] (lordship)
+3. This rule: @deva[पञ्चमी] — override for @deva[अप], @deva[आङ्], @deva[परि] (exclusion/limit)
+
+Rules @ref[2.3.9] and @ref[2.3.10] are @deva[अपवाद]-s to @ref[2.3.8] — they prevail by the principle that a specific rule overrides a general one (@ref[1.4.2]).
+
+**@deva[छन्दस्] note:** Some @deva[वार्त्तिक]-s extend this rule's scope in Vedic usage, but in @deva[भाषा] the above three particles exhaust the @deva[पञ्चमी]-governing @deva[कर्मप्रवचनीय]-s.
+"""

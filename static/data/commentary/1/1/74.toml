@@ -1,0 +1,44 @@
+id = "1.1.74"
+numericId = "11074"
+
+[en]
+simple = """
+The pronoun words listed in the @deva[त्यदादि] group (@ref[1.1.27]) — words like @deva[तद्] "that," @deva[यद्] "which," @deva[मद्] "I" — are all called @deva[वृद्ध], even though their first vowels may not be @deva[वृद्धि] vowels.
+
+This is an extension of the previous rule (@ref[1.1.73]). Normally, @deva[वृद्ध] requires a first vowel of @deva[आ], @deva[ऐ], or @deva[औ]. This rule grants the @deva[वृद्ध] designation to all @deva[त्यदादि] pronouns by convention.
+
+**Effect:** These words can take the @deva[तद्धित] affix @deva[छ्], which is available to @deva[वृद्ध] words:
+- @deva[तद्] + @deva[छ्] → @deva[तदीयम्] "belonging to that"
+- @deva[मद्] + @deva[छ्] → @deva[मदीयम्] "mine"
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] extends the @deva[वृद्ध] designation to all @deva[त्यदादि] words (the pronoun class from @ref[1.1.27]), regardless of their first vowel.
+
+**Why the extension is needed:** @deva[तद्] has first vowel @deva[अ] (not @deva[वृद्धि]), @deva[मद्] has @deva[अ], @deva[किम्] has @deva[इ]. None of these qualify as @deva[वृद्ध] under @ref[1.1.73]. This rule includes them by fiat.
+
+**Examples with @deva[छ्] (@ref[4.2.114]):**
+- @deva[तद्] + @deva[छ्] → @deva[तदीयम्] "belonging to that"
+- @deva[एतद्] + @deva[छ्] → @deva[एतदीयम्] "belonging to this"
+- @deva[मद्] + @deva[छ्] → @deva[मदीयम्] "mine"
+- @deva[त्वद्] + @deva[छ्] → @deva[त्वदीयम्] "yours"
+
+**Scope:** The @deva[त्यदादि] group includes: @deva[त्यद्], @deva[तद्], @deva[यद्], @deva[एतद्], @deva[इदम्], @deva[अदस्], @deva[युष्मद्], @deva[अस्मद्], @deva[भवत्], @deva[किम्], and others from the list in @ref[1.1.27].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[वृद्धम्] from @ref[1.1.73].
+
+@deva[त्यदादीनि च] — @deva[त्यदादि] words are also @deva[वृद्ध].
+
+**This is a @deva[संज्ञाविधि] by convention (@deva[नियम]), not by phonetic criteria.** The @deva[वृद्ध] designation normally depends on the first vowel being @deva[वृद्धि]. This rule overrides that requirement for the @deva[त्यदादि] class.
+
+**Why pronouns need this:** The @deva[तद्धित] system distinguishes @deva[वृद्ध] and non-@deva[वृद्ध] bases for affix selection. Pronouns would otherwise be excluded from @deva[वृद्ध]-specific affixes like @deva[छ्], since most pronouns have short vowels. The grammar extends the designation to ensure pronouns can form derivatives like @deva[तदीयम्] and @deva[मदीयम्].
+
+**Interaction with @ref[1.1.27]:** The @deva[त्यदादि] list was defined in @ref[1.1.27] for the @deva[सर्वनामन्] designation. This rule reuses the same list for a different purpose — the @deva[वृद्ध] designation. The two designations are independent: @deva[सर्वनामन्] governs declension forms, @deva[वृद्ध] governs @deva[तद्धित] affix selection.
+
+**The @deva[वृद्ध] system:**
+- @ref[1.1.73]: @deva[वृद्ध] by first vowel = @deva[वृद्धि]
+- @ref[1.1.74] (this rule): @deva[वृद्ध] by class membership (@deva[त्यदादि])
+- @ref[1.1.75]: @deva[वृद्ध] by geography (eastern place names with @deva[एङ्])
+"""

@@ -1,0 +1,38 @@
+id = "1.1.7"
+numericId = "11007"
+
+[en]
+simple = """
+Two or more consonants pronounced together without a vowel between them are called @deva[संयोग] (a consonant cluster). This term is needed because many rules treat clusters differently from single consonants — for example, a vowel before a cluster is treated as "heavy" for purposes of meter and accent.
+
+**Example:** In @deva[कुक्कुटः] "rooster," the @deva[क्क] is a @deva[संयोग] — two consonants with no vowel between them. In @deva[करोति] "he does," the @deva[र] and @deva[ओ] are separated by a vowel, so no @deva[संयोग].
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] defines @deva[संयोग]: consonants (@deva[हल्]) that are @deva[अनन्तर] (not separated by a vowel) form a @deva[संयोग]. The term applies to the cluster as a whole.
+
+**Example:** @deva[क्क] in @deva[कुक्कुटः] "rooster"
+
+**Why @deva[हल्] (consonants)?** Two vowels together are not @deva[संयोग]. In @deva[तितउच्छत्रम्], the @deva[अ] and @deva[उ] are vowels, not a cluster.
+
+**Why @deva[अनन्तर] (not separated)?** Consonants with a vowel between them are not @deva[संयोग]. In @deva[पचति], the @deva[च] and @deva[त] have @deva[अ] between them.
+
+**The term is used in:**
+- @ref[1.4.11] — syllable weight: a vowel followed by @deva[संयोग] counts as @deva[गुरु] (heavy)
+- @ref[8.2.23] — final consonant deletion in @deva[संयोग]-ending @deva[पद]s
+- @ref[8.2.29] — @deva[स्] deletion before certain @deva[संयोग]s
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this begins a new topic (phonological definitions).
+
+@deva[हलोऽनन्तराः संयोगः] — consonants (@deva[हल्]) not separated (@deva[अनन्तर]) form @deva[संयोग]. The plural @deva[हलः] indicates two or more consonants may combine.
+
+**Why @deva[हल्]?** Excludes vowel sequences. In @deva[तितउच्छत्रम्], @deva[अ]+@deva[उ] are not @deva[संयोग], so @ref[8.2.23] (which deletes the final of a @deva[संयोग]-ending @deva[पद]) does not apply.
+
+**Why @deva[अनन्तर]?** Excludes vowel-separated consonants. In @deva[पचति पनसम्], @deva[स]+@deva[म्] are separated by @deva[अ], so @ref[8.2.29] does not delete @deva[स्].
+
+**Cluster scope:** @deva[संयोग] applies to the group jointly, not to individual consonants. This matters for @ref[8.4.47] (@deva[अनचि च]), where the entire cluster must be evaluated, and for @ref[8.2.23], where @deva[लोप] targets the final member of the cluster.
+
+**Three-consonant clusters:** @deva[संयोग] can span three or more consonants: @deva[क्त्वा] contains a three-member @deva[संयोग] @deva[क्त्व]. The @deva[काशिका] confirms that the definition places no upper limit.
+"""

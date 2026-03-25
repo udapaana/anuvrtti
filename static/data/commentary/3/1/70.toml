@@ -1,0 +1,51 @@
+id = "3.1.70"
+numericId = "31070"
+
+[en]
+simple = """
+This rule says that the affix @deva[श्यन्] is optionally used in active voice after the following roots: @deva[भ्राश्] (to shine), @deva[भ्लाश्] (to shine), @deva[भ्रम्] (to whirl), @deva[क्रम्] (to walk), @deva[क्लम्] (to be sad), @deva[त्रस्] (to fear), @deva[त्रुट्] (to cut), and @deva[लष्] (to desire).
+
+Since @deva[श्यन्] is optional, both forms are correct:
+- @deva[भ्राश्]: @deva[भ्राशते] (@deva[शप्]) or @deva[भ्राश्यते] (@deva[श्यन्])
+- @deva[भ्लाश्]: @deva[भ्लाशते] or @deva[भ्लाश्यते]
+- @deva[भ्रम्]: @deva[भ्रमति] or @deva[भ्राम्यति]
+- @deva[क्रम्]: @deva[क्रामति] or @deva[क्राम्यति]
+- @deva[क्लम्]: @deva[क्लामति] or @deva[क्लाम्यति]
+- @deva[त्रस्]: @deva[त्रसति] or @deva[त्रस्यति]
+- @deva[त्रुट्]: @deva[त्रुटति] or @deva[त्रुट्यति]
+- @deva[लष्]: @deva[लषति] or @deva[लष्यति]
+"""
+
+standard = """
+The affix @deva[श्यन्] is optionally (@deva[विभाषा]) used in @deva[कर्तरि] after @deva[भ्राश्], @deva[भ्लाश्], @deva[भ्रम्], @deva[क्रम्], @deva[क्लम्], @deva[त्रस्], @deva[त्रुट्], and @deva[लष्]. When @deva[श्यन्] is not used, @deva[शप्] applies.
+
+Alternate forms (@deva[शप्] / @deva[श्यन्]):
+- @deva[भ्राश्]: @deva[भ्राशते] / @deva[भ्राश्यते]
+- @deva[भ्लाश्]: @deva[भ्लाशते] / @deva[भ्लाश्यते]
+- @deva[भ्रम्]: @deva[भ्रमति] / @deva[भ्राम्यति]
+- @deva[क्रम्]: @deva[क्रामति] / @deva[क्राम्यति]
+- @deva[क्लम्]: @deva[क्लामति] / @deva[क्लाम्यति]
+- @deva[त्रस्]: @deva[त्रसति] / @deva[त्रस्यति]
+- @deva[त्रुट्]: @deva[त्रुटति] / @deva[त्रुट्यति]
+- @deva[लष्]: @deva[लषति] / @deva[लष्यति]
+
+These roots belong primarily to @deva[भ्वादि] but can optionally take @deva[दिवादि]-style conjugation.
+"""
+
+advanced = """
+@deva[श्यन्] optionally applies after @deva[भ्राश्], @deva[भ्लाश्], @deva[भ्रम्], @deva[क्रम्], @deva[क्लम्], @deva[त्रस्], @deva[त्रुट्], and @deva[लष्] in @deva[कर्तरि].
+
+Alternate forms (@deva[शप्] / @deva[श्यन्]):
+- @deva[भ्राश्]: @deva[भ्राशते] / @deva[भ्राश्यते]
+- @deva[भ्लाश्]: @deva[भ्लाशते] / @deva[भ्लाश्यते]
+- @deva[भ्रम्]: @deva[भ्रमति] / @deva[भ्राम्यति]
+- @deva[क्रम्]: @deva[क्रामति] / @deva[क्राम्यति]
+- @deva[क्लम्]: @deva[क्लामति] / @deva[क्लाम्यति]
+- @deva[त्रस्]: @deva[त्रसति] / @deva[त्रस्यति]
+- @deva[त्रुट्]: @deva[त्रुटति] / @deva[त्रुट्यति]
+- @deva[लष्]: @deva[लषति] / @deva[लष्यति]
+
+These roots are listed in @deva[भ्वादि] but have optional @deva[दिवादि] conjugation. When @deva[श्यन्] applies, @ref[7.2.77] lengthens the root vowel where applicable.
+
+@note[type=observation]: This optionality creates doublets in the present system, allowing speakers to use either @deva[-ति] (@deva[शप्]) or @deva[-यति] (@deva[श्यन्]) forms.
+"""

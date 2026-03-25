@@ -1,0 +1,39 @@
+id = "1.1.12"
+numericId = "11012"
+
+[en]
+simple = """
+The previous rule (@ref[1.1.11]) exempts dual endings from @deva[सन्धि]. This rule extends that exemption to the pronoun @deva[अदस्] "that (over there)." Specifically, when a form of @deva[अदस्] ends in @deva[ई], @deva[ऊ], or @deva[ए] after @deva[म्], it is @deva[प्रगृह्य] — regardless of whether it is dual, plural, or singular.
+
+**Example:** @deva[अमी अश्वाः] "those horses" (nominative plural) — the @deva[ई] of @deva[अमी] does not merge with the following @deva[अ]. Without this rule, normal @deva[सन्धि] would produce *@deva[अम्यश्वाः].
+"""
+
+standard = """
+This supplements @ref[1.1.11]. In forms of @deva[अदस्], the vowels @deva[ई], @deva[ऊ], @deva[ए] after @deva[म्] are @deva[प्रगृह्य] in any number — not just dual.
+
+**Actual forms that satisfy both conditions (after @deva[म्], from @deva[अदस्]):**
+- @deva[अमी] — nominative plural masculine
+- @deva[अमू] — nominative/accusative dual
+
+No @deva[ए]-ending form of @deva[अदस्] after @deva[म्] exists in practice, but the rule covers it for completeness.
+
+**Why restrict to @deva[अदस्]?** Other words with @deva[म्] + @deva[ई/ऊ/ए] follow normal @deva[सन्धि]: @deva[शमी] + @deva[अत्र] = @deva[शम्यत्र].
+
+**Why restrict to "after @deva[म्]"?** Other forms of @deva[अदस्] are not @deva[प्रगृह्य]: @deva[अमुके] + @deva[अत्र] = @deva[अमुकेऽत्र] — here @deva[ए] follows @deva[क], not @deva[म्].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रगृह्यम्] from @ref[1.1.11].
+
+@deva[अदसो मात्] — in @deva[अदस्], @deva[ई], @deva[ऊ], @deva[ए] after @deva[म्] are @deva[प्रगृह्य]. The ablative @deva[मात्] means "after @deva[म्]" — two conditions must hold: the form belongs to @deva[अदस्], and the vowel immediately follows @deva[म्].
+
+**Why this rule is needed alongside @ref[1.1.11]:** @ref[1.1.11] covers only dual endings. @deva[अमी] is nominative plural, so it falls outside @ref[1.1.11]. Without @ref[1.1.12], @deva[अमी] + @deva[अश्वाः] would undergo @ref[6.1.77] (@deva[इको यणचि]), producing *@deva[अम्यश्वाः].
+
+**Why @deva[अदस्] is singled out:** The pronoun @deva[अदस्] undergoes extensive stem-modification by @ref[7.2.109] (@deva[अदस औ सुलोपश्च]) and related rules. The resulting forms @deva[अमी] and @deva[अमू] have @deva[म्] + vowel sequences that would be destroyed by @deva[सन्धि] without explicit protection.
+
+**The @deva[ए]-ending gap:** @deva[पाणिनि] states all three vowels (@deva[ई], @deva[ऊ], @deva[ए]) for symmetry with @ref[1.1.11], even though no @deva[ए]-ending form of @deva[अदस्] after @deva[म्] actually occurs. The @deva[काशिका] confirms this.
+
+**Why not @deva[शमी]?** @deva[शमी] contains @deva[म्] + @deva[ई], but it is not a form of @deva[अदस्]. So @deva[शमी] + @deva[अत्र] = @deva[शम्यत्र] by normal @deva[सन्धि].
+
+**Why @deva[मात्] excludes @deva[अमुके]:** In @deva[अमुके] (@ref[5.3.71]), the @deva[ए] follows @deva[क], not @deva[म्], so the condition fails and @deva[सन्धि] applies: @deva[अमुके] + @deva[अत्र] = @deva[अमुकेऽत्र].
+"""

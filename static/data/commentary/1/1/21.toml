@@ -1,0 +1,37 @@
+id = "1.1.21"
+numericId = "11021"
+
+[en]
+simple = """
+When a word or grammatical unit consists of a single letter, that letter counts as both its beginning and its end. Any rule that targets "the initial" or "the final" of a unit applies to that single letter.
+
+This matters because many rules in the grammar operate specifically on initial or final sounds. Without this rule, a single-letter unit might escape both — it could be argued it has no "initial" distinct from its "final." This rule closes that gap.
+
+**Example:** The affix @deva[अण्] is just @deva[अ] (the @deva[ण्] is a marker). By @ref[3.1.3], affixes receive @deva[उदात्त] (high pitch) on their initial vowel. Since @deva[अ] is the entire affix, it is both initial and final, so it gets the accent: @deva[उपगु] + @deva[अण्] → @deva[औपगव॑म्].
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] states: in a single-letter item, that letter functions as both @deva[आदि] (initial) and @deva[अन्त्य] (final). Operations on either position apply to it.
+
+**Example 1 — initial operation:** @ref[3.1.3] gives @deva[उदात्त] to an affix's initial vowel. The affix @deva[अण्] (= @deva[अ]) is a single vowel, so it is both initial and final and receives the accent: @deva[औपगव॑म्].
+
+**Example 2 — final operation:** @ref[7.3.102] lengthens final short @deva[अ] before @deva[यञ्]-class consonant-initial case affixes. If the entire stem is @deva[अ], it is final too: @deva[अ] + @deva[भ्याम्] = @deva[आभ्याम्] "by those two."
+
+**Why "@deva[एकस्मिन्]" (in one)?** In multi-letter words, initial and final are distinct. @deva[सभा] has initial @deva[स] and final @deva[आ] — they cannot be conflated. This rule applies only when the unit is a single letter.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is an independent @deva[परिभाषा].
+
+@deva[आदिरन्त्यवदेकस्मिन्] — in a single-letter unit (@deva[एकस्मिन्]), the initial (@deva[आदि]) behaves like the final (@deva[अन्त्यवत्]), and vice versa. This is a bidirectional @deva[अतिदेश] (extension): any operation on @deva[आदि] applies to @deva[अन्त्य], and any on @deva[अन्त्य] applies to @deva[आदि].
+
+**@deva[उदात्त] on affix initial (@ref[3.1.3]):** @deva[अण्] (= @deva[अ]) → accent on @deva[अ]: @deva[औपगव॑म्].
+
+**Lengthening of final @deva[अ] (@ref[7.3.102]):** @deva[अ] + @deva[भ्याम्] → @deva[आभ्याम्].
+
+**Why @deva[एकस्मिन्]?** Prevents misapplication to multi-letter words. @deva[सभा] has initial @deva[अ] (in @deva[स]) and final @deva[आ]. If initial were treated as final, @deva[सभा] would be @deva[वृद्ध] by @ref[1.1.73] (initial @deva[वृद्धि] vowel), and @ref[4.2.114] would prescribe @deva[छ्] instead of @deva[अण्]. The @deva[एकस्मिन्] restriction prevents this.
+
+**Scope:** "Single letter" means the operative unit in context — an affix, a @deva[प्रत्याहार], a stem, or any segment that a rule targets. The rule applies whenever that unit happens to be one letter long.
+
+**@deva[काशिका] note:** The @deva[अन्त्यवत्] is a @deva[वदतिशब्द] — "as if" language. The initial does not become the final; it merely receives operations that target the final position.
+"""

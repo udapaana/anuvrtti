@@ -1,0 +1,57 @@
+id = "1.3.10"
+numericId = "13010"
+
+[en]
+simple = """
+When a rule lists equal numbers of items on both sides (substitutes and targets), they correspond in order: first to first, second to second, and so on.
+
+**Example — @ref[6.1.77] (@deva[इको यणचि]):**
+
+| Target (@deva[इक्]) | Substitute (@deva[यण्]) |
+|---------|------------|
+| @deva[इ] | @deva[य्] |
+| @deva[उ] | @deva[व्] |
+| @deva[ऋ] | @deva[र्] |
+| @deva[लृ] | @deva[ल्] |
+
+Four vowels, four semivowels — they match one-to-one. So @deva[इ] always becomes @deva[य्], never @deva[व्] or @deva[र्].
+
+**When numbers are unequal:** @ref[1.4.90] lists four target meanings but only three substitute words (@deva[प्रति], @deva[परि], @deva[अनु]). Since the counts differ, each word can serve any of the meanings — no fixed pairing.
+"""
+
+standard = """
+When substitutes and targets are equal in number, correspondence is by order (@deva[यथासंख्यम्]). This is a @deva[परिभाषा] (interpretive rule).
+
+**Example 1 — @ref[6.1.77] @deva[इको यणचि]:**
+- @deva[इक्] = @deva[इ], @deva[उ], @deva[ऋ], @deva[लृ] (four targets)
+- @deva[यण्] = @deva[य्], @deva[व्], @deva[र्], @deva[ल्] (four substitutes)
+- @deva[इ] → @deva[य्], @deva[उ] → @deva[व्], @deva[ऋ] → @deva[र्], @deva[लृ] → @deva[ल्]
+
+**Example 2 — @ref[3.1.134] @deva[नन्दिग्रहिपचादिभ्यो ल्युणिन्यचः]:**
+- Three root classes: @deva[नन्द्यादि], @deva[ग्रह्यादि], @deva[पचादि]
+- Three affixes: @deva[ल्यु], @deva[णिनि], @deva[अच्]
+- @deva[ल्यु] → @deva[नन्द्यादि]; @deva[णिनि] → @deva[ग्रह्यादि]; @deva[अच्] → @deva[पचादि]
+
+**Unequal counts — no @deva[यथासंख्य]:** @ref[1.4.90] has four target meanings but three words. Without equal counts, each substitute can serve any target.
+
+**Scope:** The rule applies wherever a @deva[सूत्र] lists multiple substitutes alongside multiple targets.
+"""
+
+advanced = """
+@deva[यथासंख्यमनुदेशः समानाम्] — when substitutes and targets are equal in number, correspondence is by order.
+
+**@deva[परिभाषा] rule:** This governs interpretation of all @deva[सूत्र]s that list multiple items in both the target and substitute positions. It ensures deterministic one-to-one mapping.
+
+**@deva[समानाम्] ("of equals"):** The counts must be equal. If a @deva[सूत्र] lists 4 targets and 4 substitutes, the rule applies. If 4 targets and 3 substitutes, it does not — each substitute applies to all targets.
+
+**@deva[अनुदेशः] ("assignment"):** The correspondence follows the enumeration order — first listed with first, second with second. This is purely positional, not based on phonetic similarity (though @deva[पाणिनि] often arranges items so that position and phonetic logic align, as in @deva[इक्] → @deva[यण्]).
+
+**Key applications:**
+- @ref[6.1.77]: @deva[इक्] → @deva[यण्] (4 = 4)
+- @ref[6.1.78]: @deva[एच्] → @deva[अय्], @deva[आय्], @deva[अव्], @deva[आव्] (4 = 4)
+- @ref[7.2.115]: @deva[अच] → @deva[वृद्धि] (but here the @deva[वृद्धि] substitutes are fewer — @deva[यथासंख्य] does not apply; @ref[1.1.50] governs instead)
+
+**Relation to @ref[1.1.50]–@ref[1.1.52]:** When @deva[यथासंख्य] does not apply (unequal counts), the default substitution principles take over: @ref[1.1.50] (@deva[स्थानेऽन्तरतमः] — closest substitute), @ref[1.1.52] (@deva[अलोऽन्त्यस्य] — substitute replaces final).
+
+**Position:** This @deva[परिभाषा] sits between the @deva[इत्] section (@ref[1.3.2]–@ref[1.3.9]) and the @deva[पद]-assignment section (@ref[1.3.12]–@ref[1.3.93]). It provides a general interpretive tool needed throughout the grammar.
+"""

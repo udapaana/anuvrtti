@@ -1,0 +1,49 @@
+id = "2.1.72"
+numericId = "21072"
+
+[en]
+simple = """
+The @deva[मयूरव्यंसकादि] list is a collection of irregular @deva[तत्पुरुष] compounds that cannot be derived by any single earlier rule. They are accepted as valid by convention — @[pāṇini] lists them to authorize their use in the language.
+
+**Examples from the list:**
+- @deva[मयूरव्यंसकः] "cunning like a peacock" — a comparison compound with a suppressed comparison marker
+- @deva[कम्बोजमुण्डः] "shaved in the Kamboja style" — a cultural practice compound
+- @deva[हस्तगृह्य] "taken by the hand" — a manner-of-action compound
+- @deva[उच्चावचम्] "high and low, varied"
+
+The word @deva[च] "and" in the @[sūtra] acts as a restriction — it prevents further productive extension of these compounds.
+"""
+
+standard = """
+@deva[मयूरव्यंसकादि] @deva[गण] → @deva[तत्पुरुष] — @deva[मयूरव्यंसकादयश्च].
+
+**Rule type — @deva[विधि]:** Listing rule that authorizes irregular @deva[तत्पुरुष] compounds.
+
+**The @deva[च] restriction:** The word @deva[च] functions as a @deva[नियम] — it restricts productive extension. A compound like @deva[परममयूरव्यंसकः] is not permitted, because @deva[च] prevents treating these compounds as bases for further compounding.
+
+**Sub-groups within the @deva[गण]:**
+1. **Standard irregular compounds** (1–8): @deva[मयूरव्यंसक], @deva[छात्रव्यंसक], @deva[कम्बोजमुण्ड], @deva[यवनमुण्ड], @deva[हस्तगृह्य], @deva[पादगृह्य], @deva[लाङ्गूलगृह्य], @deva[पुनर्क्षय]
+2. **@deva[एहीडादि]** (9–56): Imperative-based compounds — @deva[एहीडम्], @deva[एहियवम्], @deva[एहिस्वागता]. These use verb forms (@deva[एहि] "come!", @deva[अपेहि] "go away!", @deva[प्रेहि] "go forth!") as first members
+3. **@deva[जहि]-compounds** (57–61): @deva[जहिजोडः], @deva[जहिस्तम्बम्] — using the imperative @deva[जहि] "strike!"
+4. **@deva[आख्यात]-pairs** (62–74): @deva[अश्नीतपिबता], @deva[पचतभृज्जता] — two finite verbs compounded to express simultaneous or continuous action
+
+**@deva[आकृतिगण]:** This list is an @deva[आकृतिगण] — an open-ended list that can include compounds matching the same structural pattern, not limited to the enumerated items.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[मयूरव्यंसकादयश्च] — the compounds in the @deva[मयूरव्यंसकादि] list are @deva[तत्पुरुष]. The @deva[च] is @deva[नियमार्थ].
+
+**@deva[च] as @deva[नियम]:** The @deva[काशिका] explains that @deva[च] restricts the scope — these compounds are accepted as listed, but productive extension (adding further members like @deva[परम]) is blocked. This differs from @deva[च] in its additive sense.
+
+**Structure of the @deva[गणपाठ]:**
+- Items 1–8: Semantically opaque compounds — @deva[मयूरव्यंसक] (peacock-shouldered → cunning), @deva[कम्बोजमुण्ड] (Kamboja-shaved → a cultural practice). These have lexicalized meanings not derivable from their parts.
+- @deva[एहीडादि] section: The @deva[गणपाठ] header @deva[एहीडादयोऽन्यपदार्थे] indicates these compounds denote the meaning of the "other" member — the imperative verb loses its literal force and serves as a qualifier. @deva[एहीडं वर्तते] "the come-rice is ready" — i.e., rice ready to be served.
+- @deva[जहि] section: @deva[जहि कर्मणा बहुलमाभीक्ष्ण्ये एकट् कर्तारं चाभिदधाति] — @deva[जहि] with an object, @deva[बहुलम्], expressing repeated action, with singular agent reference.
+- @deva[आख्यात]-pair section: @deva[आख्यातमाख्यातेन क्रियासातत्ये] — a finite verb compounds with another finite verb to express continuity of action: @deva[अश्नीतपिबता] "eating-and-drinking" (as an ongoing activity).
+
+**@deva[आकृतिगण]:** The @deva[काशिका] marks this as @deva[आकृतिगणोऽयम्] — the list is exemplary, not exhaustive. Any compound matching the structural pattern of the listed items qualifies. Additional items cited include @deva[अकुतोभयः] "fearless from all sides," @deva[आहोपुरुषिका] "bravado," @deva[यदृच्छा] "chance/randomness."
+
+**Final rule of @deva[तत्पुरुष]:** This rule closes the entire @deva[तत्पुरुष] section that began at @ref[2.1.22]. The next rule (@ref[2.2.1]) begins the @deva[अव्ययीभाव] and other compound types, or a new section. The placement of an irregular list at the end is characteristic of @[pāṇini]'s method — after all productive rules, a catch-all @deva[गणपाठ] accommodates forms that resist systematic derivation.
+"""

@@ -1,0 +1,50 @@
+id = "1.4.11"
+numericId = "14011"
+
+[en]
+simple = """
+A short vowel followed by a conjunct consonant (@deva[संयोग], two or more consonants together) is called @deva[गुरु] "heavy."
+
+Even though the vowel itself is short, the weight of the following consonant cluster makes the syllable heavy. This overrides @ref[1.4.10], which calls short vowels @deva[लघु] "light."
+
+**Example:** In @deva[शिक्षा] "learning," the @deva[इ] is short but precedes @deva[क्ष] (a conjunct consonant). So the @deva[इ] is @deva[गुरु], not @deva[लघु].
+
+**Contrast:**
+- @deva[भिद्]: the @deva[इ] has no following conjunct → @deva[लघु]
+- @deva[शिक्षा]: the @deva[इ] precedes @deva[क्ष] → @deva[गुरु]
+
+This distinction matters for affix selection and prosody. For instance, @ref[3.3.103] assigns the affix @deva[अ] after roots with a @deva[गुरु] penultimate vowel.
+"""
+
+standard = """
+A short vowel followed by a @deva[संयोग] (conjunct consonant) is @deva[गुरु] "heavy" — @deva[संयोगे गुरु].
+
+**Rule type — @deva[संज्ञा] overriding @ref[1.4.10]:** @ref[1.4.10] calls short vowels @deva[लघु]. This rule reassigns them to @deva[गुरु] when followed by a conjunct. By @ref[1.4.1], only one name applies.
+
+**Example:** In @deva[शिक्षा], the @deva[इ] precedes @deva[क्ष] (conjunct) → @deva[गुरु].
+
+**Grammatical effects:**
+- @ref[3.3.103]: affix @deva[अ] after @deva[गुरु] penultimate → @deva[शिक्षा], @deva[भिक्षा]
+- @ref[7.3.86]: @deva[गुण] applies only to @deva[लघु] penultimate — @deva[गुरु] blocks it
+
+**Prosodic effect:** In metre, @deva[गुरु] = two @deva[मात्रा]s. A short vowel before a conjunct scans as heavy.
+
+**What is @deva[संयोग]?** Two or more consonants in sequence: @deva[क्ष] = @deva[क्] + @deva[ष्], @deva[ण्ड] = @deva[ण्] + @deva[ड्], etc.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[संज्ञा] context from @ref[1.4.1].
+
+@deva[संयोगे गुरु] — before a @deva[संयोग], a short vowel is @deva[गुरु].
+
+**Override of @ref[1.4.10]:** @ref[1.4.10] assigns @deva[लघु] to all short vowels. This rule, being later, prevails by @ref[1.4.2] when a conjunct follows — demonstrating @ref[1.4.2]'s conflict resolution in action.
+
+**@deva[संयोग] definition:** @ref[1.1.7] defines @deva[संयोग] as @deva[हलोऽनन्तराः संहिताः] — non-intervened consonants in continuous speech. Even across word boundaries in @deva[संहिता], a short vowel before two consonants is @deva[गुरु].
+
+**Critical interaction with @ref[7.3.86]:** @ref[7.3.86] prescribes @deva[गुण] for a @deva[लघु] penultimate vowel. By making a short vowel before a conjunct @deva[गुरु] (not @deva[लघु]), this rule blocks @deva[गुण] in those cases. Example: in @deva[अततक्षत्] (aorist of @deva[तक्ष्]), the @deva[अ] before @deva[क्ष] is @deva[गुरु], so @ref[7.3.86] does not apply.
+
+**@deva[लघु]/@deva[गुरु] series:**
+- @ref[1.4.10]: short → @deva[लघु]
+- @ref[1.4.11] (this): short + @deva[संयोग] → @deva[गुरु]
+- @ref[1.4.12]: long → @deva[गुरु]
+"""

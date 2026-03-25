@@ -1,0 +1,43 @@
+id = "2.2.29"
+numericId = "22029"
+
+[en]
+simple = """
+Words that can be connected by "and" (@deva[च]) form a compound called @deva[द्वन्द्व]. This compound lists items together — it functions like a conjunctive list.
+
+**Example:**
+- @deva[राम] "@[rāma]" + @deva[लक्ष्मण] "@[lakṣmaṇa]" → @deva[रामलक्ष्मणौ] "@[rāma] and @[lakṣmaṇa]"
+- @deva[माता] "mother" + @deva[पिता] "father" → @deva[मातापितरौ] "mother and father"
+
+@deva[द्वन्द्व] compounds express the conjunction of their members — "X and Y (and Z…)."
+"""
+
+standard = """
+@deva[चार्थे] @deva[सुबन्तानि] → @deva[द्वन्द्वः] — @deva[चार्थे द्वन्द्वः].
+
+**Rule type — @deva[संज्ञा] + @deva[विधि]:** Names the compound type and authorizes its formation.
+
+**Two types of @deva[द्वन्द्व]:**
+1. **@deva[इतरेतरयोग]** (mutual conjunction): Each member retains its individuality. @deva[रामलक्ष्मणौ] "@[rāma] and @[lakṣmaṇa]" — dual, because there are two individuals.
+2. **@deva[समाहार]** (aggregate): The members form a collective whole. @deva[पाणिपादम्] "hands and feet" — neuter singular, denoting the aggregate.
+
+**@deva[चार्थ] condition:** The members must be in a conjunctive relationship — they must be connectable by @deva[च] "and." Words in a subordinative or attributive relationship do not form @deva[द्वन्द्व].
+
+**Number/gender:** @deva[इतरेतर]-@deva[द्वन्द्व] takes dual/plural according to the count of members. @deva[समाहार]-@deva[द्वन्द्व] is always neuter singular.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[चार्थे द्वन्द्वः] — @deva[सुबन्त] words in @deva[च]-relation (conjunction) form @deva[द्वन्द्व].
+
+**Two semantic types:**
+1. **@deva[इतरेतरयोग]** — each member is independently denoted. @deva[रामलक्ष्मणौ] = @deva[रामश्च लक्ष्मणश्च]. The compound takes the number of the total members (dual for two, plural for three or more) and the gender of the final member.
+2. **@deva[समाहार]** — the members form a collective set. @deva[पाणिपादम्] = "the set of hands-and-feet." Always neuter singular (@ref[2.4.17]).
+
+**@deva[चार्थ] — the conjunction condition:** @deva[च] "and" connects items that are on the same level — co-equal, co-referential in some shared context. This rules out subordinative relationships (which yield @deva[तत्पुरुष]) and attributive relationships (which yield @deva[बहुव्रीहि] or @deva[कर्मधारय]).
+
+**Ordering:** @ref[2.2.33]–@ref[2.2.38] govern the member-ordering within @deva[द्वन्द्व] — shorter words first, higher-vowel words first, etc.
+
+**Position in the compound system:** @deva[द्वन्द्व] is the last of the four compound types named in the @deva[समास] section: @deva[अव्ययीभाव] (@ref[2.1.5]), @deva[तत्पुरुष] (@ref[2.1.22]), @deva[बहुव्रीहि] (@ref[2.2.23]), and @deva[द्वन्द्व] (@ref[2.2.29]). After this, @ref[2.2.30] onwards handle ordering and other general compound rules.
+"""

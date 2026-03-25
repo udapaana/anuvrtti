@@ -1,0 +1,45 @@
+id = "1.4.107"
+numericId = "14107"
+
+[en]
+simple = """
+When the word @deva[अस्मद्] "I/we" is the subject — whether stated explicitly or understood from context — the verb takes @deva[उत्तम] "first person" endings.
+
+**Examples:**
+- @deva[अहं पचामि] "I cook" (singular — @deva[मिप्] ending)
+- @deva[आवां पचावः] "we two cook" (dual — @deva[वस्] ending)
+- @deva[वयं पचामः] "we cook" (plural — @deva[मस्] ending)
+
+Just like with "you" (@ref[1.4.105]), the pronoun can be dropped: @deva[पचामि] alone means "I cook" because the ending already shows first person.
+"""
+
+standard = """
+When @deva[अस्मद्] (expressed or understood) is the subject, @deva[उत्तम] (1st person) endings are used — @deva[अस्मद्युत्तमः].
+
+**Rule type — @deva[विधि]:** Assigns @deva[उत्तम पुरुष] based on subject identity.
+
+**Examples:**
+- @deva[अहं पचामि] / @deva[पचामि] "I cook" (@deva[एकवचन])
+- @deva[आवां पचावः] / @deva[पचावः] "we two cook" (@deva[द्विवचन])
+- @deva[वयं पचामः] / @deva[पचामः] "we cook" (@deva[बहुवचन])
+
+**Parallel to @ref[1.4.105]:** Same structure — @deva[समानाधिकरण] (co-referentiality) and @deva[स्थानिन्] (understood subject) conditions apply here too, carried by @deva[अनुवृत्ति].
+
+**Person hierarchy:** @ref[1.4.105] (@deva[युष्मद्] → @deva[मध्यम]) and this rule (@deva[अस्मद्] → @deva[उत्तम]) handle specific pronouns. @ref[1.4.108] handles everything else as @deva[प्रथम].
+"""
+
+advanced = """
+@deva[अस्मद्युत्तमः] — when @deva[अस्मद्] is the co-referential subject, @deva[उत्तम पुरुष] applies.
+
+**@deva[अनुवृत्ति]:** @deva[उपपदे] from @ref[1.4.105]; @deva[समानाधिकरणे] from @ref[1.4.105]; @deva[स्थानिन्यपि] from @ref[1.4.105].
+
+**Mixed-subject resolution (@ref[1.4.106]):** When both @deva[युष्मद्] and @deva[अस्मद्] appear in a compound subject (e.g., "you and I cook"), @ref[1.4.106] (the irony rule aside, this is handled by convention) determines that @deva[उत्तम] prevails — "we cook" (@deva[पचावः]/@deva[पचामः]). The person hierarchy is: @deva[उत्तम] > @deva[मध्यम] > @deva[प्रथम].
+
+**Pro-drop and @deva[स्थानिन्]:** The @deva[स्थानिन्यपि] condition (from @ref[1.4.105] by @deva[अनुवृत्ति]) means @deva[अस्मद्] need not be overtly present. @deva[पचामि] alone is a complete sentence — "I cook" — with the subject understood.
+
+**Complete person system (@ref[1.4.105]–@ref[1.4.108]):**
+- @ref[1.4.105]: @deva[युष्मद्] → @deva[मध्यम]
+- @ref[1.4.106]: ironic person-shift with @deva[मन्]
+- This rule: @deva[अस्मद्] → @deva[उत्तम]
+- @ref[1.4.108]: all others → @deva[प्रथम] (default)
+"""

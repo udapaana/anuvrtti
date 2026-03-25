@@ -1,0 +1,44 @@
+id = "2.1.71"
+numericId = "21071"
+
+[en]
+simple = """
+The word for a quadruped genus (@deva[चतुष्पाद्] @deva[जाति]) compounds with @deva[गर्भिणी] "pregnant" to form @deva[तत्पुरुष]. Both words refer to the same animal — the compound names a pregnant animal of a particular species.
+
+**Examples:**
+- @deva[गोगर्भिणी] "a pregnant cow" — @deva[गो] "cow" + @deva[गर्भिणी] "pregnant"
+- @deva[अजागर्भिणी] "a pregnant she-goat" — @deva[अजा] "she-goat" + @deva[गर्भिणी]
+
+This rule applies only to quadruped species, not humans — @deva[ब्राह्मणी गर्भिणी] "a pregnant Brahmin woman" does not compound.
+"""
+
+standard = """
+@deva[चतुष्पाज्जातिवाचक] + @deva[गर्भिणी] → @deva[तत्पुरुष] in @deva[समानाधिकरण] — @deva[चतुष्पाज्जातीयात् गर्भिण्या].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[गोगर्भिणी] "a pregnant cow"
+- @deva[अजागर्भिणी] "a pregnant she-goat"
+- @deva[वडवागर्भिणी] "a pregnant mare"
+
+**Two restrictions:**
+1. **Quadruped (@deva[चतुष्पाद्]):** The first member must denote a four-footed animal. @deva[ब्राह्मणी गर्भिणी] "a pregnant Brahmin woman" fails — humans are bipeds.
+2. **Genus (@deva[जाति]):** The first member must be a genus-word, not a proper name. @deva[कालाक्षी गर्भिणी] "the pregnant cow named @[kālākṣī]" fails — @deva[कालाक्षी] is a proper name, not a genus.
+
+**@deva[वार्त्तिक]:** @deva[जातिवचनग्रहणम्] — the @deva[काशिका] records a @deva[वार्त्तिक] specifying that the rule is restricted to genus-words among quadrupeds. This blocks compounds with individual names of animals.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[चतुष्पाज्जातीयात् गर्भिण्या] — a @deva[जाति]-word denoting a quadruped species compounds with @deva[गर्भिणी] as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**@deva[वार्त्तिक] — @deva[जातिवचनग्रहणम्]:** The @deva[काशिका] records: the rule must be restricted to @deva[जाति]-denoting words among quadrupeds. Without this restriction, any word referring to a specific quadruped animal (e.g., a proper name like @deva[कालाक्षी] or @deva[स्वस्तिमती]) could compound with @deva[गर्भिणी]. The @deva[वार्त्तिक] ensures that only genus-level terms (@deva[गो], @deva[अजा], @deva[वडवा]) qualify — not individual names.
+
+**Why a specific rule?** Pregnancy is semantically unremarkable for animals — it's a natural biological state. But @ref[2.1.57]'s @deva[बहुलम्] would make such compounds optional. This rule provides definite authority for these common livestock-description compounds.
+
+**Narrow scope:** Only @deva[गर्भिणी] is specified as the second member — not other condition-words. This is the most specific rule in the @deva[कर्मधारय] series, applying to exactly one second member with a restricted class of first members.
+
+**Position in the @deva[कर्मधारय] sequence:** This rule continues the series of specific first-member rules that override @ref[2.1.57]'s general @deva[बहुलम्]: @ref[2.1.67] (@deva[युवन्] + age-words), @ref[2.1.68] (@deva[कृत्]/@deva[तुल्य] + non-@deva[जाति]), @ref[2.1.69] (colour + colour), @ref[2.1.70] (@deva[कुमार] + @deva[श्रमणादि]), and now @ref[2.1.71] (quadruped @deva[जाति] + @deva[गर्भिणी]).
+"""

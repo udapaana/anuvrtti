@@ -1,0 +1,43 @@
+id = "3.1.71"
+numericId = "31071"
+
+[en]
+simple = """
+This rule says that the affix @deva[श्यन्] is optionally used after the root @deva[यस्] (to strive) when it is used without a prefix (@deva[उपसर्ग]) and when a @deva[सार्वधातुक] affix denoting the agent follows.
+
+Since @deva[श्यन्] is optional for unprefixed @deva[यस्]:
+- @deva[यास्यति] (@deva[श्यन्]) or @deva[यसति] (@deva[शप्]) – both mean "he strives"
+
+But when @deva[यस्] has a prefix, only @deva[श्यन्] is used (no option):
+- @deva[आयस्यति] (he strives at)
+- @deva[प्रयस्यति] (he strives forth)
+
+The root @deva[यस्] belongs to the @deva[दिवादि] (4th) class.
+"""
+
+standard = """
+The affix @deva[श्यन्] is optionally (@deva[विभाषा]) used after @deva[यस्] (to strive) when it is @deva[अनुपसर्ग] (without prefix) and when @deva[सार्वधातुक] follows in @deva[कर्तरि].
+
+Unprefixed (@deva[श्यन्] optional):
+- @deva[यास्यति] / @deva[यसति] (he strives)
+
+With prefix (@deva[श्यन्] obligatory):
+- @deva[आयस्यति] (no @deva[शप्] option)
+- @deva[प्रयस्यति] (no @deva[शप्] option)
+
+@deva[यस्] is a @deva[दिवादि] root, so @deva[श्यन्] is the default @deva[विकरण]. This rule provides an exceptional @deva[शप्] option only when unprefixed.
+"""
+
+advanced = """
+@deva[श्यन्] optionally applies after @deva[यस्] when @deva[अनुपसर्ग] (unprefixed) in @deva[कर्तरि सार्वधातुक].
+
+Unprefixed (@deva[श्यन्] / @deva[शप्] optional):
+- @deva[यास्यति] / @deva[यसति]
+
+Prefixed (@deva[श्यन्] @deva[नित्य]):
+- @deva[आयस्यति], @deva[प्रयस्यति]
+
+@deva[यस्] is @deva[दिवादि], so @deva[श्यन्] is standard by @ref[3.1.69]. This rule (@deva[अनुपसर्गाद्यसः]) creates an exception: @deva[शप्] becomes available when no @deva[उपसर्ग] is present.
+
+@note[type=observation]: The restriction @deva[अनुपसर्गात्] is semantically motivated—unprefixed @deva[यस्] may have been treated differently in usage, allowing both conjugational patterns.
+"""

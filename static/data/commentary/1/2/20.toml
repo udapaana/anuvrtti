@@ -1,0 +1,51 @@
+id = "1.2.20"
+numericId = "12020"
+
+[en]
+simple = """
+After the root @deva[मृष्] "to bear/endure" — but only when it means "to forbear" (@deva[तितिक्षा], patient endurance) — the @deva[सेट्] past participle affixes (@deva[निष्ठा]) are not @deva[कित्]. So @deva[गुण] (vowel strengthening) applies: @deva[ऋ] becomes @deva[अर्].
+
+**"Forbear" sense — @deva[गुण] applies:**
+- @deva[मर्षितः] "forborne," @deva[मर्षितवान्] "one who forbore"
+
+**Other senses — @deva[कित्] stays, no @deva[गुण]:**
+- @deva[अपमृषितं वाक्यम्] "unintelligible speech" — here @deva[मृष्] means "to understand/tolerate" in a different sense, so the @deva[ऋ] stays.
+
+This is a meaning-restricted rule: the same root with the same affix behaves differently depending on what it means.
+"""
+
+standard = """
+@deva[सेट्] @deva[निष्ठा] is not @deva[कित्] after @deva[मृष्] in the sense of @deva[तितिक्षा] (forbearance/patient endurance). @deva[गुण] applies.
+
+**Forms (forbearance sense):**
+- @deva[मर्षितः] "forborne," @deva[मर्षितवान्] "one who forbore"
+- @deva[ऋ] → @deva[अर्] by @deva[गुण]
+
+**Other senses — @deva[कित्] intact:**
+- @deva[अपमृषितं वाक्यमाह] "he spoke unintelligible language" — @deva[मृष्] does not mean "forbear" here, so @deva[निष्ठा] remains @deva[कित्] and @deva[ऋ] is unchanged.
+
+**Meaning restriction (@deva[अर्थनियम]):** Like @ref[1.2.15] (where @deva[यम्] is @deva[कित्] only in the @deva[गन्धन] sense), this rule conditions a phonological operation on the meaning of the root. The same root @deva[मृष्] produces @deva[मर्षितः] (forbearance) vs. @deva[मृषितः] (other senses) — identical morphology, different phonology, based purely on semantics.
+
+**Companion to @ref[1.2.19]:** That rule listed five roots whose @deva[सेट्] @deva[निष्ठा] is not @deva[कित्] in all senses. This rule adds @deva[मृष्] but restricts it to one sense.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[सेट्] @deva[निष्ठा] from @ref[1.2.19].
+
+@deva[मृषस्तितिक्षायाम्] — @deva[सेट्] @deva[निष्ठा] is not @deva[कित्] after @deva[मृष्] in the @deva[तितिक्षा] sense.
+
+**Why a separate rule?** @ref[1.2.19] lists five roots without meaning restriction — their @deva[सेट्] @deva[निष्ठा] is unconditionally not @deva[कित्]. @deva[मृष्] needed its own rule because the exception applies only in the @deva[तितिक्षा] sense. In other senses, @deva[सेट्] @deva[निष्ठा] after @deva[मृष्] remains @deva[कित्].
+
+**Semantic conditioning:** This parallels the meaning-restricted rules earlier in the @deva[अधिकार]:
+| Rule | Root | Meaning restriction |
+|------|------|---------------------|
+| @ref[1.2.15] | @deva[यम्] | @deva[गन्धन] (divulging) |
+| @ref[1.2.16] | @deva[यम्] | @deva[उपयमन] (espousing) |
+| @ref[1.2.20] (this) | @deva[मृष्] | @deva[तितिक्षा] (forbearance) |
+
+**Forms compared:**
+- @deva[तितिक्षा] sense: @deva[मर्षितः] (@deva[गुण]: @deva[ऋ] → @deva[अर्])
+- Other senses: @deva[मृषितः] (no @deva[गुण]: @deva[ऋ] unchanged)
+
+**End of the @deva[कित्] exception cluster.** Rules @ref[1.2.18]–@ref[1.2.20] form a group: @ref[1.2.18] removes @deva[कित्] from @deva[सेट्] @deva[क्त्वा] universally; @ref[1.2.19] removes it from @deva[सेट्] @deva[निष्ठा] after five roots; @ref[1.2.20] removes it from @deva[सेट्] @deva[निष्ठा] after @deva[मृष्] in one sense. The next rules shift to new topics within the @deva[कित्]/@deva[ङित्] @deva[अधिकार].
+"""

@@ -1,0 +1,38 @@
+id = "1.4.58"
+numericId = "14058"
+
+[en]
+simple = """
+Words in the @deva[प्रादिगण] (the list beginning with @deva[प्र]) are also called @deva[निपात] "particle" when they do not denote a substance.
+
+The @deva[प्रादिगण] is a list of twenty prefixes: @deva[प्र], @deva[परा], @deva[अप], @deva[सम्], @deva[अनु], @deva[अव], @deva[निस्], @deva[दुस्], @deva[वि], @deva[आङ्], @deva[नि], @deva[अधि], @deva[अपि], @deva[अति], @deva[सु], @deva[उत्], @deva[अभि], @deva[प्रति], @deva[परि], @deva[उप].
+
+These same words can serve as @deva[उपसर्ग] "verbal prefix" (when combined with verbs) or @deva[गति] — they carry multiple designations depending on context. This rule gives them the baseline @deva[निपात] designation.
+"""
+
+standard = """
+Words in the @deva[प्रादिगण] are @deva[निपात] (when not denoting substances) — @deva[प्रादयः].
+
+**Rule type — @deva[संज्ञा]:** Extends @deva[निपात] to the twenty @deva[प्रादि] prefixes.
+
+**The twenty @deva[प्रादि] words:** @deva[प्र], @deva[परा], @deva[अप], @deva[सम्], @deva[अनु], @deva[अव], @deva[निस्], @deva[दुस्], @deva[वि], @deva[आङ्], @deva[नि], @deva[अधि], @deva[अपि], @deva[अति], @deva[सु], @deva[उत्], @deva[अभि], @deva[प्रति], @deva[परि], @deva[उप].
+
+**Why a separate rule from @ref[1.4.57]?** The @deva[प्रादि] words need their own rule because they receive additional designations: @deva[उपसर्ग] (by @ref[1.4.59]) and @deva[गति] (by @ref[1.4.60]) when combined with verbs. If they were included in the @deva[चादिगण], these additional rules couldn't target them specifically.
+
+**Triple designation:** A @deva[प्रादि] word with a verb is simultaneously @deva[निपात] (by this rule), @deva[उपसर्ग] (by @ref[1.4.59]), and @deva[गति] (by @ref[1.4.60]).
+
+**@deva[असत्त्व] condition:** Continues from @ref[1.4.57] by @deva[अनुवृत्ति]. When @deva[परा] modifies a substance ("excellent army"), it is not @deva[निपात].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[निपाताः] from @ref[1.4.56]; @deva[असत्त्वे] from @ref[1.4.57].
+
+@deva[प्रादयः] — @deva[प्रादि] words are @deva[निपात] when not signifying substance.
+
+**Structural reason for separation:** If @deva[प्रादि] words were included in the @deva[चादिगण] of @ref[1.4.57], @ref[1.4.59] and @ref[1.4.60] would need to explicitly exclude @deva[चादि] words from @deva[उपसर्ग]/@deva[गति] status. Having a separate rule allows @ref[1.4.59]–@ref[1.4.60] to simply reference @deva[प्रादि] words.
+
+**The twenty prefixes and their standard meanings:**
+@deva[प्र] "forth," @deva[परा] "away," @deva[अप] "off," @deva[सम्] "together," @deva[अनु] "after," @deva[अव] "down," @deva[निस्] "out," @deva[दुस्] "badly," @deva[वि] "apart," @deva[आङ्] "toward," @deva[नि] "down/in," @deva[अधि] "upon," @deva[अपि] "on/also," @deva[अति] "beyond," @deva[सु] "well," @deva[उत्] "up," @deva[अभि] "toward," @deva[प्रति] "back," @deva[परि] "around," @deva[उप] "near."
+
+**@deva[एकसंज्ञा] (@ref[1.4.1]) does not block multiple names here:** The @deva[काशिका] explains that @deva[निपात], @deva[उपसर्ग], and @deva[गति] serve different grammatical operations — they are not competing @deva[संज्ञा]s for the same purpose. @ref[1.4.1] applies only when names compete for the same operational domain.
+"""

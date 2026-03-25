@@ -1,0 +1,41 @@
+id = "2.3.1"
+numericId = "23001"
+
+[en]
+simple = """
+This rule governs the entire section on case-endings. It establishes the principle that a case-ending (@deva[विभक्ति]) is used only when the grammatical relationship it expresses has not already been conveyed by something else — such as a verb ending, a suffix, or a compound.
+
+**Example:**
+- @deva[कटं करोति] "he makes a mat" — the accusative (@deva[द्वितीया]) marks the object because the active verb ending does not express it
+- @deva[क्रियते कटः] "the mat is made" — here the passive verb ending already expresses the object-relation, so the mat takes the nominative instead
+
+The principle is: don't use a case-ending to express something that's already expressed by another grammatical device.
+"""
+
+standard = """
+@deva[अनभिहिते] — "when unexpressed." @deva[अधिकार] governing @ref[2.3.2]–@ref[2.3.73].
+
+**Rule type — @deva[अधिकार]:** Governing rule for the entire @deva[विभक्ति] section.
+
+**Principle:** Case-affixes (@deva[सुप्]) express @deva[कारक] relations only when those relations are not already expressed (@deva[अनभिहित]) by one of four mechanisms:
+1. **@deva[तिङ्]** (verb endings): @deva[क्रियते कटः] — the passive ending expresses the object
+2. **@deva[कृत्]** (primary suffixes): @deva[कृतः कटः] — the participle expresses the object
+3. **@deva[तद्धित]** (secondary suffixes): @deva[शतिकः] = @deva[शतेन क्रीतः] "bought for a hundred"
+4. **@deva[समास]** (compounds): @deva[प्राप्तोदको ग्रामः] = @deva[प्राप्तम् उदकं यं ग्रामम्]
+
+**Active voice illustration:** @deva[कटं करोति] "he makes a mat" — the active ending @deva[तिप्] does not express the object, so @deva[द्वितीया] is required.
+"""
+
+advanced = """
+@deva[अनभिहिते] — locative absolute ("when [the @deva[कारक] relation is] unexpressed"). This @deva[अधिकार] governs the entire @deva[विभक्ति]-assignment section from @ref[2.3.2] through @ref[2.3.73].
+
+**Four mechanisms that "express" (@deva[अभिहित]) @deva[कारक]:**
+1. **@deva[तिङ्]:** @ref[1.3.13]–@ref[1.3.93] determine voice. @deva[क्रियते कटः] — the @deva[यक्] passive affix expresses the @deva[कर्मन्], so no @deva[द्वितीया] is needed; the @deva[कर्मन्] appears in @deva[प्रथमा].
+2. **@deva[कृत्]:** @ref[3.4.70] etc. — @deva[कृत्] affixes express specific @deva[कारक] roles. @deva[कृतः कटः] "made mat" — @deva[क्त] expresses the @deva[कर्मन्].
+3. **@deva[तद्धित]:** @deva[शतिकः] from @deva[शत] + @deva[ठक्] — the @deva[तद्धित] affix expresses the instrumental relation "bought with a hundred."
+4. **@deva[समास]:** Compounds absorb case-relations. @deva[प्राप्तोदकः] compound embeds the @deva[कर्मन्] relationship.
+
+**Scope:** This @deva[अधिकार] ensures that case-endings are assigned only when no other grammatical device has already expressed the relationship. It prevents redundant marking — a core economy principle of the @[aṣṭādhyāyī].
+
+**Section overview:** @[pāda] 2.3 assigns @deva[विभक्ति]s to @deva[कारक]s: @deva[द्वितीया] for @deva[कर्मन्] (@ref[2.3.2]), @deva[तृतीया] for @deva[करण] (@ref[2.3.18]), @deva[चतुर्थी] for @deva[सम्प्रदान] (@ref[2.3.13]), @deva[पञ्चमी] for @deva[अपादान] (@ref[2.3.28]), @deva[षष्ठी] for residual relations (@ref[2.3.50]), @deva[सप्तमी] for @deva[अधिकरण] (@ref[2.3.36]).
+"""

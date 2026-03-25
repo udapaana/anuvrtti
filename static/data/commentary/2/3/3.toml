@@ -1,0 +1,41 @@
+id = "2.3.3"
+numericId = "23003"
+
+[en]
+simple = """
+In Vedic Sanskrit, the object of the verb @deva[हु] "to sacrifice, to offer into fire" can take either the @deva[तृतीया] (instrumental) or the @deva[द्वितीया] (accusative). In classical Sanskrit, only the accusative is used.
+
+**Examples:**
+- @deva[यवाग्वा अग्निहोत्रं जुहोति] "he offers the fire-sacrifice with barley-gruel" — instrumental (@deva[यवाग्वा])
+- @deva[यवागुम् अग्निहोत्रं जुहोति] "he offers barley-gruel as the fire-sacrifice" — accusative (@deva[यवागुम्])
+
+The Veda permits both constructions for the same verb.
+"""
+
+standard = """
+@deva[हु] + @deva[कर्मन्] → @deva[तृतीया] or @deva[द्वितीया] in @deva[छन्दस्] — @deva[तृतीया च होश्छन्दसि].
+
+**Rule type — @deva[विधि] (@deva[छन्दस्] exception):** Permits the instrumental for the object of @deva[हु] in Vedic.
+
+**Examples:**
+- @deva[यवाग्वा अग्निहोत्रं जुहोति] — @deva[तृतीया]: "offers with barley-gruel"
+- @deva[यवागुम् अग्निहोत्रं जुहोति] — @deva[द्वितीया]: "offers barley-gruel"
+
+**@deva[च] force:** The @deva[च] in the @[sūtra] adds @deva[तृतीया] alongside @deva[द्वितीया] (which continues from @ref[2.3.2]). Both cases are simultaneously available in the Veda.
+
+**@deva[छन्दसि] restriction:** In classical Sanskrit (@deva[भाषा]), only @deva[द्वितीया] is valid for the object of @deva[हु]. The instrumental option is exclusively Vedic.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[द्वितीया] from @ref[2.3.2]; @deva[कर्मणि] from @ref[2.3.2]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[तृतीया च होश्छन्दसि] — in @deva[छन्दस्], the @deva[कर्मन्] of @deva[हु] takes @deva[तृतीया] in addition to @deva[द्वितीया].
+
+**Dual case availability:** The @deva[च] makes @deva[तृतीया] available alongside @deva[द्वितीया]. The speaker's choice depends on the semantic nuance: @deva[तृतीया] emphasizes the material offered as an instrument of worship; @deva[द्वितीया] treats it as the direct object of the act of offering.
+
+**@deva[छन्दस्] only:** @deva[छन्दसि] restricts this to Vedic texts. In @deva[भाषा] (laukika Sanskrit), only @deva[द्वितीया] is permitted for the object of @deva[हु]. This is one of many Vedic exceptions scattered through the @deva[विभक्ति] section.
+
+**Vedic exceptions in @[pāda] 2.3:** This rule begins a pattern seen throughout the @[pāda] — specific Vedic permissions that broaden the case-assignment rules beyond classical norms. Other @deva[छन्दस्] rules include @ref[2.3.5], @ref[2.3.10], etc.
+
+**@deva[हु] — the sacrificial verb:** @deva[हु] (class 3, @deva[जुहोत्यादि]) is the primary verb for Vedic fire-sacrifice. Its special case-assignment reflects the ritual context where the material offered can be construed as either instrument or direct object.
+"""

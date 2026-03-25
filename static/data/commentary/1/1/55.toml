@@ -1,0 +1,55 @@
+id = "1.1.55"
+numericId = "11055"
+
+[en]
+simple = """
+When a substitute has more than one letter, or when it is marked with @deva[श्] (@deva[शित्]), it replaces the entire original — not just the last letter.
+
+**Multi-letter example:** @ref[2.4.53] says @deva[वच्] replaces @deva[ब्रू] "to speak." @deva[वच्] has three letters, so it replaces all of @deva[ब्रू]: @deva[ब्रू] → @deva[वच्] → @deva[वक्ता] "speaker."
+
+**@deva[शित्] example:** @ref[5.3.3] says @deva[इश्] replaces @deva[इदम्] "this." Although @deva[इ] is only one operative letter, the @deva[श्] marker signals whole-word replacement: @deva[इदम्] → @deva[इ] → @deva[इतरम्] "the other one."
+
+This is the broadest substitution rule — it replaces everything, unlike the default (@ref[1.1.52]) which replaces only the final letter.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] states that a multi-letter (@deva[अनेकाल्]) substitute, or one marked with @deva[श्] (@deva[शित्]), replaces the entire @deva[स्थानिन्] — not just its final sound.
+
+**Multi-letter substitutes (@deva[अनेकाल्]):**
+- @ref[2.4.53]: @deva[वच्] (3 letters) replaces @deva[ब्रू] entirely → @deva[वक्ता] "speaker"
+- @ref[2.4.52]: @deva[अस्] replaces @deva[भू] entirely before @deva[लिट्] → @deva[बभूव] uses @deva[अस्] in certain forms
+
+**@deva[शित्] substitutes:**
+- @ref[5.3.3]: @deva[इश्] replaces @deva[इदम्] — one operative letter (@deva[इ]) but @deva[शित्], so whole-word replacement: @deva[इदम्] → @deva[इ] + @deva[तरम्] = @deva[इतरम्]
+- @ref[5.3.4]: @deva[कश्] replaces @deva[किम्] — @deva[किम्] → @deva[क] + @deva[तरम्] = @deva[कतरम्]
+
+**Exception:** @ref[1.1.53] overrides this rule for @deva[ङित्] substitutes. Even if a @deva[ङित्] substitute has multiple letters, it replaces only the final sound of the original.
+
+**Why @deva[शित्] is needed:** Without the @deva[श्] marker, a single-letter substitute would replace only the final (by @ref[1.1.52]). The @deva[श्] forces whole-word replacement for single-letter substitutes that need it.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[स्थाने] from @ref[1.1.49].
+
+@deva[अनेकाल्शित्सर्वस्य] — a multi-letter substitute, or a @deva[शित्] substitute, replaces the entire @deva[स्थानिन्].
+
+**Two triggers, one result:**
+1. @deva[अनेकाल्] (multi-letter): the substitute itself has more than one @deva[अल्] (sound). Count only operative sounds, excluding @deva[इत्] markers.
+2. @deva[शित्] (marked with @deva[श्]): the substitute carries @deva[श्] as an @deva[इत्]. This extends whole-replacement to single-letter substitutes.
+
+**Examples:**
+- @deva[अनेकाल्]: @deva[वच्] for @deva[ब्रू] (@ref[2.4.53]) — 3 operative sounds, replaces all of @deva[ब्रू]
+- @deva[शित्]: @deva[इश्] for @deva[इदम्] (@ref[5.3.3]) — 1 operative sound but @deva[शित्], replaces all of @deva[इदम्]
+
+**Interaction with @ref[1.1.53]:** @deva[ङित्] substitutes are explicitly excepted. @deva[आनङ्] (@ref[6.3.25]) has two operative letters (@deva[आन्]) and would normally trigger this rule. But @deva[ङ्] overrides: it replaces only the final @deva[ऋ] of @deva[मातृ] → @deva[मातान्]. @ref[1.1.53] is the specific exception to this general rule.
+
+**The complete substitution hierarchy:**
+1. @ref[1.1.52]: default — replace the @deva[अन्त्य] (final)
+2. @ref[1.1.53]: @deva[ङित्] — also final, even if multi-letter (exception to this rule)
+3. @ref[1.1.54]: @deva[परादेश] — replace the @deva[आदि] (initial) of the following element
+4. @ref[1.1.55] (this rule): @deva[अनेकाल्]/@deva[शित्] — replace @deva[सर्वस्य] (everything)
+
+**Why both @deva[अनेकाल्] and @deva[शित्]?** Multi-letter substitutes naturally need to replace the whole original — a three-letter substitute cannot sensibly replace just one sound. @deva[शित्] handles the less obvious case: a single-letter substitute that must nonetheless replace the entire original. The @deva[श्] marker is the grammarian's way of forcing whole-replacement when the letter count alone would not trigger it.
+
+**@deva[वार्त्तिक]: @deva[आनङ्ग्रहणम्]** — The @deva[काशिका] notes that @deva[आनङ्] is the paradigm case for @ref[1.1.53] overriding this rule.
+"""

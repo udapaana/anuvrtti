@@ -1,0 +1,44 @@
+id = "1.2.32"
+numericId = "12032"
+
+[en]
+simple = """
+In a @deva[स्वरित] (circumflex) vowel, the high-pitched portion is very small — only the first half of one beat (@deva[मात्रा]). Everything after that is low-pitched. So the vowel starts with a brief rise and then falls.
+
+**How it divides:**
+- Short vowel (1 beat): first half is high, second half is low
+- Long vowel (2 beats): first half-beat is high, remaining one-and-a-half beats are low
+- Prolonged vowel (3 beats): first half-beat is high, remaining two-and-a-half beats are low
+
+The longer the vowel, the more it is dominated by the falling, low portion.
+"""
+
+standard = """
+The first half-@deva[मात्रा] of a @deva[स्वरित] vowel is @deva[उदात्त]; the remainder is @deva[अनुदात्त]. This specifies the internal structure of the composite accent defined at @ref[1.2.31].
+
+| Vowel type | Total @deva[मात्रा] | @deva[उदात्त] portion | @deva[अनुदात्त] portion |
+|------------|--------------------|-----------------------|--------------------------|
+| @deva[ह्रस्व] | 1 | ½ | ½ |
+| @deva[दीर्घ] | 2 | ½ | 1½ |
+| @deva[प्लुत] | 3 | ½ | 2½ |
+
+**Key point:** The @deva[उदात्त] portion is always fixed at half a @deva[मात्रा] regardless of the vowel's total duration. Only the @deva[अनुदात्त] portion grows with length.
+
+**Examples:**
+- @deva[शिक्यम्] — the @deva[अ] is @deva[स्वरित] (@deva[ह्रस्व]): ½ high, ½ low
+- @deva[कन्या] — the @deva[आ] is @deva[स्वरित] (@deva[दीर्घ]): ½ high, 1½ low
+"""
+
+advanced = """
+@deva[तस्यादित उदात्तमर्धह्रस्वम्] — the first portion of a @deva[स्वरित] is @deva[उदात्त], equal to half a short vowel.
+
+**Quantifying @ref[1.2.31]:** The previous rule defined @deva[स्वरित] as a combination. This rule specifies the proportion: exactly half a @deva[ह्रस्व] @deva[मात्रा] is @deva[उदात्त], and the rest is @deva[अनुदात्त].
+
+**@deva[अर्धह्रस्व] = ½ @deva[मात्रा]:** This is the smallest unit of tonal measurement in the grammar — half the duration of a short vowel. It is constant: whether the @deva[स्वरित] vowel is short, long, or prolonged, the @deva[उदात्त] portion is always ½ @deva[मात्रा].
+
+**Phonetic implication:** For a short @deva[स्वरित] vowel, the high and low portions are equal (½ + ½). For a long vowel, the falling portion dominates (½ + 1½). This means @deva[स्वरित] sounds increasingly "falling" as the vowel gets longer.
+
+**@deva[प्रातिशाख्य] parallel:** The @deva[ऋक्प्रातिशाख्य] and @deva[तैत्तिरीयप्रातिशाख्य] give similar descriptions, though with some variation in the exact proportions. @deva[पाणिनि]'s formulation standardizes the ratio.
+
+**Relevance:** This rule matters for precise Vedic recitation, where the tonal contour of each syllable must be correct. It also affects rules in @deva[अष्टम अध्याय] that assign @deva[स्वरित] in connected speech — the performer must know the internal structure of what they are producing.
+"""

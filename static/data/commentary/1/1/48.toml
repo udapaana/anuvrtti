@@ -1,0 +1,46 @@
+id = "1.1.48"
+numericId = "11048"
+
+[en]
+simple = """
+When the grammar prescribes shortening for the vowels @deva[ए], @deva[ऐ], @deva[ओ], or @deva[औ] (collectively called @deva[एच्]), the short form is not just a shorter version of the same vowel — it is the corresponding simple vowel: @deva[ए] and @deva[ऐ] shorten to @deva[इ]; @deva[ओ] and @deva[औ] shorten to @deva[उ].
+
+This is needed because @deva[ए], @deva[ऐ], @deva[ओ], @deva[औ] are diphthongs — they don't have a direct "short" version. The grammar needs to specify what happens when shortening applies to them.
+
+**Example:** @deva[गो] "cow" → @deva[उपगु] "near a cow" (in an @deva[अव्ययीभाव] compound) — the @deva[ओ] of @deva[गो] shortens to @deva[उ], not to some short @deva[ओ].
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] defines shortening for @deva[एच्] vowels: when @deva[ह्रस्वादेश] (short substitution) is prescribed for @deva[ए/ऐ/ओ/औ], the substitute is the corresponding @deva[इक्] vowel.
+
+**Correspondences:**
+- @deva[ए], @deva[ऐ] → @deva[इ] (both palatal)
+- @deva[ओ], @deva[औ] → @deva[उ] (both labial)
+
+**Examples (by @ref[1.2.47], shortening in compounds):**
+- @deva[रै] → @deva[रि]: @deva[अतिरि] "extravagant"
+- @deva[नौ] → @deva[नु]: @deva[अतिनु] "past the boat"
+- @deva[गो] → @deva[गु]: @deva[उपगु] "near a cow"
+
+**Why this rule is needed:** Vowels like @deva[अ/इ/उ] have natural short-long pairs (@deva[अ-आ], @deva[इ-ई], @deva[उ-ऊ]). But @deva[ए/ऐ/ओ/औ] are diphthongs with no inherent short form. This rule supplies the shortening target.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is an independent @deva[परिभाषा].
+
+@deva[एचोऽयवायावः] — wait, that's @ref[6.1.78]. The actual @deva[सूत्र] here: shortening of @deva[एच्] yields @deva[इक्].
+
+**Correspondences by @deva[स्थान] (place of articulation):**
+- @deva[ए/ऐ] → @deva[इ]: both @deva[तालव्य] (palatal)
+- @deva[ओ/औ] → @deva[उ]: both @deva[ओष्ठ्य] (labial)
+
+**Why @deva[इक्] and not some other substitute?** The selection follows @ref[1.1.50] (@deva[स्थानेऽन्तरतमः]) — among possible short vowels, the one sharing the same place of articulation is chosen. @deva[ए] is palatal, so its short counterpart is @deva[इ] (also palatal), not @deva[अ] (guttural) or @deva[उ] (labial).
+
+**Examples:**
+- @ref[1.2.47] (shortening in @deva[अव्ययीभाव]): @deva[गो] → @deva[उपगु]; @deva[रै] → @deva[अतिरि]
+- @ref[6.3.43] (@deva[घे नित्यम्]): long vowels shorten before @deva[घ] affixes — but this rule handles the @deva[एच्] cases specifically
+
+**Contrast with non-@deva[एच्] shortening:** @deva[आ] → @deva[अ], @deva[ई] → @deva[इ], @deva[ऊ] → @deva[उ] — these are straightforward (same vowel, different length). No special rule is needed. @deva[एच्] vowels require this rule because they lack a natural short counterpart.
+
+**Interaction with @ref[1.1.50]:** The @deva[स्थानेऽन्तरतमः] principle independently yields the same result — but this rule states it explicitly for clarity.
+"""

@@ -1,0 +1,51 @@
+id = "1.2.64"
+numericId = "12064"
+
+[en]
+simple = """
+When two or more identical words appear together in the same case, only one is kept — and it takes the number (@deva[वचन]) that represents all of them. This operation is called @deva[एकशेष] ("retention of one").
+
+**Examples:**
+- @deva[वृक्षः] + @deva[वृक्षः] → @deva[वृक्षौ] "two trees" (dual)
+- @deva[वृक्षः] + @deva[वृक्षः] + @deva[वृक्षः] → @deva[वृक्षाः] "three trees" (plural)
+
+The words must be identical in form. Different words do not undergo @deva[एकशेष]:
+- @deva[प्लक्षः] + @deva[न्यग्रोधः] → @deva[प्लक्षन्यग्रोधौ] (a @deva[द्वन्द्व] compound, not @deva[एकशेष])
+
+Same form but different cases also do not qualify:
+- @deva[पयः] (nominative) alongside @deva[पयः] (accusative) — no @deva[एकशेष], because the @deva[विभक्ति] differs.
+"""
+
+standard = """
+When words of the same form (@deva[सरूप]) and same @deva[विभक्ति] (case) stand together, @deva[एकशेष] applies: one word is retained and the rest are dropped. The retained word takes the @deva[वचन] appropriate to the total count.
+
+**Examples:**
+- @deva[वृक्षः] + @deva[वृक्षः] → @deva[वृक्षौ] (dual)
+- @deva[वृक्षः] × 3 → @deva[वृक्षाः] (plural)
+
+**Same form, different meaning — still applies:** @deva[अक्षः] (die) + @deva[अक्षः] (eye) + @deva[अक्षः] (axle) → @deva[अक्षाः] — @deva[एकशेष] requires identity of form, not meaning.
+
+**Conditions that block @deva[एकशेष]:**
+1. **Different forms:** @deva[प्लक्षः] + @deva[न्यग्रोधः] → @deva[प्लक्षन्यग्रोधौ] (use @deva[द्वन्द्व] instead)
+2. **Different cases:** @deva[पयः] (nominative) + @deva[पयः] (accusative) — no @deva[एकशेष]
+
+**@deva[शेष] vs. @deva[आदेश]:** The operation is retention (@deva[शेष]), not substitution (@deva[आदेश]). The surviving word is the original, not a replacement — this matters for accent and other properties.
+
+**Scope:** This is a @deva[संज्ञा]-cum-@deva[विधि] rule: it defines @deva[एकशेष] and simultaneously prescribes the operation.
+"""
+
+advanced = """
+@deva[सरूपाणामेकशेषः एकविभक्तौ] — among words of the same form in the same @deva[विभक्ति], one is retained (@deva[एकशेष]).
+
+**Defining @deva[सरूप]:** "Same form" means phonological identity of the @deva[प्रातिपदिक] (stem) plus identical @deva[विभक्ति]. @deva[अक्षः] (die) and @deva[अक्षः] (eye) are @deva[सरूप] despite different meanings — the rule looks at form, not sense.
+
+**@deva[एकविभक्तौ]:** The @deva[सप्तमी] (locative) specifies that @deva[एकशेष] applies only when the words share the same case ending. Same stem in different cases (e.g., @deva[पयः] nominative vs. @deva[पयः] accusative) does not trigger the rule.
+
+**Which word survives?** The @deva[सूत्र] does not specify. The convention is that the last occurrence is retained, though commentators debate this. @ref[1.2.65] provides a specific override for @deva[गोत्र]/@deva[युवन्] pairs.
+
+**@deva[शेष] not @deva[आदेश]:** @deva[पाणिनि] uses @deva[शेष] (remainder) rather than @deva[आदेश] (substitute). This means the surviving word retains its original properties — accent, @deva[प्रातिपदिक] status, etc. — rather than being treated as a fresh substitute.
+
+**Relation to @deva[द्वन्द्व]:** When forms differ, @deva[द्वन्द्व] compounding applies instead (@deva[प्लक्षन्यग्रोधौ]). @deva[एकशेष] is thus an alternative to @deva[द्वन्द्व] for identical forms — both express a collection, but by different mechanisms.
+
+**System position:** @ref[1.2.64]–@ref[1.2.73] form the @deva[एकशेष] section. This rule gives the general principle; subsequent rules specify which word survives when the words are not fully identical (e.g., @deva[गोत्र] over @deva[युवन्] at @ref[1.2.65], masculine over feminine at @ref[1.2.67]–@ref[1.2.68]).
+"""

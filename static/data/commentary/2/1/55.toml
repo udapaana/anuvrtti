@@ -1,0 +1,59 @@
+id = "2.1.55"
+numericId = "21055"
+
+[en]
+simple = """
+Words denoting objects of comparison (@deva[उपमान]) compound with words expressing a shared quality (@deva[सामान्यवचन]) to form @deva[तत्पुरुष]. The compound means "like X in quality Y."
+
+**Examples:**
+- @deva[घनश्यामः कृष्णः] "@deva[कृष्ण] who is cloud-dark" — @deva[घन] "cloud" is the object of comparison, @deva[श्याम] "dark" is the shared quality
+- @deva[कुमुदश्वेतनी] "lily-white"
+- @deva[हंसगदगदा] "swan-sounding" — sound like a swan's
+- @deva[न्यग्रोधपरिमण्डला] "globular like a banyan tree"
+
+The @deva[उपमान] (what something is compared to) comes first; the @deva[सामान्यवचन] (the quality they share) comes second.
+
+**No compound without shared quality:** @deva[देवदत्ता श्यामा] "@deva[देवदत्ता] who is dark" — @deva[देवदत्ता] is not an object of comparison, just a name. And @deva[फला इव तन्दुलाः] "rice like fruits" does not compound because there is no shared quality word.
+"""
+
+standard = """
+@deva[उपमानवाचक] + @deva[सामान्यवचन] → @deva[तत्पुरुष] in @deva[समानाधिकरण] — @deva[उपमानानि सामान्यवचनैः].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[घनश्यामः] "cloud-dark" — @deva[घन] = @deva[उपमान] (cloud), @deva[श्याम] = @deva[सामान्यवचन] (darkness shared by both @deva[कृष्ण] and clouds)
+- @deva[कुमुदश्वेतनी] "lily-white"
+- @deva[हंसगदगदा] "swan-sounding"
+- @deva[न्यग्रोधपरिमण्डला] "globular like a banyan"
+
+**@deva[उपमान] = standard of comparison:** The thing to which something is compared. In @deva[घनश्यामः], the person is compared to a cloud (@deva[घन]).
+
+**@deva[सामान्यवचन] = shared quality:** The quality common to both @deva[उपमान] and @deva[उपमेय]. @deva[श्याम] (darkness) is shared by the cloud and the person.
+
+**Counter-examples:**
+- @deva[देवदत्ता श्यामा] — @deva[देवदत्ता] is not an @deva[उपमान]; no comparison is intended
+- @deva[फला इव तन्दुलाः] — no @deva[सामान्य] quality word is present
+- @deva[पर्वता इव बलाहकाः] — no shared quality word
+
+**Accent:** @ref[6.2.2] governs the accent of these compounds.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[उपमानानि सामान्यवचनैः] — @deva[उपमान] words compound with @deva[सामान्यवचन] words as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**@deva[उपमान] as first member:** The standard of comparison comes first — @deva[घन] "cloud" in @deva[घनश्यामः]. The @deva[सामान्यवचन] (shared quality) follows. This matches normal @deva[कर्मधारय] order: the @deva[उपमान] qualifies the @deva[सामान्य] word, which in turn is in apposition with the @deva[उपमेय] (thing compared).
+
+**Structural analysis:** @deva[घनश्यामः कृष्णः] = @deva[कृष्ण] who is @deva[श्याम] (dark) like a @deva[घन] (cloud). The compound @deva[घनश्याम] is @deva[कर्मधारय] because @deva[घन] and @deva[श्याम] are @deva[समानाधिकरण] — both predicate the same entity (@deva[कृष्ण]). The @deva[उपमान] is the @deva[उपसर्जन]; the @deva[सामान्य] quality is the principal member.
+
+**Three requirements for compounding:**
+1. There must be an @deva[उपमान] (standard) — @deva[देवदत्ता श्यामा] fails: no comparison
+2. There must be a @deva[सामान्यवचन] (shared quality word) — @deva[फला इव तन्दुलाः] fails: no quality word
+3. Both must be in @deva[समानाधिकरण] — same case, same referent
+
+**Relation to @ref[2.1.56]:** The next rule covers @deva[उपमित] — where the thing being compared (not the standard) forms the compound. These two rules together cover the two directions of simile: @ref[2.1.55] = "cloud-dark" (standard first), @ref[2.1.56] = "man-tiger" (compared thing first).
+
+**Accent:** @ref[6.2.2] applies to these compounds.
+"""

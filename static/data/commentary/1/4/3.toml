@@ -1,0 +1,61 @@
+id = "1.4.3"
+numericId = "14003"
+
+[en]
+simple = """
+Feminine words ending in long @deva[ई] or @deva[ऊ] that denote females by their own form are called @deva[नदी] "river-type."
+
+**Examples of @deva[नदी] words:**
+- @deva[कुमारी] "maiden"
+- @deva[गौरी] "fair woman"
+- @deva[यवागू] "rice gruel" (feminine noun in @deva[ऊ])
+
+**Why it matters:** @deva[नदी] words take a special declension pattern. By @ref[7.3.112], an @deva[आट्] augment is added before certain endings:
+- @deva[कुमारी] + @deva[ङे] → @deva[कुमार्यै] "to the maiden" (dative singular)
+
+**Who is NOT @deva[नदी]:** Masculine words ending in @deva[ई]/@deva[ऊ] are excluded:
+- @deva[ग्रामणी] "village head" (masculine) + @deva[ङे] → @deva[ग्रामण्ये] — different declension pattern
+
+The name @deva[नदी] comes from the word for "river" — the prototypical feminine @deva[ई]-stem.
+"""
+
+standard = """
+Feminine words ending in @deva[ई]/@deva[ऊ] that are inherently feminine (@deva[स्त्र्याख्यौ]) are called @deva[नदी].
+
+**Rule type — @deva[संज्ञा]:** Assigns the technical name @deva[नदी] to a class of nominal stems.
+
+**Examples:** @deva[कुमारी] "maiden," @deva[गौरी] "fair woman," @deva[यवागू] "rice gruel"
+
+**Effect — @ref[7.3.112]:** @deva[नदी] words take @deva[आट्] augment before @deva[ङित्] affixes:
+- @deva[कुमारी] + @deva[ङे] → @deva[कुमार्यै] (dat. sg.)
+- @deva[कुमारी] + @deva[ङसि] → @deva[कुमार्याः] (gen./abl. sg.)
+
+**Condition — @deva[स्त्र्याख्यौ]:** The word must denote a female by its own form, not by an attributive usage. This excludes:
+- Masculine @deva[ई]/@deva[ऊ]-stems: @deva[ग्रामणी] (m.) + @deva[ङे] → @deva[ग्रामण्ये]
+- Neuter stems (none end in @deva[ई]/@deva[ऊ] naturally)
+
+**Scope:** Subsequent rules (@ref[1.4.4]–@ref[1.4.6]) narrow the definition by excluding @deva[इयङ्]/@deva[उवङ्] words and @deva[घि]-type stems.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[संज्ञा] context from @ref[1.4.1].
+
+@deva[यूस्त्र्याख्यौ नदी] — feminine @deva[ई]/@deva[ऊ]-stems denoting females are @deva[नदी].
+
+**@deva[संज्ञा] definition:** @deva[नदी] is a technical class for declension purposes. The name governs affix selection throughout @deva[सुबन्त] (nominal) operations.
+
+**Key triggering rules:**
+- @ref[7.3.112]: @deva[आट्] before @deva[ङित्] affixes
+- @ref[7.1.54]: @deva[ह्रस्व] in vocative singular
+- @ref[6.1.105]: @deva[ईद्] before @deva[यस्] (nom./acc. pl.)
+
+**@deva[स्त्र्याख्यौ] condition:** @deva[स्त्री] + @deva[आख्या] — "whose designation is feminine." This is not about grammatical gender alone but about the word's inherent meaning. @deva[कुमारी] inherently means a female; @deva[ग्रामणी] does not.
+
+**@deva[नदी] series (@ref[1.4.3]–@ref[1.4.6]):**
+- @ref[1.4.3] (this): base definition — feminine @deva[ई]/@deva[ऊ] stems
+- @ref[1.4.4]: excludes @deva[इयङ्]/@deva[उवङ्] words (except @deva[स्त्री])
+- @ref[1.4.5]: @deva[आम्] before gen. pl. — optional @deva[नदी] for excluded words
+- @ref[1.4.6]: @deva[घि] exclusion — words ending in short @deva[इ]/@deva[उ] are not @deva[नदी]
+
+**Why @deva[नदी]?** The word @deva[नदी] "river" is the paradigm example — a common feminine @deva[ई]-stem. The @deva[संज्ञा] is named after its prototype, like @deva[घि] (@ref[1.4.7]) is named after @deva[घि] (a non-existent word used as a label).
+"""

@@ -1,0 +1,36 @@
+id = "3.3.135"
+numericId = "33135"
+
+[en]
+simple = """
+When continuous action (@deva[सातत्य]) or temporal proximity (@deva[सामीप्य], meaning the action is very close to the present moment) is intended, the normal tense assignments for non-current-day past and future are altered. The aorist (@deva[लुङ्]) replaces the imperfect (@deva[लङ्]) for past actions, and the periphrastic future (@deva[लुट्]) replaces the second future (@deva[लृट्]) for future actions.
+
+**Example:** If someone has been continuously going to the village over many days, you would use @deva[लुङ्] rather than @deva[लङ्], because the action spans time rather than being confined to "not today." Similarly, if something will happen very soon (even if technically "not today"), @deva[लुट्] replaces @deva[लृट्].
+
+This matters because normal tense rules assign @deva[लङ्] and @deva[लृट्] for non-current-day events. This rule recognizes that continuity and immediacy blur the "today vs. not-today" boundary.
+"""
+
+standard = """
+The phrase @deva[नानद्यतनवत्] ("not as in the @deva[अनद्यतन] rules") signals that the standard non-current-day tense assignments of @ref[3.2.111] (@deva[अनद्यतने लङ्]) and @ref[3.3.15] (@deva[अनद्यतने लुट्]) are overridden. When @deva[सातत्य] (continuity of action) or @deva[सामीप्य] (nearness in time) is conveyed:
+- @deva[लुङ्] replaces @deva[लङ्] for past tense
+- @deva[लुट्] replaces @deva[लृट्] for future tense
+
+**Examples:**
+- @deva[सदा अभूद् ग्रामं गच्छन्] "He has always been going to the village" — @deva[लुङ्] for continuous past action spanning multiple days.
+- @deva[शीघ्रं भोक्ता] "He will eat shortly" — @deva[लुट्] for an imminent future action.
+
+The scope is restricted to cases where temporal continuity or proximity semantically overrides the normal @deva[अनद्यतन] framework.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[भविष्यत्] and @deva[भूत] continue from the tense-assignment context.
+
+The @deva[नानद्यतनवत्] construction negates the default @deva[अनद्यतन] distribution established by @ref[3.2.111] and @ref[3.3.15]. Two semantic conditions trigger this override:
+
+1. @deva[सातत्य] — the action is continuous or habitual, spanning the today/not-today boundary.
+2. @deva[सामीप्य] — the action is temporally proximate, making the @deva[अनद्यतन] classification semantically inappropriate.
+
+The substitution pattern is: @deva[लुङ्] for @deva[लङ्] (past), @deva[लुट्] for @deva[लृट्] (future). This recognizes that @deva[सातत्य] and @deva[सामीप्य] create temporal contexts where the rigid @deva[अद्यतन]/@ deva[अनद्यतन] distinction breaks down.
+
+This rule initiates a cluster (through @ref[3.3.138]) dealing with special conditions that override normal @deva[अनद्यतन] tense-selection. See @ref[3.3.136] for spatial limits and @ref[3.3.137]–@ref[3.3.138] for temporal limits.
+"""

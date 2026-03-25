@@ -1,0 +1,29 @@
+id = "5.4.152"
+numericId = "54152"
+
+[en]
+simple = """
+When a compound ends in a word with the suffix @deva[इन्] (meaning "having" something) and describes a feminine noun, the suffix @deva[कप्] is added. For example, "a hall with many staffs" becomes @deva[बहुदण्डिका] @deva[शाला].
+"""
+
+standard = """
+@[sūtra] @ref[5.4.152] prescribes @deva[कप्] after a @deva[बहुव्रीहि] compound whose final member ends in @deva[इन्]-suffix, specifically when a feminine referent (@deva[स्त्री]) is denoted. The @deva[इन्]-final word (like @deva[दण्डिन्] "staff-bearer") in @deva[बहुव्रीहि] context requires @deva[कप्] obligatorily in the feminine.
+
+**Worked example:** @deva[बहु] + @deva[दण्डिन्] → @deva[बहुव्रीहि] → feminine referent → + @deva[कप्] → @deva[बहुदण्डिक] + @deva[ई] (feminine @[strī] suffix) → @deva[बहुदण्डिका] @deva[शाला] "a hall with many staffs."
+
+In masculine or neuter contexts, @deva[कप्] is optional by @ref[5.4.154]: @deva[बहुदण्डी] @deva[राजा] (without @deva[कप्]) or @deva[बहुदण्डिकः] @deva[राजा] (with @deva[कप्]). The rule thus mandates @deva[कप्] only in the feminine to disambiguate from regular @deva[इन्]-inflection.
+"""
+
+advanced = """
+@[sūtra] @ref[5.4.152]: @deva[इनः स्त्रियाम्] — @deva[कप्] is added after a @deva[बहुव्रीहि] whose final member ends in @deva[इन्], when a @deva[स्त्री] (feminine) is meant. The conditioning factor @deva[स्त्रियाम्] is locative, indicating the semantic gender of the head noun.
+
+**Why obligatory in feminine?** Without @deva[कप्], @deva[बहुदण्डी] could be parsed as either a @[bahuvrīhi] (adjective "having many staffs") or as a regular @deva[इन्]-stem feminine (@deva[दण्डी] as a woman's name). Adding @deva[कप्] → @deva[बहुदण्डिका] unambiguously marks it as @[bahuvrīhi-derived].
+
+**Morphological steps:** @deva[बहुदण्डिन्] + @deva[कप्] → @deva[बहुदण्डिक] (the @deva[न्] of @deva[इन्] is @[anubandha]-dropped by @ref[1.3.3]) → + @deva[टाप्] (feminine by @ref[4.1.4]) → @deva[बहुदण्डिका].
+
+**Scope of @deva[इन्]:** This covers all @deva[इन्]-suffixed words (@deva[विन्], @deva[मिन्], @deva[णिन्]) since they all end in @deva[इन्] at the @[prātipadika] level.
+
+**Optional in masculine/neuter:** @ref[5.4.154] makes @deva[कप्] optional "in the remainder," so @deva[बहुदण्डी] @deva[राजा] (no @deva[कप्]) and @deva[बहुदण्डिकः] @deva[राजा] (with @deva[कप्]) are both valid. The mandatory feminine rule here overrides that optionality.
+
+**@[vārttika]:** Some grammarians extend this to @deva[मतुप्]-final words by analogy, but @[pāṇini] restricts this @[sūtra] to @deva[इन्]-finals.
+"""

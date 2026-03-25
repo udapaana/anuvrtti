@@ -1,0 +1,45 @@
+id = "2.3.47"
+numericId = "23047"
+
+[en]
+simple = """
+@deva[प्रथमा] (nominative, first case-ending) is also used when addressing someone — the function called @deva[सम्बोधन] (calling out, vocative address).
+
+**Examples:**
+- @deva[हे राम] — "O @deva[राम]!" (addressing one person)
+- @deva[हे रामौ] — "O you two @deva[राम]-s!" (addressing two)
+- @deva[हे रामाः] — "O @deva[राम]-s!" (addressing many)
+
+The vocative in Sanskrit is not a separate case — it uses the nominative endings. This rule extends @deva[प्रथमा] beyond its default function (@ref[2.3.46], expressing stem-meaning, gender, etc.) to cover the act of calling or addressing someone.
+"""
+
+standard = """
+@deva[सम्बोधने च] — @deva[प्रथमा] also applies when the sense is @deva[सम्बोधन] (addressing, calling out).
+
+**Rule type — @deva[विधि]:** Extends @deva[प्रथमा] to the vocative function, supplementing @ref[2.3.46].
+
+**Examples:**
+- @deva[हे राम] — "O @deva[राम]!" (singular vocative)
+- @deva[हे रामौ] — "O @deva[राम]-s!" (dual vocative)
+- @deva[हे रामाः] — "O @deva[राम]-s!" (plural vocative)
+
+**Why a separate rule?** @ref[2.3.46] assigns @deva[प्रथमा] for @deva[प्रातिपदिकार्थ], @deva[लिङ्ग], @deva[परिमाण], and @deva[वचन]. @deva[सम्बोधन] is a distinct communicative function — the word is used to call someone's attention, not merely to name or describe. Without this rule, there would be no authority for @deva[प्रथमा] in vocative contexts.
+
+**@deva[च] — addition:** The @deva[च] signals that @deva[सम्बोधन] is added to the list from @ref[2.3.46]. The nominative now covers five functions: stem-meaning, gender, measure, number, and address.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रथमा] from @ref[2.3.46].
+
+@deva[सम्बोधने च] — @deva[प्रथमा] also applies for @deva[सम्बोधन] (vocative address).
+
+**Why not subsume under @ref[2.3.46]?** @deva[सम्बोधन] is not @deva[प्रातिपदिकार्थ], @deva[लिङ्ग], @deva[परिमाण], or @deva[वचन]. It is a pragmatic speech function — calling someone's attention. The @deva[मात्रे] ("only these") in @ref[2.3.46] would exclude it. This separate rule is therefore necessary.
+
+**Consequence for @ref[2.3.48]–@ref[2.3.49]:** This rule establishes that vocative words bear @deva[प्रथमा]. The next two rules (@ref[2.3.48]–@ref[2.3.49]) assign the technical names @deva[आमन्त्रित] and @deva[सम्बुद्धि] to vocative words, enabling further phonological and accentual operations.
+
+**Outside @deva[अनभिहित] domain:** Like @ref[2.3.46], this rule operates independently of the @deva[अनभिहिते] @deva[अधिकार] of @ref[2.3.1]. @deva[सम्बोधन] is never expressed by verb endings, so the @deva[अनभिहित] condition is irrelevant.
+
+**Examples:** @deva[हे राम] (singular), @deva[हे रामौ] (dual), @deva[हे रामाः] (plural).
+
+**Cross-references:** @ref[2.3.46] (@deva[प्रथमा] for stem-meaning etc.), @ref[2.3.48] (@deva[आमन्त्रित] @deva[संज्ञा]), @ref[2.3.49] (@deva[सम्बुद्धि] @deva[संज्ञा]).
+"""

@@ -1,0 +1,47 @@
+id = "3.2.142"
+numericId = "32142"
+
+[en]
+simple = """
+This rule prescribes the affix @deva[घिनुण्] after a specific list of 27 verb roots, all in the sense of habitual action (@[tacchīlādi] -- one who characteristically does something).
+
+The 27 roots are: @deva[संपृच्] (to mix), @deva[अनुरुध्] (to comply), @deva[आयम्] (to restrain), @deva[आयस्] (to exert), @deva[परिसृ] (to flow around), @deva[संसृज्] (to associate), @deva[परिदेव्] (to lament), @deva[संज्वर्] (to be feverish), @deva[परिक्षिप्] (to surround), @deva[परिरट्] (to cry out), @deva[परिवद्] (to censure), @deva[परिदह्] (to burn around), @deva[परिमुह्] (to be deluded), @deva[दुष्] (to be spoiled), @deva[द्विष्] (to hate), @deva[द्रुह्] (to bear malice), @deva[दुह्] (to milk), @deva[युज्] (to join), @deva[आक्रीड्] (to sport), @deva[विविच्] (to discriminate), @deva[त्यज्] (to abandon), @deva[रज्] (to be attached), @deva[भज्] (to share), @deva[अतिचर्] (to transgress), @deva[अपचर्] (to go away), @deva[आमुष्] (to steal), and @deva[अभ्याहन्] (to strike).
+
+The @deva[घ] marker in @deva[घिनुण्] causes final palatal consonants to shift to their guttural equivalents. After the affix is applied, only @deva[इन्] remains as the functional portion.
+
+Examples: @deva[सम्पर्की] (one who habitually mixes), @deva[अनुरोधी] (compliant by nature), @deva[योगी] (one devoted to joining or concentrating), @deva[त्यागी] (one who characteristically renounces), @deva[रागी] (one prone to attachment), @deva[भागी] (one who shares).
+
+This rule matters because it generates many common agent nouns used across Sanskrit literature to describe a person's habitual character or disposition.
+"""
+
+standard = """
+This is a @[vidhi] (operational rule) prescribing @deva[घिनुण्] after 27 enumerated roots in the @deva[तच्छीलादि] sense (habitual action, natural tendency, or capacity).
+
+The functional portion of @deva[घिनुण्] is @deva[इन्], since @deva[घ्], @deva[उ], and @deva[ण्] are all @deva[इत्] markers. The @deva[घ्] marker triggers @deva[कुत्व] (palatal-to-guttural shift) by @ref[7.3.52].
+
+Worked examples:
+
+1. @deva[संपृच्] + @deva[घिनुण्]: The @deva[घ्] triggers @deva[कुत्व] (@deva[च्] to @deva[क्]), @deva[गुण] of @deva[ऋ] gives @deva[अर्], yielding @deva[सम्पर्क] + @deva[इन्] = @deva[सम्पर्की] (one who habitually associates).
+
+2. @deva[युज्] + @deva[घिनुण्]: @deva[गुण] gives @deva[ओ], @deva[कुत्व] converts @deva[ज्] to @deva[ग्], yielding @deva[योग] + @deva[इन्] = @deva[योगी] (one devoted to concentration or union). The root @deva[युज्] covers both @deva[दिवादि] (to concentrate) and @deva[रुधादि] (to join).
+
+3. @deva[रज्] + @deva[घिनुण्]: Here @deva[रञ्ज्] loses its nasal irregularly, @deva[कुत्व] applies, yielding @deva[राग] + @deva[इन्] = @deva[रागी] (one prone to passion).
+
+Additional forms: @deva[आयामी] (restraining), @deva[आयासी] (exerting), @deva[परिसारी] (flowing around), @deva[संसर्गी] (associating), @deva[विवेकी] (discriminating), @deva[त्यागी] (renouncing), @deva[भागी] (sharing), @deva[अतिचारी] (transgressing), @deva[आमोषी] (stealing), @deva[अभ्याघाती] (striking).
+
+Notes on root classes: @deva[सम्पृच्] is @deva[रुधादि]; @deva[परिदेव्] is @deva[भ्वादि] (@deva[देवृ]); @deva[क्षिप्] belongs to both @deva[तुदादि] and @deva[दिवादि].
+"""
+
+advanced = """
+This @[vidhi] prescribes @deva[घिनुण्] after 27 roots in the @deva[तच्छीलादि] domain, continuing the @deva[अधिकार] of @ref[3.2.134].
+
+The @deva[अनुवृत्ति] chain: @deva[तच्छीलादि] from @ref[3.2.134]; @deva[धातोः] from @ref[3.1.91]; @deva[प्रत्ययः] and @deva[परश्च] from @ref[3.1.1]-@ref[3.1.2].
+
+The @deva[घ्] in @deva[घिनुण्] is @deva[इत्] by @ref[1.3.3], serving as a @deva[कुत्व] trigger by @ref[7.3.52] and @ref[7.3.54] -- final palatal consonants of the root shift to gutturals before this affix. The @deva[उ] is @deva[इत्] by @ref[1.3.2], and @deva[ण्] by @ref[1.3.3], leaving @deva[इन्] as the operative portion.
+
+The irregular nasal loss in @deva[रञ्ज्] → @deva[रागी] (rather than *@deva[राङ्गी]) is a @deva[निपातन] -- the nasal @deva[ञ्] is dropped before the affix applies, which cannot be derived by regular rules.
+
+The inclusion of roots like @deva[युज्] (which could also take @deva[इष्णुच्] by @ref[3.2.136] as a @deva[शमादि] root) and @deva[त्यज्] demonstrates that this enumerated list (@deva[पठन]) functions as a @deva[नियम] -- restricting these roots to @deva[घिनुण्] specifically in the @deva[तच्छीलादि] sense, and simultaneously establishing the @deva[परिभाषा] that @ref[3.1.94] (@deva[वासरूप]) does not apply within the @deva[तच्छीलादि] domain (@ref[3.2.134]--@ref[3.2.177]).
+
+Cross-references: @ref[3.2.134] (initiating @deva[तच्छीलादि] @deva[अधिकार]), @ref[7.3.52] (@deva[कुत्व]), @ref[3.2.143]--@ref[3.2.145] (additional @deva[घिनुण्] rules with @deva[उपसर्ग] conditions).
+"""

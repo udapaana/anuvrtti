@@ -1,0 +1,44 @@
+id = "1.3.62"
+numericId = "13062"
+
+[en]
+simple = """
+A desiderative verb (formed with @deva[सन्]) takes the same @deva[पद] (@deva[आत्मनेपद] or @deva[परस्मैपद]) as its original base verb.
+
+**Examples:**
+- @deva[आस्ते] "he sits" (@deva[आत्मनेपद]) → @deva[आसिसिषते] "he wishes to sit" (@deva[आत्मनेपद])
+- @deva[शेते] "he lies down" (@deva[आत्मनेपद]) → @deva[शिशयिषते] "he wishes to lie down" (@deva[आत्मनेपद])
+- @deva[निविशते] "he settles in" (@deva[आत्मनेपद]) → @deva[निविविक्षते] "he wishes to settle" (@deva[आत्मनेपद])
+
+If the original verb is @deva[परस्मैपदिन्], its desiderative is too.
+"""
+
+standard = """
+A desiderative (@deva[सन्]-formation) follows the @deva[पद] of its primitive — the same reason that caused @deva[आत्मनेपद] in the primitive operates in the desiderative.
+
+**Examples:**
+- @deva[आस्] (@deva[ङित्] → @deva[आत्मनेपद]) → @deva[आसिसिषते]
+- @deva[शीङ्] (@deva[ङित्] → @deva[आत्मनेपद]) → @deva[शिशयिषते]
+
+**Conditional rules don't transfer blindly:** @deva[शद्] takes @deva[आत्मनेपद] only with @deva[शित्] affixes (@ref[1.3.60]). Its desiderative @deva[शिशत्सति] does not have a @deva[शित्] affix, so @deva[परस्मैपद] applies. Similarly, @deva[मृ]'s desiderative @deva[मुमूर्षति] is @deva[परस्मैपद] since the @deva[शित्]/@deva[लुङ्]/@deva[लिङ्] conditions of @ref[1.3.61] don't apply.
+
+**@ref[1.3.57] takes priority:** @ref[1.3.57] specifically ordains @deva[आत्मनेपद] for desideratives of @deva[ज्ञा]/@deva[श्रु]/@deva[स्मृ]/@deva[दृश्]. Those rules override this general principle for those four roots.
+
+**Rule type:** This is a general principle (@deva[परिभाषा]-like) governing desiderative @deva[पद] inheritance.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[सन्नन्तात्] — a desiderative follows the @deva[पद] of its primitive.
+
+**Inheritance principle:** The @deva[सन्]-derived secondary root inherits its @deva[पद] from the primitive root's applicable rule. If the primitive is @deva[आत्मनेपदिन्] by @ref[1.3.12] (root marker), the desiderative is too. If by a meaning/prefix condition, the desiderative inherits only if that condition still holds.
+
+**Conditional rules:** @ref[1.3.60] (@deva[शद्] + @deva[शित्]) and @ref[1.3.61] (@deva[मृ] + @deva[शित्]/@deva[लुङ्]/@deva[लिङ्]) are tense-conditioned. Their desideratives @deva[शिशत्सति] and @deva[मुमूर्षति] do not meet those conditions, so @deva[परस्मैपद] applies by @ref[1.3.78].
+
+**@ref[1.3.57] as @deva[अपवाद]:** For @deva[ज्ञा]/@deva[श्रु]/@deva[स्मृ]/@deva[दृश्], @ref[1.3.57] specifically ordains @deva[आत्मनेपद] for their desideratives — overriding this general inheritance rule. Those roots are @deva[परस्मैपदिन्] primitively but @deva[आत्मनेपदिन्] desideratively.
+
+**@deva[कृञ्] note:** @deva[कृञ्] is @deva[उभयपदिन्]. By @ref[1.3.79] (a later restrictive rule), @deva[अनु]/etc. + @deva[कृ]-desideratives take @deva[परस्मैपद]: @deva[अनुचिकीर्षति], @deva[पराचिकीर्षति].
+
+**Scope:** This rule applies generally to all desideratives not covered by specific rules like @ref[1.3.57]–@ref[1.3.59].
+"""

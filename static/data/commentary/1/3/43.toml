@@ -1,0 +1,51 @@
+id = "1.3.43"
+numericId = "13043"
+
+[en]
+simple = """
+The verb @deva[क्रम्] "to step" optionally takes @deva[आत्मनेपद] when used without any prefix.
+
+**Both are correct:**
+- @deva[क्रमते] "he steps" (@deva[आत्मनेपद])
+- @deva[क्रामति] "he steps" (@deva[परस्मैपद])
+
+With a prefix, no option — the specific rules (@ref[1.3.38]–@ref[1.3.42]) or the default @deva[परस्मैपद] applies: @deva[संक्रामति] "he crosses over" (always @deva[परस्मैपद]).
+"""
+
+standard = """
+After @deva[क्रम्] without any @deva[उपसर्ग], @deva[आत्मनेपद] is optional.
+
+**Both valid:**
+- @deva[क्रमते] / @deva[क्रामति] "he steps" (@deva[लट्])
+- @deva[अक्रमिष्ट] / @deva[अक्रामीत्] "he stepped" (@deva[लुङ्])
+
+**With @deva[उपसर्ग] — no option:**
+- @deva[संक्रामति] (always @deva[परस्मैपद])
+- @deva[अपक्रामति] "he walks away" (always @deva[परस्मैपद])
+
+**Type of option:** This is @deva[अप्राप्तविभाषा] — the option introduces @deva[आत्मनेपद] where it would not otherwise apply (since @deva[क्रम्] is @deva[परस्मैपदिन्] by default). The @deva[परस्मैपद] alternative comes from the default, not from a separate rule.
+
+**@deva[उपसर्ग] defined at @ref[1.4.59]:** Only items designated as @deva[उपसर्ग] block the option. Non-@deva[उपसर्ग] elements preceding @deva[क्रम्] do not count.
+
+**@deva[क्रम्]-series complete:** This is the last of six rules (@ref[1.3.38]–@ref[1.3.43]) governing @deva[क्रम्].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12]; @deva[क्रमः] from @ref[1.3.38].
+
+@deva[अनुपसर्गाद्वा] — after @deva[क्रम्] without @deva[उपसर्ग], @deva[आत्मनेपद] is optional.
+
+**@deva[अप्राप्तविभाषा]:** @deva[क्रम्] is inherently @deva[परस्मैपदिन्]. This option introduces @deva[आत्मनेपद] where it was not otherwise available. The @deva[परस्मैपद] alternative is the default — not introduced by this rule. This matters because @deva[अप्राप्तविभाषा] does not restrict any prior rule's scope.
+
+**Interaction with @ref[1.3.38]:** @ref[1.3.38] gives obligatory @deva[आत्मनेपद] for prefixless @deva[क्रम्] in @deva[वृत्ति]/@deva[सर्ग]/@deva[उपचय] senses. @ref[1.3.43] gives optional @deva[आत्मनेपद] for prefixless @deva[क्रम्] in all other senses. Together they create: three senses → obligatory @deva[आत्मनेपद]; other senses without prefix → optional; with prefix in non-qualifying senses → @deva[परस्मैपद] only.
+
+**@deva[उपसर्ग] boundary:** @deva[उपसर्ग] is defined at @ref[1.4.59] as certain @deva[गति]-elements when connected to a verb. The presence of any @deva[उपसर्ग] blocks this option entirely.
+
+**@deva[क्रम्]-series summary (@ref[1.3.38]–@ref[1.3.43]):**
+- @ref[1.3.38]: prefixless, @deva[वृत्ति]/@deva[सर्ग]/@deva[उपचय] → obligatory
+- @ref[1.3.39]: @deva[उप]/@deva[पर], same senses → obligatory
+- @ref[1.3.40]: @deva[आ], luminary-rising → obligatory
+- @ref[1.3.41]: @deva[वि], pacing → obligatory
+- @ref[1.3.42]: @deva[प्र]/@deva[उप] + @deva[वि], beginning → obligatory
+- @ref[1.3.43] (this): no prefix, other senses → optional
+"""

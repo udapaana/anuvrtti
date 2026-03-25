@@ -1,0 +1,15 @@
+id = "8.4.1"
+numericId = "84001"
+
+[en]
+simple = """
+a @deva[नकार] occurring immediately after @deva[ष्] or @deva[र्] in the same @deva[पद] is converted to a @deva[णकार].
+"""
+
+standard = """
+@deva[न्] → @deva[ण्] after @deva[र्]/@deva[ष्] in same word. @deva[आस्तीर्णम्], @deva[कृष्णाति]. Vt: Also after @deva[ऋ]. @deva[तिसृणाम्], @deva[मातॄणाम्]. Not: @deva[अग्निर्नयति] (different words).
+"""
+
+advanced = """
+@deva[न्] → @deva[ण्] after @deva[र्] or @deva[ष्] within the same @[pada]. The trigger and the target must be component letters of a single word. After @deva[र्]: @deva[आस्तीर्णम्], @deva[विस्तीर्णम्], @deva[अवगूर्णम्]. After @deva[ष्]: @deva[कृष्णाति], @deva[पुष्णाति], @deva[मुष्णाति]. The inclusion of @deva[ष्] here serves subsequent @[sutra]s, since @deva[ष्] would already trigger @deva[णत्व] by @ref[8.4.41]. The @deva[समानपद] condition excludes cross-word sequences: @deva[अग्निर्नयति], @deva[वायुर्नयति] remain unchanged. Vt: The change also applies after @deva[ऋ]: @deva[तिसृणाम्], @deva[चतसृणाम्], @deva[मातॄणाम्], @deva[पितॄणाम्]. This @[vartika] may be unnecessary, since the @deva[र] in the @[sutra] denotes the common @deva[र]-sound perceived in both consonantal @deva[र] and vocalic @deva[ऋ] (contrast @ref[8.2.42]). The objection that @deva[ऋ] contains a trailing vowel-fragment that would intervene between the @deva[र]-element and @deva[न] is answered by noting that this fragment falls within the @deva[अट्] @[pratyahara] of @ref[8.4.2]. A further objection — that the fragment is only half a @[matra], lacking independent @deva[स्थान] or @deva[प्रयत्न], and so falls outside @deva[अट्] — is resolved by the @[jnapaka] from @ref[8.4.39]: the @[kshubhnadi] list includes @deva[नृनमन] as an exception, implying that @deva[णत्व] generally does apply after such fragmentary interposition. Alternatively, @deva[नृनमन] itself serves as a @[jnapaka] that @deva[ऋ] triggers the change.
+"""

@@ -1,0 +1,54 @@
+id = "1.4.13"
+numericId = "14013"
+
+[en]
+simple = """
+Whatever stands before an affix (@deva[प्रत्यय]) is called @deva[अङ्ग] "base."
+
+An @deva[अङ्ग] is the part of a word that an affix attaches to. It can be a root, a stem, or any form that precedes an affix in a derivation.
+
+**Examples:**
+- @deva[पच्] before @deva[ति] → @deva[पच्] is the @deva[अङ्ग] (root before verb ending)
+- @deva[राम] before @deva[सु] → @deva[राम] is the @deva[अङ्ग] (stem before case ending)
+- @deva[कारक] before @deva[अण्] → @deva[कारक] is the @deva[अङ्ग] (stem before derivative affix)
+
+**Why it matters:** A large section of the grammar (from @ref[6.4.1] through @ref[7.4.97]) prescribes changes to the @deva[अङ्ग] — substitutions, augments, and deletions that happen to the base before its affix. Without this definition, those rules would have no target.
+"""
+
+standard = """
+Whatever precedes a @deva[प्रत्यय] (affix) is @deva[अङ्ग] "base" — @deva[यस्मात् प्रत्ययविधिस्तदादिप्रत्ययेऽङ्गम्].
+
+**Rule type — @deva[संज्ञा]:** Defines @deva[अङ्ग] as a relational term — an element is @deva[अङ्ग] only with respect to a following affix.
+
+**Examples:**
+- @deva[पच्] before @deva[ति] → @deva[पच्] is @deva[अङ्ग]
+- @deva[राम] before @deva[सु] → @deva[राम] is @deva[अङ्ग]
+- @deva[कारक] before @deva[अण्] → @deva[कारक] is @deva[अङ्ग]
+- @deva[पच] + @deva[अन्ति] before @deva[स्मा] → @deva[पचन्ति] is @deva[अङ्ग] (a compound base)
+
+**Scope of @deva[अङ्ग]-operations:** The @deva[अङ्गाधिकार] (@ref[6.4.1]–@ref[7.4.97]) is one of the largest sections of the grammar. All rules within it operate on the @deva[अङ्ग] — the element preceding an affix.
+
+**Dynamic nature:** @deva[अङ्ग] status is not permanent — it exists only relative to a specific affix at a specific derivational step. The same element may or may not be an @deva[अङ्ग] depending on what follows.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[संज्ञा] context from @ref[1.4.1].
+
+@deva[यस्मात् प्रत्ययविधिस्तदादिप्रत्ययेऽङ्गम्] — what precedes an affix is @deva[अङ्ग].
+
+**Foundational @deva[संज्ञा]:** @deva[अङ्ग] is one of the most referenced technical terms in the grammar. It enables the entire @deva[अङ्गाधिकार] (@ref[6.4.1]–@ref[7.4.97]) — a section of nearly 400 rules.
+
+**@deva[तदादि] = "beginning from that":** The @deva[अङ्ग] includes everything from the point where the affix-assignment rule applies, up to (but not including) the affix itself. For @deva[पच्] + @deva[ति], the entire form @deva[पच्] (or after @deva[शप्] insertion, @deva[पच] + @deva[अ]) constitutes the @deva[अङ्ग].
+
+**Relational, not absolute:** @deva[अङ्ग] is context-dependent:
+- @deva[राम] is @deva[अङ्ग] before @deva[सु]
+- @deva[रामस्य] is NOT @deva[अङ्ग] (no affix follows)
+- After @deva[सु] deletion, @deva[राम] may or may not retain @deva[अङ्ग] status depending on whether further affixes follow
+
+**Key @deva[अङ्ग]-operations:**
+- @ref[6.4.1]–@ref[6.4.175]: @deva[अङ्ग] substitutions and deletions
+- @ref[7.1.1]–@ref[7.4.97]: @deva[अङ्ग] augments and vowel changes
+- These include @deva[गुण], @deva[वृद्धि], @deva[इट्]-augment, @deva[लोप], and many more
+
+**Distinction from @deva[प्रकृति]:** @deva[प्रकृति] ("base") is an informal term. @deva[अङ्ग] is the formal @deva[संज्ञा] that triggers rules.
+"""

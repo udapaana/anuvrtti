@@ -1,0 +1,41 @@
+id = "4.1.135"
+numericId = "41135"
+
+[en]
+simple = """
+When a base word denotes a four-legged animal (a quadruped), the affix @deva[ढञ्] is used to form the patronymic ("descendant of"), instead of the default @deva[अण्].
+
+The affix @deva[ढञ्] produces the suffix @deva[एय] with @deva[वृद्धि] of the first vowel. Final @deva[उ] of the base is dropped before @deva[ढ].
+
+**Examples:**
+- @deva[कमण्डलु] (a type of animal) + @deva[ढञ्] → @deva[कामण्डलेयः] — "descendant of @[kamaṇḍalu]"
+- @deva[शुन्तिबाहु] (a type of animal) + @deva[ढञ्] → @deva[शौन्तिबाहेयः] — "descendant of @[śuntibāhu]"
+- @deva[जम्बु] (a type of animal) + @deva[ढञ्] → @deva[जाम्बेयः] — "descendant of @[jambu]"
+
+This matters because animal names form patronymics differently from human names — they take @deva[ढञ्] rather than the general @deva[अण्].
+"""
+
+standard = """
+After bases denoting quadrupeds (@deva[चतुष्पाद्]), the affix @deva[ढञ्] (yielding @deva[एय] with @deva[वृद्धि]) is used for @deva[अपत्य] (descendant) meaning, debarring the default @deva[अण्] of @ref[4.1.83].
+
+**Rule type:** @deva[अपवाद] (exception) to @deva[अण्].
+
+**Examples:**
+- @deva[कमण्डलु] + @deva[ढञ्] → @deva[कामण्डलेयः] (final @deva[उ] dropped before @deva[ढ])
+- @deva[शुन्तिबाहु] + @deva[ढञ्] → @deva[शौन्तिबाहेयः]
+- @deva[जम्बु] + @deva[ढञ्] → @deva[जाम्बेयः]
+
+**Scope:** The word must denote a quadruped as its primary meaning. If a word like @deva[गृष्टि] can mean both 'cow' (quadruped) and 'a woman with one child' (human), the quadruped sense falls under this rule, while the human sense requires the next rule (@ref[4.1.136]).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अपत्यम्] from @ref[4.1.92], @deva[प्रत्ययः] from @ref[4.1.83].
+
+This @[sūtra] provides @deva[ढञ्] as an @deva[अपवाद] to @deva[अण्] (@ref[4.1.83]) for @deva[चतुष्पाद्]-denoting bases in @deva[अपत्यार्थ].
+
+**Derivations:** @deva[कमण्डलु] → @deva[कामण्डलेयः]: the final @deva[उ] undergoes @deva[लोप] before @deva[ढ], and @deva[वृद्धि] applies to the initial vowel. Similarly @deva[शुन्तिबाहु] → @deva[शौन्तिबाहेयः], @deva[जम्बु] → @deva[जाम्बेयः].
+
+**Interaction with @ref[4.1.136]:** The @deva[गृष्टयादि] list in the next @[sūtra] covers words that denote humans (e.g. @deva[गृष्टि] = 'woman with one child'). When those same words denote quadrupeds, this rule applies instead, creating a meaning-based split in affix assignment.
+
+**Cross-references:** @ref[4.1.83] (@deva[अण्] default), @ref[4.1.136] (@deva[गृष्टयादि]).
+"""

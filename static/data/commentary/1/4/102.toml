@@ -1,0 +1,45 @@
+id = "1.4.102"
+numericId = "14102"
+
+[en]
+simple = """
+Within each person group (@deva[प्रथम], @deva[मध्यम], @deva[उत्तम]), the three endings correspond to three numbers:
+
+1. **@deva[एकवचन] "singular"** — one person or thing
+2. **@deva[द्विवचन] "dual"** — exactly two
+3. **@deva[बहुवचन] "plural"** — three or more
+
+**Example with @deva[पच्] "to cook" in @deva[प्रथम] (3rd person):**
+- @deva[एकवचन]: @deva[पचति] "he cooks"
+- @deva[द्विवचन]: @deva[पचतः] "they two cook"
+- @deva[बहुवचन]: @deva[पचन्ति] "they cook"
+
+This three-way number distinction (singular, dual, plural) applies to every person in every tense and mood.
+"""
+
+standard = """
+Within each person triad, the three endings are called @deva[एकवचन] (singular), @deva[द्विवचन] (dual), and @deva[बहुवचन] (plural) — @deva[तान्येकवचनद्विवचनबहुवचनान्येकशः].
+
+**Rule type — @deva[संज्ञा]:** Names three number-designations for @deva[तिङ्] endings.
+
+**Structure:** Each person triad has exactly three members, assigned in order:
+- First member = @deva[एकवचन] (e.g., @deva[तिप्] in @deva[प्रथम परस्मैपद])
+- Second member = @deva[द्विवचन] (e.g., @deva[तस्])
+- Third member = @deva[बहुवचन] (e.g., @deva[झि])
+
+**@deva[एकशः] = "one by one":** The word @deva[एकशः] in the @deva[सूत्र] specifies that these number names are assigned to each ending individually, in sequence within the triad.
+
+**Result:** 3 persons × 3 numbers × 2 voices = 18 @deva[तिङ्] endings, each uniquely identified by its person, number, and voice.
+"""
+
+advanced = """
+@deva[तान्येकवचनद्विवचनबहुवचनान्येकशः] — the members of each triad are called @deva[एकवचन], @deva[द्विवचन], @deva[बहुवचन], assigned one at a time.
+
+**@deva[वचन] = "number":** The term literally means "expression" — @deva[एकवचन] expresses one, @deva[द्विवचन] expresses two, @deva[बहुवचन] expresses many. These are @deva[संज्ञा] labels, not descriptions of the endings themselves.
+
+**@deva[एकशः] and assignment order:** Without @deva[एकशः], the three names might apply to the triad as a whole. @deva[एकशः] ensures sequential, one-to-one assignment: the first ending in each triad gets @deva[एकवचन], the second gets @deva[द्विवचन], the third gets @deva[बहुवचन].
+
+**Scope — @deva[तिङ्] only here:** This rule names @deva[वचन] for @deva[तिङ्] endings. @ref[1.4.103] extends the same names to @deva[सुप्] (nominal endings). The two rules together cover the entire inflectional system.
+
+**Interaction with @ref[1.4.104]:** Each triad (one person, three numbers) constitutes a @deva[विभक्ति]. So @deva[प्रथमा विभक्ति] = {@deva[तिप्] (@deva[एकवचन]), @deva[तस्] (@deva[द्विवचन]), @deva[झि] (@deva[बहुवचन])}.
+"""

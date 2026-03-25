@@ -1,0 +1,60 @@
+id = "1.1.69"
+numericId = "11069"
+
+[en]
+simple = """
+When a vowel or consonant class is mentioned in a rule, it automatically includes all sounds pronounced at the same place in the mouth — its homogeneous sounds (@deva[सवर्ण]). So @deva[अ] in a rule includes both short @deva[अ] and long @deva[आ]. The consonant group @deva[कु] includes all five velar stops: @deva[क], @deva[ख], @deva[ग], @deva[घ], @deva[ङ].
+
+This applies to @deva[अण्] sounds (the simple vowels and semivowels) and to sounds marked with @deva[उ] (like @deva[कु], @deva[चु], @deva[टु], @deva[तु], @deva[पु]).
+
+**Exception:** This does not apply when the sound is the name of an affix. The @deva[उ] in an affix name like @deva[उण्] means only @deva[उ] itself, not all labial vowels.
+
+**Example:** @ref[6.1.87] (@deva[आद्गुणः]) says @deva[गुण] replaces a vowel "after @deva[अ]." Because @deva[अ] includes @deva[आ], this rule applies after both @deva[अ] and @deva[आ]: @deva[नर] + @deva[ईशः] → @deva[नरेशः] and @deva[महा] + @deva[ईशः] → @deva[महेशः].
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] extends sound references: @deva[अण्] sounds (vowels @deva[अ], @deva[इ], @deva[उ] and semivowels) and @deva[उदित्] sounds (consonants marked with @deva[उ]) include their @deva[सवर्ण] (homogeneous) counterparts — unless the sound is an affix (@deva[प्रत्यय]).
+
+**@deva[सवर्ण]:** Sounds sharing the same place (@deva[स्थान]) and internal effort (@deva[आभ्यन्तरप्रयत्न]) of articulation.
+
+**@deva[अण्] extension — vowels include their long/short counterparts:**
+- @deva[अ] includes @deva[आ]
+- @deva[इ] includes @deva[ई]
+- @deva[उ] includes @deva[ऊ]
+
+**@deva[उदित्] extension — consonant classes:**
+- @deva[कु] = @deva[क], @deva[ख], @deva[ग], @deva[घ], @deva[ङ] (all velars)
+- @deva[चु] = @deva[च], @deva[छ], @deva[ज], @deva[झ], @deva[ञ] (all palatals)
+- @deva[टु] = @deva[ट], @deva[ठ], @deva[ड], @deva[ढ], @deva[ण] (all retroflexes)
+- @deva[तु] = @deva[त], @deva[थ], @deva[द], @deva[ध], @deva[न] (all dentals)
+- @deva[पु] = @deva[प], @deva[फ], @deva[ब], @deva[भ], @deva[म] (all labials)
+
+**Example:** @ref[6.1.87] (@deva[आद्गुणः]) — @deva[अ] includes @deva[आ], so @deva[गुण] applies after both:
+- @deva[नर] + @deva[ईशः] → @deva[नरेशः] (@deva[अ] + @deva[ई] → @deva[ए])
+- @deva[महा] + @deva[ईशः] → @deva[महेशः] (@deva[आ] + @deva[ई] → @deva[ए])
+
+**Affix exception (@deva[अप्रत्यय]):** When a vowel names an affix, it means only that specific vowel. @deva[उ] as an affix (@ref[3.2.168]) means short @deva[उ] only → @deva[भिक्षुः] (not *@deva[भिक्षूः]).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent @deva[परिभाषा].
+
+@deva[अणुदित्सवर्णस्य चाप्रत्ययः] — @deva[अण्] sounds and @deva[उदित्] sounds denote their @deva[सवर्ण] (homogeneous) counterparts, provided they are not affixes.
+
+**Three components:**
+1. **@deva[अण्]:** The @deva[प्रत्याहार] covering @deva[अ], @deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ] and the semivowels @deva[य], @deva[व], @deva[र], @deva[ल]. When any of these appears in a rule, it includes its @deva[सवर्ण] variants (different lengths, accents, nasality).
+2. **@deva[उदित्]:** Sounds marked with @deva[उ] as an @deva[इत्] — primarily the five consonant class-heads (@deva[कु], @deva[चु], @deva[टु], @deva[तु], @deva[पु]). Each denotes all five members of its class.
+3. **@deva[अप्रत्यय]:** The extension does not apply when the sound is used as an affix name.
+
+**Why @deva[अण्] and not @deva[अच्]?** @deva[अण्] includes semivowels, which also have @deva[सवर्ण] relationships (e.g., @deva[य्] shares place with @deva[इ/ई]). @deva[अच्] would cover only vowels.
+
+**Interaction with @ref[1.1.70]:** This rule says @deva[अ] includes @deva[आ]. But @ref[1.1.70] says @deva[अत्] (with @deva[तपर]) means only short @deva[अ]. The @deva[तपर] marker overrides this rule's extension when precise length is needed.
+
+**Example:** @ref[6.1.87] (@deva[आद्गुणः]):
+- The rule says @deva[अ]. By this rule, @deva[अ] includes @deva[आ].
+- So @deva[गुण] applies after both: @deva[नर] + @deva[ईशः] → @deva[नरेशः]; @deva[महा] + @deva[ईशः] → @deva[महेशः]
+
+**@deva[सवर्ण] definition (@ref[1.1.9]):** Sounds are @deva[सवर्ण] if they share @deva[स्थान] (place) and @deva[आभ्यन्तरप्रयत्न] (internal effort). Length, accent, and nasality do not affect @deva[सवर्ण] status.
+
+**Why the affix exception?** Affix names use vowels as @deva[इत्] markers with specific grammatical functions (@deva[अनुबन्ध]). If @deva[उ] in an affix name meant "all @deva[सवर्ण] of @deva[उ]," the affix's properties would be misidentified.
+"""

@@ -1,0 +1,53 @@
+id = "1.3.91"
+numericId = "13091"
+
+[en]
+simple = """
+The @deva[द्युतादि] group of 22 roots (beginning with @deva[द्युत्] "to shine") optionally take @deva[परस्मैपद] (active endings) in the aorist tense (@deva[लुङ्]).
+
+**Both are correct (aorist):**
+- @deva[अद्युतत्] / @deva[अद्योतिष्ट] "it shone"
+
+**Other tenses — @deva[आत्मनेपद] only:**
+- @deva[द्योतते] "it shines" (present)
+
+These roots normally always take @deva[आत्मनेपद]. This rule creates a limited exception — only in the aorist may @deva[परस्मैपद] be used. In all other tenses, the regular @deva[आत्मनेपद] applies.
+"""
+
+standard = """
+@deva[द्युतादि] roots (22 roots in the @deva[भ्वादि] class) optionally take @deva[परस्मैपद] with @deva[लुङ्] (aorist) — @deva[विभाषा].
+
+**Both valid (aorist):**
+- @deva[अद्युतत्] / @deva[अद्योतिष्ट] "it shone"
+
+**Other tenses — @deva[आत्मनेपद] only:**
+- @deva[द्योतते] "it shines" (present — @deva[लट्])
+- @deva[द्योतिष्यते] "it will shine" (future — @deva[लृट्])
+
+**Rule type — tense-restricted @deva[विभाषा]:** These roots are @deva[अनुदात्तेत्], so @ref[1.3.12] mandates @deva[आत्मनेपद] unconditionally. This rule partially overrides @ref[1.3.12] for the aorist only.
+
+**Option analysis:**
+- @deva[परस्मैपद] option: this rule applies
+- @deva[आत्मनेपद] option: @ref[1.3.12] applies (@deva[अनुदात्तेत्] → @deva[आत्मनेपद])
+
+**Scope:** The @deva[द्युतादि] is a closed list of 22 roots. A subgroup of 5 (@deva[वृतादि]) gets further optionality in @ref[1.3.92].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78].
+
+@deva[द्युतादिभ्यश्च लुङि] — @deva[द्युतादि] roots optionally take @deva[परस्मैपद] in @deva[लुङ्].
+
+**Tense-restricted override of @ref[1.3.12]:** @deva[द्युतादि] roots are @deva[अनुदात्तेत्] — unconditionally @deva[आत्मनेपदिन्]. This rule creates optionality limited to one @deva[लकार]: @deva[लुङ्] (aorist). All other tenses remain @deva[आत्मनेपद] only.
+
+**The @deva[द्युतादि] group:** 22 roots within the first @deva[गण] (@deva[भ्वादि]). Includes @deva[द्युत्], @deva[श्वित्], @deva[मिद्], @deva[स्विद्], @deva[क्षिद्], @deva[रुच्], @deva[ञिमुच्], @deva[लुच्], @deva[लुञ्च्], @deva[वृत्], @deva[वृध्], etc.
+
+**Progressive widening (@ref[1.3.91]–@ref[1.3.93]):**
+- @ref[1.3.91] (this): all 22 @deva[द्युतादि] → optional in @deva[लुङ्]
+- @ref[1.3.92]: 5 @deva[वृतादि] (subset) → optional also with @deva[स्य]/@deva[सन्]
+- @ref[1.3.93]: @deva[क्लिप्] alone → optional also with @deva[लुट्]
+
+Each successive rule extends the tense range for a narrower set of roots.
+
+**End of @deva[पद]-assignment section:** @ref[1.3.91]–@ref[1.3.93] close the entire @deva[आत्मनेपद]/@deva[परस्मैपद] block that began at @ref[1.3.12]. @ref[1.4.1] begins a new @deva[अधिकार].
+"""

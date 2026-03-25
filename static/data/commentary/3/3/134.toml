@@ -1,0 +1,31 @@
+id = "3.3.134"
+numericId = "33134"
+
+[en]
+simple = """
+When the accompanying word (@deva[उपपद]) itself expresses hope — rather than the verb conveying it — the potential mood (@deva[लिङ्]) is used to denote future action. This overrides the second future prescribed by the previous rule.
+
+**Example:** @deva[उपाध्यायश्चेदागच्छेत्] "If the teacher should come..." Here the hope is embedded in the conditional particle @deva[चेत्] and the @deva[उपपद], not in the verbal root, so @deva[लिङ्] is used rather than @deva[लृट्].
+
+This rule captures a subtle semantic distinction: when the hopeful meaning comes from the surrounding words rather than the verb itself, Sanskrit switches to the potential mood.
+"""
+
+standard = """
+This is a further exception (@deva[अपवाद]) to @ref[3.3.132], mandating @deva[लिङ्] when @deva[आशंसा] (hope) resides in the @deva[उपपद] rather than in the verbal action. As a subsequent rule (@deva[परसूत्र]), it overrides even @ref[3.3.133].
+
+**Examples:**
+- @deva[उपाध्यायश्चेदागच्छेत्] "If the teacher should come..." — @deva[लिङ्] because hope is expressed by the @deva[उपपद].
+- @deva[क्षिप्रमागच्छेत्] "He should come quickly" — even with @deva[क्षिप्र], @deva[लिङ्] applies because this rule supersedes @ref[3.3.133].
+
+The rule type is @deva[विधि] — it prescribes @deva[लिङ्] for @deva[भविष्यत्]-artha (future sense) under the specific condition that the @deva[उपपद] carries the hopeful meaning.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आशंसायाम्] from @ref[3.3.132]; @deva[भविष्यत्] continues.
+
+The key distinction from @ref[3.3.132] is where @deva[आशंसा] is located: when it resides in the @deva[उपपद] (not the @deva[धातु] or the verbal action), @deva[लिङ्] applies. Being @deva[परसूत्र], this overrides both @ref[3.3.132] (@deva[लुङ्]) and @ref[3.3.133] (@deva[लृट्] with @deva[क्षिप्र]).
+
+The potential mood here conveys optative-future sense: "should/may/might." The @deva[चेद्]-clause construction naturally places hope in the conditional framing rather than the verb, triggering this rule.
+
+This completes a three-rule hierarchy for @deva[आशंसा]: @ref[3.3.132] (general, @deva[लुङ्]) → @ref[3.3.133] (with @deva[क्षिप्र], @deva[लृट्]) → this rule (hope in @deva[उपपद], @deva[लिङ्]).
+"""

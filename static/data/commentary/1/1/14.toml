@@ -1,0 +1,49 @@
+id = "1.1.14"
+numericId = "11014"
+
+[en]
+simple = """
+Particles (@deva[निपात]s) that consist of just a single vowel are @deva[प्रगृह्य] — they do not undergo @deva[सन्धि]. There is one exception: @deva[आ] (called @deva[आङ्] in the grammar), which does merge with following vowels in most of its uses.
+
+**Examples:** @deva[इ इन्द्र] "O @deva[इन्द्र]" — the @deva[इ] stays separate (not *@deva[ईन्द्र]). @deva[उ उत्तिष्ठ] "O arise" — the @deva[उ] stays separate (not *@deva[ऊत्तिष्ठ]).
+
+**The @deva[आ] exception:** @deva[आ] + @deva[इहि] = @deva[एहि] "come" — here @deva[आ] merges by @deva[सन्धि] because it functions as @deva[आङ्] (a prefix meaning "towards"). But when @deva[आ] expresses an emotion like regret, it remains @deva[प्रगृह्य]: @deva[आ एवं मन्यसे] "Oh, do you think so?"
+"""
+
+standard = """
+Single-vowel @deva[निपात]s (as defined by @ref[1.4.56]) are @deva[प्रगृह्य], with the exception of @deva[आङ्].
+
+**Examples:** @deva[इ इन्द्र] "O @deva[इन्द्र]," @deva[उ उत्तिष्ठ] "O arise"
+
+**Why "single vowel"?** The term @deva[एकाच्] means a particle that is one vowel and nothing else. Multi-letter particles like @deva[प्र] undergo @deva[सन्धि] normally: @deva[प्र] + @deva[अग्नये] = @deva[प्राग्नये].
+
+**Why only @deva[निपात]s?** A single vowel that is an affix rather than a particle is not @deva[प्रगृह्य]. Affixes merge normally.
+
+**The @deva[आङ्] exception — four senses where @deva[सन्धि] applies:**
+1. Diminutive: @deva[आ] + @deva[उष्णम्] = @deva[ओष्णम्] "somewhat warm"
+2. Reversive prefix: @deva[आ] + @deva[इहि] = @deva[एहि] "come"
+3. "From/since": @deva[आजन्मनः] "since birth"
+4. "Until": @deva[आ] + @deva[अध्ययनात्] = @deva[आध्ययनात्] "until study"
+
+When @deva[आ] expresses regret or exclamation (not one of these four senses), it is @deva[प्रगृह्य]: @deva[आ एवं मन्यसे] "Oh, do you think so?"
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रगृह्यम्] from @ref[1.1.11].
+
+@deva[निपात एकाज् अनाङ्] — a @deva[निपात] that is @deva[एकाच्] and not @deva[आङ्] is @deva[प्रगृह्य].
+
+**Meaning of @deva[एकाच्]:** Here @deva[एकाच्] means a particle consisting of exactly one vowel with no consonants — not the broader sense "monosyllable" (which would include @deva[प्र], @deva[नि], @deva[वि], etc., that have a consonant + vowel). The @deva[काशिका] clarifies: @deva[एकाच्] = @deva[एकः अच् यस्मिन्], a word in which there is one @deva[अच्] and nothing else.
+
+**Why @deva[निपात]?** The restriction to @deva[निपात]s (defined at @ref[1.4.56]) excludes single-vowel affixes. A single @deva[अ] functioning as an affix is not @deva[प्रगृह्य] and merges normally.
+
+**@deva[आङ्] — four senses where @deva[सन्धि] applies:**
+1. @deva[ईषदर्थ] (diminutive): @deva[आ] + @deva[उष्णम्] = @deva[ओष्णम्]
+2. @deva[विपर्यय] (reversive): @deva[आ] + @deva[इहि] = @deva[एहि]
+3. @deva[अभिविधि] ("from"): @deva[आजन्मनः]
+4. @deva[मर्यादा] ("until"): @deva[आध्ययनात्]
+
+**When @deva[आ] is @deva[प्रगृह्य]:** When @deva[आ] does not carry any of these four senses — for instance, expressing regret or wonder — it is not @deva[आङ्] and falls under this rule: @deva[आ एवं किलासीत्] "Ah, such there once was." The @deva[सिद्धान्तकौमुदी] discusses this at length.
+
+**Interaction with @ref[1.1.15]:** That rule covers @deva[ओ]-final particles. Together, @ref[1.1.14] and @ref[1.1.15] ensure that exclamatory and vocative particles preserve their final vowels in all environments.
+"""

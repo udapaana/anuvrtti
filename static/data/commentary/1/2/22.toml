@@ -1,0 +1,46 @@
+id = "1.2.22"
+numericId = "12022"
+
+[en]
+simple = """
+After the root @deva[पू] "to purify," both the @deva[सेट्] past participle affixes (@deva[निष्ठा]) and the @deva[सेट्] @deva[क्त्वा] ("having done") are not @deva[कित्]. This means @deva[गुण] (vowel strengthening) applies: @deva[ऊ] becomes @deva[अव्].
+
+**Examples:**
+- @deva[पवितः] "purified" (@deva[निष्ठा])
+- @deva[पवितवान्] "one who purified" (@deva[निष्ठा])
+- @deva[पवित्वा] "having purified" (@deva[क्त्वा])
+
+Unlike the previous rule (@ref[1.2.21]), this is not optional — @deva[गुण] always applies here.
+"""
+
+standard = """
+@deva[सेट्] @deva[निष्ठा] (@deva[क्त], @deva[क्तवतु]) and @deva[सेट्] @deva[क्त्वा] are not @deva[कित्] after @deva[पू] "to purify." @deva[गुण] applies obligatorily.
+
+**Forms:**
+- @deva[पवितः], @deva[पवितवान्] "purified" (@deva[निष्ठा])
+- @deva[पवित्वा] "having purified" (@deva[क्त्वा])
+
+**Why @deva[सेट्]?** By @ref[7.2.51], @deva[पू] takes @deva[इट्] before @deva[निष्ठा] and @deva[क्त्वा].
+
+**Not optional:** The @deva[विभाषा] of @ref[1.2.21] does not carry forward here. This is an obligatory removal of @deva[कित्] status.
+
+**@deva[क्त्वा] mention:** @deva[क्त्वा] is explicitly named here (alongside @deva[निष्ठा]) to establish its @deva[अनुवृत्ति] for the subsequent rules (@ref[1.2.23]–@ref[1.2.25]), which deal with optional @deva[कित्] for @deva[सेट्] @deva[क्त्वा] after various root classes.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[सेट्] from @ref[1.2.18]; @deva[निष्ठा] from @ref[1.2.19].
+
+@deva[पवो निष्ठासेट्क्त्वा च] — @deva[सेट्] @deva[निष्ठा] and @deva[सेट्] @deva[क्त्वा] are not @deva[कित्] after @deva[पू].
+
+**Structural role:** This rule serves two purposes:
+1. It removes @deva[कित्] from @deva[सेट्] @deva[निष्ठा]/@deva[क्त्वा] after @deva[पू] specifically
+2. It re-introduces @deva[क्त्वा] into the @deva[अनुवृत्ति] stream — @ref[1.2.18] covered @deva[सेट्] @deva[क्त्वा] generally, but the subsequent rules @ref[1.2.23]–@ref[1.2.25] need @deva[क्त्वा] in scope to create exceptions
+
+**@deva[विभाषा] discontinuity:** The @deva[विभाषा] from @ref[1.2.21] does not continue. Evidence: @ref[1.2.23] explicitly states @deva[विभाषा] again, which would be redundant if it were already in @deva[अनुवृत्ति].
+
+**Why single out @deva[पू]?** @deva[पू] is a vowel-final root (@deva[ऊ]-final) that takes @deva[इट्] before @deva[निष्ठा] by @ref[7.2.51]. Without this rule, the @deva[कित्] nature of @deva[क्त]/@deva[क्तवतु] would block @deva[गुण], producing *@deva[पूतः] (which is actually the @deva[अनिट्] form). The @deva[सेट्] form @deva[पवितः] requires @deva[गुण], hence the need to remove @deva[कित्].
+
+**@deva[अनिट्] vs. @deva[सेट्] forms of @deva[पू]:**
+- @deva[अनिट्]: @deva[पूतः] "purified" (@deva[कित्], no @deva[गुण])
+- @deva[सेट्]: @deva[पवितः] "purified" (not @deva[कित्] by this rule, @deva[गुण] applies)
+"""

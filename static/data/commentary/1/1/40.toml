@@ -1,0 +1,42 @@
+id = "1.1.40"
+numericId = "11040"
+
+[en]
+simple = """
+Words ending in the affixes @deva[क्त्वा], @deva[तोसुन्], and @deva[कसुन्] are @deva[अव्यय] (indeclinables). These form verbal adverbs — words that express "having done X" or "upon doing X."
+
+**Examples:**
+- @deva[क्त्वा]: @deva[कृत्वा] "having done," @deva[गत्वा] "having gone"
+- @deva[तोसुन्]: @deva[उदेतोः] "having risen" (Vedic)
+- @deva[कसुन्]: @deva[विसृपः] "having spread" (Vedic)
+
+@deva[क्त्वा] is the most common of these in classical Sanskrit. The other two appear primarily in Vedic texts.
+"""
+
+standard = """
+Words formed with @deva[क्त्वा], @deva[तोसुन्] (@ref[3.4.16]), and @deva[कसुन्] are @deva[अव्यय].
+
+**@deva[क्त्वा] (gerund/absolutive):** @deva[कृत्वा] "having done," @deva[गत्वा] "having gone." The most productive of the three — used constantly in classical Sanskrit.
+
+**@deva[तोसुन्] (Vedic gerund):** @deva[उदेतोः] "having risen," @deva[अपाकर्तोः] "having removed." Vedic usage: @deva[पुरा सूर्यस्योदेतोः] (YV I.28).
+
+**@deva[कसुन्] (Vedic gerund):** @deva[आतृदः] (RV VIII.1.12), @deva[विसृपः] "having spread."
+
+**Why listed separately from @ref[1.1.39]?** @deva[क्त्वा] ends in @deva[आ], not @deva[म्] or @deva[एच्], so it does not fall under @ref[1.1.39]. @deva[तोसुन्] ends in @deva[ओस्] and @deva[कसुन्] in @deva[अस्] — also outside @ref[1.1.39]'s scope. Each needs explicit inclusion.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अव्ययम्] from @ref[1.1.37].
+
+@deva[क्त्वातोसुनकसुनः] — words ending in @deva[क्त्वा], @deva[तोसुन्], @deva[कसुन्] are @deva[अव्यय].
+
+**@deva[क्त्वा]:** @deva[कृत्वा], @deva[गत्वा]. The @deva[क्] is @deva[इत्]; actual affix is @deva[त्वा]. With @deva[उपसर्ग] (prefix), @deva[ल्यप्] replaces @deva[क्त्वा]: @deva[प्रकृत्य] (not *@deva[प्रकृत्वा]).
+
+**@deva[तोसुन्] (@ref[3.4.16]):** @deva[उदेतोः], @deva[अपाकर्तोः], @deva[विसृपोः]. The @deva[उन्] is @deva[इत्]; actual affix is @deva[तोस्]. Vedic: @deva[पुरासूर्यस्योदेतो राधेयः]; @deva[पुरावत्सानामपाकर्तोः].
+
+**@deva[कसुन्]:** @deva[आतृदः] (RV VIII.1.12). The @deva[उन्] is @deva[इत्]; actual affix is @deva[कस्]. Vedic: @deva[य ऋते चिदभिश्रिषः पुरा जत्रृभ्य आतृदः].
+
+**Why separate from @ref[1.1.39]?** @ref[1.1.39] covers @deva[कृत्] affixes ending in @deva[म्] or @deva[एच्]. @deva[क्त्वा] ends in @deva[आ]; @deva[तोसुन्] in @deva[ओस्]; @deva[कसुन्] in @deva[अस्]. None match the @ref[1.1.39] conditions, so they require their own rule.
+
+**Position in the @deva[अव्यय] series:** @ref[1.1.37]–@ref[1.1.41] build the complete definition of @deva[अव्यय]. This rule specifically handles gerundive/absolutive forms.
+"""

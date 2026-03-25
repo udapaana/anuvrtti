@@ -1,0 +1,54 @@
+id = "1.4.5"
+numericId = "14005"
+
+[en]
+simple = """
+Before the genitive plural ending @deva[आम्], @deva[ई]/@deva[ऊ]-words that normally take @deva[इयङ्]/@deva[उवङ्] substitution are optionally treated as @deva[नदी] — but @deva[स्त्री] "woman" is always @deva[नदी] here.
+
+**Optional forms (either is correct):**
+- @deva[श्री] + @deva[आम्] → @deva[श्रीणाम्] (as @deva[नदी]) or @deva[श्रियाम्] (with @deva[इयङ्])
+- @deva[भ्रू] + @deva[आम्] → @deva[भ्रूणाम्] (as @deva[नदी]) or @deva[भ्रुवाम्] (with @deva[उवङ्])
+
+**No option for @deva[स्त्री]:**
+- @deva[स्त्री] + @deva[आम्] → @deva[स्त्रीणाम्] only (always @deva[नदी])
+
+The previous rule (@ref[1.4.4]) excluded these words from @deva[नदी]. This rule partially reinstates them — but only before the genitive plural ending.
+"""
+
+standard = """
+Before @deva[आम्] (gen. pl.), @deva[इयङ्]/@deva[उवङ्]-taking @deva[ई]/@deva[ऊ]-words are optionally @deva[नदी] — @deva[विभाषा]. @deva[स्त्री] is always @deva[नदी].
+
+**Rule type — @deva[विभाषा] partially reinstating @ref[1.4.3]:** @ref[1.4.4] excluded these words from @deva[नदी]. This rule creates optionality specifically before gen. pl. @deva[आम्].
+
+**Optional forms:**
+- @deva[श्री] + @deva[आम्] → @deva[श्रीणाम्] (as @deva[नदी]) or @deva[श्रियाम्] (with @deva[इयङ्])
+- @deva[भ्रू] + @deva[आम्] → @deva[भ्रूणाम्] (as @deva[नदी]) or @deva[भ्रुवाम्] (with @deva[उवङ्])
+
+**@deva[स्त्री] — no option:**
+- @deva[स्त्री] + @deva[आम्] → @deva[स्त्रीणाम्] only
+
+**Option analysis:**
+- @deva[नदी] option: @deva[ई]/@deva[ऊ] remains, @deva[णुट्] augment applies (giving @deva[णाम्] → @deva[श्रीणाम्])
+- Non-@deva[नदी] option: @deva[इयङ्]/@deva[उवङ्] substitution applies (@deva[श्रियाम्], @deva[भ्रुवाम्])
+
+**Scope:** Only before @deva[आम्] (gen. pl.). In all other cases, @ref[1.4.4]'s exclusion holds.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[नदी] from @ref[1.4.3]; @deva[इयङ्]/@deva[उवङ्] context from @ref[1.4.4].
+
+@deva[आम्प्रत्ययवत्कृतां विभाषा नदीसंज्ञा स्त्रियाम्] — before @deva[आम्], @deva[नदी] is optional for @deva[इयङ्]/@deva[उवङ्] words; @deva[स्त्री] always @deva[नदी].
+
+**Partial reinstatement of @ref[1.4.3]:** @ref[1.4.4] excludes @deva[इयङ्]/@deva[उवङ्] words from @deva[नदी] globally. This rule reinstates the @deva[नदी] option for one specific affix: @deva[आम्] (gen. pl., @ref[4.1.2]).
+
+**Why gen. pl. specifically?** The @deva[णुट्] augment (by @ref[7.1.54]) is inserted before @deva[आम्] after @deva[नदी] stems, giving forms like @deva[श्रीणाम्]. Without @deva[नदी] status, @deva[इयङ्] applies instead: @deva[श्रियाम्]. Both forms are attested in usage — hence optionality.
+
+**@deva[स्त्री] exception:** @deva[स्त्री] was already exempted from @ref[1.4.4]'s exclusion. Here, the rule reaffirms: @deva[स्त्री] is always @deva[नदी] before @deva[आम्], giving only @deva[स्त्रीणाम्].
+
+**@deva[नदी] series summary (@ref[1.4.3]–@ref[1.4.5]):**
+- @ref[1.4.3]: fem. @deva[ई]/@deva[ऊ] → @deva[नदी] (broad)
+- @ref[1.4.4]: minus @deva[इयङ्]/@deva[उवङ्] words (except @deva[स्त्री])
+- @ref[1.4.5] (this): plus optional @deva[नदी] before @deva[आम्] (except @deva[स्त्री] — always)
+
+**Transition:** @ref[1.4.6] begins the @deva[घि] definition — short @deva[इ]/@deva[उ] stems, a different declension class.
+"""

@@ -1,0 +1,43 @@
+id = "2.2.12"
+numericId = "22012"
+
+[en]
+simple = """
+A word in the genitive case does **not** form a compound with a @deva[क्त]-ending word (past participle) when the @deva[क्त] expresses respect (@deva[पूजा]), understanding (@deva[बुद्धि]), or inclination (@deva[मति]).
+
+**Examples (no compound):**
+- @deva[राज्ञां मतः] "the king inclines (toward this)" — @deva[मति] sense
+- @deva[राज्ञां बुद्धः] "the king understands" — @deva[बुद्धि] sense
+- @deva[राज्ञां पूजितः] "the king honours (this person)" — @deva[पूजा] sense
+
+When @deva[क्त] has ordinary past-action meaning, compounding is allowed: @deva[छात्रहसितम्] "the student's laughing."
+"""
+
+standard = """
+@deva[षष्ठी] + @deva[क्त] in @deva[मति]/@deva[बुद्धि]/@deva[पूजा] sense → no compound — @deva[क्ते च पूजायाम्].
+
+**Rule type — @deva[प्रतिषेध] (prohibition):** Blocks @ref[2.2.8] when @deva[क्त] has these three senses.
+
+**Examples:**
+- @deva[राज्ञां मतः] "the king inclines" — @deva[मत्यर्थ]
+- @deva[राज्ञां बुद्धः] "the king understands" — @deva[बुद्ध्यर्थ]
+- @deva[राज्ञां पूजितः] "the king honours" — @deva[पूजार्थ]
+
+**Source of @deva[क्त] in these senses:** @ref[3.2.188] assigns @deva[क्त] to roots denoting @deva[मति], @deva[बुद्धि], and @deva[पूजा]. The word @deva[पूजा] in the @[sūtra] serves as @deva[उपलक्षण] (representative) for all three senses.
+
+**When @deva[क्त] has other senses:** @deva[छात्रहसितम्] "student's laughing" — @deva[क्त] in ordinary action sense compounds freely under @ref[2.2.8].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.2.8]; @deva[न] from @ref[2.2.10]; @deva[तत्पुरुषः] from @ref[2.1.22].
+
+@deva[क्ते च पूजायाम्] — @deva[षष्ठी] does not compound with @deva[क्त] when @deva[क्त] expresses @deva[मति], @deva[बुद्धि], or @deva[पूजा].
+
+**@deva[पूजा] as @deva[उपलक्षण]:** The @[sūtra] cites only @deva[पूजा], but the @deva[काशिका] explains it as @deva[उपलक्षण] — a representative standing for @deva[मति] (inclination), @deva[बुद्धि] (understanding), and @deva[पूजा] (respect). These are the three senses listed under @ref[3.2.188] for which @deva[क्त] receives a special usage.
+
+**Why block compounding?** In these senses, @deva[क्त] functions quasi-verbally — expressing a psychological state or social act directed toward someone. The genitive expresses the experiencer/agent of this state. Compounding would obscure the agentive relationship and potentially create ambiguity with ordinary past-participle compounds.
+
+**Scope:** This rule specifically targets @deva[क्त] (not @deva[क्तवतु]). Other @deva[कृत्] affixes expressing similar senses are not covered here — they fall under the broader prohibitions of @ref[2.2.11] or @ref[2.2.14]–@ref[2.2.15].
+
+**Continuing the prohibition series:** @ref[2.2.10] (no @deva[निर्धारण]), @ref[2.2.11] (seven prohibitions), and now @ref[2.2.12] (@deva[क्त] in special senses) — each narrows the scope of @ref[2.2.8].
+"""

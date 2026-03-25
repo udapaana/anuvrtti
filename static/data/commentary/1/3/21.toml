@@ -1,0 +1,52 @@
+id = "1.3.21"
+numericId = "13021"
+
+[en]
+simple = """
+The verb @deva[क्रीड्] "to play" takes @deva[आत्मनेपद] when preceded by @deva[अनु], @deva[सम्], @deva[परि], or @deva[आ].
+
+**Examples:**
+- @deva[आक्रीडते] "he plays"
+- @deva[संक्रीडते] "he plays together"
+- @deva[अनुक्रीडते] "he plays along"
+- @deva[परिक्रीडते] "he plays around"
+
+Without these prefixes, @deva[क्रीड्] takes @deva[परस्मैपद]: @deva[क्रीडति] "he plays."
+
+**Exception:** When @deva[सम्] + @deva[क्रीड्] means "to make a creaking noise" (not playing): @deva[संक्रीडन्ति शकटानि] "the carts creak" — @deva[परस्मैपद].
+"""
+
+standard = """
+After @deva[अनु]/@deva[सम्]/@deva[परि]/@deva[आ] + @deva[क्रीड्] "to play," @deva[आत्मनेपद]. The @deva[च] in the @deva[सूत्र] includes @deva[आङ्] (the prefix @deva[आ]).
+
+**Examples:**
+- @deva[आक्रीडते], @deva[संक्रीडते], @deva[अनुक्रीडते], @deva[परिक्रीडते]
+
+**@deva[वार्त्तिक] — creaking noise exception:** @deva[सम्] + @deva[क्रीड्] meaning "to creak" is @deva[परस्मैपद]: @deva[संक्रीडन्ति शकटानि] "the carts creak."
+
+**@deva[उपसर्ग] vs. @deva[कर्मप्रवचनीय]:** @deva[अनु] must be an @deva[उपसर्ग], not a @deva[कर्मप्रवचनीय] (@ref[1.4.83]). In @deva[माणवकमनुक्रीडति] "he plays imitating the boy," @deva[अनु] governs the @deva[द्वितीया] of @deva[माणवक] — it is a @deva[कर्मप्रवचनीय], not an @deva[उपसर्ग], so @deva[परस्मैपद].
+
+**@deva[वार्त्तिक] — additional @deva[आत्मनेपद] rules:** This @deva[सूत्र] also triggers @deva[वार्त्तिक]s prescribing @deva[आत्मनेपद] for @deva[आ] + @deva[गम्] "to wait for," @deva[शिक्ष्] "to study," @deva[नाथ्] "to bless," @deva[अनु] + @deva[हृ] "to take after parents," and several others.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[अनुपरिसमाङ्भ्यश्च क्रीडः] — after @deva[अनु]/@deva[परि]/@deva[सम्]/@deva[आ] + @deva[क्रीड्], @deva[आत्मनेपद].
+
+**@deva[च] includes @deva[आङ्]:** The @deva[च] in the @deva[सूत्र] brings in @deva[आङ्] from the prior context (either from @ref[1.3.20] or from the general @deva[उपसर्ग] list).
+
+**Semantic exception (@deva[वार्त्तिक]):** @deva[सम्] + @deva[क्रीड्] has two meanings: (1) "to play together" → @deva[आत्मनेपद]; (2) "to make a creaking noise" → @deva[परस्मैपद]. The @deva[वार्त्तिक] restricts @deva[आत्मनेपद] to the "play" meaning.
+
+**@deva[उपसर्ग] vs. @deva[कर्मप्रवचनीय]:** The prefix must be an @deva[उपसर्ग] (@ref[1.4.59]). When @deva[अनु] functions as a @deva[कर्मप्रवचनीय] (@ref[1.4.83]) governing an accusative object, it does not trigger @deva[आत्मनेपद].
+
+**@deva[वार्त्तिक]s adding further @deva[आत्मनेपद] rules:** This @deva[सूत्र] serves as the anchor point for multiple @deva[वार्त्तिक]s extending @deva[आत्मनेपद] to:
+- @deva[आ] + @deva[गम्] "to wait" (@deva[आगमयस्व])
+- @deva[शिक्ष्] "to study" (@deva[शिक्षते])
+- @deva[शप्] "to swear" (@deva[शपते])
+- @deva[अनु] + @deva[हृ] "to take after" (@deva[अनुहरते])
+
+These @deva[वार्त्तिक]s suggest that the @deva[सूत्र]s are somewhat incomplete — common @deva[आत्मनेपद] usages needed supplementation.
+
+**End of @deva[उपसर्ग]-specific section for non-@deva[स्था] roots:** @ref[1.3.22]–@ref[1.3.25] shift to @deva[स्था]-specific prefix rules.
+"""

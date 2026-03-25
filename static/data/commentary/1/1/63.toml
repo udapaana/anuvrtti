@@ -1,0 +1,55 @@
+id = "1.1.63"
+numericId = "11063"
+
+[en]
+simple = """
+When an affix is deleted by @deva[लुक्], @deva[श्लु], or @deva[लुप्] (the three special deletion types from @ref[1.1.61]), the changes that affix would have caused to the base do not happen. The affix's power to modify the base is cancelled along with the affix itself.
+
+This is the opposite of ordinary @deva[लोप] (@ref[1.1.62]), where the affix's effects survive.
+
+**Example:** @deva[गार्ग्य] "descendant of @deva[गर्ग]" is formed by adding @deva[यञ्] to @deva[गर्ग]. The @deva[ञ्] marker causes @deva[वृद्धि] (vowel strengthening): @deva[गर्ग] → @deva[गार्ग्य]. But in the plural, @deva[यञ्] is deleted by @deva[लुक्] (@ref[2.4.64]). Because it is @deva[लुक्] (not ordinary @deva[लोप]), the @deva[वृद्धि] it caused is also undone: the plural is @deva[गर्गाः] (not *@deva[गार्गाः]).
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] states that when an affix is elided by @deva[लुक्], @deva[श्लु], or @deva[लुप्], the @deva[अङ्गकार्य] (operations on the base) triggered by that affix do not apply.
+
+**Key term — @deva[अङ्गकार्य]:** Operations that apply to the @deva[अङ्ग] (base) because of a following affix. These include @deva[वृद्धि], @deva[गुण], augmentation, and other base modifications triggered by the affix's markers or properties.
+
+**Example:** @deva[गर्ग] + @deva[यञ्] → @deva[गार्ग्य] "descendant of Garga":
+- @deva[ञ्] is @deva[ञित्], triggering @deva[वृद्धि] of the first vowel: @deva[अ] → @deva[आ]
+- In plural, @deva[यञ्] undergoes @deva[लुक्] by @ref[2.4.64]
+- @deva[लुक्] cancels @deva[अङ्गकार्य]: @deva[वृद्धि] is undone → @deva[गर्गाः]
+
+**Contrast with @ref[1.1.62]:**
+- @deva[लोप]-elided affixes: effects persist (@deva[प्रत्ययलक्षण] applies)
+- @deva[लुक्]/@deva[श्लु]/@deva[लुप्]-elided affixes: @deva[अङ्गकार्य] cancelled (this rule)
+
+**What is NOT cancelled:** Operations on other elements (not the @deva[अङ्ग]) may still apply. The rule specifically restricts cancellation to @deva[अङ्गकार्य].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रत्ययस्य] from @ref[1.1.61].
+
+@deva[न लुमताङ्गस्य] — @deva[अङ्गकार्य] does not apply when the triggering affix has been @deva[लुक्]/@deva[श्लु]/@deva[लुप्]-elided (collectively called @deva[लुमत्]).
+
+**@deva[लुमत्]:** A cover term for any affix that has undergone @deva[लुक्], @deva[श्लु], or @deva[लुप्]. The @deva[मत्] suffix indicates "one that has [undergone @deva[लु]-elision]."
+
+**What counts as @deva[अङ्गकार्य]?** Any operation on the @deva[अङ्ग] (base) that is conditioned on a following affix. This includes:
+- @deva[वृद्धि]/@deva[गुण] triggered by affix markers (@deva[ञित्], @deva[णित्], etc.)
+- @deva[इट्]-augmentation
+- Base modifications prescribed "before affix X"
+
+**Example:** @deva[गर्ग] + @deva[यञ्]:
+- Singular: @deva[ञ्] causes @deva[वृद्धि] → @deva[गार्ग्य]
+- Plural: @deva[यञ्] undergoes @deva[लुक्] (@ref[2.4.64]) → @deva[वृद्धि] cancelled → @deva[गर्गाः]
+
+**The complete elision system:**
+1. @ref[1.1.60]: @deva[लोप] = disappearance (substitute with @deva[स्थानिवद्भाव])
+2. @ref[1.1.61]: @deva[लुक्]/@deva[श्लु]/@deva[लुप्] = named affix elisions
+3. @ref[1.1.62]: @deva[लोप]-elided affixes still trigger @deva[प्रत्ययलक्षण]
+4. @ref[1.1.63] (this rule): @deva[लुमत्] affixes do not trigger @deva[अङ्गकार्य]
+
+**Why this design?** The grammar needs to distinguish "affix gone but its influence remains" from "affix gone and its influence erased." Patronymic affixes in the plural (@deva[गार्ग्य] → @deva[गर्गाः]) are the classic case: the plural meaning is expressed by the bare stem, with no trace of the singular affix's modifications.
+
+**@deva[वार्त्तिक]:** @deva[कात्यायन] discusses whether @deva[लुप्]-elided affixes cancel @deva[अङ्गकार्य] differently from @deva[लुक्]/@deva[श्लु]. The standard position is that all three cancel @deva[अङ्गकार्य] equally.
+"""

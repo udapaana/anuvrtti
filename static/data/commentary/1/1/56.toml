@@ -1,0 +1,50 @@
+id = "1.1.56"
+numericId = "11056"
+
+[en]
+simple = """
+When one sound or form replaces another, the substitute inherits the grammatical properties of the original. If a rule would have applied to the original, it also applies to the substitute.
+
+The one exception: rules that depend on specific letters (@deva[अल्विधि]) look at the substitute's actual letters, not the original's.
+
+**Example:** @deva[ग्रह्] "to seize" undergoes @deva[सम्प्रसारण] and becomes @deva[गृह्]. A rule checking whether the root ends in @deva[ह्] still sees @deva[ह्] — that letter is present in both forms. But a rule that checked for @deva[र] (present in @deva[ग्रह्] but not @deva[गृह्]) would look at the substitute's actual letters.
+
+This principle keeps the grammar consistent: substitution changes the form but preserves the grammatical identity.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] establishes @deva[स्थानिवद्भाव]: a substitute (@deva[आदेश]) is treated as though it were the original (@deva[स्थानिन्]) — except for @deva[अल्विधि] (rules conditioned on specific sounds).
+
+**What this means in practice:**
+- Grammatical designations of the original carry over to the substitute
+- Operations triggered by the original also apply to the substitute
+- But rules that check which specific letters are present examine the substitute's actual form
+
+**Example:** @deva[ग्रह्] → @deva[गृह्] by @deva[सम्प्रसारण]. The affix @deva[क्त्वा] follows. @ref[7.2.35] adds @deva[इट्] before @deva[आर्धधातुक] affixes beginning with a consonant other than @deva[य्]. This rule checks the initial letter of @deva[क्त्वा] — that is an @deva[अल्विधि]. Since @deva[त्] is still consonant-initial, @deva[इट्] applies: @deva[गृहीत्वा] "having seized."
+
+**Why the @deva[अल्विधि] exception?** If the substitute inherited the original's letters too, you could never apply phonetic rules correctly — the grammar would always see the old form, making the substitution meaningless for sound-based operations.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[स्थाने] from @ref[1.1.49].
+
+@deva[स्थानिवदादेशोऽनल्विधौ] — the substitute is like the original, except in @deva[अल्विधि] (rules conditioned on specific sounds).
+
+**Scope of @deva[स्थानिवद्भाव]:**
+- The substitute inherits the original's @deva[संज्ञा] (designations), @deva[प्रत्ययत्व] (affix status), @deva[धातुत्व] (root status), etc.
+- Operations that would have applied to the original apply to the substitute
+- The substitute participates in @deva[अनुवृत्ति] as if it were the original
+
+**The @deva[अल्विधि] exception:** An @deva[अल्विधि] is any rule whose application depends on the presence of specific @deva[अल्] (sounds). For such rules, the substitute's actual phonetic form is examined, not the original's.
+
+**Example:** @deva[ग्रह्] → @deva[गृह्] (by @deva[सम्प्रसारण]). @ref[7.2.35] (@deva[आर्धधातुकस्येड् वलादेः]) adds @deva[इट्] before @deva[वल्]-initial @deva[आर्धधातुक] affixes. Checking whether @deva[क्त्वा] begins with @deva[वल्] is an @deva[अल्विधि] — it examines the actual letters of the affix. Result: @deva[गृहीत्वा].
+
+**This is arguably the most important @deva[परिभाषा] in the @deva[अष्टाध्यायी].** Without it, every substitution would break downstream rules that depend on the original's grammatical identity. The rule creates a fiction: the substitute "pretends" to be the original for all grammatical purposes.
+
+**Refinements in @ref[1.1.57]–@ref[1.1.59]:** The next three rules fine-tune @deva[स्थानिवद्भाव] for vowel substitutes:
+- @ref[1.1.57]: extends @deva[स्थानिवद्भाव] to @deva[अल्विधि] for rules affecting what precedes
+- @ref[1.1.58]: lists ten exceptions where @deva[स्थानिवद्भाव] does not apply
+- @ref[1.1.59]: restores @deva[स्थानिवद्भाव] for reduplication before vowel-initial affixes
+
+**@deva[वार्त्तिक]:** @deva[कात्यायन] adds that @deva[स्थानिवद्भाव] does not apply for the purpose of the substitute's own rule — otherwise infinite regress would occur (the substitute would become the original, triggering the same substitution again).
+"""

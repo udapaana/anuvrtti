@@ -1,0 +1,15 @@
+id = "6.1.101"
+numericId = "61101"
+
+[en]
+simple = """
+When a simple vowel (@deva[अक्]) is followed by a homogeneous vowel, the corresponding long vowel is the single substitute. Examples: @deva[दण्ड] + @deva[अग्रम्] → @deva[दण्डाग्रम्]; @deva[दधि] + @deva[इन्द्रः] → @deva[दधीन्द्रः].
+"""
+
+standard = """
+When @deva[अक्] (simple vowel: @deva[अ], @deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ]) is followed by its @deva[सवर्ण] (homogeneous vowel), the corresponding @deva[दीर्घ] replaces both: @deva[अ + अ] → @deva[आ]; @deva[इ + इ/ई] → @deva[ई]; @deva[उ + उ/ऊ] → @deva[ऊ]; @deva[ऋ + ऋ/ॠ] → @deva[ॠ]. Examples: @deva[दण्डाग्रम्], @deva[दधीन्द्रः], @deva[मधूदके], @deva[होतॄश्यः]. Not for diphthongs: @deva[अग्ने + ए] → @deva[अग्नये].
+"""
+
+advanced = """
+This @deva[सवर्णदीर्घ-एकादेश] for @deva[अक् + सवर्ण]. @deva[अक्] = @deva[अ इ उ ऋ ऌ] (short/long). @deva[सवर्ण] = same place, same effort. @deva[अ + अ/आ] → @deva[आ]; @deva[इ + इ/ई] → @deva[ई]; etc. Counter-example: @deva[एच्] isn't @deva[अक्]: @deva[अग्ने + ए] → @deva[अग्नये] (@ref[6.1.78]). Dissimilar vowels: @deva[दधि + अत्र] → @deva[दध्यत्र] (@ref[6.1.77]).
+"""

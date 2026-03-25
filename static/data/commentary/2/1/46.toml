@@ -1,0 +1,45 @@
+id = "2.1.46"
+numericId = "21046"
+
+[en]
+simple = """
+The indeclinable @deva[तत्र] "there" compounds with a past participle (@deva[क्त]-ending word) to form @deva[तत्पुरुष].
+
+**Examples:**
+- @deva[तत्रभुक्तम्] "eaten there"
+- @deva[तत्रकृतम्] "done there"
+- @deva[तत्रपीतम्] "drunk there"
+
+@deva[तत्र] is an indeclinable that already contains a locative sense ("there, in that place"). Like @deva[स्वयम्] (@ref[2.1.25]) and @deva[सामि] (@ref[2.1.27]), it cannot take case endings, so the general @deva[सप्तमी] compound rules do not cover it — it needs its own rule.
+
+The compound looks identical to the phrase, but makes the two words a single unit with unified accent.
+"""
+
+standard = """
+@deva[तत्र] + @deva[क्तान्त] → @deva[तत्पुरुष] — @deva[तत्रेति क्तेन].
+
+**Rule type — @deva[विधि]:** Compounding rule.
+
+**Examples:**
+- @deva[तत्रभुक्तम्] "eaten there"
+- @deva[तत्रकृतम्] "done there"
+- @deva[तत्रपीतम्] "drunk there"
+
+**Why a separate rule?** @deva[तत्र] is @deva[अव्यय] — it is formed from @deva[तद्] + @deva[त्रल्] (@ref[5.3.10]) and is inherently locative in meaning. Since it cannot take @deva[सुप्] endings, the @deva[सप्तमी] @deva[अनुवृत्ति] from @ref[2.1.40] does not apply. This rule independently authorizes the compound.
+
+**Effect:** Single-word status (@deva[एकपद]) and unified accent, as with @ref[2.1.25] (@deva[स्वयम्]).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[तत्रेति क्तेन] — @deva[तत्र] compounds with a @deva[क्तान्त] word as @deva[तत्पुरुष].
+
+**@deva[सप्तमी] @deva[अनुवृत्ति] blocked:** @deva[तत्र] is formed by @deva[तद्] + @deva[त्रल्] (@ref[5.3.10]) — an @deva[अव्यय] with inherent locative meaning. Since it cannot be @deva[सप्तम्यन्त], the @deva[सप्तमी] @deva[अनुवृत्ति] from @ref[2.1.40] does not apply. Same pattern as @ref[2.1.25] (@deva[स्वयम्]) and @ref[2.1.27] (@deva[सामि]).
+
+**@deva[सुप् सुपा] qualification:** @deva[तत्र] qualifies as @deva[सुबन्त] via @ref[2.4.82] and @deva[स्थानिवद्भाव] (@ref[1.1.56]) — the @deva[सुप्] is understood to have been present even though it was deleted for @deva[अव्यय] words.
+
+**Position in the @deva[सप्तमी] section:** This rule appears among the @deva[सप्तमी] @deva[तत्पुरुष] rules (@ref[2.1.40]–@ref[2.1.48]) because @deva[तत्र]'s meaning is locative, even though it is not formally @deva[सप्तम्यन्त].
+
+**Accent effect:** As with @ref[2.1.25], the compound gains @deva[एकपद] status and unified accent — the only observable consequence, since the compound is phonologically identical to the phrase.
+"""

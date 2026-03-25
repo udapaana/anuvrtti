@@ -1,0 +1,39 @@
+id = "1.3.16"
+numericId = "13016"
+
+[en]
+simple = """
+When the words @deva[इतरेतर] or @deva[अन्योन्य] ("each other") appear as an accompanying word (@deva[उपपद]) in the sentence, @deva[आत्मनेपद] is NOT used — even though the action is reciprocal.
+
+**Examples:**
+- @deva[इतरेतरस्य व्यतिलुनन्ति] "they cut each other" (@deva[परस्मैपद])
+- @deva[अन्योन्यस्य व्यतिलुनन्ति] "they cut one another" (@deva[परस्मैपद])
+
+The reciprocity is already expressed by the word @deva[इतरेतर]/@deva[अन्योन्य], so the verb does not need @deva[आत्मनेपद] to signal it.
+"""
+
+standard = """
+When @deva[इतरेतर] or @deva[अन्योन्य] ("each other") is the @deva[उपपद], @deva[आत्मनेपद] is blocked despite @deva[व्यतिहार] (reciprocity). The negation @deva[न] continues from @ref[1.3.15].
+
+**Examples:**
+- @deva[इतरेतरस्य व्यतिलुनन्ति] "they cut each other"
+- @deva[अन्योन्यस्य व्यतिलुनन्ति] "they cut one another"
+
+**Why blocked?** The reciprocal meaning is already encoded in the @deva[उपपद]. The @deva[आत्मनेपद] of @ref[1.3.14] was needed only to mark reciprocity at the verbal level. When a separate word does that job, the verb reverts to its default @deva[पद].
+
+**@deva[वार्त्तिक]:** This also applies with @deva[परस्पर]: @deva[परस्परस्य व्यतिलुनन्ति].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12]; @deva[कर्तरि], @deva[व्यतिहारे] from @ref[1.3.14]; @deva[न] from @ref[1.3.15].
+
+@deva[इतरेतरान्योन्योपपदाच्च] — @deva[आत्मनेपद] is also not used when @deva[इतरेतर] or @deva[अन्योन्य] is the @deva[उपपद].
+
+**Completing the @deva[व्यतिहार] exceptions:** @ref[1.3.14] assigned @deva[आत्मनेपद] for reciprocity. @ref[1.3.15] excepted motion/injury. This rule (@ref[1.3.16]) adds a different kind of exception — not semantic (type of verb) but syntactic (presence of an explicit reciprocal pronoun).
+
+**Rationale:** @deva[आत्मनेपद] in @ref[1.3.14] was a morphological signal of reciprocity. When @deva[इतरेतर]/@deva[अन्योन्य] already conveys this meaning lexically, the morphological signal becomes redundant and is dropped.
+
+**@deva[वार्त्तिक] — @deva[परस्पर]:** The @deva[वार्त्तिक] extends the rule to @deva[परस्पर], which is synonymous with @deva[इतरेतर]/@deva[अन्योन्य].
+
+**End of @deva[व्यतिहार] section:** @ref[1.3.14]–@ref[1.3.16] form a complete unit on reciprocal action and @deva[पद] assignment. From @ref[1.3.17] onward, the topic shifts to @deva[उपसर्ग]-specific @deva[आत्मनेपद] rules (particular prefix + root combinations).
+"""

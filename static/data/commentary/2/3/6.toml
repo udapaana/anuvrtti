@@ -1,0 +1,53 @@
+id = "2.3.6"
+numericId = "23006"
+
+[en]
+simple = """
+Words denoting time or distance take the @deva[तृतीया] (instrumental case) when expressing that an action was completed within that span — the time or distance marks the limit by which the result was achieved.
+
+**Examples:**
+- @deva[मासेन अनुवाकोऽधीतः] "he learned the @deva[अनुवाक] (hymn section) in a month" — the month is the limit within which learning was completed
+- @deva[क्रोशेन अनुवाकोऽधीतः] "he learned the @deva[अनुवाक] within a @deva[क्रोश] (league) of travel"
+
+This contrasts with the previous rule (@ref[2.3.5]), where the accusative marks continuous duration. Here the instrumental marks the boundary of completion: "within a month" (finished) vs. "for a month" (ongoing). The distinction is between the time it took to finish and the time spent doing it.
+"""
+
+standard = """
+@deva[कालाध्वनोरत्यन्तसंयोगे] → @deva[तृतीया] — @deva[अपवर्गे तृतीया].
+
+**Rule type — @deva[विधि]:** Assigns @deva[तृतीया] to time/distance words when expressing @deva[अपवर्ग] (completion of intended result).
+
+**@deva[अपवर्ग] defined:** The action reaches its intended outcome within the stated time or distance. The time/distance word marks the limit, not the duration.
+
+**Examples:**
+- @deva[मासेन अनुवाकोऽधीतः] "mastered the @deva[अनुवाक] in a month"
+- @deva[संवत्सरेण व्याकरणमधीतम्] "mastered grammar in a year"
+- @deva[क्रोशेन अनुवाकोऽधीतः] "mastered the @deva[अनुवाक] within a @deva[क्रोश] of travel"
+
+**Contrast with @ref[2.3.5] (@deva[द्वितीया]):**
+- @deva[मासमधीते] (accusative) — "studies for a month" — @deva[अत्यन्तसंयोग]: continuous action throughout
+- @deva[मासेन अधीतम्] (instrumental) — "completed study in a month" — @deva[अपवर्ग]: result achieved within limit
+
+**Scope:** Applies only when the result is actually achieved. If the action is ongoing without completion, @ref[2.3.5] applies instead.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कालाध्वनोः] from @ref[2.3.5]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[अपवर्गे तृतीया] — @deva[तृतीया] is assigned to @deva[काल]-words and @deva[अध्वन्]-words when the relation is @deva[अपवर्ग] (completion within limit).
+
+**@deva[अपवर्ग] vs. @deva[अत्यन्तसंयोग]:** The @deva[काशिका] distinguishes: @deva[अत्यन्तसंयोग] (@ref[2.3.5]) = unbroken connection of action with every moment/point; @deva[अपवर्ग] = the action reaches its intended result, and the time/distance marks the outer boundary. In @deva[मासेन अधीतम्], the studying need not fill every moment of the month — what matters is that completion occurred within the month.
+
+**Three conditions for @deva[अपवर्ग]:**
+1. An intended result (@deva[फल]) must exist
+2. The result must actually be achieved
+3. The time/distance word marks the limit within which achievement occurred
+
+**Contrast with @ref[2.3.5]:**
+- @deva[मासमधीते] — @deva[द्वितीया]: action pervades the entire month (@deva[अत्यन्तसंयोग])
+- @deva[मासेन अधीतम्] — @deva[तृतीया]: mastery achieved within the month (@deva[अपवर्ग])
+
+**Not @deva[करण]:** The instrumental here is not the @deva[करण]-@deva[कारक] instrumental of @ref[2.3.18]. Time/distance words are not instruments of the action. This is a special non-@deva[कारक] use of @deva[तृतीया], parallel to the non-@deva[कारक] @deva[द्वितीया] of @ref[2.3.5].
+
+**Sequence in @[pāda]:** @ref[2.3.5] and this rule form a pair: same domain (@deva[काल]/@deva[अध्वन्]), different relations (@deva[अत्यन्तसंयोग] vs. @deva[अपवर्ग]), different cases (@deva[द्वितीया] vs. @deva[तृतीया]).
+"""

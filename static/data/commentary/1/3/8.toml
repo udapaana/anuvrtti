@@ -1,0 +1,62 @@
+id = "1.3.8"
+numericId = "13008"
+
+[en]
+simple = """
+Initial @deva[ल्], @deva[श्], and guttural consonants (@deva[क्], @deva[ख्], @deva[ग्], @deva[घ्], @deva[ङ्]) of an affix are @deva[इत्] — but only if the affix is NOT a @deva[तद्धित] (secondary derivative affix).
+
+**Non-@deva[तद्धित] examples (marker deleted):**
+- @deva[ल्युट्] (@ref[3.3.115]): @deva[ल्] is @deva[इत्] → @deva[चयनम्] "collecting"
+- @deva[शप्] (@ref[3.1.68]): @deva[श्] is @deva[इत्] → @deva[भवति]
+- @deva[क्त]: @deva[क्] is @deva[इत्] → @deva[भुक्तः] "eaten"
+- @deva[ङसि] (genitive singular): @deva[ङ्] is @deva[इत्] → @deva[वृक्षस्य]
+
+**@deva[तद्धित] examples (NOT @deva[इत्] — letter stays):**
+- @deva[लच्] (@ref[5.2.96]): @deva[ल्] stays → @deva[चूडालः] "crested"
+- @deva[श] (@ref[5.2.100]): @deva[श्] stays → @deva[लोमशः] "hairy"
+- @deva[कन्] (@ref[5.3.81]): @deva[क्] stays → @deva[वृक्षकः] "small tree"
+"""
+
+standard = """
+Initial @deva[ल्], @deva[श्], and @deva[कु] (gutturals: @deva[क्], @deva[ख्], @deva[ग्], @deva[घ्], @deva[ङ्]) of a @deva[प्रत्यय] are @deva[इत्] — except in @deva[तद्धित] affixes.
+
+**Non-@deva[तद्धित] (@deva[इत्] applies):**
+- @deva[ल्]: @deva[ल्युट्] (@ref[3.3.115]) → @deva[चयनम्]; @deva[ल्यप्] (@ref[7.1.37]) → @deva[प्रत्यागत्य]
+- @deva[श्]: @deva[शप्] (@ref[3.1.68]) → @deva[भवति]; @deva[शतृ] (@ref[3.2.124]) → @deva[भवन्]
+- @deva[क्]: @deva[क्त] → @deva[भुक्तः]; @deva[क्तवतु] → @deva[भुक्तवान्]
+- @deva[ख्]: @deva[खच्] (@ref[3.2.38]) → @deva[प्रियंवदः]
+- @deva[ग्]: @deva[ग्स्नु] (@ref[3.2.139]) → @deva[जिष्णुः]
+- @deva[घ्]: @deva[घुरच्] (@ref[3.2.161]) → @deva[भङ्गुरम्]
+- @deva[ङ्]: @deva[ङसि] → @deva[वृक्षस्य]; @deva[ङस्] → @deva[सुमनसः]
+
+**@deva[तद्धित] (NOT @deva[इत्]):**
+- @deva[लच्] (@ref[5.2.96]): @deva[चूडालः] "crested"
+- @deva[श] (@ref[5.2.100]): @deva[लोमशः] "hairy"
+- @deva[कन्] (@ref[5.3.81]): @deva[वृक्षकः] "small tree"
+
+**Why the @deva[तद्धित] exception?** In @deva[तद्धित] affixes, @deva[ल्], @deva[श्], and gutturals are part of the affix's meaningful substance, not markers. @deva[कृत्], @deva[विकरण], and @deva[सुप्]/@deva[तिङ्] affixes use these consonants purely as markers.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[उपदेशे] and @deva[इत्] from @ref[1.3.2]; @deva[प्रत्ययस्य] from @ref[1.3.6].
+
+@deva[लशक्वतद्धिते] — initial @deva[ल्], @deva[श्], and @deva[कु] of a non-@deva[तद्धित] affix are @deva[इत्].
+
+**The @deva[तद्धित] exception:** This is the only @deva[इत्] rule with a scope restriction based on affix type. @ref[1.3.6] (@deva[ष्]) and @ref[1.3.7] (@deva[चु]/@deva[टु]) apply to all affixes. Here, @deva[ल्], @deva[श्], and @deva[कु] are @deva[इत्] only in @deva[कृत्], @deva[विकरण], @deva[सुप्], and @deva[तिङ्] affixes — not in @deva[तद्धित].
+
+**Why @deva[तद्धित] is different:** @deva[तद्धित] affixes are added to existing @deva[प्रातिपदिक]s and often begin with meaningful consonants (@deva[लच्] → @deva[ल], @deva[श] → @deva[श], @deva[कन्] → @deva[क]). If these were @deva[इत्], the affixes would lose their phonological substance.
+
+**@deva[कित्] significance:** The @deva[क्]-initial @deva[इत्] creates the @deva[कित्] class — one of the most important @deva[इत्]-based classifications:
+- @deva[कित्] affixes block @deva[गुण]/@deva[वृद्धि] (@ref[1.1.5] @deva[क्ङिति च])
+- @deva[क्त] and @deva[क्त्वा] are @deva[कित्] — hence @deva[भू] + @deva[क्त] → @deva[भूत] (no @deva[गुण])
+
+**@deva[ङित्] significance:** @deva[ङ्]-initial @deva[सुप्] endings (@deva[ङसि], @deva[ङस्], @deva[ङे], etc.) are @deva[ङित्]:
+- @deva[ङित्] blocks @deva[गुण]/@deva[वृद्धि] (@ref[1.1.5])
+- @deva[ङित्] @deva[सुप्] triggers @deva[नदी]-type feminine stem forms
+
+**Complete @deva[इत्] classification system — summary:**
+- @ref[1.3.2]: nasal vowels → @deva[अनुनासिकित्]
+- @ref[1.3.3]: final consonants → creates @deva[प्रत्याहार] end-markers
+- @ref[1.3.5]: @deva[ञि]/@deva[टु]/@deva[डु] → root-level markers
+- @ref[1.3.6]–@ref[1.3.8]: initial affix consonants → @deva[षित्], @deva[चित्], @deva[टित्], @deva[णित्], @deva[कित्], @deva[ङित्], etc.
+"""

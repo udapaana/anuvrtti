@@ -1,0 +1,62 @@
+id = "2.1.49"
+numericId = "21049"
+
+[en]
+simple = """
+A word denoting an action that naturally comes first in time (@deva[पूर्वकाल]), or one of the words @deva[एक] "one," @deva[सर्व] "all," @deva[जरत्] "old," @deva[पुराण] "ancient," @deva[नव] "new," or @deva[केवल] "only" — compounds with another word **in the same case** (@deva[समानाधिकरण]) to form @deva[तत्पुरुष]. This is the beginning of the @deva[कर्मधारय] compound type.
+
+**Examples with @deva[पूर्वकाल]:**
+- @deva[स्नातानुलिप्तः] "bathed and then anointed" — bathing precedes anointing
+- @deva[कृष्टसमीकृतम्] "ploughed and then leveled"
+- @deva[दग्धप्ररूढम्] "burned and then regrown"
+
+**Examples with the listed words:**
+- @deva[एकशाटी] "having one petticoat," @deva[एकभिक्षा] "begging once a day"
+- @deva[सर्वदेवाः] "all the gods," @deva[सर्वमनुष्याः] "all humans"
+- @deva[जरद्धस्ती] "old elephant," @deva[जरद्गृष्टिः] "old cow"
+- @deva[पुराणान्नम्] "old rice," @deva[नवान्नम्] "new rice"
+- @deva[केवलान्नम्] "only rice"
+
+**@deva[समानाधिकरण] required:** Both members must refer to the same thing (be in the same case). @deva[एकस्याः शाटी] "one person's petticoat" does NOT compound — here @deva[एकस्याः] is genitive, not in the same case as @deva[शाटी].
+"""
+
+standard = """
+@deva[पूर्वकालैक-सर्व-जरत्-पुराण-नव-केवलाः] + @deva[समानाधिकरण सुबन्त] → @deva[तत्पुरुष] — @deva[पूर्वकालैकसर्वजरत्पुराणनवकेवलाः समानाधिकरणेन].
+
+**Rule type — @deva[विधि]:** Compounding rule. This begins the @deva[कर्मधारय] subsection (@ref[2.1.49]–@ref[2.1.72]).
+
+**@deva[कर्मधारय] = @deva[समानाधिकरण] @deva[तत्पुरुष]:** Both members refer to the same entity — they are in apposition. By @ref[1.2.42], these compounds receive the @deva[कर्मधारय] designation.
+
+**@deva[पूर्वकाल] examples (temporal sequence):**
+- @deva[स्नातानुलिप्तः] "bathed-and-anointed" — bathing precedes anointing
+- @deva[कृष्टसमीकृतम्] "ploughed-and-leveled"
+- @deva[दग्धप्ररूढम्] "burned-and-regrown"
+
+**Enumerated word examples:**
+- @deva[एकशाटी], @deva[एकभिक्षा] — @deva[एक] "one/single"
+- @deva[सर्वदेवाः], @deva[सर्वमनुष्याः] — @deva[सर्व] "all"
+- @deva[जरद्धस्ती], @deva[जरद्गृष्टिः] — @deva[जरत्] "old"
+- @deva[पुराणान्नम्], @deva[पुराणावसथम्] — @deva[पुराण] "ancient"
+- @deva[नवान्नम्], @deva[नवावसथम्] — @deva[नव] "new"
+- @deva[केवलान्नम्] — @deva[केवल] "only"
+
+**Counter-example:** @deva[एकस्याः शाटी] "one person's petticoat" — different cases (@deva[षष्ठी] vs @deva[प्रथमा]), so no compound.
+
+**@deva[पूर्वकाल] = meaning, not form:** By @ref[1.1.68], @deva[पूर्वकाल] is taken in its meaning-sense — any word denoting a temporally prior action, not just the literal compound @deva[पूर्वकाल].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[सुप् सुपा] from @ref[2.1.4]; @deva[समासः] from @ref[2.1.3].
+
+@deva[पूर्वकालैकसर्वजरत्पुराणनवकेवलाः समानाधिकरणेन] — these words compound with a @deva[समानाधिकरण] (co-referential) @deva[सुबन्त] as @deva[तत्पुरुष].
+
+**Beginning of @deva[कर्मधारय]:** @ref[2.1.49]–@ref[2.1.72] teach @deva[कर्मधारय] compounds — @deva[समानाधिकरण] (appositional) @deva[तत्पुरुष] where both members refer to the same entity. By @ref[1.2.42] (@deva[तत्पुरुषः समानाधिकरणः कर्मधारयः]), @deva[कर्मधारय] is defined as a subtype of @deva[तत्पुरुष]. The @deva[समानाधिकरण] condition continues through @ref[2.1.72].
+
+**@deva[पूर्वकाल] — @deva[अर्थग्रहण] by @ref[1.1.68]:** @deva[पूर्वकाल] is taken in its meaning-sense — any word whose referent is temporally prior to the referent of the second member. @deva[स्नात] (bathed) is temporally prior to @deva[अनुलिप्त] (anointed), so @deva[स्नातानुलिप्तः] compounds.
+
+**@deva[एक] etc. — @deva[स्वरूपग्रहण]:** For the remaining six words (@deva[एक], @deva[सर्व], @deva[जरत्], @deva[पुराण], @deva[नव], @deva[केवल]), the actual word-forms are taken, not their meanings. @deva[वृद्ध] "old" (synonym of @deva[जरत्]) does not compound under this rule.
+
+**@deva[समानाधिकरण] defined:** Both members must be predicable of the same entity and stand in the same @deva[विभक्ति]. @deva[स्नातानुलिप्तः]: both "bathed" and "anointed" describe the same person. @deva[एकस्याः शाटी]: @deva[एकस्याः] (@deva[षष्ठी]) and @deva[शाटी] (@deva[प्रथमा]) are in different cases — no compound.
+
+**Transition from case-based to appositional:** @ref[2.1.24]–@ref[2.1.48] had the first member in a different case from the second (accusative + participle, instrumental + quality, etc.). From @ref[2.1.49] onward, both members are in the same case — a fundamentally different semantic structure.
+"""

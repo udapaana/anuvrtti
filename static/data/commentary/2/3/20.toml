@@ -1,0 +1,48 @@
+id = "2.3.20"
+numericId = "23020"
+
+[en]
+simple = """
+When a person's physical defect is specified by a body part, that body part takes the @deva[तृतीया] (instrumental).
+
+**Examples:**
+- @deva[अक्ष्णा काणः] "blind in one eye" — the eye (@deva[अक्षि]) takes the instrumental to specify which body part is defective
+- @deva[पादेन खञ्जः] "lame in the foot"
+- @deva[पाणिना कुण्ठः] "maimed in the hand"
+
+The defect (@deva[काण], @deva[खञ्ज], etc.) describes the whole person, but the instrumental identifies the specific body part affected.
+"""
+
+standard = """
+@deva[येनाङ्गविकारः] — the body part (@deva[अङ्ग]) by which a defect (@deva[विकार]) is specified takes @deva[तृतीया].
+
+**Rule type — @deva[विधि]:** Assigns @deva[तृतीया] to the body-part word that specifies a physical defect.
+
+**Examples:**
+- @deva[अक्ष्णा काणः] "blind in one eye"
+- @deva[पादेन खञ्जः] "lame in the foot"
+- @deva[पाणिना कुण्ठः] "maimed in the hand"
+- @deva[कर्णेन बधिरः] "deaf in one ear"
+
+**@deva[अङ्ग] — body part:** Any part of the body qualifies. The defect-adjective (@deva[काण], @deva[खञ्ज], @deva[कुण्ठ], @deva[बधिर]) is predicated of the person as a whole, while the @deva[तृतीया]-marked body part specifies the locus of the defect.
+
+**@deva[विकार] — defect:** The condition requires a physical deficiency or deformity. Positive attributes of body parts do not trigger this rule.
+
+**Not @deva[करण]:** The body part is not an instrument of the defect. This is a separate non-@deva[कारक] assignment of @deva[तृतीया] — the instrumental here expresses specification ("in respect of which body part").
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तृतीया] from @ref[2.3.18]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[येनाङ्गविकारः] — @deva[तृतीया] is assigned to the @deva[अङ्ग] (body part) by which a @deva[विकार] (physical defect) is indicated.
+
+**@deva[अङ्ग] — body-part restriction:** The word taking @deva[तृतीया] must denote a body part: @deva[अक्षि] (eye), @deva[पाद] (foot), @deva[पाणि] (hand), @deva[कर्ण] (ear), etc. Non-body-part words specifying defects do not qualify.
+
+**@deva[विकार] — defect, not quality:** The @deva[काशिका] restricts this to deficiency or deformity (@deva[विकार]). A statement like @deva[अक्ष्णा सुन्दरः] "handsome in the eye" would not fall under this rule, as beauty is not a @deva[विकार].
+
+**Semantic function of @deva[तृतीया]:** The instrumental here expresses the respect or domain of the defect — "with respect to what body part." This is neither @deva[करण] (instrument) nor @deva[कर्तृ] (agent) but a locational/specifying use of @deva[तृतीया]. English uses "in" ("blind in one eye"), while Sanskrit uses the instrumental.
+
+**Alternative constructions:** The same meaning could be expressed with @deva[सप्तमी] (@deva[अक्षणि काणः] "blind in the eye") under @ref[2.3.36] (@deva[अधिकरण]). This rule specifically assigns @deva[तृतीया] as the standard construction for body-part defects, giving it priority in this semantic domain.
+
+**Position in @deva[तृतीया] section:** Part of the series @ref[2.3.18]–@ref[2.3.27] extending @deva[तृतीया] beyond core @deva[कर्तृ]/@deva[करण] uses to accompaniment (@ref[2.3.19]), body-part defects (this rule), cause (@ref[2.3.21]), and other semantic domains.
+"""

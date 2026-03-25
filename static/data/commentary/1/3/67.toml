@@ -1,0 +1,42 @@
+id = "1.3.67"
+numericId = "13067"
+
+[en]
+simple = """
+When a causative verb (formed with @deva[णिच्]) is used and the original object of the simple verb becomes the one performing the action in the causative, @deva[आत्मनेपद] is used.
+
+**Simple sentence:** @deva[देवदत्तः कटं करोति] "Devadatta makes a mat"
+**Causative:** @deva[यज्ञदत्तः कटं कारयते] "@[yajñadatta] has the mat made (by someone)"
+
+Here, @deva[कट] (the mat, originally the object) is still the object, but the original maker (Devadatta) is now acting under @[yajñadatta]'s direction. Since the fruit of making accrues to the maker (not the causer @[yajñadatta]), @deva[आत्मनेपद] is used.
+
+When the causer himself benefits: @deva[कारयति] (@deva[परस्मैपद]).
+"""
+
+standard = """
+After a @deva[णिच्] (causative) formation, @deva[आत्मनेपद] applies when the object of the simple verb becomes the agent in the causal frame — provided the fruit does not accrue to the causer.
+
+**Simple:** @deva[देवदत्तः कटं करोति] "Devadatta makes a mat" (object: @deva[कट])
+**Causative (@deva[आत्मनेपद]):** @deva[यज्ञदत्तः कटं कारयते] "@[yajñadatta] has the mat made" — the original object's relationship is preserved; the fruit accrues to the maker, not the causer.
+**Causative (@deva[परस्मैपद]):** @deva[यज्ञदत्तः कटं कारयति] "@[yajñadatta] has a mat made (for himself)" — the causer benefits.
+
+**Rule type:** This governs the @deva[पद] assignment of causative formations specifically, depending on who benefits from the action.
+
+**Scope:** Applies to all @deva[णिच्]-derived verbs, not limited to specific roots. The @deva[आत्मनेपद] signals that the causer is not the beneficiary.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[णेरणौ कर्तरि] — after @deva[णिच्], @deva[आत्मनेपद] when the original object (@deva[कर्मन्]) becomes the agent (@deva[कर्तृ]) in the causative and the fruit does not accrue to the causer.
+
+**Causal @deva[पद] assignment:** In causative constructions, the @deva[हेतु] (instigator/causer) can be either the beneficiary or not:
+- Causer benefits → @deva[परस्मैपद]: @deva[कारयति]
+- Causer does not benefit → @deva[आत्मनेपद]: @deva[कारयते]
+
+**@deva[कर्मकर्तृ] relationship:** The original @deva[कर्मन्] (object) of the simple verb becomes the @deva[कर्तृ] (agent) in the causative frame. This shift in @deva[कारक] relationships is what triggers the @deva[पद] distinction.
+
+**Semantic basis:** @deva[आत्मनेपद] here signals that the action's fruit goes to the performer (not the causer). This is an extension of the general @deva[आत्मनेपद] principle — "for oneself" — applied at the causative level.
+
+**Interaction with @ref[1.3.72]:** For @deva[उभयपदिन्] roots with @deva[णिच्], @ref[1.3.72]'s @deva[स्वार्थ] condition determines @deva[पद]. This rule provides the specific mechanism for how that determination works in causative frames.
+"""

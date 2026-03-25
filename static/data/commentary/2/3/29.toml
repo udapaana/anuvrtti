@@ -1,0 +1,56 @@
+id = "2.3.29"
+numericId = "23029"
+
+[en]
+simple = """
+With words meaning "other than" or "different," and with certain direction-related words, the reference point takes @deva[पञ्चमी] (ablative, fifth case-ending).
+
+The groups of words covered are:
+1. Words meaning "other" — @deva[अन्य] (other), @deva[इतर] (different), etc.
+2. @deva[आरात्] — meaning "near" or "far"
+3. @deva[ऋते] — meaning "without" or "except"
+4. Direction words — @deva[पूर्व] (east/prior), @deva[उत्तर] (north/later), etc.
+5. Directional compounds with @deva[अञ्चु] — @deva[प्राक्] (eastward), @deva[प्रत्यक्] (westward), etc.
+
+**Examples:**
+- @deva[अन्यो देवदत्तात्] "other than @deva[देवदत्त]"
+- @deva[आराद् ग्रामात्] "near (or far from) the village"
+- @deva[ऋते देवदत्तात्] "except @deva[देवदत्त]"
+- @deva[पूर्वो ग्रामात्] "east of the village"
+- @deva[प्राग् ग्रामात्] "to the east of the village"
+"""
+
+standard = """
+@deva[अन्यारादितरर्तेदिक्शब्दाञ्चूत्तरपदाजाहियुक्ते] — with words meaning "other" (@deva[अन्य], @deva[इतर], etc.), @deva[आरात्] "near/far," @deva[ऋते] "without," direction words (@deva[दिक्शब्द]), and @deva[अञ्चु]-ending directional compounds or words with @deva[आच्]/@deva[आहि] suffixes (@ref[5.3.36]–@ref[5.3.37]), @deva[पञ्चमी] is used.
+
+**Rule type — @deva[विधि]:** Extends @deva[पञ्चमी] beyond @deva[अपादान] to specific word-groups.
+
+**Examples:**
+- @deva[अन्यो देवदत्तात्] / @deva[इतरो देवदत्तात्] "other/different from @deva[देवदत्त]"
+- @deva[आराद् ग्रामात्] "near or far from the village"
+- @deva[ऋते देवदत्तात्] "except @deva[देवदत्त]"
+- @deva[पूर्वो ग्रामात्] "east of the village"; @deva[उत्तरो ग्रामात्] "north of the village"
+- @deva[प्राग् ग्रामात्] "to the east of the village" (@deva[अञ्चु]-compound)
+- @deva[दक्षिणाहि ग्रामात्] "to the south of the village" (@deva[आहि]-ending)
+
+**Temporal use of direction words:**
+- @deva[पूर्वो ग्रीष्माद् वसन्तः] "spring is prior to summer"
+
+**Scope:** The separate mention of @deva[अञ्चु]-words ensures they take only @deva[पञ्चमी], excluding the @deva[षष्ठी] option of @ref[2.3.30].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[अन्यारादितरर्तेदिक्शब्दाञ्चूत्तरपदाजाहियुक्ते] — @deva[पञ्चमी] applies with: (1) @deva[अन्यार्थ] words ("other"), (2) @deva[आरात्], (3) @deva[इतर], (4) @deva[ऋते], (5) @deva[दिक्शब्द]s (direction words), (6) @deva[अञ्चु]-ending compounds having a directional @deva[उत्तरपद], (7) words with @deva[आच्] or @deva[आहि] suffixes.
+
+**Parsing the compound:** @deva[अन्य] + @deva[आरात्] + @deva[इतर] + @deva[ऋते] + @deva[दिक्शब्द] + @deva[अञ्चु]-@deva[उत्तरपद] + @deva[आच्]/@deva[आहि]-@deva[युक्त]. Each names a distinct trigger for @deva[पञ्चमी].
+
+**Why mention @deva[अञ्चु] separately?** Words like @deva[प्राक्] and @deva[प्रत्यक्] are themselves @deva[दिक्शब्द]s. Their explicit mention in this rule ensures they take only @deva[पञ्चमी] and are excluded from the @deva[षष्ठी] option available under @ref[2.3.30] for @deva[अतसुच्]-ending words.
+
+**@deva[आरात्] — dual meaning:** This word means both "near" and "far" (a rare case of a word with opposite senses). In both senses, the reference point takes @deva[पञ्चमी]: @deva[आराद् ग्रामात्].
+
+**@deva[ऋते] — "without/except":** @deva[ऋते देवदत्तात्] "except @deva[देवदत्त]." Note that @ref[2.3.32] separately handles @deva[विना], @deva[पृथक्], and @deva[नाना] with a three-way option (@deva[तृतीया]/@deva[पञ्चमी]/@deva[द्वितीया]), while @deva[ऋते] here takes only @deva[पञ्चमी].
+
+**Cross-references:** @ref[2.3.30] (genitive with @deva[अतसुच्]-words), @ref[2.3.34] (genitive option with @deva[दूर]/@deva[अन्तिक]).
+"""

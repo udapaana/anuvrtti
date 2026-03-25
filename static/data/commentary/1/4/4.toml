@@ -1,0 +1,53 @@
+id = "1.4.4"
+numericId = "14004"
+
+[en]
+simple = """
+Feminine @deva[ई]/@deva[ऊ]-words that undergo @deva[इयङ्] or @deva[उवङ्] substitution (where the vowel changes to a semivowel form before another vowel) are NOT called @deva[नदी] — except @deva[स्त्री] "woman," which always remains @deva[नदी].
+
+**Not @deva[नदी] (take @deva[इयङ्]/@deva[उवङ्]):**
+- @deva[श्री] "prosperity" — @deva[श्री] + @deva[अस्] → @deva[श्रियः] (the @deva[ई] becomes @deva[इय्])
+- @deva[भ्रू] "brow" — @deva[भ्रू] + @deva[अस्] → @deva[भ्रुवः] (the @deva[ऊ] becomes @deva[उव्])
+
+**Always @deva[नदी] (exception):**
+- @deva[स्त्री] "woman" — despite taking @deva[इयङ्], it remains @deva[नदी]: vocative @deva[हे स्त्रि]
+
+Words like @deva[श्री] and @deva[भ्रू] have monosyllabic stems where the long vowel changes to a semivowel before vowel-initial endings. This different behavior justifies excluding them from the @deva[नदी] class.
+"""
+
+standard = """
+Feminine @deva[ई]/@deva[ऊ]-words that take @deva[इयङ्]/@deva[उवङ्] substitutes (by @ref[6.1.77]) are not @deva[नदी] — except @deva[स्त्री].
+
+**Rule type — @deva[अपवाद] of @ref[1.4.3]:** Narrows the @deva[नदी] definition by excluding a specific subset.
+
+**Excluded (not @deva[नदी]):**
+- @deva[श्री] "prosperity" → vocative: @deva[हे श्रीः] (not @deva[नदी]-type @deva[हे श्रि])
+- @deva[भ्रू] "brow" → vocative: @deva[हे भ्रूः] (not @deva[नदी]-type @deva[हे भ्रु])
+
+**Exception — @deva[स्त्री] is always @deva[नदी]:**
+- @deva[स्त्री] → vocative: @deva[हे स्त्रि] (@deva[नदी]-type shortening)
+
+**What are @deva[इयङ्]/@deva[उवङ्]?** By @ref[6.1.77], when @deva[ई]/@deva[ऊ] precede a vowel-initial affix, they can change to @deva[इय्]/@deva[उव्] respectively. Words that undergo this change are monosyllabic stems like @deva[श्री], @deva[भ्रू], @deva[धी].
+
+**Why exclude?** These words behave differently in declension — their vowel alternates with a semivowel, unlike true @deva[नदी] words where the @deva[ई]/@deva[ऊ] is stable.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[नदी] from @ref[1.4.3].
+
+@deva[न ष्यङ्ोरिषङ्ोरगात्यस्त्रियाम्] — @deva[इयङ्]/@deva[उवङ्]-taking words are not @deva[नदी], except @deva[स्त्री].
+
+**Narrowing @ref[1.4.3]:** @ref[1.4.3] defines @deva[नदी] broadly as feminine @deva[ई]/@deva[ऊ]-stems. This rule carves out words whose @deva[ई]/@deva[ऊ] undergoes semivowel substitution by @ref[6.1.77].
+
+**Which words take @deva[इयङ्]/@deva[उवङ्]?** Primarily monosyllabic @deva[ई]/@deva[ऊ]-stems: @deva[श्री], @deva[भ्रू], @deva[धी], @deva[ह्री]. Their short stem-vowel alternates with a semivowel before vowel-initial affixes, giving them a distinct declension paradigm.
+
+**@deva[स्त्री] exception:** @deva[स्त्री] takes @deva[इयङ्] (@deva[स्त्रियः], @deva[स्त्रियम्]) but retains @deva[नदी] status. This forces @deva[नदी]-type vocative (@deva[हे स्त्रि]) and @deva[आट्]-augmented forms (@deva[स्त्रियै]).
+
+**@deva[नदी] series position:**
+- @ref[1.4.3]: defines @deva[नदी]
+- @ref[1.4.4] (this): excludes @deva[इयङ्]/@deva[उवङ्] words (except @deva[स्त्री])
+- @ref[1.4.5]: partially reinstates for gen. pl. @deva[आम्]
+- @ref[1.4.6]: separates @deva[घि]-class
+
+**Interaction with @ref[1.4.5]:** The exclusion here is not absolute for all contexts. @ref[1.4.5] makes @deva[नदी] status optional for these words before gen. pl. @deva[आम्].
+"""

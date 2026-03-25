@@ -1,0 +1,50 @@
+id = "2.3.12"
+numericId = "23012"
+
+[en]
+simple = """
+With verbs of physical motion (going, walking, etc.), the destination can take either the @deva[द्वितीया] (accusative) or the @deva[चतुर्थी] (dative) — but not when the destination is a word meaning "road" or "path."
+
+**Examples:**
+- @deva[ग्रामं गच्छति] or @deva[ग्रामाय गच्छति] — both mean "he goes to the village"
+- @deva[अध्वानं गच्छति] "he travels the road" — only accusative, because @deva[अध्वन्] (road) is the object being traversed, not a destination
+
+The dative option treats the destination as a goal ("he goes for the village"), while the accusative treats it as the direct object of motion ("he goes to the village"). Both are equally correct, except for road-words.
+"""
+
+standard = """
+@deva[गत्यर्थकर्मणि द्वितीयाचतुर्थ्यौ चेष्टायामनध्वनि] — with verbs of physical motion (@deva[गत्यर्थ]), the destination takes @deva[द्वितीया] or @deva[चतुर्थी], provided (a) the motion is physical (@deva[चेष्टा]) and (b) the destination is not a road-word (@deva[अनध्वनि]).
+
+**Rule type — @deva[विभक्तिविधि]:** Permits @deva[चतुर्थी] as an alternative to @deva[द्वितीया] for destinations of motion verbs.
+
+**Examples:**
+- @deva[ग्रामं गच्छति] / @deva[ग्रामाय गच्छति] "he goes to the village"
+- @deva[नगरं व्रजति] / @deva[नगराय व्रजति] "he goes to the city"
+
+**Three restrictions:**
+1. **@deva[गत्यर्थ]:** Only verbs meaning "to go" — @deva[गम्], @deva[व्रज्], @deva[या], etc. Not @deva[पच्] "cook": @deva[ओदनं पचति] (no dative option)
+2. **@deva[चेष्टा]:** Only physical motion — @deva[मनसा हरिं व्रजति] "he goes mentally to @deva[हरि]" takes only accusative (not physical)
+3. **@deva[अनध्वनि]:** Not for road-words — @deva[अध्वानं गच्छति] "he travels the road" (accusative only, road is traversed, not a goal)
+
+**Exception within restriction:** @deva[पथे गच्छति] "he goes to the (right) road" — when the road itself is the destination, dative is permitted.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[द्वितीया] from @ref[2.3.2]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[गत्यर्थकर्मणि द्वितीयाचतुर्थ्यौ चेष्टायामनध्वनि] — the @deva[कर्मन्] of a @deva[गत्यर्थ] verb takes @deva[द्वितीया] or @deva[चतुर्थी] when the motion is physical and the destination is not a road-word.
+
+**Three conditions analyzed:**
+
+1. **@deva[गत्यर्थ]:** The verb must denote going/motion — @deva[गम्], @deva[व्रज्], @deva[या], @deva[इ], etc. Verbs like @deva[पच्] or @deva[कृ] do not qualify.
+
+2. **@deva[चेष्टा] (physical motion):** The @deva[काशिका] restricts this to bodily movement. @deva[मनसा हरिं व्रजति] "he goes to @deva[हरि] in thought" — only @deva[द्वितीया], because there is no physical motion. This prevents @deva[चतुर्थी] from applying to metaphorical uses of motion verbs.
+
+3. **@deva[अनध्वनि] (not a road-word):** @deva[अध्वन्]-words (@deva[अध्वन्], @deva[पन्थान्], @deva[मार्ग], and their synonyms per @ref[1.1.68]) take only @deva[द्वितीया] when they are the object of traversal: @deva[अध्वानं गच्छति] "he travels the road." The road is not a destination but a medium.
+
+**Exception — road as destination:** @deva[पथे गच्छति] "he goes to the (right) road" — when the road itself is the goal (not being traversed), @deva[चतुर्थी] applies. The @deva[अनध्वनि] restriction blocks the dative only when the road-word is the object of traversal.
+
+**Position in @[pāda]:** This is the last rule of the @deva[द्वितीया] sub-section (@ref[2.3.2]–@ref[2.3.12]). It transitions toward the @deva[चतुर्थी] section (@ref[2.3.13]ff.) by introducing @deva[चतुर्थी] as an option alongside @deva[द्वितीया].
+
+**@deva[चतुर्थी] here vs. @ref[2.3.13]:** The dative here is not the @deva[सम्प्रदान]-@deva[कारक] dative of @ref[2.3.13]. The destination is @deva[कर्मन्], not @deva[सम्प्रदान]. This is a special permission for @deva[चतुर्थी] to express @deva[कर्मन्] with motion verbs.
+"""

@@ -1,0 +1,43 @@
+id = "4.3.105"
+numericId = "43105"
+
+[en]
+simple = """
+The affix @deva[णिनि] comes in the @deva[प्रोक्त] (enounced) sense after a word in the instrumental case when it refers to a @deva[ब्राह्मण] (a class of Vedic prose text) or a @deva[कल्प] (ritual manual) that was taught by ancient sages.
+
+**@deva[ब्राह्मण] examples:**
+- @deva[शाट्यायनिनः] 'those who study the @[brāhmaṇa] taught by @[śāṭyāyana]'
+- @deva[ऐतरेयिणः]
+
+**@deva[कल्प] examples:**
+- @deva[पैङ्गीकल्पः] 'the Kalpa of @[paiṅgi]'
+- @deva[आरुणपराजी]
+
+Why 'ancient sages' (@deva[पुराणप्रोक्त])? For modern teachers: @deva[याज्ञवल्कानि ब्राह्मणानि] 'the @[brāhmaṇas] of @[yājñavalkya]' (takes @deva[अण्], not @deva[णिनि]), @deva[आश्मरथः कल्पः] 'the Kalpa of @[āśmaratha]' — these are modern sages, so @deva[णिनि] doesn't apply.
+"""
+
+standard = """
+The affix @deva[णिनि] comes in the @deva[प्रोक्त] sense after a word in @deva[तृतीया] when it denotes @deva[ब्राह्मण] or @deva[कल्प] literature taught by @deva[पुराण] (ancient sages).
+
+**@deva[ब्राह्मण] examples:** @deva[शाट्यायनिनः], @deva[ऐतरेयिणः]
+
+**@deva[कल्प] examples:** @deva[पैङ्गीकल्पः], @deva[आरुणपराजी]
+
+**@deva[पुराणप्रोक्त] restriction:** Works of modern sages use other affixes: @deva[याज्ञवल्कानि ब्राह्मणानि], @deva[आश्मरथः कल्पः] — @deva[यज्ञवल्क्य] and @deva[अश्मरथ] being relatively recent.
+
+This sense restriction also affects the @deva[तद्विषय] affix (@ref[4.2.66]): the word @deva[ब्राह्मण] in @ref[4.2.66] is implicitly limited to @deva[पुराणप्रोक्त].
+"""
+
+advanced = """
+This @deva[सूत्र] specifies that @deva[णिनि] applies in the @deva[प्रोक्त] sense for @deva[ब्राह्मण] and @deva[कल्प] literature, with the additional condition @deva[पुराणप्रोक्तेषु] (taught by ancient sages).
+
+@deva[पुराण] = @deva[पुरातन] (ancient).
+
+**@deva[ब्राह्मण]:** @deva[शाट्यायनिनः], @deva[ऐतरेयिणः]
+
+**@deva[कल्प]:** @deva[पैङ्गीकल्पः], @deva[आरुणपराजी]
+
+**Counter-examples (non-@deva[पुराण]):** @deva[याज्ञवल्कानि ब्राह्मणानि], @deva[आश्मरथः कल्पः] — @deva[यज्ञवल्क्य] and @deva[अश्मरथ] are modern sages, so @deva[णिनि] is blocked; @deva[अण्] applies instead (@ref[6.4.151]).
+
+**Technical note:** The @deva[पुराणप्रोक्त] restriction also bounds the @deva[तद्विषय] affix: @deva[ब्राह्मण] in @ref[4.2.66] is implicitly restricted to ancient @deva[ब्राह्मण]s.
+"""

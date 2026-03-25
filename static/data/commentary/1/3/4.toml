@@ -1,0 +1,52 @@
+id = "1.3.4"
+numericId = "13004"
+
+[en]
+simple = """
+Exception to the previous rule: in @deva[विभक्ति] endings (case endings and verb endings), final dental consonants (@deva[त्], @deva[थ्], @deva[द्], @deva[ध्], @deva[न्]), @deva[स्], and @deva[म्] are NOT @deva[इत्]. They remain in the final form.
+
+Without this exception, endings like @deva[जस्] (nominative plural) would lose their @deva[स्], and @deva[ताम्] would lose its @deva[म्].
+
+**Examples — final consonant retained:**
+- @deva[जस्] → @deva[ब्राह्मणाः] (the @deva[स्] stays)
+- @deva[ताम्] → @deva[अपचताम्] (the @deva[म्] stays)
+- @deva[तस्] → @deva[पचतः] (the @deva[स्] stays)
+- @deva[आत्] (ablative) → @deva[वृक्षात्] (the @deva[त्] stays)
+
+**Non-@deva[विभक्ति] affixes — @deva[इत्] applies normally:**
+- @deva[यत्] (a @deva[कृत्] affix, @ref[3.1.97]): the @deva[त्] is @deva[इत्] and disappears
+- @deva[श्नम्] (a @deva[विकरण], @ref[3.1.78]): the @deva[म्] is @deva[इत्] and disappears
+"""
+
+standard = """
+Exception to @ref[1.3.3]: in @deva[विभक्ति] endings, final @deva[तवर्ग] consonants (@deva[त्], @deva[थ्], @deva[द्], @deva[ध्], @deva[न्]), @deva[स्], and @deva[म्] are not @deva[इत्]. @deva[विभक्ति] is defined at @ref[1.4.104] — covering both @deva[सुप्] (case endings) and @deva[तिङ्] (verb endings).
+
+**Examples — consonant retained:**
+- @deva[जस्] (nominative plural): @deva[स्] retained → @deva[ब्राह्मणाः]
+- @deva[आत्] (ablative, replaces @deva[ङस्] by @ref[7.1.12]): @deva[त्] retained → @deva[वृक्षात्]
+- @deva[तस्], @deva[थस्]: @deva[स्] retained → @deva[पचतः], @deva[पचथः]
+- @deva[ताम्], @deva[तम्]: @deva[म्] retained → @deva[अपचताम्], @deva[अपचतम्]
+
+**Non-@deva[विभक्ति] affixes — @deva[इत्] applies:**
+- @deva[यत्] (@ref[3.1.97]): final @deva[त्] is @deva[इत्]
+- @deva[श्नम्] (@ref[3.1.78]): final @deva[म्] is @deva[इत्]
+- @deva[युस्] (@ref[5.2.123]): final @deva[स्] is @deva[इत्]
+
+**Why these specific consonants?** Dentals, @deva[स्], and @deva[म्] are the consonants that actually appear at the end of @deva[विभक्ति] forms in real speech. Gutturals (@deva[क्] etc.) and cerebrals (@deva[ट्] etc.) at the end of @deva[विभक्ति] affixes are genuinely indicatory.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[उपदेशे] and @deva[इत्] from @ref[1.3.2]; @deva[हलन्त्यम्] from @ref[1.3.3].
+
+@deva[न विभक्तौ तुस्माः] — in @deva[विभक्ति], final @deva[तु] (@deva[तवर्ग]), @deva[स्], and @deva[म्] are not @deva[इत्].
+
+**@deva[तु] = @deva[तवर्ग]:** By @deva[उवर्ण] (@deva[तु] standing for the entire dental class: @deva[त्], @deva[थ्], @deva[द्], @deva[ध्], @deva[न्]).
+
+**@deva[विभक्ति] scope:** @ref[1.4.104] defines @deva[विभक्ति] as @deva[सुप्] and @deva[तिङ्]. This covers all 21 @deva[सुप्] endings and all 18 @deva[तिङ्] endings.
+
+**@deva[अनित्य] (non-universal) status:** The @deva[वार्त्तिक] notes this rule is @deva[अनित्य] — there are cases where final @deva[त्] in a @deva[विभक्ति]-like context is @deva[इत्]. Evidence: the @deva[त्] of @deva[अत्] in @ref[5.3.12] and @ref[3.4.106] is @deva[इत्], despite appearing in a @deva[विभक्ति]-adjacent context. Further proof: @deva[थमु] (@ref[5.3.24]) uses @deva[उ] specifically to protect @deva[म्] from @deva[इत्]-deletion — unnecessary if this rule were truly universal.
+
+**System interaction:** This exception preserves the phonological substance of endings. Without it, @deva[जस्] would reduce to @deva[ज] (the @deva[ज्] being initial @deva[इत्] by @ref[1.3.7] or similar), destroying the ending entirely. The exception ensures that @deva[विभक्ति] endings retain their pronounced segments.
+
+**Contrast with non-@deva[विभक्ति] affixes:** @deva[कृत्] and @deva[तद्धित] affixes are not @deva[विभक्ति], so their final consonants remain @deva[इत्] by @ref[1.3.3]. This is why @deva[यत्] → @deva[य] (the @deva[त्] drops) but @deva[जस्] → @deva[अस्] (the @deva[स्] stays, only @deva[ज्] drops as initial @deva[इत्]).
+"""

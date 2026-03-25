@@ -1,0 +1,44 @@
+id = "2.1.34"
+numericId = "21034"
+
+[en]
+simple = """
+A word in the instrumental case (@deva[तृतीया]) denoting a condiment or accompaniment (@deva[व्यञ्जन]) **optionally** compounds with a food-word (@deva[अन्न]) to form @deva[तत्पुरुष]. The condiment is what is used to prepare or flavor the food.
+
+**Examples:**
+- @deva[दध्योदनः] "curd-rice" — rice prepared with curd
+- @deva[क्षीरौदनः] "milk-rice" — rice cooked in milk
+- @deva[घृतौदनः] "ghee-rice" — rice prepared with ghee
+
+The @deva[तृतीया] here means "prepared with" or "accompanied by" — the curd, milk, or ghee is the ingredient used in making the rice.
+"""
+
+standard = """
+@deva[तृतीयान्त] (@deva[व्यञ्जनवाचक]) + @deva[अन्नवाचक] → @deva[विभाषा] @deva[तत्पुरुष] — @deva[अन्नेन व्यञ्जनम्].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[दध्योदनः] = @deva[दध्ना उपसिक्तः ओदनः] "rice prepared with curd"
+- @deva[क्षीरौदनः] "rice cooked in milk"
+
+**@deva[व्यञ्जन]:** The ingredient that enhances, flavors, or prepares the food — @deva[दधि], @deva[क्षीर], @deva[घृत], etc.
+
+**@deva[अन्न]:** Food that is prepared — specifically cooked food like @deva[ओदन] (boiled rice), @deva[अपूप] (cake), etc.
+
+**Semantic connection:** An understood verb links the two — @deva[उपसिक्त] "sprinkled with," @deva[पक्व] "cooked in," etc. The @deva[तृतीया] expresses the instrument or means of preparation.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तृतीया] from @ref[2.1.30]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[अन्नेन व्यञ्जनम्] — a @deva[तृतीयान्त] @deva[व्यञ्जन] word optionally compounds with an @deva[अन्न] word as @deva[तत्पुरुष].
+
+**@deva[व्यञ्जन] vs @deva[अन्न]:** The @deva[काशिका] distinguishes: @deva[अन्न] is the base food being prepared (@deva[ओदन], @deva[अपूप]); @deva[व्यञ्जन] is what prepares, enhances, or accompanies it (@deva[दधि], @deva[क्षीर], @deva[घृत]). The @deva[तृतीया] marks the means of preparation.
+
+**Understood verb (@deva[अध्याहार]):** The compound presupposes an action connecting the two: @deva[दध्ना उपसिक्तः ओदनः] "rice sprinkled with curd." The @deva[समर्थ] condition (@ref[2.1.1]) requires this semantic connection.
+
+**Relation to @ref[2.1.35]:** The next rule extends a similar pattern to @deva[भक्ष्य] (any edible) with @deva[मिश्रीकरण] (mixing agent). @ref[2.1.34] is narrower: @deva[अन्न] (cooked food) with @deva[व्यञ्जन] (condiment). Together, @ref[2.1.34]–@ref[2.1.35] cover food-compound formation comprehensively.
+
+**Not @deva[कर्तृ]/@deva[करण]:** The @deva[तृतीया] here is not the agent/instrument of @ref[2.3.18] (covered by @ref[2.1.32]). It is the instrumental of accompaniment — a different semantic role requiring its own compounding authority.
+"""

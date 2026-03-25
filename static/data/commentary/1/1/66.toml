@@ -1,0 +1,47 @@
+id = "1.1.66"
+numericId = "11066"
+
+[en]
+simple = """
+When a grammatical rule uses the locative case (@deva[सप्तमी विभक्ति]) to describe a condition — like "when X is present" — the operation happens to what comes immediately before that condition.
+
+**Example:** @ref[6.1.77] says: "@deva[यण्] replaces @deva[इक्] when a vowel (@deva[अच्]) follows." The word @deva[अचि] "when a vowel [follows]" is in the locative. This means the change happens to what precedes the vowel: @deva[दधि] + @deva[उदकम्] → @deva[दध्युदकम्] "buttermilk-water." The @deva[इ] of @deva[दधि] (which precedes the following @deva[उ]) changes to @deva[य्].
+
+The element must be immediately adjacent. If something intervenes between the trigger and the target, the rule does not apply.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] establishes how the locative case functions in grammatical rules: a term in the @deva[सप्तमी] (locative) indicates that the operation applies to the immediately preceding element.
+
+**The formula:** "When X [locative] is present, do Y to what precedes X."
+
+**Example:** @ref[6.1.77] (@deva[इको यणचि]) — @deva[इक्] vowels become @deva[यण्] when a vowel (@deva[अचि], locative) follows:
+- @deva[दधि] + @deva[उदकम्]: @deva[इ] precedes @deva[उ] → @deva[इ] → @deva[य्] → @deva[दध्युदकम्]
+- @deva[मधु] + @deva[अरिः]: @deva[उ] precedes @deva[अ] → @deva[उ] → @deva[व्] → @deva[मध्वरिः]
+
+**Adjacency requirement (@deva[निर्दिष्ट]):** The target must be immediately adjacent to the locative condition. In @deva[अग्निचित्], the @deva[इ] of @deva[अग्नि] and the @deva[इ] of @deva[चित्] are separated by @deva[च्], so @ref[6.1.77] does not apply between them.
+
+**Pair with @ref[1.1.67]:** This rule handles the locative (operation on what precedes). @ref[1.1.67] handles the ablative (operation on what follows).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent @deva[परिभाषा].
+
+@deva[तस्मिन्निति निर्दिष्टे पूर्वस्य] — when a term is exhibited (@deva[निर्दिष्ट]) in the locative (@deva[तस्मिन्]), the operation applies to the preceding element (@deva[पूर्वस्य]).
+
+**This rule and @ref[1.1.67] form a pair** that governs how case endings in @[sūtras] indicate the direction of operations:
+- @deva[सप्तमी] (locative): target is what precedes → @ref[1.1.66]
+- @deva[पञ्चमी] (ablative): target is what follows → @ref[1.1.67]
+
+**@deva[निर्दिष्ट] (exhibited):** The locative term must be explicitly stated in the rule. The adjacency is between the @deva[स्थानिन्] (what is being operated on) and the condition.
+
+**Example:** @ref[6.1.77] (@deva[इको यणचि]):
+- @deva[अचि] (locative) = "when a vowel follows"
+- Operation: @deva[इक्] → @deva[यण्]
+- Target: the @deva[इक्] vowel immediately preceding the following vowel
+- @deva[दधि] + @deva[उदकम्]: @deva[इ] immediately precedes @deva[उ] → @deva[य्] → @deva[दध्युदकम्]
+
+**Scope of "immediately preceding":** The @deva[काशिका] clarifies that no element may intervene between the target and the condition. This prevents rules from "reaching past" intermediate sounds.
+
+**Interaction with @deva[षष्ठी] (genitive):** The genitive (@ref[1.1.49]) identifies the @deva[स्थानिन्] in substitution rules. The locative identifies the environment. These are independent functions: the genitive says "what is replaced," the locative says "in what context."
+"""

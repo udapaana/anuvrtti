@@ -1,0 +1,43 @@
+id = "1.4.51"
+numericId = "14051"
+
+[en]
+simple = """
+A participant in the action whose role is not covered by any of the other five @deva[कारक] categories is also called @deva[कर्मन्] "object." This is the @deva[अकथित] ("unstated") @deva[कर्मन्].
+
+Some verbs naturally involve two objects. For example, "milking the cow for milk" involves both the cow (primary object) and the milk (secondary object). The milk's role isn't agent, instrument, recipient, source, or location — it is an "unstated" participant that defaults to @deva[कर्मन्].
+
+**Examples:**
+- @deva[गां दोग्धि पयः] "he milks the cow for milk" (both @deva[गाम्] and @deva[पयस्] are @deva[कर्मन्])
+- @deva[बलिं याचते वसुधाम्] "he begs Bali for the earth" (both @deva[बलि] and @deva[वसुधा] are @deva[कर्मन्])
+- @deva[माणवकं धर्मं शास्ति] "he instructs the boy in dharma" (both take accusative)
+"""
+
+standard = """
+A @deva[कारक] not expressible through any other relation (@deva[अकथित]) is also @deva[कर्मन्] — @deva[अकथितं च].
+
+**Rule type — @deva[संज्ञा] extension of @ref[1.4.49]:** Provides for double-accusative constructions where a second participant takes @deva[कर्मन्] as a default.
+
+**Examples:**
+- @deva[गां दोग्धि पयः] "he milks the cow for milk" (@deva[गाम्] = primary @deva[कर्मन्], @deva[पयस्] = @deva[अकथित कर्मन्])
+- @deva[बलिं याचते वसुधाम्] "he begs Bali for the earth"
+- @deva[माणवकं धर्मं शास्ति] "he instructs the boy in dharma"
+
+**Roots that take double accusatives:** @deva[दुह्] "milk," @deva[याच्] "beg," @deva[पच्] "cook," @deva[दण्ड्] "punish," @deva[रुध्] "obstruct," @deva[प्रच्छ्] "ask," @deva[चि] "gather," @deva[ब्रू] "tell," @deva[शास्] "instruct," @deva[जि] "conquer," @deva[मथ्] "churn," @deva[मुष्] "steal," @deva[नी] "lead," @deva[हृ] "take," @deva[कृष्] "drag," @deva[वह्] "carry."
+
+**@deva[अकथित] = "not stated (under any other heading)":** The second object doesn't fit @deva[अपादान], @deva[सम्प्रदान], @deva[करण], or @deva[अधिकरण] — so it defaults to @deva[कर्मन्].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्म] from @ref[1.4.49]; @deva[कारके] from @ref[1.4.23].
+
+@deva[अकथितं च] — and the unstated @deva[कारक] is also @deva[कर्मन्].
+
+**@deva[अकथित] mechanism:** In @deva[गां दोग्धि पयः], the cow is @deva[कर्मन्] by @ref[1.4.49] (most desired). The milk is not @deva[अपादान] (no departure), not @deva[सम्प्रदान] (no recipient), not @deva[करण] (not the means), not @deva[अधिकरण] (not the location). Since no other @deva[कारक] applies, it becomes @deva[कर्मन्] by this rule.
+
+**@deva[कर्मन्] hierarchy in double-object verbs:** When two @deva[कर्मन्]s exist, passivization promotes only the primary @deva[कर्मन्] (by @ref[1.4.49]) to nominative. The @deva[अकथित कर्मन्] remains accusative: @deva[गौर्दुह्यते पयः] "the cow is milked for milk" — @deva[गौ] (primary) becomes nominative; @deva[पयस्] (@deva[अकथित]) stays accusative.
+
+**The sixteen roots:** The @deva[काशिका] lists @deva[दुह्], @deva[याच्], @deva[पच्], @deva[दण्ड्], @deva[रुध्], @deva[प्रच्छ्], @deva[चि], @deva[ब्रू], @deva[शास्], @deva[जि], @deva[मथ्], @deva[मुष्], @deva[नी], @deva[हृ], @deva[कृष्], @deva[वह्]. These are identified by tradition, not explicitly stated in the @[sūtra] — the @[sūtra] says @deva[अकथित], and the root list comes from commentarial consensus.
+
+**Interaction with @ref[1.4.52]:** Causative constructions also create double objects — the primitive agent becomes a second @deva[कर्मन्]. @ref[1.4.52] handles that specific case; this rule handles lexically inherent double objects.
+"""

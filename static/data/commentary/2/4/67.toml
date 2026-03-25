@@ -1,0 +1,34 @@
+id = "2.4.67"
+numericId = "24067"
+
+[en]
+simple = """
+After words in the @deva[गोपवनादि] class, the @deva[गोत्र] affix is NOT elided in the plural. This prevents @ref[2.4.64] from applying.
+
+**Examples:**
+- @deva[गौपवनः] (singular) → @deva[गौपवनाः] (plural, affix retained)
+- @deva[शैग्रवः] (singular) → @deva[शैग्रवाः] (plural, affix retained)
+
+The @deva[गोपवनादि] class includes: @deva[गोपवन], @deva[शिग्रु], @deva[बिन्दु], @deva[भजन्], @deva[अश्व], @deva[अवतान], @deva[श्यामक], @deva[श्वापर्ण].
+"""
+
+standard = """
+After words in the @deva[गोपवनादि] class, there is NO @deva[लुक्] elision of the @deva[गोत्र] affix in the plural. This is an exception to @ref[2.4.64].
+
+**Examples:**
+- @deva[गोपवन] + @deva[अञ्] = @deva[गौपवनः]; plural: @deva[गौपवनाः] (affix retained)
+- @deva[शिग्रु] + affix = @deva[शैग्रवः]; plural: @deva[शैग्रवाः] (affix retained)
+
+**@deva[गोपवनादि] class (from @deva[विदादि], @ref[4.1.104]):**
+@deva[गोपवन], @deva[शिग्रु], @deva[बिन्दु], @deva[भजन्], @deva[अश्व], @deva[अवतान], @deva[श्यामक], @deva[श्वापर्ण]
+
+**Note:** Other @deva[विदादि] words like @deva[हरित] follow @ref[2.4.64] normally: @deva[हारितः] → @deva[हरिताः] (affix elided).
+"""
+
+advanced = """
+After words in the @deva[गोपवनादि] class, the @deva[गोत्र] affix is NOT elided in the plural. This blocks @ref[2.4.64].
+
+@deva[गोपवन] + @deva[अञ्] = @deva[गौपवनः]; plural @deva[गौपवनाः] (affix retained). @deva[शैग्रवः] → plural @deva[शैग्रवाः].
+
+The @deva[गोपवनादि] words belong to the @deva[विदादि] class (@ref[4.1.104]) and are: @deva[गोपवन], @deva[शिग्रु], @deva[बिन्दु], @deva[भजन्], @deva[अश्व], @deva[अवतान], @deva[श्यामक], and @deva[श्वापर्ण]. The remaining @deva[विदादि] words such as @deva[हरित] are not part of this sub-class; for those, the @deva[गोत्र] affix is elided in the plural by @ref[2.4.64]: @deva[हरिताः], @deva[किंदासाः], etc.
+"""

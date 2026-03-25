@@ -1,0 +1,50 @@
+id = "1.2.69"
+numericId = "12069"
+
+[en]
+simple = """
+When a neuter noun appears alongside masculine or feminine nouns, the neuter may optionally be retained through @deva[एकशेष]. When the neuter wins, the accompanying adjective takes neuter singular form.
+
+**Example:**
+- @deva[आलस्यम्] (neuter, "laziness") + @deva[मैथुनम्] (neuter, "sexual indulgence") + @deva[निद्रा] (feminine, "sleep") → adjective @deva[सेव्यमानम्] "being indulged" (neuter singular)
+
+The neuter singular "absorbs" all three, regardless of their individual genders and numbers.
+
+**All neuter — normal rules:** When all words are neuter, standard @deva[एकशेष] applies with regular number: @deva[शुक्लम्] × 3 → @deva[शुक्लानि] (neuter plural).
+
+**This is optional:** The masculine could also be retained (by @ref[1.2.67]), giving masculine agreement instead.
+"""
+
+standard = """
+A @deva[नपुंसक] (neuter) word may optionally be retained over @deva[पुल्लिङ्ग] (masculine) or @deva[स्त्रीलिङ्ग] (feminine) words in @deva[एकशेष]. When the neuter is retained, the result takes @deva[एकवचन] (singular) agreement.
+
+**Example:**
+- @deva[आलस्यम्] (neuter) + @deva[मैथुनम्] (neuter) + @deva[निद्रा] (feminine) → adjective @deva[सेव्यमानम्] (neuter singular)
+
+**@deva[विकल्प]:** This is optional. The alternative is masculine retention per @ref[1.2.67], yielding masculine plural agreement.
+
+**@deva[एकवचन] with neuter:** When the neuter is retained, the predicate takes singular — not the dual or plural that the count of items would normally require. This singular agreement is specific to the neuter @deva[एकशेष].
+
+**All-neuter case:** When all items are neuter, standard number applies: @deva[शुक्लम्] × 3 → @deva[शुक्लानि] (plural). The special singular agreement applies only when neuter overrides other genders.
+
+**Scope:** The rule applies to any mixed-gender group where at least one member is neuter.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकशेष] from @ref[1.2.64].
+
+@deva[नपुंसकमनपुंसकेनैकवचनम्] — a neuter word may optionally be retained over non-neuter words, with singular agreement.
+
+**@deva[विकल्प] source:** The option comes from @deva[अन्यतरस्याम्] continuing through the @deva[वचन] section from @ref[1.2.58]. Without this option, @ref[1.2.67] (masculine retention) would apply by default.
+
+**Why @deva[एकवचन]?** The singular agreement is surprising — three items should give plural. The rationale is that neuter, being the "unmarked" gender in Sanskrit, represents the collective abstractly. When neuter absorbs other genders, it represents the group as a unity, not as countable individuals.
+
+**@deva[अनपुंसकेन] ("with a non-neuter"):** The @deva[तृतीया] (instrumental) specifies the conditioning environment: the neuter must be paired with at least one non-neuter word. Pure neuter groups follow normal @deva[एकशेष] with regular number (@deva[शुक्लम्] × 3 → @deva[शुक्लानि]).
+
+**Interaction with @ref[1.2.67]:** When both rules could apply (mixed group including masculine, feminine, and neuter), the speaker has a choice: retain masculine (per @ref[1.2.67]) with appropriate plural, or retain neuter (per this rule) with singular. This is a genuine @deva[विकल्प].
+
+**Position:** This is the last gender-based @deva[एकशेष] rule. The hierarchy of retention:
+- @ref[1.2.67]: masculine over feminine (default)
+- @ref[1.2.69] (this): neuter over all (optional, with singular)
+- @ref[1.2.70]: @deva[पितृ]/@deva[मातृ] (specific pair, optional)
+"""

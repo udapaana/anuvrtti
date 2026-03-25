@@ -1,0 +1,49 @@
+id = "1.3.80"
+numericId = "13080"
+
+[en]
+simple = """
+The verb @deva[क्षिप्] "to throw" takes @deva[परस्मैपद] when preceded by @deva[अभि], @deva[प्रति], or @deva[अति] — even when the fruit accrues to the agent.
+
+**@deva[परस्मैपद] (always with these prefixes):**
+- @deva[अभिक्षिपति] "he throws at, reproaches"
+- @deva[प्रतिक्षिपति] "he rejects, throws back"
+- @deva[अतिक्षिपति] "he throws beyond"
+
+**@deva[आत्मनेपद] (other prefixes, agent benefits):**
+- @deva[आक्षिपते] "he attracts, pulls toward himself"
+
+@deva[क्षिप्] is @deva[स्वरितेत्] (svarita-marked), so by @ref[1.3.72] it would take @deva[आत्मनेपद] when the agent benefits. This rule overrides that for three specific prefixes.
+"""
+
+standard = """
+After @deva[अभि]/@deva[प्रति]/@deva[अति] + @deva[क्षिप्], @deva[परस्मैपद] — even when the fruit accrues to the agent.
+
+**Always @deva[परस्मैपद]:**
+- @deva[अभिक्षिपति] "he throws at / reproaches"
+- @deva[प्रतिक्षिपति] "he rejects / throws back"
+- @deva[अतिक्षिपति] "he throws beyond / surpasses"
+
+**Other prefixes — @ref[1.3.72] applies:**
+- @deva[आक्षिपते] "he attracts" (agent benefits → @deva[आत्मनेपद])
+
+**Rule type — @deva[अपवाद]:** @deva[क्षिप्] is @deva[स्वरितेत्], making it @deva[उभयपदिन्] by @ref[1.3.72]. This rule forcibly assigns @deva[परस्मैपद] for three prefixes, overriding the @deva[स्वार्थ] condition.
+
+**Why these three prefixes?** @deva[अभि] (toward), @deva[प्रति] (back/against), @deva[अति] (beyond) — all direct the throwing outward. The action's result goes away from the agent, making @deva[परस्मैपद] semantically natural.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78].
+
+@deva[अभिप्रत्यतिभ्यः क्षिपः] — after @deva[अभि]/@deva[प्रति]/@deva[अति] + @deva[क्षिप्], @deva[परस्मैपद].
+
+**Override of @ref[1.3.72]:** @deva[क्षिप्] is @deva[स्वरितेत्], so @ref[1.3.72] makes it @deva[उभयपदिन्]. These three prefixes strip the @deva[आत्मनेपद] option entirely — @deva[परस्मैपद] applies regardless of benefit.
+
+**Semantic motivation:** All three prefixes denote outward-directed throwing:
+- @deva[अभि] → toward (a target)
+- @deva[प्रति] → back (rejection)
+- @deva[अति] → beyond (surpassing)
+The action's result is directed away from the agent, making @deva[परस्मैपद] natural. Other prefixes like @deva[आ] (toward self) retain @deva[आत्मनेपद] because the result comes to the agent.
+
+**@deva[परस्मैपद] override section:** Second in the series. @ref[1.3.79] (@deva[अनु]/@deva[परा] + @deva[कृ]), @ref[1.3.80] (this: three prefixes + @deva[क्षिप्]), @ref[1.3.81]–@ref[1.3.84] continue with further overrides.
+"""

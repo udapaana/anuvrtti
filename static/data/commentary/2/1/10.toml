@@ -1,0 +1,47 @@
+id = "2.1.10"
+numericId = "21010"
+
+[en]
+simple = """
+The words @deva[अक्ष] "die," @deva[शलाका] "ivory gaming piece," and numerals (@deva[सङ्ख्या]) compound with @deva[परि] to form @deva[अव्ययीभाव] compounds. These are gambling terms denoting unlucky throws.
+
+In the game @deva[पञ्चिका], five dice or ivory pieces are thrown. If all five land the same way (all faces up or all faces down), the thrower wins. Otherwise, the throw is unlucky.
+
+**Examples:**
+- @deva[अक्षपरि] "an unlucky throw of dice"
+- @deva[शलाकापरि] "an unlucky throw of ivory pieces"
+- @deva[एकपरि] "off by one," @deva[द्विपरि] "off by two," @deva[त्रिपरि] "off by three," @deva[चतुष्परि] "off by four"
+
+The numeral indicates how many pieces landed differently from the majority.
+"""
+
+standard = """
+@deva[अक्ष], @deva[शलाका], or @deva[सङ्ख्या] + @deva[परि] → @deva[अव्ययीभाव] — @deva[अक्षशलाकासङ्ख्या परिणा].
+
+**Rule type — @deva[विधि]:** @deva[अव्ययीभाव] for gambling terminology.
+
+**Examples:**
+- @deva[अक्षपरि] "unlucky dice throw"
+- @deva[शलाकापरि] "unlucky piece throw"
+- @deva[एकपरि], @deva[द्विपरि], @deva[त्रिपरि], @deva[चतुष्परि] "off by 1/2/3/4"
+
+**@deva[पञ्चिका] game:** Five dice or ivory pieces are thrown. Victory requires all five to show the same face. Any other result is a loss — the numeral compounds indicate the degree of failure.
+
+**@deva[परि] final:** Like @ref[2.1.9] (@deva[शाकप्रति]), @deva[परि] stands last in the compound. The @deva[सूत्र] uses @deva[परिणा] (instrumental), parallel to @deva[प्रतिना] in the previous rule.
+
+**Narrow scope:** This rule applies only to these three word-types in the gambling context. @deva[परि] in other senses (exclusion, etc.) does not form @deva[अव्ययीभाव] by this rule.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सुप्] from @ref[2.1.9]; @deva[समासः] from @ref[2.1.3]; @deva[अव्ययीभावः] from @ref[2.1.5].
+
+@deva[अक्षशलाकासङ्ख्या परिणा] — @deva[अक्ष], @deva[शलाका], or @deva[सङ्ख्या] compound with @deva[परि] (instrumental @deva[परिणा]) as @deva[अव्ययीभाव].
+
+**@deva[सुप्] continues from @ref[2.1.9]:** The first member is a @deva[सुबन्त] (not an @deva[अव्यय]), continuing the pattern from the previous rule. @deva[अव्यय] @deva[अनुवृत्ति] from @ref[2.1.6] remains blocked.
+
+**@deva[परिणा] = instrumental of @deva[परि]:** Parallel to @deva[प्रतिना] in @ref[2.1.9]. The instrumental form signals that @deva[परि] is the second member, explaining the word order @deva[अक्षपरि] (not @deva[पर्यक्ष]).
+
+**Domain-specific rule:** This is one of the most narrowly scoped rules in the @deva[अव्ययीभाव] section — it applies exclusively to gambling vocabulary. The @deva[पञ्चिका] game (five-piece throw) provides the context: all five must match for victory; @deva[एकपरि] through @deva[चतुष्परि] express how many pieces were off.
+
+**@deva[सङ्ख्या] restriction:** The numeral compounds (@deva[एकपरि] through @deva[चतुष्परि]) max out at four because in a five-piece game, at most four can differ from the majority orientation.
+"""

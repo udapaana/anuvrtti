@@ -1,0 +1,43 @@
+id = "4.3.135"
+numericId = "43135"
+
+[en]
+simple = """
+An affix comes after words denoting an animal, a herb (@deva[ओषधि]), or a tree (@deva[वृक्ष]) in the genitive case to mean both 'this is its modification' (@deva[विकार]) and 'this is its part' (@deva[अवयव]).
+
+The word @deva[च] in the rule adds @deva[विकार] (from the previous rule) to @deva[अवयव].
+
+**Examples:**
+- @deva[कपोतस्य विकारः अवयवो वा] → @deva[कापोतः] 'a modification or part of a pigeon' (e.g., fan made from feathers)
+- @deva[मायूरः], @deva[तैत्तिरः] 'of a peacock, of a partridge'
+- Herb: @deva[मौर्वम्] 'product of @[mūrvā]' (ashes or stalk)
+- Tree: @deva[कारीरम्] 'stalk or ashes of the @[karīra] tree'
+
+In subsequent rules, both @deva[विकार] and @deva[अवयव] continue. But for non-animal, non-herb, non-tree words, only @deva[विकार] applies — a unique case of partial @deva[अनुवृत्ति].
+"""
+
+standard = """
+An affix comes after @deva[प्राणिन्] (animal), @deva[ओषधि] (herb), and @deva[वृक्ष] (tree) words in @deva[षष्ठी] for both @deva[विकार] (modification) and @deva[अवयव] (part).
+
+The @deva[च] adds @deva[विकार] from @ref[4.3.134].
+
+**Examples:**
+- @deva[प्राणिन्]: @deva[कापोतः], @deva[मायूरः], @deva[तैत्तिरः] (by @ref[4.3.154])
+- @deva[ओषधि]: @deva[मौर्वम्] (@[mūrvā] product)
+- @deva[वृक्ष]: @deva[कारीरम्] (@[karīra] stalk/ashes)
+
+**Technical note:** In subsequent @deva[सूत्र]s, both @deva[विकार] and @deva[अवयव] continue. But for non-@deva[प्राणिन्], non-@deva[ओषधि], non-@deva[वृक्ष] words, only @deva[विकार] applies — a case of asymmetric @deva[अनुवृत्ति].
+"""
+
+advanced = """
+This @deva[सूत्र] adds @deva[अवयव] (part) to the @deva[विकार] sense for @deva[प्राणिन्], @deva[ओषधि], and @deva[वृक्ष] words in @deva[षष्ठी].
+
+The @deva[च] draws @deva[विकार] from @ref[4.3.134].
+
+**Examples:**
+- @deva[प्राणिन्]: @deva[कापोतः], @deva[मायूरः], @deva[तैत्तिरः] (by @deva[अञ्], @ref[4.3.154])
+- @deva[ओषधि]: @deva[मौर्वम्]
+- @deva[वृक्ष]: @deva[कारीरम्]
+
+**Double @deva[अनुवृत्ति]:** In following @deva[सूत्र]s, both @deva[विकार] and @deva[अवयव] continue. But for non-@deva[प्राणिन्]/​@deva[ओषधि]/​@deva[वृक्ष] words, only @deva[विकार] applies — asymmetric @deva[अनुवृत्ति] (@deva[द्विप्रकारानुवृत्ति]).
+"""

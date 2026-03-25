@@ -1,0 +1,50 @@
+id = "1.3.15"
+numericId = "13015"
+
+[en]
+simple = """
+Exception to @ref[1.3.14]: verbs meaning "motion" (@deva[गति]) or "injury" (@deva[हिंसा]) do NOT take @deva[आत्मनेपद] even when the action is reciprocal. They stay @deva[परस्मैपद].
+
+**Examples:**
+- @deva[व्यतिगच्छन्ति] "they go against each other" (not @deva[*व्यतिगच्छन्ते])
+- @deva[व्यतिहिंसन्ति] "they injure each other"
+- @deva[व्यतिघ्नन्ति] "they strike each other"
+
+Even though there is reciprocity (@deva[व्यतिहार]), the nature of the action — movement or violence — blocks @deva[आत्मनेपद].
+"""
+
+standard = """
+Exception to @ref[1.3.14]: verbs of @deva[गति] (motion) or @deva[हिंसा] (injury) do not take @deva[आत्मनेपद] in @deva[व्यतिहार] (reciprocal action). They retain @deva[परस्मैपद].
+
+**Examples:**
+- @deva[व्यतिगच्छन्ति] "they go against each other"
+- @deva[व्यतिहिंसन्ति] "they injure each other"
+- @deva[व्यतिघ्नन्ति] "they strike each other"
+
+**@deva[वार्त्तिक] — extension to @deva[हस्]-group:** @deva[व्यतिहसन्ति] "they laugh at each other," @deva[व्यतिजल्पन्ति] "they argue," @deva[व्यतिपठन्ति] "they recite alternately."
+
+**@deva[वार्त्तिक] — exception for @deva[हृ]:** @deva[संप्रहरन्ते राजानः] "the kings fight" — @deva[हृ] in the sense of fighting takes @deva[आत्मनेपद] despite being a verb of injury.
+
+**@deva[न] continues:** The negation @deva[न] carries into @ref[1.3.16], which adds another exception for verbs meaning "to call."
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12]; @deva[कर्तरि], @deva[व्यतिहारे] from @ref[1.3.14].
+
+@deva[न गतिहिंसार्थेभ्यः] — @deva[आत्मनेपद] is not used after verbs of motion or injury in @deva[व्यतिहार].
+
+**Semantic exception:** @ref[1.3.14] assigns @deva[आत्मनेपद] for all reciprocal action. This rule carves out two semantic categories — @deva[गति] and @deva[हिंसा] — and returns them to @deva[परस्मैपद].
+
+**Why these two?** Motion and injury are inherently directed outward — the fruit of going or striking does not return to the agent in the same way that cooking for each other does. The @deva[आत्मनेपद] principle (fruit accrues to agent) is weaker here.
+
+**@deva[वार्त्तिक] extensions:**
+1. The @deva[हस्]-group (laughing, talking, reciting) is also excluded: @deva[व्यतिहसन्ति], @deva[व्यतिजल्पन्ति]
+2. Exception within the exception: @deva[हृ] "to fight" (@deva[संप्रहरन्ते राजानः]) takes @deva[आत्मनेपद] — here @deva[हृ] does not mean simple "carrying" (motion) but "combat," where reciprocity strongly implies self-interest
+
+**The @deva[न] carries forward:** @ref[1.3.16] reads @deva[न] from this rule and adds verbs meaning "to call" (@deva[शब्दकर्मन्]) to the exception.
+
+**Micro-structure of @ref[1.3.14]–@ref[1.3.16]:**
+- @ref[1.3.14]: @deva[व्यतिहार] → @deva[आत्मनेपद] (general rule)
+- @ref[1.3.15] (this): motion/injury → NOT @deva[आत्मनेपद] (exception)
+- @ref[1.3.16]: "calling" → NOT @deva[आत्मनेपद] (further exception)
+"""

@@ -1,0 +1,35 @@
+id = "1.1.32"
+numericId = "11032"
+
+[en]
+simple = """
+Before the nominative plural ending (@deva[जस्]), @deva[द्वन्द्व] compounds containing @deva[सर्वनाम] words are optionally treated as pronominal. This is a partial relaxation of @ref[1.1.31], which otherwise blocks pronominal declension entirely in @deva[द्वन्द्व] compounds.
+
+**Example:** @deva[वर्णाश्रमेतर] "castes, orders, and others" — nominative plural can be either @deva[वर्णाश्रमेतराः] (regular) or @deva[वर्णाश्रमेतरे] (pronominal). Both are correct.
+
+The option exists only in the nominative plural. Other cases follow @ref[1.1.31] and decline regularly.
+"""
+
+standard = """
+Proviso to @ref[1.1.31]: before @deva[जस्] (nom. pl.), @deva[सर्वादि] words in @deva[द्वन्द्व] are optionally @deva[सर्वनाम]. When treated as @deva[सर्वनाम], @deva[जस्] is replaced by @deva[शी] (pronominal @deva[ए]-ending).
+
+**Option:** @deva[वर्णाश्रमेतराः] (with @deva[जस्]) ~ @deva[वर्णाश्रमेतरे] (with @deva[शी]).
+
+**Scope:** This @deva[विभाषा] governs @ref[1.1.33]–@ref[1.1.36] as well — those rules extend the nom. pl. option to additional word classes.
+
+**Exception:** Words with @deva[अकच्] (@ref[5.3.71]) do not get the option: @deva[कतरकतमकाः] — regular only.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सर्वनामानि] from @ref[1.1.27]; @deva[द्वन्द्वे] from @ref[1.1.31].
+
+@deva[विभाषा जसि] — optional @deva[सर्वनाम] status before @deva[जस्] for @deva[सर्वादि] words in @deva[द्वन्द्व].
+
+**Mechanism:** When the option is exercised, @deva[जस्] is replaced by @deva[शी] (the pronominal nom. pl. ending): @deva[वर्णाश्रमेतरे]. When not exercised, @deva[जस्] remains: @deva[वर्णाश्रमेतराः].
+
+**@deva[अधिकार] scope:** This @deva[विभाषा] extends through @ref[1.1.33]–@ref[1.1.36]. Each of those rules adds more words to the nom. pl. option.
+
+**No option with @deva[अकच्]:** @deva[अकच्]-affixed forms (@ref[5.3.71]) — like @deva[कतरक], @deva[कतमक] — are excluded from the option. @deva[कतरकतमकाः] (pl.) only.
+
+**@deva[प्राप्तविभाषा] vs. @deva[अप्राप्तविभाषा]:** For words already in the @deva[सर्वादि] list (like @deva[इतर]), this is @deva[प्राप्तविभाषा] — the option modifies an already-applicable @deva[सर्वनाम] status. For words newly added by @ref[1.1.33] (like @deva[प्रथम]), it is @deva[अप्राप्तविभाषा] — the option grants @deva[सर्वनाम] status that would not otherwise apply.
+"""

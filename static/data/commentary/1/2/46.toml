@@ -1,0 +1,48 @@
+id = "1.2.46"
+numericId = "12046"
+
+[en]
+simple = """
+Words formed with @deva[कृत्] affixes (which derive nouns from verbal roots), @deva[तद्धित] affixes (which derive new nouns from existing nouns), or by @deva[समास] (compounding) are also @deva[प्रातिपदिक] (nominal stems). This extends the definition from @ref[1.2.45].
+
+**@deva[कृत्] example:** @deva[कृ] "to do" + @deva[ण्वुल्] → @deva[कारक] "doer" — a noun derived from a root, now a stem that takes case endings
+
+**@deva[तद्धित] example:** @deva[उपगु] (a name) + @deva[अण्] → @deva[औपगव] "son of Upagu"
+
+**@deva[समास] example:** @deva[राज्ञः पुरुषः] "king's man" → @deva[राजपुरुष] — the compound itself is a stem
+"""
+
+standard = """
+Forms ending in @deva[कृत्] or @deva[तद्धित] affixes, and forms created by @deva[समास], are also @deva[प्रातिपदिक]. This extends @ref[1.2.45].
+
+**Why needed?** @ref[1.2.45] said "not an affix" — but @deva[कृत्] and @deva[तद्धित] forms end in affixes. Without this rule, @deva[कारकः] (ending in @deva[ण्वुल्]) would not be @deva[प्रातिपदिक] and could not receive @deva[सुप्] endings.
+
+**@deva[कृत्]** (primary affixes, by @ref[3.1.93] @deva[कृदतिङ्]):
+- @deva[कृ] + @deva[ण्वुल्] → @deva[कारक] "doer"
+- @deva[कृ] + @deva[तृच्] → @deva[कर्तृ] "agent" (nom. @deva[कर्ता])
+
+**@deva[तद्धित]** (secondary affixes, by @ref[4.1.76]):
+- @deva[उपगु] + @deva[अण्] → @deva[औपगव] "son of Upagu"
+
+**@deva[समास]** (compounds):
+- @deva[राज्ञः पुरुषः] → @deva[राजपुरुषः] "king's man"
+- @deva[नीलम् उत्पलम्] → @deva[नीलोत्पलम्] "blue lotus"
+"""
+
+advanced = """
+@deva[कृत्तद्धितसमासाश्च] — @deva[कृत्]-ending, @deva[तद्धित]-ending, and compound forms are also @deva[प्रातिपदिक].
+
+**Complementing @ref[1.2.45]:** That rule defined @deva[प्रातिपदिक] as "meaningful, not root, not affix." This rule handles the apparent contradiction: @deva[कृत्]/@deva[तद्धित] forms end in affixes, yet they function as nominal stems. The @deva[च] ("also") indicates these are additional to the definition of @ref[1.2.45], not replacements.
+
+**Complete @deva[प्रातिपदिक] definition (combining both rules):**
+1. Meaningful form, not @deva[धातु], not @deva[प्रत्यय] (by @ref[1.2.45])
+2. @deva[कृत्]-derived form (by this rule)
+3. @deva[तद्धित]-derived form (by this rule)
+4. Compound (@deva[समास]) (by this rule)
+
+**@deva[कृत्] scope:** @ref[3.1.93] defines @deva[कृत्] as any affix that is not @deva[तिङ्] (finite verb ending) and attaches to a @deva[धातु]. Includes: @deva[ण्वुल्], @deva[तृच्], @deva[क्त], @deva[क्तवतु], @deva[अनीयर्], @deva[तव्यत्], etc.
+
+**@deva[समास] scope:** All six compound types — @deva[तत्पुरुष], @deva[कर्मधारय], @deva[द्वन्द्व], @deva[बहुव्रीहि], @deva[अव्ययीभाव], @deva[द्विगु] — produce @deva[प्रातिपदिक]s that then receive @deva[सुप्] by @ref[4.1.1].
+
+**Why this matters:** Without this rule, derived and compound forms could not enter the nominal inflection system. Every @deva[कृत्]/@deva[तद्धित]/@deva[समास] form needs @deva[प्रातिपदिक] status to receive case endings.
+"""

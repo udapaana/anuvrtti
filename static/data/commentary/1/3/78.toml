@@ -1,0 +1,52 @@
+id = "1.3.78"
+numericId = "13078"
+
+[en]
+simple = """
+All verbs not covered by the preceding rules (@ref[1.3.12]–@ref[1.3.77]) take @deva[परस्मैपद] when used in the active voice (when the subject is the agent).
+
+**Examples:**
+- @deva[याति] "he goes"
+- @deva[वाति] "it blows"
+- @deva[पचति] "he cooks"
+- @deva[गच्छति] "he goes"
+- @deva[पठति] "he reads"
+
+In the passive voice, all verbs take @deva[आत्मनेपद]: @deva[पच्यते] "it is cooked," @deva[गम्यते] "it is gone to."
+
+This is the default rule — the "catch-all" that assigns @deva[परस्मैपद] to every verb not specifically given @deva[आत्मनेपद] by a prior rule.
+"""
+
+standard = """
+For all remaining verbs (@deva[शेष]) — those not covered by @ref[1.3.12]–@ref[1.3.77] — @deva[परस्मैपद] is used when denoting the @deva[कर्ता] (agent) in active voice.
+
+**Examples:** @deva[याति], @deva[वाति], @deva[पचति], @deva[गच्छति], @deva[पठति].
+
+**Active vs. passive:**
+- Active (@deva[कर्तरि]) → @deva[परस्मैपद]: @deva[पचति] "he cooks"
+- Passive (@deva[कर्मणि]) → @deva[आत्मनेपद]: @deva[पच्यते] "it is cooked" (by @ref[1.3.13])
+- Reflexive (@deva[कर्मकर्तरि]) → @deva[आत्मनेपद]: @deva[पच्यते ओदनः स्वयमेव] "the food cooks by itself"
+
+**Rule type — @deva[शेष] (residual default):** This is the default @deva[पद] assignment. @ref[1.3.12] (always @deva[आत्मनेपद]), @ref[1.3.72] (@deva[उभयपदिन्] with @deva[स्वार्थ]), and @ref[1.3.78] (this: all others @deva[परस्मैपद]) together classify every verb.
+
+**@deva[कर्तरि] continues:** The word @deva[कर्तरि] "in active voice" continues from @ref[1.3.13]/@ref[1.3.14]. @deva[परस्मैपद] applies only when the verb denotes the agent; passive/reflexive constructions always use @deva[आत्मनेपद].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्तरि] from @ref[1.3.13].
+
+@deva[शेषात् कर्तरि परस्मैपदम्] — for remaining verbs, @deva[परस्मैपद] in active voice.
+
+**The @deva[पद]-assignment system complete:**
+1. @ref[1.3.12]: @deva[अनुदात्तेत्]/@deva[ङित्] → always @deva[आत्मनेपदिन्]
+2. @ref[1.3.13]: @deva[भाव]/@deva[कर्मन्] → @deva[आत्मनेपद] (passive/reflexive)
+3. @ref[1.3.17]–@ref[1.3.71]: specific prefix + root + meaning overrides
+4. @ref[1.3.72]–@ref[1.3.77]: @deva[स्वरितेत्]/@deva[ञित्] with @deva[स्वार्थ] condition (@deva[उभयपदिन्])
+5. @ref[1.3.78] (this): everything else → @deva[परस्मैपदिन्]
+
+**@deva[शेष] = residual:** @deva[शेष] means "what remains." After all specific rules have been applied, whatever is left defaults to @deva[परस्मैपद]. This ensures complete coverage — no verb is left without a @deva[पद] assignment.
+
+**@deva[कर्तरि] restriction:** @deva[परस्मैपद] applies only in active voice (@deva[कर्तरि]). Even @deva[परस्मैपदिन्] roots take @deva[आत्मनेपद] in passive by @ref[1.3.13]: @deva[पच्यते], @deva[गम्यते].
+
+**Transition:** @ref[1.3.79]–@ref[1.3.93] provide exceptions and refinements to the general system — specific @deva[परस्मैपद] overrides and Vedic optionalities.
+"""

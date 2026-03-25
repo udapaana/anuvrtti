@@ -1,0 +1,39 @@
+id = "1.1.22"
+numericId = "11022"
+
+[en]
+simple = """
+The affixes @deva[तरप्] and @deva[तमप्] receive the technical name @deva[घ]. The @deva[प्] in each is just a grammatical marker — the actual affixes are @deva[तर] (comparative: "more") and @deva[तम] (superlative: "most").
+
+The @deva[घ] label matters because other rules check for it. When a @deva[घ] affix follows, certain vowel changes happen to the base word.
+
+**Example:** @deva[कुमारी] "girl" + @deva[तर] → @deva[कुमारितरा] "more girlish" — the long @deva[ई] of @deva[कुमारी] shortens to @deva[इ] before a @deva[घ] affix (by @ref[6.3.43]).
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] assigns the name @deva[घ] to @deva[तरप्] (comparative) and @deva[तमप्] (superlative). The @deva[प्] is @deva[इत्]; the operative affixes are @deva[तर] and @deva[तम].
+
+**Examples:**
+- @deva[कुमारी] + @deva[तर] → @deva[कुमारितरा] "more girlish"
+- @deva[कुमारी] + @deva[तम] → @deva[कुमारितमा] "most girlish"
+- @deva[पटु] + @deva[तर] → @deva[पटुतरः] "more clever"
+
+**Effect of @deva[घ] designation:** @ref[6.3.43] (@deva[घे नित्यम्]) shortens long feminine vowels before @deva[घ] affixes: @deva[ई] → @deva[इ].
+
+**Rule type:** @deva[संज्ञा] — the label @deva[घ] has no inherent meaning; it exists purely as a trigger for other rules.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is an independent @deva[संज्ञासूत्र].
+
+@deva[तरप्तमपौ घः] — @deva[तरप्] and @deva[तमप्] are @deva[घ]. The @deva[प्] is @deva[इत्] by @ref[1.3.3]; the operative affixes are @deva[तर] and @deva[तम].
+
+**Rules that reference @deva[घ]:**
+- @ref[6.3.43] (@deva[घे नित्यम्]): long feminine vowels shorten before @deva[घ] — @deva[कुमारी] + @deva[तर] → @deva[कुमारितरा]
+- @ref[5.3.55]–@ref[5.3.57]: prescribe @deva[तरप्]/@deva[तमप्] after certain bases
+- @ref[1.1.33] (@deva[प्रगृह्यम्] exception): interacts with @deva[घ] in compound contexts
+
+**Why a separate @deva[संज्ञा]?** @deva[पाणिनि] could have named the affixes directly in @ref[6.3.43]. The @deva[घ] label provides an abstraction — if additional affixes were later identified as behaving like @deva[तरप्]/@deva[तमप्], they could receive the @deva[घ] designation without modifying the dependent rules.
+
+**@deva[तरप्] vs. @deva[तमप्] in usage:** @deva[तरप्] compares two items (@deva[द्वयोरेकस्य विशेषणम्]); @deva[तमप्] selects from many (@deva[बहूनामेकस्य]). Both are @deva[तद्धित] affixes added to @deva[प्रातिपदिक]s.
+"""

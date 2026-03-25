@@ -1,0 +1,45 @@
+id = "2.3.15"
+numericId = "23015"
+
+[en]
+simple = """
+An abstract noun (a word denoting an action or state, formed with suffixes like @deva[घञ्]) takes the @deva[चतुर्थी] (dative) when it carries the meaning of an infinitive of purpose.
+
+**Examples:**
+- @deva[यागाय व्रजति] "he goes for sacrifice" = @deva[यष्टुं व्रजति] "he goes to sacrifice" — @deva[याग] (sacrifice, an abstract noun from @deva[यज्]) takes the dative because it expresses the same purpose as the infinitive @deva[यष्टुम्]
+- @deva[त्यागाय व्रजति] "he goes for renunciation" = @deva[त्यक्तुं व्रजति] "he goes to renounce"
+- @deva[भूतये व्रजति] "he goes for prosperity" = @deva[भवितुं व्रजति]
+
+The abstract noun replaces the infinitive but keeps the dative of purpose.
+"""
+
+standard = """
+@deva[तुमर्थाच्च भाववचनात्] — a word ending in a @deva[भाववचन] (action-denoting) suffix takes @deva[चतुर्थी] when it has the meaning of a @deva[तुमुन्] (infinitive of purpose).
+
+**Rule type — @deva[विधि]:** Extends @deva[चतुर्थी] from the suppressed-infinitive context of @ref[2.3.14] to abstract nouns that substitute for the infinitive.
+
+**Examples:**
+- @deva[यागाय व्रजति] = @deva[यष्टुं व्रजति] "he goes to sacrifice"
+- @deva[त्यागाय व्रजति] = @deva[त्यक्तुं व्रजति] "he goes to renounce"
+- @deva[भूतये व्रजति] = @deva[भवितुं व्रजति] "he goes for prosperity"
+
+**@deva[तुमर्थ] condition:** The abstract noun must convey the same purposive sense as an infinitive in @deva[तुम्]. If the abstract noun is used in a non-purposive sense, this rule does not apply.
+
+**@deva[भाववचन] suffixes:** These include @deva[घञ्] (@deva[याग] from @deva[यज्]), @deva[क्तिन्] (@deva[भूति] from @deva[भू]), and other action-denoting suffixes listed under @ref[3.3.11]ff.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[चतुर्थी] from @ref[2.3.13]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[तुमर्थाच्च भाववचनात्] — a @deva[प्रातिपदिक] ending in a @deva[भाववचन] affix takes @deva[चतुर्थी] when it has @deva[तुमर्थ] (purposive/infinitive meaning).
+
+**@deva[तुमर्थ] — infinitive equivalence:** The abstract noun must function as a semantic substitute for a @deva[तुमुन्]-infinitive. @deva[यागाय व्रजति] is equivalent to @deva[यष्टुं व्रजति] — the @deva[भाववचन] noun @deva[याग] replaces the infinitive @deva[यष्टुम्] while preserving the purposive sense.
+
+**@deva[भाववचन] — action-denoting suffixes:** Per @ref[3.3.11]ff., these include @deva[घञ्] (@deva[याग], @deva[त्याग]), @deva[क्तिन्] (@deva[भूति], @deva[मति]), @deva[ल्युट्] (@deva[भवनम्]), and others. The key criterion is that the suffix denotes the action/state itself (@deva[भाव]), not the agent or result.
+
+**Relationship to @ref[2.3.14]:** @ref[2.3.14] handles suppressed infinitives where the object takes @deva[चतुर्थी]. This rule handles cases where the infinitive itself is replaced by an abstract noun — the abstract noun (not its object) takes @deva[चतुर्थी]. The two rules together cover all purposive @deva[चतुर्थी] constructions beyond core @deva[सम्प्रदान].
+
+**Why @deva[च] in the @[sūtra]?** The @deva[च] joins this rule to the preceding @ref[2.3.14], indicating that @deva[चतुर्थी] applies here "also" — in addition to the suppressed-infinitive case.
+
+**Scope:** Only when the abstract noun expresses purpose. @deva[यागः कृतः] "the sacrifice was performed" — @deva[याग] here is @deva[कर्मन्] (object) of @deva[कृ], not a purposive expression, so @deva[प्रथमा] applies.
+"""

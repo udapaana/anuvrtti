@@ -1,0 +1,52 @@
+id = "1.4.22"
+numericId = "14022"
+
+[en]
+simple = """
+@deva[द्विवचन] (dual) affixes denote exactly two. @deva[एकवचन] (singular) affixes denote one.
+
+**Examples:**
+- @deva[ब्राह्मणौ पचतः] "the two Brahmins cook" (dual)
+- @deva[ब्राह्मणः पचति] "the Brahmin cooks" (singular)
+
+Together with the previous rule (@ref[1.4.21] — plural for more than two), this completes the three-way number system of Sanskrit: one, two, and many.
+"""
+
+standard = """
+@deva[द्विवचन] (dual) expresses duality; @deva[एकवचन] (singular) expresses unity — @deva[द्वौ द्विवचनम्]; @deva[एकश्चैकवचनम्].
+
+**Rule type — @deva[संज्ञा]/@deva[विधि]:** Completes the number assignment system.
+
+**Examples:**
+- @deva[ब्राह्मणौ पचतः] "the two Brahmins cook" (dual)
+- @deva[ब्राह्मणः पचति] "the Brahmin cooks" (singular)
+
+**Complete number system:**
+
+| Number | Condition | Example |
+|--------|-----------|---------|
+| @deva[एकवचन] | One entity | @deva[ब्राह्मणः पचति] |
+| @deva[द्विवचन] | Two entities | @deva[ब्राह्मणौ पचतः] |
+| @deva[बहुवचन] | More than two | @deva[ब्राह्मणाः पचन्ति] |
+
+**Dual's uniqueness:** Sanskrit is one of few languages that grammatically marks the exact count of two. The dual appears in both nominal and verbal paradigms.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[वचन] context from @ref[1.4.21].
+
+@deva[द्वयोर्द्विवचनम्] and @deva[एकश्चैकवचनम्] — dual for two, singular for one.
+
+**Completing the @deva[वचन] system:** @ref[1.4.21]–@ref[1.4.22] together assign number categories exhaustively:
+- @ref[1.4.21]: @deva[बहु] → @deva[बहुवचन]
+- @ref[1.4.22] (this): @deva[द्वि] → @deva[द्विवचन]; @deva[एक] → @deva[एकवचन]
+
+**Affix paradigm mapping:** Each @deva[वचन] selects from the three columns of the @deva[सुप्]/@deva[तिङ्] grid:
+- @deva[एकवचन]: 1st column (@deva[सु], @deva[अम्], @deva[टा]... / @deva[तिप्], @deva[सिप्], @deva[मिप्]...)
+- @deva[द्विवचन]: 2nd column (@deva[औ], @deva[औट्], @deva[भ्याम्]... / @deva[तस्], @deva[थस्], @deva[वस्]...)
+- @deva[बहुवचन]: 3rd column (@deva[जस्], @deva[शस्], @deva[भिस्]... / @deva[झि], @deva[थ], @deva[मस्]...)
+
+**@deva[वार्त्तिक] — @deva[बहुवचन] for honorific:** @deva[बहुवचन] can be used for a single respected person (honorific plural): @deva[भवन्तः आगच्छन्तु] "please come" (to one person).
+
+**Transition:** @ref[1.4.23] marks the beginning of the @deva[कारक] @deva[अधिकार] — the core semantic role system of the grammar.
+"""

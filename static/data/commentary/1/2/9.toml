@@ -1,0 +1,49 @@
+id = "1.2.9"
+numericId = "12009"
+
+[en]
+simple = """
+After roots that end in an @deva[इक्] vowel (@deva[इ], @deva[उ], @deva[ऋ], or @deva[ऌ]), the desiderative affix @deva[सन्] is treated as @deva[कित्] — but only when no @deva[इट्] augment has been added (that is, when @deva[सन्] begins with a @deva[झल्] consonant). @deva[कित्] blocks @deva[गुण] (vowel strengthening).
+
+**Without @deva[इट्] — no @deva[गुण]:**
+- @deva[जि] "to conquer" → @deva[जिगीषति] "he wishes to conquer"
+- @deva[भू] "to become" → @deva[बुभूषति] "he wishes to become"
+- @deva[कृ] "to do" → @deva[चिकीर्षति] "he wishes to do"
+
+**With @deva[इट्] — @deva[गुण] applies:** @deva[स्मि] "to smile" → @deva[सिस्मयिषति] "he wishes to smile" — @deva[इट्] is added, so @deva[सन्] is no longer @deva[झलादि], and @deva[गुण] applies.
+"""
+
+standard = """
+After @deva[इक्]-final roots, @deva[झलादि] @deva[सन्] (desiderative @deva[सन्] not preceded by @deva[इट्]) is @deva[कित्].
+
+**@deva[झलादि] condition:** @deva[सन्] must begin with @deva[झल्] (a non-nasal, non-semivowel consonant). When @deva[इट्] is inserted, the affix effectively begins with @deva[इ], not @deva[स्] — so this rule does not apply.
+
+**@deva[इक्]-final roots — @deva[कित्], no @deva[गुण]:**
+- @deva[जि] → @deva[जिगीषति] "wishes to conquer"
+- @deva[कृ] → @deva[चिकीर्षति] "wishes to do"
+- @deva[भू] → @deva[बुभूषति] "wishes to become"
+- @deva[तृ] → @deva[तितीर्षति] "wishes to cross"
+
+**With @deva[इट्] — not @deva[कित्], @deva[गुण] applies:**
+- @deva[स्मि] → @deva[सिस्मयिषति] "wishes to smile"
+
+**Non-@deva[इक्]-final roots — not covered, @deva[गुण] applies:**
+- @deva[पा] → @deva[पिपासति] "wishes to drink"
+- @deva[स्था] → @deva[तिष्ठासति] "wishes to stand"
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[सन्] from @ref[1.2.8].
+
+@deva[इक्श्चात्मनेपदे कर्त्रभिप्राये क्रियाफले] — wait, that's @ref[1.3.72]. The actual rule: @deva[इकश्च] — after @deva[इक्]-final roots, @deva[झलादि] @deva[सन्] is @deva[कित्].
+
+**This generalizes what @ref[1.2.8] did for specific roots.** @ref[1.2.8] listed six individual roots; this rule covers all @deva[इक्]-final roots as a class.
+
+**Why @deva[झलादि]?** The @deva[झलादि] condition (from context) ensures the rule applies only when @deva[सन्] directly follows the root consonant — i.e., when no @deva[इट्] intervenes. @deva[इट्] would change the initial of the affix from @deva[स्] (a @deva[झल्]) to @deva[इ] (a vowel).
+
+**Application to causative desiderative:** @deva[ज्ञप्] + @deva[णिच्] + @deva[सन्]: @deva[सन्] is @deva[कित्] → no @deva[गुण]. @ref[6.4.51] elides @deva[णिच्], @ref[7.4.55] applies → @deva[ज्ञीप्सति] "he wishes to inform."
+
+**Why not just rely on @ref[6.4.16]?** @ref[6.4.16] lengthens the vowel before @deva[झलादि] @deva[सन्], which could appear to make @deva[गुण] irrelevant. But without the @deva[कित्] designation, @deva[णिच्]-deletion by @ref[6.4.51] would be blocked. The @deva[कित्] treatment has effects beyond just blocking @deva[गुण].
+
+**Scope:** All @deva[इक्]-final roots — @deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ]-final. This includes roots like @deva[चि], @deva[नी], @deva[भू], @deva[कृ], @deva[तृ], @deva[स्तृ], etc.
+"""

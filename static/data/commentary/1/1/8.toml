@@ -1,0 +1,43 @@
+id = "1.1.8"
+numericId = "11008"
+
+[en]
+simple = """
+A sound pronounced through both the mouth and the nose simultaneously is called @deva[अनुनासिक] (nasalized). This includes nasalized vowels (like @deva[अँ], @deva[आँ]) and the five class-nasal consonants (@deva[ङ], @deva[ञ], @deva[ण], @deva[न], @deva[म]).
+
+The distinction matters because @deva[अनुनासिक] sounds behave differently from @deva[अनुस्वार] (the pure nasal @deva[ं]), which is pronounced through the nose alone without mouth involvement. Several sandhi rules depend on knowing whether a sound is @deva[अनुनासिक] or not.
+
+**Example:** @deva[म] is @deva[अनुनासिक] — air passes through both mouth (lips) and nose. @deva[ं] (@deva[अनुस्वार]) is not — air passes through the nose only.
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] defines @deva[अनुनासिक]: a sound uttered through both @deva[मुख] (mouth) and @deva[नासिका] (nose).
+
+**@deva[अनुनासिक] vowels:** Any vowel can be nasalized — @deva[अँ], @deva[आँ], @deva[इँ], etc. Nasalized vowels appear in Vedic recitation and in certain sandhi contexts.
+
+**@deva[अनुनासिक] consonants:**
+- @deva[ङ] — @deva[कण्ठ] (throat) + nose
+- @deva[ञ] — @deva[तालु] (palate) + nose
+- @deva[ण] — @deva[मूर्धा] (roof) + nose
+- @deva[न] — @deva[दन्त] (teeth) + nose
+- @deva[म] — @deva[ओष्ठ] (lips) + nose
+- Semivowels @deva[य], @deva[व], @deva[ल] can also be nasalized
+
+**Why @deva[मुख] is specified:** Excludes @deva[अनुस्वार], which passes through the nose alone.
+**Why @deva[नासिका] is specified:** Excludes oral stops like @deva[क], @deva[च], @deva[ट], @deva[त], @deva[प], which pass through the mouth alone.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this begins the phonological feature definitions.
+
+@deva[मुखनासिकावचनोऽनुनासिकः] — sounds uttered through both @deva[मुख] (mouth) and @deva[नासिका] (nose). The @deva[द्वन्द्व] compound @deva[मुखनासिका] indicates simultaneous use of both channels.
+
+**@deva[अनुनासिक] vs. @deva[अनुस्वार]:** This distinction is critical for several rules:
+- @ref[8.4.45] @deva[यरोऽनुनासिकेऽनुनासिको वा] — optional nasalization of @deva[यर्] before @deva[अनुनासिक]
+- @ref[6.1.170] — @deva[अनुनासिक] treatment in certain @deva[प्रत्याहार]s
+- @ref[8.3.2] @deva[अत्रानुनासिकः पूर्वस्य तु वा] — optional nasalization in specific contexts
+
+**Vedic usage:** Nasalized vowels are more common in Vedic recitation. Example: @deva[अभ्र आँ अपः] (RV V.48.1), where @deva[आँ] is a nasalized @deva[आ].
+
+**@deva[वार्त्तिक]:** The @deva[सिद्धान्तकौमुदी] notes that @deva[अनुनासिक] is an @deva[उच्चारणप्रयत्न] (articulatory effort) feature, not a @deva[स्थान] (place) feature. This means nasality is independent of place of articulation — any sound from any @deva[स्थान] can be @deva[अनुनासिक] if produced with nasal airflow.
+"""

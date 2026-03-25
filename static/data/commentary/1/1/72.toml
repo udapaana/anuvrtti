@@ -1,0 +1,50 @@
+id = "1.1.72"
+numericId = "11072"
+
+[en]
+simple = """
+When a rule says something about X, it also applies to words that end in X. This is called the @deva[तदन्त] principle — "that-ending."
+
+**Example:** A rule says "after a vowel, add @deva[यत्]." This means not just after a bare vowel like @deva[इ], but also after any root that ends in a vowel, like @deva[चि] "to gather." So @deva[चि] + @deva[यत्] → @deva[चेयम्] "to be gathered."
+
+Without this principle, rules would apply only to isolated sounds, never to the words containing them. The grammar would need separate rules for every word — an impossible task.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] establishes the @deva[तदन्तविधि]: when a rule prescribes an operation with respect to X, the operation also applies to items ending in X.
+
+**Example 1:** @ref[3.1.97] — @deva[यत्] comes after vowels:
+- After bare @deva[इ]: @deva[इ] + @deva[यत्] → @deva[एयम्]
+- After vowel-ending @deva[चि]: @deva[चि] + @deva[यत्] → @deva[चेयम्] "to be gathered"
+
+**Example 2:** @ref[3.3.56] (@deva[एरच्]) — @deva[अच्] comes after @deva[इ]:
+- After bare @deva[इ]: @deva[इ] + @deva[अच्] → @deva[अयः]
+- After @deva[इ]-ending @deva[चि]: @deva[चि] + @deva[अच्] → @deva[चयः] "gathering"
+
+**Scope — @deva[विधि] only:** This principle applies to operations (@deva[विधि]), not to definitions (@deva[संज्ञा]) or prohibitions (@deva[निषेध]). When @ref[1.1.1] defines @deva[वृद्धि] as @deva[आ], @deva[ऐ], @deva[औ], it does not extend to "words ending in @deva[आ]."
+
+**Why this is needed:** Rules are stated in terms of individual sounds or morphemes. Without @deva[तदन्तविधि], a rule about "after @deva[अ]" would never apply to any actual word, since words are not bare vowels.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent @deva[परिभाषा].
+
+@deva[येन विधिस्तदन्तस्य] — a rule (@deva[विधि]) stated with reference to X also applies to what ends in X (@deva[तदन्त]).
+
+**The @deva[तदन्त] extension:** When X is mentioned in a rule's condition, the rule applies to any form whose final element is X. This bridges the gap between the grammar's atomic descriptions and the composite forms of actual language.
+
+**Restriction to @deva[विधि]:**
+- @deva[विधि] (operations): @deva[तदन्त] applies ✓
+- @deva[संज्ञा] (definitions): @deva[तदन्त] does not apply ✗
+- @deva[निषेध] (prohibitions): @deva[तदन्त] does not apply ✗
+
+**Example:** @ref[3.1.97] — @deva[यत्] after vowels (@deva[विधि]):
+- @deva[चि] ends in @deva[इ] → @deva[तदन्त] → rule applies → @deva[चेयम्]
+
+**Counterexample:** @ref[1.1.1] — @deva[वृद्धिरादैच्] (@deva[संज्ञा]):
+- @deva[आ] is @deva[वृद्धि] → but words ending in @deva[आ] are not @deva[वृद्धि] (no @deva[तदन्त] for @deva[संज्ञा])
+
+**@deva[वार्त्तिक]:** @deva[कात्यायन] specifies @deva[विधौ नियमः] — the @deva[तदन्त] principle is restricted to @deva[विधि]-@[sūtras]. This prevents absurd extensions like "any word ending in @deva[आ] is called @deva[वृद्धि]."
+
+**Interaction with @ref[1.1.69]:** @ref[1.1.69] extends sounds to their @deva[सवर्ण]. This rule extends sounds to words ending in them. Both are scope-extension principles, but they operate on different axes: @ref[1.1.69] broadens the sound class, this rule broadens the applicability to containing forms.
+"""

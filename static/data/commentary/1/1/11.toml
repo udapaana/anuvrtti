@@ -1,0 +1,38 @@
+id = "1.1.11"
+numericId = "11011"
+
+[en]
+simple = """
+Sanskrit normally merges vowels at word boundaries — @deva[सन्धि]. But dual case endings in @deva[ई], @deva[ऊ], or @deva[ए] are exempt. They are called @deva[प्रगृह्य]: the vowel stays as it is, and the following vowel remains separate.
+
+This matters constantly in Sanskrit prose. Whenever two dual-form words appear before a vowel-initial word, you need to know that the dual ending does not merge.
+
+**Example:** @deva[कवी इमौ] "these two poets" — the @deva[ई] stays, producing a hiatus. Without this rule, @deva[सन्धि] would merge them into *@deva[कवीमौ]. Similarly: @deva[वायू इति] "two winds" (not *@deva[वायूति]), @deva[माले इति] "these two garlands."
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] defines @deva[प्रगृह्य]: dual case endings in @deva[ई], @deva[ऊ], or @deva[ए] are exempt from @deva[सन्धि]. The exemption is enforced by @ref[6.1.125] (@deva[प्लुतप्रगृह्या अचि नित्यम्]).
+
+**Examples across the three vowels:**
+- @deva[ई]: @deva[कवी इमौ] "these two poets"
+- @deva[ऊ]: @deva[वायू इति] "two winds"
+- @deva[ए]: @deva[पचेते इति] "they two cook," @deva[पचेथे इति] "you two cook"
+
+**Why dual only?** Singular and plural endings undergo normal @deva[सन्धि]. @deva[कुमारी] + @deva[अत्र] = @deva[कुमार्यत्र] by @ref[6.1.77]. @deva[वृक्षौ] + @deva[अत्र] = @deva[वृक्षावत्र] by @ref[6.1.78].
+
+**Why these three vowels?** Duals ending in @deva[औ] (like @deva[वृक्षौ]) are not @deva[प्रगृह्य] — they follow the normal @deva[औ] → @deva[आव्] sandhi pattern.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this begins the @deva[प्रगृह्य] series (@ref[1.1.11]–@ref[1.1.19]).
+
+@deva[ईदूदेद्द्विवचनं प्रगृह्यम्] — dual case endings in @deva[ई], @deva[ऊ], or @deva[ए] are @deva[प्रगृह्य]. The compound @deva[ईदूदेत्] uses @deva[इत्]-@deva[संज्ञा] shorthand: @deva[ईत्], @deva[ऊत्], @deva[एत्] — sounds that are @deva[ई], @deva[ऊ], @deva[ए] respectively. The @deva[त्] is the citation marker, not part of the sound.
+
+**Enforcement mechanism:** @ref[6.1.125] (@deva[प्लुतप्रगृह्या अचि नित्यम्]) blocks @deva[सन्धि] for all @deva[प्रगृह्य] vowels before any @deva[अच्]. This rule defines which vowels qualify; @ref[6.1.125] does the actual blocking.
+
+**Why not @deva[औ]-ending duals?** Forms like @deva[वृक्षौ] are deliberately excluded. They undergo @ref[6.1.78] (@deva[एचोऽयवायावः]): @deva[वृक्षौ] + @deva[अत्र] = @deva[वृक्षावत्र]. The grammar treats @deva[औ] as a diphthong that naturally resolves, unlike the monophthongs @deva[ई], @deva[ऊ], @deva[ए].
+
+**@deva[वार्त्तिक]:** @deva[मनीषा] compounds raise a question. @deva[मनी] + @deva[इव] might produce @deva[मनीव] with @deva[प्रगृह्य] blocking. The @deva[वार्त्तिक] notes this should be stated explicitly. Others argue the final element is @deva[व] (after @deva[इ]-deletion), not @deva[इव], so the issue does not arise.
+
+**Scope of the series:** This rule, along with @ref[1.1.12]–@ref[1.1.19], exhaustively defines which vowels are @deva[प्रगृह्य]. Any vowel not covered by these rules undergoes normal @deva[सन्धि].
+"""

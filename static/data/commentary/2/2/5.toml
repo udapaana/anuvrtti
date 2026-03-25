@@ -1,0 +1,45 @@
+id = "2.2.5"
+numericId = "22005"
+
+[en]
+simple = """
+A word denoting a measure of time compounds with a @deva[क्तान्त] (past participle) word to form @deva[तत्पुरुष], with the time-word placed first. The compound expresses how old something is or how long ago something happened.
+
+**Examples:**
+- @deva[मासजातः] "month-born, a month old" — @deva[मास] "month" + @deva[जात] "born"
+- @deva[संवत्सरजातः] "year-born, a year old" — @deva[संवत्सर] "year" + @deva[जात] "born"
+- @deva[द्व्यहजातः] "two-days-born, two days old"
+
+The time-word expresses how much time has elapsed since the action of the @deva[क्तान्त] — literally "born a month ago."
+"""
+
+standard = """
+@deva[कालपरिमाणवाचक] + @deva[क्तान्त] → @deva[तत्पुरुष] — @deva[कालपरिमाणिना].
+
+**Rule type — @deva[विधि]:** Compounding rule placing the time-measure word as first member.
+
+**Examples:**
+- @deva[मासजातः] "month-born" — @deva[मासो जातस्य] → @deva[मासजातः]
+- @deva[संवत्सरजातः] "year-born"
+- @deva[द्व्यहजातः] "two-days-born"
+
+**Underlying relation:** The time-word is in the genitive — @deva[मासो जातस्य] "born of a month (ago)." This rule overrides the standard genitive @deva[तत्पुरुष] of @ref[2.2.8] by specifying that the time-word comes first.
+
+**Scope:** The time-word must denote a measure (@deva[परिमाण]) — a specific duration like @deva[मास], @deva[संवत्सर], @deva[अह्न]. General time-words that are not measures (like @deva[काल] "time" itself) would not qualify.
+
+**Relation to @ref[2.1.28]–@ref[2.1.29]:** Those rules covered time-words with @deva[क्तान्त] in point-in-time and duration contexts. This rule covers the age/elapsed-time context with the time-word as first member.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[कालपरिमाणिना] — a word denoting a time-measure compounds with a @deva[क्तान्त] word as @deva[तत्पुरुष], with the time-measure word as the first member.
+
+**Genitive relationship:** The underlying @deva[विभक्ति] is @deva[षष्ठी] — @deva[मासो जातस्य] "of one born a month (ago)." Without this rule, @ref[2.2.8] would compound it as *@deva[जातमासः] (genitive-first = @deva[षष्ठ्यन्त] word first). This rule overrides that ordering, placing the time-word first.
+
+**Distinct from @ref[2.1.28]–@ref[2.1.29]:** Those @deva[द्वितीया]-@[pāda] rules covered @deva[कालवाचक] + @deva[क्तान्त] with @deva[तृतीया]/@deva[द्वितीया] case relationships (point-in-time and duration). This rule handles a different semantic relation: elapsed time since the event described by the @deva[क्तान्त], with @deva[षष्ठी] as the underlying case.
+
+**@deva[परिमाण] restriction:** The word must denote a measurable quantity of time, not time in the abstract. @deva[मास] "month," @deva[संवत्सर] "year," @deva[अह्न] "day" qualify. But @deva[काल] "time" as an abstract concept does not — it has no measurable extent.
+
+**Position in @[pāda] 2.2:** After the @deva[एकदेशिन्] rules (@ref[2.2.1]–@ref[2.2.3]) and the @deva[प्राप्त]/@deva[आपन्न] option (@ref[2.2.4]), this rule handles another case where the standard genitive @deva[तत्पुरुष] order is overridden. The theme of @ref[2.2.1]–@ref[2.2.5] is: specific words that must precede the second member, overriding @ref[2.2.8].
+"""

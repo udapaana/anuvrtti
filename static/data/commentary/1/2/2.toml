@@ -1,0 +1,48 @@
+id = "1.2.2"
+numericId = "12002"
+
+[en]
+simple = """
+After the root @deva[विज्] "to fear" or "to tremble," affixes that receive the @deva[इट्] augment (an intermediate @deva[इ] inserted between root and affix) are treated as @deva[ङित्]. This blocks @deva[गुण] (vowel strengthening) of the root vowel.
+
+Affixes that do not take @deva[इट्] are not affected — @deva[गुण] applies normally.
+
+**With @deva[इट्] — no @deva[गुण]:** @deva[उद्विज्] + @deva[तृच्] (with @deva[इट्]) → @deva[उद्विजिता] "one who will be agitated" — the @deva[इ] of @deva[विज्] stays unchanged.
+
+**Without @deva[इट्] — @deva[गुण] applies:** @deva[उद्विज्] + @deva[ल्युट्] → @deva[उद्वेजनम्] "agitation" — the @deva[इ] strengthens to @deva[ए].
+"""
+
+standard = """
+After @deva[विज्] "to fear" (@deva[तुदादि] class), affixes that begin with the @deva[इट्] augment (@deva[इडादि]) are treated as @deva[ङित्].
+
+**Condition:** The affix must actually receive @deva[इट्] (by @ref[7.2.35]). Only then is it @deva[ङित्].
+
+**With @deva[इट्] — @deva[ङित्], no @deva[गुण]:**
+- @deva[उद्विज्] + @deva[इता] → @deva[उद्विजिता] "he will be agitated"
+- @deva[उद्विज्] + @deva[इतुम्] → @deva[उद्विजितुम्] "to be agitated"
+- @deva[उद्विज्] + @deva[इतव्यम्] → @deva[उद्विजितव्यम्] "ought to be agitated"
+
+**Without @deva[इट्] — @deva[गुण] applies normally:**
+- @deva[उद्विज्] + @deva[ल्युट्] → @deva[उद्वेजनम्] "agitation"
+- @deva[उद्विज्] + @deva[अनीयर्] → @deva[उद्वेजनीयम्] "that which should cause agitation"
+
+**Scope:** This rule applies specifically to @deva[विज्], not to the entire @deva[तुदादि] class.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[ङित्] from @ref[1.2.1].
+
+@deva[विजो विज्ञीडित्] — @deva[इडादि] affixes after @deva[विज्] are @deva[ङित्].
+
+**This continues the @deva[ङित्] extension series** (@ref[1.2.1]–@ref[1.2.4]). While @ref[1.2.1] dealt with entire root classes, this rule targets a single root with a specific condition.
+
+**What are @deva[इडादि] affixes?** Affixes that receive the @deva[इट्] augment by @ref[7.2.35] (@deva[आर्धधातुकस्येड् वलादेः]). The @deva[इट्] is inserted between the root and the affix when the affix begins with @deva[वल्] (consonants other than @deva[य्]).
+
+**Examples:**
+- @deva[उद्विज्] + @deva[तृच्]: @deva[इट्] inserted → @deva[उद्विजिता] (no @deva[गुण])
+- @deva[उद्विज्] + @deva[ल्युट्]: no @deva[इट्] (begins with @deva[य्]-class) → @deva[उद्वेजनम्] (@deva[गुण] applies)
+
+**Why only @deva[इडादि]?** The @deva[इट्] augment creates a buffer between root and affix. The grammar treats this buffered configuration differently — the root vowel is protected from strengthening when the affix is mediated by @deva[इट्].
+
+**Interaction with @ref[1.2.3]:** The next rule (@ref[1.2.3]) makes this same @deva[ङित्] treatment optional for @deva[ऊर्णु], showing that the grammar can modulate between obligatory and optional application of the same principle.
+"""

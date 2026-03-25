@@ -1,0 +1,50 @@
+id = "3.1.58"
+numericId = "31058"
+
+[en]
+simple = """
+This rule says that @deva[अङ्] optionally replaces @deva[च्लि] after the following roots when @deva[परस्मैपद] endings are used:
+- @deva[जॄ] (to grow old, to stiffen)
+- @deva[स्रुच्] and @deva[स्लुच्] (to go)
+- @deva[ग्रुच्] and @deva[ग्लुच्] (to steal)
+- @deva[ग्लुञ्च्] (to go)
+- @deva[श्वि] (to grow)
+
+Examples (with @deva[अङ्] / with @deva[सिच्]):
+- @deva[जॄ]: @deva[अजरत्] / @deva[अजारीत्]
+- @deva[स्रुच्]: @deva[अस्त्रुचत्] / @deva[अस्त्रोचीत्]
+- @deva[ग्रुच्]: @deva[अग्रुचत्] / @deva[अग्रोचीत्]
+- @deva[ग्लुच्]: @deva[अग्लुचत्] / @deva[अग्लोचीत्]
+- @deva[ग्लुञ्च्]: @deva[अग्लुञ्चत्] / @deva[अग्लुञ्चीत्]
+- @deva[श्वि]: @deva[अश्वत्] / @deva[अश्वयीत्] (also @deva[अशिश्वियत्] by @ref[3.1.49])
+"""
+
+standard = """
+@deva[अङ्] optionally (@deva[विभाषा]) substitutes for @deva[च्लि] after @deva[जॄ], @deva[स्रुच्], @deva[स्लुच्], @deva[ग्रुच्], @deva[ग्लुच्], @deva[ग्लुञ्च्], and @deva[श्वि] in @deva[परस्मैपद].
+
+Alternate forms:
+- @deva[जॄ]: @deva[अजरत्] / @deva[अजारीत्]
+- @deva[स्रुच्]: @deva[अस्त्रुचत्] / @deva[अस्त्रोचीत्]
+- @deva[स्लुच्]: @deva[अस्त्लुचत्] / @deva[अस्त्लोचीत्]
+- @deva[ग्रुच्]: @deva[अग्रुचत्] / @deva[अग्रोचीत्]
+- @deva[ग्लुच्]: @deva[अग्लुचत्] / @deva[अग्लोचीत्]
+- @deva[ग्लुञ्च्]: @deva[अग्लुञ्चत्] / @deva[अग्लुञ्चीत्]
+- @deva[श्वि]: @deva[अश्वत्] / @deva[अश्वयीत्] (also @deva[चङ्]: @deva[अशिश्वियत्] per @ref[3.1.49])
+
+Both @deva[ग्लुच्] and @deva[ग्लुञ्च्] produce similar forms; the separate listing indicates distinct meanings, or (per some) ensures the nasal in @deva[ग्लुञ्च्] is never deleted.
+"""
+
+advanced = """
+@deva[अङ्] optionally applies after @deva[जॄ], @deva[स्रुच्], @deva[स्लुच्], @deva[ग्रुच्], @deva[ग्लुच्], @deva[ग्लुञ्च्], and @deva[श्वि] in @deva[परस्मैपद लुङ्].
+
+Alternate forms:
+- @deva[जॄ]: @deva[अजरत्] / @deva[अजारीत्]
+- @deva[स्रुच्]/@ deva[@deva[स्लुच्]]: @deva[अस्त्रुचत्]/@ deva[@deva[अस्त्लुचत्]] / @deva[अस्त्रोचीत्]/@ deva[@deva[अस्त्लोचीत्]]
+- @deva[ग्रुच्]/@ deva[@deva[ग्लुच्]]: @deva[अग्रुचत्]/@ deva[@deva[अग्लुचत्]] / @deva[अग्रोचीत्]/@ deva[@deva[अग्लोचीत्]]
+- @deva[ग्लुञ्च्]: @deva[अग्लुञ्चत्] / @deva[अग्लुञ्चीत्]
+- @deva[श्वि]: @deva[अश्वत्] / @deva[अश्वयीत्] (also @deva[चङ्] @deva[अशिश्वियत्] per @ref[3.1.49])
+
+Both @deva[ग्लुच्] and @deva[ग्लुञ्च्] yield similar paradigms (@deva[अग्लुचत्], @deva[अग्लुञ्चत्], @deva[अग्लञ्चोत्]). Their separate listing indicates either semantic distinction or (per alternative view) that @deva[ग्लुञ्च्]'s nasal is never deleted.
+
+@note[type=observation]: @deva[श्वि] has three aorist possibilities: @deva[अङ्] (@deva[अश्वत्]), @deva[सिच्] (@deva[अश्वयीत्]), and @deva[चङ्] (@deva[अशिश्वियत्] per @ref[3.1.49]).
+"""

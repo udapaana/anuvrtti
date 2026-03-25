@@ -1,0 +1,45 @@
+id = "2.3.11"
+numericId = "23011"
+
+[en]
+simple = """
+When the particle @deva[प्रति] means "substitute for" or "in exchange for," the governed word takes the @deva[पञ्चमी] (ablative).
+
+**Examples:**
+- @deva[अभिमन्युरर्जुनतः प्रति] "@deva[अभिमन्यु] is a substitute for @deva[अर्जुन]" — @deva[अर्जुन] takes ablative because @deva[प्रति] means "in place of"
+- @deva[माषानस्मै तिलेभ्यः प्रतियच्छति] "he gives @deva[माष]-beans to him in exchange for sesame" — @deva[तिल] takes ablative because @deva[प्रति] means "in exchange for"
+
+The ablative marks the original that is being substituted or the item being exchanged away.
+"""
+
+standard = """
+@deva[प्रति] + @deva[प्रतिनिधि]/@deva[प्रतिदान] → @deva[पञ्चमी] — @deva[प्रतिनिधिप्रतिदाने च यस्मात्].
+
+**Rule type — @deva[अपवाद]:** Overrides @ref[2.3.8] (@deva[द्वितीया]) with @deva[पञ्चमी] when @deva[प्रति] has two specific senses.
+
+**Two senses:**
+1. **@deva[प्रतिनिधि]** (substitute/representative): @deva[अभिमन्युरर्जुनतः प्रति] "@deva[अभिमन्यु] stands in for @deva[अर्जुन]" — the ablative marks the person being replaced
+2. **@deva[प्रतिदान]** (exchange/barter): @deva[माषानस्मै तिलेभ्यः प्रतियच्छति] "he gives @deva[माष]-s in exchange for sesame" — the ablative marks the item exchanged away
+
+**@deva[कर्मप्रवचनीय] designation:** @deva[प्रति] receives its @deva[कर्मप्रवचनीय] status for these senses from @ref[1.4.92].
+
+**Scope:** When @deva[प्रति] has other senses (e.g., "toward" per @ref[1.4.90]), it governs @deva[द्वितीया] under @ref[2.3.8]: @deva[वृक्षं प्रति विद्योतते विद्युत्] "lightning flashes toward the tree."
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्मप्रवचनीययुक्ते] from @ref[2.3.8]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[प्रतिनिधिप्रतिदाने च यस्मात्] — @deva[पञ्चमी] is assigned to the word governed by @deva[प्रति] when the sense is @deva[प्रतिनिधि] (substitution) or @deva[प्रतिदान] (exchange).
+
+**@ref[1.4.92] — @deva[कर्मप्रवचनीय] designation:** @deva[प्रति] is designated @deva[कर्मप्रवचनीय] when expressing substitution or exchange. This triggers case-assignment by the present rule rather than by @deva[कारक] rules.
+
+**@deva[प्रतिनिधि]:** @deva[अभिमन्युरर्जुनतः प्रति] — @deva[अभिमन्यु] replaces @deva[अर्जुन]; the ablative marks the replaced party. The @deva[काशिका] explains: @deva[यः यस्य प्रतिनिधिः स तस्मात् प्रतिनिधिः] — "he who is a substitute for someone is a substitute from that person."
+
+**@deva[प्रतिदान]:** @deva[माषानस्मै तिलेभ्यः प्रतियच्छति] — @deva[माष]-s are given in return for sesame. The ablative marks the item relinquished; the accusative marks the item given.
+
+**@deva[प्रति] — multiple case-assignments depending on sense:**
+- @ref[1.4.90] (direction/surrounding) → @deva[द्वितीया] by @ref[2.3.8]: @deva[वृक्षं प्रति]
+- @ref[1.4.92] (substitution/exchange) → @deva[पञ्चमी] by this rule: @deva[अर्जुनतः प्रति]
+
+**Relationship to @ref[2.3.10]:** Both @ref[2.3.10] and this rule assign @deva[पञ्चमी] to @deva[कर्मप्रवचनीय]-governed words — @ref[2.3.10] covers @deva[अप]/@deva[आङ्]/@deva[परि], this rule covers @deva[प्रति] in substitution/exchange senses. Together they exhaust the @deva[पञ्चमी]-governing @deva[कर्मप्रवचनीय] contexts.
+"""

@@ -1,0 +1,46 @@
+id = "3.2.48"
+numericId = "32048"
+
+[en]
+simple = """
+This rule prescribes the affix @deva[ड] after the root @deva[गम्] (to go) when it is compounded with any of these words: @deva[अन्त] (end), @deva[अत्यन्त] (extreme), @deva[अध्वन्] (road), @deva[दूर] (far), @deva[पार] (across), @deva[सर्व] (all), or @deva[अनन्त] (endless). The effective portion of the affix is just @deva[अ], since @deva[ड्] is a marker that triggers deletion of the final portion of @deva[गम्], leaving only @deva[ग].
+
+For example, @deva[अन्तगः] means 'one who has gone to the end', i.e. 'thoroughly conversant'. @deva[अध्वगः] means 'wayfarer' (one who goes on the road). @deva[सर्वगः] means 'omnipresent' (going everywhere), and @deva[पारगः] means 'one who has crossed over', i.e. 'completely familiar with a subject'.
+
+This rule matters because it generates a set of commonly used compound words that denote mastery, familiarity, or traversal in relation to the compounding word.
+"""
+
+standard = """
+This is a @[vidhi] (operational rule) prescribing the @[kṛt] affix @deva[ड] after the root @deva[गम्] when compounded with the @deva[उपपद]s @deva[अन्त], @deva[अत्यन्त], @deva[अध्वन्], @deva[दूर], @deva[पार], @deva[सर्व], or @deva[अनन्त]. The @deva[अनुवृत्ति] of @deva[संज्ञायाम्] does not extend here.
+
+The marker @deva[ड्] is @deva[इत्] and triggers @deva[टि]-deletion by @ref[6.4.143], removing the @deva[अम्] portion of @deva[गम्]. The real affix is @deva[अ].
+
+Derivation of @deva[अन्तगः]: @deva[अन्त] + @deva[गम्] + @deva[ड] → @deva[टि]-deletion → @deva[अन्त] + @deva[ग] + @deva[अ] → @deva[अन्तगः].
+
+| @deva[उपपद] | Form | Meaning |
+|------|------|---------|
+| @deva[अन्त] | @deva[अन्तगः] | thoroughly conversant |
+| @deva[अध्वन्] | @deva[अध्वगः] | wayfarer |
+| @deva[दूर] | @deva[दूरगः] | going far |
+| @deva[सर्व] | @deva[सर्वगः] | omnipresent |
+| @deva[पार] | @deva[पारगः] | completely familiar |
+
+Several @[vārttikas] extend the scope: @deva[सर्वत्रगः] (Supreme Spirit), @deva[पन्नगः] (snake), @deva[उरगः] (snake, from @deva[उरस्] + @deva[गम्] with final elision), @deva[सुगः] (easy of access), @deva[दुर्गः] (fort), @deva[निर्गः] (a country).
+"""
+
+advanced = """
+The affix @deva[ड] is prescribed after @deva[गम्] with the listed @deva[उपपद]s: @deva[अन्त], @deva[अत्यन्त], @deva[अध्वन्], @deva[दूर], @deva[पार], @deva[सर्व], @deva[अनन्त]. The @deva[अनुवृत्ति] of @deva[संज्ञायाम्] does not extend here, so the resulting words need not be proper names.
+
+The @deva[ड्] marker triggers @deva[टि]-deletion by @ref[6.4.143]. That rule formally requires a @deva[भ]-ending stem, but @deva[गम्] is not @deva[भ]-ending. The presence of the @deva[ड्] marker must still take effect, so the deletion applies regardless — this is a known tension in the system.
+
+Derivation: @deva[अन्त] + @deva[गम्] + @deva[ड] → @deva[टि]-deletion of @deva[अम्] → @deva[अन्त] + @deva[ग्] + @deva[अ] → @deva[अन्तगः].
+
+@[vārttika] extensions:
+1. @deva[सर्वत्र] and @deva[पन्न] as @deva[उपपद]s: @deva[सर्वत्रगः] (Supreme Spirit), @deva[पन्नगः] (snake — 'going on its belly')
+2. @deva[उरस्] with final elision: @deva[उरगः] (snake — 'moving on its breast')
+3. @deva[सु] / @deva[दुर्] with locative sense: @deva[सुगः] (easy of access), @deva[दुर्गः] (fort, difficult to access)
+4. @deva[निर्] with country sense: @deva[निर्गः] (a country)
+5. Some hold @deva[ड] applies with other @deva[उपपद]s as well: @deva[ग्रामगः], @deva[गुरुतल्पगः]
+
+Cross-reference @ref[3.2.49] for the next @deva[ड]-prescription, this time after @deva[हन्].
+"""

@@ -1,0 +1,43 @@
+id = "2.3.55"
+numericId = "23055"
+
+[en]
+simple = """
+When the verb @deva[नाथ्] is used in the sense of "to bless" or "to seek blessings for," the object takes the genitive case (@deva[षष्ठी]) instead of the usual accusative.
+
+**Example:**
+- @deva[मधुनो नाथते] — "he blesses / seeks blessings for the honey" (the honey takes genitive)
+
+**When the rule does NOT apply:**
+- @deva[माणवकमुपनाथति] — "he solicits the student" — here @deva[नाथ्] means "to solicit/request," not "to bless," so the object takes the regular accusative
+
+The rule is narrow: it targets only the blessing sense of @deva[नाथ्], which appears primarily in ritual contexts.
+"""
+
+standard = """
+@deva[आशिषि नाथः] — "of @deva[नाथ्] in the sense of @deva[आशिस्] (blessing), [@deva[षष्ठी] is used in the @deva[कर्मन्]]."
+
+**Rule type — @deva[विधि]:** Assigns @deva[षष्ठी] to the object of @deva[नाथ्] when it means "to bless."
+
+**Key condition — @deva[आशिषि]:** The restriction to the blessing sense means other senses of @deva[नाथ्] — such as "to request," "to solicit," "to harass" — do not trigger this rule.
+
+**Example:**
+- @deva[मधुनो नाथते] — "he blesses the honey" (ritual context; @deva[मधु] takes @deva[षष्ठी])
+
+**Counterexample:**
+- @deva[माणवकमुपनाथति] — "he solicits the student" — @deva[नाथ्] = "request," not "bless," so @deva[द्वितीया]
+
+**Optionality:** As with the preceding rules, @deva[शेष] in @deva[अनुवृत्ति] preserves the @deva[द्वितीया] alternative.
+"""
+
+advanced = """
+@deva[आशिषि नाथः] — @deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.3.50], @deva[शेषे] from @ref[2.3.50], @deva[कर्मणि] from @ref[2.3.52].
+
+**Scope and context:** @deva[नाथ्] is a @deva[भ्वादि] root meaning variously "to bless," "to request," "to harass," "to be master of." This rule isolates the @deva[आशिस्] (benedictory) sense, which is primarily a Vedic/ritual usage. The @deva[आत्मनेपद] form @deva[नाथते] in the example is consistent with middle-voice usage in ritual speech.
+
+**Why a separate rule?** @deva[नाथ्] does not fall under the @deva[रुजार्थ] group of @ref[2.3.54] or the verb lists of @ref[2.3.56]. Its blessing sense is semantically unique, requiring independent treatment.
+
+**Relation to @ref[2.3.54] and @ref[2.3.56]:** This rule sits between the affliction-verbs (@ref[2.3.54]) and the injury-verb list (@ref[2.3.56]), forming part of a sequence of verb-specific @deva[कर्मणि षष्ठी] rules. Each rule in the series targets a distinct semantic domain.
+
+**Optionality:** The @deva[शेषे] @deva[अनुवृत्ति] ensures that @deva[मधुं नाथते] (with @deva[द्वितीया]) remains a valid alternative.
+"""

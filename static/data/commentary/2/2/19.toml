@@ -1,0 +1,43 @@
+id = "2.2.19"
+numericId = "22019"
+
+[en]
+simple = """
+An @deva[उपपद] "attendant word" (a word that triggers the addition of a @deva[कृत्] affix by @ref[3.1.92]) **must** compound with the @deva[कृत्]-derived word it governs — but only if the @deva[कृत्] word does not end in a @deva[तिङ्] (finite verb) affix.
+
+**Examples:**
+- @deva[कुम्भकारः] "pot-maker" — @deva[कुम्भ] (pot) is the @deva[उपपद], @deva[कार] (maker) is the @deva[कृत्]-word
+- @deva[नगरकारः] "city-builder"
+
+**No compound with @deva[तिङ्]:** @deva[एधानाहारको व्रजति] "the fuel-gatherer goes" — @deva[व्रजति] is a @deva[तिङन्त] (finite verb), so @deva[एधान] does not compound with it.
+"""
+
+standard = """
+@deva[उपपद] + @deva[कृदन्त] (non-@deva[तिङ्]) → @deva[नित्य] @deva[तत्पुरुष] — @deva[उपपदमतिङ्].
+
+**Rule type — @deva[विधि] (@deva[नित्यसमास]):** Obligatory compounding of @deva[उपपद] with its @deva[कृत्]-derived word.
+
+**Examples:**
+- @deva[कुम्भकारः] "pot-maker" — @deva[कुम्भ] (@deva[उपपद]) + @deva[कार] (@deva[कृत्])
+- @deva[नगरकारः] "city-builder"
+
+**@deva[अतिङ्] restriction:** The @deva[कृत्]-word must not end in @deva[तिङ्] (@ref[3.4.78]). Counter-example: @deva[एधानाहारको व्रजति] — @deva[व्रजति] is @deva[तिङन्त], so no compound.
+
+**@deva[सुप् सुपा] does not continue:** The @deva[अनुवृत्ति] of @deva[सुप् सुपा] from @ref[2.1.4] should not extend here. If it did, @deva[तिङ्] would never have scope (since @deva[तिङ्]-ending words are never @deva[सुबन्त]).
+
+**@deva[परिभाषा]:** @deva[गतिकारकोपपदानां कृद्भिः सह समासवचनं प्राक् सुबुत्पत्तेः] — @deva[उपपद] compounds with @deva[कृत्]-bases before case-ending affixation. The compound forms at the @deva[प्रातिपदिक] stage, not after inflection.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[नित्यम्] from @ref[2.2.18].
+
+@deva[उपपदमतिङ्] — an @deva[उपपद] (as defined by @ref[3.1.92]) obligatorily compounds with a non-@deva[तिङ्] @deva[कृदन्त]. @deva[नित्यसमास].
+
+**@deva[उपपद] defined:** @ref[3.1.92] (@deva[तत्रोपपदं सप्तमीस्थम्]) defines @deva[उपपद] as a word in the locative that conditions the application of a @deva[कृत्] affix. In @deva[कुम्भकारः], @deva[कुम्भम्] is the @deva[उपपद] that triggers @deva[अण्] after @deva[कृ] (by @ref[3.2.1]).
+
+**Pre-inflectional compound:** The @deva[परिभाषा] @deva[गतिकारकोपपदानां कृद्भिः सह समासवचनं प्राक् सुबुत्पत्तेः] ensures that @deva[उपपद] compounds form before @deva[सुप्]-affixation. This has consequences for feminine marking: @deva[अश्वक्रीती] (f.) — the compound @deva[अश्वक्रीत] forms first, then @deva[ङीप्] is added. Without the @deva[परिभाषा], the @deva[उपपद] would already be inflected and the compound would need to operate on @deva[सुबन्त] forms.
+
+**@deva[अतिङ्] — theoretical justification:** If @deva[सुप् सुपा] from @ref[2.1.4] continued, every word in the compound would need to be @deva[सुबन्त]. Since @deva[तिङन्त] words are by definition not @deva[सुबन्त], the @deva[अतिङ्] condition would be superfluous. Its explicit mention signals that @deva[सुप् सुपा] does NOT continue here — the compound can involve non-@deva[सुबन्त] elements.
+
+**Relation to @ref[2.2.18]:** Both @ref[2.2.18] and @ref[2.2.19] handle @deva[नित्यसमास] — @ref[2.2.18] for prefixes (@deva[कु], @deva[गति], @deva[प्रादि]), @ref[2.2.19] for @deva[उपपद]. Together they cover the main classes of pre-inflectional obligatory compounds.
+"""

@@ -1,0 +1,49 @@
+id = "2.3.30"
+numericId = "23030"
+
+[en]
+simple = """
+With direction words that end in the @deva[अतसुच्] suffix (such as @deva[दक्षिणतः] "to the south," @deva[उत्तरतः] "to the north"), the reference point takes @deva[षष्ठी] (genitive, sixth case-ending) instead of the ablative.
+
+**Examples:**
+- @deva[ग्रामस्य दक्षिणतः] "to the south of the village"
+- @deva[ग्रामस्य उत्तरतः] "to the north of the village"
+- @deva[ग्रामस्य पुरस्तात्] "in front of the village"
+- @deva[ग्रामस्य उपरि] "above the village"
+
+Where @ref[2.3.29] would assign the ablative with plain direction words (@deva[पूर्वो ग्रामात्]), this rule assigns the genitive when the direction word has the @deva[अतसुच्] suffix.
+"""
+
+standard = """
+@deva[षष्ठ्यतसर्थप्रत्ययेन] — with words ending in affixes having the meaning of @deva[अतसुच्] (@ref[5.3.28]), @deva[षष्ठी] is used for the reference point.
+
+**Rule type — @deva[विधि]:** Assigns @deva[षष्ठी] in place of @deva[पञ्चमी] when the direction word bears an @deva[अतसुच्]-type suffix.
+
+**@deva[अतसुच्] suffix (@ref[5.3.28]):** @deva[दक्षिणोत्तराभ्यामतसुच्] — added to @deva[दक्षिण] and @deva[उत्तर] to form @deva[दक्षिणतः] and @deva[उत्तरतः]. Extended to other positional words: @deva[पुरस्तात्], @deva[पश्चात्], @deva[उपरि], @deva[अधः].
+
+**Examples:**
+- @deva[ग्रामस्य दक्षिणतः] "to the south of the village"
+- @deva[ग्रामस्य उत्तरतः] "to the north of the village"
+- @deva[ग्रामस्य पुरस्तात्] "in front of the village"
+- @deva[ग्रामस्य उपरि] "above the village"
+
+**Contrast with @ref[2.3.29]:**
+- @deva[पूर्वो ग्रामात्] (plain direction word — @deva[पञ्चमी])
+- @deva[ग्रामस्य दक्षिणतः] (@deva[अतसुच्]-ending — @deva[षष्ठी])
+
+**Scope:** The phrase @deva[अतसर्थ] ("having the meaning of @deva[अतसुच्]") extends coverage to all affixes with comparable directional meaning, not just @deva[अतसुच्] itself.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[षष्ठ्यतसर्थप्रत्ययेन] — @deva[षष्ठी] is assigned when the direction word bears an affix having the sense of @deva[अतसुच्].
+
+**@deva[अतसुच्] — @ref[5.3.28]: @deva[दक्षिणोत्तराभ्यामतसुच्]** — the @deva[अतसुच्] affix is added to @deva[दक्षिण] and @deva[उत्तर], yielding @deva[दक्षिणतः] and @deva[उत्तरतः]. The term @deva[अतसर्थ] ("having the meaning of @deva[अतसुच्]") extends this to functionally equivalent affixes, covering @deva[पुरस्तात्], @deva[पश्चात्], @deva[अवस्तात्], @deva[उपरि], @deva[अधः], etc.
+
+**Interaction with @ref[2.3.29]:** That rule assigns @deva[पञ्चमी] to bare @deva[दिक्शब्द]s and @deva[अञ्चु]-compounds. This rule overrides @deva[पञ्चमी] in favor of @deva[षष्ठी] specifically when the @deva[अतसुच्]-type suffix is present. The @deva[अञ्चु]-compounds (@deva[प्राक्], @deva[प्रत्यक्]) are explicitly kept under @ref[2.3.29] and do not shift to @deva[षष्ठी] here.
+
+**Examples:** @deva[ग्रामस्य दक्षिणतः], @deva[ग्रामस्य उत्तरतः], @deva[ग्रामस्य पुरस्तात्], @deva[ग्रामस्य उपरि].
+
+**Cross-references:** @ref[2.3.29] (@deva[पञ्चमी] with bare direction words), @ref[2.3.31] (@deva[एनप्]-ending words allow @deva[द्वितीया]/@deva[षष्ठी] option), @ref[5.3.28] (the @deva[अतसुच्] affix rule).
+"""

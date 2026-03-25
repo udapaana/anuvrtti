@@ -1,0 +1,44 @@
+id = "1.1.3"
+numericId = "11003"
+
+[en]
+simple = """
+When a rule prescribes @deva[गुण] or @deva[वृद्धि] without saying which vowel to replace, it replaces an @deva[इक्] vowel — that is, @deva[इ], @deva[उ], @deva[ऋ], or @deva[ऌ] (and their long forms). Vowels like @deva[आ] or the diphthongs (@deva[ए], @deva[ऐ], @deva[ओ], @deva[औ]) are never the target.
+
+This rule is what makes the vowel-grade system predictable: @deva[इ] always becomes @deva[ए] under @deva[गुण], @deva[उ] always becomes @deva[ओ], and so on. Without it, each rule would have to specify which vowel to change.
+
+**Example:** @deva[नी] + @deva[अति] → @deva[नयति] "he leads" — the @deva[ई] of the root becomes @deva[ए] by @deva[गुण], because @deva[ई] is an @deva[इक्] vowel.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] (interpretive rule) supplies a default: wherever @deva[गुण] or @deva[वृद्धि] is ordained without naming the target vowel, understand @deva[इकः] ("in place of an @deva[इक्] vowel").
+
+The @deva[इक्] @deva[प्रत्याहार] covers: @deva[इ], @deva[ई], @deva[उ], @deva[ऊ], @deva[ऋ], @deva[ॠ], @deva[ऌ], @deva[ॡ].
+
+**Correspondences:**
+- @deva[इ]/@deva[ई] → @deva[ए] (@deva[गुण]) → @deva[ऐ] (@deva[वृद्धि])
+- @deva[उ]/@deva[ऊ] → @deva[ओ] (@deva[गुण]) → @deva[औ] (@deva[वृद्धि])
+- @deva[ऋ]/@deva[ॠ] → @deva[अर्] (@deva[गुण]) → @deva[आर्] (@deva[वृद्धि])
+- @deva[ऌ] → @deva[अल्] (@deva[गुण]) → @deva[आल्] (@deva[वृद्धि])
+
+**Examples:**
+- @deva[नी] + @deva[तिप्] → @deva[नयति] "he leads" (@deva[ई] → @deva[ए] by @deva[गुण])
+- @deva[कृ] + @deva[तिप्] → @deva[करोति] "he does" (@deva[ऋ] → @deva[अर्] by @deva[गुण])
+- @deva[अङ्ग] + @deva[अण्] → @deva[आङ्गः] "bodily" (@deva[अ] → @deva[आ] by @deva[वृद्धि] — but note @deva[अ] is not @deva[इक्]; this works because @ref[7.2.115] explicitly names the target)
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[गुणवृद्धी] from @ref[1.1.1]–@ref[1.1.2] (the terms just defined). Both terms are explicitly restated in the @deva[सूत्र] despite being available by @deva[अनुवृत्ति] — this signals a restriction (see below).
+
+This @deva[परिभाषासूत्र] supplies @deva[इकः] (genitive, "in place of @deva[इक्]") wherever @deva[गुण] or @deva[वृद्धि] is prescribed without specifying the @deva[स्थानिन्] (the element to be replaced).
+
+**Why non-@deva[इक्] vowels are excluded:**
+- @deva[या] + @deva[ल्युट्] = @deva[यानम्] (not *@deva[यनम्]) — @deva[आ] unchanged, because @deva[आ] is not @deva[इक्]
+- @deva[ग्लै] + @deva[शप्] + @deva[तिप्] = @deva[ग्लायति] (not *@deva[ग्लयति]) — @deva[ऐ] unchanged
+
+**Why the terms are restated:** The explicit repetition of @deva[गुण] and @deva[वृद्धि] (rather than relying on @deva[अनुवृत्ति]) indicates this rule applies only when those terms are used by name. When a @deva[वृद्धि] vowel appears as a substitute without being called "@deva[वृद्धि]," it may replace something other than @deva[इक्]:
+- @ref[7.1.84]: @deva[दिव्] + @deva[सु] → @deva[द्यौः] — @deva[औ] replaces @deva[व्], not an @deva[इक्] vowel
+- @ref[7.1.85]: @deva[पथिन्] + @deva[सु] → @deva[पन्थाः] — @deva[आ] replaces @deva[न्], not an @deva[इक्] vowel
+
+**Rules where @deva[इकः] is understood:** @ref[7.3.82], @ref[7.3.84], @ref[7.2.114], @ref[7.3.86], @ref[7.4.11], @ref[7.4.16], @ref[6.4.156].
+"""

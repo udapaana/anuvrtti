@@ -1,0 +1,49 @@
+id = "3.2.3"
+numericId = "32003"
+
+[en]
+simple = """
+The affix @deva[क] (= @deva[अ]) is used after roots ending in @deva[आ] when there is **no @deva[उपसर्ग]** (prefix) and the object is in composition.
+
+**Examples:**
+- @deva[गां ददाति] = @deva[गोदः] 'cow-giver'
+- @deva[कम्बलं ददाति] = @deva[कम्बलदः] 'blanket-giver'
+- @deva[पार्ष्णिं त्रायते] = @deva[पार्ष्णित्रम्] 'heel-protector'
+
+This @deva[क] blocks the default @deva[अण्] of @ref[3.2.1].
+"""
+
+standard = """
+The affix @deva[क] comes after roots ending in long @deva[आ], when there is no @deva[उपसर्ग] and the object is in composition.
+
+| Root | Sentence | Compound | Meaning |
+|------|----------|----------|--------|
+| @deva[दा] | @deva[गां ददाति] | @deva[गोदः] | cow-giver |
+| @deva[दा] | @deva[कम्बलं ददाति] | @deva[कम्बलदः] | blanket-giver |
+| @deva[त्रै] | @deva[पार्ष्णिं त्रायते] | @deva[पार्ष्णित्रम्] | heel-protector |
+| @deva[त्रै] | @deva[अङ्गुलिं त्रायते] | @deva[अङ्गुलित्रम्] | finger-protector (thimble) |
+
+This debars @deva[अण्]. The long @deva[आ] is elided by @ref[6.4.64].
+
+**With @deva[उपसर्ग]:** @deva[गोसन्दायः] 'one who ceremoniously gives a cow' — here @deva[सम्] + @deva[दा] takes @deva[अण्], not @deva[क].
+"""
+
+advanced = """
+The affix @deva[क] comes after a verbal root ending in long @deva[आ] when there is no @deva[उपसर्ग] preceding it and the object is in composition.
+
+This debars @deva[अण्].
+
+**Derivation of @deva[गोदः]:**
+@deva[गाम्] + @deva[दा] + @deva[क] = @deva[गाम्] + @deva[द] + @deva[अ] (by @ref[6.4.64]) = @deva[गोदः] 'giver of cows'
+
+**Other examples:**
+- @deva[कम्बलदः] 'blanket-giver'
+- @deva[पार्ष्णित्रम्] 'what protects the heel'
+- @deva[अङ्गुलित्रम्] 'what protects the finger' (a thimble)
+
+**Why @deva[अनुपसर्गे]?** With an @deva[उपसर्ग], the affix is @deva[अण्]:
+- @deva[गोसन्दायः] 'who ceremoniously gives a cow' (@deva[सम्] + @deva[दा])
+- @deva[वडवसन्दायः] 'who ceremoniously gives a mare'
+
+Here the compound verb @deva[सन्दा] takes the affix @deva[अण्].
+"""

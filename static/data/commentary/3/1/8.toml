@@ -1,0 +1,39 @@
+id = "3.1.8"
+numericId = "31008"
+
+[en]
+simple = """
+The affix @deva[क्यच्] is optionally added to a noun to form a verb meaning "wishing for X for oneself." This creates a @deva[नामधातु] (denominative verb).
+
+**Example:** @deva[पुत्र] "son" → @deva[पुत्रीयति] "he wishes for a son (for himself)"
+
+The wish must be for oneself, not for someone else.
+"""
+
+standard = """
+The affix @deva[क्यच्] optionally attaches to a @deva[सुबन्त] (word with case ending) to express wishing for oneself.
+
+**Derivation:** @deva[पुत्र] + @deva[क्यच्] → @deva[पुत्री] + @deva[य] (by @ref[2.4.71], @ref[7.4.33]) → @deva[पुत्रीयति]
+
+**Conditions:**
+- @deva[सुप्]: Affix attaches to a single noun, not a whole phrase. In @deva[महान्तं पुत्रमिच्छति], @deva[क्यच्] attaches only to @deva[पुत्रम्], not @deva[महान्तम्].
+- @deva[आत्मनः]: The wish must be for oneself. @deva[राज्ञः पुत्रमिच्छति] "wishes a son for the king" cannot take @deva[क्यच्].
+
+The @deva[क्] in @deva[क्यच्] groups it with @deva[क्यङ्] and @deva[क्यष्] (see @ref[1.4.15]).
+"""
+
+advanced = """
+The @deva[क्यच्] affix optionally forms denominatives expressing @deva[इच्छा] for oneself from @deva[सुबन्त] bases.
+
+**Derivation:** @deva[पुत्र] + @deva[क्यच्] = @deva[पुत्रीय] (by @ref[2.4.71]: @deva[सुपो धातुप्रातिपदिकयोः]; @ref[7.4.33]: @deva[आ] → @deva[ई])
+
+**Restrictions:**
+- **@deva[सुप्]:** Applies to single noun, not sentence. In @deva[महान्तं पुत्रमिच्छति], only @deva[पुत्रम्] takes @deva[क्यच्].
+- **@deva[आत्मनः]:** Self-directed wish. Fails for @deva[राज्ञः पुत्रमिच्छति] (wishing for another).
+
+**The @deva[क्]:** Groups @deva[क्यच्], @deva[क्यङ्], @deva[क्यष्] under @deva[क्य] (@ref[1.4.15]). The @deva[च्] distinguishes from @deva[क्यङ्]; @deva[उदात्त] follows @ref[3.1.3], not an accent marker.
+
+**@[vārtika] 1:** Pronouns in @deva[म्] and indeclinables are excluded: no @deva[क्यच्] in @deva[इदमिच्छति], @deva[उच्चैरिच्छति].
+
+**@[vārtika] 2 (Vedic):** @deva[क्यच्] applies even for another in Vedas: @deva[अघायवः] from @deva[अघ] + @deva[क्यच्] + @deva[अच्] (@ref[3.2.170]) + @deva[आ] (@ref[7.4.37]).
+"""

@@ -1,0 +1,53 @@
+id = "2.1.56"
+numericId = "21056"
+
+[en]
+simple = """
+A word denoting the thing being compared (@deva[उपमित], the subject of comparison) compounds with words from the @deva[व्याघ्रादि] list (animals, plants, and other vivid standards of comparison) to form @deva[तत्पुरुष] — but only when no word expressing the shared quality is present.
+
+**Examples:**
+- @deva[पुरुषव्याघ्रः] "a man-tiger" — a man fierce like a tiger
+- @deva[पुरुषसिंहः] "a man-lion" — a man majestic like a lion
+- @deva[मुखपद्मम्] "a face-lotus" — a face beautiful like a lotus
+- @deva[करकिसलयम्] "a hand-sprout" — a hand tender like a young shoot
+
+The subject of comparison (@deva[पुरुष], @deva[मुख]) comes first, and the standard (@deva[व्याघ्र], @deva[पद्म]) comes second. The shared quality (strength, beauty) is left unexpressed — the hearer infers it.
+
+**No compound when the quality is stated:** @deva[पुरुषो व्याघ्र इव शूरः] "a man brave like a tiger" does NOT compound — because @deva[शूर] "brave" (the shared quality) is explicitly stated. That type falls under @ref[2.1.55] instead.
+"""
+
+standard = """
+@deva[उपमितवाचक] + @deva[व्याघ्रादि] → @deva[तत्पुरुष] in @deva[समानाधिकरण], without @deva[सामान्यवचन] — @deva[उपमितं व्याघ्रादिभिः सामान्याप्रयोगे].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[पुरुषव्याघ्रः] "man-tiger" — fierce like a tiger
+- @deva[पुरुषसिंहः] "man-lion"
+- @deva[मुखपद्मम्] "face-lotus"
+- @deva[मुखकमलम्] "face-lotus" (synonym)
+- @deva[करकिसलयम्] "hand-sprout"
+- @deva[पार्थिवचन्द्रः] "king-moon"
+
+**Contrast with @ref[2.1.55]:** @ref[2.1.55] compounds @deva[उपमान] + @deva[सामान्यवचन] ("cloud-dark"). This rule compounds @deva[उपमित] + @deva[उपमान] without any quality word ("man-tiger"). The two are complementary.
+
+**@deva[सामान्याप्रयोग] condition:** The compound is blocked when a @deva[सामान्यवचन] (shared quality word) is present. @deva[पुरुषो व्याघ्र इव शूरः] does not compound because @deva[शूर] is stated.
+
+**@deva[व्याघ्रादि] — @deva[आकृतिगण]:** The list includes @deva[व्याघ्र], @deva[सिंह], @deva[ऋक्ष], @deva[ऋषभ], @deva[चन्दन], @deva[वृक], @deva[वराह], @deva[हस्तिन्], @deva[कुञ्जर], @deva[पुण्डरीक], @deva[पद्म], @deva[कमल], @deva[किसलय], etc. Being @deva[आकृतिगण], the list is open-ended — new comparisons following the same pattern are accepted.
+
+**Order:** The @deva[उपमित] (compared thing) comes first, the @deva[उपमान] (standard) second — opposite of @ref[2.1.55] where the @deva[उपमान] came first.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[उपमितं व्याघ्रादिभिः सामान्याप्रयोगे] — the @deva[उपमित] (subject of comparison) compounds with @deva[व्याघ्रादि] words as @deva[कर्मधारय] @deva[तत्पुरुष], provided no @deva[सामान्यवचन] (shared quality word) is used.
+
+**Order reversal from @ref[2.1.55]:** @ref[2.1.55] had @deva[उपमान] first (standard → quality: @deva[घनश्यामः]). This rule has @deva[उपमित] first (compared → standard: @deva[पुरुषव्याघ्रः]). The reversal is necessitated by @ref[2.2.30] (@deva[उपसर्जनं पूर्वम्]): the @deva[उपमित] is the @deva[उपसर्जन] here.
+
+**@deva[सामान्याप्रयोग] = absence of quality word:** The @deva[काशिका] explains that when the @deva[सामान्य] quality is explicitly stated (@deva[पुरुषो व्याघ्र इव शूरः]), the comparison is analytically complete — no compound is needed. The compound form is reserved for the compressed, unexpressed-quality comparison.
+
+**@deva[आकृतिगण]:** The @deva[व्याघ्रादि] list is an @deva[आकृतिगण] — membership is determined by the pattern (a priori), not exhaustively listed. Any vivid, well-known entity used as a standard of comparison can qualify. This allows productive coinages like @deva[मुखपद्मम्], @deva[पार्थिवचन्द्रः].
+
+**Relation to @ref[2.1.57]:** @ref[2.1.57] teaches the general @deva[विशेषण]-@deva[विशेष्य] @deva[कर्मधारय]. This rule is a special case where the @deva[विशेषण] is an implicit simile — the qualifier is a comparison standard, not a direct attribute.
+"""

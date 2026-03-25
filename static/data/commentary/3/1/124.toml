@@ -1,0 +1,58 @@
+id = "3.1.124"
+numericId = "31124"
+
+[en]
+simple = """
+The affix @deva[ण्यत्] is used after roots ending in @deva[ऋ] or a **consonant**.
+
+**Key feature:** @deva[ण्यत्] causes @deva[वृद्धि] of the root vowel.
+
+**Examples:**
+- @deva[कृ] + @deva[ण्यत्] = @deva[कार्यम्] 'to be done'
+- @deva[हृ] + @deva[ण्यत्] = @deva[हार्यम्] 'to be taken'
+- @deva[धृ] + @deva[ण्यत्] = @deva[धार्यम्] 'to be held'
+- @deva[वच्] + @deva[ण्यत्] = @deva[वाक्यम्] 'speech, sentence'
+- @deva[पच्] + @deva[ण्यत्] = @deva[पाक्यम्] 'to be cooked'
+
+This is the **general rule** for @deva[कृत्य] affixes—@deva[ण्यत्] is the default for most roots.
+"""
+
+standard = """
+The affix @deva[ण्यत्] comes after roots ending in @deva[ऋ] (short or long) or a **consonant** (@deva[हल्]).
+
+**This is the general rule** for @deva[कृत्य] affixes—@deva[ण्यत्] applies to the majority of roots.
+
+**@deva[ण्यत्] causes @deva[वृद्धि]** by @ref[7.2.115].
+
+**Examples from @deva[ऋ]-final roots:**
+| Root | + @deva[ण्यत्] | Result | Meaning |
+|------|---------|--------|--------|
+| @deva[कृ] | @deva[कार्य] | @deva[कार्यम्] | 'to be done' |
+| @deva[हृ] | @deva[हार्य] | @deva[हार्यम्] | 'to be taken' |
+| @deva[धृ] | @deva[धार्य] | @deva[धार्यम्] | 'to be held' |
+
+**Examples from consonant-final roots:**
+| Root | + @deva[ण्यत्] | Result | Meaning |
+|------|---------|--------|--------|
+| @deva[वच्] | @deva[वाक्य] | @deva[वाक्यम्] | 'speech' (via @ref[7.3.52]) |
+| @deva[पच्] | @deva[पाक्य] | @deva[पाक्यम्] | 'to be cooked' |
+"""
+
+advanced = """
+The affix @deva[ण्यत्] comes after roots ending in @deva[ऋ] (short or long) or a consonant (@deva[हल्]).
+
+**Syntax:** @deva[ॠहलोः] is genitive dual, functioning as ablative ('after @deva[ऋ] or @deva[हल्]').
+
+**This is the general @deva[कृत्य] rule:** @deva[ण्यत्] is the default affix for forming potential passive participles from most roots. The preceding @[sūtras] (@ref[3.1.97]–@ref[3.1.123]) provide exceptions with @deva[यत्] and @deva[क्यप्].
+
+**@deva[वृद्धि] by @ref[7.2.115]:** The indicatory @deva[ण्] triggers @deva[वृद्धि] substitution.
+
+**Examples (@deva[ऋ]-final):**
+- @deva[कृ] + @deva[ण्यत्] = @deva[कार्यम्] 'to be done' (@deva[ऋ] → @deva[आर्])
+- @deva[हृ] + @deva[ण्यत्] = @deva[हार्यम्] 'to be taken'
+- @deva[धृ] + @deva[ण्यत्] = @deva[धार्यम्] 'to be held'
+
+**Examples (consonant-final):**
+- @deva[वच्] + @deva[ण्यत्] = @deva[वक्] @ref[7.3.52] + @deva[य] = @deva[वाक्यम्] @ref[7.2.116] 'speech, sentence'
+- @deva[पच्] + @deva[ण्यत्] = @deva[पाक्यम्] 'to be cooked'
+"""

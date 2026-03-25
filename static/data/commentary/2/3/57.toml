@@ -1,0 +1,47 @@
+id = "2.3.57"
+numericId = "23057"
+
+[en]
+simple = """
+When the verbs @deva[व्यवहृ] (to deal/transact) and @deva[पण्] (to stake/wager) are used as synonyms — both meaning "to engage in buying, selling, or gambling" — the object takes the genitive case (@deva[षष्ठी]) instead of the usual accusative.
+
+**Examples:**
+- @deva[शतस्य व्यवहरति] — "he deals in a hundred (coins)"
+- @deva[शतस्य पणते] — "he stakes a hundred"
+
+**When the rule does NOT apply:**
+- @deva[शलाकां व्यवहरति] — "he throws dice" — @deva[व्यवहृ] is not used in the dealing/transaction sense here
+- @deva[ब्राह्मणान् पणायते] — "he praises the @deva[ब्राह्मण]s" — @deva[पण्] here means "to praise" (with the @deva[आय्] suffix), not "to stake"
+
+Both genitive and accusative are valid, so @deva[शतं व्यवहरति] is also correct.
+"""
+
+standard = """
+@deva[व्यवहृपणोः समर्थयोः] — "of @deva[व्यवहृ] and @deva[पण्] when synonymous (@deva[समर्थ]), [@deva[षष्ठी] is used in the @deva[कर्मन्]]."
+
+**Rule type — @deva[विधि]:** Assigns @deva[षष्ठी] to the object of @deva[व्यवहृ] and @deva[पण्] when both carry the same transactional meaning.
+
+**Key condition — @deva[समर्थयोः]:** The two verbs must be used as synonyms, both meaning "to deal in sale/purchase" (@deva[क्रयविक्रय]) or "to stake in gambling" (@deva[द्यूत]). When either verb carries a different sense, the rule does not apply.
+
+**Examples:**
+- @deva[शतस्य व्यवहरति] — "he transacts in a hundred"
+- @deva[शतस्य पणते] — "he stakes/wagers a hundred"
+
+**Counterexamples:**
+- @deva[शलाकां व्यवहरति] — "he casts the counting-stick" — not a transaction, so @deva[द्वितीया]
+- @deva[ब्राह्मणान् पणायते] — "he praises @deva[ब्राह्मण]s" — @deva[पण्] + @deva[आय्] = "to praise," not "to stake," so @deva[द्वितीया]
+
+**Optionality:** @deva[शेष] in @deva[अनुवृत्ति] preserves the @deva[द्वितीया] alternative: @deva[शतं पणते] is valid.
+"""
+
+advanced = """
+@deva[व्यवहृपणोः समर्थयोः] — @deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.3.50], @deva[शेषे] from @ref[2.3.50], @deva[कर्मणि] from @ref[2.3.52].
+
+**@deva[समर्थयोः] interpretation:** The word @deva[समर्थयोः] (dual genitive: "of the two when equivalent in meaning") requires that @deva[व्यवहृ] and @deva[पण्] share the sense of commercial or gambling transactions. This is a @deva[तुल्यार्थ]-condition: the rule applies only in the shared semantic overlap. When either verb diverges from this meaning — @deva[व्यवहृ] as "to behave" or @deva[पण्] as "to praise" — the condition fails.
+
+**Connection to @ref[2.3.58]:** The verb @deva[दिव्] shares the same transactional sense (@deva[द्यूत], @deva[क्रयविक्रय]) but is treated in a separate @[sūtra] (@ref[2.3.58]). The @deva[योगविभाग] (rule-splitting) is deliberate: @deva[दिव्] is separated so that it can carry forward by @deva[अनुवृत्ति] into @ref[2.3.59] and @ref[2.3.60], which introduce modifications specific to @deva[दिव्].
+
+**@deva[पणायते] counterexample:** The form @deva[पणायते] involves @deva[पण्] + @deva[आय्] (@deva[णिच्]-like denominative), yielding the sense "to praise." This is morphologically distinct from the bare @deva[पणते] and falls outside the @deva[समर्थ] condition.
+
+**Cross-reference:** This rule, together with @ref[2.3.58]–@ref[2.3.60], forms a coherent sub-group treating @deva[षष्ठी] with transaction/gambling verbs. The sequence moves from the general (@deva[व्यवहृ] and @deva[पण्]) to the specific (@deva[दिव्]), and then introduces exceptions based on preverb-presence (@ref[2.3.59]) and register (@ref[2.3.60]).
+"""

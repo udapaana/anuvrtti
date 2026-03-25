@@ -1,0 +1,57 @@
+id = "1.1.65"
+numericId = "11065"
+
+[en]
+simple = """
+The letter immediately before the last letter of a word is called @deva[उपधा] (penultimate). This term gives the grammar a way to refer to the "second-to-last" sound.
+
+**Examples:**
+- In the root @deva[पच्] "to cook," the letters are @deva[प्]-@deva[अ]-@deva[च्]. The last letter is @deva[च्], so the @deva[उपधा] is @deva[अ].
+- In @deva[भिद्] "to split": @deva[उपधा] = @deva[इ]
+- In @deva[बुध्] "to know": @deva[उपधा] = @deva[उ]
+
+Rules like @ref[7.2.116] use this term: "apply @deva[वृद्धि] to the @deva[उपधा]" means "strengthen the second-to-last vowel."
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] defines @deva[उपधा]: the letter (@deva[अल्]) immediately preceding the final letter of a word or morpheme.
+
+**Examples:**
+| Form | Final | @deva[उपधा] |
+|------|-------|------------|
+| @deva[पच्] | @deva[च्] | @deva[अ] |
+| @deva[भिद्] | @deva[द्] | @deva[इ] |
+| @deva[बुध्] | @deva[ध्] | @deva[उ] |
+| @deva[वृत्] | @deva[त्] | @deva[ऋ] |
+| @deva[कृष्] | @deva[ष्] | @deva[ऋ] |
+
+**Key applications:**
+- @ref[7.2.116] (@deva[अत उपधायाः]): @deva[वृद्धि] of the @deva[उपधा] @deva[अ] before certain affixes — @deva[पच्] + @deva[घञ्] → @deva[पाक] "cooking"
+- @ref[7.3.86] (@deva[पुगन्तलघूपधस्य च]): @deva[गुण] of a light @deva[उपधा] — @deva[बुध्] + @deva[क्त] → @deva[बोधः] (with @deva[उ] → @deva[ओ])
+
+**Relation to @ref[1.1.64]:** @deva[टि] names a segment (last vowel + following consonants). @deva[उपधा] names a single position (the penultimate letter). Both are positional designations, but @deva[टि] is a range and @deva[उपधा] is a point.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent @deva[संज्ञा].
+
+@deva[अलोऽन्त्यात् पूर्व उपधा] — the @deva[अल्] (sound) before the final (@deva[अन्त्य]) is @deva[उपधा].
+
+**Scope:** @deva[उपधा] refers to a single letter, not a segment. It is always the letter at position (final − 1).
+
+**Key rules that reference @deva[उपधा]:**
+- @ref[7.2.116] (@deva[अत उपधायाः]): @deva[वृद्धि] of @deva[उपधा] @deva[अ] — @deva[पच्] → @deva[पाक], @deva[वद्] → @deva[वाद]
+- @ref[7.3.86] (@deva[पुगन्तलघूपधस्य च]): @deva[गुण] of light @deva[उपधा] — @deva[भिद्] → @deva[भेद], @deva[बुध्] → @deva[बोध]
+- @ref[6.4.37] (@deva[अनुदात्तोपदेशवनतेः]): @deva[उपधा] deletion
+- @ref[6.4.120] (@deva[अत एकहल्मध्ये]): operations on @deva[उपधा] @deva[अ] in monosyllabic roots
+
+**What "letter" means here:** @deva[अल्] encompasses both vowels and consonants. So @deva[उपधा] can be a vowel or a consonant. However, most rules that reference @deva[उपधा] further specify @deva[अत्] (@deva[अ]) or @deva[लघु] (light vowel), narrowing the scope to vowels in practice.
+
+**Contrast with other positional terms:**
+- @deva[आदि]: first sound
+- @deva[अन्त्य]: last sound
+- @deva[उपधा] (this rule): penultimate sound
+- @deva[टि] (@ref[1.1.64]): segment from last vowel to end
+
+**Edge case:** In a two-letter form like @deva[अद्], the @deva[उपधा] is the first letter (@deva[अ]). In a single-letter form, there is no @deva[उपधा].
+"""

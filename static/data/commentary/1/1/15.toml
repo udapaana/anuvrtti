@@ -1,0 +1,37 @@
+id = "1.1.15"
+numericId = "11015"
+
+[en]
+simple = """
+Particles ending in @deva[ओ] are @deva[प्रगृह्य] — they do not merge with a following vowel. This covers exclamations like @deva[अहो], @deva[उतो], and similar particles.
+
+**Example:** @deva[अहो अपेहि] "Alas, go away!" — the @deva[ओ] of @deva[अहो] stays intact. Without this rule, @deva[सन्धि] would convert @deva[ओ] + @deva[अ] into @deva[अव], producing *@deva[अहवपेहि].
+"""
+
+standard = """
+@deva[ओ]-final @deva[निपात]s are @deva[प्रगृह्य], regardless of how many syllables they contain.
+
+**Example:** @deva[अहो अपेहि] "Alas, go away!"
+
+**Contrast with @ref[1.1.14]:** That rule requires the particle to consist of a single vowel only. This rule has no such length restriction — any particle ending in @deva[ओ] qualifies, whether monosyllabic or polysyllabic.
+
+**Why a separate rule?** @deva[ओ] is not covered by @ref[1.1.11] (which lists @deva[ई], @deva[ऊ], @deva[ए] for duals) or by @ref[1.1.14] (which covers single-vowel particles). Exclamatory particles like @deva[अहो] have multiple sounds, so they need their own provision.
+
+**What @deva[सन्धि] would otherwise apply:** @ref[6.1.78] (@deva[एचोऽयवायावः]) converts @deva[ओ] before a vowel to @deva[अव्]. This rule prevents that.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[निपातः] from @ref[1.1.14]; @deva[प्रगृह्यम्] from @ref[1.1.11].
+
+@deva[ओत्] — @deva[ओ]-final @deva[निपात]s are @deva[प्रगृह्य]. The @deva[त्] in @deva[ओत्] is a citation convention (@deva[उच्चारणार्थ]), not part of the operative content.
+
+**Scope compared to @ref[1.1.14]:** @ref[1.1.14] requires @deva[एकाच्] (single vowel only). @deva[अहो] has two syllables, so @ref[1.1.14] cannot cover it. This rule drops the @deva[एकाच्] condition and applies to any @deva[निपात] with final @deva[ओ].
+
+**Why @deva[ओ] needs separate treatment:** @deva[ओ] is an @deva[एच्] vowel (diphthong). Before another vowel, @ref[6.1.78] (@deva[एचोऽयवायावः]) would convert it: @deva[ओ] → @deva[अव्]. The @deva[प्रगृह्य] designation, enforced by @ref[6.1.125], preempts this conversion.
+
+**Particles covered:** @deva[अहो] "alas," @deva[उतो] "or indeed," @deva[अथो] "and also." These are all @deva[निपात]s by @ref[1.4.56].
+
+**Why not @deva[औ]-final particles?** @deva[औ]-final particles are not mentioned because @deva[पाणिनि] does not recognize any @deva[औ]-final @deva[निपात]s. The @deva[काशिका] does not raise the question, confirming the omission is deliberate.
+
+**Design of the @deva[प्रगृह्य] series:** @ref[1.1.11]–@ref[1.1.15] collectively cover: dual @deva[ई/ऊ/ए] endings, @deva[अदस्]-specific forms, the Vedic @deva[शे], single-vowel particles (minus @deva[आङ्]), and @deva[ओ]-final particles. Each rule extends @deva[प्रगृह्य] to a class that the previous rules missed.
+"""

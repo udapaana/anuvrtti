@@ -1,0 +1,46 @@
+id = "1.3.90"
+numericId = "13090"
+
+[en]
+simple = """
+Denominative verbs (verbs formed from nouns or adjectives) using the affix @deva[क्यष्] optionally take @deva[परस्मैपद] (active endings) — either @deva[परस्मैपद] or @deva[आत्मनेपद] may be used.
+
+**Both are correct:**
+- @deva[लोहितायति] / @deva[लोहितायते] "it becomes red"
+- @deva[पटपटायति] / @deva[पटपटायते] "it makes a pattering sound"
+
+The affix @deva[क्यष्] is added to words like @deva[लोहित] "red" to form verbs meaning "to become X" or "to act like X." Since @deva[क्यष्] is marked with @deva[ष्] (a @deva[ङित्] marker), the base form would normally take @deva[आत्मनेपद] only — this rule opens up the @deva[परस्मैपद] option.
+"""
+
+standard = """
+Denominatives formed with @deva[क्यष्] (by @ref[3.1.12], @deva[भृशादिभ्यो भावे]) optionally take @deva[परस्मैपद] — @deva[विभाषा].
+
+**Both valid:**
+- @deva[लोहितायति] / @deva[लोहितायते] "it becomes red"
+- @deva[पटपटायति] / @deva[पटपटायते] "it makes a pattering sound"
+
+**Rule type — @deva[विभाषा]:** @deva[क्यष्] carries @deva[ष्] as an @deva[इत्], making it @deva[ङित्]. By @ref[1.3.12], @deva[ङित्] affixes mandate @deva[आत्मनेपद]. This rule introduces optionality — @deva[परस्मैपद] becomes available alongside @deva[आत्मनेपद].
+
+**Scope:** Only @deva[क्यष्] denominatives. Other denominative affixes (@deva[क्यच्], @deva[काम्यच्], etc.) follow their own @deva[पद]-assignment rules.
+
+**Option analysis:**
+- @deva[परस्मैपद] option: this rule applies
+- @deva[आत्मनेपद] option: @ref[1.3.12] applies (@deva[ङित्] → @deva[आत्मनेपद])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78].
+
+@deva[क्यषः परस्मैपदं विभाषा] — denominatives in @deva[क्यष्] optionally take @deva[परस्मैपद].
+
+**Override of @ref[1.3.12]:** @deva[क्यष्] is @deva[ङित्] (the @deva[ष्] is a @deva[ङित्] marker by @ref[1.3.3]/@ref[1.3.4]). @ref[1.3.12] therefore mandates @deva[आत्मनेपद]. This rule partially overrides @ref[1.3.12] by introducing optionality.
+
+**@deva[क्यष्] denominatives:** Formed by @ref[3.1.12] (@deva[भृशादिभ्यो भावे]) from the @deva[भृशादि] group. These express "becoming X" or "acting intensely like X": @deva[लोहित] → @deva[लोहितायति/लोहितायते] "it becomes red."
+
+**Distinct from other denominatives:**
+- @deva[क्यच्] denominatives: governed by their own rules
+- @deva[णिच्] causatives: governed by @ref[1.3.74], @ref[1.3.86]–@ref[1.3.89]
+- @deva[सन्] desideratives: governed by @ref[1.3.57]–@ref[1.3.62]
+
+**Position:** This is an isolated rule — neither part of the @deva[परस्मैपद] override series (@ref[1.3.79]–@ref[1.3.85]) nor the causative block (@ref[1.3.86]–@ref[1.3.89]). It addresses a specific affix type before the Vedic rules (@ref[1.3.91]–@ref[1.3.93]).
+"""

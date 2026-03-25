@@ -1,0 +1,45 @@
+id = "2.1.54"
+numericId = "21054"
+
+[en]
+simple = """
+The words @deva[पाप] "wicked" and @deva[अणक] "insignificant/contemptible" compound as **first members** with words expressing vileness to form @deva[तत्पुरुष].
+
+**Examples:**
+- @deva[पापनापितः] "a contemptible barber"
+- @deva[अणकनापितः] "a worthless barber"
+- @deva[पापकुलालः] "a contemptible potter"
+- @deva[अणककुलालः] "a worthless potter"
+
+In the previous rule (@ref[2.1.53]), the contemptible term came first and the vileness-word came second. Here, @deva[पाप] and @deva[अणक] — which are themselves expressions of contempt — come first, restoring the normal compound order where the qualifying word leads.
+"""
+
+standard = """
+@deva[पाप]/@deva[अणक] + @deva[कुत्सनवाचक] → @deva[तत्पुरुष] — @deva[पापोऽणकः].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[पापनापितः] "a contemptible barber"
+- @deva[अणकनापितः] "a worthless barber"
+- @deva[पापकुलालः] "a contemptible potter"
+- @deva[अणककुलालः] "a worthless potter"
+
+**Relation to @ref[2.1.53]:** @ref[2.1.53] had the @deva[कुत्सित] word (thing contemned) first and the @deva[कुत्सन] word (vileness expression) second — reversed from normal order. This rule corrects that for @deva[पाप] and @deva[अणक]: since they are themselves words of contempt (@deva[कुत्सन]), they stand as first members per normal @deva[उपसर्जन]-first order (@ref[2.2.30]).
+
+**Purpose:** By @ref[1.2.43] and @ref[2.2.30], the qualifying (@deva[उपसर्जन]) member stands first. @deva[पाप] and @deva[अणक], being qualifying adjectives of contempt, naturally precede the noun they modify.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कुत्सनैः] from @ref[2.1.53]; @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3].
+
+@deva[पापोऽणकः] — @deva[पाप] and @deva[अणक] compound as first members with @deva[कुत्सन] words as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**Order correction from @ref[2.1.53]:** @ref[2.1.53] placed the @deva[कुत्सित] term first — an exception to @ref[2.2.30] (@deva[उपसर्जनं पूर्वम्]). This rule is framed to restore normal order for @deva[पाप] and @deva[अणक]: being words of contempt, they are the @deva[उपसर्जन] (qualifier) and naturally come first.
+
+**@ref[1.2.43] interaction:** @ref[1.2.43] (@deva[प्रथमानिर्दिष्टं समास उपसर्जनम्]) identifies the member cited in @deva[प्रथमा] in the @[sūtra] as @deva[उपसर्जन]. In @ref[2.1.53], the @deva[कुत्सित] words were in @deva[प्रथमा] — making them @deva[उपसर्जन] and requiring them to stand first by @ref[2.2.30]. But that clashes with the intent of @ref[2.1.53], which placed them first as the thing contemned. This rule avoids that complexity by explicitly naming @deva[पाप]/@deva[अणक] as first members.
+
+**@deva[अणक]:** A rare word meaning "insignificant, small, contemptible." It appears primarily in this grammatical context and in @deva[गण] lists.
+
+**Pair with @ref[2.1.53]:** Together, @ref[2.1.53]–@ref[2.1.54] cover contempt-compounds comprehensively: @ref[2.1.53] for the general case (contemptible thing first, vileness word second), @ref[2.1.54] for @deva[पाप]/@deva[अणक] specifically (contempt word first, contemptible thing second).
+"""

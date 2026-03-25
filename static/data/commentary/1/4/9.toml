@@ -1,0 +1,48 @@
+id = "1.4.9"
+numericId = "14009"
+
+[en]
+simple = """
+In Vedic texts, @deva[पति] "lord" is optionally treated as @deva[घि] when it is governed by a genitive word (when the "lord of X" relationship is expressed with a separate genitive word rather than a compound).
+
+**Both forms valid in Vedic:**
+- @deva[कुलुञ्चानां पतये] "to the lord of the @deva[कुलुञ्च]s" (@deva[घि] — with @deva[गुण])
+- @deva[कुलुञ्चानां पत्ये] "to the lord of the @deva[कुलुञ्च]s" (not @deva[घि] — irregular)
+
+**In classical Sanskrit — no option:**
+- @deva[ग्रामस्य पत्ये] only (not @deva[घि], since @deva[पति] is standalone)
+
+This is a Vedic-only rule. In classical Sanskrit, standalone @deva[पति] is never @deva[घि] (by @ref[1.4.8]).
+"""
+
+standard = """
+In Vedic, @deva[पति] with a genitive dependent (@deva[षष्ठीस्थ]) is optionally @deva[घि] — @deva[विभाषा].
+
+**Vedic (both valid):**
+- @deva[कुलुञ्चानां पतये] (as @deva[घि] — @deva[गुण])
+- @deva[कुलुञ्चानां पत्ये] (not @deva[घि] — irregular)
+
+**Classical (no option):**
+- @deva[ग्रामस्य पत्ये] only
+
+**Rule type — Vedic @deva[विभाषा] modifying @ref[1.4.8]:** @ref[1.4.8] restricts @deva[पति]'s @deva[घि] status to compounds only. In Vedic, when the possessive relationship is expressed analytically (genitive + @deva[पति]) rather than synthetically (compound), the @deva[घि] option is available.
+
+**Scope:** Only when @deva[पति] is governed by a genitive. Standalone @deva[पति] without a genitive (e.g., "the husband" without specifying whose) remains non-@deva[घि] even in Vedic.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[घि] from @ref[1.4.7]; @deva[पति] from @ref[1.4.8].
+
+@deva[षष्ठ्यर्थे छन्दसि विभाषा] — in Vedic, @deva[पति] with a genitive is optionally @deva[घि].
+
+**Vedic relaxation of @ref[1.4.8]:** @ref[1.4.8] mandates that @deva[पति] is @deva[घि] only in compounds. In Vedic, the analytical construction (genitive + @deva[पति]) is equivalent to the compound (@deva[तत्पुरुष]) — so the @deva[घि] option is extended.
+
+**@deva[षष्ठ्यर्थे] = "in the sense of the genitive":** The genitive word expresses the same relationship as the @deva[पूर्वपद] of a @deva[तत्पुरुष] compound. @deva[कुलुञ्चानां पतये] ≈ @deva[कुलुञ्चपतये].
+
+**@deva[घि] series complete (@ref[1.4.7]–@ref[1.4.9]):**
+- @ref[1.4.7]: short @deva[इ]/@deva[उ] (not @deva[नदी], not @deva[सखि]) → @deva[घि]
+- @ref[1.4.8]: @deva[पति] → @deva[घि] only in compounds
+- @ref[1.4.9] (this): Vedic — @deva[पति] with genitive → optionally @deva[घि]
+
+**Transition:** @ref[1.4.10] begins the @deva[लघु]/@deva[गुरु] @deva[संज्ञा] section — syllable weight for prosodic rules.
+"""

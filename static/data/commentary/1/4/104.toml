@@ -1,0 +1,49 @@
+id = "1.4.104"
+numericId = "14104"
+
+[en]
+simple = """
+Each group of three endings — whether verb endings (@deva[तिङ्]) or case endings (@deva[सुप्]) — is called a @deva[विभक्ति] "inflectional set."
+
+A @deva[विभक्ति] is always a triad: one singular, one dual, one plural ending that belong together.
+
+**Examples:**
+- The three nominative case endings (@deva[सु], @deva[औ], @deva[जस्]) form one @deva[विभक्ति] — called @deva[प्रथमा विभक्ति]
+- The three locative case endings (@deva[ङि], @deva[ओस्], @deva[सुप्]) form another — called @deva[सप्तमी विभक्ति]
+- The three 3rd-person verb endings (@deva[तिप्], @deva[तस्], @deva[झि]) form one — called @deva[प्रथमपुरुष विभक्ति]
+
+When the grammar says "use the seventh @deva[विभक्ति]," it means: pick the locative ending that matches your number (singular, dual, or plural).
+"""
+
+standard = """
+Each triad of @deva[तिङ्] or @deva[सुप्] affixes is called @deva[विभक्ति] — @deva[विभक्तिश्च].
+
+**Rule type — @deva[संज्ञा]:** Names the triadic grouping of inflectional endings.
+
+**Scope:** Applies to both:
+- @deva[सुप्] triads: 7 @deva[विभक्ति] (nominative through locative)
+- @deva[तिङ्] triads: 3 @deva[विभक्ति] per voice (@deva[प्रथम], @deva[मध्यम], @deva[उत्तम])
+
+**Examples:**
+- @deva[प्रथमा विभक्ति] (@deva[सुप्]) = nominative: @deva[सु], @deva[औ], @deva[जस्]
+- @deva[सप्तमी विभक्ति] (@deva[सुप्]) = locative: @deva[ङि], @deva[ओस्], @deva[सुप्]
+- @deva[प्रथम विभक्ति] (@deva[तिङ्]) = 3rd person: @deva[तिप्], @deva[तस्], @deva[झि]
+
+**Practical use:** When a rule says @deva[सप्तम्यां विभक्तौ] "in the seventh @deva[विभक्ति]," it means the locative triad. The specific member is then selected by @deva[वचन] (number) based on the referent.
+
+**@deva[विभक्ति] ≠ individual ending:** The term refers to the triad as a unit, not to a single ending. A single ending is a member of a @deva[विभक्ति].
+"""
+
+advanced = """
+@deva[विभक्तिश्च] — triads of @deva[तिङ्] and @deva[सुप्] are called @deva[विभक्ति].
+
+**@deva[अनुवृत्ति]:** @deva[तिङ्] from @ref[1.4.101]; @deva[सुप्] from @ref[1.4.103].
+
+**@deva[विभक्ति] as operational unit:** Many rules in the grammar operate on @deva[विभक्ति] rather than individual endings. For example, @deva[कारक] rules (@ref[2.3.1] ff.) assign a @deva[विभक्ति] (case triad), and @deva[वचन] then selects the specific ending. This two-step process — first case, then number — is fundamental to how the grammar generates nominal forms.
+
+**@deva[विभक्ति] in the verbal domain:** For verbs, the @deva[विभक्ति] is the person triad. @deva[पुरुष]-assignment rules (@ref[1.4.105]–@ref[1.4.108]) select the triad; @deva[वचन] selects within it.
+
+**Seven @deva[सुप्] @deva[विभक्ति]:** @deva[प्रथमा] (nominative), @deva[द्वितीया] (accusative), @deva[तृतीया] (instrumental), @deva[चतुर्थी] (dative), @deva[पञ्चमी] (ablative), @deva[षष्ठी] (genitive), @deva[सप्तमी] (locative). The @deva[सम्बोधन] (vocative) is a subtype of @deva[प्रथमा] by @ref[2.3.47]–@ref[2.3.49].
+
+**Terminological precision:** @deva[विभक्ति] refers to the affix triad, not the case meaning. The case meaning is expressed through @deva[कारक] and other semantic roles; the @deva[विभक्ति] is the formal marker. This distinction matters because the same @deva[विभक्ति] can express different meanings (@deva[षष्ठी] marks both possession and other relations).
+"""

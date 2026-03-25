@@ -1,0 +1,40 @@
+id = "1.2.14"
+numericId = "12014"
+
+[en]
+simple = """
+After the root @deva[हन्] "to kill," the aorist affix @deva[सिच्] in @deva[आत्मनेपद] (middle voice) is treated as @deva[कित्]. Because it is @deva[कित्], the nasal @deva[न्] of @deva[हन्] drops (by @ref[6.4.37]).
+
+**Examples:**
+- @deva[आहत] "he killed (himself/was killed)"
+- @deva[आहसाताम्] "those two killed"
+- @deva[आहसत] "they killed"
+
+This rule covers only @deva[सिच्] (aorist), not @deva[लिङ्] (benedictive) — a narrower scope than the preceding rules.
+"""
+
+standard = """
+@deva[सिच्] in @deva[आत्मनेपद] is @deva[कित्] after @deva[हन्] "to kill." The nasal drops by @ref[6.4.37].
+
+**Aorist forms:** @deva[आहत], @deva[आहसाताम्], @deva[आहसत].
+
+**Why only @deva[सिच्], not @deva[लिङ्]?** The @deva[अनुवृत्ति] of @deva[लिङ्] from @ref[1.2.11] ends here. This rule explicitly mentions only @deva[सिच्], terminating the benedictive's @deva[कित्] treatment.
+
+**Why @deva[आत्मनेपद]?** In @deva[परस्मैपद] aorist, @deva[हन्] is replaced by the substitute @deva[वध्], so the original root's nasal is already gone. The @deva[आत्मनेपद] restriction is technically redundant but carried over from @ref[1.2.11].
+
+**@deva[कित्] effect:** Nasal deletion, not @deva[गुण]-blocking. @deva[हन्] has @deva[उपधा] @deva[अ]; @deva[गुण] of @deva[अ] = @deva[अ], so @deva[गुण]-blocking is vacuous.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[आत्मनेपदेषु] from @ref[1.2.11]; @deva[झलादि] from context.
+
+@deva[हनः सिचि] — @deva[सिच्] in @deva[आत्मनेपद] is @deva[कित्] after @deva[हन्].
+
+**Scope narrowing:** This rule marks the end of @deva[लिङ्]'s @deva[अनुवृत्ति]. From @ref[1.2.11] through @ref[1.2.13], both @deva[लिङ्] and @deva[सिच्] were covered. From this rule onward (through @ref[1.2.17]), only @deva[सिच्] continues.
+
+**Forms:** @deva[आहत] (3sg), @deva[आहसाताम्] (3du), @deva[आहसत] (3pl). The nasal @deva[न्] drops by @ref[6.4.37] before @deva[कित्].
+
+**Why @deva[आत्मनेपद] is redundant here:** In @deva[परस्मैपद], @deva[हन्] → @deva[वध्] by @ref[2.4.42] before @deva[लुङ्] endings. The original root with its nasal is replaced entirely. So @deva[कित्] status for @deva[परस्मैपद] would be meaningless.
+
+**The @deva[सिच्] series (@ref[1.2.14]–@ref[1.2.17]):** From here through @ref[1.2.17], the grammar specifies @deva[कित्] treatment for @deva[सिच्] alone, targeting individual roots where nasal deletion or @deva[गुण]-blocking is needed in the aorist @deva[आत्मनेपद].
+"""

@@ -1,0 +1,39 @@
+id = "3.1.35"
+numericId = "31035"
+
+[en]
+simple = """
+This rule introduces the affix @deva[आम्] for forming the periphrastic perfect. It applies to the root @deva[कास्] (to cough) and to derivative verbs (roots formed with affixes like @deva[णिच्], @deva[सन्], @deva[यङ्]) when @deva[लिट्] (perfect tense) follows—but only in Vedic mantras.
+
+After @deva[आम्] is added, the perfect endings are deleted (by @ref[2.4.81]), and the perfect of an auxiliary verb (@deva[भू] or @deva[अस्]) is added instead.
+
+Examples: @deva[कासाञ्चक्रे] (he coughed), @deva[चोरयामास] (he stole), @deva[लोलूवाञ्चक्रे] (he cut repeatedly).
+
+This rule does not apply outside the Vedas. In Vedic texts, we find forms like @deva[कृष्णो नोनाव] (Rig Veda 1.79.2) without @deva[आम्].
+"""
+
+standard = """
+The affix @deva[आम्] is added to @deva[कास्] (to cough) and to derivative verbs (@deva[णिजन्त], @deva[सनन्त], @deva[यङन्त], etc.) when @deva[लिट्] (perfect) follows, restricted to Vedic @deva[मन्त्र]s. This creates the periphrastic perfect.
+
+After @deva[आम्], the @deva[लिट्] endings undergo @deva[लुक्] by @ref[2.4.81], and the perfect of @deva[भू], @deva[अस्], or @deva[कृ] is appended.
+
+Examples: @deva[कासाञ्चक्रे], @deva[चोरयामास], @deva[लोलूवाञ्चक्रे].
+
+In non-Vedic contexts, @deva[कास्] and derivative verbs form the periphrastic perfect without this rule being restricted to mantras. Vedic allows alternatives: @deva[कृष्णो नोनाव] (RV 1.79.2) shows a regular perfect.
+
+@note[type=@[vārtika]]: The rule extends to polysyllabic roots (roots with more than one vowel): @deva[चुलुम्पाञ्चकार], @deva[दरिद्राञ्चकार].
+"""
+
+advanced = """
+The affix @deva[आम्] is introduced after @deva[कास्] and @deva[णिजादि]-derived @deva[धातु]s when @deva[लिट्] follows, with the domain restricted to @deva[मन्त्र]. The final @deva[म्] of @deva[आम्] is not @deva[इत्]—it remains in the form.
+
+After @deva[आम्], @ref[2.4.81] @deva[आमः] triggers @deva[लुक्] of the @deva[लिट्] endings, requiring an auxiliary @deva[लिट्] form (@deva[चकार]/@ deva[@deva[बभूव]]/@deva[आस]).
+
+Examples: @deva[कासाञ्चक्रे], @deva[चोरयामास], @deva[लोलूवाञ्चक्रे].
+
+Vedic exception: Regular @deva[लिट्] without @deva[आम्] is attested—@deva[कृष्णो नोनाव] (RV 1.79.2).
+
+@note[type=@[vārtika]]: @deva[अनेकाचश्च] — polysyllabic roots also take @deva[आम्]: @deva[चुलुम्पाञ्चकार], @deva[दरिद्राञ्चकार].
+
+@note[type=observation]: In classical Sanskrit, @ref[3.1.40] @deva[कास्प्रत्ययादाम मन्त्रे] applies more broadly, requiring @deva[आम्] for @deva[कास्] and derivative verbs in @deva[लिट्] without the @deva[मन्त्र] restriction.
+"""

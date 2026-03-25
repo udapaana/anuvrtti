@@ -1,0 +1,41 @@
+id = "3.1.64"
+numericId = "31064"
+
+[en]
+simple = """
+This rule says that @deva[चिण्] does NOT replace @deva[च्लि] after the root @deva[रुध्] (to obstruct) when used reflexively in the third person singular @deva[आत्मनेपद].
+
+Reflexive example (no @deva[चिण्], uses @deva[क्स] instead):
+- @deva[अन्ववारुद्ध गौ स्वयमेव] (the cow was obstructed of itself)
+
+In non-reflexive (passive) sense, @deva[चिण्] is used:
+- @deva[अन्ववारोधि गौर्गोपालकेन] (the cow was obstructed by the cowherd)
+
+This is an exception: while most consonant-final roots take obligatory @deva[चिण्] in @deva[कर्मकर्तरि], @deva[रुध्] specifically does not.
+"""
+
+standard = """
+@deva[चिण्] does NOT substitute for @deva[च्लि] after @deva[रुध्] (to obstruct) in @deva[कर्मकर्तरि] (reflexive) when @deva[आत्मनेपद] 3rd singular @deva[त] follows.
+
+Reflexive (@deva[क्स], not @deva[चिण्]):
+- @deva[अन्ववारुद्ध गौ स्वयमेव] (the cow was obstructed of itself)
+
+Passive (@deva[चिण्]):
+- @deva[अन्ववारोधि गौर्गोपालकेन] (the cow was obstructed by the cowherd)
+
+This is an exception (@deva[अपवाद]) to @ref[3.1.62]'s provision that consonant-final roots take @deva[चिण्] in @deva[कर्मकर्तरि]. @deva[रुध्] instead takes @deva[क्स]-aorist (by @ref[3.1.45]) in reflexive sense.
+"""
+
+advanced = """
+This @deva[प्रतिषेधसूत्र] blocks @deva[चिण्] after @deva[रुध्] in @deva[कर्मकर्तरि] when @deva[आत्मनेपद] 3rd singular @deva[त] follows.
+
+Reflexive (@deva[क्स]):
+- @deva[अन्ववारुद्ध गौ स्वयमेव]
+
+Passive (@deva[चिण्]):
+- @deva[अन्ववारोधि गौर्गोपालकेन]
+
+By @ref[3.1.62], @deva[हलन्त] roots normally take @deva[चिण्] obligatorily in @deva[कर्मकर्तरि]. This rule excludes @deva[रुध्], which instead takes @deva[क्स] (by @ref[3.1.45], since @deva[रुध्] is @deva[शल्]-final with @deva[इक्]-penultimate).
+
+@note[type=observation]: In @deva[कर्मणि] (passive with external agent), @deva[रुध्] still takes @deva[चिण्]. Only the @deva[कर्मकर्तरि] construction is affected by this prohibition.
+"""

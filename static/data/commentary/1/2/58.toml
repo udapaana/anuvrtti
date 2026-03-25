@@ -1,0 +1,46 @@
+id = "1.2.58"
+numericId = "12058"
+
+[en]
+simple = """
+For @deva[जाति] words (class nouns — words that denote a species or category, like "barley" or "rice"), the plural can optionally be used even when referring to a single item. This is because a class noun refers to the whole class, not just one individual.
+
+**Both valid:**
+- @deva[संपन्नो यवः] "full-grown barley" (singular)
+- @deva[संपन्ना यवाः] "full-grown barley" (plural form, same meaning)
+
+**Does not apply to proper nouns:** @deva[देवदत्तः] "Devadatta" — only singular for one person. Proper nouns name individuals, not classes.
+
+**With a numeral — no option:** @deva[एको ब्रीहिः संपन्नः] "one rice plant has grown" — the numeral restricts it to singular.
+"""
+
+standard = """
+For @deva[जाति] (class-denoting nouns), plural optionally expresses singular or dual meaning. This is a @deva[विभाषा] rule about number usage.
+
+**@deva[जाति]:** A noun denoting a species or class — @deva[यव] "barley," @deva[ब्रीहि] "rice," @deva[ब्राह्मण].
+
+**Examples (both valid):**
+- @deva[संपन्नो यवः] or @deva[संपन्ना यवाः] "full-grown barley"
+- @deva[पूर्ववया ब्राह्मणः] or @deva[पूर्ववयसो ब्राह्मणाः] "an elderly @deva[ब्राह्मण]"
+
+**Restrictions:**
+1. **Not proper nouns:** @deva[देवदत्तः] — only singular for one person
+2. **Not non-appellatives:** A statue called @deva[काश्यप] cannot use plural for singular (it is not a class name in that usage)
+3. **Numeral blocks option:** @deva[एको ब्रीहिः संपन्नः] — "one rice plant" must be singular
+
+**Why this works:** A class noun like @deva[यव] denotes the entire class. Whether you say "barley is grown" (sg.) or "barleys are grown" (pl.), the referent is the same — the class itself.
+"""
+
+advanced = """
+@deva[जात्याख्यायामेकस्मिन् बहुवचनमन्यतरस्याम्] — for @deva[जाति] (class noun) denoting one, plural is optional.
+
+**@deva[जाति] vs. @deva[व्यक्ति]:** A @deva[जाति] word denotes a class by its form (@deva[आकृति]), applicable to individuals without special instruction. A @deva[व्यक्ति] word denotes a specific individual.
+
+**The number alternation explained:** When a @deva[जाति] word refers to a single entity, it may take plural because the class-nature of the word makes number somewhat fluid. The class "barley" is singular-or-plural indifferently.
+
+**@deva[एकस्मिन्] ("for one"):** This option applies only when referring to one entity. For two entities, the standard dual applies; for many, the standard plural. The option is specifically: singular meaning → optionally expressed by plural.
+
+**@deva[आख्या] ("appellation"):** The word must be an appellation — a name for a class in common use. A statue named @deva[काश्यप] is not a class appellation, so it cannot use this option.
+
+**Topic shift:** This rule begins the @deva[वचन] (number) section (@ref[1.2.58]–@ref[1.2.73]), covering optional number alternations for class nouns, pronouns, dual/plural nouns, and the special @deva[गण] designations.
+"""

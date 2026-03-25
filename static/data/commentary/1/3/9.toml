@@ -1,0 +1,42 @@
+id = "1.3.9"
+numericId = "13009"
+
+[en]
+simple = """
+Whatever has been identified as @deva[इत्] (by rules @ref[1.3.2]–@ref[1.3.8]) is deleted. @deva[इत्] letters exist only as markers — they trigger other rules but never appear in the final word.
+
+**Examples:**
+- @deva[क्त्वा]: @deva[क्] is @deva[इत्] → deleted → @deva[त्वा]
+- @deva[णिच्]: @deva[ण्] and @deva[च्] are @deva[इत्] → deleted → @deva[इ]
+- @deva[तिप्]: @deva[प्] is @deva[इत्] → deleted → @deva[ति]
+- @deva[ञिमिदा]: @deva[ञि] (initial marker) and @deva[आ] (nasal vowel marker) are @deva[इत्] → deleted → @deva[मिद्]
+
+The markers do their job first (triggering accent rules, blocking @deva[गुण], etc.), then they are removed.
+"""
+
+standard = """
+@deva[इत्] letters undergo @deva[लोप] (deletion). This is the @deva[विधि] (operational rule) that completes the @deva[इत्] system defined in @ref[1.3.2]–@ref[1.3.8].
+
+**@deva[तस्य] — whole-unit deletion:** The word @deva[तस्य] specifies that the entire @deva[इत्] element is replaced by zero — not just its final letter. Without @deva[तस्य], the default @ref[1.1.52] (@deva[अलोऽन्त्यस्य]) would replace only the last letter. This matters for multi-letter @deva[इत्] units: @deva[ञि], @deva[टु], @deva[डु] are deleted entirely, not letter by letter.
+
+**Examples:**
+- @deva[क्त्वा] → @deva[त्वा] (@deva[क्] deleted)
+- @deva[णिच्] → @deva[इ] (@deva[ण्] and @deva[च्] both deleted)
+- @deva[डुकृञ्] → @deva[कृ] (@deva[डु] deleted entirely, @deva[ञ्] deleted)
+
+**Sequence of operations:** @deva[इत्] letters function first — they trigger other rules, form @deva[प्रत्याहार]s, determine @deva[कित्]/@deva[ङित्] status. Only then are they deleted. The deletion does not happen before the @deva[इत्] properties take effect.
+"""
+
+advanced = """
+@deva[तस्य लोपः] — @deva[इत्] letters are deleted.
+
+**@deva[विधि] rule:** This is the operational counterpart to the @deva[संज्ञा] rules at @ref[1.3.2]–@ref[1.3.8]. Those rules identify @deva[इत्]; this rule deletes it.
+
+**@deva[तस्य] and @ref[1.1.52]:** By default, @ref[1.1.52] (@deva[अलोऽन्त्यस्य]) would make @deva[लोप] replace only the last sound of the @deva[इत्] unit. The @deva[षष्ठी] @deva[तस्य] overrides this — the entire @deva[इत्] element undergoes @deva[लोप]. This is essential for @deva[ञि], @deva[टु], @deva[डु] (two-letter @deva[इत्] units from @ref[1.3.5]).
+
+**@deva[लोप] vs. complete absence:** @deva[लोप] is technically a zero-replacement (@deva[अदर्शनम्] — "non-appearance," @ref[1.1.60]). The @deva[इत्] letter is replaced by @deva[लोप], not simply erased. This distinction matters because @deva[लोप] is a @deva[स्थानिवत्] substitute — by @ref[1.1.56], the zero left behind can retain certain properties of the original in specific contexts.
+
+**Timing in derivation:** @deva[इत्] properties are read before deletion. The grammar first recognizes that @deva[क्त] is @deva[कित्] (blocking @deva[गुण] by @ref[1.1.5]), then deletes the @deva[क्]. This ordering is assumed, not stated — it is a foundational principle of @deva[पाणिनीय] derivation.
+
+**Transition:** With @deva[इत्] defined (@ref[1.3.2]–@ref[1.3.8]) and deleted (@ref[1.3.9]), the grammar moves to @ref[1.3.10] (@deva[यथासंख्य] — ordered correspondence) and then to the major topic of this @deva[पाद]: @deva[पद] assignment (@ref[1.3.12]–@ref[1.3.93]).
+"""

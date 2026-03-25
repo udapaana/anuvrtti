@@ -1,0 +1,43 @@
+id = "2.3.9"
+numericId = "23009"
+
+[en]
+simple = """
+When the particle @deva[उप] means "more than" or @deva[अधि] means "lord/ruler of," the governed word takes the @deva[सप्तमी] (locative) instead of the usual accusative.
+
+**Examples:**
+- @deva[उप खार्यां द्रोणः] "a @deva[द्रोण] (measure) exceeds a @deva[खारी] (smaller measure)" — @deva[उप] expresses "more than," so @deva[खारी] takes the locative
+- @deva[अधि ब्रह्मदत्ते पञ्चालाः] "@deva[ब्रह्मदत्त] rules over the @deva[पञ्चाल]-s" — @deva[अधि] expresses lordship, so @deva[ब्रह्मदत्त] takes the locative
+
+Without this rule, both words would take the accusative under the general @deva[कर्मप्रवचनीय] rule (@ref[2.3.8]).
+"""
+
+standard = """
+@deva[कर्मप्रवचनीय] + @deva[अधिकवचन]/@deva[ईश्वरवचन] → @deva[सप्तमी] — @deva[यस्मादधिकं यस्येश्वरवचनं सप्तम्यतसर्थे].
+
+**Rule type — @deva[अपवाद]:** Overrides the default @deva[द्वितीया] of @ref[2.3.8] with @deva[सप्तमी] for two specific senses.
+
+**Two conditions:**
+1. **@deva[अधिकवचन]** (excess): @deva[उप] per @ref[1.4.87] — @deva[उप खार्यां द्रोणः] "a @deva[द्रोण] exceeds a @deva[खारी]"
+2. **@deva[ईश्वरवचन]** (lordship): @deva[अधि] per @ref[1.4.97] — @deva[अधि ब्रह्मदत्ते पञ्चालाः] "@deva[ब्रह्मदत्त] rules the @deva[पञ्चाल]-s"
+
+**@deva[अतसर्थ] — ablative alternative:** The @deva[अतसर्थ] in the @[sūtra] permits @deva[पञ्चमी] as an alternative: @deva[उप खार्याद् द्रोणः] and @deva[अधि ब्रह्मदत्ताद् पञ्चालाः] are also valid.
+
+**Scope:** Only these two senses trigger @deva[सप्तमी]. Other uses of @deva[उप] or @deva[अधि] as @deva[कर्मप्रवचनीय]-s follow the default @deva[द्वितीया] of @ref[2.3.8].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्मप्रवचनीययुक्ते] from @ref[2.3.8]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[यस्मादधिकं यस्येश्वरवचनं सप्तम्यतसर्थे] — @deva[सप्तमी] (with @deva[पञ्चमी] as alternative) is assigned when the @deva[कर्मप्रवचनीय] expresses excess or lordship.
+
+**Two triggers:**
+1. @deva[उप] in @deva[अधिक] sense (@ref[1.4.87]): @deva[उप खार्यां द्रोणः] — the @deva[द्रोण] exceeds the @deva[खारी] in measure. @deva[खारी] is the standard of comparison, taking locative.
+2. @deva[अधि] in @deva[ईश्वर] sense (@ref[1.4.97]): @deva[अधि ब्रह्मदत्ते पञ्चालाः] — @deva[ब्रह्मदत्त] is lord over the @deva[पञ्चाल]-s. The ruled entity or the ruler takes locative.
+
+**@deva[अतसर्थ] — @deva[पञ्चमी] option:** The @[sūtra] includes @deva[अतसर्थे], permitting @deva[पञ्चमी] as a free alternative: @deva[उप खार्याद् द्रोणः], @deva[अधि ब्रह्मदत्तात् पञ्चालाः]. Both locative and ablative are equally valid.
+
+**@deva[ईश्वरवचन] scope per @ref[1.4.97]:** The @deva[काशिका] notes that both the ruled (@deva[पञ्चालाः]) and the ruler (@deva[ब्रह्मदत्त]) may appear in the locative: @deva[अधि ब्रह्मदत्ते पञ्चालाः] and @deva[अधि पञ्चालेषु ब्रह्मदत्तः] are both valid — the locative can mark either party.
+
+**@deva[अपवाद] relationship:** This rule is a specific exception to @ref[2.3.8]. For all other @deva[कर्मप्रवचनीय] senses, the default @deva[द्वितीया] applies. The three rules @ref[2.3.8]–@ref[2.3.10] form a complete hierarchy: default accusative, overridden by locative (this rule) or ablative (@ref[2.3.10]) for specific particle-senses.
+"""

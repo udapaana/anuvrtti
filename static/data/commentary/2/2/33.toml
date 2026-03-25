@@ -1,0 +1,37 @@
+id = "2.2.33"
+numericId = "22033"
+
+[en]
+simple = """
+In a @deva[द्वन्द्व] compound, a word that begins with a vowel and ends in short @deva[अ] is placed first.
+
+**Examples:**
+- @deva[उष्ट्रखरम्] "camel and donkey" — @deva[उष्ट्र] (vowel-initial, @deva[अ]-final) goes before @deva[खर] (consonant-initial)
+- @deva[उष्ट्रशशकम्] "camel and hare"
+"""
+
+standard = """
+@deva[अजाद्यतन्त] (vowel-initial + short-@deva[अ]-final) placed first in @deva[द्वन्द्व] — @deva[अजाद्यतश्टाप्].
+
+**Rule type — @deva[विधि] (ordering rule):** Second criterion for @deva[द्वन्द्व] member-order.
+
+**Examples:**
+- @deva[उष्ट्रखरम्] — @deva[उष्ट्र] is vowel-initial (@deva[उ]) and @deva[अ]-final
+- @deva[उष्ट्रशशकम्] — same pattern
+
+**Two conditions:** The word must satisfy both criteria simultaneously — (1) begin with a vowel and (2) end in short @deva[अ]. A word that is vowel-initial but @deva[इ]-final (like @deva[अग्नि]) is @deva[घि] and falls under @ref[2.2.32] instead.
+
+**In the ordering hierarchy:** This rule applies when @ref[2.2.32] (@deva[घि]-first) does not distinguish — i.e., neither word is @deva[घि]-ending, or both are.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[द्वन्द्वे] from @ref[2.2.32]; @deva[पूर्वम्] from @ref[2.2.30].
+
+@deva[अजाद्यतश्टाप्] (implied) — in @deva[द्वन्द्व], a word that is @deva[अजादि] (vowel-initial) and @deva[अत्] (short-@deva[अ]-final) is placed first.
+
+**Double condition:** Both criteria must be met: vowel-initial AND short-@deva[अ]-final. A word like @deva[अश्व] qualifies (vowel-initial, @deva[अ]-final). A word like @deva[अग्नि] does not qualify for this rule (it ends in @deva[इ], so it falls under @ref[2.2.32] as @deva[घि]).
+
+**Position in the ordering chain:** @ref[2.2.32] (@deva[घि]-first) > @ref[2.2.33] (vowel-initial, @deva[अ]-final first) > @ref[2.2.34] (fewer vowels first). Each rule applies only when the previous one does not resolve the ordering.
+
+**Phonetic motivation:** Vowel-initial words placed first avoids complex @deva[सन्धि] at the compound boundary. Starting with a vowel creates smoother junctures than consonant clusters.
+"""

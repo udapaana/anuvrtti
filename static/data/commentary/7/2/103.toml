@@ -1,0 +1,15 @@
+id = "7.2.103"
+numericId = "72103"
+
+[en]
+simple = """
+Before case-endings, @deva[क] replaces @deva[किम्]. @deva[कः], @deva[कौ], @deva[के].
+"""
+
+standard = """
+For @deva[किम्], @deva[क] replaces the whole before @deva[विभक्ति]: @deva[कः], @deva[कौ], @deva[के]. The substitute is @deva[क] (not just @deva[अ] for @deva[म्]) to handle @deva[अकच्]-augmented forms properly. If only @deva[अ] replaced @deva[म्], forms would be incorrect.
+"""
+
+advanced = """
+Why @deva[क] and not @deva[अ]? If @deva[किम्] + @deva[अ] (for @deva[म्]) → @deva[कि] + @deva[अ] → @deva[क] (by coalescence), the @deva[अकच्]-forms would fail. With @deva[क] as whole substitute: @deva[किम्] → @deva[क] + @deva[विभक्ति]. The @deva[अकच्] augment (@deva[किमक]) would then give @deva[किमक] + @deva[अ] = *@deva[कयक] (wrong). So @deva[क] wholesale substitution is needed.
+"""

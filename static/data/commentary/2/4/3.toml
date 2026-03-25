@@ -1,0 +1,40 @@
+id = "2.4.3"
+numericId = "24003"
+
+[en]
+simple = """
+When names of Vedic schools (@deva[चरण]) are compounded in a copulative compound (@deva[द्वन्द्व]), the compound takes the singular number — but only under very specific conditions: the sentence must express a repeated demonstration (@deva[अनुवाद]), and the verb must be the aorist (@deva[लुङ्]) of either @deva[स्था] 'to stand/establish' or @deva[इङ्] 'to go/arise'.
+
+**Examples (with @deva[अनुवाद] — re-demonstration):**
+- @deva[उदगात् कठकालापम्] 'the @[kaṭha] and @[kalāpa] schools arose again (demonstrating anew)' — singular
+- @deva[प्रत्यष्ठात् कठकौथुमम्] 'the @[kaṭha] and @[kauthuma] schools established themselves again' — singular
+
+**Counter-examples (first-time demonstration, not @deva[अनुवाद]):**
+- @deva[उदगुः कठकालापाः] 'the @[kaṭha] and @[kalāpa] schools arose (for the first time)' — plural
+
+The rule captures a narrow cultural context: when Vedic schools that had previously demonstrated a teaching do so again, the compound is collective singular.
+"""
+
+standard = """
+This @deva[विधि] rule assigns @deva[एकवचन] to a @deva[द्वन्द्व] of @deva[चरण] (Vedic school) names, subject to two conditions: (1) the sentence expresses @deva[अनुवाद] (re-demonstration or corroboration of something previously shown), and (2) the verb is @deva[लुङ्] (aorist) of either @deva[स्था] or @deva[इङ्].
+
+**Examples (singular — @deva[अनुवाद] present):**
+- @deva[उदगात् कठकालापम्] 'the @[kaṭha] and @[kalāpa] schools arose again'
+- @deva[प्रत्यष्ठात् कठकौथुमम्] 'the @[kaṭha] and @[kauthuma] schools re-established'
+
+**Counter-examples (plural — conditions not met):**
+- @deva[उदगुः कठकालापाः] — first-time demonstration, not @deva[अनुवाद]
+- @deva[प्रत्यष्ठुः कठकौथुमाः] — first-time, plural
+- @deva[अनन्दिषुः कठकालापाः] — different verb (not @deva[स्था] or @deva[इङ्]), plural
+- @deva[उदयन्ति कठकालापाः] — different tense (not @deva[लुङ्]), plural
+"""
+
+advanced = """
+The @deva[अनुवृत्ति] of @deva[एकवचन] continues from @ref[2.4.1]. This sūtra restricts the singular assignment to @deva[द्वन्द्व] of @deva[चरण] names with two simultaneous conditions: @deva[अनुवाद] (anaphoric re-demonstration) and specific verbal context (@deva[लुङ्] of @deva[स्था] or @deva[इङ्]).
+
+The term @deva[अनुवाद] here means a subsequent demonstration of what has already been demonstrated — not mere repetition but corroboration. When the demonstration is original (@deva[आदिप्रवचन]), plural is used: @deva[उदगुः कठकालापाः].
+
+The restriction to @deva[लुङ्] of @deva[स्था]/@deva[इङ्] is remarkably narrow. With other verbs (@deva[अनन्दिषुः कठकालापाः]) or other tenses (@deva[उदयन्ति कठकालापाः]), plural obtains. This specificity suggests the rule captures a fixed idiomatic pattern in scholarly discourse rather than a productive grammatical principle.
+
+The @deva[नपुंसकलिङ्ग] assignment follows from @ref[2.4.17] when singular is applied, making the compound neuter: @deva[कठकालापम्].
+"""

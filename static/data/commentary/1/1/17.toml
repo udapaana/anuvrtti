@@ -1,0 +1,39 @@
+id = "1.1.17"
+numericId = "11017"
+
+[en]
+simple = """
+The particle @deva[उञ्] (which sounds as @deva[उ] — the @deva[ञ्] is just a grammatical marker) is optionally @deva[प्रगृह्य] before @deva[इति], according to @deva[शाकल्य]. Both forms are correct.
+
+**Example:** @deva[उ इति] (no @deva[सन्धि]) or @deva[विति] (with @deva[सन्धि], where @deva[उ] + @deva[इ] merges into @deva[वि])
+
+This creates a tension with @ref[1.1.14], which makes all single-vowel particles unconditionally @deva[प्रगृह्य]. @deva[उञ्] is a single-vowel particle, so @ref[1.1.14] would block @deva[सन्धि] entirely. This rule carves out an exception: before @deva[इति] specifically, @deva[सन्धि] is permitted (but not required).
+"""
+
+standard = """
+The particle @deva[उञ्] (= @deva[उ]; the @deva[ञ्] is @deva[इत्] by @ref[1.3.3]) before @deva[इति] is optionally @deva[प्रगृह्य], per @deva[शाकल्य].
+
+**Both forms valid:**
+- @deva[उ इति] — @deva[प्रगृह्य] applies, no @deva[सन्धि]
+- @deva[विति] — @deva[प्रगृह्य] does not apply, @deva[उ] + @deva[इ] → @deva[वि] by @ref[6.1.77]
+
+**Interaction with @ref[1.1.14]:** @ref[1.1.14] makes all single-vowel @deva[निपात]s (except @deva[आङ्]) unconditionally @deva[प्रगृह्य]. This rule is an @deva[अपवाद] (exception) to that: specifically for @deva[उञ्] before @deva[इति], the exemption becomes optional rather than absolute.
+
+**Why @deva[शाकल्य]?** Citing a teacher's name signals optionality (@deva[आचार्योपज्ञे विभाषा]). Without the attribution, the rule would be mandatory.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रगृह्यम्] from @ref[1.1.11]; @deva[इति], @deva[शाकल्य], and @deva[अनार्षे] from @ref[1.1.16].
+
+@deva[उञः] — the particle @deva[उञ्] before @deva[इति] is optionally @deva[प्रगृह्य], per @deva[शाकल्य].
+
+**Option:** @deva[उ इति] (no @deva[सन्धि]) ~ @deva[विति] (@deva[उ] + @deva[इ] → @deva[वि] by @ref[6.1.77])
+
+**Relation to @ref[1.1.14]:** @ref[1.1.14] (@deva[निपात एकाज् अनाङ्]) makes single-vowel particles unconditionally @deva[प्रगृह्य]. This rule restricts that general provision: before @deva[इति], @deva[उञ्] is only optionally exempt. The relationship is @deva[अपवाद] — a narrower exception overriding the broader rule in its specific domain.
+
+**Why cite @deva[शाकल्य]?** The convention @deva[आचार्योपज्ञे विभाषा] — citing a teacher's name makes the rule optional. Without the attribution, the @deva[प्रगृह्य] designation would be mandatory. Compare @ref[1.2.15], where @deva[काश्यप] is cited @deva[पूजार्थम्] (honorifically) without creating optionality — showing that the convention admits exceptions.
+
+**@deva[योगविभाग]:** Some commentators hold that @ref[1.1.17] and @ref[1.1.18] were originally a single @deva[सूत्र] (@deva[उञ ऊँ च]), later divided by @deva[योगविभाग] to allow independent reference. The @deva[काशिका] discusses this possibility.
+
+**@deva[अनार्षे] condition:** The @deva[अनार्षे] from @ref[1.1.16] carries forward. In Vedic, @deva[उञ्] before @deva[इति] follows the Vedic @deva[सन्धि] conventions, not this optional rule.
+"""

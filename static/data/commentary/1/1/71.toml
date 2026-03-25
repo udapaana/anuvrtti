@@ -1,0 +1,56 @@
+id = "1.1.71"
+numericId = "11071"
+
+[en]
+simple = """
+A @deva[प्रत्याहार] is a shorthand for a group of sounds. To create one, take any sound from the @deva[माहेश्वरसूत्राणि] (the fourteen foundational sound-lists) and pair it with a later marker letter (@deva[इत्]). The @deva[प्रत्याहार] then covers all sounds between those two points.
+
+**Example:** @deva[अच्] — start at @deva[अ] (from @deva[अइउण्]), end at the marker @deva[च्] (from @deva[ऐऔच्]). All sounds between @deva[अ] and @deva[च्] are included: @deva[अ], @deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ], @deva[ए], @deva[ओ], @deva[ऐ], @deva[औ] — all the vowels.
+
+Other common examples: @deva[हल्] = all consonants, @deva[यण्] = the four semivowels (@deva[य], @deva[व], @deva[र], @deva[ल]), @deva[इक्] = @deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ].
+
+The marker letter itself is not included in the group — it serves only as an endpoint.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] defines the @deva[प्रत्याहार] mechanism: an initial sound (@deva[आदि]) combined with a final @deva[इत्] marker (@deva[अन्त्य]) from the @deva[माहेश्वरसूत्राणि] denotes all sounds in between.
+
+**How to read a @deva[प्रत्याहार]:**
+1. The first letter is the starting sound
+2. The last letter is the @deva[इत्] marker (endpoint)
+3. All sounds from the @deva[माहेश्वरसूत्राणि] between them (inclusive of the start, exclusive of the marker) form the group
+
+**Common @deva[प्रत्याहार]s:**
+| @deva[प्रत्याहार] | Sounds | Description |
+|-------------------|--------|-------------|
+| @deva[अच्] | @deva[अ इ उ ऋ ऌ ए ओ ऐ औ] | All vowels |
+| @deva[हल्] | @deva[ह य व र] through @deva[ह] | All consonants |
+| @deva[यण्] | @deva[य व र ल] | Semivowels |
+| @deva[इक्] | @deva[इ उ ऋ ऌ] | Non-@deva[अ] simple vowels |
+| @deva[अण्] | @deva[अ इ उ] | Simple short vowels |
+| @deva[झल्] | @deva[झ भ] through @deva[ह] | Non-nasal non-semivowel consonants |
+
+**The @deva[इत्] marker is excluded:** It serves only as an endpoint. @deva[अच्] does not include @deva[च्].
+
+**Ambiguity resolution:** When an @deva[इत्] letter appears in multiple @deva[माहेश्वरसूत्र]s, the later occurrence is used by default.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent @deva[परिभाषा].
+
+@deva[आदिरन्त्येन सहेता] — the initial sound together with (@deva[सह]) a final @deva[इत्] forms a @deva[प्रत्याहार].
+
+**The @deva[माहेश्वरसूत्राणि] (14 @[sūtras]):**
+1. @deva[अइउण्] 2. @deva[ऋऌक्] 3. @deva[एओङ्] 4. @deva[ऐऔच्] 5. @deva[हयवरट्] 6. @deva[लण्] 7. @deva[ञमङणनम्] 8. @deva[झभञ्] 9. @deva[घढधष्] 10. @deva[जबगडदश्] 11. @deva[खफछठथचटतव्] 12. @deva[कपय्] 13. @deva[शषसर्] 14. @deva[हल्]
+
+**Mechanics:**
+- The @deva[आदि] (initial sound) is any sound listed in the @deva[माहेश्वरसूत्राणि]
+- The @deva[अन्त्य इत्] (final marker) is one of the 14 @deva[इत्] consonants: @deva[ण्], @deva[क्], @deva[ङ्], @deva[च्], @deva[ट्], @deva[ण्], @deva[म्], @deva[ञ्], @deva[ष्], @deva[श्], @deva[व्], @deva[य्], @deva[र्], @deva[ल्]
+- All sounds from the initial through the sound before the marker are included
+
+**Why this system?** @deva[पाणिनि] needs to refer to classes of sounds efficiently. Instead of listing @deva[अ], @deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ], @deva[ए], @deva[ओ], @deva[ऐ], @deva[औ] every time, he writes @deva[अच्]. The @deva[माहेश्वरसूत्राणि] are arranged to maximize useful groupings: vowels, consonants by class, and phonetically meaningful subgroups.
+
+**@deva[इत्] exclusion:** The marker is purely indicatory (@deva[अनुबन्ध]). It defines the boundary but is not a member of the group. This is why @ref[1.3.3] (@deva[हलन्त्यम्]) designates final consonants of @[sūtras] as @deva[इत्].
+
+**@deva[वार्त्तिक]:** When the same @deva[इत्] letter occurs in multiple @[sūtras], the @deva[प्रत्याहार] uses whichever occurrence produces the intended group. For example, @deva[ण्] appears in both @deva[अइउण्] and @deva[लण्] — @deva[अण्] uses the first, @deva[यण्] uses the second.
+"""

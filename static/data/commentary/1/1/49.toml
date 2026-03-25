@@ -1,0 +1,38 @@
+id = "1.1.49"
+numericId = "11049"
+
+[en]
+simple = """
+When a word appears in the genitive case (@deva[षष्ठी]) in a grammatical rule, it means "in place of" — the genitive marks the thing being replaced.
+
+This is a convention specific to @deva[पाणिनि]'s grammar. In ordinary Sanskrit, the genitive expresses possession ("of X"). But in @deva[सूत्र]s, it has a specialized meaning: it identifies the target of a substitution.
+
+**Example:** In @ref[1.1.3] (@deva[इको गुणवृद्धी]), the word @deva[इकः] is in the genitive. It means "@deva[गुण] and @deva[वृद्धि] replace @deva[इक्] vowels" — not "@deva[गुण] and @deva[वृद्धि] belong to @deva[इक्]."
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] establishes that the genitive (@deva[षष्ठी]) in a @deva[सूत्र] denotes the @deva[स्थानिन्] (the element being replaced) — when no other grammatical relationship is more naturally intended.
+
+**Example 1:** @ref[1.1.3] @deva[इको गुणवृद्धी] — @deva[इकः] (gen.) = "in place of @deva[इक्]." @deva[गुण] and @deva[वृद्धि] are substitutes for @deva[इक्] vowels.
+
+**Example 2:** @ref[6.1.77] @deva[इको यणचि] — @deva[इकः] (gen.) = "in place of @deva[इक्]." @deva[यण्] replaces @deva[इक्] before another vowel.
+
+**The qualification "when no other relationship is clear":** The genitive in grammar sometimes expresses other relations (possession, purpose). This rule applies only when substitution is the most natural reading.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is an independent @deva[परिभाषा].
+
+@deva[षष्ठी स्थानेयोगा] — the genitive (@deva[षष्ठी]) in a @deva[सूत्र] expresses the @deva[स्थानिन्]-relationship (substitution target) when no other @deva[कारक]-relation or technical meaning is primary.
+
+**Examples:**
+- @ref[1.1.3]: @deva[इकः] (gen.) → @deva[इक्] is the @deva[स्थानिन्]; @deva[गुण]/@deva[वृद्धि] are the @deva[आदेश] (substitutes)
+- @ref[6.1.77]: @deva[इकः] (gen.) → @deva[इक्] replaced by @deva[यण्] before @deva[अच्]
+- @ref[7.1.20]: @deva[जश्शसोः] (gen.) → @deva[जस्]/@deva[शस्] replaced by @deva[शि]
+
+**When the genitive does NOT mean substitution:** If the genitive naturally expresses another relation in context, this rule does not apply. For example, in @ref[8.2.1] @deva[पूर्वत्रासिद्धम्], the genitive @deva[पूर्वस्य] means "of the preceding" in a locational sense, not substitution.
+
+**Interaction with @ref[1.1.50]:** Once the @deva[स्थानिन्] (target) is identified via the genitive, @ref[1.1.50] determines which specific member of the substitute class actually replaces it — the one most similar to the original.
+
+**This rule creates the substitution framework:** @deva[पाणिनि]'s grammar operates extensively through substitution (@deva[आदेश]). This @deva[परिभाषा] is the interpretive key that allows him to state substitution rules concisely using just the genitive case.
+"""

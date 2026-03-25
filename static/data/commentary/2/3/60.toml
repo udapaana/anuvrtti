@@ -1,0 +1,43 @@
+id = "2.3.60"
+numericId = "23060"
+
+[en]
+simple = """
+In @deva[ब्राह्मण] literature (the prose portions of Vedic texts that discuss ritual), when the verb @deva[दिव्] is used without a preverb in the staking/dealing sense, the object takes the accusative (@deva[द्वितीया]) rather than the genitive.
+
+**Example:**
+- @deva[गां दीव्येयुः] — "they would stake a cow" (from the @deva[मैत्रायणी संहिता]) — accusative is used, overriding the genitive that @ref[2.3.58] would normally require
+
+This rule reflects actual Vedic usage: in @deva[ब्राह्मण] texts, the accusative is the established form with @deva[दिव्]. Outside @deva[ब्राह्मण] literature, the genitive applies as per @ref[2.3.58].
+
+When @deva[दिव्] has a preverb, the optionality of @ref[2.3.59] still applies even in @deva[ब्राह्मण] texts.
+"""
+
+standard = """
+@deva[द्वितीया ब्राह्मणे] — "the @deva[द्वितीया] (accusative) [is used] in @deva[ब्राह्मण] [literature]."
+
+**Rule type — @deva[विधि] / @deva[अपवाद]:** Overrides @ref[2.3.58] by mandating @deva[द्वितीया] instead of @deva[षष्ठी] for the object of @deva[दिव्] (without preverb) in @deva[ब्राह्मण] texts.
+
+**Key term — @deva[ब्राह्मणे]:** Refers to the @deva[ब्राह्मण] portion of Vedic literature — the ritual-exegetical prose texts such as the @deva[शतपथब्राह्मण], @deva[ऐतरेयब्राह्मण], @deva[मैत्रायणी संहिता], etc.
+
+**Example:**
+- @deva[गां दीव्येयुः] — "they would stake a cow" (Maitr. S. 1.6.11) — @deva[द्वितीया] used
+
+**Scope restriction:**
+- This applies only to @deva[दिव्] without @deva[उपसर्ग]
+- When @deva[दिव्] has a preverb, @ref[2.3.59] governs, and @deva[षष्ठी] remains optional even in @deva[ब्राह्मण] texts
+
+**Outside @deva[ब्राह्मण] literature:** @ref[2.3.58] applies normally — @deva[शतस्य दीव्यति] with @deva[षष्ठी].
+"""
+
+advanced = """
+@deva[द्वितीया ब्राह्मणे] — @deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.3.50], @deva[शेषे] from @ref[2.3.50], @deva[कर्मणि] from @ref[2.3.52], @deva[दिवः] from @ref[2.3.58], @deva[तदर्थस्य] from @ref[2.3.58].
+
+**@deva[अपवाद] relationship:** This rule is an exception to @ref[2.3.58]. In the general language (@deva[लौकिक] and @deva[वैदिक] outside @deva[ब्राह्मण]), @ref[2.3.58] assigns @deva[षष्ठी] to the object of simple @deva[दिव्]. In @deva[ब्राह्मण] texts specifically, this rule substitutes @deva[द्वितीया]. The word @deva[द्वितीया] in the @[sūtra] explicitly names the replacement case, overriding the @deva[षष्ठी] in @deva[अनुवृत्ति].
+
+**Interaction with @ref[2.3.59]:** The scope of @ref[2.3.60] is limited to @deva[दिव्] without @deva[उपसर्ग]. When a preverb is present, @ref[2.3.59] (@deva[विभाषोपसर्गे]) governs, and optionality between @deva[षष्ठी] and @deva[द्वितीया] applies regardless of the literary register. This is because @ref[2.3.59] does not carry the @deva[ब्राह्मणे] restriction.
+
+**Register-sensitivity in grammar:** This rule is one of several in the @[aṣṭādhyāyī] that distinguish @deva[ब्राह्मण] usage from general language (cf. @ref[3.2.103], @ref[3.4.6]). It reflects @[pāṇini]'s descriptive method: the grammar accounts for dialectal or register-specific usage by stating separate rules for @deva[छन्दस्] (Vedic), @deva[ब्राह्मण], and @deva[भाषा] (spoken language) where they diverge.
+
+**Vedic citation:** The example @deva[गामस्य तदहः सभायां दीव्येयुः] from @deva[मैत्रायणी संहिता] 1.6.11 shows the accusative @deva[गाम्], confirming the @deva[ब्राह्मण]-specific usage. Note: the @deva[अस्य] in the citation is a pronoun, not a genitive of the staked object.
+"""

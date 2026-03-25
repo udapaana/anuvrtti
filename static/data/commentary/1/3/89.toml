@@ -1,0 +1,63 @@
+id = "1.3.89"
+numericId = "13089"
+
+[en]
+simple = """
+The causative forms of nine specific roots do NOT take @deva[परस्मैपद] — they take @deva[आत्मनेपद] (reflexive endings) instead. The roots are: @deva[पा] "to drink," @deva[दम्] "to tame," @deva[आयम्] "to stretch," @deva[आयस्] "to exert," @deva[परिमुह्] "to be bewildered," @deva[रुच्] "to shine," @deva[नृत्] "to dance," @deva[वद्] "to speak," and @deva[वस्] "to dwell."
+
+**@deva[आत्मनेपद] (causatives of these roots):**
+- @deva[पाययते] "he gives to drink"
+- @deva[दमयते] "he tames"
+- @deva[आयामयते] "he stretches"
+- @deva[आयासयते] "he fatigues"
+- @deva[परिमोहयते] "he bewilders"
+- @deva[रोचयते] "he makes agreeable"
+- @deva[नर्तयते] "he causes to dance"
+- @deva[वादयते] "he causes to speak / plays (an instrument)"
+- @deva[वासयते] "he causes to dwell"
+
+The previous rules (@ref[1.3.87], @ref[1.3.88]) would have assigned @deva[परस्मैपद] to these causatives. This rule overrides them, keeping these nine in @deva[आत्मनेपद].
+"""
+
+standard = """
+Causatives of @deva[पा]/@deva[दम्]/@deva[आयम्]/@deva[आयस्]/@deva[परिमुह्]/@deva[रुच्]/@deva[नृत्]/@deva[वद्]/@deva[वस्] do NOT take @deva[परस्मैपद] — @deva[आत्मनेपद] applies.
+
+**@deva[आत्मनेपद] causatives:**
+- @deva[पाययते] "he gives to drink"
+- @deva[दमयते] "he tames"
+- @deva[आयामयते] "he stretches"
+- @deva[आयासयते] "he fatigues"
+- @deva[परिमोहयते] "he bewilders"
+- @deva[रोचयते] "he makes agreeable"
+- @deva[नर्तयते] "he causes to dance"
+- @deva[वादयते] "he causes to speak"
+- @deva[वासयते] "he causes to dwell"
+
+**Rule type — @deva[अपवाद] of @ref[1.3.87]/@ref[1.3.88]:** These roots would qualify for @deva[परस्मैपद] under the general causative rules. @deva[पा] falls under @deva[निगरण] (already excluded by @ref[1.3.87]), and @deva[नृत्] falls under @deva[चलन] (also excluded). The remaining seven are exceptions to @ref[1.3.87]/@ref[1.3.88] specifically.
+
+**Reinstating @ref[1.3.74]:** By blocking @deva[परस्मैपद], these causatives revert to @ref[1.3.74]'s @deva[आत्मनेपद] assignment for @deva[णिच्] with @deva[स्वार्थ].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78]; @deva[णौ] from @ref[1.3.86].
+
+@deva[न पादमिआयमायासपरिमुहरुचिनृतिवदवसः] — causatives of these roots do not take @deva[परस्मैपद].
+
+**Exception to @ref[1.3.87]–@ref[1.3.88]:** This rule lists roots whose causatives revert to @deva[आत्मनेपद] despite meeting the conditions of the prior override rules.
+
+**Root-by-root analysis:**
+- @deva[पा] "to drink": @deva[निगरण] sense — already excluded by @ref[1.3.87], so this listing may be for clarity or for readings that separate @deva[पा] from strict @deva[निगरण]
+- @deva[नृत्] "to dance": @deva[चलन] sense — similarly already excluded by @ref[1.3.87]
+- @deva[दम्], @deva[रुच्], @deva[वद्], @deva[वस्]: these would take @deva[परस्मैपद] by @ref[1.3.87] (non-eating/non-moving) — this rule blocks that
+- @deva[आयम्], @deva[आयस्], @deva[परिमुह्]: prefixed forms treated as units
+
+**@deva[वार्त्तिक]:** @deva[धेट्] "to suckle" should also be included: @deva[धापयते शिशुम् एका समीची] "the doe suckles the infant."
+
+**Causative @deva[पद] block complete (@ref[1.3.86]–@ref[1.3.89]):**
+- @ref[1.3.86]: eight roots → @deva[परस्मैपद] (enumerated)
+- @ref[1.3.87]: non-eating/non-moving → @deva[परस्मैपद] (semantic)
+- @ref[1.3.88]: intransitive + sentient → @deva[परस्मैपद]
+- @ref[1.3.89] (this): nine roots → @deva[आत्मनेपद] (exceptions)
+
+**Transition:** @ref[1.3.90] moves to denominative verbs — a different verb formation entirely.
+"""

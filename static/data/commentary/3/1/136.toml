@@ -1,0 +1,41 @@
+id = "3.1.136"
+numericId = "31136"
+
+[en]
+simple = """
+The affix @deva[क] is used after roots ending in @deva[आ] when there is an @deva[उपसर्ग] (prefix).
+
+**Examples:**
+- @deva[प्र] + @deva[स्था] + @deva[क] = @deva[प्रस्थः]
+- @deva[सु] + @deva[ग्लै] + @deva[क] = @deva[सुग्लः] 'very weary'
+- @deva[सु] + @deva[म्लै] + @deva[क] = @deva[सुम्लः] 'very languid'
+
+The final @deva[आ] is dropped before @deva[क] by @ref[6.4.64].
+"""
+
+standard = """
+The affix @deva[क] is used after roots ending in long @deva[आ] when there is an @deva[उपसर्ग] (prefix).
+
+This is an @deva[अपवाद] (exception) to @ref[3.1.40], debarring @deva[ण].
+
+**Examples:**
+- @deva[प्र] + @deva[स्था] + @deva[क] = @deva[प्रस्थ] + @deva[अ] = @deva[प्रस्थः] @ref[6.4.64]
+- @deva[सु] + @deva[ग्लै] + @deva[क] = @deva[सुग्लः] 'very weary' (@deva[ऐ] → @deva[आ] by @ref[6.1.45])
+- @deva[सु] + @deva[म्लै] + @deva[क] = @deva[सुम्लः] 'very languid'
+
+**Elision rule:** Final @deva[आ] is dropped before @deva[क] by @ref[6.4.64] (before vowel-initial @deva[आर्धधातुक] with indicatory @deva[क्] or @deva[ङ्]).
+"""
+
+advanced = """
+The affix @deva[क] is placed after roots ending in long @deva[आ] when there is an @deva[उपसर्ग] (prefix).
+
+This is an @deva[अपवाद] (exception) to @ref[3.1.40], debarring @deva[ण].
+
+**Derivations:**
+- @deva[प्र] + @deva[स्था] + @deva[क] = @deva[प्रस्थ] + @deva[अ] = @deva[प्रस्थः] @ref[6.4.64]
+- @deva[सु] + @deva[ग्लै] + @deva[क] = @deva[सुग्ल] + @deva[अ] = @deva[सुग्लः] 'very weary'
+  - @deva[ऐ] → @deva[आ] by @ref[6.1.45]
+- @deva[सु] + @deva[म्लै] + @deva[क] = @deva[सुम्ला] + @deva[अ] = @deva[सुम्लः] 'very languid'
+
+**@ref[6.4.64]:** There is elision of long @deva[आ] when an @deva[आर्धधातुक] affix follows that begins with a vowel and has indicatory @deva[क्] or @deva[ङ्].
+"""

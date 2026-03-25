@@ -1,0 +1,42 @@
+id = "3.1.7"
+numericId = "31007"
+
+[en]
+simple = """
+The affix @deva[सन्] is optionally added to a root to express "wishing to do" something. The person wishing must also be the one who would do the action.
+
+**Example:** @deva[चिकीर्षति] = @deva[कर्तुमिच्छति] "he wishes to do"
+
+This is the true @deva[सन्नन्त] (desiderative) form. You can also express the same meaning with a phrase instead of the affix.
+"""
+
+standard = """
+The @deva[सन्] affix optionally attaches to a root in the sense of @deva[इच्छा] (wishing), forming the desiderative.
+
+**Conditions:**
+1. The root expresses the object wished for (@deva[कर्मणः])
+2. The wisher is the same as the doer (@deva[समानकर्तृकात्])
+
+**Example:** @deva[कृ] "to do" → @deva[चिकीर्षति] "wishes to do" = @deva[कर्तुमिच्छति]
+
+**Counterexamples:**
+- @deva[गमनेनैच्छति] — instrumental case, not accusative, so no @deva[सन्]
+- @deva[देवदत्तस्य भोजनमिच्छति यज्ञदत्तः] — different agents, so no @deva[सन्]
+- @deva[कर्तुं जानाति] — sense is "knowing," not "wishing," so no @deva[सन्]
+
+The word @deva[धातोः] indicates this @deva[सन्] is @deva[आर्धधातुक], unlike the @deva[सन्] in @ref[3.1.5]–@ref[3.1.6].
+"""
+
+advanced = """
+The desiderative @deva[सन्] is optional (@deva[वा]) when expressing @deva[इच्छा] (wish), with three conditions:
+
+1. **@deva[कर्मणः]:** The root denotes the object wished. Fails with instrumental: @deva[गमनेनैच्छति] ≠ *@deva[जिगमिषति].
+2. **@deva[समानकर्तृकात्]:** Same agent for wishing and desired action. Fails in @deva[देवदत्तस्य भोजनमिच्छति यज्ञदत्तः].
+3. **@deva[इच्छायाम्]:** Sense must be wishing. @deva[कर्तुं जानाति] "knows how to do" ≠ desiderative.
+
+**@deva[आर्धधातुक] status:** The explicit @deva[धातोः] marks this @deva[सन्] as @deva[आर्धधातुक], unlike @ref[3.1.5]–@ref[3.1.6].
+
+**@[vārtika] 1:** @deva[सन्] also expresses imminent danger: @deva[पिपतिषति कूलम्] "the bank is about to fall."
+
+**@[vārtika] 2:** No @deva[सन्] after a root already having desiderative @deva[सन्]: @deva[चिकीर्षितुमिच्छति], not *@deva[चिचिकीर्षिषति]. But @deva[सन्] from @ref[3.1.5]–@ref[3.1.6] can take desiderative @deva[सन्]: @deva[जुगुप्सिषते], @deva[मीमांसिषते].
+"""

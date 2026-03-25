@@ -1,0 +1,51 @@
+id = "2.3.31"
+numericId = "23031"
+
+[en]
+simple = """
+With direction words that end in the @deva[एनप्] suffix (such as @deva[दक्षिणेन] "by the south"), the reference point can take either @deva[द्वितीया] (accusative, second case-ending) or @deva[षष्ठी] (genitive, sixth case-ending).
+
+**Examples:**
+- @deva[दक्षिणेन ग्रामम्] "south of the village" (accusative)
+- @deva[दक्षिणेन ग्रामस्य] "south of the village" (genitive)
+- @deva[उत्तरेण ग्रामम्] or @deva[उत्तरेण ग्रामस्य] "north of the village"
+
+Both forms are correct and interchangeable in meaning. The speaker can choose either case.
+"""
+
+standard = """
+@deva[एनपा द्वितीया] — with words ending in @deva[एनप्] (@ref[5.3.35]), @deva[द्वितीया] is used; @deva[षष्ठी] is also available as an option.
+
+**Rule type — @deva[विधि] (optional):** Prescribes @deva[द्वितीया] and permits @deva[षष्ठी] as an alternative.
+
+**@deva[एनप्] suffix (@ref[5.3.35]):** Added to direction words, yielding forms like @deva[दक्षिणेन], @deva[उत्तरेण], @deva[पूर्वेण].
+
+**Examples:**
+- @deva[दक्षिणेन ग्रामम्] (@deva[द्वितीया]) or @deva[दक्षिणेन ग्रामस्य] (@deva[षष्ठी]) "south of the village"
+- @deva[उत्तरेण ग्रामम्] or @deva[उत्तरेण ग्रामस्य] "north of the village"
+
+**Contrast with neighboring rules:**
+- @ref[2.3.29]: bare direction word — @deva[पञ्चमी] only (@deva[पूर्वो ग्रामात्])
+- @ref[2.3.30]: @deva[अतसुच्]-ending — @deva[षष्ठी] only (@deva[ग्रामस्य दक्षिणतः])
+- This rule: @deva[एनप्]-ending — @deva[द्वितीया] or @deva[षष्ठी] (@deva[दक्षिणेन ग्रामम्/ग्रामस्य])
+
+**Scope:** The option between @deva[द्वितीया] and @deva[षष्ठी] applies only when the @deva[एनप्]-ending form is used; @deva[पञ्चमी] is excluded here.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[एनपा द्वितीया] — with @deva[एनप्]-ending direction words, @deva[द्वितीया] applies; @deva[षष्ठी] is optional (@deva[अन्यतरस्याम्]).
+
+**@deva[एनप्] — @ref[5.3.35]: @deva[एनबन्यतरस्यामदूरेऽपञ्चम्याः]** — the @deva[एनप्] suffix is added to direction words when the referent is "not far" (@deva[अदूर]) and the construction excludes @deva[पञ्चमी]. This last condition (@deva[अपञ्चम्याः]) aligns with the present rule's exclusion of @deva[पञ्चमी].
+
+**Why @deva[द्वितीया]?** The @deva[एनप्]-ending form functions adverbially (like an instrumental of direction). The governed noun can take @deva[द्वितीया] because the directional relationship has an "extent" or "goal" aspect — @deva[दक्षिणेन ग्रामम्] "southward of the village" (village as the point relative to which the direction extends).
+
+**Systematic pattern in direction-word case assignment:**
+- Bare @deva[दिक्शब्द] → @deva[पञ्चमी] (@ref[2.3.29])
+- @deva[अतसुच्]-ending → @deva[षष्ठी] (@ref[2.3.30])
+- @deva[एनप्]-ending → @deva[द्वितीया] / @deva[षष्ठी] (this rule)
+- @deva[अञ्चु]-compound → @deva[पञ्चमी] only (@ref[2.3.29], explicit mention)
+
+**Cross-references:** @ref[2.3.29], @ref[2.3.30], @ref[5.3.35].
+"""

@@ -1,0 +1,41 @@
+id = "2.2.4"
+numericId = "22004"
+
+[en]
+simple = """
+The words @deva[प्राप्त] "obtained" and @deva[आपन्न] "attained" optionally compound with an accusative-case word to form @deva[तत्पुरुष]. The compound describes someone who has obtained or reached something.
+
+**Examples:**
+- @deva[प्राप्तजीविकः] or @deva[जीविकाप्राप्तः] — "one who has obtained a livelihood"
+- @deva[आपन्नजीविकः] or @deva[जीविकापन्नः] — "one who has attained a livelihood"
+
+Because the rule is optional, either member order is valid — the accusative-case word can be first (via @ref[2.1.24]) or last (via this rule).
+"""
+
+standard = """
+@deva[प्राप्त]/@deva[आपन्न] + @deva[द्वितीयान्त] → @deva[विभाषा] @deva[तत्पुरुष] — @deva[प्राप्तापन्ने च द्वितीयया].
+
+**Rule type — @deva[विभाषा] (option):** Provides an alternative to @ref[2.1.24] (which compounds @deva[द्वितीयान्त] words with @deva[क्तान्त] as standard @deva[तत्पुरुष]).
+
+**Examples:**
+- @deva[प्राप्तजीविकः] (this rule, @deva[प्राप्त] first) ~ @deva[जीविकाप्राप्तः] (@ref[2.1.24], @deva[द्वितीया] first)
+- @deva[आपन्नजीविकः] ~ @deva[जीविकापन्नः]
+
+**No @deva[एकदेशिन्]/@deva[एकाधिकरण] continuation:** The conditions from @ref[2.2.1] do not carry forward here. The @deva[अनुवृत्ति] breaks because this rule introduces a new case relationship (@deva[द्वितीया]).
+
+**Scope:** Only @deva[प्राप्त] (from @deva[प्र] + @deva[आप्] + @deva[क्त]) and @deva[आपन्न] (from @deva[आ] + @deva[पद्] + @deva[क्त]) — not other @deva[क्तान्त] forms meaning "obtained."
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4]. The @deva[एकदेशिन्] and @deva[एकाधिकरण] conditions from @ref[2.2.1] do NOT continue — new topic.
+
+@deva[प्राप्तापन्ने च द्वितीयया] — @deva[प्राप्त] and @deva[आपन्न] optionally compound with a @deva[द्वितीयान्त] word as @deva[तत्पुरुष].
+
+**Interaction with @ref[2.1.24]:** @ref[2.1.24] compounds @deva[द्वितीयान्त] words as the first member with @deva[क्तान्त] words: @deva[जीविकाप्राप्तः]. This rule provides the reverse order: @deva[प्राप्तजीविकः]. The @deva[विभाषा] makes both valid — the speaker chooses which member comes first.
+
+**Why specific listing?** Most @deva[क्तान्त] words compounding with @deva[द्वितीया] follow @ref[2.1.24] with fixed order (accusative first). @deva[प्राप्त] and @deva[आपन्न] are singled out because placing them first is natural in usage — "the obtained-livelihood one" is as common as "the livelihood-obtained one."
+
+**@deva[च] force:** The @deva[च] in the @[sūtra] connects this to the preceding topic, but signals a new condition (@deva[द्वितीयया]) replacing the @deva[एकदेशिन्] context.
+
+**Ordering:** When @deva[प्राप्त]/@deva[आपन्न] is placed first (this rule), the compound is analyzed as @deva[प्राप्ता जीविका येन सः] — the @deva[क्तान्त] word is the qualifier. When placed last (@ref[2.1.24]), the accusative word is the qualifier: @deva[जीविकां प्राप्तः].
+"""

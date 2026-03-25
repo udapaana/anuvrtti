@@ -1,0 +1,33 @@
+id = "4.2.3"
+numericId = "42003"
+
+[en]
+simple = """
+The affix @deva[अण्] is added after the name of a lunar mansion (@deva[नक्षत्र], "asterism"), used in the instrumental case, meaning "the time connected with that asterism." A time-period is "connected" when the moon is in conjunction with that constellation.
+
+**Example:** @deva[पुष्येण युक्तः कालः] "the time when the moon is in @deva[पुष्य]" becomes @deva[पौष्यम्]. Similarly: @deva[तैष्यम्] (time of @deva[तिष्य]), @deva[माघम्] (time of @deva[मघा]), @deva[फाल्गुनम्] (time of @deva[फल्गुनी]).
+
+This is how Sanskrit derives time-period names from the asterisms — a system still reflected in Hindu month names.
+"""
+
+standard = """
+This @[vidhi] rule extends @deva[अण्] (from @ref[4.1.83]) to @deva[नक्षत्र]-words (lunar mansion names) in the instrumental case, with the meaning @deva[तेन युक्तः कालः] — "the time-period in which the moon is conjoined with that asterism."
+
+**Worked examples:**
+- @deva[पुष्येण युक्तः कालः] → @deva[पौष्यम्] — the time of @[puṣya].
+- @deva[तिष्येण युक्तः कालः] → @deva[तैष्यम्].
+- @deva[मघाभिर्युक्तः कालः] → @deva[माघम्].
+- @deva[फल्गुनीभिर्युक्तः कालः] → @deva[फाल्गुनम्].
+
+**Scope:** @deva[युक्त] here means astronomical conjunction — the moon occupying a particular @deva[नक्षत्र]. This rule produces the base forms from which Hindu month names derive. The affix may be elided under conditions stated in @ref[4.2.4].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अण्] from @ref[4.1.83].
+
+This @[sūtra] opens a new semantic domain: @deva[तेन युक्तः कालः] (instrumental → time connected with asterism). The @deva[युक्त] here is specifically astronomical (@deva[चन्द्रसंयोगः]), not general association.
+
+The derived forms serve as bases for the Indian calendar: @deva[पौष्यम्] → @deva[पौष] (month), @deva[माघम्] → @deva[माघ], etc. The @deva[वृद्धि] substitution follows from @deva[ण्] in @deva[अण्] (@ref[7.2.117]).
+
+@ref[4.2.4] provides @deva[लुप्]-elision of this affix when no specific time-portion (@deva[कालविशेष]) is indicated. @ref[4.2.5] further modifies the elision for @deva[श्रवण] and @deva[अश्वत्थ]. @ref[4.2.6] prescribes @deva[छ] for @deva[द्वन्द्व] compounds of asterism names. Together, @ref[4.2.3]–@ref[4.2.6] form a coherent block governing asterism-to-time derivations.
+"""

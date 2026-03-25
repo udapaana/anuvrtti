@@ -1,0 +1,61 @@
+id = "1.3.5"
+numericId = "13005"
+
+[en]
+simple = """
+The syllables @deva[ञि], @deva[टु], and @deva[डु] at the beginning of a root are @deva[इत्] — markers that get deleted from the actual root form. Each marker triggers specific rules elsewhere in the grammar.
+
+**@deva[ञि] — marks roots whose @deva[क्त] participle has present meaning:**
+- @deva[ञिमिदा] "to be fat": real root is @deva[मिद्] → @deva[मिन्नः] "fat" (present sense, not "was fat")
+- @deva[ञिफला] "to burst open": real root is @deva[फल्] → @deva[फुल्लः] "blossomed"
+
+**@deva[टु] — marks roots that take the @deva[अथुच्] affix:**
+- @deva[टुवेपृ] "to tremble": real root is @deva[वेप्] → @deva[वेपथुः] "trembling"
+- @deva[टुओश्वि] "to swell": real root is @deva[श्वि] → @deva[श्वयथुः] "swelling"
+
+**@deva[डु] — marks roots that take the @deva[क्त्रि] affix:**
+- @deva[डुकृञ्] "to do": real root is @deva[कृ] → @deva[कृत्रिमम्] "artificial"
+- @deva[डुपचष्] "to cook": real root is @deva[पच्] → @deva[पक्त्रिमम्] "cooked"
+
+**Only initial position counts:** @deva[पटूयति] and @deva[कण्डूयति] contain @deva[टु]/@deva[डु] sequences, but not at the beginning, so they are not @deva[इत्].
+"""
+
+standard = """
+Initial @deva[ञि], @deva[टु], and @deva[डु] in a @deva[धातु] are @deva[इत्]. Each serves as a marker triggering specific affix rules.
+
+**@deva[ञि] — @deva[क्त] has present sense by @ref[3.2.187] (@deva[ञीतः क्तः]):**
+- @deva[ञिमिदा] → root @deva[मिद्] → @deva[मिन्नः] "fat"
+- @deva[ञिफला] → root @deva[फल्] → @deva[फुल्लः] "blown/blossomed"
+- @deva[ञिधृषा] → root @deva[धृष्] → @deva[धृष्टः] "bold"
+
+**@deva[टु] — allows @deva[अथुच्] by @ref[3.3.89] (@deva[ट्वितोऽथुच्]):**
+- @deva[टुवेपृ] → root @deva[वेप्] → @deva[वेपथुः] "trembling"
+- @deva[टुओश्वि] → root @deva[श्वि] → @deva[श्वयथुः] "swelling"
+
+**@deva[डु] — allows @deva[क्त्रि] by @ref[3.3.88] (@deva[ड्वितः क्त्रिः]):**
+- @deva[डुकृञ्] → root @deva[कृ] → @deva[कृत्रिमम्] "artificial"
+- @deva[डुपचष्] → root @deva[पच्] → @deva[पक्त्रिमम्] "cooked/ripe"
+
+**Only initial:** @deva[पटूयति], @deva[कण्डूयति] — @deva[टु]/@deva[डु] is not initial, so not @deva[इत्].
+
+**Two-letter @deva[इत्]:** Unlike @ref[1.3.2] (single nasal vowel) or @ref[1.3.3] (single final consonant), this rule marks two-letter clusters. The entire cluster is @deva[इत्] and deleted.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[उपदेशे] and @deva[इत्] from @ref[1.3.2].
+
+@deva[आदिर्ञिटुडवः] — initial @deva[ञि], @deva[टु], @deva[डु] are @deva[इत्].
+
+**Multi-letter @deva[इत्]:** This is the only rule defining multi-character @deva[इत्] sequences. @ref[1.3.2] marks single vowels; @ref[1.3.3] marks single consonants. Here, two-letter clusters (@deva[ञि], @deva[टु], @deva[डु]) function as @deva[इत्] jointly.
+
+**Why not mark each letter separately?** If @deva[ञ्] alone were @deva[इत्] (by @ref[1.3.3] for final consonant — inapplicable since @deva[ञ्] is initial) and @deva[इ] alone were nasal @deva[इत्] (by @ref[1.3.2]), the system would need separate handling. By making the whole cluster @deva[इत्], @deva[पाणिनि] ensures clean deletion of both letters at once.
+
+**Triggering rules:**
+- @deva[ञि] → @ref[3.2.187]: @deva[ञीतः क्तः] — @deva[क्त] denotes present state, not past action
+- @deva[टु] → @ref[3.3.89]: @deva[ट्वितोऽथुच्] — allows the abstract-noun affix @deva[अथुच्]
+- @deva[डु] → @ref[3.3.88]: @deva[ड्वितः क्त्रिः] — allows the affix @deva[क्त्रि] (giving @deva[त्रिम] words)
+
+**@deva[आदि] ("initial"):** The positional restriction is critical. @deva[टु] and @deva[डु] sequences occur medially in roots like @deva[पटु], @deva[कण्डू] — these are not @deva[इत्] because they are not initial.
+
+**Interaction with other initial @deva[इत्] rules:** @ref[1.3.5] (this), @ref[1.3.7] (@deva[चु]-@deva[टु] initial of affixes), and @ref[1.3.8] (@deva[ष्] initial) all mark initial elements. This rule is specific to @deva[धातु]s; @ref[1.3.7]–@ref[1.3.8] apply to @deva[प्रत्यय]s.
+"""

@@ -1,0 +1,39 @@
+id = "2.2.26"
+numericId = "22026"
+
+[en]
+simple = """
+Words that are names of cardinal directions compound to form a @deva[बहुव्रीहि] when the compound denotes an intermediate direction — the point between two cardinals.
+
+**Examples:**
+- @deva[दक्षिणपूर्वा] "south-east" — the direction between south and east
+- @deva[पूर्वोत्तरा] "north-east" — the direction between east and north
+
+Only primary direction-names qualify. Derivative words like @deva[ऐन्द्री] "eastern (Indra's direction)" or @deva[कौबेरी] "northern (Kubera's direction)" do not compound: @deva[ऐन्द्र्याश्च कौबेर्याश्च दिशोर्यदन्तरालम्] "the space between east and north" stays uncompounded.
+"""
+
+standard = """
+@deva[दिङ्नामानि] + @deva[दिङ्नामानि] → @deva[बहुव्रीहि] when @deva[अन्तरालार्थ] — @deva[दिङ्नामान्यन्तराले].
+
+**Rule type — @deva[विधि]:** Compounding rule for intermediate directions.
+
+**Examples:**
+- @deva[दक्षिणपूर्वा] (@deva[दिक्]) "south-east"
+- @deva[पूर्वोत्तरा] (@deva[दिक्]) "north-east"
+
+**@deva[नाम] restriction:** The compound members must be primary direction-names (@deva[पूर्व], @deva[अपर], @deva[दक्षिण], @deva[उत्तर]). Derivative direction-words whose primary meaning is not the direction itself (@deva[ऐन्द्री], @deva[कौबेरी], @deva[वारुणी], @deva[याम्या]) do not qualify.
+
+**@deva[बहुव्रीहि] character:** The compound denotes the intermediate direction — neither south nor east, but the point between them. This is @deva[अन्यपदार्थ]: the referent (the intermediate direction) is not denoted by either member.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[बहुव्रीहिः] from @ref[2.2.23]; @deva[समासः] from @ref[2.1.3].
+
+@deva[दिङ्नामान्यन्तराले] — direction-names compound as @deva[बहुव्रीहि] when the meaning is an intermediate direction (@deva[अन्तराल]).
+
+**@deva[नाम] — primary names only:** The @deva[काशिका] explains that @deva[नाम] restricts the rule to words whose primary denotation is the direction. @deva[पूर्व], @deva[अपर], @deva[दक्षिण], @deva[उत्तर] directly name directions. @deva[ऐन्द्री] (derived from @deva[इन्द्र] "Indra" + @deva[ङीप्]) denotes the direction secondarily — its primary meaning is "belonging to Indra." Such derivatives are excluded.
+
+**@deva[अन्तराल] — intermediate point:** The compound denotes the space between two cardinal directions. @deva[दक्षिणपूर्वा] = @deva[दक्षिणा च पूर्वा च यद्दिशोरन्तरालम्] "the intermediate space between south and east." This is @deva[बहुव्रीहि] because the referent (the intermediate direction) is not what either member denotes.
+
+**Within the @deva[बहुव्रीहि] section:** This rule handles a specific @deva[बहुव्रीहि] pattern: both members are of the same semantic class (directions), and the compound denotes a third entity (the point between them). Compare @ref[2.2.27] (identical words denoting mutual fighting) — both are specialized @deva[बहुव्रीहि] patterns.
+"""

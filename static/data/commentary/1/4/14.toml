@@ -1,0 +1,58 @@
+id = "1.4.14"
+numericId = "14014"
+
+[en]
+simple = """
+A word ending in a @deva[सुप्] (case ending) or @deva[तिङ्] (verb ending) is called @deva[पद] "complete word."
+
+@deva[सुप्] is a shorthand for all 21 case endings used with nouns (@deva[सु], @deva[औ], @deva[जस्], etc.). @deva[तिङ्] is a shorthand for all 18 verb endings (@deva[तिप्], @deva[तस्], @deva[झि], etc.).
+
+**Examples:**
+- @deva[रामः] = @deva[राम] + @deva[सु] → a @deva[पद] (noun with case ending)
+- @deva[गच्छति] = @deva[गम्] + @deva[तिप्] → a @deva[पद] (verb with personal ending)
+- @deva[फलानि] = @deva[फल] + @deva[जस्] → a @deva[पद] (noun with case ending)
+
+A @deva[पद] is a fully inflected word — ready to be used in a sentence. Bare roots and stems without endings are not @deva[पद].
+
+**Why it matters:** Special rules apply at word boundaries — sounds change when one @deva[पद] meets another. These @deva[पद]-final rules (from @ref[8.1.16] onward) govern things like final consonant simplification and voice assimilation.
+"""
+
+standard = """
+What ends in @deva[सुप्] or @deva[तिङ्] is @deva[पद] "inflected word" — @deva[सुप्तिङन्तं पदम्].
+
+**Rule type — @deva[संज्ञा]:** Defines the fundamental unit of Sanskrit syntax.
+
+**@deva[प्रत्याहार]s:**
+- @deva[सुप्] = 21 case affixes (@deva[सु], @deva[औ], @deva[जस्]...@deva[सुप्])
+- @deva[तिङ्] = 18 verb affixes (@deva[तिप्], @deva[तस्], @deva[झि]...@deva[महिङ्])
+
+**Examples:** @deva[रामः] (nom. sg.), @deva[गच्छति] (3sg. pres.), @deva[फलानि] (nom./acc. pl.)
+
+**Why @deva[अन्त] is stated:** The rule says @deva[सुप्तिङन्तम्] — "ending in @deva[सुप्] or @deva[तिङ्]." This explicit mention of @deva[अन्त] serves as a @deva[ज्ञापक] (implicit indicator) that the @deva[तदन्त] extension principle (@ref[1.1.72]) does not automatically apply to @deva[संज्ञा] definitions.
+
+**Effect — @deva[पद]-final rules:** Rules from @ref[8.1.16] onward apply at @deva[पद] boundaries:
+- Final @deva[स्] → @deva[विसर्ग]
+- Final stop → voiceless
+- @deva[संधि] between @deva[पद]s
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[संज्ञा] context from @ref[1.4.1].
+
+@deva[सुप्तिङन्तं पदम्] — what ends in @deva[सुप्] or @deva[तिङ्] is @deva[पद].
+
+**@deva[ज्ञापक] from @deva[अन्त]:** The word @deva[अन्त] "ending in" is redundant if @ref[1.1.72] (@deva[तदन्तस्य]) automatically extended @deva[संज्ञा] definitions to forms containing the relevant element. Its explicit statement implies (@deva[ज्ञापयति]) that @ref[1.1.72] does NOT extend @deva[संज्ञा] definitions — only @deva[विधि] (operational) rules.
+
+**@deva[पद] vs @deva[अङ्ग]:** These are complementary terms:
+- @deva[अङ्ग] (@ref[1.4.13]): what precedes an affix — the base during derivation
+- @deva[पद] (this): the completed form after affixation — the word in syntax
+
+**@deva[पद]-operations scope:**
+- @ref[8.1.16]–@ref[8.1.74]: @deva[पद]-boundary operations (@deva[पदस्य])
+- @ref[8.2.7]: @deva[नलोप] in @deva[पद]-final position
+- @ref[8.4.37]ff: @deva[पद]-final consonant rules
+
+**@deva[अव्यय] status:** @deva[अव्यय]s (indeclinables) like @deva[सह], @deva[विना] are considered @deva[पद] because they are treated as having a @deva[सुप्] affix (zero-ending or by @ref[2.4.82]).
+
+**Subsequent @deva[पद] rules:** @ref[1.4.15]–@ref[1.4.18] extend the @deva[पद] @deva[संज्ञा] to specific contexts where the formal @deva[सुप्]/@deva[तिङ्] ending may be absent.
+"""

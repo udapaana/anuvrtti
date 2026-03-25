@@ -1,0 +1,34 @@
+id = "2.4.44"
+numericId = "24044"
+
+[en]
+simple = """
+This rule makes the replacement of @deva[हन्] (to kill) by @deva[वध्] optional when @deva[आत्मनेपद] (middle-voice) aorist endings follow. The previous rule (@ref[2.4.43]) made this substitution mandatory in the aorist generally; this rule introduces a choice specifically for @deva[आत्मनेपद].
+
+When the speaker chooses to substitute, the root becomes @deva[वध्], yielding forms like @deva[आवधिष्ट] (he killed). When the speaker does not substitute, @deva[हन्] remains, and regular aorist forms appear: @deva[आहत] (he killed).
+
+**With @deva[वध्]:** @deva[आवधिष्ट], @deva[आवधिषाताम्], @deva[आवधिषत]
+**Without substitution:** @deva[आहत], @deva[आहसाताम्], @deva[आहसत]
+"""
+
+standard = """
+This @deva[विकल्प] (optional) rule restricts @ref[2.4.43]: when @deva[आत्मनेपद] affixes of @deva[लुङ्] (aorist) follow, @deva[वध्] is only optionally the substitute for @deva[हन्]. In @deva[परस्मैपद], the substitution remains mandatory.
+
+**With @deva[वध्] substitution:**
+- @deva[आवधिष्ट], @deva[आवधिषाताम्], @deva[आवधिषत]
+
+**Without substitution (using @deva[हन्]):**
+- @deva[आहत], @deva[आहसाताम्], @deva[आहसत]
+
+The unsubstituted forms derive as follows: @deva[हन्] becomes @deva[आत्मनेपदी] when preceded by @deva[आ] (by @ref[1.3.28]). By @ref[1.1.14], the aorist @deva[आत्मनेपद] affixes are @deva[कित्], so the @deva[न्] of @deva[हन्] is elided by @ref[6.4.37], and @deva[सिच्] is elided by @ref[8.2.27]. Thus @deva[आ] + @deva[हन्] + @deva[सिच्] + @deva[त] = @deva[आहत].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[हनः], @deva[वधः], and @deva[लुङि] from @ref[2.4.43].
+
+This rule introduces @deva[विकल्प] specifically for the @deva[आत्मनेपद] paradigm. The @deva[योगविभाग] in @ref[2.4.43] — separating the @deva[लुङ्] condition from the earlier @deva[लिङ्] rule — already ensured that the option applies only to the aorist, not to the benedictive.
+
+When the option is not exercised, the derivation of @deva[आहत] proceeds: the @deva[आत्मनेपद] aorist affixes are @deva[कित्] by @ref[1.1.14], triggering @deva[नलोपः] by @ref[6.4.37]. Then @deva[सिच्] undergoes elision by @ref[8.2.27]. The augment @deva[अट्] (@ref[6.4.71]) gives @deva[आ] + @deva[ह] + @deva[त] = @deva[आहत].
+
+When the option is exercised, @deva[वध्] replaces @deva[हन्], and the regular @deva[सिच्]-aorist proceeds: @deva[आ] + @deva[वध्] + @deva[इट्] + @deva[सिच्] + @deva[ष्ट] = @deva[आवधिष्ट]. Compare @ref[2.4.43] where @deva[परस्मैपद] forms like @deva[अवधीत्] show mandatory substitution.
+"""

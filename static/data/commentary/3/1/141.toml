@@ -1,0 +1,57 @@
+id = "3.1.141"
+numericId = "31141"
+
+[en]
+simple = """
+The affix @deva[ण] is also used after certain specific roots:
+
+**Roots covered:**
+- @deva[श्यै] 'to coagulate' (becomes @deva[श्या])
+- Roots ending in long @deva[आ] (like @deva[दा], @deva[धा])
+- @deva[व्यध्] 'to pierce'
+- @deva[आ] + @deva[स्रु] 'to flow'
+- @deva[सम्] + @deva[स्रु] 'to flow'
+- @deva[अति] + @deva[इण्] 'to pass'
+- @deva[अव] + @deva[सो] 'to complete'
+- @deva[अव] + @deva[हृ] 'to take away'
+- @deva[लिह्] 'to lick'
+- @deva[श्लिष्] 'to embrace'
+- @deva[श्वस्] 'to breathe'
+
+**Examples:** @deva[अवश्यायः] 'frost', @deva[प्रतिश्यायः] 'catarrh', @deva[व्याधः] 'hunter', @deva[श्वासः] 'breath'.
+"""
+
+standard = """
+The affix @deva[ण] is also used after @deva[श्यै], @deva[आ]-final roots, @deva[व्यध्], @deva[आस्रु], @deva[संस्रु], @deva[अतीण्], @deva[अवसो], @deva[अवहृ], @deva[लिह्], @deva[श्लिष्], and @deva[श्वस्].
+
+| Root/Combination | Form | Meaning |
+|------------------|------|---------|
+| @deva[अव] + @deva[श्यै] | @deva[अवश्यायः] | frost |
+| @deva[प्रति] + @deva[श्यै] | @deva[प्रतिश्यायः] | catarrh |
+| @deva[दा] | @deva[दायः] | inheritance |
+| @deva[धा] | @deva[धायः] | possessor |
+| @deva[वि] + @deva[अध्] | @deva[व्याधः] | hunter |
+| @deva[आ] + @deva[स्रु] | @deva[आस्रावः] | wound |
+| @deva[सम्] + @deva[स्रु] | @deva[संस्रावः] | flow |
+| @deva[लिह्] | @deva[लेहः] | licking |
+| @deva[श्लिष्] | @deva[श्लेषः] | embrace |
+| @deva[श्वस्] | @deva[श्वासः] | breath |
+
+**Why enumerate @deva[श्यै] separately?** It becomes @deva[श्या] by @ref[6.1.45] and is thus @deva[आ]-final. Separate enumeration excludes @ref[3.1.136] (@deva[क] after @deva[आ]-final with prefix).
+"""
+
+advanced = """
+The affix @deva[ण] is also used after @deva[श्यै], @deva[आ]-final roots, @deva[व्यध्], @deva[आस्रु], @deva[संस्रु], @deva[अतीण्], @deva[अवसो], @deva[अवहृ], @deva[लिह्], @deva[श्लिष्], and @deva[श्वस्].
+
+**Examples:**
+- @deva[अवश्यायः] 'frost' (from @deva[अव] + @deva[श्यै])
+- @deva[प्रतिश्यायः] 'catarrh'
+- @deva[दायः] 'inheritance', @deva[धायः] 'possessor'
+- @deva[व्याधः] 'hunter' (from @deva[वि] + @deva[अध्])
+- @deva[आस्रावः] 'wound', @deva[संस्रावः] 'flow'
+- @deva[अत्यायः] 'transgression', @deva[अवसायः] 'conclusion'
+- @deva[अवहारः] 'taking away'
+- @deva[लेहः] 'licking', @deva[श्लेषः] 'embrace', @deva[श्वासः] 'breath'
+
+**On @deva[श्यै]:** Before affixes, @deva[श्यै] → @deva[श्या] by @ref[6.1.45], making it @deva[आ]-final. Its separate enumeration excludes @ref[3.1.136], which would otherwise enjoin @deva[क] for @deva[आ]-final roots with prefixes. See @ref[7.3.33] for @deva[य्]-augment before @deva[ण्]-@deva[मित्] affixes after @deva[आ]-final roots.
+"""

@@ -1,0 +1,46 @@
+id = "2.1.44"
+numericId = "21044"
+
+[en]
+simple = """
+A word in the locative case (@deva[सप्तमी]) **obligatorily** compounds with another case-inflected word when the result is a @deva[संज्ञा] — a proper name or established designation. Since names cannot be split into sentences, these compounds are always formed (@deva[नित्य]).
+
+**Examples:**
+- @deva[अरण्येतिलकाः] "wild sesame" — a botanical name for sesame that grows in forests (and yields no oil); used figuratively for anything that does not live up to expectations
+- @deva[अरण्यमाषाः] "wild beans" — same pattern
+- @deva[वनेकिंशुकाः] "forest @deva[किंशुक] trees" — an established name
+- @deva[कूपेपिशाचकाः] "well-goblins" — a name for something found unexpectedly
+
+These are fixed names, not descriptions. You cannot say @deva[अरण्ये तिलकाः] as a sentence and get the same meaning — the name only exists as a compound.
+"""
+
+standard = """
+@deva[सप्तम्यन्त] + @deva[सुबन्त] → @deva[नित्य] @deva[तत्पुरुष] when the compound is a @deva[संज्ञा] (proper name/designation) — @deva[संज्ञायाम्].
+
+**Rule type — @deva[विधि] (@deva[नित्यसमास]):** Obligatory — @deva[संज्ञा] (names) cannot be expressed by splitting the compound into a sentence, so @deva[विभाषा] does not apply.
+
+**Examples:**
+- @deva[अरण्येतिलकाः] "wild sesame" — figuratively, anything not living up to expectations
+- @deva[अरण्यमाषाः] "wild beans"
+- @deva[वनेकिंशुकाः] "forest @deva[किंशुक]"
+- @deva[वनेबिल्वकाः] "forest @deva[बिल्व] trees"
+- @deva[कूपेपिशाचकाः] "well-goblins"
+
+**Case retention:** By @ref[6.3.9], the @deva[सप्तमी] case ending is **not** deleted after words ending in consonants or short @deva[अ]. Hence @deva[अरण्ये]-@deva[तिलकाः] (not @deva[अरण्य]-). This @deva[अलुक्] is visible in the compound form.
+
+**@deva[नित्य] because @deva[संज्ञा]:** A proper designation exists only as a unit — @deva[अरण्येतिलकाः] as a name for "disappointing things" cannot be recovered from the uncompounded @deva[अरण्ये तिलकाः].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सप्तमी] from @ref[2.1.40]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[संज्ञायाम्] — @deva[सप्तम्यन्त] + @deva[सुबन्त] → @deva[नित्य] @deva[तत्पुरुष] when the compound is a @deva[संज्ञा].
+
+**@deva[नित्यसमास] despite @deva[विभाषा] @deva[अधिकार]:** As with @ref[2.1.21] (@deva[अव्ययीभाव] proper names), the @deva[काशिका] explains that @deva[संज्ञा] compounds are inherently @deva[नित्य] — a proper name cannot be expressed by splitting it into a sentence. The @deva[विभाषा] of @ref[2.1.11] therefore does not apply.
+
+**@ref[6.3.9] — @deva[अलुक्]:** The @deva[सप्तमी] case affix is retained (@deva[अलुक्]) after consonant-final or short-@deva[अ]-final stems when the compound is a @deva[संज्ञा]. This is why we see @deva[अरण्ये]-@deva[तिलकाः] (with @deva[ए] preserved) rather than @deva[अरण्य]-@deva[तिलकाः].
+
+**Scope:** This rule is broader than the previous @deva[सप्तमी] rules (@ref[2.1.40]–@ref[2.1.43]), which specified particular second members. Here, any @deva[सुबन्त] can be the second member — the only condition is that the result be a @deva[संज्ञा].
+
+**Figurative @deva[संज्ञा]:** The @deva[काशिका] explains that @deva[अरण्येतिलकाः] is a @deva[संज्ञा] for "something that falls short of expectations" — forest sesame yields no oil, unlike cultivated sesame. The name has a conventional (@deva[रूढ]) meaning beyond its literal components.
+"""

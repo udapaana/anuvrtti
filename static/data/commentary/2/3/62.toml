@@ -1,0 +1,43 @@
+id = "2.3.62"
+numericId = "23062"
+
+[en]
+simple = """
+This rule allows the genitive (@deva[षष्ठी]) to substitute for the dative (@deva[चतुर्थी]) in Vedic language, though not universally.
+
+In classical Sanskrit, if something is given or dedicated to someone, the recipient takes the dative case. But in the Vedas, that same recipient sometimes appears in the genitive instead. The word @deva[बहुलम्] (diversely) signals that this is not a blanket replacement — sometimes the dative still appears.
+
+**Examples:**
+- @deva[पुरुषमृगश्चन्द्रमसः] — 'a male deer for the moon' (genitive @deva[चन्द्रमसः] where classical Sanskrit would use dative @deva[चन्द्रमसे])
+- @deva[वनस्पतीनाम्] — 'for the lords of the forest' (genitive @deva[वनस्पतीनाम्] where dative @deva[वनस्पतिभ्यः] would be expected)
+
+This rule matters because Vedic texts frequently show case-usage patterns that differ from classical grammar. Without this rule, a student encountering genitives in dative contexts in the Vedas would have no grammatical explanation for them.
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule), Vedic domain.
+
+In @deva[छन्दस्] (Vedic literature), @deva[षष्ठी] (genitive) is diversely (@deva[बहुलम्]) used in place of @deva[चतुर्थी] (dative). The scope is restricted to @deva[सम्प्रदान] (recipient) relations that would normally trigger @ref[2.3.13].
+
+**Key word:** @deva[बहुलम्] — indicates the substitution is irregular, not obligatory. Both genitive and dative forms are attested.
+
+**Examples:**
+- @deva[पुरुषमृगश्चन्द्रमसः] for @deva[चन्द्रमसे] — 'a male deer to the moon'
+- @deva[वनस्पतीनाम्] for @deva[वनस्पतिभ्यः] — 'to the lords of the forest'
+- @deva[वायुरस्मा उपा मन्थत्] (RV X.136.7) — genitive in dative sense
+
+**Counterexample (dative retained):**
+- @deva[कृष्णोरात्र्यै] — here the regular dative is used, not genitive — confirming @deva[बहुलम्]
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]), @deva[बहुलम्] (from @ref[2.3.62] itself — explicit in the @[sūtra]).
+
+This rule belongs to the Vedic-exception block that begins at @ref[2.3.62] and continues through @ref[2.3.63]. Both rules license @deva[षष्ठी] in place of another @deva[विभक्ति] specifically in @deva[छन्दस्].
+
+The word @deva[बहुलम्] is critical: it means the genitive-for-dative substitution is attested but not universal. The grammarian cannot predict which Vedic passage will show which case — the rule merely provides grammatical sanction for observed Vedic usage.
+
+**@[vārttika]:** The reverse substitution also occurs: @deva[चतुर्थी] appears in place of @deva[षष्ठी] in passages like @deva[या खर्वेण पिबति तस्यै खर्वो जायते] and @deva[अहल्यायै जारः] (TS 2.5.1.7), where the dative stands where a genitive would be expected.
+
+This bidirectional flexibility illustrates that Vedic case-assignment operates with greater freedom than classical grammar, and @deva[बहुलम्] rules exist precisely to accommodate this. Cross-reference @ref[2.3.63] for a parallel Vedic @deva[षष्ठी] substitution affecting @deva[तृतीया].
+"""

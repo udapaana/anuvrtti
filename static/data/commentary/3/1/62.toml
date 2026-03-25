@@ -1,0 +1,51 @@
+id = "3.1.62"
+numericId = "31062"
+
+[en]
+simple = """
+This rule says that @deva[चिण्] optionally replaces @deva[च्लि] when the third person singular @deva[आत्मनेपद] ending @deva[त] follows after vowel-final roots, when the object is spoken of as the agent (reflexive sense).
+
+A reflexive verb describes something happening by itself, without an external agent.
+
+Examples with vowel-final roots (optional @deva[चिण्]):
+- @deva[अकारि कटः स्वयमेव] or @deva[अकृत कटः स्वयमेव] (the mat became made of itself)
+- @deva[अलावि केदारः स्वयमेव] or @deva[अलविष्ट केदारः स्वयमेव] (the embankment broke of itself)
+
+Note: For consonant-final roots in reflexive sense, @deva[चिण्] is obligatory, not optional:
+- @deva[अभेदि काष्ठम् स्वयमेव] (the wood split of itself)
+
+In non-reflexive (passive) sense, @deva[चिण्] is also used:
+- @deva[अकारि कटो देवदत्तेन] (the mat was made by Devadatta)
+"""
+
+standard = """
+@deva[चिण्] optionally (@deva[प्राप्तविभाषा]) substitutes for @deva[च्लि] after vowel-final roots when @deva[आत्मनेपद] 3rd singular @deva[त] follows in the reflexive (@deva[कर्मकर्तरि]) sense—where the object acts as its own agent.
+
+Examples (vowel-final, reflexive, @deva[चिण्] / @deva[सिच्]):
+- @deva[कृ]: @deva[अकारि कटः स्वयमेव] / @deva[अकृत कटः स्वयमेव]
+- @deva[लू]: @deva[अलावि केदारः स्वयमेव] / @deva[अलविष्ट केदारः स्वयमेव]
+
+For consonant-final roots in @deva[कर्मकर्तरि], @deva[चिण्] is obligatory (not optional):
+- @deva[भिद्]: @deva[अभेदि काष्ठम् स्वयमेव]
+
+In passive (@deva[कर्मणि]) sense with external agent, @deva[चिण्] also applies:
+- @deva[अकारि कटो देवदत्तेन] (the mat was made by Devadatta)
+"""
+
+advanced = """
+@deva[चिण्] optionally applies after vowel-final (@deva[अजन्त]) roots in @deva[कर्मकर्तरि] (reflexive, where @deva[कर्मन्] is @deva[कर्तृ]) when @deva[आत्मनेपद] 3rd singular @deva[त] follows.
+
+This is a @deva[प्राप्तविभाषा]—@deva[चिण्] would already apply by the general @deva[कर्मणि] rule; this rule makes it optional for @deva[अजन्त] roots in @deva[कर्मकर्तरि].
+
+Examples (@deva[अजन्त], @deva[कर्मकर्तरि], @deva[चिण्] / @deva[सिच्]):
+- @deva[कृ]: @deva[अकारि कटः स्वयमेव] / @deva[अकृत कटः स्वयमेव]
+- @deva[लू]: @deva[अलावि केदारः स्वयमेव] / @deva[अलविष्ट केदारः स्वयमेव]
+
+For @deva[हलन्त] (consonant-final) roots in @deva[कर्मकर्तरि], @deva[चिण्] is @deva[नित्य] (obligatory):
+- @deva[भिद्]: @deva[अभेदि काष्ठम् स्वयमेव]
+
+In @deva[कर्मणि] with explicit @deva[कर्तृ], @deva[चिण्] applies:
+- @deva[अकारि कटो देवदत्तेन]
+
+@note[type=observation]: The @deva[कर्मकर्तरि] construction describes spontaneous or self-caused actions, where the grammatical subject is actually the logical object acting on itself.
+"""

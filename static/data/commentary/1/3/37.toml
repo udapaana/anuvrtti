@@ -1,0 +1,59 @@
+id = "1.3.37"
+numericId = "13037"
+
+[en]
+simple = """
+The verb @deva[नी] "to lead" takes @deva[आत्मनेपद] when the object is something incorporeal (not physical) that resides within the agent.
+
+**@deva[आत्मनेपद] (incorporeal object in the agent):**
+- @deva[क्रोधं विनयते] "he subdues his anger"
+- @deva[मन्युं विनयते] "he suppresses his wrath"
+- @deva[मनो नयते] "he restrains his mind"
+
+**@deva[परस्मैपद] (corporeal object, or object in another person):**
+- @deva[रथं नयति] "he drives the chariot" (physical object)
+- @deva[गडुं विनयति] "he removes his wart" (corporeal, even though in agent)
+- @deva[यज्ञदत्तस्य क्रोधं विनयति] "he subdues @[yajñadatta]'s anger" (in another person)
+
+Two conditions must both be met: the object must be incorporeal (@deva[अशरीर]) and must reside in the agent himself.
+"""
+
+standard = """
+After @deva[नी] governing an @deva[अशरीर] (incorporeal) @deva[कर्तृस्थ] (agent-resident) object, @deva[आत्मनेपद].
+
+**Both conditions required:**
+1. @deva[अशरीर]: the object has no physical body — emotions, mental states, faculties
+2. @deva[कर्तृस्थ]: the object resides in the agent himself, not in another person
+
+**@deva[आत्मनेपद]:**
+- @deva[क्रोधं विनयते] "he subdues his anger"
+- @deva[मन्युं विनयते] "he suppresses his wrath"
+
+**@deva[परस्मैपद] — condition fails:**
+- @deva[रथं नयति] — corporeal object (fails @deva[अशरीर])
+- @deva[गडुं विनयति] "he removes his wart" — corporeal, even though agent-resident (fails @deva[अशरीर])
+- @deva[देवदत्तो यज्ञदत्तस्य क्रोधं विनयति] — incorporeal but in another person (fails @deva[कर्तृस्थ])
+- @deva[बुद्ध्या विनयति] — @deva[बुद्धि] is instrumental, not accusative object (not @deva[कर्मन्])
+
+**@deva[नी]-series complete:** @ref[1.3.36] (seven meanings) and @ref[1.3.37] (this) exhaust the special @deva[आत्मनेपद] conditions for @deva[नी].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[कर्तृस्थाशरीरकर्मकात्] — after @deva[नी] whose object is incorporeal and resides in the agent, @deva[आत्मनेपद].
+
+**Double condition:** Both @deva[अशरीर] and @deva[कर्तृस्थ] must hold simultaneously. This creates four possible combinations:
+- Incorporeal + agent-resident → @deva[आत्मनेपद] (@deva[क्रोधं विनयते])
+- Incorporeal + in another → @deva[परस्मैपद] (@deva[यज्ञदत्तस्य क्रोधं विनयति])
+- Corporeal + agent-resident → @deva[परस्मैपद] (@deva[गडुं विनयति])
+- Corporeal + in another → @deva[परस्मैपद] (@deva[रथं नयति])
+
+**@deva[अशरीर] defined:** @deva[शरीर] = body of a living being. @deva[अशरीर] = that which has no physical body. Emotions (@deva[क्रोध], @deva[मन्यु]), mental faculties (@deva[बुद्धि], @deva[मनस्]), and abstract states qualify. A wart (@deva[गडु]), though small, is corporeal — hence @deva[परस्मैपद].
+
+**Instrumental vs. accusative:** @deva[बुद्ध्या विनयति] "he is humble through intellect" — @deva[बुद्धि] is instrumental (means), not accusative (object). The rule requires the incorporeal entity to be the @deva[कर्मन्] (direct object), not a @deva[करण] (instrument).
+
+**Semantic motivation:** When an agent acts upon his own internal states, the action's result stays entirely with the agent — the paradigmatic case for @deva[आत्मनेपद].
+
+**Transition:** @ref[1.3.38] begins the @deva[क्रम्]-series (@ref[1.3.38]–@ref[1.3.43]), a six-rule block for the root "to step."
+"""

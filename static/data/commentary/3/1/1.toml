@@ -1,0 +1,44 @@
+id = "3.1.1"
+numericId = "31001"
+
+[en]
+simple = """
+This rule declares that everything taught from here through the end of Book 5 is a @deva[प्रत्यय] (affix). An affix is an element added after a @deva[प्रकृति] (base) to build a finished word.
+
+Not everything mentioned in these rules counts as an affix. Four categories are excluded:
+1. The @deva[प्रकृति] (base) itself — the root or stem that the affix attaches to
+2. The @deva[उपपद] (governing word) — a word that conditions which affix is chosen, like @deva[स्तम्ब] in @ref[3.2.24]
+3. The @deva[उपाधि] (qualifying condition) — an attribute that triggers a specific affix, like @deva[पशु] in @ref[3.2.25]
+4. @deva[आदेश] (substitutes) and @deva[आगम] (augments) — these are operations on affixes, not affixes themselves
+
+**Example:** @deva[कृ] "to do" + @deva[तव्य] → @deva[कर्तव्यम्] "to be done." Here @deva[कृ] is the base and @deva[तव्य] is the affix. The affix is what the grammar teaches in this section; the base is what it attaches to.
+"""
+
+standard = """
+This is an @deva[अधिकारसूत्र] (governing rule) whose scope extends from here through @ref[5.4.160]. Every element taught within this range receives the designation @deva[प्रत्यय] (affix), with four exclusions:
+
+1. **@deva[प्रकृति]** — the base to which the affix attaches (e.g., @deva[गुप्], @deva[तिज्], @deva[कित्] in @ref[3.1.5])
+2. **@deva[उपपद]** — a word that conditions the affix-addition (e.g., @deva[स्तम्ब] in @ref[3.2.24])
+3. **@deva[उपाधि]** — a qualifying attribute that triggers a particular affix (e.g., @deva[पशु] in @ref[3.2.25])
+4. **@deva[आदेश]** and **@deva[आगम]** — substitutes and augments, which are operations performed on forms, not affixes
+
+**Example from @ref[3.2.25]:** In @deva[पशुहरः], the analysis is: @deva[हरति] = @deva[प्रकृति]; @deva[दृति], @deva[नाथ] = @deva[उपपद]; @deva[पशु] = @deva[उपाधि]; @deva[इन्] = @deva[प्रत्यय].
+
+**Example affixes:** @ref[3.1.96] teaches @deva[तव्यत्], @deva[तव्य], and @deva[अनीयर्] — from @deva[कृ] we get @deva[कर्तव्यम्] and @deva[करणीयम्] "to be done."
+
+The rule type is @deva[अधिकार] — it does not itself teach any affix, but governs the interpretation of all subsequent rules in its range.
+"""
+
+advanced = """
+This @deva[अधिकारसूत्र] extends through @ref[5.4.160], assigning the technical term @deva[प्रत्यय] to all items taught within this range. The @deva[अनुवृत्ति] of @deva[प्रत्ययः] carries into every subsequent rule up to the end of the fifth @deva[अध्याय].
+
+**Exclusions from the @deva[प्रत्यय] designation:**
+- **@deva[प्रकृति]:** The base element. In @ref[3.1.5], @deva[गुप्], @deva[तिज्], @deva[कित्] are @deva[प्रकृति]; only @deva[सन्] is the @deva[प्रत्यय].
+- **@deva[उपपद]:** A dependent word that conditions the operation. In @ref[3.2.24], @deva[स्तम्ब] and @deva[शकृत्] are @deva[उपपद]s.
+- **@deva[उपाधि]:** A qualifying attribute triggering a specific affix. In @ref[3.2.25], @deva[पशु] is the @deva[उपाधि].
+- **@deva[आदेश]/@deva[आगम]:** Substitutes and augments are operations, not themselves affixes.
+
+**Illustrative analysis of @ref[3.2.25]:** @deva[हरति] = @deva[प्रकृति]; @deva[दृति], @deva[नाथ] = @deva[उपपद]; @deva[पशु] = @deva[उपाधि]; @deva[इन्] = @deva[प्रत्यय]. This fourfold distinction is critical: rules in this section teach @deva[प्रत्यय]s, and anything else mentioned — bases, conditions, qualifiers — is not an affix.
+
+**Systemic role:** This @deva[अधिकार] interacts with @ref[3.1.2] (@deva[परश्च], affixes follow the base) and @ref[3.1.3] (default @deva[उदात्त] accent on the first vowel of an affix). Together these three rules establish the foundational framework for the entire @deva[प्रत्यय] section. The @deva[प्रत्यय] designation triggers numerous downstream operations: @ref[1.1.62] (@deva[प्रत्ययलक्षणेन]), @ref[1.2.46] (@deva[कृत्तद्धितसमासाश्च]), and accent rules in @deva[अध्याय] 6.
+"""

@@ -1,0 +1,51 @@
+id = "3.1.44"
+numericId = "31044"
+
+[en]
+simple = """
+This rule says that @deva[सिच्] replaces @deva[च्लि] to form the sigmatic aorist (also called the @deva[स्]-aorist or @deva[इष्]-aorist).
+
+Breaking down @deva[सिच्]:
+- The @deva[इ] is for pronunciation
+- The @deva[च्] indicates final @deva[उदात्त] accent
+- The actual affix is @deva[स्]
+
+Example: @deva[अकार्षीत्] (he did), from @deva[कृ] + @deva[सिच्] + @deva[लुङ्] endings.
+
+The aorist endings after @deva[सिच्] are:
+
+@deva[परस्मैपद]: @deva[सम्], @deva[स्व], @deva[स्म] (1st); @deva[सीः], @deva[स्तम्]/@ deva[@deva[तम्]], @deva[स्त]/@deva[त] (2nd); @deva[सीत्], @deva[स्ताम्]/@deva[ताम्], @deva[सुः] (3rd)
+
+@deva[आत्मनेपद]: @deva[सि], @deva[स्वहि], @deva[स्महि] (1st); @deva[स्थाः]/@deva[थाः], @deva[साथाम्], @deva[ध्वम्] (2nd); @deva[स्त]/@deva[त], @deva[साताम्], @deva[सत] (3rd)
+
+For roots @deva[स्पृश्], @deva[मृश्], @deva[कृष्], @deva[तृप्], and @deva[दृप्], @deva[सिच्] is optional, allowing multiple aorist forms.
+"""
+
+standard = """
+@deva[सिच्] substitutes for @deva[च्लि] to form the sigmatic aorist. The @deva[इ] is @deva[उच्चारणार्थ], @deva[च्] is @deva[इत्] (for accent per @ref[6.1.162]), leaving operative @deva[स्].
+
+Example: @deva[कृ] → @deva[अकार्षीत्].
+
+@deva[परस्मैपद] endings after @deva[सिच्]: @deva[सम्], @deva[स्व], @deva[स्म]; @deva[सीः], @deva[स्तम्]/@deva[तम्], @deva[स्त]/@deva[त]; @deva[सीत्], @deva[स्ताम्]/@deva[ताम्], @deva[सुः].
+
+@deva[आत्मनेपद] endings: @deva[सि], @deva[स्वहि], @deva[स्महि]; @deva[स्थाः]/@deva[थाः], @deva[साथाम्], @deva[ध्वम्]; @deva[स्त]/@deva[त], @deva[साताम्], @deva[सत].
+
+@deva[सिच्] is optional for @deva[स्पृश्], @deva[मृश्], @deva[कृष्], @deva[तृप्], @deva[दृप्]:
+- @deva[स्पृश्]: @deva[अस्प्राक्षीत्] / @deva[अस्पार्क्षीत्] / @deva[अस्पृक्षत्]
+- @deva[कृष्]: @deva[अकार्षीत्] / @deva[अक्राक्षीत्] / @deva[अकृक्षत्]
+"""
+
+advanced = """
+@deva[सिच्] is the @deva[आदेश] (substitute) for @deva[च्लि], forming the sigmatic aorist. @deva[इत्]-analysis: @deva[च्] is @deva[इत्] (@ref[1.3.3]), triggering @ref[6.1.162] @deva[चितः]; @deva[इ] is @deva[उच्चारणार्थ]. Operative portion: @deva[स्].
+
+Example: @deva[कृ] + @deva[सिच्] + @deva[त्] → @deva[अकार्षीत्] (with @deva[वृद्धि] by @ref[7.2.1]).
+
+@deva[परस्मैपद] @deva[लुङ्] endings after @deva[सिच्]:
+- 1st: @deva[सम्], @deva[स्व], @deva[स्म]
+- 2nd: @deva[सीः], @deva[स्तम्]/@deva[तम्], @deva[स्त]/@deva[त]
+- 3rd: @deva[सीत्], @deva[स्ताम्]/@deva[ताम्], @deva[सुः]
+
+@deva[आत्मनेपद]: @deva[सि], @deva[स्वहि], @deva[स्महि]; @deva[स्थाः]/@deva[थाः], @deva[साथाम्], @deva[ध्वम्]; @deva[स्त]/@deva[त], @deva[साताम्], @deva[सत].
+
+@note[type=@[vārtika]]: For @deva[स्पृश्], @deva[मृश्], @deva[कृष्], @deva[तृप्], @deva[दृप्], @deva[सिच्] is @deva[विभाषा], yielding three-way alternation: (1) @deva[सिच्] with @deva[वृद्धि], (2) @deva[सिच्] with metathesis, (3) non-@deva[सिच्] (@deva[अङ्]) aorist. E.g., @deva[स्पृश्]: @deva[अस्प्राक्षीत्] / @deva[अस्पार्क्षीत्] / @deva[अस्पृक्षत्].
+"""

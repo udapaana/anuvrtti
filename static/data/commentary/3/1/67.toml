@@ -1,0 +1,44 @@
+id = "3.1.67"
+numericId = "31067"
+
+[en]
+simple = """
+This rule says that the affix @deva[यक्] is added after a root when a @deva[सार्वधातुक] (conjugational) affix follows, in constructions denoting @deva[भाव] (action, impersonal) or @deva[कर्मन्] (object, passive).
+
+The @deva[क्] in @deva[यक्] is indicatory (@deva[इत्]) and prevents @deva[गुण] and @deva[वृद्धि] strengthening.
+
+Examples:
+- Impersonal (@deva[भावे]): @deva[आस्यते भवता] (you sit), @deva[शय्यते भवता] (you lie)
+- Passive (@deva[कर्मणि]): @deva[क्रियते कटः] (the mat is being made), @deva[गम्यते ग्रामः] (the village is being gone to)
+- Reflexive (@deva[कर्मकर्तरि]): @deva[क्रियते कटः स्वयमेव] (the mat becomes made of itself)
+
+The @deva[यक्] affix creates the passive/impersonal stem used in present, @deva[लङ्] (imperfect), optative, and imperative tenses.
+"""
+
+standard = """
+The affix @deva[यक्] is added after roots when @deva[सार्वधातुक] affixes (defined by @ref[3.4.113] @deva[तिङ्शित्सार्वधातुकम्]) follow in @deva[भावे] (impersonal) or @deva[कर्मणि] (passive) constructions.
+
+The @deva[क्] is @deva[इत्] by @ref[1.3.3], triggering @ref[1.1.5] @deva[क्ङिति च] to block @deva[गुण]/@deva[वृद्धि].
+
+Examples:
+- @deva[भावे]: @deva[आस्यते भवता], @deva[शय्यते भवता]
+- @deva[कर्मणि]: @deva[क्रियते कटः], @deva[गम्यते ग्रामः]
+- @deva[कर्मकर्तरि]: @deva[क्रियते कटः स्वयमेव]
+
+This @deva[यक्] affix forms the passive stem for all conjugational (@deva[सार्वधातुक]) tenses: @deva[लट्], @deva[लङ्], @deva[लोट्], @deva[विधिलिङ्].
+"""
+
+advanced = """
+The affix @deva[यक्] is introduced after roots when @deva[सार्वधातुक] (@ref[3.4.113]) follows in @deva[भावे] or @deva[कर्मणि].
+
+@deva[इत्]-analysis: @deva[क्] is @deva[इत्] by @ref[1.3.3], triggering @ref[1.1.5] (blocking @deva[गुण]/@deva[वृद्धि]). The operative affix is @deva[य].
+
+Examples:
+- @deva[भावे]: @deva[आस्यते], @deva[शय्यते]
+- @deva[कर्मणि]: @deva[क्रियते कटः], @deva[गम्यते ग्रामः]
+- @deva[कर्मकर्तरि]: @deva[क्रियते कटः स्वयमेव]
+
+@deva[यक्] forms the passive stem for @deva[सार्वधातुक] tenses (@deva[लट्], @deva[लङ्], @deva[लोट्], @deva[विधिलिङ्]). For @deva[आर्धधातुक] tenses (@deva[लिट्], @deva[लुङ्], etc.), @deva[यक्] does not apply; instead, @deva[चिण्] (@ref[3.1.66]) or other affixes are used.
+
+@note[type=observation]: The @deva[य] of @deva[यक्] creates the characteristic passive stem: @deva[कृ] → @deva[क्रि] + @deva[य] → @deva[क्रिय्] → @deva[क्रियते].
+"""

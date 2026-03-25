@@ -1,0 +1,43 @@
+id = "1.2.47"
+numericId = "12047"
+
+[en]
+simple = """
+In the neuter gender, the final vowel of a nominal stem (@deva[प्रातिपदिक]) becomes short. Long vowels at the end of the stem are replaced by their short equivalents.
+
+**Examples:**
+- @deva[अतिरै] → @deva[अतिरि] "extravagant" (neuter) — @deva[ऐ] shortens to @deva[इ]
+- @deva[अतिलो] → @deva[अतिलु] "very hairy" (neuter) — @deva[ओ] shortens to @deva[उ]
+
+**Masculine — no shortening:** @deva[ग्रामणी] "village leader" stays @deva[ग्रामणीः] — the @deva[ई] keeps its length because it is not neuter.
+"""
+
+standard = """
+In @deva[नपुंसक] (neuter), the final vowel of a @deva[प्रातिपदिक] is replaced by @deva[ह्रस्व] (short). This is a @deva[विधि] (operational) rule.
+
+**Examples:**
+- @deva[अतिरि कुलम्] "extravagant family" — @deva[अतिरै] → @deva[अतिरि] (@deva[ऐ] → @deva[इ] by @ref[1.1.48])
+- @deva[अतिलु कुलम्] "very hairy family" — @deva[अतिलो] → @deva[अतिलु] (@deva[ओ] → @deva[उ])
+
+**Not neuter — no shortening:** @deva[ग्रामणीः] (masc.), @deva[सेनानीः] (masc.) — @deva[ई] unchanged.
+
+**Must be @deva[प्रातिपदिक]-final:** @deva[काण्डे] "two cantos" (neuter dual) — the @deva[ए] results from @deva[अ] + @deva[इ] (dual ending @deva[सुप्]), not the stem's final vowel. So it is not shortened.
+
+**@ref[1.2.28] governs:** The @deva[ह्रस्व] substitution targets only vowels (not consonants), as specified by the @deva[परिभाषा] at @ref[1.2.28].
+"""
+
+advanced = """
+@deva[ह्रस्वो नपुंसके प्रातिपदिकस्य] — in @deva[नपुंसक], the final of @deva[प्रातिपदिक] → @deva[ह्रस्व].
+
+**Operation:** The @deva[ह्रस्व] prescribed here substitutes for the final vowel of the stem (by @ref[1.2.28], @deva[ह्रस्व] targets vowels only). Diphthongs @deva[ऐ]/@deva[औ] reduce to @deva[इ]/@deva[उ] by @ref[1.1.48] (@deva[एच इग्घ्रस्वादेशे]).
+
+**Examples:**
+- @deva[अति] + @deva[रै] → @deva[अतिरि] (@deva[ऐ] → @deva[इ])
+- @deva[अति] + @deva[लो] → @deva[अतिलु] (@deva[ओ] → @deva[उ])
+
+**Not @deva[प्रातिपदिक]-final:** @deva[काण्डे] (neuter dual of @deva[काण्ड]) — the @deva[ए] is an @deva[एकादेश] (single substitute for @deva[अ] + @deva[इ] by @ref[6.1.87]). Since the dual ending @deva[इ] is @deva[सुप्], the @deva[ए] includes affix material and is not purely @deva[प्रातिपदिक]-final. Hence no shortening.
+
+**Scope:** This rule applies broadly to all neuter stems with a long final vowel. It interacts with @deva[प्रातिपदिक] definitions at @ref[1.2.45]–@ref[1.2.46] to determine what counts as the stem's final.
+
+**Related rules:** @ref[1.2.48] extends vowel shortening to @deva[गो] and feminine-affix-ending @deva[उपसर्जन]s in compounds — a related but distinct operation.
+"""

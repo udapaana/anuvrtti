@@ -1,0 +1,53 @@
+id = "2.3.33"
+numericId = "23033"
+
+[en]
+simple = """
+When @deva[स्तोक] (little), @deva[अल्प] (small), @deva[कृच्छ्र] (with difficulty), or @deva[कतिपय] (some, a few) express the means or manner of an action — not a physical substance — they can optionally take @deva[पञ्चमी] (ablative) instead of @deva[तृतीया] (instrumental).
+
+**Examples (option applies):**
+- @deva[स्तोकात् मुक्तः] or @deva[स्तोकेन मुक्तः] "released with little effort"
+- @deva[कृच्छ्रात् मुक्तः] or @deva[कृच्छ्रेण मुक्तः] "released with difficulty"
+
+**Counterexamples (no option — these describe a substance):**
+- @deva[स्तोकेन विषेण हतः] "killed by a little poison" — only instrumental, because "little" qualifies the physical substance "poison"
+- @deva[अल्पेन मधुना मत्तः] "intoxicated by a little honey"
+
+The option exists only when these words express how much effort or difficulty was involved, not when they describe the quantity of a material thing.
+"""
+
+standard = """
+@deva[स्तोकाल्पकृच्छ्रकतिपयस्यासत्त्ववचनस्य] — when @deva[स्तोक] "little," @deva[अल्प] "small," @deva[कृच्छ्र] "difficult," or @deva[कतिपय] "some" function as @deva[करण] (instrument/means) and are @deva[असत्त्ववचन] (not denoting a material substance), @deva[पञ्चमी] is optionally used.
+
+**Rule type — @deva[विधि] (optional):** Adds @deva[पञ्चमी] as an alternative to @deva[तृतीया] under specific conditions.
+
+**Examples (option applies — @deva[असत्त्ववचन]):**
+- @deva[स्तोकात् मुक्तः] / @deva[स्तोकेन मुक्तः] "released with little effort"
+- @deva[अल्पात् मुक्तः] / @deva[अल्पेन मुक्तः] "released easily"
+- @deva[कृच्छ्रात् मुक्तः] / @deva[कृच्छ्रेण मुक्तः] "released with difficulty"
+
+**Counterexamples (@deva[सत्त्ववचन] — denoting substance, no option):**
+- @deva[स्तोकेन विषेण हतः] "killed by a little poison" — @deva[स्तोक] qualifies the substance @deva[विष]
+- @deva[अल्पेन मधुना मत्तः] "intoxicated by a little honey"
+
+**Also excluded — adverbial use (@deva[कर्मन्], not @deva[करण]):**
+- @deva[स्तोकं मुञ्चति] "he releases a little" — here @deva[स्तोक] is not functioning as @deva[करण]
+
+**Condition: @deva[असत्त्ववचन]:** The word must express degree or manner abstractly, not quantify a physical thing.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[स्तोकाल्पकृच्छ्रकतिपयस्यासत्त्ववचनस्य] — @deva[पञ्चमी] is optional for @deva[स्तोक], @deva[अल्प], @deva[कृच्छ्र], or @deva[कतिपय] when they function as @deva[करण] and are @deva[असत्त्ववचन].
+
+**@deva[असत्त्ववचन] condition:** @deva[सत्त्व] here means "substance" (@deva[द्रव्य]). When these words qualify a substance (@deva[स्तोकेन विषेण]), they are @deva[सत्त्ववचन] — the option does not arise, and only @deva[तृतीया] applies. When they express degree abstractly (@deva[स्तोकात् मुक्तः] "released with slight effort"), they are @deva[असत्त्ववचन] and permit @deva[पञ्चमी].
+
+**Why @deva[करण]?** The rule applies only when these words occupy the @deva[करण] @deva[कारक] role (the means by which the action occurs). When @deva[स्तोक] is adverbial (@deva[स्तोकं मुञ्चति]), it functions as @deva[कर्मन्] or a modifier, and the rule does not apply.
+
+**Examples:** @deva[स्तोकात्/स्तोकेन मुक्तः], @deva[अल्पात्/अल्पेन मुक्तः], @deva[कृच्छ्रात्/कृच्छ्रेण मुक्तः].
+
+**Counterexamples:** @deva[स्तोकेन विषेण हतः] (@deva[सत्त्ववचन]), @deva[स्तोकं मुञ्चति] (not @deva[करण]).
+
+**Cross-references:** @ref[2.3.18] (@deva[तृतीया] for @deva[करण] — the default this rule modifies), @ref[1.4.42] (@deva[करण] definition: @deva[साधकतमं करणम्]).
+"""

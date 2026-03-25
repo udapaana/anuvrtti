@@ -1,0 +1,51 @@
+id = "2.1.50"
+numericId = "21050"
+
+[en]
+simple = """
+A word expressing a compass direction (@deva[दिश्]) or a numeral (@deva[सङ्ख्या]), when in apposition (@deva[समानाधिकरण]) with another word, compounds to form @deva[तत्पुरुष] — but only when the result is a proper name (@deva[संज्ञा]).
+
+**Examples:**
+- @deva[पूर्वेषुकामशमी] "the town of @deva[इषुकामशमी]-in-the-east"
+- @deva[अपरेषुकामशमी] "the town of @deva[इषुकामशमी]-in-the-west"
+- @deva[पञ्चाम्राः] "the Five Mangoes" — a place name
+- @deva[सप्तर्षयः] "the Seven Sages" — the constellation Ursa Major
+
+**No compound when not a name:** @deva[उत्तरा वृक्षाः] "northern trees" — a description, not a proper name, so no compound. Similarly, @deva[पञ्च ब्राह्मणाः] "five @deva[ब्राह्मण]s" — a count, not a name.
+"""
+
+standard = """
+@deva[दिक्-सङ्ख्ये] + @deva[समानाधिकरण सुबन्त] → @deva[तत्पुरुष] when the compound is a @deva[संज्ञा] — @deva[दिक्सङ्ख्ये संज्ञायाम्].
+
+**Rule type — @deva[विधि] (@deva[नित्यसमास]):** Since proper names cannot be expressed by splitting the compound, these are obligatory.
+
+**Direction examples:**
+- @deva[पूर्वेषुकामशमी] "eastern @deva[इषुकामशमी]"
+- @deva[अपरेषुकामशमी] "western @deva[इषुकामशमी]"
+
+**Numeral examples:**
+- @deva[पञ्चाम्राः] "Five Mangoes" (place name)
+- @deva[सप्तर्षयः] "Seven Sages" (constellation name)
+
+**Counter-examples (not @deva[संज्ञा]):**
+- @deva[उत्तरा वृक्षाः] "northern trees" — descriptive, not a name
+- @deva[पञ्च ब्राह्मणाः] "five @deva[ब्राह्मण]s" — a count, not a name
+
+**@deva[समानाधिकरण]:** Both members refer to the same entity — @deva[पूर्व] and @deva[इषुकामशमी] both predicate the same town. This is @deva[कर्मधारय]-type (@ref[1.2.42]).
+
+**Accent:** @ref[4.2.107] provides relevant accent rules for these compounds.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[दिक्सङ्ख्ये संज्ञायाम्] — direction and numeral words in @deva[समानाधिकरण] compound with another @deva[सुबन्त] as @deva[तत्पुरुष] when the result is a @deva[संज्ञा].
+
+**@deva[नित्यसमास]:** As with @ref[2.1.44], the @deva[संज्ञा] condition makes this @deva[नित्य] — proper names cannot be split into sentences. @deva[पञ्चाम्राः] as a place name cannot be expressed as @deva[पञ्च आम्राः] with the same referent.
+
+**@deva[समानाधिकरण] continues:** From @ref[2.1.49], the @deva[कर्मधारय] condition of apposition carries forward. @deva[पूर्वा इषुकामशमी] — both @deva[पूर्वा] and @deva[इषुकामशमी] are in @deva[प्रथमा] and refer to the same town. Without @deva[समानाधिकरण], @deva[पञ्चानां ब्राह्मणानाम्] (@deva[षष्ठी]) would be a different compound type.
+
+**Why @deva[संज्ञा] restriction?** Without it, every use of @deva[दिक्]/\u200b@deva[सङ्ख्या] in apposition would compound — @deva[उत्तरा वृक्षाः] "northern trees" would become @deva[उत्तरवृक्षाः]. The @deva[संज्ञा] restriction limits compounding to established proper names.
+
+**Relation to @deva[द्विगु]:** @ref[2.1.52] defines @deva[द्विगु] as numeral-first @deva[समाहार] compounds. This rule handles numeral-first @deva[संज्ञा] compounds in @deva[समानाधिकरण]. The two have different semantic bases: @deva[द्विगु] = collective meaning, this rule = proper name.
+"""

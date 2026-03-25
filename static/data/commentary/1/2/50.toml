@@ -1,0 +1,42 @@
+id = "1.2.50"
+numericId = "12050"
+
+[en]
+simple = """
+For the word @deva[गोणी] (a unit of measure), when a @deva[तद्धित] affix is @deva[लुक्]-elided, the feminine @deva[ई] becomes short @deva[इ] — it is not completely deleted as @ref[1.2.49] would normally require.
+
+**Example:** @deva[पञ्चगोणिः] "purchased for five @deva[गोणी]s" — the @deva[ई] shortens to @deva[इ] instead of vanishing.
+
+This is an exception to @ref[1.2.49]: for @deva[गोणी], shortening replaces full deletion.
+"""
+
+standard = """
+When a @deva[तद्धित] is @deva[लुक्]-elided after @deva[गोणी], the feminine @deva[ई] → @deva[इ] (short), not @deva[लुक्] (zero). This is a specific exception to @ref[1.2.49].
+
+**Example:** @deva[पञ्चभिः गोणीभिः क्रीतः] "purchased for five @deva[गोणी]s" → @deva[पञ्चगोणिः]
+- The @deva[तद्धित] meaning "purchased for" is @deva[लुक्] by @ref[5.1.28]
+- @deva[ई] → @deva[इ] by this rule (not deleted)
+
+**Extended by @deva[योगविभाग]:** The @deva[इत्] portion of this rule is read as a separate principle: when @deva[तद्धित] is @deva[लुक्], long @deva[ई] → @deva[इ]. This extends to other words:
+- @deva[पञ्चसूचिः] "purchased for five needles" (from @deva[सूची])
+- @deva[दशसूचिः] "purchased for ten needles"
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तद्धित] @deva[लुक्] from @ref[1.2.49]; @deva[उपसर्जन] and @deva[स्त्री] from @ref[1.2.48].
+
+@deva[गोण्या इत्] — for @deva[गोणी], when @deva[तद्धित] is @deva[लुक्], the feminine @deva[ई] → @deva[इ].
+
+**Exception to @ref[1.2.49]:** @ref[1.2.49] would delete the feminine affix entirely. This rule intervenes for @deva[गोणी] specifically: the @deva[ई] is shortened to @deva[इ] rather than deleted.
+
+**Derivation:** @deva[पञ्चभिः गोणीभिः क्रीतः]:
+1. @deva[तद्धित] (@ref[5.1.28]) is @deva[लुक्]
+2. @deva[गोणी] is @deva[उपसर्जन]
+3. By @ref[1.2.49]: feminine @deva[ई] should be @deva[लुक्]
+4. This rule overrides: @deva[ई] → @deva[इ]
+5. → @deva[पञ्चगोणिः]
+
+**@deva[योगविभाग] (rule-splitting):** The word @deva[इत्] can be read as an independent @deva[सूत्र]: "when @deva[तद्धित] is @deva[लुक्], @deva[ई] → @deva[इ]." This generalization extends beyond @deva[गोणी] to other @deva[ई]-final words in similar constructions: @deva[पञ्चसूचिः] (from @deva[सूची]), @deva[दशसूचिः].
+
+**This concludes the @deva[उपसर्जन] vowel-shortening cluster** (@ref[1.2.47]–@ref[1.2.50]): neuter shortening → @deva[गो]/@deva[स्त्री] shortening → @deva[तद्धित] @deva[लुक्] deletion → @deva[गोणी] exception.
+"""

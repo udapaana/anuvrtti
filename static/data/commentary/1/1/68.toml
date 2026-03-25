@@ -1,0 +1,43 @@
+id = "1.1.68"
+numericId = "11068"
+
+[en]
+simple = """
+When a word appears in a grammatical rule, it refers to its own sound-form — the actual sequence of letters — not to its meaning. The word @deva[अग्नि] in a rule means the word @deva[अग्नि] itself, not "fire" in general. Synonyms like @deva[पावक] or @deva[ज्वलन] (other words for fire) are not included.
+
+The exception is technical terms defined within the grammar. When the grammar defines @deva[वृद्धि] as a name for the vowels @deva[आ], @deva[ऐ], @deva[औ] (@ref[1.1.1]), the word @deva[वृद्धि] in later rules refers to those vowels — not to the letters @deva[व्]-@deva[ऋ]-@deva[द्]-@deva[ध्]-@deva[इ].
+
+This is a fundamental difference between grammar and ordinary language. In everyday speech, "bring a cow" means bring the animal. In grammar, @deva[गो] means the word-form @deva[गो], not the concept of a cow.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] establishes that words in grammatical rules denote their own phonetic form (@deva[स्वरूप]), not their meaning (@deva[अर्थ]).
+
+**The principle:** When a rule mentions @deva[अग्नि], it means the word composed of the sounds @deva[अ]-@deva[ग्]-@deva[न्]-@deva[इ] — not the concept "fire" and not synonymous words.
+
+**Example:** @ref[4.2.33] (@deva[अग्नेर्ढक्]) prescribes the affix @deva[ढक्] after @deva[अग्नि]. This applies only to the word @deva[अग्नि], not to @deva[पावक], @deva[ज्वलन], or other fire-words.
+
+**Exception — @deva[अशब्दसंज्ञा] (defined technical terms):** Terms like @deva[वृद्धि] (@ref[1.1.1]), @deva[गुण] (@ref[1.1.2]), @deva[घु] (@ref[1.1.20]), and @deva[घ] (@ref[1.1.22]) denote what they are defined as, not their own letter-forms. When a rule says "after @deva[घु]," it means "after @deva[दा] and @deva[धा]" — the roots designated @deva[घु].
+
+**Why this matters:** Without this rule, every grammatical operation would apply to all synonyms of the mentioned word, making the grammar unworkably broad. The grammar operates on word-forms, not concepts.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent @deva[परिभाषा].
+
+@deva[स्वं रूपं शब्दस्याशब्दसंज्ञा] — a word (@deva[शब्द]) denotes its own form (@deva[स्वरूप]), unless it is a @deva[संज्ञा] not denoting a word-form (@deva[अशब्दसंज्ञा]).
+
+**Two regimes:**
+1. **Ordinary words in rules:** denote their own @deva[स्वरूप] (phonetic form)
+2. **@deva[अशब्दसंज्ञा]:** technical terms whose @deva[संज्ञा] is not a recognizable word-form — these denote what they are defined as
+
+**What counts as @deva[अशब्दसंज्ञा]?** Terms like @deva[घु], @deva[घ], @deva[भ] that are arbitrary labels with no independent meaning as words. These must refer to the items they designate. Contrast with @deva[वृद्धि] (which has an ordinary meaning "growth") — the @deva[काशिका] debates whether @deva[वृद्धि] counts as @deva[अशब्दसंज्ञा] or requires special interpretation.
+
+**Example:** @ref[4.2.33] (@deva[अग्नेर्ढक्]): @deva[अग्नि] denotes its own form → @deva[ढक्] is added only to @deva[अग्नि], not to @deva[पावक].
+
+**Interaction with @deva[प्रत्याहार]s:** @deva[प्रत्याहार]s like @deva[अच्], @deva[हल्], @deva[इक्] are @deva[अशब्दसंज्ञा] — they denote the classes of sounds they are defined to cover, not their own letter-forms.
+
+**Scope:** This rule governs how to interpret every word that appears in a grammatical @[sūtra]. It is one of the foundational @deva[परिभाषा]s — without it, the grammar's metalanguage would be ambiguous between form-reference and meaning-reference.
+
+**@deva[वार्त्तिक]:** @deva[कात्यायन] adds @deva[सिद्धं तु सामान्यशब्दस्य] — common nouns in rules also denote form, not genus. The word @deva[वृक्ष] "tree" in a rule means that specific word, not all tree-words.
+"""

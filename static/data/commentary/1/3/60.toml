@@ -1,0 +1,53 @@
+id = "1.3.60"
+numericId = "13060"
+
+[en]
+simple = """
+The verb @deva[शद्] "to decay, to fall" takes @deva[आत्मनेपद] when followed by an affix marked with the indicator @deva[श्] (called @deva[शित्]).
+
+**@deva[आत्मनेपद] (with @deva[शित्] affixes):**
+- @deva[शीयते] "it decays"
+- @deva[शीयेते] "they two decay"
+- @deva[शीयन्ते] "they (all) decay"
+
+**@deva[परस्मैपद] (without @deva[शित्] affixes):**
+- @deva[शत्स्यति] "it will decay" (future tense)
+
+In the present tense, the class-affix @deva[शप्] has the marker @deva[श्], so @deva[आत्मनेपद] applies. In other tenses (future, conditional), the affixes are not @deva[शित्], so @deva[परस्मैपद] applies.
+"""
+
+standard = """
+After @deva[शद्] with @deva[शित्] affixes (affixes whose indicatory letter includes @deva[श्]), @deva[आत्मनेपद].
+
+**Derivation:**
+- @deva[शद् + शप् + ते] → @deva[शीय + अ + ते] → @deva[शीयते] "it decays" (by @ref[7.3.78])
+
+**@deva[आत्मनेपद] (present — @deva[शप्] is @deva[शित्]):**
+- @deva[शीयते], @deva[शीयेते], @deva[शीयन्ते]
+
+**@deva[परस्मैपद] (future — affix not @deva[शित्]):**
+- @deva[शत्स्यति] "it will decay"
+- @deva[अशत्स्यत्] "if it had decayed" (conditional)
+
+**@deva[शित्] affixes:** Affixes marked with indicatory @deva[श्] include @deva[शप्] (the @deva[विकरण] of @deva[भ्वादिगण]). In @deva[सार्वधातुक] (conjugational) tenses, @deva[शद्] takes @deva[आत्मनेपद]. In @deva[आर्धधातुक] tenses, @deva[परस्मैपद] applies.
+
+**Tense-split:** This is one of the few rules where the @deva[पद] assignment depends on the affix type rather than the verb's meaning or prefix.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[शदेः शितः] — after @deva[शद्] with @deva[शित्] affixes, @deva[आत्मनेपद].
+
+**Affix-conditioned @deva[पद]:** Unlike most rules in this section which condition on meaning, prefix, or transitivity, this rule conditions on the affix type. @deva[शित्] affixes (those marked with @deva[श्]) include the class-affixes (@deva[विकरण]) of conjugational tenses. Non-@deva[शित्] affixes (futures, conditional, perfect) revert to @deva[परस्मैपद].
+
+**Derivation detail:** @deva[शद्] + @deva[शप्] triggers @ref[7.3.78] (@deva[शद्] → @deva[शीय] before @deva[शित्]). The resulting stem @deva[शीय] takes @deva[आत्मनेपद] endings: @deva[शीयते], @deva[शीयेते], @deva[शीयन्ते].
+
+**Tense-dependent @deva[पद] split:**
+- @deva[सार्वधातुक] (present, imperfect, imperative, optative): @deva[शित्] affixes present → @deva[आत्मनेपद]
+- @deva[आर्धधातुक] (future, conditional, perfect, aorist): no @deva[शित्] → @deva[परस्मैपद]
+
+**Unusual rule type:** Most @deva[पद]-assignment rules are root-level properties. This rule creates a tense-dependent alternation for a single root — a rare pattern in @ref[1.3.12]–@ref[1.3.93].
+
+**Semantic note:** @deva[शद्] means "to decay, to fall apart." In present-tense descriptions ("it is decaying"), the process is ongoing and self-contained, motivating @deva[आत्मनेपद]. In futures and conditionals, the statement is about external prediction.
+"""

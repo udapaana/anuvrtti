@@ -1,0 +1,45 @@
+id = "2.3.24"
+numericId = "23024"
+
+[en]
+simple = """
+When the cause of something is a debt or monetary obligation, and that cause is not acting as an instigator (agent), the debt-word takes the @deva[पञ्चमी] (ablative) instead of the usual instrumental.
+
+**Example:**
+- @deva[शताद् बद्धः] "he was imprisoned on account of a debt of a hundred" — the hundred is the cause (ablative)
+
+If the debt is treated as an active instigating cause (agent), the instrumental is used instead:
+- @deva[शतेन बन्धितः] "he was caused to be imprisoned by a debt of a hundred" — the debt is the instigator (instrumental)
+"""
+
+standard = """
+@deva[अकर्तर्यृणे पञ्चमी] — a word denoting debt (@deva[ऋण]), when expressing @deva[हेतु] (cause) but not @deva[कर्तृ] (agent), takes @deva[पञ्चमी].
+
+**Rule type — @deva[अपवाद]:** Overrides the @deva[तृतीया] of @ref[2.3.23] with @deva[पञ्चमी] for debt-denoting cause-words.
+
+**Example:**
+- @deva[शताद् बद्धः] "imprisoned on account of a hundred (debt)" — @deva[पञ्चमी]
+
+**Counter-example:**
+- @deva[शतेन बन्धितः] "caused to be imprisoned by a hundred" — @deva[तृतीया], because @deva[शत] is @deva[प्रयोजक हेतु] (instigating cause = agent) under @ref[1.4.55], hence @deva[कर्तृ] per @ref[2.3.18]
+
+**@deva[अकर्तरि] condition:** The debt-word must not function as an agent. When the debt actively instigates the imprisonment (causal construction), it is @deva[कर्तृ] and takes @deva[तृतीया]. When it is merely the circumstantial reason, @deva[पञ्चमी] applies.
+
+**@deva[ऋण] restriction:** Only debt/obligation words qualify. General cause-words take @deva[तृतीया] under @ref[2.3.23].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[हेतौ] from @ref[2.3.23]; @deva[तृतीया] from @ref[2.3.18]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[अकर्तर्यृणे पञ्चमी] — a @deva[ऋण]-denoting word takes @deva[पञ्चमी] when it expresses @deva[हेतु] but not @deva[कर्तृ].
+
+**@deva[अकर्तरि] — not functioning as agent:** The distinction turns on whether the debt is the circumstantial reason or the active instigator:
+- @deva[शताद् बद्धः] — the hundred is the circumstantial reason for imprisonment; the debt itself does not actively cause the binding → @deva[पञ्चमी]
+- @deva[शतेन बन्धितः] — the hundred is construed as the instigating cause (@deva[प्रयोजक हेतु] per @ref[1.4.55]) that actively brings about the imprisonment → @deva[तृतीया] via @ref[2.3.18] (@deva[कर्तृ])
+
+**@deva[ऋण] — debt words:** The rule applies specifically to words denoting monetary debt or obligation: @deva[शत] "a hundred," @deva[सहस्र] "a thousand," etc. when used in the sense of a debt amount.
+
+**@deva[अपवाद] to @ref[2.3.23]:** Without this rule, debt-as-cause would take @deva[तृतीया] under @ref[2.3.23] (@deva[हेतौ]). This rule carves out a specific exception for debt-words, assigning @deva[पञ्चमी] instead.
+
+**Sequence:** @ref[2.3.23] assigns @deva[तृतीया] to causes generally. This rule overrides with @deva[पञ्चमी] for debt-causes. @ref[2.3.25] further extends @deva[पञ्चमी] optionally to abstract quality-words expressing cause.
+"""

@@ -1,0 +1,44 @@
+id = "2.1.21"
+numericId = "21021"
+
+[en]
+simple = """
+A case-inflected word (@deva[सुबन्त]) **obligatorily** compounds with a river name to form @deva[अव्ययीभाव] when the compound is a proper name (@deva[संज्ञा]) denoting something other than what the individual words mean.
+
+**Examples:**
+- @deva[उन्मत्तगङ्गम्] "the @[unmatta-gaṅgā] region" — a place name, not literally "the mad Ganges"
+- @deva[लोहितगङ्गम्] "the @[lohita-gaṅgā] region"
+- @deva[कृष्णगङ्गम्] "the @[kṛṣṇa-gaṅgā] region"
+
+**No compound when not a proper name:** @deva[शीघ्रो गङ्गो देशः] "the region where the Ganges flows swiftly" — this describes the Ganges directly, so it is not a fixed name and does not compound.
+
+This is the **last rule** of the @deva[अव्ययीभाव] section (which began at @ref[2.1.5]).
+"""
+
+standard = """
+@deva[सुबन्त] + river name → @deva[नित्य] @deva[अव्ययीभाव] when the compound is a @deva[संज्ञा] with @deva[अन्यपदार्थ] (denoting something other than its parts) — @deva[अन्यपदार्थे च संज्ञायाम्].
+
+**Rule type — @deva[विधि] (@deva[नित्यसमास]):** Though within the @deva[विभाषा] section (@ref[2.1.11]), this compound is obligatory because proper names cannot be expressed as uncompounded phrases.
+
+**Examples:** @deva[उन्मत्तगङ्गम्], @deva[लोहितगङ्गम्], @deva[कृष्णगङ्गम्], @deva[शनैर्गङ्गम्].
+
+**Two conditions:**
+1. @deva[अन्यपदार्थ]: the compound denotes something beyond the literal meaning of its parts — @deva[कृष्णवेणा] "the @[kṛṣṇaveṇā] river" fails this (it literally means "dark-braided river")
+2. @deva[संज्ञा]: the compound must be an established proper name — @deva[शीघ्रो गङ्गो देशः] fails this (it is a description, not a name)
+
+**End of @deva[अव्ययीभाव] section:** This rule closes the @deva[अव्ययीभाव] @deva[अधिकार] that began at @ref[2.1.5]. The next rule (@ref[2.1.22]) begins the @deva[तत्पुरुष] section.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[नदीभिः] from @ref[2.1.20]; @deva[समासः] from @ref[2.1.3]; @deva[अव्ययीभावः] from @ref[2.1.5].
+
+@deva[अन्यपदार्थे च संज्ञायाम्] — when the compound is a @deva[संज्ञा] and denotes @deva[अन्यपदार्थ] (a meaning beyond its parts), @deva[सुबन्त] + river name forms @deva[नित्य] @deva[अव्ययीभाव].
+
+**@deva[नित्य] despite @deva[विभाषा] @deva[अधिकार]:** The @deva[काशिका] explains that @deva[संज्ञा] (proper names) are inherently @deva[नित्यसमास] — a name cannot be expressed by splitting the compound into a sentence. @deva[उन्मत्तगङ्गम्] as a place name has no uncompounded equivalent, so @deva[विभाषा] does not apply.
+
+**@deva[अन्यपदार्थ] condition:** The compound must denote something other than what its parts literally mean. @deva[उन्मत्तगङ्गम्] denotes a region, not "a mad Ganges." This distinguishes @deva[अव्ययीभाव] proper names from descriptive phrases.
+
+**@deva[सङ्ख्या] @deva[अनुवृत्ति] stops:** @ref[2.1.19]–@ref[2.1.20] required @deva[सङ्ख्या] (numeral) as first member. This rule has @deva[सुबन्त] generally — the first member can be any case-inflected word, not just a numeral.
+
+**Last @deva[अव्ययीभाव] rule:** @ref[2.1.5]–@ref[2.1.21] = 17 rules defining @deva[अव्ययीभाव]. The section covers: sixteen obligatory senses (@ref[2.1.6]), @deva[यथा]/\u200b@deva[यावत्] restrictions (@ref[2.1.7]–@ref[2.1.8]), reversed-order compounds (@ref[2.1.9]–@ref[2.1.10]), optional compounds with various particles (@ref[2.1.12]–@ref[2.1.16]), @deva[गण] list (@ref[2.1.17]), and special cases (@ref[2.1.18]–@ref[2.1.21]).
+"""

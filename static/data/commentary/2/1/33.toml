@@ -1,0 +1,44 @@
+id = "2.1.33"
+numericId = "21033"
+
+[en]
+simple = """
+A word in the instrumental case (@deva[तृतीया]) denoting an agent or instrument **optionally** compounds with a @deva[कृत्य] word (future passive participle, like "drinkable" or "cuttable") to form @deva[तत्पुरुष] — but only when the meaning is hyperbolic (@deva[अतिशय]), expressing exaggerated praise or censure.
+
+**Examples:**
+- @deva[काकपेया नदी] "a crow-drinkable river" — so shallow even a crow can drink from it (censure)
+- @deva[श्वलेह्यः कूपः] "a dog-lickable well" — so shallow a dog can lick its water
+- @deva[वाष्पच्छेद्यानि तृणानि] "vapor-cuttable grass" — so tender that even steam can cut it
+
+The point of these compounds is to express an extreme degree — they would sound absurd if taken literally, and that is exactly the rhetorical effect.
+"""
+
+standard = """
+@deva[तृतीयान्त] (@deva[कर्तृ]/@deva[करण]) + @deva[कृत्यान्त] → @deva[विभाषा] @deva[तत्पुरुष] when @deva[अतिशय] (hyperbole for praise or censure) is intended — @deva[कृत्येन अतिशये].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[काकपेया नदी] "crow-drinkable river" (extremely shallow — censure)
+- @deva[श्वलेह्यः कूपः] "dog-lickable well" (extremely shallow)
+- @deva[वाष्पच्छेद्यानि तृणानि] "vapor-cuttable grass" (extremely tender)
+- @deva[कण्टकसञ्चेयः ओदनः] "thorn-gatherable rice" (grains so large thorns can pick them up — praise)
+
+**@deva[कृत्य] vs @deva[कृदन्त]:** @ref[2.1.32] used @deva[कृत्] (any verbal derivative). This rule restricts to @deva[कृत्य] — the future passive participle affixes (@deva[यत्], @deva[ण्यत्], etc.) that yield "X-able" words.
+
+**@deva[अतिशय] condition:** Without hyperbolic intent, no compound. @deva[काकैः पेया नदी] (uncompounded) is a neutral statement; @deva[काकपेया नदी] (compound) conveys the exaggeration.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्तृकरणे] from @ref[2.1.32]; @deva[तृतीया] from @ref[2.1.30]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3].
+
+@deva[कृत्येन अतिशये] — @deva[तृतीयान्त] (@deva[कर्तृ]/@deva[करण]) optionally compounds with a @deva[कृत्यान्त] word as @deva[तत्पुरुष] when @deva[अतिशय] is intended.
+
+**@deva[कृत्य] scope — @deva[वार्त्तिक]:** The @deva[वार्त्तिककार] restricts @deva[कृत्य] here to @deva[यत्] and @deva[ण्यत्] affixes only, excluding @deva[तव्य] (@ref[3.1.96]), @deva[अनीयर्] (@ref[3.1.97]), and @deva[क्यप्]. So @deva[काकैः पातव्या नदी] (with @deva[तव्य]) does not compound. The @deva[कृत्य] affixes are defined at @ref[3.1.95]–@ref[3.1.132].
+
+**@deva[अतिशय] = hyperbole:** The @deva[काशिका] explains that the compound conveys an extreme quality through a deliberately absurd agent or instrument. @deva[काकपेया] implies the river is so shallow that even a crow (an unlikely drinker from a river) could drink — this is @deva[निन्दा] (censure). @deva[कण्टकसञ्चेय] implies rice grains so large that even thorns (an unlikely gatherer) could pick them up — this is @deva[प्रशंसा] (praise).
+
+**Distinction from @ref[2.1.32]:** @ref[2.1.32] covers @deva[कृदन्त] generally with @deva[बहुलम्] (irregular application). This rule narrows to @deva[कृत्यान्त] and adds the semantic condition @deva[अतिशय]. The two rules complement each other: @ref[2.1.32] for past/general @deva[कृत्] forms, this rule for future passive participles with hyperbolic force.
+
+**Rhetorical function:** These compounds are a productive literary device. The @deva[अतिशय] condition ensures that only rhetorical (non-literal) uses compound — a neutral @deva[काकैः पेया] stays uncompounded.
+"""

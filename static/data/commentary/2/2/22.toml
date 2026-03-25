@@ -1,0 +1,40 @@
+id = "2.2.22"
+numericId = "22022"
+
+[en]
+simple = """
+An @deva[उपपद] in the instrumental case (or subsequent cases) optionally compounds with a word ending in @deva[क्त्वा] (the absolutive affix meaning "having done X"). When the compound is formed, the @deva[क्त्वा] affix is replaced by @deva[ल्यप्] (by @ref[7.1.37]).
+
+**Examples:**
+- @deva[उच्चैःकृत्य] (compounded) or @deva[उच्चैः कृत्वा] (uncompounded) — "having made loud"
+
+The @deva[उपपद] must be in the third case or beyond — so @deva[अलं कृत्वा] "having done enough" does not compound, because @deva[अलम्] is not an @deva[उपपद] in a case-affix.
+"""
+
+standard = """
+@deva[तृतीयादि]-@deva[उपपद] + @deva[क्त्वान्त] → @deva[विभाषा] @deva[तत्पुरुष] — @deva[तृतीयादिभिश्च क्त्वान्ते].
+
+**Rule type — @deva[विभाषा] (option):** Optional compounding with @deva[क्त्वा]-ending absolutives.
+
+**@deva[क्त्वा] → @deva[ल्यप्] substitution:** When compounded, @ref[7.1.37] replaces @deva[क्त्वा] with @deva[ल्यप्]: @deva[कृत्वा] → @deva[कृत्य]. When uncompounded, @deva[क्त्वा] remains.
+
+**Example:** @deva[उच्चैःकृत्य] ~ @deva[उच्चैः कृत्वा] "having made loud."
+
+**@deva[तृतीयादि] restriction:** The @deva[उपपद] must be in @deva[तृतीया] or a subsequent case. @deva[अलं कृत्वा] "having done enough" — no compound, because @deva[अलम्] is not governed by a case-affix in the relevant sense. Similarly, @deva[खलु कृत्वा] — no compound.
+
+**Relation to @ref[2.2.20]–@ref[2.2.21]:** @ref[2.2.20] handles @deva[अम्]-ending @deva[अव्यय]s; @ref[2.2.21] extends to @deva[तृतीयादि] + @deva[अम्]-ending; @ref[2.2.22] covers @deva[तृतीयादि] + @deva[क्त्वा]-ending. Together they complete the @deva[उपपद]-@deva[अव्यय] compound rules.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[उपपदम्] from @ref[2.2.19]; @deva[तृतीयादिभिः] from @ref[2.2.21]; @deva[तत्पुरुषः] from @ref[2.1.22].
+
+@deva[तृतीयादिभिश्च क्त्वान्ते] (implied) — @deva[तृतीयादि]-@deva[उपपद] optionally compounds with @deva[क्त्वान्त] words.
+
+**@deva[क्त्वा] → @deva[ल्यप्] mechanism:** @ref[7.1.37] (@deva[समासेऽनञ्पूर्वे क्त्वो ल्यप्]) — in a compound not prefixed by @deva[नञ्], @deva[क्त्वा] is replaced by @deva[ल्यप्]. This gives the characteristic @deva[-य] or @deva[-त्य] ending: @deva[कृत्वा] → @deva[कृत्य], @deva[गत्वा] → @deva[गत्य]. The substitution is triggered by the compound — so when uncompounded, @deva[क्त्वा] remains.
+
+**Why a separate rule?** @ref[2.2.20] covered @deva[अम्]-ending @deva[अव्यय]s; @ref[2.2.21] extended that to @deva[तृतीयादि]-@deva[उपपद]s. @deva[क्त्वा]-ending words are a different class of @deva[अव्यय] (not @deva[अमन्त]), so they need separate authorization.
+
+**@deva[तृतीयादि] constraint — finding scope:** @deva[अलम्] and @deva[खलु] do not bear case-affixes — they are pure @deva[निपात]. Since they are not @deva[तृतीयादि]-@deva[उपपद]s, @deva[अलं कृत्वा] and @deva[खलु कृत्वा] do not compound. The constraint ensures only semantically governed @deva[उपपद]s (those with genuine case-relationships to the verb) can compound.
+
+**Closing the @deva[उपपद] series:** @ref[2.2.19] (general @deva[उपपद] + @deva[कृत्]), @ref[2.2.20] (@deva[अमन्त] restriction), @ref[2.2.21] (@deva[तृतीयादि] + @deva[अमन्त] option), @ref[2.2.22] (@deva[तृतीयादि] + @deva[क्त्वान्त] option). This completes the @deva[उपपद]-compound rules within @deva[तत्पुरुष].
+"""

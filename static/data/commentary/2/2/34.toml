@@ -1,0 +1,42 @@
+id = "2.2.34"
+numericId = "22034"
+
+[en]
+simple = """
+In a @deva[द्वन्द्व] compound, the word with fewer vowels (syllables) is placed first.
+
+**Examples:**
+- @deva[प्लक्षन्यग्रोधौ] "@[plakṣa] and Nyagrodha (two trees)" — @deva[प्लक्ष] has 2 vowels, @deva[न्यग्रोध] has 3
+- @deva[धवखदिरपलाशाः] "Dhava, Khadira, and @[palāśa]" — arranged by increasing vowel count (2, 3, 3)
+"""
+
+standard = """
+@deva[अल्पाच्] (fewer vowels) placed first in @deva[द्वन्द्व] — @deva[अल्पाच्तरम्].
+
+**Rule type — @deva[विधि] (ordering rule):** Third criterion for @deva[द्वन्द्व] member-order.
+
+**Examples:**
+- @deva[प्लक्षन्यग्रोधौ] — @deva[प्लक्ष] (2 vowels) before @deva[न्यग्रोध] (3 vowels)
+- @deva[धवखदिरपलाशाः] — @deva[धव] (2) before @deva[खदिर] (3) before @deva[पलाश] (3)
+
+**Multiple members:** When three or more words compound, they are arranged in ascending order of vowel count — shortest first.
+
+**In the ordering hierarchy:** This applies when @ref[2.2.32] (@deva[घि]) and @ref[2.2.33] (vowel-initial + @deva[अ]-final) do not resolve the ordering. It is the most general of the three @deva[द्वन्द्व] ordering rules.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[द्वन्द्वे] from @ref[2.2.32]; @deva[पूर्वम्] from @ref[2.2.30].
+
+@deva[अल्पाच्तरम्] — in @deva[द्वन्द्व], the word with fewer vowels (@deva[अच्]) is placed first.
+
+**Vowel-count criterion:** @deva[अच्] counts the number of vowels in the @deva[प्रातिपदिक]. @deva[प्लक्ष] = @deva[अ], @deva[अ] = 2 vowels. @deva[न्यग्रोध] = @deva[अ], @deva[ओ], @deva[अ] = 3 vowels. The shorter word precedes.
+
+**Residual rule in the ordering chain:** @ref[2.2.32]–@ref[2.2.34] form a cascading priority:
+1. @ref[2.2.32]: @deva[घि]-ending first
+2. @ref[2.2.33]: Vowel-initial + @deva[अ]-final first
+3. @ref[2.2.34]: Fewer vowels first
+
+If all three criteria tie, convention or usage determines the order.
+
+**Scope beyond @deva[द्वन्द्व]:** Though primarily for @deva[द्वन्द्व], the @deva[काशिका] considers whether this principle extends to other compound types. Generally, it is restricted to @deva[द्वन्द्व], where both members are co-equal and the ordering is otherwise arbitrary.
+"""

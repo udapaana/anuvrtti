@@ -1,0 +1,42 @@
+id = "1.2.6"
+numericId = "12006"
+
+[en]
+simple = """
+The @deva[लिट्] (perfect tense) affixes after the roots @deva[इन्धि] "to kindle" and @deva[भू] "to become" are treated as @deva[कित्], which blocks @deva[गुण] (vowel strengthening).
+
+This is needed because the general rule (@ref[1.2.5]) only applies to roots ending in a single consonant. @deva[इन्धि] ends in a cluster (@deva[न्ध्]), so it would not be covered. And for @deva[भू], this rule makes all @deva[लिट्] affixes @deva[कित्] — even the @deva[पित्] ones that @ref[1.2.5] would exempt.
+
+**Examples:**
+- @deva[इन्ध्] → @deva[ईधे] "he kindled" (the nasal @deva[न्] drops because @deva[कित्] triggers @ref[6.4.24])
+- @deva[भू] → @deva[बभूव] "he became," @deva[बभूविथ] "you became" — the @deva[ऊ] stays long, no strengthening to @deva[ओ]
+"""
+
+standard = """
+@deva[लिट्] affixes after @deva[इन्धि] "to kindle" and @deva[भू] "to become" are @deva[कित्].
+
+**Why @deva[इन्धि]?** @deva[इन्धि] ends in a conjunct consonant (@deva[न्ध्]), so @ref[1.2.5] (non-conjunct roots only) does not cover it. This rule provides the @deva[कित्] treatment separately.
+- @deva[कित्] triggers nasal deletion by @ref[6.4.24]: @deva[इन्ध्] → @deva[इध्] → @deva[ईधे] "he kindled"
+
+**Why @deva[भू]?** @ref[1.2.5] makes @deva[लिट्] affixes @deva[कित्] except @deva[पित्] ones. For @deva[भू], this rule overrides that exception — all affixes including @deva[पित्] are @deva[कित्]:
+- @deva[बभूव] "he became" (3sg @deva[णल्] — normally @deva[पित्], but @deva[कित्] here → no @deva[गुण])
+- @deva[बभूविथ] "you became"
+
+**Scope:** @deva[अपित्] condition from @ref[1.2.4] does not carry over here — this rule independently makes all @deva[लिट्] affixes @deva[कित्] for these two roots.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[लिट्] and @deva[कित्] from @ref[1.2.5].
+
+@deva[इन्धिभवतिभ्यां च] — @deva[लिट्] affixes are @deva[कित्] after @deva[इन्धि] and @deva[भू].
+
+**Two distinct motivations:**
+1. **@deva[इन्धि]:** Conjunct-final → not covered by @ref[1.2.5]. This rule supplies @deva[कित्] treatment. @ref[6.4.24] then deletes the @deva[उपधा] nasal: @deva[इन्ध्] → @deva[इध्] → @deva[ईधे].
+2. **@deva[भू]:** Non-conjunct → @ref[1.2.5] would apply but exempt @deva[पित्] affixes. This rule overrides, making all @deva[लिट्] affixes @deva[कित्]. Result: @deva[बभूव] (not *@deva[बभोव]).
+
+**The @deva[च] ("also"):** Indicates this rule supplements @ref[1.2.5], not replaces it. Both rules operate: @ref[1.2.5] for the general case, this rule for these two specific roots.
+
+**@deva[वार्त्तिक]:** Also extends to @deva[श्रन्थ्] "to loosen," @deva[दम्भ्] "to injure," @deva[स्वञ्ज्] "to embrace": @deva[श्रेथतुः], @deva[देभतुः], @deva[परिषस्वजे].
+
+**Interaction with @ref[6.4.24]:** @deva[अनिदिताम्] — before @deva[कित्] affixes, the @deva[उपधा] nasal of @deva[अनिदित्] roots is deleted. This is why @deva[कित्] (not just @deva[ङित्]) is used: @deva[कित्] triggers nasal deletion, @deva[ङित्] does not.
+"""

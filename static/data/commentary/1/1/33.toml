@@ -1,0 +1,42 @@
+id = "1.1.33"
+numericId = "11033"
+
+[en]
+simple = """
+Several additional words are optionally @deva[सर्वनाम] before the nominative plural ending: @deva[प्रथम] "first," @deva[चरम] "last," words ending in @deva[तयप्] (like @deva[द्वितय] "twofold"), @deva[अल्प] "few," @deva[अर्ध] "half," @deva[कतिपय] "some," and @deva[नेम] "half."
+
+These words are not in the main @deva[सर्वनाम] list (@ref[1.1.27]), but they can optionally take the pronominal nominative plural ending.
+
+**Example:** @deva[प्रथमे] (pronominal) or @deva[प्रथमाः] (regular) — both valid for "the first ones."
+"""
+
+standard = """
+These words are optionally @deva[सर्वनाम] before @deva[जस्] (nom. pl. only), extending the option from @ref[1.1.32].
+
+**Words covered:**
+- @deva[प्रथम] "first," @deva[चरम] "last"
+- @deva[तयप्]-words (@ref[5.2.42]): @deva[द्वितय] "twofold," @deva[त्रितय] "threefold"
+- @deva[अल्प] "few," @deva[अर्ध] "half," @deva[कतिपय] "some," @deva[नेम] "half"
+
+**Examples:** @deva[प्रथमे] ~ @deva[प्रथमाः], @deva[अल्पे] ~ @deva[अल्पाः], @deva[द्वितये] ~ @deva[द्वितयाः].
+
+**@deva[नेम] — @deva[प्राप्तविभाषा]:** @deva[नेम] is already in the @deva[सर्वादि] list, so it is normally @deva[सर्वनाम]. Here, the option applies only to nom. pl.; in other cases, @deva[नेम] retains full pronominal declension.
+
+**Affix consequence:** Whether @deva[कन्] or @deva[अकच्] applies depends on whether the word is treated as pronominal.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[विभाषा जसि] from @ref[1.1.32]; @deva[सर्वनामानि] from @ref[1.1.27].
+
+@deva[प्रथमचरमतयाल्पार्धकतिपयनेमाश्च] — these are optionally @deva[सर्वनाम] before @deva[जस्].
+
+**Words:** @deva[प्रथम], @deva[चरम], @deva[तयप्]-words (@ref[5.2.42]), @deva[अल्प], @deva[अर्ध], @deva[कतिपय], @deva[नेम].
+
+**Option:** @deva[प्रथमे] ~ @deva[प्रथमाः]; @deva[द्वितये] ~ @deva[द्वितयाः]; @deva[अल्पे] ~ @deva[अल्पाः].
+
+**@deva[प्राप्तविभाषा] vs. @deva[अप्राप्तविभाषा]:** @deva[नेम] (and @deva[उभय], which is implicit) are already @deva[सर्वनाम] by @ref[1.1.27] — the option here is @deva[प्राप्तविभाषा], restricting their pronominal behavior to be optional in nom. pl. For @deva[प्रथम], @deva[चरम], @deva[अल्प], etc. — not in the @deva[सर्वादि] list — the option is @deva[अप्राप्तविभाषा], granting new pronominal behavior.
+
+**Affix consequence:** The @deva[सर्वनाम] status affects whether @deva[अकच्] (@ref[5.3.71]) or @deva[कन्] (@ref[5.3.70]) applies.
+
+**The @deva[च]:** Connects these words to the @deva[विभाषा जसि] domain established at @ref[1.1.32].
+"""

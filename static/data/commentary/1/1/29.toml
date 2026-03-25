@@ -1,0 +1,43 @@
+id = "1.1.29"
+numericId = "11029"
+
+[en]
+simple = """
+In @deva[बहुव्रीहि] (possessive) compounds, words from the @deva[सर्वनाम] list lose their pronominal status. They decline like ordinary nouns instead.
+
+A @deva[बहुव्रीहि] compound describes something by what it possesses: @deva[प्रियविश्व] means "one for whom all is dear." Even though @deva[विश्व] "all" is normally a @deva[सर्वनाम] with special endings, inside a @deva[बहुव्रीहि] it declines regularly.
+
+**Example:** @deva[प्रियविश्व] — dative @deva[प्रियविश्वाय] (regular), not *@deva[प्रियविश्वस्मै] (pronominal).
+"""
+
+standard = """
+@deva[सर्वादि] words in @deva[बहुव्रीहि] compounds are not @deva[सर्वनाम] — they take regular nominal declension.
+
+**Examples:**
+- @deva[प्रियविश्वाय] "to one for whom all is dear" (not *@deva[प्रियविश्वस्मै])
+- @deva[प्रियोभयाय], @deva[द्व्यन्याय], @deva[त्र्यन्याय]
+
+**Affix consequence:** @deva[कन्] applies rather than @deva[अकच्] (@ref[5.3.70]): @deva[त्वत्कपितृकः], @deva[मत्कपितृकः].
+
+**Why @deva[बहुव्रीहि] is explicitly stated:** By @ref[1.1.72], a @deva[संज्ञा] applying to a word extends to compounds ending in that word. This rule overrides that extension for @deva[बहुव्रीहि] specifically. The explicit mention also extends the prohibition to former @deva[बहुव्रीहि] members in further compounds: @deva[वस्त्रान्तरावसनान्तराः].
+
+**Exception:** @ref[1.1.28] creates an option for directional @deva[बहुव्रीहि].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सर्वनामानि] from @ref[1.1.27].
+
+@deva[न बहुव्रीहौ] — @deva[सर्वादि] words in @deva[बहुव्रीहि] compounds are not @deva[सर्वनाम].
+
+**Mechanism:** @ref[1.1.72] (@deva[येन विधिस्तदन्तस्य]) normally extends @deva[संज्ञा]s to compounds ending in the relevant word. This rule blocks that extension for @deva[बहुव्रीहि].
+
+**Examples:** @deva[प्रियविश्वाय], @deva[प्रियोभयाय], @deva[द्व्यन्याय].
+
+**Affix consequence:** @deva[कन्] applies instead of @deva[अकच्] (@ref[5.3.70]): @deva[त्वत्कपितृकः].
+
+**Why @deva[बहुव्रीहि] is stated explicitly (not just by @deva[अनुवृत्ति]):** The @deva[काशिका] explains that the explicit statement extends the prohibition beyond simple @deva[बहुव्रीहि] to items that were @deva[बहुव्रीहि] before further compounding: @deva[वस्त्रान्तरावसनान्तराः] — @deva[अन्तर] was @deva[बहुव्रीहि] in the first compound, and the prohibition persists in the larger compound.
+
+**Relation to @ref[1.1.28]:** @ref[1.1.28] creates an option for directional @deva[बहुव्रीहि] — an @deva[अपवाद] to this rule's general prohibition.
+
+**Series structure:** @ref[1.1.29]–@ref[1.1.33] define where @deva[सर्वनाम] status is lost in compounds: @deva[बहुव्रीहि] (this rule), @deva[तृतीया]-@deva[तत्पुरुष] (@ref[1.1.30]), @deva[द्वन्द्व] (@ref[1.1.31]), and further qualifications.
+"""

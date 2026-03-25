@@ -1,0 +1,51 @@
+id = "1.1.64"
+numericId = "11064"
+
+[en]
+simple = """
+The portion of a word from its last vowel to the end is called @deva[टि]. This is a technical term used when the grammar needs to refer to "the tail end" of a word — specifically, the last vowel plus any consonants that follow it.
+
+**Examples:**
+- In @deva[अग्निचित्] "fire-builder," the @deva[टि] is @deva[इत्] (the last vowel @deva[इ] plus the final @deva[त्])
+- In @deva[कर्तृ] "doer," the @deva[टि] is @deva[ऋ] (the last vowel, with nothing after it)
+- In @deva[भवन्त्] "being," the @deva[टि] is @deva[अन्त्] (the last vowel @deva[अ] plus @deva[न्त्])
+
+This term appears in rules like @ref[3.4.79], which operates on the @deva[टि] portion of verb endings.
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] defines @deva[टि]: the segment of a word from its final vowel (@deva[अच्]) through the end, including all trailing consonants.
+
+**Examples:**
+| Word | @deva[टि] | Analysis |
+|------|-----------|----------|
+| @deva[अग्निचित्] | @deva[इत्] | Last vowel @deva[इ] + @deva[त्] |
+| @deva[सामसुत्] | @deva[उत्] | Last vowel @deva[उ] + @deva[त्] |
+| @deva[कर्तृ] | @deva[ऋ] | Last vowel @deva[ऋ], no trailing consonants |
+| @deva[भवन्त्] | @deva[अन्त्] | Last vowel @deva[अ] + @deva[न्त्] |
+
+**Application:** @ref[3.4.79] (@deva[टित आत्मनेपदानां टेरे]) replaces the @deva[टि] of @deva[आत्मनेपद] endings with @deva[ए]. The @deva[टि] designation identifies exactly which part of the ending gets replaced.
+
+**Relation to @ref[1.1.65]:** @deva[टि] is the "tail" from the last vowel onward. @deva[उपधा] (@ref[1.1.65]) is the letter just before the final. Together they provide precise positional references within a word.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — independent @deva[संज्ञा].
+
+@deva[अचोऽन्त्यादि टि] — @deva[टि] designates the portion from the final vowel (@deva[अन्त्य अच्]) to the end (@deva[आदि] here meaning "beginning from," i.e., "from... onward").
+
+**Parsing:** @deva[अचः अन्त्यात् आदि] — "from the last vowel, the beginning [of the end-portion]." The @deva[टि] includes the last vowel and everything after it.
+
+**Key applications:**
+- @ref[3.4.79]: @deva[टि] of @deva[आत्मनेपद] endings replaced by @deva[ए]
+- @ref[7.1.54]: @deva[ह्रस्वस्य गुणः] — @deva[गुण] of a short vowel in the @deva[टि]
+- @ref[6.4.143]: @deva[टेः] — operations on the @deva[टि] portion
+
+**Why this term is needed:** Many grammatical operations target the "ending portion" of a word — not just the final letter, and not the whole word, but the segment from the last vowel onward. @deva[टि] gives this segment a name, allowing rules to reference it precisely.
+
+**Contrast with other positional terms:**
+- @deva[अन्त्य] (final): just the last sound
+- @deva[उपधा] (@ref[1.1.65]): the penultimate sound
+- @deva[टि] (this rule): the last vowel plus all following consonants — a multi-sound segment
+- @deva[आदि] (initial): the first sound
+"""

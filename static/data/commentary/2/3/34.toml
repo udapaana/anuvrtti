@@ -1,0 +1,43 @@
+id = "2.3.34"
+numericId = "23034"
+
+[en]
+simple = """
+With words meaning @deva[दूर] (far, distant) or @deva[अन्तिक] (near, close), the reference point can optionally take @deva[षष्ठी] (genitive, sixth case-ending) instead of @deva[पञ्चमी] (ablative).
+
+**Examples:**
+- @deva[ग्रामस्य दूरम्] or @deva[ग्रामाद् दूरम्] "far from the village"
+- @deva[ग्रामस्यान्तिकम्] or @deva[ग्रामादन्तिकम्] "near the village"
+- @deva[नगरस्य समीपम्] or @deva[नगरात् समीपम्] "close to the city"
+
+Both the genitive ("far of the village") and the ablative ("far from the village") express the same meaning. The speaker may use either.
+"""
+
+standard = """
+@deva[दूरान्तिकार्थेभ्यो षष्ठ्यन्यतरस्याम्] — with words meaning @deva[दूर] "distant" or @deva[अन्तिक] "near" (including synonyms: @deva[विप्रकृष्ट], @deva[अभ्याश], @deva[निकट], @deva[समीप]), @deva[षष्ठी] is optionally used.
+
+**Rule type — @deva[विधि] (optional):** Adds @deva[षष्ठी] as an alternative to @deva[पञ्चमी].
+
+**Examples:**
+- @deva[ग्रामस्य दूरम्] (@deva[षष्ठी]) or @deva[ग्रामाद् दूरम्] (@deva[पञ्चमी]) "far from the village"
+- @deva[ग्रामस्यान्तिकम्] or @deva[ग्रामादन्तिकम्] "near the village"
+- @deva[नगरस्य समीपम्] or @deva[नगरात् समीपम्] "close to the city"
+
+**@deva[दूरान्तिकार्थ] — "having the meaning of @deva[दूर] or @deva[अन्तिक]":** This extends the rule to all synonyms, not just these two words. Any adjective or adverb meaning "far" or "near" qualifies.
+
+**Scope:** The @deva[अन्यतरस्याम्] ("optionally") ensures that @deva[पञ्चमी] (from @ref[2.3.28]) remains valid alongside @deva[षष्ठी].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[दूरान्तिकार्थेभ्यो षष्ठ्यन्यतरस्याम्] — @deva[षष्ठी] is optional with words meaning @deva[दूर] or @deva[अन्तिक].
+
+**@deva[दूरान्तिकार्थ] — meaning-based extension:** The compound @deva[दूरान्तिकार्थ] is a @deva[बहुव्रीहि]: "those whose meaning is that of @deva[दूर] or @deva[अन्तिक]." This covers not just @deva[दूर] and @deva[अन्तिक] themselves but all synonyms: @deva[विप्रकृष्ट], @deva[अभ्याश], @deva[निकट], @deva[समीप], @deva[अविदूर], etc.
+
+**Case inventory for @deva[दूर]/@deva[अन्तिक]:** This rule adds @deva[षष्ठी] to the @deva[पञ्चमी] already available from @ref[2.3.28]. Combined with @ref[2.3.35] (which adds @deva[द्वितीया] and @deva[तृतीया] for the words @deva[दूर]/@deva[अन्तिक] themselves) and @ref[2.3.36] (which adds @deva[सप्तमी]), @deva[दूर] and @deva[अन्तिक] end up governing four or more cases — an unusually wide range.
+
+**@deva[अन्यतरस्याम्] — genuine option:** The @deva[पञ्चमी] from @ref[2.3.28] is not displaced; @deva[षष्ठी] is merely added as an equally valid alternative. Neither case is preferred.
+
+**Cross-references:** @ref[2.3.28] (@deva[पञ्चमी] for @deva[अपादान]), @ref[2.3.35] (@deva[द्वितीया]/@deva[तृतीया] for @deva[दूर]/@deva[अन्तिक] themselves), @ref[2.3.36] (@deva[सप्तमी] for @deva[दूर]/@deva[अन्तिक]).
+"""

@@ -1,0 +1,54 @@
+id = "1.3.88"
+numericId = "13088"
+
+[en]
+simple = """
+When a causative is formed from an intransitive verb whose original agent was a sentient being (@deva[चेतन], "conscious"), the causative takes @deva[परस्मैपद] (active endings) — even when the fruit accrues to the agent.
+
+**@deva[परस्मैपद] (intransitive + sentient original agent):**
+- @deva[शेते] "he sleeps" → @deva[शाययति] "he puts (someone) to sleep"
+- @deva[आस्ते] "he sits" → @deva[आसयति] "he seats (someone)"
+
+**@deva[आत्मनेपद] (non-sentient original agent):**
+- @deva[शोषयते व्रीहीन् आतपः] "the sunshine dries the paddy" (sunshine is non-sentient)
+
+The distinction is about the original doer, not the causer. If you make a person sleep, @deva[परस्मैपद]. If you make grain dry (where the grain isn't a sentient agent), @deva[आत्मनेपद].
+"""
+
+standard = """
+Causatives (@deva[णिच्]) of intransitive (@deva[अकर्मक]) verbs whose original agent was sentient (@deva[चेतन]) take @deva[परस्मैपद] — even when fruit accrues to the agent.
+
+**Intransitive + sentient → @deva[परस्मैपद]:**
+- @deva[शेते] → @deva[शाययति] "he puts to sleep"
+- @deva[आस्ते] → @deva[आसयति] "he seats"
+
+**Intransitive + non-sentient → @deva[आत्मनेपद] (by @ref[1.3.74]):**
+- @deva[शोषयते व्रीहीन् आतपः] "the sunshine dries the paddy"
+
+**Rule type — @deva[अपवाद] of @ref[1.3.74]:** Two conditions must both hold:
+1. The base verb is @deva[अकर्मक] (intransitive)
+2. The original agent (now the @deva[कर्मन्] of the causative) was @deva[चेतन] (sentient)
+
+**Scope restrictions:**
+- Transitive base verbs are excluded: @deva[कारयते] (not @deva[कारयति]) — @deva[कृ] is transitive
+- Causatives of causatives are excluded: @deva[आरोहयते] (not @deva[आरोहयति])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78]; @deva[णौ] from @ref[1.3.86].
+
+@deva[अकर्मकाच्चेतने कर्तरि] — causatives of intransitive verbs with sentient original agents take @deva[परस्मैपद].
+
+**Two-condition rule:**
+1. @deva[अकर्मक]: base verb must be intransitive
+2. @deva[चेतन कर्तरि]: the original @deva[कर्ता] (who becomes the @deva[कर्मन्] of the causative) must be sentient
+
+**Why both conditions?** In @deva[शाययति देवदत्तम्] "he puts Devadatta to sleep," Devadatta (sentient) was the original sleeper. The causative act of putting a conscious being to sleep is outward-directed — hence @deva[परस्मैपद]. But @deva[शोषयते व्रीहीन्] "he dries the paddy" — paddy is non-sentient, and the drying benefits the agent — hence @deva[आत्मनेपद].
+
+**Exclusions:**
+- Transitive base: @deva[कारयते] — @deva[कृ] takes objects, so @ref[1.3.88] does not apply
+- Double causative: @deva[आरोहयते] — formed from causative, not simple root
+- @ref[1.3.89] exceptions: even if conditions are met, listed roots revert to @deva[आत्मनेपद]
+
+**Position in causative block:** @ref[1.3.86] (enumerated roots) → @ref[1.3.87] (semantic: non-eating/moving) → @ref[1.3.88] (this: intransitive + sentient) → @ref[1.3.89] (exceptions). These three rules (@ref[1.3.86]–@ref[1.3.88]) progressively widen the scope of @deva[परस्मैपद] for causatives, with @ref[1.3.89] clawing back specific exceptions.
+"""

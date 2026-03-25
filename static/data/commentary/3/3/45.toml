@@ -1,0 +1,29 @@
+id = "3.3.45"
+numericId = "33045"
+
+[en]
+simple = """
+This rule teaches that the affix @deva[घञ्] is added after the root @deva[ग्रह्] (to seize, grab) when it is preceded by the prefix @deva[अव] (down, away) or @deva[नि] (down, into), provided the meaning is one of cursing or malediction (@deva[आक्रोश]).
+
+For example, @deva[अवग्राहः] means "a curse" in the sentence @deva[अवग्राहो हन्त ते भूयात्] "may a curse befall you!" Similarly, @deva[निग्राहः] means "an imprecation" in @deva[निग्राहस्ते भूयात्] "may you be cursed!" The @deva[घञ्] affix produces the long vowel @deva[आ] in these forms through @deva[वृद्धि] substitution.
+
+This matters because without the curse meaning, the same roots with prefixes form different words with different affixes: @deva[अवग्रहः] "pause, separation" and @deva[निग्रहः] "restraint, control" use @deva[अप्] instead.
+"""
+
+standard = """
+The affix @deva[घञ्] applies after @deva[अव] + @deva[ग्रह्] or @deva[नि] + @deva[ग्रह्] when the meaning is @deva[आक्रोश] (malediction, cursing). This is a @deva[नियम] (restriction rule) that specifies @deva[घञ्] in place of what would otherwise be @deva[अप्].
+
+Derivation: @deva[अव] + @deva[ग्रह्] + @deva[घञ्] → @deva[अवग्राह] (with @deva[वृद्धि] of root vowel @deva[अ] → @deva[आ]).
+
+Examples with curse meaning: @deva[अवग्राहो हन्त ते वृषलभूयात्] "accursed be thou, O sinner!"; @deva[निग्राहस्ते भूयात्] "may curse befall you!"
+
+Counter-examples without curse meaning: @deva[अवग्रहः पदस्य] "separation of a word" (grammatical term); @deva[निग्रहश्चोरस्य] "restraint of a thief." Here @deva[अप्] applies, not @deva[घञ्].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[घञ्] continues from @ref[3.3.16], not from the immediately preceding @deva[इनुण्] rule, since @deva[घञ्] logically fits the @deva[ग्रह्] root here.
+
+The semantic condition @deva[आक्रोशे] restricts this provision to imprecatory usage. The @deva[वृद्धि] of the root vowel (@deva[अ] → @deva[आ]) that @deva[घञ्] triggers by @ref[7.2.115] serves as the formal marker distinguishing curse-words (@deva[अवग्राह], @deva[निग्राह]) from the regular @deva[अप्]-derived forms (@deva[अवग्रह] "pause," @deva[निग्रह] "restraint").
+
+The @deva[कौमुदी] notes that this rule is needed because @deva[अप्] from @ref[3.3.58] would otherwise apply to @deva[ग्रह्] unconditionally. The semantic restriction creates a morphological split: the same root-prefix combination yields different words depending on intended meaning.
+"""

@@ -1,0 +1,48 @@
+id = "1.4.105"
+numericId = "14105"
+
+[en]
+simple = """
+When the word @deva[युष्मद्] "you" is the subject — whether stated explicitly or understood from context — the verb takes @deva[मध्यम] "second person" endings.
+
+**Examples:**
+- @deva[त्वं पचसि] "you cook" (singular — @deva[सिप्] ending)
+- @deva[युवां पचथः] "you two cook" (dual — @deva[थस्] ending)
+- @deva[यूयं पचथ] "you all cook" (plural — @deva[थ] ending)
+
+The pronoun can be dropped: @deva[पचसि] alone means "you cook" because the ending already shows second person. Sanskrit verb endings carry person information, so the pronoun is optional.
+"""
+
+standard = """
+When @deva[युष्मद्] (expressed or understood) is the subject, @deva[मध्यम] (2nd person) endings are used — @deva[युष्मद्युपपदे समानाधिकरणे स्थानिन्यपि मध्यमः].
+
+**Rule type — @deva[विधि]:** Assigns @deva[मध्यम पुरुष] based on subject identity.
+
+**Examples:**
+- @deva[त्वं पचसि] / @deva[पचसि] "you cook" (@deva[एकवचन])
+- @deva[युवां पचथः] / @deva[पचथः] "you two cook" (@deva[द्विवचन])
+- @deva[यूयं पचथ] / @deva[पचथ] "you all cook" (@deva[बहुवचन])
+
+**@deva[समानाधिकरण] = "having the same referent":** The subject and the @deva[युष्मद्] pronoun must refer to the same entity. If @deva[युष्मद्] appears but is not the subject (e.g., as an object), @deva[मध्यम] does not apply.
+
+**@deva[स्थानिन्यपि] = "even when understood":** The pronoun need not be stated overtly. If the context implies "you" as subject, @deva[मध्यम] endings are used.
+
+**Paired with @ref[1.4.107]:** @ref[1.4.107] assigns @deva[उत्तम] for @deva[अस्मद्] "I/we." @ref[1.4.108] assigns @deva[प्रथम] as the default for all other subjects.
+"""
+
+advanced = """
+@deva[युष्मद्युपपदे समानाधिकरणे स्थानिन्यपि मध्यमः] — when @deva[युष्मद्] is the co-referential subject (even if unexpressed), @deva[मध्यम पुरुष] applies.
+
+**@deva[स्थानिन्] = "the thing that would occupy the position":** This technical term means @deva[युष्मद्] need not be overtly present — if the subject position is understood to be "you," @deva[मध्यम] still applies. This accounts for pro-drop: @deva[पचसि] alone, without @deva[त्वम्], is valid.
+
+**@deva[समानाधिकरण] condition:** The @deva[युष्मद्] pronoun and the subject must share the same referent (co-referential). In @deva[त्वं पचसि], @deva[त्वम्] and the agent of @deva[पच्] are the same person. This condition prevents @deva[मध्यम] when @deva[युष्मद्] appears in a non-subject role.
+
+**Person hierarchy (@ref[1.4.105]–@ref[1.4.108]):** The grammar assigns person in a specific order:
+1. @ref[1.4.105]: @deva[युष्मद्] → @deva[मध्यम]
+2. @ref[1.4.107]: @deva[अस्मद्] → @deva[उत्तम]
+3. @ref[1.4.108]: everything else → @deva[प्रथम]
+
+When both @deva[युष्मद्] and @deva[अस्मद्] could apply (mixed subjects), @ref[1.4.106] resolves the conflict.
+
+**@deva[वचन] selection:** Once @deva[मध्यम] is assigned (selecting the triad), @deva[वचन] selects within it: @deva[एकवचन] for @deva[त्वम्], @deva[द्विवचन] for @deva[युवाम्], @deva[बहुवचन] for @deva[यूयम्].
+"""

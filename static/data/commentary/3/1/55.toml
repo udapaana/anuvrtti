@@ -1,0 +1,48 @@
+id = "3.1.55"
+numericId = "31055"
+
+[en]
+simple = """
+This rule says that @deva[अङ्] replaces @deva[च्लि] after three groups of roots when @deva[परस्मैपद] (active voice) endings follow:
+
+1. The @deva[पुषादि] roots (a subdivision of the 4th conjugation)
+2. The @deva[द्युतादि] roots (belonging to the 1st conjugation)
+3. Roots marked with indicatory @deva[ऋ] (@deva[ऋदित्])
+
+Examples:
+- @deva[पुष्] (to nourish): @deva[अपुषत्] (he nourished)
+- @deva[द्युत्] (to shine): @deva[अद्युतत्] (he shone)
+- @deva[गम्ऌ] (to go, marked with @deva[ऋ]): @deva[अगमत्] (he went)
+
+This does NOT apply in @deva[आत्मनेपद] (middle voice). For example, @deva[द्युत्] in @deva[आत्मनेपद] uses @deva[सिच्]: @deva[व्यद्योतिष्ट], @deva[अलोतिष्ट].
+"""
+
+standard = """
+@deva[अङ्] substitutes for @deva[च्लि] after @deva[पुषादि] (4th class subdivision), @deva[द्युतादि] (1st class), and @deva[ऋदित्] roots when @deva[परस्मैपद] endings follow.
+
+Examples:
+- @deva[पुष्] (@deva[पुषादि]): @deva[अपुषत्]
+- @deva[द्युत्] (@deva[द्युतादि]): @deva[अद्युतत्]
+- @deva[गम्ऌ] (@deva[ऋदित्]): @deva[अगमत्]
+
+In @deva[आत्मनेपद], @deva[सिच्] is used instead:
+- @deva[व्यद्योतिष्ट]
+- @deva[अलोतिष्ट]
+
+The @deva[ऋदित्] marker (@deva[ऋ] as @deva[इत्]) on roots like @deva[गम्ऌ] serves specifically to trigger this @deva[अङ्] substitution in @deva[परस्मैपद].
+"""
+
+advanced = """
+@deva[अङ्] is the @deva[आदेश] for @deva[च्लि] after @deva[पुषादि] (@deva[दिवादि] subdivision), @deva[द्युतादि] (@deva[भ्वादि]), and @deva[ऋदित्] roots in @deva[परस्मैपद लुङ्].
+
+Examples:
+- @deva[पुष्]: @deva[अपुषत्]
+- @deva[द्युत्]: @deva[अद्युतत्]
+- @deva[गम्ऌ]: @deva[अगमत्]
+
+@deva[आत्मनेपद] takes @deva[सिच्]: @deva[व्यद्योतिष्ट], @deva[अलोतिष्ट].
+
+The @deva[ऋदित्] designation (@deva[ऋ] as @deva[इत्] by @ref[1.3.2]) on roots like @deva[गम्ऌ] serves primarily to license @deva[अङ्] in @deva[परस्मैपद]. The @deva[ऋ] is not pronounced—it is purely functional.
+
+@note[type=observation]: This rule establishes the major @deva[अङ्]-aorist paradigm for @deva[परस्मैपद], covering a significant portion of the verbal lexicon through these three categories.
+"""

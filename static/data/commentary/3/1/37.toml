@@ -1,0 +1,29 @@
+id = "3.1.37"
+numericId = "31037"
+
+[en]
+simple = """
+This rule says that the affix @deva[आम्] is added in the perfect tense (@deva[लिट्]) after three specific roots: @deva[दय्] (to give, to go, to protect), @deva[अय्] (to go), and @deva[आस्] (to sit).
+
+Examples: @deva[दय्] → @deva[दयाञ्चके] (he gave); @deva[पलाय्] (to run away, containing @deva[अय्]) → @deva[पलायाञ्चक्रे] (he ran away); @deva[आस्] → @deva[आसाञ्चक्रे] (he sat).
+
+These roots form the periphrastic perfect with @deva[आम्] followed by the perfect of an auxiliary verb.
+"""
+
+standard = """
+The affix @deva[आम्] is added before @deva[लिट्] after the roots @deva[दय्] (to give/go/protect), @deva[अय्] (to go), and @deva[आस्] (to sit). These roots thus form the periphrastic perfect.
+
+Examples: @deva[दयाञ्चके], @deva[पलायाञ्चक्रे] (from @deva[पलाय्], which contains @deva[अय्]), @deva[आसाञ्चक्रे].
+
+This extends the @deva[आम्] domain from @ref[3.1.35] and @ref[3.1.36] to include these specific roots that would otherwise have difficulty forming a regular reduplicated perfect.
+"""
+
+advanced = """
+The affix @deva[आम्] applies before @deva[लिट्] after @deva[दय्] (to give/go/protect), @deva[अय्] (to go), and @deva[आस्] (to sit).
+
+Examples: @deva[दयाञ्चके], @deva[पलायाञ्चक्रे], @deva[आसाञ्चक्रे].
+
+These roots are specified individually because they do not fall under the general conditions of @ref[3.1.36] (@deva[इच्]-initial with heavy vowel). @deva[दय्] and @deva[अय्] are consonant-final with @deva[अ]-initial structure; @deva[आस्] begins with @deva[आ], excluded from @deva[इच्].
+
+@note[type=observation]: The root @deva[अय्] appears in compounds like @deva[पलाय्], @deva[उदाय्], etc., all of which take @deva[आम्] in @deva[लिट्].
+"""

@@ -1,0 +1,48 @@
+id = "3.1.36"
+numericId = "31036"
+
+[en]
+simple = """
+This rule says that @deva[आम्] is added in the perfect tense (@deva[लिट्]) after roots that begin with a vowel from the @deva[इच्] class (any vowel except @deva[अ] and @deva[आ]) and have a heavy (long) vowel—but not the root @deva[ऋच्छ्] (to go).
+
+Examples: @deva[ईह्] (to try) → @deva[ईहाञ्चक्रे] (he tried); @deva[ऊह्] (to guess) → @deva[ऊहाञ्चक्रे] (he guessed); @deva[एध्] (to grieve) → @deva[एधाञ्चक्रे] (he grieved).
+
+Exception: @deva[ऋच्छ्] forms the regular perfect @deva[आनर्च्छ] (he failed/went), not the periphrastic.
+
+Counterexamples showing why conditions matter:
+- @deva[अर्द्] (starts with @deva[अ], not @deva[इच्]) → @deva[आनर्द] (regular perfect)
+- @deva[उख्] (vowel is short, not heavy) → @deva[उवोख] (regular perfect)
+- @deva[कुर्द्] (starts with consonant) → @deva[चुकुर्दे] (regular perfect)
+"""
+
+standard = """
+The affix @deva[आम्] is added before @deva[लिट्] after monosyllabic roots that begin with an @deva[इच्] vowel (@deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ] and their long forms—i.e., any vowel except @deva[अ]/@deva[आ]) and contain a prosodially heavy vowel. The root @deva[ऋच्छ्] (to go/fail) is explicitly excepted.
+
+Examples: @deva[ईह्] → @deva[ईहाञ्चक्रे]; @deva[ऊह्] → @deva[ऊहाञ्चक्रे]; @deva[एध्] → @deva[एधाञ्चक्रे].
+
+Exception: @deva[ऋच्छ्] → @deva[आनर्च्छ] (regular @deva[लिट्] by @ref[7.4.71]).
+
+Why the conditions:
+- "@deva[इच्]-initial": @deva[अर्द्] → @deva[आनर्द] (no @deva[आम्], starts with @deva[अ])
+- "Heavy vowel": @deva[उख्] → @deva[उवोख] (no @deva[आम्], short vowel; cf. @ref[6.4.78])
+- "Vowel-initial": @deva[कुर्द्] → @deva[चुकुर्दे] (no @deva[आम्], consonant-initial)
+
+@note[type=exception]: @deva[ऊर्ण] (to cover) also forms regular perfect: @deva[ऊर्णुनाव].
+"""
+
+advanced = """
+The affix @deva[आम्] applies before @deva[लिट्] to monosyllabic roots that are @deva[इच्]-initial (vowels excluding @deva[अ]/@deva[आ], per the @deva[प्रत्याहार] @deva[इच्]) and contain a @deva[गुरु] (heavy) vowel. @deva[ऋच्छ्] is excepted.
+
+Examples: @deva[ईहाञ्चक्रे], @deva[ऊहाञ्चक्रे], @deva[एधाञ्चक्रे].
+
+@deva[ऋच्छ्] exception: Forms regular @deva[लिट्] @deva[आनर्च्छ] per @ref[7.4.71] @deva[श्वीदितो निष्ठायाम्].
+
+Condition analysis:
+- @deva[इच्]-initial: Excludes @deva[अर्द्] → @deva[आनर्द]
+- @deva[गुरु] vowel: Excludes @deva[उख्] → @deva[उवोख] (cf. @ref[6.4.78])
+- Vowel-initial: Excludes @deva[कुर्द्] → @deva[चुकुर्दे], @deva[षूद्] → @deva[सुषूदे]
+
+@note[type=exception]: @deva[ऊर्ण] (to cover) takes regular @deva[लिट्]: @deva[ऊर्णुनाव], not *@deva[ऊर्णामास].
+
+@note[type=observation]: This rule extends the periphrastic perfect domain beyond @ref[3.1.35] to cover roots whose initial vowel structure prevents regular reduplication.
+"""

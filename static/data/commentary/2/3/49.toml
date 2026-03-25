@@ -1,0 +1,47 @@
+id = "2.3.49"
+numericId = "23049"
+
+[en]
+simple = """
+The singular form (@deva[एकवचन]) of an @deva[आमन्त्रित] (vocative word, as defined in @ref[2.3.48]) receives the further technical name @deva[सम्बुद्धि] (vocative singular).
+
+**Examples:**
+- @deva[हे राम] — "O @deva[राम]!" — the singular form @deva[राम] is @deva[सम्बुद्धि]
+- @deva[हे विष्णो] — "O @deva[विष्णु]!" — @deva[विष्णो] is @deva[सम्बुद्धि]
+
+The dual @deva[रामौ] and plural @deva[रामाः] are @deva[आमन्त्रित] but not @deva[सम्बुद्धि]. This label matters because specific phonological rules apply only to the vocative singular — for instance, the deletion of the final @deva[स्] in @deva[रामस्] to yield @deva[राम] in the vocative.
+"""
+
+standard = """
+@deva[एकवचनं सम्बुद्धिः] — The @deva[एकवचन] (singular) of @deva[आमन्त्रित] is termed @deva[सम्बुद्धि] (vocative singular).
+
+**Rule type — @deva[संज्ञा]:** Assigns the name @deva[सम्बुद्धि] to the singular vocative, a subset of @deva[आमन्त्रित].
+
+**Examples:**
+- @deva[हे राम] — @deva[राम] is @deva[सम्बुद्धि] (singular vocative of @deva[राम])
+- @deva[हे विष्णो] — @deva[विष्णो] is @deva[सम्बुद्धि] (singular vocative of @deva[विष्णु])
+- @deva[हे रामौ] — @deva[रामौ] is @deva[आमन्त्रित] but NOT @deva[सम्बुद्धि] (dual)
+
+**Operations triggered by @deva[सम्बुद्धि]:**
+- @ref[6.1.69]: @deva[एङ्ह्रस्वात्सम्बुद्धेः] — after stems ending in @deva[एङ्] (short @deva[ए], @deva[ओ]) or a short vowel, the @deva[सु] (@deva[प्रथमा एकवचन]) ending is deleted in @deva[सम्बुद्धि]. This is why @deva[राम] appears without a case-suffix in the vocative.
+- @ref[7.3.106]: Vocative singular of @deva[उ]-stems shows @deva[गुण] — @deva[विष्णु] becomes @deva[विष्णो].
+
+**Scope:** Only the singular. Dual and plural vocatives are @deva[आमन्त्रित] (@ref[2.3.48]) but do not receive the @deva[सम्बुद्धि] label.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आमन्त्रितम्] from @ref[2.3.48].
+
+@deva[एकवचनं सम्बुद्धिः] — The @deva[एकवचन] of @deva[आमन्त्रित] is called @deva[सम्बुद्धि].
+
+**Layered @deva[संज्ञा] system:** @ref[2.3.47] assigns @deva[प्रथमा] for @deva[सम्बोधन]. @ref[2.3.48] names the result @deva[आमन्त्रित]. This rule further narrows: only the singular of @deva[आमन्त्रित] is @deva[सम्बुद्धि]. This layering allows the grammar to target operations at different levels — some rules apply to all vocatives (@deva[आमन्त्रित]), others only to vocative singular (@deva[सम्बुद्धि]).
+
+**Key operations conditioned on @deva[सम्बुद्धि]:**
+- @ref[6.1.69]: @deva[एङ्ह्रस्वात्सम्बुद्धेः] — @deva[सु]-deletion after @deva[एङ्] or short vowel. Derives @deva[राम] (voc.) from @deva[राम + सु].
+- @ref[7.3.106]: @deva[गुण] in @deva[उ]-stem vocative singular — @deva[विष्णु] → @deva[विष्णो].
+- @ref[7.3.108]: @deva[ह्रस्वस्य गुणः] — @deva[गुण] for short-vowel stems in @deva[सम्बुद्धि].
+
+**Relation to @deva[आमन्त्रित]:** @deva[सम्बुद्धि] is a proper subset of @deva[आमन्त्रित]. Where a rule mentions @deva[आमन्त्रित], it includes @deva[सम्बुद्धि] (singular); where it mentions @deva[सम्बुद्धि], it excludes dual and plural.
+
+**Cross-references:** @ref[2.3.48] (@deva[आमन्त्रित] @deva[संज्ञा]), @ref[6.1.69] (@deva[सु]-deletion), @ref[7.3.106] (@deva[गुण] for @deva[उ]-stems), @ref[2.3.47] (@deva[प्रथमा] for @deva[सम्बोधन]).
+"""

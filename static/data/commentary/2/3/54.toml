@@ -1,0 +1,51 @@
+id = "2.3.54"
+numericId = "23054"
+
+[en]
+simple = """
+When verbs meaning "to afflict" or "to cause pain" (like @deva[रुज्]) are used with a subject that names a condition or state — such as "disease," "fever," or "illness" — the object (the person afflicted) takes the genitive case (@deva[षष्ठी]) instead of the accusative. The causative form @deva[ज्वरयति] ("to cause fever") is excluded from this rule.
+
+**Examples:**
+- @deva[चौरस्य रुजति रोगः] — "disease afflicts the thief" (the thief is the object, taking genitive because the subject @deva[रोग] is an abstract condition)
+- @deva[चौरस्य आमयति आमयः] — "illness afflicts the thief"
+
+**When the rule does NOT apply:**
+- @deva[नदी कूलानि रुजति] — "the river breaks the banks" — the subject (@deva[नदी]) is not an abstract condition, so the object takes regular accusative
+- @deva[चौरं ज्वरयति ज्वरः] — "fever torments the thief" — the causative @deva[ज्वरयति] is explicitly excluded, so accusative is used
+"""
+
+standard = """
+@deva[रुजार्थानां भाववचनानामज्वरेः] — "of verbs meaning @deva[रुज्] (to afflict), when the subject is a @deva[भाववचन] (condition-denoting word), except @deva[ज्वरि] (causative), [@deva[षष्ठी] is used in the @deva[कर्मन्]]."
+
+**Rule type — @deva[विधि]:** Assigns @deva[षष्ठी] to the object of affliction-verbs under two conditions.
+
+**Two conditions that must both hold:**
+1. The verb must mean "to afflict" (@deva[रुजार्थ]) — includes @deva[रुज्], @deva[आमय्], and synonymous verbs
+2. The subject must be a @deva[भाववचन] — a word denoting a state or condition (disease, pain, etc.), not a concrete agent
+
+**Exception:** The causative form @deva[ज्वरि] (@deva[ज्वरयति]) is excluded by @deva[अज्वरेः].
+
+**Examples:**
+- @deva[चौरस्य रुजति रोगः] — "disease afflicts the thief" (subject @deva[रोग] is @deva[भाववचन])
+- @deva[चौरस्य आमयति आमयः] — "illness afflicts the thief"
+
+**Counterexamples:**
+- @deva[नदी कूलानि रुजति] — "the river breaks the banks" — subject is not @deva[भाववचन], so @deva[द्वितीया]
+- @deva[चौरं ज्वरयति ज्वरः] — "fever torments the thief" — causative @deva[ज्वरि] excluded, so @deva[द्वितीया]
+
+**Optionality:** @deva[शेष] in @deva[अनुवृत्ति] makes @deva[द्वितीया] also valid: @deva[चौरं रुजति रोगः] is acceptable.
+"""
+
+advanced = """
+@deva[रुजार्थानां भाववचनानामज्वरेः] — @deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.3.50], @deva[शेषे] from @ref[2.3.50], @deva[कर्मणि] from @ref[2.3.52].
+
+**Compound analysis:** @deva[रुजार्थानाम्] is a @deva[बहुव्रीहि] — "of those [verbs] whose meaning (@deva[अर्थ]) is [that of] @deva[रुज्]." This extends the rule to all verbs sharing the affliction-sense: @deva[रुज्], @deva[आमय्], @deva[ग्लै], etc. @deva[भाववचनानाम्] qualifies the subject, not the verb — requiring the @deva[कर्तृ] to denote a condition (@deva[भाव]) rather than a concrete entity.
+
+**The @deva[अज्वरेः] exception:** @deva[ज्वरि] here refers specifically to the @deva[णिजन्त] (causative) form of @deva[ज्वर्] — i.e., @deva[ज्वरयति]. The basic form @deva[ज्वरति] would qualify as @deva[रुजार्थ] and is not excluded. The exclusion targets the causative because @deva[णिच्] introduces a distinct causal agent, altering the semantic structure.
+
+**Why @deva[भाववचन] matters:** When a concrete agent afflicts (e.g., @deva[नदी कूलानि रुजति] — "the river breaks the banks"), the action is a standard @deva[कर्तृ]-@deva[कर्मन्] relation, and @deva[द्वितीया] is the natural choice. But when the subject names a condition (@deva[रोगः], @deva[आमयः]), the relationship is less prototypically agentive. The genitive captures this quasi-possessive nuance: "the thief's disease afflicts [him]."
+
+**Optionality mechanism:** As with the other @deva[कर्मणि षष्ठी] rules, the @deva[शेष]-based @deva[अनुवृत्ति] preserves the @deva[द्वितीया] alternative. The @deva[षष्ठी] is a stylistic option, not an obligation.
+
+**Cross-reference:** Compare @ref[2.3.56], which assigns @deva[षष्ठी] to the object of specific injury-verbs without the @deva[भाववचन] condition on the subject.
+"""

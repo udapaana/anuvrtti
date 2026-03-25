@@ -1,0 +1,15 @@
+id = "6.4.21"
+numericId = "64021"
+
+[en]
+simple = """
+After the consonant @deva[र्], the sounds @deva[छ्] and @deva[व्] are deleted before @deva[क्वि] and before @deva[झलादि] affixes marked @deva[ङित्] or @deva[कित्]. For example, @deva[मुर्छ्] becomes @deva[मूर्तः] and @deva[तुर्व्] becomes @deva[तूर्णः].
+"""
+
+standard = """
+This rule elides @deva[छ्] and @deva[व्] that appear after @deva[र्] in a stem, when the following affix is @deva[क्वि] or begins with a @deva[झल्]-consonant and is marked @deva[ङित्]/@deva[कित्] (governed by @ref[6.4.15]). From @deva[मुर्छ्]: @deva[मूर्तः], @deva[मूर्तवान्]. From @deva[तुर्व्]: @deva[तूर्णः]. The elision allows further sandhi to apply cleanly. See @ref[6.4.21].
+"""
+
+advanced = """
+After @deva[र्], @deva[छ्] and @deva[व्] are elided before @deva[क्वि] and @deva[झलादि] @deva[कित्]/@deva[ङित्] affixes (governed by @ref[6.4.15]). @deva[छ्]-elision: from @deva[मुर्छा] — @deva[मूर्], @deva[मुरौ], @deva[मुरः], @deva[मूर्तः], @deva[मूर्तवान्], @deva[मूर्तिः] (the @deva[त] of @deva[निष्ठा] is not changed to @deva[न] by @ref[8.2.57]); from @deva[हुर्छा] — @deva[हूर्], @deva[हुरौ], @deva[हुरः], @deva[हूर्णः], @deva[हूर्णवान्], @deva[हूर्त्तिः]. @deva[व्]-elision: from @deva[तूर्वी] — @deva[तूर्], @deva[तुरौ], @deva[तुरः], @deva[तूर्णः], @deva[तूर्णवान्], @deva[तूर्त्तिः]; from @deva[धुर्वी] — @deva[धुः], @deva[धुरौ], @deva[धुरः], @deva[धूर्णः], @deva[धूर्णवान्], @deva[धूर्त्ति].
+"""

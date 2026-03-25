@@ -1,0 +1,52 @@
+id = "1.2.11"
+numericId = "12011"
+
+[en]
+simple = """
+In the @deva[आत्मनेपद] (middle voice), the benedictive (@deva[आशीर्लिङ्], used for blessings) and aorist (@deva[सिच्], past tense) affixes are treated as @deva[कित्] after consonant-final roots whose second-to-last letter is an @deva[इक्] vowel (@deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ]). This applies only when the affix begins with a consonant (no @deva[इट्] augment). @deva[कित्] blocks @deva[गुण] (vowel strengthening).
+
+**Benedictive:** @deva[भिद्] "to split" → @deva[भित्सीष्ट] "may he split!"
+
+**Aorist:** @deva[भिद्] → @deva[अभित्त] "he split" (the @deva[सिच्] affix @deva[स्] drops by @ref[8.2.26])
+"""
+
+standard = """
+In @deva[आत्मनेपद], @deva[झलादि] @deva[लिङ्] (benedictive) and @deva[सिच्] (aorist) are @deva[कित्] after consonant-final roots with @deva[उपधा] @deva[इक्].
+
+**Benedictive (@deva[आशीर्लिङ्]):**
+- @deva[भिद्] + @deva[सीष्ट] → @deva[भित्सीष्ट] "may he split"
+- @deva[बुध्] + @deva[सीष्ट] → @deva[भुत्सीष्ट] "may he know"
+
+**Aorist (@deva[सिच्]):**
+- @deva[भिद्] + @deva[स्] + @deva[त] → @deva[अभित्त] "he split" (@deva[स्] elided by @ref[8.2.26])
+- @deva[बुध्] + @deva[स्] + @deva[त] → @deva[अबुद्ध] "he knew"
+
+**@deva[उपधा] non-@deva[इक्] — not @deva[कित्]:**
+- @deva[यज्] → @deva[यक्षीष्ट] (benedictive), @deva[अयष्ट] (aorist) — @deva[कित्] would cause unwanted @deva[सम्प्रसारण]
+
+**@deva[परस्मैपद] — not @deva[कित्]:**
+- @deva[सृज्] → @deva[अस्राक्षीत्] (aorist with @deva[अम्] augment by @ref[6.1.58])
+
+**Scope shift:** The @deva[अनुवृत्ति] of @deva[सन्] from @ref[1.2.8]–@ref[1.2.10] ends here. This rule introduces @deva[लिङ्] and @deva[सिच्] as new affixes receiving @deva[कित्] treatment.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[हलन्तात्] and @deva[इकोपधात्] from @ref[1.2.10]; @deva[झलादि] from context.
+
+@deva[लिङ्सिचावात्मनेपदेषु] — @deva[लिङ्] (benedictive) and @deva[सिच्] (aorist) in @deva[आत्मनेपद] are @deva[कित्] after consonant-final roots with @deva[उपधा] @deva[इक्].
+
+**This shifts the @deva[कित्] extension to new territory.** @ref[1.2.8]–@ref[1.2.10] covered @deva[सन्]; this rule covers @deva[लिङ्] and @deva[सिच्]. The @deva[आत्मनेपद] restriction continues through @ref[1.2.17].
+
+**Three conditions:**
+1. Root is consonant-final with @deva[उपधा] @deva[इक्]
+2. Affix is @deva[झलादि] (consonant-initial, no @deva[इट्])
+3. Voice is @deva[आत्मनेपद]
+
+**Examples:**
+- Benedictive: @deva[भिद्] → @deva[भित्सीष्ट]; @deva[बुध्] → @deva[भुत्सीष्ट] (by @ref[8.2.37])
+- Aorist: @deva[भिद्] → @deva[अभित्त] (@deva[सिच्] elided by @ref[8.2.26]); @deva[बुध्] → @deva[अबुद्ध]
+
+**Why @deva[आत्मनेपद] only?** In @deva[परस्मैपद], the aorist forms like @deva[अस्राक्षीत्] use the @deva[अम्] augment (@ref[6.1.58]), which requires non-@deva[कित्] status. Making them @deva[कित्] would block @deva[अम्] and produce wrong forms.
+
+**Vowel-final roots excluded:** @deva[चि] → @deva[अचेष्ट] (aorist) with @deva[गुण] — not covered by this rule (requires consonant-final).
+"""

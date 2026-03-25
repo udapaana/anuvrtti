@@ -1,0 +1,52 @@
+id = "1.4.60"
+numericId = "14060"
+
+[en]
+simple = """
+Words in the @deva[प्रादिगण] are also called @deva[गति] "prefix" when combined with a verb.
+
+This means @deva[प्रादि] words with a verb carry three names at once: @deva[निपात] (by @ref[1.4.58]), @deva[उपसर्ग] (by @ref[1.4.59]), and @deva[गति] (by this rule). Each name serves a different grammatical purpose.
+
+**Examples:**
+- @deva[प्रकृत्य] "having done forth" — the gerund uses @deva[ल्यप्] (not @deva[त्वा]) because @deva[प्र] is @deva[गति]
+- @deva[प्रकृतम्] "done forth" — accent is affected by @deva[गति] status
+
+The @deva[गति] designation is specifically responsible for replacing the gerund ending @deva[त्वा] with @deva[ल्यप्] (by @ref[7.1.37]). Without @deva[गति] status, you would say @deva[प्रकृत्वा] (incorrect) instead of @deva[प्रकृत्य] (correct).
+"""
+
+standard = """
+@deva[प्रादि] words combined with a verb are @deva[गति] — @deva[गतिश्च].
+
+**Rule type — @deva[संज्ञा]:** Adds the @deva[गति] designation alongside @deva[उपसर्ग] (from @ref[1.4.59]).
+
+**Effects of @deva[गति] status:**
+- @deva[त्वा] → @deva[ल्यप्] (@ref[7.1.37]): @deva[प्रकृत्य] not @deva[प्रकृत्वा]
+- Accent retention (@ref[6.2.49]): @deva[प्रकृतम्]
+- Verb @deva[अनुदात्त] (@ref[8.2.71]): @deva[प्रकरोति]
+
+**Why separate from @ref[1.4.59]?** The @deva[गति] @deva[अनुवृत्ति] (not @deva[उपसर्ग]) continues into @ref[1.4.61]ff, where additional words (@deva[ऊर्यादि], etc.) are designated @deva[गति] without being @deva[उपसर्ग]. Splitting the rules ensures the correct @deva[अनुवृत्ति] flow.
+
+**Triple designation for @deva[प्रादि] with verbs:**
+1. @deva[निपात] — by @ref[1.4.58]
+2. @deva[उपसर्ग] — by @ref[1.4.59]
+3. @deva[गति] — by this rule
+
+Each triggers different rules: @deva[निपात] → @deva[अव्यय] status; @deva[उपसर्ग] → @deva[ण]-substitution; @deva[गति] → @deva[ल्यप्] gerund.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रादयः] from @ref[1.4.58]; @deva[क्रियायोगे] from @ref[1.4.59]; @deva[निपाताः] from @ref[1.4.56].
+
+@deva[गतिश्च] — and (they are) @deva[गति].
+
+**@deva[योगविभाग] justification:** This rule could have been combined with @ref[1.4.59] as @deva[उपसर्गगतिश्च]. The split (@deva[योगविभाग]) is deliberate: @deva[गति] must be a separate @deva[अनुवृत्ति] source for @ref[1.4.61]ff, where non-@deva[प्रादि] words receive @deva[गति] designation. If combined, @deva[उपसर्ग] would also carry forward incorrectly.
+
+**@deva[गति]-specific rules:**
+- @ref[7.1.37]: @deva[समासेऽनञ्पूर्वे क्त्वो ल्यप्] — @deva[त्वा] → @deva[ल्यप्] after @deva[गति] in compound
+- @ref[6.2.49]: @deva[गतिकारके] — accent on @deva[गति] element
+- @ref[8.2.71]: @deva[गतिस्वरे] — finite verb after @deva[गति] loses accent
+
+**@deva[वार्त्तिक] extensions to @deva[गति]:** @deva[कारिका] "she who acts" is @deva[गति]: @deva[कारिकाकृत्य]. @deva[पुनर्] "again" and @deva[चनस्] (Vedic) are also @deva[गति] by @deva[वार्त्तिक].
+
+**@deva[गति] section ahead:** @ref[1.4.61]–@ref[1.4.79] extend @deva[गति] to additional words: @deva[ऊरी], @deva[अस्तम्], @deva[अच्छ], various @deva[कृ]-compounding words, etc. This is the longest subsection within the @deva[निपात] @deva[अधिकार].
+"""

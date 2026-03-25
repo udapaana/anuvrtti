@@ -1,0 +1,54 @@
+id = "2.2.17"
+numericId = "22017"
+
+[en]
+simple = """
+A word in the genitive case **must** compound with an @deva[अक]-ending word when the @deva[अक] affix denotes a sport or a livelihood. This is an obligatory compound — the words cannot be kept separate.
+
+**Examples — sport (@deva[क्रीडा]):**
+- @deva[उद्दालकपुष्पभञ्जिका] "the game of breaking @[uddālaka] flowers"
+- @deva[वारणपुष्पप्रचायिका] "the game of gathering @[vāraṇa] flowers"
+
+**Examples — livelihood (@deva[जीविका]):**
+- @deva[दन्तलेखकः] "tooth-painter (by profession)"
+- @deva[नखलेखकः] "nail-painter (by profession)"
+"""
+
+standard = """
+@deva[षष्ठ्यन्त] + @deva[अकन्त] in @deva[क्रीडा]/@deva[जीविका] sense → @deva[नित्य] @deva[तत्पुरुष] — @deva[क्रीडाजीविकयोश्च].
+
+**Rule type — @deva[विधि] (@deva[नित्यसमास]):** Obligatory compounding — overrides the prohibition of @ref[2.2.16].
+
+**Sport examples:**
+- @deva[उद्दालकपुष्पभञ्जिका] "the @[uddālaka-flower-breaking] game"
+- @deva[वारणपुष्पप्रचायिका] "the @[vāraṇa-flower-gathering] game"
+
+**Livelihood examples:**
+- @deva[दन्तलेखकः] "tooth-painter (profession)"
+- @deva[नखलेखकः] "nail-painter (profession)"
+
+**End of prohibition:** The @deva[अनुवृत्ति] of @deva[न] (prohibition) from @ref[2.2.10] ends here. This rule positively authorizes compounding in these two semantic domains.
+
+**@deva[तृच्] excluded:** @deva[तृच्] does not have the @deva[क्रीडा] or @deva[जीविका] sense — only @deva[अक]-derived words (via @deva[ण्वुल्]) express these meanings.
+
+**Counter-example:** @deva[ओदनस्य भोजकः] "eater of rice" — neither sport nor livelihood, so no compound (blocked by @ref[2.2.16]).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.2.8]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[अकन्ते] from @ref[2.2.15]–@ref[2.2.16].
+
+@deva[क्रीडाजीविकयोश्च] — @deva[षष्ठी] obligatorily compounds with @deva[अकन्त] words in @deva[क्रीडा] or @deva[जीविका] sense. @deva[नित्यसमास].
+
+**End of the @deva[न] @deva[अनुवृत्ति]:** The prohibition marker @deva[न] that ran from @ref[2.2.10] through @ref[2.2.16] terminates here. @ref[2.2.17] is an affirmative rule — it positively requires compounding.
+
+**@deva[नित्यसमास] character:** Because the compound is @deva[नित्य], the @deva[विग्रह] (dissolution) is not available. Expressions like @deva[उद्दालकपुष्पभञ्जिका] exist only as compounds — the uncompounded form *@deva[उद्दालकपुष्पाणां भञ्जिका] is not used.
+
+**Hierarchical structure in @ref[2.2.15]–@ref[2.2.17]:**
+- @ref[2.2.15]: Agent-genitive blocked with @deva[तृच्]/@deva[अक]
+- @ref[2.2.16]: Object-genitive blocked with agent-denoting @deva[तृच्]/@deva[अक]
+- @ref[2.2.17]: Exception — obligatory compounding when @deva[अक] denotes sport or livelihood
+
+This creates a system where genitive compounds with agent-nouns are generally prohibited, but specific semantic domains (professional services in @ref[2.2.9], sports and livelihoods here) override the prohibition.
+
+**Why @deva[क्रीडा] and @deva[जीविका]?** Both represent conventionalized activities where the compound functions as a technical term or fixed designation — the name of a game or the title of a profession. Such terms naturally resist analytical dissolution.
+"""

@@ -1,0 +1,51 @@
+id = "2.2.16"
+numericId = "22016"
+
+[en]
+simple = """
+A word in the genitive case does **not** form a compound with agent-nouns ending in @deva[तृच्] or @deva[अक] (@deva[ण्वुल्]) when those affixes express the agent (doer of the action).
+
+**Examples (no compound):**
+- @deva[अपां स्रष्टा] "the creator of waters" — @deva[स्रष्टृ] is the agent ("the one who creates")
+- @deva[पुरां भेत्ता] "the destroyer of cities"
+- @deva[वज्रस्य भर्ता] "the bearer of the thunderbolt"
+- @deva[ओदनस्य भोजकः] "the eater of rice"
+- @deva[सक्तूनां पायकः] "the drinker of barley-gruel"
+
+These expressions keep the genitive separate because the second member is an agent-noun — it names the doer, and the genitive names what is acted upon.
+"""
+
+standard = """
+@deva[षष्ठ्यन्त] + @deva[तृजन्त]/@deva[अकन्त] in @deva[कर्तृ] sense → no compound — @deva[तृजन्ते कर्तरि].
+
+**Rule type — @deva[प्रतिषेध] (prohibition):** Blocks @ref[2.2.8] when the second member is an agent-noun in @deva[तृच्] or @deva[अक].
+
+**@deva[तृच्] examples:**
+- @deva[अपां स्रष्टा] "creator of waters"
+- @deva[पुरां भेत्ता] "destroyer of cities"
+- @deva[वज्रस्य भर्ता] "bearer of the thunderbolt"
+
+**@deva[अक] examples:**
+- @deva[ओदनस्य भोजकः] "eater of rice"
+- @deva[सक्तूनां पायकः] "drinker of barley-gruel"
+
+**@deva[कर्तरि] qualifies @deva[अक] only:** @deva[तृच्] always denotes the agent — the condition @deva[कर्तरि] is redundant for @deva[तृच्] but necessary for @deva[अक], which can also express other senses.
+
+**Exception — @ref[2.2.9]:** The @deva[याजकादि] list overrides this prohibition. @deva[ब्राह्मणयाजकः] "one who sacrifices for Brahmins" compounds despite @deva[याजक] being an @deva[अक]-ending agent-noun.
+
+**Note on @deva[भर्तृ]:** @deva[भर्तृ] in the @deva[याजकादि] list of @ref[2.2.9] means "husband" (a @deva[रूढि] sense), while here it means "bearer/holder" — no conflict.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.2.8]; @deva[तत्पुरुषः] from @ref[2.1.22].
+
+@deva[तृजन्ते कर्तरि] (with @deva[अकन्ते] from @ref[2.2.15]) — @deva[षष्ठी] does not compound with @deva[तृच्]- or @deva[अक]-ending words when they denote the agent.
+
+**Relation to @ref[2.2.15]:** @ref[2.2.15] blocked the agent-genitive from compounding with @deva[तृच्]/@deva[अक] words. @ref[2.2.16] blocks the object-genitive from compounding with agent-denoting @deva[तृच्]/@deva[अक] words. The difference: @ref[2.2.15] — the genitive is the agent; @ref[2.2.16] — the genitive is the object, but the second member is an agent-noun.
+
+**@deva[कर्तरि] — scope of the condition:** @deva[तृच्] inherently denotes the agent (@deva[कर्तृ]), so the @deva[कर्तरि] condition is automatically satisfied for @deva[तृच्]. For @deva[अक], the condition matters — @deva[अक] can denote @deva[कर्मन्] or @deva[भाव] in addition to @deva[कर्तृ]. When @deva[अक] denotes something other than the agent, this prohibition does not apply.
+
+**Override by @ref[2.2.9]:** The @deva[याजकादि] list provides specific authorization for genitive compounds with professional agent-nouns like @deva[याजक], @deva[पूजक], @deva[अध्यापक]. This is an @deva[अपवाद] (exception) to this general prohibition.
+
+**@ref[2.2.17] — further exception:** The next rule provides another exception: when @deva[अक] denotes sport (@deva[क्रीडा]) or livelihood (@deva[जीविका]), genitive compounding is obligatory. This creates a hierarchy: general prohibition (@ref[2.2.16]) → exception for @deva[याजकादि] (@ref[2.2.9]) → exception for @deva[क्रीडा]/@deva[जीविका] (@ref[2.2.17]).
+"""

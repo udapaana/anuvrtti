@@ -1,0 +1,49 @@
+id = "2.3.35"
+numericId = "23035"
+
+[en]
+simple = """
+The words @deva[दूर] (far) and @deva[अन्तिक] (near) can themselves appear in @deva[द्वितीया] (accusative), @deva[पञ्चमी] (ablative), or @deva[तृतीया] (instrumental) — all three are valid.
+
+**Examples:**
+- @deva[दूरं ग्रामस्य] "far from the village" (accusative)
+- @deva[दूराद् ग्रामस्य] "far from the village" (ablative)
+- @deva[दूरेण ग्रामस्य] "far from the village" (instrumental)
+- @deva[अन्तिकं ग्रामस्य] / @deva[अन्तिकाद् ग्रामस्य] / @deva[अन्तिकेन ग्रामस्य] "near the village"
+
+Note that the reference point (@deva[ग्राम]) stays in the genitive throughout — this rule governs the case of @deva[दूर]/@deva[अन्तिक] themselves, not the case of the reference point.
+"""
+
+standard = """
+@deva[दूरान्तिकार्थैश्च द्वितीयातृतीये] — the words @deva[दूर] and @deva[अन्तिक] (and synonyms meaning "far" or "near") themselves take @deva[द्वितीया] or @deva[तृतीया]; @deva[पञ्चमी] is also available.
+
+**Rule type — @deva[विधि] (optional):** Prescribes @deva[द्वितीया] and @deva[तृतीया] for the distance-word itself, in addition to @deva[पञ्चमी].
+
+**Examples:**
+- @deva[दूरं ग्रामस्य] (@deva[द्वितीया]) / @deva[दूराद् ग्रामस्य] (@deva[पञ्चमी]) / @deva[दूरेण ग्रामस्य] (@deva[तृतीया])
+- @deva[अन्तिकं ग्रामस्य] / @deva[अन्तिकाद् ग्रामस्य] / @deva[अन्तिकेन ग्रामस्य]
+
+**Restriction — must retain distance meaning:** When @deva[दूर] or @deva[अन्तिक] are used as ordinary adjectives (not expressing distance/proximity), regular case rules apply:
+- @deva[दूरः पन्थाः] "a long road" (nominative — ordinary predication)
+- @deva[दूराय पथे देहि] "give for the long road" (dative)
+
+**Scope:** This rule governs the case of @deva[दूर]/@deva[अन्तिक] themselves; @ref[2.3.34] governs the case of the reference point.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[दूरान्तिकार्थैश्च द्वितीयातृतीये] — @deva[दूर], @deva[अन्तिक], and their synonyms themselves take @deva[द्वितीया] or @deva[तृतीया] (in addition to @deva[पञ्चमी]).
+
+**Distinction from @ref[2.3.34]:** That rule governs the case of the *reference point* (the noun expressing what is far/near from). This rule governs the case of the *distance word itself*. Together they produce constructions like @deva[दूरं ग्रामस्य] (distance word in @deva[द्वितीया], reference in @deva[षष्ठी]) or @deva[दूराद् ग्रामात्] (distance word in @deva[पञ्चमी], reference in @deva[पञ्चमी]).
+
+**Full case inventory for @deva[दूर]/@deva[अन्तिक]:**
+- The distance word: @deva[द्वितीया], @deva[तृतीया], @deva[पञ्चमी] (this rule), plus @deva[सप्तमी] (@ref[2.3.36])
+- The reference point: @deva[पञ्चमी] (@ref[2.3.28]), @deva[षष्ठी] (@ref[2.3.34])
+
+This produces a wide variety of valid constructions — an unusual degree of case flexibility concentrated in a small semantic domain.
+
+**Restriction to distance meaning:** The @deva[च] ("also") in this rule implies a continued connection to the distance-related sense. When @deva[दूर] functions as a plain adjective (@deva[दूरः पन्थाः] "a long road"), none of this special case-assignment applies.
+
+**Cross-references:** @ref[2.3.34] (reference-point case), @ref[2.3.36] (@deva[सप्तमी] for @deva[दूर]/@deva[अन्तिक]).
+"""

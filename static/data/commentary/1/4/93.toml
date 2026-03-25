@@ -1,0 +1,46 @@
+id = "1.4.93"
+numericId = "14093"
+
+[en]
+simple = """
+The words @deva[अधि] "over" and @deva[परि] "around" are @deva[कर्मप्रवचनीय] "action-qualifiers" when used as mere expletives — words added without contributing any new meaning.
+
+Sometimes @deva[अधि] or @deva[परि] appear before a verb but add nothing to its sense. In such cases, they are classified as @deva[कर्मप्रवचनीय] to prevent them from being treated as @deva[उपसर्ग] "verb prefixes."
+
+**Examples:**
+- @deva[कुतोऽध्यागच्छति] "whence does he come?" — same meaning as @deva[कुत आगच्छति]
+- @deva[कुतः पर्यागच्छति] "whence does he come?" — same meaning again
+
+The @deva[अधि] and @deva[परि] are semantically empty here, but labeling them @deva[कर्मप्रवचनीय] prevents unwanted grammatical effects.
+"""
+
+standard = """
+@deva[अधि] and @deva[परि] are @deva[कर्मप्रवचनीय] when functioning as expletives (@deva[वाक्यालंकार], mere ornamentation) — @deva[अधिपरी अनर्थकौ].
+
+**Rule type — @deva[संज्ञा]:** @deva[कर्मप्रवचनीय] in the semantically empty use.
+
+**Examples:**
+- @deva[कुतोऽध्यागच्छति] = @deva[कुत आगच्छति] "whence does he come?"
+- @deva[कुतः पर्यागच्छति] = same meaning
+
+**Purpose of the designation:** If these particles were classified as @deva[उपसर्ग] (@ref[1.4.59]), they would trigger rules specific to @deva[उपसर्ग] — such as @deva[स] → @deva[ष] by @ref[8.3.65], or compound-formation rules. The @deva[कर्मप्रवचनीय] label blocks those effects.
+
+**@deva[अनर्थक] = "meaningless":** The @deva[काशिका] explains that these particles are @deva[वाक्यालंकार] — they ornament the sentence without changing its meaning. The @deva[कर्मप्रवचनीय] designation is a "parking" classification.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्मप्रवचनीयाः] from @ref[1.4.83]; @deva[निपाताः] from @ref[1.4.56].
+
+@deva[अधिपरी अनर्थकौ] — @deva[अधि] and @deva[परि] are @deva[कर्मप्रवचनीय] when semantically empty.
+
+**Blocking @deva[उपसर्ग] status:** The key function of this rule is preventive. Without it, @deva[अधि] and @deva[परि] before a verb would qualify as @deva[उपसर्ग] by @ref[1.4.59] (@deva[प्रादयः क्रियायोगे उपसर्गाः]). That would trigger:
+- @deva[ष]-substitution by @ref[8.3.65]
+- Compound-formation with the verb
+- Other @deva[उपसर्ग]-specific operations
+
+By classifying them as @deva[कर्मप्रवचनीय], @ref[1.4.1] (@deva[एकासंज्ञा]) blocks the competing @deva[उपसर्ग] designation.
+
+**@deva[एकासंज्ञा] conflict resolution:** @ref[1.4.1] states that only one @deva[संज्ञा] applies from @ref[1.4.1]–@ref[1.4.97]. Since @deva[कर्मप्रवचनीय] and @deva[उपसर्ग] are both within this range, the @deva[कर्मप्रवचनीय] designation from this later rule wins by @deva[विप्रतिषेध] (conflict resolution favoring the later rule).
+
+**@deva[परि] across multiple rules:** @deva[परि] has @deva[कर्मप्रवचनीय] status from @ref[1.4.88] (exclusion), @ref[1.4.90] (direction etc.), and now this rule (expletive). Each captures a different syntactic context.
+"""

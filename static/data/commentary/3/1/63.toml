@@ -1,0 +1,39 @@
+id = "3.1.63"
+numericId = "31063"
+
+[en]
+simple = """
+This rule says that @deva[चिण्] optionally replaces @deva[च्लि] after the root @deva[दुह्] (to milk) when used reflexively (where the object acts as its own agent) and when @deva[त] follows.
+
+Reflexive example (optional @deva[चिण्]):
+- @deva[अदोहि गौः स्वयमेव] or @deva[अदुग्ध गौः स्वयमेव] (the cow milked of itself)
+
+In non-reflexive (passive) sense, @deva[चिण्] is obligatory:
+- @deva[अदोहि गौर्गोपालकेन] (the cow was milked by the cowherd)
+"""
+
+standard = """
+@deva[चिण्] optionally substitutes for @deva[च्लि] after @deva[दुह्] (to milk) in @deva[कर्मकर्तरि] (reflexive) sense when @deva[आत्मनेपद] 3rd singular @deva[त] follows.
+
+Reflexive (@deva[चिण्] / @deva[क्स]):
+- @deva[अदोहि गौः स्वयमेव] / @deva[अदुग्ध गौः स्वयमेव] (the cow milked of itself)
+
+Passive (@deva[चिण्] obligatory):
+- @deva[अदोहि गौर्गोपालकेन] (the cow was milked by the cowherd)
+
+This extends @ref[3.1.62] specifically to @deva[दुह्], which is consonant-final. Since @ref[3.1.62] made @deva[चिण्] optional only for vowel-final roots in @deva[कर्मकर्तरि], this rule extends that optionality to @deva[दुह्].
+"""
+
+advanced = """
+@deva[चिण्] optionally applies after @deva[दुह्] in @deva[कर्मकर्तरि] when @deva[आत्मनेपद] 3rd singular @deva[त] follows.
+
+Reflexive (@deva[चिण्] / @deva[क्स]):
+- @deva[अदोहि गौः स्वयमेव] / @deva[अदुग्ध गौः स्वयमेव]
+
+Passive (@deva[चिण्] @deva[नित्य]):
+- @deva[अदोहि गौर्गोपालकेन]
+
+@deva[दुह्] is @deva[हलन्त] (consonant-final), so by @ref[3.1.62], @deva[चिण्] would be obligatory in @deva[कर्मकर्तरि]. This rule (@deva[दुहश्च]) extends the @deva[विभाषा] to @deva[दुह्] specifically.
+
+@note[type=observation]: The alternative form @deva[अदुग्ध] uses @deva[क्स]-aorist (by @ref[3.1.45]), showing @deva[दुह्] has both @deva[चिण्] and @deva[क्स] options in @deva[कर्मकर्तरि].
+"""

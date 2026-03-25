@@ -1,0 +1,46 @@
+id = "2.3.50"
+numericId = "23050"
+
+[en]
+simple = """
+When two words are related but the relationship is not one of the verb-participant roles (@deva[कारक], such as agent, object, instrument, etc.), the genitive case (@deva[षष्ठी]) is used on the dependent word.
+
+This is the grammar's catch-all for nominal relationships: possession, kinship, part-whole, material, and any other connection between two nouns that does not involve a verbal action.
+
+**Examples:**
+- @deva[राज्ञः पुरुषः] — "the king's man" (ownership: the man belongs to the king)
+- @deva[वृक्षस्य शाखा] — "the branch of the tree" (part-whole: the branch is part of the tree)
+- @deva[पितुः पुत्रः] — "the father's son" (kinship)
+- @deva[सुवर्णस्य कुण्डलम्] — "a bracelet of gold" (material)
+
+This rule is the foundation of genitive usage in Sanskrit. Whenever you see a genitive and cannot identify a specific rule that triggers it, this is the rule at work.
+"""
+
+standard = """
+@deva[षष्ठी शेषे] — "the sixth case-affix [is used] in the remainder."
+
+**Rule type — @deva[विधि]:** Assigns @deva[षष्ठी] to express any relation that falls outside the @deva[कारक] system and the @deva[प्रातिपदिकार्थ] domain.
+
+**Key term — @deva[शेष]:** Defined negatively as whatever is left over after removing:
+1. @deva[कारक] relations (agent, object, instrument, recipient, source, locus) — governed by @ref[2.3.1]–@ref[2.3.49]
+2. @deva[प्रातिपदिकार्थ] — the inherent meaning of the nominal stem (gender, number, generality), handled by @deva[प्रथमा] (@ref[2.3.46])
+
+**Examples:**
+- @deva[राज्ञः पुरुषः] — "the king's servant" (ownership / @deva[स्वस्वामिभाव])
+- @deva[वृक्षस्य शाखा] — "the branch of the tree" (part-whole / @deva[अवयवावयविभाव])
+- @deva[पितुः पुत्रः] — "the father's son" (kinship / @deva[जन्यजनकभाव])
+
+**Scope:** This rule is effectively the default case-assignment for nominal relations. Any @deva[षष्ठी] that is not triggered by a specific rule in @ref[2.3.51]–@ref[2.3.73] falls under this general provision.
+"""
+
+advanced = """
+@deva[षष्ठी शेषे] — the foundational genitive rule. @deva[अनुवृत्ति] of @deva[अनभिहिते] from @ref[2.3.1] applies: the genitive is used only when the relation is not already expressed by @deva[तिङ्], @deva[कृत्], @deva[तद्धित], or @deva[समास].
+
+**Definition of @deva[शेष]:** The @deva[शेष] relation is the residuum after subtracting all @deva[कारक] relations (@ref[1.4.23]–@ref[1.4.55]) and @deva[प्रातिपदिकार्थ] from the total space of possible nominal relationships. The tradition enumerates several sub-types: @deva[स्वस्वामिभाव] (owner-owned), @deva[अवयवावयविभाव] (part-whole), @deva[जन्यजनकभाव] (cause-effect), @deva[विकारप्रकृतिभाव] (modification-material), @deva[प्रकृतिविकृतिभाव] (original-derived), among others. But the list is open-ended — @deva[शेष] is defined by exclusion, not enumeration.
+
+**Interaction with other @deva[षष्ठी] rules:** The subsequent @[sūtras] @ref[2.3.51]–@ref[2.3.73] assign @deva[षष्ठी] in domains that technically overlap with @deva[कारक] (e.g., @deva[कर्मन्] in @ref[2.3.52], @deva[करण] in @ref[2.3.51]). These are needed precisely because @deva[शेषे षष्ठी] would not cover them — they involve @deva[कारक] relations, and @deva[शेष] by definition excludes @deva[कारक]. Those rules override the default @deva[द्वितीया] or @deva[तृतीया] with @deva[षष्ठी] for specific verbs.
+
+**@deva[शेष] in the @deva[समास] domain:** The same notion of @deva[शेष] drives @ref[2.2.8] (@deva[षष्ठी]), which forms @deva[तत्पुरुष] compounds from genitive relations. The compound @deva[राजपुरुषः] absorbs the same @deva[शेष]-relation that the analytic @deva[राज्ञः पुरुषः] expresses through @deva[षष्ठी].
+
+**@deva[परिभाषा] note:** When a specific @deva[षष्ठी] rule (e.g., @ref[2.3.52]) also applies, the @deva[विशेष] (specific) rule prevails, but @deva[शेषे षष्ठी] remains available as an alternative via the @deva[शेष] reading — giving rise to the characteristic optionality seen in @ref[2.3.52] etc., where both @deva[षष्ठी] and @deva[द्वितीया] are possible.
+"""

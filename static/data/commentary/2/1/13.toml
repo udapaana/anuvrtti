@@ -1,0 +1,45 @@
+id = "2.1.13"
+numericId = "21013"
+
+[en]
+simple = """
+The word @deva[आङ्] (the particle @deva[आ]) meaning "up to" **optionally** compounds with a word in the ablative case (@deva[पञ्चमी]) to form @deva[अव्ययीभाव]. Two types of limit are covered:
+
+1. **Exclusive limit** (@deva[मर्यादा] — "up to but not including"):
+   - @deva[आपाटलिपुत्रम्] or @deva[आ पाटलिपुत्रात्] "up to @[pāṭaliputra]" (not including it)
+
+2. **Inclusive limit** (@deva[अभिविधि] — "up to and including"):
+   - @deva[आकुमारम्] or @deva[आ कुमारेभ्यः] "even to the boys" (including them)
+
+**Example in context:** @deva[आकुमारं यशः पाणिनेः] "@[pāṇini]'s fame extends even to children" — everyone, including children, knows of his fame.
+"""
+
+standard = """
+@deva[आङ्] in the @deva[मर्यादा] (exclusive limit) or @deva[अभिविधि] (inclusive limit) sense + @deva[पञ्चम्यन्त] → optional @deva[अव्ययीभाव] — @deva[आङ् मर्यादाभिविध्योः].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[मर्यादा]: @deva[आपाटलिपुत्रं वृष्टो देवः] / @deva[आ पाटलिपुत्राद् वृष्टो देवः] "it rained up to (excluding) @[pāṭaliputra]"
+- @deva[अभिविधि]: @deva[आकुमारं यशः पाणिनेः] / @deva[आ कुमारेभ्यो यशः पाणिनेः] "fame extending even to children"
+
+**Connection to @ref[1.4.89]:** @deva[आङ्] as @deva[कर्मप्रवचनीय] in the @deva[मर्यादा] sense was defined at @ref[1.4.89]. This rule teaches the compound form of the same construction.
+
+**Case in compound vs uncompounded:** When compounded (@deva[आपाटलिपुत्रम्]), the internal case ending is deleted by @ref[2.4.71]. When uncompounded, the governed noun takes ablative (@deva[पञ्चमी]) by @ref[2.3.10].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[विभाषा] from @ref[2.1.11]; @deva[पञ्चम्या] from @ref[2.1.12]; @deva[समासः] from @ref[2.1.3]; @deva[अव्ययीभावः] from @ref[2.1.5].
+
+@deva[आङ् मर्यादाभिविध्योः] — @deva[आङ्] in @deva[मर्यादा] or @deva[अभिविधि] sense optionally compounds with @deva[पञ्चम्यन्त] as @deva[अव्ययीभाव].
+
+**Two senses of limit:**
+- @deva[मर्यादा] (exclusive): the limit marks where the scope ends — @deva[आपाटलिपुत्रम्] = "it rained up to but not including @[pāṭaliputra]"
+- @deva[अभिविधि] (inclusive): the limit is included in the scope — @deva[आकुमारम्] = "even children are included"
+
+**@deva[पञ्चमी] continues from @ref[2.1.12]:** The ablative requirement carries forward. In the uncompounded form, @deva[आ] governs ablative by @ref[2.3.10]. When compounded, the ablative ending is deleted by @ref[2.4.71] and the compound takes neuter singular form by @ref[2.4.17].
+
+**Relationship to @ref[1.4.89]:** That rule assigns @deva[कर्मप्रवचनीय] status to @deva[आङ्] in the @deva[मर्यादा] sense. This rule provides the compound alternative. The @deva[कर्मप्रवचनीय] designation applies to the uncompounded usage; in the compound, @deva[आ] is part of the @deva[अव्ययीभाव].
+
+**Accusative vs ablative in the compound:** Though the uncompounded form governs ablative, the compound form takes neuter singular accusative appearance (@deva[आपाटलिपुत्रम्]) because @deva[अव्ययीभाव] compounds default to @deva[नपुंसकलिङ्ग एकवचन] (@ref[2.4.17]).
+"""

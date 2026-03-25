@@ -4,7 +4,25 @@
       "mcp__acp__Bash",
       "mcp__acp__Edit",
       "mcp__acp__Write",
-      "WebFetch(domain:)"
+      "WebFetch(domain:)",
+      "Bash(ls -la /Users/skmnktl/github/udapaana/anuvrtti/src/routes/ref/[id]/)",
+      "Bash(ls -1 /Users/skmnktl/github/udapaana/anuvrtti/src/lib/learning/paths/*.md)",
+      "Bash(python3:*)",
+      "Bash(cat /Users/skmnktl/github/udapaana/anuvrtti/src/routes/learn/[pathId]/+page.ts)",
+      "Bash(git log --all --oneline --grep=\"navigation\\\\|link\\\\|click\" -i)",
+      "Bash(node -e \"const p = require\\(''/Users/skmnktl/github/udapaana/anuvrtti/node_modules/svelte/package.json''\\); console.log\\(p.version\\)\")",
+      "Bash(git add scripts/build-path-index.ts src/lib/components/LearningTree.svelte src/routes/learn/[pathId]/+page.svelte src/routes/learn/[pathId]/+page.ts static/content/paths-index.json TODO-vasu-rewrite.md)",
+      "Bash(grep -n \"पाठः\\\\|Passage\\\\|reading-category\\\\|track\\\\|difficulty\\\\|Jargon\\\\|tool\" /Users/skmnktl/github/udapaana/anuvrtti/src/routes/learn/[pathId]/+page.svelte)",
+      "Bash(npm install @sveltejs/adapter-vercel)",
+      "Bash(npx tsx scripts/migrate-jargon-to-json.ts)",
+      "Bash(npx vite build)",
+      "Bash(node -e \":*)",
+      "Bash(for dir in */)",
+      "Bash(do wc -l \"$dir/path.md\")",
+      "Bash(done)",
+      "Bash(npx tsx scripts/audit/audit-commentary.ts)",
+      "Bash(find static/data/commentary -name \"*.toml\" -exec grep -E '@\\(deva|ref\\)\\\\[@\\(deva|ref\\)' {} +)",
+      "Bash(find static/data/commentary -name \"*.toml\" -exec grep -E '\\(by|see|under|from|in|at|under\\)\\\\s+[0-8]\\\\.[1-4]\\\\.[0-9]+' {} +)"
     ]
   }
 }

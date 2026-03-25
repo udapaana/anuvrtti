@@ -1,0 +1,39 @@
+id = "1.2.66"
+numericId = "12066"
+
+[en]
+simple = """
+When a feminine @deva[गोत्र] (clan) word and a masculine @deva[युवन्] (junior-branch) word stand together, the @deva[गोत्र] word is retained — but the result is always masculine, even though the @deva[गोत्र] word was originally feminine.
+
+**Example:**
+- @deva[गार्गी] (feminine @deva[गोत्र], "woman of the @deva[गर्ग] clan") + @deva[गार्ग्यायणः] (masculine @deva[युवन्]) → @deva[गार्ग्यौ] (masculine dual)
+- @deva[दाक्षी] + @deva[दाक्षायणः] → @deva[दाक्षौ]
+
+This extends the previous rule (@ref[1.2.65]), which retained a masculine @deva[गोत्र] over a @deva[युवन्]. Here, even a feminine @deva[गोत्र] is retained — but its gender shifts to masculine.
+"""
+
+standard = """
+A feminine @deva[वृद्ध] (= @deva[गोत्र]) word undergoes @deva[एकशेष] with a masculine @deva[युवन्] word, and the retained form is masculine. This extends @ref[1.2.65] to cover gender mismatch.
+
+**Examples:**
+- @deva[गार्गी] (feminine @deva[गोत्र]) + @deva[गार्ग्यायणः] (masculine @deva[युवन्]) → @deva[गार्ग्यौ] (masculine dual)
+- @deva[दाक्षी] + @deva[दाक्षायणः] → @deva[दाक्षौ]
+
+**Gender override:** The @deva[गोत्र] word is retained (as in @ref[1.2.65]), but since the @deva[युवन्] is masculine, the result takes masculine form. The feminine @deva[गार्गी] becomes the masculine @deva[गार्ग्यः] base before taking dual.
+
+**Conditions from @ref[1.2.65] still apply:** The words must differ only in affix and share the same base.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकशेष] from @ref[1.2.64]; @deva[वृद्ध] and @deva[युवन्] from @ref[1.2.65].
+
+@deva[स्त्री पुंवद्भाषितपुंस्कादनूङ् समानाधिकरणे स्त्रियां पुंवद्भाषितपुंस्कम्] — when a feminine @deva[वृद्ध] word undergoes @deva[एकशेष] with a @deva[युवन्], the result is masculine.
+
+**Why this rule is needed:** @ref[1.2.65] handles masculine @deva[गोत्र] + masculine @deva[युवन्]. But what if the @deva[गोत्र] member is feminine (@deva[गार्गी])? Without this rule, the gender mismatch would block @deva[एकशेष] (since @ref[1.2.67] requires same base). This rule specifically permits the cross-gender @deva[एकशेष] and mandates masculine output.
+
+**@deva[स्त्री] = @deva[वृद्धस्त्री]:** The @deva[वार्त्तिक] clarifies that @deva[स्त्री] in the @deva[सूत्र] means specifically a feminine @deva[वृद्ध] (elder-branch) word, not any feminine noun. A feminine @deva[युवन्] + masculine @deva[वृद्ध] would fall under @ref[1.2.65] directly.
+
+**Derivation of result:** @deva[गार्गी] (stem @deva[गार्ग्य] + @deva[ङीष्]) loses the feminine affix; the masculine base @deva[गार्ग्य] takes dual: @deva[गार्ग्यौ].
+
+**Position:** This rule bridges @ref[1.2.65] (@deva[गोत्र]/@deva[युवन्] @deva[एकशेष]) and @ref[1.2.67] (general masculine-over-feminine @deva[एकशेष]).
+"""

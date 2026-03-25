@@ -1,0 +1,41 @@
+id = "1.3.63"
+numericId = "13063"
+
+[en]
+simple = """
+In the periphrastic perfect (a type of past tense formed with @deva[आम्]), the auxiliary verb @deva[कृ] takes the same @deva[पद] as the main verb.
+
+**Examples:**
+- @deva[एध्] is @deva[आत्मनेपदिन्] → @deva[एधांचक्रे] "he prospered" (@deva[कृ] takes @deva[आत्मनेपद])
+- @deva[इन्द्] is @deva[परस्मैपदिन्] → @deva[इन्दांचकार] "he appeared splendidly" (@deva[कृ] takes @deva[परस्मैपद])
+
+The other possible auxiliaries @deva[भू] and @deva[अस्] always keep their own conjugation: @deva[एधाम्बभूव], @deva[एधामास].
+"""
+
+standard = """
+When @deva[कृ] serves as auxiliary with an @deva[आम्]-ending verb in the periphrastic perfect, @deva[कृ] takes the @deva[पद] of the main verb — even when the fruit does not accrue to the agent.
+
+**@deva[आत्मनेपद] main verb → @deva[कृ] @deva[आत्मनेपद]:**
+- @deva[एधांचक्रे] "he prospered" (@deva[एध्] is @deva[आत्मनेपदिन्])
+
+**@deva[परस्मैपद] main verb → @deva[कृ] @deva[परस्मैपद]:**
+- @deva[इन्दांचकार] "he appeared splendidly" (@deva[इन्द्] is @deva[परस्मैपदिन्])
+
+**@deva[भू] and @deva[अस्] excluded:** The other two auxiliaries listed in @ref[3.1.40] do not follow this rule — they retain their own conjugation: @deva[एधाम्बभूव], @deva[एधामास].
+
+**Why only @deva[कृ]?** @ref[3.1.40] uses @deva[कृञ्] as a @deva[प्रत्याहार] covering @deva[कृ]/@deva[भू]/@deva[अस्]. This rule applies only to @deva[कृ] specifically, not the entire @deva[प्रत्याहार].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[आमः कृञः] — when @deva[कृ] is auxiliary with an @deva[आम्]-ending form, @deva[कृ] follows the main verb's @deva[पद].
+
+**Periphrastic perfect mechanism:** Certain roots form their @deva[लिट्] (perfect) periphrastically: root + @deva[आम्] + auxiliary (@deva[कृ]/@deva[भू]/@deva[अस्]) in perfect. @ref[3.1.40] prescribes this formation. This rule governs @deva[कृ]'s @deva[पद] assignment when it serves as auxiliary.
+
+**@deva[कृ] vs. @deva[भू]/@deva[अस्]:** @deva[भू] is @deva[परस्मैपदिन्] by default; @deva[अस्] likewise. They retain their own @deva[पद] regardless of the main verb. Only @deva[कृ] (@deva[उभयपदिन्], being @deva[ञित्]) has the flexibility to take either @deva[पद], so this rule directs it to follow the main verb.
+
+**@deva[प्रत्याहार] scope:** @deva[कृञ्] in @ref[3.1.40] is a @deva[प्रत्याहार] including @deva[कृ], @deva[भू], and @deva[अस्]. Here, @deva[कृञ्] means only @deva[कृ] itself — the context limits the @deva[प्रत्याहार] to its first member.
+
+**Rule type:** @deva[पद]-inheritance for auxiliary verbs — analogous to @ref[1.3.62] for desideratives. Both establish that derived/auxiliary forms track the @deva[पद] of the base.
+"""

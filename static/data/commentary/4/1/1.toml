@@ -1,0 +1,32 @@
+id = "4.1.1"
+numericId = "41001"
+
+[en]
+simple = """
+This rule governs all of Chapters 4 and 5. It says that every suffix taught in this range attaches to a nominal stem (@deva[प्रातिपदिक], the uninflected base form) or to a stem already carrying a feminine ending (@deva[ङी] or @deva[आप्]).
+
+This matters because the suffixes themselves — expressing meanings like "descendant of," "belonging to," "made of" — only attach to stems, never to inflected words. The rule establishes this base for nearly two thousand rules that follow.
+
+**Example:** @deva[उपगु] + suffix @deva[अण्] → @deva[औपगवः] "descendant of @deva[उपगु]" — the suffix attaches to the stem, not to an inflected form like @deva[उपगोः].
+"""
+
+standard = """
+This @deva[अधिकारसूत्र] (governing rule) controls all rules from here through @ref[5.4.151]. It establishes the base for @deva[तद्धित] and @deva[स्त्री]-@deva[प्रत्यय] affixation.
+
+The compound @deva[ङ्याप्प्रातिपदिकात्] specifies three types of base: (1) stems ending in @deva[ङी] (covering @deva[ङीप्], @deva[ङीष्], @deva[ङीन्]); (2) stems ending in @deva[आप्] (covering @deva[टाप्], @deva[डाप्], @deva[चाप्]); (3) any @deva[प्रातिपदिक] as defined by @ref[1.2.45]–@ref[1.2.46].
+
+**Examples:**
+- @deva[उपगु] + @deva[अण्] → @deva[औपगवः] (descendant of @deva[उपगु])
+- @deva[कालि] (feminine via @deva[ङीप्]) + @deva[तरप्] → @deva[कालितरा] (more dark-complexioned)
+- @deva[ब्राह्मण] + @deva[अण्] → @deva[ब्राह्मणः] (relating to a @deva[ब्राह्मण])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is the opening @deva[अधिकार] for the @deva[तद्धित] section. It governs through @ref[5.4.151].
+
+The compound @deva[ङ्याप्प्रातिपदिकात्] is a @deva[समाहारद्वन्द्व] in the ablative. Its inclusion of @deva[ङ्याप्] alongside @deva[प्रातिपदिक] is not redundant — it enables @deva[तद्धित] affixation to feminine stems that already carry @deva[ङी]/@deva[आप्]. Without it, @deva[विप्रतिषेध] (conflict resolution by @ref[1.4.2]) would block feminine + @deva[तद्धित] combinations like @deva[कालितरा] and @deva[हरिणितरा].
+
+A critical consequence: when subsequent rules reference @deva[वृद्ध] (e.g. @ref[4.1.157]), they mean @deva[वृद्ध] in @deva[प्रातिपदिक] form, not in inflected form. So @deva[ज्ञानाम्] (genitive plural of @deva[ज्ञ]) does not qualify as @deva[वृद्ध] — only the stem @deva[ज्ञ] is evaluated, and it begins with a @deva[गुण] vowel, not @deva[वृद्धि].
+
+The @deva[ङी] and @deva[आप्] affixes referenced here are taught at @ref[4.1.4]–@ref[4.1.65]. The @deva[प्रातिपदिक] definition at @ref[1.2.45]–@ref[1.2.46] includes both underived stems and stems formed by @deva[कृत्]-affixes.
+"""

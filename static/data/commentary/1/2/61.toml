@@ -1,0 +1,46 @@
+id = "1.2.61"
+numericId = "12061"
+
+[en]
+simple = """
+In Vedic usage (@deva[छन्दस्]), the asterism @deva[पुनर्वसू] — which consists of a pair of stars and normally takes the dual — may optionally be expressed in the singular.
+
+**Vedic (both valid):**
+- @deva[पुनर्वसुर्नक्षत्रम्] (singular) "the @deva[पुनर्वसू] asterism"
+- @deva[पुनर्वसू नक्षत्रम्] (dual)
+
+**Classical Sanskrit:** Only the dual @deva[पुनर्वसू] is used.
+
+**Not as a star name:** @deva[पुनर्वसू माणवकौ] "two boys named @deva[पुनर्वसु]" — dual only (the option applies only to the asterism).
+"""
+
+standard = """
+In @deva[छन्दस्] (Vedic), the dual @deva[पुनर्वसू] (asterism) optionally takes singular with dual meaning.
+
+**Vedic forms (both valid):**
+- @deva[पुनर्वसुर्नक्षत्रम्] (singular)
+- @deva[पुनर्वसू नक्षत्रमदितिर्देवता] (dual) "the @deva[पुनर्वसू] asterism, with @deva[अदिति] as deity"
+
+**Classical Sanskrit:** Only @deva[पुनर्वसू] (dual).
+
+**Restriction — asterism only:** @deva[पुनर्वसू माणवकौ] "two boys named @deva[पुनर्वसु]" — dual only, no singular option.
+
+**Contrast with @ref[1.2.60]:** That rule gave @deva[फाल्गुनी]/@deva[प्रोष्ठपदा] an optional plural. This rule gives @deva[पुनर्वसू] an optional singular — and only in Vedic.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[नक्षत्र] from @ref[1.2.60]; @deva[अन्यतरस्याम्] from @ref[1.2.58].
+
+@deva[पुनर्वस्वेकवचनं छन्दसि] — in @deva[छन्दस्], @deva[पुनर्वसू] (dual) optionally takes singular.
+
+**Direction of alternation:** @ref[1.2.58]–@ref[1.2.60] allowed larger number for smaller (singular → plural, dual → plural). This rule reverses direction: dual → singular. The Vedic freedom with number is broader than classical usage.
+
+**@deva[छन्दस्] restriction:** Unlike @ref[1.2.60] (which applies in classical Sanskrit too), this option is limited to Vedic. In classical usage, @deva[पुनर्वसू] is always dual.
+
+**Asterism number rules — summary:**
+| Rule | Asterism | Alternation | Scope |
+|------|----------|-------------|-------|
+| @ref[1.2.60] | @deva[फाल्गुनी], @deva[प्रोष्ठपदा] | dual → optional plural | Classical + Vedic |
+| @ref[1.2.61] (this) | @deva[पुनर्वसू] | dual → optional singular | Vedic only |
+| @ref[1.2.62] | @deva[विशाखा] | dual → optional singular | Vedic only |
+"""

@@ -1,0 +1,51 @@
+id = "1.1.61"
+numericId = "11061"
+
+[en]
+simple = """
+There are three special ways an affix can be deleted. Each has its own name and its own consequences:
+
+- @deva[लुक्]: the affix disappears, and so do all the changes it caused to the base
+- @deva[श्लु]: similar to @deva[लुक्] — the affix and its effects vanish
+- @deva[लुप्]: the affix disappears, but the changes it caused to the base remain
+
+These are different from ordinary @deva[लोप] (deletion, @ref[1.1.60]). With @deva[लोप], the deleted affix still exerts its influence. With @deva[लुक्]/@deva[श्लु]/@deva[लुप्], the grammar distinguishes how completely the affix's effects are erased.
+
+**Example:** @deva[अद्] "to eat" + @deva[शप्] (class marker) + @deva[ति] → @deva[अत्ति] "he eats." The @deva[शप्] affix is deleted by @deva[लुक्] (@ref[2.4.72]).
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] defines three named types of affix elision: @deva[लुक्], @deva[श्लु], and @deva[लुप्]. Each names a specific elision of a @deva[प्रत्यय] (affix).
+
+**Examples:**
+- **@deva[लुक्]:** @ref[2.4.72] — @deva[शप्] is @deva[लुक्]-elided for @deva[अदादिगण] roots: @deva[अद्] + @deva[शप्] + @deva[ति] → @deva[अत्ति] "he eats"
+- **@deva[श्लु]:** @ref[2.4.75] — @deva[शप्] is @deva[श्लु]-elided for @deva[जुहोत्यादिगण] roots: @deva[हु] + @deva[शप्] + @deva[ति] → @deva[जुहोति] "he offers"
+- **@deva[लुप्]:** @ref[4.2.82] — @deva[तद्धित] affix is @deva[लुप्]-elided: @deva[वरणाः] "city near @deva[वरण] plants"
+
+**Scope:** These terms apply only to @deva[प्रत्यय] (affixes), never to bases or roots. When the grammar says "@deva[लुक्] of X," X must be an affix.
+
+**Consequences of each type:**
+- @deva[लुक्]/@deva[श्लु]: the affix's influence on the base (@deva[अङ्गकार्य]) is cancelled (@ref[1.1.63])
+- @deva[लुप्]: the affix disappears but its effects on the base persist (@ref[1.1.62])
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रत्ययस्य] understood from context.
+
+@deva[प्रत्ययस्य लुक्श्लुलुपः] — elision of an affix by @deva[लुक्], @deva[श्लु], or @deva[लुप्] is named after those respective terms.
+
+**This rule and the next two (@ref[1.1.62]–@ref[1.1.63]) form a system of elision types:**
+- @ref[1.1.60]: defines @deva[लोप] (general elision) — the @deva[लोप]-substitute has @deva[स्थानिवद्भाव]
+- @ref[1.1.61] (this rule): names three special affix-elision types
+- @ref[1.1.62]: @deva[लोप]-elided affixes still trigger @deva[कार्य] (operations)
+- @ref[1.1.63]: @deva[लुक्]/@deva[श्लु]/@deva[लुप्]-elided affixes do not trigger @deva[अङ्गकार्य]
+
+**Why three separate terms?** The grammar needs to prescribe different elisions in different contexts. By naming them, later rules can refer to specific elision types and their consequences. The @deva[काशिका] explains that the distinction matters because @deva[लुक्] and @deva[श्लु] cancel the affix's effect on the base, while @deva[लुप्] preserves it.
+
+**Examples:**
+- @deva[लुक्]: @ref[2.4.72] (@deva[अदिप्रभृतिभ्यः शपः]) — @deva[शप्] vanishes for @deva[अदादि] roots
+- @deva[श्लु]: @ref[2.4.75] (@deva[जुहोत्यादिभ्यः श्लुः]) — @deva[शप्] vanishes for @deva[जुहोत्यादि] roots
+- @deva[लुप्]: @ref[4.2.82] — @deva[तद्धित] affix vanishes but its semantic effect (@deva[तत्र भवः]) remains
+
+**@deva[प्रत्यय] restriction:** The word @deva[प्रत्ययस्य] limits these terms to affixes only. Root elision, stem elision, or augment elision is always @deva[लोप] — never @deva[लुक्]/@deva[श्लु]/@deva[लुप्].
+"""

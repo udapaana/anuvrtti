@@ -1,0 +1,43 @@
+id = "2.2.13"
+numericId = "22013"
+
+[en]
+simple = """
+A word in the genitive case does **not** form a compound with a @deva[क्त]-ending word when @deva[क्त] expresses a location — the place where an action happened. This applies to @deva[क्त] from roots meaning sitting, going, or eating.
+
+**Examples (no compound):**
+- @deva[इदमेषां यातम्] "this is where they went" — @deva[या] "to go" + @deva[क्त]
+- @deva[इदमेषां भुक्तम्] "this is where they ate" — @deva[भुज्] "to eat" + @deva[क्त]
+- @deva[इदमेषामासितम्] "this is where they sat" — @deva[आस्] "to sit" + @deva[क्त]
+
+In these expressions, the @deva[क्त] form names the place of the action, not the action itself.
+"""
+
+standard = """
+@deva[षष्ठी] + @deva[क्त] in @deva[आधार] (locative) sense → no compound — @deva[आधारे च क्ते].
+
+**Rule type — @deva[प्रतिषेध] (prohibition):** Blocks @ref[2.2.8] when @deva[क्त] denotes the location of an action.
+
+**Examples:**
+- @deva[इदमेषां यातम्] "this is where they went"
+- @deva[इदमेषां भुक्तम्] "this is where they ate"
+- @deva[इदमेषामासितम्] "this is where they sat"
+
+**Source of the locative sense:** @ref[3.4.76] assigns @deva[क्त] to roots of @deva[स्थान] (staying), @deva[आसन] (sitting), @deva[शय्या] (lying), @deva[गति] (going), and @deva[भुज्] (eating), giving both agent and location sense. The @deva[क्त] form can denote either "one who did X" or "the place where X was done."
+
+**Scope:** Only when @deva[क्त] has the locative (@deva[आधार]) sense. When @deva[क्त] from these same roots has the ordinary agent/action sense, compounding under @ref[2.2.8] proceeds normally.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.2.8]; @deva[न] from @ref[2.2.10]; @deva[तत्पुरुषः] from @ref[2.1.22].
+
+@deva[आधारे च क्ते] — @deva[षष्ठी] does not compound with @deva[क्त] when @deva[क्त] expresses @deva[आधार] (the location/container of the action).
+
+**@deva[क्त] in @deva[आधार] sense — @ref[3.4.76]:** This rule assigns @deva[क्त] to roots of @deva[स्थान], @deva[आसन], @deva[शय्या], @deva[गति], and @deva[भुज्], giving the @deva[क्त] form both @deva[कर्तृ] and @deva[आधार] significance. @deva[यातम्] can mean "gone" (agent) or "the place where one went" (location). The compound prohibition applies only in the @deva[आधार] reading.
+
+**Why block compounding?** When @deva[क्त] denotes a location, the genitive expresses "of whom" — whose place of eating/going/sitting this is. This is a specialized semantic function. If compounded, @deva[एषयातम्] would be ambiguous between "their going" (agent reading) and "the place where they went" (location reading). Blocking the compound preserves the @deva[आधार] interpretation.
+
+**Narrow scope:** This prohibition targets a specific intersection: @deva[क्त] (not other affixes) + @deva[आधार] sense (not other senses) + @deva[षष्ठी] (not other cases). The combination is narrow enough to warrant its own rule rather than being subsumed under a broader prohibition.
+
+**Continuing from @ref[2.2.12]:** Both @ref[2.2.12] and @ref[2.2.13] target @deva[क्त] in special senses — @ref[2.2.12] blocks @deva[मति]/@deva[बुद्धि]/@deva[पूजा], and @ref[2.2.13] blocks @deva[आधार]. Together they carve out the specific @deva[क्त] usages where genitive compounding fails.
+"""

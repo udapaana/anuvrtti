@@ -1,0 +1,38 @@
+id = "4.3.94"
+numericId = "43094"
+
+[en]
+simple = """
+After specific words, specific affixes are used to mean 'this is his native land':
+
+| Base | Affix | Result |
+|------|-------|--------|
+| @deva[तूदी] | @deva[ढक्] | @deva[तौदेयः] |
+| @deva[शलातुर] | @deva[छण्] | @deva[शालातुरीयः] |
+| @deva[वर्मती] | @deva[ढञ्] | @deva[वार्मतेयः] |
+| @deva[कूचवार] | @deva[यक्] | @deva[कौचवार्यः] |
+
+These override the default @deva[अण्].
+"""
+
+standard = """
+This @deva[सूत्र] assigns specific affixes to four words in the @deva[अभिजन] sense, debarring @deva[अण्]:
+
+| Base | Affix | Result |
+|------|-------|--------|
+| @deva[तूदी] | @deva[ढक्] | @deva[तौदेयः] |
+| @deva[शलातुर] | @deva[छण्] | @deva[शालातुरीयः] |
+| @deva[वर्मती] | @deva[ढञ्] | @deva[वार्मतेयः] |
+| @deva[कूचवार] | @deva[यक्] | @deva[कौचवार्यः] |
+"""
+
+advanced = """
+This @deva[सूत्र] is a @deva[पृथग्विधान] assigning individual affixes to @deva[तूदी], @deva[शलातुर], @deva[वर्मती], and @deva[कूचवार] in the @deva[अभिजन] sense:
+
+- @deva[तूदी] + @deva[ढक्] → @deva[तौदेयः]
+- @deva[शलातुर] + @deva[छण्] → @deva[शालातुरीयः]
+- @deva[वर्मती] + @deva[ढञ्] → @deva[वार्मतेयः]
+- @deva[कूचवार] + @deva[यक्] → @deva[कौचवार्यः]
+
+This is an @deva[अपवाद] to @deva[अण्] from @ref[4.1.83].
+"""

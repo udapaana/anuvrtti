@@ -1,0 +1,31 @@
+id = "2.4.50"
+numericId = "24050"
+
+[en]
+simple = """
+The root @deva[इङ्] 'to study' is optionally replaced by @deva[गाङ्] before @deva[लुङ्] (aorist) and @deva[लृङ्] (conditional).
+
+**With @deva[गाङ्] substitution:**
+- Aorist: @deva[अध्यगीष्ट], @deva[अध्यगीषाताम्], @deva[अध्यगीषत]
+- Conditional: @deva[अध्यगीष्यत], @deva[अध्यगीष्येताम्], @deva[अध्यगीष्यन्त]
+
+**Without substitution:**
+- Aorist: @deva[अध्यैष्ट], @deva[अध्यैषाताम्], @deva[अध्यैषत]
+- Conditional: @deva[अध्यैष्यत], @deva[अध्यैष्येताम्], @deva[अध्यैष्यन्त]
+"""
+
+standard = """
+The root @deva[इङ्] is optionally replaced by @deva[गाङ्] when @deva[लुङ्] (aorist) or @deva[लृङ्] (conditional) follows.
+
+**With @deva[गाङ्]:** The affixes of @deva[लुङ्] and @deva[लृङ्] are treated as @deva[ङित्] by @ref[1.2.1]. Then by @ref[6.4.66], @deva[ई] replaces the long @deva[आ] of @deva[गा]:
+- @deva[अध्यगीष्ट] (@deva[अधि] + @deva[अ] + @deva[गी] + @deva[स्त])
+- @deva[अध्यगीष्यत]
+
+**Without @deva[गाङ्]:**
+- @deva[अध्यैष्ट], @deva[अध्यैषाताम्], @deva[अध्यैषत]
+- @deva[अध्यैष्यत], @deva[अध्यैष्येताम्], @deva[अध्यैष्यन्त]
+"""
+
+advanced = """
+@deva[गाङ्] is optionally the substitute of @deva[इङ्] when @deva[लुङ्] (Aorist) and @deva[ऌङ्] (Conditional Future) follow. Let us take the case when @deva[गाङ्] replaces @deva[इङ्]. The affixes of @deva[लुङ्] and @deva[लृङ्] are treated as @deva[ङित्] by @ref[1.2.1]. and then by the Rule @ref[6.4.66] (When an @[ardhadhatuka] affix, beginning with a consonant and distinguished by an indicatory @deva[क] or @deva[ङ्] follows; then let @deva[ई] be the substitute of long @deva[आ] of the verbs termed @deva[घु] and of @deva[मा], @deva[स्था], @deva[गा] @deva[पा], @deva[हा], @deva[सी]), we get @deva[अध्यगीष्ट] (@deva[अधि] + @deva[अ] + @deva[गी] + @deva[स्त]), @deva[अध्यगीषाताम्], @deva[अध्यगीषत]. In the alternative we have @deva[अध्यैष्ट], @deva[अध्यैषाताम्] and @deva[अध्यैषत]. So also in @deva[लृङ्]; as @deva[अध्यगीष्यत], @deva[अध्यगीष्येताम्], @deva[अध्यगीष्यन्त], or in the alternative, @deva[अध्यैष्यत],@deva[आध्यैष्येताम्] and @deva[अध्यैष्यन्त].
+"""

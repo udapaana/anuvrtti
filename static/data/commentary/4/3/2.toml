@@ -1,0 +1,25 @@
+id = "4.3.2"
+numericId = "43002"
+
+[en]
+simple = """
+When the affixes @deva[खञ्] or @deva[अण्] are added, the pronouns @deva[युष्मद्] (you) and @deva[अस्मद्] (I/we) are replaced by special forms: @deva[युष्माक] and @deva[अस्माक] respectively.
+
+The pronoun @deva[तस्मिन्] (in that) in the @[sūtra] refers to the visible affix @deva[खञ्], not to @deva[छ] which was understood from the previous rule.
+
+Examples with @deva[खञ्]: @deva[यौष्माकीणः] (yours), @deva[आस्माकीनः] (ours). With @deva[अण्]: @deva[यौष्माकः], @deva[आस्माकः]. But with @deva[छ], no substitution occurs: @deva[युष्मदीयः], @deva[अस्मदीयः].
+"""
+
+standard = """
+When @deva[खञ्] or @deva[अण्] follows, @deva[युष्मद्] and @deva[अस्मद्] are replaced by @deva[युष्माक] and @deva[अस्माक]. The demonstrative @deva[तस्मिन्] refers to the explicit @deva[खञ्], not to @deva[छ] drawn by @deva[अनुवृत्ति].
+
+@deva[यथासंख्य] (@ref[1.3.10]) might seem applicable with two affixes matching two words and two substitutes. However, the @[sūtra] splits into two: (1) @deva[खञि] triggers both substitutes; (2) so does @deva[अणि].
+
+Examples: @deva[यौष्माकीणः], @deva[आस्माकीनः] (with @deva[खञ्]); @deva[यौष्माकः], @deva[आस्माकः] (with @deva[अण्]). With @deva[छ]: @deva[युष्मदीयः], @deva[अस्मदीयः] (no substitution).
+"""
+
+advanced = """
+@deva[तस्मिन्] is @deva[प्रत्यक्षनिर्देश] pointing to @deva[खञ्], not the @deva[परोक्ष] @deva[छ] understood via @deva[च] from @ref[4.3.1]. Despite apparent @deva[समसंख्या] (two affixes, two bases, two substitutes), @deva[यथासंख्य] (@ref[1.3.10]) fails because the @[sūtra] undergoes @deva[योगविभाग]: (1) @deva[तस्मिन्खञि युष्मदस्मदोर्युष्माकास्माकौ], (2) @deva[अततोऽणि च]—each affix independently triggers both substitutions.
+
+Derivations: @deva[युष्मद्] + @deva[खञ्] → @deva[युष्माक] + @deva[ईन] → @deva[यौष्माकीणः]. @deva[अस्मद्] + @deva[अण्] → @deva[अस्माक] + @deva[अ] → @deva[आस्माकः]. With @deva[छ]: @deva[युष्मदीयः], @deva[अस्मदीयः]—substitution blocked.
+"""

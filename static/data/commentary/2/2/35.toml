@@ -1,0 +1,41 @@
+id = "2.2.35"
+numericId = "22035"
+
+[en]
+simple = """
+In a @deva[बहुव्रीहि] compound, a word in the locative case (@deva[सप्तमी]) and an adjective (@deva[विशेषण]) are placed first.
+
+**Examples:**
+- @deva[कण्ठेकालः] "one who is black in the throat" — @deva[कण्ठे] (locative, "in the throat") goes first
+- @deva[चित्रगुः] "one having a spotted cow" — @deva[चित्र] (adjective, "spotted") goes first
+
+Since all members of a @deva[बहुव्रीहि] are technically @deva[उपसर्जन] (subordinate to the external referent), @ref[2.2.30] alone cannot determine which goes first. This rule resolves that.
+"""
+
+standard = """
+@deva[सप्तम्यन्त] and @deva[विशेषण] placed first in @deva[बहुव्रीहि] — @deva[सप्तमीविशेषणे बहुव्रीहौ].
+
+**Rule type — @deva[विधि] (ordering rule):** Specific to @deva[बहुव्रीहि] compounds.
+
+**Examples:**
+- @deva[कण्ठेकालः] — @deva[कण्ठे] (@deva[सप्तमी]) placed first; means "one whose throat is black"
+- @deva[चित्रगुः] — @deva[चित्र] (@deva[विशेषण]) placed first; means "one whose cow is spotted"
+
+**Why this rule is needed:** In @deva[बहुव्रीहि], all members denote the external referent's attribute — both are @deva[उपसर्जन]. @ref[2.2.30] says @deva[उपसर्जन] goes first, but when both members are @deva[उपसर्जन], the rule is indeterminate. @ref[2.2.35] resolves this: the locative or the adjective takes priority.
+
+**Two criteria:** (1) A @deva[सप्तम्यन्त] word goes first — it specifies the locus. (2) A @deva[विशेषण] (qualifier/adjective) goes first — it describes the second member.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[पूर्वम्] from @ref[2.2.30].
+
+@deva[सप्तमीविशेषणे बहुव्रीहौ] — in @deva[बहुव्रीहि], a @deva[सप्तम्यन्त] word or a @deva[विशेषण] is placed first.
+
+**Problem with @ref[2.2.30]:** In @deva[बहुव्रीहि], all members are @deva[उपसर्जन] — they are all subordinate to the external referent. @ref[2.2.30] (@deva[उपसर्जनं पूर्वम्]) cannot determine order when all members have the same status. This rule provides the tiebreaker.
+
+**@deva[सप्तमी] priority:** When one member is in the locative, it goes first: @deva[कण्ठेकालः] = @deva[कण्ठे कालः यस्य] "he in whose throat there is blackness." The locative specifies the locus of the attribute.
+
+**@deva[विशेषण] priority:** When one member qualifies the other, the qualifier goes first: @deva[चित्रगुः] = @deva[चित्रा गौः यस्य]. @deva[चित्र] qualifies @deva[गो], so it precedes.
+
+**Interaction with @ref[2.2.36]:** The next rule places @deva[निष्ठान्त] (@deva[क्त]/@deva[क्तवतु]) first in @deva[बहुव्रीहि]. When a @deva[निष्ठान्त] word is also a @deva[विशेषण], @ref[2.2.36] governs specifically: @deva[भिन्नघटः] "one whose pot is broken" — @deva[भिन्न] (@deva[क्तान्त]) goes first.
+"""

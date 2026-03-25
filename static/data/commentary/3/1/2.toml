@@ -1,0 +1,41 @@
+id = "3.1.2"
+numericId = "31002"
+
+[en]
+simple = """
+An affix is placed after its base. When a @deva[प्रत्यय] (affix) is added, it comes after the @deva[धातु] (verbal root) or @deva[प्रातिपदिक] (nominal stem) it belongs to.
+
+**Examples:**
+- @deva[कृ] + @deva[तव्य] → @deva[कर्तव्यम्] "to be done" — the affix @deva[तव्य] follows the root @deva[कृ]
+- @deva[तित्तिरि] + @deva[ईय] → @deva[तैत्तिरीयम्] "relating to Tittiri" — the affix @deva[ईय] follows the stem @deva[तित्तिरि]
+
+This is the default word-building rule: base first, affix second. The word @deva[च] ("and") in the sūtra hints that there can be exceptions where an affix appears elsewhere in the word.
+"""
+
+standard = """
+This rule functions as both @deva[अधिकार] (governing rule) and @deva[परिभाषा] (interpretive principle). The word @deva[परः] means "subsequent," establishing that a @deva[प्रत्यय] follows its base — the @deva[धातु] or @deva[प्रातिपदिक].
+
+**Examples:**
+- @deva[कृ] + @deva[तव्य] → @deva[कर्तव्यम्] — @deva[प्रत्यय] after @deva[धातु]
+- @deva[तित्तिरि] + @deva[ईय] → @deva[तैत्तिरीयम्] — @deva[प्रत्यय] after @deva[प्रातिपदिक]
+
+**The word @deva[च]:** Indicates that while the default position is after the base, affixes may occasionally occupy initial or medial positions. This covers cases like @deva[आगम]s that are placed before or within the base.
+
+**Scope:** This rule continues in force throughout the @deva[प्रत्यय] section (through @ref[5.4.160]), alongside @ref[3.1.1].
+
+**Rule type:** @deva[परिभाषासूत्र] — it establishes an interpretive convention rather than teaching a specific affix.
+"""
+
+advanced = """
+This @deva[अधिकार]-cum-@deva[परिभाषा] specifies that @deva[प्रत्यय]s are @deva[पर] (subsequent) to their @deva[प्रकृति] — the @deva[धातु] or @deva[प्रातिपदिक]. The @deva[अनुवृत्ति] of @deva[प्रत्ययः] comes from @ref[3.1.1].
+
+**The particle @deva[च]:** The @deva[च] ("and") signals that while the default is post-position, certain elements (particularly @deva[आगम]s) may occupy non-final positions. Without @deva[च], the rule would be an absolute prohibition on pre-positioned elements.
+
+**Interaction with @ref[1.1.46]:** The principle @deva[आद्यन्तौ टकितौ] determines precise placement — @deva[टित्] augments are placed at the end, @deva[कित्] augments at the beginning. This rule (@ref[3.1.2]) establishes the baseline that @deva[प्रत्यय]s follow the base; @ref[1.1.46] handles augments within that structure.
+
+**Scope:** This @deva[अधिकार] extends through @ref[5.4.160], co-extensive with @ref[3.1.1]. Every rule in this range presupposes that the affix being taught will follow its base unless explicitly stated otherwise.
+
+**Examples:**
+- @deva[कृ] + @deva[तव्य] = @deva[कर्तव्यम्] (verbal: affix after @deva[धातु])
+- @deva[तित्तिरि] + @deva[ईय] = @deva[तैत्तिरीयम्] (nominal: affix after @deva[प्रातिपदिक])
+"""

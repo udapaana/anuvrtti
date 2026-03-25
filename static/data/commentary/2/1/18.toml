@@ -1,0 +1,44 @@
+id = "2.1.18"
+numericId = "21018"
+
+[en]
+simple = """
+The words @deva[पारे] "across" and @deva[मध्ये] "in the middle" **optionally** compound with a word in the genitive case (@deva[षष्ठी]) to form @deva[अव्ययीभाव].
+
+**Examples (three valid options):**
+1. @deva[अव्ययीभाव]: @deva[पारेगङ्गम्] "across the Ganges," @deva[मध्येगङ्गम्] "in the middle of the Ganges"
+2. @deva[षष्ठी तत्पुरुष]: @deva[गङ्गापारम्] "Ganges-far-bank," @deva[गङ्गामध्यम्] "Ganges-middle"
+3. Uncompounded: @deva[पारं गङ्गायाः] "the far bank of the Ganges"
+
+All three express the same meaning. The @deva[विभाषा] allows the speaker to choose freely.
+"""
+
+standard = """
+@deva[पारे] or @deva[मध्ये] + @deva[षष्ठ्यन्त] → optional @deva[अव्ययीभाव] — @deva[पारे मध्ये च षष्ठ्या].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional @deva[अव्ययीभाव] under @ref[2.1.11].
+
+**Three-way option:**
+1. @deva[अव्ययीभाव]: @deva[पारेगङ्गम्], @deva[मध्येगङ्गम्] — @deva[पारे]/\u200b@deva[मध्ये] first
+2. @deva[षष्ठी तत्पुरुष]: @deva[गङ्गापारम्], @deva[गङ्गामध्यम्] — genitive member first
+3. Uncompounded: @deva[पारं गङ्गायाः], @deva[मध्यं गङ्गायाः]
+
+**@deva[वा] permits @deva[तत्पुरुष] alternative:** Without this rule, @deva[पार] and @deva[मध्य] with a genitive would only form @deva[षष्ठी तत्पुरुष] (@ref[2.2.8]). This rule provides the @deva[अव्ययीभाव] alternative, with the @deva[अव्यय] (@deva[पारे]/\u200b@deva[मध्ये]) as the first member.
+
+**@deva[पारे]/\u200b@deva[मध्ये] forms:** The locative forms @deva[पारे] and @deva[मध्ये] function as @deva[अव्यय] (indeclinables) when used adverbially, qualifying them as first members of @deva[अव्ययीभाव].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[अव्ययीभावः] from @ref[2.1.5].
+
+@deva[पारे मध्ये च षष्ठ्या] — @deva[पारे] and @deva[मध्ये] optionally compound with @deva[षष्ठ्यन्त] as @deva[अव्ययीभाव].
+
+**Competing compound types:** This is one of the few rules where @deva[अव्ययीभाव] and @deva[तत्पुरुष] compete for the same input:
+- @deva[अव्ययीभाव] (this rule): @deva[पारे] + @deva[गङ्गायाः] → @deva[पारेगङ्गम्] (first-member principal)
+- @deva[षष्ठी तत्पुरुष] (@ref[2.2.8]): @deva[गङ्गायाः] + @deva[पारम्] → @deva[गङ्गापारम्] (last-member principal)
+- Uncompounded: @deva[पारं गङ्गायाः] (by @ref[2.1.11])
+
+**@deva[षष्ठी] as a new case requirement:** @ref[2.1.12]–@ref[2.1.13] specified @deva[पञ्चमी]; @ref[2.1.14]–@ref[2.1.16] used general @deva[सुबन्त]. This rule introduces @deva[षष्ठी] (genitive) as the case of the second member — the genitive expressing the relationship "of X" (the far bank *of the Ganges*, the middle *of the Ganges*).
+
+**Word order in @deva[अव्ययीभाव]:** @deva[पारे]/\u200b@deva[मध्ये] comes first as the @deva[अव्यय] (first-member principal). In the @deva[तत्पुरुष] alternative, word order reverses: @deva[गङ्गापारम्] (genitive member first, @deva[पार] last as the principal).
+"""

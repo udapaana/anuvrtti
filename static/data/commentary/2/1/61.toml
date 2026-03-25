@@ -1,0 +1,49 @@
+id = "2.1.61"
+numericId = "21061"
+
+[en]
+simple = """
+The words @deva[सत्] "good/virtuous," @deva[महत्] "great," @deva[परम] "supreme," @deva[उत्तम] "best," and @deva[उत्कृष्ट] "excellent" compound with a noun denoting a person worthy of respect to form @deva[तत्पुरुष].
+
+**Examples:**
+- @deva[सत्पुरुषः] "a good/virtuous person"
+- @deva[महापुरुषः] "a great person"
+- @deva[परमपुरुषः] "the supreme person"
+- @deva[उत्तमपुरुषः] "the best person"
+- @deva[उत्कृष्टपुरुषः] "an excellent person"
+
+**Restriction:** The second member must denote someone deserving of respect. @deva[उत्कृष्टः गौः कर्दमात्] "the ox was pulled out of the mud" — here @deva[उत्कृष्ट] means "pulled out," not "excellent," and the ox is not an object of special respect, so no compound.
+"""
+
+standard = """
+@deva[सत्-महत्-परम-उत्तम-उत्कृष्टाः] + @deva[आदरणीयवाचक] → @deva[तत्पुरुष] in @deva[समानाधिकरण] — @deva[सन्महत्परमोत्तमोत्कृष्टाः पूजार्थम्].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[सत्पुरुषः] "a virtuous person"
+- @deva[महापुरुषः] "a great person"
+- @deva[परमपुरुषः] "the supreme person"
+- @deva[उत्तमपुरुषः] "the best person"
+- @deva[उत्कृष्टपुरुषः] "an excellent person"
+
+**@deva[पूजार्थम्] condition:** The compound must express respect or veneration. The second member should denote a person or entity worthy of honor.
+
+**Counter-example:** @deva[उत्कृष्टः गौः कर्दमात्] "the ox pulled out of mud" — @deva[उत्कृष्ट] here means "extracted" (from @deva[उद्] + @deva[कृष्] + @deva[क्त]), not "excellent." No compound.
+
+**Five specific words:** These five laudatory qualifiers are listed; other praise-words like @deva[श्रेष्ठ] or @deva[प्रधान] do not automatically qualify under this rule (they may compound under @ref[2.1.57]'s @deva[बहुलम्]).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[सन्महत्परमोत्तमोत्कृष्टाः पूजार्थम्] — these five laudatory words compound with a @deva[पूजार्ह] (respect-worthy) @deva[सुबन्त] as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**Why listed separately from @ref[2.1.57]?** @ref[2.1.57] operates under @deva[बहुलम्]. This rule provides specific, non-@deva[बहुलम्] authority for these five praise-words — ensuring their compounds are regular and predictable.
+
+**@deva[पूजार्थम्] — respect condition:** The @deva[काशिका] restricts the second member to entities worthy of respect. @deva[उत्कृष्टः गौः कर्दमात्] fails on two counts: (1) @deva[उत्कृष्ट] is used in its literal root-sense "pulled up," not its laudatory sense "excellent"; (2) the context does not involve respect or veneration.
+
+**@deva[महत्] → @deva[महा]:** In compound, @deva[महत्] takes the form @deva[महा] by @ref[6.3.46] (@deva[महान् वा]). Hence @deva[महापुरुषः], not @deva[महत्पुरुषः].
+
+**Relation to @ref[2.1.62]:** The next rule handles laudatory second members (@deva[वृन्दारक], @deva[नाग], @deva[कुञ्जर]) — praise expressed by the second word rather than the first. Together, @ref[2.1.61]–@ref[2.1.62] cover both directions of laudatory @deva[कर्मधारय].
+"""

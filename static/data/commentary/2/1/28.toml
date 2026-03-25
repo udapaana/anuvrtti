@@ -1,0 +1,42 @@
+id = "2.1.28"
+numericId = "21028"
+
+[en]
+simple = """
+A time-word in the accusative **optionally** compounds with a past participle (@deva[क्त]-ending word) to form @deva[तत्पुरुष] — but only when the time-word marks a point in time, not a duration.
+
+**Examples:**
+- @deva[मासप्रभृतः चन्द्रमाः] "the moon that inaugurates the month" — the month is the time-point at which something begins
+- @deva[अहस्सङ्क्रान्ताः] "shifted into daytime" — certain @deva[मुहूर्त] periods that transition between day and night
+
+**Not this rule:** @deva[मुहूर्तसुखम्] "pleasure lasting a moment" — that expresses duration (how long the pleasure lasts), which is covered by the next rule (@ref[2.1.29]) instead.
+"""
+
+standard = """
+@deva[कालवाचक] (@deva[द्वितीयान्त]) + @deva[क्तान्त] → @deva[विभाषा] @deva[तत्पुरुष], excluding @deva[अत्यन्तसंयोग] (duration) — @deva[कालाः क्तेनाऽत्यन्तसंयोगे].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[मासप्रभृतः चन्द्रमाः] "the moon marking the month's beginning"
+- @deva[अहस्सङ्क्रान्ताः] "shifted into daytime" — six @deva[मुहूर्त] periods that seasonally shift between day and night (@deva[चर] @deva[मुहूर्त])
+- @deva[रात्रिसङ्क्रान्ताः] "shifted into nighttime"
+
+**Exclusion of @deva[अत्यन्तसंयोग]:** @deva[अत्यन्तसंयोग] means unbroken connection throughout a period — i.e., duration. Such cases go to @ref[2.1.29] instead. The distinction: @deva[मासप्रभृतः] marks a time-point ("at the month"); @deva[मुहूर्तसुखम्] marks a span ("for a @deva[मुहूर्त]").
+
+**@deva[कालाः]:** Time-words here are actual temporal nouns (@deva[अहन्], @deva[रात्रि], @deva[मास], etc.), not words that merely imply time.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4]; @deva[क्तेन] from @ref[2.1.24].
+
+@deva[कालाः क्तेनाऽत्यन्तसंयोगे] — time-words in @deva[द्वितीया] optionally compound with @deva[क्तान्त] as @deva[तत्पुरुष], provided the meaning is not @deva[अत्यन्तसंयोग] (continuous duration).
+
+**@deva[अत्यन्तसंयोग] vs point-in-time:** The @deva[काशिका] distinguishes two temporal relations: (1) point-in-time — the time-word identifies when something happened (@deva[मासप्रभृतः]); (2) duration — the time-word identifies how long something lasted (@deva[मुहूर्तसुखम्]). This rule covers (1); @ref[2.1.29] covers (2).
+
+**Why separate from @ref[2.1.24]?** @ref[2.1.24] listed seven specific @deva[क्तान्त] words (@deva[श्रित], @deva[गत], etc.). Time-word compounds use @deva[क्तान्त] words not in that list (@deva[प्रभृत], @deva[सङ्क्रान्त]). This rule extends @deva[द्वितीया] + @deva[क्तान्त] compounding to all @deva[कालवाचक] first members.
+
+**@deva[कालाः] — scope:** The @deva[काशिका] takes @deva[कालाः] as actual time-denoting nouns, not @deva[कालवत्] (time-related by @deva[तद्धित]). So @deva[अहन्], @deva[रात्रि], @deva[मास], @deva[संवत्सर] qualify; derived forms do not.
+
+**@deva[चर]/\u200b@deva[अचर] @deva[मुहूर्त]:** The @deva[अहस्सङ्क्रान्त]/\u200b@deva[रात्रिसङ्क्रान्त] examples refer to six @deva[मुहूर्त] periods whose day/night assignment shifts with the seasons — a technical astronomical usage that illustrates point-in-time compounding.
+"""

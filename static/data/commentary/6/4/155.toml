@@ -1,0 +1,15 @@
+id = "6.4.155"
+numericId = "64155"
+
+[en]
+simple = """
+Before the superlative (@deva[इष्ठ]), abstract-noun (@deva[इमन्]), and comparative (@deva[ईयस्]) suffixes, the final vowel of the stem together with any consonant that follows it is dropped. So from @deva[पटु] ("clever") the @deva[उ] and any following consonant are dropped: @deva[पटिष्ठः] ("most clever"), @deva[पटिमा] ("cleverness"), @deva[पटीयान्] ("more clever"). Similarly @deva[लघु] ("light") gives @deva[लघिष्ठः], @deva[लघिमा], @deva[लघीयान्].
+"""
+
+standard = """
+This rule specifies elision of the @deva[टि] (final vowel plus following consonant, if any) of the @deva[अङ्ग] before the @deva[तद्धित] affixes @deva[इष्ठ], @deva[इमन्], and @deva[ईयस्]. The @deva[टि] is defined by @ref[1.1.64] as the portion of a stem beginning with its last vowel. For @deva[पटु]: @deva[टि] = @deva[उ], elision yields @deva[पट्-] + @deva[इष्ठ] → @deva[पटिष्ठः]; + @deva[इमन्] → @deva[पटिमा]; + @deva[ईयस्] → @deva[पटीयान्]. For @deva[लघु]: @deva[लघिष्ठः], @deva[लघिमा], @deva[लघीयान्]. The rule thus systematically shortens @deva[u]-final adjective stems before degree suffixes.
+"""
+
+advanced = """
+The @deva[टि] (final vowel plus any following consonant) of the stem is elided before @deva[इष्ठ], @deva[इमन्], and @deva[ईयस्]. From @deva[पटु]: @deva[पटिष्ठः], @deva[पटिमा], @deva[पटीयान्]. From @deva[लघु]: @deva[लघिष्ठः], @deva[लघिमा], @deva[लघीयान्]. @[vārtika]: a @[prātipadika] followed by the causative @deva[णि] undergoes the same changes as it would before @deva[इष्ठ]: (1) @deva[पुंवद्भाव] — feminine → masculine: @deva[एमीमाचष्टे] → @deva[एतयति], @deva[श्येतयति] (@deva[इष्ठ] belongs to @deva[तसिलादि] affixes, causing masculation by @ref[6.3.35]). (2) @deva[रभाव] — @deva[ऋ] → @deva[र]: @deva[पृथुमाचष्टे] → @deva[प्रथयति], @deva[म्रदयति] (see @ref[6.4.161]). (3) @deva[टिलोप] — @deva[पटुमाचष्टे] = @deva[पटयति], @deva[लघयति] (by this rule). (4) @deva[यणादिपर] — application of @ref[6.4.156]: @deva[स्थूलमाचष्ट] → @deva[स्थवयति]. According to the school of Bhāradvāja, three additional changes apply: (5) @deva[विन्]/@deva[मतुप्] → @deva[लृक्]: @deva[स्रग्विणमाचष्टे] = @deva[स्रजयति], @deva[वसुमन्तंमाचष्टे] = @deva[वसयति] (see @ref[5.3.65]). (6) @deva[कन्] substitution for @deva[युवन्] and @deva[अल्प] (by @ref[5.3.64]): @deva[युवानमाचष्टे] or @deva[अल्पमाचष्टे] → @deva[कनयति]. (7) @deva[प्रादि] substitution (by @ref[6.4.157]): @deva[प्रियमाचष्टे] → @deva[प्रापयति].
+"""

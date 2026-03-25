@@ -1,0 +1,43 @@
+id = "2.2.30"
+numericId = "22030"
+
+[en]
+simple = """
+In a compound, the @deva[उपसर्जन] "subordinate member" (as defined by @ref[1.2.43]) is placed first. The @deva[उपसर्जन] is the grammatically dependent element — in a genitive compound, it is the possessor; in a @deva[बहुव्रीहि], it is the qualifier.
+
+**Example:**
+- @deva[राजपुरुषः] "the king's man" — @deva[राजन्] is the @deva[उपसर्जन] (subordinate), so it goes first. Not *@deva[पुरुषराजः].
+
+This rule establishes the general word order inside compounds.
+"""
+
+standard = """
+@deva[उपसर्जनं पूर्वम्] — the @deva[उपसर्जन] is placed first in a compound.
+
+**Rule type — @deva[विधि] (ordering rule):** Governs member-placement in all compound types.
+
+**@deva[उपसर्जन] defined by @ref[1.2.43]:** The word exhibited in the nominative case (@deva[प्रथमानिर्दिष्ट]) in the compounding @[sūtra] is @deva[उपसर्जन] — the subordinate member. In @deva[षष्ठ्यन्त] + @deva[सुबन्त] → @deva[तत्पुरुष] (@ref[2.2.8]), the @deva[षष्ठ्यन्त] word is displayed in the @[sūtra], so it is @deva[उपसर्जन] and goes first: @deva[राजपुरुषः].
+
+**Example:** @deva[राजपुरुषः] "king's man" — @deva[राजन्] (genitive) is @deva[उपसर्जन]; @deva[पुरुष] (head noun) is @deva[प्रधान].
+
+**Application across compound types:**
+- @deva[तत्पुरुष]: Genitive/case-word first — @deva[राजपुरुषः]
+- @deva[बहुव्रीहि]: Qualifier first — @deva[चित्रगुः]
+- @deva[अव्ययीभाव]: @deva[अव्यय] first — @deva[उपकृष्णम्]
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समासे] implied.
+
+@deva[उपसर्जनं पूर्वम्] — the @deva[उपसर्जन] (@ref[1.2.43]) is placed as the first member (@deva[पूर्वनिपात]) in a compound.
+
+**@ref[1.2.43] — @deva[प्रथमानिर्दिष्टं समास उपसर्जनम्]:** The word displayed in the nominative (@deva[प्रथमा]) in the @[sūtra] that authorizes the compound is @deva[उपसर्जन]. In @ref[2.2.8] (@deva[षष्ठी]), the @deva[षष्ठ्यन्त] word is the nominative-displayed element. In @ref[2.1.24] (@deva[द्वितीयाश्रितातीत...]]), the @deva[द्वितीयान्त] word is nominative-displayed.
+
+**Overrides and exceptions:** Several earlier rules override this default order:
+- @ref[2.2.1]–@ref[2.2.5] specifically place certain words first despite @ref[2.2.8]'s default
+- @ref[2.2.33]–@ref[2.2.38] modify @deva[द्वन्द्व] ordering (where both members are equally @deva[उपसर्जन])
+
+**Scope — all compound types:** This rule applies across @deva[अव्ययीभाव], @deva[तत्पुरुष], @deva[बहुव्रीहि], and @deva[द्वन्द्व]. In @deva[द्वन्द्व], where both members are co-equal, further ordering rules (@ref[2.2.33]–@ref[2.2.38]) determine which goes first.
+
+**General principle of Sanskrit compounds:** The subordinate/qualifying element precedes the principal/head element. This mirrors the broader Sanskrit tendency of modifier-before-head word order.
+"""

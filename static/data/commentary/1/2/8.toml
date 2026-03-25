@@ -1,0 +1,54 @@
+id = "1.2.8"
+numericId = "12008"
+
+[en]
+simple = """
+After the roots @deva[रुद्] "to weep," @deva[विद्] "to know," @deva[मुष्] "to steal," @deva[ग्रह्] "to seize," @deva[स्वप्] "to sleep," and @deva[प्रच्छ्] "to ask," both the gerund affix @deva[क्त्वा] ("having done X") and the desiderative affix @deva[सन्] ("wishing to do X") are treated as @deva[कित्]. This blocks @deva[गुण] of the root vowel.
+
+**@deva[क्त्वा] examples:**
+- @deva[रुदित्वा] "having wept"
+- @deva[गृहीत्वा] "having seized" (the @deva[र] and @deva[ह] swap by @deva[सम्प्रसारण])
+- @deva[सुप्त्वा] "having slept"
+
+**@deva[सन्] examples:**
+- @deva[रुरुदिषति] "he wishes to weep"
+- @deva[जिघृक्षति] "he wishes to seize"
+- @deva[सुषुप्सति] "he wishes to sleep"
+"""
+
+standard = """
+After @deva[रुद्], @deva[विद्], @deva[मुष्], @deva[ग्रह्], @deva[स्वप्], and @deva[प्रच्छ्], both @deva[क्त्वा] and @deva[सन्] are @deva[कित्].
+
+**@deva[क्त्वा] examples:**
+- @deva[रुदित्वा] "having wept," @deva[विदित्वा] "having known," @deva[मुषित्वा] "having stolen"
+- @deva[गृहीत्वा] "having seized" (@deva[सम्प्रसारण] by @ref[6.1.16])
+- @deva[सुप्त्वा] "having slept" (@deva[सम्प्रसारण])
+- @deva[पृष्ट्वा] "having asked" (@deva[सम्प्रसारण])
+
+**@deva[सन्] (desiderative) examples:**
+- @deva[रुरुदिषति] "he wishes to weep"
+- @deva[विविदिषति] "he wishes to know"
+- @deva[जिघृक्षति] "he wishes to seize"
+- @deva[सुषुप्सति] "he wishes to sleep"
+- @deva[पिपृच्छिषति] "he wishes to ask"
+
+**Why needed?** For @deva[रुद्], @deva[विद्], @deva[मुष्]: @ref[1.2.26] would make @deva[क्त्वा]/@deva[सन्] only optionally @deva[कित्]; this rule makes them obligatorily so. For @deva[ग्रह्], @deva[स्वप्], @deva[प्रच्छ्]: only this rule provides @deva[कित्] treatment.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5].
+
+@deva[रुदविदमुषग्रहस्वपप्रच्छः सनः क्त्वाच] — @deva[क्त्वा] and @deva[सन्] are @deva[कित्] after these six roots.
+
+**This expands from @ref[1.2.7]** (which covered only @deva[क्त्वा]) by adding @deva[सन्] to the @deva[कित्] treatment.
+
+**Root-by-root analysis:**
+- **@deva[रुद्], @deva[विद्], @deva[मुष्]:** @ref[1.2.26] makes @deva[कित्] optional for roots with @deva[उपधा] @deva[इक्] + final @deva[झल्]. This rule overrides with obligatory @deva[कित्].
+- **@deva[ग्रह्]:** Not covered by @ref[1.2.26]. Only this rule provides @deva[कित्]. @deva[कित्] triggers @deva[सम्प्रसारण] (@ref[6.1.16]): @deva[ग्रह्] → @deva[गृह्] → @deva[गृहीत्वा].
+- **@deva[स्वप्]:** @deva[अनिट्] root, so @deva[क्त्वा] is naturally @deva[कित्] (by @ref[1.2.18] logic). But @deva[सन्] needs this rule. @deva[सम्प्रसारण]: @deva[स्वप्] → @deva[सुप्] → @deva[सुषुप्सति].
+- **@deva[प्रच्छ्]:** @deva[अनिट्] for @deva[क्त्वा] but takes @deva[इट्] before @deva[सन्] (by @ref[7.2.75]). @deva[सम्प्रसारण]: @deva[प्रच्छ्] → @deva[पृच्छ्].
+
+**Effect of @deva[कित्] on @deva[सन्]:** Blocks @deva[गुण], preserving the root vowel in the desiderative. Additionally triggers @deva[सम्प्रसारण] where applicable (@ref[6.1.16]).
+
+**@deva[सन्] note:** The @deva[न्] of @deva[सन्] is @deva[इत्] — the operative affix is @deva[स]. The desiderative reduplicates the root: @deva[रुरुदिषति], @deva[जिघृक्षति], etc.
+"""

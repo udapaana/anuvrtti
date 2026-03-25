@@ -1,0 +1,47 @@
+id = "2.2.15"
+numericId = "22015"
+
+[en]
+simple = """
+A word in the genitive case does **not** form a compound with words ending in @deva[तृच्] or @deva[अक] (@deva[ण्वुल्]) — both agent-noun affixes — when the genitive expresses the agent. The result is that agent + agent-noun compounds are blocked.
+
+**Examples (no compound):**
+- @deva[भवतः शायिका] "your lying down" — @deva[भवतः] (agent in genitive) + @deva[शायिका] (agent-noun)
+- @deva[भवतः आशिका] "your eating"
+- @deva[भवतः अग्रगामिका] "your going in front"
+
+When the genitive expresses the object instead, compounding is allowed: @deva[इक्षुभक्षिका] "sugarcane-eater."
+"""
+
+standard = """
+@deva[कर्तरि षष्ठी] + @deva[तृजन्त]/@deva[अकन्त] → no compound — @deva[कर्तरि च तृजन्तेऽकन्ते].
+
+**Rule type — @deva[प्रतिषेध] (prohibition):** Blocks @ref[2.2.8] when the genitive has agent-force and the second member is a @deva[तृच्]- or @deva[अक]-derived agent noun.
+
+**Examples:**
+- @deva[भवतः शायिका] — @deva[षष्ठी] = @deva[कर्तृ] (the agent who lies down)
+- @deva[भवतः आशिका] — @deva[षष्ठी] = @deva[कर्तृ]
+- @deva[भवतः अग्रगामिका] — @deva[षष्ठी] = @deva[कर्तृ]
+
+**@deva[अक] affixes:** The @deva[अक] designation covers @deva[ण्वुल्], @deva[वुञ्], @deva[वुन्] — affixes whose @deva[वु] element is replaced by @deva[अक] by @ref[7.1.1].
+
+**@deva[कर्तरि] condition:** The prohibition applies only when the @deva[षष्ठी] expresses the agent. When it expresses the object (@deva[कर्मन्]): @deva[इक्षुभक्षिकाम्] "a sugarcane-eating (woman)" — compounding works under @ref[2.2.8].
+
+**Role of @deva[तृच्]:** Since @deva[तृच्] always denotes the agent, there is no real case where the genitive is @deva[कर्तृ] governing another @deva[कर्तृ]-word. The mention of @deva[तृच्] here serves subsequent rules that reference it.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[षष्ठी] from @ref[2.2.8]; @deva[न] from @ref[2.2.10]; @deva[तत्पुरुषः] from @ref[2.1.22].
+
+@deva[कर्तरि च तृजन्तेऽकन्ते] — @deva[षष्ठी] expressing @deva[कर्तृ] does not compound with @deva[तृच्]- or @deva[अक]-ending words.
+
+**Agent-genitive source:** @ref[2.3.65] assigns @deva[षष्ठी] to the @deva[कर्तृ] of a @deva[कृदन्त] in certain constructions. When the genitive carries this agent-force, it cannot compound with the agent-noun it governs.
+
+**@deva[अक] = @deva[ण्वुल्] etc.:** By @ref[7.1.1] (@deva[युवोरनाकौ]), the @deva[वु] in @deva[ण्वुल्], @deva[वुञ्], @deva[वुन्] is replaced by @deva[अक]. These affixes create agent nouns: @deva[शायिका] from @deva[शी] + @deva[ण्वुल्] + @deva[टाप्].
+
+**@deva[तृच्] — theoretical inclusion:** The @deva[काशिका] notes that @deva[तृच्] inherently denotes the agent, so a genitive that is itself @deva[कर्तृ] governing a @deva[तृच्]-word creates a redundancy — the agent would be expressed twice. The @@deva[द]eva[@deva[तृच्]] mention in this @[sūtra] is primarily for the purpose of @deva[अनुवृत्ति] into following rules (like @ref[2.2.16]).
+
+**Contrast with @ref[2.2.14]:** @ref[2.2.14] blocks object-genitive compounds generally. @ref[2.2.15] blocks agent-genitive compounds specifically with @deva[तृच्]/@deva[अक] words. Together, they ensure that when the genitive has a @deva[कारक] force (agent or object), compounding is restricted with agent-nouns.
+
+**Last rule in prohibition series:** @ref[2.2.15] concludes the series of prohibitions (@ref[2.2.10]–@ref[2.2.15]) that restrict @ref[2.2.8]. After this, @ref[2.2.16] continues with further compound-type rules.
+"""

@@ -1,0 +1,65 @@
+id = "1.3.93"
+numericId = "13093"
+
+[en]
+simple = """
+The root @deva[क्लिप्] "to be fit, to be suitable" optionally takes @deva[परस्मैपद] (active endings) with the periphrastic future (@deva[लुट्]), the simple future/conditional (@deva[स्य]), and the desiderative (@deva[सन्]).
+
+**Both are correct:**
+- Periphrastic future: @deva[कल्प्तासि] / @deva[कल्प्तासे] "you will be fit"
+- Simple future: @deva[कल्प्स्यति] / @deva[कल्प्स्यते] "he will be fit"
+- Desiderative: @deva[चिक्लिप्सति] / @deva[चिक्लिप्सते] "he wishes to be fit"
+
+@deva[क्लिप्] is one of the 5 @deva[वृतादि] roots. The previous rule (@ref[1.3.92]) already allows @deva[परस्मैपद] with @deva[स्य] and @deva[सन्]. This rule adds the periphrastic future (@deva[लुट्]) — giving @deva[क्लिप्] the widest range of tense-based optionality among the @deva[द्युतादि] roots.
+"""
+
+standard = """
+@deva[क्लिप्] optionally takes @deva[परस्मैपद] with @deva[लुट्] (periphrastic future), @deva[स्य] (future/conditional), and @deva[सन्] (desiderative) — @deva[विभाषा].
+
+**Both valid:**
+- @deva[लुट्]: @deva[कल्प्तासि] / @deva[कल्प्तासे] "you will be fit"
+- @deva[लृट्]: @deva[कल्प्स्यति] / @deva[कल्प्स्यते] "he will be fit"
+- @deva[लृङ्]: @deva[अकल्प्स्यत्] / @deva[अकल्प्स्यत] "he would have been fit"
+- @deva[सन्]: @deva[चिक्लिप्सति] / @deva[चिक्लिप्सते] "he wishes to be fit"
+
+**Rule type — @deva[विभाषा] extending @ref[1.3.92]:** @deva[क्लिप्] is one of the @deva[वृतादि] roots, so @ref[1.3.92] already covers @deva[स्य] and @deva[सन्]. This rule adds @deva[लुट्] — the periphrastic future.
+
+**Cumulative coverage for @deva[क्लिप्]:**
+- @deva[लुङ्]: optional by @ref[1.3.91]
+- @deva[स्य] (@deva[लृट्]/@deva[लृङ्]): optional by @ref[1.3.92]
+- @deva[सन्]: optional by @ref[1.3.92]
+- @deva[लुट्]: optional by this rule
+- All other tenses: @deva[आत्मनेपद] only
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78].
+
+@deva[क्लिपः लुटि च] — @deva[क्लिप्] optionally takes @deva[परस्मैपद] with @deva[लुट्] (and @deva[स्य]/@deva[सन्] from @ref[1.3.92]).
+
+**Final narrowing:** This is the most specific rule in the @ref[1.3.91]–@ref[1.3.93] tapering:
+- @ref[1.3.91]: 22 roots × @deva[लुङ्]
+- @ref[1.3.92]: 5 roots × @deva[स्य]/@deva[सन्]
+- @ref[1.3.93] (this): 1 root × @deva[लुट्]
+
+**Cumulative @deva[पद]-optionality for @deva[क्लिप्]:**
+- @deva[लुङ्] (aorist): @ref[1.3.91]
+- @deva[लृट्] (simple future): @ref[1.3.92] via @deva[स्य]
+- @deva[लृङ्] (conditional): @ref[1.3.92] via @deva[स्य]
+- @deva[सन्] (desiderative): @ref[1.3.92]
+- @deva[लुट्] (periphrastic future): @ref[1.3.93] (this)
+- Remaining @deva[लकार]s (@deva[लट्], @deva[लोट्], @deva[लिट्], @deva[विधिलिङ्], @deva[आशीर्लिङ्]): @deva[आत्मनेपद] only by @ref[1.3.12]
+
+**End of @deva[पद]-assignment (@ref[1.3.12]–@ref[1.3.93]):** This rule closes the entire @deva[आत्मनेपद]/@deva[परस्मैपद] block that began at @ref[1.3.12]. The system covers:
+1. @ref[1.3.12]: marker-based @deva[आत्मनेपद]
+2. @ref[1.3.13]–@ref[1.3.16]: voice-based @deva[आत्मनेपद]
+3. @ref[1.3.17]–@ref[1.3.71]: prefix + root + meaning overrides
+4. @ref[1.3.72]–@ref[1.3.77]: @deva[स्वार्थ] condition (@deva[उभयपदिन्])
+5. @ref[1.3.78]: @deva[शेष] default (@deva[परस्मैपद])
+6. @ref[1.3.79]–@ref[1.3.85]: @deva[परस्मैपद] overrides
+7. @ref[1.3.86]–@ref[1.3.89]: causative @deva[पद] rules
+8. @ref[1.3.90]: denominative @deva[क्यष्]
+9. @ref[1.3.91]–@ref[1.3.93] (ending here): tense-restricted optionalities
+
+**Transition:** @ref[1.4.1] begins the @deva[संज्ञा] section for sentence-level terms (@deva[आ कडारात् एका संज्ञा]).
+"""

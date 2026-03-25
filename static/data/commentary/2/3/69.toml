@@ -1,0 +1,53 @@
+id = "2.3.69"
+numericId = "23069"
+
+[en]
+simple = """
+The genitive (@deva[षष्ठी]) is NOT used for the agent or object when the governing word ends in certain suffixes. Instead, the agent takes the instrumental (@deva[तृतीया]) and the object takes the accusative (@deva[द्वितीया]), just as they would with a finite verb.
+
+The blocked suffix categories are: active participles (like @deva[पचन्], 'cooking'), desiderative forms (like @deva[बुभुक्षुः], 'wishing to eat'), indeclinable @deva[कृत्]-forms (like @deva[कृत्वा], 'having done'), past participles (@deva[क्त] and @deva[क्तवतु]), and agent nouns in @deva[तृन्] (like @deva[कर्ता], 'doer').
+
+**Examples:**
+- @deva[ओदनं पचन्] — 'cooking rice' (accusative @deva[ओदनम्], not genitive *@deva[ओदनस्य])
+- @deva[कटं कृत्वा] — 'having made a mat' (accusative @deva[कटम्], not genitive *@deva[कटस्य])
+- @deva[ओदनं भुक्तवान्] — 'one who ate rice' (accusative, not genitive)
+
+This rule matters because @ref[2.3.65] broadly permits the genitive with @deva[कृत्]-words. This rule carves out the major exceptions — forms that behave more like finite verbs and therefore take the same cases as finite verbs.
+"""
+
+standard = """
+**Rule type:** @[niṣedha] (prohibition), restricting @ref[2.3.65].
+
+@deva[षष्ठी] is NOT used for @deva[कर्तृ] or @deva[कर्मन्] when the governing word ends in any of the following:
+
+1. **@deva[ल्]** — active participles (@deva[शतृ], @deva[शानच्], @deva[कानच्], @deva[क्वसु], @deva[कि], @deva[किन्]): @deva[ओदनं पचन्], @deva[ओदनं पचमानः]
+2. **@deva[उ]** — desiderative forms (@ref[3.2.168]): @deva[कटं चिकीर्षुः] ('desiring to make a mat'), @deva[ओदनं बुभुक्षुः] ('desiring to eat rice')
+3. **@deva[उक्]** — forms per @ref[3.2.154]: @deva[आगामुकं वाराणसीम्] ('about to come to @[vārāṇasī]')
+4. **@deva[कृत्]-@deva[अव्यय]** — indeclinable @deva[कृत्]-forms (@deva[क्त्वा], @deva[ल्यप्], @deva[तुमुन्]): @deva[कटं कृत्वा], @deva[ओदनं भुक्त्वा]
+5. **@deva[निष्ठा]** — @deva[क्त] and @deva[क्तवतु]: @deva[ओदनं भुक्तवान्], @deva[देवदत्तेन कृतम्]
+6. **@deva[खलर्थ]** — suffixes per @ref[3.3.126]: @deva[ईषत्करो भवता कटः]
+7. **@deva[तृन्]** — the agent-noun suffix: @deva[कर्ता कटान्] ('he will make mats'), @deva[वदिता जनापवादान्] ('he will speak slanders')
+
+**Instead:** @deva[कर्तृ] → @deva[तृतीया], @deva[कर्मन्] → @deva[द्वितीया] — mirroring finite-verb case patterns.
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]), @deva[कर्तृ/कर्मन्] (from @ref[2.3.65]).
+
+This rule is the primary @[niṣedha] (prohibition) debarring @ref[2.3.65]. It blocks @deva[षष्ठी] for @deva[कर्तृ] and @deva[कर्मन्] with a carefully enumerated set of @deva[कृत्] affixes. The common thread: these forms behave syntactically like finite verbs — they govern their arguments directly rather than through nominal modification.
+
+The enumeration can be summarized as @deva[ल्], @deva[उ], @deva[उक्] (collectively sometimes called @deva[लोक]), plus @deva[कृत्]-@deva[अव्यय], @deva[निष्ठा], @deva[खलर्थ], and @deva[तृन्]. Each category has its own defining @[sūtra] in the @deva[कृत्]-section of @[adhyāya] 3.
+
+**Exceptions to this prohibition:**
+- @ref[2.3.67]: @deva[क्त] in present-tense (@deva[वर्तमान]) sense allows @deva[षष्ठी] for @deva[कर्तृ]
+- @ref[2.3.68]: @deva[क्त] in @deva[अधिकरण] sense allows @deva[षष्ठी]
+- @ref[2.3.71]: @deva[कृत्य] forms allow optional @deva[षष्ठी] for @deva[कर्तृ]
+
+**@[vārttika] 1:** @deva[तोसुन्] and @deva[कसुन्] (@ref[3.4.16]–17) are exceptions — they allow @deva[षष्ठी]: @deva[पुरा सूर्यस्योदेतोः] ('before the rising of the sun').
+
+**@[vārttika] 2:** @deva[कामुक] in @deva[भाषा] (colloquial language) takes @deva[षष्ठी]: @deva[दास्याः कामुकः] ('one desirous of the slave-girl').
+
+**@[vārttika] 3:** With @deva[द्विष्] + @deva[शतृ], optionality applies: @deva[चौरं द्विषन्] or @deva[चौरस्य द्विषन्] ('hating the thief').
+
+Cross-reference @ref[2.3.65] for the general rule being restricted, and @ref[2.3.70] for further prohibitions with @deva[अक्] and @deva[इन्].
+"""

@@ -1,0 +1,27 @@
+id = "8.3.61"
+numericId = "83061"
+
+[en]
+simple = """
+When forming a desiderative verb, the initial s of the reduplicated syllable changes to @[ṣ] only for the root stu and for causatives of roots that originally begin with @[ṣ]. This prevents the change from over-applying to other roots.
+"""
+
+standard = """
+In @deva[सन्] (desiderative) reduplication, the @deva[स्] of the reduplicate becomes @deva[ष्] only for @deva[स्तु] and causatives of @deva[ष]-initial roots, as specified by @ref[8.3.61]. Examples: @deva[तुष्टूषति] (desires to praise), @deva[सिषेवयिषति] (desires to cause to serve). The change is blocked for others like @deva[सिसिक्षति], preventing unwarranted retroflexion.
+"""
+
+advanced = """
+@deva[ष्] replaces @deva[स्] after @deva[इ] or @deva[उ] in the @[abhyasa] of a desiderative, provided that the @deva[स्] of @deva[सन्] has been changed to @deva[ष्]—but only for @deva[स्तु] and for causatives of roots listed with initial @deva[ष्] in the @[dhatupatha]. The rule targets the @deva[स्] that substitutes for the root's @deva[ष्], not the affix @deva[स्] itself (no affix @deva[स्] can follow a reduplicate syllable). From @deva[स्तु]: @deva[तुष्टूषति]—the @deva[स] of @deva[सन्] becomes @deva[ष] by the preceding @[sutra], and consequently the reduplicate @deva[उ] triggers @deva[षत्व] in the root @deva[स्] as well. Causative-desiderative examples with @deva[ष]-initial @[dhatupatha] roots: @deva[सिषेवयिषति], @deva[सिषिञ्जयिषति], @deva[सुष्वापयिषति] (in the last, @deva[व्] becomes @deva[उ] by @ref[7.4.67]).
+
+Though @ref[8.3.59] could independently produce this @deva[षत्व], the separate statement of this rule marks it as a @[niyama]: the change applies only to @deva[स्तु] and to causative-desideratives, excluding all others. Counterexamples: @deva[सिसिक्षति] from @deva[षिच] @deva[क्षरणे] (@[tudadi] 140)—despite the @[dhatupatha] @deva[ष], the expected @deva[सिषिक्षति] by @ref[8.3.59] is blocked by this @[niyama]. Similarly @deva[सुसूषते] from @deva[षूङ्] @deva[प्राणिप्रसवे] (@[divadi] 24) and @deva[सुसूषति] from @deva[षू] @deva[प्रेरणे] (@[tudadi] 115).
+
+The word @deva[एव] in the @[sutra] ensures that the restriction scopes over the roots (@deva[स्तु] and causatives only) rather than over the conditioning affix (@deva[षण्] only). Under the latter reading, @deva[तुष्टाव] could not be derived, and @deva[सिसिक्षति] would incorrectly undergo the change.
+
+The @[sutra] uses @deva[षण्] (the changed form of @deva[सन्]) rather than @deva[सन्] to ensure the @[niyama] applies only when the affix has actually undergone @deva[षत्व] (@deva[विनत] in @[pratisakhya] terminology). If @deva[सन्] had been used, the restriction would extend to all desideratives regardless of whether @deva[सन्] was changed—blocking @deva[षत्व] in forms like @deva[सुषुप्सति] (where @deva[सन्] is @deva[कित्] by @ref[1.2.8] with samprasarana by @ref[6.1.15]) and @deva[तिष्ठासति].
+
+The @[anubandha] @deva[म्] on @deva[षण्] restricts the rule to the desiderative affix @deva[ष] specifically, not @deva[ष] in general. Without it, the Vedic perfect @deva[सुषुपिषे] (from @deva[स्वप्], with @deva[थास्] for @deva[थल्] as a @[chhandas] irregularity, @deva[कित्] by @ref[1.2.5], samprasarana by @ref[6.1.15], @deva[इट्] by @ref[7.2.13], elision of @deva[य्] by @ref[8.3.19]) would be problematic: the reduplicate @deva[सु → षु] by @ref[8.3.59] would be blocked if @deva[ष] in general triggered the @[niyama].
+
+The term @deva[अभ्यासात्] scopes the restriction to @deva[षत्व] triggered by the @deva[इ]/​@deva[उ] of an @[abhyasa], not by an @[upasarga]. With an @[upasarga]: @deva[अभिषिषिक्षति]; without: @deva[सिसिक्षति]. The @[abhyasa] is further qualified as one produced by @deva[सन्]-reduplication specifically, so a @deva[यङ्]-reduplicate followed by @deva[षण्] does not trigger the @[niyama]—the @deva[यङ्] desiderative of @deva[स्वप्] is @deva[सोषुप्य] (@ref[6.1.19]), yielding @deva[सोषुपिषते] with @deva[इट्] augment, elision of @deva[अ] by @ref[6.4.48], and elision of @deva[य्] by @ref[6.4.49]. (Some argue this is superfluous since @deva[षत्व] is @[antaranga] while the @[niyama] is @[bahiranga].)
+
+The word @deva[अभ्यासात्] also ensures the restriction targets only @deva[षत्व] caused by the @[abhyasa]'s vowel, not by a @[dhatu]'s vowel. In @deva[प्रतिषिषति] and @deva[अधीषिषति] (desideratives of @deva[इ] @deva[बोधने], with reduplication by @ref[6.1.2] and @deva[अ → इ] by @ref[7.4.79]), the sequence @deva[इसिस] first undergoes @deva[षत्व] of the final @deva[स] via the @[abhyasa] @deva[इ] (@ref[8.3.59]), giving @deva[इसिष]; then, since this @[sutra]'s restriction does not apply, the root @deva[इ] independently triggers @deva[षत्व] in the @[abhyasa], giving @deva[इषिष]. Without @deva[अभ्यासात्], the @[sutra] would restrict all @deva[षत्व] to @deva[स्तु] and causatives, blocking the @[abhyasa] change in non-causative forms like @deva[इसिष].
+"""

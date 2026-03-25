@@ -1,0 +1,47 @@
+id = "1.1.52"
+numericId = "11052"
+
+[en]
+simple = """
+When a rule prescribes a substitute for a multi-letter term, the substitute replaces only the last letter of that term — not the entire thing. This is the default behavior for single-letter substitutes.
+
+**Example:** @ref[7.2.102] says "@deva[अ] in place of @deva[त्यद्]." @deva[त्यद्] has three letters, but only the final @deva[द्] gets replaced by @deva[अ]: @deva[त्यद्] → @deva[त्य] + @deva[अ] = @deva[त्य].
+
+This is a remarkably economical design: the grammar can state a substitute for a whole word while only modifying its ending.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] establishes the default substitution scope: a single-letter substitute replaces only the final sound (@deva[अन्त्य]) of the @deva[स्थानिन्] (target).
+
+**Example 1:** @ref[7.2.102] (@deva[त्यदादीनामः]) — @deva[अ] replaces the final @deva[द्] of @deva[त्यद्]: @deva[त्यद्] → @deva[त्य] + @deva[अ].
+
+**Example 2:** @ref[1.2.50] (@deva[इद्गोण्याः]) — short @deva[इ] replaces the final @deva[ई] of @deva[गोणी]: @deva[पञ्चगोणिः] "purchased for five @deva[गोणी]s."
+
+**Exceptions to this default:**
+- @ref[1.1.53]: @deva[ङित्] substitutes also replace only the final (even if multi-letter)
+- @ref[1.1.54]: substitutes for a following element replace the initial (not final)
+- @ref[1.1.55]: multi-letter or @deva[शित्] substitutes replace the whole term
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[स्थाने] from @ref[1.1.49].
+
+@deva[अलोऽन्त्यस्य] — a substitute (@deva[आदेश]) replaces the final sound (@deva[अन्त्यस्य]) of the @deva[षष्ठी]-term. This is the default rule for substitution scope.
+
+**Examples:**
+- @ref[7.2.102]: @deva[त्यद्] → @deva[त्य] + @deva[अ] (final @deva[द्] replaced)
+- @ref[1.2.50]: @deva[गोणी] → @deva[गोणि] (final @deva[ई] replaced by @deva[इ])
+
+**This rule establishes the default.** The following rules modify it:
+- @ref[1.1.53]: @deva[ङित्] substitutes — same behavior (final only), even when multi-letter
+- @ref[1.1.54]: @deva[परादेश] — replaces the initial of the following element
+- @ref[1.1.55]: multi-letter or @deva[शित्] substitutes — replace the whole @deva[स्थानिन्]
+
+**Design logic:** @ref[1.1.52]–@ref[1.1.55] form a coherent system:
+1. Default: replace the final (@ref[1.1.52])
+2. @deva[ङित्]: also final, even if multi-letter (@ref[1.1.53])
+3. Following element: replace the initial (@ref[1.1.54])
+4. Multi-letter/@deva[शित्]: replace everything (@ref[1.1.55])
+
+**Interaction with @ref[1.1.49]:** @ref[1.1.49] identifies the @deva[स्थानिन्] via the genitive. This rule specifies which part of that @deva[स्थानिन्] is actually replaced.
+"""

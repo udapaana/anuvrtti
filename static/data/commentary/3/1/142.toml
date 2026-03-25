@@ -1,0 +1,38 @@
+id = "3.1.142"
+numericId = "31142"
+
+[en]
+simple = """
+The affix @deva[ण] is used after @deva[दु] 'to burn' and @deva[नी] 'to lead' when there is no @deva[उपसर्ग] (prefix).
+
+**Examples:**
+- @deva[दु] + @deva[ण] → @deva[दावः] 'burning, forest fire'
+- @deva[नी] + @deva[ण] → @deva[नायः] 'leader'
+
+**With prefix:** @deva[प्रदवः] 'burning', @deva[प्रणयः] 'friendship' (general @deva[अच्] applies).
+"""
+
+standard = """
+The affix @deva[ण] is used after @deva[दु] 'to burn' and @deva[नी] 'to lead' when there is no @deva[उपसर्ग].
+
+| Root | Formation | Result | Meaning |
+|------|-----------|--------|---------|
+| @deva[दु] | @deva[दु] + @deva[ण] → @deva[दौ] + @deva[अ] @ref[7.2.115] → @deva[दावः] @ref[6.1.78] | @deva[दावः] | burning, forest fire |
+| @deva[नी] | @deva[नी] + @deva[ण] → @deva[ने] + @deva[अ] → @deva[नायः] | @deva[नायः] | leader |
+
+**Condition:** @deva[अनुपसर्गात्] (without prefix).
+
+**With prefix:** @deva[प्रदवः] 'burning', @deva[प्रणयः] 'friendship' (general rule applies, no @deva[ण]).
+"""
+
+advanced = """
+The affix @deva[ण] is used after @deva[दु] 'to burn' and @deva[नी] 'to lead' when there is no @deva[उपसर्ग].
+
+**Derivations:**
+- @deva[दु] + @deva[ण] = @deva[दौ] + @deva[अ] @ref[7.2.115] = @deva[दावः] @ref[6.1.78] 'burning, forest fire'
+- @deva[नी] + @deva[ण] = @deva[ने] + @deva[अ] = @deva[नायः] 'leader'
+
+**Restriction:** @deva[अनुपसर्गात्] — without a prefix.
+
+**With prefix:** @deva[प्रदवः] 'burning' (not *@deva[प्रदावः]), @deva[प्रणयः] 'friendship' (not *@deva[प्रनायः]). With a prefix, the general rule @deva[अच्] applies instead of @deva[ण].
+"""

@@ -1,0 +1,34 @@
+id = "5.4.153"
+numericId = "54153"
+
+[en]
+simple = """
+When a compound ends in a long-@deva[ई] or long-@deva[ऊ] feminine word (called a @deva[नदी]-word), or a word ending in short @deva[ऋ], the suffix @deva[कप्] is added. For example, "a region with many young women" becomes @deva[बहुकुमारीकः] @deva[देशः].
+"""
+
+standard = """
+@[sūtra] @ref[5.4.153] prescribes @deva[कप्] after a @deva[बहुव्रीहि] compound whose final member is either a @deva[नदी]-word (long-@deva[ई] or long-@deva[ऊ] feminine, defined at @ref[1.4.3]) or a short-@deva[ऋ]-final word. The rule is obligatory (not optional like @ref[5.4.154]).
+
+**Worked example:** @deva[बहु] + @deva[कुमारी] (young woman, @deva[नदी]-type) → @deva[बहुव्रीहि] → + @deva[कप्] → @deva[बहुकुमारीक] + @deva[सु] → @deva[बहुकुमारीकः] @deva[देशः] "a region with many young women."
+
+@deva[ऋ]-final example: @deva[बहु] + @deva[कर्तृ] → @deva[बहुकर्तृक] + @deva[सु] → @deva[बहुकर्तृकः] "having many agents."
+
+The @deva[नदी] class is defined at @ref[1.4.3] as words ending in long @deva[ई] or @deva[ऊ] that are feminine. This rule feeds exceptions at @ref[5.4.158] (Vedic) and @ref[5.4.159]–@ref[5.4.160] (special words).
+"""
+
+advanced = """
+@[sūtra] @ref[5.4.153]: @deva[नद्यृतश्च] — @deva[कप्] is added after a @deva[बहुव्रीहि] whose final member is a @deva[नदी]-word or ends in short @deva[ऋ]. The @deva[च] (and) conjoins the two conditioning environments.
+
+**@deva[नदी] definition** (@ref[1.4.3]): any feminine ending in @deva[ई] or @deva[ऊ] (long) is @deva[नदी], e.g., @deva[कुमारी], @deva[ब्रह्मबन्धू], @deva[शची].
+
+**Short @deva[ऋ]-finals:** Words like @deva[कर्तृ], @deva[भर्तृ], @deva[पितृ], @deva[मातृ] end in short @deva[ऋ] at the @[prātipadika] level.
+
+**Examples with analysis:**
+- @deva[बहुकुमारी] + @deva[कप्] → @deva[बहुकुमारीकः] (@deva[नदी]-type, @deva[ई] retained since @deva[क] follows)
+- @deva[बहुब्रह्मबन्धू] + @deva[कप्] → @deva[बहुब्रह्मबन्धूकः] (@deva[नदी]-type @deva[ऊ])
+- @deva[बहुकर्तृ] + @deva[कप्] → @deva[बहुकर्तृकः]
+
+**Interaction with @ref[1.2.48]** (@deva[उपसर्जनस्य]): In @deva[बहुव्रीहि], the final member is @[upasarjana] and its @deva[नदी]-@deva[ई] should shorten. However, @deva[कप्] attaches directly to the @deva[नदी]-stem before case affixes, so shortening does not apply at the point of @deva[कप्]-attachment.
+
+**Exceptions carved out:** @ref[5.4.158] blocks @deva[कप्] for short-@deva[ऋ]-finals in Vedic; @ref[5.4.159] blocks it for @deva[नाडी] and @deva[तन्त्री] in body-part sense; @ref[5.4.160] provides the @deva[निष्प्रवाणि] exception.
+"""

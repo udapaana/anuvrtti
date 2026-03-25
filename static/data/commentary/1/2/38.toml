@@ -1,0 +1,39 @@
+id = "1.2.38"
+numericId = "12038"
+
+[en]
+simple = """
+In the @deva[सुब्रह्मण्य] hymns, the words @deva[देव] "god" and @deva[ब्राह्मण] are exceptions to the previous rule (@ref[1.2.37]). Their syllables that would be @deva[अनुदात्त] (low-pitched) remain @deva[अनुदात्त] — they do not undergo the @deva[स्वरित] → @deva[उदात्त] change that other words in these hymns receive.
+
+**Example:** @deva[देवा ब्राह्मण आगच्छत] "Come, O gods and teachers!" — the @deva[वा] of @deva[देवा] stays low-pitched, even though in other words it would have been raised.
+"""
+
+standard = """
+In @deva[सुब्रह्मण्य] hymns, @deva[देव] and @deva[ब्राह्मण] retain their @deva[अनुदात्त] syllables — an exception to @ref[1.2.37].
+
+**Example:** @deva[देवा ब्राह्मण आगच्छत] "Come, O gods and teachers!"
+- @deva[दे] = @deva[उदात्त] by @ref[6.1.198] (vocative accent)
+- @deva[वा] = normally @deva[अनुदात्त] → would become @deva[स्वरित] by @ref[8.4.66] → would become @deva[उदात्त] by @ref[1.2.37]
+- But this rule preserves the original @deva[अनुदात्त] on @deva[वा]
+
+**Scope:** This exception is limited to @deva[देव] and @deva[ब्राह्मण] — all other words in the @deva[सुब्रह्मण्य] continue to follow @ref[1.2.37].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सुब्रह्मण्य] from @ref[1.2.37].
+
+@deva[देवब्राह्मणानामनुदात्तः] — @deva[देव] and @deva[ब्राह्मण] retain @deva[अनुदात्त] in @deva[सुब्रह्मण्य] hymns.
+
+**Exception to @ref[1.2.37]:** That rule converts @deva[स्वरित] → @deva[उदात्त] in @deva[सुब्रह्मण्य]. This rule carves out @deva[देव] and @deva[ब्राह्मण]: their @deva[अनुदात्त] syllables are preserved, never reaching the @deva[स्वरित] stage (and thus never being converted to @deva[उदात्त]).
+
+**Derivation for @deva[देवा]:**
+1. @deva[दे] = @deva[उदात्त] by @ref[6.1.198] (@deva[आमन्त्रितस्य च])
+2. @deva[वा] = @deva[अनुदात्त] (inherent)
+3. By @ref[8.4.66]: @deva[अनुदात्त] after @deva[उदात्त] → @deva[स्वरित]
+4. By @ref[1.2.37]: @deva[स्वरित] → @deva[उदात्त]
+5. By this rule: steps 3–4 are blocked; @deva[वा] stays @deva[अनुदात्त]
+
+**Why these two words?** The @deva[सुब्रह्मण्य] hymn addresses both @deva[देव]s and @deva[ब्राह्मण]s. Their retention of @deva[अनुदात्त] creates a tonal contrast with the surrounding @deva[उदात्त]-dominant recitation — possibly a deliberate ritual-phonetic marker distinguishing the addressees.
+
+**These three rules** (@ref[1.2.37]–@ref[1.2.38]) form a micro-cluster specific to @deva[सुब्रह्मण्य] recitation — a highly specialized area of Vedic ritual phonology.
+"""

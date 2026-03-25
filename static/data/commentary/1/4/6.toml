@@ -1,0 +1,58 @@
+id = "1.4.6"
+numericId = "14006"
+
+[en]
+simple = """
+Before @deva[ङित्] endings (dative, ablative, genitive, and locative singular), two groups of feminine words are optionally treated as @deva[नदी]:
+1. Feminine words ending in short @deva[इ] or @deva[उ]
+2. @deva[ई]/@deva[ऊ]-words that take @deva[इयङ्]/@deva[उवङ्] substitution
+
+@deva[स्त्री] "woman" is always @deva[नदी] — no option.
+
+**Optional forms (short-vowel feminines):**
+- @deva[मति] "thought" + @deva[ङे] → @deva[मत्यै] (as @deva[नदी]) or @deva[मतये] (as @deva[घि])
+- @deva[धेनु] "cow" + @deva[ङे] → @deva[धेन्वै] (as @deva[नदी]) or @deva[धेनवे] (as @deva[घि])
+
+**Optional forms (@deva[इयङ्]/@deva[उवङ्] words):**
+- @deva[श्री] + @deva[ङे] → @deva[श्रियै] (as @deva[नदी]) or @deva[श्रये] (not @deva[नदी])
+
+The two options produce noticeably different forms — the @deva[नदी] option gives @deva[आट्]-augmented forms, while the non-@deva[नदी] option gives @deva[गुण]-strengthened forms.
+"""
+
+standard = """
+Before @deva[ङित्] affixes (dat./abl./gen./loc. sg.), feminine short @deva[इ]/@deva[उ]-stems and @deva[इयङ्]/@deva[उवङ्]-taking @deva[ई]/@deva[ऊ]-stems are optionally @deva[नदी] — @deva[विभाषा]. @deva[स्त्री] is always @deva[नदी].
+
+**Short-vowel feminines:**
+- @deva[मति] + @deva[ङे] → @deva[मत्यै] (as @deva[नदी]) or @deva[मतये] (as @deva[घि])
+- @deva[धेनु] + @deva[ङे] → @deva[धेन्वै] (as @deva[नदी]) or @deva[धेनवे] (as @deva[घि])
+
+**@deva[इयङ्]/@deva[उवङ्] words:**
+- @deva[श्री] + @deva[ङे] → @deva[श्रियै] (as @deva[नदी]) or @deva[श्रये]
+- @deva[भ्रू] + @deva[ङे] → @deva[भ्रुवै] or @deva[भ्रुवे]
+
+**Rule type — @deva[विभाषा]:** Creates optionality limited to @deva[ङित्] affixes. Outside @deva[ङित्] contexts, short @deva[इ]/@deva[उ] feminines are not @deva[नदी] (they are @deva[घि] by @ref[1.4.7]).
+
+**Option analysis:**
+- @deva[नदी] option: @deva[आट्] augment by @ref[7.3.112] → forms like @deva[मत्यै]
+- Non-@deva[नदी] option: @deva[गुण] by @ref[7.3.111] → forms like @deva[मतये]
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[नदी] from @ref[1.4.3].
+
+@deva[ङित्सु ह्रस्वश्च स्त्र्यख्यौ नदी] — before @deva[ङित्] affixes, short @deva[इ]/@deva[उ] feminines and @deva[इयङ्]/@deva[उवङ्] words are optionally @deva[नदी].
+
+**Bridging @deva[नदी] and @deva[घि]:** This rule creates overlap between the two @deva[संज्ञा]s. Before @deva[ङित्] affixes, a feminine short @deva[इ]/@deva[उ]-stem can be either @deva[नदी] or @deva[घि], producing two distinct declension forms.
+
+**Why @deva[ङित्] specifically?** The @deva[ङित्] affixes are the oblique singular cases (dat., abl., gen., loc.). These are precisely the cases where @deva[नदी] and @deva[घि] declensions differ most — @deva[नदी] takes @deva[आट्] (@ref[7.3.112]), @deva[घि] takes @deva[गुण] (@ref[7.3.111]).
+
+**Interaction with @ref[1.4.1]:** By the one-name rule, a word cannot be both @deva[नदी] and @deva[घि] simultaneously. This @deva[विभाषा] means: in the @deva[नदी] option, the word is @deva[नदी] (not @deva[घि]); in the other option, it is @deva[घि] (not @deva[नदी]).
+
+**@deva[नदी]/@deva[घि] series complete (@ref[1.4.3]–@ref[1.4.8]):**
+- @ref[1.4.3]: feminine @deva[ई]/@deva[ऊ] → @deva[नदी]
+- @ref[1.4.4]: minus @deva[इयङ्]/@deva[उवङ्] words
+- @ref[1.4.5]: optional @deva[नदी] before @deva[आम्]
+- @ref[1.4.6] (this): optional @deva[नदी] before @deva[ङित्] for short stems and @deva[इयङ्]/@deva[उवङ्]
+- @ref[1.4.7]: short @deva[इ]/@deva[उ] not @deva[नदी] → @deva[घि]
+- @ref[1.4.8]: @deva[पति] is @deva[घि] only in compounds
+"""

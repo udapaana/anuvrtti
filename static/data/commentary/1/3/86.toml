@@ -1,0 +1,60 @@
+id = "1.3.86"
+numericId = "13086"
+
+[en]
+simple = """
+The causative forms of eight specific roots take @deva[परस्मैपद] (active endings) — even when the fruit of the action accrues to the agent. The roots are: @deva[बुध्] "to know," @deva[युध्] "to fight," @deva[नश्] "to perish," @deva[जन्] "to be born," @deva[इङ्] "to study," @deva[प्रु] "to leap," @deva[द्रु] "to run," and @deva[स्रु] "to flow."
+
+**@deva[परस्मैपद] (causatives of these roots):**
+- @deva[बोधयति] "he awakens (someone)"
+- @deva[योधयति] "he makes (someone) fight"
+- @deva[नाशयति] "he destroys"
+- @deva[जनयति] "he begets"
+- @deva[अध्यापयति] "he teaches" (@deva[अधि] + @deva[इङ्])
+- @deva[प्रावयति] "he causes to leap"
+- @deva[द्रावयति] "he causes to run"
+- @deva[स्रावयति] "he causes to flow"
+
+These roots are mostly @deva[आत्मनेपदिन्] in their base forms, but their causatives switch to @deva[परस्मैपद].
+"""
+
+standard = """
+Causatives (@deva[णिच्]) of @deva[बुध्]/@deva[युध्]/@deva[नश्]/@deva[जन्]/@deva[इङ्]/@deva[प्रु]/@deva[द्रु]/@deva[स्रु] take @deva[परस्मैपद] — even when fruit accrues to the agent.
+
+**@deva[परस्मैपद] causatives:**
+- @deva[बोधयति] "he awakens"
+- @deva[योधयति] "he makes fight"
+- @deva[नाशयति] "he destroys"
+- @deva[जनयति] "he begets"
+- @deva[अध्यापयति] "he teaches"
+- @deva[प्रावयति] "he causes to leap"
+- @deva[द्रावयति] "he causes to run"
+- @deva[स्रावयति] "he causes to flow"
+
+**Rule type — @deva[अपवाद] of @ref[1.3.74]:** @ref[1.3.74] assigns @deva[आत्मनेपद] to @deva[णिच्] causatives when the agent benefits. This rule overrides that for these eight roots, mandating @deva[परस्मैपद] regardless of benefit.
+
+**Scope:** Applies to the base causative of each root. Some of these roots are @deva[अनुदात्तेत्] (@deva[आत्मनेपदिन्] by @ref[1.3.12]), but in causative formation the @deva[णिच्] affix creates a new verbal base — the override here governs the causative base specifically.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78].
+
+@deva[बुधयुधनशजनेङ्प्रुद्रुस्रुभ्यो णौ] — causatives of @deva[बुध्]/@deva[युध्]/@deva[नश्]/@deva[जन्]/@deva[इङ्]/@deva[प्रु]/@deva[द्रु]/@deva[स्रु] take @deva[परस्मैपद].
+
+**Override of @ref[1.3.74]:** @ref[1.3.74] assigns @deva[आत्मनेपद] to @deva[णिच्] causatives with @deva[स्वार्थ]. This rule creates an enumerated exception — these eight roots always take @deva[परस्मैपद] in the causative.
+
+**Root analysis:**
+- @deva[बुध्], @deva[नश्], @deva[जन्]: @deva[अनुदात्तेत्] roots — @deva[आत्मनेपदिन्] in base form, but causative overridden here
+- @deva[युध्]: @deva[अनुदात्तेत्] root
+- @deva[इङ्]: @deva[ङित्] root — @deva[अध्यापयति] (with @deva[अधि])
+- @deva[प्रु], @deva[द्रु], @deva[स्रु]: motion roots — their causatives get @deva[परस्मैपद] here, despite @ref[1.3.87]'s exclusion of @deva[चलन] senses
+
+**Relation to @ref[1.3.87]–@ref[1.3.89]:** @ref[1.3.86] (this) is a specific enumeration. @ref[1.3.87] provides a general semantic rule for causatives (excluding eating/moving). @ref[1.3.88] handles intransitive roots with sentient agents. @ref[1.3.89] lists exceptions. Together, @ref[1.3.86]–@ref[1.3.89] form the causative @deva[पद]-assignment block.
+
+**Causative @deva[पद] system:**
+- @ref[1.3.74]: general — @deva[णिच्] + @deva[स्वार्थ] → @deva[आत्मनेपद]
+- @ref[1.3.86] (this): eight roots → @deva[परस्मैपद] (enumerated override)
+- @ref[1.3.87]: non-eating/non-moving causatives → @deva[परस्मैपद] (semantic override)
+- @ref[1.3.88]: intransitive + sentient agent → @deva[परस्मैपद]
+- @ref[1.3.89]: exceptions back to @deva[आत्मनेपद]
+"""

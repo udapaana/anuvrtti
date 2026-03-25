@@ -1,0 +1,52 @@
+id = "1.4.52"
+numericId = "14052"
+
+[en]
+simple = """
+When certain types of verbs are made causative, the person who was originally the agent becomes @deva[कर्मन्] "object" (accusative). This applies to verbs of motion (@deva[गति]), knowledge (@deva[बुद्धि]), eating (@deva[भक्षण]), verbs whose object is a word (@deva[शब्दकर्म]), and intransitive verbs (@deva[अकर्मक]).
+
+**Examples:**
+- Original: @deva[शत्रवः स्वर्गम् अगच्छन्] "the enemies went to heaven" (@deva[शत्रवः] is @deva[कर्ता])
+- Causative: @deva[शत्रून् स्वर्गम् अगमयत्] "he made the enemies go to heaven" (@deva[शत्रून्] becomes @deva[कर्मन्])
+
+- Original: @deva[देवा अमृतम् आश्नन्] "the gods ate nectar" (@deva[देवाः] is @deva[कर्ता])
+- Causative: @deva[देवान् अमृतम् आशयत्] "he made the gods eat nectar" (@deva[देवान्] becomes @deva[कर्मन्])
+
+The new causer takes over as @deva[कर्ता]; the old agent is demoted to @deva[कर्मन्].
+"""
+
+standard = """
+With causatives of @deva[गति] (motion), @deva[बुद्धि] (knowledge), @deva[भक्षण] (eating), @deva[शब्दकर्म] (word-object), and @deva[अकर्मक] (intransitive) verbs — the primitive agent becomes @deva[कर्मन्] — @deva[गतिबुद्धिप्रत्यवसानार्थशब्दकर्माकर्मकाणामणि कर्ता स णौ].
+
+**Rule type — @deva[संज्ञा] extension of @ref[1.4.49]:** In causative constructions, the original agent is reassigned as @deva[कर्मन्].
+
+**Examples:**
+- @deva[शत्रवः स्वर्गम् अगच्छन्] → @deva[शत्रून् स्वर्गम् अगमयत्] (motion)
+- @deva[देवा अमृतम् आश्नन्] → @deva[देवान् अमृतम् आशयत्] (eating)
+- @deva[बालकः शेते] → @deva[बालकं शाययति] (intransitive)
+
+**Five verb categories:**
+1. @deva[गति] — motion: @deva[गम्], @deva[चल्], etc.
+2. @deva[बुद्धि] — knowledge: @deva[ज्ञा], @deva[बुध्], etc.
+3. @deva[प्रत्यवसानार्थ] (= @deva[भक्षण]) — eating: @deva[अश्], @deva[भक्ष्], etc.
+4. @deva[शब्दकर्म] — whose object is sound/speech: @deva[पठ्], etc.
+5. @deva[अकर्मक] — intransitive: @deva[शी], @deva[आस्], etc.
+
+**Contrast with other transitives:** For ordinary transitive verbs not in these categories, the primitive agent takes @deva[तृतीया] (instrumental), not @deva[द्वितीया] (accusative): @deva[देवदत्तेन कारयति] "he makes Devadatta do it." See @ref[1.4.53] for @deva[हृ]/@deva[कृ] optionality.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्म] from @ref[1.4.49]; @deva[कारके] from @ref[1.4.23].
+
+@deva[गतिबुद्धिप्रत्यवसानार्थशब्दकर्माकर्मकाणामणि कर्ता स णौ] — the @deva[कर्ता] (in @deva[अणि]) of these five verb-types becomes @deva[कर्मन्] (in @deva[णौ]).
+
+**@deva[अणि]/[@deva[णौ]] = "in the basic/causative":** @deva[अणि] refers to the primitive (non-causative) form; @deva[णौ] refers to the causative (@deva[णिच्]-derived) form. The @deva[कर्ता] in the primitive construction becomes @deva[कर्मन्] in the causative.
+
+**Why these five categories?** These verbs either lack an object or have a restricted object-type. Making them causative introduces a new agent (the causer) and demotes the original agent. Since the original verb is intransitive or has a non-prototypical object, the demoted agent takes accusative rather than instrumental.
+
+**Contrast with general causatives:** For ordinary transitive verbs (@deva[पच्], @deva[कृ], etc.), the primitive agent becomes @deva[करण] (instrumental) in the causative: @deva[देवदत्तेन ओदनं पाचयति]. The distinction turns on whether the primitive verb already has a full object.
+
+**@deva[वार्त्तिक] — @deva[नी]/@deva[वह्] exception:** Causatives of @deva[नी] "to lead" and @deva[वह्] "to carry" take instrumental for the primitive agent despite being motion verbs: @deva[भृत्येन भारं नाययति] "he has the servant carry the load."
+
+**Double @deva[कर्मन्] in causatives:** When a transitive verb from these categories is made causative, two accusatives result: @deva[देवान् अमृतम् आशयत्] — both "gods" and "nectar" are accusative. The original object retains @deva[कर्मन्]; the demoted agent also becomes @deva[कर्मन्] by this rule.
+"""

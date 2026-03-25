@@ -1,0 +1,49 @@
+id = "1.2.1"
+numericId = "12001"
+
+[en]
+simple = """
+Affixes added to the root @deva[गाङ्] (a substitute for @deva[इङ्] "to study") and to the @deva[कुटादि] roots (a group of about 40 roots starting with @deva[कुट्] "to be crooked") are treated as if they carry the marker @deva[ङ्] (@deva[ङित्]). The effect of @deva[ङित्] is to block @deva[गुण] (vowel strengthening, @ref[1.1.5]) — so the root vowel stays unchanged.
+
+However, affixes marked with @deva[ञ्] or @deva[ण्] are exceptions: they still cause @deva[गुण].
+
+**Example (no @deva[गुण]):** @deva[कुट्] + @deva[तृच्] → @deva[कुटिता] "one who acts crookedly" — the @deva[उ] does not strengthen to @deva[ओ].
+
+**Exception (@deva[गुण] applies):** @deva[कुट्] + @deva[णिच्] (causative) → @deva[उत्कोटयति] "he makes crooked" — @deva[णिच्] is @deva[णित्], so @deva[गुण] is not blocked.
+"""
+
+standard = """
+This @deva[अतिदेश] (extension) rule treats affixes after @deva[गाङ्] and the @deva[कुटादि] roots as @deva[ङित्], excluding @deva[ञित्] and @deva[णित्] affixes.
+
+**@deva[गाङ्]:** Substitutes for @deva[इङ्] "to study" in certain tenses (@ref[2.4.49]).
+
+**@deva[कुटादि]:** A @deva[गण] of ~40 roots from @deva[कुट्] "to be crooked" to @deva[कुङ्] "to groan."
+
+**Effect — @deva[ङित्] blocks @deva[गुण] (@ref[1.1.5]):**
+- @deva[कुट्] + @deva[तृच्] → @deva[कुटिता] "one who acts crookedly" (not *@deva[कोटिता])
+- @deva[कुट्] + @deva[तुमुन्] → @deva[कुटितुम्] "to act crookedly"
+
+**Exception — @deva[ञित्]/@deva[णित्] affixes override, @deva[गुण] applies:**
+- @deva[कुट्] + @deva[णिच्] → @deva[उत्कोटयति] "he makes crooked" (@deva[उ] → @deva[ओ])
+- @deva[कुट्] + @deva[ण्वुल्] → @deva[उत्कोटकः] "one who makes crooked"
+
+**Rule type:** @deva[अतिदेश] — the affixes are not actually @deva[ङित्]; they are merely treated as @deva[ङित्] for the purpose of blocking @deva[गुण].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: none — this begins a new topic (@deva[ङित्] extension).
+
+@deva[गाङ्कुटादिभ्योऽञ्णिन्ङित्] — affixes after @deva[गाङ्] and @deva[कुटादि] roots are @deva[ङित्], except @deva[ञित्] and @deva[णित्] ones.
+
+**This opens the @deva[अतिदेश] section of @deva[पाद] 1.2.** @[sūtras] @ref[1.2.1]–@ref[1.2.4] extend @deva[ङित्] status to affixes that do not actually carry @deva[ङ्], in order to block @deva[गुण] in specific environments.
+
+**@deva[गाङ्]:** @ref[2.4.49] substitutes @deva[गाङ्] for @deva[इङ्] "to study" before @deva[लिट्]. The @deva[ङित्] treatment blocks @deva[गुण] of @deva[आ]:
+- @deva[अधि] + @deva[इङ्] (→ @deva[गाङ्]) + @deva[सिच्] + @deva[त] → @deva[अध्यगीष्ट] (the @deva[सिच्] is treated as @deva[ङित्], so @deva[आ] → @deva[ई] by @ref[6.4.66])
+
+**@deva[कुटादि]:** ~40 roots. @deva[ङित्] blocks @deva[गुण]:
+- @deva[कुट्] + @deva[तृच्] → @deva[कुटिता] (not *@deva[कोटिता])
+
+**Why exclude @deva[ञित्]/@deva[णित्]?** These markers independently trigger @deva[वृद्धि] (@deva[ञित्]) or @deva[गुण]/@deva[वृद्धि] (@deva[णित्]). Blocking @deva[गुण] for them would undermine causative and other derivations that require vowel strengthening.
+
+**@deva[वार्त्तिक]:** @deva[व्यच्] "to deceive" also follows this pattern, except before @deva[अस्]: @deva[विचिता], @deva[विचितुम्], but @deva[उरुव्यचाः].
+"""

@@ -1,0 +1,36 @@
+id = "1.1.53"
+numericId = "11053"
+
+[en]
+simple = """
+A substitute marked with @deva[ङ्] replaces only the last letter of the original, even if the substitute itself has more than one letter. This is an exception to @ref[1.1.55], which normally says multi-letter substitutes replace the entire original.
+
+**Example:** @ref[6.3.25] prescribes @deva[आनङ्] to replace @deva[ऋ]-final words in @deva[द्वन्द्व] compounds. @deva[आनङ्] has two operative letters (@deva[आन]), but because it is marked with @deva[ङ्], it replaces only the final @deva[ऋ]: @deva[मातृ] → @deva[मातान्] (the @deva[ऋ] becomes @deva[आन्]) → @deva[मातापितरौ] "mother and father."
+"""
+
+standard = """
+A @deva[ङित्] (marked with @deva[ङ्]) substitute replaces only the final sound of the @deva[स्थानिन्], even when the substitute has multiple letters.
+
+This overrides @ref[1.1.55], which says multi-letter substitutes replace the whole original. The @deva[ङ्] marker signals: "treat this as a final-only replacement."
+
+**Example:** @deva[आनङ्] (@ref[6.3.25]) replaces @deva[ऋ]-ending stems in @deva[द्वन्द्व]:
+- @deva[मातृ] + @deva[पितृ]: @deva[ऋ] → @deva[आन्] → @deva[मातान्] + @deva[पितृ] → @deva[मातापितरौ] "mother and father"
+
+Without the @deva[ङ्] marker, @deva[आन] would replace the entire word @deva[मातृ], yielding *@deva[आन].
+
+**Exception within the exception:** @deva[तातङ्] (@ref[7.1.35]) replaces the entire word despite being @deva[ङित्]: @deva[जीवतु] → @deva[जीवतात्] "may he live." This is a recognized anomaly.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[स्थाने] from @ref[1.1.49]; @deva[अन्त्यस्य] from @ref[1.1.52].
+
+@deva[ङिच्च] — a @deva[ङित्] substitute also replaces only the final sound, even when multi-letter. This is an exception to @ref[1.1.55] (@deva[अनेकाल्शित्सर्वस्य]), which normally requires multi-letter substitutes to replace the whole @deva[स्थानिन्].
+
+**The @deva[ङ्] marker's dual role:** @deva[ङ्] in an affix means @deva[ङित्] (blocks @deva[गुण] by @ref[1.1.5]). In a substitute, @deva[ङ्] additionally signals final-only replacement. The two functions are independent.
+
+**Example:** @deva[आनङ्] (@ref[6.3.25]) — @deva[आन्] replaces the final @deva[ऋ] of @deva[मातृ]: @deva[मातृ] → @deva[मातान्] → @deva[मातापितरौ].
+
+**Exception — @deva[तातङ्]:** @ref[7.1.35] prescribes @deva[तातङ्] (= @deva[तात्]) for the @deva[लोट्] ending @deva[तु]. Despite being @deva[ङित्], it replaces the whole ending: @deva[जीवतु] → @deva[जीवतात्]. The @deva[सिद्धान्तकौमुदी] explains this as a recognized exception.
+
+**Position in the substitution system:** @ref[1.1.52] (default: replace final) → @ref[1.1.53] (@deva[ङित्]: also final, overriding @ref[1.1.55]) → @ref[1.1.54] (following element: replace initial) → @ref[1.1.55] (multi-letter/@deva[शित्]: replace whole).
+"""

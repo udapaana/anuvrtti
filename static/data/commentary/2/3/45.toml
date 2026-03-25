@@ -1,0 +1,49 @@
+id = "2.3.45"
+numericId = "23045"
+
+[en]
+simple = """
+When a @deva[तद्धित] (secondary derivative) affix that denotes a @deva[नक्षत्र] (asterism, lunar mansion) has been deleted by @deva[लुप्] (a type of elision), the name of the asterism can take either @deva[सप्तमी] (locative, seventh case-ending) or @deva[तृतीया] (instrumental, third case-ending).
+
+This applies in ritual and calendrical contexts where the asterism name indicates when something should happen — "when the moon is in such-and-such constellation."
+
+**Examples:**
+- @deva[पुष्येण पायसमश्नीयात्] or @deva[पुष्ये पायसमश्नीयात्] — "One should eat milk-rice when the moon is in @deva[पुष्य]."
+- @deva[मघाभिः पललौदनम्] or @deva[मघासु पललौदनम्] — "Meat-rice when the moon is in @deva[मघा]."
+
+The locative expresses "at the time of" the asterism, while the instrumental expresses "by occasion of" the asterism. Both are correct when the @deva[तद्धित] has been elided.
+"""
+
+standard = """
+@deva[नक्षत्रे च लुपि] — When a @deva[तद्धित] affix denoting asterism-time undergoes @deva[लुप्] elision (per @ref[4.2.4]), both @deva[सप्तमी] and @deva[तृतीया] apply to the asterism name.
+
+**Rule type — @deva[विधि]:** Adds @deva[तृतीया] alongside @deva[सप्तमी] for asterism names in temporal-ritual constructions, conditioned on @deva[लुप्] having applied.
+
+**Examples:**
+- @deva[पुष्येण पायसमश्नीयात्] / @deva[पुष्ये पायसमश्नीयात्] — "One should eat milk-rice when the moon is in @deva[पुष्य]."
+- @deva[मघाभिः पललौदनम्] / @deva[मघासु पललौदनम्] — "Meat-rice when in @deva[मघा]."
+
+**When does this NOT apply?**
+- No @deva[लुप्] elision: @deva[मघासु ग्रहः] "the planet is in @deva[मघा]" — only @deva[सप्तमी], because the @deva[तद्धित] was not elided.
+- Country-meaning: @deva[पञ्चालेषु वसति] "he lives in @deva[पञ्चाल]" — @deva[सप्तमी] only, no asterism sense.
+- No locational sense: @deva[अद्यपुष्यः] "today is @deva[पुष्य]" — no @deva[अधिकरण], so neither option from this rule applies.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तृतीया] and @deva[च] from @ref[2.3.44]; @deva[सप्तमी] from @ref[2.3.36]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[नक्षत्रे च लुपि] — When a @deva[नक्षत्र]-denoting @deva[तद्धित] affix undergoes @deva[लुप्] (@ref[4.2.4]), both @deva[तृतीया] and @deva[सप्तमी] apply to the asterism name.
+
+**Why @deva[लुप्] matters:** Per @ref[4.2.4], a @deva[तद्धित] affix is added to asterism names to derive temporal meanings (e.g., "the time when the moon is in @deva[पुष्य]"). When this affix is @deva[लुप्]-elided, the bare asterism name remains and requires a case-ending. This rule provides the options: @deva[सप्तमी] (temporal location — "at the time of @deva[पुष्य]") or @deva[तृतीया] (instrumental — "by the occasion of @deva[पुष्य]").
+
+**Without @deva[लुप्]:** If the @deva[तद्धित] is retained or if no @deva[तद्धित] applies, only @deva[सप्तमी] is available via @ref[2.3.36] for the @deva[अधिकरण] sense. The @deva[तृतीया] option is exclusive to the @deva[लुप्] context.
+
+**Restrictions:**
+- @deva[मघासु ग्रहः] — no @deva[लुप्], so only @deva[सप्तमी]
+- @deva[पञ्चालेषु वसति] — country-meaning, not asterism-time, so only @deva[सप्तमी]
+- @deva[अद्यपुष्यः] — no @deva[अधिकरण] sense at all, so this rule is inapplicable
+
+**Examples:** @deva[पुष्येण पायसमश्नीयात्] / @deva[पुष्ये पायसमश्नीयात्]; @deva[मघाभिः पललौदनम्] / @deva[मघासु पललौदनम्].
+
+**Cross-references:** @ref[4.2.4] (@deva[तद्धित] for asterism-time), @ref[2.3.36] (@deva[सप्तमी] for @deva[अधिकरण]), @ref[1.1.63] (@deva[लुप्] definition).
+"""

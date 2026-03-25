@@ -1,0 +1,46 @@
+id = "1.1.43"
+numericId = "11043"
+
+[en]
+simple = """
+The first five case endings — @deva[सुँ] (nominative singular), @deva[औ] (nominative dual), @deva[जस्] (nominative plural), @deva[अम्] (accusative singular), and @deva[औट्] (accusative dual) — are called @deva[सर्वनामस्थान] when attached to non-neuter words.
+
+This label triggers stem modifications: the stem changes shape before these endings in ways it does not before other cases.
+
+**Example:** @deva[राजन्] "king" — before @deva[सुँ] (nom. sg.), the stem becomes @deva[राजा] "the king." Before @deva[भ्याम्] (instrumental dual, not a @deva[सर्वनामस्थान]), it stays @deva[राजभ्याम्].
+"""
+
+standard = """
+The non-neuter nominative and accusative endings — @deva[सुँ], @deva[औ], @deva[जस्], @deva[अम्], @deva[औट्] — are @deva[सर्वनामस्थान]. This extends @ref[1.1.42], which covered the neuter @deva[शि].
+
+**The five endings (forming the @deva[सुट्] @deva[प्रत्याहार]):**
+
+| Ending | Case + Number |
+|--------|---------------|
+| @deva[सुँ] | Nom. singular |
+| @deva[औ] | Nom./Acc. dual |
+| @deva[जस्] | Nom. plural |
+| @deva[अम्] | Acc. singular |
+| @deva[औट्] | Acc. dual |
+
+**Why "non-neuter"?** In the neuter, @deva[जस्] and @deva[शस्] are replaced by @deva[शि] (which is already @deva[सर्वनामस्थान] by @ref[1.1.42]). So neuter nom./acc. plural is covered there, not here.
+
+**Effect:** Before @deva[सर्वनामस्थान] endings, stems undergo modifications like penultimate vowel lengthening (@ref[6.4.8]) and @deva[नुम्]-insertion (@ref[7.1.70]).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[सर्वनामस्थानम्] from @ref[1.1.42].
+
+@deva[सुडनपुंसकस्य] — the @deva[सुट्] endings (@deva[सुँ], @deva[औ], @deva[जस्], @deva[अम्], @deva[औट्]) of non-neuter stems are @deva[सर्वनामस्थान].
+
+**The @deva[सुट्] @deva[प्रत्याहार]:** Encompasses the first five of the twenty-one @deva[सुप्] endings listed in @ref[4.1.2]: @deva[सुँ], @deva[औ], @deva[जस्], @deva[अम्], @deva[औट्], @deva[शस्], @deva[टा]... The @deva[ट्] in @deva[सुट्] stops at @deva[औट्], covering exactly the first five.
+
+**Why "non-neuter" (@deva[अनपुंसकस्य])?** Neuter nom./acc. plural uses @deva[शि] (@ref[7.1.20]), which is separately designated @deva[सर्वनामस्थान] by @ref[1.1.42]. The neuter singular @deva[सुँ] and @deva[अम्] do not trigger @deva[सर्वनामस्थान] effects — neuter singular forms typically remain un-strengthened.
+
+**Rules triggered by @deva[सर्वनामस्थान]:**
+- @ref[6.4.8]: penultimate vowel lengthening — @deva[राजन्] + @deva[सुँ] → @deva[राजा]
+- @ref[7.1.70]: @deva[नुम्] insertion — @deva[शिवन्] + @deva[सुँ] → @deva[शिवान्]
+- @ref[7.3.103]–@ref[7.3.104]: @deva[गुण]/@deva[वृद्धि] of stem vowels
+
+**Complete @deva[सर्वनामस्थान] picture:** @ref[1.1.42] covers @deva[शि] (neuter pl.); @ref[1.1.43] covers @deva[सुट्] (non-neuter nom./acc.). Together they identify all the "strong" case positions where stem modifications occur.
+"""

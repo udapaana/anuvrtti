@@ -1,0 +1,41 @@
+id = "2.4.2"
+numericId = "24002"
+
+[en]
+simple = """
+When a copulative compound (@deva[द्वन्द्व]) is made from words denoting body parts, musicians, or soldiers, and it expresses a collective group, the compound takes the singular number and becomes neuter gender.
+
+Pairs of body parts, groups of musicians, or groups of soldiers are treated as single collective units when compounded this way.
+
+**Examples:**
+- @deva[पाणिपादम्] 'hands and feet' — a collective pair, neuter singular
+- @deva[शिरोग्रीवम्] 'head and neck' — body parts treated as one unit
+- @deva[मार्दङ्गिकपाणविकम्] '@[mṛdaṅga]-player and @[paṇava]-player' — musicians grouped as one
+- @deva[रथिकाश्वारोहम्] 'chariot-warrior and cavalry' — soldiers grouped as one
+
+This matters for everyday usage: when you compound body parts like "hands and feet," the result is always a neuter singular word, not a plural. The compound refers to the collective pair as a single concept.
+"""
+
+standard = """
+This @deva[विधि] (operational rule) assigns @deva[एकवचन] (singular) to the @deva[समाहार-द्वन्द्व] (collective copulative compound) of three semantic categories: @deva[अङ्ग] (body parts), @deva[वाद्य] (musicians), and @deva[तूर्य] (soldiers/military personnel). The neuter gender follows from @ref[2.4.17].
+
+**Examples:**
+- @deva[पाणिपादम्] 'hands and feet' (body parts)
+- @deva[शिरोग्रीवम्] 'head and neck' (body parts)
+- @deva[मार्दङ्गिकपाणविकम्] '@[mṛdaṅga]-player and @[paṇava]-player' (musicians)
+- @deva[वीणावादकपरिवादकम्] '@[vīṇā]-player and @[parivādaka]-player' (musicians)
+- @deva[रथिकाश्वारोहम्] 'chariot-warrior and horseman' (soldiers)
+- @deva[रथिकपादातम्] 'chariot-warrior and foot-soldier' (soldiers)
+
+**Scope:** This applies only to @deva[समाहार-द्वन्द्व] (collective), not to @deva[इतरेतर-द्वन्द्व] (enumerative, where each member retains individuality). For animal compounds, singular is optional (@ref[2.4.12]).
+"""
+
+advanced = """
+This sūtra continues the @deva[अनुवृत्ति] of @deva[एकवचन] from @ref[2.4.1] and extends it to three specific semantic domains of @deva[समाहार-द्वन्द्व]: @deva[अङ्ग] (body parts), @deva[वाद्य] (musicians), and @deva[तूर्य] (soldiers).
+
+The neuter gender assignment comes separately from @ref[2.4.17], which makes all @deva[एकवचन]-assigned @deva[द्वन्द्व] and @deva[द्विगु] compounds neuter. The present sūtra's contribution is specifically the mandatory singular-number assignment.
+
+The distinction between @deva[समाहार] (collective) and @deva[इतरेतर] (enumerative) @deva[द्वन्द्व] is crucial. Compounds in the @deva[दधिपयसादि]-@deva[गण] (@ref[2.4.14]) are purely @deva[इतरेतर] and therefore take dual. Compounds of trees and animals (@ref[2.4.12]) are optionally either type. But body parts, musicians, and soldiers — when compounded collectively — are invariably singular.
+
+A @deva[परिभाषा] interaction arises with @ref[2.4.15]: if a fixed number of these collective groups is specified (@deva[संख्येय]), the singular is blocked — e.g., @deva[दश दन्तोष्ठाः] 'ten sets of teeth and lips' takes plural despite this rule.
+"""

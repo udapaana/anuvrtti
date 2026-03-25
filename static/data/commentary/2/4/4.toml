@@ -1,0 +1,34 @@
+id = "2.4.4"
+numericId = "24004"
+
+[en]
+simple = """
+A @deva[द्वन्द्व] of @deva[यजुर्वेद] sacrifices (@deva[क्रतु]) takes @deva[एकवचन], if not @deva[नपुंसकलिङ्ग] words.
+
+**Examples:**
+- @deva[अर्काश्वमेधम्] 'the Arka and @[aśvamedha] sacrifices'
+- @deva[सायाह्नातिरात्रम्] 'the @[sāyāhna] and @[atirātra] sacrifices'
+
+**Exception:** @deva[राजसूयवाजपेयौ] (dual, both neuter-gender words)
+"""
+
+standard = """
+A @deva[द्वन्द्व] of @deva[यजुर्वेद] sacrifices (@deva[क्रतु]) takes @deva[एकवचन], provided they are not @deva[नपुंसकलिङ्ग] words.
+
+**Examples:**
+- @deva[अर्काश्वमेधम्] 'Arka and @[aśvamedha] sacrifices'
+- @deva[सायाह्नातिरात्रम्] '@[sāyāhna] and @[atirātra] sacrifices'
+
+**Counter-examples:**
+- @deva[राजसूयवाजपेयौ] (neuter words, so dual)
+- @deva[इषुवज्रौ], @deva[उद्भिद्वलभिदौ] (not Yajurveda sacrifices)
+- @deva[दर्शपौर्णमासौ] (not @deva[सोम]-sacrifices, so @deva[क्रतु] doesn't apply)
+"""
+
+advanced = """
+@deva[द्वन्द्व] of @deva[अध्वर्यु]-@deva[क्रतु] (Yajurveda sacrifices) takes @deva[एकवचन] if not @deva[नपुंसकलिङ्ग].
+
+**Examples:** @deva[अर्काश्वमेधम्], @deva[सायाह्नातिरात्रम्].
+
+Not Yajurveda: @deva[इषुवज्रौ], @deva[उद्भिद्वलभिदौ]. Neuter words: @deva[राजसूयवाजपेयौ]. @deva[दर्शपौर्णमासौ] excluded—@deva[क्रतु] technically means @deva[सोम]-sacrifices only.
+"""

@@ -1,0 +1,43 @@
+id = "2.3.39"
+numericId = "23039"
+
+[en]
+simple = """
+With certain words that denote authority or relationship over something — @deva[स्वामिन्] (owner), @deva[ईश्वर] (lord), @deva[अधिपति] (ruler), @deva[दायाद] (heir), @deva[साक्षिन्] (witness), @deva[प्रतिभू] (guarantor), and @deva[प्रसूत] (born of) — the thing over which authority is exercised can take either @deva[षष्ठी] (genitive, sixth case-ending) or @deva[सप्तमी] (locative, seventh case-ending).
+
+**Examples:**
+- @deva[गवां स्वामी] or @deva[गोषु स्वामी] — "owner of cows"
+- @deva[गवामधिपतिः] or @deva[गोष्वधिपतिः] — "ruler of cows"
+- @deva[गवां दायादः] or @deva[गोषु दायादः] — "heir to the cows"
+- @deva[गवां साक्षी] or @deva[गोषु साक्षी] — "witness regarding the cows"
+
+These words naturally take the genitive ("master of X"), but this rule permits the locative as an equally valid alternative ("master among/over X").
+"""
+
+standard = """
+@deva[स्वामीश्वराधिपतिदायादसाक्षिप्रतिभूप्रसूतैश्च] — With @deva[स्वामिन्] (owner), @deva[ईश्वर] (lord), @deva[अधिपति] (ruler), @deva[दायाद] (heir), @deva[साक्षिन्] (witness), @deva[प्रतिभू] (surety), and @deva[प्रसूत] (begotten), both @deva[षष्ठी] and @deva[सप्तमी] are used.
+
+**Rule type — @deva[विधि]:** Extends @deva[सप्तमी] as an option alongside the default @deva[षष्ठी] for these words.
+
+**Examples:**
+- @deva[गवां स्वामी] / @deva[गोषु स्वामी] — "owner of cows"
+- @deva[गवामीश्वरः] / @deva[गोष्वीश्वरः] — "lord of cows"
+- @deva[गवां प्रतिभूः] / @deva[गोषु प्रतिभूः] — "guarantor for cows"
+- @deva[ब्राह्मणस्य प्रसूतः] / @deva[ब्राह्मणे प्रसूतः] — "born of a @deva[ब्राह्मण]"
+
+**Scope:** The @deva[षष्ठी] for these words comes from @ref[2.3.50] (@deva[षष्ठी शेषे]) as the default genitive. This rule adds @deva[सप्तमी] as a co-option via the @deva[च] carried from @ref[2.3.38]. The list is exhaustive — other authority-denoting words do not receive this option.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[षष्ठी] and @deva[च] from @ref[2.3.38]; @deva[सप्तमी] from @ref[2.3.36]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[स्वामीश्वराधिपतिदायादसाक्षिप्रतिभूप्रसूतैश्च] — With these seven words, both @deva[षष्ठी] and @deva[सप्तमी] apply for the domain of authority or relation.
+
+**Why the list is needed:** These words would normally take only @deva[षष्ठी] via @ref[2.3.50] (@deva[षष्ठी शेषे]), since the relationship between "owner" and "owned" is a @deva[शेष]-relation. This rule specifically permits @deva[सप्तमी] as an alternative. Without it, @deva[गोषु स्वामी] would be ungrammatical.
+
+**@deva[प्रसूत] — special case:** Here both cases apply to the source of birth: @deva[ब्राह्मणस्य प्रसूतः] / @deva[ब्राह्मणे प्रसूतः] "born of a @deva[ब्राह्मण]."
+
+**Exhaustive list:** Only these seven words receive the @deva[षष्ठी]/@deva[सप्तमी] option. Similar words like @deva[पालक] or @deva[रक्षक] do not qualify.
+
+**Cross-references:** @ref[2.3.50] (@deva[षष्ठी शेषे] — default genitive), @ref[2.3.36] (@deva[सप्तमी] for @deva[अधिकरण]).
+"""

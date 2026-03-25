@@ -1,0 +1,51 @@
+id = "1.2.72"
+numericId = "12072"
+
+[en]
+simple = """
+When a pronoun from the @deva[त्यदादि] list (the list starting with @deva[त्यद्] "that") appears alongside another word, the pronoun is always retained through @deva[एकशेष].
+
+**Example:**
+- @deva[सः] "he" + @deva[देवदत्तः] "@deva[देवदत्त]" → @deva[तौ] "those two"
+
+The pronoun @deva[तद्] absorbs the proper noun, and the dual represents both.
+
+**When two pronouns meet:** The one appearing later in the @deva[त्यदादि] list wins:
+- @deva[यः] "who" + @deva[सः] "he" → @deva[यौ] "those two" (@deva[यद्] comes after @deva[तद्] in the list)
+- @deva[यः] + @deva[कः] "who?" → @deva[कौ] (@deva[किम्] comes after @deva[यद्])
+
+This is not optional — the pronoun always wins.
+"""
+
+standard = """
+The @deva[त्यदादि] pronouns (listed at @ref[1.1.27]) always prevail in @deva[एकशेष] over non-pronoun words. This is a @deva[नित्य] (obligatory) rule.
+
+**The @deva[त्यदादि] list:** @deva[त्यद्], @deva[तद्], @deva[यद्], @deva[एतद्], @deva[इदम्], @deva[अदस्], @deva[एक], @deva[द्वि], @deva[युष्मद्], @deva[अस्मद्], @deva[भवत्], @deva[किम्].
+
+**Pronoun + non-pronoun:**
+- @deva[सः] + @deva[देवदत्तः] → @deva[तौ] "those two"
+
+**Pronoun + pronoun — later in list prevails:**
+- @deva[सः] (@deva[तद्]) + @deva[यः] (@deva[यद्]) → @deva[यौ] (@deva[यद्] is later)
+- @deva[यः] (@deva[यद्]) + @deva[कः] (@deva[किम्]) → @deva[कौ] (@deva[किम्] is later)
+
+**@deva[नित्य]:** Unlike @ref[1.2.70]–@ref[1.2.71] (optional kinship @deva[एकशेष]), pronoun retention is obligatory.
+
+**Why pronouns prevail:** Pronouns are deictic — they point to referents rather than naming them. Retaining the pronoun preserves the pointing function while the named referent is understood from context.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[एकशेष] from @ref[1.2.64].
+
+@deva[त्यदादीनामतः परम्] — @deva[त्यदादि] pronouns are always retained in @deva[एकशेष]. Among @deva[त्यदादि] members, the one later in the list prevails.
+
+**The ordering principle:** @deva[अतः परम्] ("from here onward") establishes that within the @deva[त्यदादि] list, position determines priority. A pronoun later in the enumeration subsumes one earlier. This creates a strict hierarchy: @deva[किम्] > @deva[भवत्] > @deva[अस्मद्] > ... > @deva[त्यद्].
+
+**@deva[नित्य] rule:** No @deva[विकल्प] — pronoun retention is obligatory. This contrasts with the optional kinship rules at @ref[1.2.70]–@ref[1.2.71].
+
+**Interaction with gender rules:** When a @deva[त्यदादि] pronoun is retained, gender follows the pronoun. @deva[सः] + @deva[देवदत्तः] → @deva[तौ] (masculine dual). If the pronoun were feminine (@deva[सा] + @deva[गार्गी]), the result would be @deva[ते] (feminine dual).
+
+**System significance:** This rule ensures that pronominal reference is never lost through @deva[एकशेष]. Since pronouns carry discourse-level information (anaphora, deixis), their retention is prioritized over all lexical nouns.
+
+**Position:** This is the penultimate rule of the @deva[एकशेष] section (@ref[1.2.64]–@ref[1.2.73]). The final rule (@ref[1.2.73]) addresses the special case of domestic animal groups.
+"""

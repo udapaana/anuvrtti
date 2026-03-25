@@ -1,0 +1,43 @@
+id = "2.1.69"
+numericId = "21069"
+
+[en]
+simple = """
+A colour-word (@deva[वर्ण]) compounds with another colour-word when both describe the same thing and are in the same case to form @deva[तत्पुरुष]. The compound names something by its composite coloring.
+
+**Examples:**
+- @deva[कृष्णसारङ्गः] "black-spotted antelope" — @deva[कृष्ण] "black" + @deva[सारङ्ग] "spotted/dappled"
+- @deva[लोहितसारङ्गः] "antelope dappled with red"
+- @deva[कृष्णशवलः] "dappled with black spots"
+
+These are @deva[कर्मधारय] compounds where both members are colour terms describing the same entity's appearance.
+"""
+
+standard = """
+@deva[वर्णवाचक] + @deva[वर्णवाचक] → @deva[तत्पुरुष] in @deva[समानाधिकरण] — @deva[वर्णो वर्णेन].
+
+**Rule type — @deva[विधि]:** Compounding rule within @deva[कर्मधारय].
+
+**Examples:**
+- @deva[कृष्णसारङ्गः] "black-spotted"
+- @deva[लोहितसारङ्गः] "red-dappled"
+- @deva[कृष्णशवलः] "black-spotted"
+
+**Both members must be colour-words:** This restriction prevents arbitrary adjective-adjective compounds. Only when both members denote colours or colour patterns does this rule apply.
+
+**Accent:** @ref[6.2.3] governs the accent of these compounds.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[समानाधिकरणेन] from @ref[2.1.49]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[वर्णो वर्णेन] — a colour-word compounds with another colour-word in @deva[समानाधिकरण] as @deva[कर्मधारय] @deva[तत्पुरुष].
+
+**Why a separate rule?** @ref[2.1.57] requires a @deva[विशेषण]-@deva[विशेष्य] relationship (qualifier-qualified). But in colour-colour compounds, both members are qualifiers — neither is clearly the "noun" being qualified. This rule specifically authorizes two-adjective compounds when both are colour terms.
+
+**Compositional semantics:** @deva[कृष्णसारङ्गः] — the entity is both @deva[कृष्ण] (black) and @deva[सारङ्ग] (spotted/dappled). The compound describes a mixed or patterned coloring where both terms contribute to the visual description.
+
+**Accent:** @ref[6.2.3] specifies accent for these colour-compounds.
+
+**Narrow scope:** This rule covers only colour + colour. Other adjective + adjective combinations (e.g., "tall and strong") are not authorized by this rule — they would need @ref[2.1.57]'s @deva[बहुलम्] or another rule.
+"""

@@ -1,0 +1,52 @@
+id = "1.4.62"
+numericId = "14062"
+
+[en]
+simple = """
+An onomatopoeic word (a word imitating a sound) is called @deva[गति] "prefix" when it is NOT followed by @deva[इति] "thus."
+
+Sound-words like @deva[खाट्] (a cracking sound) can combine with @deva[कृ] "to make" to form compounds. But if @deva[इति] follows the sound-word, the compound doesn't form.
+
+**Examples (without @deva[इति] — @deva[गति] applies):**
+- @deva[खाट्कृत्य] "having made the @deva[खाट्] sound" (compound with @deva[ल्यप्])
+- @deva[खाट्कृतम्] "the @deva[खाट्] sound was made"
+
+**Contrast (with @deva[इति] — no @deva[गति]):**
+- @deva[खाडिति कृत्वा निरष्ठीवत्] "having made the sound '@deva[खाट्],' he spat" (no compound; @deva[त्वा] instead of @deva[ल्यप्])
+"""
+
+standard = """
+An onomatopoeic word is @deva[गति] when not followed by @deva[इति] — @deva[शब्दानुकरणमनितिपरम्].
+
+**Rule type — @deva[संज्ञा] extension of @deva[गति]:** Sound-imitation words receive @deva[गति] status under a specific condition.
+
+**Examples:**
+- @deva[खाट्कृत्य] "having made the cracking sound" (@deva[ल्यप्] by @ref[7.1.37])
+- @deva[खाट्कृतम्] (accent by @ref[6.2.49])
+- @deva[यत्खाट्करोति] (verb accent by @ref[8.2.71])
+
+**Contrast:**
+- @deva[खाडिति कृत्वा] "having made the sound '@deva[खाट्]'" — @deva[इति] follows, so no @deva[गति], no compound, @deva[त्वा] retained
+
+**@deva[अनितिपर] = "not having @deva[इति] after it":** When @deva[इति] follows, it quotatively marks the sound-word, and the two remain separate words. Without @deva[इति], the sound-word compounds directly with the verb.
+
+**Scope:** Any sound-imitation word qualifies — @deva[खाट्], @deva[फट्], @deva[भट्], etc. The category is semantically defined (sounds), not a closed list.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[गतिः] from @ref[1.4.60]; @deva[क्रियायोगे] from @ref[1.4.59]; @deva[निपाताः] from @ref[1.4.56].
+
+@deva[शब्दानुकरणमनितिपरम्] — a sound-imitation word (not followed by @deva[इति]) is @deva[गति].
+
+**@deva[इति]-block mechanism:** @deva[इति] functions as a quotative marker — it turns the preceding word into a direct citation. When @deva[इति] is present, the sound-word is being "quoted," and quotes don't compound. The @deva[गति] designation is blocked because the sound-word is syntactically separate.
+
+**Interaction with @deva[डाच्] (@ref[1.4.61]):** @deva[डाच्]-ending onomatopoeia (like @deva[पटपटा]) are already @deva[गति] by @ref[1.4.61]. This rule covers the simpler onomatopoeic forms that lack the @deva[डाच्] ending — direct sound-words like @deva[खाट्], @deva[फट्].
+
+**@deva[गति] effects:** Same as all @deva[गति] rules:
+- @ref[2.2.18]: forms compound with verb
+- @ref[7.1.37]: @deva[त्वा] → @deva[ल्यप्]
+- @ref[6.2.49]: accent retained on @deva[गति]
+- @ref[8.2.71]: verb loses accent
+
+**Semantic vs. listed @deva[गति]:** Most @deva[गति] designations use closed lists (@deva[ऊर्यादि]). This rule is open-class — any word that imitates a sound qualifies, provided @deva[इति] doesn't follow.
+"""

@@ -1,0 +1,48 @@
+id = "1.2.12"
+numericId = "12012"
+
+[en]
+simple = """
+After roots ending in @deva[ऋ], the benedictive (@deva[आशीर्लिङ्]) and aorist (@deva[सिच्]) affixes in @deva[आत्मनेपद] (middle voice) are also treated as @deva[कित्] when they begin with a consonant. This blocks @deva[गुण] (vowel strengthening) of the @deva[ऋ].
+
+**Benedictive:** @deva[कृ] "to do" → @deva[कृषीष्ट] "may he do!"
+
+**Aorist:** @deva[कृ] → @deva[अकृत] "he did"
+
+When @deva[इट्] is present, the rule does not apply, and @deva[गुण] proceeds: @deva[वृ] "to choose" → @deva[वरिषीष्ट] "may he choose" (with @deva[इट्], @deva[ऋ] → @deva[अर्]).
+"""
+
+standard = """
+After @deva[ऋ]-final roots, @deva[झलादि] @deva[लिङ्] and @deva[सिच्] in @deva[आत्मनेपद] are @deva[कित्].
+
+**Examples:**
+- @deva[कृ] → Ben. @deva[कृषीष्ट] "may he do," Aor. @deva[अकृत] "he did"
+- @deva[हृ] → Ben. @deva[हृषीष्ट] "may he take," Aor. @deva[अहृत] "he took"
+
+**With @deva[इट्] — not @deva[झलादि], @deva[गुण] applies:**
+- @deva[वृ] + @deva[इषीष्ट] → @deva[वरिषीष्ट] "may he choose"
+- @deva[वृ] + @deva[इष्ट] → @deva[अवरिष्ट] or @deva[अवरीष्ट] "he chose" (lengthening by @ref[7.2.38])
+
+**Why a separate rule?** @ref[1.2.11] covers consonant-final roots with @deva[उपधा] @deva[इक्]. @deva[ऋ]-final roots are vowel-final, so they need their own rule. This rule covers roots like @deva[कृ], @deva[हृ], @deva[तृ], @deva[स्तृ].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[लिङ्सिचौ] from @ref[1.2.11]; @deva[आत्मनेपदेषु] from @ref[1.2.11]; @deva[झलादि] from context.
+
+@deva[ऋतश्च] — after @deva[ऋ]-final roots also, @deva[झलादि] @deva[लिङ्] and @deva[सिच्] in @deva[आत्मनेपद] are @deva[कित्].
+
+**Complementary to @ref[1.2.11].** That rule handles consonant-final roots; this handles @deva[ऋ]-final (vowel-final) roots. Together they cover the major root types that need @deva[कित्] treatment in the benedictive and aorist.
+
+**@deva[अनिट्] vs. @deva[सेट्] @deva[ऋ]-final roots:**
+- @deva[अनिट्] (@deva[कृ], @deva[हृ]): @deva[झलादि] condition met → @deva[कित्] → @deva[कृषीष्ट], @deva[अकृत]
+- @deva[सेट्] (@deva[वृ]): @deva[इट्] intervenes → not @deva[झलादि] → @deva[गुण] applies → @deva[वरिषीष्ट], @deva[अवरिष्ट]
+
+**The @deva[ऋ]-final root paradigm in aorist (@deva[आत्मनेपद]):**
+| Root | @deva[अनिट्]/@deva[सेट्] | Aorist 3sg |
+|------|----------------------|------------|
+| @deva[कृ] | @deva[अनिट्] | @deva[अकृत] |
+| @deva[हृ] | @deva[अनिट्] | @deva[अहृत] |
+| @deva[वृ] | @deva[सेट्] | @deva[अवरिष्ट] |
+
+**@deva[च] ("also"):** Indicates this is an addition to @ref[1.2.11], not a replacement. Both rules operate within the same @deva[आत्मनेपद] restriction.
+"""

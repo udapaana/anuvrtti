@@ -1,0 +1,45 @@
+id = "1.4.20"
+numericId = "14020"
+
+[en]
+simple = """
+In Vedic texts, forms like @deva[अयस्मय] "made of iron" are valid — where the @deva[स्] is preserved before the affix @deva[मयट्].
+
+In classical Sanskrit, the standard form is @deva[अयोमयम्] — the @deva[स्] changes to @deva[ओ] through @deva[पद]-final rules. But in Vedic, @deva[अयस्] is treated as @deva[भ] (not @deva[पद]), so the @deva[स्] remains unchanged.
+
+**Vedic forms:**
+- @deva[अयस्मयं वर्म] "iron armor"
+- @deva[अयस्मयानि पात्राणि] "iron vessels"
+
+**Classical forms:**
+- @deva[अयोमयम्] "made of iron" (@deva[स्] → @deva[ओ] by @deva[पद]-final rules)
+"""
+
+standard = """
+In Vedic, forms like @deva[अयस्मय] are valid — @deva[अयस्] treated as @deva[भ] before @deva[मयट्].
+
+**Rule type — Vedic exception:** Normally @deva[अयस्] + @deva[मयट्] → @deva[अयोमयम्] (with @deva[स्] → @deva[ओ] by @deva[पद]-final @deva[संधि]). In Vedic, @deva[अयस्] retains @deva[भ] status, preserving the @deva[स्].
+
+**Vedic:** @deva[अयस्मयं वर्म] "iron armor"
+**Classical:** @deva[अयोमयम्] "made of iron"
+
+**Why @deva[भ]?** As @deva[भ], @deva[पद]-final rules (@ref[8.3.15] — @deva[स्] → @deva[विसर्ग]) do not apply. The @deva[स्] is preserved before @deva[म्] of @deva[मयट्].
+
+**Scope:** This Vedic optionality applies specifically to @deva[स्]-final stems before @deva[मयट्]. It extends the @deva[भ] classification of @ref[1.4.19] to a context where classical grammar would assign @deva[पद].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[भ] from @ref[1.4.18]/@ref[1.4.19].
+
+@deva[अयस्मयादीनि छन्दसि] — forms like @deva[अयस्मय] are valid in Vedic.
+
+**Vedic @deva[भ]-extension:** @ref[1.4.19] assigns @deva[भ] to @deva[त्]/@deva[स्]-final stems before @deva[मत्वर्थीय] affixes. @deva[मयट्] ("made of X") is not @deva[मत्वर्थीय] — it's a different type of suffix. This rule extends @deva[भ] treatment to @deva[स्]-final stems before @deva[मयट्] in Vedic.
+
+**Classical vs Vedic:**
+- Classical: @deva[अयस्] is @deva[पद] before @deva[मयट्] → @deva[पद]-final @deva[स्] → @deva[विसर्ग] → @deva[ओ] before @deva[म्] → @deva[अयोमयम्]
+- Vedic: @deva[अयस्] is @deva[भ] → @deva[स्] preserved → @deva[अयस्मयम्]
+
+**End of @deva[पद]/@deva[भ] section:** @ref[1.4.14]–@ref[1.4.20] complete the @deva[पद] and @deva[भ] @deva[संज्ञा] definitions. These two terms govern the application of word-final phonological rules throughout the grammar.
+
+**Transition:** @ref[1.4.21] begins a new section — @deva[उपपद] and related syntactic @deva[संज्ञा]s, leading into the @deva[कारक] system (@ref[1.4.23]ff).
+"""

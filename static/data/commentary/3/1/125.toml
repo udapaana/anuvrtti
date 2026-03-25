@@ -1,0 +1,48 @@
+id = "3.1.125"
+numericId = "31125"
+
+[en]
+simple = """
+The affix @deva[ण्यत्] is used after roots ending in @deva[उ] when the meaning is **necessity** ('must be done').
+
+**Examples (with necessity):**
+- @deva[लु] 'to cut' + @deva[ण्यत्] = @deva[लाव्यम्] 'must be cut'
+- @deva[पु] 'to purify' + @deva[ण्यत्] = @deva[पाव्यम्] 'must be purified'
+
+**Without necessity:** @deva[यत्] is used instead:
+- @deva[लु] + @deva[यत्] = @deva[लव्यम्] 'to be cut' (general possibility)
+"""
+
+standard = """
+The affix @deva[ण्यत्] comes after roots ending in @deva[उ] (short or long) when the sense is **necessity** (@deva[आवश्यक]).
+
+This debars @deva[यत्] which would otherwise apply by @ref[3.1.97].
+
+**Derivation:**
+- @deva[लु] + @deva[ण्यत्] = @deva[लौ] + @deva[य] @ref[7.2.115] = @deva[लाव्यम्] @ref[6.1.79] 'must be cut'
+- @deva[पु] + @deva[ण्यत्] = @deva[पाव्यम्] 'must be purified'
+
+**Comparison:**
+| Meaning | Affix | Example |
+|---------|-------|--------|
+| Necessity ('must') | @deva[ण्यत्] | @deva[लाव्यम्] |
+| General possibility | @deva[यत्] | @deva[लव्यम्] |
+"""
+
+advanced = """
+The affix @deva[ण्यत्] comes after roots ending in @deva[उ] (short or long) when the sense is that of 'necessity' (@deva[आवश्यक]).
+
+This debars @deva[यत्] which would otherwise apply by @ref[3.1.97].
+
+**Derivation:**
+- @deva[लु] + @deva[ण्यत्] = @deva[लौ] @ref[7.2.115] + @deva[य] = @deva[लाव्यम्] @ref[6.1.79] 'must be cut'
+- @deva[पु] + @deva[ण्यत्] = @deva[पाव्यम्] 'must be purified'
+
+**Without necessity:** @deva[लु] + @deva[यत्] = @deva[लव्यम्] 'to be cut'
+
+**Interpretation issue:** The @[sūtra] admits two readings:
+1. @deva[ण्यत्] applies when @deva[आवश्यक] or similar word is the @deva[उपपद]
+2. @deva[ण्यत्] applies when the affix itself carries the sense of necessity
+
+**Resolution:** The second interpretation is preferred. Compounds like @deva[अवश्यलाव्यम्] are formed by the general @deva[तत्पुरुष] rule @ref[2.1.72], which also governs accent.
+"""

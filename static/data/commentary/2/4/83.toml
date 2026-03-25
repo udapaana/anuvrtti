@@ -1,0 +1,36 @@
+id = "2.4.83"
+numericId = "24083"
+
+[en]
+simple = """
+After an @deva[अव्ययीभाव] compound ending in short @deva[अ], there is no @deva[लुक्] elision of case-affixes. Instead, @deva[आम्] replaces them—except for the 5th case (ablative).
+
+**Examples:**
+- @deva[उपकुम्भं] @deva[तिष्ठति] '@deva[उपकुम्भ] is standing' (accusative @deva[आम्])
+- @deva[उपकुम्भं] @deva[पश्य] 'see the @deva[उपकुम्भ]'
+
+**Ablative (no @deva[आम्] substitution):** @deva[उपकुम्भात्] @deva[आनय] 'bring from @deva[उपकुम्भ]'
+
+**Other vowel endings (full elision):** @deva[अधिस्त्री], @deva[अधिकुमारी] (case-affixes elided, no @deva[आम्])
+"""
+
+standard = """
+After @deva[अव्ययीभाव] compounds ending in short @deva[अ], case-affixes are NOT elided by @deva[लुक्] (as @ref[2.4.82] would suggest). Instead, @deva[आम्] substitutes—except for the 5th case (ablative).
+
+**@deva[आम्] substitution (short @deva[अ]-ending):**
+- @deva[उपकुम्भं] @deva[तिष्ठति] (see @ref[2.1.6])
+- @deva[उपकुम्भं] @deva[पश्य]
+
+**Ablative exception (no @deva[आम्], original affix):**
+- @deva[उपकुम्भात्] @deva[आनय] 'bring from @deva[उपकुम्भ]'
+
+**Other vowel endings (@deva[लुक्] applies):**
+- @deva[अधिस्त्री] (ends in @deva[ई])
+- @deva[अधिकुमारी]
+
+The restriction to short @deva[अ] means other @deva[अव्ययीभाव] compounds follow @ref[2.4.82].
+"""
+
+advanced = """
+There is not @deva[लुक्] elision of the case-affix after an @deva[अव्ययीभाव] compound that ends in @deva[अ] ; @deva[आम्] is the substitute of its case-affix es, but not when it is the 5th case-affix. This debars @[luk]-elision which was to have taken place by the last @[sutra] instead of @[luk]-elision, we have @deva[आम्] added to the words ending in short @deva[अ]; for examples of this, see @[sutra] @ref[2.1.6]; as @deva[उपकुम्भं] @deva[तिष्ठति] '@[upakumbha] is standing'; @deva[उपकुम्भं] @deva[पश्य] 'see the @[upakumbha].' Why do we say 'after words ending in short @deva[अ]'? Because after @[avyayibhava] compound ending in any other vowels there is not substitution, but there is total-elision of the case-affixes; as @deva[अधिस्त्री], @deva[अधिकुमारी]. But the ablative case-affix is not elided after @[avyayibhava] compound ending in short @deva[अ], nor is there the @deva[अम्] substitution; as @deva[उपकुम्भादानय].
+"""

@@ -1,0 +1,27 @@
+id = "3.2.95"
+numericId = "32095"
+
+[en]
+simple = """
+This rule provides the affix @deva[क्वनिप्] after the verbs @deva[युध्] (to fight) and @deva[कृ] (to make) when @deva[राजन्] (king) in the accusative case is the accompanying word, and the meaning is past tense. The affix @deva[क्वनिप्] forms agent nouns meaning "one who has done X." For example, @deva[राजयुध्वा] means "one who has caused the king to fight" and @deva[राजकृत्वा] means "one who has made someone a king." A natural question arises: @deva[युध्] is intransitive -- how can it govern an accusative object like @deva[राजन्]? The answer is that the verb is understood with a latent causative sense (as if @deva[णिच्] were present), making it transitive: "to cause to fight" rather than simply "to fight." This rule matters because it demonstrates how Panini handles the interaction between affix-assignment and transitivity -- even an intransitive root can take an object when causative meaning is implied.
+"""
+
+standard = """
+This is a @deva[विधि] (operational rule) prescribing @deva[क्वनिप्] after @deva[युध्] (to fight) and @deva[कृ] (to make/do) with @deva[भूतार्थ] (past-time meaning) when @deva[राजन्] in @deva[द्वितीया] (accusative) is the @deva[उपपद] (governing word in composition). The key element @deva[कर्मणि] continues from @ref[3.2.87].
+
+Example 1: @deva[राजानं युद्धवान्] = @deva[राजयुध्वन्], nominative @deva[राजयुध्वा] -- "one who caused the king to fight." The final @deva[न्] drops by @ref[8.2.7].
+
+Example 2: @deva[राजानं कृतवान्] = @deva[राजकृत्वन्], nominative @deva[राजकृत्वा] -- "king-maker." Here @ref[6.1.71] provides @deva[तुगागम].
+
+The transitivity problem: @deva[युध्] is @deva[अकर्मक] (intransitive), yet @deva[राजन्] appears in @deva[द्वितीया]. This is resolved by treating it as @deva[अन्तर्भावितण्यर्थ] -- the causative @deva[णिच्] is latently present, making @deva[युध्] transitive (= @deva[योधयति]).
+"""
+
+advanced = """
+The @deva[अनुवृत्ति] chain: @deva[कर्मणि] from @ref[3.2.87], @deva[भूते] from @ref[3.2.84], @deva[क्वनिप्] from @ref[3.2.89]. This rule specifies the @deva[उपपद] @deva[राजन्] in @deva[द्वितीया] for the two roots @deva[युध्] and @deva[कृ].
+
+Derivation of @deva[राजयुध्वा]: @deva[राजन्] + @deva[युध्] + @deva[क्वनिप्] -> @deva[राजयुध्वन्]. Nominative: @deva[राजयुध्वन्] + @deva[सु] -> @deva[राजयुध्वा] by @ref[8.2.7] (@deva[नलोपः प्रातिपदिकान्तस्य]).
+
+Derivation of @deva[राजकृत्वा]: @deva[राजन्] + @deva[कृ] + @deva[क्वनिप्] -> @deva[राजकृत्वन्] with @deva[तुगागम] by @ref[6.1.71]. Nominative: @deva[राजकृत्वा].
+
+The @deva[अकर्मकत्व] of @deva[युध्] is overridden by @deva[अन्तर्भावितण्यर्थ]: the causative sense is implicit without actually affixing @deva[णिच्]. This is a recognized technique in the system -- cf. @ref[1.4.52] where certain verbs are treated as @deva[सकर्मक] by @deva[अन्तर्भावितण्यर्थ]. The @deva[परिभाषा] that an @deva[उपपद] in @deva[द्वितीया] requires a @deva[सकर्मक] @deva[धातु] motivates this treatment.
+"""

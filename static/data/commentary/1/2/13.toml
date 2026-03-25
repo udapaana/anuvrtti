@@ -1,0 +1,47 @@
+id = "1.2.13"
+numericId = "12013"
+
+[en]
+simple = """
+After the root @deva[गम्] "to go," the benedictive and aorist affixes in @deva[आत्मनेपद] (middle voice) are optionally treated as @deva[कित्]. When @deva[कित्], the nasal @deva[म्] of @deva[गम्] drops (by @ref[6.4.37]). When not @deva[कित्], the nasal stays. Both forms are correct.
+
+**Benedictive (both valid):** @deva[संगसीष्ट] (nasal dropped) or @deva[संगंसीष्ट] (nasal kept) — "may he unite!"
+
+**Aorist (both valid):** @deva[समगत] (nasal dropped) or @deva[समगंस्त] (nasal kept) — "he united"
+
+The root @deva[गम्] takes @deva[आत्मनेपद] after the prefix @deva[सम्] (by @ref[1.3.29]).
+"""
+
+standard = """
+After @deva[गम्] "to go," @deva[झलादि] @deva[लिङ्] and @deva[सिच्] in @deva[आत्मनेपद] are optionally @deva[कित्]. This is a @deva[विभाषा] rule.
+
+**Benedictive (@deva[आशीर्लिङ्]):**
+- @deva[सम्] + @deva[गम्] + @deva[सीष्ट]: if @deva[कित्] → nasal drops (@ref[6.4.37]) → @deva[संगसीष्ट]; if not @deva[कित्] → @deva[संगंसीष्ट]
+
+**Aorist (@deva[सिच्]):**
+- @deva[सम्] + @deva[गम्] + @deva[स्] + @deva[त]: if @deva[कित्] → nasal drops → @deva[सिच्] elided by @ref[8.2.27] → @deva[समगत]; if not @deva[कित्] → @deva[समगंस्त]
+
+**Why @deva[आत्मनेपद]?** @deva[गम्] takes @deva[आत्मनेपद] after @deva[सम्] by @ref[1.3.29].
+
+**Effect of @deva[कित्] here:** The primary effect is nasal deletion (by @ref[6.4.37] — @deva[अनुदात्तोपदेशवनतेरनुनासिकस्य] deletes the @deva[उपधा] nasal before @deva[कित्] affixes), not blocking @deva[गुण] (since @deva[गम्] has @deva[उपधा] @deva[अ], which has no @deva[गुण] distinct from itself).
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[लिङ्सिचौ] from @ref[1.2.11]; @deva[आत्मनेपदेषु] from @ref[1.2.11]; @deva[झलादि] from context.
+
+@deva[गमेर्विभाषा] — @deva[झलादि] @deva[लिङ्] and @deva[सिच्] in @deva[आत्मनेपद] are optionally @deva[कित्] after @deva[गम्].
+
+**The @deva[कित्] effect for @deva[गम्] is nasal deletion, not @deva[गुण]-blocking.** @deva[गम्] has @deva[उपधा] @deva[अ], and @deva[गुण] of @deva[अ] is @deva[अ] itself — so @deva[गुण]-blocking is vacuous. The real consequence is @ref[6.4.37]: the @deva[उपधा] nasal @deva[म्] deletes before @deva[कित्].
+
+**Benedictive derivation:**
+@deva[सम्] + @deva[गम्] + @deva[सीष्ट]:
+- @deva[कित्] option: @deva[म्] deleted by @ref[6.4.37] → @deva[सम्] + @deva[ग] + @deva[सीष्ट] → @deva[संगसीष्ट]
+- Non-@deva[कित्] option: nasal retained → @deva[संगंसीष्ट]
+
+**Aorist derivation:**
+@deva[सम्] + @deva[अट्] + @deva[गम्] + @deva[स्] + @deva[त]:
+- @deva[कित्] option: @deva[म्] deleted → short base + @deva[झल्] → @deva[सिच्] elided by @ref[8.2.27] → @deva[समगत]
+- Non-@deva[कित्] option: nasal retained → @deva[समगंस्त]
+
+**Why @deva[विभाषा]?** Both forms are attested in usage. The optional @deva[कित्] accommodates dialectal or stylistic variation.
+"""

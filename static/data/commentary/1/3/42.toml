@@ -1,0 +1,51 @@
+id = "1.3.42"
+numericId = "13042"
+
+[en]
+simple = """
+The verb @deva[क्रम्] "to step" takes @deva[आत्मनेपद] when preceded by @deva[वि] together with either @deva[प्र] or @deva[उप], and both prefixes mean "to begin."
+
+**@deva[आत्मनेपद] (beginning):**
+- @deva[प्रविक्रमते भोक्तुम्] "he begins to eat"
+- @deva[उपविक्रमते भोक्तुम्] "he begins to eat"
+
+Here @deva[प्र] and @deva[उप] are synonyms, both conveying the sense of commencement.
+
+**@deva[परस्मैपद] (not synonymous):**
+- @deva[पूर्वेद्युः प्रक्रामति अपरेद्युः उपक्रामति] "he goes in the morning, returns in the evening" — here @deva[प्र] means "go" and @deva[उप] means "return," so they are not synonymous.
+"""
+
+standard = """
+After @deva[प्र]/@deva[उप] + @deva[वि] + @deva[क्रम्] meaning "to begin," @deva[आत्मनेपद] — provided @deva[प्र] and @deva[उप] are synonymous (both meaning commencement).
+
+**Synonymous (beginning) — @deva[आत्मनेपद]:**
+- @deva[प्रविक्रमते] "he begins"
+- @deva[उपविक्रमते] "he begins"
+
+**Not synonymous — @deva[परस्मैपद]:**
+- @deva[पूर्वेद्युः प्रक्रामति अपरेद्युः उपक्रामति] — @deva[प्र] = "go forward," @deva[उप] = "return"
+
+**Why not covered by @ref[1.3.39]?** @ref[1.3.39] gives @deva[आत्मनेपद] for @deva[उप]/@deva[पर] + @deva[क्रम्] in @deva[वृत्ति]/@deva[सर्ग]/@deva[उपचय] senses. "Beginning" (@deva[आरम्भ]) is not identical to those three senses. This rule adds the double-prefix combination @deva[प्र]/@deva[उप] + @deva[वि] with the commencement meaning.
+
+**Synonym condition:** The @deva[सूत्र] specifies that @deva[प्र] and @deva[उप] must be @deva[तुल्य] (equivalent in meaning). When they diverge in sense, the rule does not apply.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12]; @deva[क्रमः] from @ref[1.3.38].
+
+@deva[प्रोपाभ्यां समर्थाभ्यामन्यतरस्याम्] — after @deva[प्र]/@deva[उप] (when synonymous) + @deva[वि] + @deva[क्रम्], @deva[आत्मनेपद].
+
+**Double-prefix structure:** This rule requires three elements: (1) @deva[वि] immediately preceding @deva[क्रम्], (2) @deva[प्र] or @deva[उप] preceding @deva[वि], (3) the two prefixes conveying the same meaning (commencement). The @deva[समर्थ] condition ensures semantic equivalence.
+
+**Relation to other @deva[क्रम्] rules:**
+- @ref[1.3.38]: prefixless, three senses
+- @ref[1.3.39]: @deva[उप]/@deva[पर], three senses
+- @ref[1.3.41]: @deva[वि], pacing
+- @ref[1.3.42] (this): @deva[प्र]/@deva[उप] + @deva[वि], beginning
+
+Each rule addresses a distinct prefix combination and meaning, showing that @deva[क्रम्]'s @deva[पद] assignment is entirely meaning-and-prefix-dependent.
+
+**@deva[अन्यतरस्याम्]:** Some commentators read this @deva[सूत्र] as giving optionality. However, the standard reading treats the @deva[आत्मनेपद] as obligatory when the conditions are met — the optionality arises only when the prefixes are not clearly synonymous.
+
+**@deva[क्रम्]-series position:** Fifth of six rules. @ref[1.3.43] (prefixless optional) completes the series.
+"""

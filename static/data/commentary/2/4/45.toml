@@ -1,0 +1,37 @@
+id = "2.4.45"
+numericId = "24045"
+
+[en]
+simple = """
+The root @deva[इण्] (to go) is replaced by @deva[गा] before @deva[लुङ्] (the aorist tense). This substitution is not optional — it applies in all voices and persons.
+
+**Examples:**
+- @deva[अगात्] "he went"
+- @deva[अगाताम्] "they two went"
+- @deva[अगुः] "they all went"
+- @deva[अगायि भवता] "you went" (@deva[आत्मनेपद])
+
+By a @deva[वार्त्तिक], this also extends to the root @deva[इक्] (to remember): @deva[अध्यगात्] "he remembered."
+"""
+
+standard = """
+@deva[गा] invariably replaces the root @deva[इण्] (to go) when @deva[लुङ्] (aorist) follows. Even though @deva[लुङ्] is available by @deva[अनुवृत्ति] from the preceding rules, its explicit repetition here signals that no option is permitted — not even in @deva[आत्मनेपद].
+
+**Examples:**
+- @deva[परस्मैपद]: @deva[अगात्], @deva[अगाताम्], @deva[अगुः]
+- @deva[आत्मनेपद]: @deva[अगायि भवता] "you went"
+
+**Derivation:** @deva[अट्] + @deva[गा] + @deva[सिच्] + @deva[त्] — the @deva[सिच्] is elided by @ref[2.4.77], yielding @deva[अगात्].
+
+A @deva[वार्त्तिक] extends @deva[गा] as the substitute of @deva[इक्] (to remember, @deva[अदादि] class): @deva[अध्यगात्], @deva[अध्यगाताम्], @deva[अध्यगुः].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[लुङि] from @ref[2.4.43].
+
+The repetition of @deva[लुङ्] in this @deva[सूत्र] — despite its availability through @deva[अनुवृत्ति] — is significant. It serves as a @deva[निवृत्ति]-marker, indicating that no option whatsoever is permitted. In both @deva[परस्मैपद] and @deva[आत्मनेपद], @deva[गा] is the invariable substitute.
+
+The derivation of @deva[अगात्] proceeds: @deva[अट्] (augment) + @deva[गा] + @deva[सिच्] + @deva[तिप्]. By @ref[2.4.77], @deva[सिच्] undergoes @deva[लुक्] elision after @deva[गा] in @deva[परस्मैपद]. The @deva[तिप्] reduces to @deva[त्], yielding @deva[अगात्].
+
+A @deva[वार्त्तिक] states that @deva[गा] also substitutes for @deva[इक्] (to remember), which belongs to the @deva[अदादि] class. Thus @deva[अध्यगात्] "he remembered," @deva[अध्यगाताम्], @deva[अध्यगुः]. See @ref[2.4.46] for the extension of @deva[इण्]-substitution to the causal.
+"""

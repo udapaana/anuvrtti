@@ -1,0 +1,46 @@
+id = "1.3.79"
+numericId = "13079"
+
+[en]
+simple = """
+The verb @deva[कृ] "to do" takes @deva[परस्मैपद] when preceded by @deva[अनु] or @deva[परा] — even when the fruit accrues to the agent or in senses that would normally trigger @deva[आत्मनेपद].
+
+**@deva[परस्मैपद] (always):**
+- @deva[अनुकरोति] "he imitates"
+- @deva[पराकरोति] "he does well / he repels"
+
+This overrides both @ref[1.3.32] (seven special senses of @deva[कृ]) and @ref[1.3.72] (@deva[ञित्] roots with agent-benefit). With @deva[अनु] or @deva[परा], @deva[कृ] is always @deva[परस्मैपदिन्].
+"""
+
+standard = """
+After @deva[अनु]/@deva[परा] + @deva[कृ], @deva[परस्मैपद] — even when the fruit accrues to the agent, and even in senses that @ref[1.3.32] would assign @deva[आत्मनेपद].
+
+**Always @deva[परस्मैपद]:**
+- @deva[अनुकरोति] "he imitates"
+- @deva[पराकरोति] "he repels / does well"
+
+**What it overrides:**
+- @ref[1.3.32]: seven special senses of @deva[कृ] → @deva[आत्मनेपद] — blocked
+- @ref[1.3.72]: @deva[ञित्] root with agent-benefit → @deva[आत्मनेपद] — blocked
+
+**Rule type — @deva[अपवाद] (exception):** This is a mandatory @deva[परस्मैपद] override, stronger than both the specific sense rules and the general @deva[स्वार्थ] rule. With @deva[अनु] or @deva[परा], @deva[कृ] loses its @deva[उभयपदिन्] status entirely.
+
+**Position:** First of the @deva[परस्मैपद] override rules (@ref[1.3.79]–@ref[1.3.84]) that follow the general system established at @ref[1.3.78].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[परस्मैपदम्] from @ref[1.3.78].
+
+@deva[अनुपराभ्यां कृञः] — after @deva[अनु]/@deva[परा] + @deva[कृ], @deva[परस्मैपद].
+
+**Double override:** This rule overrides two independent sources of @deva[आत्मनेपद]:
+1. @ref[1.3.32]: meaning-specific overrides (seven senses) — even if @deva[अनु] + @deva[कृ] falls under one of those meanings, @deva[परस्मैपद] prevails
+2. @ref[1.3.72]: @deva[ञित्] + @deva[स्वार्थ] — even if the agent benefits, @deva[परस्मैपद] prevails
+
+**Why these prefixes?** @deva[अनु] + @deva[कृ] "to imitate" and @deva[परा] + @deva[कृ] "to repel/excel" have conventionalized meanings where the self-directed quality is diminished — imitation follows another, and repelling is outward-directed.
+
+**@deva[परस्मैपद] override section (@ref[1.3.79]–@ref[1.3.84]):** After establishing the general system (@ref[1.3.12]–@ref[1.3.78]), @deva[पाणिनि] provides specific @deva[परस्मैपद] overrides for contexts where @deva[आत्मनेपद] might otherwise be expected:
+- @ref[1.3.79] (this): @deva[अनु]/@deva[परा] + @deva[कृ]
+- @ref[1.3.80]: @deva[अभि]/@deva[प्रति]/@deva[अति] + @deva[क्षिप्]
+- @ref[1.3.81]–@ref[1.3.84]: further prefix-specific overrides
+"""

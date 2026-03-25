@@ -1,0 +1,39 @@
+id = "1.1.35"
+numericId = "11035"
+
+[en]
+simple = """
+The word @deva[स्व] "own" is optionally @deva[सर्वनाम] before the nominative plural ending — but only when it means "own." When @deva[स्व] means "kinsman" or "wealth," it always declines regularly.
+
+**"Own" (option applies):** @deva[स्वे पुत्राः] or @deva[स्वाः पुत्राः] "one's own sons" — both correct.
+
+**"Kinsman" (no option):** @deva[स्वाः ज्ञातयः] "these kinsmen" — regular only.
+
+**"Wealth" (no option):** @deva[प्रभूताः स्वाः] "much wealth" — regular only.
+"""
+
+standard = """
+@deva[स्व] (already in the @deva[सर्वादि] list when meaning "own") is optionally @deva[सर्वनाम] before @deva[जस्], excluding the senses @deva[ज्ञाति] "kinsman" and @deva[धन] "wealth."
+
+**Option ("own"):** @deva[स्वे पुत्राः] ~ @deva[स्वाः पुत्राः], @deva[स्वे गावः] ~ @deva[स्वाः गावः].
+
+**No option ("kinsman"/"wealth"):** @deva[स्वाः ज्ञातयः], @deva[प्रभूताः स्वाः] — regular only.
+
+**@deva[प्राप्तविभाषा]:** @deva[स्व] is already @deva[सर्वनाम] (meaning "own"). This option restricts pronominal behavior to optional in nom. pl. only; other cases retain full pronominal declension.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[विभाषा जसि] from @ref[1.1.32]; @deva[सर्वनामानि] from @ref[1.1.27].
+
+@deva[स्वमज्ञातिधने] — @deva[स्व] is optionally @deva[सर्वनाम] before @deva[जस्] when not meaning @deva[ज्ञाति] "kinsman" or @deva[धन] "wealth."
+
+**Option:** @deva[स्वे पुत्राः] ~ @deva[स्वाः पुत्राः].
+
+**Excluded senses:** @deva[ज्ञाति]: @deva[स्वाः ज्ञातयः] — regular only. @deva[धन]: @deva[प्रभूताः स्वाः] — regular only.
+
+**@deva[प्राप्तविभाषा]:** @deva[स्व] is already in the @deva[सर्वादि] list (meaning "own"), so it is @deva[सर्वनाम] by @ref[1.1.27]. This rule makes the nom. pl. optional — other cases remain fully pronominal when @deva[स्व] means "own."
+
+**Three senses of @deva[स्व]:** (1) "own" — @deva[सर्वनाम] by @ref[1.1.27], with nom. pl. option here; (2) "kinsman" — not @deva[सर्वनाम] at all; (3) "wealth" — not @deva[सर्वनाम] at all.
+
+**Position in the series:** This is the last word-specific rule in the @deva[जसि विभाषा] block (@ref[1.1.32]–@ref[1.1.35]).
+"""

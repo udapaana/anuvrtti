@@ -1,0 +1,43 @@
+id = "1.4.43"
+numericId = "14043"
+
+[en]
+simple = """
+With @deva[दिव्] "to play, to gamble," the thing played with (like dice) can optionally be treated as @deva[कर्मन्] "object" (accusative) instead of @deva[करण] "instrument" (instrumental).
+
+Normally, dice would be the instrument — you play "with" dice. But Sanskrit allows two constructions with @deva[दिव्]:
+
+**Examples:**
+- @deva[अक्षान् दीव्यति] "he plays dice" (accusative — dice as @deva[कर्मन्])
+- @deva[अक्षैर् दीव्यति] "he plays with dice" (instrumental — dice as @deva[करण])
+
+Both are correct. The accusative construction treats the game-pieces as the object of the action; the instrumental treats them as the tool.
+"""
+
+standard = """
+With @deva[दिव्] "to play/gamble," the instrument of play is optionally @deva[कर्मन्] — @deva[दिवस्तद्व्यवहारे].
+
+**Rule type — @deva[विभाषा] (option) overriding @ref[1.4.42]:** The game-pieces, normally @deva[करण] (instrument), may optionally be treated as @deva[कर्मन्] (object).
+
+**Examples:**
+- @deva[अक्षान् दीव्यति] "he plays dice" (@deva[कर्मन्], accusative)
+- @deva[अक्षैर् दीव्यति] "he plays with dice" (@deva[करण], instrumental — default by @ref[1.4.42])
+
+**@deva[तद्व्यवहार] = "that transaction/dealing":** The rule is restricted to the sense of gambling or game-playing — @deva[दिव्] in its broader sense "to shine" does not trigger this option.
+
+**Scope:** Only the game-pieces (dice, etc.) alternate between @deva[कर्मन्] and @deva[करण]. Other participants (the opponent, the stake) retain their default @deva[कारक] assignments.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[करणम्] from @ref[1.4.42]; @deva[कारके] from @ref[1.4.23].
+
+@deva[दिवस्तद्व्यवहारे] — with @deva[दिव्] in the sense of gaming/gambling, the instrument is optionally @deva[कर्मन्].
+
+**@deva[विभाषा] mechanism:** When the option is exercised, the game-pieces become @deva[कर्मन्] and take @deva[द्वितीया] (accusative) by @ref[2.3.2]. When not exercised, they remain @deva[करण] and take @deva[तृतीया] (instrumental) by @ref[2.3.18].
+
+**@deva[तद्व्यवहार] restriction:** The @deva[तत्] refers to the gambling activity itself. This prevents the rule from applying to @deva[दिव्] in non-gaming senses (like @deva[दीव्यति] "he shines"). The restriction is semantic, not morphological.
+
+**Parallel to @ref[1.4.44]:** Both @ref[1.4.43] and @ref[1.4.44] create @deva[कर्मन्]/@deva[करण] alternations — this for gaming, @ref[1.4.44] for hiring. They form a pair of exceptions to the @deva[करण] definition.
+
+**Passivization consequence:** When @deva[कर्मन्] is chosen, passivization is possible: @deva[अक्षा दीव्यन्ते] "dice are played." When @deva[करण] is chosen, no passivization of the game-pieces occurs — only @deva[कर्मन्] can become the subject in passive.
+"""

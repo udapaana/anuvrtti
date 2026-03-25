@@ -1,0 +1,49 @@
+id = "1.2.40"
+numericId = "12040"
+
+[en]
+simple = """
+An @deva[अनुदात्त] (low-pitched) vowel that comes right before an @deva[उदात्त] (high-pitched) or @deva[स्वरित] (circumflex) vowel becomes @deva[सन्नतर] — "extra-low," even lower than normal @deva[अनुदात्त]. The pitch dips down just before it rises again.
+
+**Example:** @deva[देवा मरुतः पृश्निमातरोपः] "O gods, Maruts, sons of earth, waters!"
+- In @deva[मातरोपः] (from @deva[मातरः] + @deva[अपः]), the @deva[ओ] is @deva[अनुदात्त] and sits right before @deva[उदात्त] @deva[पः]
+- That @deva[ओ] dips to @deva[सन्नतर] — the voice drops extra-low just before jumping up to the next high syllable
+"""
+
+standard = """
+An @deva[अनुदात्त] immediately preceding @deva[उदात्त] or @deva[स्वरित] becomes @deva[सन्नतर] (extra-low) — a pitch lower than normal @deva[अनुदात्त].
+
+**Example:** @deva[देवा मरुतः पृश्निमातरोपः]
+- @deva[मातरोपः] (= @deva[मातरः] + @deva[अपः]):
+  - @deva[ओ] is @deva[अनुदात्त]
+  - @deva[पः] has @deva[उदात्त] by @ref[6.1.171]
+  - @deva[ओ] immediately precedes @deva[उदात्त] → becomes @deva[सन्नतर]
+
+**@deva[सन्नतर] is still @deva[अनुदात्त]:** It is not a fourth accent category — just a phonetic variant of @deva[अनुदात्त], distinguished by extra-low pitch. In notation, it is marked with the same @deva[अनुदात्त] line.
+
+**Phonological role:** The @deva[सन्नतर] creates a tonal "dip before the rise" — the voice drops extra-low just before jumping up to @deva[उदात्त], creating clearer tonal contrast.
+"""
+
+advanced = """
+@deva[अनुदात्तं पदमेकवर्जम्] — @deva[अनुदात्त] before @deva[उदात्त]/@deva[स्वरित] → @deva[सन्नतर].
+
+**Two interpretations in the tradition:**
+1. **@deva[एकश्रुति] does not continue:** Any @deva[अनुदात्त] immediately before @deva[उदात्त]/@deva[स्वरित] becomes @deva[सन्नतर], regardless of what precedes
+2. **@deva[एकश्रुति] continues from @ref[1.2.39]:** @deva[अनुदात्त] that has become @deva[एकश्रुति] (because it follows @deva[स्वरित]) and then immediately precedes @deva[उदात्त]/@deva[स्वरित] becomes @deva[सन्नतर] instead of staying @deva[एकश्रुति]
+
+**Derivation for the example:**
+@deva[देवा मरुतः पृश्निमातरोपः]:
+- @deva[मातरः] = @deva[अनुदात्त]
+- @deva[अपः] has @deva[उदात्त] on @deva[पः] by @ref[6.1.171] (@deva[उडिदम्पदाद्यप्पूर्वदु])
+- @deva[संहिता]: @deva[मातरः] + @deva[अपः] → @deva[मातरोपः]
+- @deva[रो] = @deva[अनुदात्त], immediately preceding @deva[उदात्त] @deva[पः] → @deva[सन्नतर]
+
+**Complete tonal picture of Vedic recitation:**
+The rules @ref[1.2.29]–@ref[1.2.40] together describe the full tonal contour:
+- @deva[उदात्त]: the peak
+- @deva[स्वरित]: the glide down after the peak
+- @deva[एकश्रुति]: the flat stretch after @deva[स्वरित] (by @ref[1.2.39])
+- @deva[सन्नतर]: the extra-low dip just before the next peak (this rule)
+
+This gives the characteristic undulating contour of Vedic recitation: flat → dip → rise → fall → flat → dip → rise...
+"""

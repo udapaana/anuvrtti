@@ -1,0 +1,29 @@
+id = "4.2.5"
+numericId = "42005"
+
+[en]
+simple = """
+After @deva[श्रवण] and @deva[अश्वत्थ] (names of asterisms/time-periods), the affix is dropped even when a specific time-portion is mentioned, provided the entire expression serves as a proper name (@deva[संज्ञा]).
+
+**Examples:** @deva[श्रवणा रात्रिः] "the night called @deva[श्रवणा]" — even though "night" is specified, the affix is elided because the whole phrase is a conventional name. Similarly, @deva[अश्वत्थो मुहूर्तः] "the @deva[मुहूर्त] called @deva[अश्वत्थ]."
+"""
+
+standard = """
+This rule extends the @deva[लुप्]-elision of @ref[4.2.4] to @deva[श्रवण] and @deva[अश्वत्थ], even when a @deva[कालविशेष] (specific time-portion) is named, with the condition that the whole expression is a @deva[संज्ञा] (proper name or fixed appellation).
+
+**Worked examples:**
+- @deva[श्रवणा रात्रिः] — the night named @[śravaṇā]. Despite "night" being specified, elision occurs because this is a conventional name.
+- @deva[अश्वत्थो मुहूर्तः] — the @[muhūrta] named @[aśvattha].
+
+**Technical note:** One might ask why @deva[श्रवणा] retains the feminine form (not @deva[श्रवण]) when the affix is elided. The answer is that @deva[लुप्]-elided affixes are @deva[स्थानिवत्] (treated as present, @ref[1.1.62]), so the gender agreement with @deva[रात्रिः] still applies. @ref[1.2.51] (which might otherwise strip the feminine) does not override this.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[लुप्] from @ref[4.2.4]; @deva[नक्षत्रेण युक्तः कालः] from @ref[4.2.3].
+
+This is a further @[apavāda] within the @deva[लुप्] framework: @ref[4.2.4] elides the affix only when @deva[अनिर्दिष्ट]; this rule extends elision to @deva[निर्दिष्ट] contexts for two specific words, conditioned on @deva[संज्ञा].
+
+The @deva[काशिका] raises the question of @ref[1.2.51] (@deva[लुप्तेऽपूर्वकृत्तद्धितसमासे]), which would predict loss of feminine marking. The resolution: @deva[लुप्] creates a @deva[स्थानिवत्] condition (@ref[1.1.62]), so the affix is notionally present, and gender assignment proceeds normally — @deva[श्रवणा] (f.) agrees with @deva[रात्रि] (f.).
+
+This block @ref[4.2.3]–@ref[4.2.6] systematically handles asterism-time derivations: @ref[4.2.3] is the general rule, @ref[4.2.4] handles unspecified time, @ref[4.2.5] handles named-time exceptions, and @ref[4.2.6] handles @deva[द्वन्द्व] compounds.
+"""

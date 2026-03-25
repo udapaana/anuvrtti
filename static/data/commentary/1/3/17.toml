@@ -1,0 +1,40 @@
+id = "1.3.17"
+numericId = "13017"
+
+[en]
+simple = """
+The verb @deva[विश्] "to enter" takes @deva[आत्मनेपद] when preceded by the prefix @deva[नि].
+
+**Examples:**
+- @deva[विशति] "he enters" (without @deva[नि] — @deva[परस्मैपद])
+- @deva[निविशते] "he settles in, enters" (with @deva[नि] — @deva[आत्मनेपद])
+- @deva[न्यविशत] "he entered in" (past tense — the augment @deva[अट्] between @deva[नि] and the root does not block the rule)
+
+**@deva[नि] must be an @deva[उपसर्ग]:** In @deva[मधुनि विशन्ति भ्रमराः] "beetles enter the honey," the @deva[नि] is part of @deva[मधुनि] (a locative case ending), not a prefix — so @deva[परस्मैपद] applies.
+"""
+
+standard = """
+After @deva[नि] + @deva[विश्] "to enter," @deva[आत्मनेपद] is used.
+
+**Examples:**
+- @deva[विशति] (no @deva[नि]) vs. @deva[निविशते] (with @deva[नि])
+- @deva[न्यविशत] (past) — the @deva[अट्] augment intervenes but does not block
+
+**@deva[उपसर्ग] requirement:** @deva[नि] must function as an @deva[उपसर्ग] (verbal prefix), not as part of another word. The @deva[परिभाषा] @deva[अर्थवद्ग्रहणेनानर्थकस्य] applies — only meaningful @deva[नि] (as prefix) qualifies. In @deva[मधुनि विशन्ति भ्रमराः], @deva[नि] is a case ending, not a prefix — @deva[परस्मैपद].
+
+**Beginning the @deva[उपसर्ग]-specific section:** From @ref[1.3.17] through @ref[1.3.21], @deva[पाणिनि] lists specific prefix + root combinations that trigger @deva[आत्मनेपद].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[आत्मनेपदम्] from @ref[1.3.12].
+
+@deva[निविशः] — after @deva[नि] + @deva[विश्], @deva[आत्मनेपद].
+
+**@deva[उपसर्ग]-specific rules begin:** @ref[1.3.17]–@ref[1.3.21] list particular prefix + root combinations for @deva[आत्मनेपद]. These supplement the general rules at @ref[1.3.12] (root-marker-based) and @ref[1.3.13] (@deva[भाव]/@deva[कर्मन्]).
+
+**@deva[अट्] intervening:** In @deva[न्यविशत] (= @deva[नि] + @deva[अट्] + @deva[विश] + @deva[त]), the @deva[अट्] augment (@ref[6.4.71]) comes between @deva[नि] and @deva[विश्]. The rule still applies because @deva[उपसर्ग] status depends on semantic connection, not physical adjacency.
+
+**@deva[उपसर्ग] vs. non-@deva[उपसर्ग]:** The @deva[परिभाषा] @deva[अर्थवद्ग्रहणेनानर्थकस्य] ensures that @deva[नि] must function as a prefix. Homophonous @deva[नि] in other roles (case ending in @deva[मधुनि]) does not trigger the rule.
+
+**Why @deva[निविश्] specifically?** @deva[विश्] is a @deva[परस्मैपदिन्] root. @deva[नि] + @deva[विश्] shifts the meaning to "settle, establish oneself" — where the action's fruit accrues to the agent. This semantic shift motivates @deva[आत्मनेपद].
+"""

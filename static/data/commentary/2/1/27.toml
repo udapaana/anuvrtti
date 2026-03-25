@@ -1,0 +1,47 @@
+id = "2.1.27"
+numericId = "21027"
+
+[en]
+simple = """
+The indeclinable @deva[सामि] "half" compounds with a past participle (@deva[क्त]-ending word) to form a @deva[तत्पुरुष] compound.
+
+**Examples:**
+- @deva[सामिकृतम्] "half-done"
+- @deva[सामिपीतम्] "half-drunk"
+- @deva[सामिभुक्तम्] "half-eaten"
+
+Like @deva[स्वयम्] in the previous rules, @deva[सामि] is an indeclinable — it cannot take case endings. So it needs its own compounding rule, since the general accusative-compound rule (@ref[2.1.24]) does not cover it.
+
+The compound looks identical to the uncompounded phrase, but makes the two words a single unit with unified accent.
+"""
+
+standard = """
+@deva[सामि] + @deva[क्तान्त] → @deva[तत्पुरुष] — @deva[सामिना].
+
+**Rule type — @deva[विधि]:** Compounding rule.
+
+**Examples:**
+- @deva[सामिकृतम्] "half-done"
+- @deva[सामिपीतम्] "half-drunk"
+- @deva[सामिभुक्तम्] "half-eaten"
+
+**Why a separate rule?** @deva[सामि] is @deva[अव्यय] — it cannot take @deva[सुप्] endings. The @deva[द्वितीया] @deva[अनुवृत्ति] from @ref[2.1.24] does not apply, just as with @deva[स्वयम्] in @ref[2.1.25]. This rule independently authorizes the compound.
+
+**Parallel to @ref[2.1.25]:** Both rules handle @deva[अव्यय] + @deva[क्तान्त] → @deva[तत्पुरुष]. The effect is single-word status (@deva[एकपद]) and unified accent by @ref[6.1.223].
+
+**@deva[सामि] vs @deva[अर्ध]:** @deva[सामि] means "half" but is distinct from @deva[अर्ध]. @deva[अर्ध] is a regular nominal and can compound under other rules.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4]; @deva[क्तेन] from @ref[2.1.24].
+
+@deva[सामिना] — @deva[सामि] compounds with a @deva[क्तान्त] word as @deva[तत्पुरुष].
+
+**@deva[द्वितीया] @deva[अनुवृत्ति] blocked:** Same situation as @ref[2.1.25] — @deva[सामि] is @deva[अव्यय], cannot be @deva[द्वितीयान्त]. The @deva[सुबन्त] qualification is satisfied via @ref[2.4.82] and @deva[स्थानिवद्भाव] (@ref[1.1.56]), as with @deva[स्वयम्].
+
+**Pattern of @ref[2.1.25]–@ref[2.1.27]:** These three rules (@deva[स्वयम्], @deva[खट्वा], @deva[सामि]) handle special first members that compound with @deva[क्तान्त] but fall outside @ref[2.1.24]'s scope. @ref[2.1.25] and @ref[2.1.27] share the @deva[अव्यय] issue; @ref[2.1.26] has the @deva[क्षेप] condition.
+
+**Scope:** Unlike @ref[2.1.25] (@deva[स्वयम्] with any @deva[क्तान्त]) and @ref[2.1.26] (@deva[खट्वा] with @deva[क्षेप] condition), this rule is unconditional — any @deva[क्तान्त] second member works with @deva[सामि].
+
+**@deva[सामि] as @deva[अव्यय]:** Listed in the @deva[स्वरादि] @deva[गण] (@ref[1.1.37]). It means "half" and appears only in compound form in classical usage — one does not normally encounter @deva[सामि] standing alone in a sentence.
+"""

@@ -1,0 +1,38 @@
+id = "3.2.2"
+numericId = "32002"
+
+[en]
+simple = """
+This rule specifies that the affix @deva[अण्] is used after three particular roots — @deva[ह्वे] (to call), @deva[वे] (to weave), and @deva[मा] (to measure) — when the object is compounded with them.
+
+For example, @deva[स्वर्गं ह्वयति] (one who calls to heaven) becomes @deva[स्वर्गह्वायः] (a caller to heaven). @deva[तन्तुं वयति] (one who weaves thread) becomes @deva[तन्तुवायः] (a weaver). @deva[धान्यं माति] (one who measures grain) becomes @deva[धान्यमायः] (a grain-measurer).
+
+Without this rule, these roots would take the affix @deva[क] instead (under @ref[3.2.3]), since they all end in the vowel @deva[आ]. This rule ensures the correct forms are produced.
+"""
+
+standard = """
+This is a @deva[विधि] (operational rule) prescribing @deva[अण्] after the roots @deva[ह्वेञ्] (to call), @deva[वेञ्] (to weave), and @deva[माङ्] (to measure) when the @deva[कर्मन्] is in composition as @deva[उपपद].
+
+This rule debars the affix @deva[क] which would otherwise apply by @ref[3.2.3], since all three roots end in long @deva[आ].
+
+Worked examples:
+
+- @deva[स्वर्गं ह्वयति] = @deva[स्वर्गह्वायः] (one who calls to heaven)
+- @deva[तन्तुं वयति] = @deva[तन्तुवायः] (weaver)
+- @deva[धान्यं माति] = @deva[धान्यमायः] (grain-measurer)
+
+Derivation of @deva[स्वर्गह्वायः]: @deva[ह्वे] + @deva[अण्] yields @deva[ह्वाय] by @ref[7.3.33], which adds the augment @deva[यक्] after @deva[आ]-final roots before @deva[णित्] affixes. The @deva[उपपद] @deva[स्वर्ग] compounds with the result to give @deva[स्वर्गह्वायः].
+"""
+
+advanced = """
+The affix @deva[अण्] is prescribed after roots @deva[हूञ्] (to call), @deva[वेञ्] (to weave), and @deva[माङ्] (to measure), when the object is in composition. This is an exception to @ref[3.2.3], which would otherwise assign @deva[क] to all @deva[आ]-final roots without a prefix.
+
+The @deva[अनुवृत्ति] of @deva[कर्मणि उपपदे] from @ref[3.2.1] continues here.
+
+Derivation of @deva[स्वर्गह्वायः]:
+@deva[स्वर्ग] + @deva[ह्वे] + @deva[अण्] = @deva[स्वर्ग] + @deva[ह्वा] + @deva[अ]. By @ref[7.3.33], augment @deva[यक्] is added after verbs ending in long @deva[आ] before a @deva[कृत्] affix with indicatory @deva[ण्], yielding @deva[ह्वाय] + @deva[अ] = @deva[स्वर्गह्वायः].
+
+Similarly: @deva[तन्तुवायः] (weaver), @deva[धान्यमायः] (grain-measurer).
+
+The reason for stating these roots separately rather than simply excluding them from @ref[3.2.3] is to make the exception explicit and to ensure @deva[अण्] (not merely the absence of @deva[क]) is prescribed, since @deva[अण्] carries the indicatory @deva[ण्] that triggers @ref[7.3.33].
+"""

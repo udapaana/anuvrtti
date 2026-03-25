@@ -1,0 +1,49 @@
+id = "2.3.25"
+numericId = "23025"
+
+[en]
+simple = """
+An abstract quality word expressing cause can optionally take the @deva[पञ्चमी] (ablative) instead of the instrumental — but only if the word is not feminine.
+
+**Examples:**
+- @deva[जाड्याद् बद्धः] or @deva[जाड्येन बद्धः] "imprisoned because of stupidity" — either ablative or instrumental
+- @deva[पाण्डित्याद् मुक्तः] or @deva[पाण्डित्येन मुक्तः] "released through learning" — either case
+
+But feminine abstract nouns take only the instrumental:
+- @deva[बुद्ध्या मुक्तः] "released through wisdom" — @deva[बुद्धि] is feminine, so only instrumental (no ablative option)
+"""
+
+standard = """
+@deva[विभाषा गुणेऽस्त्रियाम्] — a quality-word (@deva[गुणवचन]) expressing @deva[हेतु] (cause), when not feminine, optionally takes @deva[पञ्चमी].
+
+**Rule type — @deva[विभाषा]:** Optional — both @deva[पञ्चमी] and @deva[तृतीया] are valid.
+
+**Examples:**
+- @deva[जाड्याद् बद्धः] / @deva[जाड्येन बद्धः] "imprisoned due to stupidity"
+- @deva[पाण्डित्याद् मुक्तः] / @deva[पाण्डित्येन मुक्तः] "released through learning"
+
+**Two restrictions:**
+1. **@deva[गुणवचन] (quality-word):** Only abstract quality nouns qualify. Concrete nouns like @deva[धन] "wealth" take only @deva[तृतीया] under @ref[2.3.23]: @deva[धनेन कुलम्] (no ablative option).
+2. **@deva[अस्त्रियाम्] (not feminine):** Feminine abstract nouns take only @deva[तृतीया]: @deva[बुद्ध्या मुक्तः], @deva[प्रज्ञया मुक्तः] — no ablative option.
+
+**Scope:** Neuter and masculine abstract quality words (@deva[जाड्य], @deva[पाण्डित्य], @deva[शौर्य], etc.) expressing cause have the option; feminine ones (@deva[बुद्धि], @deva[प्रज्ञा], @deva[मेधा]) do not.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[हेतौ] from @ref[2.3.23]; @deva[अकर्तरि] from @ref[2.3.24]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[विभाषा गुणेऽस्त्रियाम्] — a non-feminine @deva[गुणवचन] (quality-word) expressing @deva[हेतु] optionally takes @deva[पञ्चमी].
+
+**@deva[गुणवचन] — abstract quality words:** These are @deva[भाववचन]-type words formed with suffixes like @deva[ष्यञ्] (@deva[जाड्य] from @deva[जड], @deva[पाण्डित्य] from @deva[पण्डित]), @deva[त्व] (@deva[शौर्यत्व]), @deva[तल्] (@deva[मूर्खता]), etc. They denote abstract qualities or states.
+
+**@deva[अस्त्रियाम्] — feminine exclusion:** The @deva[काशिका] explains that feminine abstract nouns are excluded from the @deva[पञ्चमी] option: @deva[बुद्ध्या मुक्तः], @deva[प्रज्ञया मुक्तः] — only @deva[तृतीया]. The restriction is based on the gender of the word, not the referent.
+
+**@deva[अकर्तरि] continues from @ref[2.3.24]:** The quality-word must not function as an instigating agent. If it does, @deva[तृतीया] applies mandatorily via @ref[2.3.18].
+
+**@deva[हेतु] cause-assignment hierarchy:**
+1. @ref[2.3.23]: @deva[तृतीया] for all cause-words — general rule
+2. @ref[2.3.24]: @deva[पञ्चमी] for debt-words as cause — mandatory override
+3. This rule: @deva[पञ्चमी] for non-feminine quality-words as cause — optional override
+
+**Practical effect:** For a word like @deva[जाड्य] (stupidity, neuter), both @deva[जाड्याद् बद्धः] and @deva[जाड्येन बद्धः] are valid. For @deva[बुद्धि] (wisdom, feminine), only @deva[बुद्ध्या मुक्तः] is valid.
+"""

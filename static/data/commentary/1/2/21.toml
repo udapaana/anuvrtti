@@ -1,0 +1,45 @@
+id = "1.2.21"
+numericId = "12021"
+
+[en]
+simple = """
+For roots whose second-to-last sound is @deva[उ], the @deva[सेट्] past participle affixes (@deva[निष्ठा]) are optionally not @deva[कित्] — but only when expressing an impersonal action (@deva[भाव]) or the beginning of an action (@deva[आदिकर्मन्]). When not @deva[कित्], @deva[गुण] (vowel strengthening) applies: @deva[उ] becomes @deva[ओ].
+
+**Both forms valid:**
+- @deva[द्युतितम्] or @deva[द्योतितम्] "it was illuminated" (from @deva[द्युत्] "to shine")
+- @deva[रुचितम्] or @deva[रोचितम्] "it was pleasing" (from @deva[रुच्] "to shine/please")
+
+**As a verbal adjective — no option:** @deva[रुचितं कार्षापणम्] "a shining coin" — here the participle describes a noun, not an impersonal action, so this rule does not apply and @deva[कित्] stays.
+"""
+
+standard = """
+@deva[सेट्] @deva[निष्ठा] (@deva[क्त], @deva[क्तवतु]) is optionally not @deva[कित्] after roots with @deva[उपधा] @deva[उ], when expressing @deva[भाव] (impersonal action) or @deva[आदिकर्मन्] (beginning of action). This is a @deva[विभाषा] rule.
+
+**Forms (both valid):**
+- @deva[द्युत्]: @deva[द्युतितम्] ~ @deva[द्योतितम्] "it was illuminated"
+- @deva[रुच्]: @deva[रुचितम्] ~ @deva[रोचितम्] "it was pleasing"
+- @deva[श्रुत्]: @deva[श्रुतितम्] ~ @deva[श्रोतितम्]
+
+**Restrictions:**
+1. **@deva[उपधा] must be @deva[उ]:** @deva[लिख्] (penultimate @deva[इ]) → @deva[लिखितम्] only — no option.
+2. **Must be @deva[भाव]/@deva[आदिकर्मन्]:** @deva[रुचितं कार्षापणम्] "a shining coin" — used as verbal adjective, not @deva[भाव], so no option applies.
+3. **Only @deva[भ्वादि] class:** Roots taking @deva[शप्] as @deva[विकरण] allow this option. @deva[दिवादि] roots like @deva[गुध्] have only one form: @deva[गुधितम्].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[सेट्] and @deva[निष्ठा] from @ref[1.2.19].
+
+@deva[उपधायामुकारस्य विभाषा भावादिकर्मणोः] — @deva[सेट्] @deva[निष्ठा] is optionally not @deva[कित्] after roots with @deva[उपधा] @deva[उ], in @deva[भाव] and @deva[आदिकर्मन्] senses.
+
+**Why @deva[उ] specifically?** Earlier rules (@ref[1.2.19]–@ref[1.2.20]) targeted individual roots. This rule generalizes: any root with penultimate @deva[उ] gets the option. The @deva[भाव]/@deva[आदिकर्मन्] restriction limits the option to specific semantic contexts — as a verbal adjective, the forms remain @deva[कित्].
+
+**@deva[भ्वादि] restriction:** The option applies only to roots of the first conjugation class (taking @deva[शप्]). @deva[दिवादि] roots (fourth class, taking @deva[श्यन्]) like @deva[गुध्] produce only @deva[गुधितम्] — no optional @deva[गुण].
+
+**Two parallel form sets:**
+| Root | @deva[कित्] (no @deva[गुण]) | Not @deva[कित्] (@deva[गुण]) |
+|------|---------------------------|-------------------------------|
+| @deva[द्युत्] | @deva[द्युतितम्] | @deva[द्योतितम्] |
+| @deva[रुच्] | @deva[रुचितम्] | @deva[रोचितम्] |
+
+**Contrast with @ref[1.2.19]:** That rule removes @deva[कित्] unconditionally for five specific roots. This rule is more conservative — it's optional, restricted to @deva[उ]-penultimate roots, and limited to @deva[भाव]/@deva[आदिकर्मन्] senses.
+"""

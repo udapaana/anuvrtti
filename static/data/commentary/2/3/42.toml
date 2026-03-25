@@ -1,0 +1,41 @@
+id = "2.3.42"
+numericId = "23042"
+
+[en]
+simple = """
+When the item being distinguished belongs to a different group from the one it is compared to, @deva[पञ्चमी] (ablative, fifth case-ending) is used for the comparison group — not @deva[षष्ठी] or @deva[सप्तमी].
+
+**Example:**
+- @deva[माथुराः पाटलिपुत्रेभ्यः सुकुमारतराः] — "The people of @deva[मथुरा] are more delicate than those of @deva[पाटलिपुत्र]." The @deva[मथुरा] people are not a subset of @deva[पाटलिपुत्र] people — they are a separate group. So the comparison group takes the ablative.
+
+This contrasts with @ref[2.3.41], where the specified item belongs to the same group (e.g., "among cows, the black one..."). Here the groups are distinct, so the ablative marks the standard of comparison.
+"""
+
+standard = """
+@deva[पञ्चमी विभक्ते] — When @deva[निर्धारण] involves a @deva[विभक्त] (separate, external) group — where the compared item does not belong to the comparison group — @deva[पञ्चमी] is used.
+
+**Rule type — @deva[विधि]:** Assigns @deva[पञ्चमी] for the comparison group in external-comparison @deva[निर्धारण], displacing the @deva[षष्ठी]/@deva[सप्तमी] option of @ref[2.3.41].
+
+**Example:**
+- @deva[माथुराः पाटलिपुत्रेभ्यः सुकुमारतराः] — "People of @deva[मथुरा] are more delicate than those of @deva[पाटलिपुत्र]." @deva[माथुर]-s are external to @deva[पाटलिपुत्रक]-s, so @deva[पञ्चमी].
+
+**Contrast with @ref[2.3.41]:** There, the individual is extracted from within the group (@deva[गवां कृष्णा] — the black one among cows). Here, two distinct groups are compared — the specified is not a member of the comparison group.
+
+**Scope:** This rule handles comparative constructions with @deva[तरप्] (comparative suffix) across different classes. It does not apply to superlative (@deva[तमप्]) constructions within a single class, which fall under @ref[2.3.41].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[निर्धारणे] from @ref[2.3.41]; @deva[अनभिहिते] from @ref[2.3.1].
+
+@deva[पञ्चमी विभक्ते] — When the item singled out is @deva[विभक्त] (separate from) the comparison group, @deva[पञ्चमी] applies, displacing @deva[षष्ठी] and @deva[सप्तमी].
+
+**@deva[विभक्त] condition:** The specified item must belong to a different class than the comparison standard. @deva[माथुर]-s are not a subset of @deva[पाटलिपुत्रक]-s — they are a distinct population. This triggers @deva[पञ्चमी] rather than the @deva[षष्ठी]/@deva[सप्तमी] of @ref[2.3.41].
+
+**Relation to @ref[2.3.41]:** Both rules handle @deva[निर्धारण], but @ref[2.3.41] covers internal specification (subset from set), while this rule covers external comparison (set vs. different set). The case-marking switches accordingly: @deva[षष्ठी]/@deva[सप्तमी] for internal, @deva[पञ्चमी] for external.
+
+**Relation to @ref[2.3.29]:** That rule teaches @deva[पञ्चमी] generally for the @deva[अपादान] (point of departure). This rule extends @deva[पञ्चमी] to a non-@deva[अपादान] context — comparative distinction across groups.
+
+**Example:** @deva[माथुराः पाटलिपुत्रेभ्यः सुकुमारतराः] — "The @deva[माथुर]-s are more delicate than the @deva[पाटलिपुत्रक]-s."
+
+**Cross-references:** @ref[2.3.41] (@deva[षष्ठी]/@deva[सप्तमी] for internal @deva[निर्धारण]), @ref[2.3.29] (@deva[पञ्चमी] for @deva[अपादान]).
+"""

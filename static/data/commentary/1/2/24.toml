@@ -1,0 +1,43 @@
+id = "1.2.24"
+numericId = "12024"
+
+[en]
+simple = """
+The @deva[सेट्] @deva[क्त्वा] ("having done") is optionally @deva[कित्] after three roots: @deva[वञ्च्] "to cheat," @deva[लुञ्च्] "to pluck," and @deva[ऋत्] "to go/dare." When @deva[कित्], the nasal of @deva[वञ्च्] and @deva[लुञ्च्] drops, and for @deva[ऋत्] the @deva[ऋ] stays unstrengthened.
+
+**Both forms valid:**
+- @deva[वचित्वा] or @deva[वञ्चित्वा] "having cheated"
+- @deva[लुचित्वा] or @deva[लुञ्चित्वा] "having plucked"
+- @deva[ऋतित्वा] or @deva[अर्तित्वा] "having dared"
+"""
+
+standard = """
+@deva[सेट्] @deva[क्त्वा] is optionally @deva[कित्] after @deva[वञ्च्] "to cheat," @deva[लुञ्च्] "to pluck," and @deva[ऋत्] "to go/dare." This is a @deva[विभाषा] rule continuing from @ref[1.2.23].
+
+**Forms (both valid):**
+- @deva[वञ्च्]: @deva[वचित्वा] (@deva[कित्], nasal dropped) ~ @deva[वञ्चित्वा] (not @deva[कित्])
+- @deva[लुञ्च्]: @deva[लुचित्वा] (@deva[कित्]) ~ @deva[लुञ्चित्वा] (not @deva[कित्])
+- @deva[ऋत्]: @deva[ऋतित्वा] (@deva[कित्], no @deva[गुण]) ~ @deva[अर्तित्वा] (not @deva[कित्], @deva[गुण]: @deva[ऋ] → @deva[अर्])
+
+**Two different @deva[कित्] effects:**
+- For @deva[वञ्च्]/@deva[लुञ्च्]: @deva[कित्] triggers nasal deletion (by @ref[6.4.24])
+- For @deva[ऋत्]: @deva[कित्] blocks @deva[गुण] (by @ref[1.1.5])
+
+**@deva[अनिट्] @deva[क्त्वा] — no option:** @deva[वच्] + @deva[क्त्वा] → @deva[वक्त्वा] only. The option applies only to @deva[सेट्] forms.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कित्] from @ref[1.2.5]; @deva[सेट्] @deva[क्त्वा] from @ref[1.2.22]; @deva[विभाषा] from @ref[1.2.23].
+
+@deva[वञ्चिलुञ्चिऋतश्च] — @deva[सेट्] @deva[क्त्वा] is optionally @deva[कित्] after @deva[वञ्च्], @deva[लुञ्च्], and @deva[ऋत्].
+
+**Mixed @deva[कित्] effects:** This rule is notable because @deva[कित्] produces different phonological results depending on the root shape:
+- @deva[वञ्च्], @deva[लुञ्च्]: nasal deletion by @ref[6.4.24] — the penultimate nasal drops
+- @deva[ऋत्]: @deva[गुण]-blocking — @deva[ऋ] stays as @deva[ऋ] instead of strengthening to @deva[अर्]
+
+**Why these three roots together?** Despite different phonological shapes, all three are roots where both the @deva[कित्] and non-@deva[कित्] forms are attested in usage. The grammar accommodates this variation through @deva[विभाषा].
+
+**@deva[ऋत्] and @deva[ईयङ्]:** When @deva[ऋत्] takes the @deva[ईयङ्] affix (by @ref[3.1.29]), this optional @deva[कित्] rule does not apply — the @deva[ईयङ्] context has its own derivation.
+
+**Position in the cluster:** @ref[1.2.23] covered roots ending in @deva[थ्]/@deva[फ्] with penultimate nasal; this rule adds three individual roots; @ref[1.2.25] will add three more (attributed to @deva[काश्यप]).
+"""

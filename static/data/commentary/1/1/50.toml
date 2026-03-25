@@ -1,0 +1,53 @@
+id = "1.1.50"
+numericId = "11050"
+
+[en]
+simple = """
+When a rule prescribes a class of sounds as a substitute, the specific sound chosen is the one most similar to the original. Similarity is determined primarily by place of articulation.
+
+**Example:** The rule says @deva[गुण] replaces @deva[इक्] vowels. But @deva[गुण] contains three vowels: @deva[अ], @deva[ए], @deva[ओ]. Which one replaces @deva[इ]? Since @deva[इ] and @deva[ए] are both palatal sounds, @deva[ए] is chosen. Similarly, @deva[उ] and @deva[ओ] are both labial, so @deva[ओ] is the @deva[गुण] of @deva[उ]. And @deva[ऋ] is retroflex, making @deva[अर्] its closest @deva[गुण].
+
+This rule is what makes the @deva[गुण] and @deva[वृद्धि] system work: each vowel gets the right substitute.
+"""
+
+standard = """
+This @deva[परिभाषासूत्र] resolves ambiguity in substitution: when a class-term names the substitute, the class member most similar (@deva[अन्तरतम]) to the original is selected.
+
+**The classic application — @deva[गुण]/@deva[वृद्धि]:**
+
+| Original (@deva[इक्]) | @deva[गुण] | @deva[वृद्धि] |
+|----------------------|-----------|------------|
+| @deva[इ/ई] | @deva[ए] | @deva[ऐ] |
+| @deva[उ/ऊ] | @deva[ओ] | @deva[औ] |
+| @deva[ऋ/ॠ] | @deva[अर्] | @deva[आर्] |
+
+**How similarity is determined — four criteria:**
+1. @deva[स्थान] (place of articulation): @deva[इ] and @deva[ए] share palatal place
+2. Meaning: for meaningful substitutes
+3. @deva[ग्रहण] (notation): proximity in grammatical listing
+4. @deva[गुण] (quality/properties): shared features
+
+**Place of articulation is primary** for sound substitutions.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[स्थाने] from @ref[1.1.49].
+
+@deva[स्थानेऽन्तरतमः] — in substitution, the closest (@deva[अन्तरतम]) member of the substitute class replaces the original.
+
+**Core application — @deva[गुण]/@deva[वृद्धि] assignment:**
+- @deva[इक्] → @deva[गुण]: @deva[इ] → @deva[ए] (both palatal), @deva[उ] → @deva[ओ] (both labial), @deva[ऋ] → @deva[अर्] (both retroflex)
+- @deva[इक्] → @deva[वृद्धि]: @deva[इ] → @deva[ऐ], @deva[उ] → @deva[औ], @deva[ऋ] → @deva[आर्]
+
+**Four types of @deva[अन्तरतम] (from the @deva[काशिका]):**
+1. @deva[स्थान] (place): @deva[इ] and @deva[ए] are both @deva[तालव्य] — proximity by articulation point
+2. @deva[अर्थ] (meaning): when substitutes are meaningful words, the semantically closest is chosen
+3. @deva[ग्रहण] (grammatical reference): proximity by order of listing
+4. @deva[गुण] (quality): shared phonetic features (voicing, aspiration, nasality)
+
+**Beyond vowels:** This rule also governs consonant substitutions. When @ref[8.4.53] (@deva[झलां जश् झशि]) prescribes @deva[जश्] for @deva[झल्], the specific @deva[जश्] consonant is determined by @deva[अन्तरतम]: @deva[क्] → @deva[ग्] (both velar), @deva[च्] → @deva[ज्] (both palatal), @deva[ट्] → @deva[ड्] (both retroflex).
+
+**Interaction with @ref[1.1.49]:** @ref[1.1.49] identifies what is being replaced (via the genitive). This rule determines which specific substitute is selected. Together, they form the complete substitution mechanism.
+
+**Why @deva[अन्तरतम] and not simply @deva[अन्तर]?** The superlative suffix emphasizes that the closest possible match must be chosen — not merely a similar one.
+"""

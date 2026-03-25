@@ -1,0 +1,46 @@
+id = "1.2.31"
+numericId = "12031"
+
+[en]
+simple = """
+A vowel that combines both raised and lowered pitch is called @deva[स्वरित] (circumflex accent). It starts high and falls — a blend of @deva[उदात्त] (high) and @deva[अनुदात्त] (low).
+
+**Example:** In @deva[कन्या] "girl" (derived from @deva[कन्] + the affix @deva[यत्]), the final @deva[आ] carries @deva[स्वरित] accent.
+
+The @deva[स्वरित] typically appears on the syllable immediately following an @deva[उदात्त] syllable — the pitch glides down from the high point.
+"""
+
+standard = """
+A vowel combining @deva[उदात्त] and @deva[अनुदात्त] is @deva[स्वरित] (circumflex). This is a @deva[संज्ञा] rule, completing the three accent definitions begun at @ref[1.2.29].
+
+**Phonetic description:** The pitch starts high and falls within the same vowel — a gliding tone, not simply "medium."
+
+**In notation:** @deva[स्वरित] is marked with a vertical line above in Vedic texts.
+
+**Examples:**
+- @deva[कन्या] — the @deva[आ] is @deva[स्वरित] (affix @deva[यत्] has indicatory @deva[त्], triggering @deva[स्वरित] by @ref[6.1.185])
+- @deva[शिक्यम्] — the @deva[अ] is @deva[स्वरित]
+
+**Two types of @deva[स्वरित]:**
+1. **@deva[जात्य]** (inherent): on diphthongs @deva[ए], @deva[ऐ], @deva[ओ], @deva[औ] — which result from combining @deva[उदात्त] and @deva[अनुदात्त] vowels
+2. **@deva[क्षैप्र]** (derived): on the syllable following @deva[उदात्त] — the pitch "falls" from the peak
+"""
+
+advanced = """
+@deva[समाहारः स्वरितः] — a vowel combining @deva[उदात्त] and @deva[अनुदात्त] is @deva[स्वरित].
+
+**@deva[संज्ञा] rule:** Completes the triad: @ref[1.2.29] (@deva[उदात्त]), @ref[1.2.30] (@deva[अनुदात्त]), this rule (@deva[स्वरित]).
+
+**@deva[समाहार] ("combination"):** The @deva[स्वरित] is not a third independent pitch but a composite — part @deva[उदात्त], part @deva[अनुदात्त]. The next rule (@ref[1.2.32]) specifies the exact proportion.
+
+**Types of @deva[स्वरित]:**
+- **@deva[जात्य स्वरित]:** Inherent on @deva[एच्] vowels (@deva[ए], @deva[ऐ], @deva[ओ], @deva[औ]) — these are phonologically derived from combining an @deva[उदात्त] vowel with an @deva[अनुदात्त] vowel (e.g., @deva[अ] + @deva[इ] = @deva[ए])
+- **@deva[क्षैप्र स्वरित]:** The syllable immediately after an @deva[उदात्त] — the pitch "throws" down from the peak
+- **@deva[प्रश्लिष्ट स्वरित]:** Resulting from coalescence of an @deva[उदात्त] vowel with a following @deva[अनुदात्त] vowel in external @deva[सन्धि]
+
+**Accent assignment rules that produce @deva[स्वरित]:**
+- @ref[6.1.185]: affixes with indicatory @deva[त्] have @deva[स्वरित] on their first vowel
+- @ref[8.2.4]–@ref[8.2.6]: @deva[स्वरित] on the syllable after @deva[उदात्त] in connected speech
+
+**Role in the grammar:** While @deva[उदात्त] and @deva[अनुदात्त] are the primary accents, @deva[स्वरित] plays a crucial role in Vedic recitation and in sandhi accent rules. The @deva[अष्टाध्यायी] dedicates significant portions of @deva[अष्टम अध्याय] to accent placement in sentences.
+"""

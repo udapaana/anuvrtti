@@ -1,0 +1,44 @@
+id = "1.2.3"
+numericId = "12003"
+
+[en]
+simple = """
+After the root @deva[ऊर्णु] "to cover," affixes that receive the @deva[इट्] augment are optionally treated as @deva[ङित्]. This means either form is correct — with or without @deva[गुण] (vowel strengthening).
+
+**Both forms valid:** @deva[प्र] + @deva[ऊर्णु] + @deva[तृच्] (with @deva[इट्]) → @deva[प्रोर्णुविता] (no @deva[गुण]) or @deva[प्रोर्णविता] (@deva[गुण]) — both mean "he will cover."
+
+When the affix does not take @deva[इट्], there is no option — @deva[गुण] always applies: @deva[प्र] + @deva[ऊर्णु] + @deva[ल्युट्] → @deva[प्रोर्णवनम्] "covering."
+"""
+
+standard = """
+After @deva[ऊर्णु] "to cover," @deva[इडादि] affixes are optionally @deva[ङित्]. This is a @deva[विभाषा] (optional) rule.
+
+**With @deva[इट्] — two valid forms:**
+- @deva[प्र] + @deva[ऊर्णु] + @deva[इ] + @deva[ता]: @deva[प्रोर्णुविता] (treating as @deva[ङित्], no @deva[गुण]) or @deva[प्रोर्णविता] (not @deva[ङित्], @deva[गुण] applies)
+
+**Derivation:** @deva[प्र] + @deva[ऊर्णु] → @deva[प्रोर्णु] (by @deva[वृद्धि] sandhi). Then @deva[उ] → @deva[उव्] before the vowel-initial @deva[इट्] (by @ref[6.4.77]). If @deva[ङित्]: @deva[प्रोर्णुविता]. If not @deva[ङित्]: @deva[उ] → @deva[ओ] → @deva[अव्] → @deva[प्रोर्णविता].
+
+**Without @deva[इट्] — no option, @deva[गुण] applies:**
+- @deva[प्र] + @deva[ऊर्णु] + @deva[ल्युट्] → @deva[प्रोर्णवनम्] "covering"
+- @deva[प्रोर्णवनीयम्] "which ought to be covered"
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[ङित्] from @ref[1.2.1]; @deva[इडादि] from @ref[1.2.2].
+
+@deva[ऊर्णोर्विभाषा] — @deva[इडादि] affixes after @deva[ऊर्णु] are optionally @deva[ङित्].
+
+**This concludes the @deva[इडादि]-specific @deva[ङित्] rules.** The three-rule sequence shows a gradient:
+- @ref[1.2.1]: obligatory @deva[ङित्] for @deva[गाङ्]/@deva[कुटादि] (all affixes, not just @deva[इडादि])
+- @ref[1.2.2]: obligatory @deva[ङित्] for @deva[विज्] (@deva[इडादि] only)
+- @ref[1.2.3] (this rule): optional @deva[ङित्] for @deva[ऊर्णु] (@deva[इडादि] only)
+
+**Derivation detail:**
+@deva[प्र] + @deva[ऊर्णु] + @deva[इ] + @deva[ता]:
+1. @deva[प्र] + @deva[ऊ] → @deva[प्रो] (sandhi)
+2. @deva[उ] before vowel-initial @deva[इट्] → @deva[उव्] by @ref[6.4.77]
+3. If @deva[ङित्]: @deva[उ] protected → @deva[प्रोर्णुविता]
+4. If not @deva[ङित्]: @deva[गुण] of @deva[उ] → @deva[ओ] → @deva[अव्] → @deva[प्रोर्णविता]
+
+**Why @deva[विभाषा] here?** The root @deva[ऊर्णु] belongs to a class where both strengthened and unstrengthened forms are attested in usage. The grammar accommodates both by making the @deva[ङित्] treatment optional.
+"""

@@ -1,0 +1,46 @@
+id = "2.3.73"
+numericId = "23073"
+
+[en]
+simple = """
+When a blessing (@deva[आशीर्वाद]) is expressed using specific auspicious words — @deva[आयुष्] (long life), @deva[मद्र] (joy), @deva[भद्र] (good fortune), @deva[कुशल] (welfare), @deva[सुख] (happiness), @deva[अर्थ] (prosperity), @deva[हित] (good) — the person being blessed can take either the dative (@deva[चतुर्थी]) or the genitive (@deva[षष्ठी]).
+
+**Examples:**
+- @deva[आयुष्यं देवदत्ताय भूयात्] or @deva[आयुष्यं देवदत्तस्य भूयात्] — 'may there be long life for @[devadatta]'
+- @deva[भद्रं देवदत्ताय भूयात्] or @deva[भद्रं देवदत्तस्य भूयात्] — 'may there be good fortune for @[devadatta]'
+
+The optionality only applies when a blessing is intended. In a plain statement — @deva[आयुष्यं देवदत्तस्य तपः] ('the austerity is the source of @[devadatta]'s long life') — the genitive is used as a matter of course, and the dative is not an option because no blessing is being made.
+
+This is the last rule of the entire case-assignment section that began at @ref[2.3.1]. It fittingly ends with words of blessing.
+"""
+
+standard = """
+**Rule type:** @[vidhi] (operational rule) with optionality.
+
+With the words @deva[आयुष्] ('long life'), @deva[मद्र] ('joy'), @deva[भद्र] ('good fortune'), @deva[कुशल] ('welfare'), @deva[सुख] ('happiness'), @deva[अर्थ] ('prosperity'), and @deva[हित] ('good') — when @deva[आशीर्वाद] (blessing) is intended — the beneficiary optionally takes @deva[चतुर्थी] (dative) or @deva[षष्ठी] (genitive).
+
+**Condition:** The @deva[आशीर्वाद] requirement is essential. Without it, the rule does not apply.
+
+**Examples (blessing — either case):**
+- @deva[आयुष्यं देवदत्ताय भूयात्] / @deva[आयुष्यं देवदत्तस्य भूयात्] — 'may there be long life for @[devadatta]'
+- @deva[भद्रं देवदत्ताय भूयात्] / @deva[भद्रं देवदत्तस्य भूयात्]
+- @deva[कुशलं देवदत्ताय भूयात्] / @deva[कुशलं देवदत्तस्य भूयात्]
+- @deva[सुखं देवदत्ताय भूयात्] / @deva[सुखं देवदत्तस्य भूयात्]
+
+**Non-blessing context (genitive only):**
+- @deva[आयुष्यं देवदत्तस्य तपः] — 'the austerity is the cause of @[devadatta]'s long life' — no blessing, so @deva[षष्ठी] by @ref[2.3.50] (@deva[शेषे षष्ठी]); the dative option is not available
+"""
+
+advanced = """
+**@[anuvṛtti]:** @deva[षष्ठी] (from @ref[2.3.50]), @deva[अन्यतरस्याम्] (from @ref[2.3.72] via @ref[2.3.71]).
+
+This is the final @[sūtra] of @[pāda] 2.3, and therefore the last rule of the entire @deva[विभक्ति]-assignment section that began with @ref[2.3.1] (@deva[अनभिहिते]). The @deva[अधिकार] of @ref[2.3.1] — that case-affixes apply when the @deva[कारक] relation is not already expressed by another element — governs every rule from @ref[2.3.1] through this @[sūtra].
+
+The seven words enumerated (@deva[आयुष्], @deva[मद्र], @deva[भद्र], @deva[कुशल], @deva[सुख], @deva[अर्थ], @deva[हित]) form a closed list. The @deva[आशीर्वाद] condition restricts the optionality to benedictive contexts — typically optative (@deva[लिङ्]) sentences. Without the blessing sense, the @deva[चतुर्थी] option disappears, and case-assignment follows the normal rules (typically @deva[षष्ठी] by @ref[2.3.50]).
+
+The @deva[अन्यतरस्याम्] here licenses alternation between @deva[चतुर्थी] and @deva[षष्ठी], unlike @ref[2.3.72] where it was between @deva[तृतीया] and @deva[षष्ठी]. The optionality marker is flexible — it signals alternation with whichever other case is contextually relevant.
+
+**@[vārttika]:** Synonyms of the enumerated words are also included: @deva[चिरं जीवितम्] ('long life'), @deva[निरामयम्] ('freedom from disease'), @deva[शम्] ('peace'), @deva[प्रयोजनम्] ('benefit'), @deva[पथ्यम्] ('what is wholesome'). This extension ensures that the semantic category of auspicious blessing-words is not artificially limited by the surface enumeration.
+
+Cross-reference @ref[2.3.1] for the @deva[अनभिहिते] @deva[अधिकार] that governs this entire section, @ref[2.3.13] for the general @deva[चतुर्थी] rule for @deva[सम्प्रदान], and @ref[2.3.50] for the default @deva[षष्ठी शेषे] assignment. The next @[pāda] (@ref[2.4.1]) moves to a different domain entirely.
+"""

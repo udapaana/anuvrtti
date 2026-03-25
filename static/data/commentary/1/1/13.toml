@@ -1,0 +1,37 @@
+id = "1.1.13"
+numericId = "11013"
+
+[en]
+simple = """
+In Vedic Sanskrit, the affix @deva[शे] sometimes replaces ordinary case endings. This @deva[ए]-ending affix is @deva[प्रगृह्य] — it does not undergo @deva[सन्धि] with the next word. (The @deva[श्] is just a grammatical marker; the actual sound is @deva[ए].)
+
+This is a Vedic-specific rule. It ensures that forms ending in @deva[शे] preserve their identity at word boundaries in Vedic recitation.
+
+**Example:** @deva[अस्मे इन्द्राबृहस्पती] — the @deva[ए] of @deva[अस्मे] does not combine with the @deva[इ] of @deva[इन्द्रा].
+"""
+
+standard = """
+The Vedic affix @deva[शे], prescribed by @ref[7.1.39] as a replacement for @deva[सुप्] (nominal case) endings, is @deva[प्रगृह्य].
+
+The @deva[श्] is @deva[इत्] (indicatory) by @ref[1.3.8], so the actual affix is just @deva[ए]. This @deva[ए] does not undergo @deva[सन्धि] before a following vowel.
+
+**Vedic example:** @deva[अस्मे इन्द्राबृहस्पती] — "for us, O @deva[इन्द्र] and @deva[बृहस्पति]"
+
+**Later imitation:** Forms like @deva[त्वे इति], @deva[युष्मे इति], @deva[मे इति] in post-Vedic usage also preserve the hiatus.
+
+**Why a separate rule?** @ref[1.1.11] covers dual @deva[ए]-endings. @deva[शे] is not a dual ending — it replaces case endings across numbers. Without this rule, @deva[शे]-final forms would undergo normal @deva[सन्धि].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[प्रगृह्यम्] from @ref[1.1.11].
+
+@deva[शे] — the Vedic affix @deva[शे] is @deva[प्रगृह्य]. @ref[7.1.39] prescribes @deva[शे] as a substitute for @deva[सुप्] endings in Vedic. The @deva[श्] is @deva[इत्] by @ref[1.3.8]; the operative affix is @deva[ए].
+
+**Why this rule exists:** @ref[1.1.11] makes dual @deva[ए]-endings @deva[प्रगृह्य]. But @deva[शे] is not limited to dual — it replaces case endings across all numbers. The @deva[ए] in @deva[शे] is an affix-vowel, not a case-ending vowel, so @ref[1.1.11] does not cover it. This rule fills that gap.
+
+**Vedic attestation:** @deva[अस्मे इन्द्राबृहस्पती] — the @deva[ए] of @deva[अस्मे] remains before @deva[इ], producing hiatus rather than @deva[सन्धि].
+
+**Post-Vedic extension:** Forms modeled on Vedic usage — @deva[त्वे इति], @deva[युष्मे इति], @deva[मे इति] — also behave as @deva[प्रगृह्य]. The @deva[काशिका] discusses whether these secular imitations genuinely carry @deva[शे] or merely imitate the pattern.
+
+**Interaction with @ref[6.1.125]:** As with all @deva[प्रगृह्य] vowels, the actual blocking of @deva[सन्धि] is performed by @ref[6.1.125] (@deva[प्लुतप्रगृह्या अचि नित्यम्]). This rule only assigns the @deva[प्रगृह्य] label.
+"""

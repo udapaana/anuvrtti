@@ -1,0 +1,48 @@
+id = "1.4.50"
+numericId = "14050"
+
+[en]
+simple = """
+Even what the agent does not desire — but is similarly affected by the action — is also called @deva[कर्मन्] "object."
+
+@ref[1.4.49] defines @deva[कर्मन्] as what the agent most wants to reach. But what about unintended results? If someone accidentally eats poison or unwillingly sees thieves, the poison and thieves are still the objects of the action.
+
+**Examples:**
+- @deva[विषं भक्षयति] "he eats poison" (he didn't intend to, but poison is still @deva[कर्मन्])
+- @deva[चोरान् पश्यति] "he sees thieves" (he didn't want to, but thieves are still @deva[कर्मन्])
+
+Without this rule, unintended objects would have no @deva[कारक] assignment — the grammar would break down for any accidental or involuntary action.
+"""
+
+standard = """
+What is not desired but is similarly connected with the action is also @deva[कर्मन्] — @deva[तथायुक्तं चानीप्सितम्].
+
+**Rule type — @deva[संज्ञा] extension of @ref[1.4.49]:** Extends @deva[कर्मन्] from intended to unintended objects.
+
+**Examples:**
+- @deva[विषं भक्षयति] "he eats poison" (unintended consumption)
+- @deva[चोरान् पश्यति] "he sees thieves" (unintended perception)
+- @deva[सर्पं पदा स्पृशति] "he touches a snake with his foot" (unintended contact)
+
+**@deva[तथायुक्त] = "similarly connected":** The unintended object bears the same grammatical relation to the verb as an intended one would. Poison is "eaten" just as food is; thieves are "seen" just as friends are.
+
+**@deva[अनीप्सित] = "not desired":** Contrasts with @deva[ईप्सिततम] (most desired) in @ref[1.4.49]. Together, the two rules ensure @deva[कर्मन्] covers the full range — from fully intended to completely unintended.
+
+**Why a separate rule?** @ref[1.4.49] defines @deva[कर्मन्] through agent's desire. Without @ref[1.4.50], accidental objects would fail the @deva[ईप्सिततम] test and receive no @deva[कारक].
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कर्म] from @ref[1.4.49]; @deva[कारके] from @ref[1.4.23].
+
+@deva[तथायुक्तं चानीप्सितम्] — and what is undesired but similarly connected is also @deva[कर्मन्].
+
+**@deva[तथायुक्त] = "connected in the same way":** The @deva[तथा] refers back to the relationship described in @ref[1.4.49] — the object bears the same syntactic relation to the verb. The unintended object occupies the same structural slot as an intended one; only the agent's volition differs.
+
+**@deva[च] = "and":** Adds this as a second route to @deva[कर्मन्] status — alongside @deva[ईप्सिततम] (most desired), @deva[अनीप्सित] (undesired) also qualifies. The two rules are complementary, not alternative.
+
+**What about neutral objects?** Between "most desired" and "not desired" lies "indifferent." The @deva[काशिका] notes that @deva[अनीप्सित] covers both actively unwanted and merely indifferent objects. Any object that fails the @deva[ईप्सिततम] test falls to this rule.
+
+**Interaction with @ref[1.4.51]–@ref[1.4.52]:** The causative extensions (@ref[1.4.51]–@ref[1.4.52]) add another dimension: the original agent becomes @deva[कर्मन्] in causative constructions. That agent may or may not desire the action — @ref[1.4.50] ensures coverage regardless.
+
+**Philosophical significance:** This rule reflects @deva[पाणिनि]'s commitment to complete grammatical coverage. The grammar must handle all sentences, not just those describing intentional actions.
+"""

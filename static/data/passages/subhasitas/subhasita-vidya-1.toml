@@ -1,0 +1,51 @@
+id = "subhasita-vidya-1"
+source = "subhasitas"
+reference = "vidyā.1"
+title = "The Fruit of Learning"
+sanskrit = """
+विद्या ददाति विनयं विनयाद्याति पात्रताम् ।
+पात्रत्वाद्धनमाप्नोति धनाद्धर्मं ततः सुखम् ॥
+"""
+padaccheda = "विद्या ददाति विनयम् विनयात् याति पात्रताम् पात्रत्वात् धनम् आप्नोति धनात् धर्मम् ततः सुखम्"
+transliteration = """
+vidyā dadāti vinayaṃ vinayād yāti pātratām |
+pātratvād dhanam āpnoti dhanād dharmaṃ tataḥ sukham ||
+"""
+translation = "Learning gives humility; from humility comes worthiness; from worthiness one obtains wealth; from wealth, dharma; and from that, happiness."
+difficulty = 1
+meterInfo = "anuṣṭubh (8 syllables per quarter)"
+prerequisiteGrammar = ["vibhakti-ablative", "tinganta-lat"]
+
+[[sutraRefs]]
+sutraId = "2.3.28"
+label = "Ablative of cause"
+relevantText = "विनयात्"
+[[sutraRefs]]
+sutraId = "3.2.123"
+label = "लट् (present tense)"
+relevantText = "ददाति"
+[[sutraRefs]]
+sutraId = "5.1.119"
+label = "तल् (abstract suffix)"
+relevantText = "पात्रताम्"
+
+[[vocabulary]]
+wordId = "daa"
+formInText = "ददाति"
+formRoman = "dadāti"
+glossHint = "gives (3rd class present)"
+[[vocabulary]]
+wordId = "gam"
+formInText = "याति"
+formRoman = "yāti"
+glossHint = "goes, comes (root class present)"
+
+grammarNotes = """
+A chain of ablatives showing cause and effect:
+
+1. **Ablative of source/cause**: विनयात्, पात्रत्वात्, धनात् - "from X" showing what leads to what
+
+2. **Abstract noun formation**: पात्रता "worthiness" (from पात्र + ता suffix)
+
+3. **Present tense verbs**: ददाति (√दा, 3rd class), याति (√या), आप्नोति (√आप्, 5th class)
+"""

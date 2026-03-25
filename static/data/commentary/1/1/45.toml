@@ -1,0 +1,60 @@
+id = "1.1.45"
+numericId = "11045"
+
+[en]
+simple = """
+When a semivowel (@deva[य्], @deva[व्], @deva[र्], @deva[ल्]) in a root is replaced by its corresponding vowel (@deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ]), that replacement is called @deva[सम्प्रसारण]. Each semivowel has a matching vowel:
+
+| Semivowel | → Vowel |
+|-----------|---------|
+| @deva[य्] | @deva[इ] |
+| @deva[व्] | @deva[उ] |
+| @deva[र्] | @deva[ऋ] |
+| @deva[ल्] | @deva[ऌ] |
+
+**Example:** @deva[स्वप्] "to sleep" + @deva[क्त] → @deva[सुप्तः] "slept." The @deva[व्] of @deva[स्वप्] is replaced by @deva[उ] — this is @deva[सम्प्रसारण].
+"""
+
+standard = """
+This @deva[संज्ञासूत्र] defines @deva[सम्प्रसारण]: an @deva[इक्] vowel (@deva[इ], @deva[उ], @deva[ऋ], @deva[ऌ]) that replaces a @deva[यण्] semivowel (@deva[य्], @deva[व्], @deva[र्], @deva[ल्]).
+
+**The correspondence is by place of articulation:**
+- @deva[य्] (palatal semivowel) → @deva[इ] (palatal vowel)
+- @deva[व्] (labial semivowel) → @deva[उ] (labial vowel)
+- @deva[र्] (retroflex semivowel) → @deva[ऋ] (retroflex vowel)
+- @deva[ल्] (dental semivowel) → @deva[ऌ] (dental vowel)
+
+**Examples:**
+- @deva[स्वप्] + @deva[क्त] → @deva[सुप्तः] "slept" (@deva[व्] → @deva[उ])
+- @deva[यज्] + @deva[क्त] → @deva[इष्टम्] "sacrificed" (@deva[य्] → @deva[इ])
+- @deva[ग्रह्] + @deva[क्त] → @deva[गृहीतम्] "taken" (@deva[र्] → @deva[ऋ])
+- @deva[वच्] → @deva[उक्तम्] "spoken" (@deva[व्] → @deva[उ])
+
+**What triggers it?** Rules like @ref[6.1.15] (@deva[वचिस्वपियजादीनां किति]) prescribe @deva[सम्प्रसारण] for specific roots before @deva[कित्] affixes.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: None — this is an independent @deva[संज्ञासूत्र].
+
+@deva[इग्यणः सम्प्रसारणम्] — an @deva[इक्] vowel replacing a @deva[यण्] consonant is @deva[सम्प्रसारण]. The genitive @deva[यणः] means "of @deva[यण्]" — the @deva[इक्] is a substitute for the @deva[यण्].
+
+**Correspondence:**
+
+| @deva[यण्] | @deva[इक्] | Place |
+|-----------|-----------|-------|
+| @deva[य्] | @deva[इ] | @deva[तालव्य] (palatal) |
+| @deva[व्] | @deva[उ] | @deva[ओष्ठ्य] (labial) |
+| @deva[र्] | @deva[ऋ] | @deva[मूर्धन्य] (retroflex) |
+| @deva[ल्] | @deva[ऌ] | @deva[दन्त्य] (dental) |
+
+**Rules that prescribe @deva[सम्प्रसारण]:**
+- @ref[6.1.15] (@deva[वचिस्वपियजादीनां किति]): before @deva[कित्] affixes — @deva[वच्] → @deva[उक्], @deva[स्वप्] → @deva[सुप्], @deva[यज्] → @deva[इज्]
+- @ref[6.1.13]: @deva[सम्प्रसारण] of specific roots in specific contexts
+- @ref[6.4.131]–@ref[6.4.137]: @deva[सम्प्रसारण] in @deva[लिट्] (perfect tense)
+
+**Post-@deva[सम्प्रसारण] operations:** After the @deva[इक्] replaces @deva[यण्], further rules apply:
+- @ref[6.1.108] (@deva[सम्प्रसारणाच्च]): the @deva[सम्प्रसारण] vowel combines with any following vowel by @deva[पूर्वरूप]
+- @deva[स्वप्] → @deva[सुअप्] → @deva[सुप्] (by vowel coalescence) → @deva[सुप्तः]
+
+**Why the label?** @deva[सम्प्रसारण] is needed as a @deva[संज्ञा] because @ref[6.1.108] and other rules specifically reference it. Without the label, these post-replacement operations could not be stated.
+"""

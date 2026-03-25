@@ -1,0 +1,47 @@
+id = "2.1.29"
+numericId = "21029"
+
+[en]
+simple = """
+A time-word in the accusative **optionally** compounds with any case-inflected word to form @deva[तत्पुरुष] when the meaning is complete duration (@deva[अत्यन्तसंयोग]) — something lasting throughout that entire time period.
+
+**Examples:**
+- @deva[मुहूर्तसुखम्] "momentary pleasure" — pleasure lasting for the span of a @deva[मुहूर्त]
+- @deva[सर्वरात्रकल्याणी] "auspicious all night long"
+- @deva[सर्वरात्रशोभना] "beautiful throughout the night"
+
+The previous rule (@ref[2.1.28]) covered time-words with past participles at a point in time. This rule covers time-words expressing how long something lasts, and the second member can be any word — not just a past participle.
+"""
+
+standard = """
+@deva[कालवाचक] (@deva[द्वितीयान्त]) + @deva[सुबन्त] → @deva[विभाषा] @deva[तत्पुरुष] when @deva[अत्यन्तसंयोग] (uninterrupted connection throughout that duration) is meant — @deva[अत्यन्तसंयोगे च].
+
+**Rule type — @deva[विधि] (@deva[विभाषा]):** Optional compounding under @ref[2.1.11].
+
+**Examples:**
+- @deva[मुहूर्तसुखम्] "momentary pleasure" — pleasure persisting for the entire @deva[मुहूर्त]
+- @deva[सर्वरात्रकल्याणी] "auspicious all night"
+- @deva[सर्वरात्रशोभना] "beautiful throughout the night"
+
+**Contrast with @ref[2.1.28]:** @ref[2.1.28] = point-in-time + @deva[क्तान्त] only. This rule = duration + any @deva[सुबन्त]. The @deva[अत्यन्तसंयोग] condition means the quality or state persists continuously through the time span.
+
+**Wider second member:** The @deva[क्तेन] restriction from @ref[2.1.24]–@ref[2.1.28] is dropped here. The second member can be any @deva[सुबन्त] — adjectives like @deva[कल्याणी], @deva[शोभना], @deva[सुख], etc.
+
+**Accent:** @ref[6.2.2] governs the accent of these compounds.
+"""
+
+advanced = """
+@deva[अनुवृत्ति]: @deva[कालाः] from @ref[2.1.28]; @deva[तत्पुरुषः] from @ref[2.1.22]; @deva[विभाषा] from @ref[2.1.11]; @deva[समासः] from @ref[2.1.3]; @deva[सुप् सुपा] from @ref[2.1.4].
+
+@deva[अत्यन्तसंयोगे च] — time-words in @deva[द्वितीया] optionally compound with any @deva[सुबन्त] as @deva[तत्पुरुष] when @deva[अत्यन्तसंयोग] is meant.
+
+**@deva[च] and the @deva[क्तान्त] restriction:** The @deva[च] ("and") signals that @deva[अत्यन्तसंयोग] is being added to the @deva[कालाः] domain from @ref[2.1.28]. Crucially, @deva[क्तेन] does NOT continue here — the @deva[काशिका] explicitly notes that the second member is @deva[सुबन्त] generally. This is why @deva[सुख], @deva[कल्याणी], @deva[शोभना] (non-@deva[क्तान्त] words) can appear as second members.
+
+**@deva[अत्यन्तसंयोग] defined:** "Unbroken connection" — the quality denoted by the second member persists without interruption through the entire time period. @deva[मुहूर्तसुखम्] = pleasure that fills the whole @deva[मुहूर्त], not pleasure that merely occurs at a @deva[मुहूर्त].
+
+**@deva[द्वितीया] for duration:** The accusative of time duration (@deva[कालाध्वनोरत्यन्तसंयोगे] by @ref[2.3.5]) is the @deva[कारक] basis. The time-word stands in @deva[द्वितीया] because it expresses the extent of the action/quality.
+
+**Scope of @deva[कालाः]:** Same as @ref[2.1.28] — actual temporal nouns (@deva[मुहूर्त], @deva[रात्रि], @deva[अहन्], etc.), carried by @deva[अनुवृत्ति].
+
+**Accent:** @ref[6.2.2] applies — these @deva[द्वितीया] @deva[तत्पुरुष] compounds retain the accent of the first member.
+"""
