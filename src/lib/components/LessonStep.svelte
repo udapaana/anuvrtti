@@ -278,8 +278,8 @@
       <div class="flex items-center gap-3 bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3">
         <div class="flex-1 text-sm {showTelugu ? 'font-telugu text-indigo-900' : 'text-indigo-800'}">
           {showTelugu
-            ? 'అన్ని ఉదాహరణలు మీరు ఎంచుకున్న లిపిలో కనిపిస్తాయి — పై కుడి మూలలో లిపిని మార్చండి.'
-            : 'All examples display in your chosen script. Use the script selector in the top-right corner ↗ to switch scripts.'}
+            ? 'అన్ని ఉదాహరణలు మీరు ఎంచుకున్న లిపిలో కనిపిస్తాయి — పై కుడి మూలలో లిపిని మార్చండి. వ్యాఖ్యాన భాషను కూడ ఎంచుకోవచ్చు.'
+            : 'All examples display in your chosen script. Use the script selector in the top-right corner ↗ to switch scripts. Use the language selector to choose the language of discourse.'}
         </div>
       </div>
     {/if}

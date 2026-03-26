@@ -495,35 +495,19 @@
         <!-- End of path marker + prev/next nav -->
         <div class="pt-8 border-t border-stone-100">
           {#if siblingPaths.prev || siblingPaths.next}
-            <div class="flex items-center justify-between gap-4 mb-6">
+            <div class="flex items-center justify-between gap-4 mb-6 text-xs text-stone-400">
               {#if siblingPaths.prev}
-                <a
-                  href="/learn/{siblingPaths.prev.id}"
-                  class="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors text-sm group"
-                >
-                  <span class="text-stone-400 group-hover:text-amber-600">←</span>
-                  <div class="text-left">
-                    <div class="text-xs text-stone-400">Previous</div>
-                    <div class="text-stone-700 font-medium">{siblingPaths.prev.label || siblingPaths.prev.title}</div>
-                  </div>
+                <a href="/learn/{siblingPaths.prev.id}" class="flex items-center gap-1 hover:text-amber-700 transition-colors">
+                  <span>←</span>
+                  <Sanskrit text={siblingPaths.prev.titleSanskrit} source="telugu" />
                 </a>
-              {:else}
-                <div></div>
-              {/if}
+              {:else}<div></div>{/if}
               {#if siblingPaths.next}
-                <a
-                  href="/learn/{siblingPaths.next.id}"
-                  class="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-200 hover:border-amber-300 hover:bg-amber-50 transition-colors text-sm group text-right"
-                >
-                  <div>
-                    <div class="text-xs text-stone-400">Next</div>
-                    <div class="text-stone-700 font-medium">{siblingPaths.next.label || siblingPaths.next.title}</div>
-                  </div>
-                  <span class="text-stone-400 group-hover:text-amber-600">→</span>
+                <a href="/learn/{siblingPaths.next.id}" class="flex items-center gap-1 hover:text-amber-700 transition-colors">
+                  <Sanskrit text={siblingPaths.next.titleSanskrit} source="telugu" />
+                  <span>→</span>
                 </a>
-              {:else}
-                <div></div>
-              {/if}
+              {:else}<div></div>{/if}
             </div>
           {/if}
           <div class="text-center text-stone-300 text-sm">
