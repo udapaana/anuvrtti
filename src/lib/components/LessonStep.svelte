@@ -328,24 +328,25 @@
                   <div class="py-1 border-l-2 border-stone-100 pl-2">
                     <div class="text-sm font-medium leading-snug">
                       <Sanskrit text={word.sanskrit_telugu} source="telugu" />
+                      {#if word.tag}
+                        <sup class="ml-0.5 inline-flex items-center gap-0">
+                          {#each parseTag(word.tag) as t, ti}
+                            {#if ti > 0}<span class="vocab-tag-dot">·</span>{/if}
+                            {#if t.deva}
+                              <button class="vocab-tag" onclick={() => selectedTerm.set(t.deva)}>
+                                <Sanskrit text={t.text} source="iast" />
+                              </button>
+                            {:else}
+                              <span class="vocab-tag-plain">{t.text}</span>
+                            {/if}
+                          {/each}
+                        </sup>
+                      {/if}
                     </div>
                     {#if showTelugu && word.telugu_gloss}
                       <div class="font-telugu text-stone-400 text-xs mt-0.5">{word.telugu_gloss}</div>
                     {:else if !showTelugu && word.english}
                       <div class="text-stone-400 text-xs mt-0.5">{word.english}</div>
-                    {/if}
-                    {#if word.tag}
-                      <div class="flex items-center gap-0.5 flex-wrap mt-1">
-                        {#each parseTag(word.tag) as t}
-                          {#if t.deva}
-                            <button class="morph-tag" onclick={() => selectedTerm.set(t.deva)}>
-                              <Sanskrit text={t.text} source="iast" />
-                            </button>
-                          {:else}
-                            <span class="morph-tag-plain">{t.text}</span>
-                          {/if}
-                        {/each}
-                      </div>
                     {/if}
                   </div>
                 {/each}
@@ -772,6 +773,34 @@
     background: #f5f3ff;
     border: 1px solid #ddd6fe;
     color: #7c3aed;
+  }
+
+  /* Vocabulary superscript tags */
+  .vocab-tag {
+    font-size: 0.65rem;
+    line-height: 1;
+    padding: 0 2px;
+    border-radius: 2px;
+    color: #7c3aed;
+    cursor: pointer;
+    font-family: inherit;
+    vertical-align: super;
+    background: none;
+    border: none;
+  }
+  .vocab-tag:hover { color: #5b21b6; }
+  .vocab-tag-plain {
+    font-size: 0.65rem;
+    line-height: 1;
+    color: #7c3aed;
+    vertical-align: super;
+  }
+  .vocab-tag-dot {
+    font-size: 0.75rem;
+    color: #374151;
+    vertical-align: super;
+    line-height: 1;
+    padding: 0 1px;
   }
 
   /* Vocabulary row grid: always use book column count, words are short */
