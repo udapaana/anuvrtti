@@ -225,6 +225,27 @@
       </div>
     </div>
 
+    <!-- Top prev/next — compact, aligned with content column -->
+    {#if siblingPaths.prev || siblingPaths.next}
+      <div class="mb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="hidden lg:block lg:col-span-3"></div>
+        <div class="lg:col-span-6 flex items-center justify-between text-xs text-stone-400">
+          {#if siblingPaths.prev}
+            <a href="/learn/{siblingPaths.prev.id}" class="flex items-center gap-1 hover:text-amber-700 transition-colors">
+              <span>←</span>
+              <Sanskrit text={siblingPaths.prev.titleSanskrit} source="telugu" />
+            </a>
+          {:else}<div></div>{/if}
+          {#if siblingPaths.next}
+            <a href="/learn/{siblingPaths.next.id}" class="flex items-center gap-1 hover:text-amber-700 transition-colors">
+              <Sanskrit text={siblingPaths.next.titleSanskrit} source="telugu" />
+              <span>→</span>
+            </a>
+          {:else}<div></div>{/if}
+        </div>
+      </div>
+    {/if}
+
     <!-- Mobile TOC + tools -->
     <div class="mb-4 lg:hidden space-y-2">
       <details class="bg-white rounded-lg border border-stone-200">
