@@ -23,6 +23,7 @@
     { id: 'gurmukhi', ka: 'ਕ', label: 'Gurmukhi', font: 'Noto Sans Gurmukhi' },
     { id: 'odia', ka: 'କ', label: 'Odia', font: 'Noto Sans Oriya' },
     { id: 'sinhala', ka: 'ක', label: 'Sinhala', font: 'Noto Sans Sinhala' },
+    { id: 'nandinagari', ka: '𑦮', label: 'Nāndīnāgarī', font: 'Noto Sans Nandinagari' },
     // Romanization - use abbreviation as the display
     { id: 'iast', ka: 'IAST', label: 'IAST', font: 'Noto Sans' },
     { id: 'iso15919', ka: 'ISO', label: 'ISO 15919', font: 'Noto Sans' },

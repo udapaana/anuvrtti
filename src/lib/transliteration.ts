@@ -1,9 +1,11 @@
 import init, {
   transliterate as shleshaTransliterate,
   getSupportedScripts,
+  WasmShlesha,
 } from "shlesha";
 
 let initialized = false;
+let nandinagariLoaded = false;
 
 export type Script =
   | "devanagari"
@@ -16,6 +18,7 @@ export type Script =
   | "gurmukhi"
   | "odia"
   | "sinhala"
+  | "nandinagari"
   | "iast"
   | "iso15919"
   | "slp1"
@@ -28,6 +31,7 @@ export type Script =
 export const INDIC_SCRIPTS = new Set<Script>([
   "devanagari", "telugu", "kannada", "malayalam", "tamil",
   "bengali", "gujarati", "gurmukhi", "odia", "sinhala",
+  "nandinagari",
   "iast", "iso15919", "slp1", "hk", "itrans", "velthuis",
 ]);
 
@@ -49,6 +53,19 @@ export async function initTransliteration(): Promise<void> {
   initialized = true;
 }
 
+let nandinagariTransliterator: WasmShlesha | null = null;
+
+/** Load nandinagari schema dynamically (bundled in /schemas/) */
+async function ensureNandinagari(): Promise<WasmShlesha> {
+  if (nandinagariTransliterator) return nandinagariTransliterator;
+  const yaml = await fetch('/schemas/nandinagari.yaml').then(r => r.text());
+  const t = new WasmShlesha();
+  t.loadSchemaFromString(yaml, 'nandinagari');
+  nandinagariTransliterator = t;
+  nandinagariLoaded = true;
+  return t;
+}
+
 /** Transliterate text between scripts */
 export async function transliterate(
   text: string,
@@ -58,6 +75,10 @@ export async function transliterate(
   if (!INDIC_SCRIPTS.has(from)) return text;
   await initTransliteration();
   if (from === to) return text;
+  if (from === 'nandinagari' || to === 'nandinagari') {
+    const t = await ensureNandinagari();
+    return t.transliterate(text, from, to);
+  }
   return shleshaTransliterate(text, from, to);
 }
 
