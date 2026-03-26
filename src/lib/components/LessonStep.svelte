@@ -325,11 +325,11 @@
               {@const words = group.words ?? [group]}
               <div class="px-4 py-1.5 vocab-row" style="--vocab-cols:{words.length}">
                 {#each words as word}
-                  <div class="py-1 border-l-2 border-stone-100 pl-2">
+                  <div class="py-1">
                     <div class="text-sm font-medium leading-snug">
                       <Sanskrit text={word.sanskrit_telugu} source="telugu" />
                       {#if word.tag}
-                        <sup class="ml-0.5 inline-flex items-center gap-0">
+                        <span class="vocab-tag-group vocab-tag-group--desktop">
                           {#each parseTag(word.tag) as t, ti}
                             {#if ti > 0}<span class="vocab-tag-dot">·</span>{/if}
                             {#if t.deva}
@@ -340,13 +340,27 @@
                               <span class="vocab-tag-plain">{t.text}</span>
                             {/if}
                           {/each}
-                        </sup>
+                        </span>
                       {/if}
                     </div>
                     {#if showTelugu && word.telugu_gloss}
                       <div class="font-telugu text-stone-400 text-xs mt-0.5">{word.telugu_gloss}</div>
                     {:else if !showTelugu && word.english}
                       <div class="text-stone-400 text-xs mt-0.5">{word.english}</div>
+                    {/if}
+                    {#if word.tag}
+                      <span class="vocab-tag-group vocab-tag-group--mobile">
+                        {#each parseTag(word.tag) as t, ti}
+                          {#if ti > 0}<span class="vocab-tag-dot">·</span>{/if}
+                          {#if t.deva}
+                            <button class="vocab-tag" onclick={() => selectedTerm.set(t.deva)}>
+                              <Sanskrit text={t.text} source="iast" />
+                            </button>
+                          {:else}
+                            <span class="vocab-tag-plain">{t.text}</span>
+                          {/if}
+                        {/each}
+                      </span>
                     {/if}
                   </div>
                 {/each}
@@ -776,15 +790,34 @@
   }
 
   /* Vocabulary superscript tags */
+  .vocab-tag-group {
+    display: inline-flex;
+    align-items: baseline;
+    line-height: 1;
+  }
+  .vocab-tag-group--mobile {
+    display: inline-flex;
+    margin-top: 0.25rem;
+  }
+  .vocab-tag-group--desktop {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .vocab-tag-group--mobile { display: none; }
+    .vocab-tag-group--desktop {
+      display: inline-flex;
+      position: relative;
+      top: -0.35em;
+      margin-left: 0.15em;
+    }
+  }
   .vocab-tag {
     font-size: 0.65rem;
     line-height: 1;
-    padding: 0 2px;
-    border-radius: 2px;
+    padding: 0 1px;
     color: #7c3aed;
     cursor: pointer;
     font-family: inherit;
-    vertical-align: super;
     background: none;
     border: none;
   }
@@ -793,12 +826,10 @@
     font-size: 0.65rem;
     line-height: 1;
     color: #7c3aed;
-    vertical-align: super;
   }
   .vocab-tag-dot {
     font-size: 0.75rem;
     color: #374151;
-    vertical-align: super;
     line-height: 1;
     padding: 0 1px;
   }
