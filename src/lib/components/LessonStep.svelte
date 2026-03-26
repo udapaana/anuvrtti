@@ -323,17 +323,17 @@
           <div class="divide-y divide-stone-100">
             {#each (section.items ?? []) as group}
               {@const words = group.words ?? [group]}
-              <div class="px-4 py-2 vocab-row" style="--vocab-cols:{words.length}">
+              <div class="px-4 py-1.5 vocab-row" style="--vocab-cols:{words.length}">
                 {#each words as word}
-                  <div class="py-1.5 flex flex-col gap-0.5">
-                    <span class="text-base font-medium">
+                  <div class="py-1 border-l-2 border-stone-100 pl-2">
+                    <div class="text-sm font-medium leading-snug">
                       <Sanskrit text={word.sanskrit_telugu} source="telugu" />
-                    </span>
-                    <div class="flex items-center gap-1 flex-wrap">
+                    </div>
+                    <div class="flex items-center gap-1 flex-wrap mt-0.5">
                       {#if showTelugu && word.telugu_gloss}
-                        <span class="font-telugu text-stone-500 text-sm">{word.telugu_gloss}</span>
+                        <span class="font-telugu text-stone-400 text-xs">{word.telugu_gloss}</span>
                       {:else if !showTelugu && word.english}
-                        <span class="text-stone-500 text-sm">{word.english}</span>
+                        <span class="text-stone-400 text-xs">{word.english}</span>
                       {/if}
                       {#if word.tag}
                         {#each parseTag(word.tag) as t}
@@ -774,15 +774,10 @@
     color: #7c3aed;
   }
 
-  /* Vocabulary row grid: 1 col on mobile, full book layout on sm+ */
+  /* Vocabulary row grid: always use book column count, words are short */
   .vocab-row {
     display: grid;
-    gap: 0.25rem 1rem;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 640px) {
-    .vocab-row {
-      grid-template-columns: repeat(var(--vocab-cols, 1), minmax(0, 1fr));
-    }
+    gap: 0.25rem 0.75rem;
+    grid-template-columns: repeat(var(--vocab-cols, 1), minmax(0, 1fr));
   }
 </style>
