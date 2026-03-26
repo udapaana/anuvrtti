@@ -23,6 +23,8 @@
 
   let { data } = $props();
 
+  let user = $derived(data.user as { login: string; avatar_url: string } | null);
+
   let lang: LessonLanguage = $state('telugu');
   lessonLanguage.subscribe(v => { lang = v; });
   function setLang(l: LessonLanguage) { lessonLanguage.set(l); }
@@ -182,8 +184,8 @@
       <a href="/learn" class="text-sm text-indigo-600 hover:underline mb-2 inline-block">
         ← Back to Learning Paths
       </a>
-      <div class="flex items-center justify-between gap-4">
-        <h1 class="text-2xl font-semibold">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <h1 class="text-xl sm:text-2xl font-semibold">
           <Sanskrit text={path.titleSanskrit} source={pathMeta?.trackFolder?.startsWith('pathana/balabodhini') ? 'telugu' : 'slp1'} />
           <span class="text-stone-400 ml-2">{path.title}</span>
         </h1>
@@ -199,7 +201,7 @@
               >{label}</button>
             {/each}
           </div>
-          {#if pathMeta}
+          {#if user && pathMeta}
             <button
               class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-indigo-600 transition-colors"
               onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}

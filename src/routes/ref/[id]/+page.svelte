@@ -165,9 +165,8 @@
       <!-- Learning context banner -->
       {#if learningContext}
         <div class="learning-context-banner">
-          <a href="/learn/{learningContext.pathId}?step={learningContext.stepIndex}" class="banner-link">
+          <a href="/learn/{learningContext.pathId}" class="banner-link">
             ← Return to <strong>{learningContext.pathTitle}</strong>
-            <span class="banner-step">step {learningContext.stepIndex + 1}/{learningContext.stepTotal}</span>
           </a>
           <button onclick={dismissLearningContext} class="banner-dismiss" aria-label="Dismiss">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -58,7 +58,6 @@
     aria-label="Select script: {getCurrentScript().label}"
   >
     <span class="text-lg leading-none" style="font-family: '{getCurrentScript().font}', sans-serif">{getCurrentScript().ka}</span>
-    <span class="text-[10px] text-stone-400 leading-none hidden sm:block">{getCurrentScript().label}</span>
   </button>
 
   {#if open}

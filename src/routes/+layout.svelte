@@ -91,7 +91,8 @@
           </div>
         {:else}
           <a href="/auth/github?returnTo={$page.url.pathname}" class="signin-btn">
-            Sign in with GitHub
+            <span class="hidden sm:inline">Sign in with GitHub</span>
+            <span class="sm:hidden">Sign in</span>
           </a>
         {/if}
       </div>

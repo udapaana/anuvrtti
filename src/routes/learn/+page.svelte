@@ -22,8 +22,8 @@
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-    <!-- Left sidebar: Jargon -->
-    <aside class="lg:col-span-3">
+    <!-- Left sidebar: Jargon (hidden on mobile) -->
+    <aside class="hidden lg:block lg:col-span-3">
       <div class="sticky top-4">
         <JargonLookup />
       </div>

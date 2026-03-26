@@ -258,17 +258,17 @@
       </div>
 
       <ol class="reading-list">
-        {#each balabodhiniPaths as path, i}
+        {#each balabodhiniPaths as path}
           {@const complete = done(path.id)}
           {@const colors = categoryColors['prakarana'] || categoryColors.foundation}
+          {@const lessonNum = parseInt(path.id.match(/balabodhini-\d+-(\d+)/)?.[1] ?? '0', 10)}
           <li class="reading-item" class:completed={complete}>
             <a href="/learn/{path.id}" class="reading-btn">
               <span class="reading-number" class:complete style="border-color: {colors.medium}; {complete ? `background: ${colors.medium}` : ''}">
-                {#if complete}✓{:else}{i + 1}{/if}
+                {#if complete}✓{:else}{lessonNum}{/if}
               </span>
               <div class="reading-content">
                 <span class="reading-label">{label(`title-${path.id}`, path.titleSanskrit)}</span>
-                <span class="reading-title">{path.title}</span>
                 {#if path.description}
                   <span class="reading-desc-inline" style="color: {colors.medium};"><InlineMarkup text={path.description} /></span>
                 {/if}

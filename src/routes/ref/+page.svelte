@@ -124,6 +124,8 @@
 
 <div class="ref-layout">
   <aside class="ref-sidebar">
+    <details class="sidebar-details" open>
+      <summary class="sidebar-summary">Filters &amp; Navigation</summary>
     <div class="search-box">
       <input
         type="text"
@@ -197,6 +199,7 @@
       <a href="/ref/pratyahara" class="tool-link">Pratyahara</a>
       <a href="/ref/tables" class="tool-link">Reference Tables</a>
     </nav>
+    </details>
   </aside>
 
   <main class="ref-main">
@@ -261,6 +264,47 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+  }
+
+  .sidebar-details {
+    display: contents;
+  }
+
+  .sidebar-summary {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-details {
+      display: block;
+      background: white;
+      border: 1px solid #e7e5e4;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    .sidebar-summary {
+      display: flex;
+      align-items: center;
+      padding: 0.625rem 0.875rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #57534e;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+    }
+    .sidebar-summary::after {
+      content: '▾';
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: #a8a29e;
+    }
+    .sidebar-details[open] .sidebar-summary::after {
+      content: '▴';
+    }
+    .sidebar-details > :not(summary) {
+      padding: 0 0.875rem 0.875rem;
+    }
   }
 
   .search-box {

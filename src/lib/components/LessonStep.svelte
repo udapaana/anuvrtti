@@ -374,13 +374,13 @@
             {#each (section.items ?? []) as item}
               {@const key = `${si}-${item.n}`}
               {@const gloss = showTelugu ? item.telugu : item.english}
-              <li class="px-4 py-2.5 flex flex-wrap sm:flex-nowrap items-center gap-3">
+              <li class="px-4 py-2.5 flex items-center gap-3 flex-wrap">
                 <span class="text-xs text-stone-300 w-5 flex-shrink-0 text-right">{item.n}.</span>
                 <div class="flex-1 text-base leading-snug min-w-0">
                   <Sanskrit text={item.sanskrit_telugu} source="telugu" />
                 </div>
                 {#if gloss}
-                  <div class="flex items-center gap-2 justify-end sm:w-56 sm:flex-shrink-0 w-full pl-8">
+                  <div class="flex items-center gap-2 justify-end flex-shrink-0">
                     {#if revealed.has(key)}
                       <span class="text-sm text-stone-400 {showTelugu ? 'font-telugu' : 'italic'} text-right leading-snug">{gloss}</span>
                       <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-300 hover:text-stone-500 transition-colors" aria-label="hide">
@@ -406,7 +406,7 @@
           <ol class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}
               {@const key = `ex-${si}-${item.n}`}
-              <li class="px-4 py-2.5 flex flex-wrap sm:flex-nowrap items-center gap-3">
+              <li class="px-4 py-2.5 flex items-center gap-3 flex-wrap">
                 <span class="text-xs text-stone-300 w-5 flex-shrink-0 text-right">{item.n}.</span>
                 <div class="flex-1 min-w-0">
                   {#if showTelugu && item.telugu}
@@ -416,7 +416,7 @@
                   {/if}
                 </div>
                 {#if item.sanskrit_telugu}
-                  <div class="flex items-center gap-2 justify-end sm:w-56 sm:flex-shrink-0 w-full pl-8">
+                  <div class="flex items-center gap-2 justify-end flex-shrink-0">
                     {#if revealed.has(key)}
                       <span class="text-base text-stone-700 text-right leading-snug">
                         <Sanskrit text={item.sanskrit_telugu} source="telugu" />
@@ -522,7 +522,7 @@
             <div class="overflow-x-auto"><table class="w-full text-sm">
               <thead>
                 <tr class="border-b border-stone-200 bg-stone-50">
-                  <th class="px-4 py-3 text-left font-normal w-24">
+                  <th class="px-4 py-3 text-left font-normal min-w-[6rem]">
                     <button class="jargon-term" onclick={() => selectedTerm.set('विभक्ति')}>
                       <Sanskrit text="vibhakti" source="iast" />
                       <span class="jargon-en">{showTelugu ? 'విభక్తి' : 'case'}</span>
