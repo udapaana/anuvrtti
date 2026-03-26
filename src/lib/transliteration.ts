@@ -1,11 +1,9 @@
 import init, {
   transliterate as shleshaTransliterate,
   getSupportedScripts,
-  WasmShlesha,
 } from "shlesha";
 
 let initialized = false;
-let nandinagariLoaded = false;
 
 export type Script =
   | "devanagari"
@@ -53,19 +51,6 @@ export async function initTransliteration(): Promise<void> {
   initialized = true;
 }
 
-let nandinagariTransliterator: WasmShlesha | null = null;
-
-/** Load nandinagari schema dynamically (bundled in /schemas/) */
-async function ensureNandinagari(): Promise<WasmShlesha> {
-  if (nandinagariTransliterator) return nandinagariTransliterator;
-  const yaml = await fetch('/schemas/nandinagari.yaml').then(r => r.text());
-  const t = new WasmShlesha();
-  t.loadSchemaFromString(yaml, 'nandinagari');
-  nandinagariTransliterator = t;
-  nandinagariLoaded = true;
-  return t;
-}
-
 /** Transliterate text between scripts */
 export async function transliterate(
   text: string,
@@ -75,19 +60,6 @@ export async function transliterate(
   if (!INDIC_SCRIPTS.has(from)) return text;
   await initTransliteration();
   if (from === to) return text;
-  if (from === 'nandinagari' || to === 'nandinagari') {
-    const t = await ensureNandinagari();
-    if (from === 'nandinagari' && to !== 'nandinagari') {
-      // Nandinagari → intermediate IAST → target
-      const iast = t.transliterate(text, 'nandinagari', 'iast');
-      return to === 'iast' ? iast : shleshaTransliterate(iast, 'iast', to);
-    } else if (to === 'nandinagari' && from !== 'nandinagari') {
-      // source → intermediate IAST → Nandinagari
-      const iast = from === 'iast' ? text : shleshaTransliterate(text, from, 'iast');
-      return t.transliterate(iast, 'iast', 'nandinagari');
-    }
-    return t.transliterate(text, from, to);
-  }
   return shleshaTransliterate(text, from, to);
 }
 
