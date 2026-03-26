@@ -329,13 +329,13 @@
                     <div class="text-sm font-medium leading-snug">
                       <Sanskrit text={word.sanskrit_telugu} source="telugu" />
                     </div>
-                    <div class="flex items-center gap-1 flex-wrap mt-0.5">
-                      {#if showTelugu && word.telugu_gloss}
-                        <span class="font-telugu text-stone-400 text-xs">{word.telugu_gloss}</span>
-                      {:else if !showTelugu && word.english}
-                        <span class="text-stone-400 text-xs">{word.english}</span>
-                      {/if}
-                      {#if word.tag}
+                    {#if showTelugu && word.telugu_gloss}
+                      <div class="font-telugu text-stone-400 text-xs mt-0.5">{word.telugu_gloss}</div>
+                    {:else if !showTelugu && word.english}
+                      <div class="text-stone-400 text-xs mt-0.5">{word.english}</div>
+                    {/if}
+                    {#if word.tag}
+                      <div class="flex items-center gap-0.5 flex-wrap mt-1">
                         {#each parseTag(word.tag) as t}
                           {#if t.deva}
                             <button class="morph-tag" onclick={() => selectedTerm.set(t.deva)}>
@@ -345,8 +345,8 @@
                             <span class="morph-tag-plain">{t.text}</span>
                           {/if}
                         {/each}
-                      {/if}
-                    </div>
+                      </div>
+                    {/if}
                   </div>
                 {/each}
               </div>
