@@ -229,7 +229,7 @@
     {#if siblingPaths.prev || siblingPaths.next}
       <div class="mb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div class="hidden lg:block lg:col-span-3"></div>
-        <div class="lg:col-span-6 flex items-center justify-between text-xs text-stone-400">
+        <div class="lg:col-span-6 flex items-center justify-between text-xs text-stone-600">
           {#if siblingPaths.prev}
             <a href="/learn/{siblingPaths.prev.id}" class="flex items-center gap-1 hover:text-amber-700 transition-colors">
               <span>←</span>
@@ -495,7 +495,7 @@
         <!-- End of path marker + prev/next nav -->
         <div class="pt-8 border-t border-stone-100">
           {#if siblingPaths.prev || siblingPaths.next}
-            <div class="flex items-center justify-between gap-4 mb-6 text-xs text-stone-400">
+            <div class="flex items-center justify-between gap-4 mb-6 text-xs text-stone-600">
               {#if siblingPaths.prev}
                 <a href="/learn/{siblingPaths.prev.id}" class="flex items-center gap-1 hover:text-amber-700 transition-colors">
                   <span>←</span>

@@ -22,7 +22,13 @@
       "Bash(done)",
       "Bash(npx tsx scripts/audit/audit-commentary.ts)",
       "Bash(find static/data/commentary -name \"*.toml\" -exec grep -E '@\\(deva|ref\\)\\\\[@\\(deva|ref\\)' {} +)",
-      "Bash(find static/data/commentary -name \"*.toml\" -exec grep -E '\\(by|see|under|from|in|at|under\\)\\\\s+[0-8]\\\\.[1-4]\\\\.[0-9]+' {} +)"
+      "Bash(find static/data/commentary -name \"*.toml\" -exec grep -E '\\(by|see|under|from|in|at|under\\)\\\\s+[0-8]\\\\.[1-4]\\\\.[0-9]+' {} +)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_take_screenshot",
+      "Bash(curl:*)",
+      "mcp__playwright__browser_install",
+      "Bash(lsof -iTCP -sTCP:LISTEN)"
     ]
   }
 }
