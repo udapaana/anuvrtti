@@ -183,15 +183,14 @@
   <div class="max-w-7xl mx-auto">
     <!-- Header — same grid as content so title aligns with main column -->
     <div class="mb-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-      <div class="hidden lg:block lg:col-span-2"></div>
-      <div class="lg:col-span-7">
+      <div class="hidden lg:block lg:col-span-3"></div>
+      <div class="lg:col-span-6">
         <a href="/learn" class="text-sm text-indigo-600 hover:underline mb-2 inline-block">
           ← Back to Learning Paths
         </a>
         <div class="flex flex-wrap items-start justify-between gap-3">
           <h1 class="text-xl sm:text-2xl font-semibold">
             <Sanskrit text={path.titleSanskrit} source={pathMeta?.trackFolder?.startsWith('pathana/balabodhini') ? 'telugu' : 'slp1'} />
-            <span class="text-stone-400 ml-2">{path.title}</span>
           </h1>
           <div class="flex items-center gap-2 flex-shrink-0">
             <!-- Language toggle: controls gloss/explanation language -->
@@ -292,7 +291,7 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
       <!-- Left sidebar: TOC + Jargon -->
-      <aside class="hidden lg:block lg:col-span-2">
+      <aside class="hidden lg:block lg:col-span-3">
         <div class="sticky top-8 space-y-4">
           <JargonLookup />
 
@@ -327,7 +326,7 @@
       </aside>
 
       <!-- Main content: all steps in sequence -->
-      <main class="lg:col-span-7 space-y-10">
+      <main class="lg:col-span-6 space-y-10">
         {#each path.steps as step, i}
           {@const sd = stepData[i] ?? {}}
           <section id="step-{i}" class="scroll-mt-8">
