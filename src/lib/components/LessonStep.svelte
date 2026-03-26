@@ -200,6 +200,42 @@
     else next.add(key);
     revealed = next;
   }
+
+  // Section jump nav: deduplicated list of navigable section types in order
+  const NAV_TYPES: Record<string, { en: string; te: string }> = {
+    vocabulary:        { en: 'Vocabulary',  te: 'పదకోశము' },
+    grammar_note:      { en: 'Grammar',     te: 'వ్యాకరణము' },
+    paradigm:          { en: 'Paradigm',    te: 'రూపమాల' },
+    script_table:      { en: 'Script',      te: 'లిపి' },
+    sandhi_table:      { en: 'Sandhi',      te: 'సంధి' },
+    passage:           { en: 'Passage',     te: 'పాఠ్యభాగము' },
+    passage_translation: { en: 'Translation', te: 'అనువాదము' },
+    reading:           { en: 'Reading',     te: 'పఠనము' },
+    exercises:         { en: 'Exercises',   te: 'అభ్యాసములు' },
+  };
+
+  const sectionNav = $derived.by(() => {
+    if (!lessonData?.sections) return [];
+    const seen = new Set<string>();
+    const result: { type: string; label: string; anchor: string; si: number }[] = [];
+    for (let i = 0; i < lessonData.sections.length; i++) {
+      const t = lessonData.sections[i].type as string;
+      if (!NAV_TYPES[t] || seen.has(t)) continue;
+      seen.add(t);
+      result.push({
+        type: t,
+        label: showTelugu ? NAV_TYPES[t].te : NAV_TYPES[t].en,
+        anchor: `section-${t}`,
+        si: i,
+      });
+    }
+    return result;
+  });
+
+  function scrollToSection(anchor: string) {
+    if (typeof document === 'undefined') return;
+    document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 </script>
 
 {#if loading}
@@ -266,11 +302,24 @@
     {/if}
 
 
+    <!-- Section jump nav -->
+    {#if sectionNav.length > 1}
+      <div class="flex flex-wrap gap-1.5">
+        {#each sectionNav as nav}
+          <button
+            onclick={() => scrollToSection(nav.anchor)}
+            class="px-3 py-1 rounded-full text-xs border border-stone-200 text-stone-500 hover:border-amber-300 hover:text-amber-700 hover:bg-amber-50 transition-colors"
+          >{nav.label}</button>
+        {/each}
+      </div>
+    {/if}
+
     <!-- Sections -->
     {#each (lessonData.sections ?? []) as section, si}
+      {@const sectionId = sectionNav.find(n => n.si === si)?.anchor}
 
       {#if section.type === 'grammar_note'}
-        <div class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3 text-sm space-y-0.5">
+        <div id={sectionId} class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3 text-sm space-y-0.5 scroll-mt-4">
           {#if showTelugu && section.items?.[0]?.telugu}
             <p class="font-telugu text-indigo-900 leading-relaxed">{section.items[0].telugu}</p>
           {:else if !showTelugu && section.items?.[0]?.english}
@@ -279,7 +328,7 @@
         </div>
 
       {:else if section.type === 'vocabulary'}
-        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
           <div class="px-4 py-2 border-b border-stone-100 bg-stone-50 flex items-center gap-6">
             <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.vocabulary}</span>
             <span class="text-xs text-stone-300 font-medium uppercase tracking-wide">
@@ -317,7 +366,7 @@
         </div>
 
       {:else if section.type === 'reading'}
-        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
           <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
             <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.reading}</span>
           </div>
@@ -325,13 +374,13 @@
             {#each (section.items ?? []) as item}
               {@const key = `${si}-${item.n}`}
               {@const gloss = showTelugu ? item.telugu : item.english}
-              <li class="px-4 py-2.5 flex items-center gap-3">
+              <li class="px-4 py-2.5 flex flex-wrap sm:flex-nowrap items-center gap-3">
                 <span class="text-xs text-stone-300 w-5 flex-shrink-0 text-right">{item.n}.</span>
-                <div class="flex-1 text-base leading-snug">
+                <div class="flex-1 text-base leading-snug min-w-0">
                   <Sanskrit text={item.sanskrit_telugu} source="telugu" />
                 </div>
                 {#if gloss}
-                  <div class="w-64 flex-shrink-0 flex items-center gap-2 justify-end">
+                  <div class="flex items-center gap-2 justify-end sm:w-56 sm:flex-shrink-0 w-full pl-8">
                     {#if revealed.has(key)}
                       <span class="text-sm text-stone-400 {showTelugu ? 'font-telugu' : 'italic'} text-right leading-snug">{gloss}</span>
                       <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-300 hover:text-stone-500 transition-colors" aria-label="hide">
@@ -350,16 +399,16 @@
         </div>
 
       {:else if section.type === 'exercises'}
-        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
           <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
             <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.exercises} — {ui.translatePrompt}</span>
           </div>
           <ol class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}
               {@const key = `ex-${si}-${item.n}`}
-              <li class="px-4 py-2.5 flex items-center gap-3">
+              <li class="px-4 py-2.5 flex flex-wrap sm:flex-nowrap items-center gap-3">
                 <span class="text-xs text-stone-300 w-5 flex-shrink-0 text-right">{item.n}.</span>
-                <div class="flex-1">
+                <div class="flex-1 min-w-0">
                   {#if showTelugu && item.telugu}
                     <div class="font-telugu text-stone-800 leading-snug">{item.telugu}</div>
                   {:else if !showTelugu && item.english}
@@ -367,7 +416,7 @@
                   {/if}
                 </div>
                 {#if item.sanskrit_telugu}
-                  <div class="w-64 flex-shrink-0 flex items-center gap-2 justify-end">
+                  <div class="flex items-center gap-2 justify-end sm:w-56 sm:flex-shrink-0 w-full pl-8">
                     {#if revealed.has(key)}
                       <span class="text-base text-stone-700 text-right leading-snug">
                         <Sanskrit text={item.sanskrit_telugu} source="telugu" />
@@ -389,7 +438,7 @@
 
       {:else if section.type === 'paradigm'}
         {@const lbl = section.label ? splitLabel(section.label) : null}
-        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
           <div class="px-4 py-2 border-b border-stone-100 bg-stone-50 flex items-center gap-3">
             <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.paradigm}</span>
             {#if lbl}
@@ -470,7 +519,7 @@
             </div>
           {:else if (section.items ?? [])[0]?.case}
             <!-- Case/declension layout -->
-            <table class="w-full text-sm">
+            <div class="overflow-x-auto"><table class="w-full text-sm">
               <thead>
                 <tr class="border-b border-stone-200 bg-stone-50">
                   <th class="px-4 py-3 text-left font-normal w-24">
@@ -508,10 +557,10 @@
                   </tr>
                 {/each}
               </tbody>
-            </table>
+            </table></div>
           {:else}
             <!-- Standard person/singular/plural layout -->
-            <table class="w-full text-sm">
+            <div class="overflow-x-auto"><table class="w-full text-sm">
               <thead>
                 <tr class="border-b border-stone-200 bg-stone-50">
                   <th class="px-4 py-3 text-left font-normal w-16">
@@ -549,12 +598,12 @@
                   </tr>
                 {/each}
               </tbody>
-            </table>
+            </table></div>
           {/if}
         </div>
 
       {:else if section.type === 'passage'}
-        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
           <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
             <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.passage}</span>
           </div>
@@ -574,7 +623,7 @@
 
       {:else if section.type === 'script_table'}
         {@const lbl = showTelugu ? (section.label_telugu ?? section.label) : section.label}
-        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
           {#if lbl}
             <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
               <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{lbl}</span>
@@ -597,7 +646,7 @@
 
       {:else if section.type === 'sandhi_table'}
         {@const lbl = showTelugu ? (section.label_telugu ?? section.label) : section.label}
-        <div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
+        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
           {#if lbl}
             <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
               <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{lbl}</span>
@@ -621,7 +670,7 @@
         </div>
 
       {:else if section.type === 'passage_translation'}
-        <div class="bg-amber-50/40 rounded-lg border border-amber-100 overflow-hidden">
+        <div id={sectionId} class="bg-amber-50/40 rounded-lg border border-amber-100 overflow-hidden scroll-mt-4">
           <div class="px-4 py-2 border-b border-amber-100">
             <span class="text-xs font-medium text-amber-700 uppercase tracking-wide">{ui.translation}</span>
           </div>
