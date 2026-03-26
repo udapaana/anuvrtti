@@ -49,12 +49,14 @@
     prakriyaLoading?: boolean;
   };
   let stepData: Record<number, StepData> = $state({});
+  let stepSections: Record<number, { type: string; label: string; anchor: string; si: number }[]> = $state({});
 
   $effect(() => {
     const pathId = data.pathId;
     path = undefined;
     pathLoading = true;
     stepData = {};
+    stepSections = {};
     loadPathData(pathId);
   });
 
@@ -179,46 +181,49 @@
   </div>
 {:else if path}
   <div class="max-w-7xl mx-auto">
-    <!-- Header -->
-    <div class="mb-6">
-      <a href="/learn" class="text-sm text-indigo-600 hover:underline mb-2 inline-block">
-        ← Back to Learning Paths
-      </a>
-      <div class="flex flex-wrap items-start justify-between gap-3">
-        <h1 class="text-xl sm:text-2xl font-semibold">
-          <Sanskrit text={path.titleSanskrit} source={pathMeta?.trackFolder?.startsWith('pathana/balabodhini') ? 'telugu' : 'slp1'} />
-          <span class="text-stone-400 ml-2">{path.title}</span>
-        </h1>
-        <div class="flex items-center gap-2 flex-shrink-0">
-          <!-- Language toggle: controls gloss/explanation language -->
-          <div class="flex items-center rounded border border-stone-200 overflow-hidden text-xs">
-            {#each ([['telugu', 'తె'] as const, ['english', 'En'] as const]) as [val, label]}
+    <!-- Header — same grid as content so title aligns with main column -->
+    <div class="mb-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="hidden lg:block lg:col-span-2"></div>
+      <div class="lg:col-span-7">
+        <a href="/learn" class="text-sm text-indigo-600 hover:underline mb-2 inline-block">
+          ← Back to Learning Paths
+        </a>
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <h1 class="text-xl sm:text-2xl font-semibold">
+            <Sanskrit text={path.titleSanskrit} source={pathMeta?.trackFolder?.startsWith('pathana/balabodhini') ? 'telugu' : 'slp1'} />
+            <span class="text-stone-400 ml-2">{path.title}</span>
+          </h1>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <!-- Language toggle: controls gloss/explanation language -->
+            <div class="flex items-center rounded border border-stone-200 overflow-hidden text-xs">
+              {#each ([['telugu', 'తె'] as const, ['english', 'En'] as const]) as [val, label]}
+                <button
+                  onclick={() => setLang(val)}
+                  class="px-2.5 py-1.5 transition-colors
+                         {lang === val ? 'bg-amber-100 text-amber-800 font-medium' : 'bg-white text-stone-400 hover:text-stone-600 hover:bg-stone-50'}"
+                  title="{val === 'telugu' ? 'Explanations in Telugu' : 'Explanations in English'}"
+                >{label}</button>
+              {/each}
+            </div>
+            {#if user && pathMeta}
               <button
-                onclick={() => setLang(val)}
-                class="px-2.5 py-1.5 transition-colors
-                       {lang === val ? 'bg-amber-100 text-amber-800 font-medium' : 'bg-white text-stone-400 hover:text-stone-600 hover:bg-stone-50'}"
-                title="{val === 'telugu' ? 'Explanations in Telugu' : 'Explanations in English'}"
-              >{label}</button>
-            {/each}
+                class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-indigo-600 transition-colors"
+                onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}
+                title="Edit this path"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+                Edit path
+              </button>
+            {/if}
           </div>
-          {#if user && pathMeta}
-            <button
-              class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-indigo-600 transition-colors"
-              onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}
-              title="Edit this path"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-              </svg>
-              Edit path
-            </button>
-          {/if}
         </div>
+        {#if path.description}
+          <p class="text-sm text-stone-500 mt-1"><InlineMarkup text={path.description} /></p>
+        {/if}
       </div>
-      {#if path.description}
-        <p class="text-sm text-stone-500 mt-1"><InlineMarkup text={path.description} /></p>
-      {/if}
     </div>
 
     <!-- Mobile TOC + tools -->
@@ -230,17 +235,33 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </summary>
-        <nav class="px-4 pb-3 space-y-1 max-h-60 overflow-y-auto border-t border-stone-100 pt-2">
+        <nav class="px-4 pb-3 space-y-2 max-h-60 overflow-y-auto border-t border-stone-100 pt-2">
           {#each path.steps as step, i}
-            <button
-              onclick={() => scrollToStep(i)}
-              class="w-full text-left px-2 py-1.5 rounded text-sm hover:bg-stone-50 transition-colors text-stone-600"
-            >
-              <div class="flex items-center gap-2">
-                <span class="w-5 h-5 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
-                <span class="truncate">{step.title}</span>
-              </div>
-            </button>
+            {@const sections = stepSections[i] ?? []}
+            {@const isSingleLesson = path.steps.length === 1 && step.sutraId === 'lesson'}
+            <div>
+              {#if !isSingleLesson}
+                <button
+                  onclick={() => scrollToStep(i)}
+                  class="w-full text-left px-2 py-1.5 rounded text-sm hover:bg-stone-50 transition-colors text-stone-600"
+                >
+                  <div class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
+                    <span class="truncate">{step.title}</span>
+                  </div>
+                </button>
+              {/if}
+              {#if sections.length > 0}
+                <div class="flex flex-wrap gap-x-3 gap-y-0.5">
+                  {#each sections as sec}
+                    <button
+                      onclick={() => document.getElementById(sec.anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                      class="text-left text-xs text-stone-500 hover:text-amber-700 transition-colors py-0.5"
+                    >{sec.label}</button>
+                  {/each}
+                </div>
+              {/if}
+            </div>
           {/each}
         </nav>
       </details>
@@ -271,23 +292,34 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
       <!-- Left sidebar: TOC + Jargon -->
-      <aside class="hidden lg:block lg:col-span-3">
+      <aside class="hidden lg:block lg:col-span-2">
         <div class="sticky top-8 space-y-4">
           <JargonLookup />
 
           <div class="bg-white rounded-lg border border-stone-200 p-4">
             <h3 class="text-xs font-medium text-stone-400 uppercase tracking-wide mb-3">Contents</h3>
-            <nav class="space-y-0.5 max-h-[60vh] overflow-y-auto">
+            <nav class="space-y-2 max-h-[60vh] overflow-y-auto">
               {#each path.steps as step, i}
-                <button
-                  onclick={() => scrollToStep(i)}
-                  class="w-full text-left px-2 py-1.5 rounded text-xs hover:bg-stone-50 transition-colors text-stone-600 hover:text-stone-800"
-                >
-                  <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-full bg-stone-100 text-stone-400 flex items-center justify-center text-[10px] flex-shrink-0">{i + 1}</span>
-                    <span class="truncate">{step.title}</span>
-                  </div>
-                </button>
+                {@const sections = stepSections[i] ?? []}
+                {@const isSingleLesson = path.steps.length === 1 && step.sutraId === 'lesson'}
+                <div>
+                  {#if !isSingleLesson}
+                    <button
+                      onclick={() => scrollToStep(i)}
+                      class="w-full text-left px-2 py-1 rounded text-xs font-medium hover:bg-stone-50 transition-colors text-stone-700 hover:text-stone-900"
+                    >{step.title}</button>
+                  {/if}
+                  {#if sections.length > 0}
+                    <div class="flex flex-col gap-0.5" class:mt-1={isSingleLesson}>
+                      {#each sections as sec}
+                        <button
+                          onclick={() => document.getElementById(sec.anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                          class="text-left text-xs text-stone-500 hover:text-amber-700 transition-colors py-1 px-2 rounded hover:bg-amber-50"
+                        >{sec.label}</button>
+                      {/each}
+                    </div>
+                  {/if}
+                </div>
               {/each}
             </nav>
           </div>
@@ -295,12 +327,12 @@
       </aside>
 
       <!-- Main content: all steps in sequence -->
-      <main class="lg:col-span-6 space-y-10">
+      <main class="lg:col-span-7 space-y-10">
         {#each path.steps as step, i}
           {@const sd = stepData[i] ?? {}}
           <section id="step-{i}" class="scroll-mt-8">
             {#if step.sutraId === 'lesson' && step.lessonRef}
-              <LessonStep lessonRef={step.lessonRef} />
+              <LessonStep lessonRef={step.lessonRef} onsections={(s) => { stepSections[i] = s; }} />
 
             {:else if step.sutraId === 'concept'}
               <div class="space-y-4">

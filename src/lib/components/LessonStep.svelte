@@ -36,6 +36,17 @@
     'subanta': 'सुबन्त', 'tiṅanta': 'तिङन्त', 'ktvānta': 'क्त्वान्त',
     'tumanta': 'तुमन्त', 'ṇijanta': 'णिजन्त', 'sarvanāman': 'सर्वनामन्',
     'avyaya': 'अव्यय', 'nipāta': 'निपात', 'dhātu': 'धातु',
+    // Liṅga
+    'napuṃsakaliṅga': 'नपुंसकलिङ्ग', 'puṃliṅga': 'पुंलिङ्ग', 'strīliṅga': 'स्त्रीलिङ्ग', 'liṅga': 'लिङ्ग',
+    // Stem types
+    'akārānta': 'अकारान्त', 'ākārānta': 'आकारान्त', 'ikārānta': 'इकारान्त', 'ukārānta': 'उकारान्त',
+    // Other nominals
+    'sarvanāma': 'सर्वनाम', 'nāma': 'नाम', 'saṃkhyā': 'संख्या', 'saṁkhyā': 'संख्या',
+    // Misc
+    'kālavācī': 'कालवाची', 'sambandhavācī': 'सम्बन्धवाची', 'aniścita': 'अनिश्चित',
+    'sarvapuruṣa': 'सर्वपुरुष', 'asmad': 'अस्मद्', 'yuṣmad': 'युष्मद्',
+    'kṛdanta': 'कृदन्त', 'taddhita': 'तद्धित', 'samāsa': 'समास', 'sandhi': 'सन्धि',
+    'lyap': 'ल्यप्', 'ktvā': 'क्त्वा', 'tumun': 'तुमुन्', 'ṇic': 'णिच्',
   };
 
   // Tokenize grammar_focus into spans of [text | {term, deva}]
@@ -132,11 +143,19 @@
     return { sanskrit: label.slice(0, idx), english: label.slice(idx + 3) };
   }
 
-  interface Props {
-    lessonRef: string; // e.g. "balabodhini-1-07"
+  interface SectionNavItem {
+    type: string;
+    label: string;
+    anchor: string;
+    si: number;
   }
 
-  let { lessonRef }: Props = $props();
+  interface Props {
+    lessonRef: string; // e.g. "balabodhini-1-07"
+    onsections?: (sections: SectionNavItem[]) => void;
+  }
+
+  let { lessonRef, onsections }: Props = $props();
 
   type Language = 'telugu' | 'english';
 
@@ -217,7 +236,7 @@
   const sectionNav = $derived.by(() => {
     if (!lessonData?.sections) return [];
     const seen = new Set<string>();
-    const result: { type: string; label: string; anchor: string; si: number }[] = [];
+    const result: SectionNavItem[] = [];
     for (let i = 0; i < lessonData.sections.length; i++) {
       const t = lessonData.sections[i].type as string;
       if (!NAV_TYPES[t] || seen.has(t)) continue;
@@ -230,6 +249,10 @@
       });
     }
     return result;
+  });
+
+  $effect(() => {
+    if (sectionNav.length > 0) onsections?.(sectionNav);
   });
 
   function scrollToSection(anchor: string) {
@@ -249,33 +272,6 @@
   </div>
 {:else if lessonData}
   <div class="space-y-5">
-
-    <!-- Lesson header -->
-    <div class="pb-2 border-b border-stone-100">
-      <div class="text-xs font-medium text-amber-700 uppercase tracking-widest mb-1 flex items-baseline gap-2">
-        <Sanskrit text="బాలబోధిని" source="telugu" />
-        <span class="font-normal normal-case text-amber-500 tracking-normal">Kāśī Kṛṣṇācārya</span>
-      </div>
-      <div class="text-xl font-semibold text-stone-800">
-        {showTelugu ? (lessonData.title_telugu ?? lessonData.title_english) : lessonData.title_english}
-        {#if lessonData.title_sanskrit_telugu}
-          <span class="text-base font-normal text-stone-400 ml-2">
-            <Sanskrit text={lessonData.title_sanskrit_telugu} source="telugu" />
-          </span>
-        {/if}
-      </div>
-    </div>
-
-    <!-- Grammar focus callout -->
-    {#if lessonData.grammar_focus}
-      {@const tokens = tokenizeGrammarFocus(lessonData.grammar_focus)}
-      <div class="text-xs text-stone-500 bg-stone-50 border border-stone-100 rounded px-3 py-2 leading-relaxed">
-        <span class="font-medium text-stone-400 uppercase tracking-wide mr-2">{showTelugu ? 'పాఠ విషయము' : 'focus'}</span>{#each tokens as token}{#if typeof token === 'string'}{token}{:else}<button
-            class="focus-term"
-            onclick={() => selectedTerm.set(token.deva)}
-          ><Sanskrit text={token.text} source="iast" /></button>{/if}{/each}
-      </div>
-    {/if}
 
     <!-- Script picker prompt — only on lesson 0 -->
     {#if lessonData.number === 0}
@@ -302,28 +298,17 @@
     {/if}
 
 
-    <!-- Section jump nav -->
-    {#if sectionNav.length > 1}
-      <div class="flex flex-wrap gap-1.5">
-        {#each sectionNav as nav}
-          <button
-            onclick={() => scrollToSection(nav.anchor)}
-            class="px-3 py-1 rounded-full text-xs border border-stone-200 text-stone-500 hover:border-amber-300 hover:text-amber-700 hover:bg-amber-50 transition-colors"
-          >{nav.label}</button>
-        {/each}
-      </div>
-    {/if}
-
     <!-- Sections -->
     {#each (lessonData.sections ?? []) as section, si}
       {@const sectionId = sectionNav.find(n => n.si === si)?.anchor}
 
       {#if section.type === 'grammar_note'}
-        <div id={sectionId} class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3 text-sm space-y-0.5 scroll-mt-4">
+        <div id={sectionId} class="grammar-note-block scroll-mt-4">
+          <span class="grammar-note-label">{showTelugu ? 'వ్యాకరణము' : 'Grammar Note'}</span>
           {#if showTelugu && section.items?.[0]?.telugu}
-            <p class="font-telugu text-indigo-900 leading-relaxed">{section.items[0].telugu}</p>
+            <p class="font-telugu grammar-note-text">{section.items[0].telugu}</p>
           {:else if !showTelugu && section.items?.[0]?.english}
-            <p class="text-indigo-500 text-xs leading-relaxed">{section.items[0].english}</p>
+            <p class="grammar-note-text">{section.items[0].english}</p>
           {/if}
         </div>
 
@@ -374,8 +359,8 @@
             {#each (section.items ?? []) as item}
               {@const key = `${si}-${item.n}`}
               {@const gloss = showTelugu ? item.telugu : item.english}
-              <li class="px-4 py-2.5 flex items-center gap-3 flex-wrap">
-                <span class="text-xs text-stone-300 w-5 flex-shrink-0 text-right">{item.n}.</span>
+              <li class="px-4 py-2.5 flex items-baseline gap-3 flex-wrap">
+                <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right tabular-nums">{item.n}</span>
                 <div class="flex-1 text-base leading-snug min-w-0">
                   <Sanskrit text={item.sanskrit_telugu} source="telugu" />
                 </div>
@@ -406,8 +391,8 @@
           <ol class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}
               {@const key = `ex-${si}-${item.n}`}
-              <li class="px-4 py-2.5 flex items-center gap-3 flex-wrap">
-                <span class="text-xs text-stone-300 w-5 flex-shrink-0 text-right">{item.n}.</span>
+              <li class="px-4 py-2.5 flex items-baseline gap-3 flex-wrap">
+                <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right tabular-nums">{item.n}</span>
                 <div class="flex-1 min-w-0">
                   {#if showTelugu && item.telugu}
                     <div class="font-telugu text-stone-800 leading-snug">{item.telugu}</div>
@@ -687,6 +672,30 @@
 {/if}
 
 <style>
+  /* Grammar note — matches reference page commentary section style */
+  .grammar-note-block {
+    background: #fefce8;
+    border: 1px solid #e7e5e4;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    padding: 1rem;
+  }
+  .grammar-note-label {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #a16207;
+    margin-bottom: 0.75rem;
+  }
+  .grammar-note-text {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #44403c;
+    margin: 0;
+  }
+
   .jargon-term {
     display: inline-flex;
     flex-direction: column;
