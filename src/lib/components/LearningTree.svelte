@@ -141,11 +141,11 @@
     <div class="mode-toggle">
       <a href="#balabodhini" class="mode-btn" class:active={view === 'balabodhini'}
          onclick={(e) => { e.preventDefault(); view = 'balabodhini'; }}>
-        <span class="mode-sanskrit font-telugu">{label('balabodhini-tab', 'బాలబోధిని')}</span>
+        <span class="mode-sanskrit font-{$displayScript}">{label('balabodhini-tab', 'బాలబోధిని')}</span>
       </a>
       <a href="#grammar" class="mode-btn" class:active={view === 'grammar'}
          onclick={(e) => { e.preventDefault(); view = 'grammar'; }}>
-        <span class="mode-sanskrit">{label('grammar-tab', 'व्याकरणम्')}</span>
+        <span class="mode-sanskrit font-{$displayScript}">{label('grammar-tab', 'व्याकरणम्')}</span>
       </a>
     </div>
 
@@ -174,7 +174,7 @@
                 {#if complete}✓{:else}{i + 1}{/if}
               </span>
               <div class="reading-content">
-                <span class="reading-label">{label(path.id, path.label)}</span>
+                <span class="reading-label font-{$displayScript}">{label(path.id, path.label)}</span>
                 <span class="reading-title">{path.title}</span>
               </div>
               <span class="reading-category" style="color: {colors.medium};">{label(path.category, path.category)}</span>
@@ -226,7 +226,7 @@
                     >
                       <span class="path-bullet" style="background: {unlocked || complete ? (categoryColors[path.category] || categoryColors.foundation).medium : '#d6d3d1'};"></span>
                       <span class="path-label">{label(path.id, path.label)}</span>
-                      <span class="path-title">{path.title}</span>
+                      <span class="path-title font-{$displayScript}">{label(path.id, path.label)}</span>
                       {#if complete}
                         <span class="path-check">✓</span>
                       {:else if pct(path) > 0}
@@ -268,7 +268,7 @@
                 {#if complete}✓{:else}{lessonNum}{/if}
               </span>
               <div class="reading-content">
-                <span class="reading-label">{label(`title-${path.id}`, path.titleSanskrit)}</span>
+                <span class="reading-label font-{$displayScript}">{label(`title-${path.id}`, path.titleSanskrit)}</span>
                 {#if path.description}
                   <span class="reading-desc-inline" style="color: {colors.medium};"><InlineMarkup text={path.description} /></span>
                 {/if}
