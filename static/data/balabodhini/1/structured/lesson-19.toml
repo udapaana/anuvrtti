@@ -13,53 +13,25 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "కిం"
-telugu_gloss = "ఏ, ఏది, ఏమి?"
-english = "what? which?"
+words = [
+  { sanskrit_telugu = "కిం", telugu_gloss = "ఏ, ఏది, ఏమి?", english = "what? which?" },
+  { sanskrit_telugu = "ను", telugu_gloss = "ఏ (ప్రశ్నచిహ్నం)", english = "question particle" },
+  { sanskrit_telugu = "కరిష్యంతి", telugu_gloss = "చేయఁగలరు", english = "they will do", tag = "p.p. bahu.v. lṛṭ" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "ను"
-telugu_gloss = "ఏ (ప్రశ్నచిహ్నం)"
-english = "question particle"
+words = [
+  { sanskrit_telugu = "ఏతత్", telugu_gloss = "ఈ, ఇది", english = "this" },
+  { sanskrit_telugu = "భోః", telugu_gloss = "అయ్యా", english = "sir, O" },
+  { sanskrit_telugu = "కరిష్యథ", telugu_gloss = "మీరు చేయఁగలరు", english = "you all will do", tag = "m.p. bahu.v. lṛṭ" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "కరిష్యంతి"
-telugu_gloss = "చేయఁగలరు"
-english = "they will do"
-tag = "p.p. bahu.v. lṛṭ"
-
-[[sections.items]]
-sanskrit_telugu = "ఏతత్"
-telugu_gloss = "ఈ, ఇది"
-english = "this"
-
-[[sections.items]]
-sanskrit_telugu = "భోః"
-telugu_gloss = "అయ్యా"
-english = "sir, O"
-
-[[sections.items]]
-sanskrit_telugu = "కరిష్యథ"
-telugu_gloss = "మీరు చేయఁగలరు"
-english = "you all will do"
-tag = "m.p. bahu.v. lṛṭ"
-
-[[sections.items]]
-sanskrit_telugu = "కస్య"
-telugu_gloss = "ఎవనియొక్క?"
-english = "whose?"
-
-[[sections.items]]
-sanskrit_telugu = "హే"
-telugu_gloss = "ఓ"
-english = "O"
-
-[[sections.items]]
-sanskrit_telugu = "కరిష్యామః"
-telugu_gloss = "చేయఁగలము"
-english = "we will do"
-tag = "u.p. bahu.v. lṛṭ"
-
+words = [
+  { sanskrit_telugu = "కస్య", telugu_gloss = "ఎవనియొక్క?", english = "whose?" },
+  { sanskrit_telugu = "హే", telugu_gloss = "ఓ", english = "O" },
+  { sanskrit_telugu = "కరిష్యామః", telugu_gloss = "చేయఁగలము", english = "we will do", tag = "u.p. bahu.v. lṛṭ" },
+]
 [[sections]]
 type = "reading"
 language = "sanskrit"

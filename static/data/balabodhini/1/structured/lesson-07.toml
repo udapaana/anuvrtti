@@ -13,53 +13,27 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "యే"
-telugu_gloss = "ఎవరు (ఎవరైతే)"
-english = "who (relative, plural)"
+words = [
+  { sanskrit_telugu = "యే", telugu_gloss = "ఎవరు (ఎవరైతే)", english = "who (relative, plural)" },
+  { sanskrit_telugu = "అన్యే", telugu_gloss = "ఇతరులు", english = "others" },
+  { sanskrit_telugu = "స్వే", telugu_gloss = "తాము", english = "their own; themselves" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "అన్యే"
-telugu_gloss = "ఇతరులు"
-english = "others"
+words = [
+  { sanskrit_telugu = "కిం", telugu_gloss = "ఏమి?", english = "what?; or what?" },
+  { sanskrit_telugu = "అపి", telugu_gloss = "ను, యును, కూడ", english = "also, even, too" },
+  { sanskrit_telugu = "అనేకత్ర", telugu_gloss = "చాల చోట్ల", english = "in many places" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "స్వే"
-telugu_gloss = "తాము"
-english = "their own; themselves"
+words = [{ sanskrit_telugu = "స్యాత్", telugu_gloss = "ఉండును, వలెను, చాలును", english = "he may be; it should be; perhaps", tag = "p.p. e.v. vidhiliṅ" }]
 
 [[sections.items]]
-sanskrit_telugu = "కిం"
-telugu_gloss = "ఏమి?"
-english = "what?; or what?"
+words = [{ sanskrit_telugu = "స్యాః", telugu_gloss = "ఉందువు, వలెను, చాలుదువు", english = "you may be; you should be", tag = "m.p. e.v. vidhiliṅ" }]
 
 [[sections.items]]
-sanskrit_telugu = "అపి"
-telugu_gloss = "ను, యును, కూడ"
-english = "also, even, too"
-
-[[sections.items]]
-sanskrit_telugu = "అనేకత్ర"
-telugu_gloss = "చాల చోట్ల"
-english = "in many places"
-
-[[sections.items]]
-sanskrit_telugu = "స్యాత్"
-telugu_gloss = "ఉండును, వలెను, చాలును"
-english = "he may be; it should be; perhaps"
-tag = "p.p. e.v. vidhiliṅ"
-
-[[sections.items]]
-sanskrit_telugu = "స్యాః"
-telugu_gloss = "ఉందువు, వలెను, చాలుదువు"
-english = "you may be; you should be"
-tag = "m.p. e.v. vidhiliṅ"
-
-[[sections.items]]
-sanskrit_telugu = "స్యాం"
-telugu_gloss = "ఉందును, వలెను, చాలుదును"
-english = "I may be; I should be"
-tag = "u.p. e.v. vidhiliṅ"
-
+words = [{ sanskrit_telugu = "స్యాం", telugu_gloss = "ఉందును, వలెను, చాలుదును", english = "I may be; I should be", tag = "u.p. e.v. vidhiliṅ" }]
 [[sections]]
 type = "paradigm"
 layout = "moods"

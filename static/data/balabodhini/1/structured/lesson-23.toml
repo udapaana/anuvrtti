@@ -21,67 +21,40 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "బాలకస్య"
-telugu_gloss = "పిల్లనిది, పిల్లనికి"
-english = "of the boy"
+words = [
+  { sanskrit_telugu = "బాలకస్య", telugu_gloss = "పిల్లనిది, పిల్లనికి", english = "of the boy" },
+  { sanskrit_telugu = "కుతః", telugu_gloss = "ఎందువల్ల?", english = "wherefore? from where?" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "కుతః"
-telugu_gloss = "ఎందువల్ల?"
-english = "wherefore? from where?"
+words = [
+  { sanskrit_telugu = "బాలకానాం", telugu_gloss = "పిల్లలది, పిల్లలకు", english = "of the boys" },
+  { sanskrit_telugu = "తతః", telugu_gloss = "అందువల్ల", english = "therefore, from that" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "బాలకానాం"
-telugu_gloss = "పిల్లలది, పిల్లలకు"
-english = "of the boys"
+words = [
+  { sanskrit_telugu = "దంతః", telugu_gloss = "పల్లు", english = "tooth" },
+  { sanskrit_telugu = "అతః", telugu_gloss = "ఇందువల్ల", english = "therefore, from this" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "తతః"
-telugu_gloss = "అందువల్ల"
-english = "therefore, from that"
+words = [
+  { sanskrit_telugu = "ఖాదతు", telugu_gloss = "తినుఁడు (ఒకఁడు)", english = "let him eat", tag = "p.p. e.v. loṭ" },
+  { sanskrit_telugu = "ఖాదంతు", telugu_gloss = "తినుఁడు (వారు)", english = "let them eat" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "దంతః"
-telugu_gloss = "పల్లు"
-english = "tooth"
+words = [
+  { sanskrit_telugu = "ఖాద", telugu_gloss = "తినుము", english = "eat!" },
+  { sanskrit_telugu = "ఖాదత", telugu_gloss = "తినుఁడు", english = "eat! (you all)" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "అతః"
-telugu_gloss = "ఇందువల్ల"
-english = "therefore, from this"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదతు"
-telugu_gloss = "తినుఁడు (ఒకఁడు)"
-english = "let him eat"
-tag = "p.p. e.v. loṭ"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదంతు"
-telugu_gloss = "తినుఁడు (వారు)"
-english = "let them eat"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాద"
-telugu_gloss = "తినుము"
-english = "eat!"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదత"
-telugu_gloss = "తినుఁడు"
-english = "eat! (you all)"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదాని"
-telugu_gloss = "తినుదును"
-english = "let me eat"
-tag = "u.p. e.v. loṭ"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదామ"
-telugu_gloss = "తిందుము"
-english = "let us eat"
-
+words = [
+  { sanskrit_telugu = "ఖాదాని", telugu_gloss = "తినుదును", english = "let me eat", tag = "u.p. e.v. loṭ" },
+  { sanskrit_telugu = "ఖాదామ", telugu_gloss = "తిందుము", english = "let us eat" },
+]
 [[sections]]
 type = "reading"
 language = "sanskrit"

@@ -21,67 +21,40 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "పర్వతేషు"
-telugu_gloss = "కొండలయందు"
-english = "in the mountains"
+words = [
+  { sanskrit_telugu = "పర్వతేషు", telugu_gloss = "కొండలయందు", english = "in the mountains" },
+  { sanskrit_telugu = "శనైః", telugu_gloss = "మెల్లగా", english = "slowly, gently" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "శనైః"
-telugu_gloss = "మెల్లగా"
-english = "slowly, gently"
+words = [
+  { sanskrit_telugu = "గ్రామః", telugu_gloss = "ఊరు", english = "village" },
+  { sanskrit_telugu = "నీచైః", telugu_gloss = "తగ్గుగా", english = "low, downward" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "గ్రామః"
-telugu_gloss = "ఊరు"
-english = "village"
+words = [
+  { sanskrit_telugu = "అంగణం", telugu_gloss = "మొంగిలి", english = "courtyard" },
+  { sanskrit_telugu = "ఉచ్చైః", telugu_gloss = "ఎత్తుగా", english = "high, loudly" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "నీచైః"
-telugu_gloss = "తగ్గుగా"
-english = "low, downward"
+words = [
+  { sanskrit_telugu = "ఖాదేత్", telugu_gloss = "తినవలెను", english = "one should eat" },
+  { sanskrit_telugu = "ఖాదేయుః", telugu_gloss = "వారు తినవలెను", english = "they should eat" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "అంగణం"
-telugu_gloss = "మొంగిలి"
-english = "courtyard"
+words = [
+  { sanskrit_telugu = "ఖాదేః", telugu_gloss = "నీవు తినవలెను", english = "you should eat", tag = "m.p. e.v. vidhiliṅ" },
+  { sanskrit_telugu = "ఖాదేత", telugu_gloss = "మీరు తినవలెను", english = "you all should eat" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "ఉచ్చైః"
-telugu_gloss = "ఎత్తుగా"
-english = "high, loudly"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదేత్"
-telugu_gloss = "తినవలెను"
-english = "one should eat"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదేయుః"
-telugu_gloss = "వారు తినవలెను"
-english = "they should eat"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదేః"
-telugu_gloss = "నీవు తినవలెను"
-english = "you should eat"
-tag = "m.p. e.v. vidhiliṅ"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదేత"
-telugu_gloss = "మీరు తినవలెను"
-english = "you all should eat"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదేయం"
-telugu_gloss = "నేను తినవలెను"
-english = "I should eat"
-tag = "u.p. e.v. vidhiliṅ"
-
-[[sections.items]]
-sanskrit_telugu = "ఖాదేమ"
-telugu_gloss = "మేము తినవలెను"
-english = "we should eat"
-
+words = [
+  { sanskrit_telugu = "ఖాదేయం", telugu_gloss = "నేను తినవలెను", english = "I should eat", tag = "u.p. e.v. vidhiliṅ" },
+  { sanskrit_telugu = "ఖాదేమ", telugu_gloss = "మేము తినవలెను", english = "we should eat" },
+]
 [[sections]]
 type = "reading"
 language = "sanskrit"

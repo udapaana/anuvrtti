@@ -13,53 +13,25 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "దేవః"
-telugu_gloss = "దేవుఁడు"
-english = "god, deity"
+words = [
+  { sanskrit_telugu = "దేవః", telugu_gloss = "దేవుఁడు", english = "god, deity" },
+  { sanskrit_telugu = "కిమర్థం", telugu_gloss = "ఎందుకు?", english = "for what purpose? why?" },
+  { sanskrit_telugu = "కరోతి", telugu_gloss = "చేయుచున్నాఁడు", english = "he does / is doing", tag = "p.p. e.v. laṭ" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "కిమర్థం"
-telugu_gloss = "ఎందుకు?"
-english = "for what purpose? why?"
+words = [
+  { sanskrit_telugu = "జనకః", telugu_gloss = "తండ్రి", english = "father" },
+  { sanskrit_telugu = "ఏవ", telugu_gloss = "ఏ", english = "indeed, only, just" },
+  { sanskrit_telugu = "కరోషి", telugu_gloss = "చేయుచున్నావు", english = "you do / are doing", tag = "m.p. e.v. laṭ" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "కరోతి"
-telugu_gloss = "చేయుచున్నాఁడు"
-english = "he does / is doing"
-tag = "p.p. e.v. laṭ"
-
-[[sections.items]]
-sanskrit_telugu = "జనకః"
-telugu_gloss = "తండ్రి"
-english = "father"
-
-[[sections.items]]
-sanskrit_telugu = "ఏవ"
-telugu_gloss = "ఏ"
-english = "indeed, only, just"
-
-[[sections.items]]
-sanskrit_telugu = "కరోషి"
-telugu_gloss = "చేయుచున్నావు"
-english = "you do / are doing"
-tag = "m.p. e.v. laṭ"
-
-[[sections.items]]
-sanskrit_telugu = "అగ్రజః"
-telugu_gloss = "అన్న"
-english = "elder brother"
-
-[[sections.items]]
-sanskrit_telugu = "కిల"
-telugu_gloss = "అట"
-english = "reportedly, they say, it is said"
-
-[[sections.items]]
-sanskrit_telugu = "కరోమి"
-telugu_gloss = "చేయుచున్నాను"
-english = "I do / am doing"
-tag = "u.p. e.v. laṭ"
-
+words = [
+  { sanskrit_telugu = "అగ్రజః", telugu_gloss = "అన్న", english = "elder brother" },
+  { sanskrit_telugu = "కిల", telugu_gloss = "అట", english = "reportedly, they say, it is said" },
+  { sanskrit_telugu = "కరోమి", telugu_gloss = "చేయుచున్నాను", english = "I do / am doing", tag = "u.p. e.v. laṭ" },
+]
 [[sections]]
 type = "paradigm"
 layout = "moods"

@@ -25,53 +25,25 @@ language = "bilingual"
 # Both scripts are in the Telugu Unicode block; Sanskrit is identified by grammar, not script.
 
 [[sections.items]]
-sanskrit_telugu = "సః"
-telugu_gloss = "వాఁడు"
-english = "he"
+words = [
+  { sanskrit_telugu = "సః", telugu_gloss = "వాఁడు", english = "he" },
+  { sanskrit_telugu = "కుత్ర", telugu_gloss = "ఎక్కడ?", english = "where?" },
+  { sanskrit_telugu = "అస్తి", telugu_gloss = "ఉన్నాఁడు", english = "he is", tag = "p.p. e.v. laṭ" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "కుత్ర"
-telugu_gloss = "ఎక్కడ?"
-english = "where?"
+words = [
+  { sanskrit_telugu = "త్వం", telugu_gloss = "నీవు", english = "you" },
+  { sanskrit_telugu = "తత్ర", telugu_gloss = "అక్కడ", english = "there" },
+  { sanskrit_telugu = "అసి", telugu_gloss = "ఉన్నావు", english = "you are", tag = "m.p. e.v. laṭ" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "అస్తి"
-telugu_gloss = "ఉన్నాఁడు"
-english = "he is"
-tag = "p.p. e.v. laṭ"
-
-[[sections.items]]
-sanskrit_telugu = "త్వం"
-telugu_gloss = "నీవు"
-english = "you"
-
-[[sections.items]]
-sanskrit_telugu = "తత్ర"
-telugu_gloss = "అక్కడ"
-english = "there"
-
-[[sections.items]]
-sanskrit_telugu = "అసి"
-telugu_gloss = "ఉన్నావు"
-english = "you are"
-tag = "m.p. e.v. laṭ"
-
-[[sections.items]]
-sanskrit_telugu = "అహం"
-telugu_gloss = "నేను"
-english = "I"
-
-[[sections.items]]
-sanskrit_telugu = "అత్ర"
-telugu_gloss = "ఇక్కడ"
-english = "here"
-
-[[sections.items]]
-sanskrit_telugu = "అస్మి"
-telugu_gloss = "ఉన్నాను"
-english = "I am"
-tag = "u.p. e.v. laṭ"
-
+words = [
+  { sanskrit_telugu = "అహం", telugu_gloss = "నేను", english = "I" },
+  { sanskrit_telugu = "అత్ర", telugu_gloss = "ఇక్కడ", english = "here" },
+  { sanskrit_telugu = "అస్మి", telugu_gloss = "ఉన్నాను", english = "I am", tag = "u.p. e.v. laṭ" },
+]
 [[sections]]
 type = "reading"
 language = "sanskrit"

@@ -320,31 +320,36 @@
               <Sanskrit text="śabda" source="iast" /> · {showTelugu ? 'అర్థము' : 'meaning'}
             </span>
           </div>
-          <div class="divide-y divide-stone-50">
-            {#each (section.items ?? []) as item}
-              <div class="px-4 py-2.5 flex items-baseline gap-4 flex-wrap">
-                <span class="text-base font-medium min-w-[8rem]">
-                  <Sanskrit text={item.sanskrit_telugu} source="telugu" />
-                </span>
-                {#if showTelugu && item.telugu_gloss}
-                  <span class="font-telugu text-stone-700 text-sm">{item.telugu_gloss}</span>
-                {:else if !showTelugu && item.english}
-                  <span class="text-stone-600 text-sm">{item.english}</span>
-                {/if}
-                {#if item.tag}
-                  <span class="flex items-center gap-0.5 ml-auto">
-                    {#each parseTag(item.tag) as t}
-                      {#if t.deva}
-                        <button
-                          class="morph-tag"
-                          onclick={() => selectedTerm.set(t.deva)}
-                        ><Sanskrit text={t.text} source="iast" /></button>
-                      {:else}
-                        <span class="morph-tag-plain">{t.text}</span>
+          <div class="divide-y divide-stone-100">
+            {#each (section.items ?? []) as group}
+              {@const words = group.words ?? [group]}
+              <div class="px-4 py-2 grid gap-x-4 gap-y-1"
+                   style="grid-template-columns: repeat({words.length}, minmax(0, 1fr))">
+                {#each words as word}
+                  <div class="py-1.5 flex flex-col gap-0.5">
+                    <span class="text-base font-medium">
+                      <Sanskrit text={word.sanskrit_telugu} source="telugu" />
+                    </span>
+                    <div class="flex items-center gap-1 flex-wrap">
+                      {#if showTelugu && word.telugu_gloss}
+                        <span class="font-telugu text-stone-500 text-sm">{word.telugu_gloss}</span>
+                      {:else if !showTelugu && word.english}
+                        <span class="text-stone-500 text-sm">{word.english}</span>
                       {/if}
-                    {/each}
-                  </span>
-                {/if}
+                      {#if word.tag}
+                        {#each parseTag(word.tag) as t}
+                          {#if t.deva}
+                            <button class="morph-tag" onclick={() => selectedTerm.set(t.deva)}>
+                              <Sanskrit text={t.text} source="iast" />
+                            </button>
+                          {:else}
+                            <span class="morph-tag-plain">{t.text}</span>
+                          {/if}
+                        {/each}
+                      {/if}
+                    </div>
+                  </div>
+                {/each}
               </div>
             {/each}
           </div>

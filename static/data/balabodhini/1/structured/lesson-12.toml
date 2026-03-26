@@ -13,50 +13,25 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "పాకః"
-telugu_gloss = "వంట"
-english = "cooking, a cooked meal"
+words = [
+  { sanskrit_telugu = "పాకః", telugu_gloss = "వంట", english = "cooking, a cooked meal" },
+  { sanskrit_telugu = "కథం", telugu_gloss = "ఎట్లు?", english = "how? in what way?" },
+  { sanskrit_telugu = "అకరోత్", telugu_gloss = "చేసెను", english = "he did" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "కథం"
-telugu_gloss = "ఎట్లు?"
-english = "how? in what way?"
+words = [
+  { sanskrit_telugu = "నమస్కారః", telugu_gloss = "నమస్కారము", english = "salutation, bow, namaskāra" },
+  { sanskrit_telugu = "ఏవం", telugu_gloss = "ఇట్లు", english = "thus, in this way, so" },
+  { sanskrit_telugu = "అకరోః", telugu_gloss = "చేసితివి", english = "you did" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "అకరోత్"
-telugu_gloss = "చేసెను"
-english = "he did"
-
-[[sections.items]]
-sanskrit_telugu = "నమస్కారః"
-telugu_gloss = "నమస్కారము"
-english = "salutation, bow, namaskāra"
-
-[[sections.items]]
-sanskrit_telugu = "ఏవం"
-telugu_gloss = "ఇట్లు"
-english = "thus, in this way, so"
-
-[[sections.items]]
-sanskrit_telugu = "అకరోః"
-telugu_gloss = "చేసితివి"
-english = "you did"
-
-[[sections.items]]
-sanskrit_telugu = "వ్యాపారః"
-telugu_gloss = "వ్యాపారము"
-english = "business, occupation, activity"
-
-[[sections.items]]
-sanskrit_telugu = "ఇత్థం"
-telugu_gloss = "ఇట్లు"
-english = "in this way, thus"
-
-[[sections.items]]
-sanskrit_telugu = "అకరవం"
-telugu_gloss = "చేసితిని"
-english = "I did"
-
+words = [
+  { sanskrit_telugu = "వ్యాపారః", telugu_gloss = "వ్యాపారము", english = "business, occupation, activity" },
+  { sanskrit_telugu = "ఇత్థం", telugu_gloss = "ఇట్లు", english = "in this way, thus" },
+  { sanskrit_telugu = "అకరవం", telugu_gloss = "చేసితిని", english = "I did" },
+]
 [[sections]]
 type = "paradigm"
 layout = "moods"

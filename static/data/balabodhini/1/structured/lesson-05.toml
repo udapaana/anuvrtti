@@ -13,52 +13,25 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "ఏక"
-telugu_gloss = "ఒకఁడు"
-english = "one"
+words = [
+  { sanskrit_telugu = "ఏక", telugu_gloss = "ఒకఁడు", english = "one" },
+  { sanskrit_telugu = "ప్రాతః", telugu_gloss = "ప్రొద్దున", english = "in the morning" },
+  { sanskrit_telugu = "అస్తు", telugu_gloss = "ఉండనీ, కానిమ్ము", english = "let him be; so be it", tag = "p.p. e.v. loṭ" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "ప్రాతః"
-telugu_gloss = "ప్రొద్దున"
-english = "in the morning"
+words = [
+  { sanskrit_telugu = "అనేకే", telugu_gloss = "చాలమంది", english = "many (people)" },
+  { sanskrit_telugu = "సాయం", telugu_gloss = "సందెవేళ", english = "in the evening" },
+  { sanskrit_telugu = "ఏధి", telugu_gloss = "ఉండుము", english = "be!" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "అస్తు"
-telugu_gloss = "ఉండనీ, కానిమ్ము"
-english = "let him be; so be it"
-tag = "p.p. e.v. loṭ"
-
-[[sections.items]]
-sanskrit_telugu = "అనేకే"
-telugu_gloss = "చాలమంది"
-english = "many (people)"
-
-[[sections.items]]
-sanskrit_telugu = "సాయం"
-telugu_gloss = "సందెవేళ"
-english = "in the evening"
-
-[[sections.items]]
-sanskrit_telugu = "ఏధి"
-telugu_gloss = "ఉండుము"
-english = "be!"
-
-[[sections.items]]
-sanskrit_telugu = "కతి"
-telugu_gloss = "ఎన్ని, ఎందరు"
-english = "how many?"
-
-[[sections.items]]
-sanskrit_telugu = "నక్తం"
-telugu_gloss = "రాత్రి"
-english = "at night"
-
-[[sections.items]]
-sanskrit_telugu = "అసాని"
-telugu_gloss = "నేనుండనిమ్ము"
-english = "let me be"
-tag = "u.p. e.v. loṭ"
-
+words = [
+  { sanskrit_telugu = "కతి", telugu_gloss = "ఎన్ని, ఎందరు", english = "how many?" },
+  { sanskrit_telugu = "నక్తం", telugu_gloss = "రాత్రి", english = "at night" },
+  { sanskrit_telugu = "అసాని", telugu_gloss = "నేనుండనిమ్ము", english = "let me be", tag = "u.p. e.v. loṭ" },
+]
 [[sections]]
 type = "reading"
 language = "sanskrit"

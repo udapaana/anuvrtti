@@ -13,50 +13,25 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "యః"
-telugu_gloss = "ఎవఁడు (ఎవఁడైతే)"
-english = "who (relative)"
+words = [
+  { sanskrit_telugu = "యః", telugu_gloss = "ఎవఁడు (ఎవఁడైతే)", english = "who (relative)" },
+  { sanskrit_telugu = "అన్యః", telugu_gloss = "ఇతరుఁడు", english = "another, other" },
+  { sanskrit_telugu = "స్వః", telugu_gloss = "తాను", english = "own; himself" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "అన్యః"
-telugu_gloss = "ఇతరుఁడు"
-english = "another, other"
+words = [
+  { sanskrit_telugu = "ప్రభృతి", telugu_gloss = "మొదలుకొని, నుండి", english = "from, since, beginning from" },
+  { sanskrit_telugu = "శ్వః", telugu_gloss = "రేపు", english = "tomorrow" },
+  { sanskrit_telugu = "హ్యః", telugu_gloss = "నిన్న", english = "yesterday" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "స్వః"
-telugu_gloss = "తాను"
-english = "own; himself"
-
-[[sections.items]]
-sanskrit_telugu = "ప్రభృతి"
-telugu_gloss = "మొదలుకొని, నుండి"
-english = "from, since, beginning from"
-
-[[sections.items]]
-sanskrit_telugu = "శ్వః"
-telugu_gloss = "రేపు"
-english = "tomorrow"
-
-[[sections.items]]
-sanskrit_telugu = "హ్యః"
-telugu_gloss = "నిన్న"
-english = "yesterday"
-
-[[sections.items]]
-sanskrit_telugu = "సంతు"
-telugu_gloss = "వారుండనిమ్ము"
-english = "let them be"
-
-[[sections.items]]
-sanskrit_telugu = "స్థ"
-telugu_gloss = "ఉండుఁడు"
-english = "be! (you all)"
-
-[[sections.items]]
-sanskrit_telugu = "అసామ"
-telugu_gloss = "వేమముండనిమ్ము"
-english = "let us be"
-
+words = [
+  { sanskrit_telugu = "సంతు", telugu_gloss = "వారుండనిమ్ము", english = "let them be" },
+  { sanskrit_telugu = "స్థ", telugu_gloss = "ఉండుఁడు", english = "be! (you all)" },
+  { sanskrit_telugu = "అసామ", telugu_gloss = "వేమముండనిమ్ము", english = "let us be" },
+]
 [[sections]]
 type = "reading"
 language = "sanskrit"

@@ -13,53 +13,25 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "ఏషః"
-telugu_gloss = "వీఁడు"
-english = "this one, he (nearby)"
+words = [
+  { sanskrit_telugu = "ఏషః", telugu_gloss = "వీఁడు", english = "this one, he (nearby)" },
+  { sanskrit_telugu = "వా", telugu_gloss = "ఆ, ఓ", english = "or; (with question) is it that...?" },
+  { sanskrit_telugu = "ఆసీత్", telugu_gloss = "ఉండెను", english = "he was", tag = "p.p. e.v. laṅ" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "వా"
-telugu_gloss = "ఆ, ఓ"
-english = "or; (with question) is it that...?"
+words = [
+  { sanskrit_telugu = "కః", telugu_gloss = "ఎవఁడు?", english = "who?" },
+  { sanskrit_telugu = "న", telugu_gloss = "లేదు, కాదు", english = "not, no" },
+  { sanskrit_telugu = "ఆసేః", telugu_gloss = "ఉంటివి", english = "you were", tag = "m.p. e.v. laṅ" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "ఆసీత్"
-telugu_gloss = "ఉండెను"
-english = "he was"
-tag = "p.p. e.v. laṅ"
-
-[[sections.items]]
-sanskrit_telugu = "కః"
-telugu_gloss = "ఎవఁడు?"
-english = "who?"
-
-[[sections.items]]
-sanskrit_telugu = "న"
-telugu_gloss = "లేదు, కాదు"
-english = "not, no"
-
-[[sections.items]]
-sanskrit_telugu = "ఆసేః"
-telugu_gloss = "ఉంటివి"
-english = "you were"
-tag = "m.p. e.v. laṅ"
-
-[[sections.items]]
-sanskrit_telugu = "సర్వః"
-telugu_gloss = "ప్రతి వాఁడు"
-english = "everyone, each one"
-
-[[sections.items]]
-sanskrit_telugu = "బత"
-telugu_gloss = "అయ్యో!"
-english = "alas!, oh!"
-
-[[sections.items]]
-sanskrit_telugu = "ఆసం"
-telugu_gloss = "ఉంటిని"
-english = "I was"
-tag = "u.p. e.v. laṅ"
-
+words = [
+  { sanskrit_telugu = "సర్వః", telugu_gloss = "ప్రతి వాఁడు", english = "everyone, each one" },
+  { sanskrit_telugu = "బత", telugu_gloss = "అయ్యో!", english = "alas!, oh!" },
+  { sanskrit_telugu = "ఆసం", telugu_gloss = "ఉంటిని", english = "I was", tag = "u.p. e.v. laṅ" },
+]
 [[sections]]
 type = "reading"
 language = "sanskrit"

@@ -21,53 +21,31 @@ type = "vocabulary"
 language = "bilingual"
 
 [[sections.items]]
-sanskrit_telugu = "తవ"
-telugu_gloss = "నీయొక్క, నీకు"
-english = "your (singular)"
+words = [
+  { sanskrit_telugu = "తవ", telugu_gloss = "నీయొక్క, నీకు", english = "your (singular)" },
+  { sanskrit_telugu = "పునర్", telugu_gloss = "మరల", english = "again" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "పునర్"
-telugu_gloss = "మరల"
-english = "again"
+words = [
+  { sanskrit_telugu = "మమ", telugu_gloss = "నాయొక్క, నాకు", english = "my, mine" },
+  { sanskrit_telugu = "బహిర్", telugu_gloss = "వెలుపల", english = "outside" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "మమ"
-telugu_gloss = "నాయొక్క, నాకు"
-english = "my, mine"
+words = [
+  { sanskrit_telugu = "తత్", telugu_gloss = "అది, ఆ", english = "that" },
+  { sanskrit_telugu = "అంతర్", telugu_gloss = "లోపల", english = "inside" },
+]
 
 [[sections.items]]
-sanskrit_telugu = "బహిర్"
-telugu_gloss = "వెలుపల"
-english = "outside"
+words = [{ sanskrit_telugu = "కరిష్యతి", telugu_gloss = "చేయఁగలఁడు", english = "he will do", tag = "p.p. e.v. lṛṭ" }]
 
 [[sections.items]]
-sanskrit_telugu = "తత్"
-telugu_gloss = "అది, ఆ"
-english = "that"
+words = [{ sanskrit_telugu = "కరిష్యసి", telugu_gloss = "చేయఁగలవు", english = "you will do", tag = "m.p. e.v. lṛṭ" }]
 
 [[sections.items]]
-sanskrit_telugu = "అంతర్"
-telugu_gloss = "లోపల"
-english = "inside"
-
-[[sections.items]]
-sanskrit_telugu = "కరిష్యతి"
-telugu_gloss = "చేయఁగలఁడు"
-english = "he will do"
-tag = "p.p. e.v. lṛṭ"
-
-[[sections.items]]
-sanskrit_telugu = "కరిష్యసి"
-telugu_gloss = "చేయఁగలవు"
-english = "you will do"
-tag = "m.p. e.v. lṛṭ"
-
-[[sections.items]]
-sanskrit_telugu = "కరిష్యామి"
-telugu_gloss = "చేయఁగలను"
-english = "I will do"
-tag = "u.p. e.v. lṛṭ"
-
+words = [{ sanskrit_telugu = "కరిష్యామి", telugu_gloss = "చేయఁగలను", english = "I will do", tag = "u.p. e.v. lṛṭ" }]
 [[sections]]
 type = "reading"
 language = "sanskrit"
