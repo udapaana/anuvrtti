@@ -323,8 +323,7 @@
           <div class="divide-y divide-stone-100">
             {#each (section.items ?? []) as group}
               {@const words = group.words ?? [group]}
-              <div class="px-4 py-2 grid gap-x-4 gap-y-1"
-                   style="grid-template-columns: repeat({words.length}, minmax(0, 1fr))">
+              <div class="px-4 py-2 vocab-row" style="--vocab-cols:{words.length}">
                 {#each words as word}
                   <div class="py-1.5 flex flex-col gap-0.5">
                     <span class="text-base font-medium">
@@ -773,5 +772,17 @@
     background: #f5f3ff;
     border: 1px solid #ddd6fe;
     color: #7c3aed;
+  }
+
+  /* Vocabulary row grid: 1 col on mobile, full book layout on sm+ */
+  .vocab-row {
+    display: grid;
+    gap: 0.25rem 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .vocab-row {
+      grid-template-columns: repeat(var(--vocab-cols, 1), minmax(0, 1fr));
+    }
   }
 </style>
