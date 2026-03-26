@@ -1,7 +1,7 @@
 +++
 id = "balabodhini-1-19"
 order = 1019
-title = "Nineteenth Lesson"
+title = "19"
 titleSanskrit = "ఏకోనవింశః పాఠః"
 label = "Lesson 19"
 track = "reading"

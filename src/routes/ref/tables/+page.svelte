@@ -51,7 +51,7 @@
 </script>
 
 <svelte:head>
-  <title>Reference Tables | Ashtadhyayi Explorer</title>
+  <title>Reference Tables | anuvrtti</title>
 </svelte:head>
 
 <div class="max-w-6xl mx-auto">

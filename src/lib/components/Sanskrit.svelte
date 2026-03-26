@@ -48,6 +48,7 @@
     gurmukhi: 'font-gurmukhi',
     odia: 'font-odia',
     sinhala: 'font-sinhala',
+    nandinagari: 'font-nandinagari',
     iast: 'font-iast',
     iso15919: 'font-iast',
     slp1: 'font-iast',

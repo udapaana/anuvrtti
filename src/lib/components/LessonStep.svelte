@@ -660,7 +660,7 @@
             {#each (section.items ?? []) as item}
               <div class="px-4 py-3 space-y-1.5">
                 <div class="flex items-center gap-3 flex-wrap">
-                  <span class="text-xs font-mono font-semibold text-violet-700 bg-violet-50 border border-violet-200 rounded px-2 py-0.5">{item.pattern}</span>
+                  <span class="text-xs font-mono font-semibold text-violet-700 bg-violet-50 border border-violet-200 rounded px-2 py-0.5"><Sanskrit text={item.pattern} source="iast" /></span>
                   <span class="text-stone-700"><Sanskrit text={item.iast_before} source="iast" /></span>
                   <span class="text-stone-300">→</span>
                   <span class="font-medium text-stone-800"><Sanskrit text={item.iast_after} source="iast" /></span>

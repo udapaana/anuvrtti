@@ -167,7 +167,7 @@
 </script>
 
 <svelte:head>
-  <title>{path?.title || 'Learning'} | Ashtadhyayi Explorer</title>
+  <title>{path?.title || 'Learning'} | anuvrtti</title>
 </svelte:head>
 
 {#if pathLoading}

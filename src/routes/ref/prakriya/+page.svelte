@@ -87,7 +87,7 @@
 </script>
 
 <svelte:head>
-  <title>Prakriya | Ashtadhyayi Explorer</title>
+  <title>Prakriya | anuvrtti</title>
 </svelte:head>
 
 <div class="max-w-4xl mx-auto">

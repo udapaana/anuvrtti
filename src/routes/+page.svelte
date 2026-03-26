@@ -81,7 +81,7 @@
         <div class="flex items-center justify-between gap-4">
           <div class="flex-1 min-w-0">
             <p class="text-xs font-medium text-indigo-600 uppercase tracking-wide mb-1">Continue learning</p>
-            <h2 class="text-lg font-semibold text-stone-900 truncate">{resumePath.title}</h2>
+            <h2 class="text-lg font-semibold text-stone-900 truncate"><Sanskrit text={resumePath.title} source="devanagari" /></h2>
             <p class="text-sm text-stone-500 mt-0.5">Step {resumeStep + 1} of {resumeTotal}</p>
           </div>
           <div class="flex items-center gap-3 flex-shrink-0">

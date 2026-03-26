@@ -60,7 +60,7 @@
   }
 </script>
 
-<span class="inline-markup">{#each spans as span, i}{#if span.type === 'deva'}<button class="jargon-inline" onclick={(e) => click(e, span)}>{rendered[i] ?? ''}</button>{:else}{rendered[i] ?? ''}{/if}{/each}</span>
+<span class="inline-markup">{#each spans as span, i}{#if span.type === 'deva'}<button class="jargon-inline font-{script}" onclick={(e) => click(e, span)}>{rendered[i] ?? ''}</button>{:else if span.type === 'iast'}<span class="font-{script}">{rendered[i] ?? ''}</span>{:else}{rendered[i] ?? ''}{/if}{/each}</span>
 
 <style>
   .inline-markup {

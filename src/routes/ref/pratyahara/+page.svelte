@@ -114,7 +114,7 @@
 </script>
 
 <svelte:head>
-  <title>Pratyahara | Ashtadhyayi Explorer</title>
+  <title>Pratyahara | anuvrtti</title>
 </svelte:head>
 
 <div>

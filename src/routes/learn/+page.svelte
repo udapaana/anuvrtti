@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-  <title>Learn | Ashtadhyayi Explorer</title>
+  <title>Learn | anuvrtti</title>
 </svelte:head>
 
 <div class="max-w-7xl mx-auto">
