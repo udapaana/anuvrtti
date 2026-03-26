@@ -77,6 +77,15 @@ export async function transliterate(
   if (from === to) return text;
   if (from === 'nandinagari' || to === 'nandinagari') {
     const t = await ensureNandinagari();
+    if (from === 'nandinagari' && to !== 'nandinagari') {
+      // Nandinagari → intermediate IAST → target
+      const iast = t.transliterate(text, 'nandinagari', 'iast');
+      return to === 'iast' ? iast : shleshaTransliterate(iast, 'iast', to);
+    } else if (to === 'nandinagari' && from !== 'nandinagari') {
+      // source → intermediate IAST → Nandinagari
+      const iast = from === 'iast' ? text : shleshaTransliterate(text, from, 'iast');
+      return t.transliterate(iast, 'iast', 'nandinagari');
+    }
     return t.transliterate(text, from, to);
   }
   return shleshaTransliterate(text, from, to);
