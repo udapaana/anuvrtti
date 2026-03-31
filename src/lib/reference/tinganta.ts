@@ -63,13 +63,13 @@ export const atmanepadaEndings: ReferenceTable = {
 };
 
 /**
- * लट् (Present) - भू example
+ * लट् (Present) - भू example - Parasmaipada
  */
 export const latBhuParadigm: ReferenceTable = {
   id: "lat-bhu",
-  title: "Present Tense (लट्)",
+  title: "Present Tense (laṭ)",
   titleSanskrit: "लट्लकारः",
-  description: "√भू (to become) - Parasmaipada",
+  description: "√bhū — parasmaipada",
   headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
   rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
   rows: [
@@ -80,13 +80,30 @@ export const latBhuParadigm: ReferenceTable = {
 };
 
 /**
- * लङ् (Imperfect) - भू example
+ * लट् (Present) - नी example - Ātmanepada
+ */
+export const latAtmaneParadigm: ReferenceTable = {
+  id: "lat-atmane",
+  title: "Present Tense — ātmanepada",
+  titleSanskrit: "लट् आत्मनेपदम्",
+  description: "√nī (to lead) — ātmanepada",
+  headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
+  rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
+  rows: [
+    [s("नयते"), s("नयेते"), s("नयन्ते")],
+    [s("नयसे"), s("नयेथे"), s("नयध्वे")],
+    [s("नये"), s("नयावहे"), s("नयामहे")],
+  ],
+};
+
+/**
+ * लङ् (Imperfect) - भू example - Parasmaipada
  */
 export const langBhuParadigm: ReferenceTable = {
   id: "lang-bhu",
-  title: "Imperfect (लङ्)",
+  title: "Imperfect (laṅ)",
   titleSanskrit: "लङ्लकारः",
-  description: "√भू - Past action not of today",
+  description: "√bhū — parasmaipada",
   headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
   rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
   rows: [
@@ -94,17 +111,34 @@ export const langBhuParadigm: ReferenceTable = {
     [s("अभवः"), s("अभवतम्"), s("अभवत")],
     [s("अभवम्"), s("अभवाव"), s("अभवाम")],
   ],
-  notes: ["Note the अट् augment prefix."],
+  notes: ["aṭ augment prefix added. These are past actions not of today (anadyatana)."],
 };
 
 /**
- * लोट् (Imperative) - भू example
+ * लङ् (Imperfect) - नी example - Ātmanepada
+ */
+export const langAtmaneParadigm: ReferenceTable = {
+  id: "lang-atmane",
+  title: "Imperfect — ātmanepada",
+  titleSanskrit: "लङ् आत्मनेपदम्",
+  description: "√nī — ātmanepada",
+  headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
+  rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
+  rows: [
+    [s("अनयत"), s("अनयेताम्"), s("अनयन्त")],
+    [s("अनयथाः"), s("अनयेथाम्"), s("अनयध्वम्")],
+    [s("अनये"), s("अनयावहि"), s("अनयामहि")],
+  ],
+};
+
+/**
+ * लोट् (Imperative) - भू example - Parasmaipada
  */
 export const lotBhuParadigm: ReferenceTable = {
   id: "lot-bhu",
-  title: "Imperative (लोट्)",
+  title: "Imperative (loṭ)",
   titleSanskrit: "लोट्लकारः",
-  description: "√भू - Commands and requests",
+  description: "√bhū — parasmaipada",
   headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
   rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
   rows: [
@@ -115,13 +149,30 @@ export const lotBhuParadigm: ReferenceTable = {
 };
 
 /**
- * विधिलिङ् (Optative) - भू example
+ * लोट् (Imperative) - नी example - Ātmanepada
+ */
+export const lotAtmaneParadigm: ReferenceTable = {
+  id: "lot-atmane",
+  title: "Imperative — ātmanepada",
+  titleSanskrit: "लोट् आत्मनेपदम्",
+  description: "√nī — ātmanepada",
+  headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
+  rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
+  rows: [
+    [s("नयताम्"), s("नयेताम्"), s("नयन्ताम्")],
+    [s("नयस्व"), s("नयेथाम्"), s("नयध्वम्")],
+    [s("नयै"), s("नयावहै"), s("नयामहै")],
+  ],
+};
+
+/**
+ * विधिलिङ् (Optative) - भू example - Parasmaipada
  */
 export const vidhilingBhuParadigm: ReferenceTable = {
   id: "vidhiling-bhu",
-  title: "Optative (विधिलिङ्)",
+  title: "Optative (vidhiliṅ)",
   titleSanskrit: "विधिलिङ्",
-  description: '√भू - "should/would/may"',
+  description: "√bhū — parasmaipada — should/would/may",
   headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
   rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
   rows: [
@@ -132,13 +183,30 @@ export const vidhilingBhuParadigm: ReferenceTable = {
 };
 
 /**
+ * विधिलिङ् (Optative) - नी example - Ātmanepada
+ */
+export const vidhilingAtmaneParadigm: ReferenceTable = {
+  id: "vidhiling-atmane",
+  title: "Optative — ātmanepada",
+  titleSanskrit: "विधिलिङ् आत्मनेपदम्",
+  description: "√nī — ātmanepada",
+  headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
+  rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
+  rows: [
+    [s("नयेत"), s("नयेयाताम्"), s("नयेरन्")],
+    [s("नयेः"), s("नयेयाथाम्"), s("नयेध्वम्")],
+    [s("नयेय"), s("नयेवहि"), s("नयेमहि")],
+  ],
+};
+
+/**
  * लृट् (Simple Future) - भू example
  */
 export const lrtBhuParadigm: ReferenceTable = {
   id: "lrt-bhu",
-  title: "Simple Future (लृट्)",
+  title: "Simple Future (lṛṭ)",
   titleSanskrit: "लृट्लकारः",
-  description: "√भू - Future action",
+  description: "√bhū — simple future",
   headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
   rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
   rows: [
@@ -146,7 +214,7 @@ export const lrtBhuParadigm: ReferenceTable = {
     [s("भविष्यसि"), s("भविष्यथः"), s("भविष्यथ")],
     [s("भविष्यामि"), s("भविष्यावः"), s("भविष्यामः")],
   ],
-  notes: ["स्य is the future marker."],
+  notes: ["sya is the future marker."],
 };
 
 /**
@@ -154,9 +222,9 @@ export const lrtBhuParadigm: ReferenceTable = {
  */
 export const litBhuParadigm: ReferenceTable = {
   id: "lit-bhu",
-  title: "Perfect (लिट्)",
+  title: "Perfect (liṭ)",
   titleSanskrit: "लिट्लकारः",
-  description: "√भू - Witnessed past",
+  description: "√bhū — witnessed past",
   headers: [s("एक॰"), s("द्वि॰"), s("बहु॰")],
   rowHeaders: [s("प्र॰"), s("म॰"), s("उ॰")],
   rows: [
@@ -164,7 +232,7 @@ export const litBhuParadigm: ReferenceTable = {
     [s("बभूविथ"), s("बभूवथुः"), s("बभूव")],
     [s("बभूव"), s("बभूविव"), s("बभूविम")],
   ],
-  notes: ["Note the reduplication: भू → बभू."],
+  notes: ["Note the reduplication: bhū → babhū."],
 };
 
 /**
@@ -175,18 +243,18 @@ export const dhatuGanas: ReferenceTable = {
   title: "The Ten Verb Classes",
   titleSanskrit: "दशगणाः",
   description: "Vikarana (class marker) for each gana",
-  headers: [s("गण"), t("Name"), s("विकरण"), t("Example"), s("लट् प्र॰ एक॰")],
+  headers: [s("गण"), s("संज्ञा"), s("विकरण"), s("उदाहरणम्"), s("लट् प्र॰ एक॰")],
   rows: [
-    [s("१"), t("भ्वादि"), s("शप् (अ)"), s("भू"), s("भवति")],
-    [s("२"), t("अदादि"), s("∅ (लुक्)"), s("अद्"), s("अत्ति")],
-    [s("३"), t("जुहोत्यादि"), s("∅ (श्लु)"), s("हु"), s("जुहोति")],
-    [s("४"), t("दिवादि"), s("श्यन् (य)"), s("दिव्"), s("दीव्यति")],
-    [s("५"), t("स्वादि"), s("श्नु (नु/नो)"), s("सु"), s("सुनोति")],
-    [s("६"), t("तुदादि"), s("श (अ)"), s("तुद्"), s("तुदति")],
-    [s("७"), t("रुधादि"), s("श्नम् (न)"), s("रुध्"), s("रुणद्धि")],
-    [s("८"), t("तनादि"), s("उ"), s("तन्"), s("तनोति")],
-    [s("९"), t("क्र्यादि"), s("श्ना (ना/नी)"), s("क्री"), s("क्रीणाति")],
-    [s("१०"), t("चुरादि"), s("णिच् (अय)"), s("चुर्"), s("चोरयति")],
+    [s("१"), s("भ्वादि"), s("शप् (अ)"), s("भू"), s("भवति")],
+    [s("२"), s("अदादि"), s("∅ (लुक्)"), s("अद्"), s("अत्ति")],
+    [s("३"), s("जुहोत्यादि"), s("∅ (श्लु)"), s("हु"), s("जुहोति")],
+    [s("४"), s("दिवादि"), s("श्यन् (य)"), s("दिव्"), s("दीव्यति")],
+    [s("५"), s("स्वादि"), s("श्नु (नु/नो)"), s("सु"), s("सुनोति")],
+    [s("६"), s("तुदादि"), s("श (अ)"), s("तुद्"), s("तुदति")],
+    [s("७"), s("रुधादि"), s("श्नम् (न)"), s("रुध्"), s("रुणद्धि")],
+    [s("८"), s("तनादि"), s("उ"), s("तन्"), s("तनोति")],
+    [s("९"), s("क्र्यादि"), s("श्ना (ना/नी)"), s("क्री"), s("क्रीणाति")],
+    [s("१०"), s("चुरादि"), s("णिच् (अय)"), s("चुर्"), s("चोरयति")],
   ],
 };
 
@@ -198,18 +266,18 @@ export const lakaraSummary: ReferenceTable = {
   title: "The Ten Lakaras",
   titleSanskrit: "दशलकाराः",
   description: "Overview of all ten tense/mood markers",
-  headers: [s("लकार"), t("Name"), t("Meaning"), t("Augment")],
+  headers: [s("लकार"), s("संज्ञा"), s("अर्थः"), s("आगमः")],
   rows: [
-    [s("लट्"), t("Present"), t("Action happening now"), t("—")],
-    [s("लङ्"), t("Imperfect"), t("Past, not today"), s("अट्")],
-    [s("लोट्"), t("Imperative"), t("Command, wish"), t("—")],
-    [s("विधिलिङ्"), t("Optative"), t("Should, would, may"), t("—")],
-    [s("आशीर्लिङ्"), t("Benedictive"), t("Blessing"), t("—")],
-    [s("लृट्"), t("Simple Future"), t("Will happen"), t("—")],
-    [s("लुट्"), t("Periphrastic Future"), t("Definite future"), t("—")],
-    [s("लिट्"), t("Perfect"), t("Witnessed past"), t("—")],
-    [s("लुङ्"), t("Aorist"), t("Recent past"), s("अट्")],
-    [s("लृङ्"), t("Conditional"), t("Would have"), s("अट्")],
+    [s("लट्"), s("वर्तमानी"), s("अधुना क्रिया"), t("—")],
+    [s("लङ्"), s("भूते अनद्यतनी"), s("अनद्यतन भूत"), s("अट्")],
+    [s("लोट्"), s("आज्ञार्थी"), s("विधि/आमन्त्रण"), t("—")],
+    [s("विधिलिङ्"), s("विध्यर्थी"), s("विधि/सम्भावना"), t("—")],
+    [s("आशीर्लिङ्"), s("आशीरर्थी"), s("आशीः"), t("—")],
+    [s("लृट्"), s("भविष्यन्ती"), s("भविष्यत्"), t("—")],
+    [s("लुट्"), s("अनद्यतनभविष्यन्ती"), s("निश्चित भविष्यत्"), t("—")],
+    [s("लिट्"), s("परोक्षभूतकालिनी"), s("परोक्ष भूत"), t("—")],
+    [s("लुङ्"), s("सामान्यभूतकालिनी"), s("सामान्य भूत"), s("अट्")],
+    [s("लृङ्"), s("हेतुहेतुमद्भूतकालिनी"), s("हेतुहेतुमत्"), s("अट्")],
   ],
 };
 
@@ -227,49 +295,49 @@ export const tingantaSections: ReferenceSection[] = [
     id: "basic-endings",
     title: "Basic Endings",
     titleSanskrit: "मूलप्रत्ययाः",
-    description: "The fundamental तिङ् endings before lakāra-specific changes",
+    description: "The fundamental tiṅ endings before lakāra-specific changes",
     tables: [parasmaipadaEndings, atmanepadaEndings],
   },
   {
     id: "lat",
-    title: "Present Tense",
+    title: "laṭ",
     titleSanskrit: "लट्",
-    description: "वर्तमाने लट् — For ongoing action",
-    tables: [latBhuParadigm],
+    description: "vartamāna laṭ — ongoing action",
+    tables: [latBhuParadigm, latAtmaneParadigm],
   },
   {
     id: "lang",
-    title: "Imperfect",
+    title: "laṅ",
     titleSanskrit: "लङ्",
-    description: "अनद्यतने लङ् — Past action not of today",
-    tables: [langBhuParadigm],
+    description: "anadyatana laṅ — past action not of today",
+    tables: [langBhuParadigm, langAtmaneParadigm],
   },
   {
     id: "lot",
-    title: "Imperative",
+    title: "loṭ",
     titleSanskrit: "लोट्",
-    description: "विधि, निमन्त्रण, आमन्त्रण — Commands and wishes",
-    tables: [lotBhuParadigm],
+    description: "vidhi, nimantrana, āmantrana — commands and wishes",
+    tables: [lotBhuParadigm, lotAtmaneParadigm],
   },
   {
     id: "vidhiling",
-    title: "Optative",
+    title: "vidhiliṅ",
     titleSanskrit: "विधिलिङ्",
-    description: "Should, would, may — Potential mood",
-    tables: [vidhilingBhuParadigm],
+    description: "vidhi — should, would, may",
+    tables: [vidhilingBhuParadigm, vidhilingAtmaneParadigm],
   },
   {
     id: "lrt",
-    title: "Simple Future",
+    title: "lṛṭ",
     titleSanskrit: "लृट्",
-    description: "Future action",
+    description: "bhaviṣyati lṛṭ — simple future",
     tables: [lrtBhuParadigm],
   },
   {
     id: "lit",
-    title: "Perfect",
+    title: "liṭ",
     titleSanskrit: "लिट्",
-    description: "परोक्षे लिट् — Witnessed past, with reduplication",
+    description: "parokṣa liṭ — witnessed past, with dvitva",
     tables: [litBhuParadigm],
   },
 ];

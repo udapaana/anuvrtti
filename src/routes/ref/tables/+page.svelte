@@ -9,6 +9,7 @@
   import { taddhitaSections } from '$lib/reference/taddhita';
   import { varnamalaSections } from '$lib/reference/varnamala';
   import ReferenceTable from '$lib/components/ReferenceTable.svelte';
+  import MaheshvaraSutras from '$lib/components/MaheshvaraSutras.svelte';
 
   // Reference categories for navigation
   const categories = [
@@ -61,7 +62,7 @@
       <span class="text-stone-400 ml-2">Quick Reference</span>
     </h1>
     <p class="text-stone-600 text-sm mt-1">
-      Quick-lookup tables for Sanskrit grammar. No explanations — just the facts.
+      Quick-lookup tables for Sanskrit grammar.
     </p>
   </header>
 
@@ -125,7 +126,9 @@
                 <p class="text-stone-600 text-sm mb-4">{section.description}</p>
               {/if}
 
-              {#if section.tables}
+              {#if activeCategory === 'varnamala' && activeSection === 'maheshvara'}
+                <MaheshvaraSutras />
+              {:else if section.tables}
                 <div class="space-y-6">
                   {#each section.tables as table}
                     <ReferenceTable {table} />

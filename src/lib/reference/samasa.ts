@@ -16,20 +16,20 @@ export const compoundTypes: ReferenceTable = {
   title: 'The Four Compound Types',
   titleSanskrit: 'चत्वारः समासाः',
   headers: [
-    s('समास'),
-    t('Type'),
-    t('Head'),
-    t('Meaning Pattern'),
-    t('Example'),
+    s('समासः'),
+    s('संज्ञा'),
+    s('प्रधानम्'),
+    s('विग्रहः'),
+    s('उदाहरणम्'),
   ],
   rows: [
-    [s('तत्पुरुष'), t('Determinative'), t('Last'), t('"X of/for/from Y"'), s('राजपुत्रः = राज्ञः पुत्रः')],
-    [s('कर्मधारय'), t('Descriptive'), t('Last'), t('"X which is Y"'), s('नीलोत्पलम् = नीलम् उत्पलम्')],
-    [s('द्वन्द्व'), t('Copulative'), t('Both'), t('"X and Y"'), s('रामलक्ष्मणौ = रामश्च लक्ष्मणश्च')],
-    [s('बहुव्रीहि'), t('Possessive'), t('External'), t('"having X"'), s('चक्रपाणिः = चक्रं पाणौ यस्य')],
-    [s('अव्ययीभाव'), t('Adverbial'), t('First'), t('"in manner of X"'), s('उपकृष्णम् = कृष्णस्य समीपम्')],
+    [s('तत्पुरुष'), s('विशेषण-विशेष्य'), s('उत्तरपदम्'), s('X-कारणं Y'), s('राजपुत्रः = राज्ञः पुत्रः')],
+    [s('कर्मधारय'), s('विशेषण-विशेष्य'), s('उत्तरपदम्'), s('X एव Y'), s('नीलोत्पलम् = नीलम् उत्पलम्')],
+    [s('द्वन्द्व'), s('समुच्चय'), s('उभयम्'), s('X च Y च'), s('रामलक्ष्मणौ = रामश्च लक्ष्मणश्च')],
+    [s('बहुव्रीहि'), s('स्वत्व'), s('बहिःपदम्'), s('यस्य X तत्'), s('चक्रपाणिः = चक्रं पाणौ यस्य')],
+    [s('अव्ययीभाव'), s('अव्यय'), s('पूर्वपदम्'), s('X-सदृशम्'), s('उपकृष्णम् = कृष्णस्य समीपम्')],
   ],
-  notes: ['कर्मधारय is often classified as a subtype of तत्पुरुष.'],
+  notes: ['karmadhāraya is often classified as a subtype of tatpuruṣa.'],
 };
 
 /**
@@ -41,19 +41,19 @@ export const tatpurushaSubtypes: ReferenceTable = {
   titleSanskrit: 'तत्पुरुषभेदाः',
   description: 'The first member has an implicit case relation',
   headers: [
-    t('Subtype'),
+    s('भेदः'),
     s('विभक्ति'),
-    t('Relation'),
-    t('Example'),
-    t('Meaning'),
+    s('सम्बन्धः'),
+    s('उदाहरणम्'),
+    s('अर्थः'),
   ],
   rows: [
-    [t('द्वितीया-'), s('द्वि॰'), t('Object'), s('ग्रामगतः'), t('"gone to village"')],
-    [t('तृतीया-'), s('तृ॰'), t('Instrument'), s('शूलपाणिः'), t('"trident-handed"')],
-    [t('चतुर्थी-'), s('च॰'), t('Purpose'), s('यूपदारु'), t('"wood for post"')],
-    [t('पञ्चमी-'), s('पं॰'), t('Source'), s('स्वर्गपतितः'), t('"fallen from heaven"')],
-    [t('षष्ठी-'), s('ष॰'), t('Possession'), s('राजपुत्रः'), t('"king\'s son"')],
-    [t('सप्तमी-'), s('स॰'), t('Location'), s('कूपमण्डूकः'), t('"well-frog"')],
+    [s('द्वितीया-तत्पुरुषः'), s('द्वि॰'), s('कर्म'), s('ग्रामगतः'), s('ग्रामं गतः')],
+    [s('तृतीया-तत्पुरुषः'), s('तृ॰'), s('करण'), s('शूलपाणिः'), s('शूलेन पाणौ यस्य')],
+    [s('चतुर्थी-तत्पुरुषः'), s('च॰'), s('सम्प्रदान'), s('यूपदारु'), s('यूपाय दारु')],
+    [s('पञ्चमी-तत्पुरुषः'), s('पं॰'), s('अपादान'), s('स्वर्गपतितः'), s('स्वर्गात् पतितः')],
+    [s('षष्ठी-तत्पुरुषः'), s('ष॰'), s('सम्बन्ध'), s('राजपुत्रः'), s('राज्ञः पुत्रः')],
+    [s('सप्तमी-तत्पुरुषः'), s('स॰'), s('अधिकरण'), s('कूपमण्डूकः'), s('कूपे मण्डूकः')],
   ],
 };
 
@@ -66,15 +66,15 @@ export const karmadharayaTypes: ReferenceTable = {
   titleSanskrit: 'कर्मधारयभेदाः',
   description: 'Descriptive compounds with apposition',
   headers: [
-    t('Type'),
-    t('Pattern'),
-    t('Example'),
-    t('Meaning'),
+    s('भेदः'),
+    s('रचना'),
+    s('उदाहरणम्'),
+    s('अर्थः'),
   ],
   rows: [
-    [t('विशेषण-विशेष्य'), t('Adj + Noun'), s('नीलोत्पलम्'), t('"blue lotus"')],
-    [t('उपमान-उपमेय'), t('Comparison'), s('मुखचन्द्रः'), t('"moon-face"')],
-    [t('अवधारण'), t('Emphasis'), s('अयं घटः'), t('"this very pot"')],
+    [s('विशेषण-विशेष्य'), s('विशेषण + विशेष्य'), s('नीलोत्पलम्'), s('नीलम् उत्पलम्')],
+    [s('उपमान-उपमेय'), s('उपमा'), s('मुखचन्द्रः'), s('चन्द्र इव मुखम्')],
+    [s('अवधारण'), s('अवधारण'), s('अयं घटः'), s('अयम् एव घटः')],
   ],
 };
 
@@ -86,17 +86,17 @@ export const dvandvaTypes: ReferenceTable = {
   title: 'Dvandva Types',
   titleSanskrit: 'द्वन्द्वभेदाः',
   headers: [
-    t('Type'),
-    t('Gender'),
-    t('Example'),
-    t('Meaning'),
+    s('भेदः'),
+    s('लिङ्ग-वचन'),
+    s('उदाहरणम्'),
+    s('अर्थः'),
   ],
   rows: [
-    [t('इतरेतर'), t('Dual/Plural'), s('रामलक्ष्मणौ'), t('"Rama and Lakshmana"')],
-    [t('समाहार'), t('Neuter Sg.'), s('पाणिपादम्'), t('"hands and feet (as a group)"')],
-    [t('एकशेष'), t('Dual'), s('पितरौ'), t('"father and mother"')],
+    [s('इतरेतर-द्वन्द्वः'), s('द्वि॰/बहु॰'), s('रामलक्ष्मणौ'), s('रामश्च लक्ष्मणश्च')],
+    [s('समाहार-द्वन्द्वः'), s('नपुं॰ एक॰'), s('पाणिपादम्'), s('पाणयः पादाश्च (समाहारः)')],
+    [s('एकशेषः'), s('द्वि॰'), s('पितरौ'), s('पिता च माता च')],
   ],
-  notes: ['इतरेतर uses dual/plural of last member; समाहार is always neuter singular.'],
+  notes: ['itaretara uses dual/plural of last member; samāhāra is always neuter singular.'],
 };
 
 /**
@@ -107,15 +107,15 @@ export const bahuvrihiMarkers: ReferenceTable = {
   title: 'Recognizing Bahuvrihi',
   titleSanskrit: 'बहुव्रीहिलक्षणानि',
   headers: [
-    t('Clue'),
-    t('Example'),
-    t('Analysis'),
+    s('लक्षणम्'),
+    s('उदाहरणम्'),
+    s('विग्रहः'),
   ],
   rows: [
-    [t('Gender mismatch'), s('महाबाहुः (m.)'), t('बाहु is m., but refers to person')],
-    [t('यस्य/यस्याः expansion'), s('पीताम्बरः'), s('पीतम् अम्बरं यस्य सः')],
-    [t('External referent'), s('चतुर्भुजः'), t('Describes Vishnu, not arms')],
-    [t('Adjectival use'), s('दीर्घबाहुः राजा'), t('Modifies another noun')],
+    [s('लिङ्गवैषम्यम्'), s('महाबाहुः'), s('बाहुशब्दः पुं॰ किन्तु पुरुषं बोधयति')],
+    [s('यस्य-विग्रहः'), s('पीताम्बरः'), s('पीतम् अम्बरं यस्य सः')],
+    [s('बाह्यार्थः'), s('चतुर्भुजः'), s('चतुर्भुजः = विष्णुः, न बाहुमात्रम्')],
+    [s('विशेषणप्रयोगः'), s('दीर्घबाहुः राजा'), s('राजशब्दं विशिनष्टि')],
   ],
 };
 

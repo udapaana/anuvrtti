@@ -18,20 +18,20 @@ export const sixKarakas: ReferenceTable = {
   description: 'Semantic roles in Sanskrit grammar',
   headers: [
     s('कारक'),
-    t('Role'),
+    s('अर्थः'),
     s('विभक्ति'),
-    t('Definition'),
-    t('Example'),
+    s('लक्षणम्'),
+    s('उदाहरणम्'),
   ],
   rows: [
-    [s('कर्ता'), t('Agent'), s('प्रथमा'), t('Independent doer'), s('रामः गच्छति')],
-    [s('कर्म'), t('Object'), s('द्वितीया'), t('Most desired by agent'), s('रामः फलं खादति')],
-    [s('करण'), t('Instrument'), s('तृतीया'), t('Most effective means'), s('रामः दण्डेन हन्ति')],
-    [s('सम्प्रदान'), t('Recipient'), s('चतुर्थी'), t('To whom given'), s('रामः विप्राय ददाति')],
-    [s('अपादान'), t('Source'), s('पञ्चमी'), t('Fixed point of departure'), s('वृक्षात् पत्रं पतति')],
-    [s('अधिकरण'), t('Locus'), s('सप्तमी'), t('Location of action'), s('कटे आस्ते')],
+    [s('कर्ता'), s('स्वतन्त्रः क्रियाकारकः'), s('प्रथमा'), s('स्वतन्त्रः कर्ता'), s('रामः गच्छति')],
+    [s('कर्म'), s('ईप्सिततमः'), s('द्वितीया'), s('कर्तुः ईप्सिततमम्'), s('रामः फलं खादति')],
+    [s('करण'), s('साधकतमः'), s('तृतीया'), s('साधनम्'), s('रामः दण्डेन हन्ति')],
+    [s('सम्प्रदान'), s('दानलक्ष्यम्'), s('चतुर्थी'), s('दानस्य लक्ष्यम्'), s('रामः विप्राय ददाति')],
+    [s('अपादान'), s('ध्रुवबिन्दुः'), s('पञ्चमी'), s('वियोगस्थानम्'), s('वृक्षात् पत्रं पतति')],
+    [s('अधिकरण'), s('आधारः'), s('सप्तमी'), s('क्रियाधारः'), s('कटे आस्ते')],
   ],
-  notes: ['षष्ठी expresses सम्बन्ध (relation), not a कारक.'],
+  notes: ['ṣaṣṭhī expresses sambandha (relation), not a kāraka.'],
 };
 
 /**
@@ -44,15 +44,35 @@ export const karakaDefinitions: ReferenceTable = {
   headers: [
     s('कारक'),
     s('सूत्र'),
-    t('Translation'),
+    s('अर्थः'),
   ],
   rows: [
-    [s('कर्ता'), s('स्वतन्त्रः कर्ता'), t('"The independent one is kartā"')],
-    [s('कर्म'), s('कर्तुरीप्सिततमं कर्म'), t('"What the agent most desires is karma"')],
-    [s('करण'), s('साधकतमं करणम्'), t('"The most effective means is karaṇa"')],
-    [s('सम्प्रदान'), s('कर्मणा यमभिप्रैति स सम्प्रदानम्'), t('"To whom one gives is sampradāna"')],
-    [s('अपादान'), s('ध्रुवमपायेऽपादानम्'), t('"The fixed point in separation is apādāna"')],
-    [s('अधिकरण'), s('आधारोऽधिकरणम्'), t('"The support/locus is adhikaraṇa"')],
+    [s('कर्ता'), s('स्वतन्त्रः कर्ता'), s('स्वतन्त्रः = कर्ता')],
+    [s('कर्म'), s('कर्तुरीप्सिततमं कर्म'), s('कर्तुः ईप्सिततमम् = कर्म')],
+    [s('करण'), s('साधकतमं करणम्'), s('साधकतमम् = करणम्')],
+    [s('सम्प्रदान'), s('कर्मणा यमभिप्रैति स सम्प्रदानम्'), s('यं कर्मणा अभिप्रैति = सम्प्रदानम्')],
+    [s('अपादान'), s('ध्रुवमपायेऽपादानम्'), s('अपाये ध्रुवम् = अपादानम्')],
+    [s('अधिकरण'), s('आधारोऽधिकरणम्'), s('आधारः = अधिकरणम्')],
+  ],
+};
+
+/**
+ * Special uses of प्रथमा
+ */
+export const prathamaSpecial: ReferenceTable = {
+  id: 'prathama-special',
+  title: 'Special Uses of prathamā',
+  titleSanskrit: 'प्रथमाविशेषाः',
+  headers: [
+    s('प्रयोगः'),
+    s('अर्थः'),
+    s('उदाहरणम्'),
+  ],
+  rows: [
+    [s('कर्ता'), s('क्रियायाः स्वतन्त्रः'), s('रामः गच्छति', 'Rama goes')],
+    [s('सम्बोधनम्'), s('आमन्त्रणम्'), s('हे राम!', 'O Rama!')],
+    [s('नाम-प्रयोगः'), s('परिचयः'), s('अयं रामः', 'this is Rama')],
+    [s('कर्मणि-कर्ता'), s('कर्मणि-प्रयोगे कर्ता'), s('रामेण फलं खाद्यते', 'fruit is eaten by Rama')],
   ],
 };
 
@@ -61,18 +81,18 @@ export const karakaDefinitions: ReferenceTable = {
  */
 export const dvitiyaSpecial: ReferenceTable = {
   id: 'dvitiya-special',
-  title: 'Special Uses of द्वितीया',
+  title: 'Special Uses of dvitīyā',
   titleSanskrit: 'द्वितीयाविशेषाः',
   headers: [
-    t('Context'),
+    s('प्रयोगः'),
     s('सूत्र'),
-    t('Example'),
+    s('उदाहरणम्'),
   ],
   rows: [
-    [t('Duration'), s('कालाध्वनोरत्यन्तसंयोगे'), s('मासं वसति = lives for a month')],
-    [t('Distance'), s('कालाध्वनोरत्यन्तसंयोगे'), s('क्रोशं गच्छति = goes a krosha')],
-    [t('With अभि/प्रति'), s('अभिनिविशश्च'), s('ग्रामं प्रति = towards the village')],
-    [t('Double accusative'), s('द्विकर्मकाः'), s('गां दोग्धि पयः = milks milk from cow')],
+    [s('कालावधिः'), s('कालाध्वनोरत्यन्तसंयोगे'), s('मासं वसति', 'lives for a month')],
+    [s('मार्गावधिः'), s('कालाध्वनोरत्यन्तसंयोगे'), s('क्रोशं गच्छति', 'goes a krosha')],
+    [s('अभि/प्रति-योगः'), s('अभिनिविशश्च'), s('ग्रामं प्रति', 'towards the village')],
+    [s('द्विकर्मकः'), s('द्विकर्मकाः'), s('गां दोग्धि पयः', 'milks milk from cow')],
   ],
 };
 
@@ -81,19 +101,19 @@ export const dvitiyaSpecial: ReferenceTable = {
  */
 export const tritiyaSpecial: ReferenceTable = {
   id: 'tritiya-special',
-  title: 'Special Uses of तृतीया',
+  title: 'Special Uses of tṛtīyā',
   titleSanskrit: 'तृतीयाविशेषाः',
   headers: [
-    t('Context'),
-    t('Meaning'),
-    t('Example'),
+    s('प्रयोगः'),
+    s('अर्थः'),
+    s('उदाहरणम्'),
   ],
   rows: [
-    [t('Agent in passive'), t('By whom'), s('रामेण हतः = killed by Rama')],
-    [t('Accompaniment'), t('Together with'), s('पुत्रेण सह = with son')],
-    [t('Characteristic'), t('Having, endowed with'), s('विद्यया युक्तः = endowed with knowledge')],
-    [t('Cause'), t('Because of'), s('दुःखेन रोदिति = cries from sorrow')],
-    [t('Price'), t('For (exchange)'), s('शतेन क्रीतम् = bought for 100')],
+    [s('कर्मणि-कर्ता'), s('येन क्रियते'), s('रामेण हतः', 'killed by Rama')],
+    [s('सहार्थः'), s('सहयोगः'), s('पुत्रेण सह', 'with son')],
+    [s('विशेषणम्'), s('युक्तः/सहितः'), s('विद्यया युक्तः', 'endowed with knowledge')],
+    [s('हेतुः'), s('कारणम्'), s('दुःखेन रोदिति', 'cries from sorrow')],
+    [s('मूल्यम्'), s('परिवर्तने'), s('शतेन क्रीतम्', 'bought for 100')],
   ],
 };
 
@@ -102,18 +122,18 @@ export const tritiyaSpecial: ReferenceTable = {
  */
 export const chaturthiSpecial: ReferenceTable = {
   id: 'chaturthi-special',
-  title: 'Special Uses of चतुर्थी',
+  title: 'Special Uses of caturthī',
   titleSanskrit: 'चतुर्थीविशेषाः',
   headers: [
-    t('Context'),
-    t('Meaning'),
-    t('Example'),
+    s('प्रयोगः'),
+    s('अर्थः'),
+    s('उदाहरणम्'),
   ],
   rows: [
-    [t('Purpose'), t('For the sake of'), s('यज्ञाय = for sacrifice')],
-    [t('With नमः'), t('Salutation'), s('विष्णवे नमः = obeisance to Vishnu')],
-    [t('With स्वस्ति'), t('Welfare'), s('गोभ्यः स्वस्ति = welfare to cows')],
-    [t('Liking/Disliking'), t('Object of emotion'), s('मह्यं रोचते = pleases me')],
+    [s('प्रयोजनम्'), s('अर्थाय'), s('यज्ञाय', 'for sacrifice')],
+    [s('नमः-योगः'), s('नमस्कारः'), s('विष्णवे नमः', 'obeisance to Vishnu')],
+    [s('स्वस्ति-योगः'), s('मङ्गलम्'), s('गोभ्यः स्वस्ति', 'welfare to cows')],
+    [s('रुच्यादि-योगः'), s('मनोभावः'), s('मह्यं रोचते', 'pleases me')],
   ],
 };
 
@@ -122,18 +142,18 @@ export const chaturthiSpecial: ReferenceTable = {
  */
 export const panchamiSpecial: ReferenceTable = {
   id: 'panchami-special',
-  title: 'Special Uses of पञ्चमी',
+  title: 'Special Uses of pañcamī',
   titleSanskrit: 'पञ्चमीविशेषाः',
   headers: [
-    t('Context'),
-    t('Meaning'),
-    t('Example'),
+    s('प्रयोगः'),
+    s('अर्थः'),
+    s('उदाहरणम्'),
   ],
   rows: [
-    [t('Separation'), t('From'), s('ग्रामात् आगच्छति = comes from village')],
-    [t('Cause'), t('Out of, because of'), s('भयात् पलायते = flees from fear')],
-    [t('Comparison'), t('Than'), s('रामात् बलवान् = stronger than Rama')],
-    [t('Protection'), t('From (danger)'), s('व्याघ्रात् बिभेति = fears from tiger')],
+    [s('वियोगः'), s('यतः'), s('ग्रामात् आगच्छति', 'comes from village')],
+    [s('हेतुः'), s('कारणम्'), s('भयात् पलायते', 'flees from fear')],
+    [s('तुलना'), s('उपमा'), s('रामात् बलवान्', 'stronger than Rama')],
+    [s('भयम्'), s('भयस्थानम्'), s('व्याघ्रात् बिभेति', 'fears tiger')],
   ],
 };
 
@@ -142,19 +162,19 @@ export const panchamiSpecial: ReferenceTable = {
  */
 export const shashthiSpecial: ReferenceTable = {
   id: 'shashthi-special',
-  title: 'Uses of षष्ठी',
+  title: 'Uses of ṣaṣṭhī',
   titleSanskrit: 'षष्ठीविशेषाः',
-  description: 'षष्ठी expresses relation (सम्बन्ध), not a कारक',
+  description: 'ṣaṣṭhī expresses relation (sambandha), not a kāraka',
   headers: [
-    t('Relation Type'),
-    t('Meaning'),
-    t('Example'),
+    s('प्रयोगः'),
+    s('अर्थः'),
+    s('उदाहरणम्'),
   ],
   rows: [
-    [t('Possession'), t('Of, belonging to'), s('राज्ञः पुत्रः = king\'s son')],
-    [t('Part-whole'), t('Of (partitive)'), s('वृक्षस्य शाखा = branch of tree')],
-    [t('With कृत्'), t('Agent of verbal noun'), s('तस्य गमनम् = his going')],
-    [t('With तद्धित'), t('Derivation base'), s('राज्ञः पुत्रः = son of king')],
+    [s('स्वत्वम्'), s('सम्बन्धः'), s('राज्ञः पुत्रः', "king's son")],
+    [s('अवयवः'), s('अंशिनः अंशः'), s('वृक्षस्य शाखा', 'branch of tree')],
+    [s('कृत्-योगः'), s('भाव-कर्ता'), s('तस्य गमनम्', 'his going')],
+    [s('तद्धित-योगः'), s('प्रकृतिः'), s('राज्ञः पुत्रः', 'son of king')],
   ],
 };
 
@@ -163,18 +183,18 @@ export const shashthiSpecial: ReferenceTable = {
  */
 export const saptamiSpecial: ReferenceTable = {
   id: 'saptami-special',
-  title: 'Special Uses of सप्तमी',
+  title: 'Special Uses of saptamī',
   titleSanskrit: 'सप्तमीविशेषाः',
   headers: [
-    t('Context'),
-    t('Meaning'),
-    t('Example'),
+    s('प्रयोगः'),
+    s('अर्थः'),
+    s('उदाहरणम्'),
   ],
   rows: [
-    [t('Location (place)'), t('In, on, at'), s('गृहे तिष्ठति = stands in house')],
-    [t('Location (time)'), t('At, during'), s('प्रातः = in the morning')],
-    [t('Topic/Regarding'), t('In the matter of'), s('व्याकरणे निपुणः = skilled in grammar')],
-    [t('Locative absolute'), t('When, while'), s('सूर्ये उदिते = when sun has risen')],
+    [s('देशाधिकरणम्'), s('यत्र'), s('गृहे तिष्ठति', 'stands in house')],
+    [s('कालाधिकरणम्'), s('यदा'), s('प्रातः', 'in the morning')],
+    [s('विषये'), s('अधिकृत्य'), s('व्याकरणे निपुणः', 'skilled in grammar')],
+    [s('सति-सप्तमी'), s('पूर्वकालिकः'), s('सूर्ये उदिते', 'when sun has risen')],
   ],
 };
 
@@ -189,38 +209,44 @@ export const karakaSections: ReferenceSection[] = [
     tables: [sixKarakas, karakaDefinitions],
   },
   {
+    id: 'prathama',
+    title: 'prathamā',
+    titleSanskrit: 'प्रथमा',
+    tables: [prathamaSpecial],
+  },
+  {
     id: 'dvitiya',
-    title: 'द्वितीया Uses',
+    title: 'dvitīyā',
     titleSanskrit: 'द्वितीया',
     tables: [dvitiyaSpecial],
   },
   {
     id: 'tritiya',
-    title: 'तृतीया Uses',
+    title: 'tṛtīyā',
     titleSanskrit: 'तृतीया',
     tables: [tritiyaSpecial],
   },
   {
     id: 'chaturthi',
-    title: 'चतुर्थी Uses',
+    title: 'caturthī',
     titleSanskrit: 'चतुर्थी',
     tables: [chaturthiSpecial],
   },
   {
     id: 'panchami',
-    title: 'पञ्चमी Uses',
+    title: 'pañcamī',
     titleSanskrit: 'पञ्चमी',
     tables: [panchamiSpecial],
   },
   {
     id: 'shashthi',
-    title: 'षष्ठी Uses',
+    title: 'ṣaṣṭhī',
     titleSanskrit: 'षष्ठी',
     tables: [shashthiSpecial],
   },
   {
     id: 'saptami',
-    title: 'सप्तमी Uses',
+    title: 'saptamī',
     titleSanskrit: 'सप्तमी',
     tables: [saptamiSpecial],
   },
