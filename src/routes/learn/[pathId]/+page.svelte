@@ -15,6 +15,7 @@
   import SutraDisplay from '$lib/components/SutraDisplay.svelte';
   import JargonLookup from '$lib/components/JargonLookup.svelte';
   import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
+  import ReviewSidebar from '$lib/components/ReviewSidebar.svelte';
   import DerivationViewer from '$lib/components/DerivationViewer.svelte';
   import QuizStep from '$lib/components/QuizStep.svelte';
   import LessonStep from '$lib/components/LessonStep.svelte';
@@ -50,6 +51,7 @@
   };
   let stepData: Record<number, StepData> = $state({});
   let stepSections: Record<number, { type: string; label: string; anchor: string; si: number }[]> = $state({});
+  let currentLessonNum: number | null = $state(null);
 
   $effect(() => {
     const pathId = data.pathId;
@@ -298,15 +300,21 @@
             <JargonLookup />
           </div>
         </details>
-        <details class="flex-1 bg-white rounded-lg border border-stone-200">
-          <summary class="flex items-center justify-center gap-1.5 px-3 py-2 cursor-pointer text-sm text-stone-600 select-none">
-            <span class="text-xs font-bold">ac</span>
-            Pratyahara
-          </summary>
-          <div class="px-3 pb-3 border-t border-stone-100 pt-2 max-h-72 overflow-y-auto">
-            <PratyaharaViewer />
+        {#if pathMeta?.trackFolder?.startsWith('pathana/balabodhini')}
+          <div class="flex-1 bg-white rounded-lg border border-stone-200 overflow-hidden">
+            <ReviewSidebar lessonNum={currentLessonNum ?? 0} />
           </div>
-        </details>
+        {:else}
+          <details class="flex-1 bg-white rounded-lg border border-stone-200">
+            <summary class="flex items-center justify-center gap-1.5 px-3 py-2 cursor-pointer text-sm text-stone-600 select-none">
+              <span class="text-xs font-bold">ac</span>
+              Pratyahara
+            </summary>
+            <div class="px-3 pb-3 border-t border-stone-100 pt-2 max-h-72 overflow-y-auto">
+              <PratyaharaViewer />
+            </div>
+          </details>
+        {/if}
       </div>
     </div>
 
@@ -352,7 +360,11 @@
           {@const sd = stepData[i] ?? {}}
           <section id="step-{i}" class="scroll-mt-8">
             {#if step.sutraId === 'lesson' && step.lessonRef}
-              <LessonStep lessonRef={step.lessonRef} onsections={(s) => { stepSections[i] = s; }} />
+              <LessonStep
+                lessonRef={step.lessonRef}
+                onsections={(s) => { stepSections[i] = s; }}
+                onlessonnum={(n) => { currentLessonNum = n; }}
+              />
 
             {:else if step.sutraId === 'concept'}
               <div class="space-y-4">
@@ -519,10 +531,14 @@
         </div>
       </main>
 
-      <!-- Right sidebar: Pratyahara viewer -->
+      <!-- Right sidebar: Review (balabodhini) or Pratyahara (grammar/ashtadhyayi) -->
       <aside class="hidden lg:block lg:col-span-3">
         <div class="sticky top-8">
-          <PratyaharaViewer />
+          {#if pathMeta?.trackFolder?.startsWith('pathana/balabodhini')}
+            <ReviewSidebar lessonNum={currentLessonNum ?? 0} />
+          {:else}
+            <PratyaharaViewer />
+          {/if}
         </div>
       </aside>
     </div>

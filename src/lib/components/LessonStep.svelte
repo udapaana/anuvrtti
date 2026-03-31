@@ -4,6 +4,7 @@
   import { lessonLanguage, displayScript } from '$lib/stores/preferences';
   import { selectedTerm } from '$lib/stores/jargon';
   import type { Script } from '$lib/transliteration';
+  import { wordBank } from '$lib/stores/wordBank';
 
   // Map English person labels to Sanskrit IAST for display + jargon + Telugu gloss
   const personMap: Record<string, { iast: string; deva: string; telugu: string; english: string }> = {
@@ -153,9 +154,10 @@
   interface Props {
     lessonRef: string; // e.g. "balabodhini-1-07"
     onsections?: (sections: SectionNavItem[]) => void;
+    onlessonnum?: (num: number) => void;
   }
 
-  let { lessonRef, onsections }: Props = $props();
+  let { lessonRef, onsections, onlessonnum }: Props = $props();
 
   type Language = 'telugu' | 'english';
 
@@ -190,6 +192,9 @@
       .then(text => {
         lessonData = parseToml(text) as Record<string, any>;
         loading = false;
+        wordBank.addWordsFromLesson(lessonRef, lessonData.sections ?? []);
+        const lessonNum = parseInt(lessonRef.match(/(\d+)$/)?.[1] ?? '0', 10);
+        onlessonnum?.(lessonNum);
       })
       .catch(e => {
         fetchError = e.message;

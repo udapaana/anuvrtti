@@ -77,7 +77,7 @@
 </script>
 
 <div class="bg-white rounded-lg border border-stone-200 p-4">
-  <h3 class="text-sm font-medium text-stone-500 mb-3">Jargon</h3>
+  <h3 class="text-xs font-medium text-stone-400 uppercase tracking-wide mb-3">Jargon</h3>
 
   <!-- Search -->
   <input
