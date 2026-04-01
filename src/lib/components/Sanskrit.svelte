@@ -58,9 +58,9 @@
     english: '',
   };
 
-  // When the fallback fires, render in IAST font so the Latin diacritics look right
+  // When the fallback fires, render the original source text in its own script font
   let fontClass = $derived(
-    usingFallback ? 'font-iast' :
+    usingFallback ? scriptClasses[source] :
     INDIC_SCRIPTS.has(source) ? scriptClasses[currentTarget] : scriptClasses[source]
   );
 

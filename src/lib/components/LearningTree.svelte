@@ -65,7 +65,7 @@
     for (const p of allPaths) {
       m.set(p.id, script === 'devanagari' ? p.label : await transliterate(p.label, 'devanagari', script));
       if (p.titleSanskrit) {
-        m.set(`title-${p.id}`, script === 'telugu' ? p.titleSanskrit : await transliterate(p.titleSanskrit, 'telugu', script));
+        m.set(`title-${p.id}`, script === 'devanagari' ? p.titleSanskrit : await transliterate(p.titleSanskrit, 'devanagari', script));
       }
     }
     for (const c of categories) {

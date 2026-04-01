@@ -40,7 +40,6 @@
   // ── scramble mode ──────────────────────────────────────────────────────────
   // placements[ri][ci] = chip key placed there, or null
   // tray = chips not yet placed (shuffled pool)
-  // scrambleCol = which column is active (-1 = all, else column index)
   type Chip = { key: string; cell: TableCell; ri: number; ci: number };
 
   let placements = $state<(string | null)[][]>([]);
@@ -52,8 +51,6 @@
   let totalCount = $state(0);
   let colWidths = $state<number[]>([]); // locked column widths for scramble
   let tableEl: HTMLTableElement | undefined = $state();
-  let scrambleCol = $state(-1); // which column is being scrambled (-1 = pick)
-
   function shuffle<T>(arr: T[]): T[] {
     const a = [...arr];
     for (let i = a.length - 1; i > 0; i--) {
@@ -64,28 +61,23 @@
   }
 
   function enterScramble() {
-    // show column picker first
-    scrambleCol = -1;
-    mode = 'scramble';
-  }
-
-  function startScrambleCol(ci: number) {
-    scrambleCol = ci;
-    // snapshot column widths from the live rendered table before we touch anything
+    // snapshot column widths before touching DOM
     if (tableEl) {
       const ths = tableEl.querySelectorAll<HTMLElement>('thead tr th');
       colWidths = Array.from(ths).map(th => th.getBoundingClientRect().width);
     }
     const chips: Chip[] = [];
     table.rows.forEach((row, ri) => {
-      const cell = row[ci];
-      if (cell) chips.push({ key: `${ri}-${ci}`, cell, ri, ci });
+      row.forEach((cell, ci) => {
+        chips.push({ key: `${ri}-${ci}`, cell, ri, ci });
+      });
     });
     allChips = new Map(chips.map(c => [c.key, c]));
     tray = shuffle(chips);
     placements = table.rows.map(row => row.map(() => null));
     solvedCount = 0;
     totalCount = chips.length;
+    mode = 'scramble';
   }
 
   function countSolved(): number {
@@ -195,7 +187,6 @@
     dragKey = null;
     repelling = new Set();
     colWidths = [];
-    scrambleCol = -1;
   }
 
   function getCellClasses(cell: TableCell): string {
@@ -230,7 +221,7 @@
       {#if mode !== 'normal'}
         <button class="mode-btn mode-exit" onclick={exitMode} title="Exit">✕</button>
       {/if}
-      {#if mode === 'scramble' && scrambleCol >= 0}
+      {#if mode === 'scramble'}
         <span class="score">{solvedCount}/{totalCount}</span>
       {/if}
       {#if mode === 'normal'}
@@ -295,12 +286,6 @@
                 </td>
 
               {:else if mode === 'scramble'}
-                {#if scrambleCol === -1 || ci !== scrambleCol}
-                  <!-- non-scramble column: show normally -->
-                  <td class={getCellClasses(cell)} colspan={cell.colspan} rowspan={cell.rowspan}>
-                    {#if cell.sanskrit}<Sanskrit text={cell.text} />{:else}{cell.text}{/if}
-                  </td>
-                {:else}
                   {@const key = placements[ri]?.[ci]}
                   {@const chip = key ? allChips.get(key) : null}
                   {@const correct = isSlotCorrect(ri, ci)}
@@ -323,7 +308,6 @@
                       <span class="slot-dot"></span>
                     {/if}
                   </td>
-                {/if}
               {/if}
             {/each}
           </tr>
@@ -340,22 +324,8 @@
     </table>
   </div>
 
-  <!-- Column picker (shown when scramble mode but no column chosen yet) -->
-  {#if mode === 'scramble' && scrambleCol === -1}
-    <div class="col-picker">
-      <span class="col-picker-label">Scramble which column?</span>
-      <div class="col-picker-btns">
-        {#each table.headers as header, ci}
-          <button class="col-pick-btn" onclick={() => startScrambleCol(ci)}>
-            {#if header.sanskrit}<Sanskrit text={header.text} />{:else}{header.text}{/if}
-          </button>
-        {/each}
-      </div>
-    </div>
-  {/if}
-
   <!-- Scramble tray -->
-  {#if mode === 'scramble' && scrambleCol >= 0}
+  {#if mode === 'scramble'}
     <div
       class="tray"
       ondragover={onDragOver}
@@ -511,47 +481,6 @@
   }
   .cell-veiled:hover .cell-text.veiled {
     background: #a8a29e;
-  }
-
-  /* ── scramble col picker ── */
-  .col-picker {
-    margin-top: 0.75rem;
-    padding: 0.6rem 0.75rem;
-    background: #fafaf9;
-    border: 1px solid #e7e5e4;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .col-picker-label {
-    font-size: 0.75rem;
-    color: #78716c;
-    flex-shrink: 0;
-  }
-
-  .col-picker-btns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.375rem;
-  }
-
-  .col-pick-btn {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.65rem;
-    border-radius: 0.375rem;
-    border: 1px solid #d6d3d1;
-    background: white;
-    color: #44403c;
-    cursor: pointer;
-    transition: background 0.1s, border-color 0.1s, box-shadow 0.1s;
-  }
-  .col-pick-btn:hover {
-    background: #f5f5f4;
-    border-color: #a8a29e;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
 
   /* ── scramble mode — slots ── */

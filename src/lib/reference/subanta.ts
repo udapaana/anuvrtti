@@ -90,6 +90,7 @@ export const phalaParadigm: ReferenceTable = {
     s('पं॰'),
     s('ष॰'),
     s('स॰'),
+    s('सम्बो॰'),
   ],
   rows: [
     [s('फलम्'), s('फले'), s('फलानि')],
@@ -99,8 +100,9 @@ export const phalaParadigm: ReferenceTable = {
     [s('फलात्'), s('फलाभ्याम्'), s('फलेभ्यः')],
     [s('फलस्य'), s('फलयोः'), s('फलानाम्')],
     [s('फले'), s('फलयोः'), s('फलेषु')],
+    [s('हे फल'), s('हे फले'), s('हे फलानि')],
   ],
-  notes: ['prathamā and dvitīyā are identical in neuter.'],
+  notes: ['prathamā and dvitīyā are identical in neuter. Vocative sg = bare stem (phala ≠ phalam).'],
 };
 
 /**
@@ -124,6 +126,7 @@ export const senaParadigm: ReferenceTable = {
     s('पं॰'),
     s('ष॰'),
     s('स॰'),
+    s('सम्बो॰'),
   ],
   rows: [
     [s('सेना'), s('सेने'), s('सेनाः')],
@@ -133,6 +136,7 @@ export const senaParadigm: ReferenceTable = {
     [s('सेनायाः'), s('सेनाभ्याम्'), s('सेनाभ्यः')],
     [s('सेनायाः'), s('सेनयोः'), s('सेनानाम्')],
     [s('सेनायाम्'), s('सेनयोः'), s('सेनासु')],
+    [s('हे सेने'), s('हे सेने'), s('हे सेनाः')],
   ],
 };
 
@@ -157,6 +161,7 @@ export const agniParadigm: ReferenceTable = {
     s('पं॰'),
     s('ष॰'),
     s('स॰'),
+    s('सम्बो॰'),
   ],
   rows: [
     [s('अग्निः'), s('अग्नी'), s('अग्नयः')],
@@ -166,6 +171,7 @@ export const agniParadigm: ReferenceTable = {
     [s('अग्नेः'), s('अग्निभ्याम्'), s('अग्निभ्यः')],
     [s('अग्नेः'), s('अग्न्योः'), s('अग्नीनाम्')],
     [s('अग्नौ'), s('अग्न्योः'), s('अग्निषु')],
+    [s('हे अग्ने'), s('हे अग्नी'), s('हे अग्नयः')],
   ],
 };
 
@@ -190,6 +196,7 @@ export const guruParadigm: ReferenceTable = {
     s('पं॰'),
     s('ष॰'),
     s('स॰'),
+    s('सम्बो॰'),
   ],
   rows: [
     [s('गुरुः'), s('गुरू'), s('गुरवः')],
@@ -199,6 +206,7 @@ export const guruParadigm: ReferenceTable = {
     [s('गुरोः'), s('गुरुभ्याम्'), s('गुरुभ्यः')],
     [s('गुरोः'), s('गुर्वोः'), s('गुरूणाम्')],
     [s('गुरौ'), s('गुर्वोः'), s('गुरुषु')],
+    [s('हे गुरो'), s('हे गुरू'), s('हे गुरवः')],
   ],
 };
 
@@ -223,6 +231,7 @@ export const nadiParadigm: ReferenceTable = {
     s('पं॰'),
     s('ष॰'),
     s('स॰'),
+    s('सम्बो॰'),
   ],
   rows: [
     [s('नदी'), s('नद्यौ'), s('नद्यः')],
@@ -232,6 +241,7 @@ export const nadiParadigm: ReferenceTable = {
     [s('नद्याः'), s('नदीभ्याम्'), s('नदीभ्यः')],
     [s('नद्याः'), s('नद्योः'), s('नदीनाम्')],
     [s('नद्याम्'), s('नद्योः'), s('नदीषु')],
+    [s('हे नदि'), s('हे नद्यौ'), s('हे नद्यः')],
   ],
 };
 
@@ -256,6 +266,7 @@ export const rajanParadigm: ReferenceTable = {
     s('पं॰'),
     s('ष॰'),
     s('स॰'),
+    s('सम्बो॰'),
   ],
   rows: [
     [s('राजा'), s('राजानौ'), s('राजानः')],
@@ -265,6 +276,7 @@ export const rajanParadigm: ReferenceTable = {
     [s('राज्ञः'), s('राजभ्याम्'), s('राजभ्यः')],
     [s('राज्ञः'), s('राज्ञोः'), s('राज्ञाम्')],
     [s('राज्ञि/राजनि'), s('राज्ञोः'), s('राजसु')],
+    [s('हे राजन्'), s('हे राजानौ'), s('हे राजानः')],
   ],
 };
 
@@ -320,7 +332,7 @@ export const pitrParadigm: ReferenceTable = {
     [s('पितुः'), s('पितृभ्याम्'), s('पितृभ्यः')],
     [s('पितुः'), s('पित्रोः'), s('पितॄणाम्')],
     [s('पितरि'), s('पित्रोः'), s('पितृषु')],
-    [s('पितः'), s('पितरौ'), s('पितरः')],
+    [s('हे पितः'), s('हे पितरौ'), s('हे पितरः')],
   ],
 };
 
@@ -342,7 +354,7 @@ export const marutParadigm: ReferenceTable = {
     [s('मरुतः'), s('मरुद्भ्याम्'), s('मरुद्भ्यः')],
     [s('मरुतः'), s('मरुतोः'), s('मरुताम्')],
     [s('मरुति'), s('मरुतोः'), s('मरुत्सु')],
-    [s('मरुत्'), s('मरुतौ'), s('मरुतः')],
+    [s('हे मरुत्'), s('हे मरुतौ'), s('हे मरुतः')],
   ],
   notes: ['Final -t voices to -d before voiced consonants (marudbhyām).'],
 };
@@ -356,7 +368,7 @@ export const manasParadigm: ReferenceTable = {
   titleSanskrit: 'स्-कारान्त नपुंसक',
   description: 'manas (mind) — s-stem neuter',
   headers: [s('एक॰'), s('द्वि॰'), s('बहु॰')],
-  rowHeaders: [s('प्र॰'), s('द्वि॰'), s('तृ॰'), s('च॰'), s('पं॰'), s('ष॰'), s('स॰')],
+  rowHeaders: [s('प्र॰'), s('द्वि॰'), s('तृ॰'), s('च॰'), s('पं॰'), s('ष॰'), s('स॰'), s('सम्बो॰')],
   rows: [
     [s('मनः'), s('मनसी'), s('मनांसि')],
     [s('मनः'), s('मनसी'), s('मनांसि')],
@@ -365,8 +377,9 @@ export const manasParadigm: ReferenceTable = {
     [s('मनसः'), s('मनोभ्याम्'), s('मनोभ्यः')],
     [s('मनसः'), s('मनसोः'), s('मनसाम्')],
     [s('मनसि'), s('मनसोः'), s('मनःसु')],
+    [s('हे मनः'), s('हे मनसी'), s('हे मनांसि')],
   ],
-  notes: ['prathamā and dvitīyā identical in neuter. Visarga in nom. sg. from -s + vowel sandhi.'],
+  notes: ['prathamā and dvitīyā identical in neuter. Vocative = Nominative throughout.'],
 };
 
 /**
@@ -387,7 +400,7 @@ export const yoginParadigm: ReferenceTable = {
     [s('योगिनः'), s('योगिभ्याम्'), s('योगिभ्यः')],
     [s('योगिनः'), s('योगिनोः'), s('योगिनाम्')],
     [s('योगिनि'), s('योगिनोः'), s('योगिषु')],
-    [s('योगिन्'), s('योगिनौ'), s('योगिनः')],
+    [s('हे योगिन्'), s('हे योगिनौ'), s('हे योगिनः')],
   ],
 };
 
