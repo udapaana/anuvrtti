@@ -106,6 +106,8 @@
   let balabodhiniPaths = $derived(
     allPaths.filter(p => p.id.startsWith('balabodhini-')).sort((a, b) => a.order - b.order)
   );
+  let balabodhini1Paths = $derived(balabodhiniPaths.filter(p => p.id.startsWith('balabodhini-1-')));
+  let balabodhini2Paths = $derived(balabodhiniPaths.filter(p => p.id.startsWith('balabodhini-2-')));
   let readingPaths = $derived(
     allPaths.filter(p => p.track === 'reading' && !p.id.startsWith('balabodhini-'))
   );
@@ -252,13 +254,13 @@
         {/each}
       </div>
     {:else}
-      <!-- Bālabodhini -->
+      <!-- Bālabodhini Vol 1 -->
       <div class="reading-header">
-        <p class="reading-desc">Here is a digitization of the first volume of Kāśī Kṛṣṇācārya's <em>Bālabodhini</em> in Telugu.</p>
+        <p class="reading-desc">Volume I — Kāśī Kṛṣṇācārya's <em>Bālabodhini</em> in Telugu (lessons 1–38).</p>
       </div>
 
       <ol class="reading-list">
-        {#each balabodhiniPaths as path}
+        {#each balabodhini1Paths as path}
           {@const complete = done(path.id)}
           {@const colors = categoryColors['prakarana'] || categoryColors.foundation}
           {@const lessonNum = parseInt(path.id.match(/balabodhini-\d+-(\d+)/)?.[1] ?? '0', 10)}
@@ -277,6 +279,34 @@
           </li>
         {/each}
       </ol>
+
+      <!-- Bālabodhini Vol 2 -->
+      {#if balabodhini2Paths.length > 0}
+        <div class="reading-header" style="margin-top: 1.5rem;">
+          <p class="reading-desc">Volume II — lessons 39–78.</p>
+        </div>
+
+        <ol class="reading-list">
+          {#each balabodhini2Paths as path}
+            {@const complete = done(path.id)}
+            {@const colors = categoryColors['prakarana'] || categoryColors.foundation}
+            {@const lessonNum = parseInt(path.id.match(/balabodhini-\d+-(\d+)/)?.[1] ?? '0', 10)}
+            <li class="reading-item" class:completed={complete}>
+              <a href="/learn/{path.id}" class="reading-btn">
+                <span class="reading-number" class:complete style="border-color: {colors.medium}; {complete ? `background: ${colors.medium}` : ''}">
+                  {#if complete}✓{:else}{lessonNum}{/if}
+                </span>
+                <div class="reading-content">
+                  <span class="reading-label font-{$displayScript}">{label(`title-${path.id}`, path.titleSanskrit)}</span>
+                  {#if path.description}
+                    <span class="reading-desc-inline" style="color: {colors.medium};"><InlineMarkup text={path.description} /></span>
+                  {/if}
+                </div>
+              </a>
+            </li>
+          {/each}
+        </ol>
+      {/if}
     {/if}
 
   </div>

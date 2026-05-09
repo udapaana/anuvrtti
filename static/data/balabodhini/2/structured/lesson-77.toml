@@ -1,0 +1,365 @@
+id = "balabodhini-2-77"
+source = "balabodhini"
+part = 2
+number = 77
+title_sanskrit_telugu = "సప్తసప్తతిమః పాఠః"
+title_telugu = "డెబ్బదియేడవ పాఠము"
+title_english = "Seventy-seventh Lesson"
+grammar_focus = "o-kārānta (go, dyo); au-kārānta (glau, nau) declension"
+sutras = []
+
+# --- grammar note: intro on o/au-kārānta stems ---
+
+[[sections]]
+type = "grammar_note"
+language = "meta"
+
+[[sections.items]]
+telugu = """'ఓ' కారాంతశబ్దములు కే వనియే చెప్పవచ్చును. 'ఏ'కారాంత, 'ఐ'కారాంతశబ్దము లొకటి రెండున్నను ప్రాయశఽ భాషలోనికి (వ్యవహారము) లోనికి వచ్చుటయేలేదు. 'ఓ' కారాంతము లై వ్యవహారమలోనికి వచ్చు శబ్దములు రెండుమాత్రము నా స్వల్పానుభవములో గోచరమాళైనవి. అవి ం 'గో' శబ్దము. ం 'ద్యో' శబ్దము. వానిలో 'గో' శబ్దము-ఆవు అర్థమయినప్పుడు స్త్రీలింగమును. ఎద్దు అర్థమయినపుడు పుంలింగమును గలిగి యుండును.'ద్యో' శబ్దము మాత్రమ స్వర్గవాచకము; స్త్రీలింగము. రెండు శబ్దములు నొక విధముగనే యుండును. 'ఔ' కారాంత పుంలింగము 'గ్లౌ' శబ్దము; చంద్రుండర్థము. "ఔ"కారాంత స్త్రీలింగము "నౌ" శబ్దము ఓడ యర్థము. ఇవియును వ్యవహారమలో రెండే నేనెఱిఁగినంతవఱకు గోచరించుచున్నవి. రెండును ఒకవిధముగనే నడచును."""
+english = "O-kārānta words are very few. Only go (cow/bull) and dyo (heaven) are in practical use. go is feminine when meaning 'cow', masculine for 'bull'; dyo is feminine (heaven). Au-kārānta words: glau (moon, masculine) and nau (boat, feminine). Both pairs decline alike."
+
+# --- paradigm: go / glau side-by-side ---
+
+[[sections]]
+type = "paradigm"
+layout = "stems"
+language = "sanskrit"
+label = "go (o-kārānta) · glau (au-kārānta)"
+stems = ["go", "glau"]
+
+[[sections.items]]
+case = "prathamā"
+singular_iast = ["gauḥ", "glauḥ"]
+plural_iast = ["gāvaḥ", "glāvaḥ"]
+
+[[sections.items]]
+case = "dvitīyā"
+singular_iast = ["gām", "glāvam"]
+plural_iast = ["gāḥ", "glāvaḥ"]
+
+[[sections.items]]
+case = "tṛtīyā"
+singular_iast = ["gavā", "glāvā"]
+plural_iast = ["gobhiḥ", "globhiḥ"]
+
+[[sections.items]]
+case = "caturthī"
+singular_iast = ["gave", "glāve"]
+plural_iast = ["gobhyaḥ", "globhyaḥ"]
+
+[[sections.items]]
+case = "pañcamī"
+singular_iast = ["goḥ", "glāvaḥ"]
+plural_iast = ["gobhyaḥ", "globhyaḥ"]
+
+[[sections.items]]
+case = "ṣaṣṭhī"
+singular_iast = ["goḥ", "glāvaḥ"]
+plural_iast = ["gavām", "glāvām"]
+
+[[sections.items]]
+case = "saptamī"
+singular_iast = ["gavi", "glaum"]
+plural_iast = ["goṣu", ""]
+
+[[sections.items]]
+case = "sambodhana"
+singular_iast = ["he goḥ!", "he glau!"]
+plural_iast = ["he gāvaḥ!", "he glāvaḥ!"]
+
+# --- grammar note: dyo like go, nau like glau ---
+
+[[sections]]
+type = "grammar_note"
+language = "meta"
+
+[[sections.items]]
+telugu = "'ద్యో' శబ్దము 'గో' శబ్దము వలెను, 'నౌ' శబ్దము 'గ్లౌ' శబ్దమువలెను చెప్పఁకొనవలయును."
+english = "dyo declines like go; nau declines like glau."
+
+# --- vocabulary ---
+
+[[sections]]
+type = "vocabulary"
+language = "bilingual"
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "'గో' శబ్దము", telugu_gloss = "ఆవు, ఎద్దు", english = "cow, bull", iast = "'go' śabdamu" },
+  { sanskrit_telugu = "'గ్లౌ' శబ్దము", telugu_gloss = "చంద్రుండు", english = "moon", iast = "'glau' śabdamu" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "శివరాత్రిఽ", telugu_gloss = "శివరాత్రి", english = "Shivarātri", iast = "śivarātri" },
+  { sanskrit_telugu = "ఉన్మాలయతి", telugu_gloss = "పెళ్ళగించుచున్నాఁడు", english = "uproots", iast = "unmālayati" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "జాగరణం", telugu_gloss = "జాగరణము", english = "night vigil", iast = "jāgaraṇaṃ" },
+  { sanskrit_telugu = "కుంఠతి", telugu_gloss = "మొక్కఁపోవుచున్నది", english = "becomes blunt", iast = "kuṃṭhati" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "భవణం", telugu_gloss = "మొఱకుగుట", english = "barking", iast = "bhavaṇaṃ" },
+  { sanskrit_telugu = "వేల్లతి", telugu_gloss = "పెనవేసికొనుచున్నది", english = "twines, creeps", iast = "vellati" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "హేషా", telugu_gloss = "సకిలింపు", english = "neighing", iast = "heṣā" },
+  { sanskrit_telugu = "వయతి", telugu_gloss = "నేయుచున్నాఁడు", english = "weaves", iast = "vayati" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "బృంహణం", telugu_gloss = "ఘీంకారము", english = "elephant's trumpet", iast = "bṛṃhaṇaṃ" },
+  { sanskrit_telugu = "విధ్యతి", telugu_gloss = "వేధించుచున్నాఁడు", english = "pierces", iast = "vidhyati" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "రోమంథఽ", telugu_gloss = "నెమరు", english = "cud-chewing", iast = "romaṃtha" },
+  { sanskrit_telugu = "ఖాండ్కరోతి", telugu_gloss = "ఖాండించుచున్నాఁడు", english = "chops, cuts to pieces", iast = "khāṇḍkaroti" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "స్వేదఽ", telugu_gloss = "చెమట", english = "sweat", iast = "sveda" },
+  { sanskrit_telugu = "పటుపటాయతే", telugu_gloss = "పటుపటులాడించుచున్నాఁడు", english = "gnashes, clatters", iast = "paṭupaṭāyate" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "ప్రబోధఽ", telugu_gloss = "మెలకువ", english = "awakening", iast = "prabodha" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "ఫేణికా", telugu_gloss = "ఫేణి", english = "a kind of sweet (phenī)", iast = "pheṇikā" },
+  { sanskrit_telugu = "వ్యయయతి", telugu_gloss = "ఖర్చుపెట్టుచున్నాఁడు", english = "spends", iast = "vyayayati" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "ఫేనఽ", telugu_gloss = "నురుగు", english = "foam, froth", iast = "phena" },
+  { sanskrit_telugu = "ధ్రువతి", telugu_gloss = "స్థిరపడుచున్నాఁడు", english = "becomes fixed, settles", iast = "dhruvati" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "ఫణా", telugu_gloss = "పడగ", english = "snake's hood", iast = "phaṇā" },
+  { sanskrit_telugu = "స్విద్యతి", telugu_gloss = "చెమరుచున్నది", english = "sweats", iast = "svidyati" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "పీవరఽ", telugu_gloss = "బలసిన", english = "fat, robust", iast = "pīvara" },
+  { sanskrit_telugu = "ద్రుహ్యాతి", telugu_gloss = "ద్రోహముచేయుచున్నాఁడు", english = "bears malice, plots against", iast = "druhyāti" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "ఫాణితం", telugu_gloss = "కందచెక్కెర", english = "raw sugar, jaggery syrup", iast = "phāṇitaṃ" },
+  { sanskrit_telugu = "స్నిహ్యాతి", telugu_gloss = "ప్రేమజూపుచున్నాఁడు", english = "shows affection", iast = "snihyāti" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "పరశుఽ", telugu_gloss = "గొడ్డలి", english = "axe", iast = "paraśu" },
+  { sanskrit_telugu = "వపతి", telugu_gloss = "గొరుగున్నాఁడు, విత్తుచున్నాఁడు", english = "shaves; sows", iast = "vapati" },
+]
+
+# --- passage ---
+
+[[sections]]
+type = "passage"
+language = "sanskrit"
+
+[[sections.items]]
+n = 1
+sanskrit_telugu = "అస్మాకం గావఽ కుత్ర సంచరంతి వా పశ్య."
+english = "Look and see where our cows are wandering."
+
+[[sections.items]]
+n = 2
+sanskrit_telugu = "యఽ కశ్చిత్ గృహీత్వా (కారావరణే = బందెలదొడ్డి) స్థాపయిష్యతి కింవా జాగ్రత్రయా చారయిత్వా ఆస్మద్గ్రహం ఆనయ."
+english = "Whoever has taken them and put them in the pound — or else carefully herd them and bring them to our house."
+
+[[sections.items]]
+n = 3
+sanskrit_telugu = "ఏషఽ వృషభఽ కస్యరే అతీవ పీవరఽ దృశ్యతే."
+english = "Whose bull is this? He looks extremely robust."
+
+[[sections.items]]
+n = 4
+sanskrit_telugu = "అస్మద్గ్రహామాఽ సోమవాసరఽ ఆగతఽ; త్రయోదశ్యాం ఏవ మాఘబహుళాఽమాఽమావాస్యాయాం సోమవాసరఽ ఆగతఽ; త్రయోదశ్యాం ఏవ చాతుర్థీతిథిళ్ళు ఆసీత్; తద్దైవ శివరాత్రిఽ తస్మిన్నినే అస్మాభిఽ సర్వేఽఽపి ఉపవాసఽ; చతుర్థీతిభిళ్ళు ఆసీత్; తద్దైవ శివరాత్రిఽ తస్మిన్నినే అస్మాభిఽ సర్వేఽఽపి ఉపవాసఽ; కర్తవ్యఽ రాత్రా జాగరణం చ కర్తవ్యం."
+english = "Monday came to our home; in the Māgha dark fortnight it was a Monday on the trayodaśī itself; on the caturthi tithi also — that very day was Śivarātri; on that day all of us must fast and keep vigil through the night."
+
+[[sections.items]]
+n = 5
+sanskrit_telugu = "కుఠారేణ అట్లం."
+english = "Split the log with the axe."
+
+[[sections.items]]
+n = 6
+sanskrit_telugu = "భేదయ కుఠారఽ కర్తవ్యఽ రాత్రా జాగరణం చ కర్తవ్యం."
+english = "Split it; the axe must be used and night-vigil must be kept."
+
+[[sections.items]]
+n = 7
+sanskrit_telugu = "కుఠారేణ అట్లం."
+english = "Split the log with the axe."
+
+[[sections.items]]
+n = 8
+sanskrit_telugu = "భేదయ కుఠారఽ అకుంఠత్."
+english = "Split it — the axe has become blunt."
+
+[[sections.items]]
+n = 9
+sanskrit_telugu = "బాలకాఽ అస్మదావరణే ప్రవిశ్య తులసీవృక్షం ఉన్మాలయంతి; పశ్య తర్దయ."
+english = "The boys are entering our compound and uprooting the tulasī plant; look and scold them."
+
+[[sections.items]]
+n = 10
+sanskrit_telugu = "యుష్మత్ శ్వశురఽ త్వయి స్నిహ్యాతివా?"
+english = "Does your father-in-law show affection towards you?"
+
+[[sections.items]]
+n = 11
+sanskrit_telugu = "మామ శరీరం (ఆపాదమస్తకం = ఆనఖళిఖం) సర్వదా స్విద్యతి."
+english = "My body sweats constantly from head to toe."
+
+[[sections.items]]
+n = 12
+sanskrit_telugu = "కిం కర్తవ్యం వా న జ్ఞాయతే."
+english = "What is to be done is not known."
+
+[[sections.items]]
+n = 13
+sanskrit_telugu = "గంగోదకే ఫాణితం మేళయిత్వా మధురం పానకం కురు."
+english = "Mix jaggery syrup in Ganges water and make a sweet drink."
+
+[[sections.items]]
+n = 14
+sanskrit_telugu = "అనేకే దాక్షిణాత్యాఽ అస్మద్దేశం ఆగత్య అత్రైవ అద్రువన్."
+english = "Many southerners came to our region and settled here."
+
+[[sections.items]]
+n = 15
+sanskrit_telugu = "అస్మిన్ క్షామకాళే తేషామపి జీవనం యథాకథం వా భవత్యేవ."
+english = "Even in this time of famine, their livelihood somehow or other carries on."
+
+[[sections.items]]
+n = 16
+sanskrit_telugu = "మామ పుత్రస్య హస్తే రూపకఽ అస్తిచేత్ క్షణేనైవ వ్యયયిష్యతి."
+english = "If money comes into my son's hand, he will spend it in an instant."
+
+[[sections.items]]
+n = 17
+sanskrit_telugu = "త్వం రామాయ కిమర్థం ద్రుహ్యాసి?"
+english = "Why do you bear malice toward Rāma?"
+
+[[sections.items]]
+n = 18
+sanskrit_telugu = "మల్లికాలతా పనసవృక్షం వేల్లతి."
+english = "The jasmine creeper twines around the jackfruit tree."
+
+[[sections.items]]
+n = 19
+sanskrit_telugu = "కిమర్థం రే మాం విధ్యసి తాత?"
+english = "Why are you hurting me, child?"
+
+[[sections.items]]
+n = 20
+sanskrit_telugu = "ఇదానీం మత్సమీపే ఏకఽ ద్రమ్మఽఽపి నాస్తి."
+english = "At this moment there is not even a single paisa near me."
+
+[[sections.items]]
+n = 21
+sanskrit_telugu = "శ్వనకాఽ ఖాండ్కుర్వంతి."
+english = "The dogs are gnashing (their teeth) / snapping."
+
+[[sections.items]]
+n = 22
+sanskrit_telugu = "ఉపరి పతేయుఽ కింవా దూరతఽ గచ్చాముఁ శీఘ్రు మాగచ్చత."
+english = "They might jump on us — or let us go far away; come quickly, do not come here."
+
+# --- passage_translation ---
+
+[[sections]]
+type = "passage_translation"
+language = "telugu"
+
+[[sections.items]]
+n = 1
+telugu = "మన గేదెయొక్కఁ నోటినుండి అట్లు నెమరు జారుచున్నదేమిరా ఆ పాముయొక్కఁ పడగ చాల పెద్దదిగా నున్నది."
+english = "Why is the cud slipping from our buffalo's mouth like that? That snake's hood is very large."
+
+[[sections.items]]
+n = 2
+telugu = "నీ వెవని జూచి పండ్లు పటుపటులాడించుచున్నావు?"
+english = "Looking at whom are you gnashing your teeth?"
+
+[[sections.items]]
+n = 3
+telugu = "(సేద్యగాఁడ్రు = కృషీవలాఽ) గింజలను విత్తు చున్నారు."
+english = "The farmers (kṛṣīvalāḥ) are sowing seeds."
+
+[[sections.items]]
+n = 4
+telugu = "(కొత్తనీరుగనుక = నూతనజలత్వాత్) [నురుగులు గకుఽచున్నది = ఫేనాయతే] చేటులో మినుపప్పు ఏను పోసి యెండబెట్టుము."
+english = "Because it is fresh water (nūtanajalatvāt) it is foaming (phenāyate) — pour the urad dal into the winnowing basket and dry it in the sun."
+
+[[sections.items]]
+n = 5
+telugu = "దిక్కులన్నియు నేయుచున్నాఁడు?"
+english = "Is he weaving in all directions?"
+
+[[sections.items]]
+n = 6
+telugu = "ఎవఁడు నీ వస్త్రమును నున్నది; మనయూళ్ళో నేనుఁగు లున్నవా యేమి?"
+english = "Who has your cloth — are there elephants in our village or what?"
+
+[[sections.items]]
+n = 7
+telugu = "ఘీంకారము కాదు; గుఱ్ఱములయొక్కఁ సకిలింపులను కుక్కలయొక్కఁ మొఱుఁగుటలును కలిసి అటుల నున్నది."
+english = "It is not trumpeting — the neighing of horses and the barking of dogs are mixed together and it sounds like that."
+
+[[sections.items]]
+n = 8
+telugu = "మా బావమఱఁది యోడ నెక్కి మదరాసునకు వెళ్ళినాఁడు."
+english = "My brother-in-law boarded a ship and went to Madras."
+
+[[sections.items]]
+n = 9
+telugu = "మొచిన్నిత్తమ్ముఁడు బియల్ పరీక్షను గెలిచినాఁడు గదా; యే గ్రామమలో స్థిరపడును?"
+english = "Your younger brother passed the B.L. exam, didn't he — in which village will he settle?"
+
+[[sections.items]]
+n = 10
+telugu = "ప్రాయళ్ళు ఇచటు స్థిరపడునేమో అని తోఁచుచున్నది."
+english = "It seems he will probably settle here."
+
+[[sections.items]]
+n = 11
+telugu = "అదే మంచిది."
+english = "That would be good."
+
+[[sections.items]]
+n = 12
+telugu = "ఎందుకనఁగా అందఱు నొకచోటనే యుందురు."
+english = "Because then everyone will be in one place."
+
+[[sections.items]]
+n = 13
+telugu = "పోనిమ్ము వాఁడక్కఁడ నున్నను వాని అపేక్ష మొకుండునుగాని మీఁ యపేక్ష వానికించుకయు లేదుగదా!"
+english = "Never mind — even if he is there, he will have regard for us; but you have not even a bit of regard for him, have you!"
+
+[[sections.items]]
+n = 14
+telugu = "నిజమే."
+english = "That is true."

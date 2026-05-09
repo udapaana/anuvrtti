@@ -1,0 +1,385 @@
+id = "balabodhini-2-49"
+source = "balabodhini"
+part = 2
+number = 49
+title_sanskrit_telugu = "ఏకోనపంచాశః పాఠః"
+title_telugu = "నలువదితొమ్మిదవపాఠము"
+title_english = "Forty-ninth Lesson"
+grammar_focus = "strīliṅga tad-śabda (sā) & etad-śabda (eṣā) declension; √lamb ātmanepada āśīrliṅ & vidhiliṅ"
+sutras = []
+
+# ---- pronoun declension: sā / eṣā ----
+
+[[sections]]
+type = "paradigm"
+layout = "stems"
+language = "sanskrit"
+label = "strīliṅga — tad-śabda (sā) & etad-śabda (eṣā)"
+stems = ["sā", "eṣā"]
+
+[[sections.items]]
+case = "prathamā"
+singular_iast = ["sā", "eṣā"]
+plural_iast = ["tāḥ", "etāḥ"]
+
+[[sections.items]]
+case = "dvitīyā"
+singular_iast = ["tām", "etām"]
+plural_iast = ["tāḥ", "etāḥ"]
+
+[[sections.items]]
+case = "tṛtīyā"
+singular_iast = ["tayā", "etayā"]
+plural_iast = ["tābhiḥ", "etābhiḥ"]
+
+[[sections.items]]
+case = "caturthī"
+singular_iast = ["tasyai", "etasyai"]
+plural_iast = ["tābhyaḥ", "etābhyaḥ"]
+
+[[sections.items]]
+case = "pañcamī"
+singular_iast = ["tasyāḥ", "etasyāḥ"]
+plural_iast = ["tābhyaḥ", "etābhyaḥ"]
+
+[[sections.items]]
+case = "ṣaṣṭhī"
+singular_iast = ["tasyāḥ", "etasyāḥ"]
+plural_iast = ["tāsām", "etāsām"]
+
+[[sections.items]]
+case = "saptamī"
+singular_iast = ["tasyām", "etasyām"]
+plural_iast = ["tāsu", "etāsu"]
+
+# ---- grammar note about similar pronouns ----
+
+[[sections]]
+type = "grammar_note"
+language = "meta"
+
+[[sections.items]]
+telugu = "ఇటులే 'సర్వా-అన్యా-యా-కా-స్వా-ఏకా' - శబ్దములను. 'ఏకా' శబ్దమునకు ఏకవచనమే కాని బహువచనము లేదు."
+english = "Likewise for the words sarvā, anyā, yā, kā, svā, ekā. The word ekā has only singular, no plural."
+
+# ---- vocabulary ----
+
+[[sections]]
+type = "vocabulary"
+language = "bilingual"
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "ఏషా", telugu_gloss = "ఈమె", english = "this (woman)", iast = "eṣā" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "జాగ్రత్తా", telugu_gloss = "జాగ్రత్త", english = "alertness, care", iast = "jāgrattā" },
+  { sanskrit_telugu = "మధురః", telugu_gloss = "తీయనిది", english = "sweet", iast = "madhuraḥ" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "పురోహితః", telugu_gloss = "పురోహితుఁడు", english = "priest", iast = "purohitaḥ" },
+  { sanskrit_telugu = "అమ్లః", telugu_gloss = "పుల్లనిది", english = "sour", iast = "amlaḥ" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "క్రమేణ", telugu_gloss = "వరుసగా", english = "gradually, in order", iast = "krameṇa" },
+  { sanskrit_telugu = "తిక్తః", telugu_gloss = "చేదు", english = "bitter", iast = "tiktaḥ" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "ఆగామి", telugu_gloss = "రాఁబోవు", english = "coming, upcoming", iast = "āgāmi" },
+  { sanskrit_telugu = "గతః", telugu_gloss = "కడచిన లేక వెళ్ళినవాడు", english = "past, or one who has gone", iast = "gataḥ" },
+]
+
+[[sections.items]]
+words = [
+  { sanskrit_telugu = "రమణీయః", telugu_gloss = "చక్కనివాఁడు", english = "beautiful, charming", iast = "ramaṇīyaḥ" },
+  { sanskrit_telugu = "క్రమశః", telugu_gloss = "వరుసగా", english = "in sequence", iast = "kramaśaḥ" },
+]
+
+# ---- verb paradigm: √lamb āśīrliṅ / vidhiliṅ ----
+
+[[sections]]
+type = "paradigm"
+layout = "moods"
+language = "sanskrit"
+label = "√lamb ātmanepada — āśīrliṅ · vidhiliṅ"
+moods = ["āśīrliṅ", "vidhiliṅ"]
+
+[[sections.items]]
+person = "3rd"
+singular_iast = ["lambatām", "lambeta"]
+plural_iast = ["lambatām", "lamberan"]
+
+[[sections.items]]
+person = "2nd"
+singular_iast = ["lambasva", "lambethāḥ"]
+plural_iast = ["lambdhvam", "lambedhvam"]
+
+[[sections.items]]
+person = "1st"
+singular_iast = ["lambai", "lambeya"]
+plural_iast = ["lambāmahai", "lambemahi"]
+
+# ---- passage (Sanskrit) ----
+
+[[sections]]
+type = "passage"
+language = "sanskrit"
+
+[[sections.items]]
+n = 1
+sanskrit_telugu = "గతదినే నక్తం శివాలయే చోరాః ప్రవిశ్య దేవస్య ఆభరణాని సర్వాణి అపి అచోరయన్ కిల!"
+english = "On the previous day at night, thieves entered the Shiva temple and stole all the ornaments of the deity, it seems!"
+
+[[sections.items]]
+n = 2
+sanskrit_telugu = "తతః త్వం ప్రతిదినం నక్తం జాగ్రత్తయా వస."
+english = "Therefore you stay every night with alertness."
+
+[[sections.items]]
+n = 3
+sanskrit_telugu = "తస్యాః పుత్రాః రాజమహేంద్రవరే పణావిద్యాం పఠంతి."
+english = "Her sons are studying commerce in Rajahmundry."
+
+[[sections.items]]
+n = 4
+sanskrit_telugu = "తదర్థం సా ఏతత్ గ్రామాత్ ఉత్థాయ పుత్ర సమీపమేవ వసతి."
+english = "For that reason she has moved from this village and lives near her son."
+
+[[sections.items]]
+n = 5
+sanskrit_telugu = "చోరాణాం చోరయితుం అస్మద్గృహే కిం ధన మస్తి?"
+english = "What wealth is there in our house for thieves to steal?"
+
+[[sections.items]]
+n = 6
+sanskrit_telugu = "యుష్మాకం గృహేఘ నకులాః సంతి రే."
+english = "There are mongooses in your house, you know."
+
+[[sections.items]]
+n = 7
+sanskrit_telugu = "ఇతః పూర్వం నకులః వా మూషకః వా అస్మద్గృహే ఏకోపి నాస్తి."
+english = "Previously, not even a single mongoose or mouse was in our house."
+
+[[sections.items]]
+n = 8
+sanskrit_telugu = "ఇదానీం క్రమేణ యుష్మద్ గృహాత్ ప్రవిశంతి."
+english = "Now gradually they are entering from your house."
+
+[[sections.items]]
+n = 9
+sanskrit_telugu = "శ్రకం అమ్లం అస్తి."
+english = "The tamarind is sour."
+
+[[sections.items]]
+n = 10
+sanskrit_telugu = "సః బాలకః అతీవ రమణీయః."
+english = "That boy is very charming."
+
+[[sections.items]]
+n = 11
+sanskrit_telugu = "ఏషా కస్యాః పుత్రికావా మయా నజ్ఞాయతే."
+english = "Whose daughter this is, I do not know."
+
+[[sections.items]]
+n = 12
+sanskrit_telugu = "యుష్మత్తూాపే జలం మధురం అస్తి."
+english = "The water in your well is sweet."
+
+[[sections.items]]
+n = 13
+sanskrit_telugu = "నాగదంతం హస్తేన ధృత్వాపి లంబస్వ."
+english = "Hold the peg with your hand and hang."
+
+[[sections.items]]
+n = 14
+sanskrit_telugu = "ఆగామి సోమ వాసరే మామ కుమారస్య ఉపనయనం భవిష్యతి; పురోహితః ముహూర్తం అస్థాపయత్."
+english = "The sacred thread ceremony of my son will take place next Monday; the priest has fixed the auspicious time."
+
+[[sections.items]]
+n = 15
+sanskrit_telugu = "ఏతత్ఫలాని తిక్తాని సంతి మా ఖాద."
+english = "These fruits are bitter, do not eat them."
+
+[[sections.items]]
+n = 16
+sanskrit_telugu = "ఏషా మామ అంబా."
+english = "This is my mother."
+
+[[sections.items]]
+n = 17
+sanskrit_telugu = "సా అన్యా."
+english = "She is another (different one)."
+
+[[sections.items]]
+n = 18
+sanskrit_telugu = "తవ భార్యా కుత్రాసీత్ ?"
+english = "Where was your wife?"
+
+[[sections.items]]
+n = 19
+sanskrit_telugu = "మాతులగృహే వివాహార్థం ఆగచ్ఛత్."
+english = "She came to the maternal uncle's house for a wedding."
+
+[[sections.items]]
+n = 20
+sanskrit_telugu = "పునః కదా ఆగమిష్యతి ?"
+english = "When will she come back again?"
+
+[[sections.items]]
+n = 21
+sanskrit_telugu = "దశ దినేభ్యః ఆగమిష్యతి."
+english = "She will come after ten days."
+
+[[sections.items]]
+n = 22
+sanskrit_telugu = "వయం సర్వే శ్వః ప్రాతః కృష్ణాస్నానార్థం గమిష్యామః ; యూయమపి అస్మాభిఃసాకం ఆగమిష్యథ కిం?"
+english = "We are all going tomorrow morning for a bath in the Krishna river; will you all also come with us?"
+
+[[sections.items]]
+n = 23
+sanskrit_telugu = "అస్మాకం ఆగంతుం అవకాశః నాస్తి."
+english = "We do not have an opportunity to come."
+
+[[sections.items]]
+n = 24
+sanskrit_telugu = "యూయం గచ్చత."
+english = "You all go."
+
+[[sections.items]]
+n = 25
+sanskrit_telugu = "శ్వః పరశ్వళ్ళు గృహే కించిత్కార్య మస్తి."
+english = "Tomorrow and the day after there is some work at Parashu's house."
+
+[[sections.items]]
+n = 26
+sanskrit_telugu = "తథాచేత్ మాస్తు."
+english = "If that is so, never mind."
+
+# ---- passage_translation (Telugu) ----
+
+[[sections]]
+type = "passage_translation"
+language = "telugu"
+
+[[sections.items]]
+n = 1
+telugu = "ఇందాఁక అలా వెళ్ళినపిల్లవాఁ డెవఁడు ?"
+english = "Who was that boy who went by just now like that?"
+
+[[sections.items]]
+n = 2
+telugu = "నిన్నఁ నొక కుక్కఁ మేకలను తరిమినది."
+english = "Yesterday a dog chased the goats."
+
+[[sections.items]]
+n = 3
+telugu = "ఆ కుక్కను నేను రోకటితో కొట్టినానుగాని."
+english = "I hit that dog with the pestle though."
+
+[[sections.items]]
+n = 4
+telugu = "కుక్కఁ పాఱిపోయినదఁ తరువాత మీఁ మామగారి యింట్లో నున్నఁ ఒక యెద్దును కఱచి."
+english = "After the dog ran away, it bit a bullock that was in your uncle's house."
+
+[[sections.items]]
+n = 5
+telugu = "చివర కాకుక్కఁ క్రమముగా తనచోటునకు వచ్చెను."
+english = "In the end that dog gradually came back to its own place."
+
+[[sections.items]]
+n = 6
+telugu = "రేపు మీఁ రండఱను రామయ్యఁ యింట్లో చేరుదురుగదా!"
+english = "Tomorrow all of you will gather at Rāmayya's house, won't you!"
+
+[[sections.items]]
+n = 7
+telugu = "అప్పుఁడు నన్నుఁ కూడ పిలువుఁడు."
+english = "At that time call me too."
+
+[[sections.items]]
+n = 8
+telugu = "నేనుకూడ వత్తును."
+english = "I will also come."
+
+[[sections.items]]
+n = 9
+telugu = "వాఁడు నాకు బాఁకీ యున్నాఁడు."
+english = "He is in debt to me."
+
+[[sections.items]]
+n = 10
+telugu = "దోసకాయలు అన్నియు చేదుఆయినవిరా."
+english = "All the cucumbers have become bitter, man."
+
+[[sections.items]]
+n = 11
+telugu = "ఎవఁడిచ్చినాఁడు నీకు?"
+english = "Who gave them to you?"
+
+[[sections.items]]
+n = 12
+telugu = "మీఁ అమ్మఁ యొక్కఁ చీరను చెట్టుమొంద వ్రేలాడవేసినావా లేదా ?"
+english = "Have you hung your mother's sari on the tree or not?"
+
+[[sections.items]]
+n = 13
+telugu = "ఇందాకనే వ్రేలాడ వేసినాను."
+english = "I hung it just a little while ago."
+
+[[sections.items]]
+n = 14
+telugu = "చాలు చాలు ఇక ఊరకుండుము."
+english = "Enough, enough — be quiet now."
+
+[[sections.items]]
+n = 15
+telugu = "కడచిన రోజున మీఁ ఉపాధ్యాయుఁడు ఎందుకో నన్నుఁ రమ్మన్నాఁడు."
+english = "On the past day your teacher called me to come, for some reason."
+
+[[sections.items]]
+n = 16
+telugu = "నేను వెళ్ళలేదు."
+english = "I did not go."
+
+[[sections.items]]
+n = 17
+telugu = "నీవు ఇప్వేళ వెళ్ళి విచారించి నాతో చెప్పఁఱిము."
+english = "You go now, inquire, and tell me."
+
+[[sections.items]]
+n = 18
+telugu = "రాఁబోవు శనివారమునందు గర్భపురము నందు దేవాలయములో ఉత్సవము కాఁగలదు; మేమందఱము అక్కఁడకు వెళ్ళుదుము."
+english = "On the coming Saturday, there will be a festival in the temple at Garbhapura; all of us will go there."
+
+[[sections.items]]
+n = 19
+telugu = "కొందరు బ్రాహ్మణులు ఎవరో వాకిటిలో నున్నారుగాని వారిని లోపల ప్రవేశపెట్టుము."
+english = "Some brahmins — whoever they are — are standing in the courtyard; bring them inside."
+
+[[sections.items]]
+n = 20
+telugu = "మీఁ ఆవుయొక్కఁ పాలు తియ్యని దేనా?"
+english = "Is your cow's milk sweet?"
+
+[[sections.items]]
+n = 21
+telugu = "అఁ తియ్యనిదే."
+english = "Yes, it is sweet."
+
+[[sections.items]]
+n = 22
+telugu = "పోపో నిన్నెవరు పిలిచినారు ?"
+english = "Go, go — who called you?"
+
+[[sections.items]]
+n = 23
+telugu = "మా ఆవిద యింటిలోనున్నదేమో చూడుము."
+english = "See if our lady (wife) is in the house."
