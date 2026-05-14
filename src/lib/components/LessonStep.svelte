@@ -6,6 +6,8 @@
   import { selectedTerm } from '$lib/stores/jargon';
   import type { Script } from '$lib/transliteration';
   import { wordBank } from '$lib/stores/wordBank';
+  import { pathsForGrammarFocus } from '$lib/learning/grammarTags';
+  import { loadPathIndex, type PathMeta } from '$lib/content';
 
   // Map English person labels to Sanskrit IAST for display + jargon + Telugu gloss
   const personMap: Record<string, { iast: string; deva: string; telugu: string; english: string }> = {
@@ -167,11 +169,15 @@
   let fetchError = $state('');
   let loading = $state(true);
   let sensitiveNoteHtml = $state('');
+  // Path index — used to resolve grammar-bridge path IDs to titles
+  let allPaths: PathMeta[] = $state([]);
 
   fetch('/content/sensitive-notes/flag.md')
     .then(r => r.ok ? r.text() : '')
     .then(t => { sensitiveNoteHtml = marked.parse(t.trim()) as string; })
     .catch(() => {});
+
+  loadPathIndex().then(p => { allPaths = p; }).catch(() => {});
 
   lessonLanguage.subscribe(v => { lang = v as Language; });
 
@@ -211,6 +217,15 @@
 
   const showTelugu = $derived(lang === 'telugu');
 
+  // Grammar bridge — for the current lesson's grammar_focus, find matching
+  // grammar paths so we can render a "this lesson exercises:" footer.
+  const bridgePaths = $derived.by(() => {
+    if (!lessonData?.grammar_focus || allPaths.length === 0) return [] as PathMeta[];
+    const ids = pathsForGrammarFocus(lessonData.grammar_focus);
+    const byId = new Map(allPaths.map(p => [p.id, p]));
+    return ids.map(id => byId.get(id)).filter((p): p is PathMeta => !!p);
+  });
+
   // Language-aware UI strings (not Sanskrit content — these are UI chrome)
   const ui = $derived({
     vocabulary:      showTelugu ? 'పదకోశము'                    : 'Vocabulary',
@@ -222,8 +237,8 @@
     reading:         showTelugu ? 'పఠనము'                      : 'Reading',
   });
 
-  // Per-item hide state for passage sentences (key = sectionIndex + '-' + itemN)
-  // English is visible by default; adding a key hides it.
+  // Per-item hide state for passage sentences. English is visible by default;
+  // adding the key hides it.
   let hidden = $state(new Set<string>());
 
   function toggleReveal(key: string) {
@@ -231,6 +246,17 @@
     if (next.has(key)) next.delete(key);
     else next.add(key);
     hidden = next;
+  }
+
+  // Per-item reveal state for vocabulary glosses and exercise answers. These
+  // are hidden by default (recall practice); adding the key reveals.
+  let revealed = $state(new Set<string>());
+
+  function toggleAnswer(key: string) {
+    const next = new Set(revealed);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    revealed = next;
   }
 
   // Section jump nav: deduplicated list of navigable section types in order
@@ -280,30 +306,32 @@
     <div class="h-24 bg-stone-200 rounded"></div>
   </div>
 {:else if fetchError}
-  <div class="bg-red-50 border border-red-200 rounded-lg p-5 text-red-700 text-sm">
-    Failed to load lesson: {fetchError}
+  <div class="border-t-2 border-[#e11d48] py-3">
+    <p class="font-mono text-[0.7rem] uppercase tracking-wider text-[#e11d48] mb-1">error</p>
+    <p class="text-sm text-[#0f1419]">failed to load lesson: {fetchError}</p>
   </div>
 {:else if lessonData}
   <div class="space-y-5">
 
     <!-- Script picker prompt — only on lesson 0 -->
     {#if lessonData.number === 0}
-      <div class="flex items-center gap-3 bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-3">
-        <div class="flex-1 text-sm {showTelugu ? 'font-telugu text-indigo-900' : 'text-indigo-800'}">
+      <div class="border-t-2 border-[#4f46e5] py-3">
+        <p class="font-mono text-[0.7rem] lowercase tracking-wider text-[#4f46e5] mb-1">tip</p>
+        <p class="text-sm text-[#475569] {showTelugu ? 'font-telugu' : ''}">
           {showTelugu
-            ? 'అన్ని ఉదాహరణలు మీరు ఎంచుకున్న లిపిలో కనిపిస్తాయి — పై కుడి మూలలో లిపిని మార్చండి. వ్యాఖ్యాన భాషను కూడ ఎంచుకోవచ్చు.'
-            : 'All examples display in your chosen script. Use the script selector in the top-right corner ↗ to switch scripts. Use the language selector to choose the language of discourse.'}
-        </div>
+            ? 'అన్ని ఉదాహరణలు మీరు ఎంచుకున్న లిపిలో కనిపిస్తాయి. లిపిని, వ్యాఖ్యాన భాషను settings లో మార్చండి.'
+            : 'All Sanskrit renders in your chosen script. Both the script and the explanation language live on the settings page.'}
+        </p>
       </div>
     {/if}
 
     <!-- Sūtra links -->
     {#if lessonData.sutras?.length}
-      <div class="flex items-center gap-2 flex-wrap">
-        <span class="text-xs text-stone-400 uppercase tracking-wide">{showTelugu ? 'సూత్రములు' : 'sūtras'}</span>
+      <div class="flex items-baseline gap-3 flex-wrap">
+        <span class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8]">{#if showTelugu}<Sanskrit text="సూత్రములు" source="telugu" />{:else}<Sanskrit text="sūtras" source="iast" />{/if}</span>
         {#each lessonData.sutras as sutra}
           <a href="/ref/{sutra}"
-             class="text-xs font-mono px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100 transition-colors">
+             class="font-mono text-[0.78rem] text-[#4f46e5] hover:text-[#f97316] transition-colors">
             {sutra}
           </a>
         {/each}
@@ -316,8 +344,10 @@
       {@const sectionId = sectionNav.find(n => n.si === si)?.anchor}
 
       {#if section.type === 'grammar_note'}
-        <div id={sectionId} class="grammar-note-block scroll-mt-4">
-          <span class="grammar-note-label">{showTelugu ? 'వ్యాకరణము' : 'Grammar Note'}</span>
+        <!-- Grammar notes are pedagogical pivots — render as a chapter-break with
+             a saffron rule, not a yellow callout card. -->
+        <div id={sectionId} class="grammar-note scroll-mt-4">
+          <span class="grammar-note-label">{showTelugu ? 'వ్యాకరణము' : 'grammar'}</span>
           {#if showTelugu && section.items?.[0]?.telugu}
             <p class="font-telugu grammar-note-text">{section.items[0].telugu}</p>
           {:else if !showTelugu && section.items?.[0]?.english}
@@ -326,10 +356,10 @@
         </div>
 
       {:else if section.type === 'vocabulary'}
-        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
-          <div class="px-4 py-2 border-b border-stone-100 bg-stone-50 flex items-center gap-6">
-            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.vocabulary}</span>
-            <span class="text-xs text-stone-300 font-medium uppercase tracking-wide">
+        <div id={sectionId} class="lesson-section scroll-mt-4">
+          <div class="lesson-section-head flex items-baseline gap-6">
+            <span class="lesson-section-label">{ui.vocabulary}</span>
+            <span class="lesson-section-sublabel">
               <Sanskrit text="śabda" source="iast" /> · {showTelugu ? 'అర్థము' : 'meaning'}
             </span>
           </div>
@@ -383,9 +413,9 @@
         </div>
 
       {:else if section.type === 'reading'}
-        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
-          <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.reading}</span>
+        <div id={sectionId} class="lesson-section scroll-mt-4">
+          <div class="lesson-section-head">
+            <span class="lesson-section-label">{ui.reading}</span>
           </div>
           <ol class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}
@@ -400,11 +430,11 @@
                   <div class="flex items-center gap-2 justify-end flex-shrink-0">
                     {#if revealed.has(key)}
                       <span class="text-sm text-stone-400 {showTelugu ? 'font-telugu' : 'italic'} text-right leading-snug">{gloss}</span>
-                      <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-300 hover:text-stone-500 transition-colors" aria-label="hide">
+                      <button onclick={() => toggleAnswer(key)} class="flex-shrink-0 text-stone-300 hover:text-stone-500 transition-colors" aria-label="hide">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z"/><path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z"/></svg>
                       </button>
                     {:else}
-                      <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-200 hover:text-stone-400 transition-colors" aria-label="reveal meaning">
+                      <button onclick={() => toggleAnswer(key)} class="flex-shrink-0 text-stone-200 hover:text-stone-400 transition-colors" aria-label="reveal meaning">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
                       </button>
                     {/if}
@@ -416,9 +446,9 @@
         </div>
 
       {:else if section.type === 'exercises'}
-        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
-          <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.exercises} — {ui.translatePrompt}</span>
+        <div id={sectionId} class="lesson-section scroll-mt-4">
+          <div class="lesson-section-head">
+            <span class="lesson-section-label">{ui.exercises} — {ui.translatePrompt}</span>
           </div>
           <ol class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}
@@ -438,11 +468,11 @@
                       <span class="text-base text-stone-700 text-right leading-snug">
                         <Sanskrit text={item.sanskrit_telugu} source="telugu" />
                       </span>
-                      <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-300 hover:text-stone-500 transition-colors" aria-label="hide">
+                      <button onclick={() => toggleAnswer(key)} class="flex-shrink-0 text-stone-300 hover:text-stone-500 transition-colors" aria-label="hide">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z"/><path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z"/></svg>
                       </button>
                     {:else}
-                      <button onclick={() => toggleReveal(key)} class="flex-shrink-0 text-stone-200 hover:text-stone-400 transition-colors" aria-label="reveal answer">
+                      <button onclick={() => toggleAnswer(key)} class="flex-shrink-0 text-stone-200 hover:text-stone-400 transition-colors" aria-label="reveal answer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
                       </button>
                     {/if}
@@ -455,9 +485,9 @@
 
       {:else if section.type === 'paradigm'}
         {@const lbl = section.label ? splitLabel(section.label) : null}
-        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
-          <div class="px-4 py-2 border-b border-stone-100 bg-stone-50 flex items-center gap-3">
-            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.paradigm}</span>
+        <div id={sectionId} class="lesson-section scroll-mt-4">
+          <div class="lesson-section-head flex items-baseline gap-3">
+            <span class="lesson-section-label">{ui.paradigm}</span>
             {#if lbl}
               {@const desc = lbl.english ? (showTelugu ? (labelTeluguMap[lbl.english] ?? lbl.english) : lbl.english) : ''}
               <span class="text-sm text-stone-700">
@@ -475,7 +505,7 @@
             <div class="overflow-x-auto">
               <table class="w-full text-sm">
                 <thead>
-                  <tr class="border-b border-stone-200 bg-stone-50">
+                  <tr class="border-b border-[#e2e8f0]">
                     <th class="px-4 py-3 text-left font-normal w-20" rowspan="2">
                       <button class="jargon-term" onclick={() => selectedTerm.set('पुरुष')}>
                         <Sanskrit text="puruṣa" source="iast" />
@@ -492,7 +522,7 @@
                       </th>
                     {/each}
                   </tr>
-                  <tr class="border-b border-stone-200 bg-stone-50/60">
+                  <tr class="border-b border-[#e2e8f0]">
                     {#each moods as _mood, mi}
                       <th class="px-3 py-1.5 text-left font-normal {mi > 0 ? 'border-l border-stone-100' : ''}">
                         <button class="jargon-term text-xs" onclick={() => selectedTerm.set('एकवचन')}>
@@ -514,7 +544,7 @@
                     {@const p = personMap[row.person]}
                     {@const sgArr = Array.isArray(row.singular_iast) ? row.singular_iast : (row.singular_iast != null ? [row.singular_iast] : [])}
                     {@const plArr = Array.isArray(row.plural_iast) ? row.plural_iast : (row.plural_iast != null ? [row.plural_iast] : [])}
-                    <tr class="hover:bg-stone-50/50">
+                    <tr class="hover:bg-[#fff7ed]">
                       <td class="px-4 py-3">
                         <button class="jargon-term" onclick={() => p && selectedTerm.set(p.deva)}>
                           <Sanskrit text={p?.iast ?? row.person} source="iast" />
@@ -554,7 +584,7 @@
                       </th>
                     {/each}
                   </tr>
-                  <tr class="border-b border-stone-200 bg-stone-50/60">
+                  <tr class="border-b border-[#e2e8f0]">
                     {#each stems as _stem, si}
                       {@const hasDual = (section.items ?? []).some((r: any) => r.dual_iast != null)}
                       <th class="px-3 py-1.5 text-left font-normal {si > 0 ? 'border-l border-stone-100' : ''}">
@@ -587,7 +617,7 @@
                     {@const sgArr = Array.isArray(row.singular_iast) ? row.singular_iast : (row.singular_iast != null ? [row.singular_iast] : [])}
                     {@const duArr = Array.isArray(row.dual_iast)     ? row.dual_iast     : (row.dual_iast     != null ? [row.dual_iast]     : [])}
                     {@const plArr = Array.isArray(row.plural_iast)   ? row.plural_iast   : (row.plural_iast   != null ? [row.plural_iast]   : [])}
-                    <tr class="hover:bg-stone-50/50">
+                    <tr class="hover:bg-[#fff7ed]">
                       <td class="px-4 py-3">
                         <button class="jargon-term" onclick={() => c && selectedTerm.set(c.deva)}>
                           <Sanskrit text={c?.iast ?? row.case} source="iast" />
@@ -640,7 +670,7 @@
               <tbody class="divide-y divide-stone-50">
                 {#each (section.items ?? []) as row}
                   {@const c = caseMap[row.case]}
-                  <tr class="hover:bg-stone-50/50">
+                  <tr class="hover:bg-[#fff7ed]">
                     <td class="px-4 py-3">
                       <button class="jargon-term" onclick={() => c && selectedTerm.set(c.deva)}>
                         <Sanskrit text={c?.iast ?? row.case} source="iast" />
@@ -681,7 +711,7 @@
               <tbody class="divide-y divide-stone-50">
                 {#each (section.items ?? []) as row}
                   {@const p = personMap[row.person]}
-                  <tr class="hover:bg-stone-50/50">
+                  <tr class="hover:bg-[#fff7ed]">
                     <td class="px-4 py-3">
                       <button class="jargon-term" onclick={() => p && selectedTerm.set(p.deva)}>
                         <Sanskrit text={p?.iast ?? row.person} source="iast" />
@@ -698,15 +728,15 @@
         </div>
 
       {:else if section.type === 'passage'}
-        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
-          <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{ui.passage}</span>
+        <div id={sectionId} class="lesson-section scroll-mt-4">
+          <div class="lesson-section-head">
+            <span class="lesson-section-label">{ui.passage}</span>
           </div>
           <ol class="divide-y divide-stone-50">
             {#each (section.items ?? []) as item}
               {@const key = `passage-${si}-${item.n}`}
               {@const isHidden = hidden.has(key)}
-              <li class="px-4 py-2.5">
+              <li class="px-4 py-2.5 sensitive-row" class:has-flag={item.sensitive && sensitiveNoteHtml}>
                 <div class="flex gap-3 flex-wrap">
                   <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right tabular-nums mt-1">{item.n}</span>
                   <div class="flex-1 min-w-0 space-y-0.5">
@@ -715,7 +745,6 @@
                       {#if item.sensitive && sensitiveNoteHtml}
                         <span class="sensitive-flag-wrap shrink-0 mt-0.5">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 sensitive-flag-icon"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                          <div class="sensitive-tooltip">{@html sensitiveNoteHtml}</div>
                         </span>
                       {/if}
                     </div>
@@ -733,6 +762,9 @@
                     </button>
                   {/if}
                 </div>
+                {#if item.sensitive && sensitiveNoteHtml}
+                  <div class="sensitive-tooltip">{@html sensitiveNoteHtml}</div>
+                {/if}
               </li>
             {/each}
           </ol>
@@ -740,10 +772,10 @@
 
       {:else if section.type === 'script_table'}
         {@const lbl = showTelugu ? (section.label_telugu ?? section.label) : section.label}
-        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
+        <div id={sectionId} class="lesson-section scroll-mt-4">
           {#if lbl}
-            <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{lbl}</span>
+            <div class="lesson-section-head">
+              <span class="lesson-section-label">{lbl}</span>
             </div>
           {/if}
           <div class="divide-y divide-stone-50">
@@ -763,10 +795,10 @@
 
       {:else if section.type === 'sandhi_table'}
         {@const lbl = showTelugu ? (section.label_telugu ?? section.label) : section.label}
-        <div id={sectionId} class="bg-white rounded-lg border border-stone-200 overflow-hidden scroll-mt-4">
+        <div id={sectionId} class="lesson-section scroll-mt-4">
           {#if lbl}
-            <div class="px-4 py-2 border-b border-stone-100 bg-stone-50">
-              <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">{lbl}</span>
+            <div class="lesson-section-head">
+              <span class="lesson-section-label">{lbl}</span>
             </div>
           {/if}
           <div class="divide-y divide-stone-100">
@@ -787,29 +819,32 @@
         </div>
 
       {:else if section.type === 'passage_translation'}
-        <div id={sectionId} class="bg-amber-50/40 rounded-lg border border-amber-100 overflow-hidden scroll-mt-4">
-          <div class="px-4 py-2 border-b border-amber-100 flex items-baseline gap-3">
-            <span class="text-xs font-medium text-amber-700 uppercase tracking-wide">{ui.exercises}</span>
-            <span class="text-xs text-amber-400">{showTelugu ? 'తెలుగు వాక్యములను సంస్కృతములోనికి మార్చుము' : 'translate these Telugu sentences into Sanskrit'}</span>
+        <div id={sectionId} class="lesson-section lesson-section-exercises scroll-mt-4">
+          <div class="lesson-section-head lesson-section-head-exercises flex items-baseline gap-3">
+            <span class="lesson-section-label">{ui.exercises}</span>
+            <span class="lesson-section-sublabel">{showTelugu ? 'తెలుగు వాక్యములను సంస్కృతములోనికి మార్చుము' : 'translate these English sentences into Sanskrit'}</span>
           </div>
           <ol class="divide-y divide-amber-50">
             {#each (section.items ?? []) as item}
-              <li class="px-4 py-2.5">
+              <li class="px-4 py-2.5 sensitive-row">
                 <div class="flex gap-3">
                   <span class="text-xs text-amber-300 w-4 flex-shrink-0 text-right tabular-nums mt-1">{item.n}</span>
                   <div class="flex-1 min-w-0 space-y-0.5">
-                    <p class="font-telugu text-stone-700 leading-snug">{item.telugu}</p>
-                    {#if item.english}
-                      <p class="text-xs text-stone-400 italic leading-snug">{item.english}</p>
+                    {#if showTelugu && item.telugu}
+                      <p class="font-telugu text-stone-700 leading-snug">{item.telugu}</p>
+                    {:else if !showTelugu && item.english}
+                      <p class="text-stone-700 leading-snug">{item.english}</p>
                     {/if}
                     {#if item.sensitive && sensitiveNoteHtml}
                       <span class="sensitive-flag-wrap shrink-0 mt-1">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 sensitive-flag-icon"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        <div class="sensitive-tooltip">{@html sensitiveNoteHtml}</div>
                       </span>
                     {/if}
                   </div>
                 </div>
+                {#if item.sensitive && sensitiveNoteHtml}
+                  <div class="sensitive-tooltip">{@html sensitiveNoteHtml}</div>
+                {/if}
               </li>
             {/each}
           </ol>
@@ -817,36 +852,131 @@
       {/if}
 
     {/each}
+
+    <!-- Grammar bridge — link out to the grammar paths this lesson exercises -->
+    {#if bridgePaths.length > 0}
+      <div class="grammar-bridge">
+        <p class="bridge-label">{showTelugu ? 'ఈ పాఠంలో సాధన చేయు వ్యాకరణ మార్గములు' : 'this lesson exercises'}</p>
+        <ul class="bridge-list">
+          {#each bridgePaths as p}
+            <li>
+              <a href="/learn/{p.id}">
+                <span class="bridge-deva font-{$displayScript}">{p.label}</span>
+                <span class="bridge-en">{p.title?.replace(/^[^—]+ — /, '') ?? ''}</span>
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </div>
+    {/if}
   </div>
 {/if}
 
 <style>
-  /* Grammar note — matches reference page commentary section style */
-  .grammar-note-block {
-    background: #fefce8;
-    border: 1px solid #e7e5e4;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    padding: 1rem;
+  /* Lesson sections — bare hairlines, no cards. The label is the only chrome. */
+  :global(.lesson-section) {
+    border-top: 1px solid #e2e8f0;
+  }
+  /* Section header — eyebrow, no background */
+  :global(.lesson-section-head) {
+    padding: 0.7rem 0 0.5rem;
+  }
+  :global(.lesson-section-label) {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+    text-transform: lowercase;
+  }
+  :global(.lesson-section-sublabel) {
+    font-family: ui-monospace, monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    color: #cbd5e1;
+    text-transform: lowercase;
+  }
+  /* Exercises: no block tint. The accent is a 2px saffron top-rule plus the
+     saffron eyebrow. Section reads as continuous page, not a colored card. */
+  :global(.lesson-section-exercises) {
+    border-top: 2px solid #f97316;
+  }
+  :global(.lesson-section-head-exercises .lesson-section-label) {
+    color: #f97316;
+  }
+
+  /* Reading → grammar bridge: a quiet footer linking grammar paths that this
+     lesson's grammar_focus mentions. Indigo (the "cross-reference" accent). */
+  .grammar-bridge {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1rem;
+    margin-top: 1.5rem;
+  }
+  .bridge-label {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+    text-transform: lowercase;
+    margin: 0 0 0.65rem;
+  }
+  .bridge-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .bridge-list li a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding: 0.4rem 0;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.15s;
+  }
+  .bridge-list li a:hover { color: #f97316; }
+  .bridge-deva {
+    font-size: 0.95rem;
+    color: #4f46e5;
+    min-width: 5rem;
+  }
+  .bridge-list li a:hover .bridge-deva { color: #f97316; }
+  .bridge-en {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #94a3b8;
+  }
+
+  /* Grammar note — chapter-break treatment: saffron top-rule, monospace eyebrow,
+     larger body text. No card, no yellow background. */
+  .grammar-note {
+    border-top: 2px solid #f97316;
+    padding: 1rem 0 0.75rem;
+    margin: 1.5rem 0 1rem;
   }
   .grammar-note-label {
     display: block;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #a16207;
-    margin-bottom: 0.75rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: #f97316;
+    text-transform: lowercase;
+    margin-bottom: 0.6rem;
   }
   .grammar-note-text {
-    font-size: 0.9375rem;
+    font-size: 1.05rem;
     line-height: 1.7;
-    color: #44403c;
+    color: #0f1419;
     margin: 0;
+    max-width: 36rem;
   }
 
-  .sensitive-flag-wrap {
+  .sensitive-row {
     position: relative;
+  }
+  .sensitive-flag-wrap {
     display: inline-flex;
   }
   .sensitive-flag-icon {
@@ -855,17 +985,16 @@
     cursor: default;
     transition: opacity 0.15s;
   }
-  .sensitive-flag-wrap:hover .sensitive-flag-icon {
+  .sensitive-row:hover .sensitive-flag-icon {
     opacity: 1;
   }
   .sensitive-tooltip {
     display: none;
     position: absolute;
-    left: 50%;
-    bottom: calc(100% + 6px);
-    transform: translateX(-50%);
-    width: 22rem;
-    max-width: 90vw;
+    left: 1rem;
+    right: 1rem;
+    top: 100%;
+    margin-top: 4px;
     background: #fffbeb;
     border: 1px solid #fde68a;
     border-radius: 6px;
@@ -877,7 +1006,8 @@
     z-index: 50;
     text-align: left;
   }
-  .sensitive-flag-wrap:hover .sensitive-tooltip {
+  .sensitive-row:has(.sensitive-flag-wrap:hover) .sensitive-tooltip,
+  .sensitive-row:has(.sensitive-flag-wrap:focus) .sensitive-tooltip {
     display: block;
   }
   .sensitive-tooltip :global(p) {

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors */
-  --color-accent: #6366f1;
-  --color-accent-hover: #4f46e5;
+  /* Colors — saffron as the sole persistent accent */
+  --color-accent: #f97316;
+  --color-accent-hover: #ea6c0a;
 
   /* Typography - matching dukrnkarane */
   --font-sans:
@@ -16,7 +16,11 @@
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
+  background: #ffffff;
+  color: #0f1419;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 /* Headings use serif */
@@ -89,16 +93,16 @@ h3 {
   font-family: var(--font-mono);
 }
 
-/* Sutra reference links */
+/* Sutra reference links — indigo for cross-references */
 .sutra-ref {
-  color: var(--color-accent);
+  color: #4f46e5;
   text-decoration: underline;
   text-decoration-style: dotted;
   cursor: pointer;
 }
 
 .sutra-ref:hover {
-  color: var(--color-accent-hover);
+  color: #4338ca;
   text-decoration-style: solid;
 }
 

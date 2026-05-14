@@ -120,7 +120,7 @@
 
     {#if sutra.expanded && sutra.expanded !== sutra.text}
       <section class="section">
-        <h3 class="section-label">With Anuvrtti</h3>
+        <h3 class="section-label">with <Sanskrit text="anuvṛtti" source="iast" /></h3>
         <div class="section-content">
           <Sanskrit text={sutra.expanded} />
         </div>
@@ -129,7 +129,7 @@
 
     {#if sutra.anuvrtti.length > 0}
       <section class="section anuvrtti-section">
-        <h3 class="section-label">Inherits from</h3>
+        <h3 class="section-label">inherits from</h3>
         <div class="anuvrtti-list">
           {#each sutra.anuvrtti as ref}
             <a href="/ref/{ref.fromId}" class="anuvrtti-link">
@@ -145,7 +145,7 @@
       <section class="section commentary-section">
         {#if onDepthChange}
           <div class="depth-toggle">
-            <span class="section-label" style="margin: 0;">Explanation</span>
+            <span class="section-label" style="margin: 0;"><Sanskrit text="vyākhyā" source="iast" /></span>
             <div class="depth-toggle-right">
               <div class="depth-buttons">
                 {#each (['simple', 'standard', 'advanced'] as const) as d}
@@ -153,9 +153,9 @@
                     onclick={() => setDepth(d)}
                     class="depth-btn"
                     class:active={depth === d}
-                  >
-                    {depthLabels[d]}
-                  </button>
+                    title={depthLabels[d]}
+                    aria-label={depthLabels[d]}
+                  ></button>
                 {/each}
               </div>
               {#if onEdit}
@@ -194,7 +194,7 @@
 
     {#if depth === 'advanced' && commentary?.kashika}
       <section class="section">
-        <h3 class="section-label">Kashika Vrtti</h3>
+        <h3 class="section-label"><Sanskrit text="kāśikā vṛtti" source="iast" /></h3>
         <div class="section-content kashika">
           <Sanskrit text={commentary.kashika} />
         </div>
@@ -203,7 +203,7 @@
 
     {#if depth === 'advanced' && commentary?.vartika && commentary.vartika.length > 0}
       <section class="section">
-        <h3 class="section-label">Varttikas ({commentary.vartika.length})</h3>
+        <h3 class="section-label"><Sanskrit text="vārttikas" source="iast" /> · {commentary.vartika.length}</h3>
         <ol class="vartika-list">
           {#each commentary.vartika as v}
             <li><Sanskrit text={v} /></li>
@@ -214,7 +214,7 @@
 
     {#if !layeredText && commentary?.englishFull && depth === 'advanced'}
       <details class="section expandable">
-        <summary class="section-label">Full Translation (Vasu)</summary>
+        <summary class="section-label">full translation · vasu</summary>
         <div class="section-content">
           {#each commentary.englishFull.split('\n') as para}
             {#if para.trim()}
@@ -231,10 +231,9 @@
   /* Compact variant */
   .sutra-compact {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.375rem;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding: 0.5rem 0;
     text-decoration: none;
     color: inherit;
     background: none;
@@ -245,9 +244,10 @@
   }
   .sutra-compact.clickable {
     cursor: pointer;
+    transition: background 0.1s;
   }
   .sutra-compact.clickable:hover {
-    background: #f5f5f4;
+    background: #fff7ed;
   }
 
   /* Card variant */
@@ -277,26 +277,27 @@
     margin-bottom: 0.5rem;
   }
 
-  /* Full variant */
+  /* Full variant — no card, the artifact is the page. */
   .sutra-full {
-    background: white;
-    border: 1px solid #e7e5e4;
-    border-radius: 0.5rem;
-    overflow: hidden;
+    background: none;
+    border: none;
+    padding: 0;
   }
   .full-header {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #f5f5f4;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding: 0;
+    margin-bottom: 0.5rem;
   }
   .sutra-text-hero {
-    font-size: 1.75rem;
-    line-height: 1.4;
-    padding: 1.5rem;
-    text-align: center;
-    background: linear-gradient(to bottom, #fafaf9, white);
+    font-size: 2.4rem;
+    line-height: 1.15;
+    font-weight: 400;
+    padding: 0;
+    margin: 0.25rem 0 1.25rem;
+    text-align: left;
+    background: none;
   }
 
   /* Common elements */
@@ -308,9 +309,10 @@
   }
   .sutra-id-large {
     font-family: ui-monospace, monospace;
-    font-size: 0.875rem;
-    color: #6366f1;
-    font-weight: 500;
+    font-size: 0.78rem;
+    color: #94a3b8;
+    letter-spacing: 0.04em;
+    font-weight: 400;
   }
   .sutra-text {
     flex: 1;
@@ -321,156 +323,164 @@
     line-height: 1.5;
   }
   .sutra-type {
-    font-size: 0.6875rem;
-    padding: 0.125rem 0.5rem;
-    border-radius: 1rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
     flex-shrink: 0;
+    color: #94a3b8;
   }
-  .type-samjna { background: #dbeafe; color: #1e40af; }
-  .type-paribhasha { background: #fef3c7; color: #92400e; }
-  .type-vidhi { background: #d1fae5; color: #065f46; }
-  .type-adhikara { background: #ede9fe; color: #5b21b6; }
-  .type-atidesa { background: #fce7f3; color: #9d174d; }
+  .type-samjna,
+  .type-paribhasha,
+  .type-vidhi,
+  .type-adhikara,
+  .type-atidesa {
+    background: none;
+    color: #94a3b8;
+  }
 
-  /* Anuvrtti */
+  /* Anuvrtti — bare list, no chips */
   .anuvrtti-refs {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.5rem;
-    font-size: 0.75rem;
-    color: #78716c;
+    font-size: 0.78rem;
+    color: #94a3b8;
   }
   .anuvrtti-label {
-    color: #a8a29e;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    letter-spacing: 0.04em;
   }
   .anuvrtti-ref {
-    padding: 0.125rem 0.375rem;
-    background: #f5f5f4;
-    border-radius: 0.25rem;
+    padding: 0;
+    background: none;
+    color: #475569;
   }
-  .anuvrtti-more {
-    color: #a8a29e;
-  }
+  .anuvrtti-more { color: #cbd5e1; }
   .anuvrtti-section .anuvrtti-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 1.25rem;
+    margin-top: 0.35rem;
   }
   .anuvrtti-link {
     display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    padding: 0.25rem 0.5rem;
-    background: #f5f5f4;
-    border-radius: 0.375rem;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0;
+    background: none;
     text-decoration: none;
-    color: inherit;
-    font-size: 0.875rem;
+    color: #0f1419;
+    font-size: 0.95rem;
+    transition: color 0.15s;
   }
-  .anuvrtti-link:hover {
-    background: #e7e5e4;
-  }
+  .anuvrtti-link:hover { color: #f97316; }
   .anuvrtti-link .ref-id {
-    font-size: 0.75rem;
-    color: #78716c;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #94a3b8;
   }
 
-  /* Sections */
+  /* Sections — hairlines, monospace eyebrows */
   .section {
-    border-top: 1px solid #f5f5f4;
-    padding: 1rem;
+    border-top: 1px solid #e2e8f0;
+    padding: 1rem 0;
   }
   .section-label {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #78716c;
-    margin: 0 0 0.75rem 0;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+    margin: 0 0 0.65rem 0;
   }
   .section-content {
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: #44403c;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #0f1419;
   }
+  /* Commentary section — no yellow card; just a section with the depth dots */
   .commentary-section {
-    background: #fefce8;
+    background: none;
+    padding: 1rem 0;
   }
-  .commentary-section .section-label {
-    color: #a16207;
-  }
+  .commentary-section .section-label { color: #94a3b8; }
+
   .depth-toggle {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.65rem;
   }
   .depth-toggle-right {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.85rem;
   }
   .edit-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: #a8a29e;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #cbd5e1;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    border-radius: 0.25rem;
-    transition: color 0.1s, background 0.1s;
+    transition: color 0.15s;
     text-decoration: none;
   }
-  .edit-btn:hover {
-    color: #6366f1;
-    background: #eef2ff;
-  }
-  .edit-btn svg {
-    width: 0.875rem;
-    height: 0.875rem;
-  }
-  .edit-btn-signin {
-    color: #d6d3d1;
-  }
-  .edit-btn-signin:hover {
-    color: #a8a29e;
-    background: #f5f5f4;
-  }
+  .edit-btn:hover { color: #f97316; background: none; }
+  .edit-btn svg { width: 0.85rem; height: 0.85rem; }
+  .edit-btn-signin { color: #e2e8f0; }
+  .edit-btn-signin:hover { color: #94a3b8; }
+
+  /* Depth toggle: three filled dots of increasing size, no labels.
+     The active one is saffron. Hover reveals the depth name as a title. */
   .depth-buttons {
     display: flex;
-    gap: 0.25rem;
+    align-items: center;
+    gap: 0.45rem;
   }
   .depth-btn {
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
-    border: none;
-    border-radius: 1rem;
+    padding: 0;
+    border: 1px solid #cbd5e1;
+    background: transparent;
+    border-radius: 50%;
     cursor: pointer;
-    background: #f5f5f4;
-    color: #57534e;
-    transition: all 0.1s;
+    transition: all 0.15s;
+    /* hide the text label visually but keep it accessible */
+    color: transparent;
+    font-size: 0;
+    overflow: hidden;
   }
-  .depth-btn:hover {
-    background: #e7e5e4;
-  }
+  .depth-btn:nth-child(1) { width: 0.4rem;  height: 0.4rem; }
+  .depth-btn:nth-child(2) { width: 0.55rem; height: 0.55rem; }
+  .depth-btn:nth-child(3) { width: 0.7rem;  height: 0.7rem; }
+  .depth-btn:hover { border-color: #0f1419; }
   .depth-btn.active {
-    background: #4f46e5;
-    color: white;
+    background: #f97316;
+    border-color: #f97316;
   }
+
   .commentary-content {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     line-height: 1.7;
+    color: #0f1419;
   }
   .kashika {
-    background: #fffbeb;
-    padding: 0.75rem;
-    border-radius: 0.375rem;
-    font-size: 0.9375rem;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.95rem;
+    border-left: 2px solid #e2e8f0;
+    padding-left: 0.85rem;
+    color: #475569;
   }
   .vartika-list {
     margin: 0;

@@ -47,8 +47,10 @@
   let dependents: Sutra[] = $derived(data.dependents);
   let prevSutraId: string | null = $derived(data.prevSutraId);
   let nextSutraId: string | null = $derived(data.nextSutraId);
-  let learningPaths: { pathId: string; pathTitle: string }[] = $derived(data.learningPaths);
+  let learningPaths: { pathId: string; pathTitle: string; stepIndex: number }[] = $derived(data.learningPaths);
   let balabodhiniLessons: { lessonRef: string; lessonNumber: number; part: number; title: string }[] = $derived(data.balabodhiniLessons ?? []);
+  let prakriyaPaths = $derived(learningPaths.filter(lp => lp.pathId.startsWith('prakriya-')));
+  let otherPaths = $derived(learningPaths.filter(lp => !lp.pathId.startsWith('prakriya-')));
 
   // Depth selector - synced with global preference
   let depth: CommentaryDepth = $state('standard');
@@ -166,7 +168,7 @@
       {#if learningContext}
         <div class="learning-context-banner">
           <a href="/learn/{learningContext.pathId}" class="banner-link">
-            ← Return to <strong>{learningContext.pathTitle}</strong>
+            return to <strong>{learningContext.pathTitle}</strong> →
           </a>
           <button onclick={dismissLearningContext} class="banner-dismiss" aria-label="Dismiss">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,7 +181,7 @@
       <!-- Header with back link -->
       <div class="detail-header">
         <a href="/ref?a={sutra.adhyaya}&p={sutra.pada}" class="back-link">
-          ← Back to {sutra.adhyaya}.{sutra.pada}
+          ← {sutra.adhyaya}.{sutra.pada}
         </a>
       </div>
 
@@ -208,21 +210,37 @@
       <!-- Anuvrtti inheritance graph (advanced view) -->
       {#if depth === 'advanced'}
         <section class="anuvrtti-graph-section">
-          <h3 class="section-label">Anuvrtti Inheritance</h3>
+          <h3 class="section-label"><Sanskrit text="anuvṛtti" source="iast" /> inheritance</h3>
           <AnuvrttiGraph {sutra} />
         </section>
       {/if}
 
+      <!-- Prakriyā cross-links: sūtras that appear in concrete derivations -->
+      {#if prakriyaPaths.length > 0}
+        <div class="prakriya-links">
+          <span class="prakriya-label">applied in</span>
+          <ul class="prakriya-list">
+            {#each prakriyaPaths as lp}
+              <li>
+                <a href="/learn/{lp.pathId}?step={lp.stepIndex}" class="prakriya-link">
+                  {lp.pathTitle}
+                </a>
+              </li>
+            {/each}
+          </ul>
+        </div>
+      {/if}
+
       <!-- Learning path cross-links -->
-      {#if learningPaths.length > 0 || balabodhiniLessons.length > 0}
+      {#if otherPaths.length > 0 || balabodhiniLessons.length > 0}
         <div class="learn-links">
-          <span class="learn-links-label">Learn this in:</span>
-          {#each learningPaths as lp}
+          <span class="learn-links-label">see also</span>
+          {#each otherPaths as lp}
             <a href="/learn/{lp.pathId}" class="learn-link">{lp.pathTitle}</a>
           {/each}
           {#each balabodhiniLessons as ll}
             <a href="/learn/{ll.lessonRef}" class="learn-link learn-link-bala">
-              Bālabodhini {ll.part}.{ll.lessonNumber}
+              <Sanskrit text="bālabodhinī" source="iast" /> {ll.part}.{ll.lessonNumber}
             </a>
           {/each}
         </div>
@@ -322,144 +340,173 @@
   }
 
   .back-link {
-    font-size: 0.875rem;
-    color: #6366f1;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
     text-decoration: none;
+    transition: color 0.15s;
   }
-  .back-link:hover {
-    text-decoration: underline;
-  }
+  .back-link:hover { color: #0f1419; }
 
   .sutra-nav {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #e7e5e4;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.85rem;
   }
 
   .nav-btn {
-    display: flex;
-    align-items: center;
+    display: inline-flex;
+    align-items: baseline;
     gap: 0.5rem;
-    padding: 0.625rem 1rem;
-    border: 1px solid #e7e5e4;
-    border-radius: 0.5rem;
+    padding: 0;
+    background: none;
+    border: none;
     text-decoration: none;
-    color: #57534e;
-    font-size: 0.875rem;
-    transition: all 0.1s;
+    color: #0f1419;
+    font-family: ui-monospace, monospace;
+    font-size: 0.8rem;
+    transition: color 0.1s;
   }
-  .nav-btn:hover {
-    border-color: #c7d2fe;
-    color: #4f46e5;
-  }
+  .nav-btn:hover { color: #f97316; }
 
   .nav-arrow {
-    font-size: 1rem;
+    color: #94a3b8;
   }
 
   .nav-hint {
-    font-size: 0.75rem;
-    color: #a8a29e;
+    font-family: ui-monospace, monospace;
+    font-size: 0.65rem;
+    color: #cbd5e1;
+    letter-spacing: 0.04em;
   }
 
   .anuvrtti-graph-section {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
   }
 
   .section-label {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #78716c;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
     margin-bottom: 0.75rem;
   }
 
+  /* Learning-context banner — saffron top-rule, no card */
   .learning-context-banner {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
     gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    background: #eef2ff;
-    border: 1px solid #c7d2fe;
-    border-radius: 0.5rem;
-    margin-bottom: 0.75rem;
-    font-size: 0.8125rem;
+    border-top: 2px solid #f97316;
+    padding: 0.55rem 0;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
   }
 
   .banner-link {
-    color: #4338ca;
+    color: #0f1419;
     text-decoration: none;
     flex: 1;
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
   }
-  .banner-link:hover {
-    text-decoration: underline;
+  .banner-link strong {
+    color: #f97316;
+    font-weight: 500;
   }
+  .banner-link:hover { color: #f97316; }
 
   .banner-step {
-    color: #6366f1;
+    color: #94a3b8;
     margin-left: 0.25rem;
   }
 
   .banner-dismiss {
-    color: #a5b4fc;
+    color: #cbd5e1;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.25rem;
-    border-radius: 0.25rem;
+    padding: 0;
     display: flex;
     align-items: center;
+    transition: color 0.15s;
   }
-  .banner-dismiss:hover {
-    color: #4338ca;
-    background: #c7d2fe;
+  .banner-dismiss:hover { color: #0f1419; }
+
+  /* Prakriyā cross-links — numbered derivations where this rule is invoked */
+  .prakriya-links {
+    margin-top: 1.5rem;
+    padding-top: 0.85rem;
+    border-top: 2px solid #f97316;
   }
 
-  /* Learn cross-links */
+  .prakriya-label {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .prakriya-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .prakriya-link {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #0f1419;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .prakriya-link:hover { color: #f97316; }
+
+  /* Learn cross-links — italic indigo words, separated by · */
   .learn-links {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.85rem;
     margin-top: 1.5rem;
-    padding: 0.75rem;
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 0.375rem;
-    font-size: 0.8125rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.85rem;
   }
 
   .learn-links-label {
-    color: #15803d;
-    font-weight: 500;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
   }
 
   .learn-link {
-    color: #15803d;
+    font-style: italic;
+    color: #4f46e5;
     text-decoration: none;
-    padding: 0.125rem 0.5rem;
-    background: #dcfce7;
-    border-radius: 0.25rem;
+    transition: color 0.15s;
   }
+  .learn-link:hover { color: #f97316; }
 
-  .learn-link:hover {
-    background: #bbf7d0;
-    text-decoration: underline;
-  }
-
-  .learn-link-bala {
-    color: #92400e;
-    background: #fef3c7;
-  }
-
-  .learn-link-bala:hover {
-    background: #fde68a;
-  }
+  .learn-link-bala { color: #4f46e5; }
+  .learn-link-bala:hover { color: #f97316; }
 
 
   .pending-chip {

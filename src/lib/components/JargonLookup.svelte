@@ -76,60 +76,62 @@
   );
 </script>
 
-<div class="bg-white rounded-lg border border-stone-200 p-4">
-  <h3 class="text-xs font-medium text-stone-400 uppercase tracking-wide mb-3">Jargon</h3>
+<div class="py-1">
+  <h3 class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8] mb-3">
+    <Sanskrit text="paribhāṣā" source="iast" />
+  </h3>
 
   <!-- Search -->
   <input
     type="text"
     bind:value={query}
     oninput={handleSearch}
-    placeholder="Search terms..."
-    class="w-full px-2 py-1.5 text-sm border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 mb-3"
+    placeholder="search terms"
+    class="w-full px-0 py-1.5 text-sm border-0 border-b border-[#e2e8f0] bg-transparent focus:outline-none focus:border-[#f97316] mb-3 placeholder:text-[#cbd5e1]"
   />
 
   <!-- Category filters -->
-  <div class="flex flex-wrap gap-1 mb-3">
+  <div class="flex flex-wrap gap-3 mb-4">
     {#each categories.slice(0, 4) as cat}
       <button
         onclick={() => selectCategory(cat.category)}
-        class="px-2 py-0.5 text-xs rounded border transition-colors
+        class="text-xs italic transition-colors
                {selectedCategory === cat.category
-                 ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                 : 'border-stone-200 hover:border-indigo-300 text-stone-600'}"
+                 ? 'text-[#f97316] font-medium'
+                 : 'text-[#94a3b8] hover:text-[#0f1419]'}"
       >
-        {cat.label.split(' ')[0]}
+        {cat.label.split(' ')[0].toLowerCase()}
       </button>
     {/each}
   </div>
 
   <!-- Results -->
   {#if displayTerms.length > 0}
-    <div class="space-y-1 max-h-64 overflow-y-auto">
+    <div class="max-h-64 overflow-y-auto -ml-1">
       {#each displayTerms.slice(0, 10) as term}
         <button
           onclick={() => selectTerm(term)}
-          class="w-full text-left px-2 py-1.5 rounded text-sm transition-colors hover:bg-stone-50
-                 {selectedTerm?.termRoman === term.termRoman ? 'bg-indigo-50' : ''}"
+          class="w-full text-left px-1 py-1 text-sm transition-colors
+                 {selectedTerm?.termRoman === term.termRoman ? 'text-[#f97316]' : 'hover:bg-[#fff7ed]'}"
         >
-          <div class="flex items-center gap-2">
-            <span class="font-medium"><Sanskrit text={term.term} /></span>
-            <span class="text-stone-400 text-xs">{term.termRoman}</span>
+          <div class="flex items-baseline gap-2">
+            <span class="italic"><Sanskrit text={term.term} /></span>
+            <span class="text-[#94a3b8] text-xs font-mono">{term.termRoman}</span>
           </div>
         </button>
       {/each}
     </div>
   {:else if query || selectedCategory}
-    <p class="text-xs text-stone-400 italic">No terms found</p>
+    <p class="text-xs text-[#94a3b8] italic">no terms found</p>
   {/if}
 
   <!-- Selected term detail -->
   {#if selectedTerm}
-    <div class="mt-3 pt-3 border-t border-stone-100">
+    <div class="mt-3 pt-3 border-t border-[#e2e8f0]">
       <!-- Back button -->
       <button
         onclick={goBack}
-        class="flex items-center gap-1 text-xs text-stone-500 hover:text-indigo-600 mb-2 transition-colors"
+        class="flex items-center gap-1 text-xs text-[#94a3b8] hover:text-[#f97316] mb-2 transition-colors"
       >
         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />

@@ -38,7 +38,7 @@
     if (span.type === 'deva') {
       return script === 'devanagari' ? span.content : await transliterate(span.content, 'devanagari', script);
     }
-    // iast
+    // iast — Sanskrit tokens always get transliterated to the target script.
     return script === 'iast' ? span.content : await transliterate(span.content, 'iast', script);
   }
 
@@ -70,17 +70,17 @@
 
   .jargon-inline {
     cursor: pointer;
-    border-bottom: 1px dashed currentColor;
+    border: none;
+    border-bottom: 1px dotted transparent;
     padding: 0;
     background: none;
     font: inherit;
     color: inherit;
-    opacity: 0.85;
+    transition: border-color 0.15s, color 0.15s;
   }
 
   .jargon-inline:hover {
-    opacity: 1;
-    background: rgba(0,0,0,0.05);
-    border-radius: 2px;
+    color: #f97316;
+    border-bottom-color: #f97316;
   }
 </style>

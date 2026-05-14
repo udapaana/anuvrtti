@@ -1,279 +1,550 @@
 <script lang="ts">
   import Sanskrit from '$lib/components/Sanskrit.svelte';
-  import LearningTree from '$lib/components/LearningTree.svelte';
   import { learningProgress } from '$lib/stores/learning';
   import { loadPathIndex, type PathMeta } from '$lib/content';
+  import { pickResumeTarget, type ResumeTarget } from '$lib/learning/resume';
+  import { displayScript } from '$lib/stores/preferences';
+  import { transliterate, type Script } from '$lib/transliteration';
   import { onMount } from 'svelte';
 
-  // Check if user has started any learning path
   let hasProgress = $state(false);
   let currentPathId: string | null = $state(null);
-  let currentStep = $state(0);
   let pathProgress: Record<string, number[]> = $state({});
+  let completedPaths: string[] = $state([]);
 
   learningProgress.subscribe(p => {
     hasProgress = p.completedPaths.length > 0 || Object.keys(p.pathProgress).length > 0;
     currentPathId = p.currentPath;
-    currentStep = p.currentStep;
     pathProgress = p.pathProgress;
+    completedPaths = p.completedPaths;
   });
 
-  // Resolve the current/last active path for resume card
-  let resumePath: PathMeta | null = $state(null);
-  let resumeStep = $state(0);
-  let resumeTotal = $state(0);
+  let resume: ResumeTarget | null = $state(null);
+  let allPaths: PathMeta[] = $state([]);
 
   onMount(async () => {
-    if (!hasProgress) return;
     try {
-      const index = await loadPathIndex();
-
-      // Find the path to resume: either the explicitly current one,
-      // or the most recently touched (most completed steps)
-      let targetId = currentPathId;
-      if (!targetId) {
-        // Find the path with progress that isn't completed
-        let bestId: string | null = null;
-        let bestSteps = -1;
-        for (const [id, steps] of Object.entries(pathProgress)) {
-          const meta = index.find(p => p.id === id);
-          if (meta && steps.length > 0 && steps.length < meta.stepCount && steps.length > bestSteps) {
-            bestId = id;
-            bestSteps = steps.length;
-          }
-        }
-        targetId = bestId;
+      allPaths = await loadPathIndex();
+      if (hasProgress) {
+        resume = pickResumeTarget(allPaths, currentPathId, pathProgress);
       }
-
-      if (targetId) {
-        const meta = index.find(p => p.id === targetId);
-        if (meta) {
-          const steps = pathProgress[targetId] || [];
-          // Only show resume if path isn't fully completed
-          if (steps.length < meta.stepCount) {
-            resumePath = meta;
-            resumeStep = steps.length;
-            resumeTotal = meta.stepCount;
-          }
-        }
-      }
-    } catch (e) {
-      // Silently fail — resume card is optional
+      rebuildLabels($displayScript);
+    } catch {
+      // fail soft
     }
+    return displayScript.subscribe(s => rebuildLabels(s));
   });
 
+  // The grammar category order — mirrors the design's PageGrammarList ordering
+  // (foundation first, then verbs, nouns, kāraka, kṛdanta, taddhita, sandhi,
+  // samāsa, then the deeper tracks).
+  // Category id maps to the Sanskrit term lookup key + an English subtitle.
+  const grammarCategories: { id: string; termKey: string; english: string }[] = [
+    { id: 'foundation', termKey: 'adhara',    english: 'foundations' },
+    { id: 'tinganta',   termKey: 'tinganta',  english: 'verbs' },
+    { id: 'subanta',    termKey: 'subanta',   english: 'nouns' },
+    { id: 'karaka',     termKey: 'karaka',    english: 'cases' },
+    { id: 'kridanta',   termKey: 'kridanta',  english: 'participles' },
+    { id: 'taddhita',   termKey: 'taddhita',  english: 'derivation' },
+    { id: 'sandhi',     termKey: 'sandhi',    english: 'sandhi' },
+    { id: 'samasa',     termKey: 'samasa',    english: 'compounds' },
+    { id: 'prakarana',  termKey: 'prakarana', english: 'deep dives' },
+    { id: 'prakriya',   termKey: 'prakriya',  english: 'derivations' },
+  ];
+
+  // Detect source script for a path's label so we transliterate correctly.
+  function detectSource(s: string): Script {
+    if (/[ఀ-౿]/.test(s)) return 'telugu';
+    if (/[ऀ-ॿ]/.test(s)) return 'devanagari';
+    return 'iast';
+  }
+
+  // Static Sanskrit strings on the page that should follow the script toggle.
+  // Wrapped here so we can transliterate them in one pass.
+  const sanskritTerms: Record<string, string> = {
+    pathana:       'pathana',
+    reading:       'reading',
+    vyakarana:     'vyākaraṇa',
+    grammar:       'grammar',
+    reference:     'reference',
+    adhara:        'ādhāraḥ',
+    tinganta:      'tiṅanta',
+    subanta:       'subanta',
+    karaka:        'kāraka',
+    kridanta:      'kṛdanta',
+    taddhita:      'taddhita',
+    sandhi:        'sandhi',
+    samasa:        'samāsa',
+    prakarana:     'prakaraṇa',
+    prakriya:      'prakriyā',
+    balabodhini:   'bālabodhinī',
+    pratyahara:    'pratyāhārāḥ',
+    sutrah:        'sūtrāḥ',
+    shivasutras:   'śivasūtrāṇi',
+    sutras:        'sūtrāṇi',
+  };
+
+  // Precomputed: path labels + static term map, both rebuilt on script change.
+  let labels: Map<string, string> = $state(new Map());
+  let terms: Map<string, string> = $state(new Map());
+
+  async function rebuildLabels(script: Script) {
+    const m = new Map<string, string>();
+    for (const p of allPaths) {
+      const src = detectSource(p.label);
+      m.set(p.id, script === src ? p.label : await transliterate(p.label, src, script));
+    }
+    labels = m;
+
+    const t = new Map<string, string>();
+    for (const [key, iast] of Object.entries(sanskritTerms)) {
+      t.set(key, script === 'iast' ? iast : await transliterate(iast, 'iast', script));
+    }
+    terms = t;
+  }
+
+  function label(id: string, fallback: string) {
+    return labels.get(id) || fallback;
+  }
+  function term(key: string): string {
+    return terms.get(key) ?? sanskritTerms[key] ?? key;
+  }
+
+  // Extract the English half of a "Sanskrit — English" title.
+  function englishOf(title: string): string {
+    const m = title.match(/—\s*(.+)$/);
+    return m ? m[1] : title;
+  }
+
+  // Helpers
+  function isDone(id: string) { return completedPaths.includes(id); }
+  function pct(p: PathMeta): number {
+    const done = (pathProgress[p.id] ?? []).length;
+    return p.stepCount === 0 ? 0 : done / p.stepCount;
+  }
+
+  // Grammar paths grouped by category, in the configured order.
+  let grammarByCategory = $derived.by(() => {
+    const result: Record<string, PathMeta[]> = {};
+    for (const cat of grammarCategories) {
+      const paths = allPaths
+        .filter(p => p.track === 'grammar' && p.category === cat.id)
+        .sort((a, b) => a.order - b.order);
+      if (paths.length > 0) result[cat.id] = paths;
+    }
+    return result;
+  });
+
+  function balabodhiniProgress(vol: 1 | 2): { done: number; total: number; pct: number } {
+    const vols = allPaths.filter(p => p.id.startsWith(`balabodhini-${vol}-`));
+    const done = vols.filter(p => isDone(p.id)).length;
+    return { done, total: vols.length, pct: vols.length ? done / vols.length : 0 };
+  }
 </script>
 
 <svelte:head>
   <title>Anuvrtti | Learn Sanskrit through the Ashtadhyayi</title>
 </svelte:head>
 
-{#if hasProgress}
-  <!-- Returning user: show resume card + learning tree -->
-  <div class="max-w-4xl mx-auto">
-
-    {#if resumePath}
-      <!-- Resume learning card -->
-      <a
-        href="/learn/{resumePath.id}?step={resumeStep}"
-        class="block mb-6 bg-gradient-to-r from-indigo-50 to-white rounded-xl border border-indigo-200 p-5 hover:border-indigo-400 hover:shadow-md transition-all group"
-      >
-        <div class="flex items-center justify-between gap-4">
-          <div class="flex-1 min-w-0">
-            <p class="text-xs font-medium text-indigo-600 uppercase tracking-wide mb-1">Continue learning</p>
-            <h2 class="text-lg font-semibold text-stone-900 truncate"><Sanskrit text={resumePath.title} source="devanagari" /></h2>
-            <p class="text-sm text-stone-500 mt-0.5">Step {resumeStep + 1} of {resumeTotal}</p>
-          </div>
-          <div class="flex items-center gap-3 flex-shrink-0">
-            <div class="w-24">
-              <div class="h-1.5 bg-indigo-100 rounded-full overflow-hidden">
-                <div class="h-full bg-indigo-500 rounded-full" style="width: {(resumeStep / resumeTotal) * 100}%"></div>
-              </div>
-            </div>
-            <span class="text-indigo-500 group-hover:translate-x-0.5 transition-transform">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-          </div>
-        </div>
-      </a>
-    {/if}
-
-    <div class="mb-6 text-center">
-      <h1 class="text-2xl font-semibold mb-2">
-        <Sanskrit text="अध्ययनम्" />
-        <span class="text-stone-400 ml-2">Learning Paths</span>
-      </h1>
-      <p class="text-stone-600 max-w-xl mx-auto">
-        Structured paths through the Ashtadhyayi based on Pushpa Dikshit's prakriya method.
-      </p>
-    </div>
-
-    <section class="bg-white rounded-lg border border-stone-200 p-6">
-      <LearningTree />
-    </section>
-
-    <!-- Quick tools (always visible) -->
-    <div class="mt-6 flex items-center justify-center gap-6 text-sm">
-      <a href="/ref/prakriya" class="flex items-center gap-1.5 text-stone-500 hover:text-purple-600 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-        <span>Prakriya</span>
-      </a>
-      <a href="/ref/pratyahara" class="flex items-center gap-1.5 text-stone-500 hover:text-cyan-600 transition-colors">
-        <span class="text-xs font-bold">ac</span>
-        <span>Pratyahara</span>
-      </a>
-      <a href="/ref/tables" class="flex items-center gap-1.5 text-stone-500 hover:text-teal-600 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-        </svg>
-        <span>Tables</span>
-      </a>
-      <a href="/ref" class="flex items-center gap-1.5 text-stone-500 hover:text-rose-600 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <span>Search</span>
-      </a>
-    </div>
-  </div>
-{:else}
-  <!-- New user: show the two modes -->
-  <div class="max-w-4xl mx-auto">
-    <!-- Hero -->
-    <div class="text-center mb-10">
-      <h1 class="text-3xl font-semibold mb-3">
-        Learn Sanskrit through the <Sanskrit text="अष्टाध्यायी" />
-      </h1>
-      <p class="text-stone-600 max-w-2xl mx-auto text-lg">
-        The traditional way teaches Sanskrit first, grammar later. We flip that:
-        use Panini's grammar as your scaffold to learn Sanskrit itself.
-      </p>
-    </div>
-
-    <!-- Two Modes -->
-    <div class="grid md:grid-cols-2 gap-6 mb-10">
-      <!-- Learn -->
-      <a
-        href="/learn"
-        class="group block bg-white rounded-xl border border-stone-200 p-8 hover:border-indigo-300 hover:shadow-lg transition-all text-left w-full"
-      >
-        <div class="w-14 h-14 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-        </div>
-        <h2 class="text-xl font-semibold mb-2 group-hover:text-indigo-700">
-          <Sanskrit text="अध्ययनम्" />
-          <span class="text-stone-400 ml-2 font-normal">Learn</span>
-        </h2>
-        <p class="text-stone-600 mb-4">
-          Structured learning paths that teach Sanskrit grammar through reading.
-          Start from zero, build systematically. The Pushpa Dikshit method.
-        </p>
-        <ul class="text-sm text-stone-500 space-y-1 mb-4">
-          <li>• Guided path for beginners</li>
-          <li>• Grammar organized by topic</li>
-          <li>• Track your progress</li>
-        </ul>
-        <div class="text-sm text-indigo-600 font-medium flex items-center gap-1">
-          Start Learning
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </div>
-      </a>
-
-      <!-- Reference -->
-      <a
-        href="/ref"
-        class="group block bg-white rounded-xl border border-stone-200 p-8 hover:border-amber-300 hover:shadow-lg transition-all"
-      >
-        <div class="w-14 h-14 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </div>
-        <h2 class="text-xl font-semibold mb-2 group-hover:text-amber-700">
-          <Sanskrit text="सन्दर्भः" />
-          <span class="text-stone-400 ml-2 font-normal">Reference</span>
-        </h2>
-        <p class="text-stone-600 mb-4">
-          Browse all 4,000 sutras. Search by text, type, or concept.
-          Tools for analysis and lookup.
-        </p>
-        <ul class="text-sm text-stone-500 space-y-1 mb-4">
-          <li>• Browse & search sutras</li>
-          <li>• Prakriya derivation engine</li>
-          <li>• Grammar tables & charts</li>
-        </ul>
-        <div class="text-sm text-amber-600 font-medium flex items-center gap-1">
-          Browse Reference
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </div>
-      </a>
-    </div>
-
-    <!-- How it works -->
-    <div class="bg-stone-50 rounded-xl p-8 mb-10">
-      <h2 class="text-lg font-semibold mb-6 text-center">How This Works</h2>
-      <div class="grid md:grid-cols-3 gap-8 text-sm">
-        <div class="text-center">
-          <div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">1</div>
-          <h3 class="font-medium mb-2">Three Depth Levels</h3>
-          <p class="text-stone-600">
-            Every rule has Simple, Standard, and Advanced explanations.
-            Start simple, go deeper as you grow.
-          </p>
-        </div>
-        <div class="text-center">
-          <div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">2</div>
-          <h3 class="font-medium mb-2">See Rules in Action</h3>
-          <p class="text-stone-600">
-            Watch word derivations step by step.
-            The prakriya engine shows exactly which rules apply.
-          </p>
-        </div>
-        <div class="text-center">
-          <div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center mx-auto mb-3 text-sm font-bold">3</div>
-          <h3 class="font-medium mb-2">Learn by Reading</h3>
-          <p class="text-stone-600">
-            Grammar taught through real Sanskrit passages.
-            See rules applied in context.
-          </p>
-        </div>
+<article class="page">
+  {#if resume}
+    <a href="/learn/{resume.path.id}?step={resume.step}" class="resume">
+      <div>
+        <p class="resume-label">continue</p>
+        <h2 class="resume-title"><Sanskrit text={resume.path.title} source="devanagari" /></h2>
       </div>
-    </div>
+      <div class="resume-progress">
+        <div class="bar"><div class="fill" style="width: {(resume.step / resume.total) * 100}%"></div></div>
+        <p class="resume-step">step {resume.step + 1} / {resume.total}</p>
+      </div>
+    </a>
+  {/if}
 
-    <!-- Quick tools -->
-    <div class="flex items-center justify-center gap-6 text-sm">
-      <a href="/ref/prakriya" class="flex items-center gap-1.5 text-stone-500 hover:text-purple-600 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-        <span>Prakriya</span>
-      </a>
-      <a href="/ref/pratyahara" class="flex items-center gap-1.5 text-stone-500 hover:text-cyan-600 transition-colors">
-        <span class="text-xs font-bold">ac</span>
-        <span>Pratyahara</span>
-      </a>
-      <a href="/ref/tables" class="flex items-center gap-1.5 text-stone-500 hover:text-teal-600 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-        </svg>
-        <span>Tables</span>
-      </a>
-      <a href="/ref" class="flex items-center gap-1.5 text-stone-500 hover:text-rose-600 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <span>Search</span>
-      </a>
+  <header class="hero">
+    <p class="hero-def">a rule implicit in every sūtra from its definition to a specified boundary.</p>
+  </header>
+
+  <!-- READING -->
+  <section>
+    <p class="eyebrow"><span class="san font-{$displayScript}">{term('pathana')}</span> · reading</p>
+    <ul class="path-list">
+      {#each [1, 2] as vol}
+        {@const prog = balabodhiniProgress(vol as 1 | 2)}
+        <li>
+          <a href="/learn?vol={vol}">
+            <span class="path-body">
+              <span class="path-head">
+                <span class="dot dot-link"></span>
+                <em class="path-name font-{$displayScript}">{term('balabodhini')}</em>
+                <span class="path-meta">vol {vol}</span>
+              </span>
+              <span class="path-sub">
+                {vol === 1 ? '38 lessons · graded reader in Telugu' : '40 lessons · longer passages, more grammar'}
+              </span>
+            </span>
+            <span class="path-cta cta-link">
+              {#if prog.pct === 0}begin →
+              {:else if prog.pct === 1}✓ done
+              {:else}{Math.round(prog.pct * 100)}%{/if}
+            </span>
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </section>
+
+  <!-- GRAMMAR — full tree, one block per category -->
+  <section>
+    <p class="eyebrow"><span class="san font-{$displayScript}">{term('vyakarana')}</span> · grammar</p>
+    <div class="grammar-tree">
+      {#each grammarCategories as cat}
+        {@const paths = grammarByCategory[cat.id] ?? []}
+        {#if paths.length > 0}
+          <div class="category">
+            <div class="cat-head">
+              <span class="dot dot-mark"></span>
+              <em class="cat-name font-{$displayScript}">{term(cat.termKey)}</em>
+              <span class="cat-count">{paths.length}</span>
+            </div>
+            <ul class="cat-paths">
+              {#each paths as p}
+                {@const done = isDone(p.id)}
+                {@const percent = pct(p)}
+                <li>
+                  <a href="/learn/{p.id}">
+                    <span class="path-name-deva font-{$displayScript}">{label(p.id, p.label)}</span>
+                    <span class="path-en">{englishOf(p.title)}</span>
+                    <span class="path-status">
+                      {#if done}<span class="cta-ok">✓</span>
+                      {:else if percent > 0}<span class="cta-mark">{Math.round(percent * 100)}%</span>
+                      {:else}<span class="cta-mute">→</span>{/if}
+                    </span>
+                  </a>
+                </li>
+              {/each}
+            </ul>
+          </div>
+        {/if}
+      {/each}
     </div>
-  </div>
-{/if}
+  </section>
+
+  <!-- REFERENCE -->
+  <section>
+    <p class="eyebrow">reference</p>
+    <ul class="path-list">
+      <li>
+        <a href="/ref/pratyahara">
+          <span class="path-body">
+            <span class="path-head">
+              <span class="dot dot-ok"></span>
+              <em class="path-name font-{$displayScript}">{term('pratyahara')}</em>
+            </span>
+            <span class="path-sub">14 <span class="san font-{$displayScript}">{term('shivasutras')}</span> · the encoded alphabet</span>
+          </span>
+          <span class="path-cta cta-ok">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="/ref">
+          <span class="path-body">
+            <span class="path-head">
+              <span class="dot dot-ok"></span>
+              <em class="path-name font-{$displayScript}">{term('sutrah')}</em>
+            </span>
+            <span class="path-sub">3,983 <span class="san font-{$displayScript}">{term('sutras')}</span> · browsable, searchable</span>
+          </span>
+          <span class="path-cta cta-ok">→</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- TOOLS -->
+  <nav class="tools">
+    <a href="/review">
+      <em>review</em>
+      <span class="tool-meta meta-due">12 due</span>
+    </a>
+    <a href="/ref">
+      <em>lookup</em>
+      <span class="tool-meta">sūtras</span>
+    </a>
+    <a href="/words">
+      <em>words</em>
+      <span class="tool-meta">vocabulary</span>
+    </a>
+    <a href="/conjugate">
+      <em>conjugate</em>
+      <span class="tool-meta">verb forms</span>
+    </a>
+    <a href="/build">
+      <em>build</em>
+      <span class="tool-meta">sentences</span>
+    </a>
+    <a href="/ref/jargon">
+      <em>jargon</em>
+      <span class="tool-meta">terms</span>
+    </a>
+    <a href="/ref/pratyahara">
+      <em class="font-{$displayScript}">{term('pratyahara')}</em>
+      <span class="tool-meta">14</span>
+    </a>
+  </nav>
+</article>
+
+<style>
+  /* Centered narrow column — design uses 40rem for the home. */
+  .page {
+    max-width: 40rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  /* Hero — the project name as a Devanagari title, IAST below, and a one-line
+     glossary definition. Functional orientation. */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+  }
+  .hero-title {
+    margin: 0;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-weight: 400;
+    font-size: 2.25rem;
+    line-height: 1.1;
+    color: #f97316;
+    letter-spacing: 0.01em;
+  }
+  .hero-iast {
+    margin: 0.2rem 0 0;
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #94a3b8;
+    letter-spacing: 0.02em;
+  }
+  .hero-def {
+    margin: 0.85rem 0 0;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #475569;
+    max-width: 32rem;
+  }
+
+  /* Resume row */
+  .resume {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+    border-top: 2px solid #f97316;
+    padding: 0.75rem 0 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .resume-label {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #f97316;
+    margin: 0 0 0.3rem;
+  }
+  .resume-title { margin: 0; font-weight: 500; font-size: 1.2rem; }
+  .resume-progress { text-align: right; min-width: 9rem; }
+  .bar { height: 2px; background: #e2e8f0; position: relative; }
+  .fill { position: absolute; inset: 0 auto 0 0; background: #f97316; }
+  .resume-step {
+    margin: 0.35rem 0 0;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #94a3b8;
+  }
+
+  /* Eyebrows + sections */
+  section { margin: 0; }
+  .eyebrow {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+    margin: 0 0 0.5rem;
+  }
+
+  /* Path list (used in reading + reference) */
+  .path-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .path-list li a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-top: 1px solid #e2e8f0;
+    text-decoration: none;
+    color: #0f1419;
+    transition: background 0.1s;
+  }
+  .path-list li:last-child a { border-bottom: 1px solid #e2e8f0; }
+  .path-list li a:hover { background: #fff7ed; }
+
+  .path-body { display: flex; flex-direction: column; min-width: 0; }
+  .path-head { display: flex; align-items: baseline; gap: 0.75rem; }
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+    margin-bottom: 1px;
+  }
+  .dot-link  { background: #4f46e5; }
+  .dot-mark  { background: #f97316; }
+  .dot-ok    { background: #059669; }
+
+  .path-name {
+    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+  .path-meta {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    letter-spacing: 0.04em;
+  }
+  .path-sub {
+    margin-top: 0.15rem;
+    padding-left: 1.1rem;
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.45;
+  }
+  .path-cta {
+    width: 4.5rem;
+    text-align: right;
+    align-self: center;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+  }
+  .cta-link { color: #4f46e5; }
+  .cta-mark { color: #f97316; }
+  .cta-ok   { color: #059669; }
+  .cta-mute { color: #cbd5e1; }
+
+  /* Grammar tree — one block per category. The category head is the same row
+     pattern as the path list (dot + italic name + meta + count). Sub-paths
+     hang under it as a quieter list, indented to align with the name. */
+  .grammar-tree { margin-top: 0.25rem; }
+
+  .category { margin-bottom: 0.25rem; }
+  .cat-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.7rem 0 0.4rem;
+    border-top: 1px solid #e2e8f0;
+  }
+  .cat-name {
+    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+  .cat-english {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    letter-spacing: 0.04em;
+  }
+  .cat-count {
+    margin-left: auto;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #cbd5e1;
+    letter-spacing: 0.04em;
+  }
+
+  .cat-paths {
+    list-style: none;
+    padding: 0 0 0.4rem;
+    margin: 0;
+  }
+  .cat-paths li a {
+    display: grid;
+    grid-template-columns: 7rem 1fr auto;
+    gap: 0.85rem;
+    align-items: baseline;
+    padding: 0.35rem 0 0.35rem 1.1rem;
+    text-decoration: none;
+    color: #0f1419;
+    transition: background 0.1s;
+  }
+  .cat-paths li a:hover { background: #fff7ed; }
+  .path-name-deva {
+    font-size: 0.95rem;
+    color: #0f1419;
+  }
+  .path-en {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .path-status {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-align: right;
+    min-width: 2.5rem;
+  }
+
+  /* Tools strip — italic name on top, monospace meta below. */
+  .tools {
+    display: flex;
+    gap: 2rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .tools a {
+    text-decoration: none;
+    color: #0f1419;
+    display: inline-block;
+    transition: opacity 0.15s;
+  }
+  .tools a em {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+  .tools a:hover em { color: #f97316; }
+  .tool-meta {
+    display: block;
+    margin-top: 0.1rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+  }
+  .meta-due { color: #e11d48; }
+
+  @media (max-width: 540px) {
+    .path-list li a {
+      grid-template-columns: 1fr auto;
+      column-gap: 0.75rem;
+    }
+    .path-cta { font-size: 0.65rem; }
+    .cat-paths li a {
+      grid-template-columns: 5rem 1fr auto;
+    }
+  }
+</style>

@@ -109,12 +109,12 @@
 
   const adhyayas = [1, 2, 3, 4, 5, 6, 7, 8];
   const padas = [1, 2, 3, 4];
-  const types = [
-    { value: 'all', label: 'All' },
-    { value: 'samjna', label: 'Samjna' },
-    { value: 'paribhasha', label: 'Paribhasha' },
-    { value: 'vidhi', label: 'Vidhi' },
-    { value: 'adhikara', label: 'Adhikara' },
+  const types: { value: string; label: string; sanskrit: boolean }[] = [
+    { value: 'all',        label: 'all',       sanskrit: false },
+    { value: 'samjna',     label: 'saṃjñā',    sanskrit: true },
+    { value: 'paribhasha', label: 'paribhāṣā', sanskrit: true },
+    { value: 'vidhi',      label: 'vidhi',     sanskrit: true },
+    { value: 'adhikara',   label: 'adhikāra',  sanskrit: true },
   ];
 </script>
 
@@ -129,7 +129,7 @@
     <div class="search-box">
       <input
         type="text"
-        placeholder="Search sutras..."
+        placeholder="search"
         value={searchQuery}
         oninput={handleSearch}
       />
@@ -140,7 +140,7 @@
 
     {#if !searchQuery}
       <nav class="adhyaya-nav">
-        <h3>Adhyaya</h3>
+        <h3><Sanskrit text="adhyāya" source="iast" /></h3>
         <div class="adhyaya-buttons">
           {#each adhyayas as a}
             <button
@@ -155,7 +155,7 @@
       </nav>
 
       <nav class="pada-nav">
-        <h3>Pada</h3>
+        <h3><Sanskrit text="pāda" source="iast" /></h3>
         <div class="pada-buttons">
           {#each padas as p}
             <button
@@ -170,7 +170,7 @@
       </nav>
 
       <nav class="type-nav">
-        <h3>Type</h3>
+        <h3>type</h3>
         <div class="type-buttons">
           {#each types as t}
             <button
@@ -178,7 +178,7 @@
               class:active={selectedType === t.value}
               onclick={() => selectType(t.value)}
             >
-              {t.label}
+              {#if t.sanskrit}<Sanskrit text={t.label} source="iast" />{:else}{t.label}{/if}
               {#if t.value !== 'all' && padaStats[t.value as keyof typeof padaStats]}
                 <span class="type-count">{padaStats[t.value as keyof typeof padaStats]}</span>
               {/if}
@@ -189,25 +189,25 @@
 
       <div class="pada-stats">
         <span class="stats-label">{selectedAdhyaya}.{selectedPada}</span>
-        <span class="stats-total">{padaStats.total} sutras</span>
+        <span class="stats-total">{padaStats.total} <Sanskrit text="sūtras" source="iast" /></span>
       </div>
     {/if}
 
     <nav class="tools-nav">
-      <h3>Tools</h3>
-      <a href="/ref/prakriya" class="tool-link">Prakriya</a>
-      <a href="/ref/pratyahara" class="tool-link">Pratyahara</a>
-      <a href="/ref/tables" class="tool-link">Reference Tables</a>
+      <h3>tools</h3>
+      <a href="/ref/prakriya" class="tool-link"><Sanskrit text="prakriyā" source="iast" /></a>
+      <a href="/ref/pratyahara" class="tool-link"><Sanskrit text="pratyāhārāḥ" source="iast" /></a>
+      <a href="/ref/tables" class="tool-link">reference tables</a>
     </nav>
     </details>
   </aside>
 
   <main class="ref-main">
     {#if loading}
-      <div class="loading-state">Loading sutras...</div>
+      <div class="loading-state">loading <Sanskrit text="sūtras" source="iast" />…</div>
     {:else if searchQuery}
       <div class="results-header">
-        <h2>Search: "{searchQuery}"</h2>
+        <h2>search · "{searchQuery}"</h2>
         <span class="results-count">{filteredSutras.length} results</span>
       </div>
     {:else}
@@ -215,7 +215,7 @@
         <h2>
           <Sanskrit text="अध्याय" /> {selectedAdhyaya}, <Sanskrit text="पाद" /> {selectedPada}
         </h2>
-        <span class="results-count">{filteredSutras.length} sutras</span>
+        <span class="results-count">{filteredSutras.length} <Sanskrit text="sūtras" source="iast" /></span>
       </div>
     {/if}
 
@@ -312,44 +312,46 @@
   }
   .search-box input {
     width: 100%;
-    padding: 0.625rem 0.875rem;
-    border: 1px solid #d6d3d1;
-    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    background: transparent;
     font-size: 0.875rem;
+    font-family: inherit;
+  }
+  .search-box input::placeholder {
+    color: #cbd5e1;
   }
   .search-box input:focus {
     outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    border-bottom-color: #f97316;
   }
   .clear-btn {
     position: absolute;
-    right: 0.5rem;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
     border: none;
-    background: #e7e5e4;
-    border-radius: 50%;
+    background: none;
     cursor: pointer;
     font-size: 1rem;
     line-height: 1;
-    color: #78716c;
+    color: #cbd5e1;
   }
-  .clear-btn:hover {
-    background: #d6d3d1;
-  }
+  .clear-btn:hover { color: #0f1419; }
 
   .adhyaya-nav h3,
   .pada-nav h3,
   .type-nav h3,
   .tools-nav h3 {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #78716c;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+    text-transform: lowercase;
     margin-bottom: 0.5rem;
   }
 
@@ -357,28 +359,25 @@
   .pada-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem;
+    gap: 0.85rem;
   }
   .adhyaya-btn,
   .pada-btn {
-    padding: 0.375rem 0.625rem;
-    border: 1px solid #e7e5e4;
-    background: white;
-    border-radius: 0.375rem;
-    font-size: 0.8125rem;
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: #94a3b8;
     cursor: pointer;
-    transition: all 0.1s;
+    transition: color 0.1s;
   }
   .adhyaya-btn:hover,
-  .pada-btn:hover {
-    border-color: #c7d2fe;
-    background: #f5f5f4;
-  }
+  .pada-btn:hover { color: #0f1419; }
   .adhyaya-btn.active,
   .pada-btn.active {
-    background: #4f46e5;
-    color: white;
-    border-color: #4f46e5;
+    color: #f97316;
+    font-weight: 500;
   }
 
   .type-buttons {
@@ -388,64 +387,54 @@
   }
   .type-btn {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-    padding: 0.375rem 0.625rem;
+    padding: 0.2rem 0;
     border: none;
     background: none;
-    border-radius: 0.375rem;
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
+    font-style: italic;
     cursor: pointer;
     text-align: left;
-    color: #57534e;
+    color: #94a3b8;
+    transition: color 0.1s;
   }
-  .type-btn:hover {
-    background: #f5f5f4;
-  }
-  .type-btn.active {
-    background: #eef2ff;
-    color: #4f46e5;
-    font-weight: 500;
-  }
+  .type-btn:hover { color: #0f1419; }
+  .type-btn.active { color: #f97316; }
   .type-count {
-    font-size: 0.75rem;
-    color: #a8a29e;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #cbd5e1;
+    font-style: normal;
   }
-  .type-btn.active .type-count {
-    color: #6366f1;
-  }
+  .type-btn.active .type-count { color: #f97316; }
 
   .pada-stats {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 0.5rem;
-    padding: 0.75rem;
-    background: #fafaf9;
-    border-radius: 0.375rem;
-    font-size: 0.8125rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid #e2e8f0;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #94a3b8;
   }
-  .stats-label {
-    font-weight: 600;
-    color: #1c1917;
-  }
-  .stats-total {
-    color: #78716c;
-  }
+  .stats-label { color: #0f1419; }
 
   .tools-nav {
-    border-top: 1px solid #e7e5e4;
+    border-top: 1px solid #e2e8f0;
     padding-top: 1rem;
   }
   .tool-link {
     display: block;
-    padding: 0.375rem 0;
-    font-size: 0.8125rem;
-    color: #6366f1;
+    padding: 0.2rem 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #4f46e5;
     text-decoration: none;
+    transition: color 0.1s;
   }
-  .tool-link:hover {
-    text-decoration: underline;
-  }
+  .tool-link:hover { color: #f97316; }
 
   .ref-main {
     min-width: 0;
@@ -458,27 +447,24 @@
     margin-bottom: 1rem;
   }
   .results-header h2 {
-    font-size: 1.125rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #0f1419;
   }
   .results-count {
-    font-size: 0.875rem;
-    color: #78716c;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
   }
 
   .sutra-list {
     display: flex;
     flex-direction: column;
-    background: white;
-    border: 1px solid #e7e5e4;
-    border-radius: 0.5rem;
-    overflow: hidden;
+    border-top: 1px solid #e2e8f0;
   }
   .sutra-list :global(.sutra-compact) {
-    border-bottom: 1px solid #f5f5f4;
-  }
-  .sutra-list :global(.sutra-compact:last-child) {
-    border-bottom: none;
+    border-bottom: 1px solid #e2e8f0;
   }
 
   .loading-state,

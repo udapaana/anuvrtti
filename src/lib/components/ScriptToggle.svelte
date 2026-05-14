@@ -8,86 +8,149 @@
 
   let { current, onChange }: Props = $props();
 
-  let open = $state(false);
-
-  // Script options with "ka" character in each script and Noto font
-  const scripts: { id: Script; ka: string; label: string; font: string }[] = [
-    // Indic scripts
-    { id: 'devanagari', ka: 'क', label: 'Devanagari', font: 'Noto Sans Devanagari' },
-    { id: 'telugu', ka: 'క', label: 'Telugu', font: 'Noto Sans Telugu' },
-    { id: 'kannada', ka: 'ಕ', label: 'Kannada', font: 'Noto Sans Kannada' },
-    { id: 'malayalam', ka: 'ക', label: 'Malayalam', font: 'Noto Sans Malayalam' },
-    { id: 'tamil', ka: 'க', label: 'Tamil', font: 'Noto Sans Tamil' },
-    { id: 'bengali', ka: 'ক', label: 'Bengali', font: 'Noto Sans Bengali' },
-    { id: 'gujarati', ka: 'ક', label: 'Gujarati', font: 'Noto Sans Gujarati' },
-    { id: 'gurmukhi', ka: 'ਕ', label: 'Gurmukhi', font: 'Noto Sans Gurmukhi' },
-    { id: 'odia', ka: 'କ', label: 'Odia', font: 'Noto Sans Oriya' },
-    { id: 'sinhala', ka: 'ක', label: 'Sinhala', font: 'Noto Sans Sinhala' },
-    { id: 'nandinagari', ka: '𑦮', label: 'Nāndīnāgarī', font: 'Noto Sans Nandinagari' },
-    // Romanization - use abbreviation as the display
-    { id: 'iast', ka: 'IAST', label: 'IAST', font: 'Noto Sans' },
-    { id: 'iso15919', ka: 'ISO', label: 'ISO 15919', font: 'Noto Sans' },
-    { id: 'slp1', ka: 'SLP1', label: 'SLP1', font: 'Noto Sans' },
-    { id: 'hk', ka: 'HK', label: 'Harvard-Kyoto', font: 'Noto Sans' },
-    { id: 'itrans', ka: 'ITRANS', label: 'ITRANS', font: 'Noto Sans' },
-    { id: 'velthuis', ka: 'Vel', label: 'Velthuis', font: 'Noto Sans' },
+  // Three primary scripts shown inline (design: देव · IAST · తెలుగు).
+  // The rest are reachable via the overflow menu — kept available because the
+  // user's content spans many Indic scripts.
+  const primary: { id: Script; label: string; font: string }[] = [
+    { id: 'devanagari', label: 'देव',   font: 'Noto Sans Devanagari' },
+    { id: 'iast',       label: 'IAST',  font: 'Crimson Pro' },
+    { id: 'telugu',     label: 'తెలుగు', font: 'Noto Sans Telugu' },
   ];
 
-  function getCurrentScript() {
-    return scripts.find(s => s.id === current) || scripts[0];
-  }
+  const overflow: { id: Script; label: string; font: string }[] = [
+    { id: 'kannada',     label: 'ಕನ್ನಡ',     font: 'Noto Sans Kannada' },
+    { id: 'malayalam',   label: 'മലയാളം',   font: 'Noto Sans Malayalam' },
+    { id: 'tamil',       label: 'தமிழ்',     font: 'Noto Sans Tamil' },
+    { id: 'bengali',     label: 'বাংলা',     font: 'Noto Sans Bengali' },
+    { id: 'gujarati',    label: 'ગુજરાતી',   font: 'Noto Sans Gujarati' },
+    { id: 'gurmukhi',    label: 'ਪੰਜਾਬੀ',     font: 'Noto Sans Gurmukhi' },
+    { id: 'odia',        label: 'ଓଡ଼ିଆ',      font: 'Noto Sans Oriya' },
+    { id: 'sinhala',     label: 'සිංහල',     font: 'Noto Sans Sinhala' },
+    { id: 'nandinagari', label: '𑦮',         font: 'Noto Sans Nandinagari' },
+    { id: 'iso15919',    label: 'ISO',       font: 'Crimson Pro' },
+    { id: 'slp1',        label: 'SLP1',      font: 'ui-monospace' },
+    { id: 'hk',          label: 'HK',        font: 'ui-monospace' },
+    { id: 'itrans',      label: 'ITRANS',    font: 'ui-monospace' },
+    { id: 'velthuis',    label: 'Vel',       font: 'ui-monospace' },
+  ];
 
-  function selectScript(script: Script) {
-    onChange(script);
+  let open = $state(false);
+
+  function pick(id: Script) {
+    onChange(id);
     open = false;
   }
 
   function handleClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    if (!target.closest('.script-toggle')) {
-      open = false;
-    }
+    if (!target.closest('.script-toggle')) open = false;
   }
 </script>
 
 <svelte:window onclick={handleClickOutside} />
 
-<div class="script-toggle relative">
+<div class="script-toggle">
+  {#each primary as s}
+    <button
+      class="seg"
+      class:active={current === s.id}
+      style="font-family: '{s.font}', sans-serif"
+      onclick={() => pick(s.id)}
+      aria-label="display in {s.id}"
+    >{s.label}</button>
+  {/each}
+
   <button
-    class="min-w-9 h-9 px-2 flex items-center gap-1.5 rounded border border-stone-200 hover:border-stone-300 bg-white"
+    class="more"
+    class:active={overflow.some(o => o.id === current)}
     onclick={() => open = !open}
-    aria-label="Select script: {getCurrentScript().label}"
-  >
-    <span class="text-lg leading-none" style="font-family: '{getCurrentScript().font}', sans-serif">{getCurrentScript().ka}</span>
-  </button>
+    aria-label="more scripts"
+  >…</button>
 
   {#if open}
-    <div class="absolute right-0 top-full mt-1 bg-white border border-stone-200 rounded shadow-lg py-0.5 z-50 w-44 max-h-96 overflow-y-auto">
-      <!-- Indic Scripts -->
-      <div class="px-3 py-1 text-[10px] text-stone-400 uppercase tracking-widest">Indic</div>
-      {#each scripts.filter(s => !['iast', 'iso15919', 'slp1', 'hk', 'itrans', 'velthuis'].includes(s.id)) as script}
+    <div class="popover">
+      {#each overflow as s}
         <button
-          class="w-full px-3 py-1.5 hover:bg-stone-50 flex items-center gap-2.5
-                 {current === script.id ? 'text-indigo-600 bg-indigo-50' : 'text-stone-700'}"
-          onclick={() => selectScript(script.id)}
+          class="row"
+          class:active={current === s.id}
+          onclick={() => pick(s.id)}
         >
-          <span class="text-lg w-7 text-center flex-shrink-0" style="font-family: '{script.font}', sans-serif">{script.ka}</span>
-          <span class="text-xs text-stone-500 {current === script.id ? 'text-indigo-500' : ''}">{script.label}</span>
-        </button>
-      {/each}
-
-      <!-- Romanization -->
-      <div class="px-3 py-1 text-[10px] text-stone-400 uppercase tracking-widest mt-1 border-t border-stone-100 pt-1">Roman</div>
-      {#each scripts.filter(s => ['iast', 'iso15919', 'slp1', 'hk', 'itrans', 'velthuis'].includes(s.id)) as script}
-        <button
-          class="w-full px-3 py-1.5 hover:bg-stone-50 flex items-center gap-2.5
-                 {current === script.id ? 'text-indigo-600 bg-indigo-50' : 'text-stone-700'}"
-          onclick={() => selectScript(script.id)}
-        >
-          <span class="text-xs font-mono font-semibold w-7 text-center flex-shrink-0">{script.ka}</span>
-          <span class="text-xs text-stone-500 {current === script.id ? 'text-indigo-500' : ''}">{script.label}</span>
+          <span class="row-label" style="font-family: '{s.font}', sans-serif">{s.label}</span>
+          <span class="row-id">{s.id}</span>
         </button>
       {/each}
     </div>
   {/if}
 </div>
+
+<style>
+  .script-toggle {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+  }
+
+  /* Bare-text segmented switcher — no borders, no pills.
+     The active item is the only one in saffron. */
+  .seg, .more {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: #94a3b8;
+    transition: color 0.15s;
+  }
+  .seg:hover, .more:hover { color: #0f1419; }
+  .seg.active, .more.active {
+    color: #f97316;
+  }
+
+  .more {
+    font-family: ui-monospace, monospace;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    padding: 0 0.15rem;
+  }
+
+  .popover {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 0.4rem 0;
+    width: 14rem;
+    max-height: 22rem;
+    overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    z-index: 50;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    padding: 0.35rem 0.85rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.1s;
+  }
+  .row:hover { background: #fff7ed; }
+  .row.active .row-label { color: #f97316; }
+  .row-label {
+    font-size: 0.95rem;
+    color: #0f1419;
+  }
+  .row-id {
+    font-family: ui-monospace, monospace;
+    font-size: 0.65rem;
+    color: #94a3b8;
+    letter-spacing: 0.03em;
+  }
+</style>

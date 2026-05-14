@@ -91,107 +91,106 @@
   const word = $derived(queue[current]);
 </script>
 
-<div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
-  <div class="px-4 py-3 border-b border-stone-100 flex items-center justify-between">
-    <h3 class="text-xs font-medium text-stone-400 uppercase tracking-wide">Review</h3>
+<div class="py-1">
+  <div class="flex items-baseline justify-between mb-2 pb-2 border-b border-[#e2e8f0]">
+    <h3 class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8]">review</h3>
     {#if mode === 'idle'}
       <button
         onclick={() => showRangeControl = !showRangeControl}
-        class="text-xs text-stone-400 hover:text-stone-600 transition-colors"
+        class="font-mono text-[0.7rem] text-[#cbd5e1] hover:text-[#0f1419] transition-colors"
         title="Adjust range"
       >lessons {rangeFrom}–{rangeTo}</button>
     {:else if mode !== 'done'}
-      <span class="text-xs text-stone-400">{current + 1}/{queue.length}</span>
+      <span class="font-mono text-[0.7rem] text-[#94a3b8]">{current + 1}/{queue.length}</span>
     {/if}
   </div>
 
   {#if showRangeControl && mode === 'idle'}
-    <div class="px-4 py-3 border-b border-stone-100 space-y-2">
-      <div class="flex items-center gap-2 text-xs text-stone-500">
-        <span class="w-8">From</span>
+    <div class="py-2 mb-2 border-b border-[#e2e8f0]">
+      <div class="flex items-center gap-2 text-xs text-[#94a3b8]">
+        <span class="font-mono text-[0.65rem]">from</span>
         <input type="range" min="0" max={lessonNum} bind:value={rangeFrom}
-          class="flex-1 accent-indigo-500 h-1" />
-        <span class="w-4 text-right">{rangeFrom}</span>
+          class="flex-1 accent-[#f97316] h-1" />
+        <span class="font-mono text-[0.65rem] w-4 text-right">{rangeFrom}</span>
       </div>
     </div>
   {/if}
 
   {#if mode === 'idle'}
-    <div class="px-4 py-4 text-center space-y-3">
+    <div class="py-3 space-y-2">
       {#if sessionWords.length === 0}
-        <p class="text-xs text-stone-400">
-          {allWords.length === 0 ? 'No words yet — visit a lesson.' : 'Nothing due right now.'}
+        <p class="text-xs text-[#94a3b8] italic">
+          {allWords.length === 0 ? 'no words yet — visit a lesson' : 'nothing due right now'}
         </p>
       {:else}
-        <p class="text-sm text-stone-500">{sessionWords.length} word{sessionWords.length === 1 ? '' : 's'}</p>
+        <p class="text-sm text-[#475569]">{sessionWords.length} word{sessionWords.length === 1 ? '' : 's'}</p>
         <button
           onclick={start}
-          class="w-full py-2 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 text-sm font-medium hover:bg-indigo-100 transition-colors"
-        >Start review</button>
+          class="font-serif italic text-[#4f46e5] text-sm hover:text-[#f97316] transition-colors border-b border-[#4f46e5] hover:border-[#f97316] pb-px"
+        >start review →</button>
       {/if}
     </div>
 
   {:else if mode === 'card' || mode === 'revealed'}
-    <!-- Progress bar -->
-    <div class="h-0.5 bg-stone-100">
-      <div class="h-full bg-indigo-400 transition-all" style="width:{(current / queue.length) * 100}%"></div>
+    <div class="h-0.5 bg-[#e2e8f0] -mx-1">
+      <div class="h-full bg-[#f97316] transition-all" style="width:{(current / queue.length) * 100}%"></div>
     </div>
 
-    <!-- Word -->
-    <div class="px-4 py-6 text-center border-b border-stone-100">
+    <div class="py-5 text-center">
       <div class="text-2xl mb-1 font-sanskrit">
         <Sanskrit text={word.display} source="telugu" />
       </div>
       {#if word.iast}
-        <div class="text-xs text-stone-400 font-serif italic">{word.iast}</div>
+        <div class="text-xs text-[#94a3b8] font-serif italic">{word.iast}</div>
       {/if}
     </div>
 
-    <!-- Answer area -->
     {#if mode === 'card'}
-      <div class="px-4 py-4 text-center">
+      <div class="text-center pb-3">
         <button
           onclick={reveal}
-          class="px-6 py-1.5 rounded-lg border border-stone-200 text-stone-500 text-sm hover:bg-stone-50 transition-colors"
-        >Reveal</button>
+          class="font-serif italic text-[#0f1419] text-sm hover:text-[#f97316] transition-colors border-b border-[#0f1419] hover:border-[#f97316] pb-px"
+        >reveal</button>
       </div>
     {:else}
-      <div class="px-4 py-4 text-center space-y-3">
-        <div class="text-sm text-stone-700">{lang === 'telugu' ? word.gloss : word.englishGloss}</div>
+      <div class="py-3 text-center space-y-3 border-t border-[#e2e8f0]">
+        <div class="text-sm text-[#0f1419]">{lang === 'telugu' ? word.gloss : word.englishGloss}</div>
         {#if word.tag}
           <div class="text-xs flex flex-wrap justify-center gap-x-1 gap-y-0.5">
             {#each parseTag(word.tag) as t, ti}
-              {#if ti > 0}<span class="text-stone-300">·</span>{/if}
+              {#if ti > 0}<span class="text-[#cbd5e1]">·</span>{/if}
               {#if t.deva}
-                <button class="text-violet-500 hover:text-violet-700 transition-colors" onclick={() => selectedTerm.set(t.deva)}>
+                <button class="text-[#4f46e5] hover:text-[#f97316] transition-colors" onclick={() => selectedTerm.set(t.deva)}>
                   <Sanskrit text={t.text} source="iast" />
                 </button>
               {:else}
-                <span class="text-stone-400"><Sanskrit text={t.text} source="iast" /></span>
+                <span class="text-[#94a3b8]"><Sanskrit text={t.text} source="iast" /></span>
               {/if}
             {/each}
           </div>
         {/if}
-        <div class="flex gap-2 mt-3">
+        <div class="flex gap-6 justify-center pt-1">
           <button
             onclick={() => answer(false)}
-            class="flex-1 py-1.5 rounded-lg border border-stone-200 text-stone-500 text-sm hover:bg-red-50 hover:border-red-200 hover:text-red-600 transition-colors"
-          >Missed</button>
+            class="font-serif italic text-sm text-[#e11d48] hover:opacity-80 transition-opacity"
+          >missed</button>
           <button
             onclick={() => answer(true)}
-            class="flex-1 py-1.5 rounded-lg border border-stone-200 text-stone-600 text-sm hover:bg-teal-50 hover:border-teal-200 hover:text-teal-700 transition-colors"
-          >Knew it</button>
+            class="font-serif italic text-sm text-[#059669] hover:opacity-80 transition-opacity"
+          >knew it</button>
         </div>
       </div>
     {/if}
 
   {:else if mode === 'done'}
-    <div class="px-4 py-6 text-center space-y-2">
-      <div class="text-stone-700 text-sm">{knew} knew · {missed} missed</div>
+    <div class="py-5 text-center space-y-2">
+      <div class="text-sm text-[#0f1419]">
+        <span class="text-[#059669]">{knew}</span> knew · <span class="text-[#e11d48]">{missed}</span> missed
+      </div>
       <button
         onclick={() => mode = 'idle'}
-        class="text-xs text-indigo-600 hover:underline"
-      >Done</button>
+        class="font-mono text-[0.7rem] text-[#94a3b8] hover:text-[#0f1419] transition-colors"
+      >done</button>
     </div>
   {/if}
 </div>

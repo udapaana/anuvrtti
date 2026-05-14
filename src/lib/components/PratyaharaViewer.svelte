@@ -101,16 +101,17 @@
   }
 </script>
 
-<div class="bg-white rounded-lg border border-stone-200 p-4">
-  <h3 class="text-sm font-medium text-stone-500 mb-3">Pratyahara</h3>
+<div class="py-1">
+  <h3 class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8] mb-3">
+    <Sanskrit text="pratyāhāra" source="iast" />
+  </h3>
 
-  <!-- Input -->
   <input
     type="text"
     bind:value={customInput}
     oninput={handleCustomInput}
-    placeholder="e.g., ac, hal, iK"
-    class="w-full px-2 py-1.5 text-sm border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500 mb-3"
+    placeholder="ac · hal · iK"
+    class="w-full px-0 py-1.5 text-sm bg-transparent border-0 border-b border-[#e2e8f0] focus:outline-none focus:border-[#f97316] mb-4 placeholder:text-[#cbd5e1]"
   />
 
 
@@ -127,7 +128,7 @@
             {@const isStart = isStartPoint(globalIdx)}
             {@const isEnd = isEndPoint(globalIdx)}
             <span
-              class="px-1.5 py-0.5 transition-colors {highlighted ? 'text-indigo-700' : 'text-stone-700'}"
+              class="px-1 py-0.5 transition-colors {highlighted ? 'text-[#f97316]' : 'text-[#0f1419]'}"
               class:sound-start={isStart && !isEnd}
               class:sound-end={isEnd && !isStart}
               class:sound-both={isStart && isEnd}
@@ -136,7 +137,7 @@
               <Sanskrit text={sound} />
             </span>
           {/each}
-          <span class="text-red-500 font-medium">
+          <span class="text-[#0f1419] font-semibold ml-0.5">
             <Sanskrit text={sutra.marker} />
           </span>
         </div>
@@ -144,17 +145,13 @@
     {/each}
   </div>
 
-  <!-- Quick buttons for common pratyaharas -->
-  <div class="mt-3 pt-3 border-t border-stone-100">
-    <div class="text-xs text-stone-400 mb-2">Common:</div>
-    <div class="flex flex-wrap gap-1">
+  <div class="mt-3 pt-3 border-t border-[#e2e8f0]">
+    <div class="font-mono text-[0.65rem] tracking-wider lowercase text-[#94a3b8] mb-2">common</div>
+    <div class="flex flex-wrap gap-x-3 gap-y-1">
       {#each commonPratyaharas.slice(0, 6) as p}
         <button
           onclick={() => selectPratyahara(p)}
-          class="px-2 py-0.5 text-xs rounded border transition-colors
-                 {selectedPratyahara?.name === p.name
-                   ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                   : 'border-stone-200 hover:border-indigo-300 text-stone-600'}"
+          class="font-serif italic text-sm transition-colors {selectedPratyahara?.name === p.name ? 'text-[#f97316]' : 'text-[#475569] hover:text-[#0f1419]'}"
         >
           <Sanskrit text={p.name} />
         </button>
@@ -164,44 +161,31 @@
 </div>
 
 <style>
-  /* Start point: right-pointing arrow shape (green) */
+  /* Start point: a saffron tint, no decorative gradient */
   .sound-start {
-    background: linear-gradient(135deg, #22c55e 0%, #22c55e 50%, #dcfce7 50%, #dcfce7 100%);
-    background-size: 6px 100%;
-    background-repeat: no-repeat;
-    background-position: left;
-    background-color: #dcfce7;
+    background: #fff7ed;
+    border-left: 2px solid #f97316;
     padding-left: 0.5rem;
-    border-radius: 2px;
   }
 
-  /* End point: left-pointing arrow shape (red) */
+  /* End point: a saffron tint capped on the right */
   .sound-end {
-    background: linear-gradient(45deg, #fecaca 0%, #fecaca 50%, #ef4444 50%, #ef4444 100%);
-    background-size: 6px 100%;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-color: #fecaca;
+    background: #fff7ed;
+    border-right: 2px solid #f97316;
     padding-right: 0.5rem;
-    border-radius: 2px;
   }
 
-  /* Both start and end: diamond-ish shape */
+  /* Both start and end: saffron tint with both edges marked */
   .sound-both {
-    background: linear-gradient(135deg, #22c55e 0%, #22c55e 50%, #fef3c7 50%, #fef3c7 100%),
-                linear-gradient(45deg, #fef3c7 0%, #fef3c7 50%, #ef4444 50%, #ef4444 100%);
-    background-size: 6px 100%, 6px 100%;
-    background-repeat: no-repeat, no-repeat;
-    background-position: left, right;
-    background-color: #fef3c7;
+    background: #fff7ed;
+    border-left: 2px solid #f97316;
+    border-right: 2px solid #f97316;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    border-radius: 2px;
   }
 
-  /* Middle highlighted sounds */
+  /* Middle highlighted sounds — washed saffron */
   .sound-middle {
-    background-color: #e0e7ff;
-    border-radius: 2px;
+    background: #fff7ed;
   }
 </style>

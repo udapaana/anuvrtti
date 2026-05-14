@@ -60,12 +60,24 @@
     return displayScript.subscribe(s => rebuildLabels(s));
   });
 
+  // Detect the source script of a string by sniffing its unicode range. Path
+  // titleSanskrit is sometimes Devanagari (vyākaraṇa paths) and sometimes
+  // Telugu (Bālabodhini paths) — without this, we'd transliterate from the
+  // wrong source and mangle the output.
+  function detectSource(s: string): Script {
+    if (/[ఀ-౿]/.test(s)) return 'telugu';
+    if (/[ऀ-ॿ]/.test(s)) return 'devanagari';
+    return 'iast';
+  }
+
   async function rebuildLabels(script: Script) {
     const m = new Map<string, string>();
     for (const p of allPaths) {
-      m.set(p.id, script === 'devanagari' ? p.label : await transliterate(p.label, 'devanagari', script));
+      const labelSrc = detectSource(p.label);
+      m.set(p.id, script === labelSrc ? p.label : await transliterate(p.label, labelSrc, script));
       if (p.titleSanskrit) {
-        m.set(`title-${p.id}`, script === 'devanagari' ? p.titleSanskrit : await transliterate(p.titleSanskrit, 'devanagari', script));
+        const titleSrc = detectSource(p.titleSanskrit);
+        m.set(`title-${p.id}`, script === titleSrc ? p.titleSanskrit : await transliterate(p.titleSanskrit, titleSrc, script));
       }
     }
     for (const c of categories) {
@@ -154,7 +166,6 @@
     {#if view === 'reading'}
       <!-- Reading Path -->
       <div class="reading-header">
-        <p class="reading-desc">A structured path through the essentials — recommended for beginners.</p>
         {#if readingPaths.length > 0}
           <div class="reading-progress">
             <span class="progress-text">{readingDone}/{readingPaths.length} complete</span>
@@ -192,10 +203,6 @@
 
     {:else if view === 'grammar'}
       <!-- Grammar View -->
-      <div class="grammar-header">
-        <p class="grammar-desc">Systematic Pāṇinian grammar — organized by topic following traditional prakaraṇa structure.</p>
-      </div>
-
       <div class="learning-paths">
         {#each categories as cat}
           {@const paths = grammarPaths(cat.id)}
@@ -228,7 +235,7 @@
                     >
                       <span class="path-bullet" style="background: {unlocked || complete ? (categoryColors[path.category] || categoryColors.foundation).medium : '#d6d3d1'};"></span>
                       <span class="path-label">{label(path.id, path.label)}</span>
-                      <span class="path-title font-{$displayScript}">{label(path.id, path.label)}</span>
+                      <span class="path-title font-{$displayScript}">{path.title || ''}</span>
                       {#if complete}
                         <span class="path-check">✓</span>
                       {:else if pct(path) > 0}
@@ -256,7 +263,7 @@
     {:else}
       <!-- Bālabodhini Vol 1 -->
       <div class="reading-header">
-        <p class="reading-desc">Volume I — Kāśī Kṛṣṇācārya's <em>Bālabodhini</em> in Telugu (lessons 1–38).</p>
+        <p class="reading-desc">vol I · lessons 1–38</p>
       </div>
 
       <ol class="reading-list">
@@ -283,7 +290,7 @@
       <!-- Bālabodhini Vol 2 -->
       {#if balabodhini2Paths.length > 0}
         <div class="reading-header" style="margin-top: 1.5rem;">
-          <p class="reading-desc">Volume II — lessons 39–78.</p>
+          <p class="reading-desc">vol II · lessons 39–78</p>
         </div>
 
         <ol class="reading-list">
@@ -319,14 +326,16 @@
     justify-content: center;
     gap: 0.75rem;
     padding: 2rem;
-    color: #78716c;
+    color: #94a3b8;
+    font-style: italic;
+    font-size: 0.9rem;
   }
 
   .spinner {
-    width: 1.25rem;
-    height: 1.25rem;
-    border: 2px solid #e7e5e4;
-    border-top-color: #6366f1;
+    width: 1rem;
+    height: 1rem;
+    border: 1.5px solid #e2e8f0;
+    border-top-color: #f97316;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
   }
@@ -338,99 +347,94 @@
   .learning-tree {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
-  /* Mode Toggle */
+  /* Mode toggle — bare text, no chrome */
   .mode-toggle {
     display: flex;
-    gap: 0.5rem;
-    padding: 0.25rem;
-    background: #f5f5f4;
-    border-radius: 8px;
-    width: fit-content;
+    gap: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.75rem;
   }
 
   .mode-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
+    display: inline-flex;
+    align-items: baseline;
     cursor: pointer;
-    transition: all 0.15s;
     text-decoration: none;
-  }
-
-  .mode-btn:hover {
-    background: #e7e5e4;
-  }
-
-  .mode-btn.active {
-    background: white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 0;
+    background: none;
+    border: none;
   }
 
   .mode-sanskrit {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #1c1917;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #94a3b8;
+    transition: color 0.15s;
   }
 
-  .mode-english {
-    font-size: 0.65rem;
-    color: #78716c;
+  .mode-btn:hover .mode-sanskrit {
+    color: #0f1419;
   }
 
-  /* Reading Path */
-  .reading-header {
+  .mode-btn.active .mode-sanskrit {
+    color: #f97316;
+    font-weight: 500;
+  }
+
+  /* Section descriptions */
+  .reading-header,
+  .grammar-header {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  .reading-desc, .grammar-desc {
-    font-size: 0.8rem;
-    color: #78716c;
+  .reading-desc,
+  .grammar-desc {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
     margin: 0;
   }
 
+  /* Reading-track progress (if shown) */
   .reading-progress {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    margin-top: 0.25rem;
   }
 
   .progress-text {
-    font-size: 0.75rem;
-    color: #57534e;
-    font-weight: 500;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    letter-spacing: 0.03em;
   }
 
   .progress-track {
     flex: 1;
     max-width: 200px;
-    height: 4px;
-    background: #e7e5e4;
-    border-radius: 2px;
+    height: 2px;
+    background: #e2e8f0;
     overflow: hidden;
   }
 
   .progress-fill {
     height: 100%;
-    background: #6366f1;
-    border-radius: 2px;
+    background: #f97316;
     transition: width 0.3s;
   }
 
+  /* Reading list — bare rows, hairline separators */
   .reading-list {
     list-style: none;
-    margin: 0;
+    margin: 0.5rem 0 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
   }
 
   .reading-item {
@@ -438,121 +442,112 @@
   }
 
   .reading-item::before {
-    content: '';
-    position: absolute;
-    left: 15px;
-    top: 32px;
-    bottom: -8px;
-    width: 2px;
-    background: #e7e5e4;
-  }
-
-  .reading-item:last-child::before {
+    /* drop the spinal connector line — separators do the work */
     display: none;
-  }
-
-  .reading-item.completed::before {
-    background: #c7d2fe;
   }
 
   .reading-btn {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    align-items: baseline;
+    gap: 1rem;
     width: 100%;
-    padding: 0.5rem;
-    border-radius: 6px;
+    padding: 0.7rem 0;
+    border-top: 1px solid #e2e8f0;
     text-align: left;
     text-decoration: none;
+    color: inherit;
     transition: background 0.1s;
   }
 
+  .reading-item:last-child .reading-btn {
+    border-bottom: 1px solid #e2e8f0;
+  }
+
   .reading-btn:hover {
-    background: #f5f5f4;
+    background: #fff7ed;
   }
 
   .reading-item.current .reading-btn {
-    background: #f0fdf4;
+    background: #fff7ed;
+    box-shadow: inset 2px 0 0 0 #f97316;
   }
 
+  /* Lesson number — quiet, monospaced, no chip */
   .reading-number {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 2px solid #d6d3d1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: auto;
+    height: auto;
+    border: none;
+    background: none !important;
+    font-family: ui-monospace, monospace;
     font-size: 0.7rem;
-    font-weight: 600;
-    color: #78716c;
-    background: white;
+    font-weight: 400;
+    color: #94a3b8;
     flex-shrink: 0;
-    z-index: 1;
+    min-width: 1.75rem;
+    text-align: right;
+    align-self: baseline;
+    padding-top: 0.1rem;
   }
 
   .reading-number.complete {
-    color: white;
+    color: #059669;
   }
 
   .reading-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
+    gap: 0.15rem;
     min-width: 0;
   }
 
   .reading-label {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #1c1917;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #0f1419;
+    line-height: 1.4;
   }
 
   .reading-title {
-    font-size: 0.7rem;
-    color: #78716c;
+    font-size: 0.85rem;
+    color: #94a3b8;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .reading-category {
-    font-size: 0.6rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    text-transform: lowercase;
+    letter-spacing: 0.03em;
+    color: #94a3b8!important;
   }
 
   .reading-desc-inline {
-    font-size: 0.8rem;
-    font-weight: 400;
-    line-height: 1.5;
-    opacity: 0.9;
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: #94a3b8 !important;
   }
 
   .reading-progress-mini {
-    width: 30px;
-    height: 3px;
-    background: #e7e5e4;
-    border-radius: 2px;
+    width: 32px;
+    height: 2px;
+    background: #e2e8f0;
     overflow: hidden;
   }
 
   .progress-bar-mini {
     height: 100%;
-    border-radius: 2px;
+    background: #f97316 !important;
   }
 
   .reading-item.completed .reading-label {
-    color: #78716c;
+    color: #94a3b8;
   }
 
-  /* Grammar Track View */
-  .grammar-header {
-    margin-bottom: 0.5rem;
-  }
-
+  /* Grammar view */
   .learning-paths {
     display: flex;
     flex-direction: column;
@@ -560,121 +555,128 @@
   }
 
   .category {
-    border-radius: 6px;
-    overflow: hidden;
+    margin-top: 0.5rem;
   }
 
   .category-header {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: baseline;
+    gap: 0.6rem;
     width: 100%;
-    padding: 0.5rem 0.75rem;
-    background: #fafaf9;
-    border-radius: 6px;
+    padding: 0.5rem 0;
+    border-top: 1px solid #e2e8f0;
     text-align: left;
     text-decoration: none;
+    color: inherit;
     transition: background 0.1s;
   }
 
   .category-header:hover {
-    background: #f5f5f4;
+    background: #fff7ed;
   }
 
   .category-icon {
-    width: 8px;
-    height: 8px;
-    border-radius: 2px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
     flex-shrink: 0;
+    align-self: center;
+    background: #f97316 !important;
   }
 
   .category-label {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #1c1917;
+    font-weight: 500;
+    font-size: 1rem;
+    font-style: italic;
+    color: #0f1419;
   }
 
   .category-english {
-    font-size: 0.75rem;
-    color: #78716c;
+    font-size: 0.85rem;
+    color: #94a3b8;
   }
 
   .category-count {
     margin-left: auto;
+    font-family: ui-monospace, monospace;
     font-size: 0.7rem;
-    color: #a8a29e;
-    background: #e7e5e4;
-    padding: 0.1rem 0.4rem;
-    border-radius: 10px;
+    color: #94a3b8;
+    background: none;
+    padding: 0;
+    border-radius: 0;
   }
 
   .category-toggle {
-    color: #a8a29e;
+    color: #94a3b8;
     font-size: 0.75rem;
   }
 
   .paths-list {
     display: flex;
     flex-direction: column;
-    padding: 0.25rem 0 0.5rem 0;
+    padding: 0.25rem 0 0.75rem 1.25rem;
   }
 
   .path-item {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: baseline;
+    gap: 0.6rem;
     width: 100%;
-    padding: 0.4rem 0.75rem 0.4rem 1.5rem;
+    padding: 0.4rem 0;
     text-align: left;
     text-decoration: none;
+    color: inherit;
     transition: background 0.1s;
-    border-radius: 4px;
+    border-radius: 0;
   }
 
   .path-item:hover {
-    background: #f5f5f4;
+    background: #fff7ed;
   }
 
   .path-item.completed {
-    opacity: 0.7;
+    opacity: 0.55;
   }
 
   .path-item.locked {
-    opacity: 0.55;
+    opacity: 0.45;
   }
 
   .path-prereqs {
     display: flex;
-    gap: 0.25rem;
+    gap: 0.35rem;
     flex-shrink: 0;
+    flex-wrap: wrap;
   }
 
   .prereq-tag {
-    font-size: 0.6rem;
-    padding: 0.05rem 0.35rem;
-    background: #f5f5f4;
-    border: 1px solid #e7e5e4;
-    border-radius: 0.25rem;
-    color: #a8a29e;
+    font-family: ui-monospace, monospace;
+    font-size: 0.65rem;
+    padding: 0;
+    background: none;
+    border: none;
+    color: #94a3b8;
     white-space: nowrap;
   }
 
   .path-bullet {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     flex-shrink: 0;
+    align-self: center;
+    background: #f97316 !important;
   }
 
   .path-label {
-    font-size: 0.875rem;
-    color: #1c1917;
+    font-size: 0.95rem;
+    color: #0f1419;
     min-width: 4rem;
   }
 
   .path-title {
-    font-size: 0.75rem;
-    color: #78716c;
+    font-size: 0.8rem;
+    color: #94a3b8;
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -682,33 +684,32 @@
   }
 
   .path-check {
-    color: #22c55e;
+    color: #059669;
     font-size: 0.75rem;
     flex-shrink: 0;
   }
 
   .path-progress {
-    width: 40px;
-    height: 3px;
-    background: #e7e5e4;
-    border-radius: 2px;
+    width: 36px;
+    height: 2px;
+    background: #e2e8f0;
     overflow: hidden;
     flex-shrink: 0;
   }
 
   .progress-bar {
     height: 100%;
-    border-radius: 2px;
+    background: #f97316 !important;
   }
 
   .path-difficulty {
     font-size: 0.5rem;
     letter-spacing: -1px;
     flex-shrink: 0;
-    opacity: 0.5;
+    opacity: 0.4;
   }
 
-  .path-difficulty.beginner { color: #22c55e; }
-  .path-difficulty.intermediate { color: #eab308; }
-  .path-difficulty.advanced { color: #ef4444; }
+  .path-difficulty.beginner    { color: #059669; }
+  .path-difficulty.intermediate { color: #f97316; }
+  .path-difficulty.advanced    { color: #e11d48; }
 </style>

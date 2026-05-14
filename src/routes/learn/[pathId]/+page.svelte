@@ -6,7 +6,7 @@
   import { editModal } from '$lib/stores/editModal';
   import type { LearningPath, LearningStep } from '$lib/learning/paths';
   import { getSutra, getCommentary, getLayeredCommentary, getDependencies, type Sutra, type Commentary, type LayeredSutraCommentary, type CommentaryDepth } from '$lib/data';
-  import { commentaryDepth as commentaryDepthStore, lessonLanguage, type LessonLanguage } from '$lib/stores/preferences';
+  import { commentaryDepth as commentaryDepthStore } from '$lib/stores/preferences';
   import ScriptToggle from '$lib/components/ScriptToggle.svelte';
   import { displayScript } from '$lib/stores/preferences';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
@@ -25,10 +25,6 @@
   let { data } = $props();
 
   let user = $derived(data.user as { login: string; avatar_url: string } | null);
-
-  let lang: LessonLanguage = $state('telugu');
-  lessonLanguage.subscribe(v => { lang = v; });
-  function setLang(l: LessonLanguage) { lessonLanguage.set(l); }
 
   let path: LearningPath | undefined = $state(undefined);
   let pathMeta: PathMeta | undefined = $state(undefined);
@@ -187,39 +183,26 @@
     <div class="mb-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
       <div class="hidden lg:block lg:col-span-3"></div>
       <div class="lg:col-span-6">
-        <a href="/learn" class="text-sm text-indigo-600 hover:underline mb-2 inline-block">
-          ← Back to Learning Paths
+        <a href="/learn" class="font-mono text-[0.7rem] tracking-wider text-[#94a3b8] hover:text-[#0f1419] transition-colors mb-2 inline-block">
+          ← all paths
         </a>
         <div class="flex flex-wrap items-start justify-between gap-3">
           <h1 class="text-xl sm:text-2xl font-semibold">
             <Sanskrit text={path.titleSanskrit} source={pathMeta?.trackFolder?.startsWith('pathana/balabodhini') ? 'telugu' : 'slp1'} />
           </h1>
-          <div class="flex items-center gap-2 flex-shrink-0">
-            <!-- Language toggle: controls gloss/explanation language -->
-            <div class="flex items-center rounded border border-stone-200 overflow-hidden text-xs">
-              {#each ([['telugu', 'తె'] as const, ['english', 'En'] as const]) as [val, label]}
-                <button
-                  onclick={() => setLang(val)}
-                  class="px-2.5 py-1.5 transition-colors
-                         {lang === val ? 'bg-amber-100 text-amber-800 font-medium' : 'bg-white text-stone-400 hover:text-stone-600 hover:bg-stone-50'}"
-                  title="{val === 'telugu' ? 'Explanations in Telugu' : 'Explanations in English'}"
-                >{label}</button>
-              {/each}
-            </div>
-            {#if user && pathMeta}
-              <button
-                class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-indigo-600 transition-colors"
-                onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}
-                title="Edit this path"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                </svg>
-                Edit path
-              </button>
-            {/if}
-          </div>
+          {#if user && pathMeta}
+            <button
+              class="inline-flex items-center gap-1 text-xs text-stone-400 hover:text-[#f97316] transition-colors flex-shrink-0"
+              onclick={() => editModal.open(`static/content/paths/${pathMeta!.trackFolder}/${pathMeta!.folder}/path.md`)}
+              title="Edit this path"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              Edit path
+            </button>
+          {/if}
         </div>
         {#if path.description}
           <p class="text-sm text-stone-500 mt-1"><InlineMarkup text={path.description} /></p>
@@ -324,9 +307,9 @@
         <div class="sticky top-8 space-y-4">
           <JargonLookup />
 
-          <div class="bg-white rounded-lg border border-stone-200 p-4">
-            <h3 class="text-xs font-medium text-stone-400 uppercase tracking-wide mb-3">Contents</h3>
-            <nav class="space-y-2 max-h-[60vh] overflow-y-auto">
+          <div class="py-1">
+            <h3 class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8] mb-2">contents</h3>
+            <nav class="space-y-1.5 max-h-[60vh] overflow-y-auto">
               {#each path.steps as step, i}
                 {@const sections = stepSections[i] ?? []}
                 {@const isSingleLesson = path.steps.length === 1 && step.sutraId === 'lesson'}
@@ -334,15 +317,15 @@
                   {#if !isSingleLesson}
                     <button
                       onclick={() => scrollToStep(i)}
-                      class="w-full text-left px-2 py-1 rounded text-xs font-medium hover:bg-stone-50 transition-colors text-stone-700 hover:text-stone-900"
+                      class="w-full text-left text-sm text-[#0f1419] hover:text-[#f97316] transition-colors"
                     >{step.title}</button>
                   {/if}
                   {#if sections.length > 0}
-                    <div class="flex flex-col gap-0.5" class:mt-1={isSingleLesson}>
+                    <div class="flex flex-col gap-0" class:mt-0.5={isSingleLesson}>
                       {#each sections as sec}
                         <button
                           onclick={() => document.getElementById(sec.anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                          class="text-left text-xs text-stone-500 hover:text-amber-700 transition-colors py-1 px-2 rounded hover:bg-amber-50"
+                          class="text-left text-xs italic text-[#94a3b8] hover:text-[#f97316] transition-colors py-0.5"
                         >{sec.label}</button>
                       {/each}
                     </div>
@@ -371,10 +354,8 @@
                 <h2 class="text-xl font-medium text-stone-800 pt-2">{step.title}</h2>
 
                 {#if step.commentary}
-                  <div class="bg-white rounded-lg border border-stone-200 p-5">
-                    <div class="text-stone-700 leading-relaxed">
-                      <CommentaryText text={step.commentary} />
-                    </div>
+                  <div class="text-[#0f1419] leading-relaxed">
+                    <CommentaryText text={step.commentary} />
                   </div>
                 {/if}
 
@@ -397,10 +378,8 @@
                 <h2 class="text-xl font-medium text-stone-800">{step.title}</h2>
 
                 {#if step.commentary}
-                  <div class="bg-white rounded-lg border border-stone-200 p-5">
-                    <div class="text-stone-700 leading-relaxed">
-                      <CommentaryText text={step.commentary} />
-                    </div>
+                  <div class="text-[#0f1419] leading-relaxed">
+                    <CommentaryText text={step.commentary} />
                   </div>
                 {/if}
               </div>
@@ -504,31 +483,23 @@
           </section>
         {/each}
 
-        <!-- End of path marker + prev/next nav -->
-        <div class="pt-8 border-t border-stone-100">
-          {#if siblingPaths.prev || siblingPaths.next}
-            <div class="flex items-center justify-between gap-4 mb-6 text-xs text-stone-600">
-              {#if siblingPaths.prev}
-                <a href="/learn/{siblingPaths.prev.id}" class="flex items-center gap-1 hover:text-amber-700 transition-colors">
-                  <span>←</span>
-                  <Sanskrit text={siblingPaths.prev.titleSanskrit} source="telugu" />
-                </a>
-              {:else}<div></div>{/if}
-              {#if siblingPaths.next}
-                <a href="/learn/{siblingPaths.next.id}" class="flex items-center gap-1 hover:text-amber-700 transition-colors">
-                  <Sanskrit text={siblingPaths.next.titleSanskrit} source="telugu" />
-                  <span>→</span>
-                </a>
-              {:else}<div></div>{/if}
-            </div>
-          {/if}
-          <div class="text-center text-stone-300 text-sm">
-            <div class="text-2xl mb-2">॥</div>
-            <a href="/learn" class="text-indigo-400 hover:text-indigo-600 transition-colors text-xs">
-              ← All learning paths
-            </a>
+        <!-- Bottom prev/next nav -->
+        {#if siblingPaths.prev || siblingPaths.next}
+          <div class="pt-5 border-t border-[#e2e8f0] flex items-baseline justify-between gap-4 text-sm">
+            {#if siblingPaths.prev}
+              <a href="/learn/{siblingPaths.prev.id}" class="text-[#0f1419] hover:text-[#f97316] transition-colors flex items-baseline gap-1">
+                <span class="text-[#94a3b8]">←</span>
+                <Sanskrit text={siblingPaths.prev.titleSanskrit} source="telugu" />
+              </a>
+            {:else}<div></div>{/if}
+            {#if siblingPaths.next}
+              <a href="/learn/{siblingPaths.next.id}" class="text-[#0f1419] hover:text-[#f97316] transition-colors flex items-baseline gap-1">
+                <Sanskrit text={siblingPaths.next.titleSanskrit} source="telugu" />
+                <span class="text-[#94a3b8]">→</span>
+              </a>
+            {:else}<div></div>{/if}
           </div>
-        </div>
+        {/if}
       </main>
 
       <!-- Right sidebar: Review (balabodhini) or Pratyahara (grammar/ashtadhyayi) -->

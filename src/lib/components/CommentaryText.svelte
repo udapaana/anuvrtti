@@ -321,22 +321,23 @@
     font-size: 0.875em;
   }
 
-  /* Inline elements */
+  /* Inline elements — bare text with semantic color, no chip backgrounds */
   .commentary-content :global(.deva-term) {
     display: inline;
-    padding: 0.125rem 0.25rem;
-    background: #eef2ff;
-    color: #4338ca;
-    border-radius: 0.25rem;
+    padding: 0;
+    background: none;
+    color: #4f46e5;
     border: none;
+    border-bottom: 1px dotted transparent;
     cursor: pointer;
     font-size: inherit;
     font-family: inherit;
-    transition: background-color 0.15s;
+    transition: color 0.15s, border-color 0.15s;
   }
 
   .commentary-content :global(.deva-term:hover) {
-    background: #c7d2fe;
+    color: #f97316;
+    border-bottom-color: #f97316;
   }
 
   .commentary-content :global(.ref-link) {
@@ -344,29 +345,31 @@
     font-family: ui-monospace, monospace;
     font-size: 0.875em;
     text-decoration: none;
+    transition: color 0.15s;
   }
 
   .commentary-content :global(.ref-link:hover) {
-    text-decoration: underline;
+    color: #f97316;
   }
 
   .commentary-content :global(.roman-term) {
     font-style: italic;
-    color: #92400e;
+    color: #4f46e5;
     cursor: pointer;
+    transition: color 0.15s;
   }
 
   .commentary-content :global(.roman-term:hover) {
-    text-decoration: underline;
+    color: #f97316;
   }
 
   .commentary-content :global(.pratyahara-inline) {
-    padding: 0.125rem 0.375rem;
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    border-radius: 0.25rem;
-    font-size: 0.9em;
-    color: #166534;
+    padding: 0;
+    background: none;
+    border: none;
+    font-size: inherit;
+    color: #059669;
+    font-style: italic;
   }
 
   .commentary-content :global(.term-inline) {
