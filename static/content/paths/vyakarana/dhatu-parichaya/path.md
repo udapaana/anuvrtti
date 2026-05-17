@@ -1,7 +1,7 @@
 +++
 id = "dhatu-parichaya"
 order = 1
-title = "धातुपरिचयः — Meeting the Root"
+title = "धातुपरिचयः — Introducing the Root"
 titleSanskrit = "धातुपरिचयः"
 label = "धातुः"
 track = "grammar"
