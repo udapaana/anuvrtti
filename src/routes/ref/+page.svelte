@@ -189,7 +189,7 @@
 
       <div class="pada-stats">
         <span class="stats-label">{selectedAdhyaya}.{selectedPada}</span>
-        <span class="stats-total">{padaStats.total} <Sanskrit text="sūtras" source="iast" /></span>
+        <span class="stats-total">{padaStats.total} <Sanskrit text="sūtrāṇi" source="iast" /></span>
       </div>
     {/if}
 
@@ -204,7 +204,7 @@
 
   <main class="ref-main">
     {#if loading}
-      <div class="loading-state">loading <Sanskrit text="sūtras" source="iast" />…</div>
+      <div class="loading-state">loading <Sanskrit text="sūtrāṇi" source="iast" />…</div>
     {:else if searchQuery}
       <div class="results-header">
         <h2>search · "{searchQuery}"</h2>
@@ -215,7 +215,7 @@
         <h2>
           <Sanskrit text="अध्याय" /> {selectedAdhyaya}, <Sanskrit text="पाद" /> {selectedPada}
         </h2>
-        <span class="results-count">{filteredSutras.length} <Sanskrit text="sūtras" source="iast" /></span>
+        <span class="results-count">{filteredSutras.length} <Sanskrit text="sūtrāṇi" source="iast" /></span>
       </div>
     {/if}
 

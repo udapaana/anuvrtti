@@ -270,7 +270,7 @@
     </a>
     <a href="/ref">
       <em>lookup</em>
-      <span class="tool-meta">sūtras</span>
+      <span class="tool-meta">sūtrāṇi</span>
     </a>
     <a href="/words">
       <em>words</em>

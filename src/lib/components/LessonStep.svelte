@@ -328,7 +328,7 @@
     <!-- Sūtra links -->
     {#if lessonData.sutras?.length}
       <div class="flex items-baseline gap-3 flex-wrap">
-        <span class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8]">{#if showTelugu}<Sanskrit text="సూత్రములు" source="telugu" />{:else}<Sanskrit text="sūtras" source="iast" />{/if}</span>
+        <span class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8]">{#if showTelugu}<Sanskrit text="సూత్రములు" source="telugu" />{:else}<Sanskrit text="sūtrāṇi" source="iast" />{/if}</span>
         {#each lessonData.sutras as sutra}
           <a href="/ref/{sutra}"
              class="font-mono text-[0.78rem] text-[#4f46e5] hover:text-[#f97316] transition-colors">
