@@ -183,7 +183,7 @@
     <div class="mb-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
       <div class="hidden lg:block lg:col-span-3"></div>
       <div class="lg:col-span-6">
-        <a href="/learn" class="font-mono text-[0.7rem] tracking-wider text-[#94a3b8] hover:text-[#0f1419] transition-colors mb-2 inline-block">
+        <a href={pathMeta?.trackFolder?.startsWith('pathana/balabodhini') ? '/learn' : '/'} class="font-mono text-[0.7rem] tracking-wider text-[#94a3b8] hover:text-[#0f1419] transition-colors mb-2 inline-block">
           ← all paths
         </a>
         <div class="flex flex-wrap items-start justify-between gap-3">
