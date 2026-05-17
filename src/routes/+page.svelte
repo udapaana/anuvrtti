@@ -78,6 +78,8 @@
     prakarana:     'prakaraṇa',
     prakriya:      'prakriyā',
     balabodhini:   'bālabodhinī',
+    atha:          'atha',
+    sabdanusasanam: 'śabdānuśāsanam',
     pratyahara:    'pratyāhārāḥ',
     sutrah:        'sūtrāḥ',
     shivasutras:   'śivasūtrāṇi',
@@ -161,7 +163,7 @@
   {/if}
 
   <header class="hero">
-    <p class="hero-def">a rule implicit in every sūtra from its definition to a specified boundary.</p>
+    <p class="hero-opening"><span class="san font-{$displayScript}">{term('atha')}</span> <span class="san font-{$displayScript}">{term('sabdanusasanam')}</span></p>
   </header>
 
   <!-- READING -->
@@ -303,37 +305,17 @@
     gap: 1.75rem;
   }
 
-  /* Hero — the project name as a Devanagari title, IAST below, and a one-line
-     glossary definition. Functional orientation. */
   .hero {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
-  .hero-title {
+  .hero-opening {
     margin: 0;
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    font-weight: 400;
-    font-size: 2.25rem;
-    line-height: 1.1;
-    color: #f97316;
-    letter-spacing: 0.01em;
-  }
-  .hero-iast {
-    margin: 0.2rem 0 0;
     font-family: 'Crimson Pro', serif;
     font-style: italic;
-    font-size: 1rem;
-    color: #94a3b8;
-    letter-spacing: 0.02em;
-  }
-  .hero-def {
-    margin: 0.85rem 0 0;
-    font-family: 'Crimson Pro', serif;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: #475569;
-    max-width: 32rem;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    color: #0f1419;
+    letter-spacing: 0.01em;
   }
 
   /* Resume row */
