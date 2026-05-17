@@ -92,7 +92,7 @@
 </script>
 
 <div class="py-1">
-  <div class="flex items-baseline justify-between mb-2 pb-2 border-b border-[#e2e8f0]">
+  <div class="flex items-baseline justify-between mb-2 pb-2">
     <h3 class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8]">review</h3>
     {#if mode === 'idle'}
       <button

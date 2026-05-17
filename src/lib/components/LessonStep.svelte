@@ -363,10 +363,10 @@
               <Sanskrit text="śabda" source="iast" /> · {showTelugu ? 'అర్థము' : 'meaning'}
             </span>
           </div>
-          <div class="divide-y divide-stone-100">
+          <div>
             {#each (section.items ?? []) as group}
               {@const words = group.words ?? [group]}
-              <div class="px-4 py-1.5 vocab-row" style="--vocab-cols:{words.length}">
+              <div class="py-1.5 vocab-row" style="--vocab-cols:{words.length}">
                 {#each words as word}
                   <div class="py-1">
                     <div class="text-sm font-medium leading-snug">
@@ -417,11 +417,11 @@
           <div class="lesson-section-head">
             <span class="lesson-section-label">{ui.reading}</span>
           </div>
-          <ol class="divide-y divide-stone-50">
+          <ol>
             {#each (section.items ?? []) as item}
               {@const key = `${si}-${item.n}`}
               {@const gloss = showTelugu ? item.telugu : item.english}
-              <li class="px-4 py-2.5 flex items-baseline gap-3 flex-wrap">
+              <li class="py-2 flex items-baseline gap-3 flex-wrap">
                 <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right tabular-nums">{item.n}</span>
                 <div class="flex-1 text-base leading-snug min-w-0">
                   <Sanskrit text={item.sanskrit_telugu} source="telugu" />
@@ -450,10 +450,10 @@
           <div class="lesson-section-head">
             <span class="lesson-section-label">{ui.exercises} — {ui.translatePrompt}</span>
           </div>
-          <ol class="divide-y divide-stone-50">
+          <ol>
             {#each (section.items ?? []) as item}
               {@const key = `ex-${si}-${item.n}`}
-              <li class="px-4 py-2.5 flex items-baseline gap-3 flex-wrap">
+              <li class="py-2 flex items-baseline gap-3 flex-wrap">
                 <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right tabular-nums">{item.n}</span>
                 <div class="flex-1 min-w-0">
                   {#if showTelugu && item.telugu}
@@ -732,11 +732,11 @@
           <div class="lesson-section-head">
             <span class="lesson-section-label">{ui.passage}</span>
           </div>
-          <ol class="divide-y divide-stone-50">
+          <ol>
             {#each (section.items ?? []) as item}
               {@const key = `passage-${si}-${item.n}`}
               {@const isHidden = hidden.has(key)}
-              <li class="px-4 py-2.5 sensitive-row" class:has-flag={item.sensitive && sensitiveNoteHtml}>
+              <li class="py-2 sensitive-row" class:has-flag={item.sensitive && sensitiveNoteHtml}>
                 <div class="flex gap-3 flex-wrap">
                   <span class="text-xs text-stone-300 w-4 flex-shrink-0 text-right tabular-nums mt-1">{item.n}</span>
                   <div class="flex-1 min-w-0 space-y-0.5">
@@ -824,9 +824,9 @@
             <span class="lesson-section-label">{ui.exercises}</span>
             <span class="lesson-section-sublabel">{showTelugu ? 'తెలుగు వాక్యములను సంస్కృతములోనికి మార్చుము' : 'translate these English sentences into Sanskrit'}</span>
           </div>
-          <ol class="divide-y divide-amber-50">
+          <ol>
             {#each (section.items ?? []) as item}
-              <li class="px-4 py-2.5 sensitive-row">
+              <li class="py-2 sensitive-row">
                 <div class="flex gap-3">
                   <span class="text-xs text-amber-300 w-4 flex-shrink-0 text-right tabular-nums mt-1">{item.n}</span>
                   <div class="flex-1 min-w-0 space-y-0.5">
