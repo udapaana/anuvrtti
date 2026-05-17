@@ -546,5 +546,25 @@
     .cat-paths li a {
       grid-template-columns: 5rem 1fr auto;
     }
+    .tools {
+      gap: 1.25rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .cat-paths li a {
+      grid-template-columns: 4rem 1fr auto;
+      gap: 0.5rem;
+      padding-left: 0.75rem;
+    }
+    .resume {
+      gap: 1rem;
+    }
+    .resume-progress {
+      min-width: 6rem;
+    }
+    .path-sub {
+      padding-left: 0.75rem;
+    }
   }
 </style>

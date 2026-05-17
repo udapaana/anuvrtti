@@ -154,4 +154,10 @@
   main {
     padding: 4rem 2rem 3rem;
   }
+
+  @media (max-width: 480px) {
+    main {
+      padding: 4rem 1rem 2rem;
+    }
+  }
 </style>
