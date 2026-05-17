@@ -280,11 +280,7 @@
       <em>conjugate</em>
       <span class="tool-meta">verb forms</span>
     </a>
-    <a href="/build">
-      <em>build</em>
-      <span class="tool-meta">sentences</span>
-    </a>
-    <a href="/ref/jargon">
+<a href="/ref/jargon">
       <em>jargon</em>
       <span class="tool-meta">terms</span>
     </a>
