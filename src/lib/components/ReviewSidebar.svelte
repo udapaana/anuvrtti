@@ -106,7 +106,7 @@
   </div>
 
   {#if showRangeControl && mode === 'idle'}
-    <div class="py-2 mb-2 border-b border-[#e2e8f0]">
+    <div class="py-2 mb-2">
       <div class="flex items-center gap-2 text-xs text-[#94a3b8]">
         <span class="font-mono text-[0.65rem]">from</span>
         <input type="range" min="0" max={lessonNum} bind:value={rangeFrom}
@@ -153,7 +153,7 @@
         >reveal</button>
       </div>
     {:else}
-      <div class="py-3 text-center space-y-3 border-t border-[#e2e8f0]">
+      <div class="py-3 text-center space-y-3">
         <div class="text-sm text-[#0f1419]">{lang === 'telugu' ? word.gloss : word.englishGloss}</div>
         {#if word.tag}
           <div class="text-xs flex flex-wrap justify-center gap-x-1 gap-y-0.5">
