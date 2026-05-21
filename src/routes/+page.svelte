@@ -81,7 +81,7 @@
     atha:          'atha',
     sabdanusasanam: 'śabdānuśāsanam',
     pratyahara:    'pratyāhārāḥ',
-    sutrah:        'sūtrāḥ',
+    sutrani:       'sūtrāṇi',
     shivasutras:   'śivasūtrāṇi',
     sutras:        'sūtrāṇi',
   };
@@ -252,7 +252,7 @@
           <span class="path-body">
             <span class="path-head">
               <span class="dot dot-ok"></span>
-              <em class="path-name font-{$displayScript}">{term('sutrah')}</em>
+              <em class="path-name font-{$displayScript}">{term('sutrani')}</em>
             </span>
             <span class="path-sub">3,983 <span class="san font-{$displayScript}">{term('sutras')}</span> · browsable, searchable</span>
           </span>
@@ -266,7 +266,7 @@
   <nav class="tools">
     <a href="/review">
       <em>review</em>
-      <span class="tool-meta meta-due">12 due</span>
+      <span class="tool-meta">vocabulary</span>
     </a>
     <a href="/ref">
       <em>lookup</em>
