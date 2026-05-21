@@ -231,36 +231,6 @@
     </div>
   </section>
 
-  <!-- REFERENCE -->
-  <section>
-    <p class="eyebrow">reference</p>
-    <ul class="path-list">
-      <li>
-        <a href="/ref/pratyahara">
-          <span class="path-body">
-            <span class="path-head">
-              <span class="dot dot-ok"></span>
-              <em class="path-name font-{$displayScript}">{term('pratyahara')}</em>
-            </span>
-            <span class="path-sub">14 <span class="san font-{$displayScript}">{term('shivasutras')}</span> · the encoded alphabet</span>
-          </span>
-          <span class="path-cta cta-ok">→</span>
-        </a>
-      </li>
-      <li>
-        <a href="/ref">
-          <span class="path-body">
-            <span class="path-head">
-              <span class="dot dot-ok"></span>
-              <em class="path-name font-{$displayScript}">{term('sutrani')}</em>
-            </span>
-            <span class="path-sub">3,983 <span class="san font-{$displayScript}">{term('sutras')}</span> · browsable, searchable</span>
-          </span>
-          <span class="path-cta cta-ok">→</span>
-        </a>
-      </li>
-    </ul>
-  </section>
 
   <!-- TOOLS -->
   <nav class="tools">
