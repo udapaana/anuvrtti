@@ -181,7 +181,7 @@
                 <span class="path-meta">vol {vol}</span>
               </span>
               <span class="path-sub">
-                {vol === 1 ? '38 lessons · graded reader in Telugu' : '40 lessons · longer passages, more grammar'}
+                {vol === 1 ? '38 lessons · graded reader, Telugu & English' : '40 lessons · longer passages, more grammar'}
               </span>
             </span>
             <span class="path-cta cta-link">
