@@ -41,6 +41,7 @@
   }
 
   let sutra: Sutra | null = $derived(data.sutra);
+  let rule: string | null = $derived(data.rule ?? null);
   let commentary: Commentary | undefined = $derived(data.commentary ?? undefined);
   let layeredCommentary: LayeredSutraCommentary | undefined = $derived(data.layeredCommentary ?? undefined);
   let dependencies: Sutra[] = $derived(data.dependencies);
@@ -198,22 +199,19 @@
         <SutraDisplay
           {sutra}
           variant="full"
+          {rule}
           {commentary}
           {layeredCommentary}
-          {depth}
           {user}
-          onDepthChange={handleDepthChange}
           onEdit={layeredCommentary ? handleEditClick : undefined}
         />
       {/if}
 
-      <!-- Anuvrtti inheritance graph (advanced view) -->
-      {#if depth === 'advanced'}
-        <section class="anuvrtti-graph-section">
-          <h3 class="section-label"><Sanskrit text="anuvṛtti" source="iast" /> inheritance</h3>
-          <AnuvrttiGraph {sutra} />
-        </section>
-      {/if}
+      <!-- Anuvrtti inheritance graph -->
+      <section class="anuvrtti-graph-section">
+        <h3 class="section-label"><Sanskrit text="anuvṛtti" source="iast" /> inheritance</h3>
+        <AnuvrttiGraph {sutra} />
+      </section>
 
       <!-- Prakriyā cross-links: sūtras that appear in concrete derivations -->
       {#if prakriyaPaths.length > 0}

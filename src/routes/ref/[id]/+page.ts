@@ -46,6 +46,7 @@ export async function load({ params }) {
     getSutra,
     getCommentary,
     getLayeredCommentary,
+    getRule,
     getDependencies,
     getDependents,
     getAdjacentSutra,
@@ -75,6 +76,7 @@ export async function load({ params }) {
     prevSutra,
     nextSutra,
     sutraPaths,
+    rule,
   ] = await Promise.all([
     getCommentary(sutra.numericId),
     getLayeredCommentary(sutra.numericId),
@@ -83,6 +85,7 @@ export async function load({ params }) {
     getAdjacentSutra(sutra.id, -1),
     getAdjacentSutra(sutra.id, 1),
     loadSutraPaths(),
+    getRule(sutra.id),
   ]);
 
   const allEntries = sutraPaths[id] || [];
@@ -91,6 +94,7 @@ export async function load({ params }) {
 
   return {
     sutra,
+    rule,
     commentary,
     layeredCommentary,
     dependencies,

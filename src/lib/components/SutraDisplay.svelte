@@ -8,6 +8,8 @@
   interface Props {
     sutra: Sutra;
     variant?: Variant;
+    /** The vidvat one-line rule rewrite — the primary explanation. */
+    rule?: string | null;
     commentary?: Commentary;
     layeredCommentary?: LayeredSutraCommentary;
     depth?: CommentaryDepth;
@@ -22,6 +24,7 @@
   let {
     sutra,
     variant = 'compact',
+    rule = null,
     commentary,
     layeredCommentary,
     depth = 'standard',
@@ -41,22 +44,15 @@
     atidesa: 'अतिदेश',
   };
 
-  const depthLabels: Record<CommentaryDepth, string> = {
-    simple: 'Simple',
-    standard: 'Standard',
-    advanced: 'Advanced'
-  };
-
   function handleClick() {
     if (onClick) onClick(sutra.id);
   }
 
-  function setDepth(d: CommentaryDepth) {
-    if (onDepthChange) onDepthChange(d);
-  }
-
-  let layeredText = $derived(layeredCommentary?.en[depth]);
-  let hasCommentary = $derived(layeredText || fallbackCommentary || commentary?.kashikaEnglish || commentary?.englishShort);
+  // The vidvat `rule` is the primary explanation (replaces the old simple/
+  // standard/advanced layered commentary). Fall back to Kāśikā/short gloss only
+  // if no rule exists.
+  let explanation = $derived(rule || fallbackCommentary || commentary?.kashikaEnglish || commentary?.englishShort);
+  let hasCommentary = $derived(!!explanation);
 </script>
 
 {#if variant === 'compact'}
@@ -141,58 +137,33 @@
       </section>
     {/if}
 
-    {#if hasCommentary || onDepthChange}
+    {#if hasCommentary}
       <section class="section commentary-section">
-        {#if onDepthChange}
-          <div class="depth-toggle">
-            <span class="section-label" style="margin: 0;"><Sanskrit text="vyākhyā" source="iast" /></span>
-            <div class="depth-toggle-right">
-              <div class="depth-buttons">
-                {#each (['simple', 'standard', 'advanced'] as const) as d}
-                  <button
-                    onclick={() => setDepth(d)}
-                    class="depth-btn"
-                    class:active={depth === d}
-                    title={depthLabels[d]}
-                    aria-label={depthLabels[d]}
-                  ></button>
-                {/each}
-              </div>
-              {#if onEdit}
-                {#if user}
-                  <button class="edit-btn" onclick={onEdit} title="Suggest edit">
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                      <path d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.992.596l-2.502.834a.25.25 0 0 1-.315-.316l.834-2.501c.12-.361.32-.686.596-.993z" />
-                    </svg>
-                  </button>
-                {:else}
-                  <a href="/auth/github?returnTo=/ref/{sutra.id}" class="edit-btn edit-btn-signin" title="Sign in to suggest edits">
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                      <path d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.992.596l-2.502.834a.25.25 0 0 1-.315-.316l.834-2.501c.12-.361.32-.686.596-.993z" />
-                    </svg>
-                  </a>
-                {/if}
-              {/if}
-            </div>
-          </div>
-        {/if}
-        {#if hasCommentary}
-          <div class="commentary-content">
-            {#if layeredText}
-              <CommentaryText text={layeredText} expandableRefs={depth === 'advanced'} />
-            {:else if fallbackCommentary}
-              <CommentaryText text={fallbackCommentary} />
-            {:else if commentary?.kashikaEnglish}
-              <CommentaryText text={commentary.kashikaEnglish} />
-            {:else if commentary?.englishShort}
-              <CommentaryText text={commentary.englishShort} />
+        <div class="vyakhya-head">
+          <span class="section-label" style="margin: 0;"><Sanskrit text="vyākhyā" source="iast" /></span>
+          {#if onEdit}
+            {#if user}
+              <button class="edit-btn" onclick={onEdit} title="Suggest edit">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.992.596l-2.502.834a.25.25 0 0 1-.315-.316l.834-2.501c.12-.361.32-.686.596-.993z" />
+                </svg>
+              </button>
+            {:else}
+              <a href="/auth/github?returnTo=/ref/{sutra.id}" class="edit-btn edit-btn-signin" title="Sign in to suggest edits">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.992.596l-2.502.834a.25.25 0 0 1-.315-.316l.834-2.501c.12-.361.32-.686.596-.993z" />
+                </svg>
+              </a>
             {/if}
-          </div>
-        {/if}
+          {/if}
+        </div>
+        <div class="commentary-content">
+          <CommentaryText text={explanation} />
+        </div>
       </section>
     {/if}
 
-    {#if depth === 'advanced' && commentary?.kashika}
+    {#if commentary?.kashika}
       <section class="section">
         <h3 class="section-label"><Sanskrit text="kāśikā vṛtti" source="iast" /></h3>
         <div class="section-content kashika">
@@ -201,7 +172,7 @@
       </section>
     {/if}
 
-    {#if depth === 'advanced' && commentary?.vartika && commentary.vartika.length > 0}
+    {#if commentary?.vartika && commentary.vartika.length > 0}
       <section class="section">
         <h3 class="section-label"><Sanskrit text="vārttikas" source="iast" /> · {commentary.vartika.length}</h3>
         <ol class="vartika-list">
@@ -212,7 +183,7 @@
       </section>
     {/if}
 
-    {#if !layeredText && commentary?.englishFull && depth === 'advanced'}
+    {#if commentary?.englishFull}
       <details class="section expandable">
         <summary class="section-label">full translation · vasu</summary>
         <div class="section-content">

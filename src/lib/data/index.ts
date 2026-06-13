@@ -31,6 +31,19 @@ async function fetchJson<T>(filename: string): Promise<T> {
   return response.json();
 }
 
+/** Sūtra one-line explanations (vidvat `rule` field), keyed by dotted id "1.1.1". */
+let rulesCache: Record<string, string> | null = null;
+export async function getRule(id: string): Promise<string | null> {
+  if (!rulesCache) {
+    try {
+      rulesCache = await fetchJson<Record<string, string>>("rules.json");
+    } catch {
+      rulesCache = {};
+    }
+  }
+  return rulesCache[id] ?? null;
+}
+
 /** Load and parse all sūtras */
 export async function loadSutras(): Promise<Sutra[]> {
   if (sutrasCache) return sutrasCache;
