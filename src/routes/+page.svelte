@@ -234,6 +234,10 @@
 
   <!-- TOOLS -->
   <nav class="tools">
+    <a href="/reader">
+      <em>reader</em>
+      <span class="tool-meta">graded · pāṭhāḥ</span>
+    </a>
     <a href="/review">
       <em>review</em>
       <span class="tool-meta">vocabulary</span>
