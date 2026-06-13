@@ -1,0 +1,385 @@
+# ════════════════════════════════════════════════════════════════════════
+#  01_karaka.yaml — कारक — roles, cases, and special government
+#  One chapter of the graded reader. Schema: see grammar/readings/_SCHEMA.md.
+#  Source of truth; the PDF and app are derived. Author readings here.
+# ════════════════════════════════════════════════════════════════════════
+
+readings:
+- id: ex001
+  segment: 1
+  sentence: नरः गच्छति।
+  translation: The man goes.
+  teaches: bare कर्तृ + verb; the प्रथमा as the base case
+  words:
+  - form: नरः
+    gloss: the man
+    notes:
+    - term: कर्तृ
+      en: agent
+    - cite: 1.4.54
+      role: नर is the कर्तृ — the independent agent
+    - term: प्रथमा
+      en: nominative
+    - term: एकवचन
+      en: singular
+    - cite: 2.3.46
+      role: प्रथमा for the bare prātipadika-sense → नरः
+    - cite: 4.1.2
+      role: 'सुप्: सु (nom.sg) on नर'
+    - text: नर + सु, then नरस् → नरः
+    - cite: 8.2.66
+      role: 'नरस्: final स → रु'
+    - cite: 8.3.15
+      role: रु → visarga before pause → नरः
+  - form: गच्छति
+    gloss: goes
+    notes:
+    - term: गम्
+      en: '"go"'
+    - term: धातु
+      en: verbal root
+    - term: लट्
+      en: present
+    - cite: 3.2.123
+      role: वर्तमाने लट् — present tense
+    - term: तिप्
+      en: 3rd person singular
+    - cite: 3.4.78
+      role: 'तिङ्: तिप् (3·sg) → ति'
+  vyakhya: नरः स्वतन्त्रः, अतः प्रथमा।
+  vyakhya_en: |
+    The agent acting on its own stands in the प्रथमा — the base case. This is the starting point every other case departs from.
+- id: ex002
+  segment: 1
+  sentence: नरः ग्रामम् गच्छति।
+  translation: The man goes to the village.
+  teaches: adds कर्मन् → द्वितीया
+  words:
+  - form: ग्रामम्
+    gloss: the village
+    notes:
+    - term: कर्मन्
+      en: object — what the agent reaches
+    - cite: 1.4.49
+      role: ग्राम is कर्मन् — what the agent reaches
+    - term: द्वितीया
+      en: accusative
+    - term: एकवचन
+      en: singular
+    - cite: 2.3.2
+      role: कर्मणि द्वितीया → ग्रामम्
+  vyakhya: यत् कर्तुः ईप्सिततमम् तत् कर्मन्, कर्मणि द्वितीया।
+  vyakhya_en: |
+    What the agent most wants to reach is the कर्मन्; the कर्मन् takes the द्वितीया. The goal of motion is reached, so it is कर्मन् — hence ग्रामम्.
+- id: ex003
+  segment: 1
+  sentence: नरः पादाभ्याम् ग्रामम् गच्छति।
+  translation: The man goes to the village on foot.
+  teaches: adds करण → तृतीया
+  words:
+  - form: पादाभ्याम्
+    gloss: by the two feet
+    notes:
+    - term: करण
+      en: instrument — the means
+    - cite: 1.4.42
+      role: पाद is करण — the most effective means
+    - term: तृतीया
+      en: instrumental
+    - term: द्विवचन
+      en: dual — a man has two feet
+    - cite: 2.3.18
+      role: कर्तृकरणयोस्तृतीया → पादाभ्याम्
+  vyakhya: पादौ साधकतमम् करण, कर्तृकरणयोः तृतीया।
+  vyakhya_en: |
+    The feet are the most effective means by which the going is done — the करण — and the करण takes the तृतीया.
+- id: ex004
+  segment: 1
+  sentence: नरः ग्रामात् आगच्छति।
+  translation: The man comes from the village.
+  teaches: adds अपादान → पञ्चमी
+  words:
+  - form: ग्रामात्
+    gloss: from the village
+    notes:
+    - term: अपादान
+      en: source — the point departed from
+    - cite: 1.4.24
+      role: ग्राम is अपादान — the fixed point of departure
+    - term: पञ्चमी
+      en: ablative
+    - term: एकवचन
+      en: singular
+    - cite: 2.3.28
+      role: अपादाने पञ्चमी → ग्रामात्
+  - form: आगच्छति
+    gloss: comes
+    notes:
+    - text: 'आ + '
+    - term: गम्
+      en: '"come" — आ adds "toward," motion toward the speaker'
+  vyakhya: ध्रुवम् अपाये अपादान, अपादाने पञ्चमी।
+  vyakhya_en: |
+    The fixed point from which there is departure is the अपादान; it takes the पञ्चमी. Same word ग्राम — goal (द्वितीया) above, source (पञ्चमी) here. The case follows the role.
+- id: ex005
+  segment: 1
+  sentence: नरः बालाय फलम् यच्छति।
+  translation: The man gives fruit to the boy.
+  teaches: adds सम्प्रदान → चतुर्थी
+  words:
+  - form: बालाय
+    gloss: to the boy
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - cite: 1.4.32
+      role: बाल is सम्प्रदान — the one aimed at, the recipient
+    - term: चतुर्थी
+      en: dative
+    - term: एकवचन
+      en: singular
+    - cite: 2.3.13
+      role: चतुर्थी सम्प्रदाने → बालाय
+  - form: फलम्
+    gloss: the fruit, what is given
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: यच्छति
+    gloss: gives
+    notes:
+    - term: दा
+      en: '"give"'
+    - term: धातु
+      en: verbal root
+    - term: लट्
+      en: present
+  vyakhya: कर्मणा यम् अभिप्रैति सः सम्प्रदान, चतुर्थी सम्प्रदाने।
+  vyakhya_en: |
+    The one the agent aims at through the object — here, through the fruit, the boy — is the सम्प्रदान; it takes the चतुर्थी.
+- id: ex006
+  segment: 1
+  sentence: नरः ग्रामे वसति।
+  translation: The man lives in the village.
+  teaches: adds अधिकरण → सप्तमी
+  words:
+  - form: ग्रामे
+    gloss: in the village
+    notes:
+    - term: अधिकरण
+      en: locus
+    - cite: 1.4.45
+      role: ग्राम is अधिकरण — the locus of the action
+    - term: सप्तमी
+      en: locative
+    - term: एकवचन
+      en: singular
+    - cite: 2.3.36
+      role: सप्तम्यधिकरणे च → ग्रामे
+  - form: वसति
+    gloss: lives
+    notes:
+    - term: वस्
+      en: '"dwell"'
+    - term: धातु
+      en: verbal root
+    - term: लट्
+      en: present
+  vyakhya: आधारः अधिकरण, सप्तमी अधिकरणे।
+  vyakhya_en: |
+    The locus in which the action rests is the अधिकरण; it takes the सप्तमी. A third role for ग्राम: goal, source, and now locus — द्वितीया, पञ्चमी, सप्तमी.
+- id: ex007
+  segment: 1
+  sentence: नरस्य पुत्रः ग्रामे वसति।
+  translation: The man's son lives in the village.
+  teaches: adds षष्ठी (a relation, not a कारक)
+  words:
+  - form: नरस्य
+    gloss: of the man, the relation whose
+    notes:
+    - term: षष्ठी
+      en: genitive
+    - term: एकवचन
+      en: singular
+    - cite: 2.3.50
+      role: षष्ठी शेषे — the remaining relation (genitive) → नरस्य
+  - form: पुत्रः
+    gloss: the son, now the agent
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  vyakhya: कारकभिन्नः सम्बन्धः शेष, तत्र षष्ठी।
+  vyakhya_en: |
+    A relation that is not one of the कारकas — here mere belonging, "of the man" — is शेष, "the rest," and takes the षष्ठी. Note नर has stepped out of the agent-role; पुत्र is now the कर्तृ.
+- id: ex017
+  segment: 5
+  sentence: बालः वृकेभ्यः बिभेति।
+  translation: The boy fears the wolves.
+  teaches: 'special government: a verb of fearing makes the feared thing अपादान → पञ्चमी'
+  words:
+  - form: वृकेभ्यः
+    gloss: of/from the wolves — the thing feared
+    notes:
+    - term: अपादान
+      en: source — here, what one shrinks from
+    - cite: 1.4.25
+      role: भीत्रार्थानां भयहेतुः — with verbs of fearing, the cause of fear is अपादान
+    - term: पञ्चमी
+      en: ablative
+    - term: बहुवचन
+      en: plural
+    - cite: 2.3.28
+      role: अपादाने पञ्चमी → वृकेभ्यः
+  - form: बिभेति
+    gloss: fears
+    notes:
+    - term: भी
+      en: '"fear"'
+    - term: लट्
+      en: present
+  vyakhya: भयहेतुः अपादानम् — न तु कर्म। वृकेभ्यः बिभेति, न वृकान्।
+  vyakhya_en: |
+    One might expect the feared thing to be the कर्मन् (the object fearing "reaches"). But Pāṇini names it अपादान — what one shrinks away from — so it takes the पञ्चमी, not the द्वितीया: वृकेभ्यः, not वृकान्. Knowing the verb tells you the case.
+- id: ex018
+  segment: 5
+  sentence: नरः देवदत्ताय शतम् धारयति।
+  translation: The man owes Devadatta a hundred.
+  teaches: 'special government: √धारि ''owe'' makes the creditor सम्प्रदान → चतुर्थी'
+  words:
+  - form: देवदत्ताय
+    gloss: to Devadatta — the creditor
+    notes:
+    - term: सम्प्रदान
+      en: recipient — here, the one owed
+    - cite: 1.4.35
+      role: धारेरुत्तमर्णः — with √धारि (owe), the creditor (उत्तमर्ण) is सम्प्रदान
+    - term: चतुर्थी
+      en: dative
+    - cite: 2.3.13
+      role: चतुर्थी सम्प्रदाने → देवदत्ताय
+  - form: शतम्
+    gloss: a hundred, what is owed
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: धारयति
+    gloss: owes
+    notes:
+    - term: धृ
+      en: '"hold, owe" (causative √धारि)'
+    - term: लट्
+      en: present
+  vyakhya: उत्तमर्णः सम्प्रदानम्। यस्य ऋणं धार्यते सः सम्प्रदानम्।
+  vyakhya_en: |
+    The creditor — the one to whom the debt is owed — is the सम्प्रदान, just as a gift's recipient is. So देवदत्ताय (चतुर्थी), the same case as the boy received the fruit in. A specific verb extends a familiar role.
+
+# ── Segment 7: case-government idioms — fixed words that fix a case ──────
+# Not verb-driven (seg 5) but word-driven: certain particles and senses
+# always govern a particular विभक्ति. Common, high-frequency, learner-facing.
+
+- id: ex021
+  segment: 7
+  sentence: नमः देवेभ्यः।
+  translation: Homage to the gods.
+  teaches: 'नमः and its companions (स्वस्ति, स्वाहा …) govern the चतुर्थी'
+  words:
+  - form: नमः
+    gloss: homage
+    notes:
+    - text: the word of salutation
+  - form: देवेभ्यः
+    gloss: to the gods
+    notes:
+    - term: सम्प्रदान
+      en: recipient — here, the one saluted
+    - cite: '2.3.16'
+      role: नमःस्वस्ति… — with नमः (and स्वस्ति, स्वाहा, स्वधा, अलम्, वषट्) the word takes चतुर्थी
+    - term: चतुर्थी
+      en: dative
+    - term: बहुवचन
+      en: plural
+    - cite: '2.3.13'
+      role: चतुर्थी सम्प्रदाने → देवेभ्यः
+  vyakhya: नमसा योगे चतुर्थी। नमो देवेभ्यः, न देवान्।
+  vyakhya_en: |
+    A handful of fixed words — नमः foremost — govern the चतुर्थी by themselves, no verb needed. "नमो देवेभ्यः," homage to the gods (चतुर्थी), never देवान्. Learn the word, and its case comes with it.
+- id: ex022
+  segment: 7
+  sentence: नरः मासम् अधीते।
+  translation: The man studies for a month.
+  teaches: 'duration and extent (काल, अध्वन्) in continuous connection take द्वितीया'
+  words:
+  - form: मासम्
+    gloss: for a month
+    notes:
+    - term: कर्मन्
+      en: object — here, the span filled by the action
+    - cite: '2.3.5'
+      role: कालाध्वनोरत्यन्तसंयोगे — a time-word (or distance) in unbroken connection takes द्वितीया
+    - term: द्वितीया
+      en: accusative
+    - term: एकवचन
+      en: singular
+  - form: अधीते
+    gloss: studies
+    notes:
+    - term: इ
+      en: '"study" (अधि + इ)'
+    - term: लट्
+      en: present
+  vyakhya: अत्यन्तसंयोगे कालाध्वनोः द्वितीया। मासम् अधीते — कृत्स्नं कालम्।
+  vyakhya_en: |
+    When an action fills a whole stretch of time or space without a break, that span stands in the द्वितीया: मासम् अधीते, "studies through a whole month." The accusative here measures extent, not an object reached.
+
+# ── Segment 11: more तृतीया senses — accompaniment and cause ────────────
+# The तृतीया (seen as करण, the instrument) also carries "with" and "because of".
+# One case, several senses — each fixed by a rule.
+
+- id: ex032
+  segment: 11
+  sentence: पुत्रेण सह पिता आगच्छति।
+  translation: The father comes with the son.
+  teaches: 'सह "with" → the accompanying (subordinate) person takes तृतीया'
+  words:
+  - form: पुत्रेण
+    gloss: with the son
+    notes:
+    - term: तृतीया
+      en: instrumental — here the sense "along with"
+    - cite: '2.3.19'
+      role: सहयुक्तेऽप्रधाने — with सह, the accompanying (non-principal) thing takes तृतीया
+    - term: एकवचन
+      en: singular
+  - form: सह
+    gloss: with, together
+    notes:
+    - text: the particle governing पुत्रेण
+  vyakhya: सहयोगे अप्रधाने तृतीया। पिता प्रधानम्, पुत्रः अप्रधानम् — पुत्रेण सह।
+  vyakhya_en: |
+    With सह "together," the secondary companion — not the principal actor — stands in the तृतीया: पुत्रेण सह "with the son." The father is principal (प्रधान, प्रथमा); the son accompanies (अप्रधान, तृतीया). The same case that named the instrument also names the companion.
+- id: ex033
+  segment: 11
+  sentence: धनेन कुलम्।
+  translation: A family [is sustained] by wealth.
+  teaches: 'हेतु "cause, reason" → the cause takes तृतीया'
+  words:
+  - form: धनेन
+    gloss: by/because of wealth
+    notes:
+    - term: हेतु
+      en: cause, reason
+    - cite: '2.3.23'
+      role: हेतौ — the word naming a cause takes तृतीया
+    - term: तृतीया
+      en: instrumental — here the sense "by reason of"
+    - term: एकवचन
+      en: singular
+  vyakhya: हेतौ तृतीया। येन फलं साध्यते सः हेतुः — धनेन कुलम्।
+  vyakhya_en: |
+    What brings a result about — the cause — takes the तृतीया: धनेन "by reason of wealth." This is the same case as the instrument करण, widened: the means by which, and the cause for which, share one form.

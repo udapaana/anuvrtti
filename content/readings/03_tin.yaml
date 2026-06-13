@@ -1,0 +1,257 @@
+# ════════════════════════════════════════════════════════════════════════
+#  03_tin.yaml — तिङ् — verbal conjugation (person, tense, voice)
+#  One chapter of the graded reader. Schema: see grammar/readings/_SCHEMA.md.
+#  Source of truth; the PDF and app are derived. Author readings here.
+# ════════════════════════════════════════════════════════════════════════
+
+readings:
+- id: ex014
+  segment: 4
+  sentence: अहम् ग्रामम् गच्छामि।
+  translation: I go to the village.
+  teaches: 'person (पुरुष): the उत्तमपुरुष — speaker — selects a different ending'
+  words:
+  - form: अहम्
+    gloss: I
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - text: the pronoun for the speaker
+  - form: गच्छामि
+    gloss: I go
+    notes:
+    - term: गम्
+      en: '"go"'
+    - term: लट्
+      en: present
+    - term: उत्तमपुरुष
+      en: first person — the speaker
+    - cite: 1.4.101
+      role: 'तिङस्त्रीणि त्रीणि प्रथममध्यमोत्तमाः — the तिङ् endings fall into three पुरुष: प्रथम, मध्यम,
+        उत्तम'
+    - term: एकवचन
+      en: singular
+    - cite: 3.4.78
+      role: तिप्तस्झि… — the तिङ् ending मिप् for उत्तम·एक → गच्छामि
+  vyakhya: वक्ता उत्तमपुरुषः। एकस्मिन् कर्तरि एकवचनम् — गच्छामि।
+  vyakhya_en: |
+    The speaker is the उत्तमपुरुष. The verb's ending names who acts, just as the noun's ending named its role: गच्छति (he goes) and गच्छामि (I go) share one root, one tense — only the पुरुष differs.
+- id: ex015
+  segment: 4
+  sentence: त्वम् ग्रामम् गच्छसि।
+  translation: You go to the village.
+  teaches: 'person: the मध्यमपुरुष — the one addressed'
+  words:
+  - form: त्वम्
+    gloss: you
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - text: the pronoun for the one addressed
+  - form: गच्छसि
+    gloss: you go
+    notes:
+    - term: गम्
+      en: '"go"'
+    - term: लट्
+      en: present
+    - term: मध्यमपुरुष
+      en: second person — the one addressed
+    - term: एकवचन
+      en: singular
+    - cite: 3.4.78
+      role: तिङ् ending सिप् for मध्यम·एक → गच्छसि
+  vyakhya: यम् प्रति उच्यते सः मध्यमपुरुषः।
+  vyakhya_en: |
+    The one spoken to is the मध्यमपुरुष. Three persons now stand together: गच्छति (प्रथम, he), गच्छसि (मध्यम, you), गच्छामि (उत्तम, I) — one root, three endings.
+- id: ex016
+  segment: 4
+  sentence: बालः ग्रामम् अगच्छत्।
+  translation: The boy went to the village.
+  teaches: 'tense (लकार): the past — लङ् replaces लट्, and an augment अ is prefixed'
+  words:
+  - form: बालः
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: अगच्छत्
+    gloss: went
+    notes:
+    - term: गम्
+      en: '"go"'
+    - term: लङ्
+      en: imperfect — the ordinary past tense
+    - cite: 3.2.111
+      role: अनद्यतने लङ् — for past (not of today) the लङ् replaces लट्
+    - term: प्रथमपुरुष
+      en: third person
+    - term: एकवचन
+      en: singular
+    - text: अ-augment + गच्छ + त् → अगच्छत्
+  vyakhya: भूते अनद्यतने लङ्। धातुः स एव, कालः अन्यः।
+  vyakhya_en: |
+    For the past, the लङ् stands where the present लट् stood. The root is the same √गम्; only the tense — the लकार — has changed. गच्छति (goes) → अगच्छत् (went): a new tense-slot, marked by the अ-augment in front.
+  note: // The full augment/ending derivation (3.4.100ff, 6.4.71) is later; here we state the siddha form
+    अगच्छत् and cite the लकार choice 3.2.111. Stepwise derivation deferred to a Track-B path.
+- id: ex019
+  segment: 6
+  sentence: नरः ओदनम् पचति।
+  translation: The man cooks rice.
+  teaches: the verb's ending is परस्मैपद — the active-voice set of तिङ् endings
+  words:
+  - form: पचति
+    gloss: cooks (for another / active)
+    notes:
+    - term: पच्
+      en: '"cook"'
+    - term: लट्
+      en: present
+    - term: परस्मैपद
+      en: active voice — the तिप्-तस्-झि set of endings
+    - cite: 1.4.99
+      role: लः परस्मैपदम् — the तिङ् endings replacing a लकार are by default परस्मैपद
+    - term: प्रथमपुरुष
+      en: third person
+    - term: एकवचन
+      en: singular
+  vyakhya: लादेशाः परस्मैपदम् — तिप्तस्झ्यादयः।
+  vyakhya_en: |
+    The endings that replace a लकार are, in general, परस्मैपद — the active set (तिप्, तस्, झि …). पचति is one of them. A second set, the आत्मनेपद, stands beside it for the middle voice.
+- id: ex020
+  segment: 6
+  sentence: नरः ओदनम् पचते।
+  translation: The man cooks rice (for himself).
+  teaches: the आत्मनेपद — the middle-voice set, action for the agent's own sake
+  words:
+  - form: पचते
+    gloss: cooks (for himself / middle)
+    notes:
+    - term: पच्
+      en: '"cook"'
+    - term: लट्
+      en: present
+    - term: आत्मनेपद
+      en: middle voice — the त-आताम्-झ set of endings
+    - cite: 1.4.100
+      role: तङानावात्मनेपदम् — the तङ् (and शानच्/कानच्) replacements are आत्मनेपद
+    - cite: 1.4.102
+      role: तान्येकवचन… — the nine endings distribute as 3 पुरुष × 3 वचन (एक/द्वि/बहु)
+    - term: प्रथमपुरुष
+      en: third person
+    - term: एकवचन
+      en: singular
+  vyakhya: पचति परस्मैपदम्, पचते आत्मनेपदम् — स एव धातुः, फलम् अन्यत्र वा स्वे वा।
+  vyakhya_en: |
+    One root, two ending-sets. पचति (परस्मैपद) cooks for another; पचते (आत्मनेपद) cooks for oneself. The nine endings of each set fill the same grid — three पुरुष across three वचन — so a verb-form names person, number, and voice all at once.
+
+# ── Segment 9: the time axis — past, present, future by लकार ─────────────
+# लट् (present) and लङ् (recent past) are done. Here the two that complete a
+# learner's sense of time: लिट् (the remote/narrative past) and लृट् (future).
+# Same √कृ across the tenses, so only the लकार is new.
+
+- id: ex027
+  segment: 9
+  sentence: सः तत् चकार।
+  translation: He did that (long ago / it is told).
+  teaches: 'लिट् — the perfect, for remote or reported past; the root reduplicates'
+  words:
+  - form: चकार
+    gloss: did, has done
+    notes:
+    - term: कृ
+      en: '"do, make"'
+    - term: लिट्
+      en: perfect — the remote or reported past (परोक्ष)
+    - cite: '3.2.115'
+      role: परोक्षे लिट् — for a past beyond direct witness, लिट् replaces the लकार
+    - term: प्रथमपुरुष
+      en: third person
+    - term: एकवचन
+      en: singular
+    - text: 'कृ reduplicates → च-कार → चकार'
+  vyakhya: परोक्षे भूते लिट्। धातुः द्विरुक्तः — चकार।
+  vyakhya_en: |
+    For a past the speaker did not witness — the deep past of story and report — the लिट् is used, and the root doubles its first syllable: कृ → चकार, "he did" (out of sight, or long ago). Compare अकरोत् (लङ्, the past one saw): same act, different reach into time.
+- id: ex028
+  segment: 9
+  sentence: सः श्वः तत् करिष्यति।
+  translation: He will do that tomorrow.
+  teaches: 'लृट् — the future; built on the root with a स्य-marker'
+  words:
+  - form: श्वः
+    gloss: tomorrow
+    notes:
+    - text: the adverb fixing the time as future
+  - form: करिष्यति
+    gloss: will do
+    notes:
+    - term: कृ
+      en: '"do, make"'
+    - term: लृट्
+      en: future
+    - cite: '3.3.13'
+      role: लृट् शेषे च — for what is yet to be, लृट् is used
+    - term: प्रथमपुरुष
+      en: third person
+    - term: एकवचन
+      en: singular
+    - text: 'करि + ष्य + ति → करिष्यति'
+  vyakhya: भविष्यति लृट्। करोति, अकरोत्, चकार, करिष्यति — एकः धातुः, चत्वारः कालाः।
+  vyakhya_en: |
+    For what is still to come, the लृट् is used. Now the whole time-axis stands on one root √कृ: करोति (does), अकरोत् (did, witnessed), चकार (did, long ago), करिष्यति (will do). The लकार is the verb's clock — choose it, and the tense is set.
+
+# ── Segment 14: mood — beyond stating fact: command and wish ────────────
+# The tenses (seg 4,9) state what IS, was, will be. Mood states what SHOULD
+# be: लोट् commands, विधिलिङ् enjoins/wishes. Still √गम्, a new लकार.
+
+- id: ex041
+  segment: 14
+  sentence: सः ग्रामम् गच्छतु।
+  translation: Let him go to the village. / He must go.
+  teaches: 'लोट् — the imperative, for a command'
+  words:
+  - form: गच्छतु
+    gloss: let him go
+    notes:
+    - term: गम्
+      en: '"go"'
+    - term: लोट्
+      en: imperative — command, request
+    - cite: '3.3.162'
+      role: लोट् च — for an injunction (विधि), the लोट् is used
+    - term: प्रथमपुरुष
+      en: third person
+    - term: एकवचन
+      en: singular
+  vyakhya: विध्यादौ लोट्। गच्छति कथनम्, गच्छतु आज्ञा।
+  vyakhya_en: |
+    Where गच्छति merely reports "he goes," the लोट् commands: गच्छतु, "let him go / he must go." The verb stops describing and starts directing. The same root, a mood instead of a tense.
+- id: ex042
+  segment: 14
+  sentence: सः ग्रामम् गच्छेत्।
+  translation: He should go to the village. / He might go.
+  teaches: 'विधिलिङ् — the optative, for what ought to be or might be'
+  words:
+  - form: गच्छेत्
+    gloss: he should go
+    notes:
+    - term: गम्
+      en: '"go"'
+    - term: विधिलिङ्
+      en: optative — ought, may, should
+    - cite: '3.3.161'
+      role: विधिनिमन्त्रण… लिङ् — for injunction, invitation, wish, request, the लिङ् is used
+    - term: प्रथमपुरुष
+      en: third person
+    - term: एकवचन
+      en: singular
+  vyakhya: विधौ लिङ्। गच्छतु निश्चिता आज्ञा, गच्छेत् विधिः सम्भावना च।
+  vyakhya_en: |
+    The विधिलिङ् softens command into propriety and possibility: गच्छेत्, "he should go," or "he might go." Beside the blunt लोट् (गच्छतु, "go!"), the लिङ् carries ought, may, would — the mood of advice and supposition. Tense says when; mood says how the speaker stands toward the act.

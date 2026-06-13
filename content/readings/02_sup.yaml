@@ -1,0 +1,496 @@
+# ════════════════════════════════════════════════════════════════════════
+#  02_sup.yaml — सुप् — nominal declension (genders, number)
+#  One chapter of the graded reader. Schema: see grammar/readings/_SCHEMA.md.
+#  Source of truth; the PDF and app are derived. Author readings here.
+# ════════════════════════════════════════════════════════════════════════
+
+readings:
+- id: ex008
+  segment: 2
+  sentence: बालः फलम् पश्यति।
+  translation: The boy sees the fruit.
+  teaches: 'neuter stem फल: प्रथमा = द्वितीया (same frame, new declension)'
+  words:
+  - form: बालः
+    gloss: the boy, masculine like नर
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - term: पुंलिङ्ग
+      en: masculine
+  - form: फलम्
+    gloss: the fruit
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+    - term: नपुंसक
+      en: neuter
+    - text: here प्रथमा and द्वितीया share one form, both फलम्
+    - cite: 7.1.24
+      role: अतोऽम् — neuter a-stem सु/अम् → अम्, so nom.sg फलम्
+    - cite: 7.1.23
+      role: 'स्वमोर्नपुंसकात् — neuter सु and अम् behave alike: फलम् serves as both प्रथमा and द्वितीया'
+  - form: पश्यति
+    gloss: sees
+    notes:
+    - term: दृश्
+      en: '"see"'
+    - term: धातु
+      en: verbal root
+    - term: लट्
+      en: present
+  vyakhya: नपुंसके प्रथमा द्वितीया च समाने रूपे — फलम् इति।
+  vyakhya_en: |
+    In the neuter, प्रथमा and द्वितीया share one form. So फलम् is the कर्मन् here exactly as it would be the कर्तृ — the role still picks the case, but neuter collapses the two.
+- id: ex009
+  segment: 2
+  sentence: फलम् वृक्षात् पतति।
+  translation: The fruit falls from the tree.
+  teaches: neuter फलम् as कर्तृ (प्रथमा = द्वितीया form); reuses अपादान पञ्चमी
+  words:
+  - form: फलम्
+    gloss: the fruit, now the agent
+    notes:
+    - term: कर्तृ
+      en: agent
+    - cite: 1.4.54
+      role: फल is now कर्तृ — the same neuter form फलम् fills the agent role
+    - term: प्रथमा
+      en: nominative
+    - text: the neuter form is still फलम्
+  - form: वृक्षात्
+    gloss: from the tree
+    notes:
+    - term: अपादान
+      en: source
+    - term: पञ्चमी
+      en: ablative
+    - cite: 2.3.28
+      role: अपादाने पञ्चमी → वृक्षात्
+  - form: पतति
+    gloss: falls
+    notes:
+    - term: पत्
+      en: '"fall"'
+    - term: धातु
+      en: verbal root
+    - term: लट्
+      en: present
+  vyakhya: फलम् इह स्वतन्त्रः कर्ता, तथापि रूपम् तदेव।
+  vyakhya_en: |
+    The same word फलम् that was the object above is the agent here — and looks identical, because the neuter does not distinguish them. The अपादान-पञ्चमी (वृक्षात्) is exactly as it was for ग्रामात्: the frame is unchanged.
+- id: ex010
+  segment: 2
+  sentence: नरः नद्याम् फलम् पश्यति।
+  translation: The man sees fruit in the river.
+  teaches: 'feminine ī-stem नदी: अधिकरण सप्तमी नद्याम्, with यण् sandhi'
+  words:
+  - form: नद्याम्
+    gloss: in the river
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+    - term: एकवचन
+      en: singular
+    - cite: 2.3.36
+      role: सप्तम्यधिकरणे च → नद्याम् (the locus)
+    - term: स्त्रीलिङ्ग
+      en: feminine — a ङीप्-formed ई-stem
+    - cite: 4.1.3
+      role: स्त्रियाम् — the feminine, opening the stems नदी belongs to
+    - cite: 4.1.5
+      role: ऋन्नेभ्यो ङीप् — नदी is a ङीप्-formed ī-stem feminine
+    - text: नदी + आम्
+    - cite: 7.3.116
+      role: 'ङेराम्नद्याम्नीभ्यः — ī-stem fem locative sg takes आम्: नदी+आम्'
+    - text: → नद्याम्
+    - cite: 6.1.77
+      role: 'इको यणचि — ई before आम् becomes य्: नदी+आम् → नद्याम्'
+  vyakhya: अधिकरणे सप्तमी — स्त्रीलिङ्गेऽपि सैव।
+  vyakhya_en: |
+    The locus takes the सप्तमी whatever the gender: ग्रामे (masc.) and नद्याम् (fem.) are the same case, differently declined. Role fixes the case; stem-class fixes the ending.
+- id: ex011
+  segment: 3
+  sentence: नरौ ग्रामम् गच्छतः।
+  translation: The two men go to the village.
+  teaches: 'number: dual कर्तृ नरौ + dual verb'
+  words:
+  - form: नरौ
+    gloss: the two men
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - term: द्विवचन
+      en: dual
+    - cite: 1.4.22
+      role: 'द्व्येकयोर्द्विवचनैकवचने — two referents → द्विवचन (dual): नरौ, गच्छतः'
+  - form: गच्छतः
+    gloss: the two go
+    notes:
+    - term: लट्
+      en: present
+    - term: द्विवचन
+      en: dual — the verb agrees with नरौ
+  vyakhya: द्वयोः द्विवचनम् — कर्तरि क्रियायाम् च।
+  vyakhya_en: |
+    Two referents call for the द्विवचन — in the noun (नरौ) and, agreeing, in the verb (गच्छतः). The role is still कर्तृ-प्रथमा, exactly as नरः was; only the count has changed.
+- id: ex012
+  segment: 3
+  sentence: नराः ग्रामम् गच्छन्ति।
+  translation: The men go to the village.
+  teaches: 'number: plural कर्तृ नराः (नर+जस् → नराः) + plural verb'
+  words:
+  - form: नराः
+    gloss: the men
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - term: बहुवचन
+      en: plural
+    - cite: 1.4.21
+      role: बहुषु बहुवचनम् — many referents → बहुवचन (plural)
+    - term: जस्
+      en: the nom. pl. ending
+    - text: नर + जस् → नराः
+    - cite: 6.1.102
+      role: प्रथमयोः पूर्वसवर्णः — नर + जस् (अस्) → नराः, the nom.pl
+  - form: गच्छन्ति
+    gloss: they go
+    notes:
+    - term: लट्
+      en: present
+    - term: बहुवचन
+      en: plural
+  vyakhya: बहूनाम् बहुवचनम्। एकः नरः, द्वौ नरौ, बहवः नराः — एकैव विभक्तिः, भिद्यते वचनम्।
+  vyakhya_en: |
+    Many referents call for the बहुवचन. नरः, नरौ, नराः — one प्रथमा case across three numbers: the विभक्ति is constant, the वचन varies.
+- id: ex013
+  segment: 3
+  sentence: नरैः फलानि भुज्यन्ते।
+  translation: The fruits are eaten by the men.
+  teaches: plural instrumental नरैः (अ+भिस् → ऐस्) + neuter plural फलानि
+  words:
+  - form: नरैः
+    gloss: by the men
+    notes:
+    - term: करण
+      en: here the agent of a passive verb, in the instrumental
+    - term: तृतीया
+      en: instrumental
+    - term: बहुवचन
+      en: plural
+    - term: भिस्
+      en: instr. pl. ending
+    - text: नर + भिस् → नरैः
+    - cite: 7.1.9
+      role: 'अतो भिस ऐस् — a-stem instrumental plural भिस् → ऐस्: नर+ऐस् → नरैः'
+  - form: फलानि
+    gloss: the fruits
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: नपुंसक
+      en: neuter
+    - term: बहुवचन
+      en: plural
+    - text: फल → फलानि
+    - cite: 7.1.20
+      role: 'जश्शसोः शिः — neuter जस्/शस् → शि (इ): फल+शि'
+    - cite: 7.1.72
+      role: 'नपुंसकस्य झलचः — नुम् inserted before the शि-ending: फल+न्+इ'
+    - cite: 6.4.8
+      role: 'सर्वनामस्थाने चासम्बुद्धौ — the stem vowel lengthens: फला-न्-इ → फलानि'
+  vyakhya: बहुषु नरेषु करणभूतेषु तृतीया बहुवचनम्; फलानि नपुंसकबहुवचने।
+  vyakhya_en: |
+    The instrumental plural नरैः; the neuter plural फलानि. Same roles as ever — only the number is new, and each stem-class spells the plural its own way.
+
+# ── Segment 10: the इ-stem (अग्नि "fire") — a new stem-class ─────────────
+# After the अ-stems (नर, फल), the इ-stems. Same कारक → विभक्ति frame; the
+# endings differ because the stem ends in इ, and that इ takes गुण before
+# certain endings (इ → ए).
+
+- id: ex029
+  segment: 10
+  sentence: अग्निः ज्वलति।
+  translation: The fire blazes.
+  teaches: 'an इ-stem masculine: nominative अग्निः (नर-like सु, but on an इ-stem)'
+  words:
+  - form: अग्निः
+    gloss: the fire
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - term: एकवचन
+      en: singular
+    - text: 'अग्नि + सु → अग्निः'
+  - form: ज्वलति
+    gloss: blazes
+    notes:
+    - term: ज्वल्
+      en: '"blaze, burn"'
+    - term: लट्
+      en: present
+  vyakhya: इकारान्तं पुंलिङ्गम् अग्निशब्दः। प्रथमायाम् अग्निः, यथा नरः।
+  vyakhya_en: |
+    अग्नि is a masculine stem ending in इ. In the प्रथमा it takes the same सु that नर did, giving अग्निः — outwardly like नरः. The stem-class shows itself not here but in the oblique cases, where the इ shifts.
+- id: ex030
+  segment: 10
+  sentence: नरः अग्नये जलम् यच्छति।
+  translation: The man gives water to the fire.
+  teaches: 'the इ-stem dative अग्नये — the stem इ takes गुण (इ → ए) before the ending'
+  words:
+  - form: अग्नये
+    gloss: to the fire
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative
+    - cite: '2.3.13'
+      role: चतुर्थी सम्प्रदाने → the recipient अग्नि takes चतुर्थी
+    - term: गुण
+      en: the grade ए (इ → ए)
+    - cite: '7.3.111'
+      role: घेर्ङिति — before a ङित् ending (here ङे, the dative), the इ-stem takes गुण; अग्नि + ए → अग्नये
+  vyakhya: घेः ङिति गुणः। अग्नि + ए → अग्नये — इकारस्य गुणः एकारः।
+  vyakhya_en: |
+    Where नर simply added its ending (नराय), the इ-stem first shifts its इ to the गुण grade ए before the dative: अग्नि → अग्नय् + ए → अग्नये. Same case, same role as बालाय — but the stem-vowel changes, which is what marks the इ-class.
+- id: ex031
+  segment: 10
+  sentence: अग्नयः ज्वलन्ति।
+  translation: The fires blaze.
+  teaches: 'the इ-stem nominative plural अग्नयः — again गुण before the plural ending'
+  words:
+  - form: अग्नयः
+    gloss: the fires
+    notes:
+    - term: प्रथमा
+      en: nominative
+    - term: बहुवचन
+      en: plural
+    - term: गुण
+      en: the grade ए
+    - cite: '7.3.109'
+      role: जसि च — before जस् (nom.pl), the short इ-stem takes गुण; अग्नि + अस् → अग्नय् + अस् → अग्नयः
+  vyakhya: जसि गुणः। अग्नि + अस् → अग्नयः, यथा चतुर्थ्याम् अग्नये।
+  vyakhya_en: |
+    The same गुण appears in the nominative plural: अग्नि + जस् → अग्नयः ("the fires"), where नर gave नराः. The इ-stem reveals its character wherever an ending pulls the इ up to ए.
+
+# ── Segment 15: the ऋ-stem (पितृ "father") — agent & kinship nouns ───────
+# A high-frequency class: kinship (पितृ मातृ भ्रातृ) and agent-nouns
+# (कर्तृ "doer", दातृ "giver"). The stem ऋ strengthens like इ did, but to अर्.
+
+- id: ex043
+  segment: 15
+  sentence: पिता गृहम् आगच्छति।
+  translation: The father comes home.
+  teaches: 'an ऋ-stem nominative: पिता (the ऋ → आ in the nom.sg)'
+  words:
+  - form: पिता
+    gloss: the father
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - term: एकवचन
+      en: singular
+    - cite: '7.1.94'
+      role: ऋदुशनस्… — an ऋ-stem in the nom.sg lengthens to आ; पितृ + सु → पिता
+  vyakhya: ऋकारान्तस्य सौ आकारः। पितृ → पिता।
+  vyakhya_en: |
+    An ऋ-stem — the class of kinship words (पितृ, मातृ, भ्रातृ) and agent-nouns (कर्तृ "doer") — shows आ in the nominative singular: पितृ → पिता, "the father." Where नर gave नरः and अग्नि gave अग्निः, the ऋ-stem ends in a bare long आ.
+- id: ex044
+  segment: 15
+  sentence: सः पितरम् पश्यति।
+  translation: He sees the father.
+  teaches: 'the ऋ-stem strong stem पितर् — ऋ takes गुण (अर्) in the strong cases'
+  words:
+  - form: पितरम्
+    gloss: the father (object)
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+    - cite: '2.3.2'
+      role: कर्मणि द्वितीया → the object पितृ takes द्वितीया
+    - term: गुण
+      en: the grade अर् (ऋ → अर्)
+    - cite: '7.3.110'
+      role: ऋतो ङिसर्वनामस्थानयोः — the ऋ-stem takes गुण (अर्) in the strong cases; पितृ → पितर्
+    - text: 'पितर् + अम् → पितरम्'
+  vyakhya: सर्वनामस्थाने ऋतः गुणः। पितृ → पितर् → पितरम्।
+  vyakhya_en: |
+    In the strong cases the ऋ rises to its गुण grade अर्: पितृ → पितर्, giving पितरम् for the accusative. This is the same गुण principle as the इ-stem's अग्नये — इ→ए there, ऋ→अर् here. One rule of strengthening, each vowel-class to its own grade.
+
+# ── Segment 17: सर्वनाम — the pronouns (तद् "that/he/she/it") ────────────
+# Pronouns decline a little differently from nouns (their own class, सर्वनाम)
+# and appear in nearly every sentence. तद् is the model; here its प्रथमा and
+# the special dative तस्मै.
+
+- id: ex045
+  segment: 17
+  sentence: सः ग्रामम् गच्छति।
+  translation: He goes to the village.
+  teaches: 'the pronoun तद् — सर्वनाम class; nom.sg masc सः'
+  words:
+  - form: सः
+    lemma: तद्
+    gloss: he / that one
+    vocab: true
+    notes:
+    - term: सर्वनाम
+      en: pronoun — the सर्व-class of words
+    - cite: '1.1.27'
+      role: सर्वादीनि सर्वनामानि — सर्व, तद्, यद्… are the सर्वनाम (pronouns)
+    - term: प्रथमा
+      en: nominative
+    - cite: '7.2.102'
+      role: त्यदादीनामः — तद् takes अ before the ending (त् + अ + स् → सः, nom.sg masc)
+  vyakhya: तच्छब्दः सर्वनाम। पुंसि प्रथमैकवचने सः।
+  vyakhya_en: |
+    तद् is a सर्वनाम (pronoun) — its own declension-class. In the masculine nominative singular it is सः, "he / that one." You have met अहम् (I) and त्वम् (you); तद् supplies the third person, and stands in for any masculine noun.
+- id: ex046
+  segment: 17
+  sentence: नरः तस्मै फलम् यच्छति।
+  translation: The man gives fruit to him.
+  teaches: 'the सर्वनाम special dative — स्मै, giving तस्मै (not the noun -आय)'
+  words:
+  - form: तस्मै
+    lemma: तद्
+    gloss: to him / to that one
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative
+    - cite: '7.1.14'
+      role: सर्वनाम्नः स्मै — an अ-stem pronoun's dative ending becomes स्मै; तद् + स्मै → तस्मै
+  vyakhya: सर्वनाम्नः ङेः स्मै। बालाय इति नाम, तस्मै इति सर्वनाम।
+  vyakhya_en: |
+    Where the noun बाल took -आय (बालाय, ex005), the pronoun takes a special dative -स्मै: तस्मै, "to him." This स्मै marks the सर्वनाम class — the pronouns decline by their own rules, and तस्मै/यस्मै/कस्मै all share it.
+- id: ex047
+  segment: 17
+  sentence: यः पठति सः जानाति।
+  translation: Who studies, he knows. (He who studies, knows.)
+  teaches: 'relative–correlative यः … सः — the core Sanskrit clause-linker'
+  words:
+  - form: यः
+    lemma: यद्
+    gloss: who / which
+    vocab: true
+    notes:
+    - term: सर्वनाम
+      en: pronoun (relative)
+    - cite: '1.1.27'
+      role: सर्वादीनि सर्वनामानि — यद् is a सर्वनाम; declines like तद् (यः, यस्मै…)
+    - term: प्रथमा
+      en: nominative
+  - form: पठति
+    lemma: पठ्
+    gloss: studies, recites
+    vocab: true
+    notes:
+    - term: पठ्
+      en: '"read, recite"'
+    - term: लट्
+      en: present
+  - form: सः
+    lemma: तद्
+    gloss: he (correlative)
+    notes:
+    - text: 'the correlative answering यः'
+  - form: जानाति
+    lemma: ज्ञा
+    gloss: knows
+    vocab: true
+    notes:
+    - term: ज्ञा
+      en: '"know"'
+    - term: लट्
+      en: present
+  vyakhya: यः इति सम्बन्धः, सः इति प्रतिसम्बन्धः। यत्-तद्-नित्यसम्बन्धः।
+  vyakhya_en: |
+    Sanskrit links clauses with a relative–correlative pair: यः ("who") in the first clause is answered by सः ("he") in the second — "who studies, he knows." यद् and तद् decline alike and travel together; this यः … सः frame is how Sanskrit builds the relative clauses that pervade real prose.
+
+# ── Segment 19: the उ-stem (गुरु "teacher") — same गुण rule, third vowel ──
+# उ-stems (गुरु, विष्णु, शत्रु, बहु) decline exactly as इ-stems do, with उ → ओ
+# in the same places इ → ए. Showing it makes the strengthening rule general.
+
+- id: ex048
+  segment: 19
+  sentence: गुरुः पाठम् कथयति।
+  translation: The teacher tells the lesson.
+  teaches: 'a उ-stem masculine: nom गुरुः (parallel to अग्निः)'
+  words:
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - term: एकवचन
+      en: singular
+    - text: 'गुरु + सु → गुरुः, just as अग्नि + सु → अग्निः'
+  - form: पाठम्
+    lemma: पाठ
+    gloss: the lesson
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+    - cite: '2.3.2'
+      role: कर्मणि द्वितीया → पाठम्
+  - form: कथयति
+    lemma: कथ्
+    gloss: tells, relates
+    vocab: true
+    notes:
+    - term: कथ्
+      en: '"tell, relate"'
+    - term: लट्
+      en: present
+  vyakhya: उकारान्तं पुंलिङ्गम् गुरुशब्दः। प्रथमायाम् गुरुः, यथा अग्निः।
+  vyakhya_en: |
+    गुरु ends in उ, as अग्नि ends in इ — and they decline alike. The nominative singular is गुरुः, formed exactly as अग्निः was. The उ-stem differs from the इ-stem only in which vowel it carries, not in how it behaves.
+- id: ex049
+  segment: 19
+  sentence: सः गुरवे फलम् यच्छति।
+  translation: He gives fruit to the teacher.
+  teaches: 'the उ-stem dative गुरवे — उ takes गुण (उ → ओ → अव्) by the SAME rule as अग्नये'
+  words:
+  - form: गुरवे
+    lemma: गुरु
+    gloss: to the teacher
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative
+    - cite: '2.3.13'
+      role: चतुर्थी सम्प्रदाने → the recipient गुरु takes चतुर्थी
+    - term: गुण
+      en: the grade ओ (उ → ओ, written अव् before the vowel)
+    - cite: '7.3.111'
+      role: "घेर्ङिति — the SAME rule that gave अग्नये; before a ङित् ending the उ-stem takes गुण; गुरु + ए → गुरवे"
+  vyakhya: घेः ङिति गुणः — इकारे एकारः, उकारे ओकारः। अग्नये, गुरवे।
+  vyakhya_en: |
+    The one rule घेर्ङिति strengthens both classes before the dative: इ → ए gave अग्नये; उ → ओ gives गुरवे (the ओ written as अव् before the following vowel). One principle of गुण, each vowel to its own grade — अग्नये and गुरवे are the same move on different vowels.

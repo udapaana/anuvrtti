@@ -1,0 +1,141 @@
+# ════════════════════════════════════════════════════════════════════════
+#  04_sandhi.yaml — सन्धि — the sound-changes where words and morphemes join
+#  One chapter of the graded reader. Schema: see grammar/readings/_SCHEMA.md.
+#  Source of truth; the PDF and app are derived. Author readings here.
+# ════════════════════════════════════════════════════════════════════════
+
+readings:
+
+# ── Segment 8: vowel सन्धि — what happens when two vowels meet ───────────
+# When a word ending in a vowel meets one beginning with a vowel, the two
+# combine into one. Four basic outcomes, by which vowels meet.
+
+- id: ex023
+  segment: 8
+  sentence: दधि इन्द्रः → दधीन्द्रः।
+  translation: '"curds, Indra" → दधीन्द्रः (curds-Indra)'
+  teaches: 'सवर्णदीर्घ — two like (सवर्ण) vowels merge into one long vowel'
+  words:
+  - form: दधीन्द्रः
+    gloss: the merged form
+    notes:
+    - text: 'दधि + इन्द्रः: इ meets इ'
+    - term: सवर्ण
+      en: homogeneous — vowels of the same place of articulation
+    - cite: '6.1.101'
+      role: अकः सवर्णे दीर्घः — a simple vowel before a like vowel; the two become one long vowel
+    - text: '→ ई → दधीन्द्रः'
+  vyakhya: समाने सवर्णे अकः दीर्घ एकादेशः। इ + इ = ई।
+  vyakhya_en: |
+    When a simple vowel (अक्) meets a homogeneous vowel — इ with इ, उ with उ, अ with अ — the pair fuses into the single long vowel of that class. दधि + इन्द्रः gives दधीन्द्रः: two इ become one ई.
+- id: ex024
+  segment: 8
+  sentence: न इह → नेह।
+  translation: '"not here" → नेह'
+  teaches: 'गुण — अ/आ before इ/उ/ऋ yields the गुण vowel (ए, ओ, अर्)'
+  words:
+  - form: नेह
+    gloss: the merged form
+    notes:
+    - text: 'न + इह: अ meets इ'
+    - term: गुण
+      en: the grade ए/ओ/अर्
+    - cite: '6.1.87'
+      role: आद्गुणः — when अ/आ is followed by another vowel, the two become the single गुण vowel
+    - text: 'अ + इ → ए → नेह'
+  vyakhya: अवर्णात् अचि गुण एकादेशः। अ + इ = ए।
+  vyakhya_en: |
+    An अ or आ followed by इ, उ, or ऋ does not merge to a long vowel but shifts to the गुण grade: अ + इ → ए, अ + उ → ओ, अ + ऋ → अर्. So न + इह → नेह. The same अ behaves differently depending on the vowel it meets.
+- id: ex025
+  segment: 8
+  sentence: तव एव → तवैव।
+  translation: '"yours indeed" → तवैव'
+  teaches: 'वृद्धि — अ/आ before ए/ऐ/ओ/औ yields the वृद्धि vowel (ऐ, औ)'
+  words:
+  - form: तवैव
+    gloss: the merged form
+    notes:
+    - text: 'तव + एव: अ meets ए'
+    - term: वृद्धि
+      en: the grade ऐ/औ
+    - cite: '6.1.88'
+      role: वृद्धिरेचि — when अ/आ is followed by एच् (ए ऐ ओ औ), the two become the वृद्धि vowel
+    - text: 'अ + ए → ऐ → तवैव'
+  vyakhya: अवर्णात् एचि वृद्धिः एकादेशः। अ + ए = ऐ।
+  vyakhya_en: |
+    When अ or आ meets one of the diphthong-grade vowels (ए, ऐ, ओ, औ), the result climbs to the वृद्धि grade: अ + ए → ऐ, अ + ओ → औ. So तव + एव → तवैव. गुण and वृद्धि are the two upward grades इ/उ already met in the verb.
+- id: ex026
+  segment: 8
+  sentence: सुधी उपास्यः → सुध्युपास्यः।
+  translation: '"the wise one is to be served" → सुध्युपास्यः'
+  teaches: 'यण् — इ/उ/ऋ before an unlike vowel become the glide य्/व्/र्'
+  words:
+  - form: सुध्युपास्यः
+    gloss: the merged form
+    notes:
+    - text: 'सुधी + उपास्यः: ई meets उ (unlike)'
+    - term: यण्
+      en: the glides य् व् र् ल्
+    - cite: '6.1.77'
+      role: इको यणचि — an इक् vowel (इ उ ऋ ऌ) before any vowel becomes its corresponding यण् glide
+    - text: 'ई → य् → सुध्युपास्यः'
+  vyakhya: इकः अचि यण् आदेशः। ई + उ → य् + उ = यु।
+  vyakhya_en: |
+    When इ, उ, or ऋ meets an unlike vowel, it does not merge but turns into its glide — य्, व्, र् — and the following vowel stands: सुधी + उपास्यः → सुध्युपास्यः. (Like meeting like gave the long vowel of ex023; unlike gives the glide here.)
+
+# ── Segment 12: consonant सन्धि — what a word-final consonant becomes ────
+# Vowel sandhi (seg 8) handled vowel-meets-vowel. These handle consonants
+# at a word's end — the everyday changes a reader meets in running text.
+
+- id: ex034
+  segment: 12
+  sentence: वाक् अत्र → वाग् अत्र।
+  translation: '"speech here" → वाग् अत्र'
+  teaches: 'जश्त्व — a word-final hard stop softens to its voiced counterpart'
+  words:
+  - form: वाग्
+    gloss: 'speech (← वाक्)'
+    notes:
+    - term: जश्
+      en: the soft (voiced) stops ग् ज् ड् द् ब्
+    - cite: '8.2.39'
+      role: झलां जशोऽन्ते — a stop at word's end becomes its जश् (voiced) counterpart; क् → ग्
+    - text: 'वाक् → वाग्'
+  vyakhya: पदान्ते झलां जश्। क् → ग्, यथा वाक् → वाग्।
+  vyakhya_en: |
+    A hard stop standing at the end of a word softens to its voiced partner: क्→ग्, त्→द्, प्→ब्. So वाक् "speech" appears as वाग् before अत्र. The word's lemma is वाक्; its sentence-form follows the join.
+- id: ex035
+  segment: 12
+  sentence: तत् च → तच्च।
+  translation: '"and that" → तच्च'
+  teaches: 'श्चुत्व — a dental meeting a palatal becomes palatal'
+  words:
+  - form: तच्च
+    gloss: and that
+    notes:
+    - text: 'तत् + च: dental त् meets palatal च'
+    - term: श्चु
+      en: the palatal series श् च् छ् ज् झ् ञ्
+    - cite: '8.4.40'
+      role: स्तोः श्चुना श्चुः — a dental (त-class/स) next to a palatal (च-class/श) turns palatal; त् → च्
+    - text: 'त् → च् → तच्च'
+  vyakhya: स्तोः श्चुना श्चुत्वम्। त् + च → च् + च = च्च।
+  vyakhya_en: |
+    A dental sound touching a palatal is pulled into the palatal series: तत् + च → तच्च. The त् becomes च् to match the following च. Assimilation — the first sound takes on the place of the second.
+- id: ex036
+  segment: 12
+  sentence: वनम् हसति → वनं हसति।
+  translation: '"the forest laughs" → वनं हसति'
+  teaches: 'a word-final म् becomes anusvāra (ं) before a consonant'
+  words:
+  - form: वनं
+    gloss: 'the forest (← वनम्)'
+    notes:
+    - term: अनुस्वार
+      en: the nasal ं
+    - cite: '8.3.23'
+      role: मोऽनुस्वारः — a word-final म् before a consonant becomes anusvāra; म् → ं
+    - text: 'वनम् → वनं (before हसति)'
+  vyakhya: पदान्ते मकारस्य हलि अनुस्वारः। वनम् → वनं हसति।
+  vyakhya_en: |
+    A म् at the end of a word, when a consonant follows, contracts to the anusvāra ं: वनम् हसति → वनं हसति. (Before a vowel, or at a true pause, the म् stays — so it is the following consonant that triggers the change.)

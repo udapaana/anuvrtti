@@ -1,0 +1,134 @@
+# ════════════════════════════════════════════════════════════════════════
+#  05_samasa.yaml — समास — compounds: two words joined into one
+#  One chapter of the graded reader. Schema: see grammar/readings/_SCHEMA.md.
+#  Source of truth; the PDF and app are derived. Author readings here.
+# ════════════════════════════════════════════════════════════════════════
+
+readings:
+
+# ── Segment 13: the four compound types ─────────────────────────────────
+# Two or more सुबन्त words combine into one (2.1.3 समासः). Which TYPE a
+# compound is depends on which member is primary — the whole sense of the
+# chapter. कथा = the compound itself, with its विग्रह (analysis) in the gloss.
+
+- id: ex037
+  segment: 13
+  sentence: राजपुरुषः
+  translation: "the king's man (विग्रह: राज्ञः पुरुषः)"
+  teaches: 'तत्पुरुष — the LATER member is primary; the earlier qualifies it'
+  words:
+  - form: राजपुरुषः
+    gloss: the king's man
+    notes:
+    - text: 'विग्रह: राज्ञः पुरुषः — "the man of the king"'
+    - term: समास
+      en: compound
+    - cite: '2.1.3'
+      role: प्राक् कडारात् समासः — from here the combinations are named समास
+    - term: तत्पुरुष
+      en: determinative — the second member is the head
+    - cite: '2.1.22'
+      role: तत्पुरुषः — a compound whose second member carries the main sense is तत्पुरुष
+  vyakhya: उत्तरपदार्थप्रधानः तत्पुरुषः। राजपुरुषः — पुरुषः प्रधानम्।
+  vyakhya_en: |
+    In a तत्पुरुष the second member is the head and the first qualifies it: राजपुरुषः is a kind of पुरुष (man) — the king's. Resolve it (विग्रह) as राज्ञः पुरुषः, "the man of the king." The compound is whatever its last member is.
+- id: ex038
+  segment: 13
+  sentence: द्वन्द्वः — रामकृष्णौ
+  translation: "Rāma-and-Kṛṣṇa (विग्रह: रामः च कृष्णः च)"
+  teaches: 'द्वन्द्व — members are coordinate ("and"); none subordinate'
+  words:
+  - form: रामकृष्णौ
+    gloss: Rāma and Kṛṣṇa
+    notes:
+    - text: 'विग्रह: रामः च कृष्णः च'
+    - term: द्वन्द्व
+      en: copulative — members joined by "and"
+    - cite: '2.2.29'
+      role: चार्थे द्वन्द्वः — words standing in the sense of "च" (and) form a द्वन्द्व
+    - term: द्विवचन
+      en: dual — two people, so the compound is dual
+  vyakhya: उभयपदार्थप्रधानः द्वन्द्वः। रामः च कृष्णः च = रामकृष्णौ।
+  vyakhya_en: |
+    A द्वन्द्व joins members that would each stand with "and" — none is subordinate, both are heads: रामः च कृष्णः च collapses to रामकृष्णौ, "Rāma and Kṛṣṇa." Two people, so the compound itself is dual.
+- id: ex039
+  segment: 13
+  sentence: बहुव्रीहिः — पीताम्बरः
+  translation: "the yellow-clothed one [Viṣṇu] (विग्रह: पीतम् अम्बरम् यस्य सः)"
+  teaches: 'बहुव्रीहि — neither member is the head; the compound points OUTSIDE itself'
+  words:
+  - form: पीताम्बरः
+    gloss: the one whose garment is yellow
+    notes:
+    - text: 'विग्रह: पीतम् अम्बरम् यस्य सः'
+    - term: बहुव्रीहि
+      en: possessive / exocentric — denotes someone characterised by the members
+    - cite: '2.2.23'
+      role: शेषो बहुव्रीहिः — the remaining kind of compound is बहुव्रीहि
+    - cite: '2.2.24'
+      role: अनेकमन्यपदार्थे — several words denoting ANOTHER thing (the possessor) form a बहुव्रीहि
+  vyakhya: अन्यपदार्थप्रधानः बहुव्रीहिः। पीतम् अम्बरम् यस्य — सः विष्णुः।
+  vyakhya_en: |
+    A बहुव्रीहि names neither member: पीताम्बरः is not "yellow" and not "garment" but the one who has a yellow garment — Viṣṇu. The sense lies OUTSIDE the compound (अन्यपदार्थ). Resolve with यस्य: "he whose (यस्य) garment is yellow."
+- id: ex040
+  segment: 13
+  sentence: अव्ययीभावः — उपकृष्णम्
+  translation: "near Kṛṣṇa (विग्रह: कृष्णस्य समीपम्)"
+  teaches: 'अव्ययीभाव — the FIRST member (an indeclinable) is primary; the whole is an अव्यय'
+  words:
+  - form: उपकृष्णम्
+    gloss: near Kṛṣṇa
+    notes:
+    - text: 'विग्रह: कृष्णस्य समीपम् — उप = "near"'
+    - term: अव्ययीभाव
+      en: adverbial — the compound behaves as an indeclinable
+    - cite: '2.1.5'
+      role: अव्ययीभावः — a compound headed by an indeclinable (here उप) is अव्ययीभाव
+    - term: अव्यय
+      en: indeclinable — takes no further case-ending
+  vyakhya: पूर्वपदार्थप्रधानः अव्ययीभावः। उप कृष्णस्य समीपम् — सर्वम् अव्ययम्।
+  vyakhya_en: |
+    In an अव्ययीभाव the first member — an indeclinable like उप ("near") — is primary, and the whole compound becomes an indeclinable itself: उपकृष्णम्, "near Kṛṣṇa," fixed in form. Four types, four answers to one question: which member carries the sense?
+
+# ── Segment 20: two तत्पुरुष sub-types a reader meets constantly ─────────
+# कर्मधारय (adjective + noun, both same case) and द्विगु (numeral + noun).
+# Both are तत्पुरुष — the second member heads — with a special first member.
+
+- id: ex050
+  segment: 20
+  sentence: महापुरुषः
+  translation: "a great man (विग्रह: महान् पुरुषः)"
+  teaches: 'कर्मधारय — a तत्पुरुष whose members share one case (adjective + noun)'
+  words:
+  - form: महापुरुषः
+    gloss: a great man
+    vocab: true
+    notes:
+    - text: 'विग्रह: महान् पुरुषः — "a man who is great"'
+    - term: कर्मधारय
+      en: a तत्पुरुष of adjective + noun, both in the same case
+    - cite: '1.2.42'
+      role: तत्पुरुषः समानाधिकरणः कर्मधारयः — a तत्पुरुष whose members are co-referential (same case) is कर्मधारय
+    - cite: '2.1.57'
+      role: विशेषणं विशेष्येण — a qualifier (महत्) combines with the qualified (पुरुष)
+  vyakhya: समानाधिकरणः तत्पुरुषः कर्मधारयः। महान् च असौ पुरुषः च।
+  vyakhya_en: |
+    A कर्मधारय is a तत्पुरुष where the two members refer to the SAME thing — adjective and noun, both nominative: महान् पुरुषः → महापुरुषः, "great man." Unlike राजपुरुषः (the king's man — two different things, genitive relation), here महत् simply describes पुरुष. (महत् → महा in the compound.)
+- id: ex051
+  segment: 20
+  sentence: त्रिलोकी
+  translation: "the three worlds (विग्रह: त्रयाणां लोकानां समाहारः)"
+  teaches: 'द्विगु — a numeral-first तत्पुरुष, denoting an aggregate'
+  words:
+  - form: त्रिलोकी
+    gloss: the three worlds (as a set)
+    vocab: true
+    notes:
+    - text: 'विग्रह: त्रयाणां लोकानां समाहारः — "the aggregate of three worlds"'
+    - term: द्विगु
+      en: a numeral-first compound, naming a counted aggregate
+    - cite: '2.1.52'
+      role: संख्यापूर्वो द्विगुः — a तत्पुरुष with a number (त्रि) as its first member is द्विगु
+  vyakhya: संख्यापूर्वः तत्पुरुषः द्विगुः। त्रयाणां लोकानां समाहारः त्रिलोकी।
+  vyakhya_en: |
+    A द्विगु is a तत्पुरुष whose first member is a numeral: त्रि (three) + लोक (world) → त्रिलोकी, "the three worlds" taken as one set. It names a counted aggregate — द्वि-गु itself means "worth two cows." Same तत्पुरुष frame (second member heads), special first member: a number.

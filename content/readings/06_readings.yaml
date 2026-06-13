@@ -1,0 +1,541 @@
+# ════════════════════════════════════════════════════════════════════════
+#  06_readings.yaml — पाठाः — real passages, curated (the ATTESTED track)
+#  Schema: see grammar/readings/_SCHEMA.md (kind: attested + source).
+#
+#  These are NOT manufactured. Each is a real phrase from a real text, CURATED
+#  (we select / trim / pick a manageable piece) but never fabricated — every
+#  form is the source's. The `source.curated` note discloses what was selected.
+#  Difficulty ladder: Hitopadeśa → Purāṇa → Upaniṣad → Saṃhitā.
+#  Grammar used must be grammar the reader has already met (graded track first).
+# ════════════════════════════════════════════════════════════════════════
+
+readings:
+
+# ── Segments 21-24: a complete Hitopadeśa verse, end to end (capstone) ──
+
+- id: rd001
+  kind: attested
+  segment: 21
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.6 (pāda a)"
+    curated: "first quarter (पाद a) of the verse, taken whole; rest of the śloka omitted"
+  sentence: विद्या ददाति विनयम्।
+  translation: Knowledge gives humility.
+  teaches: 'first REAL sentence — uses only grammar already met (आ-stem fem, कर्मन्, present verb)'
+  words:
+  - form: विद्या
+    lemma: विद्या
+    gloss: knowledge
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - text: 'an आ-stem feminine (formed with टाप्)'
+    - cite: '4.1.4'
+      role: अजाद्यतष्टाप् — feminines like विद्या take टाप् (the आ-ending); विद्या stands in प्रथमा
+  - form: ददाति
+    lemma: दा
+    gloss: gives
+    vocab: true
+    notes:
+    - term: दा
+      en: '"give"'
+    - term: लट्
+      en: present
+    - cite: '3.2.123'
+      role: वर्तमाने लट् → present tense
+    - cite: '3.4.78'
+      role: "तिङ्: तिप् (3·sg) → ददाति"
+  - form: विनयम्
+    lemma: विनय
+    gloss: humility, discipline
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object — what the giving reaches
+    - cite: '1.4.49'
+      role: कर्तुरीप्सिततमं कर्म → विनय is the कर्मन्
+    - term: द्वितीया
+      en: accusative
+    - cite: '2.3.2'
+      role: कर्मणि द्वितीया → विनयम्
+  vyakhya: विद्या कर्त्री, विनयः कर्म, ददाति क्रिया — सर्वं पूर्वोक्तम्।
+  vyakhya_en: |
+    Your first real sentence, from the Hitopadeśa — and you can already read it. विद्या (knowledge) is the कर्तृ in प्रथमा; विनयम् (humility) is the कर्मन् in द्वितीया; ददाति (gives) is a present-tense verb. Every piece is grammar you have met on toy sentences; here it stands in real Sanskrit, unchanged.
+
+- id: rd002
+  kind: attested
+  segment: 22
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.6 (pāda b)"
+    curated: "second quarter of the same verse as rd001; taken whole"
+  sentence: विनयाद् याति पात्रताम्।
+  translation: From humility one attains worthiness.
+  teaches: 'more of the SAME verse — adds the अपादान (पञ्चमी "from") in real text'
+  words:
+  - form: विनयाद्
+    lemma: विनय
+    gloss: from humility
+    notes:
+    - term: अपादान
+      en: source — that from which one proceeds
+    - cite: '1.4.24'
+      role: ध्रुवमपायेऽपादानम् — the starting point (humility, whence worthiness comes) is अपादान
+    - term: पञ्चमी
+      en: ablative
+    - cite: '2.3.28'
+      role: अपादाने पञ्चमी → विनयात् (→ विनयाद् before the voiced य, by जश्त्व)
+  - form: याति
+    lemma: या
+    gloss: goes, attains
+    vocab: true
+    notes:
+    - term: या
+      en: '"go, attain"'
+    - term: लट्
+      en: present
+  - form: पात्रताम्
+    lemma: पात्रता
+    gloss: worthiness, fitness
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object — what is attained
+    - cite: '1.4.49'
+      role: कर्तुरीप्सिततमं कर्म → पात्रता is the कर्मन्
+    - term: द्वितीया
+      en: accusative
+    - cite: '2.3.2'
+      role: कर्मणि द्वितीया → पात्रताम्
+  vyakhya: विनयात् इति अपादानम्, पात्रताम् इति कर्म। एकस्माद् गुणाद् अन्यः फलति।
+  vyakhya_en: |
+    The verse continues: from humility (विनयाद्, अपादान/पञ्चमी) one attains worthiness (पात्रताम्, कर्मन्/द्वितीया). Note विनयात् → विनयाद् — the final त् softens to द् before the voiced य (जश्त्व, the consonant-sandhi you met). Real text, real sandhi, all grammar you hold. The chain so far: knowledge → humility → worthiness.
+
+- id: rd003
+  kind: attested
+  segment: 23
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.6 (pāda c)"
+    curated: "third quarter; taken whole"
+  sentence: पात्रत्वाद् धनम् आप्नोति।
+  translation: From worthiness one obtains wealth.
+  teaches: 'third link of the same chain — the अपादान→कर्मन् pattern is now a rhythm'
+  words:
+  - form: पात्रत्वाद्
+    lemma: पात्रत्व
+    gloss: from worthiness
+    notes:
+    - term: अपादान
+      en: source
+    - cite: '1.4.24'
+      role: ध्रुवमपायेऽपादानम् — the source (worthiness) is अपादान
+    - term: पञ्चमी
+      en: ablative
+    - cite: '2.3.28'
+      role: अपादाने पञ्चमी → पात्रत्वात् (→ पात्रत्वाद् before the voiced ध, जश्त्व)
+  - form: धनम्
+    lemma: धन
+    gloss: wealth
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+    - cite: '2.3.2'
+      role: कर्मणि द्वितीया → धनम्
+  - form: आप्नोति
+    lemma: आप्
+    gloss: obtains
+    vocab: true
+    notes:
+    - term: आप्
+      en: '"obtain, reach"'
+    - term: लट्
+      en: present
+  vyakhya: पात्रत्वाद् इति अपादानम्, धनम् इति कर्म — स एव विधिः।
+  vyakhya_en: |
+    The same shape a third time: from worthiness (पात्रत्वाद्, पञ्चमी) one obtains wealth (धनम्, द्वितीया). Once you see the अपादान→कर्मन् rhythm — "from X, attain Y" — the verse reads itself. पात्रत्वात् → पात्रत्वाद् again by जश्त्व before ध.
+- id: rd004
+  kind: attested
+  segment: 24
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.6 (pāda d)"
+    curated: "fourth quarter, completing the verse; taken whole"
+  sentence: धनाद् धर्मं ततः सुखम्।
+  translation: From wealth, righteousness; from that, happiness.
+  teaches: 'the closing link + elision of the repeated verb (understood आप्नोति)'
+  words:
+  - form: धनाद्
+    lemma: धन
+    gloss: from wealth
+    notes:
+    - term: अपादान
+      en: source
+    - term: पञ्चमी
+      en: ablative
+    - cite: '2.3.28'
+      role: अपादाने पञ्चमी → धनात् (→ धनाद् before voiced ध, जश्त्व)
+  - form: धर्मं
+    lemma: धर्म
+    gloss: righteousness
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object (of an understood आप्नोति)
+    - term: द्वितीया
+      en: accusative
+    - text: 'धर्मम् → धर्मं (final म् → anusvāra before त, the sandhi you met)'
+  - form: ततः
+    lemma: ततस्
+    gloss: from that, thence
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable adverb (= "from that", standing for तस्मात्)
+  - form: सुखम्
+    lemma: सुख
+    gloss: happiness
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object (again of the understood verb)
+    - term: द्वितीया
+      en: accusative
+  vyakhya: धनाद् धर्मः, धर्मात् सुखम् — क्रिया अनुवर्तते। विद्यायाः सुखपर्यन्तः क्रमः।
+  vyakhya_en: |
+    The verse closes: from wealth, righteousness (धर्मं); from that (ततः), happiness (सुखम्). The verb आप्नोति is not repeated — it is understood, carried over (अनुवृत्ति) from the previous line, exactly as a sūtra carries words forward. You have now read a whole verse: विद्या → विनय → पात्रत्व → धन → धर्म → सुख, knowledge leading step by step to happiness.
+
+# ── Segment 25: first Pañcatantra — a vivid maxim (curated to one hemistich) ──
+
+- id: rd005
+  kind: attested
+  segment: 25
+  source:
+    text: पञ्चतन्त्र
+    ref: "Panc_3.23 (second hemistich)"
+    curated: "second hemistich only; the first (śatruṇā na hi sandadhyāt…, optative) omitted as harder"
+  sentence: सुतप्तम् अपि पानीयं शमयत्य् एव पावकम्।
+  translation: Even well-heated water puts out fire.
+  teaches: 'first Pañcatantra line; a complete vivid maxim, all known grammar + the particle अपि'
+  words:
+  - form: सुतप्तम्
+    lemma: सुतप्त
+    gloss: well-heated
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: adjective qualifying पानीयम् (agrees with it — neuter, प्रथमा)
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: even
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable particle — "even"
+  - form: पानीयं
+    lemma: पानीय
+    gloss: water
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent
+    - cite: '1.4.54'
+      role: स्वतन्त्रः कर्ता → पानीय (water) is the agent
+    - term: प्रथमा
+      en: nominative
+    - term: नपुंसक
+      en: neuter
+    - cite: '7.1.24'
+      role: अतोऽम् — neuter a-stem प्रथमा → पानीयम् (→ पानीयं, anusvāra before श)
+  - form: शमयति
+    lemma: शम्
+    gloss: extinguishes, quiets
+    vocab: true
+    notes:
+    - term: शम्
+      en: '"be quiet"; causative शमयति "makes quiet, extinguishes"'
+    - term: लट्
+      en: present
+    - cite: '3.2.123'
+      role: वर्तमाने लट् → present
+  - form: एव
+    lemma: एव
+    gloss: indeed (emphatic)
+    notes:
+    - term: अव्यय
+      en: emphatic particle
+  - form: पावकम्
+    lemma: पावक
+    gloss: fire
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - cite: '1.4.49'
+      role: कर्तुरीप्सिततमं कर्म → पावक (fire) is the कर्मन्
+    - term: द्वितीया
+      en: accusative
+    - cite: '2.3.2'
+      role: कर्मणि द्वितीया → पावकम्
+  vyakhya: पानीयं कर्तृ, पावकम् कर्म, शमयति क्रिया। अपि-शब्देन विरोधः सूच्यते।
+  vyakhya_en: |
+    A complete Pañcatantra maxim, and it parses cleanly: पानीयं (water, कर्तृ/प्रथमा) शमयति (extinguishes) पावकम् (fire, कर्मन्/द्वितीया). The particle अपि ("even") + सुतप्तम् ("well-heated") carry the twist — even water that has itself been heated still quells fire. Real text, real rhetoric, grammar you hold.
+
+# ── Segment 26: Hitopadeśa — a genitive relative + passive verb ──────────
+
+- id: rd006
+  kind: attested
+  segment: 26
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.23 (first hemistich)"
+    curated: "first hemistich only; second (dhanur vaṃśa-viśuddho…) omitted"
+  sentence: यस्य कस्य प्रसूतोऽपि गुणवान् पूज्यते नरः।
+  translation: A virtuous man, though born of whomever, is honored.
+  teaches: 'genitive relative (यस्य कस्य) + a passive verb (पूज्यते) in real text'
+  words:
+  - form: यस्य
+    lemma: यद्
+    gloss: of whom
+    notes:
+    - term: षष्ठी
+      en: genitive
+    - cite: '1.1.27'
+      role: सर्वादीनि सर्वनामानि — यद् is a सर्वनाम (pronoun)
+    - cite: '2.3.50'
+      role: षष्ठी शेषे — the relational genitive → यस्य
+  - form: कस्य
+    lemma: किम्
+    gloss: of whatever (paired with यस्य = "of whomsoever")
+    vocab: true
+    notes:
+    - term: षष्ठी
+      en: genitive
+    - text: 'यस्य कस्य together = "of no matter whom"'
+  - form: प्रसूतः
+    lemma: प्रसू
+    gloss: born
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent (a past participle agreeing with नरः)
+    - term: प्रथमा
+      en: nominative
+    - text: 'प्रसूतः → प्रसूतो before अपि (visarga sandhi)'
+  - form: अपि
+    lemma: अपि
+    gloss: even, though
+    notes:
+    - term: अव्यय
+      en: indeclinable — "even / though"
+  - form: गुणवान्
+    lemma: गुणवत्
+    gloss: virtuous, having merit
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: adjective qualifying नरः (a वत्-stem, "possessing guṇa")
+    - term: प्रथमा
+      en: nominative
+  - form: पूज्यते
+    lemma: पूज्
+    gloss: is honored
+    vocab: true
+    notes:
+    - term: पूज्
+      en: '"honor, worship"'
+    - term: लट्
+      en: present
+    - text: 'passive (कर्मणि प्रयोग) — "is honored", as भुज्यन्ते earlier'
+  - form: नरः
+    lemma: नर
+    gloss: the man
+    notes:
+    - term: कर्तृ
+      en: agent (here the grammatical subject of the passive)
+    - term: प्रथमा
+      en: nominative
+    - cite: '1.4.54'
+      role: स्वतन्त्रः कर्ता → नर
+  vyakhya: यस्य कस्य प्रसूतः अपि — सम्बन्धः अनिश्चितः; गुणवान् नरः पूज्यते।
+  vyakhya_en: |
+    The genitive pair यस्य कस्य ("of whomsoever") waives the question of birth; अपि ("even/though") concedes it; and the verse turns on पूज्यते — "is honored," a passive, the same कर्मणि form you met in नरैः फलानि भुज्यन्ते. The sense: a man of merit (गुणवान्) is honored whatever his lineage. A relative clause and a passive, working together in real Sanskrit.
+
+# ── Segment 27: Pañcatantra — genitive plural + a कर्मधारय compound ──────
+
+- id: rd007
+  kind: attested
+  segment: 27
+  source:
+    text: पञ्चतन्त्र
+    ref: "Panc_1.148 (first hemistich)"
+    curated: "first hemistich; the connective 'tathā ca-' tag and the rest of the verse omitted"
+  sentence: न अग्निस् तृप्यति काष्ठानां न अपगानां महोदधिः।
+  translation: Fire is not sated with logs, nor the great ocean with rivers.
+  teaches: 'genitive plural (of-what one is sated) + a कर्मधारय compound (महा+उदधि) in real text'
+  words:
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation particle
+  - form: अग्निः
+    lemma: अग्नि
+    gloss: fire
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - text: 'the इ-stem अग्नि you declined (अग्निः); न+अग्निः → नाग्निः'
+  - form: तृप्यति
+    lemma: तृप्
+    gloss: is sated, satisfied
+    vocab: true
+    notes:
+    - term: तृप्
+      en: '"be satisfied"'
+    - term: लट्
+      en: present
+  - form: काष्ठानाम्
+    lemma: काष्ठ
+    gloss: with logs (lit. "of logs")
+    vocab: true
+    notes:
+    - term: षष्ठी
+      en: genitive — the thing one is sated OF
+    - term: बहुवचन
+      en: plural
+    - cite: '2.3.50'
+      role: षष्ठी शेषे — the relational genitive; "sated of logs" takes षष्ठी
+  - form: अपगानाम्
+    lemma: आपगा
+    gloss: with rivers (lit. "of rivers")
+    vocab: true
+    notes:
+    - term: षष्ठी
+      en: genitive plural — parallel to काष्ठानाम्
+  - form: महोदधिः
+    lemma: महोदधि
+    gloss: the great ocean
+    vocab: true
+    notes:
+    - term: कर्मधारय
+      en: compound — महा (great) + उदधि (ocean), adjective+noun same case
+    - cite: '1.2.42'
+      role: तत्पुरुषः समानाधिकरणः कर्मधारयः — महा+उदधि is a कर्मधारय (महा+उदधि → महोदधि by सन्धि)
+    - term: कर्तृ
+      en: agent (second clause)
+    - term: प्रथमा
+      en: nominative
+  vyakhya: अग्निः काष्ठानां न तृप्यति, महोदधिः अपगानां न — षष्ठी तृप्तेः विषये।
+  vyakhya_en: |
+    Two parallel clauses: fire (अग्निः) is not sated of logs (काष्ठानां, genitive plural), the great ocean (महोदधिः, a कर्मधारय compound = महा "great" + उदधि "ocean") not of rivers. The genitive marks what one is sated *of*; the verb तृप्यति is shared across both halves. You now meet your own grammar — इ-stem, षष्ठी, कर्मधारय — in a real Pañcatantra verse.
+
+# ── Segment 28: FIRST ACCENTED VEDIC reading — RV 1.1.1 (whole ṛc) ───────
+# The accent debut. A complete verse (never snipped — accent/sandhi contextual),
+# saṃhitā for the body, each word's accent from the padapāṭha. Grammar is mostly
+# known (accusatives in apposition + a present verb); accent is the ONE new layer.
+
+- id: rd008
+  kind: attested
+  segment: 28
+  source:
+    text: ऋग्वेद
+    ref: "RV 1.1.1 (whole ṛc; saṃhitā + padapāṭha)"
+    curated: "complete verse, taken whole — not snipped. Accent verbatim (traditional Devanagari svara) from sri-aurobindo.co.in"
+  sentence: अ॒ग्निमी॑ळे पु॒रोहि॑तं य॒ज्ञस्य॑ दे॒वमृ॒त्विजं॑। होता॑रं रत्न॒धात॑मं॥
+  translation: I praise Agni, the chosen priest, god, minister of the sacrifice, the invoker, lavisher of treasure.
+  teaches: 'ACCENT debuts — the svara marks (॒ anudātta, ॑ udātta-context); grammar is known (accusatives in apposition + present verb)'
+  words:
+  - form: अ॒ग्निम्
+    lemma: अग्नि
+    gloss: Agni (the fire-god) — object of praise
+    vocab: true
+    notes:
+    - term: स्वर
+      en: "accent — the marks ॒ (anudātta, low) and ॑ (udātta/svarita); the underline on अ॒ is anudātta"
+    - term: कर्मन्
+      en: object
+    - cite: '2.3.2'
+      role: कर्मणि द्वितीया → अग्निम् (the इ-stem अग्नि you declined, here accusative)
+  - form: ई॒ळे॒
+    lemma: ईड्
+    gloss: I praise, laud
+    vocab: true
+    notes:
+    - term: ईड्
+      en: '"praise" (ईळे = आत्मनेपद 1sg present)'
+    - term: लट्
+      en: present
+    - cite: '1.4.100'
+      role: तङानावात्मनेपदम् — ईळे is आत्मनेपद (the middle voice you met in पचते)
+  - form: पु॒रःऽहि॑तम्
+    lemma: पुरोहित
+    gloss: the one placed in front — the chosen priest
+    vocab: true
+    notes:
+    - text: 'padapāṭha shows the compound split: पुरः-हित (saṃhitā पुरोहितम्)'
+    - term: कर्मन्
+      en: object (in apposition to अग्निम्)
+    - term: द्वितीया
+      en: accusative
+  - form: य॒ज्ञस्य॑
+    lemma: यज्ञ
+    gloss: of the sacrifice
+    vocab: true
+    notes:
+    - term: षष्ठी
+      en: genitive — "of the sacrifice"
+    - cite: '2.3.50'
+      role: षष्ठी शेषे → यज्ञस्य
+  - form: दे॒वम्
+    lemma: देव
+    gloss: god (in apposition)
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: ऋ॒त्विज॑म्
+    lemma: ऋत्विज्
+    gloss: the sacrificing priest, minister of the rite
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object (apposition)
+    - term: द्वितीया
+      en: accusative
+  - form: होता॑रम्
+    lemma: होतृ
+    gloss: the invoker (the priest who calls the gods)
+    vocab: true
+    notes:
+    - term: ऋ-stem
+      en: an ऋ-stem (होतृ, like कर्तृ) in the accusative → होतारम्
+    - term: द्वितीया
+      en: accusative
+  - form: र॒त्नऽधा॑तमम्
+    lemma: रत्नधातम
+    gloss: most treasure-bestowing
+    vocab: true
+    notes:
+    - text: 'padapāṭha split रत्न-धातम (saṃhitā रत्नधातमम्)'
+    - term: कर्मन्
+      en: object (apposition); a superlative compound
+    - term: द्वितीया
+      en: accusative
+  vyakhya: सर्वाणि कर्माणि अग्निविशेषणानि — द्वितीयायाम्। स्वराः उपरि अधश्च चिह्निताः।
+  vyakhya_en: |
+    Your first Vedic verse, and the grammar is already yours: ईळे "I praise" governs a string of accusatives all in apposition to अग्निम् — पुरोहितम्, देवम्, ऋत्विजम्, होतारम्, रत्नधातमम् — "I praise Agni: priest, god, minister, invoker, treasure-giver." The ONE new thing is accent: the underline ॒ marks anudātta (low pitch), the stroke ॑ marks the raised/svarita pitch. Each word's accent is shown in its padapāṭha (isolated) form — पुरोहितं appears word-alone as पुरः-हितम्. Read it aloud with the pitches: this is how the Veda is chanted.

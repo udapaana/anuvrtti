@@ -1,0 +1,211 @@
+# ════════════════════════════════════════════════════════════════════════
+#  syllabus.yaml — the THIN skeleton of the reader.
+#
+#  Purpose: just enough structure to (a) order topics pedagogically, (b) tell
+#  us "what's left in this topic / are we done with X." It is NOT a full
+#  partition of all 3,983 sūtras — a learner's grammar doesn't cover every
+#  taddhita affix or phonological micro-rule. Each topic pins the sūtra
+#  RANGE(S) that DEFINE it (its saṃjñā/vidhi core); the ledger reports
+#  coverage WITHIN those ranges. Pending refs in a topic's range = what's
+#  left to write for that topic.
+#
+#  Order follows the Aṣṭādhyāyī's own conceptual order (= broadly pedagogical),
+#  not a Western outline. Topic N uses only grammar from topics ≤ N (graded).
+#
+#  Granularity rule: FIRM at the top, DISCOVERED toward the leaves. Detail the
+#  chapters in progress + the next one; leave later chapters as coarse stubs.
+#  Subtopics get added as the writing reveals the right boundaries — do not
+#  outline a chapter to its leaves before writing any of it.
+#
+#  status: done | in_progress | next | stub
+#  Each topic: id, title, sutra ranges (defining core), prerequisites, the
+#  reading ids (from readings.yaml) that serve it, and a status.
+# ════════════════════════════════════════════════════════════════════════
+
+chapters:
+
+  # ── 1. कारक — the semantic roles and their cases ──────────────────────
+  - id: karaka
+    title: "कारक — the roles a noun plays, and the case each takes"
+    ranges: ["1.4.23-1.4.55", "2.3.1-2.3.73"]   # role saṃjñās + विभक्ति assignment
+    prereqs: []
+    status: in_progress
+    subtopics:
+      - id: karaka.roles
+        title: "the six कारकas + शेष (कर्तृ कर्मन् करण सम्प्रदान अपादान अधिकरण; षष्ठी)"
+        ranges: ["1.4.23-1.4.55"]
+        readings: [ex001, ex002, ex003, ex004, ex005, ex006, ex007]
+        status: done
+      - id: karaka.vibhakti
+        title: "which विभक्ति each role takes (कर्मणि द्वितीया etc.) + sense-government"
+        ranges: ["2.3.1-2.3.50"]
+        readings: [ex001, ex002, ex003, ex004, ex005, ex006, ex007, ex021, ex022, ex032, ex033]
+        status: in_progress
+        note: "core cases + idioms (नमः, duration, सह, हेतु) done; more 2.3 sense-rules are the tail"
+
+  # ── 2. सुप् — nominal declension (the paradigms) ──────────────────────
+  - id: sup
+    title: "सुप् — nominal declension: stem-classes × विभक्ति × वचन"
+    ranges: ["4.1.1-4.1.2", "7.1.1-7.3.120"]   # सुप् intro + the अङ्ग operations that build forms
+    prereqs: [karaka]
+    status: in_progress
+    note: "This is Track B (paradigms = DAG-verified). Subtopics = stem-classes."
+    subtopics:
+      - id: sup.number
+        title: "वचन — singular / dual / plural (the number axis)"
+        ranges: ["1.4.21-1.4.22"]
+        readings: [ex011, ex012, ex013]
+        status: done
+      - id: sup.a_masc
+        title: "अ-stem masculine (नर, राम) — the model paradigm"
+        ranges: ["6.1.102", "7.1.9"]   # nom.pl, instr.pl so far; full DAG in paradigms/a_masc.dag.yaml
+        readings: [ex001, ex011, ex012, ex013]
+        status: in_progress
+        note: "partial — only the cells the readings have hit; full paradigm is the DAG"
+      - id: sup.a_neut
+        title: "अ-stem neuter (फल) — प्रथमा = द्वितीया"
+        ranges: ["7.1.23-7.1.24", "7.1.20", "7.1.72"]
+        readings: [ex008, ex009, ex013]
+        status: in_progress
+      - id: sup.i_fem
+        title: "ई-stem feminine (नदी) — ङीप् stems"
+        ranges: ["4.1.3-4.1.5", "7.3.116"]
+        readings: [ex010]
+        status: in_progress
+      - id: sup.i_masc
+        title: "इ-stem masculine (अग्नि) — गुण in the oblique (अग्नये, अग्नयः)"
+        ranges: ["7.3.109", "7.3.111"]
+        readings: [ex029, ex030, ex031]
+        status: in_progress
+      - id: sup.r_stem
+        title: "ऋ-stem (पितृ, कर्तृ) — kinship & agent nouns; ऋ → गुण अर्"
+        ranges: ["7.1.94", "7.3.110"]
+        readings: [ex043, ex044]
+        status: in_progress
+      - id: sup.pronoun
+        title: "सर्वनाम — pronouns (तद्/यद्): सः, तस्मै, the यः…सः frame"
+        ranges: ["1.1.27", "7.1.14", "7.2.102"]
+        readings: [ex045, ex046, ex047]
+        status: in_progress
+      - id: sup.u_stem
+        title: "उ-stem (गुरु) — same गुण rule as इ-stem, उ → ओ (गुरवे, गुरवः)"
+        ranges: ["7.3.111", "7.3.109"]
+        readings: [ex048, ex049]
+        status: in_progress
+      - id: sup.other
+        title: "remaining stem-classes (consonant stems: राजन्, मनस्…)"
+        ranges: []
+        readings: []
+        status: stub
+
+  # ── 3. तिङ् — verbal conjugation ──────────────────────────────────────
+  - id: tin
+    title: "तिङ् — verbal conjugation: पुरुष × वचन × लकार"
+    ranges: ["1.4.99-1.4.102", "3.2.110-3.4.78"]   # पद/पुरुष saṃjñās + लकार vidhi + endings
+    prereqs: [karaka]
+    status: in_progress
+    note: "noun frame (sup) and verb frame (tin) are parallel; can interleave"
+    subtopics:
+      - id: tin.frame
+        title: "the तिङ् frame — three पुरुष × three वचन, परस्मै/आत्मनेपद"
+        ranges: ["1.4.99-1.4.102", "3.4.78"]
+        readings: [ex014, ex015]
+        status: in_progress
+      - id: tin.lat
+        title: "लट् — the present tense (वर्तमाने लट्)"
+        ranges: ["3.2.123"]
+        readings: [ex001, ex014, ex015]
+        status: in_progress
+      - id: tin.past
+        title: "the past — लङ् (imperfect), लिट् (perfect), लुङ् (aorist)"
+        ranges: ["3.2.110-3.2.115"]
+        readings: [ex016, ex027]
+        status: in_progress
+        note: "लङ् (ex016) + लिट् (ex027) done; लुङ् + the full ending derivations pending (Track B)"
+      - id: tin.future
+        title: "future — लृट् (and लुट्)"
+        ranges: ["3.3.13", "3.3.15"]
+        readings: [ex028]
+        status: in_progress
+      - id: tin.mood
+        title: "mood — लोट् (imperative), विधिलिङ् (optative)"
+        ranges: ["3.3.161", "3.3.162"]
+        readings: [ex041, ex042]
+        status: in_progress
+      - id: tin.other
+        title: "remaining moods/tenses (लुङ् aorist, आशीर्लिङ्, conditional), voice detail"
+        ranges: []
+        readings: []
+        status: stub
+
+  # ── 4. सन्धि — the phonological rules (shared DAG tail) ────────────────
+  - id: sandhi
+    title: "सन्धि — the sound-changes at word and morpheme joins"
+    ranges: ["6.1.77-6.1.157", "8.2.66-8.4.68"]   # vowel sandhi + the visarga/final tail
+    prereqs: [karaka]
+    status: in_progress
+    note: "Vowel sandhi (the एकादेश rules 6.1.77-101) now stated as facts in their own right; the final-स् tail also met as path-nodes."
+    subtopics:
+      - id: sandhi.vowel
+        title: "vowel सन्धि — सवर्णदीर्घ / गुण / वृद्धि / यण् (एकादेश)"
+        ranges: ["6.1.77", "6.1.87", "6.1.88", "6.1.101"]
+        readings: [ex023, ex024, ex025, ex026]
+        status: in_progress
+      - id: sandhi.yan
+        title: "यण् सन्धि — इक् before a vowel (इको यणचि)"
+        ranges: ["6.1.77"]
+        readings: [ex010, ex026]
+        status: done
+      - id: sandhi.visarga
+        title: "the final-स् tail — रुत्व, विसर्ग (नरः)"
+        ranges: ["8.2.66", "8.3.15"]
+        readings: [ex001]
+        status: in_progress
+      - id: sandhi.consonant
+        title: "consonant सन्धि — जश्त्व, श्चुत्व, final म् → anusvāra"
+        ranges: ["8.2.39", "8.4.40", "8.3.23"]
+        readings: [ex034, ex035, ex036]
+        status: in_progress
+      - id: sandhi.other
+        title: "remaining: ष्टुत्व, natva, visarga→ओ/र्, etc."
+        ranges: []
+        readings: []
+        status: stub
+
+  # ── later / coarse stubs (firm later, when reached) ───────────────────
+  - id: samasa
+    title: "समास — compounds: two words joined into one"
+    ranges: ["2.1.3-2.2.38"]
+    prereqs: [karaka, sup]
+    status: in_progress
+    note: "the four types, by which member is primary"
+    subtopics:
+      - id: samasa.types
+        title: "the four types — तत्पुरुष, द्वन्द्व, बहुव्रीहि, अव्ययीभाव"
+        ranges: ["2.1.3", "2.1.5", "2.1.22", "2.2.23", "2.2.24", "2.2.29"]
+        readings: [ex037, ex038, ex039, ex040]
+        status: in_progress
+      - id: samasa.subtypes
+        title: "तत्पुरुष sub-types — कर्मधारय (adj+noun), द्विगु (numeral+noun)"
+        ranges: ["1.2.42", "2.1.52", "2.1.57"]
+        readings: [ex050, ex051]
+        status: in_progress
+      - id: samasa.detail
+        title: "remaining joining rules (case-तत्पुरुष detail, gender/ending shifts)"
+        ranges: []
+        readings: []
+        status: stub
+  - id: taddhita
+    title: "तद्धित — secondary nominal derivation (selected, learner-facing only)"
+    ranges: ["4.1.76-5.4.160"]
+    prereqs: [sup]
+    status: stub
+    note: "vast; a reference covers only the common, productive affixes — NOT all of 4-5."
+
+  # ── the ATTESTED track — real passages, curated (climbs the difficulty ladder)
+  - id: readings
+    title: "पाठाः — real passages (Hitopadeśa → Purāṇa → Upaniṣad → Saṃhitā)"
+    ranges: []                    # not range-defined; coverage tracked via the cite refs
+    prereqs: [karaka, sup, tin, sandhi]
+    status: in_progress
+    note: "kind:attested — curated real text, not manufactured. Vocab + (Vedic) accent come from the source. Sequenced by difficulty, not by sūtra range."
