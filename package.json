@@ -4,12 +4,10 @@
   "private": true,
   "scripts": {
     "build:paths": "npx tsx scripts/build-path-index.ts",
-    "dev": "npm run build:sutras && npm run build:paths && npm run build:readings && npm run build:rules && vite dev",
-    "build": "npm run build:sutras && npm run build:paths && npm run build:readings && npm run build:rules && vite build",
+    "dev": "npm run build:paths && npm run build:readings && vite dev",
+    "build": "npm run build:paths && npm run build:readings && vite build",
     "preview": "vite preview",
-    "build:readings": "npx tsx scripts/build-readings.ts",
-    "build:rules": "npx tsx scripts/build-rules.ts",
-    "build:sutras": "npx tsx scripts/build-sutras.ts"
+    "build:readings": "npx tsx scripts/build-readings.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.0",

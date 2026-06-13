@@ -1,5 +1,5 @@
 import { parse as parseToml } from 'smol-toml';
-import { parseSutras, numericToDisplayId, displayToNumericId } from "./parser";
+import { numericToDisplayId, displayToNumericId } from "./parser";
 import type { Sutra, Commentary, LayeredSutraCommentary } from "./types";
 
 // Caches for loaded data
@@ -31,34 +31,48 @@ async function fetchJson<T>(filename: string): Promise<T> {
   return response.json();
 }
 
-/** Sūtra one-line explanations (vidvat `rule` field), keyed by dotted id "1.1.1". */
-let rulesCache: Record<string, string> | null = null;
-export async function getRule(id: string): Promise<string | null> {
-  if (!rulesCache) {
-    try {
-      rulesCache = await fetchJson<Record<string, string>>("rules.json");
-    } catch {
-      rulesCache = {};
-    }
-  }
-  return rulesCache[id] ?? null;
-}
+// vidvat sūtra YAML, copied verbatim into src/lib/data/sutras/ (sync = cp) and
+// imported directly — Vite parses the raw files at build. This IS the source;
+// no transform step, no static/*.json. To update: cp vidvat/data/sutras/*.yaml here.
+import { parse as parseYaml } from 'yaml';
+import { parseVidvatSutra, type VidvatSutra } from './parser-vidvat';
 
-/** Load and parse all sūtras */
+const sutraYamlFiles = import.meta.glob('./sutras/*.yaml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+let rulesCache: Record<string, string> | null = null;
+
+/** Load + parse all sūtras from the vidvat YAML (cached). Also builds the rule map. */
 export async function loadSutras(): Promise<Sutra[]> {
   if (sutrasCache) return sutrasCache;
 
-  const rawData = await fetchJson<{ data: unknown[] }>("sutras.json");
-  sutrasCache = parseSutras(rawData);
+  const all: Sutra[] = [];
+  rulesCache = {};
+  for (const raw of Object.values(sutraYamlFiles)) {
+    const doc = parseYaml(raw) as { sutras: VidvatSutra[] };
+    for (const r of doc?.sutras ?? []) {
+      all.push(parseVidvatSutra(r));
+      if (r.rule?.trim()) rulesCache[r.ref] = r.rule.trim();
+    }
+  }
+  all.sort((x, y) => x.numericId.localeCompare(y.numericId));
+  sutrasCache = all;
 
-  // Build index by ID
   sutrasById = new Map();
   for (const sutra of sutrasCache) {
     sutrasById.set(sutra.id, sutra);
     sutrasById.set(sutra.numericId, sutra);
   }
-
   return sutrasCache;
+}
+
+/** Sūtra one-line explanation (vidvat `rule`), keyed by dotted id "1.1.1". */
+export async function getRule(id: string): Promise<string | null> {
+  if (!rulesCache) await loadSutras();
+  return rulesCache?.[id] ?? null;
 }
 
 /** Get a sūtra by ID (either format) */
