@@ -12,7 +12,7 @@
   let pathProgress: Record<string, number[]> = $state({});
   let completedPaths: string[] = $state([]);
 
-  learningProgress.subscribe(p => {
+  learningProgress.subscribe((p) => {
     hasProgress = p.completedPaths.length > 0 || Object.keys(p.pathProgress).length > 0;
     currentPathId = p.currentPath;
     pathProgress = p.pathProgress;
@@ -22,71 +22,80 @@
   let resume: ResumeTarget | null = $state(null);
   let allPaths: PathMeta[] = $state([]);
 
+  // Live counts for the pillar cards, pulled from the real corpora.
+  let stat = $state({ readings: 0, lessons: 0, sutras: 0 });
+
   onMount(async () => {
     try {
       allPaths = await loadPathIndex();
-      if (hasProgress) {
-        resume = pickResumeTarget(allPaths, currentPathId, pathProgress);
-      }
+      if (hasProgress) resume = pickResumeTarget(allPaths, currentPathId, pathProgress);
       rebuildLabels($displayScript);
     } catch {
       // fail soft
     }
-    return displayScript.subscribe(s => rebuildLabels(s));
+    loadStats();
+    return displayScript.subscribe((s) => rebuildLabels(s));
   });
 
-  // The grammar category order — mirrors the design's PageGrammarList ordering
-  // (foundation first, then verbs, nouns, kāraka, kṛdanta, taddhita, sandhi,
-  // samāsa, then the deeper tracks).
-  // Category id maps to the Sanskrit term lookup key + an English subtitle.
+  async function loadStats() {
+    try {
+      const r = await fetch('/data/readings.json');
+      if (r.ok) {
+        const d = await r.json();
+        const cites = new Set<string>();
+        (d.sequence ?? []).forEach((rd: any) =>
+          (rd.words ?? []).forEach((w: any) => (w.notes ?? []).forEach((n: any) => n.cite && cites.add(n.cite)))
+        );
+        stat.readings = (d.sequence ?? []).length;
+        stat.sutras = cites.size;
+      }
+    } catch {}
+    try {
+      const r = await fetch('/data/balabodhini.json');
+      if (r.ok) {
+        const b = await r.json();
+        stat.lessons = (b.parts ?? []).reduce((a: number, p: any) => a + p.lessons.length, 0);
+      }
+    } catch {}
+  }
+
+  // The grammar category order (foundation → verbs → nouns → … → derivations).
   const grammarCategories: { id: string; termKey: string; english: string }[] = [
-    { id: 'foundation', termKey: 'adhara',    english: 'foundations' },
-    { id: 'tinganta',   termKey: 'tinganta',  english: 'verbs' },
-    { id: 'subanta',    termKey: 'subanta',   english: 'nouns' },
-    { id: 'karaka',     termKey: 'karaka',    english: 'cases' },
-    { id: 'kridanta',   termKey: 'kridanta',  english: 'participles' },
-    { id: 'taddhita',   termKey: 'taddhita',  english: 'derivation' },
-    { id: 'sandhi',     termKey: 'sandhi',    english: 'sandhi' },
-    { id: 'samasa',     termKey: 'samasa',    english: 'compounds' },
-    { id: 'prakarana',  termKey: 'prakarana', english: 'deep dives' },
-    { id: 'prakriya',   termKey: 'prakriya',  english: 'derivations' },
+    { id: 'foundation', termKey: 'adhara', english: 'foundations' },
+    { id: 'tinganta', termKey: 'tinganta', english: 'verbs' },
+    { id: 'subanta', termKey: 'subanta', english: 'nouns' },
+    { id: 'karaka', termKey: 'karaka', english: 'cases' },
+    { id: 'kridanta', termKey: 'kridanta', english: 'participles' },
+    { id: 'taddhita', termKey: 'taddhita', english: 'derivation' },
+    { id: 'sandhi', termKey: 'sandhi', english: 'sandhi' },
+    { id: 'samasa', termKey: 'samasa', english: 'compounds' },
+    { id: 'prakarana', termKey: 'prakarana', english: 'deep dives' },
+    { id: 'prakriya', termKey: 'prakriya', english: 'derivations' }
   ];
 
-  // Detect source script for a path's label so we transliterate correctly.
   function detectSource(s: string): Script {
     if (/[ఀ-౿]/.test(s)) return 'telugu';
     if (/[ऀ-ॿ]/.test(s)) return 'devanagari';
     return 'iast';
   }
 
-  // Static Sanskrit strings on the page that should follow the script toggle.
-  // Wrapped here so we can transliterate them in one pass.
+  // Static Sanskrit strings that follow the script toggle.
   const sanskritTerms: Record<string, string> = {
-    pathana:       'pathana',
-    reading:       'reading',
-    vyakarana:     'vyākaraṇa',
-    grammar:       'grammar',
-    reference:     'reference',
-    adhara:        'ādhāraḥ',
-    tinganta:      'tiṅanta',
-    subanta:       'subanta',
-    karaka:        'kāraka',
-    kridanta:      'kṛdanta',
-    taddhita:      'taddhita',
-    sandhi:        'sandhi',
-    samasa:        'samāsa',
-    prakarana:     'prakaraṇa',
-    prakriya:      'prakriyā',
-    balabodhini:   'bālabodhinī',
-    atha:          'atha',
-    sabdanusasanam: 'śabdānuśāsanam',
-    pratyahara:    'pratyāhārāḥ',
-    sutrani:       'sūtrāṇi',
-    shivasutras:   'śivasūtrāṇi',
-    sutras:        'sūtrāṇi',
+    vyakarana: 'vyākaraṇa',
+    adhara: 'ādhāraḥ',
+    tinganta: 'tiṅanta',
+    subanta: 'subanta',
+    karaka: 'kāraka',
+    kridanta: 'kṛdanta',
+    taddhita: 'taddhita',
+    sandhi: 'sandhi',
+    samasa: 'samāsa',
+    prakarana: 'prakaraṇa',
+    prakriya: 'prakriyā',
+    atha: 'atha',
+    sabdanusasanam: 'śabdānuśāsanam'
   };
 
-  // Precomputed: path labels + static term map, both rebuilt on script change.
   let labels: Map<string, string> = $state(new Map());
   let terms: Map<string, string> = $state(new Map());
 
@@ -111,41 +120,32 @@
   function term(key: string): string {
     return terms.get(key) ?? sanskritTerms[key] ?? key;
   }
-
-  // Extract the English half of a "Sanskrit — English" title.
   function englishOf(title: string): string {
     const m = title.match(/—\s*(.+)$/);
     return m ? m[1] : title;
   }
-
-  // Helpers
-  function isDone(id: string) { return completedPaths.includes(id); }
+  function isDone(id: string) {
+    return completedPaths.includes(id);
+  }
   function pct(p: PathMeta): number {
     const done = (pathProgress[p.id] ?? []).length;
     return p.stepCount === 0 ? 0 : done / p.stepCount;
   }
 
-  // Grammar paths grouped by category, in the configured order.
   let grammarByCategory = $derived.by(() => {
     const result: Record<string, PathMeta[]> = {};
     for (const cat of grammarCategories) {
       const paths = allPaths
-        .filter(p => p.track === 'grammar' && p.category === cat.id)
+        .filter((p) => p.track === 'grammar' && p.category === cat.id)
         .sort((a, b) => a.order - b.order);
       if (paths.length > 0) result[cat.id] = paths;
     }
     return result;
   });
-
-  function balabodhiniProgress(vol: 1 | 2): { done: number; total: number; pct: number } {
-    const vols = allPaths.filter(p => p.id.startsWith(`balabodhini-${vol}-`));
-    const done = vols.filter(p => isDone(p.id)).length;
-    return { done, total: vols.length, pct: vols.length ? done / vols.length : 0 };
-  }
 </script>
 
 <svelte:head>
-  <title>Anuvrtti | Learn Sanskrit through the Ashtadhyayi</title>
+  <title>Anuvrtti | Learn Sanskrit through the Aṣṭādhyāyī</title>
 </svelte:head>
 
 <article class="page">
@@ -163,41 +163,61 @@
   {/if}
 
   <header class="hero">
-    <p class="hero-opening"><span class="san font-{$displayScript}">{term('atha')}</span> <span class="san font-{$displayScript}">{term('sabdanusasanam')}</span></p>
+    <p class="hero-opening">
+      <span class="san font-{$displayScript}">{term('atha')}</span>
+      <span class="san font-{$displayScript}">{term('sabdanusasanam')}</span>
+    </p>
+    <h1 class="hero-title">A graded reader and a grammar reference, bridged — for both the classical and the vedic language.</h1>
+    <p class="hero-sub">
+      The poets and logicians of old came to grammar already holding the Veda by heart. These tools try to close that gap.
+    </p>
   </header>
 
-  <!-- READING -->
-  <section>
-    <p class="eyebrow"><span class="san font-{$displayScript}">{term('pathana')}</span> · reading</p>
-    <ul class="path-list">
-      {#each [1, 2] as vol}
-        {@const prog = balabodhiniProgress(vol as 1 | 2)}
-        <li>
-          <a href="/learn?vol={vol}">
-            <span class="path-body">
-              <span class="path-head">
-                <span class="dot dot-link"></span>
-                <em class="path-name font-{$displayScript}">{term('balabodhini')}</em>
-                <span class="path-meta">vol {vol}</span>
-              </span>
-              <span class="path-sub">
-                {vol === 1 ? '38 lessons · graded reader, Telugu & English' : '40 lessons · longer passages, more grammar'}
-              </span>
-            </span>
-            <span class="path-cta cta-link">
-              {#if prog.pct === 0}begin →
-              {:else if prog.pct === 1}✓ done
-              {:else}{Math.round(prog.pct * 100)}%{/if}
-            </span>
-          </a>
-        </li>
-      {/each}
-    </ul>
+  <!-- THE THREE PILLARS -->
+  <section class="pillars">
+    <a class="pillar" href="/reader">
+      <div class="pillar-dev">पठनम्</div>
+      <div class="pillar-kicker">the graded reader</div>
+      <p class="pillar-body">
+        A built sequence where the same word returns in new roles — कारक to विभक्ति felt, not
+        memorised. Each word opens its full derivation.
+      </p>
+      <div class="pillar-foot">
+        <span class="pillar-num">{stat.readings || '59'}</span>
+        <span class="pillar-meta">graded readings →</span>
+      </div>
+    </a>
+
+    <a class="pillar" href="/balabodhini">
+      <div class="pillar-dev">बालबोधिनी</div>
+      <div class="pillar-kicker">the classical primer</div>
+      <p class="pillar-body">
+        Kāśī Kṛṣṇa's graded course teaching Sanskrit through Telugu — vocabulary, paradigms, reading
+        and exercises, lesson by lesson.
+      </p>
+      <div class="pillar-foot">
+        <span class="pillar-num">{stat.lessons || '79'}</span>
+        <span class="pillar-meta">lessons · 2 volumes →</span>
+      </div>
+    </a>
+
+    <a class="pillar" href="/ref">
+      <div class="pillar-dev">सूत्र</div>
+      <div class="pillar-kicker">the reference</div>
+      <p class="pillar-body">
+        The Aṣṭādhyāyī as it lives in this corpus: every sūtra invoked, grouped by adhyāya, with the
+        roles it plays and the readings that use it.
+      </p>
+      <div class="pillar-foot">
+        <span class="pillar-num">{stat.sutras || '—'}</span>
+        <span class="pillar-meta">sūtras in play →</span>
+      </div>
+    </a>
   </section>
 
-  <!-- GRAMMAR — full tree, one block per category -->
-  <section>
-    <p class="eyebrow"><span class="san font-{$displayScript}">{term('vyakarana')}</span> · grammar</p>
+  <!-- PRACTICE & LESSONS — the guided /learn paths, demoted below the pillars -->
+  <section class="grammar">
+    <p class="eyebrow"><span class="san font-{$displayScript}">{term('vyakarana')}</span> · guided lessons</p>
     <div class="grammar-tree">
       {#each grammarCategories as cat}
         {@const paths = grammarByCategory[cat.id] ?? []}
@@ -231,61 +251,24 @@
     </div>
   </section>
 
-
-  <!-- TOOLS -->
+  <!-- TOOLS — single row, no duplicates with the pillars above -->
   <nav class="tools">
-    <a href="/reader">
-      <em>reader</em>
-      <span class="tool-meta">graded · pāṭhāḥ</span>
-    </a>
-    <a href="/review">
-      <em>review</em>
-      <span class="tool-meta">vocabulary</span>
-    </a>
-    <a href="/ref">
-      <em>lookup</em>
-      <span class="tool-meta">sūtrāṇi</span>
-    </a>
-    <a href="/words">
-      <em>words</em>
-      <span class="tool-meta">vocabulary</span>
-    </a>
-    <a href="/conjugate">
-      <em>conjugate</em>
-      <span class="tool-meta">verb forms</span>
-    </a>
-<a href="/ref/jargon">
-      <em>jargon</em>
-      <span class="tool-meta">terms</span>
-    </a>
-    <a href="/ref/pratyahara">
-      <em class="font-{$displayScript}">{term('pratyahara')}</em>
-      <span class="tool-meta">14</span>
-    </a>
+    <a href="/words"><em>words</em><span class="tool-meta">vocabulary</span></a>
+    <a href="/review"><em>review</em><span class="tool-meta">spaced recall</span></a>
+    <a href="/conjugate"><em>conjugate</em><span class="tool-meta">verb forms</span></a>
+    <a href="/ref/pratyahara"><em>pratyāhārāḥ</em><span class="tool-meta">14</span></a>
+    <a href="/ref/jargon"><em>jargon</em><span class="tool-meta">terms</span></a>
+    <a href="/about"><em>about</em><span class="tool-meta">the project</span></a>
   </nav>
 </article>
 
 <style>
-  /* Centered narrow column — design uses 40rem for the home. */
   .page {
-    max-width: 40rem;
+    max-width: 1100px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
-  }
-
-  .hero {
-    margin-bottom: 0.25rem;
-  }
-  .hero-opening {
-    margin: 0;
-    font-family: 'Crimson Pro', serif;
-    font-style: italic;
-    font-size: 1.35rem;
-    line-height: 1.4;
-    color: #0f1419;
-    letter-spacing: 0.01em;
+    gap: 2.5rem;
   }
 
   /* Resume row */
@@ -317,206 +300,140 @@
     color: #94a3b8;
   }
 
-  /* Eyebrows + sections */
-  section { margin: 0; }
-  .eyebrow {
+  /* Hero */
+  .hero { max-width: 46rem; }
+  .hero-opening {
+    margin: 0 0 1.2rem;
     font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: #94a3b8;
-    margin: 0 0 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c2a878;
   }
-
-  /* Path list (used in reading + reference) */
-  .path-list {
-    list-style: none;
-    padding: 0;
+  .hero-title {
     margin: 0;
-  }
-  .path-list li a {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1rem;
-    align-items: center;
-    padding: 0.8rem 0;
-    border-top: 1px solid #e2e8f0;
-    text-decoration: none;
+    font-size: 2.8rem;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
     color: #0f1419;
-    transition: background 0.1s;
+    max-width: 18ch;
   }
-  .path-list li:last-child a { border-bottom: 1px solid #e2e8f0; }
-  .path-list li a:hover { background: #fff7ed; }
+  .hero-sub {
+    font-size: 1.2rem;
+    color: #5c5345;
+    line-height: 1.55;
+    margin: 1.2rem 0 0;
+    max-width: 46ch;
+  }
+  .hero-sub em { font-style: italic; color: #0f1419; }
 
-  .path-body { display: flex; flex-direction: column; min-width: 0; }
-  .path-head { display: flex; align-items: baseline; gap: 0.75rem; }
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: inline-block;
-    margin-bottom: 1px;
+  /* Pillars */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
   }
-  .dot-link  { background: #4f46e5; }
-  .dot-mark  { background: #f97316; }
-  .dot-ok    { background: #059669; }
-
-  .path-name {
-    font-style: italic;
-    font-size: 1.05rem;
-    font-weight: 500;
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    background: #fffdf9;
+    border: 1px solid #ebe1cf;
+    border-radius: 16px;
+    padding: 1.4rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s;
   }
-  .path-meta {
+  .pillar:hover { border-color: #f97316; }
+  .pillar-dev { font-size: 1.7rem; color: #f97316; font-weight: 600; line-height: 1; }
+  .pillar-kicker {
     font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    color: #94a3b8;
-    letter-spacing: 0.04em;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #bcb29d;
+    margin-top: 0.45rem;
   }
-  .path-sub {
-    margin-top: 0.15rem;
-    padding-left: 1.1rem;
-    font-size: 0.82rem;
-    color: #94a3b8;
-    line-height: 1.45;
+  .pillar-body { font-size: 1rem; color: #5c5345; line-height: 1.55; margin: 0.85rem 0 1.1rem; flex: 1; }
+  .pillar-foot {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    border-top: 1px solid #f0e9da;
+    padding-top: 0.8rem;
   }
-  .path-cta {
-    width: 4.5rem;
-    text-align: right;
-    align-self: center;
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-  }
-  .cta-link { color: #4f46e5; }
-  .cta-mark { color: #f97316; }
-  .cta-ok   { color: #059669; }
-  .cta-mute { color: #cbd5e1; }
+  .pillar-num { font-size: 1.5rem; color: #0f1419; font-weight: 600; }
+  .pillar-meta { font-size: 0.85rem; color: #6b6b6b; }
 
-  /* Grammar tree — one block per category. The category head is the same row
-     pattern as the path list (dot + italic name + meta + count). Sub-paths
-     hang under it as a quieter list, indented to align with the name. */
-  .grammar-tree { margin-top: 0.25rem; }
-
-  .category { margin-bottom: 0.25rem; }
+  /* Guided lessons (demoted grammar tree) */
+  .eyebrow {
+    font-size: 0.95rem;
+    color: #6b6b6b;
+    margin: 0 0 1.1rem;
+  }
+  .eyebrow .san { color: #0f1419; }
+  .grammar-tree {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1.5rem 2rem;
+  }
+  .category { break-inside: avoid; }
   .cat-head {
     display: flex;
     align-items: baseline;
-    gap: 0.75rem;
-    padding: 0.7rem 0 0.4rem;
-    border-top: 1px solid #e2e8f0;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid #ece3d3;
   }
-  .cat-name {
-    font-style: italic;
-    font-size: 1.05rem;
-    font-weight: 500;
-  }
-  .cat-english {
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    color: #94a3b8;
-    letter-spacing: 0.04em;
-  }
-  .cat-count {
-    margin-left: auto;
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    color: #cbd5e1;
-    letter-spacing: 0.04em;
-  }
-
-  .cat-paths {
-    list-style: none;
-    padding: 0 0 0.4rem;
-    margin: 0;
-  }
-  .cat-paths li a {
+  .dot-mark { width: 5px; height: 5px; border-radius: 50%; background: #dcb36a; display: inline-block; }
+  .cat-name { font-style: normal; font-size: 1.05rem; color: #92591f; }
+  .cat-count { font-family: ui-monospace, monospace; font-size: 0.7rem; color: #bcb29d; margin-left: auto; }
+  .cat-paths { list-style: none; margin: 0; padding: 0; }
+  .cat-paths a {
     display: grid;
-    grid-template-columns: 7rem 1fr auto;
-    gap: 0.85rem;
+    grid-template-columns: auto 1fr auto;
     align-items: baseline;
-    padding: 0.35rem 0 0.35rem 1.1rem;
+    gap: 0.5rem;
+    padding: 0.3rem 0.2rem;
     text-decoration: none;
-    color: #0f1419;
-    transition: background 0.1s;
+    color: inherit;
+    border-radius: 6px;
   }
-  .cat-paths li a:hover { background: #fff7ed; }
-  .path-name-deva {
-    font-size: 0.95rem;
-    color: #0f1419;
-  }
-  .path-en {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .path-status {
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    text-align: right;
-    min-width: 2.5rem;
-  }
+  .cat-paths a:hover { background: #faf7f0; }
+  .path-name-deva { font-size: 0.97rem; color: #0f1419; }
+  .path-en { font-size: 0.85rem; color: #94a3b8; }
+  .path-status { font-family: ui-monospace, monospace; font-size: 0.75rem; }
+  .cta-ok { color: #f97316; }
+  .cta-mark { color: #92591f; }
+  .cta-mute { color: #cbbfa9; }
 
-  /* Tools strip — italic name on top, monospace meta below. */
+  /* Tools */
   .tools {
-    display: flex;
-    gap: 2rem;
-    margin-top: 0.5rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    gap: 0.75rem;
+    border-top: 1px solid #ece3d3;
+    padding-top: 1.5rem;
   }
   .tools a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ebe1cf;
+    border-radius: 11px;
     text-decoration: none;
-    color: #0f1419;
-    display: inline-block;
-    transition: opacity 0.15s;
+    color: inherit;
+    transition: border-color 0.2s;
   }
-  .tools a em {
-    font-family: 'Crimson Pro', Georgia, serif;
-    font-style: italic;
-    font-size: 0.95rem;
-    font-weight: 400;
-  }
-  .tools a:hover em { color: #f97316; }
-  .tool-meta {
-    display: block;
-    margin-top: 0.1rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: #94a3b8;
-  }
-  .meta-due { color: #e11d48; }
+  .tools a:hover { border-color: #f97316; }
+  .tools em { font-style: normal; font-weight: 600; font-size: 0.95rem; color: #0f1419; }
+  .tool-meta { font-family: ui-monospace, monospace; font-size: 0.66rem; color: #94a3b8; }
 
-  @media (max-width: 540px) {
-    .path-list li a {
-      grid-template-columns: 1fr auto;
-      column-gap: 0.75rem;
-    }
-    .path-cta { font-size: 0.65rem; }
-    .cat-paths li a {
-      grid-template-columns: 5rem 1fr auto;
-    }
-    .tools {
-      gap: 1.25rem 1.5rem;
-    }
-  }
-
-  @media (max-width: 400px) {
-    .cat-paths li a {
-      grid-template-columns: 4rem 1fr auto;
-      gap: 0.5rem;
-      padding-left: 0.75rem;
-    }
-    .resume {
-      gap: 1rem;
-    }
-    .resume-progress {
-      min-width: 6rem;
-    }
-    .path-sub {
-      padding-left: 0.75rem;
-    }
+  @media (max-width: 820px) {
+    .pillars { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.1rem; }
   }
 </style>
