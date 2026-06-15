@@ -427,3 +427,88 @@ readings:
   vyakhya: आशिषि लिङ् — आशीर्लिङ्। "भूयात्", "क्रियात्" इति आशीर्वादरूपाणि।
   vyakhya_en: |
     A blessing has its own mood. For an आशीस् (benediction, "may you…") the लिङ् is used (3.3.173), and this benedictive लिङ् is formally distinct from the optative (3.4.116) — क्रियात् "may he do," भूयात् "may (he) be / may it prosper." So √कृ has two लिङ् forms: कुर्यात् "should do" (विधिलिङ्, the norm) vs क्रियात् "may he do" (आशीर्लिङ्, the blessing). The same mood-letter ल् branches by intent.
+
+# ════════════════════════════════════════════════════════════════════════
+#  PARADIGM-FILL batch (parallel-authored, cites re-verified centrally).
+#  Filling verb cells: √भू present 3sg (गुण), present 3rd DUAL (तस्).
+# ════════════════════════════════════════════════════════════════════════
+
+- id: ex091
+  segment: 4
+  sentence: नरः ग्रामे भवति।
+  translation: The man is (becomes) in the village.
+  teaches: 'गुण of the root vowel — भू → भो → भव् before शप् gives भवति'
+  words:
+  - form: नरः
+    gloss: the man
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: ग्रामे
+    gloss: in the village
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: भवति
+    lemma: भू
+    gloss: is, becomes
+    notes:
+    - term: भू
+      en: '"be, become"'
+    - term: लट्
+      en: present
+    - cite: '3.2.123'
+      role: वर्तमाने लट् — present sense → लट्
+    - cite: '3.1.68'
+      role: कर्तरि शप् — when an agent is denoted, शप् (अ) is added after the root (the गण-1 vikaraṇa)
+    - cite: '7.3.84'
+      role: सार्वधातुकार्धधातुकयोः — before शप् the root vowel takes गुण → ऊ → ओ → (before अ) अव् → भव्
+    - cite: '3.4.78'
+      role: 'तिप्तस्झि… — the तिङ् ending तिप् for प्रथम·एक → भवति'
+  vyakhya: भू इति धातुः। शपि परतः ऊकारस्य गुणः ओकारः, सोऽवादेशम् आपद्यते — भव्। तिपि भवति।
+  vyakhya_en: |
+    The root भू "be." Before शप् (the अ-vikaraṇa of गण 1, by कर्तरि शप्), the root vowel ऊ takes गुण (7.3.84): ऊ → ओ, which before the following अ becomes अव् — भू → भव्. With the प्रथम·एक ending तिप्, the present is भवति. Compare गच्छति: same लट्, same तिप्, but भू shows its गुण where गम् does not.
+
+- id: ex092
+  segment: 4
+  sentence: नरौ ग्रामम् गच्छतः।
+  translation: The two men go to the village.
+  teaches: 'number on the VERB — two agents take the तस् ending → गच्छतः'
+  words:
+  - form: नरौ
+    lemma: नर
+    gloss: the two men
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - term: द्विवचन
+      en: dual — two
+    - cite: '1.4.22'
+      role: द्व्येकयोर्द्विवचनैकवचने — for two, the द्विवचन
+  - form: गच्छतः
+    lemma: गम्
+    gloss: the two go
+    notes:
+    - term: गम्
+      en: '"go"'
+    - term: लट्
+      en: present
+    - term: प्रथमपुरुष
+      en: third person
+    - cite: '1.4.101'
+      role: तिङस्त्रीणि त्रीणि प्रथममध्यमोत्तमाः — each triad of तिङ् endings is प्रथम/मध्यम/उत्तम
+    - cite: '1.4.102'
+      role: तान्येकवचनद्विवचनबहुवचनान्येकशः — within a triad the three are एक/द्वि/बहुवचन
+    - cite: '3.4.78'
+      role: 'तिप्तस्झि… — the तस् ending (प्रथम·द्वि) → गच्छतः'
+    - term: द्विवचन
+      en: dual
+  vyakhya: द्वयोः कर्त्रोः द्विवचनम्। प्रथमपुरुषस्य द्विवचनं तस् — गच्छतः। एको गच्छति, द्वौ गच्छतः।
+  vyakhya_en: |
+    Number lives on the verb too. नरौ are two, so the verb takes the द्विवचन ending: of the प्रथम triad तिप्-तस्-झि (1.4.101/102), the middle one तस् gives गच्छतः. Side by side: गच्छति (one goes), गच्छतः (two go) — same root, tense, person; only वचन shifts.
