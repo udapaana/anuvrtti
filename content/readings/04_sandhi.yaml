@@ -139,3 +139,86 @@ readings:
   vyakhya: पदान्ते मकारस्य हलि अनुस्वारः। वनम् → वनं हसति।
   vyakhya_en: |
     A म् at the end of a word, when a consonant follows, contracts to the anusvāra ं: वनम् हसति → वनं हसति. (Before a vowel, or at a true pause, the म् stays — so it is the following consonant that triggers the change.)
+
+# ════════════════════════════════════════════════════════════════════════
+#  REFERENCE-COMPLETION batch — sandhi.other (was a stub): the next consonant
+#  sandhis beyond जश्त्व/श्चुत्व — णत्व (न → ण), ष्टुत्व (cerebralisation),
+#  अनुस्वार → परसवर्ण (the homorganic nasal), and विसर्ग → स्. Arrow-कथा style.
+# ════════════════════════════════════════════════════════════════════════
+
+- id: ex070
+  segment: 12
+  sentence: रामेन → रामेण।
+  translation: '"by Rāma": रामेन → रामेण (न becomes ण after र)'
+  teaches: 'णत्व — न् becomes ण् after र्/ष् in the same word'
+  words:
+  - form: रामेण
+    gloss: by Rāma (instrumental)
+    notes:
+    - text: 'राम + इन (instr.sg ending ट्→इन): the न् stands after the र् of राम'
+    - term: णत्व
+      en: cerebralisation of न् to ण्
+    - cite: '8.4.1'
+      role: रषाभ्यां नो णः समानपदे → न् after र् or ष् in one word → ण् → रामेण
+    - cite: '8.4.2'
+      role: अट्कुप्वाङ्नुम्व्यवायेऽपि → the change still applies across an intervening vowel/guttural/labial (here the ए) → रामेण
+    - term: तृतीया
+      en: instrumental
+  vyakhya: रेफात् परः नकारः णकारः समानपदे, अट्-व्यवधानेऽपि। रामेन → रामेण।
+  vyakhya_en: |
+    Within one word, a न् turns cerebral (ण्) when an र् or ष् precedes it (8.4.1) — even when a vowel, guttural, or labial stands between them (8.4.2). So राम + the instrumental -इन gives रामेण, not *रामेन*: the र् of राम reaches across the ए to retroflex the न्. This णत्व is why we say रामायण, ब्राह्मणः, नारायण.
+
+- id: ex071
+  segment: 12
+  sentence: रामस् षष्ठः → रामष्षष्ठः।
+  translation: '"Rāma the sixth" → रामष्षष्ठः (स/त-series cerebralised by ष)'
+  teaches: 'ष्टुत्व — स् and the dentals turn cerebral (ष्/ट-series) next to ष् or a cerebral'
+  words:
+  - form: रामष्षष्ठः
+    gloss: Rāma the sixth (the joined form)
+    notes:
+    - text: 'रामस् + षष्ठः: a dental स् meets the cerebral ष्'
+    - term: ष्टुत्व
+      en: cerebralisation — स्/तवर्ग → ष्/टवर्ग in contact with ष् or a cerebral
+    - cite: '8.4.41'
+      role: ष्टुना ष्टुः → स् and the dentals next to ष्/टवर्ग become ष्/टवर्ग → रामष्षष्ठः
+  vyakhya: षकारटवर्गसन्निधौ सकारतवर्गयोः ष्टुत्वम्। रामस् षष्ठः → रामष्षष्ठः।
+  vyakhya_en: |
+    Mirror of श्चुत्व (which palatalised before श्/च-series): ष्टुत्व *cerebralises*. A dental स् or त-series sound, meeting a cerebral ष् or ट-series sound, itself becomes cerebral (8.4.41). रामस् + षष्ठः → रामष्षष्ठः; तत् + टीका → तट्टीका. The articulation simply assimilates to its neighbour's place — the same logic as जश्त्व and श्चुत्व, one row over.
+
+- id: ex072
+  segment: 12
+  sentence: सम् कृतम् → संस्कृतम् (सङ्… → the nasal homorganic).
+  translation: '"well-made" सम्+कृत → the nasal matches the following stop'
+  teaches: 'अनुस्वार → परसवर्ण — anusvāra becomes the nasal of the following class'
+  words:
+  - form: संस्कृतम्
+    gloss: well-formed, "Sanskrit"
+    notes:
+    - text: 'सम् + कृत: final म् → anusvāra (8.3.23), then the anusvāra may take the class-nasal'
+    - cite: '8.3.23'
+      role: मोऽनुस्वारः → word-final म् before a consonant → anusvāra (संकृत)
+    - term: परसवर्ण
+      en: the nasal homogeneous with the following sound
+    - cite: '8.4.58'
+      role: अनुस्वारस्य ययि परसवर्णः → the anusvāra becomes the class-nasal of the following यय् consonant
+  vyakhya: मकारः अनुस्वारः, सः ययि परसवर्णः। सम् + कृत → संकृत → सङ्… परसवर्णेन।
+  vyakhya_en: |
+    A final म् before a consonant first becomes anusvāra (8.3.23, the rule that gave वनं); then that anusvāra may take the *homorganic* nasal — the nasal belonging to the following sound's class (8.4.58). सम् + कृतम् → संस्कृतम्; सम् + गतः → सङ्गतः (the guttural ङ् before ग). The nasal quietly tunes itself to whatever stop follows.
+
+- id: ex073
+  segment: 12
+  sentence: नमस् ते → नमस्ते।
+  translation: '"homage to thee": the विसर्ग returns to स् before त'
+  teaches: 'विसर्ग → स् — a visarga becomes स् before a hard dental (खर्)'
+  words:
+  - form: नमस्ते
+    gloss: homage to you ("namaste")
+    notes:
+    - text: 'नमः + ते: the visarga of नमः meets the त् of ते'
+    - cite: '8.3.34'
+      role: विसर्जनीयस्य सः → a visarga → स् before a खर् consonant → नमस्ते
+    - text: 'नमस् here is a गति/preverb-like form; 8.3.40 also fixes its स् → नमस्ते, नमस्कारः'
+  vyakhya: विसर्गस्य सकारः खरि। नमः + ते → नमस्ते। पुनः सकारः प्रत्येति।
+  vyakhya_en: |
+    The visarga is not the end of the story — before a hard consonant (खर्) it can revert to स् (8.3.34): नमः + ते → नमस्ते, नमः + कारः → नमस्कारः. The final स् of नरः became visarga before pause (8.2.66 → 8.3.15); here the reverse environment pulls the visarga back to स्. Sandhi is contextual all the way down: the same sound shows different faces by what stands next.
