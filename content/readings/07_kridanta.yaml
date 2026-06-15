@@ -1,0 +1,244 @@
+# ════════════════════════════════════════════════════════════════════════
+#  07_kridanta.yaml — कृदन्त — primary derivation: participles & verbal nouns
+#  A NEW chapter (the home page advertised it; now it exists). कृत् affixes
+#  turn a root into a nominal: past participle (क्त), present participle (शतृ),
+#  infinitive (तुमुन्), gerund (क्त्वा/ल्यप्), action-noun (घञ्/ल्युट्).
+#  Prereqs: सुप् (these decline) + तिङ् (they come from roots/लकार). Graded
+#  difficulty ~ segments 16-20 (after declension + the लकार system).
+#  Source of truth; the app is derived. Author here. Schema: readings/_SCHEMA.md.
+# ════════════════════════════════════════════════════════════════════════
+
+readings:
+
+- id: ex074
+  segment: 16
+  sentence: ग्रामं गतः नरः।
+  translation: The man (who has) gone to the village.
+  teaches: 'क्त — the past participle (निष्ठा); a root made into an adjective'
+  words:
+  - form: ग्रामं
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of the going
+    - cite: '2.3.2'
+      role: कर्मणि द्वितीया → ग्रामम् (→ ग्रामं before ग)
+    - term: द्वितीया
+      en: accusative
+  - form: गतः
+    lemma: गम्
+    gloss: gone (having gone)
+    notes:
+    - term: कृदन्त
+      en: a कृत्-formed word — a participle built from a root
+    - term: निष्ठा
+      en: the क्त affix — past sense
+    - cite: '3.2.102'
+      role: निष्ठा → क्त (and क्तवतु) after a root for past sense → गम् + त → गतः
+    - term: विशेषण
+      en: adjective agreeing with नरः (प्रथमा, masc.)
+    - term: प्रथमा
+      en: nominative
+  - form: नरः
+    gloss: the man
+    notes:
+    - term: कर्तृ
+      en: the one who has gone
+    - term: प्रथमा
+      en: nominative
+  vyakhya: भूते निष्ठा — क्तप्रत्ययः। गम् + क्त → गतः। धातुः विशेषणं जातम्।
+  vyakhya_en: |
+    The first कृदन्त: the past participle. The निष्ठा affixes — क्त and क्तवतु (3.2.102) — attach to a root to give a past adjective. गम् + क्त → गतः "gone." It then declines like any अ-stem and agrees with its noun: ग्रामं गतः नरः "the man gone to the village." A root has become an adjective — this is what कृत् affixes do, and the whole chapter is their varieties.
+
+- id: ex075
+  segment: 16
+  sentence: नरेण ओदनः कृतः।
+  translation: The rice was made by the man.
+  teaches: 'क्त as a PASSIVE past participle — agent in तृतीया (the कर्मणि construction)'
+  words:
+  - form: नरेण
+    gloss: by the man
+    notes:
+    - term: कर्तृ
+      en: agent — but in the passive, expressed by तृतीया
+    - cite: '2.3.18'
+      role: कर्तृकरणयोस्तृतीया → the agent of a passive takes तृतीया → नरेण (with णत्व, 8.4.1)
+    - term: तृतीया
+      en: instrumental
+  - form: ओदनः
+    gloss: the rice (cooked)
+    notes:
+    - term: कर्मन्
+      en: the object — but the grammatical subject of the passive participle
+    - term: प्रथमा
+      en: nominative
+  - form: कृतः
+    lemma: कृ
+    gloss: (was) made
+    notes:
+    - term: कृदन्त
+      en: क्त participle of कृ "do/make"
+    - cite: '3.2.102'
+      role: निष्ठा → क्त → कृ + त → कृतः
+    - term: विशेषण
+      en: agrees with ओदनः (the patient), not the agent
+    - term: प्रथमा
+      en: nominative
+  vyakhya: क्तप्रत्ययः कर्मणि — कर्ता तृतीयायाम्, कर्म प्रथमायाम्। नरेण ओदनः कृतः।
+  vyakhya_en: |
+    The क्त participle is usually PASSIVE: it agrees with the patient, and the agent stands in the instrumental (2.3.18) — exactly the कर्मणि (passive) construction. नरेण ओदनः कृतः = "by the man the rice (was) made." This is the everyday Sanskrit past: not a finite verb but a participle + agent-in-तृतीया. (Note रामेण-style णत्व in नरेण.)
+
+- id: ex076
+  segment: 17
+  sentence: गच्छन् नरः पश्यति।
+  translation: The man, (while) going, sees.
+  teaches: 'शतृ — the present active participle (replaces लट्)'
+  words:
+  - form: गच्छन्
+    lemma: गम्
+    gloss: going (while going)
+    notes:
+    - term: कृदन्त
+      en: a present participle
+    - term: शतृ
+      en: the शतृ affix — present active participle, replacing लट्
+    - cite: '3.2.124'
+      role: लटः शतृशानचौ → शतृ/शानच् replace लट् for a participle → गच्छत् → गच्छन्
+    - cite: '3.2.127'
+      role: तौ सत् → these two are termed सत् (the "present-participle" साधन)
+    - cite: '7.1.70'
+      role: उगिदचां सर्वनामस्थाने → the त-stem inserts नुम् before strong endings → गच्छन्
+    - term: विशेषण
+      en: agrees with नरः (the agent)
+  - form: नरः
+    gloss: the man
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पश्यति
+    gloss: sees
+    notes:
+    - term: दृश्
+      en: '"see"'
+    - term: लट्
+      en: present
+  vyakhya: लटः स्थाने शतृ — वर्तमाने कर्तरि। गच्छत् → गच्छन् नुमा। "गच्छन् पश्यति" = गच्छन् सन् पश्यति।
+  vyakhya_en: |
+    The present participle: शतृ (active) replaces the present लट् (3.2.124) when the form is a participle agreeing with the agent — गम् → गच्छत्, which surfaces as गच्छन् (नुम्-insertion before strong endings, 7.1.70). "गच्छन् नरः पश्यति" = "the man, going, sees" = "while he goes, he sees." It is a त्-stem consonant participle, declining राजन्-style (strong/weak). The middle counterpart is शानच् (यजमानः "sacrificing").
+
+- id: ex077
+  segment: 18
+  sentence: नरः ग्रामं गन्तुम् इच्छति।
+  translation: The man wishes to go to the village.
+  teaches: 'तुमुन् — the infinitive ("to do"), for a purposed action'
+  words:
+  - form: ग्रामं
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of गन्तुम्
+    - term: द्वितीया
+      en: accusative
+  - form: गन्तुम्
+    lemma: गम्
+    gloss: to go
+    notes:
+    - term: कृदन्त
+      en: the infinitive
+    - term: तुमुन्
+      en: the तुमुन् affix — "to ___", an indeclinable verbal goal
+    - cite: '3.3.10'
+      role: तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम् → तुमुन् for the purposed action → गम् + तुम् → गन्तुम्
+    - term: अव्यय
+      en: indeclinable (it does not decline)
+  - form: इच्छति
+    gloss: wishes
+    notes:
+    - term: इष्
+      en: '"wish" (इष् → इच्छ in the present)'
+    - term: लट्
+      en: present
+  vyakhya: क्रियार्थायां क्रियायां तुमुन् — गन्तुम्। अव्ययम्, इच्छाद्यपेक्षम्।
+  vyakhya_en: |
+    The infinitive is तुमुन् (3.3.10): "to go" = गन्तुम्, "to do" = कर्तुम्, "to see" = द्रष्टुम्. It names the action one *aims at* — so it pairs with verbs of wishing, being able, beginning: गन्तुम् इच्छति "wishes to go," गन्तुं शक्नोति "can go." Unlike क्त and शतृ, तुमुन् is indeclinable (an अव्यय) — it never changes form.
+
+- id: ex078
+  segment: 18
+  sentence: नरः ग्रामं गत्वा ओदनं खादति।
+  translation: Having gone to the village, the man eats rice.
+  teaches: 'क्त्वा — the gerund: the EARLIER of two acts by one agent'
+  words:
+  - form: ग्रामं
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of गत्वा
+    - term: द्वितीया
+      en: accusative
+  - form: गत्वा
+    lemma: गम्
+    gloss: having gone
+    notes:
+    - term: कृदन्त
+      en: the gerund / absolutive
+    - term: क्त्वा
+      en: the क्त्वा affix — the prior action, same agent
+    - cite: '3.4.21'
+      role: समानकर्तृकयोः पूर्वकाले → क्त्वा after the verb of the EARLIER act, one shared agent → गत्वा
+    - cite: '1.1.40'
+      role: क्त्वातोसुन्कसुनः → a क्त्वा-form is an अव्यय (indeclinable)
+    - term: अव्यय
+      en: indeclinable
+  - form: ओदनं
+    gloss: rice
+    notes:
+    - term: कर्मन्
+      en: object of खादति
+    - term: द्वितीया
+      en: accusative
+  - form: खादति
+    gloss: eats
+    notes:
+    - term: खाद्
+      en: '"eat"'
+    - term: लट्
+      en: present
+  vyakhya: समानकर्तृकयोः पूर्वकाले क्त्वा — गत्वा खादति = गत्वा पश्चात् खादति। एकः कर्ता, द्वे क्रिये।
+  vyakhya_en: |
+    The gerund (क्त्वा, the "absolutive") chains two acts of ONE agent, marking the EARLIER (3.4.21): गत्वा … खादति = "having gone … (he) eats." First go, then eat — one man, two actions, the क्त्वा-form taking the first. It is indeclinable (1.1.40). When a prefix is present it becomes ल्यप् instead (आगत्य "having come"), but the meaning — "having ___, then ___" — is the same. This is how Sanskrit strings narrative: a row of gerunds ending in one finite verb.
+
+- id: ex079
+  segment: 19
+  sentence: गमनं श्रेयः।
+  translation: Going is better. / The going is preferable.
+  teaches: 'ल्युट् — the action-noun ("the ___ing"), a कृत् abstract'
+  words:
+  - form: गमनं
+    lemma: गम्
+    gloss: the going, the act of going
+    notes:
+    - term: कृदन्त
+      en: a verbal action-noun (भाव)
+    - term: ल्युट्
+      en: the ल्युट् affix (→ अन) — names the action
+    - cite: '3.3.115'
+      role: ल्युट् च → ल्युट् after a root for the action's name → गम् + अन → गमनम्
+    - term: कर्तृ
+      en: subject (an अ-stem neuter, like फल)
+    - term: प्रथमा
+      en: nominative
+    - term: नपुंसक
+      en: neuter
+  - form: श्रेयः
+    lemma: श्रेयस्
+    gloss: better, preferable
+    notes:
+    - term: विशेषण
+      en: predicate (an अस्-stem comparative, neuter)
+    - term: प्रथमा
+      en: nominative
+  vyakhya: भावे ल्युट् — गमनम्। क्रियायाः नाम नपुंसकम्। घञापि भावः (यथा "यागः")।
+  vyakhya_en: |
+    Beyond participles, कृत् affixes also build action-NOUNS — "the going," "the doing." ल्युट् (→ अन, 3.3.115) gives गमनम् "going," दर्शनम् "seeing," a neuter अ-stem that declines like फल. The affix घञ् does the same with a different shape and grade (यज् → यागः "sacrifice," 3.3.18 भावे). So one root yields a whole family: गतः (gone), गच्छन् (going), गन्तुम् (to go), गत्वा (having gone), गमनम् (the going) — the कृदन्त system entire.

@@ -146,6 +146,45 @@ chapters:
         readings: []
         status: stub
 
+  # ── 3b. कृदन्त — primary derivation (participles & verbal nouns) ───────
+  - id: kridanta
+    title: "कृदन्त — primary derivation: participles, infinitive, gerund, action-nouns"
+    ranges: ["3.1.91-3.4.117"]   # the कृत् domain (तिङ्शित्सार्वधातुकम्… to the kṛt tail)
+    prereqs: [sup, tin]
+    status: in_progress
+    note: "कृत् affixes turn a root into a nominal; they decline (सुप्) and come from roots (तिङ्/लकार). Learner core only — the productive participles + the action-nouns."
+    subtopics:
+      - id: kridanta.nistha
+        title: "निष्ठा — the past participle क्त/क्तवतु (गतः, कृतः; the passive past)"
+        ranges: ["3.2.102"]
+        readings: [ex074, ex075]
+        status: in_progress
+      - id: kridanta.present
+        title: "शतृ/शानच् — the present participle (गच्छन्, यजमान)"
+        ranges: ["3.2.124", "3.2.127"]
+        readings: [ex076]
+        status: in_progress
+      - id: kridanta.tumun
+        title: "तुमुन् — the infinitive (गन्तुम्)"
+        ranges: ["3.3.10"]
+        readings: [ex077]
+        status: in_progress
+      - id: kridanta.ktva
+        title: "क्त्वा/ल्यप् — the gerund/absolutive (गत्वा, आगत्य)"
+        ranges: ["3.4.21", "1.1.40"]
+        readings: [ex078]
+        status: in_progress
+      - id: kridanta.bhava
+        title: "घञ्/ल्युट् — action-nouns (गमनम्, यागः)"
+        ranges: ["3.3.18", "3.3.115"]
+        readings: [ex079]
+        status: in_progress
+      - id: kridanta.other
+        title: "remaining कृत् (ण्वुल्/तृच् agent-nouns, gerundives कृत्य, इष्णुच्…)"
+        ranges: []
+        readings: []
+        status: stub
+
   # ── 4. सन्धि — the phonological rules (shared DAG tail) ────────────────
   - id: sandhi
     title: "सन्धि — the sound-changes at word and morpheme joins"
