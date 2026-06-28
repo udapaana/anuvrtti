@@ -1,0 +1,489 @@
+# ════════════════════════════════════════════════════════════════════════
+#  10_kridanta_krt.yaml — कृदन्त (कृत्) — REFERENCE-FILL chapter
+#
+#  Isolating graded readings, one per कृत् (primary-derivation) affix, filling
+#  the kṛdanta reference gap. Each isolates ONE affix on a textbook-canonical
+#  form; the focal word carries the affix cite, the rest are light markup.
+#  Authored in a fan-out batch; every cite verified against data/sutras/.
+# ════════════════════════════════════════════════════════════════════════
+readings:
+# ── agent-noun affixes (ण्वुल्/तृच्, तृन्, णिनि) ──────────────────────────
+- id: ex107
+  kind: graded
+  segment: 21
+  sentence: ब्राह्मणः अन्नम् ददाति, सः दाता।
+  translation: The brahmin gives food; he is a giver.
+  teaches: तृच् forms the agent-noun दातृ → दाता "giver" from दा.
+  words:
+  - form: ब्राह्मणः
+    lemma: ब्राह्मण
+    gloss: brahmin
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अन्नम्
+    lemma: अन्न
+    gloss: food
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: ददाति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: दा
+      en: the root दा, as finite verb
+    - term: लट्
+      en: present
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
+  - form: दाता
+    lemma: दातृ
+    gloss: '"giver" — the one who gives'
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: primary derivative naming the agent (कर्तृ)
+    - cite: '3.1.133'
+      role: ण्वुल्तृचौ → तृच् on दा → दातृ → दाता (agent-noun)
+    - term: प्रथमा
+      en: nominative singular of दातृ-stem
+  vyakhya: दा-धातोः तृच्प्रत्यये दातृशब्दः सिध्यति, प्रथमैकवचने दाता इति रूपम्। यो ददाति स दाता।
+  vyakhya_en: |
+    By 3.1.133 (ण्वुल्तृचौ) every root may take तृच् (the affix तृ) to name its agent. On दा "give" this yields the stem दातृ, whose nominative singular is दाता "giver". The agent-noun simply names the one who performs the verb's action — here, the one who gives.
+
+- id: ex108
+  kind: graded
+  segment: 21
+  sentence: देवदत्तः नित्यम् कर्ता।
+  translation: Devadatta is a habitual doer.
+  teaches: तृन् forms a habitual-agent noun कर्तृ → कर्ता from कृ.
+  words:
+  - form: देवदत्तः
+    lemma: देवदत्त
+    gloss: Devadatta
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: नित्यम्
+    lemma: नित्य
+    gloss: habitually, always
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: adverb signalling habitual sense (शील)
+  - form: कर्ता
+    lemma: कर्तृ
+    gloss: '"a doer" — one who habitually acts'
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: primary derivative naming the habitual agent
+    - cite: '3.2.135'
+      role: तृन् on कृ → कर्तृ → कर्ता (habitual agent-noun)
+    - term: प्रथमा
+      en: nominative singular of कर्तृ-stem
+  vyakhya: तृन्प्रत्यये कृ-धातोः कर्तृशब्दः, प्रथमैकवचने कर्ता। यः शीलेन करोति स कर्ता उच्यते।
+  vyakhya_en: |
+    By 3.2.135 (तृन्) the affix तृन् (तृ) comes after a root to name one who does the action habitually or by disposition (शील). On कृ "do" it gives the stem कर्तृ, nominative singular कर्ता. Unlike a plain agent, this names a characteristic doer — one whose nature it is to act.
+
+- id: ex109
+  kind: graded
+  segment: 21
+  sentence: बालः ग्रामम् गामी।
+  translation: The boy habitually goes to the village.
+  teaches: णिनि with an उपपद forms the habit-agent गामिन् → गामी from गम्.
+  words:
+  - form: बालः
+    lemma: बाल
+    gloss: boy
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: village
+    vocab: true
+    notes:
+    - term: उपपद
+      en: the word-in-composition (द्वितीया) standing with the affix
+    - term: द्वितीया
+      en: accusative
+  - form: गामी
+    lemma: गामिन्
+    gloss: '"habitually going" — one who customarily goes'
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: primary derivative naming the habitual agent (ताच्छील्य)
+    - cite: '3.2.78'
+      role: णिनि on गम् with उपपद ग्रामम् → गामिन् → गामी (habit agent-noun)
+    - term: प्रथमा
+      en: nominative singular of गामिन्-stem
+  vyakhya: ताच्छील्ये गम्यमाने उपपदे सति गम्-धातोः णिनिप्रत्यये गामिन्शब्दः, प्रथमैकवचने गामी। यः शीलेन ग्रामं गच्छति स ग्रामं गामी।
+  vyakhya_en: |
+    By 3.2.78 (सुप्यजातौ णिनिस्ताच्छील्ये) the affix णिनि (इन्) attaches to a root when habit (ताच्छील्य) is meant and an उपपद — a noun in composition — stands with it. With उपपद ग्रामम् and root गम् "go", this yields the stem गामिन्, nominative singular गामी. The whole phrase ग्रामं गामी names one who customarily goes to the village.
+
+# ── action-noun affixes (घञ्, अच्, ल्युट्) ───────────────────────────────
+- id: ex110
+  kind: graded
+  segment: 21
+  sentence: पाकः रोचते।
+  translation: The cooking (the act of cooking) is pleasing.
+  teaches: घञ् makes a भाव action-noun from a root; पच् → पाकः.
+  words:
+  - form: पाकः
+    lemma: पच्
+    gloss: '"cooking" — the act of cooking (action-noun)'
+    vocab: true
+    notes:
+    - term: भाव
+      en: the bare action itself, named as a noun
+    - term: प्रथमा
+      en: nominative; here the subject
+    - cite: '3.3.18'
+      role: भावे घञ् → पच् → पाकः (action-noun in -अ)
+  - form: रोचते
+    lemma: रुच्
+    gloss: is pleasing
+    vocab: true
+    notes:
+    - term: रुच्
+      en: the finite verb (आत्मनेपद)
+    - term: लट्
+      en: present
+  vyakhya: धातोः भावे घञ् प्रत्ययः। पच् इत्यस्मात् पाकः इति कृदन्तं नाम जायते। तत् प्रथमायां कर्तृ।
+  vyakhya_en: |
+    By 3.3.18 the affix घञ् is added to a root to name the bare action (भाव). From पच् "to cook" we get पाकः, "the act of cooking", a कृदन्त noun. Here it stands in the nominative as the subject of रोचते.
+
+- id: ex111
+  kind: graded
+  segment: 21
+  sentence: जयम् इच्छति।
+  translation: He wishes for victory.
+  teaches: अच् makes a भाव action-noun from an इ/ई-final root; जि → जयः.
+  words:
+  - form: जयम्
+    lemma: जि
+    gloss: '"victory" — the act of conquering (action-noun)'
+    vocab: true
+    notes:
+    - term: भाव
+      en: the bare action itself, named as a noun
+    - term: द्वितीया
+      en: accusative; here the object
+    - cite: '3.3.56'
+      role: एरच् → जि → जयः (action-noun in -अ)
+  - form: इच्छति
+    lemma: इष्
+    gloss: wishes, wants
+    vocab: true
+    notes:
+    - term: इष्
+      en: the finite verb
+    - term: लट्
+      en: present
+  vyakhya: इवर्णान्तात् धातोः भावे अच् प्रत्ययः। जि इत्यस्मात् जयः इति कृदन्तम्। तत् द्वितीयायां कर्म।
+  vyakhya_en: |
+    By 3.3.56 (एरच्) the affix अच् is added to a root ending in इ/ई to name the action (भाव). From जि "to conquer" we get जयः, "victory". Here it stands in the accusative as the object of इच्छति.
+
+- id: ex112
+  kind: graded
+  segment: 21
+  sentence: गमनम् आरभते।
+  translation: He begins the going (the departure).
+  teaches: ल्युट् makes a neuter भाव action-noun in -अन; गम् → गमनम्.
+  words:
+  - form: गमनम्
+    lemma: गम्
+    gloss: '"going" — the act of going (action-noun)'
+    vocab: true
+    notes:
+    - term: भाव
+      en: the bare action itself, named as a noun
+    - term: द्वितीया
+      en: accusative; here the object
+    - cite: '3.3.115'
+      role: ल्युट् च → गम् → गमनम् (neuter action-noun in -अन)
+  - form: आरभते
+    lemma: आ-रभ्
+    gloss: begins, undertakes
+    vocab: true
+    notes:
+    - term: आ-रभ्
+      en: the finite verb (आत्मनेपद)
+    - term: लट्
+      en: present
+  vyakhya: धातोः भावे ल्युट् प्रत्ययः, तस्य अन इति आदेशः। गम् इत्यस्मात् गमनम् इति नपुंसकं कृदन्तम्। तत् द्वितीयायां कर्म।
+  vyakhya_en: |
+    By 3.3.115 the affix ल्युट् (realized as -अन) is added to a root to name the bare action (भाव), giving a neuter noun. From गम् "to go" we get गमनम्, "going". Here it stands in the accusative as the object of आरभते.
+
+# ── gerundives / कृत्य (यत्, ण्यत्, अनीयर्) — patient nom., agent instr. ──
+- id: ex113
+  kind: graded
+  segment: 27
+  sentence: धनम् ब्राह्मणाय देयम्।
+  translation: Wealth is to be given to the brahmin.
+  teaches: यत् forms a कृत्य gerundive on vowel-final roots (दा → देयम्).
+  words:
+  - form: धनम्
+    lemma: धन
+    gloss: '"wealth" — nominative, the patient'
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative (patient, as in passive)
+  - form: ब्राह्मणाय
+    lemma: ब्राह्मण
+    gloss: '"to the brahmin" — dative, recipient'
+    vocab: true
+    notes:
+    - term: सम्प्रदान
+      en: dative (the recipient of giving)
+    - cite: '2.3.13'
+      role: चतुर्थी सम्प्रदाने → ब्राह्मणाय
+    - term: चतुर्थी
+      en: dative
+  - form: देयम्
+    lemma: दा
+    gloss: '"to be given" — fit to be given'
+    vocab: true
+    notes:
+    - term: कृत्य
+      en: gerundive — to-be-done; obligation/fitness
+    - cite: '3.1.97'
+      role: अचो यत् → दा (vowel-final) → देयम् (gerundive)
+    - term: प्रथमा
+      en: agrees with the patient in the nominative, as in the passive
+  vyakhya: अचो यत् इति वचनात् अजन्तात् धातोः दा इत्यस्मात् यत्प्रत्ययः। देयम् इति कृत्यम्। कर्म प्रथमायां, कर्ता तृतीयायाम्।
+  vyakhya_en: |
+    By अचो यत् (3.1.97) a root ending in a vowel takes the कृत्य affix यत्; so दा becomes देयम्, "to be given." Like every gerundive it governs case exactly as the passive does: the patient (धनम्) stands in the nominative, and an agent, if expressed, would stand in the instrumental. Here the recipient ब्राह्मणाय is in the dative (सम्प्रदान).
+
+- id: ex114
+  kind: graded
+  segment: 27
+  sentence: मया कार्यम् कर्तव्यम्।
+  translation: The task is to be done by me.
+  teaches: ण्यत् forms a कृत्य gerundive on ऋ-final / consonant-final roots (कृ → कार्यम्).
+  words:
+  - form: मया
+    lemma: अस्मद्
+    gloss: '"by me" — instrumental, the agent'
+    vocab: true
+    notes:
+    - cite: '2.3.18'
+      role: कर्तृकरणयोस्तृतीया → agent in the instrumental (तृतीया)
+    - term: तृतीया
+      en: instrumental (agent, as in passive)
+  - form: कार्यम्
+    lemma: कृ
+    gloss: '"the task / to be done" — fit to be done'
+    vocab: true
+    notes:
+    - term: कृत्य
+      en: gerundive — to-be-done; obligation/fitness
+    - cite: '3.1.124'
+      role: ऋहलोर्ण्यत् → कृ (ऋ-final) → कार्यम् (gerundive)
+    - term: प्रथमा
+      en: agrees with the patient in the nominative, as in the passive
+  - form: कर्तव्यम्
+    lemma: कृ
+    gloss: '"is to be done" — obligation predicate'
+    vocab: true
+    notes:
+    - term: कृत्य
+      en: gerundive (तव्य predicate), patient in nominative
+    - cite: '3.1.96'
+      role: तव्यत्तव्यानीयरः → तव्य → कर्तव्यम्
+  vyakhya: ऋहलोर्ण्यत् इति ऋवर्णान्तात् हलन्ताच्च धातोः ण्यत्प्रत्ययः। कृ इत्यस्मात् कार्यम्। कर्ता मया इति तृतीयायां, कर्म प्रथमायाम्।
+  vyakhya_en: |
+    By ऋहलोर्ण्यत् (3.1.124) a root ending in ऋ (short or long) or in a consonant takes the कृत्य affix ण्यत्; so कृ becomes कार्यम्, "to be done, a task." The construction mirrors the passive: the agent मया is in the instrumental (तृतीया, by 2.3.18) and the patient stands in the nominative.
+
+- id: ex115
+  kind: graded
+  segment: 27
+  sentence: शिष्येण पाठः पठनीयः।
+  translation: The lesson is to be read by the student.
+  teaches: अनीयर् (-अनीय) forms a कृत्य gerundive (पठ् → पठनीयः).
+  words:
+  - form: शिष्येण
+    lemma: शिष्य
+    gloss: '"by the student" — instrumental, the agent'
+    vocab: true
+    notes:
+    - cite: '2.3.18'
+      role: कर्तृकरणयोस्तृतीया → agent in the instrumental (तृतीया)
+    - term: तृतीया
+      en: instrumental (agent, as in passive)
+  - form: पाठः
+    lemma: पाठ
+    gloss: '"the lesson" — nominative, the patient'
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative (patient, as in passive)
+  - form: पठनीयः
+    lemma: पठ्
+    gloss: '"to be read" — fit to be read'
+    vocab: true
+    notes:
+    - term: कृत्य
+      en: gerundive — to-be-done; obligation/fitness
+    - cite: '3.1.96'
+      role: तव्यत्तव्यानीयरः → अनीयर् variant → पठ् → पठनीयः (gerundive)
+    - term: प्रथमा
+      en: agrees with the patient in the nominative, as in the passive
+  vyakhya: तव्यत्तव्यानीयरः इति धातोः अनीयर्प्रत्ययः। पठ् इत्यस्मात् पठनीयम्। कर्ता शिष्येण तृतीयायां, कर्म प्रथमायाम्।
+  vyakhya_en: |
+    By तव्यत्तव्यानीयरः (3.1.96) a root may take तव्यत्, तव्य, or अनीयर्; here the अनीयर् variant gives पठ् → पठनीयः, "to be read." As with all कृत्य gerundives the syntax is passive-like: the agent शिष्येण stands in the instrumental (तृतीया, 2.3.18) and the patient पाठः in the nominative.
+
+# ── upapada agent-compounds (अण्, क, ल्यु) ───────────────────────────────
+- id: ex116
+  kind: graded
+  segment: 25
+  sentence: कुम्भकारः घटम् करोति।
+  translation: The potter makes a pot.
+  teaches: अण् (कर्मण्यण्) forms an agent-noun whose object stands as उपपद in one compound.
+  words:
+  - form: कुम्भकारः
+    lemma: कुम्भकार
+    gloss: '"pot-maker" — the one who makes pots'
+    vocab: true
+    notes:
+    - term: उपपद
+      en: the object कुम्भ stands in composition with the agent-noun
+    - cite: '3.2.1'
+      role: कर्मण्यण् → कुम्भ + कृ + अण् → कुम्भकारः
+    - term: तत्पुरुष
+      en: 'object-compound: कुम्भं करोतीति कुम्भकारः'
+    - term: प्रथमा
+      en: nominative singular
+  - form: घटम्
+    lemma: घट
+    gloss: '"pot" — a clay pot (object of the verb)'
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of करोति
+    - term: द्वितीया
+      en: accusative
+  - form: करोति
+    lemma: कृ
+    gloss: makes, does
+    notes:
+    - term: कृ
+      en: the finite verb
+    - term: लट्
+      en: present
+  vyakhya: कुम्भं करोतीति कुम्भकारः। कर्मणि उपपदे कृधातोः अण्प्रत्ययः। उपपदं कर्म च समस्यते एकपदे।
+  vyakhya_en: |
+    When an object (कर्मन्) stands as उपपद beside a root, the root takes अण् to form an agent-noun. Here कुम्भ "pot" joins कृ "make" and the affix अण् gives कुम्भकारः "pot-maker." The object does not stay a separate accusative word; it merges into a single तत्पुरुष compound with the agent-noun.
+
+- id: ex117
+  kind: graded
+  segment: 25
+  sentence: गोदः ब्राह्मणाय गाम् ददाति।
+  translation: The cow-giver gives a cow to the brahmin.
+  teaches: क (आतोऽनुपसर्गे कः) suffixes an आ-final root with an object-उपपद and no उपसर्ग.
+  words:
+  - form: गोदः
+    lemma: गोद
+    gloss: '"cow-giver" — one who gives a cow'
+    vocab: true
+    notes:
+    - term: उपपद
+      en: the object गो stands in composition with the agent-noun
+    - cite: '3.2.3'
+      role: आतोऽनुपसर्गे कः → गो + दा + क → गोदः (आ-final दा, no उपसर्ग)
+    - term: तत्पुरुष
+      en: 'object-compound: गां ददातीति गोदः'
+    - term: प्रथमा
+      en: nominative singular
+  - form: ब्राह्मणाय
+    lemma: ब्राह्मण
+    gloss: '"to the brahmin" — recipient'
+    vocab: true
+    notes:
+    - term: सम्प्रदान
+      en: dative — the one to whom the gift is given
+    - cite: '2.3.13'
+      role: चतुर्थी सम्प्रदाने → ब्राह्मणाय
+    - term: चतुर्थी
+      en: dative
+  - form: गाम्
+    lemma: गो
+    gloss: '"cow" — object of the verb'
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of ददाति
+    - term: द्वितीया
+      en: accusative
+  - form: ददाति
+    lemma: दा
+    gloss: gives, grants
+    notes:
+    - term: दा
+      en: the finite verb
+    - term: लट्
+      en: present
+  vyakhya: गां ददातीति गोदः। आकारान्तात् दाधातोः अनुपसर्गात् कर्मण्युपपदे कप्रत्ययः। एवं धनदः जलदश्च।
+  vyakhya_en: |
+    A root ending in long आ, with no उपसर्ग before it and an object standing as उपपद, takes क instead of अण्. Thus गो "cow" + दा "give" + क yields गोदः "cow-giver." The same pattern gives धनदः "wealth-giver" and जलदः "water-giver" (the cloud). The object गो merges with the agent-noun into one तत्पुरुष compound.
+
+- id: ex118
+  kind: graded
+  segment: 25
+  sentence: नन्दनः मातरम् नन्दयति।
+  translation: The delighting son gladdens his mother.
+  teaches: ल्यु (→ अन) forms an agent-noun from नन्दि-group roots.
+  words:
+  - form: नन्दनः
+    lemma: नन्दन
+    gloss: '"delighting one / son" — one who delights'
+    vocab: true
+    notes:
+    - cite: '3.1.134'
+      role: नन्दिग्रहिपचादिभ्यो ल्युणिन्यचः → नन्द् + ल्यु (अन) → नन्दनः
+    - term: कृदन्त
+      en: agent-noun in अन from the नन्दि-group
+    - term: प्रथमा
+      en: nominative singular
+  - form: मातरम्
+    lemma: मातृ
+    gloss: '"mother" — object of the verb'
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of नन्दयति
+    - term: द्वितीया
+      en: accusative (ऋ-stem, strong → मातरम्)
+  - form: नन्दयति
+    lemma: नन्द्
+    gloss: gladdens, causes to rejoice
+    notes:
+    - term: नन्द्
+      en: the finite verb (causative)
+    - term: लट्
+      en: present
+  vyakhya: नन्दतीति नन्दनः। नन्दिग्रहिपचादिगणे नन्दिधातोः ल्युप्रत्ययः, यस्य अनादेशः।
+  vyakhya_en: |
+    Roots of the नन्दि-group take ल्यु, and ल्यु is replaced by अन, giving agent-nouns like नन्दनः "the delighting one, the son." Unlike अण् and क above, this ल्यु-formation needs no उपपद object to attach; the affix alone names the doer. The same rule routes ग्रहि-roots to णिनि and पच्-group roots to अच्.
