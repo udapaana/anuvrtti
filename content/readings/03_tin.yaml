@@ -19,6 +19,14 @@ readings:
     - term: प्रथमा
       en: nominative
     - text: the pronoun for the speaker
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
   - form: गच्छामि
     gloss: I go
     notes:
@@ -29,8 +37,7 @@ readings:
     - term: उत्तमपुरुष
       en: first person — the speaker
     - cite: 1.4.101
-      role: 'तिङस्त्रीणि त्रीणि प्रथममध्यमोत्तमाः — the तिङ् endings fall into three पुरुष: प्रथम, मध्यम,
-        उत्तम'
+      role: 'तिङस्त्रीणि त्रीणि प्रथममध्यमोत्तमाः — the तिङ् endings fall into three पुरुष: प्रथम, मध्यम, उत्तम'
     - term: एकवचन
       en: singular
     - cite: 3.4.78
@@ -52,6 +59,14 @@ readings:
     - term: प्रथमा
       en: nominative
     - text: the pronoun for the one addressed
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
   - form: गच्छसि
     gloss: you go
     notes:
@@ -81,6 +96,14 @@ readings:
       en: agent
     - term: प्रथमा
       en: nominative
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
   - form: अगच्छत्
     gloss: went
     notes:
@@ -98,14 +121,29 @@ readings:
   vyakhya: भूते अनद्यतने लङ्। धातुः स एव, कालः अन्यः।
   vyakhya_en: |
     For the past, the लङ् stands where the present लट् stood. The root is the same √गम्; only the tense — the लकार — has changed. गच्छति (goes) → अगच्छत् (went): a new tense-slot, marked by the अ-augment in front.
-  note: // The full augment/ending derivation (3.4.100ff, 6.4.71) is later; here we state the siddha form
-    अगच्छत् and cite the लकार choice 3.2.111. Stepwise derivation deferred to a Track-B path.
+  note: // The full augment/ending derivation (3.4.100ff, 6.4.71) is later; here we state the siddha form अगच्छत् and cite the लकार choice 3.2.111. Stepwise derivation deferred to a Track-B path.
 - id: ex019
   segment: 6
   sentence: नरः ओदनम् पचति।
   translation: The man cooks rice.
   teaches: the verb's ending is परस्मैपद — the active-voice set of तिङ् endings
   words:
+  - form: नरः
+    lemma: नर
+    gloss: the man
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: ओदनम्
+    lemma: ओदन
+    gloss: rice (cooked)
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
   - form: पचति
     gloss: cooks (for another / active)
     notes:
@@ -130,6 +168,22 @@ readings:
   translation: The man cooks rice (for himself).
   teaches: the आत्मनेपद — the middle-voice set, action for the agent's own sake
   words:
+  - form: नरः
+    lemma: नर
+    gloss: the man
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: ओदनम्
+    lemma: ओदन
+    gloss: rice (cooked)
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
   - form: पचते
     gloss: cooks (for himself / middle)
     notes:
@@ -162,6 +216,22 @@ readings:
   translation: He did that (long ago / it is told).
   teaches: 'लिट् — the perfect, for remote or reported past; the root reduplicates'
   words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्, neuter)
+    - term: द्वितीया
+      en: accusative
   - form: चकार
     gloss: did, has done
     notes:
@@ -185,10 +255,26 @@ readings:
   translation: He will do that tomorrow.
   teaches: 'लृट् — the future; built on the root with a स्य-marker'
   words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
   - form: श्वः
     gloss: tomorrow
     notes:
     - text: the adverb fixing the time as future
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्, neuter)
+    - term: द्वितीया
+      en: accusative
   - form: करिष्यति
     gloss: will do
     notes:
@@ -217,6 +303,22 @@ readings:
   translation: Let him go to the village. / He must go.
   teaches: 'लोट् — the imperative, for a command'
   words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
   - form: गच्छतु
     gloss: let him go
     notes:
@@ -239,6 +341,22 @@ readings:
   translation: He should go to the village. / He might go.
   teaches: 'विधिलिङ् — the optative, for what ought to be or might be'
   words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
   - form: गच्छेत्
     gloss: he should go
     notes:
@@ -311,11 +429,27 @@ readings:
   translation: He did that long ago.
   teaches: 'लिट् — the perfect, for a remote (परोक्ष) past beyond witness'
   words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
   - form: पुरा
     gloss: long ago, formerly
     notes:
     - term: अव्यय
       en: indeclinable — "of old" (marks the परोक्ष, beyond-sight, past)
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्, neuter)
+    - term: द्वितीया
+      en: accusative
   - form: चकार
     gloss: did (long ago)
     notes:
@@ -335,11 +469,27 @@ readings:
   translation: He did that today.
   teaches: 'लुङ् — the aorist, the tense-neutral past (and today’s past)'
   words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
   - form: अद्य
     gloss: today
     notes:
     - term: अव्यय
       en: indeclinable — "today"
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्, neuter)
+    - term: द्वितीया
+      en: accusative
   - form: अकार्षीत्
     gloss: did, has done
     notes:
@@ -361,11 +511,27 @@ readings:
   translation: He will do that tomorrow.
   teaches: 'लुट् — the periphrastic future, for a NON-today (अनद्यतन) future'
   words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
   - form: श्वः
     gloss: tomorrow
     notes:
     - term: अव्यय
       en: indeclinable — "tomorrow" (marks the अनद्यतन future)
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्, neuter)
+    - term: द्वितीया
+      en: accusative
   - form: कर्ता
     gloss: will do
     notes:
@@ -385,6 +551,14 @@ readings:
   translation: He should do (it). / Let him do (it).
   teaches: 'विधिलिङ् — the optative, for what ought or may happen'
   words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
   - form: कुर्यात्
     gloss: should do, may do
     notes:
@@ -406,6 +580,35 @@ readings:
   translation: 'May he do (it) — the blessing form kriyāt.'
   teaches: 'आशीर्लिङ् — the benedictive, a distinct लिङ् for blessings'
   words:
+  - form: सः
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
+  - form: कुर्यात्
+    lemma: कृ
+    gloss: should do
+    notes:
+    - term: विधिलिङ्
+      en: optative — "should do" (cf. ex064)
+    - term: लट्
+      en: (लिङ् mood)
+  - form: इति
+    lemma: इति
+    gloss: thus ("…")
+    notes:
+    - term: अव्यय
+      en: quotative — closes a name/quote
+  - form: आशीः
+    lemma: आशिस्
+    gloss: a blessing
+    notes:
+    - term: आशीस्
+      en: '"blessing" — the sense that selects आशीर्लिङ्'
+    - term: प्रथमा
+      en: nominative
   - form: क्रियात्
     gloss: may he do (benediction)
     notes:
@@ -418,6 +621,7 @@ readings:
     - cite: 3.4.116
       role: लिङाशिषि → this लिङ् is the आशीर्लिङ् (distinct from the विधिलिङ्) → क्रियात्
   - form: सः
+    lemma: तद्
     gloss: he
     notes:
     - term: सर्वनाम
@@ -491,6 +695,14 @@ readings:
       en: dual — two
     - cite: '1.4.22'
       role: द्व्येकयोर्द्विवचनैकवचने — for two, the द्विवचन
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
   - form: गच्छतः
     lemma: गम्
     gloss: the two go
