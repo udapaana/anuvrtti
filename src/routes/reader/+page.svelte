@@ -290,7 +290,7 @@
 
   // short label for the spine
   function shortEn(en: string): string {
-    return en.replace(/\s*[—(].*$/, '').split(',')[0].slice(0, 26);
+    return en.replace(/\s*[—(].*$/, '').split(':')[0].split(',')[0];
   }
 </script>
 
@@ -587,7 +587,7 @@
   }
   .token.hot .tokform { background: #fde7c8; cursor: pointer; }
   /* focal (new) word: a faint underline marks it as the reading's point */
-  .token.focal .tokform { box-shadow: inset 0 -2px 0 #f4c98b; cursor: help; }
+  .token.focal .tokform { border-bottom: 1px solid #f4c98b; border-radius: 0; cursor: help; }
   .token .tokgloss {
     font-size: 0.68rem; color: #a99e8b; font-style: italic;
     min-height: 0.8rem; line-height: 1.1;

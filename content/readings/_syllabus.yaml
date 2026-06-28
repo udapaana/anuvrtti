@@ -200,6 +200,14 @@ chapters:
         readings: []
         status: stub
 
+  # ── 3c. कृत् affixes — one-per-affix reference fill (sibling of kridanta) ─
+  - id: kridanta_krt
+    title: "कृत् — primary affixes: agent, action, and participle suffixes"
+    ranges: ["3.1.91-3.4.117"]   # same कृत् domain, isolating one affix per reading
+    prereqs: [kridanta]
+    status: in_progress
+    note: "Reference-fill: one isolating reading per कृत् affix (तृच्/ण्वुल्/णिनि agents, घञ्/ल्युट् action-nouns, the participles), each citing its own affix sūtra."
+
   # ── 4. सन्धि — the phonological rules (shared DAG tail) ────────────────
   - id: sandhi
     title: "सन्धि — the sound-changes at word and morpheme joins"
