@@ -101,7 +101,13 @@ function parseStep(section: string): LearningStep | null {
   const headerMatch = lines[0].match(/^##\s+(\S+)\s*-\s*(.+)$/);
   if (!headerMatch) return null;
 
-  const [, sutraId, title] = headerMatch;
+  const [, sutraId, rawTitle] = headerMatch;
+  // Titles and key terms are plain text (used in nav, headings, term chips) —
+  // unwrap any inline markup tags (@deva[…], @[…], @term[…], @ref[…],
+  // @pratyahara[…]) to their bare content so they don't leak literally into the UI.
+  const unwrapMarkup = (s: string) =>
+    s.replace(/@(?:deva|term|ref|pratyahara)?\[([^\]]+)\](?:\{[^}]*\})?/g, "$1");
+  const title = unwrapMarkup(rawTitle);
 
   let keyTerms: string[] = [];
   let commentaryLines: string[] = [];
@@ -115,7 +121,7 @@ function parseStep(section: string): LearningStep | null {
     if (keyTermsMatch) {
       keyTerms = keyTermsMatch[1]
         .split(",")
-        .map((t) => t.trim())
+        .map((t) => unwrapMarkup(t).trim())
         .filter(Boolean);
       inCommentary = true;
       continue;

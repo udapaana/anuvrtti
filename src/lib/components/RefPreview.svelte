@@ -87,7 +87,7 @@
             <span class="text-stone-600 block">{commentary.englishShort}</span>
           {/if}
           <a
-            href="/sutra/{sutraId}"
+            href="/ref/{sutraId}"
             class="text-xs text-indigo-500 hover:underline mt-1 inline-block"
           >
             View full sutra
@@ -100,7 +100,7 @@
   <!-- Non-inline: always show as a card -->
   <div class="p-3 bg-stone-50 border border-stone-200 rounded text-sm">
     <div class="flex items-center justify-between mb-2">
-      <a href="/sutra/{sutraId}" class="font-mono text-indigo-600 hover:underline">
+      <a href="/ref/{sutraId}" class="font-mono text-indigo-600 hover:underline">
         {sutraId}
       </a>
     </div>

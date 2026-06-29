@@ -39,7 +39,7 @@
 
   async function loadStats() {
     try {
-      const r = await fetch('/data/readings.json');
+      const r = await fetch('/data/readings.json', { cache: 'no-store' });
       if (r.ok) {
         const d = await r.json();
         const cites = new Set<string>();
@@ -51,7 +51,7 @@
       }
     } catch {}
     try {
-      const r = await fetch('/data/balabodhini.json');
+      const r = await fetch('/data/balabodhini.json', { cache: 'no-store' });
       if (r.ok) {
         const b = await r.json();
         stat.lessons = (b.parts ?? []).reduce((a: number, p: any) => a + p.lessons.length, 0);
@@ -145,7 +145,7 @@
 </script>
 
 <svelte:head>
-  <title>Anuvrtti | Learn Sanskrit through the Aṣṭādhyāyī</title>
+  <title>anuvrtti | Learn Sanskrit through the Aṣṭādhyāyī</title>
 </svelte:head>
 
 <article class="page">
@@ -167,9 +167,9 @@
       <span class="san font-{$displayScript}">{term('atha')}</span>
       <span class="san font-{$displayScript}">{term('sabdanusasanam')}</span>
     </p>
-    <h1 class="hero-title">A graded reader and a grammar reference, bridged — for both the classical and the vedic language.</h1>
+    <h3 class="hero-title">A graded reader and a grammar, bridged — for both the classical and the vedic dialects.</h3>
     <p class="hero-sub">
-      The poets and logicians of old came to grammar already holding the Veda by heart. These tools try to close that gap.
+      The poets and logicians of old started their study of grammar already knowing a vedic corpus by heart. These tools try to close that gap.
     </p>
   </header>
 
@@ -183,7 +183,7 @@
         memorised. Each word opens its full derivation.
       </p>
       <div class="pillar-foot">
-        <span class="pillar-num">{stat.readings || '59'}</span>
+        <span class="pillar-num">{stat.readings || '—'}</span>
         <span class="pillar-meta">graded readings →</span>
       </div>
     </a>
@@ -196,7 +196,7 @@
         and exercises, lesson by lesson.
       </p>
       <div class="pillar-foot">
-        <span class="pillar-num">{stat.lessons || '79'}</span>
+        <span class="pillar-num">{stat.lessons || '—'}</span>
         <span class="pillar-meta">lessons · 2 volumes →</span>
       </div>
     </a>

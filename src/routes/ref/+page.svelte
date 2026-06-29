@@ -119,7 +119,7 @@
 </script>
 
 <svelte:head>
-  <title>Reference | Anuvrtti</title>
+  <title>Reference | anuvrtti</title>
 </svelte:head>
 
 <div class="ref-layout">
@@ -198,6 +198,7 @@
       <a href="/ref/prakriya" class="tool-link"><Sanskrit text="prakriyā" source="iast" /></a>
       <a href="/ref/pratyahara" class="tool-link"><Sanskrit text="pratyāhārāḥ" source="iast" /></a>
       <a href="/ref/tables" class="tool-link">reference tables</a>
+      <a href="/ref/jargon" class="tool-link"><Sanskrit text="paribhāṣā" source="iast" /></a>
     </nav>
     </details>
   </aside>

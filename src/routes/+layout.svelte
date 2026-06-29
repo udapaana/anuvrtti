@@ -4,15 +4,17 @@
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   import EditModal from '$lib/components/EditModal.svelte';
+  import SiteNav from '$lib/components/SiteNav.svelte';
   import { editModal } from '$lib/stores/editModal';
 
   let { children, data } = $props();
   let user = $derived(data.user as { login: string; avatar_url: string } | null);
 
-  // Hide settings link on the settings page itself and on onboarding flows.
-  let showSettings = $derived.by(() => {
+  // Onboarding is full-bleed; every other route (settings included) gets the
+  // persistent three-pillar site nav so navigation is consistent app-wide.
+  let showNav = $derived.by(() => {
     const path = $page.url.pathname;
-    return !path.startsWith('/settings') && !path.startsWith('/onboard');
+    return !path.startsWith('/onboard');
   });
 
   onMount(() => {
@@ -37,27 +39,13 @@
 </svelte:head>
 
 <!--
-  No header, no footer. The persistent chrome is two tiny corner widgets:
-  - wordmark top-left (saffron Devanagari) — clickable home link
-  - settings link top-right (monospace)
-  Language toggles live on the settings page, not in the navbar.
-  See design2: chat1.md L341–393 (chrome iteration), L661 (final settings link).
+  Persistent chrome is the three-pillar SiteNav (पठनम् · बालबोधिनी · सूत्र) plus
+  the script switcher — one shared navigation across the whole app. The settings
+  and onboarding flows render full-bleed without it.
 -->
-<div class="shell">
-  <a class="wordmark" href="/" aria-label="anuvrtti home">अनुवृत्ति</a>
-
-  {#if showSettings}
-    <a
-      class="settings-link"
-      href="/settings"
-      onclick={() => {
-        // Remember where the user was so the settings page can offer a real
-        // "close" affordance back to the same spot, not just to home.
-        if (typeof sessionStorage !== 'undefined') {
-          sessionStorage.setItem('anuvrtti-settings-return', $page.url.pathname + $page.url.search);
-        }
-      }}
-    >settings</a>
+<div class="shell" class:withnav={showNav}>
+  {#if showNav}
+    <SiteNav />
   {/if}
 
   {#if user}
@@ -92,45 +80,6 @@
     color: #0f1419;
   }
 
-  /* Both corner chromes get their own background-blurred capsule so they stay
-     legible when the page scrolls underneath. */
-  .wordmark {
-    position: fixed;
-    top: 0.65rem;
-    left: 0.85rem;
-    padding: 0.45rem 0.85rem;
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #f97316;
-    letter-spacing: 0.03em;
-    text-decoration: none;
-    z-index: 30;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 3px;
-  }
-
-  .settings-link {
-    position: fixed;
-    top: 0.65rem;
-    right: 0.85rem;
-    padding: 0.45rem 0.85rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    color: #94a3b8;
-    text-decoration: none;
-    transition: color 0.15s;
-    z-index: 30;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 3px;
-  }
-  .settings-link:hover { color: #0f1419; }
-
   .edit-toggle {
     position: fixed;
     bottom: 1rem;
@@ -151,13 +100,18 @@
   .edit-toggle:hover { color: #0f1419; border-color: #cbd5e1; }
   .edit-toggle.active { color: #f97316; border-color: #f97316; }
 
+  /* With the sticky SiteNav present, content sits right under it. The
+     settings/onboarding flows (no nav) keep a little top breathing room. */
   main {
-    padding: 4rem 2rem 3rem;
+    padding: 1.75rem 2rem 3rem;
+  }
+  .shell:not(.withnav) main {
+    padding-top: 3rem;
   }
 
   @media (max-width: 480px) {
     main {
-      padding: 4rem 1rem 2rem;
+      padding: 1.25rem 1rem 2rem;
     }
   }
 </style>

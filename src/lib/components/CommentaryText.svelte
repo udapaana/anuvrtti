@@ -57,6 +57,15 @@
     return /[\u0900-\u097F]/.test(text);
   }
 
+  // Classify a term's source script: Devanagari, IAST (has diacritics), else SLP1.
+  // Terms in the data come in all three; the transliteration $effect below uses
+  // this so an IAST term (v\u1E5Bddhi) isn't fed to the SLP1 parser (\u2192 garbled output).
+  function termSourceScript(text: string): 'deva' | 'iast' | 'slp1' {
+    if (isDevanagari(text)) return 'deva';
+    if (/[\u0101\u012B\u016B\u1E5B\u1E5D\u1E37\u1E39\u1E45\u00F1\u1E6D\u1E0D\u1E47\u015B\u1E63\u1E43\u1E25]/.test(text)) return 'iast';
+    return 'slp1';
+  }
+
   // Add paragraph breaks to poorly-formatted text
   function addParagraphBreaks(text: string): string {
     // If already has paragraph breaks, leave it alone
@@ -90,7 +99,7 @@
     let processed = addParagraphBreaks(displayText)
       // @deva[text]
       .replace(/@deva\[([^\]]+)\]/g, (_, content) => {
-        const script = isDevanagari(content) ? 'deva' : 'slp1';
+        const script = termSourceScript(content);
         return `<button type="button" class="deva-term" data-script="${script}" data-term="${content}">${content}</button>`;
       })
       // @ref[id]
@@ -99,8 +108,12 @@
       .replace(/@\[([^\]]+)\]/g, '<span class="roman-term" data-term="$1">$1</span>')
       // @pratyahara[code]
       .replace(/@pratyahara\[([^\]]+)\]/g, '<span class="pratyahara-inline">$1</span>')
-      // @term[word]{display}
-      .replace(/@term\[([^\]]+)\](\{[^}]*\})?/g, '<span class="term-inline">$1</span>');
+      // @term[word]{display} — a Sanskrit grammatical term that follows the script
+      // toggle (like @deva), and is clickable for jargon lookup.
+      .replace(/@term\[([^\]]+)\](\{[^}]*\})?/g, (_, content) => {
+        const script = termSourceScript(content);
+        return `<button type="button" class="deva-term term-inline" data-script="${script}" data-term="${content}">${content}</button>`;
+      });
 
     // Render markdown
     return marked.parse(processed) as string;
@@ -163,9 +176,12 @@
   function processInlineExtensions(text: string): string {
     return addParagraphBreaks(text)
       .replace(/@pratyahara\[([^\]]+)\]/g, '<span class="pratyahara-inline">$1</span>')
-      .replace(/@term\[([^\]]+)\](\{[^}]*\})?/g, '<span class="term-inline">$1</span>')
+      .replace(/@term\[([^\]]+)\](\{[^}]*\})?/g, (_, content) => {
+        const script = termSourceScript(content);
+        return `<button type="button" class="deva-term term-inline" data-script="${script}" data-term="${content}">${content}</button>`;
+      })
       .replace(/@deva\[([^\]]+)\]/g, (_, content) => {
-        const script = isDevanagari(content) ? 'deva' : 'slp1';
+        const script = termSourceScript(content);
         return `<button type="button" class="deva-term" data-script="${script}" data-term="${content}">${content}</button>`;
       })
       .replace(/@ref\[([^\]]+)\]/g, '<a href="/ref/$1" class="ref-link">$1</a>')
@@ -192,14 +208,18 @@
     // Step 1: ensure every .deva-term has data-deva (canonical Devanagari source)
     const allTerms = container.querySelectorAll<HTMLElement>('.deva-term');
     allTerms.forEach(async (el) => {
-      // First-time: convert SLP1 source to Devanagari and store as data-deva
-      if (el.dataset.script === 'slp1') {
-        const slp1 = el.dataset.term || el.textContent || '';
-        const deva = await transliterate(slp1, 'slp1', 'devanagari');
-        el.dataset.deva = deva;
+      // First-time: convert the source script (slp1 or iast) to Devanagari and
+      // store as the canonical data-deva.
+      if (el.dataset.script === 'slp1' || el.dataset.script === 'iast') {
+        const src = el.dataset.script as 'slp1' | 'iast';
+        // IAST is case-insensitive for Sanskrit (no capitals); a stray capital
+        // (e.g. "Dhātupāṭha") would break the parser, so lowercase IAST first.
+        let raw = el.dataset.term || el.textContent || '';
+        if (src === 'iast') raw = raw.toLowerCase();
+        el.dataset.deva = await transliterate(raw, src, 'devanagari');
         delete el.dataset.script;
       } else if (!el.dataset.deva) {
-        // Already Devanagari — store it
+        // Already Devanagari (or data-script="deva") — store it
         el.dataset.deva = el.dataset.term || el.textContent || '';
         delete el.dataset.script;
       }
@@ -372,8 +392,9 @@
     font-style: italic;
   }
 
+  /* @term[] now renders as a transliterating .deva-term (indigo, clickable);
+     the dotted underline marks it as having a jargon definition. */
   .commentary-content :global(.term-inline) {
-    border-bottom: 1px dotted #78716c;
-    cursor: help;
+    border-bottom: 1px dotted currentColor;
   }
 </style>

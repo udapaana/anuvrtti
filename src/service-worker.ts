@@ -38,15 +38,21 @@ sw.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
     const cache = await caches.open(CACHE);
 
-    // Cache-first for all ASSETS
-    if (ASSETS.includes(url.pathname)) {
+    // Content data (/data/*.json) is authored and rebuilt frequently, so it must
+    // NOT be served cache-first — that pins stale counts/content until the SW
+    // version bumps. Use network-first: fetch fresh, fall back to cache offline.
+    const isData = url.pathname.startsWith('/data/');
+
+    // Cache-first for immutable ASSETS (app shell, fonts, icons) — but not data.
+    if (!isData && ASSETS.includes(url.pathname)) {
       const cachedResponse = await cache.match(event.request);
       if (cachedResponse) return cachedResponse;
     }
 
     try {
       const response = await fetch(event.request);
-      // Cache successful responses for same-origin requests
+      // Cache successful same-origin responses (refreshes the data copy too, so
+      // it's available offline next time).
       if (response.status === 200 && url.origin === self.location.origin) {
         cache.put(event.request, response.clone());
       }

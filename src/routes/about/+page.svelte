@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>About | Anuvrtti</title>
+  <title>About | anuvrtti</title>
 </svelte:head>
 
 <div class="max-w-3xl mx-auto space-y-10">
@@ -81,12 +81,12 @@
   <!-- Site -->
   <section class="bg-white rounded-lg border border-stone-200 overflow-hidden">
     <div class="px-6 py-4 border-b border-stone-100 bg-stone-50">
-      <h2 class="text-base font-semibold text-stone-800">अनुवृत्ति · Anuvrtti</h2>
+      <h2 class="text-base font-semibold text-stone-800">अनुवृत्ति · anuvrtti</h2>
       <p class="text-xs text-stone-400 mt-0.5">This site</p>
     </div>
     <div class="px-6 py-5 text-sm text-stone-700 space-y-3">
       <p>
-        Anuvrtti is an open-source Sanskrit learning tool. The source is available on
+        anuvrtti is an open-source Sanskrit learning tool. The source is available on
         <a href="https://github.com/udapaana/anuvrtti" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">GitHub</a>.
       </p>
     </div>

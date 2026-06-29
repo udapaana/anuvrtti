@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { searchTerms, getCategories, lookupTerm, type Term, type TermCategory } from '$lib/jargon';
+  import { searchTerms, getCategories, getTermsByCategory, lookupTerm, type Term, type TermCategory } from '$lib/jargon';
   import { selectedTerm as selectedTermStore } from '$lib/stores/jargon';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import CommentaryText from '$lib/components/CommentaryText.svelte';
@@ -12,7 +12,9 @@
   // History for back navigation
   let termHistory = $state<Term[]>([]);
 
-  const categories = getCategories();
+  // Only categories that actually contain terms, so "browse by category" shows
+  // every populated group (not just the first few, and not empty ones).
+  const categories = getCategories().filter((c) => c.count > 0);
 
   // Listen for external term selection (from CommentaryText clicks or ClickableSanskrit)
   $effect(() => {
@@ -70,9 +72,7 @@
   }
 
   let displayTerms = $derived(
-    selectedCategory
-      ? searchTerms('').filter(t => t.category === selectedCategory)
-      : results
+    selectedCategory ? getTermsByCategory(selectedCategory) : results
   );
 </script>
 
@@ -90,17 +90,18 @@
     class="w-full px-0 py-1.5 text-sm border-0 border-b border-[#e2e8f0] bg-transparent focus:outline-none focus:border-[#f97316] mb-3 placeholder:text-[#cbd5e1]"
   />
 
-  <!-- Category filters -->
-  <div class="flex flex-wrap gap-3 mb-4">
-    {#each categories.slice(0, 4) as cat}
+  <!-- Category filters — all populated categories, with counts -->
+  <div class="flex flex-wrap gap-x-3 gap-y-1.5 mb-4">
+    {#each categories as cat}
       <button
         onclick={() => selectCategory(cat.category)}
+        title={cat.label}
         class="text-xs italic transition-colors
                {selectedCategory === cat.category
                  ? 'text-[#f97316] font-medium'
                  : 'text-[#94a3b8] hover:text-[#0f1419]'}"
       >
-        {cat.label.split(' ')[0].toLowerCase()}
+        {cat.label.split(' ')[0].toLowerCase()} <span class="not-italic text-[0.65rem] text-[#cbd5e1]">{cat.count}</span>
       </button>
     {/each}
   </div>
@@ -108,7 +109,7 @@
   <!-- Results -->
   {#if displayTerms.length > 0}
     <div class="max-h-64 overflow-y-auto -ml-1">
-      {#each displayTerms.slice(0, 10) as term}
+      {#each displayTerms.slice(0, selectedCategory ? 200 : 10) as term}
         <button
           onclick={() => selectTerm(term)}
           class="w-full text-left px-1 py-1 text-sm transition-colors
@@ -149,7 +150,7 @@
       <div class="text-xs text-stone-500 mb-2">{selectedTerm.termRoman}</div>
       <p class="text-sm text-stone-700 leading-relaxed"><CommentaryText text={selectedTerm.meaning} /></p>
       {#if selectedTerm.sutraRef}
-        <a href="/sutra/{selectedTerm.sutraRef}" class="text-xs text-indigo-600 hover:underline mt-2 inline-block">
+        <a href="/ref/{selectedTerm.sutraRef}" class="text-xs text-indigo-600 hover:underline mt-2 inline-block">
           → {selectedTerm.sutraRef}
         </a>
       {/if}

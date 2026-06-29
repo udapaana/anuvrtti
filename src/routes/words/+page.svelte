@@ -74,7 +74,7 @@
 
   {#if allWords.length === 0}
     <p class="empty">
-      No words yet. Work through some <a href="/learn">Bālabodhinī lessons</a> to build your vocabulary.
+      No words yet. Work through some <a href="/balabodhini">Bālabodhinī lessons</a> to build your vocabulary.
     </p>
   {:else}
     <div class="controls">

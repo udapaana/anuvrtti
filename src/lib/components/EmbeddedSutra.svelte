@@ -85,7 +85,7 @@
 {:else if sutra}
   <div class="embedded-sutra" class:compact>
     <div class="sutra-header">
-      <a href="/sutra/{sutra.id}" class="sutra-id">{sutra.id}</a>
+      <a href="/ref/{sutra.id}" class="sutra-id">{sutra.id}</a>
       {#if sutra.type !== 'other' && typeLabels[sutra.type]}
         <span class="sutra-type type-{sutra.type}">{typeLabels[sutra.type]}</span>
       {/if}

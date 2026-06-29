@@ -214,7 +214,7 @@
             <div class="phase-rules">
               {#each phase.steps.filter(s => isHighlighted(s) || PHASE_MARKERS[s.ruleCode]) as step}
                 <a
-                  href="/sutra/{step.ruleCode}"
+                  href="/ref/{step.ruleCode}"
                   class="rule-link"
                   class:highlighted={isHighlighted(step)}
                 >
@@ -278,7 +278,7 @@
               </span>
             </div>
             <a
-              href="/sutra/{step.ruleCode}"
+              href="/ref/{step.ruleCode}"
               class="step-rule"
               class:highlighted={isHighlighted(step)}
             >

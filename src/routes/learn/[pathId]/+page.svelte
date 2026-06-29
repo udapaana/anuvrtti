@@ -138,6 +138,19 @@
     document.getElementById(`step-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  // keyTerms in the source are mostly SLP1 (guRa, iK, dhAtu — case is meaningful)
+  // but a few slipped in as IAST (vṛddhi, Dhātupāṭha). Feeding an IAST term to the
+  // SLP1 transliterator garbles it (vṛddhi → "व्ṛद्द्हि"), so detect the script per
+  // term. IAST is case-insensitive for Sanskrit, so lowercase IAST to avoid a
+  // stray capital (Dhātu…) breaking the parser; SLP1 keeps its case.
+  function termScript(t: string): 'devanagari' | 'iast' | 'slp1' {
+    if (/[ऀ-ॿ]/.test(t)) return 'devanagari';
+    return /[āīūṛṝḷḹṅñṭḍṇśṣṃḥ]/.test(t) ? 'iast' : 'slp1';
+  }
+  function termText(t: string): string {
+    return termScript(t) === 'iast' ? t.toLowerCase() : t;
+  }
+
   // Prev/next navigation for Bālabodhini lesson sequences
   const siblingPaths = $derived.by(() => {
     if (!pathMeta) return { prev: null, next: null };
@@ -363,7 +376,7 @@
                   <div class="flex flex-wrap gap-2">
                     {#each step.keyTerms as term}
                       <span class="px-3 py-1 bg-stone-100 rounded-full text-sm text-stone-600">
-                        <Sanskrit text={term} source="slp1" />
+                        <Sanskrit text={termText(term)} source={termScript(term)} />
                       </span>
                     {/each}
                   </div>
@@ -462,7 +475,7 @@
                   <div class="flex flex-wrap gap-2">
                     {#each step.keyTerms as term}
                       <span class="px-3 py-1 bg-stone-100 rounded-full text-sm text-stone-600">
-                        <Sanskrit text={term} source="slp1" />
+                        <Sanskrit text={termText(term)} source={termScript(term)} />
                       </span>
                     {/each}
                   </div>

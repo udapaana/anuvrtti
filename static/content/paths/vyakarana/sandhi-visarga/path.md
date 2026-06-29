@@ -26,7 +26,7 @@ Visarga sandhi is the set of rules that governs these transformations. Mastering
 - When @deva[रु] surfaces as visarga @deva[ः]
 - When it becomes @deva[ओ] (the most common spoken change)
 - When it assimilates to a following sibilant
-- How final @deva[म्] becomes @deva[anusvāra] and then a homorganic nasal
+- How final @deva[म्] becomes @[anusvāra] and then a homorganic nasal
 
 ---
 
