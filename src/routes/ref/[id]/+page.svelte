@@ -4,7 +4,7 @@
   import type { Sutra, Commentary, LayeredSutraCommentary, CommentaryDepth } from '$lib/data/types';
   import SutraDisplay from '$lib/components/SutraDisplay.svelte';
   import CommentaryEditor from '$lib/components/CommentaryEditor.svelte';
-  import anuvrttiGraph from '$lib/components/anuvrttiGraph.svelte';
+  import AnuvrttiGraph from '$lib/components/AnuvrttiGraph.svelte';
   import JargonLookup from '$lib/components/JargonLookup.svelte';
   import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
@@ -210,7 +210,7 @@
       <!-- anuvrtti inheritance graph -->
       <section class="anuvrtti-graph-section">
         <h3 class="section-label"><Sanskrit text="anuvṛtti" source="iast" /> inheritance</h3>
-        <anuvrttiGraph {sutra} />
+        <AnuvrttiGraph {sutra} />
       </section>
 
       <!-- Prakriyā cross-links: sūtras that appear in concrete derivations -->
