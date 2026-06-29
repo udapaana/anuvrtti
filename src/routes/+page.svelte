@@ -167,7 +167,7 @@
       <span class="san font-{$displayScript}">{term('atha')}</span>
       <span class="san font-{$displayScript}">{term('sabdanusasanam')}</span>
     </p>
-    <h3 class="hero-title">A graded reader and a grammar, bridged — for both the classical and the vedic dialects.</h3>
+    <h4 class="hero-title">A graded reader and a grammar, bridged — for both the classical and the vedic dialects. These tools are pedagogical experiments in Sanskrit learning.</h4>
     <p class="hero-sub">
       The poets and logicians of old started their study of grammar already knowing a vedic corpus by heart. These tools try to close that gap.
     </p>
