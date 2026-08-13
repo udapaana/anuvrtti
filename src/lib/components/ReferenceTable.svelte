@@ -316,7 +316,7 @@
         {#if mode === 'scramble' && solvedCount === totalCount && totalCount > 0}
           <tr>
             <td colspan={table.headers.length + (table.rowHeaders ? 1 : 0)} class="solved-banner">
-              सर्वं सम्यक् ✓
+              <Sanskrit text="सर्वं सम्यक्" /> ✓
             </td>
           </tr>
         {/if}

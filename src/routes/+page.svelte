@@ -176,10 +176,10 @@
   <!-- THE THREE PILLARS -->
   <section class="pillars">
     <a class="pillar" href="/reader">
-      <div class="pillar-dev">पठनम्</div>
+      <div class="pillar-dev"><Sanskrit text="पठनम्" /></div>
       <div class="pillar-kicker">the graded reader</div>
       <p class="pillar-body">
-        A built sequence where the same word returns in new roles — कारक to विभक्ति felt, not
+        A built sequence where the same word returns in new roles — <Sanskrit text="कारक" /> to <Sanskrit text="विभक्ति" /> felt, not
         memorised. Each word opens its full derivation.
       </p>
       <div class="pillar-foot">
@@ -189,7 +189,7 @@
     </a>
 
     <a class="pillar" href="/balabodhini">
-      <div class="pillar-dev">बालबोधिनी</div>
+      <div class="pillar-dev"><Sanskrit text="बालबोधिनी" /></div>
       <div class="pillar-kicker">the classical primer</div>
       <p class="pillar-body">
         Kāśī Kṛṣṇa's graded course teaching Sanskrit through Telugu — vocabulary, paradigms, reading
@@ -202,7 +202,7 @@
     </a>
 
     <a class="pillar" href="/ref">
-      <div class="pillar-dev">सूत्र</div>
+      <div class="pillar-dev"><Sanskrit text="सूत्र" /></div>
       <div class="pillar-kicker">the reference</div>
       <p class="pillar-body">
         The Aṣṭādhyāyī as it lives in this corpus: every sūtra invoked, grouped by adhyāya, with the

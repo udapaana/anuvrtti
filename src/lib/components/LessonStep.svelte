@@ -861,7 +861,7 @@
           {#each bridgePaths as p}
             <li>
               <a href="/learn/{p.id}">
-                <span class="bridge-deva font-{$displayScript}">{p.label}</span>
+                <span class="bridge-deva"><Sanskrit text={p.label} /></span>
                 <span class="bridge-en">{p.title?.replace(/^[^—]+ — /, '') ?? ''}</span>
               </a>
             </li>

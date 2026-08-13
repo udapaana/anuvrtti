@@ -67,7 +67,7 @@
     <span class="sutra-id">{sutra.id}</span>
     <span class="sutra-text"><Sanskrit text={sutra.text} /></span>
     {#if sutra.type !== 'other' && typeLabels[sutra.type]}
-      <span class="sutra-type type-{sutra.type}">{typeLabels[sutra.type]}</span>
+      <span class="sutra-type type-{sutra.type}"><Sanskrit text={typeLabels[sutra.type]} /></span>
     {/if}
   </svelte:element>
 
@@ -83,7 +83,7 @@
     <div class="card-header">
       <span class="sutra-id">{sutra.id}</span>
       {#if sutra.type !== 'other' && typeLabels[sutra.type]}
-        <span class="sutra-type type-{sutra.type}">{typeLabels[sutra.type]}</span>
+        <span class="sutra-type type-{sutra.type}"><Sanskrit text={typeLabels[sutra.type]} /></span>
       {/if}
     </div>
     <div class="sutra-text-large"><Sanskrit text={sutra.text} /></div>
@@ -106,7 +106,7 @@
     <header class="full-header">
       <span class="sutra-id-large">{sutra.id}</span>
       {#if sutra.type !== 'other' && typeLabels[sutra.type]}
-        <span class="sutra-type type-{sutra.type}">{typeLabels[sutra.type]}</span>
+        <span class="sutra-type type-{sutra.type}"><Sanskrit text={typeLabels[sutra.type]} /></span>
       {/if}
     </header>
 
