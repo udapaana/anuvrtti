@@ -196,6 +196,35 @@ function main() {
   }
   console.log();
 
+  // ── सङ्ग्रह check ────────────────────────────────────────────────────────
+  // A consolidation passage may cite only rules already introduced at or below
+  // its own tier — that constraint IS the chapter. Violating it turns the
+  // passage back into an introduction, which is the thing it exists not to be.
+  // Caught this on ex180's first draft: it used 2.3.19 (सह + तृतीया) at tier 7,
+  // but that rule isn't introduced until tier 11.
+  const violations: string[] = [];
+  for (const r of corpus.filter((r) => r.kind === 'sangraha')) {
+    const tier = r.segment ?? 0;
+    const earlier = new Set(
+      corpus
+        .filter((o) => o.id !== r.id && (o.segment ?? 9999) <= tier)
+        .flatMap((o) => (o.words ?? []).flatMap((w) => (w.notes ?? []).map((n) => n.cite)))
+        .filter(Boolean) as string[]
+    );
+    for (const w of r.words ?? []) {
+      for (const n of w.notes ?? []) {
+        if (n.cite && !earlier.has(n.cite)) {
+          violations.push(`${r.id} (tier ${tier}) cites ${n.cite}, not introduced at or below tier ${tier}`);
+        }
+      }
+    }
+  }
+  if (violations.length) {
+    console.log(`  ⚠ सङ्ग्रह VIOLATIONS — consolidation passages must introduce nothing`);
+    for (const v of violations) console.log(`    ${v}`);
+    console.log();
+  }
+
   if (unclassified.length) {
     console.log(`  ── unclassified — cited but not declared in _rules.yaml (triage these) ──`);
     const show = process.argv.includes('--full') ? unclassified : unclassified.slice(0, 25);

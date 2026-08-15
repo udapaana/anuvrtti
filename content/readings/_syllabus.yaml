@@ -329,6 +329,24 @@ chapters:
     status: in_progress
     note: "kind:graded MULTI-SENTENCE narrative. The STORY is canonical; the SENTENCES are ours, pitched to grammar already met. A recurring cast threads through; sentences lengthen as the arc climbs, feeding into the attested ladder. ex095-097 = bāla-Kṛṣṇa (Gokula / butter-thief / दामबन्धन); ex098-101 = Pūtanā / mouth-universe / kāliya-damana / Govardhana; ex102-104 = Akrūra-summons / departure / कंस-वध (the Mathurā climax). NEW story arc: ex105-106 = Pañcatantra सिंहः-शशकः (lion & clever rabbit) — prohibitive मा+लङ्, future-promise, double-accusative मन्यते."
 
+  # ── the CONSOLIDATION track — no new rules, connected prose at volume ──
+  - id: sangraha
+    title: "सङ्ग्रह — consolidation passages: everything met, nothing new"
+    ranges: []                    # by design: introduces no rule of its own
+    prereqs: []                   # each passage's prereq is its own tier
+    status: in_progress
+    note: >
+      kind:sangraha. NOT introductions — every rule in a सङ्ग्रह passage was
+      already met in a short reading at or below its tier. The job is
+      RECURRENCE: the reader meets those rules again at volume, in prose where
+      the rule is scenery rather than the point. This is the cheap way to build
+      recurrence — most words need a bare identity tag rather than full
+      derivation apparatus, so one passage can consolidate a dozen rules for
+      roughly the authoring cost of two short readings. Sits at the tier whose
+      grammar it consolidates, which is only possible now that length and
+      difficulty are separate axes. ex180 = segments 1-6 (all six कारकas +
+      number + षष्ठी). The ledger reports tiers that have no passage.
+
   # ── the ATTESTED track — real passages, curated (climbs the difficulty ladder)
   - id: readings
     title: "पाठाः — real passages (Hitopadeśa → Purāṇa → Upaniṣad → Saṃhitā)"
