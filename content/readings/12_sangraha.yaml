@@ -38,6 +38,682 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex190
+  kind: sangraha
+  segment: 195
+  order: 1
+  sentence: राजा सभाम् आगच्छति। जनाः राजानम् पश्यन्ति। गुरुः अपि तत्र। राजा गुरवे धनम् यच्छति, गुरुः च राज्ञे धर्मम् कथयति। गमनम् श्रेयः इति राजा वदति। ततः राजानौ अपि आगच्छतः।
+  translation: The king comes to the assembly. The people see the king. The teacher is there too. The king gives wealth to the teacher, and the teacher tells the king about dharma. "Going is better," says the king. Then the two kings also arrive.
+  teaches: |
+    राजन् across its grades in one scene — राजा with the न् gone, राजानम् and
+    राजानौ where the ending is strong, राज्ञे where it is weak — with गुरुः and
+    गुरवे running the उ-stem alongside. गमनम् closes as an action-noun, the
+    thing rather than the doer.
+  words:
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: प्रथमा
+      en: nominative — the bare पद loses its final न्, leaving राजा
+    - cite: "8.2.7"
+      role: नलोपः प्रातिपदिकान्तस्य — the final न् of राजन् drops → राजा
+  - form: सभाम्
+    lemma: सभा
+    gloss: to the assembly
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative — आ-stem feminine
+  - form: आगच्छति
+    lemma: गम्
+    gloss: comes
+    notes:
+    - term: लट्
+      en: present
+  - form: जनाः
+    lemma: जन
+    gloss: the people
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: बहुवचन
+      en: nominative plural
+  - form: राजानम्
+    lemma: राजन्
+    gloss: the king (obj.)
+    notes:
+    - term: सर्वनामस्थान
+      en: the strong stem — the न् returns and the अ lengthens
+    - term: द्वितीया
+      en: accusative
+  - form: पश्यन्ति
+    lemma: दृश्
+    gloss: see
+    notes:
+    - term: बहुवचन
+      en: present plural
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: प्रथमा
+      en: nominative — a उ-stem masculine
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable — the sentence needs no verb
+  - form: गुरवे
+    lemma: गुरु
+    gloss: to the teacher
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative — उ takes गुण, गुरु → गुरवे
+    - cite: "7.3.111"
+      role: घेर्ङिति — गुण before the ङित् ending → गुरवे
+  - form: धनम्
+    lemma: धन
+    gloss: wealth
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: यच्छति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: लट्
+      en: present
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: राज्ञे
+    lemma: राजन्
+    gloss: to the king
+    notes:
+    - term: चतुर्थी
+      en: the weak stem — राजन् loses its अ before a vowel ending, giving राज्ञ्
+  - form: धर्मम्
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: कथयति
+    lemma: कथ्
+    gloss: tells
+    notes:
+    - term: लट्
+      en: present
+  - form: गमनम्
+    lemma: गमन
+    gloss: going
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — the act itself, not the one who acts
+    - cite: "3.3.115"
+      role: ल्युट् च — ल्युट् makes the action-noun गमनम् from गम्
+  - form: श्रेयः
+    lemma: श्रेयस्
+    gloss: better
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — predicated of गमनम्
+  - form: इति
+    lemma: इति
+    gloss: "thus"
+    notes:
+    - term: अव्यय
+      en: closes the quotation
+  - form: वदति
+    lemma: वद्
+    gloss: says
+    notes:
+    - term: लट्
+      en: present
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: राजानौ
+    lemma: राजन्
+    gloss: the two kings
+    notes:
+    - term: सर्वनामस्थान
+      en: strong again, now in the dual — राजा, राजानम्, राज्ञे, राजानौ
+    - term: द्विवचन
+      en: nominative dual
+  - form: आगच्छतः
+    lemma: गम्
+    gloss: the two arrive
+    notes:
+    - term: द्विवचन
+      en: dual verb
+  vyakhya: राजा राजानम् राज्ञे राजानौ — एकं नाम, त्रयः आदेशाः।
+  vyakhya_en: |
+    राजन् appears four times and looks different each time: राजा without its
+    न्, राजानम् and राजानौ with the न् back and the vowel long, राज्ञे with the
+    अ squeezed out. The word never changes its meaning. What changes is which
+    ending follows, and whether that ending belongs to the strong set.
+
+- id: ex189
+  kind: sangraha
+  segment: 175
+  order: 1
+  sentence: यः पठति सः जानाति। सा अपि पठति, तस्यै गुरुः पुस्तकम् यच्छति। तस्मै बालाय अपि यच्छति। ते पठन्ति, ताः च पठन्ति। गच्छन् बालः पुस्तकम् वहति। अहम् तान् पश्यामि।
+  translation: He who reads, knows. She reads too; the teacher gives her a book. He gives one to that boy as well. They read, and they (the women) read. Walking along, the boy carries the book. I see them.
+  teaches: |
+    तद् and यद् through their forms in one paragraph — सः, सा, ते, ताः, तान्,
+    and the datives तस्यै and तस्मै that take स्मै rather than the noun ending
+    आय. The relative-correlative यः … सः opens, and गच्छन् shows the present
+    participle doing the work a second verb would otherwise need.
+  words:
+  - form: 'यः'
+    lemma: यद्
+    gloss: he who
+    notes:
+    - term: सर्वनाम
+      en: the relative pronoun, opening the correlative frame
+    - term: प्रथमा
+      en: nominative
+    - cite: "1.1.27"
+      role: सर्वादीनि सर्वनामानि — यद् and तद् belong to the सर्वनाम class
+  - form: पठति
+    lemma: पठ्
+    gloss: reads
+    notes:
+    - term: लट्
+      en: present
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: the correlative answering यः
+    - term: प्रथमा
+      en: nominative masculine
+  - form: जानाति
+    lemma: ज्ञा
+    gloss: knows
+    notes:
+    - term: लट्
+      en: present
+  - form: सा
+    lemma: तद्
+    gloss: she
+    notes:
+    - term: प्रथमा
+      en: nominative feminine — सा beside masculine सः
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तस्यै
+    lemma: तद्
+    gloss: to her
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: the सर्वनाम dative — स्यै, where a noun would take आय
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पुस्तकम्
+    lemma: पुस्तक
+    gloss: a book
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: neuter accusative
+  - form: यच्छति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: लट्
+      en: present
+  - form: तस्मै
+    lemma: तद्
+    gloss: to that
+    notes:
+    - term: चतुर्थी
+      en: the masculine of तस्यै — स्मै, again not the noun ending
+    - cite: "7.1.14"
+      role: सर्वनाम्नः स्मै — the सर्वनाम dative singular → तस्मै
+  - form: बालाय
+    lemma: बाल
+    gloss: to the boy
+    notes:
+    - term: चतुर्थी
+      en: the ordinary noun dative — आय, beside तस्मै in the same clause
+  - form: ते
+    lemma: तद्
+    gloss: they
+    notes:
+    - term: बहुवचन
+      en: nominative plural masculine
+  - form: पठन्ति
+    lemma: पठ्
+    gloss: read
+    notes:
+    - term: बहुवचन
+      en: present plural
+  - form: 'ताः'
+    lemma: तद्
+    gloss: they (the women)
+    notes:
+    - term: बहुवचन
+      en: nominative plural feminine — ताः beside masculine ते
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: गच्छन्
+    lemma: गम्
+    gloss: walking, as he goes
+    notes:
+    - term: शतृ
+      en: present participle — carries a second action without a second verb
+    - cite: "3.2.124"
+      role: लटः शतृशानचौ — शतृ replaces लट् → गच्छन्
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वहति
+    lemma: वह्
+    gloss: carries
+    notes:
+    - term: लट्
+      en: present
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: उत्तमपुरुष
+      en: the speaker — अस्मद् has no stem-form here, अहम् is suppletive
+  - form: तान्
+    lemma: तद्
+    gloss: them
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative plural masculine
+  - form: पश्यामि
+    lemma: दृश्
+    gloss: I see
+    notes:
+    - term: उत्तमपुरुष
+      en: first person singular
+  vyakhya: सर्वनाम्नः स्मै, नाम्नः आय। तस्मै बालाय — एकस्मिन् वाक्ये उभे।
+  vyakhya_en: |
+    तस्मै and बालाय stand side by side in one clause, both datives, both
+    pointing at the same boy. One takes स्मै because तद् is a सर्वनाम; the
+    other takes आय because बाल is an ordinary noun. The सर्वनाम class is not
+    a meaning — it is a list of stems that decline differently, and this is
+    where the difference shows.
+
+- id: ex188
+  kind: sangraha
+  segment: 145
+  order: 1
+  sentence: गुरुः शिष्यम् वदति — ग्रामम् गच्छ, तत्र धर्मम् पश्य। शिष्यः चिन्तयति — अहम् गच्छेयम्, किन्तु मार्गः दीर्घः। गुरुः वदति — यः धर्मम् इच्छति सः गच्छेत्। शिष्यः सुखी भूयात् इति गुरुः आशास्ते।
+  translation: The teacher says to the student — "Go to the village; see dharma there." The student thinks — "I would go, but the road is long." The teacher says — "He who wants dharma should go." "May the student be happy," the teacher blesses.
+  teaches: |
+    the three moods set against each other in one exchange: गच्छ and पश्य as
+    plain commands, गच्छेयम् and गच्छेत् for what one would or ought to do, and
+    भूयात् as a blessing. The same root गम् carries the first three, so only the
+    ending distinguishes an order from a recommendation.
+  words:
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: agent — a उ-stem masculine
+    - term: प्रथमा
+      en: nominative
+  - form: शिष्यम्
+    lemma: शिष्य
+    gloss: to the student
+    notes:
+    - term: कर्मन्
+      en: object of वद्
+    - term: द्वितीया
+      en: accusative
+  - form: वदति
+    lemma: वद्
+    gloss: says
+    notes:
+    - term: लट्
+      en: present
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: गच्छ
+    lemma: गम्
+    gloss: go
+    notes:
+    - term: लोट्
+      en: imperative — a bare command, no ending at all in the 2nd sg.
+    - cite: "3.3.162"
+      role: लोट् च — the imperative for a command → गच्छ
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: धर्मम्
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: पश्य
+    lemma: दृश्
+    gloss: see
+    notes:
+    - term: लोट्
+      en: a second imperative alongside the first
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: the student
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: चिन्तयति
+    lemma: चिन्त्
+    gloss: thinks
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: उत्तमपुरुष
+      en: the speaker
+  - form: गच्छेयम्
+    lemma: गम्
+    gloss: I would go
+    notes:
+    - term: विधिलिङ्
+      en: optative, first person — what the speaker might or would do
+    - cite: "3.3.161"
+      role: विधिनिमन्त्रण… लिङ् — the optative → गच्छेयम्
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable — adversative
+  - form: मार्गः
+    lemma: मार्ग
+    gloss: the road
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: दीर्घः
+    lemma: दीर्घ
+    gloss: (is) long
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — predicated without a verb
+  - form: 'यः'
+    lemma: यद्
+    gloss: he who
+    notes:
+    - term: प्रथमा
+      en: the relative, answered by सः
+  - form: इच्छति
+    lemma: इष्
+    gloss: wants
+    notes:
+    - term: लट्
+      en: present
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative — answers यः
+  - form: गच्छेत्
+    lemma: गम्
+    gloss: should go
+    notes:
+    - term: विधिलिङ्
+      en: the same optative, third person — advice rather than an order
+  - form: सुखी
+    lemma: सुखिन्
+    gloss: happy
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — इन्-stem, न् drops in the nom.sg
+  - form: भूयात्
+    lemma: भू
+    gloss: may he be
+    notes:
+    - term: आशीर्लिङ्
+      en: the benedictive — a wish, distinct in form from गच्छेत्
+  - form: इति
+    lemma: इति
+    gloss: "thus"
+    notes:
+    - term: अव्यय
+      en: closes the quotation
+  - form: आशास्ते
+    lemma: शास्
+    gloss: blesses
+    vocab: true
+    notes:
+    - term: आत्मनेपद
+      en: middle voice
+  vyakhya: आज्ञा गच्छ, विधिः गच्छेत्, आशीः भूयात्। एकः अर्थः, त्रीणि रूपाणि।
+  vyakhya_en: |
+    गच्छ orders, गच्छेत् recommends, भूयात् wishes. All three point at an action
+    that has not happened yet, and nothing in the root or the sense separates
+    them — only the ending does. That is what a लकार is: not a tense in the
+    English sense, but a slot that carries mood and time together.
+
+- id: ex187
+  kind: sangraha
+  segment: 45
+  order: 1
+  sentence: अहम् ग्रामम् गच्छामि। त्वम् अपि ग्रामम् गच्छसि। नरः ग्रामे भवति। नरौ ग्रामम् गच्छतः। बालाः ग्रामात् आगच्छन्ति। अहम् तत्र न अगच्छम्। त्वम् तत्र अगच्छः।
+  translation: I go to the village. You too go to the village. The man is in the village. The two men go to the village. The boys come back from the village. I did not go there. You went there.
+  teaches: |
+    one verb-stem run across all three persons and all three numbers, then
+    turned into the past: गच्छामि, गच्छसि, गच्छति, गच्छतः, आगच्छन्ति, and then
+    अगच्छम् and अगच्छः with the augment. Only तत्र is new.
+  words:
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: उत्तमपुरुष
+      en: the speaker
+    - term: प्रथमा
+      en: nominative
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: गच्छामि
+    lemma: गम्
+    gloss: I go
+    notes:
+    - term: उत्तमपुरुष
+      en: the मि ending — first person singular
+    - cite: "3.4.78"
+      role: तिप्तस्झि… — मिप् for the speaker, giving गच्छामि
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: you
+    notes:
+    - term: मध्यमपुरुष
+      en: the one addressed
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: गच्छसि
+    lemma: गम्
+    gloss: you go
+    notes:
+    - term: मध्यमपुरुष
+      en: the सि ending — same stem गच्छ्, different person
+  - form: नरः
+    lemma: नर
+    gloss: the man
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in the village
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: भवति
+    lemma: भू
+    gloss: is
+    notes:
+    - term: प्रथमपुरुष
+      en: the ति ending — भू takes गुण before शप्, भो → भव्
+  - form: नरौ
+    lemma: नर
+    gloss: the two men
+    notes:
+    - term: द्विवचन
+      en: dual
+    - term: प्रथमा
+      en: nominative dual
+  - form: गच्छतः
+    lemma: गम्
+    gloss: the two go
+    notes:
+    - term: द्विवचन
+      en: the तस् ending — the verb answers the dual agent
+  - form: बालाः
+    lemma: बाल
+    gloss: the boys
+    notes:
+    - term: बहुवचन
+      en: plural
+    - term: प्रथमा
+      en: nominative plural
+  - form: ग्रामात्
+    lemma: ग्राम
+    gloss: from the village
+    notes:
+    - term: अपादान
+      en: source
+    - term: पञ्चमी
+      en: ablative
+  - form: आगच्छन्ति
+    lemma: गम्
+    gloss: they come back
+    notes:
+    - term: बहुवचन
+      en: the अन्ति ending — third person plural
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: 'न'
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: अगच्छम्
+    lemma: गम्
+    gloss: I went
+    notes:
+    - term: लङ्
+      en: the past — the augment अ in front, and the ending shortens to अम्
+    - cite: "3.2.111"
+      role: अनद्यतने लङ् — the past before today → अगच्छम्
+  - form: अगच्छः
+    lemma: गम्
+    gloss: you went
+    notes:
+    - term: लङ्
+      en: the same augment, second person — अगच्छम् beside अगच्छः
+  vyakhya: एकः धातुः, नव रूपाणि। पुरुषः वचनं च अन्ते दृश्येते।
+  vyakhya_en: |
+    गम् does not change. गच्छ् is the same stem in all seven verbs here; what
+    moves is the ending — मि, सि, ति, तः, अन्ति — and then the augment अ that
+    marks the past. Sanskrit puts person and number where English puts a
+    pronoun, which is why अहम् and त्वम् can be dropped without loss.
+
 - id: ex186
   kind: sangraha
   segment: 85
