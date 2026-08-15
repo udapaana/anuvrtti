@@ -110,7 +110,7 @@ function main() {
     if (!forms.size) continue;
     if (r.kind === 'paradigm' || String(r.sentence ?? '').includes('→')) continue;
     const toks = String(r.sentence ?? '')
-      .replace(/[।॥,;]/g, ' ')
+      .replace(/[।॥,;—"“”?!]/g, ' ')
       .split(/\s+/)
       .filter(Boolean)
       .map(anusvara);

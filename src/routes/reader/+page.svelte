@@ -128,7 +128,7 @@
         // Prose passages (kind:sangraha, katha) use commas inside a sentence,
         // and a token like "क्रुध्यति," would otherwise miss its gloss and
         // render bare — the failure is silent, so it must be handled here.
-        const clean = anusvara(tx.replace(/[।॥,;]/g, '').trim());
+        const clean = anusvara(tx.replace(/[।॥,;—"“”?!]/g, '').trim());
         const wi = clean in formIndex ? formIndex[clean] : -1;
         // A word is FOCAL (the reading's new/derived word) when it carries a sūtra
         // citation. Focal words show their gloss by default; KNOWN words collapse

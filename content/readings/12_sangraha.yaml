@@ -32,6 +32,144 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex186
+  kind: sangraha
+  segment: 85
+  order: 1
+  sentence: रामश्च लक्ष्मणश्च वनमगच्छताम्। तत्रर्षिरुवाच — नमस्ते वीर, सोऽपि धर्मं रक्षति। तयोर्गुरुराच्छादयति वनम्। पुनर्ग्राममागच्छतो नरौ।
+  translation: Rāma and Lakṣmaṇa went to the forest. There a sage said — "Homage to you, hero; he too protects dharma." Their teacher covers the forest. The two men come back to the village again.
+  teaches: |
+    सङ्ग्रह for tier 80 — sandhi, and the ONE tier whose short readings cannot
+    do their own job. The tier-80 readings are written as transformations:
+    रामः च लक्ष्मणः च → रामश्च लक्ष्मणश्च. That display shows the mechanism
+    perfectly and hides the only skill that matters, because the reader is
+    given the un-joined form and asked to watch it join. In real text no one
+    hands you दधि इन्द्रः; you meet दधीन्द्रः and must undo it.
+
+    So this passage is written WITH the sandhi applied and nothing marked. Each
+    word here is a join the reader met at tier 80, now unannounced: रामश्च
+    (visarga → श् before च्), तत्रर्षिः (सवर्णदीर्घ, अ + ऋ), उवाच+नमस्ते
+    (visarga → स् before त्), सोऽपि (visarga → ओ, with अवग्रह), तयोर्गुरुः
+    (visarga → र्), आच्छादयति (छ-doubling), पुनर्ग्रामम् (the र्-outcome),
+    आगच्छतो नरौ (visarga → ओ again, across a word boundary).
+
+    The `words` table gives each joined form with its constituents, so the
+    reader who stalls can see the seam — but the sentence itself never shows
+    it. This is the format every sandhi consolidation should take.
+  words:
+  - form: रामश्च
+    lemma: राम
+    gloss: and Rāma
+    notes:
+    - term: सन्धि
+      en: रामः + च — the visarga becomes श् before a च्-class stop
+    - cite: "8.4.40"
+      role: स्तोः श्चुना श्चुः — श्चुत्व applied to the visarga-sibilant → रामश्च
+  - form: लक्ष्मणश्च
+    lemma: लक्ष्मण
+    gloss: and Lakṣmaṇa
+    notes:
+    - term: सन्धि
+      en: लक्ष्मणः + च — the same join, immediately repeated
+    - term: प्रथमा
+      en: nominative
+  - form: वनमगच्छताम्
+    lemma: वन
+    gloss: went to the forest
+    notes:
+    - term: सन्धि
+      en: वनम् + अगच्छताम् — the म् simply carries onto the following vowel
+    - term: द्वितीया
+      en: वनम् is कर्मन्, goal of motion; अगच्छताम् is dual past (लङ्)
+  - form: तत्रर्षिरुवाच
+    lemma: ऋषि
+    gloss: there a sage said
+    notes:
+    - term: सन्धि
+      en: तत्र + ऋषिः + उवाच — अ + ऋ merge, then the visarga of ऋषिः → र्
+    - cite: "6.1.101"
+      role: अकः सवर्णे दीर्घः — तत्र + ऋषिः gives तत्रर्षिः
+  - form: नमस्ते
+    lemma: नमस्
+    gloss: homage to you
+    notes:
+    - term: सन्धि
+      en: नमः + ते — the visarga becomes स् before a त्-class stop
+    - term: चतुर्थी
+      en: ते is dative — नमस् governs the चतुर्थी
+  - form: वीर
+    lemma: वीर
+    gloss: O hero
+    vocab: true
+    notes:
+    - term: सम्बोधन
+      en: vocative — the one addressed
+  - form: सोऽपि
+    lemma: तद्
+    gloss: he too
+    notes:
+    - term: सन्धि
+      en: सः + अपि — visarga → ओ, and the अ of अपि elides, marked by ऽ
+    - cite: "6.1.113"
+      role: अतो रोरप्लुतादप्लुते — रु → उ, then गुण gives सो, and अपि loses its अ
+  - form: धर्मं
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative — written with anusvāra before the following र्
+  - form: रक्षति
+    lemma: रक्ष्
+    gloss: protects
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+  - form: तयोर्गुरुराच्छादयति
+    lemma: गुरु
+    gloss: their teacher covers
+    notes:
+    - term: सन्धि
+      en: तयोः + गुरुः + आच्छादयति — two visargas → र्, then आ + छ doubles the छ
+    - cite: "6.1.73"
+      role: छे च — a short vowel before छ takes the तुक् augment → आच्छादयति
+  - form: वनम्
+    lemma: वन
+    gloss: the forest
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: पुनर्ग्राममागच्छतो
+    lemma: ग्राम
+    gloss: come back to the village again
+    notes:
+    - term: सन्धि
+      en: पुनः + ग्रामम् + आगच्छतः — visarga → र्, then final visarga → ओ before न्
+    - cite: "8.3.15"
+      role: खरवसानयोर्विसर्जनीयः — the रु/visarga alternation running twice in one word-group
+  - form: नरौ
+    lemma: नर
+    gloss: the two men
+    notes:
+    - term: द्विवचन
+      en: nominative dual — agreeing with the dual verb आगच्छतः
+  vyakhya: सन्धिः पदच्छेदे ज्ञायते, न तु योजने। यत् पठसि तत् विभज।
+  vyakhya_en: |
+    Every tier-80 reading hands you the pieces and shows them joining. Real
+    text does the opposite: it hands you रामश्च and तत्रर्षिरुवाच, and the work
+    is to take them apart. That is पदच्छेद, and it is the actual skill — sandhi
+    is not something you perform when writing, it is something you undo when
+    reading.
+
+    Nothing in this passage is marked. Read it aloud first; the joins are
+    easier to hear than to see. Where you stall, the word-list below gives the
+    constituents — but try the seam yourself before looking, because looking is
+    what the tier-80 readings already let you do.
+
 - id: ex182
   kind: sangraha
   segment: 15
