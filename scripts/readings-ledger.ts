@@ -177,10 +177,14 @@ function main() {
     const b = tiers.get(t)!;
     b[r.length ?? 'short']++;
   }
+  // Not every starved tier deserves a passage. A tier with two short readings
+  // has almost nothing to consolidate; a tier with fourteen is where the reader
+  // actually drowns. Rank by how much is sitting there unconsolidated so the
+  // authoring queue is ordered by need rather than by tier number.
   const starved = [...tiers.entries()]
     .filter(([, b]) => b.passage + b.long === 0 && b.short > 0)
-    .map(([t]) => t)
-    .sort((a, b) => a - b);
+    .map(([t, b]) => ({ tier: t, n: b.short }))
+    .sort((a, b) => b.n - a.n || a.tier - b.tier);
 
   console.log(`  LENGTH × DIFFICULTY — independent axes`);
   const totals = corpus.reduce(
@@ -191,8 +195,16 @@ function main() {
     `    short ${totals.short}   passage ${totals.passage}   long ${totals.long}   (${pct(totals.passage + totals.long, corpus.length)} of readings are connected prose)`
   );
   if (starved.length) {
-    console.log(`    tiers with NO passage — nothing consolidates their new rules:`);
-    console.log(`      ${starved.join(', ')}`);
+    const worst = starved.slice(0, 10);
+    console.log(`    tiers with NO passage, by how much sits there unconsolidated:`);
+    for (const s of worst) {
+      console.log(`      tier ${String(s.tier).padStart(3)}  ${'▪'.repeat(Math.min(s.n, 20))} ${s.n} short readings`);
+    }
+    if (starved.length > worst.length) {
+      const rest = starved.length - worst.length;
+      const light = starved.slice(worst.length).filter((s) => s.n <= 2).length;
+      console.log(`      … and ${rest} lighter tiers (${light} of them ≤2 readings — likely not worth a passage)`);
+    }
   }
   console.log();
 

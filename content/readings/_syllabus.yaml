@@ -17,6 +17,23 @@
 #  Subtopics get added as the writing reveals the right boundaries — do not
 #  outline a chapter to its leaves before writing any of it.
 #
+#  ── numbering conventions (read before authoring) ──────────────────────
+#
+#  `segment` is the AUTHORED difficulty tier, numbered in TENS (10, 20, 30…).
+#  The ×10 spacing is deliberate: tiers were once packed 1..57 with no gaps,
+#  so inserting a consolidation passage between two tiers meant renumbering
+#  every reading above it. Number new tiers in 10s and use the nine slots
+#  between (71..79) for anything that must sit inside an existing tier.
+#  The reader never displays `segment` — the build derives a dense
+#  `position` (1..n) on every rebuild, so display order cannot drift.
+#
+#  `id` (ex001, rd001…) is AUTHORING order and nothing more. It disagrees
+#  with pedagogical order on ~33% of pairs — ex119-130 were written late but
+#  belong at tier 50 — so never read an id as a sequence, and never renumber
+#  ids to "fix" the disagreement: the next batch authored into an early tier
+#  would break it again. Ids are permanent labels; `segment` is the order.
+#  Optional `order:` breaks ties within one tier when sequence matters.
+#
 #  status: done | in_progress | next | stub
 #  Each topic: id, title, sutra ranges (defining core), prerequisites, the
 #  reading ids (from readings.yaml) that serve it, and a status.

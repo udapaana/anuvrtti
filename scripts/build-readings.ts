@@ -81,9 +81,25 @@ function main() {
   // grammar the reader already owns is EASIER per-word than a short sentence
   // carrying a new rule. Sorting on length would push exactly the
   // consolidation passages we want mid-tier to the end of the reader.
+  //
+  // Ties break by `order` when authored (see below), then by id. Id order is
+  // AUTHORING order and disagrees with pedagogical order on ~33% of pairs —
+  // ex119-130 were written late but belong at tier 5 — so it is only ever a
+  // stable-sort fallback, never a meaningful sequence.
   const sequence = [...flat].sort(
-    (a, b) => (a.segment ?? 9999) - (b.segment ?? 9999) || String(a.id).localeCompare(String(b.id))
+    (a, b) =>
+      (a.segment ?? 9999) - (b.segment ?? 9999) ||
+      (a.order ?? 0) - (b.order ?? 0) ||
+      String(a.id).localeCompare(String(b.id))
   );
+
+  // Dense display position, derived. `segment` is the AUTHORED tier and is
+  // deliberately sparse (see the ×10 convention in _syllabus.yaml): tiers were
+  // packed 1..57 with no gaps, so inserting a consolidation passage between
+  // tiers 5 and 6 meant renumbering every reading above it. Authors now number
+  // in 10s and insert freely; `position` is what the reader counts with, and it
+  // is recomputed on every build so it can never drift from the authored order.
+  sequence.forEach((r, i) => (r.position = i + 1));
 
   fs.writeFileSync(OUTPUT, JSON.stringify({ chapters, sequence }, null, 2));
   console.log(
