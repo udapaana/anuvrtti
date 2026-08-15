@@ -1,0 +1,210 @@
+# ════════════════════════════════════════════════════════════════════════
+#  _rules.yaml — the TARGET SET: which sūtras this reader intends to teach,
+#  and at what depth.
+#
+#  Why this file exists. "Coverage" is meaningless without a denominator.
+#  The Aṣṭādhyāyī has 3,983 sūtras; a learner's reader needs a few hundred.
+#  Counting progress against 3,983 (or against open-ended syllabus ranges)
+#  can't distinguish progress from drift. This file names the target.
+#
+#  The load-bearing / leaf split. These are taught differently and must be
+#  MEASURED differently:
+#
+#    load_bearing — structural rules the reader meets constantly (case
+#      assignment, common lakāras, productive kṛt affixes, core sandhi).
+#      A rule is learned by RECURRENCE, not by demonstration. Target:
+#      >= `encounters_target` appearances across decreasing gloss density.
+#      Most recurrence is FREE — it accrues because real sentences need
+#      these rules, not because readings were authored to drill them.
+#
+#    leaf — the long tail (अन्तरेण-governance, one-off kṛt affixes, visarga
+#      micro-outcomes). Met once, cited well, looked up later. ONE encounter
+#      is the CORRECT outcome, not a deficit. The reference commentary
+#      (all 3,983 sūtras, three tiers) carries these; the reader need not.
+#
+#  This distinction is the point of the file. Before it, 100 of 184 cited
+#  sūtras appeared exactly once and that read as a 54% failure. Most of
+#  those are leaves doing exactly what they should.
+#
+#  Membership is DECLARED, not derived. Deriving load-bearing status from
+#  observed frequency is circular: it would only ever find rules already
+#  well covered, and would miss precisely the under-taught core we want
+#  surfaced (चतुर्थी, पञ्चमी, आत्मनेपद, the full लट् table). A rule can be
+#  load-bearing and barely taught — that gap is the ledger's main product.
+#
+#  Not exhaustive, and not meant to be. Add rules as chapters firm up;
+#  the same "FIRM at the top, DISCOVERED toward the leaves" rule that
+#  governs _syllabus.yaml applies here.
+#
+#  Consumed by scripts/readings-ledger.ts. Anything cited by a reading but
+#  absent here is reported as `unclassified` — a prompt to triage, not an
+#  error.
+# ════════════════════════════════════════════════════════════════════════
+
+# Default number of distinct readings a load-bearing rule must appear in
+# before it counts as taught. Override per-rule with `encounters_target`.
+defaults:
+  encounters_target: 5
+
+load_bearing:
+
+  # ── कारक: the role saṃjñās ──────────────────────────────────────────
+  - cite: "1.4.49"
+    gloss: "कर्तुरीप्सिततमं कर्म — the object role"
+  - cite: "1.4.54"
+    gloss: "स्वतन्त्रः कर्ता — the agent role"
+  - cite: "1.4.42"
+    gloss: "साधकतमं करणम् — the instrument role"
+  - cite: "1.4.32"
+    gloss: "कर्मणा यमभिप्रैति स सम्प्रदानम् — the recipient role"
+  - cite: "1.4.24"
+    gloss: "ध्रुवमपायेऽपादानम् — the source role"
+  - cite: "1.4.45"
+    gloss: "आधारोऽधिकरणम् — the locus role"
+
+  # ── कारक: विभक्ति assignment (the highest-traffic rules in the corpus) ─
+  - cite: "2.3.2"
+    gloss: "कर्मणि द्वितीया — accusative for the object"
+  - cite: "2.3.18"
+    gloss: "कर्तृकरणयोस्तृतीया — instrumental for agent/instrument"
+  - cite: "2.3.13"
+    gloss: "चतुर्थी सम्प्रदाने — dative for the recipient"
+  - cite: "2.3.28"
+    gloss: "अपादाने पञ्चमी — ablative for the source"
+  - cite: "2.3.36"
+    gloss: "सप्तम्यधिकरणे च — locative for the locus"
+  - cite: "2.3.50"
+    gloss: "षष्ठी शेषे — genitive as the residual case"
+  - cite: "2.3.46"
+    gloss: "प्रातिपदिकार्थ… प्रथमा — nominative for the bare stem-sense"
+  - cite: "2.3.47"
+    gloss: "सम्बोधने च — the vocative"
+  - cite: "2.3.1"
+    gloss: "अनभिहिते — the governing condition on all of 2.3"
+
+  # ── वचन / सुप् frame ────────────────────────────────────────────────
+  - cite: "1.4.21"
+    gloss: "बहुषु बहुवचनम् — plural"
+  - cite: "1.4.22"
+    gloss: "द्व्येकयोर्द्विवचनैकवचने — dual and singular"
+  - cite: "4.1.2"
+    gloss: "स्वौजस्… — the सुप् endings themselves"
+  - cite: "1.1.27"
+    gloss: "सर्वादीनि सर्वनामानि — the pronoun class"
+
+  # ── तिङ् frame and the common lakāras ───────────────────────────────
+  - cite: "3.4.78"
+    gloss: "तिप्तस्झि… — the eighteen तिङ् endings"
+  - cite: "3.4.77"
+    gloss: "लस्य — the endings replace the लकार"
+  - cite: "1.4.99"
+    gloss: "लः परस्मैपदम् — परस्मैपद"
+  - cite: "1.4.100"
+    gloss: "तङानावात्मनेपदम् — आत्मनेपद"
+  - cite: "3.2.123"
+    gloss: "वर्तमाने लट् — the present"
+  - cite: "3.2.111"
+    gloss: "अनद्यतने लङ् — the imperfect"
+  - cite: "3.2.115"
+    gloss: "परोक्षे लिट् — the perfect"
+  - cite: "3.3.13"
+    gloss: "लृट् शेषे च — the future"
+  - cite: "3.3.161"
+    gloss: "विधिनिमन्त्रण… लिङ् — the optative"
+  - cite: "3.3.162"
+    gloss: "लोट् च — the imperative"
+  - cite: "3.1.68"
+    gloss: "कर्तरि शप् — the शप् विकरण"
+  - cite: "3.1.67"
+    gloss: "सार्वधातुके यक् — the passive विकरण"
+  - cite: "1.3.13"
+    gloss: "भावकर्मणोः — आत्मनेपद in passive/impersonal"
+
+  # ── अङ्ग operations that shape nearly every form ────────────────────
+  - cite: "7.3.84"
+    gloss: "सार्वधातुकार्धधातुकयोः — guṇa before सार्वधातुक/आर्धधातुक"
+  - cite: "7.3.86"
+    gloss: "पुगन्तलघूपधस्य च — guṇa of a light penult"
+  - cite: "7.1.12"
+    gloss: "टाङसिङसामिनात्स्याः — the अ-stem oblique singulars"
+  - cite: "7.1.70"
+    gloss: "उगिदचां सर्वनामस्थानेऽधातोः — नुम् in strong cases"
+  - cite: "6.4.8"
+    gloss: "सर्वनामस्थाने चासम्बुद्धौ — lengthening in strong cases"
+
+  # ── कृदन्त: the productive participles and verbal nouns ─────────────
+  - cite: "3.2.102"
+    gloss: "निष्ठा — the past participle क्त/क्तवतु"
+  - cite: "3.2.124"
+    gloss: "लटः शतृशानचौ — the present participle"
+  - cite: "3.4.21"
+    gloss: "समानकर्तृकयोः पूर्वकाले — the gerund क्त्वा"
+  - cite: "3.3.10"
+    gloss: "तुमुन्ण्वुलौ — the infinitive"
+  - cite: "3.3.115"
+    gloss: "ल्युट् च — the action-noun in -अन"
+  - cite: "3.1.133"
+    gloss: "ण्वुल्तृचौ — the agent-nouns"
+
+  # ── सन्धि: the joins that appear in nearly every line ───────────────
+  - cite: "6.1.77"
+    gloss: "इको यणचि — यण् सन्धि"
+  - cite: "6.1.87"
+    gloss: "आद्गुणः — guṇa सन्धि"
+  - cite: "6.1.101"
+    gloss: "अकः सवर्णे दीर्घः — savarṇa lengthening"
+  - cite: "8.2.66"
+    gloss: "ससजुषो रुः — final स → रु"
+  - cite: "8.3.15"
+    gloss: "खरवसानयोर्विसर्जनीयः — रु → visarga"
+  - cite: "8.4.40"
+    gloss: "स्तोः श्चुना श्चुः — श्चुत्व"
+  - cite: "8.4.58"
+    gloss: "अनुस्वारस्य ययि परसवर्णः — homorganic nasal"
+  - cite: "8.4.1"
+    gloss: "रषाभ्यां नो णः — णत्व"
+
+  # ── समास: the four types ────────────────────────────────────────────
+  - cite: "2.1.22"
+    gloss: "तत्पुरुषः — the तत्पुरुष class"
+  - cite: "2.2.23"
+    gloss: "शेषो बहुव्रीहिः — the बहुव्रीहि class"
+  - cite: "2.2.29"
+    gloss: "चार्थे द्वन्द्वः — the द्वन्द्व class"
+  - cite: "2.1.5"
+    gloss: "अव्ययीभावः — the अव्ययीभाव class"
+  - cite: "1.2.43"
+    gloss: "प्रथमानिर्दिष्टं समास उपसर्जनम् — which member is subordinate"
+
+# ── leaf ────────────────────────────────────────────────────────────────
+# Introduce once, cite well, move on. ONE encounter is success. Listed so
+# the ledger can distinguish "correctly touched once" from "unclassified".
+# This list grows as leaf batches land; it is not a target to complete.
+leaf:
+  # 2.3 idiomatic government (ex166-171)
+  - cite: "2.3.4"
+    gloss: "अन्तरेण governs द्वितीया"
+  - cite: "2.3.21"
+    gloss: "इत्थंभूतलक्षणे तृतीया"
+  - cite: "2.3.26"
+    gloss: "षष्ठी हेतुप्रयोगे"
+  - cite: "2.3.35"
+    gloss: "दूरान्तिकार्थैः… — far/near government"
+  - cite: "2.3.39"
+    gloss: "स्वामीश्वर… षष्ठी"
+  - cite: "2.3.43"
+    gloss: "साधुनिपुणाभ्यां… सप्तमी"
+  # कृदन्त tail (ex161-165)
+  - cite: "3.2.61"
+    gloss: "सत्सूद्विष… क्विप् — the zero affix"
+  - cite: "3.2.76"
+    gloss: "क्विप् च — zero-affix agent nouns"
+  - cite: "3.4.22"
+    gloss: "आभीक्ष्ण्ये णमुल् च — repeated-action gerund"
+  # सन्धि micro-outcomes (ex155-160)
+  - cite: "6.1.73"
+    gloss: "छे च — तुक् augment before छ"
+  - cite: "6.1.113"
+    gloss: "अतो रोरप्लुतादप्लुते — रु → उ"
+  - cite: "8.4.62"
+    gloss: "झयो होऽन्यतरस्याम् — stop + ह coalescence"
