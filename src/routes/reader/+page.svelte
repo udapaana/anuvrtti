@@ -81,13 +81,25 @@
   });
 
   // rows = chapter heads interleaved with example articles
+  // Chapters braid through the reader by design: the sequence is graded by
+  // difficulty, and sup spans tiers 20-200 while karaka spans 10-130, so the
+  // topic changes ~63 times across the corpus. A full banner at every switch
+  // printed the same chapter title dozens of times — 27 of those runs are a
+  // single reading — which read as disorganisation rather than as grading.
+  //
+  // So: full heading the FIRST time a chapter appears, a light marker when the
+  // reader returns to one already seen.
   const rows = $derived.by(() => {
     const out: any[] = [];
     let last: string | null = null;
+    const seen = new Set<string>();
+    // Chapters opened before this page, so page 2+ doesn't re-announce them.
+    for (let i = 0; i < startIdx; i++) seen.add(list[i]?.chapter);
     slice.forEach((r, k) => {
       if (r.chapter !== last) {
         const t = titles[r.chapter] ?? { dev: r.chapter, en: '' };
-        out.push({ head: true, chId: r.chapter, dev: t.dev, en: t.en });
+        out.push({ head: true, chId: r.chapter, dev: t.dev, en: t.en, resumed: seen.has(r.chapter) });
+        seen.add(r.chapter);
         last = r.chapter;
       }
       out.push(processEx(r, startIdx + k + 1));
@@ -340,7 +352,11 @@
         <!-- CENTER: reading -->
         <main data-reading-top class="body">
           {#each rows as row}
-            {#if row.head}
+            {#if row.head && row.resumed}
+              <div data-ch-id={row.chId} class="chresume">
+                <span class="chresumedev"><Sanskrit text={row.dev} source="devanagari" /></span>
+              </div>
+            {:else if row.head}
               <div data-ch-id={row.chId} class="chhead">
                 <div class="chkicker">chapter</div>
                 <div class="chdev"><Sanskrit text={row.dev} source="devanagari" /></div>
@@ -568,6 +584,22 @@
   }
   .chdev { font-size: 1.6rem; color: #f97316; font-weight: 600; line-height: 1.1; }
   .chen { font-size: 0.98rem; color: #6b6b6b; font-style: italic; margin-top: 0.25rem; max-width: 34em; line-height: 1.4; }
+  /* Returning to a chapter already opened: a quiet rule, not a second banner.
+     The sequence braids topics by difficulty, so these recur often. */
+  .chresume {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.5rem 0 0.3rem;
+    scroll-margin-top: 66px;
+  }
+  .chresume::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e7e2da;
+  }
+  .chresumedev { font-size: 0.95rem; color: #b8b0a4; font-weight: 500; letter-spacing: 0.01em; }
 
   .ex {
     padding: 1.7rem 0 1.7rem 1rem;

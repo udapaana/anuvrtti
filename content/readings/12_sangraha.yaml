@@ -45,23 +45,10 @@ readings:
   sentence: रामश्च लक्ष्मणश्च वनमगच्छताम्। तत्रर्षिरुवाच — नमस्ते वीर, सोऽपि धर्मं रक्षति। तयोर्गुरुराच्छादयति वनम्। पुनर्ग्राममागच्छतो नरौ।
   translation: Rāma and Lakṣmaṇa went to the forest. There a sage said — "Homage to you, hero; he too protects dharma." Their teacher covers the forest. The two men come back to the village again.
   teaches: |
-    सङ्ग्रह for tier 80 — sandhi, and the ONE tier whose short readings cannot
-    do their own job. The tier-80 readings are written as transformations:
-    रामः च लक्ष्मणः च → रामश्च लक्ष्मणश्च. That display shows the mechanism
-    perfectly and hides the only skill that matters, because the reader is
-    given the un-joined form and asked to watch it join. In real text no one
-    hands you दधि इन्द्रः; you meet दधीन्द्रः and must undo it.
-
-    So this passage is written WITH the sandhi applied and nothing marked. Each
-    word here is a join the reader met at tier 80, now unannounced: रामश्च
-    (visarga → श् before च्), तत्रर्षिः (सवर्णदीर्घ, अ + ऋ), उवाच+नमस्ते
-    (visarga → स् before त्), सोऽपि (visarga → ओ, with अवग्रह), तयोर्गुरुः
-    (visarga → र्), आच्छादयति (छ-doubling), पुनर्ग्रामम् (the र्-outcome),
-    आगच्छतो नरौ (visarga → ओ again, across a word boundary).
-
-    The `words` table gives each joined form with its constituents, so the
-    reader who stalls can see the seam — but the sentence itself never shows
-    it. This is the format every sandhi consolidation should take.
+    sandhi as it appears in running text, joined and unmarked: रामश्च,
+    तत्रर्षिरुवाच, नमस्ते, सोऽपि, तयोर्गुरुराच्छादयति, पुनर्ग्राममागच्छतो.
+    Each join is one already met on its own. The word-list carries the
+    constituents; the sentence does not.
   words:
   - form: रामश्च
     lemma: राम
@@ -165,11 +152,10 @@ readings:
       en: nominative dual — agreeing with the dual verb आगच्छतः
   vyakhya: सन्धिः पदच्छेदे ज्ञायते, न तु योजने। यत् पठसि तत् विभज।
   vyakhya_en: |
-    Every tier-80 reading hands you the pieces and shows them joining. Real
-    text does the opposite: it hands you रामश्च and तत्रर्षिरुवाच, and the work
-    is to take them apart. That is पदच्छेद, and it is the actual skill — sandhi
-    is not something you perform when writing, it is something you undo when
-    reading.
+    A sandhi rule is usually shown from the pieces inward: रामः + च, and watch
+    them join. Text runs the other way. It gives you रामश्च and तत्रर्षिरुवाच
+    whole, and the work is taking them apart. That is पदच्छेद — sandhi is not
+    something performed in writing so much as undone in reading.
 
     Nothing in the sentence is marked. The joins are easier to hear than to
     see — रामश्च and पुनर्ग्राममागच्छतो resolve on the tongue before they
@@ -183,16 +169,10 @@ readings:
   sentence: नरः ग्रामे वसति। नरस्य पुत्रः बालः। नरः ग्रामात् गच्छति। सः पादाभ्याम् गच्छति। वृक्षात् फलम् पतति। नरः फलम् बालाय यच्छति। ततः नरः ग्रामम् आगच्छति।
   translation: A man lives in a village. The man's son is a boy. The man goes from the village. He goes on foot. A fruit falls from a tree. The man gives the fruit to the boy. Then the man comes back to the village.
   teaches: |
-    सङ्ग्रह for tier 10 — the very first passage a reader meets. Tier 10 is the
-    six कारकas introduced one per sentence (ex001-007), each sentence differing
-    from the last by exactly one word. That design makes each role visible, but
-    it also means the reader has never seen two roles cooperate.
-
-    Here all seven recur with no new grammar and almost no new vocabulary:
-    every noun (नर, ग्राम, पुत्र, बाल, फल) and every verb (वस्, गम्, आगम्, दा)
-    comes from tier 10 itself. Only वृक्षात् and पतति are new, and both are
-    glossed as vocabulary. Singular throughout — number arrives at tier 30, so
-    a dual or plural here would be a rule the reader has not met.
+    the six कारकas together, after meeting them one at a time. ग्राम appears
+    in three cases — ग्रामे, ग्रामात्, ग्रामम् — and every noun and verb here
+    has been seen before. Singular throughout; only वृक्षात् and पतति are new
+    vocabulary.
   words:
   - form: नरः
     lemma: नर
@@ -330,8 +310,8 @@ readings:
     a कारक is — not a meaning the word carries, but a role the sentence
     assigns it.
 
-    In tier 10 each of these had its own sentence, one per rule. Together, the
-    endings carry the whole difference.
+    Each of these had its own sentence when it was introduced, one per rule.
+    Together, the endings carry the whole difference.
 
 - id: ex183
   kind: sangraha
@@ -340,18 +320,10 @@ readings:
   sentence: तापसः गिरौ वसति। जटाभिः सः तापसः ज्ञायते। अन्नस्य हेतोः बालः तम् गच्छति। पुत्रेण सह सः आगच्छति। धनेन न सुखम्, धर्मेण सुखम् इति तापसः वदति। गवाम् स्वामी नृपः अपि तम् शृणोति।
   translation: An ascetic lives on a mountain. By his matted hair he is recognized as an ascetic. For the sake of food a boy goes to him. He comes with his son. "Happiness is not from wealth; happiness is from dharma," says the ascetic. Even the king, lord of cattle, listens to him.
   teaches: |
-    सङ्ग्रह for tier 110 — the तृतीया/idiom cluster. Tier 110 collects the
-    non-कारक uses of the instrumental and the word-government idioms (सह,
-    हेतु, इत्थंभूतलक्षण, स्वामि-ईश्वर, अन्तरेण), each in a two- or three-word
-    reading. Several of those readings are fragments rather than sentences —
-    धनेन कुलम्, जटाभिः तापसः — which show the case but give the reader nothing
-    to read.
-
-    Here the same idioms carry a scene: जटाभिः as the MARK of recognition
-    (2.3.21), हेतोः with its noun in the षष्ठी (2.3.26), सह with the तृतीया
-    (2.3.19), स्वामी governing गवाम् (2.3.39). धनेन and धर्मेण sit in one
-    sentence as parallel causes so the हेतु-instrumental is felt as a contrast
-    rather than a label.
+    the instrumental beyond the plain करण, carried by a scene: जटाभिः as the
+    mark someone is recognised by, अन्नस्य हेतोः with both words in the षष्ठी,
+    पुत्रेण सह for accompaniment, गवाम् under स्वामी. धनेन and धर्मेण stand in
+    one sentence as competing causes.
   words:
   - form: तापसः
     lemma: तापस
@@ -542,17 +514,9 @@ readings:
   sentence: भगवान् वदति। तस्य वचनम् पिता शृणोति। पितरम् पुत्रः पश्यति। दण्डी अपि आगच्छति। दण्डिनम् पितरः पश्यन्ति। भगवतः वचनेन ते तुष्यन्ति। ततः राजानौ अपि आगच्छतः।
   translation: The Blessed One speaks. The father hears his words. The son sees the father. A staff-bearing ascetic also arrives. The fathers see the staff-bearer. By the Blessed One's words they are satisfied. Then the two kings also arrive.
   teaches: |
-    सङ्ग्रह for tier 150 — the strong/weak stem alternation. Tier 150 teaches
-    it through minimal pairs presented separately: भगवान्/भगवतः, दण्डी/दण्डिनम्,
-    पिता/पितरम्, राजानौ/राज्ञा. Each pair is exactly right for showing the
-    alternation, and exactly wrong for internalising it, because the two forms
-    never appear in the same breath.
-
-    Here each stem shows BOTH grades within a few clauses: भगवान् (strong,
-    nom.sg) then भगवतः (weak, gen.sg); दण्डी (strong) then दण्डिनम् (weak);
-    पिता (strong sg) then पितरम् (strong acc) then पितरः (strong pl). The
-    reader meets the alternation as a fact about how the word moves through a
-    story, not as a table.
+    three stems, each appearing in both grades within a few clauses: भगवान् then
+    भगवतः, दण्डी then दण्डिनम्, पिता then पितरम् then पितरः. राजानौ closes with
+    the dual. Nothing about the meaning changes between the two forms of a pair.
   words:
   - form: भगवान्
     lemma: भगवत्
@@ -727,17 +691,9 @@ readings:
   sentence: यः अन्नम् ददाति सः दाता। दानम् तस्य धर्मः। नित्यम् कर्ता सः नरः, न तु भोक्ता। गमनम् आरभते, ग्रामम् गामी भवति। तस्य पाकः अपि रोचते। कर्तारम् तम् जनाः पश्यन्ति।
   translation: He who gives food is a giver. Giving is his dharma. That man is a constant doer, not an enjoyer. He begins the going, becomes a goer to the village. His cooking, too, is pleasing. People see him as the doer.
   teaches: |
-    सङ्ग्रह for tier 210 — the कृत् affix reference-fill. Tier 210 isolates one
-    affix per reading (तृच् दाता, तृन् कर्ता, णिनि गामी, घञ् पाकः, अच् जयः,
-    ल्युट् गमनम्), which is the right shape for a reference and the wrong shape
-    for reading: the reader learns six affixes and never sees an agent-noun and
-    an action-noun in the same sentence, where the DIFFERENCE is what matters.
-
-    Here agent-nouns (दाता, कर्ता, भोक्ता, गामी) and action-nouns (दानम्,
-    गमनम्, पाकः) alternate, so the contrast is doing the work: दाता is the one
-    who gives, दानम् is the giving. कर्ता then declines into कर्तारम्, showing
-    that the तृच् agent-noun is itself an ऋ-stem — the point ex164 makes as a
-    bare paradigm list.
+    agent-nouns and action-nouns alternating, so the affix carries the
+    difference: दाता beside दानम्, कर्ता beside गमनम्, भोक्ता beside पाकः. Then
+    कर्ता declines into कर्तारम् — the agent-noun is itself an ऋ-stem.
   words:
   - form: 'यः'
     lemma: यद्
@@ -932,8 +888,8 @@ readings:
     doer, the deed, or the instrument.
 
     Then कर्ता becomes कर्तारम्. The agent-noun is not a frozen label; it is an
-    ऋ-stem noun and declines like पितृ. Both facts are stated separately at
-    tier 210. Here they arrive in one paragraph.
+    ऋ-stem noun and declines like पितृ. Both facts are usually met apart from
+    each other; here they arrive in one paragraph.
 
 - id: ex181
   kind: sangraha
@@ -942,16 +898,10 @@ readings:
   sentence: बालः वने वृकात् बिभेति। सः मात्रे क्रुध्यति, यतः सा तम् वनम् न नयति। मुनिः गिरिम् अधिशेते। बालः मुनये श्लाघते, मुनेः फलेभ्यः च स्पृहयति। मुनिः बालाय फलानि यच्छति। बालाय फलानि रोचन्ते। सः गृहम् आगच्छति, मातुः च न बिभेति।
   translation: In the forest the boy is afraid of a wolf. He is angry at his mother, because she does not take him to the forest. A sage lies upon the mountain. The boy flatters the sage, and longs for the sage's fruits. The sage gives the boy fruits. The fruits please the boy. He comes home, and is no longer afraid of his mother.
   teaches: |
-    सङ्ग्रह for tier 50 — the special-government wall. Twelve short readings
-    there each show one verb selecting one case in isolation (भी → पञ्चमी,
-    क्रुध् → चतुर्थी, स्पृह् → चतुर्थी, रुच् → चतुर्थी, श्लाघ् → चतुर्थी,
-    अधि+शी → द्वितीया). The POINT of special government is that the VERB
-    picks the case, and that is invisible when each verb sits alone: here six
-    of them run in one story, so the reader has to let the verb decide.
-    Deliberately puts वृकात् (भी, पञ्चमी) and मात्रे (क्रुध्, चतुर्थी) in
-    adjacent clauses — two objects of emotion, two different cases, and only
-    the verb tells them apart. Closes by re-running भी with a different noun
-    (मातुः) so the rule is met twice inside one passage.
+    six verbs that choose their own case, running in one story: भी takes the
+    पञ्चमी, क्रुध् and स्पृह् and रुच् and श्लाघ् the चतुर्थी, अधि+शी the
+    द्वितीया. वृकात् and मात्रे sit in adjacent clauses — two objects of
+    emotion, two different cases — and भी returns later on मातुः.
   words:
   - form: बालः
     lemma: बाल
@@ -1187,15 +1137,11 @@ readings:
   sentence: नरः ग्रामे वसति। तस्य पुत्रः बालः। प्रभाते नरः बालः च वनम् गच्छतः। वने वृक्षाः सन्ति। नरः वृक्षात् फलानि आहरति। बालः फलानि इच्छति। नरः बालाय फलम् यच्छति। बालः फलम् खादति। ततः नरौ ग्रामम् आगच्छतः।
   translation: A man lives in a village. His son is a boy. At dawn the man and the boy go to the forest. In the forest there are trees. The man brings down fruits from a tree. The boy wants the fruits. The man gives the boy a fruit. The boy eats the fruit. Then the two of them come back to the village.
   teaches: |
-    first सङ्ग्रह passage — no new rules. The कारकas and the षष्ठी appear
-    across nine sentences of connected prose, each in a different clause from
-    where it was introduced: अधिकरण (ग्रामे, वने, प्रभाते — place and time on
-    the same सप्तमी), षष्ठी (तस्य), कर्मन् (वनम्, फलानि, फलम्), अपादान
-    (वृक्षात्), सम्प्रदान (बालाय). Number shifts under the reader: singular
-    फलम् against plural फलानि, and the dual runs as a frame — नरः बालः च …
-    गच्छतः opens it, नरौ … आगच्छतः closes it. Vocabulary is drawn entirely
-    from segments 1–6; only प्रभाते, वन, च, ततः and the verbs आहृ/इष्/खाद्/अस्
-    are new, and each is glossed as vocabulary rather than derived.
+    the कारकas and the षष्ठी across nine sentences, each in a different clause
+    from where it was first met: अधिकरण (ग्रामे, वने, प्रभाते — place and time
+    on the same सप्तमी), षष्ठी (तस्य), कर्मन् (वनम्, फलानि, फलम्), अपादान
+    (वृक्षात्), सम्प्रदान (बालाय). Singular फलम् against plural फलानि, and the
+    dual frames the passage: नरः बालः च … गच्छतः opens, नरौ … आगच्छतः closes.
   words:
   - form: नरः
     lemma: नर

@@ -17,6 +17,13 @@ const READINGS_DIR = path.join(process.cwd(), 'content/readings');
 const SYLLABUS = path.join(READINGS_DIR, '_syllabus.yaml');
 const OUTPUT = path.join(process.cwd(), 'static/data/readings.json');
 
+/** Chapter ids in syllabus order — the intended pedagogical sequence. */
+function syllabusOrder(): string[] {
+  if (!fs.existsSync(SYLLABUS)) return [];
+  const syl = parseYaml(fs.readFileSync(SYLLABUS, 'utf-8')) as any;
+  return (syl.chapters ?? []).map((c: any) => c.id);
+}
+
 function chapterTitles(): Record<string, string> {
   if (!fs.existsSync(SYLLABUS)) return {};
   const syl = parseYaml(fs.readFileSync(SYLLABUS, 'utf-8')) as any;
@@ -86,10 +93,27 @@ function main() {
   // AUTHORING order and disagrees with pedagogical order on ~33% of pairs —
   // ex119-130 were written late but belong at tier 5 — so it is only ever a
   // stable-sort fallback, never a meaningful sequence.
+  // Within one tier, keep a chapter's readings TOGETHER. 25 of 57 tiers have
+  // more than one chapter in them, and the old fallback was `id` — authoring
+  // order — so chapters interleaved arbitrarily: the reader got kāraka, then
+  // sandhi, then kāraka again. That produced 70 topic switches across 223
+  // readings, a change every 3.2 readings, 28 of them a single reading before
+  // jumping away. Grouping by chapter inside the tier removes the thrash
+  // without touching difficulty order, which `segment` still owns entirely.
+  //
+  // Chapter order within a tier follows the syllabus, so it is a pedagogical
+  // decision rather than a filename artefact; chapters absent from the
+  // syllabus sort last, alphabetically.
+  const chapterRank = new Map<string, number>();
+  syllabusOrder().forEach((id, i) => chapterRank.set(id, i));
+  const rank = (ch: string) => chapterRank.get(ch) ?? 500;
+
   const sequence = [...flat].sort(
     (a, b) =>
       (a.segment ?? 9999) - (b.segment ?? 9999) ||
       (a.order ?? 0) - (b.order ?? 0) ||
+      rank(a.chapter) - rank(b.chapter) ||
+      String(a.chapter).localeCompare(String(b.chapter)) ||
       String(a.id).localeCompare(String(b.id))
   );
 
