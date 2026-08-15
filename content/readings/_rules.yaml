@@ -44,7 +44,18 @@
 # Default number of distinct readings a load-bearing rule must appear in
 # before it counts as taught. Override per-rule with `encounters_target`.
 defaults:
-  encounters_target: 5
+  # Raised 5 → 8. The original 5 was set while the ledger counted only explicit
+  # `cite`s, so it stood in for "a few real meetings" while measuring a fraction
+  # of them. Once term-tagged consolidation counted (+302 encounters across 14
+  # rules), 5 became trivial — any rule appearing in ordinary sentences clears
+  # it, so it no longer discriminated.
+  #
+  # 8 is "met across a spread of contexts", not just an introduction plus a
+  # couple of reuses. Deliberately NOT set near the ubiquity ceiling: 2.3.2 and
+  # 3.2.123 sit above 100 because every sentence needs them, and a target near
+  # that would punish rules that are load-bearing but less omnipresent — the
+  # समास classes, the कृत् affixes.
+  encounters_target: 8
 
 # ── term → rule ─────────────────────────────────────────────────────────
 # Consolidation passages tag words with a bare `term` and NO `cite`: that is
