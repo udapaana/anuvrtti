@@ -32,6 +32,765 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex182
+  kind: sangraha
+  segment: 15
+  order: 1
+  sentence: नरः ग्रामे वसति। नरस्य पुत्रः बालः। नरः ग्रामात् गच्छति। सः पादाभ्याम् गच्छति। वृक्षात् फलम् पतति। नरः फलम् बालाय यच्छति। ततः नरः ग्रामम् आगच्छति।
+  translation: A man lives in a village. The man's son is a boy. The man goes from the village. He goes on foot. A fruit falls from a tree. The man gives the fruit to the boy. Then the man comes back to the village.
+  teaches: |
+    सङ्ग्रह for tier 10 — the very first passage a reader meets. Tier 10 is the
+    six कारकas introduced one per sentence (ex001-007), each sentence differing
+    from the last by exactly one word. That design makes each role visible, but
+    it also means the reader has never seen two roles cooperate.
+
+    Here all seven recur with no new grammar and almost no new vocabulary:
+    every noun (नर, ग्राम, पुत्र, बाल, फल) and every verb (वस्, गम्, आगम्, दा)
+    comes from tier 10 itself. Only वृक्षात् and पतति are new, and both are
+    glossed as vocabulary. Singular throughout — number arrives at tier 30, so
+    a dual or plural here would be a rule the reader has not met.
+  words:
+  - form: नरः
+    lemma: नर
+    gloss: a man
+    notes:
+    - term: कर्तृ
+      en: agent — the one acting on its own
+    - term: प्रथमा
+      en: nominative
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in the village
+    notes:
+    - term: अधिकरण
+      en: locus — where the action sits
+    - term: सप्तमी
+      en: locative
+  - form: वसति
+    lemma: वस्
+    gloss: dwells, lives
+    notes:
+    - term: लट्
+      en: present
+  - form: नरस्य
+    lemma: नर
+    gloss: the man's
+    notes:
+    - term: षष्ठी
+      en: genitive — a relation between two nouns, NOT one of the six कारकas
+  - form: पुत्रः
+    lemma: पुत्र
+    gloss: son
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: बालः
+    lemma: बाल
+    gloss: (is) a boy
+    notes:
+    - term: प्रथमा
+      en: nominative — two nominatives, no verb; the sentence equates them
+  - form: ग्रामात्
+    lemma: ग्राम
+    gloss: from the village
+    notes:
+    - term: अपादान
+      en: source — the fixed point moved away from
+    - term: पञ्चमी
+      en: ablative
+  - form: गच्छति
+    lemma: गम्
+    gloss: goes
+    notes:
+    - term: लट्
+      en: present
+  - form: सः
+    lemma: तद्
+    gloss: he
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — stands in for नरः, so the sentence need not repeat it
+  - form: पादाभ्याम्
+    lemma: पाद
+    gloss: on foot (lit. by the two feet)
+    notes:
+    - term: करण
+      en: instrument — the means by which the going happens
+    - term: तृतीया
+      en: instrumental
+  - form: वृक्षात्
+    lemma: वृक्ष
+    gloss: from a tree
+    vocab: true
+    notes:
+    - term: अपादान
+      en: source again — same rule, different noun and different verb
+    - term: पञ्चमी
+      en: ablative
+  - form: फलम्
+    lemma: फल
+    gloss: a fruit
+    notes:
+    - term: कर्तृ
+      en: agent here — the fruit is what falls
+    - term: प्रथमा
+      en: neuter nominative — फलम् serves as both प्रथमा and द्वितीया
+  - form: पतति
+    lemma: पत्
+    gloss: falls
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+  - form: बालाय
+    lemma: बाल
+    gloss: to the boy
+    notes:
+    - term: सम्प्रदान
+      en: recipient — the one the giving is aimed at
+    - term: चतुर्थी
+      en: dative
+  - form: यच्छति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: लट्
+      en: present — दा appears as the stem यच्छ्
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable — a narrative connective, takes no ending
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion — what the agent reaches
+    - term: द्वितीया
+      en: accusative
+  - form: आगच्छति
+    lemma: गम्
+    gloss: comes back
+    notes:
+    - term: लट्
+      en: present — आ reverses the direction of गम्
+  vyakhya: एकं ग्रामपदम् — त्रिषु विभक्तिषु। ग्रामे, ग्रामात्, ग्रामम्।
+  vyakhya_en: |
+    Watch one word. ग्राम appears three times: ग्रामे where the man lives,
+    ग्रामात् where he leaves from, ग्रामम् where he returns to. One noun,
+    three endings, and the ending alone says which relation the village has to
+    the verb. That is what a कारक is — not a meaning the word carries, but a
+    role the sentence assigns it.
+
+    In tier 10 each of these appeared in its own sentence, one per rule. Read
+    them together here and the endings start doing their real work.
+
+- id: ex183
+  kind: sangraha
+  segment: 115
+  order: 1
+  sentence: तापसः गिरौ वसति। जटाभिः सः तापसः ज्ञायते। अन्नस्य हेतोः बालः तम् गच्छति। पुत्रेण सह सः आगच्छति। धनेन न सुखम्, धर्मेण सुखम् इति तापसः वदति। गवाम् स्वामी नृपः अपि तम् शृणोति।
+  translation: An ascetic lives on a mountain. By his matted hair he is recognized as an ascetic. For the sake of food a boy goes to him. He comes with his son. "Happiness is not from wealth; happiness is from dharma," says the ascetic. Even the king, lord of cattle, listens to him.
+  teaches: |
+    सङ्ग्रह for tier 110 — the तृतीया/idiom cluster. Tier 110 collects the
+    non-कारक uses of the instrumental and the word-government idioms (सह,
+    हेतु, इत्थंभूतलक्षण, स्वामि-ईश्वर, अन्तरेण), each in a two- or three-word
+    reading. Several of those readings are fragments rather than sentences —
+    धनेन कुलम्, जटाभिः तापसः — which show the case but give the reader nothing
+    to read.
+
+    Here the same idioms carry a scene: जटाभिः as the MARK of recognition
+    (2.3.21), हेतोः with its noun in the षष्ठी (2.3.26), सह with the तृतीया
+    (2.3.19), स्वामी governing गवाम् (2.3.39). धनेन and धर्मेण sit in one
+    sentence as parallel causes so the हेतु-instrumental is felt as a contrast
+    rather than a label.
+  words:
+  - form: तापसः
+    lemma: तापस
+    gloss: an ascetic
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: गिरौ
+    lemma: गिरि
+    gloss: on the mountain
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative — इ-stem, गिरि → गिरौ
+  - form: वसति
+    lemma: वस्
+    gloss: lives
+    notes:
+    - term: लट्
+      en: present
+  - form: जटाभिः
+    lemma: जटा
+    gloss: by his matted hair
+    notes:
+    - term: इत्थंभूतलक्षण
+      en: the MARK by which someone is recognized — not an instrument proper
+    - term: तृतीया
+      en: instrumental plural
+    - cite: "2.3.21"
+      role: इत्थंभूतलक्षणे — the identifying mark takes तृतीया → जटाभिः
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: ज्ञायते
+    lemma: ज्ञा
+    gloss: is recognized
+    vocab: true
+    notes:
+    - term: कर्मणि
+      en: passive — the ascetic is what is known, not the knower
+  - form: अन्नस्य
+    lemma: अन्न
+    gloss: of food
+    notes:
+    - term: षष्ठी
+      en: genitive — with हेतोः, BOTH words stand in the षष्ठी
+    - cite: "2.3.26"
+      role: षष्ठी हेतुप्रयोगे — when हेतु is used, the cause takes षष्ठी → अन्नस्य हेतोः
+  - form: हेतोः
+    lemma: हेतु
+    gloss: for the sake of
+    notes:
+    - term: षष्ठी
+      en: genitive — agreeing with अन्नस्य
+  - form: बालः
+    lemma: बाल
+    gloss: a boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: तम्
+    lemma: तद्
+    gloss: to him
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: गच्छति
+    lemma: गम्
+    gloss: goes
+    notes:
+    - term: लट्
+      en: present
+  - form: पुत्रेण
+    lemma: पुत्र
+    gloss: with his son
+    notes:
+    - term: सहार्थ
+      en: the accompanying (subordinate) party
+    - term: तृतीया
+      en: instrumental
+    - cite: "2.3.19"
+      role: सहयुक्तेऽप्रधाने — the accompanying party takes तृतीया → पुत्रेण सह
+  - form: सह
+    lemma: सह
+    gloss: with
+    notes:
+    - term: अव्यय
+      en: indeclinable governing the तृतीया
+  - form: आगच्छति
+    lemma: गम्
+    gloss: comes
+    notes:
+    - term: लट्
+      en: present
+  - form: धनेन
+    lemma: धन
+    gloss: from wealth
+    notes:
+    - term: हेतु
+      en: cause — the तृतीया of motive, not of instrument
+    - term: तृतीया
+      en: instrumental
+  - form: 'न'
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: सुखम्
+    lemma: सुख
+    gloss: happiness
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative
+  - form: धर्मेण
+    lemma: धर्म
+    gloss: from dharma
+    notes:
+    - term: हेतु
+      en: the same cause-instrumental, set against धनेन
+    - term: तृतीया
+      en: instrumental
+  - form: इति
+    lemma: इति
+    gloss: "thus (closes a quotation)"
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable — marks the end of reported speech
+  - form: वदति
+    lemma: वद्
+    gloss: says
+    notes:
+    - term: लट्
+      en: present
+  - form: गवाम्
+    lemma: गो
+    gloss: of cattle
+    notes:
+    - term: षष्ठी
+      en: genitive plural — what is owned stands in the षष्ठी
+    - cite: "2.3.39"
+      role: स्वामीश्वराधिपति… — with "lord/owner" words the thing owned takes षष्ठी → गवाम् स्वामी
+  - form: स्वामी
+    lemma: स्वामिन्
+    gloss: lord, owner
+    notes:
+    - term: प्रथमा
+      en: nominative — इन्-stem, न् drops in the nom.sg
+  - form: नृपः
+    lemma: नृप
+    gloss: the king
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: even, also
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: शृणोति
+    lemma: श्रु
+    gloss: listens to
+    vocab: true
+    notes:
+    - term: लट्
+      en: present — श्रु takes the श्नु विकरण, श्रु → शृणो
+
+- id: ex184
+  kind: sangraha
+  segment: 155
+  order: 1
+  sentence: भगवान् वदति। तस्य वचनम् पिता शृणोति। पितरम् पुत्रः पश्यति। दण्डी अपि आगच्छति। दण्डिनम् पितरः पश्यन्ति। भगवतः वचनेन ते तुष्यन्ति। ततः राजानौ अपि आगच्छतः।
+  translation: The Blessed One speaks. The father hears his words. The son sees the father. A staff-bearing ascetic also arrives. The fathers see the staff-bearer. By the Blessed One's words they are satisfied. Then the two kings also arrive.
+  teaches: |
+    सङ्ग्रह for tier 150 — the strong/weak stem alternation. Tier 150 teaches
+    it through minimal pairs presented separately: भगवान्/भगवतः, दण्डी/दण्डिनम्,
+    पिता/पितरम्, राजानौ/राज्ञा. Each pair is exactly right for showing the
+    alternation, and exactly wrong for internalising it, because the two forms
+    never appear in the same breath.
+
+    Here each stem shows BOTH grades within a few clauses: भगवान् (strong,
+    nom.sg) then भगवतः (weak, gen.sg); दण्डी (strong) then दण्डिनम् (weak);
+    पिता (strong sg) then पितरम् (strong acc) then पितरः (strong pl). The
+    reader meets the alternation as a fact about how the word moves through a
+    story, not as a table.
+  words:
+  - form: भगवान्
+    lemma: भगवत्
+    gloss: the Blessed One
+    notes:
+    - term: सर्वनामस्थान
+      en: the STRONG stem — नुम् augment + lengthening give भगवान्
+    - term: प्रथमा
+      en: nominative singular
+    - cite: "7.1.70"
+      role: उगिदचां सर्वनामस्थानेऽधातोः — नुम् in the strong cases → भगवान्
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: लट्
+      en: present
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: षष्ठी
+      en: genitive
+  - form: वचनम्
+    lemma: वचन
+    gloss: the words
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: neuter accusative
+  - form: पिता
+    lemma: पितृ
+    gloss: the father
+    notes:
+    - term: कर्तृ
+      en: agent — ऋ-stem strong nom.sg, ऋ → आ
+    - term: प्रथमा
+      en: nominative
+  - form: शृणोति
+    lemma: श्रु
+    gloss: hears
+    notes:
+    - term: लट्
+      en: present
+  - form: पितरम्
+    lemma: पितृ
+    gloss: the father (obj.)
+    notes:
+    - term: सर्वनामस्थान
+      en: strong stem पितर् — the SAME word as पिता, one clause later
+    - term: द्वितीया
+      en: accusative
+  - form: पुत्रः
+    lemma: पुत्र
+    gloss: the son
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पश्यति
+    lemma: दृश्
+    gloss: sees
+    notes:
+    - term: लट्
+      en: present — दृश् appears as पश्य्
+  - form: दण्डी
+    lemma: दण्डिन्
+    gloss: a staff-bearer
+    notes:
+    - term: सर्वनामस्थान
+      en: strong nom.sg — the न् of दण्डिन् drops and the इ lengthens
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: also
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: आगच्छति
+    lemma: गम्
+    gloss: arrives
+    notes:
+    - term: लट्
+      en: present
+  - form: दण्डिनम्
+    lemma: दण्डिन्
+    gloss: the staff-bearer (obj.)
+    notes:
+    - term: कर्मन्
+      en: the न् RETURNS before a vowel ending — the foil to दण्डी above
+    - term: द्वितीया
+      en: accusative
+  - form: पितरः
+    lemma: पितृ
+    gloss: the fathers
+    notes:
+    - term: सर्वनामस्थान
+      en: strong plural — गुण अर्, a third grade of the same stem
+    - term: बहुवचन
+      en: nominative plural
+  - form: पश्यन्ति
+    lemma: दृश्
+    gloss: see
+    notes:
+    - term: लट्
+      en: present plural
+  - form: भगवतः
+    lemma: भगवत्
+    gloss: the Blessed One's
+    notes:
+    - term: षष्ठी
+      en: the WEAK stem — plain भगवत् + ङस्, no नुम्; contrast भगवान् above
+  - form: वचनेन
+    lemma: वचन
+    gloss: by the words
+    notes:
+    - term: करण
+      en: instrument
+    - term: तृतीया
+      en: instrumental
+  - form: ते
+    lemma: तद्
+    gloss: they
+    notes:
+    - term: प्रथमा
+      en: nominative plural
+  - form: तुष्यन्ति
+    lemma: तुष्
+    gloss: are satisfied
+    vocab: true
+    notes:
+    - term: लट्
+      en: present plural
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: राजानौ
+    lemma: राजन्
+    gloss: the two kings
+    notes:
+    - term: सर्वनामस्थान
+      en: strong DUAL — राजन् lengthens to राजान् before the dual ending
+    - term: द्विवचन
+      en: nominative dual
+  - form: आगच्छतः
+    lemma: गम्
+    gloss: the two arrive
+    notes:
+    - term: द्विवचन
+      en: dual verb agreeing with राजानौ
+  vyakhya: एकं पदम् — बलवत् दुर्बलं च। भगवान् भगवतः, दण्डी दण्डिनम्, पिता पितरम्।
+  vyakhya_en: |
+    Three stems, each appearing twice, each time in a different grade:
+    भगवान् / भगवतः, दण्डी / दण्डिनम्, पिता / पितरम् / पितरः. Nothing about the
+    meaning changes between the two forms of a pair — भगवान् and भगवतः are the
+    same person. What changes is the ending attached, and whether that ending
+    belongs to the सर्वनामस्थान (strong) set.
+
+    Presented as a minimal pair, this looks like an irregularity to memorise.
+    Read in a story, it is simply what the word does.
+
+- id: ex185
+  kind: sangraha
+  segment: 215
+  order: 1
+  sentence: यः अन्नम् ददाति सः दाता। दानम् तस्य धर्मः। नित्यम् कर्ता सः नरः, न तु भोक्ता। गमनम् आरभते, ग्रामम् गामी भवति। तस्य पाकः अपि रोचते। कर्तारम् तम् जनाः पश्यन्ति।
+  translation: He who gives food is a giver. Giving is his dharma. That man is a constant doer, not an enjoyer. He begins the going, becomes a goer to the village. His cooking, too, is pleasing. People see him as the doer.
+  teaches: |
+    सङ्ग्रह for tier 210 — the कृत् affix reference-fill. Tier 210 isolates one
+    affix per reading (तृच् दाता, तृन् कर्ता, णिनि गामी, घञ् पाकः, अच् जयः,
+    ल्युट् गमनम्), which is the right shape for a reference and the wrong shape
+    for reading: the reader learns six affixes and never sees an agent-noun and
+    an action-noun in the same sentence, where the DIFFERENCE is what matters.
+
+    Here agent-nouns (दाता, कर्ता, भोक्ता, गामी) and action-nouns (दानम्,
+    गमनम्, पाकः) alternate, so the contrast is doing the work: दाता is the one
+    who gives, दानम् is the giving. कर्ता then declines into कर्तारम्, showing
+    that the तृच् agent-noun is itself an ऋ-stem — the point ex164 makes as a
+    bare paradigm list.
+  words:
+  - form: 'यः'
+    lemma: यद्
+    gloss: he who
+    notes:
+    - term: प्रथमा
+      en: nominative — the relative, answered by सः
+  - form: अन्नम्
+    lemma: अन्न
+    gloss: food
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: ददाति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: लट्
+      en: present — reduplicated दा → ददा
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative — answers यः
+  - form: दाता
+    lemma: दातृ
+    gloss: a giver
+    notes:
+    - term: तृच्
+      en: agent-noun from दा — the one who does the action
+    - cite: "3.1.133"
+      role: ण्वुल्तृचौ — तृच् forms the agent-noun दातृ → दाता
+  - form: दानम्
+    lemma: दान
+    gloss: giving
+    notes:
+    - term: भाव
+      en: action-noun — the ACT, not the actor; set directly against दाता
+    - term: प्रथमा
+      en: neuter nominative
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: षष्ठी
+      en: genitive
+  - form: धर्मः
+    lemma: धर्म
+    gloss: dharma, duty
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: नित्यम्
+    lemma: नित्य
+    gloss: constantly
+    notes:
+    - term: अव्यय
+      en: adverbial accusative — "as a habit"
+  - form: कर्ता
+    lemma: कर्तृ
+    gloss: a doer
+    notes:
+    - term: तृन्
+      en: the HABITUAL agent — तृन्, not तृच्; the habit is what नित्यम् marks
+    - term: प्रथमा
+      en: nominative
+  - form: नरः
+    lemma: नर
+    gloss: man
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: 'न'
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: तु
+    lemma: तु
+    gloss: but
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable — adversative
+  - form: भोक्ता
+    lemma: भोक्तृ
+    gloss: an enjoyer
+    vocab: true
+    notes:
+    - term: तृच्
+      en: another agent-noun, from भुज् — same affix, different root
+    - term: प्रथमा
+      en: nominative
+  - form: गमनम्
+    lemma: गमन
+    gloss: the going
+    notes:
+    - term: ल्युट्
+      en: action-noun in -अन from गम् — the going, not the goer
+    - cite: "3.3.115"
+      role: ल्युट् च — ल्युट् makes a neuter भाव action-noun → गमनम्
+  - form: आरभते
+    lemma: रभ्
+    gloss: begins
+    vocab: true
+    notes:
+    - term: आत्मनेपद
+      en: middle voice
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: the उपपद — the goal, standing before the agent-noun
+    - term: द्वितीया
+      en: accusative
+  - form: गामी
+    lemma: गामिन्
+    gloss: a goer
+    notes:
+    - term: णिनि
+      en: habit-agent with an उपपद — ग्रामं गामी "one who goes to the village"
+    - term: प्रथमा
+      en: nominative — इन्-stem, न् drops
+  - form: भवति
+    lemma: भू
+    gloss: becomes
+    notes:
+    - term: लट्
+      en: present
+  - form: पाकः
+    lemma: पाक
+    gloss: cooking
+    notes:
+    - term: घञ्
+      en: action-noun from पच् with vṛddhi — पच् → पाकः
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: रोचते
+    lemma: रुच्
+    gloss: is pleasing
+    notes:
+    - term: लट्
+      en: present — the one pleased would stand in the चतुर्थी
+  - form: कर्तारम्
+    lemma: कर्तृ
+    gloss: the doer (obj.)
+    notes:
+    - term: सर्वनामस्थान
+      en: कर्ता DECLINES — the agent-noun is an ऋ-stem, strong अर् in the acc.
+    - term: द्वितीया
+      en: accusative
+  - form: तम्
+    lemma: तद्
+    gloss: him
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: जनाः
+    lemma: जन
+    gloss: people
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: बहुवचन
+      en: nominative plural
+  - form: पश्यन्ति
+    lemma: दृश्
+    gloss: see
+    notes:
+    - term: लट्
+      en: present plural
+  vyakhya: दाता ददाति, दानम् दीयते। कर्ता करोति, करणम् क्रियते। कर्तुः कर्म भिन्नम्।
+  vyakhya_en: |
+    दाता and दानम् come from the same root by different affixes, and the affix
+    is the whole difference: one names the giver, the other the giving. So with
+    कर्ता and गमनम्, भोक्ता and पाकः. A कृत् affix does not add a meaning to the
+    root so much as decide WHICH PART of the action the new word names — the
+    doer, the deed, or the instrument.
+
+    Then कर्ता becomes कर्तारम्. The agent-noun is not a frozen label; it is an
+    ऋ-stem noun and declines like पितृ. Both facts are stated separately at
+    tier 210. Here they arrive in one paragraph.
+
 - id: ex181
   kind: sangraha
   segment: 55

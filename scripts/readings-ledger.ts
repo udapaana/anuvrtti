@@ -170,9 +170,14 @@ function main() {
   // These axes are meant to be INDEPENDENT. Where they aren't — where a tier
   // has only short readings — that tier has no consolidation passage, and its
   // load-bearing rules can only be recurring by accident.
+  // Bucketed by DECADE BAND, not by exact segment. Under the ×10 convention a
+  // consolidation passage is inserted into the slots between tiers (155 serves
+  // tier 150), so exact-equality bucketing would file that passage as its own
+  // tier and still report 150 as starved.
+  const band = (seg: number) => Math.floor(seg / 10) * 10;
   const tiers = new Map<number, { short: number; passage: number; long: number }>();
   for (const r of corpus) {
-    const t = r.segment ?? 0;
+    const t = band(r.segment ?? 0);
     if (!tiers.has(t)) tiers.set(t, { short: 0, passage: 0, long: 0 });
     const b = tiers.get(t)!;
     b[r.length ?? 'short']++;
