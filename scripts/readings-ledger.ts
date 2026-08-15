@@ -40,7 +40,7 @@ interface Reading {
   kind?: string;
   segment?: number;
   length?: 'short' | 'passage' | 'long';
-  words?: { notes?: { cite?: string }[] }[];
+  words?: { notes?: { cite?: string; term?: string }[] }[];
 }
 
 function loadRules() {
@@ -50,11 +50,13 @@ function loadRules() {
   }
   const doc = parseYaml(fs.readFileSync(RULES, 'utf-8')) as {
     defaults?: { encounters_target?: number };
+    term_implies?: Record<string, string>;
     load_bearing?: RuleDecl[];
     leaf?: RuleDecl[];
   };
   return {
     target: doc.defaults?.encounters_target ?? 5,
+    termImplies: doc.term_implies ?? {},
     loadBearing: doc.load_bearing ?? [],
     leaf: doc.leaf ?? []
   };
@@ -69,20 +71,31 @@ function loadCorpus(): Reading[] {
 }
 
 function main() {
-  const { target, loadBearing, leaf } = loadRules();
+  const { target, termImplies, loadBearing, leaf } = loadRules();
   const corpus = loadCorpus();
 
-  // cite -> set of reading ids (distinct readings, not raw citations)
+  // rule -> set of reading ids (distinct readings, not raw citations).
+  // An encounter is EITHER an explicit `cite` (an introduction, with full
+  // derivation apparatus) OR a `term` that unambiguously names the rule (a
+  // consolidation, carrying just an identity tag). Counting only cites would
+  // score every consolidation passage at zero — which is precisely backwards,
+  // since consolidation is where recurrence actually happens.
   const seen = new Map<string, Set<string>>();
   const chaptersOf = new Map<string, Set<string>>();
+  const viaTerm = new Map<string, number>();
+  const add = (cite: string, r: Reading, byTerm: boolean) => {
+    if (!seen.has(cite)) seen.set(cite, new Set());
+    if (!chaptersOf.has(cite)) chaptersOf.set(cite, new Set());
+    const fresh = !seen.get(cite)!.has(r.id);
+    seen.get(cite)!.add(r.id);
+    chaptersOf.get(cite)!.add(r.chapter);
+    if (byTerm && fresh) viaTerm.set(cite, (viaTerm.get(cite) ?? 0) + 1);
+  };
   for (const r of corpus) {
     for (const w of r.words ?? []) {
       for (const n of w.notes ?? []) {
-        if (!n.cite) continue;
-        if (!seen.has(n.cite)) seen.set(n.cite, new Set());
-        if (!chaptersOf.has(n.cite)) chaptersOf.set(n.cite, new Set());
-        seen.get(n.cite)!.add(r.id);
-        chaptersOf.get(n.cite)!.add(r.chapter);
+        if (n.cite) add(n.cite, r, false);
+        else if (n.term && termImplies[n.term]) add(termImplies[n.term], r, true);
       }
     }
   }
@@ -147,7 +160,10 @@ function main() {
   if (partial.length) {
     console.log(`  ── partial load-bearing — need recurrence, not re-introduction ──`);
     for (const r of partial) {
-      console.log(`    ${r.cite.padEnd(9)} ${bar(r.n, r.goal).padEnd(12)} ${r.n}/${r.goal}  ${r.gloss ?? ''}`);
+      const t = viaTerm.get(r.cite) ?? 0;
+      console.log(
+        `    ${r.cite.padEnd(9)} ${bar(r.n, r.goal).padEnd(12)} ${r.n}/${r.goal}${t ? ` (${t} by term)` : ''}  ${r.gloss ?? ''}`
+      );
     }
     console.log();
   }

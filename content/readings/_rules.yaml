@@ -46,6 +46,51 @@
 defaults:
   encounters_target: 5
 
+# ── term → rule ─────────────────────────────────────────────────────────
+# Consolidation passages tag words with a bare `term` and NO `cite`: that is
+# the whole point of them — a word carrying full derivation apparatus is an
+# introduction, not consolidation, and the reader's recall-first display keys
+# focality off the presence of a cite.
+#
+# But a word tagged अधिकरण/सप्तमी IS an encounter with 2.3.36, and a ledger
+# that counts only cites scores it as nothing. Six passages were written before
+# this was noticed; they moved `taught` by zero while adding 140 term-tagged
+# consolidation words.
+#
+# This maps the grammatical vocabulary back onto the rules it instantiates, so
+# recurrence can be counted where it actually happens. Only unambiguous terms
+# belong here — a term that could mean two different rules must NOT be listed,
+# because a wrong encounter is worse than a missing one.
+term_implies:
+  कर्मन्: "2.3.2"       # object → accusative
+  द्वितीया: "2.3.2"
+  करण: "2.3.18"         # instrument → instrumental
+  तृतीया: "2.3.18"
+  सम्प्रदान: "2.3.13"    # recipient → dative
+  चतुर्थी: "2.3.13"
+  अपादान: "2.3.28"      # source → ablative
+  पञ्चमी: "2.3.28"
+  अधिकरण: "2.3.36"      # locus → locative
+  सप्तमी: "2.3.36"
+  षष्ठी: "2.3.50"       # the residual case
+  सम्बोधन: "2.3.47"     # vocative
+  द्विवचन: "1.4.22"     # dual
+  बहुवचन: "1.4.21"      # plural
+  लट्: "3.2.123"        # present
+  लङ्: "3.2.111"        # imperfect
+  लिट्: "3.2.115"       # perfect
+  लृट्: "3.3.13"        # future
+  लोट्: "3.3.162"       # imperative
+  आत्मनेपद: "1.4.100"
+  परस्मैपद: "1.4.99"
+  सर्वनामस्थान: "7.1.70" # the strong-case set
+  निष्ठा: "3.2.102"     # past participle
+  तृच्: "3.1.133"       # agent-noun
+  ल्युट्: "3.3.115"     # action-noun
+# NOT mapped, deliberately: प्रथमा (2.3.46 vs 2.3.47 vocative — ambiguous),
+# कर्तृ (a role saṃjñā spanning 1.4.54 and the passive-agent rules), सन्धि
+# (names no single rule), अव्यय, विशेषण (not rule-bearing at all).
+
 load_bearing:
 
   # ── कारक: the role saṃjñās ──────────────────────────────────────────
