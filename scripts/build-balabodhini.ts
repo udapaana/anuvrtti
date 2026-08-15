@@ -1,4 +1,4 @@
-#!/usr/bin/env npx tsx
+#!/usr/bin/env bun
 /**
  * Build the Bālabodhini primer payload from the structured TOML lessons.
  *

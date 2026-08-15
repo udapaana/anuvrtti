@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build:paths": "npx tsx scripts/build-path-index.ts",
-    "dev": "npm run build:paths && npm run build:readings && npm run build:balabodhini && vite dev",
-    "build": "npm run build:paths && npm run build:readings && npm run build:balabodhini && vite build",
+    "build:paths": "bun scripts/build-path-index.ts",
+    "dev": "bun run build:paths && bun run build:readings && bun run build:balabodhini && vite dev",
+    "build": "bun run build:paths && bun run build:readings && bun run build:balabodhini && vite build",
     "preview": "vite preview",
-    "build:readings": "npx tsx scripts/build-readings.ts",
-    "build:balabodhini": "npx tsx scripts/build-balabodhini.ts"
+    "build:readings": "bun scripts/build-readings.ts",
+    "build:balabodhini": "bun scripts/build-balabodhini.ts",
+    "ledger": "bun scripts/readings-ledger.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.0",

@@ -1,4 +1,4 @@
-#!/usr/bin/env npx tsx
+#!/usr/bin/env bun
 /**
  * Build the graded-reader payload from content/readings/*.yaml.
  *

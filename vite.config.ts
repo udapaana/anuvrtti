@@ -9,7 +9,7 @@ function pathIndexPlugin() {
   const scriptPath = resolve(process.cwd(), "scripts/build-path-index.ts");
   function rebuild() {
     try {
-      execFileSync("npx", ["tsx", scriptPath], { stdio: "inherit" });
+      execFileSync("bun", [scriptPath], { stdio: "inherit" });
     } catch (e) {
       console.error("[pathIndex] Failed to rebuild paths index:", e);
     }
