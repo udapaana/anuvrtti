@@ -103,9 +103,14 @@
   // ── interlinear token + word identity processing (matches design) ───────────
   function processEx(r: Reading, n: number) {
     const id = r.id;
+    // Normalise anusvāra when indexing: the corpus writes both ग्रामं and
+    // ग्रामम् for the same word, and an unnormalised lookup silently drops the
+    // gloss (the token just renders bare). Affected 12 readings.
+    const anusvara = (s: string) => s.replace(/ं$/, 'म्');
     const formIndex: Record<string, number> = {};
     (r.words || []).forEach((w: any, wi: number) => {
-      if (!(w.form in formIndex)) formIndex[w.form] = wi;
+      const k = anusvara(w.form);
+      if (!(k in formIndex)) formIndex[k] = wi;
     });
 
     const words = (r.words || []).map((w: any, wi: number) => {
@@ -119,7 +124,11 @@
       .split(/\s+/)
       .filter(Boolean)
       .map((tx: string) => {
-        const clean = tx.replace(/[।॥]/g, '').trim();
+        // Strip trailing punctuation before matching against the gloss table.
+        // Prose passages (kind:sangraha, katha) use commas inside a sentence,
+        // and a token like "क्रुध्यति," would otherwise miss its gloss and
+        // render bare — the failure is silent, so it must be handled here.
+        const clean = anusvara(tx.replace(/[।॥,;]/g, '').trim());
         const wi = clean in formIndex ? formIndex[clean] : -1;
         // A word is FOCAL (the reading's new/derived word) when it carries a sūtra
         // citation. Focal words show their gloss by default; KNOWN words collapse

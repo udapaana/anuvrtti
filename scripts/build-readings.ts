@@ -93,6 +93,44 @@ function main() {
       String(a.id).localeCompare(String(b.id))
   );
 
+  // Gloss-coverage check. The reader matches each sentence token against the
+  // `words` table by exact form; a miss renders the token bare with no gloss
+  // and no error. That silence is the danger — it looks like a deliberate
+  // ungloss. Long prose passages are where it bites (a trailing comma is
+  // enough), so report it at build time rather than leaving it to be noticed.
+  // Scoped to PROSE. Paradigm tables (kind:paradigm) list bare cells, and the
+  // sandhi readings use a "क + ख → ग" display syntax; unglossed tokens there
+  // are correct, not a defect. Anusvāra is normalised because ग्रामं and
+  // ग्रामम् are the same word — a corpus-wide orthographic split that silently
+  // detached glosses in 12 readings before this check existed.
+  const anusvara = (s: string) => s.replace(/ं$/, 'म्');
+  const orphans: string[] = [];
+  for (const r of sequence) {
+    const forms = new Set((r.words ?? []).map((w: any) => anusvara(w.form)));
+    if (!forms.size) continue;
+    if (r.kind === 'paradigm' || String(r.sentence ?? '').includes('→')) continue;
+    const toks = String(r.sentence ?? '')
+      .replace(/[।॥,;]/g, ' ')
+      .split(/\s+/)
+      .filter(Boolean)
+      .map(anusvara);
+    const missed = toks.filter((t) => !forms.has(t));
+    const unused = [...forms].filter((f: any) => !toks.includes(f));
+    if (missed.length || unused.length) {
+      orphans.push(
+        `  ${r.id}: ${missed.length ? `${missed.length} token(s) with no gloss [${missed.slice(0, 4).join(' ')}]` : ''}` +
+          `${missed.length && unused.length ? ', ' : ''}` +
+          `${unused.length ? `${unused.length} gloss entr(ies) matching no token [${unused.slice(0, 4).join(' ')}]` : ''}`
+      );
+    }
+  }
+  if (orphans.length) {
+    console.warn(`\n⚠ gloss/token mismatches in ${orphans.length} reading(s):`);
+    for (const o of orphans.slice(0, 15)) console.warn(o);
+    if (orphans.length > 15) console.warn(`  … and ${orphans.length - 15} more`);
+    console.warn('');
+  }
+
   // Dense display position, derived. `segment` is the AUTHORED tier and is
   // deliberately sparse (see the ×10 convention in _syllabus.yaml): tiers were
   // packed 1..57 with no gaps, so inserting a consolidation passage between

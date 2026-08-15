@@ -32,6 +32,252 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex181
+  kind: sangraha
+  segment: 55
+  order: 1
+  sentence: बालः वने वृकात् बिभेति। सः मात्रे क्रुध्यति, यतः सा तम् वनम् न नयति। मुनिः गिरिम् अधिशेते। बालः मुनये श्लाघते, मुनेः फलेभ्यः च स्पृहयति। मुनिः बालाय फलानि यच्छति। बालाय फलानि रोचन्ते। सः गृहम् आगच्छति, मातुः च न बिभेति।
+  translation: In the forest the boy is afraid of a wolf. He is angry at his mother, because she does not take him to the forest. A sage lies upon the mountain. The boy flatters the sage, and longs for the sage's fruits. The sage gives the boy fruits. The fruits please the boy. He comes home, and is no longer afraid of his mother.
+  teaches: |
+    सङ्ग्रह for tier 50 — the special-government wall. Twelve short readings
+    there each show one verb selecting one case in isolation (भी → पञ्चमी,
+    क्रुध् → चतुर्थी, स्पृह् → चतुर्थी, रुच् → चतुर्थी, श्लाघ् → चतुर्थी,
+    अधि+शी → द्वितीया). The POINT of special government is that the VERB
+    picks the case, and that is invisible when each verb sits alone: here six
+    of them run in one story, so the reader has to let the verb decide.
+    Deliberately puts वृकात् (भी, पञ्चमी) and मात्रे (क्रुध्, चतुर्थी) in
+    adjacent clauses — two objects of emotion, two different cases, and only
+    the verb tells them apart. Closes by re-running भी with a different noun
+    (मातुः) so the rule is met twice inside one passage.
+  words:
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वने
+    lemma: वन
+    gloss: in the forest
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: वृकात्
+    lemma: वृक
+    gloss: of a wolf (afraid of)
+    notes:
+    - term: अपादान
+      en: the thing feared — treated as what one shrinks away FROM
+    - term: पञ्चमी
+      en: ablative
+    - cite: "1.4.25"
+      role: भीत्रार्थानां भयहेतुः — with verbs of fearing, the cause of fear is अपादान → वृकात्
+  - form: बिभेति
+    lemma: भी
+    gloss: is afraid
+    notes:
+    - term: लट्
+      en: present — reduplicated stem बिभे-
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: मात्रे
+    lemma: मातृ
+    gloss: at his mother
+    notes:
+    - term: सम्प्रदान
+      en: the one angered at — NOT the accusative one might expect
+    - term: चतुर्थी
+      en: dative
+    - cite: "1.4.37"
+      role: क्रुधद्रुहोरुपसृष्टयोः… — the target of क्रुध् is सम्प्रदान → मात्रे
+  - form: क्रुध्यति
+    lemma: क्रुध्
+    gloss: is angry
+    notes:
+    - term: लट्
+      en: present
+  - form: 'यतः'
+    lemma: यतस्
+    gloss: because
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable — subordinating connective
+  - form: सा
+    lemma: तद्
+    gloss: she
+    notes:
+    - term: प्रथमा
+      en: nominative feminine
+  - form: तम्
+    lemma: तद्
+    gloss: him
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: वनम्
+    lemma: वन
+    gloss: to the forest
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: 'न'
+    lemma: न
+    gloss: not
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: नयति
+    lemma: नी
+    gloss: leads, takes
+    vocab: true
+    notes:
+    - term: लट्
+      en: present — नी + शप् → गुण ने → नय्
+  - form: मुनिः
+    lemma: मुनि
+    gloss: a sage
+    notes:
+    - term: कर्तृ
+      en: agent — an इ-stem masculine
+    - term: प्रथमा
+      en: nominative
+  - form: गिरिम्
+    lemma: गिरि
+    gloss: upon the mountain
+    notes:
+    - term: कर्मन्
+      en: the locus turned OBJECT — अधि+शी makes it द्वितीया, not सप्तमी
+    - term: द्वितीया
+      en: accusative
+    - cite: "1.4.46"
+      role: अधिशीङ्स्थासां कर्म — with अधि + शी/स्था/आस्, the locus becomes कर्मन् → गिरिम्
+  - form: अधिशेते
+    lemma: शी
+    gloss: lies upon
+    notes:
+    - term: आत्मनेपद
+      en: शी is आत्मनेपदी — the ending is ते, not ति
+  - form: मुनये
+    lemma: मुनि
+    gloss: the sage (flatters)
+    notes:
+    - term: सम्प्रदान
+      en: the one whose favour is courted
+    - term: चतुर्थी
+      en: dative — इ-stem takes गुण in the oblique, मुनि → मुनये
+  - form: श्लाघते
+    lemma: श्लाघ्
+    gloss: flatters, praises
+    notes:
+    - term: आत्मनेपद
+      en: middle voice
+  - form: मुनेः
+    lemma: मुनि
+    gloss: the sage's
+    notes:
+    - term: षष्ठी
+      en: genitive — a relation, not a कारक
+  - form: फलेभ्यः
+    lemma: फल
+    gloss: for the fruits (longs)
+    notes:
+    - term: सम्प्रदान
+      en: the thing desired — स्पृह् makes its object सम्प्रदान
+    - term: चतुर्थी
+      en: dative plural
+    - cite: "1.4.36"
+      role: स्पृहेरीप्सितः — what is longed for is सम्प्रदान → फलेभ्यः
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: स्पृहयति
+    lemma: स्पृह्
+    gloss: longs for
+    notes:
+    - term: लट्
+      en: present
+  - form: बालाय
+    lemma: बाल
+    gloss: to the boy
+    notes:
+    - term: सम्प्रदान
+      en: recipient — here the ORDINARY dative, not a special government
+    - term: चतुर्थी
+      en: dative
+  - form: फलानि
+    lemma: फल
+    gloss: fruits
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: बहुवचन
+      en: neuter plural
+  - form: यच्छति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: लट्
+      en: present — दा has the stem यच्छ्
+  - form: रोचन्ते
+    lemma: रुच्
+    gloss: are pleasing
+    notes:
+    - term: लट्
+      en: present plural — the FRUITS are the agent here, not the boy
+    - cite: "1.4.33"
+      role: रुच्यर्थानां प्रीयमाणः — the one pleased is सम्प्रदान → बालाय
+  - form: गृहम्
+    lemma: गृह
+    gloss: home
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: आगच्छति
+    lemma: गम्
+    gloss: comes
+    notes:
+    - term: लट्
+      en: present
+  - form: मातुः
+    lemma: मातृ
+    gloss: of his mother
+    notes:
+    - term: अपादान
+      en: भी again — a SECOND meeting with the rule, different noun
+    - term: पञ्चमी
+      en: ablative — ऋ-stem, मातृ → मातुः
+  vyakhya: क्रियया विभक्तिः नियम्यते। भीत्रार्थे पञ्चमी, क्रुधार्थे चतुर्थी — एकस्मिन् वाक्ये उभे।
+  vyakhya_en: |
+    The boy fears the wolf and is angry at his mother in consecutive clauses.
+    Both are objects of an emotion; neither takes the accusative; and they take
+    DIFFERENT cases — वृकात् ablative, मात्रे dative. Nothing about the nouns
+    explains that. Only the verb does.
+
+    That is the whole content of special government, and a sentence like
+    बालः वृकेभ्यः बिभेति cannot show it, because with one verb on the page
+    there is no choice being made. Read this without the glosses and let each
+    verb tell you what case is coming.
+
 - id: ex180
   kind: sangraha
   segment: 70
