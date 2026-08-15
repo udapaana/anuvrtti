@@ -38,6 +38,180 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex191
+  kind: sangraha
+  segment: 135
+  order: 1
+  sentence: राजपुरुषः सभाम् आगच्छति। सः महापुरुषः, पीताम्बरः च। रामकृष्णौ तम् पश्यतः। अब्राह्मणः अपि तत्र तिष्ठति। उपकृष्णम् जनाः सीदन्ति। राज्ञः पुरुषः धर्मम् कथयति।
+  translation: The king's man comes to the assembly. He is a great man, and yellow-robed. Rāma and Kṛṣṇa see him. A non-brahmin stands there too. The people sit near Kṛṣṇa. The king's man speaks about dharma.
+  teaches: |
+    the four compound types in running prose rather than as citation forms:
+    राजपुरुषः and महापुरुषः where the second member governs, पीताम्बरः pointing
+    at a man it does not name, रामकृष्णौ coordinating two, उपकृष्णम् behaving as
+    an indeclinable. राजपुरुषः returns at the end as राज्ञः पुरुषः — the same
+    sense, uncompounded.
+  words:
+  - form: राजपुरुषः
+    lemma: राजपुरुष
+    gloss: the king's man
+    notes:
+    - term: तत्पुरुष
+      en: the second member is what the compound names; राजन् qualifies it
+    - term: प्रथमा
+      en: nominative
+    - cite: "2.1.22"
+      role: तत्पुरुषः — the class where the last member is primary
+  - form: सभाम्
+    lemma: सभा
+    gloss: to the assembly
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: आगच्छति
+    lemma: गम्
+    gloss: comes
+    notes:
+    - term: लट्
+      en: present
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: महापुरुषः
+    lemma: महापुरुष
+    gloss: a great man
+    notes:
+    - term: कर्मधारय
+      en: a तत्पुरुष whose members share one case — महा describes पुरुष
+    - term: प्रथमा
+      en: nominative
+  - form: पीताम्बरः
+    lemma: पीताम्बर
+    gloss: yellow-robed
+    notes:
+    - term: बहुव्रीहि
+      en: names neither पीत nor अम्बर but the man wearing them
+    - cite: "2.2.23"
+      role: शेषो बहुव्रीहिः — the compound points outside itself → पीताम्बरः
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: रामकृष्णौ
+    lemma: रामकृष्ण
+    gloss: Rāma and Kṛṣṇa
+    notes:
+    - term: द्वन्द्व
+      en: both members stand equal — the dual ending counts them
+    - cite: "2.2.29"
+      role: चार्थे द्वन्द्वः — the coordinate compound → रामकृष्णौ
+  - form: तम्
+    lemma: तद्
+    gloss: him
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: पश्यतः
+    lemma: दृश्
+    gloss: the two see
+    notes:
+    - term: द्विवचन
+      en: dual verb — रामकृष्णौ is two people, so the verb follows
+  - form: अब्राह्मणः
+    lemma: अब्राह्मण
+    gloss: a non-brahmin
+    notes:
+    - term: नञ्
+      en: negation compounded in front — न becomes अ before a consonant
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तिष्ठति
+    lemma: स्था
+    gloss: stands
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+  - form: उपकृष्णम्
+    lemma: उपकृष्ण
+    gloss: near Kṛṣṇa
+    notes:
+    - term: अव्ययीभाव
+      en: the preverb उप leads, and the whole behaves as an indeclinable
+    - cite: "2.1.5"
+      role: अव्ययीभावः — the first member governs and the compound is invariable
+  - form: जनाः
+    lemma: जन
+    gloss: the people
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: बहुवचन
+      en: nominative plural
+  - form: सीदन्ति
+    lemma: सद्
+    gloss: sit
+    vocab: true
+    notes:
+    - term: लट्
+      en: present plural
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: the king's
+    notes:
+    - term: षष्ठी
+      en: the uncompounded विग्रह of राजपुरुषः — weak stem राज्ञ्
+  - form: पुरुषः
+    lemma: पुरुष
+    gloss: man
+    notes:
+    - term: प्रथमा
+      en: nominative — two words now, where the opening had one
+  - form: धर्मम्
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: कथयति
+    lemma: कथ्
+    gloss: speaks about
+    notes:
+    - term: लट्
+      en: present
+  vyakhya: राजपुरुषः इति समासः, राज्ञः पुरुषः इति विग्रहः। एकः अर्थः, द्वे रूपे।
+  vyakhya_en: |
+    The passage opens with राजपुरुषः and closes with राज्ञः पुरुषः. Same man,
+    same sense — one written as a single word, the other with the genitive
+    showing. That second form is the विग्रह, the analysis a compound can always
+    be unpacked into, and knowing which विग्रह a compound answers to is what
+    tells you its type.
+
+    पीताम्बरः is the one that will not unpack that way. Neither पीत nor अम्बर
+    is what the word names; it names a man neither member mentions.
+
 - id: ex190
   kind: sangraha
   segment: 195
