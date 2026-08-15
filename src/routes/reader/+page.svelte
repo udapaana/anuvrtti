@@ -60,7 +60,12 @@
   //    table of contents; readings stay in their authored difficulty sequence. ──
   const list = $derived(sequence.map((r) => ({ ...r })));
   const totalPages = $derived(Math.max(1, Math.ceil(list.length / PAGE)));
-  const clampedPage = $derived(Math.min(page, totalPages - 1));
+  // Clamp BOTH ends. This only had Math.min, so `page` could run negative:
+  // every caller assigns a raw value (setPage, stepReading, jumpToChapter) and
+  // nothing floored it at zero. Cards kept rendering because slice() tolerates
+  // negative indices, so the only visible symptom was the pager label reading
+  // "page -3 / 12 · -79–-60 of 228".
+  const clampedPage = $derived(Math.max(0, Math.min(page, totalPages - 1)));
   const startIdx = $derived(clampedPage * PAGE);
   const slice = $derived(list.slice(startIdx, startIdx + PAGE));
 
@@ -246,8 +251,12 @@
       const target = els.find((el) => el.getBoundingClientRect().top > ANCHOR + 4);
       if (target) { scrollToReading(target.getAttribute('data-ex-id')!); return; }
       if (clampedPage < totalPages - 1) {
+        // Compute the landing card from `list` and the NEXT page index directly.
+        // Reading `slice` inside the callback took whatever the derived held at
+        // that moment, which on a fast keypress is still the old page.
+        const nextFirst = list[(clampedPage + 1) * PAGE];
         page = clampedPage + 1;
-        requestAnimationFrame(() => requestAnimationFrame(() => { observe(); const first = slice[0]; if (first) scrollToReading(first.id); }));
+        requestAnimationFrame(() => requestAnimationFrame(() => { observe(); if (nextFirst) scrollToReading(nextFirst.id); }));
       }
     } else {
       // last card whose top is above the anchor line — i.e. the previous one
@@ -255,8 +264,10 @@
       const target = above[above.length - 1];
       if (target) { scrollToReading(target.getAttribute('data-ex-id')!); return; }
       if (clampedPage > 0) {
+        const prevStart = (clampedPage - 1) * PAGE;
+        const prevLast = list[Math.min(prevStart + PAGE, list.length) - 1];
         page = clampedPage - 1;
-        requestAnimationFrame(() => requestAnimationFrame(() => { observe(); const last = slice[slice.length - 1]; if (last) scrollToReading(last.id); }));
+        requestAnimationFrame(() => requestAnimationFrame(() => { observe(); if (prevLast) scrollToReading(prevLast.id); }));
       }
     }
   }
@@ -269,15 +280,37 @@
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); stepReading(1); }
     else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); stepReading(-1); }
   }
+  // Jump to a chapter's FIRST READING, and focus it.
+  //
+  // Chapters are braided through the sequence by difficulty, not contiguous:
+  // the 12 सङ्ग्रह passages are spread over 8 different pages, and सङ्ग्रह's
+  // first one (ex182) sits at position 8 — on page 1, surrounded by kāraka.
+  // The old code paged to floor(firstIdx/PAGE) and then scrolled to a
+  // [data-ch-id] heading, so clicking सङ्ग्रह in the spine landed you on page 1
+  // looking at kāraka, and scrolling down never reached the chapter you asked
+  // for. Target the reading itself so the jump lands on actual content.
   function jumpToChapter(chId: string) {
-    page = Math.floor((firstIdx[chId] || 0) / PAGE);
+    const idx = firstIdx[chId];
+    if (idx === undefined) return;
+    const target = list[idx];
+    page = Math.floor(idx / PAGE);
+    // Do NOT set focusedId before scrolling: focus re-renders the rail and the
+    // card, and that re-render cancels an in-flight smooth scroll — the jump
+    // stalled a few hundred px in. Scroll first, focus once we've arrived.
     focusedId = null;
-    requestAnimationFrame(() => {
-      observe();
-      const el = document.querySelector('[data-ch-id="' + chId + '"]');
-      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
-      else window.scrollTo({ top: 0 });
-    });
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        observe();
+        const el = target && (document.querySelector('[data-ex-id="' + target.id + '"]') as HTMLElement | null);
+        const head = document.querySelector('[data-ch-id="' + chId + '"]') as HTMLElement | null;
+        // Prefer the chapter heading when it is directly above that reading, so
+        // the title stays in view; otherwise go to the reading.
+        const anchor = head && el && el.getBoundingClientRect().top - head.getBoundingClientRect().top < 400 ? head : el;
+        if (!anchor) { window.scrollTo({ top: 0 }); return; }
+        window.scrollTo({ top: anchor.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+        if (target) setTimeout(() => { focusedId = target.id; }, 500);
+      })
+    );
   }
 
   function observe() {
