@@ -34,6 +34,28 @@
 #  would break it again. Ids are permanent labels; `segment` is the order.
 #  Optional `order:` breaks ties within one tier when sequence matters.
 #
+#  ── register of the `teaches` line ─────────────────────────────────────
+#
+#  `teaches` is READER-FACING. It says what is in this reading, in the voice
+#  of someone describing a text — not notes to a fellow author. A full sweep
+#  of all 223 lines fixed four habits; they are easy to slip back into:
+#
+#    - Caps for emphasis (REAL, NOT, FULL, WEAK, DECLINES). Italics do not
+#      exist here, so caps became a shout. Rewrite so the sentence carries
+#      the emphasis.
+#    - Corpus-internal references — "minimal pair with ex122", "vs the
+#      ओ-outcome of ex155", "parallel to the देव table (ex094)". The reader
+#      has no ids and no tier numbers. Name the contrast, not the row.
+#    - Build vocabulary — "reference-fill", "cell", "foil", "the batch",
+#      "the special-government wall". These describe the corpus as a
+#      construction project.
+#    - `+`-chained feature lists: "a simile + सम्प्रदान dative + imperatives".
+#      That is a changelog. Write the sentence.
+#
+#  Scaffolding facts belong in `note`, never in `teaches`: that rd001 is the
+#  "first REAL sentence" is a fact about how the corpus was built, and a
+#  learner neither knows nor cares that the previous 164 were manufactured.
+#
 #  status: done | in_progress | next | stub
 #  Each topic: id, title, sutra ranges (defining core), prerequisites, the
 #  reading ids (from readings.yaml) that serve it, and a status.
