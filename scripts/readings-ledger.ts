@@ -39,6 +39,7 @@ interface Reading {
   chapter: string;
   kind?: string;
   segment?: number;
+  length?: 'short' | 'passage' | 'long';
   words?: { notes?: { cite?: string }[] }[];
 }
 
@@ -164,6 +165,36 @@ function main() {
     for (const r of untouched) console.log(`    ${r.cite.padEnd(9)} ${r.gloss ?? ''}`);
     console.log();
   }
+
+  // ── length × difficulty ──────────────────────────────────────────────────
+  // These axes are meant to be INDEPENDENT. Where they aren't — where a tier
+  // has only short readings — that tier has no consolidation passage, and its
+  // load-bearing rules can only be recurring by accident.
+  const tiers = new Map<number, { short: number; passage: number; long: number }>();
+  for (const r of corpus) {
+    const t = r.segment ?? 0;
+    if (!tiers.has(t)) tiers.set(t, { short: 0, passage: 0, long: 0 });
+    const b = tiers.get(t)!;
+    b[r.length ?? 'short']++;
+  }
+  const starved = [...tiers.entries()]
+    .filter(([, b]) => b.passage + b.long === 0 && b.short > 0)
+    .map(([t]) => t)
+    .sort((a, b) => a - b);
+
+  console.log(`  LENGTH × DIFFICULTY — independent axes`);
+  const totals = corpus.reduce(
+    (acc, r) => ((acc[r.length ?? 'short']++, acc)),
+    { short: 0, passage: 0, long: 0 } as Record<string, number>
+  );
+  console.log(
+    `    short ${totals.short}   passage ${totals.passage}   long ${totals.long}   (${pct(totals.passage + totals.long, corpus.length)} of readings are connected prose)`
+  );
+  if (starved.length) {
+    console.log(`    tiers with NO passage — nothing consolidates their new rules:`);
+    console.log(`      ${starved.join(', ')}`);
+  }
+  console.log();
 
   if (unclassified.length) {
     console.log(`  ── unclassified — cited but not declared in _rules.yaml (triage these) ──`);
