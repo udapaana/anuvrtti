@@ -60,15 +60,51 @@
   // ── the reading list (graded order), paginated. The chapter spine is the only
   //    table of contents; readings stay in their authored difficulty sequence. ──
   const list = $derived(sequence.map((r) => ({ ...r })));
-  const totalPages = $derived(Math.max(1, Math.ceil(list.length / PAGE)));
+  // ── page boundaries: cut where the CONTENT breaks, not every PAGE readings ──
+  //
+  // Fixed 20-reading slices cut across a sequence ordered by difficulty, so
+  // chapters landed wherever they landed. Late in the corpus that was severe:
+  // pāṭhāḥ spans 37 tiers (210-570) and kathā spans 160-460, so past tier 220
+  // they braid one reading at a time. Page 10 held THIRTEEN chapter switches
+  // across 20 readings, nine of them a single reading, with pāṭhāḥ marked five
+  // separate times — 11,819px of scrolling past markers that said nothing.
+  //
+  // So: accumulate readings into a page until adding the next chapter-run would
+  // overshoot PAGE, then break. A run longer than PAGE gets a page to itself and
+  // overflows rather than being split mid-chapter. Pages come out uneven, which
+  // is correct — they follow the material.
+  const bounds = $derived.by(() => {
+    const runs: { start: number; len: number }[] = [];
+    for (let i = 0; i < list.length; i++) {
+      const prev = runs[runs.length - 1];
+      if (prev && list[i].chapter === list[prev.start].chapter) prev.len++;
+      else runs.push({ start: i, len: 1 });
+    }
+    const out: { start: number; end: number }[] = [];
+    let start = 0;
+    let count = 0;
+    for (const run of runs) {
+      if (count > 0 && count + run.len > PAGE) {
+        out.push({ start, end: run.start });
+        start = run.start;
+        count = 0;
+      }
+      count += run.len;
+    }
+    if (start < list.length) out.push({ start, end: list.length });
+    return out.length ? out : [{ start: 0, end: list.length }];
+  });
+
+  const totalPages = $derived(bounds.length);
   // Clamp BOTH ends. This only had Math.min, so `page` could run negative:
   // every caller assigns a raw value (setPage, stepReading, jumpToChapter) and
   // nothing floored it at zero. Cards kept rendering because slice() tolerates
   // negative indices, so the only visible symptom was the pager label reading
   // "page -3 / 12 · -79–-60 of 228".
   const clampedPage = $derived(Math.max(0, Math.min(page, totalPages - 1)));
-  const startIdx = $derived(clampedPage * PAGE);
-  const slice = $derived(list.slice(startIdx, startIdx + PAGE));
+  const startIdx = $derived(bounds[clampedPage]?.start ?? 0);
+  const endIdx = $derived(bounds[clampedPage]?.end ?? list.length);
+  const slice = $derived(list.slice(startIdx, endIdx));
 
   const focused = $derived.by(() => {
     const inSlice = focusedId && slice.some((r) => r.id === focusedId);
@@ -108,10 +144,42 @@
     // so they can be bound into a single visual block; the consolidation
     // passage that follows keeps its own card, since it is a different thing.
     const runKey = (r: any) => (r.length === 'short' ? `${r.chapter}:${Math.floor((r.segment ?? 0) / 10)}` : null);
+    // A page is thrashing when its chapters change hands more often than they
+    // hold: more runs than distinct chapters + 1.
+    const distinct = new Set(slice.map((r: any) => r.chapter)).size;
+    let runCount = 0;
+    let prevCh: string | null = null;
+    for (const r of slice) {
+      if (r.chapter !== prevCh) runCount++;
+      prevCh = r.chapter;
+    }
+    const thrashing = runCount > distinct + 1;
     slice.forEach((r, k) => {
       if (r.chapter !== last) {
         const t = titles[r.chapter] ?? { dev: r.chapter, en: '' };
-        out.push({ head: true, chId: r.chapter, dev: t.dev, en: t.en, resumed: seen.has(r.chapter) });
+        // Suppress a RESUME marker when chapters are thrashing — a run of one
+        // reading whose chapter was already open a row or two back. Late in the
+        // corpus pāṭhāḥ and kathā alternate one reading at a time, so page 13
+        // carries 13 switches; marking each return says nothing the spine and
+        // the card's own metadata do not already say, and five identical
+        // "pāṭhāḥ" hairlines on one page read as noise rather than structure.
+        // A chapter's FIRST appearance always gets its full banner.
+        // Two heuristics were tried here and both failed on the real pattern:
+        // suppressing single-reading runs, and suppressing when the chapter was
+        // already the last one marked. Neither helps when chapters genuinely
+        // alternate A→B→A→B, which is what pāṭhāḥ and kathā do from tier 220 on
+        // — page 13 is pāṭhāḥ(4) kathā(1) pāṭhāḥ(2) kathā(1) … all the way down.
+        //
+        // So the marker is suppressed wholesale on a THRASHING page: one where
+        // resume markers would outnumber the chapters they mark. On such a page
+        // the marker communicates nothing — the spine already shows which
+        // chapter is in view, and each card carries its own identity — while
+        // thirteen hairlines read as structure that is not there. A chapter's
+        // FIRST appearance still gets its full banner, always.
+        const isFirst = !seen.has(r.chapter);
+        if (isFirst || !thrashing) {
+          out.push({ head: true, chId: r.chapter, dev: t.dev, en: t.en, resumed: !isFirst });
+        }
         seen.add(r.chapter);
         last = r.chapter;
       }
@@ -272,7 +340,7 @@
         // Compute the landing card from `list` and the NEXT page index directly.
         // Reading `slice` inside the callback took whatever the derived held at
         // that moment, which on a fast keypress is still the old page.
-        const nextFirst = list[(clampedPage + 1) * PAGE];
+        const nextFirst = list[bounds[clampedPage + 1]?.start ?? 0];
         page = clampedPage + 1;
         requestAnimationFrame(() => requestAnimationFrame(() => { observe(); if (nextFirst) scrollToReading(nextFirst.id); }));
       }
@@ -282,8 +350,7 @@
       const target = above[above.length - 1];
       if (target) { scrollToReading(target.getAttribute('data-ex-id')!); return; }
       if (clampedPage > 0) {
-        const prevStart = (clampedPage - 1) * PAGE;
-        const prevLast = list[Math.min(prevStart + PAGE, list.length) - 1];
+        const prevLast = list[(bounds[clampedPage - 1]?.end ?? 1) - 1];
         page = clampedPage - 1;
         requestAnimationFrame(() => requestAnimationFrame(() => { observe(); if (prevLast) scrollToReading(prevLast.id); }));
       }
@@ -311,7 +378,7 @@
     const idx = firstIdx[chId];
     if (idx === undefined) return;
     const target = list[idx];
-    page = Math.floor(idx / PAGE);
+    page = Math.max(0, bounds.findIndex((b) => idx >= b.start && idx < b.end));
     // Do NOT set focusedId before scrolling: focus re-renders the rail and the
     // card, and that re-render cancels an in-flight smooth scroll — the jump
     // stalled a few hundred px in. Scroll first, focus once we've arrived.
@@ -488,7 +555,7 @@
             <div class="pager">
               <button class="navbtn" disabled={clampedPage <= 0} onclick={() => setPage(clampedPage - 1)}>← previous</button>
               <span class="range">
-                page {clampedPage + 1} / {totalPages} · {startIdx + 1}–{Math.min(startIdx + PAGE, list.length)} of {list.length}
+                page {clampedPage + 1} / {totalPages} · {startIdx + 1}–{endIdx} of {list.length}
               </span>
               <button class="navbtn" disabled={clampedPage >= totalPages - 1} onclick={() => setPage(clampedPage + 1)}>next →</button>
             </div>
