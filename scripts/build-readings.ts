@@ -12,6 +12,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { parse as parseYaml } from 'yaml';
+import { parseGrid, isRectangular } from '../src/lib/reader/paradigm';
 
 const READINGS_DIR = path.join(process.cwd(), 'content/readings');
 const SYLLABUS = path.join(READINGS_DIR, '_syllabus.yaml');
@@ -122,9 +123,7 @@ function main() {
   // and no error. That silence is the danger — it looks like a deliberate
   // ungloss. Long prose passages are where it bites (a trailing comma is
   // enough), so report it at build time rather than leaving it to be noticed.
-  // Scoped to PROSE. Paradigm tables (kind:paradigm) list bare cells, and the
-  // sandhi readings use a "क + ख → ग" display syntax; unglossed tokens there
-  // are correct, not a defect. Anusvāra is normalised because ग्रामं and
+  // Scoped to PROSE — see the skip below. Anusvāra is normalised because ग्रामं and
   // ग्रामम् are the same word — a corpus-wide orthographic split that silently
   // detached glosses in 12 readings before this check existed.
   const anusvara = (s: string) => s.replace(/ं$/, 'म्');
@@ -132,7 +131,11 @@ function main() {
   for (const r of sequence) {
     const forms = new Set((r.words ?? []).map((w: any) => anusvara(w.form)));
     if (!forms.size) continue;
-    if (r.kind === 'paradigm' || String(r.sentence ?? '').includes('→')) continue;
+    // Skip tables and the "क + ख → ग" sandhi display syntax: unglossed tokens
+    // are correct in both. Tables are detected by SHAPE via the shared module,
+    // not by the `kind` field — ex094 is a paradigm that never declared itself
+    // one, so a kind-based test reported all 24 of its cells as missing glosses.
+    if (isRectangular(parseGrid(r.sentence)) || String(r.sentence ?? '').includes('→')) continue;
     const toks = String(r.sentence ?? '')
       .replace(/[।॥,;—"“”?!]/g, ' ')
       .split(/\s+/)

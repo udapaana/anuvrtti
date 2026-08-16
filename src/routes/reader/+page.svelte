@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
 
+  import { toParadigm } from '$lib/reader/paradigm';
   // Graded reader — the design's redesign: a chapter spine (left), interlinear
   // gloss reading with word-identity tags (center), and a scroll-synced sūtra
   // derivation rail (right). Paginated (PAGE per page) so it scales past a few
@@ -131,45 +132,8 @@
     return list.length > 1 && idx >= 0 ? (idx / (list.length - 1)) * 100 : 0;
   });
 
-  // ── paradigm cards render as a GRID, not as interlinear prose ──────────────
-  // kind:paradigm readings are tables written into the `sentence` field: each
-  // daṇḍa-delimited group is one row (a विभक्ति) and the words inside it are
-  // the three वचन cells. Run through the ordinary interlinear renderer they
-  // came out as 24 free-flowing tokens wrapping across 429px with nothing
-  // aligned — a table rendered as a paragraph, which is why they looked awful.
-  //
-  // Row labels are supplied here rather than in the data: the corpus has no
-  // per-row annotation, and the order is fixed by the paradigm itself.
-  const SUP_ROWS = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
-  const TIN_ROWS = ['उत्तम', 'मध्यम', 'प्रथम'];
-  function paradigmGrid(r: Reading) {
-    if (r.kind !== 'paradigm') return null;
-    const rows = String(r.sentence ?? '')
-      .split(/[।॥]/)
-      .map((s) => s.trim())
-      .filter(Boolean)
-      .map((s) => s.split(/\s+/).filter(Boolean))
-      // The vocative row is written "हे फल हे फले हे फलानि" — the particle is a
-      // separate token per cell, making that row twice as wide as the others
-      // and failing the rectangularity check below. Bind it to the word it calls.
-      .map((cells) => {
-        const out: string[] = [];
-        for (let k = 0; k < cells.length; k++) {
-          if (cells[k] === 'हे' && cells[k + 1]) out.push('हे ' + cells[++k]);
-          else out.push(cells[k]);
-        }
-        return out;
-      });
-    // Only grid it when it really is rectangular; otherwise fall back to prose
-    // so a one-line paradigm (ex164 lists कर्तृ's cases inline) isn't mangled.
-    if (rows.length < 3 || !rows.every((c) => c.length === rows[0].length)) return null;
-    const labels = rows.length === 3 && rows[0].length === 3 ? TIN_ROWS : SUP_ROWS;
-    return {
-      cols: rows[0].length,
-      rows: rows.map((cells, i) => ({ label: labels[i] ?? '', cells }))
-    };
-  }
-
+  // Paradigm recognition lives in src/lib/reader/paradigm.ts — see the note
+  // there on ex094 vs ex172. Recognition is by SHAPE, not by the `kind` field.
   // ── interlinear token + word identity processing (matches design) ───────────
   function processEx(r: Reading, n: number) {
     const id = r.id;
@@ -215,7 +179,7 @@
       teaches: r.teaches || '',
       tokens,
       words,
-      grid: paradigmGrid(r),
+      grid: toParadigm(r.sentence),
       translation: r.translation || '',
       vyakhya: r.vyakhya || '',
       vyakhya_en: (r.vyakhya_en || '').trim()
@@ -470,7 +434,7 @@
                   <!-- paradigm: a real grid, aligned by वचन -->
                   <div class="pgrid" style="--cols:{row.grid.cols}">
                     <div class="pgcorner"></div>
-                    {#each ['एकवचन', 'द्विवचन', 'बहुवचन'].slice(0, row.grid.cols) as h}
+                    {#each row.grid.colHeads as h}
                       <div class="pgcolhead"><Sanskrit text={h} source="devanagari" /></div>
                     {/each}
                     {#each row.grid.rows as gr}
