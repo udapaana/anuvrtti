@@ -38,6 +38,189 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex192
+  kind: sangraha
+  segment: 105
+  order: 1
+  sentence: अग्निः ज्वलति। नरः जलम् नयति। बालः वनम् गच्छति। गुरुः शिष्यम् बोधति। सः धर्मम् वदति। जनाः शृण्वन्ति। अग्नयः ज्वलन्ति, नराः च पश्यन्ति।
+  translation: The fire blazes. The man leads the water. The boy goes to the forest. The teacher instructs the student. He speaks dharma. The people listen. The fires blaze, and the men watch.
+  teaches: |
+    seven present-tense verbs whose stems are built the same way — a अ inserted
+    between root and ending, and the root vowel strengthened before it. नी gives
+    नयति, बुध् gives बोधति, ज्वल् gives ज्वलति. The endings differ; the two steps
+    that produce the stem do not.
+  words:
+  - form: अग्निः
+    lemma: अग्नि
+    gloss: the fire
+    notes:
+    - term: कर्तृ
+      en: agent — an इ-stem masculine
+    - term: प्रथमा
+      en: nominative
+  - form: ज्वलति
+    lemma: ज्वल्
+    gloss: blazes
+    notes:
+    - term: शप्
+      en: ज्वल् + अ + ति — the अ between root and ending
+    - term: लट्
+      en: present
+    - cite: "3.1.68"
+      role: कर्तरि शप् — the शप् विकरण inserted after the root → ज्वल् + अ
+  - form: नरः
+    lemma: नर
+    gloss: the man
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: जलम्
+    lemma: जल
+    gloss: water
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: नयति
+    lemma: नी
+    gloss: leads
+    notes:
+    - term: शप्
+      en: नी + अ + ति, and ई strengthens to ए — ने + अ gives नय्
+    - cite: "7.3.84"
+      role: सार्वधातुकार्धधातुकयोः — गुण of the root vowel before शप् → नयति
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वनम्
+    lemma: वन
+    gloss: to the forest
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: गच्छति
+    lemma: गम्
+    gloss: goes
+    notes:
+    - term: शप्
+      en: the same अ, on a root that also changes shape — गम् appears as गच्छ्
+    - term: लट्
+      en: present
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: शिष्यम्
+    lemma: शिष्य
+    gloss: the student
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: बोधति
+    lemma: बुध्
+    gloss: instructs
+    vocab: true
+    notes:
+    - term: शप्
+      en: बुध् + अ + ति, and उ strengthens to ओ — the same step as in नयति
+    - term: लट्
+      en: present
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: धर्मम्
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: शप्
+      en: वद् + अ + ति — अ already, so nothing to strengthen
+    - term: लट्
+      en: present
+  - form: जनाः
+    lemma: जन
+    gloss: the people
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: बहुवचन
+      en: nominative plural
+  - form: शृण्वन्ति
+    lemma: श्रु
+    gloss: listen
+    notes:
+    - term: लट्
+      en: present plural — श्रु takes श्नु, not शप्, so the stem is शृणो/शृण्व्
+  - form: अग्नयः
+    lemma: अग्नि
+    gloss: the fires
+    notes:
+    - term: बहुवचन
+      en: nominative plural — इ strengthens before the ending, अग्नि → अग्नय्
+    - cite: "7.3.109"
+      role: जसि च — गुण before the plural ending → अग्नयः
+  - form: ज्वलन्ति
+    lemma: ज्वल्
+    gloss: blaze
+    notes:
+    - term: बहुवचन
+      en: same stem ज्वल + अ, a different ending — ज्वलति beside ज्वलन्ति
+  - form: नराः
+    lemma: नर
+    gloss: the men
+    notes:
+    - term: बहुवचन
+      en: nominative plural
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: पश्यन्ति
+    lemma: दृश्
+    gloss: watch
+    notes:
+    - term: बहुवचन
+      en: present plural — दृश् appears as पश्य्
+  vyakhya: धातोः परं शप्, तस्मात् पूर्वं गुणः। नी → ने → नय्। बुध् → बोध्।
+  vyakhya_en: |
+    Between the root and the ending there is almost always a अ. It is not part
+    of either — it is inserted, and it is why भू gives भवति rather than भूति.
+    Once it is there, a short इ उ ऋ in the root strengthens in front of it:
+    नी becomes ने and then नय्, बुध् becomes बोध्.
+
+    वद् shows nothing happening, because अ cannot strengthen further. शृण्वन्ति
+    shows a root that takes a different insert altogether. The अ is the default,
+    not the rule without exception.
+
 - id: ex191
   kind: sangraha
   segment: 135

@@ -98,9 +98,31 @@ term_implies:
   निष्ठा: "3.2.102"     # past participle
   तृच्: "3.1.133"       # agent-noun
   ल्युट्: "3.3.115"     # action-noun
+  शप्: "3.1.68"         # the present-stem विकरण
+  यक्: "3.1.67"         # the passive विकरण
+  शतृ: "3.2.124"        # present participle
+  क्त्वा: "3.4.21"      # gerund
+  तुमुन्: "3.3.10"      # infinitive
+  विधिलिङ्: "3.3.161"   # optative
 # NOT mapped, deliberately: प्रथमा (2.3.46 vs 2.3.47 vocative — ambiguous),
 # कर्तृ (a role saṃjñā spanning 1.4.54 and the passive-agent rules), सन्धि
 # (names no single rule), अव्यय, विशेषण (not rule-bearing at all).
+#
+# ── known gap: the present stem is untagged ───────────────────────────────
+# 118 readings contain a present-tense verb; 174 words carry a लट् tag. Only
+# THREE readings mention शप् (3.1.68) or गुण (7.3.84) — the two rules that
+# actually build those stems. गच्छति, वदति, पश्यति all have them and none says
+# so, because the corpus tags the ENDING and never the stem-formation.
+#
+# So 3.1.68 and 7.3.84 read as barely-taught while being present on nearly
+# every page. Not fixable from here: mapping लट् → 3.1.68 would be WRONG, as
+# not every present verb takes शप् (श्रु takes श्नु → शृण्वन्ति, ज्ञा takes
+# श्ना → जानाति), and a wrong encounter is worse than a missing one.
+#
+# The fix is authoring: tag शप् on the verbs that take it. ~102 readings have
+# an unannotated लट् verb across 82 roots. Blocked on a data problem — `lemma`
+# on those words is sometimes the inflected form (गच्छति, यच्छति, पश्यति)
+# rather than the root, so गण membership cannot be derived mechanically.
 
 load_bearing:
 
