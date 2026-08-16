@@ -75,7 +75,27 @@ function main() {
     .sort();
 
   for (const file of files) {
-    const doc = parseYaml(fs.readFileSync(path.join(READINGS_DIR, file), 'utf-8')) as any;
+    const src = fs.readFileSync(path.join(READINGS_DIR, file), 'utf-8');
+    // Catch the recurring authoring slip before the YAML parser does: an
+    // unquoted scalar containing a double quote. YAML reports it as
+    // "Unexpected scalar at node end" with a line number and no cause, which
+    // is a poor error for a mistake that happens on nearly every batch.
+    src.split('\n').forEach((line, i) => {
+      // Only a value that STARTS with a quote is a problem — YAML then reads it
+      // as a quoted scalar and chokes on whatever follows the closing quote.
+      // A quote mid-value ('the sense "along with"') parses fine and is common.
+      const m = line.match(/^\s+(en|role|gloss|teaches|translation): (".*)$/);
+      // A properly quoted scalar closes its quote, allowing \" inside it.
+      const wellFormed = m ? /^"(?:[^"\\]|\\.)*"$/.test(m[2].trim()) : true;
+      if (m && !wellFormed) {
+        throw new Error(
+          `${file}:${i + 1} — unquoted scalar contains a double quote.\n` +
+            `  ${line.trim()}\n` +
+            `  Wrap it in single quotes, or escape the inner quotes as \\".`
+        );
+      }
+    });
+    const doc = parseYaml(src) as any;
     const readings = doc?.readings ?? [];
     if (!readings.length) continue;
     const stem = file.replace(/\.yaml$/, ''); // '01_karaka'

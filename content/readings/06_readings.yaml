@@ -10,6 +10,470 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd040
+  kind: attested
+  segment: 295
+  source:
+    text: पञ्चतन्त्र
+    ref: "Pañcatantra, कथामुख — the frame"
+    curated: "the opening of the frame story, lightly abridged; the words are the text's own"
+  sentence: अस्ति दाक्षिणात्ये जनपदे महिलारोप्यं नाम नगरम्। तत्र अमरशक्तिर् नाम राजा बभूव। तस्य त्रयः पुत्राः परमदुर्मेधसः आसन्। ततः राजा मन्त्रिणः आहूय उवाच — किम् अत्र कर्तव्यम् इति।
+  translation: There is, in a southern country, a city named Mahilāropya. There ruled a king named Amaraśakti. He had three sons, exceedingly dull-witted. Then the king, having summoned his ministers, said — "What is to be done here?"
+  teaches: |
+    a second narrative opening, in the same frame-formula as the Hitopadeśa
+    (अस्ति … नाम नगरम्), so the two can be read against each other. Adds the
+    perfect बभूव beside आसन्, a gerund आहूय, and closes on कर्तव्यम् — a
+    gerundive standing as the whole predicate of a question.
+  words:
+  - form: अस्ति
+    lemma: अस्
+    gloss: there is
+    notes:
+    - term: लट्
+      en: the same opening formula as the Hitopadeśa passage
+  - form: दाक्षिणात्ये
+    lemma: दाक्षिणात्य
+    gloss: southern
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: '"belonging to the south" — from दक्षिण with vṛddhi'
+    - term: सप्तमी
+      en: locative, agreeing with जनपदे
+  - form: जनपदे
+    lemma: जनपद
+    gloss: in a country
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: महिलारोप्यं
+    lemma: महिलारोप्य
+    gloss: Mahilāropya
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative, agreeing with नगरम्
+  - form: नाम
+    lemma: नामन्
+    gloss: by name
+    notes:
+    - term: अव्यय
+      en: indeclinable, in apposition
+  - form: नगरम्
+    lemma: नगर
+    gloss: a city
+    notes:
+    - term: प्रथमा
+      en: neuter nominative
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अमरशक्तिर्
+    lemma: अमरशक्ति
+    gloss: Amaraśakti
+    vocab: true
+    notes:
+    - term: सन्धि
+      en: अमरशक्तिः + नाम — the visarga becomes र् before a voiced sound
+    - term: प्रथमा
+      en: nominative
+  - form: राजा
+    lemma: राजन्
+    gloss: a king
+    notes:
+    - term: प्रथमा
+      en: nominative — the न् of राजन् drops in the bare form
+    - cite: "8.2.7"
+      role: नलोपः प्रातिपदिकान्तस्य — the final न् of the stem drops → राजा
+  - form: बभूव
+    lemma: भू
+    gloss: there was, came to be
+    notes:
+    - term: लिट्
+      en: the perfect — reduplicated भू → बभूव, beside आसन् below
+    - cite: "3.2.115"
+      role: परोक्षे लिट् — the perfect for what lies outside the speaker's sight → बभूव
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: षष्ठी
+      en: 'genitive — Sanskrit says "of him were three sons" for "he had"'
+  - form: त्रयः
+    lemma: त्रि
+    gloss: three
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative plural, agreeing with पुत्राः
+  - form: पुत्राः
+    lemma: पुत्र
+    gloss: sons
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: बहुवचन
+      en: nominative plural
+  - form: परमदुर्मेधसः
+    lemma: परमदुर्मेधस्
+    gloss: exceedingly dull-witted
+    vocab: true
+    notes:
+    - term: कर्मधारय
+      en: 'परम + दुर्मेधस् — "extremely of-bad-intellect", one word in Sanskrit'
+    - term: प्रथमा
+      en: nominative plural, an अस्-stem
+  - form: आसन्
+    lemma: अस्
+    gloss: were
+    notes:
+    - term: लङ्
+      en: past plural — the imperfect beside the perfect बभूव above
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable — the narrative connective
+  - form: मन्त्रिणः
+    lemma: मन्त्रिन्
+    gloss: the ministers
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of आहूय
+    - term: द्वितीया
+      en: accusative plural — an इन्-stem
+  - form: आहूय
+    lemma: ह्वे
+    gloss: having summoned
+    notes:
+    - term: ल्यप्
+      en: the gerund with a preverb — आ + ह्वे, the summoning before the speaking
+    - cite: "3.4.21"
+      role: समानकर्तृकयोः पूर्वकाले — the earlier of two acts by one agent → आहूय
+  - form: उवाच
+    lemma: वच्
+    gloss: said
+    notes:
+    - term: लिट्
+      en: the perfect — a third narrative past in four sentences
+  - form: किम्
+    lemma: किम्
+    gloss: what
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — the subject of the gerundive
+  - form: अत्र
+    lemma: अत्र
+    gloss: here
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: कर्तव्यम्
+    lemma: कृ
+    gloss: is to be done
+    notes:
+    - term: कृत्य
+      en: the gerundive — obligation, and it needs no verb to predicate it
+    - cite: "3.1.96"
+      role: तव्यत्तव्यानीयरः — तव्य forms the gerundive → कर्तव्यम्
+  - form: इति
+    lemma: इति
+    gloss: '"thus"'
+    notes:
+    - term: अव्यय
+      en: closes the quotation
+  vyakhya: अस्ति नाम नगरम् — कथामुखस्य रूढा रीतिः। हितोपदेशे अपि सैव।
+  vyakhya_en: |
+    The same three words open this as opened the Hitopadeśa passage: अस्ति,
+    then a place, then नाम and the name. It is a formula, and recognising it
+    is worth more than parsing it — a classical story announces itself this way
+    and the reader can stop working until the कथा actually starts.
+
+    किम् अत्र कर्तव्यम् has no verb in it. कर्तव्यम् is a gerundive, "to-be-done",
+    and that is the whole predicate: what, here, is to-be-done. Sanskrit builds
+    a complete question out of a participle and two indeclinables.
+
+- id: rd038
+  kind: attested
+  segment: 275
+  source:
+    text: हितोपदेश
+    ref: "Hitopadeśa, मित्रलाभ — the frame of the कथामुख"
+    curated: "the opening of the frame story, lightly abridged; the words are the text's own"
+  sentence: अस्ति भागीरथीतीरे पाटलिपुत्रनामधेयं नगरम्। तत्र सर्वस्वामिगुणोपेतः सुदर्शनो नाम नरपतिः आसीत्। सः भूपतिः एकदा केनचित् पठ्यमानं श्लोकद्वयं शुश्राव।
+  translation: There is, on the bank of the Bhāgīrathī, a city named Pāṭaliputra. There lived a king called Sudarśana, endowed with every quality of a sovereign. One day that lord of the earth heard two verses being recited by someone.
+  teaches: |
+    the first connected attested PROSE in the reader — a narrative opening
+    rather than a maxim. अस्ति opens the frame the way "there was" opens an
+    English tale, and the sentence holds three long compounds
+    (भागीरथीतीरे, पाटलिपुत्रनामधेयं, सर्वस्वामिगुणोपेतः) of the kind classical
+    prose runs on. पठ्यमानं is a passive present participle, and शुश्राव a
+    perfect — the two verb-forms a story of this register expects.
+  words:
+  - form: अस्ति
+    lemma: अस्
+    gloss: there is
+    notes:
+    - term: लट्
+      en: 'present — the storyteller''s opening, "there is / there was"'
+  - form: भागीरथीतीरे
+    lemma: भागीरथीतीर
+    gloss: on the bank of the Bhāgīrathī
+    vocab: true
+    notes:
+    - term: षष्ठी-तत्पुरुष
+      en: 'भागीरथ्याः तीरे — "the bank OF the Gaṅgā", compounded'
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: पाटलिपुत्रनामधेयं
+    lemma: पाटलिपुत्रनामधेय
+    gloss: named Pāṭaliputra
+    vocab: true
+    notes:
+    - term: बहुव्रीहि
+      en: '"having Pāṭaliputra as its name" — the compound describes the city, not itself'
+    - term: प्रथमा
+      en: neuter nominative, agreeing with नगरम्
+  - form: नगरम्
+    lemma: नगर
+    gloss: a city
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — what अस्ति asserts the existence of
+    - cite: "7.1.24"
+      role: अतोऽम् — the neuter अ-stem takes अम् in प्रथमा and द्वितीया → नगरम्
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: सर्वस्वामिगुणोपेतः
+    lemma: सर्वस्वामिगुणोपेत
+    gloss: endowed with every quality of a sovereign
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: सर्वस्वामिगुणैः उपेतः — a four-member compound, resolved from the end backwards
+    - term: निष्ठा
+      en: 'उपेत is a past participle — "come near to, endowed with"'
+    - term: प्रथमा
+      en: nominative, agreeing with नरपतिः
+  - form: सुदर्शनो
+    lemma: सुदर्शन
+    gloss: Sudarśana
+    vocab: true
+    notes:
+    - term: सन्धि
+      en: सुदर्शनः + नाम — the visarga becomes ओ before a voiced sound
+    - term: प्रथमा
+      en: nominative
+  - form: नाम
+    lemma: नामन्
+    gloss: by name
+    notes:
+    - term: अव्यय
+      en: '"by name" — in apposition, not declined'
+  - form: नरपतिः
+    lemma: नरपति
+    gloss: a king
+    vocab: true
+    notes:
+    - term: षष्ठी-तत्पुरुष
+      en: 'नराणां पतिः — "lord of men"'
+    - term: प्रथमा
+      en: nominative
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of अस् — the frame shifts from अस्ति to आसीत्
+  - form: सः
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: भूपतिः
+    lemma: भूपति
+    gloss: lord of the earth
+    vocab: true
+    notes:
+    - term: षष्ठी-तत्पुरुष
+      en: भुवः पतिः — a second compound for the same man, as classical prose prefers
+    - term: प्रथमा
+      en: nominative
+  - form: एकदा
+    lemma: एकदा
+    gloss: one day
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: केनचित्
+    lemma: किम्
+    gloss: by someone
+    notes:
+    - term: कर्तृ
+      en: the agent of the passive participle — who was doing the reciting
+    - term: तृतीया
+      en: instrumental, with the indefinite particle चित्
+  - form: पठ्यमानं
+    lemma: पठ्
+    gloss: being recited
+    notes:
+    - term: शानच्
+      en: the present participle of the PASSIVE — पठ् + य + मान
+    - term: यक्
+      en: the passive विकरण — what is recited, not who recites
+    - cite: "3.1.67"
+      role: सार्वधातुके यक् — यक् in the passive → पठ्यमान
+  - form: श्लोकद्वयं
+    lemma: श्लोकद्वय
+    gloss: two verses
+    vocab: true
+    notes:
+    - term: द्विगु
+      en: द्वौ श्लोकौ — a numeral compound, taken as a single neuter aggregate
+    - term: कर्मन्
+      en: object of शुश्राव
+    - term: द्वितीया
+      en: accusative
+  - form: शुश्राव
+    lemma: श्रु
+    gloss: heard
+    notes:
+    - term: लिट्
+      en: the perfect — reduplicated श्रु → शुश्राव, the narrative past of a told tale
+    - cite: "3.2.115"
+      role: परोक्षे लिट् — the perfect for a past outside the speaker's sight → शुश्राव
+  vyakhya: कथामुखम् — अस्ति इति आरम्भः। समासबहुला गद्यरीतिः।
+  vyakhya_en: |
+    Up to here the attested readings have been single-line maxims. This is
+    narrative, and it moves differently: three of its nouns are compounds
+    several members deep — भागीरथीतीरे, सर्वस्वामिगुणोपेतः, पाटलिपुत्रनामधेयं —
+    and unpacking them is most of the work of reading classical prose.
+
+    Take सर्वस्वामिगुणोपेतः from the back: उपेत, "endowed with"; endowed with
+    गुण, qualities; whose qualities — those of a सर्वस्वामिन्, an absolute
+    lord. English needs a clause where Sanskrit uses one word.
+
+- id: rd039
+  kind: attested
+  segment: 285
+  source:
+    text: हितोपदेश
+    ref: "Hitopadeśa, मित्रलाभ — the verses the king overhears"
+    curated: "the two ślokas of the frame, as the text gives them"
+  sentence: अनेकसंशयोच्छेदि परोक्षार्थस्य दर्शकम्। सर्वस्य लोचनं शास्त्रं यस्य नास्त्य् अन्ध एव सः॥
+  translation: Destroying many doubts, revealing what lies beyond sight — learning is the eye of everyone; he who has it not is blind indeed.
+  teaches: |
+    the verse the frame story turns on, and a compact demonstration of the
+    genitive: परोक्षार्थस्य दर्शकम् — "revealing OF what is beyond sight" —
+    where an agent-noun governs the षष्ठी rather than the accusative. Closes
+    with a relative-correlative in which the correlative is a bare predicate:
+    यस्य नास्ति, अन्धः एव सः.
+  words:
+  - form: अनेकसंशयोच्छेदि
+    lemma: अनेकसंशयोच्छेदिन्
+    gloss: destroying many doubts
+    vocab: true
+    notes:
+    - term: उपपद-तत्पुरुष
+      en: अनेकान् संशयान् उच्छिनत्ति इति — the object stands inside the compound
+    - term: प्रथमा
+      en: neuter nominative, agreeing with शास्त्रम्
+  - form: परोक्षार्थस्य
+    lemma: परोक्षार्थ
+    gloss: of what is beyond sight
+    vocab: true
+    notes:
+    - term: षष्ठी
+      en: genitive governed by दर्शकम् — an agent-noun takes the षष्ठी, not the द्वितीया
+    - cite: "2.3.65"
+      role: कर्तृकर्मणोः कृति — before a कृत् form, the object stands in the षष्ठी → परोक्षार्थस्य
+  - form: दर्शकम्
+    lemma: दर्शक
+    gloss: revealing
+    vocab: true
+    notes:
+    - term: ण्वुल्
+      en: 'agent-noun from दृश् — "that which shows"'
+    - term: प्रथमा
+      en: neuter nominative
+  - form: सर्वस्य
+    lemma: सर्व
+    gloss: of everyone
+    notes:
+    - term: षष्ठी
+      en: genitive — whose eye it is
+  - form: लोचनं
+    lemma: लोचन
+    gloss: the eye
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — predicated of शास्त्रम्
+  - form: शास्त्रं
+    lemma: शास्त्र
+    gloss: learning, science
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — the subject of the whole verse
+  - form: 'यस्य'
+    lemma: यद्
+    gloss: he for whom
+    notes:
+    - term: षष्ठी
+      en: 'genitive of possession — "of whom there is not"'
+  - form: नास्त्य्
+    lemma: अस्
+    gloss: there is not
+    notes:
+    - term: सन्धि
+      en: न + अस्ति — the vowels merge, and the ि becomes य् before the next vowel
+    - cite: "6.1.77"
+      role: इको यणचि — इ before a vowel becomes य् → नास्त्य् अन्धः
+  - form: अन्ध
+    lemma: अन्ध
+    gloss: blind
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — the predicate, with no verb needed
+  - form: एव
+    lemma: एव
+    gloss: indeed
+    notes:
+    - term: अव्यय
+      en: emphatic
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative — the correlative answering यस्य
+  vyakhya: शास्त्रं लोचनम्। यस्य तत् नास्ति सः अन्धः।
+  vyakhya_en: |
+    The verse says learning is an eye, and then does not soften it: whoever
+    lacks it is blind — अन्ध एव सः, with एव refusing the metaphor any room.
+
+    परोक्षार्थस्य दर्शकम् is worth slowing on. दर्शक is "one who shows", and
+    what it shows stands in the genitive rather than the accusative. That is
+    regular before a कृत् form and catches most readers the first time: the
+    sense is transitive, the case is not.
+
 
 # ── Segments 21-24: a complete Hitopadeśa verse, end to end (capstone) ──
 
@@ -48,7 +512,7 @@ readings:
     - cite: '3.2.123'
       role: वर्तमाने लट् → present tense
     - cite: '3.4.78'
-      role: "तिङ्: तिप् (3·sg) → ददाति"
+      role: '"तिङ्: तिप् (3·sg) → ददाति"'
   - form: विनयम्
     lemma: विनय
     gloss: humility, discipline
@@ -200,7 +664,7 @@ readings:
     vocab: true
     notes:
     - term: अव्यय
-      en: indeclinable adverb (= "from that", standing for तस्मात्)
+      en: 'indeclinable adverb (= "from that", standing for तस्मात्)'
   - form: सुखम्
     lemma: सुख
     gloss: happiness
@@ -244,7 +708,7 @@ readings:
     vocab: true
     notes:
     - term: अव्यय
-      en: indeclinable particle — "even"
+      en: 'indeclinable particle — "even"'
   - form: पानीयं
     lemma: पानीय
     gloss: water
@@ -319,7 +783,7 @@ readings:
       role: षष्ठी शेषे — the relational genitive → यस्य
   - form: कस्य
     lemma: किम्
-    gloss: of whatever (paired with यस्य = "of whomsoever")
+    gloss: 'of whatever (paired with यस्य = "of whomsoever")'
     vocab: true
     notes:
     - term: षष्ठी
@@ -340,14 +804,14 @@ readings:
     gloss: even, though
     notes:
     - term: अव्यय
-      en: indeclinable — "even / though"
+      en: 'indeclinable — "even / though"'
   - form: गुणवान्
     lemma: गुणवत्
     gloss: virtuous, having merit
     vocab: true
     notes:
     - term: विशेषण
-      en: adjective qualifying नरः (a वत्-stem, "possessing guṇa")
+      en: 'adjective qualifying नरः (a वत्-stem, "possessing guṇa")'
     - term: प्रथमा
       en: nominative
   - form: पूज्यते
@@ -417,7 +881,7 @@ readings:
       en: present
   - form: काष्ठानाम्
     lemma: काष्ठ
-    gloss: with logs (lit. "of logs")
+    gloss: 'with logs (lit. "of logs")'
     vocab: true
     notes:
     - term: षष्ठी
@@ -425,10 +889,10 @@ readings:
     - term: बहुवचन
       en: plural
     - cite: '2.3.50'
-      role: षष्ठी शेषे — the relational genitive; "sated of logs" takes षष्ठी
+      role: 'षष्ठी शेषे — the relational genitive; "sated of logs" takes षष्ठी'
   - form: अपगानाम्
     lemma: आपगा
-    gloss: with rivers (lit. "of rivers")
+    gloss: 'with rivers (lit. "of rivers")'
     vocab: true
     notes:
     - term: षष्ठी
@@ -472,7 +936,7 @@ readings:
     vocab: true
     notes:
     - term: स्वर
-      en: "accent — the marks ॒ (anudātta, low) and ॑ (udātta/svarita); the underline on अ॒ is anudātta"
+      en: '"accent — the marks ॒ (anudātta, low) and ॑ (udātta/svarita); the underline on अ॒ is anudātta"'
     - term: कर्मन्
       en: object
     - cite: '2.3.2'
@@ -504,7 +968,7 @@ readings:
     vocab: true
     notes:
     - term: षष्ठी
-      en: genitive — "of the sacrifice"
+      en: 'genitive — "of the sacrifice"'
     - cite: '2.3.50'
       role: षष्ठी शेषे → यज्ञस्य
   - form: दे॒वम्
@@ -579,11 +1043,11 @@ readings:
     - term: करण
       en: means/agent of praise
     - term: तृतीया
-      en: instrumental — "by"
+      en: 'instrumental — "by"'
     - term: बहुवचन
       en: plural
     - cite: '2.3.18'
-      role: कर्तृकरणयोस्तृतीया → "by the ancient seers" takes तृतीया (the -भिः ending you met in नरैः)
+      role: 'कर्तृकरणयोस्तृतीया → "by the ancient seers" takes तृतीया (the -भिः ending you met in नरैः)'
   - form: ऋषि॑ऽभिः
     lemma: ऋषि
     gloss: by the seers
@@ -607,13 +1071,13 @@ readings:
     vocab: true
     notes:
     - term: तृतीया
-      en: instrumental plural — "by the new (seers)"
+      en: 'instrumental plural — "by the new (seers)"'
   - form: उ॒त
     lemma: उत
     gloss: and, also
     notes:
     - term: अव्यय
-      en: indeclinable — "and / also"
+      en: 'indeclinable — "and / also"'
   - form: सः
     lemma: तद्
     gloss: he
@@ -639,13 +1103,13 @@ readings:
     gloss: hither (preverb with वक्षति)
     notes:
     - term: अव्यय
-      en: preverb — "toward, here"
+      en: 'preverb — "toward, here"'
   - form: इ॒ह
     lemma: इह
     gloss: here
     notes:
     - term: अव्यय
-      en: indeclinable — "here"
+      en: 'indeclinable — "here"'
   - form: व॒क्ष॒ति
     lemma: वह्
     gloss: may he bring / carry
@@ -722,7 +1186,7 @@ readings:
     notes:
     - text: 'an आम्रेडित — the word दिवे doubled (दिवे-दिवे) to mean "day after day"'
     - term: सप्तमी
-      en: locative — "on (each) day"
+      en: 'locative — "on (each) day"'
   - form: य॒शस॑म्
     lemma: यशस्
     gloss: glorious (wealth)
@@ -800,7 +1264,7 @@ readings:
     vocab: true
     notes:
     - term: अव्यय
-      en: indeclinable adverb — "on every side" (तस्-suffix)
+      en: 'indeclinable adverb — "on every side" (तस्-suffix)'
   - form: प॒रि॒ऽभूः
     lemma: परिभू
     gloss: one who surrounds, encompasser
@@ -817,7 +1281,7 @@ readings:
     - term: अस्
       en: '"be"'
     - term: मध्यमपुरुष
-      en: 2nd person — "you are" (the मध्यम you met in गच्छसि)
+      en: '2nd person — "you are" (the मध्यम you met in गच्छसि)'
     - term: लट्
       en: present
   - form: सः
@@ -836,13 +1300,13 @@ readings:
     vocab: true
     notes:
     - term: अव्यय
-      en: emphatic particle — "that very one"
+      en: 'emphatic particle — "that very one"'
   - form: दे॒वेषु॑
     lemma: देव
     gloss: among the gods
     notes:
     - term: अधिकरण
-      en: locus — "among / to the gods"
+      en: 'locus — "among / to the gods"'
     - cite: '2.3.36'
       role: सप्तम्यधिकरणे च → देवेषु (सप्तमी, locative plural)
     - term: सप्तमी
@@ -895,7 +1359,7 @@ readings:
     notes:
     - text: 'padapāṭha splits कवि-क्रतु (saṃhitā कविक्रतुः); कवि "sage" + क्रतु "will"'
     - term: बहुव्रीहि
-      en: possessive compound — "(one) whose क्रतु is that of a कवि"
+      en: 'possessive compound — "(one) whose क्रतु is that of a कवि"'
     - cite: '2.2.24'
       role: अनेकमन्यपदार्थे — a बहुव्रीहि naming an external possessor
     - term: प्रथमा
@@ -906,7 +1370,7 @@ readings:
     vocab: true
     notes:
     - term: विशेषण
-      en: epithet — "true" (nominative, agreeing with अग्निः)
+      en: 'epithet — "true" (nominative, agreeing with अग्निः)'
     - term: प्रथमा
       en: nominative
   - form: चि॒त्रश्र॑वःऽतमः
@@ -924,7 +1388,7 @@ readings:
     gloss: a god
     notes:
     - term: विशेषण
-      en: epithet — "a god" (nominative)
+      en: 'epithet — "a god" (nominative)'
     - term: प्रथमा
       en: nominative
   - form: दे॒वेभिः॑
@@ -932,9 +1396,9 @@ readings:
     gloss: with the gods
     notes:
     - term: सहार्थ
-      en: accompaniment — "together with the gods"
+      en: 'accompaniment — "together with the gods"'
     - cite: '2.3.19'
-      role: सहयुक्तेऽप्रधाने → the accompanier takes तृतीया → देवेभिः ("with the gods")
+      role: 'सहयुक्तेऽप्रधाने → the accompanier takes तृतीया → देवेभिः ("with the gods")'
     - term: तृतीया
       en: instrumental plural (Vedic -एभिः for -ऐः)
   - form: आ
@@ -942,7 +1406,7 @@ readings:
     gloss: hither (preverb with गमत्)
     notes:
     - term: अव्यय
-      en: preverb — "toward, here"
+      en: 'preverb — "toward, here"'
   - form: ग॒मत्
     lemma: गम्
     gloss: may he come
@@ -974,7 +1438,7 @@ readings:
     - term: सर्वनाम
       en: relative — here introducing the whole clause
     - term: द्वितीया
-      en: accusative (= "that which", object of करिष्यसि)
+      en: 'accusative (= "that which", object of करिष्यसि)'
   - form: अ॒ङ्ग
     lemma: अङ्ग
     gloss: indeed, pray (emphatic particle)
@@ -992,7 +1456,7 @@ readings:
     - cite: '1.4.32'
       role: कर्मणा यमभिप्रैति स सम्प्रदानम् → the worshipper is सम्प्रदान
     - term: चतुर्थी
-      en: dative — "for / to"
+      en: 'dative — "for / to"'
     - cite: '2.3.13'
       role: चतुर्थी सम्प्रदाने → दाशुषे
   - form: त्वम्
@@ -1001,7 +1465,7 @@ readings:
     vocab: true
     notes:
     - term: सर्वनाम
-      en: pronoun — 2nd person "you"
+      en: 'pronoun — 2nd person "you"'
     - term: प्रथमा
       en: nominative
   - form: अग्ने॑
@@ -1030,15 +1494,15 @@ readings:
     - term: लृट्
       en: future
     - cite: '3.3.13'
-      role: लृट् शेषे च → future → करिष्यसि (√कृ; 2sg, "you will do")
+      role: 'लृट् शेषे च → future → करिष्यसि (√कृ; 2sg, "you will do")'
   - form: तव॑
     lemma: युष्मद्
     gloss: your, of you
     notes:
     - term: षष्ठी
-      en: genitive — "your"
+      en: 'genitive — "your"'
     - cite: '2.3.50'
-      role: षष्ठी शेषे → तव ("your")
+      role: 'षष्ठी शेषे → तव ("your")'
   - form: इत्
     lemma: इत्
     gloss: indeed (emphatic)
@@ -1058,7 +1522,7 @@ readings:
     gloss: truth, real
     notes:
     - term: विशेषण
-      en: predicate — "(is) your truth" (no copula)
+      en: 'predicate — "(is) your truth" (no copula)'
     - term: प्रथमा
       en: nominative
   - form: अ॒ङ्गि॒रः
@@ -1090,14 +1554,14 @@ readings:
     gloss: toward (preverb with एमसि)
     notes:
     - term: अव्यय
-      en: preverb — "up to, toward"
+      en: 'preverb — "up to, toward"'
   - form: त्वा॒
     lemma: युष्मद्
     gloss: you (object)
     vocab: true
     notes:
     - term: कर्मन्
-      en: object — "to you" (the goal of coming)
+      en: 'object — "to you" (the goal of coming)'
     - term: द्वितीया
       en: accusative (enclitic त्वा = त्वाम्)
   - form: अ॒ग्ने॒
@@ -1122,14 +1586,14 @@ readings:
     notes:
     - text: 'padapāṭha splits दोषा-वस्तः; दोषा "at night" + वस्तर् "at dawn"'
     - term: अव्यय
-      en: adverb of time — "evening and morning"
+      en: 'adverb of time — "evening and morning"'
   - form: धि॒या
     lemma: धी
     gloss: with thought, in meditation
     vocab: true
     notes:
     - term: करण
-      en: means — "by thought"
+      en: 'means — "by thought"'
     - cite: '2.3.18'
       role: कर्तृकरणयोस्तृतीया → धिया (तृतीया of the ई-stem धी)
     - term: तृतीया
@@ -1140,7 +1604,7 @@ readings:
     vocab: true
     notes:
     - term: सर्वनाम
-      en: pronoun — 1st person plural "we"
+      en: 'pronoun — 1st person plural "we"'
     - term: प्रथमा
       en: nominative
   - form: नमः॑
@@ -1149,7 +1613,7 @@ readings:
     vocab: true
     notes:
     - term: कर्मन्
-      en: object of भरन्तः — "bearing homage"
+      en: 'object of भरन्तः — "bearing homage"'
     - term: द्वितीया
       en: accusative (अस्-stem, nom=acc)
   - form: भर॑न्तः
@@ -1176,7 +1640,7 @@ readings:
     - term: इ
       en: '"go"'
     - term: उत्तमपुरुष
-      en: 1st person plural — "we come" (उप…आ…इमसि)
+      en: '1st person plural — "we come" (उप…आ…इमसि)'
     - term: लट्
       en: present
   vyakhya: वयं धिया नमो भरन्तः दिवेदिवे त्वा उप आ इमसि। एमसि इति उत्तमपुरुषबहुवचनम्।
@@ -1208,21 +1672,21 @@ readings:
       en: accusative (apposed to the त्वा of verse 7)
   - form: अ॒ध्व॒राणा॑म्
     lemma: अध्वर
-    gloss: over the rites (lit. "of the rites")
+    gloss: 'over the rites (lit. "of the rites")'
     notes:
     - term: षष्ठी
       en: genitive plural — that over which one rules
     - term: बहुवचन
       en: plural
     - cite: '2.3.50'
-      role: षष्ठी शेषे → अध्वराणाम् ("of/over the rites")
+      role: 'षष्ठी शेषे → अध्वराणाम् ("of/over the rites")'
   - form: गो॒पाम्
     lemma: गोपा
     gloss: the guardian, protector
     vocab: true
     notes:
     - term: कर्मन्
-      en: object (apposition) — "the guardian"
+      en: 'object (apposition) — "the guardian"'
     - term: द्वितीया
       en: accusative
   - form: ऋ॒तस्य॑
@@ -1231,7 +1695,7 @@ readings:
     vocab: true
     notes:
     - term: षष्ठी
-      en: genitive — "guardian OF truth"
+      en: 'genitive — "guardian OF truth"'
     - cite: '2.3.50'
       role: षष्ठी शेषे → ऋतस्य
   - form: दीदि॑विम्
@@ -1240,7 +1704,7 @@ readings:
     vocab: true
     notes:
     - term: कर्मन्
-      en: object (apposition) — "the brilliant"
+      en: 'object (apposition) — "the brilliant"'
     - term: द्वितीया
       en: accusative
   - form: वर्ध॑मानम्
@@ -1270,7 +1734,7 @@ readings:
     vocab: true
     notes:
     - term: अधिकरण
-      en: locus — "in the home"
+      en: 'locus — "in the home"'
     - term: सप्तमी
       en: locative
   vyakhya: राजन्तं गोपां दीदिविं वर्धमानं — सर्वाणि कर्माणि (पूर्वस्या ऋचः त्वा-शब्दस्य विशेषणानि)। अध्वराणाम् ऋतस्य च षष्ठी; स्वे दमे इति सप्तमी।
@@ -1304,9 +1768,9 @@ readings:
     vocab: true
     notes:
     - term: सम्प्रदान
-      en: recipient — "to us" (enclitic = अस्मभ्यम्)
+      en: 'recipient — "to us" (enclitic = अस्मभ्यम्)'
     - cite: '2.3.13'
-      role: चतुर्थी सम्प्रदाने → नः ("for us")
+      role: 'चतुर्थी सम्प्रदाने → नः ("for us")'
     - term: चतुर्थी
       en: dative
   - form: पि॒ताऽइ॑व
@@ -1323,7 +1787,7 @@ readings:
     vocab: true
     notes:
     - term: सम्प्रदान
-      en: recipient — "(as a father) to a son"
+      en: 'recipient — "(as a father) to a son"'
     - cite: '2.3.13'
       role: चतुर्थी सम्प्रदाने → सूनवे (an उ-stem dative, गुण → सूनवे, like अग्नये)
     - term: चतुर्थी
@@ -1343,7 +1807,7 @@ readings:
     notes:
     - text: 'padapāṭha splits सु-उपायन; सु "well, easy" + उपायन "approach"'
     - term: विशेषण
-      en: predicate adjective of भव — "be (one) easy to approach"
+      en: 'predicate adjective of भव — "be (one) easy to approach"'
     - term: प्रथमा
       en: nominative
   - form: भ॒व
@@ -1353,9 +1817,9 @@ readings:
     - term: भू
       en: '"be, become"'
     - term: लोट्
-      en: imperative — "be!" (the command mood you met in गच्छतु)
+      en: 'imperative — "be!" (the command mood you met in गच्छतु)'
     - cite: '3.3.162'
-      role: लोट् च — imperative → भव (2sg "be!")
+      role: 'लोट् च — imperative → भव (2sg "be!")'
   - form: सच॑स्व
     lemma: सच्
     gloss: abide, attend (be united with)
@@ -1364,7 +1828,7 @@ readings:
     - term: सच्
       en: '"accompany, abide with"'
     - term: लोट्
-      en: imperative (आत्मनेपद 2sg) — "abide!"
+      en: 'imperative (आत्मनेपद 2sg) — "abide!"'
     - cite: '3.3.162'
       role: लोट् च — imperative → सचस्व
   - form: नः
@@ -1378,7 +1842,7 @@ readings:
     vocab: true
     notes:
     - term: सम्प्रदान
-      en: purpose/recipient — "for (our) well-being"
+      en: 'purpose/recipient — "for (our) well-being"'
     - cite: '2.3.13'
       role: चतुर्थी सम्प्रदाने → स्वस्तये (an इ-stem dative, like अग्नये)
     - term: चतुर्थी
@@ -1416,7 +1880,7 @@ readings:
     gloss: hither (preverb with याहि)
     notes:
     - term: अव्यय
-      en: preverb — "toward, here"
+      en: 'preverb — "toward, here"'
   - form: या॒हि॒
     lemma: या
     gloss: come!
@@ -1425,7 +1889,7 @@ readings:
     - term: या
       en: '"go, come"'
     - term: लोट्
-      en: imperative — "come!" (the command mood, here 2sg)
+      en: 'imperative — "come!" (the command mood, here 2sg)'
     - cite: '3.3.162'
       role: लोट् च — imperative → याहि
   - form: द॒र्श॒त
@@ -1434,14 +1898,14 @@ readings:
     vocab: true
     notes:
     - term: सम्बोधन
-      en: vocative epithet — addressing Vāyu as "fair to see"
+      en: 'vocative epithet — addressing Vāyu as "fair to see"'
   - form: इ॒मे
     lemma: इदम्
     gloss: these
     vocab: true
     notes:
     - term: सर्वनाम
-      en: demonstrative pronoun "this" (इदम्), nom. plural agreeing with सोमाः
+      en: 'demonstrative pronoun "this" (इदम्), nom. plural agreeing with सोमाः'
     - cite: '1.1.27'
       role: सर्वादीनि सर्वनामानि → इदम् is a सर्वनाम
     - term: प्रथमा
@@ -1470,11 +1934,11 @@ readings:
     gloss: of them
     notes:
     - term: सर्वनाम
-      en: pronoun — "of them" (तद्)
+      en: 'pronoun — "of them" (तद्)'
     - cite: '1.1.27'
       role: सर्वादीनि सर्वनामानि → तद्
     - term: षष्ठी
-      en: genitive plural — the partitive "of (these) Somas"
+      en: 'genitive plural — the partitive "of (these) Somas"'
     - cite: '2.3.50'
       role: षष्ठी शेषे → तेषाम् (drink OF them)
   - form: पा॒हि॒
@@ -1485,7 +1949,7 @@ readings:
     - term: पा
       en: '"drink"'
     - term: लोट्
-      en: imperative — "drink!" (2sg)
+      en: 'imperative — "drink!" (2sg)'
     - cite: '3.3.162'
       role: लोट् च → पाहि
   - form: श्रु॒धि
@@ -1496,7 +1960,7 @@ readings:
     - term: श्रु
       en: '"hear"'
     - term: लोट्
-      en: imperative — "hear!" (a Vedic 2sg, श्रुधि for श्रृणु)
+      en: 'imperative — "hear!" (a Vedic 2sg, श्रुधि for श्रृणु)'
     - cite: '3.3.162'
       role: लोट् च → श्रुधि
   - form: हव॑म्
@@ -1507,7 +1971,7 @@ readings:
     - term: कर्मन्
       en: object — what is heard
     - cite: '2.3.2'
-      role: कर्मणि द्वितीया → हवम् ("hear the call")
+      role: 'कर्मणि द्वितीया → हवम् ("hear the call")'
     - term: द्वितीया
       en: accusative
   vyakhya: वायो इति सम्बोधनम्; आ याहि पाहि श्रुधि इति लोडर्थाः। सोमाः कर्तारः, तेषां पाहि — षष्ठ्यर्थे।
@@ -1554,7 +2018,7 @@ readings:
     - term: जॄ
       en: '"sing, praise" (here जरन्ते, आत्मनेपद 3pl)'
     - term: प्रथमपुरुष
-      en: 3rd person plural — "they praise"
+      en: '3rd person plural — "they praise"'
     - term: लट्
       en: present
   - form: त्वाम्
@@ -1564,7 +2028,7 @@ readings:
     - term: कर्मन्
       en: object — whom they praise
     - cite: '2.3.2'
-      role: कर्मणि द्वितीया → त्वाम् ("you")
+      role: 'कर्मणि द्वितीया → त्वाम् ("you")'
     - term: द्वितीया
       en: accusative
   - form: अच्छ॑
@@ -1573,7 +2037,7 @@ readings:
     vocab: true
     notes:
     - term: अव्यय
-      en: indeclinable — "toward" (governs the praising directed AT Vāyu)
+      en: 'indeclinable — "toward" (governs the praising directed AT Vāyu)'
   - form: ज॒रि॒तारः॑
     lemma: जरितृ
     gloss: the singers, the praisers
@@ -1592,7 +2056,7 @@ readings:
     notes:
     - text: 'padapāṭha splits सुत-सोम; सुत "pressed" + सोम'
     - term: बहुव्रीहि
-      en: possessive compound — "(those) by whom Soma is pressed"
+      en: 'possessive compound — "(those) by whom Soma is pressed"'
     - term: प्रथमा
       en: nominative plural (apposed to जरितारः)
   - form: अ॒हः॒ऽविदः॑
@@ -1602,7 +2066,7 @@ readings:
     notes:
     - text: 'padapāṭha splits अहः-विद्; अहर् "day" + विद् "knowing"'
     - term: विशेषण
-      en: epithet (apposed to जरितारः) — "knowing the days/times"
+      en: 'epithet (apposed to जरितारः) — "knowing the days/times"'
     - term: प्रथमा
       en: nominative plural
   vyakhya: जरितारः कर्तारः, त्वां कर्म, उक्थेभिः इति करणम्। सुतसोमाः अहर्विदः च तेषां विशेषणे।
@@ -1635,7 +2099,7 @@ readings:
     gloss: your, of you
     notes:
     - term: षष्ठी
-      en: genitive — "your" (qualifying धेना)
+      en: 'genitive — "your" (qualifying धेना)'
     - cite: '2.3.50'
       role: षष्ठी शेषे → तव
   - form: प्र॒ऽपृ॒ञ्च॒ती
@@ -1684,7 +2148,7 @@ readings:
     vocab: true
     notes:
     - term: विशेषण
-      en: adjective (feminine) qualifying धेना — "wide-reaching"
+      en: 'adjective (feminine) qualifying धेना — "wide-reaching"'
     - term: प्रथमा
       en: nominative
   - form: सोम॑ऽपीतये
@@ -1694,7 +2158,7 @@ readings:
     notes:
     - text: 'padapāṭha splits सोम-पीतये; सोम + पीति "drinking"'
     - term: सम्प्रदान
-      en: purpose — "for the sake of" (the dative of purpose)
+      en: 'purpose — "for the sake of" (the dative of purpose)'
     - cite: '2.3.13'
       role: चतुर्थी सम्प्रदाने → सोमपीतये (इ-stem dative, like स्वस्तये)
     - term: चतुर्थी
@@ -1724,7 +2188,7 @@ readings:
     - term: द्वन्द्व
       en: a dual द्वन्द्व compound — इन्द्र + वायु, two deities as one pair
     - cite: '2.2.29'
-      role: चार्थे द्वन्द्वः → इन्द्रवायू ("Indra and Vāyu")
+      role: 'चार्थे द्वन्द्वः → इन्द्रवायू ("Indra and Vāyu")'
     - term: सम्बोधन
       en: vocative dual — addressing the pair
     - cite: '1.4.22'
@@ -1747,7 +2211,7 @@ readings:
     vocab: true
     notes:
     - term: कर्तृ
-      en: subject — the offerings (past participle of सु "press", used as noun)
+      en: 'subject — the offerings (past participle of सु "press", used as noun)'
     - term: प्रथमा
       en: nominative plural
   - form: उप॑
@@ -1755,7 +2219,7 @@ readings:
     gloss: near, ready at hand (preverb)
     notes:
     - term: अव्यय
-      en: preverb — "up, near"
+      en: 'preverb — "up, near"'
   - form: प्रयः॑ऽभिः
     lemma: प्रयस्
     gloss: with delights, with offerings of joy
@@ -1763,7 +2227,7 @@ readings:
     notes:
     - text: 'padapāṭha splits प्रयः-भिः; प्रयस् "delight, dainty" (अस्-stem)'
     - term: करण
-      en: means / accompaniment — "with delights"
+      en: 'means / accompaniment — "with delights"'
     - cite: '2.3.18'
       role: कर्तृकरणयोस्तृतीया → प्रयोभिः (तृतीया plural)
     - term: तृतीया
@@ -1773,7 +2237,7 @@ readings:
     gloss: hither (preverb with गतम्)
     notes:
     - term: अव्यय
-      en: preverb — "toward, here"
+      en: 'preverb — "toward, here"'
   - form: ग॒तम्
     lemma: गम्
     gloss: come! (you two)
@@ -1804,7 +2268,7 @@ readings:
     - term: कर्मन्
       en: object — whom the drops long for
     - cite: '1.4.22'
-      role: द्व्येकयोर्द्विवचनैकवचने → वाम् ("you two", the dual enclitic of युष्मद्)
+      role: 'द्व्येकयोर्द्विवचनैकवचने → वाम् ("you two", the dual enclitic of युष्मद्)'
     - term: द्वितीया
       en: accusative dual
   - form: उ॒शन्ति
@@ -1815,7 +2279,7 @@ readings:
     - term: वश्
       en: '"wish, long for"'
     - term: प्रथमपुरुष
-      en: 3rd person plural — "they long"
+      en: '3rd person plural — "they long"'
     - term: लट्
       en: present
   - form: हि
@@ -1823,7 +2287,7 @@ readings:
     gloss: indeed, for (emphatic/causal)
     notes:
     - term: अव्यय
-      en: indeclinable particle — "for, indeed"
+      en: 'indeclinable particle — "for, indeed"'
   vyakhya: इन्द्रवायू इति द्वन्द्वः द्विवचने; आ गतम् इति द्विवचनलोट्; वाम् इति द्विवचनम्। द्वौ देवौ, द्विवचनम्।
   vyakhya_en: |
     The DUAL arrives — Sanskrit's third number, for exactly two. The pair इन्द्रवायू is a द्वन्द्व compound ("Indra and Vāyu") in the dual (द्विवचन, 1.4.22), and everything addressed to them is dual too: आ गतम् "come, *you two*" (a dual imperative), and वाम् "you two" (the dual of युष्मद्). Between, सुताः ("the pressed Somas") and इन्दवः ("the drops") are plural subjects. Singular, plural, and now dual — the वचन triad is complete, here in real Vedic.
@@ -1854,7 +2318,7 @@ readings:
     gloss: Indra (joined by च)
     notes:
     - term: सम्बोधन
-      en: vocative (here नॉम-form joined to वायो by च — "Vāyu and Indra")
+      en: 'vocative (here नॉम-form joined to वायो by च — "Vāyu and Indra")'
     - term: प्रथमा
       en: nominative
   - form: च
@@ -1862,7 +2326,7 @@ readings:
     gloss: and
     notes:
     - term: अव्यय
-      en: connective particle — "and"
+      en: 'connective particle — "and"'
   - form: चे॒त॒थः॒
     lemma: चित्
     gloss: you two perceive, take note
@@ -1871,7 +2335,7 @@ readings:
     - term: चित्
       en: '"perceive, be aware"'
     - term: मध्यमपुरुष
-      en: 2nd person — but DUAL ("you two perceive")
+      en: '2nd person — but DUAL ("you two perceive")'
     - cite: '1.4.22'
       role: द्व्येकयोर्द्विवचनैकवचने → the dual verb-ending → चेतथः
     - term: द्विवचन
@@ -1904,7 +2368,7 @@ readings:
     vocab: true
     notes:
     - term: सर्वनाम
-      en: pronoun — the DUAL of तद् ("those two / you two")
+      en: 'pronoun — the DUAL of तद् ("those two / you two")'
     - cite: '1.1.27'
       role: सर्वादीनि सर्वनामानि → तद्
     - cite: '1.4.22'
@@ -1924,7 +2388,7 @@ readings:
     - term: या
       en: '"come"'
     - term: लोट्
-      en: imperative DUAL — "come, you two" (as आ गतम् in rd020)
+      en: 'imperative DUAL — "come, you two" (as आ गतम् in rd020)'
     - cite: '1.4.22'
       role: द्व्येकयोर्द्विवचनैकवचने → dual → यातम्
   - form: उप॑
@@ -1939,7 +2403,7 @@ readings:
     vocab: true
     notes:
     - term: अव्यय
-      en: adverb — "quickly" (from द्रु "run")
+      en: 'adverb — "quickly" (from द्रु "run")'
   vyakhya: वायुः इन्द्रश्च — द्वौ; चेतथः यातम् इति द्विवचने तिङन्ते। सर्वं द्विवचनम्।
   vyakhya_en: |
     The dual you just met now drives the VERB. वायो and इन्द्रः, joined by च, are two — so चेतथः ("you two perceive") is a dual finite verb, तौ ("you two") is the dual pronoun, यातम् ("come, you two") the dual imperative, and वाजिनीवसू a dual vocative epithet. Everything addressed to the pair is dual. They take note सुतानाम् — "of the pressed Somas," a partitive genitive (षष्ठी). The whole verse is a drill in द्विवचन.
@@ -1978,7 +2442,7 @@ readings:
     gloss: and
     notes:
     - term: अव्यय
-      en: connective — "and"
+      en: 'connective — "and"'
   - form: सु॒न्व॒तः
     lemma: सुन्वत्
     gloss: of the (Soma-)presser
@@ -1986,7 +2450,7 @@ readings:
     notes:
     - text: 'a present participle of सु "press", used as a noun'
     - term: षष्ठी
-      en: genitive — "of the presser" (whose offering they approach)
+      en: 'genitive — "of the presser" (whose offering they approach)'
     - cite: '2.3.50'
       role: षष्ठी शेषे → सुन्वतः
   - form: आ
@@ -2000,7 +2464,7 @@ readings:
     gloss: come, you two!
     notes:
     - term: लोट्
-      en: imperative DUAL — "come, you two"
+      en: 'imperative DUAL — "come, you two"'
     - cite: '1.4.22'
       role: द्व्येकयोर्द्विवचनैकवचने → dual → यातम्
   - form: उप॑
@@ -2008,7 +2472,7 @@ readings:
     gloss: up to (preverb governing निष्कृतम्)
     notes:
     - term: अव्यय
-      en: preverb — "up to, toward"
+      en: 'preverb — "up to, toward"'
   - form: निः॒ऽकृ॒तम्
     lemma: निष्कृत
     gloss: the prepared place / the readied offering
@@ -2016,7 +2480,7 @@ readings:
     notes:
     - text: 'padapāṭha splits निः-कृत; निस् + कृत "made ready"'
     - term: कर्मन्
-      en: goal of motion — "up to the readied (offering)"
+      en: 'goal of motion — "up to the readied (offering)"'
     - cite: '2.3.2'
       role: कर्मणि द्वितीया → निष्कृतम् (the goal of गति takes द्वितीया)
     - term: द्वितीया
@@ -2027,20 +2491,20 @@ readings:
     vocab: true
     notes:
     - term: अव्यय
-      en: adverb — "quickly"
+      en: 'adverb — "quickly"'
   - form: इ॒त्था
     lemma: इत्था
     gloss: thus, even so
     vocab: true
     notes:
     - term: अव्यय
-      en: adverb — "in this way, truly"
+      en: 'adverb — "in this way, truly"'
   - form: धि॒या
     lemma: धी
     gloss: through thought
     notes:
     - term: करण
-      en: means — "by thought" (the धिया you met in rd014)
+      en: 'means — "by thought" (the धिया you met in rd014)'
     - cite: '2.3.18'
       role: कर्तृकरणयोस्तृतीया → धिया
     - term: तृतीया
@@ -2051,7 +2515,7 @@ readings:
     notes:
     - text: 'नरा = नरौ — the dual of नर, your very first noun, now in the vocative dual'
     - term: सम्बोधन
-      en: vocative DUAL — "O you two heroes"
+      en: 'vocative DUAL — "O you two heroes"'
     - cite: '1.4.22'
       role: द्व्येकयोर्द्विवचनैकवचने → dual → नरा (= नरौ)
     - term: द्विवचन
@@ -2092,7 +2556,7 @@ readings:
     - term: ह्वे
       en: '"call, invoke"'
     - term: उत्तमपुरुष
-      en: 1st person singular (आत्मनेपद) — "I call"
+      en: '1st person singular (आत्मनेपद) — "I call"'
     - term: लट्
       en: present
   - form: पू॒तऽद॑क्षम्
@@ -2102,7 +2566,7 @@ readings:
     notes:
     - text: 'padapāṭha splits पूत-दक्ष; पूत "purified" + दक्ष "skill, discernment"'
     - term: बहुव्रीहि
-      en: possessive compound qualifying मित्रम् — "(he) whose दक्ष is pure"
+      en: 'possessive compound qualifying मित्रम् — "(he) whose दक्ष is pure"'
     - term: द्वितीया
       en: accusative
   - form: वरु॑णम्
@@ -2111,7 +2575,7 @@ readings:
     vocab: true
     notes:
     - term: कर्मन्
-      en: object (joined by च) — "and Varuṇa"
+      en: 'object (joined by च) — "and Varuṇa"'
     - term: द्वितीया
       en: accusative
   - form: च
@@ -2119,14 +2583,14 @@ readings:
     gloss: and
     notes:
     - term: अव्यय
-      en: connective — "and"
+      en: 'connective — "and"'
   - form: रि॒शाद॑सम्
     lemma: रिशादस्
     gloss: destroyer of foes
     vocab: true
     notes:
     - term: विशेषण
-      en: epithet of वरुणम् — "foe-destroying"
+      en: 'epithet of वरुणम् — "foe-destroying"'
     - term: द्वितीया
       en: accusative
   - form: धिय॑म्
@@ -2134,7 +2598,7 @@ readings:
     gloss: the thought, the vision
     notes:
     - term: कर्मन्
-      en: object of साधन्ता — "(who perfect) the thought"
+      en: 'object of साधन्ता — "(who perfect) the thought"'
     - cite: '2.3.2'
       role: कर्मणि द्वितीया → धियम्
     - term: द्वितीया
@@ -2145,7 +2609,7 @@ readings:
     vocab: true
     notes:
     - term: विशेषण
-      en: adjective (feminine) qualifying धियम् — "luminous"
+      en: 'adjective (feminine) qualifying धियम् — "luminous"'
     - term: द्वितीया
       en: accusative
   - form: साध॑न्ता
@@ -2183,7 +2647,7 @@ readings:
     vocab: true
     notes:
     - term: करण
-      en: means — "by the Truth"
+      en: 'means — "by the Truth"'
     - cite: '2.3.18'
       role: कर्तृकरणयोस्तृतीया → ऋतेन
     - term: तृतीया
@@ -2196,7 +2660,7 @@ readings:
     - term: द्वन्द्व
       en: dual द्वन्द्व compound — Mitra + Varuṇa as one pair
     - cite: '2.2.29'
-      role: चार्थे द्वन्द्वः → मित्रावरुणौ ("Mitra and Varuṇa")
+      role: 'चार्थे द्वन्द्वः → मित्रावरुणौ ("Mitra and Varuṇa")'
     - term: सम्बोधन
       en: vocative DUAL
     - cite: '1.4.22'
@@ -2240,7 +2704,7 @@ readings:
     vocab: true
     notes:
     - term: विशेषण
-      en: adjective qualifying क्रतुम् — "a vast will"
+      en: 'adjective qualifying क्रतुम् — "a vast will"'
     - term: द्वितीया
       en: accusative
   - form: आ॒शा॒थे॒
@@ -2251,9 +2715,9 @@ readings:
     - term: अश्
       en: '"attain, reach"'
     - term: लिट्
-      en: perfect — "have won" (the लिट् you met in चकार)
+      en: 'perfect — "have won" (the लिट् you met in चकार)'
     - cite: '1.4.22'
-      role: द्व्येकयोर्द्विवचनैकवचने → DUAL perfect → आशाथे ("you two have")
+      role: 'द्व्येकयोर्द्विवचनैकवचने → DUAL perfect → आशाथे ("you two have")'
     - term: द्विवचन
       en: dual
   vyakhya: ऋतेन इति करणम्; मित्रावरुणौ ऋतावृधौ ऋतस्पृशा — द्विवचनसम्बोधनानि; बृहन्तं क्रतुम् आशाथे — लिटि द्विवचनम्।
@@ -2289,7 +2753,7 @@ readings:
     gloss: for us
     notes:
     - term: सम्प्रदान
-      en: recipient — "for us"
+      en: 'recipient — "for us"'
     - cite: '2.3.13'
       role: चतुर्थी सम्प्रदाने → नः
     - term: चतुर्थी
@@ -2343,7 +2807,7 @@ readings:
     - term: धा
       en: '"hold, place" (the दा/धा you met in ददाति)'
     - term: प्रथमपुरुष
-      en: 3rd person — DUAL ("the two hold")
+      en: '3rd person — DUAL ("the two hold")'
     - cite: '1.4.22'
       role: द्व्येकयोर्द्विवचनैकवचने → dual → दधाते
     - term: द्विवचन
@@ -2354,7 +2818,7 @@ readings:
     vocab: true
     notes:
     - term: विशेषण
-      en: adjective qualifying दक्षम् — "a working skill"
+      en: 'adjective qualifying दक्षम् — "a working skill"'
     - term: द्वितीया
       en: accusative
   vyakhya: कवी मित्रावरुणा तुविजाता उरुक्षया — द्विवचनप्रथमायाम्; नः दक्षम् अपसं दधाते — द्विवचनतिङन्तम्। हिमवत् सूक्तं समाप्तम्।
@@ -2388,7 +2852,7 @@ readings:
     vocab: true
     notes:
     - term: विशेषण
-      en: feminine adjective qualifying इषः — "sacrificial (offerings)"
+      en: 'feminine adjective qualifying इषः — "sacrificial (offerings)"'
     - term: द्वितीया
       en: accusative plural
   - form: इषः॑
@@ -2440,7 +2904,7 @@ readings:
     - term: चनस्य
       en: '"take delight in" (denominative) — here addressed to the pair'
     - term: मध्यमपुरुष
-      en: 2nd person — DUAL imperative ("you two, take pleasure")
+      en: '2nd person — DUAL imperative ("you two, take pleasure")'
     - cite: '3.3.162'
       role: लोट् च → imperative → चनस्यतम्
     - cite: '1.4.22'
@@ -2498,7 +2962,7 @@ readings:
     vocab: true
     notes:
     - term: विशेषण
-      en: adjective qualifying धिया — "with forceful (thought)"
+      en: 'adjective qualifying धिया — "with forceful (thought)"'
     - term: तृतीया
       en: instrumental
   - form: धि॒या
@@ -2506,7 +2970,7 @@ readings:
     gloss: by thought, with insight
     notes:
     - term: करण
-      en: instrument — "by means of thought" (the धिया you met in rd014)
+      en: 'instrument — "by means of thought" (the धिया you met in rd014)'
     - cite: '2.3.18'
       role: कर्तृकरणयोस्तृतीया → करण → धिया
     - term: तृतीया
@@ -2528,7 +2992,7 @@ readings:
     - term: वन्
       en: '"win, gain, acquire"'
     - term: मध्यमपुरुष
-      en: 2nd person — DUAL imperative ("you two, win")
+      en: '2nd person — DUAL imperative ("you two, win")'
     - cite: '3.3.162'
       role: लोट् च → imperative → वनतम्
     - cite: '1.4.22'
@@ -2566,7 +3030,7 @@ readings:
     vocab: true
     notes:
     - term: सम्बोधन
-      en: vocative dual — the Aśvins as "wondrous ones"
+      en: 'vocative dual — the Aśvins as "wondrous ones"'
     - cite: '1.4.22'
       role: द्व्येकयोर्द्विवचनैकवचने → dual → दस्रा
     - term: द्विवचन
@@ -2578,7 +3042,7 @@ readings:
     notes:
     - text: 'युवाकु "directed toward you two" — derived from युवाम् (you two)'
     - term: विशेषण
-      en: predicate adjective of the soma — "yearning for you"
+      en: 'predicate adjective of the soma — "yearning for you"'
     - term: प्रथमा
       en: nominative
   - form: सु॒ताः
@@ -2588,7 +3052,7 @@ readings:
     notes:
     - text: 'सुत = क्त-participle of सु "press" — the pressed soma'
     - term: कर्तृ
-      en: subject — "the pressed (juices) are yours"
+      en: 'subject — "the pressed (juices) are yours"'
     - term: प्रथमा
       en: nominative plural
   - form: नास॑त्या
@@ -2607,7 +3071,7 @@ readings:
     notes:
     - text: 'padapāṭha splits वृक्त-बर्हिस्; वृक्त "twisted, strewn" + बर्हिस् "sacred grass"'
     - term: विशेषण
-      en: predicate adjective — "(soma) of strewn grass"
+      en: 'predicate adjective — "(soma) of strewn grass"'
     - term: प्रथमा
       en: nominative
   - form: आ
@@ -2615,7 +3079,7 @@ readings:
     gloss: hither
     notes:
     - term: उपसर्ग
-      en: preverb — "toward, hither," governing यातम्
+      en: 'preverb — "toward, hither," governing यातम्'
   - form: या॒तम्
     lemma: या
     gloss: come, you two!
@@ -2623,7 +3087,7 @@ readings:
     - term: या
       en: '"go, come" (with आ → "come hither") — the same आ यातम् of rd020'
     - term: मध्यमपुरुष
-      en: 2nd person — DUAL imperative ("you two, come")
+      en: '2nd person — DUAL imperative ("you two, come")'
     - cite: '3.3.162'
       role: लोट् च → imperative → यातम्
     - cite: '1.4.22'
@@ -2667,7 +3131,7 @@ readings:
     gloss: hither
     notes:
     - term: उपसर्ग
-      en: preverb — "toward, hither," governing याहि
+      en: 'preverb — "toward, hither," governing याहि'
   - form: या॒हि
     lemma: या
     gloss: come!
@@ -2675,7 +3139,7 @@ readings:
     - term: या
       en: '"go, come" (with आ → "come hither") — same root as the dual आ यातम्'
     - term: मध्यमपुरुष
-      en: 2nd person — SINGULAR imperative ("you, come"), vs dual यातम्
+      en: '2nd person — SINGULAR imperative ("you, come"), vs dual यातम्'
     - cite: '3.3.162'
       role: लोट् च → imperative → याहि
     - term: एकवचन
@@ -2697,7 +3161,7 @@ readings:
     notes:
     - text: 'सुत = क्त-participle of सु "press"'
     - term: कर्तृ
-      en: subject — "the pressed (juices) are…"
+      en: 'subject — "the pressed (juices) are…"'
     - term: प्रथमा
       en: nominative plural
   - form: इ॒मे
@@ -2705,7 +3169,7 @@ readings:
     gloss: these
     notes:
     - term: सर्वनाम
-      en: pronoun इदम् "this," here nominative plural — "these"
+      en: 'pronoun इदम् "this," here nominative plural — "these"'
     - term: प्रथमा
       en: nominative plural
   - form: त्वा॒यवः॑
@@ -2715,7 +3179,7 @@ readings:
     notes:
     - text: 'त्वायु "yearning toward you" — built on त्वा (you, acc.)'
     - term: विशेषण
-      en: predicate adjective of सुताः — "(the draughts) longing for you"
+      en: 'predicate adjective of सुताः — "(the draughts) longing for you"'
     - term: प्रथमा
       en: nominative plural
   - form: अण्वी॑भिः
@@ -2724,7 +3188,7 @@ readings:
     vocab: true
     notes:
     - term: करण
-      en: instrument — "by the fine (strainer-fibres)"
+      en: 'instrument — "by the fine (strainer-fibres)"'
     - cite: '2.3.18'
       role: कर्तृकरणयोस्तृतीया → करण → अण्वीभिः
     - term: तृतीया
@@ -2735,7 +3199,7 @@ readings:
     vocab: true
     notes:
     - term: करण
-      en: adverbial instrumental — "continuously"
+      en: 'adverbial instrumental — "continuously"'
     - term: तृतीया
       en: instrumental
   - form: पू॒तासः॑
@@ -2745,7 +3209,7 @@ readings:
     notes:
     - text: 'पूत = क्त-participle of पू "purify"; -आसः = Vedic nom. pl.'
     - term: विशेषण
-      en: predicate adjective of सुताः — "purified"
+      en: 'predicate adjective of सुताः — "purified"'
     - term: प्रथमा
       en: nominative plural
   vyakhya: इन्द्र चित्रभानो — सम्बोधने एकवचनम्; आ याहि — लोटि मध्यमपुरुषैकवचनम् (द्विवचनयातमः प्रतियोगि); सुताः इमे त्वायवः पूतासः — प्रथमाबहुवचने कर्तृविशेषणानि; अण्वीभिः तना — तृतीया करणे।
@@ -2791,7 +3255,7 @@ readings:
     gloss: by the thought, by insight
     notes:
     - term: करण
-      en: instrument — "urged BY the thought" (the धी met in rd027)
+      en: 'instrument — "urged BY the thought" (the धी met in rd027)'
     - cite: '2.3.18'
       role: कर्तृकरणयोस्तृतीया → करण → धिया
     - term: तृतीया
@@ -2823,7 +3287,7 @@ readings:
     notes:
     - text: 'सुतावत् = सुत "pressed soma" + मतुप् (वत्) "possessing"'
     - term: सम्बन्ध
-      en: genitive — "of the (soma-)presser" (qualifies वाघतः)
+      en: 'genitive — "of the (soma-)presser" (qualifies वाघतः)'
     - term: षष्ठी
       en: genitive
   - form: उप॑
@@ -2831,14 +3295,14 @@ readings:
     gloss: up to, toward
     notes:
     - term: उपसर्ग
-      en: preverb — "toward," directing the motion to ब्रह्माणि
+      en: 'preverb — "toward," directing the motion to ब्रह्माणि'
   - form: ब्रह्मा॑णि
     lemma: ब्रह्मन्
     gloss: the prayers, the sacred formulas
     vocab: true
     notes:
     - term: कर्मन्
-      en: goal of motion — "(come) up to the prayers"
+      en: 'goal of motion — "(come) up to the prayers"'
     - cite: '2.3.2'
       role: कर्मणि द्वितीया → ब्रह्माणि (neut. acc. pl.)
     - term: द्वितीया
@@ -2849,7 +3313,7 @@ readings:
     vocab: true
     notes:
     - term: सम्बन्ध
-      en: genitive — "the prayers OF the worshipper"
+      en: 'genitive — "the prayers OF the worshipper"'
     - term: षष्ठी
       en: genitive
   vyakhya: इन्द्र — सम्बोधनम्; आ याहि — लोटि मध्यमपुरुषैकवचनम्; धिया — तृतीया करणे; इषितः विप्रजूतः — क्तान्तविशेषणे; उप ब्रह्माणि — द्वितीया कर्मणि गत्यर्थे; सुतावतः वाघतः — षष्ठी सम्बन्धे।
@@ -2912,7 +3376,7 @@ readings:
     vocab: true
     notes:
     - term: कर्मन्
-      en: goal of motion — "(come) up to the prayers"
+      en: 'goal of motion — "(come) up to the prayers"'
     - cite: '2.3.2'
       role: कर्मणि द्वितीया → ब्रह्माणि (neut. acc. pl.)
     - term: द्वितीया
@@ -2934,7 +3398,7 @@ readings:
     notes:
     - text: 'सुत = क्त-participle of सु "press," here LOCATIVE — "at the pressed (soma)"'
     - term: अधिकरण
-      en: locus / occasion — "at the pressing"
+      en: 'locus / occasion — "at the pressing"'
     - cite: '2.3.36'
       role: सप्तम्यधिकरणे च → अधिकरण → सुते
     - term: सप्तमी
@@ -2947,7 +3411,7 @@ readings:
     - term: धा
       en: '"hold, place, take" — the same √धा of दधाते (rd025), here MIDDLE imperative'
     - term: मध्यमपुरुष
-      en: 2nd person — singular MIDDLE (आत्मनेपद) imperative "take for yourself"
+      en: '2nd person — singular MIDDLE (आत्मनेपद) imperative "take for yourself"'
     - cite: '3.3.162'
       role: लोट् च → imperative → दधिष्व
     - term: एकवचन
@@ -2966,7 +3430,7 @@ readings:
     vocab: true
     notes:
     - term: कर्मन्
-      en: object — "take delight" (the चन- of चनस्यतम्, rd026, now as a noun)
+      en: 'object — "take delight" (the चन- of चनस्यतम्, rd026, now as a noun)'
     - cite: '2.3.2'
       role: कर्मणि द्वितीया → चनः
     - term: द्वितीया
@@ -3023,7 +3487,7 @@ readings:
     notes:
     - text: 'देवासः = Vedic voc./nom. pl. of देव (classical देवाः)'
     - term: सम्बोधन
-      en: vocative plural — "O gods"
+      en: 'vocative plural — "O gods"'
     - cite: '1.4.21'
       role: बहुषु बहुवचनम् → plural → देवासः
     - term: बहुवचन
@@ -3041,7 +3505,7 @@ readings:
     - term: गम्
       en: '"go, come" (with आ → "come hither") — same root as आ गतम् (dual, rd020)'
     - term: मध्यमपुरुष
-      en: 2nd person — PLURAL imperative ("you all, come"), vs dual गतम्, sg याहि
+      en: '2nd person — PLURAL imperative ("you all, come"), vs dual गतम्, sg याहि'
     - cite: '3.3.162'
       role: लोट् च → imperative → गत
     - cite: '1.4.21'
@@ -3055,7 +3519,7 @@ readings:
     notes:
     - text: 'दाश्वस् = perfect active participle of दाश् "give, worship" — "having given"'
     - term: विशेषण
-      en: vocative-plural epithet — "(you who are) givers"
+      en: 'vocative-plural epithet — "(you who are) givers"'
     - term: बहुवचन
       en: plural
   - form: दा॒शुषः॑
@@ -3065,7 +3529,7 @@ readings:
     notes:
     - text: 'दाशुषः = genitive sg of the SAME दाश्वस् stem — here "of the (human) worshipper"'
     - term: सम्बन्ध
-      en: genitive — "the soma OF the worshipper"
+      en: 'genitive — "the soma OF the worshipper"'
     - term: षष्ठी
       en: genitive
   - form: सु॒तम्
@@ -3074,7 +3538,7 @@ readings:
     vocab: true
     notes:
     - term: कर्मन्
-      en: goal — "(come) to the pressed soma"
+      en: 'goal — "(come) to the pressed soma"'
     - cite: '2.3.2'
       role: कर्मणि द्वितीया → सुतम्
     - term: द्वितीया
@@ -3127,7 +3591,7 @@ readings:
     vocab: true
     notes:
     - term: कर्मन्
-      en: goal of motion — "(come) to the soma"
+      en: 'goal of motion — "(come) to the soma"'
     - cite: '2.3.2'
       role: कर्मणि द्वितीया → सुतम्
     - term: द्वितीया
@@ -3158,7 +3622,7 @@ readings:
     vocab: true
     notes:
     - term: विशेषण
-      en: vocative-plural epithet — "you swift ones"
+      en: 'vocative-plural epithet — "you swift ones"'
     - term: बहुवचन
       en: plural
   - form: उ॒स्राःऽइव
@@ -3168,7 +3632,7 @@ readings:
     notes:
     - text: 'उस्राः "cattle" (nom. pl.) + इव "like" — the subject of the simile'
     - term: उपमान
-      en: standard of comparison — "as cattle (come to pastures)"
+      en: 'standard of comparison — "as cattle (come to pastures)"'
     - term: प्रथमा
       en: nominative plural (the compared)
   - form: स्वस॑राणि
@@ -3177,7 +3641,7 @@ readings:
     vocab: true
     notes:
     - term: कर्मन्
-      en: goal within the simile — "(as cattle come) to the pastures"
+      en: 'goal within the simile — "(as cattle come) to the pastures"'
     - cite: '2.3.2'
       role: कर्मणि द्वितीया → स्वसराणि (neut. acc. pl.)
     - term: द्वितीया
@@ -3210,7 +3674,7 @@ readings:
     notes:
     - text: 'देवासः — here NOMINATIVE (subject), not vocative as in rd032-033'
     - term: कर्तृ
-      en: subject — "the All-Gods (enjoy)…"
+      en: 'subject — "the All-Gods (enjoy)…"'
     - cite: '1.4.21'
       role: बहुषु बहुवचनम् → plural → देवासः
     - term: प्रथमा
@@ -3232,7 +3696,7 @@ readings:
     notes:
     - text: 'padapāṭha splits एहि-मायासः; एहि "come!" + माया "power, wisdom" — bahuvrīhi'
     - term: बहुव्रीहि
-      en: possessive compound — "(those) whose power approaches"
+      en: 'possessive compound — "(those) whose power approaches"'
     - term: प्रथमा
       en: nominative plural
   - form: अ॒द्रुहः॑
@@ -3264,7 +3728,7 @@ readings:
     - term: जुष्
       en: '"enjoy, take pleasure in" — 3rd-person PLURAL (injunctive, wish sense)'
     - term: प्रथमपुरुष
-      en: 3rd person plural — "may they enjoy" (the gods as subject)
+      en: '3rd person plural — "may they enjoy" (the gods as subject)'
     - cite: '1.4.21'
       role: बहुषु बहुवचनम् → plural → जुषन्त
     - term: बहुवचन
@@ -3276,7 +3740,7 @@ readings:
     notes:
     - text: 'वह्नि "bearer, conveyer" (from वह् "carry") — in apposition to देवासः'
     - term: कर्तृ
-      en: subject — the gods as "bearers" (nominative)
+      en: 'subject — the gods as "bearers" (nominative)'
     - term: प्रथमा
       en: nominative plural
   vyakhya: विश्वे देवासः अस्रिधः एहिमायासः अद्रुहः वह्नयः — प्रथमाबहुवचने कर्तृविशेषणानि; मेधम् — द्वितीया कर्मणि; जुषन्त — प्रथमपुरुषबहुवचनम्। विश्वेदेवसूक्तत्रयं समाप्तम्।
@@ -3328,7 +3792,7 @@ readings:
     vocab: true
     notes:
     - term: करण
-      en: instrument/accompaniment — "(rich) with abundances"
+      en: 'instrument/accompaniment — "(rich) with abundances"'
     - cite: '2.3.18'
       role: कर्तृकरणयोस्तृतीया → करण → वाजेभिः
     - term: तृतीया
@@ -3407,7 +3871,7 @@ readings:
     vocab: true
     notes:
     - term: सम्बन्ध
-      en: genitive governed by the agent-noun — "impeller OF true words"
+      en: 'genitive governed by the agent-noun — "impeller OF true words"'
     - cite: '2.3.50'
       role: षष्ठी शेषे → सूनृतानाम्
     - term: षष्ठी
@@ -3429,7 +3893,7 @@ readings:
     notes:
     - text: 'padapāṭha splits सु-मतीनाम्; सु "good" + मति "thought"'
     - term: सम्बन्ध
-      en: genitive governed by the participle — "awakener OF good thoughts"
+      en: 'genitive governed by the participle — "awakener OF good thoughts"'
     - cite: '2.3.50'
       role: षष्ठी शेषे → सुमतीनाम्
     - term: षष्ठी
@@ -3453,7 +3917,7 @@ readings:
     - term: धा
       en: '"hold, establish" — the √धा of दधाते (rd025) and दधिष्व (rd031), here PERFECT'
     - term: प्रथमपुरुष
-      en: 3rd person singular — perfect middle "she has held"
+      en: '3rd person singular — perfect middle "she has held"'
     - term: एकवचन
       en: singular
   - form: सर॑स्वती
@@ -3484,7 +3948,7 @@ readings:
     vocab: true
     notes:
     - term: विशेषण
-      en: adjective qualifying अर्णः — "the GREAT flood"
+      en: 'adjective qualifying अर्णः — "the GREAT flood"'
     - term: द्वितीया
       en: accusative
   - form: अर्णः॑
@@ -3511,7 +3975,7 @@ readings:
     gloss: forth
     notes:
     - term: उपसर्ग
-      en: preverb — "forth," with चेतयति → "makes known, reveals"
+      en: 'preverb — "forth," with चेतयति → "makes known, reveals"'
   - form: चे॒तयति
     lemma: चित्
     gloss: she makes known, she reveals
@@ -3529,7 +3993,7 @@ readings:
     vocab: true
     notes:
     - term: करण
-      en: instrument — "BY her banner (she makes it known)"
+      en: 'instrument — "BY her banner (she makes it known)"'
     - cite: '2.3.18'
       role: कर्तृकरणयोस्तृतीया → करण → केतुना
     - term: तृतीया
@@ -3539,7 +4003,7 @@ readings:
     gloss: the thoughts
     notes:
     - term: कर्मन्
-      en: object — what she illumines (the धी "thought" of rd027, now plural object)
+      en: 'object — what she illumines (the धी "thought" of rd027, now plural object)'
     - cite: '2.3.2'
       role: कर्मणि द्वितीया → धियः (acc. pl.)
     - term: द्वितीया
@@ -3557,7 +4021,7 @@ readings:
     gloss: apart, over
     notes:
     - term: उपसर्ग
-      en: preverb — "apart, over," with राजति → "shines over, illumines"
+      en: 'preverb — "apart, over," with राजति → "shines over, illumines"'
   - form: रा॒जति
     lemma: राज्
     gloss: she shines over, she illumines
