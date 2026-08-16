@@ -38,6 +38,245 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex198
+  kind: sangraha
+  segment: 345
+  order: 1
+  sentence: गुरुणा शिष्याः पाठ्यन्ते। तैः शास्त्राणि पठ्यन्ते, वचनानि च श्रूयन्ते। गुरुः तान् द्रष्टुम् इच्छति। श्वः ते ग्रामम् गमिष्यन्ति। तत्र धनम् धान्यम् च लप्स्यन्ते। नद्याः तीरे तिष्ठन्ति, जलम् पिबन्ति च।
+  translation: The students are taught by the teacher. By them the treatises are read, and the sayings are heard. The teacher wishes to see them. Tomorrow they will go to the village. There they will obtain wealth and grain. They stand on the river's bank, and drink water.
+  teaches: |
+    the passive frame at volume, against the active. Four passives in the first
+    two sentences — पाठ्यन्ते, पठ्यन्ते, श्रूयन्ते — each with its agent in the
+    instrumental and its object standing as nominative, then the active
+    इच्छति with the ordinary accusative. Closes on two futures, a द्वन्द्व, and
+    नद्याः with its ī-stem sandhi.
+  words:
+  - form: गुरुणा
+    lemma: गुरु
+    gloss: by the teacher
+    notes:
+    - term: कर्तृ
+      en: the agent of a passive — unexpressed by the ending, so it takes a case
+    - term: तृतीया
+      en: instrumental
+  - form: शिष्याः
+    lemma: शिष्य
+    gloss: the students
+    notes:
+    - term: कर्मन्
+      en: what is taught — expressed by the ending, so it stands nominative
+    - term: बहुवचन
+      en: nominative plural
+    - cite: "1.4.49"
+      role: कर्तुरीप्सिततमं कर्म — what the agent most aims at is the कर्मन् → शिष्याः
+  - form: पाठ्यन्ते
+    lemma: पठ्
+    gloss: are taught
+    notes:
+    - term: यक्
+      en: the passive विकरण on a causative stem — पाठि + य + अन्ते
+    - cite: "1.3.13"
+      role: भावकर्मणोः — आत्मनेपद endings in the passive → पाठ्यन्ते
+  - form: तैः
+    lemma: तद्
+    gloss: by them
+    notes:
+    - term: कर्तृ
+      en: the agent again, again instrumental
+    - term: तृतीया
+      en: instrumental plural
+  - form: शास्त्राणि
+    lemma: शास्त्र
+    gloss: the treatises
+    notes:
+    - term: कर्मन्
+      en: nominative under the passive
+    - term: बहुवचन
+      en: neuter nominative plural
+    - cite: "7.1.72"
+      role: नपुंसकस्य झलचः — नुम् before the neuter plural ending → शास्त्राणि
+  - form: पठ्यन्ते
+    lemma: पठ्
+    gloss: are read
+    notes:
+    - term: यक्
+      en: the plain passive beside the causative passive above — पठ् + य + अन्ते
+  - form: वचनानि
+    lemma: वचन
+    gloss: the sayings
+    notes:
+    - term: कर्मन्
+      en: nominative under the passive
+    - term: बहुवचन
+      en: neuter nominative plural — the same नुम् as शास्त्राणि
+    - cite: "7.1.72"
+      role: नपुंसकस्य झलचः — नुम् before शि → वचनानि
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: श्रूयन्ते
+    lemma: श्रु
+    gloss: are heard
+    notes:
+    - term: यक्
+      en: a third passive — श्रु + य + अन्ते
+    - cite: "1.3.13"
+      role: भावकर्मणोः — the passive takes आत्मनेपद → श्रूयन्ते
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: now an ACTIVE agent — nominative, because the ending expresses it
+    - term: प्रथमा
+      en: nominative
+    - cite: "8.2.66"
+      role: ससजुषो रुः — the ending स् becomes रु, then visarga → गुरुः
+  - form: तान्
+    lemma: तद्
+    gloss: them
+    notes:
+    - term: कर्मन्
+      en: the object of an ACTIVE verb — accusative, not nominative
+    - term: द्वितीया
+      en: accusative plural
+  - form: द्रष्टुम्
+    lemma: दृश्
+    gloss: to see
+    notes:
+    - term: तुमुन्
+      en: infinitive — what the wishing is directed at
+    - cite: "3.3.10"
+      role: तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम् — the infinitive → द्रष्टुम्
+  - form: इच्छति
+    lemma: इष्
+    gloss: wishes
+    notes:
+    - term: शप्
+      en: इष् appears as इच्छ् + अ + ति
+    - term: परस्मैपद
+      en: the ending expresses the agent — contrast the four passives above
+  - form: श्वः
+    lemma: श्वस्
+    gloss: tomorrow
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+    - cite: "8.2.66"
+      role: ससजुषो रुः — final स् → रु → visarga → श्वः
+  - form: ते
+    lemma: तद्
+    gloss: they
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: गमिष्यन्ति
+    lemma: गम्
+    gloss: will go
+    notes:
+    - term: लृट्
+      en: the future
+    - cite: "3.3.13"
+      role: लृट् शेषे च — लृट् for the future → गमिष्यन्ति
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: धनम्
+    lemma: धन
+    gloss: wealth
+    notes:
+    - term: द्वन्द्व
+      en: joined with धान्यम् by च — two things counted together
+    - term: द्वितीया
+      en: neuter accusative
+  - form: धान्यम्
+    lemma: धान्य
+    gloss: grain
+    vocab: true
+    notes:
+    - term: द्वितीया
+      en: neuter accusative
+    - cite: "2.2.29"
+      role: चार्थे द्वन्द्वः — the coordinate pair धनम् धान्यम् च
+  - form: लप्स्यन्ते
+    lemma: लभ्
+    gloss: will obtain
+    vocab: true
+    notes:
+    - term: लृट्
+      en: a second future, this one आत्मनेपद — लभ् is middle
+    - cite: "3.3.13"
+      role: लृट् शेषे च — the future → लप्स्यन्ते
+  - form: नद्याः
+    lemma: नदी
+    gloss: of the river
+    notes:
+    - term: षष्ठी
+      en: genitive — ī-stem, the ई becoming य् before the ending
+    - cite: "6.1.77"
+      role: इको यणचि — इ/ई before a vowel becomes य् → नद्याः
+  - form: तीरे
+    lemma: तीर
+    gloss: on the bank
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: तिष्ठन्ति
+    lemma: स्था
+    gloss: stand
+    notes:
+    - term: शप्
+      en: स्था appears as तिष्ठ् + अ + न्ति
+    - term: लट्
+      en: present plural
+  - form: जलम्
+    lemma: जल
+    gloss: water
+    notes:
+    - term: कर्मन्
+      en: object of an active verb — accusative again
+    - term: द्वितीया
+      en: neuter accusative
+  - form: पिबन्ति
+    lemma: पा
+    gloss: drink
+    vocab: true
+    notes:
+    - term: शप्
+      en: पा appears as पिब् + अ + न्ति
+    - term: लट्
+      en: present plural
+  vyakhya: तैः पठ्यन्ते, ते गच्छन्ति। एकः कर्ता, द्वे विभक्ती।
+  vyakhya_en: |
+    The same students appear four times and are named three different ways.
+    शिष्याः when the passive points at them, तैः when the passive points past
+    them at what they read, ते when the verb is active and points at them
+    again, तान् when someone else's verb points at them.
+
+    Nothing about the students changed. Each time, the case answers one
+    question: has the verb's ending already said this? If yes, प्रथमा. If no,
+    whatever case the role calls for.
+
 - id: ex194
   kind: sangraha
   segment: 205

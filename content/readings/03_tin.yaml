@@ -5,6 +5,86 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex197
+  segment: 95
+  order: 1
+  sentence: बालः ओदनम् पचति। बालेन ओदनः पच्यते।
+  translation: The boy cooks the rice. The rice is cooked by the boy.
+  teaches: |
+    the same event twice, and the case of every noun changes. In the first the
+    agent is nominative and the object accusative; in the second the object has
+    become nominative and the agent instrumental. The verb's ending is what
+    decides which.
+  words:
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent — expressed by the verb's ending, so the noun is nominative
+    - term: प्रथमा
+      en: nominative
+  - form: ओदनम्
+    lemma: ओदन
+    gloss: the rice
+    notes:
+    - term: कर्मन्
+      en: object — NOT expressed by the ending here, so it takes a case of its own
+    - term: द्वितीया
+      en: accusative
+    - cite: "2.3.1"
+      role: अनभिहिते — a रोल takes its case only when the verb has not already expressed it
+  - form: पचति
+    lemma: पच्
+    gloss: cooks
+    notes:
+    - term: शप्
+      en: पच् + अ + ति
+    - term: परस्मैपद
+      en: the ending ति expresses the AGENT — so बालः needs no case of its own
+    - cite: "3.4.77"
+      role: लस्य — the तिङ् endings replace the लकार, and carry agent or object with them
+  - form: बालेन
+    lemma: बाल
+    gloss: by the boy
+    notes:
+    - term: कर्तृ
+      en: still the agent — but now the ending expresses the OBJECT, so the agent takes a case
+    - term: तृतीया
+      en: instrumental
+    - cite: "2.3.1"
+      role: अनभिहिते — unexpressed by the verb, the agent falls back to the तृतीया
+  - form: ओदनः
+    lemma: ओदन
+    gloss: the rice
+    notes:
+    - term: कर्मन्
+      en: the same object as ओदनम् above, now expressed by the ending
+    - term: प्रथमा
+      en: nominative — what the verb expresses stands in the प्रथमा
+  - form: पच्यते
+    lemma: पच्
+    gloss: is cooked
+    notes:
+    - term: यक्
+      en: the passive विकरण — पच् + य + ते
+    - term: आत्मनेपद
+      en: the ending ते expresses the OBJECT
+    - cite: "1.3.13"
+      role: भावकर्मणोः — आत्मनेपद endings in the passive → पच्यते
+  vyakhya: अनभिहिते इति अधिकारः। यत् तिङा उक्तं तत् प्रथमायाम्।
+  vyakhya_en: |
+    Both sentences describe one boy cooking one pot of rice. What moves is
+    which participant the verb's ending points at.
+
+    ति in पचति points at the cooker, so the cooker needs no case of its own and
+    stands in the प्रथमा; the rice, unmentioned by the ending, takes the
+    द्वितीया. ते in पच्यते points at what is cooked, so now the rice stands in
+    the प्रथमा and the boy — no longer pointed at — falls back to the तृतीया.
+
+    The rule behind it is one word: अनभिहिते, "when not already expressed." A
+    noun takes a case for its role only if the verb has not already said it.
+
 - id: ex014
   segment: 40
   sentence: अहम् ग्रामम् गच्छामि।
