@@ -11,7 +11,8 @@
     "build:balabodhini": "bun scripts/build-balabodhini.ts",
     "ledger": "bun scripts/readings-ledger.ts",
     "verify:cites": "bun scripts/verify-cites.ts",
-    "check:register": "bun scripts/check-register.ts"
+    "check:register": "bun scripts/check-register.ts",
+    "check": "bun scripts/check-all.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.0",
