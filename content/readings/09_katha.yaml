@@ -17,6 +17,352 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex202
+  kind: graded
+  segment: 480
+  source:
+    text: कथा (our graded retelling)
+    ref: "the sage, the king, and the two brothers — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: राजा वनम् गच्छन् एकम् मुनिम् अपश्यत्। मुनिः वृक्षस्य अधः उपविशन् शिष्यान् अवदत् — कर्तव्यम् धर्मम् जानीत। राज्ञः भ्राता अपि तत्र आसीत्। सः पितुः वचनम् स्मरन् मुनिम् अपृच्छत् — किम् मया करणीयम्। मुनिः अवदत् — भ्रातरम् रक्ष, राजानम् सेव, पितरम् च मा त्यज। एतत् त्रयम् सर्वदा स्मरणीयम्। तत् श्रुत्वा भ्रातरौ शान्तौ अभवताम्।
+  translation: The king, going to the forest, saw a sage. The sage, sitting beneath a tree, said to his students — "Know the dharma that is to be done." The king's brother was there too. He, remembering his father's words, asked the sage — "What is to be done by me?" The sage said — "Protect your brother, serve the king, and do not abandon your father. These three are always to be remembered." Having heard that, the two brothers became calm.
+  teaches: |
+    three present participles carrying subordinate clauses — गच्छन्, उपविशन्,
+    स्मरन् — where English would use "while" or "as". Four gerundives state
+    obligation without a finite verb: कर्तव्यम्, करणीयम्, स्मरणीयम्. And the
+    consonant stems keep moving through their grades: राजा/राज्ञः/राजानम्,
+    पितुः/पितरम्, भ्राता/भ्रातरम्/भ्रातरौ.
+  words:
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: प्रथमा
+      en: nominative — the न् of राजन् drops
+    - cite: "8.2.7"
+      role: नलोपः प्रातिपदिकान्तस्य — the stem-final न् drops → राजा
+  - form: वनम्
+    lemma: वन
+    gloss: to the forest
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: गच्छन्
+    lemma: गम्
+    gloss: going, as he went
+    notes:
+    - term: शतृ
+      en: present participle — a second action running alongside the main verb
+    - cite: "3.2.124"
+      role: लटः शतृशानचौ — शतृ replaces लट् → गच्छन्
+  - form: एकम्
+    lemma: एक
+    gloss: a
+    notes:
+    - term: द्वितीया
+      en: accusative, agreeing with मुनिम्
+  - form: मुनिम्
+    lemma: मुनि
+    gloss: sage
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: अपश्यत्
+    lemma: दृश्
+    gloss: saw
+    notes:
+    - term: लङ्
+      en: past
+  - form: मुनिः
+    lemma: मुनि
+    gloss: the sage
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वृक्षस्य
+    lemma: वृक्ष
+    gloss: of a tree
+    notes:
+    - term: षष्ठी
+      en: genitive
+  - form: अधः
+    lemma: अधस्
+    gloss: beneath
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable governing the षष्ठी
+  - form: उपविशन्
+    lemma: विश्
+    gloss: sitting
+    notes:
+    - term: शतृ
+      en: a second present participle — उप + विश्
+    - cite: "3.2.124"
+      role: लटः शतृशानचौ — शतृ replaces लट् → उपविशन्
+  - form: शिष्यान्
+    lemma: शिष्य
+    gloss: his students
+    notes:
+    - term: कर्मन्
+      en: object of अवदत्
+    - term: द्वितीया
+      en: accusative plural
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: कर्तव्यम्
+    lemma: कृ
+    gloss: that is to be done
+    notes:
+    - term: कृत्य
+      en: gerundive, qualifying धर्मम् — "the dharma to-be-done"
+    - cite: "3.1.96"
+      role: तव्यत्तव्यानीयरः — तव्य forms the gerundive → कर्तव्यम्
+  - form: धर्मम्
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: object of जानीत
+    - term: द्वितीया
+      en: accusative
+  - form: जानीत
+    lemma: ज्ञा
+    gloss: know
+    notes:
+    - term: लोट्
+      en: imperative plural — ज्ञा takes श्ना, giving जानी
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: the king's
+    notes:
+    - term: षष्ठी
+      en: the WEAK stem — the अ drops before a vowel ending
+  - form: भ्राता
+    lemma: भ्रातृ
+    gloss: brother
+    notes:
+    - term: सर्वनामस्थान
+      en: strong nom.sg — the ऋ of भ्रातृ lengthens to आ
+    - cite: "7.3.110"
+      role: ऋतो ङिसर्वनामस्थानयोः — गुण of the ऋ-stem in the strong cases → भ्राता
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of अस्
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: पितुः
+    lemma: पितृ
+    gloss: his father's
+    notes:
+    - term: षष्ठी
+      en: the weak grade of पितृ
+  - form: वचनम्
+    lemma: वचन
+    gloss: words
+    notes:
+    - term: कर्मन्
+      en: object of स्मरन्
+    - term: द्वितीया
+      en: neuter accusative
+  - form: स्मरन्
+    lemma: स्मृ
+    gloss: remembering
+    notes:
+    - term: शतृ
+      en: a third present participle — the remembering runs under the asking
+    - cite: "3.2.124"
+      role: लटः शतृशानचौ — शतृ replaces लट् → स्मरन्
+  - form: अपृच्छत्
+    lemma: प्रच्छ्
+    gloss: asked
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past
+  - form: किम्
+    lemma: किम्
+    gloss: what
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — the subject of the gerundive
+  - form: मया
+    lemma: अस्मद्
+    gloss: by me
+    notes:
+    - term: कर्तृ
+      en: the agent of a gerundive stands in the instrumental
+    - term: तृतीया
+      en: instrumental
+  - form: करणीयम्
+    lemma: कृ
+    gloss: is to be done
+    notes:
+    - term: कृत्य
+      en: the अनीयर् gerundive — the same sense as कर्तव्यम्, a different affix
+    - cite: "3.1.96"
+      role: तव्यत्तव्यानीयरः — अनीयर् also forms the gerundive → करणीयम्
+  - form: भ्रातरम्
+    lemma: भ्रातृ
+    gloss: your brother
+    notes:
+    - term: सर्वनामस्थान
+      en: strong stem भ्रातर् — the same man as भ्राता above
+    - term: द्वितीया
+      en: accusative
+  - form: रक्ष
+    lemma: रक्ष्
+    gloss: protect
+    notes:
+    - term: लोट्
+      en: imperative
+  - form: राजानम्
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: सर्वनामस्थान
+      en: strong — the न् returns and the अ lengthens
+    - term: द्वितीया
+      en: accusative
+    - cite: "6.4.8"
+      role: सर्वनामस्थाने चासम्बुद्धौ — lengthening in the strong cases → राजान्
+  - form: सेव
+    lemma: सेव्
+    gloss: serve
+    vocab: true
+    notes:
+    - term: लोट्
+      en: imperative
+  - form: पितरम्
+    lemma: पितृ
+    gloss: your father
+    notes:
+    - term: सर्वनामस्थान
+      en: strong stem पितर्, against the weak पितुः above
+    - term: द्वितीया
+      en: accusative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: मा
+    lemma: मा
+    gloss: do not
+    notes:
+    - term: अव्यय
+      en: the prohibitive
+  - form: त्यज
+    lemma: त्यज्
+    gloss: abandon
+    notes:
+    - term: लोट्
+      en: imperative under मा — a prohibition
+  - form: एतत्
+    lemma: एतद्
+    gloss: these
+    notes:
+    - term: प्रथमा
+      en: neuter nominative, agreeing with त्रयम्
+  - form: त्रयम्
+    lemma: त्रय
+    gloss: three
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — the three instructions taken as one thing
+  - form: सर्वदा
+    lemma: सर्वदा
+    gloss: always
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: स्मरणीयम्
+    lemma: स्मृ
+    gloss: to be remembered
+    notes:
+    - term: कृत्य
+      en: a third gerundive, closing the sage's instruction
+    - cite: "3.1.96"
+      role: तव्यत्तव्यानीयरः — अनीयर् forms the gerundive → स्मरणीयम्
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: कर्मन्
+      en: object of श्रुत्वा
+    - term: द्वितीया
+      en: neuter accusative
+  - form: श्रुत्वा
+    lemma: श्रु
+    gloss: having heard
+    notes:
+    - term: क्त्वा
+      en: gerund — the hearing before the calming
+  - form: भ्रातरौ
+    lemma: भ्रातृ
+    gloss: the two brothers
+    notes:
+    - term: सर्वनामस्थान
+      en: strong dual — a third grade of भ्रातृ, beside भ्राता and भ्रातरम्
+    - term: द्विवचन
+      en: nominative dual
+    - cite: "6.4.8"
+      role: सर्वनामस्थाने चासम्बुद्धौ — lengthening in the strong cases → भ्रातर्
+  - form: शान्तौ
+    lemma: शम्
+    gloss: calm
+    notes:
+    - term: निष्ठा
+      en: past participle, dual, agreeing with भ्रातरौ
+  - form: अभवताम्
+    lemma: भू
+    gloss: the two became
+    notes:
+    - term: लङ्
+      en: past dual
+  vyakhya: गच्छन् उपविशन् स्मरन् — त्रीणि शतृ-रूपाणि। कर्तव्यम् करणीयम् स्मरणीयम् — त्रीणि कृत्य-रूपाणि।
+  vyakhya_en: |
+    Three participles here do what English does with "while": राजा वनम् गच्छन्
+    is "the king, as he went to the forest". None of them is the sentence's
+    main verb, and none needs a conjunction.
+
+    Then three gerundives state obligation without any verb at all —
+    कर्तव्यम्, करणीयम्, स्मरणीयम्. Two different affixes, तव्य and अनीयर्,
+    with no difference in sense; a writer picks whichever fits the line.
+    किम् मया करणीयम् is the whole question: what, by me, is to-be-done.
+
 - id: ex201
   kind: graded
   segment: 460
