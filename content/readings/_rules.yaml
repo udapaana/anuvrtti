@@ -75,13 +75,19 @@ defaults:
 term_implies:
   कर्मन्: "2.3.2"       # object → accusative
   द्वितीया: "2.3.2"
-  करण: "2.3.18"         # instrument → instrumental
-  तृतीया: "2.3.18"
-  सम्प्रदान: "2.3.13"    # recipient → dative
+  # ROLE names and CASE names are different facts and belong to different
+  # sūtras. 1.4.x defines the कारक role (what part the noun plays); 2.3.x
+  # assigns the विभक्ति that expresses it. They were both mapped to the 2.3
+  # rule at first, so सम्प्रदान — which appears in 28 readings — counted
+  # toward 2.3.13 and left 1.4.32 reading 2/8. The two co-occur on 119 words
+  # and are annotated separately, so they can be counted separately.
+  करण: "1.4.42"         # the instrument role
+  तृतीया: "2.3.18"      # …and the case that expresses it
+  सम्प्रदान: "1.4.32"    # the recipient role
   चतुर्थी: "2.3.13"
-  अपादान: "2.3.28"      # source → ablative
+  अपादान: "1.4.24"      # the source role
   पञ्चमी: "2.3.28"
-  अधिकरण: "2.3.36"      # locus → locative
+  अधिकरण: "1.4.45"      # the locus role
   सप्तमी: "2.3.36"
   षष्ठी: "2.3.50"       # the residual case
   सम्बोधन: "2.3.47"     # vocative
