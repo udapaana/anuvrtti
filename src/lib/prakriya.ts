@@ -103,8 +103,10 @@ interface DhatuArgs {
   aupadeshika: string;
   gana: Gana;
   antargana?: string;
-  sanadi?: string[];
-  prefixes?: string[];
+  // Required by the WASM despite reading as optional: serde has no default for
+  // these, and omitting them traps rather than erroring. Pass [] when unused.
+  sanadi: string[];
+  prefixes: string[];
 }
 
 interface TinantaArgs {
@@ -211,14 +213,22 @@ export async function deriveTinanta(
     const { Gana, Lakara, Prayoga, Purusha, Vacana } = vidyutModule;
 
     const results = vidyutInstance.deriveTinantas({
+      // `sanadi` and `prefixes` are REQUIRED, not optional. The Rust side
+      // deserialises this struct with serde and has no default for either
+      // field, so omitting them traps the WASM with a bare
+      // "RuntimeError: unreachable" — no message, no hint at the cause.
+      // Every derivation in the app failed this way.
       dhatu: {
         aupadeshika: dhatuSlp1,
         gana: Gana[gana],
+        sanadi: [],
+        prefixes: []
       },
       lakara: Lakara[lakara],
       prayoga: Prayoga[prayoga],
       purusha: Purusha[purusha],
       vacana: Vacana[vacana],
+      pada: null
     });
 
     return results.map(toPrakriya);
