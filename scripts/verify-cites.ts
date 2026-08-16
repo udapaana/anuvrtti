@@ -43,6 +43,17 @@ const WASM_DIR = path.join(process.cwd(), 'static/wasm/vidyut-prakriya/');
  * role, 1.2.x and 3.2/3.3 select an affix from the intended sense. vidyut is
  * handed the case (or the lakāra) as input, so it never fires them.
  */
+/**
+ * Rules that operate at the SENTENCE join, after each word is already built.
+ * A single-word derivation never fires them: vidyut derives ग्रामम् with म्,
+ * and the anusvāra only appears once a consonant-initial word follows. Citing
+ * 8.3.23 on ग्रामं is correct and unverifiable here, so it is reported apart
+ * from both "confirmed" and "missing".
+ */
+function isSentenceSandhi(cite: string): boolean {
+  return ['8.3.23', '8.3.15', '8.3.34', '8.4.40', '8.4.58', '8.4.62', '6.1.73', '6.1.113', '8.2.66'].includes(cite);
+}
+
 function isSemantic(cite: string): boolean {
   return /^1\.4\.|^2\.3\.|^1\.2\.|^2\.1\.|^2\.2\.|^3\.2\.|^3\.3\.|^3\.4\.2[0-9]|^5\./.test(cite);
 }
@@ -229,7 +240,7 @@ async function main() {
       if (!fired || !fired.size) { unchecked += cites.length; continue; }
 
       for (const c of cites) {
-        if (isSemantic(c)) { semantic++; continue; }
+        if (isSemantic(c) || isSentenceSandhi(c)) { semantic++; continue; }
         if (fired.has(c)) ok++;
         else {
           missing++;
@@ -242,7 +253,7 @@ async function main() {
   console.log(`\n  CITE VERIFICATION — against vidyut-prakriya\n`);
   console.log(`    confirmed   ${ok}`);
   console.log(`    MISSING     ${missing}   (cited rule absent from the derivation)`);
-  console.log(`    semantic    ${semantic}   (role/case-assignment — outside what a derivation shows)`);
+  console.log(`    semantic    ${semantic}   (semantic or sentence-join — outside what a word derivation shows)`);
   console.log(`    unchecked   ${unchecked}   (no derivable spec — lemma/case/number incomplete)\n`);
   if (problems.length) {
     const show = process.argv.includes('--full') ? problems : problems.slice(0, 30);
