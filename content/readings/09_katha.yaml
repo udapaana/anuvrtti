@@ -17,6 +17,328 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex199
+  kind: graded
+  segment: 440
+  source:
+    text: कथा (our graded retelling)
+    ref: "a merchant's journey — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: नद्याः तीरे वणिजः वसन्ति स्म। तेषाम् गृहेषु धनम् धान्यम् च आसीत्। एकदा एकः वणिक् दूरम् देशम् गन्तुम् ऐच्छत्। मित्राणि तम् अवदन् — मार्गः दीर्घः, मा गच्छ इति। किन्तु सः अशृणोत् न। श्वः गमिष्यामि इति उक्त्वा सः रात्रौ यानम् असज्जयत्। प्रभाते तेन मित्राणि त्यक्तानि, नगरम् च त्यक्तम्।
+  translation: On the bank of a river lived merchants. In their houses were wealth and grain. One day one merchant wished to go to a distant country. His friends said to him — "The road is long; do not go." But he did not listen. Saying "I will go tomorrow," he made ready a cart in the night. At dawn the friends were left behind by him, and the city too was left.
+  teaches: |
+    a merchant's departure, built to run the constructions the passive passage
+    just introduced through a narrative: नद्याः with its ī-stem sandhi,
+    मित्राणि and यानम् as neuter forms, गन्तुम् as an infinitive under इष्,
+    गमिष्यामि as a future inside quoted speech, and a closing pair of passives
+    where the agent stands in the instrumental — तेन मित्राणि त्यक्तानि.
+  words:
+  - form: नद्याः
+    lemma: नदी
+    gloss: of a river
+    notes:
+    - term: षष्ठी
+      en: genitive — the ī of नदी becoming य् before the ending
+    - cite: "6.1.77"
+      role: इको यणचि — ई before a vowel becomes य् → नद्याः
+  - form: तीरे
+    lemma: तीर
+    gloss: on the bank
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: वणिजः
+    lemma: वणिज्
+    gloss: merchants
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent — a consonant stem
+    - term: बहुवचन
+      en: nominative plural
+  - form: वसन्ति
+    lemma: वस्
+    gloss: lived
+    notes:
+    - term: शप्
+      en: वस् + अ + न्ति
+    - term: लट्
+      en: present with स्म, giving narrative past
+  - form: स्म
+    lemma: स्म
+    gloss: (past marker)
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तेषाम्
+    lemma: तद्
+    gloss: their
+    notes:
+    - term: षष्ठी
+      en: genitive plural
+  - form: गृहेषु
+    lemma: गृह
+    gloss: in the houses
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative plural
+  - form: धनम्
+    lemma: धन
+    gloss: wealth
+    notes:
+    - term: द्वन्द्व
+      en: paired with धान्यम् by च
+    - term: प्रथमा
+      en: neuter nominative
+  - form: धान्यम्
+    lemma: धान्य
+    gloss: grain
+    notes:
+    - term: प्रथमा
+      en: neuter nominative
+    - cite: "2.2.29"
+      role: चार्थे द्वन्द्वः — the coordinate pair धनम् धान्यम् च
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of अस्
+  - form: एकदा
+    lemma: एकदा
+    gloss: one day
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: एकः
+    lemma: एक
+    gloss: one
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: वणिक्
+    lemma: वणिज्
+    gloss: merchant
+    notes:
+    - term: प्रथमा
+      en: nominative singular — the ज् of वणिज् hardens to क् at the word end
+  - form: दूरम्
+    lemma: दूर
+    gloss: distant
+    notes:
+    - term: द्वितीया
+      en: accusative, agreeing with देशम्
+  - form: देशम्
+    lemma: देश
+    gloss: country
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+    - cite: "1.4.49"
+      role: कर्तुरीप्सिततमं कर्म — what the agent most aims at → देशम्
+  - form: गन्तुम्
+    lemma: गम्
+    gloss: to go
+    notes:
+    - term: तुमुन्
+      en: infinitive — what the wishing is aimed at
+    - cite: "3.3.10"
+      role: तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम् — the infinitive → गन्तुम्
+  - form: ऐच्छत्
+    lemma: इष्
+    gloss: wished
+    notes:
+    - term: लङ्
+      en: past — the augment अ merging with the इ of इष् to give ऐ
+  - form: मित्राणि
+    lemma: मित्र
+    gloss: friends
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent — मित्र is neuter even of people
+    - term: बहुवचन
+      en: neuter nominative plural
+    - cite: "7.1.72"
+      role: नपुंसकस्य झलचः — नुम् before the neuter plural ending → मित्राणि
+  - form: तम्
+    lemma: तद्
+    gloss: to him
+    notes:
+    - term: कर्मन्
+      en: object of अवदन्
+    - term: द्वितीया
+      en: accusative
+  - form: अवदन्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past plural
+  - form: मार्गः
+    lemma: मार्ग
+    gloss: the road
+    notes:
+    - term: प्रथमा
+      en: nominative
+    - cite: "8.2.66"
+      role: ससजुषो रुः — the ending स् becomes रु, then visarga → मार्गः
+  - form: दीर्घः
+    lemma: दीर्घ
+    gloss: (is) long
+    notes:
+    - term: प्रथमा
+      en: nominative — predicated without a verb
+  - form: मा
+    lemma: मा
+    gloss: do not
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: the prohibitive — takes a past form without its augment
+  - form: गच्छ
+    lemma: गम्
+    gloss: go
+    notes:
+    - term: लोट्
+      en: imperative under मा — a prohibition, not a command
+  - form: इति
+    lemma: इति
+    gloss: "thus"
+    notes:
+    - term: अव्यय
+      en: closes the quotation
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: अशृणोत्
+    lemma: श्रु
+    gloss: listened
+    notes:
+    - term: लङ्
+      en: past — श्रु takes श्नु, so the stem is शृणो
+  - form: 'न'
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: श्वः
+    lemma: श्वस्
+    gloss: tomorrow
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: गमिष्यामि
+    lemma: गम्
+    gloss: I will go
+    notes:
+    - term: लृट्
+      en: the future, first person — inside his own speech
+    - cite: "3.3.13"
+      role: लृट् शेषे च — लृट् for the future → गमिष्यामि
+  - form: उक्त्वा
+    lemma: वच्
+    gloss: having said
+    notes:
+    - term: क्त्वा
+      en: gerund — the saying before the readying
+  - form: रात्रौ
+    lemma: रात्रि
+    gloss: in the night
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus in time
+    - term: सप्तमी
+      en: locative
+  - form: यानम्
+    lemma: यान
+    gloss: a cart
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: neuter accusative
+  - form: असज्जयत्
+    lemma: सज्ज्
+    gloss: made ready
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past — a causative-shaped stem सज्जय्
+  - form: प्रभाते
+    lemma: प्रभात
+    gloss: at dawn
+    notes:
+    - term: अधिकरण
+      en: locus in time
+    - term: सप्तमी
+      en: locative
+  - form: तेन
+    lemma: तद्
+    gloss: by him
+    notes:
+    - term: कर्तृ
+      en: the agent of a passive participle — instrumental, not nominative
+    - term: तृतीया
+      en: instrumental
+  - form: त्यक्तानि
+    lemma: त्यज्
+    gloss: were left
+    notes:
+    - term: निष्ठा
+      en: past passive participle, neuter plural agreeing with मित्राणि
+    - term: कर्मन्
+      en: what is left stands nominative — no finite verb needed
+  - form: नगरम्
+    lemma: नगर
+    gloss: the city
+    notes:
+    - term: कर्मन्
+      en: nominative under the participle
+    - term: प्रथमा
+      en: neuter nominative
+  - form: त्यक्तम्
+    lemma: त्यज्
+    gloss: was left
+    notes:
+    - term: निष्ठा
+      en: the same participle, now singular for a single city
+  vyakhya: मा गच्छ इति उक्तम्, तथापि सः अगच्छत्। तेन मित्राणि त्यक्तानि।
+  vyakhya_en: |
+    The last sentence has no finite verb in it. त्यक्तानि and त्यक्तम् are
+    participles, and they carry the whole statement — the friends left, the
+    city left, and तेन telling you by whom.
+
+    Classical Sanskrit prefers this to a past-tense verb, which is why so much
+    narrative reads as a chain of participles with the agent in the
+    instrumental. Once मित्राणि त्यक्तानि stops needing to be translated as a
+    passive, it starts reading as ordinary past narration.
+
 - id: ex196
   kind: graded
   segment: 420
