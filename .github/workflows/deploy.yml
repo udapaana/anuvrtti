@@ -25,6 +25,14 @@ jobs:
           node-version: "20"
           cache: "npm"
 
+      # The build scripts run under Bun (it executes TypeScript natively, so the
+      # `npx tsx` wrapper they used to need is gone). CI only had Node, which
+      # would fail at the first `bun scripts/...` in `npm run build`.
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
       - name: Install dependencies
         run: npm ci
 
