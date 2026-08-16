@@ -13,8 +13,8 @@ export interface WordEntry {
   gloss: string;            // Telugu gloss (primary)
   englishGloss: string;     // English gloss
   tag: string | null;       // e.g. "p.p. e.v. laṭ"
-  lessonId: string;         // e.g. "balabodhini-1-05"
-  lessonNum: number;        // extracted lesson number for range filtering
+  lessonId: string;         // e.g. "balabodhini-1-05", or "reader:ex042"
+  lessonNum: number;        // lesson number for range filtering; 0 for reader words
   // SRS
   interval: number;         // days (0 = new)
   dueDate: string | null;   // ISO date string
@@ -92,6 +92,39 @@ function createWordBank() {
         };
         return { words, lessonIndex };
       });
+    },
+
+    /**
+     * Bank one word from anywhere — the reader's rail, a paradigm, a passage.
+     * addWordsFromLesson only ingests bālabodhinī lesson TOML, so words met
+     * while reading had no way into the deck. Same SRS fields, same idempotence.
+     */
+    addWord(w: { id: string; display: string; iast?: string | null; gloss?: string;
+                 englishGloss?: string; tag?: string | null; sourceId: string }) {
+      update(state => {
+        if (state.words.some(x => x.id === w.id)) return state;
+        return { ...state, words: [...state.words, {
+          id: w.id, display: w.display, iast: w.iast ?? null,
+          gloss: w.gloss ?? w.englishGloss ?? '', englishGloss: w.englishGloss ?? '',
+          tag: w.tag ?? null, lessonId: w.sourceId, lessonNum: 0,
+          interval: 0, dueDate: null, streak: 0,
+        }] };
+      });
+    },
+
+    /** Is this word already banked? */
+    has(id: string): boolean {
+      let state: WordBankState = defaultState;
+      subscribe(s => { state = s; })();
+      return state.words.some(w => w.id === id);
+    },
+
+    /** Every word due today, whatever its source. */
+    getDue(): WordEntry[] {
+      let state: WordBankState = defaultState;
+      subscribe(s => { state = s; })();
+      const today = new Date().toISOString().slice(0, 10);
+      return state.words.filter(w => w.dueDate === null || w.dueDate <= today);
     },
 
     /** Record a review result. knew=true advances interval, knew=false resets. */

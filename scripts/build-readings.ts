@@ -64,6 +64,51 @@ function lengthOf(r: any): 'short' | 'passage' | 'long' {
   return 'long';
 }
 
+/**
+ * Quiz data for the reader's rail: tapping a word asks what it is before
+ * showing the gloss.
+ *
+ * Derived rather than authored. The answer is already in the word's `term`
+ * tags — a विभक्ति name or a लकार name — and the distractors are the other
+ * members of that same closed set. 1,418 of ~2,000 words carry one; the rest
+ * (indeclinables, compounds, bare stems) get no question and the rail shows
+ * their gloss directly.
+ *
+ * Distractors are picked deterministically from the word's own form so the
+ * options do not reshuffle on every rebuild, which would make the corpus diff
+ * churn for no reason.
+ */
+const VIBHAKTI = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
+const LAKARA = ['लट्', 'लङ्', 'लिट्', 'लृट्', 'लोट्', 'विधिलिङ्', 'लुङ्'];
+
+function hash(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+
+function quizFor(word: any): { q: string; opts: string[]; ans: string } | null {
+  const terms: string[] = (word.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term);
+  const vib = terms.find((t) => VIBHAKTI.includes(t));
+  const lak = terms.find((t) => LAKARA.includes(t));
+  const [ans, pool, q] = vib
+    ? [vib, VIBHAKTI, 'Which विभक्ति?']
+    : lak
+      ? [lak, LAKARA, 'Which लकार?']
+      : [null, [], ''];
+  if (!ans) return null;
+
+  const others = pool.filter((x) => x !== ans);
+  const seed = hash(String(word.form ?? '') + ans);
+  const picks: string[] = [];
+  for (let i = 0; i < 3 && others.length; i++) {
+    picks.push(others.splice((seed + i * 7) % others.length, 1)[0]);
+  }
+  // Options in canonical order, not answer-first — otherwise position gives it away.
+  const opts = [ans, ...picks].sort((a, b) => pool.indexOf(a) - pool.indexOf(b));
+  return { q, opts, ans };
+}
+
 function main() {
   const titles = chapterTitles();
   const chapters: any[] = [];
@@ -101,7 +146,13 @@ function main() {
     const stem = file.replace(/\.yaml$/, ''); // '01_karaka'
     const key = stem.includes('_') ? stem.slice(stem.indexOf('_') + 1) : stem; // 'karaka'
     chapters.push({ id: key, title: titles[key] ?? key, readings });
-    for (const r of readings) flat.push({ ...r, chapter: key, length: lengthOf(r) });
+    for (const r of readings) {
+      for (const w of r.words ?? []) {
+        const quiz = quizFor(w);
+        if (quiz) w.quiz = quiz;
+      }
+      flat.push({ ...r, chapter: key, length: lengthOf(r) });
+    }
   }
 
   // reader view: DIFFICULTY order by `segment` alone — never by length.

@@ -2,6 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { goto } from '$app/navigation';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import { wordBank } from '$lib/stores/wordBank';
 
   import { toParadigm } from '$lib/reader/paradigm';
   // Graded reader — the design's redesign: a chapter spine (left), interlinear
@@ -20,6 +21,18 @@
 
   let page = $state(0);
   let focusedId = $state<string | null>(null);
+
+  // ── the design's reader model ──────────────────────────────────────────
+  // Three reading modes, and a rail that shows ONE word at a time behind a
+  // quiz gate: tap a word, name its विभक्ति or लकार, then the gloss, the tags
+  // and the sūtras follow. The always-open list the rail used to show gave the
+  // answer away before the reader had tried.
+  type Mode = 'recall' | 'split' | 'gloss';
+  let mode = $state<Mode>('recall');
+  let sel = $state<{ id: string; wi: number } | null>(null);
+  let pick = $state<string | null>(null);
+  let checked = $state<Set<string>>(new Set());
+  let showTr = $state(false);
   let hoverEx = $state<string | null>(null);
   let hoverWi = $state<number | null>(null);
 
@@ -265,21 +278,66 @@
   // the scroll-focused reading — so hovering a lower card swaps the machinery to
   // that card instead of leaving the top one showing.
   const railReading = $derived.by(() => {
-    const id = hoverEx ?? focused?.id;
-    return (id && slice.find((r) => r.id === id)) || focused;
+    return list.find((r) => r.id === (focusedId ?? slice[0]?.id)) ?? slice[0] ?? null;
   });
-  const rail = $derived.by(() => {
-    const r = railReading;
-    if (!r) return null;
-    const words = (r.words || []).map((w: any, wi: number) => {
-      const terms = (w.notes || []).filter((nt: any) => nt.term).map((nt: any) => ({ term: nt.term, en: nt.en || '' }));
-      const deriv = (w.notes || [])
-        .filter((nt: any) => nt.cite || nt.text)
-        .map((nt: any) => (nt.cite ? { cite: nt.cite, role: nt.role || '' } : { text: nt.text }));
-      return { wi, form: w.form, gloss: w.gloss || '', terms, deriv, empty: terms.length === 0 && deriv.length === 0 };
+
+  // The one word the rail is showing, if any.
+  const selWord = $derived.by(() => {
+    if (!sel) return null;
+    const r = list.find((x) => x.id === sel.id);
+    const w = r?.words?.[sel.wi];
+    if (!r || !w) return null;
+    const terms = (w.notes ?? []).filter((n: any) => n.term).map((n: any) => ({ term: n.term, en: n.en ?? '' }));
+    const cites = (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => ({ cite: n.cite, role: n.role ?? '' }));
+    return { id: r.id, wi: sel.wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quiz: w.quiz ?? null, terms, cites };
+  });
+
+  const asking = $derived(!!selWord?.quiz && pick === null);
+  const answered = $derived(!!selWord && (pick !== null || !selWord.quiz));
+
+  const verdict = $derived.by(() => {
+    const w = selWord;
+    if (!w?.quiz || pick === null) return null;
+    if (pick === '—') return { text: 'shown: ' + w.quiz.ans, ink: '#a99e8b' };
+    return pick === w.quiz.ans
+      ? { text: '\u2713 ' + w.quiz.ans, ink: '#2f8a5b' }
+      : { text: '\u2717 you said ' + pick + ' \u00b7 it is ' + w.quiz.ans, ink: '#c2410c' };
+  });
+
+  function pickOption(o: string) {
+    pick = o;
+    if (selWord) checked = new Set([...checked, selWord.id + ':' + selWord.wi]);
+  }
+
+  function selectWord(id: string, wi: number) {
+    if (sel && sel.id === id && sel.wi === wi) { sel = null; pick = null; return; }
+    sel = { id, wi };
+    pick = null;
+  }
+
+  // Deck banking — the last step of examining a word, per the design.
+  let deckCount = $state(0);
+  let inDeck = $state(false);
+  wordBank.subscribe(() => {
+    deckCount = wordBank.getDue().length;
+    inDeck = selWord ? wordBank.has('rdr:' + selWord.form) : false;
+  });
+  $effect(() => {
+    inDeck = selWord ? wordBank.has('rdr:' + selWord.form) : false;
+  });
+  function bankWord() {
+    const w = selWord;
+    if (!w) return;
+    wordBank.addWord({
+      id: 'rdr:' + w.form,
+      display: w.form,
+      iast: null,
+      englishGloss: w.gloss,
+      tag: w.terms.map((t: any) => t.term).join(' '),
+      sourceId: 'reader:' + w.id
     });
-    return { id: r.id, teaches: r.teaches || '', words };
-  });
+    inDeck = true;
+  }
 
   // ── interaction ─────────────────────────────────────────────────────────────
   // hoverEx = which reading the pointer is over (drives the rail subject);
@@ -450,6 +508,12 @@
           <div class="bigtitle"><Sanskrit text="संस्कृतपठनम्" source="devanagari" /></div>
           <div class="bigsub">Sanskrit, learned by reading — every word traced to the Aṣṭādhyāyī.</div>
         </div>
+        <div class="modes">
+          <span class="modelabel">mode</span>
+          {#each [{ k: 'recall', label: 'recall' }, { k: 'split', label: 'padaccheda' }, { k: 'gloss', label: 'glossed' }] as m}
+            <button class="modepill" class:on={mode === m.k} onclick={() => (mode = m.k as Mode)}>{m.label}</button>
+          {/each}
+        </div>
         <div class="kbdhint"><kbd>↑</kbd><kbd>↓</kbd> step through readings</div>
       </div>
 
@@ -523,11 +587,19 @@
                         role="presentation"
                         onmouseenter={() => enterWord(row.id, tok.wi)}
                         onmouseleave={leaveWord}
+                        onclick={() => selectWord(row.id, tok.wi)}
                       >
-                        <span class="tokform"><Sanskrit text={tok.text} source="devanagari" /></span>
-                        <!-- gloss shows for focal (new) words always, and for known
-                             words only when hovered — recall-first, reveal-on-tap -->
-                        <span class="tokgloss" class:reveal={tok.focal || hl(row.id, tok.wi)}>{tok.gloss}</span>
+                        <span class="tokform" class:sel={sel?.id === row.id && sel?.wi === tok.wi}
+                          ><Sanskrit text={tok.text} source="devanagari" /></span
+                        >
+                        <!-- In `gloss` mode every gloss is shown for checking; in
+                             `recall` only the selected word's, so the reader tries
+                             first. Selection is what opens the rail. -->
+                        <span
+                          class="tokgloss"
+                          class:reveal={mode === 'gloss' || (sel?.id === row.id && sel?.wi === tok.wi)}
+                          >{tok.gloss}</span
+                        >
                       </span>
                     {:else}
                       <span class="token">
@@ -566,47 +638,72 @@
         <!-- RIGHT: the machinery -->
         <aside class="rail">
           <div class="raillabel">in the <span class="accent">अष्टाध्यायी</span></div>
-          {#if rail}
-            <div class="railbox">
-              <div class="railteaches">{rail.teaches}</div>
-              {#each rail.words as g}
-                <div
-                  class="railword"
-                  class:hot={hl(rail.id, g.wi)}
-                  role="presentation"
-                  onmouseenter={() => enterWord(rail.id, g.wi)}
-                  onmouseleave={leaveWord}
-                >
-                  <div class="railform">
-                    <Sanskrit text={g.form} source="devanagari" /> <span class="railgloss">{g.gloss}</span>
-                  </div>
-                  {#if g.terms.length}
-                    <div class="railterms">
-                      {#each g.terms as t}
-                        <span class="term">
-                          <span class="termdev"><Sanskrit text={t.term} source="devanagari" /></span>
-                          <span class="termen">{t.en}</span>
-                        </span>
-                      {/each}
-                    </div>
-                  {/if}
-                  {#each g.deriv as s}
-                    {#if s.cite}
-                      <button class="derivrow" onclick={() => goto('/ref/' + s.cite)}>
-                        <span class="derivcite">{s.cite}</span>
-                        <span class="derivrole">{s.role}</span>
-                      </button>
-                    {:else if s.text}
-                      <div class="derivtext"><Sanskrit text={s.text} source="devanagari" /></div>
-                    {/if}
+
+          {#if !selWord}
+            <div class="railempty">
+              Tap a word to see how it is formed. You are asked to name its case
+              or lakāra first; the gloss and the sūtras follow.
+            </div>
+          {:else}
+            <div class="railcard">
+              <div class="railhead">
+                <span class="railform"><Sanskrit text={selWord.form} source="devanagari" /></span>
+                {#if selWord.lemma}<span class="railstem">{selWord.lemma}</span>{/if}
+              </div>
+
+              {#if asking && selWord.quiz}
+                <div class="railq">{selWord.quiz.q}</div>
+                <div class="railopts">
+                  {#each selWord.quiz.opts as o}
+                    <button class="opt" onclick={() => pickOption(o)}>
+                      <Sanskrit text={o} source="devanagari" />
+                    </button>
                   {/each}
-                  {#if g.empty}
-                    <div class="noderiv">— no rule cited —</div>
-                  {/if}
                 </div>
-              {/each}
+                <button class="skip" onclick={() => pickOption('—')}>
+                  I am not sure — show the answer
+                </button>
+              {/if}
+
+              {#if answered}
+                {#if verdict}
+                  <div class="verdict" style="color:{verdict.ink}">{verdict.text}</div>
+                {/if}
+                <div class="railgloss">{selWord.gloss}</div>
+
+                {#if selWord.terms.length}
+                  <div class="railterms">
+                    {#each selWord.terms as t}
+                      <span class="term">
+                        <span class="termdev"><Sanskrit text={t.term} source="devanagari" /></span>
+                        <span class="termen">{t.en}</span>
+                      </span>
+                    {/each}
+                  </div>
+                {/if}
+
+                {#if selWord.cites.length}
+                  <div class="railcites">
+                    {#each selWord.cites as c}
+                      <button class="derivrow" onclick={() => goto('/ref/' + c.cite)}>
+                        <span class="derivcite">{c.cite}</span>
+                        <span class="derivrole">{c.role}</span>
+                      </button>
+                    {/each}
+                  </div>
+                {/if}
+
+                <button class="bank" class:has={inDeck} onclick={bankWord} disabled={inDeck}>
+                  {inDeck ? 'in your deck' : '+ keep for review'}
+                </button>
+              {/if}
             </div>
           {/if}
+
+          <div class="railstats">
+            <div>this session · {checked.size} {checked.size === 1 ? 'word' : 'words'} checked</div>
+            <div>in your deck · {deckCount}</div>
+          </div>
         </aside>
       </div>
     </div>
@@ -652,6 +749,93 @@
   }
   .bigtitle { font-size: 1.85rem; font-weight: 600; line-height: 1.1; }
   .bigsub { font-size: 1rem; color: #6b6b6b; font-style: italic; margin-top: 0.2rem; }
+  /* Mode pills — the design's 999px pill, accent fill when active. */
+  .modes { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .modelabel {
+    font-family: ui-monospace, monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-right: 0.2rem;
+  }
+  .modepill {
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid #e7e2d9;
+    background: #fff;
+    color: #6b6b6b;
+    cursor: pointer;
+  }
+  .modepill.on { background: #fdecd9; border-color: #f4c98b; color: #92591f; }
+
+  /* Rail card — #faf7f0 on #efe7d8 at 13px, per the design. */
+  .railempty,
+  .railcard {
+    background: #faf7f0;
+    border: 1px solid #efe7d8;
+    border-radius: 13px;
+  }
+  .railempty { padding: 1.4rem 1.1rem; font-size: 0.92rem; color: #6b6b6b; font-style: italic; line-height: 1.5; }
+  .railcard { padding: 1rem; }
+  .railhead { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+  .railform { font-size: 1.5rem; color: #0f1419; }
+  .railstem { font-family: ui-monospace, monospace; font-size: 0.7rem; color: #b08d57; }
+  .railq { font-size: 0.85rem; color: #6b6b6b; font-style: italic; margin: 0.7rem 0 0.6rem; }
+  .railopts { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .opt {
+    font-size: 0.95rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid #e7e2d9;
+    background: #fff;
+    color: #0f1419;
+    cursor: pointer;
+  }
+  .opt:hover { border-color: #cbb994; }
+  .skip {
+    font-family: ui-monospace, monospace;
+    font-size: 0.66rem;
+    margin-top: 0.7rem;
+    background: none;
+    border: none;
+    color: #a99e8b;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+  }
+  .verdict {
+    font-family: ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    margin: 0.7rem 0 0.5rem;
+  }
+  .railgloss { font-size: 0.95rem; color: #463f33; font-style: italic; margin-bottom: 0.6rem; }
+  .railcites { border-top: 1px solid #e7e2d9; padding-top: 0.7rem; margin-top: 0.2rem; }
+  .bank {
+    width: 100%;
+    margin-top: 0.85rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    padding: 0.42rem;
+    border-radius: 9px;
+    border: 1px solid #f4c98b;
+    background: #fff;
+    color: #92591f;
+    cursor: pointer;
+  }
+  .bank.has { border-color: #e7e2d9; background: #f6f1e7; color: #a99e8b; cursor: default; }
+  .railstats {
+    margin-top: 1rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.66rem;
+    color: #a99e8b;
+    line-height: 1.7;
+  }
+  .tokform.sel { background: #fde7c8; border-radius: 5px; }
+
   .kbdhint {
     display: flex;
     align-items: center;
