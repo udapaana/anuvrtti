@@ -115,7 +115,7 @@ interface TinantaArgs {
   prayoga: Prayoga;
   purusha: Purusha;
   vacana: Vacana;
-  pada?: string;
+  pada?: string | null;
 }
 
 interface SubantaArgs {
