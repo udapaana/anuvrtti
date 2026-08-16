@@ -23,6 +23,12 @@
  * the number as the backlog is worked off.
  */
 const GLOSS_BASELINE = 48;
+/**
+ * Ceiling on how much of a late attested reading is revealed without asking.
+ * Set just above the current 42% so the number cannot quietly climb back;
+ * lower it as the glossing is thinned further.
+ */
+const REVEAL_CEILING = 45;
 
 async function run(cmd: string[]): Promise<string> {
   const p = Bun.spawn(cmd, { stdout: 'pipe', stderr: 'pipe' });
@@ -67,6 +73,32 @@ if (violations) {
 
 const taught = ledger.match(/taught\s+(\d+) \/ (\d+)/);
 if (taught) console.log(`  · coverage: ${taught[1]}/${taught[2]} load-bearing rules taught`);
+
+// 2b. reveal density — how much of the corpus the reader must recall vs is shown.
+// A `cite` forces a word's gloss open; a bare `term` leaves it collapsed until
+// asked. So this measures how much practice the reader actually gets, and it
+// drifted to 52% in the late attested readings — the real Sanskrit, where
+// trying unaided matters most — before anyone looked.
+{
+  const data = JSON.parse(await Bun.file('static/data/readings.json').text());
+  const band = (rs: any[]) => {
+    let tok = 0, focal = 0;
+    for (const r of rs) {
+      tok += String(r.sentence ?? '').replace(/[।॥,;—"“”?!]/g, ' ').split(/\s+/).filter(Boolean).length;
+      focal += (r.words ?? []).filter((w: any) => (w.notes ?? []).some((n: any) => n.cite)).length;
+    }
+    return tok ? Math.round((100 * focal) / tok) : 0;
+  };
+  const all = band(data.sequence);
+  const lateAttested = band(data.sequence.filter((r: any) => r.kind === 'attested' && (r.segment ?? 0) >= 350));
+  console.log(`  · revealed: ${all}% of the corpus shown by default, ${lateAttested}% in late attested`);
+  if (lateAttested > REVEAL_CEILING) {
+    problems.push(
+      `late attested readings reveal ${lateAttested}% of tokens by default (ceiling ${REVEAL_CEILING}%) — ` +
+        `citing an already-taught rule on every instance forces the gloss open and denies the reader the attempt`
+    );
+  }
+}
 
 // 3. register — soft
 const reg = await run(['bun', 'scripts/check-register.ts']);
