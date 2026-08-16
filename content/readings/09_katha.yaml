@@ -17,6 +17,407 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex195
+  kind: graded
+  segment: 400
+  source:
+    text: पञ्चतन्त्र (our graded retelling)
+    ref: "Pañcatantra I — सिंहः शशकः च, the closing"
+    curated: our simple Sanskrit telling of the well-known episode; NOT the verbatim text
+  sentence: शशकः सिंहम् एकम् कूपम् अनयत्। "अत्र सः शत्रुः वसति" इति सः अवदत्। सिंहः कूपम् अपश्यत्। जले तस्य एव प्रतिबिम्बम् आसीत्, किन्तु सः तत् अन्यम् सिंहम् अमन्यत। क्रुद्धः सः गर्जितुम् आरभत। कूपात् प्रतिशब्दः श्रूयते स्म। तेन सः अतीव अक्रुध्यत्। "अहम् एनम् हनिष्यामि" इति उक्त्वा सः कूपे अपतत्। तत्र मग्नः सिंहः अम्रियत। एवम् बुद्ध्या शशकः सर्वान् मृगान् अरक्षत्। बलम् बुद्धिः च — तयोः बुद्धिः एव श्रेष्ठा।
+  translation: The rabbit led the lion to a well. "Your enemy lives here," he said. The lion looked into the well. In the water was his own reflection, but he took it for another lion. Enraged, he began to roar. An echo was heard from the well. At that he grew still angrier. Saying "I will kill him," he leapt into the well. Sunk there, the lion died. Thus by his wit the rabbit saved all the beasts. Strength and intelligence — of the two, intelligence is the better.
+  teaches: |
+    the closing of the सिंह-शशक story, and the widest tense range in the corpus:
+    अनयत् and अपश्यत् and अपतत् carrying the narrative, आसीत् for the standing
+    state, श्रूयते as a passive, हनिष्यामि as the lion's future boast, आरभत in
+    the आत्मनेपद. गर्जितुम् is an infinitive under आरभ्, उक्त्वा a gerund,
+    मग्नः a past participle, and बलम् बुद्धिः च a द्वन्द्व resolved by the last
+    line into a comparison.
+  words:
+  - form: शशकः
+    lemma: शशक
+    gloss: the rabbit
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: सिंहम्
+    lemma: सिंह
+    gloss: the lion
+    notes:
+    - term: कर्मन्
+      en: object — what the leading reaches
+    - term: द्वितीया
+      en: accusative
+    - cite: "1.4.49"
+      role: कर्तुरीप्सिततमं कर्म — what the agent most aims at is कर्मन् → सिंहम्
+  - form: सिंहः
+    lemma: सिंह
+    gloss: the lion
+    notes:
+    - term: कर्तृ
+      en: agent — the same animal as सिंहम् above, now acting
+    - term: प्रथमा
+      en: nominative
+  - form: एकम्
+    lemma: एक
+    gloss: a certain
+    notes:
+    - term: द्वितीया
+      en: accusative, agreeing with कूपम्
+  - form: कूपम्
+    lemma: कूप
+    gloss: to a well
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: goal of the leading
+    - term: द्वितीया
+      en: accusative
+  - form: अनयत्
+    lemma: नी
+    gloss: led
+    notes:
+    - term: लङ्
+      en: past — the augment अ, and नी takes गुण → नय्
+    - term: गुण
+      en: नी → ने → नय् before शप्
+  - form: अत्र
+    lemma: अत्र
+    gloss: here
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: सः
+    lemma: तद्
+    gloss: he, that
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: शत्रुः
+    lemma: शत्रु
+    gloss: enemy
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — a उ-stem masculine
+  - form: वसति
+    lemma: वस्
+    gloss: lives
+    notes:
+    - term: शप्
+      en: वस् + अ + ति
+    - term: लट्
+      en: present — inside the quotation, so present rather than past
+  - form: इति
+    lemma: इति
+    gloss: "thus"
+    notes:
+    - term: अव्यय
+      en: closes the quotation
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: अपश्यत्
+    lemma: दृश्
+    gloss: looked at
+    notes:
+    - term: लङ्
+      en: past — दृश् appears as पश्य्
+  - form: जले
+    lemma: जल
+    gloss: in the water
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: षष्ठी
+      en: genitive
+  - form: एव
+    lemma: एव
+    gloss: very, own
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: emphatic — "his OWN reflection"
+  - form: प्रतिबिम्बम्
+    lemma: प्रतिबिम्ब
+    gloss: reflection
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative
+    - cite: "7.1.24"
+      role: अतोऽम् — the neuter a-stem takes अम् in प्रथमा/द्वितीया → प्रतिबिम्बम्
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of अस् — a standing state, against the narrative verbs around it
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तत्
+    lemma: तद्
+    gloss: it
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: neuter accusative
+  - form: अन्यम्
+    lemma: अन्य
+    gloss: another
+    vocab: true
+    notes:
+    - term: द्वितीया
+      en: accusative, agreeing with सिंहम्
+  - form: अमन्यत
+    lemma: मन्
+    gloss: took (it for)
+    notes:
+    - term: आत्मनेपद
+      en: मन् is आत्मनेपदी — the ending is त, not त्
+    - cite: "1.4.100"
+      role: तङानावात्मनेपदम् — the तङ् set is आत्मनेपद → अमन्यत
+  - form: क्रुद्धः
+    lemma: क्रुध्
+    gloss: enraged
+    notes:
+    - term: निष्ठा
+      en: past participle used as an adjective of the agent
+  - form: गर्जितुम्
+    lemma: गर्ज्
+    gloss: to roar
+    vocab: true
+    notes:
+    - term: तुमुन्
+      en: the infinitive — what he began
+    - cite: "3.3.10"
+      role: तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम् — the infinitive → गर्जितुम्
+  - form: आरभत
+    lemma: रभ्
+    gloss: began
+    notes:
+    - term: आत्मनेपद
+      en: आ + रभ् takes the middle — आरभत, not आरभत्
+  - form: कूपात्
+    lemma: कूप
+    gloss: from the well
+    notes:
+    - term: अपादान
+      en: source — where the sound came from
+    - term: पञ्चमी
+      en: ablative
+  - form: प्रतिशब्दः
+    lemma: प्रतिशब्द
+    gloss: an echo
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: what is heard — the passive makes it the nominative subject
+    - term: प्रथमा
+      en: nominative
+  - form: श्रूयते
+    lemma: श्रु
+    gloss: was heard
+    notes:
+    - term: यक्
+      en: the passive विकरण — श्रु + य + ते
+    - cite: "3.1.67"
+      role: सार्वधातुके यक् — यक् in the passive → श्रूयते
+    - cite: "1.3.13"
+      role: भावकर्मणोः — the passive takes आत्मनेपद endings → ते
+  - form: स्म
+    lemma: स्म
+    gloss: (past marker)
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: with a present verb, स्म makes it narrative past
+  - form: तेन
+    lemma: तद्
+    gloss: at that
+    notes:
+    - term: हेतु
+      en: cause — the तृतीया of motive
+    - term: तृतीया
+      en: instrumental
+  - form: अतीव
+    lemma: अतीव
+    gloss: exceedingly
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अक्रुध्यत्
+    lemma: क्रुध्
+    gloss: grew angry
+    notes:
+    - term: लङ्
+      en: past — क्रुध् is दिवादि, so श्यन् not शप्; the vowel stays weak
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: उत्तमपुरुष
+      en: the speaker
+  - form: एनम्
+    lemma: एतद्
+    gloss: him
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative — the enclitic form of एतद्
+  - form: हनिष्यामि
+    lemma: हन्
+    gloss: I will kill
+    notes:
+    - term: लृट्
+      en: the future — the lion's boast, in the first person
+    - cite: "3.3.13"
+      role: लृट् शेषे च — लृट् for the future → हनिष्यामि
+  - form: उक्त्वा
+    lemma: वच्
+    gloss: having said
+    notes:
+    - term: क्त्वा
+      en: gerund — the saying precedes the leaping
+    - cite: "3.4.21"
+      role: समानकर्तृकयोः पूर्वकाले — क्त्वा for the earlier of two acts → उक्त्वा
+  - form: कूपे
+    lemma: कूप
+    gloss: into the well
+    notes:
+    - term: अधिकरण
+      en: locus — where the falling ends
+    - term: सप्तमी
+      en: locative
+  - form: अपतत्
+    lemma: पत्
+    gloss: fell, leapt
+    notes:
+    - term: लङ्
+      en: past
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: मग्नः
+    lemma: मस्ज्
+    gloss: sunk
+    notes:
+    - term: निष्ठा
+      en: past participle — the state he was in, not an action he did
+  - form: अम्रियत
+    lemma: मृ
+    gloss: died
+    notes:
+    - term: आत्मनेपद
+      en: मृ takes the middle — a third आत्मनेपद verb in this passage
+  - form: एवम्
+    lemma: एवम्
+    gloss: thus
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: बुद्ध्या
+    lemma: बुद्धि
+    gloss: by his wit
+    notes:
+    - term: करण
+      en: instrument — what the saving was done by
+    - term: तृतीया
+      en: instrumental — इ-stem, बुद्धि → बुद्ध्या with यण्
+    - cite: "6.1.77"
+      role: इको यणचि — इ before a vowel becomes य् → बुद्ध्या
+  - form: सर्वान्
+    lemma: सर्व
+    gloss: all
+    notes:
+    - term: द्वितीया
+      en: accusative plural
+    - cite: "6.1.103"
+      role: तस्माच्छसो नः पुंसि — the masculine accusative plural → सर्वान्
+  - form: मृगान्
+    lemma: मृग
+    gloss: the beasts
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative plural
+  - form: अरक्षत्
+    lemma: रक्ष्
+    gloss: saved
+    notes:
+    - term: लङ्
+      en: past
+  - form: बलम्
+    lemma: बल
+    gloss: strength
+    notes:
+    - term: द्वन्द्व
+      en: joined with बुद्धिः by च — two things counted together
+    - term: प्रथमा
+      en: neuter nominative
+  - form: बुद्धिः
+    lemma: बुद्धि
+    gloss: intelligence
+    notes:
+    - term: प्रथमा
+      en: nominative
+    - cite: "2.2.29"
+      role: चार्थे द्वन्द्वः — the coordinate pair बलम् बुद्धिः च
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तयोः
+    lemma: तद्
+    gloss: of the two
+    notes:
+    - term: षष्ठी
+      en: genitive dual — the निर्धारण, selecting from a pair
+  - form: श्रेष्ठा
+    lemma: श्रेष्ठ
+    gloss: the better
+    notes:
+    - term: प्रथमा
+      en: nominative feminine, agreeing with बुद्धिः
+    - cite: "5.3.55"
+      role: अतिशायने तमबिष्ठनौ — the superlative इष्ठन् → श्रेष्ठ
+  vyakhya: बलवान् सिंहः मृतः, बुद्धिमान् शशकः जीवति। न बलेन, बुद्ध्या जयः।
+  vyakhya_en: |
+    The lion never sees another lion. He sees himself and cannot tell, and the
+    echo he answers is his own voice returning. The story spends its whole
+    length on that one joke, and the last line names it: बलम् बुद्धिः च, and
+    of the two, बुद्धिः.
+
+    Nine finite verbs here and eight of them are past — अनयत्, अपश्यत्,
+    अमन्यत, अक्रुध्यत्, अपतत्, अम्रियत, अरक्षत्, आसीत्. Against them stand
+    वसति and श्रूयते inside quoted or reported speech, where the present holds,
+    and हनिष्यामि, the only future in the passage: the one thing the lion
+    intends and does not accomplish.
 
 - id: ex095
   kind: graded
