@@ -1,15 +1,28 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { displayScript } from '$lib/stores/preferences';
+  import { wordBank } from '$lib/stores/wordBank';
   import type { Script } from '$lib/transliteration';
 
-  // The app's persistent three-pillar chrome: wordmark · पठनम् / बालबोधिनी / सूत्र
+  // The app's persistent chrome: wordmark · पठनम् / बालबोधिनी / अभ्यासः / सूत्र
   // · script switcher. Promoted from the reader page to global layout so the
   // whole app shares one navigation, not per-page duplicates.
+  //
+  // अभ्यासः was missing although /review and the whole wordBank SRS already
+  // existed — words could be banked from the primer and then never surfaced,
+  // because nothing in the chrome pointed at the place they were reviewed.
   let { progress = null }: { progress?: number | null } = $props();
 
   let script = $state<Script>('iast');
   displayScript.subscribe((s) => (script = s));
+
+  // Due-card count for the अभ्यासः badge. Derived from the store so it tracks
+  // reviews as they happen; 0 renders nothing rather than a bare "0".
+  let due = $state(0);
+  wordBank.subscribe(() => {
+    const max = wordBank.getMaxLesson();
+    due = max ? wordBank.getDueInRange(0, max).length : 0;
+  });
 
   const path = $derived($page.url.pathname);
   function on(prefix: string): boolean {
@@ -24,6 +37,9 @@
     <nav class="pillars">
       <a class:on={on('/reader')} href="/reader">पठनम् <span class="en">reader</span></a>
       <a class:on={on('/balabodhini')} href="/balabodhini">बालबोधिनी <span class="en">primer</span></a>
+      <a class:on={on('/review')} href="/review"
+        >अभ्यासः <span class="en">review</span>{#if due}<span class="badge"> · {due}</span>{/if}</a
+      >
       <a class:on={on('/ref')} href="/ref">सूत्र <span class="en">reference</span></a>
     </nav>
 
@@ -81,6 +97,9 @@
   .pillars a:hover { color: #0f1419; }
   .pillars a.on { color: #0f1419; border-bottom-color: #f97316; }
   .pillars .en { color: inherit; opacity: 0.7; }
+  /* Due count stays accent-coloured even on inactive pillars — it is the one
+     piece of chrome that should pull the eye when there is work waiting. */
+  .pillars .badge { color: #f97316; font-size: 0.66rem; opacity: 1; }
 
   .right { display: flex; align-items: center; gap: 0.9rem; flex: none; }
   .pills { display: flex; background: #f1eadc; border-radius: 999px; padding: 3px; gap: 1px; }
@@ -113,5 +132,6 @@
     .inner { flex-wrap: wrap; gap: 0.8rem 1rem; padding: 0.6rem 1rem; }
     .pillars { order: 3; flex-basis: 100%; gap: 1.1rem; }
     .pillars .en { display: none; }
+    .pillars .badge { display: inline; }
   }
 </style>
