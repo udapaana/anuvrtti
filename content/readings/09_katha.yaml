@@ -17,6 +17,315 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex204
+  kind: graded
+  segment: 500
+  source:
+    text: कथा (our graded retelling)
+    ref: "the potter and the king's brother — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: ग्रामे कुलालः वसन् घटान् अकरोत्। एकदा राज्ञः भ्राता तम् ग्रामम् आगच्छत्। कुलालम् कार्यम् कुर्वन्तम् दृष्ट्वा सः अवदत् — मम गृहे शतम् घटाः स्थापनीयाः। कुलालः अवदत् — कर्तव्यम् एतत्, किन्तु मूल्यम् दातव्यम्। भ्राता हसन् अवदत् — पिता मे राजा आसीत्, अहम् न मूल्यम् ददामि। कुलालः अवदत् — तर्हि घटाः न सन्ति। तत् श्रुत्वा भ्राता लज्जितः अभवत्।
+  translation: In a village a potter lived, making pots. One day the king's brother came to that village. Seeing the potter doing his work, he said — "A hundred pots are to be placed in my house." The potter said — "This is to be done, but the price is to be given." The brother, laughing, said — "My father was a king; I do not give a price." The potter said — "Then there are no pots." Having heard that, the brother was ashamed.
+  teaches: |
+    a potter refuses a prince. Four participles and three gerundives against
+    six finite verbs; पिता and भ्राता carry their ऋ-stem grades through it.
+  words:
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in a village
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: कुलालः
+    lemma: कुलाल
+    gloss: a potter
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वसन्
+    lemma: वस्
+    gloss: living
+    notes:
+    - term: शतृ
+      en: present participle — living, while making
+    - cite: "3.2.124"
+      role: लटः शतृशानचौ — शतृ replaces लट् → वसन्
+  - form: घटान्
+    lemma: घट
+    gloss: pots
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative plural
+  - form: अकरोत्
+    lemma: कृ
+    gloss: made
+    notes:
+    - term: लङ्
+      en: past — कृ is तनादि, taking उ rather than शप्
+  - form: एकदा
+    lemma: एकदा
+    gloss: one day
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: the king's
+    notes:
+    - term: षष्ठी
+      en: the weak stem — the अ drops before a vowel ending
+    - cite: "8.2.7"
+      role: नलोपः प्रातिपदिकान्तस्य — the stem-final न् is gone → राज्ञ्
+  - form: भ्राता
+    lemma: भ्रातृ
+    gloss: brother
+    notes:
+    - term: सर्वनामस्थान
+      en: strong nom.sg — the ऋ lengthens to आ
+    - cite: "7.3.110"
+      role: ऋतो ङिसर्वनामस्थानयोः — गुण of the ऋ-stem in the strong cases → भ्राता
+  - form: तम्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: द्वितीया
+      en: accusative, agreeing with ग्रामम्
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: आगच्छत्
+    lemma: गम्
+    gloss: came
+    notes:
+    - term: लङ्
+      en: past
+  - form: कुलालम्
+    lemma: कुलाल
+    gloss: the potter
+    notes:
+    - term: कर्मन्
+      en: object of दृष्ट्वा
+    - term: द्वितीया
+      en: accusative
+  - form: कार्यम्
+    lemma: कार्य
+    gloss: his work
+    notes:
+    - term: कर्मन्
+      en: object of the participle कुर्वन्तम्
+    - term: द्वितीया
+      en: neuter accusative
+  - form: कुर्वन्तम्
+    lemma: कृ
+    gloss: doing
+    notes:
+    - term: शतृ
+      en: present participle in the accusative, qualifying कुलालम्
+    - cite: "3.2.124"
+      role: लटः शतृशानचौ — शतृ replaces लट् → कुर्वन्तम्
+  - form: दृष्ट्वा
+    lemma: दृश्
+    gloss: seeing
+    notes:
+    - term: क्त्वा
+      en: gerund — the seeing before the speaking
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: मम
+    lemma: अस्मद्
+    gloss: my
+    notes:
+    - term: षष्ठी
+      en: genitive
+  - form: गृहे
+    lemma: गृह
+    gloss: in the house
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: शतम्
+    lemma: शत
+    gloss: a hundred
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative, counting घटाः
+  - form: घटाः
+    lemma: घट
+    gloss: pots
+    notes:
+    - term: कर्मन्
+      en: what is to be placed — nominative under the gerundive
+    - term: बहुवचन
+      en: nominative plural
+  - form: स्थापनीयाः
+    lemma: स्था
+    gloss: are to be placed
+    notes:
+    - term: कृत्य
+      en: gerundive, plural, agreeing with घटाः
+    - cite: "3.1.96"
+      role: तव्यत्तव्यानीयरः — अनीयर् forms the gerundive → स्थापनीयाः
+  - form: कर्तव्यम्
+    lemma: कृ
+    gloss: is to be done
+    notes:
+    - term: कृत्य
+      en: a second gerundive, the potter agreeing
+    - cite: "3.1.96"
+      role: तव्यत्तव्यानीयरः — तव्य forms the gerundive → कर्तव्यम्
+  - form: एतत्
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: प्रथमा
+      en: neuter nominative
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: मूल्यम्
+    lemma: मूल्य
+    gloss: the price
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: what is to be given
+    - term: प्रथमा
+      en: neuter nominative
+  - form: दातव्यम्
+    lemma: दा
+    gloss: is to be given
+    notes:
+    - term: कृत्य
+      en: a third gerundive — the potter's condition
+  - form: हसन्
+    lemma: हस्
+    gloss: laughing
+    notes:
+    - term: शतृ
+      en: a third present participle
+  - form: पिता
+    lemma: पितृ
+    gloss: father
+    notes:
+    - term: सर्वनामस्थान
+      en: strong nom.sg of an ऋ-stem, like भ्राता
+    - cite: "7.3.110"
+      role: ऋतो ङिसर्वनामस्थानयोः — गुण in the strong cases → पिता
+  - form: मे
+    lemma: अस्मद्
+    gloss: my
+    notes:
+    - term: षष्ठी
+      en: genitive — the enclitic form
+  - form: राजा
+    lemma: राजन्
+    gloss: a king
+    notes:
+    - term: प्रथमा
+      en: nominative — the न् drops
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of अस्
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: उत्तमपुरुष
+      en: the speaker
+  - form: 'न'
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: ददामि
+    lemma: दा
+    gloss: give
+    notes:
+    - term: लट्
+      en: present, first person — दा reduplicates
+  - form: तर्हि
+    lemma: तर्हि
+    gloss: then
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: सन्ति
+    lemma: अस्
+    gloss: there are
+    notes:
+    - term: लट्
+      en: present plural of अस्
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: कर्मन्
+      en: object of श्रुत्वा
+    - term: द्वितीया
+      en: neuter accusative
+  - form: श्रुत्वा
+    lemma: श्रु
+    gloss: having heard
+    notes:
+    - term: क्त्वा
+      en: gerund
+  - form: लज्जितः
+    lemma: लज्ज्
+    gloss: ashamed
+    vocab: true
+    notes:
+    - term: निष्ठा
+      en: past participle as a predicate
+    - term: प्रथमा
+      en: nominative
+  - form: अभवत्
+    lemma: भू
+    gloss: became
+    notes:
+    - term: लङ्
+      en: past
+  vyakhya: कर्तव्यम् एतत्, किन्तु मूल्यम् दातव्यम्। द्वे कृत्ये, द्वौ पक्षौ।
+  vyakhya_en: |
+    The potter's answer is two gerundives and nothing else: कर्तव्यम् एतत्,
+    किन्तु मूल्यम् दातव्यम्. He concedes the work and states his condition in
+    the same construction the prince used to give the order.
+
+    That is what makes it a refusal rather than a complaint. स्थापनीयाः was an
+    instruction; दातव्यम् answers it in kind.
+
 - id: ex202
   kind: graded
   segment: 480
