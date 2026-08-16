@@ -64,6 +64,57 @@ const VACANA: Record<string, string> = {
   'बहुवचन': 'Bahu'
 };
 
+
+/** Lakāra tag → vidyut key. */
+const LAKARA: Record<string, string> = {
+  'लट्': 'Lat', 'लङ्': 'Lan', 'लिट्': 'Lit', 'लुङ्': 'Lun', 'लृट्': 'Lrt',
+  'लोट्': 'Lot', 'विधिलिङ्': 'VidhiLin', 'आशीर्लिङ्': 'AshirLin', 'लृङ्': 'Lrn', 'लुट्': 'Lut'
+};
+
+/**
+ * Root → (aupadeśika, gaṇa). vidyut needs the root in its dhātupāṭha spelling
+ * with its class, and the corpus records only the citation form. Only roots the
+ * corpus actually cites are listed; an unlisted root is reported as unchecked
+ * rather than guessed at, since a wrong gaṇa silently derives a different word.
+ */
+const DHATU: Record<string, [string, string]> = {
+  // Each entry was checked by deriving the 3sg present and comparing against the
+  // form the corpus actually uses. Roots whose spelling could not be confirmed
+  // are OMITTED rather than guessed: गम् and दृश् both derive to the wrong word
+  // under every aupadeśika tried (gamx~ gives gamati, not gacCati), and a wrong
+  // gaṇa silently derives a different verb instead of failing.
+  'भू': ['BU', 'Bhvadi'],
+  'वस्': ['vasa~', 'Bhvadi'],
+  'पठ्': ['paWa~', 'Bhvadi'],
+  'पच्': ['qupaca~^', 'Bhvadi'],
+  'रक्ष्': ['rakza~', 'Bhvadi'],
+  'वद्': ['vada~', 'Bhvadi'],
+  'क्रुध्': ['kruDa~', 'Divadi'],
+  'तुष्': ['tuza~', 'Divadi'],
+  'रुच्': ['ruca~\\', 'Bhvadi'],
+  'नी': ['RI\\Y', 'Bhvadi'],
+  'ज्ञा': ['jYA\\', 'Kryadi'],
+  'श्रु': ['Sru\\', 'Bhvadi'],
+  'कृ': ['qukf\\Y', 'Tanadi']
+};
+
+/** Person and number, read off the ending — the corpus rarely tags them. */
+function personNumber(form: string): [string, string] | null {
+  const f = form.replace(/[॒॑]/g, '');
+  if (/(ामि|मि)$/.test(f)) return ['Uttama', 'Eka'];
+  if (/(ावः|वः)$/.test(f)) return ['Uttama', 'Dvi'];
+  if (/(ामः|मः)$/.test(f)) return ['Uttama', 'Bahu'];
+  if (/सि$/.test(f)) return ['Madhyama', 'Eka'];
+  if (/थः$/.test(f)) return ['Madhyama', 'Dvi'];
+  if (/थ$/.test(f)) return ['Madhyama', 'Bahu'];
+  if (/(न्ति|अन्ति)$/.test(f)) return ['Prathama', 'Bahu'];
+  if (/तः$/.test(f)) return ['Prathama', 'Dvi'];
+  if (/ति$/.test(f)) return ['Prathama', 'Eka'];
+  if (/त्$/.test(f)) return ['Prathama', 'Eka'];   // लङ् 3sg
+  if (/म्$/.test(f)) return ['Uttama', 'Eka'];     // लङ् 1sg
+  return null;
+}
+
 /** Devanagari → SLP1, which is what vidyut takes. */
 function toSlp1(dev: string): string | null {
   const map: Record<string, string> = {
@@ -96,6 +147,10 @@ function toSlp1(dev: string): string | null {
 }
 
 async function loadVidyut() {
+  // vidyut logs "[vidyut] Derivation error" to the console for every spec it
+  // cannot derive. That is an expected outcome here — we probe three lingas and
+  // two prayogas per word and keep whichever succeed — so the log is pure noise.
+  console.error = () => {};
   const raw = await import(WASM_DIR + 'vidyut_prakriya.js');
   const bytes = await Bun.file(WASM_DIR + 'vidyut_prakriya_bg.wasm').arrayBuffer();
   await raw.default({ module_or_path: bytes });
@@ -114,6 +169,38 @@ async function main() {
       const cites = (word.notes ?? []).filter((n: any) => n.cite).map((n: any) => n.cite);
       if (!cites.length) continue;
       const terms = (word.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term);
+
+      // A tiṅanta is checkable when we know the root, its gaṇa, the lakāra, and
+      // can read person/number off the ending.
+      const lak = terms.map((t: string) => LAKARA[t]).find(Boolean);
+      if (lak) {
+        const spec = word.lemma ? DHATU[word.lemma] : undefined;
+        const pn = personNumber(word.form);
+        if (!spec || !pn) { unchecked += cites.length; continue; }
+        let vfired: Set<string> | null = null;
+        for (const prayoga of ['Kartari', 'Karmani']) {
+          try {
+            const res = w.deriveTinantas({
+              dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
+              lakara: lak, prayoga, purusha: pn[0], vacana: pn[1], pada: null
+            });
+            for (const p of res) {
+              const set = new Set<string>(p.history.map((s: any) => s.rule.code));
+              if (!vfired) vfired = set; else for (const c of set) vfired.add(c);
+            }
+          } catch { /* try the other prayoga */ }
+        }
+        if (!vfired || !vfired.size) { unchecked += cites.length; continue; }
+        for (const c of cites) {
+          if (isSemantic(c)) { semantic++; continue; }
+          if (vfired.has(c)) ok++;
+          else {
+            missing++;
+            problems.push(`  ${r.id} ${word.form} (${word.lemma}) cites ${c} — not in derivation of ${word.form}`);
+          }
+        }
+        continue;
+      }
 
       // A subanta is checkable when the annotation names both case and number.
       const vib = terms.map((t: string) => VIBHAKTI[t]).find(Boolean);
