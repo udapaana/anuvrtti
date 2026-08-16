@@ -29,6 +29,11 @@ const GLOSS_BASELINE = 48;
  * lower it as the glossing is thinned further.
  */
 const REVEAL_CEILING = 45;
+/**
+ * Soft ceiling on a single `teaches` line. Set just above the current longest
+ * (237) so new drift shows immediately; the corpus median is 78.
+ */
+const TEACHES_CEILING = 240;
 
 async function run(cmd: string[]): Promise<string> {
   const p = Bun.spawn(cmd, { stdout: 'pipe', stderr: 'pipe' });
@@ -98,6 +103,24 @@ if (taught) console.log(`  · coverage: ${taught[1]}/${taught[2]} load-bearing r
         `citing an already-taught rule on every instance forces the gloss open and denies the reader the attempt`
     );
   }
+}
+
+// 2c. teaches length — prose drift is invisible without a number.
+// The lines authored later reached a median of 260 characters against the
+// corpus's 66, by narrating what a passage is FOR rather than naming what is
+// in it. Nobody noticed across three separate register passes, because there
+// was nothing to notice with. Warn on any single line past the ceiling.
+{
+  const data = JSON.parse(await Bun.file('static/data/readings.json').text());
+  const lens = data.sequence
+    .map((r: any) => ({ id: r.id, n: String(r.teaches ?? '').trim().replace(/\s+/g, ' ').length }))
+    .sort((a: any, b: any) => b.n - a.n);
+  const median = [...lens].sort((a: any, b: any) => a.n - b.n)[Math.floor(lens.length / 2)].n;
+  const over = lens.filter((l: any) => l.n > TEACHES_CEILING);
+  console.log(
+    `  · teaches: median ${median} chars, ${over.length} line(s) over ${TEACHES_CEILING}` +
+      (over.length ? ` — ${over.slice(0, 3).map((l: any) => `${l.id}(${l.n})`).join(' ')}` : '')
+  );
 }
 
 // 3. register — soft
