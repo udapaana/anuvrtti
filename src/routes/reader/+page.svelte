@@ -100,6 +100,13 @@
     const seen = new Set<string>();
     // Chapters opened before this page, so page 2+ doesn't re-announce them.
     for (let i = 0; i < startIdx; i++) seen.add(list[i]?.chapter);
+    // A tier's short readings are ONE lesson delivered as N cards: ex001-ex007
+    // is the six kārakas, each sentence differing from the last by one word.
+    // Rendered as seven separate cards with seven sets of chrome, that lesson
+    // costs seven screens of scrolling. Mark each run of shorts sharing a tier
+    // so they can be bound into a single visual block; the consolidation
+    // passage that follows keeps its own card, since it is a different thing.
+    const runKey = (r: any) => (r.length === 'short' ? `${r.chapter}:${Math.floor((r.segment ?? 0) / 10)}` : null);
     slice.forEach((r, k) => {
       if (r.chapter !== last) {
         const t = titles[r.chapter] ?? { dev: r.chapter, en: '' };
@@ -107,7 +114,14 @@
         seen.add(r.chapter);
         last = r.chapter;
       }
-      out.push(processEx(r, startIdx + k + 1));
+      const key = runKey(r);
+      const prevKey = k > 0 ? runKey(slice[k - 1]) : null;
+      const nextKey = k < slice.length - 1 ? runKey(slice[k + 1]) : null;
+      const ex = processEx(r, startIdx + k + 1);
+      // grouped only when the run is longer than one — a lone short reading
+      // between two passages is not a lesson, it is just a reading.
+      const grouped = !!key && (key === prevKey || key === nextKey);
+      out.push({ ...ex, grouped, runStart: grouped && key !== prevKey, runEnd: grouped && key !== nextKey });
     });
     return out;
   });
@@ -116,6 +130,45 @@
     const idx = list.findIndex((r) => r.id === (focused?.id ?? focusedId));
     return list.length > 1 && idx >= 0 ? (idx / (list.length - 1)) * 100 : 0;
   });
+
+  // ── paradigm cards render as a GRID, not as interlinear prose ──────────────
+  // kind:paradigm readings are tables written into the `sentence` field: each
+  // daṇḍa-delimited group is one row (a विभक्ति) and the words inside it are
+  // the three वचन cells. Run through the ordinary interlinear renderer they
+  // came out as 24 free-flowing tokens wrapping across 429px with nothing
+  // aligned — a table rendered as a paragraph, which is why they looked awful.
+  //
+  // Row labels are supplied here rather than in the data: the corpus has no
+  // per-row annotation, and the order is fixed by the paradigm itself.
+  const SUP_ROWS = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
+  const TIN_ROWS = ['उत्तम', 'मध्यम', 'प्रथम'];
+  function paradigmGrid(r: Reading) {
+    if (r.kind !== 'paradigm') return null;
+    const rows = String(r.sentence ?? '')
+      .split(/[।॥]/)
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .map((s) => s.split(/\s+/).filter(Boolean))
+      // The vocative row is written "हे फल हे फले हे फलानि" — the particle is a
+      // separate token per cell, making that row twice as wide as the others
+      // and failing the rectangularity check below. Bind it to the word it calls.
+      .map((cells) => {
+        const out: string[] = [];
+        for (let k = 0; k < cells.length; k++) {
+          if (cells[k] === 'हे' && cells[k + 1]) out.push('हे ' + cells[++k]);
+          else out.push(cells[k]);
+        }
+        return out;
+      });
+    // Only grid it when it really is rectangular; otherwise fall back to prose
+    // so a one-line paradigm (ex164 lists कर्तृ's cases inline) isn't mangled.
+    if (rows.length < 3 || !rows.every((c) => c.length === rows[0].length)) return null;
+    const labels = rows.length === 3 && rows[0].length === 3 ? TIN_ROWS : SUP_ROWS;
+    return {
+      cols: rows[0].length,
+      rows: rows.map((cells, i) => ({ label: labels[i] ?? '', cells }))
+    };
+  }
 
   // ── interlinear token + word identity processing (matches design) ───────────
   function processEx(r: Reading, n: number) {
@@ -162,6 +215,7 @@
       teaches: r.teaches || '',
       tokens,
       words,
+      grid: paradigmGrid(r),
       translation: r.translation || '',
       vyakhya: r.vyakhya || '',
       vyakhya_en: (r.vyakhya_en || '').trim()
@@ -400,6 +454,9 @@
                 data-ex-id={row.id}
                 class="ex"
                 class:active={railReading?.id === row.id}
+                class:grouped={row.grouped}
+                class:runstart={row.runStart}
+                class:runend={row.runEnd}
                 role="presentation"
                 onmouseenter={() => enterReading(row.id)}
                 onmouseleave={() => leaveReading(row.id)}
@@ -409,6 +466,21 @@
                   <span class="exteaches">{row.teaches}</span>
                 </div>
 
+                {#if row.grid}
+                  <!-- paradigm: a real grid, aligned by वचन -->
+                  <div class="pgrid" style="--cols:{row.grid.cols}">
+                    <div class="pgcorner"></div>
+                    {#each ['एकवचन', 'द्विवचन', 'बहुवचन'].slice(0, row.grid.cols) as h}
+                      <div class="pgcolhead"><Sanskrit text={h} source="devanagari" /></div>
+                    {/each}
+                    {#each row.grid.rows as gr}
+                      <div class="pgrowhead"><Sanskrit text={gr.label} source="devanagari" /></div>
+                      {#each gr.cells as cell}
+                        <div class="pgcell"><Sanskrit text={cell} source="devanagari" /></div>
+                      {/each}
+                    {/each}
+                  </div>
+                {:else}
                 <!-- interlinear sentence -->
                 <div class="tokens">
                   {#each row.tokens as tok}
@@ -434,6 +506,7 @@
                     {/if}
                   {/each}
                 </div>
+                {/if}
 
                 <p class="translation">{row.translation}</p>
 
@@ -634,12 +707,57 @@
   }
   .chresumedev { font-size: 0.95rem; color: #b8b0a4; font-weight: 500; letter-spacing: 0.01em; }
 
+  /* Paradigm grid. Cells are the point, so they get the type; the labels are
+     scaffolding and stay quiet. Scrolls on its own axis so a wide paradigm
+     never makes the page scroll sideways. */
+  .pgrid {
+    display: grid;
+    grid-template-columns: auto repeat(var(--cols), minmax(5.5rem, 1fr));
+    gap: 0.1rem 0.9rem;
+    align-items: baseline;
+    margin: 1.1rem 0 0.4rem;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
+  }
+  .pgcolhead,
+  .pgrowhead {
+    font-size: 0.78rem;
+    color: #a89f92;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .pgcolhead { padding-bottom: 0.35rem; border-bottom: 1px solid #ece3d3; margin-bottom: 0.35rem; }
+  .pgcorner { border-bottom: 1px solid #ece3d3; margin-bottom: 0.35rem; }
+  .pgrowhead { text-align: right; padding-right: 0.3rem; }
+  .pgcell {
+    font-size: 1.12rem;
+    color: #2b2723;
+    line-height: 1.85;
+    white-space: nowrap;
+  }
+
   .ex {
     padding: 1.7rem 0 1.7rem 1rem;
     margin-left: -1rem;
     border-top: 1px solid #ece3d3;
     border-left: 2px solid transparent;
     transition: border-color 0.15s;
+  }
+  /* A run of short readings at one tier is one lesson. Tighten the spacing and
+     drop the full-width rule between them so the run reads as a block rather
+     than as N separate cards; keep the rule that opens the run. */
+  .ex.grouped { padding-top: 0.75rem; padding-bottom: 0.75rem; border-top-color: transparent; }
+  .ex.grouped.runstart { padding-top: 1.7rem; border-top-color: #ece3d3; }
+  .ex.grouped.runend { padding-bottom: 1.7rem; }
+  /* the run's own hairline, indented so it reads as internal to the block */
+  .ex.grouped:not(.runstart)::before {
+    content: '';
+    display: block;
+    width: 2.2rem;
+    height: 1px;
+    background: #f0e9dc;
+    margin: 0 0 0.75rem 0;
   }
   /* the reading whose machinery the rail is currently showing */
   .ex.active { border-left-color: #f3d9b8; }
