@@ -34,6 +34,29 @@
 #  would break it again. Ids are permanent labels; `segment` is the order.
 #  Optional `order:` breaks ties within one tier when sequence matters.
 #
+#  ── register of the `vyakhya_en` note ──────────────────────────────────
+#
+#  The note is for the reader who has just met this sentence, NOT for someone
+#  who already knows the grammar. ex001's note used to read:
+#
+#    "The agent acting on its own stands in the प्रथमा — the base case."
+#
+#  which restates the rule in the metalanguage and explains नरः to someone who
+#  already knows what प्रथमा is. The first sentence in the reader cannot assume
+#  that word. Rewritten, it points at what is on the page instead:
+#
+#    "The ः on the end of नरः is not decoration — it is the ending that marks
+#     him as the one acting."
+#
+#  The word-level glosses already carry the technical names (प्रथमा=nominative
+#  sits right there in the notes). The note's job is to say what the sentence
+#  DOES, in words the reader has. Name a term only where the reading itself
+#  introduces it, and prefer pointing at a form the reader can see —
+#  ग्रामम् / ग्रामात् / ग्रामे — over naming the rule that produced it.
+#
+#  `bun run check:register` reports technical terms used in a note before any
+#  reading has introduced them.
+#
 #  ── register of the `teaches` line ─────────────────────────────────────
 #
 #  `teaches` is READER-FACING. It says what is in this reading, in the voice
