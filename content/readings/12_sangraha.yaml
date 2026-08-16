@@ -38,6 +38,206 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex193
+  kind: sangraha
+  segment: 125
+  order: 1
+  sentence: वाग् अत्र शुभा। तच्च सत्यं वदति। वनं हसति, नदी च शोभते। रामेण सह मुनिर्गच्छति। संस्कृतं वचनं तेषां प्रियम्। नमस्ते गुरो, इति ते वदन्ति।
+  translation: Speech here is auspicious. And it speaks the truth. The forest laughs, and the river shines. The sage goes with Rāma. Refined speech is dear to them. "Homage to you, teacher," they say.
+  teaches: |
+    the consonant joins met at tier 120, now inside sentences instead of shown
+    as transformations: वाग् before a vowel, तच्च where त् meets च, वनं and
+    संस्कृतं with the nasal taking the following point of articulation, रामेण
+    where न् turns ण् after र्, and नमस्ते where the visarga becomes स्.
+  words:
+  - form: वाग्
+    lemma: वाच्
+    gloss: speech
+    notes:
+    - term: सन्धि
+      en: वाक् + अत्र — the final क् voices to ग् before a vowel
+    - cite: "8.2.39"
+      role: झलां जशोऽन्ते — a final stop takes its voiced counterpart → वाग्
+    - term: प्रथमा
+      en: nominative
+  - form: अत्र
+    lemma: अत्र
+    gloss: here
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: शुभा
+    lemma: शुभ
+    gloss: auspicious
+    notes:
+    - term: प्रथमा
+      en: nominative feminine — predicated of वाग्
+  - form: तच्च
+    lemma: तद्
+    gloss: and it
+    notes:
+    - term: सन्धि
+      en: तत् + च — त् becomes च् before a च्-class stop
+    - cite: "8.4.40"
+      role: स्तोः श्चुना श्चुः — श्चुत्व assimilates the dental to the palatal → तच्च
+  - form: सत्यं
+    lemma: सत्य
+    gloss: the truth
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: शप्
+      en: वद् + अ + ति
+    - term: लट्
+      en: present
+  - form: वनं
+    lemma: वन
+    gloss: the forest
+    notes:
+    - term: सन्धि
+      en: वनम् + हसति — final म् becomes anusvāra before a consonant
+    - cite: "8.3.23"
+      role: मोऽनुस्वारः — म् → anusvāra at a word join → वनं
+    - term: प्रथमा
+      en: nominative
+  - form: हसति
+    lemma: हस्
+    gloss: laughs
+    vocab: true
+    notes:
+    - term: शप्
+      en: हस् + अ + ति
+    - term: लट्
+      en: present
+  - form: नदी
+    lemma: नदी
+    gloss: the river
+    notes:
+    - term: कर्तृ
+      en: agent — an ī-stem feminine
+    - term: प्रथमा
+      en: nominative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: शोभते
+    lemma: शुभ्
+    gloss: shines
+    notes:
+    - term: गुण
+      en: the root vowel strengthens before शप् — शुभ् → शोभ्
+    - term: शप्
+      en: शोभ् + अ + ते
+    - term: लट्
+      en: present
+  - form: रामेण
+    lemma: राम
+    gloss: with Rāma
+    notes:
+    - term: सन्धि
+      en: राम + इन → रामेन, then न् becomes ण् because र् precedes
+    - cite: "8.4.1"
+      role: रषाभ्यां नो णः — न् → ण् after र् or ष् → रामेण
+    - term: तृतीया
+      en: instrumental
+  - form: सह
+    lemma: सह
+    gloss: with
+    notes:
+    - term: अव्यय
+      en: indeclinable governing the तृतीया
+  - form: मुनिर्गच्छति
+    lemma: मुनि
+    gloss: the sage goes
+    notes:
+    - term: सन्धि
+      en: मुनिः + गच्छति — the visarga becomes र् before a voiced sound
+    - cite: "8.3.15"
+      role: खरवसानयोर्विसर्जनीयः — the रु/visarga alternation → मुनिर्
+  - form: संस्कृतं
+    lemma: संस्कृत
+    gloss: refined
+    notes:
+    - term: सन्धि
+      en: सम् + कृत — the nasal takes the point of the following स्क्
+    - cite: "8.4.58"
+      role: अनुस्वारस्य ययि परसवर्णः — the nasal goes homorganic → संस्कृतम्
+  - form: वचनं
+    lemma: वचन
+    gloss: speech
+    notes:
+    - term: सन्धि
+      en: वचनम् + तेषाम् — म् → anusvāra again, a second instance
+    - term: प्रथमा
+      en: neuter nominative
+  - form: तेषां
+    lemma: तद्
+    gloss: to them
+    notes:
+    - term: षष्ठी
+      en: genitive plural — "dear to them"
+  - form: प्रियम्
+    lemma: प्रिय
+    gloss: dear
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — predicated of वचनं
+  - form: नमस्ते
+    lemma: नमस्
+    gloss: homage to you
+    notes:
+    - term: सन्धि
+      en: नमः + ते — the visarga becomes स् before त्
+    - term: चतुर्थी
+      en: ते is dative — नमस् governs the चतुर्थी
+  - form: गुरो
+    lemma: गुरु
+    gloss: O teacher
+    notes:
+    - term: सम्बोधन
+      en: vocative — उ-stem, गुरु → गुरो
+  - form: इति
+    lemma: इति
+    gloss: "thus"
+    notes:
+    - term: अव्यय
+      en: closes the quotation
+  - form: ते
+    lemma: तद्
+    gloss: they
+    notes:
+    - term: प्रथमा
+      en: nominative plural
+  - form: वदन्ति
+    lemma: वद्
+    gloss: say
+    notes:
+    - term: शप्
+      en: वद् + अ + न्ति
+    - term: लट्
+      en: present plural
+  vyakhya: यत्र पदं पदेन मिलति तत्र सन्धिः। वाग्, तच्च, वनं, रामेण — सर्वत्र।
+  vyakhya_en: |
+    Six joins here and none of them announced. वाक् voices to वाग् because a
+    vowel follows; त् becomes च् because च follows; म् goes to anusvāra twice;
+    न् turns ण् in रामेण because an र् sits two syllables back.
+
+    That last one is worth noticing — the trigger is not adjacent. र् and न्
+    are separated by ए, and the rule still reaches across. Sandhi is not only
+    about what touches what.
+
 - id: ex192
   kind: sangraha
   segment: 105
