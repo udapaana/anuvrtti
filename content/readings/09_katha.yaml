@@ -17,6 +17,674 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex210
+  kind: graded
+  segment: 540
+  source:
+    text: कथा (our graded retelling)
+    ref: "the two who divided the field — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: द्वौ भ्रातरौ क्षेत्रम् अभजेताम्। ज्येष्ठः अवादीत् — अद्य अहम् अर्धम् अगृह्णाम्, त्वम् च अर्धम् गृहाण। कनिष्ठः तत् अश्रौषीत्, किन्तु न अतुष्यत्। सः ग्रामस्य वृद्धान् अपृच्छत् — केन एषा भूमिः विभक्ता। वृद्धाः अवादिषुः — यः स्वयम् विभजति सः न स्वयम् गृह्णाति। तत् श्रुत्वा ज्येष्ठः लज्जितः अभूत्, कनिष्ठाय च वरम् अर्धम् अददात्।
+  translation: Two brothers divided a field. The elder spoke — "Today I have taken half; you take the other half." The younger heard that, but was not satisfied. He asked the village elders — "By whom was this land divided?" The elders spoke — "He who divides himself does not himself take." Hearing that, the elder became ashamed, and gave the better half to the younger.
+  teaches: |
+    अवादीत्, अश्रौषीत्, अवादिषुः, अभूत् — the aorist across three persons and
+    both numbers. विभक्ता names the act as done; वृद्धाः and अवादिषुः close on
+    visarga at the pause.
+  words:
+  - form: द्वौ
+    lemma: द्वि
+    gloss: two
+    notes:
+    - term: प्रथमा
+      en: nominative dual
+  - form: भ्रातरौ
+    lemma: भ्रातृ
+    gloss: brothers
+    notes:
+    - term: प्रथमा
+      en: nominative dual of an ऋ-stem — the ऋ takes गुण before the ending
+  - form: क्षेत्रम्
+    lemma: क्षेत्र
+    gloss: a field
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: अभजेताम्
+    lemma: भज्
+    gloss: divided (between themselves)
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past, third dual — आत्मनेपद, the act done for their own sake
+  - form: ज्येष्ठः
+    lemma: ज्येष्ठ
+    gloss: the elder
+    notes:
+    - term: प्रथमा
+      en: nominative — the superlative of वृद्ध, used as a noun
+    - cite: '5.3.55'
+      role: अतिशायने तमबिष्ठनौ — इष्ठन् superlative → ज्येष्ठ
+  - form: अवादीत्
+    lemma: वद्
+    gloss: spoke
+    notes:
+    - term: लुङ्
+      en: aorist — the past of what happened today
+    - cite: '3.2.110'
+      role: लुङ् — past action → अवादीत्
+  - form: अद्य
+    lemma: अद्य
+    gloss: today
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: अर्धम्
+    lemma: अर्ध
+    gloss: half
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: अगृह्णाम्
+    lemma: ग्रह्
+    gloss: have taken
+    notes:
+    - term: लङ्
+      en: past, first singular — the ना of the ninth class
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: you
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अर्धम्
+    lemma: अर्ध
+    gloss: half
+    notes:
+    - term: द्वितीया
+      en: accusative
+  - form: गृहाण
+    lemma: ग्रह्
+    gloss: take
+    notes:
+    - term: लोट्
+      en: imperative — the instruction answering अगृह्णाम्
+  - form: कनिष्ठः
+    lemma: कनिष्ठ
+    gloss: the younger
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — इष्ठन् again, against ज्येष्ठः
+    - cite: '5.3.55'
+      role: अतिशायने तमबिष्ठनौ — इष्ठन् superlative → कनिष्ठ
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: द्वितीया
+      en: neuter accusative
+  - form: अश्रौषीत्
+    lemma: श्रु
+    gloss: heard
+    notes:
+    - term: लुङ्
+      en: aorist of √श्रु
+    - cite: '3.2.110'
+      role: लुङ् — past action → अश्रौषीत्
+    - cite: '8.3.59'
+      role: आदेशप्रत्ययोः — the सिच् स् goes ष् after the ओ
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अतुष्यत्
+    lemma: तुष्
+    gloss: was satisfied
+    notes:
+    - term: लङ्
+      en: past
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: ग्रामस्य
+    lemma: ग्राम
+    gloss: of the village
+    notes:
+    - term: षष्ठी
+      en: genitive
+  - form: वृद्धान्
+    lemma: वृद्ध
+    gloss: the elders
+    notes:
+    - term: कर्मन्
+      en: object — the person asked stands in the accusative
+    - term: द्वितीया
+      en: accusative plural
+  - form: अपृच्छत्
+    lemma: प्रच्छ्
+    gloss: asked
+    notes:
+    - term: लङ्
+      en: past
+  - form: केन
+    lemma: किम्
+    gloss: by whom
+    notes:
+    - term: कर्तृ
+      en: agent of a passive participle
+    - term: तृतीया
+      en: instrumental
+  - form: एषा
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: feminine nominative
+  - form: भूमिः
+    lemma: भूमि
+    gloss: land
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — a feminine इ-stem
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — final स् → visarga → भूमिः
+  - form: विभक्ता
+    lemma: भज्
+    gloss: divided
+    notes:
+    - term: कृदन्त
+      en: past passive participle (क्त) with वि — feminine, agreeing with भूमिः
+  - form: वृद्धाः
+    lemma: वृद्ध
+    gloss: the elders
+    notes:
+    - term: प्रथमा
+      en: nominative plural
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — the plural स् → visarga → वृद्धाः
+  - form: अवादिषुः
+    lemma: वद्
+    gloss: spoke
+    notes:
+    - term: लुङ्
+      en: aorist, third plural — the same tense as अवादीत्, now of several
+    - cite: '3.2.110'
+      role: लुङ् — past action → अवादिषुः
+  - form: यः
+    lemma: यद्
+    gloss: he who
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun
+  - form: स्वयम्
+    lemma: स्वयम्
+    gloss: himself
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: विभजति
+    lemma: भज्
+    gloss: divides
+    notes:
+    - term: लट्
+      en: present — a general truth, not a past act
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: the correlative answering यः
+  - form: न
+    lemma: न
+    gloss: does not
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: स्वयम्
+    lemma: स्वयम्
+    gloss: himself
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: गृह्णाति
+    lemma: ग्रह्
+    gloss: take
+    notes:
+    - term: लट्
+      en: present
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: द्वितीया
+      en: neuter accusative
+  - form: श्रुत्वा
+    lemma: श्रु
+    gloss: hearing
+    notes:
+    - term: क्त्वा
+      en: gerund
+  - form: ज्येष्ठः
+    lemma: ज्येष्ठ
+    gloss: the elder
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: लज्जितः
+    lemma: लज्ज्
+    gloss: ashamed
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) — attributive
+  - form: अभूत्
+    lemma: भू
+    gloss: became
+    notes:
+    - term: लुङ्
+      en: aorist of √भू — no सिच्, the root stands bare before the ending
+    - cite: '3.2.110'
+      role: लुङ् — past action → अभूत्
+  - form: कनिष्ठाय
+    lemma: कनिष्ठ
+    gloss: to the younger
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: वरम्
+    lemma: वर
+    gloss: the better
+    vocab: true
+    notes:
+    - term: द्वितीया
+      en: accusative — qualifying अर्धम्
+  - form: अर्धम्
+    lemma: अर्ध
+    gloss: half
+    notes:
+    - term: कर्मन्
+      en: object of अददात्
+    - term: द्वितीया
+      en: accusative
+  - form: अददात्
+    lemma: दा
+    gloss: gave
+    notes:
+    - term: लङ्
+      en: past — the reduplicated third class
+  vyakhya: 'लुङः चत्वारि रूपाणि — अवादीत् अश्रौषीत् इति प्रथमपुरुषे एकवचनम्, अवादिषुः इति बहुवचनम्, अभूत् इति भू-धातोः अपुसीयम्। ज्येष्ठः कनिष्ठः इति इष्ठन्प्रत्ययान्तौ। केन एषा भूमिः विभक्ता इति कर्मणि क्तम्, कर्तरि तृतीया।'
+  vyakhya_en: |
+    The aorist widens here: अवादीत् and अश्रौषीत् are third singular, अवादिषुः is third plural of the same verb as अवादीत्, and अभूत् is √भू with no सिच् at all — the ending sits straight on the root. ज्येष्ठः and कनिष्ठः are the same suffix इष्ठन् on two opposed adjectives, and they carry the whole plot between them. केन एषा भूमिः विभक्ता asks the question with a participle and an instrumental agent, and the elders answer with a present-tense generality rather than a fact about this field.
+- id: ex209
+  kind: graded
+  segment: 530
+  source:
+    text: कथा (our graded retelling)
+    ref: "the messenger who came today — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: अद्य दूतः नगरम् अगमत्। सः राज्ञः पुरतः अवादीत् — शत्रवः सेनाम् अनयन्, ग्रामान् च अदहन्। राजा तत् अश्रौषीत्, क्षणम् च तूष्णीम् आसीत्। ततः सः अवादीत् — यत् त्वया उक्तम् तत् सत्यम् चेत्, अहम् अद्य एव सेनाम् प्रेषयामि। मन्त्री अवदत् — देव, धैर्यम् एव बलम्। राजा अकार्षीत् यत् मन्त्री अवदत्।
+  translation: Today a messenger went to the city. He spoke before the king — "The enemies led out an army, and burned the villages." The king heard that, and was silent a moment. Then he spoke — "If what has been said by you is true, I send the army this very day." The minister said — "Your majesty, steadiness alone is strength." The king did what the minister said.
+  teaches: |
+    अगमत्, अवादीत्, अश्रौषीत्, अकार्षीत् — four aorists, the past of what
+    happened today. शत्रवः and राज्ञः show the visarga taking a sibilant and
+    a stop; तूष्णीम् holds its ष् unchanged.
+  words:
+  - form: अद्य
+    lemma: अद्य
+    gloss: today
+    notes:
+    - term: अव्यय
+      en: indeclinable — it is what makes the aorist the right past here
+  - form: दूतः
+    lemma: दूत
+    gloss: a messenger
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: नगरम्
+    lemma: नगर
+    gloss: to the city
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: अगमत्
+    lemma: गम्
+    gloss: went
+    notes:
+    - term: लुङ्
+      en: aorist — the plain past, and the past used of today's events
+    - cite: '3.2.110'
+      role: लुङ् — past action → अगमत्
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: of the king
+    notes:
+    - term: षष्ठी
+      en: genitive — the न् of राजन् drops before the ending
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — the ending's स् shows as visarga at the pause
+  - form: पुरतः
+    lemma: पुरतस्
+    gloss: before, in front of
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable, governing the genitive
+  - form: अवादीत्
+    lemma: वद्
+    gloss: spoke
+    notes:
+    - term: लुङ्
+      en: aorist of √वद् — the root vowel lengthens, इट् and सिच् follow
+    - cite: '3.2.110'
+      role: लुङ् — past action → अवादीत्
+  - form: शत्रवः
+    lemma: शत्रु
+    gloss: the enemies
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative plural of a उ-stem — उ goes to अव् before the ending
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — final स् → visarga → शत्रवः
+  - form: सेनाम्
+    lemma: सेना
+    gloss: an army
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: अनयन्
+    lemma: नी
+    gloss: led out
+    notes:
+    - term: लङ्
+      en: past — beside the aorists, the ordinary narrative past
+  - form: ग्रामान्
+    lemma: ग्राम
+    gloss: the villages
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative plural
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अदहन्
+    lemma: दह्
+    gloss: burned
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past, third plural
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: प्रथमा
+      en: nominative — the न्-stem lengthens and loses its final न्
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: neuter accusative
+  - form: अश्रौषीत्
+    lemma: श्रु
+    gloss: heard
+    notes:
+    - term: लुङ्
+      en: aorist of √श्रु — the उ takes वृद्धि before सिच्
+    - cite: '3.2.110'
+      role: लुङ् — past action → अश्रौषीत्
+    - cite: '8.3.59'
+      role: आदेशप्रत्ययोः — the सिच् स् goes ष् after the ओ → अश्रौषीत्
+  - form: क्षणम्
+    lemma: क्षण
+    gloss: for a moment
+    vocab: true
+    notes:
+    - term: द्वितीया
+      en: accusative of extent of time
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तूष्णीम्
+    lemma: तूष्णीम्
+    gloss: silent
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable — its ष् belongs to the word, not to a join
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of √अस्
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — the स् of ततस् → visarga at the pause
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: अवादीत्
+    lemma: वद्
+    gloss: spoke
+    notes:
+    - term: लुङ्
+      en: aorist — the second time, now beginning the king's own speech
+  - form: यत्
+    lemma: यद्
+    gloss: what
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun, neuter
+  - form: त्वया
+    lemma: युष्मद्
+    gloss: by you
+    notes:
+    - term: कर्तृ
+      en: agent of a passive participle — instrumental
+    - term: तृतीया
+      en: instrumental
+  - form: उक्तम्
+    lemma: वच्
+    gloss: has been said
+    notes:
+    - term: कृदन्त
+      en: past passive participle (क्त) of √वच्
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: the correlative answering यत्
+  - form: सत्यम्
+    lemma: सत्य
+    gloss: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — predicate, with no verb
+  - form: चेत्
+    lemma: चेत्
+    gloss: if
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable — it never stands first in its clause
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: अद्य
+    lemma: अद्य
+    gloss: today
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: एव
+    lemma: एव
+    gloss: this very
+    notes:
+    - term: अव्यय
+      en: indeclinable — it emphasises the word before it
+  - form: सेनाम्
+    lemma: सेना
+    gloss: the army
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: प्रेषयामि
+    lemma: इष्
+    gloss: I send
+    notes:
+    - term: लट्
+      en: present, first singular — a present used for what is settled now
+  - form: मन्त्री
+    lemma: मन्त्रिन्
+    gloss: the minister
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative of an इन्-stem — the ending drops, the इ lengthens
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: देव
+    lemma: देव
+    gloss: your majesty
+    notes:
+    - term: सम्बोधन
+      en: vocative — addressing a king
+  - form: धैर्यम्
+    lemma: धैर्य
+    gloss: steadiness
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: neuter nominative
+  - form: एव
+    lemma: एव
+    gloss: alone
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: बलम्
+    lemma: बल
+    gloss: strength
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — predicate
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: अकार्षीत्
+    lemma: कृ
+    gloss: did
+    notes:
+    - term: लुङ्
+      en: aorist of √कृ — वृद्धि in the root, then सिच्
+    - cite: '3.2.110'
+      role: लुङ् — past action → अकार्षीत्
+  - form: यत्
+    lemma: यद्
+    gloss: what
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun
+  - form: मन्त्री
+    lemma: मन्त्रिन्
+    gloss: the minister
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  vyakhya: 'अद्येति लुङः निमित्तम्। अगमत् अवादीत् अश्रौषीत् अकार्षीत् इति चत्वारः लुङः। अनयन् अदहन् अवदत् इति लङः, तयोः भेदः कालमात्रे। यत् त्वया उक्तम् इति भावे क्तम्, त्वयेति कर्तरि तृतीया। चेदिति न वाक्यादौ तिष्ठति।'
+  vyakhya_en: |
+    अद्य sets the tense: four verbs here are aorists — अगमत्, अवादीत्, अश्रौषीत्, अकार्षीत् — and three are the ordinary past in लङ् — अनयन्, अदहन्, अवदत्. The two sit side by side in one paragraph, so the difference is a matter of what the sentence is doing rather than of what happened. अश्रौषीत् shows the ष् of सिच् after वृद्धि, while तूष्णीम् carries a ष् that no join produced. यत् त्वया उक्तम् puts the agent in the instrumental and the verb in a participle — the clause has no finite verb at all, and तत् सत्यम् answers it with none either.
 - id: ex208
   kind: graded
   segment: 520

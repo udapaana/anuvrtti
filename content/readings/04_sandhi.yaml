@@ -87,6 +87,86 @@ readings:
 # Vowel sandhi (seg 8) handled vowel-meets-vowel. These handle consonants
 # at a word's end — the everyday changes a reader meets in running text.
 
+- id: ex214
+  segment: 128
+  sentence: हरिः ऋषिषु वसति।
+  translation: Hari dwells among the sages.
+  teaches: 'one sentence, both sibilant outcomes — हरिः takes visarga, ऋषिषु takes ष्'
+  words:
+  - form: हरिः
+    lemma: हरि
+    gloss: Hari
+    notes:
+    - term: प्रथमा
+      en: nominative — the ending स् stands at a pause before a vowel
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — the स् of the ending → visarga → हरिः
+  - form: ऋषिषु
+    lemma: ऋषि
+    gloss: among the sages
+    notes:
+    - term: सप्तमी
+      en: locative
+    - term: बहुवचन
+      en: plural
+    - cite: '8.3.59'
+      role: आदेशप्रत्ययोः — the स् of सु → ष् after the इ → ऋषिषु
+  - form: वसति
+    lemma: वस्
+    gloss: dwells
+    notes:
+    - term: लट्
+      en: present
+  vyakhya: एकस्मिन् वाक्ये द्वौ सकारौ द्वयोः गत्योः — हरिः इति विसर्जनीयः, ऋषिषु इति षत्वम्। उभयत्र इकारः पूर्वः, फलम् तु भिन्नम्।
+  vyakhya_en: |
+    Both words end their stem in इ and both have an ending in स्, and the two स् go different ways: हरिः becomes visarga, ऋषिषु becomes ष्. What separates them is where the स् stands — at the end of the word in हरिः, with nothing after it to give it a place, and inside the word in ऋषिषु, with a उ following. The इ before it is the same in both.
+- id: ex212
+  segment: 124
+  sentence: पुनर् गच्छति → पुनः पुनः।
+  translation: '"again and again" — पुनर् at the pause shows as पुनः'
+  teaches: 'रु → visarga before a hard consonant and at the pause (खरवसानयोर्विसर्जनीयः)'
+  words:
+  - form: पुनः
+    lemma: पुनर्
+    gloss: 'again (← पुनर्)'
+    notes:
+    - text: 'the word ends in र्; before a vowel or soft sound it stays पुनर् — पुनर् अपि'
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — र् → visarga before a खर् consonant and at the pause
+    - term: विसर्जनीय
+      en: the visarga ः
+  - form: पुनः
+    lemma: पुनर्
+    gloss: again
+    notes:
+    - text: 'the second one stands at the pause, and takes the visarga for that reason alone'
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — अवसान, the pause, is the other trigger
+  vyakhya: खरि अवसाने च रोः विसर्जनीयः। पुनर् → पुनः। स्वरे तु पुनर् अपि इति तिष्ठति।
+  vyakhya_en: |
+    One rule, two triggers. The र् of पुनर् becomes visarga both before a hard consonant (पुनः कः) and at a pause, where nothing follows at all — पुनः पुनः shows the second case twice over. Before a vowel the र् survives: पुनर् अपि. So the visarga is not part of the word; it is what the word's final र् turns into when the surroundings give it nothing voiced to lean on.
+- id: ex213
+  segment: 126
+  sentence: अग्नि सु → अग्निषु।
+  translation: '"in the fires" → अग्निषु'
+  teaches: 'षत्व — the ending''s स् becomes ष् after an इ (आदेशप्रत्ययोः)'
+  words:
+  - form: अग्निषु
+    lemma: अग्नि
+    gloss: in the fires
+    notes:
+    - term: सप्तमी
+      en: locative
+    - term: बहुवचन
+      en: plural
+    - text: 'the ending is सु; its स् meets the इ of अग्नि'
+    - cite: '8.3.59'
+      role: आदेशप्रत्ययोः — a प्रत्यय's स् goes ष् after an इण् vowel → अग्निषु
+    - term: षत्व
+      en: retroflexion of स् to ष्
+  vyakhya: प्रत्ययस्य सकारः इण्कुभ्याम् उत्तरः षकारः। अग्नि + सु = अग्निषु। न तु सर्वः सकारः — प्रत्ययस्य एव।
+  vyakhya_en: |
+    The locative plural ending सु carries a स्, and after the इ of अग्नि that स् retroflexes to ष् — अग्निषु. The rule is narrow in a way worth noticing: it applies to the स् of an ending, not to every स् in the language. A स् that belongs to the stem itself is untouched by it, which is why the same इ does nothing to the स् of a following separate word.
 - id: ex034
   segment: 120
   sentence: वाक् अत्र → वाग् अत्र।

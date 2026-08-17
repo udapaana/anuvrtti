@@ -38,6 +38,311 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex211
+  kind: sangraha
+  segment: 550
+  order: 1
+  sentence: अद्य राजा सभाम् अगमत्। तत्र दूतः अवादीत् — शत्रवः पराजिताः, ग्रामाः च रक्षिताः। राजा तत् अश्रौषीत्, मन्त्रिणः च अपृच्छत् — केन एतत् कृतम्। मन्त्रिणः अवादिषुः — यः स्वयम् न भाषते सः एव अकार्षीत्। ततः राजा तम् वीरम् आह्वयत्, वरम् च अददात्। सः वीरः तूष्णीम् आसीत्, न च किञ्चित् अयाचत।
+  translation: Today the king went to the assembly. There a messenger spoke — "The enemies are defeated, and the villages protected." The king heard that, and asked the ministers — "By whom was this done?" The ministers spoke — "He who does not speak of himself is the very one who did it." Then the king summoned that hero, and gave a boon. That hero was silent, and asked for nothing.
+  teaches: |
+    अगमत्, अवादीत्, अश्रौषीत्, अवादिषुः, अकार्षीत् — five aorists in one
+    scene. पराजिताः and रक्षिताः stand as predicates without a verb.
+  words:
+  - form: अद्य
+    lemma: अद्य
+    gloss: today
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: सभाम्
+    lemma: सभा
+    gloss: to the assembly
+    notes:
+    - term: द्वितीया
+      en: accusative — goal of motion
+  - form: अगमत्
+    lemma: गम्
+    gloss: went
+    notes:
+    - term: लुङ्
+      en: aorist
+    - cite: '3.2.110'
+      role: लुङ् — past action → अगमत्
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: दूतः
+    lemma: दूत
+    gloss: a messenger
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: अवादीत्
+    lemma: वद्
+    gloss: spoke
+    notes:
+    - term: लुङ्
+      en: aorist
+  - form: शत्रवः
+    lemma: शत्रु
+    gloss: the enemies
+    notes:
+    - term: प्रथमा
+      en: nominative plural
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — final स् → visarga → शत्रवः
+  - form: पराजिताः
+    lemma: जि
+    gloss: defeated
+    notes:
+    - term: कृदन्त
+      en: past passive participle (क्त) with परा — predicate, no verb
+  - form: ग्रामाः
+    lemma: ग्राम
+    gloss: the villages
+    notes:
+    - term: प्रथमा
+      en: nominative plural
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — the plural स् → visarga → ग्रामाः
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: रक्षिताः
+    lemma: रक्ष्
+    gloss: protected
+    notes:
+    - term: कृदन्त
+      en: past passive participle (क्त), plural
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: द्वितीया
+      en: neuter accusative
+  - form: अश्रौषीत्
+    lemma: श्रु
+    gloss: heard
+    notes:
+    - term: लुङ्
+      en: aorist
+    - cite: '8.3.59'
+      role: आदेशप्रत्ययोः — the सिच् स् goes ष् after the ओ
+  - form: मन्त्रिणः
+    lemma: मन्त्रिन्
+    gloss: the ministers
+    notes:
+    - term: द्वितीया
+      en: accusative plural — the person asked
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अपृच्छत्
+    lemma: प्रच्छ्
+    gloss: asked
+    notes:
+    - term: लङ्
+      en: past
+  - form: केन
+    lemma: किम्
+    gloss: by whom
+    notes:
+    - term: तृतीया
+      en: instrumental
+  - form: एतत्
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: प्रथमा
+      en: neuter nominative
+  - form: कृतम्
+    lemma: कृ
+    gloss: was done
+    notes:
+    - term: कृदन्त
+      en: past passive participle (क्त)
+  - form: मन्त्रिणः
+    lemma: मन्त्रिन्
+    gloss: the ministers
+    notes:
+    - term: प्रथमा
+      en: nominative plural — the same form as the accusative above
+  - form: अवादिषुः
+    lemma: वद्
+    gloss: spoke
+    notes:
+    - term: लुङ्
+      en: aorist, third plural
+    - cite: '3.2.110'
+      role: लुङ् — past action → अवादिषुः
+  - form: यः
+    lemma: यद्
+    gloss: he who
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun
+  - form: स्वयम्
+    lemma: स्वयम्
+    gloss: of himself
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: भाषते
+    lemma: भाष्
+    gloss: speaks
+    notes:
+    - term: लट्
+      en: present — आत्मनेपद
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: the correlative answering यः
+  - form: एव
+    lemma: एव
+    gloss: the very one
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अकार्षीत्
+    lemma: कृ
+    gloss: did it
+    notes:
+    - term: लुङ्
+      en: aorist of √कृ
+    - cite: '3.2.110'
+      role: लुङ् — past action → अकार्षीत्
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable
+    - cite: '8.3.15'
+      role: खरवसानयोर्विसर्जनीयः — the स् of ततस् → visarga
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: तम्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: द्वितीया
+      en: accusative
+  - form: वीरम्
+    lemma: वीर
+    gloss: hero
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: आह्वयत्
+    lemma: ह्वे
+    gloss: summoned
+    notes:
+    - term: लङ्
+      en: past
+  - form: वरम्
+    lemma: वर
+    gloss: a boon
+    notes:
+    - term: द्वितीया
+      en: accusative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अददात्
+    lemma: दा
+    gloss: gave
+    notes:
+    - term: लङ्
+      en: past
+  - form: सः
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: वीरः
+    lemma: वीर
+    gloss: hero
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: तूष्णीम्
+    lemma: तूष्णीम्
+    gloss: silent
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of √अस्
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: किञ्चित्
+    lemma: किम्
+    gloss: anything
+    notes:
+    - term: द्वितीया
+      en: neuter accusative with the indefinite particle
+  - form: अयाचत
+    lemma: याच्
+    gloss: asked for
+    notes:
+    - term: लङ्
+      en: past — आत्मनेपद, asking for oneself
+  vyakhya: 'पञ्च लुङः एकस्मिन् प्रसङ्गे — अगमत् अवादीत् अश्रौषीत् अवादिषुः अकार्षीत्। पराजिताः रक्षिताः कृतम् इति कर्मणि क्तानि, तिङन्तम् अन्तरेण। मन्त्रिणः इति द्वितीयाबहुवचने प्रथमाबहुवचने च समानम्।'
+  vyakhya_en: |
+    Five aorists carry the scene, and three of the sentences have no finite verb at all — शत्रवः पराजिताः, ग्रामाः रक्षिताः, केन एतत् कृतम् all rest on a participle. मन्त्रिणः appears twice, first as the accusative of the persons asked and then as the nominative of the persons answering; nothing in the form distinguishes them, only the verb each one stands beside. The hero's silence is the point of the last sentence and also its grammar — तूष्णीम् आसीत् and न किञ्चित् अयाचत say it twice, once with an indeclinable and once with a verb.
 - id: ex207
   kind: sangraha
   segment: 265
