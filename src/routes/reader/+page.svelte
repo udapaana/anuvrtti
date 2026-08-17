@@ -653,6 +653,14 @@
 
               {#if asking && selWord.quiz}
                 <div class="railq">{selWord.quiz.q}</div>
+                {#if selWord.quiz.phrase}
+                  <!-- The form alone cannot settle the case, so the phrase that
+                       does is shown. Reading the case off the sentence rather
+                       than the ending is the skill being asked for. -->
+                  <div class="railphrase">
+                    <Sanskrit text={selWord.quiz.phrase} source="devanagari" />
+                  </div>
+                {/if}
                 <div class="railopts">
                   {#each selWord.quiz.opts as o}
                     <button class="opt" onclick={() => pickOption(o)}>
@@ -783,7 +791,17 @@
   .railhead { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
   .railform { font-size: 1.5rem; color: #0f1419; }
   .railstem { font-family: ui-monospace, monospace; font-size: 0.7rem; color: #b08d57; }
-  .railq { font-size: 0.85rem; color: #6b6b6b; font-style: italic; margin: 0.7rem 0 0.6rem; }
+  .railq { font-size: 0.85rem; color: #6b6b6b; font-style: italic; margin: 0.7rem 0 0.5rem; }
+  .railphrase {
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: #0f1419;
+    background: #fff;
+    border: 1px solid #efe7d8;
+    border-radius: 8px;
+    padding: 0.45rem 0.6rem;
+    margin-bottom: 0.6rem;
+  }
   .railopts { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .opt {
     font-size: 0.95rem;
