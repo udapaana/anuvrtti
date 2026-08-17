@@ -198,11 +198,82 @@ async function main() {
   /** Per-stem results the प्रयोग index reuses rather than recomputing. */
   const stemInfo = new Map<string, { stemSlp: string; linga: string | null }>();
 
+  // ── what the corpus itself says a form is ──────────────────────────────
+  //
+  // The annotation is the primary evidence and the engine is the secondary.
+  // कूपे is ambiguous as a string — vidyut offers सप्तमी एक, प्रथमा द्वि, द्वितीया
+  // द्वि, सम्बोधन एक/द्वि — but the reading it stands in says सप्तमी, and that is
+  // not a guess. Intersecting the two settles 96% of forms; asking the engine
+  // alone smeared one word across five cells.
+  const annot = new Map<string, { vib: Set<string>; vac: Set<string> }>();
+  const VIB_SET = new Set(Object.values(VIB_DEV));
+  const VAC_SET = new Set(Object.values(VAC_DEV));
+
+  /**
+   * The कारक role a word is tagged with implies its विभक्ति, by 2.3.
+   *
+   * Many words carry only the role — गोकुले is tagged अधिकरण and nothing else —
+   * and without this the form falls back to the engine's five candidates.
+   * The mapping is the default assignment only; a role can take another case
+   * under specific rules, so it is used strictly as a fallback where no
+   * विभक्ति was recorded, never to override one.
+   */
+  const ROLE_VIB: Record<string, string> = {
+    'कर्तृ': 'प्रथमा', 'कर्मन्': 'द्वितीया', 'करण': 'तृतीया',
+    'सम्प्रदान': 'चतुर्थी', 'अपादान': 'पञ्चमी', 'सम्बन्ध': 'षष्ठी',
+    'अधिकरण': 'सप्तमी'
+  };
+
+  for (const r of corpus) {
+    for (const w of r.words ?? []) {
+      if (!w.lemma) continue;
+      const notes = w.notes ?? [];
+      const v = notes.find((n: any) => VIB_SET.has(n.term));
+      const role = notes.find((n: any) => ROLE_VIB[n.term]);
+      const vib = v ? v.term : role ? ROLE_VIB[role.term] : null;
+      if (!vib) continue;
+      const n = notes.find((x: any) => VAC_SET.has(x.term));
+      const key = deaccent(w.lemma) + '|' + deaccent(w.form);
+      if (!annot.has(key)) annot.set(key, { vib: new Set(), vac: new Set() });
+      annot.get(key)!.vib.add(vib);
+      if (n) annot.get(key)!.vac.add(n.term);
+    }
+  }
+
+  /**
+   * The cells a form actually occupies, narrowing the engine's candidates by
+   * what the corpus asserts. Returns the engine's raw list when the corpus is
+   * silent — better a candidate set than nothing — and flags which happened.
+   */
+  function resolveCells(
+    stem: string, form: string, cands: Array<[string, string, string]>
+  ): { cells: Array<[string, string, string]>; byAnnotation: boolean } {
+    const a = annot.get(stem + '|' + form);
+    if (!a || !a.vib.size) return { cells: cands, byAnnotation: false };
+    let keep = cands.filter((c) => a.vib.has(VIB_DEV[c[1]]));
+    // The engine and the annotation have never disagreed across the corpus
+    // (0 conflicts in 507 pairs). If one ever appears, trust neither silently:
+    // fall back to the candidates and let the cell show as ambiguous.
+    if (!keep.length) return { cells: cands, byAnnotation: false };
+    if (a.vac.size) {
+      const k = keep.filter((c) => a.vac.has(VAC_DEV[c[2]]));
+      if (k.length) keep = k;
+    }
+    return { cells: keep, byAnnotation: true };
+  }
+
   for (const [stem, forms] of formsByStem) {
     const stemSlp = toSlp1(stem);
     if (!stemSlp) continue;
 
-    // Narrow the gender: keep only lingas that can produce EVERY attested form.
+    // Narrow the gender: keep only lingas that can produce EVERY attested form
+    // IN THE CASE THE CORPUS ASSIGNS IT.
+    //
+    // Requiring only that the linga produce the string was too weak. विश्वे is
+    // derivable as a feminine of विश्वा, so विश्व came out स्त्रीलिङ्ग on the
+    // strength of one Vedic dual — and then its whole expected-form grid was
+    // the wrong declension. Demanding agreement with the annotated विभक्ति
+    // removes that class of false narrowing.
     let possible = new Set<string>(LINGAS);
     const derivable: Array<[string, string]> = [];
     for (const form of forms) {
@@ -211,7 +282,8 @@ async function main() {
       const cs = cellsFor(stemSlp, slp);
       if (!cs.length) continue;           // not a subanta of this stem (verb, indeclinable)
       derivable.push([form, slp]);
-      const seen = new Set(cs.map((c) => c[0]));
+      const { cells: fit } = resolveCells(stem, form, cs);
+      const seen = new Set(fit.map((c) => c[0]));
       possible = new Set([...possible].filter((lg) => seen.has(lg)));
     }
     if (!derivable.length) { underivable++; continue; }
@@ -221,6 +293,9 @@ async function main() {
 
     for (const [form, slp] of derivable) {
       const cs = cellsFor(stemSlp, slp).filter((c) => (linga ? c[0] === linga : true));
+      // The quiz cache keeps the ENGINE's view: "does this form, by its shape
+      // alone, determine a case?" That is the right question for a quiz gate,
+      // and narrowing it by the annotation would make the answer trivially yes.
       const vibs = [...new Set(cs.map((c) => VIB_DEV[c[1]]))];
       const pairs = [...new Set(cs.map((c) => VIB_DEV[c[1]] + '|' + VAC_DEV[c[2]]))]
         .map((k) => k.split('|') as [string, string]);
@@ -319,11 +394,46 @@ async function main() {
         continue;
       }
       distinct.add(o.form);
-      const keys = [...new Set(cs.map((c) => VIB_DEV[c[1]] + '|' + VAC_DEV[c[2]]))];
+      // What the corpus says it is here, not everything its shape could be.
+      const { cells: fit, byAnnotation } = resolveCells(stem, o.form, cs);
+      const keys = [...new Set(fit.map((c) => VIB_DEV[c[1]] + '|' + VAC_DEV[c[2]]))];
       for (const k of keys) {
-        (grid[k] ??= []).push({ ...o, ambiguous: keys.length > 1 });
+        (grid[k] ??= []).push({
+          ...o,
+          // Genuinely two cells — every neuter's प्रथमा/द्वितीया, the ऋ-stem's
+          // पञ्चमी/षष्ठी. Not a failure to decide: the language does not decide.
+          ambiguous: keys.length > 1,
+          // False when the corpus never tagged this word's case, so the cell
+          // rests on the engine alone and is weaker evidence.
+          attested: byAnnotation
+        });
       }
     }
+
+    // One reading can use the same form twice; the cell wants distinct evidence.
+    for (const k of Object.keys(grid)) {
+      const seen = new Set<string>();
+      grid[k] = grid[k].filter((a: any) => {
+        const id = a.reading + ':' + a.formRaw;
+        if (seen.has(id)) return false;
+        seen.add(id);
+        return true;
+      });
+    }
+
+    // `ambiguous` is a fact about a FORM within this paradigm, not about one
+    // occurrence of it. Two readings can resolve the same string differently —
+    // ताः is द्वितीया बहुवचन in both places it occurs, but its candidate set was
+    // wider — so the flag is recomputed from where the form actually landed.
+    // Otherwise a cell reads "this fills more than one cell" while filling one.
+    const placedIn = new Map<string, Set<string>>();
+    for (const [k, list] of Object.entries(grid))
+      for (const a of list as any[]) {
+        if (!placedIn.has(a.form)) placedIn.set(a.form, new Set());
+        placedIn.get(a.form)!.add(k);
+      }
+    for (const list of Object.values(grid))
+      for (const a of list as any[]) a.ambiguous = (placedIn.get(a.form)?.size ?? 1) > 1;
 
     // A cell wants evidence, not an inventory. तद् alone occurs hundreds of
     // times, and shipping every occurrence put the index at 977KB — a payload
