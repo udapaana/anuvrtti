@@ -80,6 +80,29 @@ function lengthOf(r: any): 'short' | 'passage' | 'long' {
  */
 const VIBHAKTI = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
 const LAKARA = ['लट्', 'लङ्', 'लिट्', 'लृट्', 'लोट्', 'विधिलिङ्', 'लुङ्'];
+const ROLES = ['कर्तृ', 'कर्मन्', 'करण', 'सम्प्रदान', 'अपादान', 'अधिकरण'];
+
+/**
+ * Syncretic form-classes: cells that are ALWAYS identical, so a form alone
+ * cannot decide between them.
+ *
+ * वनम् is both प्रथमा and द्वितीया — every neuter is — and asking "which
+ * विभक्ति?" of the bare form has two right answers. The corpus already teaches
+ * this (ex172: "the प्रथमा and द्वितीया … are always identical in the neuter"),
+ * so a quiz that marks one of them wrong contradicts the reader's own text.
+ *
+ * 21 forms in the corpus carry more than one case across their occurrences —
+ * neuter प्रथमा/द्वितीया, ऋ-stem पञ्चमी/षष्ठी, pronominal चतुर्थी/षष्ठी. Rather
+ * than suppress those words, the question changes: where the form is ambiguous
+ * we ask what it is DOING in this sentence (its कारक), which the annotation
+ * already records and which the sentence genuinely determines.
+ */
+const SYNCRETIC: string[][] = [
+  ['प्रथमा', 'द्वितीया'],   // every neuter
+  ['पञ्चमी', 'षष्ठी'],      // ऋ-stems: मातुः, पितुः, गुरोः
+  ['चतुर्थी', 'षष्ठी'],     // enclitic pronouns: ते, नः, वः
+  ['प्रथमा', 'सम्बोधन']     // many stems in the singular
+];
 
 function hash(s: string): number {
   let h = 0;
@@ -87,26 +110,56 @@ function hash(s: string): number {
   return Math.abs(h);
 }
 
-function quizFor(word: any): { q: string; opts: string[]; ans: string } | null {
+/** Distractors picked deterministically so options do not reshuffle per build. */
+function distractors(ans: string, pool: string[], seed: number, n = 3): string[] {
+  const others = pool.filter((x) => x !== ans);
+  const picks: string[] = [];
+  for (let i = 0; i < n && others.length; i++) {
+    picks.push(others.splice((seed + i * 7) % others.length, 1)[0]);
+  }
+  return picks;
+}
+
+function quizFor(word: any, ambiguousForms: Set<string>): { q: string; opts: string[]; ans: string } | null {
   const terms: string[] = (word.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term);
   const vib = terms.find((t) => VIBHAKTI.includes(t));
   const lak = terms.find((t) => LAKARA.includes(t));
-  const [ans, pool, q] = vib
-    ? [vib, VIBHAKTI, 'Which विभक्ति?']
-    : lak
-      ? [lak, LAKARA, 'Which लकार?']
-      : [null, [], ''];
-  if (!ans) return null;
+  const role = terms.find((t) => ROLES.includes(t));
+  const form = String(word.form ?? '');
 
-  const others = pool.filter((x) => x !== ans);
-  const seed = hash(String(word.form ?? '') + ans);
-  const picks: string[] = [];
-  for (let i = 0; i < 3 && others.length; i++) {
-    picks.push(others.splice((seed + i * 7) % others.length, 1)[0]);
+  // A form whose case is syncretic cannot be asked "which विभक्ति?" — ask what
+  // it does instead, when the annotation says. Otherwise ask nothing rather
+  // than assert one of two correct answers.
+  if (vib) {
+    // Ambiguity is read off the CORPUS, not guessed from the ending. A form
+    // attested with two different cases somewhere in the corpus cannot be asked
+    // "which विभक्ति?" anywhere — फलम् is प्रथमा in one reading and द्वितीया in
+    // another, and both are right. Guessing from endings missed most of them,
+    // because few neuter words carry an explicit नपुंसक tag.
+    if (ambiguousForms.has(form)) {
+      if (!role) return null;
+      const seed = hash(form + role);
+      const opts = [role, ...distractors(role, ROLES, seed)].sort(
+        (a, b) => ROLES.indexOf(a) - ROLES.indexOf(b)
+      );
+      return { q: 'What is it doing here?', opts, ans: role };
+    }
+    const seed = hash(form + vib);
+    const opts = [vib, ...distractors(vib, VIBHAKTI, seed)].sort(
+      (a, b) => VIBHAKTI.indexOf(a) - VIBHAKTI.indexOf(b)
+    );
+    return { q: 'Which विभक्ति?', opts, ans: vib };
   }
-  // Options in canonical order, not answer-first — otherwise position gives it away.
-  const opts = [ans, ...picks].sort((a, b) => pool.indexOf(a) - pool.indexOf(b));
-  return { q, opts, ans };
+
+  if (lak) {
+    const seed = hash(form + lak);
+    const opts = [lak, ...distractors(lak, LAKARA, seed)].sort(
+      (a, b) => LAKARA.indexOf(a) - LAKARA.indexOf(b)
+    );
+    return { q: 'Which लकार?', opts, ans: lak };
+  }
+
+  return null;
 }
 
 function main() {
@@ -146,12 +199,63 @@ function main() {
     const stem = file.replace(/\.yaml$/, ''); // '01_karaka'
     const key = stem.includes('_') ? stem.slice(stem.indexOf('_') + 1) : stem; // 'karaka'
     chapters.push({ id: key, title: titles[key] ?? key, readings });
-    for (const r of readings) {
-      for (const w of r.words ?? []) {
-        const quiz = quizFor(w);
-        if (quiz) w.quiz = quiz;
+    for (const r of readings) flat.push({ ...r, chapter: key, length: lengthOf(r) });
+  }
+
+  // Which surface forms are attested with more than one case anywhere in the
+  // corpus? Those are the syncretic ones, and they are asked a different
+  // question. Computed after `flat` is complete because it needs every reading.
+  const casesByForm = new Map<string, Set<string>>();
+  for (const r of flat) {
+    for (const w of r.words ?? []) {
+      for (const n of w.notes ?? []) {
+        if (!n.term || !VIBHAKTI.includes(n.term)) continue;
+        if (!casesByForm.has(w.form)) casesByForm.set(w.form, new Set());
+        casesByForm.get(w.form)!.add(n.term);
       }
-      flat.push({ ...r, chapter: key, length: lengthOf(r) });
+    }
+  }
+  // Two sources of ambiguity, unioned:
+  //   1. attested with more than one case somewhere in the corpus
+  //   2. a NEUTER stem — प्रथमा and द्वितीया are always identical there, even
+  //      when this corpus happens to show only one of them. वनम् appears only
+  //      as द्वितीया here, but "which विभक्ति?" still has two right answers.
+  const neuterLemmas = new Set<string>();
+  for (const r of flat) {
+    for (const w of r.words ?? []) {
+      const txt = (w.notes ?? []).map((n: any) => `${n.term ?? ''} ${n.en ?? ''}`).join(' ');
+      if (/नपुंसक|neuter/i.test(txt) && w.lemma) neuterLemmas.add(w.lemma);
+    }
+  }
+  const ambiguousForms = new Set(
+    [...casesByForm.entries()].filter(([, cases]) => cases.size > 1).map(([form]) => form)
+  );
+  // A stem is provably MASCULINE when the corpus shows it in a nominative that
+  // a neuter could never take — an अ-stem masculine nominative ends -ः, and a
+  // neuter one does not. Anything not proved masculine is treated as possibly
+  // neuter, because वन and कुल are neuter and the corpus never says so.
+  const provenMasc = new Set<string>();
+  for (const r of flat) {
+    for (const w of r.words ?? []) {
+      if (!w.lemma) continue;
+      const isNom = (w.notes ?? []).some((n: any) => n.term === 'प्रथमा');
+      if (isNom && /ः$/.test(w.form)) provenMasc.add(w.lemma);
+    }
+  }
+  for (const r of flat) {
+    for (const w of r.words ?? []) {
+      if (!/म्$|ं$/.test(w.form)) continue;
+      const vibs = (w.notes ?? []).filter((n: any) => VIBHAKTI.includes(n.term)).map((n: any) => n.term);
+      if (!vibs.some((v: string) => v === 'प्रथमा' || v === 'द्वितीया')) continue;
+      if (w.lemma && provenMasc.has(w.lemma)) continue; // masculine: -म् is unambiguously द्वितीया
+      ambiguousForms.add(w.form);
+    }
+  }
+  for (const r of flat) {
+    for (const w of r.words ?? []) {
+      const quiz = quizFor(w, ambiguousForms);
+      if (quiz) w.quiz = quiz;
+      else delete w.quiz;
     }
   }
 
