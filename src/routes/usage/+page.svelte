@@ -1,0 +1,413 @@
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import { cellKey } from '$lib/usage/normalize';
+  import type { UsageIndex, UsageSection, ParadigmEntry, Attestation } from '$lib/usage/types';
+
+  // प्रयोग — the corpus indexed by what the language declines, rather than by
+  // what the reader meets next. सूत्र (/ref) keeps Pāṇini's order; this is the
+  // other index over the same 256 readings, joined to it by citation.
+  //
+  // The axes come from the data, not from this file: सुबन्त is विभक्ति × वचन, but
+  // तिङन्त is पुरुष × वचन once लकार is pinned, and सन्धि is वर्ण × वर्ण. A grid that
+  // hardcoded case and number could not grow into those.
+
+  let index = $state<UsageIndex | null>(null);
+  let error = $state('');
+  let loaded = $state(false);
+
+  let query = $state('');
+  let showSparse = $state(false);
+
+  const section = $derived<UsageSection | null>(index?.sections?.[0] ?? null);
+  const rows = $derived(section?.axes?.[0]?.values ?? []);
+  const cols = $derived(section?.axes?.[1]?.values ?? []);
+
+  const entry = $derived<ParadigmEntry | null>(
+    section?.entries.find((e) => e.subject === subject) ?? section?.entries[0] ?? null
+  );
+
+  const listed = $derived.by(() => {
+    const all = section?.entries ?? [];
+    const q = query.trim();
+    if (!q) return all;
+    return all.filter((e) => e.subject.includes(q));
+  });
+
+  const sparseListed = $derived.by(() => {
+    const all = section?.sparse ?? [];
+    const q = query.trim();
+    if (!q) return all;
+    return all.filter((e) => e.subject.includes(q));
+  });
+
+  // The URL is the state, not a copy of it. Reading the query once on mount and
+  // writing it back on every click meant a `goto` could land while the old
+  // values were still in the component, and the two would disagree — a deep
+  // link to a cell came back as the default stem. `$page` re-runs on every
+  // navigation, so deriving from it keeps one source of truth.
+  const subject = $derived($page.url.searchParams.get('stem'));
+  const cell = $derived($page.url.searchParams.get('cell'));
+
+  onMount(async () => {
+    try {
+      const res = await fetch('/data/usage.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('could not load the usage index (' + res.status + ')');
+      index = await res.json();
+      loaded = true;
+    } catch (e) {
+      error = String((e as Error).message || e);
+    }
+  });
+
+  function go(stem: string | null, k: string | null) {
+    const p = new URLSearchParams();
+    if (stem) p.set('stem', stem);
+    if (k) p.set('cell', k);
+    goto('/usage?' + p.toString(), { replaceState: true, noScroll: true, keepFocus: true });
+  }
+
+  function pickSubject(s: string) {
+    go(s, null);
+  }
+
+  function pickCell(k: string) {
+    go(entry?.subject ?? subject, cell === k ? null : k);
+  }
+
+  /** The attestations in one cell, or [] when the corpus has none. */
+  function atts(e: ParadigmEntry, k: string): Attestation[] {
+    return e.grid?.[k] ?? [];
+  }
+
+  /** What vidyut derives for a cell — shown when the corpus does not attest it. */
+  function expected(e: ParadigmEntry, k: string): string[] {
+    return e.paradigm?.[k] ?? [];
+  }
+
+  const selected = $derived.by(() => {
+    if (!entry || !cell) return null;
+    const a = atts(entry, cell);
+    return { key: cell, atts: a, expected: expected(entry, cell) };
+  });
+</script>
+
+<svelte:head><title>प्रयोग · usage — anuvrtti</title></svelte:head>
+
+<div class="wrap">
+  <header class="head">
+    <div class="kicker">प्रयोग · usage</div>
+    <h1>The corpus, indexed by what it declines</h1>
+    <p class="lede">
+      Every cell below is filled from the readings themselves — the form, the line that
+      attests it, and the sūtra that produced it where one is recorded. A cell is empty
+      exactly when no reading has used it yet.
+    </p>
+  </header>
+
+  {#if error}
+    <p class="err">{error}</p>
+  {:else if !loaded}
+    <p class="muted">loading…</p>
+  {:else if section && entry}
+    <div class="cols">
+      <nav class="spine">
+        <div class="spinehead">
+          <span class="axis"><Sanskrit text={section.dev} source="devanagari" /></span>
+          <span class="count">{section.entries.length} stems</span>
+        </div>
+        <input class="find" bind:value={query} placeholder="filter…" aria-label="filter stems" />
+        <div class="stems">
+          {#each listed as e (e.subject)}
+            <button
+              class="stem"
+              class:on={e.subject === entry.subject}
+              aria-label="{e.subject} — {e.filled} of {e.total} cells attested"
+              onclick={() => pickSubject(e.subject)}
+            >
+              <span class="sdev"><Sanskrit text={e.subject} source="devanagari" /></span>
+              <span class="meter" aria-hidden="true">
+                <span class="fill" style="width:{Math.round((e.filled / e.total) * 100)}%"></span>
+              </span>
+              <span class="sn">{e.filled}/{e.total}</span>
+            </button>
+          {/each}
+        </div>
+
+        {#if sparseListed.length}
+          <button class="more" onclick={() => (showSparse = !showSparse)}>
+            {showSparse ? '−' : '+'} {sparseListed.length} attested once
+          </button>
+          {#if showSparse}
+            <div class="sparse">
+              {#each sparseListed.slice(0, 120) as e (e.subject)}
+                <span class="sparseitem"><Sanskrit text={e.subject} source="devanagari" /></span>
+              {/each}
+            </div>
+          {/if}
+        {/if}
+      </nav>
+
+      <main class="main">
+        <div class="subjhead">
+          <span class="subj"><Sanskrit text={entry.subject} source="devanagari" /></span>
+          <div class="subjmeta">
+            {#if entry.linga}
+              <span class="linga"><Sanskrit text={entry.linga} source="devanagari" /></span>
+            {:else}
+              <span class="linga warn">gender unsettled</span>
+            {/if}
+            <span class="dot">·</span>
+            <span>{entry.forms} forms attested</span>
+            <span class="dot">·</span>
+            <span>{entry.filled} of {entry.total} cells</span>
+          </div>
+        </div>
+
+        {#if entry.paradigm}
+          <div class="grid" style="--cols:{cols.length}">
+            <div class="corner"></div>
+            {#each cols as c}
+              <div class="colhead"><Sanskrit text={c} source="devanagari" /></div>
+            {/each}
+            {#each rows as r}
+              <div class="rowhead"><Sanskrit text={r} source="devanagari" /></div>
+              {#each cols as c}
+                {@const k = cellKey(r, c)}
+                {@const a = atts(entry, k)}
+                {@const exp = expected(entry, k)}
+                <button
+                  class="cell"
+                  class:has={a.length > 0}
+                  class:sel={cell === k}
+                  aria-label="{r} {c} — {a.length ? a[0].form : 'not attested'}"
+                  onclick={() => pickCell(k)}
+                >
+                  {#if a.length}
+                    <span class="form">
+                      <Sanskrit text={a[0].formRaw} source="devanagari" fallback={a[0].form} />
+                    </span>
+                    {#if a[0].phrase}
+                      <span class="phrase"><Sanskrit text={a[0].phrase} source="devanagari" /></span>
+                    {/if}
+                    <span class="meta">
+                      {a[0].reading}{#if a[0].ambiguous}<span class="amb" title="this form fills more than one cell"> ↔</span>{/if}
+                    </span>
+                  {:else if exp.length}
+                    <span class="form ghost"><Sanskrit text={exp[0]} source="devanagari" /></span>
+                    <span class="unwritten">no reading attests this</span>
+                  {:else}
+                    <span class="form ghost">—</span>
+                  {/if}
+                </button>
+              {/each}
+            {/each}
+          </div>
+        {:else}
+          <p class="nogrid">
+            The gender of <Sanskrit text={entry.subject} source="devanagari" /> is not settled by
+            its attested forms, so the unattested cells cannot be shown — they would be a guess
+            across three declensions. The forms the corpus does attest:
+          </p>
+          <div class="flat">
+            {#each Object.entries(entry.grid) as [k, list]}
+              <button class="flatitem" class:sel={cell === k} onclick={() => pickCell(k)}>
+                <span class="form"><Sanskrit text={list[0].formRaw} source="devanagari" fallback={list[0].form} /></span>
+                <span class="flatcell"><Sanskrit text={k.replace('|', ' ')} source="devanagari" /></span>
+              </button>
+            {/each}
+          </div>
+        {/if}
+
+        {#if selected}
+          <section class="detail">
+            <div class="detailhead">
+              <Sanskrit text={selected.key.replace('|', ' ')} source="devanagari" />
+            </div>
+            {#if selected.atts.length}
+              {#each selected.atts as a}
+                <div class="spec">
+                  <div class="specform">
+                    <Sanskrit text={a.formRaw} source="devanagari" fallback={a.form} />
+                    <span class="specgloss">{a.gloss}</span>
+                  </div>
+                  {#if a.phrase}
+                    <div class="specphrase"><Sanskrit text={a.phrase} source="devanagari" /></div>
+                  {/if}
+                  <div class="specmeta">
+                    <a class="rdlink" href="/reader#{a.reading}">{a.reading}</a>
+                    {#each a.cites as c}
+                      <a class="cite" href="/ref/{c.cite}" title={c.role}>{c.cite}</a>
+                    {/each}
+                    {#if a.more}<span class="muted">+{a.more} more</span>{/if}
+                  </div>
+                </div>
+              {/each}
+            {:else}
+              <p class="muted">
+                No reading attests this cell.
+                {#if selected.expected.length}
+                  The form would be
+                  <span class="ghostinline"><Sanskrit text={selected.expected[0]} source="devanagari" /></span>.
+                {/if}
+              </p>
+            {/if}
+          </section>
+        {/if}
+
+        {#if entry.unplaced.length}
+          <section class="unplaced">
+            <div class="uphead">attested, outside the classical paradigm</div>
+            <p class="muted upnote">
+              Vedic forms the Aṣṭādhyāyī's core rules do not produce. They are in the corpus,
+              so they are shown rather than dropped.
+            </p>
+            <div class="uplist">
+              {#each entry.unplaced as a}
+                <div class="upitem">
+                  <Sanskrit text={a.formRaw} source="devanagari" fallback={a.form} />
+                  <span class="muted">{a.reading}</span>
+                </div>
+              {/each}
+            </div>
+          </section>
+        {/if}
+      </main>
+    </div>
+
+    {#if index?.unlemmatized}
+      <p class="foot">
+        {index.unlemmatized} annotated words carry no lemma and cannot be indexed here —
+        mostly the earliest readings. They are an authoring gap, not a rendering one.
+      </p>
+    {/if}
+  {/if}
+</div>
+
+<style>
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+  .head { margin-bottom: 1.8rem; }
+  .kicker {
+    font-family: ui-monospace, monospace; font-size: 0.62rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: #f97316; margin-bottom: 0.5rem;
+  }
+  h1 { font-size: 1.7rem; font-weight: 600; margin: 0 0 0.5rem; letter-spacing: -0.01em; }
+  .lede { color: #6b6b6b; margin: 0; max-width: 62ch; line-height: 1.55; }
+  .err { color: #c2410c; }
+  .muted { color: #a99e8b; }
+
+  .cols { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 2rem; align-items: start; }
+  @media (max-width: 820px) { .cols { grid-template-columns: 1fr; } }
+
+  .spine { position: sticky; top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .spinehead { display: flex; align-items: baseline; justify-content: space-between; }
+  .axis { font-size: 1.05rem; }
+  .count { font-family: ui-monospace, monospace; font-size: 0.66rem; color: #a99e8b; }
+  .find {
+    border: 1px solid #e7e2d9; border-radius: 8px; padding: 0.35rem 0.6rem;
+    font: inherit; font-size: 0.85rem; background: #fff; color: inherit;
+  }
+  .stems { display: flex; flex-direction: column; gap: 1px; max-height: 60vh; overflow-y: auto; }
+  .stem {
+    display: grid; grid-template-columns: 1fr 44px auto; gap: 0.5rem; align-items: center;
+    border: 1px solid transparent; border-radius: 8px; padding: 0.32rem 0.55rem;
+    background: none; cursor: pointer; text-align: left; font: inherit; color: inherit;
+  }
+  .stem:hover { background: #faf7f0; }
+  .stem.on { background: #fdecd9; border-color: #f4c98b; }
+  .sdev { font-size: 0.95rem; }
+  .meter { height: 3px; background: #ece3d3; border-radius: 2px; overflow: hidden; }
+  .fill { display: block; height: 100%; background: #f97316; }
+  .sn { font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b; }
+  .more {
+    border: 1px solid #e7e2d9; border-radius: 8px; background: #fff; cursor: pointer;
+    font-family: ui-monospace, monospace; font-size: 0.66rem; color: #6b6b6b; padding: 0.35rem;
+  }
+  .sparse { display: flex; flex-wrap: wrap; gap: 0.25rem; max-height: 26vh; overflow-y: auto; }
+  .sparseitem { font-size: 0.82rem; color: #a99e8b; }
+
+  .subjhead { display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .subj { font-size: 1.9rem; line-height: 1; }
+  .subjmeta {
+    font-family: ui-monospace, monospace; font-size: 0.7rem; color: #a99e8b;
+    display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;
+  }
+  .linga { color: #6b6b6b; }
+  .linga.warn { color: #b08d57; }
+  .dot { opacity: 0.5; }
+
+  .grid {
+    display: grid; grid-template-columns: auto repeat(var(--cols), minmax(0, 1fr));
+    gap: 2px; overflow-x: auto;
+  }
+  .corner { }
+  .colhead, .rowhead {
+    font-size: 0.74rem; color: #a89f92; padding: 0.3rem 0.4rem; align-self: end;
+  }
+  .rowhead { text-align: right; white-space: nowrap; align-self: center; }
+  .cell {
+    display: flex; flex-direction: column; gap: 0.1rem; align-items: flex-start;
+    border: 1px solid #ece3d3; border-radius: 7px; padding: 0.4rem 0.5rem;
+    background: #fff; cursor: pointer; text-align: left; font: inherit; color: inherit;
+    min-height: 3.5rem;
+  }
+  .cell:hover { border-color: #f4c98b; }
+  .cell.has { background: #fffdfa; }
+  .cell.sel { background: #fdecd9; border-color: #f97316; }
+  .form { font-size: 1.05rem; line-height: 1.3; }
+  .form.ghost { color: #cbb994; }
+  .phrase { font-size: 0.76rem; color: #a99e8b; line-height: 1.35; }
+  .meta { font-family: ui-monospace, monospace; font-size: 0.6rem; color: #cbb994; }
+  .amb { color: #b08d57; }
+  .unwritten { font-family: ui-monospace, monospace; font-size: 0.58rem; color: #d3cab8; }
+
+  .nogrid { color: #6b6b6b; max-width: 62ch; line-height: 1.55; }
+  .flat { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .flatitem {
+    display: flex; flex-direction: column; gap: 0.1rem; border: 1px solid #ece3d3;
+    border-radius: 7px; padding: 0.4rem 0.6rem; background: #fff; cursor: pointer;
+    font: inherit; color: inherit; text-align: left;
+  }
+  .flatitem.sel { background: #fdecd9; border-color: #f97316; }
+  .flatcell { font-size: 0.68rem; color: #a99e8b; }
+
+  .detail {
+    margin-top: 1.4rem; background: #faf7f0; border: 1px solid #efe7d8;
+    border-radius: 13px; padding: 1rem 1.1rem;
+  }
+  .detailhead {
+    font-size: 0.85rem; color: #6b6b6b; margin-bottom: 0.6rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid #e7e2d9;
+  }
+  .spec { padding: 0.5rem 0; border-bottom: 1px solid #efe7d8; }
+  .spec:last-child { border-bottom: 0; }
+  .specform { display: flex; align-items: baseline; gap: 0.6rem; font-size: 1.15rem; }
+  .specgloss { font-size: 0.9rem; color: #6b6b6b; font-style: italic; }
+  .specphrase { font-size: 0.98rem; color: #463f33; margin-top: 0.15rem; }
+  .specmeta {
+    display: flex; align-items: baseline; gap: 0.6rem; margin-top: 0.35rem;
+    font-family: ui-monospace, monospace; font-size: 0.68rem; flex-wrap: wrap;
+  }
+  .rdlink { color: #a99e8b; text-decoration: none; }
+  .rdlink:hover { color: #f97316; }
+  .cite { color: #f97316; text-decoration: none; }
+  .cite:hover { text-decoration: underline; }
+  .ghostinline { color: #b08d57; }
+
+  .unplaced { margin-top: 1.4rem; border-top: 1px solid #e7e2d9; padding-top: 0.9rem; }
+  .uphead {
+    font-family: ui-monospace, monospace; font-size: 0.62rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: #94a3b8; margin-bottom: 0.35rem;
+  }
+  .upnote { font-size: 0.82rem; margin: 0 0 0.5rem; max-width: 60ch; line-height: 1.5; }
+  .uplist { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+  .upitem { display: flex; align-items: baseline; gap: 0.35rem; font-size: 1rem; }
+  .upitem .muted { font-family: ui-monospace, monospace; font-size: 0.62rem; }
+
+  .foot {
+    margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e7e2d9;
+    font-size: 0.8rem; color: #a99e8b; max-width: 66ch; line-height: 1.55;
+  }
+</style>

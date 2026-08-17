@@ -31,11 +31,13 @@
  */
 import * as fs from 'fs';
 import * as path from 'path';
+import { deaccent, phraseAround } from '../src/lib/usage/normalize';
 
 const CORPUS = path.join(process.cwd(), 'static/data/readings.json');
 const VOCAB = path.join(process.cwd(), 'static/data/vocabulary.json');
 const WASM_DIR = path.join(process.cwd(), 'static/wasm/vidyut-prakriya/');
 const OUT = path.join(process.cwd(), 'static/data/quiz-cells.json');
+const USAGE_OUT = path.join(process.cwd(), 'static/data/usage.json');
 
 const LINGAS = ['Pum', 'Stri', 'Napumsaka'] as const;
 const VIBHAKTIS = [
@@ -51,6 +53,9 @@ const VIB_DEV: Record<string, string> = {
 };
 const LINGA_DEV: Record<string, string> = {
   Pum: 'पुंलिङ्ग', Stri: 'स्त्रीलिङ्ग', Napumsaka: 'नपुंसकलिङ्ग'
+};
+const VAC_DEV: Record<string, string> = {
+  Eka: 'एकवचन', Dvi: 'द्विवचन', Bahu: 'बहुवचन'
 };
 
 function toSlp1(dev: string): string | null {
@@ -73,6 +78,48 @@ function toSlp1(dev: string): string | null {
     const isCons = /[कखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह]/.test(c);
     const next = chars[i + 1];
     if (isCons && next !== '्' && !(next && /[ािीुूृेैोौ]/.test(next))) out += 'a';
+  }
+  return out;
+}
+
+/**
+ * SLP1 → Devanagari, for showing vidyut's own output.
+ *
+ * The cache only ever needed Devanagari → SLP1, because it asks "does this
+ * corpus form derive?" and throws the engine's spelling away. The प्रयोग grid
+ * shows the UNATTESTED cells too, and those forms exist only as vidyut emits
+ * them, so they have to come back the other way.
+ */
+const SLP_VOWEL: Record<string, string> = {
+  a: 'अ', A: 'आ', i: 'इ', I: 'ई', u: 'उ', U: 'ऊ', f: 'ऋ', F: 'ॠ',
+  e: 'ए', E: 'ऐ', o: 'ओ', O: 'औ'
+};
+const SLP_MATRA: Record<string, string> = {
+  a: '', A: 'ा', i: 'ि', I: 'ी', u: 'ु', U: 'ू', f: 'ृ',
+  e: 'े', E: 'ै', o: 'ो', O: 'ौ'
+};
+const SLP_CONS: Record<string, string> = {
+  k: 'क', K: 'ख', g: 'ग', G: 'घ', N: 'ङ', c: 'च', C: 'छ', j: 'ज', J: 'झ', Y: 'ञ',
+  w: 'ट', W: 'ठ', q: 'ड', Q: 'ढ', R: 'ण', t: 'त', T: 'थ', d: 'द', D: 'ध', n: 'न',
+  p: 'प', P: 'फ', b: 'ब', B: 'भ', m: 'म', y: 'य', r: 'र', l: 'ल', v: 'व',
+  S: 'श', z: 'ष', s: 'स', h: 'ह'
+};
+function toDeva(slp: string): string {
+  let out = '';
+  let i = 0;
+  while (i < slp.length) {
+    const c = slp[i];
+    if (SLP_CONS[c]) {
+      out += SLP_CONS[c];
+      const n = slp[i + 1];
+      if (n !== undefined && SLP_MATRA[n] !== undefined) { out += SLP_MATRA[n]; i += 2; }
+      else { out += '्'; i += 1; }
+      continue;
+    }
+    if (SLP_VOWEL[c]) { out += SLP_VOWEL[c]; i++; continue; }
+    if (c === 'M') { out += 'ं'; i++; continue; }
+    if (c === 'H') { out += 'ः'; i++; continue; }
+    i++;
   }
   return out;
 }
@@ -102,12 +149,19 @@ async function main() {
   }
 
   // Every surface form the corpus uses, grouped by stem.
+  //
+  // Deaccented on the way in. The Ṛgveda readings carry Vedic accents (दे॒वम्,
+  // दे॒वेषु॑) and `toSlp1` has no mapping for those marks, so it returned null and
+  // the form fell out of the cache entirely — all 196 accented (lemma, form)
+  // pairs in the corpus were missing, including every oblique of देव. Accents are
+  // display data; they never belong in a lookup key.
   const formsByStem = new Map<string, Set<string>>();
   for (const r of corpus) {
     for (const w of r.words ?? []) {
       if (!w.lemma) continue;
-      if (!formsByStem.has(w.lemma)) formsByStem.set(w.lemma, new Set());
-      formsByStem.get(w.lemma)!.add(w.form);
+      const stem = deaccent(w.lemma);
+      if (!formsByStem.has(stem)) formsByStem.set(stem, new Set());
+      formsByStem.get(stem)!.add(deaccent(w.form));
     }
   }
 
@@ -130,8 +184,19 @@ async function main() {
     return out;
   }
 
-  const cells: Record<string, { linga: string | null; vibhaktis: string[] }> = {};
+  // `vibhaktis` is what quizFor() in build-readings.ts reads, and it stays
+  // exactly as it was. `cells` is added beside it: the (विभक्ति, वचन) pairs the
+  // form fills, which the same derivation already computed and then threw away.
+  // Number cannot come from the annotation — only 5% of case-tagged words carry
+  // a वचन tag — so the प्रयोग grid's second axis has to come from here.
+  const cells: Record<
+    string,
+    { linga: string | null; vibhaktis: string[]; cells: Array<[string, string]> }
+  > = {};
   let resolved = 0, ambiguous = 0, underivable = 0;
+
+  /** Per-stem results the प्रयोग index reuses rather than recomputing. */
+  const stemInfo = new Map<string, { stemSlp: string; linga: string | null }>();
 
   for (const [stem, forms] of formsByStem) {
     const stemSlp = toSlp1(stem);
@@ -157,15 +222,179 @@ async function main() {
     for (const [form, slp] of derivable) {
       const cs = cellsFor(stemSlp, slp).filter((c) => (linga ? c[0] === linga : true));
       const vibs = [...new Set(cs.map((c) => VIB_DEV[c[1]]))];
-      cells[form] = { linga: linga ? LINGA_DEV[linga] : null, vibhaktis: vibs };
+      const pairs = [...new Set(cs.map((c) => VIB_DEV[c[1]] + '|' + VAC_DEV[c[2]]))]
+        .map((k) => k.split('|') as [string, string]);
+      cells[form] = { linga: linga ? LINGA_DEV[linga] : null, vibhaktis: vibs, cells: pairs };
       if (vibs.length === 1) resolved++; else ambiguous++;
     }
+
+    // Keep what the प्रयोग index needs: the narrowed gender and the SLP1 stem,
+    // so the paradigm pass below does not have to re-derive either.
+    stemInfo.set(stem, { stemSlp, linga });
   }
 
   fs.writeFileSync(OUT, JSON.stringify(cells, null, 0));
   console.log(
     `Wrote ${Object.keys(cells).length} forms → ${path.relative(process.cwd(), OUT)}\n` +
       `  ${resolved} determine one विभक्ति, ${ambiguous} do not, ${underivable} stems not derivable as subantas`
+  );
+
+  // ── the प्रयोग index ───────────────────────────────────────────────────
+  //
+  // Same corpus, indexed the other way: by what the language declines rather
+  // than by what the reader meets next. Built here because everything it needs
+  // is already in hand — the WASM instance, the memoised derivations, and the
+  // gender each stem was narrowed to.
+
+  /** Every cell of a stem's paradigm, attested or not. Memoised per (stem, linga). */
+  const paraMemo = new Map<string, Record<string, string[]>>();
+  function paradigmOf(stemSlp: string, linga: string): Record<string, string[]> {
+    const key = stemSlp + '|' + linga;
+    const hit = paraMemo.get(key);
+    if (hit) return hit;
+    const out: Record<string, string[]> = {};
+    for (const vb of VIBHAKTIS)
+      for (const vc of VACANAS) {
+        try {
+          const res = v.deriveSubantas({
+            pratipadika: { basic: stemSlp }, linga, vibhakti: vb, vacana: vc
+          });
+          const forms = [...new Set(res.map((p: any) => p.text))] as string[];
+          if (forms.length) out[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = forms.map(toDeva);
+        } catch { /* this cell does not derive for this stem */ }
+      }
+    paraMemo.set(key, out);
+    return out;
+  }
+
+  // Occurrences grouped by stem, carrying the reading each one came from.
+  type Occ = {
+    form: string; formRaw: string; reading: string; position: number;
+    chapter: string; phrase: string | null; gloss: string;
+    cites: Array<{ cite: string; role: string }>;
+  };
+  const occByStem = new Map<string, Occ[]>();
+  let unlemmatized = 0;
+  for (const r of corpus) {
+    for (const w of r.words ?? []) {
+      if (!w.lemma) { unlemmatized++; continue; }
+      const stem = deaccent(w.lemma);
+      if (!occByStem.has(stem)) occByStem.set(stem, []);
+      occByStem.get(stem)!.push({
+        form: deaccent(w.form),
+        formRaw: String(w.form ?? ''),
+        reading: String(r.id ?? ''),
+        position: Number(r.position ?? 0),
+        chapter: String(r.chapter ?? ''),
+        phrase: phraseAround(String(r.sentence ?? ''), String(w.form ?? '')),
+        gloss: String(w.gloss ?? ''),
+        cites: (w.notes ?? [])
+          .filter((n: any) => n.cite)
+          .map((n: any) => ({ cite: String(n.cite), role: String(n.role ?? '') }))
+      });
+    }
+  }
+
+  const entries: any[] = [];
+  for (const [stem, info] of stemInfo) {
+    const occs = occByStem.get(stem) ?? [];
+    if (!occs.length) continue;
+
+    const grid: Record<string, any[]> = {};
+    const unplaced: any[] = [];
+    const distinct = new Set<string>();
+
+    for (const o of occs) {
+      const slp = toSlp1(o.form);
+      const cs = slp
+        ? cellsFor(info.stemSlp, slp).filter((c) => (info.linga ? c[0] === info.linga : true))
+        : [];
+      if (!cs.length) {
+        // Attested but outside the classical paradigm — the Vedic forms
+        // (देवासः, देवेभिः) Pāṇini's core rules do not produce. Kept and shown
+        // apart rather than dropped: the Ṛgveda block is a third of the
+        // attested corpus, and silently losing it would make a page whose
+        // whole premise is corpus evidence quietly incomplete.
+        unplaced.push({ ...o, ambiguous: false });
+        continue;
+      }
+      distinct.add(o.form);
+      const keys = [...new Set(cs.map((c) => VIB_DEV[c[1]] + '|' + VAC_DEV[c[2]]))];
+      for (const k of keys) {
+        (grid[k] ??= []).push({ ...o, ambiguous: keys.length > 1 });
+      }
+    }
+
+    // A cell wants evidence, not an inventory. तद् alone occurs hundreds of
+    // times, and shipping every occurrence put the index at 977KB — a payload
+    // the reader downloads to look at one stem. Keep the earliest few per cell
+    // (earliest = simplest, by the corpus's own difficulty order) and record
+    // how many were dropped so the count stays honest.
+    for (const k of Object.keys(grid)) {
+      grid[k].sort((a: any, b: any) => a.position - b.position);
+      const total = grid[k].length;
+      grid[k] = grid[k].slice(0, 3);
+      if (total > 3) grid[k][0].more = total - 3;
+    }
+
+    if (!distinct.size && !unplaced.length) continue;
+
+    entries.push({
+      subject: stem,
+      kind: 'subanta',
+      linga: info.linga ? LINGA_DEV[info.linga] : null,
+      pinned: {},
+      forms: distinct.size,
+      filled: Object.keys(grid).length,
+      total: VIBHAKTIS.length * VACANAS.length,
+      grid,
+      // Only meaningful once the gender is settled: an expected-form grid
+      // without a linga would be three guesses stacked on each other.
+      paradigm: info.linga ? paradigmOf(info.stemSlp, info.linga) : undefined,
+      unplaced: unplaced.slice(0, 6)
+    });
+  }
+
+  entries.sort((a, b) => b.filled - a.filled || b.forms - a.forms);
+
+  // 310 of the 409 stems are attested exactly once. A single form cannot show
+  // what a paradigm looks like, and carrying all of them with their grids put
+  // the payload near a megabyte. So the shipped index holds the stems with more
+  // than one attested form, and the rest stay as a name and a count — enough to
+  // list them, and to say honestly how much of the corpus is single-sighting.
+  const rich = entries.filter((e) => e.forms >= 2);
+  const sparse = entries
+    .filter((e) => e.forms < 2)
+    .map((e) => ({ subject: e.subject, linga: e.linga, forms: e.forms, filled: e.filled }));
+
+  const index = {
+    generated: new Date().toISOString(),
+    sections: [
+      {
+        kind: 'subanta',
+        dev: 'सुबन्त',
+        en: 'nouns',
+        axes: [
+          { feature: 'विभक्ति', values: VIBHAKTIS.map((k) => VIB_DEV[k]) },
+          { feature: 'वचन', values: VACANAS.map((k) => VAC_DEV[k]) }
+        ],
+        entries: rich,
+        sparse
+      }
+    ],
+    unlemmatized
+  };
+
+  fs.writeFileSync(USAGE_OUT, JSON.stringify(index, null, 0));
+  const withGrid = rich.filter((e) => e.paradigm).length;
+  const unplacedTotal = rich.reduce((n, e) => n + e.unplaced.length, 0);
+  const kb = Math.round(fs.statSync(USAGE_OUT).size / 1024);
+  console.log(
+    `Wrote ${rich.length} सुबन्त stems → ${path.relative(process.cwd(), USAGE_OUT)} (${kb}KB)\n` +
+      `  ${withGrid} have a settled gender and a full grid; ${rich.length - withGrid} list attested forms only\n` +
+      `  ${sparse.length} more stems are attested once and are listed without a grid\n` +
+      `  ${unplacedTotal} attested form(s) fall outside the classical paradigm (Vedic)\n` +
+      `  ${unlemmatized} annotated word(s) carry no lemma and cannot be indexed`
   );
 }
 

@@ -25,6 +25,7 @@
       <a class:on={on('/reader')} href="/reader">पठनम् <span class="en">reader</span></a>
       <a class:on={on('/balabodhini')} href="/balabodhini">बालबोधिनी <span class="en">primer</span></a>
       <a class:on={on('/ref')} href="/ref">सूत्र <span class="en">reference</span></a>
+      <a class:on={on('/usage')} href="/usage">प्रयोग <span class="en">usage</span></a>
     </nav>
 
     <div class="right">

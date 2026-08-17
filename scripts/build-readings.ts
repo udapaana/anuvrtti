@@ -13,6 +13,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { parse as parseYaml } from 'yaml';
 import { parseGrid, isRectangular } from '../src/lib/reader/paradigm';
+import { deaccent } from '../src/lib/usage/normalize';
 
 const READINGS_DIR = path.join(process.cwd(), 'content/readings');
 const SYLLABUS = path.join(READINGS_DIR, '_syllabus.yaml');
@@ -92,7 +93,10 @@ const ROLES = ['कर्तृ', 'कर्मन्', 'करण', 'सम्�
  * ex008). vidyut enumerates every cell that produces a form, so "does this form
  * determine its case?" becomes a fact rather than a guess.
  */
-type Cells = Record<string, { linga: string | null; vibhaktis: string[] }>;
+type Cells = Record<
+  string,
+  { linga: string | null; vibhaktis: string[]; cells?: Array<[string, string]> }
+>;
 let CELLS: Cells = {};
 {
   const p = path.join(process.cwd(), 'static/data/quiz-cells.json');
@@ -140,7 +144,9 @@ function quizFor(word: any, sentence: string): any | null {
   const form = String(word.form ?? '');
 
   if (vib) {
-    const cell = CELLS[form];
+    // Keyed deaccented, matching how build-quiz.ts writes the cache: an accented
+    // Ṛgveda form is the same word as its unaccented twin for lookup purposes.
+    const cell = CELLS[deaccent(form)];
     // Unknown to vidyut (compound, unusual stem) — treat as undetermined rather
     // than assert a case the engine never confirmed.
     const settled = cell ? cell.vibhaktis.length === 1 : false;
