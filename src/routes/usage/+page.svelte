@@ -156,8 +156,10 @@
           <div class="subjmeta">
             {#if entry.linga}
               <span class="linga"><Sanskrit text={entry.linga} source="devanagari" /></span>
+            {:else if entry.isPronoun}
+              <span class="linga">सर्वनाम · all three genders</span>
             {:else}
-              <span class="linga warn">gender unsettled</span>
+              <span class="linga warn">gender not shown by these forms</span>
             {/if}
             <span class="dot">·</span>
             <span>{entry.forms} forms attested</span>
@@ -207,9 +209,17 @@
           </div>
         {:else}
           <p class="nogrid">
-            The gender of <Sanskrit text={entry.subject} source="devanagari" /> is not settled by
-            its attested forms, so the unattested cells cannot be shown — they would be a guess
-            across three declensions. The forms the corpus does attest:
+            {#if entry.isPronoun}
+              <Sanskrit text={entry.subject} source="devanagari" /> is a
+              <Sanskrit text="सर्वनाम" source="devanagari" /> — it takes the gender of whatever it
+              stands for, so it has three paradigms rather than one and the corpus uses all of
+              them. The forms it attests:
+            {:else}
+              None of the attested forms of
+              <Sanskrit text={entry.subject} source="devanagari" /> distinguish its gender — each
+              one is shared by two declensions — so the unattested cells are not shown, since
+              they would differ depending on which. The forms the corpus does attest:
+            {/if}
           </p>
           <div class="flat">
             {#each Object.entries(entry.grid) as [k, list]}
@@ -237,7 +247,7 @@
                     <div class="specphrase"><Sanskrit text={a.phrase} source="devanagari" /></div>
                   {/if}
                   <div class="specmeta">
-                    <a class="rdlink" href="/reader#{a.reading}">{a.reading}</a>
+                    <a class="rdlink" href="/reader?reading={a.reading}">{a.reading}</a>
                     {#each a.cites as c}
                       <a class="cite" href="/ref/{c.cite}" title={c.role}>{c.cite}</a>
                     {/each}
@@ -268,7 +278,7 @@
               {#each entry.unplaced as a}
                 <div class="upitem">
                   <Sanskrit text={a.formRaw} source="devanagari" fallback={a.form} />
-                  <span class="muted">{a.reading}</span>
+                  <a class="rdlink" href="/reader?reading={a.reading}">{a.reading}</a>
                 </div>
               {/each}
             </div>
@@ -404,7 +414,7 @@
   .upnote { font-size: 0.82rem; margin: 0 0 0.5rem; max-width: 60ch; line-height: 1.5; }
   .uplist { display: flex; flex-wrap: wrap; gap: 0.7rem; }
   .upitem { display: flex; align-items: baseline; gap: 0.35rem; font-size: 1rem; }
-  .upitem .muted { font-family: ui-monospace, monospace; font-size: 0.62rem; }
+  .upitem .rdlink { font-family: ui-monospace, monospace; font-size: 0.62rem; }
 
   .foot {
     margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e7e2d9;

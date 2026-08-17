@@ -62,8 +62,17 @@ export interface ParadigmEntry {
   subject: string;
   /** What sort of thing this is — 'subanta' today; 'tinanta', 'sandhi' later. */
   kind: string;
-  /** Narrowed by intersecting the lingas that derive every attested form; null when undecided. */
+  /**
+   * The gender the attested forms point to, or null when they do not settle it.
+   * Null has two quite different causes, which `isPronoun` separates.
+   */
   linga: string | null;
+  /**
+   * A सर्वनाम takes the gender of its referent, so तद् genuinely appears as सः,
+   * सा and तत् in one corpus. Its null liṅga is a property of the word, not a
+   * gap in the evidence, and the page must not offer to fill it in.
+   */
+  isPronoun?: boolean;
   /** Features fixed for this grid — e.g. { लकार: 'लट्', पद: 'परस्मैपद' }. Empty for सुबन्त. */
   pinned: Pinned;
   /** Distinct deaccented forms attested. */

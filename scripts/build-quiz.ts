@@ -196,7 +196,7 @@ async function main() {
   let resolved = 0, ambiguous = 0, underivable = 0;
 
   /** Per-stem results the प्रयोग index reuses rather than recomputing. */
-  const stemInfo = new Map<string, { stemSlp: string; linga: string | null }>();
+  const stemInfo = new Map<string, { stemSlp: string; linga: string | null; isPronoun: boolean }>();
 
   // ── what the corpus itself says a form is ──────────────────────────────
   //
@@ -223,6 +223,17 @@ async function main() {
     'सम्प्रदान': 'चतुर्थी', 'अपादान': 'पञ्चमी', 'सम्बन्ध': 'षष्ठी',
     'अधिकरण': 'सप्तमी'
   };
+
+  /** Stems the corpus tags सर्वनाम anywhere — they inflect for all three genders. */
+  const pronouns = new Set<string>();
+  for (const r of corpus) {
+    for (const w of r.words ?? []) {
+      if (!w.lemma) continue;
+      if ((w.notes ?? []).some((n: any) => n.term === 'सर्वनाम')) {
+        pronouns.add(deaccent(w.lemma));
+      }
+    }
+  }
 
   for (const r of corpus) {
     for (const w of r.words ?? []) {
@@ -274,7 +285,12 @@ async function main() {
     // strength of one Vedic dual — and then its whole expected-form grid was
     // the wrong declension. Demanding agreement with the annotated विभक्ति
     // removes that class of false narrowing.
-    let possible = new Set<string>(LINGAS);
+    // Scored, not intersected. Requiring EVERY form to admit the same linga is
+    // too brittle for a corpus with Vedic text in it: नरः, नरस्य, नरौ, नरेण are
+    // all plainly masculine, but the Ṛgvedic vocative नरा derives only as a
+    // feminine, and that one form emptied the intersection and left नर
+    // genderless. Counting instead, a single odd form cannot outvote four.
+    const lingaScore = new Map<string, number>(LINGAS.map((l) => [l, 0]));
     const derivable: Array<[string, string]> = [];
     for (const form of forms) {
       const slp = toSlp1(form);
@@ -283,13 +299,30 @@ async function main() {
       if (!cs.length) continue;           // not a subanta of this stem (verb, indeclinable)
       derivable.push([form, slp]);
       const { cells: fit } = resolveCells(stem, form, cs);
-      const seen = new Set(fit.map((c) => c[0]));
-      possible = new Set([...possible].filter((lg) => seen.has(lg)));
+      for (const lg of new Set(fit.map((c) => c[0]))) {
+        lingaScore.set(lg, (lingaScore.get(lg) ?? 0) + 1);
+      }
     }
     if (!derivable.length) { underivable++; continue; }
 
+    // A सर्वनाम has no gender of its own — it takes the gender of whatever it
+    // points at, so तद् really does appear as सः, सा and तत् in one corpus. That
+    // is a fact about the word, not missing evidence, and calling it "unsettled"
+    // told the reader to expect an answer that does not exist.
+    const isPronoun = pronouns.has(stem);
+
     const lex = lexGender.get(stem);
-    const linga = possible.size === 1 ? [...possible][0] : (lex && possible.has(lex) ? lex : null);
+    const best = Math.max(...lingaScore.values());
+    const top = LINGAS.filter((l) => (lingaScore.get(l) ?? 0) === best && best > 0);
+    const linga = isPronoun
+      ? null
+      : top.length === 1
+        ? top[0]
+        // A tie the lexicon can break — vocabulary.json records the gender for
+        // stems the corpus's own forms leave balanced.
+        : lex && top.includes(lex)
+          ? lex
+          : null;
 
     for (const [form, slp] of derivable) {
       const cs = cellsFor(stemSlp, slp).filter((c) => (linga ? c[0] === linga : true));
@@ -305,7 +338,7 @@ async function main() {
 
     // Keep what the प्रयोग index needs: the narrowed gender and the SLP1 stem,
     // so the paradigm pass below does not have to re-derive either.
-    stemInfo.set(stem, { stemSlp, linga });
+    stemInfo.set(stem, { stemSlp, linga, isPronoun });
   }
 
   fs.writeFileSync(OUT, JSON.stringify(cells, null, 0));
@@ -453,6 +486,8 @@ async function main() {
       subject: stem,
       kind: 'subanta',
       linga: info.linga ? LINGA_DEV[info.linga] : null,
+      // Distinguishes "has no gender of its own" from "we could not tell".
+      isPronoun: info.isPronoun,
       pinned: {},
       forms: distinct.size,
       filled: Object.keys(grid).length,

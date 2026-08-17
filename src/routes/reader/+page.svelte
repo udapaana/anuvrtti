@@ -49,6 +49,11 @@
       loaded = true;
       focusedId = sequence[0]?.id ?? null;
       requestAnimationFrame(observe);
+      // ?reading=ex191 — how प्रयोग sends the reader to the line that attests a
+      // cell. Runs after the corpus is in hand, since the page a reading sits
+      // on depends on the content boundaries computed from it.
+      const want = new URLSearchParams(location.search).get('reading');
+      if (want) requestAnimationFrame(() => jumpToReading(want));
     } catch (e) {
       error = String((e as Error).message || e);
     }
@@ -432,6 +437,30 @@
   // [data-ch-id] heading, so clicking सङ्ग्रह in the spine landed you on page 1
   // looking at kāraka, and scrolling down never reached the chapter you asked
   // for. Target the reading itself so the jump lands on actual content.
+  /**
+   * Open the reader on one reading, by id.
+   *
+   * The reader paginates on content boundaries, so a reading is usually not on
+   * the page that happens to be showing — a bare `#id` anchor finds nothing in
+   * the DOM. प्रयोग links here from a paradigm cell to the line that attests it,
+   * so the page has to be found first and scrolled to second.
+   */
+  function jumpToReading(id: string) {
+    const idx = list.findIndex((r) => r.id === id);
+    if (idx < 0) return;
+    page = Math.max(0, bounds.findIndex((b) => idx >= b.start && idx < b.end));
+    focusedId = null;
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        observe();
+        const el = document.querySelector('[data-ex-id="' + id + '"]') as HTMLElement | null;
+        if (!el) return;
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+        setTimeout(() => { focusedId = id; }, 500);
+      })
+    );
+  }
+
   function jumpToChapter(chId: string) {
     const idx = firstIdx[chId];
     if (idx === undefined) return;
