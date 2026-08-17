@@ -42,6 +42,28 @@ Other commands: `bun run ledger` (coverage detail, `--full` for every rule),
 corpus gains new *words* — it is a three-pass chain (readings → cells →
 readings) because the cells are derived from the corpus's own forms.
 
+### Why the quiz is derived, not tagged
+
+`build-quiz.ts` asks vidyut which `(linga, vibhakti, vacana)` cells produce
+each surface form. Of 472 forms:
+
+| cases the form can be | forms |
+|---|---|
+| 1 — the form settles it | 287 |
+| 2 | 94 |
+| 3 | 66 |
+| 4-5 | 25 |
+
+**185 forms are ambiguous**, and 25 are four- or five-way. पादाभ्याम् is
+तृतीया / चतुर्थी / पञ्चमी; नरौ is प्रथमा / द्वितीया / सम्बोधन. The first
+version of the quiz read the answer off the word's `term` tags and asserted one
+case for all of them — so it marked correct answers wrong, and contradicted
+itself (फलम् asked as प्रथमा in ex182 and द्वितीया in ex008).
+
+Where the form cannot settle the case, the quiz shows the **phrase** that does
+and draws its distractors from the other cases that form can actually be. Do
+not add hand-written case answers; extend the derivation instead.
+
 ## How coverage moves
 
 A rule counts as taught at **8 distinct readings**. A story is one reading, so
@@ -107,9 +129,12 @@ it disagrees with pedagogical order on a third of pairs. Never renumber ids.
 - **48 gloss/token mismatches** — unglossed यः/सः in ex161-165, label prefixes
   in ex038-040 and ex174-178. Real authoring gaps, listed by the build.
 - **3 rules never cited**: 1.2.43, 7.3.86, 8.4.1.
-- **`/review` exists but nothing links to it.** The wordBank SRS is real and
-  the reader can bank words into it, but there is no surface to review them on.
-  The design puts review beside the text, not on its own page.
+- **`/review` is reachable only from the home page**, not from the site nav,
+  so a reader who banks a word from the rail has no obvious way back to it.
+  The design puts review beside the text rather than on its own page — a card
+  in the rail was started and backed out, because it duplicated the page that
+  already exists. Unresolved: either the nav gains the pillar, or the rail
+  gains the card and `/review` goes.
 - **The quiz gate and the recall-first token display overlap** — both make the
   reader try before seeing the gloss. The design has both; whether they should
   both stay is unsettled.
