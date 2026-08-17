@@ -38,6 +38,213 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex205
+  kind: sangraha
+  segment: 255
+  order: 1
+  sentence: गुरुः अवदत् — शिष्यः पठेत्, न तु शयीत। तस्य पठनम् एव धर्मः। एकदा सः शिष्यः न अपठत्, वनम् अगच्छत् च। तत् श्रुत्वा गुरुः अक्रुध्यत्। रामेण तत् वचनम् श्रुतम्। सः चिन्तयत् — अहम् सदा पठेयम् इति।
+  translation: The teacher said — "A student should study, and not sleep. His studying alone is his dharma." One day that student did not study, and went to the forest. Hearing that, the teacher grew angry. Rāma heard those words. He thought — "I will always study."
+  teaches: |
+    पठेत् and पठेयम् in one exchange, against अपठत् and अगच्छत्. पठनम् names
+    the act rather than the actor; श्रुत्वा and श्रुतम् are built from one root.
+  words:
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: a student
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पठेत्
+    lemma: पठ्
+    gloss: should study
+    notes:
+    - term: विधिलिङ्
+      en: the optative — what ought to be done, not what is
+    - cite: "3.3.161"
+      role: विधिनिमन्त्रणामन्त्रण… लिङ् — the optative for an obligation → पठेत्
+  - form: 'न'
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: तु
+    lemma: तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: शयीत
+    lemma: शी
+    gloss: should sleep
+    vocab: true
+    notes:
+    - term: विधिलिङ्
+      en: a second optative, आत्मनेपद — शी takes the middle
+    - cite: "3.3.161"
+      role: विधिनिमन्त्रण… लिङ् — the optative → शयीत
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: षष्ठी
+      en: genitive
+  - form: पठनम्
+    lemma: पठन
+    gloss: studying
+    notes:
+    - term: ल्युट्
+      en: the action-noun — the studying, not the one who studies
+    - cite: "3.3.115"
+      role: ल्युट् च — ल्युट् makes a neuter भाव action-noun → पठनम्
+  - form: एव
+    lemma: एव
+    gloss: alone
+    notes:
+    - term: अव्यय
+      en: emphatic
+  - form: धर्मः
+    lemma: धर्म
+    gloss: (is) his dharma
+    notes:
+    - term: प्रथमा
+      en: nominative — predicated of पठनम्
+  - form: एकदा
+    lemma: एकदा
+    gloss: one day
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: सः
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: अपठत्
+    lemma: पठ्
+    gloss: did not study
+    notes:
+    - term: लङ्
+      en: the past — the same root as पठेत्, and only the ending differs
+  - form: वनम्
+    lemma: वन
+    gloss: to the forest
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: अगच्छत्
+    lemma: गम्
+    gloss: went
+    notes:
+    - term: लङ्
+      en: past
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: कर्मन्
+      en: object of श्रुत्वा
+    - term: द्वितीया
+      en: neuter accusative
+  - form: श्रुत्वा
+    lemma: श्रु
+    gloss: hearing
+    notes:
+    - term: क्त्वा
+      en: gerund — the hearing precedes the anger
+  - form: अक्रुध्यत्
+    lemma: क्रुध्
+    gloss: grew angry
+    notes:
+    - term: लङ्
+      en: past — क्रुध् is दिवादि, so श्यन् and no गुण
+  - form: रामेण
+    lemma: राम
+    gloss: by Rāma
+    notes:
+    - term: कर्तृ
+      en: the agent of a passive participle — instrumental
+    - term: तृतीया
+      en: instrumental
+    - cite: "8.4.2"
+      role: अट्कुप्वाङ्नुम्व्यवायेऽपि — णत्व reaches across the ए → रामेण
+  - form: वचनम्
+    lemma: वचन
+    gloss: words
+    notes:
+    - term: कर्मन्
+      en: what was heard — nominative under the participle
+    - term: प्रथमा
+      en: neuter nominative
+  - form: श्रुतम्
+    lemma: श्रु
+    gloss: was heard
+    notes:
+    - term: निष्ठा
+      en: past participle from the same root as श्रुत्वा above
+  - form: चिन्तयत्
+    lemma: चिन्त्
+    gloss: thought
+    notes:
+    - term: लङ्
+      en: past
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: उत्तमपुरुष
+      en: the speaker
+  - form: सदा
+    lemma: सदा
+    gloss: always
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: पठेयम्
+    lemma: पठ्
+    gloss: will study
+    notes:
+    - term: विधिलिङ्
+      en: the optative in the first person — a resolve rather than an obligation
+    - cite: "3.3.161"
+      role: विधिनिमन्त्रण… लिङ् — the optative → पठेयम्
+  - form: इति
+    lemma: इति
+    gloss: "thus"
+    notes:
+    - term: अव्यय
+      en: closes the quotation
+  vyakhya: पठेत् पठेयम् अपठत् — एकः धातुः, त्रीणि रूपाणि।
+  vyakhya_en: |
+    पठ् appears three times and means three different things by its ending
+    alone: पठेत् is what a student ought to do, पठेयम् is what this one resolves
+    to do, अपठत् is what he did not do. The root never changes.
 - id: ex203
   kind: sangraha
   segment: 495
