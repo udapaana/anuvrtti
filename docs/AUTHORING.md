@@ -121,6 +121,84 @@ Say what is on the page and stop.
 slots between free for insertions. `id` is authoring order and nothing else —
 it disagrees with pedagogical order on a third of pairs. Never renumber ids.
 
+## Grammatical completeness — what every word needs
+
+A word's `notes[]` are not decoration. Three things read them: the reader's
+rail, the quiz builder, and the प्रयोग index. A missing tag does not degrade
+gracefully — it removes the word from a paradigm, or produces a question with
+no answer.
+
+**The rule: name the word's type, then every feature that type inflects for.**
+The type tag is what tells the tooling which paradigm the word belongs to;
+the feature tags are the coordinates within it. One without the other is
+unusable.
+
+### What each type owes
+
+| type | required | why |
+|---|---|---|
+| **सुबन्त** | `lemma` + विभक्ति + **वचन** | the two axes of the सुप् grid. Case alone places a form in a row and leaves the column blank. |
+| | कारक role where the sentence assigns one | supplies the विभक्ति when it is absent, and is the answer to "what is it doing here?" |
+| **तिङन्त** | `lemma` + लकार + **पुरुष** + **वचन** | पुरुष × वचन is the तिङ् grid. लकार and पद are the pinned features that make it a grid at all. |
+| | पद where the root takes both | पचति and पचते are different words; the tag is what says which. |
+| **कृदन्त** | `lemma` + the कृत् suffix + **विभक्ति + वचन when it declines** | a क्त or शतृ participle is a सुबन्त too. Tagging only the suffix leaves the declined form uncoordinated. |
+| **अव्यय** | `lemma` | nothing inflects; the type tag is the whole statement. |
+
+`cite` is separate from all of this: it records which sūtra produced the form,
+and it is the only tag `verify:cites` can check. Not required, but a form with
+a non-obvious derivation and no citation is a missed teaching opportunity.
+
+### Where the corpus stands
+
+Measured over 2,301 annotated words:
+
+| | count | type tag | features complete |
+|---|---|---|---|
+| सुबन्त | 1,242 | 100% | **वचन 5%**, कारक 50% |
+| तिङन्त | 369 | 100% | **पुरुष 4%, वचन 4%, पद 1%** |
+| कृदन्त | 106 | 100% | **विभक्ति 0%, वचन 0%** |
+| अव्यय | 293 | 100% | — |
+| **untyped** | **291** | **—** | see below |
+
+The vertical axis is nearly complete and the horizontal one is nearly empty.
+Every word says what it is; almost none say which cell it occupies.
+
+The 291 untyped words break down as:
+
+- **101** carry a पुरुष or वचन but no लकार — a verb whose head tag is missing.
+  गच्छामि is tagged only उत्तमपुरुष, so nothing knows it is a verb.
+- **22** carry a कारक role but no विभक्ति — गोकुले is tagged अधिकरण alone.
+- **153** carry only incidental tags (सन्धि, उपसर्ग, a root name, सर्वनाम).
+- **15** carry no `term` tag at all.
+
+### What is derived, and what you must still write
+
+`bun run build:quiz` asks vidyut which `(liṅga, vibhakti, vacana)` cells produce
+each form, so **वचन is recovered for सुबन्त without being authored**. That is why
+the प्रयोग grid has a second axis at all. Do not read this as permission to skip
+the tag:
+
+- Derivation gives the *candidates*, not the answer. देवे is five cells until the
+  annotation's सप्तमी narrows it to one. Filling cells from candidates alone put
+  कूपे in five places and made half the grid speculation.
+- **Nothing derives पुरुष, वचन or पद for a तिङन्त.** The quiz asks only "which
+  लकार?" because the other three axes are unavailable, and तिङन्त has no प्रयोग
+  section for the same reason.
+- Gender is an input to derivation, never an output. It is narrowed by scoring
+  the liṅgas that produce the attested forms in their annotated cases — which
+  works only when the cases are annotated.
+
+**Vedic accents are display data.** दे॒वेषु॑ and देवेषु are one word for every
+lookup: vidyut emits no accents and cannot parse them. The build deaccents on
+the way in. Write the accent where the source has it; never rely on it matching.
+
+### The rule of thumb
+
+Before saving a word, ask what a reader would have to know to place it in its
+paradigm — and check that the tags say all of it. If a तिङन्त says only "लट्",
+it is a present-tense *something*. If it says लट् · प्रथमपुरुष · एकवचन ·
+परस्मैपद, it is a cell.
+
 ## Known gaps
 
 - **39 citations to review** (`bun run verify:cites --full`). Mostly consonant
@@ -129,6 +207,13 @@ it disagrees with pedagogical order on a third of pairs. Never renumber ids.
 - **48 gloss/token mismatches** — unglossed यः/सः in ex161-165, label prefixes
   in ex038-040 and ex174-178. Real authoring gaps, listed by the build.
 - **3 rules never cited**: 1.2.43, 7.3.86, 8.4.1.
+- **Feature tags are the biggest gap in the corpus.** 95% of सुबन्त carry no
+  वचन, 96% of तिङन्त carry no पुरुष, and 291 words carry no type tag at all.
+  Derivation covers the सुबन्त case and nothing else, so तिङन्त has no प्रयोग
+  section and the reader's rail shows द्वितीया where it should show द्वितीया
+  एकवचन. See "Grammatical completeness" above for what each type owes.
+- **144 words have no `lemma`**, mostly ex001-ex004. They cannot be indexed by
+  प्रयोग at all — a word with no stem belongs to no paradigm.
 - **`/review` is reachable only from the home page**, not from the site nav,
   so a reader who banks a word from the rail has no obvious way back to it.
   The design puts review beside the text rather than on its own page — a card
