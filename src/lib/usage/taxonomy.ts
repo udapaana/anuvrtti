@@ -37,9 +37,42 @@ export const SUBANTA_GROUPS: StemGroup[] = [
   { id: 'aa-stri', dev: 'आकारान्त स्त्रीलिङ्ग', en: 'ā-stem feminine',   ending: 'आ', linga: 'स्त्रीलिङ्ग',   exemplar: 'सेना' },
   { id: 'i-u',     dev: 'इ/उकारान्त',         en: 'i- and u-stems',    ending: 'इउईऊ',                    exemplar: 'अग्नि' },
   { id: 'r-stem',  dev: 'ऋकारान्त',           en: 'ṛ-stems',           ending: 'ऋ',                       exemplar: 'पितृ' },
-  { id: 'hal',     dev: 'हलन्त',              en: 'consonant stems',   ending: 'hal',                     exemplar: 'राजन्' },
-  { id: 'sarva',   dev: 'सर्वनामानि',          en: 'pronouns',          ending: '*',                       exemplar: 'तद्' }
+  { id: 'hal',     dev: 'हलन्त',              en: 'consonant stems',   ending: 'hal',                     exemplar: 'राजन्' }
 ];
+
+/**
+ * सर्वनाम is its own section, not a class inside सुबन्त.
+ *
+ * It takes सुप् endings, but that is where the resemblance stops. The endings
+ * themselves differ — तस्मै where a noun has देवाय, तस्मिन् where a noun has देवे —
+ * under a body of rules (7.1.14-7.1.17, 7.3.114) that apply to सर्वनाम alone.
+ * And it has no gender of its own, so one lemma carries three paradigms where
+ * a noun carries one.
+ *
+ * Filing it under सुबन्त put a word with three genders in a list keyed by
+ * gender, and set तद् beside देव as though they inflected alike. The tradition
+ * keeps सर्वनामानि apart; so does /ref/tables, in its own section.
+ */
+export const SARVANAMA_GROUPS: StemGroup[] = [
+  { id: 'purusha', dev: 'पुरुषवाचक', en: 'personal',      ending: '*', exemplar: 'अस्मद्' },
+  { id: 'darshi',  dev: 'निर्देशवाचक', en: 'demonstrative', ending: '*', exemplar: 'तद्' },
+  { id: 'prashna', dev: 'प्रश्नवाचक',  en: 'interrogative', ending: '*', exemplar: 'किम्' },
+  { id: 'sambandha', dev: 'सम्बन्धवाचक', en: 'relative',    ending: '*', exemplar: 'यद्' },
+  { id: 'sarva-other', dev: 'अन्ये',    en: 'other',        ending: '*' }
+];
+
+/** Which सर्वनाम class a pronoun belongs to. The set is small and closed. */
+const SARVANAMA_CLASS: Record<string, string> = {
+  'अस्मद्': 'purusha', 'युष्मद्': 'purusha',
+  'तद्': 'darshi', 'एतद्': 'darshi', 'इदम्': 'darshi', 'अदस्': 'darshi',
+  'किम्': 'prashna',
+  'यद्': 'sambandha'
+};
+
+export function sarvanamaGroupFor(stem: string): StemGroup {
+  const id = SARVANAMA_CLASS[stem] ?? 'sarva-other';
+  return SARVANAMA_GROUPS.find((g) => g.id === id) ?? SARVANAMA_GROUPS[SARVANAMA_GROUPS.length - 1];
+}
 
 const FINAL_VOWEL: Record<string, string> = {
   'ा': 'आ', 'ि': 'इ', 'ी': 'ई', 'ु': 'उ', 'ू': 'ऊ', 'ृ': 'ऋ', 'े': 'ए', 'ो': 'ओ'
@@ -54,16 +87,10 @@ export function finalSound(stem: string): string {
 }
 
 /**
- * Which group a stem belongs to.
- *
- * Pronouns are matched first and on the सर्वनाम tag alone, because their
- * spelling is misleading: तद् and यद् are द्-final and would otherwise file
- * under हलन्त beside राजन्, which is not how anyone learns them.
+ * Which सुबन्त class a stem belongs to. Pronouns do not pass through here —
+ * they are their own section; see `sarvanamaGroupFor`.
  */
-export function groupFor(
-  stem: string, linga: string | null, isPronoun: boolean
-): StemGroup {
-  if (isPronoun) return SUBANTA_GROUPS[SUBANTA_GROUPS.length - 1];
+export function groupFor(stem: string, linga: string | null): StemGroup {
   const f = finalSound(stem);
   for (const g of SUBANTA_GROUPS) {
     if (g.ending === '*') continue;

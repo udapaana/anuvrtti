@@ -134,6 +134,19 @@ const ok = cites.match(/confirmed\s+(\d+)/);
 const miss = cites.match(/MISSING\s+(\d+)/);
 console.log(`  · citations: ${ok ? ok[1] : '?'} confirmed against vidyut, ${miss ? miss[1] : '?'} to review`);
 
+// 5. grammatical completeness — soft, and the largest backlog in the corpus.
+// Reported as one line here; `bun run complete` breaks it down and names the
+// readings to fix first.
+const comp = await run(['bun', 'scripts/check-complete.ts']);
+const need = [...comp.matchAll(/^\s+(\d+)\s+(\S+)$/gm)].slice(0, 3);
+const untypedN = comp.match(/(\d+)\s+no type tag/);
+if (need.length) {
+  console.log(
+    `  · completeness: ${need.map(([, n, t]) => `${n} need ${t}`).join(', ')}` +
+    (untypedN ? `, ${untypedN[1]} untyped` : '')
+  );
+}
+
 console.log();
 if (problems.length) {
   console.log('FAILED:\n');

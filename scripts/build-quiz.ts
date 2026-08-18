@@ -32,7 +32,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { deaccent, phraseAround } from '../src/lib/usage/normalize';
-import { groupFor, GANA_DEV, LAKARA_ORDER, SUBANTA_GROUPS } from '../src/lib/usage/taxonomy';
+import {
+  groupFor, sarvanamaGroupFor, GANA_DEV, LAKARA_ORDER,
+  SUBANTA_GROUPS, SARVANAMA_GROUPS
+} from '../src/lib/usage/taxonomy';
 
 const CORPUS = path.join(process.cwd(), 'static/data/readings.json');
 const VOCAB = path.join(process.cwd(), 'static/data/vocabulary.json');
@@ -538,7 +541,9 @@ async function main() {
       isPronoun: info.isPronoun,
       // Filed into the tradition's own classes — the same arrangement
       // /ref/tables uses, so the two views of the corpus agree.
-      group: groupFor(stem, info.linga ? LINGA_DEV[info.linga] : null, info.isPronoun).id,
+      group: info.isPronoun
+        ? sarvanamaGroupFor(stem).id
+        : groupFor(stem, info.linga ? LINGA_DEV[info.linga] : null).id,
       pinned: {},
       forms: distinct.size,
       filled: Object.keys(grid).length,
@@ -558,10 +563,20 @@ async function main() {
   // the payload near a megabyte. So the shipped index holds the stems with more
   // than one attested form, and the rest stay as a name and a count — enough to
   // list them, and to say honestly how much of the corpus is single-sighting.
-  const rich = entries.filter((e) => e.forms >= 2);
-  const sparse = entries
-    .filter((e) => e.forms < 2)
-    .map((e) => ({ subject: e.subject, linga: e.linga, forms: e.forms, filled: e.filled }));
+  const summarise = (e: any) =>
+    ({ subject: e.subject, linga: e.linga, forms: e.forms, filled: e.filled });
+
+  // सर्वनाम takes सुप् endings but is not a सुबन्त class: the endings themselves
+  // differ (तस्मै for देवाय, तस्मिन् for देवे) under rules that apply to pronouns
+  // alone, and one lemma carries three genders where a noun carries one. It
+  // gets its own section rather than a group inside a list keyed by gender.
+  const nouns = entries.filter((e: any) => !e.isPronoun);
+  const pronouns2 = entries.filter((e: any) => e.isPronoun);
+
+  const rich = nouns.filter((e) => e.forms >= 2);
+  const sparse = nouns.filter((e) => e.forms < 2).map(summarise);
+  const sarvaRich = pronouns2.filter((e) => e.forms >= 2);
+  const sarvaSparse = pronouns2.filter((e) => e.forms < 2).map(summarise);
 
   // ── तिङन्त ─────────────────────────────────────────────────────────────
   //
@@ -747,6 +762,21 @@ async function main() {
         groupBy: 'प्रातिपदिकान्त'
       },
       {
+        kind: 'sarvanama',
+        dev: 'सर्वनाम',
+        en: 'pronouns',
+        axes: [
+          { feature: 'विभक्ति', values: VIBHAKTIS.map((k) => VIB_DEV[k]) },
+          { feature: 'वचन', values: VACANAS.map((k) => VAC_DEV[k]) }
+        ],
+        entries: sarvaRich,
+        sparse: sarvaSparse,
+        groups: SARVANAMA_GROUPS
+          .filter((g) => sarvaRich.some((e: any) => e.group === g.id))
+          .map((g) => ({ id: g.id, dev: g.dev, en: g.en, exemplar: g.exemplar })),
+        groupBy: 'प्रकार'
+      },
+      {
         kind: 'tinanta',
         dev: 'तिङन्त',
         en: 'verbs',
@@ -776,6 +806,7 @@ async function main() {
       `  सुबन्त: ${rich.length} stems — ${withGrid} with a settled gender and a full grid,\n` +
       `          ${rich.length - withGrid} attested-forms-only, ${sparse.length} seen once,\n` +
       `          ${unplacedTotal} form(s) outside the classical paradigm (Vedic)\n` +
+      `  सर्वनाम: ${sarvaRich.length} pronouns, ${sarvaSparse.length} seen once\n` +
       `  तिङन्त: ${tinEntries.length} (root, लकार) grids — ${tinResolved} form(s) resolve to one cell,\n` +
       `          ${tinAmbiguous} to several, ${tinUnderivable} do not derive\n` +
       `          ${tinUnmapped} occurrence(s) skipped: root not in the dhātu table (${topUnmapped})\n` +

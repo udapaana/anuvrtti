@@ -233,6 +233,40 @@ needs the cells, and the cells are derived from the corpus's own forms.
 | add or change **words** (new forms, new lemmas, new tags) | `bun run build:quiz` |
 | anything, before pushing | `bun run check` then `npm run build` |
 
+### Authoring a reading, end to end
+
+```bash
+# 1. write it — content/readings/NN_chapter.yaml
+# 2. see it
+bun run build:readings
+
+# 3. check what the words still owe
+bun run complete --reading ex212
+
+# 4. fill the gaps, rebuild, and let the derived data catch up
+bun run build:quiz
+
+# 5. the gate
+bun run check && npm run build
+```
+
+`bun run complete` is the tool for step 3. It reads the completeness spec above
+and says, per word, which tags are missing:
+
+```
+ex209 — 33 word(s) underspecified
+  दूतः      सुबन्त   needs वचन
+  अगमत्     तिङन्त   needs पुरुष, वचन, पद
+```
+
+- `--worst 20` ranks the readings by how much they are missing — the queue.
+- `--untyped` lists words carrying no type tag at all, which are invisible to
+  every downstream view.
+
+It never fails the build. The backlog is ~1,600 words deep and blocking on it
+would make the command useless; `bun run check` prints the headline counts so
+the number cannot quietly grow while nobody is looking.
+
 `npm run build` does **not** regenerate the derived data. `quiz-cells.json` and
 `usage.json` are committed artifacts, like the readings themselves — rebuild
 them deliberately, inspect the diff, commit it with the reading that caused it.
@@ -278,6 +312,19 @@ the data instead.
 Categories that are *not* grids — कारक, समास, कृदन्त, तद्धित — are typologies:
 their members are told apart by a question, not by coordinates. They stay in
 `/ref/tables` until they get an exhibit of their own.
+
+**सर्वनाम is its own section, not a class inside सुबन्त.** It takes सुप् endings,
+but the endings differ — तस्मै where a noun has देवाय, तस्मिन् where a noun has
+देवे — under rules that apply to pronouns alone, and one lemma carries three
+genders where a noun carries one. Filing it under सुबन्त put a three-gender word
+in a list keyed by gender. The tradition keeps it apart and so does
+`/ref/tables`.
+
+The browse taxonomy lives in `src/lib/usage/taxonomy.ts`, lifted from the
+section structure `/ref/tables` already carries: अकारान्त, आकारान्त, इ/उकारान्त,
+ऋकारान्त, हलन्त for nouns; गण for verbs; प्रकार for pronouns. Taking it rather
+than deriving from spelling matters — तद् and यद् are द्-final and a spelling
+rule files them beside राजन्, which is not how anyone learns them.
 
 ## Known gaps
 
