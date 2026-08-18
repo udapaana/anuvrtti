@@ -73,6 +73,8 @@ export interface ParadigmEntry {
    * gap in the evidence, and the page must not offer to fill it in.
    */
   isPronoun?: boolean;
+  /** Which of the section's `groups` this subject files under. */
+  group?: string;
   /** Features fixed for this grid — e.g. { लकार: 'लट्', पद: 'परस्मैपद' }. Empty for सुबन्त. */
   pinned: Pinned;
   /** Distinct deaccented forms attested. */
@@ -103,6 +105,15 @@ export interface UsageSection {
   kind: string;
   dev: string;
   en: string;
+  /**
+   * The classes subjects are filed into — अकारान्त पुंलिङ्ग for nouns, गण for
+   * verbs. Lifted from how `/ref/tables` already arranges its paradigms, so
+   * the derived index and the authored tables present the same shape. Only
+   * classes the corpus populates appear.
+   */
+  groups?: Array<{ id: string; dev: string; en: string; exemplar?: string }>;
+  /** What the grouping is *of* — प्रातिपदिकान्त, गण. Shown as the list's heading. */
+  groupBy?: string;
   /** [rows, cols]. Named here once so the renderer never assumes case and number. */
   axes: [Axis, Axis];
   /** Ranked by cells filled, then forms attested. Multi-form subjects only. */

@@ -32,6 +32,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { deaccent, phraseAround } from '../src/lib/usage/normalize';
+import { groupFor, GANA_DEV, LAKARA_ORDER, SUBANTA_GROUPS } from '../src/lib/usage/taxonomy';
 
 const CORPUS = path.join(process.cwd(), 'static/data/readings.json');
 const VOCAB = path.join(process.cwd(), 'static/data/vocabulary.json');
@@ -90,6 +91,7 @@ const DHATU: Record<string, [string, string]> = {
   'भी': ['YiBi\\', 'Juhotyadi'], 'इ': ['i\\R', 'Adadi'], 'हन्': ['ha\\na~', 'Adadi'],
   'लभ्': ['qula\\Ba~\\', 'Bhvadi'], 'मन्': ['ma\\na~\\', 'Divadi'], 'सद्': ['za\\dx~', 'Bhvadi']
 };
+
 
 /**
  * Preverbs tried when a form does not derive from the bare root.
@@ -534,6 +536,9 @@ async function main() {
       linga: info.linga ? LINGA_DEV[info.linga] : null,
       // Distinguishes "has no gender of its own" from "we could not tell".
       isPronoun: info.isPronoun,
+      // Filed into the tradition's own classes — the same arrangement
+      // /ref/tables uses, so the two views of the corpus agree.
+      group: groupFor(stem, info.linga ? LINGA_DEV[info.linga] : null, info.isPronoun).id,
       pinned: {},
       forms: distinct.size,
       filled: Object.keys(grid).length,
@@ -697,6 +702,10 @@ async function main() {
         subject: root,
         kind: 'tinanta',
         linga: null,
+        // Verbs group by गण — the class that decides how the stem is formed,
+        // and the axis every dhātupāṭha is arranged on.
+        group: spec[1],
+        groupDev: GANA_DEV[spec[1]] ?? spec[1],
         pinned: { 'लकार': lak },
         forms: distinct.size,
         filled: Object.keys(grid).length,
@@ -707,7 +716,15 @@ async function main() {
       });
     }
   }
-  tinEntries.sort((a, b) => b.filled - a.filled || b.forms - a.forms);
+  // Within a गण, by root, then by the तradition's लकार order — लट् before लङ्
+  // before लोट् — rather than by how much the corpus happens to attest.
+  const lakRank = (e: any) => {
+    const i = LAKARA_ORDER.indexOf(e.pinned?.['लकार']);
+    return i < 0 ? LAKARA_ORDER.length : i;
+  };
+  tinEntries.sort(
+    (a, b) => a.subject.localeCompare(b.subject) || lakRank(a) - lakRank(b)
+  );
 
   const index = {
     generated: new Date().toISOString(),
@@ -721,7 +738,13 @@ async function main() {
           { feature: 'वचन', values: VACANAS.map((k) => VAC_DEV[k]) }
         ],
         entries: rich,
-        sparse
+        sparse,
+        // Only the classes the corpus actually populates, in the tradition's
+        // order. An empty class is not worth a heading.
+        groups: SUBANTA_GROUPS
+          .filter((g) => rich.some((e: any) => e.group === g.id))
+          .map((g) => ({ id: g.id, dev: g.dev, en: g.en, exemplar: g.exemplar })),
+        groupBy: 'प्रातिपदिकान्त'
       },
       {
         kind: 'tinanta',
@@ -732,7 +755,11 @@ async function main() {
           { feature: 'वचन', values: VACANAS.map((k) => VAC_DEV[k]) }
         ],
         entries: tinEntries,
-        sparse: []
+        sparse: [],
+        groups: Object.keys(GANA_DEV)
+          .filter((g) => tinEntries.some((e: any) => e.group === g))
+          .map((g) => ({ id: g, dev: GANA_DEV[g], en: '' })),
+        groupBy: 'गण'
       }
     ],
     unlemmatized

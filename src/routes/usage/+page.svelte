@@ -49,6 +49,29 @@
     return all.filter((e) => e.subject.includes(q));
   });
 
+  /**
+   * The list, under the tradition's own class headings.
+   *
+   * 99 stems as one column gave no purchase — देव, ग्राम, बाल and नर are one
+   * pattern with four vocabularies, and nothing said so. Grouped by
+   * प्रातिपदिकान्त (and by गण for verbs), the shape of the declension is the
+   * first thing visible and a stem is findable by the class you know it from.
+   */
+  const grouped = $derived.by(() => {
+    const gs = section?.groups ?? [];
+    if (!gs.length) return [{ group: null as any, items: listed }];
+    const out: Array<{ group: any; items: ParadigmEntry[] }> = [];
+    for (const g of gs) {
+      const items = listed.filter((e) => e.group === g.id);
+      if (items.length) out.push({ group: g, items });
+    }
+    // Anything the taxonomy does not cover still has to appear somewhere.
+    const claimed = new Set(gs.map((g) => g.id));
+    const rest = listed.filter((e) => !e.group || !claimed.has(e.group));
+    if (rest.length) out.push({ group: { id: '', dev: 'अन्ये', en: 'other' }, items: rest });
+    return out;
+  });
+
   const sparseListed = $derived.by(() => {
     const all = section?.sparse ?? [];
     const q = query.trim();
@@ -142,39 +165,63 @@
       <nav class="spine">
         <div class="kinds" role="group" aria-label="category">
           {#each sections as s (s.kind)}
-            <button class="kind" class:on={s.kind === section.kind} onclick={() => pickKind(s.kind)}>
+            <button
+              class="kind"
+              class:on={s.kind === section.kind}
+              aria-label="{s.en} — {s.entries.length} entries"
+              onclick={() => pickKind(s.kind)}
+            >
               <Sanskrit text={s.dev} source="devanagari" />
               <span class="kinden">{s.en}</span>
             </button>
           {/each}
         </div>
         <div class="spinehead">
+          {#if section.groupBy}
+            <span class="groupby"><Sanskrit text={section.groupBy} source="devanagari" /></span>
+          {/if}
           <span class="count">
             {section.entries.length}
             {section.kind === 'tinanta' ? 'grids' : 'stems'}
           </span>
         </div>
-        <input class="find" bind:value={query} placeholder="filter…" aria-label="filter stems" />
+        <input
+          class="find"
+          bind:value={query}
+          placeholder="search…"
+          aria-label={section.kind === 'tinanta' ? 'search roots' : 'search stems'}
+        />
         <div class="stems">
-          <!-- keyed by subject AND pin: गम् appears once per लकार -->
-          {#each listed as e (e.subject + '|' + pinKey(e))}
-            <button
-              class="stem"
-              class:on={e === entry}
-              aria-label="{e.subject} {pinKey(e)} — {e.filled} of {e.total} cells attested"
-              onclick={() => pickSubject(e)}
-            >
-              <span class="sdev">
-                <Sanskrit text={e.subject} source="devanagari" />
-                {#if pinKey(e)}
-                  <span class="pin"><Sanskrit text={pinKey(e)} source="devanagari" /></span>
+          {#each grouped as bucket (bucket.group?.id ?? '_')}
+            {#if bucket.group}
+              <div class="ghead">
+                <span class="gdev"><Sanskrit text={bucket.group.dev} source="devanagari" /></span>
+                {#if bucket.group.exemplar}
+                  <span class="gex"><Sanskrit text={bucket.group.exemplar} source="devanagari" /></span>
                 {/if}
-              </span>
-              <span class="meter" aria-hidden="true">
-                <span class="fill" style="width:{Math.round((e.filled / e.total) * 100)}%"></span>
-              </span>
-              <span class="sn">{e.filled}/{e.total}</span>
-            </button>
+                <span class="gn">{bucket.items.length}</span>
+              </div>
+            {/if}
+            <!-- keyed by subject AND pin: गम् appears once per लकार -->
+            {#each bucket.items as e (e.subject + '|' + pinKey(e))}
+              <button
+                class="stem"
+                class:on={e === entry}
+                aria-label="{e.subject} {pinKey(e)} — {e.filled} of {e.total} cells attested"
+                onclick={() => pickSubject(e)}
+              >
+                <span class="sdev">
+                  <Sanskrit text={e.subject} source="devanagari" />
+                  {#if pinKey(e)}
+                    <span class="pin"><Sanskrit text={pinKey(e)} source="devanagari" /></span>
+                  {/if}
+                </span>
+                <span class="meter" aria-hidden="true">
+                  <span class="fill" style="width:{Math.round((e.filled / e.total) * 100)}%"></span>
+                </span>
+                <span class="sn">{e.filled}/{e.total}</span>
+              </button>
+            {/each}
           {/each}
         </div>
 
@@ -373,7 +420,16 @@
   }
   .kind.on { background: #fdecd9; border-color: #f4c98b; }
   .kinden { font-family: ui-monospace, monospace; font-size: 0.58rem; color: #a99e8b; }
-  .spinehead { display: flex; align-items: baseline; justify-content: flex-end; }
+  .spinehead { display: flex; align-items: baseline; justify-content: space-between; }
+  .groupby { font-size: 0.8rem; color: #6b6b6b; }
+  .ghead {
+    display: flex; align-items: baseline; gap: 0.4rem;
+    padding: 0.6rem 0.55rem 0.2rem; border-bottom: 1px solid #ece3d3;
+    margin-bottom: 0.15rem; position: sticky; top: 0; background: #fdfcfa;
+  }
+  .gdev { font-size: 0.82rem; color: #463f33; }
+  .gex { font-size: 0.72rem; color: #cbb994; }
+  .gn { margin-left: auto; font-family: ui-monospace, monospace; font-size: 0.6rem; color: #cbb994; }
   .pin { font-size: 0.72rem; color: #b08d57; margin-left: 0.3rem; }
   .pinfeat { font-size: 0.62rem; color: #cbb994; margin-left: 0.25rem; }
   .count { font-family: ui-monospace, monospace; font-size: 0.66rem; color: #a99e8b; }
