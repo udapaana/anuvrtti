@@ -246,6 +246,9 @@ async function main() {
   > = {};
   let resolved = 0, ambiguous = 0, underivable = 0;
 
+  /** अस्मद् and युष्मद् have no gender at all — one paradigm, not three. */
+  const GENDERLESS = new Set(['अस्मद्', 'युष्मद्']);
+
   /** Per-stem results the प्रयोग index reuses rather than recomputing. */
   const stemInfo = new Map<string, { stemSlp: string; linga: string | null; isPronoun: boolean; isSarvadi: boolean }>();
 
@@ -562,9 +565,28 @@ async function main() {
       filled: Object.keys(grid).length,
       total: VIBHAKTIS.length * VACANAS.length,
       grid,
-      // Only meaningful once the gender is settled: an expected-form grid
-      // without a linga would be three guesses stacked on each other.
-      paradigm: info.linga ? paradigmOf(info.stemSlp, info.linga) : undefined,
+      // For a noun, only meaningful once the gender is settled: an
+      // expected-form grid without a liṅga would be three guesses stacked.
+      //
+      // A सर्वनाम is the opposite case. Its liṅga is null because it HAS no
+      // gender of its own, not because the evidence is thin — and its
+      // paradigms are the most regular in the language. Withholding them left
+      // अस्मद् showing five attested forms and nothing else, when all 21 cells
+      // derive. So a pronoun gets one grid per gender, and अस्मद्/युष्मद् (which
+      // are genderless outright) get the single grid they actually have.
+      paradigm: info.linga
+        ? paradigmOf(info.stemSlp, info.linga)
+        : info.isPronoun
+          ? paradigmOf(info.stemSlp, 'Pum')
+          : undefined,
+      /** A pronoun's other two genders, when it has them. */
+      paradigmByLinga: info.isPronoun && !GENDERLESS.has(stem)
+        ? {
+            'पुंलिङ्ग': paradigmOf(info.stemSlp, 'Pum'),
+            'स्त्रीलिङ्ग': paradigmOf(info.stemSlp, 'Stri'),
+            'नपुंसकलिङ्ग': paradigmOf(info.stemSlp, 'Napumsaka')
+          }
+        : undefined,
       unplaced: unplaced.slice(0, 6)
     });
   }

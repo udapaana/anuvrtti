@@ -95,6 +95,8 @@ export interface ParadigmEntry {
    * expected-form grid without a gender would be a guess.
    */
   paradigm?: Record<string, string[]>;
+  /** A pronoun's three gendered paradigms; absent for अस्मद्/युष्मद्, which have none. */
+  paradigmByLinga?: Record<string, Record<string, string[]>>;
   /**
    * Attested, but matching no cell of the classical paradigm — the Vedic forms
    * (देवासः, देवेभिः) Pāṇini's core rules do not produce. Shown apart rather than

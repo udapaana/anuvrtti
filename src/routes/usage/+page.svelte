@@ -21,6 +21,7 @@
 
   let query = $state('');
   let showSparse = $state(false);
+  let showAllStems = $state(false);
   /** Class headings the reader has folded shut. Open by default. */
   let collapsed = $state<Set<string>>(new Set());
   function toggleGroup(id: string) {
@@ -134,7 +135,18 @@
    */
   const cards = $derived.by(() => {
     if (!entry) return [];
-    return section?.entries.filter((e) => e.subject === entry.subject) ?? [];
+    const all = section?.entries.filter((e) => e.subject === entry.subject) ?? [];
+    // A सर्वनाम has one paradigm per gender — तद् really is सः, सा and तत् — so
+    // it becomes three cards rather than one, each pinned to its liṅga.
+    const byLinga = entry.paradigmByLinga;
+    if (byLinga && all.length === 1) {
+      return Object.entries(byLinga).map(([lg, para]) => ({
+        ...entry,
+        pinned: { 'लिङ्ग': lg },
+        paradigm: para
+      })) as ParadigmEntry[];
+    }
+    return all;
   });
   const siblings = $derived(cards.length > 1 ? cards : []);
 
@@ -273,6 +285,7 @@
 
   /** Opening a class clears the stem, so it lands on the class's best-attested one. */
   function pickClass(id: string) {
+    showAllStems = false;
     go({ class: id, stem: null, cell: null });
   }
 
@@ -457,8 +470,11 @@
                changes which cells the corpus lights up and whose line appears
                under them. That is the whole difference between देव and बाल. -->
           {#if classMembers.length > 1}
+            <!-- 40 stems as chips wrapped over six rows and got worse as the
+                 corpus grew. The best-attested few stay visible — those are the
+                 ones worth comparing — and the rest sit behind a count. -->
             <div class="stempick" role="group" aria-label="stem">
-              {#each classMembers as m (m.subject)}
+              {#each (showAllStems ? classMembers : classMembers.slice(0, 8)) as m (m.subject)}
                 <button
                   class="stembtn"
                   class:on={m.subject === entry.subject}
@@ -468,6 +484,11 @@
                   <span class="stemn">{m.filled}/{m.total}</span>
                 </button>
               {/each}
+              {#if classMembers.length > 8}
+                <button class="stemmore" onclick={() => (showAllStems = !showAllStems)}>
+                  {showAllStems ? '− fewer' : `+ ${classMembers.length - 8} more`}
+                </button>
+              {/if}
             </div>
           {/if}
         {/if}
@@ -744,6 +765,12 @@
   .stembtn:hover { border-color: #f4c98b; }
   .stembtn.on { background: #fdecd9; border-color: #f97316; color: #92591f; }
   .stemn { font-family: ui-monospace, monospace; font-size: 0.58rem; color: #a99e8b; }
+  .stemmore {
+    border: 1px dashed #e7e2d9; border-radius: 999px; background: none;
+    padding: 0.2rem 0.65rem; cursor: pointer; font: inherit;
+    font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b;
+  }
+  .stemmore:hover { border-color: #f4c98b; color: #92591f; }
   .stembtn.on .stemn { color: #b08d57; }
 
   .ghead {
