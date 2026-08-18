@@ -33,7 +33,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { deaccent, phraseAround } from '../src/lib/usage/normalize';
 import {
-  groupFor, sarvanamaGroupFor, GANA_DEV, LAKARA_ORDER,
+  groupFor, sarvanamaGroupFor, isSarvanama, GANA_DEV, LAKARA_ORDER,
   SUBANTA_GROUPS, SARVANAMA_GROUPS
 } from '../src/lib/usage/taxonomy';
 
@@ -247,7 +247,7 @@ async function main() {
   let resolved = 0, ambiguous = 0, underivable = 0;
 
   /** Per-stem results the प्रयोग index reuses rather than recomputing. */
-  const stemInfo = new Map<string, { stemSlp: string; linga: string | null; isPronoun: boolean }>();
+  const stemInfo = new Map<string, { stemSlp: string; linga: string | null; isPronoun: boolean; isSarvadi: boolean }>();
 
   // ── what the corpus itself says a form is ──────────────────────────────
   //
@@ -360,7 +360,13 @@ async function main() {
     // points at, so तद् really does appear as सः, सा and तत् in one corpus. That
     // is a fact about the word, not missing evidence, and calling it "unsettled"
     // told the reader to expect an answer that does not exist.
-    const isPronoun = pronouns.has(stem);
+    //
+    // The corpus's सर्वनाम tag is not the test, though. It is applied — rightly,
+    // by 1.1.27 — to सर्व, एक and अन्य, which take pronominal endings but are
+    // adjectives with a gender of their own. Only the closed list counts as a
+    // pronoun; the rest stay सुबन्त and are marked सर्वादि.
+    const isPronoun = isSarvanama(stem);
+    const isSarvadi = !isPronoun && pronouns.has(stem);
 
     const lex = lexGender.get(stem);
     const best = Math.max(...lingaScore.values());
@@ -389,7 +395,7 @@ async function main() {
 
     // Keep what the प्रयोग index needs: the narrowed gender and the SLP1 stem,
     // so the paradigm pass below does not have to re-derive either.
-    stemInfo.set(stem, { stemSlp, linga, isPronoun });
+    stemInfo.set(stem, { stemSlp, linga, isPronoun, isSarvadi });
   }
 
   fs.writeFileSync(OUT, JSON.stringify(cells, null, 0));
@@ -539,6 +545,10 @@ async function main() {
       linga: info.linga ? LINGA_DEV[info.linga] : null,
       // Distinguishes "has no gender of its own" from "we could not tell".
       isPronoun: info.isPronoun,
+      // Takes pronominal endings (सर्वस्मै) but has a gender and qualifies a
+      // noun — an adjective under 1.1.27, not a pronoun. Worth showing, since
+      // it explains why सर्वे declines unlike देवे.
+      isSarvadi: info.isSarvadi,
       // Filed into the tradition's own classes — the same arrangement
       // /ref/tables uses, so the two views of the corpus agree.
       group: info.isPronoun

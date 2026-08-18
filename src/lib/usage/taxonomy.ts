@@ -57,11 +57,22 @@ export const SARVANAMA_GROUPS: StemGroup[] = [
   { id: 'purusha', dev: 'पुरुषवाचक', en: 'personal',      ending: '*', exemplar: 'अस्मद्' },
   { id: 'darshi',  dev: 'निर्देशवाचक', en: 'demonstrative', ending: '*', exemplar: 'तद्' },
   { id: 'prashna', dev: 'प्रश्नवाचक',  en: 'interrogative', ending: '*', exemplar: 'किम्' },
-  { id: 'sambandha', dev: 'सम्बन्धवाचक', en: 'relative',    ending: '*', exemplar: 'यद्' },
-  { id: 'sarva-other', dev: 'अन्ये',    en: 'other',        ending: '*' }
+  { id: 'sambandha', dev: 'सम्बन्धवाचक', en: 'relative',    ending: '*', exemplar: 'यद्' }
 ];
 
-/** Which सर्वनाम class a pronoun belongs to. The set is small and closed. */
+/**
+ * The pronouns proper. A closed list, and deliberately so.
+ *
+ * The corpus tags सर्व, एक and अन्य as सर्वनाम, and by 1.1.27 सर्वादीनि सर्वनामानि
+ * it is right to: they take the pronominal endings (सर्वस्मै, not *सर्वाय). But
+ * they are ordinary adjectives — they have a gender of their own, they qualify
+ * a noun, and they decline like देव everywhere the सर्वादि rules do not reach.
+ * Filing them with तद् and अस्मद् put adjectives in a list of pronouns.
+ *
+ * So the tag is not the test. A word is a pronoun here only if it is one of
+ * these; everything else the corpus marks सर्वनाम stays a सुबन्त and is noted as
+ * सर्वादि instead.
+ */
 const SARVANAMA_CLASS: Record<string, string> = {
   'अस्मद्': 'purusha', 'युष्मद्': 'purusha',
   'तद्': 'darshi', 'एतद्': 'darshi', 'इदम्': 'darshi', 'अदस्': 'darshi',
@@ -69,9 +80,14 @@ const SARVANAMA_CLASS: Record<string, string> = {
   'यद्': 'sambandha'
 };
 
+/** True for the pronouns proper — not for the सर्वादि adjectives. */
+export function isSarvanama(stem: string): boolean {
+  return stem in SARVANAMA_CLASS;
+}
+
 export function sarvanamaGroupFor(stem: string): StemGroup {
-  const id = SARVANAMA_CLASS[stem] ?? 'sarva-other';
-  return SARVANAMA_GROUPS.find((g) => g.id === id) ?? SARVANAMA_GROUPS[SARVANAMA_GROUPS.length - 1];
+  const id = SARVANAMA_CLASS[stem];
+  return SARVANAMA_GROUPS.find((g) => g.id === id) ?? SARVANAMA_GROUPS[1];
 }
 
 const FINAL_VOWEL: Record<string, string> = {

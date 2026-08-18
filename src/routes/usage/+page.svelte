@@ -241,7 +241,30 @@
 
       <main class="main">
         <div class="subjhead">
-          <span class="subj"><Sanskrit text={entry.subject} source="devanagari" /></span>
+          <!-- The same choice as the rail, at the point of use: switching stem
+               while looking at a grid should not mean going back to the list. -->
+          <label class="picker">
+            <span class="subj"><Sanskrit text={entry.subject} source="devanagari" /></span>
+            <select
+              class="pickersel"
+              aria-label="choose {section.kind === 'tinanta' ? 'root' : 'stem'}"
+              value={entry.subject + '|' + pinKey(entry)}
+              onchange={(ev) => {
+                const [s, p] = (ev.currentTarget as HTMLSelectElement).value.split('|');
+                go({ stem: s, pin: p || null });
+              }}
+            >
+              {#each grouped as bucket}
+                <optgroup label={bucket.group ? bucket.group.dev : 'all'}>
+                  {#each bucket.items as e}
+                    <option value={e.subject + '|' + pinKey(e)}>
+                      {e.subject}{pinKey(e) ? ' · ' + pinKey(e) : ''} — {e.filled}/{e.total}
+                    </option>
+                  {/each}
+                </optgroup>
+              {/each}
+            </select>
+          </label>
           <div class="subjmeta">
             {#if entry.kind === 'tinanta'}
               {#each Object.entries(entry.pinned ?? {}) as [feat, val]}
@@ -252,6 +275,10 @@
               {/each}
             {:else if entry.linga}
               <span class="linga"><Sanskrit text={entry.linga} source="devanagari" /></span>
+              {#if entry.isSarvadi}
+                <span class="dot">·</span>
+                <span class="linga" title="takes the pronominal endings by 1.1.27 सर्वादीनि सर्वनामानि">सर्वादि</span>
+              {/if}
             {:else if entry.isPronoun}
               <span class="linga">सर्वनाम · all three genders</span>
             {:else}
@@ -458,6 +485,19 @@
 
   .subjhead { display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .subj { font-size: 1.9rem; line-height: 1; }
+  /* The select sits invisibly over the heading, so the stem name itself is the
+     control. The caret is the only added chrome. */
+  .picker { position: relative; display: inline-flex; align-items: baseline; cursor: pointer; }
+  .picker::after {
+    content: '▾'; font-size: 0.7rem; color: #a99e8b; margin-left: 0.35rem;
+    align-self: center;
+  }
+  .picker:hover .subj { color: #92591f; }
+  .pickersel {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    opacity: 0; cursor: pointer; font: inherit;
+  }
+  .pickersel:focus-visible + :global(*) { outline: 2px solid #f97316; }
   .subjmeta {
     font-family: ui-monospace, monospace; font-size: 0.7rem; color: #a99e8b;
     display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;

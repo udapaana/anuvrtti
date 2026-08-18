@@ -73,6 +73,8 @@ export interface ParadigmEntry {
    * gap in the evidence, and the page must not offer to fill it in.
    */
   isPronoun?: boolean;
+  /** Takes pronominal endings by 1.1.27 but has a gender — an adjective, not a pronoun. */
+  isSarvadi?: boolean;
   /** Which of the section's `groups` this subject files under. */
   group?: string;
   /** Features fixed for this grid — e.g. { लकार: 'लट्', पद: 'परस्मैपद' }. Empty for सुबन्त. */
