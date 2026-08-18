@@ -42,11 +42,43 @@
       null
   );
 
-  const listed = $derived.by(() => {
+  /**
+   * The list holds one row per SUBJECT, not per grid.
+   *
+   * गम् has seven entries — one per लकार — and listing them separately turned a
+   * single root into seven rows of 1-to-5 filled cells each, burying the fact
+   * that they are one verb. The row now stands for the root and carries its
+   * best-attested लकार; the rest are reachable from the panel.
+   */
+  const subjects = $derived.by(() => {
     const all = section?.entries ?? [];
+    const by = new Map<string, ParadigmEntry[]>();
+    for (const e of all) {
+      if (!by.has(e.subject)) by.set(e.subject, []);
+      by.get(e.subject)!.push(e);
+    }
+    return [...by.entries()].map(([subject, variants]) => ({
+      subject,
+      variants,
+      // What the row shows: the fullest grid, and the total across all of them.
+      lead: variants.reduce((a, b) => (b.filled > a.filled ? b : a)),
+      filled: variants.reduce((n, e) => n + e.filled, 0),
+      total: variants.reduce((n, e) => n + e.total, 0),
+      group: variants[0].group
+    }));
+  });
+
+  const listed = $derived.by(() => {
     const q = query.trim();
-    if (!q) return all;
-    return all.filter((e) => e.subject.includes(q));
+    if (!q) return subjects;
+    return subjects.filter((s) => s.subject.includes(q));
+  });
+
+  /** The other grids of the subject on screen — its other लकारs. */
+  const siblings = $derived.by(() => {
+    if (!entry) return [];
+    const all = section?.entries.filter((e) => e.subject === entry.subject) ?? [];
+    return all.length > 1 ? all : [];
   });
 
   /**
@@ -60,7 +92,7 @@
   const grouped = $derived.by(() => {
     const gs = section?.groups ?? [];
     if (!gs.length) return [{ group: null as any, items: listed }];
-    const out: Array<{ group: any; items: ParadigmEntry[] }> = [];
+    const out: Array<{ group: any; items: typeof listed }> = [];
     for (const g of gs) {
       const items = listed.filter((e) => e.group === g.id);
       if (items.length) out.push({ group: g, items });
@@ -181,8 +213,8 @@
             <span class="groupby"><Sanskrit text={section.groupBy} source="devanagari" /></span>
           {/if}
           <span class="count">
-            {section.entries.length}
-            {section.kind === 'tinanta' ? 'grids' : 'stems'}
+            {subjects.length}
+            {section.kind === 'tinanta' ? 'roots' : 'stems'}
           </span>
         </div>
         <input
@@ -202,24 +234,23 @@
                 <span class="gn">{bucket.items.length}</span>
               </div>
             {/if}
-            <!-- keyed by subject AND pin: गम् appears once per लकार -->
-            {#each bucket.items as e (e.subject + '|' + pinKey(e))}
+            {#each bucket.items as s (s.subject)}
               <button
                 class="stem"
-                class:on={e === entry}
-                aria-label="{e.subject} {pinKey(e)} — {e.filled} of {e.total} cells attested"
-                onclick={() => pickSubject(e)}
+                class:on={s.subject === entry.subject}
+                aria-label="{s.subject} — {s.filled} of {s.total} cells attested"
+                onclick={() => pickSubject(s.lead)}
               >
                 <span class="sdev">
-                  <Sanskrit text={e.subject} source="devanagari" />
-                  {#if pinKey(e)}
-                    <span class="pin"><Sanskrit text={pinKey(e)} source="devanagari" /></span>
+                  <Sanskrit text={s.subject} source="devanagari" />
+                  {#if s.variants.length > 1}
+                    <span class="pin">{s.variants.length} लकार</span>
                   {/if}
                 </span>
                 <span class="meter" aria-hidden="true">
-                  <span class="fill" style="width:{Math.round((e.filled / e.total) * 100)}%"></span>
+                  <span class="fill" style="width:{Math.round((s.filled / s.total) * 100)}%"></span>
                 </span>
-                <span class="sn">{e.filled}/{e.total}</span>
+                <span class="sn">{s.filled}/{s.total}</span>
               </button>
             {/each}
           {/each}
@@ -241,38 +272,10 @@
 
       <main class="main">
         <div class="subjhead">
-          <!-- The same choice as the rail, at the point of use: switching stem
-               while looking at a grid should not mean going back to the list. -->
-          <label class="picker">
-            <span class="subj"><Sanskrit text={entry.subject} source="devanagari" /></span>
-            <select
-              class="pickersel"
-              aria-label="choose {section.kind === 'tinanta' ? 'root' : 'stem'}"
-              value={entry.subject + '|' + pinKey(entry)}
-              onchange={(ev) => {
-                const [s, p] = (ev.currentTarget as HTMLSelectElement).value.split('|');
-                go({ stem: s, pin: p || null });
-              }}
-            >
-              {#each grouped as bucket}
-                <optgroup label={bucket.group ? bucket.group.dev : 'all'}>
-                  {#each bucket.items as e}
-                    <option value={e.subject + '|' + pinKey(e)}>
-                      {e.subject}{pinKey(e) ? ' · ' + pinKey(e) : ''} — {e.filled}/{e.total}
-                    </option>
-                  {/each}
-                </optgroup>
-              {/each}
-            </select>
-          </label>
+          <span class="subj"><Sanskrit text={entry.subject} source="devanagari" /></span>
           <div class="subjmeta">
             {#if entry.kind === 'tinanta'}
-              {#each Object.entries(entry.pinned ?? {}) as [feat, val]}
-                <span class="linga">
-                  <Sanskrit text={val} source="devanagari" />
-                  <span class="pinfeat"><Sanskrit text={feat} source="devanagari" /></span>
-                </span>
-              {/each}
+              <span class="linga">{entry.filled} of {entry.total} cells</span>
             {:else if entry.linga}
               <span class="linga"><Sanskrit text={entry.linga} source="devanagari" /></span>
               {#if entry.isSarvadi}
@@ -286,10 +289,31 @@
             {/if}
             <span class="dot">·</span>
             <span>{entry.forms} forms attested</span>
-            <span class="dot">·</span>
-            <span>{entry.filled} of {entry.total} cells</span>
+            {#if entry.kind !== 'tinanta'}
+              <span class="dot">·</span>
+              <span>{entry.filled} of {entry.total} cells</span>
+            {/if}
           </div>
         </div>
+
+        <!-- One root, its लकारs side by side. A verb's grid is पुरुष × वचन only
+             after the लकार is pinned, so a root has as many grids as tenses the
+             corpus attests — गम् has seven. Listing them as separate subjects
+             hid the fact that they are one verb. -->
+        {#if siblings.length}
+          <div class="pins" role="group" aria-label="लकार">
+            {#each siblings as s (pinKey(s))}
+              <button
+                class="pinbtn"
+                class:on={s === entry}
+                onclick={() => go({ stem: s.subject, pin: pinKey(s) })}
+              >
+                <Sanskrit text={pinKey(s)} source="devanagari" />
+                <span class="pincount">{s.filled}/{s.total}</span>
+              </button>
+            {/each}
+          </div>
+        {/if}
 
         {#if entry.paradigm}
           <div class="grid" style="--cols:{cols.length}">
@@ -485,19 +509,18 @@
 
   .subjhead { display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .subj { font-size: 1.9rem; line-height: 1; }
-  /* The select sits invisibly over the heading, so the stem name itself is the
-     control. The caret is the only added chrome. */
-  .picker { position: relative; display: inline-flex; align-items: baseline; cursor: pointer; }
-  .picker::after {
-    content: '▾'; font-size: 0.7rem; color: #a99e8b; margin-left: 0.35rem;
-    align-self: center;
+  /* लकार tabs — one root, its tenses side by side. */
+  .pins { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0 0 1rem; }
+  .pinbtn {
+    display: inline-flex; align-items: baseline; gap: 0.35rem;
+    border: 1px solid #e7e2d9; border-radius: 999px; background: #fff;
+    padding: 0.22rem 0.7rem; cursor: pointer; font: inherit; font-size: 0.92rem;
+    color: #463f33;
   }
-  .picker:hover .subj { color: #92591f; }
-  .pickersel {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    opacity: 0; cursor: pointer; font: inherit;
-  }
-  .pickersel:focus-visible + :global(*) { outline: 2px solid #f97316; }
+  .pinbtn:hover { border-color: #f4c98b; }
+  .pinbtn.on { background: #fdecd9; border-color: #f97316; color: #92591f; }
+  .pincount { font-family: ui-monospace, monospace; font-size: 0.6rem; color: #a99e8b; }
+  .pinbtn.on .pincount { color: #b08d57; }
   .subjmeta {
     font-family: ui-monospace, monospace; font-size: 0.7rem; color: #a99e8b;
     display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;
