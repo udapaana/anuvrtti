@@ -21,12 +21,25 @@
   let query = $state('');
   let showSparse = $state(false);
 
-  const section = $derived<UsageSection | null>(index?.sections?.[0] ?? null);
+  const sections = $derived<UsageSection[]>(index?.sections ?? []);
+  const section = $derived<UsageSection | null>(
+    sections.find((s) => s.kind === kind) ?? sections[0] ?? null
+  );
   const rows = $derived(section?.axes?.[0]?.values ?? []);
   const cols = $derived(section?.axes?.[1]?.values ?? []);
 
+  /**
+   * A subject can hold several grids. गम् has one per लकार — गम् लट्, गम् लङ्,
+   * गम् लोट् — because the lakāra is the feature that has to be pinned before
+   * पुरुष × वचन is a grid at all. So the entry is keyed by subject AND its
+   * pinned features, not by subject alone.
+   */
+  const pinKey = (e: ParadigmEntry) => Object.values(e.pinned ?? {}).join('·');
   const entry = $derived<ParadigmEntry | null>(
-    section?.entries.find((e) => e.subject === subject) ?? section?.entries[0] ?? null
+    section?.entries.find((e) => e.subject === subject && (!pin || pinKey(e) === pin)) ??
+      section?.entries.find((e) => e.subject === subject) ??
+      section?.entries[0] ??
+      null
   );
 
   const listed = $derived.by(() => {
@@ -48,7 +61,9 @@
   // values were still in the component, and the two would disagree — a deep
   // link to a cell came back as the default stem. `$page` re-runs on every
   // navigation, so deriving from it keeps one source of truth.
+  const kind = $derived($page.url.searchParams.get('kind') ?? 'subanta');
   const subject = $derived($page.url.searchParams.get('stem'));
+  const pin = $derived($page.url.searchParams.get('pin'));
   const cell = $derived($page.url.searchParams.get('cell'));
 
   onMount(async () => {
@@ -62,19 +77,30 @@
     }
   });
 
-  function go(stem: string | null, k: string | null) {
+  function go(opts: { kind?: string; stem?: string | null; pin?: string | null; cell?: string | null }) {
     const p = new URLSearchParams();
-    if (stem) p.set('stem', stem);
-    if (k) p.set('cell', k);
+    const kd = opts.kind ?? kind;
+    if (kd && kd !== 'subanta') p.set('kind', kd);
+    if (opts.stem) p.set('stem', opts.stem);
+    if (opts.pin) p.set('pin', opts.pin);
+    if (opts.cell) p.set('cell', opts.cell);
     goto('/usage?' + p.toString(), { replaceState: true, noScroll: true, keepFocus: true });
   }
 
-  function pickSubject(s: string) {
-    go(s, null);
+  function pickKind(k: string) {
+    go({ kind: k });
+  }
+
+  function pickSubject(e: ParadigmEntry) {
+    go({ stem: e.subject, pin: pinKey(e) || null });
   }
 
   function pickCell(k: string) {
-    go(entry?.subject ?? subject, cell === k ? null : k);
+    go({
+      stem: entry?.subject ?? subject,
+      pin: entry ? pinKey(entry) || null : pin,
+      cell: cell === k ? null : k
+    });
   }
 
   /** The attestations in one cell, or [] when the corpus has none. */
@@ -114,20 +140,36 @@
   {:else if section && entry}
     <div class="cols">
       <nav class="spine">
+        <div class="kinds" role="group" aria-label="category">
+          {#each sections as s (s.kind)}
+            <button class="kind" class:on={s.kind === section.kind} onclick={() => pickKind(s.kind)}>
+              <Sanskrit text={s.dev} source="devanagari" />
+              <span class="kinden">{s.en}</span>
+            </button>
+          {/each}
+        </div>
         <div class="spinehead">
-          <span class="axis"><Sanskrit text={section.dev} source="devanagari" /></span>
-          <span class="count">{section.entries.length} stems</span>
+          <span class="count">
+            {section.entries.length}
+            {section.kind === 'tinanta' ? 'grids' : 'stems'}
+          </span>
         </div>
         <input class="find" bind:value={query} placeholder="filter…" aria-label="filter stems" />
         <div class="stems">
-          {#each listed as e (e.subject)}
+          <!-- keyed by subject AND pin: गम् appears once per लकार -->
+          {#each listed as e (e.subject + '|' + pinKey(e))}
             <button
               class="stem"
-              class:on={e.subject === entry.subject}
-              aria-label="{e.subject} — {e.filled} of {e.total} cells attested"
-              onclick={() => pickSubject(e.subject)}
+              class:on={e === entry}
+              aria-label="{e.subject} {pinKey(e)} — {e.filled} of {e.total} cells attested"
+              onclick={() => pickSubject(e)}
             >
-              <span class="sdev"><Sanskrit text={e.subject} source="devanagari" /></span>
+              <span class="sdev">
+                <Sanskrit text={e.subject} source="devanagari" />
+                {#if pinKey(e)}
+                  <span class="pin"><Sanskrit text={pinKey(e)} source="devanagari" /></span>
+                {/if}
+              </span>
               <span class="meter" aria-hidden="true">
                 <span class="fill" style="width:{Math.round((e.filled / e.total) * 100)}%"></span>
               </span>
@@ -154,7 +196,14 @@
         <div class="subjhead">
           <span class="subj"><Sanskrit text={entry.subject} source="devanagari" /></span>
           <div class="subjmeta">
-            {#if entry.linga}
+            {#if entry.kind === 'tinanta'}
+              {#each Object.entries(entry.pinned ?? {}) as [feat, val]}
+                <span class="linga">
+                  <Sanskrit text={val} source="devanagari" />
+                  <span class="pinfeat"><Sanskrit text={feat} source="devanagari" /></span>
+                </span>
+              {/each}
+            {:else if entry.linga}
               <span class="linga"><Sanskrit text={entry.linga} source="devanagari" /></span>
             {:else if entry.isPronoun}
               <span class="linga">सर्वनाम · all three genders</span>
@@ -209,7 +258,11 @@
           </div>
         {:else}
           <p class="nogrid">
-            {#if entry.isPronoun}
+            {#if entry.kind === 'tinanta'}
+              vidyut does not derive a full paradigm for
+              <Sanskrit text={entry.subject} source="devanagari" /> in this
+              <Sanskrit text="लकार" source="devanagari" />, so only the attested forms are shown:
+            {:else if entry.isPronoun}
               <Sanskrit text={entry.subject} source="devanagari" /> is a
               <Sanskrit text="सर्वनाम" source="devanagari" /> — it takes the gender of whatever it
               stands for, so it has three paradigms rather than one and the corpus uses all of
@@ -312,8 +365,17 @@
   @media (max-width: 820px) { .cols { grid-template-columns: 1fr; } }
 
   .spine { position: sticky; top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .spinehead { display: flex; align-items: baseline; justify-content: space-between; }
-  .axis { font-size: 1.05rem; }
+  .kinds { display: flex; gap: 2px; margin-bottom: 0.2rem; }
+  .kind {
+    flex: 1; border: 1px solid #e7e2d9; border-radius: 8px; background: #fff;
+    padding: 0.3rem 0.5rem; cursor: pointer; font: inherit; color: inherit;
+    display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2;
+  }
+  .kind.on { background: #fdecd9; border-color: #f4c98b; }
+  .kinden { font-family: ui-monospace, monospace; font-size: 0.58rem; color: #a99e8b; }
+  .spinehead { display: flex; align-items: baseline; justify-content: flex-end; }
+  .pin { font-size: 0.72rem; color: #b08d57; margin-left: 0.3rem; }
+  .pinfeat { font-size: 0.62rem; color: #cbb994; margin-left: 0.25rem; }
   .count { font-family: ui-monospace, monospace; font-size: 0.66rem; color: #a99e8b; }
   .find {
     border: 1px solid #e7e2d9; border-radius: 8px; padding: 0.35rem 0.6rem;

@@ -58,6 +58,52 @@ const VAC_DEV: Record<string, string> = {
   Eka: 'एकवचन', Dvi: 'द्विवचन', Bahu: 'बहुवचन'
 };
 
+// ── तिङन्त ──────────────────────────────────────────────────────────────
+const PURUSHAS = ['Prathama', 'Madhyama', 'Uttama'] as const;
+const PUR_DEV: Record<string, string> = {
+  Prathama: 'प्रथमपुरुष', Madhyama: 'मध्यमपुरुष', Uttama: 'उत्तमपुरुष'
+};
+const LAK_KEY: Record<string, string> = {
+  'लट्': 'Lat', 'लङ्': 'Lan', 'लिट्': 'Lit', 'लुट्': 'Lut', 'लृट्': 'Lrt',
+  'लोट्': 'Lot', 'विधिलिङ्': 'VidhiLin', 'आशीर्लिङ्': 'AshirLin',
+  'लुङ्': 'Lun', 'लृङ्': 'Lrn'
+};
+
+/**
+ * Root → (aupadeśika, gaṇa), the dhātupāṭha spelling vidyut needs.
+ *
+ * The corpus records only the citation form (गम्), and a wrong gaṇa silently
+ * derives a different verb rather than failing — so every entry here was
+ * checked by deriving a form the corpus actually uses and comparing. Roots
+ * whose spelling could not be confirmed are omitted rather than guessed;
+ * they surface in the build's "root not in the dhātu table" count.
+ */
+const DHATU: Record<string, [string, string]> = {
+  'भू': ['BU', 'Bhvadi'], 'वस्': ['vasa~', 'Bhvadi'], 'पठ्': ['paWa~', 'Bhvadi'],
+  'पच्': ['qupaca~^', 'Bhvadi'], 'रक्ष्': ['rakza~', 'Bhvadi'], 'वद्': ['vada~', 'Bhvadi'],
+  'क्रुध्': ['kruDa~', 'Divadi'], 'तुष्': ['tuza~', 'Divadi'], 'रुच्': ['ruca~\\', 'Bhvadi'],
+  'नी': ['RI\\Y', 'Bhvadi'], 'ज्ञा': ['jYA\\', 'Kryadi'], 'श्रु': ['Sru\\', 'Bhvadi'],
+  'कृ': ['qukf\\Y', 'Tanadi'], 'गम्': ['ga\\mx~', 'Bhvadi'], 'दा': ['qudA\\Y', 'Juhotyadi'],
+  'दृश्': ['df\\Si~r', 'Bhvadi'], 'अस्': ['asa~', 'Adadi'], 'इष्': ['izu~', 'Tudadi'],
+  'स्था': ['zWA\\', 'Bhvadi'], 'प्रच्छ्': ['pra\\Ca~', 'Tudadi'], 'खाद्': ['KAdf~', 'Bhvadi'],
+  'चिन्त्': ['citi~', 'Curadi'], 'या': ['yA\\', 'Bhvadi'], 'पत्': ['patx~', 'Bhvadi'],
+  'भी': ['YiBi\\', 'Juhotyadi'], 'इ': ['i\\R', 'Adadi'], 'हन्': ['ha\\na~', 'Adadi'],
+  'लभ्': ['qula\\Ba~\\', 'Bhvadi'], 'मन्': ['ma\\na~\\', 'Divadi'], 'सद्': ['za\\dx~', 'Bhvadi']
+};
+
+/**
+ * Preverbs tried when a form does not derive from the bare root.
+ *
+ * आगच्छति, प्रभवति and अधीते are गम्, भू and इ with an उपसर्ग fused on, and vidyut
+ * takes the prefix as a separate input — without it the whole form derives to
+ * nothing. Trying the common preverbs recovered 19 of the 45 forms that
+ * otherwise fell out of the index.
+ */
+const UPASARGAS = [
+  'A', 'pra', 'sam', 'vi', 'ni', 'anu', 'upa', 'aDi', 'ava',
+  'ud', 'pari', 'prati', 'apa', 'aBi', 'nis', 'dus', 'su'
+];
+
 function toSlp1(dev: string): string | null {
   const map: Record<string, string> = {
     'अ':'a','आ':'A','इ':'i','ई':'I','उ':'u','ऊ':'U','ऋ':'f','ॠ':'F','ए':'e','ऐ':'E','ओ':'o','औ':'O',
@@ -512,6 +558,157 @@ async function main() {
     .filter((e) => e.forms < 2)
     .map((e) => ({ subject: e.subject, linga: e.linga, forms: e.forms, filled: e.filled }));
 
+  // ── तिङन्त ─────────────────────────────────────────────────────────────
+  //
+  // The same shape one axis over: पुरुष × वचन, once लकार is pinned. The corpus
+  // annotates लकार on every verb and पुरुष on 4% of them, so unlike सुबन्त there
+  // is almost no annotation to intersect with — the cell comes from the engine
+  // alone. That is sound here in a way it was not for nouns: a तिङ् ending is
+  // far more distinctive than a सुप् one, and 237 of 286 derivable forms land in
+  // exactly one cell with no help from the tags.
+
+  /** Which (पुरुष, वचन) cells of a root+lakāra produce this form? */
+  const tinMemo = new Map<string, Array<[string, string]>>();
+  function tinCellsFor(
+    aup: string, gana: string, lak: string, formSlp: string
+  ): { cells: Array<[string, string]>; prefix: string } {
+    const key = aup + '|' + gana + '|' + lak + '|' + formSlp;
+    const hit = tinMemo.get(key);
+    if (hit) return { cells: hit, prefix: '' };
+    // Bare root first; only reach for preverbs when nothing derives, so a form
+    // that works plainly is never attributed to a prefix it does not have.
+    for (const pre of ['', ...UPASARGAS]) {
+      const out: Array<[string, string]> = [];
+      for (const pu of PURUSHAS)
+        for (const vc of VACANAS)
+          for (const pada of [null, 'Parasmaipada', 'Atmanepada']) {
+            try {
+              const res = v.deriveTinantas({
+                dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: pre ? [pre] : [] },
+                lakara: lak, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
+              });
+              if (res.some((p: any) => p.text === formSlp)) {
+                out.push([PUR_DEV[pu], VAC_DEV[vc]]);
+              }
+            } catch { /* this cell does not derive */ }
+          }
+      const uniq = [...new Set(out.map((c) => c[0] + '|' + c[1]))]
+        .map((k) => k.split('|') as [string, string]);
+      if (uniq.length) {
+        if (!pre) tinMemo.set(key, uniq);
+        return { cells: uniq, prefix: pre };
+      }
+    }
+    tinMemo.set(key, []);
+    return { cells: [], prefix: '' };
+  }
+
+  const LAK_SET = new Set(Object.keys(LAK_KEY));
+  type TinOcc = Occ & { lakara: string };
+  const tinByRoot = new Map<string, Map<string, TinOcc[]>>();  // root → lakāra → occurrences
+  let tinUnmapped = 0, tinUnderivable = 0, tinResolved = 0, tinAmbiguous = 0;
+  const unmappedRoots = new Map<string, number>();
+
+  for (const r of corpus) {
+    for (const w of r.words ?? []) {
+      if (!w.lemma) continue;
+      const terms = (w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term);
+      const lak = terms.find((t: string) => LAK_SET.has(t));
+      if (!lak) continue;
+      const root = deaccent(w.lemma);
+      if (!tinByRoot.has(root)) tinByRoot.set(root, new Map());
+      const byLak = tinByRoot.get(root)!;
+      if (!byLak.has(lak)) byLak.set(lak, []);
+      byLak.get(lak)!.push({
+        form: deaccent(w.form),
+        formRaw: String(w.form ?? ''),
+        reading: String(r.id ?? ''),
+        position: Number(r.position ?? 0),
+        chapter: String(r.chapter ?? ''),
+        phrase: phraseAround(String(r.sentence ?? ''), String(w.form ?? '')),
+        gloss: String(w.gloss ?? ''),
+        cites: (w.notes ?? [])
+          .filter((n: any) => n.cite)
+          .map((n: any) => ({ cite: String(n.cite), role: String(n.role ?? '') })),
+        lakara: lak
+      });
+    }
+  }
+
+  const tinEntries: any[] = [];
+  for (const [root, byLak] of tinByRoot) {
+    const spec = DHATU[root];
+    if (!spec) {
+      let n = 0; for (const list of byLak.values()) n += list.length;
+      tinUnmapped += n;
+      unmappedRoots.set(root, n);
+      continue;
+    }
+    // One entry per (root, लकार): the लकार is the pinned feature that turns
+    // पुरुष × वचन into a grid at all.
+    for (const [lak, occs] of byLak) {
+      const grid: Record<string, any[]> = {};
+      const unplaced: any[] = [];
+      const distinct = new Set<string>();
+
+      for (const o of occs) {
+        const fs = toSlp1(o.form);
+        const { cells } = fs
+          ? tinCellsFor(spec[0], spec[1], LAK_KEY[lak], fs)
+          : { cells: [] as Array<[string, string]> };
+        if (!cells.length) { tinUnderivable++; unplaced.push({ ...o, ambiguous: false }); continue; }
+        distinct.add(o.form);
+        if (cells.length === 1) tinResolved++; else tinAmbiguous++;
+        for (const [pu, vc] of cells) {
+          (grid[pu + '|' + vc] ??= []).push({ ...o, ambiguous: cells.length > 1, attested: false });
+        }
+      }
+      if (!distinct.size && !unplaced.length) continue;
+
+      for (const k of Object.keys(grid)) {
+        const seen = new Set<string>();
+        grid[k] = grid[k].filter((a: any) => {
+          const id = a.reading + ':' + a.formRaw;
+          if (seen.has(id)) return false;
+          seen.add(id);
+          return true;
+        });
+        grid[k].sort((a: any, b: any) => a.position - b.position);
+        const total = grid[k].length;
+        grid[k] = grid[k].slice(0, 3);
+        if (total > 3) grid[k][0].more = total - 3;
+      }
+
+      // The full 3×3 for this लकार, so unattested cells can be shown too.
+      const paradigm: Record<string, string[]> = {};
+      for (const pu of PURUSHAS)
+        for (const vc of VACANAS) {
+          try {
+            const res = v.deriveTinantas({
+              dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
+              lakara: LAK_KEY[lak], prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null
+            });
+            const forms = [...new Set(res.map((p: any) => p.text))] as string[];
+            if (forms.length) paradigm[PUR_DEV[pu] + '|' + VAC_DEV[vc]] = forms.map(toDeva);
+          } catch { /* not derivable for this root */ }
+        }
+
+      tinEntries.push({
+        subject: root,
+        kind: 'tinanta',
+        linga: null,
+        pinned: { 'लकार': lak },
+        forms: distinct.size,
+        filled: Object.keys(grid).length,
+        total: PURUSHAS.length * VACANAS.length,
+        grid,
+        paradigm: Object.keys(paradigm).length ? paradigm : undefined,
+        unplaced: unplaced.slice(0, 6)
+      });
+    }
+  }
+  tinEntries.sort((a, b) => b.filled - a.filled || b.forms - a.forms);
+
   const index = {
     generated: new Date().toISOString(),
     sections: [
@@ -525,6 +722,17 @@ async function main() {
         ],
         entries: rich,
         sparse
+      },
+      {
+        kind: 'tinanta',
+        dev: 'तिङन्त',
+        en: 'verbs',
+        axes: [
+          { feature: 'पुरुष', values: PURUSHAS.map((k) => PUR_DEV[k]) },
+          { feature: 'वचन', values: VACANAS.map((k) => VAC_DEV[k]) }
+        ],
+        entries: tinEntries,
+        sparse: []
       }
     ],
     unlemmatized
@@ -534,11 +742,16 @@ async function main() {
   const withGrid = rich.filter((e) => e.paradigm).length;
   const unplacedTotal = rich.reduce((n, e) => n + e.unplaced.length, 0);
   const kb = Math.round(fs.statSync(USAGE_OUT).size / 1024);
+  const topUnmapped = [...unmappedRoots.entries()]
+    .sort((a, b) => b[1] - a[1]).slice(0, 8).map(([r, n]) => `${r}:${n}`).join(' ');
   console.log(
-    `Wrote ${rich.length} सुबन्त stems → ${path.relative(process.cwd(), USAGE_OUT)} (${kb}KB)\n` +
-      `  ${withGrid} have a settled gender and a full grid; ${rich.length - withGrid} list attested forms only\n` +
-      `  ${sparse.length} more stems are attested once and are listed without a grid\n` +
-      `  ${unplacedTotal} attested form(s) fall outside the classical paradigm (Vedic)\n` +
+    `Wrote → ${path.relative(process.cwd(), USAGE_OUT)} (${kb}KB)\n` +
+      `  सुबन्त: ${rich.length} stems — ${withGrid} with a settled gender and a full grid,\n` +
+      `          ${rich.length - withGrid} attested-forms-only, ${sparse.length} seen once,\n` +
+      `          ${unplacedTotal} form(s) outside the classical paradigm (Vedic)\n` +
+      `  तिङन्त: ${tinEntries.length} (root, लकार) grids — ${tinResolved} form(s) resolve to one cell,\n` +
+      `          ${tinAmbiguous} to several, ${tinUnderivable} do not derive\n` +
+      `          ${tinUnmapped} occurrence(s) skipped: root not in the dhātu table (${topUnmapped})\n` +
       `  ${unlemmatized} annotated word(s) carry no lemma and cannot be indexed`
   );
 }
