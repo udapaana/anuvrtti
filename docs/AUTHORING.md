@@ -199,6 +199,86 @@ paradigm — and check that the tags say all of it. If a तिङन्त says
 it is a present-tense *something*. If it says लट् · प्रथमपुरुष · एकवचन ·
 परस्मैपद, it is a cell.
 
+## How a reading reaches the app
+
+One rule governs the whole chain: **the YAML is the only thing written by hand.**
+Everything downstream is derived, and any fact that appears in two places will
+eventually disagree — that is what produced the फलम् quiz contradiction and the
+कूपे-in-five-cells grid.
+
+```
+content/readings/*.yaml          ← you write this, and nothing else
+        │
+        │  bun run build:readings        (pass 1 — no quizzes yet)
+        ▼
+static/data/readings.json
+        │
+        │  bun run build:quiz            (vidyut: derives cells)
+        ├──────────────► static/data/quiz-cells.json   what a FORM can be
+        └──────────────► static/data/usage.json        what the CORPUS attests
+        │
+        │  bun run build:readings        (pass 2 — quizzes, now that cells exist)
+        ▼
+static/data/readings.json  ──►  /reader  /usage  /review
+```
+
+`bun run build:quiz` runs all three passes. The loop is deliberate: the quiz
+needs the cells, and the cells are derived from the corpus's own forms.
+
+### The one command, and when
+
+| after you… | run |
+|---|---|
+| edit any `content/readings/*.yaml` | `bun run build:readings` |
+| add or change **words** (new forms, new lemmas, new tags) | `bun run build:quiz` |
+| anything, before pushing | `bun run check` then `npm run build` |
+
+`npm run build` does **not** regenerate the derived data. `quiz-cells.json` and
+`usage.json` are committed artifacts, like the readings themselves — rebuild
+them deliberately, inspect the diff, commit it with the reading that caused it.
+
+### What each stage is allowed to decide
+
+The split matters, and getting it wrong is how the grid filled with speculation:
+
+- **The YAML asserts.** This word is सप्तमी. This verb is लङ्. These assertions
+  are evidence and are never overridden by the engine.
+- **vidyut supplies what the annotation cannot.** वचन for a सुबन्त; पुरुष and वचन
+  for a तिङन्त; the unattested cells of a paradigm. It answers *"what could this
+  form be?"* — a candidate set, not a fact.
+- **The build intersects them.** Annotation narrows the engine's candidates to
+  the cell the sentence actually uses. Where the corpus is silent, the कारक role
+  stands in (अधिकरण → सप्तमी). Where both are silent, the cell stays ambiguous
+  and says so.
+
+Never let a derived value overwrite an authored one, and never let a candidate
+set masquerade as an answer. When the two disagree — they never have, across
+507 noun forms — trust neither silently; surface it.
+
+### What the app reads
+
+| surface | reads | shows |
+|---|---|---|
+| `/reader` | `readings.json` | the reading, its glosses, the quiz gate |
+| `/usage` | `usage.json` | the paradigm grids, attested and unattested |
+| `/ref/[id]` | commentary data | the sūtra — joined *from* प्रयोग by citation, never the reverse |
+
+The join is one-way and cheap: a प्रयोग cell cites `7.1.12` and links to
+`/ref/7.1.12`. Nothing under `/ref` knows प्रयोग exists.
+
+### Adding a new category
+
+The section shape is generic on purpose. सुबन्त is विभक्ति × वचन and तिङन्त is
+पुरुष × वचन with लकार pinned; both are the same object with different axes
+declared in the data. A new grid — सन्धि as final वर्ण × initial वर्ण, वर्णमाला as
+place × manner — should be **a new index section, not a new renderer**. If you
+find yourself adding a case to the page component, the axes probably belong in
+the data instead.
+
+Categories that are *not* grids — कारक, समास, कृदन्त, तद्धित — are typologies:
+their members are told apart by a question, not by coordinates. They stay in
+`/ref/tables` until they get an exhibit of their own.
+
 ## Known gaps
 
 - **39 citations to review** (`bun run verify:cites --full`). Mostly consonant
@@ -209,9 +289,20 @@ it is a present-tense *something*. If it says लट् · प्रथमपु
 - **3 rules never cited**: 1.2.43, 7.3.86, 8.4.1.
 - **Feature tags are the biggest gap in the corpus.** 95% of सुबन्त carry no
   वचन, 96% of तिङन्त carry no पुरुष, and 291 words carry no type tag at all.
-  Derivation covers the सुबन्त case and nothing else, so तिङन्त has no प्रयोग
-  section and the reader's rail shows द्वितीया where it should show द्वितीया
-  एकवचन. See "Grammatical completeness" above for what each type owes.
+  Derivation now covers both — वचन for nouns, पुरुष and वचन for verbs — so both
+  प्रयोग grids exist. But **the reader's rail still shows only the authored
+  tags**, so सभाम् displays as "कर्मन् · द्वितीया" with no वचन. The derived cell
+  is available and unused there. See "Grammatical completeness" above.
+- **45 verb roots are not in the dhātu table** (78 occurrences), so their forms
+  are skipped by प्रयोग: ज्वल्, कथ्, त्यज्, पा, ग्रह्, धृ… A root needs its
+  aupadeśika spelling and gaṇa, and a wrong gaṇa silently derives a different
+  verb — so each addition must be checked against a form the corpus uses, not
+  guessed. The build prints the unmapped list every run.
+- **The quiz still asks the unanswerable question.** 720 of 1,480 quizzes ask
+  "which विभक्ति?", resting on the engine's judgment that the form settles it;
+  307 more ask it of forms that are genuinely ambiguous, with the phrase shown.
+  380 cells now resolve to exactly one answer, which is what a fill-the-cell
+  question would need — show the cell, ask for the form. Unbuilt.
 - **144 words have no `lemma`**, mostly ex001-ex004. They cannot be indexed by
   प्रयोग at all — a word with no stem belongs to no paradigm.
 - **`/review` is reachable only from the home page**, not from the site nav,
