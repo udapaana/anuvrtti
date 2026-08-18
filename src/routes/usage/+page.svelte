@@ -166,7 +166,12 @@
     return out;
   });
 
+  // Abbreviated by syllable, not by character count: slicing three code points
+  // off स्त्रीलिङ्ग gives स्त, which is not a word.
   const LINGAS_COL = ['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग'];
+  const LINGA_SHORT: Record<string, string> = {
+    'पुंलिङ्ग': 'पुं', 'स्त्रीलिङ्ग': 'स्त्री', 'नपुंसकलिङ्ग': 'नपुं'
+  };
 
   /**
    * सुबन्त as a matrix, not a list.
@@ -357,7 +362,7 @@
           <div class="mx" role="grid" aria-label="declensions">
             <div class="mxcorner"></div>
             {#each LINGAS_COL as lg}
-              <div class="mxcolhead"><Sanskrit text={lg.slice(0, 3)} source="devanagari" /></div>
+              <div class="mxcolhead"><Sanskrit text={LINGA_SHORT[lg] ?? lg} source="devanagari" /></div>
             {/each}
             {#each matrix as row (row.terminal)}
               <div class="mxrowhead"><Sanskrit text={row.dev} source="devanagari" /></div>

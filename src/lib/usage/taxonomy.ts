@@ -104,6 +104,35 @@ export const TERMINAL_DEV: Record<string, string> = {
   'उ': 'उकारान्त', 'ऊ': 'ऊकारान्त', 'ऋ': 'ऋकारान्त', 'hal': 'हलन्त'
 };
 
+/**
+ * हलन्त is one row today and should become eight.
+ *
+ * "Ends in a consonant" is not a declension — राजन् and मरुत् share nothing but
+ * the fact. The tradition separates them by WHICH consonant, and each behaves
+ * differently: the न्-stems lengthen and drop (राजा, राज्ञः), the इन्-stems lose
+ * their न् in the weak cases (स्वामी, स्वामिनः), the स्-stems go to र् before
+ * voiced endings (मनः, मनसा), the वत्/मत्-stems take नुम् in the strong ones
+ * (भगवान्).
+ *
+ * The corpus already has the material — 5 stems with grids and 62 more in the
+ * sparse list, of which इन् is the commonest group — so this is a matter of
+ * splitting the row, not of finding data. Blocked only on the same thing the
+ * matrix cells are: a stem whose liṅga never settled cannot be filed.
+ *
+ * Listed here so the sub-row is defined when the split happens; nothing reads
+ * it yet.
+ */
+export const HALANTA_CLASSES = [
+  { id: 'hal-n',   dev: 'नकारान्त',  en: 'n-stems',        exemplar: 'राजन्',  match: /न्$/ },
+  { id: 'hal-in',  dev: 'इन्नन्त',   en: 'in-stems',       exemplar: 'स्वामिन्', match: /िन्$/ },
+  { id: 'hal-s',   dev: 'सकारान्त',  en: 's-stems',        exemplar: 'मनस्',   match: /स्$/ },
+  { id: 'hal-vat', dev: 'वत्वन्त',   en: 'vat/mat-stems',  exemplar: 'भगवत्',  match: /[वम]त्$/ },
+  { id: 'hal-t',   dev: 'तकारान्त',  en: 't-stems',        exemplar: 'मरुत्',  match: /त्$/ },
+  { id: 'hal-c',   dev: 'चकारान्त',  en: 'c/j-stems',      exemplar: 'वणिज्',  match: /[चज]्$/ },
+  { id: 'hal-sh',  dev: 'शकारान्त',  en: 'ś/ṣ-stems',      exemplar: 'दिश्',   match: /[शष]्$/ },
+  { id: 'hal-oth', dev: 'अन्ये',     en: 'other consonants', match: /./ }
+] as const;
+
 /** The final sound of a stem: a vowel name, or `hal` for consonant-final. */
 export function finalSound(stem: string): string {
   const chars = [...String(stem ?? '')];
