@@ -5,6 +5,7 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { cellKey } from '$lib/usage/normalize';
   import { TERMINALS, TERMINAL_DEV } from '$lib/usage/taxonomy';
+  import { transliterate, type Script } from '$lib/transliteration';
   import type { UsageIndex, UsageSection, ParadigmEntry, Attestation } from '$lib/usage/types';
 
   // प्रयोग — the corpus indexed by what the language declines, rather than by
@@ -29,6 +30,87 @@
     next.has(id) ? next.delete(id) : next.add(id);
     collapsed = next;
   }
+  /**
+   * Search by folding both sides to bare roman.
+   *
+   * Nothing can be assumed about the input. The display script is a rendering
+   * preference, not a keyboard — someone reading Telugu still types roman — and
+   * among the romanisations `pitr`, `pitṛ`, `pitR` and `pitRi` are the same
+   * word spelt four ways.
+   *
+   * So instead of guessing the scheme, both the stem and the query are reduced
+   * to a comparison key: transliterate to IAST, strip the diacritics, lowercase.
+   * पितृ, pitṛ, pitr and pitri all become `pitr` and match each other. Detecting
+   * the script is one call rather than seventeen attempts, and it degrades
+   * gracefully — an unrecognised string simply matches nothing.
+   */
+  /** Which script a string is written in, by Unicode block. */
+  const SCRIPT_RANGES: Array<[RegExp, Script]> = [
+    [/[\u0900-\u097f]/, 'devanagari'],
+    [/[\u0980-\u09ff]/, 'bengali'],
+    [/[\u0a00-\u0a7f]/, 'gurmukhi'],
+    [/[\u0a80-\u0aff]/, 'gujarati'],
+    [/[\u0b00-\u0b7f]/, 'odia'],
+    [/[\u0b80-\u0bff]/, 'tamil'],
+    [/[\u0c00-\u0c7f]/, 'telugu'],
+    [/[\u0c80-\u0cff]/, 'kannada'],
+    [/[\u0d00-\u0d7f]/, 'malayalam'],
+    [/[\u0d80-\u0dff]/, 'sinhala']
+  ];
+  function detectScript(t: string): Script | null {
+    for (const [re, sc] of SCRIPT_RANGES) if (re.test(t)) return sc;
+    return null;   // roman of some flavour — folding handles the rest
+  }
+
+  /** IAST → bare ASCII: strip combining marks, then the stragglers. */
+  function fold(t: string): string {
+    return t
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/ṃ|ṁ/g, 'm')
+      .replace(/ḥ/g, 'h')
+      .toLowerCase()
+      .replace(/[^a-z]/g, '');
+  }
+
+  /** Every subject and sparse stem, keyed by its folded roman form. */
+  let searchKeys = $state<Array<{ subject: string; key: string; sparse: boolean }>>([]);
+  $effect(() => {
+    const all = [
+      ...subjects.map((s) => ({ subject: s.subject, sparse: false })),
+      ...(section?.sparse ?? []).map((e) => ({ subject: e.subject, sparse: true }))
+    ];
+    let cancelled = false;
+    (async () => {
+      const out: Array<{ subject: string; key: string; sparse: boolean }> = [];
+      for (const x of all) {
+        try {
+          const iast = await transliterate(x.subject, 'devanagari', 'iast');
+          out.push({ ...x, key: fold(iast) });
+        } catch { out.push({ ...x, key: fold(x.subject) }); }
+      }
+      if (!cancelled) searchKeys = out;
+    })();
+    return () => { cancelled = true; };
+  });
+
+  /** The query, folded the same way. */
+  let queryKey = $state('');
+  $effect(() => {
+    const q = query.trim();
+    if (!q) { queryKey = ''; return; }
+    let cancelled = false;
+    (async () => {
+      try {
+        const from = detectScript(q);
+        const iast = from ? await transliterate(q, from, 'iast') : q;
+        if (!cancelled) queryKey = fold(iast);
+      } catch {
+        if (!cancelled) queryKey = fold(q);
+      }
+    })();
+    return () => { cancelled = true; };
+  });
 
   const sections = $derived<UsageSection[]>(index?.sections ?? []);
   const section = $derived<UsageSection | null>(
@@ -222,6 +304,29 @@
     return (entry.terminal ?? '') + '|' + (entry.linga ?? '');
   });
 
+  /**
+   * Search hits — the words themselves, not the classes.
+   *
+   * With the rail a matrix, filtering class names answered nothing: a reader
+   * looking for पितृ does not know it is ऋकारान्त. The box now searches stems
+   * across the whole section and jumps straight to the one picked, which is
+   * also the only way to reach the ~310 stems attested once.
+   */
+  const hits = $derived.by(() => {
+    if (!queryKey) return [];
+    const matched = new Set(
+      searchKeys.filter((k) => k.key.includes(queryKey)).map((k) => k.subject)
+    );
+    if (!matched.size) return [];
+    const rich = subjects
+      .filter((s) => matched.has(s.subject))
+      .map((s) => ({ subject: s.subject, lead: s.lead, filled: s.filled, total: s.total, sparse: false }));
+    const thin = (section?.sparse ?? [])
+      .filter((e) => matched.has(e.subject))
+      .map((e) => ({ subject: e.subject, lead: null, filled: e.filled, total: 24, sparse: true }));
+    return [...rich, ...thin].slice(0, 40);
+  });
+
   /** The classes, with how many stems the corpus puts in each. */
   const classList = $derived.by(() => {
     const gs = section?.groups ?? [];
@@ -366,10 +471,29 @@
         <input
           class="find"
           bind:value={query}
-          placeholder="search…"
+          placeholder={section.kind === 'tinanta' ? 'search roots…' : 'search stems…'}
           aria-label={section.kind === 'tinanta' ? 'search roots' : 'search stems'}
         />
-        {#if section.kind === 'subanta'}
+
+        {#if query.trim()}
+          <div class="hits">
+            {#if !hits.length}
+              <p class="muted hitnone">nothing matches</p>
+            {/if}
+            {#each hits as h (h.subject)}
+              <button
+                class="hit"
+                class:thin={h.sparse}
+                disabled={h.sparse}
+                title={h.sparse ? 'attested once — no paradigm to show' : ''}
+                onclick={() => h.lead && (query = '', pickSubject(h.lead))}
+              >
+                <span class="hitdev"><Sanskrit text={h.subject} source="devanagari" /></span>
+                <span class="hitn">{h.sparse ? 'seen once' : `${h.filled}/${h.total}`}</span>
+              </button>
+            {/each}
+          </div>
+        {:else if section.kind === 'subanta'}
           <!-- The declension named by its two coordinates. Clicking a cell
                opens that paradigm; the stems inside it are chosen on the page. -->
           <div class="mx" role="grid" aria-label="declensions">
@@ -446,17 +570,10 @@
           </div>
         {/if}
 
-        {#if sparseListed.length}
-          <button class="more" onclick={() => (showSparse = !showSparse)}>
-            {showSparse ? '−' : '+'} {sparseListed.length} attested once
-          </button>
-          {#if showSparse}
-            <div class="sparse">
-              {#each sparseListed.slice(0, 120) as e (e.subject)}
-                <span class="sparseitem"><Sanskrit text={e.subject} source="devanagari" /></span>
-              {/each}
-            </div>
-          {/if}
+        {#if !query.trim() && sparseListed.length}
+          <p class="sparsenote">
+            {sparseListed.length} more stems are attested once — search to find one.
+          </p>
         {/if}
       </nav>
 
@@ -470,26 +587,24 @@
                changes which cells the corpus lights up and whose line appears
                under them. That is the whole difference between देव and बाल. -->
           {#if classMembers.length > 1}
-            <!-- 40 stems as chips wrapped over six rows and got worse as the
-                 corpus grew. The best-attested few stay visible — those are the
-                 ones worth comparing — and the rest sit behind a count. -->
-            <div class="stempick" role="group" aria-label="stem">
-              {#each (showAllStems ? classMembers : classMembers.slice(0, 8)) as m (m.subject)}
-                <button
-                  class="stembtn"
-                  class:on={m.subject === entry.subject}
-                  onclick={() => pickSubject(m.lead)}
-                >
-                  <Sanskrit text={m.subject} source="devanagari" />
-                  <span class="stemn">{m.filled}/{m.total}</span>
-                </button>
-              {/each}
-              {#if classMembers.length > 8}
-                <button class="stemmore" onclick={() => (showAllStems = !showAllStems)}>
-                  {showAllStems ? '− fewer' : `+ ${classMembers.length - 8} more`}
-                </button>
-              {/if}
-            </div>
+            <label class="stemsel">
+              <span class="stemsellabel">
+                {section.kind === 'tinanta' ? 'root' : 'stem'}
+              </span>
+              <select
+                aria-label={section.kind === 'tinanta' ? 'choose root' : 'choose stem'}
+                value={entry.subject}
+                onchange={(ev) => {
+                  const v = (ev.currentTarget as HTMLSelectElement).value;
+                  const m = classMembers.find((x) => x.subject === v);
+                  if (m) pickSubject(m.lead);
+                }}
+              >
+                {#each classMembers as m (m.subject)}
+                  <option value={m.subject}>{m.subject} — {m.filled}/{m.total}</option>
+                {/each}
+              </select>
+            </label>
           {/if}
         {/if}
 
@@ -752,6 +867,37 @@
     font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b;
     margin-left: auto;
   }
+  /* stem chooser: a select, so 40 stems cost one line rather than six rows */
+  .stemsel {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    border: 1px solid #e7e2d9; border-radius: 8px; background: #fff;
+    padding: 0.2rem 0.5rem; margin-bottom: 1.1rem;
+  }
+  .stemsellabel {
+    font-family: ui-monospace, monospace; font-size: 0.58rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #a99e8b;
+  }
+  .stemsel select {
+    border: 0; background: none; font: inherit; font-size: 0.95rem;
+    color: #463f33; cursor: pointer; padding: 0.15rem 0;
+  }
+  .stemsel select:focus { outline: none; }
+  .stemsel:focus-within { border-color: #f4c98b; }
+
+  /* search results, in place of the matrix while typing */
+  .hits { display: flex; flex-direction: column; gap: 1px; max-height: 62vh; overflow-y: auto; }
+  .hitnone { font-size: 0.82rem; padding: 0.4rem 0.55rem; }
+  .hit {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem;
+    border: 1px solid transparent; border-radius: 8px; padding: 0.34rem 0.55rem;
+    background: none; cursor: pointer; font: inherit; color: inherit; text-align: left;
+  }
+  .hit:hover { background: #faf7f0; }
+  .hit.thin { cursor: default; opacity: 0.55; }
+  .hit.thin:hover { background: none; }
+  .hitdev { font-size: 0.95rem; }
+  .hitn { font-family: ui-monospace, monospace; font-size: 0.6rem; color: #a99e8b; }
+
   .stempick {
     display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.2rem;
     padding-bottom: 0.9rem; border-bottom: 1px solid #ece3d3;
@@ -809,6 +955,10 @@
   }
   .sparse { display: flex; flex-wrap: wrap; gap: 0.25rem; max-height: 26vh; overflow-y: auto; }
   .sparseitem { font-size: 0.82rem; color: #a99e8b; }
+  .sparsenote {
+    font-size: 0.72rem; color: #a99e8b; line-height: 1.45;
+    margin: 0.6rem 0 0; padding: 0 0.55rem;
+  }
 
   .subjhead { display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .subj { font-size: 1.9rem; line-height: 1; }
