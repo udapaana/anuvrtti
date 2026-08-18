@@ -20,6 +20,13 @@
 
   let query = $state('');
   let showSparse = $state(false);
+  /** Class headings the reader has folded shut. Open by default. */
+  let collapsed = $state<Set<string>>(new Set());
+  function toggleGroup(id: string) {
+    const next = new Set(collapsed);
+    next.has(id) ? next.delete(id) : next.add(id);
+    collapsed = next;
+  }
 
   const sections = $derived<UsageSection[]>(index?.sections ?? []);
   const section = $derived<UsageSection | null>(
@@ -74,12 +81,24 @@
     return subjects.filter((s) => s.subject.includes(q));
   });
 
-  /** The other grids of the subject on screen — its other लकारs. */
-  const siblings = $derived.by(() => {
+  /**
+   * Every grid the subject has, all rendered at once.
+   *
+   * Showing one लकार at a time made the tabs a mode switch, and comparing
+   * गच्छति with अगच्छत् meant clicking back and forth holding one in memory.
+   * The whole verb is on the page; the tabs scroll to a card rather than
+   * replacing it.
+   */
+  const cards = $derived.by(() => {
     if (!entry) return [];
-    const all = section?.entries.filter((e) => e.subject === entry.subject) ?? [];
-    return all.length > 1 ? all : [];
+    return section?.entries.filter((e) => e.subject === entry.subject) ?? [];
   });
+  const siblings = $derived(cards.length > 1 ? cards : []);
+
+  function scrollToCard(e: ParadigmEntry) {
+    const el = document.getElementById('card-' + (pinKey(e) || 'x'));
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   /**
    * The list, under the tradition's own class headings.
@@ -150,11 +169,14 @@
     go({ stem: e.subject, pin: pinKey(e) || null });
   }
 
-  function pickCell(k: string) {
+  /** Selecting a cell also selects the card it belongs to. */
+  function pickCell(k: string, card?: ParadigmEntry) {
+    const c = card ?? entry;
+    const samePin = c && pinKey(c) === (entry ? pinKey(entry) : '');
     go({
-      stem: entry?.subject ?? subject,
-      pin: entry ? pinKey(entry) || null : pin,
-      cell: cell === k ? null : k
+      stem: c?.subject ?? subject,
+      pin: c ? pinKey(c) || null : pin,
+      cell: cell === k && samePin ? null : k
     });
   }
 
@@ -226,14 +248,20 @@
         <div class="stems">
           {#each grouped as bucket (bucket.group?.id ?? '_')}
             {#if bucket.group}
-              <div class="ghead">
+              <button
+                class="ghead"
+                aria-expanded={!collapsed.has(bucket.group.id)}
+                onclick={() => toggleGroup(bucket.group.id)}
+              >
+                <span class="gcaret">{collapsed.has(bucket.group.id) ? '\u25b8' : '\u25be'}</span>
                 <span class="gdev"><Sanskrit text={bucket.group.dev} source="devanagari" /></span>
                 {#if bucket.group.exemplar}
                   <span class="gex"><Sanskrit text={bucket.group.exemplar} source="devanagari" /></span>
                 {/if}
                 <span class="gn">{bucket.items.length}</span>
-              </div>
+              </button>
             {/if}
+            {#if !bucket.group || !collapsed.has(bucket.group.id)}
             {#each bucket.items as s (s.subject)}
               <button
                 class="stem"
@@ -253,6 +281,7 @@
                 <span class="sn">{s.filled}/{s.total}</span>
               </button>
             {/each}
+            {/if}
           {/each}
         </div>
 
@@ -305,8 +334,7 @@
             {#each siblings as s (pinKey(s))}
               <button
                 class="pinbtn"
-                class:on={s === entry}
-                onclick={() => go({ stem: s.subject, pin: pinKey(s) })}
+                onclick={() => scrollToCard(s)}
               >
                 <Sanskrit text={pinKey(s)} source="devanagari" />
                 <span class="pincount">{s.filled}/{s.total}</span>
@@ -315,7 +343,15 @@
           </div>
         {/if}
 
-        {#if entry.paradigm}
+        {#each cards as card (pinKey(card) || card.subject)}
+        <section class="card" id="card-{pinKey(card) || 'x'}">
+        {#if pinKey(card)}
+          <div class="cardhead">
+            <Sanskrit text={pinKey(card)} source="devanagari" />
+            <span class="cardcount">{card.filled} of {card.total} cells</span>
+          </div>
+        {/if}
+        {#if card.paradigm}
           <div class="grid" style="--cols:{cols.length}">
             <div class="corner"></div>
             {#each cols as c}
@@ -325,14 +361,14 @@
               <div class="rowhead"><Sanskrit text={r} source="devanagari" /></div>
               {#each cols as c}
                 {@const k = cellKey(r, c)}
-                {@const a = atts(entry, k)}
-                {@const exp = expected(entry, k)}
+                {@const a = atts(card, k)}
+                {@const exp = expected(card, k)}
                 <button
                   class="cell"
                   class:has={a.length > 0}
-                  class:sel={cell === k}
+                  class:sel={cell === k && card === entry}
                   aria-label="{r} {c} — {a.length ? a[0].form : 'not attested'}"
-                  onclick={() => pickCell(k)}
+                  onclick={() => pickCell(k, card)}
                 >
                   {#if a.length}
                     <span class="form">
@@ -356,31 +392,37 @@
           </div>
         {:else}
           <p class="nogrid">
-            {#if entry.kind === 'tinanta'}
+            {#if card.kind === 'tinanta'}
               vidyut does not derive a full paradigm for
-              <Sanskrit text={entry.subject} source="devanagari" /> in this
+              <Sanskrit text={card.subject} source="devanagari" /> in this
               <Sanskrit text="लकार" source="devanagari" />, so only the attested forms are shown:
-            {:else if entry.isPronoun}
-              <Sanskrit text={entry.subject} source="devanagari" /> is a
+            {:else if card.isPronoun}
+              <Sanskrit text={card.subject} source="devanagari" /> is a
               <Sanskrit text="सर्वनाम" source="devanagari" /> — it takes the gender of whatever it
               stands for, so it has three paradigms rather than one and the corpus uses all of
               them. The forms it attests:
             {:else}
               None of the attested forms of
-              <Sanskrit text={entry.subject} source="devanagari" /> distinguish its gender — each
+              <Sanskrit text={card.subject} source="devanagari" /> distinguish its gender — each
               one is shared by two declensions — so the unattested cells are not shown, since
               they would differ depending on which. The forms the corpus does attest:
             {/if}
           </p>
           <div class="flat">
-            {#each Object.entries(entry.grid) as [k, list]}
-              <button class="flatitem" class:sel={cell === k} onclick={() => pickCell(k)}>
+            {#each Object.entries(card.grid) as [k, list]}
+              <button
+                class="flatitem"
+                class:sel={cell === k && card === entry}
+                onclick={() => pickCell(k, card)}
+              >
                 <span class="form"><Sanskrit text={list[0].formRaw} source="devanagari" fallback={list[0].form} /></span>
                 <span class="flatcell"><Sanskrit text={k.replace('|', ' ')} source="devanagari" /></span>
               </button>
             {/each}
           </div>
         {/if}
+        </section>
+        {/each}
 
         {#if selected}
           <section class="detail">
@@ -474,10 +516,13 @@
   .spinehead { display: flex; align-items: baseline; justify-content: space-between; }
   .groupby { font-size: 0.8rem; color: #6b6b6b; }
   .ghead {
-    display: flex; align-items: baseline; gap: 0.4rem;
-    padding: 0.6rem 0.55rem 0.2rem; border-bottom: 1px solid #ece3d3;
+    display: flex; align-items: baseline; gap: 0.4rem; width: 100%;
+    padding: 0.6rem 0.55rem 0.2rem; border: 0; border-bottom: 1px solid #ece3d3;
     margin-bottom: 0.15rem; position: sticky; top: 0; background: #fdfcfa;
+    cursor: pointer; font: inherit; color: inherit; text-align: left;
   }
+  .ghead:hover { background: #faf7f0; }
+  .gcaret { font-size: 0.6rem; color: #a99e8b; width: 0.7rem; }
   .gdev { font-size: 0.82rem; color: #463f33; }
   .gex { font-size: 0.72rem; color: #cbb994; }
   .gn { margin-left: auto; font-family: ui-monospace, monospace; font-size: 0.6rem; color: #cbb994; }
@@ -509,8 +554,20 @@
 
   .subjhead { display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 1rem; flex-wrap: wrap; }
   .subj { font-size: 1.9rem; line-height: 1; }
+  /* Each grid is a card; the tab row scrolls between them. */
+  .card { margin: 0 0 1.6rem; scroll-margin-top: 1rem; }
+  .cardhead {
+    display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.5rem;
+    font-size: 1.05rem; color: #463f33;
+  }
+  .cardcount { font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b; }
+
   /* लकार tabs — one root, its tenses side by side. */
-  .pins { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0 0 1rem; }
+  .pins {
+    display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0 0 1rem;
+    position: sticky; top: 0; z-index: 2; background: #fdfcfa;
+    padding: 0.4rem 0; border-bottom: 1px solid #ece3d3;
+  }
   .pinbtn {
     display: inline-flex; align-items: baseline; gap: 0.35rem;
     border: 1px solid #e7e2d9; border-radius: 999px; background: #fff;
