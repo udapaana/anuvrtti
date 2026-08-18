@@ -77,6 +77,8 @@ export interface ParadigmEntry {
   isSarvadi?: boolean;
   /** Which of the section's `groups` this subject files under. */
   group?: string;
+  /** The stem's final sound — the row of the सुबन्त matrix. */
+  terminal?: string;
   /** Features fixed for this grid — e.g. { लकार: 'लट्', पद: 'परस्मैपद' }. Empty for सुबन्त. */
   pinned: Pinned;
   /** Distinct deaccented forms attested. */

@@ -34,7 +34,7 @@ import * as path from 'path';
 import { deaccent, phraseAround } from '../src/lib/usage/normalize';
 import {
   groupFor, sarvanamaGroupFor, isSarvanama, GANA_DEV, LAKARA_ORDER,
-  SUBANTA_GROUPS, SARVANAMA_GROUPS
+  SUBANTA_GROUPS, SARVANAMA_GROUPS, finalSound
 } from '../src/lib/usage/taxonomy';
 
 const CORPUS = path.join(process.cwd(), 'static/data/readings.json');
@@ -554,6 +554,9 @@ async function main() {
       group: info.isPronoun
         ? sarvanamaGroupFor(stem).id
         : groupFor(stem, info.linga ? LINGA_DEV[info.linga] : null).id,
+      // The matrix coordinate: which sound the stem ends in. Paired with
+      // `linga` it names the declension — अकारान्त × पुंलिङ्ग is देव's paradigm.
+      terminal: finalSound(stem),
       pinned: {},
       forms: distinct.size,
       filled: Object.keys(grid).length,

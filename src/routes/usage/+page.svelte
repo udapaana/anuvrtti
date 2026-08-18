@@ -4,6 +4,7 @@
   import { page } from '$app/stores';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { cellKey } from '$lib/usage/normalize';
+  import { TERMINALS, TERMINAL_DEV } from '$lib/usage/taxonomy';
   import type { UsageIndex, UsageSection, ParadigmEntry, Attestation } from '$lib/usage/types';
 
   // प्रयोग — the corpus indexed by what the language declines, rather than by
@@ -42,13 +43,6 @@
    * pinned features, not by subject alone.
    */
   const pinKey = (e: ParadigmEntry) => Object.values(e.pinned ?? {}).join('·');
-  const entry = $derived<ParadigmEntry | null>(
-    section?.entries.find((e) => e.subject === subject && (!pin || pinKey(e) === pin)) ??
-      section?.entries.find((e) => e.subject === subject) ??
-      section?.entries[0] ??
-      null
-  );
-
   /**
    * The list holds one row per SUBJECT, not per grid.
    *
@@ -80,6 +74,55 @@
     if (!q) return subjects;
     return subjects.filter((s) => s.subject.includes(q));
   });
+
+  const entry = $derived<ParadigmEntry | null>(
+    section?.entries.find((e) => e.subject === subject && (!pin || pinKey(e) === pin)) ??
+      section?.entries.find((e) => e.subject === subject) ??
+      section?.entries[0] ??
+      null
+  );
+
+  /**
+   * The class on screen — the paradigm being shown.
+   *
+   * देव and बाल are not two things to browse; they are one declension with two
+   * vocabularies. So the CLASS is what you pick, and the stem is a variable
+   * inside it: which cells light up and whose phrase appears.
+   */
+  const activeGroup = $derived.by(() => {
+    const gs = section?.groups ?? [];
+    // The class of the subject on screen — otherwise picking अस् from the rail
+    // left the heading reading भ्वादि while showing an अदादि root.
+    return gs.find((g) => g.id === entry?.group) ?? gs.find((g) => g.id === klass) ?? gs[0] ?? null;
+  });
+
+  /**
+   * The stems sharing the paradigm on screen.
+   *
+   * For a सुबन्त that is the matrix cell — same terminal, same gender — so
+   * picking ग्राम or बाल swaps the vocabulary while the endings stay put. For
+   * the other sections it is the taxonomy group.
+   */
+  const classMembers = $derived.by(() => {
+    if (!entry) return subjects;
+    if (section?.kind === 'subanta') {
+      return subjects.filter(
+        (s) => s.lead.terminal === entry.terminal && s.lead.linga === entry.linga
+      );
+    }
+    return activeGroup ? subjects.filter((s) => s.group === activeGroup.id) : subjects;
+  });
+
+  /** What to call the paradigm on screen. */
+  const classLabel = $derived.by(() => {
+    if (section?.kind === 'subanta' && entry) {
+      const t = TERMINAL_DEV[entry.terminal ?? ''] ?? entry.terminal ?? '';
+      return entry.linga ? `${t} ${entry.linga}` : `${t} · लिङ्ग अनिश्चित`;
+    }
+    return activeGroup?.dev ?? '';
+  });
+
+
 
   /**
    * Every grid the subject has, all rendered at once.
@@ -123,6 +166,58 @@
     return out;
   });
 
+  const LINGAS_COL = ['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग'];
+
+  /**
+   * सुबन्त as a matrix, not a list.
+   *
+   * A declension is named by two coordinates — what the stem ends in, and its
+   * gender — so अकारान्त पुंलिङ्ग and अकारान्त नपुंसक are one row apart rather
+   * than two unrelated headings. Laid out as a grid, the system is visible:
+   * which combinations the language has, which the corpus has reached, and
+   * which are empty. A list of six names showed none of that.
+   */
+  const matrix = $derived.by(() => {
+    const rowsOut: Array<{ terminal: string; dev: string; cells: Array<{
+      linga: string; count: number; stems: typeof subjects;
+    }> }> = [];
+    for (const t of TERMINALS) {
+      const inRow = subjects.filter((s) => s.lead.terminal === t);
+      if (!inRow.length) continue;
+      rowsOut.push({
+        terminal: t,
+        dev: TERMINAL_DEV[t] ?? t,
+        cells: LINGAS_COL.map((lg) => {
+          const stems = inRow.filter((s) => s.lead.linga === lg);
+          return { linga: lg, count: stems.length, stems };
+        })
+      });
+    }
+    return rowsOut;
+  });
+
+  /** Stems whose gender the corpus never settled — a matrix cell cannot hold them. */
+  const unsettled = $derived(subjects.filter((s) => !s.lead.linga));
+
+  /** The matrix cell on screen, as `terminal|linga`. */
+  const activeCell = $derived.by(() => {
+    if (!entry) return null;
+    return (entry.terminal ?? '') + '|' + (entry.linga ?? '');
+  });
+
+  /** The classes, with how many stems the corpus puts in each. */
+  const classList = $derived.by(() => {
+    const gs = section?.groups ?? [];
+    const q = query.trim();
+    return gs
+      .map((g) => ({
+        ...g,
+        count: subjects.filter((s) => s.group === g.id).length
+      }))
+      .filter((g) => g.count > 0 && (!q || g.dev.includes(q) ||
+        subjects.some((s) => s.group === g.id && s.subject.includes(q))));
+  });
+
   const sparseListed = $derived.by(() => {
     const all = section?.sparse ?? [];
     const q = query.trim();
@@ -136,6 +231,7 @@
   // link to a cell came back as the default stem. `$page` re-runs on every
   // navigation, so deriving from it keeps one source of truth.
   const kind = $derived($page.url.searchParams.get('kind') ?? 'subanta');
+  const klass = $derived($page.url.searchParams.get('class'));
   const subject = $derived($page.url.searchParams.get('stem'));
   const pin = $derived($page.url.searchParams.get('pin'));
   const cell = $derived($page.url.searchParams.get('cell'));
@@ -151,10 +247,15 @@
     }
   });
 
-  function go(opts: { kind?: string; stem?: string | null; pin?: string | null; cell?: string | null }) {
+  function go(opts: {
+    kind?: string; class?: string | null; stem?: string | null;
+    pin?: string | null; cell?: string | null;
+  }) {
     const p = new URLSearchParams();
     const kd = opts.kind ?? kind;
     if (kd && kd !== 'subanta') p.set('kind', kd);
+    const cl = opts.class !== undefined ? opts.class : klass;
+    if (cl) p.set('class', cl);
     if (opts.stem) p.set('stem', opts.stem);
     if (opts.pin) p.set('pin', opts.pin);
     if (opts.cell) p.set('cell', opts.cell);
@@ -162,11 +263,16 @@
   }
 
   function pickKind(k: string) {
-    go({ kind: k });
+    go({ kind: k, class: null, stem: null, cell: null });
+  }
+
+  /** Opening a class clears the stem, so it lands on the class's best-attested one. */
+  function pickClass(id: string) {
+    go({ class: id, stem: null, cell: null });
   }
 
   function pickSubject(e: ParadigmEntry) {
-    go({ stem: e.subject, pin: pinKey(e) || null });
+    go({ stem: e.subject, pin: pinKey(e) || null, cell: null });
   }
 
   /** Selecting a cell also selects the card it belongs to. */
@@ -245,45 +351,82 @@
           placeholder="search…"
           aria-label={section.kind === 'tinanta' ? 'search roots' : 'search stems'}
         />
-        <div class="stems">
-          {#each grouped as bucket (bucket.group?.id ?? '_')}
-            {#if bucket.group}
-              <button
-                class="ghead"
-                aria-expanded={!collapsed.has(bucket.group.id)}
-                onclick={() => toggleGroup(bucket.group.id)}
-              >
-                <span class="gcaret">{collapsed.has(bucket.group.id) ? '\u25b8' : '\u25be'}</span>
-                <span class="gdev"><Sanskrit text={bucket.group.dev} source="devanagari" /></span>
-                {#if bucket.group.exemplar}
-                  <span class="gex"><Sanskrit text={bucket.group.exemplar} source="devanagari" /></span>
-                {/if}
-                <span class="gn">{bucket.items.length}</span>
-              </button>
-            {/if}
-            {#if !bucket.group || !collapsed.has(bucket.group.id)}
-            {#each bucket.items as s (s.subject)}
-              <button
-                class="stem"
-                class:on={s.subject === entry.subject}
-                aria-label="{s.subject} — {s.filled} of {s.total} cells attested"
-                onclick={() => pickSubject(s.lead)}
-              >
-                <span class="sdev">
-                  <Sanskrit text={s.subject} source="devanagari" />
-                  {#if s.variants.length > 1}
-                    <span class="pin">{s.variants.length} लकार</span>
-                  {/if}
-                </span>
-                <span class="meter" aria-hidden="true">
-                  <span class="fill" style="width:{Math.round((s.filled / s.total) * 100)}%"></span>
-                </span>
-                <span class="sn">{s.filled}/{s.total}</span>
-              </button>
+        {#if section.kind === 'subanta'}
+          <!-- The declension named by its two coordinates. Clicking a cell
+               opens that paradigm; the stems inside it are chosen on the page. -->
+          <div class="mx" role="grid" aria-label="declensions">
+            <div class="mxcorner"></div>
+            {#each LINGAS_COL as lg}
+              <div class="mxcolhead"><Sanskrit text={lg.slice(0, 3)} source="devanagari" /></div>
             {/each}
-            {/if}
-          {/each}
-        </div>
+            {#each matrix as row (row.terminal)}
+              <div class="mxrowhead"><Sanskrit text={row.dev} source="devanagari" /></div>
+              {#each row.cells as c}
+                {@const key = row.terminal + '|' + c.linga}
+                <button
+                  class="mxcell"
+                  class:has={c.count > 0}
+                  class:on={key === activeCell}
+                  disabled={!c.count}
+                  aria-label="{row.dev} {c.linga} — {c.count} stems"
+                  onclick={() => c.count && pickSubject(c.stems[0].lead)}
+                >
+                  {c.count || '·'}
+                </button>
+              {/each}
+            {/each}
+          </div>
+
+          {#if unsettled.length}
+            <button
+              class="more"
+              class:on={!entry?.linga}
+              onclick={() => pickSubject(unsettled[0].lead)}
+            >
+              {unsettled.length} · gender unsettled
+            </button>
+          {/if}
+        {:else}
+          <div class="stems">
+            {#each grouped as bucket (bucket.group?.id ?? '_')}
+              {#if bucket.group}
+                <button
+                  class="ghead"
+                  aria-expanded={!collapsed.has(bucket.group.id)}
+                  onclick={() => toggleGroup(bucket.group.id)}
+                >
+                  <span class="gcaret">{collapsed.has(bucket.group.id) ? '\u25b8' : '\u25be'}</span>
+                  <span class="gdev"><Sanskrit text={bucket.group.dev} source="devanagari" /></span>
+                  {#if bucket.group.exemplar}
+                    <span class="gex"><Sanskrit text={bucket.group.exemplar} source="devanagari" /></span>
+                  {/if}
+                  <span class="gn">{bucket.items.length}</span>
+                </button>
+              {/if}
+              {#if !bucket.group || !collapsed.has(bucket.group.id)}
+                {#each bucket.items as s (s.subject)}
+                  <button
+                    class="stem"
+                    class:on={s.subject === entry.subject}
+                    aria-label="{s.subject} — {s.filled} of {s.total} cells attested"
+                    onclick={() => pickSubject(s.lead)}
+                  >
+                    <span class="sdev">
+                      <Sanskrit text={s.subject} source="devanagari" />
+                      {#if s.variants.length > 1}
+                        <span class="pin">{s.variants.length} लकार</span>
+                      {/if}
+                    </span>
+                    <span class="meter" aria-hidden="true">
+                      <span class="fill" style="width:{Math.round((s.filled / s.total) * 100)}%"></span>
+                    </span>
+                    <span class="sn">{s.filled}/{s.total}</span>
+                  </button>
+                {/each}
+              {/if}
+            {/each}
+          </div>
+        {/if}
 
         {#if sparseListed.length}
           <button class="more" onclick={() => (showSparse = !showSparse)}>
@@ -300,6 +443,30 @@
       </nav>
 
       <main class="main">
+        {#if classLabel}
+          <div class="classhead">
+            <span class="classdev"><Sanskrit text={classLabel} source="devanagari" /></span>
+            <span class="classn">{classMembers.length} stems in the corpus</span>
+          </div>
+          <!-- Every stem of this class takes the same endings; picking one
+               changes which cells the corpus lights up and whose line appears
+               under them. That is the whole difference between देव and बाल. -->
+          {#if classMembers.length > 1}
+            <div class="stempick" role="group" aria-label="stem">
+              {#each classMembers as m (m.subject)}
+                <button
+                  class="stembtn"
+                  class:on={m.subject === entry.subject}
+                  onclick={() => pickSubject(m.lead)}
+                >
+                  <Sanskrit text={m.subject} source="devanagari" />
+                  <span class="stemn">{m.filled}/{m.total}</span>
+                </button>
+              {/each}
+            </div>
+          {/if}
+        {/if}
+
         <div class="subjhead">
           <span class="subj"><Sanskrit text={entry.subject} source="devanagari" /></span>
           <div class="subjmeta">
@@ -515,6 +682,65 @@
   .kinden { font-family: ui-monospace, monospace; font-size: 0.58rem; color: #a99e8b; }
   .spinehead { display: flex; align-items: baseline; justify-content: space-between; }
   .groupby { font-size: 0.8rem; color: #6b6b6b; }
+  /* rail: one row per declension */
+  .klass {
+    display: grid; grid-template-columns: 1fr auto auto; gap: 0.45rem;
+    align-items: baseline; width: 100%; text-align: left;
+    border: 1px solid transparent; border-radius: 8px; padding: 0.42rem 0.55rem;
+    background: none; cursor: pointer; font: inherit; color: inherit;
+  }
+  .klass:hover { background: #faf7f0; }
+  .klass.on { background: #fdecd9; border-color: #f4c98b; }
+  .kdev { font-size: 0.95rem; }
+  .kex { font-size: 0.72rem; color: #cbb994; }
+  .kn { font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b; }
+
+  /* page: the class, then its stems */
+  .classhead {
+    display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+    margin-bottom: 0.7rem;
+  }
+  .classdev { font-size: 1.35rem; }
+
+  /* the declension matrix: terminal down, gender across */
+  .mx {
+    display: grid; grid-template-columns: auto repeat(3, 1fr);
+    gap: 2px; margin-bottom: 0.6rem;
+  }
+  .mxcorner { }
+  .mxcolhead, .mxrowhead {
+    font-size: 0.68rem; color: #a89f92; padding: 0.2rem 0.3rem;
+  }
+  .mxrowhead { text-align: right; white-space: nowrap; align-self: center; }
+  .mxcolhead { text-align: center; }
+  .mxcell {
+    border: 1px solid #ece3d3; border-radius: 6px; background: #fff;
+    padding: 0.35rem 0.2rem; font: inherit; font-size: 0.78rem;
+    font-family: ui-monospace, monospace; color: #d3cab8; cursor: default;
+  }
+  .mxcell.has { color: #463f33; background: #fffdfa; cursor: pointer; }
+  .mxcell.has:hover { border-color: #f4c98b; }
+  .mxcell.on { background: #fdecd9; border-color: #f97316; color: #92591f; }
+  .more.on { background: #fdecd9; border-color: #f4c98b; }
+  .classn {
+    font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b;
+    margin-left: auto;
+  }
+  .stempick {
+    display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.2rem;
+    padding-bottom: 0.9rem; border-bottom: 1px solid #ece3d3;
+  }
+  .stembtn {
+    display: inline-flex; align-items: baseline; gap: 0.3rem;
+    border: 1px solid #e7e2d9; border-radius: 999px; background: #fff;
+    padding: 0.2rem 0.65rem; cursor: pointer; font: inherit; font-size: 0.95rem;
+    color: #463f33;
+  }
+  .stembtn:hover { border-color: #f4c98b; }
+  .stembtn.on { background: #fdecd9; border-color: #f97316; color: #92591f; }
+  .stemn { font-family: ui-monospace, monospace; font-size: 0.58rem; color: #a99e8b; }
+  .stembtn.on .stemn { color: #b08d57; }
+
   .ghead {
     display: flex; align-items: baseline; gap: 0.4rem; width: 100%;
     padding: 0.6rem 0.55rem 0.2rem; border: 0; border-bottom: 1px solid #ece3d3;

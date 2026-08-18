@@ -94,6 +94,16 @@ const FINAL_VOWEL: Record<string, string> = {
   'ा': 'आ', 'ि': 'इ', 'ी': 'ई', 'ु': 'उ', 'ू': 'ऊ', 'ृ': 'ऋ', 'े': 'ए', 'ो': 'ओ'
 };
 
+/**
+ * The terminal sounds a nominal stem can end in, in the tradition's order.
+ * These are the rows of the सुबन्त matrix; the columns are the three genders.
+ */
+export const TERMINALS = ['अ', 'आ', 'इ', 'ई', 'उ', 'ऊ', 'ऋ', 'hal'] as const;
+export const TERMINAL_DEV: Record<string, string> = {
+  'अ': 'अकारान्त', 'आ': 'आकारान्त', 'इ': 'इकारान्त', 'ई': 'ईकारान्त',
+  'उ': 'उकारान्त', 'ऊ': 'ऊकारान्त', 'ऋ': 'ऋकारान्त', 'hal': 'हलन्त'
+};
+
 /** The final sound of a stem: a vowel name, or `hal` for consonant-final. */
 export function finalSound(stem: string): string {
   const chars = [...String(stem ?? '')];
