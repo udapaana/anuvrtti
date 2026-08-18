@@ -123,6 +123,10 @@ it disagrees with pedagogical order on a third of pairs. Never renumber ids.
 
 ## Grammatical completeness — what every word needs
 
+**[WORD-TYPES.md](WORD-TYPES.md) is the full inventory** — every kind of word in
+the language, the dimensions each is annotated along, and which of those must be
+authored versus derived. What follows is the working summary.
+
 A word's `notes[]` are not decoration. Three things read them: the reader's
 rail, the quiz builder, and the प्रयोग index. A missing tag does not degrade
 gracefully — it removes the word from a paradigm, or produces a question with
