@@ -828,6 +828,11 @@ async function main() {
   const cellIndex: Record<string, string> = {};
   /** (root|form) → पद, for the तिङन्त the engine settles. */
   const padaIndex: Record<string, string> = {};
+  /** stem → लिङ्ग, once the attested forms narrow it. Nouns only. */
+  const lingaIndex: Record<string, string> = {};
+  for (const [stem, info] of stemInfo) {
+    if (info.linga && !info.isPronoun) lingaIndex[stem] = LINGA_DEV[info.linga];
+  }
   for (const [root, byLak] of tinByRoot) {
     const spec = DHATU[root];
     if (!spec) continue;
@@ -862,6 +867,7 @@ async function main() {
     generated: new Date().toISOString(),
     cells: cellIndex,
     padas: padaIndex,
+    lingas: lingaIndex,
     sections: [
       {
         kind: 'subanta',

@@ -1,88 +1,66 @@
 #!/usr/bin/env bun
 /**
- * check-complete.ts — which words are missing the tags their type needs.
+ * check-complete.ts — validate every word against the schema.
  *
- * docs/AUTHORING.md states what each word type owes: a सुबन्त needs विभक्ति and
- * वचन, a तिङन्त needs लकार, पुरुष and वचन, and everything needs a lemma. Nothing
- * enforced it, so the corpus drifted to 5% वचन coverage on nouns and 4% on
- * verbs without any single edit looking wrong.
+ * docs/WORD-TYPES.md enumerates what each kind of word must carry.
+ * src/lib/usage/schema.ts is that document as data. This walks the corpus and
+ * asks, per word: what type is it, and which of that type's authored
+ * dimensions are missing?
  *
- * This reports the gap the way the ledger reports rule coverage: not as a
- * failure — the backlog is 1,600 words deep and blocking on it would make the
- * command useless — but as a work queue, sorted so the next reading to fix is
- * obvious.
+ * Nothing here hardcodes a rule. Adding a dimension to the schema makes it
+ * checked; that is the point — the previous version listed वचन/पुरुष/पद by hand
+ * and so could never notice that a क्त participle was missing its विभक्ति, or
+ * that a tag was not a legal value of anything.
+ *
+ * Reports rather than fails. The backlog is deep and blocking on it would make
+ * the command useless; `bun run check` prints the headline so it cannot grow
+ * unnoticed.
  *
  * Usage:
- *   bun scripts/check-complete.ts               summary by type
- *   bun scripts/check-complete.ts --reading ex209   one reading, word by word
- *   bun scripts/check-complete.ts --worst 20    the readings to fix first
- *   bun scripts/check-complete.ts --untyped     words with no type tag at all
+ *   bun scripts/check-complete.ts                  summary by type
+ *   bun scripts/check-complete.ts --reading ex209  one reading, word by word
+ *   bun scripts/check-complete.ts --worst 20       the readings to fix first
+ *   bun scripts/check-complete.ts --untyped        words with no type tag
+ *   bun scripts/check-complete.ts --unknown        tags that are not in the schema
  */
 import * as fs from 'fs';
 import * as path from 'path';
+import {
+  WORD_TYPES, typeOf, krtDeclines, KNOWN_VALUES, type WordType
+} from '../src/lib/usage/schema';
 
 const CORPUS = path.join(process.cwd(), 'static/data/readings.json');
 
-const VIBHAKTI = new Set(['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन']);
-const VACANA = new Set(['एकवचन', 'द्विवचन', 'बहुवचन']);
-const LAKARA = new Set(['लट्', 'लङ्', 'लिट्', 'लुट्', 'लृट्', 'लोट्', 'विधिलिङ्', 'आशीर्लिङ्', 'लुङ्', 'लृङ्']);
-const PURUSHA = new Set(['प्रथमपुरुष', 'मध्यमपुरुष', 'उत्तमपुरुष']);
-const PADA = new Set(['परस्मैपद', 'आत्मनेपद']);
-const KARAKA = new Set(['कर्तृ', 'कर्मन्', 'करण', 'सम्प्रदान', 'अपादान', 'अधिकरण', 'सम्बन्ध']);
-const KRT = new Set([
-  'कृदन्त', 'निष्ठा', 'शतृ', 'शानच्', 'क्त्वा', 'कृत्य', 'तुमुन्', 'ल्युट्',
-  'ण्वुल्', 'तृच्', 'क्त', 'क्तवतु', 'यत्', 'ण्यत्', 'ल्यप्', 'तव्य', 'अनीयर्'
-]);
-
-type Word = { form: string; lemma?: string; notes?: any[] };
+type Word = { form: string; lemma?: string; notes?: any[]; derived?: Record<string, string> };
 type Finding = { reading: string; form: string; type: string; missing: string[] };
 
-/** What kind of word this is, by the tag that identifies its paradigm. */
-function typeOf(terms: Set<string>): string {
-  for (const t of terms) if (VIBHAKTI.has(t)) return 'सुबन्त';
-  for (const t of terms) if (LAKARA.has(t)) return 'तिङन्त';
-  for (const t of terms) if (KRT.has(t)) return 'कृदन्त';
-  if (terms.has('अव्यय')) return 'अव्यय';
-  return 'untyped';
-}
-
 /**
- * What this word still owes.
+ * What this word still owes, per the schema.
  *
- * Deliberately narrow: only the features that place a word in its paradigm.
- * A missing `cite` is a lost teaching opportunity, not an incompleteness, and
- * lumping the two would bury the signal under 1,700 entries.
+ * `optional` dimensions are never reported — a word with no कारक role is not
+ * incomplete, it simply has none. `derived` dimensions count as present when
+ * the build filled them in, since the reader sees them either way; what is
+ * left is exactly what an author can act on.
  */
-function missingFor(type: string, w: Word, terms: Set<string>): string[] {
+function missingFor(type: WordType, w: Word, terms: Set<string>): string[] {
   const miss: string[] = [];
-  // A feature the build derives is not missing — the reader sees it. What is
-  // reported here is what remains unknown after derivation, which is the only
-  // number an author can act on.
-  const derived = (w as any).derived ?? {};
-  /** `feature` is the name the build uses ('वचन'); `s` is its value set. */
-  const has = (s: Set<string>, feature?: string) =>
-    [...terms].some((t) => s.has(t)) || (feature ? feature in derived : false);
+  const derived = w.derived ?? {};
 
-  if (type !== 'untyped' && !w.lemma) miss.push('lemma');
+  for (const d of type.dimensions) {
+    if (d.source === 'optional') continue;
 
-  if (type === 'सुबन्त') {
-    if (!has(VACANA, 'वचन')) miss.push('वचन');
-    // The kāraka role is what supplies the विभक्ति when it is absent and is the
-    // answer to "what is it doing here?", so it is worth naming — but it is a
-    // property of the sentence, and plenty of words genuinely have no role.
-    // Reported separately rather than as a defect.
-  } else if (type === 'तिङन्त') {
-    if (!has(PURUSHA, 'पुरुष')) miss.push('पुरुष');
-    if (!has(VACANA, 'वचन')) miss.push('वचन');
-    if (!has(PADA, 'पद')) miss.push('पद');
-  } else if (type === 'कृदन्त') {
-    // A participle that declines is a सुबन्त too. An indeclinable one (क्त्वा,
-    // तुमुन्, ल्यप्) is not, so only ask when the suffix is a declining kind.
-    const indeclinable = terms.has('क्त्वा') || terms.has('तुमुन्') || terms.has('ल्यप्');
-    if (!indeclinable) {
-      if (!has(VIBHAKTI, 'विभक्ति')) miss.push('विभक्ति');
-      if (!has(VACANA, 'वचन')) miss.push('वचन');
+    // A कृदन्त owes विभक्ति only if its suffix declines. क्त्वा and तुमुन् are
+    // अव्यय by 1.1.40 and take nothing further.
+    if (type.id === 'kridanta' && (d.name === 'विभक्ति' || d.name === 'वचन')
+        && !krtDeclines(terms)) continue;
+
+    if (d.name === 'lemma') {
+      if (!w.lemma) miss.push('lemma');
+      continue;
     }
+    const authored = d.values.some((v) => terms.has(v));
+    if (authored || d.name in derived) continue;
+    miss.push(d.name);
   }
   return miss;
 }
@@ -93,26 +71,31 @@ function main() {
   const one = args.includes('--reading') ? args[args.indexOf('--reading') + 1] : null;
   const worstN = args.includes('--worst') ? Number(args[args.indexOf('--worst') + 1] || 20) : 0;
   const untypedOnly = args.includes('--untyped');
+  const unknownOnly = args.includes('--unknown');
 
   const findings: Finding[] = [];
   const byType: Record<string, { total: number; complete: number }> = {};
   const byReading = new Map<string, number>();
   const untyped: Array<{ reading: string; form: string; tags: string[] }> = [];
+  const unknownTags = new Map<string, number>();
 
   for (const r of corpus.sequence ?? []) {
     if (one && r.id !== one) continue;
     for (const w of r.words ?? []) {
       const terms = new Set<string>((w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term));
-      const type = typeOf(terms);
+      const wt = typeOf(terms);
+      const type = wt?.dev ?? 'untyped';
       byType[type] ??= { total: 0, complete: 0 };
       byType[type].total++;
 
-      if (type === 'untyped') {
+      for (const t of terms) if (!KNOWN_VALUES.has(t)) unknownTags.set(t, (unknownTags.get(t) ?? 0) + 1);
+
+      if (!wt) {
         untyped.push({ reading: r.id, form: w.form, tags: [...terms] });
         byReading.set(r.id, (byReading.get(r.id) ?? 0) + 1);
         continue;
       }
-      const missing = missingFor(type, w, terms);
+      const missing = missingFor(wt, w, terms);
       if (!missing.length) { byType[type].complete++; continue; }
       findings.push({ reading: r.id, form: w.form, type, missing });
       byReading.set(r.id, (byReading.get(r.id) ?? 0) + 1);
@@ -147,6 +130,19 @@ function main() {
     return;
   }
 
+  // ── tags the schema does not know ──────────────────────────────────────
+  if (unknownOnly) {
+    const ranked = [...unknownTags.entries()].sort((a, b) => b[1] - a[1]);
+    console.log(`\n${ranked.length} tag(s) not in the schema, ${
+      ranked.reduce((n, [, c]) => n + c, 0)} use(s)\n`);
+    console.log('  Most are commentary — a root name, a sandhi process — which is fine.');
+    console.log('  A grammatical feature here means either a typo or a gap in the schema.\n');
+    for (const [t, n] of ranked.slice(0, 60)) console.log(`  ${String(n).padStart(4)}  ${t}`);
+    if (ranked.length > 60) console.log(`  … and ${ranked.length - 60} more`);
+    console.log();
+    return;
+  }
+
   // ── the work queue ─────────────────────────────────────────────────────
   if (worstN) {
     const ranked = [...byReading.entries()].sort((a, b) => b[1] - a[1]).slice(0, worstN);
@@ -158,7 +154,7 @@ function main() {
 
   // ── the summary ────────────────────────────────────────────────────────
   console.log('\n═══ grammatical completeness ═══\n');
-  const order = ['सुबन्त', 'तिङन्त', 'कृदन्त', 'अव्यय', 'untyped'];
+  const order = [...WORD_TYPES.map((t) => t.dev), 'untyped'];
   for (const t of order) {
     const s = byType[t];
     if (!s) continue;
@@ -180,7 +176,8 @@ function main() {
   console.log(
     `\n  --worst 20      the readings to fix first` +
     `\n  --reading <id>  one reading, word by word` +
-    `\n  --untyped       words carrying no type tag\n`
+    `\n  --untyped       words carrying no type tag` +
+    `\n  --unknown       tags that are not values in the schema\n`
   );
 }
 

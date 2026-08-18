@@ -151,12 +151,14 @@ function phraseAround(sentence: string, form: string): string | null {
  */
 let USAGE: Record<string, string> = {};
 let PADAS: Record<string, string> = {};
+let LINGAS: Record<string, string> = {};
 {
   const p = path.join(process.cwd(), 'static/data/usage.json');
   if (fs.existsSync(p)) {
     const u = JSON.parse(fs.readFileSync(p, 'utf-8'));
     USAGE = u.cells ?? {};
     PADAS = u.padas ?? {};
+    LINGAS = u.lingas ?? {};
   }
 }
 /** Row values that name a पुरुष rather than a विभक्ति — i.e. the word is a verb. */
@@ -172,6 +174,7 @@ const PURUSHA_SET = new Set(['प्रथमपुरुष', 'मध्यम�
  * पञ्चमी *and* षष्ठी — asserting one would be the same error the quiz made.
  */
 const PADA_SET = new Set(['परस्मैपद', 'आत्मनेपद']);
+const LINGA_SET = new Set(['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग']);
 
 function derivedFeatures(word: any): Record<string, string> | null {
   if (!word.lemma) return null;
@@ -182,6 +185,12 @@ function derivedFeatures(word: any): Record<string, string> | null {
 
   const pada = PADAS[key];
   if (pada && ![...terms].some((t) => PADA_SET.has(t))) out['पद'] = pada;
+
+  // The gender is a property of the stem, not the occurrence, so it is keyed
+  // on the lemma alone. Narrowed from the attested forms in build-quiz; a stem
+  // the corpus never disambiguates simply has none.
+  const linga = LINGAS[deaccent(word.lemma)];
+  if (linga && ![...terms].some((t) => LINGA_SET.has(t))) out['लिङ्ग'] = linga;
 
   if (!cell) return Object.keys(out).length ? out : null;
 

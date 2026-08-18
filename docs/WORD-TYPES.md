@@ -9,6 +9,13 @@ they should.
 This is the inventory, decomposed to the level where a value is atomic — where
 the next question down is no longer "which kind?" but "which cell?".
 
+**It is also code.** `src/lib/usage/schema.ts` carries this document as data —
+the types, their markers, every dimension with its closed value set and whether
+it is authored or derived. `bun run complete` validates the corpus against it,
+and `build-readings` reads the same file to know which dimensions it may fill
+in. Adding a dimension there makes it checked; nothing is hardcoded in the
+checker. If this prose and that file disagree, the file is what runs.
+
 Two ideas run through it:
 
 - **A dimension is a coordinate, not a description.** Closed set of values, the
