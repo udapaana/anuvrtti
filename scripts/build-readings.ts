@@ -136,6 +136,68 @@ function phraseAround(sentence: string, form: string): string | null {
   return toks.slice(Math.max(0, i - 1), Math.min(toks.length, i + 3)).join(' ');
 }
 
+/**
+ * The प्रयोग index, read back so a word can carry the features nobody authored.
+ *
+ * 95% of nouns have no वचन and 96% of verbs no पुरुष, and the reader's rail can
+ * only show tags that exist — सभाम् displays as "कर्मन् · द्वितीया" with the
+ * number missing. The index already resolved those cells; this attaches the
+ * answer to the word.
+ *
+ * Deliberately NOT written back into the YAML. A derived value copied into the
+ * source goes stale the moment a reading is edited, and the corpus already
+ * carries one round of that. It lives on the built word, marked `derived`, so
+ * the rail can show it differently from what an author asserted.
+ */
+let USAGE: Record<string, string> = {};
+let PADAS: Record<string, string> = {};
+{
+  const p = path.join(process.cwd(), 'static/data/usage.json');
+  if (fs.existsSync(p)) {
+    const u = JSON.parse(fs.readFileSync(p, 'utf-8'));
+    USAGE = u.cells ?? {};
+    PADAS = u.padas ?? {};
+  }
+}
+/** Row values that name a पुरुष rather than a विभक्ति — i.e. the word is a verb. */
+const PURUSHA_ROWS = new Set(['प्रथमपुरुष', 'मध्यमपुरुष', 'उत्तमपुरुष']);
+
+const VACANA_SET = new Set(['एकवचन', 'द्विवचन', 'बहुवचन']);
+const PURUSHA_SET = new Set(['प्रथमपुरुष', 'मध्यमपुरुष', 'उत्तमपुरुष']);
+
+/**
+ * What the index settles for this word, minus whatever the author already said.
+ *
+ * Only unambiguous cells count. फलम् is प्रथमा *and* द्वितीया and मातुः is
+ * पञ्चमी *and* षष्ठी — asserting one would be the same error the quiz made.
+ */
+const PADA_SET = new Set(['परस्मैपद', 'आत्मनेपद']);
+
+function derivedFeatures(word: any): Record<string, string> | null {
+  if (!word.lemma) return null;
+  const key = deaccent(word.lemma) + '|' + deaccent(String(word.form ?? ''));
+  const cell = USAGE[key];
+  const terms = new Set<string>((word.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term));
+  const out: Record<string, string> = {};
+
+  const pada = PADAS[key];
+  if (pada && ![...terms].some((t) => PADA_SET.has(t))) out['पद'] = pada;
+
+  if (!cell) return Object.keys(out).length ? out : null;
+
+  const [rowVal, colVal] = cell.split('|');
+
+  // The column axis is वचन in every section built so far.
+  if (colVal && ![...terms].some((t) => VACANA_SET.has(t))) out['वचन'] = colVal;
+  // The row axis is विभक्ति for nominals and पुरुष for verbs. Only the latter is
+  // worth adding: विभक्ति is authored by definition, and re-stating it would
+  // present the author's own assertion back as a derivation.
+  if (PURUSHA_ROWS.has(rowVal) && ![...terms].some((t) => PURUSHA_SET.has(t))) {
+    out['पुरुष'] = rowVal;
+  }
+  return Object.keys(out).length ? out : null;
+}
+
 function quizFor(word: any, sentence: string): any | null {
   const terms: string[] = (word.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term);
   const vib = terms.find((t) => VIBHAKTI.includes(t));
@@ -236,6 +298,10 @@ function main() {
 
   for (const r of flat) {
     for (const w of r.words ?? []) {
+      const feats = derivedFeatures(w);
+      if (feats) w.derived = feats;
+      else delete w.derived;
+
       const quiz = quizFor(w, r.sentence);
       if (quiz) w.quiz = quiz;
       else delete w.quiz;

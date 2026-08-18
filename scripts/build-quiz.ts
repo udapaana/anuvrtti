@@ -576,6 +576,7 @@ async function main() {
   const summarise = (e: any) =>
     ({ subject: e.subject, linga: e.linga, forms: e.forms, filled: e.filled });
 
+
   // सर्वनाम takes सुप् endings but is not a सुबन्त class: the endings themselves
   // differ (तस्मै for देवाय, तस्मिन् for देवे) under rules that apply to pronouns
   // alone, and one lemma carries three genders where a noun carries one. It
@@ -631,6 +632,41 @@ async function main() {
     }
     tinMemo.set(key, []);
     return { cells: [], prefix: '' };
+  }
+
+  /**
+   * Which पद a form belongs to — परस्मैपद or आत्मनेपद.
+   *
+   * पद is tagged 16 times in the whole corpus, so it is effectively unauthored,
+   * and it is the one तिङन्त feature the cell coordinate does not carry: the
+   * grid is पुरुष × वचन, and पद is a property of the form that fills it. Asking
+   * separately keeps the grid shape unchanged.
+   *
+   * Only an unambiguous answer counts. A root that takes both padas produces the
+   * same string in neither, so a form that derives under only one pada settles
+   * it; a form that derives under both does not, and is left alone.
+   */
+  const padaMemo = new Map<string, string>();
+  function padaFor(aup: string, gana: string, lak: string, formSlp: string): string | null {
+    const key = aup + '|' + gana + '|' + lak + '|' + formSlp;
+    if (padaMemo.has(key)) return padaMemo.get(key) || null;
+    const hits = new Set<string>();
+    for (const pada of ['Parasmaipada', 'Atmanepada'])
+      for (const pu of PURUSHAS)
+        for (const vc of VACANAS) {
+          try {
+            const res = v.deriveTinantas({
+              dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: [] },
+              lakara: lak, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
+            });
+            if (res.some((p: any) => p.text === formSlp)) hits.add(pada);
+          } catch { /* not this cell */ }
+        }
+    const ans = hits.size === 1
+      ? (hits.has('Parasmaipada') ? 'परस्मैपद' : 'आत्मनेपद')
+      : '';
+    padaMemo.set(key, ans);
+    return ans || null;
   }
 
   const LAK_SET = new Set(Object.keys(LAK_KEY));
@@ -751,8 +787,56 @@ async function main() {
     (a, b) => a.subject.localeCompare(b.subject) || lakRank(a) - lakRank(b)
   );
 
+  /**
+   * Every resolved cell, for every subject — including the ~310 stems attested
+   * exactly once.
+   *
+   * The sections' `entries` carry only multi-form subjects, because one form
+   * cannot show a paradigm and shipping all of them cost a megabyte. But the
+   * reader still needs the cell for those words: सभा occurs five times in the
+   * corpus and every one displayed without its वचन, purely because its stem sat
+   * below the payload threshold.
+   *
+   * So the cells travel separately from the grids — a flat map small enough to
+   * carry in full, with no phrases and no citations, just the coordinate.
+   */
+  const cellIndex: Record<string, string> = {};
+  /** (root|form) → पद, for the तिङन्त the engine settles. */
+  const padaIndex: Record<string, string> = {};
+  for (const [root, byLak] of tinByRoot) {
+    const spec = DHATU[root];
+    if (!spec) continue;
+    for (const [lak, occs] of byLak) {
+      for (const o of occs) {
+        const fs2 = toSlp1(o.form);
+        if (!fs2) continue;
+        const p = padaFor(spec[0], spec[1], LAK_KEY[lak], fs2);
+        if (p) padaIndex[root + '|' + o.form] = p;
+      }
+    }
+  }
+  const ambiguousKeys = new Set<string>();
+  for (const e of [...entries, ...tinEntries]) {
+    for (const [cell, list] of Object.entries(e.grid as any)) {
+      for (const a of list as any[]) {
+        const key = e.subject + '|' + a.form;
+        if (ambiguousKeys.has(key)) continue;
+        // Only unambiguous placements survive. फलम् is प्रथमा and द्वितीया both,
+        // and asserting one would repeat the error the quiz was built to avoid.
+        if (key in cellIndex && cellIndex[key] !== cell) {
+          ambiguousKeys.add(key);
+          delete cellIndex[key];
+          continue;
+        }
+        cellIndex[key] = cell;
+      }
+    }
+  }
+
   const index = {
     generated: new Date().toISOString(),
+    cells: cellIndex,
+    padas: padaIndex,
     sections: [
       {
         kind: 'subanta',

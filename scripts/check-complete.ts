@@ -55,27 +55,33 @@ function typeOf(terms: Set<string>): string {
  */
 function missingFor(type: string, w: Word, terms: Set<string>): string[] {
   const miss: string[] = [];
-  const has = (s: Set<string>) => [...terms].some((t) => s.has(t));
+  // A feature the build derives is not missing — the reader sees it. What is
+  // reported here is what remains unknown after derivation, which is the only
+  // number an author can act on.
+  const derived = (w as any).derived ?? {};
+  /** `feature` is the name the build uses ('वचन'); `s` is its value set. */
+  const has = (s: Set<string>, feature?: string) =>
+    [...terms].some((t) => s.has(t)) || (feature ? feature in derived : false);
 
   if (type !== 'untyped' && !w.lemma) miss.push('lemma');
 
   if (type === 'सुबन्त') {
-    if (!has(VACANA)) miss.push('वचन');
+    if (!has(VACANA, 'वचन')) miss.push('वचन');
     // The kāraka role is what supplies the विभक्ति when it is absent and is the
     // answer to "what is it doing here?", so it is worth naming — but it is a
     // property of the sentence, and plenty of words genuinely have no role.
     // Reported separately rather than as a defect.
   } else if (type === 'तिङन्त') {
-    if (!has(PURUSHA)) miss.push('पुरुष');
-    if (!has(VACANA)) miss.push('वचन');
-    if (!has(PADA)) miss.push('पद');
+    if (!has(PURUSHA, 'पुरुष')) miss.push('पुरुष');
+    if (!has(VACANA, 'वचन')) miss.push('वचन');
+    if (!has(PADA, 'पद')) miss.push('पद');
   } else if (type === 'कृदन्त') {
     // A participle that declines is a सुबन्त too. An indeclinable one (क्त्वा,
     // तुमुन्, ल्यप्) is not, so only ask when the suffix is a declining kind.
     const indeclinable = terms.has('क्त्वा') || terms.has('तुमुन्') || terms.has('ल्यप्');
     if (!indeclinable) {
-      if (!has(VIBHAKTI)) miss.push('विभक्ति');
-      if (!has(VACANA)) miss.push('वचन');
+      if (!has(VIBHAKTI, 'विभक्ति')) miss.push('विभक्ति');
+      if (!has(VACANA, 'वचन')) miss.push('वचन');
     }
   }
   return miss;

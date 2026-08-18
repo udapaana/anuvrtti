@@ -137,20 +137,41 @@ The type tag is what tells the tooling which paradigm the word belongs to;
 the feature tags are the coordinates within it. One without the other is
 unusable.
 
-### What each type owes
+### The schema — what you author, per type
 
-| type | required | why |
+**Author the left column. Never author the right one** — it is filled in at
+build time from the derivation, and a hand-written copy goes stale silently.
+
+| type | you author | filled in for you |
 |---|---|---|
-| **सुबन्त** | `lemma` + विभक्ति + **वचन** | the two axes of the सुप् grid. Case alone places a form in a row and leaves the column blank. |
-| | कारक role where the sentence assigns one | supplies the विभक्ति when it is absent, and is the answer to "what is it doing here?" |
-| **तिङन्त** | `lemma` + लकार + **पुरुष** + **वचन** | पुरुष × वचन is the तिङ् grid. लकार and पद are the pinned features that make it a grid at all. |
-| | पद where the root takes both | पचति and पचते are different words; the tag is what says which. |
-| **कृदन्त** | `lemma` + the कृत् suffix + **विभक्ति + वचन when it declines** | a क्त or शतृ participle is a सुबन्त too. Tagging only the suffix leaves the declined form uncoordinated. |
-| **अव्यय** | `lemma` | nothing inflects; the type tag is the whole statement. |
+| **सुबन्त** | `lemma` · विभक्ति · कारक (when the sentence assigns one) | वचन · लिङ्ग |
+| **सर्वनाम** | `lemma` · विभक्ति | वचन (लिङ्ग is the referent's, not the word's) |
+| **तिङन्त** | `lemma` · लकार · प्रयोग · उपसर्ग · सनादि | पुरुष · वचन · पद · गण |
+| **कृदन्त** | `lemma` · the कृत् suffix · **विभक्ति if it declines** | वचन · लिङ्ग |
+| **तद्धित** | `lemma` (the प्रकृति) · the suffix · its अर्थ · विभक्ति | वचन · लिङ्ग |
+| **समास** | `lemma` · समास type · विग्रह · विभक्ति | वचन · लिङ्ग |
+| **अव्यय** | `lemma` · the subtype | — nothing inflects |
 
-`cite` is separate from all of this: it records which sūtra produced the form,
-and it is the only tag `verify:cites` can check. Not required, but a form with
-a non-obvious derivation and no citation is a missed teaching opportunity.
+The rule behind the split: **author what the sentence or the analysis decides;
+let the engine supply what the form determines.** विभक्ति is authored because
+देवे could be five cells and only the sentence says which; वचन is derived
+because once the stem and the case are known, the form settles it.
+
+**Name the specific tag, not the category.** `कृदन्त` says a word is a primary
+derivative; `क्त` says which one, and only the second tells the reader whether
+it declines. The corpus currently has कृदन्त 62× against क्तवतु 1×, तद्धित 13×
+against अपत्य 1× — the generic label beating the specific one everywhere.
+
+**Every word needs a `lemma`.** It is the one thing nothing can derive: a word
+with no stem belongs to no paradigm, and 144 words are invisible to प्रयोग for
+exactly this reason.
+
+`cite` is separate from all of this — it records which sūtra produced the form
+and is the only tag `verify:cites` can check. Not required, but a form with a
+non-obvious derivation and no citation is a missed teaching opportunity.
+
+The full inventory, with every subtype and its atomic values, is in
+[WORD-TYPES.md](WORD-TYPES.md).
 
 ### Where the corpus stands
 
