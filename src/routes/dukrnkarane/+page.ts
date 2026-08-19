@@ -22,7 +22,12 @@ export type Rule = {
 
 export type Chapter = { title: string; first: number; last: number; count: number };
 
-let cache: { chapters: Chapter[]; rules: Rule[]; coreCount: number } | null = null;
+let cache: {
+  chapters: Chapter[];
+  rules: Rule[];
+  coreCount: number;
+  knownSutraIds: string[];
+} | null = null;
 
 export async function load({ url }) {
   if (!cache) {
@@ -36,5 +41,11 @@ export async function load({ url }) {
   const current =
     rules.find((r) => r.n === requested) ?? rules.find((r) => r.n === 19) ?? rules[0];
 
-  return { chapters: cache!.chapters, rules, current, coreCount: cache!.coreCount };
+  return {
+    chapters: cache!.chapters,
+    rules,
+    current,
+    coreCount: cache!.coreCount,
+    knownSutraIds: cache!.knownSutraIds ?? [],
+  };
 }

@@ -51,6 +51,11 @@ function toSutraId(ref: string): string | null {
   return `${adhyaya}${pada}${String(sutra).padStart(3, '0')}`;
 }
 
+/** "61101" → "6.1.101", the notation used across /ref and the reader. */
+function dotted(id: string): string {
+  return `${id[0]}.${id[1]}.${parseInt(id.slice(2), 10)}`;
+}
+
 /**
  * Kale (1894) follows a recension whose sūtra divisions do not always match
  * the text behind /ref. Numbering agrees for the overwhelming majority —
@@ -151,7 +156,7 @@ type Rule = {
   images: string[];
   topics: string[];
   words: string[];
-  paniniRefs: { display: string; sutraId: string | null }[];
+  paniniRefs: { display: string; printed: string; sutraId: string | null }[];
   crossRefs: number[];
   citedBy: number[];
   derivations: Derivation[];
@@ -201,7 +206,15 @@ function loadDir(dir: string, kind: Rule['kind'], offset: number): Rule[] {
         // Only link ids the reference text actually has; see loadKnownSutraIds.
         const known = !id || !knownSutras || knownSutras.has(id);
         if (id && !known) unresolved.push({ rule: offset + fileNum, display: r, id });
-        return { display: r, sutraId: known ? id : null };
+        return {
+          // Kale prints Roman-numeral citations ("Pāṇ. VI. 1. 101"). Show them
+          // in the app's own notation (6.1.101) so a citation reads the same
+          // here as it does in /ref and the reader; keep the printed form for
+          // anything that is not a plain Aṣṭādhyāyī reference.
+          display: id ? dotted(id) : r,
+          printed: r,
+          sutraId: known ? id : null,
+        };
       }),
       crossRefs: [...body.matchAll(/@ref\[(\d+)\]/g)].map((x) => Number(x[1])),
       citedBy: [],
@@ -259,9 +272,26 @@ for (const r of rules) {
 for (const k of Object.keys(bySutra)) bySutra[k] = [...new Set(bySutra[k])].sort((a, b) => a - b);
 
 fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
+// Every Aṣṭādhyāyī id appearing anywhere in the prose that our text actually
+// has — the renderer uses it to decide whether an inline citation links.
+const inlineIds = new Set<string>();
+for (const r of rules) {
+  for (const m of r.body.matchAll(/(?:Pāṇ\.|P\.)\s*([IVX]+)\.\s*(\d+)\.\s*(\d+)/g)) {
+    const a = ROMAN[m[1]];
+    if (!a) continue;
+    const id = `${a}${Number(m[2])}${String(Number(m[3])).padStart(3, '0')}`;
+    if (!knownSutras || knownSutras.has(id)) inlineIds.add(id);
+  }
+}
+
 fs.writeFileSync(
   OUTPUT,
-  JSON.stringify({ chapters, rules, coreCount: CORE_COUNT }),
+  JSON.stringify({
+    chapters,
+    rules,
+    coreCount: CORE_COUNT,
+    knownSutraIds: [...inlineIds].sort(),
+  }),
 );
 fs.writeFileSync(
   path.join(process.cwd(), 'static/data/dukrnkarane-by-sutra.json'),

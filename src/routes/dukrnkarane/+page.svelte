@@ -4,7 +4,15 @@
   import RuleBody from './RuleBody.svelte';
   import type { Rule, Chapter } from './+page';
 
-  let { data }: { data: { chapters: Chapter[]; rules: Rule[]; current: Rule; coreCount: number } } =
+  let { data }: {
+    data: {
+      chapters: Chapter[];
+      rules: Rule[];
+      current: Rule;
+      coreCount: number;
+      knownSutraIds: string[];
+    };
+  } =
     $props();
 
   let rules = $derived(data.rules);
@@ -105,7 +113,7 @@
     </div>
     <h1>{current.title}</h1>
 
-    <RuleBody text={current.body} />
+    <RuleBody text={current.body} knownSutraIds={data.knownSutraIds} />
 
     {#if current.derivations.length}
       <section class="derivations">
@@ -148,15 +156,21 @@
   {#if hasApparatus}
     <aside class="apparatus">
       {#if current.paniniRefs.length}
-        <div class="eyebrow">sūtra in play</div>
-        {#each current.paniniRefs as ref}
-          <div class="sutra-card">
-            <span class="sutra-ref">{ref.display}</span>
+        <div class="eyebrow"><Sanskrit text="सूत्राणि" source="devanagari" /></div>
+        <div class="sutras">
+          {#each current.paniniRefs as ref}
             {#if ref.sutraId}
-              <a class="sutra-link" href="/ref/{ref.sutraId}">open in सूत्र reference →</a>
+              <a class="sutra" href="/ref/{ref.sutraId}">
+                <span class="sutra-ref">{ref.display}</span>
+                <span class="sutra-go">→</span>
+              </a>
+            {:else}
+              <span class="sutra off" title="not in this recension of the Aṣṭādhyāyī">
+                <span class="sutra-ref">{ref.display}</span>
+              </span>
             {/if}
-          </div>
-        {/each}
+          {/each}
+        </div>
       {/if}
 
       {#if current.citedBy.length}
@@ -502,33 +516,46 @@
   .apparatus .eyebrow:not(:first-child) {
     margin-top: 22px;
   }
-  .sutra-card {
-    padding: 11px 12px;
+  .sutras {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .sutra {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 5px 9px;
+    border-radius: 5px;
     background: #fff;
     border: 1px solid #e7e5e4;
-    border-radius: 6px;
-    margin-bottom: 7px;
+    text-decoration: none;
   }
   .sutra-ref {
-    display: block;
     font:
       500 13px/1 'SF Mono',
       Consolas,
       monospace;
     color: #6366f1;
   }
-  .sutra-link {
-    display: block;
-    margin-top: 7px;
-    font:
-      400 12px/1 'Crimson Pro',
-      Georgia,
-      serif;
-    color: #6366f1;
-    text-decoration: none;
+  .sutra-go {
+    font-size: 12px;
+    color: #d6d3d1;
   }
-  .sutra-link:hover {
-    text-decoration: underline;
+  a.sutra:hover {
+    border-color: #c7d2fe;
+  }
+  a.sutra:hover .sutra-go {
+    color: #6366f1;
+  }
+  /* Cited but absent from this recension — shown, not linked. */
+  .sutra.off {
+    background: none;
+    border-style: dashed;
+  }
+  .sutra.off .sutra-ref {
+    color: #a8a29e;
   }
   .links {
     display: flex;
