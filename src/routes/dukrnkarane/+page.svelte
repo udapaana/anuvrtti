@@ -3,6 +3,7 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import RuleBody from './RuleBody.svelte';
   import Title from './Title.svelte';
+  import Search from './Search.svelte';
   import type { Rule, Chapter } from './+page';
 
   let { data }: {
@@ -74,7 +75,8 @@
 <div class="dk" class:no-rail={!hasApparatus}>
   <!-- Chapter spine -->
   <aside class="spine">
-    <div class="eyebrow">chapters</div>
+    <Search {rules} onpick={open} />
+    <div class="eyebrow spine-head">chapters</div>
     <nav class="chapters">
       {#each data.chapters as c}
         {@const active = c.title === chapter.title && current.n >= c.first && current.n <= c.last}
@@ -344,6 +346,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+  .spine-head {
+    margin-top: 18px;
   }
   .topic-head {
     margin-top: 22px;
