@@ -169,13 +169,6 @@ const unresolved: { rule: number; display: string; id: string }[] = [];
 
 function loadDir(dir: string, kind: Rule['kind'], offset: number): Rule[] {
   const full = path.join(SRC, dir);
-  if (!fs.existsSync(full)) {
-    throw new Error(
-      `dukrnkarane source not found at ${full}\n` +
-        `Set DUKR_SRC to the dukrnkarane checkout, e.g.\n` +
-        `  DUKR_SRC=/path/to/dukrnkarane bun scripts/build-dukrnkarane.ts`,
-    );
-  }
   const rules: Rule[] = [];
   for (const file of fs.readdirSync(full).filter((f) => f.endsWith('.md')).sort()) {
     const raw = fs.readFileSync(path.join(full, file), 'utf-8');
@@ -262,6 +255,21 @@ const CORE_COUNT = 972;
 function scanConfidence(n: number): 'verified' | 'known-bad' | 'unchecked' {
   if (n >= 1 && n <= CORE_COUNT) return 'verified';
   return 'unchecked';
+}
+
+// The dukrnkarane corpus is a sibling checkout, not part of this repo (it is
+// ~5MB of markdown plus 400MB of scans, maintained on its own — see the header
+// comment). CI, and anyone who has not cloned it alongside anuvrtti, will not
+// have it. In that case, leave the last committed static/data/dukrnkarane.json
+// in place rather than failing the build: the reader keeps serving whatever
+// was built the last time someone with the source ran this script.
+if (!fs.existsSync(path.join(SRC, 'data', 'rules'))) {
+  console.log(
+    `! dukrnkarane source not found at ${SRC} — skipping, keeping the committed payload.\n` +
+      `  Set DUKR_SRC to a checkout to rebuild it:\n` +
+      `    DUKR_SRC=/path/to/dukrnkarane bun scripts/build-dukrnkarane.ts`,
+  );
+  process.exit(0);
 }
 
 const rules = [
