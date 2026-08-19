@@ -2,6 +2,7 @@
   import { goto } from '$app/navigation';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import RuleBody from './RuleBody.svelte';
+  import Title from './Title.svelte';
   import type { Rule, Chapter } from './+page';
 
   let { data }: {
@@ -52,6 +53,11 @@
       current.pages.start > 0,
   );
 
+  /** Marker-free form of a title, for the document <title>. */
+  function plain(t: string): string {
+    return t.replace(/@deva\[([^\]]+)\]/g, '$1').replace(/@\[([^\]]+)\]/g, '$1');
+  }
+
   let sourceLabel = $derived(
     current.pages.start === current.pages.end
       ? `p. ${current.pages.start}`
@@ -62,7 +68,7 @@
 <svelte:window on:keydown={onKey} />
 
 <svelte:head>
-  <title>{current.id} {current.title} · डुकृण्करणे</title>
+  <title>{current.id} {plain(current.title)} · डुकृण्करणे</title>
 </svelte:head>
 
 <div class="dk" class:no-rail={!hasApparatus}>
@@ -81,7 +87,7 @@
             {#each siblings as s}
               <button class="section" class:on={s.n === current.n} onclick={() => open(s.n)}>
                 <span class="sid">{s.id}</span>
-                <span class="stitle">{s.title}</span>
+                <span class="stitle"><Title text={s.title} /></span>
               </button>
             {/each}
           </div>
@@ -111,7 +117,7 @@
       <span class="rule-id">{current.id}</span>
       {#if current.kind === 'appendix'}<span class="kind">appendix</span>{/if}
     </div>
-    <h1>{current.title}</h1>
+    <h1><Title text={current.title} /></h1>
 
     <RuleBody text={current.body} knownSutraIds={data.knownSutraIds} />
 
@@ -140,13 +146,13 @@
       {#if prev}
         <button class="page-btn" onclick={() => open(prev.n)}>
           <span class="dir">← previous</span>
-          <span class="pt">{prev.id} {prev.title}</span>
+          <span class="pt">{prev.id} <Title text={prev.title} /></span>
         </button>
       {:else}<span></span>{/if}
       {#if next}
         <button class="page-btn right" onclick={() => open(next.n)}>
           <span class="dir">next →</span>
-          <span class="pt">{next.id} {next.title}</span>
+          <span class="pt">{next.id} <Title text={next.title} /></span>
         </button>
       {/if}
     </nav>
@@ -181,7 +187,7 @@
             {#if r}
               <button class="link-row" onclick={() => open(n)}>
                 <span class="lid">{r.id}</span>
-                <span class="ltitle">{r.title}</span>
+                <span class="ltitle"><Title text={r.title} /></span>
               </button>
             {/if}
           {/each}
@@ -196,7 +202,7 @@
             {#if r}
               <button class="link-row" onclick={() => open(n)}>
                 <span class="lid">{r.id}</span>
-                <span class="ltitle">{r.title}</span>
+                <span class="ltitle"><Title text={r.title} /></span>
               </button>
             {/if}
           {/each}
