@@ -42,6 +42,10 @@
     if (e.key === 'ArrowRight' && next) open(next.n);
   }
 
+  // Page scans live in the dukrnkarane repo and are already served from its
+  // own site — 162MB of PNGs, too much to duplicate here just to link them.
+  const SCANS = 'https://dukrnkarane.udapaana.in/assets/images/rules';
+
   // The apparatus rail only renders what a section actually has. Across the
   // corpus these are sparse — 31% carry a Pāṇini ref, 12% a cross-reference,
   // ~4% parseable derivations — so every block is conditional and the rail
@@ -246,6 +250,21 @@
         <div class="eyebrow">source</div>
         <div class="source">
           Kale 1894, {sourceLabel}
+          {#if current.images.length && current.scan === 'verified'}
+            <div class="leaves">
+              {#each current.images as img}
+                <a class="leaf" href="{SCANS}/{img}" target="_blank" rel="noopener">
+                  leaf {img.replace('.png', '')}
+                </a>
+              {/each}
+            </div>
+          {:else if current.scan === 'known-bad'}
+            <div class="leaf-note">
+              scan reference for this range is wrong in the source data — not linked
+            </div>
+          {:else if current.images.length}
+            <div class="leaf-note">scan reference unverified — not linked</div>
+          {/if}
         </div>
       {/if}
     </aside>
@@ -657,6 +676,35 @@
       Georgia,
       serif;
     color: #57534e;
+  }
+  .leaves {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .leaf {
+    font:
+      400 11px/1 'SF Mono',
+      Consolas,
+      monospace;
+    padding: 3px 7px;
+    border: 1px solid #e7e5e4;
+    border-radius: 4px;
+    color: #78716c;
+    text-decoration: none;
+  }
+  .leaf:hover {
+    border-color: #f97316;
+    color: #f97316;
+  }
+  .leaf-note {
+    margin-top: 5px;
+    font:
+      italic 400 11.5px/1.45 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #a8a29e;
   }
 
   @media (max-width: 1100px) {

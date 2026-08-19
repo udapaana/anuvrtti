@@ -154,6 +154,7 @@ type Rule = {
   kind: 'rule' | 'appendix';
   pages: { start: number; end: number };
   images: string[];
+  scan: 'verified' | 'known-bad' | 'unchecked';
   topics: string[];
   words: string[];
   paniniRefs: { display: string; printed: string; sutraId: string | null }[];
@@ -199,6 +200,7 @@ function loadDir(dir: string, kind: Rule['kind'], offset: number): Rule[] {
         end: Number(str(fm, 'page_end')) || 0,
       },
       images: list(fm, 'image_files'),
+      scan: kind === 'appendix' ? 'verified' : scanConfidence(offset + fileNum),
       topics: list(fm, 'topics'),
       words: list(fm, 'word_index'),
       paniniRefs: list(fm, 'panini_refs').map((r) => {
@@ -226,6 +228,24 @@ function loadDir(dir: string, kind: Rule['kind'], offset: number): Rule[] {
 }
 
 const CORE_COUNT = 972;
+
+// Which sections' page-scan references have actually been checked against the
+// printed header on the scan itself.
+//
+// Reading the headers off 518 scans turned up a localized corruption rather
+// than a uniform offset: for §§ 241-306 the recorded image runs 5 to 7 leaves
+// ahead of the page the section is really printed on (§ 241 is on leaf 148,
+// recorded as 153), while from § 508 to the end the recorded image is right
+// to within a leaf. Sections outside those two spans have not been checked.
+//
+// So each section carries a `scan` confidence, and the reader only offers a
+// facsimile link where the reference is known good. A wrong leaf shown
+// confidently is worse than no leaf at all.
+function scanConfidence(n: number): 'verified' | 'known-bad' | 'unchecked' {
+  if (n >= 241 && n <= 306) return 'known-bad';
+  if (n >= 508 && n <= CORE_COUNT) return 'verified';
+  return 'unchecked';
+}
 
 const rules = [
   ...loadDir('data/rules', 'rule', 0),

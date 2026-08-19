@@ -11,6 +11,7 @@ export type Rule = {
   kind: 'rule' | 'appendix';
   pages: { start: number; end: number };
   images: string[];
+  scan: 'verified' | 'known-bad' | 'unchecked';
   topics: string[];
   words: string[];
   paniniRefs: { display: string; sutraId: string | null }[];
