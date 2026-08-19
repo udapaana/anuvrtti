@@ -1,0 +1,606 @@
+<script lang="ts">
+  import { goto } from '$app/navigation';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import RuleBody from './RuleBody.svelte';
+  import type { Rule, Chapter } from './+page';
+
+  let { data }: { data: { chapters: Chapter[]; rules: Rule[]; current: Rule; coreCount: number } } =
+    $props();
+
+  let rules = $derived(data.rules);
+  let byNumber = $derived(new Map(rules.map((r) => [r.n, r])));
+  let current = $derived(data.current);
+
+  // The chapter containing the current rule, and its sections for the spine.
+  let chapter = $derived(
+    data.chapters.find((c) => current.n >= c.first && current.n <= c.last) ?? data.chapters[0],
+  );
+  let siblings = $derived(rules.filter((r) => r.n >= chapter.first && r.n <= chapter.last));
+
+  let index = $derived(rules.findIndex((r) => r.n === current.n));
+  let prev = $derived(index > 0 ? rules[index - 1] : null);
+  let next = $derived(index < rules.length - 1 ? rules[index + 1] : null);
+
+  function open(n: number) {
+    goto(`?s=${n}`, { noScroll: false, keepFocus: false });
+  }
+
+  function onKey(e: KeyboardEvent) {
+    const t = e.target as HTMLElement;
+    if (t?.tagName === 'INPUT' || t?.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowLeft' && prev) open(prev.n);
+    if (e.key === 'ArrowRight' && next) open(next.n);
+  }
+
+  // The apparatus rail only renders what a section actually has. Across the
+  // corpus these are sparse — 31% carry a Pāṇini ref, 12% a cross-reference,
+  // ~4% parseable derivations — so every block is conditional and the rail
+  // collapses rather than showing empty scaffolding.
+  let hasApparatus = $derived(
+    current.paniniRefs.length > 0 ||
+      current.citedBy.length > 0 ||
+      current.crossRefs.length > 0 ||
+      current.words.length > 0 ||
+      current.pages.start > 0,
+  );
+
+  let sourceLabel = $derived(
+    current.pages.start === current.pages.end
+      ? `p. ${current.pages.start}`
+      : `pp. ${current.pages.start}–${current.pages.end}`,
+  );
+</script>
+
+<svelte:window on:keydown={onKey} />
+
+<svelte:head>
+  <title>{current.id} {current.title} · डुकृण्करणे</title>
+</svelte:head>
+
+<div class="dk" class:no-rail={!hasApparatus}>
+  <!-- Chapter spine -->
+  <aside class="spine">
+    <div class="eyebrow">chapters</div>
+    <nav class="chapters">
+      {#each data.chapters as c}
+        {@const active = c.title === chapter.title && current.n >= c.first && current.n <= c.last}
+        <button class="chapter" class:on={active} onclick={() => open(c.first)}>
+          <span class="ctitle">{c.title}</span>
+          <span class="crange">{c.first}–{c.last}</span>
+        </button>
+        {#if active}
+          <div class="sections">
+            {#each siblings as s}
+              <button class="section" class:on={s.n === current.n} onclick={() => open(s.n)}>
+                <span class="sid">{s.id}</span>
+                <span class="stitle">{s.title}</span>
+              </button>
+            {/each}
+          </div>
+        {/if}
+      {/each}
+    </nav>
+
+    {#if current.topics.length}
+      <div class="eyebrow topic-head">topic</div>
+      <div class="topics">
+        {#each current.topics as t}
+          <span class="topic">{t}</span>
+        {/each}
+      </div>
+    {/if}
+  </aside>
+
+  <!-- Reader -->
+  <main class="reader">
+    <div class="crumbs">
+      <span>{chapter.title}</span>
+      <span class="sep">/</span>
+      <span class="crumb-cur">{current.id}</span>
+    </div>
+
+    <div class="rule-head">
+      <span class="rule-id">{current.id}</span>
+      {#if current.kind === 'appendix'}<span class="kind">appendix</span>{/if}
+    </div>
+    <h1>{current.title}</h1>
+
+    <RuleBody text={current.body} />
+
+    {#if current.derivations.length}
+      <section class="derivations">
+        <div class="deriv-head">
+          <span class="eyebrow">derivations</span>
+          <span class="deriv-count">{current.derivations.length}</span>
+        </div>
+        <div class="deriv-rows">
+          {#each current.derivations as d}
+            <div class="deriv">
+              <Sanskrit text={d.left} source="devanagari" />
+              <span class="op">+</span>
+              <Sanskrit text={d.right} source="devanagari" />
+              <span class="op">→</span>
+              <span class="result"><Sanskrit text={d.result} source="devanagari" /></span>
+              {#if d.gloss}<span class="gloss">{d.gloss}</span>{/if}
+            </div>
+          {/each}
+        </div>
+      </section>
+    {/if}
+
+    <nav class="pager">
+      {#if prev}
+        <button class="page-btn" onclick={() => open(prev.n)}>
+          <span class="dir">← previous</span>
+          <span class="pt">{prev.id} {prev.title}</span>
+        </button>
+      {:else}<span></span>{/if}
+      {#if next}
+        <button class="page-btn right" onclick={() => open(next.n)}>
+          <span class="dir">next →</span>
+          <span class="pt">{next.id} {next.title}</span>
+        </button>
+      {/if}
+    </nav>
+  </main>
+
+  <!-- Apparatus -->
+  {#if hasApparatus}
+    <aside class="apparatus">
+      {#if current.paniniRefs.length}
+        <div class="eyebrow">sūtra in play</div>
+        {#each current.paniniRefs as ref}
+          <div class="sutra-card">
+            <span class="sutra-ref">{ref.display}</span>
+            {#if ref.sutraId}
+              <a class="sutra-link" href="/ref/{ref.sutraId}">open in सूत्र reference →</a>
+            {/if}
+          </div>
+        {/each}
+      {/if}
+
+      {#if current.citedBy.length}
+        <div class="eyebrow">cited by</div>
+        <div class="links">
+          {#each current.citedBy as n}
+            {@const r = byNumber.get(n)}
+            {#if r}
+              <button class="link-row" onclick={() => open(n)}>
+                <span class="lid">{r.id}</span>
+                <span class="ltitle">{r.title}</span>
+              </button>
+            {/if}
+          {/each}
+        </div>
+      {/if}
+
+      {#if current.crossRefs.length}
+        <div class="eyebrow">refers to</div>
+        <div class="links">
+          {#each [...new Set(current.crossRefs)] as n}
+            {@const r = byNumber.get(n)}
+            {#if r}
+              <button class="link-row" onclick={() => open(n)}>
+                <span class="lid">{r.id}</span>
+                <span class="ltitle">{r.title}</span>
+              </button>
+            {/if}
+          {/each}
+        </div>
+      {/if}
+
+      {#if current.words.length}
+        <div class="eyebrow">words indexed here</div>
+        <div class="words">
+          {#each current.words as w}
+            <span class="word"><Sanskrit text={w} source="devanagari" /></span>
+          {/each}
+        </div>
+      {/if}
+
+      {#if current.pages.start > 0}
+        <div class="eyebrow">source</div>
+        <div class="source">
+          Kale 1894, {sourceLabel}
+        </div>
+      {/if}
+    </aside>
+  {/if}
+</div>
+
+<style>
+  .dk {
+    display: grid;
+    grid-template-columns: 214px minmax(0, 1fr) 296px;
+    max-width: 1340px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  .dk.no-rail {
+    grid-template-columns: 214px minmax(0, 1fr);
+  }
+
+  .eyebrow {
+    font:
+      600 11px/1 'SF Mono',
+      Consolas,
+      Monaco,
+      monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #78716c;
+    margin-bottom: 10px;
+  }
+
+  /* ---- spine ---- */
+  .spine {
+    padding: 22px 15px 40px;
+    border-right: 1px solid #f5f5f4;
+    background: #fafaf9;
+    position: sticky;
+    top: 56px;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+  .chapters {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .chapter {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: baseline;
+    padding: 5px 8px;
+    border: 0;
+    background: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    font:
+      400 13.5px/1.35 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #57534e;
+  }
+  .chapter:hover {
+    background: #f5f5f4;
+  }
+  .chapter.on {
+    background: #f5f5f4;
+    color: #1c1917;
+    font-weight: 600;
+  }
+  .crange {
+    font:
+      400 11px 'SF Mono',
+      Consolas,
+      monospace;
+    color: #a8a29e;
+    flex: none;
+  }
+  .sections {
+    display: flex;
+    flex-direction: column;
+    margin: 3px 0 5px 8px;
+    padding-left: 10px;
+    border-left: 1px solid #e7e5e4;
+  }
+  .section {
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+    padding: 3px 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    font:
+      400 13px/1.35 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #78716c;
+  }
+  .section:hover {
+    color: #1c1917;
+  }
+  .section.on {
+    color: #1c1917;
+    font-weight: 600;
+  }
+  .sid {
+    flex: none;
+    font:
+      400 11px 'SF Mono',
+      Consolas,
+      monospace;
+    color: #a8a29e;
+  }
+  .section.on .sid {
+    color: #f97316;
+  }
+  .stitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .topic-head {
+    margin-top: 22px;
+  }
+  .topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .topic {
+    font:
+      400 12px/1 'Crimson Pro',
+      Georgia,
+      serif;
+    padding: 3px 8px;
+    background: #f5f5f4;
+    color: #57534e;
+    border-radius: 9999px;
+  }
+
+  /* ---- reader ---- */
+  .reader {
+    padding: 26px 38px 60px;
+    min-width: 0;
+  }
+  .crumbs {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font:
+      400 11px/1 'SF Mono',
+      Consolas,
+      monospace;
+    color: #a8a29e;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+  }
+  .crumb-cur {
+    color: #f97316;
+  }
+  .rule-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .rule-id {
+    font:
+      500 28px/1 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #1c1917;
+  }
+  .kind {
+    font:
+      400 11px/1 'SF Mono',
+      Consolas,
+      monospace;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    background: #f5f5f4;
+    color: #78716c;
+  }
+  h1 {
+    margin: 4px 0 22px;
+    font:
+      400 25px/1.25 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #1c1917;
+    text-wrap: pretty;
+  }
+
+  /* ---- derivations ---- */
+  .derivations {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid #f5f5f4;
+  }
+  .deriv-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .deriv-count {
+    font:
+      400 11px 'SF Mono',
+      Consolas,
+      monospace;
+    color: #a8a29e;
+  }
+  .deriv-rows {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 2px 26px;
+  }
+  .deriv {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    padding: 3px 0;
+    font-family: 'Noto Serif Devanagari', 'Noto Serif Telugu', serif;
+    font-size: 16px;
+    color: #57534e;
+  }
+  .op {
+    color: #d6d3d1;
+    font-size: 13px;
+  }
+  .result {
+    color: #1c1917;
+    font-weight: 600;
+  }
+  .gloss {
+    font:
+      italic 400 12px/1.3 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #a8a29e;
+  }
+
+  /* ---- pager ---- */
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid #f5f5f4;
+  }
+  .page-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-width: 46%;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+  }
+  .page-btn.right {
+    text-align: right;
+  }
+  .dir {
+    font:
+      400 11px/1 'SF Mono',
+      Consolas,
+      monospace;
+    color: #a8a29e;
+  }
+  .pt {
+    font:
+      400 13.5px/1.35 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #57534e;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .page-btn:hover .pt {
+    color: #f97316;
+  }
+
+  /* ---- apparatus ---- */
+  .apparatus {
+    padding: 24px 20px 40px;
+    border-left: 1px solid #f5f5f4;
+    background: #fafaf9;
+    position: sticky;
+    top: 56px;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+  .apparatus .eyebrow:not(:first-child) {
+    margin-top: 22px;
+  }
+  .sutra-card {
+    padding: 11px 12px;
+    background: #fff;
+    border: 1px solid #e7e5e4;
+    border-radius: 6px;
+    margin-bottom: 7px;
+  }
+  .sutra-ref {
+    display: block;
+    font:
+      500 13px/1 'SF Mono',
+      Consolas,
+      monospace;
+    color: #6366f1;
+  }
+  .sutra-link {
+    display: block;
+    margin-top: 7px;
+    font:
+      400 12px/1 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #6366f1;
+    text-decoration: none;
+  }
+  .sutra-link:hover {
+    text-decoration: underline;
+  }
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .link-row {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    padding: 3px 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    font:
+      400 12.5px/1.35 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #57534e;
+  }
+  .link-row:hover {
+    color: #f97316;
+  }
+  .lid {
+    flex: none;
+    font:
+      400 11px 'SF Mono',
+      Consolas,
+      monospace;
+    color: #a8a29e;
+  }
+  .ltitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .word {
+    font-family: 'Noto Sans Devanagari', 'Noto Sans Telugu', sans-serif;
+    font-size: 13px;
+    padding: 3px 8px;
+    background: #f5f5f4;
+    color: #44403c;
+    border-radius: 4px;
+  }
+  .source {
+    font:
+      400 12.5px/1.6 'Crimson Pro',
+      Georgia,
+      serif;
+    color: #57534e;
+  }
+
+  @media (max-width: 1100px) {
+    .dk,
+    .dk.no-rail {
+      grid-template-columns: 1fr;
+    }
+    .spine,
+    .apparatus {
+      position: static;
+      max-height: none;
+      border: 0;
+      border-bottom: 1px solid #f5f5f4;
+    }
+    .reader {
+      padding: 22px 20px 48px;
+    }
+  }
+</style>

@@ -3,7 +3,7 @@
   import { displayScript } from '$lib/stores/preferences';
   import type { Script } from '$lib/transliteration';
 
-  // The app's persistent three-pillar chrome: wordmark · पठनम् / बालबोधिनी / सूत्र
+  // The app's persistent chrome: wordmark · पठनम् / बालबोधिनी / सूत्र / प्रयोग / डुकृण्करणे
   // · script switcher. Promoted from the reader page to global layout so the
   // whole app shares one navigation, not per-page duplicates.
   let { progress = null }: { progress?: number | null } = $props();
@@ -26,6 +26,7 @@
       <a class:on={on('/balabodhini')} href="/balabodhini">बालबोधिनी <span class="en">primer</span></a>
       <a class:on={on('/ref')} href="/ref">सूत्र <span class="en">reference</span></a>
       <a class:on={on('/usage')} href="/usage">प्रयोग <span class="en">usage</span></a>
+      <a class:on={on('/dukrnkarane')} href="/dukrnkarane">डुकृण्करणे <span class="en">grammar</span></a>
     </nav>
 
     <div class="right">
