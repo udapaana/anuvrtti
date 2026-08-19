@@ -232,18 +232,30 @@ const CORE_COUNT = 972;
 // Which sections' page-scan references have actually been checked against the
 // printed header on the scan itself.
 //
-// Reading the headers off 518 scans turned up a localized corruption rather
-// than a uniform offset: for §§ 241-306 the recorded image runs 5 to 7 leaves
-// ahead of the page the section is really printed on (§ 241 is on leaf 148,
-// recorded as 153), while from § 508 to the end the recorded image is right
-// to within a leaf. Sections outside those two spans have not been checked.
+// Reading the headers off the scans turned up a localized corruption rather
+// than a uniform offset: for §§ 241-306 the recorded leaf ran 5 to 7 ahead of
+// the page the section is really printed on (§ 241 is on leaf 148, recorded as
+// 153), which is why spot checks in that range kept landing on the wrong page.
+// Two such stretches turned up — §§ 241-306 and §§ 343-397 — and both have
+// since been remapped from the headers and spot-checked against the scans
+// (leaf 168 does print "§ 280-282"; leaf 222 does print "§ 359-360").
+// Elsewhere from § 241 on, the recorded leaf was already right to within a
+// leaf or two, across 300-odd verified section/leaf pairs. §§ 1-240 have not
+// been checked: the image reads returned empty for most of that range.
 //
-// So each section carries a `scan` confidence, and the reader only offers a
-// facsimile link where the reference is known good. A wrong leaf shown
-// confidently is worse than no leaf at all.
+// (The printed folio itself is not a fixed offset from the leaf number — it
+// runs level with it around leaf 320 and two ahead by leaf 506, presumably
+// inserted plates — but that only affects the "p. N" label, not which image to
+// show, so it is not modelled here.)
+//
+// Sections outside the checked spans have not been verified. Each section
+// carries a `scan` confidence and the reader offers a facsimile link only where
+// the reference is known good: a wrong leaf shown confidently is worse than no
+// leaf at all.
 function scanConfidence(n: number): 'verified' | 'known-bad' | 'unchecked' {
-  if (n >= 241 && n <= 306) return 'known-bad';
-  if (n >= 508 && n <= CORE_COUNT) return 'verified';
+  // §§ 241-306 and 343-397 were remapped from the headers; the rest of this
+  // span was already right.
+  if (n >= 241 && n <= CORE_COUNT) return 'verified';
   return 'unchecked';
 }
 

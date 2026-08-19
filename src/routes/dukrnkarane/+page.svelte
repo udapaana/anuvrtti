@@ -80,10 +80,14 @@
     return `${lo}\u2013${hi}`;
   }
 
+  // page_start/page_end record the scan leaf, not the printed folio — the two
+  // run level early in the book and diverge by two near the end, so calling
+  // these "pp." would misstate them. The leaf numbers are what the facsimile
+  // links resolve against, so they are labelled as leaves.
   let sourceLabel = $derived(
     current.pages.start === current.pages.end
-      ? `p. ${current.pages.start}`
-      : `pp. ${current.pages.start}–${current.pages.end}`,
+      ? `leaf ${current.pages.start}`
+      : `leaves ${current.pages.start}–${current.pages.end}`,
   );
 </script>
 
@@ -249,7 +253,7 @@
       {#if current.pages.start > 0}
         <div class="eyebrow">source</div>
         <div class="source">
-          Kale 1894, {sourceLabel}
+          Kale 1894
           {#if current.images.length && current.scan === 'verified'}
             <div class="leaves">
               {#each current.images as img}
@@ -258,12 +262,10 @@
                 </a>
               {/each}
             </div>
-          {:else if current.scan === 'known-bad'}
-            <div class="leaf-note">
-              scan reference for this range is wrong in the source data — not linked
-            </div>
           {:else if current.images.length}
-            <div class="leaf-note">scan reference unverified — not linked</div>
+            <div class="leaf-note">
+              {sourceLabel} · scan reference unverified, not linked
+            </div>
           {/if}
         </div>
       {/if}
