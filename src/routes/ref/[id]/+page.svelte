@@ -230,6 +230,18 @@
       {/if}
 
       <!-- Learning path cross-links -->
+      {#if data.kaleSections?.length}
+        <div class="learn-links">
+          <span class="learn-links-label">discussed in</span>
+          {#each data.kaleSections as n}
+            <a href="/dukrnkarane?s={n}" class="learn-link learn-link-kale">
+              <Sanskrit text="डुकृण्करणे" source="devanagari" />
+              {n > 972 ? `appendix § ${n - 972}` : `§ ${n}`}
+            </a>
+          {/each}
+        </div>
+      {/if}
+
       {#if otherPaths.length > 0 || balabodhiniLessons.length > 0}
         <div class="learn-links">
           <span class="learn-links-label">see also</span>
@@ -505,6 +517,8 @@
 
   .learn-link-bala { color: #4f46e5; }
   .learn-link-bala:hover { color: #f97316; }
+  .learn-link-kale { color: #57534e; }
+  .learn-link-kale:hover { color: #f97316; }
 
 
   .pending-chip {

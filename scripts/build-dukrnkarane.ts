@@ -51,6 +51,29 @@ function toSutraId(ref: string): string | null {
   return `${adhyaya}${pada}${String(sutra).padStart(3, '0')}`;
 }
 
+/**
+ * Kale (1894) follows a recension whose sūtra divisions do not always match
+ * the text behind /ref. Numbering agrees for the overwhelming majority —
+ * spot-checked against landmark sūtras (6.1.101 savarṇa-dīrgha, 6.1.77 iko
+ * yaṇaci, 6.1.88 vṛddhir eci), all of which land correctly — but two pādas
+ * run longer in his edition than in ours (2.2 to at least 47 against our 38,
+ * 8.1 to at least 96 against our 74), and both of ours are gap-free, so the
+ * difference is editorial rather than missing data.
+ *
+ * So a derived id is only turned into a link once it is known to exist. An id
+ * that does not resolve keeps its display text and is reported below, rather
+ * than shipping a link into a 404.
+ */
+function loadKnownSutraIds(): Set<string> | null {
+  const p = path.join(process.cwd(), 'static/data/sutrartha_english.json');
+  if (!fs.existsSync(p)) return null;
+  try {
+    return new Set(Object.keys(JSON.parse(fs.readFileSync(p, 'utf-8'))));
+  } catch {
+    return null;
+  }
+}
+
 type Frontmatter = Record<string, string | string[]>;
 
 /** Minimal YAML reader — the corpus only ever uses scalars and "- " lists. */
@@ -135,6 +158,9 @@ type Rule = {
   body: string;
 };
 
+const knownSutras = loadKnownSutraIds();
+const unresolved: { rule: number; display: string; id: string }[] = [];
+
 function loadDir(dir: string, kind: Rule['kind'], offset: number): Rule[] {
   const full = path.join(SRC, dir);
   if (!fs.existsSync(full)) {
@@ -170,10 +196,13 @@ function loadDir(dir: string, kind: Rule['kind'], offset: number): Rule[] {
       images: list(fm, 'image_files'),
       topics: list(fm, 'topics'),
       words: list(fm, 'word_index'),
-      paniniRefs: list(fm, 'panini_refs').map((r) => ({
-        display: r,
-        sutraId: toSutraId(r),
-      })),
+      paniniRefs: list(fm, 'panini_refs').map((r) => {
+        const id = toSutraId(r);
+        // Only link ids the reference text actually has; see loadKnownSutraIds.
+        const known = !id || !knownSutras || knownSutras.has(id);
+        if (id && !known) unresolved.push({ rule: offset + fileNum, display: r, id });
+        return { display: r, sutraId: known ? id : null };
+      }),
       crossRefs: [...body.matchAll(/@ref\[(\d+)\]/g)].map((x) => Number(x[1])),
       citedBy: [],
       derivations: parseDerivations(body),
@@ -218,13 +247,40 @@ const linkedRefs = rules.reduce(
 );
 const totalRefs = rules.reduce((n, r) => n + r.paniniRefs.length, 0);
 
+// Reverse index for the other direction: given a sūtra, which sections of Kale
+// cite it. Lets /ref surface "discussed in डुकृण्करणे § 19" beside the sūtra.
+const bySutra: Record<string, number[]> = {};
+for (const r of rules) {
+  for (const p of r.paniniRefs) {
+    if (!p.sutraId) continue;
+    (bySutra[p.sutraId] ??= []).push(r.n);
+  }
+}
+for (const k of Object.keys(bySutra)) bySutra[k] = [...new Set(bySutra[k])].sort((a, b) => a - b);
+
 fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
 fs.writeFileSync(
   OUTPUT,
   JSON.stringify({ chapters, rules, coreCount: CORE_COUNT }),
 );
+fs.writeFileSync(
+  path.join(process.cwd(), 'static/data/dukrnkarane-by-sutra.json'),
+  JSON.stringify(bySutra),
+);
 
 console.log(`✓ ${rules.length} sections (${chapters.length} chapters)`);
-console.log(`✓ ${linkedRefs}/${totalRefs} Pāṇini refs resolve to sūtra ids`);
+console.log(`✓ ${linkedRefs}/${totalRefs} Pāṇini refs link to a sūtra in /ref`);
+if (!knownSutras) {
+  console.warn('  ! sutrartha_english.json absent — ids were not validated');
+} else if (unresolved.length) {
+  console.warn(
+    `  ! ${unresolved.length} citation(s) name a sūtra this text does not have ` +
+      `(recension difference); left unlinked:`,
+  );
+  for (const u of unresolved) {
+    console.warn(`      § ${u.rule}  ${u.display}`);
+  }
+}
 console.log(`✓ ${withDerivations} sections carry parseable derivations`);
+console.log(`✓ ${Object.keys(bySutra).length} sūtras gain a back-reference into Kale`);
 console.log(`→ ${path.relative(process.cwd(), OUTPUT)}`);

@@ -41,6 +41,25 @@ async function loadSutraPaths(): Promise<SutraPathMap> {
   return {};
 }
 
+// Kale's grammar cites 656 sūtras; this is the reverse of that, so a sūtra can
+// point back at the sections of डुकृण्करणे that discuss it. Built by
+// scripts/build-dukrnkarane.ts. Absent payload is non-fatal — the block simply
+// does not render.
+type KaleIndex = Record<string, number[]>;
+let kaleCache: KaleIndex | null = null;
+
+async function loadKaleIndex(): Promise<KaleIndex> {
+  if (kaleCache) return kaleCache;
+  try {
+    const resp = await fetch('/data/dukrnkarane-by-sutra.json');
+    if (!resp.ok) return {};
+    kaleCache = await resp.json();
+    return kaleCache!;
+  } catch {
+    return {};
+  }
+}
+
 export async function load({ params }) {
   const {
     getSutra,
@@ -65,6 +84,7 @@ export async function load({ params }) {
       prevSutraId: null,
       nextSutraId: null,
       learningPaths: [],
+      kaleSections: [],
     };
   }
 
@@ -77,6 +97,7 @@ export async function load({ params }) {
     nextSutra,
     sutraPaths,
     rule,
+    kaleIndex,
   ] = await Promise.all([
     getCommentary(sutra.numericId),
     getLayeredCommentary(sutra.numericId),
@@ -86,6 +107,7 @@ export async function load({ params }) {
     getAdjacentSutra(sutra.id, 1),
     loadSutraPaths(),
     getRule(sutra.id),
+    loadKaleIndex(),
   ]);
 
   const allEntries = sutraPaths[id] || [];
@@ -103,5 +125,6 @@ export async function load({ params }) {
     nextSutraId: nextSutra?.id ?? null,
     learningPaths,
     balabodhiniLessons,
+    kaleSections: kaleIndex[id] ?? [],
   };
 }
