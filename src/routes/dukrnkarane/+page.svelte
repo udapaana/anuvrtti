@@ -4,6 +4,8 @@
   import RuleBody from './RuleBody.svelte';
   import Title from './Title.svelte';
   import Search from './Search.svelte';
+  import SandhiMatrix from './SandhiMatrix.svelte';
+  import { MATRIX_RULES } from './sandhi-matrix';
   import type { Rule, Chapter } from './+page';
 
   let { data }: {
@@ -172,6 +174,10 @@
           {/each}
         </div>
       </section>
+    {/if}
+
+    {#if MATRIX_RULES.includes(current.n)}
+      <SandhiMatrix rule={current.n} onpick={open} />
     {/if}
 
     <nav class="pager">
