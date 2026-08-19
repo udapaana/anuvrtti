@@ -730,5 +730,16 @@
     .reader {
       padding: 22px 20px 48px;
     }
+    /* One column means the spine sits above the text; a full chapter list
+       there would push the reading matter off the screen, so only search and
+       the chapter headings stay — the section list is reachable by opening a
+       chapter, and search covers the rest. */
+    .spine .sections {
+      display: none;
+    }
+    .spine {
+      max-height: 42vh;
+      overflow-y: auto;
+    }
   }
 </style>

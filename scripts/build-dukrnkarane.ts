@@ -236,12 +236,16 @@ const CORE_COUNT = 972;
 // than a uniform offset: for §§ 241-306 the recorded leaf ran 5 to 7 ahead of
 // the page the section is really printed on (§ 241 is on leaf 148, recorded as
 // 153), which is why spot checks in that range kept landing on the wrong page.
-// Two such stretches turned up — §§ 241-306 and §§ 343-397 — and both have
-// since been remapped from the headers and spot-checked against the scans
-// (leaf 168 does print "§ 280-282"; leaf 222 does print "§ 359-360").
-// Elsewhere from § 241 on, the recorded leaf was already right to within a
-// leaf or two, across 300-odd verified section/leaf pairs. §§ 1-240 have not
-// been checked: the image reads returned empty for most of that range.
+// The drift turned out to run through most of the first half of the book —
+// §§ 4-104 by 2 to 9 leaves, §§ 100-198 by 5 to 10, §§ 241-397 by 2 to 7 —
+// while from § 397 on the recorded leaf was already right to within one or
+// two. All the drifting stretches have been remapped from the headers and
+// spot-checked against the scans (leaf 012 prints "§ 16-19", leaf 019
+// "§ 24-26", leaf 168 "§ 280-282", leaf 189 "§ 321-325", leaf 222
+// "§ 359-360").
+//
+// §§ 199-240 are the one span still unread — the image reads returned empty
+// for those.
 //
 // (The printed folio itself is not a fixed offset from the leaf number — it
 // runs level with it around leaf 320 and two ahead by leaf 506, presumably
@@ -253,9 +257,8 @@ const CORE_COUNT = 972;
 // the reference is known good: a wrong leaf shown confidently is worse than no
 // leaf at all.
 function scanConfidence(n: number): 'verified' | 'known-bad' | 'unchecked' {
-  // §§ 241-306 and 343-397 were remapped from the headers; the rest of this
-  // span was already right.
-  if (n >= 241 && n <= CORE_COUNT) return 'verified';
+  if (n >= 199 && n <= 240) return 'unchecked';
+  if (n >= 1 && n <= CORE_COUNT) return 'verified';
   return 'unchecked';
 }
 

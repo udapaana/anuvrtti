@@ -39,8 +39,10 @@ export async function load({ url }) {
 
   const requested = Number(url.searchParams.get('s'));
   const rules = cache!.rules;
+  // With no section asked for, open at the Preface — it is the book's own
+  // front matter and says what the text is, which § 19 does not.
   const current =
-    rules.find((r) => r.n === requested) ?? rules.find((r) => r.n === 19) ?? rules[0];
+    rules.find((r) => r.n === requested) ?? rules.find((r) => r.n === 0) ?? rules[0];
 
   return {
     chapters: cache!.chapters,
