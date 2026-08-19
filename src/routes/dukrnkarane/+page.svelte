@@ -59,6 +59,14 @@
     return t.replace(/@deva\[([^\]]+)\]/g, '$1').replace(/@\[([^\]]+)\]/g, '$1');
   }
 
+  // The single sūtra a section's derivations are worked under, when there is
+  // exactly one — with several cited, attributing the group to any one of them
+  // would be a guess the source does not make.
+  let ruleSutra = $derived.by(() => {
+    const linked = current.paniniRefs.filter((r) => r.sutraId);
+    return linked.length === 1 ? linked[0] : null;
+  });
+
   let sourceLabel = $derived(
     current.pages.start === current.pages.end
       ? `p. ${current.pages.start}`
@@ -128,6 +136,11 @@
         <div class="deriv-head">
           <span class="eyebrow">derivations</span>
           <span class="deriv-count">{current.derivations.length}</span>
+          <!-- Kale states the sūtra once per rule, never per example, so the
+               attribution belongs on the group rather than on each row. -->
+          {#if ruleSutra}
+            <a class="deriv-sutra" href="/ref/{ruleSutra.sutraId}">{ruleSutra.display}</a>
+          {/if}
         </div>
         <div class="deriv-rows">
           {#each current.derivations as d}
@@ -439,6 +452,18 @@
       Consolas,
       monospace;
     color: #a8a29e;
+  }
+  .deriv-sutra {
+    margin-left: auto;
+    font:
+      500 11px 'SF Mono',
+      Consolas,
+      monospace;
+    color: #6366f1;
+    text-decoration: none;
+  }
+  .deriv-sutra:hover {
+    border-bottom: 1px solid #6366f1;
   }
   .deriv-rows {
     display: grid;
