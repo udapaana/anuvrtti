@@ -67,6 +67,15 @@
     return linked.length === 1 ? linked[0] : null;
   });
 
+  // Appendix sections are stored past the 972 core rules so numbering stays
+  // globally unique, but the book prints them as § 1–15 of the prosody
+  // appendix. Show the printed range.
+  function range(c: Chapter): string {
+    const lo = c.first > data.coreCount ? c.first - data.coreCount : c.first;
+    const hi = c.last > data.coreCount ? c.last - data.coreCount : c.last;
+    return `${lo}\u2013${hi}`;
+  }
+
   let sourceLabel = $derived(
     current.pages.start === current.pages.end
       ? `p. ${current.pages.start}`
@@ -90,7 +99,7 @@
         {@const active = c.title === chapter.title && current.n >= c.first && current.n <= c.last}
         <button class="chapter" class:on={active} onclick={() => open(c.first)}>
           <span class="ctitle">{c.title}</span>
-          <span class="crange">{c.first}–{c.last}</span>
+          <span class="crange">{range(c)}</span>
         </button>
         {#if active}
           <div class="sections">
