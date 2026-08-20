@@ -26,13 +26,110 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import {
-  WORD_TYPES, typeOf, krtDeclines, KNOWN_VALUES, type WordType
+  WORD_TYPES, typeOf, krtDeclines, KNOWN_VALUES, RELATIONS, type WordType
 } from '../src/lib/usage/schema';
+
+const RELATION_BY_NAME = new Map(RELATIONS.map((r) => [r.name, r]));
+
+/**
+ * Values that identify a type (markers) are legal on any word as identity, and
+ * an empty-values dimension (उपसर्ग, gaṇa, lemma) accepts anything. Everything
+ * else that is a value of SOME dimension but not one THIS type carries is a
+ * misplaced tag — the lint's core signal.
+ */
+const ALL_MARKERS = new Set(WORD_TYPES.flatMap((t) => t.markers));
+const ALL_VALUES = new Set(WORD_TYPES.flatMap((t) => t.dimensions.flatMap((d) => d.values)));
+
+type LintKind = 'conflict' | 'misplaced' | 'wrong-lemma' | 'bad-relation';
+type Lint = { reading: string; form: string; type: string; kind: LintKind; detail: string };
+
+/**
+ * Correctness, not completeness. A word can carry every dimension and still be
+ * WRONG — two values of one dimension (लट् and विधिलिङ् both), or a value that
+ * belongs to no dimension this type has (a विभक्ति on a finite verb). These are
+ * always errors, unlike a missing dimension, which is a backlog.
+ */
+function lintWord(type: WordType, w: Word, terms: Set<string>): Lint[] {
+  const out: Lint[] = [];
+  const mk = (kind: LintKind, detail: string): Lint =>
+    ({ reading: '', form: w.form, type: type.dev, kind, detail });
+
+  // 1. CONFLICT — two values of the same dimension.
+  for (const d of type.dimensions) {
+    const hits = d.values.filter((v) => terms.has(v));
+    if (hits.length > 1) out.push(mk('conflict', `${d.name}: ${hits.join(' / ')}`));
+  }
+
+  // 2. MISPLACED — a dimension-value tag with no home in this type.
+  const mine = new Set(type.dimensions.flatMap((d) => d.values));
+  // A dimension NAME used as a tag (उपसर्ग, विशेषण, समास) flags the presence of
+  // that feature without naming a value — legal on a type that has the dimension.
+  const myDimNames = new Set(type.dimensions.map((d) => d.name));
+  for (const t of terms) {
+    if (!ALL_VALUES.has(t)) continue;          // a root name / class tag, not a value
+    if (ALL_MARKERS.has(t)) continue;          // a type marker is identity, legal anywhere
+    if (mine.has(t)) continue;                 // a legal value for this type
+    if (myDimNames.has(t)) continue;           // a dimension name used as a flag
+    if (t === w.lemma) continue;               // the word's own root, shown as a term
+    out.push(mk('misplaced', `${t} is not a dimension of ${type.dev}`));
+  }
+
+  // 3. WRONG-LEMMA — a type whose lemma dimension is a CLOSED set (सर्वनाम,
+  //    सर्वादि) but the word's lemma is not in it. This catches a word filed
+  //    under the wrong type: सर्व tagged सर्वनाम, when सर्व is a सर्वादि.
+  const lemmaDim = type.dimensions.find((d) => d.name === 'lemma');
+  if (lemmaDim && lemmaDim.values.length && w.lemma && !lemmaDim.values.includes(w.lemma)) {
+    out.push(mk('wrong-lemma', `${w.lemma} is not a ${type.dev} stem — wrong type?`));
+  }
+  return out;
+}
 
 const CORPUS = path.join(process.cwd(), 'static/data/readings.json');
 
-type Word = { form: string; lemma?: string; notes?: any[]; derived?: Record<string, string> };
+type Rel = { kind: string; to: number };
+type Word = { form: string; lemma?: string; notes?: any[]; rel?: Rel[]; derived?: Record<string, string> };
 type Finding = { reading: string; form: string; type: string; missing: string[] };
+
+/** The values a word carries for a given dimension name, from its term tags. */
+function valuesOf(w: Word, dim: string): string[] {
+  const set = WORD_TYPES.flatMap((t) => t.dimensions).find((d) => d.name === dim)?.values ?? [];
+  const terms = new Set((w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term));
+  return set.filter((v) => terms.has(v));
+}
+
+/**
+ * Lint a word's RELATIONS — the edges a coordinate can't hold. An edge is wrong
+ * when its kind is unknown, its target index is out of range, the source type is
+ * not allowed to carry it, or an agreement axis disagrees between the two words.
+ * Needs the whole reading's words[] to resolve `to`.
+ */
+function lintRelations(words: Word[], reading: string): Lint[] {
+  const out: Lint[] = [];
+  words.forEach((w, i) => {
+    for (const rel of w.rel ?? []) {
+      const spec = RELATION_BY_NAME.get(rel.kind);
+      const mk = (detail: string): Lint =>
+        ({ reading, form: w.form, type: rel.kind, kind: 'bad-relation', detail });
+      if (!spec) { out.push(mk(`unknown relation kind "${rel.kind}"`)); continue; }
+      const target = words[rel.to];
+      if (rel.to == null || !target) { out.push(mk(`${rel.kind} → index ${rel.to} is out of range`)); continue; }
+      if (rel.to === i) { out.push(mk(`${rel.kind} points at itself`)); continue; }
+      const srcType = typeOf(new Set((w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term)));
+      if (spec.from.length && srcType && !spec.from.includes(srcType.id)) {
+        out.push(mk(`${srcType.dev} cannot be the source of ${rel.kind}`));
+      }
+      for (const axis of spec.agree) {
+        const a = valuesOf(w, axis), b = valuesOf(target, axis);
+        // Only flag when BOTH sides state the axis and they differ — a missing
+        // tag is a completeness gap, handled elsewhere, not an agreement error.
+        if (a.length && b.length && a[0] !== b[0]) {
+          out.push(mk(`${rel.kind} → ${target.form}: ${axis} disagrees (${a[0]} vs ${b[0]})`));
+        }
+      }
+    }
+  });
+  return out;
+}
 
 /**
  * What this word still owes, per the schema.
@@ -72,8 +169,10 @@ function main() {
   const worstN = args.includes('--worst') ? Number(args[args.indexOf('--worst') + 1] || 20) : 0;
   const untypedOnly = args.includes('--untyped');
   const unknownOnly = args.includes('--unknown');
+  const lintOnly = args.includes('--lint');
 
   const findings: Finding[] = [];
+  const lints: Lint[] = [];
   const byType: Record<string, { total: number; complete: number }> = {};
   const byReading = new Map<string, number>();
   const untyped: Array<{ reading: string; form: string; tags: string[] }> = [];
@@ -95,11 +194,15 @@ function main() {
         byReading.set(r.id, (byReading.get(r.id) ?? 0) + 1);
         continue;
       }
+      for (const l of lintWord(wt, w, terms)) lints.push({ ...l, reading: r.id });
       const missing = missingFor(wt, w, terms);
       if (!missing.length) { byType[type].complete++; continue; }
       findings.push({ reading: r.id, form: w.form, type, missing });
       byReading.set(r.id, (byReading.get(r.id) ?? 0) + 1);
     }
+    // Relations are edges between words, so they are linted per-reading, with the
+    // whole words[] in hand to resolve `to` and check agreement.
+    if (r.words) lints.push(...lintRelations(r.words, r.id));
   }
 
   // ── one reading, word by word ──────────────────────────────────────────
@@ -141,6 +244,37 @@ function main() {
     if (ranked.length > 60) console.log(`  … and ${ranked.length - 60} more`);
     console.log();
     return;
+  }
+
+  // ── the lint: annotations that are WRONG, not just missing ─────────────
+  if (lintOnly) {
+    const conflicts = lints.filter((l) => l.kind === 'conflict');
+    const misplaced = lints.filter((l) => l.kind === 'misplaced');
+    const wrongLemma = lints.filter((l) => l.kind === 'wrong-lemma');
+    const badRel = lints.filter((l) => l.kind === 'bad-relation');
+    console.log(`\n${lints.length} annotation error(s) — ${conflicts.length} conflict, ${misplaced.length} misplaced, ${wrongLemma.length} wrong-lemma, ${badRel.length} bad-relation\n`);
+    if (conflicts.length) {
+      console.log('  CONFLICT — two values of one dimension (only one can be true):');
+      for (const l of conflicts) console.log(`    ${l.reading.padEnd(8)} ${l.form.padEnd(16)} ${l.type.padEnd(7)} ${l.detail}`);
+      console.log();
+    }
+    if (misplaced.length) {
+      console.log('  MISPLACED — a tag that is no dimension of this word\'s type:');
+      for (const l of misplaced) console.log(`    ${l.reading.padEnd(8)} ${l.form.padEnd(16)} ${l.type.padEnd(7)} ${l.detail}`);
+      console.log();
+    }
+    if (wrongLemma.length) {
+      console.log('  WRONG-LEMMA — lemma is not a stem of this closed type (filed under the wrong type?):');
+      for (const l of wrongLemma) console.log(`    ${l.reading.padEnd(8)} ${l.form.padEnd(16)} ${l.type.padEnd(7)} ${l.detail}`);
+      console.log();
+    }
+    if (badRel.length) {
+      console.log('  BAD-RELATION — an edge between words that does not hold (target, agreement, direction):');
+      for (const l of badRel) console.log(`    ${l.reading.padEnd(8)} ${l.form.padEnd(16)} ${l.detail}`);
+      console.log();
+    }
+    if (!lints.length) console.log('  clean — every annotation is a legal value of its type.\n');
+    process.exit(lints.length ? 1 : 0);
   }
 
   // ── the work queue ─────────────────────────────────────────────────────

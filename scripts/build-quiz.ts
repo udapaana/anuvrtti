@@ -833,6 +833,61 @@ async function main() {
   for (const [stem, info] of stemInfo) {
     if (info.linga && !info.isPronoun) lingaIndex[stem] = LINGA_DEV[info.linga];
   }
+  // root → [गण, विकरण], straight from the dhātupāṭha spelling the DHATU table
+  // already records. गण is a fixed property of the root, and its विकरण follows
+  // from the गण, so both are derived here rather than authored per-verb. The
+  // bare Devanagari name (भ्वादि, not "१ भ्वादि") matches the schema's value set.
+  const GANA_BARE: Record<string, string> = {
+    Bhvadi: 'भ्वादि', Adadi: 'अदादि', Juhotyadi: 'जुहोत्यादि', Divadi: 'दिवादि',
+    Svadi: 'स्वादि', Tudadi: 'तुदादि', Rudhadi: 'रुधादि', Tanadi: 'तनादि',
+    Kryadi: 'क्र्यादि', Curadi: 'चुरादि'
+  };
+  const VIKARANA_OF: Record<string, string> = {
+    'भ्वादि': 'शप्', 'दिवादि': 'श्यन्', 'स्वादि': 'श्नु', 'तुदादि': 'श',
+    'रुधादि': 'श्नम्', 'तनादि': 'उ', 'क्र्यादि': 'श्ना', 'चुरादि': 'णिच्'
+    // अदादि takes लुक् (no विकरण) and जुहोत्यादि श्लु (reduplication) — no शप्-like
+    // affix to name, so those गणs get गण but no विकरण.
+  };
+  const ganaIndex: Record<string, [string, string?]> = {};
+  for (const [root, spec] of Object.entries(DHATU)) {
+    const gana = GANA_BARE[spec[1]];
+    if (!gana) continue;
+    const vik = VIKARANA_OF[gana];
+    ganaIndex[root] = vik ? [gana, vik] : [gana];
+  }
+
+  // stem → its FULL declension (all 24 cells, attested or not), so the reader's
+  // rail can show the WORD'S OWN paradigm — नर's table for a नर-word — instead of
+  // one of four fixed exemplars. Devanagari lemma key → {विभक्ति|वचन → form}.
+  const nounParadigms: Record<string, Record<string, string>> = {};
+  for (const [stem, info] of stemInfo) {
+    if (info.isPronoun || info.isSarvadi || !info.linga) continue;
+    try {
+      const grid = paradigmOf(info.stemSlp, info.linga); // {cell → forms[]}
+      const flat: Record<string, string> = {};
+      for (const [cell, forms] of Object.entries(grid)) if (forms[0]) flat[cell] = forms[0];
+      if (Object.keys(flat).length) nounParadigms[stem] = flat;
+    } catch { /* stem vidyut cannot decline — no table */ }
+  }
+
+  // root → its लट् conjugation (पुरुष|वचन → form), so a verb-word shows its OWN
+  // present-tense table with its cell lit, not the fixed भू exemplar.
+  const verbParadigms: Record<string, Record<string, string>> = {};
+  for (const [root, spec] of Object.entries(DHATU)) {
+    const flat: Record<string, string> = {};
+    for (const pu of PURUSHAS)
+      for (const vc of VACANAS) {
+        try {
+          const res = v.deriveTinantas({
+            dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
+            lakara: 'Lat', prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null
+          });
+          const f = [...new Set(res.map((p: any) => p.text))][0] as string | undefined;
+          if (f) flat[PUR_DEV[pu] + '|' + VAC_DEV[vc]] = toDeva(f);
+        } catch { /* cell not derivable */ }
+      }
+    if (Object.keys(flat).length) verbParadigms[root] = flat;
+  }
   for (const [root, byLak] of tinByRoot) {
     const spec = DHATU[root];
     if (!spec) continue;
@@ -868,6 +923,9 @@ async function main() {
     cells: cellIndex,
     padas: padaIndex,
     lingas: lingaIndex,
+    ganas: ganaIndex,
+    nounParadigms,
+    verbParadigms,
     sections: [
       {
         kind: 'subanta',

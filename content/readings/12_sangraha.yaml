@@ -38,6 +38,231 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex220
+  kind: sangraha
+  segment: 355
+  order: 1
+  sentence: महाबलः नृपः सभाम् आगच्छत्। तस्य पार्श्वे मन्त्रिपुरोहितौ आस्ताम्। नीलाम्बरः दूतः प्रविश्य उपसभम् अतिष्ठत्। सः महाबलम् अवदत् — शत्रुसेना पराजिता, राष्ट्रम् च रक्षितम्।
+  translation: The mighty king came to the assembly. At his side were the minister-and-priest. A blue-clad messenger, having entered, stood near the assembly. He said to the mighty one — "The enemy-army is defeated, and the kingdom protected."
+  teaches: |
+    the four compound types again, none of them new: महाबलः (बहुव्रीहि),
+    मन्त्रिपुरोहितौ (द्वन्द्व), उपसभम् (अव्ययीभाव), शत्रुसेना (तत्पुरुष).
+  words:
+  - form: महाबलः
+    lemma: महाबल
+    gloss: the mighty one (whose strength is great)
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — neither member is the head; it names the one who HAS great strength
+    - cite: '2.2.23'
+      role: शेषो बहुव्रीहिः — the remaining kind of compound is बहुव्रीहि
+    - cite: '2.2.24'
+      role: अनेकमन्यपदार्थे — several words denoting ANOTHER thing (the possessor) form a बहुव्रीहि
+    - term: विशेषण
+      en: qualifying नृपः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: नृपः
+    lemma: नृप
+    gloss: the king
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: सभाम्
+    lemma: सभा
+    gloss: the assembly
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: आगच्छत्
+    lemma: गम्
+    gloss: came
+    notes:
+    - term: लङ्
+      en: past
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्बन्ध
+      en: possession
+    - term: षष्ठी
+      en: genitive
+  - form: पार्श्वे
+    lemma: पार्श्व
+    gloss: at the side
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: मन्त्रिपुरोहितौ
+    lemma: मन्त्रिपुरोहित
+    gloss: the minister and the priest
+    notes:
+    - term: द्वन्द्व
+      en: copulative — both members are heads, joined as "and"
+    - cite: '2.2.29'
+      role: चार्थे द्वन्द्वः — words standing in the sense of "च" (and) form a द्वन्द्व
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative dual
+  - form: आस्ताम्
+    lemma: अस्
+    gloss: the two were
+    notes:
+    - term: लङ्
+      en: past — dual
+  - form: नीलाम्बरः
+    lemma: नीलाम्बर
+    gloss: the blue-clad one
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — the one whose garment is blue
+    - term: विशेषण
+      en: qualifying दूतः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: दूतः
+    lemma: दूत
+    gloss: a messenger
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: प्रविश्य
+    lemma: विश्
+    gloss: having entered
+    notes:
+    - term: कृदन्त
+      en: gerund — a कृदन्त that does not decline
+    - term: ल्यप्
+      en: the ल्यप् suffix — a क्त्वा-gerund WITH a preverb (प्र), so आगत्य-style not आगत्वा
+    - term: उपसर्ग
+      en: प्र — the preverb that selects ल्यप् over क्त्वा
+    - term: अव्यय
+      en: indeclinable
+  - form: उपसभम्
+    lemma: उपसभ
+    gloss: near the assembly
+    notes:
+    - term: अव्ययीभाव
+      en: adverbial — उप heads it, and the whole compound is indeclinable
+    - cite: '2.1.5'
+      role: अव्ययीभावः — a compound headed by an indeclinable is अव्ययीभाव
+  - form: अतिष्ठत्
+    lemma: स्था
+    gloss: stood
+    notes:
+    - term: लङ्
+      en: past
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: महाबलम्
+    lemma: महाबल
+    gloss: the mighty one
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — here standing for the king himself
+    - term: कर्मन्
+      en: the one addressed
+    - term: द्वितीया
+      en: accusative
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: शत्रुसेना
+    lemma: शत्रुसेना
+    gloss: the enemy's army
+    notes:
+    - term: तत्पुरुष
+      en: determinative — सेना, the second member, is the head; शत्रोः सेना
+    - text: 'विग्रह: शत्रोः सेना — "the army of the enemy"'
+    - cite: '2.1.22'
+      role: तत्पुरुषः — a compound whose second member carries the main sense is तत्पुरुष
+    - cite: '2.2.8'
+      role: षष्ठी — a षष्ठी-relation (शत्रोः) compounded → षष्ठी-तत्पुरुष
+    - term: कर्तृ
+      en: agent — subject of the passive predicate
+    - term: प्रथमा
+      en: nominative
+  - form: पराजिता
+    lemma: पराजि
+    gloss: defeated
+    notes:
+    - term: कृदन्त
+      en: past participle
+    - term: क्त
+      en: the क्त निष्ठा suffix — passive, "was defeated"
+    - term: कर्मणि
+      en: passive — agrees with शत्रुसेना, no finite verb
+    - term: प्रथमा
+      en: nominative feminine — predicated of शत्रुसेना
+    rel:
+    - kind: विशेषण
+      to: 16
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: राष्ट्रम्
+    lemma: राष्ट्र
+    gloss: the kingdom
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: the thing protected — subject of the passive predicate
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: रक्षितम्
+    lemma: रक्ष्
+    gloss: protected
+    notes:
+    - term: कृदन्त
+      en: past participle
+    - term: क्त
+      en: the क्त निष्ठा suffix — passive, "was protected"
+    - term: कर्मणि
+      en: passive — agrees with राष्ट्रम्
+    - term: प्रथमा
+      en: nominative neuter — predicated of राष्ट्रम्
+    rel:
+    - kind: विशेषण
+      to: 19
+  vyakhya: चत्वारः समासाः एकस्मिन् दृश्ये — महाबलः, मन्त्रिपुरोहितौ, उपसभम्, शत्रुसेना।
+  vyakhya_en: |
+    All four kinds in one scene, and each doing ordinary work. महाबलः is a
+    बहुव्रीहि — not "great" and not "strength" but the one who HAS great strength,
+    the king. मन्त्रिपुरोहितौ is a द्वन्द्व, minister and priest taken as a pair.
+    उपसभम् is an अव्ययीभाव, उप carrying it and the whole going indeclinable. And
+    शत्रुसेना is a तत्पुरुष — शत्रोः सेना, the enemy's army — whose defeat the
+    passive participle पराजिता reports without a finite verb.
+
 - id: ex211
   kind: sangraha
   segment: 550
@@ -136,6 +361,8 @@ readings:
     lemma: तद्
     gloss: that
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: द्वितीया
       en: neuter accusative
   - form: अश्रौषीत्
@@ -168,12 +395,16 @@ readings:
     lemma: किम्
     gloss: by whom
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: तृतीया
       en: instrumental
   - form: एतत्
     lemma: एतद्
     gloss: this
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: neuter nominative
   - form: कृतम्
@@ -258,6 +489,8 @@ readings:
     lemma: तद्
     gloss: that
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: द्वितीया
       en: accusative
   - form: वीरम्
@@ -296,6 +529,8 @@ readings:
     lemma: तद्
     gloss: that
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative
   - form: वीरः
@@ -332,6 +567,8 @@ readings:
     lemma: किम्
     gloss: anything
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: द्वितीया
       en: neuter accusative with the indefinite particle
   - form: अयाचत
@@ -357,6 +594,8 @@ readings:
     lemma: किम्
     gloss: in a certain
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: सन्धि
       en: कस्मिन् + चित् — the न् goes श् before च्
     - cite: "8.4.40"
@@ -403,6 +642,8 @@ readings:
     lemma: तद्
     gloss: him
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: object
     - term: द्वितीया
@@ -417,6 +658,8 @@ readings:
     lemma: किम्
     gloss: what
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: object of कुर्याम
     - term: द्वितीया
@@ -510,6 +753,8 @@ readings:
     lemma: यद्
     gloss: he who
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: the relative, answered by सः
   - form: वदेत्
@@ -524,6 +769,8 @@ readings:
     lemma: तद्
     gloss: he
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative — answers यः
   - form: श्रेष्ठः
@@ -546,6 +793,8 @@ readings:
     lemma: एतद्
     gloss: these
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: neuter nominative, agreeing with वचनम्
   - form: वचनम्
@@ -632,6 +881,8 @@ readings:
     lemma: तद्
     gloss: his
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: षष्ठी
       en: genitive
   - form: पठनम्
@@ -664,6 +915,8 @@ readings:
     lemma: तद्
     gloss: that
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative
   - form: अपठत्
@@ -696,6 +949,8 @@ readings:
     lemma: तद्
     gloss: that
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: object of श्रुत्वा
     - term: द्वितीया
@@ -746,8 +1001,12 @@ readings:
     lemma: अस्मद्
     gloss: I
     notes:
+    - term: सर्वनाम
+      en: pronoun — अस्मद्, the पुरुषवाचक "I/we"
     - term: उत्तमपुरुष
       en: the speaker
+    - term: प्रथमा
+      en: nominative
   - form: सदा
     lemma: सदा
     gloss: always
@@ -936,6 +1195,8 @@ readings:
     lemma: तद्
     gloss: that
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: object of पश्यन्
     - term: द्वितीया
@@ -950,6 +1211,8 @@ readings:
     lemma: एतद्
     gloss: this
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: neuter nominative
   - form: एव
@@ -1131,6 +1394,8 @@ readings:
     lemma: तद्
     gloss: he
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative
   - form: 'न'
@@ -1164,6 +1429,8 @@ readings:
     lemma: तद्
     gloss: that
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: what was heard — nominative under the participle
     - term: प्रथमा
@@ -1284,6 +1551,8 @@ readings:
     lemma: तद्
     gloss: by them
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्तृ
       en: the agent again, again instrumental
     - term: तृतीया
@@ -1342,6 +1611,8 @@ readings:
     lemma: तद्
     gloss: them
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: the object of an ACTIVE verb — accusative, not nominative
     - term: द्वितीया
@@ -1375,6 +1646,8 @@ readings:
     lemma: तद्
     gloss: they
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्तृ
       en: agent
     - term: प्रथमा
@@ -1494,8 +1767,10 @@ readings:
     lemma: दाशरथि
     gloss: the son of Daśaratha
     notes:
-    - term: अपत्य
-      en: the patronymic — इञ् with vṛddhi of the first vowel, दशरथ → दाशरथि
+    - term: तद्धित
+      en: secondary derivative — a patronymic
+    - term: इञ्
+      en: the इञ् patronymic suffix, अर्थ = अपत्य; इञ् with vṛddhi, दशरथ → दाशरथि
     - cite: "4.1.95"
       role: अत इञ् — इञ् forms the patronymic from an अ-stem → दाशरथिः
     - term: प्रथमा
@@ -1531,6 +1806,8 @@ readings:
     lemma: तद्
     gloss: he
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative
   - form: धनवान्
@@ -1562,6 +1839,8 @@ readings:
     lemma: तद्
     gloss: his
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: षष्ठी
       en: genitive
   - form: गुरुत्वम्
@@ -1578,7 +1857,7 @@ readings:
     lemma: सर्व
     gloss: all
     notes:
-    - term: सर्वनाम
+    - term: सर्वादि
       en: nominative plural — सर्व declines pronominally
   - form: जनाः
     lemma: जन
@@ -1653,6 +1932,8 @@ readings:
     lemma: तद्
     gloss: him
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: object
     - term: द्वितीया
@@ -1717,6 +1998,8 @@ readings:
     lemma: तद्
     gloss: they
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative plural
   - form: वदन्ति
@@ -1775,6 +2058,8 @@ readings:
     lemma: तद्
     gloss: and it
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: सन्धि
       en: तत् + च — त् becomes च् before a च्-class stop
     - cite: "8.4.40"
@@ -1887,6 +2172,8 @@ readings:
     lemma: तद्
     gloss: to them
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - cite: "8.3.23"
       role: मोऽनुस्वारः — word-final म् becomes anusvāra before a consonant → तेषां
     - term: षष्ठी
@@ -1924,6 +2211,8 @@ readings:
     lemma: तद्
     gloss: they
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative plural
   - form: वदन्ति
@@ -1943,6 +2232,181 @@ readings:
     That last one is worth noticing — the trigger is not adjacent. र् and न्
     are separated by ए, and the rule still reaches across. Sandhi is not only
     about what touches what.
+
+- id: ex215
+  kind: sangraha
+  segment: 135
+  order: 1
+  sentence: राजपुरुषः उपकृष्णम् आसीत्। तत्र रामकृष्णौ अपि आगच्छताम्। राजपुरुषः तौ अपश्यत् — रामः श्यामः, कृष्णः पीताम्बरः। सः पीताम्बरं ननाम, यतः पीताम्बरः एव विष्णुः।
+  translation: The king's man was near Kṛṣṇa. There Rāma-and-Kṛṣṇa also arrived. The king's man saw the two of them — Rāma dark, Kṛṣṇa yellow-clad. He bowed to the yellow-clad one, because the yellow-clad one is Viṣṇu himself.
+  teaches: |
+    all four compound types back to back, doing no new work: राजपुरुषः
+    (तत्पुरुष), उपकृष्णम् (अव्ययीभाव), रामकृष्णौ (द्वन्द्व), पीताम्बरः
+    (बहुव्रीहि).
+  words:
+  - form: राजपुरुषः
+    lemma: राजपुरुष
+    gloss: the king's man
+    notes:
+    - term: तत्पुरुष
+      en: determinative — the second member, पुरुष, is the head
+    - cite: '2.1.22'
+      role: तत्पुरुषः — a compound whose second member carries the main sense is तत्पुरुष
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: उपकृष्णम्
+    lemma: उपकृष्ण
+    gloss: near Kṛṣṇa
+    notes:
+    - term: अव्ययीभाव
+      en: adverbial — headed by the indeclinable उप, the whole compound is indeclinable
+    - cite: '2.1.5'
+      role: अव्ययीभावः — a compound headed by an indeclinable is अव्ययीभाव
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: रामकृष्णौ
+    lemma: रामकृष्ण
+    gloss: Rāma and Kṛṣṇa
+    notes:
+    - term: द्वन्द्व
+      en: copulative — both members are heads, joined as "and"
+    - cite: '2.2.29'
+      role: चार्थे द्वन्द्वः — words standing in the sense of "च" (and) form a द्वन्द्व
+    - term: द्विवचन
+      en: dual — two people
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: also
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: आगच्छताम्
+    lemma: गम्
+    gloss: the two arrived
+    notes:
+    - term: लङ्
+      en: past
+    - term: द्विवचन
+      en: dual — agrees with रामकृष्णौ
+  - form: तौ
+    lemma: तद्
+    gloss: those two
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative dual
+  - form: अपश्यत्
+    lemma: दृश्
+    gloss: saw
+    notes:
+    - term: लङ्
+      en: past
+  - form: रामः
+    lemma: राम
+    gloss: Rāma
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: श्यामः
+    lemma: श्याम
+    gloss: dark
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — predicated of रामः
+  - form: कृष्णः
+    lemma: कृष्ण
+    gloss: Kṛṣṇa
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: पीताम्बरः
+    lemma: पीताम्बर
+    gloss: the one whose garment is yellow
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — neither member is the head; the compound points at Kṛṣṇa
+    - cite: '2.2.23'
+      role: शेषो बहुव्रीहिः — the remaining kind of compound is बहुव्रीहि
+    - cite: '2.2.24'
+      role: अनेकमन्यपदार्थे — several words denoting ANOTHER thing (the possessor) form a बहुव्रीहि
+    - term: प्रथमा
+      en: nominative
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पीताम्बरं
+    lemma: पीताम्बर
+    gloss: the yellow-clad one
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: ननाम
+    lemma: नम्
+    gloss: bowed
+    vocab: true
+    notes:
+    - term: लिट्
+      en: perfect — a completed act, once
+  - form: यतः
+    lemma: यतस्
+    gloss: because
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: एव
+    lemma: एव
+    gloss: indeed, precisely
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: विष्णुः
+    lemma: विष्णु
+    gloss: Viṣṇu
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative
+  vyakhya: चत्वारः समासाः एकत्र। राजपुरुषः, उपकृष्णम्, रामकृष्णौ, पीताम्बरः।
+  vyakhya_en: |
+    All four kinds side by side, none announced: राजपुरुषः is a तत्पुरुष (पुरुष
+    is the head), उपकृष्णम् an अव्ययीभाव (उप carries it, and the whole goes
+    indeclinable), रामकृष्णौ a द्वन्द्व (Rāma and Kṛṣṇa, equally heads), and
+    पीताम्बरः a बहुव्रीहि — it names neither "yellow" nor "garment" but the one
+    who wears them, and that one turns out to be Viṣṇu.
 
 - id: ex192
   kind: sangraha
@@ -2054,6 +2518,8 @@ readings:
     lemma: तद्
     gloss: he
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative
   - form: धर्मम्
@@ -2170,6 +2636,8 @@ readings:
     lemma: तद्
     gloss: he
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative
   - form: महापुरुषः
@@ -2206,6 +2674,8 @@ readings:
     lemma: तद्
     gloss: him
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: object
     - term: द्वितीया
@@ -2536,6 +3006,8 @@ readings:
     lemma: तद्
     gloss: she
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative feminine — सा beside masculine सः
   - form: अपि
@@ -2548,6 +3020,8 @@ readings:
     lemma: तद्
     gloss: to her
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: सम्प्रदान
       en: recipient
     - term: चतुर्थी
@@ -2583,6 +3057,8 @@ readings:
     lemma: तद्
     gloss: to that
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: चतुर्थी
       en: the masculine of तस्यै — स्मै, again not the noun ending
     - cite: "7.1.14"
@@ -2597,6 +3073,8 @@ readings:
     lemma: तद्
     gloss: they
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: बहुवचन
       en: nominative plural masculine
   - form: पठन्ति
@@ -2609,6 +3087,8 @@ readings:
     lemma: तद्
     gloss: they (the women)
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: बहुवचन
       en: nominative plural feminine — ताः beside masculine ते
   - form: च
@@ -2645,12 +3125,16 @@ readings:
     lemma: अस्मद्
     gloss: I
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: उत्तमपुरुष
       en: the speaker — अस्मद् has no stem-form here, अहम् is suppletive
   - form: तान्
     lemma: तद्
     gloss: them
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: object
     - term: द्वितीया
@@ -2758,6 +3242,8 @@ readings:
     lemma: अस्मद्
     gloss: I
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: उत्तमपुरुष
       en: the speaker
   - form: गच्छेयम्
@@ -2793,6 +3279,8 @@ readings:
     lemma: यद्
     gloss: he who
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: the relative, answered by सः
   - form: इच्छति
@@ -2807,6 +3295,8 @@ readings:
     lemma: तद्
     gloss: he
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative — answers यः
   - form: गच्छेत्
@@ -2862,6 +3352,8 @@ readings:
     lemma: अस्मद्
     gloss: I
     notes:
+    - term: सर्वनाम
+      en: pronoun — अस्मद्, the पुरुषवाचक "I/we"
     - term: उत्तमपुरुष
       en: the speaker
     - term: प्रथमा
@@ -2878,6 +3370,8 @@ readings:
     lemma: गम्
     gloss: I go
     notes:
+    - term: लट्
+      en: present
     - term: उत्तमपुरुष
       en: the मि ending — first person singular
     - cite: "3.4.78"
@@ -2886,6 +3380,8 @@ readings:
     lemma: युष्मद्
     gloss: you
     notes:
+    - term: सर्वनाम
+      en: pronoun — युष्मद्, the पुरुषवाचक "you"
     - term: मध्यमपुरुष
       en: the one addressed
     - term: प्रथमा
@@ -2900,6 +3396,8 @@ readings:
     lemma: गम्
     gloss: you go
     notes:
+    - term: लट्
+      en: present
     - term: मध्यमपुरुष
       en: the सि ending — same stem गच्छ्, different person
   - form: नरः
@@ -2922,6 +3420,8 @@ readings:
     lemma: भू
     gloss: is
     notes:
+    - term: लट्
+      en: present
     - term: प्रथमपुरुष
       en: the ति ending — भू takes गुण before शप्, भो → भव्
   - form: नरौ
@@ -2936,6 +3436,8 @@ readings:
     lemma: गम्
     gloss: the two go
     notes:
+    - term: लट्
+      en: present
     - term: द्विवचन
       en: the तस् ending — the verb answers the dual agent
   - form: बालाः
@@ -2958,6 +3460,8 @@ readings:
     lemma: गम्
     gloss: they come back
     notes:
+    - term: लट्
+      en: present
     - term: बहुवचन
       en: the अन्ति ending — third person plural
   - form: तत्र
@@ -3055,6 +3559,8 @@ readings:
     lemma: तद्
     gloss: he too
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: सन्धि
       en: सः + अपि — visarga → ओ, and the अ of अपि elides, marked by ऽ
     - cite: "6.1.113"
@@ -3190,6 +3696,8 @@ readings:
     gloss: he
     vocab: true
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative — stands in for नरः, so the sentence need not repeat it
   - form: पादाभ्याम्
@@ -3323,6 +3831,8 @@ readings:
     lemma: तद्
     gloss: he
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative
   - form: ज्ञायते
@@ -3360,6 +3870,8 @@ readings:
     lemma: तद्
     gloss: to him
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: goal of motion
     - term: द्वितीया
@@ -3511,6 +4023,8 @@ readings:
     lemma: तद्
     gloss: his
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: षष्ठी
       en: genitive
   - form: वचनम्
@@ -3625,6 +4139,8 @@ readings:
     lemma: तद्
     gloss: they
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative plural
   - form: तुष्यन्ति
@@ -3679,6 +4195,8 @@ readings:
     lemma: यद्
     gloss: he who
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative — the relative, answered by सः
   - form: अन्नम्
@@ -3699,6 +4217,8 @@ readings:
     lemma: तद्
     gloss: he
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative — answers यः
   - form: दाता
@@ -3710,19 +4230,21 @@ readings:
     - cite: "3.1.133"
       role: ण्वुल्तृचौ — तृच् forms the agent-noun दातृ → दाता
   - form: दानम्
-    lemma: दान
+    lemma: दा
     gloss: giving
     notes:
     - cite: "7.1.24"
       role: अतोऽम् — the neuter अ-stem takes अम् in प्रथमा and द्वितीया → दानम्
-    - term: भाव
-      en: action-noun — the ACT, not the actor; set directly against दाता
+    - term: ल्युट्
+      en: action-noun suffix — the ACT (भाव), not the actor; set directly against दाता
     - term: प्रथमा
       en: neuter nominative
   - form: तस्य
     lemma: तद्
     gloss: his
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: षष्ठी
       en: genitive
   - form: धर्मः
@@ -3850,6 +4372,8 @@ readings:
     lemma: तद्
     gloss: him
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: object
     - term: द्वितीया
@@ -3929,6 +4453,8 @@ readings:
     lemma: तद्
     gloss: he
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative
   - form: मात्रे
@@ -3960,12 +4486,16 @@ readings:
     lemma: तद्
     gloss: she
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: प्रथमा
       en: nominative feminine
   - form: तम्
     lemma: तद्
     gloss: him
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: कर्मन्
       en: object
     - term: द्वितीया
@@ -4177,6 +4707,8 @@ readings:
     lemma: तद्
     gloss: his
     notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: षष्ठी
       en: genitive — a relation, not a कारक
   - form: पुत्रः

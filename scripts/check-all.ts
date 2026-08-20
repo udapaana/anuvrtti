@@ -10,6 +10,11 @@
  *   - सङ्ग्रह violations: a consolidation passage citing a rule not yet
  *     introduced. This has fired twice on mechanical edits and caught both.
  *   - gloss/token mismatches in NEW readings (see the baseline note below).
+ *   - annotation lint: a tag that is WRONG, not just missing — two values of one
+ *     dimension (लट् and विधिलिङ् both), or a value that belongs to no dimension
+ *     of the word's type. The corpus is at zero; any new one fails the build.
+ *     This is the correctness half of what `bun run complete` reports; completeness
+ *     (a MISSING dimension) stays soft, because the backlog is deep.
  *
  * SOFT reports (exit 0) are candidate lists that need a human read:
  *   - register warnings — a term may be glossed inline and perfectly clear
@@ -145,6 +150,22 @@ if (need.length) {
     `  · completeness: ${need.map(([, n, t]) => `${n} need ${t}`).join(', ')}` +
     (untypedN ? `, ${untypedN[1]} untyped` : '')
   );
+}
+
+// 6. annotation lint — HARD. Completeness (missing) is a backlog and stays soft;
+// correctness (wrong) is always an error and the corpus is at zero, so any new
+// conflict or misplaced tag fails the build the way a सङ्ग्रह violation does.
+const lint = await run(['bun', 'scripts/check-complete.ts', '--lint']);
+const lintN = lint.match(/(\d+) annotation error/);
+const lintCount = lintN ? Number(lintN[1]) : 0;
+if (lintCount > 0) {
+  // Reprint the CONFLICT/MISPLACED block so the failure names the words.
+  const detail = lint.split('\n').filter((l) =>
+    /CONFLICT|MISPLACED|^\s{4}\S/.test(l)).join('\n');
+  problems.push(`annotation lint: ${lintCount} tag(s) are wrong, not just missing\n${detail}`);
+  console.log(`  ✗ annotation lint: ${lintCount} error(s)`);
+} else {
+  console.log('  ✓ annotation lint: clean');
 }
 
 console.log();

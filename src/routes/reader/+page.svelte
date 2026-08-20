@@ -4,7 +4,8 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { wordBank } from '$lib/stores/wordBank';
 
-  import { toParadigm } from '$lib/reader/paradigm';
+  import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
+  import { decompose } from '$lib/reader/wordDecomp';
   // Graded reader — the design's redesign: a chapter spine (left), interlinear
   // gloss reading with word-identity tags (center), and a scroll-synced sūtra
   // derivation rail (right). Paginated (PAGE per page) so it scales past a few
@@ -16,25 +17,40 @@
 
   let chapters = $state<Chapter[]>([]);
   let sequence = $state<Reading[]>([]);
+  let usage = $state<any>(null); // usage.json — carries per-word paradigms
   let error = $state('');
   let loaded = $state(false);
 
   let page = $state(0);
   let focusedId = $state<string | null>(null);
+  let jumpQuery = $state('');
 
   // ── the design's reader model ──────────────────────────────────────────
   // Three reading modes, and a rail that shows ONE word at a time behind a
   // quiz gate: tap a word, name its विभक्ति or लकार, then the gloss, the tags
   // and the sūtras follow. The always-open list the rail used to show gave the
   // answer away before the reader had tried.
-  type Mode = 'recall' | 'split' | 'gloss';
+  // Two INDEPENDENT axes: `mode` is how much gloss shows (recall vs glossed);
+  // `padaccheda` is whether words are split at their sandhi joins. They compose —
+  // you can have cheda WITH glosses — so padaccheda is its own toggle, not a
+  // third mutually-exclusive mode.
+  type Mode = 'recall' | 'gloss';
   let mode = $state<Mode>('recall');
+  let padaccheda = $state(false);
   let sel = $state<{ id: string; wi: number } | null>(null);
   let pick = $state<string | null>(null);
   let checked = $state<Set<string>>(new Set());
   let showTr = $state(false);
   let hoverEx = $state<string | null>(null);
   let hoverWi = $state<number | null>(null);
+
+  // SEEN — every reading whose card has scrolled ABOVE the fold: you read it and
+  // moved on. This is the quiz deck: the quiz draws a random word from any seen
+  // reading, NOT the word you just clicked (which you already know). "Seen" is
+  // defined by the scroll itself — no card-compression, no forced single-card.
+  let seen = $state<Set<string>>(new Set());
+  // A quiz drawn from the seen deck: {id, wi} of a random word, or null.
+  let deckQuiz = $state<{ id: string; wi: number } | null>(null);
 
   let io: IntersectionObserver | null = null;
   let vis = new Map<string, number>();
@@ -46,6 +62,9 @@
       const data = await res.json();
       chapters = data.chapters ?? [];
       sequence = data.sequence ?? [];
+      // usage.json carries the per-word paradigms (all cells, from vidyut) that
+      // the rail's table needs. Best-effort: no table if it fails to load.
+      try { usage = await (await fetch('/data/usage.json', { cache: 'no-store' })).json(); } catch { usage = null; }
       loaded = true;
       focusedId = sequence[0]?.id ?? null;
       requestAnimationFrame(observe);
@@ -58,10 +77,29 @@
       error = String((e as Error).message || e);
     }
     window.addEventListener('keydown', onKeydown);
+    window.addEventListener('scroll', onScroll, { passive: true });
   });
   onDestroy(() => {
     io?.disconnect();
-    if (typeof window !== 'undefined') window.removeEventListener('keydown', onKeydown);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('keydown', onKeydown);
+      window.removeEventListener('scroll', onScroll);
+    }
+  });
+
+  // Throttle markSeen to scroll — cheap, and catches fast scrolls the observer's
+  // shrunk region misses. scrollTick is a reactive counter bumped on every scroll
+  // frame; the $effect below watches it so `seen` updates inside Svelte's reactive
+  // system (a plain listener reassigning $state proved not to propagate here).
+  let seenRaf = 0;
+  let scrollTick = $state(0);
+  function onScroll() {
+    if (seenRaf) return;
+    seenRaf = requestAnimationFrame(() => { seenRaf = 0; scrollTick++; });
+  }
+  $effect(() => {
+    scrollTick; // dependency
+    markSeen();
   });
 
   // ── chapter title split: "देव — english gloss" ──────────────────────────────
@@ -77,7 +115,14 @@
 
   // ── the reading list (graded order), paginated. The chapter spine is the only
   //    table of contents; readings stay in their authored difficulty sequence. ──
-  const list = $derived(sequence.map((r) => ({ ...r })));
+  // The four paradigm readings (देव, फल, नदी, भू) are tables, not readings, and
+  // no longer appear as cards in the main column — their tables now open in the
+  // rail when a word of that class is clicked. Build the table index from the
+  // FULL sequence first (so the tables survive), then drop those ids from the
+  // reading list so they neither render as cards nor take a slot in paging.
+  const paradigms = $derived(paradigmIndex(usage));
+  const paradigmIds = new Set(PARADIGM_READING_IDS);
+  const list = $derived(sequence.filter((r) => !paradigmIds.has(r.id)).map((r) => ({ ...r })));
   // ── page boundaries: cut where the CONTENT breaks, not every PAGE readings ──
   //
   // Fixed 20-reading slices cut across a sequence ordered by difficulty, so
@@ -254,7 +299,9 @@
         // citation. Focal words show their gloss by default; KNOWN words collapse
         // to bare Devanagari and reveal on hover — so the reader can try to recall.
         const focal = wi >= 0 && (r.words[wi].notes || []).some((nt: any) => nt.cite);
-        return { text: tx, wi, gloss: wi >= 0 ? r.words[wi].gloss || '' : '', isWord: wi >= 0, focal };
+        // padaccheda: the pre-sandhi split (देवोऽत्र → देवः + अत्र), when authored.
+        const split = wi >= 0 ? (r.words[wi].split ?? null) : null;
+        return { text: tx, wi, gloss: wi >= 0 ? r.words[wi].gloss || '' : '', isWord: wi >= 0, focal, split };
       });
 
     return {
@@ -265,7 +312,6 @@
       teaches: r.teaches || '',
       tokens,
       words,
-      grid: toParadigm(r.sentence),
       translation: r.translation || '',
       vyakhya: r.vyakhya || '',
       vyakhya_en: (r.vyakhya_en || '').trim()
@@ -288,17 +334,41 @@
 
   // The one word the rail is showing, if any.
   const selWord = $derived.by(() => {
-    if (!sel) return null;
-    const r = list.find((x) => x.id === sel.id);
-    const w = r?.words?.[sel.wi];
+    const s = sel;
+    if (!s) return null;
+    const r = list.find((x) => x.id === s.id);
+    const w = r?.words?.[s.wi];
     if (!r || !w) return null;
     const terms = (w.notes ?? []).filter((n: any) => n.term).map((n: any) => ({ term: n.term, en: n.en ?? '' }));
     const cites = (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => ({ cite: n.cite, role: n.role ?? '' }));
-    return { id: r.id, wi: sel.wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quiz: w.quiz ?? null, terms, cites };
+    return { id: r.id, wi: s.wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quiz: w.quiz ?? null, terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
   });
 
   const asking = $derived(!!selWord?.quiz && pick === null);
   const answered = $derived(!!selWord && (pick !== null || !selWord.quiz));
+
+  // The paradigm the selected word belongs to — its declension or conjugation
+  // table, shown in the rail below the quiz with the word's own cell lit. Null
+  // for words outside the four classes we hold a table for (the rail then shows
+  // no table, rather than guessing).
+  const selParadigm = $derived.by(() => {
+    if (!selWord) return null;
+    // Include DERIVED features (पुरुष/वचन/विभक्ति the build filled from vidyut) so
+    // the cell lights up even when the word doesn't author them — verbs rarely do.
+    const termNames = [...(selWord.terms ?? []).map((t: any) => t.term), ...Object.values(selWord.derived ?? {})];
+    return resolveParadigm(paradigms, selWord.lemma ?? '', selWord.form ?? '', termNames as string[]);
+  });
+
+  // For a word that is NOT in a grid — a compound, a derivative, a plain sandhi
+  // join — the exhibit below the quiz is a decomposition, not a table: the
+  // विग्रह of a compound, the affix chain of a कृदन्त/तद्धित, the split of a
+  // सन्धि. Null when the word declines (its paradigm shows instead) or when no
+  // decomposition is authored.
+  const selDecomp = $derived.by(() => {
+    if (!selWord) return null;
+    const termNames = (selWord.terms ?? []).map((t: any) => t.term);
+    return decompose(termNames, selWord.notes ?? []);
+  });
 
   const verdict = $derived.by(() => {
     const w = selWord;
@@ -315,9 +385,37 @@
   }
 
   function selectWord(id: string, wi: number) {
-    if (sel && sel.id === id && sel.wi === wi) { sel = null; pick = null; return; }
+    if (sel && sel.id === id && sel.wi === wi) { sel = null; pick = null; deckQuiz = null; return; }
     sel = { id, wi };
     pick = null;
+    deckQuiz = null; // a manual click is inspection, not a deck quiz
+  }
+
+  // Every (reading, word-index) that has a quiz and lives in a SEEN reading —
+  // the deck. A word you have scrolled past is fair game; the one you are
+  // currently looking at (sel) is not, so the quiz tests recall, not the obvious.
+  const deckCards = $derived.by(() => {
+    const cards: { id: string; wi: number }[] = [];
+    for (const r of list) {
+      if (!seen.has(r.id)) continue;
+      (r.words ?? []).forEach((w: any, wi: number) => {
+        if (w.quiz) cards.push({ id: r.id, wi });
+      });
+    }
+    return cards;
+  });
+
+  // Draw a random card from the seen deck and quiz on it — NOT the clicked word.
+  // Sets `sel` so the whole existing rail/grade machinery is reused; `deckQuiz`
+  // marks that this selection came from the deck (so the rail can hide the answer
+  // reading until the reader has tried).
+  function drawFromDeck() {
+    const deck = deckCards.filter((c) => !(sel && sel.id === c.id && sel.wi === c.wi));
+    if (!deck.length) return;
+    const pickCard = deck[Math.floor(Math.random() * deck.length)];
+    sel = pickCard;
+    pick = null;
+    deckQuiz = pickCard;
   }
 
   // Deck banking — the last step of examining a word, per the design.
@@ -485,6 +583,48 @@
     );
   }
 
+  // Resolve the jump box's query to a reading id, then reuse jumpToReading. The
+  // query is an id ("ex210") or a difficulty tier ("tier 210" / "210" → the
+  // reading at that segment, or the nearest at/above it).
+  function jumpFromQuery(e?: Event) {
+    e?.preventDefault();
+    const q = jumpQuery.trim();
+    if (!q) return;
+    let id: string | null = null;
+    const idMatch = q.match(/(ex|rd)\s*0*(\d+)/i);
+    if (idMatch) {
+      const cand = idMatch[1].toLowerCase() + String(idMatch[2]).padStart(3, '0');
+      if (list.some((r) => r.id === cand)) id = cand;
+    } else {
+      const n = Number(q.replace(/tier|segment|\s/gi, ''));
+      if (!Number.isNaN(n)) {
+        let r = list.find((x) => (x.segment ?? -1) === n);
+        if (!r) r = list.find((x) => (x.segment ?? Infinity) >= n);
+        id = r?.id ?? null;
+      }
+    }
+    if (!id) return;
+    jumpQuery = '';
+    jumpToReading(id);
+  }
+
+  // Mark every card whose bottom is now above the viewport top as SEEN. Called
+  // from the observer and on scroll, so fast scrolls don't skip any.
+  function markSeen() {
+    if (typeof document === 'undefined') return;
+    // Recompute the union without reading the reactive `seen` for the guard, so
+    // this is safe to call from an $effect: gather every card past the top, add
+    // any not already recorded. Reassign only when it actually grew.
+    const current = seen;
+    const next = new Set(current);
+    let grew = false;
+    for (const el of document.querySelectorAll('[data-ex-id]')) {
+      const id = (el as HTMLElement).getAttribute('data-ex-id')!;
+      if (!next.has(id) && el.getBoundingClientRect().bottom < 0) { next.add(id); grew = true; }
+    }
+    if (grew) seen = next;
+  }
+
   function observe() {
     if (typeof IntersectionObserver === 'undefined') return;
     io?.disconnect();
@@ -498,6 +638,11 @@
           if (e.isIntersecting) vis.set(id, e.boundingClientRect.top);
           else vis.delete(id);
         }
+        // SEEN is computed from live geometry, not the observer's captured rect:
+        // the shrunk rootMargin fires the "left" event while the card's real
+        // bottom is still on-screen, so sweep the DOM and mark every card whose
+        // bottom is now above the viewport top — read and scrolled past.
+        markSeen();
         let best: string | null = null;
         let bd = Infinity;
         for (const [id, top] of vis) {
@@ -537,13 +682,26 @@
           <div class="bigtitle"><Sanskrit text="संस्कृतपठनम्" source="devanagari" /></div>
           <div class="bigsub">Sanskrit, learned by reading — every word traced to the Aṣṭādhyāyī.</div>
         </div>
+        <div class="kbdhint"><kbd>↑</kbd><kbd>↓</kbd> step through readings</div>
+      </div>
+
+      <!-- Mode toggles + jump: a sticky bar, so padaccheda/glossed and "go to a
+           reading" stay reachable without scrolling back to the top. -->
+      <div class="controlbar">
         <div class="modes">
-          <span class="modelabel">mode</span>
-          {#each [{ k: 'recall', label: 'recall' }, { k: 'split', label: 'padaccheda' }, { k: 'gloss', label: 'glossed' }] as m}
+          <span class="modelabel">gloss</span>
+          {#each [{ k: 'recall', label: 'recall' }, { k: 'gloss', label: 'glossed' }] as m}
             <button class="modepill" class:on={mode === m.k} onclick={() => (mode = m.k as Mode)}>{m.label}</button>
           {/each}
+          <!-- independent axis: split at sandhi joins, composes with either gloss mode -->
+          <button class="modepill sep" class:on={padaccheda} onclick={() => (padaccheda = !padaccheda)}>padaccheda</button>
         </div>
-        <div class="kbdhint"><kbd>↑</kbd><kbd>↓</kbd> step through readings</div>
+        <form class="jump" onsubmit={jumpFromQuery}>
+          <label class="modelabel" for="jumpto">go to</label>
+          <input id="jumpto" class="jumpinput" bind:value={jumpQuery}
+            placeholder="ex210 or tier 210" spellcheck="false" />
+          <button class="jumpbtn" type="submit">→</button>
+        </form>
       </div>
 
       <div class="grid">
@@ -590,22 +748,9 @@
                   <span class="exteaches">{row.teaches}</span>
                 </div>
 
-                {#if row.grid}
-                  <!-- paradigm: a real grid, aligned by वचन -->
-                  <div class="pgrid" style="--cols:{row.grid.cols}">
-                    <div class="pgcorner"></div>
-                    {#each row.grid.colHeads as h}
-                      <div class="pgcolhead"><Sanskrit text={h} source="devanagari" /></div>
-                    {/each}
-                    {#each row.grid.rows as gr}
-                      <div class="pgrowhead"><Sanskrit text={gr.label} source="devanagari" /></div>
-                      {#each gr.cells as cell}
-                        <div class="pgcell"><Sanskrit text={cell} source="devanagari" /></div>
-                      {/each}
-                    {/each}
-                  </div>
-                {:else}
-                <!-- interlinear sentence -->
+                <!-- interlinear sentence. Paradigm readings (देव, फल, नदी, भू)
+                     are filtered out of the column upstream — their tables show
+                     in the rail now — so every card here is a sentence. -->
                 <div class="tokens">
                   {#each row.tokens as tok}
                     {#if tok.isWord}
@@ -618,9 +763,17 @@
                         onmouseleave={leaveWord}
                         onclick={() => selectWord(row.id, tok.wi)}
                       >
-                        <span class="tokform" class:sel={sel?.id === row.id && sel?.wi === tok.wi}
-                          ><Sanskrit text={tok.text} source="devanagari" /></span
-                        >
+                        <span class="tokform" class:sel={sel?.id === row.id && sel?.wi === tok.wi}>
+                          {#if padaccheda && tok.split}
+                            <!-- padaccheda: show the pre-sandhi parts, joined by a
+                                 quiet +, so the reader sees the words behind the join -->
+                            {#each tok.split as part, pi}
+                              {#if pi > 0}<span class="splitplus">+</span>{/if}<Sanskrit text={part} source="devanagari" />
+                            {/each}
+                          {:else}
+                            <Sanskrit text={tok.text} source="devanagari" />
+                          {/if}
+                        </span>
                         <!-- In `gloss` mode every gloss is shown for checking; in
                              `recall` only the selected word's, so the reader tries
                              first. Selection is what opens the rail. -->
@@ -638,16 +791,10 @@
                     {/if}
                   {/each}
                 </div>
-                {/if}
 
                 <p class="translation">{row.translation}</p>
-
-                {#if row.vyakhya}
-                  <div class="vyakhya">
-                    <div class="vydev"><Sanskrit text={row.vyakhya} source="devanagari" /></div>
-                    {#if row.vyakhya_en}<p class="vyen">{row.vyakhya_en}</p>{/if}
-                  </div>
-                {/if}
+                <!-- the reading's vyākhyā now lives in the rail (right), shown
+                     when no word is selected — see the RIGHT column. -->
               </article>
             {/if}
           {/each}
@@ -669,27 +816,57 @@
           <div class="raillabel">in the <span class="accent">अष्टाध्यायी</span></div>
 
           {#if !selWord}
+            <!-- No word selected: the rail carries the READING's own commentary
+                 (the vyākhyā), which used to sit in the main column. Per-word
+                 machinery replaces it the moment a word is tapped, so the two
+                 never crowd each other. -->
+            {#if railReading?.vyakhya || railReading?.vyakhya_en}
+              <div class="railvyakhya">
+                {#if railReading.vyakhya}
+                  <div class="railvydev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></div>
+                {/if}
+                {#if railReading.vyakhya_en}
+                  <p class="railvyen">{railReading.vyakhya_en.trim()}</p>
+                {/if}
+              </div>
+            {/if}
             <div class="railempty">
-              Tap a word to see how it is formed. You are asked to name its case
-              or lakāra first; the gloss and the sūtras follow.
+              Tap a word to see how it is formed — its case or lakāra first, then
+              the gloss and the sūtras.
             </div>
+            {#if deckCards.length}
+              <!-- The seen deck: a word from any reading scrolled past, drawn at
+                   random. Tests recall of what you have read, not the word you
+                   just clicked. -->
+              <button class="quizme" onclick={drawFromDeck}>
+                quiz me · {deckCards.length} card{deckCards.length === 1 ? '' : 's'} seen
+              </button>
+            {/if}
           {:else}
-            <div class="railcard">
+            <div class="railcard" class:isquiz={deckQuiz}>
               <div class="railhead">
                 <span class="railform"><Sanskrit text={selWord.form} source="devanagari" /></span>
-                {#if selWord.lemma}<span class="railstem">{selWord.lemma}</span>{/if}
+                {#if selWord.lemma && !(deckQuiz && asking)}<span class="railstem">{selWord.lemma}</span>{/if}
               </div>
 
               {#if asking && selWord.quiz}
-                <div class="railq">{selWord.quiz.q}</div>
-                {#if selWord.quiz.phrase}
-                  <!-- The form alone cannot settle the case, so the phrase that
-                       does is shown. Reading the case off the sentence rather
-                       than the ending is the skill being asked for. -->
+                <!-- THE MODEL: show the sentence (the context — the same form is a
+                     different thing in a different clause), and quiz on the schema
+                     (any authored dimension/relation of this occurrence). For a
+                     deck quiz the word is drawn from a reading you scrolled past,
+                     so its sentence is shown here to anchor the question. -->
+                {#if deckQuiz && selWord.sentence}
+                  <div class="railphrase railctx">
+                    <Sanskrit text={selWord.sentence} source="devanagari" />
+                  </div>
+                {:else if selWord.quiz.phrase}
+                  <!-- inline quiz on an ambiguous form: the phrase that settles the
+                       case, so you read it off the sentence not the ending. -->
                   <div class="railphrase">
                     <Sanskrit text={selWord.quiz.phrase} source="devanagari" />
                   </div>
                 {/if}
+                <div class="railq">{selWord.quiz.q}</div>
                 <div class="railopts">
                   {#each selWord.quiz.opts as o}
                     <button class="opt" onclick={() => pickOption(o)}>
@@ -719,6 +896,17 @@
                   </div>
                 {/if}
 
+                {#if selDecomp}
+                  <!-- the decomposition strip: what a NON-declining word is made
+                       of. विग्रह for a compound, the affix chain for a
+                       derivative, the split for a सन्धि join — the counterpart to
+                       the paradigm grid, for words that sit in no grid. -->
+                  <div class="raildecomp">
+                    <span class="decomplabel">{selDecomp.label}</span>
+                    <span class="decompparts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
+                  </div>
+                {/if}
+
                 {#if selWord.cites.length}
                   <div class="railcites">
                     {#each selWord.cites as c}
@@ -733,12 +921,44 @@
                 <button class="bank" class:has={inDeck} onclick={bankWord} disabled={inDeck}>
                   {inDeck ? 'in your deck' : '+ keep for review'}
                 </button>
+
+                {#if deckQuiz && deckCards.length > 1}
+                  <button class="quizme" onclick={drawFromDeck}>quiz another →</button>
+                {/if}
+
+                {#if selParadigm}
+                  <!-- the word's own paradigm, its cell lit. These four tables
+                       used to be standalone cards; a table is not a reading, so
+                       they live here now, tied to the word that calls them up. -->
+                  <div class="railpara">
+                    <div class="railparahead"><Sanskrit text={selParadigm.title} source="devanagari" /></div>
+                    <div class="ppgrid" style="--cols:{selParadigm.grid.cols}">
+                      <div class="ppcorner"></div>
+                      {#each selParadigm.grid.colHeads as h, ci}
+                        <div class="ppcolhead" class:axhot={ci === selParadigm.col}>
+                          <Sanskrit text={h} source="devanagari" />
+                        </div>
+                      {/each}
+                      {#each selParadigm.grid.rows as gr, ri}
+                        <div class="pprowhead" class:axhot={ri === selParadigm.row}>
+                          <Sanskrit text={gr.label} source="devanagari" />
+                        </div>
+                        {#each gr.cells as cell, ci}
+                          <div class="ppcell" class:cellhot={ri === selParadigm.row && ci === selParadigm.col}>
+                            <Sanskrit text={cell} source="devanagari" />
+                          </div>
+                        {/each}
+                      {/each}
+                    </div>
+                  </div>
+                {/if}
               {/if}
             </div>
           {/if}
 
           <div class="railstats">
             <div>this session · {checked.size} {checked.size === 1 ? 'word' : 'words'} checked</div>
+            {#if seen.size}<div>read · {seen.size} · {deckCards.length} to quiz on</div>{/if}
             <div>in your deck · {deckCount}</div>
           </div>
         </aside>
@@ -786,8 +1006,50 @@
   }
   .bigtitle { font-size: 1.85rem; font-weight: 600; line-height: 1.1; }
   .bigsub { font-size: 1rem; color: #6b6b6b; font-style: italic; margin-top: 0.2rem; }
+  /* Sticky control bar: mode toggles + jump-to, always reachable while scrolling
+     so padaccheda/glossed and "go to a reading" never need a scroll to the top. */
+  .controlbar {
+    position: sticky;
+    /* sit just BELOW the 51px global .sitenav (which is sticky at top:0), so the
+       bar pins under it rather than sliding beneath and disappearing. Matches the
+       spine's top:58px offset. */
+    top: 52px;
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 0.25rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid #ece3d3;
+  }
   /* Mode pills — the design's 999px pill, accent fill when active. */
-  .modes { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+  .modes { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+  .jump { display: flex; align-items: center; gap: 0.35rem; }
+  .jumpinput {
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    padding: 0.28rem 0.6rem;
+    border: 1px solid #e7e2d9;
+    border-radius: 999px;
+    width: 9rem;
+    color: #2b2723;
+    background: #fff;
+  }
+  .jumpinput:focus { outline: none; border-color: #f4c98b; }
+  .jumpbtn {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid #e7e2d9;
+    border-radius: 999px;
+    background: #faf7f0;
+    color: #92591f;
+    cursor: pointer;
+  }
+  .jumpbtn:hover { background: #fdecd9; border-color: #f4c98b; }
   .modelabel {
     font-family: ui-monospace, monospace;
     font-size: 0.6rem;
@@ -807,6 +1069,17 @@
     cursor: pointer;
   }
   .modepill.on { background: #fdecd9; border-color: #f4c98b; color: #92591f; }
+  /* padaccheda is a separate axis — a small gap marks it off from the gloss pills */
+  .modepill.sep { margin-left: 0.6rem; }
+  .modepill.sep::before {
+    content: '';
+    position: absolute;
+    left: -0.35rem;
+    top: 20%;
+    height: 60%;
+    border-left: 1px solid #e7e2d9;
+  }
+  .modepill { position: relative; }
 
   /* Rail card — #faf7f0 on #efe7d8 at 13px, per the design. */
   .railempty,
@@ -831,6 +1104,9 @@
     padding: 0.45rem 0.6rem;
     margin-bottom: 0.6rem;
   }
+  /* the deck-quiz context: the whole sentence the drawn word lived in, so the
+     question can be read against its clause. The target word is emphasised. */
+  .railctx { font-size: 0.98rem; line-height: 1.6; color: #2b2723; }
   .railopts { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .opt {
     font-size: 0.95rem;
@@ -860,6 +1136,27 @@
     margin: 0.7rem 0 0.5rem;
   }
   .railgloss { font-size: 0.95rem; color: #463f33; font-style: italic; margin-bottom: 0.6rem; }
+  /* the decomposition strip — विग्रह / affix chain / सन्धि split. A single quiet
+     line: the small tag, then the analysis in Devanagari. It reads as "this is
+     what the word is made of", the prose counterpart to the paradigm grid. */
+  .raildecomp {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.5rem 0.6rem;
+    margin-bottom: 0.5rem;
+    background: #faf7f0;
+    border-left: 2px solid #e7c9a3;
+    border-radius: 0 4px 4px 0;
+  }
+  .decomplabel {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #b6ada0;
+    flex: none;
+  }
+  .decompparts { font-size: 1rem; color: #4a443d; line-height: 1.5; }
   .railcites { border-top: 1px solid #e7e2d9; padding-top: 0.7rem; margin-top: 0.2rem; }
   .bank {
     width: 100%;
@@ -874,6 +1171,31 @@
     cursor: pointer;
   }
   .bank.has { border-color: #e7e2d9; background: #f6f1e7; color: #a99e8b; cursor: default; }
+  /* quiz-me: draws a random card from the seen deck. Saffron-filled so it reads
+     as the primary action of the empty rail. */
+  .quizme {
+    width: 100%;
+    margin-top: 1rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    padding: 0.5rem;
+    border-radius: 9px;
+    border: 1px solid #f4c98b;
+    background: #fdecd9;
+    color: #92591f;
+    cursor: pointer;
+  }
+  .quizme:hover { background: #fbdcb8; }
+  /* a deck quiz's header: the form is hidden while asking, so a quiet label
+     stands in — "you are being tested on a word you have read". */
+  .railquizlabel {
+    font-family: ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #c2410c;
+  }
+  .railcard.isquiz { border-left: 2px solid #f4c98b; padding-left: 0.9rem; }
   .railstats {
     margin-top: 1rem;
     font-family: ui-monospace, monospace;
@@ -999,6 +1321,56 @@
     white-space: nowrap;
   }
 
+  /* the word's paradigm, in the rail below the quiz. Compact — the rail is
+     narrow — and it scrolls its own axis so a three-column table never widens
+     the rail. The clicked word's cell is lit; its row and column headers are
+     tinted so the eye finds the cell by its coordinates. */
+  .railpara { border-top: 1px solid #e7e2d9; margin-top: 0.8rem; padding-top: 0.8rem; }
+  .railparahead {
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    color: #a89f92;
+    margin-bottom: 0.5rem;
+  }
+  .ppgrid {
+    display: grid;
+    grid-template-columns: auto repeat(var(--cols), minmax(3.6rem, 1fr));
+    gap: 0.05rem 0.5rem;
+    align-items: baseline;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
+  }
+  .ppcolhead,
+  .pprowhead {
+    font-size: 0.62rem;
+    color: #b6ada0;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.15s;
+  }
+  .ppcolhead { padding-bottom: 0.25rem; border-bottom: 1px solid #ece3d3; margin-bottom: 0.25rem; text-align: center; }
+  .ppcorner { border-bottom: 1px solid #ece3d3; margin-bottom: 0.25rem; }
+  .pprowhead { text-align: right; padding-right: 0.2rem; }
+  .ppcolhead.axhot,
+  .pprowhead.axhot { color: #c2410c; font-weight: 600; }
+  .ppcell {
+    font-size: 0.92rem;
+    color: #4a443d;
+    line-height: 1.7;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0 0.15rem;
+    transition: background 0.15s, color 0.15s;
+  }
+  /* the clicked word's own cell — saffron wash, ink text, so it reads as "you
+     are here" in the table. */
+  .ppcell.cellhot {
+    background: #fde7c8;
+    color: #7c2d12;
+    font-weight: 600;
+  }
+
   .ex {
     padding: 1.7rem 0 1.7rem 1rem;
     margin-left: -1rem;
@@ -1042,6 +1414,8 @@
   .token.hot .tokform { background: #fde7c8; cursor: pointer; }
   /* focal (new) word: a faint underline marks it as the reading's point */
   .token.focal .tokform { border-bottom: 1px solid #f4c98b; border-radius: 0; cursor: help; }
+  /* padaccheda: the + between the split parts, kept quiet so the words lead */
+  .splitplus { color: #c3b8a6; margin: 0 0.15rem; font-size: 0.85em; }
   .token .tokgloss {
     font-size: 0.68rem; color: #a99e8b; font-style: italic;
     min-height: 0.8rem; line-height: 1.1;
@@ -1067,9 +1441,12 @@
   .termdev { font-size: 0.86rem; color: #4f46e5; }
   .termen { font-size: 0.68rem; color: #6b6b6b; }
 
-  .vyakhya { margin-top: 1.25rem; border-left: 2px solid #f97316; padding-left: 1.05rem; }
-  .vydev { font-size: 1.15rem; color: #0f1419; line-height: 1.5; }
-  .vyen { font-size: 1rem; color: #6b6b6b; line-height: 1.55; margin: 0.45rem 0 0; font-style: italic; max-width: 34em; }
+  /* the reading's vyākhyā, now in the rail. Sized for the narrow (~318px) pane:
+     the Devanagari leads, the English follows quieter. Shown only when no word is
+     selected, so it never competes with the per-word card. */
+  .railvyakhya { border-left: 2px solid #f4c98b; padding-left: 0.8rem; margin-bottom: 0.9rem; }
+  .railvydev { font-size: 1rem; color: #2b2723; line-height: 1.5; }
+  .railvyen { font-size: 0.86rem; color: #6b6b6b; line-height: 1.55; margin: 0.5rem 0 0; font-style: italic; }
 
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.3rem; border-top: 1px solid #ece3d3; }
   .navbtn {
