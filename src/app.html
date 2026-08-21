@@ -6,9 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      The webfonts load WITHOUT blocking the first paint.
+
+      As a plain stylesheet in the head this one request held the whole page
+      hostage: nothing rendered until Google answered, so a slow or unreachable
+      fonts.googleapis.com stalled the reader for as long as the request took
+      to give up — measured at 12.8s, against 111ms when the same request
+      failed immediately. The text is the product; it should not wait on a
+      typeface.
+
+      media="print" makes the browser fetch the sheet at low priority without
+      applying it; the onload swap to "all" applies it the moment it arrives.
+      The page paints at once in the fallback faces named in --font-*, and
+      re-renders in Spectral / Noto when they land.
+
+      There is deliberately no no-script copy of this link. The usual pattern
+      pairs the swap with one, but the reader fetches its whole corpus from JS
+      and renders nothing without it, so the fallback would buy a typeface for
+      a page that is blank anyway — and it reintroduces exactly the blocking
+      request this is here to remove.
+    -->
     <link
       href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600&family=Noto+Sans+Nandinagari&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all';this.onload=null"
     />
     %sveltekit.head%
   </head>

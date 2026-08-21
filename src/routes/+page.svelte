@@ -1,5 +1,6 @@
 <script lang="ts">
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import { dataUrl } from '$lib/dataUrl';
   import Shell from '$lib/components/ui/Shell.svelte';
   import { learningProgress } from '$lib/stores/learning';
   import { loadPathIndex, type PathMeta } from '$lib/content';
@@ -47,7 +48,7 @@
 
   async function loadStats() {
     try {
-      const r = await fetch('/data/readings.json', { cache: 'no-store' });
+      const r = await fetch(dataUrl('/data/readings.json'));
       if (r.ok) {
         const d = await r.json();
         const cites = new Set<string>();
@@ -61,14 +62,14 @@
       }
     } catch {}
     try {
-      const r = await fetch('/data/balabodhini.json', { cache: 'no-store' });
+      const r = await fetch(dataUrl('/data/balabodhini.json'));
       if (r.ok) {
         const b = await r.json();
         stat.lessons = (b.parts ?? []).reduce((a: number, p: any) => a + p.lessons.length, 0);
       }
     } catch {}
     try {
-      const r = await fetch('/data/usage.json', { cache: 'no-store' });
+      const r = await fetch(dataUrl('/data/usage.json'));
       if (r.ok) {
         const u = await r.json();
         // The door's count is the cells the corpus actually attests, which is
