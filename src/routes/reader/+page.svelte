@@ -643,15 +643,29 @@
     focusedId = id;
     const el = document.querySelector('[data-ex-id="' + id + '"]') as HTMLElement | null;
     if (!el) return;
-    // Always the same landing place: the top of the card, at the anchor line.
-    // getBoundingClientRect().top is relative to the viewport and so keeps
-    // moving while a smooth scroll is in flight, but adding scrollY back gives
-    // the card's absolute position in the document, which does not — so holding
-    // the key down still lands every card in exactly the same spot.
-    window.scrollTo({
-      top: el.getBoundingClientRect().top + window.scrollY - ANCHOR,
-      behavior: 'smooth'
-    });
+    /*
+      Move the page only when the card would otherwise be off screen.
+
+      Forcing every selection to the anchor line is what made stepping "leap
+      four cards": the HIGHLIGHT was always advancing by exactly one — measured,
+      one rendered card per press, every press — but pinning that card to the
+      top means everything between it and the top scrolls away with it. Select a
+      word four cards down the screen, press down, and the page lurches four
+      cards while the highlight moves one.
+
+      Word stepping never had this problem for the simple reason that it never
+      scrolls; it just moves the mark. Line stepping now does the same until it
+      runs out of screen, and only then scrolls — to the anchor, so the landing
+      place stays predictable when it does happen.
+
+      Adding scrollY back to the viewport-relative rect gives the card's
+      absolute position in the document, which does not move while a smooth
+      scroll is in flight, so holding the key down still lands cleanly.
+    */
+    const r = el.getBoundingClientRect();
+    if (r.top < ANCHOR || r.bottom > window.innerHeight - 24) {
+      window.scrollTo({ top: r.top + window.scrollY - ANCHOR, behavior: 'smooth' });
+    }
   }
 
   function stepLine(dir: 1 | -1) {
