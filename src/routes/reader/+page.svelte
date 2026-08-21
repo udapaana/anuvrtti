@@ -605,11 +605,18 @@
     let ri = list.findIndex((x) => x.id === s.id);
     if (ri < 0) return;
     let wi = s.wi + dir;
+    // Roll into the ADJACENT line at either end of the current one — but stop at
+    // the ends of the corpus. Wrapping modulo list.length sent the last word of
+    // the last reading back to the first, and (the one people actually hit) the
+    // first word of the FIRST reading all the way to the last reading in the
+    // book: one ArrowLeft on ex001 teleported to the final page. Clamp instead.
     if (wi >= (list[ri].words?.length ?? 0)) {
-      ri = (ri + 1) % list.length;
+      if (ri >= list.length - 1) return;
+      ri = ri + 1;
       wi = 0;
     } else if (wi < 0) {
-      ri = (ri - 1 + list.length) % list.length;
+      if (ri <= 0) return;
+      ri = ri - 1;
       wi = Math.max(0, (list[ri].words?.length ?? 1) - 1);
     }
     const moved = list[ri].id !== s.id;
@@ -673,7 +680,11 @@
     if (!s) return stepReading(dir);
     const ri = list.findIndex((x) => x.id === s.id);
     if (ri < 0) return stepReading(dir);
-    const next = (ri + dir + list.length) % list.length;
+    // Stop at the corpus ends rather than wrapping: ArrowUp on the first line
+    // used to jump to the last reading in the book, ArrowDown on the last to the
+    // first. Line movement stays within [0, list.length).
+    const next = ri + dir;
+    if (next < 0 || next >= list.length) return;
     const target = list[next];
     if (!target) return;
     selectWord(target.id, Math.min(s.wi, Math.max(0, (target.words?.length ?? 1) - 1)));
