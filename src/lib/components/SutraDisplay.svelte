@@ -13,6 +13,15 @@
     commentary?: Commentary;
     layeredCommentary?: LayeredSutraCommentary;
     depth?: CommentaryDepth;
+    /*
+      Three commentary tiers used to stack down one page, so a sūtra with a long
+      Kāśikā read three times the length of one without. They are one segmented
+      control on the shelf now, and this picks which tier the column shows — so
+      the page has one reading length however much commentary a sūtra carries.
+      Vasu's full translation is not a tier; it is a source, and lives in the
+      rail's closed `sources` row.
+    */
+    tier?: 'plain' | 'kashika' | 'vartika';
     fallbackCommentary?: string;
     onDepthChange?: (depth: CommentaryDepth) => void;
     onEdit?: () => void;
@@ -28,6 +37,7 @@
     commentary,
     layeredCommentary,
     depth = 'standard',
+    tier = 'plain',
     fallbackCommentary,
     onDepthChange,
     onEdit,
@@ -137,7 +147,7 @@
       </section>
     {/if}
 
-    {#if hasCommentary}
+    {#if hasCommentary && tier === 'plain'}
       <section class="section commentary-section">
         <div class="vyakhya-head">
           <span class="section-label" style="margin: 0;"><Sanskrit text="vyākhyā" source="iast" /></span>
@@ -163,7 +173,7 @@
       </section>
     {/if}
 
-    {#if commentary?.kashika}
+    {#if commentary?.kashika && tier === 'kashika'}
       <section class="section">
         <h3 class="section-label"><Sanskrit text="kāśikā vṛtti" source="iast" /></h3>
         <div class="section-content kashika">
@@ -172,7 +182,7 @@
       </section>
     {/if}
 
-    {#if commentary?.vartika && commentary.vartika.length > 0}
+    {#if commentary?.vartika && commentary.vartika.length > 0 && tier === 'vartika'}
       <section class="section">
         <h3 class="section-label"><Sanskrit text="vārttikas" source="iast" /> · {commentary.vartika.length}</h3>
         <ol class="vartika-list">
@@ -183,18 +193,8 @@
       </section>
     {/if}
 
-    {#if commentary?.englishFull}
-      <details class="section expandable">
-        <summary class="section-label">full translation · vasu</summary>
-        <div class="section-content">
-          {#each commentary.englishFull.split('\n') as para}
-            {#if para.trim()}
-              <p><CommentaryText text={para} /></p>
-            {/if}
-          {/each}
-        </div>
-      </details>
-    {/if}
+    <!-- Vasu's full translation is a source, not a tier: it opens from the
+         rail's `sources` row rather than hanging off the bottom of the column. -->
   </article>
 {/if}
 

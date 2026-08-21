@@ -1,21 +1,41 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { browser } from '$app/environment';
+  import { onMount } from 'svelte';
   import type { Sutra, Commentary, LayeredSutraCommentary, CommentaryDepth } from '$lib/data/types';
   import SutraDisplay from '$lib/components/SutraDisplay.svelte';
   import CommentaryEditor from '$lib/components/CommentaryEditor.svelte';
+  import CommentaryText from '$lib/components/CommentaryText.svelte';
   import AnuvrttiGraph from '$lib/components/AnuvrttiGraph.svelte';
-  import JargonLookup from '$lib/components/JargonLookup.svelte';
-  import PratyaharaViewer from '$lib/components/PratyaharaViewer.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
-  import { commentaryDepth as commentaryDepthStore } from '$lib/stores/preferences';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import Segmented from '$lib/components/ui/Segmented.svelte';
+  import Disclose from '$lib/components/ui/Disclose.svelte';
+  import {
+    commentaryDepth as commentaryDepthStore,
+    authoringMode
+  } from '$lib/stores/preferences';
   import { pendingEdits } from '$lib/stores/edits';
   import { editModal } from '$lib/stores/editModal';
 
+  /*
+    One sūtra. Three commentary tiers used to stack down the page, so its length
+    depended on how much commentary the sūtra happened to carry; they are a
+    segmented control on the shelf now, and the page has one reading length
+    throughout. Prev/next is on the shelf too — with 3983 pages, moving to the
+    neighbour is the primary navigation, not a footer.
+
+    Four of the things that used to run down the column are cross-references,
+    which is a rail, not body copy: neighbours, what cites this, the lines in
+    the reader that put it to work, and the sources behind one closed row. The
+    two tool sidebars (jargon, pratyāhārāḥ) are gone — both are one ⌘K away and
+    both have their own Reference page.
+  */
   let { data } = $props();
   let user = $derived(data.user as { login: string; avatar_url: string } | null);
 
-  // Learning context: show "return to path" banner if user came from a learning path
+  // Learning context: offer a way back if the reader came from a path step.
   interface LearningContext {
     pathId: string;
     pathTitle: string;
@@ -30,7 +50,9 @@
       if (stored) {
         learningContext = JSON.parse(stored);
       }
-    } catch { /* ignore */ }
+    } catch {
+      /* ignore */
+    }
   }
 
   function dismissLearningContext() {
@@ -43,26 +65,88 @@
   let sutra: Sutra | null = $derived(data.sutra);
   let rule: string | null = $derived(data.rule ?? null);
   let commentary: Commentary | undefined = $derived(data.commentary ?? undefined);
-  let layeredCommentary: LayeredSutraCommentary | undefined = $derived(data.layeredCommentary ?? undefined);
-  let dependencies: Sutra[] = $derived(data.dependencies);
+  let layeredCommentary: LayeredSutraCommentary | undefined = $derived(
+    data.layeredCommentary ?? undefined
+  );
   let dependents: Sutra[] = $derived(data.dependents);
   let prevSutraId: string | null = $derived(data.prevSutraId);
   let nextSutraId: string | null = $derived(data.nextSutraId);
-  let learningPaths: { pathId: string; pathTitle: string; stepIndex: number }[] = $derived(data.learningPaths);
-  let balabodhiniLessons: { lessonRef: string; lessonNumber: number; part: number; title: string }[] = $derived(data.balabodhiniLessons ?? []);
-  let prakriyaPaths = $derived(learningPaths.filter(lp => lp.pathId.startsWith('prakriya-')));
-  let otherPaths = $derived(learningPaths.filter(lp => !lp.pathId.startsWith('prakriya-')));
+  let learningPaths: { pathId: string; pathTitle: string; stepIndex: number }[] = $derived(
+    data.learningPaths
+  );
+  let balabodhiniLessons: {
+    lessonRef: string;
+    lessonNumber: number;
+    part: number;
+    title: string;
+  }[] = $derived(data.balabodhiniLessons ?? []);
+  let kaleSections: number[] = $derived(data.kaleSections ?? []);
+  let prakriyaPaths = $derived(learningPaths.filter((lp) => lp.pathId.startsWith('prakriya-')));
+  let otherPaths = $derived(learningPaths.filter((lp) => !lp.pathId.startsWith('prakriya-')));
 
-  // Depth selector - synced with global preference
+  // The commentary tier the column is showing. Vasu's full translation is not a
+  // tier — it is a source, and opens from the rail.
+  let tier = $state<'plain' | 'kashika' | 'vartika'>('plain');
+  const tiers = $derived([
+    { id: 'plain', label: 'plain' },
+    { id: 'kashika', label: 'kāśikā', title: commentary?.kashika ? undefined : 'none recorded' },
+    {
+      id: 'vartika',
+      label: 'vārtika',
+      title: commentary?.vartika?.length ? undefined : 'none recorded'
+    }
+  ]);
+  $effect(() => {
+    // A new sūtra starts on the plain tier rather than inheriting the last one,
+    // which may not exist here.
+    data.sutra;
+    tier = 'plain';
+    sourcesOpen = false;
+  });
+
+  let sourcesOpen = $state(false);
+  const fullTranslation = $derived(commentary?.englishFull ?? '');
+  const sources = $derived(
+    [
+      commentary?.kashika ? { label: 'kāśikā vṛtti', text: 'recorded', href: null } : null,
+      commentary?.vartika?.length
+        ? { label: 'vārttikas', text: `${commentary.vartika.length} recorded`, href: null }
+        : null,
+      ...balabodhiniLessons.map((l) => ({
+        label: 'bālabodhinī',
+        text: `${l.part}.${l.lessonNumber} · ${l.title}`,
+        href: `/workbook/${l.lessonRef}`
+      }))
+    ].filter(Boolean) as { label: string; text: string; href: string | null }[]
+  );
+
+  // The lines in the graded reader that cite this sūtra. Best-effort: the rail
+  // simply omits the section if the corpus does not load.
+  let readingHits = $state<{ id: string; sentence: string }[]>([]);
+  onMount(async () => {
+    try {
+      const res = await fetch('/data/readings.json');
+      if (!res.ok) return;
+      const corpus = await res.json();
+      const id = data.sutra?.id;
+      if (!id) return;
+      readingHits = (corpus.sequence ?? [])
+        .filter((r: any) =>
+          (r.words ?? []).some((w: any) => (w.notes ?? []).some((n: any) => n.cite === id))
+        )
+        .map((r: any) => ({ id: r.id, sentence: r.sentence ?? '' }));
+    } catch {
+      /* the rail drops the section */
+    }
+  });
+
+  // Depth selector — synced with the global preference.
   let depth: CommentaryDepth = $state('standard');
-  commentaryDepthStore.subscribe(d => { depth = d; });
-
-  function handleDepthChange(d: CommentaryDepth) {
+  commentaryDepthStore.subscribe((d) => {
     depth = d;
-    commentaryDepthStore.set(d);
-  }
+  });
 
-  // Register edit context for navbar button
+  // Register edit context for the shelf's authoring control.
   $effect(() => {
     if (sutra) {
       const a = sutra.numericId[0];
@@ -73,7 +157,6 @@
     return () => editModal.setPageContext(undefined);
   });
 
-  // Edit mode
   let editing = $state(false);
   let submitState: 'idle' | 'loading' | 'done' | 'error' = $state('idle');
   let prUrl = $state('');
@@ -85,6 +168,8 @@
       const a = sutra.numericId[0];
       const p = sutra.numericId[1];
       const s = parseInt(sutra.numericId.slice(2));
+      // Opening the editor turns the mode on, so the rail is there to hold it.
+      authoringMode.set(true);
       editModal.open(`static/data/commentary/${a}/${p}/${s}.toml`);
     }
   }
@@ -95,7 +180,7 @@
       const res = await fetch('/api/suggest', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ edits: pendingEdits.snapshot(), note: '' }),
+        body: JSON.stringify({ edits: pendingEdits.snapshot(), note: '' })
       });
       if (!res.ok) throw new Error(await res.text());
       const { prUrl: url } = await res.json();
@@ -110,13 +195,13 @@
 
   function handleKeydown(e: KeyboardEvent) {
     if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (e.key === 'ArrowLeft' || e.key === 'h') {
       if (prevSutraId) goto(`/ref/${prevSutraId}`);
     } else if (e.key === 'ArrowRight' || e.key === 'l') {
       if (nextSutraId) goto(`/ref/${nextSutraId}`);
     }
   }
-
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -125,491 +210,334 @@
   <title>{sutra ? `${sutra.id} ${sutra.text}` : 'Not Found'} | anuvrtti</title>
 </svelte:head>
 
+{#snippet shelfLeft()}
+  {#if sutra}
+    <a class="crumb" href="/ref?a={sutra.adhyaya}&p={sutra.pada}">
+      {sutra.adhyaya}.{sutra.pada}
+    </a>
+    <span class="id">{sutra.id}</span>
+    <!-- With 3983 pages, sequential movement is the primary navigation, so it
+         sits on the shelf rather than at the bottom of the column. -->
+    <span class="step">
+      {#if prevSutraId}<a href="/ref/{prevSutraId}" title={prevSutraId}>‹</a>{:else}<span class="off">‹</span>{/if}
+      {#if nextSutraId}<a href="/ref/{nextSutraId}" title={nextSutraId}>›</a>{:else}<span class="off">›</span>{/if}
+    </span>
+    {#if learningContext}
+      <a class="return" href="/workbook/{learningContext.pathId}">
+        return to {learningContext.pathTitle} →
+      </a>
+      <button class="dismiss" onclick={dismissLearningContext} aria-label="dismiss">×</button>
+    {/if}
+  {/if}
+{/snippet}
+
+{#snippet shelfRight()}
+  <!-- Only in authoring mode: the PR chip that used to float over the page. -->
+  {#if $authoringMode && (editCount > 0 || submitState === 'done')}
+    {#if submitState === 'done'}
+      <a class="pr" href={prUrl} target="_blank" rel="noopener">PR opened →</a>
+    {:else if submitState === 'error'}
+      <button class="pr" onclick={() => (submitState = 'idle')}>{submitError} · dismiss</button>
+    {:else}
+      <button class="pr" onclick={submitEdits} disabled={submitState === 'loading'}>
+        {submitState === 'loading' ? 'submitting…' : `submit ${editCount} edit${editCount === 1 ? '' : 's'}`}
+      </button>
+    {/if}
+  {/if}
+  <Segmented
+    options={tiers}
+    value={tier}
+    onchange={(id) => (tier = id as typeof tier)}
+    ariaLabel="commentary tier"
+  />
+{/snippet}
+
+{#snippet rail()}
+  <span class="label">neighbours</span>
+  <div class="neighbours">
+    {#if prevSutraId}<a href="/ref/{prevSutraId}">{prevSutraId}</a>{/if}
+    {#if sutra}<span class="here">{sutra.id} {sutra.text}</span>{/if}
+    {#if nextSutraId}<a href="/ref/{nextSutraId}">{nextSutraId}</a>{/if}
+  </div>
+
+  <div class="cited">
+    <span class="label">cited by</span>
+    <span class="counts">
+      {readingHits.length || '—'} readings · {balabodhiniLessons.length} lessons · {dependents.length}
+      sūtras
+    </span>
+  </div>
+
+  {#if readingHits.length}
+    <!-- The bridge back to the reader: the actual lines that put this sūtra to
+         work, one click from the rule itself. -->
+    <div class="in-reader">
+      <span class="label">in the reader</span>
+      {#each readingHits.slice(0, 6) as r (r.id)}
+        <a class="reading" href="/reader?reading={r.id}">
+          <span class="reading-text"><Sanskrit text={r.sentence} source="devanagari" /></span>
+          <span class="reading-id">{r.id} →</span>
+        </a>
+      {/each}
+    </div>
+  {/if}
+
+  <Disclose
+    label="sources"
+    count={sources.length ? String(sources.length) : null}
+    empty={!sources.length}
+    bind:open={sourcesOpen}
+  >
+    {#each sources as s (s.label)}
+      <div class="source">
+        <span class="source-label">{s.label}</span>
+        {#if s.href}
+          <a href={s.href}>{s.text}</a>
+        {:else}
+          <span class="source-text">{s.text}</span>
+        {/if}
+      </div>
+    {/each}
+    {#if fullTranslation}
+      <div class="source">
+        <span class="source-label">full translation · vasu</span>
+        <div class="vasu">
+          {#each fullTranslation.split('\n') as para}
+            {#if para.trim()}<p><CommentaryText text={para} /></p>{/if}
+          {/each}
+        </div>
+      </div>
+    {/if}
+  </Disclose>
+{/snippet}
+
 {#if !sutra}
-  <div class="not-found">
-    <p>Sutra not found</p>
-    <a href="/ref">Back to Reference</a>
+  <div class="status">
+    <p>no such sūtra</p>
+    <a href="/ref">back to reference</a>
   </div>
 {:else}
-  <!-- Mobile tools (visible below lg breakpoint) -->
-  <div class="mobile-tools">
-    <details class="mobile-tool-panel">
-      <summary class="mobile-tool-summary">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-        Jargon
-      </summary>
-      <div class="mobile-tool-content">
-        <JargonLookup />
-      </div>
-    </details>
-    <details class="mobile-tool-panel">
-      <summary class="mobile-tool-summary">
-        <span class="text-xs font-bold">ac</span>
-        Pratyahara
-      </summary>
-      <div class="mobile-tool-content">
-        <PratyaharaViewer />
-      </div>
-    </details>
-  </div>
+  <Shelf left={shelfLeft} right={shelfRight} />
 
-  <div class="detail-layout">
-    <!-- Left sidebar: Jargon lookup -->
-    <aside class="left-sidebar">
-      <div class="sticky-sidebar">
-        <JargonLookup />
-      </div>
-    </aside>
+  <Shell {rail}>
+    {#if editing && layeredCommentary}
+      <CommentaryEditor
+        sutraId={sutra.id}
+        numericId={sutra.numericId}
+        {layeredCommentary}
+        {depth}
+        onDone={() => (editing = false)}
+      />
+    {:else}
+      <SutraDisplay
+        {sutra}
+        variant="full"
+        {rule}
+        {commentary}
+        {layeredCommentary}
+        {tier}
+        {user}
+        onEdit={layeredCommentary ? handleEditClick : undefined}
+      />
+    {/if}
 
-    <!-- Main content -->
-    <main class="detail-main">
-      <!-- Learning context banner -->
-      {#if learningContext}
-        <div class="learning-context-banner">
-          <a href="/learn/{learningContext.pathId}" class="banner-link">
-            return to <strong>{learningContext.pathTitle}</strong> →
-          </a>
-          <button onclick={dismissLearningContext} class="banner-dismiss" aria-label="Dismiss">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+    <section class="graph">
+      <span class="label"><Sanskrit text="anuvṛtti" source="iast" /> — what it inherits</span>
+      <AnuvrttiGraph {sutra} />
+    </section>
+
+    {#if prakriyaPaths.length || otherPaths.length || kaleSections.length}
+      <section class="applied">
+        <span class="label">where it is put to work</span>
+        <div class="links">
+          {#each prakriyaPaths as lp (lp.pathId)}
+            <a href="/workbook/{lp.pathId}?step={lp.stepIndex}">{lp.pathTitle}</a>
+          {/each}
+          {#each otherPaths as lp (lp.pathId)}
+            <a href="/workbook/{lp.pathId}">{lp.pathTitle}</a>
+          {/each}
+          {#each kaleSections as n (n)}
+            <a href="/dukrnkarane?s={n}">
+              डुकृण्करणे {n > 972 ? `appendix § ${n - 972}` : `§ ${n}`}
+            </a>
+          {/each}
         </div>
-      {/if}
-
-      <!-- Header with back link -->
-      <div class="detail-header">
-        <a href="/ref?a={sutra.adhyaya}&p={sutra.pada}" class="back-link">
-          ← {sutra.adhyaya}.{sutra.pada}
-        </a>
-      </div>
-
-      <!-- Main sutra display -->
-      {#if editing && layeredCommentary && sutra}
-        <CommentaryEditor
-          sutraId={sutra.id}
-          numericId={sutra.numericId}
-          {layeredCommentary}
-          {depth}
-          onDone={() => (editing = false)}
-        />
-      {:else}
-        <SutraDisplay
-          {sutra}
-          variant="full"
-          {rule}
-          {commentary}
-          {layeredCommentary}
-          {user}
-          onEdit={layeredCommentary ? handleEditClick : undefined}
-        />
-      {/if}
-
-      <!-- anuvrtti inheritance graph -->
-      <section class="anuvrtti-graph-section">
-        <h3 class="section-label"><Sanskrit text="anuvṛtti" source="iast" /> inheritance</h3>
-        <AnuvrttiGraph {sutra} />
       </section>
-
-      <!-- Prakriyā cross-links: sūtras that appear in concrete derivations -->
-      {#if prakriyaPaths.length > 0}
-        <div class="prakriya-links">
-          <span class="prakriya-label">applied in</span>
-          <ul class="prakriya-list">
-            {#each prakriyaPaths as lp}
-              <li>
-                <a href="/learn/{lp.pathId}?step={lp.stepIndex}" class="prakriya-link">
-                  {lp.pathTitle}
-                </a>
-              </li>
-            {/each}
-          </ul>
-        </div>
-      {/if}
-
-      <!-- Learning path cross-links -->
-      {#if data.kaleSections?.length}
-        <div class="learn-links">
-          <span class="learn-links-label">discussed in</span>
-          {#each data.kaleSections as n}
-            <a href="/dukrnkarane?s={n}" class="learn-link learn-link-kale">
-              <Sanskrit text="डुकृण्करणे" source="devanagari" />
-              {n > 972 ? `appendix § ${n - 972}` : `§ ${n}`}
-            </a>
-          {/each}
-        </div>
-      {/if}
-
-      {#if otherPaths.length > 0 || balabodhiniLessons.length > 0}
-        <div class="learn-links">
-          <span class="learn-links-label">see also</span>
-          {#each otherPaths as lp}
-            <a href="/learn/{lp.pathId}" class="learn-link">{lp.pathTitle}</a>
-          {/each}
-          {#each balabodhiniLessons as ll}
-            <a href="/learn/{ll.lessonRef}" class="learn-link learn-link-bala">
-              <Sanskrit text="bālabodhinī" source="iast" /> {ll.part}.{ll.lessonNumber}
-            </a>
-          {/each}
-        </div>
-      {/if}
-
-      <!-- Pending edits chip (fixed bottom-right) -->
-      {#if editCount > 0 || submitState === 'done'}
-        <div class="pending-chip">
-          {#if submitState === 'done'}
-            <span class="chip-text">PR opened!</span>
-            <a href={prUrl} target="_blank" rel="noopener" class="chip-pr-link">View PR →</a>
-          {:else if submitState === 'error'}
-            <span class="chip-text chip-error">{submitError}</span>
-            <button class="chip-btn" onclick={() => (submitState = 'idle')}>Dismiss</button>
-          {:else}
-            <span class="chip-text">{editCount} edit{editCount === 1 ? '' : 's'} pending</span>
-            <button class="chip-btn" onclick={submitEdits} disabled={submitState === 'loading'}>
-              {submitState === 'loading' ? 'Submitting…' : 'Submit PR'}
-            </button>
-          {/if}
-        </div>
-      {/if}
-
-      <!-- Navigation -->
-      <nav class="sutra-nav">
-        {#if prevSutraId}
-          <a href="/ref/{prevSutraId}" class="nav-btn prev">
-            <span class="nav-arrow">←</span>
-            <span class="nav-label">{prevSutraId}</span>
-          </a>
-        {:else}
-          <div></div>
-        {/if}
-        <span class="nav-hint">← → to navigate</span>
-        {#if nextSutraId}
-          <a href="/ref/{nextSutraId}" class="nav-btn next">
-            <span class="nav-label">{nextSutraId}</span>
-            <span class="nav-arrow">→</span>
-          </a>
-        {:else}
-          <div></div>
-        {/if}
-      </nav>
-    </main>
-
-    <!-- Right sidebar: Pratyahara viewer -->
-    <aside class="right-sidebar">
-      <div class="sticky-sidebar">
-        <PratyaharaViewer />
-      </div>
-    </aside>
-  </div>
+    {/if}
+  </Shell>
 {/if}
 
 <style>
-  .not-found {
-    text-align: center;
-    padding: 4rem;
-  }
-  .not-found a {
-    color: var(--accent-ref);
-  }
-
-  .detail-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  @media (min-width: 1024px) {
-    .detail-layout {
-      grid-template-columns: 280px 1fr 280px;
-    }
-  }
-
-  .left-sidebar,
-  .right-sidebar {
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
-    .left-sidebar,
-    .right-sidebar {
-      display: block;
-    }
-  }
-
-  .sticky-sidebar {
-    position: sticky;
-    top: 2rem;
-  }
-
-  .detail-header {
-    margin-bottom: 1rem;
-  }
-
-  .back-link {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: var(--quiet);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .back-link:hover { color: var(--ink); }
-
-  .sutra-nav {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-top: 2rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--rule-2);
-    font-size: 0.85rem;
-  }
-
-  .nav-btn {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding: 0;
-    background: none;
-    border: none;
-    text-decoration: none;
-    color: var(--ink);
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    transition: color 0.1s;
-  }
-  .nav-btn:hover { color: var(--accent); }
-
-  .nav-arrow {
-    color: var(--quiet);
-  }
-
-  .nav-hint {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: var(--faint);
-    letter-spacing: 0.04em;
-  }
-
-  .anuvrtti-graph-section {
-    margin-top: 2rem;
-  }
-
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 400;
-    text-transform: lowercase;
-    letter-spacing: 0.04em;
-    color: var(--quiet);
-    margin-bottom: 0.75rem;
-  }
-
-  /* Learning-context banner — saffron top-rule, no card */
-  .learning-context-banner {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.5rem;
-    border-top: 2px solid var(--accent);
-    padding: 0.55rem 0;
-    margin-bottom: 1rem;
-    font-size: 0.85rem;
-  }
-
-  .banner-link {
-    color: var(--ink);
-    text-decoration: none;
-    flex: 1;
-    font-family: var(--font-serif);
-    font-style: italic;
-  }
-  .banner-link strong {
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .banner-link:hover { color: var(--accent); }
-
-  .banner-step {
-    color: var(--quiet);
-    margin-left: 0.25rem;
-  }
-
-  .banner-dismiss {
-    color: var(--faint);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    transition: color 0.15s;
-  }
-  .banner-dismiss:hover { color: var(--ink); }
-
-  /* Prakriyā cross-links — numbered derivations where this rule is invoked */
-  .prakriya-links {
-    margin-top: 1.5rem;
-    padding-top: 0.85rem;
-    border-top: 2px solid var(--accent);
-  }
-
-  .prakriya-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--quiet);
-    letter-spacing: 0.04em;
-    text-transform: lowercase;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  .prakriya-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .status {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
-  }
-
-  .prakriya-link {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 0.95rem;
-    color: var(--ink);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .prakriya-link:hover { color: var(--accent); }
-
-  /* Learn cross-links — italic indigo words, separated by · */
-  .learn-links {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.85rem;
-    margin-top: 1.5rem;
-    padding-top: 0.85rem;
-    border-top: 1px solid var(--rule-2);
-    font-size: 0.85rem;
-  }
-
-  .learn-links-label {
+    align-items: center;
+    gap: 10px;
+    padding: 80px 24px;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 12px;
     color: var(--quiet);
-    letter-spacing: 0.04em;
-    text-transform: lowercase;
+  }
+  .status a {
+    color: var(--accent);
+    text-decoration: none;
   }
 
-  .learn-link {
-    font-style: italic;
+  /* ── shelf ───────────────────────────────────────────────────────────── */
+  .crumb {
+    color: var(--quiet);
+    text-decoration: none;
+  }
+  .crumb:hover {
+    color: var(--ink);
+  }
+  .id {
+    color: var(--ink);
+  }
+  .step {
+    display: flex;
+    gap: 6px;
+  }
+  .step a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .step a:hover {
+    color: var(--accent);
+  }
+  .off {
+    color: var(--rule-2);
+  }
+  .return {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .dismiss {
+    background: transparent;
+    border: none;
+    color: var(--quiet);
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+  }
+  .pr {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    color: var(--accent);
+    padding: 2px 8px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* ── column ──────────────────────────────────────────────────────────── */
+  .graph,
+  .applied {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 3px 8px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── rail ────────────────────────────────────────────────────────────── */
+  .neighbours {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .neighbours a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .neighbours a:hover {
+    color: var(--accent);
+  }
+  .here {
+    color: var(--ink);
+    font-family: var(--font-deva);
+    font-size: 13px;
+  }
+
+  .cited,
+  .in-reader {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+  .counts {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .reading {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+  }
+  .reading-text {
+    font-family: var(--font-deva);
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .reading-id {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--quiet);
+  }
+  .reading:hover .reading-text {
+    color: var(--accent);
+  }
+
+  .source {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .source-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--faint);
+  }
+  .source a {
+    font-size: 14px;
     color: var(--accent-ref);
     text-decoration: none;
-    transition: color 0.15s;
   }
-  .learn-link:hover { color: var(--accent); }
-
-  .learn-link-bala { color: var(--accent-ref); }
-  .learn-link-bala:hover { color: var(--accent); }
-  .learn-link-kale { color: var(--ink-2); }
-  .learn-link-kale:hover { color: var(--accent); }
-
-
-  .pending-chip {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--accent-ref);
-    color: white;
-    border-radius: 9999px;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
-    z-index: 50;
+  .source-text {
+    font-size: 14px;
+    color: var(--muted);
   }
-
-  .chip-text {
-    font-weight: 500;
-  }
-
-  .chip-error {
-    color: #fca5a5;
-  }
-
-  .chip-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 9999px;
-    color: white;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    padding: 0.25rem 0.75rem;
-    cursor: pointer;
-    transition: background 0.1s;
-  }
-  .chip-btn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.3);
-  }
-  .chip-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-
-  .chip-pr-link {
-    color: white;
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  /* Mobile tools */
-  .mobile-tools {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @media (min-width: 1024px) {
-    .mobile-tools {
-      display: none;
-    }
-  }
-
-  .mobile-tool-panel {
-    flex: 1;
-    background: white;
-    border: 1px solid var(--rule-2);
-    border-radius: 0.5rem;
-  }
-
-  .mobile-tool-summary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.375rem;
-    padding: 0.5rem 0.75rem;
-    cursor: pointer;
-    font-size: 0.875rem;
+  .vasu {
+    font-size: 14px;
+    line-height: 1.6;
     color: var(--ink-2);
-    user-select: none;
   }
-
-  .mobile-tool-content {
-    padding: 0.75rem;
-    border-top: 1px solid var(--rule);
-    max-height: 18rem;
-    overflow-y: auto;
+  .vasu p {
+    margin: 0 0 8px;
   }
 </style>

@@ -18,7 +18,9 @@
     /** Widest exhibit in the app (the conjugation table) opts out of the cap. */
     wide = false,
     /** Column-only pages set their own cap; the default is a comfortable page. */
-    columnMax = '900px'
+    columnMax = '900px',
+    /** A spine of long Devanagari labels or a matrix needs more than 176px. */
+    spineWidth = '176px'
   }: {
     shelf?: Snippet;
     spine?: Snippet;
@@ -27,6 +29,7 @@
     measure?: boolean;
     wide?: boolean;
     columnMax?: string;
+    spineWidth?: string;
   } = $props();
 
   const columns = $derived(
@@ -41,7 +44,7 @@
 <div
   class="shell {columns}"
   class:wide
-  style={columns === 'column' ? `max-width:${columnMax}` : undefined}
+  style={columns === 'column' ? `max-width:${columnMax}` : `--spine-w:${spineWidth}`}
 >
   {#if spine}
     <nav class="spine">{@render spine()}</nav>
@@ -67,10 +70,10 @@
     max-width: none;
   }
   .shell.both {
-    grid-template-columns: 176px minmax(0, 1fr) 312px;
+    grid-template-columns: var(--spine-w, 176px) minmax(0, 1fr) 312px;
   }
   .shell.spine {
-    grid-template-columns: 176px minmax(0, 1fr);
+    grid-template-columns: var(--spine-w, 176px) minmax(0, 1fr);
   }
   .shell.rail {
     grid-template-columns: minmax(0, 1fr) 312px;

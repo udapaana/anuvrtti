@@ -3,6 +3,10 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import Segmented from '$lib/components/ui/Segmented.svelte';
+  import Disclose from '$lib/components/ui/Disclose.svelte';
   import { cellKey } from '$lib/usage/normalize';
   import { TERMINALS, TERMINAL_DEV } from '$lib/usage/taxonomy';
   import { transliterate, type Script } from '$lib/transliteration';
@@ -419,6 +423,9 @@
     return e.paradigm?.[k] ?? [];
   }
 
+  /** The rail's one disclosure row: forms outside the classical paradigm. */
+  let unplacedOpen = $state(false);
+
   const selected = $derived.by(() => {
     if (!entry || !cell) return null;
     const a = atts(entry, cell);
@@ -428,275 +435,333 @@
 
 <svelte:head><title>प्रयोग · usage — anuvrtti</title></svelte:head>
 
-<div class="wrap">
-  <header class="head">
-    <div class="kicker">प्रयोग · usage</div>
-    <h1>The corpus, indexed by what it declines</h1>
-    <p class="lede">
-      Every cell below is filled from the readings themselves — the form, the line that
-      attests it, and the sūtra that produced it where one is recorded. A cell is empty
-      exactly when no reading has used it yet.
-    </p>
-  </header>
+{#snippet shelfLeft()}
+  <span class="quiet">dimension</span>
+  {#if sections.length}
+    <Segmented
+      options={sections.map((s) => ({ id: s.kind, label: s.dev, deva: true, title: s.en }))}
+      value={section?.kind ?? sections[0].kind}
+      onchange={pickKind}
+      ariaLabel="dimension"
+    />
+  {/if}
+{/snippet}
 
-  {#if error}
-    <p class="err">{error}</p>
-  {:else if !loaded}
-    <p class="muted">loading…</p>
-  {:else if section && entry}
-    <div class="cols">
-      <nav class="spine">
-        <div class="kinds" role="group" aria-label="category">
-          {#each sections as s (s.kind)}
+{#snippet shelfRight()}
+  <!-- Usage is a door because of this hand-off: a cell is a way *into* the
+       reader, not a reference entry. -->
+  <span>click an attested cell to open the line that attests it</span>
+{/snippet}
+
+{#snippet spine()}
+  <span class="label">taxonomy</span>
+  {#if section}
+    <div class="spine-head">
+      {#if section.groupBy}
+        <span class="group-by"><Sanskrit text={section.groupBy} source="devanagari" /></span>
+      {/if}
+      <span class="count">
+        {subjects.length}
+        {section.kind === 'tinanta' ? 'roots' : 'stems'}
+      </span>
+    </div>
+
+    <!-- A filter over this spine's own list, not a second global search: ⌘K
+         searches the corpus, this narrows the taxonomy in front of you. -->
+    <input
+      class="find"
+      bind:value={query}
+      placeholder={section.kind === 'tinanta' ? 'find a root' : 'find a stem'}
+      aria-label={section.kind === 'tinanta' ? 'find a root' : 'find a stem'}
+    />
+
+    {#if query.trim()}
+      <div class="hits">
+        {#if !hits.length}
+          <p class="none">nothing matches</p>
+        {/if}
+        {#each hits as h (h.subject)}
+          <button
+            class="hit"
+            class:thin={h.sparse}
+            disabled={h.sparse}
+            title={h.sparse ? 'attested once — no paradigm to show' : ''}
+            onclick={() => h.lead && ((query = ''), pickSubject(h.lead))}
+          >
+            <span class="hit-dev"><Sanskrit text={h.subject} source="devanagari" /></span>
+            <span class="hit-n">{h.sparse ? 'seen once' : `${h.filled}/${h.total}`}</span>
+          </button>
+        {/each}
+      </div>
+    {:else if section.kind === 'subanta'}
+      <!-- The declension named by its two coordinates: what the stem ends in,
+           and its gender. Clicking a cell opens that paradigm. -->
+      <div class="mx" role="grid" aria-label="declensions">
+        <div class="mx-corner"></div>
+        {#each LINGAS_COL as lg}
+          <div class="mx-colhead">
+            <Sanskrit text={LINGA_SHORT[lg] ?? lg} source="devanagari" />
+          </div>
+        {/each}
+        {#each matrix as row (row.terminal)}
+          <div class="mx-rowhead"><Sanskrit text={row.dev} source="devanagari" /></div>
+          {#each row.cells as c}
+            {@const key = row.terminal + '|' + c.linga}
             <button
-              class="kind"
-              class:on={s.kind === section.kind}
-              aria-label="{s.en} — {s.entries.length} entries"
-              onclick={() => pickKind(s.kind)}
+              class="mx-cell"
+              class:has={c.count > 0}
+              class:on={key === activeCell}
+              disabled={!c.count}
+              aria-label="{row.dev} {c.linga} — {c.count} stems"
+              onclick={() => c.count && pickSubject(c.stems[0].lead)}
             >
-              <Sanskrit text={s.dev} source="devanagari" />
-              <span class="kinden">{s.en}</span>
+              {c.count || '·'}
             </button>
           {/each}
-        </div>
-        <div class="spinehead">
-          {#if section.groupBy}
-            <span class="groupby"><Sanskrit text={section.groupBy} source="devanagari" /></span>
-          {/if}
-          <span class="count">
-            {subjects.length}
-            {section.kind === 'tinanta' ? 'roots' : 'stems'}
-          </span>
-        </div>
-        <input
-          class="find"
-          bind:value={query}
-          placeholder={section.kind === 'tinanta' ? 'search roots…' : 'search stems…'}
-          aria-label={section.kind === 'tinanta' ? 'search roots' : 'search stems'}
-        />
+        {/each}
+      </div>
 
-        {#if query.trim()}
-          <div class="hits">
-            {#if !hits.length}
-              <p class="muted hitnone">nothing matches</p>
-            {/if}
-            {#each hits as h (h.subject)}
-              <button
-                class="hit"
-                class:thin={h.sparse}
-                disabled={h.sparse}
-                title={h.sparse ? 'attested once — no paradigm to show' : ''}
-                onclick={() => h.lead && (query = '', pickSubject(h.lead))}
-              >
-                <span class="hitdev"><Sanskrit text={h.subject} source="devanagari" /></span>
-                <span class="hitn">{h.sparse ? 'seen once' : `${h.filled}/${h.total}`}</span>
-              </button>
-            {/each}
-          </div>
-        {:else if section.kind === 'subanta'}
-          <!-- The declension named by its two coordinates. Clicking a cell
-               opens that paradigm; the stems inside it are chosen on the page. -->
-          <div class="mx" role="grid" aria-label="declensions">
-            <div class="mxcorner"></div>
-            {#each LINGAS_COL as lg}
-              <div class="mxcolhead"><Sanskrit text={LINGA_SHORT[lg] ?? lg} source="devanagari" /></div>
-            {/each}
-            {#each matrix as row (row.terminal)}
-              <div class="mxrowhead"><Sanskrit text={row.dev} source="devanagari" /></div>
-              {#each row.cells as c}
-                {@const key = row.terminal + '|' + c.linga}
-                <button
-                  class="mxcell"
-                  class:has={c.count > 0}
-                  class:on={key === activeCell}
-                  disabled={!c.count}
-                  aria-label="{row.dev} {c.linga} — {c.count} stems"
-                  onclick={() => c.count && pickSubject(c.stems[0].lead)}
-                >
-                  {c.count || '·'}
-                </button>
-              {/each}
-            {/each}
-          </div>
-
-          {#if unsettled.length}
+      {#if unsettled.length}
+        <button class="more" class:on={!entry?.linga} onclick={() => pickSubject(unsettled[0].lead)}>
+          {unsettled.length} · gender unsettled
+        </button>
+      {/if}
+    {:else}
+      <div class="stems">
+        {#each grouped as bucket (bucket.group?.id ?? '_')}
+          {#if bucket.group}
             <button
-              class="more"
-              class:on={!entry?.linga}
-              onclick={() => pickSubject(unsettled[0].lead)}
+              class="ghead"
+              aria-expanded={!collapsed.has(bucket.group.id)}
+              onclick={() => toggleGroup(bucket.group.id)}
             >
-              {unsettled.length} · gender unsettled
+              <span class="gcaret">{collapsed.has(bucket.group.id) ? '▸' : '▾'}</span>
+              <span class="gdev"><Sanskrit text={bucket.group.dev} source="devanagari" /></span>
+              <span class="gn">{bucket.items.length}</span>
             </button>
           {/if}
-        {:else}
-          <div class="stems">
-            {#each grouped as bucket (bucket.group?.id ?? '_')}
-              {#if bucket.group}
-                <button
-                  class="ghead"
-                  aria-expanded={!collapsed.has(bucket.group.id)}
-                  onclick={() => toggleGroup(bucket.group.id)}
-                >
-                  <span class="gcaret">{collapsed.has(bucket.group.id) ? '\u25b8' : '\u25be'}</span>
-                  <span class="gdev"><Sanskrit text={bucket.group.dev} source="devanagari" /></span>
-                  {#if bucket.group.exemplar}
-                    <span class="gex"><Sanskrit text={bucket.group.exemplar} source="devanagari" /></span>
-                  {/if}
-                  <span class="gn">{bucket.items.length}</span>
-                </button>
-              {/if}
-              {#if !bucket.group || !collapsed.has(bucket.group.id)}
-                {#each bucket.items as s (s.subject)}
-                  <button
-                    class="stem"
-                    class:on={s.subject === entry.subject}
-                    aria-label="{s.subject} — {s.filled} of {s.total} cells attested"
-                    onclick={() => pickSubject(s.lead)}
-                  >
-                    <span class="sdev">
-                      <Sanskrit text={s.subject} source="devanagari" />
-                      {#if s.variants.length > 1}
-                        <span class="pin">{s.variants.length} लकार</span>
-                      {/if}
-                    </span>
-                    <span class="meter" aria-hidden="true">
-                      <span class="fill" style="width:{Math.round((s.filled / s.total) * 100)}%"></span>
-                    </span>
-                    <span class="sn">{s.filled}/{s.total}</span>
-                  </button>
-                {/each}
-              {/if}
-            {/each}
-          </div>
-        {/if}
-
-        {#if !query.trim() && sparseListed.length}
-          <p class="sparsenote">
-            {sparseListed.length} more stems are attested once — search to find one.
-          </p>
-        {/if}
-      </nav>
-
-      <main class="main">
-        {#if classLabel}
-          <div class="classhead">
-            <span class="classdev"><Sanskrit text={classLabel} source="devanagari" /></span>
-            <span class="classn">{classMembers.length} stems in the corpus</span>
-          </div>
-          <!-- Every stem of this class takes the same endings; picking one
-               changes which cells the corpus lights up and whose line appears
-               under them. That is the whole difference between देव and बाल. -->
-          {#if classMembers.length > 1}
-            <label class="stemsel">
-              <span class="stemsellabel">
-                {section.kind === 'tinanta' ? 'root' : 'stem'}
-              </span>
-              <select
-                aria-label={section.kind === 'tinanta' ? 'choose root' : 'choose stem'}
-                value={entry.subject}
-                onchange={(ev) => {
-                  const v = (ev.currentTarget as HTMLSelectElement).value;
-                  const m = classMembers.find((x) => x.subject === v);
-                  if (m) pickSubject(m.lead);
-                }}
-              >
-                {#each classMembers as m (m.subject)}
-                  <option value={m.subject}>{m.subject} — {m.filled}/{m.total}</option>
-                {/each}
-              </select>
-            </label>
-          {/if}
-        {/if}
-
-        <div class="subjhead">
-          <span class="subj"><Sanskrit text={entry.subject} source="devanagari" /></span>
-          <div class="subjmeta">
-            {#if entry.kind === 'tinanta'}
-              <span class="linga">{entry.filled} of {entry.total} cells</span>
-            {:else if entry.linga}
-              <span class="linga"><Sanskrit text={entry.linga} source="devanagari" /></span>
-              {#if entry.isSarvadi}
-                <span class="dot">·</span>
-                <span class="linga" title="takes the pronominal endings by 1.1.27 सर्वादीनि सर्वनामानि">सर्वादि</span>
-              {/if}
-            {:else if entry.isPronoun}
-              <span class="linga">सर्वनाम · all three genders</span>
-            {:else}
-              <span class="linga warn">gender not shown by these forms</span>
-            {/if}
-            <span class="dot">·</span>
-            <span>{entry.forms} forms attested</span>
-            {#if entry.kind !== 'tinanta'}
-              <span class="dot">·</span>
-              <span>{entry.filled} of {entry.total} cells</span>
-            {/if}
-          </div>
-        </div>
-
-        <!-- One root, its लकारs side by side. A verb's grid is पुरुष × वचन only
-             after the लकार is pinned, so a root has as many grids as tenses the
-             corpus attests — गम् has seven. Listing them as separate subjects
-             hid the fact that they are one verb. -->
-        {#if siblings.length}
-          <div class="pins" role="group" aria-label="लकार">
-            {#each siblings as s (pinKey(s))}
+          {#if !bucket.group || !collapsed.has(bucket.group.id)}
+            {#each bucket.items as s (s.subject)}
               <button
-                class="pinbtn"
-                onclick={() => scrollToCard(s)}
+                class="stem"
+                class:on={s.subject === entry?.subject}
+                aria-label="{s.subject} — {s.filled} of {s.total} cells attested"
+                onclick={() => pickSubject(s.lead)}
               >
-                <Sanskrit text={pinKey(s)} source="devanagari" />
-                <span class="pincount">{s.filled}/{s.total}</span>
+                <span class="sdev">
+                  <Sanskrit text={s.subject} source="devanagari" />
+                  {#if s.variants.length > 1}<span class="pin">{s.variants.length} लकार</span>{/if}
+                </span>
+                <span class="meter" aria-hidden="true">
+                  <span class="fill" style="width:{Math.round((s.filled / s.total) * 100)}%"></span>
+                </span>
+                <span class="sn">{s.filled}/{s.total}</span>
               </button>
             {/each}
-          </div>
-        {/if}
+          {/if}
+        {/each}
+      </div>
+    {/if}
 
-        {#each cards as card (pinKey(card) || card.subject)}
-        <section class="card" id="card-{pinKey(card) || 'x'}">
+    {#if !query.trim() && sparseListed.length}
+      <p class="sparse-note">
+        {sparseListed.length} more are attested once — search to find one.
+      </p>
+    {/if}
+  {/if}
+{/snippet}
+
+{#snippet rail()}
+  <span class="label">the cell</span>
+  {#if selected}
+    <div class="cell-head"><Sanskrit text={selected.key.replace('|', ' ')} source="devanagari" /></div>
+    {#if selected.atts.length}
+      {#each selected.atts as a}
+        <div class="spec">
+          <span class="spec-form">
+            <Sanskrit text={a.formRaw} source="devanagari" fallback={a.form} />
+          </span>
+          <span class="spec-gloss">{a.gloss}</span>
+          {#if a.phrase}
+            <span class="spec-phrase"><Sanskrit text={a.phrase} source="devanagari" /></span>
+          {/if}
+          <div class="spec-meta">
+            <a class="hand-off" href="/reader?reading={a.reading}">{a.reading} →</a>
+            {#each a.cites as c}
+              <a class="cite" href="/ref/{c.cite}" title={c.role}>{c.cite}</a>
+            {/each}
+            {#if a.more}<span class="none">+{a.more} more</span>{/if}
+          </div>
+        </div>
+      {/each}
+    {:else}
+      <p class="prompt">
+        No reading attests this cell.
+        {#if selected.expected.length}
+          The form would be
+          <span class="ghost-inline"
+            ><Sanskrit text={selected.expected[0]} source="devanagari" /></span
+          >.
+        {/if}
+      </p>
+    {/if}
+  {:else}
+    <p class="prompt">
+      Saffron cells are attested in the corpus. Pick one and the reading that attests it opens
+      here — one click from the line itself.
+    </p>
+  {/if}
+
+  {#if entry?.unplaced.length}
+    <Disclose
+      label="outside the paradigm"
+      count={String(entry.unplaced.length)}
+      bind:open={unplacedOpen}
+    >
+      <p class="prompt small">
+        Vedic forms the Aṣṭādhyāyī's core rules do not produce. They are in the corpus, so they
+        are shown rather than dropped.
+      </p>
+      {#each entry.unplaced as a}
+        <div class="up-item">
+          <Sanskrit text={a.formRaw} source="devanagari" fallback={a.form} />
+          <a class="hand-off" href="/reader?reading={a.reading}">{a.reading} →</a>
+        </div>
+      {/each}
+    </Disclose>
+  {/if}
+{/snippet}
+
+{#if error}
+  <div class="status">{error}</div>
+{:else if !loaded}
+  <div class="status">loading the usage index…</div>
+{:else if section && entry}
+  <Shelf left={shelfLeft} right={shelfRight} />
+
+  <Shell {spine} {rail} spineWidth="232px">
+    <header class="head">
+      <h1><Sanskrit text="प्रयोग" source="devanagari" /></h1>
+      <p>
+        what the corpus attests — every cell filled from the readings themselves, with the line
+        that attests it and the sūtra that produced it where one is recorded
+      </p>
+    </header>
+
+    {#if classLabel}
+      <div class="class-head">
+        <span class="class-dev"><Sanskrit text={classLabel} source="devanagari" /></span>
+        <span class="class-n">{classMembers.length} stems in the corpus</span>
+        {#if classMembers.length > 1}
+          <!-- Every stem of this class takes the same endings; picking one
+               changes which cells light up and whose line appears under them. -->
+          <label class="stem-select">
+            <span class="quiet">{section.kind === 'tinanta' ? 'root' : 'stem'}</span>
+            <select
+              aria-label={section.kind === 'tinanta' ? 'choose root' : 'choose stem'}
+              value={entry.subject}
+              onchange={(ev) => {
+                const v = (ev.currentTarget as HTMLSelectElement).value;
+                const m = classMembers.find((x) => x.subject === v);
+                if (m) pickSubject(m.lead);
+              }}
+            >
+              {#each classMembers as m (m.subject)}
+                <option value={m.subject}>{m.subject} — {m.filled}/{m.total}</option>
+              {/each}
+            </select>
+          </label>
+        {/if}
+      </div>
+    {/if}
+
+    <div class="subject">
+      <span class="subject-dev"><Sanskrit text={entry.subject} source="devanagari" /></span>
+      <span class="subject-meta">
+        {#if entry.kind === 'tinanta'}
+          {entry.filled} of {entry.total} cells
+        {:else if entry.linga}
+          <Sanskrit text={entry.linga} source="devanagari" />
+          {#if entry.isSarvadi}
+            · <span title="takes the pronominal endings by 1.1.27 सर्वादीनि सर्वनामानि">सर्वादि</span>
+          {/if}
+        {:else if entry.isPronoun}
+          सर्वनाम · all three genders
+        {:else}
+          gender not shown by these forms
+        {/if}
+        · {entry.forms} forms attested
+        {#if entry.kind !== 'tinanta'}· {entry.filled} of {entry.total} cells{/if}
+      </span>
+    </div>
+
+    <!-- One root, its लकारs side by side: a verb's grid is पुरुष × वचन only
+         after the लकार is pinned, so a root has as many grids as tenses the
+         corpus attests. -->
+    {#if siblings.length}
+      <div class="pins" role="group" aria-label="लकार">
+        {#each siblings as s (pinKey(s))}
+          <button class="pin-btn" onclick={() => scrollToCard(s)}>
+            <Sanskrit text={pinKey(s)} source="devanagari" />
+            <span class="pin-count">{s.filled}/{s.total}</span>
+          </button>
+        {/each}
+      </div>
+    {/if}
+
+    {#each cards as card (pinKey(card) || card.subject)}
+      <section class="card" id="card-{pinKey(card) || 'x'}">
         {#if pinKey(card)}
-          <div class="cardhead">
+          <div class="card-head">
             <Sanskrit text={pinKey(card)} source="devanagari" />
-            <span class="cardcount">{card.filled} of {card.total} cells</span>
+            <span class="card-count">{card.filled} of {card.total} cells</span>
           </div>
         {/if}
         {#if card.paradigm}
-          <div class="grid" style="--cols:{cols.length}">
-            <div class="corner"></div>
-            {#each cols as c}
-              <div class="colhead"><Sanskrit text={c} source="devanagari" /></div>
-            {/each}
-            {#each rows as r}
-              <div class="rowhead"><Sanskrit text={r} source="devanagari" /></div>
+          <div class="grid-scroll">
+            <div class="grid" style="--cols:{cols.length}">
+              <div class="corner"></div>
               {#each cols as c}
-                {@const k = cellKey(r, c)}
-                {@const a = atts(card, k)}
-                {@const exp = expected(card, k)}
-                <button
-                  class="cell"
-                  class:has={a.length > 0}
-                  class:sel={cell === k && card === entry}
-                  aria-label="{r} {c} — {a.length ? a[0].form : 'not attested'}"
-                  onclick={() => pickCell(k, card)}
-                >
-                  {#if a.length}
-                    <span class="form">
-                      <Sanskrit text={a[0].formRaw} source="devanagari" fallback={a[0].form} />
-                    </span>
-                    {#if a[0].phrase}
-                      <span class="phrase"><Sanskrit text={a[0].phrase} source="devanagari" /></span>
-                    {/if}
-                    <span class="meta">
-                      {a[0].reading}{#if a[0].ambiguous}<span class="amb" title="this form fills more than one cell"> ↔</span>{/if}
-                    </span>
-                  {:else if exp.length}
-                    <span class="form ghost"><Sanskrit text={exp[0]} source="devanagari" /></span>
-                    <span class="unwritten">no reading attests this</span>
-                  {:else}
-                    <span class="form ghost">—</span>
-                  {/if}
-                </button>
+                <div class="colhead"><Sanskrit text={c} source="devanagari" /></div>
               {/each}
-            {/each}
+              {#each rows as r}
+                <div class="rowhead"><Sanskrit text={r} source="devanagari" /></div>
+                {#each cols as c}
+                  {@const k = cellKey(r, c)}
+                  {@const a = atts(card, k)}
+                  {@const exp = expected(card, k)}
+                  <button
+                    class="cell"
+                    class:has={a.length > 0}
+                    class:sel={cell === k && card === entry}
+                    aria-label="{r} {c} — {a.length ? a[0].form : 'not attested'}"
+                    onclick={() => pickCell(k, card)}
+                  >
+                    {#if a.length}
+                      <span class="form">
+                        <Sanskrit text={a[0].formRaw} source="devanagari" fallback={a[0].form} />
+                      </span>
+                      {#if a[0].phrase}
+                        <span class="phrase"><Sanskrit text={a[0].phrase} source="devanagari" /></span>
+                      {/if}
+                      <span class="meta">
+                        {a[0].reading}{#if a[0].ambiguous}<span
+                            class="amb"
+                            title="this form fills more than one cell"
+                          >
+                            ↔</span
+                          >{/if}
+                      </span>
+                    {:else if exp.length}
+                      <span class="form ghost"><Sanskrit text={exp[0]} source="devanagari" /></span>
+                      <span class="unwritten">no reading attests this</span>
+                    {:else}
+                      <span class="form ghost">—</span>
+                    {/if}
+                  </button>
+                {/each}
+              {/each}
+            </div>
           </div>
         {:else}
           <p class="nogrid">
@@ -711,359 +776,566 @@
               them. The forms it attests:
             {:else}
               None of the attested forms of
-              <Sanskrit text={card.subject} source="devanagari" /> distinguish its gender — each
-              one is shared by two declensions — so the unattested cells are not shown, since
-              they would differ depending on which. The forms the corpus does attest:
+              <Sanskrit text={card.subject} source="devanagari" /> distinguish its gender — each one
+              is shared by two declensions — so the unattested cells are not shown, since they
+              would differ depending on which. The forms the corpus does attest:
             {/if}
           </p>
           <div class="flat">
             {#each Object.entries(card.grid) as [k, list]}
               <button
-                class="flatitem"
+                class="flat-item"
                 class:sel={cell === k && card === entry}
                 onclick={() => pickCell(k, card)}
               >
-                <span class="form"><Sanskrit text={list[0].formRaw} source="devanagari" fallback={list[0].form} /></span>
-                <span class="flatcell"><Sanskrit text={k.replace('|', ' ')} source="devanagari" /></span>
+                <span class="form">
+                  <Sanskrit text={list[0].formRaw} source="devanagari" fallback={list[0].form} />
+                </span>
+                <span class="flat-cell">
+                  <Sanskrit text={k.replace('|', ' ')} source="devanagari" />
+                </span>
               </button>
             {/each}
           </div>
         {/if}
-        </section>
-        {/each}
-
-        {#if selected}
-          <section class="detail">
-            <div class="detailhead">
-              <Sanskrit text={selected.key.replace('|', ' ')} source="devanagari" />
-            </div>
-            {#if selected.atts.length}
-              {#each selected.atts as a}
-                <div class="spec">
-                  <div class="specform">
-                    <Sanskrit text={a.formRaw} source="devanagari" fallback={a.form} />
-                    <span class="specgloss">{a.gloss}</span>
-                  </div>
-                  {#if a.phrase}
-                    <div class="specphrase"><Sanskrit text={a.phrase} source="devanagari" /></div>
-                  {/if}
-                  <div class="specmeta">
-                    <a class="rdlink" href="/reader?reading={a.reading}">{a.reading}</a>
-                    {#each a.cites as c}
-                      <a class="cite" href="/ref/{c.cite}" title={c.role}>{c.cite}</a>
-                    {/each}
-                    {#if a.more}<span class="muted">+{a.more} more</span>{/if}
-                  </div>
-                </div>
-              {/each}
-            {:else}
-              <p class="muted">
-                No reading attests this cell.
-                {#if selected.expected.length}
-                  The form would be
-                  <span class="ghostinline"><Sanskrit text={selected.expected[0]} source="devanagari" /></span>.
-                {/if}
-              </p>
-            {/if}
-          </section>
-        {/if}
-
-        {#if entry.unplaced.length}
-          <section class="unplaced">
-            <div class="uphead">attested, outside the classical paradigm</div>
-            <p class="muted upnote">
-              Vedic forms the Aṣṭādhyāyī's core rules do not produce. They are in the corpus,
-              so they are shown rather than dropped.
-            </p>
-            <div class="uplist">
-              {#each entry.unplaced as a}
-                <div class="upitem">
-                  <Sanskrit text={a.formRaw} source="devanagari" fallback={a.form} />
-                  <a class="rdlink" href="/reader?reading={a.reading}">{a.reading}</a>
-                </div>
-              {/each}
-            </div>
-          </section>
-        {/if}
-      </main>
-    </div>
+      </section>
+    {/each}
 
     {#if index?.unlemmatized}
       <p class="foot">
-        {index.unlemmatized} annotated words carry no lemma and cannot be indexed here —
-        mostly the earliest readings. They are an authoring gap, not a rendering one.
+        {index.unlemmatized} annotated words carry no lemma and cannot be indexed here — mostly the
+        earliest readings. They are an authoring gap, not a rendering one.
       </p>
     {/if}
-  {/if}
-</div>
+  </Shell>
+{/if}
 
 <style>
-  .wrap { max-width: 1140px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
-  .head { margin-bottom: 1.8rem; }
-  .kicker {
-    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.13em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+  .status {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--quiet);
+    padding: 40px 24px;
+    text-align: center;
   }
-  h1 { font-size: 1.7rem; font-weight: 600; margin: 0 0 0.5rem; letter-spacing: -0.01em; }
-  .lede { color: var(--muted); margin: 0; max-width: 62ch; line-height: 1.55; }
-  .err { color: var(--ink); }
-  .muted { color: var(--faint); }
-
-  .cols { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 2rem; align-items: start; }
-  @media (max-width: 820px) { .cols { grid-template-columns: 1fr; } }
-
-  .spine { position: sticky; top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .kinds { display: flex; gap: 2px; margin-bottom: 0.2rem; }
-  .kind {
-    flex: 1; border: 1px solid var(--rule-2); border-radius: 8px; background: #fff;
-    padding: 0.3rem 0.5rem; cursor: pointer; font: inherit; color: inherit;
-    display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2;
+  .quiet {
+    color: var(--faint);
   }
-  .kind.on { background: var(--accent-soft); border-color: var(--accent-soft); }
-  .kinden { font-family: var(--font-mono); font-size: 0.58rem; color: var(--faint); }
-  .spinehead { display: flex; align-items: baseline; justify-content: space-between; }
-  .groupby { font-size: 0.8rem; color: var(--muted); }
-  /* rail: one row per declension */
-  .klass {
-    display: grid; grid-template-columns: 1fr auto auto; gap: 0.45rem;
-    align-items: baseline; width: 100%; text-align: left;
-    border: 1px solid transparent; border-radius: 8px; padding: 0.42rem 0.55rem;
-    background: none; cursor: pointer; font: inherit; color: inherit;
+  .none {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--faint);
   }
-  .klass:hover { background: var(--sunken); }
-  .klass.on { background: var(--accent-soft); border-color: var(--accent-soft); }
-  .kdev { font-size: 0.95rem; }
-  .kex { font-size: 0.72rem; color: var(--faint); }
-  .kn { font-family: var(--font-mono); font-size: 0.62rem; color: var(--faint); }
 
-  /* page: the class, then its stems */
-  .classhead {
-    display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
-    margin-bottom: 0.7rem;
+  /* ── spine ───────────────────────────────────────────────────────────── */
+  .spine-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--quiet);
   }
-  .classdev { font-size: 1.35rem; }
+  .group-by {
+    font-family: var(--font-deva);
+    font-size: 13px;
+    color: var(--muted);
+  }
 
-  /* the declension matrix: terminal down, gender across */
+  .find {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 5px 8px;
+    outline: none;
+    width: 100%;
+  }
+  .find:focus {
+    border-color: var(--accent);
+  }
+  .find::placeholder {
+    color: var(--faint);
+  }
+
+  .hits {
+    display: flex;
+    flex-direction: column;
+  }
+  .hit {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 6px 0;
+    cursor: pointer;
+    text-align: left;
+  }
+  .hit-dev {
+    font-family: var(--font-deva);
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .hit-n {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--quiet);
+  }
+  .hit.thin {
+    cursor: default;
+  }
+  .hit.thin .hit-dev {
+    color: var(--faint);
+  }
+
+  /* the declension matrix, on the shared hairline treatment */
   .mx {
-    display: grid; grid-template-columns: auto repeat(3, 1fr);
-    gap: 2px; margin-bottom: 0.6rem;
+    display: grid;
+    grid-template-columns: auto repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
   }
-  .mxcorner { }
-  .mxcolhead, .mxrowhead {
-    font-size: 0.68rem; color: #a89f92; padding: 0.2rem 0.3rem;
+  .mx-corner,
+  .mx-colhead,
+  .mx-rowhead,
+  .mx-cell {
+    background: var(--paper);
+    padding: 5px 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--quiet);
+    text-align: center;
   }
-  .mxrowhead { text-align: right; white-space: nowrap; align-self: center; }
-  .mxcolhead { text-align: center; }
-  .mxcell {
-    border: 1px solid var(--rule-2); border-radius: 6px; background: #fff;
-    padding: 0.35rem 0.2rem; font: inherit; font-size: 0.78rem;
-    font-family: var(--font-mono); color: #d3cab8; cursor: default;
+  .mx-colhead,
+  .mx-rowhead {
+    font-family: var(--font-deva);
+    font-size: 11px;
   }
-  .mxcell.has { color: var(--ink-2); background: var(--paper); cursor: pointer; }
-  .mxcell.has:hover { border-color: var(--accent-soft); }
-  .mxcell.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-hover); }
-  .more.on { background: var(--accent-soft); border-color: var(--accent-soft); }
-  .classn {
-    font-family: var(--font-mono); font-size: 0.62rem; color: var(--faint);
+  .mx-rowhead {
+    text-align: left;
+  }
+  .mx-cell {
+    border: none;
+    border-radius: var(--radius);
+    color: var(--faint);
+    cursor: default;
+  }
+  .mx-cell.has {
+    color: var(--accent);
+    cursor: pointer;
+  }
+  .mx-cell.on {
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+
+  .more {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    color: var(--muted);
+    padding: 4px 8px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .more.on {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .stems {
+    display: flex;
+    flex-direction: column;
+  }
+  .ghead {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 7px 0 5px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .gcaret,
+  .gn {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--quiet);
+  }
+  .gn {
     margin-left: auto;
   }
-  /* stem chooser: a select, so 40 stems cost one line rather than six rows */
-  .stemsel {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    border: 1px solid var(--rule-2); border-radius: 8px; background: #fff;
-    padding: 0.2rem 0.5rem; margin-bottom: 1.1rem;
+  .gdev {
+    font-family: var(--font-deva);
+    font-size: 13px;
+    color: var(--muted);
   }
-  .stemsellabel {
-    font-family: var(--font-mono); font-size: 0.58rem;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint);
-  }
-  .stemsel select {
-    border: 0; background: none; font: inherit; font-size: 0.95rem;
-    color: var(--ink-2); cursor: pointer; padding: 0.15rem 0;
-  }
-  .stemsel select:focus { outline: none; }
-  .stemsel:focus-within { border-color: var(--accent-soft); }
 
-  /* search results, in place of the matrix while typing */
-  .hits { display: flex; flex-direction: column; gap: 1px; max-height: 62vh; overflow-y: auto; }
-  .hitnone { font-size: 0.82rem; padding: 0.4rem 0.55rem; }
-  .hit {
-    display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem;
-    border: 1px solid transparent; border-radius: 8px; padding: 0.34rem 0.55rem;
-    background: none; cursor: pointer; font: inherit; color: inherit; text-align: left;
-  }
-  .hit:hover { background: var(--sunken); }
-  .hit.thin { cursor: default; opacity: 0.55; }
-  .hit.thin:hover { background: none; }
-  .hitdev { font-size: 0.95rem; }
-  .hitn { font-family: var(--font-mono); font-size: 0.6rem; color: var(--faint); }
-
-  .stempick {
-    display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.2rem;
-    padding-bottom: 0.9rem; border-bottom: 1px solid var(--rule-2);
-  }
-  .stembtn {
-    display: inline-flex; align-items: baseline; gap: 0.3rem;
-    border: 1px solid var(--rule-2); border-radius: 999px; background: #fff;
-    padding: 0.2rem 0.65rem; cursor: pointer; font: inherit; font-size: 0.95rem;
-    color: var(--ink-2);
-  }
-  .stembtn:hover { border-color: var(--accent-soft); }
-  .stembtn.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-hover); }
-  .stemn { font-family: var(--font-mono); font-size: 0.58rem; color: var(--faint); }
-  .stemmore {
-    border: 1px dashed var(--rule-2); border-radius: 999px; background: none;
-    padding: 0.2rem 0.65rem; cursor: pointer; font: inherit;
-    font-family: var(--font-mono); font-size: 0.62rem; color: var(--faint);
-  }
-  .stemmore:hover { border-color: var(--accent-soft); color: var(--accent-hover); }
-  .stembtn.on .stemn { color: var(--faint); }
-
-  .ghead {
-    display: flex; align-items: baseline; gap: 0.4rem; width: 100%;
-    padding: 0.6rem 0.55rem 0.2rem; border: 0; border-bottom: 1px solid var(--rule-2);
-    margin-bottom: 0.15rem; position: sticky; top: 0; background: var(--sunken);
-    cursor: pointer; font: inherit; color: inherit; text-align: left;
-  }
-  .ghead:hover { background: var(--sunken); }
-  .gcaret { font-size: 0.6rem; color: var(--faint); width: 0.7rem; }
-  .gdev { font-size: 0.82rem; color: var(--ink-2); }
-  .gex { font-size: 0.72rem; color: var(--faint); }
-  .gn { margin-left: auto; font-family: var(--font-mono); font-size: 0.6rem; color: var(--faint); }
-  .pin { font-size: 0.72rem; color: var(--faint); margin-left: 0.3rem; }
-  .pinfeat { font-size: 0.62rem; color: var(--faint); margin-left: 0.25rem; }
-  .count { font-family: var(--font-mono); font-size: 0.66rem; color: var(--faint); }
-  .find {
-    border: 1px solid var(--rule-2); border-radius: 8px; padding: 0.35rem 0.6rem;
-    font: inherit; font-size: 0.85rem; background: #fff; color: inherit;
-  }
-  .stems { display: flex; flex-direction: column; gap: 1px; max-height: 60vh; overflow-y: auto; }
   .stem {
-    display: grid; grid-template-columns: 1fr 44px auto; gap: 0.5rem; align-items: center;
-    border: 1px solid transparent; border-radius: 8px; padding: 0.32rem 0.55rem;
-    background: none; cursor: pointer; text-align: left; font: inherit; color: inherit;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 2.5rem;
+    gap: 6px;
+    align-items: baseline;
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    border-radius: var(--radius);
+    padding: 4px 0 4px 8px;
+    cursor: pointer;
+    text-align: left;
   }
-  .stem:hover { background: var(--sunken); }
-  .stem.on { background: var(--accent-soft); border-color: var(--accent-soft); }
-  .sdev { font-size: 0.95rem; }
-  .meter { height: 3px; background: var(--rule-2); border-radius: 2px; overflow: hidden; }
-  .fill { display: block; height: 100%; background: var(--accent); }
-  .sn { font-family: var(--font-mono); font-size: 0.62rem; color: var(--faint); }
-  .more {
-    border: 1px solid var(--rule-2); border-radius: 8px; background: #fff; cursor: pointer;
-    font-family: var(--font-mono); font-size: 0.66rem; color: var(--muted); padding: 0.35rem;
+  .stem.on {
+    border-left-color: var(--accent);
   }
-  .sparse { display: flex; flex-wrap: wrap; gap: 0.25rem; max-height: 26vh; overflow-y: auto; }
-  .sparseitem { font-size: 0.82rem; color: var(--faint); }
-  .sparsenote {
-    font-size: 0.72rem; color: var(--faint); line-height: 1.45;
-    margin: 0.6rem 0 0; padding: 0 0.55rem;
+  .sdev {
+    font-family: var(--font-deva);
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .stem.on .sdev {
+    color: var(--ink);
+  }
+  .pin {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--faint);
+    padding-left: 4px;
+  }
+  .meter {
+    grid-column: 1 / -1;
+    display: block;
+    height: 2px;
+    background: var(--rule);
+  }
+  .fill {
+    display: block;
+    height: 2px;
+    background: var(--accent);
+  }
+  .sn {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--quiet);
+    text-align: right;
   }
 
-  .subjhead { display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 1rem; flex-wrap: wrap; }
-  .subj { font-size: 1.9rem; line-height: 1; }
-  /* Each grid is a card; the tab row scrolls between them. */
-  .card { margin: 0 0 1.6rem; scroll-margin-top: 1rem; }
-  .cardhead {
-    display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.5rem;
-    font-size: 1.05rem; color: var(--ink-2);
+  .sparse-note {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--faint);
+    line-height: 1.5;
   }
-  .cardcount { font-family: var(--font-mono); font-size: 0.62rem; color: var(--faint); }
 
-  /* लकार tabs — one root, its tenses side by side. */
+  /* ── column ──────────────────────────────────────────────────────────── */
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .head h1 {
+    margin: 0;
+    font-family: var(--font-deva);
+    font-size: 27px;
+    font-weight: 600;
+  }
+  .head p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 62ch;
+  }
+
+  .class-head,
+  .subject {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .class-dev {
+    font-family: var(--font-deva);
+    font-size: 19px;
+    color: var(--ink);
+  }
+  .class-n,
+  .subject-meta,
+  .card-count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--quiet);
+  }
+  .subject-dev {
+    font-family: var(--font-deva);
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .stem-select {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .stem-select select {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 3px 6px;
+  }
+
   .pins {
-    display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0 0 1rem;
-    position: sticky; top: 0; z-index: 2; background: var(--sunken);
-    padding: 0.4rem 0; border-bottom: 1px solid var(--rule-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
   }
-  .pinbtn {
-    display: inline-flex; align-items: baseline; gap: 0.35rem;
-    border: 1px solid var(--rule-2); border-radius: 999px; background: #fff;
-    padding: 0.22rem 0.7rem; cursor: pointer; font: inherit; font-size: 0.92rem;
-    color: var(--ink-2);
+  .pin-btn {
+    font-family: var(--font-deva);
+    font-size: 13px;
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    color: var(--muted);
+    padding: 3px 8px;
+    cursor: pointer;
   }
-  .pinbtn:hover { border-color: var(--accent-soft); }
-  .pinbtn.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-hover); }
-  .pincount { font-family: var(--font-mono); font-size: 0.6rem; color: var(--faint); }
-  .pinbtn.on .pincount { color: var(--faint); }
-  .subjmeta {
-    font-family: var(--font-mono); font-size: 0.7rem; color: var(--faint);
-    display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;
+  .pin-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
-  .linga { color: var(--muted); }
-  .linga.warn { color: var(--faint); }
-  .dot { opacity: 0.5; }
+  .pin-count {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--quiet);
+    padding-left: 5px;
+  }
 
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--font-deva);
+    font-size: 15px;
+  }
+
+  .grid-scroll {
+    overflow-x: auto;
+  }
   .grid {
-    display: grid; grid-template-columns: auto repeat(var(--cols), minmax(0, 1fr));
-    gap: 2px; overflow-x: auto;
+    display: grid;
+    grid-template-columns: auto repeat(var(--cols), minmax(9rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    min-width: 100%;
+    width: max-content;
   }
-  .corner { }
-  .colhead, .rowhead {
-    font-size: 0.74rem; color: #a89f92; padding: 0.3rem 0.4rem; align-self: end;
+  .corner,
+  .colhead,
+  .rowhead {
+    background: var(--sunken);
+    padding: 6px 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--quiet);
   }
-  .rowhead { text-align: right; white-space: nowrap; align-self: center; }
+  /* The three sticky heads each carried their own near-white background; they
+     sit on the sunken token now, one surface for all of them. */
+  .colhead {
+    position: sticky;
+    top: var(--sticky-rail);
+    z-index: 2;
+    font-family: var(--font-deva);
+    font-size: 12px;
+  }
+  .rowhead {
+    font-family: var(--font-deva);
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
   .cell {
-    display: flex; flex-direction: column; gap: 0.1rem; align-items: flex-start;
-    border: 1px solid var(--rule-2); border-radius: 7px; padding: 0.4rem 0.5rem;
-    background: #fff; cursor: pointer; text-align: left; font: inherit; color: inherit;
-    min-height: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
+    text-align: left;
+    background: var(--paper);
+    border: none;
+    border-radius: var(--radius);
+    padding: 7px 10px;
+    cursor: pointer;
+    min-width: 0;
   }
-  .cell:hover { border-color: var(--accent-soft); }
-  .cell.has { background: var(--paper); }
-  .cell.sel { background: var(--accent-soft); border-color: var(--accent); }
-  .form { font-size: 1.05rem; line-height: 1.3; }
-  .form.ghost { color: var(--faint); }
-  .phrase { font-size: 0.76rem; color: var(--faint); line-height: 1.35; }
-  .meta { font-family: var(--font-mono); font-size: 0.6rem; color: var(--faint); }
-  .amb { color: var(--faint); }
-  .unwritten { font-family: var(--font-mono); font-size: 0.58rem; color: #d3cab8; }
+  .cell .form {
+    font-family: var(--font-deva);
+    font-size: 15px;
+    color: var(--accent);
+  }
+  .cell .form.ghost {
+    color: #cfcabf;
+  }
+  .cell .phrase {
+    font-family: var(--font-deva);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .cell .meta,
+  .cell .unwritten {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--quiet);
+  }
+  .cell .unwritten {
+    color: var(--faint);
+  }
+  .cell.has:hover {
+    background: var(--accent-soft);
+  }
+  .cell.sel {
+    background: var(--accent-soft);
+  }
+  .cell.sel .form {
+    color: var(--ink);
+  }
+  .amb {
+    color: var(--accent);
+  }
 
-  .nogrid { color: var(--muted); max-width: 62ch; line-height: 1.55; }
-  .flat { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .flatitem {
-    display: flex; flex-direction: column; gap: 0.1rem; border: 1px solid var(--rule-2);
-    border-radius: 7px; padding: 0.4rem 0.6rem; background: #fff; cursor: pointer;
-    font: inherit; color: inherit; text-align: left;
+  .nogrid {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 66ch;
   }
-  .flatitem.sel { background: var(--accent-soft); border-color: var(--accent); }
-  .flatcell { font-size: 0.68rem; color: var(--faint); }
-
-  .detail {
-    margin-top: 1.4rem; background: var(--sunken); border: 1px solid #efe7d8;
-    border-radius: 13px; padding: 1rem 1.1rem;
+  .flat {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
   }
-  .detailhead {
-    font-size: 0.85rem; color: var(--muted); margin-bottom: 0.6rem;
-    padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule-2);
+  .flat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: var(--paper);
+    border: none;
+    border-radius: var(--radius);
+    padding: 7px 10px;
+    cursor: pointer;
+    text-align: left;
   }
-  .spec { padding: 0.5rem 0; border-bottom: 1px solid #efe7d8; }
-  .spec:last-child { border-bottom: 0; }
-  .specform { display: flex; align-items: baseline; gap: 0.6rem; font-size: 1.15rem; }
-  .specgloss { font-size: 0.9rem; color: var(--muted); font-style: italic; }
-  .specphrase { font-size: 0.98rem; color: var(--ink-2); margin-top: 0.15rem; }
-  .specmeta {
-    display: flex; align-items: baseline; gap: 0.6rem; margin-top: 0.35rem;
-    font-family: var(--font-mono); font-size: 0.68rem; flex-wrap: wrap;
+  .flat-item .form {
+    font-family: var(--font-deva);
+    font-size: 15px;
+    color: var(--accent);
   }
-  .rdlink { color: var(--faint); text-decoration: none; }
-  .rdlink:hover { color: var(--accent); }
-  .cite { color: var(--accent); text-decoration: none; }
-  .cite:hover { text-decoration: underline; }
-  .ghostinline { color: var(--faint); }
-
-  .unplaced { margin-top: 1.4rem; border-top: 1px solid var(--rule-2); padding-top: 0.9rem; }
-  .uphead {
-    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.13em;
-    text-transform: uppercase; color: var(--quiet); margin-bottom: 0.35rem;
+  .flat-cell {
+    font-family: var(--font-deva);
+    font-size: 11px;
+    color: var(--quiet);
   }
-  .upnote { font-size: 0.82rem; margin: 0 0 0.5rem; max-width: 60ch; line-height: 1.5; }
-  .uplist { display: flex; flex-wrap: wrap; gap: 0.7rem; }
-  .upitem { display: flex; align-items: baseline; gap: 0.35rem; font-size: 1rem; }
-  .upitem .rdlink { font-family: var(--font-mono); font-size: 0.62rem; }
+  .flat-item.sel {
+    background: var(--accent-soft);
+  }
 
   .foot {
-    margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule-2);
-    font-size: 0.8rem; color: var(--faint); max-width: 66ch; line-height: 1.55;
+    margin: 0;
+    font-size: 14px;
+    color: var(--faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+    max-width: 66ch;
+  }
+
+  /* ── rail ────────────────────────────────────────────────────────────── */
+  .cell-head {
+    font-family: var(--font-deva);
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .prompt {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .prompt.small {
+    font-size: 13px;
+  }
+  .ghost-inline {
+    font-family: var(--font-deva);
+    color: var(--ink);
+  }
+
+  .spec {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+  }
+  .spec-form {
+    font-family: var(--font-deva);
+    font-size: 20px;
+    color: var(--ink);
+  }
+  .spec-gloss {
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .spec-phrase {
+    font-family: var(--font-deva);
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .spec-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .hand-off {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .cite {
+    color: var(--accent-ref);
+    text-decoration: none;
+  }
+
+  .up-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    font-family: var(--font-deva);
+    font-size: 14px;
   }
 </style>
