@@ -159,10 +159,7 @@
     font-size: 13px;
   }
   kbd {
-    font:
-      400 10px 'SF Mono',
-      Consolas,
-      monospace;
+    font: 400 10px var(--font-mono);
     border: 1px solid var(--rule-2);
     border-radius: 3px;
     padding: 0 3px;
@@ -214,10 +211,7 @@
   }
   .hid {
     flex: none;
-    font:
-      400 11px 'SF Mono',
-      Consolas,
-      monospace;
+    font: 400 11px var(--font-mono);
     color: var(--quiet);
   }
   .htitle {

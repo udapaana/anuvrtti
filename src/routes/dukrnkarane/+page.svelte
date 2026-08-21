@@ -5,6 +5,11 @@
   import Title from './Title.svelte';
   import Search from './Search.svelte';
   import SandhiMatrix from './SandhiMatrix.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import Spine from '$lib/components/ui/Spine.svelte';
+  import Disclose from '$lib/components/ui/Disclose.svelte';
+  import Chip from '$lib/components/ui/Chip.svelte';
   import { MATRIX_RULES } from './sandhi-matrix';
   import type { Rule, Chapter } from './+page';
 
@@ -60,6 +65,9 @@
       current.pages.start > 0,
   );
 
+  /** The rail's one disclosure row. */
+  let wordsOpen = $state(false);
+
   /** Marker-free form of a title, for the document <title>. */
   function plain(t: string): string {
     return t.replace(/@deva\[([^\]]+)\]/g, '$1').replace(/@\[([^\]]+)\]/g, '$1');
@@ -99,627 +107,455 @@
   <title>{current.id} {plain(current.title)} · डुकृण्करणे</title>
 </svelte:head>
 
-<div class="dk" class:no-rail={!hasApparatus}>
-  <!-- Chapter spine -->
-  <aside class="spine">
-    <Search {rules} onpick={open} />
-    <div class="eyebrow spine-head">chapters</div>
-    <nav class="chapters">
-      {#each data.chapters as c}
-        {@const active = c.title === chapter.title && current.n >= c.first && current.n <= c.last}
-        <button class="chapter" class:on={active} onclick={() => open(c.first)}>
-          <span class="ctitle">{c.title}</span>
-          <span class="crange">{range(c)}</span>
-        </button>
-        {#if active}
-          <div class="sections">
-            {#each siblings as s}
-              <button class="section" class:on={s.n === current.n} onclick={() => open(s.n)}>
-                <span class="sid">{s.id}</span>
-                <span class="stitle"><Title text={s.title} /></span>
-              </button>
-            {/each}
-          </div>
+{#snippet shelfLeft()}
+  <!-- The same shelf as /ref/[id], because both are "one item out of a
+       numbered corpus": where you are, and one step either way. -->
+  <span class="chapter-name">{chapter.title}</span>
+  <span class="sep">/</span>
+  <span class="here">{current.id}</span>
+  <span class="step">
+    {#if prev}
+      <button onclick={() => open(prev.n)} title={prev.id}>‹</button>
+    {:else}<span class="off">‹</span>{/if}
+    {#if next}
+      <button onclick={() => open(next.n)} title={next.id}>›</button>
+    {:else}<span class="off">›</span>{/if}
+  </span>
+{/snippet}
+
+{#snippet shelfRight()}
+  <span>rule {index + 1} / {rules.length}</span>
+{/snippet}
+
+{#snippet spine()}
+  <!-- A filter over this corpus, in the spine that holds it. -->
+  <Search {rules} onpick={open} />
+
+  <Spine
+    title="chapters"
+    items={data.chapters.map((c) => ({
+      id: String(c.first),
+      label: c.title,
+      sub: range(c)
+    }))}
+    activeId={String(chapter.first)}
+    onpick={(id) => open(Number(id))}
+  />
+
+  <div class="sections">
+    {#each siblings as s (s.n)}
+      <button class="section" class:on={s.n === current.n} onclick={() => open(s.n)}>
+        <span class="sid">{s.id}</span>
+        <span class="stitle"><Title text={s.title} /></span>
+      </button>
+    {/each}
+  </div>
+
+  {#if current.topics.length}
+    <span class="label">topic</span>
+    <div class="topics">
+      {#each current.topics as t}
+        <Chip label={t} />
+      {/each}
+    </div>
+  {/if}
+{/snippet}
+
+{#snippet rail()}
+  {#if current.paniniRefs.length}
+    <span class="label"><Sanskrit text="सूत्राणि" source="devanagari" /></span>
+    <div class="sutras">
+      {#each current.paniniRefs as ref}
+        {#if ref.sutraId}
+          <a class="sutra" href="/ref/{ref.sutraId}">{ref.display} →</a>
+        {:else}
+          <span class="sutra off" title="not in this recension of the Aṣṭādhyāyī">
+            {ref.display}
+          </span>
         {/if}
       {/each}
-    </nav>
+    </div>
+  {/if}
 
-    {#if current.topics.length}
-      <div class="eyebrow topic-head">topic</div>
-      <div class="topics">
-        {#each current.topics as t}
-          <span class="topic">{t}</span>
+  {#if current.citedBy.length}
+    <div class="block">
+      <span class="label">cited by</span>
+      {#each current.citedBy as n}
+        {@const r = byNumber.get(n)}
+        {#if r}
+          <button class="link-row" onclick={() => open(n)}>
+            <span class="lid">{r.id}</span>
+            <span class="ltitle"><Title text={r.title} /></span>
+          </button>
+        {/if}
+      {/each}
+    </div>
+  {/if}
+
+  {#if current.crossRefs.length}
+    <div class="block">
+      <span class="label">refers to</span>
+      {#each [...new Set(current.crossRefs)] as n}
+        {@const r = byNumber.get(n)}
+        {#if r}
+          <button class="link-row" onclick={() => open(n)}>
+            <span class="lid">{r.id}</span>
+            <span class="ltitle"><Title text={r.title} /></span>
+          </button>
+        {/if}
+      {/each}
+    </div>
+  {/if}
+
+  {#if current.words.length}
+    <Disclose label="words indexed here" count={String(current.words.length)} bind:open={wordsOpen}>
+      <div class="words">
+        {#each current.words as w}
+          <span class="word"><Sanskrit text={w} source="devanagari" /></span>
         {/each}
       </div>
-    {/if}
-  </aside>
+    </Disclose>
+  {/if}
 
-  <!-- Reader -->
-  <main class="reader">
-    <div class="crumbs">
-      <span>{chapter.title}</span>
-      <span class="sep">/</span>
-      <span class="crumb-cur">{current.id}</span>
+  {#if current.pages.start > 0}
+    <div class="block">
+      <span class="label">source</span>
+      <span class="source">Kale 1894</span>
+      {#if current.images.length && current.scan === 'verified'}
+        <div class="leaves">
+          {#each current.images as img}
+            <a class="leaf" href="{SCANS}/{img}" target="_blank" rel="noopener">
+              leaf {img.replace('.png', '')}
+            </a>
+          {/each}
+        </div>
+      {:else if current.images.length}
+        <span class="leaf-note">{sourceLabel} · scan reference unverified, not linked</span>
+      {/if}
     </div>
+  {/if}
+{/snippet}
 
-    <div class="rule-head">
-      <span class="rule-id">{current.id}</span>
-      {#if current.kind === 'appendix'}<span class="kind">appendix</span>{/if}
+<Shelf left={shelfLeft} right={shelfRight} progress={((index + 1) / rules.length) * 100} />
+
+<Shell {spine} rail={hasApparatus ? rail : undefined} spineWidth="220px">
+  <header class="rule-head">
+    <div class="rule-id">
+      <span>{current.id}</span>
+      {#if current.kind === 'appendix'}<Chip label="appendix" />{/if}
     </div>
     <h1><Title text={current.title} /></h1>
+  </header>
 
-    <RuleBody text={current.body} knownSutraIds={data.knownSutraIds} />
+  <RuleBody text={current.body} knownSutraIds={data.knownSutraIds} />
 
-    {#if current.derivations.length}
-      <section class="derivations">
-        <div class="deriv-head">
-          <span class="eyebrow">derivations</span>
-          <span class="deriv-count">{current.derivations.length}</span>
-          <!-- Kale states the sūtra once per rule, never per example, so the
-               attribution belongs on the group rather than on each row. -->
-          {#if ruleSutra}
-            <a class="deriv-sutra" href="/ref/{ruleSutra.sutraId}">{ruleSutra.display}</a>
-          {/if}
-        </div>
-        <div class="deriv-rows">
-          {#each current.derivations as d}
-            <div class="deriv">
-              <Sanskrit text={d.left} source="devanagari" />
-              <span class="op">+</span>
-              <Sanskrit text={d.right} source="devanagari" />
-              <span class="op">→</span>
-              <span class="result"><Sanskrit text={d.result} source="devanagari" /></span>
-              {#if d.gloss}<span class="gloss">{d.gloss}</span>{/if}
-            </div>
-          {/each}
-        </div>
-      </section>
-    {/if}
-
-    {#if MATRIX_RULES.includes(current.n)}
-      <SandhiMatrix rule={current.n} onpick={open} />
-    {/if}
-
-    <nav class="pager">
-      {#if prev}
-        <button class="page-btn" onclick={() => open(prev.n)}>
-          <span class="dir">← previous</span>
-          <span class="pt">{prev.id} <Title text={prev.title} /></span>
-        </button>
-      {:else}<span></span>{/if}
-      {#if next}
-        <button class="page-btn right" onclick={() => open(next.n)}>
-          <span class="dir">next →</span>
-          <span class="pt">{next.id} <Title text={next.title} /></span>
-        </button>
-      {/if}
-    </nav>
-  </main>
-
-  <!-- Apparatus -->
-  {#if hasApparatus}
-    <aside class="apparatus">
-      {#if current.paniniRefs.length}
-        <div class="eyebrow"><Sanskrit text="सूत्राणि" source="devanagari" /></div>
-        <div class="sutras">
-          {#each current.paniniRefs as ref}
-            {#if ref.sutraId}
-              <a class="sutra" href="/ref/{ref.sutraId}">
-                <span class="sutra-ref">{ref.display}</span>
-                <span class="sutra-go">→</span>
-              </a>
-            {:else}
-              <span class="sutra off" title="not in this recension of the Aṣṭādhyāyī">
-                <span class="sutra-ref">{ref.display}</span>
-              </span>
-            {/if}
-          {/each}
-        </div>
-      {/if}
-
-      {#if current.citedBy.length}
-        <div class="eyebrow">cited by</div>
-        <div class="links">
-          {#each current.citedBy as n}
-            {@const r = byNumber.get(n)}
-            {#if r}
-              <button class="link-row" onclick={() => open(n)}>
-                <span class="lid">{r.id}</span>
-                <span class="ltitle"><Title text={r.title} /></span>
-              </button>
-            {/if}
-          {/each}
-        </div>
-      {/if}
-
-      {#if current.crossRefs.length}
-        <div class="eyebrow">refers to</div>
-        <div class="links">
-          {#each [...new Set(current.crossRefs)] as n}
-            {@const r = byNumber.get(n)}
-            {#if r}
-              <button class="link-row" onclick={() => open(n)}>
-                <span class="lid">{r.id}</span>
-                <span class="ltitle"><Title text={r.title} /></span>
-              </button>
-            {/if}
-          {/each}
-        </div>
-      {/if}
-
-      {#if current.words.length}
-        <div class="eyebrow">words indexed here</div>
-        <div class="words">
-          {#each current.words as w}
-            <span class="word"><Sanskrit text={w} source="devanagari" /></span>
-          {/each}
-        </div>
-      {/if}
-
-      {#if current.pages.start > 0}
-        <div class="eyebrow">source</div>
-        <div class="source">
-          Kale 1894
-          {#if current.images.length && current.scan === 'verified'}
-            <div class="leaves">
-              {#each current.images as img}
-                <a class="leaf" href="{SCANS}/{img}" target="_blank" rel="noopener">
-                  leaf {img.replace('.png', '')}
-                </a>
-              {/each}
-            </div>
-          {:else if current.images.length}
-            <div class="leaf-note">
-              {sourceLabel} · scan reference unverified, not linked
-            </div>
-          {/if}
-        </div>
-      {/if}
-    </aside>
+  {#if current.derivations.length}
+    <section class="derivations">
+      <div class="deriv-head">
+        <span class="label">derivations</span>
+        <span class="deriv-count">{current.derivations.length}</span>
+        <!-- Kale states the sūtra once per rule, never per example, so the
+             attribution belongs on the group rather than on each row. -->
+        {#if ruleSutra}
+          <a class="deriv-sutra" href="/ref/{ruleSutra.sutraId}">{ruleSutra.display}</a>
+        {/if}
+      </div>
+      <div class="deriv-rows">
+        {#each current.derivations as d}
+          <div class="deriv">
+            <Sanskrit text={d.left} source="devanagari" />
+            <span class="op">+</span>
+            <Sanskrit text={d.right} source="devanagari" />
+            <span class="op">→</span>
+            <span class="result"><Sanskrit text={d.result} source="devanagari" /></span>
+            {#if d.gloss}<span class="gloss">{d.gloss}</span>{/if}
+          </div>
+        {/each}
+      </div>
+    </section>
   {/if}
-</div>
+
+  {#if MATRIX_RULES.includes(current.n)}
+    <SandhiMatrix rule={current.n} onpick={open} />
+  {/if}
+
+  <nav class="pager">
+    {#if prev}
+      <button onclick={() => open(prev.n)}>
+        <span class="dir">← previous</span>
+        <span class="pt">{prev.id} <Title text={prev.title} /></span>
+      </button>
+    {:else}<span></span>{/if}
+    {#if next}
+      <button class="right" onclick={() => open(next.n)}>
+        <span class="dir">next →</span>
+        <span class="pt">{next.id} <Title text={next.title} /></span>
+      </button>
+    {/if}
+  </nav>
+</Shell>
 
 <style>
-  .dk {
-    display: grid;
-    grid-template-columns: 214px minmax(0, 1fr) 296px;
-    max-width: 1340px;
-    margin: 0 auto;
-    align-items: start;
-  }
-  .dk.no-rail {
-    grid-template-columns: 214px minmax(0, 1fr);
-  }
-
-  .eyebrow {
-    font:
-      600 11px/1 'SF Mono',
-      Consolas,
-      Monaco,
-      monospace;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+  /* ── shelf ───────────────────────────────────────────────────────────── */
+  .chapter-name {
     color: var(--muted);
-    margin-bottom: 10px;
+  }
+  .sep {
+    color: var(--rule-2);
+  }
+  .here {
+    color: var(--ink);
+  }
+  .step {
+    display: flex;
+    gap: 6px;
+  }
+  .step button {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+  }
+  .step button:hover {
+    color: var(--accent);
+  }
+  .off {
+    color: var(--rule-2);
   }
 
-  /* ---- spine ---- */
-  .spine {
-    padding: 22px 15px 40px;
-    border-right: 1px solid var(--rule);
-    background: var(--sunken);
-    position: sticky;
-    top: 56px;
-    max-height: calc(100vh - 56px);
-    overflow-y: auto;
-  }
-  .chapters {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-  .chapter {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    align-items: baseline;
-    padding: 5px 8px;
-    border: 0;
-    background: none;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: left;
-    font:
-      400 13.5px/1.35 var(--font-serif);
-    color: var(--ink-2);
-  }
-  .chapter:hover {
-    background: var(--rule);
-  }
-  .chapter.on {
-    background: var(--rule);
-    color: var(--ink);
-    font-weight: 600;
-  }
-  .crange {
-    font:
-      400 11px 'SF Mono',
-      Consolas,
-      monospace;
-    color: var(--quiet);
-    flex: none;
-  }
+  /* ── spine ───────────────────────────────────────────────────────────── */
   .sections {
     display: flex;
     flex-direction: column;
-    margin: 3px 0 5px 8px;
-    padding-left: 10px;
-    border-left: 1px solid var(--rule-2);
+    border-top: 1px solid var(--rule);
+    padding-top: 8px;
   }
   .section {
-    display: flex;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: 2.6rem minmax(0, 1fr);
+    gap: 8px;
     align-items: baseline;
-    padding: 3px 0;
-    border: 0;
-    background: none;
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    border-radius: var(--radius);
+    padding: 4px 0 4px 8px;
     cursor: pointer;
     text-align: left;
-    font:
-      400 13px/1.35 var(--font-serif);
-    color: var(--muted);
-  }
-  .section:hover {
-    color: var(--ink);
   }
   .section.on {
-    color: var(--ink);
-    font-weight: 600;
+    border-left-color: var(--accent);
   }
   .sid {
-    flex: none;
-    font:
-      400 11px 'SF Mono',
-      Consolas,
-      monospace;
+    font-family: var(--font-mono);
+    font-size: 10px;
     color: var(--quiet);
   }
-  .section.on .sid {
-    color: var(--accent);
-  }
   .stitle {
+    font-size: 13px;
+    color: var(--muted);
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
   }
-  .spine-head {
-    margin-top: 18px;
+  .section.on .stitle {
+    color: var(--ink);
   }
-  .topic-head {
-    margin-top: 22px;
-  }
+
   .topics {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
-  }
-  .topic {
-    font:
-      400 12px/1 var(--font-serif);
-    padding: 3px 8px;
-    background: var(--rule);
-    color: var(--ink-2);
-    border-radius: 9999px;
+    gap: 5px;
   }
 
-  /* ---- reader ---- */
-  .reader {
-    padding: 26px 38px 60px;
-    min-width: 0;
-  }
-  .crumbs {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    font:
-      400 11px/1 'SF Mono',
-      Consolas,
-      monospace;
-    color: var(--quiet);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 14px;
-  }
-  .crumb-cur {
-    color: var(--accent);
-  }
+  /* ── column ──────────────────────────────────────────────────────────── */
   .rule-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 14px;
+  }
+  .rule-id {
     display: flex;
     align-items: baseline;
     gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--quiet);
   }
-  .rule-id {
-    font:
-      500 28px/1 var(--font-serif);
-    color: var(--ink);
-  }
-  .kind {
-    font:
-      400 11px/1 'SF Mono',
-      Consolas,
-      monospace;
-    padding: 2px 7px;
-    border-radius: 9999px;
-    background: var(--rule);
-    color: var(--muted);
-  }
-  h1 {
-    margin: 4px 0 22px;
-    font:
-      400 25px/1.25 var(--font-serif);
-    color: var(--ink);
-    text-wrap: pretty;
+  .rule-head h1 {
+    margin: 0;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.2;
   }
 
-  /* ---- derivations ---- */
   .derivations {
-    margin-top: 28px;
-    padding-top: 18px;
-    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   .deriv-head {
     display: flex;
     align-items: baseline;
-    gap: 8px;
+    gap: 10px;
   }
   .deriv-count {
-    font:
-      400 11px 'SF Mono',
-      Consolas,
-      monospace;
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--quiet);
   }
   .deriv-sutra {
-    margin-left: auto;
-    font:
-      500 11px 'SF Mono',
-      Consolas,
-      monospace;
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--accent-ref);
     text-decoration: none;
-  }
-  .deriv-sutra:hover {
-    border-bottom: 1px solid var(--accent-ref);
+    margin-left: auto;
   }
   .deriv-rows {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 2px 26px;
+    display: flex;
+    flex-direction: column;
   }
   .deriv {
     display: flex;
     align-items: baseline;
-    gap: 7px;
-    padding: 3px 0;
-    font-family: 'Noto Serif Devanagari', 'Noto Serif Telugu', serif;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-family: var(--font-deva);
     font-size: 16px;
-    color: var(--ink-2);
+    padding: 8px 0;
+    border-top: 1px solid var(--rule);
   }
   .op {
     color: var(--faint);
-    font-size: 13px;
   }
   .result {
-    color: var(--ink);
-    font-weight: 600;
+    color: var(--accent);
   }
   .gloss {
-    font:
-      italic 400 12px/1.3 var(--font-serif);
-    color: var(--quiet);
+    font-family: var(--font-serif);
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin-left: auto;
   }
 
-  /* ---- pager ---- */
   .pager {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 20px;
-    margin-top: 40px;
-    padding-top: 18px;
+    gap: 16px;
     border-top: 1px solid var(--rule);
+    padding-top: 16px;
   }
-  .page-btn {
+  .pager button {
     display: flex;
     flex-direction: column;
     gap: 3px;
-    max-width: 46%;
-    border: 0;
-    background: none;
+    align-items: flex-start;
+    max-width: 20rem;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0;
     cursor: pointer;
     text-align: left;
-    padding: 0;
   }
-  .page-btn.right {
+  .pager button.right {
+    align-items: flex-end;
     text-align: right;
   }
   .dir {
-    font:
-      400 11px/1 'SF Mono',
-      Consolas,
-      monospace;
-    color: var(--quiet);
-  }
-  .pt {
-    font:
-      400 13.5px/1.35 var(--font-serif);
-    color: var(--ink-2);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .page-btn:hover .pt {
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--accent);
   }
+  .pt {
+    font-size: 15px;
+    color: var(--muted);
+  }
 
-  /* ---- apparatus ---- */
-  .apparatus {
-    padding: 24px 20px 40px;
-    border-left: 1px solid var(--rule);
-    background: var(--sunken);
-    position: sticky;
-    top: 56px;
-    max-height: calc(100vh - 56px);
-    overflow-y: auto;
+  /* ── rail ────────────────────────────────────────────────────────────── */
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
   }
-  .apparatus .eyebrow:not(:first-child) {
-    margin-top: 22px;
-  }
+
   .sutras {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 5px;
   }
   .sutra {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 5px 9px;
-    border-radius: 5px;
-    background: #fff;
-    border: 1px solid var(--rule-2);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-ref);
     text-decoration: none;
   }
-  .sutra-ref {
-    font:
-      500 13px/1 'SF Mono',
-      Consolas,
-      monospace;
-    color: var(--accent-ref);
-  }
-  .sutra-go {
-    font-size: 12px;
+  .sutra.off {
     color: var(--faint);
   }
-  a.sutra:hover {
-    border-color: var(--rule-2);
-  }
-  a.sutra:hover .sutra-go {
-    color: var(--accent-ref);
-  }
-  /* Cited but absent from this recension — shown, not linked. */
-  .sutra.off {
-    background: none;
-    border-style: dashed;
-  }
-  .sutra.off .sutra-ref {
-    color: var(--quiet);
-  }
-  .links {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
+
   .link-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2.6rem minmax(0, 1fr);
     gap: 8px;
     align-items: baseline;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius);
     padding: 3px 0;
-    border: 0;
-    background: none;
     cursor: pointer;
     text-align: left;
-    font:
-      400 12.5px/1.35 var(--font-serif);
-    color: var(--ink-2);
-  }
-  .link-row:hover {
-    color: var(--accent);
   }
   .lid {
-    flex: none;
-    font:
-      400 11px 'SF Mono',
-      Consolas,
-      monospace;
+    font-family: var(--font-mono);
+    font-size: 10px;
     color: var(--quiet);
   }
   .ltitle {
+    font-size: 13px;
+    color: var(--muted);
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
   }
+  .link-row:hover .ltitle {
+    color: var(--accent);
+  }
+
   .words {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 6px;
   }
   .word {
-    font-family: 'Noto Sans Devanagari', 'Noto Sans Telugu', sans-serif;
-    font-size: 13px;
-    padding: 3px 8px;
-    background: var(--rule);
-    color: var(--ink-2);
-    border-radius: 4px;
+    font-family: var(--font-deva);
+    font-size: 14px;
+    color: var(--muted);
   }
-  .source {
-    font:
-      400 12.5px/1.6 var(--font-serif);
-    color: var(--ink-2);
+
+  .source,
+  .leaf-note {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .leaf-note {
+    color: var(--faint);
   }
   .leaves {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 6px;
+    gap: 8px;
   }
   .leaf {
-    font:
-      400 11px/1 'SF Mono',
-      Consolas,
-      monospace;
-    padding: 3px 7px;
-    border: 1px solid var(--rule-2);
-    border-radius: 4px;
-    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-ref);
     text-decoration: none;
-  }
-  .leaf:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .leaf-note {
-    margin-top: 5px;
-    font:
-      italic 400 11.5px/1.45 var(--font-serif);
-    color: var(--quiet);
-  }
-
-  @media (max-width: 1100px) {
-    .dk,
-    .dk.no-rail {
-      grid-template-columns: 1fr;
-    }
-    .spine,
-    .apparatus {
-      position: static;
-      max-height: none;
-      border: 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .reader {
-      padding: 22px 20px 48px;
-    }
-    /* One column means the spine sits above the text; a full chapter list
-       there would push the reading matter off the screen, so only search and
-       the chapter headings stay — the section list is reachable by opening a
-       chapter, and search covers the rest. */
-    .spine .sections {
-      display: none;
-    }
-    .spine {
-      max-height: 42vh;
-      overflow-y: auto;
-    }
   }
 </style>

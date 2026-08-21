@@ -1,47 +1,56 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import { browser } from '$app/environment';
+  import { onMount } from 'svelte';
   import { wordBank, type WordEntry } from '$lib/stores/wordBank';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
-  import { lessonLanguage, displayScript } from '$lib/stores/preferences';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import Segmented from '$lib/components/ui/Segmented.svelte';
+  import { lessonLanguage } from '$lib/stores/preferences';
   import type { LessonLanguage } from '$lib/stores/preferences';
 
-  // Range params from URL
-  let fromNum = $derived(parseInt($page.url.searchParams.get('from') ?? '0', 10));
-  let toNum = $derived(parseInt($page.url.searchParams.get('to') ?? '999', 10));
+  /*
+    A session over the deck, launched from it.
 
-  // Range controls (local, adjustable)
-  let rangeFrom = $state(0);
-  let rangeTo = $state(0);
-  let maxLesson = $state(0);
+    The range is whatever /words had filtered — ?q=, or the old ?from=/?to=
+    lesson range for links that still carry it — which is what removes the two
+    range sliders this page used to open with. In session: one card, the
+    keyboard path (space reveals, ← missed, → knew), progress on the shelf.
+    Missed reads in ink and knew in the done accent, the same pair the reader's
+    verdict line uses, so a right answer looks the same everywhere.
+  */
   let lang: LessonLanguage = $state('english');
-  lessonLanguage.subscribe(v => { lang = v; });
-
-  // Initialize range from URL params once
-  $effect(() => {
-    rangeFrom = fromNum;
-    rangeTo = toNum;
-    maxLesson = wordBank.getMaxLesson();
+  lessonLanguage.subscribe((v) => {
+    lang = v;
   });
 
-  // All words in range
-  let allWords = $derived.by(() => {
-    if (!browser) return [];
-    let state: any;
-    wordBank.subscribe(s => { state = s; })();
-    return (state?.words ?? []).filter((w: WordEntry) => w.lessonNum >= rangeFrom && w.lessonNum <= rangeTo);
+  const query = $derived(($page.url.searchParams.get('q') ?? '').toLowerCase());
+  const fromNum = $derived(parseInt($page.url.searchParams.get('from') ?? '0', 10));
+  const toNum = $derived(parseInt($page.url.searchParams.get('to') ?? '999', 10));
+
+  const inRange = $derived.by(() => {
+    if (!browser) return [] as WordEntry[];
+    return $wordBank.words.filter((w) => {
+      if (w.lessonNum < fromNum || w.lessonNum > toNum) return false;
+      if (!query) return true;
+      return (
+        w.iast?.toLowerCase().includes(query) ||
+        w.display?.toLowerCase().includes(query) ||
+        w.gloss?.toLowerCase().includes(query) ||
+        w.englishGloss?.toLowerCase().includes(query)
+      );
+    });
   });
 
-  // Due words in range
-  let dueWords = $derived.by(() => {
+  const dueWords = $derived.by(() => {
     const today = new Date().toISOString().slice(0, 10);
-    return allWords.filter((w: WordEntry) => w.dueDate === null || w.dueDate <= today);
+    return inRange.filter((w) => w.dueDate === null || w.dueDate <= today);
   });
 
-  // Session state
   type Mode = 'due' | 'all';
   let mode: Mode = $state('due');
-  let sessionWords = $derived(mode === 'due' ? dueWords : allWords);
+  const sessionWords = $derived(mode === 'due' ? dueWords : inRange);
 
   let sessionStarted = $state(false);
   let queue: WordEntry[] = $state([]);
@@ -60,136 +69,314 @@
   }
 
   function answer(didKnow: boolean) {
+    if (!queue[current]) return;
     wordBank.recordReview(queue[current].id, didKnow);
-    if (didKnow) knew++; else missed++;
+    if (didKnow) knew++;
+    else missed++;
     current++;
     revealed = false;
   }
 
   const word = $derived(queue[current]);
   const done = $derived(sessionStarted && current >= queue.length);
+
+  // ⌘-nothing: the whole session is space, ← and →.
+  function onkey(e: KeyboardEvent) {
+    const t = e.target as HTMLElement;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (!sessionStarted) {
+      if (e.key === 'Enter' && sessionWords.length) {
+        e.preventDefault();
+        startSession();
+      }
+      return;
+    }
+    if (done) return;
+    if (e.key === ' ') {
+      e.preventDefault();
+      revealed = true;
+    } else if (revealed && e.key === 'ArrowLeft') {
+      e.preventDefault();
+      answer(false);
+    } else if (revealed && e.key === 'ArrowRight') {
+      e.preventDefault();
+      answer(true);
+    }
+  }
+
+  onMount(() => {
+    window.addEventListener('keydown', onkey);
+    return () => window.removeEventListener('keydown', onkey);
+  });
 </script>
 
 <svelte:head>
-  <title>Review | anuvrtti</title>
+  <title>review | anuvrtti</title>
 </svelte:head>
 
-<div class="max-w-2xl mx-auto px-4 py-8">
-
+{#snippet shelfLeft()}
+  <a class="back" href="/words">‹ the deck</a>
   {#if !sessionStarted}
-    <!-- Setup screen -->
-    <h1 class="text-2xl font-semibold text-stone-800 mb-6">Vocabulary Review</h1>
+    <Segmented
+      options={[
+        { id: 'due', label: `due ${dueWords.length}` },
+        { id: 'all', label: `all ${inRange.length}` }
+      ]}
+      value={mode}
+      onchange={(id) => (mode = id as Mode)}
+      ariaLabel="session range"
+    />
+    {#if query}<span class="quiet">filtered by “{query}”</span>{/if}
+  {:else if !done}
+    <span class="quiet">space reveals · ← missed · → knew</span>
+  {/if}
+{/snippet}
 
-    <!-- Range controls -->
-    <div class="bg-white rounded-xl border border-stone-200 p-5 mb-4 space-y-4">
-      <div class="flex items-center gap-4">
-        <label class="text-sm text-stone-600 w-16">From</label>
-        <input type="range" min="0" max={maxLesson} bind:value={rangeFrom}
-          class="flex-1 accent-indigo-500" />
-        <span class="text-sm font-medium text-stone-700 w-8 text-right">{rangeFrom}</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <label class="text-sm text-stone-600 w-16">To</label>
-        <input type="range" min="0" max={maxLesson} bind:value={rangeTo}
-          class="flex-1 accent-indigo-500" />
-        <span class="text-sm font-medium text-stone-700 w-8 text-right">{rangeTo}</span>
-      </div>
-    </div>
+{#snippet shelfRight()}
+  {#if sessionStarted && !done}
+    <span>{current + 1} / {queue.length} · {knew} knew · {missed} missed</span>
+  {:else if sessionStarted}
+    <span>{knew} knew · {missed} missed</span>
+  {/if}
+{/snippet}
 
-    <!-- Mode toggle -->
-    <div class="flex rounded-lg border border-stone-200 overflow-hidden mb-6 text-sm">
-      <button onclick={() => mode = 'due'}
-        class="flex-1 py-2 px-4 transition-colors {mode === 'due' ? 'bg-indigo-50 text-indigo-700 font-medium' : 'bg-white text-stone-500 hover:bg-stone-50'}">
-        Due ({dueWords.length})
-      </button>
-      <button onclick={() => mode = 'all'}
-        class="flex-1 py-2 px-4 transition-colors {mode === 'all' ? 'bg-indigo-50 text-indigo-700 font-medium' : 'bg-white text-stone-500 hover:bg-stone-50'}">
-        All ({allWords.length})
-      </button>
-    </div>
+<Shelf
+  left={shelfLeft}
+  right={shelfRight}
+  progress={sessionStarted && queue.length ? (current / queue.length) * 100 : null}
+/>
+
+<Shell columnMax="640px">
+  {#if !sessionStarted}
+    <header class="head">
+      <h1>review</h1>
+      <p>
+        {#if query}
+          The {inRange.length} word{inRange.length === 1 ? '' : 's'} matching “{query}” — the filter
+          you left the deck on is the range.
+        {:else}
+          A spaced session over the deck. The range is whatever the deck was filtered to.
+        {/if}
+      </p>
+    </header>
 
     {#if sessionWords.length === 0}
-      <p class="text-stone-500 text-sm text-center py-8">
-        {mode === 'due' ? 'No words due — check back later or switch to All.' : 'No words in this range yet. Visit some lessons first.'}
+      <p class="empty">
+        {mode === 'due'
+          ? 'Nothing due — check back later, or switch to all.'
+          : 'No words in this range yet. Keep some from a lesson or from the reader.'}
       </p>
     {:else}
-      <button onclick={startSession}
-        class="w-full py-3 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors">
-        Start ({sessionWords.length} words)
+      <button class="start" onclick={startSession}>
+        start · {sessionWords.length} word{sessionWords.length === 1 ? '' : 's'}
       </button>
     {/if}
-
   {:else if done}
-    <!-- Summary -->
-    <div class="text-center py-16 space-y-4">
-      <div class="text-4xl">✓</div>
-      <h2 class="text-xl font-semibold text-stone-800">Done</h2>
-      <p class="text-stone-500">{knew} knew · {missed} missed</p>
-      <div class="flex gap-3 justify-center mt-6">
-        <button onclick={startSession}
-          class="px-5 py-2 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-700 text-sm font-medium hover:bg-indigo-100 transition-colors">
-          Review again
-        </button>
-        <a href="/learn"
-          class="px-5 py-2 rounded-lg bg-white border border-stone-200 text-stone-700 text-sm font-medium hover:bg-stone-50 transition-colors">
-          Back to lessons
-        </a>
+    <div class="summary">
+      <span class="tick">✓</span>
+      <h2>done</h2>
+      <p>{knew} knew · {missed} missed</p>
+      <div class="again">
+        <button onclick={startSession}>review again</button>
+        <a href="/words">back to the deck</a>
       </div>
     </div>
+  {:else if word}
+    <div class="card">
+      <span class="face"><Sanskrit text={word.display} source="telugu" /></span>
+      {#if word.iast}<span class="iast">{word.iast}</span>{/if}
+      <span class="from">
+        {word.lessonNum ? `lesson ${word.lessonNum}` : word.lessonId.replace('reader:', 'reader · ')}
+      </span>
 
-  {:else}
-    <!-- Card -->
-    <div class="mb-4 flex items-center justify-between text-xs text-stone-400">
-      <span>{current + 1} / {queue.length}</span>
-      <span>{knew} knew · {missed} missed</span>
-    </div>
-
-    <!-- Progress bar -->
-    <div class="h-1 bg-stone-100 rounded-full mb-6 overflow-hidden">
-      <div class="h-full bg-indigo-400 rounded-full transition-all"
-        style="width: {(current / queue.length) * 100}%"></div>
-    </div>
-
-    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden">
-      <!-- Front -->
-      <div class="p-8 text-center border-b border-stone-100">
-        <div class="text-3xl mb-2">
-          <Sanskrit text={word.display} source="telugu" />
-        </div>
-        {#if word.iast}
-          <div class="text-sm text-stone-400 font-serif italic">{word.iast}</div>
-        {/if}
-        <div class="text-xs text-stone-300 mt-3">Lesson {word.lessonNum}</div>
-      </div>
-
-      <!-- Back (revealed) -->
       {#if revealed}
-        <div class="p-6 text-center space-y-3">
-          <div class="text-lg text-stone-700">
-            {lang === 'telugu' ? word.gloss : word.englishGloss}
-          </div>
-          {#if word.tag}
-            <div class="text-xs text-stone-400 font-mono">{word.tag}</div>
-          {/if}
-          <div class="flex gap-3 justify-center mt-5">
-            <button onclick={() => answer(false)}
-              class="flex-1 max-w-32 py-2.5 rounded-xl bg-red-50 border border-red-200 text-red-700 font-medium text-sm hover:bg-red-100 transition-colors">
-              Missed
-            </button>
-            <button onclick={() => answer(true)}
-              class="flex-1 max-w-32 py-2.5 rounded-xl bg-teal-50 border border-teal-200 text-teal-700 font-medium text-sm hover:bg-teal-100 transition-colors">
-              Knew it
-            </button>
+        <div class="back-face">
+          <span class="gloss">{lang === 'telugu' ? word.gloss : word.englishGloss}</span>
+          {#if word.tag}<span class="tag">{word.tag}</span>{/if}
+          <div class="verdicts">
+            <button class="missed" onclick={() => answer(false)}>← missed</button>
+            <button class="knew" onclick={() => answer(true)}>knew it →</button>
           </div>
         </div>
       {:else}
-        <div class="p-6 text-center">
-          <button onclick={() => revealed = true}
-            class="px-8 py-2.5 rounded-xl bg-stone-100 text-stone-600 text-sm font-medium hover:bg-stone-200 transition-colors">
-            Reveal
-          </button>
-        </div>
+        <button class="reveal" onclick={() => (revealed = true)}>reveal</button>
       {/if}
     </div>
   {/if}
-</div>
+</Shell>
+
+<style>
+  .quiet {
+    color: var(--faint);
+  }
+  .back {
+    color: var(--quiet);
+    text-decoration: none;
+  }
+  .back:hover {
+    color: var(--ink);
+  }
+
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .head h1 {
+    margin: 0;
+    font-size: 27px;
+    font-weight: 600;
+  }
+  .head p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .empty {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
+  }
+  .start {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    color: var(--accent);
+    padding: 9px 14px;
+    cursor: pointer;
+    align-self: flex-start;
+  }
+
+  /* One card, hairlines, no shadow — the deck row's material, enlarged. */
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 48px 24px 24px;
+    text-align: center;
+  }
+  .face {
+    font-family: var(--font-deva);
+    font-size: 34px;
+  }
+  .iast {
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .from {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--faint);
+    padding-bottom: 18px;
+  }
+
+  .reveal {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--sunken);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    color: var(--muted);
+    padding: 8px 22px;
+    cursor: pointer;
+  }
+  .reveal:hover {
+    color: var(--ink);
+  }
+
+  .back-face {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+  .gloss {
+    font-size: 18px;
+    color: var(--ink);
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--quiet);
+  }
+  .verdicts {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+  }
+  .verdicts button {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  .missed {
+    color: var(--ink);
+  }
+  .missed:hover {
+    border-color: var(--ink);
+  }
+  .knew {
+    color: var(--accent-ok);
+  }
+  .knew:hover {
+    border-color: var(--accent-ok);
+  }
+
+  .summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 64px 0;
+    text-align: center;
+  }
+  .tick {
+    font-size: 30px;
+    color: var(--accent-ok);
+  }
+  .summary h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .summary p {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .again {
+    display: flex;
+    gap: 12px;
+    padding-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .again button,
+  .again a {
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    color: var(--ink);
+    font: inherit;
+    padding: 6px 14px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+</style>

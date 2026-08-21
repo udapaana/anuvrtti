@@ -82,11 +82,7 @@
     margin-bottom: 11px;
   }
   .eyebrow {
-    font:
-      600 11px/1 'SF Mono',
-      Consolas,
-      Monaco,
-      monospace;
+    font: 600 11px/1 var(--font-mono);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--muted);
@@ -115,10 +111,7 @@
     color: var(--ink-2);
   }
   .corner {
-    font:
-      400 11px 'SF Mono',
-      Consolas,
-      monospace;
+    font: 400 11px var(--font-mono);
     color: var(--quiet);
   }
   .cell {
@@ -136,7 +129,7 @@
     background: var(--sunken);
   }
   .cell.blank {
-    background: #fdfdfc;
+    background: var(--sunken);
     cursor: default;
   }
   .out {
@@ -145,10 +138,7 @@
     color: var(--quiet);
   }
   .tag {
-    font:
-      400 9.5px/1 'SF Mono',
-      Consolas,
-      monospace;
+    font: 400 9.5px/1 var(--font-mono);
     color: var(--faint);
   }
   /* The rule being read. Everything else is a neighbour. */
@@ -156,7 +146,7 @@
     background: var(--sunken);
   }
   .cell.on .out {
-    color: #9a3412;
+    color: var(--accent-hover);
     font-weight: 600;
   }
   .cell.on .tag {
