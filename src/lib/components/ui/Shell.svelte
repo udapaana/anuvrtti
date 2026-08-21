@@ -146,9 +146,15 @@
     align-self: start;
     position: sticky;
     top: var(--sticky-rail);
-    /* min-height beats max-height in CSS, so a bare 520px would push the rail
-       past the bottom of a short viewport and take its scrolling with it. */
-    min-height: min(520px, calc(100vh - var(--sticky-rail)));
+    /*
+      The rail runs the full height of the viewport, not the height of whatever
+      is in it. It is the only region carrying its own surface, so when it was
+      sized by its content the sunken ground and the left border stopped in mid
+      air — a panel with a torn edge partway down the page. A fixed height puts
+      the bottom of the panel at the bottom of the window, and the content
+      inside it scrolls (or does not) exactly as before.
+    */
+    height: calc(100vh - var(--sticky-rail));
     min-width: 0;
   }
 
@@ -182,6 +188,8 @@
       position: static;
       border-left: none;
       border-top: 1px solid var(--rule);
+      /* stacked, it is a block in the flow again, not a viewport-tall panel */
+      height: auto;
       min-height: 0;
     }
     .column {
