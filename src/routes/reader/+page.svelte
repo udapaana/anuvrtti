@@ -354,6 +354,22 @@
   const asking = $derived(!!selWord?.quiz && pick === null);
   const answered = $derived(!!selWord && (pick !== null || !selWord.quiz));
 
+  // The word-for-word run of the selected line. Shown in glossed mode, or once
+  // the word has been answered (or never asked) — never while a quiz is open,
+  // since the run would print the answer two lines above the question.
+  const showRun = $derived(!!selWord && (mode === 'gloss' || !asking));
+  const runRows = $derived.by(() => {
+    const s = sel;
+    if (!s || !showRun) return [];
+    const r = list.find((x) => x.id === s.id);
+    return (r?.words ?? []).map((wd: any, wi: number) => ({
+      wi,
+      on: wi === s.wi,
+      form: padaccheda && wd.split ? wd.split.join(' + ') : wd.form,
+      gloss: wd.gloss ?? ''
+    }));
+  });
+
   // The paradigm the selected word belongs to — its declension or conjugation
   // table, shown in the rail below the quiz with the word's own cell lit. Null
   // for words outside the four classes we hold a table for (the rail then shows
@@ -539,13 +555,54 @@
     }
   }
 
+  // ← → walk the words of a line, wrapping into the next line at either end.
+  // Selecting a word is what opens the rail, so this is how you read a line
+  // word by word without touching the mouse.
+  function stepWord(dir: 1 | -1) {
+    if (!list.length) return;
+    const s = sel;
+    if (!s) {
+      const r = list.find((x) => x.id === (focusedId ?? slice[0]?.id)) ?? slice[0];
+      if (r) selectWord(r.id, dir > 0 ? 0 : Math.max(0, (r.words?.length ?? 1) - 1));
+      return;
+    }
+    let ri = list.findIndex((x) => x.id === s.id);
+    if (ri < 0) return;
+    let wi = s.wi + dir;
+    if (wi >= (list[ri].words?.length ?? 0)) {
+      ri = (ri + 1) % list.length;
+      wi = 0;
+    } else if (wi < 0) {
+      ri = (ri - 1 + list.length) % list.length;
+      wi = Math.max(0, (list[ri].words?.length ?? 1) - 1);
+    }
+    const moved = list[ri].id !== s.id;
+    selectWord(list[ri].id, wi);
+    if (moved) jumpToReading(list[ri].id);
+  }
+
+  // ↑ ↓ move line to line, keeping your place within the line.
+  function stepLine(dir: 1 | -1) {
+    const s = sel;
+    if (!s) return stepReading(dir);
+    const ri = list.findIndex((x) => x.id === s.id);
+    if (ri < 0) return stepReading(dir);
+    const next = (ri + dir + list.length) % list.length;
+    const target = list[next];
+    if (!target) return;
+    selectWord(target.id, Math.min(s.wi, Math.max(0, (target.words?.length ?? 1) - 1)));
+    jumpToReading(target.id);
+  }
+
   function onKeydown(e: KeyboardEvent) {
     // ignore when typing in a field or with modifiers
     const t = e.target as HTMLElement;
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); stepReading(1); }
-    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); stepReading(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); stepWord(1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); stepWord(-1); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); stepLine(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); stepLine(-1); }
   }
   // Jump to a chapter's FIRST READING, and focus it.
   //
@@ -712,15 +769,16 @@
 {/snippet}
 
 {#snippet shelfRight()}
+  <span class="keys">← → word · ↑ ↓ line</span>
   <span>{checked.size} checked · {seen.size} read · {deckCount} in deck</span>
 {/snippet}
 
 {#snippet spine()}
   <Spine
-    title="the arc"
+    title="chapters"
     items={chapters.map((c) => {
       const t = titles[c.id] ?? { dev: c.id, en: '' };
-      return { id: c.id, label: t.dev, sub: shortEn(t.en) };
+      return { id: c.id, label: t.dev, script: 'devanagari' as const, sub: shortEn(t.en) };
     })}
     activeId={focusedChapter}
     onpick={jumpToChapter}
@@ -728,7 +786,7 @@
 {/snippet}
 
 {#snippet rail()}
-  <span class="label">the word</span>
+  <span class="label">word</span>
 
   {#if !selWord}
     <!-- No word selected: the rail carries the READING's own commentary (the
@@ -740,13 +798,15 @@
           <span class="vyakhya-dev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></span>
         {/if}
         {#if railReading.vyakhya_en}
-          <p class="vyakhya-en">{railReading.vyakhya_en.trim()}</p>
+          <p class="vyakhya-en">
+            <Sanskrit text={railReading.vyakhya_en.trim()} source="devanagari" />
+          </p>
         {/if}
       </div>
     {/if}
     <p class="prompt">
-      Tap any word in a reading. Its case or lakāra comes first — the gloss and the sūtras follow
-      once you have tried.
+      Select a word. It asks for the case or lakāra first; the gloss and the sūtras follow the
+      answer.
     </p>
     {#if deckCards.length}
       <!-- The seen deck: a word from any reading scrolled past, drawn at random.
@@ -775,7 +835,7 @@
           {:else if selWord.quiz.phrase}
             <div class="phrase"><Sanskrit text={selWord.quiz.phrase} source="devanagari" /></div>
           {/if}
-          <span class="question">{selWord.quiz.q}</span>
+          <span class="question"><Sanskrit text={selWord.quiz.q} source="devanagari" /></span>
           <div class="options">
             {#each selWord.quiz.opts as o}
               <button class="opt" onclick={() => pickOption(o)}>
@@ -783,7 +843,22 @@
               </button>
             {/each}
           </div>
-          <button class="skip" onclick={() => pickOption('—')}>I am not sure — show it</button>
+          <button class="skip" onclick={() => pickOption('—')}>show the answer</button>
+        </div>
+      {/if}
+
+      <!-- The line, word for word. This is where the glosses went: a list in
+           the rail rather than a second row under every word. It stays shut
+           until the quiz has been answered, so it cannot give the case away. -->
+      {#if showRun}
+        <div class="run">
+          <span class="label">the line, word for word</span>
+          {#each runRows as g (g.wi)}
+            <button class="run-row" class:on={g.on} onclick={() => selectWord(selWord.id, g.wi)}>
+              <span class="run-form"><Sanskrit text={g.form} source="devanagari" /></span>
+              <span class="run-gloss"><Sanskrit text={g.gloss} source="devanagari" /></span>
+            </button>
+          {/each}
         </div>
       {/if}
 
@@ -791,12 +866,12 @@
         {#if verdict}
           <span class="verdict {verdict.tone}">{verdict.text}</span>
         {/if}
-        <span class="gloss">{selWord.gloss}</span>
+        <span class="gloss"><Sanskrit text={selWord.gloss} source="devanagari" /></span>
 
         {#if selWord.terms.length}
           <div class="terms">
             {#each selWord.terms as t}
-              <Chip label={t.term} deva title={t.en} />
+              <Chip label={t.term} script="devanagari" title={t.en} />
             {/each}
           </div>
         {/if}
@@ -804,12 +879,14 @@
         <!-- Everything the old rail stacked open is still here, as two closed
              rows: the derivation with its sūtras and, when the word sits in no
              grid, its decomposition; then the paradigm. -->
+        <!-- A row with nothing behind it is not rendered at all: an inert
+             control reads as broken, and absence is the honest answer. -->
+        {#if selWord.cites.length || selDecomp}
         <Disclose
           label="how it is formed"
           count={selWord.cites.length
             ? `${selWord.cites.length} ${selWord.cites.length === 1 ? 'sūtra' : 'sūtras'}`
             : null}
-          empty={!selWord.cites.length && !selDecomp}
           bind:open={formedOpen}
         >
           {#if selDecomp}
@@ -817,33 +894,31 @@
                  विग्रह for a compound, the affix chain for a derivative, the
                  split for a सन्धि join. -->
             <div class="decomp">
-              <span class="decomp-label">{selDecomp.label}</span>
+              <span class="decomp-label"><Sanskrit text={selDecomp.label} source="devanagari" /></span>
               <span class="decomp-parts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
             </div>
           {/if}
           {#each selWord.cites as c}
             <button class="cite" onclick={() => goto('/ref/' + c.cite)}>
               <span class="cite-id">{c.cite}</span>
-              <span class="cite-role">{c.role}</span>
+              <span class="cite-role"><Sanskrit text={c.role} source="devanagari" /></span>
             </button>
           {/each}
         </Disclose>
+        {/if}
 
-        <Disclose
-          label={selParadigm ? `paradigm · ${selParadigm.title}` : 'paradigm'}
-          empty={!selParadigm}
-          bind:open={paraOpen}
-        >
-          {#if selParadigm}
+        {#if selParadigm}
+          <Disclose label={`paradigm · ${selParadigm.title}`} bind:open={paraOpen}>
             <Grid
+              script="devanagari"
               surface="sunken"
               colHeads={selParadigm.grid.colHeads}
               rowHeads={selParadigm.grid.rows.map((r: any) => r.label)}
               rows={selParadigm.grid.rows.map((r: any) => r.cells)}
               lit={[selParadigm.row, selParadigm.col]}
             />
-          {/if}
-        </Disclose>
+          </Disclose>
+        {/if}
 
         <button class="bank" class:has={inDeck} onclick={bankWord} disabled={inDeck}>
           {inDeck ? 'in your deck' : '+ keep for review'}
@@ -877,7 +952,7 @@
           <div data-ch-id={row.chId} class="ch-head">
             <span class="label">chapter</span>
             <span class="ch-dev"><Sanskrit text={row.dev} source="devanagari" /></span>
-            <span class="ch-en">{row.en}</span>
+            <span class="ch-en"><Sanskrit text={row.en} source="devanagari" /></span>
           </div>
         {:else}
           <article
@@ -893,12 +968,15 @@
           >
             <div class="ex-head">
               <span class="ex-index">{row.indexLabel}</span>
-              <span class="ex-teaches">{row.teaches}</span>
+              <span class="ex-teaches"><Sanskrit text={row.teaches} source="devanagari" /></span>
             </div>
 
             <!-- interlinear sentence. Paradigm readings (देव, फल, नदी, भू) are
                  filtered out of the column upstream — their tables show in the
                  rail now — so every card here is a sentence. -->
+            <!-- A token is the word and nothing else. Nothing sits beneath it,
+                 so no gloss can set the column width and pull the line apart;
+                 word-for-word glossing is the rail's job now. -->
             <div class="tokens">
               {#each row.tokens as tok}
                 {#if tok.isWord}
@@ -908,41 +986,29 @@
                     class:focal={tok.focal}
                     class:sel={sel?.id === row.id && sel?.wi === tok.wi}
                     role="presentation"
+                    title={tok.gloss}
                     onmouseenter={() => enterWord(row.id, tok.wi)}
                     onmouseleave={leaveWord}
                     onclick={() => selectWord(row.id, tok.wi)}
                   >
-                    <span class="tok-form">
-                      {#if padaccheda && tok.split}
-                        {#each tok.split as part, pi}
-                          {#if pi > 0}<span class="split-plus">+</span>{/if}<Sanskrit
-                            text={part}
-                            source="devanagari"
-                          />
-                        {/each}
-                      {:else}
-                        <Sanskrit text={tok.text} source="devanagari" />
-                      {/if}
-                    </span>
-                    <!-- In `gloss` mode every gloss shows for checking; in
-                         `recall` only the selected word's, so the reader tries
-                         first. Selection is what opens the rail. -->
-                    <span
-                      class="tok-gloss"
-                      class:reveal={mode === 'gloss' || (sel?.id === row.id && sel?.wi === tok.wi)}
-                      >{tok.gloss}</span
-                    >
+                    {#if padaccheda && tok.split}
+                      {#each tok.split as part, pi}
+                        {#if pi > 0}<span class="split-plus">+</span>{/if}<Sanskrit
+                          text={part}
+                          source="devanagari"
+                        />
+                      {/each}
+                    {:else}
+                      <Sanskrit text={tok.text} source="devanagari" />
+                    {/if}
                   </span>
                 {:else}
-                  <span class="token">
-                    <span class="tok-form"><Sanskrit text={tok.text} source="devanagari" /></span>
-                    <span class="tok-gloss"></span>
-                  </span>
+                  <span class="token punct"><Sanskrit text={tok.text} source="devanagari" /></span>
                 {/if}
               {/each}
             </div>
 
-            <p class="translation">{row.translation}</p>
+            <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
           </article>
         {/if}
       {/each}
@@ -960,7 +1026,7 @@
           </button>
         </div>
       {/if}
-      <p class="kbd-hint"><kbd>↑</kbd><kbd>↓</kbd> step through readings</p>
+
     </div>
   </Shell>
 {/if}
@@ -1091,31 +1157,21 @@
   .tokens {
     display: flex;
     flex-wrap: wrap;
-    gap: 18px;
+    column-gap: 20px;
+    row-gap: 10px;
     align-items: flex-end;
   }
   .token {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    align-items: flex-start;
-    border-bottom: 2px solid transparent;
-    cursor: default;
-  }
-  .tok-form {
     font-family: var(--font-deva);
     font-size: 26px;
     color: var(--ink);
     line-height: 1.35;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    cursor: default;
   }
-  .tok-gloss {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--quiet);
-    visibility: hidden;
-  }
-  .tok-gloss.reveal {
-    visibility: visible;
+  .token.punct {
+    color: var(--faint);
   }
   .split-plus {
     color: var(--faint);
@@ -1127,15 +1183,11 @@
     border-bottom-color: var(--accent-soft);
     cursor: pointer;
   }
-  .token.hot .tok-gloss {
-    visibility: visible;
-    color: var(--muted);
+  .token.hot {
+    color: var(--ink-2);
   }
   .token.sel {
     border-bottom-color: var(--accent);
-  }
-  .token.sel .tok-form,
-  .token.sel .tok-gloss {
     color: var(--accent);
   }
 
@@ -1175,18 +1227,8 @@
     color: var(--quiet);
   }
 
-  .kbd-hint {
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: 11px;
+  .keys {
     color: var(--faint);
-  }
-  .kbd-hint kbd {
-    font-family: var(--font-mono);
-    border: 1px solid var(--rule-2);
-    border-radius: var(--radius);
-    padding: 1px 5px;
-    margin-right: 3px;
   }
 
   /* ── rail ────────────────────────────────────────────────────────────── */
@@ -1214,6 +1256,49 @@
     font-size: 15px;
     line-height: 1.55;
     color: var(--muted);
+  }
+
+  /* the line, word for word */
+  .run {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-top: 1px solid var(--rule);
+    padding-top: 13px;
+  }
+  .run-row {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 10px;
+    align-items: baseline;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    border-radius: var(--radius);
+    padding: 2px 0 3px 8px;
+    margin-left: -10px;
+    cursor: pointer;
+    font: inherit;
+  }
+  .run-row.on {
+    border-left-color: var(--accent);
+  }
+  .run-form {
+    font-family: var(--font-deva);
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .run-row.on .run-form {
+    color: var(--accent);
+  }
+  .run-gloss {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+  .run-row.on .run-gloss {
+    color: var(--ink);
   }
 
   .quizme {

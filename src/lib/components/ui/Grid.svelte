@@ -5,6 +5,8 @@
     paradigm. Hairline cells on the token surface, one accent for the lit cell,
     axis heads tinted — so a table looks the same wherever it appears.
   */
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import type { Script } from '$lib/transliteration';
   import type { Cell } from './types';
 
   let {
@@ -16,6 +18,8 @@
     onpick = undefined,
     /** Rail paradigms sit on the sunken surface; page grids sit on paper. */
     surface = 'paper',
+    /** Source script of the heads and cells — they follow the toggle. */
+    script = 'devanagari',
     maxWidth = null
   }: {
     colHeads: string[];
@@ -24,6 +28,7 @@
     lit?: [number, number] | null;
     onpick?: (row: number, col: number) => void;
     surface?: 'paper' | 'sunken';
+    script?: Script | null;
     maxWidth?: string | null;
   } = $props();
 
@@ -43,22 +48,22 @@
     <span class="corner"></span>
   {/if}
   {#each colHeads as head, ci (ci)}
-    <span class="head col" class:on={lit && lit[1] === ci}>{head}</span>
+    <span class="head col" class:on={lit && lit[1] === ci}>{#if script}<Sanskrit text={head} source={script} />{:else}{head}{/if}</span>
   {/each}
 
   {#each cells as row, ri (ri)}
     {#if rowHeads.length}
-      <span class="head row" class:on={lit && lit[0] === ri}>{rowHeads[ri]}</span>
+      <span class="head row" class:on={lit && lit[0] === ri}>{#if script}<Sanskrit text={rowHeads[ri]} source={script} />{:else}{rowHeads[ri]}{/if}</span>
     {/if}
     {#each row as cell, ci (ci)}
       {@const on = !!lit && lit[0] === ri && lit[1] === ci}
       {#if cell.live && onpick}
         <button class="cell live" class:on title={cell.title} onclick={() => onpick(ri, ci)}>
-          {cell.text}
+          {#if script}<Sanskrit text={cell.text} source={script} />{:else}{cell.text}{/if}
         </button>
       {:else}
         <span class="cell" class:on class:dim={cell.live === false} title={cell.title}>
-          {cell.text}
+          {#if script}<Sanskrit text={cell.text} source={script} />{:else}{cell.text}{/if}
         </span>
       {/if}
     {/each}

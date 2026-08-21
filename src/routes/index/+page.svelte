@@ -17,23 +17,23 @@
       dev: 'अभ्यास',
       entries: [
         { href: '/workbook', label: 'workbook', meta: 'बालबोधिनी, lesson by lesson' },
-        { href: '/words', label: 'words', meta: 'the deck you have kept' },
+        { href: '/words', label: 'words', meta: 'words you have kept' },
         { href: '/review', label: 'review', meta: 'a spaced session over it' }
       ]
     },
     {
       door: 'usage',
       dev: 'प्रयोग',
-      entries: [{ href: '/usage', label: 'usage', meta: 'what the corpus attests' }]
+      entries: [{ href: '/usage', label: 'usage', meta: 'forms that occur in the readings' }]
     },
     {
       door: 'reference',
       dev: 'सूत्र',
       entries: [
         { href: '/ref', label: 'sūtrāṇi', meta: 'browse by adhyāya and pāda' },
-        { href: '/ref?mode=path', label: 'पथः', meta: 'the guided path through the Aṣṭādhyāyī' },
-        { href: '/ref/jargon', label: 'jargon', meta: 'the terms, defined' },
-        { href: '/ref/pratyahara', label: 'pratyāhārāḥ', meta: 'the fourteen, and what they abbreviate' },
+        { href: '/ref?mode=path', label: 'पथः', meta: 'a syllabus over the sūtras' },
+        { href: '/ref/jargon', label: 'jargon', meta: 'technical terms, defined' },
+        { href: '/ref/pratyahara', label: 'pratyāhārāḥ', meta: 'the fourteen śiva-sūtras' },
         { href: '/ref/tables', label: 'tables', meta: 'paradigms and reference grids' },
         { href: '/ref/prakriya', label: 'prakriyā', meta: 'a derivation, step by step' },
         { href: '/conjugate', label: 'conjugate', meta: 'verb forms from a root' },
@@ -57,8 +57,8 @@
 
 <Shell>
   <header class="head">
-    <h1>Every surface, once.</h1>
-    <p>Four doors carry the work. This is the rest of it, and the doors again for completeness.</p>
+    <h1>Index</h1>
+    <p>Every page in the site.</p>
   </header>
 
   {#each groups as group (group.door ?? 'other')}

@@ -75,6 +75,41 @@ function toGrid(
  * the word's tag strings; `lemma`/`form` identify the stem. Returns null when no
  * paradigm is available for the word's stem.
  */
+/*
+  Find the stem whose paradigm contains this exact form.
+
+  143 of the corpus's 2,618 words carry no lemma, and keying the table off the
+  lemma alone meant none of them could ever show a paradigm — नरः has no lemma,
+  so it looked up nounParadigms[''] and got nothing, even though नर is right
+  there in the table. The form itself is enough to find the table: build the
+  reverse index once, on first use, and cache it on the data object.
+
+  Ambiguity is real (देवौ is both द्वितीया and प्रथमा dual) but harmless here:
+  it only picks the TABLE. Which cell lights up comes from the word's own terms.
+*/
+type Indexed = ParadigmData & { _byForm?: Map<string, string>; _byFormVerb?: Map<string, string> };
+
+function formIndex(map: Record<string, Record<string, string>>): Map<string, string> {
+  const out = new Map<string, string>();
+  for (const [stem, cells] of Object.entries(map)) {
+    for (const form of Object.values(cells)) {
+      // First stem wins, so the commonest table is the one a bare form reaches.
+      const key = deaccent(form);
+      if (key && !out.has(key)) out.set(key, stem);
+    }
+  }
+  return out;
+}
+
+function stemForForm(data: Indexed, form: string, verb: boolean): string | null {
+  if (verb) {
+    if (!data._byFormVerb) data._byFormVerb = formIndex(data.verbParadigms);
+    return data._byFormVerb.get(deaccent(form)) ?? null;
+  }
+  if (!data._byForm) data._byForm = formIndex(data.nounParadigms);
+  return data._byForm.get(deaccent(form)) ?? null;
+}
+
 export function resolve(
   data: ParadigmData,
   lemma: string,
@@ -82,19 +117,23 @@ export function resolve(
   terms: string[]
 ): ResolvedParadigm | null {
   const isVerb = terms.some((t) => LAKARA.includes(t));
+  // The corpus writes both ग्रामं and ग्रामम् for one word; the paradigm tables
+  // use the full form, so normalise before looking either up.
+  const bare = deaccent(form).replace(/ं$/, 'म्');
 
   if (isVerb) {
-    const root = deaccent(lemma);
+    const root = deaccent(lemma) || stemForForm(data as Indexed, bare, true) || '';
     const para = data.verbParadigms[root];
     if (!para) return null;
     const p = PURUSHA.findIndex((x) => terms.includes(x));
     const v = VACANA.findIndex((x) => terms.includes(x));
     const { grid, row, col } = toGrid(para, PURUSHA, VACANA, p, v);
-    return { title: `${lemma} · लट् (present)`, grid, row, col };
+    return { title: `${root} · लट् (present)`, grid, row, col };
   }
 
-  // noun: key by the deaccented lemma; the paradigm map has the full declension
-  const stem = deaccent(lemma);
+  // noun: the lemma when the corpus records one, otherwise the stem whose
+  // declension contains this form.
+  const stem = deaccent(lemma) || stemForForm(data as Indexed, bare, false) || '';
   const para = data.nounParadigms[stem];
   if (!para) return null;
   const vib = VIBHAKTI.findIndex((x) => terms.includes(x));
@@ -102,5 +141,5 @@ export function resolve(
   const vacIdx = VACANA.findIndex((x) => terms.includes(x));
   const col = vacIdx >= 0 ? vacIdx : 0;
   const { grid, row, col: c } = toGrid(para, VIBHAKTI, VACANA, vib, col);
-  return { title: `${lemma} · declension`, grid, row, col: c };
+  return { title: `${stem} · declension`, grid, row, col: c };
 }

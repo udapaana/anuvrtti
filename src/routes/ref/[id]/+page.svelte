@@ -263,8 +263,11 @@
   <div class="cited">
     <span class="label">cited by</span>
     <span class="counts">
-      {readingHits.length || '—'} readings · {balabodhiniLessons.length} lessons · {dependents.length}
-      sūtras
+      {#if readingHits.length || balabodhiniLessons.length || dependents.length}
+        {readingHits.length} readings · {balabodhiniLessons.length} lessons · {dependents.length} sūtras
+      {:else}
+        nothing in this corpus cites it yet
+      {/if}
     </span>
   </div>
 
@@ -282,12 +285,8 @@
     </div>
   {/if}
 
-  <Disclose
-    label="sources"
-    count={sources.length ? String(sources.length) : null}
-    empty={!sources.length}
-    bind:open={sourcesOpen}
-  >
+  {#if sources.length || fullTranslation}
+  <Disclose label="sources" count={String(sources.length + (fullTranslation ? 1 : 0))} bind:open={sourcesOpen}>
     {#each sources as s (s.label)}
       <div class="source">
         <span class="source-label">{s.label}</span>
@@ -309,6 +308,7 @@
       </div>
     {/if}
   </Disclose>
+  {/if}
 {/snippet}
 
 {#if !sutra}
@@ -342,13 +342,13 @@
     {/if}
 
     <section class="graph">
-      <span class="label"><Sanskrit text="anuvṛtti" source="iast" /> — what it inherits</span>
+      <span class="label"><Sanskrit text="anuvṛtti" source="iast" /> · inherited terms</span>
       <AnuvrttiGraph {sutra} />
     </section>
 
     {#if prakriyaPaths.length || otherPaths.length || kaleSections.length}
       <section class="applied">
-        <span class="label">where it is put to work</span>
+        <span class="label">used in</span>
         <div class="links">
           {#each prakriyaPaths as lp (lp.pathId)}
             <a href="/workbook/{lp.pathId}?step={lp.stepIndex}">{lp.pathTitle}</a>

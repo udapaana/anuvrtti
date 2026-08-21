@@ -1,9 +1,11 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { onMount } from 'svelte';
   import { searchTerms } from '$lib/jargon';
   import { wordBank } from '$lib/stores/wordBank';
   import { loadSutras, numericToDisplayId } from '$lib/data';
+  import { foldQuery, matches, type Folded } from '$lib/search/fold';
 
   /*
     One search over four indexes, replacing four separate inputs: the /ref
@@ -18,6 +20,8 @@
     kind: 'sūtra' | 'jargon' | 'word' | 'reading';
     id: string;
     label: string;
+    /** Source script of `label`, so the result list obeys the toggle too. */
+    script?: 'devanagari' | 'telugu' | 'iast';
     meta: string;
     href: string;
   };
@@ -26,6 +30,25 @@
   let q = $state('');
   let cursor = $state(0);
   let input = $state<HTMLInputElement | null>(null);
+
+  // The query, folded for matching: diacritic-free roman plus the Devanagari
+  // and Telugu renderings, so `pitr`, `pitṛ`, `pitR` and पितृ all find each
+  // other whatever script the index happens to be in.
+  let folded = $state<Folded>({ raw: '', key: '', devanagari: '', telugu: '' });
+  $effect(() => {
+    const query = q.trim();
+    if (!query) {
+      folded = { raw: '', key: '', devanagari: '', telugu: '' };
+      return;
+    }
+    let cancelled = false;
+    foldQuery(query).then((f) => {
+      if (!cancelled) folded = f;
+    });
+    return () => {
+      cancelled = true;
+    };
+  });
 
   let sutras = $state<{ id: string; text: string; roman: string }[]>([]);
   let readings = $state<{ id: string; text: string; segment: number | null }[]>([]);
@@ -73,7 +96,14 @@
       const r = readings.find((x) => x.id === cand);
       if (r) {
         return [
-          { kind: 'reading', id: r.id, label: r.text || r.id, meta: r.id, href: `/reader?reading=${r.id}` }
+          {
+            kind: 'reading',
+            id: r.id,
+            label: r.text || r.id,
+            script: 'devanagari',
+            meta: r.id,
+            href: `/reader?reading=${r.id}`
+          }
         ];
       }
     }
@@ -84,17 +114,25 @@
         readings.find((x) => (x.segment ?? Infinity) >= n);
       if (r) {
         return [
-          { kind: 'reading', id: r.id, label: r.text || r.id, meta: `tier ${r.segment ?? n}`, href: `/reader?reading=${r.id}` }
+          {
+            kind: 'reading',
+            id: r.id,
+            label: r.text || r.id,
+            script: 'devanagari',
+            meta: `tier ${r.segment ?? n}`,
+            href: `/reader?reading=${r.id}`
+          }
         ];
       }
     }
     return readings
-      .filter((r) => r.text.includes(query) || r.id.includes(query.toLowerCase()))
+      .filter((r) => matches(r.text, folded) || r.id.includes(query.toLowerCase()))
       .slice(0, 4)
       .map((r) => ({
         kind: 'reading' as const,
         id: r.id,
         label: r.text || r.id,
+        script: 'devanagari' as const,
         meta: r.id,
         href: `/reader?reading=${r.id}`
       }));
@@ -103,30 +141,32 @@
   const hits = $derived.by((): Hit[] => {
     const query = q.trim();
     if (query.length < 1) return [];
-    const lower = query.toLowerCase();
 
     const sutraHits: Hit[] = sutras
-      .filter(
-        (s) =>
-          s.id.includes(query) ||
-          s.text.includes(query) ||
-          s.roman.toLowerCase().includes(lower)
-      )
+      .filter((s) => s.id.includes(query) || matches(s.text, folded) || matches(s.roman, folded))
       .slice(0, 6)
       .map((s) => ({
         kind: 'sūtra' as const,
         id: s.id,
         label: s.text || s.roman,
+        script: (s.text ? 'devanagari' : 'iast') as 'devanagari' | 'iast',
         meta: numericToDisplayId(s.id),
         href: `/ref/${s.id}`
       }));
 
-    const jargonHits: Hit[] = searchTerms(query)
+    // The jargon index matches on its own terms; feed it the Devanagari form
+    // too, so a romanised query reaches a Devanagari-keyed entry.
+    const jargonRaw = [...searchTerms(query), ...(folded.devanagari !== query ? searchTerms(folded.devanagari) : [])];
+    const jargonHits: Hit[] = jargonRaw
+      .filter((t: any, i: number, all: any[]) => all.findIndex((x: any) => (x.term ?? x.sanskrit) === (t.term ?? t.sanskrit)) === i)
       .slice(0, 4)
       .map((t: any) => ({
         kind: 'jargon' as const,
         id: t.id ?? t.term,
         label: t.sanskrit ?? t.term,
+        script: (/[ऀ-ॿ]/.test(t.sanskrit ?? t.term ?? '') ? 'devanagari' : 'iast') as
+          | 'devanagari'
+          | 'iast',
         meta: t.englishGloss ?? t.gloss ?? t.definition ?? '',
         href: `/ref/jargon?q=${encodeURIComponent(t.term ?? t.sanskrit ?? '')}`
       }));
@@ -134,15 +174,16 @@
     const wordHits: Hit[] = $wordBank.words
       .filter(
         (w) =>
-          w.display.includes(query) ||
-          (w.iast ?? '').toLowerCase().includes(lower) ||
-          w.englishGloss.toLowerCase().includes(lower)
+          matches(w.display, folded) ||
+          matches(w.iast, folded) ||
+          w.englishGloss.toLowerCase().includes(query.toLowerCase())
       )
       .slice(0, 4)
       .map((w) => ({
         kind: 'word' as const,
         id: w.id,
         label: w.display,
+        script: 'telugu' as const,
         meta: w.englishGloss || w.gloss,
         href: `/words?q=${encodeURIComponent(w.display)}`
       }));
@@ -218,7 +259,9 @@
         {#each hits as hit, i (hit.kind + hit.id)}
           <button class="hit" class:on={i === cursor} onclick={() => pick(hit)}>
             <span class="kind">{hit.kind}</span>
-            <span class="label">{hit.label}</span>
+            <span class="label">
+              {#if hit.script}<Sanskrit text={hit.label} source={hit.script} />{:else}{hit.label}{/if}
+            </span>
             <span class="meta">{hit.meta}</span>
           </button>
         {/each}

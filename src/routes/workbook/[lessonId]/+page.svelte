@@ -281,6 +281,9 @@
   />
 
   <Shell measure>
+    {#if !total}
+      <p class="description">This path has no steps yet.</p>
+    {/if}
     {#if path.description && clamped === 0}
       <p class="description"><InlineMarkup text={path.description} /></p>
     {/if}
@@ -305,7 +308,7 @@
           {#if step.keyTerms?.length}
             <div class="terms">
               {#each step.keyTerms as term}
-                <Chip label={termText(term)} deva />
+                <Chip label={termText(term)} script={termScript(term)} />
               {/each}
             </div>
           {/if}
@@ -376,7 +379,7 @@
           {#if step.keyTerms?.length}
             <div class="terms">
               {#each step.keyTerms as term}
-                <Chip label={termText(term)} deva />
+                <Chip label={termText(term)} script={termScript(term)} />
               {/each}
             </div>
           {/if}
@@ -396,7 +399,7 @@
           <Sanskrit text={siblingPaths.next.titleSanskrit} source="telugu" /> ›
         </a>
       {:else}
-        <span class="done">that is the last step</span>
+        <span class="done">last step</span>
       {/if}
     </nav>
 

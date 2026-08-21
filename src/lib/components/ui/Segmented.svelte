@@ -4,6 +4,7 @@
     reader gloss modes, commentary tiers, volume tabs, list/by-lesson, due/all.
     Square, one border, ink fill when on.
   */
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
   import type { Segment } from './types';
 
   let {
@@ -26,12 +27,12 @@
   {#each options as opt (opt.id)}
     <button
       class:on={opt.id === value}
-      class:deva={opt.deva}
+      class:deva={!!opt.script}
       title={opt.title}
       aria-pressed={opt.id === value}
       onclick={() => onchange(opt.id)}
     >
-      {opt.label}
+      {#if opt.script}<Sanskrit text={opt.label} source={opt.script} />{:else}{opt.label}{/if}
     </button>
   {/each}
 </div>

@@ -164,6 +164,7 @@
       .map((c) => ({
         id: c.id,
         label: c.sanskrit,
+        script: 'iast' as const,
         sub: c.english,
         count: (byCategory[c.id] ?? []).length
       }))
@@ -207,8 +208,8 @@
 {#snippet shelfLeft()}
   <Segmented
     options={[
-      { id: 'sutra', label: 'सूत्राणि', deva: true },
-      { id: 'path', label: 'पथः', deva: true }
+      { id: 'sutra', label: 'सूत्राणि', script: 'devanagari' as const },
+      { id: 'path', label: 'पथः', script: 'devanagari' as const }
     ]}
     value={mode}
     onchange={(id) => setMode(id as 'sutra' | 'path')}
@@ -226,7 +227,7 @@
       {/each}
     </div>
   {:else}
-    <span class="quiet">the guided path</span>
+    <span class="quiet">syllabus</span>
   {/if}
 {/snippet}
 
@@ -253,6 +254,7 @@
       items={types.map((t) => ({
         id: t.value,
         label: t.label,
+        script: t.value === 'all' ? undefined : ('iast' as const),
         count:
           t.value === 'all'
             ? padaStats.total
@@ -263,7 +265,7 @@
     />
   {:else}
     <Spine
-      title="the categories"
+      title="categories"
       items={categoryItems}
       activeId={selectedCategory}
       onpick={(id) => {
@@ -282,13 +284,13 @@
   {:else if mode === 'path'}
     <header class="head">
       <h1><Sanskrit text={activeCategory.sanskrit} source="iast" /></h1>
-      <p>
-        the guided path through the Aṣṭādhyāyī — {activeCategory.english}, in the order they are
-        meant to be taken
-      </p>
+      <p>Paths through the {activeCategory.english} sūtras, in the order they are taken.</p>
     </header>
 
     <div class="paths">
+      {#if !categoryPaths.length}
+        <p class="note">No paths in this category yet.</p>
+      {/if}
       {#each categoryPaths as p (p.meta.id)}
         <a class="path" href="/workbook/{p.meta.id}">
           <span class="path-order">{String(p.meta.order).padStart(2, '0')}</span>
@@ -312,9 +314,8 @@
     </div>
 
     <p class="note">
-      A path is a run of steps over real sūtras, which is why it sits in Reference rather than on
-      the front page: from a step you are one click from the sūtra it teaches, and a sūtra page
-      lists the paths that teach it.
+      Each path is a sequence of steps over sūtras. A step links to the sūtra it teaches, and a
+      sūtra page lists the paths that use it.
     </p>
   {:else}
     <header class="head">
@@ -334,7 +335,7 @@
         <SutraDisplay {sutra} variant="compact" href="/ref/{sutra.id}" />
       {/each}
       {#if !filteredSutras.length}
-        <p class="note">nothing here — try another pāda, or ⌘K to search the whole corpus.</p>
+        <p class="note">No sūtras of this type in this pāda.</p>
       {/if}
     </div>
   {/if}

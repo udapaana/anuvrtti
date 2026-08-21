@@ -1,4 +1,7 @@
 <script lang="ts">
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import type { Script } from '$lib/transliteration';
+
   /*
     One chip for the four badge classes and every morphological tag. Category
     reads from the label; the three accents stay reserved for state, not
@@ -8,18 +11,21 @@
   let {
     label,
     tone = 'quiet',
-    deva = false,
+    script = undefined,
     title = undefined
   }: {
     label: string;
     /** 'quiet' is the default; 'on' marks the selected one; 'ok' marks done. */
     tone?: 'quiet' | 'on' | 'ok' | 'ref';
-    deva?: boolean;
+    /** Source script, when the label is Sanskrit — it then follows the toggle. */
+    script?: Script;
     title?: string;
   } = $props();
 </script>
 
-<span class="chip {tone}" class:deva {title}>{label}</span>
+<span class="chip {tone}" class:deva={!!script} {title}>
+  {#if script}<Sanskrit text={label} source={script} />{:else}{label}{/if}
+</span>
 
 <style>
   .chip {

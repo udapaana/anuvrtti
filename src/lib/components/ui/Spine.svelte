@@ -5,6 +5,7 @@
     replaces the three private `.spine` implementations (reader, usage,
     dukṛṇkaraṇe) — the single biggest dedupe in the cleanup.
   */
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
   import type { SpineItem } from './types';
 
   let {
@@ -35,12 +36,16 @@
   {@const on = item.id === activeId}
   {#if item.href}
     <a class="item" class:on class:done={item.done} href={item.href}>
-      <span class="name">{item.label}</span>
+      <span class="name">
+        {#if item.script}<Sanskrit text={item.label} source={item.script} />{:else}{item.label}{/if}
+      </span>
       {#if meta(item)}<span class="meta">{meta(item)}</span>{/if}
     </a>
   {:else}
     <button class="item" class:on class:done={item.done} onclick={() => onpick?.(item.id)}>
-      <span class="name">{item.label}</span>
+      <span class="name">
+        {#if item.script}<Sanskrit text={item.label} source={item.script} />{:else}{item.label}{/if}
+      </span>
       {#if meta(item)}<span class="meta">{meta(item)}</span>{/if}
     </button>
   {/if}
