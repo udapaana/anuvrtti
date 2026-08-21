@@ -33,7 +33,7 @@
   }
 
   function getDifficultyColor(d: number): string {
-    const colors = ['', 'var(--accent-ok)', '#84cc16', '#eab308', 'var(--accent)', 'var(--ink)'];
+    const colors = ['', 'var(--accent-ok)', 'var(--accent-ok)', 'var(--accent)', 'var(--accent)', 'var(--ink)'];
     return colors[d] || 'var(--muted)';
   }
 </script>
@@ -123,7 +123,7 @@
 
 <style>
   .passage-reader {
-    background: #fefefe;
+    background: var(--paper);
     border: 1px solid var(--rule-2);
     border-radius: 8px;
     padding: 1.25rem;

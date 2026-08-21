@@ -122,6 +122,24 @@
       });
     }
 
+
+  /*
+    Cytoscape draws to a canvas, which can resolve neither a CSS custom property
+    nor an oklch() colour. So the token is resolved through the engine first —
+    set as a colour on a probe element and read back as rgb — and cytoscape gets
+    a literal. One source of truth, still.
+  */
+  function token(name: string, fallback: string): string {
+    if (typeof document === 'undefined') return fallback;
+    const probe = document.createElement('span');
+    probe.style.color = `var(${name}, ${fallback})`;
+    probe.style.display = 'none';
+    document.body.appendChild(probe);
+    const resolved = getComputedStyle(probe).color;
+    probe.remove();
+    return resolved || fallback;
+  }
+
     cy = cytoscape({
       container,
       elements,
@@ -131,13 +149,13 @@
           style: {
             'background-color': '#fff',
             'border-width': 1.5,
-            'border-color': '#d1d5db',
+            'border-color': 'var(--rule-2)',
             'label': 'data(label)',
             'text-valign': 'center',
             'text-halign': 'center',
             'font-size': '11px',
             'font-family': 'system-ui, sans-serif',
-            'color': 'var(--ink-2)',
+            'color': token('--ink-2', '#5c5345'),
             'text-wrap': 'wrap',
             'text-max-width': '100px',
             'width': 110,
@@ -149,10 +167,10 @@
         {
           selector: 'node[type="current"]',
           style: {
-            'background-color': 'var(--sunken)',
-            'border-color': 'var(--accent-ref)',
+            'background-color': token('--sunken', '#faf7f0'),
+            'border-color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
             'border-width': 2,
-            'color': '#0c4a6e',
+            'color': 'var(--accent-ref)',
             'font-weight': 500,
             'width': 130,
             'height': 52,
@@ -161,38 +179,38 @@
         {
           selector: 'node[type="parent"]',
           style: {
-            'border-color': 'var(--quiet)',
-            'color': '#4b5563',
+            'border-color': token('--quiet', '#94a3b8'),
+            'color': 'var(--ink-2)',
           }
         },
         {
           selector: 'node[type="child"]',
           style: {
-            'border-color': 'var(--quiet)',
-            'color': '#4b5563',
+            'border-color': token('--quiet', '#94a3b8'),
+            'color': 'var(--ink-2)',
           }
         },
         {
           selector: 'node:active, node:selected',
           style: {
-            'border-color': 'var(--accent-ref)',
-            'background-color': 'var(--sunken)',
+            'border-color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
+            'background-color': token('--sunken', '#faf7f0'),
           }
         },
         {
           selector: 'edge',
           style: {
             'width': 1.5,
-            'line-color': 'var(--faint)',
-            'target-arrow-color': 'var(--quiet)',
+            'line-color': token('--faint', '#bcb29d'),
+            'target-arrow-color': token('--quiet', '#94a3b8'),
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier',
             'arrow-scale': 0.8,
             'label': 'data(label)',
             'font-size': '10px',
-            'color': 'var(--accent-ref)',
+            'color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
             'font-weight': 500,
-            'text-background-color': 'var(--sunken)',
+            'text-background-color': token('--sunken', '#faf7f0'),
             'text-background-opacity': 1,
             'text-background-padding': '2px',
             'text-rotation': 0,
@@ -202,8 +220,8 @@
         {
           selector: 'edge:active, edge:selected',
           style: {
-            'line-color': 'var(--accent-ref)',
-            'target-arrow-color': 'var(--accent-ref)',
+            'line-color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
+            'target-arrow-color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
             'width': 2,
           }
         }

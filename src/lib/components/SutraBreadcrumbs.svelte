@@ -63,8 +63,8 @@
     gap: 0.5rem;
     font-size: 0.85rem;
     padding: 0.5rem 0.75rem;
-    background: #fefce8;
-    border-left: 3px solid #facc15;
+    background: var(--sunken);
+    border-left: 3px solid var(--accent);
     border-radius: 0 4px 4px 0;
   }
 
@@ -86,7 +86,7 @@
 
   .compact .breadcrumb-item {
     padding: 0.25rem 0.5rem;
-    background: #fef9c3;
+    background: var(--accent-soft);
     border-left: 2px solid var(--accent);
     font-size: 0.75rem;
   }

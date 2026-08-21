@@ -1160,12 +1160,11 @@
     font-size: 10px;
     color: var(--quiet);
   }
-  /* The three sticky heads each carried their own near-white background; they
-     sit on the sunken token now, one surface for all of them. */
+  /* The three heads each carried their own near-white background; they sit on
+     the sunken token now, one surface for all of them. They are not sticky:
+     the grid scrolls horizontally, and a sticky top inside a scroll container
+     offsets the head row down into the table rather than pinning it. */
   .colhead {
-    position: sticky;
-    top: var(--sticky-rail);
-    z-index: 2;
     font-family: var(--font-deva);
     font-size: 12px;
   }
@@ -1195,7 +1194,7 @@
     color: var(--accent);
   }
   .cell .form.ghost {
-    color: #cfcabf;
+    color: var(--ghost);
   }
   .cell .phrase {
     font-family: var(--font-deva);

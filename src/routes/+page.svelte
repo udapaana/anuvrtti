@@ -71,13 +71,11 @@
       const r = await fetch('/data/usage.json', { cache: 'no-store' });
       if (r.ok) {
         const u = await r.json();
+        // The door's count is the cells the corpus actually attests, which is
+        // what each entry records as `filled`.
         stat.cells = (u.sections ?? []).reduce(
           (a: number, s: any) =>
-            a +
-            (s.paradigms ?? []).reduce(
-              (b: number, p: any) => b + Object.keys(p.cells ?? {}).length,
-              0
-            ),
+            a + (s.entries ?? []).reduce((b: number, e: any) => b + (e.filled ?? 0), 0),
           0
         );
       }

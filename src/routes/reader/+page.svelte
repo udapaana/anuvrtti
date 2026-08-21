@@ -13,10 +13,10 @@
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
   import { decompose } from '$lib/reader/wordDecomp';
-  // Graded reader — the design's redesign: a chapter spine (left), interlinear
-  // gloss reading with word-identity tags (center), and a scroll-synced sūtra
-  // derivation rail (right). Paginated (PAGE per page) so it scales past a few
-  // thousand readings. Old palette: white bg, var(--accent) accent, var(--accent-ref) indigo.
+  // Graded reader: a chapter spine (left), interlinear gloss reading with
+  // word-identity tags (centre), and a scroll-synced sūtra derivation rail
+  // (right), all on the shared Shell. Paginated (PAGE per page) so it scales
+  // past a few thousand readings. Colour comes from the tokens in app.css.
   const PAGE = 20;
 
   type Reading = any;

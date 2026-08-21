@@ -23,18 +23,7 @@
 
   const allWords = $derived(browser ? $wordBank.words : ([] as WordEntry[]));
 
-  // Group by lesson
   type LessonGroup = { lessonId: string; lessonNum: number; words: WordEntry[] };
-  let groups = $derived.by<LessonGroup[]>(() => {
-    const map = new Map<string, LessonGroup>();
-    for (const w of filtered) {
-      if (!map.has(w.lessonId)) {
-        map.set(w.lessonId, { lessonId: w.lessonId, lessonNum: w.lessonNum, words: [] });
-      }
-      map.get(w.lessonId)!.words.push(w);
-    }
-    return Array.from(map.values()).sort((a, b) => a.lessonNum - b.lessonNum);
-  });
 
   let query = $state($page.url.searchParams.get('q') ?? '');
   let filtered = $derived.by(() => {
@@ -47,6 +36,19 @@
         w.gloss?.toLowerCase().includes(q) ||
         w.englishGloss?.toLowerCase().includes(q)
     );
+  });
+
+  // Group by lesson — declared after `filtered`, which it reads: a derived
+  // evaluates where it is declared during server render.
+  let groups = $derived.by<LessonGroup[]>(() => {
+    const map = new Map<string, LessonGroup>();
+    for (const w of filtered) {
+      if (!map.has(w.lessonId)) {
+        map.set(w.lessonId, { lessonId: w.lessonId, lessonNum: w.lessonNum, words: [] });
+      }
+      map.get(w.lessonId)!.words.push(w);
+    }
+    return Array.from(map.values()).sort((a, b) => a.lessonNum - b.lessonNum);
   });
 
   // The query lives in the URL so the review session can inherit it.

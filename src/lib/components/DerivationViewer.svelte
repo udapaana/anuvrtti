@@ -552,7 +552,7 @@
   }
 
   .term.changed {
-    color: #0369a1;
+    color: var(--accent-ref);
     font-weight: 500;
   }
 

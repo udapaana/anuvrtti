@@ -349,7 +349,7 @@
   .prereq-remove {
     background: none;
     border: none;
-    color: #818cf8;
+    color: var(--accent-ref);
     cursor: pointer;
     font-size: 0.875rem;
     line-height: 1;

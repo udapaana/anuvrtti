@@ -206,7 +206,7 @@
     background: var(--sunken);
     border: 1px solid var(--rule-2);
     border-radius: 0.5rem;
-    color: #991b1b;
+    color: var(--ink);
     font-size: 0.875rem;
   }
 </style>

@@ -254,13 +254,13 @@
   /* it color palette */
   .it-red     { color: var(--ink); background: var(--sunken); }
   .it-orange  { color: var(--accent-hover); background: var(--sunken); }
-  .it-amber   { color: #d97706; background: var(--sunken); }
-  .it-lime    { color: #65a30d; background: #f7fee7; }
-  .it-teal    { color: #0d9488; background: #f0fdfa; }
-  .it-cyan    { color: #0891b2; background: #ecfeff; }
+  .it-amber   { color: var(--accent-hover); background: var(--sunken); }
+  .it-lime    { color: var(--accent-ok); background: var(--sunken); }
+  .it-teal    { color: var(--accent-ok); background: var(--sunken); }
+  .it-cyan    { color: var(--accent-ref); background: var(--sunken); }
   .it-violet  { color: var(--accent-ref); background: var(--sunken); }
-  .it-fuchsia { color: #a21caf; background: #fdf4ff; }
-  .it-rose    { color: var(--ink); background: #fff1f2; }
+  .it-fuchsia { color: var(--accent-ref); background: var(--sunken); }
+  .it-rose    { color: var(--ink); background: var(--sunken); }
   .it-sky     { color: var(--accent-ref); background: var(--sunken); }
   .it-green   { color: var(--accent-ok); background: var(--sunken); }
   .it-indigo  { color: var(--accent-ref); background: var(--sunken); }
@@ -282,7 +282,7 @@
     transition: border-color 0.15s, box-shadow 0.15s;
   }
   .pratyahara-input:focus {
-    border-color: #818cf8;
+    border-color: var(--accent-ref);
     box-shadow: 0 0 0 2px var(--sunken);
   }
 

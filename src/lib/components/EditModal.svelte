@@ -124,22 +124,13 @@
     prakriya: 'Derivations',
   };
 
-  const categoryColors: Record<string, string> = {
-    foundation: 'var(--muted)',
-    tinganta: 'var(--accent-ref)',
-    subanta: 'var(--accent-ok)',
-    kridanta: '#f43f5e',
-    taddhita: '#f59e0b',
-    sandhi: '#8b5cf6',
-    karaka: '#06b6d4',
-    samasa: 'var(--accent)',
-    prakarana: '#14b8a6',
-    prakriya: '#d946ef',
-  };
+  // Category reads from its label, not from a hue: the ten-colour taxonomy
+  // palette is what the one neutral chip replaced.
+  const categoryColors: Record<string, string> = {};
 
   const difficultyColors: Record<string, string> = {
     beginner: 'var(--accent-ok)',
-    intermediate: '#f59e0b',
+    intermediate: 'var(--accent)',
     advanced: 'var(--ink)',
   };
 
@@ -1144,7 +1135,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: #fefce8;
+    background: var(--sunken);
     border-bottom: 1px solid var(--accent-soft);
     font-size: 0.8125rem;
     color: var(--accent-hover);
@@ -1178,7 +1169,7 @@
     padding: 0.3125rem 0.75rem;
     cursor: pointer;
   }
-  .confirm-discard:hover { background: var(--sunken); border-color: #f87171; }
+  .confirm-discard:hover { background: var(--sunken); border-color: var(--ink); }
 
   .confirm-cancel {
     font-size: 0.8125rem;
@@ -1419,7 +1410,7 @@
   }
   .new-path-btn:hover {
     background: var(--sunken);
-    border-color: #a5b4fc;
+    border-color: var(--accent-ref);
   }
 
   /* ── Tree (commentary + reference) ───────────────────────────────────── */

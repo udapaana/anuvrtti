@@ -155,7 +155,7 @@
   .type-paribhasha { background: var(--sunken); color: var(--accent-hover); }
   .type-vidhi { background: var(--sunken); color: var(--accent-ok); }
   .type-adhikara { background: var(--sunken); color: var(--accent-ref); }
-  .type-atidesa { background: #fce7f3; color: #9d174d; }
+  .type-atidesa { background: var(--sunken); color: var(--ink); }
 
   .sutra-text {
     font-size: 1.25rem;

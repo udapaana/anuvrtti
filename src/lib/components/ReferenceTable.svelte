@@ -495,7 +495,7 @@
     background: var(--sunken);
   }
   .slot-empty:hover {
-    background: #f0f0ef;
+    background: var(--rule);
   }
 
   .slot-dot {
@@ -503,7 +503,7 @@
     width: 100%;
     min-height: 1.75rem;
     border-radius: 0.375rem;
-    border: 1.5px dashed #c8c4c0;
+    border: 1.5px dashed var(--faint);
   }
 
   .slot-correct { background: var(--sunken); }

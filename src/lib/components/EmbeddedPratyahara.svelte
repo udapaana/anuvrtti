@@ -71,7 +71,7 @@
   }
 
   .pratyahara-equals {
-    color: #86efac;
+    color: var(--accent-ok);
   }
 
   .pratyahara-sounds {
@@ -85,7 +85,7 @@
   }
 
   .sound-sep {
-    color: #86efac;
+    color: var(--accent-ok);
     margin-right: 0.125rem;
   }
 
@@ -101,7 +101,7 @@
 
   .pratyahara-code {
     font-family: var(--font-mono);
-    color: #991b1b;
+    color: var(--ink);
   }
 
   .pratyahara-error {

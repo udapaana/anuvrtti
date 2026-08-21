@@ -32,8 +32,13 @@
     spineWidth?: string;
   } = $props();
 
+  /*
+    The wrapper's layout modifier is prefixed, so it cannot collide with the
+    region classes below it — `.shell.spine` would otherwise match the nav's
+    own `.spine` rule and take its display:flex over the grid.
+  */
   const columns = $derived(
-    spine && rail ? 'both' : spine ? 'spine' : rail ? 'rail' : 'column'
+    spine && rail ? 'has-both' : spine ? 'has-spine' : rail ? 'has-rail' : 'col-only'
   );
 </script>
 
@@ -44,7 +49,7 @@
 <div
   class="shell {columns}"
   class:wide
-  style={columns === 'column' ? `max-width:${columnMax}` : `--spine-w:${spineWidth}`}
+  style={columns === 'col-only' ? `max-width:${columnMax}` : `--spine-w:${spineWidth}`}
 >
   {#if spine}
     <nav class="spine">{@render spine()}</nav>
@@ -69,16 +74,16 @@
   .shell.wide {
     max-width: none;
   }
-  .shell.both {
+  .shell.has-both {
     grid-template-columns: var(--spine-w, 176px) minmax(0, 1fr) 312px;
   }
-  .shell.spine {
+  .shell.has-spine {
     grid-template-columns: var(--spine-w, 176px) minmax(0, 1fr);
   }
-  .shell.rail {
+  .shell.has-rail {
     grid-template-columns: minmax(0, 1fr) 312px;
   }
-  .shell.column {
+  .shell.col-only {
     grid-template-columns: minmax(0, 1fr);
     max-width: 900px;
   }
@@ -105,7 +110,7 @@
   .column.measure {
     max-width: 68ch;
   }
-  .shell.column > .column {
+  .shell.col-only > .column {
     padding: 40px 24px 80px;
   }
 
@@ -128,9 +133,9 @@
      nothing is pinned. */
   @media (max-width: 960px) {
     .shell,
-    .shell.both,
-    .shell.spine,
-    .shell.rail {
+    .shell.has-both,
+    .shell.has-spine,
+    .shell.has-rail {
       grid-template-columns: minmax(0, 1fr);
     }
     .spine {

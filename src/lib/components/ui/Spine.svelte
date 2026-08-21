@@ -79,10 +79,22 @@
     font-size: 15px;
     color: inherit;
   }
+  /* A spine item is one line of name and one of gloss; a long gloss clips
+     rather than growing the item to three lines and losing the arc's shape. */
   .meta {
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--quiet);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .name {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   @media (max-width: 960px) {

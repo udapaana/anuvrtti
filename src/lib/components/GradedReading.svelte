@@ -130,7 +130,7 @@
     font: inherit;
   }
   .marker.term {
-    color: #1a4a6e;
+    color: var(--accent-ref);
     font-weight: 600;
   }
   .marker.cite {
@@ -157,10 +157,10 @@
     padding: 0.1rem 0 0.1rem 0.85rem;
     margin-top: 0.5rem;
     font-size: 1.05rem;
-    color: #3a3a3a;
+    color: var(--ink);
     cursor: pointer;
   }
   .vyakhya.sel {
-    background: #fdf3e3;
+    background: var(--sunken);
   }
 </style>

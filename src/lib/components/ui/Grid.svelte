@@ -107,7 +107,7 @@
     color: var(--muted);
   }
   .cell.dim {
-    color: #cfcabf;
+    color: var(--ghost);
   }
   .cell.on {
     background: var(--accent-soft);
