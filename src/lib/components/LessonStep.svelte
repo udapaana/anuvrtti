@@ -860,7 +860,7 @@
         <ul class="bridge-list">
           {#each bridgePaths as p}
             <li>
-              <a href="/learn/{p.id}">
+              <a href="/workbook/{p.id}">
                 <span class="bridge-deva"><Sanskrit text={p.label} /></span>
                 <span class="bridge-en">{p.title?.replace(/^[^—]+ — /, '') ?? ''}</span>
               </a>

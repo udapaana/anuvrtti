@@ -2,6 +2,9 @@
   import { onMount } from 'svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import DerivationViewer from '$lib/components/DerivationViewer.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import ToolRow from '../ToolRow.svelte';
   import {
     initPrakriya,
     isPrakriyaAvailable,
@@ -87,97 +90,127 @@
 </script>
 
 <svelte:head>
-  <title>Prakriya | anuvrtti</title>
+  <title>प्रक्रिया · derivation | anuvrtti</title>
 </svelte:head>
 
-<div class="max-w-4xl mx-auto">
-  <header class="mb-8">
-    <h1 class="text-2xl font-semibold mb-2">
-      <Sanskrit text="प्रक्रिया" />
-      <span class="text-stone-400 ml-2">Derivation Explorer</span>
-    </h1>
-    <p class="text-stone-600">
-      Watch Paninian rules apply step-by-step to derive Sanskrit word forms.
-    </p>
+{#snippet shelfLeft()}
+  <ToolRow current="prakriya" />
+{/snippet}
+
+{#snippet shelfRight()}
+  {#if prakriya}<span>{prakriya.steps.length} rules applied</span>{/if}
+{/snippet}
+
+<Shelf left={shelfLeft} right={shelfRight} />
+
+<Shell>
+  <header class="head">
+    <h1><Sanskrit text="प्रक्रिया" /></h1>
+    <p>A form derived step by step, each step the sūtra that produced it.</p>
   </header>
 
   {#if wasmLoading}
-    <div class="bg-white rounded-lg border border-stone-200 p-8 text-center">
-      <div class="inline-block w-6 h-6 border-2 border-stone-300 border-t-indigo-500 rounded-full animate-spin mb-3"></div>
-      <p class="text-stone-500">Loading derivation engine...</p>
-    </div>
+    <p class="status">loading the derivation engine…</p>
   {:else if !wasmReady}
-    <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
-      <p class="text-amber-800">
-        The derivation engine could not be loaded. This feature requires WebAssembly support.
-      </p>
-    </div>
+    <!-- The amber and red alert cards go; an error is one line above the
+         exhibit, like every other error in the app. -->
+    <p class="status">
+      The derivation engine could not be loaded — it needs WebAssembly support.
+    </p>
   {:else}
-    <!-- Input form -->
-    <form onsubmit={handleSubmit} class="bg-white rounded-lg border border-stone-200 p-6 mb-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Dhatu selection -->
-        <div>
-          <label for="dhatu" class="block text-sm font-medium text-stone-700 mb-2">
-            <Sanskrit text="धातु" /> (root)
-          </label>
-          <select
-            id="dhatu"
-            bind:value={selectedDhatu}
-            onchange={() => derive()}
-            class="w-full px-3 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-          >
-            {#each dhatuList as dhatu}
-              <option value={dhatu.key}>
-                {dhatu.key} — {dhatu.meaning}
-              </option>
-            {/each}
-          </select>
-        </div>
+    <form class="controls" onsubmit={handleSubmit}>
+      <label>
+        <span class="label"><Sanskrit text="धातु" /> · root</span>
+        <select id="dhatu" bind:value={selectedDhatu} onchange={() => derive()}>
+          {#each dhatuList as dhatu}
+            <option value={dhatu.key}>{dhatu.key} — {dhatu.meaning}</option>
+          {/each}
+        </select>
+      </label>
 
-        <!-- Lakara selection -->
-        <div>
-          <label for="lakara" class="block text-sm font-medium text-stone-700 mb-2">
-            <Sanskrit text="लकार" /> (tense/mood)
-          </label>
-          <select
-            id="lakara"
-            bind:value={selectedLakara}
-            onchange={() => derive()}
-            class="w-full px-3 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-          >
-            {#each lakaras as lakara}
-              <option value={lakara.value}>
-                {lakara.label} ({lakara.sanskrit})
-              </option>
-            {/each}
-          </select>
-        </div>
-      </div>
+      <label>
+        <span class="label"><Sanskrit text="लकार" /> · tense</span>
+        <select id="lakara" bind:value={selectedLakara} onchange={() => derive()}>
+          {#each lakaras as lakara}
+            <option value={lakara.value}>{lakara.label} ({lakara.sanskrit})</option>
+          {/each}
+        </select>
+      </label>
 
-      <div class="mt-4 pt-4 border-t border-stone-100 text-sm text-stone-500">
-        Showing: <Sanskrit text="प्रथमपुरुष" /> (3rd person) · <Sanskrit text="एकवचन" /> (singular) · <Sanskrit text="कर्तरि" /> (active)
-      </div>
+      <span class="fixed">
+        <Sanskrit text="प्रथमपुरुष" /> · <Sanskrit text="एकवचन" /> · <Sanskrit text="कर्तरि" />
+      </span>
     </form>
 
-    <!-- Results -->
-    <div class="space-y-4">
-      {#if loading}
-        <div class="bg-white rounded-lg border border-stone-200 p-8 text-center">
-          <div class="inline-block w-6 h-6 border-2 border-stone-300 border-t-indigo-500 rounded-full animate-spin"></div>
-        </div>
-      {:else if error}
-        <div class="bg-red-50 border border-red-200 rounded-lg p-6">
-          <p class="text-red-800">{error}</p>
-        </div>
-      {:else if prakriya}
-        <DerivationViewer {prakriya} expanded={true} />
-
-        <!-- Stats -->
-        <div class="text-sm text-stone-500 text-center">
-          {prakriya.steps.length} rules applied
-        </div>
-      {/if}
-    </div>
+    {#if loading}
+      <p class="status">deriving…</p>
+    {:else if error}
+      <p class="status">{error}</p>
+    {:else if prakriya}
+      <DerivationViewer {prakriya} expanded={true} />
+    {/if}
   {/if}
-</div>
+</Shell>
+
+<style>
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .head h1 {
+    margin: 0;
+    font-family: var(--font-deva);
+    font-size: 27px;
+    font-weight: 600;
+  }
+  .head p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 62ch;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 0;
+  }
+  .controls label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .controls select {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 5px 8px;
+    min-width: 14rem;
+  }
+  .controls select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .fixed {
+    font-family: var(--font-deva);
+    font-size: 13px;
+    color: var(--quiet);
+    padding-bottom: 6px;
+  }
+
+  .status {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--quiet);
+  }
+</style>

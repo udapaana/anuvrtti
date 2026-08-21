@@ -5,6 +5,10 @@
     type Lakara, type Gana, type Prayoga, type Purusha, type Vacana,
   } from '$lib/prakriya';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import Segmented from '$lib/components/ui/Segmented.svelte';
+  import ToolRow from '../ref/ToolRow.svelte';
   import { displayScript } from '$lib/stores/preferences';
 
   // ── Selection state ──────────────────────────────────────────────
@@ -161,511 +165,273 @@
 </script>
 
 <svelte:head>
-  <title>Conjugate | anuvrtti</title>
+  <title>तिङन्त · conjugate | anuvrtti</title>
 </svelte:head>
 
-<article class="page">
-  <a href="/" class="back-link">← home</a>
-  <p class="eyebrow">tiṅanta · verb forms</p>
-  <h1 class="title">conjugate</h1>
+{#snippet shelfLeft()}
+  <ToolRow current="conjugate" />
+  <!-- The controls that were an aside: on the shelf, the table gets the full
+       measure — it is the widest exhibit in the app. -->
+  <label class="pick">
+    <span class="quiet">dhātu</span>
+    <select
+      value={customMode ? '__custom' : selectedDhatu.key}
+      onchange={(e) => {
+        const v = (e.currentTarget as HTMLSelectElement).value;
+        if (v === '__custom') { customMode = true; return; }
+        const d = DHATU_LIST.find((x) => x.key === v);
+        if (d) pickDhatu(d);
+      }}
+    >
+      {#each DHATU_LIST as d (d.key)}
+        <option value={d.key}>√{d.label} — {d.meaning}</option>
+      {/each}
+      <option value="__custom">custom…</option>
+    </select>
+  </label>
 
-  <div class="conjugator">
-    <!-- LEFT: controls -->
-    <aside class="controls">
+  <label class="pick">
+    <span class="quiet">lakāra</span>
+    <select
+      value={selectedLakara.id}
+      onchange={(e) => {
+        const l = LAKARA_LIST.find((x) => x.id === (e.currentTarget as HTMLSelectElement).value);
+        if (l) pickLakara(l);
+      }}
+    >
+      {#each LAKARA_LIST as l (l.id)}
+        <option value={l.id}>{l.label}</option>
+      {/each}
+    </select>
+  </label>
 
-      <!-- Dhātu picker -->
-      <section class="control-block">
-        <p class="control-label">dhātu</p>
-        <ul class="dhatu-list">
-          {#each DHATU_LIST as d (d.key)}
-            <li>
-              <button
-                class="dhatu-btn"
-                class:active={!customMode && selectedDhatu.key === d.key}
-                onclick={() => pickDhatu(d)}
-              >
-                <span class="dhatu-root font-{$displayScript}">
-                  <Sanskrit text={`√${d.label}`} source="iast" />
-                </span>
-                <span class="dhatu-meaning">{d.meaning}</span>
-              </button>
-            </li>
+  <Segmented
+    options={PRAYOGA_LIST.map((p) => ({ id: p.id, label: p.label }))}
+    value={selectedPrayoga.id}
+    onchange={(id) => {
+      const p = PRAYOGA_LIST.find((x) => x.id === id);
+      if (p) pickPrayoga(p);
+    }}
+    ariaLabel="prayoga"
+  />
+{/snippet}
+
+{#snippet shelfRight()}
+  <span>
+    <Sanskrit text={selectedLakara.label} source="iast" /> ·
+    <Sanskrit text={selectedPrayoga.label} source="iast" />
+  </span>
+{/snippet}
+
+<Shelf left={shelfLeft} right={shelfRight} />
+
+<Shell columnMax="1100px">
+  {#if customMode}
+    <div class="custom">
+      <label>
+        <span class="quiet">SLP1 root</span>
+        <input bind:value={customSlp1} placeholder="e.g. BU" spellcheck="false" />
+      </label>
+      <label>
+        <span class="quiet">IAST label</span>
+        <input bind:value={customIast} placeholder="e.g. bhū" spellcheck="false" />
+      </label>
+      <label>
+        <span class="quiet">gaṇa</span>
+        <select bind:value={customGana}>
+          {#each GANA_LIST as g}
+            <option value={g.id}>{g.label}</option>
           {/each}
-          <li>
-            <button
-              class="dhatu-btn custom-toggle"
-              class:active={customMode}
-              onclick={() => { customMode = true; }}
-            >
-              <span class="dhatu-root">custom…</span>
-            </button>
-          </li>
-        </ul>
-
-        {#if customMode}
-          <div class="custom-fields">
-            <div class="custom-row">
-              <label class="custom-lbl">SLP1 root</label>
-              <input class="custom-input" bind:value={customSlp1} placeholder="e.g. BU" spellcheck="false" />
-            </div>
-            <div class="custom-row">
-              <label class="custom-lbl">IAST label</label>
-              <input class="custom-input" bind:value={customIast} placeholder="e.g. bhū" spellcheck="false" />
-            </div>
-            <div class="custom-row">
-              <label class="custom-lbl">gaṇa</label>
-              <select class="custom-select" bind:value={customGana}>
-                {#each GANA_LIST as g}
-                  <option value={g.id}>{g.label}</option>
-                {/each}
-              </select>
-            </div>
-            <button class="derive-btn" onclick={generate} disabled={!customSlp1.trim()}>derive →</button>
-          </div>
-        {/if}
-      </section>
-
-      <!-- Lakāra picker -->
-      <section class="control-block">
-        <p class="control-label">lakāra</p>
-        <ul class="lakara-list">
-          {#each LAKARA_LIST as l (l.id)}
-            <li>
-              <button
-                class="lakara-btn"
-                class:active={selectedLakara.id === l.id}
-                onclick={() => pickLakara(l)}
-              >
-                <span class="lakara-iast font-{$displayScript}">
-                  <Sanskrit text={l.label} source="iast" />
-                </span>
-                <span class="lakara-desc">{l.iast.split('—')[1]?.trim() ?? ''}</span>
-              </button>
-            </li>
-          {/each}
-        </ul>
-      </section>
-
-      <!-- Prayoga picker -->
-      <section class="control-block">
-        <p class="control-label">prayoga</p>
-        <div class="prayoga-row">
-          {#each PRAYOGA_LIST as p (p.id)}
-            <button
-              class="prayoga-btn"
-              class:active={selectedPrayoga.id === p.id}
-              onclick={() => pickPrayoga(p)}
-            >
-              <Sanskrit text={p.label} source="iast" />
-            </button>
-          {/each}
-        </div>
-      </section>
-
-    </aside>
-
-    <!-- RIGHT: table -->
-    <div class="table-area">
-      <div class="table-header">
-        <h2 class="table-root font-{$displayScript}">
-          <Sanskrit text={headerLabel} source="iast" />
-        </h2>
-        {#if headerMeaning}
-          <span class="table-meaning">{headerMeaning}</span>
-        {/if}
-        <span class="table-lakara">
-          <Sanskrit text={selectedLakara.label} source="iast" />
-          · <Sanskrit text={selectedPrayoga.label} source="iast" />
-        </span>
-      </div>
-
-      {#if !wasmReady}
-        <p class="status">loading derivation engine…</p>
-      {:else if error}
-        <p class="status error">{error}</p>
-      {:else}
-        <div class="conj-table">
-          <!-- Column headers -->
-          <div class="conj-head">
-            <div class="corner"></div>
-            {#each VACANA_LABELS as vl}
-              <div class="col-head">
-                <Sanskrit text={vl.split(' · ')[0]} source="iast" />
-                <span class="head-sub">{vl.split(' · ')[1]}</span>
-              </div>
-            {/each}
-          </div>
-
-          <!-- Rows -->
-          {#each PERSONS as _p, pi}
-            <div class="conj-row">
-              <div class="row-head">
-                <Sanskrit text={PERSON_LABELS[pi].split(' · ')[0]} source="iast" />
-                <span class="head-sub">{PERSON_LABELS[pi].split(' · ')[1]}</span>
-              </div>
-              {#each VACANAS as _v, vi}
-                {@const cell = table[pi][vi]}
-                <div class="conj-cell" class:loading={cell.loading}>
-                  {#if cell.loading}
-                    <span class="cell-dots">···</span>
-                  {:else if cell.forms.length === 0}
-                    <span class="cell-empty">—</span>
-                  {:else}
-                    {#each cell.forms as form, fi}
-                      {#if fi > 0}<span class="form-sep"> / </span>{/if}
-                      <span class="cell-form font-{$displayScript}">
-                        <Sanskrit text={form} source="slp1" />
-                      </span>
-                    {/each}
-                  {/if}
-                </div>
-              {/each}
-            </div>
-          {/each}
-        </div>
-      {/if}
+        </select>
+      </label>
+      <button class="derive" onclick={generate} disabled={!customSlp1.trim()}>derive →</button>
+      <button class="cancel" onclick={() => (customMode = false)}>cancel</button>
     </div>
-  </div>
-</article>
+  {/if}
+
+  <header class="head">
+    <h1><Sanskrit text={headerLabel} source="iast" /></h1>
+    {#if headerMeaning}<p>{headerMeaning}</p>{/if}
+  </header>
+
+  {#if !wasmReady}
+    <p class="status">loading the derivation engine…</p>
+  {:else if error}
+    <p class="status">{error}</p>
+  {:else}
+    <div class="table-scroll">
+      <div class="conj">
+        <div class="corner"></div>
+        {#each VACANA_LABELS as vl}
+          <div class="col-head">
+            <Sanskrit text={vl.split(' · ')[0]} source="iast" />
+            <span class="sub">{vl.split(' · ')[1]}</span>
+          </div>
+        {/each}
+
+        {#each PERSONS as _p, pi}
+          <div class="row-head">
+            <Sanskrit text={PERSON_LABELS[pi].split(' · ')[0]} source="iast" />
+            <span class="sub">{PERSON_LABELS[pi].split(' · ')[1]}</span>
+          </div>
+          {#each VACANAS as _v, vi}
+            {@const cell = table[pi][vi]}
+            <div class="cell">
+              {#if cell.loading}
+                <span class="dots">···</span>
+              {:else if cell.forms.length === 0}
+                <span class="dots">—</span>
+              {:else}
+                {#each cell.forms as form, fi}
+                  {#if fi > 0}<span class="sep">/</span>{/if}
+                  <span class="form"><Sanskrit text={form} source="slp1" /></span>
+                {/each}
+              {/if}
+            </div>
+          {/each}
+        {/each}
+      </div>
+    </div>
+  {/if}
+</Shell>
 
 <style>
-  .page {
-    max-width: 60rem;
-    margin: 0 auto;
+  .quiet {
+    color: var(--faint);
   }
-
-  .back-link {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: var(--quiet);
-    text-decoration: none;
-    margin-bottom: 0.85rem;
-    transition: color 0.15s;
-  }
-  .back-link:hover { color: var(--ink); }
-
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: var(--quiet);
-    margin: 0;
-  }
-  .title {
-    font-weight: 400;
-    font-size: 1.5rem;
-    margin: 0.4rem 0 1.5rem;
-  }
-
-  /* Two-column layout: controls left, table right */
-  .conjugator {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  @media (min-width: 680px) {
-    .conjugator {
-      grid-template-columns: 14rem 1fr;
-      gap: 3rem;
-    }
-  }
-
-  /* ── Controls ── */
-  .controls {
+  .pick {
     display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
+    align-items: center;
+    gap: 6px;
   }
-
-  .control-block {}
-
-  .control-label {
+  .pick select,
+  .custom select,
+  .custom input {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.06em;
-    color: var(--quiet);
-    text-transform: lowercase;
-    margin: 0 0 0.5rem;
-  }
-
-  .dhatu-list,
-  .lakara-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-
-  .dhatu-btn,
-  .lakara-btn {
-    background: none;
-    border: none;
-    padding: 0.25rem 0;
-    cursor: pointer;
-    display: flex;
-    align-items: baseline;
-    gap: 0.6rem;
-    width: 100%;
-    text-align: left;
-    border-left: 2px solid transparent;
-    padding-left: 0.5rem;
-    transition: border-color 0.12s, color 0.12s;
-  }
-
-  .dhatu-btn:hover .dhatu-root,
-  .dhatu-btn:hover .dhatu-meaning,
-  .lakara-btn:hover .lakara-iast,
-  .lakara-btn:hover .lakara-desc {
+    font-size: 12px;
     color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 3px 7px;
+    max-width: 15rem;
   }
-
-  .dhatu-btn.active,
-  .lakara-btn.active {
-    border-left-color: var(--accent);
-  }
-
-  .dhatu-root {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--ink);
-    min-width: 2.5rem;
-    transition: color 0.12s;
-  }
-  .dhatu-meaning {
-    font-size: 0.75rem;
-    color: var(--quiet);
-    transition: color 0.12s;
-  }
-
-  .lakara-iast {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 0.95rem;
-    color: var(--ink);
-    min-width: 4.5rem;
-    transition: color 0.12s;
-  }
-  .lakara-desc {
-    font-size: 0.72rem;
-    color: var(--quiet);
-    transition: color 0.12s;
-  }
-
-  .custom-toggle .dhatu-root {
-    font-family: var(--font-mono);
-    font-style: normal;
-    font-size: 0.75rem;
-    color: var(--quiet);
-  }
-
-  .custom-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    margin-top: 0.75rem;
-    padding-left: 0.5rem;
-    border-left: 2px solid var(--accent);
-  }
-
-  .custom-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .custom-lbl {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.04em;
-    color: var(--quiet);
-  }
-
-  .custom-input,
-  .custom-select {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    border: none;
-    border-bottom: 1px solid var(--rule-2);
-    padding: 0.2rem 0;
-    background: transparent;
-    color: var(--ink);
+  .pick select:focus,
+  .custom select:focus,
+  .custom input:focus {
     outline: none;
-    transition: border-color 0.15s;
+    border-color: var(--accent);
   }
-  .custom-input:focus,
-  .custom-select:focus { border-bottom-color: var(--accent); }
 
-  .derive-btn {
-    margin-top: 0.25rem;
-    background: none;
-    border: none;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: var(--accent);
-    cursor: pointer;
-    padding: 0;
-    text-align: left;
-    transition: color 0.15s;
-  }
-  .derive-btn:hover { color: var(--ink); }
-  .derive-btn:disabled { color: var(--faint); cursor: default; }
-
-  .prayoga-row {
+  .custom {
     display: flex;
-    gap: 1.25rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 14px;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 14px;
   }
-
-  .prayoga-btn {
-    background: none;
-    border: none;
-    padding: 0 0 2px;
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 0.95rem;
-    color: var(--quiet);
+  .custom label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .derive,
+  .cancel {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    color: var(--accent);
+    padding: 4px 10px;
     cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: color 0.12s, border-color 0.12s;
   }
-  .prayoga-btn:hover { color: var(--ink); }
-  .prayoga-btn.active {
-    color: var(--ink);
-    border-bottom-color: var(--accent);
+  .derive:disabled {
+    color: var(--faint);
+    cursor: default;
   }
-
-  /* ── Table ── */
-  .table-area {
-    min-width: 0;
+  .cancel {
+    border: none;
+    color: var(--quiet);
   }
 
-  .table-header {
+  .head {
     display: flex;
     align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
+    gap: 12px;
     flex-wrap: wrap;
   }
-
-  .table-root {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.75rem;
+  .head h1 {
     margin: 0;
-    color: var(--ink);
+    font-family: var(--font-deva);
+    font-size: 30px;
+    font-weight: 600;
   }
-
-  .table-meaning {
-    font-size: 0.85rem;
-    color: var(--quiet);
+  .head p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
     font-style: italic;
-  }
-
-  .table-lakara {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: var(--quiet);
-    margin-left: auto;
   }
 
   .status {
+    margin: 0;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 12px;
     color: var(--quiet);
-    letter-spacing: 0.04em;
-  }
-  .status.error { color: var(--ink); }
-
-  .conj-table {
-    display: flex;
-    flex-direction: column;
-    border-top: 2px solid var(--ink);
   }
 
-  .conj-head,
-  .conj-row {
+  .table-scroll {
+    overflow-x: auto;
+  }
+  .conj {
     display: grid;
-    grid-template-columns: 6rem 1fr 1fr 1fr;
-    border-bottom: 1px solid var(--rule-2);
+    grid-template-columns: auto repeat(3, minmax(9rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    min-width: 100%;
+    width: max-content;
   }
-
-  .corner { }
-
+  .corner,
   .col-head,
   .row-head {
-    padding: 0.5rem 0.75rem;
+    background: var(--sunken);
+    padding: 8px 12px;
+    font-family: var(--font-deva);
+    font-size: 13px;
+    color: var(--muted);
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
+    gap: 1px;
   }
-
-  .col-head {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--ink);
-    border-left: 1px solid var(--rule-2);
-    font-weight: 500;
-  }
-
-  .row-head {
+  .sub {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.03em;
+    font-size: 10px;
     color: var(--quiet);
-    align-self: center;
   }
 
-  .head-sub {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.03em;
-    color: var(--faint);
-    font-style: normal;
-  }
-
-  .conj-cell {
-    padding: 0.65rem 0.75rem;
-    border-left: 1px solid var(--rule-2);
-    font-size: 1.15rem;
-    line-height: 1.4;
-    min-height: 2.8rem;
+  .cell {
+    background: var(--paper);
+    padding: 10px 12px;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     flex-wrap: wrap;
-    gap: 0.1rem;
-    transition: background 0.15s;
+    gap: 4px;
   }
-
-  .conj-cell.loading {
-    background: #fafafa;
-  }
-
-  .cell-dots {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--faint);
-    letter-spacing: 0.2em;
-  }
-
-  .cell-empty {
-    color: var(--rule-2);
-    font-size: 0.85rem;
-  }
-
-  .cell-form {
+  .form {
+    font-family: var(--font-deva);
+    font-size: 19px;
     color: var(--ink);
   }
-
-  .form-sep {
-    font-size: 0.75rem;
+  .sep,
+  .dots {
+    font-family: var(--font-mono);
+    font-size: 12px;
     color: var(--faint);
   }
 </style>

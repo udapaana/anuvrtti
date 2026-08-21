@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
   import { displayScript, lessonLanguage, commentaryDepth } from '$lib/stores/preferences';
   import type { Script } from '$lib/transliteration';
   import type { LessonLanguage } from '$lib/stores/preferences';
@@ -18,8 +19,8 @@
   // Friendly label for the return link based on where the user came from.
   let returnLabel = $derived.by(() => {
     if (returnTo === '/' || returnTo === '') return '← home';
-    if (returnTo.startsWith('/learn/')) return '← lesson';
-    if (returnTo === '/learn') return '← learn';
+    if (returnTo.startsWith('/workbook/')) return '← lesson';
+    if (returnTo === '/workbook') return '← workbook';
     if (returnTo.startsWith('/ref/')) return '← sutra';
     if (returnTo === '/ref') return '← reference';
     if (returnTo === '/review') return '← review';
@@ -85,7 +86,12 @@
   <title>Settings | anuvrtti</title>
 </svelte:head>
 
-<article class="page">
+<!--
+  The `aa` popover holds the three or four preferences people change while
+  reading; this page keeps the rest, as one plain column.
+-->
+<Shell columnMax="640px">
+  <div class="page">
   <a href={returnTo} class="back-link">{returnLabel}</a>
   <p class="eyebrow">preferences</p>
   <h1 class="title">settings</h1>
@@ -185,12 +191,13 @@
       {/each}
     </div>
   </section>
-</article>
+  </div>
+</Shell>
 
 <style>
   .page {
-    max-width: 36rem;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .back-link {

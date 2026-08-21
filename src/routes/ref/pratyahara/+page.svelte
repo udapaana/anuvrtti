@@ -2,6 +2,9 @@
   import { shivaSutras, commonPratyaharas, expandPratyahara, lookupPratyaharaCanonical, getAllPratyaharaSounds, type Pratyahara } from '$lib/pratyahara';
   import { transliterate } from '$lib/transliteration';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import ToolRow from '../ToolRow.svelte';
 
   interface Interpretation {
     sounds: string[];
@@ -114,19 +117,24 @@
 </script>
 
 <svelte:head>
-  <title>Pratyahara | anuvrtti</title>
+  <title>प्रत्याहार · pratyāhārāḥ | anuvrtti</title>
 </svelte:head>
 
-<div>
-  <div class="mb-6">
-    <h1 class="text-2xl font-semibold">
-      <Sanskrit text="प्रत्याहार" />
-      <span class="text-stone-400 ml-2">Pratyahara Explorer</span>
-    </h1>
-    <p class="text-stone-500 text-sm mt-1">
-      Explore the Shiva Sutras and pratyahara notation system
-    </p>
-  </div>
+{#snippet shelfLeft()}
+  <ToolRow current="pratyahara" />
+{/snippet}
+
+{#snippet shelfRight()}
+  <span>14 śiva-sūtras</span>
+{/snippet}
+
+<Shelf left={shelfLeft} right={shelfRight} />
+
+<Shell columnMax="1100px">
+  <header class="head">
+    <h1><Sanskrit text="प्रत्याहार" /></h1>
+    <p>The fourteen śiva-sūtras, and what each abbreviation reaches across them.</p>
+  </header>
 
   <div class="grid lg:grid-cols-2 gap-8">
     <!-- Shiva Sutras -->
@@ -201,9 +209,28 @@
       </table>
     </div>
   </div>
-</div>
+</Shell>
 
 <style>
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .head h1 {
+    margin: 0;
+    font-family: var(--font-deva);
+    font-size: 27px;
+    font-weight: 600;
+  }
+  .head p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 62ch;
+  }
+
   /* Start point: right-pointing arrow shape (green) */
   .sound-start {
     background: linear-gradient(135deg, var(--accent-ok) 0%, var(--accent-ok) 50%, var(--sunken) 50%, var(--sunken) 100%);
