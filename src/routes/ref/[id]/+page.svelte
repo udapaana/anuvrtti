@@ -342,13 +342,13 @@
     {/if}
 
     <section class="graph">
-      <span class="label"><Sanskrit text="anuvṛtti" source="iast" /> — what it inherits</span>
+      <span class="label"><Sanskrit text="anuvṛtti" source="iast" /> · inherited terms</span>
       <AnuvrttiGraph {sutra} />
     </section>
 
     {#if prakriyaPaths.length || otherPaths.length || kaleSections.length}
       <section class="applied">
-        <span class="label">where it is put to work</span>
+        <span class="label">used in</span>
         <div class="links">
           {#each prakriyaPaths as lp (lp.pathId)}
             <a href="/workbook/{lp.pathId}?step={lp.stepIndex}">{lp.pathTitle}</a>

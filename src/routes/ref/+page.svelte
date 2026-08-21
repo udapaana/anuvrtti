@@ -226,7 +226,7 @@
       {/each}
     </div>
   {:else}
-    <span class="quiet">the guided path</span>
+    <span class="quiet">syllabus</span>
   {/if}
 {/snippet}
 
@@ -263,7 +263,7 @@
     />
   {:else}
     <Spine
-      title="the categories"
+      title="categories"
       items={categoryItems}
       activeId={selectedCategory}
       onpick={(id) => {
@@ -282,10 +282,7 @@
   {:else if mode === 'path'}
     <header class="head">
       <h1><Sanskrit text={activeCategory.sanskrit} source="iast" /></h1>
-      <p>
-        the guided path through the Aṣṭādhyāyī — {activeCategory.english}, in the order they are
-        meant to be taken
-      </p>
+      <p>Paths through the {activeCategory.english} sūtras, in the order they are taken.</p>
     </header>
 
     <div class="paths">
@@ -312,9 +309,8 @@
     </div>
 
     <p class="note">
-      A path is a run of steps over real sūtras, which is why it sits in Reference rather than on
-      the front page: from a step you are one click from the sūtra it teaches, and a sūtra page
-      lists the paths that teach it.
+      Each path is a sequence of steps over sūtras. A step links to the sūtra it teaches, and a
+      sūtra page lists the paths that use it.
     </p>
   {:else}
     <header class="head">
@@ -334,7 +330,7 @@
         <SutraDisplay {sutra} variant="compact" href="/ref/{sutra.id}" />
       {/each}
       {#if !filteredSutras.length}
-        <p class="note">nothing here — try another pāda, or ⌘K to search the whole corpus.</p>
+        <p class="note">No sūtras of this type in this pāda.</p>
       {/if}
     </div>
   {/if}

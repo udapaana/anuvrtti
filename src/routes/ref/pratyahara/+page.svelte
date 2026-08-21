@@ -133,7 +133,9 @@
 <Shell columnMax="1100px">
   <header class="head">
     <h1><Sanskrit text="प्रत्याहार" /></h1>
-    <p>The fourteen śiva-sūtras, and what each abbreviation reaches across them.</p>
+    <p>
+      The fourteen śiva-sūtras. A pratyāhāra names the run of sounds from a letter to a marker.
+    </p>
   </header>
 
   <div class="grid lg:grid-cols-2 gap-8">

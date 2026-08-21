@@ -25,8 +25,7 @@
   <header class="head">
     <h1><Sanskrit text="paribhāṣā" source="iast" /></h1>
     <p>
-      The language of grammar: the terms the Aṣṭādhyāyī uses about itself. Search by term or browse
-      by category.
+      The technical terms of the Aṣṭādhyāyī. Search by term, or browse by category.
     </p>
   </header>
 

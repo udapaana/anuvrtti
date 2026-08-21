@@ -106,25 +106,25 @@
     {
       href: '/reader',
       dev: 'पठनम्',
-      body: 'The same word returns in new roles. Each word opens its derivation.',
+      body: 'Readings in order of difficulty. Any word opens its analysis and derivation.',
       meta: `${count(stat.readings)} readings →`
     },
     {
       href: '/workbook',
       dev: 'अभ्यास',
-      body: 'The primer, and the practice that comes off it.',
+      body: 'Bālabodhinī lesson by lesson, and the vocabulary it builds.',
       meta: `${count(stat.lessons)} lessons →`
     },
     {
       href: '/usage',
       dev: 'प्रयोग',
-      body: 'Which forms the corpus attests — and the line that attests each one.',
+      body: 'Which forms occur in the readings, and where.',
       meta: `${count(stat.cells)} cells →`
     },
     {
       href: '/ref',
       dev: 'सूत्र',
-      body: 'Every sūtra in this corpus, and the guided path through them.',
+      body: 'The Aṣṭādhyāyī by adhyāya and pāda, with a syllabus through it.',
       meta: `${count(stat.sutras)} sūtras →`
     }
   ]);
@@ -150,10 +150,10 @@
 
   <header class="statement">
     <span class="opening font-{$displayScript}">{opening.atha} {opening.sabdanusasanam}</span>
-    <h1>A graded reader and a grammar, bridged.</h1>
+    <h1>A graded Sanskrit reader, indexed to the Aṣṭādhyāyī.</h1>
     <p>
-      For the classical and the vedic dialects. The poets started with a corpus by heart; these
-      tools try to close that gap.
+      Readings are ordered by difficulty, classical and vedic. Each word carries its
+      grammatical analysis and the sūtras that derive it.
     </p>
   </header>
 
