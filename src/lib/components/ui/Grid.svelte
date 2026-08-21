@@ -35,8 +35,27 @@
   const cells = $derived(
     rows.map((row) => row.map((c) => (typeof c === 'string' ? { text: c } : c)))
   );
+  /*
+    `minmax(min-content, 1fr)`, not a bare `1fr`.
+
+    A bare `1fr` is `minmax(auto, 1fr)`, and the cells below used to set
+    `min-width: 0`, which drops that auto minimum to zero. In a wide container
+    nothing showed, but in the reader's 312px rail the tracks collapsed under
+    the text and the grid — a scroll container by its own `overflow-x` — clipped
+    what spilled instead of scrolling it. Devanagari hid this: प्रथमपुरुष is
+    narrow, while the same head in IAST is `prathamapuruṣa`, so the rail
+    paradigm sheared its own row heads and cut `gacchati` down to `gacchat`.
+
+    A `min-content` floor is the compromise. A track never narrows past the
+    longest unbreakable word, so a Sanskrit form is never cut and the grid
+    overflows honestly into its scrollbar; prose cells still wrap between words
+    rather than forcing every table as wide as its longest sentence.
+  */
+  const track = 'minmax(min-content, 1fr)';
   const template = $derived(
-    rowHeads.length ? `auto repeat(${colHeads.length}, 1fr)` : `repeat(${colHeads.length}, 1fr)`
+    rowHeads.length
+      ? `minmax(min-content, auto) repeat(${colHeads.length}, ${track})`
+      : `repeat(${colHeads.length}, ${track})`
   );
 </script>
 
@@ -88,7 +107,6 @@
     background: var(--paper);
     padding: 7px 10px;
     text-align: left;
-    min-width: 0;
   }
   .grid.sunken .corner,
   .grid.sunken .head {

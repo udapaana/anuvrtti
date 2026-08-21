@@ -351,8 +351,16 @@
     return { id: r.id, wi: s.wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quiz: w.quiz ?? null, terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
   });
 
-  const asking = $derived(!!selWord?.quiz && pick === null);
-  const answered = $derived(!!selWord && (pick !== null || !selWord.quiz));
+  // A quiz is only ever ASKED for a card drawn from the deck. Clicking a word in
+  // the text is inspection — it opens the gloss, the tags and the sūtras at once.
+  // Gating a click behind a question meant you had to keep clicking to get
+  // quizzed, and could not simply look a word up; `selectWord` has always said
+  // as much ("a manual click is inspection, not a deck quiz") and cleared
+  // `deckQuiz`, but this gate did not read it, so every click asked.
+  const asking = $derived(!!deckQuiz && !!selWord?.quiz && pick === null);
+  // Answered means "the rail may show everything". True for any manual click,
+  // and for a deck card once it has been picked or revealed.
+  const answered = $derived(!!selWord && !asking);
 
   // The word-for-word run of the selected line. Shown in glossed mode, or once
   // the word has been answered (or never asked) — never while a quiz is open,
@@ -771,6 +779,16 @@
 {#snippet shelfRight()}
   <span class="keys">← → word · ↑ ↓ line</span>
   <span>{checked.size} checked · {seen.size} read · {deckCount} in deck</span>
+  <!-- The quiz lives on the shelf, not on the text. It used to be reachable
+       only from an empty rail, so the way to get a question was to clear your
+       selection or keep clicking words — and a click is for looking a word up.
+       Here it is available whatever is selected, and it always draws from the
+       deck of readings already scrolled past. -->
+  <!-- deckCards, NOT deckCount: `deckCount` is the review bank's due count, a
+       different deck. This button draws from readings scrolled past. -->
+  {#if deckCards.length}
+    <button class="quizme shelf" onclick={drawFromDeck}>quiz me · {deckCards.length}</button>
+  {/if}
 {/snippet}
 
 {#snippet spine()}
@@ -805,8 +823,8 @@
       </div>
     {/if}
     <p class="prompt">
-      Select a word. It asks for the case or lakāra first; the gloss and the sūtras follow the
-      answer.
+      Select a word to see its gloss, its tags and the sūtras that formed it. Quizzing is separate:
+      “quiz me” draws a word from a reading you have already passed.
     </p>
     {#if deckCards.length}
       <!-- The seen deck: a word from any reading scrolled past, drawn at random.
@@ -1198,6 +1216,34 @@
     font-style: italic;
   }
 
+  /*
+    The English side of the reader, in one typeface whatever the toggle says.
+
+    Each of these runs through <Sanskrit> so a form quoted inside it follows the
+    script — that part is right. What was wrong is that the component's font
+    class landed on the whole span, so the surrounding English changed face too.
+    The :global(span) reaches that element (it belongs to the child component,
+    so the scoped selector alone cannot) and hands the stack back down.
+  */
+  .translation,
+  .vyakhya-en,
+  .ch-en,
+  .gloss,
+  .run-gloss,
+  .ex-teaches,
+  .cite-role {
+    font-family: var(--font-prose);
+  }
+  .translation :global(span),
+  .vyakhya-en :global(span),
+  .ch-en :global(span),
+  .gloss :global(span),
+  .run-gloss :global(span),
+  .ex-teaches :global(span),
+  .cite-role :global(span) {
+    font-family: inherit;
+  }
+
   .pager {
     display: flex;
     align-items: center;
@@ -1311,6 +1357,15 @@
     padding: 8px 10px;
     text-align: left;
     cursor: pointer;
+  }
+  /* On the shelf the same control has to sit in a 40px bar, so it loses the
+     block padding the rail version needs. */
+  .quizme.shelf {
+    padding: 3px 9px;
+    color: var(--accent);
+  }
+  .quizme.shelf:hover {
+    border-color: var(--accent);
   }
   .quizme:hover {
     border-color: var(--accent);

@@ -33,6 +33,23 @@
     sans-serif;
   --font-telugu: "Noto Sans Telugu", "Kohinoor Telugu", system-ui, sans-serif;
 
+  /*
+    PROSE — an English sentence that happens to quote Sanskrit.
+
+    A translation, a gloss, a note: the frame is English, but roughly one in ten
+    carries a form inside it ("curds, Indra" → दधीन्द्रः), so the string still
+    has to go through <Sanskrit> to follow the script toggle. That component
+    puts ONE font class on the whole run, so in Devanagari mode the English
+    frame was being set in the Devanagari sans face — the same sentence changed
+    typeface with the toggle, which is what made "The man goes." look wrong.
+
+    A stack fixes it per character rather than per run: Latin resolves to
+    Spectral, and only the glyphs Spectral does not cover fall through to the
+    Indic faces. The frame stays put; the quoted form still changes script.
+  */
+  --font-prose: Spectral, "Noto Sans Devanagari", "Noto Sans Telugu", Georgia,
+    serif;
+
   --nav-h: 52px;
   --shelf-h: 40px;
   --sticky-shelf: var(--nav-h);

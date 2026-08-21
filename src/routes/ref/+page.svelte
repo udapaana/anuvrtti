@@ -12,6 +12,7 @@
   import Shelf from '$lib/components/ui/Shelf.svelte';
   import Spine from '$lib/components/ui/Spine.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
+  import InlineMarkup from '$lib/components/InlineMarkup.svelte';
 
   /*
     Reference, two ways.
@@ -299,6 +300,13 @@
               <Sanskrit text={p.meta.label} source={detectSource(p.meta.label)} />
             </span>
             <span class="path-en">{englishOf(p.meta.title)}</span>
+            <!-- The description is what the old /learn index printed under every
+                 lesson; moving the list here dropped it, leaving a bare title
+                 to choose a path by. It carries @term[…] markup, so it goes
+                 through InlineMarkup rather than being interpolated raw. -->
+            {#if p.meta.description}
+              <span class="path-desc"><InlineMarkup text={p.meta.description} /></span>
+            {/if}
           </span>
           <span class="path-steps">
             <span class="track"
@@ -454,6 +462,13 @@
     font-size: 13px;
     color: var(--quiet);
     font-style: italic;
+  }
+  .path-desc {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-top: 3px;
+    max-width: 60ch;
   }
   .path-steps {
     display: flex;
