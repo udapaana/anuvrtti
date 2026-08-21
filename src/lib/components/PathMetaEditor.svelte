@@ -270,7 +270,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #78716c;
+    color: var(--muted);
     margin: 0;
   }
 
@@ -289,28 +289,28 @@
   .field-label {
     font-size: 0.6875rem;
     font-weight: 500;
-    color: #57534e;
+    color: var(--ink-2);
   }
 
   .field-input, .field-select, .field-textarea {
     font-size: 0.8125rem;
-    border: 1px solid #d6d3d1;
+    border: 1px solid var(--faint);
     border-radius: 0.25rem;
     padding: 0.3125rem 0.5rem;
     background: white;
-    color: #1c1917;
+    color: var(--ink);
     outline: none;
     width: 100%;
   }
 
   .field-input:focus, .field-select:focus, .field-textarea:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 2px #eef2ff;
+    border-color: var(--accent-ref);
+    box-shadow: 0 0 0 2px var(--sunken);
   }
 
   .field-input:disabled {
-    background: #f5f5f4;
-    color: #78716c;
+    background: var(--rule);
+    color: var(--muted);
   }
 
   .field-input-sm {
@@ -325,7 +325,7 @@
 
   .field-hint {
     font-size: 0.625rem;
-    color: #a8a29e;
+    color: var(--quiet);
   }
 
   /* Prerequisites */
@@ -340,8 +340,8 @@
     align-items: center;
     gap: 0.25rem;
     font-size: 0.75rem;
-    background: #eef2ff;
-    color: #4f46e5;
+    background: var(--sunken);
+    color: var(--accent-ref);
     border-radius: 9999px;
     padding: 0.125rem 0.5rem;
   }
@@ -356,12 +356,12 @@
     padding: 0;
   }
   .prereq-remove:hover {
-    color: #dc2626;
+    color: var(--ink);
   }
 
   .prereq-empty {
     font-size: 0.75rem;
-    color: #a8a29e;
+    color: var(--quiet);
     font-style: italic;
   }
 
@@ -375,7 +375,7 @@
     left: 0;
     right: 0;
     background: white;
-    border: 1px solid #d6d3d1;
+    border: 1px solid var(--faint);
     border-radius: 0.25rem;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
     z-index: 10;
@@ -392,10 +392,10 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #1c1917;
+    color: var(--ink);
   }
   .prereq-suggestion:hover {
-    background: #eef2ff;
-    color: #4f46e5;
+    background: var(--sunken);
+    color: var(--accent-ref);
   }
 </style>

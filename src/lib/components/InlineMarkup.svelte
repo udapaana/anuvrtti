@@ -107,7 +107,7 @@
   }
 
   .jargon-inline:hover {
-    color: #f97316;
-    border-bottom-color: #f97316;
+    color: var(--accent);
+    border-bottom-color: var(--accent);
   }
 </style>

@@ -137,7 +137,7 @@
             'text-halign': 'center',
             'font-size': '11px',
             'font-family': 'system-ui, sans-serif',
-            'color': '#374151',
+            'color': 'var(--ink-2)',
             'text-wrap': 'wrap',
             'text-max-width': '100px',
             'width': 110,
@@ -149,8 +149,8 @@
         {
           selector: 'node[type="current"]',
           style: {
-            'background-color': '#f0f9ff',
-            'border-color': '#0284c7',
+            'background-color': 'var(--sunken)',
+            'border-color': 'var(--accent-ref)',
             'border-width': 2,
             'color': '#0c4a6e',
             'font-weight': 500,
@@ -161,38 +161,38 @@
         {
           selector: 'node[type="parent"]',
           style: {
-            'border-color': '#9ca3af',
+            'border-color': 'var(--quiet)',
             'color': '#4b5563',
           }
         },
         {
           selector: 'node[type="child"]',
           style: {
-            'border-color': '#9ca3af',
+            'border-color': 'var(--quiet)',
             'color': '#4b5563',
           }
         },
         {
           selector: 'node:active, node:selected',
           style: {
-            'border-color': '#0284c7',
-            'background-color': '#f0f9ff',
+            'border-color': 'var(--accent-ref)',
+            'background-color': 'var(--sunken)',
           }
         },
         {
           selector: 'edge',
           style: {
             'width': 1.5,
-            'line-color': '#cbd5e1',
-            'target-arrow-color': '#94a3b8',
+            'line-color': 'var(--faint)',
+            'target-arrow-color': 'var(--quiet)',
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier',
             'arrow-scale': 0.8,
             'label': 'data(label)',
             'font-size': '10px',
-            'color': '#6366f1',
+            'color': 'var(--accent-ref)',
             'font-weight': 500,
-            'text-background-color': '#fafaf9',
+            'text-background-color': 'var(--sunken)',
             'text-background-opacity': 1,
             'text-background-padding': '2px',
             'text-rotation': 0,
@@ -202,8 +202,8 @@
         {
           selector: 'edge:active, edge:selected',
           style: {
-            'line-color': '#6366f1',
-            'target-arrow-color': '#6366f1',
+            'line-color': 'var(--accent-ref)',
+            'target-arrow-color': 'var(--accent-ref)',
             'width': 2,
           }
         }
@@ -265,16 +265,16 @@
 
 <style>
   .anuvrtti-graph {
-    background: #fafaf9;
+    background: var(--sunken);
     border-radius: 0.375rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--rule-2);
   }
 
   .graph-loading,
   .graph-empty {
     padding: 2rem;
     text-align: center;
-    color: #6b7280;
+    color: var(--muted);
     font-size: 0.8125rem;
   }
 

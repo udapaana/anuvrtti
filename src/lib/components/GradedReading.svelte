@@ -98,17 +98,17 @@
   .reading {
     margin: 0 0 1.5rem;
     padding-bottom: 1.1rem;
-    border-bottom: 1px solid #e7e2d9;
+    border-bottom: 1px solid var(--rule-2);
   }
   .katha {
     font-size: 1.5rem;
     line-height: 1.6;
-    color: #0f1419;
+    color: var(--ink);
   }
   .gloss {
     margin: 0.6rem 0;
     padding: 0.6rem 0.85rem;
-    background: #faf7f0;
+    background: var(--sunken);
     border-radius: 6px;
     font-size: 0.95rem;
   }
@@ -140,7 +140,7 @@
     border-bottom-style: solid;
   }
   .marker.sel {
-    background: #fde7c8;
+    background: var(--accent-soft);
     border-radius: 3px;
     border-bottom-color: transparent;
   }

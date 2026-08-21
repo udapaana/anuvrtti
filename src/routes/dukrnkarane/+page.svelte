@@ -299,15 +299,15 @@
       monospace;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #78716c;
+    color: var(--muted);
     margin-bottom: 10px;
   }
 
   /* ---- spine ---- */
   .spine {
     padding: 22px 15px 40px;
-    border-right: 1px solid #f5f5f4;
-    background: #fafaf9;
+    border-right: 1px solid var(--rule);
+    background: var(--sunken);
     position: sticky;
     top: 56px;
     max-height: calc(100vh - 56px);
@@ -331,14 +331,14 @@
     text-align: left;
     font:
       400 13.5px/1.35 var(--font-serif);
-    color: #57534e;
+    color: var(--ink-2);
   }
   .chapter:hover {
-    background: #f5f5f4;
+    background: var(--rule);
   }
   .chapter.on {
-    background: #f5f5f4;
-    color: #1c1917;
+    background: var(--rule);
+    color: var(--ink);
     font-weight: 600;
   }
   .crange {
@@ -346,7 +346,7 @@
       400 11px 'SF Mono',
       Consolas,
       monospace;
-    color: #a8a29e;
+    color: var(--quiet);
     flex: none;
   }
   .sections {
@@ -354,7 +354,7 @@
     flex-direction: column;
     margin: 3px 0 5px 8px;
     padding-left: 10px;
-    border-left: 1px solid #e7e5e4;
+    border-left: 1px solid var(--rule-2);
   }
   .section {
     display: flex;
@@ -367,13 +367,13 @@
     text-align: left;
     font:
       400 13px/1.35 var(--font-serif);
-    color: #78716c;
+    color: var(--muted);
   }
   .section:hover {
-    color: #1c1917;
+    color: var(--ink);
   }
   .section.on {
-    color: #1c1917;
+    color: var(--ink);
     font-weight: 600;
   }
   .sid {
@@ -382,10 +382,10 @@
       400 11px 'SF Mono',
       Consolas,
       monospace;
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .section.on .sid {
-    color: #f97316;
+    color: var(--accent);
   }
   .stitle {
     overflow: hidden;
@@ -407,8 +407,8 @@
     font:
       400 12px/1 var(--font-serif);
     padding: 3px 8px;
-    background: #f5f5f4;
-    color: #57534e;
+    background: var(--rule);
+    color: var(--ink-2);
     border-radius: 9999px;
   }
 
@@ -425,13 +425,13 @@
       400 11px/1 'SF Mono',
       Consolas,
       monospace;
-    color: #a8a29e;
+    color: var(--quiet);
     text-transform: uppercase;
     letter-spacing: 0.04em;
     margin-bottom: 14px;
   }
   .crumb-cur {
-    color: #f97316;
+    color: var(--accent);
   }
   .rule-head {
     display: flex;
@@ -441,7 +441,7 @@
   .rule-id {
     font:
       500 28px/1 var(--font-serif);
-    color: #1c1917;
+    color: var(--ink);
   }
   .kind {
     font:
@@ -450,14 +450,14 @@
       monospace;
     padding: 2px 7px;
     border-radius: 9999px;
-    background: #f5f5f4;
-    color: #78716c;
+    background: var(--rule);
+    color: var(--muted);
   }
   h1 {
     margin: 4px 0 22px;
     font:
       400 25px/1.25 var(--font-serif);
-    color: #1c1917;
+    color: var(--ink);
     text-wrap: pretty;
   }
 
@@ -465,7 +465,7 @@
   .derivations {
     margin-top: 28px;
     padding-top: 18px;
-    border-top: 1px solid #f5f5f4;
+    border-top: 1px solid var(--rule);
   }
   .deriv-head {
     display: flex;
@@ -477,7 +477,7 @@
       400 11px 'SF Mono',
       Consolas,
       monospace;
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .deriv-sutra {
     margin-left: auto;
@@ -485,11 +485,11 @@
       500 11px 'SF Mono',
       Consolas,
       monospace;
-    color: #6366f1;
+    color: var(--accent-ref);
     text-decoration: none;
   }
   .deriv-sutra:hover {
-    border-bottom: 1px solid #6366f1;
+    border-bottom: 1px solid var(--accent-ref);
   }
   .deriv-rows {
     display: grid;
@@ -503,20 +503,20 @@
     padding: 3px 0;
     font-family: 'Noto Serif Devanagari', 'Noto Serif Telugu', serif;
     font-size: 16px;
-    color: #57534e;
+    color: var(--ink-2);
   }
   .op {
-    color: #d6d3d1;
+    color: var(--faint);
     font-size: 13px;
   }
   .result {
-    color: #1c1917;
+    color: var(--ink);
     font-weight: 600;
   }
   .gloss {
     font:
       italic 400 12px/1.3 var(--font-serif);
-    color: #a8a29e;
+    color: var(--quiet);
   }
 
   /* ---- pager ---- */
@@ -526,7 +526,7 @@
     gap: 20px;
     margin-top: 40px;
     padding-top: 18px;
-    border-top: 1px solid #f5f5f4;
+    border-top: 1px solid var(--rule);
   }
   .page-btn {
     display: flex;
@@ -547,25 +547,25 @@
       400 11px/1 'SF Mono',
       Consolas,
       monospace;
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .pt {
     font:
       400 13.5px/1.35 var(--font-serif);
-    color: #57534e;
+    color: var(--ink-2);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
   .page-btn:hover .pt {
-    color: #f97316;
+    color: var(--accent);
   }
 
   /* ---- apparatus ---- */
   .apparatus {
     padding: 24px 20px 40px;
-    border-left: 1px solid #f5f5f4;
-    background: #fafaf9;
+    border-left: 1px solid var(--rule);
+    background: var(--sunken);
     position: sticky;
     top: 56px;
     max-height: calc(100vh - 56px);
@@ -587,7 +587,7 @@
     padding: 5px 9px;
     border-radius: 5px;
     background: #fff;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     text-decoration: none;
   }
   .sutra-ref {
@@ -595,17 +595,17 @@
       500 13px/1 'SF Mono',
       Consolas,
       monospace;
-    color: #6366f1;
+    color: var(--accent-ref);
   }
   .sutra-go {
     font-size: 12px;
-    color: #d6d3d1;
+    color: var(--faint);
   }
   a.sutra:hover {
-    border-color: #c7d2fe;
+    border-color: var(--rule-2);
   }
   a.sutra:hover .sutra-go {
-    color: #6366f1;
+    color: var(--accent-ref);
   }
   /* Cited but absent from this recension — shown, not linked. */
   .sutra.off {
@@ -613,7 +613,7 @@
     border-style: dashed;
   }
   .sutra.off .sutra-ref {
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .links {
     display: flex;
@@ -631,10 +631,10 @@
     text-align: left;
     font:
       400 12.5px/1.35 var(--font-serif);
-    color: #57534e;
+    color: var(--ink-2);
   }
   .link-row:hover {
-    color: #f97316;
+    color: var(--accent);
   }
   .lid {
     flex: none;
@@ -642,7 +642,7 @@
       400 11px 'SF Mono',
       Consolas,
       monospace;
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .ltitle {
     overflow: hidden;
@@ -658,14 +658,14 @@
     font-family: 'Noto Sans Devanagari', 'Noto Sans Telugu', sans-serif;
     font-size: 13px;
     padding: 3px 8px;
-    background: #f5f5f4;
-    color: #44403c;
+    background: var(--rule);
+    color: var(--ink-2);
     border-radius: 4px;
   }
   .source {
     font:
       400 12.5px/1.6 var(--font-serif);
-    color: #57534e;
+    color: var(--ink-2);
   }
   .leaves {
     display: flex;
@@ -679,20 +679,20 @@
       Consolas,
       monospace;
     padding: 3px 7px;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 4px;
-    color: #78716c;
+    color: var(--muted);
     text-decoration: none;
   }
   .leaf:hover {
-    border-color: #f97316;
-    color: #f97316;
+    border-color: var(--accent);
+    color: var(--accent);
   }
   .leaf-note {
     margin-top: 5px;
     font:
       italic 400 11.5px/1.45 var(--font-serif);
-    color: #a8a29e;
+    color: var(--quiet);
   }
 
   @media (max-width: 1100px) {
@@ -705,7 +705,7 @@
       position: static;
       max-height: none;
       border: 0;
-      border-bottom: 1px solid #f5f5f4;
+      border-bottom: 1px solid var(--rule);
     }
     .reader {
       padding: 22px 20px 48px;

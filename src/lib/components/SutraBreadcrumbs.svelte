@@ -43,7 +43,7 @@
   .breadcrumbs-title {
     font-size: 0.8rem;
     font-weight: 600;
-    color: #57534e;
+    color: var(--ink-2);
     margin: 0 0 0.5rem 0;
   }
 
@@ -69,12 +69,12 @@
   }
 
   .breadcrumb-label {
-    color: #78716c;
+    color: var(--muted);
     font-size: 0.8rem;
   }
 
   .breadcrumb-example {
-    color: #166534;
+    color: var(--accent-ok);
     font-size: 0.8rem;
   }
 
@@ -87,7 +87,7 @@
   .compact .breadcrumb-item {
     padding: 0.25rem 0.5rem;
     background: #fef9c3;
-    border-left: 2px solid #fbbf24;
+    border-left: 2px solid var(--accent);
     font-size: 0.75rem;
   }
 

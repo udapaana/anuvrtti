@@ -206,34 +206,34 @@
 <style>
   /* Start point: right-pointing arrow shape (green) */
   .sound-start {
-    background: linear-gradient(135deg, #22c55e 0%, #22c55e 50%, #dcfce7 50%, #dcfce7 100%);
+    background: linear-gradient(135deg, var(--accent-ok) 0%, var(--accent-ok) 50%, var(--sunken) 50%, var(--sunken) 100%);
     background-size: 8px 100%;
     background-repeat: no-repeat;
     background-position: left;
-    background-color: #dcfce7;
+    background-color: var(--sunken);
     padding-left: 0.75rem;
     border-radius: 3px;
   }
 
   /* End point: left-pointing arrow shape (red) */
   .sound-end {
-    background: linear-gradient(45deg, #fecaca 0%, #fecaca 50%, #ef4444 50%, #ef4444 100%);
+    background: linear-gradient(45deg, var(--rule-2) 0%, var(--rule-2) 50%, var(--ink) 50%, var(--ink) 100%);
     background-size: 8px 100%;
     background-repeat: no-repeat;
     background-position: right;
-    background-color: #fecaca;
+    background-color: var(--rule-2);
     padding-right: 0.75rem;
     border-radius: 3px;
   }
 
   /* Both start and end: diamond-ish shape */
   .sound-both {
-    background: linear-gradient(135deg, #22c55e 0%, #22c55e 50%, #fef3c7 50%, #fef3c7 100%),
-                linear-gradient(45deg, #fef3c7 0%, #fef3c7 50%, #ef4444 50%, #ef4444 100%);
+    background: linear-gradient(135deg, var(--accent-ok) 0%, var(--accent-ok) 50%, var(--sunken) 50%, var(--sunken) 100%),
+                linear-gradient(45deg, var(--sunken) 0%, var(--sunken) 50%, var(--ink) 50%, var(--ink) 100%);
     background-size: 8px 100%, 8px 100%;
     background-repeat: no-repeat, no-repeat;
     background-position: left, right;
-    background-color: #fef3c7;
+    background-color: var(--sunken);
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     border-radius: 3px;
@@ -241,7 +241,7 @@
 
   /* Middle highlighted sounds */
   .sound-middle {
-    background-color: #e0e7ff;
+    background-color: var(--sunken);
     border-radius: 3px;
   }
 
@@ -249,7 +249,7 @@
   .pratyahara-table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 0.375rem;
     overflow: hidden;
   }
@@ -260,15 +260,15 @@
   }
 
   .pratyahara-row:hover {
-    background: #f5f5f4;
+    background: var(--rule);
   }
 
   .pratyahara-row.selected {
-    background: #eef2ff;
+    background: var(--sunken);
   }
 
   .pratyahara-row:not(:last-child) td {
-    border-bottom: 1px solid #f5f5f4;
+    border-bottom: 1px solid var(--rule);
   }
 
   .pratyahara-name {
@@ -282,6 +282,6 @@
   .pratyahara-desc {
     padding: 0.5rem 0.75rem;
     font-size: 0.8125rem;
-    color: #78716c;
+    color: var(--muted);
   }
 </style>

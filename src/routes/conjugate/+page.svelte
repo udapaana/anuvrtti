@@ -339,18 +339,18 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-decoration: none;
     margin-bottom: 0.85rem;
     transition: color 0.15s;
   }
-  .back-link:hover { color: #0f1419; }
+  .back-link:hover { color: var(--ink); }
 
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     margin: 0;
   }
   .title {
@@ -385,7 +385,7 @@
     font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.06em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-transform: lowercase;
     margin: 0 0 0.5rem;
   }
@@ -420,25 +420,25 @@
   .dhatu-btn:hover .dhatu-meaning,
   .lakara-btn:hover .lakara-iast,
   .lakara-btn:hover .lakara-desc {
-    color: #0f1419;
+    color: var(--ink);
   }
 
   .dhatu-btn.active,
   .lakara-btn.active {
-    border-left-color: #f97316;
+    border-left-color: var(--accent);
   }
 
   .dhatu-root {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 1rem;
-    color: #0f1419;
+    color: var(--ink);
     min-width: 2.5rem;
     transition: color 0.12s;
   }
   .dhatu-meaning {
     font-size: 0.75rem;
-    color: #94a3b8;
+    color: var(--quiet);
     transition: color 0.12s;
   }
 
@@ -446,13 +446,13 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.95rem;
-    color: #0f1419;
+    color: var(--ink);
     min-width: 4.5rem;
     transition: color 0.12s;
   }
   .lakara-desc {
     font-size: 0.72rem;
-    color: #94a3b8;
+    color: var(--quiet);
     transition: color 0.12s;
   }
 
@@ -460,7 +460,7 @@
     font-family: var(--font-mono);
     font-style: normal;
     font-size: 0.75rem;
-    color: #94a3b8;
+    color: var(--quiet);
   }
 
   .custom-fields {
@@ -469,7 +469,7 @@
     gap: 0.6rem;
     margin-top: 0.75rem;
     padding-left: 0.5rem;
-    border-left: 2px solid #f97316;
+    border-left: 2px solid var(--accent);
   }
 
   .custom-row {
@@ -482,7 +482,7 @@
     font-family: var(--font-mono);
     font-size: 0.62rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
   }
 
   .custom-input,
@@ -490,15 +490,15 @@
     font-family: var(--font-mono);
     font-size: 0.78rem;
     border: none;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--rule-2);
     padding: 0.2rem 0;
     background: transparent;
-    color: #0f1419;
+    color: var(--ink);
     outline: none;
     transition: border-color 0.15s;
   }
   .custom-input:focus,
-  .custom-select:focus { border-bottom-color: #f97316; }
+  .custom-select:focus { border-bottom-color: var(--accent); }
 
   .derive-btn {
     margin-top: 0.25rem;
@@ -507,14 +507,14 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #f97316;
+    color: var(--accent);
     cursor: pointer;
     padding: 0;
     text-align: left;
     transition: color 0.15s;
   }
-  .derive-btn:hover { color: #0f1419; }
-  .derive-btn:disabled { color: #cbd5e1; cursor: default; }
+  .derive-btn:hover { color: var(--ink); }
+  .derive-btn:disabled { color: var(--faint); cursor: default; }
 
   .prayoga-row {
     display: flex;
@@ -528,15 +528,15 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.95rem;
-    color: #94a3b8;
+    color: var(--quiet);
     cursor: pointer;
     border-bottom: 2px solid transparent;
     transition: color 0.12s, border-color 0.12s;
   }
-  .prayoga-btn:hover { color: #0f1419; }
+  .prayoga-btn:hover { color: var(--ink); }
   .prayoga-btn.active {
-    color: #0f1419;
-    border-bottom-color: #f97316;
+    color: var(--ink);
+    border-bottom-color: var(--accent);
   }
 
   /* ── Table ── */
@@ -558,12 +558,12 @@
     font-weight: 400;
     font-size: 1.75rem;
     margin: 0;
-    color: #0f1419;
+    color: var(--ink);
   }
 
   .table-meaning {
     font-size: 0.85rem;
-    color: #94a3b8;
+    color: var(--quiet);
     font-style: italic;
   }
 
@@ -571,29 +571,29 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     margin-left: auto;
   }
 
   .status {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: #94a3b8;
+    color: var(--quiet);
     letter-spacing: 0.04em;
   }
-  .status.error { color: #e11d48; }
+  .status.error { color: var(--ink); }
 
   .conj-table {
     display: flex;
     flex-direction: column;
-    border-top: 2px solid #0f1419;
+    border-top: 2px solid var(--ink);
   }
 
   .conj-head,
   .conj-row {
     display: grid;
     grid-template-columns: 6rem 1fr 1fr 1fr;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--rule-2);
   }
 
   .corner { }
@@ -610,8 +610,8 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.9rem;
-    color: #0f1419;
-    border-left: 1px solid #e2e8f0;
+    color: var(--ink);
+    border-left: 1px solid var(--rule-2);
     font-weight: 500;
   }
 
@@ -619,7 +619,7 @@
     font-family: var(--font-mono);
     font-size: 0.68rem;
     letter-spacing: 0.03em;
-    color: #94a3b8;
+    color: var(--quiet);
     align-self: center;
   }
 
@@ -627,13 +627,13 @@
     font-family: var(--font-mono);
     font-size: 0.62rem;
     letter-spacing: 0.03em;
-    color: #cbd5e1;
+    color: var(--faint);
     font-style: normal;
   }
 
   .conj-cell {
     padding: 0.65rem 0.75rem;
-    border-left: 1px solid #e2e8f0;
+    border-left: 1px solid var(--rule-2);
     font-size: 1.15rem;
     line-height: 1.4;
     min-height: 2.8rem;
@@ -651,21 +651,21 @@
   .cell-dots {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: #cbd5e1;
+    color: var(--faint);
     letter-spacing: 0.2em;
   }
 
   .cell-empty {
-    color: #e2e8f0;
+    color: var(--rule-2);
     font-size: 0.85rem;
   }
 
   .cell-form {
-    color: #0f1419;
+    color: var(--ink);
   }
 
   .form-sep {
     font-size: 0.75rem;
-    color: #cbd5e1;
+    color: var(--faint);
   }
 </style>

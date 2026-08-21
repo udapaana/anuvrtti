@@ -73,7 +73,7 @@
   .matrix {
     margin-top: 28px;
     padding-top: 18px;
-    border-top: 1px solid #f5f5f4;
+    border-top: 1px solid var(--rule);
   }
   .head {
     display: flex;
@@ -89,37 +89,37 @@
       monospace;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #78716c;
+    color: var(--muted);
   }
   .sub {
     font:
       400 11.5px/1 var(--font-serif);
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .grid {
     display: grid;
     gap: 1px;
-    background: #e7e5e4;
-    border: 1px solid #e7e5e4;
+    background: var(--rule-2);
+    border: 1px solid var(--rule-2);
     border-radius: 6px;
     overflow: hidden;
   }
   .corner,
   .colhead,
   .rowhead {
-    background: #fafaf9;
+    background: var(--sunken);
     padding: 6px 4px;
     text-align: center;
     font-family: 'Noto Serif Devanagari', 'Noto Serif Telugu', serif;
     font-size: 14px;
-    color: #57534e;
+    color: var(--ink-2);
   }
   .corner {
     font:
       400 11px 'SF Mono',
       Consolas,
       monospace;
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .cell {
     display: flex;
@@ -133,7 +133,7 @@
     font: inherit;
   }
   .cell:hover {
-    background: #fafaf9;
+    background: var(--sunken);
   }
   .cell.blank {
     background: #fdfdfc;
@@ -142,25 +142,25 @@
   .out {
     font-family: 'Noto Serif Devanagari', 'Noto Serif Telugu', serif;
     font-size: 15px;
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .tag {
     font:
       400 9.5px/1 'SF Mono',
       Consolas,
       monospace;
-    color: #d6d3d1;
+    color: var(--faint);
   }
   /* The rule being read. Everything else is a neighbour. */
   .cell.on {
-    background: #fff7ed;
+    background: var(--sunken);
   }
   .cell.on .out {
     color: #9a3412;
     font-weight: 600;
   }
   .cell.on .tag {
-    color: #f97316;
+    color: var(--accent);
   }
   .legend {
     display: flex;
@@ -178,30 +178,30 @@
     cursor: pointer;
     font:
       400 11.5px/1 var(--font-serif);
-    color: #78716c;
+    color: var(--muted);
   }
   .key:hover {
-    color: #f97316;
+    color: var(--accent);
   }
   .key.on {
-    color: #1c1917;
+    color: var(--ink);
     font-weight: 600;
   }
   .swatch {
     width: 9px;
     height: 9px;
     border-radius: 2px;
-    background: #e7e5e4;
+    background: var(--rule-2);
     display: inline-block;
   }
   .swatch.lit {
-    background: #f97316;
+    background: var(--accent);
   }
   .kname {
-    color: #a8a29e;
+    color: var(--quiet);
     font-style: italic;
   }
   .key.on .kname {
-    color: #78716c;
+    color: var(--muted);
   }
 </style>

@@ -198,18 +198,18 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-decoration: none;
     margin-bottom: 0.85rem;
     transition: color 0.15s;
   }
-  .back-link:hover { color: #0f1419; }
+  .back-link:hover { color: var(--ink); }
 
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     margin: 0;
   }
   .title {
@@ -219,7 +219,7 @@
   }
   .lede {
     font-size: 0.88rem;
-    color: #94a3b8;
+    color: var(--quiet);
     line-height: 1.55;
     font-style: italic;
     max-width: 28rem;
@@ -240,7 +240,7 @@
   .section-mono {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: var(--quiet);
     letter-spacing: 0.04em;
   }
 
@@ -252,12 +252,12 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #475569;
+    color: var(--muted);
     margin: 0;
   }
   .field-help {
     font-size: 0.82rem;
-    color: #94a3b8;
+    color: var(--quiet);
     line-height: 1.55;
     max-width: 28rem;
     margin: 0.3rem 0 1rem;
@@ -288,7 +288,7 @@
   .glyph {
     font-size: 2.2rem;
     line-height: 1;
-    color: #cbd5e1;
+    color: var(--faint);
     transition: color 0.15s;
   }
   .glyph.italic { font-style: italic; }
@@ -296,19 +296,19 @@
 
   .script-card.active .glyph,
   .script-card:hover .glyph {
-    color: #0f1419;
+    color: var(--ink);
   }
 
   .glyph-label {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #cbd5e1;
+    color: var(--faint);
     transition: color 0.15s;
   }
   .script-card.active .glyph-label,
   .script-card:hover .glyph-label {
-    color: #0f1419;
+    color: var(--ink);
   }
   .underline {
     height: 2px;
@@ -317,7 +317,7 @@
     transition: background 0.15s;
   }
   .script-card.active .underline {
-    background: #f97316;
+    background: var(--accent);
   }
 
   .more-scripts {
@@ -327,14 +327,14 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     cursor: pointer;
     list-style: none;
   }
   .more-scripts summary::-webkit-details-marker { display: none; }
-  .more-scripts summary::before { content: '+ '; color: #cbd5e1; }
+  .more-scripts summary::before { content: '+ '; color: var(--faint); }
   .more-scripts[open] summary::before { content: '− '; }
-  .more-scripts summary:hover { color: #0f1419; }
+  .more-scripts summary:hover { color: var(--ink); }
 
   .gloss-row {
     display: flex;
@@ -347,15 +347,15 @@
     padding: 0 0 1px;
     cursor: pointer;
     font-size: 1.05rem;
-    color: #cbd5e1;
+    color: var(--faint);
     border-bottom: 2px solid transparent;
     transition: color 0.15s, border-color 0.15s;
   }
   .gloss.italic { font-style: italic; }
-  .gloss:hover { color: #0f1419; }
+  .gloss:hover { color: var(--ink); }
   .gloss.active {
-    color: #0f1419;
-    border-bottom-color: #f97316;
+    color: var(--ink);
+    border-bottom-color: var(--accent);
   }
 
   /* Depth row: three dots of increasing size with explicit labels.
@@ -378,7 +378,7 @@
   }
   .depth-dot {
     border-radius: 50%;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--faint);
     background: transparent;
     transition: all 0.15s;
   }
@@ -387,22 +387,22 @@
   .depth-dot[data-size="2"] { width: 0.95rem; height: 0.95rem; }
 
   .depth-card:hover .depth-dot {
-    border-color: #0f1419;
+    border-color: var(--ink);
   }
   .depth-card.active .depth-dot {
-    background: #f97316;
-    border-color: #f97316;
+    background: var(--accent);
+    border-color: var(--accent);
   }
 
   .depth-label {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #cbd5e1;
+    color: var(--faint);
     transition: color 0.15s;
   }
   .depth-card:hover .depth-label,
   .depth-card.active .depth-label {
-    color: #0f1419;
+    color: var(--ink);
   }
 </style>

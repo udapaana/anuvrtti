@@ -279,7 +279,7 @@
     .sidebar-details {
       display: block;
       background: white;
-      border: 1px solid #e7e5e4;
+      border: 1px solid var(--rule-2);
       border-radius: 0.5rem;
       overflow: hidden;
     }
@@ -289,7 +289,7 @@
       padding: 0.625rem 0.875rem;
       font-size: 0.875rem;
       font-weight: 500;
-      color: #57534e;
+      color: var(--ink-2);
       cursor: pointer;
       user-select: none;
       list-style: none;
@@ -298,7 +298,7 @@
       content: '▾';
       margin-left: auto;
       font-size: 0.75rem;
-      color: #a8a29e;
+      color: var(--quiet);
     }
     .sidebar-details[open] .sidebar-summary::after {
       content: '▴';
@@ -315,17 +315,17 @@
     width: 100%;
     padding: 0.5rem 0;
     border: none;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--rule-2);
     background: transparent;
     font-size: 0.875rem;
     font-family: inherit;
   }
   .search-box input::placeholder {
-    color: #cbd5e1;
+    color: var(--faint);
   }
   .search-box input:focus {
     outline: none;
-    border-bottom-color: #f97316;
+    border-bottom-color: var(--accent);
   }
   .clear-btn {
     position: absolute;
@@ -339,9 +339,9 @@
     cursor: pointer;
     font-size: 1rem;
     line-height: 1;
-    color: #cbd5e1;
+    color: var(--faint);
   }
-  .clear-btn:hover { color: #0f1419; }
+  .clear-btn:hover { color: var(--ink); }
 
   .adhyaya-nav h3,
   .pada-nav h3,
@@ -351,7 +351,7 @@
     font-size: 0.7rem;
     font-weight: 400;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-transform: lowercase;
     margin-bottom: 0.5rem;
   }
@@ -369,15 +369,15 @@
     background: none;
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    color: #94a3b8;
+    color: var(--quiet);
     cursor: pointer;
     transition: color 0.1s;
   }
   .adhyaya-btn:hover,
-  .pada-btn:hover { color: #0f1419; }
+  .pada-btn:hover { color: var(--ink); }
   .adhyaya-btn.active,
   .pada-btn.active {
-    color: #f97316;
+    color: var(--accent);
     font-weight: 500;
   }
 
@@ -397,33 +397,33 @@
     font-style: italic;
     cursor: pointer;
     text-align: left;
-    color: #94a3b8;
+    color: var(--quiet);
     transition: color 0.1s;
   }
-  .type-btn:hover { color: #0f1419; }
-  .type-btn.active { color: #f97316; }
+  .type-btn:hover { color: var(--ink); }
+  .type-btn.active { color: var(--accent); }
   .type-count {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #cbd5e1;
+    color: var(--faint);
     font-style: normal;
   }
-  .type-btn.active .type-count { color: #f97316; }
+  .type-btn.active .type-count { color: var(--accent); }
 
   .pada-stats {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
     padding: 0.5rem 0;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: var(--quiet);
   }
-  .stats-label { color: #0f1419; }
+  .stats-label { color: var(--ink); }
 
   .tools-nav {
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
     padding-top: 1rem;
   }
   .tool-link {
@@ -431,11 +431,11 @@
     padding: 0.2rem 0;
     font-size: 0.9rem;
     font-style: italic;
-    color: #4f46e5;
+    color: var(--accent-ref);
     text-decoration: none;
     transition: color 0.1s;
   }
-  .tool-link:hover { color: #f97316; }
+  .tool-link:hover { color: var(--accent); }
 
   .ref-main {
     min-width: 0;
@@ -450,28 +450,28 @@
   .results-header h2 {
     font-size: 1rem;
     font-weight: 400;
-    color: #0f1419;
+    color: var(--ink);
   }
   .results-count {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
   }
 
   .sutra-list {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
   }
   .sutra-list :global(.sutra-compact) {
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--rule-2);
   }
 
   .loading-state,
   .empty-state {
     text-align: center;
     padding: 3rem;
-    color: #78716c;
+    color: var(--muted);
   }
 </style>

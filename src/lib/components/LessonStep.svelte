@@ -306,18 +306,18 @@
     <div class="h-24 bg-stone-200 rounded"></div>
   </div>
 {:else if fetchError}
-  <div class="border-t-2 border-[#e11d48] py-3">
-    <p class="font-mono text-[0.7rem] uppercase tracking-wider text-[#e11d48] mb-1">error</p>
-    <p class="text-sm text-[#0f1419]">failed to load lesson: {fetchError}</p>
+  <div class="border-t-2 border-[var(--ink)] py-3">
+    <p class="font-mono text-[0.7rem] uppercase tracking-wider text-[var(--ink)] mb-1">error</p>
+    <p class="text-sm text-[var(--ink)]">failed to load lesson: {fetchError}</p>
   </div>
 {:else if lessonData}
   <div class="space-y-5">
 
     <!-- Script picker prompt — only on lesson 0 -->
     {#if lessonData.number === 0}
-      <div class="border-t-2 border-[#4f46e5] py-3">
-        <p class="font-mono text-[0.7rem] lowercase tracking-wider text-[#4f46e5] mb-1">tip</p>
-        <p class="text-sm text-[#475569] {showTelugu ? 'font-telugu' : ''}">
+      <div class="border-t-2 border-[var(--accent-ref)] py-3">
+        <p class="font-mono text-[0.7rem] lowercase tracking-wider text-[var(--accent-ref)] mb-1">tip</p>
+        <p class="text-sm text-[var(--muted)] {showTelugu ? 'font-telugu' : ''}">
           {showTelugu
             ? 'అన్ని ఉదాహరణలు మీరు ఎంచుకున్న లిపిలో కనిపిస్తాయి. లిపిని, వ్యాఖ్యాన భాషను settings లో మార్చండి.'
             : 'All Sanskrit renders in your chosen script. Both the script and the explanation language live on the settings page.'}
@@ -328,10 +328,10 @@
     <!-- Sūtra links -->
     {#if lessonData.sutras?.length}
       <div class="flex items-baseline gap-3 flex-wrap">
-        <span class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8]">{#if showTelugu}<Sanskrit text="సూత్రములు" source="telugu" />{:else}<Sanskrit text="sūtrāṇi" source="iast" />{/if}</span>
+        <span class="font-mono text-[0.7rem] tracking-wider lowercase text-[var(--quiet)]">{#if showTelugu}<Sanskrit text="సూత్రములు" source="telugu" />{:else}<Sanskrit text="sūtrāṇi" source="iast" />{/if}</span>
         {#each lessonData.sutras as sutra}
           <a href="/ref/{sutra}"
-             class="font-mono text-[0.78rem] text-[#4f46e5] hover:text-[#f97316] transition-colors">
+             class="font-mono text-[0.78rem] text-[var(--accent-ref)] hover:text-[var(--accent)] transition-colors">
             {sutra}
           </a>
         {/each}
@@ -505,7 +505,7 @@
             <div class="overflow-x-auto">
               <table class="w-full text-sm">
                 <thead>
-                  <tr class="border-b border-[#e2e8f0]">
+                  <tr class="border-b border-[var(--rule-2)]">
                     <th class="px-4 py-3 text-left font-normal w-20" rowspan="2">
                       <button class="jargon-term" onclick={() => selectedTerm.set('पुरुष')}>
                         <Sanskrit text="puruṣa" source="iast" />
@@ -522,7 +522,7 @@
                       </th>
                     {/each}
                   </tr>
-                  <tr class="border-b border-[#e2e8f0]">
+                  <tr class="border-b border-[var(--rule-2)]">
                     {#each moods as _mood, mi}
                       <th class="px-3 py-1.5 text-left font-normal {mi > 0 ? 'border-l border-stone-100' : ''}">
                         <button class="jargon-term text-xs" onclick={() => selectedTerm.set('एकवचन')}>
@@ -544,7 +544,7 @@
                     {@const p = personMap[row.person]}
                     {@const sgArr = Array.isArray(row.singular_iast) ? row.singular_iast : (row.singular_iast != null ? [row.singular_iast] : [])}
                     {@const plArr = Array.isArray(row.plural_iast) ? row.plural_iast : (row.plural_iast != null ? [row.plural_iast] : [])}
-                    <tr class="hover:bg-[#fff7ed]">
+                    <tr class="hover:bg-[var(--sunken)]">
                       <td class="px-4 py-3">
                         <button class="jargon-term" onclick={() => p && selectedTerm.set(p.deva)}>
                           <Sanskrit text={p?.iast ?? row.person} source="iast" />
@@ -584,7 +584,7 @@
                       </th>
                     {/each}
                   </tr>
-                  <tr class="border-b border-[#e2e8f0]">
+                  <tr class="border-b border-[var(--rule-2)]">
                     {#each stems as _stem, si}
                       {@const hasDual = (section.items ?? []).some((r: any) => r.dual_iast != null)}
                       <th class="px-3 py-1.5 text-left font-normal {si > 0 ? 'border-l border-stone-100' : ''}">
@@ -617,7 +617,7 @@
                     {@const sgArr = Array.isArray(row.singular_iast) ? row.singular_iast : (row.singular_iast != null ? [row.singular_iast] : [])}
                     {@const duArr = Array.isArray(row.dual_iast)     ? row.dual_iast     : (row.dual_iast     != null ? [row.dual_iast]     : [])}
                     {@const plArr = Array.isArray(row.plural_iast)   ? row.plural_iast   : (row.plural_iast   != null ? [row.plural_iast]   : [])}
-                    <tr class="hover:bg-[#fff7ed]">
+                    <tr class="hover:bg-[var(--sunken)]">
                       <td class="px-4 py-3">
                         <button class="jargon-term" onclick={() => c && selectedTerm.set(c.deva)}>
                           <Sanskrit text={c?.iast ?? row.case} source="iast" />
@@ -670,7 +670,7 @@
               <tbody class="divide-y divide-stone-50">
                 {#each (section.items ?? []) as row}
                   {@const c = caseMap[row.case]}
-                  <tr class="hover:bg-[#fff7ed]">
+                  <tr class="hover:bg-[var(--sunken)]">
                     <td class="px-4 py-3">
                       <button class="jargon-term" onclick={() => c && selectedTerm.set(c.deva)}>
                         <Sanskrit text={c?.iast ?? row.case} source="iast" />
@@ -711,7 +711,7 @@
               <tbody class="divide-y divide-stone-50">
                 {#each (section.items ?? []) as row}
                   {@const p = personMap[row.person]}
-                  <tr class="hover:bg-[#fff7ed]">
+                  <tr class="hover:bg-[var(--sunken)]">
                     <td class="px-4 py-3">
                       <button class="jargon-term" onclick={() => p && selectedTerm.set(p.deva)}>
                         <Sanskrit text={p?.iast ?? row.person} source="iast" />
@@ -875,7 +875,7 @@
 <style>
   /* Lesson sections — bare hairlines, no cards. The label is the only chrome. */
   :global(.lesson-section) {
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
   }
   /* Section header — eyebrow, no background */
   :global(.lesson-section-head) {
@@ -885,29 +885,29 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-transform: lowercase;
   }
   :global(.lesson-section-sublabel) {
     font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.04em;
-    color: #cbd5e1;
+    color: var(--faint);
     text-transform: lowercase;
   }
   /* Exercises: no block tint. The accent is a 2px saffron top-rule plus the
      saffron eyebrow. Section reads as continuous page, not a colored card. */
   :global(.lesson-section-exercises) {
-    border-top: 2px solid #f97316;
+    border-top: 2px solid var(--accent);
   }
   :global(.lesson-section-head-exercises .lesson-section-label) {
-    color: #f97316;
+    color: var(--accent);
   }
 
   /* Reading → grammar bridge: a quiet footer linking grammar paths that this
      lesson's grammar_focus mentions. Indigo (the "cross-reference" accent). */
   .grammar-bridge {
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
     padding-top: 1rem;
     margin-top: 1.5rem;
   }
@@ -915,7 +915,7 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-transform: lowercase;
     margin: 0 0 0.65rem;
   }
@@ -935,23 +935,23 @@
     color: inherit;
     transition: color 0.15s;
   }
-  .bridge-list li a:hover { color: #f97316; }
+  .bridge-list li a:hover { color: var(--accent); }
   .bridge-deva {
     font-size: 0.95rem;
-    color: #4f46e5;
+    color: var(--accent-ref);
     min-width: 5rem;
   }
-  .bridge-list li a:hover .bridge-deva { color: #f97316; }
+  .bridge-list li a:hover .bridge-deva { color: var(--accent); }
   .bridge-en {
     font-size: 0.85rem;
     font-style: italic;
-    color: #94a3b8;
+    color: var(--quiet);
   }
 
   /* Grammar note — chapter-break treatment: saffron top-rule, monospace eyebrow,
      larger body text. No card, no yellow background. */
   .grammar-note {
-    border-top: 2px solid #f97316;
+    border-top: 2px solid var(--accent);
     padding: 1rem 0 0.75rem;
     margin: 1.5rem 0 1rem;
   }
@@ -961,14 +961,14 @@
     font-size: 0.7rem;
     font-weight: 400;
     letter-spacing: 0.04em;
-    color: #f97316;
+    color: var(--accent);
     text-transform: lowercase;
     margin-bottom: 0.6rem;
   }
   .grammar-note-text {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: #0f1419;
+    color: var(--ink);
     margin: 0;
     max-width: 36rem;
   }
@@ -980,7 +980,7 @@
     display: inline-flex;
   }
   .sensitive-flag-icon {
-    color: #b45309;
+    color: var(--accent-hover);
     opacity: 0.6;
     cursor: default;
     transition: opacity 0.15s;
@@ -995,12 +995,12 @@
     right: 1rem;
     top: 100%;
     margin-top: 4px;
-    background: #fffbeb;
-    border: 1px solid #fde68a;
+    background: var(--sunken);
+    border: 1px solid var(--accent-soft);
     border-radius: 6px;
     padding: 0.75rem 0.875rem;
     font-size: 0.8rem;
-    color: #78350f;
+    color: var(--accent-hover);
     line-height: 1.55;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     z-index: 50;
@@ -1019,9 +1019,9 @@
   .sensitive-tooltip :global(blockquote) {
     margin: 0.5rem 0 0;
     padding-left: 0.75rem;
-    border-left: 2px solid #fbbf24;
+    border-left: 2px solid var(--accent);
     font-style: italic;
-    color: #92400e;
+    color: var(--accent-hover);
   }
 
   .jargon-term {
@@ -1030,7 +1030,7 @@
     align-items: flex-start;
     gap: 0;
     cursor: pointer;
-    border-bottom: 1px dashed #a78bfa;
+    border-bottom: 1px dashed var(--accent-ref);
     padding-bottom: 1px;
     transition: background-color 0.1s;
     border-radius: 2px;
@@ -1038,12 +1038,12 @@
   }
 
   .jargon-term:hover {
-    background-color: #ede9fe;
+    background-color: var(--sunken);
   }
 
   .jargon-en {
     font-size: 0.6rem;
-    color: #7c6cb0;
+    color: var(--accent-ref);
     font-family: inherit;
     line-height: 1;
     letter-spacing: 0.02em;
@@ -1054,15 +1054,15 @@
   .focus-term {
     display: inline;
     cursor: pointer;
-    border-bottom: 1px dashed #c4b5fd;
-    color: #44403c;
+    border-bottom: 1px dashed var(--rule-2);
+    color: var(--ink-2);
     border-radius: 2px;
     padding-inline: 1px;
     transition: background-color 0.1s;
   }
 
   .focus-term:hover {
-    background-color: #ede9fe;
+    background-color: var(--sunken);
   }
 
   /* Morphological tag badges on vocabulary items */
@@ -1073,9 +1073,9 @@
     padding: 0 5px;
     height: 1.4rem;
     border-radius: 3px;
-    background: #f5f3ff;
-    border: 1px solid #ddd6fe;
-    color: #7c3aed;
+    background: var(--sunken);
+    border: 1px solid var(--rule-2);
+    color: var(--accent-ref);
     cursor: pointer;
     transition: background-color 0.1s;
     font-family: inherit;
@@ -1083,7 +1083,7 @@
   }
 
   .morph-tag:hover {
-    background-color: #ede9fe;
+    background-color: var(--sunken);
   }
 
   .morph-tag-plain {
@@ -1093,9 +1093,9 @@
     padding: 0 5px;
     height: 1.4rem;
     border-radius: 3px;
-    background: #f5f3ff;
-    border: 1px solid #ddd6fe;
-    color: #7c3aed;
+    background: var(--sunken);
+    border: 1px solid var(--rule-2);
+    color: var(--accent-ref);
   }
 
   /* Vocabulary superscript tags */
@@ -1124,21 +1124,21 @@
     font-size: 0.65rem;
     line-height: 1;
     padding: 0 1px;
-    color: #7c3aed;
+    color: var(--accent-ref);
     cursor: pointer;
     font-family: inherit;
     background: none;
     border: none;
   }
-  .vocab-tag:hover { color: #5b21b6; }
+  .vocab-tag:hover { color: var(--accent-ref); }
   .vocab-tag-plain {
     font-size: 0.65rem;
     line-height: 1;
-    color: #7c3aed;
+    color: var(--accent-ref);
   }
   .vocab-tag-dot {
     font-size: 0.75rem;
-    color: #374151;
+    color: var(--ink-2);
     line-height: 1;
     padding: 0 1px;
   }

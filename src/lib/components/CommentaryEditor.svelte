@@ -84,8 +84,8 @@
     flex-direction: column;
     gap: 0.75rem;
     padding: 1rem;
-    background: #fafaf9;
-    border: 1px solid #d6d3d1;
+    background: var(--sunken);
+    border: 1px solid var(--faint);
     border-radius: 0.5rem;
   }
 
@@ -100,16 +100,16 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #78716c;
+    color: var(--muted);
   }
 
   .tier-textarea {
     font-family: inherit;
     font-size: 0.9375rem;
     line-height: 1.625;
-    color: #1c1917;
+    color: var(--ink);
     background: white;
-    border: 1px solid #d6d3d1;
+    border: 1px solid var(--faint);
     border-radius: 0.375rem;
     padding: 0.5rem 0.625rem;
     width: 100%;
@@ -118,14 +118,14 @@
     transition: border-color 0.1s;
   }
   .tier-textarea:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 2px #eef2ff;
+    border-color: var(--accent-ref);
+    box-shadow: 0 0 0 2px var(--sunken);
   }
 
   .expand-btn {
     align-self: flex-start;
     font-size: 0.8125rem;
-    color: #6366f1;
+    color: var(--accent-ref);
     background: none;
     border: none;
     cursor: pointer;
@@ -133,7 +133,7 @@
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .expand-btn:hover { color: #4338ca; }
+  .expand-btn:hover { color: var(--accent-ref); }
 
   .actions {
     display: flex;
@@ -143,25 +143,25 @@
 
   .btn-cancel {
     font-size: 0.875rem;
-    color: #78716c;
+    color: var(--muted);
     background: none;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 0.375rem;
     padding: 0.375rem 0.875rem;
     cursor: pointer;
     transition: all 0.1s;
   }
-  .btn-cancel:hover { border-color: #d6d3d1; color: #44403c; }
+  .btn-cancel:hover { border-color: var(--faint); color: var(--ink-2); }
 
   .btn-save {
     font-size: 0.875rem;
     color: white;
-    background: #4f46e5;
+    background: var(--accent-ref);
     border: 1px solid transparent;
     border-radius: 0.375rem;
     padding: 0.375rem 0.875rem;
     cursor: pointer;
     transition: background 0.1s;
   }
-  .btn-save:hover { background: #4338ca; }
+  .btn-save:hover { background: var(--accent-ref); }
 </style>

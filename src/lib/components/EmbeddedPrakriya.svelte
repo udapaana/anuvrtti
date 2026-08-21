@@ -215,8 +215,8 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1rem;
-    background: #fafaf9;
-    border: 1px solid #e7e5e4;
+    background: var(--sunken);
+    border: 1px solid var(--rule-2);
     border-radius: 0.5rem;
     font-size: 0.875rem;
   }
@@ -224,8 +224,8 @@
   .loading-spinner {
     width: 1rem;
     height: 1rem;
-    border: 2px solid #e7e5e4;
-    border-top-color: #6366f1;
+    border: 2px solid var(--rule-2);
+    border-top-color: var(--accent-ref);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
   }
@@ -235,7 +235,7 @@
   }
 
   .loading-text {
-    color: #78716c;
+    color: var(--muted);
   }
 
   .error-icon {
@@ -244,14 +244,14 @@
     justify-content: center;
     width: 1.25rem;
     height: 1.25rem;
-    background: #fecaca;
-    color: #dc2626;
+    background: var(--rule-2);
+    color: var(--ink);
     border-radius: 50%;
     font-size: 0.75rem;
     font-weight: bold;
   }
 
   .error-text {
-    color: #dc2626;
+    color: var(--ink);
   }
 </style>

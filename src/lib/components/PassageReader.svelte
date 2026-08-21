@@ -33,8 +33,8 @@
   }
 
   function getDifficultyColor(d: number): string {
-    const colors = ['', '#22c55e', '#84cc16', '#eab308', '#f97316', '#ef4444'];
-    return colors[d] || '#78716c';
+    const colors = ['', 'var(--accent-ok)', '#84cc16', '#eab308', 'var(--accent)', 'var(--ink)'];
+    return colors[d] || 'var(--muted)';
   }
 </script>
 
@@ -124,7 +124,7 @@
 <style>
   .passage-reader {
     background: #fefefe;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 8px;
     padding: 1.25rem;
     margin: 1rem 0;
@@ -133,13 +133,13 @@
   .passage-header {
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid #f5f5f4;
+    border-bottom: 1px solid var(--rule);
   }
 
   .passage-title {
     font-size: 1rem;
     font-weight: 600;
-    color: #1c1917;
+    color: var(--ink);
     margin: 0 0 0.5rem 0;
   }
 
@@ -148,7 +148,7 @@
     flex-wrap: wrap;
     gap: 0.75rem;
     font-size: 0.75rem;
-    color: #78716c;
+    color: var(--muted);
   }
 
   .passage-source {
@@ -160,7 +160,7 @@
   }
 
   .passage-meter {
-    color: #a8a29e;
+    color: var(--quiet);
   }
 
   .passage-difficulty {
@@ -174,9 +174,9 @@
   .sanskrit-text {
     font-size: 1.25rem;
     line-height: 2;
-    color: #1c1917;
+    color: var(--ink);
     padding: 0.75rem;
-    background: #fafaf9;
+    background: var(--sunken);
     border-radius: 6px;
   }
 
@@ -186,16 +186,16 @@
 
   .padaccheda summary {
     font-size: 0.75rem;
-    color: #78716c;
+    color: var(--muted);
     cursor: pointer;
     padding: 0.25rem 0;
   }
 
   .padaccheda-text {
     font-size: 0.9rem;
-    color: #57534e;
+    color: var(--ink-2);
     padding: 0.5rem;
-    background: #f5f5f4;
+    background: var(--rule);
     border-radius: 4px;
     margin-top: 0.25rem;
   }
@@ -206,9 +206,9 @@
 
   .toggle-btn {
     font-size: 0.75rem;
-    color: #6366f1;
+    color: var(--accent-ref);
     background: none;
-    border: 1px solid #c7d2fe;
+    border: 1px solid var(--rule-2);
     border-radius: 4px;
     padding: 0.25rem 0.75rem;
     cursor: pointer;
@@ -216,30 +216,30 @@
   }
 
   .toggle-btn:hover {
-    background: #eef2ff;
+    background: var(--sunken);
   }
 
   .translation {
     margin: 0.75rem 0 0 0;
     font-size: 0.9rem;
-    color: #44403c;
+    color: var(--ink-2);
     line-height: 1.6;
     padding: 0.75rem;
-    background: #fffbeb;
+    background: var(--sunken);
     border-radius: 4px;
-    border-left: 3px solid #fbbf24;
+    border-left: 3px solid var(--accent);
   }
 
   .section-summary {
     font-size: 0.8rem;
     font-weight: 500;
-    color: #57534e;
+    color: var(--ink-2);
     cursor: pointer;
     padding: 0.5rem 0;
   }
 
   .vocab-section, .notes-section, .sutra-section {
-    border-top: 1px solid #f5f5f4;
+    border-top: 1px solid var(--rule);
     padding-top: 0.5rem;
     margin-top: 0.5rem;
   }
@@ -259,37 +259,37 @@
     gap: 0.5rem;
     font-size: 0.85rem;
     padding: 0.35rem 0.5rem;
-    background: #f5f5f4;
+    background: var(--rule);
     border-radius: 4px;
   }
 
   .vocab-form {
     font-weight: 500;
-    color: #1c1917;
+    color: var(--ink);
   }
 
   .vocab-roman {
-    color: #78716c;
+    color: var(--muted);
     font-size: 0.8rem;
   }
 
   .vocab-gloss {
-    color: #57534e;
+    color: var(--ink-2);
     font-style: italic;
     margin-left: auto;
   }
 
   .grammar-notes {
     font-size: 0.85rem;
-    color: #44403c;
+    color: var(--ink-2);
     line-height: 1.6;
     padding: 0.75rem;
-    background: #f0fdf4;
+    background: var(--sunken);
     border-radius: 4px;
     margin-top: 0.5rem;
   }
 
   .grammar-notes :global(strong) {
-    color: #166534;
+    color: var(--accent-ok);
   }
 </style>

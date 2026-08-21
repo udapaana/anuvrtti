@@ -44,6 +44,80 @@
   --font-devanagari: var(--font-deva);
 }
 
+/*
+  Five pages grew a second design language — Tailwind stone/indigo/teal, with
+  rounded-lg cards — beside the hand-CSS ones. Rather than leave two palettes
+  alive while those pages convert one at a time, the Tailwind scale itself
+  resolves into these tokens: stone becomes the neutral ramp, indigo and amber
+  become the accent, green and teal the done accent, blue and violet the
+  cross-reference, and red reads as ink. A stray utility cannot reintroduce a
+  ninth hue, and the corners go square with the rest of the app.
+*/
+@theme {
+  --color-stone-50: var(--sunken);
+  --color-stone-100: var(--sunken);
+  --color-stone-200: var(--rule-2);
+  --color-stone-300: var(--rule-2);
+  --color-stone-400: var(--quiet);
+  --color-stone-500: var(--muted);
+  --color-stone-600: var(--muted);
+  --color-stone-700: var(--ink-2);
+  --color-stone-800: var(--ink);
+  --color-stone-900: var(--ink);
+
+  --color-indigo-50: var(--sunken);
+  --color-indigo-100: var(--accent-soft);
+  --color-indigo-200: var(--accent-soft);
+  --color-indigo-400: var(--accent);
+  --color-indigo-500: var(--accent);
+  --color-indigo-600: var(--accent);
+  --color-indigo-700: var(--accent-hover);
+
+  --color-amber-50: var(--sunken);
+  --color-amber-200: var(--accent-soft);
+  --color-amber-300: var(--accent-soft);
+  --color-amber-700: var(--accent);
+  --color-amber-800: var(--accent-hover);
+
+  --color-green-50: var(--sunken);
+  --color-green-100: var(--sunken);
+  --color-green-500: var(--accent-ok);
+  --color-green-600: var(--accent-ok);
+  --color-green-700: var(--accent-ok);
+  --color-emerald-700: var(--accent-ok);
+  --color-teal-50: var(--sunken);
+  --color-teal-100: var(--sunken);
+  --color-teal-200: var(--rule-2);
+  --color-teal-700: var(--accent-ok);
+
+  --color-violet-50: var(--sunken);
+  --color-violet-200: var(--rule-2);
+  --color-violet-700: var(--accent-ref);
+
+  /* A missed answer reads in ink, not in a warning colour — the review session
+     and the reader's verdict line use the same pair. */
+  --color-red-50: var(--sunken);
+  --color-red-100: var(--sunken);
+  --color-red-200: var(--rule-2);
+  --color-red-500: var(--ink);
+  --color-red-600: var(--ink);
+  --color-red-700: var(--ink);
+  --color-red-800: var(--ink);
+
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+}
+
+/* rounded-full is not theme-driven in Tailwind, so square it here. */
+.rounded-full {
+  border-radius: var(--radius);
+}
+
 body {
   font-family: var(--font-serif);
   background: var(--paper);

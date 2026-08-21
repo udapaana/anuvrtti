@@ -174,18 +174,18 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-decoration: none;
     margin-bottom: 0.85rem;
     transition: color 0.15s;
   }
-  .back-link:hover { color: #0f1419; }
+  .back-link:hover { color: var(--ink); }
 
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     margin: 0;
   }
 
@@ -197,15 +197,15 @@
 
   .empty {
     font-size: 0.9rem;
-    color: #94a3b8;
+    color: var(--quiet);
     font-style: italic;
     margin-top: 2rem;
   }
   .empty a {
-    color: #4f46e5;
+    color: var(--accent-ref);
     text-decoration: none;
   }
-  .empty a:hover { color: #f97316; }
+  .empty a:hover { color: var(--accent); }
 
   .controls {
     display: flex;
@@ -222,15 +222,15 @@
     font-size: 0.78rem;
     letter-spacing: 0.02em;
     border: none;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--rule-2);
     padding: 0.3rem 0;
-    color: #0f1419;
+    color: var(--ink);
     background: transparent;
     outline: none;
     transition: border-color 0.15s;
   }
-  .search:focus { border-bottom-color: #f97316; }
-  .search::placeholder { color: #cbd5e1; }
+  .search:focus { border-bottom-color: var(--accent); }
+  .search::placeholder { color: var(--faint); }
 
   .view-toggle {
     display: flex;
@@ -243,22 +243,22 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     cursor: pointer;
     border-bottom: 2px solid transparent;
     transition: color 0.15s, border-color 0.15s;
   }
-  .view-btn:hover { color: #0f1419; }
+  .view-btn:hover { color: var(--ink); }
   .view-btn.active {
-    color: #0f1419;
-    border-bottom-color: #f97316;
+    color: var(--ink);
+    border-bottom-color: var(--accent);
   }
 
   /* List view table */
   .word-table {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
   }
 
   .table-head {
@@ -269,9 +269,9 @@
     font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.05em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-transform: lowercase;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--rule-2);
   }
 
   .word-row {
@@ -280,7 +280,7 @@
     gap: 0.75rem;
     align-items: baseline;
     padding: 0.5rem 0;
-    border-bottom: 1px solid #f8fafc;
+    border-bottom: 1px solid var(--sunken);
     font-size: 0.88rem;
   }
   .word-row:hover { background: #fafafa; }
@@ -293,18 +293,18 @@
 
   .word-main {
     font-size: 1rem;
-    color: #0f1419;
+    color: var(--ink);
   }
 
   .word-iast {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.78rem;
-    color: #94a3b8;
+    color: var(--quiet);
   }
 
   .gloss-cell {
-    color: #475569;
+    color: var(--muted);
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
@@ -313,22 +313,22 @@
   .tag {
     font-family: var(--font-mono);
     font-size: 0.65rem;
-    color: #94a3b8;
+    color: var(--quiet);
     letter-spacing: 0.02em;
   }
 
   .lesson-cell {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: var(--quiet);
   }
 
   .lesson-link {
-    color: #94a3b8;
+    color: var(--quiet);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .lesson-link:hover { color: #f97316; }
+  .lesson-link:hover { color: var(--accent); }
 
   .dict-cell {
     text-align: right;
@@ -338,16 +338,16 @@
     font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.04em;
-    color: #cbd5e1;
+    color: var(--faint);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .dict-link:hover { color: #4f46e5; }
+  .dict-link:hover { color: var(--accent-ref); }
 
   .no-results {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: #cbd5e1;
+    color: var(--faint);
     padding: 1.5rem 0;
     text-align: center;
   }
@@ -362,7 +362,7 @@
     align-items: baseline;
     gap: 0.75rem;
     padding: 0.4rem 0;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
     margin-bottom: 0.75rem;
   }
 
@@ -370,16 +370,16 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #475569;
+    color: var(--muted);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .lesson-group-label:hover { color: #f97316; }
+  .lesson-group-label:hover { color: var(--accent); }
 
   .lesson-group-count {
     font-family: var(--font-mono);
     font-size: 0.65rem;
-    color: #cbd5e1;
+    color: var(--faint);
   }
 
   .lesson-words {
@@ -397,7 +397,7 @@
 
   .chip-word {
     font-size: 1rem;
-    color: #0f1419;
+    color: var(--ink);
     min-width: 7rem;
   }
 
@@ -405,12 +405,12 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.82rem;
-    color: #94a3b8;
+    color: var(--quiet);
     min-width: 6rem;
   }
 
   .chip-gloss {
-    color: #475569;
+    color: var(--muted);
     flex: 1;
   }
 
@@ -418,19 +418,19 @@
     font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.04em;
-    color: #cbd5e1;
+    color: var(--faint);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .chip-dict:hover { color: #4f46e5; }
+  .chip-dict:hover { color: var(--accent-ref); }
 
   .word-count {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #cbd5e1;
+    color: var(--faint);
     letter-spacing: 0.04em;
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
   }
 </style>

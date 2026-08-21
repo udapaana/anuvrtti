@@ -311,7 +311,7 @@
     padding: 4rem;
   }
   .not-found a {
-    color: #6366f1;
+    color: var(--accent-ref);
   }
 
   .detail-layout {
@@ -353,11 +353,11 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .back-link:hover { color: #0f1419; }
+  .back-link:hover { color: var(--ink); }
 
   .sutra-nav {
     display: flex;
@@ -365,7 +365,7 @@
     justify-content: space-between;
     margin-top: 2rem;
     padding-top: 1.25rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
     font-size: 0.85rem;
   }
 
@@ -377,21 +377,21 @@
     background: none;
     border: none;
     text-decoration: none;
-    color: #0f1419;
+    color: var(--ink);
     font-family: var(--font-mono);
     font-size: 0.8rem;
     transition: color 0.1s;
   }
-  .nav-btn:hover { color: #f97316; }
+  .nav-btn:hover { color: var(--accent); }
 
   .nav-arrow {
-    color: #94a3b8;
+    color: var(--quiet);
   }
 
   .nav-hint {
     font-family: var(--font-mono);
     font-size: 0.65rem;
-    color: #cbd5e1;
+    color: var(--faint);
     letter-spacing: 0.04em;
   }
 
@@ -405,7 +405,7 @@
     font-weight: 400;
     text-transform: lowercase;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     margin-bottom: 0.75rem;
   }
 
@@ -415,32 +415,32 @@
     align-items: baseline;
     justify-content: space-between;
     gap: 0.5rem;
-    border-top: 2px solid #f97316;
+    border-top: 2px solid var(--accent);
     padding: 0.55rem 0;
     margin-bottom: 1rem;
     font-size: 0.85rem;
   }
 
   .banner-link {
-    color: #0f1419;
+    color: var(--ink);
     text-decoration: none;
     flex: 1;
     font-family: var(--font-serif);
     font-style: italic;
   }
   .banner-link strong {
-    color: #f97316;
+    color: var(--accent);
     font-weight: 500;
   }
-  .banner-link:hover { color: #f97316; }
+  .banner-link:hover { color: var(--accent); }
 
   .banner-step {
-    color: #94a3b8;
+    color: var(--quiet);
     margin-left: 0.25rem;
   }
 
   .banner-dismiss {
-    color: #cbd5e1;
+    color: var(--faint);
     background: none;
     border: none;
     cursor: pointer;
@@ -449,19 +449,19 @@
     align-items: center;
     transition: color 0.15s;
   }
-  .banner-dismiss:hover { color: #0f1419; }
+  .banner-dismiss:hover { color: var(--ink); }
 
   /* Prakriyā cross-links — numbered derivations where this rule is invoked */
   .prakriya-links {
     margin-top: 1.5rem;
     padding-top: 0.85rem;
-    border-top: 2px solid #f97316;
+    border-top: 2px solid var(--accent);
   }
 
   .prakriya-label {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: var(--quiet);
     letter-spacing: 0.04em;
     text-transform: lowercase;
     display: block;
@@ -481,11 +481,11 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.95rem;
-    color: #0f1419;
+    color: var(--ink);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .prakriya-link:hover { color: #f97316; }
+  .prakriya-link:hover { color: var(--accent); }
 
   /* Learn cross-links — italic indigo words, separated by · */
   .learn-links {
@@ -495,30 +495,30 @@
     gap: 0.85rem;
     margin-top: 1.5rem;
     padding-top: 0.85rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
     font-size: 0.85rem;
   }
 
   .learn-links-label {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: var(--quiet);
     letter-spacing: 0.04em;
     text-transform: lowercase;
   }
 
   .learn-link {
     font-style: italic;
-    color: #4f46e5;
+    color: var(--accent-ref);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .learn-link:hover { color: #f97316; }
+  .learn-link:hover { color: var(--accent); }
 
-  .learn-link-bala { color: #4f46e5; }
-  .learn-link-bala:hover { color: #f97316; }
-  .learn-link-kale { color: #57534e; }
-  .learn-link-kale:hover { color: #f97316; }
+  .learn-link-bala { color: var(--accent-ref); }
+  .learn-link-bala:hover { color: var(--accent); }
+  .learn-link-kale { color: var(--ink-2); }
+  .learn-link-kale:hover { color: var(--accent); }
 
 
   .pending-chip {
@@ -528,7 +528,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    background: #4f46e5;
+    background: var(--accent-ref);
     color: white;
     border-radius: 9999px;
     padding: 0.5rem 1rem;
@@ -590,7 +590,7 @@
   .mobile-tool-panel {
     flex: 1;
     background: white;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 0.5rem;
   }
 
@@ -602,13 +602,13 @@
     padding: 0.5rem 0.75rem;
     cursor: pointer;
     font-size: 0.875rem;
-    color: #57534e;
+    color: var(--ink-2);
     user-select: none;
   }
 
   .mobile-tool-content {
     padding: 0.75rem;
-    border-top: 1px solid #f5f5f4;
+    border-top: 1px solid var(--rule);
     max-height: 18rem;
     overflow-y: auto;
   }

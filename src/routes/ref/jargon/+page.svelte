@@ -37,11 +37,11 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .back-link:hover { color: #0f1419; }
+  .back-link:hover { color: var(--ink); }
 
   .head {
     display: flex;
@@ -53,7 +53,7 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     margin: 0;
   }
   .title {
@@ -62,7 +62,7 @@
     margin: 0.35rem 0 0.4rem;
   }
   .lede {
-    color: #475569;
+    color: var(--muted);
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
@@ -70,7 +70,7 @@
   }
 
   .jargon-container {
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
     padding-top: 1rem;
   }
 </style>

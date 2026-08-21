@@ -291,24 +291,24 @@
 
   .commentary-content :global(th),
   .commentary-content :global(td) {
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     padding: 0.5rem 0.75rem;
     text-align: left;
   }
 
   .commentary-content :global(th) {
-    background: #fafaf9;
+    background: var(--sunken);
     font-weight: 600;
-    color: #44403c;
+    color: var(--ink-2);
   }
 
   .commentary-content :global(tr:nth-child(even)) {
-    background: #fafaf9;
+    background: var(--sunken);
   }
 
   .commentary-content :global(strong) {
     font-weight: 600;
-    color: #1c1917;
+    color: var(--ink);
   }
 
   .commentary-content :global(em) {
@@ -331,11 +331,11 @@
   .commentary-content :global(h4) {
     font-weight: 600;
     margin: 1rem 0 0.5rem 0;
-    color: #1c1917;
+    color: var(--ink);
   }
 
   .commentary-content :global(code) {
-    background: #f5f5f4;
+    background: var(--rule);
     padding: 0.125rem 0.375rem;
     border-radius: 0.25rem;
     font-size: 0.875em;
@@ -346,7 +346,7 @@
     display: inline;
     padding: 0;
     background: none;
-    color: #4f46e5;
+    color: var(--accent-ref);
     border: none;
     border-bottom: 1px dotted transparent;
     cursor: pointer;
@@ -356,12 +356,12 @@
   }
 
   .commentary-content :global(.deva-term:hover) {
-    color: #f97316;
-    border-bottom-color: #f97316;
+    color: var(--accent);
+    border-bottom-color: var(--accent);
   }
 
   .commentary-content :global(.ref-link) {
-    color: #4f46e5;
+    color: var(--accent-ref);
     font-family: var(--font-mono);
     font-size: 0.875em;
     text-decoration: none;
@@ -369,18 +369,18 @@
   }
 
   .commentary-content :global(.ref-link:hover) {
-    color: #f97316;
+    color: var(--accent);
   }
 
   .commentary-content :global(.roman-term) {
     font-style: italic;
-    color: #4f46e5;
+    color: var(--accent-ref);
     cursor: pointer;
     transition: color 0.15s;
   }
 
   .commentary-content :global(.roman-term:hover) {
-    color: #f97316;
+    color: var(--accent);
   }
 
   .commentary-content :global(.pratyahara-inline) {
@@ -388,7 +388,7 @@
     background: none;
     border: none;
     font-size: inherit;
-    color: #059669;
+    color: var(--accent-ok);
     font-style: italic;
   }
 

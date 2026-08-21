@@ -144,16 +144,16 @@
     gap: 7px;
     width: 100%;
     padding: 5px 9px;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 6px;
     background: #fff;
     cursor: pointer;
     font:
       400 12.5px/1 var(--font-serif);
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .trigger:hover {
-    border-color: #d6d3d1;
+    border-color: var(--faint);
   }
   .glyph {
     font-size: 13px;
@@ -163,10 +163,10 @@
       400 10px 'SF Mono',
       Consolas,
       monospace;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 3px;
     padding: 0 3px;
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .panel {
     position: absolute;
@@ -175,7 +175,7 @@
     left: 0;
     width: 330px;
     background: #fff;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 8px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
     overflow: hidden;
@@ -184,11 +184,11 @@
     width: 100%;
     box-sizing: border-box;
     border: 0;
-    border-bottom: 1px solid #f5f5f4;
+    border-bottom: 1px solid var(--rule);
     padding: 10px 12px;
     font:
       400 14px/1.3 var(--font-serif);
-    color: #1c1917;
+    color: var(--ink);
     outline: none;
   }
   .results {
@@ -207,10 +207,10 @@
     text-align: left;
     font:
       400 13px/1.35 var(--font-serif);
-    color: #44403c;
+    color: var(--ink-2);
   }
   .hit:hover {
-    background: #fafaf9;
+    background: var(--sunken);
   }
   .hid {
     flex: none;
@@ -218,7 +218,7 @@
       400 11px 'SF Mono',
       Consolas,
       monospace;
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .htitle {
     flex: 1;
@@ -229,13 +229,13 @@
   .hwhy {
     flex: none;
     font-size: 11px;
-    color: #f97316;
+    color: var(--accent);
     font-family: 'Noto Sans Devanagari', 'Noto Sans Telugu', sans-serif;
   }
   .empty {
     padding: 12px;
     font:
       400 12.5px/1 var(--font-serif);
-    color: #a8a29e;
+    color: var(--quiet);
   }
 </style>

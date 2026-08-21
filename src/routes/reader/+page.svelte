@@ -16,7 +16,7 @@
   // Graded reader — the design's redesign: a chapter spine (left), interlinear
   // gloss reading with word-identity tags (center), and a scroll-synced sūtra
   // derivation rail (right). Paginated (PAGE per page) so it scales past a few
-  // thousand readings. Old palette: white bg, #f97316 accent, #4f46e5 indigo.
+  // thousand readings. Old palette: white bg, var(--accent) accent, var(--accent-ref) indigo.
   const PAGE = 20;
 
   type Reading = any;
