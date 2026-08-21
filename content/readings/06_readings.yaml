@@ -10,6 +10,645 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd043
+  kind: attested
+  segment: 325
+  source:
+    text: पञ्चतन्त्र
+    ref: "Pañcatantra 0.2 — the maṅgala verse (Viṣṇuśarman and the five tantras)"
+    curated: "the opening benedictory verse, whole; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_viSNuzarman-paJcatantra, ||Panc_0.2||)"
+  sentence: सकलार्थशास्त्रसारं जगति समालोक्य विष्णुशर्मेदम्। तन्त्रैः पञ्चभिर् एतच् चकार सुमनोहरं शास्त्रम्॥
+  translation: Having surveyed in the world the essence of all the treatises on statecraft, Viṣṇuśarman composed this charming work in five tantras.
+  teaches: |
+    the Pañcatantra's own opening — a long तत्पुरुष सार-compound as object of the
+    ल्यप् gerund समालोक्य, and the perfect चकार "he composed."
+  words:
+  - form: सकलार्थशास्त्रसारम्
+    lemma: सकलार्थशास्त्रसार
+    gloss: the essence of all the treatises on statecraft
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: determinative — सारम्, the head, is qualified by the rest; सकलानाम् अर्थशास्त्राणाम् सारम्
+    - text: 'विग्रह: सकलानाम् अर्थशास्त्राणाम् सारम् — "the essence of all the arthaśāstras"'
+    - cite: '2.1.22'
+      role: तत्पुरुषः — a compound whose last member carries the main sense is तत्पुरुष
+    - term: कर्मन्
+      en: object of समालोक्य
+    - term: द्वितीया
+      en: accusative (→ सारं, anusvāra before ज)
+  - form: जगति
+    lemma: जगत्
+    gloss: in the world
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative (त्-stem जगत् → जगति)
+  - form: समालोक्य
+    lemma: लोक्
+    gloss: having surveyed
+    notes:
+    - term: कृदन्त
+      en: gerund — a कृदन्त that does not decline
+    - term: ल्यप्
+      en: the ल्यप् suffix — a क्त्वा-gerund WITH a preverb (सम्-आ), so आगत्य-style
+    - cite: '7.1.37'
+      role: समासेऽनञ्पूर्वे क्त्वो ल्यप् — क्त्वा becomes ल्यप् after a preverb → -आलोक्य
+    - term: उपसर्ग
+      en: सम् + आ — the preverbs that select ल्यप् over क्त्वा
+    - term: अव्यय
+      en: indeclinable
+  - form: विष्णुशर्मेदम्
+    lemma: विष्णुशर्मन्
+    gloss: Viṣṇuśarman + this (work)
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent — विष्णुशर्मा, the one who composed
+    - term: प्रथमा
+      en: nominative — an अन्-stem, so the न् drops (विष्णुशर्मा)
+    - text: 'विष्णुशर्मा + इदम् → विष्णुशर्मेदम् (आ + इ → ए, गुणसन्धि); इदम् = "this work," द्वितीया'
+  - form: तन्त्रैः
+    lemma: तन्त्र
+    gloss: by the tantras (books)
+    vocab: true
+    notes:
+    - term: करण
+      en: instrument — "by means of the five books"
+    - term: तृतीया
+      en: instrumental plural
+  - form: पञ्चभिर्
+    lemma: पञ्चन्
+    gloss: five
+    notes:
+    - term: संख्या
+      en: numeral qualifying तन्त्रैः (instrumental plural)
+    - term: तृतीया
+      en: instrumental
+    - text: 'पञ्चभिः + एतत् → पञ्चभिर् (visarga → र् before a voiced sound)'
+  - form: एतच्
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: pronoun — the work, restated
+    - term: कर्मन्
+      en: object of चकार
+    - term: द्वितीया
+      en: accusative (neuter)
+    - text: 'एतत् + चकार → एतच् चकार (त् → च् before च, श्चुत्व 8.4.40)'
+  - form: चकार
+    lemma: कृ
+    gloss: made, composed
+    notes:
+    - term: लिट्
+      en: perfect — the remote or reported past (परोक्ष)
+    - cite: '3.2.115'
+      role: परोक्षे लिट् — for a past beyond direct witness, लिट् replaces the लकार → चकार
+  - form: सुमनोहरम्
+    lemma: सुमनोहर
+    gloss: very charming
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: qualifying शास्त्रम्
+    - term: द्वितीया
+      en: accusative (→ सुमनोहरं, anusvāra before श)
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: शास्त्रम्
+    lemma: शास्त्र
+    gloss: the treatise, the work
+    notes:
+    - term: कर्मन्
+      en: the thing composed
+    - term: द्वितीया
+      en: accusative (neuter)
+  vyakhya: सकलार्थशास्त्रसारं समालोक्य विष्णुशर्मा पञ्चभिः तन्त्रैः शास्त्रम् चकार।
+  vyakhya_en: |
+    The Pañcatantra names itself in its second verse. The object of the gerund is
+    one long तत्पुरुष — सकल-अर्थशास्त्र-सारम्, "the essence of all the treatises on
+    statecraft" — which Viṣṇuśarman, having surveyed (समालोक्य, the ल्यप् gerund),
+    made into a charming work. चकार is the perfect (लिट्, 3.2.115), the tense of
+    reported past: "he composed it." तन्त्रैः पञ्चभिः, "by five books" — the five
+    that give the book its name.
+- id: rd044
+  kind: attested
+  segment: 295
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.36 — उद्यमेन हि सिध्यन्ति (effort, not wishes)"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, ||Hit_0.36||)"
+  sentence: उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः। न हि सुप्तस्य सिंहस्य प्रविशन्ति मुखे मृगाः॥
+  translation: By effort deeds succeed, not by wishes. For deer do not walk into the mouth of a sleeping lion.
+  teaches: |
+    a famous Hitopadeśa maxim. कार्याणि is the ण्यत् gerundive ("things to be
+    done"); सुप्तस्य is a क्त participle qualifying सिंहस्य; success comes उद्यमेन
+    (तृतीया, by means).
+  words:
+  - form: उद्यमेन
+    lemma: उद्यम
+    gloss: by effort
+    vocab: true
+    notes:
+    - term: करण
+      en: instrument — "by means of effort"
+    - term: तृतीया
+      en: instrumental
+  - form: हि
+    lemma: हि
+    gloss: indeed, for
+    notes:
+    - term: निपात
+      en: particle — gives a reason ("for")
+  - form: सिध्यन्ति
+    lemma: सिध्
+    gloss: succeed, are accomplished
+    vocab: true
+    notes:
+    - term: लट्
+      en: present (दिवादि — सिध् → सिध्यति)
+  - form: कार्याणि
+    lemma: कार्य
+    gloss: deeds, things to be done
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerundive — "that which is to be done" (declines, neuter)
+    - term: ण्यत्
+      en: the ण्यत् gerundive suffix on a हल्-final root
+    - cite: '3.1.124'
+      role: ऋहलोर्ण्यत् — ण्यत् after an ऋ/हल्-final root → कृ + ण्यत् → कार्य ("to be done")
+    - term: कर्तृ
+      en: agent — the subject of सिध्यन्ति
+    - term: प्रथमा
+      en: nominative (neuter plural → कार्याणि)
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: निपात
+      en: verbal negation
+  - form: मनोरथैः
+    lemma: मनोरथ
+    gloss: by wishes
+    vocab: true
+    notes:
+    - term: करण
+      en: instrument — "by mere wishes" (मनसः रथः, "a chariot of the mind")
+    - term: तृतीया
+      en: instrumental plural
+  - form: सुप्तस्य
+    lemma: स्वप्
+    gloss: of the sleeping (one)
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: past participle (declines)
+    - term: क्त
+      en: the क्त निष्ठा suffix — "asleep" (स्वप् → सुप्त)
+    - term: विशेषण
+      en: qualifying सिंहस्य (agrees — षष्ठी)
+    - term: षष्ठी
+      en: genitive
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: सिंहस्य
+    lemma: सिंह
+    gloss: of the lion
+    vocab: true
+    notes:
+    - term: सम्बन्ध
+      en: possession
+    - term: षष्ठी
+      en: genitive
+  - form: प्रविशन्ति
+    lemma: विश्
+    gloss: enter
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+    - term: उपसर्ग
+      en: प्र — "forward, in"
+  - form: मुखे
+    lemma: मुख
+    gloss: into the mouth
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus (goal of entering)
+    - term: सप्तमी
+      en: locative
+  - form: मृगाः
+    lemma: मृग
+    gloss: deer, beasts
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural
+  vyakhya: उद्यमेन कार्याणि सिध्यन्ति, न मनोरथैः। सुप्तस्य सिंहस्य मुखे मृगाः न प्रविशन्ति।
+  vyakhya_en: |
+    Two instrumentals set the maxim: things get done उद्यमेन "by effort," not
+    मनोरथैः "by wishes." कार्याणि is itself a गерundive — कृ + ण्यत् → कार्य, "what
+    is to be done" (3.1.124), the very word Pāṇini's rule forms. The second line
+    is the image: सुप्तस्य सिंहस्य, "of a sleeping lion" — सुप्त the क्त participle
+    of स्वप् — into whose mouth (मुखे) the deer do not walk. Nothing comes without
+    the effort of the doing.
+- id: rd045
+  kind: attested
+  segment: 300
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.11 — यौवनं धनसम्पत्तिः (each alone is ruin)"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, ||Hit_0.11||)"
+  sentence: यौवनं धनसम्पत्तिः प्रभुत्वम् अविवेकिता। एकैकम् अप्य् अनर्थाय किम् उ यत्र चतुष्टयम्॥
+  translation: Youth, abundance of wealth, power, and want of judgment — each one alone leads to ruin; how much more where the four are together.
+  teaches: |
+    four nouns, then the twist. धनसम्पत्तिः carries the क्तिन् action-noun सम्पत्ति;
+    प्रभुत्वम् and अविवेकिता are the त्व/तल् abstracts — "power," "indiscretion."
+  words:
+  - form: यौवनम्
+    lemma: यौवन
+    gloss: youth
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: one of the four subjects
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: धनसम्पत्तिः
+    lemma: धनसम्पत्ति
+    gloss: abundance of wealth
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: determinative — धनस्य सम्पत्तिः, "attainment of wealth"; सम्पत्ति is the head
+    - text: 'सम्पत्ति = सम् + पद् + क्तिन् — the feminine action-noun "attainment"'
+    - cite: '3.3.94'
+      role: स्त्रियां क्तिन् — क्तिन् forms a feminine action-noun → सम् + पद् + क्तिन् → सम्पत्ति
+    - term: कर्तृ
+      en: one of the four subjects
+    - term: प्रथमा
+      en: nominative (feminine)
+  - form: प्रभुत्वम्
+    lemma: प्रभुत्व
+    gloss: power, lordship
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "the state of being प्रभु (a lord)"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of" → प्रभु + त्व → प्रभुत्वम्
+    - term: कर्तृ
+      en: one of the four subjects
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: अविवेकिता
+    lemma: अविवेकिन्
+    gloss: want of judgment, indiscretion
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: तल्
+      en: the तल् abstract suffix (→ -ता, feminine) — "the state of being अविवेकिन्"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — तल् (→ ता) for "the state of" → अविवेकिन् + तल् → अविवेकिता
+    - term: कर्तृ
+      en: one of the four subjects
+    - term: प्रथमा
+      en: nominative (feminine)
+  - form: एकैकम्
+    lemma: एक
+    gloss: each single one
+    notes:
+    - term: संख्या
+      en: एक + एक (आम्रेडित) — "one by one, each singly"
+    - term: कर्तृ
+      en: agent — the one that leads to ruin
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: अप्य्
+    lemma: अपि
+    gloss: even
+    notes:
+    - term: निपात
+      en: particle — "even" (अपि → अप्य् before अ, यण्)
+  - form: अनर्थाय
+    lemma: अनर्थ
+    gloss: for ruin, to misfortune
+    vocab: true
+    notes:
+    - term: सम्प्रदान
+      en: purpose — "leads to ruin" (the तादर्थ्य dative)
+    - term: चतुर्थी
+      en: dative
+  - form: किम्
+    lemma: किम्
+    gloss: what (how much more)
+    notes:
+    - term: सर्वनाम
+      en: interrogative — "किम् उ" = "how much more, let alone"
+    - term: प्रथमा
+      en: nominative
+  - form: उ
+    lemma: उ
+    gloss: (emphatic, with किम्)
+    notes:
+    - term: निपात
+      en: particle — reinforces the rhetorical किम्
+  - form: यत्र
+    lemma: यत्र
+    gloss: where
+    notes:
+    - term: अव्यय
+      en: relative adverb of place
+  - form: चतुष्टयम्
+    lemma: चतुष्टय
+    gloss: the foursome, all four
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject of the elliptical clause ("where the four [are present]")
+    - term: प्रथमा
+      en: nominative (neuter)
+  vyakhya: यौवनं धनसम्पत्तिः प्रभुत्वम् अविवेकिता — एकैकम् अपि अनर्थाय, किम् उ चतुष्टयम्।
+  vyakhya_en: |
+    Four things are named, three of them abstractions the तद्धित makes: सम्पत्तिः,
+    the क्तिन् noun of सम्-पद् "attainment" (3.3.94); प्रभुत्वम्, the त्व abstract
+    "lordship"; अविवेकिता, the तल् abstract "want of judgment." एकैकम् अपि — "even
+    each single one" — leads अनर्थाय, to ruin (the dative of purpose); किम् उ, "how
+    much more," where all four (चतुष्टयम्) come together.
+- id: rd046
+  kind: attested
+  segment: 310
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.9 — the four books, drawn from the Pañcatantra"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, ||Hit_0.9||)"
+  sentence: मित्रलाभः सुहृद्भेदो विग्रहः सन्धिर् एव च। पञ्चतन्त्रात् तथान्यस्माद् ग्रन्थाद् आकृष्य लिख्यते॥
+  translation: "Winning friends, splitting friends, war, and peace — [these four]; drawn from the Pañcatantra and from another work besides, it is written."
+  teaches: |
+    the book naming its own four parts. लाभः and भेदः are घञ् action-nouns;
+    पञ्चतन्त्रात् / ग्रन्थात् are the ablative source (पञ्चमी), and लिख्यते is passive.
+  words:
+  - form: मित्रलाभः
+    lemma: मित्रलाभ
+    gloss: winning of friends (Book I)
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: determinative — मित्रस्य लाभः, "the gaining of a friend"; लाभः is the head
+    - text: 'लाभ = लभ् + घञ् — the action-noun "gaining"'
+    - cite: '3.3.18'
+      role: भावे घञ् — घञ् forms the action-noun → लभ् + घञ् → लाभ ("gaining")
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: सुहृद्भेदो
+    lemma: सुहृद्भेद
+    gloss: splitting of friends (Book II)
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: determinative — सुहृदः भेदः, "the estranging of a friend"; भेदः is the head
+    - text: 'भेद = भिद् + घञ् — the action-noun "splitting"; सुहृद्भेदः → सुहृद्भेदो (अः + व → ओ)'
+    - cite: '3.3.18'
+      role: भावे घञ् — घञ् forms the action-noun → भिद् + घञ् → भेद ("splitting")
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: विग्रहः
+    lemma: विग्रह
+    gloss: war (Book III)
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: सन्धिर्
+    lemma: सन्धि
+    gloss: peace (Book IV)
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+    - text: 'सन्धिः + एव → सन्धिर् एव (visarga → र् before a vowel)'
+  - form: एव
+    lemma: एव
+    gloss: indeed
+    notes:
+    - term: निपात
+      en: emphatic particle
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: पञ्चतन्त्रात्
+    lemma: पञ्चतन्त्र
+    gloss: from the Pañcatantra
+    vocab: true
+    notes:
+    - term: अपादान
+      en: source — "drawn from ___"
+    - cite: '2.3.28'
+      role: अपादाने पञ्चमी — the source of an action takes पञ्चमी → पञ्चतन्त्रात्
+    - term: पञ्चमी
+      en: ablative
+  - form: तथान्यस्माद्
+    lemma: अन्य
+    gloss: and likewise from another
+    notes:
+    - term: सर्वादि
+      en: pronominal adjective अन्य ("another"), here अन्यस्मात्
+    - term: अपादान
+      en: source — "from another (work)"
+    - term: पञ्चमी
+      en: ablative
+    - text: 'तथा + अन्यस्मात् → तथान्यस्माद् (आ + अ → आ); तथा = "likewise," अन्यस्मात् → अन्यस्माद् before ग्'
+  - form: ग्रन्थाद्
+    lemma: ग्रन्थ
+    gloss: from a work
+    vocab: true
+    notes:
+    - term: अपादान
+      en: source
+    - term: पञ्चमी
+      en: ablative (ग्रन्थात् → ग्रन्थाद् before आ)
+  - form: आकृष्य
+    lemma: कृष्
+    gloss: having drawn, extracted
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerund — a कृदन्त that does not decline
+    - term: ल्यप्
+      en: the ल्यप् suffix — a क्त्वा-gerund WITH a preverb (आ), so आगत्य-style
+    - term: उपसर्ग
+      en: आ — the preverb that selects ल्यप् over क्त्वा
+    - term: अव्यय
+      en: indeclinable
+  - form: लिख्यते
+    lemma: लिख्
+    gloss: is written
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+    - term: कर्मणि
+      en: passive — the work is the thing written; no expressed agent
+    - cite: '3.4.69'
+      role: लः कर्मणि च — the ल-affix (here लट्) denotes the कर्मन् → passive लिख्यते
+  vyakhya: मित्रलाभः सुहृद्भेदः विग्रहः सन्धिः च — चत्वारि तन्त्राणि। पञ्चतन्त्रात् ग्रन्थात् च आकृष्य इदम् लिख्यते।
+  vyakhya_en: |
+    The book names its own four parts — मित्रलाभः "winning friends," सुहृद्भेदः
+    "splitting friends," विग्रहः "war," सन्धिः "peace." Two of them are घञ्
+    action-nouns: लभ् → लाभ, भिद् → भेद (3.3.18). And it says where it comes from:
+    पञ्चतन्त्रात्, ग्रन्थात् — the ablative of source (पञ्चमी) — having drawn (आकृष्य,
+    the ल्यप् gerund) from them, it लिख्यते, "is written," the passive of लिख्.
+- id: rd047
+  kind: attested
+  segment: 320
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.4 — विद्या is the unsurpassed wealth"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, ||Hit_0.4||)"
+  sentence: सर्वद्रव्येषु विद्यैव द्रव्यम् आहुर् अनुत्तमम्। अहार्यत्वाद् अनर्घत्वाद् अक्षयत्वाच् च सर्वदा॥
+  translation: Among all forms of wealth they call knowledge alone the unsurpassed wealth — because it cannot be stolen, is priceless, and is imperishable, always.
+  teaches: |
+    three त्व-abstracts giving the reason in the ablative — अहार्यत्वात् (unstealable),
+    अनर्घत्वात् (priceless), अक्षयत्वात् (imperishable); "they call" is the perfect आहुः.
+  words:
+  - form: सर्वद्रव्येषु
+    lemma: सर्वद्रव्य
+    gloss: among all forms of wealth
+    vocab: true
+    notes:
+    - term: निर्धारण
+      en: selection-from-a-group → सप्तमी
+    - term: सप्तमी
+      en: locative plural
+    - text: 'सर्व + द्रव्य — "all substances / all wealth"'
+  - form: विद्यैव
+    lemma: विद्या
+    gloss: knowledge alone
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent — विद्या, the subject
+    - term: प्रथमा
+      en: nominative
+    - text: 'विद्या + एव → विद्यैव (आ + ए → ऐ, वृद्धिसन्धि); एव = "alone, indeed"'
+  - form: द्रव्यम्
+    lemma: द्रव्य
+    gloss: wealth
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: predicate object of आहुः ("call it wealth")
+    - term: द्वितीया
+      en: accusative
+  - form: आहुर्
+    lemma: अह्
+    gloss: they call, they say
+    vocab: true
+    notes:
+    - term: लिट्
+      en: perfect — the defective root अह् survives only in the परोक्ष (आह, आहुः)
+    - text: 'आहुः → आहुर् before अ (visarga → र्)'
+  - form: अनुत्तमम्
+    lemma: अनुत्तम
+    gloss: unsurpassed
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: qualifying द्रव्यम्
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: अहार्यत्वाद्
+    lemma: अहार्यत्व
+    gloss: because of being unstealable
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "the state of being अहार्य (not to be stolen)"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of" → अहार्य + त्व → अहार्यत्व
+    - term: पञ्चमी
+      en: ablative of cause — "because of ___" (अहार्यत्वात् → अहार्यत्वाद् before अ)
+  - form: अनर्घत्वाद्
+    lemma: अनर्घत्व
+    gloss: because of being priceless
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "the state of being अनर्घ (priceless)"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of" → अनर्घ + त्व → अनर्घत्व
+    - term: पञ्चमी
+      en: ablative of cause
+  - form: अक्षयत्वाच्
+    lemma: अक्षयत्व
+    gloss: because of being imperishable
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "the state of being अक्षय (imperishable)"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of" → अक्षय + त्व → अक्षयत्व
+    - term: पञ्चमी
+      en: ablative of cause (अक्षयत्वात् → अक्षयत्वाच् before च)
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: सर्वदा
+    lemma: सर्वदा
+    gloss: always
+    notes:
+    - term: अव्यय
+      en: adverb of time — "at all times"
+  vyakhya: सर्वद्रव्येषु विद्या एव अनुत्तमम् द्रव्यम् — अहार्यत्वात् अनर्घत्वात् अक्षयत्वात् च।
+  vyakhya_en: |
+    Of all wealth, knowledge alone (विद्यैव) they call the unsurpassed — द्रव्यम्
+    and अनुत्तमम् both द्वितीया, the double object of आहुः "they call." The reason
+    comes in three त्व-abstracts in the ablative of cause: अहार्यत्वात्, "because it
+    cannot be stolen"; अनर्घत्वात्, "because it is priceless"; अक्षयत्वात्, "because
+    it never runs out" — each the त्व noun (5.1.119) of a quality, and सर्वदा,
+    always so.
 - id: rd041
   kind: attested
   segment: 305
