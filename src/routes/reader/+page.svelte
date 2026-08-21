@@ -717,7 +717,7 @@
 
 {#snippet spine()}
   <Spine
-    title="the arc"
+    title="chapters"
     items={chapters.map((c) => {
       const t = titles[c.id] ?? { dev: c.id, en: '' };
       return { id: c.id, label: t.dev, sub: shortEn(t.en) };
@@ -728,7 +728,7 @@
 {/snippet}
 
 {#snippet rail()}
-  <span class="label">the word</span>
+  <span class="label">word</span>
 
   {#if !selWord}
     <!-- No word selected: the rail carries the READING's own commentary (the
@@ -745,8 +745,8 @@
       </div>
     {/if}
     <p class="prompt">
-      Tap any word in a reading. Its case or lakāra comes first — the gloss and the sūtras follow
-      once you have tried.
+      Select a word. It asks for the case or lakāra first; the gloss and the sūtras follow the
+      answer.
     </p>
     {#if deckCards.length}
       <!-- The seen deck: a word from any reading scrolled past, drawn at random.
@@ -783,7 +783,7 @@
               </button>
             {/each}
           </div>
-          <button class="skip" onclick={() => pickOption('—')}>I am not sure — show it</button>
+          <button class="skip" onclick={() => pickOption('—')}>show the answer</button>
         </div>
       {/if}
 

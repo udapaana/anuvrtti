@@ -106,7 +106,7 @@
 <Shell>
   <header class="head">
     <h1><Sanskrit text="प्रक्रिया" /></h1>
-    <p>A form derived step by step, each step the sūtra that produced it.</p>
+    <p>Derivation of a verb form, one sūtra to a step.</p>
   </header>
 
   {#if wasmLoading}

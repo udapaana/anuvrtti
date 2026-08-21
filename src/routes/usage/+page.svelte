@@ -450,7 +450,7 @@
 {#snippet shelfRight()}
   <!-- Usage is a door because of this hand-off: a cell is a way *into* the
        reader, not a reference entry. -->
-  <span>click an attested cell to open the line that attests it</span>
+  <span>a cell opens the reading it occurs in</span>
 {/snippet}
 
 {#snippet spine()}
@@ -572,7 +572,7 @@
 {/snippet}
 
 {#snippet rail()}
-  <span class="label">the cell</span>
+  <span class="label">cell</span>
   {#if selected}
     <div class="cell-head"><Sanskrit text={selected.key.replace('|', ' ')} source="devanagari" /></div>
     {#if selected.atts.length}
@@ -607,8 +607,7 @@
     {/if}
   {:else}
     <p class="prompt">
-      Saffron cells are attested in the corpus. Pick one and the reading that attests it opens
-      here — one click from the line itself.
+      Cells in saffron occur in the readings. Select one to see its occurrences.
     </p>
   {/if}
 
@@ -619,8 +618,8 @@
       bind:open={unplacedOpen}
     >
       <p class="prompt small">
-        Vedic forms the Aṣṭādhyāyī's core rules do not produce. They are in the corpus, so they
-        are shown rather than dropped.
+        Vedic forms the core rules do not produce. They occur in the readings, so they are listed
+        here.
       </p>
       {#each entry.unplaced as a}
         <div class="up-item">
@@ -643,8 +642,8 @@
     <header class="head">
       <h1><Sanskrit text="प्रयोग" source="devanagari" /></h1>
       <p>
-        what the corpus attests — every cell filled from the readings themselves, with the line
-        that attests it and the sūtra that produced it where one is recorded
+        Forms that occur in the readings, arranged by paradigm. A filled cell records the reading
+        it occurs in, and the sūtra that derives it where one is noted.
       </p>
     </header>
 

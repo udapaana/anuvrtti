@@ -127,13 +127,13 @@
 <Shell columnMax="900px">
   <header class="head">
     <h1>words</h1>
-    <p>Everything you have kept — from a lesson's vocabulary or from the reader's rail.</p>
+    <p>Words kept from a lesson's vocabulary or from a reading.</p>
   </header>
 
   {#if allWords.length === 0}
     <p class="empty">
-      Nothing kept yet. Work through a <a href="/workbook">lesson</a> or tap a word in the
-      <a href="/reader">reader</a> and keep it for review.
+      No words yet. Keep them from a <a href="/workbook">lesson</a>'s vocabulary or from the
+      <a href="/reader">reader</a>.
     </p>
   {:else if viewMode === 'list'}
     <div class="deck">

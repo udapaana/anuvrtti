@@ -396,7 +396,7 @@
           <Sanskrit text={siblingPaths.next.titleSanskrit} source="telugu" /> ›
         </a>
       {:else}
-        <span class="done">that is the last step</span>
+        <span class="done">last step</span>
       {/if}
     </nav>
 

@@ -366,7 +366,7 @@
 
 {#snippet spine()}
   <Spine
-    title="the lessons"
+    title="lessons"
     items={spineLessons}
     activeId={String(lessonIdx)}
     onpick={(id) => setLesson(Number(id))}
@@ -556,7 +556,7 @@
           {/if}
 
           {#if b.kind === 'exercise'}
-            <span class="hint">tap a hidden answer to reveal it</span>
+            <span class="hint">answers are hidden; select one to show it</span>
             <div class="rows">
               {#each b.items as it, ii}
                 {@const key = bi + '-' + ii}
@@ -596,7 +596,7 @@
 
       <div class="pager">
         <button disabled={lessonIdx <= 0} onclick={() => setLesson(lessonIdx - 1)}>← previous</button>
-        <a class="practice" href="/words">the deck this feeds →</a>
+        <a class="practice" href="/words">words from this lesson →</a>
         <button disabled={lessonIdx >= flat.length - 1} onclick={() => setLesson(lessonIdx + 1)}>
           next lesson →
         </button>

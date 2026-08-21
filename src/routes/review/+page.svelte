@@ -153,10 +153,9 @@
       <h1>review</h1>
       <p>
         {#if query}
-          The {inRange.length} word{inRange.length === 1 ? '' : 's'} matching “{query}” — the filter
-          you left the deck on is the range.
+          The {inRange.length} word{inRange.length === 1 ? '' : 's'} matching “{query}”.
         {:else}
-          A spaced session over the deck. The range is whatever the deck was filtered to.
+          Spaced review over the words you have kept.
         {/if}
       </p>
     </header>
