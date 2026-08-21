@@ -591,37 +591,48 @@
     }
   }
 
-  // ← → walk the words of a line, wrapping into the next line at either end.
-  // Selecting a word is what opens the rail, so this is how you read a line
-  // word by word without touching the mouse.
+  // ── the reader is a grid; navigation is a cursor over it ──────────────────
+  // `list` is the lines (each a dict), and each line's `.words` is its cells
+  // (also dicts). So a position is just two integer indices — (line, word) —
+  // and every arrow key is a clamped ±1 step, nothing more. `sel` stays as
+  // {id, wi} because the rail and the token click-handlers read it that way;
+  // moveTo is the single place that turns a (line, word) coordinate into a
+  // selection and brings that line on screen.
+  const lineOf = (id: string | null | undefined) => list.findIndex((x) => x.id === id);
+  const wordCount = (li: number) => list[li]?.words?.length ?? 0;
+  function moveTo(li: number, wi: number) {
+    const line = list[li];
+    if (!line) return;
+    selectWord(line.id, Math.max(0, Math.min(wi, wordCount(li) - 1)));
+    revealReading(line.id);
+  }
+
+  // ← → walk word by word, rolling into the adjacent line at either end and
+  // stopping at the ends of the corpus. Selecting a word opens the rail, so
+  // this reads a line word by word without the mouse.
   function stepWord(dir: 1 | -1) {
     if (!list.length) return;
-    const s = sel;
-    if (!s) {
-      const r = list.find((x) => x.id === (focusedId ?? slice[0]?.id)) ?? slice[0];
-      if (r) selectWord(r.id, dir > 0 ? 0 : Math.max(0, (r.words?.length ?? 1) - 1));
+    if (!sel) {
+      const li = Math.max(0, lineOf(focusedId ?? slice[0]?.id));
+      moveTo(li, dir > 0 ? 0 : Infinity); // Infinity clamps to the last word
       return;
     }
-    let ri = list.findIndex((x) => x.id === s.id);
-    if (ri < 0) return;
-    let wi = s.wi + dir;
-    // Roll into the ADJACENT line at either end of the current one — but stop at
-    // the ends of the corpus. Wrapping modulo list.length sent the last word of
-    // the last reading back to the first, and (the one people actually hit) the
-    // first word of the FIRST reading all the way to the last reading in the
-    // book: one ArrowLeft on ex001 teleported to the final page. Clamp instead.
-    if (wi >= (list[ri].words?.length ?? 0)) {
-      if (ri >= list.length - 1) return;
-      ri = ri + 1;
+    let li = lineOf(sel.id);
+    if (li < 0) return;
+    let wi = sel.wi + dir;
+    // Roll into the ADJACENT line at either end of the current one, but clamp
+    // at the corpus ends — no wrap from the last word back to the first, and
+    // none from the first word to the last reading in the book.
+    if (wi >= wordCount(li)) {
+      if (li >= list.length - 1) return;
+      li++;
       wi = 0;
     } else if (wi < 0) {
-      if (ri <= 0) return;
-      ri = ri - 1;
-      wi = Math.max(0, (list[ri].words?.length ?? 1) - 1);
+      if (li <= 0) return;
+      li--;
+      wi = wordCount(li) - 1;
     }
-    const moved = list[ri].id !== s.id;
-    selectWord(list[ri].id, wi);
-    if (moved) jumpToReading(list[ri].id);
+    moveTo(li, wi);
   }
 
   // ↑ ↓ move line to line, keeping your place within the line.
@@ -676,19 +687,14 @@
   }
 
   function stepLine(dir: 1 | -1) {
-    const s = sel;
-    if (!s) return stepReading(dir);
-    const ri = list.findIndex((x) => x.id === s.id);
-    if (ri < 0) return stepReading(dir);
-    // Stop at the corpus ends rather than wrapping: ArrowUp on the first line
-    // used to jump to the last reading in the book, ArrowDown on the last to the
-    // first. Line movement stays within [0, list.length).
-    const next = ri + dir;
+    if (!sel) return stepReading(dir);
+    const li = lineOf(sel.id);
+    if (li < 0) return stepReading(dir);
+    // One line up or down, keeping your place within the line; clamp at the
+    // corpus ends so the first/last line does not wrap to the other end.
+    const next = li + dir;
     if (next < 0 || next >= list.length) return;
-    const target = list[next];
-    if (!target) return;
-    selectWord(target.id, Math.min(s.wi, Math.max(0, (target.words?.length ?? 1) - 1)));
-    revealReading(target.id);
+    moveTo(next, sel.wi);
   }
 
   function onKeydown(e: KeyboardEvent) {
