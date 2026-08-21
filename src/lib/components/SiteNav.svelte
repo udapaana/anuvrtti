@@ -5,6 +5,7 @@
     lessonLanguage,
     authoringMode
   } from '$lib/stores/preferences';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Palette from '$lib/components/ui/Palette.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import type { Script } from '$lib/transliteration';
@@ -55,7 +56,11 @@
 
 <header class="sitenav">
   <div class="inner">
-    <a class="wordmark" href="/" aria-label="anuvrtti home">अनुवृत्ति</a>
+    <!-- The wordmark is Sanskrit too, so it follows the toggle like everything
+         else — the design transliterates it rather than fixing it as a logo. -->
+    <a class="wordmark" href="/" aria-label="anuvrtti home">
+      <Sanskrit text="अनुवृत्ति" source="devanagari" />
+    </a>
 
     <nav class="doors">
       {#each doors as door (door.href)}

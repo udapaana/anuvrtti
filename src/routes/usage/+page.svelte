@@ -10,6 +10,7 @@
   import { cellKey } from '$lib/usage/normalize';
   import { TERMINALS, TERMINAL_DEV } from '$lib/usage/taxonomy';
   import { transliterate, type Script } from '$lib/transliteration';
+  import { detectScript, fold } from '$lib/search/fold';
   import type { UsageIndex, UsageSection, ParadigmEntry, Attestation } from '$lib/usage/types';
 
   // प्रयोग — the corpus indexed by what the language declines, rather than by
@@ -34,49 +35,6 @@
     next.has(id) ? next.delete(id) : next.add(id);
     collapsed = next;
   }
-  /**
-   * Search by folding both sides to bare roman.
-   *
-   * Nothing can be assumed about the input. The display script is a rendering
-   * preference, not a keyboard — someone reading Telugu still types roman — and
-   * among the romanisations `pitr`, `pitṛ`, `pitR` and `pitRi` are the same
-   * word spelt four ways.
-   *
-   * So instead of guessing the scheme, both the stem and the query are reduced
-   * to a comparison key: transliterate to IAST, strip the diacritics, lowercase.
-   * पितृ, pitṛ, pitr and pitri all become `pitr` and match each other. Detecting
-   * the script is one call rather than seventeen attempts, and it degrades
-   * gracefully — an unrecognised string simply matches nothing.
-   */
-  /** Which script a string is written in, by Unicode block. */
-  const SCRIPT_RANGES: Array<[RegExp, Script]> = [
-    [/[\u0900-\u097f]/, 'devanagari'],
-    [/[\u0980-\u09ff]/, 'bengali'],
-    [/[\u0a00-\u0a7f]/, 'gurmukhi'],
-    [/[\u0a80-\u0aff]/, 'gujarati'],
-    [/[\u0b00-\u0b7f]/, 'odia'],
-    [/[\u0b80-\u0bff]/, 'tamil'],
-    [/[\u0c00-\u0c7f]/, 'telugu'],
-    [/[\u0c80-\u0cff]/, 'kannada'],
-    [/[\u0d00-\u0d7f]/, 'malayalam'],
-    [/[\u0d80-\u0dff]/, 'sinhala']
-  ];
-  function detectScript(t: string): Script | null {
-    for (const [re, sc] of SCRIPT_RANGES) if (re.test(t)) return sc;
-    return null;   // roman of some flavour — folding handles the rest
-  }
-
-  /** IAST → bare ASCII: strip combining marks, then the stragglers. */
-  function fold(t: string): string {
-    return t
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/ṃ|ṁ/g, 'm')
-      .replace(/ḥ/g, 'h')
-      .toLowerCase()
-      .replace(/[^a-z]/g, '');
-  }
-
   /** Every subject and sparse stem, keyed by its folded roman form. */
   let searchKeys = $state<Array<{ subject: string; key: string; sparse: boolean }>>([]);
   $effect(() => {
@@ -439,7 +397,12 @@
   <span class="quiet">dimension</span>
   {#if sections.length}
     <Segmented
-      options={sections.map((s) => ({ id: s.kind, label: s.dev, deva: true, title: s.en }))}
+      options={sections.map((s) => ({
+        id: s.kind,
+        label: s.dev,
+        script: 'devanagari' as const,
+        title: s.en
+      }))}
       value={section?.kind ?? sections[0].kind}
       onchange={pickKind}
       ariaLabel="dimension"
@@ -581,7 +544,7 @@
           <span class="spec-form">
             <Sanskrit text={a.formRaw} source="devanagari" fallback={a.form} />
           </span>
-          <span class="spec-gloss">{a.gloss}</span>
+          <span class="spec-gloss"><Sanskrit text={a.gloss} source="devanagari" /></span>
           {#if a.phrase}
             <span class="spec-phrase"><Sanskrit text={a.phrase} source="devanagari" /></span>
           {/if}

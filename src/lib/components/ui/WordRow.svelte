@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import type { Script } from '$lib/transliteration';
 
   /*
     One word row, so a word looks the same in the deck list, in a lesson's
@@ -8,6 +10,8 @@
   */
   let {
     word,
+    /** Source script of `word` — it then follows the toggle. */
+    script = 'devanagari',
     gloss = null,
     lesson = null,
     href = null,
@@ -15,6 +19,7 @@
     actions
   }: {
     word: string;
+    script?: Script | null;
     gloss?: string | null;
     lesson?: string | null;
     href?: string | null;
@@ -25,11 +30,11 @@
 
 <div class="row">
   {#if href}
-    <a class="word" {href}>{word}</a>
+    <a class="word" {href}>{#if script}<Sanskrit text={word} source={script} />{:else}{word}{/if}</a>
   {:else if onpick}
-    <button class="word as-button" onclick={onpick}>{word}</button>
+    <button class="word as-button" onclick={onpick}>{#if script}<Sanskrit text={word} source={script} />{:else}{word}{/if}</button>
   {:else}
-    <span class="word">{word}</span>
+    <span class="word">{#if script}<Sanskrit text={word} source={script} />{:else}{word}{/if}</span>
   {/if}
   <span class="gloss">{gloss ?? ''}</span>
   <span class="lesson">{lesson ?? ''}</span>

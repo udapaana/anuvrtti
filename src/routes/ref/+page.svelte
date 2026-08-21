@@ -164,6 +164,7 @@
       .map((c) => ({
         id: c.id,
         label: c.sanskrit,
+        script: 'iast' as const,
         sub: c.english,
         count: (byCategory[c.id] ?? []).length
       }))
@@ -207,8 +208,8 @@
 {#snippet shelfLeft()}
   <Segmented
     options={[
-      { id: 'sutra', label: 'सूत्राणि', deva: true },
-      { id: 'path', label: 'पथः', deva: true }
+      { id: 'sutra', label: 'सूत्राणि', script: 'devanagari' as const },
+      { id: 'path', label: 'पथः', script: 'devanagari' as const }
     ]}
     value={mode}
     onchange={(id) => setMode(id as 'sutra' | 'path')}
@@ -253,6 +254,7 @@
       items={types.map((t) => ({
         id: t.value,
         label: t.label,
+        script: t.value === 'all' ? undefined : ('iast' as const),
         count:
           t.value === 'all'
             ? padaStats.total
@@ -286,6 +288,9 @@
     </header>
 
     <div class="paths">
+      {#if !categoryPaths.length}
+        <p class="note">No paths in this category yet.</p>
+      {/if}
       {#each categoryPaths as p (p.meta.id)}
         <a class="path" href="/workbook/{p.meta.id}">
           <span class="path-order">{String(p.meta.order).padStart(2, '0')}</span>

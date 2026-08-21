@@ -83,7 +83,12 @@
 {#snippet spine()}
   <Spine
     title="category"
-    items={categories.map((c) => ({ id: c.id, label: c.titleSanskrit, sub: c.title }))}
+    items={categories.map((c) => ({
+      id: c.id,
+      label: c.titleSanskrit,
+      script: 'devanagari' as const,
+      sub: c.title
+    }))}
     activeId={activeCategory}
     onpick={setCategory}
   />

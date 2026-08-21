@@ -106,8 +106,11 @@
       .filter(({ l }) => l.part === activePart)
       .map(({ l, i }) => ({
         id: String(i),
-        label: `${pad2(l.number)} · ${l.title_sanskrit_telugu || ''}`,
-        sub: l.grammar_focus || l.title_english || ''
+        label: l.title_sanskrit_telugu || '',
+        script: 'telugu' as const,
+        // The number belongs with the gloss, not the title: a lesson number is
+        // not Sanskrit and must not go through the transliterator.
+        sub: `${pad2(l.number)} · ${l.grammar_focus || l.title_english || ''}`
       }))
   );
 
@@ -420,11 +423,10 @@
           {#if b.kind === 'grammar'}
             {#each b.notes as nt}
               <p class="note">
-                {#if lang === 'telugu'}
-                  {nt.telugu || nt.english}
-                {:else}
-                  {nt.english || nt.telugu}
-                {/if}
+                <Sanskrit
+                  text={lang === 'telugu' ? nt.telugu || nt.english : nt.english || nt.telugu}
+                  source="devanagari"
+                />
               </p>
             {/each}
           {/if}
@@ -461,13 +463,16 @@
             </div>
           {/if}
 
-          {#if b.kind === 'vocab'}
+          {#if b.kind === 'vocab' && b.words.length}
             <div class="rows">
               {#each b.words as w}
                 <div class="vocab-row">
                   <span class="vocab-skt"><Sanskrit text={w.skt} source="telugu" /></span>
                   <span class="vocab-gloss">
-                    {lang === 'telugu' ? w.gloss || w.english : w.english || w.gloss}
+                    <Sanskrit
+                      text={lang === 'telugu' ? w.gloss || w.english : w.english || w.gloss}
+                      source="devanagari"
+                    />
                   </span>
                   <span class="vocab-tag">{w.tag}</span>
                   <button
