@@ -8,6 +8,12 @@
     raw <details> in the lesson and reference pages reads the same.
   */
   let {
+    /**
+     * Plain text, or a snippet when the row's heading mixes scripts. A
+     * paradigm reads "paradigm · देव · declension": the stem has to follow the
+     * script toggle while the English around it must not, which a single
+     * string cannot express.
+     */
     label,
     /** Counted payload, e.g. "3 sūtras". Shown before the +/− mark. */
     count = null,
@@ -16,7 +22,7 @@
     empty = false,
     children
   }: {
-    label: string;
+    label: string | Snippet;
     count?: string | null;
     open?: boolean;
     empty?: boolean;
@@ -33,7 +39,7 @@
   aria-expanded={empty ? undefined : open}
   onclick={() => (open = !open)}
 >
-  <span>{label}</span>
+  <span>{#if typeof label === 'string'}{label}{:else}{@render label()}{/if}</span>
   <span class="hint">{hint}</span>
 </button>
 
