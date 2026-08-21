@@ -339,36 +339,43 @@
     return list.find((r) => r.id === (focusedId ?? slice[0]?.id)) ?? slice[0] ?? null;
   });
 
-  // The one word the rail is showing, if any.
-  const selWord = $derived.by(() => {
-    const s = sel;
-    if (!s) return null;
-    const r = list.find((x) => x.id === s.id);
-    const w = r?.words?.[s.wi];
+  /*
+    Two INDEPENDENT things can be open in the rail at once, so both are read
+    through the same lookup:
+
+      `sel`      — the word you clicked. The grammar block, for the line you
+                   are on. Always shown in full; a click is inspection.
+      `deckQuiz` — a card drawn from a reading you have already scrolled past.
+                   Its own block, BELOW the grammar.
+
+    Drawing a card used to overwrite `sel`, which is why the grammar vanished
+    the moment a question appeared and came back only once you had answered.
+    Keeping them apart means the line you are reading stays explained while you
+    are quizzed — and because the card comes from a DIFFERENT reading, nothing
+    on screen gives its answer away.
+  */
+  function wordAt(id: string, wi: number) {
+    const r = list.find((x) => x.id === id);
+    const w = r?.words?.[wi];
     if (!r || !w) return null;
     const terms = (w.notes ?? []).filter((n: any) => n.term).map((n: any) => ({ term: n.term, en: n.en ?? '' }));
     const cites = (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => ({ cite: n.cite, role: n.role ?? '' }));
-    return { id: r.id, wi: s.wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quiz: w.quiz ?? null, terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
-  });
+    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quiz: w.quiz ?? null, terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
+  }
 
-  // A quiz is only ever ASKED for a card drawn from the deck. Clicking a word in
-  // the text is inspection — it opens the gloss, the tags and the sūtras at once.
-  // Gating a click behind a question meant you had to keep clicking to get
-  // quizzed, and could not simply look a word up; `selectWord` has always said
-  // as much ("a manual click is inspection, not a deck quiz") and cleared
-  // `deckQuiz`, but this gate did not read it, so every click asked.
-  const asking = $derived(!!deckQuiz && !!selWord?.quiz && pick === null);
-  // Answered means "the rail may show everything". True for any manual click,
-  // and for a deck card once it has been picked or revealed.
-  const answered = $derived(!!selWord && !asking);
+  /** The clicked word — the grammar block. */
+  const selWord = $derived(sel ? wordAt(sel.id, sel.wi) : null);
+  /** The drawn card — the quiz block. Never the word you are looking at. */
+  const quizWord = $derived(deckQuiz ? wordAt(deckQuiz.id, deckQuiz.wi) : null);
 
-  // The word-for-word run of the selected line. Shown in glossed mode, or once
-  // the word has been answered (or never asked) — never while a quiz is open,
-  // since the run would print the answer two lines above the question.
-  const showRun = $derived(!!selWord && (mode === 'gloss' || !asking));
+  /** A question is on screen and unanswered. Governs the QUIZ block alone. */
+  const asking = $derived(!!quizWord?.quiz && pick === null);
+
+  // The word-for-word run of the selected line. It belongs to the grammar, so
+  // it no longer waits on a quiz — the question is about another reading.
   const runRows = $derived.by(() => {
     const s = sel;
-    if (!s || !showRun) return [];
+    if (!s) return [];
     const r = list.find((x) => x.id === s.id);
     return (r?.words ?? []).map((wd: any, wi: number) => ({
       wi,
@@ -402,7 +409,7 @@
   });
 
   const verdict = $derived.by(() => {
-    const w = selWord;
+    const w = quizWord;
     if (!w?.quiz || pick === null) return null;
     // The verdict inks are tokens now, not two hexes of their own: right takes
     // the done accent, wrong takes saffron, shown stays quiet — the same pair
@@ -415,21 +422,28 @@
 
   function pickOption(o: string) {
     pick = o;
-    if (selWord) checked = new Set([...checked, selWord.id + ':' + selWord.wi]);
+    // The card that was answered is the QUIZ word, not whatever is selected.
+    if (quizWord) checked = new Set([...checked, quizWord.id + ':' + quizWord.wi]);
   }
 
   // The rail's two disclosure rows. Both close on every new selection, so the
   // rail opens at a predictable height whatever the last word left open.
   let formedOpen = $state(false);
   let paraOpen = $state(false);
+  // The grammar block as a whole folds away, for when the question is what you
+  // want the rail for. Reopens on the next click, since clicking a word is a
+  // request to read it.
+  let grammarOpen = $state(true);
 
+  // A click moves the selection and nothing else. It no longer clears a quiz in
+  // progress: the two blocks are independent, so looking a word up mid-question
+  // is allowed — and expected, since the question is about another reading.
   function selectWord(id: string, wi: number) {
     formedOpen = false;
     paraOpen = false;
-    if (sel && sel.id === id && sel.wi === wi) { sel = null; pick = null; deckQuiz = null; return; }
+    grammarOpen = true;
+    if (sel && sel.id === id && sel.wi === wi) { sel = null; return; }
     sel = { id, wi };
-    pick = null;
-    deckQuiz = null; // a manual click is inspection, not a deck quiz
   }
 
   // Every (reading, word-index) that has a quiz and lives in a SEEN reading —
@@ -446,19 +460,20 @@
     return cards;
   });
 
-  // Draw a random card from the seen deck and quiz on it — NOT the clicked word.
-  // Sets `sel` so the whole existing rail/grade machinery is reused; `deckQuiz`
-  // marks that this selection came from the deck (so the rail can hide the answer
-  // reading until the reader has tried).
+  // Draw a random card from the seen deck. It sets `deckQuiz` ONLY — the
+  // selection stays where the reader put it, so the line being read keeps its
+  // explanation while the question sits underneath.
   function drawFromDeck() {
     const deck = deckCards.filter((c) => !(sel && sel.id === c.id && sel.wi === c.wi));
     if (!deck.length) return;
-    const pickCard = deck[Math.floor(Math.random() * deck.length)];
-    sel = pickCard;
+    deckQuiz = deck[Math.floor(Math.random() * deck.length)];
     pick = null;
-    deckQuiz = pickCard;
-    formedOpen = false;
-    paraOpen = false;
+  }
+
+  /** Put the question away without answering it. */
+  function closeQuiz() {
+    deckQuiz = null;
+    pick = null;
   }
 
   // Deck banking — the last step of examining a word, per the design.
@@ -803,6 +818,49 @@
   />
 {/snippet}
 
+{#snippet quizBlock()}
+  <!--
+    The question, as its own block under the grammar. Its word is drawn from a
+    reading already scrolled past, never the one selected, so the explanation
+    above it cannot give the answer away.
+  -->
+  {#if quizWord?.quiz}
+    <div class="quiz-block">
+      <div class="quiz-head">
+        <span class="label">from what you have read</span>
+        <button class="quiz-close" onclick={closeQuiz} aria-label="close the question">×</button>
+      </div>
+
+      {#if quizWord.sentence}
+        <div class="phrase context"><Sanskrit text={quizWord.sentence} source="devanagari" /></div>
+      {/if}
+
+      {#if asking}
+        <span class="question"><Sanskrit text={quizWord.quiz.q} source="devanagari" /></span>
+        <div class="options">
+          {#each quizWord.quiz.opts as o}
+            <button class="opt" onclick={() => pickOption(o)}>
+              <Sanskrit text={o} source="devanagari" />
+            </button>
+          {/each}
+        </div>
+        <button class="skip" onclick={() => pickOption('—')}>show the answer</button>
+      {:else}
+        {#if verdict}
+          <span class="verdict {verdict.tone}">{verdict.text}</span>
+        {/if}
+        <button class="run-row on" onclick={() => selectWord(quizWord.id, quizWord.wi)}>
+          <span class="run-form"><Sanskrit text={quizWord.form} source="devanagari" /></span>
+          <span class="run-gloss"><Sanskrit text={quizWord.gloss} source="devanagari" /></span>
+        </button>
+        {#if deckCards.length > 1}
+          <button class="quizme" onclick={drawFromDeck}>quiz another →</button>
+        {/if}
+      {/if}
+    </div>
+  {/if}
+{/snippet}
+
 {#snippet rail()}
   <span class="label">word</span>
 
@@ -822,11 +880,8 @@
         {/if}
       </div>
     {/if}
-    <p class="prompt">
-      Select a word to see its gloss, its tags and the sūtras that formed it. Quizzing is separate:
-      “quiz me” draws a word from a reading you have already passed.
-    </p>
-    {#if deckCards.length}
+    {@render quizBlock()}
+    {#if !deckQuiz && deckCards.length}
       <!-- The seen deck: a word from any reading scrolled past, drawn at random.
            Tests recall of what you have read, not the word you just clicked. -->
       <button class="quizme" onclick={drawFromDeck}>
@@ -837,53 +892,31 @@
     <div class="word">
       <div class="word-head">
         <span class="word-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
-        {#if selWord.lemma && !(deckQuiz && asking)}
-          <span class="word-stem">{selWord.lemma}</span>
+        {#if selWord.lemma}
+          <!-- the stem is Sanskrit, so it follows the toggle like the form above
+               it — printed raw it stayed Devanagari beside a Telugu page -->
+          <span class="word-stem"><Sanskrit text={selWord.lemma} source="devanagari" /></span>
         {/if}
+        <button
+          class="fold"
+          onclick={() => (grammarOpen = !grammarOpen)}
+          aria-expanded={grammarOpen}
+        >{grammarOpen ? '−' : '+'}</button>
       </div>
 
-      {#if asking && selWord.quiz}
-        <!-- THE MODEL: show the sentence (the context — the same form is a
-             different thing in a different clause), and quiz on the schema. For
-             a deck quiz the word is drawn from a reading you scrolled past, so
-             its sentence anchors the question. -->
-        <div class="ask">
-          {#if deckQuiz && selWord.sentence}
-            <div class="phrase context"><Sanskrit text={selWord.sentence} source="devanagari" /></div>
-          {:else if selWord.quiz.phrase}
-            <div class="phrase"><Sanskrit text={selWord.quiz.phrase} source="devanagari" /></div>
-          {/if}
-          <span class="question"><Sanskrit text={selWord.quiz.q} source="devanagari" /></span>
-          <div class="options">
-            {#each selWord.quiz.opts as o}
-              <button class="opt" onclick={() => pickOption(o)}>
-                <Sanskrit text={o} source="devanagari" />
-              </button>
-            {/each}
-          </div>
-          <button class="skip" onclick={() => pickOption('—')}>show the answer</button>
-        </div>
-      {/if}
-
+      {#if grammarOpen}
       <!-- The line, word for word. This is where the glosses went: a list in
-           the rail rather than a second row under every word. It stays shut
-           until the quiz has been answered, so it cannot give the case away. -->
-      {#if showRun}
-        <div class="run">
-          <span class="label">the line, word for word</span>
-          {#each runRows as g (g.wi)}
-            <button class="run-row" class:on={g.on} onclick={() => selectWord(selWord.id, g.wi)}>
-              <span class="run-form"><Sanskrit text={g.form} source="devanagari" /></span>
-              <span class="run-gloss"><Sanskrit text={g.gloss} source="devanagari" /></span>
-            </button>
-          {/each}
-        </div>
-      {/if}
+           the rail rather than a second row under every word. -->
+      <div class="run">
+        <span class="label">the line, word for word</span>
+        {#each runRows as g (g.wi)}
+          <button class="run-row" class:on={g.on} onclick={() => selectWord(selWord.id, g.wi)}>
+            <span class="run-form"><Sanskrit text={g.form} source="devanagari" /></span>
+            <span class="run-gloss"><Sanskrit text={g.gloss} source="devanagari" /></span>
+          </button>
+        {/each}
+      </div>
 
-      {#if answered}
-        {#if verdict}
-          <span class="verdict {verdict.tone}">{verdict.text}</span>
-        {/if}
         <span class="gloss"><Sanskrit text={selWord.gloss} source="devanagari" /></span>
 
         {#if selWord.terms.length}
@@ -926,7 +959,17 @@
         {/if}
 
         {#if selParadigm}
-          <Disclose label={`paradigm · ${selParadigm.title}`} bind:open={paraOpen}>
+          <!-- The heading mixes scripts, so it goes in as a snippet: the stem and
+               the लकार follow the toggle, the English words never do. -->
+          {#snippet paradigmLabel()}
+            paradigm ·
+            <Sanskrit text={selParadigm.stem} source="devanagari" /> ·
+            {#if selParadigm.lakara}<Sanskrit
+                text={selParadigm.lakara}
+                source="devanagari"
+              /> ({selParadigm.kind}){:else}{selParadigm.kind}{/if}
+          {/snippet}
+          <Disclose label={paradigmLabel} bind:open={paraOpen}>
             <Grid
               script="devanagari"
               surface="sunken"
@@ -941,10 +984,13 @@
         <button class="bank" class:has={inDeck} onclick={bankWord} disabled={inDeck}>
           {inDeck ? 'in your deck' : '+ keep for review'}
         </button>
+      {/if}
 
-        {#if deckQuiz && deckCards.length > 1}
-          <button class="quizme" onclick={drawFromDeck}>quiz another →</button>
-        {/if}
+      <!-- The question sits UNDER the grammar, so the line you are reading stays
+           explained while you are asked about a different one. -->
+      {@render quizBlock()}
+      {#if !deckQuiz && deckCards.length}
+        <button class="quizme" onclick={drawFromDeck}>quiz me · {deckCards.length} seen</button>
       {/if}
     </div>
   {/if}
@@ -1147,6 +1193,22 @@
     display: flex;
     flex-direction: column;
     gap: 13px;
+    /* room for the marker, always reserved, so lighting a card cannot shift the
+       column sideways as you move down it */
+    border-left: 2px solid transparent;
+    padding-left: 16px;
+    margin-left: -18px;
+  }
+  /*
+    Which line you are on. The class was already being set from `railReading`
+    and had no rule behind it, so nothing was marked: the rail would fill with
+    a reading's commentary while the column gave no clue which of a dozen cards
+    it belonged to. A rule in the accent and a barely-tinted ground — enough to
+    find at a glance, too little to compete with the text.
+  */
+  .ex.active {
+    border-left-color: var(--accent);
+    background: var(--sunken);
   }
   /* A run of short readings at one tier is one lesson delivered as N cards:
      tighten them into a single block rather than N sets of chrome. */
@@ -1378,9 +1440,10 @@
     gap: 16px;
   }
   .word-head {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0 10px;
   }
   .word-form {
     font-family: var(--font-deva);
@@ -1388,9 +1451,56 @@
     font-weight: 600;
   }
   .word-stem {
+    grid-column: 1;
     font-family: var(--font-mono);
     font-size: 12px;
     color: var(--quiet);
+  }
+  /* folds the whole grammar away, for when the rail is wanted for the question */
+  .fold {
+    grid-column: 2;
+    grid-row: 1;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1;
+    color: var(--accent);
+    background: transparent;
+    border: none;
+    padding: 4px 2px;
+    cursor: pointer;
+  }
+
+  /*
+    The question, under the grammar rather than in place of it. The sunken
+    surface and the rule above set it apart as a second thing on the rail: what
+    is above belongs to the line being read, what is here comes from elsewhere.
+  */
+  .quiz-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--rule-2);
+    margin-top: 4px;
+    padding-top: 14px;
+  }
+  .quiz-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .quiz-close {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 1;
+    color: var(--quiet);
+    background: transparent;
+    border: none;
+    padding: 2px 4px;
+    cursor: pointer;
+  }
+  .quiz-close:hover {
+    color: var(--ink);
   }
 
   .ask {

@@ -17,7 +17,17 @@
 import type { Paradigm } from './paradigm';
 
 export interface ResolvedParadigm {
-  title: string; // e.g. "देव · declension"
+  /*
+    The heading is kept in PIECES rather than as one pre-joined string. It mixes
+    scripts — "देव · declension", "गम् · लट् (present)" — and a single string can
+    only be rendered one way: printed raw it left the stem in Devanagari while
+    the rest of the app was in Telugu, and pushed whole through <Sanskrit> it
+    would hand the English words to the transliterator too. Split, the caller
+    sends `stem` and `lakara` through the toggle and prints `kind` as it is.
+  */
+  stem: string; // देव / गम् — Sanskrit, follows the script toggle
+  lakara: string | null; // लट् — Sanskrit, verbs only
+  kind: string; // "declension" / "present" — English, never transliterated
   grid: Paradigm;
   row: number; // index into grid.rows of the highlighted cell, or -1
   col: number; // index into a row's cells, or -1
@@ -128,7 +138,7 @@ export function resolve(
     const p = PURUSHA.findIndex((x) => terms.includes(x));
     const v = VACANA.findIndex((x) => terms.includes(x));
     const { grid, row, col } = toGrid(para, PURUSHA, VACANA, p, v);
-    return { title: `${root} · लट् (present)`, grid, row, col };
+    return { stem: root, lakara: 'लट्', kind: 'present', grid, row, col };
   }
 
   // noun: the lemma when the corpus records one, otherwise the stem whose
@@ -141,5 +151,5 @@ export function resolve(
   const vacIdx = VACANA.findIndex((x) => terms.includes(x));
   const col = vacIdx >= 0 ? vacIdx : 0;
   const { grid, row, col: c } = toGrid(para, VIBHAKTI, VACANA, vib, col);
-  return { title: `${stem} · declension`, grid, row, col: c };
+  return { stem, lakara: null, kind: 'declension', grid, row, col: c };
 }
