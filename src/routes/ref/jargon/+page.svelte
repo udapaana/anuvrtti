@@ -34,7 +34,7 @@
 
   .back-link {
     display: inline-block;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -50,7 +50,7 @@
     margin-bottom: 0.5rem;
   }
   .eyebrow {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;

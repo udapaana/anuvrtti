@@ -801,7 +801,7 @@
   .wrap { max-width: 1140px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
   .head { margin-bottom: 1.8rem; }
   .kicker {
-    font-family: ui-monospace, monospace; font-size: 0.62rem; letter-spacing: 0.13em;
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.13em;
     text-transform: uppercase; color: #f97316; margin-bottom: 0.5rem;
   }
   h1 { font-size: 1.7rem; font-weight: 600; margin: 0 0 0.5rem; letter-spacing: -0.01em; }
@@ -820,7 +820,7 @@
     display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2;
   }
   .kind.on { background: #fdecd9; border-color: #f4c98b; }
-  .kinden { font-family: ui-monospace, monospace; font-size: 0.58rem; color: #a99e8b; }
+  .kinden { font-family: var(--font-mono); font-size: 0.58rem; color: #a99e8b; }
   .spinehead { display: flex; align-items: baseline; justify-content: space-between; }
   .groupby { font-size: 0.8rem; color: #6b6b6b; }
   /* rail: one row per declension */
@@ -834,7 +834,7 @@
   .klass.on { background: #fdecd9; border-color: #f4c98b; }
   .kdev { font-size: 0.95rem; }
   .kex { font-size: 0.72rem; color: #cbb994; }
-  .kn { font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b; }
+  .kn { font-family: var(--font-mono); font-size: 0.62rem; color: #a99e8b; }
 
   /* page: the class, then its stems */
   .classhead {
@@ -857,14 +857,14 @@
   .mxcell {
     border: 1px solid #ece3d3; border-radius: 6px; background: #fff;
     padding: 0.35rem 0.2rem; font: inherit; font-size: 0.78rem;
-    font-family: ui-monospace, monospace; color: #d3cab8; cursor: default;
+    font-family: var(--font-mono); color: #d3cab8; cursor: default;
   }
   .mxcell.has { color: #463f33; background: #fffdfa; cursor: pointer; }
   .mxcell.has:hover { border-color: #f4c98b; }
   .mxcell.on { background: #fdecd9; border-color: #f97316; color: #92591f; }
   .more.on { background: #fdecd9; border-color: #f4c98b; }
   .classn {
-    font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b;
+    font-family: var(--font-mono); font-size: 0.62rem; color: #a99e8b;
     margin-left: auto;
   }
   /* stem chooser: a select, so 40 stems cost one line rather than six rows */
@@ -874,7 +874,7 @@
     padding: 0.2rem 0.5rem; margin-bottom: 1.1rem;
   }
   .stemsellabel {
-    font-family: ui-monospace, monospace; font-size: 0.58rem;
+    font-family: var(--font-mono); font-size: 0.58rem;
     letter-spacing: 0.1em; text-transform: uppercase; color: #a99e8b;
   }
   .stemsel select {
@@ -896,7 +896,7 @@
   .hit.thin { cursor: default; opacity: 0.55; }
   .hit.thin:hover { background: none; }
   .hitdev { font-size: 0.95rem; }
-  .hitn { font-family: ui-monospace, monospace; font-size: 0.6rem; color: #a99e8b; }
+  .hitn { font-family: var(--font-mono); font-size: 0.6rem; color: #a99e8b; }
 
   .stempick {
     display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.2rem;
@@ -910,11 +910,11 @@
   }
   .stembtn:hover { border-color: #f4c98b; }
   .stembtn.on { background: #fdecd9; border-color: #f97316; color: #92591f; }
-  .stemn { font-family: ui-monospace, monospace; font-size: 0.58rem; color: #a99e8b; }
+  .stemn { font-family: var(--font-mono); font-size: 0.58rem; color: #a99e8b; }
   .stemmore {
     border: 1px dashed #e7e2d9; border-radius: 999px; background: none;
     padding: 0.2rem 0.65rem; cursor: pointer; font: inherit;
-    font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b;
+    font-family: var(--font-mono); font-size: 0.62rem; color: #a99e8b;
   }
   .stemmore:hover { border-color: #f4c98b; color: #92591f; }
   .stembtn.on .stemn { color: #b08d57; }
@@ -929,10 +929,10 @@
   .gcaret { font-size: 0.6rem; color: #a99e8b; width: 0.7rem; }
   .gdev { font-size: 0.82rem; color: #463f33; }
   .gex { font-size: 0.72rem; color: #cbb994; }
-  .gn { margin-left: auto; font-family: ui-monospace, monospace; font-size: 0.6rem; color: #cbb994; }
+  .gn { margin-left: auto; font-family: var(--font-mono); font-size: 0.6rem; color: #cbb994; }
   .pin { font-size: 0.72rem; color: #b08d57; margin-left: 0.3rem; }
   .pinfeat { font-size: 0.62rem; color: #cbb994; margin-left: 0.25rem; }
-  .count { font-family: ui-monospace, monospace; font-size: 0.66rem; color: #a99e8b; }
+  .count { font-family: var(--font-mono); font-size: 0.66rem; color: #a99e8b; }
   .find {
     border: 1px solid #e7e2d9; border-radius: 8px; padding: 0.35rem 0.6rem;
     font: inherit; font-size: 0.85rem; background: #fff; color: inherit;
@@ -948,10 +948,10 @@
   .sdev { font-size: 0.95rem; }
   .meter { height: 3px; background: #ece3d3; border-radius: 2px; overflow: hidden; }
   .fill { display: block; height: 100%; background: #f97316; }
-  .sn { font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b; }
+  .sn { font-family: var(--font-mono); font-size: 0.62rem; color: #a99e8b; }
   .more {
     border: 1px solid #e7e2d9; border-radius: 8px; background: #fff; cursor: pointer;
-    font-family: ui-monospace, monospace; font-size: 0.66rem; color: #6b6b6b; padding: 0.35rem;
+    font-family: var(--font-mono); font-size: 0.66rem; color: #6b6b6b; padding: 0.35rem;
   }
   .sparse { display: flex; flex-wrap: wrap; gap: 0.25rem; max-height: 26vh; overflow-y: auto; }
   .sparseitem { font-size: 0.82rem; color: #a99e8b; }
@@ -968,7 +968,7 @@
     display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.5rem;
     font-size: 1.05rem; color: #463f33;
   }
-  .cardcount { font-family: ui-monospace, monospace; font-size: 0.62rem; color: #a99e8b; }
+  .cardcount { font-family: var(--font-mono); font-size: 0.62rem; color: #a99e8b; }
 
   /* लकार tabs — one root, its tenses side by side. */
   .pins {
@@ -984,10 +984,10 @@
   }
   .pinbtn:hover { border-color: #f4c98b; }
   .pinbtn.on { background: #fdecd9; border-color: #f97316; color: #92591f; }
-  .pincount { font-family: ui-monospace, monospace; font-size: 0.6rem; color: #a99e8b; }
+  .pincount { font-family: var(--font-mono); font-size: 0.6rem; color: #a99e8b; }
   .pinbtn.on .pincount { color: #b08d57; }
   .subjmeta {
-    font-family: ui-monospace, monospace; font-size: 0.7rem; color: #a99e8b;
+    font-family: var(--font-mono); font-size: 0.7rem; color: #a99e8b;
     display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;
   }
   .linga { color: #6b6b6b; }
@@ -1015,9 +1015,9 @@
   .form { font-size: 1.05rem; line-height: 1.3; }
   .form.ghost { color: #cbb994; }
   .phrase { font-size: 0.76rem; color: #a99e8b; line-height: 1.35; }
-  .meta { font-family: ui-monospace, monospace; font-size: 0.6rem; color: #cbb994; }
+  .meta { font-family: var(--font-mono); font-size: 0.6rem; color: #cbb994; }
   .amb { color: #b08d57; }
-  .unwritten { font-family: ui-monospace, monospace; font-size: 0.58rem; color: #d3cab8; }
+  .unwritten { font-family: var(--font-mono); font-size: 0.58rem; color: #d3cab8; }
 
   .nogrid { color: #6b6b6b; max-width: 62ch; line-height: 1.55; }
   .flat { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -1044,7 +1044,7 @@
   .specphrase { font-size: 0.98rem; color: #463f33; margin-top: 0.15rem; }
   .specmeta {
     display: flex; align-items: baseline; gap: 0.6rem; margin-top: 0.35rem;
-    font-family: ui-monospace, monospace; font-size: 0.68rem; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: 0.68rem; flex-wrap: wrap;
   }
   .rdlink { color: #a99e8b; text-decoration: none; }
   .rdlink:hover { color: #f97316; }
@@ -1054,13 +1054,13 @@
 
   .unplaced { margin-top: 1.4rem; border-top: 1px solid #e7e2d9; padding-top: 0.9rem; }
   .uphead {
-    font-family: ui-monospace, monospace; font-size: 0.62rem; letter-spacing: 0.13em;
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.13em;
     text-transform: uppercase; color: #94a3b8; margin-bottom: 0.35rem;
   }
   .upnote { font-size: 0.82rem; margin: 0 0 0.5rem; max-width: 60ch; line-height: 1.5; }
   .uplist { display: flex; flex-wrap: wrap; gap: 0.7rem; }
   .upitem { display: flex; align-items: baseline; gap: 0.35rem; font-size: 1rem; }
-  .upitem .rdlink { font-family: ui-monospace, monospace; font-size: 0.62rem; }
+  .upitem .rdlink { font-family: var(--font-mono); font-size: 0.62rem; }
 
   .foot {
     margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e7e2d9;

@@ -33,7 +33,7 @@
   // accessible via the overflow row underneath.
   const primaryScripts: ScriptOption[] = [
     { id: 'devanagari', glyph: 'क',  font: "'Noto Sans Devanagari', sans-serif", name: 'devanagari' },
-    { id: 'iast',       glyph: 'ka', font: "'Crimson Pro', serif",                name: 'iast', italic: true },
+    { id: 'iast',       glyph: 'ka', font: "var(--font-serif)",                name: 'iast', italic: true },
     { id: 'telugu',     glyph: 'క',  font: "'Noto Sans Telugu', sans-serif",     name: 'telugu' },
   ];
 
@@ -47,16 +47,16 @@
     { id: 'odia',        glyph: 'କ',  font: "'Noto Sans Oriya', sans-serif",     name: 'odia' },
     { id: 'sinhala',     glyph: 'ක',  font: "'Noto Sans Sinhala', sans-serif",   name: 'sinhala' },
     { id: 'nandinagari', glyph: '𑦮',  font: "'Noto Sans Nandinagari', sans-serif", name: 'nandinagari' },
-    { id: 'iso15919',    glyph: 'ka', font: "'Crimson Pro', serif",              name: 'iso 15919', italic: true },
-    { id: 'slp1',        glyph: 'ka', font: "ui-monospace, monospace",           name: 'slp1' },
-    { id: 'hk',          glyph: 'ka', font: "ui-monospace, monospace",           name: 'harvard-kyoto' },
-    { id: 'itrans',      glyph: 'ka', font: "ui-monospace, monospace",           name: 'itrans' },
-    { id: 'velthuis',    glyph: 'ka', font: "ui-monospace, monospace",           name: 'velthuis' },
+    { id: 'iso15919',    glyph: 'ka', font: "var(--font-serif)",              name: 'iso 15919', italic: true },
+    { id: 'slp1',        glyph: 'ka', font: "var(--font-mono)",           name: 'slp1' },
+    { id: 'hk',          glyph: 'ka', font: "var(--font-mono)",           name: 'harvard-kyoto' },
+    { id: 'itrans',      glyph: 'ka', font: "var(--font-mono)",           name: 'itrans' },
+    { id: 'velthuis',    glyph: 'ka', font: "var(--font-mono)",           name: 'velthuis' },
   ];
 
   const glossOptions: GlossOption[] = [
     { id: 'telugu',  label: 'తెలుగు',  font: "'Noto Sans Telugu', sans-serif" },
-    { id: 'english', label: 'English', font: "'Crimson Pro', serif", italic: true },
+    { id: 'english', label: 'English', font: "var(--font-serif)", italic: true },
   ];
 
   // Three depths, ordered shallow → deep. The dot affordance grows in size
@@ -195,7 +195,7 @@
 
   .back-link {
     display: inline-block;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -206,7 +206,7 @@
   .back-link:hover { color: #0f1419; }
 
   .eyebrow {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -238,7 +238,7 @@
     font-weight: 500;
   }
   .section-mono {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #94a3b8;
     letter-spacing: 0.04em;
@@ -249,7 +249,7 @@
   }
 
   .field-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #475569;
@@ -300,7 +300,7 @@
   }
 
   .glyph-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #cbd5e1;
@@ -324,7 +324,7 @@
     margin-top: 1.25rem;
   }
   .more-scripts summary {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -395,7 +395,7 @@
   }
 
   .depth-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #cbd5e1;

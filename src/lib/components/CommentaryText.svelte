@@ -362,7 +362,7 @@
 
   .commentary-content :global(.ref-link) {
     color: #4f46e5;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.875em;
     text-decoration: none;
     transition: color 0.15s;

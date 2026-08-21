@@ -1,29 +1,57 @@
 @import "tailwindcss";
 
+/*
+  One token set every page reads from. Saffron leads on white with ink text,
+  joined by two supports at the same lightness — green for done/correct, blue
+  for cross-references — so nothing outranks the accent, it only means
+  something different. Square corners throughout; sticky offsets come from
+  --sticky-*, never from per-page numbers.
+*/
 :root {
-  /* Colors — saffron as the sole persistent accent */
-  --color-accent: #f97316;
-  --color-accent-hover: #ea6c0a;
+  --paper: #ffffff;
+  --sunken: #faf7f0;
+  --ink: #0f1419;
+  --ink-2: #5c5345;
+  --muted: #6b6b6b;
+  --quiet: #94a3b8;
+  --faint: #bcb29d;
+  --rule: #f0e9da;
+  --rule-2: #e7e2d9;
 
-  /* Typography - matching dukrnkarane */
-  --font-sans:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: "Crimson Pro", "Georgia", serif;
-  --font-devanagari:
-    "Noto Sans Devanagari", "Devanagari Sangam MN", system-ui, sans-serif;
+  /* saffron leads; two supports at the same brightness */
+  --accent: #f97316; /* active · current · brand */
+  --accent-hover: #ea6c0a;
+  --accent-soft: #fde7c8; /* the lit cell, the focal underline's ghost */
+  --accent-ok: oklch(0.7 0.15 155); /* done · correct */
+  --accent-ref: oklch(0.7 0.13 245); /* cross-reference */
+
+  --font-serif: Spectral, Georgia, serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-deva: "Noto Sans Devanagari", "Devanagari Sangam MN", system-ui,
+    sans-serif;
   --font-telugu: "Noto Sans Telugu", "Kohinoor Telugu", system-ui, sans-serif;
-  --font-mono: "SF Mono", "Consolas", "Monaco", monospace;
+
+  --nav-h: 52px;
+  --shelf-h: 40px;
+  --sticky-shelf: var(--nav-h);
+  --sticky-rail: calc(var(--nav-h) + var(--shelf-h));
+  --radius: 0;
+
+  /* Legacy aliases, so route styles that still name the old variables keep
+     resolving while they are converted one at a time. */
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-devanagari: var(--font-deva);
 }
 
 body {
   font-family: var(--font-serif);
-  background: #ffffff;
-  color: #0f1419;
+  background: var(--paper);
+  color: var(--ink);
   font-size: 17px;
   line-height: 1.6;
 }
 
-/* Headings use serif */
 h1,
 h2,
 h3 {
@@ -40,7 +68,7 @@ h3 {
 /* Sanskrit Devanagari */
 .font-sanskrit,
 .font-devanagari {
-  font-family: var(--font-devanagari);
+  font-family: var(--font-deva);
 }
 
 /* Telugu script */
@@ -88,21 +116,32 @@ h3 {
   font-family: "Noto Sans Nandinagari", system-ui, sans-serif;
 }
 
-/* Monospace for sutra numbers */
+/* Monospace for sutra numbers and every small label */
 .font-mono {
   font-family: var(--font-mono);
 }
 
-/* Sutra reference links — indigo for cross-references */
+/*
+  The mono label: 11px, caps, tracked. Every eyebrow in the app is this one
+  class — it replaces the six-way drift between 0.66 and 0.75rem.
+*/
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* Sutra reference links — the cross-reference accent, same brightness as saffron */
 .sutra-ref {
-  color: #4f46e5;
+  color: var(--accent-ref);
   text-decoration: underline;
   text-decoration-style: dotted;
   cursor: pointer;
 }
 
 .sutra-ref:hover {
-  color: #4338ca;
   text-decoration-style: solid;
 }
 
@@ -116,28 +155,18 @@ h3 {
   opacity: 1;
 }
 
-/* Type badges */
+/*
+  One neutral chip for every taxonomy label. The four hued badge classes are
+  gone: category reads from the label, and the three accents stay reserved for
+  state rather than taxonomy.
+*/
 .badge {
   display: inline-block;
-  padding: 0.125rem 0.5rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.badge-samjna {
-  background-color: #dbeafe;
-  color: #1e40af;
-}
-.badge-paribhasha {
-  background-color: #fef3c7;
-  color: #92400e;
-}
-.badge-vidhi {
-  background-color: #d1fae5;
-  color: #065f46;
-}
-.badge-adhikara {
-  background-color: #ede9fe;
-  color: #5b21b6;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 8px;
+  border: 1px solid var(--rule-2);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-weight: 400;
 }

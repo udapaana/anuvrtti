@@ -882,14 +882,14 @@
     padding: 0.7rem 0 0.5rem;
   }
   :global(.lesson-section-label) {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
     text-transform: lowercase;
   }
   :global(.lesson-section-sublabel) {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.04em;
     color: #cbd5e1;
@@ -912,7 +912,7 @@
     margin-top: 1.5rem;
   }
   .bridge-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -957,7 +957,7 @@
   }
   .grammar-note-label {
     display: block;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 400;
     letter-spacing: 0.04em;

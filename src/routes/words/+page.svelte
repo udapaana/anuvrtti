@@ -171,7 +171,7 @@
 
   .back-link {
     display: inline-block;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -182,7 +182,7 @@
   .back-link:hover { color: #0f1419; }
 
   .eyebrow {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -218,7 +218,7 @@
   .search {
     flex: 1;
     min-width: 10rem;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
     letter-spacing: 0.02em;
     border: none;
@@ -240,7 +240,7 @@
     background: none;
     border: none;
     padding: 0 0 2px;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -266,7 +266,7 @@
     grid-template-columns: 2fr 3fr 1.5fr 2rem;
     gap: 0.75rem;
     padding: 0.45rem 0;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.05em;
     color: #94a3b8;
@@ -297,7 +297,7 @@
   }
 
   .word-iast {
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.78rem;
     color: #94a3b8;
@@ -311,14 +311,14 @@
   }
 
   .tag {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     color: #94a3b8;
     letter-spacing: 0.02em;
   }
 
   .lesson-cell {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #94a3b8;
   }
@@ -335,7 +335,7 @@
   }
 
   .dict-link {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.04em;
     color: #cbd5e1;
@@ -345,7 +345,7 @@
   .dict-link:hover { color: #4f46e5; }
 
   .no-results {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     color: #cbd5e1;
     padding: 1.5rem 0;
@@ -367,7 +367,7 @@
   }
 
   .lesson-group-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #475569;
@@ -377,7 +377,7 @@
   .lesson-group-label:hover { color: #f97316; }
 
   .lesson-group-count {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     color: #cbd5e1;
   }
@@ -402,7 +402,7 @@
   }
 
   .chip-iast {
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.82rem;
     color: #94a3b8;
@@ -415,7 +415,7 @@
   }
 
   .chip-dict {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.04em;
     color: #cbd5e1;
@@ -425,7 +425,7 @@
   .chip-dict:hover { color: #4f46e5; }
 
   .word-count {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #cbd5e1;
     letter-spacing: 0.04em;

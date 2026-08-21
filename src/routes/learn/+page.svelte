@@ -122,7 +122,7 @@
 
   .back-link {
     display: inline-block;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -137,7 +137,7 @@
     gap: 0.3rem;
   }
   .eyebrow {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -160,7 +160,7 @@
     margin-bottom: -0.8rem;
     cursor: pointer;
     font-size: 1rem;
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
     color: #94a3b8;
     border-bottom: 2px solid transparent;
@@ -173,7 +173,7 @@
   }
 
   .vol-meta {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -201,7 +201,7 @@
   .lesson-list li a:hover { background: #fff7ed; }
 
   .lesson-num {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
     color: #94a3b8;
     letter-spacing: 0.04em;
@@ -227,7 +227,7 @@
     line-height: 1.45;
   }
   .lesson-status {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     min-width: 1.5rem;
     text-align: right;

@@ -336,7 +336,7 @@
 
   .back-link {
     display: inline-block;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -347,7 +347,7 @@
   .back-link:hover { color: #0f1419; }
 
   .eyebrow {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -382,7 +382,7 @@
   .control-block {}
 
   .control-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.06em;
     color: #94a3b8;
@@ -429,7 +429,7 @@
   }
 
   .dhatu-root {
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-size: 1rem;
     color: #0f1419;
@@ -443,7 +443,7 @@
   }
 
   .lakara-iast {
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.95rem;
     color: #0f1419;
@@ -457,7 +457,7 @@
   }
 
   .custom-toggle .dhatu-root {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-style: normal;
     font-size: 0.75rem;
     color: #94a3b8;
@@ -479,7 +479,7 @@
   }
 
   .custom-lbl {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.62rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -487,7 +487,7 @@
 
   .custom-input,
   .custom-select {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
     border: none;
     border-bottom: 1px solid #e2e8f0;
@@ -504,7 +504,7 @@
     margin-top: 0.25rem;
     background: none;
     border: none;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #f97316;
@@ -525,7 +525,7 @@
     background: none;
     border: none;
     padding: 0 0 2px;
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.95rem;
     color: #94a3b8;
@@ -553,7 +553,7 @@
   }
 
   .table-root {
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
     font-size: 1.75rem;
@@ -568,7 +568,7 @@
   }
 
   .table-lakara {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -576,7 +576,7 @@
   }
 
   .status {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     color: #94a3b8;
     letter-spacing: 0.04em;
@@ -607,7 +607,7 @@
   }
 
   .col-head {
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.9rem;
     color: #0f1419;
@@ -616,7 +616,7 @@
   }
 
   .row-head {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.68rem;
     letter-spacing: 0.03em;
     color: #94a3b8;
@@ -624,7 +624,7 @@
   }
 
   .head-sub {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.62rem;
     letter-spacing: 0.03em;
     color: #cbd5e1;
@@ -649,7 +649,7 @@
   }
 
   .cell-dots {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     color: #cbd5e1;
     letter-spacing: 0.2em;

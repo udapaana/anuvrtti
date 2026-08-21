@@ -350,7 +350,7 @@
   }
 
   .back-link {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -378,7 +378,7 @@
     border: none;
     text-decoration: none;
     color: #0f1419;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     transition: color 0.1s;
   }
@@ -389,7 +389,7 @@
   }
 
   .nav-hint {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     color: #cbd5e1;
     letter-spacing: 0.04em;
@@ -400,7 +400,7 @@
   }
 
   .section-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 400;
     text-transform: lowercase;
@@ -425,7 +425,7 @@
     color: #0f1419;
     text-decoration: none;
     flex: 1;
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
   }
   .banner-link strong {
@@ -459,7 +459,7 @@
   }
 
   .prakriya-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #94a3b8;
     letter-spacing: 0.04em;
@@ -478,7 +478,7 @@
   }
 
   .prakriya-link {
-    font-family: 'Crimson Pro', serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.95rem;
     color: #0f1419;
@@ -500,7 +500,7 @@
   }
 
   .learn-links-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #94a3b8;
     letter-spacing: 0.04em;

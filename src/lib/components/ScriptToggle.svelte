@@ -13,7 +13,7 @@
   // user's content spans many Indic scripts.
   const primary: { id: Script; label: string; font: string }[] = [
     { id: 'devanagari', label: 'देव',   font: 'Noto Sans Devanagari' },
-    { id: 'iast',       label: 'IAST',  font: 'Crimson Pro' },
+    { id: 'iast',       label: 'IAST',  font: 'var(--font-serif)' },
     { id: 'telugu',     label: 'తెలుగు', font: 'Noto Sans Telugu' },
   ];
 
@@ -27,11 +27,11 @@
     { id: 'odia',        label: 'ଓଡ଼ିଆ',      font: 'Noto Sans Oriya' },
     { id: 'sinhala',     label: 'සිංහල',     font: 'Noto Sans Sinhala' },
     { id: 'nandinagari', label: '𑦮',         font: 'Noto Sans Nandinagari' },
-    { id: 'iso15919',    label: 'ISO',       font: 'Crimson Pro' },
-    { id: 'slp1',        label: 'SLP1',      font: 'ui-monospace' },
-    { id: 'hk',          label: 'HK',        font: 'ui-monospace' },
-    { id: 'itrans',      label: 'ITRANS',    font: 'ui-monospace' },
-    { id: 'velthuis',    label: 'Vel',       font: 'ui-monospace' },
+    { id: 'iso15919',    label: 'ISO',       font: 'var(--font-serif)' },
+    { id: 'slp1',        label: 'SLP1',      font: 'var(--font-mono)' },
+    { id: 'hk',          label: 'HK',        font: 'var(--font-mono)' },
+    { id: 'itrans',      label: 'ITRANS',    font: 'var(--font-mono)' },
+    { id: 'velthuis',    label: 'Vel',       font: 'var(--font-mono)' },
   ];
 
   let open = $state(false);
@@ -109,7 +109,7 @@
   }
 
   .more {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.85rem;
     color: #cbd5e1;
     padding: 0 0.15rem;
@@ -148,7 +148,7 @@
     color: #0f1419;
   }
   .row-id {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     color: #94a3b8;
     letter-spacing: 0.03em;

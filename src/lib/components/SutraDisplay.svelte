@@ -273,13 +273,13 @@
 
   /* Common elements */
   .sutra-id {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8125rem;
     color: #78716c;
     flex-shrink: 0;
   }
   .sutra-id-large {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
     color: #94a3b8;
     letter-spacing: 0.04em;
@@ -294,7 +294,7 @@
     line-height: 1.5;
   }
   .sutra-type {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.04em;
     flex-shrink: 0;
@@ -320,7 +320,7 @@
     color: #94a3b8;
   }
   .anuvrtti-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #94a3b8;
     letter-spacing: 0.04em;
@@ -350,7 +350,7 @@
   }
   .anuvrtti-link:hover { color: #f97316; }
   .anuvrtti-link .ref-id {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #94a3b8;
   }
@@ -361,7 +361,7 @@
     padding: 1rem 0;
   }
   .section-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 400;
     text-transform: lowercase;

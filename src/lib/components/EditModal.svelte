@@ -14,8 +14,15 @@
 
   interface Props {
     user: { login: string; avatar_url: string } | null;
+    /*
+      Authoring is a mode now, so the editor's home is a rail beside the content
+      you are editing rather than a full-screen scrim over it — the page stays
+      readable while you work on it. The layout positions the rail; in that
+      variant this component drops its own fixed overlay and simply fills it.
+    */
+    variant?: 'modal' | 'rail';
   }
-  let { user }: Props = $props();
+  let { user, variant = 'modal' }: Props = $props();
 
   // ── Types ──────────────────────────────────────────────────────────────
 
@@ -682,7 +689,13 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Content editor">
+<div
+  class="modal-backdrop"
+  class:rail={variant === 'rail'}
+  role="dialog"
+  aria-modal={variant === 'modal'}
+  aria-label="Content editor"
+>
   <div class="modal">
 
     <!-- Header -->
@@ -970,6 +983,16 @@
     display: flex;
     align-items: stretch;
     justify-content: stretch;
+  }
+
+  /* As a rail the editor has no scrim and no stacking of its own: the layout's
+     aside already holds it beside the content. */
+  .modal-backdrop.rail {
+    position: static;
+    inset: auto;
+    background: transparent;
+    z-index: auto;
+    height: 100%;
   }
 
   .modal {
@@ -1415,7 +1438,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1500,7 +1523,7 @@
   .validation-error {
     font-size: 0.8125rem;
     color: #dc2626;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
   }
 
   .toast-editor-wrapper {

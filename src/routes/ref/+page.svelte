@@ -347,7 +347,7 @@
   .pada-nav h3,
   .type-nav h3,
   .tools-nav h3 {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 400;
     letter-spacing: 0.04em;
@@ -367,7 +367,7 @@
     padding: 0;
     border: none;
     background: none;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     color: #94a3b8;
     cursor: pointer;
@@ -403,7 +403,7 @@
   .type-btn:hover { color: #0f1419; }
   .type-btn.active { color: #f97316; }
   .type-count {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #cbd5e1;
     font-style: normal;
@@ -416,7 +416,7 @@
     gap: 0.5rem;
     padding: 0.5rem 0;
     border-top: 1px solid #e2e8f0;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #94a3b8;
   }
@@ -453,7 +453,7 @@
     color: #0f1419;
   }
   .results-count {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;

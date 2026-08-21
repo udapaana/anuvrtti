@@ -149,9 +149,7 @@
     background: #fff;
     cursor: pointer;
     font:
-      400 12.5px/1 'Crimson Pro',
-      Georgia,
-      serif;
+      400 12.5px/1 var(--font-serif);
     color: #a8a29e;
   }
   .trigger:hover {
@@ -189,9 +187,7 @@
     border-bottom: 1px solid #f5f5f4;
     padding: 10px 12px;
     font:
-      400 14px/1.3 'Crimson Pro',
-      Georgia,
-      serif;
+      400 14px/1.3 var(--font-serif);
     color: #1c1917;
     outline: none;
   }
@@ -210,9 +206,7 @@
     cursor: pointer;
     text-align: left;
     font:
-      400 13px/1.35 'Crimson Pro',
-      Georgia,
-      serif;
+      400 13px/1.35 var(--font-serif);
     color: #44403c;
   }
   .hit:hover {
@@ -241,9 +235,7 @@
   .empty {
     padding: 12px;
     font:
-      400 12.5px/1 'Crimson Pro',
-      Georgia,
-      serif;
+      400 12.5px/1 var(--font-serif);
     color: #a8a29e;
   }
 </style>

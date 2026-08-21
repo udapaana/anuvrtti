@@ -93,9 +93,7 @@
   }
   .sub {
     font:
-      400 11.5px/1 'Crimson Pro',
-      Georgia,
-      serif;
+      400 11.5px/1 var(--font-serif);
     color: #a8a29e;
   }
   .grid {
@@ -179,9 +177,7 @@
     padding: 2px 0;
     cursor: pointer;
     font:
-      400 11.5px/1 'Crimson Pro',
-      Georgia,
-      serif;
+      400 11.5px/1 var(--font-serif);
     color: #78716c;
   }
   .key:hover {

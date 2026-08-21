@@ -459,7 +459,7 @@
   }
 
   .rule-link {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.6875rem;
     color: #6366f1;
     background: #eef2ff;
@@ -563,7 +563,7 @@
   }
 
   .step-rule {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8125rem;
     color: #78716c;
     background: #f5f5f4;

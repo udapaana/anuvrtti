@@ -134,7 +134,7 @@
   }
 
   .sutra-id {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8125rem;
     color: #6366f1;
     text-decoration: none;

@@ -560,7 +560,7 @@
     justify-content: center;
     padding: 7rem 2rem;
     color: #94a3b8;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.82rem;
   }
 
@@ -602,7 +602,7 @@
     flex: 1;
     border: none;
     cursor: pointer;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.02em;
     padding: 0.3rem 0.5rem;
@@ -617,7 +617,7 @@
 
   .navpart { margin-bottom: 1.4rem; }
   .navpartlabel {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.6rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -641,7 +641,7 @@
   .navitem:hover { background: #faf7f0; }
   .navitem.active { background: #fdecd9; }
   .navnum {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #cbbfa9;
     flex: none;
@@ -665,7 +665,7 @@
   .lesson { min-width: 0; padding: 1.4rem 0 6rem; }
   .lessonhead { border-bottom: 1px solid #e7e2d9; padding-bottom: 1.5rem; }
   .kicker {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.66rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -676,7 +676,7 @@
   .subtitle { font-size: 1.12rem; color: #5c5345; margin-top: 0.4rem; }
   .metarow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.85rem; }
   .metalabel {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -684,7 +684,7 @@
   }
   .focuschip { font-size: 0.96rem; color: #92591f; background: #fdf1e1; border-radius: 7px; padding: 0.18rem 0.6rem; }
   .sutrachip {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     color: #f97316;
     background: #fdf1e1;
@@ -698,7 +698,7 @@
   .block { padding: 1.7rem 0; border-top: 1px solid #f0e9da; }
   .blockhead { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.05rem; }
   .blockkicker {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.62rem;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -724,7 +724,7 @@
   .scriptcell { background: #fffdf9; border: 1px solid #e7e2d9; border-radius: 11px; padding: 0.7rem 0.85rem; }
   .scriptglyph { display: flex; align-items: baseline; gap: 0.5rem; }
   .glyph { font-size: 1.75rem; color: #0f1419; line-height: 1.05; }
-  .glyphiast { font-family: ui-monospace, monospace; font-size: 0.78rem; color: #b08d57; }
+  .glyphiast { font-family: var(--font-mono); font-size: 0.78rem; color: #b08d57; }
   .scriptnoteen { font-size: 0.8rem; color: #6b6b6b; line-height: 1.35; margin-top: 0.25rem; }
 
   /* sandhi table */
@@ -739,7 +739,7 @@
     border-radius: 11px;
     padding: 0.7rem 0.95rem;
   }
-  .sandhipattern { font-family: ui-monospace, monospace; font-size: 0.85rem; color: #f97316; min-width: 6.5rem; }
+  .sandhipattern { font-family: var(--font-mono); font-size: 0.85rem; color: #f97316; min-width: 6.5rem; }
   .sandhiform { font-size: 1.3rem; color: #0f1419; }
   .arrow { color: #cbb994; }
   .sandhien { font-size: 0.88rem; color: #6b6b6b; font-style: italic; flex: 1; min-width: 13rem; }
@@ -750,7 +750,7 @@
   .vocabskt { font-size: 1.28rem; color: #0f1419; line-height: 1.2; white-space: nowrap; }
   .vocabglosses { display: flex; flex-direction: column; gap: 0.02rem; min-width: 0; flex: 1; }
   .vocabgloss { font-size: 0.95rem; color: #5c5345; line-height: 1.25; }
-  .vocabtag { font-family: ui-monospace, monospace; font-size: 0.6rem; color: #b08d57; white-space: nowrap; align-self: center; }
+  .vocabtag { font-family: var(--font-mono); font-size: 0.6rem; color: #b08d57; white-space: nowrap; align-self: center; }
 
   /* paradigm table */
   .paradigmscroll { overflow-x: auto; padding-bottom: 0.3rem; }
@@ -769,7 +769,7 @@
   .pheaders { background: #f7f1e6; border-bottom: 1px solid #e7e2d9; }
   .pcorner { padding: 0.5rem 0.85rem; min-width: 5.4rem; }
   .pcornerlabel {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.6rem;
     color: #b08d57;
     display: flex;
@@ -786,7 +786,7 @@
   /* reading */
   .readinglist { display: flex; flex-direction: column; gap: 1rem; }
   .readingitem { display: grid; grid-template-columns: 1.9rem minmax(0, 1fr); gap: 0.6rem; }
-  .readingn { font-family: ui-monospace, monospace; font-size: 0.74rem; color: #cbb994; padding-top: 0.5rem; }
+  .readingn { font-family: var(--font-mono); font-size: 0.74rem; color: #cbb994; padding-top: 0.5rem; }
   .readingskt { font-size: 1.55rem; color: #0f1419; line-height: 1.4; }
   .readingen { font-size: 1rem; color: #463f33; font-style: italic; margin-top: 0.18rem; line-height: 1.45; }
 
@@ -794,7 +794,7 @@
   .exhint { font-size: 0.72rem; color: #b08d57; font-style: italic; margin-bottom: 0.8rem; }
   .exlist { display: flex; flex-direction: column; gap: 0.8rem; }
   .exitem { display: grid; grid-template-columns: 1.9rem minmax(0, 1fr); gap: 0.6rem; align-items: baseline; }
-  .exn { font-family: ui-monospace, monospace; font-size: 0.74rem; color: #cbb994; }
+  .exn { font-family: var(--font-mono); font-size: 0.74rem; color: #cbb994; }
   .exbody { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.9rem; }
   .exprompt { font-size: 1.15rem; color: #0f1419; }
   .exanswer {
@@ -815,7 +815,7 @@
   /* pager */
   .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid #e7e2d9; }
   .navbtn {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
     letter-spacing: 0.02em;
     padding: 0.5rem 1.1rem;

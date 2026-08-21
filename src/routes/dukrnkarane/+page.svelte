@@ -330,9 +330,7 @@
     cursor: pointer;
     text-align: left;
     font:
-      400 13.5px/1.35 'Crimson Pro',
-      Georgia,
-      serif;
+      400 13.5px/1.35 var(--font-serif);
     color: #57534e;
   }
   .chapter:hover {
@@ -368,9 +366,7 @@
     cursor: pointer;
     text-align: left;
     font:
-      400 13px/1.35 'Crimson Pro',
-      Georgia,
-      serif;
+      400 13px/1.35 var(--font-serif);
     color: #78716c;
   }
   .section:hover {
@@ -409,9 +405,7 @@
   }
   .topic {
     font:
-      400 12px/1 'Crimson Pro',
-      Georgia,
-      serif;
+      400 12px/1 var(--font-serif);
     padding: 3px 8px;
     background: #f5f5f4;
     color: #57534e;
@@ -446,9 +440,7 @@
   }
   .rule-id {
     font:
-      500 28px/1 'Crimson Pro',
-      Georgia,
-      serif;
+      500 28px/1 var(--font-serif);
     color: #1c1917;
   }
   .kind {
@@ -464,9 +456,7 @@
   h1 {
     margin: 4px 0 22px;
     font:
-      400 25px/1.25 'Crimson Pro',
-      Georgia,
-      serif;
+      400 25px/1.25 var(--font-serif);
     color: #1c1917;
     text-wrap: pretty;
   }
@@ -525,9 +515,7 @@
   }
   .gloss {
     font:
-      italic 400 12px/1.3 'Crimson Pro',
-      Georgia,
-      serif;
+      italic 400 12px/1.3 var(--font-serif);
     color: #a8a29e;
   }
 
@@ -563,9 +551,7 @@
   }
   .pt {
     font:
-      400 13.5px/1.35 'Crimson Pro',
-      Georgia,
-      serif;
+      400 13.5px/1.35 var(--font-serif);
     color: #57534e;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -644,9 +630,7 @@
     cursor: pointer;
     text-align: left;
     font:
-      400 12.5px/1.35 'Crimson Pro',
-      Georgia,
-      serif;
+      400 12.5px/1.35 var(--font-serif);
     color: #57534e;
   }
   .link-row:hover {
@@ -680,9 +664,7 @@
   }
   .source {
     font:
-      400 12.5px/1.6 'Crimson Pro',
-      Georgia,
-      serif;
+      400 12.5px/1.6 var(--font-serif);
     color: #57534e;
   }
   .leaves {
@@ -709,9 +691,7 @@
   .leaf-note {
     margin-top: 5px;
     font:
-      italic 400 11.5px/1.45 'Crimson Pro',
-      Georgia,
-      serif;
+      italic 400 11.5px/1.45 var(--font-serif);
     color: #a8a29e;
   }
 

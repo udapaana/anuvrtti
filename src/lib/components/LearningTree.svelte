@@ -394,7 +394,7 @@
 
   .reading-desc,
   .grammar-desc {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     color: #94a3b8;
@@ -410,7 +410,7 @@
   }
 
   .progress-text {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #94a3b8;
     letter-spacing: 0.03em;
@@ -478,7 +478,7 @@
     height: auto;
     border: none;
     background: none !important;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 400;
     color: #94a3b8;
@@ -517,7 +517,7 @@
   }
 
   .reading-category {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: lowercase;
     letter-spacing: 0.03em;
@@ -598,7 +598,7 @@
 
   .category-count {
     margin-left: auto;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: #94a3b8;
     background: none;
@@ -650,7 +650,7 @@
   }
 
   .prereq-tag {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     padding: 0;
     background: none;
