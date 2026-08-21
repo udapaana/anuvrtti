@@ -528,6 +528,127 @@ readings:
     action-nouns: लभ् → लाभ, भिद् → भेद (3.3.18). And it says where it comes from:
     पञ्चतन्त्रात्, ग्रन्थात् — the ablative of source (पञ्चमी) — having drawn (आकृष्य,
     the ल्यप् gerund) from them, it लिख्यते, "is written," the passive of लिख्.
+- id: rd047
+  kind: attested
+  segment: 320
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.4 — विद्या is the unsurpassed wealth"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, ||Hit_0.4||)"
+  sentence: सर्वद्रव्येषु विद्यैव द्रव्यम् आहुर् अनुत्तमम्। अहार्यत्वाद् अनर्घत्वाद् अक्षयत्वाच् च सर्वदा॥
+  translation: Among all forms of wealth they call knowledge alone the unsurpassed wealth — because it cannot be stolen, is priceless, and is imperishable, always.
+  teaches: |
+    three त्व-abstracts giving the reason in the ablative — अहार्यत्वात् (unstealable),
+    अनर्घत्वात् (priceless), अक्षयत्वात् (imperishable); "they call" is the perfect आहुः.
+  words:
+  - form: सर्वद्रव्येषु
+    lemma: सर्वद्रव्य
+    gloss: among all forms of wealth
+    vocab: true
+    notes:
+    - term: निर्धारण
+      en: selection-from-a-group → सप्तमी
+    - term: सप्तमी
+      en: locative plural
+    - text: 'सर्व + द्रव्य — "all substances / all wealth"'
+  - form: विद्यैव
+    lemma: विद्या
+    gloss: knowledge alone
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent — विद्या, the subject
+    - term: प्रथमा
+      en: nominative
+    - text: 'विद्या + एव → विद्यैव (आ + ए → ऐ, वृद्धिसन्धि); एव = "alone, indeed"'
+  - form: द्रव्यम्
+    lemma: द्रव्य
+    gloss: wealth
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: predicate object of आहुः ("call it wealth")
+    - term: द्वितीया
+      en: accusative
+  - form: आहुर्
+    lemma: अह्
+    gloss: they call, they say
+    vocab: true
+    notes:
+    - term: लिट्
+      en: perfect — the defective root अह् survives only in the परोक्ष (आह, आहुः)
+    - text: 'आहुः → आहुर् before अ (visarga → र्)'
+  - form: अनुत्तमम्
+    lemma: अनुत्तम
+    gloss: unsurpassed
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: qualifying द्रव्यम्
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: अहार्यत्वाद्
+    lemma: अहार्यत्व
+    gloss: because of being unstealable
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "the state of being अहार्य (not to be stolen)"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of" → अहार्य + त्व → अहार्यत्व
+    - term: पञ्चमी
+      en: ablative of cause — "because of ___" (अहार्यत्वात् → अहार्यत्वाद् before अ)
+  - form: अनर्घत्वाद्
+    lemma: अनर्घत्व
+    gloss: because of being priceless
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "the state of being अनर्घ (priceless)"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of" → अनर्घ + त्व → अनर्घत्व
+    - term: पञ्चमी
+      en: ablative of cause
+  - form: अक्षयत्वाच्
+    lemma: अक्षयत्व
+    gloss: because of being imperishable
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "the state of being अक्षय (imperishable)"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of" → अक्षय + त्व → अक्षयत्व
+    - term: पञ्चमी
+      en: ablative of cause (अक्षयत्वात् → अक्षयत्वाच् before च)
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: सर्वदा
+    lemma: सर्वदा
+    gloss: always
+    notes:
+    - term: अव्यय
+      en: adverb of time — "at all times"
+  vyakhya: सर्वद्रव्येषु विद्या एव अनुत्तमम् द्रव्यम् — अहार्यत्वात् अनर्घत्वात् अक्षयत्वात् च।
+  vyakhya_en: |
+    Of all wealth, knowledge alone (विद्यैव) they call the unsurpassed — द्रव्यम्
+    and अनुत्तमम् both द्वितीया, the double object of आहुः "they call." The reason
+    comes in three त्व-abstracts in the ablative of cause: अहार्यत्वात्, "because it
+    cannot be stolen"; अनर्घत्वात्, "because it is priceless"; अक्षयत्वात्, "because
+    it never runs out" — each the त्व noun (5.1.119) of a quality, and सर्वदा,
+    always so.
 - id: rd041
   kind: attested
   segment: 305
