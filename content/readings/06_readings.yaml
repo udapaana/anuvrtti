@@ -10,6 +10,131 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd043
+  kind: attested
+  segment: 325
+  source:
+    text: पञ्चतन्त्र
+    ref: "Pañcatantra 0.2 — the maṅgala verse (Viṣṇuśarman and the five tantras)"
+    curated: "the opening benedictory verse, whole; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_viSNuzarman-paJcatantra, ||Panc_0.2||)"
+  sentence: सकलार्थशास्त्रसारं जगति समालोक्य विष्णुशर्मेदम्। तन्त्रैः पञ्चभिर् एतच् चकार सुमनोहरं शास्त्रम्॥
+  translation: Having surveyed in the world the essence of all the treatises on statecraft, Viṣṇuśarman composed this charming work in five tantras.
+  teaches: |
+    the Pañcatantra's own opening — a long तत्पुरुष सार-compound as object of the
+    ल्यप् gerund समालोक्य, and the perfect चकार "he composed."
+  words:
+  - form: सकलार्थशास्त्रसारम्
+    lemma: सकलार्थशास्त्रसार
+    gloss: the essence of all the treatises on statecraft
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: determinative — सारम्, the head, is qualified by the rest; सकलानाम् अर्थशास्त्राणाम् सारम्
+    - text: 'विग्रह: सकलानाम् अर्थशास्त्राणाम् सारम् — "the essence of all the arthaśāstras"'
+    - cite: '2.1.22'
+      role: तत्पुरुषः — a compound whose last member carries the main sense is तत्पुरुष
+    - term: कर्मन्
+      en: object of समालोक्य
+    - term: द्वितीया
+      en: accusative (→ सारं, anusvāra before ज)
+  - form: जगति
+    lemma: जगत्
+    gloss: in the world
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative (त्-stem जगत् → जगति)
+  - form: समालोक्य
+    lemma: लोक्
+    gloss: having surveyed
+    notes:
+    - term: कृदन्त
+      en: gerund — a कृदन्त that does not decline
+    - term: ल्यप्
+      en: the ल्यप् suffix — a क्त्वा-gerund WITH a preverb (सम्-आ), so आगत्य-style
+    - cite: '7.1.37'
+      role: समासेऽनञ्पूर्वे क्त्वो ल्यप् — क्त्वा becomes ल्यप् after a preverb → -आलोक्य
+    - term: उपसर्ग
+      en: सम् + आ — the preverbs that select ल्यप् over क्त्वा
+    - term: अव्यय
+      en: indeclinable
+  - form: विष्णुशर्मेदम्
+    lemma: विष्णुशर्मन्
+    gloss: Viṣṇuśarman + this (work)
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent — विष्णुशर्मा, the one who composed
+    - term: प्रथमा
+      en: nominative — an अन्-stem, so the न् drops (विष्णुशर्मा)
+    - text: 'विष्णुशर्मा + इदम् → विष्णुशर्मेदम् (आ + इ → ए, गुणसन्धि); इदम् = "this work," द्वितीया'
+  - form: तन्त्रैः
+    lemma: तन्त्र
+    gloss: by the tantras (books)
+    vocab: true
+    notes:
+    - term: करण
+      en: instrument — "by means of the five books"
+    - term: तृतीया
+      en: instrumental plural
+  - form: पञ्चभिर्
+    lemma: पञ्चन्
+    gloss: five
+    notes:
+    - term: संख्या
+      en: numeral qualifying तन्त्रैः (instrumental plural)
+    - term: तृतीया
+      en: instrumental
+    - text: 'पञ्चभिः + एतत् → पञ्चभिर् (visarga → र् before a voiced sound)'
+  - form: एतच्
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: pronoun — the work, restated
+    - term: कर्मन्
+      en: object of चकार
+    - term: द्वितीया
+      en: accusative (neuter)
+    - text: 'एतत् + चकार → एतच् चकार (त् → च् before च, श्चुत्व 8.4.40)'
+  - form: चकार
+    lemma: कृ
+    gloss: made, composed
+    notes:
+    - term: लिट्
+      en: perfect — the remote or reported past (परोक्ष)
+    - cite: '3.2.115'
+      role: परोक्षे लिट् — for a past beyond direct witness, लिट् replaces the लकार → चकार
+  - form: सुमनोहरम्
+    lemma: सुमनोहर
+    gloss: very charming
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: qualifying शास्त्रम्
+    - term: द्वितीया
+      en: accusative (→ सुमनोहरं, anusvāra before श)
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: शास्त्रम्
+    lemma: शास्त्र
+    gloss: the treatise, the work
+    notes:
+    - term: कर्मन्
+      en: the thing composed
+    - term: द्वितीया
+      en: accusative (neuter)
+  vyakhya: सकलार्थशास्त्रसारं समालोक्य विष्णुशर्मा पञ्चभिः तन्त्रैः शास्त्रम् चकार।
+  vyakhya_en: |
+    The Pañcatantra names itself in its second verse. The object of the gerund is
+    one long तत्पुरुष — सकल-अर्थशास्त्र-सारम्, "the essence of all the treatises on
+    statecraft" — which Viṣṇuśarman, having surveyed (समालोक्य, the ल्यप् gerund),
+    made into a charming work. चकार is the perfect (लिट्, 3.2.115), the tense of
+    reported past: "he composed it." तन्त्रैः पञ्चभिः, "by five books" — the five
+    that give the book its name.
 - id: rd041
   kind: attested
   segment: 305
