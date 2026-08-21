@@ -336,7 +336,12 @@
   // the scroll-focused reading — so hovering a lower card swaps the machinery to
   // that card instead of leaving the top one showing.
   const railReading = $derived.by(() => {
-    return list.find((r) => r.id === (focusedId ?? slice[0]?.id)) ?? slice[0] ?? null;
+    // A SELECTION wins over the scroll. focusedId is recomputed from whatever
+    // the observer sees while a smooth scroll is still running, so stepping with
+    // the arrows left the marker a card behind the word actually selected. If a
+    // word is selected, the line you are on is that word's line, full stop.
+    const id = sel?.id ?? focusedId ?? slice[0]?.id;
+    return list.find((r) => r.id === id) ?? slice[0] ?? null;
   });
 
   /*
@@ -605,6 +610,37 @@
   }
 
   // ↑ ↓ move line to line, keeping your place within the line.
+  /*
+    Bring a card into view with the LEAST movement that does the job.
+
+    Stepping used to go through jumpToReading, which re-anchors the card to a
+    fixed 100px from the top of the window on every press. The selection moved
+    by exactly one card — that part was always right — but the page travelled by
+    the height of the card you had just left, so one arrow press slid a
+    single-line reading a little and a six-line सङ्ग्रह passage a long way. Same
+    keystroke, different distance, which is what made it feel like it skipped
+    two lines sometimes and four others. jumpToReading also blanked focusedId
+    for half a second, so the current-line marker blinked on every press.
+
+    Here the card is only scrolled when it is not already fully visible, and
+    then by the minimum (`block: 'nearest'`, with the sticky chrome accounted
+    for by scroll-margin on .ex). Step through cards that already fit on screen
+    and the page does not move at all.
+  */
+  function revealReading(id: string) {
+    const idx = list.findIndex((r) => r.id === id);
+    if (idx < 0) return;
+    const b = bounds[clampedPage];
+    if (!b || idx < b.start || idx >= b.end) { jumpToReading(id); return; }
+    focusedId = id;
+    const el = document.querySelector('[data-ex-id="' + id + '"]') as HTMLElement | null;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < ANCHOR || r.bottom > window.innerHeight - 24) {
+      el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  }
+
   function stepLine(dir: 1 | -1) {
     const s = sel;
     if (!s) return stepReading(dir);
@@ -614,7 +650,7 @@
     const target = list[next];
     if (!target) return;
     selectWord(target.id, Math.min(s.wi, Math.max(0, (target.words?.length ?? 1) - 1)));
-    jumpToReading(target.id);
+    revealReading(target.id);
   }
 
   function onKeydown(e: KeyboardEvent) {
@@ -1198,6 +1234,9 @@
     border-left: 2px solid transparent;
     padding-left: 16px;
     margin-left: -18px;
+    /* keeps scrollIntoView from tucking a card under the sticky nav and shelf */
+    scroll-margin-top: calc(var(--sticky-rail) + 14px);
+    scroll-margin-bottom: 24px;
   }
   /*
     Which line you are on. The class was already being set from `railReading`
