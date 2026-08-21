@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
+  import { dataUrl } from '$lib/dataUrl';
   import { goto } from '$app/navigation';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
@@ -64,14 +65,14 @@
 
   onMount(async () => {
     try {
-      const res = await fetch('/data/readings.json', { cache: 'no-store' });
+      const res = await fetch(dataUrl('/data/readings.json'));
       if (!res.ok) throw new Error('could not load readings (' + res.status + ')');
       const data = await res.json();
       chapters = data.chapters ?? [];
       sequence = data.sequence ?? [];
       // usage.json carries the per-word paradigms (all cells, from vidyut) that
       // the rail's table needs. Best-effort: no table if it fails to load.
-      try { usage = await (await fetch('/data/usage.json', { cache: 'no-store' })).json(); } catch { usage = null; }
+      try { usage = await (await fetch(dataUrl('/data/usage.json'))).json(); } catch { usage = null; }
       loaded = true;
       focusedId = sequence[0]?.id ?? null;
       requestAnimationFrame(observe);
