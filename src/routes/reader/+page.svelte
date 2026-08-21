@@ -455,13 +455,20 @@
   // the deck. A word you have scrolled past is fair game; the one you are
   // currently looking at (sel) is not, so the quiz tests recall, not the obvious.
   const deckCards = $derived.by(() => {
+    // `seen` only records cards the scroll carried clear off the top of the
+    // window, so at the head of the corpus it is empty and the quiz had nothing
+    // to draw on — the control simply vanished, with no way to tell whether it
+    // was broken or merely early. Everything BEFORE the card you are on counts
+    // as read too, which also covers arriving by "go to" or a paradigm link
+    // rather than by scrolling the whole way down.
+    const here = list.findIndex((r) => r.id === railReading?.id);
     const cards: { id: string; wi: number }[] = [];
-    for (const r of list) {
-      if (!seen.has(r.id)) continue;
+    list.forEach((r, i) => {
+      if (!((here >= 0 && i < here) || seen.has(r.id))) return;
       (r.words ?? []).forEach((w: any, wi: number) => {
         if (w.quiz) cards.push({ id: r.id, wi });
       });
-    }
+    });
     return cards;
   });
 
@@ -635,10 +642,15 @@
     focusedId = id;
     const el = document.querySelector('[data-ex-id="' + id + '"]') as HTMLElement | null;
     if (!el) return;
-    const r = el.getBoundingClientRect();
-    if (r.top < ANCHOR || r.bottom > window.innerHeight - 24) {
-      el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }
+    // Always the same landing place: the top of the card, at the anchor line.
+    // getBoundingClientRect().top is relative to the viewport and so keeps
+    // moving while a smooth scroll is in flight, but adding scrollY back gives
+    // the card's absolute position in the document, which does not — so holding
+    // the key down still lands every card in exactly the same spot.
+    window.scrollTo({
+      top: el.getBoundingClientRect().top + window.scrollY - ANCHOR,
+      behavior: 'smooth'
+    });
   }
 
   function stepLine(dir: 1 | -1) {
@@ -837,9 +849,9 @@
        deck of readings already scrolled past. -->
   <!-- deckCards, NOT deckCount: `deckCount` is the review bank's due count, a
        different deck. This button draws from readings scrolled past. -->
-  {#if deckCards.length}
-    <button class="quizme shelf" onclick={drawFromDeck}>quiz me · {deckCards.length}</button>
-  {/if}
+  <button class="quizme shelf" onclick={drawFromDeck} disabled={!deckCards.length}>
+    quiz me{deckCards.length ? ` · ${deckCards.length}` : ''}
+  </button>
 {/snippet}
 
 {#snippet spine()}
@@ -898,33 +910,34 @@
 {/snippet}
 
 {#snippet rail()}
-  <span class="label">word</span>
+  <!--
+    The rail stacks three things, in this order, and none of them replaces
+    another:
 
-  {#if !selWord}
-    <!-- No word selected: the rail carries the READING's own commentary (the
-         vyākhyā), which used to sit in the main column. Per-word machinery
-         replaces it the moment a word is tapped, so the two never crowd. -->
-    {#if railReading?.vyakhya || railReading?.vyakhya_en}
-      <div class="vyakhya">
-        {#if railReading.vyakhya}
-          <span class="vyakhya-dev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></span>
-        {/if}
-        {#if railReading.vyakhya_en}
-          <p class="vyakhya-en">
-            <Sanskrit text={railReading.vyakhya_en.trim()} source="devanagari" />
-          </p>
-        {/if}
-      </div>
-    {/if}
-    {@render quizBlock()}
-    {#if !deckQuiz && deckCards.length}
-      <!-- The seen deck: a word from any reading scrolled past, drawn at random.
-           Tests recall of what you have read, not the word you just clicked. -->
-      <button class="quizme" onclick={drawFromDeck}>
-        quiz me · {deckCards.length} seen
-      </button>
-    {/if}
-  {:else}
+      the READING's own commentary (the vyākhyā) — the card you are on
+      the WORD you clicked, with its gloss, tags, sūtras and paradigm
+      the QUESTION, drawn from a reading you have already passed
+
+    The commentary used to be swapped out for the word block the moment you
+    clicked anything, so the note explaining the sentence disappeared exactly
+    when you started looking into it. It stays put now; the word arrives below.
+  -->
+  {#if railReading?.vyakhya || railReading?.vyakhya_en}
+    <div class="vyakhya">
+      <span class="label">this reading</span>
+      {#if railReading.vyakhya}
+        <span class="vyakhya-dev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></span>
+      {/if}
+      {#if railReading.vyakhya_en}
+        <p class="vyakhya-en">
+          <Sanskrit text={railReading.vyakhya_en.trim()} source="devanagari" />
+        </p>
+      {/if}
+    </div>
+  {/if}
+
+  {#if selWord}
+    <span class="label word-label">word</span>
     <div class="word">
       <div class="word-head">
         <span class="word-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
@@ -1021,14 +1034,16 @@
           {inDeck ? 'in your deck' : '+ keep for review'}
         </button>
       {/if}
-
-      <!-- The question sits UNDER the grammar, so the line you are reading stays
-           explained while you are asked about a different one. -->
-      {@render quizBlock()}
-      {#if !deckQuiz && deckCards.length}
-        <button class="quizme" onclick={drawFromDeck}>quiz me · {deckCards.length} seen</button>
-      {/if}
     </div>
+  {/if}
+
+  <!-- The question is last, under both, so neither the reading's note nor the
+       word you are looking at goes away to make room for it. -->
+  {@render quizBlock()}
+  {#if !deckQuiz}
+    <button class="quizme" onclick={drawFromDeck} disabled={!deckCards.length}>
+      {deckCards.length ? `quiz me · ${deckCards.length} to draw from` : 'quiz me · read a line first'}
+    </button>
   {/if}
 {/snippet}
 
@@ -1458,6 +1473,18 @@
     padding: 8px 10px;
     text-align: left;
     cursor: pointer;
+  }
+  /* Nothing read yet: the control stays put and says why, rather than vanishing
+     and leaving you to wonder whether the quiz is broken. */
+  .quizme:disabled {
+    color: var(--quiet);
+    border-color: var(--rule);
+    cursor: default;
+  }
+  /* The word block sits under the reading's note now, so it needs its own
+     heading — the single "word" label at the top of the rail used to serve. */
+  .word-label {
+    margin-top: 2px;
   }
   /* On the shelf the same control has to sit in a 40px bar, so it loses the
      block padding the rail version needs. */
