@@ -59,19 +59,19 @@
     align-items: baseline;
     gap: 0.375rem;
     padding: 0.25rem 0.5rem;
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
+    background: var(--sunken);
+    border: 1px solid var(--rule-2);
     border-radius: 0.375rem;
     font-size: 0.9375rem;
   }
 
   .pratyahara-name {
     font-weight: 500;
-    color: #166534;
+    color: var(--accent-ok);
   }
 
   .pratyahara-equals {
-    color: #86efac;
+    color: var(--accent-ok);
   }
 
   .pratyahara-sounds {
@@ -81,11 +81,11 @@
   }
 
   .sound {
-    color: #15803d;
+    color: var(--accent-ok);
   }
 
   .sound-sep {
-    color: #86efac;
+    color: var(--accent-ok);
     margin-right: 0.125rem;
   }
 
@@ -94,18 +94,18 @@
     align-items: baseline;
     gap: 0.25rem;
     padding: 0.25rem 0.5rem;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
+    background: var(--sunken);
+    border: 1px solid var(--rule-2);
     border-radius: 0.375rem;
   }
 
   .pratyahara-code {
-    font-family: ui-monospace, monospace;
-    color: #991b1b;
+    font-family: var(--font-mono);
+    color: var(--ink);
   }
 
   .pratyahara-error {
     font-size: 0.75rem;
-    color: #dc2626;
+    color: var(--ink);
   }
 </style>

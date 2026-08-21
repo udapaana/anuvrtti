@@ -2,14 +2,21 @@
   import { onMount, onDestroy } from 'svelte';
   import { goto } from '$app/navigation';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import Spine from '$lib/components/ui/Spine.svelte';
+  import Segmented from '$lib/components/ui/Segmented.svelte';
+  import Disclose from '$lib/components/ui/Disclose.svelte';
+  import Grid from '$lib/components/ui/Grid.svelte';
+  import Chip from '$lib/components/ui/Chip.svelte';
   import { wordBank } from '$lib/stores/wordBank';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
   import { decompose } from '$lib/reader/wordDecomp';
-  // Graded reader — the design's redesign: a chapter spine (left), interlinear
-  // gloss reading with word-identity tags (center), and a scroll-synced sūtra
-  // derivation rail (right). Paginated (PAGE per page) so it scales past a few
-  // thousand readings. Old palette: white bg, #f97316 accent, #4f46e5 indigo.
+  // Graded reader: a chapter spine (left), interlinear gloss reading with
+  // word-identity tags (centre), and a scroll-synced sūtra derivation rail
+  // (right), all on the shared Shell. Paginated (PAGE per page) so it scales
+  // past a few thousand readings. Colour comes from the tokens in app.css.
   const PAGE = 20;
 
   type Reading = any;
@@ -373,10 +380,13 @@
   const verdict = $derived.by(() => {
     const w = selWord;
     if (!w?.quiz || pick === null) return null;
-    if (pick === '—') return { text: 'shown: ' + w.quiz.ans, ink: '#a99e8b' };
+    // The verdict inks are tokens now, not two hexes of their own: right takes
+    // the done accent, wrong takes saffron, shown stays quiet — the same pair
+    // the review session uses, so a right answer looks the same everywhere.
+    if (pick === '—') return { text: 'shown \u00b7 ' + w.quiz.ans, tone: 'shown' };
     return pick === w.quiz.ans
-      ? { text: '\u2713 ' + w.quiz.ans, ink: '#2f8a5b' }
-      : { text: '\u2717 you said ' + pick + ' \u00b7 it is ' + w.quiz.ans, ink: '#c2410c' };
+      ? { text: '\u2713 ' + w.quiz.ans, tone: 'ok' }
+      : { text: '\u2717 you said ' + pick + ' \u00b7 it is ' + w.quiz.ans, tone: 'miss' };
   });
 
   function pickOption(o: string) {
@@ -384,7 +394,14 @@
     if (selWord) checked = new Set([...checked, selWord.id + ':' + selWord.wi]);
   }
 
+  // The rail's two disclosure rows. Both close on every new selection, so the
+  // rail opens at a predictable height whatever the last word left open.
+  let formedOpen = $state(false);
+  let paraOpen = $state(false);
+
   function selectWord(id: string, wi: number) {
+    formedOpen = false;
+    paraOpen = false;
     if (sel && sel.id === id && sel.wi === wi) { sel = null; pick = null; deckQuiz = null; return; }
     sel = { id, wi };
     pick = null;
@@ -416,6 +433,8 @@
     sel = pickCard;
     pick = null;
     deckQuiz = pickCard;
+    formedOpen = false;
+    paraOpen = false;
   }
 
   // Deck banking — the last step of examining a word, per the design.
@@ -469,7 +488,7 @@
     focusedId = null;
     requestAnimationFrame(() => {
       const m = document.querySelector('[data-reading-top]');
-      if (m) window.scrollTo({ top: m.getBoundingClientRect().top + window.scrollY - 58, behavior: 'smooth' });
+      if (m) window.scrollTo({ top: m.getBoundingClientRect().top + window.scrollY - ANCHOR, behavior: 'smooth' });
       observe();
     });
   }
@@ -482,8 +501,10 @@
     window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - ANCHOR, behavior: 'smooth' });
   }
 
-  // The reading line arrows step relative to: the top of the sticky chrome.
-  const ANCHOR = 72;
+  // The reading line arrows step relative to the bottom of the sticky chrome,
+  // which is now exactly nav + shelf — two layers, not four. Every scroll in
+  // this page reads this one number.
+  const ANCHOR = 100;
 
   // ← →  /  ↑ ↓  step through readings — always relative to the card actually at
   // the top of the viewport RIGHT NOW (read live from the DOM), so it stays in
@@ -553,7 +574,7 @@
         observe();
         const el = document.querySelector('[data-ex-id="' + id + '"]') as HTMLElement | null;
         if (!el) return;
-        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - ANCHOR, behavior: 'smooth' });
         setTimeout(() => { focusedId = id; }, 500);
       })
     );
@@ -577,7 +598,7 @@
         // the title stays in view; otherwise go to the reading.
         const anchor = head && el && el.getBoundingClientRect().top - head.getBoundingClientRect().top < 400 ? head : el;
         if (!anchor) { window.scrollTo({ top: 0 }); return; }
-        window.scrollTo({ top: anchor.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+        window.scrollTo({ top: anchor.getBoundingClientRect().top + window.scrollY - ANCHOR, behavior: 'smooth' });
         if (target) setTimeout(() => { focusedId = target.id; }, 500);
       })
     );
@@ -667,857 +688,710 @@
 
 <svelte:head><title>पठनम् · graded reader</title></svelte:head>
 
-<div class="reader">
-  <!-- reading-progress rail (the pillar nav lives in the global SiteNav) -->
-  <div class="progress"><div class="bar" style="width:{progressPct}%"></div></div>
+{#snippet shelfLeft()}
+  <span class="quiet">gloss</span>
+  <Segmented
+    options={[
+      { id: 'recall', label: 'recall' },
+      { id: 'gloss', label: 'glossed' }
+    ]}
+    value={mode}
+    onchange={(id) => (mode = id as Mode)}
+    ariaLabel="gloss mode"
+  />
+  <!-- independent axis: split at sandhi joins, composes with either gloss mode -->
+  <button class="toggle" class:on={padaccheda} onclick={() => (padaccheda = !padaccheda)}>
+    padaccheda
+  </button>
+  <!-- A jump inside the corpus you are already reading is not a search, so it
+       stays here rather than folding into ⌘K. -->
+  <form class="jump" onsubmit={jumpFromQuery}>
+    <label class="quiet" for="jumpto">go to</label>
+    <input id="jumpto" bind:value={jumpQuery} placeholder="ex210 or tier 210" spellcheck="false" />
+  </form>
+{/snippet}
 
-  {#if error}
-    <div class="status">{error}</div>
-  {:else if !loaded}
-    <div class="status">loading the reader…</div>
+{#snippet shelfRight()}
+  <span>{checked.size} checked · {seen.size} read · {deckCount} in deck</span>
+{/snippet}
+
+{#snippet spine()}
+  <Spine
+    title="the arc"
+    items={chapters.map((c) => {
+      const t = titles[c.id] ?? { dev: c.id, en: '' };
+      return { id: c.id, label: t.dev, sub: shortEn(t.en) };
+    })}
+    activeId={focusedChapter}
+    onpick={jumpToChapter}
+  />
+{/snippet}
+
+{#snippet rail()}
+  <span class="label">the word</span>
+
+  {#if !selWord}
+    <!-- No word selected: the rail carries the READING's own commentary (the
+         vyākhyā), which used to sit in the main column. Per-word machinery
+         replaces it the moment a word is tapped, so the two never crowd. -->
+    {#if railReading?.vyakhya || railReading?.vyakhya_en}
+      <div class="vyakhya">
+        {#if railReading.vyakhya}
+          <span class="vyakhya-dev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></span>
+        {/if}
+        {#if railReading.vyakhya_en}
+          <p class="vyakhya-en">{railReading.vyakhya_en.trim()}</p>
+        {/if}
+      </div>
+    {/if}
+    <p class="prompt">
+      Tap any word in a reading. Its case or lakāra comes first — the gloss and the sūtras follow
+      once you have tried.
+    </p>
+    {#if deckCards.length}
+      <!-- The seen deck: a word from any reading scrolled past, drawn at random.
+           Tests recall of what you have read, not the word you just clicked. -->
+      <button class="quizme" onclick={drawFromDeck}>
+        quiz me · {deckCards.length} seen
+      </button>
+    {/if}
   {:else}
-    <div class="inner">
-      <div class="titlerow">
-        <div>
-          <div class="bigtitle"><Sanskrit text="संस्कृतपठनम्" source="devanagari" /></div>
-          <div class="bigsub">Sanskrit, learned by reading — every word traced to the Aṣṭādhyāyī.</div>
-        </div>
-        <div class="kbdhint"><kbd>↑</kbd><kbd>↓</kbd> step through readings</div>
+    <div class="word">
+      <div class="word-head">
+        <span class="word-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
+        {#if selWord.lemma && !(deckQuiz && asking)}
+          <span class="word-stem">{selWord.lemma}</span>
+        {/if}
       </div>
 
-      <!-- Mode toggles + jump: a sticky bar, so padaccheda/glossed and "go to a
-           reading" stay reachable without scrolling back to the top. -->
-      <div class="controlbar">
-        <div class="modes">
-          <span class="modelabel">gloss</span>
-          {#each [{ k: 'recall', label: 'recall' }, { k: 'gloss', label: 'glossed' }] as m}
-            <button class="modepill" class:on={mode === m.k} onclick={() => (mode = m.k as Mode)}>{m.label}</button>
-          {/each}
-          <!-- independent axis: split at sandhi joins, composes with either gloss mode -->
-          <button class="modepill sep" class:on={padaccheda} onclick={() => (padaccheda = !padaccheda)}>padaccheda</button>
+      {#if asking && selWord.quiz}
+        <!-- THE MODEL: show the sentence (the context — the same form is a
+             different thing in a different clause), and quiz on the schema. For
+             a deck quiz the word is drawn from a reading you scrolled past, so
+             its sentence anchors the question. -->
+        <div class="ask">
+          {#if deckQuiz && selWord.sentence}
+            <div class="phrase context"><Sanskrit text={selWord.sentence} source="devanagari" /></div>
+          {:else if selWord.quiz.phrase}
+            <div class="phrase"><Sanskrit text={selWord.quiz.phrase} source="devanagari" /></div>
+          {/if}
+          <span class="question">{selWord.quiz.q}</span>
+          <div class="options">
+            {#each selWord.quiz.opts as o}
+              <button class="opt" onclick={() => pickOption(o)}>
+                <Sanskrit text={o} source="devanagari" />
+              </button>
+            {/each}
+          </div>
+          <button class="skip" onclick={() => pickOption('—')}>I am not sure — show it</button>
         </div>
-        <form class="jump" onsubmit={jumpFromQuery}>
-          <label class="modelabel" for="jumpto">go to</label>
-          <input id="jumpto" class="jumpinput" bind:value={jumpQuery}
-            placeholder="ex210 or tier 210" spellcheck="false" />
-          <button class="jumpbtn" type="submit">→</button>
-        </form>
-      </div>
+      {/if}
 
-      <div class="grid">
-        <!-- LEFT: the arc -->
-        <nav class="spine">
-          <div class="spinelabel">the arc</div>
-          {#each chapters as c}
-            {@const t = titles[c.id] ?? { dev: c.id, en: '' }}
-            {@const active = c.id === focusedChapter}
-            <button class="spineitem" class:active onclick={() => jumpToChapter(c.id)}>
-              <div class="spinedev" class:active><Sanskrit text={t.dev} source="devanagari" /></div>
-              <div class="spineen">{shortEn(t.en)}</div>
+      {#if answered}
+        {#if verdict}
+          <span class="verdict {verdict.tone}">{verdict.text}</span>
+        {/if}
+        <span class="gloss">{selWord.gloss}</span>
+
+        {#if selWord.terms.length}
+          <div class="terms">
+            {#each selWord.terms as t}
+              <Chip label={t.term} deva title={t.en} />
+            {/each}
+          </div>
+        {/if}
+
+        <!-- Everything the old rail stacked open is still here, as two closed
+             rows: the derivation with its sūtras and, when the word sits in no
+             grid, its decomposition; then the paradigm. -->
+        <Disclose
+          label="how it is formed"
+          count={selWord.cites.length
+            ? `${selWord.cites.length} ${selWord.cites.length === 1 ? 'sūtra' : 'sūtras'}`
+            : null}
+          empty={!selWord.cites.length && !selDecomp}
+          bind:open={formedOpen}
+        >
+          {#if selDecomp}
+            <!-- the decomposition strip: what a NON-declining word is made of.
+                 विग्रह for a compound, the affix chain for a derivative, the
+                 split for a सन्धि join. -->
+            <div class="decomp">
+              <span class="decomp-label">{selDecomp.label}</span>
+              <span class="decomp-parts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
+            </div>
+          {/if}
+          {#each selWord.cites as c}
+            <button class="cite" onclick={() => goto('/ref/' + c.cite)}>
+              <span class="cite-id">{c.cite}</span>
+              <span class="cite-role">{c.role}</span>
             </button>
           {/each}
-        </nav>
+        </Disclose>
 
-        <!-- CENTER: reading -->
-        <main data-reading-top class="body">
-          {#each rows as row}
-            {#if row.head && row.resumed}
-              <div data-ch-id={row.chId} class="chresume">
-                <span class="chresumedev"><Sanskrit text={row.dev} source="devanagari" /></span>
-              </div>
-            {:else if row.head}
-              <div data-ch-id={row.chId} class="chhead">
-                <div class="chkicker">chapter</div>
-                <div class="chdev"><Sanskrit text={row.dev} source="devanagari" /></div>
-                <div class="chen">{row.en}</div>
-              </div>
-            {:else}
-              <article
-                data-ex-id={row.id}
-                class="ex"
-                class:active={railReading?.id === row.id}
-                class:grouped={row.grouped}
-                class:runstart={row.runStart}
-                class:runend={row.runEnd}
-                role="presentation"
-                onmouseenter={() => enterReading(row.id)}
-                onmouseleave={() => leaveReading(row.id)}
-              >
-                <div class="exhead">
-                  <span class="exindex">{row.indexLabel}</span>
-                  <span class="exteaches">{row.teaches}</span>
-                </div>
-
-                <!-- interlinear sentence. Paradigm readings (देव, फल, नदी, भू)
-                     are filtered out of the column upstream — their tables show
-                     in the rail now — so every card here is a sentence. -->
-                <div class="tokens">
-                  {#each row.tokens as tok}
-                    {#if tok.isWord}
-                      <span
-                        class="token"
-                        class:hot={hl(row.id, tok.wi)}
-                        class:focal={tok.focal}
-                        role="presentation"
-                        onmouseenter={() => enterWord(row.id, tok.wi)}
-                        onmouseleave={leaveWord}
-                        onclick={() => selectWord(row.id, tok.wi)}
-                      >
-                        <span class="tokform" class:sel={sel?.id === row.id && sel?.wi === tok.wi}>
-                          {#if padaccheda && tok.split}
-                            <!-- padaccheda: show the pre-sandhi parts, joined by a
-                                 quiet +, so the reader sees the words behind the join -->
-                            {#each tok.split as part, pi}
-                              {#if pi > 0}<span class="splitplus">+</span>{/if}<Sanskrit text={part} source="devanagari" />
-                            {/each}
-                          {:else}
-                            <Sanskrit text={tok.text} source="devanagari" />
-                          {/if}
-                        </span>
-                        <!-- In `gloss` mode every gloss is shown for checking; in
-                             `recall` only the selected word's, so the reader tries
-                             first. Selection is what opens the rail. -->
-                        <span
-                          class="tokgloss"
-                          class:reveal={mode === 'gloss' || (sel?.id === row.id && sel?.wi === tok.wi)}
-                          >{tok.gloss}</span
-                        >
-                      </span>
-                    {:else}
-                      <span class="token">
-                        <span class="tokform"><Sanskrit text={tok.text} source="devanagari" /></span>
-                        <span class="tokgloss"></span>
-                      </span>
-                    {/if}
-                  {/each}
-                </div>
-
-                <p class="translation">{row.translation}</p>
-                <!-- the reading's vyākhyā now lives in the rail (right), shown
-                     when no word is selected — see the RIGHT column. -->
-              </article>
-            {/if}
-          {/each}
-
-          {#if totalPages > 1}
-            <div class="pager">
-              <button class="navbtn" disabled={clampedPage <= 0} onclick={() => setPage(clampedPage - 1)}>← previous</button>
-              <span class="range">
-                page {clampedPage + 1} / {totalPages} · {startIdx + 1}–{endIdx} of {list.length}
-              </span>
-              <button class="navbtn" disabled={clampedPage >= totalPages - 1} onclick={() => setPage(clampedPage + 1)}>next →</button>
-            </div>
+        <Disclose
+          label={selParadigm ? `paradigm · ${selParadigm.title}` : 'paradigm'}
+          empty={!selParadigm}
+          bind:open={paraOpen}
+        >
+          {#if selParadigm}
+            <Grid
+              surface="sunken"
+              colHeads={selParadigm.grid.colHeads}
+              rowHeads={selParadigm.grid.rows.map((r: any) => r.label)}
+              rows={selParadigm.grid.rows.map((r: any) => r.cells)}
+              lit={[selParadigm.row, selParadigm.col]}
+            />
           {/if}
-          <div class="tail"></div>
-        </main>
+        </Disclose>
 
-        <!-- RIGHT: the machinery -->
-        <aside class="rail">
-          <div class="raillabel">in the <span class="accent">अष्टाध्यायी</span></div>
+        <button class="bank" class:has={inDeck} onclick={bankWord} disabled={inDeck}>
+          {inDeck ? 'in your deck' : '+ keep for review'}
+        </button>
 
-          {#if !selWord}
-            <!-- No word selected: the rail carries the READING's own commentary
-                 (the vyākhyā), which used to sit in the main column. Per-word
-                 machinery replaces it the moment a word is tapped, so the two
-                 never crowd each other. -->
-            {#if railReading?.vyakhya || railReading?.vyakhya_en}
-              <div class="railvyakhya">
-                {#if railReading.vyakhya}
-                  <div class="railvydev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></div>
-                {/if}
-                {#if railReading.vyakhya_en}
-                  <p class="railvyen">{railReading.vyakhya_en.trim()}</p>
-                {/if}
-              </div>
-            {/if}
-            <div class="railempty">
-              Tap a word to see how it is formed — its case or lakāra first, then
-              the gloss and the sūtras.
-            </div>
-            {#if deckCards.length}
-              <!-- The seen deck: a word from any reading scrolled past, drawn at
-                   random. Tests recall of what you have read, not the word you
-                   just clicked. -->
-              <button class="quizme" onclick={drawFromDeck}>
-                quiz me · {deckCards.length} card{deckCards.length === 1 ? '' : 's'} seen
-              </button>
-            {/if}
-          {:else}
-            <div class="railcard" class:isquiz={deckQuiz}>
-              <div class="railhead">
-                <span class="railform"><Sanskrit text={selWord.form} source="devanagari" /></span>
-                {#if selWord.lemma && !(deckQuiz && asking)}<span class="railstem">{selWord.lemma}</span>{/if}
-              </div>
-
-              {#if asking && selWord.quiz}
-                <!-- THE MODEL: show the sentence (the context — the same form is a
-                     different thing in a different clause), and quiz on the schema
-                     (any authored dimension/relation of this occurrence). For a
-                     deck quiz the word is drawn from a reading you scrolled past,
-                     so its sentence is shown here to anchor the question. -->
-                {#if deckQuiz && selWord.sentence}
-                  <div class="railphrase railctx">
-                    <Sanskrit text={selWord.sentence} source="devanagari" />
-                  </div>
-                {:else if selWord.quiz.phrase}
-                  <!-- inline quiz on an ambiguous form: the phrase that settles the
-                       case, so you read it off the sentence not the ending. -->
-                  <div class="railphrase">
-                    <Sanskrit text={selWord.quiz.phrase} source="devanagari" />
-                  </div>
-                {/if}
-                <div class="railq">{selWord.quiz.q}</div>
-                <div class="railopts">
-                  {#each selWord.quiz.opts as o}
-                    <button class="opt" onclick={() => pickOption(o)}>
-                      <Sanskrit text={o} source="devanagari" />
-                    </button>
-                  {/each}
-                </div>
-                <button class="skip" onclick={() => pickOption('—')}>
-                  I am not sure — show the answer
-                </button>
-              {/if}
-
-              {#if answered}
-                {#if verdict}
-                  <div class="verdict" style="color:{verdict.ink}">{verdict.text}</div>
-                {/if}
-                <div class="railgloss">{selWord.gloss}</div>
-
-                {#if selWord.terms.length}
-                  <div class="railterms">
-                    {#each selWord.terms as t}
-                      <span class="term">
-                        <span class="termdev"><Sanskrit text={t.term} source="devanagari" /></span>
-                        <span class="termen">{t.en}</span>
-                      </span>
-                    {/each}
-                  </div>
-                {/if}
-
-                {#if selDecomp}
-                  <!-- the decomposition strip: what a NON-declining word is made
-                       of. विग्रह for a compound, the affix chain for a
-                       derivative, the split for a सन्धि join — the counterpart to
-                       the paradigm grid, for words that sit in no grid. -->
-                  <div class="raildecomp">
-                    <span class="decomplabel">{selDecomp.label}</span>
-                    <span class="decompparts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
-                  </div>
-                {/if}
-
-                {#if selWord.cites.length}
-                  <div class="railcites">
-                    {#each selWord.cites as c}
-                      <button class="derivrow" onclick={() => goto('/ref/' + c.cite)}>
-                        <span class="derivcite">{c.cite}</span>
-                        <span class="derivrole">{c.role}</span>
-                      </button>
-                    {/each}
-                  </div>
-                {/if}
-
-                <button class="bank" class:has={inDeck} onclick={bankWord} disabled={inDeck}>
-                  {inDeck ? 'in your deck' : '+ keep for review'}
-                </button>
-
-                {#if deckQuiz && deckCards.length > 1}
-                  <button class="quizme" onclick={drawFromDeck}>quiz another →</button>
-                {/if}
-
-                {#if selParadigm}
-                  <!-- the word's own paradigm, its cell lit. These four tables
-                       used to be standalone cards; a table is not a reading, so
-                       they live here now, tied to the word that calls them up. -->
-                  <div class="railpara">
-                    <div class="railparahead"><Sanskrit text={selParadigm.title} source="devanagari" /></div>
-                    <div class="ppgrid" style="--cols:{selParadigm.grid.cols}">
-                      <div class="ppcorner"></div>
-                      {#each selParadigm.grid.colHeads as h, ci}
-                        <div class="ppcolhead" class:axhot={ci === selParadigm.col}>
-                          <Sanskrit text={h} source="devanagari" />
-                        </div>
-                      {/each}
-                      {#each selParadigm.grid.rows as gr, ri}
-                        <div class="pprowhead" class:axhot={ri === selParadigm.row}>
-                          <Sanskrit text={gr.label} source="devanagari" />
-                        </div>
-                        {#each gr.cells as cell, ci}
-                          <div class="ppcell" class:cellhot={ri === selParadigm.row && ci === selParadigm.col}>
-                            <Sanskrit text={cell} source="devanagari" />
-                          </div>
-                        {/each}
-                      {/each}
-                    </div>
-                  </div>
-                {/if}
-              {/if}
-            </div>
-          {/if}
-
-          <div class="railstats">
-            <div>this session · {checked.size} {checked.size === 1 ? 'word' : 'words'} checked</div>
-            {#if seen.size}<div>read · {seen.size} · {deckCards.length} to quiz on</div>{/if}
-            <div>in your deck · {deckCount}</div>
-          </div>
-        </aside>
-      </div>
+        {#if deckQuiz && deckCards.length > 1}
+          <button class="quizme" onclick={drawFromDeck}>quiz another →</button>
+        {/if}
+      {/if}
     </div>
   {/if}
-</div>
+{/snippet}
+
+{#if error}
+  <div class="status">{error}</div>
+{:else if !loaded}
+  <div class="status">loading the reader…</div>
+{:else}
+  <Shelf left={shelfLeft} right={shelfRight} progress={progressPct} />
+
+  <Shell {spine} {rail}>
+    <div data-reading-top class="body">
+      {#each rows as row}
+        {#if row.head && row.resumed}
+          <!-- a chapter already opened: one hairline with the name inline, so a
+               thrashing page reads as texture rather than as thirteen headings -->
+          <div data-ch-id={row.chId} class="ch-resume">
+            <span class="ch-resume-dev"><Sanskrit text={row.dev} source="devanagari" /></span>
+          </div>
+        {:else if row.head}
+          <div data-ch-id={row.chId} class="ch-head">
+            <span class="label">chapter</span>
+            <span class="ch-dev"><Sanskrit text={row.dev} source="devanagari" /></span>
+            <span class="ch-en">{row.en}</span>
+          </div>
+        {:else}
+          <article
+            data-ex-id={row.id}
+            class="ex"
+            class:active={railReading?.id === row.id}
+            class:grouped={row.grouped}
+            class:runstart={row.runStart}
+            class:runend={row.runEnd}
+            role="presentation"
+            onmouseenter={() => enterReading(row.id)}
+            onmouseleave={() => leaveReading(row.id)}
+          >
+            <div class="ex-head">
+              <span class="ex-index">{row.indexLabel}</span>
+              <span class="ex-teaches">{row.teaches}</span>
+            </div>
+
+            <!-- interlinear sentence. Paradigm readings (देव, फल, नदी, भू) are
+                 filtered out of the column upstream — their tables show in the
+                 rail now — so every card here is a sentence. -->
+            <div class="tokens">
+              {#each row.tokens as tok}
+                {#if tok.isWord}
+                  <span
+                    class="token"
+                    class:hot={hl(row.id, tok.wi)}
+                    class:focal={tok.focal}
+                    class:sel={sel?.id === row.id && sel?.wi === tok.wi}
+                    role="presentation"
+                    onmouseenter={() => enterWord(row.id, tok.wi)}
+                    onmouseleave={leaveWord}
+                    onclick={() => selectWord(row.id, tok.wi)}
+                  >
+                    <span class="tok-form">
+                      {#if padaccheda && tok.split}
+                        {#each tok.split as part, pi}
+                          {#if pi > 0}<span class="split-plus">+</span>{/if}<Sanskrit
+                            text={part}
+                            source="devanagari"
+                          />
+                        {/each}
+                      {:else}
+                        <Sanskrit text={tok.text} source="devanagari" />
+                      {/if}
+                    </span>
+                    <!-- In `gloss` mode every gloss shows for checking; in
+                         `recall` only the selected word's, so the reader tries
+                         first. Selection is what opens the rail. -->
+                    <span
+                      class="tok-gloss"
+                      class:reveal={mode === 'gloss' || (sel?.id === row.id && sel?.wi === tok.wi)}
+                      >{tok.gloss}</span
+                    >
+                  </span>
+                {:else}
+                  <span class="token">
+                    <span class="tok-form"><Sanskrit text={tok.text} source="devanagari" /></span>
+                    <span class="tok-gloss"></span>
+                  </span>
+                {/if}
+              {/each}
+            </div>
+
+            <p class="translation">{row.translation}</p>
+          </article>
+        {/if}
+      {/each}
+
+      {#if totalPages > 1}
+        <div class="pager">
+          <button disabled={clampedPage <= 0} onclick={() => setPage(clampedPage - 1)}>
+            ← previous
+          </button>
+          <span class="range">
+            page {clampedPage + 1} / {totalPages} · {startIdx + 1}–{endIdx} of {list.length}
+          </span>
+          <button disabled={clampedPage >= totalPages - 1} onclick={() => setPage(clampedPage + 1)}>
+            next →
+          </button>
+        </div>
+      {/if}
+      <p class="kbd-hint"><kbd>↑</kbd><kbd>↓</kbd> step through readings</p>
+    </div>
+  </Shell>
+{/if}
 
 <style>
-  /* Old palette: white bg, #f97316 saffron, #4f46e5 indigo, #0f1419 ink,
-     #e7e2d9 borders, #6b6b6b muted, #faf7f0 panel fill, #fde7c8 highlight. */
-  .reader { max-width: 1240px; margin: 0 auto; color: #0f1419; }
-
-  /* sticky reading-progress rail, just under the global SiteNav. The track is
-     transparent (no stray rule at 0%); only the saffron fill shows progress. */
-  .progress {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    height: 2px;
-    background: transparent;
-    pointer-events: none;
-  }
-  .progress .bar { height: 100%; background: #f97316; transition: width 0.35s ease; }
-
   .status {
-    display: flex;
-    justify-content: center;
-    padding: 7rem 2rem;
-    color: #94a3b8;
-    font-family: ui-monospace, monospace;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--quiet);
+    padding: 40px 24px;
+    text-align: center;
   }
 
-  .inner { padding: 1.8rem 0.25rem 5rem; }
-
-  .titlerow {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.4rem;
+  /* ── shelf ───────────────────────────────────────────────────────────── */
+  .quiet {
+    color: var(--faint);
   }
-  .bigtitle { font-size: 1.85rem; font-weight: 600; line-height: 1.1; }
-  .bigsub { font-size: 1rem; color: #6b6b6b; font-style: italic; margin-top: 0.2rem; }
-  /* Sticky control bar: mode toggles + jump-to, always reachable while scrolling
-     so padaccheda/glossed and "go to a reading" never need a scroll to the top. */
-  .controlbar {
-    position: sticky;
-    /* sit just BELOW the 51px global .sitenav (which is sticky at top:0), so the
-       bar pins under it rather than sliding beneath and disappearing. Matches the
-       spine's top:58px offset. */
-    top: 52px;
-    z-index: 8;
+  .toggle {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    color: var(--muted);
+    padding: 4px 11px;
+    cursor: pointer;
+  }
+  .toggle.on {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .jump {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    padding: 0.5rem 0.25rem;
-    margin-bottom: 1rem;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid #ece3d3;
+    gap: 8px;
   }
-  /* Mode pills — the design's 999px pill, accent fill when active. */
-  .modes { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
-  .jump { display: flex; align-items: center; gap: 0.35rem; }
-  .jumpinput {
-    font-family: ui-monospace, monospace;
-    font-size: 0.72rem;
-    padding: 0.28rem 0.6rem;
-    border: 1px solid #e7e2d9;
-    border-radius: 999px;
-    width: 9rem;
-    color: #2b2723;
-    background: #fff;
+  .jump input {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 3px 8px;
+    width: 130px;
+    outline: none;
   }
-  .jumpinput:focus { outline: none; border-color: #f4c98b; }
-  .jumpbtn {
-    font-size: 0.85rem;
-    padding: 0.2rem 0.6rem;
-    border: 1px solid #e7e2d9;
-    border-radius: 999px;
-    background: #faf7f0;
-    color: #92591f;
-    cursor: pointer;
+  .jump input:focus {
+    border-color: var(--accent);
   }
-  .jumpbtn:hover { background: #fdecd9; border-color: #f4c98b; }
-  .modelabel {
-    font-family: ui-monospace, monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: #94a3b8;
-    margin-right: 0.2rem;
+  .jump input::placeholder {
+    color: var(--faint);
   }
-  .modepill {
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 999px;
-    border: 1px solid #e7e2d9;
-    background: #fff;
-    color: #6b6b6b;
-    cursor: pointer;
-  }
-  .modepill.on { background: #fdecd9; border-color: #f4c98b; color: #92591f; }
-  /* padaccheda is a separate axis — a small gap marks it off from the gloss pills */
-  .modepill.sep { margin-left: 0.6rem; }
-  .modepill.sep::before {
-    content: '';
-    position: absolute;
-    left: -0.35rem;
-    top: 20%;
-    height: 60%;
-    border-left: 1px solid #e7e2d9;
-  }
-  .modepill { position: relative; }
 
-  /* Rail card — #faf7f0 on #efe7d8 at 13px, per the design. */
-  .railempty,
-  .railcard {
-    background: #faf7f0;
-    border: 1px solid #efe7d8;
-    border-radius: 13px;
-  }
-  .railempty { padding: 1.4rem 1.1rem; font-size: 0.92rem; color: #6b6b6b; font-style: italic; line-height: 1.5; }
-  .railcard { padding: 1rem; }
-  .railhead { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
-  .railform { font-size: 1.5rem; color: #0f1419; }
-  .railstem { font-family: ui-monospace, monospace; font-size: 0.7rem; color: #b08d57; }
-  .railq { font-size: 0.85rem; color: #6b6b6b; font-style: italic; margin: 0.7rem 0 0.5rem; }
-  .railphrase {
-    font-size: 1.02rem;
-    line-height: 1.5;
-    color: #0f1419;
-    background: #fff;
-    border: 1px solid #efe7d8;
-    border-radius: 8px;
-    padding: 0.45rem 0.6rem;
-    margin-bottom: 0.6rem;
-  }
-  /* the deck-quiz context: the whole sentence the drawn word lived in, so the
-     question can be read against its clause. The target word is emphasised. */
-  .railctx { font-size: 0.98rem; line-height: 1.6; color: #2b2723; }
-  .railopts { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  .opt {
-    font-size: 0.95rem;
-    padding: 0.25rem 0.7rem;
-    border-radius: 999px;
-    border: 1px solid #e7e2d9;
-    background: #fff;
-    color: #0f1419;
-    cursor: pointer;
-  }
-  .opt:hover { border-color: #cbb994; }
-  .skip {
-    font-family: ui-monospace, monospace;
-    font-size: 0.66rem;
-    margin-top: 0.7rem;
-    background: none;
-    border: none;
-    color: #a99e8b;
-    cursor: pointer;
-    padding: 0;
-    text-decoration: underline;
-  }
-  .verdict {
-    font-family: ui-monospace, monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    margin: 0.7rem 0 0.5rem;
-  }
-  .railgloss { font-size: 0.95rem; color: #463f33; font-style: italic; margin-bottom: 0.6rem; }
-  /* the decomposition strip — विग्रह / affix chain / सन्धि split. A single quiet
-     line: the small tag, then the analysis in Devanagari. It reads as "this is
-     what the word is made of", the prose counterpart to the paradigm grid. */
-  .raildecomp {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding: 0.5rem 0.6rem;
-    margin-bottom: 0.5rem;
-    background: #faf7f0;
-    border-left: 2px solid #e7c9a3;
-    border-radius: 0 4px 4px 0;
-  }
-  .decomplabel {
-    font-size: 0.6rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #b6ada0;
-    flex: none;
-  }
-  .decompparts { font-size: 1rem; color: #4a443d; line-height: 1.5; }
-  .railcites { border-top: 1px solid #e7e2d9; padding-top: 0.7rem; margin-top: 0.2rem; }
-  .bank {
-    width: 100%;
-    margin-top: 0.85rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    padding: 0.42rem;
-    border-radius: 9px;
-    border: 1px solid #f4c98b;
-    background: #fff;
-    color: #92591f;
-    cursor: pointer;
-  }
-  .bank.has { border-color: #e7e2d9; background: #f6f1e7; color: #a99e8b; cursor: default; }
-  /* quiz-me: draws a random card from the seen deck. Saffron-filled so it reads
-     as the primary action of the empty rail. */
-  .quizme {
-    width: 100%;
-    margin-top: 1rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.72rem;
-    padding: 0.5rem;
-    border-radius: 9px;
-    border: 1px solid #f4c98b;
-    background: #fdecd9;
-    color: #92591f;
-    cursor: pointer;
-  }
-  .quizme:hover { background: #fbdcb8; }
-  /* a deck quiz's header: the form is hidden while asking, so a quiet label
-     stands in — "you are being tested on a word you have read". */
-  .railquizlabel {
-    font-family: ui-monospace, monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #c2410c;
-  }
-  .railcard.isquiz { border-left: 2px solid #f4c98b; padding-left: 0.9rem; }
-  .railstats {
-    margin-top: 1rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.66rem;
-    color: #a99e8b;
-    line-height: 1.7;
-  }
-  .tokform.sel { background: #fde7c8; border-radius: 5px; }
-
-  .kbdhint {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.68rem;
-    color: #94a3b8;
-  }
-  .kbdhint kbd {
-    font-family: inherit;
-    font-size: 0.7rem;
-    line-height: 1;
-    padding: 0.15rem 0.35rem;
-    border: 1px solid #e7e2d9;
-    border-bottom-width: 2px;
-    border-radius: 4px;
-    background: #fff;
-    color: #6b6b6b;
-  }
-  .kbdhint kbd + kbd { margin-left: -0.1rem; }
-
-  .grid { display: grid; grid-template-columns: 150px minmax(0, 1fr) 318px; gap: 2.6rem; align-items: start; }
-
-  /* spine */
-  .spine {
-    position: sticky;
-    top: 58px;
+  /* ── column ──────────────────────────────────────────────────────────── */
+  .body {
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
-    max-height: calc(100vh - 110px);
-    overflow: auto;
+    gap: 30px;
+    min-width: 0;
   }
-  .spinelabel {
-    font-size: 0.62rem;
-    font-family: ui-monospace, monospace;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: #94a3b8;
-    margin-bottom: 0.7rem;
-  }
-  .spineitem {
-    text-align: left;
-    background: none;
-    border: none;
-    border-left: 2px solid #e7e2d9;
-    padding: 0.32rem 0 0.32rem 0.65rem;
-    cursor: pointer;
-    display: block;
-    transition: border-color 0.2s;
-  }
-  .spineitem.active { border-left-color: #f97316; }
-  .spinedev { font-size: 0.96rem; line-height: 1.2; color: #6b6b6b; }
-  .spinedev.active { color: #0f1419; }
-  .spineen { font-size: 0.63rem; color: #a99e8b; line-height: 1.3; margin-top: 0.1rem; }
 
-  /* body */
-  .body { min-width: 0; }
-  .chhead { margin: 1.8rem 0 0.4rem; scroll-margin-top: 66px; }
-  .chkicker {
-    font-size: 0.62rem;
-    font-family: ui-monospace, monospace;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: #cbb994;
-    margin-bottom: 0.5rem;
+  .ch-head {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 13px;
   }
-  .chdev { font-size: 1.6rem; color: #f97316; font-weight: 600; line-height: 1.1; }
-  .chen { font-size: 0.98rem; color: #6b6b6b; font-style: italic; margin-top: 0.25rem; max-width: 34em; line-height: 1.4; }
-  /* Returning to a chapter already opened: a quiet rule, not a second banner.
-     The sequence braids topics by difficulty, so these recur often. */
-  .chresume {
+  .ch-dev {
+    font-family: var(--font-deva);
+    font-size: 27px;
+    font-weight: 600;
+  }
+  .ch-en {
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* A chapter the reader is returning to: a 1px rule with the name inline. */
+  .ch-resume {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    margin: 1.5rem 0 0.3rem;
-    scroll-margin-top: 66px;
+    gap: 10px;
+    color: var(--faint);
   }
-  .chresume::after {
+  .ch-resume::after {
     content: '';
     flex: 1;
     height: 1px;
-    background: #e7e2da;
+    background: var(--rule);
   }
-  .chresumedev { font-size: 0.95rem; color: #b8b0a4; font-weight: 500; letter-spacing: 0.01em; }
-
-  /* Paradigm grid. Cells are the point, so they get the type; the labels are
-     scaffolding and stay quiet. Scrolls on its own axis so a wide paradigm
-     never makes the page scroll sideways. */
-  .pgrid {
-    display: grid;
-    grid-template-columns: auto repeat(var(--cols), minmax(5.5rem, 1fr));
-    gap: 0.1rem 0.9rem;
-    align-items: baseline;
-    margin: 1.1rem 0 0.4rem;
-    overflow-x: auto;
-    padding-bottom: 0.2rem;
-  }
-  .pgcolhead,
-  .pgrowhead {
-    font-size: 0.78rem;
-    color: #a89f92;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-  .pgcolhead { padding-bottom: 0.35rem; border-bottom: 1px solid #ece3d3; margin-bottom: 0.35rem; }
-  .pgcorner { border-bottom: 1px solid #ece3d3; margin-bottom: 0.35rem; }
-  .pgrowhead { text-align: right; padding-right: 0.3rem; }
-  .pgcell {
-    font-size: 1.12rem;
-    color: #2b2723;
-    line-height: 1.85;
-    white-space: nowrap;
-  }
-
-  /* the word's paradigm, in the rail below the quiz. Compact — the rail is
-     narrow — and it scrolls its own axis so a three-column table never widens
-     the rail. The clicked word's cell is lit; its row and column headers are
-     tinted so the eye finds the cell by its coordinates. */
-  .railpara { border-top: 1px solid #e7e2d9; margin-top: 0.8rem; padding-top: 0.8rem; }
-  .railparahead {
-    font-size: 0.72rem;
-    letter-spacing: 0.03em;
-    color: #a89f92;
-    margin-bottom: 0.5rem;
-  }
-  .ppgrid {
-    display: grid;
-    grid-template-columns: auto repeat(var(--cols), minmax(3.6rem, 1fr));
-    gap: 0.05rem 0.5rem;
-    align-items: baseline;
-    overflow-x: auto;
-    padding-bottom: 0.2rem;
-  }
-  .ppcolhead,
-  .pprowhead {
-    font-size: 0.62rem;
-    color: #b6ada0;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: color 0.15s;
-  }
-  .ppcolhead { padding-bottom: 0.25rem; border-bottom: 1px solid #ece3d3; margin-bottom: 0.25rem; text-align: center; }
-  .ppcorner { border-bottom: 1px solid #ece3d3; margin-bottom: 0.25rem; }
-  .pprowhead { text-align: right; padding-right: 0.2rem; }
-  .ppcolhead.axhot,
-  .pprowhead.axhot { color: #c2410c; font-weight: 600; }
-  .ppcell {
-    font-size: 0.92rem;
-    color: #4a443d;
-    line-height: 1.7;
-    white-space: nowrap;
-    text-align: center;
-    border-radius: 4px;
-    padding: 0 0.15rem;
-    transition: background 0.15s, color 0.15s;
-  }
-  /* the clicked word's own cell — saffron wash, ink text, so it reads as "you
-     are here" in the table. */
-  .ppcell.cellhot {
-    background: #fde7c8;
-    color: #7c2d12;
-    font-weight: 600;
+  .ch-resume-dev {
+    font-family: var(--font-deva);
+    font-size: 14px;
   }
 
   .ex {
-    padding: 1.7rem 0 1.7rem 1rem;
-    margin-left: -1rem;
-    border-top: 1px solid #ece3d3;
-    border-left: 2px solid transparent;
-    transition: border-color 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
   }
-  /* A run of short readings at one tier is one lesson. Tighten the spacing and
-     drop the full-width rule between them so the run reads as a block rather
-     than as N separate cards; keep the rule that opens the run. */
-  .ex.grouped { padding-top: 0.75rem; padding-bottom: 0.75rem; border-top-color: transparent; }
-  .ex.grouped.runstart { padding-top: 1.7rem; border-top-color: #ece3d3; }
-  .ex.grouped.runend { padding-bottom: 1.7rem; }
-  /* the run's own hairline, indented so it reads as internal to the block */
-  .ex.grouped:not(.runstart)::before {
-    content: '';
-    display: block;
-    width: 2.2rem;
-    height: 1px;
-    background: #f0e9dc;
-    margin: 0 0 0.75rem 0;
+  /* A run of short readings at one tier is one lesson delivered as N cards:
+     tighten them into a single block rather than N sets of chrome. */
+  .ex.grouped {
+    gap: 10px;
   }
-  /* the reading whose machinery the rail is currently showing */
-  .ex.active { border-left-color: #f3d9b8; }
-  .exhead { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.9rem; }
-  .exindex { font-family: ui-monospace, monospace; font-size: 0.7rem; color: #cbb994; }
-  .exteaches { font-family: ui-monospace, monospace; font-size: 0.7rem; color: #f97316; letter-spacing: 0.02em; line-height: 1.4; }
+  .ex.grouped:not(.runstart) .ex-head {
+    display: none;
+  }
+  .ex.grouped:not(.runend) {
+    margin-bottom: -18px;
+  }
 
-  .tokens { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.3rem 0.5rem; margin-bottom: 1.05rem; }
-  .token { display: inline-flex; flex-direction: column; align-items: center; gap: 0.18rem; }
-  .token .tokform {
-    font-size: 2.05rem;
-    font-weight: 500;
-    color: #0f1419;
-    border-radius: 5px;
-    padding: 0 0.1em;
-    line-height: 1.25;
-    transition: background 0.15s;
-    background: transparent;
-  }
-  .token.hot .tokform { background: #fde7c8; cursor: pointer; }
-  /* focal (new) word: a faint underline marks it as the reading's point */
-  .token.focal .tokform { border-bottom: 1px solid #f4c98b; border-radius: 0; cursor: help; }
-  /* padaccheda: the + between the split parts, kept quiet so the words lead */
-  .splitplus { color: #c3b8a6; margin: 0 0.15rem; font-size: 0.85em; }
-  .token .tokgloss {
-    font-size: 0.68rem; color: #a99e8b; font-style: italic;
-    min-height: 0.8rem; line-height: 1.1;
-    /* recall-first: glosses are hidden until revealed (focal-by-default or hover) */
-    opacity: 0; transition: opacity 0.12s;
-  }
-  .token .tokgloss.reveal { opacity: 1; }
-  /* known words invite a tap: subtle cursor cue */
-  .token:not(.focal) .tokform { cursor: pointer; }
-
-  .translation { font-size: 1.2rem; color: #463f33; line-height: 1.5; margin: 0 0 1.35rem; max-width: 34em; }
-
-  /* identity tags — shown per word in the right rail (role · case · number) */
-  .term {
-    display: inline-flex;
+  .ex-head {
+    display: flex;
     align-items: baseline;
-    gap: 0.3rem;
-    background: #fff;
-    border: 1px solid #e7e2d9;
-    border-radius: 999px;
-    padding: 0.1rem 0.5rem;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--faint);
   }
-  .termdev { font-size: 0.86rem; color: #4f46e5; }
-  .termen { font-size: 0.68rem; color: #6b6b6b; }
+  .ex-teaches {
+    color: var(--quiet);
+  }
 
-  /* the reading's vyākhyā, now in the rail. Sized for the narrow (~318px) pane:
-     the Devanagari leads, the English follows quieter. Shown only when no word is
-     selected, so it never competes with the per-word card. */
-  .railvyakhya { border-left: 2px solid #f4c98b; padding-left: 0.8rem; margin-bottom: 0.9rem; }
-  .railvydev { font-size: 1rem; color: #2b2723; line-height: 1.5; }
-  .railvyen { font-size: 0.86rem; color: #6b6b6b; line-height: 1.55; margin: 0.5rem 0 0; font-style: italic; }
+  .tokens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: flex-end;
+  }
+  .token {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-start;
+    border-bottom: 2px solid transparent;
+    cursor: default;
+  }
+  .tok-form {
+    font-family: var(--font-deva);
+    font-size: 26px;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .tok-gloss {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--quiet);
+    visibility: hidden;
+  }
+  .tok-gloss.reveal {
+    visibility: visible;
+  }
+  .split-plus {
+    color: var(--faint);
+    padding: 0 4px;
+  }
 
-  .pager { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.3rem; border-top: 1px solid #ece3d3; }
-  .navbtn {
-    font-family: ui-monospace, monospace;
-    font-size: 0.74rem;
-    padding: 0.4rem 0.95rem;
-    border-radius: 999px;
-    border: 1px solid #e7e2d9;
-    background: #fff;
+  /* Focal words carry a saffron underline, not a fill. */
+  .token.focal {
+    border-bottom-color: var(--accent-soft);
     cursor: pointer;
-    color: #6b6b6b;
   }
-  .navbtn:disabled { color: #d3cab8; cursor: default; }
-  .range { font-family: ui-monospace, monospace; font-size: 0.72rem; color: #6b6b6b; }
-  .tail { height: 30vh; }
+  .token.hot .tok-gloss {
+    visibility: visible;
+    color: var(--muted);
+  }
+  .token.sel {
+    border-bottom-color: var(--accent);
+  }
+  .token.sel .tok-form,
+  .token.sel .tok-gloss {
+    color: var(--accent);
+  }
 
-  /* rail */
-  .rail { position: sticky; top: 58px; }
-  .raillabel {
-    font-size: 0.62rem;
-    font-family: ui-monospace, monospace;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: #94a3b8;
-    margin-bottom: 0.7rem;
-  }
-  .raillabel .accent { color: #f97316; }
-  .railbox {
-    background: #faf7f0;
-    border: 1px solid #efe7d8;
-    border-radius: 13px;
-    padding: 0.95rem;
-    max-height: calc(100vh - 130px);
-    overflow: auto;
-  }
-  .railteaches {
-    font-size: 0.74rem;
-    color: #6b6b6b;
+  .translation {
+    margin: 0;
+    font-size: 16px;
+    color: var(--muted);
     font-style: italic;
-    line-height: 1.5;
-    margin-bottom: 0.85rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #e7e2d9;
   }
-  .railword { border-radius: 9px; padding: 0.5rem 0.55rem; margin-bottom: 0.35rem; transition: background 0.15s; background: transparent; }
-  .railword.hot { background: #fde7c8; }
-  .railform { font-size: 1rem; color: #0f1419; margin-bottom: 0.3rem; }
-  .railgloss { font-size: 0.76rem; color: #6b6b6b; font-style: italic; }
-  .railterms { display: flex; flex-wrap: wrap; gap: 0.25rem 0.3rem; margin-bottom: 0.4rem; }
-  .derivrow {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.5rem;
-    padding: 0.13rem 0;
-    align-items: baseline;
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font: inherit;
-  }
-  .derivcite { font-family: ui-monospace, monospace; font-size: 0.73rem; color: #f97316; white-space: nowrap; }
-  .derivrole { font-size: 0.76rem; color: #6b6b6b; line-height: 1.4; }
-  .derivrow:hover .derivrole { color: #0f1419; }
-  .derivtext { font-family: ui-monospace, monospace; font-size: 0.71rem; color: #a99e8b; padding: 0.1rem 0 0.1rem 0.25rem; }
-  .noderiv { font-size: 0.73rem; color: #cbb994; font-style: italic; }
 
-  @media (max-width: 980px) {
-    .grid { grid-template-columns: 1fr; }
-    .spine, .rail { position: static; max-height: none; }
-    .rail { border-top: 1px solid #e7e2d9; padding-top: 1rem; }
+  .pager {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .pager button {
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 5px 11px;
+    cursor: pointer;
+  }
+  .pager button:disabled {
+    color: var(--faint);
+    border-color: var(--rule);
+    cursor: default;
+  }
+  .range {
+    color: var(--quiet);
+  }
+
+  .kbd-hint {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--faint);
+  }
+  .kbd-hint kbd {
+    font-family: var(--font-mono);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 1px 5px;
+    margin-right: 3px;
+  }
+
+  /* ── rail ────────────────────────────────────────────────────────────── */
+  .vyakhya {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 14px;
+  }
+  .vyakhya-dev {
+    font-family: var(--font-deva);
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .vyakhya-en {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .prompt {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  .quizme {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 8px 10px;
+    text-align: left;
+    cursor: pointer;
+  }
+  .quizme:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .word {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .word-head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .word-form {
+    font-family: var(--font-deva);
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .word-stem {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--quiet);
+  }
+
+  .ask {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+  .phrase {
+    font-family: var(--font-deva);
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .phrase.context {
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .question {
+    font-size: 15px;
+    color: var(--ink-2);
+  }
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .opt {
+    font-family: var(--font-deva);
+    font-size: 15px;
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 7px 10px;
+    cursor: pointer;
+  }
+  .opt:hover {
+    border-color: var(--ink);
+  }
+  .skip {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--quiet);
+    background: transparent;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+  }
+  .skip:hover {
+    color: var(--ink);
+  }
+
+  /* Right in the done accent, wrong in saffron, shown in quiet — the same pair
+     the review session uses, so a right answer looks the same everywhere. */
+  .verdict {
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .verdict.ok {
+    color: var(--accent-ok);
+  }
+  .verdict.miss {
+    color: var(--accent);
+  }
+  .verdict.shown {
+    color: var(--quiet);
+  }
+
+  .gloss {
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .terms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .decomp {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .decomp-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--faint);
+  }
+  .decomp-parts {
+    font-family: var(--font-deva);
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  .cite {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0;
+    cursor: pointer;
+  }
+  .cite-id {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-ref);
+  }
+  .cite-role {
+    font-size: 13px;
+    color: var(--quiet);
+    font-style: italic;
+  }
+  .cite:hover .cite-id {
+    text-decoration: underline;
+  }
+
+  .bank {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-align: left;
+    padding: 8px 10px;
+    cursor: pointer;
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    color: var(--accent);
+  }
+  .bank.has {
+    border-color: var(--accent-ok);
+    color: var(--accent-ok);
+    cursor: default;
+  }
+
+  @media (max-width: 960px) {
+    .options {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 </style>

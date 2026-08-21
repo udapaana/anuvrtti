@@ -2,87 +2,116 @@
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import { loadSutras, searchSutras, type Sutra } from '$lib/data';
+  import { loadSutras, type Sutra } from '$lib/data';
+  import { loadPathIndex, type PathMeta } from '$lib/content';
+  import { learningProgress } from '$lib/stores/learning';
+  import { pathCategories } from '$lib/learning/categories';
   import SutraDisplay from '$lib/components/SutraDisplay.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import Spine from '$lib/components/ui/Spine.svelte';
+  import Segmented from '$lib/components/ui/Segmented.svelte';
 
+  /*
+    Reference, two ways.
+
+    सूत्राणि browses the Aṣṭādhyāyī by position: the adhyāya and pāda coordinate
+    row is on the shelf (position, not filtering), and the only real filter —
+    the four types with their live counts — is the spine. The sidebar's six
+    stacked control groups are gone: search is ⌘K (?q= still resolves to a
+    results state here), and the four tool links moved to the shelf's right.
+
+    पथः is the guided path through it: the ten categories the home page used to
+    print as a tree, each holding its paths, each path a run of steps over real
+    sūtras. Mode is ?mode= driven, so either half is linkable.
+  */
   let allSutras: Sutra[] = $state([]);
   let loading = $state(true);
 
-  // URL-driven state
+  let paths: PathMeta[] = $state([]);
+  let pathProgress: Record<string, number[]> = $state({});
+  let completedPaths: string[] = $state([]);
+  learningProgress.subscribe((p) => {
+    pathProgress = p.pathProgress;
+    completedPaths = p.completedPaths;
+  });
+
+  // URL-driven state — the state machine is unchanged, only widened by ?mode=.
+  let mode = $state<'sutra' | 'path'>('sutra');
   let searchQuery = $state('');
   let selectedAdhyaya = $state(1);
   let selectedPada = $state(1);
   let selectedType = $state('all');
+  let selectedCategory = $state('foundation');
 
-  // Sync with URL on mount and changes
   onMount(async () => {
-    allSutras = await loadSutras();
-    loading = false;
     syncFromUrl();
+    const [sutras, index] = await Promise.all([loadSutras(), loadPathIndex().catch(() => [])]);
+    allSutras = sutras;
+    paths = index as PathMeta[];
+    loading = false;
   });
 
   function syncFromUrl() {
     const params = $page.url.searchParams;
+    mode = params.get('mode') === 'path' ? 'path' : 'sutra';
     searchQuery = params.get('q') || '';
     selectedAdhyaya = parseInt(params.get('a') || '1');
     selectedPada = parseInt(params.get('p') || '1');
     selectedType = params.get('type') || 'all';
+    selectedCategory = params.get('cat') || 'foundation';
   }
 
   function updateUrl() {
     const params = new URLSearchParams();
+    if (mode === 'path') params.set('mode', 'path');
     if (searchQuery) params.set('q', searchQuery);
     if (selectedAdhyaya !== 1) params.set('a', String(selectedAdhyaya));
     if (selectedPada !== 1) params.set('p', String(selectedPada));
     if (selectedType !== 'all') params.set('type', selectedType);
+    if (mode === 'path' && selectedCategory !== 'foundation') params.set('cat', selectedCategory);
 
     const queryString = params.toString();
     goto(`/ref${queryString ? '?' + queryString : ''}`, { replaceState: true, noScroll: true });
   }
 
-  // Filtered sutras
+  // ── sūtra mode ─────────────────────────────────────────────────────────────
   let filteredSutras = $derived.by(() => {
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
-      return allSutras.filter(s =>
-        s.text.includes(searchQuery) ||
-        s.textRoman.toLowerCase().includes(q) ||
-        s.id.includes(searchQuery) ||
-        s.expanded.includes(searchQuery)
-      ).slice(0, 100);
+      return allSutras
+        .filter(
+          (s) =>
+            s.text.includes(searchQuery) ||
+            s.textRoman.toLowerCase().includes(q) ||
+            s.id.includes(searchQuery) ||
+            s.expanded.includes(searchQuery)
+        )
+        .slice(0, 100);
     }
 
-    let result = allSutras.filter(s =>
-      s.adhyaya === selectedAdhyaya && s.pada === selectedPada
+    let result = allSutras.filter(
+      (s) => s.adhyaya === selectedAdhyaya && s.pada === selectedPada
     );
-
     if (selectedType !== 'all') {
-      result = result.filter(s => s.type === selectedType);
+      result = result.filter((s) => s.type === selectedType);
     }
-
     return result;
   });
 
-  // Stats for current pada
   let padaStats = $derived.by(() => {
-    const padaSutras = allSutras.filter(s =>
-      s.adhyaya === selectedAdhyaya && s.pada === selectedPada
+    const padaSutras = allSutras.filter(
+      (s) => s.adhyaya === selectedAdhyaya && s.pada === selectedPada
     );
     return {
       total: padaSutras.length,
-      samjna: padaSutras.filter(s => s.type === 'samjna').length,
-      paribhasha: padaSutras.filter(s => s.type === 'paribhasha').length,
-      vidhi: padaSutras.filter(s => s.type === 'vidhi').length,
-      adhikara: padaSutras.filter(s => s.type === 'adhikara').length,
+      samjna: padaSutras.filter((s) => s.type === 'samjna').length,
+      paribhasha: padaSutras.filter((s) => s.type === 'paribhasha').length,
+      vidhi: padaSutras.filter((s) => s.type === 'vidhi').length,
+      adhikara: padaSutras.filter((s) => s.type === 'adhikara').length
     };
   });
-
-  function handleSearch(e: Event) {
-    const target = e.target as HTMLInputElement;
-    searchQuery = target.value;
-    updateUrl();
-  }
 
   function selectAdhyaya(a: number) {
     selectedAdhyaya = a;
@@ -90,388 +119,393 @@
     searchQuery = '';
     updateUrl();
   }
-
   function selectPada(p: number) {
     selectedPada = p;
     searchQuery = '';
     updateUrl();
   }
-
   function selectType(type: string) {
     selectedType = type;
     updateUrl();
   }
-
-  function clearSearch() {
+  function setMode(next: 'sutra' | 'path') {
+    mode = next;
     searchQuery = '';
     updateUrl();
   }
 
   const adhyayas = [1, 2, 3, 4, 5, 6, 7, 8];
   const padas = [1, 2, 3, 4];
-  const types: { value: string; label: string; sanskrit: boolean }[] = [
-    { value: 'all',        label: 'all',       sanskrit: false },
-    { value: 'samjna',     label: 'saṃjñā',    sanskrit: true },
-    { value: 'paribhasha', label: 'paribhāṣā', sanskrit: true },
-    { value: 'vidhi',      label: 'vidhi',     sanskrit: true },
-    { value: 'adhikara',   label: 'adhikāra',  sanskrit: true },
+  const types: { value: string; label: string }[] = [
+    { value: 'all', label: 'all' },
+    { value: 'samjna', label: 'saṃjñā' },
+    { value: 'paribhasha', label: 'paribhāṣā' },
+    { value: 'vidhi', label: 'vidhi' },
+    { value: 'adhikara', label: 'adhikāra' }
   ];
+
+  // ── path mode ──────────────────────────────────────────────────────────────
+  // The progress data is already there in learningProgress.pathProgress and
+  // stepCount; only the presentation changes.
+  const byCategory = $derived.by(() => {
+    const out: Record<string, PathMeta[]> = {};
+    for (const cat of pathCategories) {
+      const inCat = paths
+        .filter((p) => p.track === 'grammar' && p.category === cat.id)
+        .sort((a, b) => a.order - b.order);
+      if (inCat.length) out[cat.id] = inCat;
+    }
+    return out;
+  });
+
+  const categoryItems = $derived(
+    pathCategories
+      .filter((c) => (byCategory[c.id] ?? []).length)
+      .map((c) => ({
+        id: c.id,
+        label: c.sanskrit,
+        sub: c.english,
+        count: (byCategory[c.id] ?? []).length
+      }))
+  );
+
+  const activeCategory = $derived(
+    pathCategories.find((c) => c.id === selectedCategory) ?? pathCategories[0]
+  );
+
+  const categoryPaths = $derived(
+    (byCategory[selectedCategory] ?? []).map((p) => {
+      const done = (pathProgress[p.id] ?? []).length;
+      const complete = completedPaths.includes(p.id) || (p.stepCount > 0 && done >= p.stepCount);
+      const pct = p.stepCount ? Math.round((done / p.stepCount) * 100) : 0;
+      return { meta: p, done, complete, pct };
+    })
+  );
+
+  const totalPaths = $derived(
+    Object.values(byCategory).reduce((n, list) => n + list.length, 0)
+  );
+
+  function englishOf(title: string): string {
+    const m = title.match(/—\s*(.+)$/);
+    return m ? m[1] : title;
+  }
+
+  // Path labels are authored in whichever script the source used; detect it so
+  // the transliterator is not handed Devanagari as if it were SLP1.
+  function detectSource(s: string): 'telugu' | 'devanagari' | 'iast' {
+    if (/[ఀ-౿]/.test(s)) return 'telugu';
+    if (/[ऀ-ॿ]/.test(s)) return 'devanagari';
+    return 'iast';
+  }
 </script>
 
 <svelte:head>
-  <title>Reference | anuvrtti</title>
+  <title>सूत्र · reference | anuvrtti</title>
 </svelte:head>
 
-<div class="ref-layout">
-  <aside class="ref-sidebar">
-    <details class="sidebar-details" open>
-      <summary class="sidebar-summary">Filters &amp; Navigation</summary>
-    <div class="search-box">
-      <input
-        type="text"
-        placeholder="search"
-        value={searchQuery}
-        oninput={handleSearch}
-      />
-      {#if searchQuery}
-        <button class="clear-btn" onclick={clearSearch}>×</button>
-      {/if}
+{#snippet shelfLeft()}
+  <Segmented
+    options={[
+      { id: 'sutra', label: 'सूत्राणि', deva: true },
+      { id: 'path', label: 'पथः', deva: true }
+    ]}
+    value={mode}
+    onchange={(id) => setMode(id as 'sutra' | 'path')}
+    ariaLabel="reference mode"
+  />
+  {#if mode === 'sutra'}
+    <!-- The coordinate row: where in the eight adhyāyas you are, not a filter. -->
+    <div class="coords">
+      {#each adhyayas as a}
+        <button class:on={selectedAdhyaya === a} onclick={() => selectAdhyaya(a)}>{a}</button>
+      {/each}
+      <span class="divider">|</span>
+      {#each padas as p}
+        <button class:on={selectedPada === p} onclick={() => selectPada(p)}>.{p}</button>
+      {/each}
     </div>
+  {:else}
+    <span class="quiet">the guided path</span>
+  {/if}
+{/snippet}
 
-    {#if !searchQuery}
-      <nav class="adhyaya-nav">
-        <h3><Sanskrit text="adhyāya" source="iast" /></h3>
-        <div class="adhyaya-buttons">
-          {#each adhyayas as a}
-            <button
-              class="adhyaya-btn"
-              class:active={selectedAdhyaya === a}
-              onclick={() => selectAdhyaya(a)}
-            >
-              {a}
-            </button>
-          {/each}
-        </div>
-      </nav>
-
-      <nav class="pada-nav">
-        <h3><Sanskrit text="pāda" source="iast" /></h3>
-        <div class="pada-buttons">
-          {#each padas as p}
-            <button
-              class="pada-btn"
-              class:active={selectedPada === p}
-              onclick={() => selectPada(p)}
-            >
-              {selectedAdhyaya}.{p}
-            </button>
-          {/each}
-        </div>
-      </nav>
-
-      <nav class="type-nav">
-        <h3>type</h3>
-        <div class="type-buttons">
-          {#each types as t}
-            <button
-              class="type-btn"
-              class:active={selectedType === t.value}
-              onclick={() => selectType(t.value)}
-            >
-              {#if t.sanskrit}<Sanskrit text={t.label} source="iast" />{:else}{t.label}{/if}
-              {#if t.value !== 'all' && padaStats[t.value as keyof typeof padaStats]}
-                <span class="type-count">{padaStats[t.value as keyof typeof padaStats]}</span>
-              {/if}
-            </button>
-          {/each}
-        </div>
-      </nav>
-
-      <div class="pada-stats">
-        <span class="stats-label">{selectedAdhyaya}.{selectedPada}</span>
-        <span class="stats-total">{padaStats.total} <Sanskrit text="sūtrāṇi" source="iast" /></span>
-      </div>
-    {/if}
-
-    <nav class="tools-nav">
-      <h3>tools</h3>
-      <a href="/ref/prakriya" class="tool-link"><Sanskrit text="prakriyā" source="iast" /></a>
-      <a href="/ref/pratyahara" class="tool-link"><Sanskrit text="pratyāhārāḥ" source="iast" /></a>
-      <a href="/ref/tables" class="tool-link">reference tables</a>
-      <a href="/ref/jargon" class="tool-link"><Sanskrit text="paribhāṣā" source="iast" /></a>
+{#snippet shelfRight()}
+  {#if mode === 'sutra'}
+    <nav class="tools">
+      <a href="/ref/prakriya">prakriyā</a>
+      <a href="/ref/pratyahara">pratyāhārāḥ</a>
+      <a href="/ref/tables">tables</a>
+      <a href="/ref/jargon">jargon</a>
+      <a href="/usage">usage</a>
+      <a href="/dukrnkarane">dukṛṇkaraṇe</a>
     </nav>
-    </details>
-  </aside>
+    <span>{padaStats.total} sūtrāṇi</span>
+  {:else}
+    <span>{totalPaths} paths · {categoryItems.length} categories</span>
+  {/if}
+{/snippet}
 
-  <main class="ref-main">
-    {#if loading}
-      <div class="loading-state">loading <Sanskrit text="sūtrāṇi" source="iast" />…</div>
-    {:else if searchQuery}
-      <div class="results-header">
-        <h2>search · "{searchQuery}"</h2>
-        <span class="results-count">{filteredSutras.length} results</span>
-      </div>
-    {:else}
-      <div class="results-header">
-        <h2>
-          <Sanskrit text="अध्याय" /> {selectedAdhyaya}, <Sanskrit text="पाद" /> {selectedPada}
-        </h2>
-        <span class="results-count">{filteredSutras.length} <Sanskrit text="sūtrāṇi" source="iast" /></span>
-      </div>
-    {/if}
+{#snippet spine()}
+  {#if mode === 'sutra'}
+    <Spine
+      title="type"
+      items={types.map((t) => ({
+        id: t.value,
+        label: t.label,
+        count:
+          t.value === 'all'
+            ? padaStats.total
+            : padaStats[t.value as keyof typeof padaStats]
+      }))}
+      activeId={selectedType}
+      onpick={selectType}
+    />
+  {:else}
+    <Spine
+      title="the categories"
+      items={categoryItems}
+      activeId={selectedCategory}
+      onpick={(id) => {
+        selectedCategory = id;
+        updateUrl();
+      }}
+    />
+  {/if}
+{/snippet}
 
-    <div class="sutra-list">
-      {#each filteredSutras as sutra (sutra.id)}
-        <SutraDisplay
-          {sutra}
-          variant="compact"
-          href="/ref/{sutra.id}"
-        />
+<Shelf left={shelfLeft} right={shelfRight} />
+
+<Shell {spine}>
+  {#if loading}
+    <div class="status">loading <Sanskrit text="sūtrāṇi" source="iast" />…</div>
+  {:else if mode === 'path'}
+    <header class="head">
+      <h1><Sanskrit text={activeCategory.sanskrit} source="iast" /></h1>
+      <p>
+        the guided path through the Aṣṭādhyāyī — {activeCategory.english}, in the order they are
+        meant to be taken
+      </p>
+    </header>
+
+    <div class="paths">
+      {#each categoryPaths as p (p.meta.id)}
+        <a class="path" href="/workbook/{p.meta.id}">
+          <span class="path-order">{String(p.meta.order).padStart(2, '0')}</span>
+          <span class="path-name">
+            <span class="path-deva">
+              <Sanskrit text={p.meta.label} source={detectSource(p.meta.label)} />
+            </span>
+            <span class="path-en">{englishOf(p.meta.title)}</span>
+          </span>
+          <span class="path-steps">
+            <span class="track"
+              ><span class="bar" class:done={p.complete} style="width:{p.pct}%"></span></span
+            >
+            <span class="steps">{p.done} / {p.meta.stepCount} steps</span>
+          </span>
+          <span class="path-status" class:done={p.complete} class:started={!p.complete && p.pct > 0}>
+            {p.complete ? '✓' : p.pct > 0 ? p.pct + '%' : '→'}
+          </span>
+        </a>
       {/each}
     </div>
 
-    {#if !loading && filteredSutras.length === 0}
-      <div class="empty-state">
-        {#if searchQuery}
-          <p>No sutras match "{searchQuery}"</p>
-        {:else}
-          <p>No sutras found</p>
-        {/if}
-      </div>
-    {/if}
-  </main>
-</div>
+    <p class="note">
+      A path is a run of steps over real sūtras, which is why it sits in Reference rather than on
+      the front page: from a step you are one click from the sūtra it teaches, and a sūtra page
+      lists the paths that teach it.
+    </p>
+  {:else}
+    <header class="head">
+      {#if searchQuery}
+        <h1>search · “{searchQuery}”</h1>
+        <p>{filteredSutras.length} results</p>
+      {:else}
+        <h1>
+          <Sanskrit text="अध्याय" /> {selectedAdhyaya} · <Sanskrit text="पाद" /> {selectedPada}
+        </h1>
+        <p>{filteredSutras.length} <Sanskrit text="sūtrāṇi" source="iast" /></p>
+      {/if}
+    </header>
+
+    <div class="sutras">
+      {#each filteredSutras as sutra (sutra.id)}
+        <SutraDisplay {sutra} variant="compact" href="/ref/{sutra.id}" />
+      {/each}
+      {#if !filteredSutras.length}
+        <p class="note">nothing here — try another pāda, or ⌘K to search the whole corpus.</p>
+      {/if}
+    </div>
+  {/if}
+</Shell>
 
 <style>
-  .ref-layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 2rem;
-    align-items: start;
+  .status {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--quiet);
+    padding: 40px 0;
+  }
+  .quiet {
+    color: var(--faint);
   }
 
-  @media (max-width: 768px) {
-    .ref-layout {
-      grid-template-columns: 1fr;
-    }
-    .ref-sidebar {
-      position: static !important;
-    }
-  }
-
-  .ref-sidebar {
-    position: sticky;
-    top: 5rem;
+  /* shelf */
+  .coords {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    align-items: center;
+    gap: 4px;
   }
-
-  .sidebar-details {
-    display: contents;
-  }
-
-  .sidebar-summary {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    .sidebar-details {
-      display: block;
-      background: white;
-      border: 1px solid #e7e5e4;
-      border-radius: 0.5rem;
-      overflow: hidden;
-    }
-    .sidebar-summary {
-      display: flex;
-      align-items: center;
-      padding: 0.625rem 0.875rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #57534e;
-      cursor: pointer;
-      user-select: none;
-      list-style: none;
-    }
-    .sidebar-summary::after {
-      content: '▾';
-      margin-left: auto;
-      font-size: 0.75rem;
-      color: #a8a29e;
-    }
-    .sidebar-details[open] .sidebar-summary::after {
-      content: '▴';
-    }
-    .sidebar-details > :not(summary) {
-      padding: 0 0.875rem 0.875rem;
-    }
-  }
-
-  .search-box {
-    position: relative;
-  }
-  .search-box input {
-    width: 100%;
-    padding: 0.5rem 0;
-    border: none;
-    border-bottom: 1px solid #e2e8f0;
+  .coords button {
+    font-family: var(--font-mono);
+    font-size: 12px;
     background: transparent;
-    font-size: 0.875rem;
-    font-family: inherit;
-  }
-  .search-box input::placeholder {
-    color: #cbd5e1;
-  }
-  .search-box input:focus {
-    outline: none;
-    border-bottom-color: #f97316;
-  }
-  .clear-btn {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1.25rem;
-    height: 1.25rem;
     border: none;
-    background: none;
+    border-radius: var(--radius);
+    color: var(--quiet);
+    padding: 2px 5px;
     cursor: pointer;
-    font-size: 1rem;
-    line-height: 1;
-    color: #cbd5e1;
   }
-  .clear-btn:hover { color: #0f1419; }
-
-  .adhyaya-nav h3,
-  .pada-nav h3,
-  .type-nav h3,
-  .tools-nav h3 {
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: #94a3b8;
-    text-transform: lowercase;
-    margin-bottom: 0.5rem;
+  .coords button:hover {
+    color: var(--ink);
+  }
+  .coords button.on {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .divider {
+    color: var(--rule-2);
+    padding: 0 4px;
   }
 
-  .adhyaya-buttons,
-  .pada-buttons {
+  .tools {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.85rem;
+    gap: 12px;
   }
-  .adhyaya-btn,
-  .pada-btn {
-    padding: 0;
-    border: none;
-    background: none;
-    font-family: ui-monospace, monospace;
-    font-size: 0.8rem;
-    color: #94a3b8;
-    cursor: pointer;
-    transition: color 0.1s;
+  .tools a {
+    color: var(--quiet);
+    text-decoration: none;
   }
-  .adhyaya-btn:hover,
-  .pada-btn:hover { color: #0f1419; }
-  .adhyaya-btn.active,
-  .pada-btn.active {
-    color: #f97316;
-    font-weight: 500;
+  .tools a:hover {
+    color: var(--accent);
   }
 
-  .type-buttons {
+  /* column */
+  .head {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 5px;
   }
-  .type-btn {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    padding: 0.2rem 0;
-    border: none;
-    background: none;
-    font-size: 0.875rem;
+  .head h1 {
+    margin: 0;
+    font-family: var(--font-deva);
+    font-size: 27px;
+    font-weight: 600;
+  }
+  .head p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
     font-style: italic;
-    cursor: pointer;
-    text-align: left;
-    color: #94a3b8;
-    transition: color 0.1s;
+    max-width: 62ch;
   }
-  .type-btn:hover { color: #0f1419; }
-  .type-btn.active { color: #f97316; }
-  .type-count {
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    color: #cbd5e1;
-    font-style: normal;
-  }
-  .type-btn.active .type-count { color: #f97316; }
 
-  .pada-stats {
+  .sutras {
     display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding: 0.5rem 0;
-    border-top: 1px solid #e2e8f0;
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    color: #94a3b8;
+    flex-direction: column;
   }
-  .stats-label { color: #0f1419; }
 
-  .tools-nav {
-    border-top: 1px solid #e2e8f0;
-    padding-top: 1rem;
+  /* the guided path */
+  .paths {
+    display: flex;
+    flex-direction: column;
   }
-  .tool-link {
-    display: block;
-    padding: 0.2rem 0;
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #4f46e5;
+  .path {
+    display: grid;
+    grid-template-columns: 3.4rem minmax(0, 1fr) 8rem 3rem;
+    gap: 16px;
+    align-items: baseline;
+    padding: 12px 0;
+    border-top: 1px solid var(--rule);
     text-decoration: none;
-    transition: color 0.1s;
+    color: inherit;
   }
-  .tool-link:hover { color: #f97316; }
-
-  .ref-main {
+  .path:hover .path-deva {
+    color: var(--accent);
+  }
+  .path-order {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--quiet);
+  }
+  .path-name {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
     min-width: 0;
   }
-
-  .results-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+  .path-deva {
+    font-family: var(--font-deva);
+    font-size: 16px;
   }
-  .results-header h2 {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #0f1419;
+  .path-en {
+    font-size: 13px;
+    color: var(--quiet);
+    font-style: italic;
   }
-  .results-count {
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: #94a3b8;
-  }
-
-  .sutra-list {
+  .path-steps {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid #e2e8f0;
+    gap: 5px;
   }
-  .sutra-list :global(.sutra-compact) {
-    border-bottom: 1px solid #e2e8f0;
+  .track {
+    display: block;
+    height: 2px;
+    background: var(--rule);
+  }
+  .bar {
+    display: block;
+    height: 2px;
+    background: var(--accent);
+  }
+  .bar.done {
+    background: var(--accent-ok);
+  }
+  .steps {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--faint);
+  }
+  .path-status {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-align: right;
+    color: var(--faint);
+  }
+  .path-status.done {
+    color: var(--accent-ok);
+  }
+  .path-status.started {
+    color: var(--accent);
   }
 
-  .loading-state,
-  .empty-state {
-    text-align: center;
-    padding: 3rem;
-    color: #78716c;
+  .note {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 64ch;
+  }
+
+  @media (max-width: 720px) {
+    .path {
+      grid-template-columns: 2.5rem minmax(0, 1fr) 2.5rem;
+    }
+    .path-steps {
+      display: none;
+    }
+    .tools {
+      display: none;
+    }
   }
 </style>

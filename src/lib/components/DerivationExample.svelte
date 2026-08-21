@@ -164,19 +164,19 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: linear-gradient(to bottom, #f5f5f4, #e7e5e4);
-    border: 1px solid #d6d3d1;
+    background: linear-gradient(to bottom, var(--rule), var(--rule-2));
+    border: 1px solid var(--faint);
     border-radius: 0.5rem;
-    color: #57534e;
+    color: var(--ink-2);
     font-size: 0.875rem;
     cursor: pointer;
     transition: all 0.15s;
   }
 
   .trigger-button:hover:not(:disabled) {
-    background: linear-gradient(to bottom, #fafaf9, #f5f5f4);
-    border-color: #a8a29e;
-    color: #292524;
+    background: linear-gradient(to bottom, var(--sunken), var(--rule));
+    border-color: var(--quiet);
+    color: var(--ink);
   }
 
   .trigger-button:disabled {
@@ -185,14 +185,14 @@
   }
 
   .icon {
-    color: #78716c;
+    color: var(--muted);
   }
 
   .loading-spinner {
     width: 14px;
     height: 14px;
-    border: 2px solid #d6d3d1;
-    border-top-color: #78716c;
+    border: 2px solid var(--faint);
+    border-top-color: var(--muted);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
   }
@@ -203,10 +203,10 @@
 
   .error-message {
     padding: 0.75rem 1rem;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
+    background: var(--sunken);
+    border: 1px solid var(--rule-2);
     border-radius: 0.5rem;
-    color: #991b1b;
+    color: var(--ink);
     font-size: 0.875rem;
   }
 </style>

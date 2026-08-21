@@ -122,6 +122,24 @@
       });
     }
 
+
+  /*
+    Cytoscape draws to a canvas, which can resolve neither a CSS custom property
+    nor an oklch() colour. So the token is resolved through the engine first —
+    set as a colour on a probe element and read back as rgb — and cytoscape gets
+    a literal. One source of truth, still.
+  */
+  function token(name: string, fallback: string): string {
+    if (typeof document === 'undefined') return fallback;
+    const probe = document.createElement('span');
+    probe.style.color = `var(${name}, ${fallback})`;
+    probe.style.display = 'none';
+    document.body.appendChild(probe);
+    const resolved = getComputedStyle(probe).color;
+    probe.remove();
+    return resolved || fallback;
+  }
+
     cy = cytoscape({
       container,
       elements,
@@ -131,13 +149,13 @@
           style: {
             'background-color': '#fff',
             'border-width': 1.5,
-            'border-color': '#d1d5db',
+            'border-color': 'var(--rule-2)',
             'label': 'data(label)',
             'text-valign': 'center',
             'text-halign': 'center',
             'font-size': '11px',
             'font-family': 'system-ui, sans-serif',
-            'color': '#374151',
+            'color': token('--ink-2', '#5c5345'),
             'text-wrap': 'wrap',
             'text-max-width': '100px',
             'width': 110,
@@ -149,10 +167,10 @@
         {
           selector: 'node[type="current"]',
           style: {
-            'background-color': '#f0f9ff',
-            'border-color': '#0284c7',
+            'background-color': token('--sunken', '#faf7f0'),
+            'border-color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
             'border-width': 2,
-            'color': '#0c4a6e',
+            'color': 'var(--accent-ref)',
             'font-weight': 500,
             'width': 130,
             'height': 52,
@@ -161,38 +179,38 @@
         {
           selector: 'node[type="parent"]',
           style: {
-            'border-color': '#9ca3af',
-            'color': '#4b5563',
+            'border-color': token('--quiet', '#94a3b8'),
+            'color': 'var(--ink-2)',
           }
         },
         {
           selector: 'node[type="child"]',
           style: {
-            'border-color': '#9ca3af',
-            'color': '#4b5563',
+            'border-color': token('--quiet', '#94a3b8'),
+            'color': 'var(--ink-2)',
           }
         },
         {
           selector: 'node:active, node:selected',
           style: {
-            'border-color': '#0284c7',
-            'background-color': '#f0f9ff',
+            'border-color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
+            'background-color': token('--sunken', '#faf7f0'),
           }
         },
         {
           selector: 'edge',
           style: {
             'width': 1.5,
-            'line-color': '#cbd5e1',
-            'target-arrow-color': '#94a3b8',
+            'line-color': token('--faint', '#bcb29d'),
+            'target-arrow-color': token('--quiet', '#94a3b8'),
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier',
             'arrow-scale': 0.8,
             'label': 'data(label)',
             'font-size': '10px',
-            'color': '#6366f1',
+            'color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
             'font-weight': 500,
-            'text-background-color': '#fafaf9',
+            'text-background-color': token('--sunken', '#faf7f0'),
             'text-background-opacity': 1,
             'text-background-padding': '2px',
             'text-rotation': 0,
@@ -202,8 +220,8 @@
         {
           selector: 'edge:active, edge:selected',
           style: {
-            'line-color': '#6366f1',
-            'target-arrow-color': '#6366f1',
+            'line-color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
+            'target-arrow-color': token('--accent-ref', 'oklch(0.70 0.13 245)'),
             'width': 2,
           }
         }
@@ -265,16 +283,16 @@
 
 <style>
   .anuvrtti-graph {
-    background: #fafaf9;
+    background: var(--sunken);
     border-radius: 0.375rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--rule-2);
   }
 
   .graph-loading,
   .graph-empty {
     padding: 2rem;
     text-align: center;
-    color: #6b7280;
+    color: var(--muted);
     font-size: 0.8125rem;
   }
 

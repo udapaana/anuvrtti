@@ -73,7 +73,7 @@
   .matrix {
     margin-top: 28px;
     padding-top: 18px;
-    border-top: 1px solid #f5f5f4;
+    border-top: 1px solid var(--rule);
   }
   .head {
     display: flex;
@@ -82,46 +82,37 @@
     margin-bottom: 11px;
   }
   .eyebrow {
-    font:
-      600 11px/1 'SF Mono',
-      Consolas,
-      Monaco,
-      monospace;
+    font: 600 11px/1 var(--font-mono);
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #78716c;
+    color: var(--muted);
   }
   .sub {
     font:
-      400 11.5px/1 'Crimson Pro',
-      Georgia,
-      serif;
-    color: #a8a29e;
+      400 11.5px/1 var(--font-serif);
+    color: var(--quiet);
   }
   .grid {
     display: grid;
     gap: 1px;
-    background: #e7e5e4;
-    border: 1px solid #e7e5e4;
+    background: var(--rule-2);
+    border: 1px solid var(--rule-2);
     border-radius: 6px;
     overflow: hidden;
   }
   .corner,
   .colhead,
   .rowhead {
-    background: #fafaf9;
+    background: var(--sunken);
     padding: 6px 4px;
     text-align: center;
     font-family: 'Noto Serif Devanagari', 'Noto Serif Telugu', serif;
     font-size: 14px;
-    color: #57534e;
+    color: var(--ink-2);
   }
   .corner {
-    font:
-      400 11px 'SF Mono',
-      Consolas,
-      monospace;
-    color: #a8a29e;
+    font: 400 11px var(--font-mono);
+    color: var(--quiet);
   }
   .cell {
     display: flex;
@@ -135,34 +126,31 @@
     font: inherit;
   }
   .cell:hover {
-    background: #fafaf9;
+    background: var(--sunken);
   }
   .cell.blank {
-    background: #fdfdfc;
+    background: var(--sunken);
     cursor: default;
   }
   .out {
     font-family: 'Noto Serif Devanagari', 'Noto Serif Telugu', serif;
     font-size: 15px;
-    color: #a8a29e;
+    color: var(--quiet);
   }
   .tag {
-    font:
-      400 9.5px/1 'SF Mono',
-      Consolas,
-      monospace;
-    color: #d6d3d1;
+    font: 400 9.5px/1 var(--font-mono);
+    color: var(--faint);
   }
   /* The rule being read. Everything else is a neighbour. */
   .cell.on {
-    background: #fff7ed;
+    background: var(--sunken);
   }
   .cell.on .out {
-    color: #9a3412;
+    color: var(--accent-hover);
     font-weight: 600;
   }
   .cell.on .tag {
-    color: #f97316;
+    color: var(--accent);
   }
   .legend {
     display: flex;
@@ -179,33 +167,31 @@
     padding: 2px 0;
     cursor: pointer;
     font:
-      400 11.5px/1 'Crimson Pro',
-      Georgia,
-      serif;
-    color: #78716c;
+      400 11.5px/1 var(--font-serif);
+    color: var(--muted);
   }
   .key:hover {
-    color: #f97316;
+    color: var(--accent);
   }
   .key.on {
-    color: #1c1917;
+    color: var(--ink);
     font-weight: 600;
   }
   .swatch {
     width: 9px;
     height: 9px;
     border-radius: 2px;
-    background: #e7e5e4;
+    background: var(--rule-2);
     display: inline-block;
   }
   .swatch.lit {
-    background: #f97316;
+    background: var(--accent);
   }
   .kname {
-    color: #a8a29e;
+    color: var(--quiet);
     font-style: italic;
   }
   .key.on .kname {
-    color: #78716c;
+    color: var(--muted);
   }
 </style>

@@ -102,7 +102,7 @@
 </script>
 
 <div class="py-1">
-  <h3 class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8] mb-3">
+  <h3 class="font-mono text-[0.7rem] tracking-wider lowercase text-[var(--quiet)] mb-3">
     <Sanskrit text="pratyāhāra" source="iast" />
   </h3>
 
@@ -111,7 +111,7 @@
     bind:value={customInput}
     oninput={handleCustomInput}
     placeholder="ac · hal · iK"
-    class="w-full px-0 py-1.5 text-sm bg-transparent border-0 border-b border-[#e2e8f0] focus:outline-none focus:border-[#f97316] mb-4 placeholder:text-[#cbd5e1]"
+    class="w-full px-0 py-1.5 text-sm bg-transparent border-0 border-b border-[var(--rule-2)] focus:outline-none focus:border-[var(--accent)] mb-4 placeholder:text-[var(--faint)]"
   />
 
 
@@ -128,7 +128,7 @@
             {@const isStart = isStartPoint(globalIdx)}
             {@const isEnd = isEndPoint(globalIdx)}
             <span
-              class="px-1 py-0.5 transition-colors {highlighted ? 'text-[#f97316]' : 'text-[#0f1419]'}"
+              class="px-1 py-0.5 transition-colors {highlighted ? 'text-[var(--accent)]' : 'text-[var(--ink)]'}"
               class:sound-start={isStart && !isEnd}
               class:sound-end={isEnd && !isStart}
               class:sound-both={isStart && isEnd}
@@ -137,7 +137,7 @@
               <Sanskrit text={sound} />
             </span>
           {/each}
-          <span class="text-[#0f1419] font-semibold ml-0.5">
+          <span class="text-[var(--ink)] font-semibold ml-0.5">
             <Sanskrit text={sutra.marker} />
           </span>
         </div>
@@ -145,13 +145,13 @@
     {/each}
   </div>
 
-  <div class="mt-3 pt-3 border-t border-[#e2e8f0]">
-    <div class="font-mono text-[0.65rem] tracking-wider lowercase text-[#94a3b8] mb-2">common</div>
+  <div class="mt-3 pt-3 border-t border-[var(--rule-2)]">
+    <div class="font-mono text-[0.65rem] tracking-wider lowercase text-[var(--quiet)] mb-2">common</div>
     <div class="flex flex-wrap gap-x-3 gap-y-1">
       {#each commonPratyaharas.slice(0, 6) as p}
         <button
           onclick={() => selectPratyahara(p)}
-          class="font-serif italic text-sm transition-colors {selectedPratyahara?.name === p.name ? 'text-[#f97316]' : 'text-[#475569] hover:text-[#0f1419]'}"
+          class="font-serif italic text-sm transition-colors {selectedPratyahara?.name === p.name ? 'text-[var(--accent)]' : 'text-[var(--muted)] hover:text-[var(--ink)]'}"
         >
           <Sanskrit text={p.name} />
         </button>
@@ -163,29 +163,29 @@
 <style>
   /* Start point: a saffron tint, no decorative gradient */
   .sound-start {
-    background: #fff7ed;
-    border-left: 2px solid #f97316;
+    background: var(--sunken);
+    border-left: 2px solid var(--accent);
     padding-left: 0.5rem;
   }
 
   /* End point: a saffron tint capped on the right */
   .sound-end {
-    background: #fff7ed;
-    border-right: 2px solid #f97316;
+    background: var(--sunken);
+    border-right: 2px solid var(--accent);
     padding-right: 0.5rem;
   }
 
   /* Both start and end: saffron tint with both edges marked */
   .sound-both {
-    background: #fff7ed;
-    border-left: 2px solid #f97316;
-    border-right: 2px solid #f97316;
+    background: var(--sunken);
+    border-left: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 
   /* Middle highlighted sounds — washed saffron */
   .sound-middle {
-    background: #fff7ed;
+    background: var(--sunken);
   }
 </style>

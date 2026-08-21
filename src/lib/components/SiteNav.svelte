@@ -1,119 +1,260 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { displayScript } from '$lib/stores/preferences';
+  import {
+    displayScript,
+    lessonLanguage,
+    authoringMode
+  } from '$lib/stores/preferences';
+  import Palette from '$lib/components/ui/Palette.svelte';
+  import Segmented from '$lib/components/ui/Segmented.svelte';
   import type { Script } from '$lib/transliteration';
 
-  // The app's persistent chrome: wordmark · पठनम् / बालबोधिनी / सूत्र / प्रयोग / डुकृण्करणे
-  // · script switcher. Promoted from the reader page to global layout so the
-  // whole app shares one navigation, not per-page duplicates.
-  let { progress = null }: { progress?: number | null } = $props();
+  /*
+    The app's persistent chrome, 52px, and nothing page-specific ever lands
+    here — that is what pushed the old bar to nine targets. Four doors, one
+    search, one preferences popover:
 
-  let script = $state<Script>('iast');
-  displayScript.subscribe((s) => (script = s));
+      read · workbook · usage · reference
+
+    The script pills, the lesson language and the settings link all moved into
+    the `aa` popover, and the floating authoring pencil became a mode switch
+    inside it. Everything else in the app is one link away through /index.
+  */
+  let { user = null }: { user?: { login: string } | null } = $props();
+
+  let prefs = $state(false);
+  let palette = $state<Palette | null>(null);
 
   const path = $derived($page.url.pathname);
-  function on(prefix: string): boolean {
-    return prefix === '/' ? path === '/' : path.startsWith(prefix);
+
+  // The doors, and the routes each one owns. A door lights for any route behind
+  // it, so /words never leaves you without a current door.
+  const doors = [
+    { href: '/reader', label: 'read', owns: ['/reader'] },
+    {
+      href: '/workbook',
+      label: 'workbook',
+      owns: ['/workbook', '/learn', '/balabodhini', '/words', '/review']
+    },
+    { href: '/usage', label: 'usage', owns: ['/usage'] },
+    { href: '/ref', label: 'reference', owns: ['/ref', '/dukrnkarane', '/conjugate'] }
+  ];
+
+  function on(owns: string[]): boolean {
+    return owns.some((prefix) => path === prefix || path.startsWith(prefix + '/'));
   }
+
+  const scripts: { id: Script; label: string }[] = [
+    { id: 'iast', label: 'IAST' },
+    { id: 'devanagari', label: 'देव' },
+    { id: 'telugu', label: 'తె' }
+  ];
 </script>
+
+<svelte:window onclick={() => (prefs = false)} />
 
 <header class="sitenav">
   <div class="inner">
     <a class="wordmark" href="/" aria-label="anuvrtti home">अनुवृत्ति</a>
 
-    <nav class="pillars">
-      <a class:on={on('/reader')} href="/reader">पठनम् <span class="en">reader</span></a>
-      <a class:on={on('/balabodhini')} href="/balabodhini">बालबोधिनी <span class="en">primer</span></a>
-      <a class:on={on('/ref')} href="/ref">सूत्र <span class="en">reference</span></a>
-      <a class:on={on('/usage')} href="/usage">प्रयोग <span class="en">usage</span></a>
-      <a class:on={on('/dukrnkarane')} href="/dukrnkarane">डुकृण्करणे <span class="en">grammar</span></a>
+    <nav class="doors">
+      {#each doors as door (door.href)}
+        <a class:on={on(door.owns)} href={door.href}>{door.label}</a>
+      {/each}
     </nav>
 
-    <div class="right">
-      <div class="pills" role="group" aria-label="script">
-        <button class:on={script === 'telugu'} onclick={() => displayScript.set('telugu')}>తె</button>
-        <button class:on={script === 'devanagari'} onclick={() => displayScript.set('devanagari')}>देव</button>
-        <button class:on={script === 'iast'} onclick={() => displayScript.set('iast')}>IAST</button>
-      </div>
-      <a class="settings" href="/settings">settings</a>
+    <button class="search" onclick={() => palette?.show()} aria-label="search">⌘K</button>
+
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="prefs" onclick={(e) => e.stopPropagation()}>
+      <button class="aa" class:on={prefs} onclick={() => (prefs = !prefs)} aria-expanded={prefs}>
+        aa
+      </button>
+
+      {#if prefs}
+        <div class="popover">
+          <span class="label">script</span>
+          <Segmented
+            options={scripts.map((s) => ({ id: s.id, label: s.label, deva: s.id !== 'iast' }))}
+            value={$displayScript}
+            onchange={(id) => displayScript.set(id as Script)}
+            ariaLabel="display script"
+          />
+
+          <span class="label">gloss language</span>
+          <Segmented
+            options={[
+              { id: 'english', label: 'en' },
+              { id: 'telugu', label: 'te' }
+            ]}
+            value={$lessonLanguage}
+            onchange={(id) => lessonLanguage.set(id as 'english' | 'telugu')}
+            ariaLabel="gloss language"
+          />
+
+          {#if user}
+            <button class="mode" class:on={$authoringMode} onclick={() => authoringMode.toggle()}>
+              <span>authoring mode</span>
+              <span class="state">{$authoringMode ? 'on' : 'off'}</span>
+            </button>
+          {/if}
+
+          <a class="all" href="/settings">all settings →</a>
+        </div>
+      {/if}
     </div>
   </div>
-  {#if progress !== null}
-    <div class="progress"><div class="bar" style="width:{progress}%"></div></div>
-  {/if}
 </header>
+
+<Palette bind:this={palette} />
 
 <style>
   .sitenav {
     position: sticky;
     top: 0;
-    z-index: 30;
-    background: rgba(255, 255, 255, 0.9);
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid #e7e2d9;
+    border-bottom: 1px solid var(--rule-2);
   }
   .inner {
-    max-width: 1240px;
+    max-width: 1320px;
     margin: 0 auto;
-    padding: 0.6rem 1.5rem;
+    padding: 0 24px;
+    height: var(--nav-h);
     display: flex;
     align-items: center;
-    gap: 1.4rem;
+    gap: 26px;
   }
+
   .wordmark {
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    font-size: 1.2rem;
+    font-family: var(--font-deva);
+    font-size: 19px;
     font-weight: 600;
-    color: #f97316;
-    letter-spacing: 0.01em;
+    color: var(--accent);
     text-decoration: none;
     flex: none;
   }
-  .pillars {
+
+  .doors {
     display: flex;
     align-items: center;
-    gap: 1.4rem;
-    font-family: ui-monospace, monospace;
-    font-size: 0.74rem;
-    letter-spacing: 0.03em;
+    gap: 22px;
     flex: 1;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
-  .pillars a { color: #94a3b8; text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid transparent; }
-  .pillars a:hover { color: #0f1419; }
-  .pillars a.on { color: #0f1419; border-bottom-color: #f97316; }
-  .pillars .en { color: inherit; opacity: 0.7; }
-
-  .right { display: flex; align-items: center; gap: 0.9rem; flex: none; }
-  .pills { display: flex; background: #f1eadc; border-radius: 999px; padding: 3px; gap: 1px; }
-  .pills button {
-    border: none;
-    cursor: pointer;
-    font-family: ui-monospace, monospace;
-    font-size: 0.68rem;
-    padding: 0.22rem 0.55rem;
-    border-radius: 999px;
-    background: transparent;
-    color: #6b6b6b;
-    transition: all 0.15s;
+  .doors::-webkit-scrollbar {
+    display: none;
   }
-  .pills button.on { background: #fff; color: #0f1419; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12); }
-  .settings {
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    color: #94a3b8;
+  .doors a {
+    color: var(--quiet);
     text-decoration: none;
-    transition: color 0.15s;
+    padding: 3px 0 2px;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
   }
-  .settings:hover { color: #0f1419; }
+  .doors a:hover {
+    color: var(--ink);
+  }
+  .doors a.on {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
 
-  .progress { height: 2px; background: #f0eadf; }
-  .progress .bar { height: 100%; background: #f97316; transition: width 0.35s ease; }
+  .search {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--quiet);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    flex: none;
+  }
+  .search:hover {
+    color: var(--ink);
+  }
+
+  .prefs {
+    position: relative;
+    flex: none;
+  }
+  .aa {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 3px 9px;
+    cursor: pointer;
+  }
+  .aa.on {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 40;
+    width: 190px;
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 20px rgba(15, 20, 25, 0.08);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-top: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 9px 0 0;
+    cursor: pointer;
+    text-align: left;
+  }
+  .mode .state {
+    color: var(--quiet);
+  }
+  .mode.on .state {
+    color: var(--accent);
+  }
+
+  .all {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+  }
 
   @media (max-width: 720px) {
-    .inner { flex-wrap: wrap; gap: 0.8rem 1rem; padding: 0.6rem 1rem; }
-    .pillars { order: 3; flex-basis: 100%; gap: 1.1rem; }
-    .pillars .en { display: none; }
+    .inner {
+      padding: 0 16px;
+      gap: 16px;
+    }
+    .doors {
+      gap: 16px;
+    }
+    .search {
+      display: none;
+    }
   }
 </style>

@@ -2,6 +2,9 @@
   import { shivaSutras, commonPratyaharas, expandPratyahara, lookupPratyaharaCanonical, getAllPratyaharaSounds, type Pratyahara } from '$lib/pratyahara';
   import { transliterate } from '$lib/transliteration';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import ToolRow from '../ToolRow.svelte';
 
   interface Interpretation {
     sounds: string[];
@@ -114,19 +117,24 @@
 </script>
 
 <svelte:head>
-  <title>Pratyahara | anuvrtti</title>
+  <title>प्रत्याहार · pratyāhārāḥ | anuvrtti</title>
 </svelte:head>
 
-<div>
-  <div class="mb-6">
-    <h1 class="text-2xl font-semibold">
-      <Sanskrit text="प्रत्याहार" />
-      <span class="text-stone-400 ml-2">Pratyahara Explorer</span>
-    </h1>
-    <p class="text-stone-500 text-sm mt-1">
-      Explore the Shiva Sutras and pratyahara notation system
-    </p>
-  </div>
+{#snippet shelfLeft()}
+  <ToolRow current="pratyahara" />
+{/snippet}
+
+{#snippet shelfRight()}
+  <span>14 śiva-sūtras</span>
+{/snippet}
+
+<Shelf left={shelfLeft} right={shelfRight} />
+
+<Shell columnMax="1100px">
+  <header class="head">
+    <h1><Sanskrit text="प्रत्याहार" /></h1>
+    <p>The fourteen śiva-sūtras, and what each abbreviation reaches across them.</p>
+  </header>
 
   <div class="grid lg:grid-cols-2 gap-8">
     <!-- Shiva Sutras -->
@@ -201,39 +209,58 @@
       </table>
     </div>
   </div>
-</div>
+</Shell>
 
 <style>
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .head h1 {
+    margin: 0;
+    font-family: var(--font-deva);
+    font-size: 27px;
+    font-weight: 600;
+  }
+  .head p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 62ch;
+  }
+
   /* Start point: right-pointing arrow shape (green) */
   .sound-start {
-    background: linear-gradient(135deg, #22c55e 0%, #22c55e 50%, #dcfce7 50%, #dcfce7 100%);
+    background: linear-gradient(135deg, var(--accent-ok) 0%, var(--accent-ok) 50%, var(--sunken) 50%, var(--sunken) 100%);
     background-size: 8px 100%;
     background-repeat: no-repeat;
     background-position: left;
-    background-color: #dcfce7;
+    background-color: var(--sunken);
     padding-left: 0.75rem;
     border-radius: 3px;
   }
 
   /* End point: left-pointing arrow shape (red) */
   .sound-end {
-    background: linear-gradient(45deg, #fecaca 0%, #fecaca 50%, #ef4444 50%, #ef4444 100%);
+    background: linear-gradient(45deg, var(--rule-2) 0%, var(--rule-2) 50%, var(--ink) 50%, var(--ink) 100%);
     background-size: 8px 100%;
     background-repeat: no-repeat;
     background-position: right;
-    background-color: #fecaca;
+    background-color: var(--rule-2);
     padding-right: 0.75rem;
     border-radius: 3px;
   }
 
   /* Both start and end: diamond-ish shape */
   .sound-both {
-    background: linear-gradient(135deg, #22c55e 0%, #22c55e 50%, #fef3c7 50%, #fef3c7 100%),
-                linear-gradient(45deg, #fef3c7 0%, #fef3c7 50%, #ef4444 50%, #ef4444 100%);
+    background: linear-gradient(135deg, var(--accent-ok) 0%, var(--accent-ok) 50%, var(--sunken) 50%, var(--sunken) 100%),
+                linear-gradient(45deg, var(--sunken) 0%, var(--sunken) 50%, var(--ink) 50%, var(--ink) 100%);
     background-size: 8px 100%, 8px 100%;
     background-repeat: no-repeat, no-repeat;
     background-position: left, right;
-    background-color: #fef3c7;
+    background-color: var(--sunken);
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     border-radius: 3px;
@@ -241,7 +268,7 @@
 
   /* Middle highlighted sounds */
   .sound-middle {
-    background-color: #e0e7ff;
+    background-color: var(--sunken);
     border-radius: 3px;
   }
 
@@ -249,7 +276,7 @@
   .pratyahara-table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 0.375rem;
     overflow: hidden;
   }
@@ -260,15 +287,15 @@
   }
 
   .pratyahara-row:hover {
-    background: #f5f5f4;
+    background: var(--rule);
   }
 
   .pratyahara-row.selected {
-    background: #eef2ff;
+    background: var(--sunken);
   }
 
   .pratyahara-row:not(:last-child) td {
-    border-bottom: 1px solid #f5f5f4;
+    border-bottom: 1px solid var(--rule);
   }
 
   .pratyahara-name {
@@ -282,6 +309,6 @@
   .pratyahara-desc {
     padding: 0.5rem 0.75rem;
     font-size: 0.8125rem;
-    color: #78716c;
+    color: var(--muted);
   }
 </style>

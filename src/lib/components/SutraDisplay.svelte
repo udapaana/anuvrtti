@@ -13,6 +13,15 @@
     commentary?: Commentary;
     layeredCommentary?: LayeredSutraCommentary;
     depth?: CommentaryDepth;
+    /*
+      Three commentary tiers used to stack down one page, so a sūtra with a long
+      Kāśikā read three times the length of one without. They are one segmented
+      control on the shelf now, and this picks which tier the column shows — so
+      the page has one reading length however much commentary a sūtra carries.
+      Vasu's full translation is not a tier; it is a source, and lives in the
+      rail's closed `sources` row.
+    */
+    tier?: 'plain' | 'kashika' | 'vartika';
     fallbackCommentary?: string;
     onDepthChange?: (depth: CommentaryDepth) => void;
     onEdit?: () => void;
@@ -28,6 +37,7 @@
     commentary,
     layeredCommentary,
     depth = 'standard',
+    tier = 'plain',
     fallbackCommentary,
     onDepthChange,
     onEdit,
@@ -137,7 +147,7 @@
       </section>
     {/if}
 
-    {#if hasCommentary}
+    {#if hasCommentary && tier === 'plain'}
       <section class="section commentary-section">
         <div class="vyakhya-head">
           <span class="section-label" style="margin: 0;"><Sanskrit text="vyākhyā" source="iast" /></span>
@@ -163,7 +173,7 @@
       </section>
     {/if}
 
-    {#if commentary?.kashika}
+    {#if commentary?.kashika && tier === 'kashika'}
       <section class="section">
         <h3 class="section-label"><Sanskrit text="kāśikā vṛtti" source="iast" /></h3>
         <div class="section-content kashika">
@@ -172,7 +182,7 @@
       </section>
     {/if}
 
-    {#if commentary?.vartika && commentary.vartika.length > 0}
+    {#if commentary?.vartika && commentary.vartika.length > 0 && tier === 'vartika'}
       <section class="section">
         <h3 class="section-label"><Sanskrit text="vārttikas" source="iast" /> · {commentary.vartika.length}</h3>
         <ol class="vartika-list">
@@ -183,18 +193,8 @@
       </section>
     {/if}
 
-    {#if commentary?.englishFull}
-      <details class="section expandable">
-        <summary class="section-label">full translation · vasu</summary>
-        <div class="section-content">
-          {#each commentary.englishFull.split('\n') as para}
-            {#if para.trim()}
-              <p><CommentaryText text={para} /></p>
-            {/if}
-          {/each}
-        </div>
-      </details>
-    {/if}
+    <!-- Vasu's full translation is a source, not a tier: it opens from the
+         rail's `sources` row rather than hanging off the bottom of the column. -->
   </article>
 {/if}
 
@@ -218,7 +218,7 @@
     transition: background 0.1s;
   }
   .sutra-compact.clickable:hover {
-    background: #fff7ed;
+    background: var(--sunken);
   }
 
   /* Card variant */
@@ -226,7 +226,7 @@
     display: block;
     padding: 1rem;
     background: white;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 0.5rem;
     text-decoration: none;
     color: inherit;
@@ -238,7 +238,7 @@
     cursor: pointer;
   }
   .sutra-card.clickable:hover {
-    border-color: #c7d2fe;
+    border-color: var(--rule-2);
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
   .card-header {
@@ -273,15 +273,15 @@
 
   /* Common elements */
   .sutra-id {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.8125rem;
-    color: #78716c;
+    color: var(--muted);
     flex-shrink: 0;
   }
   .sutra-id-large {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
-    color: #94a3b8;
+    color: var(--quiet);
     letter-spacing: 0.04em;
     font-weight: 400;
   }
@@ -294,11 +294,11 @@
     line-height: 1.5;
   }
   .sutra-type {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     letter-spacing: 0.04em;
     flex-shrink: 0;
-    color: #94a3b8;
+    color: var(--quiet);
   }
   .type-samjna,
   .type-paribhasha,
@@ -306,7 +306,7 @@
   .type-adhikara,
   .type-atidesa {
     background: none;
-    color: #94a3b8;
+    color: var(--quiet);
   }
 
   /* Anuvrtti — bare list, no chips */
@@ -317,20 +317,20 @@
     gap: 0.5rem;
     margin-top: 0.5rem;
     font-size: 0.78rem;
-    color: #94a3b8;
+    color: var(--quiet);
   }
   .anuvrtti-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: var(--quiet);
     letter-spacing: 0.04em;
   }
   .anuvrtti-ref {
     padding: 0;
     background: none;
-    color: #475569;
+    color: var(--muted);
   }
-  .anuvrtti-more { color: #cbd5e1; }
+  .anuvrtti-more { color: var(--faint); }
   .anuvrtti-section .anuvrtti-list {
     display: flex;
     flex-wrap: wrap;
@@ -344,42 +344,42 @@
     padding: 0;
     background: none;
     text-decoration: none;
-    color: #0f1419;
+    color: var(--ink);
     font-size: 0.95rem;
     transition: color 0.15s;
   }
-  .anuvrtti-link:hover { color: #f97316; }
+  .anuvrtti-link:hover { color: var(--accent); }
   .anuvrtti-link .ref-id {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: var(--quiet);
   }
 
   /* Sections — hairlines, monospace eyebrows */
   .section {
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--rule-2);
     padding: 1rem 0;
   }
   .section-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 400;
     text-transform: lowercase;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     margin: 0 0 0.65rem 0;
   }
   .section-content {
     font-size: 1rem;
     line-height: 1.65;
-    color: #0f1419;
+    color: var(--ink);
   }
   /* Commentary section — no yellow card; just a section with the depth dots */
   .commentary-section {
     background: none;
     padding: 1rem 0;
   }
-  .commentary-section .section-label { color: #94a3b8; }
+  .commentary-section .section-label { color: var(--quiet); }
 
   .depth-toggle {
     display: flex;
@@ -398,7 +398,7 @@
     justify-content: center;
     width: 1.25rem;
     height: 1.25rem;
-    color: #cbd5e1;
+    color: var(--faint);
     background: none;
     border: none;
     cursor: pointer;
@@ -406,10 +406,10 @@
     transition: color 0.15s;
     text-decoration: none;
   }
-  .edit-btn:hover { color: #f97316; background: none; }
+  .edit-btn:hover { color: var(--accent); background: none; }
   .edit-btn svg { width: 0.85rem; height: 0.85rem; }
-  .edit-btn-signin { color: #e2e8f0; }
-  .edit-btn-signin:hover { color: #94a3b8; }
+  .edit-btn-signin { color: var(--rule-2); }
+  .edit-btn-signin:hover { color: var(--quiet); }
 
   /* Depth toggle: three filled dots of increasing size, no labels.
      The active one is saffron. Hover reveals the depth name as a title. */
@@ -420,7 +420,7 @@
   }
   .depth-btn {
     padding: 0;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--faint);
     background: transparent;
     border-radius: 50%;
     cursor: pointer;
@@ -433,25 +433,25 @@
   .depth-btn:nth-child(1) { width: 0.4rem;  height: 0.4rem; }
   .depth-btn:nth-child(2) { width: 0.55rem; height: 0.55rem; }
   .depth-btn:nth-child(3) { width: 0.7rem;  height: 0.7rem; }
-  .depth-btn:hover { border-color: #0f1419; }
+  .depth-btn:hover { border-color: var(--ink); }
   .depth-btn.active {
-    background: #f97316;
-    border-color: #f97316;
+    background: var(--accent);
+    border-color: var(--accent);
   }
 
   .commentary-content {
     font-size: 1rem;
     line-height: 1.7;
-    color: #0f1419;
+    color: var(--ink);
   }
   .kashika {
     background: none;
     padding: 0;
     border-radius: 0;
     font-size: 0.95rem;
-    border-left: 2px solid #e2e8f0;
+    border-left: 2px solid var(--rule-2);
     padding-left: 0.85rem;
-    color: #475569;
+    color: var(--muted);
   }
   .vartika-list {
     margin: 0;
@@ -475,7 +475,7 @@
   .expandable summary::after {
     content: '▸';
     font-size: 0.75rem;
-    color: #a8a29e;
+    color: var(--quiet);
     transition: transform 0.15s;
   }
   .expandable[open] summary::after {

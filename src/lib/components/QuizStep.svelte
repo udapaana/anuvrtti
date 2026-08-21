@@ -2,6 +2,12 @@
   import type { QuizData } from '$lib/learning/paths';
   import CommentaryText from './CommentaryText.svelte';
 
+  /*
+    A quiz step reuses the reader's option buttons and its verdict line, so a
+    right answer looks the same everywhere in the app: the done accent for
+    correct, ink for a miss, quiet for a shown answer. What goes is the second
+    quiz language — indigo fill buttons, teal/red circles, rounded-2xl cards.
+  */
   interface Props {
     quiz: QuizData;
     onComplete?: () => void;
@@ -33,6 +39,7 @@
       const normalizedAnswer = quiz.answer.trim().toLowerCase();
       isCorrect = normalizedUser === normalizedAnswer;
     }
+    if (isCorrect) onComplete?.();
   }
 
   function reset() {
@@ -45,131 +52,236 @@
   const hasOptions = $derived(quiz.options && quiz.options.length > 0);
 </script>
 
-<div class="bg-white rounded-lg border border-stone-200 overflow-hidden">
-  <!-- Question -->
-  <div class="p-6 border-b border-stone-100 bg-gradient-to-b from-amber-50/50 to-transparent">
-    <div class="text-xs font-medium text-amber-700 uppercase tracking-wide mb-2">Self-Check</div>
-    <div class="text-lg text-stone-800">
-      <CommentaryText text={quiz.question} />
-    </div>
+<div class="quiz">
+  <div class="question">
+    <span class="label">self-check</span>
+    <div class="prompt"><CommentaryText text={quiz.question} /></div>
   </div>
 
-  <!-- Answer area -->
-  <div class="p-6">
-    {#if hasOptions}
-      <!-- Multiple choice -->
-      <div class="space-y-2">
-        {#each quiz.options! as option, i}
-          {@const isSelected = selectedOption === i}
-          {@const isOptionCorrect = option.correct === true}
-          {@const showCorrect = revealed && isOptionCorrect}
-          {@const showIncorrect = revealed && isSelected && !isOptionCorrect}
+  {#if hasOptions}
+    <div class="options">
+      {#each quiz.options! as option, i}
+        {@const isSelected = selectedOption === i}
+        {@const isOptionCorrect = option.correct === true}
+        {@const showCorrect = revealed && isOptionCorrect}
+        {@const showIncorrect = revealed && isSelected && !isOptionCorrect}
 
-          <button
-            onclick={() => selectOption(i)}
-            disabled={revealed}
-            class="w-full text-left px-4 py-3 rounded-lg border-2 transition-all
-                   {isSelected && !revealed ? 'border-indigo-500 bg-indigo-50' : ''}
-                   {showCorrect ? 'border-green-500 bg-green-50' : ''}
-                   {showIncorrect ? 'border-red-500 bg-red-50' : ''}
-                   {!isSelected && !showCorrect && !showIncorrect ? 'border-stone-200 hover:border-stone-300' : ''}
-                   {revealed ? 'cursor-default' : 'cursor-pointer'}"
-          >
-            <div class="flex items-center gap-3">
-              <span class="w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-medium
-                          {isSelected && !revealed ? 'border-indigo-500 bg-indigo-500 text-white' : ''}
-                          {showCorrect ? 'border-green-500 bg-green-500 text-white' : ''}
-                          {showIncorrect ? 'border-red-500 bg-red-500 text-white' : ''}
-                          {!isSelected && !showCorrect && !showIncorrect ? 'border-stone-300 text-stone-500' : ''}">
-                {#if showCorrect}
-                  ✓
-                {:else if showIncorrect}
-                  ✗
-                {:else}
-                  {String.fromCharCode(65 + i)}
-                {/if}
-              </span>
-              <span class="text-stone-700">
-                <CommentaryText text={option.text} />
-              </span>
-            </div>
-          </button>
-        {/each}
-      </div>
-    {:else}
-      <!-- Short answer -->
-      <div class="space-y-3">
-        <input
-          type="text"
-          bind:value={userAnswer}
-          disabled={revealed}
-          placeholder="Type your answer..."
-          class="w-full px-4 py-3 border-2 rounded-lg text-stone-700
-                 {revealed && isCorrect ? 'border-green-500 bg-green-50' : ''}
-                 {revealed && !isCorrect ? 'border-red-500 bg-red-50' : ''}
-                 {!revealed ? 'border-stone-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500' : ''}
-                 disabled:bg-stone-50"
-        />
-        {#if revealed && quiz.answer}
-          <div class="text-sm">
-            <span class="text-stone-500">Correct answer:</span>
-            <span class="ml-1 font-medium text-green-700">
-              <CommentaryText text={quiz.answer} />
-            </span>
-          </div>
-        {/if}
-      </div>
-    {/if}
-
-    <!-- Check button / Result -->
-    <div class="mt-6">
-      {#if !revealed}
         <button
-          onclick={checkAnswer}
-          disabled={hasOptions ? selectedOption === null : !userAnswer.trim()}
-          class="px-6 py-2 bg-indigo-500 text-white rounded-lg font-medium
-                 hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed
-                 transition-colors"
+          class="opt"
+          class:on={isSelected && !revealed}
+          class:correct={showCorrect}
+          class:miss={showIncorrect}
+          class:locked={revealed}
+          disabled={revealed}
+          onclick={() => selectOption(i)}
         >
-          Check Answer
+          <span class="mark">
+            {#if showCorrect}✓{:else if showIncorrect}✗{:else}{String.fromCharCode(65 + i)}{/if}
+          </span>
+          <span class="text"><CommentaryText text={option.text} /></span>
         </button>
-      {:else}
-        <div class="flex items-center gap-4">
-          <div class="flex items-center gap-2">
-            {#if isCorrect}
-              <span class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </span>
-              <span class="font-medium text-green-700">Correct!</span>
-            {:else}
-              <span class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </span>
-              <span class="font-medium text-red-700">Not quite</span>
-            {/if}
-          </div>
-          <button
-            onclick={reset}
-            class="text-sm text-stone-500 hover:text-indigo-600 transition-colors"
-          >
-            Try again
-          </button>
-        </div>
+      {/each}
+    </div>
+  {:else}
+    <div class="short">
+      <input
+        type="text"
+        bind:value={userAnswer}
+        disabled={revealed}
+        placeholder="type your answer"
+        class:correct={revealed && isCorrect}
+        class:miss={revealed && !isCorrect}
+      />
+      {#if revealed && quiz.answer}
+        <span class="answer">
+          <span class="answer-label">the answer is</span>
+          <CommentaryText text={quiz.answer} />
+        </span>
       {/if}
     </div>
+  {/if}
 
-    <!-- Explanation (shown after reveal) -->
-    {#if revealed && quiz.explanation}
-      <div class="mt-6 p-4 bg-stone-50 rounded-lg border border-stone-200">
-        <div class="text-xs font-medium text-stone-500 uppercase tracking-wide mb-2">Explanation</div>
-        <div class="text-stone-700 text-sm">
-          <CommentaryText text={quiz.explanation} />
-        </div>
-      </div>
+  <div class="foot">
+    {#if !revealed}
+      <button
+        class="check"
+        disabled={hasOptions ? selectedOption === null : !userAnswer.trim()}
+        onclick={checkAnswer}
+      >
+        check
+      </button>
+    {:else}
+      <span class="verdict" class:ok={isCorrect} class:no={!isCorrect}>
+        {isCorrect ? '✓ correct' : '✗ not quite'}
+      </span>
+      <button class="again" onclick={reset}>try again</button>
     {/if}
   </div>
+
+  {#if revealed && quiz.explanation}
+    <div class="explanation">
+      <span class="label">why</span>
+      <CommentaryText text={quiz.explanation} />
+    </div>
+  {/if}
 </div>
+
+<style>
+  .quiz {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+
+  .question {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .prompt {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .opt {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    width: 100%;
+    text-align: left;
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 9px 12px;
+    cursor: pointer;
+    font: inherit;
+    color: var(--ink-2);
+  }
+  .opt:hover:not(.locked) {
+    border-color: var(--ink);
+  }
+  .opt.on {
+    border-color: var(--ink);
+  }
+  .opt.correct {
+    border-color: var(--accent-ok);
+    color: var(--ink);
+  }
+  .opt.miss {
+    border-color: var(--ink);
+    color: var(--muted);
+  }
+  .opt.locked {
+    cursor: default;
+  }
+  .mark {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--quiet);
+    flex: none;
+    width: 1rem;
+  }
+  .opt.correct .mark {
+    color: var(--accent-ok);
+  }
+  .text {
+    min-width: 0;
+  }
+
+  .short {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .short input {
+    font: inherit;
+    font-size: 16px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 9px 12px;
+    outline: none;
+  }
+  .short input:focus {
+    border-color: var(--accent);
+  }
+  .short input.correct {
+    border-color: var(--accent-ok);
+  }
+  .short input.miss {
+    border-color: var(--ink);
+  }
+  .answer {
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .answer-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--quiet);
+    padding-right: 6px;
+  }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .check,
+  .again {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    color: var(--accent);
+    padding: 5px 11px;
+    cursor: pointer;
+  }
+  .check:disabled {
+    color: var(--faint);
+    border-color: var(--rule);
+    cursor: default;
+  }
+  .again {
+    border: none;
+    color: var(--quiet);
+    padding: 0;
+  }
+  .again:hover {
+    color: var(--ink);
+  }
+
+  .verdict {
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .verdict.ok {
+    color: var(--accent-ok);
+  }
+  .verdict.no {
+    color: var(--ink);
+  }
+
+  .explanation {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--sunken);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 14px;
+    font-size: 15px;
+    color: var(--ink-2);
+  }
+</style>

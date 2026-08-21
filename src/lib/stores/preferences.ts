@@ -93,3 +93,33 @@ function createLessonLanguageStore() {
 }
 
 export const lessonLanguage = createLessonLanguageStore();
+
+/*
+  Authoring is a mode you switch into, not a button hovering over every screen.
+  The floating pencil is retired: signing in adds a switch to the `aa` popover,
+  and while the mode is on the shelf carries edit controls and the editor opens
+  as a rail beside the content. Nothing changes for readers who are not signed
+  in — this flag is only ever set from the popover, which only renders for a
+  signed-in user.
+*/
+const AUTHORING_KEY = "anuvrtti-authoring-mode";
+
+function getStoredAuthoring(): boolean {
+  if (!browser) return false;
+  return localStorage.getItem(AUTHORING_KEY) === "on";
+}
+
+function createAuthoringStore() {
+  const { subscribe, set, update } = writable<boolean>(getStoredAuthoring());
+  const persist = (value: boolean) => {
+    if (browser) localStorage.setItem(AUTHORING_KEY, value ? "on" : "off");
+    return value;
+  };
+  return {
+    subscribe,
+    set: (value: boolean) => set(persist(value)),
+    toggle: () => update((current) => persist(!current)),
+  };
+}
+
+export const authoringMode = createAuthoringStore();

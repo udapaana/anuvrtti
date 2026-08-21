@@ -1,76 +1,54 @@
 <script lang="ts">
   import JargonLookup from '$lib/components/JargonLookup.svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
+  import Shelf from '$lib/components/ui/Shelf.svelte';
+  import ToolRow from '../ToolRow.svelte';
+
+  /*
+    Already the right shape — it only needed the shared frame: the tool row on
+    the shelf, one exhibit in the column.
+  */
 </script>
 
 <svelte:head>
-  <title>Jargon | anuvrtti</title>
+  <title>paribhāṣā · jargon | anuvrtti</title>
 </svelte:head>
 
-<article class="page">
-  <a href="/" class="back-link">← home</a>
+{#snippet shelfLeft()}
+  <ToolRow current="jargon" />
+{/snippet}
 
+<Shelf left={shelfLeft} />
+
+<Shell>
   <header class="head">
-    <p class="eyebrow"><Sanskrit text="paribhāṣā" source="iast" /> · the language of grammar</p>
-    <h1 class="title">jargon</h1>
-    <p class="lede">
-      Sanskrit grammatical terms used throughout the Aṣṭādhyāyī. Search by term or browse by category.
+    <h1><Sanskrit text="paribhāṣā" source="iast" /></h1>
+    <p>
+      The language of grammar: the terms the Aṣṭādhyāyī uses about itself. Search by term or browse
+      by category.
     </p>
   </header>
 
-  <div class="jargon-container">
-    <JargonLookup />
-  </div>
-</article>
+  <JargonLookup />
+</Shell>
 
 <style>
-  .page {
-    max-width: 46rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .back-link {
-    display: inline-block;
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: #94a3b8;
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .back-link:hover { color: #0f1419; }
-
   .head {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    margin-bottom: 0.5rem;
+    gap: 5px;
   }
-  .eyebrow {
-    font-family: ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    color: #94a3b8;
+  .head h1 {
     margin: 0;
+    font-size: 27px;
+    font-weight: 600;
   }
-  .title {
-    font-weight: 400;
-    font-size: 1.5rem;
-    margin: 0.35rem 0 0.4rem;
-  }
-  .lede {
-    color: #475569;
-    font-size: 0.95rem;
-    line-height: 1.6;
+  .head p {
     margin: 0;
-    max-width: 32rem;
-  }
-
-  .jargon-container {
-    border-top: 1px solid #e2e8f0;
-    padding-top: 1rem;
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 62ch;
   }
 </style>

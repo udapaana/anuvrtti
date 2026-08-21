@@ -98,17 +98,17 @@
   .reading {
     margin: 0 0 1.5rem;
     padding-bottom: 1.1rem;
-    border-bottom: 1px solid #e7e2d9;
+    border-bottom: 1px solid var(--rule-2);
   }
   .katha {
     font-size: 1.5rem;
     line-height: 1.6;
-    color: #0f1419;
+    color: var(--ink);
   }
   .gloss {
     margin: 0.6rem 0;
     padding: 0.6rem 0.85rem;
-    background: #faf7f0;
+    background: var(--sunken);
     border-radius: 6px;
     font-size: 0.95rem;
   }
@@ -130,7 +130,7 @@
     font: inherit;
   }
   .marker.term {
-    color: #1a4a6e;
+    color: var(--accent-ref);
     font-weight: 600;
   }
   .marker.cite {
@@ -140,7 +140,7 @@
     border-bottom-style: solid;
   }
   .marker.sel {
-    background: #fde7c8;
+    background: var(--accent-soft);
     border-radius: 3px;
     border-bottom-color: transparent;
   }
@@ -157,10 +157,10 @@
     padding: 0.1rem 0 0.1rem 0.85rem;
     margin-top: 0.5rem;
     font-size: 1.05rem;
-    color: #3a3a3a;
+    color: var(--ink);
     cursor: pointer;
   }
   .vyakhya.sel {
-    background: #fdf3e3;
+    background: var(--sunken);
   }
 </style>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import Shell from '$lib/components/ui/Shell.svelte';
   import { displayScript, lessonLanguage, commentaryDepth } from '$lib/stores/preferences';
   import type { Script } from '$lib/transliteration';
   import type { LessonLanguage } from '$lib/stores/preferences';
@@ -18,8 +19,8 @@
   // Friendly label for the return link based on where the user came from.
   let returnLabel = $derived.by(() => {
     if (returnTo === '/' || returnTo === '') return '← home';
-    if (returnTo.startsWith('/learn/')) return '← lesson';
-    if (returnTo === '/learn') return '← learn';
+    if (returnTo.startsWith('/workbook/')) return '← lesson';
+    if (returnTo === '/workbook') return '← workbook';
     if (returnTo.startsWith('/ref/')) return '← sutra';
     if (returnTo === '/ref') return '← reference';
     if (returnTo === '/review') return '← review';
@@ -33,7 +34,7 @@
   // accessible via the overflow row underneath.
   const primaryScripts: ScriptOption[] = [
     { id: 'devanagari', glyph: 'क',  font: "'Noto Sans Devanagari', sans-serif", name: 'devanagari' },
-    { id: 'iast',       glyph: 'ka', font: "'Crimson Pro', serif",                name: 'iast', italic: true },
+    { id: 'iast',       glyph: 'ka', font: "var(--font-serif)",                name: 'iast', italic: true },
     { id: 'telugu',     glyph: 'క',  font: "'Noto Sans Telugu', sans-serif",     name: 'telugu' },
   ];
 
@@ -47,16 +48,16 @@
     { id: 'odia',        glyph: 'କ',  font: "'Noto Sans Oriya', sans-serif",     name: 'odia' },
     { id: 'sinhala',     glyph: 'ක',  font: "'Noto Sans Sinhala', sans-serif",   name: 'sinhala' },
     { id: 'nandinagari', glyph: '𑦮',  font: "'Noto Sans Nandinagari', sans-serif", name: 'nandinagari' },
-    { id: 'iso15919',    glyph: 'ka', font: "'Crimson Pro', serif",              name: 'iso 15919', italic: true },
-    { id: 'slp1',        glyph: 'ka', font: "ui-monospace, monospace",           name: 'slp1' },
-    { id: 'hk',          glyph: 'ka', font: "ui-monospace, monospace",           name: 'harvard-kyoto' },
-    { id: 'itrans',      glyph: 'ka', font: "ui-monospace, monospace",           name: 'itrans' },
-    { id: 'velthuis',    glyph: 'ka', font: "ui-monospace, monospace",           name: 'velthuis' },
+    { id: 'iso15919',    glyph: 'ka', font: "var(--font-serif)",              name: 'iso 15919', italic: true },
+    { id: 'slp1',        glyph: 'ka', font: "var(--font-mono)",           name: 'slp1' },
+    { id: 'hk',          glyph: 'ka', font: "var(--font-mono)",           name: 'harvard-kyoto' },
+    { id: 'itrans',      glyph: 'ka', font: "var(--font-mono)",           name: 'itrans' },
+    { id: 'velthuis',    glyph: 'ka', font: "var(--font-mono)",           name: 'velthuis' },
   ];
 
   const glossOptions: GlossOption[] = [
     { id: 'telugu',  label: 'తెలుగు',  font: "'Noto Sans Telugu', sans-serif" },
-    { id: 'english', label: 'English', font: "'Crimson Pro', serif", italic: true },
+    { id: 'english', label: 'English', font: "var(--font-serif)", italic: true },
   ];
 
   // Three depths, ordered shallow → deep. The dot affordance grows in size
@@ -85,7 +86,12 @@
   <title>Settings | anuvrtti</title>
 </svelte:head>
 
-<article class="page">
+<!--
+  The `aa` popover holds the three or four preferences people change while
+  reading; this page keeps the rest, as one plain column.
+-->
+<Shell columnMax="640px">
+  <div class="page">
   <a href={returnTo} class="back-link">{returnLabel}</a>
   <p class="eyebrow">preferences</p>
   <h1 class="title">settings</h1>
@@ -185,31 +191,32 @@
       {/each}
     </div>
   </section>
-</article>
+  </div>
+</Shell>
 
 <style>
   .page {
-    max-width: 36rem;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .back-link {
     display: inline-block;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     text-decoration: none;
     margin-bottom: 0.85rem;
     transition: color 0.15s;
   }
-  .back-link:hover { color: #0f1419; }
+  .back-link:hover { color: var(--ink); }
 
   .eyebrow {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     margin: 0;
   }
   .title {
@@ -219,7 +226,7 @@
   }
   .lede {
     font-size: 0.88rem;
-    color: #94a3b8;
+    color: var(--quiet);
     line-height: 1.55;
     font-style: italic;
     max-width: 28rem;
@@ -238,9 +245,9 @@
     font-weight: 500;
   }
   .section-mono {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #94a3b8;
+    color: var(--quiet);
     letter-spacing: 0.04em;
   }
 
@@ -249,15 +256,15 @@
   }
 
   .field-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #475569;
+    color: var(--muted);
     margin: 0;
   }
   .field-help {
     font-size: 0.82rem;
-    color: #94a3b8;
+    color: var(--quiet);
     line-height: 1.55;
     max-width: 28rem;
     margin: 0.3rem 0 1rem;
@@ -288,7 +295,7 @@
   .glyph {
     font-size: 2.2rem;
     line-height: 1;
-    color: #cbd5e1;
+    color: var(--faint);
     transition: color 0.15s;
   }
   .glyph.italic { font-style: italic; }
@@ -296,19 +303,19 @@
 
   .script-card.active .glyph,
   .script-card:hover .glyph {
-    color: #0f1419;
+    color: var(--ink);
   }
 
   .glyph-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #cbd5e1;
+    color: var(--faint);
     transition: color 0.15s;
   }
   .script-card.active .glyph-label,
   .script-card:hover .glyph-label {
-    color: #0f1419;
+    color: var(--ink);
   }
   .underline {
     height: 2px;
@@ -317,24 +324,24 @@
     transition: background 0.15s;
   }
   .script-card.active .underline {
-    background: #f97316;
+    background: var(--accent);
   }
 
   .more-scripts {
     margin-top: 1.25rem;
   }
   .more-scripts summary {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #94a3b8;
+    color: var(--quiet);
     cursor: pointer;
     list-style: none;
   }
   .more-scripts summary::-webkit-details-marker { display: none; }
-  .more-scripts summary::before { content: '+ '; color: #cbd5e1; }
+  .more-scripts summary::before { content: '+ '; color: var(--faint); }
   .more-scripts[open] summary::before { content: '− '; }
-  .more-scripts summary:hover { color: #0f1419; }
+  .more-scripts summary:hover { color: var(--ink); }
 
   .gloss-row {
     display: flex;
@@ -347,15 +354,15 @@
     padding: 0 0 1px;
     cursor: pointer;
     font-size: 1.05rem;
-    color: #cbd5e1;
+    color: var(--faint);
     border-bottom: 2px solid transparent;
     transition: color 0.15s, border-color 0.15s;
   }
   .gloss.italic { font-style: italic; }
-  .gloss:hover { color: #0f1419; }
+  .gloss:hover { color: var(--ink); }
   .gloss.active {
-    color: #0f1419;
-    border-bottom-color: #f97316;
+    color: var(--ink);
+    border-bottom-color: var(--accent);
   }
 
   /* Depth row: three dots of increasing size with explicit labels.
@@ -378,7 +385,7 @@
   }
   .depth-dot {
     border-radius: 50%;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--faint);
     background: transparent;
     transition: all 0.15s;
   }
@@ -387,22 +394,22 @@
   .depth-dot[data-size="2"] { width: 0.95rem; height: 0.95rem; }
 
   .depth-card:hover .depth-dot {
-    border-color: #0f1419;
+    border-color: var(--ink);
   }
   .depth-card.active .depth-dot {
-    background: #f97316;
-    border-color: #f97316;
+    background: var(--accent);
+    border-color: var(--accent);
   }
 
   .depth-label {
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.04em;
-    color: #cbd5e1;
+    color: var(--faint);
     transition: color 0.15s;
   }
   .depth-card:hover .depth-label,
   .depth-card.active .depth-label {
-    color: #0f1419;
+    color: var(--ink);
   }
 </style>

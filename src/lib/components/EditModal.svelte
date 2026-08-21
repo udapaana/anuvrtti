@@ -14,8 +14,15 @@
 
   interface Props {
     user: { login: string; avatar_url: string } | null;
+    /*
+      Authoring is a mode now, so the editor's home is a rail beside the content
+      you are editing rather than a full-screen scrim over it — the page stays
+      readable while you work on it. The layout positions the rail; in that
+      variant this component drops its own fixed overlay and simply fills it.
+    */
+    variant?: 'modal' | 'rail';
   }
-  let { user }: Props = $props();
+  let { user, variant = 'modal' }: Props = $props();
 
   // ── Types ──────────────────────────────────────────────────────────────
 
@@ -117,23 +124,14 @@
     prakriya: 'Derivations',
   };
 
-  const categoryColors: Record<string, string> = {
-    foundation: '#78716c',
-    tinganta: '#3b82f6',
-    subanta: '#10b981',
-    kridanta: '#f43f5e',
-    taddhita: '#f59e0b',
-    sandhi: '#8b5cf6',
-    karaka: '#06b6d4',
-    samasa: '#f97316',
-    prakarana: '#14b8a6',
-    prakriya: '#d946ef',
-  };
+  // Category reads from its label, not from a hue: the ten-colour taxonomy
+  // palette is what the one neutral chip replaced.
+  const categoryColors: Record<string, string> = {};
 
   const difficultyColors: Record<string, string> = {
-    beginner: '#22c55e',
-    intermediate: '#f59e0b',
-    advanced: '#ef4444',
+    beginner: 'var(--accent-ok)',
+    intermediate: 'var(--accent)',
+    advanced: 'var(--ink)',
   };
 
   // ── Data loading ───────────────────────────────────────────────────────
@@ -682,7 +680,13 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Content editor">
+<div
+  class="modal-backdrop"
+  class:rail={variant === 'rail'}
+  role="dialog"
+  aria-modal={variant === 'modal'}
+  aria-label="Content editor"
+>
   <div class="modal">
 
     <!-- Header -->
@@ -830,10 +834,10 @@
                     <button class="path-card-main" onclick={() => selectPath(pathMeta)}>
                       <span class="path-card-title">{pathMeta.title}</span>
                       <div class="path-card-meta">
-                        <span class="category-pill" style="color: {categoryColors[pathMeta.category] ?? '#78716c'}">
+                        <span class="category-pill" style="color: {categoryColors[pathMeta.category] ?? 'var(--muted)'}">
                           {categoryLabels[pathMeta.category] ?? pathMeta.category}
                         </span>
-                        <span class="difficulty-dot" style="background: {difficultyColors[pathMeta.difficulty] ?? '#9ca3af'}" title={pathMeta.difficulty}></span>
+                        <span class="difficulty-dot" style="background: {difficultyColors[pathMeta.difficulty] ?? 'var(--quiet)'}" title={pathMeta.difficulty}></span>
                         <span class="step-count">{pathMeta.stepCount} steps</span>
                       </div>
                     </button>
@@ -972,6 +976,16 @@
     justify-content: stretch;
   }
 
+  /* As a rail the editor has no scrim and no stacking of its own: the layout's
+     aside already holds it beside the content. */
+  .modal-backdrop.rail {
+    position: static;
+    inset: auto;
+    background: transparent;
+    z-index: auto;
+    height: 100%;
+  }
+
   .modal {
     display: flex;
     flex-direction: column;
@@ -988,8 +1002,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.625rem 1rem;
-    border-bottom: 1px solid #e7e5e4;
-    background: #fafaf9;
+    border-bottom: 1px solid var(--rule-2);
+    background: var(--sunken);
     flex-shrink: 0;
     gap: 1rem;
   }
@@ -1004,13 +1018,13 @@
   .modal-title {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #1c1917;
+    color: var(--ink);
     white-space: nowrap;
   }
 
   .file-breadcrumb {
     font-size: 0.75rem;
-    color: #78716c;
+    color: var(--muted);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1026,56 +1040,56 @@
   .change-count {
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #4f46e5;
-    background: #eef2ff;
+    color: var(--accent-ref);
+    background: var(--sunken);
     border-radius: 9999px;
     padding: 0.125rem 0.625rem;
   }
 
   .note-input {
     font-size: 0.8125rem;
-    border: 1px solid #d6d3d1;
+    border: 1px solid var(--faint);
     border-radius: 0.375rem;
     padding: 0.3125rem 0.5rem;
     width: 14rem;
     outline: none;
   }
   .note-input:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 2px #eef2ff;
+    border-color: var(--accent-ref);
+    box-shadow: 0 0 0 2px var(--sunken);
   }
 
   .btn-ghost {
     font-size: 0.8125rem;
-    color: #57534e;
+    color: var(--ink-2);
     background: none;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 0.375rem;
     padding: 0.3125rem 0.625rem;
     cursor: pointer;
   }
-  .btn-ghost:hover { border-color: #d6d3d1; color: #1c1917; }
+  .btn-ghost:hover { border-color: var(--faint); color: var(--ink); }
 
   .btn-submit {
     font-size: 0.8125rem;
     font-weight: 500;
     color: white;
-    background: #4f46e5;
+    background: var(--accent-ref);
     border: none;
     border-radius: 0.375rem;
     padding: 0.375rem 0.875rem;
     cursor: pointer;
     transition: background 0.1s;
   }
-  .btn-submit:hover:not(:disabled) { background: #4338ca; }
+  .btn-submit:hover:not(:disabled) { background: var(--accent-ref); }
   .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
   .btn-signin {
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #4f46e5;
-    background: #eef2ff;
-    border: 1px solid #c7d2fe;
+    color: var(--accent-ref);
+    background: var(--sunken);
+    border: 1px solid var(--rule-2);
     border-radius: 0.375rem;
     padding: 0.3125rem 0.625rem;
     text-decoration: none;
@@ -1091,23 +1105,23 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #78716c;
+    color: var(--muted);
     border-radius: 0.25rem;
   }
-  .btn-close:hover { background: #f5f5f4; color: #1c1917; }
+  .btn-close:hover { background: var(--rule); color: var(--ink); }
   .btn-close svg { width: 0.875rem; height: 0.875rem; }
 
   .pr-link {
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #15803d;
+    color: var(--accent-ok);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
   .submit-error {
     font-size: 0.8125rem;
-    color: #dc2626;
+    color: var(--ink);
     max-width: 20rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1121,10 +1135,10 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: #fefce8;
-    border-bottom: 1px solid #fde68a;
+    background: var(--sunken);
+    border-bottom: 1px solid var(--accent-soft);
     font-size: 0.8125rem;
-    color: #92400e;
+    color: var(--accent-hover);
     flex-shrink: 0;
   }
 
@@ -1137,35 +1151,35 @@
     font-size: 0.8125rem;
     font-weight: 500;
     color: white;
-    background: #4f46e5;
+    background: var(--accent-ref);
     border: none;
     border-radius: 0.375rem;
     padding: 0.3125rem 0.75rem;
     cursor: pointer;
   }
-  .confirm-save:hover { background: #4338ca; }
+  .confirm-save:hover { background: var(--accent-ref); }
 
   .confirm-discard {
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #dc2626;
+    color: var(--ink);
     background: none;
-    border: 1px solid #fecaca;
+    border: 1px solid var(--rule-2);
     border-radius: 0.375rem;
     padding: 0.3125rem 0.75rem;
     cursor: pointer;
   }
-  .confirm-discard:hover { background: #fef2f2; border-color: #f87171; }
+  .confirm-discard:hover { background: var(--sunken); border-color: var(--ink); }
 
   .confirm-cancel {
     font-size: 0.8125rem;
-    color: #78716c;
+    color: var(--muted);
     background: none;
     border: none;
     cursor: pointer;
     padding: 0.3125rem 0.5rem;
   }
-  .confirm-cancel:hover { color: #1c1917; }
+  .confirm-cancel:hover { color: var(--ink); }
 
   /* ── Body layout ─────────────────────────────────────────────────────── */
 
@@ -1181,15 +1195,15 @@
   .sidebar {
     width: 320px;
     flex-shrink: 0;
-    border-right: 1px solid #e7e5e4;
+    border-right: 1px solid var(--rule-2);
     display: flex;
     flex-direction: column;
-    background: #fafaf9;
+    background: var(--sunken);
   }
 
   .mode-tabs {
     display: flex;
-    border-bottom: 1px solid #e7e5e4;
+    border-bottom: 1px solid var(--rule-2);
     flex-shrink: 0;
   }
 
@@ -1198,17 +1212,17 @@
     padding: 0.5rem 0.25rem;
     font-size: 0.75rem;
     font-weight: 500;
-    color: #78716c;
+    color: var(--muted);
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
     cursor: pointer;
     transition: all 0.15s;
   }
-  .mode-tab:hover { color: #1c1917; background: #f5f5f4; }
+  .mode-tab:hover { color: var(--ink); background: var(--rule); }
   .mode-tab.active {
-    color: #4f46e5;
-    border-bottom-color: #4f46e5;
+    color: var(--accent-ref);
+    border-bottom-color: var(--accent-ref);
     background: white;
   }
 
@@ -1228,15 +1242,15 @@
     padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
     font-weight: 500;
-    color: #4f46e5;
+    color: var(--accent-ref);
     background: none;
     border: none;
-    border-bottom: 1px solid #e7e5e4;
+    border-bottom: 1px solid var(--rule-2);
     cursor: pointer;
     text-align: left;
     flex-shrink: 0;
   }
-  .back-btn:hover { background: #eef2ff; }
+  .back-btn:hover { background: var(--sunken); }
 
   .sidebar-meta {
     flex: 1;
@@ -1251,13 +1265,13 @@
     font-size: 0.8125rem;
     font-weight: 500;
     color: white;
-    background: #4f46e5;
+    background: var(--accent-ref);
     border: none;
     border-radius: 0.375rem;
     cursor: pointer;
     flex-shrink: 0;
   }
-  .btn-create:hover:not(:disabled) { background: #4338ca; }
+  .btn-create:hover:not(:disabled) { background: var(--accent-ref); }
   .btn-create:disabled { opacity: 0.5; cursor: not-allowed; }
 
   .track-tabs {
@@ -1272,18 +1286,18 @@
     padding: 0.375rem 0.5rem;
     font-size: 0.6875rem;
     font-weight: 500;
-    color: #78716c;
+    color: var(--muted);
     background: none;
-    border: 1px solid #e7e5e4;
+    border: 1px solid var(--rule-2);
     border-radius: 0.375rem;
     cursor: pointer;
     transition: all 0.1s;
   }
-  .track-tab:hover { color: #1c1917; border-color: #d6d3d1; }
+  .track-tab:hover { color: var(--ink); border-color: var(--faint); }
   .track-tab.active {
-    color: #4f46e5;
-    background: #eef2ff;
-    border-color: #c7d2fe;
+    color: var(--accent-ref);
+    background: var(--sunken);
+    border-color: var(--rule-2);
   }
 
   .path-list {
@@ -1295,9 +1309,9 @@
   .path-card {
     display: flex;
     align-items: stretch;
-    border-bottom: 1px solid #f5f5f4;
+    border-bottom: 1px solid var(--rule);
   }
-  .path-card:hover { background: #f5f5f4; }
+  .path-card:hover { background: var(--rule); }
 
   .path-card-reorder {
     display: flex;
@@ -1312,7 +1326,7 @@
 
   .reorder-btn {
     font-size: 0.625rem;
-    color: #a8a29e;
+    color: var(--quiet);
     background: none;
     border: none;
     cursor: pointer;
@@ -1325,12 +1339,12 @@
     justify-content: center;
     border-radius: 0.125rem;
   }
-  .reorder-btn:hover:not(:disabled) { color: #4f46e5; background: #eef2ff; }
+  .reorder-btn:hover:not(:disabled) { color: var(--accent-ref); background: var(--sunken); }
   .reorder-btn:disabled { opacity: 0.3; cursor: default; }
 
   .path-order {
     font-size: 0.5rem;
-    color: #d6d3d1;
+    color: var(--faint);
     line-height: 1;
   }
 
@@ -1350,7 +1364,7 @@
   .path-card-title {
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #1c1917;
+    color: var(--ink);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1375,7 +1389,7 @@
   }
 
   .step-count {
-    color: #a8a29e;
+    color: var(--quiet);
   }
 
   .new-path-btn {
@@ -1385,9 +1399,9 @@
     padding: 0.5rem;
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #4f46e5;
-    background: #eef2ff;
-    border: 1px dashed #c7d2fe;
+    color: var(--accent-ref);
+    background: var(--sunken);
+    border: 1px dashed var(--rule-2);
     border-radius: 0.375rem;
     cursor: pointer;
     text-align: center;
@@ -1395,8 +1409,8 @@
     flex-shrink: 0;
   }
   .new-path-btn:hover {
-    background: #e0e7ff;
-    border-color: #a5b4fc;
+    background: var(--sunken);
+    border-color: var(--accent-ref);
   }
 
   /* ── Tree (commentary + reference) ───────────────────────────────────── */
@@ -1411,24 +1425,24 @@
     text-align: left;
     padding: 0.25rem 0.75rem 0.25rem 1.25rem;
     font-size: 0.8125rem;
-    color: #44403c;
+    color: var(--ink-2);
     background: none;
     border: none;
     cursor: pointer;
-    font-family: ui-monospace, monospace;
+    font-family: var(--font-mono);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .tree-leaf:hover { background: #f5f5f4; }
-  .tree-leaf.selected { background: #eef2ff; color: #4f46e5; font-weight: 500; }
+  .tree-leaf:hover { background: var(--rule); }
+  .tree-leaf.selected { background: var(--sunken); color: var(--accent-ref); font-weight: 500; }
 
   .tree-branch { font-size: 0.8125rem; }
 
   .tree-branch-summary {
     padding: 0.25rem 0.75rem;
     cursor: pointer;
-    color: #57534e;
+    color: var(--ink-2);
     font-weight: 500;
     list-style: none;
     display: flex;
@@ -1436,11 +1450,11 @@
     gap: 0.25rem;
     user-select: none;
   }
-  .tree-branch-summary:hover { background: #f5f5f4; }
+  .tree-branch-summary:hover { background: var(--rule); }
   .tree-branch-summary::before {
     content: '\25B8';
     font-size: 0.625rem;
-    color: #a8a29e;
+    color: var(--quiet);
     transition: transform 0.15s;
     display: inline-block;
     width: 0.75rem;
@@ -1468,7 +1482,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #78716c;
+    color: var(--muted);
     font-size: 0.875rem;
   }
 
@@ -1480,27 +1494,27 @@
   .placeholder-content h3 {
     font-size: 1rem;
     font-weight: 600;
-    color: #44403c;
+    color: var(--ink-2);
     margin: 0 0 0.5rem;
   }
 
   .placeholder-content p {
     font-size: 0.875rem;
-    color: #a8a29e;
+    color: var(--quiet);
     margin: 0;
   }
 
   .validation-errors {
-    background: #fef2f2;
-    border-bottom: 1px solid #fecaca;
+    background: var(--sunken);
+    border-bottom: 1px solid var(--rule-2);
     padding: 0.5rem 1rem;
     flex-shrink: 0;
   }
 
   .validation-error {
     font-size: 0.8125rem;
-    color: #dc2626;
-    font-family: ui-monospace, monospace;
+    color: var(--ink);
+    font-family: var(--font-mono);
   }
 
   .toast-editor-wrapper {
@@ -1518,8 +1532,8 @@
   .changes-sidebar {
     width: 200px;
     flex-shrink: 0;
-    border-left: 1px solid #e7e5e4;
-    background: #fafaf9;
+    border-left: 1px solid var(--rule-2);
+    background: var(--sunken);
     overflow-y: auto;
     padding: 0.5rem 0;
   }
@@ -1529,7 +1543,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #a8a29e;
+    color: var(--quiet);
     padding: 0.5rem 0.75rem 0.25rem;
   }
 
@@ -1539,13 +1553,13 @@
     padding: 0 0.5rem 0 0.75rem;
     gap: 0.25rem;
   }
-  .change-item.selected { background: #eef2ff; }
+  .change-item.selected { background: var(--sunken); }
 
   .change-item-btn {
     flex: 1;
     text-align: left;
     font-size: 0.75rem;
-    color: #44403c;
+    color: var(--ink-2);
     background: none;
     border: none;
     cursor: pointer;
@@ -1554,18 +1568,18 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .change-item-btn:hover { color: #4f46e5; }
+  .change-item-btn:hover { color: var(--accent-ref); }
 
   .change-remove {
     font-size: 0.875rem;
-    color: #a8a29e;
+    color: var(--quiet);
     background: none;
     border: none;
     cursor: pointer;
     padding: 0 0.125rem;
     flex-shrink: 0;
   }
-  .change-remove:hover { color: #dc2626; }
+  .change-remove:hover { color: var(--ink); }
 
   /* ── Toast UI overrides ──────────────────────────────────────────────── */
 
@@ -1575,20 +1589,20 @@
     height: 100% !important;
   }
   :global(.toastui-editor-toolbar) {
-    background: #fafaf9 !important;
-    border-bottom: 1px solid #e7e5e4 !important;
+    background: var(--sunken) !important;
+    border-bottom: 1px solid var(--rule-2) !important;
   }
   :global(.toastui-editor-toolbar-item-wrapper button) {
-    color: #44403c !important;
+    color: var(--ink-2) !important;
   }
   :global(.toastui-editor-toolbar-item-wrapper button:hover) {
-    background: #f5f5f4 !important;
+    background: var(--rule) !important;
   }
   :global(.toastui-editor-md-preview) {
     font-family: inherit !important;
     font-size: 0.9375rem !important;
     line-height: 1.7 !important;
-    color: #1c1917 !important;
+    color: var(--ink) !important;
     padding: 1rem 1.25rem !important;
   }
   :global(.toastui-editor-main-container) {
@@ -1600,14 +1614,14 @@
 
   :global(.sanskrit-term) {
     font-family: 'Noto Sans Devanagari', sans-serif;
-    color: #1c1917;
+    color: var(--ink);
   }
   :global(.roman-term) {
     font-style: italic;
-    color: #44403c;
+    color: var(--ink-2);
   }
   :global(.sutra-ref-link) {
-    color: #4f46e5;
+    color: var(--accent-ref);
     text-decoration: none;
   }
   :global(.sutra-ref-link:hover) {

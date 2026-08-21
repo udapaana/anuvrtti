@@ -77,7 +77,7 @@
 </script>
 
 <div class="py-1">
-  <h3 class="font-mono text-[0.7rem] tracking-wider lowercase text-[#94a3b8] mb-3">
+  <h3 class="font-mono text-[0.7rem] tracking-wider lowercase text-[var(--quiet)] mb-3">
     <Sanskrit text="paribhāṣā" source="iast" />
   </h3>
 
@@ -87,7 +87,7 @@
     bind:value={query}
     oninput={handleSearch}
     placeholder="search terms"
-    class="w-full px-0 py-1.5 text-sm border-0 border-b border-[#e2e8f0] bg-transparent focus:outline-none focus:border-[#f97316] mb-3 placeholder:text-[#cbd5e1]"
+    class="w-full px-0 py-1.5 text-sm border-0 border-b border-[var(--rule-2)] bg-transparent focus:outline-none focus:border-[var(--accent)] mb-3 placeholder:text-[var(--faint)]"
   />
 
   <!-- Category filters — all populated categories, with counts -->
@@ -98,10 +98,10 @@
         title={cat.label}
         class="text-xs italic transition-colors
                {selectedCategory === cat.category
-                 ? 'text-[#f97316] font-medium'
-                 : 'text-[#94a3b8] hover:text-[#0f1419]'}"
+                 ? 'text-[var(--accent)] font-medium'
+                 : 'text-[var(--quiet)] hover:text-[var(--ink)]'}"
       >
-        {cat.label.split(' ')[0].toLowerCase()} <span class="not-italic text-[0.65rem] text-[#cbd5e1]">{cat.count}</span>
+        {cat.label.split(' ')[0].toLowerCase()} <span class="not-italic text-[0.65rem] text-[var(--faint)]">{cat.count}</span>
       </button>
     {/each}
   </div>
@@ -113,26 +113,26 @@
         <button
           onclick={() => selectTerm(term)}
           class="w-full text-left px-1 py-1 text-sm transition-colors
-                 {selectedTerm?.termRoman === term.termRoman ? 'text-[#f97316]' : 'hover:bg-[#fff7ed]'}"
+                 {selectedTerm?.termRoman === term.termRoman ? 'text-[var(--accent)]' : 'hover:bg-[var(--sunken)]'}"
         >
           <div class="flex items-baseline gap-2">
             <span class="italic"><Sanskrit text={term.term} /></span>
-            <span class="text-[#94a3b8] text-xs font-mono">{term.termRoman}</span>
+            <span class="text-[var(--quiet)] text-xs font-mono">{term.termRoman}</span>
           </div>
         </button>
       {/each}
     </div>
   {:else if query || selectedCategory}
-    <p class="text-xs text-[#94a3b8] italic">no terms found</p>
+    <p class="text-xs text-[var(--quiet)] italic">no terms found</p>
   {/if}
 
   <!-- Selected term detail -->
   {#if selectedTerm}
-    <div class="mt-3 pt-3 border-t border-[#e2e8f0]">
+    <div class="mt-3 pt-3 border-t border-[var(--rule-2)]">
       <!-- Back button -->
       <button
         onclick={goBack}
-        class="flex items-center gap-1 text-xs text-[#94a3b8] hover:text-[#f97316] mb-2 transition-colors"
+        class="flex items-center gap-1 text-xs text-[var(--quiet)] hover:text-[var(--accent)] mb-2 transition-colors"
       >
         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
