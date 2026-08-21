@@ -88,6 +88,28 @@
     max-width: 900px;
   }
 
+  /*
+    The spine and the rail are sticky, and each one scrolls INSIDE its own box.
+
+    Without the max-height a sticky column is as tall as its content, so sticky
+    pins its top and the only way to reach its bottom is to scroll the whole
+    page — you had to run the centre column to its end before the last chapter
+    or the paradigm came into view. Capping the height at the viewport (less the
+    nav and shelf above it) makes each column a scroll container of its own.
+
+    `auto`, not `scroll`: a short spine or a rail holding two lines is shorter
+    than the cap, so it never becomes scrollable and the wheel keeps falling
+    through to the page. `overscroll-behavior: contain` stops a column that IS
+    scrollable from grabbing the page once it hits its own end.
+  */
+  .spine,
+  .rail {
+    max-height: calc(100vh - var(--sticky-rail));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+
   .spine {
     border-right: 1px solid var(--rule);
     padding: 26px 18px;
@@ -124,7 +146,9 @@
     align-self: start;
     position: sticky;
     top: var(--sticky-rail);
-    min-height: 520px;
+    /* min-height beats max-height in CSS, so a bare 520px would push the rail
+       past the bottom of a short viewport and take its scrolling with it. */
+    min-height: min(520px, calc(100vh - var(--sticky-rail)));
     min-width: 0;
   }
 
@@ -137,6 +161,13 @@
     .shell.has-spine,
     .shell.has-rail {
       grid-template-columns: minmax(0, 1fr);
+    }
+    /* Stacked, nothing is pinned, so neither column owns a viewport-tall scroll
+       box any more — they grow with the page like the column between them. */
+    .spine,
+    .rail {
+      max-height: none;
+      overflow-y: visible;
     }
     .spine {
       position: static;
