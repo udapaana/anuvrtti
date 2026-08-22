@@ -45,7 +45,7 @@
   type Mode = 'recall' | 'gloss';
   let mode = $state<Mode>('recall');
   let padaccheda = $state(false);
-  let sel = $state<{ id: string; wi: number } | null>(null);
+  let sel = $state<{ id: string; ti: number } | null>(null);
   let pick = $state<string | null>(null);
   let checked = $state<Set<string>>(new Set());
   let showTr = $state(false);
@@ -273,44 +273,86 @@
 
   // Paradigm recognition lives in src/lib/reader/paradigm.ts — see the note
   // there on ex094 vs ex172. Recognition is by SHAPE, not by the `kind` field.
-  // ── interlinear token + word identity processing (matches design) ───────────
-  function processEx(r: Reading, n: number) {
-    const id = r.id;
+  /*
+    ONE tokenizer, shared by the rendered card and by the selection layer.
+
+    It used to live inside processEx, which only runs for readings on the
+    current page, so nothing else could ask "which word is token 7 of ex181?".
+    Selection needs exactly that: a token, not a word — see below.
+  */
+  const tokenCache = new Map<string, any[]>();
+  function tokensOf(r: Reading): any[] {
+    const hit = tokenCache.get(r.id);
+    if (hit) return hit;
+
     // Normalise anusvāra when indexing: the corpus writes both ग्रामं and
     // ग्रामम् for the same word, and an unnormalised lookup silently drops the
     // gloss (the token just renders bare). Affected 12 readings.
-    const anusvara = (s: string) => s.replace(/ं$/, 'म्');
+    const anusvara = (s2: string) => s2.replace(/ं$/, 'म्');
+    const wordsRaw = r.words || [];
     const formIndex: Record<string, number> = {};
-    (r.words || []).forEach((w: any, wi: number) => {
+    wordsRaw.forEach((w: any, wi: number) => {
       const k = anusvara(w.form);
       if (!(k in formIndex)) formIndex[k] = wi;
     });
 
-    const words = (r.words || []).map((w: any, wi: number) => {
-      const terms = (w.notes || []).filter((nt: any) => nt.term).map((nt: any) => ({ term: nt.term, en: nt.en || '' }));
-      return { wi, form: w.form, gloss: w.gloss || '', terms };
-    });
+    /*
+      Tokens take their word BY POSITION, walking words[] in order, rather than
+      looking the surface form up. Keyed by text, every occurrence of a repeated
+      word resolved to the first one: both बालः in ex181 lit together, shared a
+      gloss, and word-stepping landed on the same index twice. 59 of the 274
+      readings repeat a form, so this was a fifth of the corpus.
 
-    const tokens = r.sentence
+      The dictionary stays as a fallback, because the corpus annotates a
+      repeated form ONCE — ex181 has 37 tokens against 29 word entries — so the
+      second occurrence has no word of its own to point at. It borrows the
+      annotation without consuming the cursor. That is why selection cannot be
+      keyed on the word index either: see `sel`, which holds a token index.
+    */
+    let cursor = 0;
+    const out = String(r.sentence ?? '')
       .replace(/॥/g, ' ॥ ')
       .replace(/।/g, ' । ')
       .split(/\s+/)
       .filter(Boolean)
-      .map((tx: string) => {
+      .map((tx: string, ti: number) => {
         // Strip trailing punctuation before matching against the gloss table.
         // Prose passages (kind:sangraha, katha) use commas inside a sentence,
         // and a token like "क्रुध्यति," would otherwise miss its gloss and
         // render bare — the failure is silent, so it must be handled here.
         const clean = anusvara(tx.replace(/[।॥,;—"“”?!]/g, '').trim());
-        const wi = clean in formIndex ? formIndex[clean] : -1;
+        let wi = -1;
+        if (clean) {
+          for (let k = cursor; k < wordsRaw.length; k++) {
+            if (anusvara(wordsRaw[k].form) === clean) {
+              wi = k;
+              cursor = k + 1;
+              break;
+            }
+          }
+          if (wi < 0 && clean in formIndex) wi = formIndex[clean];
+        }
         // A word is FOCAL (the reading's new/derived word) when it carries a sūtra
         // citation. Focal words show their gloss by default; KNOWN words collapse
         // to bare Devanagari and reveal on hover — so the reader can try to recall.
-        const focal = wi >= 0 && (r.words[wi].notes || []).some((nt: any) => nt.cite);
+        const focal = wi >= 0 && (wordsRaw[wi].notes || []).some((nt: any) => nt.cite);
         // padaccheda: the pre-sandhi split (देवोऽत्र → देवः + अत्र), when authored.
-        const split = wi >= 0 ? (r.words[wi].split ?? null) : null;
-        return { text: tx, wi, gloss: wi >= 0 ? r.words[wi].gloss || '' : '', isWord: wi >= 0, focal, split };
+        const split = wi >= 0 ? (wordsRaw[wi].split ?? null) : null;
+        return { ti, text: tx, wi, gloss: wi >= 0 ? wordsRaw[wi].gloss || '' : '', isWord: wi >= 0, focal, split };
       });
+    tokenCache.set(r.id, out);
+    return out;
+  }
+
+  // ── interlinear token + word identity processing (matches design) ───────────
+  function processEx(r: Reading, n: number) {
+    const id = r.id;
+    const words = (r.words || []).map((w: any, wi: number) => {
+      const terms = (w.notes || []).filter((nt: any) => nt.term).map((nt: any) => ({ term: nt.term, en: nt.en || '' }));
+      return { wi, form: w.form, gloss: w.gloss || '', terms };
+    });
+
+    const tokens = tokensOf(r);
 
     return {
       ex: true,
@@ -369,8 +411,25 @@
     return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quiz: w.quiz ?? null, terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
   }
 
+  /**
+   * The clicked TOKEN, resolved to the word it points at.
+   *
+   * Selection is a position in the sentence, not a word: a repeated form has
+   * only one entry in words[], so two occurrences of बालः share an annotation
+   * but must still be two separate things to click. `ti` is the identity; `wi`
+   * is where the annotation is read from.
+   */
+  function tokenAt(id: string, ti: number) {
+    const r = list.find((x) => x.id === id);
+    if (!r) return null;
+    const t = tokensOf(r)[ti];
+    if (!t || t.wi < 0) return null;
+    const w = wordAt(id, t.wi);
+    return w ? { ...w, ti } : null;
+  }
+
   /** The clicked word — the grammar block. */
-  const selWord = $derived(sel ? wordAt(sel.id, sel.wi) : null);
+  const selWord = $derived(sel ? tokenAt(sel.id, sel.ti) : null);
   /** The drawn card — the quiz block. Never the word you are looking at. */
   const quizWord = $derived(deckQuiz ? wordAt(deckQuiz.id, deckQuiz.wi) : null);
 
@@ -383,12 +442,17 @@
     const s = sel;
     if (!s) return [];
     const r = list.find((x) => x.id === s.id);
-    return (r?.words ?? []).map((wd: any, wi: number) => ({
-      wi,
-      on: wi === s.wi,
-      form: padaccheda && wd.split ? wd.split.join(' + ') : wd.form,
-      gloss: wd.gloss ?? ''
-    }));
+    if (!r) return [];
+    // one row per word-bearing TOKEN — a form used twice is two rows, each
+    // selecting its own position, rather than one row standing for both
+    return tokensOf(r)
+      .filter((t: any) => t.isWord)
+      .map((t: any) => ({
+        ti: t.ti,
+        on: t.ti === s.ti,
+        form: padaccheda && t.split ? t.split.join(' + ') : t.text,
+        gloss: t.gloss ?? ''
+      }));
   });
 
   // The paradigm the selected word belongs to — its declension or conjugation
@@ -444,12 +508,12 @@
   // A click moves the selection and nothing else. It no longer clears a quiz in
   // progress: the two blocks are independent, so looking a word up mid-question
   // is allowed — and expected, since the question is about another reading.
-  function selectWord(id: string, wi: number) {
+  function selectToken(id: string, ti: number) {
     formedOpen = false;
     paraOpen = false;
     grammarOpen = true;
-    if (sel && sel.id === id && sel.wi === wi) { sel = null; return; }
-    sel = { id, wi };
+    if (sel && sel.id === id && sel.ti === ti) { sel = null; return; }
+    sel = { id, ti };
   }
 
   // Every (reading, word-index) that has a quiz and lives in a SEEN reading —
@@ -477,10 +541,25 @@
   // selection stays where the reader put it, so the line being read keeps its
   // explanation while the question sits underneath.
   function drawFromDeck() {
-    const deck = deckCards.filter((c) => !(sel && sel.id === c.id && sel.wi === c.wi));
+    const deck = deckCards.filter((c) => !(sel && sel.id === c.id && selWord?.wi === c.wi));
     if (!deck.length) return;
     deckQuiz = deck[Math.floor(Math.random() * deck.length)];
     pick = null;
+  }
+
+  /**
+   * Jump to the quizzed word in its own reading. The deck is keyed by word
+   * index (that is what carries the quiz), so find the token standing at it.
+   */
+  function selectQuizWord() {
+    const q = quizWord;
+    if (!q) return;
+    const r = list.find((x) => x.id === q.id);
+    if (!r) return;
+    const t = tokensOf(r).find((tk: any) => tk.isWord && tk.wi === q.wi);
+    if (!t) return;
+    selectToken(r.id, t.ti);
+    jumpToReading(r.id);
   }
 
   /** Put the question away without answering it. */
@@ -546,17 +625,48 @@
   }
 
   // Scroll a reading (by id) so its top sits at the anchor line, and focus it.
+  /*
+    Scroll a card to the anchor ONLY if it is not already fully on screen.
+
+    Both stepping paths go through here. That matters: stepLine falls back to
+    stepReading when no word is selected, and pressing down without clicking a
+    word first is the ordinary thing to do — so the unconditional scroll that
+    used to live here was what most people actually hit. Every press hauled the
+    next card up to the anchor, taking everything above it off the top, which
+    is the "leaps four cards" that survived fixing the selected-word path.
+
+    Judged against where the page is GOING (pendingScroll), not where a smooth
+    scroll currently happens to be, so a quick second press does not measure a
+    half-finished animation.
+  */
+  function scrollCardIntoView(el: HTMLElement) {
+    const rect = el.getBoundingClientRect();
+    const absTop = rect.top + window.scrollY;
+    const settledY = pendingScroll ?? window.scrollY;
+    const top = absTop - settledY;
+    if (top >= ANCHOR && top + rect.height <= window.innerHeight - 24) return;
+    const target = absTop - ANCHOR;
+    pendingScroll = target;
+    window.scrollTo({ top: target, behavior: 'smooth' });
+    clearTimeout(pendingScrollTimer);
+    pendingScrollTimer = setTimeout(() => (pendingScroll = null), 700);
+  }
+
   function scrollToReading(id: string) {
     const el = document.querySelector('[data-ex-id="' + id + '"]') as HTMLElement | null;
     if (!el) return;
     focusedId = id;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - ANCHOR, behavior: 'smooth' });
+    scrollCardIntoView(el);
   }
 
   // The reading line arrows step relative to the bottom of the sticky chrome,
   // which is now exactly nav + shelf — two layers, not four. Every scroll in
   // this page reads this one number.
   const ANCHOR = 100;
+  // Destination of a smooth scroll still in flight, so a second keypress can
+  // reason about where the page will be rather than where it currently is.
+  let pendingScroll: number | null = null;
+  let pendingScrollTimer: ReturnType<typeof setTimeout> | undefined;
 
   // ← →  /  ↑ ↓  step through readings — always relative to the card actually at
   // the top of the viewport RIGHT NOW (read live from the DOM), so it stays in
@@ -594,27 +704,44 @@
   // ← → walk the words of a line, wrapping into the next line at either end.
   // Selecting a word is what opens the rail, so this is how you read a line
   // word by word without touching the mouse.
+  /** The word-bearing token indices of a reading, in sentence order. */
+  function wordTis(r: Reading): number[] {
+    return tokensOf(r).filter((t: any) => t.isWord).map((t: any) => t.ti);
+  }
+
   function stepWord(dir: 1 | -1) {
     if (!list.length) return;
     const s = sel;
     if (!s) {
       const r = list.find((x) => x.id === (focusedId ?? slice[0]?.id)) ?? slice[0];
-      if (r) selectWord(r.id, dir > 0 ? 0 : Math.max(0, (r.words?.length ?? 1) - 1));
+      if (r) {
+        const tis = wordTis(r);
+        if (tis.length) selectToken(r.id, dir > 0 ? tis[0] : tis[tis.length - 1]);
+      }
       return;
     }
     let ri = list.findIndex((x) => x.id === s.id);
     if (ri < 0) return;
-    let wi = s.wi + dir;
-    if (wi >= (list[ri].words?.length ?? 0)) {
+    // walk the word-bearing tokens, so a repeated form is two stops, not one
+    const tis = wordTis(list[ri]);
+    let at = tis.indexOf(s.ti) + dir;
+    if (at >= tis.length) {
       ri = (ri + 1) % list.length;
-      wi = 0;
-    } else if (wi < 0) {
-      ri = (ri - 1 + list.length) % list.length;
-      wi = Math.max(0, (list[ri].words?.length ?? 1) - 1);
+      const next = wordTis(list[ri]);
+      if (!next.length) return;
+      selectToken(list[ri].id, next[0]);
+      jumpToReading(list[ri].id);
+      return;
     }
-    const moved = list[ri].id !== s.id;
-    selectWord(list[ri].id, wi);
-    if (moved) jumpToReading(list[ri].id);
+    if (at < 0) {
+      ri = (ri - 1 + list.length) % list.length;
+      const prev = wordTis(list[ri]);
+      if (!prev.length) return;
+      selectToken(list[ri].id, prev[prev.length - 1]);
+      jumpToReading(list[ri].id);
+      return;
+    }
+    selectToken(list[ri].id, tis[at]);
   }
 
   // ↑ ↓ move line to line, keeping your place within the line.
@@ -646,26 +773,13 @@
     /*
       Move the page only when the card would otherwise be off screen.
 
-      Forcing every selection to the anchor line is what made stepping "leap
-      four cards": the HIGHLIGHT was always advancing by exactly one — measured,
-      one rendered card per press, every press — but pinning that card to the
-      top means everything between it and the top scrolls away with it. Select a
-      word four cards down the screen, press down, and the page lurches four
-      cards while the highlight moves one.
-
-      Word stepping never had this problem for the simple reason that it never
-      scrolls; it just moves the mark. Line stepping now does the same until it
-      runs out of screen, and only then scrolls — to the anchor, so the landing
-      place stays predictable when it does happen.
-
-      Adding scrollY back to the viewport-relative rect gives the card's
-      absolute position in the document, which does not move while a smooth
-      scroll is in flight, so holding the key down still lands cleanly.
+      Pinning every selection to the anchor is what made stepping "leap four
+      cards": the highlight always advanced by exactly one, but hauling that
+      card to the top takes everything above it off the screen with it. Word
+      stepping never had the problem because it never scrolls at all.
     */
-    const r = el.getBoundingClientRect();
-    if (r.top < ANCHOR || r.bottom > window.innerHeight - 24) {
-      window.scrollTo({ top: r.top + window.scrollY - ANCHOR, behavior: 'smooth' });
-    }
+    // shared with stepReading — see scrollCardIntoView
+    scrollCardIntoView(el);
   }
 
   function stepLine(dir: 1 | -1) {
@@ -676,7 +790,11 @@
     const next = (ri + dir + list.length) % list.length;
     const target = list[next];
     if (!target) return;
-    selectWord(target.id, Math.min(s.wi, Math.max(0, (target.words?.length ?? 1) - 1)));
+    // keep your ordinal place in the line, measured in word-bearing tokens
+    const here = wordTis(list[ri]).indexOf(s.ti);
+    const tis = wordTis(target);
+    if (!tis.length) return;
+    selectToken(target.id, tis[Math.min(Math.max(here, 0), tis.length - 1)]);
     revealReading(target.id);
   }
 
@@ -912,7 +1030,7 @@
         {#if verdict}
           <span class="verdict {verdict.tone}">{verdict.text}</span>
         {/if}
-        <button class="run-row on" onclick={() => selectWord(quizWord.id, quizWord.wi)}>
+        <button class="run-row on" onclick={() => selectQuizWord()}>
           <span class="run-form"><Sanskrit text={quizWord.form} source="devanagari" /></span>
           <span class="run-gloss"><Sanskrit text={quizWord.gloss} source="devanagari" /></span>
         </button>
@@ -973,8 +1091,8 @@
            the rail rather than a second row under every word. -->
       <div class="run">
         <span class="label">the line, word for word</span>
-        {#each runRows as g (g.wi)}
-          <button class="run-row" class:on={g.on} onclick={() => selectWord(selWord.id, g.wi)}>
+        {#each runRows as g (g.ti)}
+          <button class="run-row" class:on={g.on} onclick={() => selectToken(selWord.id, g.ti)}>
             <span class="run-form"><Sanskrit text={g.form} source="devanagari" /></span>
             <span class="run-gloss"><Sanskrit text={g.gloss} source="devanagari" /></span>
           </button>
@@ -1112,14 +1230,14 @@
                 {#if tok.isWord}
                   <span
                     class="token"
-                    class:hot={hl(row.id, tok.wi)}
+                    class:hot={hl(row.id, tok.ti)}
                     class:focal={tok.focal}
-                    class:sel={sel?.id === row.id && sel?.wi === tok.wi}
+                    class:sel={sel?.id === row.id && sel?.ti === tok.ti}
                     role="presentation"
                     title={tok.gloss}
-                    onmouseenter={() => enterWord(row.id, tok.wi)}
+                    onmouseenter={() => enterWord(row.id, tok.ti)}
                     onmouseleave={leaveWord}
-                    onclick={() => selectWord(row.id, tok.wi)}
+                    onclick={() => selectToken(row.id, tok.ti)}
                   >
                     {#if padaccheda && tok.split}
                       {#each tok.split as part, pi}
