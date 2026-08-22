@@ -873,7 +873,7 @@
 
 {#snippet shelfRight()}
   <span class="keys">← → word · ↑ ↓ line</span>
-  <span>{checked.size} checked · {seen.size} read · {deckCount} in deck</span>
+  <span>{checked.size} checked · {seen.size} read · {deckCount} to review</span>
   <!-- The quiz lives on the shelf, not on the text. It used to be reachable
        only from an empty rail, so the way to get a question was to clear your
        selection or keep clicking words — and a click is for looking a word up.
@@ -1072,11 +1072,6 @@
   <!-- The question is last, under both, so neither the reading's note nor the
        word you are looking at goes away to make room for it. -->
   {@render quizBlock()}
-  {#if !deckQuiz}
-    <button class="quizme" onclick={drawFromDeck} disabled={!deckCards.length}>
-      {deckCards.length ? `quiz me · ${deckCards.length} to draw from` : 'quiz me · read a line first'}
-    </button>
-  {/if}
 {/snippet}
 
 {#if error}
@@ -1133,7 +1128,6 @@
                     class:focal={tok.focal}
                     class:sel={sel?.id === row.id && sel?.wi === tok.wi}
                     role="presentation"
-                    title={tok.gloss}
                     onmouseenter={() => enterWord(row.id, tok.wi)}
                     onmouseleave={leaveWord}
                     onclick={() => selectWord(row.id, tok.wi)}
