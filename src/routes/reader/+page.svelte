@@ -436,6 +436,35 @@
   /** A question is on screen and unanswered. Governs the QUIZ block alone. */
   const asking = $derived(!!quizWord?.quiz && pick === null);
 
+  /*
+    What to show above the question, if anything.
+
+    A quiz that asks for a TAG — which लकार, which विभक्ति — needs the clause,
+    and the clause cannot give a tag away. A quiz that asks for a FORM is a
+    different matter: `production` asks "which form is राम · तृतीया · एकवचन?"
+    and the answer is the word itself, sitting in the sentence printed directly
+    above. 374 of the 408 production quizzes leaked their answer that way, 22%
+    of the deck overall. It needs no context at all — it is paradigm recall.
+
+    `relation` also names another word, but there the sentence IS the question
+    ("which word does this qualify?"), so it stays.
+
+    What does show is trimmed to the CLAUSE holding the word rather than the
+    whole passage: a सङ्ग्रह reading runs to 556 characters, and eight lines of
+    prose to ask about one word buries it.
+  */
+  const quizContext = $derived.by(() => {
+    const q = quizWord;
+    if (!q?.quiz) return '';
+    if (q.quiz.kind === 'production') return '';
+    if (q.quiz.phrase) return q.quiz.phrase;
+    const clauses = String(q.sentence ?? '')
+      .split(/(?<=[।॥])/)
+      .map((c: string) => c.trim())
+      .filter(Boolean);
+    return clauses.find((c: string) => c.includes(q.form)) ?? q.sentence ?? '';
+  });
+
   // The word-for-word run of the selected line. It belongs to the grammar, so
   // it no longer waits on a quiz — the question is about another reading.
   const runRows = $derived.by(() => {
@@ -1012,8 +1041,8 @@
         <button class="quiz-close" onclick={closeQuiz} aria-label="close the question">×</button>
       </div>
 
-      {#if quizWord.sentence}
-        <div class="phrase context"><Sanskrit text={quizWord.sentence} source="devanagari" /></div>
+      {#if quizContext}
+        <div class="phrase context"><Sanskrit text={quizContext} source="devanagari" /></div>
       {/if}
 
       {#if asking}
@@ -1044,17 +1073,23 @@
 
 {#snippet rail()}
   <!--
-    The rail stacks three things, in this order, and none of them replaces
-    another:
+    The rail stacks, and nothing here replaces anything else:
 
+      the QUESTION — shut by default, opening at the top when you ask for it
       the READING's own commentary (the vyākhyā) — the card you are on
       the WORD you clicked, with its gloss, tags, sūtras and paradigm
-      the QUESTION, drawn from a reading you have already passed
 
     The commentary used to be swapped out for the word block the moment you
     clicked anything, so the note explaining the sentence disappeared exactly
     when you started looking into it. It stays put now; the word arrives below.
   -->
+  {#if !deckQuiz}
+    <button class="quizme top" onclick={drawFromDeck} disabled={!deckCards.length}>
+      {deckCards.length ? `quiz me · ${deckCards.length} to draw from` : 'quiz me · read a line first'}
+    </button>
+  {/if}
+  {@render quizBlock()}
+
   {#if railReading?.vyakhya || railReading?.vyakhya_en}
     <div class="vyakhya">
       <span class="label">this reading</span>
@@ -1170,14 +1205,6 @@
     </div>
   {/if}
 
-  <!-- The question is last, under both, so neither the reading's note nor the
-       word you are looking at goes away to make room for it. -->
-  {@render quizBlock()}
-  {#if !deckQuiz}
-    <button class="quizme" onclick={drawFromDeck} disabled={!deckCards.length}>
-      {deckCards.length ? `quiz me · ${deckCards.length} to draw from` : 'quiz me · read a line first'}
-    </button>
-  {/if}
 {/snippet}
 
 {#if error}
@@ -1678,9 +1705,14 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-top: 1px solid var(--rule-2);
-    margin-top: 4px;
-    padding-top: 14px;
+    /* it sits at the TOP of the rail now, so the rule goes underneath it —
+       separating the question from the reading it is not about */
+    border-bottom: 1px solid var(--rule-2);
+    margin-bottom: 4px;
+    padding-bottom: 16px;
+  }
+  .quizme.top {
+    margin-bottom: 2px;
   }
   .quiz-head {
     display: flex;
