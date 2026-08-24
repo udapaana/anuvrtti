@@ -14,7 +14,6 @@ import * as path from 'path';
 import { parse as parseYaml } from 'yaml';
 import { parseGrid, isRectangular } from '../src/lib/reader/paradigm';
 import { deaccent } from '../src/lib/usage/normalize';
-import { SAMASA, TADDHITA_ARTHA, KRT_DECLINING, KRT_INDECLINABLE, PRAYOGA } from '../src/lib/usage/schema';
 
 const READINGS_DIR = path.join(process.cwd(), 'content/readings');
 const SYLLABUS = path.join(READINGS_DIR, '_syllabus.yaml');
@@ -278,159 +277,26 @@ function sandhiSplitOf(word: any): string[] | null {
   return null;
 }
 
-// ── the question pool ────────────────────────────────────────────────────
-// The quiz used to ask three things (विभक्ति, लकार, role) as flat MCQs. The
-// schema now defines ~20 dimensions and 5 relation kinds, so a word can be asked
-// about far more, and in more than one shape. `quizFor` builds every question a
-// word can carry, then picks one deterministically — so each word gets a stable
-// but varied question, and the quiz as a whole exercises the whole grammar.
+/*
+  QUIZ GENERATION LIVES IN THE CLIENT — src/lib/reader/quiz.ts.
 
-type Quiz = { q: string; opts: string[]; ans: string; phrase?: string; note?: string; kind?: string };
+  It used to be baked here: one question per word, chosen by a hash and frozen
+  into readings.json, so every word asked the same thing forever. 1867 questions
+  collapsed to 648 distinct cards, and "Which विभक्ति? → प्रथमा" existed in 72
+  identical copies. Shipping the whole pool instead fixed the variety and took
+  readings.json from 5.1MB to 10.4MB — doubling the download immediately after
+  the reader's load time was cut from 13s to under 1s.
 
-/**
- * A PRODUCTION quiz: show the cell (देव · प्रथमा · एकवचन), ask which FORM fills
- * it. Distractors are OTHER cells' forms of the same stem — the near-miss forms
- * a learner actually confuses (देवम्, देवेन, देवाः), not random words. Needs the
- * stem's paradigm and the cell to be known; returns null otherwise.
- */
-function productionQuiz(lemma: string, form: string, vib: string, vac: string | undefined): Quiz | null {
-  const para = PARADIGM[lemma];
-  if (!para || !vac) return null;
-  const cellKey = `${vib}|${vac}`;
-  const ans = para[cellKey];
-  if (!ans || deaccent(ans) !== deaccent(form)) return null; // paradigm must agree with the attested form
-  // distractors: other filled cells of the same stem
-  const others = Object.entries(para)
-    .filter(([k, f]) => k !== cellKey && deaccent(f) !== deaccent(ans))
-    .map(([, f]) => f);
-  const seed = hash(lemma + cellKey);
-  const uniq = [...new Set(others)].sort((a, b) => (hash(a + seed) % 89) - (hash(b + seed) % 89)).slice(0, 3);
-  if (uniq.length < 2) return null;
-  const opts = [ans, ...uniq].sort((a, b) => (hash(a + 'o' + seed) % 83) - (hash(b + 'o' + seed) % 83));
-  return { q: `Which form is ${lemma} · ${vib} · ${vac}?`, opts, ans, kind: 'production' };
-}
+  Neither is necessary. The reader already holds everything a question needs —
+  the word's tags, its `derived` map, its gloss, its lemma, its citations — and
+  usage.json, which it loads anyway for the rail, carries the paradigm tables
+  and the cell-ambiguity index. Generating on demand costs no payload, and lets
+  the question, its distractors and its answer order differ every time a word
+  comes round.
 
-/** A term-tag question: "which <dimension>?" with schema-value distractors. */
-function tagQuiz(form: string, ans: string, pool: string[], label: string, kind: string): Quiz {
-  const seed = hash(form + ans + kind);
-  const opts = [ans, ...distractors(ans, pool, seed)]
-    .filter((x, k, a) => a.indexOf(x) === k)
-    .sort((a, b) => pool.indexOf(a) - pool.indexOf(b));
-  return { q: `Which ${label}?`, opts, ans, kind };
-}
-
-/**
- * Every quiz a word can carry, richest first. The caller picks one.
- * `words` and `wi` are passed so relation and production questions can reach the
- * other words in the reading.
- */
-function quizPool(word: any, sentence: string, words: any[], wi: number): Quiz[] {
-  const terms: string[] = (word.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term);
-  const has = (t: string) => terms.includes(t);
-  const form = String(word.form ?? '');
-  const out: Quiz[] = [];
-
-  const vib = terms.find((t) => VIBHAKTI.includes(t));
-  const lak = terms.find((t) => LAKARA.includes(t));
-  const role = terms.find((t) => ROLES.includes(t));
-
-  // ── विभक्ति — the core case question, with HARD distractors ──────────────
-  if (vib) {
-    const cell = CELLS[deaccent(form)];
-    const settled = cell ? cell.vibhaktis.length === 1 : false;
-    if (settled) {
-      out.push(tagQuiz(form, vib, VIBHAKTI, 'विभक्ति', 'vibhakti'));
-    } else {
-      // Ambiguous form: show the phrase that settles it, and draw distractors
-      // from the OTHER cases this form can actually be — the real choice.
-      const phrase = phraseAround(sentence, form);
-      if (phrase && cell && cell.vibhaktis.includes(vib)) {
-        const seed = hash(form + vib);
-        const rivals = cell.vibhaktis.filter((c) => c !== vib);
-        const filler = distractors(vib, VIBHAKTI, seed, Math.max(0, 3 - rivals.length));
-        const opts = [vib, ...rivals, ...filler]
-          .filter((x, k, a) => a.indexOf(x) === k)
-          .sort((a, b) => VIBHAKTI.indexOf(a) - VIBHAKTI.indexOf(b));
-        out.push({ q: 'Which विभक्ति here?', phrase, opts, ans: vib, note: cell.linga ?? undefined, kind: 'vibhakti-phrase' });
-      } else if (role) {
-        out.push(tagQuiz(form, role, ROLES, 'कारक role', 'role'));
-      }
-    }
-  }
-
-  // ── लकार — the tense/mood question ───────────────────────────────────────
-  if (lak) out.push(tagQuiz(form, lak, LAKARA, 'लकार', 'lakara'));
-
-  // ── समास — which compound type? ─────────────────────────────────────────
-  const samasa = terms.find((t) => SAMASA.includes(t));
-  if (samasa) out.push(tagQuiz(form, samasa, SAMASA, 'समास', 'samasa'));
-
-  // ── कृदन्त — which कृत् suffix formed it? ─────────────────────────────────
-  const krt = terms.find((t) => [...KRT_DECLINING, ...KRT_INDECLINABLE].includes(t));
-  if (krt) out.push(tagQuiz(form, krt, [...KRT_DECLINING, ...KRT_INDECLINABLE], 'कृत् suffix', 'krt'));
-
-  // ── तद्धित — which sense (अर्थ) does the suffix carry? ────────────────────
-  const artha = terms.find((t) => TADDHITA_ARTHA.includes(t));
-  if (artha) out.push(tagQuiz(form, artha, TADDHITA_ARTHA, 'तद्धित अर्थ', 'artha'));
-
-  // ── प्रयोग — active or passive? (only when authored, i.e. कर्मणि/भावे) ────
-  const prayoga = terms.find((t) => PRAYOGA.includes(t));
-  if (prayoga && prayoga !== 'कर्तरि') out.push(tagQuiz(form, prayoga, PRAYOGA, 'प्रयोग (voice)', 'prayoga'));
-
-  // ── RELATION — which word does this agree with / belong to? ──────────────
-  // A विशेषण/कर्तृसमानाधिकरण edge whose target is in the same reading. The answer
-  // is the target word's FORM; distractors are other words from the reading.
-  for (const rel of word.rel ?? []) {
-    const target = words[rel.to];
-    if (!target || rel.to === wi) continue;
-    const others = words
-      .filter((w: any, k: number) => k !== wi && k !== rel.to && w.form)
-      .map((w: any) => String(w.form));
-    const dist = [...new Set(others)].slice(0, 3);
-    if (dist.length < 2) continue;
-    const label = rel.kind === 'विशेषण' ? 'Which word does this qualify?'
-      : rel.kind === 'कर्तृसमानाधिकरण' ? 'Which word is its subject?'
-      : rel.kind === 'अवयव' ? 'Which compound is this a member of?'
-      : 'Which word does this relate to?';
-    const seed = hash(form + rel.kind + rel.to);
-    const opts = [String(target.form), ...dist]
-      .filter((x, k, a) => a.indexOf(x) === k)
-      .sort((a, b) => (hash(a + seed) % 97) - (hash(b + seed) % 97));
-    out.push({ q: label, opts, ans: String(target.form), kind: 'relation' });
-  }
-
-  // ── PRODUCTION — give the coordinates, ask for the form ──────────────────
-  // The recall-first flip: instead of "what case is देवः?", show the cell
-  // (देव · प्रथमा · एकवचन) and ask which FORM fills it. Distractors are the
-  // OTHER cells' forms of the same stem, from the vidyut-built cell table — a
-  // genuinely harder, generative question. Only when the stem's paradigm is known.
-  if (vib && word.lemma) {
-    const vac = terms.find((t) => VACANA_SET.has(t)) ?? word.derived?.['वचन'];
-    const prod = productionQuiz(word.lemma, form, vib, vac);
-    if (prod) out.push(prod);
-  }
-
-  return out;
-}
-
-/** The single quiz a word carries: the pool, with one picked deterministically
- *  so the mix is varied across the corpus but stable per word. */
-function quizFor(word: any, sentence: string, words: any[] = [], wi = 0): Quiz | null {
-  const pool = quizPool(word, sentence, words, wi);
-  if (!pool.length) return null;
-  // Prefer the richer questions (relation, production, samasa, krt) over the
-  // plain case/tense question when a word carries several — but keep it stable.
-  const rank: Record<string, number> = {
-    relation: 0, production: 1, samasa: 2, krt: 2, artha: 2, prayoga: 3,
-    'vibhakti-phrase': 4, vibhakti: 5, lakara: 5, role: 6
-  };
-  pool.sort((a, b) => (rank[a.kind ?? ''] ?? 9) - (rank[b.kind ?? ''] ?? 9));
-  // Among the top-ranked, pick by hash so the corpus doesn't always show the
-  // richest — variety matters. Take from the top two rank tiers.
-  const topRank = rank[pool[0].kind ?? ''] ?? 9;
-  const candidates = pool.filter((q) => (rank[q.kind ?? ''] ?? 9) <= topRank + 1);
-  return candidates[hash(String(word.form)) % candidates.length];
-}
+  What still belongs to the build: `derived` (vidyut features) and `split` (the
+  sandhi parse). Both are facts about the corpus, not questions about it.
+*/
 
 function main() {
   const titles = chapterTitles();
@@ -479,9 +345,9 @@ function main() {
       if (feats) w.derived = feats;
       else delete w.derived;
 
-      const quiz = quizFor(w, r.sentence, ws, wi);
-      if (quiz) w.quiz = quiz;
-      else delete w.quiz;
+      // no quiz is written: the reader builds them from these annotations
+      delete w.quizzes;
+      delete w.quiz;
 
       const split = sandhiSplitOf(w);
       if (split) w.split = split;

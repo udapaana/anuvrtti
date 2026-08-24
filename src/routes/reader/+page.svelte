@@ -13,6 +13,7 @@
   import { wordBank } from '$lib/stores/wordBank';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
+  import { questionsFor, drawQuestion, type Question } from '$lib/reader/quiz';
   import { decompose } from '$lib/reader/wordDecomp';
   // Graded reader: a chapter spine (left), interlinear gloss reading with
   // word-identity tags (centre), and a scroll-synced sūtra derivation rail
@@ -58,7 +59,8 @@
   // defined by the scroll itself — no card-compression, no forced single-card.
   let seen = $state<Set<string>>(new Set());
   // A quiz drawn from the seen deck: {id, wi} of a random word, or null.
-  let deckQuiz = $state<{ id: string; wi: number } | null>(null);
+  /* The drawn card: which word, and the question built for this showing. */
+  let deckQuiz = $state<{ id: string; wi: number; q: Question } | null>(null);
 
   let io: IntersectionObserver | null = null;
   let vis = new Map<string, number>();
@@ -408,7 +410,7 @@
     if (!r || !w) return null;
     const terms = (w.notes ?? []).filter((n: any) => n.term).map((n: any) => ({ term: n.term, en: n.en ?? '' }));
     const cites = (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => ({ cite: n.cite, role: n.role ?? '' }));
-    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quiz: w.quiz ?? null, terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
+    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quizzes: (w.quizzes ?? []) as any[], terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
   }
 
   /**
@@ -433,8 +435,47 @@
   /** The drawn card — the quiz block. Never the word you are looking at. */
   const quizWord = $derived(deckQuiz ? wordAt(deckQuiz.id, deckQuiz.wi) : null);
 
+  /** The question being asked. Built when drawn, not read from the corpus. */
+  const activeQuiz = $derived(deckQuiz?.q ?? null);
+
+  /** Every gloss in the corpus, for meaning distractors. Built once. */
+  const glossPool = $derived.by(() =>
+    [...new Set(list.flatMap((r: any) => (r.words ?? []).map((w: any) => String(w.gloss ?? '').trim())))]
+      .filter((g) => g.length > 1)
+  );
+
+  /** The tokens of the quizzed reading, for a tap-the-word question. */
+  const quizTokens = $derived.by(() => {
+    const d = deckQuiz;
+    if (!d || activeQuiz?.ui !== 'token') return [];
+    const r = list.find((x) => x.id === d.id);
+    return r ? tokensOf(r) : [];
+  });
+
+  /*
+    The paradigm grid a cell question is answered on, cells blank.
+
+    Heads are ABBREVIATED here and nowhere else. The rail is 312px, and in IAST
+    the full names run to `prathamapuruṣa` × `bahuvacana` — wide enough that the
+    third column falls off the edge. A reference table may scroll; a table you
+    have to click cannot hide a third of its answers.
+  */
+  const SHORT: Record<string, string> = {
+    प्रथमपुरुष: 'प्रथम', मध्यमपुरुष: 'मध्यम', उत्तमपुरुष: 'उत्तम',
+    एकवचन: 'एक', द्विवचन: 'द्वि', बहुवचन: 'बहु'
+  };
+  const quizGrid = $derived.by(() => {
+    const a = activeQuiz;
+    if (a?.ui !== 'cell' || !a.rows || !a.cols) return null;
+    return {
+      rows: a.rows.map((r) => SHORT[r] ?? r),
+      cols: a.cols.map((c) => SHORT[c] ?? c),
+      cells: a.rows.map(() => a.cols!.map(() => '·'))
+    };
+  });
+
   /** A question is on screen and unanswered. Governs the QUIZ block alone. */
-  const asking = $derived(!!quizWord?.quiz && pick === null);
+  const asking = $derived(!!activeQuiz && pick === null);
 
   /*
     What to show above the question, if anything.
@@ -454,10 +495,12 @@
     prose to ask about one word buries it.
   */
   const quizContext = $derived.by(() => {
-    const q = quizWord;
-    if (!q?.quiz) return '';
-    if (q.quiz.kind === 'production') return '';
-    if (q.quiz.phrase) return q.quiz.phrase;
+    const q = quizWord, a = activeQuiz;
+    if (!q || !a) return '';
+    // a question that asks for a FORM must not print the form; `meaning` asks
+    // what the word means, and the gloss is not in the Sanskrit, so it keeps
+    // its clause
+    if (a.ui === 'produce') return '';
     const clauses = String(q.sentence ?? '')
       .split(/(?<=[।॥])/)
       .map((c: string) => c.trim())
@@ -507,22 +550,77 @@
     return decompose(termNames, selWord.notes ?? []);
   });
 
+  /*
+    The verdict, for whichever shape was answered.
+
+    `pick` holds what the reader chose, normalised to a string: an option for a
+    choice, "row,col" for a cell, the word index for a tap. A cell answer that
+    is right in one axis and wrong in the other is a different mistake from a
+    guess, and says so.
+  */
   const verdict = $derived.by(() => {
-    const w = quizWord;
-    if (!w?.quiz || pick === null) return null;
-    // The verdict inks are tokens now, not two hexes of their own: right takes
-    // the done accent, wrong takes saffron, shown stays quiet — the same pair
-    // the review session uses, so a right answer looks the same everywhere.
-    if (pick === '—') return { text: 'shown \u00b7 ' + w.quiz.ans, tone: 'shown' };
-    return pick === w.quiz.ans
-      ? { text: '\u2713 ' + w.quiz.ans, tone: 'ok' }
-      : { text: '\u2717 you said ' + pick + ' \u00b7 it is ' + w.quiz.ans, tone: 'miss' };
+    const q = activeQuiz;
+    if (!q || pick === null) return null;
+
+    if (pick === '\u2014') {
+      const shown = q.ui === 'cell'
+        ? `${q.rows?.[q.ansRow ?? 0]} \u00b7 ${q.cols?.[q.ansCol ?? 0]}`
+        : q.ui === 'token'
+          ? String(wordAt(deckQuiz!.id, q.ansWi ?? 0)?.form ?? '')
+          : String(q.ans ?? '');
+      return { text: 'shown \u00b7 ' + shown, tone: 'shown' };
+    }
+
+    if (q.ui === 'cell') {
+      const [r, c] = pick.split(',').map(Number);
+      const right = r === q.ansRow && c === q.ansCol;
+      const cell = `${q.rows?.[q.ansRow ?? 0]} \u00b7 ${q.cols?.[q.ansCol ?? 0]}`;
+      if (right) return { text: '\u2713 ' + cell, tone: 'ok' };
+      // half right is worth naming — the axes are learned separately
+      const axis = r === q.ansRow ? 'right row, wrong column'
+        : c === q.ansCol ? 'right column, wrong row' : '';
+      return { text: '\u2717 ' + (axis ? axis + ' \u00b7 ' : '') + cell, tone: 'miss' };
+    }
+
+    if (q.ui === 'token') {
+      const right = Number(pick) === q.ansWi;
+      const form = String(wordAt(deckQuiz!.id, q.ansWi ?? 0)?.form ?? '');
+      return right
+        ? { text: '\u2713 ' + form, tone: 'ok' }
+        : { text: '\u2717 it is ' + form, tone: 'miss' };
+    }
+
+    return pick === q.ans
+      ? { text: '\u2713 ' + q.ans, tone: 'ok' }
+      : { text: '\u2717 you said ' + pick + ' \u00b7 it is ' + q.ans, tone: 'miss' };
   });
 
+  /** Cards answered wrongly (or revealed), by `id:wi`. They come back sooner. */
+  let missed = $state<Set<string>>(new Set());
+
+  /** A cell answer is stored as "row,col"; a tap as the word index. */
+  function pickCell(r: number, c: number) {
+    record(`${r},${c}`, r === activeQuiz?.ansRow && c === activeQuiz?.ansCol);
+  }
+  function pickToken(wi: number) {
+    record(String(wi), wi === activeQuiz?.ansWi);
+  }
   function pickOption(o: string) {
-    pick = o;
+    record(o, o === activeQuiz?.ans);
+  }
+
+  function record(answer: string, right: boolean) {
+    pick = answer;
     // The card that was answered is the QUIZ word, not whatever is selected.
-    if (quizWord) checked = new Set([...checked, quizWord.id + ':' + quizWord.wi]);
+    if (!quizWord) return;
+    const key = quizWord.id + ':' + quizWord.wi;
+    checked = new Set([...checked, key]);
+    // Getting it wrong, or giving up and revealing it, is what marks a card as
+    // needing another look; getting it right retires it from that set.
+    const next = new Set(missed);
+    if (right && answer !== '\u2014') next.delete(key);
+    else next.add(key);
+    missed = next;
   }
 
   // The rail's two disclosure rows. Both close on every new selection, so the
@@ -559,8 +657,10 @@
     const cards: { id: string; wi: number }[] = [];
     list.forEach((r, i) => {
       if (!((here >= 0 && i < here) || seen.has(r.id))) return;
+      // every annotated word is a card now — the questions are built on demand,
+      // so a word no longer needs a baked quiz to be worth asking about
       (r.words ?? []).forEach((w: any, wi: number) => {
-        if (w.quiz) cards.push({ id: r.id, wi });
+        if (w.form) cards.push({ id: r.id, wi });
       });
     });
     return cards;
@@ -569,11 +669,54 @@
   // Draw a random card from the seen deck. It sets `deckQuiz` ONLY — the
   // selection stays where the reader put it, so the line being read keeps its
   // explanation while the question sits underneath.
+  /*
+    Draw the card you most need, not a card at random.
+
+    A uniform draw over the deck ignores everything already known about the
+    reader. It also repeats heavily: the deck's 1867 quizzes are only 648
+    distinct cards — "Which विभक्ति? → प्रथमा" alone exists in 72 copies — so a
+    random pick keeps asking the same question in different clothes while
+    other cards go untouched.
+
+    Order of preference: a card previously missed, then one never answered,
+    then anything. Never the card just shown, and never the word being read.
+  */
   function drawFromDeck() {
-    const deck = deckCards.filter((c) => !(sel && sel.id === c.id && selWord?.wi === c.wi));
+    const here = selWord ? selWord.id + ':' + selWord.wi : '';
+    const last = deckQuiz ? deckQuiz.id + ':' + deckQuiz.wi : '';
+    const key = (c: { id: string; wi: number }) => c.id + ':' + c.wi;
+    const deck = deckCards.filter((c) => key(c) !== here && key(c) !== last);
     if (!deck.length) return;
-    deckQuiz = deck[Math.floor(Math.random() * deck.length)];
-    pick = null;
+
+    const again = deck.filter((c) => missed.has(key(c)));
+    const fresh = deck.filter((c) => !checked.has(key(c)));
+    // Missed cards get priority, but not exclusively — drilling only failures
+    // stops new material ever coming round.
+    const pool = again.length && (!fresh.length || Math.random() < 0.4) ? again : fresh.length ? fresh : deck;
+
+    // Try cards until one yields a question. A word with no annotation at all
+    // produces none, and silently drawing nothing would read as a broken button.
+    const order = shuffleCards(pool);
+    for (const card of order) {
+      const r = list.find((x) => x.id === card.id);
+      const w = r?.words?.[card.wi];
+      if (!w) continue;
+      const q = drawQuestion(questionsFor(w, card.wi, r, usage, glossPool));
+      if (q) {
+        deckQuiz = { ...card, q };
+        pick = null;
+        return;
+      }
+    }
+  }
+
+  function shuffleCards<T>(xs: T[]): T[] {
+    const a = [...xs];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
   }
 
   /**
@@ -1030,11 +1173,18 @@
 
 {#snippet quizBlock()}
   <!--
-    The question, as its own block under the grammar. Its word is drawn from a
-    reading already scrolled past, never the one selected, so the explanation
-    above it cannot give the answer away.
+    The question, built when it is drawn. Its word comes from a reading already
+    passed, never the one selected, so the explanation below cannot answer it.
+
+    Four shapes, because a column of four buttons is right for a closed set and
+    wrong for everything else:
+      choice   pick one of N
+      cell     point at a square of the word's own paradigm
+      token    tap the word in its line
+      produce  the coordinates, give the form
   -->
-  {#if quizWord?.quiz}
+  {#if activeQuiz}
+    {@const q = activeQuiz}
     <div class="quiz-block">
       <div class="quiz-head">
         <span class="label">from what you have read</span>
@@ -1045,24 +1195,61 @@
         <div class="phrase context"><Sanskrit text={quizContext} source="devanagari" /></div>
       {/if}
 
+      <span class="question"><Sanskrit text={q.prompt} source="devanagari" /></span>
+
       {#if asking}
-        <span class="question"><Sanskrit text={quizWord.quiz.q} source="devanagari" /></span>
-        <div class="options">
-          {#each quizWord.quiz.opts as o}
-            <button class="opt" onclick={() => pickOption(o)}>
-              <Sanskrit text={o} source="devanagari" />
-            </button>
-          {/each}
-        </div>
+        {#if q.ui === 'choice' || q.ui === 'produce'}
+          <div class="options">
+            {#each q.opts ?? [] as o}
+              <button class="opt" onclick={() => pickOption(o)}>
+                {#if q.sanskritOpts}<Sanskrit text={o} source="devanagari" />{:else}{o}{/if}
+              </button>
+            {/each}
+          </div>
+
+        {:else if q.ui === 'cell' && quizGrid}
+          <!-- the table with its cells blank: a coordinate space to point at,
+               not an answer key to read -->
+          <Grid
+            script="devanagari"
+            surface="sunken"
+            colHeads={quizGrid.cols}
+            rowHeads={quizGrid.rows}
+            rows={quizGrid.cells.map((row) => row.map((c) => ({ text: c, live: true })))}
+            onpick={(r, c) => pickCell(r, c)}
+          />
+
+        {:else if q.ui === 'token'}
+          <!-- answered in the line itself, rendered the way the reader renders
+               it, so the question looks like the text it is about -->
+          <div class="quiz-line">
+            {#each quizTokens as tok (tok.ti)}
+              {#if tok.isWord}
+                <button class="qtok" onclick={() => pickToken(tok.wi)}>
+                  <Sanskrit text={tok.text} source="devanagari" />
+                </button>
+              {:else}
+                <span class="qtok punct"><Sanskrit text={tok.text} source="devanagari" /></span>
+              {/if}
+            {/each}
+          </div>
+        {/if}
+
         <button class="skip" onclick={() => pickOption('—')}>show the answer</button>
       {:else}
         {#if verdict}
-          <span class="verdict {verdict.tone}">{verdict.text}</span>
+          <!-- the verdict names schema values, so it follows the toggle like
+               any other Sanskrit; it is mixed with English, hence the prose font -->
+          <span class="verdict {verdict.tone}"
+            ><Sanskrit text={verdict.text} source="devanagari" /></span
+          >
         {/if}
-        <button class="run-row on" onclick={() => selectQuizWord()}>
-          <span class="run-form"><Sanskrit text={quizWord.form} source="devanagari" /></span>
-          <span class="run-gloss"><Sanskrit text={quizWord.gloss} source="devanagari" /></span>
-        </button>
+        {#if quizWord}
+          <button class="run-row on" onclick={() => selectQuizWord()}>
+            <span class="run-form"><Sanskrit text={quizWord.form} source="devanagari" /></span>
+            <span class="run-gloss"><Sanskrit text={quizWord.gloss} source="devanagari" /></span>
+          </button>
+        {/if}
         {#if deckCards.length > 1}
           <button class="quizme" onclick={drawFromDeck}>quiz another →</button>
         {/if}
@@ -1507,7 +1694,9 @@
   .gloss,
   .run-gloss,
   .ex-teaches,
-  .cite-role {
+  .cite-role,
+  .question,
+  .verdict {
     font-family: var(--font-prose);
   }
   .translation :global(span),
@@ -1516,7 +1705,9 @@
   .gloss :global(span),
   .run-gloss :global(span),
   .ex-teaches :global(span),
-  .cite-role :global(span) {
+  .cite-role :global(span),
+  .question :global(span),
+  .verdict :global(span) {
     font-family: inherit;
   }
 
@@ -1714,6 +1905,35 @@
   .quizme.top {
     margin-bottom: 2px;
   }
+  /* the sentence as an answer space — tokens you tap, not options you read */
+  .quiz-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    align-items: baseline;
+    padding: 2px 0 4px;
+  }
+  .qtok {
+    font-family: var(--font-deva);
+    font-size: 17px;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 1px 0 2px;
+    cursor: pointer;
+  }
+  .qtok:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .qtok.punct {
+    color: var(--faint);
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+
   .quiz-head {
     display: flex;
     align-items: center;
