@@ -10,6 +10,8 @@
   import Disclose from '$lib/components/ui/Disclose.svelte';
   import Grid from '$lib/components/ui/Grid.svelte';
   import Chip from '$lib/components/ui/Chip.svelte';
+  import InlineMarkup from '$lib/components/InlineMarkup.svelte';
+  import { lookupTerm } from '$lib/jargon';
   import { wordBank } from '$lib/stores/wordBank';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
@@ -432,6 +434,13 @@
 
   /** The clicked word — the grammar block. */
   const selWord = $derived(sel ? tokenAt(sel.id, sel.ti) : null);
+
+  // A tapped term chip opens its concept card: the glossary explains what the
+  // tag MEANS and how to recognise it, so the quiz question has an answer the
+  // reader can reason to. Reset when the selected word changes.
+  let openTerm = $state<string | null>(null);
+  $effect(() => { sel; openTerm = null; });
+  const termInfo = $derived(openTerm ? lookupTerm(openTerm) : null);
   /** The drawn card — the quiz block. Never the word you are looking at. */
   const quizWord = $derived(deckQuiz ? wordAt(deckQuiz.id, deckQuiz.wi) : null);
 
@@ -1355,9 +1364,34 @@
         {#if selWord.terms.length}
           <div class="terms">
             {#each selWord.terms as t}
-              <Chip label={t.term} script="devanagari" title={t.en} />
+              <button
+                class="chip-btn"
+                type="button"
+                title={t.en}
+                onclick={() => (openTerm = openTerm === t.term ? null : t.term)}
+              >
+                <Chip label={t.term} script="devanagari" tone={openTerm === t.term ? 'on' : 'quiet'} />
+              </button>
             {/each}
           </div>
+          {#if openTerm}
+            <div class="concept">
+              {#if termInfo}
+                <div class="concept-head">
+                  <Sanskrit text={termInfo.term} source="devanagari" />
+                  <span class="concept-rom">{termInfo.termRoman}</span>
+                </div>
+                <div class="concept-body"><InlineMarkup text={termInfo.meaning} /></div>
+                {#if termInfo.sutraRef}
+                  <a class="concept-ref" href={`/ref/${termInfo.sutraRef}`}>सूत्र {termInfo.sutraRef} →</a>
+                {/if}
+              {:else}
+                <div class="concept-body concept-empty">
+                  No glossary note yet for <Sanskrit text={openTerm} source="devanagari" />.
+                </div>
+              {/if}
+            </div>
+          {/if}
         {/if}
 
         <!-- Everything the old rail stacked open is still here, as two closed
@@ -2077,6 +2111,59 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+  }
+
+  /* Each tag is a button that opens its glossary note below the row. */
+  .chip-btn {
+    all: unset;
+    cursor: pointer;
+    border-radius: var(--radius);
+  }
+  .chip-btn:focus-visible {
+    outline: 2px solid var(--accent-ref);
+    outline-offset: 1px;
+  }
+
+  .concept {
+    margin-top: 8px;
+    padding: 10px 12px;
+    border: 1px solid var(--rule-2);
+    border-left: 2px solid var(--accent-ref);
+    border-radius: var(--radius);
+    background: var(--surface-1, transparent);
+  }
+  .concept-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-family: var(--font-deva);
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .concept-rom {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .concept-body {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-2, var(--ink));
+  }
+  .concept-empty {
+    color: var(--muted);
+  }
+  .concept-ref {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-ref);
+    text-decoration: none;
+  }
+  .concept-ref:hover {
+    text-decoration: underline;
   }
 
   .decomp {
