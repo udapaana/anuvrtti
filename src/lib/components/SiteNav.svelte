@@ -7,6 +7,7 @@
   } from '$lib/stores/preferences';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Palette from '$lib/components/ui/Palette.svelte';
+  import SettingsModal from '$lib/components/SettingsModal.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import type { Script } from '$lib/transliteration';
 
@@ -24,6 +25,7 @@
   let { user = null }: { user?: { login: string } | null } = $props();
 
   let prefs = $state(false);
+  let settingsOpen = $state(false);
   let palette = $state<Palette | null>(null);
 
   const path = $derived($page.url.pathname);
@@ -104,7 +106,15 @@
             </button>
           {/if}
 
-          <a class="all" href="/settings">all settings →</a>
+          <!-- opens over the page rather than navigating to it: changing the
+               script should not cost you your place in the reading -->
+          <button
+            class="all"
+            onclick={() => {
+              prefs = false;
+              settingsOpen = true;
+            }}>all settings →</button
+          >
         </div>
       {/if}
     </div>
@@ -112,6 +122,7 @@
 </header>
 
 <Palette bind:this={palette} />
+<SettingsModal bind:open={settingsOpen} />
 
 <style>
   .sitenav {
@@ -248,6 +259,11 @@
     font-size: 11px;
     color: var(--accent);
     text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
   }
 
   @media (max-width: 720px) {

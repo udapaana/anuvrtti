@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { dataUrl } from '$lib/dataUrl';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
@@ -322,7 +323,7 @@
 
   onMount(async () => {
     try {
-      const res = await fetch('/data/usage.json', { cache: 'no-store' });
+      const res = await fetch(dataUrl('/data/usage.json'));
       if (!res.ok) throw new Error('could not load the usage index (' + res.status + ')');
       index = await res.json();
       loaded = true;

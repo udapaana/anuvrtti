@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
+  import { dataUrl } from '$lib/dataUrl';
   import { goto } from '$app/navigation';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
@@ -12,6 +13,7 @@
   import { wordBank } from '$lib/stores/wordBank';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
+  import { questionsFor, drawQuestion, type Question } from '$lib/reader/quiz';
   import { decompose } from '$lib/reader/wordDecomp';
   // Graded reader: a chapter spine (left), interlinear gloss reading with
   // word-identity tags (centre), and a scroll-synced sūtra derivation rail
@@ -44,7 +46,7 @@
   type Mode = 'recall' | 'gloss';
   let mode = $state<Mode>('recall');
   let padaccheda = $state(false);
-  let sel = $state<{ id: string; wi: number } | null>(null);
+  let sel = $state<{ id: string; ti: number } | null>(null);
   let pick = $state<string | null>(null);
   let checked = $state<Set<string>>(new Set());
   let showTr = $state(false);
@@ -57,21 +59,22 @@
   // defined by the scroll itself — no card-compression, no forced single-card.
   let seen = $state<Set<string>>(new Set());
   // A quiz drawn from the seen deck: {id, wi} of a random word, or null.
-  let deckQuiz = $state<{ id: string; wi: number } | null>(null);
+  /* The drawn card: which word, and the question built for this showing. */
+  let deckQuiz = $state<{ id: string; wi: number; q: Question } | null>(null);
 
   let io: IntersectionObserver | null = null;
   let vis = new Map<string, number>();
 
   onMount(async () => {
     try {
-      const res = await fetch('/data/readings.json', { cache: 'no-store' });
+      const res = await fetch(dataUrl('/data/readings.json'));
       if (!res.ok) throw new Error('could not load readings (' + res.status + ')');
       const data = await res.json();
       chapters = data.chapters ?? [];
       sequence = data.sequence ?? [];
       // usage.json carries the per-word paradigms (all cells, from vidyut) that
       // the rail's table needs. Best-effort: no table if it fails to load.
-      try { usage = await (await fetch('/data/usage.json', { cache: 'no-store' })).json(); } catch { usage = null; }
+      try { usage = await (await fetch(dataUrl('/data/usage.json'))).json(); } catch { usage = null; }
       loaded = true;
       focusedId = sequence[0]?.id ?? null;
       requestAnimationFrame(observe);
@@ -272,44 +275,86 @@
 
   // Paradigm recognition lives in src/lib/reader/paradigm.ts — see the note
   // there on ex094 vs ex172. Recognition is by SHAPE, not by the `kind` field.
-  // ── interlinear token + word identity processing (matches design) ───────────
-  function processEx(r: Reading, n: number) {
-    const id = r.id;
+  /*
+    ONE tokenizer, shared by the rendered card and by the selection layer.
+
+    It used to live inside processEx, which only runs for readings on the
+    current page, so nothing else could ask "which word is token 7 of ex181?".
+    Selection needs exactly that: a token, not a word — see below.
+  */
+  const tokenCache = new Map<string, any[]>();
+  function tokensOf(r: Reading): any[] {
+    const hit = tokenCache.get(r.id);
+    if (hit) return hit;
+
     // Normalise anusvāra when indexing: the corpus writes both ग्रामं and
     // ग्रामम् for the same word, and an unnormalised lookup silently drops the
     // gloss (the token just renders bare). Affected 12 readings.
-    const anusvara = (s: string) => s.replace(/ं$/, 'म्');
+    const anusvara = (s2: string) => s2.replace(/ं$/, 'म्');
+    const wordsRaw = r.words || [];
     const formIndex: Record<string, number> = {};
-    (r.words || []).forEach((w: any, wi: number) => {
+    wordsRaw.forEach((w: any, wi: number) => {
       const k = anusvara(w.form);
       if (!(k in formIndex)) formIndex[k] = wi;
     });
 
-    const words = (r.words || []).map((w: any, wi: number) => {
-      const terms = (w.notes || []).filter((nt: any) => nt.term).map((nt: any) => ({ term: nt.term, en: nt.en || '' }));
-      return { wi, form: w.form, gloss: w.gloss || '', terms };
-    });
+    /*
+      Tokens take their word BY POSITION, walking words[] in order, rather than
+      looking the surface form up. Keyed by text, every occurrence of a repeated
+      word resolved to the first one: both बालः in ex181 lit together, shared a
+      gloss, and word-stepping landed on the same index twice. 59 of the 274
+      readings repeat a form, so this was a fifth of the corpus.
 
-    const tokens = r.sentence
+      The dictionary stays as a fallback, because the corpus annotates a
+      repeated form ONCE — ex181 has 37 tokens against 29 word entries — so the
+      second occurrence has no word of its own to point at. It borrows the
+      annotation without consuming the cursor. That is why selection cannot be
+      keyed on the word index either: see `sel`, which holds a token index.
+    */
+    let cursor = 0;
+    const out = String(r.sentence ?? '')
       .replace(/॥/g, ' ॥ ')
       .replace(/।/g, ' । ')
       .split(/\s+/)
       .filter(Boolean)
-      .map((tx: string) => {
+      .map((tx: string, ti: number) => {
         // Strip trailing punctuation before matching against the gloss table.
         // Prose passages (kind:sangraha, katha) use commas inside a sentence,
         // and a token like "क्रुध्यति," would otherwise miss its gloss and
         // render bare — the failure is silent, so it must be handled here.
         const clean = anusvara(tx.replace(/[।॥,;—"“”?!]/g, '').trim());
-        const wi = clean in formIndex ? formIndex[clean] : -1;
+        let wi = -1;
+        if (clean) {
+          for (let k = cursor; k < wordsRaw.length; k++) {
+            if (anusvara(wordsRaw[k].form) === clean) {
+              wi = k;
+              cursor = k + 1;
+              break;
+            }
+          }
+          if (wi < 0 && clean in formIndex) wi = formIndex[clean];
+        }
         // A word is FOCAL (the reading's new/derived word) when it carries a sūtra
         // citation. Focal words show their gloss by default; KNOWN words collapse
         // to bare Devanagari and reveal on hover — so the reader can try to recall.
-        const focal = wi >= 0 && (r.words[wi].notes || []).some((nt: any) => nt.cite);
+        const focal = wi >= 0 && (wordsRaw[wi].notes || []).some((nt: any) => nt.cite);
         // padaccheda: the pre-sandhi split (देवोऽत्र → देवः + अत्र), when authored.
-        const split = wi >= 0 ? (r.words[wi].split ?? null) : null;
-        return { text: tx, wi, gloss: wi >= 0 ? r.words[wi].gloss || '' : '', isWord: wi >= 0, focal, split };
+        const split = wi >= 0 ? (wordsRaw[wi].split ?? null) : null;
+        return { ti, text: tx, wi, gloss: wi >= 0 ? wordsRaw[wi].gloss || '' : '', isWord: wi >= 0, focal, split };
       });
+    tokenCache.set(r.id, out);
+    return out;
+  }
+
+  // ── interlinear token + word identity processing (matches design) ───────────
+  function processEx(r: Reading, n: number) {
+    const id = r.id;
+    const words = (r.words || []).map((w: any, wi: number) => {
+      const terms = (w.notes || []).filter((nt: any) => nt.term).map((nt: any) => ({ term: nt.term, en: nt.en || '' }));
+      return { wi, form: w.form, gloss: w.gloss || '', terms };
+    });
+
+    const tokens = tokensOf(r);
 
     return {
       ex: true,
@@ -336,7 +381,12 @@
   // the scroll-focused reading — so hovering a lower card swaps the machinery to
   // that card instead of leaving the top one showing.
   const railReading = $derived.by(() => {
-    return list.find((r) => r.id === (focusedId ?? slice[0]?.id)) ?? slice[0] ?? null;
+    // A SELECTION wins over the scroll. focusedId is recomputed from whatever
+    // the observer sees while a smooth scroll is still running, so stepping with
+    // the arrows left the marker a card behind the word actually selected. If a
+    // word is selected, the line you are on is that word's line, full stop.
+    const id = sel?.id ?? focusedId ?? slice[0]?.id;
+    return list.find((r) => r.id === id) ?? slice[0] ?? null;
   });
 
   /*
@@ -360,16 +410,126 @@
     if (!r || !w) return null;
     const terms = (w.notes ?? []).filter((n: any) => n.term).map((n: any) => ({ term: n.term, en: n.en ?? '' }));
     const cites = (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => ({ cite: n.cite, role: n.role ?? '' }));
-    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quiz: w.quiz ?? null, terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
+    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quizzes: (w.quizzes ?? []) as any[], terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
+  }
+
+  /**
+   * The clicked TOKEN, resolved to the word it points at.
+   *
+   * Selection is a position in the sentence, not a word: a repeated form has
+   * only one entry in words[], so two occurrences of बालः share an annotation
+   * but must still be two separate things to click. `ti` is the identity; `wi`
+   * is where the annotation is read from.
+   */
+  function tokenAt(id: string, ti: number) {
+    const r = list.find((x) => x.id === id);
+    if (!r) return null;
+    const t = tokensOf(r)[ti];
+    if (!t || t.wi < 0) return null;
+    const w = wordAt(id, t.wi);
+    return w ? { ...w, ti } : null;
   }
 
   /** The clicked word — the grammar block. */
-  const selWord = $derived(sel ? wordAt(sel.id, sel.wi) : null);
+  const selWord = $derived(sel ? tokenAt(sel.id, sel.ti) : null);
   /** The drawn card — the quiz block. Never the word you are looking at. */
   const quizWord = $derived(deckQuiz ? wordAt(deckQuiz.id, deckQuiz.wi) : null);
 
+  /** The question being asked. Built when drawn, not read from the corpus. */
+  const activeQuiz = $derived(deckQuiz?.q ?? null);
+
+  /** Every gloss in the corpus, for meaning distractors. Built once. */
+  const glossPool = $derived.by(() =>
+    [...new Set(list.flatMap((r: any) => (r.words ?? []).map((w: any) => String(w.gloss ?? '').trim())))]
+      .filter((g) => g.length > 1)
+  );
+
+  /** The tokens of the quizzed reading, for a tap-the-word question. */
+  const quizTokens = $derived.by(() => {
+    const d = deckQuiz;
+    if (!d || activeQuiz?.ui !== 'token') return [];
+    const r = list.find((x) => x.id === d.id);
+    return r ? tokensOf(r) : [];
+  });
+
+  /*
+    The paradigm grid a cell question is answered on, cells blank.
+
+    Heads are ABBREVIATED here and nowhere else. The rail is 312px, and in IAST
+    the full names run to `prathamapuruṣa` × `bahuvacana` — wide enough that the
+    third column falls off the edge. A reference table may scroll; a table you
+    have to click cannot hide a third of its answers.
+  */
+  const SHORT: Record<string, string> = {
+    प्रथमपुरुष: 'प्रथम', मध्यमपुरुष: 'मध्यम', उत्तमपुरुष: 'उत्तम',
+    एकवचन: 'एक', द्विवचन: 'द्वि', बहुवचन: 'बहु'
+  };
+  const quizGrid = $derived.by(() => {
+    const a = activeQuiz;
+    if (a?.ui !== 'cell' || !a.rows || !a.cols) return null;
+    return {
+      rows: a.rows.map((r) => SHORT[r] ?? r),
+      cols: a.cols.map((c) => SHORT[c] ?? c),
+      cells: a.rows.map(() => a.cols!.map(() => '·'))
+    };
+  });
+
   /** A question is on screen and unanswered. Governs the QUIZ block alone. */
-  const asking = $derived(!!quizWord?.quiz && pick === null);
+  const asking = $derived(!!activeQuiz && pick === null);
+
+  /*
+    What to show above the question, if anything.
+
+    A quiz that asks for a TAG — which लकार, which विभक्ति — needs the clause,
+    and the clause cannot give a tag away. A quiz that asks for a FORM is a
+    different matter: `production` asks "which form is राम · तृतीया · एकवचन?"
+    and the answer is the word itself, sitting in the sentence printed directly
+    above. 374 of the 408 production quizzes leaked their answer that way, 22%
+    of the deck overall. It needs no context at all — it is paradigm recall.
+
+    `relation` also names another word, but there the sentence IS the question
+    ("which word does this qualify?"), so it stays.
+
+    What does show is trimmed to the CLAUSE holding the word rather than the
+    whole passage: a सङ्ग्रह reading runs to 556 characters, and eight lines of
+    prose to ask about one word buries it.
+  */
+
+  /*
+    The clause comes as TOKENS, not as a string, so the word under question can
+    be marked inside it. "Which लकार?" over `नरः ग्रामं गच्छति।` names no word,
+    and three of them are in the line — the reader has to guess which one is
+    being asked about, and on a longer clause guessing is hopeless.
+
+    Only the FIRST token carrying the word's index is marked. A form used twice
+    resolves to one annotation (see tokensOf), so marking every match would lit
+    two words for one question — the same duplicate-highlight fault selection
+    already had to be moved off form-matching to avoid.
+  */
+  const quizContextTokens = $derived.by(() => {
+    const d = deckQuiz, a = activeQuiz;
+    if (!d || !a || !a.context) return [];
+    const r = list.find((x) => x.id === d.id);
+    if (!r) return [];
+    const toks = tokensOf(r);
+    const markTi = toks.find((t: any) => t.wi === d.wi)?.ti ?? -1;
+
+    // Split on the daṇḍa, which closes the clause it ends rather than opening
+    // the next one.
+    const clauses: any[][] = [];
+    let cur: any[] = [];
+    for (const t of toks) {
+      cur.push(t);
+      if (/[।॥]/.test(t.text)) {
+        clauses.push(cur);
+        cur = [];
+      }
+    }
+    if (cur.length) clauses.push(cur);
+
+    const hit = clauses.find((c) => c.some((t: any) => t.ti === markTi)) ?? clauses[0] ?? [];
+    return hit.map((t: any) => ({ ...t, on: t.ti === markTi }));
+  });
 
   // The word-for-word run of the selected line. It belongs to the grammar, so
   // it no longer waits on a quiz — the question is about another reading.
@@ -377,12 +537,17 @@
     const s = sel;
     if (!s) return [];
     const r = list.find((x) => x.id === s.id);
-    return (r?.words ?? []).map((wd: any, wi: number) => ({
-      wi,
-      on: wi === s.wi,
-      form: padaccheda && wd.split ? wd.split.join(' + ') : wd.form,
-      gloss: wd.gloss ?? ''
-    }));
+    if (!r) return [];
+    // one row per word-bearing TOKEN — a form used twice is two rows, each
+    // selecting its own position, rather than one row standing for both
+    return tokensOf(r)
+      .filter((t: any) => t.isWord)
+      .map((t: any) => ({
+        ti: t.ti,
+        on: t.ti === s.ti,
+        form: padaccheda && t.split ? t.split.join(' + ') : t.text,
+        gloss: t.gloss ?? ''
+      }));
   });
 
   // The paradigm the selected word belongs to — its declension or conjugation
@@ -408,22 +573,77 @@
     return decompose(termNames, selWord.notes ?? []);
   });
 
+  /*
+    The verdict, for whichever shape was answered.
+
+    `pick` holds what the reader chose, normalised to a string: an option for a
+    choice, "row,col" for a cell, the word index for a tap. A cell answer that
+    is right in one axis and wrong in the other is a different mistake from a
+    guess, and says so.
+  */
   const verdict = $derived.by(() => {
-    const w = quizWord;
-    if (!w?.quiz || pick === null) return null;
-    // The verdict inks are tokens now, not two hexes of their own: right takes
-    // the done accent, wrong takes saffron, shown stays quiet — the same pair
-    // the review session uses, so a right answer looks the same everywhere.
-    if (pick === '—') return { text: 'shown \u00b7 ' + w.quiz.ans, tone: 'shown' };
-    return pick === w.quiz.ans
-      ? { text: '\u2713 ' + w.quiz.ans, tone: 'ok' }
-      : { text: '\u2717 you said ' + pick + ' \u00b7 it is ' + w.quiz.ans, tone: 'miss' };
+    const q = activeQuiz;
+    if (!q || pick === null) return null;
+
+    if (pick === '\u2014') {
+      const shown = q.ui === 'cell'
+        ? `${q.rows?.[q.ansRow ?? 0]} \u00b7 ${q.cols?.[q.ansCol ?? 0]}`
+        : q.ui === 'token'
+          ? String(wordAt(deckQuiz!.id, q.ansWi ?? 0)?.form ?? '')
+          : String(q.ans ?? '');
+      return { text: 'shown \u00b7 ' + shown, tone: 'shown' };
+    }
+
+    if (q.ui === 'cell') {
+      const [r, c] = pick.split(',').map(Number);
+      const right = r === q.ansRow && c === q.ansCol;
+      const cell = `${q.rows?.[q.ansRow ?? 0]} \u00b7 ${q.cols?.[q.ansCol ?? 0]}`;
+      if (right) return { text: '\u2713 ' + cell, tone: 'ok' };
+      // half right is worth naming — the axes are learned separately
+      const axis = r === q.ansRow ? 'right row, wrong column'
+        : c === q.ansCol ? 'right column, wrong row' : '';
+      return { text: '\u2717 ' + (axis ? axis + ' \u00b7 ' : '') + cell, tone: 'miss' };
+    }
+
+    if (q.ui === 'token') {
+      const right = Number(pick) === q.ansWi;
+      const form = String(wordAt(deckQuiz!.id, q.ansWi ?? 0)?.form ?? '');
+      return right
+        ? { text: '\u2713 ' + form, tone: 'ok' }
+        : { text: '\u2717 it is ' + form, tone: 'miss' };
+    }
+
+    return pick === q.ans
+      ? { text: '\u2713 ' + q.ans, tone: 'ok' }
+      : { text: '\u2717 you said ' + pick + ' \u00b7 it is ' + q.ans, tone: 'miss' };
   });
 
+  /** Cards answered wrongly (or revealed), by `id:wi`. They come back sooner. */
+  let missed = $state<Set<string>>(new Set());
+
+  /** A cell answer is stored as "row,col"; a tap as the word index. */
+  function pickCell(r: number, c: number) {
+    record(`${r},${c}`, r === activeQuiz?.ansRow && c === activeQuiz?.ansCol);
+  }
+  function pickToken(wi: number) {
+    record(String(wi), wi === activeQuiz?.ansWi);
+  }
   function pickOption(o: string) {
-    pick = o;
+    record(o, o === activeQuiz?.ans);
+  }
+
+  function record(answer: string, right: boolean) {
+    pick = answer;
     // The card that was answered is the QUIZ word, not whatever is selected.
-    if (quizWord) checked = new Set([...checked, quizWord.id + ':' + quizWord.wi]);
+    if (!quizWord) return;
+    const key = quizWord.id + ':' + quizWord.wi;
+    checked = new Set([...checked, key]);
+    // Getting it wrong, or giving up and revealing it, is what marks a card as
+    // needing another look; getting it right retires it from that set.
+    const next = new Set(missed);
+    if (right && answer !== '\u2014') next.delete(key);
+    else next.add(key);
+    missed = next;
   }
 
   // The rail's two disclosure rows. Both close on every new selection, so the
@@ -438,36 +658,103 @@
   // A click moves the selection and nothing else. It no longer clears a quiz in
   // progress: the two blocks are independent, so looking a word up mid-question
   // is allowed — and expected, since the question is about another reading.
-  function selectWord(id: string, wi: number) {
+  function selectToken(id: string, ti: number) {
     formedOpen = false;
     paraOpen = false;
     grammarOpen = true;
-    if (sel && sel.id === id && sel.wi === wi) { sel = null; return; }
-    sel = { id, wi };
+    if (sel && sel.id === id && sel.ti === ti) { sel = null; return; }
+    sel = { id, ti };
   }
 
   // Every (reading, word-index) that has a quiz and lives in a SEEN reading —
   // the deck. A word you have scrolled past is fair game; the one you are
   // currently looking at (sel) is not, so the quiz tests recall, not the obvious.
   const deckCards = $derived.by(() => {
+    // `seen` only records cards the scroll carried clear off the top of the
+    // window, so at the head of the corpus it is empty and the quiz had nothing
+    // to draw on — the control simply vanished, with no way to tell whether it
+    // was broken or merely early. Everything BEFORE the card you are on counts
+    // as read too, which also covers arriving by "go to" or a paradigm link
+    // rather than by scrolling the whole way down.
+    const here = list.findIndex((r) => r.id === railReading?.id);
     const cards: { id: string; wi: number }[] = [];
-    for (const r of list) {
-      if (!seen.has(r.id)) continue;
+    list.forEach((r, i) => {
+      if (!((here >= 0 && i < here) || seen.has(r.id))) return;
+      // every annotated word is a card now — the questions are built on demand,
+      // so a word no longer needs a baked quiz to be worth asking about
       (r.words ?? []).forEach((w: any, wi: number) => {
-        if (w.quiz) cards.push({ id: r.id, wi });
+        if (w.form) cards.push({ id: r.id, wi });
       });
-    }
+    });
     return cards;
   });
 
   // Draw a random card from the seen deck. It sets `deckQuiz` ONLY — the
   // selection stays where the reader put it, so the line being read keeps its
   // explanation while the question sits underneath.
+  /*
+    Draw the card you most need, not a card at random.
+
+    A uniform draw over the deck ignores everything already known about the
+    reader. It also repeats heavily: the deck's 1867 quizzes are only 648
+    distinct cards — "Which विभक्ति? → प्रथमा" alone exists in 72 copies — so a
+    random pick keeps asking the same question in different clothes while
+    other cards go untouched.
+
+    Order of preference: a card previously missed, then one never answered,
+    then anything. Never the card just shown, and never the word being read.
+  */
   function drawFromDeck() {
-    const deck = deckCards.filter((c) => !(sel && sel.id === c.id && sel.wi === c.wi));
+    const here = selWord ? selWord.id + ':' + selWord.wi : '';
+    const last = deckQuiz ? deckQuiz.id + ':' + deckQuiz.wi : '';
+    const key = (c: { id: string; wi: number }) => c.id + ':' + c.wi;
+    const deck = deckCards.filter((c) => key(c) !== here && key(c) !== last);
     if (!deck.length) return;
-    deckQuiz = deck[Math.floor(Math.random() * deck.length)];
-    pick = null;
+
+    const again = deck.filter((c) => missed.has(key(c)));
+    const fresh = deck.filter((c) => !checked.has(key(c)));
+    // Missed cards get priority, but not exclusively — drilling only failures
+    // stops new material ever coming round.
+    const pool = again.length && (!fresh.length || Math.random() < 0.4) ? again : fresh.length ? fresh : deck;
+
+    // Try cards until one yields a question. A word with no annotation at all
+    // produces none, and silently drawing nothing would read as a broken button.
+    const order = shuffleCards(pool);
+    for (const card of order) {
+      const r = list.find((x) => x.id === card.id);
+      const w = r?.words?.[card.wi];
+      if (!w) continue;
+      const q = drawQuestion(questionsFor(w, card.wi, r, usage, glossPool));
+      if (q) {
+        deckQuiz = { ...card, q };
+        pick = null;
+        return;
+      }
+    }
+  }
+
+  function shuffleCards<T>(xs: T[]): T[] {
+    const a = [...xs];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  /**
+   * Jump to the quizzed word in its own reading. The deck is keyed by word
+   * index (that is what carries the quiz), so find the token standing at it.
+   */
+  function selectQuizWord() {
+    const q = quizWord;
+    if (!q) return;
+    const r = list.find((x) => x.id === q.id);
+    if (!r) return;
+    const t = tokensOf(r).find((tk: any) => tk.isWord && tk.wi === q.wi);
+    if (!t) return;
+    selectToken(r.id, t.ti);
+    jumpToReading(r.id);
   }
 
   /** Put the question away without answering it. */
@@ -533,17 +820,48 @@
   }
 
   // Scroll a reading (by id) so its top sits at the anchor line, and focus it.
+  /*
+    Scroll a card to the anchor ONLY if it is not already fully on screen.
+
+    Both stepping paths go through here. That matters: stepLine falls back to
+    stepReading when no word is selected, and pressing down without clicking a
+    word first is the ordinary thing to do — so the unconditional scroll that
+    used to live here was what most people actually hit. Every press hauled the
+    next card up to the anchor, taking everything above it off the top, which
+    is the "leaps four cards" that survived fixing the selected-word path.
+
+    Judged against where the page is GOING (pendingScroll), not where a smooth
+    scroll currently happens to be, so a quick second press does not measure a
+    half-finished animation.
+  */
+  function scrollCardIntoView(el: HTMLElement) {
+    const rect = el.getBoundingClientRect();
+    const absTop = rect.top + window.scrollY;
+    const settledY = pendingScroll ?? window.scrollY;
+    const top = absTop - settledY;
+    if (top >= ANCHOR && top + rect.height <= window.innerHeight - 24) return;
+    const target = absTop - ANCHOR;
+    pendingScroll = target;
+    window.scrollTo({ top: target, behavior: 'smooth' });
+    clearTimeout(pendingScrollTimer);
+    pendingScrollTimer = setTimeout(() => (pendingScroll = null), 700);
+  }
+
   function scrollToReading(id: string) {
     const el = document.querySelector('[data-ex-id="' + id + '"]') as HTMLElement | null;
     if (!el) return;
     focusedId = id;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - ANCHOR, behavior: 'smooth' });
+    scrollCardIntoView(el);
   }
 
   // The reading line arrows step relative to the bottom of the sticky chrome,
   // which is now exactly nav + shelf — two layers, not four. Every scroll in
   // this page reads this one number.
   const ANCHOR = 100;
+  // Destination of a smooth scroll still in flight, so a second keypress can
+  // reason about where the page will be rather than where it currently is.
+  let pendingScroll: number | null = null;
+  let pendingScrollTimer: ReturnType<typeof setTimeout> | undefined;
 
   // ← →  /  ↑ ↓  step through readings — always relative to the card actually at
   // the top of the viewport RIGHT NOW (read live from the DOM), so it stays in
@@ -581,30 +899,84 @@
   // ← → walk the words of a line, wrapping into the next line at either end.
   // Selecting a word is what opens the rail, so this is how you read a line
   // word by word without touching the mouse.
+  /** The word-bearing token indices of a reading, in sentence order. */
+  function wordTis(r: Reading): number[] {
+    return tokensOf(r).filter((t: any) => t.isWord).map((t: any) => t.ti);
+  }
+
   function stepWord(dir: 1 | -1) {
     if (!list.length) return;
     const s = sel;
     if (!s) {
       const r = list.find((x) => x.id === (focusedId ?? slice[0]?.id)) ?? slice[0];
-      if (r) selectWord(r.id, dir > 0 ? 0 : Math.max(0, (r.words?.length ?? 1) - 1));
+      if (r) {
+        const tis = wordTis(r);
+        if (tis.length) selectToken(r.id, dir > 0 ? tis[0] : tis[tis.length - 1]);
+      }
       return;
     }
     let ri = list.findIndex((x) => x.id === s.id);
     if (ri < 0) return;
-    let wi = s.wi + dir;
-    if (wi >= (list[ri].words?.length ?? 0)) {
+    // walk the word-bearing tokens, so a repeated form is two stops, not one
+    const tis = wordTis(list[ri]);
+    let at = tis.indexOf(s.ti) + dir;
+    if (at >= tis.length) {
       ri = (ri + 1) % list.length;
-      wi = 0;
-    } else if (wi < 0) {
-      ri = (ri - 1 + list.length) % list.length;
-      wi = Math.max(0, (list[ri].words?.length ?? 1) - 1);
+      const next = wordTis(list[ri]);
+      if (!next.length) return;
+      selectToken(list[ri].id, next[0]);
+      jumpToReading(list[ri].id);
+      return;
     }
-    const moved = list[ri].id !== s.id;
-    selectWord(list[ri].id, wi);
-    if (moved) jumpToReading(list[ri].id);
+    if (at < 0) {
+      ri = (ri - 1 + list.length) % list.length;
+      const prev = wordTis(list[ri]);
+      if (!prev.length) return;
+      selectToken(list[ri].id, prev[prev.length - 1]);
+      jumpToReading(list[ri].id);
+      return;
+    }
+    selectToken(list[ri].id, tis[at]);
   }
 
   // ↑ ↓ move line to line, keeping your place within the line.
+  /*
+    Bring a card into view with the LEAST movement that does the job.
+
+    Stepping used to go through jumpToReading, which re-anchors the card to a
+    fixed 100px from the top of the window on every press. The selection moved
+    by exactly one card — that part was always right — but the page travelled by
+    the height of the card you had just left, so one arrow press slid a
+    single-line reading a little and a six-line सङ्ग्रह passage a long way. Same
+    keystroke, different distance, which is what made it feel like it skipped
+    two lines sometimes and four others. jumpToReading also blanked focusedId
+    for half a second, so the current-line marker blinked on every press.
+
+    Here the card is only scrolled when it is not already fully visible, and
+    then by the minimum (`block: 'nearest'`, with the sticky chrome accounted
+    for by scroll-margin on .ex). Step through cards that already fit on screen
+    and the page does not move at all.
+  */
+  function revealReading(id: string) {
+    const idx = list.findIndex((r) => r.id === id);
+    if (idx < 0) return;
+    const b = bounds[clampedPage];
+    if (!b || idx < b.start || idx >= b.end) { jumpToReading(id); return; }
+    focusedId = id;
+    const el = document.querySelector('[data-ex-id="' + id + '"]') as HTMLElement | null;
+    if (!el) return;
+    /*
+      Move the page only when the card would otherwise be off screen.
+
+      Pinning every selection to the anchor is what made stepping "leap four
+      cards": the highlight always advanced by exactly one, but hauling that
+      card to the top takes everything above it off the screen with it. Word
+      stepping never had the problem because it never scrolls at all.
+    */
+    // shared with stepReading — see scrollCardIntoView
+    scrollCardIntoView(el);
+  }
+
   function stepLine(dir: 1 | -1) {
     const s = sel;
     if (!s) return stepReading(dir);
@@ -613,8 +985,12 @@
     const next = (ri + dir + list.length) % list.length;
     const target = list[next];
     if (!target) return;
-    selectWord(target.id, Math.min(s.wi, Math.max(0, (target.words?.length ?? 1) - 1)));
-    jumpToReading(target.id);
+    // keep your ordinal place in the line, measured in word-bearing tokens
+    const here = wordTis(list[ri]).indexOf(s.ti);
+    const tis = wordTis(target);
+    if (!tis.length) return;
+    selectToken(target.id, tis[Math.min(Math.max(here, 0), tis.length - 1)]);
+    revealReading(target.id);
   }
 
   function onKeydown(e: KeyboardEvent) {
@@ -801,9 +1177,9 @@
        deck of readings already scrolled past. -->
   <!-- deckCards, NOT deckCount: `deckCount` is the review bank's due count, a
        different deck. This button draws from readings scrolled past. -->
-  {#if deckCards.length}
-    <button class="quizme shelf" onclick={drawFromDeck}>quiz me · {deckCards.length}</button>
-  {/if}
+  <button class="quizme shelf" onclick={drawFromDeck} disabled={!deckCards.length}>
+    quiz me{deckCards.length ? ` · ${deckCards.length}` : ''}
+  </button>
 {/snippet}
 
 {#snippet spine()}
@@ -820,39 +1196,89 @@
 
 {#snippet quizBlock()}
   <!--
-    The question, as its own block under the grammar. Its word is drawn from a
-    reading already scrolled past, never the one selected, so the explanation
-    above it cannot give the answer away.
+    The question, built when it is drawn. Its word comes from a reading already
+    passed, never the one selected, so the explanation below cannot answer it.
+
+    Four shapes, because a column of four buttons is right for a closed set and
+    wrong for everything else:
+      choice   pick one of N
+      cell     point at a square of the word's own paradigm
+      token    tap the word in its line
+      produce  the coordinates, give the form
   -->
-  {#if quizWord?.quiz}
+  {#if activeQuiz}
+    {@const q = activeQuiz}
     <div class="quiz-block">
       <div class="quiz-head">
         <span class="label">from what you have read</span>
         <button class="quiz-close" onclick={closeQuiz} aria-label="close the question">×</button>
       </div>
 
-      {#if quizWord.sentence}
-        <div class="phrase context"><Sanskrit text={quizWord.sentence} source="devanagari" /></div>
-      {/if}
-
-      {#if asking}
-        <span class="question"><Sanskrit text={quizWord.quiz.q} source="devanagari" /></span>
-        <div class="options">
-          {#each quizWord.quiz.opts as o}
-            <button class="opt" onclick={() => pickOption(o)}>
-              <Sanskrit text={o} source="devanagari" />
-            </button>
+      {#if quizContextTokens.length}
+        <div class="phrase context">
+          {#each quizContextTokens as tok (tok.ti)}
+            <span class="ctok" class:on={tok.on} class:punct={!tok.isWord}
+              ><Sanskrit text={tok.text} source="devanagari" /></span
+            >
           {/each}
         </div>
+      {/if}
+
+      <span class="question"><Sanskrit text={q.prompt} source="devanagari" /></span>
+
+      {#if asking}
+        {#if q.ui === 'choice' || q.ui === 'produce'}
+          <div class="options">
+            {#each q.opts ?? [] as o}
+              <button class="opt" onclick={() => pickOption(o)}>
+                {#if q.sanskritOpts}<Sanskrit text={o} source="devanagari" />{:else}{o}{/if}
+              </button>
+            {/each}
+          </div>
+
+        {:else if q.ui === 'cell' && quizGrid}
+          <!-- the table with its cells blank: a coordinate space to point at,
+               not an answer key to read -->
+          <Grid
+            script="devanagari"
+            surface="sunken"
+            colHeads={quizGrid.cols}
+            rowHeads={quizGrid.rows}
+            rows={quizGrid.cells.map((row) => row.map((c) => ({ text: c, live: true })))}
+            onpick={(r, c) => pickCell(r, c)}
+          />
+
+        {:else if q.ui === 'token'}
+          <!-- answered in the line itself, rendered the way the reader renders
+               it, so the question looks like the text it is about -->
+          <div class="quiz-line">
+            {#each quizTokens as tok (tok.ti)}
+              {#if tok.isWord}
+                <button class="qtok" onclick={() => pickToken(tok.wi)}>
+                  <Sanskrit text={tok.text} source="devanagari" />
+                </button>
+              {:else}
+                <span class="qtok punct"><Sanskrit text={tok.text} source="devanagari" /></span>
+              {/if}
+            {/each}
+          </div>
+        {/if}
+
         <button class="skip" onclick={() => pickOption('—')}>show the answer</button>
       {:else}
         {#if verdict}
-          <span class="verdict {verdict.tone}">{verdict.text}</span>
+          <!-- the verdict names schema values, so it follows the toggle like
+               any other Sanskrit; it is mixed with English, hence the prose font -->
+          <span class="verdict {verdict.tone}"
+            ><Sanskrit text={verdict.text} source="devanagari" /></span
+          >
         {/if}
-        <button class="run-row on" onclick={() => selectWord(quizWord.id, quizWord.wi)}>
-          <span class="run-form"><Sanskrit text={quizWord.form} source="devanagari" /></span>
-          <span class="run-gloss"><Sanskrit text={quizWord.gloss} source="devanagari" /></span>
-        </button>
+        {#if quizWord}
+          <button class="run-row on" onclick={() => selectQuizWord()}>
+            <span class="run-form"><Sanskrit text={quizWord.form} source="devanagari" /></span>
+            <span class="run-gloss"><Sanskrit text={quizWord.gloss} source="devanagari" /></span>
+          </button>
+        {/if}
         {#if deckCards.length > 1}
           <button class="quizme" onclick={drawFromDeck}>quiz another →</button>
         {/if}
@@ -862,33 +1288,40 @@
 {/snippet}
 
 {#snippet rail()}
-  <span class="label">word</span>
+  <!--
+    The rail stacks, and nothing here replaces anything else:
 
-  {#if !selWord}
-    <!-- No word selected: the rail carries the READING's own commentary (the
-         vyākhyā), which used to sit in the main column. Per-word machinery
-         replaces it the moment a word is tapped, so the two never crowd. -->
-    {#if railReading?.vyakhya || railReading?.vyakhya_en}
-      <div class="vyakhya">
-        {#if railReading.vyakhya}
-          <span class="vyakhya-dev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></span>
-        {/if}
-        {#if railReading.vyakhya_en}
-          <p class="vyakhya-en">
-            <Sanskrit text={railReading.vyakhya_en.trim()} source="devanagari" />
-          </p>
-        {/if}
-      </div>
-    {/if}
-    {@render quizBlock()}
-    {#if !deckQuiz && deckCards.length}
-      <!-- The seen deck: a word from any reading scrolled past, drawn at random.
-           Tests recall of what you have read, not the word you just clicked. -->
-      <button class="quizme" onclick={drawFromDeck}>
-        quiz me · {deckCards.length} seen
-      </button>
-    {/if}
-  {:else}
+      the QUESTION — shut by default, opening at the top when you ask for it
+      the READING's own commentary (the vyākhyā) — the card you are on
+      the WORD you clicked, with its gloss, tags, sūtras and paradigm
+
+    The commentary used to be swapped out for the word block the moment you
+    clicked anything, so the note explaining the sentence disappeared exactly
+    when you started looking into it. It stays put now; the word arrives below.
+  -->
+  {#if !deckQuiz}
+    <button class="quizme top" onclick={drawFromDeck} disabled={!deckCards.length}>
+      {deckCards.length ? `quiz me · ${deckCards.length} to draw from` : 'quiz me · read a line first'}
+    </button>
+  {/if}
+  {@render quizBlock()}
+
+  {#if railReading?.vyakhya || railReading?.vyakhya_en}
+    <div class="vyakhya">
+      <span class="label">this reading</span>
+      {#if railReading.vyakhya}
+        <span class="vyakhya-dev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></span>
+      {/if}
+      {#if railReading.vyakhya_en}
+        <p class="vyakhya-en">
+          <Sanskrit text={railReading.vyakhya_en.trim()} source="devanagari" />
+        </p>
+      {/if}
+    </div>
+  {/if}
+
+  {#if selWord}
+    <span class="label word-label">word</span>
     <div class="word">
       <div class="word-head">
         <span class="word-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
@@ -909,8 +1342,8 @@
            the rail rather than a second row under every word. -->
       <div class="run">
         <span class="label">the line, word for word</span>
-        {#each runRows as g (g.wi)}
-          <button class="run-row" class:on={g.on} onclick={() => selectWord(selWord.id, g.wi)}>
+        {#each runRows as g (g.ti)}
+          <button class="run-row" class:on={g.on} onclick={() => selectToken(selWord.id, g.ti)}>
             <span class="run-form"><Sanskrit text={g.form} source="devanagari" /></span>
             <span class="run-gloss"><Sanskrit text={g.gloss} source="devanagari" /></span>
           </button>
@@ -985,15 +1418,9 @@
           {inDeck ? 'in your deck' : '+ keep for review'}
         </button>
       {/if}
-
-      <!-- The question sits UNDER the grammar, so the line you are reading stays
-           explained while you are asked about a different one. -->
-      {@render quizBlock()}
-      {#if !deckQuiz && deckCards.length}
-        <button class="quizme" onclick={drawFromDeck}>quiz me · {deckCards.length} seen</button>
-      {/if}
     </div>
   {/if}
+
 {/snippet}
 
 {#if error}
@@ -1046,14 +1473,14 @@
                 {#if tok.isWord}
                   <span
                     class="token"
-                    class:hot={hl(row.id, tok.wi)}
+                    class:hot={hl(row.id, tok.ti)}
                     class:focal={tok.focal}
-                    class:sel={sel?.id === row.id && sel?.wi === tok.wi}
+                    class:sel={sel?.id === row.id && sel?.ti === tok.ti}
                     role="presentation"
                     title={tok.gloss}
-                    onmouseenter={() => enterWord(row.id, tok.wi)}
+                    onmouseenter={() => enterWord(row.id, tok.ti)}
                     onmouseleave={leaveWord}
-                    onclick={() => selectWord(row.id, tok.wi)}
+                    onclick={() => selectToken(row.id, tok.ti)}
                   >
                     {#if padaccheda && tok.split}
                       {#each tok.split as part, pi}
@@ -1198,6 +1625,9 @@
     border-left: 2px solid transparent;
     padding-left: 16px;
     margin-left: -18px;
+    /* keeps scrollIntoView from tucking a card under the sticky nav and shelf */
+    scroll-margin-top: calc(var(--sticky-rail) + 14px);
+    scroll-margin-bottom: 24px;
   }
   /*
     Which line you are on. The class was already being set from `railReading`
@@ -1293,7 +1723,9 @@
   .gloss,
   .run-gloss,
   .ex-teaches,
-  .cite-role {
+  .cite-role,
+  .question,
+  .verdict {
     font-family: var(--font-prose);
   }
   .translation :global(span),
@@ -1302,7 +1734,9 @@
   .gloss :global(span),
   .run-gloss :global(span),
   .ex-teaches :global(span),
-  .cite-role :global(span) {
+  .cite-role :global(span),
+  .question :global(span),
+  .verdict :global(span) {
     font-family: inherit;
   }
 
@@ -1420,6 +1854,18 @@
     text-align: left;
     cursor: pointer;
   }
+  /* Nothing read yet: the control stays put and says why, rather than vanishing
+     and leaving you to wonder whether the quiz is broken. */
+  .quizme:disabled {
+    color: var(--quiet);
+    border-color: var(--rule);
+    cursor: default;
+  }
+  /* The word block sits under the reading's note now, so it needs its own
+     heading — the single "word" label at the top of the rail used to serve. */
+  .word-label {
+    margin-top: 2px;
+  }
   /* On the shelf the same control has to sit in a 40px bar, so it loses the
      block padding the rail version needs. */
   .quizme.shelf {
@@ -1479,10 +1925,44 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-top: 1px solid var(--rule-2);
-    margin-top: 4px;
-    padding-top: 14px;
+    /* it sits at the TOP of the rail now, so the rule goes underneath it —
+       separating the question from the reading it is not about */
+    border-bottom: 1px solid var(--rule-2);
+    margin-bottom: 4px;
+    padding-bottom: 16px;
   }
+  .quizme.top {
+    margin-bottom: 2px;
+  }
+  /* the sentence as an answer space — tokens you tap, not options you read */
+  .quiz-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    align-items: baseline;
+    padding: 2px 0 4px;
+  }
+  .qtok {
+    font-family: var(--font-deva);
+    font-size: 17px;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 1px 0 2px;
+    cursor: pointer;
+  }
+  .qtok:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .qtok.punct {
+    color: var(--faint);
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+
   .quiz-head {
     display: flex;
     align-items: center;
@@ -1518,6 +1998,25 @@
   .phrase.context {
     color: var(--muted);
     font-size: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    align-items: baseline;
+  }
+  .ctok {
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1px;
+  }
+  /* the word the question is about. The rest of the clause stays muted, so the
+     mark is the only thing at full weight in the line. */
+  .ctok.on {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  /* the daṇḍa belongs to the word before it, not to the gap */
+  .ctok.punct {
+    margin-left: -6px;
+    color: var(--faint);
   }
   .question {
     font-size: 15px;

@@ -42,7 +42,22 @@
   <link rel="apple-touch-icon" href="/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600&family=Noto+Sans+Malayalam:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Sans+Gujarati:wght@400;500;600&family=Noto+Sans+Gurmukhi:wght@400;500;600&family=Noto+Sans+Oriya:wght@400;500;600&family=Noto+Sans+Sinhala:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!--
+    The eight further Indic faces, loaded WITHOUT blocking the first paint —
+    same reason as the primary sheet in app.html, and this was the second half
+    of the same stall: two render-blocking requests to Google, not one.
+
+    These are the scripts the toggle can render but almost nobody selects
+    (Kannada through Sinhala). Holding up every page in the app, for every
+    reader, on eight typefaces that only a few will ever see is the wrong
+    trade even when Google answers quickly.
+  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600&family=Noto+Sans+Malayalam:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Sans+Gujarati:wght@400;500;600&family=Noto+Sans+Gurmukhi:wght@400;500;600&family=Noto+Sans+Oriya:wght@400;500;600&family=Noto+Sans+Sinhala:wght@400;500;600&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload={(e) => ((e.currentTarget as HTMLLinkElement).media = 'all')}
+  />
 </svelte:head>
 
 <!--
