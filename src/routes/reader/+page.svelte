@@ -494,18 +494,41 @@
     whole passage: a सङ्ग्रह reading runs to 556 characters, and eight lines of
     prose to ask about one word buries it.
   */
-  const quizContext = $derived.by(() => {
-    const q = quizWord, a = activeQuiz;
-    if (!q || !a) return '';
-    // a question that asks for a FORM must not print the form; `meaning` asks
-    // what the word means, and the gloss is not in the Sanskrit, so it keeps
-    // its clause
-    if (a.ui === 'produce') return '';
-    const clauses = String(q.sentence ?? '')
-      .split(/(?<=[।॥])/)
-      .map((c: string) => c.trim())
-      .filter(Boolean);
-    return clauses.find((c: string) => c.includes(q.form)) ?? q.sentence ?? '';
+
+  /*
+    The clause comes as TOKENS, not as a string, so the word under question can
+    be marked inside it. "Which लकार?" over `नरः ग्रामं गच्छति।` names no word,
+    and three of them are in the line — the reader has to guess which one is
+    being asked about, and on a longer clause guessing is hopeless.
+
+    Only the FIRST token carrying the word's index is marked. A form used twice
+    resolves to one annotation (see tokensOf), so marking every match would lit
+    two words for one question — the same duplicate-highlight fault selection
+    already had to be moved off form-matching to avoid.
+  */
+  const quizContextTokens = $derived.by(() => {
+    const d = deckQuiz, a = activeQuiz;
+    if (!d || !a || !a.context) return [];
+    const r = list.find((x) => x.id === d.id);
+    if (!r) return [];
+    const toks = tokensOf(r);
+    const markTi = toks.find((t: any) => t.wi === d.wi)?.ti ?? -1;
+
+    // Split on the daṇḍa, which closes the clause it ends rather than opening
+    // the next one.
+    const clauses: any[][] = [];
+    let cur: any[] = [];
+    for (const t of toks) {
+      cur.push(t);
+      if (/[।॥]/.test(t.text)) {
+        clauses.push(cur);
+        cur = [];
+      }
+    }
+    if (cur.length) clauses.push(cur);
+
+    const hit = clauses.find((c) => c.some((t: any) => t.ti === markTi)) ?? clauses[0] ?? [];
+    return hit.map((t: any) => ({ ...t, on: t.ti === markTi }));
   });
 
   // The word-for-word run of the selected line. It belongs to the grammar, so
@@ -1191,8 +1214,14 @@
         <button class="quiz-close" onclick={closeQuiz} aria-label="close the question">×</button>
       </div>
 
-      {#if quizContext}
-        <div class="phrase context"><Sanskrit text={quizContext} source="devanagari" /></div>
+      {#if quizContextTokens.length}
+        <div class="phrase context">
+          {#each quizContextTokens as tok (tok.ti)}
+            <span class="ctok" class:on={tok.on} class:punct={!tok.isWord}
+              ><Sanskrit text={tok.text} source="devanagari" /></span
+            >
+          {/each}
+        </div>
       {/if}
 
       <span class="question"><Sanskrit text={q.prompt} source="devanagari" /></span>
@@ -1969,6 +1998,25 @@
   .phrase.context {
     color: var(--muted);
     font-size: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    align-items: baseline;
+  }
+  .ctok {
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1px;
+  }
+  /* the word the question is about. The rest of the clause stays muted, so the
+     mark is the only thing at full weight in the line. */
+  .ctok.on {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  /* the daṇḍa belongs to the word before it, not to the gap */
+  .ctok.punct {
+    margin-left: -6px;
+    color: var(--faint);
   }
   .question {
     font-size: 15px;

@@ -16,19 +16,22 @@
     "order": 0
   },
   {
-    "id": "alphabet",
-    "track": "reading",
-    "folder": "alphabet",
-    "trackFolder": "pathana",
-    "title": "Alphabet & Sounds",
-    "titleSanskrit": "वर्णमाला",
-    "label": "वर्णाः",
-    "category": "foundation",
-    "description": "Learn the Sanskrit alphabet and sound system.",
+    "id": "tinganta-lat",
+    "track": "grammar",
+    "folder": "tinganta-lat",
+    "trackFolder": "vyakarana",
+    "title": "लट् — Present",
+    "titleSanskrit": "लट्लकारः",
+    "label": "लट्",
+    "category": "tinganta",
+    "description": "Derive @deva[लट्] (present tense) verb forms — the most common @deva[तिङन्त] forms you'll encounter.",
     "difficulty": "beginner",
-    "estimatedTime": "30 minutes",
-    "prerequisites": [],
-    "stepCount": 5,
+    "estimatedTime": "3-4 hours",
+    "prerequisites": [
+      "introduction",
+      "dhatu-parichaya"
+    ],
+    "stepCount": 19,
     "order": 1
   },
   {
@@ -50,41 +53,20 @@
     "order": 1
   },
   {
-    "id": "tinganta-lat",
-    "track": "grammar",
-    "folder": "tinganta-lat",
-    "trackFolder": "vyakarana",
-    "title": "लट् — Present",
-    "titleSanskrit": "लट्लकारः",
-    "label": "लट्",
-    "category": "tinganta",
-    "description": "Derive @deva[लट्] (present tense) verb forms — the most common @deva[तिङन्त] forms you'll encounter.",
-    "difficulty": "beginner",
-    "estimatedTime": "3-4 hours",
-    "prerequisites": [
-      "introduction",
-      "dhatu-parichaya"
-    ],
-    "stepCount": 19,
-    "order": 1
-  },
-  {
-    "id": "simple-sentences",
+    "id": "alphabet",
     "track": "reading",
-    "folder": "simple-sentences",
+    "folder": "alphabet",
     "trackFolder": "pathana",
-    "title": "Simple Sentences",
-    "titleSanskrit": "वाक्यानि",
-    "label": "वाक्यम्",
+    "title": "Alphabet & Sounds",
+    "titleSanskrit": "वर्णमाला",
+    "label": "वर्णाः",
     "category": "foundation",
-    "description": "Read your first Sanskrit sentences with present tense verbs.",
+    "description": "Learn the Sanskrit alphabet and sound system.",
     "difficulty": "beginner",
-    "estimatedTime": "25 minutes",
-    "prerequisites": [
-      "alphabet"
-    ],
-    "stepCount": 6,
-    "order": 2
+    "estimatedTime": "30 minutes",
+    "prerequisites": [],
+    "stepCount": 5,
+    "order": 1
   },
   {
     "id": "tinganta-lot",
@@ -105,22 +87,22 @@
     "order": 2
   },
   {
-    "id": "practice-1",
+    "id": "simple-sentences",
     "track": "reading",
-    "folder": "practice-1",
+    "folder": "simple-sentences",
     "trackFolder": "pathana",
-    "title": "Reading Practice: Simple Sentences",
-    "titleSanskrit": "अभ्यासः",
-    "label": "अभ्यासः १",
+    "title": "Simple Sentences",
+    "titleSanskrit": "वाक्यानि",
+    "label": "वाक्यम्",
     "category": "foundation",
-    "description": "Apply what you've learned to read simple prose.",
+    "description": "Read your first Sanskrit sentences with present tense verbs.",
     "difficulty": "beginner",
-    "estimatedTime": "15 minutes",
+    "estimatedTime": "25 minutes",
     "prerequisites": [
-      "simple-sentences"
+      "alphabet"
     ],
-    "stepCount": 5,
-    "order": 3
+    "stepCount": 6,
+    "order": 2
   },
   {
     "id": "tinganta-lang",
@@ -141,22 +123,22 @@
     "order": 3
   },
   {
-    "id": "more-verbs",
+    "id": "practice-1",
     "track": "reading",
-    "folder": "more-verbs",
+    "folder": "practice-1",
     "trackFolder": "pathana",
-    "title": "More Present Tense",
-    "titleSanskrit": "लट्लकारः",
-    "label": "क्रियाः",
-    "category": "tinganta",
-    "description": "Learn all three persons and numbers for present tense verbs.",
+    "title": "Reading Practice: Simple Sentences",
+    "titleSanskrit": "अभ्यासः",
+    "label": "अभ्यासः १",
+    "category": "foundation",
+    "description": "Apply what you've learned to read simple prose.",
     "difficulty": "beginner",
-    "estimatedTime": "25 minutes",
+    "estimatedTime": "15 minutes",
     "prerequisites": [
-      "practice-1"
+      "simple-sentences"
     ],
-    "stepCount": 6,
-    "order": 4
+    "stepCount": 5,
+    "order": 3
   },
   {
     "id": "tinganta-vidhiling",
@@ -177,22 +159,22 @@
     "order": 4
   },
   {
-    "id": "nom-acc",
+    "id": "more-verbs",
     "track": "reading",
-    "folder": "nom-acc",
+    "folder": "more-verbs",
     "trackFolder": "pathana",
-    "title": "Nominative & Accusative",
-    "titleSanskrit": "प्रथमाद्वितीये",
-    "label": "प्रथमा",
-    "category": "subanta",
-    "description": "Master the two most common cases — subject and object.",
+    "title": "More Present Tense",
+    "titleSanskrit": "लट्लकारः",
+    "label": "क्रियाः",
+    "category": "tinganta",
+    "description": "Learn all three persons and numbers for present tense verbs.",
     "difficulty": "beginner",
-    "estimatedTime": "20 minutes",
+    "estimatedTime": "25 minutes",
     "prerequisites": [
-      "more-verbs"
+      "practice-1"
     ],
-    "stepCount": 7,
-    "order": 5
+    "stepCount": 6,
+    "order": 4
   },
   {
     "id": "dhatu-ganas",
@@ -213,22 +195,22 @@
     "order": 5
   },
   {
-    "id": "practice-2",
+    "id": "nom-acc",
     "track": "reading",
-    "folder": "practice-2",
+    "folder": "nom-acc",
     "trackFolder": "pathana",
-    "title": "Reading Practice: Narrative",
-    "titleSanskrit": "अभ्यासः",
-    "label": "अभ्यासः २",
-    "category": "foundation",
-    "description": "Read narrative prose with subjects, objects, and verbs.",
+    "title": "Nominative & Accusative",
+    "titleSanskrit": "प्रथमाद्वितीये",
+    "label": "प्रथमा",
+    "category": "subanta",
+    "description": "Master the two most common cases — subject and object.",
     "difficulty": "beginner",
     "estimatedTime": "20 minutes",
     "prerequisites": [
-      "nom-acc"
+      "more-verbs"
     ],
-    "stepCount": 6,
-    "order": 6
+    "stepCount": 7,
+    "order": 5
   },
   {
     "id": "tinganta-lrt",
@@ -250,22 +232,22 @@
     "order": 6
   },
   {
-    "id": "instrumental",
+    "id": "practice-2",
     "track": "reading",
-    "folder": "instrumental",
+    "folder": "practice-2",
     "trackFolder": "pathana",
-    "title": "Instrumental Case",
-    "titleSanskrit": "तृतीया",
-    "label": "तृतीया",
-    "category": "subanta",
-    "description": "Express \"by means of\" or \"with\" using the third case.",
+    "title": "Reading Practice: Narrative",
+    "titleSanskrit": "अभ्यासः",
+    "label": "अभ्यासः २",
+    "category": "foundation",
+    "description": "Read narrative prose with subjects, objects, and verbs.",
     "difficulty": "beginner",
     "estimatedTime": "20 minutes",
     "prerequisites": [
-      "practice-2"
+      "nom-acc"
     ],
     "stepCount": 6,
-    "order": 7
+    "order": 6
   },
   {
     "id": "tinganta-lut",
@@ -286,22 +268,22 @@
     "order": 7
   },
   {
-    "id": "dative",
+    "id": "instrumental",
     "track": "reading",
-    "folder": "dative",
+    "folder": "instrumental",
     "trackFolder": "pathana",
-    "title": "Dative Case",
-    "titleSanskrit": "चतुर्थी",
-    "label": "चतुर्थी",
+    "title": "Instrumental Case",
+    "titleSanskrit": "तृतीया",
+    "label": "तृतीया",
     "category": "subanta",
-    "description": "Express purpose and recipients with the fourth case.",
+    "description": "Express \"by means of\" or \"with\" using the third case.",
     "difficulty": "beginner",
-    "estimatedTime": "15 minutes",
+    "estimatedTime": "20 minutes",
     "prerequisites": [
-      "instrumental"
+      "practice-2"
     ],
-    "stepCount": 5,
-    "order": 8
+    "stepCount": 6,
+    "order": 7
   },
   {
     "id": "tinganta-lit",
@@ -322,22 +304,22 @@
     "order": 8
   },
   {
-    "id": "practice-3",
+    "id": "dative",
     "track": "reading",
-    "folder": "practice-3",
+    "folder": "dative",
     "trackFolder": "pathana",
-    "title": "Reading Practice: Subhāṣitas",
-    "titleSanskrit": "सुभाषितम्",
-    "label": "अभ्यासः ३",
-    "category": "foundation",
-    "description": "Read wisdom verses using all four cases learned so far.",
+    "title": "Dative Case",
+    "titleSanskrit": "चतुर्थी",
+    "label": "चतुर्थी",
+    "category": "subanta",
+    "description": "Express purpose and recipients with the fourth case.",
     "difficulty": "beginner",
-    "estimatedTime": "20 minutes",
+    "estimatedTime": "15 minutes",
     "prerequisites": [
-      "dative"
+      "instrumental"
     ],
-    "stepCount": 7,
-    "order": 9
+    "stepCount": 5,
+    "order": 8
   },
   {
     "id": "tinganta-lung",
@@ -358,22 +340,22 @@
     "order": 9
   },
   {
-    "id": "past-tense",
+    "id": "practice-3",
     "track": "reading",
-    "folder": "past-tense",
+    "folder": "practice-3",
     "trackFolder": "pathana",
-    "title": "Past Tense (laṅ)",
-    "titleSanskrit": "लङ्लकारः",
-    "label": "लङ्",
-    "category": "tinganta",
-    "description": "Read about past events with the imperfect tense.",
+    "title": "Reading Practice: Subhāṣitas",
+    "titleSanskrit": "सुभाषितम्",
+    "label": "अभ्यासः ३",
+    "category": "foundation",
+    "description": "Read wisdom verses using all four cases learned so far.",
     "difficulty": "beginner",
     "estimatedTime": "20 minutes",
     "prerequisites": [
-      "practice-3"
+      "dative"
     ],
     "stepCount": 7,
-    "order": 10
+    "order": 9
   },
   {
     "id": "tinganta-ashirling",
@@ -394,22 +376,22 @@
     "order": 10
   },
   {
-    "id": "practice-4",
+    "id": "past-tense",
     "track": "reading",
-    "folder": "practice-4",
+    "folder": "past-tense",
     "trackFolder": "pathana",
-    "title": "Reading Practice: Narrative",
-    "titleSanskrit": "कथा",
-    "label": "अभ्यासः ४",
-    "category": "foundation",
-    "description": "Read continuous narrative using past tense.",
+    "title": "Past Tense (laṅ)",
+    "titleSanskrit": "लङ्लकारः",
+    "label": "लङ्",
+    "category": "tinganta",
+    "description": "Read about past events with the imperfect tense.",
     "difficulty": "beginner",
     "estimatedTime": "20 minutes",
     "prerequisites": [
-      "past-tense"
+      "practice-3"
     ],
     "stepCount": 7,
-    "order": 11
+    "order": 10
   },
   {
     "id": "tinganta-lrng",
@@ -431,22 +413,22 @@
     "order": 11
   },
   {
-    "id": "gen-abl",
+    "id": "practice-4",
     "track": "reading",
-    "folder": "gen-abl",
+    "folder": "practice-4",
     "trackFolder": "pathana",
-    "title": "Genitive & Ablative",
-    "titleSanskrit": "षष्ठीपञ्चम्यौ",
-    "label": "षष्ठी",
-    "category": "subanta",
-    "description": "Express possession and source with the fifth and sixth cases.",
+    "title": "Reading Practice: Narrative",
+    "titleSanskrit": "कथा",
+    "label": "अभ्यासः ४",
+    "category": "foundation",
+    "description": "Read continuous narrative using past tense.",
     "difficulty": "beginner",
     "estimatedTime": "20 minutes",
     "prerequisites": [
-      "practice-4"
+      "past-tense"
     ],
-    "stepCount": 9,
-    "order": 12
+    "stepCount": 7,
+    "order": 11
   },
   {
     "id": "kridanta-ktva",
@@ -468,22 +450,22 @@
     "order": 12
   },
   {
-    "id": "locative",
+    "id": "gen-abl",
     "track": "reading",
-    "folder": "locative",
+    "folder": "gen-abl",
     "trackFolder": "pathana",
-    "title": "Locative Case",
-    "titleSanskrit": "सप्तमी",
-    "label": "सप्तमी",
+    "title": "Genitive & Ablative",
+    "titleSanskrit": "षष्ठीपञ्चम्यौ",
+    "label": "षष्ठी",
     "category": "subanta",
-    "description": "Express location and time with the seventh case.",
+    "description": "Express possession and source with the fifth and sixth cases.",
     "difficulty": "beginner",
-    "estimatedTime": "15 minutes",
+    "estimatedTime": "20 minutes",
     "prerequisites": [
-      "gen-abl"
+      "practice-4"
     ],
-    "stepCount": 6,
-    "order": 13
+    "stepCount": 9,
+    "order": 12
   },
   {
     "id": "kridanta-tumun",
@@ -505,22 +487,22 @@
     "order": 13
   },
   {
-    "id": "vowel-sandhi",
+    "id": "locative",
     "track": "reading",
-    "folder": "vowel-sandhi",
+    "folder": "locative",
     "trackFolder": "pathana",
-    "title": "Vowel Sandhi",
-    "titleSanskrit": "स्वरसन्धिः",
-    "label": "स्वरसन्धिः",
-    "category": "sandhi",
-    "description": "Understand how vowels merge at word boundaries.",
+    "title": "Locative Case",
+    "titleSanskrit": "सप्तमी",
+    "label": "सप्तमी",
+    "category": "subanta",
+    "description": "Express location and time with the seventh case.",
     "difficulty": "beginner",
-    "estimatedTime": "20 minutes",
+    "estimatedTime": "15 minutes",
     "prerequisites": [
-      "locative"
+      "gen-abl"
     ],
-    "stepCount": 8,
-    "order": 14
+    "stepCount": 6,
+    "order": 13
   },
   {
     "id": "kridanta-shatr-shanac",
@@ -542,22 +524,22 @@
     "order": 14
   },
   {
-    "id": "practice-5",
+    "id": "vowel-sandhi",
     "track": "reading",
-    "folder": "practice-5",
+    "folder": "vowel-sandhi",
     "trackFolder": "pathana",
-    "title": "Reading Practice: Verses",
-    "titleSanskrit": "पद्यानि",
-    "label": "अभ्यासः ५",
-    "category": "foundation",
-    "description": "Read Sanskrit verses, splitting sandhi as you go.",
-    "difficulty": "intermediate",
-    "estimatedTime": "25 minutes",
+    "title": "Vowel Sandhi",
+    "titleSanskrit": "स्वरसन्धिः",
+    "label": "स्वरसन्धिः",
+    "category": "sandhi",
+    "description": "Understand how vowels merge at word boundaries.",
+    "difficulty": "beginner",
+    "estimatedTime": "20 minutes",
     "prerequisites": [
-      "vowel-sandhi"
+      "locative"
     ],
-    "stepCount": 7,
-    "order": 15
+    "stepCount": 8,
+    "order": 14
   },
   {
     "id": "kridanta-kta-ktavatu",
@@ -579,22 +561,22 @@
     "order": 15
   },
   {
-    "id": "compounds",
+    "id": "practice-5",
     "track": "reading",
-    "folder": "compounds",
+    "folder": "practice-5",
     "trackFolder": "pathana",
-    "title": "Simple Compounds",
-    "titleSanskrit": "समासः",
-    "label": "समासः",
-    "category": "samasa",
-    "description": "Recognize and split common compound types.",
+    "title": "Reading Practice: Verses",
+    "titleSanskrit": "पद्यानि",
+    "label": "अभ्यासः ५",
+    "category": "foundation",
+    "description": "Read Sanskrit verses, splitting sandhi as you go.",
     "difficulty": "intermediate",
-    "estimatedTime": "20 minutes",
+    "estimatedTime": "25 minutes",
     "prerequisites": [
-      "practice-5"
+      "vowel-sandhi"
     ],
-    "stepCount": 8,
-    "order": 16
+    "stepCount": 7,
+    "order": 15
   },
   {
     "id": "kridanta-tavya-aniya",
@@ -616,22 +598,22 @@
     "order": 16
   },
   {
-    "id": "practice-6",
+    "id": "compounds",
     "track": "reading",
-    "folder": "practice-6",
+    "folder": "compounds",
     "trackFolder": "pathana",
-    "title": "Reading Practice: Kāvya",
-    "titleSanskrit": "काव्यम्",
-    "label": "अभ्यासः ६",
-    "category": "foundation",
-    "description": "Read verses from Kālidāsa's Meghadūta.",
+    "title": "Simple Compounds",
+    "titleSanskrit": "समासः",
+    "label": "समासः",
+    "category": "samasa",
+    "description": "Recognize and split common compound types.",
     "difficulty": "intermediate",
-    "estimatedTime": "25 minutes",
+    "estimatedTime": "20 minutes",
     "prerequisites": [
-      "compounds"
+      "practice-5"
     ],
     "stepCount": 8,
-    "order": 17
+    "order": 16
   },
   {
     "id": "taddhita-matup",
@@ -652,22 +634,22 @@
     "order": 17
   },
   {
-    "id": "participles",
+    "id": "practice-6",
     "track": "reading",
-    "folder": "participles",
+    "folder": "practice-6",
     "trackFolder": "pathana",
-    "title": "Participles",
-    "titleSanskrit": "कृदन्तम्",
-    "label": "कृदन्तम्",
-    "category": "kridanta",
-    "description": "Verbal adjectives that describe actions completed or ongoing.",
+    "title": "Reading Practice: Kāvya",
+    "titleSanskrit": "काव्यम्",
+    "label": "अभ्यासः ६",
+    "category": "foundation",
+    "description": "Read verses from Kālidāsa's Meghadūta.",
     "difficulty": "intermediate",
-    "estimatedTime": "20 minutes",
+    "estimatedTime": "25 minutes",
     "prerequisites": [
-      "practice-6"
+      "compounds"
     ],
-    "stepCount": 9,
-    "order": 18
+    "stepCount": 8,
+    "order": 17
   },
   {
     "id": "taddhita-tva-tal",
@@ -688,22 +670,22 @@
     "order": 18
   },
   {
-    "id": "visarga-sandhi",
+    "id": "participles",
     "track": "reading",
-    "folder": "visarga-sandhi",
+    "folder": "participles",
     "trackFolder": "pathana",
-    "title": "Visarga Sandhi",
-    "titleSanskrit": "विसर्गसन्धिः",
-    "label": "विसर्गः",
-    "category": "sandhi",
-    "description": "How the visarga changes before different sounds.",
+    "title": "Participles",
+    "titleSanskrit": "कृदन्तम्",
+    "label": "कृदन्तम्",
+    "category": "kridanta",
+    "description": "Verbal adjectives that describe actions completed or ongoing.",
     "difficulty": "intermediate",
     "estimatedTime": "20 minutes",
     "prerequisites": [
-      "participles"
+      "practice-6"
     ],
-    "stepCount": 8,
-    "order": 19
+    "stepCount": 9,
+    "order": 18
   },
   {
     "id": "taddhita-an-ika",
@@ -724,22 +706,22 @@
     "order": 19
   },
   {
-    "id": "final-practice",
+    "id": "visarga-sandhi",
     "track": "reading",
-    "folder": "final-practice",
+    "folder": "visarga-sandhi",
     "trackFolder": "pathana",
-    "title": "Reading Practice: Extended Passage",
-    "titleSanskrit": "समाप्तिः",
-    "label": "समाप्तिः",
-    "category": "foundation",
-    "description": "Apply everything you've learned to read an extended passage.",
+    "title": "Visarga Sandhi",
+    "titleSanskrit": "विसर्गसन्धिः",
+    "label": "विसर्गः",
+    "category": "sandhi",
+    "description": "How the visarga changes before different sounds.",
     "difficulty": "intermediate",
-    "estimatedTime": "30 minutes",
+    "estimatedTime": "20 minutes",
     "prerequisites": [
-      "visarga-sandhi"
+      "participles"
     ],
-    "stepCount": 10,
-    "order": 20
+    "stepCount": 8,
+    "order": 19
   },
   {
     "id": "subanta-pratipadika",
@@ -760,22 +742,22 @@
     "order": 20
   },
   {
-    "id": "reader-01",
+    "id": "final-practice",
     "track": "reading",
-    "folder": "reader-01",
+    "folder": "final-practice",
     "trackFolder": "pathana",
-    "title": "Reader: First Steps",
-    "titleSanskrit": "पाठः १",
-    "label": "पाठः १",
+    "title": "Reading Practice: Extended Passage",
+    "titleSanskrit": "समाप्तिः",
+    "label": "समाप्तिः",
     "category": "foundation",
-    "description": "Read two complete Sanskrit sentences with full word-by-word analysis. No sandhi, present tense only.",
-    "difficulty": "beginner",
-    "estimatedTime": "20 minutes",
+    "description": "Apply everything you've learned to read an extended passage.",
+    "difficulty": "intermediate",
+    "estimatedTime": "30 minutes",
     "prerequisites": [
-      "nom-acc"
+      "visarga-sandhi"
     ],
-    "stepCount": 6,
-    "order": 21
+    "stepCount": 10,
+    "order": 20
   },
   {
     "id": "subanta-a-stems",
@@ -794,6 +776,42 @@
     ],
     "stepCount": 15,
     "order": 21
+  },
+  {
+    "id": "reader-01",
+    "track": "reading",
+    "folder": "reader-01",
+    "trackFolder": "pathana",
+    "title": "Reader: First Steps",
+    "titleSanskrit": "पाठः १",
+    "label": "पाठः १",
+    "category": "foundation",
+    "description": "Read two complete Sanskrit sentences with full word-by-word analysis. No sandhi, present tense only.",
+    "difficulty": "beginner",
+    "estimatedTime": "20 minutes",
+    "prerequisites": [
+      "nom-acc"
+    ],
+    "stepCount": 6,
+    "order": 21
+  },
+  {
+    "id": "subanta-aa-stems",
+    "track": "grammar",
+    "folder": "subanta-aa-stems",
+    "trackFolder": "vyakarana",
+    "title": "आकारान्त — Ā-stem Declension",
+    "titleSanskrit": "आकारान्तस्त्री",
+    "label": "आकारान्तस्त्री",
+    "category": "subanta",
+    "description": "Decline @term[strīliṅga] @deva[आ]-stems like @deva[सेना], @deva[विद्या], @deva[कन्या]. The primary feminine pattern.",
+    "difficulty": "beginner",
+    "estimatedTime": "2-3 hours",
+    "prerequisites": [
+      "subanta-pratipadika"
+    ],
+    "stepCount": 10,
+    "order": 22
   },
   {
     "id": "reader-02",
@@ -815,22 +833,22 @@
     "order": 22
   },
   {
-    "id": "subanta-aa-stems",
+    "id": "subanta-i-u-stems",
     "track": "grammar",
-    "folder": "subanta-aa-stems",
+    "folder": "subanta-i-u-stems",
     "trackFolder": "vyakarana",
-    "title": "आकारान्त — Ā-stem Declension",
-    "titleSanskrit": "आकारान्तस्त्री",
-    "label": "आकारान्तस्त्री",
+    "title": "इकारान्त / उकारान्त — I/U-stem Declension",
+    "titleSanskrit": "इकारोकारान्तम्",
+    "label": "इकारोकारान्तम्",
     "category": "subanta",
-    "description": "Decline @term[strīliṅga] @deva[आ]-stems like @deva[सेना], @deva[विद्या], @deva[कन्या]. The primary feminine pattern.",
-    "difficulty": "beginner",
-    "estimatedTime": "2-3 hours",
+    "description": "Decline @deva[इ]/[@deva[उ]-stems (@deva[अग्नि], @deva[गुरु]). Important patterns with @term[guṇa] and @term[yaṇ] changes.",
+    "difficulty": "intermediate",
+    "estimatedTime": "3 hours",
     "prerequisites": [
       "subanta-pratipadika"
     ],
-    "stepCount": 10,
-    "order": 22
+    "stepCount": 9,
+    "order": 23
   },
   {
     "id": "reader-03",
@@ -849,24 +867,6 @@
       "past-tense"
     ],
     "stepCount": 7,
-    "order": 23
-  },
-  {
-    "id": "subanta-i-u-stems",
-    "track": "grammar",
-    "folder": "subanta-i-u-stems",
-    "trackFolder": "vyakarana",
-    "title": "इकारान्त / उकारान्त — I/U-stem Declension",
-    "titleSanskrit": "इकारोकारान्तम्",
-    "label": "इकारोकारान्तम्",
-    "category": "subanta",
-    "description": "Decline @deva[इ]/[@deva[उ]-stems (@deva[अग्नि], @deva[गुरु]). Important patterns with @term[guṇa] and @term[yaṇ] changes.",
-    "difficulty": "intermediate",
-    "estimatedTime": "3 hours",
-    "prerequisites": [
-      "subanta-pratipadika"
-    ],
-    "stepCount": 9,
     "order": 23
   },
   {
