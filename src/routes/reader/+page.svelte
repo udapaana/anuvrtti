@@ -1386,7 +1386,9 @@
                   <Sanskrit text={termInfo.term} source="devanagari" />
                   <span class="concept-rom">{termInfo.termRoman}</span>
                 </div>
-                <div class="concept-body"><InlineMarkup text={termInfo.meaning} /></div>
+                <div class="concept-body">
+                  <InlineMarkup text={termInfo.meaning} autoLink onpick={(t) => (openTerm = t)} />
+                </div>
                 {#if termInfo.sutraRef}
                   <a class="concept-ref" href={`/ref/${termInfo.sutraRef}`}>सूत्र {termInfo.sutraRef} →</a>
                 {/if}

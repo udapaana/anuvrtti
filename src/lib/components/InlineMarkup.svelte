@@ -2,12 +2,22 @@
   import { transliterate, type Script } from '$lib/transliteration';
   import { displayScript } from '$lib/stores/preferences';
   import { selectedTerm } from '$lib/stores/jargon';
+  import { lookupTerm } from '$lib/jargon';
 
   interface Props {
     text: string;
+    /**
+     * When true, also make Sanskrit terms found in plain prose clickable — a
+     * word like "bhvādi" or "vikaraṇa" inside a definition — and route every
+     * click to `onpick` instead of the global jargon store. Off by default so
+     * existing surfaces (commentary, lessons) keep their exact behaviour.
+     */
+    autoLink?: boolean;
+    /** Where a term click goes when autoLink is on. */
+    onpick?: (term: string) => void;
   }
 
-  let { text }: Props = $props();
+  let { text, autoLink = false, onpick }: Props = $props();
 
   interface Span {
     type: 'text' | 'iast' | 'deva' | 'slp1';
@@ -21,6 +31,9 @@
     if (/[āīūṛṝḷḹṅñṭḍṇśṣṃḥ]/.test(t)) return 'iast';
     return 'slp1';
   }
+
+  const DEVA = /[ऀ-ॿ]/;
+  const DIACRITIC = /[āīūṛṝḷḹṅñṭḍṇśṣṃḥ]/i;
 
   // Handle all inline markup tags the content uses:
   //   @[iast] @deva[deva] @term[word] @ref[id] @pratyahara[code]
@@ -51,7 +64,39 @@
     return spans;
   }
 
-  let spans: Span[] = $derived(parse(text));
+  // With autoLink on, break each plain-text run into word tokens and promote any
+  // Sanskrit-looking token that names a glossary term into a clickable span, so
+  // "Vikaraṇa for class 1 (bhvādi)" makes both Sanskrit words tappable while the
+  // English stays plain. A token counts as Sanskrit only if it carries a
+  // diacritic or Devanagari — plain ASCII ("class", "for") can never false-match.
+  function expand(spans: Span[]): Span[] {
+    if (!autoLink) return spans;
+    const out: Span[] = [];
+    const tok = /([ऀ-ॿ]+|[A-Za-zÀ-ɏḀ-ỿ]+)|([^ऀ-ॿA-Za-zÀ-ɏḀ-ỿ]+)/g;
+    for (const s of spans) {
+      if (s.type !== 'text') {
+        out.push(s);
+        continue;
+      }
+      let m: RegExpExecArray | null;
+      while ((m = tok.exec(s.content)) !== null) {
+        if (m[1]) {
+          const w = m[1];
+          const skt = DEVA.test(w) || DIACRITIC.test(w);
+          if (skt && lookupTerm(w)) {
+            out.push({ type: DEVA.test(w) ? 'deva' : 'iast', content: w });
+          } else {
+            out.push({ type: 'text', content: w });
+          }
+        } else if (m[2]) {
+          out.push({ type: 'text', content: m[2] });
+        }
+      }
+    }
+    return out;
+  }
+
+  let spans: Span[] = $derived(expand(parse(text)));
 
   let script: Script = $state('devanagari');
   displayScript.subscribe(s => { script = s; });
@@ -78,16 +123,23 @@
     Promise.all(s.map(render)).then(r => { rendered = r; });
   });
 
+  // A span is clickable when it names a term. deva stays clickable as before;
+  // iast/slp1 become clickable only under autoLink, and only if they resolve.
+  function clickable(span: Span): boolean {
+    if (span.type === 'text') return false;
+    if (span.type === 'deva') return true;
+    return autoLink && !!lookupTerm(span.content);
+  }
+
   function click(e: MouseEvent, span: Span) {
     e.preventDefault();
     e.stopPropagation();
-    if (span.type === 'deva') {
-      selectedTerm.set(span.content);
-    }
+    if (onpick) onpick(span.content);
+    else selectedTerm.set(span.content);
   }
 </script>
 
-<span class="inline-markup">{#each spans as span, i}{#if span.type === 'deva'}<button class="jargon-inline font-{script}" onclick={(e) => click(e, span)}>{rendered[i] ?? ''}</button>{:else if span.type === 'iast' || span.type === 'slp1'}<span class="font-{script}">{rendered[i] ?? ''}</span>{:else}{rendered[i] ?? ''}{/if}{/each}</span>
+<span class="inline-markup">{#each spans as span, i}{#if clickable(span)}<button class="jargon-inline font-{script}" onclick={(e) => click(e, span)}>{rendered[i] ?? ''}</button>{:else if span.type === 'iast' || span.type === 'slp1'}<span class="font-{script}">{rendered[i] ?? ''}</span>{:else}{rendered[i] ?? ''}{/if}{/each}</span>
 
 <style>
   .inline-markup {
