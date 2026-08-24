@@ -85,6 +85,18 @@
       // on depends on the content boundaries computed from it.
       const want = new URLSearchParams(location.search).get('reading');
       if (want) requestAnimationFrame(() => jumpToReading(want));
+      // Open on the first word of the first line. Without a selection, ↑↓ only
+      // scrolls (it never selects), so the rail and the quiz stayed empty until
+      // the reader clicked a word — "read a line first" with no way in. Marking
+      // that first line read gives the quiz a deck to draw from at once. A
+      // ?reading= deep-link wins, so only do this when there is none.
+      else requestAnimationFrame(() => {
+        const r0 = list[0];
+        if (!r0) return;
+        const tis = wordTis(r0);
+        if (tis.length) selectToken(r0.id, tis[0]);
+        seen = new Set([...seen, r0.id]);
+      });
     } catch (e) {
       error = String((e as Error).message || e);
     }
@@ -1179,16 +1191,9 @@
 {#snippet shelfRight()}
   <span class="keys">← → word · ↑ ↓ line</span>
   <span>{checked.size} checked · {seen.size} read · {deckCount} in deck</span>
-  <!-- The quiz lives on the shelf, not on the text. It used to be reachable
-       only from an empty rail, so the way to get a question was to clear your
-       selection or keep clicking words — and a click is for looking a word up.
-       Here it is available whatever is selected, and it always draws from the
-       deck of readings already scrolled past. -->
-  <!-- deckCards, NOT deckCount: `deckCount` is the review bank's due count, a
-       different deck. This button draws from readings scrolled past. -->
-  <button class="quizme shelf" onclick={drawFromDeck} disabled={!deckCards.length}>
-    quiz me{deckCards.length ? ` · ${deckCards.length}` : ''}
-  </button>
+  <!-- The quiz button lives in the rail (its "quiz me · N to draw from"), where
+       the question itself appears. A second copy on the shelf was the same
+       action twice, so it is gone; the counts stay. -->
 {/snippet}
 
 {#snippet spine()}
@@ -1899,15 +1904,6 @@
      heading — the single "word" label at the top of the rail used to serve. */
   .word-label {
     margin-top: 2px;
-  }
-  /* On the shelf the same control has to sit in a 40px bar, so it loses the
-     block padding the rail version needs. */
-  .quizme.shelf {
-    padding: 3px 9px;
-    color: var(--accent);
-  }
-  .quizme.shelf:hover {
-    border-color: var(--accent);
   }
   .quizme:hover {
     border-color: var(--accent);
