@@ -29118,10 +29118,10 @@
               "quiz": {
                 "q": "Which form is सर्व · सप्तमी · बहुवचन?",
                 "opts": [
-                  "सर्वान्",
                   "सर्वस्य",
                   "सर्वेषु",
-                  "सर्वे"
+                  "सर्वे",
+                  "सर्वेभ्यः"
                 ],
                 "ans": "सर्वेषु",
                 "kind": "production"
@@ -30230,8 +30230,8 @@
                 "q": "Which form is सर्व · तृतीया · बहुवचन?",
                 "opts": [
                   "सर्वैः",
+                  "सर्वेभ्यः",
                   "सर्वम्",
-                  "सर्वे",
                   "सर्वेषु"
                 ],
                 "ans": "सर्वैः",
@@ -30531,6 +30531,366 @@
           ],
           "vyakhya": "गुणवान् शिष्यः गुरुणा पूज्यते; सः अन्येभ्यः श्रेष्ठतरः।",
           "vyakhya_en": "Three तद्धित-and-voice facts in one line. गुणवान् is the possessive मतुप्\n(5.2.94), \"having virtue.\" पूज्यते is the passive (कर्मणि, 3.4.69): the pupil\nis the one honored, गुरुणा — the teacher — the agent in तृतीया. And श्रेष्ठतरः\nis the comparative तरप् (5.3.57), with the ones surpassed, अन्येभ्यः, in the\nपञ्चमी of comparison.\n"
+        },
+        {
+          "id": "ex229",
+          "segment": 235,
+          "sentence": "बलवान् वीरः शत्रून् जयति। सः सर्वेभ्यः शूरतरः। तस्य जयः सर्वत्र गीयते।",
+          "translation": "The strong hero conquers his enemies. He is braver than all. His victory is sung everywhere.",
+          "teaches": "the same three, closed on a hero — बलवान् (मतुप्), शूरतरः (तरप्, सर्वेभ्यः the\nपञ्चमी standard), and जयः गीयते, \"is sung,\" the passive.\n",
+          "words": [
+            {
+              "form": "बलवान्",
+              "lemma": "बलवत्",
+              "gloss": "strong",
+              "notes": [
+                {
+                  "term": "तद्धित",
+                  "en": "possessive derivative"
+                },
+                {
+                  "term": "मतुप्",
+                  "en": "the मतुप् possessive suffix — \"having strength\" (shows as -वत्)"
+                },
+                {
+                  "cite": "5.2.94",
+                  "role": "तदस्यास्त्यस्मिन्निति मतुप् — बल + मतुप् → बलवत् → बलवान्"
+                },
+                {
+                  "term": "विशेषण",
+                  "en": "qualifying वीरः"
+                },
+                {
+                  "term": "प्रथमा",
+                  "en": "nominative"
+                }
+              ],
+              "rel": [
+                {
+                  "kind": "विशेषण",
+                  "to": 1
+                }
+              ],
+              "quiz": {
+                "q": "Which word does this qualify?",
+                "opts": [
+                  "वीरः",
+                  "सः",
+                  "जयति",
+                  "शत्रून्"
+                ],
+                "ans": "वीरः",
+                "kind": "relation"
+              }
+            },
+            {
+              "form": "वीरः",
+              "lemma": "वीर",
+              "gloss": "the hero",
+              "notes": [
+                {
+                  "term": "कर्तृ",
+                  "en": "agent"
+                },
+                {
+                  "term": "प्रथमा",
+                  "en": "nominative"
+                }
+              ],
+              "derived": {
+                "लिङ्ग": "पुंलिङ्ग",
+                "वचन": "एकवचन"
+              },
+              "quiz": {
+                "q": "Which form is वीर · प्रथमा · एकवचन?",
+                "opts": [
+                  "वीरम्",
+                  "वीर",
+                  "वीरः"
+                ],
+                "ans": "वीरः",
+                "kind": "production"
+              }
+            },
+            {
+              "form": "शत्रून्",
+              "lemma": "शत्रु",
+              "gloss": "enemies",
+              "notes": [
+                {
+                  "term": "कर्मन्",
+                  "en": "object"
+                },
+                {
+                  "term": "द्वितीया",
+                  "en": "accusative plural"
+                }
+              ],
+              "derived": {
+                "लिङ्ग": "पुंलिङ्ग",
+                "वचन": "बहुवचन"
+              },
+              "quiz": {
+                "q": "Which form is शत्रु · द्वितीया · बहुवचन?",
+                "opts": [
+                  "शत्रून्",
+                  "शत्रुः",
+                  "शत्रवः"
+                ],
+                "ans": "शत्रून्",
+                "kind": "production"
+              }
+            },
+            {
+              "form": "जयति",
+              "lemma": "जि",
+              "gloss": "conquers",
+              "notes": [
+                {
+                  "term": "लट्",
+                  "en": "present"
+                }
+              ],
+              "quiz": {
+                "q": "Which लकार?",
+                "opts": [
+                  "लट्",
+                  "लृट्",
+                  "लोट्",
+                  "विधिलिङ्"
+                ],
+                "ans": "लट्",
+                "kind": "lakara"
+              }
+            },
+            {
+              "form": "सः",
+              "lemma": "तद्",
+              "gloss": "he",
+              "notes": [
+                {
+                  "term": "सर्वनाम",
+                  "en": "pronoun"
+                },
+                {
+                  "term": "प्रथमा",
+                  "en": "nominative"
+                }
+              ],
+              "derived": {
+                "वचन": "एकवचन"
+              },
+              "quiz": {
+                "q": "Which विभक्ति?",
+                "opts": [
+                  "प्रथमा",
+                  "द्वितीया",
+                  "पञ्चमी",
+                  "सम्बोधन"
+                ],
+                "ans": "प्रथमा",
+                "kind": "vibhakti"
+              }
+            },
+            {
+              "form": "सर्वेभ्यः",
+              "lemma": "सर्व",
+              "gloss": "than all",
+              "notes": [
+                {
+                  "term": "सर्वादि",
+                  "en": "pronominal adjective सर्व — takes सर्वेभ्यः"
+                },
+                {
+                  "term": "अपादान",
+                  "en": "the standard of comparison → पञ्चमी"
+                },
+                {
+                  "cite": "2.3.42",
+                  "role": "पञ्चमी विभक्ते — the term compared-from takes पञ्चमी → सर्वेभ्यः"
+                },
+                {
+                  "term": "पञ्चमी",
+                  "en": "ablative plural"
+                }
+              ],
+              "derived": {
+                "लिङ्ग": "पुंलिङ्ग",
+                "वचन": "बहुवचन"
+              },
+              "quiz": {
+                "q": "Which form is सर्व · पञ्चमी · बहुवचन?",
+                "opts": [
+                  "सर्वान्",
+                  "सर्वस्य",
+                  "सर्वे",
+                  "सर्वेभ्यः"
+                ],
+                "ans": "सर्वेभ्यः",
+                "kind": "production"
+              }
+            },
+            {
+              "form": "शूरतरः",
+              "lemma": "शूरतर",
+              "gloss": "braver",
+              "notes": [
+                {
+                  "term": "तद्धित",
+                  "en": "comparative derivative"
+                },
+                {
+                  "term": "तरप्",
+                  "en": "the तरप् comparative suffix — \"braver\" of two"
+                },
+                {
+                  "term": "अतिशायन",
+                  "en": "degree of comparison — the comparative sense"
+                },
+                {
+                  "cite": "5.3.57",
+                  "role": "द्विवचनविभज्योपपदे तरबीयसुनौ — तरप् for comparison → शूर + तर → शूरतरः"
+                },
+                {
+                  "term": "विशेषण",
+                  "en": "predicated of सः"
+                },
+                {
+                  "term": "प्रथमा",
+                  "en": "nominative"
+                }
+              ],
+              "rel": [
+                {
+                  "kind": "विशेषण",
+                  "to": 4
+                }
+              ],
+              "derived": {
+                "लिङ्ग": "पुंलिङ्ग",
+                "वचन": "एकवचन"
+              },
+              "quiz": {
+                "q": "Which word does this qualify?",
+                "opts": [
+                  "बलवान्",
+                  "सः",
+                  "शत्रून्",
+                  "वीरः"
+                ],
+                "ans": "सः",
+                "kind": "relation"
+              }
+            },
+            {
+              "form": "तस्य",
+              "lemma": "तद्",
+              "gloss": "his",
+              "notes": [
+                {
+                  "term": "सर्वनाम",
+                  "en": "pronoun"
+                },
+                {
+                  "term": "सम्बन्ध",
+                  "en": "possession"
+                },
+                {
+                  "term": "षष्ठी",
+                  "en": "genitive"
+                }
+              ],
+              "derived": {
+                "वचन": "एकवचन"
+              },
+              "quiz": {
+                "q": "Which विभक्ति?",
+                "opts": [
+                  "प्रथमा",
+                  "षष्ठी",
+                  "सप्तमी",
+                  "सम्बोधन"
+                ],
+                "ans": "षष्ठी",
+                "kind": "vibhakti"
+              }
+            },
+            {
+              "form": "जयः",
+              "lemma": "जय",
+              "gloss": "victory",
+              "notes": [
+                {
+                  "term": "कर्मन्",
+                  "en": "what is sung — subject of the passive"
+                },
+                {
+                  "term": "प्रथमा",
+                  "en": "nominative"
+                }
+              ],
+              "derived": {
+                "लिङ्ग": "पुंलिङ्ग",
+                "वचन": "एकवचन"
+              },
+              "quiz": {
+                "q": "Which विभक्ति?",
+                "opts": [
+                  "प्रथमा",
+                  "तृतीया",
+                  "षष्ठी",
+                  "सम्बोधन"
+                ],
+                "ans": "प्रथमा",
+                "kind": "vibhakti"
+              }
+            },
+            {
+              "form": "सर्वत्र",
+              "lemma": "सर्वत्र",
+              "gloss": "everywhere",
+              "notes": [
+                {
+                  "term": "अव्यय",
+                  "en": "adverb of place (सर्व + त्रल्)"
+                }
+              ],
+              "derived": {
+                "वचन": "एकवचन"
+              }
+            },
+            {
+              "form": "गीयते",
+              "lemma": "गै",
+              "gloss": "is sung",
+              "notes": [
+                {
+                  "term": "लट्",
+                  "en": "present"
+                },
+                {
+                  "term": "कर्मणि",
+                  "en": "passive — जयः is sung; no expressed agent"
+                },
+                {
+                  "cite": "3.4.69",
+                  "role": "लः कर्मणि च — the ल-affix (लट्) denotes the कर्मन् → passive गीयते"
+                }
+              ],
+              "quiz": {
+                "q": "Which प्रयोग (voice)?",
+                "opts": [
+                  "कर्तरि",
+                  "कर्मणि",
+                  "भावे"
+                ],
+                "ans": "कर्मणि",
+                "kind": "prayoga"
+              }
+            }
+          ],
+          "vyakhya": "बलवान् वीरः सर्वेभ्यः शूरतरः; तस्य जयः सर्वत्र गीयते।",
+          "vyakhya_en": "The trio closes on a hero. बलवान् is again the possessive मतुप् (5.2.94).\nशूरतरः is the comparative तरप् (5.3.57), and those he surpasses, सर्वेभ्यः,\nstand in the पञ्चमी of comparison. And his victory गीयते, \"is sung\" — the\npassive of गै (3.4.69), जयः the thing sung.\n"
         },
         {
           "id": "ex131",
@@ -33611,19 +33971,18 @@
                 }
               ],
               "derived": {
+                "लिङ्ग": "पुंलिङ्ग",
                 "वचन": "बहुवचन"
               },
               "quiz": {
-                "q": "Which विभक्ति here?",
-                "phrase": "— शत्रवः सेनाम् अनयन्,",
+                "q": "Which form is शत्रु · प्रथमा · बहुवचन?",
                 "opts": [
-                  "प्रथमा",
-                  "चतुर्थी",
-                  "पञ्चमी",
-                  "सम्बोधन"
+                  "शत्रवः",
+                  "शत्रून्",
+                  "शत्रुः"
                 ],
-                "ans": "प्रथमा",
-                "kind": "vibhakti-phrase"
+                "ans": "शत्रवः",
+                "kind": "production"
               }
             },
             {
@@ -42866,18 +43225,18 @@
                 }
               ],
               "derived": {
+                "लिङ्ग": "पुंलिङ्ग",
                 "वचन": "एकवचन"
               },
               "quiz": {
-                "q": "Which विभक्ति?",
+                "q": "Which form is शत्रु · प्रथमा · एकवचन?",
                 "opts": [
-                  "प्रथमा",
-                  "द्वितीया",
-                  "तृतीया",
-                  "षष्ठी"
+                  "शत्रुः",
+                  "शत्रवः",
+                  "शत्रून्"
                 ],
-                "ans": "प्रथमा",
-                "kind": "vibhakti"
+                "ans": "शत्रुः",
+                "kind": "production"
               }
             },
             {
@@ -44297,10 +44656,10 @@
               "quiz": {
                 "q": "Which form is सर्व · प्रथमा · बहुवचन?",
                 "opts": [
-                  "सर्वस्य",
                   "सर्वे",
                   "सर्वम्",
-                  "सर्वान्"
+                  "सर्वान्",
+                  "सर्वेभ्यः"
                 ],
                 "ans": "सर्वे",
                 "kind": "production"
@@ -49307,10 +49666,10 @@
               "quiz": {
                 "q": "Which form is सर्व · प्रथमा · बहुवचन?",
                 "opts": [
-                  "सर्वस्य",
                   "सर्वे",
                   "सर्वम्",
-                  "सर्वान्"
+                  "सर्वान्",
+                  "सर्वेभ्यः"
                 ],
                 "ans": "सर्वे",
                 "kind": "production"
@@ -52420,10 +52779,10 @@
               "quiz": {
                 "q": "Which form is सर्व · प्रथमा · बहुवचन?",
                 "opts": [
-                  "सर्वस्य",
                   "सर्वे",
                   "सर्वम्",
-                  "सर्वान्"
+                  "सर्वान्",
+                  "सर्वेभ्यः"
                 ],
                 "ans": "सर्वे",
                 "kind": "production"
@@ -52939,8 +53298,8 @@
                 "q": "Which form is सर्व · तृतीया · बहुवचन?",
                 "opts": [
                   "सर्वैः",
+                  "सर्वेभ्यः",
                   "सर्वम्",
-                  "सर्वे",
                   "सर्वेषु"
                 ],
                 "ans": "सर्वैः",
@@ -54748,10 +55107,10 @@
               "quiz": {
                 "q": "Which form is सर्व · प्रथमा · बहुवचन?",
                 "opts": [
-                  "सर्वस्य",
                   "सर्वे",
                   "सर्वम्",
-                  "सर्वान्"
+                  "सर्वान्",
+                  "सर्वेभ्यः"
                 ],
                 "ans": "सर्वे",
                 "kind": "production"
@@ -55631,10 +55990,10 @@
               "quiz": {
                 "q": "Which form is सर्व · प्रथमा · बहुवचन?",
                 "opts": [
-                  "सर्वस्य",
                   "सर्वे",
                   "सर्वम्",
-                  "सर्वान्"
+                  "सर्वान्",
+                  "सर्वेभ्यः"
                 ],
                 "ans": "सर्वे",
                 "kind": "production"
@@ -60057,10 +60416,10 @@
               "quiz": {
                 "q": "Which form is सर्व · प्रथमा · बहुवचन?",
                 "opts": [
-                  "सर्वस्य",
                   "सर्वे",
                   "सर्वम्",
-                  "सर्वान्"
+                  "सर्वान्",
+                  "सर्वेभ्यः"
                 ],
                 "ans": "सर्वे",
                 "kind": "production"
@@ -60696,19 +61055,18 @@
                 }
               ],
               "derived": {
+                "लिङ्ग": "पुंलिङ्ग",
                 "वचन": "बहुवचन"
               },
               "quiz": {
-                "q": "Which विभक्ति here?",
-                "phrase": "— शत्रवः पराजिताः, ग्रामाः",
+                "q": "Which form is शत्रु · प्रथमा · बहुवचन?",
                 "opts": [
-                  "प्रथमा",
-                  "चतुर्थी",
-                  "पञ्चमी",
-                  "सम्बोधन"
+                  "शत्रवः",
+                  "शत्रून्",
+                  "शत्रुः"
                 ],
-                "ans": "प्रथमा",
-                "kind": "vibhakti-phrase"
+                "ans": "शत्रवः",
+                "kind": "production"
               }
             },
             {
@@ -63872,8 +64230,8 @@
                 "q": "Which form is सर्व · तृतीया · बहुवचन?",
                 "opts": [
                   "सर्वैः",
+                  "सर्वेभ्यः",
                   "सर्वम्",
-                  "सर्वे",
                   "सर्वेषु"
                 ],
                 "ans": "सर्वैः",
@@ -65962,10 +66320,10 @@
               "quiz": {
                 "q": "Which form is सर्व · सप्तमी · बहुवचन?",
                 "opts": [
-                  "सर्वान्",
                   "सर्वस्य",
                   "सर्वेषु",
-                  "सर्वे"
+                  "सर्वे",
+                  "सर्वेभ्यः"
                 ],
                 "ans": "सर्वेषु",
                 "kind": "production"
@@ -94526,10 +94884,10 @@
           "quiz": {
             "q": "Which form is सर्व · प्रथमा · बहुवचन?",
             "opts": [
-              "सर्वस्य",
               "सर्वे",
               "सर्वम्",
-              "सर्वान्"
+              "सर्वान्",
+              "सर्वेभ्यः"
             ],
             "ans": "सर्वे",
             "kind": "production"
@@ -103341,10 +103699,10 @@
           "quiz": {
             "q": "Which form is सर्व · सप्तमी · बहुवचन?",
             "opts": [
-              "सर्वान्",
               "सर्वस्य",
               "सर्वेषु",
-              "सर्वे"
+              "सर्वे",
+              "सर्वेभ्यः"
             ],
             "ans": "सर्वेषु",
             "kind": "production"
@@ -104986,10 +105344,10 @@
           "quiz": {
             "q": "Which form is सर्व · सप्तमी · बहुवचन?",
             "opts": [
-              "सर्वान्",
               "सर्वस्य",
               "सर्वेषु",
-              "सर्वे"
+              "सर्वे",
+              "सर्वेभ्यः"
             ],
             "ans": "सर्वेषु",
             "kind": "production"
@@ -107308,8 +107666,8 @@
             "q": "Which form is सर्व · तृतीया · बहुवचन?",
             "opts": [
               "सर्वैः",
+              "सर्वेभ्यः",
               "सर्वम्",
-              "सर्वे",
               "सर्वेषु"
             ],
             "ans": "सर्वैः",
@@ -108893,6 +109251,369 @@
       "position": 197
     },
     {
+      "id": "ex229",
+      "segment": 235,
+      "sentence": "बलवान् वीरः शत्रून् जयति। सः सर्वेभ्यः शूरतरः। तस्य जयः सर्वत्र गीयते।",
+      "translation": "The strong hero conquers his enemies. He is braver than all. His victory is sung everywhere.",
+      "teaches": "the same three, closed on a hero — बलवान् (मतुप्), शूरतरः (तरप्, सर्वेभ्यः the\nपञ्चमी standard), and जयः गीयते, \"is sung,\" the passive.\n",
+      "words": [
+        {
+          "form": "बलवान्",
+          "lemma": "बलवत्",
+          "gloss": "strong",
+          "notes": [
+            {
+              "term": "तद्धित",
+              "en": "possessive derivative"
+            },
+            {
+              "term": "मतुप्",
+              "en": "the मतुप् possessive suffix — \"having strength\" (shows as -वत्)"
+            },
+            {
+              "cite": "5.2.94",
+              "role": "तदस्यास्त्यस्मिन्निति मतुप् — बल + मतुप् → बलवत् → बलवान्"
+            },
+            {
+              "term": "विशेषण",
+              "en": "qualifying वीरः"
+            },
+            {
+              "term": "प्रथमा",
+              "en": "nominative"
+            }
+          ],
+          "rel": [
+            {
+              "kind": "विशेषण",
+              "to": 1
+            }
+          ],
+          "quiz": {
+            "q": "Which word does this qualify?",
+            "opts": [
+              "वीरः",
+              "सः",
+              "जयति",
+              "शत्रून्"
+            ],
+            "ans": "वीरः",
+            "kind": "relation"
+          }
+        },
+        {
+          "form": "वीरः",
+          "lemma": "वीर",
+          "gloss": "the hero",
+          "notes": [
+            {
+              "term": "कर्तृ",
+              "en": "agent"
+            },
+            {
+              "term": "प्रथमा",
+              "en": "nominative"
+            }
+          ],
+          "derived": {
+            "लिङ्ग": "पुंलिङ्ग",
+            "वचन": "एकवचन"
+          },
+          "quiz": {
+            "q": "Which form is वीर · प्रथमा · एकवचन?",
+            "opts": [
+              "वीरम्",
+              "वीर",
+              "वीरः"
+            ],
+            "ans": "वीरः",
+            "kind": "production"
+          }
+        },
+        {
+          "form": "शत्रून्",
+          "lemma": "शत्रु",
+          "gloss": "enemies",
+          "notes": [
+            {
+              "term": "कर्मन्",
+              "en": "object"
+            },
+            {
+              "term": "द्वितीया",
+              "en": "accusative plural"
+            }
+          ],
+          "derived": {
+            "लिङ्ग": "पुंलिङ्ग",
+            "वचन": "बहुवचन"
+          },
+          "quiz": {
+            "q": "Which form is शत्रु · द्वितीया · बहुवचन?",
+            "opts": [
+              "शत्रून्",
+              "शत्रुः",
+              "शत्रवः"
+            ],
+            "ans": "शत्रून्",
+            "kind": "production"
+          }
+        },
+        {
+          "form": "जयति",
+          "lemma": "जि",
+          "gloss": "conquers",
+          "notes": [
+            {
+              "term": "लट्",
+              "en": "present"
+            }
+          ],
+          "quiz": {
+            "q": "Which लकार?",
+            "opts": [
+              "लट्",
+              "लृट्",
+              "लोट्",
+              "विधिलिङ्"
+            ],
+            "ans": "लट्",
+            "kind": "lakara"
+          }
+        },
+        {
+          "form": "सः",
+          "lemma": "तद्",
+          "gloss": "he",
+          "notes": [
+            {
+              "term": "सर्वनाम",
+              "en": "pronoun"
+            },
+            {
+              "term": "प्रथमा",
+              "en": "nominative"
+            }
+          ],
+          "derived": {
+            "वचन": "एकवचन"
+          },
+          "quiz": {
+            "q": "Which विभक्ति?",
+            "opts": [
+              "प्रथमा",
+              "द्वितीया",
+              "पञ्चमी",
+              "सम्बोधन"
+            ],
+            "ans": "प्रथमा",
+            "kind": "vibhakti"
+          }
+        },
+        {
+          "form": "सर्वेभ्यः",
+          "lemma": "सर्व",
+          "gloss": "than all",
+          "notes": [
+            {
+              "term": "सर्वादि",
+              "en": "pronominal adjective सर्व — takes सर्वेभ्यः"
+            },
+            {
+              "term": "अपादान",
+              "en": "the standard of comparison → पञ्चमी"
+            },
+            {
+              "cite": "2.3.42",
+              "role": "पञ्चमी विभक्ते — the term compared-from takes पञ्चमी → सर्वेभ्यः"
+            },
+            {
+              "term": "पञ्चमी",
+              "en": "ablative plural"
+            }
+          ],
+          "derived": {
+            "लिङ्ग": "पुंलिङ्ग",
+            "वचन": "बहुवचन"
+          },
+          "quiz": {
+            "q": "Which form is सर्व · पञ्चमी · बहुवचन?",
+            "opts": [
+              "सर्वान्",
+              "सर्वस्य",
+              "सर्वे",
+              "सर्वेभ्यः"
+            ],
+            "ans": "सर्वेभ्यः",
+            "kind": "production"
+          }
+        },
+        {
+          "form": "शूरतरः",
+          "lemma": "शूरतर",
+          "gloss": "braver",
+          "notes": [
+            {
+              "term": "तद्धित",
+              "en": "comparative derivative"
+            },
+            {
+              "term": "तरप्",
+              "en": "the तरप् comparative suffix — \"braver\" of two"
+            },
+            {
+              "term": "अतिशायन",
+              "en": "degree of comparison — the comparative sense"
+            },
+            {
+              "cite": "5.3.57",
+              "role": "द्विवचनविभज्योपपदे तरबीयसुनौ — तरप् for comparison → शूर + तर → शूरतरः"
+            },
+            {
+              "term": "विशेषण",
+              "en": "predicated of सः"
+            },
+            {
+              "term": "प्रथमा",
+              "en": "nominative"
+            }
+          ],
+          "rel": [
+            {
+              "kind": "विशेषण",
+              "to": 4
+            }
+          ],
+          "derived": {
+            "लिङ्ग": "पुंलिङ्ग",
+            "वचन": "एकवचन"
+          },
+          "quiz": {
+            "q": "Which word does this qualify?",
+            "opts": [
+              "बलवान्",
+              "सः",
+              "शत्रून्",
+              "वीरः"
+            ],
+            "ans": "सः",
+            "kind": "relation"
+          }
+        },
+        {
+          "form": "तस्य",
+          "lemma": "तद्",
+          "gloss": "his",
+          "notes": [
+            {
+              "term": "सर्वनाम",
+              "en": "pronoun"
+            },
+            {
+              "term": "सम्बन्ध",
+              "en": "possession"
+            },
+            {
+              "term": "षष्ठी",
+              "en": "genitive"
+            }
+          ],
+          "derived": {
+            "वचन": "एकवचन"
+          },
+          "quiz": {
+            "q": "Which विभक्ति?",
+            "opts": [
+              "प्रथमा",
+              "षष्ठी",
+              "सप्तमी",
+              "सम्बोधन"
+            ],
+            "ans": "षष्ठी",
+            "kind": "vibhakti"
+          }
+        },
+        {
+          "form": "जयः",
+          "lemma": "जय",
+          "gloss": "victory",
+          "notes": [
+            {
+              "term": "कर्मन्",
+              "en": "what is sung — subject of the passive"
+            },
+            {
+              "term": "प्रथमा",
+              "en": "nominative"
+            }
+          ],
+          "derived": {
+            "लिङ्ग": "पुंलिङ्ग",
+            "वचन": "एकवचन"
+          },
+          "quiz": {
+            "q": "Which विभक्ति?",
+            "opts": [
+              "प्रथमा",
+              "तृतीया",
+              "षष्ठी",
+              "सम्बोधन"
+            ],
+            "ans": "प्रथमा",
+            "kind": "vibhakti"
+          }
+        },
+        {
+          "form": "सर्वत्र",
+          "lemma": "सर्वत्र",
+          "gloss": "everywhere",
+          "notes": [
+            {
+              "term": "अव्यय",
+              "en": "adverb of place (सर्व + त्रल्)"
+            }
+          ],
+          "derived": {
+            "वचन": "एकवचन"
+          }
+        },
+        {
+          "form": "गीयते",
+          "lemma": "गै",
+          "gloss": "is sung",
+          "notes": [
+            {
+              "term": "लट्",
+              "en": "present"
+            },
+            {
+              "term": "कर्मणि",
+              "en": "passive — जयः is sung; no expressed agent"
+            },
+            {
+              "cite": "3.4.69",
+              "role": "लः कर्मणि च — the ल-affix (लट्) denotes the कर्मन् → passive गीयते"
+            }
+          ],
+          "quiz": {
+            "q": "Which प्रयोग (voice)?",
+            "opts": [
+              "कर्तरि",
+              "कर्मणि",
+              "भावे"
+            ],
+            "ans": "कर्मणि",
+            "kind": "prayoga"
+          }
+        }
+      ],
+      "vyakhya": "बलवान् वीरः सर्वेभ्यः शूरतरः; तस्य जयः सर्वत्र गीयते।",
+      "vyakhya_en": "The trio closes on a hero. बलवान् is again the possessive मतुप् (5.2.94).\nशूरतरः is the comparative तरप् (5.3.57), and those he surpasses, सर्वेभ्यः,\nstand in the पञ्चमी of comparison. And his victory गीयते, \"is sung\" — the\npassive of गै (3.4.69), जयः the thing sung.\n",
+      "chapter": "taddhita",
+      "length": "passage",
+      "position": 198
+    },
+    {
       "id": "ex099",
       "kind": "graded",
       "segment": 240,
@@ -109785,7 +110506,7 @@
       "vyakhya_en": "Two tenses meet in this reading. **लिट् perfect** (परोक्षे लिट्, 3.2.115) appears where the narrator stands at a remove — पप्रच्छ \"she asked,\" उवाच \"he said\" — verbs of reported or narrated speech. **लङ्** (अनद्यतन, 3.2.111) marks the events directly recalled: the eating (अभक्षयत्), Kṛṣṇa's denial (न अखादम्), and Yaśodā's vision (अपश्यत्). One **लोट् imperative** (3.3.162) lives inside the quoted command — विवृणुष्व \"open (your mouth)!\" The vision that follows — sky, earth, gods, stars — is the whole universe listed in a single accusative string, with one past-active participle (दृष्टवती, क्तवतु fem.) as the main predicate: \"she who saw.\"\n",
       "chapter": "katha",
       "length": "long",
-      "position": 198
+      "position": 199
     },
     {
       "id": "rd004",
@@ -109915,7 +110636,7 @@
       "vyakhya_en": "The verse closes: from wealth, righteousness (धर्मं); from that (ततः), happiness (सुखम्). The verb आप्नोति is not repeated — it is understood, carried over (अनुवृत्ति) from the previous line, exactly as a sūtra carries words forward. You have now read a whole verse: विद्या → विनय → पात्रत्व → धन → धर्म → सुख, knowledge leading step by step to happiness.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 199
+      "position": 200
     },
     {
       "id": "ex116",
@@ -110032,7 +110753,7 @@
       "vyakhya_en": "When an object (कर्मन्) stands as उपपद beside a root, the root takes अण् to form an agent-noun. Here कुम्भ \"pot\" joins कृ \"make\" and the affix अण् gives कुम्भकारः \"pot-maker.\" The object does not stay a separate accusative word; it merges into a single तत्पुरुष compound with the agent-noun.\n",
       "chapter": "kridanta_krt",
       "length": "short",
-      "position": 200
+      "position": 201
     },
     {
       "id": "ex117",
@@ -110182,7 +110903,7 @@
       "vyakhya_en": "A root ending in long आ, with no उपसर्ग before it and an object standing as उपपद, takes क instead of अण्. Thus गो \"cow\" + दा \"give\" + क yields गोदः \"cow-giver.\" The same pattern gives धनदः \"wealth-giver\" and जलदः \"water-giver\" (the cloud). The object गो merges with the agent-noun into one तत्पुरुष compound.\n",
       "chapter": "kridanta_krt",
       "length": "short",
-      "position": 201
+      "position": 202
     },
     {
       "id": "ex118",
@@ -110289,7 +111010,7 @@
       "vyakhya_en": "Roots of the नन्दि-group take ल्यु, and ल्यु is replaced by अन, giving agent-nouns like नन्दनः \"the delighting one, the son.\" Unlike अण् and क above, this ल्यु-formation needs no उपपद object to attach; the affix alone names the doer. The same rule routes ग्रहि-roots to णिनि and पच्-group roots to अच्.\n",
       "chapter": "kridanta_krt",
       "length": "short",
-      "position": 202
+      "position": 203
     },
     {
       "id": "ex218",
@@ -110883,10 +111604,10 @@
           "quiz": {
             "q": "Which form is सर्व · प्रथमा · बहुवचन?",
             "opts": [
-              "सर्वस्य",
               "सर्वे",
               "सर्वम्",
-              "सर्वान्"
+              "सर्वान्",
+              "सर्वेभ्यः"
             ],
             "ans": "सर्वे",
             "kind": "production"
@@ -111101,7 +111822,7 @@
       "vyakhya_en": "Four ways of building a word, in one short scene. आनाययत् is a **causative**:\nनी \"lead\" plus णिच् becomes आनाय् \"cause to bring,\" and the one who would have\nbeen the agent — दूतम् — drops to the accusative (1.4.52), because the king is\nnow the one causing. दाता is an **agent-noun**, दा \"give\" plus तृच्, \"the\ngiver.\" शूरत्वम् is an **abstract**, शूर \"brave\" plus त्व, \"bravery\" — a quality\nnamed as a thing. धनवान् is a **possessive**, धन plus मतुप्, \"wealth-having.\"\nAnd श्रुत्वा is a **gerund**: श्रु plus क्त्वा, indeclinable, \"having heard.\"\nThe nouns around them — दूतम्, धनम्, ब्राह्मणेभ्यः, गर्वम् — sit in cases the\nreader has long since met; only the five built words are new.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 203
+      "position": 204
     },
     {
       "id": "rd005",
@@ -111295,7 +112016,7 @@
       "vyakhya_en": "A complete Pañcatantra maxim, and it parses cleanly: पानीयं (water, कर्तृ/प्रथमा) शमयति (extinguishes) पावकम् (fire, कर्मन्/द्वितीया). The particle अपि (\"even\") + सुतप्तम् (\"well-heated\") carry the twist — even water that has itself been heated still quells fire. Real text, real rhetoric, grammar you hold.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 204
+      "position": 205
     },
     {
       "id": "ex205",
@@ -112029,7 +112750,7 @@
       "vyakhya_en": "पठ् appears three times and means three different things by its ending\nalone: पठेत् is what a student ought to do, पठेयम् is what this one resolves\nto do, अपठत् is what he did not do. The root never changes.\n",
       "chapter": "sangraha",
       "length": "long",
-      "position": 205
+      "position": 206
     },
     {
       "id": "ex100",
@@ -112866,7 +113587,7 @@
       "vyakhya_en": "Two new tools. First, **शतृ** (the active present participle — लटः शतृशानचौ, 3.2.124): पिबन्त्यः \"while drinking\" (fem. pl., simultaneous with अभवन्) and नृत्यन् \"while dancing\" (masc. sg., simultaneous with अदमयत्). The participle says the background action runs alongside the main verb — not before it (that's क्त्वा) and not after it. Second, **वसति स्म** — a present-tense verb with the particle स्म shifts into past habitual: \"used to dwell.\" Passive क्त appears three times (दूषितम्, मूर्च्छिताः, पराजितः), anchoring the pattern from ex098. The gerunds आरुह्य → अपतत् chain the action sequence into one breath.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 206
+      "position": 207
     },
     {
       "id": "rd006",
@@ -113084,7 +113805,7 @@
       "vyakhya_en": "The genitive pair यस्य कस्य (\"of whomsoever\") waives the question of birth; अपि (\"even/though\") concedes it; and the verse turns on पूज्यते — \"is honored,\" a passive, the same कर्मणि form you met in नरैः फलानि भुज्यन्ते. The sense: a man of merit (गुणवान्) is honored whatever his lineage. A relative clause and a passive, working together in real Sanskrit.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 207
+      "position": 208
     },
     {
       "id": "ex207",
@@ -113909,7 +114630,7 @@
       "vyakhya_en": "दानम् and दानेन are one word twice: the act as the thing given, then the act\nas the reason something follows. And कुरुत orders where कुर्याम asks — the\npeople want to know what they ought to do, the sage tells them.\n",
       "chapter": "sangraha",
       "length": "long",
-      "position": 208
+      "position": 209
     },
     {
       "id": "ex113",
@@ -114017,7 +114738,7 @@
       "vyakhya_en": "By अचो यत् (3.1.97) a root ending in a vowel takes the कृत्य affix यत्; so दा becomes देयम्, \"to be given.\" Like every gerundive it governs case exactly as the passive does: the patient (धनम्) stands in the nominative, and an agent, if expressed, would stand in the instrumental. Here the recipient ब्राह्मणाय is in the dative (सम्प्रदान).\n",
       "chapter": "kridanta_krt",
       "length": "short",
-      "position": 209
+      "position": 210
     },
     {
       "id": "ex114",
@@ -114132,7 +114853,7 @@
       "vyakhya_en": "By ऋहलोर्ण्यत् (3.1.124) a root ending in ऋ (short or long) or in a consonant takes the कृत्य affix ण्यत्; so कृ becomes कार्यम्, \"to be done, a task.\" The construction mirrors the passive: the agent मया is in the instrumental (तृतीया, by 2.3.18) and the patient stands in the nominative.\n",
       "chapter": "kridanta_krt",
       "length": "short",
-      "position": 210
+      "position": 211
     },
     {
       "id": "ex115",
@@ -114240,7 +114961,7 @@
       "vyakhya_en": "By तव्यत्तव्यानीयरः (3.1.96) a root may take तव्यत्, तव्य, or अनीयर्; here the अनीयर् variant gives पठ् → पठनीयः, \"to be read.\" As with all कृत्य gerundives the syntax is passive-like: the agent शिष्येण stands in the instrumental (तृतीया, 2.3.18) and the patient पाठः in the nominative.\n",
       "chapter": "kridanta_krt",
       "length": "short",
-      "position": 211
+      "position": 212
     },
     {
       "id": "rd007",
@@ -114419,7 +115140,7 @@
       "vyakhya_en": "Two parallel clauses: fire (अग्निः) is not sated of logs (काष्ठानां, genitive plural), the great ocean (महोदधिः, a कर्मधारय compound = महा \"great\" + उदधि \"ocean\") not of rivers. The genitive marks what one is sated *of*; the verb तृप्यति is shared across both halves. You now meet your own grammar — इ-stem, षष्ठी, कर्मधारय — in a real Pañcatantra verse.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 212
+      "position": 213
     },
     {
       "id": "rd038",
@@ -114904,7 +115625,7 @@
       "vyakhya_en": "Up to here the attested readings have been single-line maxims. This is\nnarrative, and it moves differently: three of its nouns are compounds\nseveral members deep — भागीरथीतीरे, सर्वस्वामिगुणोपेतः, पाटलिपुत्रनामधेयं —\nand unpacking them is most of the work of reading classical prose.\n\nTake सर्वस्वामिगुणोपेतः from the back: उपेत, \"endowed with\"; endowed with\nगुण, qualities; whose qualities — those of a सर्वस्वामिन्, an absolute\nlord. English needs a clause where Sanskrit uses one word.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 213
+      "position": 214
     },
     {
       "id": "ex101",
@@ -116089,7 +116810,7 @@
       "vyakhya_en": "The longest katha reading, and it earns its length: five separate clauses, each moving the story. New arrivals: **इव** (the simile particle — Govardhana held \"like an umbrella,\" छत्रम् इव); **accusative of duration** — सप्त दिवसान् \"for seven days\" (अत्यन्तसंयोगे द्वितीया, 2.3.5); the **instrumental of instrument with body-part** — एकेन हस्तेन \"with one hand\" (2.3.18); and the **dual coordinator** गावः च गोपाः च \"both cows and cowherds.\" The closing passive (धृतः, 3.2.102) rounds the arc: episodes ex098–ex101 all end with a कर्मणि क्त — \"was killed,\" \"she saw,\" \"was defeated,\" \"was held\" — each one a summary judgment on what just happened.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 214
+      "position": 215
     },
     {
       "id": "rd008",
@@ -116347,7 +117068,7 @@
       "vyakhya_en": "Your first Vedic verse, and the grammar is already yours: ईळे \"I praise\" governs a string of accusatives all in apposition to अग्निम् — पुरोहितम्, देवम्, ऋत्विजम्, होतारम्, रत्नधातमम् — \"I praise Agni: priest, god, minister, invoker, treasure-giver.\" The ONE new thing is accent: the underline ॒ marks anudātta (low pitch), the stroke ॑ marks the raised/svarita pitch. Each word's accent is shown in its padapāṭha (isolated) form — पुरोहितं appears word-alone as पुरः-हितम्. Read it aloud with the pitches: this is how the Veda is chanted.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 215
+      "position": 216
     },
     {
       "id": "rd039",
@@ -116640,7 +117361,7 @@
       "vyakhya_en": "The verse says learning is an eye, and then does not soften it: whoever\nlacks it is blind — अन्ध एव सः, with एव refusing the metaphor any room.\n\nपरोक्षार्थस्य दर्शकम् is worth slowing on. दर्शक is \"one who shows\", and\nwhat it shows stands in the genitive rather than the accusative. That is\nregular before a कृत् form and catches most readers the first time: the\nsense is transitive, the case is not.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 216
+      "position": 217
     },
     {
       "id": "rd009",
@@ -116925,7 +117646,7 @@
       "vyakhya_en": "The same hymn's second verse, and the frame holds: अग्निः is now the कर्तृ (nominative — last verse he was अग्निम्, the object). The seers who praise him stand in the तृतीया (पूर्वेभिः, ऋषिभिः, नूतनैः — \"by the ancient, by the seers, by the new\"), the same instrumental \"by\" you met in नरैः. ईड्यः is a gerundive — \"to-be-praised.\" Then सः (he) देवान् (the gods, acc.) आ … वक्षति — \"may bring here.\" One word, अग्नि, you now know in two cases and with its accent.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 217
+      "position": 218
     },
     {
       "id": "rd040",
@@ -117495,7 +118216,7 @@
       "vyakhya_en": "The same three words open this as opened the Hitopadeśa passage: अस्ति,\nthen a place, then नाम and the name. It is a formula, and recognising it\nis worth more than parsing it — a classical story announces itself this way\nand the reader can stop working until the कथा actually starts.\n\nकिम् अत्र कर्तव्यम् has no verb in it. कर्तव्यम् is a gerundive, \"to-be-done\",\nand that is the whole predicate: what, here, is to-be-done. Sanskrit builds\na complete question out of a participle and two indeclinables.\n",
       "chapter": "readings",
       "length": "long",
-      "position": 218
+      "position": 219
     },
     {
       "id": "rd044",
@@ -117831,7 +118552,7 @@
       "vyakhya_en": "Two instrumentals set the maxim: things get done उद्यमेन \"by effort,\" not\nमनोरथैः \"by wishes.\" कार्याणि is itself a गерundive — कृ + ण्यत् → कार्य, \"what\nis to be done\" (3.1.124), the very word Pāṇini's rule forms. The second line\nis the image: सुप्तस्य सिंहस्य, \"of a sleeping lion\" — सुप्त the क्त participle\nof स्वप् — into whose mouth (मुखे) the deer do not walk. Nothing comes without\nthe effort of the doing.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 219
+      "position": 220
     },
     {
       "id": "ex102",
@@ -118713,10 +119434,10 @@
           "quiz": {
             "q": "Which form is सर्व · प्रथमा · बहुवचन?",
             "opts": [
-              "सर्वस्य",
               "सर्वे",
               "सर्वम्",
-              "सर्वान्"
+              "सर्वान्",
+              "सर्वेभ्यः"
             ],
             "ans": "सर्वे",
             "kind": "production"
@@ -118764,7 +119485,7 @@
       "vyakhya_en": "The big new arrival: the **gerundive** (कृत्य) — हन्तव्यः \"(he) who must be killed,\" तव्य of √हन् (तव्यत्तव्यानीयरः, 3.1.96). It expresses necessity/obligation, and it governs case exactly like the passive: the agent goes to **instrumental** (मया \"by me\") and the patient to **nominative** (बालः). So \"the boy is-to-be-killed by me\" reads with मया … बालः … हन्तव्यः all in agreement. Against it stands the plain **future** हनिष्यति \"he will kill\" (लृट्, 3.3.13) — Kaṃsa weighs necessity against consequence. The reason-clause opens with यतः \"because.\" This is the grammatical hinge from playful Gokula into the Mathurā confrontation.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 220
+      "position": 221
     },
     {
       "id": "rd010",
@@ -118965,7 +119686,7 @@
       "vyakhya_en": "Now अग्नि steps into a third case: अग्निना, the तृतीया — \"through Agni.\" You have met this stem as object (अग्निम्), as agent (अग्निः), and here as instrument (अग्निना): one इ-stem across three कारकas. Through Agni one wins रयिम् (wealth) and पोषम् (growth), both accusatives, qualified by यशसं वीरवत्तमं (\"glorious, hero-rich\"). दिवेदिवे — दिवे doubled — is an आम्रेडित, \"day after day.\"\n",
       "chapter": "readings",
       "length": "short",
-      "position": 221
+      "position": 222
     },
     {
       "id": "rd045",
@@ -119309,7 +120030,7 @@
       "vyakhya_en": "Four things are named, three of them abstractions the तद्धित makes: सम्पत्तिः,\nthe क्तिन् noun of सम्-पद् \"attainment\" (3.3.94); प्रभुत्वम्, the त्व abstract\n\"lordship\"; अविवेकिता, the तल् abstract \"want of judgment.\" एकैकम् अपि — \"even\neach single one\" — leads अनर्थाय, to ruin (the dative of purpose); किम् उ, \"how\nmuch more,\" where all four (चतुष्टयम्) come together.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 222
+      "position": 223
     },
     {
       "id": "rd041",
@@ -119762,7 +120483,7 @@
       "vyakhya_en": "Two constructions here do work that English gives to conjunctions.\nव्यतीते काले is a noun and a participle both in the locative, and together\nthey mean \"when the time had passed\" — no \"when\" anywhere in the Sanskrit.\nOnce recognised, it is everywhere in classical prose.\n\nAnd द्वादश वर्षाणि is accusative, though nothing is being acted on. The\naccusative also marks extent — how long, how far — so \"for twelve years\"\ntakes the same case as an object would.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 223
+      "position": 224
     },
     {
       "id": "ex219",
@@ -120233,8 +120954,8 @@
             "q": "Which form is सर्व · तृतीया · बहुवचन?",
             "opts": [
               "सर्वैः",
+              "सर्वेभ्यः",
               "सर्वम्",
-              "सर्वे",
               "सर्वेषु"
             ],
             "ans": "सर्वैः",
@@ -120514,7 +121235,7 @@
       "vyakhya_en": "Degrees and a passive, in one scene. पटुः is the plain grade; पटुतरः the\n**comparative** — पटु + तर, \"cleverer of the two\"; श्रेष्ठ the **superlative**,\nthe इष्ठन्-grade of प्रशस्य, \"best of all.\" महाबुद्धिः is a **compound** —\nमहती बुद्धिः यस्य, \"he whose mind is great.\" अश्रूयत is a **passive**: the यक्\nstem turns श्रु into \"is heard,\" so तत् (the question) becomes the प्रथमा and\nसर्वैः (all who hear) the तृतीया — the object rises to subject, the agent\nsteps back. And ततः is a **तसिल् adverb**, तद् + तस्, \"from that → thereupon.\"\n",
       "chapter": "katha",
       "length": "passage",
-      "position": 224
+      "position": 225
     },
     {
       "id": "rd011",
@@ -120822,7 +121543,7 @@
       "vyakhya_en": "A relative-correlative, Vedic style: यं … (यज्ञम् अध्वरं) … सः — \"which sacrifice … that one.\" अग्ने is the सम्बोधन (vocative, \"O Agni\") — your fourth case-use of this one stem. असि is \"you are,\" 2nd person (मध्यमपुरुष), matching the सम्बोधन. The sense: the rite that Agni encloses on every side (विश्वतः परिभूः) — *that one alone* (स इत्) reaches the gods (देवेषु, locative).\n",
       "chapter": "readings",
       "length": "short",
-      "position": 225
+      "position": 226
     },
     {
       "id": "rd046",
@@ -121184,7 +121905,7 @@
       "vyakhya_en": "The book names its own four parts — मित्रलाभः \"winning friends,\" सुहृद्भेदः\n\"splitting friends,\" विग्रहः \"war,\" सन्धिः \"peace.\" Two of them are घञ्\naction-nouns: लभ् → लाभ, भिद् → भेद (3.3.18). And it says where it comes from:\nपञ्चतन्त्रात्, ग्रन्थात् — the ablative of source (पञ्चमी) — having drawn (आकृष्य,\nthe ल्यप् gerund) from them, it लिख्यते, \"is written,\" the passive of लिख्.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 226
+      "position": 227
     },
     {
       "id": "rd042",
@@ -121697,7 +122418,7 @@
       "vyakhya_en": "नाम appears twice and is not the same word. विष्णुशर्मा नाम ब्राह्मणः is\nthe indeclinable, \"by name\"; मम नाम त्यजतु is the noun नामन् in the\naccusative, the thing to be discarded. Nothing but position and sense\nseparates them.\n\nAnd note त्यजतु. A third-person imperative aimed at the king is not an\norder — it is how a formal oath is staked: let my name be thrown away if I\nfail. The grammar is imperative; the force is a wager.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 227
+      "position": 228
     },
     {
       "id": "ex103",
@@ -122485,7 +123206,7 @@
       "vyakhya_en": "Three locatives, three jobs. The **locative absolute** (सति-सप्तमी, 2.3.37) sets the scene in time — कृष्णे गच्छति सति \"Kṛṣṇa being-in-the-act-of-going,\" i.e. \"as Kṛṣṇa was leaving\": a whole subordinate clause folded into two locative words. Ordinary locatives of place follow — रथे \"in the chariot,\" हृदये \"in the heart\" (2.3.36). The relative-correlative याः … ताः now spans a full clause (\"those gopīs who used to look on him — they all sank in grief\"). And the शतृ participle appears for the first time **as an accusative object** — ताः रुदतीः \"them, the weeping ones.\" दृष्ट्वा अपि \"even having seen\" gives the concessive: he saw, yet did not turn.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 228
+      "position": 229
     },
     {
       "id": "rd012",
@@ -122733,7 +123454,7 @@
       "vyakhya_en": "Verse 1 strung accusatives; this one strings NOMINATIVES. होता, कविक्रतुः, सत्यः, चित्रश्रवस्तमः, देवः — all प्रथमा, all naming अग्निः (predication, no copula needed). कविक्रतुः is a बहुव्रीहि: \"(one) whose क्रतु is a sage's.\" Then देवेभिः is the तृतीया of accompaniment — \"with the gods\" — the सह-sense you met in पुत्रेण सह. आ गमत्: \"may he come hither.\"\n",
       "chapter": "readings",
       "length": "short",
-      "position": 229
+      "position": 230
     },
     {
       "id": "rd047",
@@ -123037,7 +123758,7 @@
       "vyakhya_en": "Of all wealth, knowledge alone (विद्यैव) they call the unsurpassed — द्रव्यम्\nand अनुत्तमम् both द्वितीया, the double object of आहुः \"they call.\" The reason\ncomes in three त्व-abstracts in the ablative of cause: अहार्यत्वात्, \"because it\ncannot be stolen\"; अनर्घत्वात्, \"because it is priceless\"; अक्षयत्वात्, \"because\nit never runs out\" — each the त्व noun (5.1.119) of a quality, and सर्वदा,\nalways so.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 230
+      "position": 231
     },
     {
       "id": "rd043",
@@ -123387,7 +124108,7 @@
       "vyakhya_en": "The Pañcatantra names itself in its second verse. The object of the gerund is\none long तत्पुरुष — सकल-अर्थशास्त्र-सारम्, \"the essence of all the treatises on\nstatecraft\" — which Viṣṇuśarman, having surveyed (समालोक्य, the ल्यप् gerund),\nmade into a charming work. चकार is the perfect (लिट्, 3.2.115), the tense of\nreported past: \"he composed it.\" तन्त्रैः पञ्चभिः, \"by five books\" — the five\nthat give the book its name.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 231
+      "position": 232
     },
     {
       "id": "rd013",
@@ -123712,7 +124433,7 @@
       "vyakhya_en": "A यत्…तत् sentence with two new turns. दाशुषे is the सम्प्रदान — the dative (चतुर्थी), \"for the worshipper,\" the same \"for whom\" case you met in नमो देवेभ्यः. करिष्यसि is a FUTURE (लृट्), \"you will do\" — √कृ now in the future, 2nd person. Two vocatives frame it: अग्ने and अङ्गिरः (a name of Agni). The sense: whatever blessing you will do for the giver — *that* is your truth.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 232
+      "position": 233
     },
     {
       "id": "rd048",
@@ -124088,7 +124809,7 @@
       "vyakhya_en": "An image explains the method. As a संस्कार, an impression लग्नः \"set\" (the क्त\nparticiple) on a नव भाजन, a new vessel, cannot नान्यथा भवेत् \"become otherwise\"\n(the optative), so — कथाच्छलेन, \"by the guise of story\" — statecraft is taught\nto the young while their minds are new. नीतिः कथ्यते, \"is told\": कथ्यते is the\npassive of कथ् (3.4.69), the नीति the thing told.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 233
+      "position": 234
     },
     {
       "id": "ex104",
@@ -124834,10 +125555,10 @@
           "quiz": {
             "q": "Which form is सर्व · प्रथमा · बहुवचन?",
             "opts": [
-              "सर्वस्य",
               "सर्वे",
               "सर्वम्",
-              "सर्वान्"
+              "सर्वान्",
+              "सर्वेभ्यः"
             ],
             "ans": "सर्वे",
             "kind": "production"
@@ -125224,7 +125945,7 @@
       "vyakhya_en": "The climax, and it gathers everything. Two relative-correlatives frame it, one on each axis: यः … सः on the **subject** (\"he who long wished Kṛṣṇa's death — that one now trembles\") and यम् … सः on the **object** (\"the king whom all feared — he was killed\"). Two ablatives of separation: उच्चासनात् \"from the high throne\" (2.3.28) and the fear-source folded into अबिभयुः. The action-noun वधम् \"killing\" takes its object in the **genitive** — कृष्णस्य वधम् \"the killing OF Kṛṣṇa\" (2.3.65, the कृत्-षष्ठी). The arc that began with butter and a rope ends as it must, in the passive: हतः \"was killed\" — and the whole Kṛṣṇa-childhood sequence closes on its grammatical signature, the कर्मणि क्त, now carrying the weight of a death rather than a game.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 234
+      "position": 235
     },
     {
       "id": "rd014",
@@ -125496,7 +126217,7 @@
       "vyakhya_en": "The worshippers speak now in their own voice: वयम् \"we,\" and एमसि (उप…आ…इमसि) \"we come\" — a 1st-person PLURAL verb (उत्तमपुरुष बहुवचन), the same person you met as -मि in गच्छामि, now plural. To you (त्वा, accusative) we come, day by day (दिवेदिवे), at night and dawn (दोषावस्तः), in thought (धिया, तृतीया of means), bearing homage (नमः भरन्तः). A whole sentence of grammar you already hold.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 235
+      "position": 236
     },
     {
       "id": "ex198",
@@ -126190,7 +126911,7 @@
       "vyakhya_en": "The same students appear four times and are named three different ways.\nशिष्याः when the passive points at them, तैः when the passive points past\nthem at what they read, ते when the verb is active and points at them\nagain, तान् when someone else's verb points at them.\n\nNothing about the students changed. Each time, the case answers one\nquestion: has the verb's ending already said this? If yes, प्रथमा. If no,\nwhatever case the role calls for.\n",
       "chapter": "sangraha",
       "length": "long",
-      "position": 236
+      "position": 237
     },
     {
       "id": "rd015",
@@ -126434,7 +127155,7 @@
       "vyakhya_en": "This verse has no new finite verb — it continues verse 7's \"to you we come,\" piling accusative epithets onto that त्वा: राजन्तम् (ruling), गोपाम् (guardian), दीदिविम् (shining), वर्धमानम् (growing). Two participles (राजन्तम् active, वर्धमानम् middle) decline like nouns in the accusative. The genitives अध्वराणाम् (over the rites) and ऋतस्य (of truth) mark domain; स्वे दमे — सप्तमी — locates it: \"in his own home.\" Cases you hold, stacked into Vedic praise.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 237
+      "position": 238
     },
     {
       "id": "ex220",
@@ -127139,7 +127860,7 @@
       "vyakhya_en": "All four kinds in one scene, and each doing ordinary work. महाबलः is a\nबहुव्रीहि — not \"great\" and not \"strength\" but the one who HAS great strength,\nthe king. मन्त्रिपुरोहितौ is a द्वन्द्व, minister and priest taken as a pair.\nउपसभम् is an अव्ययीभाव, उप carrying it and the whole going indeclinable. And\nशत्रुसेना is a तत्पुरुष — शत्रोः सेना, the enemy's army — whose defeat the\npassive participle पराजिता reports without a finite verb.\n",
       "chapter": "sangraha",
       "length": "passage",
-      "position": 238
+      "position": 239
     },
     {
       "id": "ex105",
@@ -127635,10 +128356,10 @@
           "quiz": {
             "q": "Which form is सर्व · प्रथमा · बहुवचन?",
             "opts": [
-              "सर्वस्य",
               "सर्वे",
               "सर्वम्",
-              "सर्वान्"
+              "सर्वान्",
+              "सर्वेभ्यः"
             ],
             "ans": "सर्वे",
             "kind": "production"
@@ -128186,7 +128907,7 @@
       "vyakhya_en": "A new story begins — from the Pañcatantra, and it opens with the formula every Sanskrit tale is built on: कस्मिंश्चित् वने \"in a certain forest\" (कः + चित् = the indefinite \"some\"). One genuinely new construction: the **prohibitive** — मा with an augmentless past (मा … हन् \"do not kill\"), the standard way Sanskrit says \"don't.\" Against it stands the animals' **future promise** — प्रेषयिष्यामः \"we will send\" (लृट्, 1st plural). The dative आहाराय \"for food\" is the dative of purpose (तादर्थ्य). All the rest — past tenses, gerund मिलित्वा, instrumental of cause भयेन — is grammar you already own, now carrying a fable instead of a god.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 239
+      "position": 240
     },
     {
       "id": "rd016",
@@ -128487,7 +129208,7 @@
       "vyakhya_en": "The hymn closes with a prayer, dense with the चतुर्थी (dative): नः \"for us,\" सूनवे \"to a son,\" स्वस्तये \"for well-being\" — three datives, all the \"for whom\" case (सम्प्रदान). The heart is a simile: पिता इव सूनवे — \"as a father (is) to a son.\" Two imperatives (लोट्) carry the request: भव \"be!\" and सचस्व \"abide!\" — the command mood you met in गच्छतु, here in real Vedic. With this you have read the whole first hymn of the Ṛgveda, end to end, with its accent.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 240
+      "position": 241
     },
     {
       "id": "ex221",
@@ -128744,10 +129465,10 @@
           "quiz": {
             "q": "Which form is सर्व · प्रथमा · बहुवचन?",
             "opts": [
-              "सर्वस्य",
               "सर्वे",
               "सर्वम्",
-              "सर्वान्"
+              "सर्वान्",
+              "सर्वेभ्यः"
             ],
             "ans": "सर्वे",
             "kind": "production"
@@ -129193,7 +129914,7 @@
       "vyakhya_en": "The compound types recur here in a quieter scene, and the superlative sits\namong them. पीताम्बरः is a बहुव्रीहि, the one whose robe is yellow — the\nteacher, not the colour. उपवनम् is an अव्ययीभाव, उप carrying वन and the whole\ngoing indeclinable. धर्मशास्त्राणि is a तत्पुरुष — धर्मस्य शास्त्राणि, the\ntreatises of dharma. रामकृष्णौ pairs two names as a द्वन्द्व. And of the pupils\nपटुतमौ (पटु + तमप्) and ज्येष्ठः (the इष्ठन् base) name the highest degree —\nthe same superlative sense in its two suffixes.\n",
       "chapter": "sangraha",
       "length": "passage",
-      "position": 241
+      "position": 242
     },
     {
       "id": "rd017",
@@ -129525,7 +130246,7 @@
       "vyakhya_en": "A new hymn, a new god — but the grammar is the invocation pattern you just met closing hymn 1. वायो is the सम्बोधन (vocative of the उ-stem वायु, गुण → वायो like गुरो), and it is answered by a volley of imperatives (लोट्): आ याहि \"come!\", पाहि \"drink!\", श्रुधि \"hear!\". The Somas (सोमाः, nominative plural) stand ready (अरंकृताः); drink *of them* — तेषाम्, a genitive (षष्ठी) in the partitive sense — and hear the call (हवम्, accusative). The whole verse is address + command, the heartbeat of Vedic prayer.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 242
+      "position": 243
     },
     {
       "id": "ex106",
@@ -130712,7 +131433,7 @@
       "vyakhya_en": "The dialogue lengthens — the trick is told, not just narrated. New touches: किमर्थम् \"why? for what purpose?\" (the interrogative of cause); the past participle as a finite-like **predicate** — त्वम् … आगतः \"you have come\" (क्त standing in for \"you came/are come\"); and a double-accusative with मन्यते — त्वाम् स्वामिनम् न मन्यते \"does not regard you AS master,\" the object and its predicate-complement both accusative. The infinitive द्रष्टुम् इच्छति \"wishes to see\" closes on the hook that will spring the trap. Everything else is consolidation: four लङ् pasts, two gerunds (विचिन्त्य, श्रुत्वा), locatives, the मतुप् adjectives बलवान्/बुद्धिमान्.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 243
+      "position": 244
     },
     {
       "id": "rd018",
@@ -130955,7 +131676,7 @@
       "vyakhya_en": "Hymn 1 ended with \"we come\"; here the worshippers are NAMED — जरितारः, \"the singers,\" the agents (कर्तृ, an ऋ-stem nominative plural like कर्तारः). They praise (जरन्ते, 3rd-person plural) you (त्वाम्, accusative) with hymns (उक्थेभिः) — the तृतीया of means, the same \"with/by\" you met in नरैः and धिया. Two epithets describe them: सुतसोमाः (\"Soma-pressed,\" a बहुव्रीहि) and अहर्विदः (\"day-knowers\"). All grammar you hold.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 244
+      "position": 245
     },
     {
       "id": "rd019",
@@ -131214,7 +131935,7 @@
       "vyakhya_en": "A feminine subject leads: धेना (\"stream,\" an आ-stem feminine like विद्या), with two feminine adjectives agreeing — प्रपृञ्चती (\"nourishing\") and उरूची (\"broad\"). It is तव (\"yours,\" genitive) and it जिगाति (\"goes\") दाशुषे (\"to the worshipper,\" dative). The last word shows a second flavour of the dative: सोमपीतये — *for the purpose of* Soma-drinking. One case (चतुर्थी), two senses: \"to whom\" (दाशुषे) and \"for what\" (सोमपीतये).\n",
       "chapter": "readings",
       "length": "short",
-      "position": 245
+      "position": 246
     },
     {
       "id": "ex195",
@@ -131463,18 +132184,18 @@
             }
           ],
           "derived": {
+            "लिङ्ग": "पुंलिङ्ग",
             "वचन": "एकवचन"
           },
           "quiz": {
-            "q": "Which विभक्ति?",
+            "q": "Which form is शत्रु · प्रथमा · एकवचन?",
             "opts": [
-              "प्रथमा",
-              "द्वितीया",
-              "तृतीया",
-              "षष्ठी"
+              "शत्रुः",
+              "शत्रवः",
+              "शत्रून्"
             ],
-            "ans": "प्रथमा",
-            "kind": "vibhakti"
+            "ans": "शत्रुः",
+            "kind": "production"
           }
         },
         {
@@ -132524,7 +133245,7 @@
       "vyakhya_en": "The lion never sees another lion. He sees himself and cannot tell, and the\necho he answers is his own voice returning. The story spends its whole\nlength on that one joke, and the last line names it: बलम् बुद्धिः च, and\nof the two, बुद्धिः.\n\nNine finite verbs here and eight of them are past — अनयत्, अपश्यत्,\nअमन्यत, अक्रुध्यत्, अपतत्, अम्रियत, अरक्षत्, आसीत्. Against them stand\nवसति and श्रूयते inside quoted or reported speech, where the present holds,\nand हनिष्यामि, the only future in the passage: the one thing the lion\nintends and does not accomplish.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 246
+      "position": 247
     },
     {
       "id": "rd020",
@@ -132844,7 +133565,7 @@
       "vyakhya_en": "The DUAL arrives — Sanskrit's third number, for exactly two. The pair इन्द्रवायू is a द्वन्द्व compound (\"Indra and Vāyu\") in the dual (द्विवचन, 1.4.22), and everything addressed to them is dual too: आ गतम् \"come, *you two*\" (a dual imperative), and वाम् \"you two\" (the dual of युष्मद्). Between, सुताः (\"the pressed Somas\") and इन्दवः (\"the drops\") are plural subjects. Singular, plural, and now dual — the वचन triad is complete, here in real Vedic.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 247
+      "position": 248
     },
     {
       "id": "rd021",
@@ -133112,7 +133833,7 @@
       "vyakhya_en": "The dual you just met now drives the VERB. वायो and इन्द्रः, joined by च, are two — so चेतथः (\"you two perceive\") is a dual finite verb, तौ (\"you two\") is the dual pronoun, यातम् (\"come, you two\") the dual imperative, and वाजिनीवसू a dual vocative epithet. Everything addressed to the pair is dual. They take note सुतानाम् — \"of the pressed Somas,\" a partitive genitive (षष्ठी). The whole verse is a drill in द्विवचन.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 248
+      "position": 249
     },
     {
       "id": "ex196",
@@ -134853,7 +135574,7 @@
       "vyakhya_en": "Everything the wife sees is true. There is blood on the mongoose's mouth.\nWhat she adds is the inference, and the story hangs the whole tragedy on\nthe gap between them — रक्तानि दृष्ट्वा, seeing the blood, and then\nखादितः, \"he has been eaten\", which she never saw at all.\n\nThe participles carry it. हतः, लिप्तम्, सुप्तम्, हतम् are all states\nsomeone else could have verified; खादितः is the one she supplied. And the\nlast word answers it: कृतवती, the active past participle — not something\ndone to her, but the thing she did.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 249
+      "position": 250
     },
     {
       "id": "rd022",
@@ -135132,7 +135853,7 @@
       "vyakhya_en": "The pair is called again — यातम्, \"come, you two\" — but now with a goal: उप … निष्कृतम्, \"up to the prepared offering,\" where the goal of motion takes the accusative (द्वितीया, just as a destination does). सुन्वतः (\"of the presser\") is a genitive: whose offering it is. धिया (\"by thought\") is the instrumental of means you already hold. And the address नरा is नरौ — the DUAL of नर, the very first noun you ever declined, now standing in the vocative dual.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 250
+      "position": 251
     },
     {
       "id": "rd023",
@@ -135403,7 +136124,7 @@
       "vyakhya_en": "A new divine pair enters — Mitra and Varuṇa. Here they are OBJECTS: मित्रम् … वरुणम् च, accusatives, \"I call (हुवे, 1st-person singular) Mitra and Varuṇa,\" each with its epithet (पूतदक्षम् \"pure-skilled,\" रिशादसम् \"foe-destroying\"). They jointly perfect धियं घृताचीम् (\"the luminous thought,\" accusative) — and साधन्ता, \"the two who perfect,\" is a participle in the DUAL, agreeing with the pair. The dual now appears even on a participle.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 251
+      "position": 252
     },
     {
       "id": "ex199",
@@ -136457,7 +137178,7 @@
       "vyakhya_en": "The last sentence has no finite verb in it. त्यक्तानि and त्यक्तम् are\nparticiples, and they carry the whole statement — the friends left, the\ncity left, and तेन telling you by whom.\n\nClassical Sanskrit prefers this to a past-tense verb, which is why so much\nnarrative reads as a chain of participles with the agent in the\ninstrumental. Once मित्राणि त्यक्तानि stops needing to be translated as a\npassive, it starts reading as ordinary past narration.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 252
+      "position": 253
     },
     {
       "id": "rd024",
@@ -136665,7 +137386,7 @@
       "vyakhya_en": "Now Mitra-Varuṇa are ADDRESSED, as a single dual द्वन्द्व: मित्रावरुणौ (vocative dual), with two dual epithets, ऋतावृधौ (\"Truth-increasers\") and ऋतस्पृशा (\"Truth-touchers\"). The line opens with ऋतेन — \"by the Truth,\" the instrumental of means. And the verb is new: आशाथे, \"you two have attained\" — a PERFECT (लिट्, the tense of चकार) in the DUAL. Tense, number, and compound all converge on the pair.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 253
+      "position": 254
     },
     {
       "id": "rd025",
@@ -136924,7 +137645,7 @@
       "vyakhya_en": "The hymn closes with the pair as SUBJECTS, all in the nominative dual: कवी (\"two seers\"), मित्रावरुणा (now agents, not addressed), तुविजाता (\"mightily born\"), उरुक्षया (\"wide-dwelling\"). They दधाते — \"the two hold\" — a present DUAL verb of √धा, the same root as ददाति \"gives.\" For us (नः, dative) they hold दक्षम् अपसम् (\"a working skill,\" accusative). You have now read the whole second hymn, and through it drilled the entire dual — noun, pronoun, adjective, participle, and verb across three tenses.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 254
+      "position": 255
     },
     {
       "id": "ex201",
@@ -138060,7 +138781,7 @@
       "vyakhya_en": "One man, four shapes: पिता when he is named, पितरम् when the king fails to\nlook at him, पितरि when devotion is owed toward him, पितुः when his house\nis meant. Nothing about the father changes across the story.\n\nThe king does the same — राजा, राजानम्, राज्ञः, राज्ञा — and the last of\nthose, राज्ञा शिरः अवनतम्, has no finite verb: a participle and an\ninstrumental agent, which is how classical narrative most often reports\nwhat someone did.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 255
+      "position": 256
     },
     {
       "id": "rd026",
@@ -138261,7 +138982,7 @@
       "vyakhya_en": "A new hymn, a new dual pair: the अश्विन्s, the twin horsemen, addressed throughout in the dual vocative — अश्विना, द्रवत्पाणी (\"swift-handed\"), शुभस्पती (\"lords of bliss\"), पुरुभुजा (\"of many bounties\"). They are asked to चनस्यतम् — \"take pleasure, you two\" — a DUAL imperative (लोट्), the same dual-of-command you met as आ गतम् in rd020. What they enjoy is यज्वरीः इषः, \"the worshipper's offerings,\" an accusative PLURAL object (कर्मन्). The dual you drilled across RV 1.2 now carries to a fresh pair.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 256
+      "position": 257
     },
     {
       "id": "rd027",
@@ -138498,7 +139219,7 @@
       "vyakhya_en": "The Aśvins again, addressed as नरा — which is नरौ, the dual of नर, the first noun this whole reader ever declined, now standing in a Vedic hymn. They are to वनतम् (\"win, you two,\" dual imperative) the गिरः, \"songs of praise\" (accusative plural object). The means is शवीरया धिया, \"with forceful thought\" — an INSTRUMENTAL (करण, तृतीया), the same धी \"thought\" you met as धिया in rd014. One verse braids three threads you already hold: the dual address, the accusative object, and the instrument of means.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 257
+      "position": 258
     },
     {
       "id": "ex202",
@@ -139692,7 +140413,7 @@
       "vyakhya_en": "Three participles here do what English does with \"while\": राजा वनम् गच्छन्\nis \"the king, as he went to the forest\". None of them is the sentence's\nmain verb, and none needs a conjunction.\n\nThen three gerundives state obligation without any verb at all —\nकर्तव्यम्, करणीयम्, स्मरणीयम्. Two different affixes, तव्य and अनीयर्,\nwith no difference in sense; a writer picks whichever fits the line.\nकिम् मया करणीयम् is the whole question: what, by me, is to-be-done.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 258
+      "position": 259
     },
     {
       "id": "rd028",
@@ -139932,7 +140653,7 @@
       "vyakhya_en": "The triplet to the Aśvins closes with a NOMINATIVE string describing the offering: युवाकवः सुताः वृक्तबर्हिषः — \"the pressed (soma), yearning for you, with sacred grass strewn.\" These are predicates: the rite is ready. The pair, addressed as दस्रा (\"wondrous\"), नासत्या (\"truthful\"), रुद्रवर्तनी (\"of Rudra's path\"), are bidden आ यातम् — \"come, you two\" — the very dual imperative you first met as आ गतम् in rd020. The Aśvin hymn is complete.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 259
+      "position": 260
     },
     {
       "id": "rd029",
@@ -140226,7 +140947,7 @@
       "vyakhya_en": "The hymn turns from the pair to a single god, and the grammar turns with it: इन्द्र is a SINGULAR vocative, and he is bidden आ याहि — \"come!\" — a 2nd-person SINGULAR imperative, exactly the dual आ यातम् of rd028 with one fewer. Hold the two side by side: यातम् = \"come, you two,\" याहि = \"come, you one.\" The soma is described in a nominative string (सुताः … त्वायवः … पूतासः, \"pressed … longing for you … purified\"), strained अण्वीभिः, \"through the fine filter\" (instrumental of means). The dual you drilled all through RV 1.2 now has its singular foil.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 260
+      "position": 261
     },
     {
       "id": "ex203",
@@ -141000,8 +141721,8 @@
             "q": "Which form is सर्व · तृतीया · बहुवचन?",
             "opts": [
               "सर्वैः",
+              "सर्वेभ्यः",
               "सर्वम्",
-              "सर्वे",
               "सर्वेषु"
             ],
             "ans": "सर्वैः",
@@ -141013,7 +141734,7 @@
       "vyakhya_en": "Six of the words here would be verbs in English and are not. तिष्ठन्,\nआगच्छन्तम् and पश्यन् are participles; दातव्यम् and स्मरणीयम् are\ngerundives. Only अपश्यत्, आसीत्, अवदत् and अददात् are finite.\n\nराज्ञा जलम् दातव्यम् has no verb at all — an instrumental agent, a\nnominative object, and a word meaning \"to-be-given\". Sanskrit says a great\ndeal this way, and it reads as ordinary statement once it stops being\nturned into an English passive.\n",
       "chapter": "sangraha",
       "length": "long",
-      "position": 261
+      "position": 262
     },
     {
       "id": "ex204",
@@ -142101,7 +142822,7 @@
       "vyakhya_en": "The potter's answer is two gerundives and nothing else: कर्तव्यम् एतत्,\nकिन्तु मूल्यम् दातव्यम्. He concedes the work and states his condition in\nthe same construction the prince used to give the order.\n\nThat is what makes it a refusal rather than a complaint. स्थापनीयाः was an\ninstruction; दातव्यम् answers it in kind.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 262
+      "position": 263
     },
     {
       "id": "ex206",
@@ -142991,7 +143712,7 @@
       "vyakhya_en": "पठनम् and वनगमनम् are the same kind of word — an act named as a thing —\nand the teacher sets one against the other. Sanskrit can compound the goal\nstraight into the noun: वनं गमनम् becomes वनगमनम्, going-to-the-forest, in\none word.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 263
+      "position": 264
     },
     {
       "id": "rd030",
@@ -143269,7 +143990,7 @@
       "vyakhya_en": "The same call — आ याहि, \"come\" — but now Indra is moved BY something and moves TO something. He is धिया इषितः, \"urged on by the thought\" (instrumental of means, the धी you met as धिया in rd027), and विप्रजूतः, \"hastened by the seers.\" Where to? उप ब्रह्माणि वाघतः — \"up to the prayers of the worshipper,\" where उप is a preverb steering the verb of motion onto an accusative goal (ब्रह्माणि), and वाघतः is a genitive (\"of the worshipper\"). Means in the instrumental, goal in the accusative, possession in the genitive — three cases you hold, in one line of the Veda.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 264
+      "position": 265
     },
     {
       "id": "rd031",
@@ -143573,7 +144294,7 @@
       "vyakhya_en": "The third and last call to Indra adds one new case: सुते, a LOCATIVE — \"at the pressing,\" the occasion when the soma is pressed (अधिकरण, सप्तमी, by 2.3.36). The verb दधिष्व is √धा again — the root of दधाते \"the two hold\" in rd025 — but here a MIDDLE (आत्मनेपद) imperative, \"take FOR YOURSELF,\" carrying delight (चनः, the noun of the very चनस्यतम् \"take pleasure\" that opened the hymn in rd026). The triplet to Indra is complete: three times \"come,\" each adding a case — instrument, goal, and now occasion.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 265
+      "position": 266
     },
     {
       "id": "ex208",
@@ -144603,7 +145324,7 @@
       "vyakhya_en": "जीवनम्, दानम्, आचरणम् — three acts named as things, and the story turns on\ntreating them that way. A life can be fruitful, a giving can satisfy people,\na practice can be pointed at. None of them needs a verb.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 266
+      "position": 267
     },
     {
       "id": "rd032",
@@ -144827,7 +145548,7 @@
       "vyakhya_en": "The number completes its circle. RV 1.3 has now addressed a DUAL (the Aśvins, आ यातम्), a SINGULAR (Indra, आ याहि), and here a PLURAL — विश्वे देवासः, \"all the gods,\" a whole company, bidden आ गत, \"come, you all.\" Set the three imperatives of √गम्/√या side by side: यातम् (two), याहि (one), गत (many). Every vocative here is plural too — ओमासः, चर्षणीधृतः, दाश्वांसः. They come दाशुषः सुतम्, \"to the worshipper's pressed soma\" (genitive + accusative goal). One hymn has now drilled the entire तीन वचन.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 267
+      "position": 268
     },
     {
       "id": "ex209",
@@ -145067,19 +145788,18 @@
             }
           ],
           "derived": {
+            "लिङ्ग": "पुंलिङ्ग",
             "वचन": "बहुवचन"
           },
           "quiz": {
-            "q": "Which विभक्ति here?",
-            "phrase": "— शत्रवः सेनाम् अनयन्,",
+            "q": "Which form is शत्रु · प्रथमा · बहुवचन?",
             "opts": [
-              "प्रथमा",
-              "चतुर्थी",
-              "पञ्चमी",
-              "सम्बोधन"
+              "शत्रवः",
+              "शत्रून्",
+              "शत्रुः"
             ],
-            "ans": "प्रथमा",
-            "kind": "vibhakti-phrase"
+            "ans": "शत्रवः",
+            "kind": "production"
           }
         },
         {
@@ -145964,7 +146684,7 @@
       "vyakhya_en": "अद्य sets the tense: four verbs here are aorists — अगमत्, अवादीत्, अश्रौषीत्, अकार्षीत् — and three are the ordinary past in लङ् — अनयन्, अदहन्, अवदत्. The two sit side by side in one paragraph, so the difference is a matter of what the sentence is doing rather than of what happened. अश्रौषीत् shows the ष् of सिच् after वृद्धि, while तूष्णीम् carries a ष् that no join produced. यत् त्वया उक्तम् puts the agent in the instrumental and the verb in a participle — the clause has no finite verb at all, and तत् सत्यम् answers it with none either.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 268
+      "position": 269
     },
     {
       "id": "rd033",
@@ -146207,7 +146927,7 @@
       "vyakhya_en": "The plural call repeats — सुतम् आ गन्त, \"come to the soma, all of you\" — but the verse closes with a SIMILE: उस्राः इव स्वसराणि, \"like cattle (coming) to their pastures.\" इव \"like\" marks the comparison; उस्राः (\"cattle\") is the standard (nominative), and स्वसराणि (\"pastures\") is its accusative goal, mirroring सुतम्, the gods' own goal. The grammar of the simile is the grammar of the main clause — a goal-of-motion accusative in both halves. As cattle to the fold, so the gods to the soma.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 269
+      "position": 270
     },
     {
       "id": "ex210",
@@ -147364,7 +148084,7 @@
       "vyakhya_en": "The aorist widens here: अवादीत् and अश्रौषीत् are third singular, अवादिषुः is third plural of the same verb as अवादीत्, and अभूत् is √भू with no सिच् at all — the ending sits straight on the root. ज्येष्ठः and कनिष्ठः are the same suffix इष्ठन् on two opposed adjectives, and they carry the whole plot between them. केन एषा भूमिः विभक्ता asks the question with a participle and an instrumental agent, and the elders answer with a present-tense generality rather than a fact about this field.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 270
+      "position": 271
     },
     {
       "id": "rd034",
@@ -147620,7 +148340,7 @@
       "vyakhya_en": "The hymn's grammar turns one last time: from ADDRESS to STATEMENT. Through rd032–033 the gods were vocatives (\"O All-Gods, come!\"); here देवासः is NOMINATIVE — the SUBJECT — qualified by a string of nominative adjectives (अस्रिधः \"unfailing,\" एहिमायासः a bahuvrīhi \"whose power approaches,\" अद्रुहः \"guileless,\" वह्नयः \"bearers\"). The verb is no longer an imperative TO them but a 3rd-person wish ABOUT them: मेधं जुषन्त, \"may they enjoy the offering.\" The same noun in two cases across one triplet — vocative when called, nominative when described — is the whole lesson of address vs predication. The Viśvedevas triplet, and three-quarters of RV 1.3, complete.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 271
+      "position": 272
     },
     {
       "id": "ex222",
@@ -148817,7 +149537,7 @@
       "vyakhya_en": "The messenger's errand carries the compound types through it. नरपतेः and\nराजपुरुषः are तत्पुरुष — the lord of men, the king's man. उपगोकुलम् is an\nअव्ययीभाव, उप carrying गोकुल and the whole going indeclinable. गोपकृष्णौ pairs\nthe two boys as a द्वन्द्व, and दामोदरः names Kṛṣṇa as a बहुव्रीहि — the one\nwith the cord at his belly. Of the pair पटुतमौ and ज्येष्ठः give the\nsuperlative, तमप् beside इष्ठन्.\n",
       "chapter": "katha",
       "length": "long",
-      "position": 272
+      "position": 273
     },
     {
       "id": "rd035",
@@ -149082,7 +149802,7 @@
       "vyakhya_en": "The last triplet of the hymn turns to a single FEMININE deity: सरस्वती, an ई-stem noun of the same नदी class you first declined in rd010. She is the subject (nominative), wrapped in feminine epithets — पावका (\"purifying,\" with the टाप् feminine-आ of 4.1.4), वाजिनीवती (\"rich in abundance\"), धियावसुः (\"treasure of thought\"). The verb वष्टु is a 3rd-person SINGULAR imperative — \"may she desire\" — a wish made ABOUT her, not a command TO her. After the dual, singular-Indra, and plural triplets, the hymn closes on one goddess, in the feminine.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 273
+      "position": 274
     },
     {
       "id": "ex211",
@@ -149275,19 +149995,18 @@
             }
           ],
           "derived": {
+            "लिङ्ग": "पुंलिङ्ग",
             "वचन": "बहुवचन"
           },
           "quiz": {
-            "q": "Which विभक्ति here?",
-            "phrase": "— शत्रवः पराजिताः, ग्रामाः",
+            "q": "Which form is शत्रु · प्रथमा · बहुवचन?",
             "opts": [
-              "प्रथमा",
-              "चतुर्थी",
-              "पञ्चमी",
-              "सम्बोधन"
+              "शत्रवः",
+              "शत्रून्",
+              "शत्रुः"
             ],
-            "ans": "प्रथमा",
-            "kind": "vibhakti-phrase"
+            "ans": "शत्रवः",
+            "kind": "production"
           }
         },
         {
@@ -150127,7 +150846,7 @@
       "vyakhya_en": "Five aorists carry the scene, and three of the sentences have no finite verb at all — शत्रवः पराजिताः, ग्रामाः रक्षिताः, केन एतत् कृतम् all rest on a participle. मन्त्रिणः appears twice, first as the accusative of the persons asked and then as the nominative of the persons answering; nothing in the form distinguishes them, only the verb each one stands beside. The hero's silence is the point of the last sentence and also its grammar — तूष्णीम् आसीत् and न किञ्चित् अयाचत say it twice, once with an indeclinable and once with a verb.\n",
       "chapter": "sangraha",
       "length": "long",
-      "position": 274
+      "position": 275
     },
     {
       "id": "rd036",
@@ -150323,7 +151042,7 @@
       "vyakhya_en": "Sarasvatī is named by two feminine agent-words: चोदयित्री (\"the impeller,\" a तृच्-agent-noun made feminine with ई) and चेतन्ती (\"awakening,\" a present participle, शतृ + ई). Both GOVERN a genitive — चोदयित्री सूनृतानाम् \"impeller OF true words,\" चेतन्ती सुमतीनाम् \"awakener OF good thoughts\" — the षष्ठी शेषे relation (2.3.50). Her act is दधे, \"she has upheld,\" a PERFECT of √धा, the same root you have now seen as a present dual (दधाते, rd025), a middle imperative (दधिष्व, rd031), and now a perfect. One root, four tenses-and-moods, across the Saṃhitā.\n",
       "chapter": "readings",
       "length": "short",
-      "position": 275
+      "position": 276
     },
     {
       "id": "rd037",
@@ -150604,7 +151323,7 @@
       "vyakhya_en": "The hymn closes with two preverb-verbs that mirror each other: प्र चेतयति, \"she makes (it) forth-known,\" and वि राजति, \"she shines over.\" Each preverb steers the sense of the verb. She makes known महः अर्णः, \"the great flood\" (accusative), केतुना, \"by her banner\" (instrument); she illumines धियः विश्वाः, \"all the thoughts\" (accusative plural) — the धी \"thought\" you have met since rd014, now the very thing the goddess of insight lights up. Object in the accusative, means in the instrumental, agent in the nominative: the कारक machinery of the whole reader, in the Veda's own words. **RV 1.3 is complete** — three hymns of the Ṛgveda (1.1, 1.2, 1.3) now read end to end.\n",
       "chapter": "readings",
       "length": "passage",
-      "position": 276
+      "position": 277
     }
   ]
 }
