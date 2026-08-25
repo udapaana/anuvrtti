@@ -10,6 +10,116 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd053
+  kind: attested
+  segment: 361
+  source:
+    text: पञ्चतन्त्र
+    ref: "Pañcatantra 1.5 — the world befriends the rich"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_viSNuzarman-paJcatantra, ||Panc_1.5||)"
+  sentence: इह लोके हि धनिनाम् परोऽपि स्वजनायते। स्वजनोऽपि दरिद्राणाम् सर्वदा दुर्जनायते॥
+  translation: In this world, even a stranger behaves as kin toward the rich; even one's own kin always behaves as an enemy toward the poor.
+  teaches: |
+    the denominative — a whole verb built from a noun: स्वजनायते "acts as one's
+    own," दुर्जनायते "acts as a foe," the क्यङ् formation "behave like X."
+  words:
+  - form: इह
+    lemma: इह
+    gloss: here, in this world
+    notes:
+    - term: अव्यय
+      en: adverb of place
+  - form: लोके
+    lemma: लोक
+    gloss: in the world
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: हि
+    lemma: हि
+    gloss: indeed, for
+    notes:
+    - term: अव्यय
+      en: emphatic / explanatory particle
+  - form: धनिनाम्
+    lemma: धनिन्
+    gloss: of/toward the rich
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: possessive derivative — धन "wealth" → धनिन् "having wealth, rich"
+    - term: इनि
+      en: the इनि possessive suffix (मतुबर्थीय)
+    - cite: '5.2.115'
+      role: अत इनिठनौ — after an अ-final stem denoting a possessum, इनि (and ठन्) in the "possessing" sense → धन + इनि → धनिन्
+    - term: षष्ठी
+      en: genitive plural — "for/toward the rich" (the one behaved-toward)
+  - form: परोऽपि
+    lemma: पर
+    gloss: even a stranger
+    notes:
+    - term: कर्तृ
+      en: subject — पर "another, stranger" + अपि "even"
+    - term: प्रथमा
+      en: nominative (परः + अपि → परोऽपि, विसर्ग-सन्धि)
+  - form: स्वजनायते
+    lemma: स्वजन
+    gloss: behaves as one's own kin
+    vocab: true
+    notes:
+    - term: क्यङ्
+      en: denominative — a verb made from the noun स्वजन "one's own kin," "to act like/as ___"
+    - cite: '3.1.10'
+      role: उपमानादाचारे — from a standard-of-comparison (उपमान), in the sense of behaving toward someone like it (आचार), a denominative affix is introduced
+    - cite: '3.1.11'
+      role: कर्तुः क्यङ् — that affix is क्यङ् (आत्मनेपद) when the behaving is self-referential → स्वजन + क्यङ् → स्वजनायते
+    - term: लट्
+      en: present (आत्मनेपद 3sg)
+  - form: स्वजनोऽपि
+    lemma: स्वजन
+    gloss: even one's own kin
+    notes:
+    - term: कर्तृ
+      en: subject — स्वजन "kin" + अपि "even"
+    - term: प्रथमा
+      en: nominative (स्वजनः + अपि → स्वजनोऽपि)
+  - form: दरिद्राणाम्
+    lemma: दरिद्र
+    gloss: of/toward the poor
+    vocab: true
+    notes:
+    - term: षष्ठी
+      en: genitive plural — "for/toward the poor" (the one behaved-toward)
+  - form: सर्वदा
+    lemma: सर्वदा
+    gloss: always
+    notes:
+    - term: अव्यय
+      en: adverb of time
+  - form: दुर्जनायते
+    lemma: दुर्जन
+    gloss: behaves as an enemy
+    vocab: true
+    notes:
+    - term: क्यङ्
+      en: denominative from दुर्जन "a wicked man, foe" — "to act like a foe"
+    - cite: '3.1.11'
+      role: कर्तुः क्यङ् (उपमानादाचारे) — दुर्जन + क्यङ् → दुर्जनायते "behaves like a foe"
+    - term: लट्
+      en: present (आत्मनेपद 3sg)
+  vyakhya: 'नामधातुप्रधानः श्लोकः। स्वजनायते दुर्जनायते इति उपमानात् आचारे क्यङ् — "स्वजन इव आचरति" इत्यर्थे। धनिनाम् दरिद्राणाम् इति शेषे षष्ठी (आचरितव्यविषये)। धनिन् इति धनशब्दात् इनिः मतुबर्थे।'
+  vyakhya_en: |
+    A verse built on the नामधातु — the denominative verb. Sanskrit can turn
+    almost any noun into a verb; here स्वजन "one's own" → स्वजनायते "acts as one's
+    own," and दुर्जन "a foe" → दुर्जनायते "acts as a foe." The rule is
+    3.1.10–11: from an उपमान (a standard of comparison), in the sense of
+    **आचार** (behaving toward someone as if they were that thing), a root is
+    formed, and it takes **क्यङ्** with आत्मनेपद endings (-आयते). Around it:
+    धनिनाम् and दरिद्राणाम् are genitives of the one behaved-toward, and धनिन्
+    itself is धन + इनि (5.2.115), the "possessing wealth" derivative — the same
+    इनि you meet in दण्डिन्, बलिन्, मनस्विन्.
 - id: rd052
   kind: attested
   segment: 360
