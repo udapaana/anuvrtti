@@ -10,6 +10,163 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd051
+  kind: attested
+  segment: 340
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.7 — the two knowledges"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, ||Hit_0.7||); the final vowel-sandhi द्वितीया आद्रियते is shown unjoined for reading."
+  sentence: विद्या शस्त्रम् च शास्त्रम् च द्वे विद्ये प्रतिपत्तये। आद्या हास्याय वृद्धत्वे द्वितीया आद्रियते सदा॥
+  translation: Knowledge is of two kinds — weapon-craft and the śāstra — two knowledges for mastery. The first is for ridicule in old age; the second is honored always.
+  teaches: |
+    two derived nouns of purpose. प्रतिपत्तये is the क्तिन् action-noun "for
+    mastery"; हास्याय is the ण्यत् gerundive "for (being) laughed at."
+  words:
+  - form: विद्या
+    lemma: विद्या
+    gloss: knowledge
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: the topic
+    - term: प्रथमा
+      en: nominative
+  - form: शस्त्रम्
+    lemma: शस्त्र
+    gloss: weapon-craft
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative (neuter) — one of the two kinds
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: शास्त्रम्
+    lemma: शास्त्र
+    gloss: the śāstra (learning)
+    notes:
+    - term: प्रथमा
+      en: nominative (neuter) — the other kind
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: द्वे
+    lemma: द्वि
+    gloss: two
+    notes:
+    - term: संख्या
+      en: numeral — dual
+    - term: विशेषण
+      en: qualifying विद्ये
+    - term: प्रथमा
+      en: nominative dual
+    rel:
+    - kind: विशेषण
+      to: 6
+  - form: विद्ये
+    lemma: विद्या
+    gloss: knowledges
+    notes:
+    - term: कर्तृ
+      en: the two, restated
+    - term: प्रथमा
+      en: nominative dual
+  - form: प्रतिपत्तये
+    lemma: प्रतिपत्ति
+    gloss: for mastery, for attainment
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: (kṛt) action-noun of purpose
+    - term: क्तिन्
+      en: the क्तिन् feminine action-noun — प्रति + पद् + क्तिन् → प्रतिपत्ति
+    - cite: '3.3.94'
+      role: स्त्रियां क्तिन् — क्तिन् forms a feminine action-noun → प्रतिपत्ति ("attainment")
+    - term: सम्प्रदान
+      en: purpose — "for ___"
+    - term: चतुर्थी
+      en: dative
+  - form: आद्या
+    lemma: आद्य
+    gloss: the first
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: the first knowledge (weapon-craft)
+    - term: प्रथमा
+      en: nominative (feminine)
+  - form: हास्याय
+    lemma: हास्य
+    gloss: for ridicule
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerundive — "to be laughed at, laughable"
+    - term: ण्यत्
+      en: the ण्यत् gerundive suffix (with वृद्धि) — हस् → हास्य
+    - cite: '3.1.124'
+      role: ऋहलोर्ण्यत् — ण्यत् after a हल्-final root → हस् + ण्यत् → हास्य
+    - term: सम्प्रदान
+      en: purpose — "for (being) laughed at"
+    - term: चतुर्थी
+      en: dative
+  - form: वृद्धत्वे
+    lemma: वृद्धत्व
+    gloss: in old age
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "old-age-ness" (वृद्ध + त्व)
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of" → वृद्ध + त्व → वृद्धत्व
+    - term: अधिकरण
+      en: locus (of time)
+    - term: सप्तमी
+      en: locative
+  - form: द्वितीया
+    lemma: द्वितीय
+    gloss: the second
+    notes:
+    - term: विशेषण
+      en: the second knowledge (the śāstra)
+    - term: प्रथमा
+      en: nominative (feminine)
+  - form: आद्रियते
+    lemma: दृ
+    gloss: is honored, is esteemed
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+    - term: कर्मणि
+      en: passive — "is respected" (आ + दृ)
+    - cite: '3.4.69'
+      role: लः कर्मणि च — the ल-affix (लट्) denotes the कर्मन् → passive आद्रियते
+    - term: उपसर्ग
+      en: आ — the preverb
+  - form: सदा
+    lemma: सदा
+    gloss: always
+    notes:
+    - term: अव्यय
+      en: adverb of time
+  vyakhya: विद्या द्विविधा — शस्त्रम् शास्त्रम् च; प्रतिपत्तये द्वे। आद्या हास्याय, द्वितीया सदा आद्रियते।
+  vyakhya_en: |
+    Two derivations carry the sense. प्रतिपत्तये is the क्तिन् action-noun of
+    प्रति-पद्, "for mastery" (3.3.94), in the dative of purpose; हास्याय is the
+    ण्यत् gerundive of हस्, "for being laughed at" (3.1.124), the same dative. The
+    first knowledge — weapon-craft — comes to that, हास्याय वृद्धत्वे, "ridicule in
+    old age" (वृद्धत्व, the त्व abstract); the second, the śāstra, आद्रियते सदा,
+    "is honored always" — the passive of आ-दृ.
 - id: rd050
   kind: attested
   segment: 335
