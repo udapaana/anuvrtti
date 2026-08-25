@@ -12,7 +12,8 @@
     label,
     tone = 'quiet',
     script = undefined,
-    title = undefined
+    title = undefined,
+    dot = false
   }: {
     label: string;
     /** 'quiet' is the default; 'on' marks the selected one; 'ok' marks done. */
@@ -20,11 +21,18 @@
     /** Source script, when the label is Sanskrit — it then follows the toggle. */
     script?: Script;
     title?: string;
+    /**
+     * A mark on the chip itself, for a property of THIS tag rather than a
+     * state of the chip — the reader uses it for "the corpus introduces this
+     * term here". A separate labelled block would name the term twice.
+     */
+    dot?: boolean;
   } = $props();
 </script>
 
-<span class="chip {tone}" class:deva={!!script} {title}>
+<span class="chip {tone}" class:deva={!!script} class:dotted={dot} {title}>
   {#if script}<Sanskrit text={label} source={script} />{:else}{label}{/if}
+  {#if dot}<span class="dot" aria-hidden="true"></span>{/if}
 </span>
 
 <style>
@@ -42,6 +50,20 @@
   .chip.deva {
     font-family: var(--font-deva);
     font-size: 12px;
+  }
+  /* inline-flex only when there is a dot to align, so an ordinary chip keeps
+     its inline-block baseline behaviour in a wrapping row */
+  .chip.dotted {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .dot {
+    width: 4px;
+    height: 4px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--accent);
   }
   .chip.on {
     border-color: var(--ink);

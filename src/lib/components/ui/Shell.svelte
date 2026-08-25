@@ -20,7 +20,16 @@
     /** Column-only pages set their own cap; the default is a comfortable page. */
     columnMax = '900px',
     /** A spine of long Devanagari labels or a matrix needs more than 176px. */
-    spineWidth = '176px'
+    spineWidth = '176px',
+    /** The rail's column width. The reader widens its own; everything else takes the default. */
+    railWidth = '312px',
+    /**
+     * The rail owns its own frame: a pinned head, a scrolling middle and a
+     * pinned foot. Shell then supplies the box and nothing else — no padding,
+     * no gap, no scrolling of its own — because the region inside decides
+     * which part scrolls. Every other page keeps the padded, scrolling rail.
+     */
+    railFrame = false
   }: {
     shelf?: Snippet;
     spine?: Snippet;
@@ -30,6 +39,8 @@
     wide?: boolean;
     columnMax?: string;
     spineWidth?: string;
+    railWidth?: string;
+    railFrame?: boolean;
   } = $props();
 
   /*
@@ -49,7 +60,9 @@
 <div
   class="shell {columns}"
   class:wide
-  style={columns === 'col-only' ? `max-width:${columnMax}` : `--spine-w:${spineWidth}`}
+  style={columns === 'col-only'
+    ? `max-width:${columnMax}`
+    : `--spine-w:${spineWidth};--rail-w:${railWidth}`}
 >
   {#if spine}
     <nav class="spine">{@render spine()}</nav>
@@ -60,7 +73,7 @@
   </main>
 
   {#if rail}
-    <aside class="rail">{@render rail()}</aside>
+    <aside class="rail" class:framed={railFrame}>{@render rail()}</aside>
   {/if}
 </div>
 
@@ -75,13 +88,13 @@
     max-width: none;
   }
   .shell.has-both {
-    grid-template-columns: var(--spine-w, 176px) minmax(0, 1fr) 312px;
+    grid-template-columns: var(--spine-w, 176px) minmax(0, 1fr) var(--rail-w, 312px);
   }
   .shell.has-spine {
     grid-template-columns: var(--spine-w, 176px) minmax(0, 1fr);
   }
   .shell.has-rail {
-    grid-template-columns: minmax(0, 1fr) 312px;
+    grid-template-columns: minmax(0, 1fr) var(--rail-w, 312px);
   }
   .shell.col-only {
     grid-template-columns: minmax(0, 1fr);
@@ -156,6 +169,20 @@
     */
     height: calc(100vh - var(--sticky-rail));
     min-width: 0;
+    transition: width 0.18s ease;
+  }
+
+  /*
+    A framed rail is a panel, not a scroll of blocks: the region inside pins its
+    own head and foot and scrolls only the middle. Shell hands it the box and
+    gets out of the way — padding here would sit outside the pinned head, and a
+    scrollbar here would be a second one beside the middle's own.
+  */
+  .rail.framed {
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+    background: var(--paper);
   }
 
   /* Below the grid breakpoint the regions stack: shelf stays, spine becomes a
@@ -191,6 +218,10 @@
       /* stacked, it is a block in the flow again, not a viewport-tall panel */
       height: auto;
       min-height: 0;
+    }
+    /* nothing is pinned when stacked, so the frame stops clipping too */
+    .rail.framed {
+      overflow: visible;
     }
     .column {
       padding: 24px 16px 60px;
