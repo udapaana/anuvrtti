@@ -430,8 +430,25 @@
     const w = r?.words?.[wi];
     if (!r || !w) return null;
     const terms = (w.notes ?? []).filter((n: any) => n.term).map((n: any) => ({ term: n.term, en: n.en ?? '' }));
+    /*
+      DERIVED values are grammar too.
+
+      `terms` is what a human wrote in the YAML. `derived` is what the build
+      worked out from the form with vidyut — पुरुष, वचन, पद, गण and the rest.
+      गच्छति is authored as गम् · धातु · शप् · लट् · तिप् and derived as
+      प्रथमपुरुष · एकवचन · परस्मैपद · भ्वादि: nine facts, of which the rail
+      showed five, because only `terms` ever became chips.
+
+      That is 3998 facts across 2058 words — 77% of the corpus — known to the
+      app and invisible in it. They join the tag row now, kept separate so they
+      can be drawn as what they are: worked out, not written down.
+    */
+    const authored = new Set(terms.map((t: any) => t.term));
+    const derivedTerms = Object.entries(w.derived ?? {})
+      .filter(([, v]) => v && !authored.has(v as string))
+      .map(([dim, v]) => ({ term: v as string, en: `${dim} — worked out from the form`, dim }));
     const cites = (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => ({ cite: n.cite, role: n.role ?? '' }));
-    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quizzes: (w.quizzes ?? []) as any[], terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
+    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quizzes: (w.quizzes ?? []) as any[], terms, derivedTerms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
   }
 
   /**
@@ -1764,6 +1781,23 @@
                   script="devanagari"
                   tone={openTerm === t.term ? 'on' : 'quiet'}
                   dot={newHere.includes(t.term)}
+                />
+              </button>
+            {/each}
+            <!-- then what the build worked out from the form: the same grammar,
+                 dashed because no one authored it -->
+            {#each selWord.derivedTerms ?? [] as t}
+              <button
+                class="chip-btn"
+                type="button"
+                title={t.en}
+                onclick={() => (openTerm = openTerm === t.term ? null : t.term)}
+              >
+                <Chip
+                  label={t.term}
+                  script="devanagari"
+                  tone={openTerm === t.term ? 'on' : 'quiet'}
+                  derived
                 />
               </button>
             {/each}

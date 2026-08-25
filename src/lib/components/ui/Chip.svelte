@@ -13,7 +13,8 @@
     tone = 'quiet',
     script = undefined,
     title = undefined,
-    dot = false
+    dot = false,
+    derived = false
   }: {
     label: string;
     /** 'quiet' is the default; 'on' marks the selected one; 'ok' marks done. */
@@ -27,10 +28,16 @@
      * term here". A separate labelled block would name the term twice.
      */
     dot?: boolean;
+    /**
+     * The value was worked out from the form rather than annotated by hand.
+     * Dashed, the same way the system card draws a default — true of the word,
+     * but nobody wrote it down.
+     */
+    derived?: boolean;
   } = $props();
 </script>
 
-<span class="chip {tone}" class:deva={!!script} class:dotted={dot} {title}>
+<span class="chip {tone}" class:deva={!!script} class:dotted={dot} class:derived {title}>
   {#if script}<Sanskrit text={label} source={script} />{:else}{label}{/if}
   {#if dot}<span class="dot" aria-hidden="true"></span>{/if}
 </span>
@@ -57,6 +64,9 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
+  }
+  .chip.derived {
+    border-style: dashed;
   }
   .dot {
     width: 4px;
