@@ -10,6 +10,119 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd058
+  kind: attested
+  segment: 366
+  source:
+    text: मनुस्मृति
+    ref: "Manu 4.138 — speak truth, speak kindly"
+    curated: "the whole verse, word-separated per GRETIL's analysis segmentation; every form is Manu's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_manusmRti, Manu_4.138)"
+  sentence: सत्यम् ब्रूयात् प्रियम् ब्रूयात् न ब्रूयात् सत्यम् अप्रियम्। प्रियम् च न अनृतम् ब्रूयात् एष धर्मः सनातनः॥
+  translation: One should speak the truth, one should speak what is kind; one should not speak an unkind truth. And one should not speak a pleasant falsehood — this is the eternal law.
+  teaches: |
+    the optative of precept, four times over — ब्रूयात् "one should speak," the
+    लिङ् of ब्रू; and two नञ्-compounds, अप्रियम् "unkind" and अनृतम्
+    "untruth," which shows नञ् in its अन्- shape before a vowel.
+  words:
+  - form: सत्यम्
+    lemma: सत्य
+    gloss: the truth
+    notes:
+    - term: कर्मन्
+      en: object of ब्रूयात्
+    - term: द्वितीया
+      en: accusative (neuter)
+  - form: ब्रूयात्
+    lemma: ब्रू
+    gloss: one should speak
+    vocab: true
+    notes:
+    - cite: '3.3.161'
+      role: विधिनिमन्त्रण… लिङ् — in the sense of precept (विधि), the optative लिङ् → ब्रू + लिङ् → ब्रूयात्
+    - term: लिङ्
+      en: optative — "should speak"
+  - form: प्रियम्
+    lemma: प्रिय
+    gloss: what is kind/pleasant
+    notes:
+    - term: कर्मन्
+      en: object of ब्रूयात्
+    - term: द्वितीया
+      en: accusative (neuter)
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: अप्रियम्
+    lemma: अप्रिय
+    gloss: unkind, unpleasant
+    notes:
+    - term: बहुव्रीहि
+      en: नञ्-compound — a "non-pleasant" (thing)
+    - cite: '2.2.6'
+      role: नञ् — the negative नञ् compounds with प्रिय → अप्रिय; before a consonant नञ् appears as अ
+    - term: विशेषण
+      en: qualifying सत्यम् — "an unkind truth"
+    - term: द्वितीया
+      en: accusative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: connective
+  - form: अनृतम्
+    lemma: अनृत
+    gloss: falsehood
+    vocab: true
+    notes:
+    - term: बहुव्रीहि
+      en: नञ्-compound — "not-true," a falsehood
+    - cite: '2.2.6'
+      role: नञ् — नञ् + ऋत "truth" → अनृत; before a vowel नञ् takes its अन्- shape → अन् + ऋत
+    - term: कर्मन्
+      en: object of ब्रूयात्
+    - term: द्वितीया
+      en: accusative
+  - form: एष
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: pronoun (एतद्)
+    - term: विशेषण
+      en: with धर्मः
+    - term: प्रथमा
+      en: nominative
+  - form: धर्मः
+    lemma: धर्म
+    gloss: the law, dharma
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: सनातनः
+    lemma: सनातन
+    gloss: eternal
+    notes:
+    - term: विशेषण
+      en: qualifying धर्मः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 8
+  vyakhya: 'विध्यर्थलिङ्प्रधानः श्लोकः। ब्रूयात् इति ब्रुवः विधिलिङि प्रथमपुरुषैकवचनम् (चतुर्वारम्)। अप्रियम् अनृतम् इति नञ्समासौ — व्यञ्जने अ, अचि अन् (अनृतम्)। एष धर्मः सनातनः इति समापने।'
+  vyakhya_en: |
+    The verse is built on a single form repeated four times: **ब्रूयात्** "one
+    should speak," the optative (लिङ्) of ब्रू in its precept sense (3.3.161).
+    This is the mood of moral instruction — "one ought." Two नञ्-compounds carry
+    the balance of the thought: अप्रियम् "unkind" (नञ् as अ- before a consonant)
+    and अनृतम् "untruth" (नञ् as **अन्-** before the vowel of ऋत). Four clauses,
+    one rule of conduct: truth, but kind; kindness, but true.
 - id: rd057
   kind: attested
   segment: 365
