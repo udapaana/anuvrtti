@@ -10044,3 +10044,179 @@ readings:
     with the स्य marker (3.1.33, 3.3.13). Set into the frame is a pair of ऋ-stem
     accusatives — मातरम्, पितरम् — where the ऋ strengthens to अर् before the ending
     अम्. A single sentence that quietly triples the reader's verb inventory.
+- id: ex241
+  kind: graded
+  segment: 256
+  source:
+    text: कथा (our graded retelling)
+    ref: "which boy was greater — our own telling, in degrees"
+    curated: our simple Sanskrit; not from any single source
+  sentence: द्वौ बालौ आस्ताम्। रामः श्यामात् बलवत्तरः आसीत्। श्यामः तु रामात् बुद्धिमत्तरः आसीत्। सर्वेषु बालेषु रामः बलवत्तमः। श्यामः तु सर्वेषु बुद्धिमत्तमः।
+  translation: There were two boys. Rāma was stronger than Śyāma. But Śyāma was more intelligent than Rāma. Among all the boys Rāma was the strongest; but Śyāma was the most intelligent of all.
+  teaches: |
+    the two degrees of comparison: the comparative in -तर (बलवत्तरः "stronger,"
+    with the thing compared-against in the ablative — श्यामात् "than Śyāma"),
+    and the superlative in -तम (बलवत्तमः "strongest," among a locative field).
+  words:
+  - form: द्वौ
+    lemma: द्वि
+    gloss: two
+    notes:
+    - term: संख्या
+      en: numeral "two"
+    - term: विशेषण
+      en: qualifying बालौ
+    - term: प्रथमा
+      en: nominative dual
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: बालौ
+    lemma: बाल
+    gloss: boys
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative dual
+  - form: आस्ताम्
+    lemma: अस्
+    gloss: there were (two)
+    notes:
+    - term: लङ्
+      en: past (dual)
+  - form: रामः
+    lemma: राम
+    gloss: Rāma
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: श्यामात्
+    lemma: श्याम
+    gloss: than Śyāma
+    notes:
+    - term: अपादान
+      en: the standard of comparison — "stronger than ___"
+    - term: पञ्चमी
+      en: ablative of comparison
+  - form: बलवत्तरः
+    lemma: बलवत्तर
+    gloss: stronger
+    notes:
+    - term: तद्धित
+      en: comparative — बलवत् "strong" + तरप्
+    - cite: '5.3.57'
+      role: द्विवचनविभज्योपपदे तरबीयसुनौ — comparing two, the तरप् (or ईयसुन्) degree suffix → बलवत् + तरप् → बलवत्तर
+    - term: तरप्
+      en: the comparative suffix
+    - term: विशेषण
+      en: predicate of रामः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past
+  - form: श्यामः
+    lemma: श्याम
+    gloss: Śyāma
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: तु
+    lemma: तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: contrastive particle
+  - form: रामात्
+    lemma: राम
+    gloss: than Rāma
+    notes:
+    - term: अपादान
+      en: the standard of comparison
+    - term: पञ्चमी
+      en: ablative of comparison
+  - form: बुद्धिमत्तरः
+    lemma: बुद्धिमत्तर
+    gloss: more intelligent
+    notes:
+    - term: तद्धित
+      en: comparative — बुद्धिमत् "intelligent" + तरप्
+    - term: तरप्
+      en: the comparative suffix
+    - term: विशेषण
+      en: predicate of श्यामः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: सर्वेषु
+    lemma: सर्व
+    gloss: among all
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम — declines pronominally (सर्वेषु, not सर्वे-)
+    - term: अधिकरण
+      en: the field of the superlative — "among all"
+    - term: सप्तमी
+      en: locative plural
+  - form: बालेषु
+    lemma: बाल
+    gloss: boys
+    notes:
+    - term: अधिकरण
+      en: "among the boys"
+    - term: सप्तमी
+      en: locative plural
+  - form: बलवत्तमः
+    lemma: बलवत्तम
+    gloss: the strongest
+    notes:
+    - term: तद्धित
+      en: superlative — बलवत् + तमप्
+    - cite: '5.3.55'
+      role: अतिशायने तमबिष्ठनौ — for the highest degree (अतिशायन), the तमप् (or इष्ठन्) suffix → बलवत् + तमप् → बलवत्तम
+    - term: तमप्
+      en: the superlative suffix
+    - term: विशेषण
+      en: predicate of रामः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: बुद्धिमत्तमः
+    lemma: बुद्धिमत्तम
+    gloss: the most intelligent
+    notes:
+    - term: तद्धित
+      en: superlative — बुद्धिमत् + तमप्
+    - term: तमप्
+      en: the superlative suffix
+    - term: विशेषण
+      en: predicate of श्यामः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 7
+  vyakhya: 'तरप्तमबोः अभ्यासः। बलवत्तरः बुद्धिमत्तरः इति द्वयोः तुलने तरप् (द्विवचनविभज्ये…); श्यामात् रामात् इति तुलनायां पञ्चमी। बलवत्तमः बुद्धिमत्तमः इति अतिशायने तमप्; सर्वेषु बालेषु इति निर्धारणे सप्तमी।'
+  vyakhya_en: |
+    The two degrees, side by side. **Comparative** — बलवत्-तर "stronger," the
+    तरप् suffix used when *two* are weighed (5.3.57), and the one compared-against
+    stands in the **ablative**: श्यामात् "than Śyāma," रामात् "than Rāma."
+    **Superlative** — बलवत्-तम "strongest," तमप् for the highest degree (5.3.55),
+    with the field it tops named in the **locative**: सर्वेषु बालेषु "among all
+    the boys." The bases here are themselves मतुप्-adjectives (बलवत्, बुद्धिमत्),
+    so you see two suffixes stacked — possession, then degree.
