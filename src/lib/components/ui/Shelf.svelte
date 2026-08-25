@@ -68,11 +68,19 @@
     gap: 14px;
     white-space: nowrap;
   }
+  /*
+    `min-width: 0` let the left group collapse to nothing while its own nowrap
+    contents overflowed straight across the right group — on a 390px shelf the
+    chapter, the gloss toggle and the counts printed on top of each other.
+    `max-content` holds the group at its natural width and lets .inner scroll,
+    which is what its overflow-x was for.
+  */
   .left {
     flex: 1;
-    min-width: 0;
+    min-width: max-content;
   }
   .right {
+    flex: none;
     color: var(--faint);
   }
 
