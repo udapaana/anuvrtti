@@ -10918,3 +10918,168 @@ readings:
     6.1.103), क्त participles as predicate (तृषितः, तृप्तः), and eight लङ् past
     verbs driving the plot. The goal here is fluency: read it straight through,
     and let the grammar stay in the background where it belongs.
+- id: ex245
+  kind: graded
+  segment: 260
+  source:
+    text: कथा (our graded retelling)
+    ref: "the brahmin of Mathurā — our own telling, in derivatives"
+    curated: our simple Sanskrit; not from any single source
+  sentence: मथुरायाम् एकः माथुरः ब्राह्मणः आसीत्। सः रामायणम् अपठत्। तत्र दाशरथेः चरितम् आसीत्। तत् पठित्वा सः प्रसन्नः अभवत्।
+  translation: In Mathurā there was a certain Māthura (Mathurā-born) brahmin. He read the Rāmāyaṇa. In it was the story of Dāśarathi (the son of Daśaratha). Having read that, he became pleased.
+  teaches: |
+    two तद्धित derivatives of naming — माथुरः "one born in Mathurā" (the "situated
+    there" sense) and दाशरथिः "descendant of Daśaratha" (the patronymic) — the
+    everyday machinery by which Sanskrit turns a place or a father into an adjective.
+  words:
+  - form: मथुरायाम्
+    lemma: मथुरा
+    gloss: in Mathurā
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: एकः
+    lemma: एक
+    gloss: a certain
+    notes:
+    - term: संख्या
+      en: "a certain"
+    - term: विशेषण
+      en: qualifying ब्राह्मणः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: माथुरः
+    lemma: माथुर
+    gloss: Mathurā-born
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: "'situated/born in ___' derivative — मथुरा → माथुर (अण्, with आदिवृद्धि)"
+    - cite: '4.3.53'
+      role: तत्र भवः — "arising in / native to that place" is expressed by अण् on the place-name → मथुरा + अण् → माथुर
+    - term: अण्
+      en: the derivative suffix (with आदिवृद्धि म → मा)
+    - term: विशेषण
+      en: qualifying ब्राह्मणः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: ब्राह्मणः
+    lemma: ब्राह्मण
+    gloss: a brahmin
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: आसीत्
+    lemma: अस्
+    gloss: there was
+    notes:
+    - term: लङ्
+      en: past
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: रामायणम्
+    lemma: रामायण
+    gloss: the Rāmāyaṇa
+    notes:
+    - term: कर्मन्
+      en: object of अपठत्
+    - term: द्वितीया
+      en: accusative
+  - form: अपठत्
+    lemma: पठ्
+    gloss: read, recited
+    notes:
+    - term: लङ्
+      en: past
+  - form: तत्र
+    lemma: तत्र
+    gloss: therein
+    notes:
+    - term: अव्यय
+      en: adverb — "in it"
+  - form: दाशरथेः
+    lemma: दाशरथि
+    gloss: of Dāśarathi
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: patronymic — descendant of Daśaratha
+    - cite: '4.1.92'
+      role: तस्यापत्यम् — the "offspring of ___" sense governs the तद्धित → दशरथ → दाशरथि (इञ्, आदिवृद्धि)
+    - term: सम्बन्ध
+      en: "the story OF Dāśarathi"
+    - term: षष्ठी
+      en: genitive
+  - form: चरितम्
+    lemma: चरित
+    gloss: the story, deeds
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of पठित्वा
+    - term: द्वितीया
+      en: accusative
+  - form: पठित्वा
+    lemma: पठ्
+    gloss: having read
+    notes:
+    - term: कृदन्त
+      en: gerund (क्त्वा) — prior action
+    - cite: '3.4.21'
+      role: समानकर्तृकयोः पूर्वकाले — the earlier of two acts by one agent takes क्त्वा → पठित्वा
+    - term: क्त्वा
+      en: the (unprefixed) gerund
+  - form: प्रसन्नः
+    lemma: प्रसद्
+    gloss: pleased
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of प्र-सद् "be pleased"
+    - term: विशेषण
+      en: predicate of सः
+    - term: प्रथमा
+      en: nominative
+  - form: अभवत्
+    lemma: भू
+    gloss: became
+    notes:
+    - term: लङ्
+      en: past
+  vyakhya: 'तद्धितनामप्रधाना कथा। माथुरः इति मथुराशब्दात् तत्र भवः इत्यर्थे अण् (आदिवृद्धिः)। दाशरथेः इति दशरथस्य अपत्यम् इति इञ् (तस्यापत्यम्)। द्वौ अपि नामतद्धितौ — स्थानतः, जन्मतः च।'
+  vyakhya_en: |
+    Two everyday **तद्धित** derivatives, both about identity. माथुरः "of Mathurā"
+    comes from the place-name by the "born/found there" sense — मथुरा + अण्, with
+    the first vowel strengthened (आदिवृद्धि: म → मा), 4.3.53 तत्र भवः. दाशरथिः "son
+    of Daśaratha" is the patronymic — दशरथ + इञ्, again with आदिवृद्धि, 4.1.92
+    तस्यापत्यम्. This is how Sanskrit makes an adjective out of a where or a whose:
+    a Māthura brahmin, the Dāśarathi prince. Around them, a plain gerund पठित्वा
+    "having read" ties the two clauses.
