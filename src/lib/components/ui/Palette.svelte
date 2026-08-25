@@ -4,7 +4,21 @@
   import { onMount } from 'svelte';
   import { searchTerms } from '$lib/jargon';
   import { wordBank } from '$lib/stores/wordBank';
-  import { loadSutras, numericToDisplayId } from '$lib/data';
+  /*
+    The sūtra corpus is imported DYNAMICALLY, and that is the whole point.
+
+    `$lib/data` inlines all 3983 sūtras' YAML into the bundle (import.meta.glob
+    with eager: true), which compiles to a 6.8MB JavaScript chunk. Palette is
+    rendered by SiteNav, SiteNav is in the root layout, so a static import put
+    that chunk in the initial graph of EVERY page: /reader downloaded, parsed
+    and executed 6.8MB before its load event, whether or not you ever pressed
+    ⌘K. Loading it only when the palette opens took the reader from 14.5s to
+    about a second and a half.
+  */
+  import { dataUrl } from '$lib/dataUrl';
+  // the id formatter lives in its own 3KB module, so it comes in statically —
+  // it is `$lib/data`'s index that drags the corpus, not this
+  import { numericToDisplayId } from '$lib/data/parser';
   import { foldQuery, matches, type Folded } from '$lib/search/fold';
 
   /*
@@ -58,6 +72,7 @@
     if (loaded) return;
     loaded = true;
     try {
+      const { loadSutras } = await import('$lib/data');
       const all = await loadSutras();
       sutras = all.map((s: any) => ({
         id: s.id,
@@ -68,7 +83,7 @@
       sutras = [];
     }
     try {
-      const res = await fetch('/data/readings.json');
+      const res = await fetch(dataUrl('/data/readings.json'));
       if (res.ok) {
         const data = await res.json();
         const chapters = data.chapters ?? data;

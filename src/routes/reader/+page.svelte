@@ -1351,14 +1351,16 @@
       on the text         ← → step line   (the desktop's ↑ ↓)
   */
   const SWIPE_X = 40;
+  /** When a swipe last fired, so the click it drags behind it can be ignored. */
+  let swipedAt = 0;
   function swipe(onstep: (dir: 1 | -1) => void) {
     let x = 0;
     let y = 0;
     let live = false;
     return {
       onpointerdown(e: PointerEvent) {
-        // a swipe is a touch gesture; a mouse drag here is a text selection
-        if (e.pointerType === 'mouse') return;
+        // the tap half works with a mouse too; only the SWIPE is touch-only,
+        // because a mouse drag across text is a selection
         x = e.clientX;
         y = e.clientY;
         live = true;
@@ -1367,14 +1369,45 @@
         if (!live) return;
         live = false;
         const dx = e.clientX - x;
-        // must be decisively horizontal, or a slightly-off scroll steps a line
-        if (Math.abs(dx) < SWIPE_X || Math.abs(dx) < Math.abs(e.clientY - y) * 1.5) return;
+        const swiped =
+          e.pointerType !== 'mouse' &&
+          Math.abs(dx) >= SWIPE_X &&
+          Math.abs(dx) >= Math.abs(e.clientY - y) * 1.5;
+        if (!swiped) return;
+        // the click that follows this gesture is not a tap on anything
+        swipedAt = performance.now();
         onstep(dx < 0 ? 1 : -1);
       },
       onpointercancel() {
         live = false;
       }
     };
+  }
+  /*
+    The whole peek head opens the drawer.
+
+    "↑ pull up" named the gesture but was not the target: the only thing that
+    actually opened the sheet was the 4px grey bar above it, which is a hard
+    thing to hit and an unlikely thing to try. The head is ~100px of the screen
+    and is already the thing you are looking at, so it is the handle — tap
+    anywhere on it and the drawer comes up.
+
+    Not from a real control: ★ banks the word and a tag opens its note, and
+    neither should be a second thing at once. A tag tapped at peek DOES raise
+    the sheet, because the note it opens lives in the evidence, which peek does
+    not show — the tap would otherwise appear to do nothing.
+
+    On CLICK, not on pointerup. Raising the sheet moves the layout under the
+    finger, and a click dispatched after that lands on whatever has taken the
+    spot — which here is the `quiz me` button arriving at the bottom of the
+    grown sheet. Click fires against the element the press began on, so the
+    drawer opens and nothing else does.
+  */
+  function openFromHead(e: MouseEvent) {
+    if (!narrow || railDetent > 0) return;
+    if (performance.now() - swipedAt < 400) return;
+    if ((e.target as HTMLElement | null)?.closest('.wh-act')) return;
+    railDetent = 1;
   }
   const swipeWord = swipe((d) => stepWord(d));
   const swipeLine = swipe((d) => stepLine(d));
@@ -1634,6 +1667,7 @@
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
       class="wordhead"
+      onclick={narrow ? openFromHead : undefined}
       onpointerdown={narrow ? swipeWord.onpointerdown : undefined}
       onpointerup={narrow ? swipeWord.onpointerup : undefined}
       onpointercancel={narrow ? swipeWord.onpointercancel : undefined}
@@ -3026,20 +3060,26 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+    /* it says "pull up", so it has to look like something you can press */
     .wh-pull {
       margin-left: auto;
       flex: none;
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--quiet);
-      background: transparent;
-      border: none;
+      color: var(--ink-2);
+      background: var(--paper);
+      border: 1px solid var(--rule-2);
       border-radius: var(--radius);
-      padding: 6px 0 6px 8px;
+      padding: 6px 9px;
       cursor: pointer;
     }
-    .wh-pull:hover {
+    .wh-pull:active {
+      border-color: var(--accent);
       color: var(--accent);
+    }
+    /* the whole head is the handle at peek, and says so */
+    .railframe.at-peek .wordhead {
+      cursor: pointer;
     }
 
     /* touch targets: a pointer is 1px, a thumb is 44 */
