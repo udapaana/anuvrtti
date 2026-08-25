@@ -7,6 +7,7 @@
   let { current }: { current: string } = $props();
 
   const tools = [
+    { id: 'systems', label: 'systems', href: '/ref/systems' },
     { id: 'jargon', label: 'jargon', href: '/ref/jargon' },
     { id: 'pratyahara', label: 'pratyāhārāḥ', href: '/ref/pratyahara' },
     { id: 'tables', label: 'tables', href: '/ref/tables' },

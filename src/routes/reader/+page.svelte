@@ -470,6 +470,34 @@
   });
   // The system the open term belongs to — the map this note points into.
   const openSystem = $derived(termInfo ? systemForTerm(termInfo.term) : undefined);
+
+  // The reading each structural tag is FIRST introduced at, in corpus order —
+  // the curriculum's own arc. A tag "new here" is one the sequence opens at this
+  // reading; the rest is review. This is the through-line the stream hid.
+  const firstSeenAt = $derived.by(() => {
+    const m = new Map<string, string>();
+    for (const r of list)
+      for (const w of r.words ?? [])
+        for (const n of w.notes ?? []) if (n.term && !m.has(n.term)) m.set(n.term, r.id);
+    return m;
+  });
+  const newHere = $derived.by(() => {
+    const r = railReading;
+    if (!r) return [] as string[];
+    const out: string[] = [];
+    const seenLocal = new Set<string>();
+    for (const w of r.words ?? [])
+      for (const n of w.notes ?? []) {
+        const t = n.term;
+        // Only structural tags (those that belong to a system) — and only the
+        // first time the whole corpus introduces them.
+        if (t && !seenLocal.has(t) && firstSeenAt.get(t) === r.id && systemForTerm(t)) {
+          seenLocal.add(t);
+          out.push(t);
+        }
+      }
+    return out;
+  });
   /** The drawn card — the quiz block. Never the word you are looking at. */
   const quizWord = $derived(deckQuiz ? wordAt(deckQuiz.id, deckQuiz.wi) : null);
 
@@ -1373,6 +1401,21 @@
   {/if}
   {@render quizBlock()}
 
+  {#if newHere.length}
+    <!-- The arc, made visible: the systems this reading OPENS, not just uses.
+         Each chip enters its system's map with the new cell boxed. -->
+    <div class="new-here">
+      <span class="label">new here</span>
+      <div class="new-chips">
+        {#each newHere as t}
+          <button class="new-chip" onclick={() => (openTerm = t)} title="open its system">
+            <Sanskrit text={t} source="devanagari" />
+          </button>
+        {/each}
+      </div>
+    </div>
+  {/if}
+
   {#if railReading?.vyakhya || railReading?.vyakhya_en}
     <div class="vyakhya">
       <span class="label">this reading</span>
@@ -1901,6 +1944,33 @@
   }
 
   /* ── rail ────────────────────────────────────────────────────────────── */
+  .new-here {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 12px;
+  }
+  .new-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .new-chip {
+    cursor: pointer;
+    font-family: var(--font-deva);
+    font-size: 12px;
+    padding: 2px 8px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    background: none;
+    color: var(--accent);
+    transition: background 0.15s, color 0.15s;
+  }
+  .new-chip:hover {
+    background: var(--accent);
+    color: var(--paper);
+  }
+
   .vyakhya {
     display: flex;
     flex-direction: column;
