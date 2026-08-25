@@ -12,6 +12,7 @@
   import Chip from '$lib/components/ui/Chip.svelte';
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
   import { lookupTerm } from '$lib/jargon';
+  import { KARAKA, VIBHAKTI } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
@@ -637,6 +638,30 @@
     return pick === q.ans
       ? { text: '\u2713 ' + q.ans, tone: 'ok' }
       : { text: '\u2717 you said ' + pick + ' \u00b7 it is ' + q.ans, tone: 'miss' };
+  });
+
+  // The reasoning behind the answer, not just right/wrong. A verdict names the
+  // \u0935\u093f\u092d\u0915\u094d\u0924\u093f; this names WHY \u2014 the \u0915\u093e\u0930\u0915 role that assigns it (\u0905\u0927\u093f\u0915\u0930\u0923 \u2192 \u0938\u092a\u094d\u0924\u092e\u0940) and
+  // the s\u016btra that governs it, as a /ref link. The chain and the citation are
+  // already on the word; here they become the lesson the graded answer implied.
+  const quizWhy = $derived.by(() => {
+    const q = activeQuiz;
+    if (!q || pick === null || !deckQuiz) return null;
+    // For a "tap the word" question the answer sits elsewhere; explain THAT word.
+    const w = q.ui === 'token' && q.ansWi != null ? wordAt(deckQuiz.id, q.ansWi) : quizWord;
+    if (!w) return null;
+    const termNames: string[] = (w.terms ?? []).map((t: any) => t.term);
+    const karaka = termNames.find((t) => (KARAKA as readonly string[]).includes(t));
+    const vibhakti = termNames.find((t) => (VIBHAKTI as readonly string[]).includes(t));
+    const cites = (w.cites ?? []) as { cite: string; role: string }[];
+    const chain = karaka && vibhakti ? `${karaka} \u2192 ${vibhakti}` : null;
+    // Prefer the s\u016btra whose role actually names the case or role in play.
+    const gov =
+      cites.find((c) => (vibhakti && c.role?.includes(vibhakti)) || (karaka && c.role?.includes(karaka))) ??
+      cites[0] ??
+      null;
+    if (!chain && !gov) return null;
+    return { chain, cite: gov?.cite ?? null };
   });
 
   /** Cards answered wrongly (or revealed), by `id:wi`. They come back sooner. */
@@ -1287,6 +1312,18 @@
             ><Sanskrit text={verdict.text} source="devanagari" /></span
           >
         {/if}
+        {#if verdict && quizWhy}
+          <!-- not just the answer, but why: the कारक that assigns the case and
+               the sūtra behind it — the reasoning the graded verdict implied. -->
+          <div class="quiz-why">
+            {#if quizWhy.chain}
+              <span class="why-chain"><Sanskrit text={quizWhy.chain} source="devanagari" /></span>
+            {/if}
+            {#if quizWhy.cite}
+              <a class="why-ref" href={`/ref/${quizWhy.cite}`}>सूत्र {quizWhy.cite} →</a>
+            {/if}
+          </div>
+        {/if}
         {#if quizWord}
           <button class="run-row on" onclick={() => selectQuizWord()}>
             <span class="run-form"><Sanskrit text={quizWord.form} source="devanagari" /></span>
@@ -1768,6 +1805,29 @@
   .question,
   .verdict {
     font-family: var(--font-prose);
+  }
+  .quiz-why {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .why-chain {
+    font-family: var(--font-deva);
+    font-size: 13px;
+    color: var(--ink-2, var(--ink));
+  }
+  .why-ref {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-ref);
+    text-decoration: none;
+  }
+  .why-ref:hover {
+    text-decoration: underline;
   }
   .translation :global(span),
   .vyakhya-en :global(span),
