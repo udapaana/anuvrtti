@@ -579,3 +579,27 @@ export const KNOWN_VALUES = new Set<string>([
   ...WORD_TYPES.flatMap((t) => t.markers),
   ...CLASS_TAGS
 ]);
+
+/*
+  What a MISSING tag means.
+
+  Some dimensions are annotated only when they are marked. प्रयोग is declared
+  `optional` with the note "कर्तरि is the default; tag only कर्मणि and भावे,
+  which the form rarely shows" — so on a finite verb the absence of a प्रयोग
+  tag is not an absence of information. It says कर्तरि. Seven of the corpus's
+  456 finite verbs carry the tag; the other 449 are active by this convention,
+  not unanalysed.
+
+  A reader that only shows what is written down therefore under-reports: the
+  तिङन्त card left its प्रयोग row blank on every ordinary verb. This returns
+  the values a word carries by convention rather than by annotation, so a
+  surface can show them — and, because they are inferred rather than authored,
+  mark them as the defaults they are.
+*/
+export function impliedTerms(terms: readonly string[]): string[] {
+  const has = (pool: readonly string[]) => terms.some((t) => pool.includes(t));
+  const out: string[] = [];
+  // a finite verb is in some प्रयोग; unmarked means कर्तरि
+  if (has(LAKARA) && !has(PRAYOGA)) out.push('कर्तरि');
+  return out;
+}

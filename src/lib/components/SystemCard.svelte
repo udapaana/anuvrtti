@@ -6,6 +6,7 @@
     system,
     activeTerm = null,
     wordTerms = new Set<string>(),
+    impliedTerms = new Set<string>(),
     metTerms = new Set<string>(),
     onpick
   }: {
@@ -24,6 +25,12 @@
      * on each axis, so each one is marked.
      */
     wordTerms?: Set<string>;
+    /**
+     * Values the word has by CONVENTION, not by annotation — कर्तरि on a verb
+     * the corpus did not tag, because the schema tags only कर्मणि and भावे.
+     * Drawn dashed: true of the word, but not something anyone wrote down.
+     */
+    impliedTerms?: Set<string>;
     /** Cells the learner has met elsewhere — lit, but not this word's. */
     metTerms?: Set<string>;
     /** Tapping a cell opens its concept card. */
@@ -47,13 +54,19 @@
       </div>
       <div class="sys-items">
         {#each g.items as it}
-          {@const here = wordTerms.has(it.t)}
+          {@const implied = impliedTerms.has(it.t)}
+          {@const here = wordTerms.has(it.t) || implied}
           <button
             class="sys-chip"
             class:here
+            class:implied
             class:active={it.t === activeTerm}
             class:met={metTerms.has(it.t) && !here && it.t !== activeTerm}
-            title={here ? `${it.en} — this word` : it.en}
+            title={implied
+              ? `${it.en} — this word, by default (untagged means कर्तरि)`
+              : here
+                ? `${it.en} — this word`
+                : it.en}
             onclick={() => onpick?.(it.t)}
           >
             <Sanskrit text={it.t} source="devanagari" />
@@ -144,6 +157,10 @@
     opacity: 1;
     color: var(--accent);
     border-color: var(--accent);
+  }
+  /* true of the word, but by convention rather than by annotation */
+  .sys-chip.implied {
+    border-style: dashed;
   }
   /* and the one whose note is open, filled so it reads as the current subject */
   .sys-chip.active {

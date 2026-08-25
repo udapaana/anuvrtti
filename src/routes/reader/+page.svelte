@@ -14,7 +14,7 @@
   import SystemCard from '$lib/components/SystemCard.svelte';
   import { lookupTerm } from '$lib/jargon';
   import { systemForTerm, systemsForTerm } from '$lib/systems';
-  import { KARAKA, VIBHAKTI } from '$lib/usage/schema';
+  import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
   import { displayScript } from '$lib/stores/preferences';
   import { transliterate } from '$lib/transliteration';
@@ -484,6 +484,13 @@
     ...((selWord?.terms ?? []) as any[]).map((t) => t.term),
     ...Object.values(selWord?.derived ?? {})
   ] as string[]);
+
+  /*
+    Values the word carries by CONVENTION rather than by annotation — see
+    `impliedTerms`. Kept apart from the authored ones so the card can mark them
+    as defaults instead of passing them off as something the corpus states.
+  */
+  const selImplied = $derived(impliedTerms(selTermNames));
 
   // Tapping "also in …" pins the other system, for a tag the word's own tags
   // cannot settle or when you want to see the shared axis from the other side.
@@ -1807,6 +1814,7 @@
               system={openSystem}
               activeTerm={termInfo?.term ?? null}
               wordTerms={new Set(selTermNames)}
+              impliedTerms={new Set(selImplied)}
               {metTerms}
               onpick={(t) => (openTerm = t)}
             />
