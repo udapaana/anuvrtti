@@ -741,16 +741,24 @@
   }
 
   /*
-    The paradigm is the one thing in the rail that still folds.
+    The two evidence blocks fold, and both start SHUT.
 
-    The rail used to gate its whole payload behind a single `−`, with the
-    derivation and the paradigm as two more closed rows beneath it — three
-    decisions before any evidence appeared. The frame now shows the evidence in
-    a fixed order and folds only the grid, which is the one block big enough to
-    push the reading off the screen. It opens by default: a table you have to
-    ask for is a table you forget is there.
+    What the rail owes you on sight is the word — form, meaning, tags — and the
+    line it sits in. The derivation and the paradigm are what you ask for when
+    the identity is not enough, and both are tall: five sūtras and an eight-row
+    table together run past two screens of a 360px rail, which buried the
+    reading under evidence nobody had asked for.
+
+    Shut, each is one labelled row with a `+` and its size on it, so the rail
+    opens at a predictable height and says what is behind each row. This is not
+    the old single fold over the whole payload — the word and the reading are
+    never behind a tap.
+
+    They also reset on every new selection, so moving through the line does not
+    leave a table open under a word that has a different one.
   */
-  let paraOpen = $state(true);
+  let formedOpen = $state(false);
+  let paraOpen = $state(false);
 
   /*
     The rail can be widened. A paradigm is four columns of Devanagari and a
@@ -798,7 +806,8 @@
   // progress: the two blocks are independent, so looking a word up mid-question
   // is allowed — and expected, since the question is about another reading.
   function selectToken(id: string, ti: number) {
-    paraOpen = true;
+    formedOpen = false;
+    paraOpen = false;
     if (sel && sel.id === id && sel.ti === ti) { sel = null; return; }
     sel = { id, ti };
   }
@@ -1277,12 +1286,95 @@
   function shortEn(en: string): string {
     return en.replace(/\s*[—(].*$/, '').split(':')[0].split(',')[0];
   }
+
+  // ── the phone ───────────────────────────────────────────────────────────────
+  /*
+    On a phone the rail is a bottom sheet and the spine is a sheet you open, so
+    the reader has to know which layout it is in — a media query styles what is
+    already there, but these are different controls in different places.
+  */
+  let narrow = $state(false);
+  $effect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(max-width: 960px)');
+    const sync = () => (narrow = mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  });
+
+  /** 0 peek · 1 half · 2 full. Bound to Shell, which owns the sheet. */
+  let railDetent = $state(0);
+  let spineOpen = $state(false);
+
+  /** The chapter's own title, for the shelf's picker. */
+  function chapterTitle(id: string | null) {
+    return titles[id ?? ''] ?? { dev: id ?? 'chapters', en: '' };
+  }
+
+  /*
+    A question takes the sheet to full, and putting it away comes back to half —
+    the word it was about, not the peek you would then have to re-open. The
+    desktop takeover needs neither, since the rail is always the full height.
+  */
+  $effect(() => {
+    if (!narrow) return;
+    if (deckQuiz) railDetent = 2;
+  });
+
+  /*
+    Swipes replace the arrow keys, which a phone has none of. Horizontal in both
+    cases: vertical belongs to scrolling the text and to the sheet's own
+    detents, and a gesture that means two things means neither.
+
+      on the sheet head   ← → step word   (the desktop's ← →)
+      on the text         ← → step line   (the desktop's ↑ ↓)
+  */
+  const SWIPE_X = 40;
+  function swipe(onstep: (dir: 1 | -1) => void) {
+    let x = 0;
+    let y = 0;
+    let live = false;
+    return {
+      onpointerdown(e: PointerEvent) {
+        // a swipe is a touch gesture; a mouse drag here is a text selection
+        if (e.pointerType === 'mouse') return;
+        x = e.clientX;
+        y = e.clientY;
+        live = true;
+      },
+      onpointerup(e: PointerEvent) {
+        if (!live) return;
+        live = false;
+        const dx = e.clientX - x;
+        // must be decisively horizontal, or a slightly-off scroll steps a line
+        if (Math.abs(dx) < SWIPE_X || Math.abs(dx) < Math.abs(e.clientY - y) * 1.5) return;
+        onstep(dx < 0 ? 1 : -1);
+      },
+      onpointercancel() {
+        live = false;
+      }
+    };
+  }
+  const swipeWord = swipe((d) => stepWord(d));
+  const swipeLine = swipe((d) => stepLine(d));
 </script>
 
 <svelte:head><title>पठनम् · graded reader</title></svelte:head>
 
 {#snippet shelfLeft()}
-  <span class="quiet">gloss</span>
+  {#if narrow}
+    <!-- The chapter you are in, and the way into the rest of them. On the
+         phone the spine is a sheet, so it needs a door on the shelf; on the
+         desktop it is a column that is simply there. -->
+    <button class="chapterpick" onclick={() => (spineOpen = true)}>
+      <Sanskrit text={chapterTitle(focusedChapter).dev} source="devanagari" />
+      <span class="caret" aria-hidden="true">▾</span>
+    </button>
+    <span class="rule" aria-hidden="true"></span>
+  {:else}
+    <span class="quiet">gloss</span>
+  {/if}
   <Segmented
     options={[
       { id: 'recall', label: 'recall' },
@@ -1297,30 +1389,59 @@
     padaccheda
   </button>
   <!-- A jump inside the corpus you are already reading is not a search, so it
-       stays here rather than folding into ⌘K. -->
-  <form class="jump" onsubmit={jumpFromQuery}>
-    <label class="quiet" for="jumpto">go to</label>
-    <input id="jumpto" bind:value={jumpQuery} placeholder="ex210 or tier 210" spellcheck="false" />
-  </form>
+       stays here rather than folding into ⌘K. On the phone it travels with the
+       spine into its sheet, where there is room for it. -->
+  {#if !narrow}
+    <form class="jump" onsubmit={jumpFromQuery}>
+      <label class="quiet" for="jumpto">go to</label>
+      <input id="jumpto" bind:value={jumpQuery} placeholder="ex210 or tier 210" spellcheck="false" />
+    </form>
+  {/if}
 {/snippet}
 
 {#snippet shelfRight()}
-  <span class="keys">← → word · ↑ ↓ line</span>
-  <!-- `checked` and `read` moved to the rail's own footer, beside the drill they
-       describe. What stays here is the review bank's due count, which is a
-       different deck and belongs to no one pane. -->
-  <span>{deckCount} in deck</span>
+  <!--
+    Nothing on the phone. The keyboard hints name keys it does not have, and a
+    390px shelf that already carries the chapter, the gloss mode and padaccheda
+    has no room to spend on counts. The gestures are the sheet's grip and the
+    swipes, which announce themselves by being there.
+  -->
+  {#if !narrow}
+    <span class="keys">← → word · ↑ ↓ line</span>
+    <!-- `checked` and `read` moved to the rail's own footer, beside the drill
+         they describe. What stays here is the review bank's due count, which is
+         a different deck and belongs to no one pane. -->
+    <span>{deckCount} in deck</span>
+  {/if}
 {/snippet}
 
 {#snippet spine()}
+  {#if narrow}
+    <!-- the sheet's own head: what this is, and the jump that came with it -->
+    <div class="spinehead">
+      <span class="label">chapters</span>
+      <form class="jump" onsubmit={jumpFromQuery}>
+        <input
+          id="jumpto-sheet"
+          bind:value={jumpQuery}
+          placeholder="jump to ex…"
+          spellcheck="false"
+          aria-label="jump to a reading"
+        />
+      </form>
+    </div>
+  {/if}
   <Spine
-    title="chapters"
+    title={narrow ? null : 'chapters'}
     items={chapters.map((c) => {
       const t = titles[c.id] ?? { dev: c.id, en: '' };
       return { id: c.id, label: t.dev, script: 'devanagari' as const, sub: shortEn(t.en) };
     })}
     activeId={focusedChapter}
-    onpick={jumpToChapter}
+    onpick={(id) => {
+      jumpToChapter(id);
+      spineOpen = false;
+    }}
   />
 {/snippet}
 
@@ -1347,8 +1468,17 @@
     {@const q = activeQuiz}
     <div class="takeover">
       <div class="tk-head">
-        <button class="tk-back" onclick={closeQuiz}>
-          <span aria-hidden="true">←</span>
+        <!-- On the phone the question IS the sheet's top detent, so leaving it
+             is a downward move, and it lands on the word at half rather than
+             on a peek you would have to re-open. -->
+        <button
+          class="tk-back"
+          onclick={() => {
+            closeQuiz();
+            if (narrow) railDetent = 1;
+          }}
+        >
+          <span aria-hidden="true">{narrow ? '↓' : '←'}</span>
           {#if selWord}<Sanskrit text={selWord.form} source="devanagari" />{:else}back{/if}
         </button>
         <span class="tk-src">from what you have read</span>
@@ -1472,15 +1602,34 @@
     The quiz is no longer in the stack at all: it takes the panel over (see
     `quizBlock`) so answering never pushes the word away.
   -->
-  <div class="railframe">
+  <!--
+    On the phone this same frame is the bottom sheet's content, and the detent
+    decides how much of it shows: `peek` is the head alone, so the line stays on
+    screen while its word is identified. `.at-peek` is what hides the rest —
+    the markup is one frame in both layouts, not two.
+  -->
+  <div class="railframe" class:sheeted={narrow} class:at-peek={narrow && railDetent === 0}>
 
     <!-- ── pinned: the word ─────────────────────────────────────────────── -->
-    <div class="wordhead">
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div
+      class="wordhead"
+      onpointerdown={narrow ? swipeWord.onpointerdown : undefined}
+      onpointerup={narrow ? swipeWord.onpointerup : undefined}
+      onpointercancel={narrow ? swipeWord.onpointercancel : undefined}
+    >
       <div class="wh-top">
         {#if selWord}
           <span class="wh-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
-          <!-- the Latin reading, only while it differs from the page's own script -->
-          {#if wordRoman}<span class="wh-rom">{wordRoman}</span>{/if}
+          <!-- At peek the gloss rides on this line: the head is ~112px, and the
+               word without its meaning is not worth the space. -->
+          {#if narrow && railDetent === 0}
+            <span class="wh-en peek"><Sanskrit text={selWord.gloss} source="devanagari" /></span>
+            <span class="wh-pull">↑ pull up</span>
+          {:else if wordRoman}
+            <!-- the Latin reading, only while it differs from the page's own script -->
+            <span class="wh-rom">{wordRoman}</span>
+          {/if}
         {:else}
           <span class="wh-form none">—</span>
           <span class="wh-rom">tap a word in the line</span>
@@ -1498,12 +1647,16 @@
               aria-label={inDeck ? 'in your deck' : 'keep for review'}
             >★</button>
           {/if}
-          <button
-            class="wh-act"
-            onclick={toggleRailWidth}
-            title={railWide ? 'narrow the rail' : 'widen the rail'}
-            aria-label={railWide ? 'narrow the rail' : 'widen the rail'}
-          >⤢</button>
+          <!-- widening is a desktop affordance: the sheet is already the width
+               of the phone, and its detents do what widening does -->
+          {#if !narrow}
+            <button
+              class="wh-act"
+              onclick={toggleRailWidth}
+              title={railWide ? 'narrow the rail' : 'widen the rail'}
+              aria-label={railWide ? 'narrow the rail' : 'widen the rail'}
+            >⤢</button>
+          {/if}
         </span>
       </div>
 
@@ -1594,25 +1747,40 @@
       {/if}
 
       {#if selWord && (selWord.cites.length || selDecomp)}
-        <!-- No fold. This is the answer to "why is it in this shape?", which is
-             the question the rail exists for; it does not get to be one tap
-             further away than everything else. -->
         <div class="ev">
-          <span class="ev-label">how it is formed</span>
-          {#if selDecomp}
-            <div class="formed">
-              <span class="formed-parts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
-              <span class="formed-kind"><Sanskrit text={selDecomp.label} source="devanagari" /></span>
+          <div class="ev-head">
+            <span class="ev-label">how it is formed</span>
+            <!-- the count on the shut row, so it says what is behind it rather
+                 than making you open it to find out -->
+            {#if selWord.cites.length}
+              <span class="ev-meta rom">
+                {selWord.cites.length}
+                {selWord.cites.length === 1 ? 'sūtra' : 'sūtras'}
+              </span>
+            {/if}
+            <button
+              class="ev-fold"
+              onclick={() => (formedOpen = !formedOpen)}
+              aria-expanded={formedOpen}
+              aria-label={formedOpen ? 'fold the derivation away' : 'show how it is formed'}
+            >{formedOpen ? '−' : '+'}</button>
+          </div>
+          {#if formedOpen}
+            {#if selDecomp}
+              <div class="formed">
+                <span class="formed-parts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
+                <span class="formed-kind"><Sanskrit text={selDecomp.label} source="devanagari" /></span>
+              </div>
+            {/if}
+            <div class="cites">
+              {#each selWord.cites as c}
+                <button class="cite" onclick={() => goto('/ref/' + c.cite)}>
+                  <span class="cite-id">{c.cite}</span>
+                  <span class="cite-role"><Sanskrit text={c.role} source="devanagari" /></span>
+                </button>
+              {/each}
             </div>
           {/if}
-          <div class="cites">
-            {#each selWord.cites as c}
-              <button class="cite" onclick={() => goto('/ref/' + c.cite)}>
-                <span class="cite-id">{c.cite}</span>
-                <span class="cite-role"><Sanskrit text={c.role} source="devanagari" /></span>
-              </button>
-            {/each}
-          </div>
         </div>
       {/if}
 
@@ -1702,8 +1870,23 @@
 {:else}
   <Shelf left={shelfLeft} right={shelfRight} progress={progressPct} />
 
-  <Shell {spine} {rail} railFrame railWidth={railWide ? '520px' : '360px'}>
-    <div data-reading-top class="body">
+  <Shell
+    {spine}
+    {rail}
+    railFrame
+    sheets
+    bind:railDetent
+    bind:spineOpen
+    railWidth={railWide ? '520px' : '360px'}
+  >
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div
+      data-reading-top
+      class="body"
+      onpointerdown={narrow ? swipeLine.onpointerdown : undefined}
+      onpointerup={narrow ? swipeLine.onpointerup : undefined}
+      onpointercancel={narrow ? swipeLine.onpointercancel : undefined}
+    >
       {#each rows as row}
         {#if row.head && row.resumed}
           <!-- a chapter already opened: one hairline with the name inline, so a
@@ -2223,6 +2406,11 @@
     color: var(--quiet);
     min-width: 0;
   }
+  /* a count is not Sanskrit, so it does not take the Devanagari face */
+  .ev-meta.rom {
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
   .ev-fold {
     margin-left: auto;
     flex: none;
@@ -2686,23 +2874,174 @@
     text-decoration: underline;
   }
 
-  /*
-    Stacked, the rail is a block in the page again: nothing is pinned, so the
-    evidence must not own a scroll box of its own (it would be a short window
-    inside a long page) and the takeover has nothing to take over — it becomes
-    the block it always was, in the flow.
-  */
+  /* ── the phone ───────────────────────────────────────────────────────── */
   @media (max-width: 960px) {
-    .railframe {
+    /*
+      The rail is a SHEET here, so it is pinned again — to the viewport rather
+      than to a grid cell — and keeps the whole frame: head, scrolling middle,
+      foot. Only how much of it shows changes, with the detent.
+    */
+    .railframe.sheeted {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* PEEK — the head and nothing else, so the line stays on screen behind it */
+    .railframe.at-peek .evidence,
+    .railframe.at-peek .railfoot {
+      display: none;
+    }
+    .railframe.at-peek .wordhead {
+      position: relative;
+      border-bottom: none;
+      padding: 2px 18px 16px;
+      gap: 10px;
+    }
+    /* the gloss rides on the top line at peek, and the legend has no room */
+    .railframe.at-peek .wh-mean,
+    .railframe.at-peek .wh-legend {
+      display: none;
+    }
+    .railframe.at-peek .wh-form {
+      font-size: 24px;
+    }
+    .railframe.at-peek .wh-tags {
+      flex-wrap: nowrap;
+      overflow: hidden;
+      padding-right: 54px;
+    }
+    /*
+      ★ moves to the end of the tag row. On the first line the form, its gloss
+      and the pull-up hint already fill 390px, and a 44px target crushed into
+      what is left is a target you miss.
+    */
+    .railframe.at-peek .wh-acts {
+      position: absolute;
+      right: 18px;
+      bottom: 12px;
+    }
+    .wh-en.peek {
+      font-size: 15.5px;
+      color: var(--ink-2);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .wh-pull {
+      margin-left: auto;
+      flex: none;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--quiet);
+    }
+
+    /* touch targets: a pointer is 1px, a thumb is 44 */
+    .wh-act {
+      width: 44px;
+      height: 44px;
+      font-size: 15px;
+    }
+    .opt {
+      padding: 14px;
+      font-size: 17px;
+    }
+    /* tap-the-word answers are words, so they cannot grow sideways — they grow
+       their hit area instead */
+    .quiz-line {
+      gap: 10px 14px;
+    }
+    .qtok {
+      font-size: 19px;
+      padding: 6px 2px 8px;
+    }
+    .skip {
+      font-size: 12px;
+      padding: 8px 0;
+    }
+    .question {
+      font-size: 18px;
+    }
+    .quizme.foot {
+      padding: 13px 10px;
+      font-size: 12px;
+    }
+    .wordhead,
+    .ev,
+    .railfoot {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+    /* clear of the home indicator */
+    .tk-foot,
+    .railfoot {
+      padding-bottom: 20px;
+    }
+    /* the counts are desktop furniture; the phone's footer is the action alone */
+    .railfoot .foot-counts {
+      display: none;
+    }
+    .run-row {
+      padding-top: 6px;
+      padding-bottom: 7px;
+    }
+
+    .spinehead {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 18px 12px;
+      border-bottom: 1px solid var(--rule-2);
+    }
+    .spinehead .jump input {
+      width: 116px;
+    }
+    .chapterpick {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-deva);
+      font-size: 14px;
+      color: var(--ink);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius);
+      padding: 4px 0;
+      cursor: pointer;
+    }
+    .chapterpick .caret {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--faint);
+    }
+    .rule {
+      width: 1px;
+      height: 16px;
+      background: var(--rule-2);
+      flex: none;
+    }
+    /* padaccheda goes to the far edge, so the shelf reads as two groups rather
+       than one run of controls */
+    .toggle {
+      margin-left: auto;
+    }
+
+    /*
+      Before hydration decides the layout, and on any page that does not opt
+      into sheets, the rail is still a block in the flow: nothing is pinned, so
+      the evidence must not own a scroll box inside a long page and the takeover
+      has nothing to take over.
+    */
+    .railframe:not(.sheeted) {
       height: auto;
       overflow: visible;
     }
-    .evidence,
-    .tk-body {
+    .railframe:not(.sheeted) .evidence,
+    .railframe:not(.sheeted) .tk-body {
       overflow-y: visible;
       min-height: 0;
     }
-    .takeover {
+    .railframe:not(.sheeted) .takeover {
       position: static;
       border: 1px solid var(--rule-2);
     }

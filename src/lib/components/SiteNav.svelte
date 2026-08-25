@@ -70,7 +70,9 @@
       {/each}
     </nav>
 
-    <button class="search" onclick={() => palette?.show()} aria-label="search">⌘K</button>
+    <button class="search" onclick={() => palette?.show()} aria-label="search">
+      <span class="keys">⌘K</span><span class="glyph" aria-hidden="true">⌕</span>
+    </button>
 
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="prefs" onclick={(e) => e.stopPropagation()}>
@@ -196,6 +198,10 @@
   .search:hover {
     color: var(--ink);
   }
+  /* the shortcut on a keyboard, the glyph on a phone — see the 720px block */
+  .search .glyph {
+    display: none;
+  }
 
   .prefs {
     position: relative;
@@ -271,11 +277,48 @@
       padding: 0 16px;
       gap: 16px;
     }
+    /*
+      Four doors, a wordmark, search and `aa` do not fit across 390px, so the
+      doors scroll. Left plain, the fourth one was cut off mid-word — "r" of
+      "reference" — which reads as a rendering fault rather than as more to
+      come. The mask fades the last few pixels instead, which is how a
+      scrollable row says so. Every door stays reachable, which is why this
+      scrolls rather than dropping to the current door alone.
+    */
     .doors {
       gap: 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
     }
-    .search {
+    .doors::-webkit-scrollbar {
       display: none;
+    }
+    .doors a {
+      flex: none;
+    }
+    /*
+      Search stays. It used to be hidden here, which took the only way to reach
+      a sūtra by name off the device most likely to be used away from a desk —
+      and ⌘K is not a gesture a phone has, so hiding the button hid the feature
+      outright. It becomes the glyph instead of the shortcut.
+    */
+    .search {
+      font-size: 15px;
+      color: var(--muted);
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .search .keys {
+      display: none;
+    }
+    .search .glyph {
+      display: inline;
     }
   }
 </style>
