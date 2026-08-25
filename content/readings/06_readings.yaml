@@ -10,6 +10,120 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd056
+  kind: attested
+  segment: 364
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 1.1.1 — Vālmīki questions Nārada"
+    curated: "the whole opening verse, word-separated (pausa forms shown; compounds kept whole); every form is Vālmīki's. Text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_rAmAyaNa, R_1.001.001)"
+  sentence: तपःस्वाध्यायनिरतम् तपस्वी वाग्विदाम् वरम्। नारदम् परिपप्रच्छ वाल्मीकिः मुनिपुंगवम्॥
+  translation: Vālmīki the ascetic questioned Nārada — the best of the eloquent, that bull among sages, ever devoted to austerity and study.
+  teaches: |
+    the very first verse of the Rāmāyaṇa — and with it the perfect tense,
+    परिपप्रच्छ "questioned" (लिट्, the reduplicated past of "remote" narration),
+    a verb of asking that takes the person asked as its object.
+  words:
+  - form: तपःस्वाध्यायनिरतम्
+    lemma: तपःस्वाध्यायनिरत
+    gloss: devoted to austerity and study
+    vocab: true
+    notes:
+    - term: समास
+      en: compound — "engaged in (निरत) tapas and svādhyāya," a तत्पुरुष qualifying नारदम्
+    - term: विशेषण
+      en: qualifying नारदम्
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: तपस्वी
+    lemma: तपस्विन्
+    gloss: the ascetic
+    notes:
+    - term: तद्धित
+      en: possessive (विनि) — तपस् "austerity" → तपस्विन् "having austerity, ascetic"
+    - term: विशेषण
+      en: qualifying वाल्मीकिः
+    - term: प्रथमा
+      en: nominative (विन्-stem → तपस्वी)
+    rel:
+    - kind: विशेषण
+      to: 6
+  - form: वाग्विदाम्
+    lemma: वाग्विद्
+    gloss: of the eloquent
+    vocab: true
+    notes:
+    - term: समास
+      en: compound — वाचं विदन्ति, "who know speech" (उपपद-तत्पुरुष)
+    - term: सम्बन्ध
+      en: 'the best OF the eloquent — governed by वरम्'
+    - term: षष्ठी
+      en: genitive plural
+  - form: वरम्
+    lemma: वर
+    gloss: the best
+    notes:
+    - term: विशेषण
+      en: in apposition to नारदम् — "the best (of the eloquent)"
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: नारदम्
+    lemma: नारद
+    gloss: Nārada
+    notes:
+    - term: कर्मन्
+      en: the one questioned — object of परिपप्रच्छ (a verb of asking, अकथितं च)
+    - cite: '1.4.51'
+      role: अकथितं च — प्रच्छ् "ask" takes the person asked as कर्मन् → नारदम् परिपप्रच्छ
+    - term: द्वितीया
+      en: accusative
+  - form: परिपप्रच्छ
+    lemma: प्रच्छ्
+    gloss: questioned
+    vocab: true
+    notes:
+    - cite: '3.2.115'
+      role: परोक्षे लिट् — for a remote (परोक्ष) past, the लिट् (perfect) is used; प्रच्छ् reduplicates → परि + पप्रच्छ
+    - term: लिट्
+      en: perfect (3sg) — the narrative "remote past"
+  - form: वाल्मीकिः
+    lemma: वाल्मीकि
+    gloss: Vālmīki
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: मुनिपुंगवम्
+    lemma: मुनिपुंगव
+    gloss: that bull among sages
+    vocab: true
+    notes:
+    - term: समास
+      en: compound — पुंगव "bull" as "best of" → "the foremost of sages" (उपमान)
+    - term: विशेषण
+      en: qualifying नारदम्
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 4
+  vyakhya: 'आदिश्लोकः। परिपप्रच्छ इति प्रच्छेः लिटि प्रथमपुरुषैकवचनम् (परोक्षे लिट्, द्वित्वम्)। नारदम् इति प्रच्छेः द्विकर्मकत्वात् पृष्टः कर्म (अकथितं च)। तपस्वी इति तपस्शब्दात् विनिः; वाग्विदाम् मुनिपुंगवम् इति समासौ; वरम् इति षष्ठ्यन्तेन योगे।'
+  vyakhya_en: |
+    The Rāmāyaṇa opens on a single sentence, and it brings the **perfect tense**:
+    परिपप्रच्छ "questioned," the लिट् of परि-प्रच्छ्, its reduplication (प + प्रच्छ)
+    the tense's signature. The लिट् is the tense of *remote*, narrated past — 3.2.115
+    परोक्षे लिट् — the register in which epics tell of long ago. Notice too that
+    प्रच्छ् "ask" takes the **person asked** as its object: नारदम् परिपप्रच्छ (the
+    same अकथितं च, 1.4.51, you met with याच्). Everything else is the epic's dense
+    apposition — तपस्वी (तपस् + विनि), वाग्विदाम् and मुनिपुंगवम् (compounds), वरम्
+    "the best of…" — all bending toward the one accusative, नारदम्.
 - id: rd055
   kind: attested
   segment: 363
