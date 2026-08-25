@@ -10,6 +10,127 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd061
+  kind: attested
+  segment: 369
+  source:
+    text: हितोपदेश
+    ref: "Hitopadeśa 1.14 — the mark of the wise"
+    curated: "the whole verse, word-separated (pausa forms; compounds kept whole); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, Hit_1.14)"
+  sentence: मातृवत् परदारेषु परद्रव्येषु लोष्ट्रवत्। आत्मवत् सर्वभूतेषु यः पश्यति सः पण्डितः॥
+  translation: He who looks on others' wives as on a mother, on others' wealth as on a clod of earth, on all beings as on himself — he is the wise one.
+  teaches: |
+    the वति suffix — "just like ___": मातृवत् "as (one would toward) a mother,"
+    लोष्ट्रवत् "like a clod," आत्मवत् "as oneself." One little suffix turns a
+    noun into an adverb of comparison.
+  words:
+  - form: मातृवत्
+    lemma: मातृ
+    gloss: as toward a mother
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: adverb of likeness — मातृ "mother" + वति "just as with a ___"
+    - cite: '5.1.115'
+      role: तेन तुल्यं क्रिया चेद्वतिः — when an action is done "equally with / just as toward" something, वति is added → मातृ + वति → मातृवत्
+    - term: वति
+      en: the "just-like" suffix (indeclinable)
+  - form: परदारेषु
+    lemma: परदार
+    gloss: regarding others' wives
+    notes:
+    - term: तत्पुरुष
+      en: compound — परस्य दाराः "another's wife"
+    - term: अधिकरण
+      en: the sphere — "in the matter of ___"
+    - term: सप्तमी
+      en: locative plural
+  - form: परद्रव्येषु
+    lemma: परद्रव्य
+    gloss: regarding others' wealth
+    notes:
+    - term: तत्पुरुष
+      en: compound — परस्य द्रव्यम् "another's property"
+    - term: अधिकरण
+      en: the sphere
+    - term: सप्तमी
+      en: locative plural
+  - form: लोष्ट्रवत्
+    lemma: लोष्ट्र
+    gloss: like a clod of earth
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: adverb of likeness — लोष्ट्र "clod" + वति
+    - cite: '5.1.115'
+      role: तेन तुल्यं क्रिया चेद्वतिः → लोष्ट्र + वति → लोष्ट्रवत् "just as (toward) a clod"
+    - term: वति
+      en: the "just-like" suffix
+  - form: आत्मवत्
+    lemma: आत्मन्
+    gloss: as (toward) oneself
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: adverb of likeness — आत्मन् "self" + वति
+    - cite: '5.1.115'
+      role: तेन तुल्यं क्रिया चेद्वतिः → आत्म + वति → आत्मवत् "just as toward oneself"
+    - term: वति
+      en: the "just-like" suffix
+  - form: सर्वभूतेषु
+    lemma: सर्वभूत
+    gloss: toward all beings
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: compound — सर्वाणि भूतानि "all beings"
+    - term: अधिकरण
+      en: the sphere
+    - term: सप्तमी
+      en: locative plural
+  - form: यः
+    lemma: यद्
+    gloss: he who
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun (correlative of सः)
+    - term: कर्तृ
+      en: subject of पश्यति
+    - term: प्रथमा
+      en: nominative
+  - form: पश्यति
+    lemma: दृश्
+    gloss: sees, regards
+    notes:
+    - term: लट्
+      en: present (3sg)
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: correlative pronoun
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: पण्डितः
+    lemma: पण्डित
+    gloss: the wise one
+    notes:
+    - term: विशेषण
+      en: predicate — "is wise"
+    - term: प्रथमा
+      en: nominative
+  vyakhya: 'वतिप्रत्ययप्रधानः श्लोकः। मातृवत् लोष्ट्रवत् आत्मवत् इति तुल्यक्रियायां वतिः (तेन तुल्यं क्रिया चेद्वतिः) — अव्ययम्। परदारेषु परद्रव्येषु सर्वभूतेषु इति विषयसप्तमी। यः … सः इति नित्यसम्बन्धे।'
+  vyakhya_en: |
+    The verse turns on one suffix: **वति**, "just as with ___." Add it to a noun
+    and you get an indeclinable adverb of comparison — मातृ-वत् "as (one behaves)
+    toward a mother," लोष्ट्र-वत् "as toward a clod," आत्म-वत् "as toward oneself"
+    (5.1.115, तेन तुल्यं क्रिया चेद्वतिः, "when the action is equal-to that"). The
+    locatives परदारेषु / परद्रव्येषु / सर्वभूतेषु are the "in the matter of ___"
+    sphere-locative, and यः … सः is the relative-correlative frame that holds the
+    definition together: the one who sees this way *is* the wise one.
 - id: rd060
   kind: attested
   segment: 368
