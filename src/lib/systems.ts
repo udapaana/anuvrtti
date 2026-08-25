@@ -49,7 +49,10 @@ export const SYSTEMS: System[] = [
     roman: 'tiṅanta',
     scope: 'the verb',
     shape:
-      'Every finite verb is one stem plus one ending, and that ending fixes six things at once — when, who, how many, which voice-side, and whether the subject or object is in view.',
+      // No numeral: the sentence said "six things" and then listed five, which
+      // is what a hand-maintained count does next to an array. SystemCard prints
+      // the axis count from `groups`, so the promise cannot drift from the drawing.
+      'Every finite verb is one stem plus one ending, and that ending fixes all of these at once — when, who, how many, which voice-side, and whether the subject or object is in view.',
     groups: [
       {
         axis: 'लकार',

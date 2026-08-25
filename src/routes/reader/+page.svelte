@@ -1806,6 +1806,7 @@
             <SystemCard
               system={openSystem}
               activeTerm={termInfo?.term ?? null}
+              wordTerms={new Set(selTermNames)}
               {metTerms}
               onpick={(t) => (openTerm = t)}
             />
