@@ -741,16 +741,24 @@
   }
 
   /*
-    The paradigm is the one thing in the rail that still folds.
+    The two evidence blocks fold, and both start SHUT.
 
-    The rail used to gate its whole payload behind a single `−`, with the
-    derivation and the paradigm as two more closed rows beneath it — three
-    decisions before any evidence appeared. The frame now shows the evidence in
-    a fixed order and folds only the grid, which is the one block big enough to
-    push the reading off the screen. It opens by default: a table you have to
-    ask for is a table you forget is there.
+    What the rail owes you on sight is the word — form, meaning, tags — and the
+    line it sits in. The derivation and the paradigm are what you ask for when
+    the identity is not enough, and both are tall: five sūtras and an eight-row
+    table together run past two screens of a 360px rail, which buried the
+    reading under evidence nobody had asked for.
+
+    Shut, each is one labelled row with a `+` and its size on it, so the rail
+    opens at a predictable height and says what is behind each row. This is not
+    the old single fold over the whole payload — the word and the reading are
+    never behind a tap.
+
+    They also reset on every new selection, so moving through the line does not
+    leave a table open under a word that has a different one.
   */
-  let paraOpen = $state(true);
+  let formedOpen = $state(false);
+  let paraOpen = $state(false);
 
   /*
     The rail can be widened. A paradigm is four columns of Devanagari and a
@@ -798,7 +806,8 @@
   // progress: the two blocks are independent, so looking a word up mid-question
   // is allowed — and expected, since the question is about another reading.
   function selectToken(id: string, ti: number) {
-    paraOpen = true;
+    formedOpen = false;
+    paraOpen = false;
     if (sel && sel.id === id && sel.ti === ti) { sel = null; return; }
     sel = { id, ti };
   }
@@ -1594,25 +1603,40 @@
       {/if}
 
       {#if selWord && (selWord.cites.length || selDecomp)}
-        <!-- No fold. This is the answer to "why is it in this shape?", which is
-             the question the rail exists for; it does not get to be one tap
-             further away than everything else. -->
         <div class="ev">
-          <span class="ev-label">how it is formed</span>
-          {#if selDecomp}
-            <div class="formed">
-              <span class="formed-parts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
-              <span class="formed-kind"><Sanskrit text={selDecomp.label} source="devanagari" /></span>
+          <div class="ev-head">
+            <span class="ev-label">how it is formed</span>
+            <!-- the count on the shut row, so it says what is behind it rather
+                 than making you open it to find out -->
+            {#if selWord.cites.length}
+              <span class="ev-meta rom">
+                {selWord.cites.length}
+                {selWord.cites.length === 1 ? 'sūtra' : 'sūtras'}
+              </span>
+            {/if}
+            <button
+              class="ev-fold"
+              onclick={() => (formedOpen = !formedOpen)}
+              aria-expanded={formedOpen}
+              aria-label={formedOpen ? 'fold the derivation away' : 'show how it is formed'}
+            >{formedOpen ? '−' : '+'}</button>
+          </div>
+          {#if formedOpen}
+            {#if selDecomp}
+              <div class="formed">
+                <span class="formed-parts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
+                <span class="formed-kind"><Sanskrit text={selDecomp.label} source="devanagari" /></span>
+              </div>
+            {/if}
+            <div class="cites">
+              {#each selWord.cites as c}
+                <button class="cite" onclick={() => goto('/ref/' + c.cite)}>
+                  <span class="cite-id">{c.cite}</span>
+                  <span class="cite-role"><Sanskrit text={c.role} source="devanagari" /></span>
+                </button>
+              {/each}
             </div>
           {/if}
-          <div class="cites">
-            {#each selWord.cites as c}
-              <button class="cite" onclick={() => goto('/ref/' + c.cite)}>
-                <span class="cite-id">{c.cite}</span>
-                <span class="cite-role"><Sanskrit text={c.role} source="devanagari" /></span>
-              </button>
-            {/each}
-          </div>
         </div>
       {/if}
 
@@ -2222,6 +2246,11 @@
     font-size: 13px;
     color: var(--quiet);
     min-width: 0;
+  }
+  /* a count is not Sanskrit, so it does not take the Devanagari face */
+  .ev-meta.rom {
+    font-family: var(--font-mono);
+    font-size: 11px;
   }
   .ev-fold {
     margin-left: auto;
