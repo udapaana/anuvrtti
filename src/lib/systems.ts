@@ -250,7 +250,45 @@ export function systemTerms(sys: System): Set<string> {
   return s;
 }
 
-/** The system a tag belongs to, if any — so a reading can point into it. */
-export function systemForTerm(term: string): System | undefined {
-  return SYSTEMS.find((sys) => sys.groups.some((g) => g.items.some((it) => it.t === term)));
+/**
+ * EVERY system a tag belongs to.
+ *
+ * A tag is not the property of one word class. वचन is a dimension of both
+ * सुप् and तिङ् — नरौ and गच्छतः are both द्विवचन — so three of the sixty-odd
+ * tags here sit in two systems at once, and the schema has to say so rather
+ * than pretend each tag has one home.
+ */
+export function systemsForTerm(term: string): System[] {
+  return SYSTEMS.filter((sys) => sys.groups.some((g) => g.items.some((it) => it.t === term)));
+}
+
+/**
+ * The system a tag belongs to ON THIS WORD.
+ *
+ * Returning the first match was wrong for exactly the tags that matter:
+ * पादाभ्याम् is a noun in करण · तृतीया · द्विवचन, and asking about its द्विवचन
+ * opened the VERB's card, because तिङ् happens to be declared first and also
+ * has a वचन axis. The word's other tags settle it — तृतीया and करण are सुप्
+ * territory, लकार and पुरुष are तिङ् — so `context` is the rest of what the
+ * word carries, and the system sharing most of it wins.
+ *
+ * With nothing to go on the answer is undefined, not a guess: a tag with no
+ * disambiguating company is genuinely ambiguous, and the caller can say so.
+ */
+export function systemForTerm(term: string, context: string[] = []): System | undefined {
+  const found = systemsForTerm(term);
+  if (found.length <= 1) return found[0];
+
+  const others = context.filter((t) => t !== term);
+  const score = (sys: System) => {
+    const own = systemTerms(sys);
+    return others.filter((t) => own.has(t)).length;
+  };
+
+  const ranked = found
+    .map((sys) => ({ sys, n: score(sys) }))
+    .sort((a, b) => b.n - a.n);
+  // a tie is still ambiguous — two systems claiming it equally is no answer
+  if (!ranked[0].n || ranked[0].n === ranked[1]?.n) return undefined;
+  return ranked[0].sys;
 }

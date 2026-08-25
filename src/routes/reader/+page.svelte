@@ -13,11 +13,13 @@
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
   import SystemCard from '$lib/components/SystemCard.svelte';
   import { lookupTerm } from '$lib/jargon';
-  import { systemForTerm } from '$lib/systems';
+  import { systemForTerm, systemsForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
   import { displayScript } from '$lib/stores/preferences';
   import { transliterate } from '$lib/transliteration';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
   import { questionsFor, drawQuestion, type Question } from '$lib/reader/quiz';
@@ -470,8 +472,33 @@
     }
     return s;
   });
-  // The system the open term belongs to — the map this note points into.
-  const openSystem = $derived(termInfo ? systemForTerm(termInfo.term) : undefined);
+  /*
+    The system the open term belongs to ON THIS WORD.
+
+    A tag is not the property of one word class: वचन is an axis of both सुप् and
+    तिङ्, so the selected word's OTHER tags are what say which table you are
+    looking at. Without them, पादाभ्याम् — करण · तृतीया · द्विवचन, a noun — opened
+    the verb's card, because तिङ् is declared first and also has a वचन axis.
+  */
+  const selTermNames = $derived([
+    ...((selWord?.terms ?? []) as any[]).map((t) => t.term),
+    ...Object.values(selWord?.derived ?? {})
+  ] as string[]);
+
+  // Tapping "also in …" pins the other system, for a tag the word's own tags
+  // cannot settle or when you want to see the shared axis from the other side.
+  let systemPin = $state<string | null>(null);
+  $effect(() => { openTerm; systemPin = null; });
+
+  /** Every system this tag belongs to — one for most, two for the वचन values. */
+  const openSystems = $derived(termInfo ? systemsForTerm(termInfo.term) : []);
+  const openSystem = $derived.by(() => {
+    if (!termInfo) return undefined;
+    if (systemPin) return openSystems.find((s) => s.id === systemPin);
+    return systemForTerm(termInfo.term, selTermNames);
+  });
+  /** The other homes of a shared tag, named rather than silently dropped. */
+  const alsoSystems = $derived(openSystems.filter((s) => s.id !== openSystem?.id));
 
   // The reading each structural tag is FIRST introduced at, in corpus order —
   // the curriculum's own arc. A tag "new here" is one the sequence opens at this
@@ -493,7 +520,7 @@
         const t = n.term;
         // Only structural tags (those that belong to a system) — and only the
         // first time the whole corpus introduces them.
-        if (t && !seenLocal.has(t) && firstSeenAt.get(t) === r.id && systemForTerm(t)) {
+        if (t && !seenLocal.has(t) && firstSeenAt.get(t) === r.id && systemsForTerm(t).length) {
           seenLocal.add(t);
           out.push(t);
         }
@@ -1291,17 +1318,10 @@
   /*
     On a phone the rail is a bottom sheet and the spine is a sheet you open, so
     the reader has to know which layout it is in — a media query styles what is
-    already there, but these are different controls in different places.
+    already there, but these are different controls in different places. The
+    fact is shared with Shell and every other sheeted page.
   */
-  let narrow = $state(false);
-  $effect(() => {
-    if (typeof window === 'undefined' || !window.matchMedia) return;
-    const mq = window.matchMedia('(max-width: 960px)');
-    const sync = () => (narrow = mq.matches);
-    sync();
-    mq.addEventListener('change', sync);
-    return () => mq.removeEventListener('change', sync);
-  });
+  const narrow = $derived($isNarrow);
 
   /** 0 peek · 1 half · 2 full. Bound to Shell, which owns the sheet. */
   let railDetent = $state(0);
@@ -1367,11 +1387,11 @@
     <!-- The chapter you are in, and the way into the rest of them. On the
          phone the spine is a sheet, so it needs a door on the shelf; on the
          desktop it is a column that is simply there. -->
-    <button class="chapterpick" onclick={() => (spineOpen = true)}>
+    {#snippet chapterLabel()}
       <Sanskrit text={chapterTitle(focusedChapter).dev} source="devanagari" />
-      <span class="caret" aria-hidden="true">▾</span>
-    </button>
-    <span class="rule" aria-hidden="true"></span>
+    {/snippet}
+    <SheetButton label={chapterLabel} onopen={() => (spineOpen = true)} title="chapters" />
+    <span class="shelf-rule" aria-hidden="true"></span>
   {:else}
     <span class="quiet">gloss</span>
   {/if}
@@ -1625,7 +1645,10 @@
                word without its meaning is not worth the space. -->
           {#if narrow && railDetent === 0}
             <span class="wh-en peek"><Sanskrit text={selWord.gloss} source="devanagari" /></span>
-            <span class="wh-pull">↑ pull up</span>
+            <!-- A hint you cannot press is a hint you have to already know how
+                 to act on. The grip still takes swipes; this is the same move
+                 as a button, for a thumb that would rather tap. -->
+            <button class="wh-pull" onclick={() => (railDetent = 1)}>↑ pull up</button>
           {:else if wordRoman}
             <!-- the Latin reading, only while it differs from the page's own script -->
             <span class="wh-rom">{wordRoman}</span>
@@ -1635,6 +1658,16 @@
           <span class="wh-rom">tap a word in the line</span>
         {/if}
         <span class="wh-acts">
+          <!-- the other half of "pull up": once the sheet is open, the way back
+               down is a button too, not only a swipe -->
+          {#if narrow && railDetent > 0}
+            <button
+              class="wh-act"
+              onclick={() => (railDetent = railDetent - 1)}
+              title="collapse"
+              aria-label="collapse the panel"
+            >↓</button>
+          {/if}
           {#if selWord}
             <!-- banking was the last button under a long column; it is the
                  word's own action, so it lives beside the word -->
@@ -1742,6 +1775,30 @@
               {metTerms}
               onpick={(t) => (openTerm = t)}
             />
+          {:else if openSystems.length > 1}
+            <!-- The word's tags do not settle which table this is. Saying so is
+                 the honest answer, and the ambiguity is itself the lesson: the
+                 tag is an axis of more than one system. -->
+            <p class="ambiguous">
+              <Sanskrit text={termInfo?.term ?? openTerm} source="devanagari" /> is an axis of more
+              than one system, and this word's other tags do not say which.
+            </p>
+          {/if}
+
+          {#if alsoSystems.length}
+            <!-- A shared tag has more than one home; the schema says which, so
+                 the rail does too instead of silently picking one. -->
+            <div class="also">
+              <span class="also-label">also an axis of</span>
+              {#each alsoSystems as sys (sys.id)}
+                <button class="also-btn" onclick={() => (systemPin = sys.id)}>
+                  <Sanskrit text={sys.name} source="devanagari" />
+                </button>
+              {/each}
+              {#if systemPin}
+                <button class="also-btn back" onclick={() => (systemPin = null)}>← this word's</button>
+              {/if}
+            </div>
           {/if}
         </div>
       {/if}
@@ -2818,6 +2875,47 @@
     text-decoration: underline;
   }
 
+  /* a tag with more than one home says so, rather than the rail picking one */
+  .also {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+    margin-top: 8px;
+  }
+  .also-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .also-btn {
+    font-family: var(--font-deva);
+    font-size: 12px;
+    color: var(--accent-ref);
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 2px 8px;
+    cursor: pointer;
+  }
+  .also-btn:hover {
+    border-color: var(--accent-ref);
+  }
+  .also-btn.back {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .ambiguous {
+    margin: 8px 0 0;
+    font-family: var(--font-prose);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
   .decomp {
     display: flex;
     flex-direction: column;
@@ -2934,6 +3032,14 @@
       font-family: var(--font-mono);
       font-size: 11px;
       color: var(--quiet);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius);
+      padding: 6px 0 6px 8px;
+      cursor: pointer;
+    }
+    .wh-pull:hover {
+      color: var(--accent);
     }
 
     /* touch targets: a pointer is 1px, a thumb is 44 */
@@ -2995,30 +3101,6 @@
     }
     .spinehead .jump input {
       width: 116px;
-    }
-    .chapterpick {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-deva);
-      font-size: 14px;
-      color: var(--ink);
-      background: transparent;
-      border: none;
-      border-radius: var(--radius);
-      padding: 4px 0;
-      cursor: pointer;
-    }
-    .chapterpick .caret {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--faint);
-    }
-    .rule {
-      width: 1px;
-      height: 16px;
-      background: var(--rule-2);
-      flex: none;
     }
     /* padaccheda goes to the far edge, so the shelf reads as two groups rather
        than one run of controls */

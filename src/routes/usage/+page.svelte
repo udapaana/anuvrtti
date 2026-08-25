@@ -8,6 +8,8 @@
   import Shelf from '$lib/components/ui/Shelf.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import Disclose from '$lib/components/ui/Disclose.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import { cellKey } from '$lib/usage/normalize';
   import { TERMINALS, TERMINAL_DEV } from '$lib/usage/taxonomy';
   import { transliterate, type Script } from '$lib/transliteration';
@@ -365,11 +367,18 @@
   function pickCell(k: string, card?: ParadigmEntry) {
     const c = card ?? entry;
     const samePin = c && pinKey(c) === (entry ? pinKey(entry) : '');
+    const clearing = cell === k && samePin;
     go({
       stem: c?.subject ?? subject,
       pin: c ? pinKey(c) || null : pin,
-      cell: cell === k && samePin ? null : k
+      cell: clearing ? null : k
     });
+    /*
+      On a phone the cell detail is a sheet, and tapping a cell IS the request
+      to see it — asking for a second tap on a control elsewhere would make the
+      grid inert. Tapping the lit cell again clears it, so the sheet goes too.
+    */
+    if (narrow) railOpen = !clearing;
   }
 
   /** The attestations in one cell, or [] when the corpus has none. */
@@ -385,6 +394,15 @@
   /** The rail's one disclosure row: forms outside the classical paradigm. */
   let unplacedOpen = $state(false);
 
+  /*
+    On a phone the taxonomy and the cell detail are sheets rather than columns
+    either side of the grid. Picking a cell brings its sheet up, which is the
+    whole point of tapping it; picking a subject puts the taxonomy away again.
+  */
+  const narrow = $derived($isNarrow);
+  let spineOpen = $state(false);
+  let railOpen = $state(false);
+
   const selected = $derived.by(() => {
     if (!entry || !cell) return null;
     const a = atts(entry, cell);
@@ -395,6 +413,10 @@
 <svelte:head><title>प्रयोग · usage — anuvrtti</title></svelte:head>
 
 {#snippet shelfLeft()}
+  {#if narrow}
+    <SheetButton label="taxonomy" onopen={() => (spineOpen = true)} />
+    <span class="shelf-rule" aria-hidden="true"></span>
+  {/if}
   <span class="quiet">dimension</span>
   {#if sections.length}
     <Segmented
@@ -602,7 +624,7 @@
 {:else if section && entry}
   <Shelf left={shelfLeft} right={shelfRight} />
 
-  <Shell {spine} {rail} spineWidth="232px">
+  <Shell {spine} {rail} sheets bind:spineOpen bind:railOpen spineWidth="232px">
     <header class="head">
       <h1><Sanskrit text="प्रयोग" source="devanagari" /></h1>
       <p>

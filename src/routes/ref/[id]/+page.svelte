@@ -10,6 +10,8 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
   import Shelf from '$lib/components/ui/Shelf.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import Disclose from '$lib/components/ui/Disclose.svelte';
   import {
@@ -42,6 +44,10 @@
     stepIndex: number;
     stepTotal: number;
   }
+  // On a phone the neighbours rail is a sheet, opened from the shelf.
+  const narrow = $derived($isNarrow);
+  let railOpen = $state(false);
+
   let learningContext: LearningContext | null = $state(null);
 
   if (browser) {
@@ -211,6 +217,10 @@
 </svelte:head>
 
 {#snippet shelfLeft()}
+  {#if narrow}
+    <SheetButton label="neighbours" onopen={() => (railOpen = true)} />
+    <span class="shelf-rule" aria-hidden="true"></span>
+  {/if}
   {#if sutra}
     <a class="crumb" href="/ref?a={sutra.adhyaya}&p={sutra.pada}">
       {sutra.adhyaya}.{sutra.pada}
@@ -319,7 +329,7 @@
 {:else}
   <Shelf left={shelfLeft} right={shelfRight} />
 
-  <Shell {rail}>
+  <Shell {rail} sheets bind:railOpen>
     {#if editing && layeredCommentary}
       <CommentaryEditor
         sutraId={sutra.id}

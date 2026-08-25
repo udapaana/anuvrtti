@@ -10,6 +10,8 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
   import Shelf from '$lib/components/ui/Shelf.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import Spine from '$lib/components/ui/Spine.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
@@ -27,6 +29,11 @@
     print as a tree, each holding its paths, each path a run of steps over real
     sūtras. Mode is ?mode= driven, so either half is linkable.
   */
+
+  // On a phone the spine is a sheet, opened from the shelf.
+  const narrow = $derived($isNarrow);
+  let spineOpen = $state(false);
+
   let allSutras: Sutra[] = $state([]);
   let loading = $state(true);
 
@@ -207,6 +214,10 @@
 </svelte:head>
 
 {#snippet shelfLeft()}
+  {#if narrow}
+    <SheetButton label="contents" onopen={() => (spineOpen = true)} />
+    <span class="shelf-rule" aria-hidden="true"></span>
+  {/if}
   <Segmented
     options={[
       { id: 'sutra', label: 'सूत्राणि', script: 'devanagari' as const },
@@ -279,7 +290,7 @@
 
 <Shelf left={shelfLeft} right={shelfRight} />
 
-<Shell {spine}>
+<Shell {spine} sheets bind:spineOpen>
   {#if loading}
     <div class="status">loading <Sanskrit text="sūtrāṇi" source="iast" />…</div>
   {:else if mode === 'path'}

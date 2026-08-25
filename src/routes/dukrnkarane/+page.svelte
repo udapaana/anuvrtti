@@ -7,6 +7,8 @@
   import SandhiMatrix from './SandhiMatrix.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
   import Shelf from '$lib/components/ui/Shelf.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import Spine from '$lib/components/ui/Spine.svelte';
   import Disclose from '$lib/components/ui/Disclose.svelte';
   import Chip from '$lib/components/ui/Chip.svelte';
@@ -57,6 +59,11 @@
   // corpus these are sparse — 31% carry a Pāṇini ref, 12% a cross-reference,
   // ~4% parseable derivations — so every block is conditional and the rail
   // collapses rather than showing empty scaffolding.
+  // On a phone the rule list and the apparatus are sheets, not columns.
+  const narrow = $derived($isNarrow);
+  let spineOpen = $state(false);
+  let railOpen = $state(false);
+
   let hasApparatus = $derived(
     current.paniniRefs.length > 0 ||
       current.citedBy.length > 0 ||
@@ -108,6 +115,10 @@
 </svelte:head>
 
 {#snippet shelfLeft()}
+  {#if narrow}
+    <SheetButton label="rules" onopen={() => (spineOpen = true)} />
+    <span class="shelf-rule" aria-hidden="true"></span>
+  {/if}
   <!-- The same shelf as /ref/[id], because both are "one item out of a
        numbered corpus": where you are, and one step either way. -->
   <span class="chapter-name">{chapter.title}</span>
@@ -238,7 +249,14 @@
 
 <Shelf left={shelfLeft} right={shelfRight} progress={((index + 1) / rules.length) * 100} />
 
-<Shell {spine} rail={hasApparatus ? rail : undefined} spineWidth="220px">
+<Shell
+  {spine}
+  rail={hasApparatus ? rail : undefined}
+  sheets
+  bind:spineOpen
+  bind:railOpen
+  spineWidth="220px"
+>
   <header class="rule-head">
     <div class="rule-id">
       <span>{current.id}</span>

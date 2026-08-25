@@ -5,6 +5,8 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
   import Shelf from '$lib/components/ui/Shelf.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import Spine from '$lib/components/ui/Spine.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import Chip from '$lib/components/ui/Chip.svelte';
@@ -25,6 +27,11 @@
   */
 
   // The "language of discourse" — which support language the lesson explains in.
+
+  // On a phone the spine is a sheet, opened from the shelf.
+  const narrow = $derived($isNarrow);
+  let spineOpen = $state(false);
+
   let lang = $state<'telugu' | 'english'>('english');
   onMount(() => lessonLanguage.subscribe((l) => (lang = l)));
 
@@ -352,6 +359,10 @@
 <svelte:head><title>अभ्यास · workbook</title></svelte:head>
 
 {#snippet shelfLeft()}
+  {#if narrow}
+    <SheetButton label="lessons" onopen={() => (spineOpen = true)} />
+    <span class="shelf-rule" aria-hidden="true"></span>
+  {/if}
   {#if parts.length > 1}
     <span class="quiet">volume</span>
     <Segmented
@@ -387,7 +398,7 @@
     progress={flat.length > 1 ? (lessonIdx / (flat.length - 1)) * 100 : null}
   />
 
-  <Shell {spine}>
+  <Shell {spine} sheets bind:spineOpen>
     {#if lesson}
       <header class="lesson-head">
         <span class="label">part {lesson.part} · lesson {lesson.number ?? ''}</span>

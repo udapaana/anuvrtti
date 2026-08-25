@@ -226,6 +226,41 @@ h3 {
   color: var(--faint);
 }
 
+/*
+  Sanskrit compounds have no break opportunities: sūtra 1.1.58 transliterates to
+  a single 68-character word, which at 390px measured 475px inside a 252px
+  column, widened the whole document, and made the browser zoom the page out to
+  fit. `anywhere` (not `break-word`) also shrinks the intrinsic minimum, which is
+  what stops it inflating its container in the first place. It only ever applies
+  to a word that cannot fit on a line of its own.
+*/
+.font-devanagari,
+.font-iast,
+.font-telugu,
+.font-kannada,
+.font-malayalam,
+.font-tamil,
+.font-bengali,
+.font-gujarati,
+.font-gurmukhi,
+.font-odia,
+.font-sinhala,
+.font-nandinagari {
+  overflow-wrap: anywhere;
+}
+
+/*
+  The hairline between groups on a shelf. It appears on every page that opens a
+  sheet from its shelf, separating the door to that sheet from the page's own
+  controls, so it is written once here rather than six times in six scopes.
+*/
+.shelf-rule {
+  width: 1px;
+  height: 16px;
+  background: var(--rule-2);
+  flex: none;
+}
+
 /* Sutra reference links — the cross-reference accent, same brightness as saffron */
 .sutra-ref {
   color: var(--accent-ref);
