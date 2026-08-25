@@ -2,7 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <!--
+      icon.svg, not favicon.png: there is no favicon.png in static/, so this
+      line asked every visitor's browser for a file that does not exist. The
+      404 came back from the Pages FUNCTION rather than the CDN — an unmatched
+      path is exactly what _routes.json sends there — so a missing icon cost a
+      Worker invocation on every single page load, doubling the per-visit bill.
+    -->
+    <link rel="icon" href="%sveltekit.assets%/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
