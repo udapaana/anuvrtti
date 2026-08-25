@@ -10,6 +10,143 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd059
+  kind: attested
+  segment: 367
+  source:
+    text: हितोपदेश
+    ref: "Hitopadeśa 0.6 — knowledge gives humility"
+    curated: "the whole verse, word-separated (pausa forms); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, Hit_0.6)"
+  sentence: विद्या ददाति विनयम् विनयात् याति पात्रताम्। पात्रत्वात् धनम् आप्नोति धनात् धर्मम् ततः सुखम्॥
+  translation: Knowledge gives humility; from humility one reaches worthiness; from worthiness one gains wealth; from wealth, dharma; and from that, happiness.
+  teaches: |
+    a chain of ablatives — विनयात्, पात्रत्वात्, धनात्, each "from ___," the
+    अपादान case of a source; and the abstract-noun suffixes त्व/तल् (पात्रता,
+    पात्रत्व, "the state of being fit").
+  words:
+  - form: विद्या
+    lemma: विद्या
+    gloss: knowledge
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (आ-stem feminine)
+  - form: ददाति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: लट्
+      en: present (3sg, reduplicating जुहोत्यादि)
+  - form: विनयम्
+    lemma: विनय
+    gloss: humility, discipline
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of ददाति
+    - term: द्वितीया
+      en: accusative
+  - form: विनयात्
+    lemma: विनय
+    gloss: from humility
+    notes:
+    - cite: '2.3.28'
+      role: अपादाने पञ्चमी — the source from which something proceeds (अपादान) takes the पञ्चमी → विनयात् "from humility"
+    - term: अपादान
+      en: the source
+    - term: पञ्चमी
+      en: ablative
+  - form: याति
+    lemma: या
+    gloss: reaches, attains
+    notes:
+    - term: लट्
+      en: present (3sg)
+  - form: पात्रताम्
+    lemma: पात्रता
+    gloss: worthiness, fitness
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract noun — पात्र "fit vessel" + तल् (→ ता) "the state of being fit"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — the "state/quality of being X" is expressed by त्व or तल् → पात्र + तल् → पात्रता
+    - term: तल्
+      en: the abstract-noun suffix (feminine ता)
+    - term: कर्मन्
+      en: object of याति
+    - term: द्वितीया
+      en: accusative
+  - form: पात्रत्वात्
+    lemma: पात्रत्व
+    gloss: from worthiness
+    notes:
+    - term: तद्धित
+      en: abstract noun — पात्र + त्व, the same "fitness" (neuter)
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व, the other abstract suffix → पात्र + त्व → पात्रत्व
+    - term: अपादान
+      en: the source
+    - term: पञ्चमी
+      en: ablative
+  - form: धनम्
+    lemma: धन
+    gloss: wealth
+    notes:
+    - term: कर्मन्
+      en: object of आप्नोति
+    - term: द्वितीया
+      en: accusative
+  - form: आप्नोति
+    lemma: आप्
+    gloss: obtains
+    vocab: true
+    notes:
+    - term: आप्
+      en: '"obtain, reach" (स्वादि — श्नु vikaraṇa → आप्नोति)'
+    - term: लट्
+      en: present (3sg)
+  - form: धनात्
+    lemma: धन
+    gloss: from wealth
+    notes:
+    - term: अपादान
+      en: the source
+    - term: पञ्चमी
+      en: ablative
+  - form: धर्मम्
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: object (आप्नोति carried over)
+    - term: द्वितीया
+      en: accusative
+  - form: ततः
+    lemma: ततस्
+    gloss: from that, thence
+    notes:
+    - term: अव्यय
+      en: ablative adverb — "and from that"
+  - form: सुखम्
+    lemma: सुख
+    gloss: happiness
+    notes:
+    - term: कर्मन्
+      en: object (आप्नोति carried over)
+    - term: द्वितीया
+      en: accusative (neuter)
+  vyakhya: 'पञ्चमीश्रृङ्खला। विनयात् पात्रत्वात् धनात् इति अपादाने पञ्चमी — "अमुष्मात् एतत्" इति। पात्रता पात्रत्वम् इति भावप्रत्ययौ (तस्य भावस्त्वतलौ) — तल् स्त्रियाम्, त्वं नपुंसके। श्लोकः सोपानक्रमेण विद्यायाः फलम् आचष्टे।'
+  vyakhya_en: |
+    A ladder built out of **ablatives**. Each rung names a *source*: विनयात्
+    "from humility," पात्रत्वात् "from worthiness," धनात् "from wealth" — the
+    अपादान कारक, in the पञ्चमी (2.3.28, "the point one proceeds from"). The verse
+    also pairs the two **abstract-noun** suffixes of 5.1.119 (तस्य भावस्त्वतलौ):
+    तल् gives feminine पात्र-ता, त्व gives neuter पात्र-त्व — both "the state of
+    being a fit vessel." Read it as a single sentence and it is a chain: knowledge
+    → humility → worth → wealth → dharma → happiness.
 - id: rd058
   kind: attested
   segment: 366
