@@ -16,6 +16,8 @@
   import { systemForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
+  import { displayScript } from '$lib/stores/preferences';
+  import { transliterate } from '$lib/transliteration';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
   import { questionsFor, drawQuestion, type Question } from '$lib/reader/quiz';
@@ -597,20 +599,22 @@
     return hit.map((t: any) => ({ ...t, on: t.ti === markTi }));
   });
 
-  // The word-for-word run of the selected line. It belongs to the grammar, so
-  // it no longer waits on a quiz — the question is about another reading.
+  // The word-for-word run of the line in the rail.
   const runRows = $derived.by(() => {
-    const s = sel;
-    if (!s) return [];
-    const r = list.find((x) => x.id === s.id);
+    // Keyed on the RAIL's reading, not on the selection. The run is the line
+    // read word for word — sentence scope, not word scope — so it belongs to
+    // the reading block and survives having no word selected. Nested under the
+    // word, it disappeared the moment you deselected the thing it was about.
+    const r = railReading;
     if (!r) return [];
+    const s = sel?.id === r.id ? sel : null;
     // one row per word-bearing TOKEN — a form used twice is two rows, each
     // selecting its own position, rather than one row standing for both
     return tokensOf(r)
       .filter((t: any) => t.isWord)
       .map((t: any) => ({
         ti: t.ti,
-        on: t.ti === s.ti,
+        on: t.ti === s?.ti,
         form: padaccheda && t.split ? t.split.join(' + ') : t.text,
         gloss: t.gloss ?? ''
       }));
@@ -736,22 +740,65 @@
     missed = next;
   }
 
-  // The rail's two disclosure rows. Both close on every new selection, so the
-  // rail opens at a predictable height whatever the last word left open.
-  let formedOpen = $state(false);
-  let paraOpen = $state(false);
-  // The grammar block as a whole folds away, for when the question is what you
-  // want the rail for. Reopens on the next click, since clicking a word is a
-  // request to read it.
-  let grammarOpen = $state(true);
+  /*
+    The paradigm is the one thing in the rail that still folds.
+
+    The rail used to gate its whole payload behind a single `−`, with the
+    derivation and the paradigm as two more closed rows beneath it — three
+    decisions before any evidence appeared. The frame now shows the evidence in
+    a fixed order and folds only the grid, which is the one block big enough to
+    push the reading off the screen. It opens by default: a table you have to
+    ask for is a table you forget is there.
+  */
+  let paraOpen = $state(true);
+
+  /*
+    The rail can be widened. A paradigm is four columns of Devanagari and a
+    sūtra line is a sentence, and both were being asked to live in 312px; the
+    frame starts at 360 and opens to 520 for the reader who wants the table
+    rather than the text. It is a preference, so it outlives the page.
+  */
+  const RAIL_WIDE_KEY = 'anuvrtti-rail-wide';
+  let railWide = $state(false);
+  onMount(() => {
+    try {
+      railWide = localStorage.getItem(RAIL_WIDE_KEY) === '1';
+    } catch { /* private mode: the default width is fine */ }
+  });
+  function toggleRailWidth() {
+    railWide = !railWide;
+    try {
+      localStorage.setItem(RAIL_WIDE_KEY, railWide ? '1' : '0');
+    } catch { /* nothing to persist to; the session still widens */ }
+  }
+
+  /*
+    The head prints the form twice: once in the reader's own script, once in
+    Latin underneath. That is only useful while the two differ — on an IAST page
+    it would print `grāmam` beside `grāmam` — so it is computed against the
+    toggle and left empty when the page is already roman. shlesha is async, so
+    this is an effect rather than a derived, and it re-checks the selection on
+    resolve in case the reader moved on mid-flight.
+  */
+  const LATIN_SCRIPTS = new Set(['iast', 'iso15919', 'slp1', 'hk', 'itrans', 'velthuis', 'english']);
+  let wordRoman = $state('');
+  $effect(() => {
+    const w = selWord;
+    const script = $displayScript;
+    wordRoman = '';
+    if (!w?.form || LATIN_SCRIPTS.has(script)) return;
+    transliterate(w.form, 'devanagari', 'iast')
+      .then((r) => {
+        if (selWord === w) wordRoman = r;
+      })
+      .catch(() => { /* no romanisation is better than a broken one */ });
+  });
 
   // A click moves the selection and nothing else. It no longer clears a quiz in
   // progress: the two blocks are independent, so looking a word up mid-question
   // is allowed — and expected, since the question is about another reading.
   function selectToken(id: string, ti: number) {
-    formedOpen = false;
-    paraOpen = false;
-    grammarOpen = true;
+    paraOpen = true;
     if (sel && sel.id === id && sel.ti === ti) { sel = null; return; }
     sel = { id, ti };
   }
@@ -1259,10 +1306,10 @@
 
 {#snippet shelfRight()}
   <span class="keys">← → word · ↑ ↓ line</span>
-  <span>{checked.size} checked · {seen.size} read · {deckCount} in deck</span>
-  <!-- The quiz button lives in the rail (its "quiz me · N to draw from"), where
-       the question itself appears. A second copy on the shelf was the same
-       action twice, so it is gone; the counts stay. -->
+  <!-- `checked` and `read` moved to the rail's own footer, beside the drill they
+       describe. What stays here is the review bank's due count, which is a
+       different deck and belongs to no one pane. -->
+  <span>{deckCount} in deck</span>
 {/snippet}
 
 {#snippet spine()}
@@ -1288,15 +1335,26 @@
       cell     point at a square of the word's own paradigm
       token    tap the word in its line
       produce  the coordinates, give the form
+
+    It is a TAKEOVER: it covers the rail rather than sitting in the stack.
+    Answering used to push the word, its sūtras and its paradigm down the
+    column — the reader lost the thing being explained at exactly the moment
+    of being tested on it. Here the rail underneath is untouched (it keeps its
+    scroll position), and the back control names what you return to, so the
+    interruption looks like one and ends cleanly.
   -->
   {#if activeQuiz}
     {@const q = activeQuiz}
-    <div class="quiz-block">
-      <div class="quiz-head">
-        <span class="label">from what you have read</span>
-        <button class="quiz-close" onclick={closeQuiz} aria-label="close the question">×</button>
+    <div class="takeover">
+      <div class="tk-head">
+        <button class="tk-back" onclick={closeQuiz}>
+          <span aria-hidden="true">←</span>
+          {#if selWord}<Sanskrit text={selWord.form} source="devanagari" />{:else}back{/if}
+        </button>
+        <span class="tk-src">from what you have read</span>
       </div>
 
+      <div class="tk-body">
       {#if quizContextTokens.length}
         <div class="phrase context">
           {#each quizContextTokens as tok (tok.ti)}
@@ -1364,7 +1422,11 @@
               <span class="why-chain"><Sanskrit text={quizWhy.chain} source="devanagari" /></span>
             {/if}
             {#if quizWhy.cite}
-              <a class="why-ref" href={`/ref/${quizWhy.cite}`}>सूत्र {quizWhy.cite} →</a>
+              <!-- सूत्र is a Sanskrit word, so the label follows the toggle like
+                   any other — printed raw it stayed Devanagari on an IAST page -->
+              <a class="why-ref" href={`/ref/${quizWhy.cite}`}
+                ><Sanskrit text="सूत्र" source="devanagari" /> {quizWhy.cite} →</a
+              >
             {/if}
           </div>
         {/if}
@@ -1374,182 +1436,205 @@
             <span class="run-gloss"><Sanskrit text={quizWord.gloss} source="devanagari" /></span>
           </button>
         {/if}
-        {#if deckCards.length > 1}
-          <button class="quizme" onclick={drawFromDeck}>quiz another →</button>
-        {/if}
       {/if}
+      </div>
+
+      <!-- The takeover keeps a footer of its own, in the same place the rail's
+           is, so "quiz another" lands where "quiz me" was pressed. -->
+      <div class="tk-foot">
+        <button class="quizme foot" onclick={drawFromDeck} disabled={deckCards.length <= 1}>
+          quiz another →
+        </button>
+        <span class="foot-counts">{Math.max(deckCards.length - 1, 0)} left</span>
+      </div>
     </div>
   {/if}
 {/snippet}
 
 {#snippet rail()}
   <!--
-    The rail stacks, and nothing here replaces anything else:
+    The rail is a PANEL, not a scroll of blocks.
 
-      the QUESTION — shut by default, opening at the top when you ask for it
-      the READING's own commentary (the vyākhyā) — the card you are on
-      the WORD you clicked, with its gloss, tags, sūtras and paradigm
+    It used to be six peer labels in a column — quiz, new here, this reading,
+    word, the line word for word, then two folds — with the word you clicked
+    somewhere in the middle of them, its whole payload behind a single `−`, and
+    the quiz trigger sitting above everything it would displace. Nothing told
+    you what the rail was ABOUT, and scrolling to the paradigm scrolled the word
+    off the top.
 
-    The commentary used to be swapped out for the word block the moment you
-    clicked anything, so the note explaining the sentence disappeared exactly
-    when you started looking into it. It stays put now; the word arrives below.
+    Three regions now, and the order never changes:
+
+      pinned head    the word — form, meaning, tags. Never scrolls, never folds.
+      evidence       how it is formed → its paradigm → the reading it sits in,
+                     always in that order, word scope before sentence scope.
+      pinned foot    the drill, and how far you have got.
+
+    The quiz is no longer in the stack at all: it takes the panel over (see
+    `quizBlock`) so answering never pushes the word away.
   -->
-  {#if !deckQuiz}
-    <button class="quizme top" onclick={drawFromDeck} disabled={!deckCards.length}>
-      {deckCards.length ? `quiz me · ${deckCards.length} to draw from` : 'quiz me · read a line first'}
-    </button>
-  {/if}
-  {@render quizBlock()}
+  <div class="railframe">
 
-  {#if newHere.length}
-    <!-- The arc, made visible: the systems this reading OPENS, not just uses.
-         Each chip enters its system's map with the new cell boxed. -->
-    <div class="new-here">
-      <span class="label">new here</span>
-      <div class="new-chips">
-        {#each newHere as t}
-          <button class="new-chip" onclick={() => (openTerm = t)} title="open its system">
-            <Sanskrit text={t} source="devanagari" />
-          </button>
-        {/each}
-      </div>
-    </div>
-  {/if}
-
-  {#if railReading?.vyakhya || railReading?.vyakhya_en}
-    <div class="vyakhya">
-      <span class="label">this reading</span>
-      {#if railReading.vyakhya}
-        <span class="vyakhya-dev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></span>
-      {/if}
-      {#if railReading.vyakhya_en}
-        <p class="vyakhya-en">
-          <Sanskrit text={railReading.vyakhya_en.trim()} source="devanagari" />
-        </p>
-      {/if}
-    </div>
-  {/if}
-
-  {#if selWord}
-    <span class="label word-label">word</span>
-    <div class="word">
-      <div class="word-head">
-        <span class="word-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
-        {#if selWord.lemma}
-          <!-- the stem is Sanskrit, so it follows the toggle like the form above
-               it — printed raw it stayed Devanagari beside a Telugu page -->
-          <span class="word-stem"><Sanskrit text={selWord.lemma} source="devanagari" /></span>
+    <!-- ── pinned: the word ─────────────────────────────────────────────── -->
+    <div class="wordhead">
+      <div class="wh-top">
+        {#if selWord}
+          <span class="wh-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
+          <!-- the Latin reading, only while it differs from the page's own script -->
+          {#if wordRoman}<span class="wh-rom">{wordRoman}</span>{/if}
+        {:else}
+          <span class="wh-form none">—</span>
+          <span class="wh-rom">tap a word in the line</span>
         {/if}
-        <button
-          class="fold"
-          onclick={() => (grammarOpen = !grammarOpen)}
-          aria-expanded={grammarOpen}
-        >{grammarOpen ? '−' : '+'}</button>
+        <span class="wh-acts">
+          {#if selWord}
+            <!-- banking was the last button under a long column; it is the
+                 word's own action, so it lives beside the word -->
+            <button
+              class="wh-act"
+              class:on={inDeck}
+              onclick={bankWord}
+              disabled={inDeck}
+              title={inDeck ? 'in your deck' : 'keep for review'}
+              aria-label={inDeck ? 'in your deck' : 'keep for review'}
+            >★</button>
+          {/if}
+          <button
+            class="wh-act"
+            onclick={toggleRailWidth}
+            title={railWide ? 'narrow the rail' : 'widen the rail'}
+            aria-label={railWide ? 'narrow the rail' : 'widen the rail'}
+          >⤢</button>
+        </span>
       </div>
 
-      {#if grammarOpen}
-      <!-- The line, word for word. This is where the glosses went: a list in
-           the rail rather than a second row under every word. -->
-      <div class="run">
-        <span class="label">the line, word for word</span>
-        {#each runRows as g (g.ti)}
-          <button class="run-row" class:on={g.on} onclick={() => selectToken(selWord.id, g.ti)}>
-            <span class="run-form"><Sanskrit text={g.form} source="devanagari" /></span>
-            <span class="run-gloss"><Sanskrit text={g.gloss} source="devanagari" /></span>
-          </button>
-        {/each}
-      </div>
-
-        <span class="gloss"><Sanskrit text={selWord.gloss} source="devanagari" /></span>
-
+      {#if selWord}
+        <div class="wh-mean">
+          <span class="wh-en"><Sanskrit text={selWord.gloss} source="devanagari" /></span>
+          {#if selWord.lemma}
+            <span class="wh-stem">← <Sanskrit text={selWord.lemma} source="devanagari" /></span>
+          {/if}
+        </div>
         {#if selWord.terms.length}
-          <div class="terms">
+          <!--
+            Newness is a DOT on the tag, not a block of its own.
+
+            "new here" used to be a second labelled list further down the rail,
+            which named the same term twice — once as the thing the reading
+            introduces, once as a tag on the word carrying it — and left the
+            reader to match them up. The dot puts the fact on the tag it is
+            about, and the tag is already the way into the term's note.
+          -->
+          <div class="wh-tags">
             {#each selWord.terms as t}
               <button
                 class="chip-btn"
                 type="button"
-                title={t.en}
+                title={newHere.includes(t.term) ? `${t.en} · new here` : t.en}
                 onclick={() => (openTerm = openTerm === t.term ? null : t.term)}
               >
-                <Chip label={t.term} script="devanagari" tone={openTerm === t.term ? 'on' : 'quiet'} />
+                <Chip
+                  label={t.term}
+                  script="devanagari"
+                  tone={openTerm === t.term ? 'on' : 'quiet'}
+                  dot={newHere.includes(t.term)}
+                />
+              </button>
+            {/each}
+            {#if selWord.terms.some((t: any) => newHere.includes(t.term))}
+              <span class="wh-legend">• new here</span>
+            {/if}
+          </div>
+        {/if}
+      {/if}
+    </div>
+
+    <!-- ── scrolls: the evidence, always this order ─────────────────────── -->
+    <div class="evidence">
+
+      {#if openTerm}
+        <!-- The tapped tag's note. The tags are pinned in the head, so their
+             explanation opens here at the top of the evidence rather than
+             growing the head without limit. -->
+        <div class="ev">
+          <div class="ev-head">
+            <span class="ev-label">what it means</span>
+            <button class="ev-fold" onclick={() => (openTerm = null)} aria-label="close the note">×</button>
+          </div>
+          <div class="concept">
+            {#if termInfo}
+              <div class="concept-head">
+                <Sanskrit text={termInfo.term} source="devanagari" />
+                <span class="concept-rom">{termInfo.termRoman}</span>
+              </div>
+              <div class="concept-body">
+                <InlineMarkup text={termInfo.meaning} autoLink onpick={(t) => (openTerm = t)} />
+              </div>
+              {#if termInfo.sutraRef}
+                <a class="concept-ref" href={`/ref/${termInfo.sutraRef}`}
+                  ><Sanskrit text="सूत्र" source="devanagari" /> {termInfo.sutraRef} →</a
+                >
+              {/if}
+            {:else}
+              <div class="concept-body concept-empty">
+                No glossary note yet for <Sanskrit text={openTerm} source="devanagari" />.
+              </div>
+            {/if}
+          </div>
+          {#if openSystem}
+            <!-- The note points into its system: the shape drawn once, this
+                 cell boxed, the cells already read lit, the rest still dim. -->
+            <SystemCard
+              system={openSystem}
+              activeTerm={termInfo?.term ?? null}
+              {metTerms}
+              onpick={(t) => (openTerm = t)}
+            />
+          {/if}
+        </div>
+      {/if}
+
+      {#if selWord && (selWord.cites.length || selDecomp)}
+        <!-- No fold. This is the answer to "why is it in this shape?", which is
+             the question the rail exists for; it does not get to be one tap
+             further away than everything else. -->
+        <div class="ev">
+          <span class="ev-label">how it is formed</span>
+          {#if selDecomp}
+            <div class="formed">
+              <span class="formed-parts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
+              <span class="formed-kind"><Sanskrit text={selDecomp.label} source="devanagari" /></span>
+            </div>
+          {/if}
+          <div class="cites">
+            {#each selWord.cites as c}
+              <button class="cite" onclick={() => goto('/ref/' + c.cite)}>
+                <span class="cite-id">{c.cite}</span>
+                <span class="cite-role"><Sanskrit text={c.role} source="devanagari" /></span>
               </button>
             {/each}
           </div>
-          {#if openTerm}
-            <div class="concept">
-              {#if termInfo}
-                <div class="concept-head">
-                  <Sanskrit text={termInfo.term} source="devanagari" />
-                  <span class="concept-rom">{termInfo.termRoman}</span>
-                </div>
-                <div class="concept-body">
-                  <InlineMarkup text={termInfo.meaning} autoLink onpick={(t) => (openTerm = t)} />
-                </div>
-                {#if termInfo.sutraRef}
-                  <a class="concept-ref" href={`/ref/${termInfo.sutraRef}`}>सूत्र {termInfo.sutraRef} →</a>
-                {/if}
-              {:else}
-                <div class="concept-body concept-empty">
-                  No glossary note yet for <Sanskrit text={openTerm} source="devanagari" />.
-                </div>
-              {/if}
-            </div>
-            {#if openSystem}
-              <!-- The note points into its system: the shape drawn once, this
-                   cell boxed, the cells already read lit, the rest still dim. -->
-              <SystemCard
-                system={openSystem}
-                activeTerm={termInfo?.term ?? null}
-                {metTerms}
-                onpick={(t) => (openTerm = t)}
-              />
-            {/if}
-          {/if}
-        {/if}
+        </div>
+      {/if}
 
-        <!-- Everything the old rail stacked open is still here, as two closed
-             rows: the derivation with its sūtras and, when the word sits in no
-             grid, its decomposition; then the paradigm. -->
-        <!-- A row with nothing behind it is not rendered at all: an inert
-             control reads as broken, and absence is the honest answer. -->
-        {#if selWord.cites.length || selDecomp}
-        <Disclose
-          label="how it is formed"
-          count={selWord.cites.length
-            ? `${selWord.cites.length} ${selWord.cites.length === 1 ? 'sūtra' : 'sūtras'}`
-            : null}
-          bind:open={formedOpen}
-        >
-          {#if selDecomp}
-            <!-- the decomposition strip: what a NON-declining word is made of.
-                 विग्रह for a compound, the affix chain for a derivative, the
-                 split for a सन्धि join. -->
-            <div class="decomp">
-              <span class="decomp-label"><Sanskrit text={selDecomp.label} source="devanagari" /></span>
-              <span class="decomp-parts"><Sanskrit text={selDecomp.parts} source="devanagari" /></span>
-            </div>
-          {/if}
-          {#each selWord.cites as c}
-            <button class="cite" onclick={() => goto('/ref/' + c.cite)}>
-              <span class="cite-id">{c.cite}</span>
-              <span class="cite-role"><Sanskrit text={c.role} source="devanagari" /></span>
-            </button>
-          {/each}
-        </Disclose>
-        {/if}
-
-        {#if selParadigm}
-          <!-- The heading mixes scripts, so it goes in as a snippet: the stem and
-               the लकार follow the toggle, the English words never do. -->
-          {#snippet paradigmLabel()}
-            paradigm ·
-            <Sanskrit text={selParadigm.stem} source="devanagari" /> ·
-            {#if selParadigm.lakara}<Sanskrit
-                text={selParadigm.lakara}
-                source="devanagari"
-              /> ({selParadigm.kind}){:else}{selParadigm.kind}{/if}
-          {/snippet}
-          <Disclose label={paradigmLabel} bind:open={paraOpen}>
+      {#if selParadigm}
+        <div class="ev">
+          <div class="ev-head">
+            <span class="ev-label">paradigm</span>
+            <span class="ev-meta">
+              <Sanskrit text={selParadigm.stem} source="devanagari" /> ·
+              {#if selParadigm.lakara}<Sanskrit
+                  text={selParadigm.lakara}
+                  source="devanagari"
+                /> ({selParadigm.kind}){:else}{selParadigm.kind}{/if}
+            </span>
+            <button
+              class="ev-fold"
+              onclick={() => (paraOpen = !paraOpen)}
+              aria-expanded={paraOpen}
+              aria-label={paraOpen ? 'fold the paradigm away' : 'show the paradigm'}
+            >{paraOpen ? '−' : '+'}</button>
+          </div>
+          {#if paraOpen}
             <Grid
               script="devanagari"
               surface="sunken"
@@ -1558,16 +1643,56 @@
               rows={selParadigm.grid.rows.map((r: any) => r.cells)}
               lit={[selParadigm.row, selParadigm.col]}
             />
-          </Disclose>
-        {/if}
+          {/if}
+        </div>
+      {/if}
 
-        <button class="bank" class:has={inDeck} onclick={bankWord} disabled={inDeck}>
-          {inDeck ? 'in your deck' : '+ keep for review'}
-        </button>
+      {#if railReading}
+        <!-- Sentence scope, on its own surface. The line word for word used to
+             be nested INSIDE the word block, which made a property of the
+             sentence look like a property of the word — and made it vanish
+             whenever nothing was selected. -->
+        <div class="ev reading">
+          <span class="ev-label quiet">the reading · {railReading.id}</span>
+
+          {#if runRows.length}
+            <div class="run">
+              {#each runRows as g (g.ti)}
+                <button class="run-row" class:on={g.on} onclick={() => selectToken(railReading.id, g.ti)}>
+                  <span class="run-form"><Sanskrit text={g.form} source="devanagari" /></span>
+                  <span class="run-gloss"><Sanskrit text={g.gloss} source="devanagari" /></span>
+                </button>
+              {/each}
+            </div>
+          {/if}
+
+          {#if railReading.vyakhya || railReading.vyakhya_en}
+            <div class="vyakhya">
+              {#if railReading.vyakhya}
+                <span class="vyakhya-dev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></span>
+              {/if}
+              {#if railReading.vyakhya_en}
+                <p class="vyakhya-en">
+                  <Sanskrit text={railReading.vyakhya_en.trim()} source="devanagari" />
+                </p>
+              {/if}
+            </div>
+          {/if}
+
+        </div>
       {/if}
     </div>
-  {/if}
 
+    <!-- ── pinned: the drill ────────────────────────────────────────────── -->
+    <div class="railfoot">
+      <button class="quizme foot accent" onclick={drawFromDeck} disabled={!deckCards.length}>
+        {deckCards.length ? `quiz me · ${deckCards.length} ready` : 'quiz me · read a line first'}
+      </button>
+      <span class="foot-counts">{checked.size} checked<br />{seen.size} read</span>
+    </div>
+
+    {@render quizBlock()}
+  </div>
 {/snippet}
 
 {#if error}
@@ -1577,7 +1702,7 @@
 {:else}
   <Shelf left={shelfLeft} right={shelfRight} progress={progressPct} />
 
-  <Shell {spine} {rail}>
+  <Shell {spine} {rail} railFrame railWidth={railWide ? '520px' : '360px'}>
     <div data-reading-top class="body">
       {#each rows as row}
         {#if row.head && row.resumed}
@@ -1944,39 +2069,200 @@
   }
 
   /* ── rail ────────────────────────────────────────────────────────────── */
-  .new-here {
+  /*
+    Three regions, and only the middle one scrolls. The head and the foot are
+    `flex: none` so the word and the drill hold their place however long the
+    evidence between them runs.
+  */
+  .railframe {
+    position: relative;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    margin-bottom: 12px;
+    min-height: 0;
+    overflow: hidden;
   }
-  .new-chips {
+
+  /* ── pinned head: the word ── */
+  .wordhead {
+    flex: none;
+    background: var(--sunken);
+    border-bottom: 1px solid var(--rule-2);
+    padding: 14px 16px 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .wh-top {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .wh-form {
+    font-family: var(--font-deva);
+    font-size: 28px;
+    line-height: 1.15;
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .wh-form.none {
+    color: var(--faint);
+    font-weight: 400;
+  }
+  .wh-rom {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--quiet);
+  }
+  .wh-acts {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+    flex: none;
+  }
+  .wh-act {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1;
+    color: var(--ink-2);
+    background: var(--paper);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .wh-act:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  /* already banked: the star stays lit rather than going grey, since "in your
+     deck" is a state to see, not a control to mourn */
+  .wh-act.on,
+  .wh-act.on:disabled {
+    color: var(--accent);
+    border-color: var(--accent);
+    cursor: default;
+  }
+  .wh-mean {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .wh-en {
+    font-family: var(--font-prose);
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .wh-stem {
+    font-family: var(--font-deva);
+    font-size: 13px;
+    color: var(--quiet);
+  }
+  .wh-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    align-items: center;
+    gap: 6px;
   }
-  .new-chip {
+  /* what the dot on a tag means, said once at the end of the row */
+  .wh-legend {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--quiet);
+  }
+
+  /* ── the scrolling middle ── */
+  .evidence {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    display: flex;
+    flex-direction: column;
+  }
+  .ev {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 13px 16px 15px;
+    border-bottom: 1px solid var(--rule);
+  }
+  /* the reading is sentence scope, so it sits on the other surface — word scope
+     and sentence scope read apart without needing a heading to say so */
+  .ev.reading {
+    background: var(--sunken);
+    border-bottom-color: var(--rule-2);
+    gap: 12px;
+  }
+  .ev-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .ev-label.quiet {
+    color: var(--muted);
+  }
+  .ev-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .ev-meta {
+    font-family: var(--font-deva);
+    font-size: 13px;
+    color: var(--quiet);
+    min-width: 0;
+  }
+  .ev-fold {
+    margin-left: auto;
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1;
+    color: var(--accent);
+    background: transparent;
+    border: none;
+    padding: 2px 0 2px 8px;
     cursor: pointer;
+  }
+  .ev-fold:hover {
+    color: var(--accent-hover);
+  }
+
+  /* how it is formed: the parts, then the rules */
+  .formed {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .formed-parts {
+    font-family: var(--font-deva);
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .formed-kind {
     font-family: var(--font-deva);
     font-size: 12px;
-    padding: 2px 8px;
-    border: 1px solid var(--accent);
-    border-radius: var(--radius);
-    background: none;
-    color: var(--accent);
-    transition: background 0.15s, color 0.15s;
-  }
-  .new-chip:hover {
-    background: var(--accent);
-    color: var(--paper);
+    color: var(--faint);
   }
 
   .vyakhya {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 14px;
+    gap: 5px;
+    border-top: 1px solid var(--rule-2);
+    padding-top: 11px;
   }
   .vyakhya-dev {
     font-family: var(--font-deva);
@@ -1990,20 +2276,11 @@
     font-style: italic;
   }
 
-  .prompt {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--muted);
-  }
-
   /* the line, word for word */
   .run {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    border-top: 1px solid var(--rule);
-    padding-top: 13px;
+    gap: 3px;
   }
   .run-row {
     display: grid;
@@ -2058,70 +2335,118 @@
     border-color: var(--rule);
     cursor: default;
   }
-  /* The word block sits under the reading's note now, so it needs its own
-     heading — the single "word" label at the top of the rail used to serve. */
-  .word-label {
-    margin-top: 2px;
-  }
-  .quizme:hover {
+  .quizme:hover:not(:disabled) {
     border-color: var(--accent);
     color: var(--accent);
   }
 
-  .word {
+  /* ── pinned foot: the drill ── */
+  .railfoot {
+    flex: none;
+    border-top: 1px solid var(--rule-2);
+    background: var(--paper);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  /* In the foot the control is the primary action of the pane, so it is filled
+     rather than outlined — the one saturated thing in the rail. */
+  .quizme.foot {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 9px 10px;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+  }
+  .quizme.foot.accent:not(:disabled) {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--paper);
+  }
+  .quizme.foot.accent:not(:disabled):hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: var(--paper);
+  }
+  .foot-counts {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    line-height: 1.3;
+    color: var(--quiet);
+  }
+
+  /*
+    ── the quiz takeover ──
+
+    Absolutely positioned over the frame rather than swapped in for it: the rail
+    underneath keeps its scroll position, so returning from a question puts you
+    back exactly where you were reading. Its own head and foot line up with the
+    frame's, so the panel's furniture does not jump when it opens.
+  */
+  .takeover {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .tk-head {
+    flex: none;
+    background: var(--ink);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  /* the way out names what you go back to, so leaving costs no thought */
+  .tk-back {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--sunken);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius);
+    padding: 2px 4px 2px 0;
+    cursor: pointer;
+  }
+  .tk-back:hover {
+    color: var(--accent);
+  }
+  .tk-src {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .tk-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    padding: 20px 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
-  .word-head {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: baseline;
-    gap: 0 10px;
-  }
-  .word-form {
-    font-family: var(--font-deva);
-    font-size: 28px;
-    font-weight: 600;
-  }
-  .word-stem {
-    grid-column: 1;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--quiet);
-  }
-  /* folds the whole grammar away, for when the rail is wanted for the question */
-  .fold {
-    grid-column: 2;
-    grid-row: 1;
-    font-family: var(--font-mono);
-    font-size: 14px;
-    line-height: 1;
-    color: var(--accent);
-    background: transparent;
-    border: none;
-    padding: 4px 2px;
-    cursor: pointer;
+  .tk-foot {
+    flex: none;
+    border-top: 1px solid var(--rule-2);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  /*
-    The question, under the grammar rather than in place of it. The sunken
-    surface and the rule above set it apart as a second thing on the rail: what
-    is above belongs to the line being read, what is here comes from elsewhere.
-  */
-  .quiz-block {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    /* it sits at the TOP of the rail now, so the rule goes underneath it —
-       separating the question from the reading it is not about */
-    border-bottom: 1px solid var(--rule-2);
-    margin-bottom: 4px;
-    padding-bottom: 16px;
-  }
-  .quizme.top {
-    margin-bottom: 2px;
-  }
   /* the sentence as an answer space — tokens you tap, not options you read */
   .quiz-line {
     display: flex;
@@ -2151,26 +2476,6 @@
     cursor: default;
   }
 
-  .quiz-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  .quiz-close {
-    font-family: var(--font-mono);
-    font-size: 15px;
-    line-height: 1;
-    color: var(--quiet);
-    background: transparent;
-    border: none;
-    padding: 2px 4px;
-    cursor: pointer;
-  }
-  .quiz-close:hover {
-    color: var(--ink);
-  }
-
   .ask {
     display: flex;
     flex-direction: column;
@@ -2184,21 +2489,23 @@
     color: var(--ink);
   }
   .phrase.context {
-    color: var(--muted);
-    font-size: 15px;
+    color: var(--faint);
+    font-size: 19px;
     display: flex;
     flex-wrap: wrap;
     gap: 2px 8px;
     align-items: baseline;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
   }
   .ctok {
     border-bottom: 2px solid transparent;
     padding-bottom: 1px;
   }
-  /* the word the question is about. The rest of the clause stays muted, so the
-     mark is the only thing at full weight in the line. */
+  /* the word the question is about. The rest of the clause drops to faint, so
+     the mark is the only thing at full weight in the line. */
   .ctok.on {
-    color: var(--accent);
+    color: var(--ink);
     border-bottom-color: var(--accent);
   }
   /* the daṇḍa belongs to the word before it, not to the gap */
@@ -2207,25 +2514,34 @@
     color: var(--faint);
   }
   .question {
-    font-size: 15px;
-    color: var(--ink-2);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+    text-wrap: pretty;
   }
+  /*
+    One column, full width. A two-up grid put four Sanskrit options in half the
+    rail each, which truncated the long ones (सर्वनाम-भेद values run to 14
+    characters) and made the pair on each row look like a choice between two.
+  */
   .options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
   }
   .opt {
     font-family: var(--font-deva);
-    font-size: 15px;
+    font-size: 16px;
+    text-align: left;
     background: var(--paper);
     border: 1px solid var(--rule-2);
     border-radius: var(--radius);
-    padding: 7px 10px;
+    padding: 10px 12px;
     cursor: pointer;
   }
   .opt:hover {
-    border-color: var(--ink);
+    border-color: var(--accent);
+    background: var(--accent-soft);
   }
   .skip {
     font-family: var(--font-mono);
@@ -2261,12 +2577,6 @@
     font-size: 17px;
     color: var(--ink);
   }
-  .terms {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
   /* Each tag is a button that opens its glossary note below the row. */
   .chip-btn {
     all: unset;
@@ -2336,17 +2646,31 @@
     color: var(--ink);
   }
 
+  /*
+    One rule per ROW: the reference in its own column, the description beside
+    it. Stacked, five citations ran to ten lines and pushed the paradigm off
+    the panel; ranged left in a fixed column they read as a list of rules,
+    which is what they are.
+  */
   .cite {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 10px;
+    align-items: baseline;
     text-align: left;
-    background: transparent;
+    background: var(--sunken);
     border: none;
     border-radius: var(--radius);
-    padding: 0;
+    padding: 6px 8px;
     cursor: pointer;
+  }
+  .cites {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .cite:hover {
+    background: var(--accent-soft);
   }
   .cite-id {
     font-family: var(--font-mono);
@@ -2354,34 +2678,33 @@
     color: var(--accent-ref);
   }
   .cite-role {
-    font-size: 13px;
-    color: var(--quiet);
-    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--ink-2);
   }
   .cite:hover .cite-id {
     text-decoration: underline;
   }
 
-  .bank {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    text-align: left;
-    padding: 8px 10px;
-    cursor: pointer;
-    background: var(--paper);
-    border: 1px solid var(--rule-2);
-    border-radius: var(--radius);
-    color: var(--accent);
-  }
-  .bank.has {
-    border-color: var(--accent-ok);
-    color: var(--accent-ok);
-    cursor: default;
-  }
-
+  /*
+    Stacked, the rail is a block in the page again: nothing is pinned, so the
+    evidence must not own a scroll box of its own (it would be a short window
+    inside a long page) and the takeover has nothing to take over — it becomes
+    the block it always was, in the flow.
+  */
   @media (max-width: 960px) {
-    .options {
-      grid-template-columns: 1fr 1fr 1fr;
+    .railframe {
+      height: auto;
+      overflow: visible;
+    }
+    .evidence,
+    .tk-body {
+      overflow-y: visible;
+      min-height: 0;
+    }
+    .takeover {
+      position: static;
+      border: 1px solid var(--rule-2);
     }
   }
 </style>
