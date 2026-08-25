@@ -10,6 +10,139 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd052
+  kind: attested
+  segment: 360
+  source:
+    text: भागवतपुराण
+    ref: "Bhāgavata 1.2.11 — Brahman, Paramātman, Bhagavān"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_bhAgavatapurANa, ||BhP_01.02.011||)"
+  sentence: वदन्ति तत् तत्त्वविदस् तत्त्वम् यज् ज्ञानम् अद्वयम्। ब्रह्मेति परमात्मेति भगवान् इति शब्द्यते॥
+  translation: The knowers of truth declare that truth — the knowledge that is without-a-second — and it is named "Brahman," "Paramātman," "Bhagavān."
+  teaches: |
+    the नञ्-तत्पुरुष अद्वयम् ("not-two"), and a passive naming — शब्द्यते, "is
+    called," of what the knowers declare.
+  words:
+  - form: वदन्ति
+    lemma: वद्
+    gloss: they declare
+    notes:
+    - term: लट्
+      en: present
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: what is declared
+    - term: द्वितीया
+      en: accusative
+  - form: तत्त्वविदस्
+    lemma: तत्त्वविद्
+    gloss: the knowers of truth
+    vocab: true
+    notes:
+    - term: समास
+      en: compound — तत्त्वं विदन्ति, "who know the truth" (उपपद-तत्पुरुष)
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural (तत्त्वविदः → तत्त्वविदस् before त)
+  - form: तत्त्वम्
+    lemma: तत्त्व
+    gloss: the truth, reality
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: in apposition to तत्
+    - term: द्वितीया
+      en: accusative
+  - form: यज्
+    lemma: यद्
+    gloss: which
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun (यत् → यज् before ज, श्चुत्व)
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: ज्ञानम्
+    lemma: ज्ञान
+    gloss: knowledge
+    notes:
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: अद्वयम्
+    lemma: अद्वय
+    gloss: without a second, non-dual
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: negative — न द्वयम्, "not-two"
+    - text: 'विग्रह: न द्वयम् — "not two"'
+    - cite: '2.2.6'
+      role: नञ् — नञ् (न) compounds with a following word → नञ्-तत्पुरुष
+    - term: विशेषण
+      en: qualifying ज्ञानम्
+    - term: प्रथमा
+      en: nominative (neuter)
+    rel:
+    - kind: विशेषण
+      to: 5
+  - form: ब्रह्मेति
+    lemma: ब्रह्मन्
+    gloss: '"Brahman," thus'
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — the name given; ब्रह्म + इति → ब्रह्मेति (अ + इ → ए)
+  - form: परमात्मेति
+    lemma: परमात्मन्
+    gloss: '"Paramātman," thus'
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — a second name; परमात्मा + इति → परमात्मेति (आ + इ → ए)
+  - form: भगवान्
+    lemma: भगवत्
+    gloss: '"Bhagavān"'
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: possessive derivative — भग + मतुप् → भगवत् ("having fortune")
+    - cite: '5.2.94'
+      role: तदस्यास्त्यस्मिन्निति मतुप् — भग + मतुप् → भगवत्
+    - cite: '6.4.10'
+      role: सान्तमहतः संयोगस्य — penult lengthening in the strong stem → भगवान्
+    - term: प्रथमा
+      en: nominative — the third name
+  - form: इति
+    lemma: इति
+    gloss: thus (closes the naming)
+    notes:
+    - term: निपात
+      en: quotative particle
+  - form: शब्द्यते
+    lemma: शब्द्
+    gloss: is named, is called
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+    - term: कर्मणि
+      en: passive — "is called" (denominative of शब्द)
+    - cite: '3.4.69'
+      role: लः कर्मणि च — the ल-affix (लट्) denotes the कर्मन् → passive शब्द्यते
+  vyakhya: तत्त्वविदः तत् तत्त्वम् अद्वयम् ज्ञानम् वदन्ति; तत् ब्रह्म परमात्मा भगवान् इति शब्द्यते।
+  vyakhya_en: |
+    The knowers of truth declare तत्त्वम्, and name it three ways. What they
+    declare is अद्वयम् ज्ञानम् — "knowledge not-two," a नञ्-तत्पुरुष, न द्वयम्
+    (2.2.6). And the naming is passive: ब्रह्म, परमात्मा, भगवान् — इति शब्द्यते,
+    "is called," the passive of the denominative शब्द् (3.4.69). भगवान् itself is
+    the मतुप् possessive भगवत्, "the one having fortune."
 - id: rd051
   kind: attested
   segment: 340
