@@ -10,6 +10,139 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd049
+  kind: attested
+  segment: 380
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 1.2.14 — the आदिश्लोक, Vālmīki's curse on the hunter"
+    curated: "the whole verse, the first śloka of poetry; text from Ambuda's critical edition (ambuda-org/gretil, sa_rAmAyaNa, R_1.002.014)"
+  sentence: मा निषाद प्रतिष्ठाम् त्वम् अगमः शाश्वतीः समाः। यत् क्रौञ्चमिथुनाद् एकम् अवधीः काममोहितम्॥
+  translation: May you never, O hunter, reach rest for the long years to come — since you killed one of the pair of krauñca birds, deluded by passion.
+  teaches: |
+    the first verse of Sanskrit poetry. मा with the aorist forbids — मा … अगमः,
+    "may you not reach"; अवधीः is the aorist "you killed" of हन्.
+  words:
+  - form: मा
+    lemma: मा
+    gloss: do not, may not
+    notes:
+    - term: निपात
+      en: prohibitive particle — with the aorist, a negative wish/command
+  - form: निषाद
+    lemma: निषाद
+    gloss: O hunter
+    vocab: true
+    notes:
+    - term: सम्बोधन
+      en: address — the hunter called to
+  - form: प्रतिष्ठाम्
+    lemma: प्रतिष्ठा
+    gloss: rest, standing, a settled place
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: what is (not) reached
+    - term: द्वितीया
+      en: accusative
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: you
+    notes:
+    - term: सर्वनाम
+      en: pronoun — second person
+    - term: प्रथमा
+      en: nominative
+  - form: अगमः
+    lemma: गम्
+    gloss: may you reach / would go
+    vocab: true
+    notes:
+    - term: लुङ्
+      en: aorist — with मा it is the prohibitive ("may you not reach")
+  - form: शाश्वतीः
+    lemma: शाश्वत
+    gloss: for endless
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: qualifying समाः
+    - term: द्वितीया
+      en: accusative plural (feminine)
+    rel:
+    - kind: विशेषण
+      to: 6
+  - form: समाः
+    lemma: समा
+    gloss: years
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: duration — "for the years" (the द्वितीया of extent of time)
+    - term: द्वितीया
+      en: accusative plural
+  - form: यत्
+    lemma: यद्
+    gloss: since, because
+    notes:
+    - term: अव्यय
+      en: relative — "in that / because" (here causal)
+  - form: क्रौञ्चमिथुनाद्
+    lemma: क्रौञ्चमिथुन
+    gloss: from the pair of krauñca birds
+    vocab: true
+    notes:
+    - term: समास
+      en: compound — क्रौञ्चयोः मिथुनम्, "the pair of the two krauñcas"
+    - term: तत्पुरुष
+      en: षष्ठी-तत्पुरुष
+    - term: अपादान
+      en: source — the one taken from the pair
+    - cite: '2.3.28'
+      role: अपादाने पञ्चमी — the point of separation takes पञ्चमी → क्रौञ्चमिथुनात्
+    - term: पञ्चमी
+      en: ablative (→ क्रौञ्चमिथुनाद् before a vowel)
+  - form: एकम्
+    lemma: एक
+    gloss: one
+    notes:
+    - term: संख्या
+      en: numeral
+    - term: कर्मन्
+      en: the one killed
+    - term: द्वितीया
+      en: accusative
+  - form: अवधीः
+    lemma: हन्
+    gloss: you killed
+    vocab: true
+    notes:
+    - term: लुङ्
+      en: aorist — 2nd sg of हन् (the वध्-substitute), "you slew"
+  - form: काममोहितम्
+    lemma: काममोहित
+    gloss: deluded by passion
+    vocab: true
+    notes:
+    - term: समास
+      en: compound — कामेन मोहितम्, "confused by desire"
+    - term: तत्पुरुष
+      en: तृतीया-तत्पुरुष (मोहित is a क्त participle)
+    - term: विशेषण
+      en: qualifying एकम् (the bird)
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 9
+  vyakhya: मा निषाद प्रतिष्ठां त्वम् अगमः — यत् क्रौञ्चमिथुनात् एकम् अवधीः।
+  vyakhya_en: |
+    The verse grief wrung from Vālmīki, and with it Sanskrit poetry began. मा
+    with the aorist is the prohibition: मा … अगमः, "may you never reach"
+    प्रतिष्ठाम्, a resting place, शाश्वतीः समाः, for the endless years. The reason
+    follows on यत्: because from the क्रौञ्च-pair (क्रौञ्चमिथुनात्, the ablative of
+    what one is taken FROM) you killed एकम्, one — अवधीः, the aorist of हन् — while
+    it was काममोहितम्, lost in love.
 - id: rd043
   kind: attested
   segment: 325
