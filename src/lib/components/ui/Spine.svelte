@@ -102,15 +102,42 @@
     white-space: nowrap;
   }
 
+  /*
+    Stacked, the spine lies on its side as a chip row — which drops the gloss
+    line, the counts and the done colour, and hides most of the list off the
+    right edge. That is still the fallback for pages that stack, but a spine
+    inside a SHEET stays a column: it is the arc of the material, and the arc
+    is the thing you came to look at.
+  */
   @media (max-width: 960px) {
-    .item {
+    :global(nav.spine:not(.sheeted)) .item {
       border-left: none;
       border-bottom: 2px solid transparent;
       padding: 0 0 4px;
       flex: none;
     }
-    .item.on {
+    :global(nav.spine:not(.sheeted)) .item.on {
       border-bottom-color: var(--accent);
+    }
+
+    /* a sheet is touched, not pointed at, so the row grows to a real target */
+    :global(nav.spine.sheeted) .item {
+      border-left-width: 3px;
+      padding: 11px 18px;
+      gap: 2px;
+      width: 100%;
+    }
+    :global(nav.spine.sheeted) .item.on {
+      background: var(--sunken);
+    }
+    :global(nav.spine.sheeted) .name {
+      font-size: 17px;
+    }
+    :global(nav.spine.sheeted) .meta {
+      font-size: 10.5px;
+    }
+    :global(nav.spine.sheeted) .item.on .meta {
+      color: var(--accent);
     }
   }
 </style>
