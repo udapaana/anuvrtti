@@ -13,7 +13,15 @@
  * an item is one schema `term` with a one-line gloss. Because every item is a
  * real tag, it lights from `metTerms` and opens the same glossary concept card
  * the reader's tag chips do — the systems view and the explanation view are one.
+ *
+ * THE CONTENT IS NOT HERE. Sixty-six one-line glosses and six framing sentences
+ * are a grammar book, and a grammar book does not belong in a TypeScript array
+ * literal where editing it means editing source. They live in
+ * static/data/systems.toml, beside jargon.toml, which says the same of itself.
+ * This file reads that and gives it types.
  */
+import { parse } from 'smol-toml';
+import rawToml from '../../static/data/systems.toml?raw';
 
 export interface SystemItem {
   /** The schema tag — what a word carries, what the glossary defines. */
@@ -42,209 +50,7 @@ export interface System {
   groups: SystemGroup[];
 }
 
-export const SYSTEMS: System[] = [
-  {
-    id: 'tin',
-    name: 'तिङन्त',
-    roman: 'tiṅanta',
-    scope: 'the verb',
-    shape:
-      // No numeral: the sentence said "six things" and then listed five, which
-      // is what a hand-maintained count does next to an array. SystemCard prints
-      // the axis count from `groups`, so the promise cannot drift from the drawing.
-      'Every finite verb is one stem plus one ending, and that ending fixes all of these at once — when, who, how many, which voice-side, and whether the subject or object is in view.',
-    groups: [
-      {
-        axis: 'लकार',
-        roman: 'tense / mood — the ten, plus the Vedic eleventh',
-        items: [
-          { t: 'लट्', en: 'present — does / is doing' },
-          { t: 'लङ्', en: 'imperfect — did (the अ-augment past)' },
-          { t: 'लिट्', en: 'perfect — the remote, reported past' },
-          { t: 'लुट्', en: 'periphrastic future' },
-          { t: 'लृट्', en: 'simple future — will do (स्य)' },
-          { t: 'लोट्', en: 'imperative — let / do' },
-          { t: 'विधिलिङ्', en: 'optative — should / would' },
-          { t: 'आशीर्लिङ्', en: 'benedictive — may it be' },
-          { t: 'लुङ्', en: 'aorist — plain past' },
-          { t: 'लृङ्', en: 'conditional' },
-          { t: 'लेट्', en: 'Vedic subjunctive (Veda only)' }
-        ]
-      },
-      {
-        axis: 'पुरुष',
-        roman: 'person',
-        items: [
-          { t: 'प्रथमपुरुष', en: 'third — he/she/it/they' },
-          { t: 'मध्यमपुरुष', en: 'second — you' },
-          { t: 'उत्तमपुरुष', en: 'first — I / we' }
-        ]
-      },
-      {
-        axis: 'वचन',
-        roman: 'number',
-        items: [
-          { t: 'एकवचन', en: 'singular — one' },
-          { t: 'द्विवचन', en: 'dual — exactly two' },
-          { t: 'बहुवचन', en: 'plural — three or more' }
-        ]
-      },
-      {
-        axis: 'पद',
-        roman: 'voice-side',
-        items: [
-          { t: 'परस्मैपद', en: 'the act goes outward (active-side endings)' },
-          { t: 'आत्मनेपद', en: 'the act returns to the doer (middle endings)' }
-        ]
-      },
-      {
-        axis: 'प्रयोग',
-        roman: 'construction',
-        items: [
-          { t: 'कर्तरि', en: 'active — the agent is subject' },
-          { t: 'कर्मणि', en: 'passive — the object is subject' },
-          { t: 'भावे', en: 'impersonal — neither, just the act' }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'sup',
-    name: 'सुबन्त',
-    roman: 'subanta',
-    scope: 'the noun',
-    shape:
-      'Every noun sits at one of eight cases and three numbers on its stem-class — twenty-four cells, and the ending names the cell.',
-    groups: [
-      {
-        axis: 'विभक्ति',
-        roman: 'case',
-        items: [
-          { t: 'प्रथमा', en: 'nominative — कः? the subject / bare stem' },
-          { t: 'द्वितीया', en: 'accusative — कम्? the object, goal' },
-          { t: 'तृतीया', en: 'instrumental — केन? by/with' },
-          { t: 'चतुर्थी', en: 'dative — कस्मै? for/to' },
-          { t: 'पञ्चमी', en: 'ablative — कस्मात्? from' },
-          { t: 'षष्ठी', en: "genitive — कस्य? of / -'s" },
-          { t: 'सप्तमी', en: 'locative — कुत्र? in/on/at' },
-          { t: 'सम्बोधन', en: 'vocative — O ___!' }
-        ]
-      },
-      {
-        axis: 'वचन',
-        roman: 'number',
-        items: [
-          { t: 'एकवचन', en: 'singular' },
-          { t: 'द्विवचन', en: 'dual' },
-          { t: 'बहुवचन', en: 'plural' }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'karaka',
-    name: 'कारक',
-    roman: 'kāraka',
-    scope: 'the roles a noun plays',
-    shape:
-      'The role a noun plays toward the verb, and the case that role assigns. The role is the meaning; the विभक्ति is the mark.',
-    groups: [
-      {
-        axis: 'कारक → विभक्ति',
-        roman: 'role → case',
-        items: [
-          { t: 'कर्तृ', en: 'the doer → प्रथमा (तृतीया in the passive)' },
-          { t: 'कर्मन्', en: 'the object → द्वितीया' },
-          { t: 'करण', en: 'the instrument → तृतीया' },
-          { t: 'सम्प्रदान', en: 'the recipient → चतुर्थी' },
-          { t: 'अपादान', en: 'the source → पञ्चमी' },
-          { t: 'अधिकरण', en: 'the locus → सप्तमी' },
-          { t: 'सम्बन्ध', en: 'plain relation (not a कारक) → षष्ठी' }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'samasa',
-    name: 'समास',
-    roman: 'samāsa',
-    scope: 'compounds',
-    shape:
-      'Two words become one; which member is the head decides the type. Ask: is the last word the head, both, neither, or an indeclinable?',
-    groups: [
-      {
-        axis: 'the four (with sub-classes)',
-        roman: 'which member is the head?',
-        items: [
-          { t: 'तत्पुरुष', en: 'last member is head; first is in a case relation (राजपुरुषः)' },
-          { t: 'कर्मधारय', en: 'a तत्पुरुष whose members refer to one thing (नीलोत्पलम्)' },
-          { t: 'द्विगु', en: 'a कर्मधारय with a numeral first (त्रिलोकी)' },
-          { t: 'बहुव्रीहि', en: 'neither member is head; points outward (पीताम्बरः)' },
-          { t: 'द्वन्द्व', en: 'both are heads, joined as "and" (रामकृष्णौ)' },
-          { t: 'अव्ययीभाव', en: 'indeclinable first, whole goes indeclinable (प्रतिदिनम्)' }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'taddhita',
-    name: 'तद्धित',
-    roman: 'taddhita',
-    scope: 'secondary derivation (noun → noun)',
-    shape:
-      'A finished noun takes an affix to make another noun. The sense comes first; a family of suffixes expresses it.',
-    groups: [
-      {
-        axis: 'अर्थ → प्रत्यय',
-        roman: 'sense → suffix',
-        items: [
-          { t: 'मतुप्', en: 'possession — "having ___" (धनवान्)' },
-          { t: 'त्व', en: 'abstract, neuter — "-ness" (गुरुत्वम्)' },
-          { t: 'तल्', en: 'abstract, feminine — "-ness" (मित्रता)' },
-          { t: 'तरप्', en: 'comparative — "more" (पटुतरः)' },
-          { t: 'तमप्', en: 'superlative — "most" (पटुतमः)' },
-          { t: 'तसिल्', en: 'ablative adverb — "-from" (ग्रामतः)' },
-          { t: 'अण्', en: 'patronymic / origin — "descendant of / from" (दाशरथिः)' },
-          { t: 'ठक्', en: '"situated in / relating to" (माथुरः)' }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'krt',
-    name: 'कृदन्त',
-    roman: 'kṛdanta',
-    scope: 'primary derivation (root → noun)',
-    shape:
-      'A root takes an affix to become a nominal — a participle, a gerund, an infinitive, an agent- or action-noun. The first cut: does it decline?',
-    groups: [
-      {
-        axis: 'declining — participles & nouns',
-        roman: 'takes सुप् endings',
-        items: [
-          { t: 'क्त', en: 'past passive participle — "was ___ed" (गतः)' },
-          { t: 'क्तवतु', en: 'past active participle — "one who ___ed" (कृतवान्)' },
-          { t: 'शतृ', en: 'present active participle — "doing" (गच्छन्)' },
-          { t: 'ण्यत्', en: 'gerundive — "to be done" (कार्यम्)' },
-          { t: 'तृच्', en: 'agent-noun — "the one who ___s" (कर्ता)' },
-          { t: 'ण्वुल्', en: 'agent-noun in -aka (कारकः)' },
-          { t: 'घञ्', en: 'action-noun, masc (पाकः)' },
-          { t: 'क्तिन्', en: 'action-noun, fem (गतिः)' },
-          { t: 'ल्युट्', en: 'action-noun, neut (गमनम्)' }
-        ]
-      },
-      {
-        axis: 'indeclinable — the कृदव्यय',
-        roman: 'no endings (अव्यय by 1.1.40)',
-        items: [
-          { t: 'क्त्वा', en: 'gerund — "having done" (गत्वा)' },
-          { t: 'ल्यप्', en: 'gerund with a preverb (आगत्य)' },
-          { t: 'तुमुन्', en: 'infinitive — "to do" (गन्तुम्)' }
-        ]
-      }
-    ]
-  }
-];
+export const SYSTEMS: System[] = (parse(rawToml) as { systems: System[] }).systems ?? [];
 
 /** All the tags a system references, for quick membership tests. */
 export function systemTerms(sys: System): Set<string> {

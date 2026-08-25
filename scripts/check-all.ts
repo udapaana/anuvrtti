@@ -10,6 +10,9 @@
  *   - सङ्ग्रह violations: a consolidation passage citing a rule not yet
  *     introduced. This has fired twice on mechanical edits and caught both.
  *   - gloss/token mismatches in NEW readings (see the baseline note below).
+ *   - the systems book: a tag in static/data/systems.toml that is not a schema
+ *     value. It is hand-edited prose joined to the schema by exact string match,
+ *     so a typo unlights a cell rather than raising anything.
  *   - annotation lint: a tag that is WRONG, not just missing — two values of one
  *     dimension (लट् and विधिलिङ् both), or a value that belongs to no dimension
  *     of the word's type. The corpus is at zero; any new one fails the build.
@@ -166,6 +169,19 @@ if (lintCount > 0) {
   console.log(`  ✗ annotation lint: ${lintCount} error(s)`);
 } else {
   console.log('  ✓ annotation lint: clean');
+}
+
+// 7. the systems book — HARD. static/data/systems.toml is hand-edited, and a
+// mistyped tag there breaks the join to the schema silently: the cell just never
+// lights, which reads as a thin corpus rather than a wrong book.
+const sys = await run(['bun', 'scripts/check-systems.ts']);
+const sysN = sys.match(/(\d+) systems error/);
+if (sysN) {
+  problems.push(`systems: ${sysN[1]} tag(s) do not match the schema\n` +
+    sys.split('\n').filter((l) => /^\s{4}\S/.test(l)).join('\n'));
+  console.log(`  ✗ systems: ${sysN[1]} error(s)`);
+} else {
+  console.log('  ✓ ' + sys.trim());
 }
 
 console.log();

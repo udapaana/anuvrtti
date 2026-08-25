@@ -16,7 +16,8 @@
     "check": "bun scripts/check-all.ts",
     "build:quiz": "bun scripts/build-readings.ts && bun scripts/build-quiz.ts && bun scripts/build-readings.ts",
     "complete": "bun scripts/check-complete.ts",
-    "lint": "bun scripts/check-complete.ts --lint"
+    "lint": "bun scripts/check-complete.ts --lint",
+    "systems": "bun scripts/check-systems.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.0",
