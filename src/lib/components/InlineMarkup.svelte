@@ -147,10 +147,12 @@
     color: inherit;
   }
 
+  /* A clickable term reads as a link at rest, not only on hover: a persistent
+     dotted underline in the accent colour so it is obvious it can be tapped. */
   .jargon-inline {
     cursor: pointer;
     border: none;
-    border-bottom: 1px dotted transparent;
+    border-bottom: 1px dotted var(--accent);
     padding: 0;
     background: none;
     font: inherit;
@@ -160,6 +162,6 @@
 
   .jargon-inline:hover {
     color: var(--accent);
-    border-bottom-color: var(--accent);
+    border-bottom-style: solid;
   }
 </style>

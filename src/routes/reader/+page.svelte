@@ -11,7 +11,9 @@
   import Grid from '$lib/components/ui/Grid.svelte';
   import Chip from '$lib/components/ui/Chip.svelte';
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
+  import SystemCard from '$lib/components/SystemCard.svelte';
   import { lookupTerm } from '$lib/jargon';
+  import { systemForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
 
@@ -454,6 +456,20 @@
   let openTerm = $state<string | null>(null);
   $effect(() => { sel; openTerm = null; });
   const termInfo = $derived(openTerm ? lookupTerm(openTerm) : null);
+
+  // Which cells of a system the learner has met — every tag carried by a word in
+  // a reading already read. The system card under a concept card lights these, so
+  // the shape fills in as the reader moves: "7 of 10 lakāras met" made visible.
+  const metTerms = $derived.by(() => {
+    const s = new Set<string>();
+    for (const r of list) {
+      if (!seen.has(r.id)) continue;
+      for (const w of r.words ?? []) for (const n of w.notes ?? []) if (n.term) s.add(n.term);
+    }
+    return s;
+  });
+  // The system the open term belongs to — the map this note points into.
+  const openSystem = $derived(termInfo ? systemForTerm(termInfo.term) : undefined);
   /** The drawn card — the quiz block. Never the word you are looking at. */
   const quizWord = $derived(deckQuiz ? wordAt(deckQuiz.id, deckQuiz.wi) : null);
 
@@ -1435,6 +1451,16 @@
                 </div>
               {/if}
             </div>
+            {#if openSystem}
+              <!-- The note points into its system: the shape drawn once, this
+                   cell boxed, the cells already read lit, the rest still dim. -->
+              <SystemCard
+                system={openSystem}
+                activeTerm={termInfo?.term ?? null}
+                {metTerms}
+                onpick={(t) => (openTerm = t)}
+              />
+            {/if}
           {/if}
         {/if}
 
