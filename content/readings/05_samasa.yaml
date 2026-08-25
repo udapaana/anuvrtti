@@ -11,6 +11,151 @@ readings:
 # compound is depends on which member is primary — the whole sense of the
 # chapter. कथा = the compound itself, with its विग्रह (analysis) in the gloss.
 
+- id: ex233
+  segment: 175
+  sentence: नीलोत्पलम् जले तिष्ठति। ग्रामगतः बालः तत् पश्यति। असत्यम् न वदति, गोहितम् च करोति।
+  translation: A blue lotus stands in the water. A boy who has gone to the village sees it. He speaks no untruth, and does what is good for cattle.
+  teaches: |
+    four तत्पुरुष/कर्मधारय subtypes, each named by its विग्रह — नीलोत्पलम् (कर्मधारय),
+    ग्रामगतः (द्वितीया-), असत्यम् (नञ्-), गोहितम् (चतुर्थी-तत्पुरुष).
+  words:
+  - form: नीलोत्पलम्
+    lemma: नीलोत्पल
+    gloss: the blue lotus
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: कर्मधारय
+      en: descriptive — नीलम् उत्पलम्, both members in the same case, one qualifying the other
+    - text: 'विग्रह: नीलम् उत्पलम् — "the lotus which is blue"'
+    - cite: '2.1.57'
+      role: विशेषणं विशेष्येण बहुलम् — an adjective compounds with its noun → कर्मधारय
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: जले
+    lemma: जल
+    gloss: in the water
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: तिष्ठति
+    lemma: स्था
+    gloss: stands
+    notes:
+    - term: लट्
+      en: present
+  - form: ग्रामगतः
+    lemma: ग्रामगत
+    gloss: gone to the village
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: determinative — ग्रामम् गतः, the first member is the द्वितीया goal
+    - text: 'विग्रह: ग्रामम् गतः — "gone to the village"'
+    - cite: '2.1.24'
+      role: द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः — a द्वितीया word compounds with गत etc. → द्वितीया-तत्पुरुष
+    - term: विशेषण
+      en: qualifying बालः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: तत्
+    lemma: तद्
+    gloss: it
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of seeing
+    - term: द्वितीया
+      en: accusative (neuter)
+  - form: पश्यति
+    lemma: दृश्
+    gloss: sees
+    notes:
+    - term: लट्
+      en: present
+  - form: असत्यम्
+    lemma: असत्य
+    gloss: untruth
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: negative — न सत्यम्, "not-truth"
+    - text: 'विग्रह: न सत्यम् — "untruth"'
+    - cite: '2.2.6'
+      role: नञ् — नञ् (न) compounds with a following word → नञ्-तत्पुरुष
+    - term: कर्मन्
+      en: what is (not) spoken
+    - term: द्वितीया
+      en: accusative
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: निपात
+      en: verbal negation
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: लट्
+      en: present
+  - form: गोहितम्
+    lemma: गोहित
+    gloss: what is good for cattle
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: determinative — गोभ्यो हितम्, the first member is the चतुर्थी beneficiary
+    - text: 'विग्रह: गोभ्यो हितम् — "good for the cattle"'
+    - cite: '2.1.36'
+      role: चतुर्थी तदर्थार्थबलिहितसुखरक्षितैः — a चतुर्थी word compounds with हित etc. → चतुर्थी-तत्पुरुष
+    - term: कर्मन्
+      en: what is done
+    - term: द्वितीया
+      en: accusative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: करोति
+    lemma: कृ
+    gloss: does
+    notes:
+    - term: लट्
+      en: present
+  vyakhya: चत्वारः तत्पुरुषभेदाः — नीलोत्पलम्, ग्रामगतः, असत्यम्, गोहितम्।
+  vyakhya_en: |
+    Four sub-classes of the same family, each told apart by its विग्रह.
+    नीलोत्पलम् is a कर्मधारय — नीलम् उत्पलम्, adjective and noun in one case
+    (2.1.57). ग्रामगतः is a द्वितीया-तत्पुरुष — ग्रामम् गतः, "gone TO the village"
+    (2.1.24). असत्यम् is the नञ्-तत्पुरुष, न सत्यम् "untruth" (2.2.6). And गोहितम्
+    is a चतुर्थी-तत्पुरुष — गोभ्यो हितम्, "good FOR cattle" (2.1.36). The compound
+    hides the case; the विग्रह restores it.
+
 - id: ex037
   segment: 130
   sentence: राजपुरुषः
