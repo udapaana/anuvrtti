@@ -10,6 +10,140 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd055
+  kind: attested
+  segment: 363
+  source:
+    text: मनुस्मृति
+    ref: "Manu 3.56 — where women are honored"
+    curated: "the whole verse, word-separated per GRETIL's analysis segmentation (avagraha/vṛddhi sandhi shown split); every form is Manu's. Text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_manusmRti, Manu_3.56)"
+  sentence: यत्र नार्यः तु पूज्यन्ते रमन्ते तत्र देवताः। यत्र एताः तु न पूज्यन्ते सर्वाः तत्र अफलाः क्रियाः॥
+  translation: Where women are honored, there the gods rejoice; where they are not honored, all rites are fruitless.
+  teaches: |
+    the passive voice on the page — पूज्यन्ते "are honored," with the यक्
+    passive-marker, the honored women standing as the grammatical subject; and
+    a यण्-सन्धि (नारी → नार्यः) and a नञ्-compound (अफलाः "fruitless").
+  words:
+  - form: यत्र
+    lemma: यत्र
+    gloss: where
+    notes:
+    - term: अव्यय
+      en: relative adverb of place (correlative of तत्र)
+  - form: नार्यः
+    lemma: नारी
+    gloss: women
+    vocab: true
+    notes:
+    - cite: '6.1.77'
+      role: इको यणचि — an इक् vowel (here ī) becomes the corresponding semivowel य् before a vowel → नारी + अस् (जस्) → नार्यः
+    - term: कर्मन्
+      en: the honored ones — grammatical subject of the passive (कर्मणि उक्त)
+    - term: प्रथमा
+      en: nominative plural
+  - form: तु
+    lemma: तु
+    gloss: indeed
+    notes:
+    - term: अव्यय
+      en: emphatic particle
+  - form: पूज्यन्ते
+    lemma: पूज्
+    gloss: are honored
+    notes:
+    - term: यक्
+      en: the passive विकरण — inserted between root and ending in the कर्मणि
+    - cite: '3.1.67'
+      role: सार्वधातुके यक् — before a सार्वधातुक ending in the कर्मणि/भावे, यक् is the विकरण → पूज् + यक् → पूज्य…
+    - term: कर्मणि
+      en: passive construction
+    - term: लट्
+      en: present (passive 3pl)
+  - form: रमन्ते
+    lemma: रम्
+    gloss: rejoice, delight
+    vocab: true
+    notes:
+    - term: रम्
+      en: '"delight, take pleasure" (आत्मनेपद)'
+    - term: लट्
+      en: present (आत्मनेपद 3pl)
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: correlative adverb of place
+  - form: देवताः
+    lemma: देवता
+    gloss: the gods, deities
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural (आ-stem feminine)
+  - form: एताः
+    lemma: एतद्
+    gloss: these (women)
+    notes:
+    - term: सर्वनाम
+      en: pronoun (एतद्, feminine)
+    - term: कर्मन्
+      en: subject of the passive न पूज्यन्ते
+    - term: प्रथमा
+      en: nominative plural
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: सर्वाः
+    lemma: सर्व
+    gloss: all
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम — declines pronominally
+    - term: विशेषण
+      en: qualifying क्रियाः
+    - term: प्रथमा
+      en: nominative plural (feminine)
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: अफलाः
+    lemma: अफल
+    gloss: fruitless
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — "whose fruit is none, fruitless"
+    - cite: '2.2.6'
+      role: नञ् — the negative नञ् (न → अ) compounds with फल → अफल "fruitless"
+    - term: विशेषण
+      en: qualifying क्रियाः
+    - term: प्रथमा
+      en: nominative plural
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: क्रियाः
+    lemma: क्रिया
+    gloss: rites, actions
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural (आ-stem feminine)
+  vyakhya: 'कर्मणिप्रयोगप्रधानः श्लोकः। पूज्यन्ते इति यकि लट् कर्मणि (सार्वधातुके यक्)। नार्यः इति ईकारस्य यणादेशः (इको यणचि)। अफलाः इति नञ्समासः बहुव्रीहिः। यत्र…तत्र इति नित्यसम्बन्धे।'
+  vyakhya_en: |
+    A verse in the **passive**. पूज्यन्ते "are honored" and न पूज्यन्ते "are not
+    honored" show the कर्मणि प्रयोग — the thing-acted-upon (the women) becomes the
+    grammatical subject in the nominative, and the verb carries the passive marker
+    **यक्** (3.1.67, सार्वधातुके यक्). Two more points earn their place: नार्यः,
+    where the ī of नारी turns to य् before the ending (6.1.77 इको यणचि, the
+    यण्-सन्धि), and अफलाः "fruitless," a नञ्-compound (2.2.6). The frame is the
+    यत्र … तत्र correlative — "where … there."
 - id: rd054
   kind: attested
   segment: 362
