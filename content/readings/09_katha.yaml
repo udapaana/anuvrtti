@@ -17,6 +17,339 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: ex235
+  kind: graded
+  segment: 250
+  source:
+    text: कथा (our graded retelling)
+    ref: "the giving of Dāśarathi — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: पुरा अयोध्यायाम् दशरथः नाम राजा आसीत्। तस्य पुत्रः दाशरथिः रामः महाबलः अभवत्। एकदा मुनिः तम् अवदत् — हे राजपुत्र, दीनेभ्यः धनम् देयम्। यः दाता सः श्रेष्ठः। तत् श्रुत्वा रामः बहुभ्यः जनेभ्यः धनम् अयच्छत्। सर्वे तम् अपूजयन्।
+  translation: Long ago in Ayodhyā there was a king named Daśaratha. His son Dāśarathi Rāma grew mighty. One day a sage said to him — "O prince, wealth is to be given to the poor. He who gives is the best." Having heard that, Rāma gave wealth to many people. Everyone honored him.
+  teaches: |
+    a patronymic and a gerundive in a story: दाशरथिः "son of Daśaratha" (the
+    तस्यापत्यम् sense, इञ्), and देयम् "to be given," the यत् gerundive of दा.
+  words:
+  - form: पुरा
+    lemma: पुरा
+    gloss: long ago
+    notes:
+    - term: अव्यय
+      en: adverb of time
+  - form: अयोध्यायाम्
+    lemma: अयोध्या
+    gloss: in Ayodhyā
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: दशरथः
+    lemma: दशरथ
+    gloss: Daśaratha
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: नाम
+    lemma: नाम
+    gloss: by name
+    notes:
+    - term: अव्यय
+      en: '"by name" — marks the preceding as a name'
+  - form: राजा
+    lemma: राजन्
+    gloss: a king
+    notes:
+    - term: कर्तृ
+      en: in apposition to दशरथः
+    - term: प्रथमा
+      en: nominative (न्-stem राजन् → राजा)
+  - form: आसीत्
+    lemma: अस्
+    gloss: there was
+    notes:
+    - term: लङ्
+      en: past
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: षष्ठी
+      en: genitive
+  - form: पुत्रः
+    lemma: पुत्र
+    gloss: the son
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: दाशरथिः
+    lemma: दाशरथि
+    gloss: son of Daśaratha
+    notes:
+    - term: तद्धित
+      en: patronymic derivative
+    - term: इञ्
+      en: the इञ् suffix, with आदिवृद्धि — दशरथ → दाशरथि
+    - cite: '4.1.92'
+      role: तस्यापत्यम् — the patronymic sense ("descendant of ___") governs the derivative → दाशरथि
+    - cite: '4.1.95'
+      role: अत इञ् — an अ-stem takes इञ् in the अपत्य sense → दशरथ + इञ् → दाशरथि
+    - term: विशेषण
+      en: in apposition to रामः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: रामः
+    lemma: राम
+    gloss: Rāma
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: महाबलः
+    lemma: महाबल
+    gloss: mighty
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — whose strength is great
+    - term: विशेषण
+      en: qualifying रामः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: अभवत्
+    lemma: भू
+    gloss: became
+    notes:
+    - term: लङ्
+      en: past
+  - form: एकदा
+    lemma: एकदा
+    gloss: one day
+    notes:
+    - term: अव्यय
+      en: adverb of time
+  - form: मुनिः
+    lemma: मुनि
+    gloss: a sage
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: तम्
+    lemma: तद्
+    gloss: to him
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: the one addressed
+    - term: द्वितीया
+      en: accusative
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: हे
+    lemma: हे
+    gloss: O
+    notes:
+    - term: अव्यय
+      en: vocative particle
+  - form: राजपुत्र
+    lemma: राजपुत्र
+    gloss: O prince
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: षष्ठी-तत्पुरुष — राज्ञः पुत्रः, "the king's son"
+    - term: सम्बोधन
+      en: address
+  - form: दीनेभ्यः
+    lemma: दीन
+    gloss: to the poor
+    vocab: true
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative plural
+  - form: धनम्
+    lemma: धन
+    gloss: wealth
+    notes:
+    - term: कर्मन्
+      en: what is to be given
+    - term: प्रथमा
+      en: nominative (the gerundive predicates it)
+  - form: देयम्
+    lemma: दा
+    gloss: is to be given
+    notes:
+    - term: कृदन्त
+      en: gerundive (declines)
+    - term: यत्
+      en: the यत् gerundive suffix on a vowel-final root
+    - cite: '3.1.97'
+      role: अचो यत् — यत् after a vowel-final root → दा + यत् → देय ("to be given")
+    - term: विशेषण
+      en: predicated of धनम्
+    - term: प्रथमा
+      en: nominative (neuter)
+    rel:
+    - kind: विशेषण
+      to: 19
+  - form: यः
+    lemma: यद्
+    gloss: he who
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: दाता
+    lemma: दातृ
+    gloss: a giver
+    notes:
+    - term: कृदन्त
+      en: agent-noun
+    - term: तृच्
+      en: the तृच् agent-suffix — "the one who gives"
+    - cite: '3.1.133'
+      role: ण्वुल्तृचौ — तृच् forms the agent-noun → दा + तृ → दातृ; nom.sg दाता
+    - term: प्रथमा
+      en: nominative
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: श्रेष्ठः
+    lemma: श्रेष्ठ
+    gloss: the best
+    notes:
+    - term: विशेषण
+      en: predicated of सः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 23
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of श्रुत्वा
+    - term: द्वितीया
+      en: accusative
+  - form: श्रुत्वा
+    lemma: श्रु
+    gloss: having heard
+    notes:
+    - term: कृदन्त
+      en: gerund — a कृदन्त that does not decline
+    - term: क्त्वा
+      en: the क्त्वा gerund suffix (no preverb) — prior action, same agent
+    - term: अव्यय
+      en: indeclinable
+  - form: रामः
+    lemma: राम
+    gloss: Rāma
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: बहुभ्यः
+    lemma: बहु
+    gloss: to many
+    notes:
+    - term: विशेषण
+      en: qualifying जनेभ्यः
+    - term: चतुर्थी
+      en: dative plural
+    rel:
+    - kind: विशेषण
+      to: 29
+  - form: जनेभ्यः
+    lemma: जन
+    gloss: to people
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative plural
+  - form: धनम्
+    lemma: धन
+    gloss: wealth
+    notes:
+    - term: कर्मन्
+      en: the thing given
+    - term: द्वितीया
+      en: accusative
+  - form: अयच्छत्
+    lemma: दा
+    gloss: gave
+    notes:
+    - term: लङ्
+      en: past
+  - form: सर्वे
+    lemma: सर्व
+    gloss: all
+    notes:
+    - term: सर्वादि
+      en: pronominal adjective — takes सर्वे
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural
+  - form: तम्
+    lemma: तद्
+    gloss: him
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: अपूजयन्
+    lemma: पूज्
+    gloss: honored
+    notes:
+    - term: लङ्
+      en: past
+  vyakhya: दाशरथिः रामः दीनेभ्यः धनम् अयच्छत् — यत् दानम् श्रेष्ठम् इति मुनेः वचनम्।
+  vyakhya_en: |
+    A story built from two derivations. दाशरथिः is a patronymic — दशरथ + इञ् with
+    आदिवृद्धि, "the son of Daśaratha" (4.1.92, 4.1.95) — a नाम that is itself a
+    grammar. And the sage's counsel turns on a gerundive: धनम् देयम्, "wealth is
+    TO BE given," दा + यत् (3.1.97). The one who gives, दाता, is the तृच् agent-noun
+    of the same root — so the giving, the giver, and the thing-to-be-given all
+    stand on दा.
 - id: ex222
   kind: graded
   segment: 550
