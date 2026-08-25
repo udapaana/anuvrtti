@@ -10,6 +10,158 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd050
+  kind: attested
+  segment: 335
+  source:
+    text: पञ्चतन्त्र
+    ref: "Pañcatantra 1.2 — nothing is unattained by wealth"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_viSNuzarman-paJcatantra, ||Panc_1.2||)"
+  sentence: न हि तद् विद्यते किञ्चिद् यद् अर्थेन न सिध्यति। यत्नेन मतिमान् तस्माद् अर्थम् एकम् प्रसाधयेत्॥
+  translation: There is nothing at all that is not achieved by wealth; therefore the wise man should, by effort, secure wealth above all.
+  teaches: |
+    an optative maxim. प्रसाधयेत् is विधिलिङ्, "should secure"; मतिमान् is the
+    मतुप् possessive "the one having wit"; अर्थेन / यत्नेन are the तृतीया of means.
+  words:
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: निपात
+      en: negation
+  - form: हि
+    lemma: हि
+    gloss: indeed, for
+    notes:
+    - term: निपात
+      en: emphatic particle
+  - form: तद्
+    lemma: तद्
+    gloss: that (thing)
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तत् → तद् before व)
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: विद्यते
+    lemma: विद्
+    gloss: is found, exists
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+    - term: कर्मणि
+      en: passive sense — "is found"
+  - form: किञ्चिद्
+    lemma: किम्
+    gloss: anything
+    notes:
+    - term: सर्वनाम
+      en: किम् + चित् — the indefinite "anything" (किंचित् → किञ्चिद् before य)
+    - term: प्रथमा
+      en: nominative
+  - form: यद्
+    lemma: यद्
+    gloss: which
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun (यत् → यद् before अ)
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: अर्थेन
+    lemma: अर्थ
+    gloss: by wealth
+    vocab: true
+    notes:
+    - term: करण
+      en: instrument
+    - term: तृतीया
+      en: instrumental
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: निपात
+      en: negation
+  - form: सिध्यति
+    lemma: सिध्
+    gloss: is accomplished
+    vocab: true
+    notes:
+    - term: लट्
+      en: present (दिवादि — सिध् → सिध्यति)
+  - form: यत्नेन
+    lemma: यत्न
+    gloss: by effort
+    vocab: true
+    notes:
+    - term: करण
+      en: instrument
+    - term: तृतीया
+      en: instrumental
+  - form: मतिमान्
+    lemma: मतिमत्
+    gloss: the wise one
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: possessive derivative
+    - term: मतुप्
+      en: the मतुप् possessive suffix — "having wit" (मति + मतुप् → मतिमत्)
+    - cite: '5.2.94'
+      role: तदस्यास्त्यस्मिन्निति मतुप् — मति + मतुप् → मतिमत् → मतिमान्
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: तस्माद्
+    lemma: तद्
+    gloss: therefore, from that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: अपादान
+      en: 'from that — the causal ablative (तस्मात् → तस्माद् before अ)'
+    - term: पञ्चमी
+      en: ablative
+  - form: अर्थम्
+    lemma: अर्थ
+    gloss: wealth
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: what is to be secured
+    - term: द्वितीया
+      en: accusative
+  - form: एकम्
+    lemma: एक
+    gloss: alone, above all
+    notes:
+    - term: संख्या
+      en: numeral, here "one / above all"
+    - term: विशेषण
+      en: qualifying अर्थम्
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 12
+  - form: प्रसाधयेत्
+    lemma: साध्
+    gloss: should secure
+    vocab: true
+    notes:
+    - term: विधिलिङ्
+      en: optative — "should / ought to" (प्र + साध्, causative-stem)
+    - term: उपसर्ग
+      en: प्र — "forth, thoroughly"
+  vyakhya: अर्थेन सर्वम् सिध्यति; तस्मात् मतिमान् अर्थम् एकम् प्रसाधयेत्।
+  vyakhya_en: |
+    A maxim in the optative. Nothing, तद् किञ्चित्, is found यद् — which — is not
+    achieved अर्थेन, "by wealth" (the तृतीया of means, as is यत्नेन "by effort").
+    So the मतिमान्, the one who HAS wit (मति + मतुप्, 5.2.94), should — प्रसाधयेत्,
+    the विधिलिङ् "ought to secure" — wealth एकम्, above all. The whole force sits in
+    that optative: not "does" but "should."
 - id: rd049
   kind: attested
   segment: 380
