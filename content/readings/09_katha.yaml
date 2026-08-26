@@ -13232,3 +13232,206 @@ readings:
     I would beat her" (3.3.161). And the moment the imagined arm swings, the tense
     snaps back to plain past — पादेन घटम् अहन्, सक्तवः नष्टाः: "he struck the pot;
     the meal was lost." Grammar telling the joke.
+- id: ex257
+  kind: graded
+  segment: 272
+  source:
+    text: कथा (our graded retelling)
+    ref: "the man and the tiger — our own telling, through the cases"
+    curated: our simple Sanskrit; not from any single source
+  sentence: एकः नरः वने अवसत्। नरम् व्याघ्रः अपश्यत्। नरः वृक्षम् आरोहत्। व्याघ्रः नराय अक्रुध्यत्। नरः तस्मै फलानि अक्षिपत्। ततः नरात् व्याघ्रः अबिभेत्। नरस्य बुद्धिः महती आसीत्।
+  translation: A man lived in the forest. A tiger saw the man. The man climbed a tree. The tiger grew angry at the man. The man threw fruits at it. Then the tiger became afraid of the man. The man's wit was great.
+  teaches: |
+    one noun through its cases — नरः, नरम्, नराय, नरात्, नरस्य — and the verbs
+    that pick special cases: क्रुध् "be angry" wants the dative (नराय), भी "fear"
+    wants the ablative (नरात्).
+  words:
+  - form: एकः
+    lemma: एक
+    gloss: a
+    notes:
+    - term: संख्या
+      en: "a, one"
+    - term: विशेषण
+      en: qualifying नरः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: नरः
+    lemma: नर
+    gloss: a man
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (अ-stem, सु → नरः)
+  - form: वने
+    lemma: वन
+    gloss: in the forest
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: अवसत्
+    lemma: वस्
+    gloss: lived
+    notes:
+    - term: लङ्
+      en: past
+  - form: नरम्
+    lemma: नर
+    gloss: the man
+    notes:
+    - term: कर्मन्
+      en: object of अपश्यत्
+    - term: द्वितीया
+      en: accusative (नर + अम् → नरम्, अमि पूर्वः)
+  - form: व्याघ्रः
+    lemma: व्याघ्र
+    gloss: a tiger
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अपश्यत्
+    lemma: दृश्
+    gloss: saw
+    notes:
+    - term: लङ्
+      en: past
+  - form: वृक्षम्
+    lemma: वृक्ष
+    gloss: a tree
+    notes:
+    - term: कर्मन्
+      en: goal of आरोहत्
+    - term: द्वितीया
+      en: accusative
+  - form: आरोहत्
+    lemma: रुह्
+    gloss: climbed
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past (आ-रुह्)
+  - form: नराय
+    lemma: नर
+    gloss: at the man
+    notes:
+    - cite: '1.4.37'
+      role: क्रुधद्रुहेर्ष्यासूयार्थानां यं प्रति कोपः — the one at whom anger is directed (with क्रुध् etc.) is सम्प्रदान → dative नराय
+    - cite: '7.1.13'
+      role: ङेर्यः — the अ-stem dative ending ङे becomes य → नर + य → नराय
+    - term: सम्प्रदान
+      en: the target of the anger
+    - term: चतुर्थी
+      en: dative
+  - form: अक्रुध्यत्
+    lemma: क्रुध्
+    gloss: grew angry
+    vocab: true
+    notes:
+    - term: क्रुध्
+      en: '"be angry" (दिवादि — श्यन्)'
+    - term: लङ्
+      en: past
+  - form: तस्मै
+    lemma: तद्
+    gloss: at it
+    notes:
+    - cite: '7.1.14'
+      role: सर्वनाम्नः स्मै — a pronoun's dative singular ending is स्मै → तद् → तस्मै
+    - term: सम्प्रदान
+      en: recipient (of the thrown fruit)
+    - term: चतुर्थी
+      en: dative (pronominal)
+  - form: फलानि
+    lemma: फल
+    gloss: fruits
+    notes:
+    - term: कर्मन्
+      en: object of अक्षिपत्
+    - cite: '7.1.20'
+      role: जश्शसोः शिः — a neuter's जस्/शस् is replaced by शि (→ ि, with नुम्) → फल → फलानि
+    - term: द्वितीया
+      en: accusative plural (neuter)
+  - form: अक्षिपत्
+    lemma: क्षिप्
+    gloss: threw
+    notes:
+    - term: लङ्
+      en: past
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: adverb — "thereupon"
+  - form: नरात्
+    lemma: नर
+    gloss: of the man
+    notes:
+    - cite: '1.4.25'
+      role: भीत्रार्थानां भयहेतुः — the source of fear (with भी "fear") is अपादान → ablative नरात्
+    - term: अपादान
+      en: the thing feared
+    - term: पञ्चमी
+      en: ablative
+  - form: अबिभेत्
+    lemma: भी
+    gloss: became afraid
+    vocab: true
+    notes:
+    - term: भी
+      en: '"fear" (जुहोत्यादि, reduplicating)'
+    - term: लङ्
+      en: past
+  - form: नरस्य
+    lemma: नर
+    gloss: of the man
+    notes:
+    - cite: '7.1.12'
+      role: टाङसिङसामिनात्स्याः — the अ-stem genitive ending ङस् → स्य → नरस्य
+    - term: सम्बन्ध
+      en: possessor
+    - term: षष्ठी
+      en: genitive
+  - form: बुद्धिः
+    lemma: बुद्धि
+    gloss: wit, intelligence
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (इ-stem feminine → बुद्धिः)
+  - form: महती
+    lemma: महत्
+    gloss: great
+    notes:
+    - term: विशेषण
+      en: qualifying बुद्धिः (feminine महती)
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 18
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past
+  vyakhya: 'विभक्तिपरिचयकथा। एकम् एव नरशब्दं सर्वासु प्रायः विभक्तिषु — नरः नरम् नराय नरात् नरस्य। क्रुध्यतेः सम्प्रदानम् (क्रुधद्रुहेर्ष्या… यं प्रति कोपः) → नराय; बिभेतेः अपादानम् (भीत्रार्थानां भयहेतुः) → नरात्। तस्मै इति सर्वनाम्नः स्मै; फलानि इति जश्शसोः शिः; नराय इति ङेर्यः।'
+  vyakhya_en: |
+    Watch one word walk through the cases: नरः (nom), नरम् (acc), नराय (dat), नरात्
+    (abl), नरस्य (gen) — a whole अ-stem paradigm inside a story. And two verbs that
+    demand a case you might not expect: **क्रुध्** "be angry" takes its target in
+    the **dative** (नराय अक्रुध्यत्, 1.4.37), and **भी** "fear" takes what is feared
+    in the **ablative** (नरात् अबिभेत्, 1.4.25). Add the pronoun dative तस्मै (स्मै,
+    7.1.14) and the neuter plural फलानि (शि, 7.1.20), and the sentence is a small
+    grammar of the noun.
