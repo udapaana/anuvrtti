@@ -6,6 +6,18 @@ import type {
   PadaInfo,
 } from "./types";
 
+/**
+ * How many sūtras the Aṣṭādhyāyī has, and so how many pages /ref carries.
+ *
+ * A constant rather than `(await loadSutras()).length` because that import
+ * inlines all 3983 YAML files into whatever chunk touches it — the home page
+ * would pay six megabytes to print one integer. The text is closed; this
+ * number moves only if the vidvat YAML in src/lib/data/sutras/ is replaced,
+ * and `bun run check` counts it (check-sutra-count.ts) so a replacement that
+ * changes it cannot pass silently.
+ */
+export const SUTRA_COUNT = 3983;
+
 /** Convert numeric ID "11001" to display ID "1.1.1" */
 export function numericToDisplayId(numId: string): string {
   if (numId.length < 4) return numId;

@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import Sheet from './Sheet.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
 
   /*
     The one page skeleton. A page declares which regions it has — a shelf of
@@ -40,13 +41,23 @@
     railFrame = false,
     /**
      * Under 960px, make the spine and the rail bottom sheets instead of
-     * stacking them into the column. Requires `railFrame` — a sheet is a
-     * pinned head over a scrolling middle, which is what the frame already is.
+     * stacking them into the column.
+     *
+     * The rail takes one of two sheet shapes, decided by `railFrame`:
+     *
+     *   FRAMED   three detents. Peek is the frame's own pinned head, so the
+     *            region is always on screen and never in the way — the reader,
+     *            whose head is the word you tapped.
+     *   PLAIN    one detent, with a scrim, opened and dismissed like the spine.
+     *            A rail with no designed head has nothing to peek AT: resting
+     *            it open would just be the old stacked block, pinned.
      */
     sheets = false,
-    /** Which rail detent is showing: 0 peek, 1 half, 2 full. Bindable so a page
-        can open the sheet itself — the reader does when a question is drawn. */
+    /** Framed rail: which detent is showing — 0 peek, 1 half, 2 full. Bindable so
+        a page can open the sheet itself; the reader does when a question is drawn. */
     railDetent = $bindable(0),
+    /** Plain rail: whether its sheet is up. The page provides the control. */
+    railOpen = $bindable(false),
     /** Whether the spine sheet is up. The page provides the control that opens it. */
     spineOpen = $bindable(false)
   }: {
@@ -62,6 +73,7 @@
     railFrame?: boolean;
     sheets?: boolean;
     railDetent?: number;
+    railOpen?: boolean;
     spineOpen?: boolean;
   } = $props();
 
@@ -71,22 +83,36 @@
     reach the markup. Server-rendered as desktop, corrected on mount — the
     phone then renders sheets from its first paint after hydration.
   */
-  let narrow = $state(false);
-  $effect(() => {
-    if (typeof window === 'undefined' || !window.matchMedia) return;
-    const mq = window.matchMedia('(max-width: 960px)');
-    const sync = () => (narrow = mq.matches);
-    sync();
-    mq.addEventListener('change', sync);
-    return () => mq.removeEventListener('change', sync);
-  });
-  const asSheets = $derived(sheets && narrow);
+  const asSheets = $derived(sheets && $isNarrow);
 
-  // Leaving the phone with a sheet open would strand the spine's scrim on a
-  // layout that has no sheet to dismiss.
+  // Leaving the phone with a sheet open would strand a scrim on a layout that
+  // has no sheet to dismiss.
   $effect(() => {
-    if (!asSheets) spineOpen = false;
+    if (!asSheets) {
+      spineOpen = false;
+      railOpen = false;
+    }
   });
+
+  /*
+    Picking something from a sheet closes it.
+
+    A spine is a list of places to go, so choosing one and then having to
+    dismiss the list yourself is a second step for a decision already made —
+    and worse, the page has changed underneath a sheet still covering it. One
+    rule here rather than a line in every page's `onpick`, which is easy to
+    forget and was already forgotten on five of six.
+
+    A link or a button is a choice; an input is not, so a spine that filters
+    itself keeps working. Anything that must not dismiss — a fold inside a
+    sheet, say — opts out with `data-keep-sheet`.
+  */
+  function pickedFrom(close: () => void) {
+    return (e: MouseEvent) => {
+      const hit = (e.target as HTMLElement | null)?.closest('a, button');
+      if (hit && !hit.closest('[data-keep-sheet]')) close();
+    };
+  }
 
   /*
     The wrapper's layout modifier is prefixed, so it cannot collide with the
@@ -113,7 +139,9 @@
     <nav class="spine">{@render spine()}</nav>
   {/if}
 
-  <main class="column" class:measure class:under-sheet={asSheets && !!rail}>
+  <!-- Only a resting sheet steals room from the column: a plain rail's sheet is
+       dismissed when it is not in use, so the last line needs no clearance. -->
+  <main class="column" class:measure class:under-sheet={asSheets && !!rail && railFrame}>
     {@render children()}
   </main>
 
@@ -128,9 +156,25 @@
     nothing else — so the line stays on screen while its word is identified,
     which is the co-presence the desktop layout gets for free.
   -->
-  {#if rail}
+  {#if rail && railFrame}
     <Sheet detents={['auto', '62dvh', '100dvh']} bind:detent={railDetent} label="word detail">
       <aside class="rail framed sheeted">{@render rail()}</aside>
+    </Sheet>
+  {:else if rail && railOpen}
+    <!-- A rail with no pinned head of its own gets the spine's shape: opened
+         when wanted, dismissed when not. Resting it open at a peek would show
+         the top inch of a scrolling column, which tells you nothing. -->
+    <Sheet
+      detents={['74dvh']}
+      detent={0}
+      scrim
+      label="detail"
+      ondismiss={() => (railOpen = false)}
+    >
+      <!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
+      <aside class="rail sheeted plain" onclick={pickedFrom(() => (railOpen = false))}>
+        {@render rail()}
+      </aside>
     </Sheet>
   {/if}
 
@@ -144,7 +188,10 @@
       label="chapters"
       ondismiss={() => (spineOpen = false)}
     >
-      <nav class="spine sheeted">{@render spine()}</nav>
+      <!-- svelte-ignore a11y_no_static_element_interactions, a11y_click_events_have_key_events -->
+      <nav class="spine sheeted" onclick={pickedFrom(() => (spineOpen = false))}>
+        {@render spine()}
+      </nav>
     </Sheet>
   {/if}
 {/if}
@@ -312,6 +359,20 @@
          the width instead, or it shrink-wraps to the widest word and leaves
          the sheet's own surface showing down one side */
       align-self: stretch;
+    }
+    /* a plain rail keeps its padding and its own scroll — it is the same
+       column it is on the desktop, just delivered as a sheet */
+    .rail.sheeted.plain {
+      position: static;
+      align-self: stretch;
+      height: 100%;
+      max-height: none;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      border-left: none;
+      border-top: none;
+      padding: 14px 18px 28px;
+      width: auto;
     }
     .spine.sheeted {
       position: static;

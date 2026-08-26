@@ -189,21 +189,33 @@
     transition: none;
   }
 
+  /*
+    The bar is 4px; the TARGET is not. A grip you have to hit precisely is a
+    grip nobody uses — which is what happened here, since the sheet's only
+    opening control was this hairline. The padding makes it a 30px band, and
+    the region inside can offer a bigger handle still (the reader's whole word
+    head opens the drawer).
+  */
   .grip {
     flex: none;
-    padding: 8px 0 4px;
+    min-height: 30px;
+    padding: 12px 0 10px;
     display: flex;
+    align-items: center;
     justify-content: center;
     cursor: grab;
     touch-action: none;
     background: var(--sunken);
+  }
+  .grip:active .bar {
+    background: var(--muted);
   }
   .grip:focus-visible {
     outline: 2px solid var(--accent-ref);
     outline-offset: -2px;
   }
   .bar {
-    width: 38px;
+    width: 44px;
     height: 4px;
     border-radius: var(--radius);
     background: var(--ghost);

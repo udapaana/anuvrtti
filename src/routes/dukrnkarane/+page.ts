@@ -1,54 +1,12 @@
-export const ssr = false;
+import { redirect } from '@sveltejs/kit';
 
-import type { Derivation } from './types';
-
-export type Rule = {
-  n: number;
-  id: string;
-  title: string;
-  chapter: string;
-  section: string;
-  kind: 'rule' | 'appendix';
-  pages: { start: number; end: number };
-  images: string[];
-  scan: 'verified' | 'known-bad' | 'unchecked';
-  topics: string[];
-  words: string[];
-  paniniRefs: { display: string; sutraId: string | null }[];
-  crossRefs: number[];
-  citedBy: number[];
-  derivations: Derivation[];
-  body: string;
-};
-
-export type Chapter = { title: string; first: number; last: number; count: number };
-
-let cache: {
-  chapters: Chapter[];
-  rules: Rule[];
-  coreCount: number;
-  knownSutraIds: string[];
-} | null = null;
-
-export async function load({ url }) {
-  if (!cache) {
-    const resp = await fetch('/data/dukrnkarane.json');
-    if (!resp.ok) throw new Error(`dukrnkarane.json: ${resp.status}`);
-    cache = await resp.json();
-  }
-
-  const requested = Number(url.searchParams.get('s'));
-  const rules = cache!.rules;
-  // With no section asked for, open at the Preface — it is the book's own
-  // front matter and says what the text is, which § 19 does not.
-  const current =
-    rules.find((r) => r.n === requested) ?? rules.find((r) => r.n === 0) ?? rules[0];
-
-  return {
-    chapters: cache!.chapters,
-    rules,
-    current,
-    coreCount: cache!.coreCount,
-    knownSutraIds: cache!.knownSutraIds ?? [],
-  };
+/*
+  डुकृञ्करणे was the working name for Kāle's *A Higher Sanskrit Grammar*, and it
+  named the route while the grammar was one tool among several. It is now its
+  own door, under the plain word for what it is. The query survives the move —
+  ?s=488 is how every sūtra page links into a rule, and how the app's own
+  cross-references address one.
+*/
+export function load({ url }) {
+  redirect(308, `/grammar${url.search}`);
 }

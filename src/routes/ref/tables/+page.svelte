@@ -12,6 +12,8 @@
   import MaheshvaraSutras from '$lib/components/MaheshvaraSutras.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
   import Shelf from '$lib/components/ui/Shelf.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import Spine from '$lib/components/ui/Spine.svelte';
   import ToolRow from '../ToolRow.svelte';
 
@@ -31,6 +33,11 @@
     { id: 'kridanta', title: 'participles', titleSanskrit: 'कृदन्त' },
     { id: 'taddhita', title: 'derivation', titleSanskrit: 'तद्धित' }
   ];
+
+
+  // On a phone the spine is a sheet, opened from the shelf.
+  const narrow = $derived($isNarrow);
+  let spineOpen = $state(false);
 
   let activeCategory = $state('varnamala');
   let activeSection = $state('maheshvara');
@@ -73,6 +80,10 @@
 </svelte:head>
 
 {#snippet shelfLeft()}
+  {#if narrow}
+    <SheetButton label="tables" onopen={() => (spineOpen = true)} />
+    <span class="shelf-rule" aria-hidden="true"></span>
+  {/if}
   <ToolRow current="tables" />
 {/snippet}
 
@@ -96,7 +107,7 @@
 
 <Shelf left={shelfLeft} right={shelfRight} />
 
-<Shell {spine}>
+<Shell {spine} sheets bind:spineOpen>
   {#if sections.length > 1}
     <nav class="sections">
       {#each sections as s (s.id)}

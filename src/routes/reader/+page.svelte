@@ -13,11 +13,13 @@
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
   import SystemCard from '$lib/components/SystemCard.svelte';
   import { lookupTerm } from '$lib/jargon';
-  import { systemForTerm } from '$lib/systems';
-  import { KARAKA, VIBHAKTI } from '$lib/usage/schema';
+  import { systemForTerm, systemsForTerm } from '$lib/systems';
+  import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
   import { displayScript } from '$lib/stores/preferences';
   import { transliterate } from '$lib/transliteration';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
   import { questionsFor, drawQuestion, type Question } from '$lib/reader/quiz';
@@ -428,8 +430,25 @@
     const w = r?.words?.[wi];
     if (!r || !w) return null;
     const terms = (w.notes ?? []).filter((n: any) => n.term).map((n: any) => ({ term: n.term, en: n.en ?? '' }));
+    /*
+      DERIVED values are grammar too.
+
+      `terms` is what a human wrote in the YAML. `derived` is what the build
+      worked out from the form with vidyut — पुरुष, वचन, पद, गण and the rest.
+      गच्छति is authored as गम् · धातु · शप् · लट् · तिप् and derived as
+      प्रथमपुरुष · एकवचन · परस्मैपद · भ्वादि: nine facts, of which the rail
+      showed five, because only `terms` ever became chips.
+
+      That is 3998 facts across 2058 words — 77% of the corpus — known to the
+      app and invisible in it. They join the tag row now, kept separate so they
+      can be drawn as what they are: worked out, not written down.
+    */
+    const authored = new Set(terms.map((t: any) => t.term));
+    const derivedTerms = Object.entries(w.derived ?? {})
+      .filter(([, v]) => v && !authored.has(v as string))
+      .map(([dim, v]) => ({ term: v as string, en: `${dim} — worked out from the form`, dim }));
     const cites = (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => ({ cite: n.cite, role: n.role ?? '' }));
-    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quizzes: (w.quizzes ?? []) as any[], terms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
+    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quizzes: (w.quizzes ?? []) as any[], terms, derivedTerms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
   }
 
   /**
@@ -470,8 +489,40 @@
     }
     return s;
   });
-  // The system the open term belongs to — the map this note points into.
-  const openSystem = $derived(termInfo ? systemForTerm(termInfo.term) : undefined);
+  /*
+    The system the open term belongs to ON THIS WORD.
+
+    A tag is not the property of one word class: वचन is an axis of both सुप् and
+    तिङ्, so the selected word's OTHER tags are what say which table you are
+    looking at. Without them, पादाभ्याम् — करण · तृतीया · द्विवचन, a noun — opened
+    the verb's card, because तिङ् is declared first and also has a वचन axis.
+  */
+  const selTermNames = $derived([
+    ...((selWord?.terms ?? []) as any[]).map((t) => t.term),
+    ...Object.values(selWord?.derived ?? {})
+  ] as string[]);
+
+  /*
+    Values the word carries by CONVENTION rather than by annotation — see
+    `impliedTerms`. Kept apart from the authored ones so the card can mark them
+    as defaults instead of passing them off as something the corpus states.
+  */
+  const selImplied = $derived(impliedTerms(selTermNames));
+
+  // Tapping "also in …" pins the other system, for a tag the word's own tags
+  // cannot settle or when you want to see the shared axis from the other side.
+  let systemPin = $state<string | null>(null);
+  $effect(() => { openTerm; systemPin = null; });
+
+  /** Every system this tag belongs to — one for most, two for the वचन values. */
+  const openSystems = $derived(termInfo ? systemsForTerm(termInfo.term) : []);
+  const openSystem = $derived.by(() => {
+    if (!termInfo) return undefined;
+    if (systemPin) return openSystems.find((s) => s.id === systemPin);
+    return systemForTerm(termInfo.term, selTermNames);
+  });
+  /** The other homes of a shared tag, named rather than silently dropped. */
+  const alsoSystems = $derived(openSystems.filter((s) => s.id !== openSystem?.id));
 
   // The reading each structural tag is FIRST introduced at, in corpus order —
   // the curriculum's own arc. A tag "new here" is one the sequence opens at this
@@ -493,7 +544,7 @@
         const t = n.term;
         // Only structural tags (those that belong to a system) — and only the
         // first time the whole corpus introduces them.
-        if (t && !seenLocal.has(t) && firstSeenAt.get(t) === r.id && systemForTerm(t)) {
+        if (t && !seenLocal.has(t) && firstSeenAt.get(t) === r.id && systemsForTerm(t).length) {
           seenLocal.add(t);
           out.push(t);
         }
@@ -1291,17 +1342,10 @@
   /*
     On a phone the rail is a bottom sheet and the spine is a sheet you open, so
     the reader has to know which layout it is in — a media query styles what is
-    already there, but these are different controls in different places.
+    already there, but these are different controls in different places. The
+    fact is shared with Shell and every other sheeted page.
   */
-  let narrow = $state(false);
-  $effect(() => {
-    if (typeof window === 'undefined' || !window.matchMedia) return;
-    const mq = window.matchMedia('(max-width: 960px)');
-    const sync = () => (narrow = mq.matches);
-    sync();
-    mq.addEventListener('change', sync);
-    return () => mq.removeEventListener('change', sync);
-  });
+  const narrow = $derived($isNarrow);
 
   /** 0 peek · 1 half · 2 full. Bound to Shell, which owns the sheet. */
   let railDetent = $state(0);
@@ -1331,14 +1375,16 @@
       on the text         ← → step line   (the desktop's ↑ ↓)
   */
   const SWIPE_X = 40;
+  /** When a swipe last fired, so the click it drags behind it can be ignored. */
+  let swipedAt = 0;
   function swipe(onstep: (dir: 1 | -1) => void) {
     let x = 0;
     let y = 0;
     let live = false;
     return {
       onpointerdown(e: PointerEvent) {
-        // a swipe is a touch gesture; a mouse drag here is a text selection
-        if (e.pointerType === 'mouse') return;
+        // the tap half works with a mouse too; only the SWIPE is touch-only,
+        // because a mouse drag across text is a selection
         x = e.clientX;
         y = e.clientY;
         live = true;
@@ -1347,14 +1393,45 @@
         if (!live) return;
         live = false;
         const dx = e.clientX - x;
-        // must be decisively horizontal, or a slightly-off scroll steps a line
-        if (Math.abs(dx) < SWIPE_X || Math.abs(dx) < Math.abs(e.clientY - y) * 1.5) return;
+        const swiped =
+          e.pointerType !== 'mouse' &&
+          Math.abs(dx) >= SWIPE_X &&
+          Math.abs(dx) >= Math.abs(e.clientY - y) * 1.5;
+        if (!swiped) return;
+        // the click that follows this gesture is not a tap on anything
+        swipedAt = performance.now();
         onstep(dx < 0 ? 1 : -1);
       },
       onpointercancel() {
         live = false;
       }
     };
+  }
+  /*
+    The whole peek head opens the drawer.
+
+    "↑ pull up" named the gesture but was not the target: the only thing that
+    actually opened the sheet was the 4px grey bar above it, which is a hard
+    thing to hit and an unlikely thing to try. The head is ~100px of the screen
+    and is already the thing you are looking at, so it is the handle — tap
+    anywhere on it and the drawer comes up.
+
+    Not from a real control: ★ banks the word and a tag opens its note, and
+    neither should be a second thing at once. A tag tapped at peek DOES raise
+    the sheet, because the note it opens lives in the evidence, which peek does
+    not show — the tap would otherwise appear to do nothing.
+
+    On CLICK, not on pointerup. Raising the sheet moves the layout under the
+    finger, and a click dispatched after that lands on whatever has taken the
+    spot — which here is the `quiz me` button arriving at the bottom of the
+    grown sheet. Click fires against the element the press began on, so the
+    drawer opens and nothing else does.
+  */
+  function openFromHead(e: MouseEvent) {
+    if (!narrow || railDetent > 0) return;
+    if (performance.now() - swipedAt < 400) return;
+    if ((e.target as HTMLElement | null)?.closest('.wh-act')) return;
+    railDetent = 1;
   }
   const swipeWord = swipe((d) => stepWord(d));
   const swipeLine = swipe((d) => stepLine(d));
@@ -1367,11 +1444,11 @@
     <!-- The chapter you are in, and the way into the rest of them. On the
          phone the spine is a sheet, so it needs a door on the shelf; on the
          desktop it is a column that is simply there. -->
-    <button class="chapterpick" onclick={() => (spineOpen = true)}>
+    {#snippet chapterLabel()}
       <Sanskrit text={chapterTitle(focusedChapter).dev} source="devanagari" />
-      <span class="caret" aria-hidden="true">▾</span>
-    </button>
-    <span class="rule" aria-hidden="true"></span>
+    {/snippet}
+    <SheetButton label={chapterLabel} onopen={() => (spineOpen = true)} title="chapters" />
+    <span class="shelf-rule" aria-hidden="true"></span>
   {:else}
     <span class="quiet">gloss</span>
   {/if}
@@ -1614,6 +1691,7 @@
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
       class="wordhead"
+      onclick={narrow ? openFromHead : undefined}
       onpointerdown={narrow ? swipeWord.onpointerdown : undefined}
       onpointerup={narrow ? swipeWord.onpointerup : undefined}
       onpointercancel={narrow ? swipeWord.onpointercancel : undefined}
@@ -1625,7 +1703,10 @@
                word without its meaning is not worth the space. -->
           {#if narrow && railDetent === 0}
             <span class="wh-en peek"><Sanskrit text={selWord.gloss} source="devanagari" /></span>
-            <span class="wh-pull">↑ pull up</span>
+            <!-- A hint you cannot press is a hint you have to already know how
+                 to act on. The grip still takes swipes; this is the same move
+                 as a button, for a thumb that would rather tap. -->
+            <button class="wh-pull" onclick={() => (railDetent = 1)}>↑ pull up</button>
           {:else if wordRoman}
             <!-- the Latin reading, only while it differs from the page's own script -->
             <span class="wh-rom">{wordRoman}</span>
@@ -1635,6 +1716,16 @@
           <span class="wh-rom">tap a word in the line</span>
         {/if}
         <span class="wh-acts">
+          <!-- the other half of "pull up": once the sheet is open, the way back
+               down is a button too, not only a swipe -->
+          {#if narrow && railDetent > 0}
+            <button
+              class="wh-act"
+              onclick={() => (railDetent = railDetent - 1)}
+              title="collapse"
+              aria-label="collapse the panel"
+            >↓</button>
+          {/if}
           {#if selWord}
             <!-- banking was the last button under a long column; it is the
                  word's own action, so it lives beside the word -->
@@ -1693,6 +1784,23 @@
                 />
               </button>
             {/each}
+            <!-- then what the build worked out from the form: the same grammar,
+                 dashed because no one authored it -->
+            {#each selWord.derivedTerms ?? [] as t}
+              <button
+                class="chip-btn"
+                type="button"
+                title={t.en}
+                onclick={() => (openTerm = openTerm === t.term ? null : t.term)}
+              >
+                <Chip
+                  label={t.term}
+                  script="devanagari"
+                  tone={openTerm === t.term ? 'on' : 'quiet'}
+                  derived
+                />
+              </button>
+            {/each}
             {#if selWord.terms.some((t: any) => newHere.includes(t.term))}
               <span class="wh-legend">• new here</span>
             {/if}
@@ -1739,9 +1847,35 @@
             <SystemCard
               system={openSystem}
               activeTerm={termInfo?.term ?? null}
+              wordTerms={new Set(selTermNames)}
+              impliedTerms={new Set(selImplied)}
               {metTerms}
               onpick={(t) => (openTerm = t)}
             />
+          {:else if openSystems.length > 1}
+            <!-- The word's tags do not settle which table this is. Saying so is
+                 the honest answer, and the ambiguity is itself the lesson: the
+                 tag is an axis of more than one system. -->
+            <p class="ambiguous">
+              <Sanskrit text={termInfo?.term ?? openTerm} source="devanagari" /> is an axis of more
+              than one system, and this word's other tags do not say which.
+            </p>
+          {/if}
+
+          {#if alsoSystems.length}
+            <!-- A shared tag has more than one home; the schema says which, so
+                 the rail does too instead of silently picking one. -->
+            <div class="also">
+              <span class="also-label">also an axis of</span>
+              {#each alsoSystems as sys (sys.id)}
+                <button class="also-btn" onclick={() => (systemPin = sys.id)}>
+                  <Sanskrit text={sys.name} source="devanagari" />
+                </button>
+              {/each}
+              {#if systemPin}
+                <button class="also-btn back" onclick={() => (systemPin = null)}>← this word's</button>
+              {/if}
+            </div>
           {/if}
         </div>
       {/if}
@@ -2818,6 +2952,47 @@
     text-decoration: underline;
   }
 
+  /* a tag with more than one home says so, rather than the rail picking one */
+  .also {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+    margin-top: 8px;
+  }
+  .also-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .also-btn {
+    font-family: var(--font-deva);
+    font-size: 12px;
+    color: var(--accent-ref);
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 2px 8px;
+    cursor: pointer;
+  }
+  .also-btn:hover {
+    border-color: var(--accent-ref);
+  }
+  .also-btn.back {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .ambiguous {
+    margin: 8px 0 0;
+    font-family: var(--font-prose);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
   .decomp {
     display: flex;
     flex-direction: column;
@@ -2928,12 +3103,26 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+    /* it says "pull up", so it has to look like something you can press */
     .wh-pull {
       margin-left: auto;
       flex: none;
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--quiet);
+      color: var(--ink-2);
+      background: var(--paper);
+      border: 1px solid var(--rule-2);
+      border-radius: var(--radius);
+      padding: 6px 9px;
+      cursor: pointer;
+    }
+    .wh-pull:active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    /* the whole head is the handle at peek, and says so */
+    .railframe.at-peek .wordhead {
+      cursor: pointer;
     }
 
     /* touch targets: a pointer is 1px, a thumb is 44 */
@@ -2995,30 +3184,6 @@
     }
     .spinehead .jump input {
       width: 116px;
-    }
-    .chapterpick {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-deva);
-      font-size: 14px;
-      color: var(--ink);
-      background: transparent;
-      border: none;
-      border-radius: var(--radius);
-      padding: 4px 0;
-      cursor: pointer;
-    }
-    .chapterpick .caret {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--faint);
-    }
-    .rule {
-      width: 1px;
-      height: 16px;
-      background: var(--rule-2);
-      flex: none;
     }
     /* padaccheda goes to the far edge, so the shelf reads as two groups rather
        than one run of controls */

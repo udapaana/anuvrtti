@@ -10,6 +10,9 @@
  *   - सङ्ग्रह violations: a consolidation passage citing a rule not yet
  *     introduced. This has fired twice on mechanical edits and caught both.
  *   - gloss/token mismatches in NEW readings (see the baseline note below).
+ *   - the systems book: a tag in static/data/systems.toml that is not a schema
+ *     value. It is hand-edited prose joined to the schema by exact string match,
+ *     so a typo unlights a cell rather than raising anything.
  *   - annotation lint: a tag that is WRONG, not just missing — two values of one
  *     dimension (लट् and विधिलिङ् both), or a value that belongs to no dimension
  *     of the word's type. The corpus is at zero; any new one fails the build.
@@ -166,6 +169,63 @@ if (lintCount > 0) {
   console.log(`  ✗ annotation lint: ${lintCount} error(s)`);
 } else {
   console.log('  ✓ annotation lint: clean');
+}
+
+// 7. the systems book — HARD. static/data/systems.toml is hand-edited, and a
+// mistyped tag there breaks the join to the schema silently: the cell just never
+// lights, which reads as a thin corpus rather than a wrong book.
+const sys = await run(['bun', 'scripts/check-systems.ts']);
+const sysN = sys.match(/(\d+) systems error/);
+if (sysN) {
+  problems.push(`systems: ${sysN[1]} tag(s) do not match the schema\n` +
+    sys.split('\n').filter((l) => /^\s{4}\S/.test(l)).join('\n'));
+  console.log(`  ✗ systems: ${sysN[1]} error(s)`);
+} else {
+  console.log('  ✓ ' + sys.trim());
+}
+
+// 8. the sūtra count — HARD, and cheap. The home page's सूत्र door prints a
+// constant instead of loading 3983 YAML files to count them; this is what
+// stops that constant drifting away from the data behind the door.
+const cnt = await run(['bun', 'scripts/check-sutra-count.ts']);
+if (/SUTRA_COUNT is/.test(cnt)) {
+  problems.push('sūtra count: ' + cnt.trim().split('\n')[0]);
+  console.log('  ✗ ' + cnt.trim().split('\n')[0]);
+} else {
+  console.log('  ✓ ' + cnt.trim());
+}
+
+// 9. the home page's door counts — HARD. static/data/stats.json is generated
+// and committed; if it goes stale the threshold page advertises a corpus we no
+// longer have, and nothing else would notice.
+const stats = await run(['bun', 'scripts/build-stats.ts', '--check']);
+if (/stale|missing/.test(stats)) {
+  problems.push('door stats: static/data/stats.json is stale — run bun run build:stats');
+  console.log('  ✗ door stats: static/data/stats.json is stale');
+} else {
+  console.log('  ✓ ' + stats.trim());
+}
+
+// 10. the sūtra payload — HARD. static/data/sutras.json is generated from
+// src/lib/data/sutras/*.yaml and committed; stale, it serves an Aṣṭādhyāyī that
+// no longer matches its own source, and every /ref page reads it.
+const sut = await run(['bun', 'scripts/build-sutras.ts', '--check']);
+if (/stale/.test(sut)) {
+  problems.push('sūtra payload: static/data/sutras.json is stale — run bun run build:sutras');
+  console.log('  ✗ sūtra payload: static/data/sutras.json is stale');
+} else {
+  console.log('  ✓ ' + sut.trim());
+}
+
+// 11. the per-sūtra ref files — HARD. Generated from the six imported corpora
+// and committed; every /ref/[id] page fetches one, and stale means a sūtra page
+// shows commentary that no longer matches the corpus it was split from.
+const refs = await run(['bun', 'scripts/build-sutra-refs.ts', '--check']);
+if (/stale/.test(refs)) {
+  problems.push('sūtra refs: static/data/sutra-refs/ is stale — run bun run build:sutra-refs');
+  console.log('  ✗ sūtra refs: static/data/sutra-refs/ is stale');
+} else {
+  console.log('  ✓ ' + refs.trim());
 }
 
 console.log();

@@ -5,6 +5,8 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
   import Shelf from '$lib/components/ui/Shelf.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import Spine from '$lib/components/ui/Spine.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import Chip from '$lib/components/ui/Chip.svelte';
@@ -25,6 +27,11 @@
   */
 
   // The "language of discourse" — which support language the lesson explains in.
+
+  // On a phone the spine is a sheet, opened from the shelf.
+  const narrow = $derived($isNarrow);
+  let spineOpen = $state(false);
+
   let lang = $state<'telugu' | 'english'>('english');
   onMount(() => lessonLanguage.subscribe((l) => (lang = l)));
 
@@ -352,6 +359,10 @@
 <svelte:head><title>अभ्यास · workbook</title></svelte:head>
 
 {#snippet shelfLeft()}
+  {#if narrow}
+    <SheetButton label="lessons" onopen={() => (spineOpen = true)} />
+    <span class="shelf-rule" aria-hidden="true"></span>
+  {/if}
   {#if parts.length > 1}
     <span class="quiet">volume</span>
     <Segmented
@@ -387,7 +398,7 @@
     progress={flat.length > 1 ? (lessonIdx / (flat.length - 1)) * 100 : null}
   />
 
-  <Shell {spine}>
+  <Shell {spine} sheets bind:spineOpen>
     {#if lesson}
       <header class="lesson-head">
         <span class="label">part {lesson.part} · lesson {lesson.number ?? ''}</span>
@@ -464,6 +475,22 @@
           {/if}
 
           {#if b.kind === 'vocab' && b.words.length}
+            <!--
+              What "keep" means, said once per lesson rather than nowhere.
+
+              The button has always worked — it adds the word to a spaced-review
+              deck that /words lists and /review runs sessions over — but nothing
+              on the page said so, and the affordance is invisible on arrival:
+              the workbook opens on lesson 1, which is one of the four lessons in
+              seventy-nine with no vocabulary section at all. So a first visit
+              showed no keep button, and the index advertised "words you have
+              kept" with nothing anywhere to keep.
+            -->
+            <p class="vocab-hint">
+              Keep a word to put it in your review deck —
+              <a href="/words">the deck</a> lists them, <a href="/review">review</a> runs a spaced
+              session over what is due.
+            </p>
             <div class="rows">
               {#each b.words as w}
                 <div class="vocab-row">
@@ -756,6 +783,16 @@
   .sandhi-en {
     font-size: 14px;
     color: var(--muted);
+  }
+
+  .vocab-hint {
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .vocab-hint a {
+    color: var(--accent);
   }
 
   /* vocabulary — the row that feeds the deck */

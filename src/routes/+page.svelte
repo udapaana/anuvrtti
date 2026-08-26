@@ -4,6 +4,7 @@
   import Shell from '$lib/components/ui/Shell.svelte';
   import { learningProgress } from '$lib/stores/learning';
   import { loadPathIndex, type PathMeta } from '$lib/content';
+  import { SUTRA_COUNT } from '$lib/data/parser';
   import { pickResumeTarget, type ResumeTarget } from '$lib/learning/resume';
   import { displayScript } from '$lib/stores/preferences';
   import { transliterate } from '$lib/transliteration';
@@ -30,10 +31,19 @@
   let resume: ResumeTarget | null = $state(null);
   let allPaths: PathMeta[] = $state([]);
 
-  // Live counts on the doors — they earn their place there. The reading and
-  // lesson fetches are unchanged; the usage count is the same index the door
-  // itself renders.
-  let stat = $state({ readings: 0, lessons: 0, cells: 0, sutras: 0 });
+  /*
+    Live counts on the doors — they earn their place there, and each one counts
+    what is BEHIND its own door. The सूत्र door used to print the distinct sūtras
+    cited by the reader's word notes (187), which is a fact about the reader's
+    coverage, not about /ref — the door then handed you 3983. That is /usage's
+    kind of number, so it left rather than moved.
+
+    The other three arrive from static/data/stats.json, eighty-three bytes built
+    by scripts/build-stats.ts. Reading them live meant fetching readings.json,
+    usage.json and balabodhini.json — 5.9 MB of corpora — to end up with three
+    integers, on the first page anyone loads.
+  */
+  let stat = $state({ readings: 0, lessons: 0, cells: 0, rules: 0, sutras: SUTRA_COUNT });
 
   onMount(async () => {
     try {
@@ -48,39 +58,11 @@
 
   async function loadStats() {
     try {
-      const r = await fetch(dataUrl('/data/readings.json'));
-      if (r.ok) {
-        const d = await r.json();
-        const cites = new Set<string>();
-        (d.sequence ?? []).forEach((rd: any) =>
-          (rd.words ?? []).forEach((w: any) =>
-            (w.notes ?? []).forEach((n: any) => n.cite && cites.add(n.cite))
-          )
-        );
-        stat.readings = (d.sequence ?? []).length;
-        stat.sutras = cites.size;
-      }
-    } catch {}
-    try {
-      const r = await fetch(dataUrl('/data/balabodhini.json'));
-      if (r.ok) {
-        const b = await r.json();
-        stat.lessons = (b.parts ?? []).reduce((a: number, p: any) => a + p.lessons.length, 0);
-      }
-    } catch {}
-    try {
-      const r = await fetch(dataUrl('/data/usage.json'));
-      if (r.ok) {
-        const u = await r.json();
-        // The door's count is the cells the corpus actually attests, which is
-        // what each entry records as `filled`.
-        stat.cells = (u.sections ?? []).reduce(
-          (a: number, s: any) =>
-            a + (s.entries ?? []).reduce((b: number, e: any) => b + (e.filled ?? 0), 0),
-          0
-        );
-      }
-    } catch {}
+      const r = await fetch(dataUrl('/data/stats.json'));
+      if (r.ok) Object.assign(stat, await r.json());
+    } catch {
+      // fail soft — count() prints an em dash for a zero, and the doors work
+    }
   }
 
   // Only the opening still follows the script toggle; the term table that used
@@ -127,6 +109,12 @@
       dev: 'सूत्र',
       body: 'The Aṣṭādhyāyī by adhyāya and pāda, with a syllabus through it.',
       meta: `${count(stat.sutras)} sūtras →`
+    },
+    {
+      href: '/grammar',
+      dev: 'व्याकरण',
+      body: "Kāle's grammar, rule by rule — sandhi, declension, compounds, the verb.",
+      meta: `${count(stat.rules)} rules →`
     }
   ]);
 </script>
@@ -161,7 +149,7 @@
   <nav class="doors">
     {#each doors as door (door.href)}
       <a class="door" href={door.href}>
-        <span class="door-dev">{door.dev}</span>
+        <span class="door-dev font-{$displayScript}"><Sanskrit text={door.dev} source="devanagari" /></span>
         <p class="door-body">{door.body}</p>
         <span class="door-meta">{door.meta}</span>
       </a>
@@ -171,7 +159,7 @@
   <a class="everything" href="/index">
     <span class="everything-label">everything else</span>
     <span class="everything-list">
-      words · review · conjugate · pratyāhārāḥ · jargon · dukṛṇkaraṇe · about →
+      words · review · conjugate · pratyāhārāḥ · jargon · tables · about →
     </span>
   </a>
 </Shell>
@@ -251,11 +239,17 @@
     color: var(--muted);
   }
 
-  /* The four doors. One hairline grid, no cards, no radii — the counts are what
-     distinguish them, not decoration. */
+  /* The doors. One hairline grid, no cards, no radii — the counts are what
+     distinguish them, not decoration.
+
+     auto-fit rather than a fixed column count: the row was repeat(4, 1fr) and
+     adding the grammar door would have left a fifth cell hanging alone on a
+     second row. A 190px floor lets the browser fit as many as the width allows
+     and reflow the rest, which is also what makes the phone case work without
+     a third breakpoint. */
   .doors {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     gap: 1px;
     background: var(--rule-2);
     border: 1px solid var(--rule-2);
@@ -274,7 +268,8 @@
     background: var(--sunken);
   }
   .door-dev {
-    font-family: var(--font-deva);
+    /* the family comes from the font-<script> class, so a Telugu reader gets
+       Telugu metrics rather than Devanagari ones applied to Telugu glyphs */
     font-size: 22px;
     font-weight: 600;
     color: var(--accent);
@@ -312,14 +307,15 @@
     color: var(--accent);
   }
 
-  @media (max-width: 900px) {
-    .doors {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
   @media (max-width: 560px) {
     .doors {
       grid-template-columns: 1fr;
+    }
+    .door {
+      /* stacked, each door is a row rather than a tile — the 150px floor left
+         five near-empty boxes running off the bottom of a phone */
+      min-height: 0;
+      padding: 16px 18px;
     }
     .statement h1 {
       font-size: 28px;

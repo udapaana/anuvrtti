@@ -8,6 +8,8 @@
   import Shelf from '$lib/components/ui/Shelf.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import Disclose from '$lib/components/ui/Disclose.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import { cellKey } from '$lib/usage/normalize';
   import { TERMINALS, TERMINAL_DEV } from '$lib/usage/taxonomy';
   import { transliterate, type Script } from '$lib/transliteration';
@@ -365,11 +367,18 @@
   function pickCell(k: string, card?: ParadigmEntry) {
     const c = card ?? entry;
     const samePin = c && pinKey(c) === (entry ? pinKey(entry) : '');
+    const clearing = cell === k && samePin;
     go({
       stem: c?.subject ?? subject,
       pin: c ? pinKey(c) || null : pin,
-      cell: cell === k && samePin ? null : k
+      cell: clearing ? null : k
     });
+    /*
+      On a phone the cell detail is a sheet, and tapping a cell IS the request
+      to see it — asking for a second tap on a control elsewhere would make the
+      grid inert. Tapping the lit cell again clears it, so the sheet goes too.
+    */
+    if (narrow) railOpen = !clearing;
   }
 
   /** The attestations in one cell, or [] when the corpus has none. */
@@ -385,6 +394,15 @@
   /** The rail's one disclosure row: forms outside the classical paradigm. */
   let unplacedOpen = $state(false);
 
+  /*
+    On a phone the taxonomy and the cell detail are sheets rather than columns
+    either side of the grid. Picking a cell brings its sheet up, which is the
+    whole point of tapping it; picking a subject puts the taxonomy away again.
+  */
+  const narrow = $derived($isNarrow);
+  let spineOpen = $state(false);
+  let railOpen = $state(false);
+
   const selected = $derived.by(() => {
     if (!entry || !cell) return null;
     const a = atts(entry, cell);
@@ -395,6 +413,10 @@
 <svelte:head><title>प्रयोग · usage — anuvrtti</title></svelte:head>
 
 {#snippet shelfLeft()}
+  {#if narrow}
+    <SheetButton label="taxonomy" onopen={() => (spineOpen = true)} />
+    <span class="shelf-rule" aria-hidden="true"></span>
+  {/if}
   <span class="quiet">dimension</span>
   {#if sections.length}
     <Segmented
@@ -602,7 +624,7 @@
 {:else if section && entry}
   <Shelf left={shelfLeft} right={shelfRight} />
 
-  <Shell {spine} {rail} spineWidth="232px">
+  <Shell {spine} {rail} sheets bind:spineOpen bind:railOpen spineWidth="232px">
     <header class="head">
       <h1><Sanskrit text="प्रयोग" source="devanagari" /></h1>
       <p>
@@ -680,7 +702,62 @@
             <span class="card-count">{card.filled} of {card.total} cells</span>
           </div>
         {/if}
-        {#if card.paradigm}
+        {#if card.paradigm && narrow}
+          <!--
+            THE PARADIGM, STACKED.
+
+            The grid is विभक्ति × वचन — eight rows by three columns, each cell
+            holding a form, the phrase it occurs in and its reading id. At 390px
+            that is about 900px of table in a 358px column: it scrolled, but two
+            of the three numbers sat off-screen with nothing to say they were
+            there, so the page looked like a one-column paradigm with the right
+            edge sliced off.
+
+            A CSS reflow cannot fix it, because the DOM order is corner, three
+            column heads, then row head and three cells — collapsed to one
+            column that reads "ekavacana, dvivacana, bahuvacana, prathamā, …"
+            and separates every form from its number. So the phone gets its own
+            markup: one block per case, the three numbers labelled inside it.
+            Same data, same cell buttons, same selection — read top to bottom.
+          -->
+          <div class="stack">
+            {#each rows as r}
+              <div class="st-row">
+                <div class="st-case"><Sanskrit text={r} source="devanagari" /></div>
+                {#each cols as c}
+                  {@const k = cellKey(r, c)}
+                  {@const a = atts(card, k)}
+                  {@const exp = expected(card, k)}
+                  <button
+                    class="st-cell"
+                    class:has={a.length > 0}
+                    class:sel={cell === k && card === entry}
+                    aria-label="{r} {c} — {a.length ? a[0].form : 'not attested'}"
+                    onclick={() => pickCell(k, card)}
+                  >
+                    <span class="st-num"><Sanskrit text={c} source="devanagari" /></span>
+                    <span class="st-body">
+                      {#if a.length}
+                        <span class="form">
+                          <Sanskrit text={a[0].formRaw} source="devanagari" fallback={a[0].form} />
+                        </span>
+                        {#if a[0].phrase}
+                          <span class="phrase"><Sanskrit text={a[0].phrase} source="devanagari" /></span>
+                        {/if}
+                        <span class="meta">{a[0].reading}</span>
+                      {:else if exp.length}
+                        <span class="form ghost"><Sanskrit text={exp[0]} source="devanagari" /></span>
+                        <span class="unwritten">no reading attests this</span>
+                      {:else}
+                        <span class="form ghost">—</span>
+                      {/if}
+                    </span>
+                  </button>
+                {/each}
+              </div>
+            {/each}
+          </div>
+        {:else if card.paradigm}
           <div class="grid-scroll">
             <div class="grid" style="--cols:{cols.length}">
               <div class="corner"></div>
@@ -1105,6 +1182,54 @@
   .grid-scroll {
     overflow-x: auto;
   }
+  /* the phone's stacked paradigm — see the block comment at its markup */
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .st-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .st-case {
+    background: var(--sunken);
+    padding: 6px 10px;
+    font-family: var(--font-deva);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .st-cell {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 10px;
+    align-items: baseline;
+    text-align: left;
+    background: var(--paper);
+    border: none;
+    padding: 9px 10px;
+    cursor: pointer;
+    /* a real touch target — the desktop cell is 7px of padding around text */
+    min-height: 44px;
+  }
+  .st-cell.sel {
+    background: var(--accent-soft);
+  }
+  .st-num {
+    font-family: var(--font-deva);
+    font-size: 11px;
+    color: var(--quiet);
+  }
+  .st-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: auto repeat(var(--cols), minmax(9rem, 1fr));

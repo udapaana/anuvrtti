@@ -69,18 +69,26 @@
     white-space: nowrap;
   }
   /*
+    Neither group flexes; .inner scrolls instead.
+
     `min-width: 0` let the left group collapse to nothing while its own nowrap
-    contents overflowed straight across the right group — on a 390px shelf the
-    chapter, the gloss toggle and the counts printed on top of each other.
-    `max-content` holds the group at its natural width and lets .inner scroll,
-    which is what its overflow-x was for.
+    contents printed straight across the right group — on a 390px shelf the
+    chapter, the gloss toggle and the counts landed on top of each other. But
+    `min-width: max-content` overcorrected: an intrinsic minimum that large
+    propagates out of the scroll container and widens the whole DOCUMENT, so
+    /ref could be panned sideways and the browser zoomed the page out to fit.
+
+    At their natural size with the right group pushed over, each stays whole and
+    the overflow belongs to .inner, which is what its overflow-x was for.
   */
-  .left {
-    flex: 1;
-    min-width: max-content;
-  }
+  .left,
   .right {
     flex: none;
+  }
+  .right {
+    margin-left: auto;
+  }
+  .right {
     color: var(--faint);
   }
 

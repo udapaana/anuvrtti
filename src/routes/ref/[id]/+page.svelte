@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { browser } from '$app/environment';
+  import { dataUrl } from '$lib/dataUrl';
   import { onMount } from 'svelte';
   import type { Sutra, Commentary, LayeredSutraCommentary, CommentaryDepth } from '$lib/data/types';
   import SutraDisplay from '$lib/components/SutraDisplay.svelte';
@@ -10,6 +11,8 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
   import Shelf from '$lib/components/ui/Shelf.svelte';
+  import { isNarrow } from '$lib/stores/viewport';
+  import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import Disclose from '$lib/components/ui/Disclose.svelte';
   import {
@@ -42,6 +45,10 @@
     stepIndex: number;
     stepTotal: number;
   }
+  // On a phone the neighbours rail is a sheet, opened from the shelf.
+  const narrow = $derived($isNarrow);
+  let railOpen = $state(false);
+
   let learningContext: LearningContext | null = $state(null);
 
   if (browser) {
@@ -122,19 +129,23 @@
 
   // The lines in the graded reader that cite this sūtra. Best-effort: the rail
   // simply omits the section if the corpus does not load.
+  /*
+    Which readings cite this sūtra.
+
+    This used to fetch readings.json — 4.07 MB, the entire graded reader — and
+    scan every word of every reading for a matching cite, in order to show a
+    list that is usually empty and never longer than a handful. The corpus cites
+    187 distinct sūtras in total, so the whole answer for every sūtra is a
+    260 KB index: build-sutra-refs.ts writes it as readings-by-sutra.json.
+  */
   let readingHits = $state<{ id: string; sentence: string }[]>([]);
   onMount(async () => {
     try {
-      const res = await fetch('/data/readings.json');
-      if (!res.ok) return;
-      const corpus = await res.json();
       const id = data.sutra?.id;
       if (!id) return;
-      readingHits = (corpus.sequence ?? [])
-        .filter((r: any) =>
-          (r.words ?? []).some((w: any) => (w.notes ?? []).some((n: any) => n.cite === id))
-        )
-        .map((r: any) => ({ id: r.id, sentence: r.sentence ?? '' }));
+      const res = await fetch(dataUrl('/data/readings-by-sutra.json'));
+      if (!res.ok) return;
+      readingHits = ((await res.json()) as Record<string, { id: string; sentence: string }[]>)[id] ?? [];
     } catch {
       /* the rail drops the section */
     }
@@ -211,6 +222,10 @@
 </svelte:head>
 
 {#snippet shelfLeft()}
+  {#if narrow}
+    <SheetButton label="neighbours" onopen={() => (railOpen = true)} />
+    <span class="shelf-rule" aria-hidden="true"></span>
+  {/if}
   {#if sutra}
     <a class="crumb" href="/ref?a={sutra.adhyaya}&p={sutra.pada}">
       {sutra.adhyaya}.{sutra.pada}
@@ -319,7 +334,7 @@
 {:else}
   <Shelf left={shelfLeft} right={shelfRight} />
 
-  <Shell {rail}>
+  <Shell {rail} sheets bind:railOpen>
     {#if editing && layeredCommentary}
       <CommentaryEditor
         sutraId={sutra.id}
@@ -357,7 +372,7 @@
             <a href="/workbook/{lp.pathId}">{lp.pathTitle}</a>
           {/each}
           {#each kaleSections as n (n)}
-            <a href="/dukrnkarane?s={n}">
+            <a href="/grammar?s={n}">
               डुकृण्करणे {n > 972 ? `appendix § ${n - 972}` : `§ ${n}`}
             </a>
           {/each}

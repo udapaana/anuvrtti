@@ -1,16 +1,11 @@
 import { parse as parseToml } from 'smol-toml';
+import { dataUrl } from '$lib/dataUrl';
 import { numericToDisplayId, displayToNumericId } from "./parser";
 import type { Sutra, Commentary, LayeredSutraCommentary } from "./types";
 
 // Caches for loaded data
 let sutrasCache: Sutra[] | null = null;
 let sutrasById: Map<string, Sutra> | null = null;
-let kashikaCache: Record<string, string> | null = null;
-let vartikaCache: Record<string, string> | null = null;
-let englishShortCache: Record<string, string> | null = null;
-let englishFullCache: Record<string, string> | null = null;
-let englishRewrittenCache: Record<string, string> | null = null;
-let kashikaEnglishCache: Record<string, string> | null = null;
 // Per-sūtra commentary cache (keyed by numericId)
 const layeredCommentaryCache = new Map<string, LayeredSutraCommentary>();
 
@@ -22,44 +17,57 @@ function commentaryPath(numericId: string): string {
   return `/data/commentary/${a}/${p}/${s}.toml`;
 }
 
-/** Fetch JSON from static data folder */
+/**
+ * Fetch JSON from static data folder.
+ *
+ * Through dataUrl, so each deploy gets its own URL and the browser may cache
+ * these normally — sutras.json is 2.82 MB and re-downloading it on every visit
+ * to /ref would undo the point of moving it out of the bundle.
+ */
 async function fetchJson<T>(filename: string): Promise<T> {
-  const response = await fetch(`/data/${filename}`);
+  const response = await fetch(dataUrl(`/data/${filename}`));
   if (!response.ok) {
     throw new Error(`Failed to load ${filename}: ${response.statusText}`);
   }
   return response.json();
 }
 
-// vidvat sūtra YAML, copied verbatim into src/lib/data/sutras/ (sync = cp) and
-// imported directly — Vite parses the raw files at build. This IS the source;
-// no transform step, no static/*.json. To update: cp vidvat/data/sutras/*.yaml here.
-import { parse as parseYaml } from 'yaml';
-import { parseVidvatSutra, type VidvatSutra } from './parser-vidvat';
+/*
+  THE SŪTRAS ARE FETCHED, NOT BUNDLED.
 
-const sutraYamlFiles = import.meta.glob('./sutras/*.yaml', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>;
+  src/lib/data/sutras/*.yaml is still the source — vidvat's records, copied
+  verbatim (sync = cp). This module used to reach them with
 
+    import.meta.glob('./sutras/*.yaml', { query: '?raw', eager: true })
+
+  which inlines all 6.9 MB into the JS bundle. Vite put it in one chunk that
+  /ref, /ref/[id] and /ref/jargon each pulled: 6.99 MB of JavaScript to parse
+  before either page could draw a line of Sanskrit, and 25 MB transferred for
+  /ref/1.1.1, which took 2.7s to first paint on localhost — where there is no
+  network to blame.
+
+  Most of it was never displayed from here. Every record carries `kashika`, the
+  full Kāśikā commentary and the largest field on it, and parseVidvatSutra
+  keeps none of it: the commentary a sūtra page shows is fetched per sūtra from
+  static/data/commentary/*.toml. The bundle was carrying a whole second copy of
+  a commentary corpus in order to discard it at parse time.
+
+  scripts/build-sutras.ts now does that parse at build and writes the result to
+  static/data/sutras.json — 2.82 MB, on the CDN with the other payloads rather
+  than in the critical path, and compressed on the wire as JSON is.
+*/
 let rulesCache: Record<string, string> | null = null;
 
-/** Load + parse all sūtras from the vidvat YAML (cached). Also builds the rule map. */
+/** Load the built sūtra payload (cached). Also fills the rule map. */
 export async function loadSutras(): Promise<Sutra[]> {
   if (sutrasCache) return sutrasCache;
 
-  const all: Sutra[] = [];
-  rulesCache = {};
-  for (const raw of Object.values(sutraYamlFiles)) {
-    const doc = parseYaml(raw) as { sutras: VidvatSutra[] };
-    for (const r of doc?.sutras ?? []) {
-      all.push(parseVidvatSutra(r));
-      if (r.rule?.trim()) rulesCache[r.ref] = r.rule.trim();
-    }
-  }
-  all.sort((x, y) => x.numericId.localeCompare(y.numericId));
-  sutrasCache = all;
+  const { sutras, rules } = await fetchJson<{ sutras: Sutra[]; rules: Record<string, string> }>(
+    'sutras.json'
+  );
+  rulesCache = rules ?? {};
+  // already sorted by numericId at build — see build-sutras.ts
+  sutrasCache = sutras ?? [];
 
   sutrasById = new Map();
   for (const sutra of sutrasCache) {
@@ -96,54 +104,15 @@ export async function getSutrasInPada(
   return sutras.filter((s) => s.adhyaya === adhyaya && s.pada === pada);
 }
 
-/** Load Kāśikā commentary */
-async function loadKashika(): Promise<Record<string, string>> {
-  if (kashikaCache) return kashikaCache;
-  kashikaCache = await fetchJson<Record<string, string>>("kashika.json");
-  return kashikaCache;
-}
-
-/** Load vārttikas */
-async function loadVartika(): Promise<Record<string, string>> {
-  if (vartikaCache) return vartikaCache;
-  vartikaCache = await fetchJson<Record<string, string>>("vartika.json");
-  return vartikaCache;
-}
-
-/** Load short English translations */
-async function loadEnglishShort(): Promise<Record<string, string>> {
-  if (englishShortCache) return englishShortCache;
-  englishShortCache = await fetchJson<Record<string, string>>(
-    "sutrartha_english.json",
-  );
-  return englishShortCache;
-}
-
-/** Load full English translations (Vasu) */
-async function loadEnglishFull(): Promise<Record<string, string>> {
-  if (englishFullCache) return englishFullCache;
-  englishFullCache =
-    await fetchJson<Record<string, string>>("vasu_english.json");
-  return englishFullCache;
-}
-
-/** Load rewritten English translations (cleaner Vasu rewrites) */
-async function loadEnglishRewritten(): Promise<Record<string, string>> {
-  if (englishRewrittenCache) return englishRewrittenCache;
-  englishRewrittenCache = await fetchJson<Record<string, string>>(
-    "vasu_rewritten.json",
-  );
-  return englishRewrittenCache;
-}
-
-/** Load Kāśikā English translations (concise Zinsser-style) */
-async function loadKashikaEnglish(): Promise<Record<string, string>> {
-  if (kashikaEnglishCache) return kashikaEnglishCache;
-  kashikaEnglishCache = await fetchJson<Record<string, string>>(
-    "kashika_english.json",
-  );
-  return kashikaEnglishCache;
-}
+/*
+  The six whole-corpus loaders that stood here are gone — loadKashika,
+  loadKashikaEnglish, loadVartika, loadEnglishShort, loadEnglishFull,
+  loadEnglishRewritten. Each fetched a file keyed by numericId and held it in a
+  module cache so that one lookup could be served; together they were 12 MB
+  pulled onto a page that needed six strings. build-sutra-refs.ts splits them
+  per sūtra at build time and getCommentary fetches one file. The JSONs they
+  read remain in static/data/ as the import source.
+*/
 
 /** Load layered commentary for a single sūtra from its TOML file */
 async function loadLayeredCommentaryForSutra(
@@ -166,40 +135,29 @@ async function loadLayeredCommentaryForSutra(
   }
 }
 
-/** Strip @deva[...] markers from text, keeping just the content */
-function stripDevaMarkers(text: string | undefined): string | undefined {
-  if (!text) return text;
-  return text.replace(/@deva\[([^\]]*)\]/g, "$1");
-}
-
-/** Get all commentary for a sūtra */
+/**
+ * Get all commentary for a sūtra — ONE small file, not six corpora.
+ *
+ * This used to await loadKashika(), loadEnglishFull() and four more, which is
+ * 12 MB of JSON downloaded and parsed so that six strings could be read out of
+ * it by key. A page about one sūtra now fetches one sūtra's worth:
+ * static/data/sutra-refs/{a}/{p}/{n}.json, written by build-sutra-refs.ts with
+ * the @deva[] stripping and the rewritten-over-Vasu preference already applied.
+ *
+ * A missing file is not an error — plenty of sūtras have no vārttika and some
+ * have no translation at all. The page renders the sections it has.
+ */
 export async function getCommentary(numericId: string): Promise<Commentary> {
-  const [
-    kashika,
-    kashikaEnglish,
-    vartika,
-    englishShort,
-    englishFull,
-    englishRewritten,
-  ] = await Promise.all([
-    loadKashika(),
-    loadKashikaEnglish(),
-    loadVartika(),
-    loadEnglishShort(),
-    loadEnglishFull(),
-    loadEnglishRewritten(),
-  ]);
-
-  // Use rewritten translation if available, otherwise fall back to original Vasu
-  const fullTranslation = englishRewritten[numericId] || englishFull[numericId];
-
-  return {
-    kashika: kashika[numericId],
-    kashikaEnglish: kashikaEnglish[numericId],
-    vartika: vartika[numericId]?.split("\n\n") || undefined,
-    englishShort: stripDevaMarkers(englishShort[numericId]),
-    englishFull: stripDevaMarkers(fullTranslation),
-  };
+  const a = numericId[0];
+  const p = numericId[1];
+  const n = parseInt(numericId.slice(2));
+  try {
+    const res = await fetch(dataUrl(`/data/sutra-refs/${a}/${p}/${n}.json`));
+    if (!res.ok) return {};
+    return (await res.json()) as Commentary;
+  } catch {
+    return {};
+  }
 }
 
 /** Get layered commentary for a sūtra (if available) */
