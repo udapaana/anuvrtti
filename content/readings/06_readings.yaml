@@ -10,6 +10,151 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd065
+  kind: attested
+  segment: 373
+  source:
+    text: मनुस्मृति
+    ref: "Manu 6.92 — the ten marks of dharma"
+    curated: "the whole verse, word-separated per GRETIL's analysis segmentation; every form is Manu's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_manusmRti, Manu_6.92)"
+  sentence: धृतिः क्षमा दमः अस्तेयम् शौचम् इन्द्रियनिग्रहः। धीः विद्या सत्यम् अक्रोधः दशकम् धर्मलक्षणम्॥
+  translation: Steadfastness, forgiveness, self-control, non-stealing, purity, restraint of the senses, wisdom, learning, truth, freedom from anger — this set of ten is the mark of dharma.
+  teaches: |
+    a vocabulary verse — ten virtues in a row, every one a nominative subject —
+    with two नञ्-compounds (अस्तेयम् "non-stealing," अक्रोधः "non-anger") and the
+    collective दशकम् "the set of ten" summing them up.
+  words:
+  - form: धृतिः
+    lemma: धृति
+    gloss: steadfastness
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject (one of the ten)
+    - term: प्रथमा
+      en: nominative (इ-stem feminine)
+  - form: क्षमा
+    lemma: क्षमा
+    gloss: forgiveness
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (आ-stem feminine)
+  - form: दमः
+    lemma: दम
+    gloss: self-control
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अस्तेयम्
+    lemma: अस्तेय
+    gloss: non-stealing
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: नञ्-compound — न स्तेयम् "not theft"
+    - cite: '2.2.6'
+      role: नञ् — the negative नञ् (न → अ) compounds with स्तेय → अस्तेय
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: शौचम्
+    lemma: शौच
+    gloss: purity
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: इन्द्रियनिग्रहः
+    lemma: इन्द्रियनिग्रह
+    gloss: restraint of the senses
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: compound — इन्द्रियाणां निग्रहः "control of the senses" (षष्ठी-तत्पुरुष)
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: धीः
+    lemma: धी
+    gloss: wisdom
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (ई-stem feminine → धीः)
+  - form: विद्या
+    lemma: विद्या
+    gloss: learning
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: सत्यम्
+    lemma: सत्य
+    gloss: truth
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अक्रोधः
+    lemma: अक्रोध
+    gloss: freedom from anger
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: नञ्-compound — न क्रोधः "not anger"
+    - cite: '2.2.6'
+      role: नञ् — नञ् + क्रोध → अक्रोध "absence of anger"
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: दशकम्
+    lemma: दशक
+    gloss: the set of ten
+    vocab: true
+    notes:
+    - term: संख्या
+      en: collective numeral — दशन् "ten" + कन् → दशक "a group of ten"
+    - term: कर्तृ
+      en: subject — sums up the ten virtues
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: धर्मलक्षणम्
+    lemma: धर्मलक्षण
+    gloss: the mark of dharma
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: compound — धर्मस्य लक्षणम् "the defining mark of dharma" (षष्ठी-तत्पुरुष)
+    - term: विशेषण
+      en: predicate of दशकम्
+    - term: प्रथमा
+      en: nominative (neuter)
+    rel:
+    - kind: विशेषण
+      to: 10
+  vyakhya: 'गुणगणश्लोकः — पदपरिचयाय। दश प्रथमान्तानि नामानि, दशकम् धर्मलक्षणम् इति समापनम्। अस्तेयम् अक्रोधः इति नञ्समासौ (नञ्)। इन्द्रियनिग्रहः धर्मलक्षणम् इति षष्ठीतत्पुरुषौ। दशकम् इति समाहारे कन्।'
+  vyakhya_en: |
+    A verse to grow vocabulary on: ten virtues, ten nominatives in a plain list,
+    and one predicate closing it — दशकम् धर्मलक्षणम्, "(this) set of ten is the
+    mark of dharma." Two of the ten are नञ्-compounds (negations): अस्तेयम्
+    "non-stealing," अक्रोधः "non-anger" (2.2.6). Two more are षष्ठी-तत्पुरुष
+    compounds: इन्द्रियनिग्रहः "restraint of the senses," धर्मलक्षणम् "the mark of
+    dharma." And दशकम् is a collective — दशन् + कन्, "a group of ten" — the tidy
+    Sanskrit way to say "these ten."
 - id: rd064
   kind: attested
   segment: 372
