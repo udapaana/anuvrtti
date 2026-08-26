@@ -184,6 +184,17 @@ if (sysN) {
   console.log('  ✓ ' + sys.trim());
 }
 
+// 8. the sūtra count — HARD, and cheap. The home page's सूत्र door prints a
+// constant instead of loading 3983 YAML files to count them; this is what
+// stops that constant drifting away from the data behind the door.
+const cnt = await run(['bun', 'scripts/check-sutra-count.ts']);
+if (/SUTRA_COUNT is/.test(cnt)) {
+  problems.push('sūtra count: ' + cnt.trim().split('\n')[0]);
+  console.log('  ✗ ' + cnt.trim().split('\n')[0]);
+} else {
+  console.log('  ✓ ' + cnt.trim());
+}
+
 console.log();
 if (problems.length) {
   console.log('FAILED:\n');

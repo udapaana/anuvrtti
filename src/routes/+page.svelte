@@ -4,6 +4,7 @@
   import Shell from '$lib/components/ui/Shell.svelte';
   import { learningProgress } from '$lib/stores/learning';
   import { loadPathIndex, type PathMeta } from '$lib/content';
+  import { SUTRA_COUNT } from '$lib/data/parser';
   import { pickResumeTarget, type ResumeTarget } from '$lib/learning/resume';
   import { displayScript } from '$lib/stores/preferences';
   import { transliterate } from '$lib/transliteration';
@@ -30,10 +31,12 @@
   let resume: ResumeTarget | null = $state(null);
   let allPaths: PathMeta[] = $state([]);
 
-  // Live counts on the doors — they earn their place there. The reading and
-  // lesson fetches are unchanged; the usage count is the same index the door
-  // itself renders.
-  let stat = $state({ readings: 0, lessons: 0, cells: 0, sutras: 0 });
+  // Live counts on the doors — they earn their place there, and each one counts
+  // what is BEHIND its own door. The सूत्र door used to print the distinct
+  // sūtras cited by the reader's word notes (187), which is a fact about the
+  // reader's coverage, not about /ref — the door then handed you 3983. That is
+  // /usage's kind of number, so it left rather than moved.
+  let stat = $state({ readings: 0, lessons: 0, cells: 0, sutras: SUTRA_COUNT });
 
   onMount(async () => {
     try {
@@ -51,14 +54,7 @@
       const r = await fetch(dataUrl('/data/readings.json'));
       if (r.ok) {
         const d = await r.json();
-        const cites = new Set<string>();
-        (d.sequence ?? []).forEach((rd: any) =>
-          (rd.words ?? []).forEach((w: any) =>
-            (w.notes ?? []).forEach((n: any) => n.cite && cites.add(n.cite))
-          )
-        );
         stat.readings = (d.sequence ?? []).length;
-        stat.sutras = cites.size;
       }
     } catch {}
     try {
