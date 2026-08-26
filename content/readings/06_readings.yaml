@@ -10,6 +10,146 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd083
+  kind: attested
+  segment: 396
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 1.55.24 — Viśvāmitra resolves on tapas"
+    curated: "the whole verse, word-separated (pausa forms; compounds kept whole); every form is Vālmīki's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_rAmAyaNa, R_1.055.024)"
+  sentence: तत् एतत् समवेक्ष्य अहम् प्रसन्नेन्द्रियमानसः। तपः महत् समास्थास्ये यत् वै ब्रह्मत्वकारकम्॥
+  translation: Considering all this, with senses and mind grown calm, I will undertake a great austerity — the one that makes brahman-hood.
+  teaches: |
+    the resolve, in the future — समास्थास्ये "I will undertake" (आत्मनेपद लृट्);
+    a prefixed gerund समवेक्ष्य "having considered"; a बहुव्रीहि of composure
+    (प्रसन्नेन्द्रियमानसः); and a यत् relative closing on ब्रह्मत्वकारकम्.
+  words:
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of समवेक्ष्य
+    - term: द्वितीया
+      en: accusative
+  - form: एतत्
+    lemma: एतद्
+    gloss: this (all)
+    notes:
+    - term: सर्वनाम
+      en: pronoun (एतद्), in apposition to तत्
+    - term: कर्मन्
+      en: object of समवेक्ष्य
+    - term: द्वितीया
+      en: accusative
+  - form: समवेक्ष्य
+    lemma: ईक्ष्
+    gloss: having considered
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerund of सम्-अव-ईक्ष् "consider, weigh"
+    - cite: '7.1.37'
+      role: समासेऽनञ्पूर्वे क्त्वो ल्यप् — a prefixed root takes ल्यप् → सम्-अव-ईक्ष् → समवेक्ष्य
+    - term: ल्यप्
+      en: the prefixed-root gerund
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: सर्वनाम
+      en: pronoun (1sg)
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: प्रसन्नेन्द्रियमानसः
+    lemma: प्रसन्नेन्द्रियमानस
+    gloss: senses and mind serene
+    vocab: true
+    notes:
+    - text: 'विग्रह: प्रसन्नम् इन्द्रियम् मानसम् च यस्य — "one whose senses and mind are calm"'
+    - term: बहुव्रीहि
+      en: possessive — "one whose senses (इन्द्रिय) and mind (मानस) have grown calm (प्रसन्न)"
+    - term: विशेषण
+      en: qualifying अहम्
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: तपः
+    lemma: तपस्
+    gloss: austerity
+    notes:
+    - term: कर्मन्
+      en: object of समास्थास्ये
+    - term: द्वितीया
+      en: accusative (स्-stem neuter → तपः)
+  - form: महत्
+    lemma: महत्
+    gloss: great
+    notes:
+    - term: विशेषण
+      en: qualifying तपः
+    - term: द्वितीया
+      en: accusative (neuter)
+    rel:
+    - kind: विशेषण
+      to: 5
+  - form: समास्थास्ये
+    lemma: स्था
+    gloss: I will undertake
+    vocab: true
+    notes:
+    - cite: '3.3.13'
+      role: लृट् शेषे च — the simple future लृट् → सम्-आ-स्था → समास्थास्ये
+    - cite: '3.1.33'
+      role: स्यतासी लृलुटोः — the स्य marker before लृट् → स्था + स्य → स्थास्य…
+    - term: लृट्
+      en: future (आत्मनेपद 1sg)
+  - form: यत्
+    lemma: यद्
+    gloss: which
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun (neuter), referring to तपः
+    - term: कर्मन्
+      en: object (of the implicit "that produces")
+    - term: द्वितीया
+      en: accusative
+  - form: वै
+    lemma: वै
+    gloss: indeed
+    notes:
+    - term: अव्यय
+      en: emphatic particle
+  - form: ब्रह्मत्वकारकम्
+    lemma: ब्रह्मत्वकारक
+    gloss: brahman-hood-making
+    vocab: true
+    notes:
+    - text: 'विग्रह: ब्रह्मत्वम् करोति — "that which produces brahman-hood"'
+    - term: तत्पुरुष
+      en: compound — ब्रह्मत्व "brahman-hood" (ब्रह्मन् + त्व) + कारक "maker" (कृ + agent)
+    - term: विशेषण
+      en: qualifying तपः (through यत्)
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 5
+  vyakhya: 'निश्चयवाक्यम् — लृटि प्रतिज्ञा। समास्थास्ये इति सम्-आ-तिष्ठतेः लृटि आत्मनेपदम्। समवेक्ष्य इति सोपसर्गात् ल्यप्। प्रसन्नेन्द्रियमानसः इति बहुव्रीहिः। तपः … यत् ब्रह्मत्वकारकम् इति यत्तद्भावे विशेषणम्। ब्रह्मत्व इति ब्रह्मन्शब्दात् त्वप्रत्ययः, कारकम् इति कृञः कर्तरि।'
+  vyakhya_en: |
+    The vow, in the **future**: समास्थास्ये "I will undertake," the आत्मनेपद लृट्
+    of सम्-आ-स्था. A prefixed gerund sets the frame — समवेक्ष्य "having weighed
+    (all this)" (ल्यप्) — and a बहुव्रीहि marks the change in the speaker:
+    प्रसन्नेन्द्रियमानसः, "his senses and mind now calm." The relative यत् points
+    back to तपः and closes on ब्रह्मत्वकारकम् — the austerity "that makes
+    brahman-hood," a compound joining the abstract ब्रह्मत्व (ब्रह्मन् + त्व) to the
+    agent कारक.
 - id: rd082
   kind: attested
   segment: 395
