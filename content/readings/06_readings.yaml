@@ -10,6 +10,168 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd074
+  kind: attested
+  segment: 385
+  source:
+    text: विष्णुपुराण
+    ref: "Viṣṇu Purāṇa 1.11.8 — 'you were not borne by me'"
+    curated: "the whole verse, word-separated (pausa forms); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_viSNupurANa, ViP_1,11.8)"
+  sentence: उत्तमोत्तमम् अप्राप्यम् अविवेकः हि वाञ्छसि। सत्यम् सुतः त्वम् अपि अस्य किन्तु न त्वम् मया धृतः॥
+  translation: Without discernment you long for the highest of the high, which is beyond your reach. True, you too are his son — but you were not borne by me.
+  teaches: |
+    the speech turns the blade — a नञ्-gerundive अप्राप्यम् "not to be attained,"
+    a नञ्-bahuvrīhi अविवेकः "you without sense," and the passive-in-participle
+    त्वम् … मया धृतः "you (were) held by me," agent again in the instrumental.
+  words:
+  - form: उत्तमोत्तमम्
+    lemma: उत्तमोत्तम
+    gloss: the highest of the high
+    vocab: true
+    notes:
+    - text: 'विग्रह: उत्तमानाम् उत्तमम् — "the highest among the high"'
+    - term: कर्मधारय
+      en: compound — उत्तम doubled, "the very highest" (the throne itself)
+    - term: कर्मन्
+      en: object of वाञ्छसि
+    - term: द्वितीया
+      en: accusative
+  - form: अप्राप्यम्
+    lemma: आप्
+    gloss: unattainable
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: नञ्-gerundive — न प्राप्यम् "not to be reached"
+    - cite: '3.1.124'
+      role: ऋहलोर्ण्यत् — a हल्-final root takes the gerundive ण्यत् → प्र-आप् + ण्यत् → प्राप्य (with नञ् → अप्राप्य)
+    - term: ण्यत्
+      en: the gerundive suffix
+    - term: विशेषण
+      en: qualifying उत्तमोत्तमम्
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 0
+  - form: अविवेकः
+    lemma: अविवेक
+    gloss: (you) without discernment
+    vocab: true
+    notes:
+    - text: 'विग्रह: न विवेकः यस्य — "one who has no discernment"'
+    - term: बहुव्रीहि
+      en: नञ्-possessive — "one in whom there is no विवेक (discernment)"
+    - cite: '2.2.6'
+      role: नञ् — नञ् + विवेक → अविवेक "want of discrimination"
+    - term: विशेषण
+      en: qualifying the implicit त्वम्
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: हि
+    lemma: हि
+    gloss: indeed
+    notes:
+    - term: अव्यय
+      en: emphatic particle
+  - form: वाञ्छसि
+    lemma: वाञ्छ्
+    gloss: you long for
+    vocab: true
+    notes:
+    - term: वाञ्छ्
+      en: '"desire, long for" (भ्वादि)'
+    - term: लट्
+      en: present (2sg)
+  - form: सत्यम्
+    lemma: सत्यम्
+    gloss: truly
+    notes:
+    - term: अव्यय
+      en: adverb — "granted, it is true"
+  - form: सुतः
+    lemma: सुत
+    gloss: a son
+    notes:
+    - term: विशेषण
+      en: predicate — "you are (his) son"
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: you
+    notes:
+    - term: सर्वनाम
+      en: pronoun (2sg)
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: "also, even"
+  - form: अस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: pronoun (masc. genitive)
+    - term: सम्बन्ध
+      en: 'his (son) — of the king'
+    - term: षष्ठी
+      en: genitive
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: adversative conjunction
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: मया
+    lemma: अस्मद्
+    gloss: by me
+    notes:
+    - term: कर्तृ
+      en: the agent of the participle — in the instrumental
+    - term: तृतीया
+      en: instrumental (1sg)
+  - form: धृतः
+    lemma: धृ
+    gloss: (were) borne, held
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of धृ "hold, bear," predicate — "you (were) not carried (in the womb)"
+    - cite: '3.2.102'
+      role: निष्ठा — the क्त participle → धृत
+    - term: प्रथमा
+      en: nominative (agreeing with त्वम्)
+    rel:
+    - kind: विशेषण
+      to: 7
+  vyakhya: 'वाक्यस्य अन्तः — निष्ठुरतमम्। उत्तमोत्तमम् अप्राप्यम् इति कर्मधारयः ण्यदन्तविशेषणेन (ऋहलोर्ण्यत्)। अविवेकः इति नञ्बहुव्रीहिः। त्वम् मया धृतः इति निष्ठायाम् कर्तरि तृतीया — "न धृतः" इति गर्भधारणनिषेधः। सुतः त्वम् अपि इति स्वीकारे अपि निराकरणम्।'
+  vyakhya_en: |
+    The speech ends on its coldest line, and it is built from things you now read
+    at sight. उत्तमोत्तमम् अप्राप्यम् "the unattainable highest-of-high" — a
+    कर्मधारय described by a नञ्-**gerundive**, अ-प्राप्य "not to be reached" (ण्यत्,
+    3.1.124). अविवेकः "you, without sense" is a नञ्-**bahuvrīhi**. And the final
+    cut is a **participle with its agent in the instrumental** — त्वम् … मया धृतः,
+    "you were not held by me" — the क्त standing in for a passive: *I did not carry
+    you.* She grants सुतः त्वम् अपि "you too are a son," only to take back the womb.
 - id: rd073
   kind: attested
   segment: 384
