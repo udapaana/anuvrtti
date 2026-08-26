@@ -45,22 +45,12 @@ for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith('.yaml') && !f.s
     const q = sentence.match(/["“”]/);
     if (q) add('QUOTE', `sentence contains ${JSON.stringify(q[0])}`);
 
-    // DUP-FORM — the reader maps repeated tokens to successive entries by a
-    // positional cursor, so a form appearing N× SHOULD have N entries. What is
-    // wrong is when those entries DISAGREE — one fuller, one sparse — so the
-    // same word shows different annotation at different points. Flag only that.
-    const byForm = new Map<string, any[]>();
-    for (const w of r.words ?? []) (byForm.get(w.form) ?? byForm.set(w.form, []).get(w.form)!).push(w);
-    const sig = (w: any) => JSON.stringify([
-      String(w.gloss ?? '').trim(),
-      (w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term).sort(),
-      (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => n.cite).sort(),
-    ]);
-    for (const [f, ws] of byForm) {
-      if (ws.length < 2) continue;
-      const sigs = new Set(ws.map(sig));
-      if (sigs.size > 1) add('DUP-INCONSISTENT', `${JSON.stringify(f)} ×${ws.length} — entries disagree (gloss/terms/cites)`);
-    }
+    // NOTE: repeated forms are NOT a defect. Grammar is per-occurrence — the
+    // same form can be a different case, role, or referent at each point in the
+    // sentence — and the reader maps each token to its own entry by a positional
+    // cursor. So we do NOT flag duplicates; per-token completeness is enforced by
+    // check-complete, which measures whether EACH occurrence carries its full
+    // parse for its own context.
 
     // NO-GLOSS — a word with no gloss
     for (const w of r.words ?? []) {
