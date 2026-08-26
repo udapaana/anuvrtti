@@ -10,6 +10,156 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd077
+  kind: attested
+  segment: 390
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 1.51.1 — Viśvāmitra comes to Vasiṣṭha"
+    curated: "the whole verse, word-separated (pausa forms; compounds kept whole); every form is Vālmīki's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_rAmAyaNa, R_1.051.001). The opening of the Viśvāmitra–Vasiṣṭha story."
+  sentence: सः दृष्ट्वा परमप्रीतः विश्वामित्रः महाबलः। प्रणतः विनयात् वीरः वसिष्ठम् जपताम् वरम्॥
+  translation: Seeing him, Viśvāmitra the mighty — greatly pleased, that hero — bowed out of humility to Vasiṣṭha, best of those who tell their prayers.
+  teaches: |
+    the story of Viśvāmitra opens on courtesy — a cluster of participles doing
+    the describing (परमप्रीतः "greatly pleased," प्रणतः "bowed"), and a शतृ
+    present participle in the genitive plural, जपताम् "of those who murmur prayers."
+  words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: दृष्ट्वा
+    lemma: दृश्
+    gloss: having seen
+    notes:
+    - term: कृदन्त
+      en: gerund (क्त्वा) — prior action
+    - cite: '3.4.21'
+      role: समानकर्तृकयोः पूर्वकाले क्त्वा → दृष्ट्वा
+    - term: क्त्वा
+      en: the gerund
+  - form: परमप्रीतः
+    lemma: परमप्रीत
+    gloss: greatly pleased
+    vocab: true
+    notes:
+    - text: 'विग्रह: परमम् प्रीतः — "exceedingly pleased"'
+    - term: कर्मधारय
+      en: compound — परमम् "very" + प्रीतः "pleased" (a क्त participle)
+    - term: विशेषण
+      en: qualifying विश्वामित्रः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: विश्वामित्रः
+    lemma: विश्वामित्र
+    gloss: Viśvāmitra
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: महाबलः
+    lemma: महाबल
+    gloss: the mighty
+    notes:
+    - text: 'विग्रह: महत् बलम् यस्य — "one whose strength is great"'
+    - term: बहुव्रीहि
+      en: possessive — "one whose strength (बल) is great (महत्)"
+    - term: विशेषण
+      en: qualifying विश्वामित्रः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: प्रणतः
+    lemma: नम्
+    gloss: bowed
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of प्र-नम् "bow low," predicate — "he bowed"
+    - cite: '3.2.102'
+      role: निष्ठा — the क्त participle → प्रणत
+    - term: विशेषण
+      en: predicate of विश्वामित्रः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: विनयात्
+    lemma: विनय
+    gloss: out of humility
+    vocab: true
+    notes:
+    - term: हेतु
+      en: the cause/motive — "moved by humility"
+    - term: पञ्चमी
+      en: ablative (of cause)
+  - form: वीरः
+    lemma: वीर
+    gloss: the hero
+    notes:
+    - term: विशेषण
+      en: in apposition to विश्वामित्रः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: वसिष्ठम्
+    lemma: वसिष्ठ
+    gloss: to Vasiṣṭha
+    notes:
+    - term: कर्मन्
+      en: the one bowed to — object of प्रणतः
+    - term: द्वितीया
+      en: accusative
+  - form: जपताम्
+    lemma: जप्
+    gloss: of those who murmur prayers
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: present participle (शतृ) of जप् "mutter (prayer)," genitive plural
+    - cite: '3.2.124'
+      role: लटः शतृशानचावप्रथमासमानाधिकरणे — the शतृ participle replaces लट् → जपत् → जपताम्
+    - term: शतृ
+      en: the active present-participle suffix
+    - term: सम्बन्ध
+      en: "best OF those who pray"
+    - term: षष्ठी
+      en: genitive plural
+  - form: वरम्
+    lemma: वर
+    gloss: the best
+    notes:
+    - term: विशेषण
+      en: in apposition to वसिष्ठम् — "the best (of the prayerful)"
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 8
+  vyakhya: 'विश्वामित्राख्यानस्य आरम्भः — निष्ठाशत्रोः बहुलम्। परमप्रीतः प्रणतः इति क्तान्तानि; परमप्रीतः इति कर्मधारयः, महाबलः इति बहुव्रीहिः। विनयात् इति हेतौ पञ्चमी। जपताम् इति जपेः शतरि षष्ठीबहुवचनम् (लटः शतृ…) — वरम् जपताम् इति निर्धारणे। वसिष्ठम् प्रणतः इति नमेः कर्मणि द्वितीया।'
+  vyakhya_en: |
+    The Viśvāmitra tale opens on manners, and on **participles**, which is how
+    Sanskrit narration packs a scene. Two क्त forms describe the visitor —
+    परमप्रीतः "much pleased" (a कर्मधारय) and प्रणतः "bowed" (the main predicate) —
+    while महाबलः "mighty" is a बहुव्रीहि. विनयात् "out of humility" is the ablative
+    of motive. The gem is जपताम् "of those who murmur (prayers)," a **शतृ present
+    participle** (3.2.124) in the genitive plural — वरम् जपताम्, "the best of the
+    prayerful," names Vasiṣṭha by the company he leads.
 - id: rd076
   kind: attested
   segment: 387
