@@ -10,6 +10,156 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd068
+  kind: attested
+  segment: 376
+  source:
+    text: हितोपदेश
+    ref: "Hitopadeśa 1.44 — the wise give up all for a cause"
+    curated: "the whole verse, word-separated (pausa forms; चैव kept fused to show the सन्धि); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, Hit_1.44)"
+  sentence: धनानि जीवितम् चैव परार्थे प्राज्ञः उत्सृजेत्। सन्निमित्ते वरम् त्यागः विनाशे नियते सति॥
+  translation: For another's sake the wise would give up riches, and even life; when destruction is certain, sacrifice for a worthy cause is the better course.
+  teaches: |
+    the optative of counsel उत्सृजेत् "one should give up"; the भावे-घञ् action-
+    noun त्यागः "renunciation"; and a locative absolute of foreboding — विनाशे
+    नियते सति, "destruction being certain."
+  words:
+  - form: धनानि
+    lemma: धन
+    gloss: riches
+    notes:
+    - term: कर्मन्
+      en: object of उत्सृजेत्
+    - cite: '7.1.20'
+      role: जश्शसोः शिः — a neuter's शस् → शि → धन → धनानि
+    - term: द्वितीया
+      en: accusative plural (neuter)
+  - form: जीवितम्
+    lemma: जीवित
+    gloss: life
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of जीव् used as a noun, "(one's) life"
+    - term: कर्मन्
+      en: object of उत्सृजेत्
+    - term: द्वितीया
+      en: accusative
+  - form: चैव
+    lemma: च
+    gloss: and even
+    notes:
+    - cite: '6.1.88'
+      role: वृद्धिरेचि — च (अ) + एव (ए) → चैव (वृद्धि ऐ)
+    - term: अव्यय
+      en: च "and" + एव "even"
+  - form: परार्थे
+    lemma: परार्थ
+    gloss: for another's sake
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: compound — परस्य अर्थः "another's good/purpose"
+    - term: निमित्त
+      en: the purpose/occasion
+    - term: सप्तमी
+      en: locative (of purpose)
+  - form: प्राज्ञः
+    lemma: प्राज्ञ
+    gloss: the wise one
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: उत्सृजेत्
+    lemma: सृज्
+    gloss: should give up
+    vocab: true
+    notes:
+    - cite: '3.3.161'
+      role: विधिनिमन्त्रण… लिङ् — the optative लिङ् in the sense of what one ought to do → उद्-सृज् + लिङ् → उत्सृजेत्
+    - term: लिङ्
+      en: optative (3sg)
+  - form: सन्निमित्ते
+    lemma: सन्निमित्त
+    gloss: for a good cause
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: compound — सत् निमित्तम् "a worthy occasion" (कर्मधारय)
+    - term: निमित्त
+      en: the occasion
+    - term: सप्तमी
+      en: locative
+  - form: वरम्
+    lemma: वरम्
+    gloss: better, preferable
+    notes:
+    - term: अव्यय
+      en: '"the better course" — used predicatively'
+  - form: त्यागः
+    lemma: त्याग
+    gloss: renunciation, sacrifice
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: action-noun (घञ्) of त्यज् "give up"
+    - cite: '3.3.18'
+      role: भावे घञ् — the घञ् suffix names the action itself → त्यज् + घञ् → त्याग
+    - term: घञ्
+      en: the action-noun suffix
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: विनाशे
+    lemma: विनाश
+    gloss: destruction
+    vocab: true
+    notes:
+    - cite: '2.3.37'
+      role: यस्य च भावेन भावलक्षणम् — the noun of a locative-absolute clause takes the सप्तमी → विनाशे … नियते सति
+    - term: अधिकरण
+      en: the absolute locus
+    - term: सप्तमी
+      en: locative
+  - form: नियते
+    lemma: नियम्
+    gloss: (being) certain
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of नि-यम् "fix, make certain," in the locative
+    - term: विशेषण
+      en: with विनाशे
+    - term: सप्तमी
+      en: locative
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: सति
+    lemma: अस्
+    gloss: being
+    notes:
+    - term: कृदन्त
+      en: present participle (शतृ) of अस् "be" — the सति of सति सप्तमी
+    - term: विशेषण
+      en: with विनाशे
+    - term: सप्तमी
+      en: locative
+    rel:
+    - kind: विशेषण
+      to: 9
+  vyakhya: 'विध्यर्थ-घञ्-सतिसप्तमीनां श्लोकः। उत्सृजेत् इति विधिलिङ् (विधिनिमन्त्रण… लिङ्)। त्यागः इति त्यजेः भावे घञ्। विनाशे नियते सति इति भावलक्षणसप्तमी। परार्थे सन्निमित्ते इति निमित्तसप्तम्यौ। धनानि इति नपुंसकशसि शिः।'
+  vyakhya_en: |
+    A maxim of sacrifice, and three constructions you now know well. The
+    **optative** उत्सृजेत् "should give up" (3.3.161) — the mood of counsel. The
+    **भावे घञ्** action-noun त्यागः "renunciation" (3.3.18), from त्यज्. And a
+    **locative absolute** of impending doom: विनाशे नियते सति, "destruction being
+    made certain" (2.3.37, with सति again the participle of अस्). Even the two
+    सप्तमीs परार्थे / सन्निमित्ते are worth marking — the locative of purpose, "for
+    the sake of." The verse's counsel: when the end is fixed, spend everything well.
 - id: rd067
   kind: attested
   segment: 375
