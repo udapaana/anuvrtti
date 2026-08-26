@@ -10,6 +10,144 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd085
+  kind: attested
+  segment: 400
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 1.41.12 — Bhagīratha's austerity"
+    curated: "the whole verse, word-separated (pausa forms; compounds kept whole); every form is Vālmīki's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_rAmAyaNa, R_1.041.012). Bhagīratha, a childless king of the Ikṣvāku line, undertakes austerity to bring the river Gaṅgā down for his ancestors."
+  sentence: सः तपः दीर्घम् आतिष्ठत् गोकर्णे रघुनन्दन। ऊर्ध्वबाहुः पञ्चतपाः मासाहारः जितेन्द्रियः॥
+  translation: He undertook long austerity at Gokarṇa, O delight of the Raghus — his arms upraised, keeping the five fires, eating but once a month, his senses mastered.
+  teaches: |
+    the possessive compound, four in a row — ऊर्ध्वबाहुः "arms-upraised,"
+    पञ्चतपाः "five-fired," मासाहारः "month-eating," जितेन्द्रियः "senses-conquered":
+    each names the ascetic by a feature that belongs to him.
+  words:
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: तपः
+    lemma: तपस्
+    gloss: austerity
+    notes:
+    - term: कर्मन्
+      en: object of आतिष्ठत्
+    - term: द्वितीया
+      en: accusative (स्-stem neuter → तपः)
+  - form: दीर्घम्
+    lemma: दीर्घ
+    gloss: long
+    notes:
+    - term: विशेषण
+      en: qualifying तपः
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: आतिष्ठत्
+    lemma: स्था
+    gloss: undertook, stood firm in
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past (आ-स्था "set oneself to")
+  - form: गोकर्णे
+    lemma: गोकर्ण
+    gloss: at Gokarṇa
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus (a sacred place)
+    - term: सप्तमी
+      en: locative
+  - form: रघुनन्दन
+    lemma: रघुनन्दन
+    gloss: O delight of the Raghus
+    notes:
+    - text: 'विग्रह: रघूणाम् नन्दनः — "the gladdener of the Raghus"'
+    - term: तत्पुरुष
+      en: compound — रघूणाम् नन्दनः (an epithet of the listener, Rāma)
+    - cite: '2.3.47'
+      role: सम्बोधने च — in address, the सम्बोधन form → रघुनन्दन
+    - term: सम्बोधन
+      en: vocative
+  - form: ऊर्ध्वबाहुः
+    lemma: ऊर्ध्वबाहु
+    gloss: with arms upraised
+    vocab: true
+    notes:
+    - text: 'विग्रह: ऊर्ध्वौ बाहू यस्य — "one whose arms are raised up"'
+    - term: बहुव्रीहि
+      en: possessive — "one whose arms (बाहु) are upraised (ऊर्ध्व)"
+    - term: विशेषण
+      en: qualifying सः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 0
+  - form: पञ्चतपाः
+    lemma: पञ्चतपस्
+    gloss: keeping the five fires
+    vocab: true
+    notes:
+    - text: 'विग्रह: पञ्च तपांसि यस्य — "one who keeps the five fires"'
+    - term: बहुव्रीहि
+      en: possessive — "one whose austerities are the five (fires)"
+    - term: विशेषण
+      en: qualifying सः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 0
+  - form: मासाहारः
+    lemma: मासाहार
+    gloss: eating once a month
+    vocab: true
+    notes:
+    - text: 'विग्रह: मासे आहारः यस्य — "one whose meal is (once) a month"'
+    - term: बहुव्रीहि
+      en: possessive — "one whose food (आहार) comes (once) a month (मास)"
+    - term: विशेषण
+      en: qualifying सः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 0
+  - form: जितेन्द्रियः
+    lemma: जितेन्द्रिय
+    gloss: senses mastered
+    vocab: true
+    notes:
+    - text: 'विग्रह: जितानि इन्द्रियाणि येन — "one by whom the senses are conquered"'
+    - term: बहुव्रीहि
+      en: possessive — "one by whom the senses (इन्द्रिय) have been conquered (जित)"
+    - term: विशेषण
+      en: qualifying सः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 0
+  vyakhya: 'भगीरथतपःपदम् — बहुव्रीहिपुञ्जः। ऊर्ध्वबाहुः पञ्चतपाः मासाहारः जितेन्द्रियः इति चत्वारः बहुव्रीहयः, सर्वे सः इति कर्तुः विशेषणानि — तपोविधिम् आचक्षते। तपः दीर्घम् आतिष्ठत् इति आ-तिष्ठतेः लङ्; गोकर्णे इति अधिकरणे; रघुनन्दन इति रामसम्बोधनम्।'
+  vyakhya_en: |
+    The ascetic is drawn in four **possessive compounds**, one after another — the
+    बहुव्रीहि's natural home. ऊर्ध्वबाहुः "arms-upraised," पञ्चतपाः "keeping the five
+    fires," मासाहारः "eating once a month," जितेन्द्रियः "senses conquered": none of
+    these words *is* an arm or a fire or a sense — each points outside itself to the
+    man who has that feature. All four hang on सः, the one subject. The finite verb
+    is आतिष्ठत् (आ-स्था, लङ्), "he set himself to" the तपः दीर्घम्, "long austerity."
 - id: rd084
   kind: attested
   segment: 397
