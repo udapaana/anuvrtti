@@ -45,11 +45,22 @@ for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith('.yaml') && !f.s
     const q = sentence.match(/["“”]/);
     if (q) add('QUOTE', `sentence contains ${JSON.stringify(q[0])}`);
 
-    // DUP-FORM — same form authored twice
-    const forms = (r.words ?? []).map((w: any) => w.form);
-    const counts = new Map<string, number>();
-    for (const f of forms) counts.set(f, (counts.get(f) ?? 0) + 1);
-    for (const [f, n] of counts) if (n > 1) add('DUP-FORM', `${JSON.stringify(f)} authored ${n}×`);
+    // DUP-FORM — the reader maps repeated tokens to successive entries by a
+    // positional cursor, so a form appearing N× SHOULD have N entries. What is
+    // wrong is when those entries DISAGREE — one fuller, one sparse — so the
+    // same word shows different annotation at different points. Flag only that.
+    const byForm = new Map<string, any[]>();
+    for (const w of r.words ?? []) (byForm.get(w.form) ?? byForm.set(w.form, []).get(w.form)!).push(w);
+    const sig = (w: any) => JSON.stringify([
+      String(w.gloss ?? '').trim(),
+      (w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term).sort(),
+      (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => n.cite).sort(),
+    ]);
+    for (const [f, ws] of byForm) {
+      if (ws.length < 2) continue;
+      const sigs = new Set(ws.map(sig));
+      if (sigs.size > 1) add('DUP-INCONSISTENT', `${JSON.stringify(f)} ×${ws.length} — entries disagree (gloss/terms/cites)`);
+    }
 
     // NO-GLOSS — a word with no gloss
     for (const w of r.words ?? []) {
