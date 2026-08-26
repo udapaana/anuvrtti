@@ -17,6 +17,7 @@
     "verify:cites": "bun scripts/verify-cites.ts",
     "check:register": "bun scripts/check-register.ts",
     "check": "bun scripts/check-all.ts",
+    "check:structure": "bun scripts/check-structure.ts",
     "build:quiz": "bun scripts/build-readings.ts && bun scripts/build-quiz.ts && bun scripts/build-readings.ts",
     "complete": "bun scripts/check-complete.ts",
     "lint": "bun scripts/check-complete.ts --lint",
