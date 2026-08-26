@@ -206,6 +206,28 @@ if (/stale|missing/.test(stats)) {
   console.log('  ✓ ' + stats.trim());
 }
 
+// 10. the sūtra payload — HARD. static/data/sutras.json is generated from
+// src/lib/data/sutras/*.yaml and committed; stale, it serves an Aṣṭādhyāyī that
+// no longer matches its own source, and every /ref page reads it.
+const sut = await run(['bun', 'scripts/build-sutras.ts', '--check']);
+if (/stale/.test(sut)) {
+  problems.push('sūtra payload: static/data/sutras.json is stale — run bun run build:sutras');
+  console.log('  ✗ sūtra payload: static/data/sutras.json is stale');
+} else {
+  console.log('  ✓ ' + sut.trim());
+}
+
+// 11. the per-sūtra ref files — HARD. Generated from the six imported corpora
+// and committed; every /ref/[id] page fetches one, and stale means a sūtra page
+// shows commentary that no longer matches the corpus it was split from.
+const refs = await run(['bun', 'scripts/build-sutra-refs.ts', '--check']);
+if (/stale/.test(refs)) {
+  problems.push('sūtra refs: static/data/sutra-refs/ is stale — run bun run build:sutra-refs');
+  console.log('  ✗ sūtra refs: static/data/sutra-refs/ is stale');
+} else {
+  console.log('  ✓ ' + refs.trim());
+}
+
 console.log();
 if (problems.length) {
   console.log('FAILED:\n');

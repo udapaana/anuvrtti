@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { browser } from '$app/environment';
+  import { dataUrl } from '$lib/dataUrl';
   import { onMount } from 'svelte';
   import type { Sutra, Commentary, LayeredSutraCommentary, CommentaryDepth } from '$lib/data/types';
   import SutraDisplay from '$lib/components/SutraDisplay.svelte';
@@ -128,19 +129,23 @@
 
   // The lines in the graded reader that cite this sūtra. Best-effort: the rail
   // simply omits the section if the corpus does not load.
+  /*
+    Which readings cite this sūtra.
+
+    This used to fetch readings.json — 4.07 MB, the entire graded reader — and
+    scan every word of every reading for a matching cite, in order to show a
+    list that is usually empty and never longer than a handful. The corpus cites
+    187 distinct sūtras in total, so the whole answer for every sūtra is a
+    260 KB index: build-sutra-refs.ts writes it as readings-by-sutra.json.
+  */
   let readingHits = $state<{ id: string; sentence: string }[]>([]);
   onMount(async () => {
     try {
-      const res = await fetch('/data/readings.json');
-      if (!res.ok) return;
-      const corpus = await res.json();
       const id = data.sutra?.id;
       if (!id) return;
-      readingHits = (corpus.sequence ?? [])
-        .filter((r: any) =>
-          (r.words ?? []).some((w: any) => (w.notes ?? []).some((n: any) => n.cite === id))
-        )
-        .map((r: any) => ({ id: r.id, sentence: r.sentence ?? '' }));
+      const res = await fetch(dataUrl('/data/readings-by-sutra.json'));
+      if (!res.ok) return;
+      readingHits = ((await res.json()) as Record<string, { id: string; sentence: string }[]>)[id] ?? [];
     } catch {
       /* the rail drops the section */
     }
