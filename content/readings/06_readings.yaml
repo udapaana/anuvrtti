@@ -10,6 +10,145 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd080
+  kind: attested
+  segment: 393
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 1.52.9 — 'give me the cow'"
+    curated: "the first two lines of the verse, word-separated (pausa forms); every form is Vālmīki's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_rAmAyaNa, R_1.052.009ab–cd)"
+  sentence: गवाम् शतसहस्रेण दीयताम् शबला मम। रत्नम् हि भगवन् एतत् रत्नहारी च पार्थिवः॥
+  translation: For a hundred thousand cows, let Śabalā be given to me; for this is a jewel, O lord — and a king is a taker of jewels.
+  teaches: |
+    the king's demand, put politely in the passive imperative — दीयताम् "let (her)
+    be given" — with the price in the instrumental (शतसहस्रेण "for a hundred
+    thousand"), the irregular गवाम् "of cows," and the agent-noun रत्नहारी.
+  words:
+  - form: गवाम्
+    lemma: गो
+    gloss: of cows
+    vocab: true
+    notes:
+    - term: सम्बन्ध
+      en: the measure — "(a hundred thousand) of cows"
+    - term: षष्ठी
+      en: genitive plural (गो → गवाम्)
+  - form: शतसहस्रेण
+    lemma: शतसहस्र
+    gloss: for a hundred thousand
+    vocab: true
+    notes:
+    - text: 'विग्रह: शतम् सहस्राणाम् — "a hundred thousand"'
+    - term: संख्या
+      en: numeral compound "a hundred thousand" (= a lakh)
+    - term: करण
+      en: the price — an exchange is expressed by the instrumental
+    - term: तृतीया
+      en: instrumental
+  - form: दीयताम्
+    lemma: दा
+    gloss: let (her) be given
+    vocab: true
+    notes:
+    - term: यक्
+      en: the passive विकरण (दा → दीय…)
+    - cite: '3.1.67'
+      role: सार्वधातुके यक् — passive विकरण before a सार्वधातुक ending → दीयताम्
+    - term: कर्मणि
+      en: passive
+    - term: लोट्
+      en: imperative (passive 3sg) — "let it be given"
+  - form: शबला
+    lemma: शबला
+    gloss: Śabalā
+    notes:
+    - term: कर्मन्
+      en: what is to be given — grammatical subject of the passive
+    - term: प्रथमा
+      en: nominative
+  - form: मम
+    lemma: अस्मद्
+    gloss: to me
+    notes:
+    - term: सर्वनाम
+      en: pronoun (1sg)
+    - term: सम्प्रदान
+      en: the recipient — "given to me"
+    - term: षष्ठी
+      en: genitive (used for the recipient)
+  - form: रत्नम्
+    lemma: रत्न
+    gloss: a jewel
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: predicate — "this is a jewel"
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: हि
+    lemma: हि
+    gloss: for, indeed
+    notes:
+    - term: अव्यय
+      en: explanatory particle
+  - form: भगवन्
+    lemma: भगवत्
+    gloss: O lord
+    notes:
+    - cite: '2.3.47'
+      role: सम्बोधने च — in address, the सम्बोधन form → भगवन्
+    - term: सम्बोधन
+      en: vocative
+  - form: एतत्
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: pronoun (एतद्, neuter)
+    - term: प्रथमा
+      en: nominative
+  - form: रत्नहारी
+    lemma: रत्नहारिन्
+    gloss: a taker of jewels
+    vocab: true
+    notes:
+    - text: 'विग्रह: रत्नम् हरति — "one who takes jewels"'
+    - term: तत्पुरुष
+      en: agent-compound — रत्नम् हरति "takes a jewel" (उपपद, with इनि → हारिन्)
+    - term: विशेषण
+      en: predicate of पार्थिवः
+    - term: प्रथमा
+      en: nominative (इन्-stem → रत्नहारी)
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: connective
+  - form: पार्थिवः
+    lemma: पार्थिव
+    gloss: a king
+    vocab: true
+    notes:
+    - text: 'विग्रह: पृथिव्याः ईश्वरः — "lord of the earth"'
+    - term: तद्धित
+      en: 'the "of-the-earth" derivative — पृथिवी → पार्थिव (earth-lord, king), अण्'
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  vyakhya: 'याचनम् — कर्मणि लोटि विनयेन। दीयताम् इति दाञः कर्मणि लोटि प्रथमपुरुषैकवचनम् (सार्वधातुके यक्)। गवाम् शतसहस्रेण इति मूल्ये तृतीया, गवाम् इति गोशब्दस्य षष्ठीबहुवचनम्। रत्नहारी इति उपपदे णिनिः। "राजा रत्नानि हरति" इति न्यायेन शबलाम् याचते।'
+  vyakhya_en: |
+    The demand, and the courtly way to make one: the **passive imperative**.
+    दीयताम् "let (her) be given" (दा in the passive, यक्, plus a लोट् ending) is
+    softer than देहि "give!" — the king asks without quite commanding. The price
+    rides in the instrumental — गवाम् शतसहस्रेण, "for a hundred thousand cows"
+    (गवाम्, the irregular genitive of गो). And the justification is a maxim in
+    apposition: रत्नम् एतत्, रत्नहारी च पार्थिवः — "this is a jewel, and a king is a
+    jewel-taker" (रत्नहारी, the उपपद agent-noun). The refusal comes next.
 - id: rd079
   kind: attested
   segment: 392
