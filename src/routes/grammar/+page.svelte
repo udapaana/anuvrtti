@@ -111,7 +111,7 @@
 <svelte:window on:keydown={onKey} />
 
 <svelte:head>
-  <title>{current.id} {plain(current.title)} · डुकृण्करणे</title>
+  <title>{current.id} {plain(current.title)} · grammar</title>
 </svelte:head>
 
 {#snippet shelfLeft()}

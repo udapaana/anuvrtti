@@ -372,7 +372,7 @@
             <a href="/workbook/{lp.pathId}">{lp.pathTitle}</a>
           {/each}
           {#each kaleSections as n (n)}
-            <a href="/dukrnkarane?s={n}">
+            <a href="/grammar?s={n}">
               डुकृण्करणे {n > 972 ? `appendix § ${n - 972}` : `§ ${n}`}
             </a>
           {/each}

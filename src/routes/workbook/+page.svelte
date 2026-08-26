@@ -475,6 +475,22 @@
           {/if}
 
           {#if b.kind === 'vocab' && b.words.length}
+            <!--
+              What "keep" means, said once per lesson rather than nowhere.
+
+              The button has always worked — it adds the word to a spaced-review
+              deck that /words lists and /review runs sessions over — but nothing
+              on the page said so, and the affordance is invisible on arrival:
+              the workbook opens on lesson 1, which is one of the four lessons in
+              seventy-nine with no vocabulary section at all. So a first visit
+              showed no keep button, and the index advertised "words you have
+              kept" with nothing anywhere to keep.
+            -->
+            <p class="vocab-hint">
+              Keep a word to put it in your review deck —
+              <a href="/words">the deck</a> lists them, <a href="/review">review</a> runs a spaced
+              session over what is due.
+            </p>
             <div class="rows">
               {#each b.words as w}
                 <div class="vocab-row">
@@ -767,6 +783,16 @@
   .sandhi-en {
     font-size: 14px;
     color: var(--muted);
+  }
+
+  .vocab-hint {
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--quiet);
+  }
+  .vocab-hint a {
+    color: var(--accent);
   }
 
   /* vocabulary — the row that feeds the deck */

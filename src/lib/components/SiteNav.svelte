@@ -13,10 +13,10 @@
 
   /*
     The app's persistent chrome, 52px, and nothing page-specific ever lands
-    here — that is what pushed the old bar to nine targets. Four doors, one
+    here — that is what pushed the old bar to nine targets. Five doors, one
     search, one preferences popover:
 
-      read · workbook · usage · reference
+      read · workbook · usage · sūtra · grammar
 
     The script pills, the lesson language and the settings link all moved into
     the `aa` popover, and the floating authoring pencil became a mode switch
@@ -30,8 +30,16 @@
 
   const path = $derived($page.url.pathname);
 
-  // The doors, and the routes each one owns. A door lights for any route behind
-  // it, so /words never leaves you without a current door.
+  /*
+    The doors, and the routes each one owns. A door lights for any route behind
+    it, so /words never leaves you without a current door.
+
+    "reference" used to be one door over two different books. The Aṣṭādhyāyī is
+    Pāṇini in 3983 sūtras; the grammar is Kāle's *A Higher Sanskrit Grammar* in
+    988 rules, and it answers the question the sūtras do not — how the language
+    behaves, in the order a learner meets it. Filing the second inside the first
+    made it reachable only by knowing it was there.
+  */
   const doors = [
     { href: '/reader', label: 'read', owns: ['/reader'] },
     {
@@ -40,7 +48,8 @@
       owns: ['/workbook', '/learn', '/balabodhini', '/words', '/review']
     },
     { href: '/usage', label: 'usage', owns: ['/usage'] },
-    { href: '/ref', label: 'reference', owns: ['/ref', '/dukrnkarane', '/conjugate'] }
+    { href: '/ref', label: 'sūtra', owns: ['/ref', '/conjugate'] },
+    { href: '/grammar', label: 'grammar', owns: ['/grammar', '/dukrnkarane'] }
   ];
 
   function on(owns: string[]): boolean {
@@ -61,7 +70,10 @@
     <!-- The wordmark is Sanskrit too, so it follows the toggle like everything
          else — the design transliterates it rather than fixing it as a logo. -->
     <a class="wordmark" href="/" aria-label="anuvrtti home">
-      <Sanskrit text="अनुवृत्ति" source="devanagari" />
+      <span class="wm-full"><Sanskrit text="अनुवृत्ति" source="devanagari" /></span>
+      <!-- On a phone the full wordmark costs ~80px that the fifth door needs.
+           The first syllable still reads as the mark and still goes home. -->
+      <span class="wm-short" aria-hidden="true"><Sanskrit text="अ" source="devanagari" /></span>
     </a>
 
     <nav class="doors">
@@ -146,6 +158,9 @@
     gap: 26px;
   }
 
+  .wm-short {
+    display: none;
+  }
   .wordmark {
     font-family: var(--font-deva);
     font-size: 19px;
@@ -285,8 +300,20 @@
       scrollable row says so. Every door stays reachable, which is why this
       scrolls rather than dropping to the current door alone.
     */
+    /*
+      The wordmark contracts to its first syllable. With five doors — read ·
+      workbook · usage · sūtra · grammar — the full mark left "grammar" entirely
+      off the end of the scroll, where nothing suggests it exists; the ~80px it
+      gives back is the difference between the row fitting and not.
+    */
+    .wm-full {
+      display: none;
+    }
+    .wm-short {
+      display: inline;
+    }
     .doors {
-      gap: 16px;
+      gap: 14px;
       overflow-x: auto;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;

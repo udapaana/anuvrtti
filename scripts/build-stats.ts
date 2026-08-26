@@ -58,10 +58,16 @@ function countCells(): number {
   );
 }
 
+/** Rules in Kāle's grammar — the व्याकरण door. */
+function countRules(): number {
+  return (read('dukrnkarane.json')?.rules ?? []).length;
+}
+
 const stats = {
   readings: countReadings(),
   lessons: countLessons(),
-  cells: countCells()
+  cells: countCells(),
+  rules: countRules()
 };
 
 const json = JSON.stringify(stats);
@@ -77,10 +83,10 @@ if (CHECK) {
     );
     process.exit(1);
   }
-  console.log(`door stats: ${stats.readings} readings, ${stats.lessons} lessons, ${stats.cells} cells`);
+  console.log(`door stats: ${stats.readings} readings, ${stats.lessons} lessons, ${stats.cells} cells, ${stats.rules} rules`);
 } else {
   fs.writeFileSync(OUT, json);
   console.log(
-    `Wrote ${stats.readings} readings, ${stats.lessons} lessons, ${stats.cells} cells → ${path.relative(process.cwd(), OUT)}`
+    `Wrote ${stats.readings} readings, ${stats.lessons} lessons, ${stats.cells} cells, ${stats.rules} rules → ${path.relative(process.cwd(), OUT)}`
   );
 }

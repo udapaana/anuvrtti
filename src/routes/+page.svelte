@@ -43,7 +43,7 @@
     usage.json and balabodhini.json — 5.9 MB of corpora — to end up with three
     integers, on the first page anyone loads.
   */
-  let stat = $state({ readings: 0, lessons: 0, cells: 0, sutras: SUTRA_COUNT });
+  let stat = $state({ readings: 0, lessons: 0, cells: 0, rules: 0, sutras: SUTRA_COUNT });
 
   onMount(async () => {
     try {
@@ -109,6 +109,12 @@
       dev: 'सूत्र',
       body: 'The Aṣṭādhyāyī by adhyāya and pāda, with a syllabus through it.',
       meta: `${count(stat.sutras)} sūtras →`
+    },
+    {
+      href: '/grammar',
+      dev: 'व्याकरण',
+      body: "Kāle's grammar, rule by rule — sandhi, declension, compounds, the verb.",
+      meta: `${count(stat.rules)} rules →`
     }
   ]);
 </script>
@@ -143,7 +149,7 @@
   <nav class="doors">
     {#each doors as door (door.href)}
       <a class="door" href={door.href}>
-        <span class="door-dev">{door.dev}</span>
+        <span class="door-dev font-{$displayScript}"><Sanskrit text={door.dev} source="devanagari" /></span>
         <p class="door-body">{door.body}</p>
         <span class="door-meta">{door.meta}</span>
       </a>
@@ -153,7 +159,7 @@
   <a class="everything" href="/index">
     <span class="everything-label">everything else</span>
     <span class="everything-list">
-      words · review · conjugate · pratyāhārāḥ · jargon · dukṛṇkaraṇe · about →
+      words · review · conjugate · pratyāhārāḥ · jargon · tables · about →
     </span>
   </a>
 </Shell>
@@ -233,11 +239,17 @@
     color: var(--muted);
   }
 
-  /* The four doors. One hairline grid, no cards, no radii — the counts are what
-     distinguish them, not decoration. */
+  /* The doors. One hairline grid, no cards, no radii — the counts are what
+     distinguish them, not decoration.
+
+     auto-fit rather than a fixed column count: the row was repeat(4, 1fr) and
+     adding the grammar door would have left a fifth cell hanging alone on a
+     second row. A 190px floor lets the browser fit as many as the width allows
+     and reflow the rest, which is also what makes the phone case work without
+     a third breakpoint. */
   .doors {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     gap: 1px;
     background: var(--rule-2);
     border: 1px solid var(--rule-2);
@@ -256,7 +268,8 @@
     background: var(--sunken);
   }
   .door-dev {
-    font-family: var(--font-deva);
+    /* the family comes from the font-<script> class, so a Telugu reader gets
+       Telugu metrics rather than Devanagari ones applied to Telugu glyphs */
     font-size: 22px;
     font-weight: 600;
     color: var(--accent);
@@ -294,14 +307,15 @@
     color: var(--accent);
   }
 
-  @media (max-width: 900px) {
-    .doors {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
   @media (max-width: 560px) {
     .doors {
       grid-template-columns: 1fr;
+    }
+    .door {
+      /* stacked, each door is a row rather than a tile — the 150px floor left
+         five near-empty boxes running off the bottom of a phone */
+      min-height: 0;
+      padding: 16px 18px;
     }
     .statement h1 {
       font-size: 28px;

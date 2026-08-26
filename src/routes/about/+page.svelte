@@ -15,8 +15,26 @@
 <Shell measure>
   <header class="head">
     <h1>about</h1>
-    <p>Sources, attributions, and acknowledgements.</p>
+    <p>What this is, and what it is built out of.</p>
   </header>
+
+  <section class="entry">
+    <h2>अनुवृत्ति · anuvrtti</h2>
+    <span class="label">what the site is</span>
+    <p>
+      A graded Sanskrit reader indexed to the Aṣṭādhyāyī. Readings are ordered by difficulty,
+      classical and Vedic; every word carries its grammatical analysis and the sūtras that derive
+      it. Five doors: <a href="/reader">read</a> is the sequence,
+      <a href="/workbook">workbook</a> is the Bālabodhinī lesson by lesson,
+      <a href="/usage">usage</a> is which forms the corpus actually attests,
+      <a href="/ref">sūtra</a> is Pāṇini in full, and <a href="/grammar">grammar</a> is Kāle.
+    </p>
+    <p class="note">
+      The last two used to be one door. They are different books answering different questions —
+      Pāṇini states the rules that generate the language; Kāle describes how the language behaves,
+      in the order a learner meets it — so they are two.
+    </p>
+  </section>
 
   <section class="entry">
     <h2>బాలబోధిని · Bālabodhini</h2>
@@ -76,13 +94,63 @@
   </section>
 
   <section class="entry">
-    <h2>अनुवृत्ति · anuvrtti</h2>
-    <span class="label">this site</span>
+    <h2>व्याकरण · A Higher Sanskrit Grammar</h2>
+    <span class="label">the grammar door</span>
     <p>
-      An open-source Sanskrit learning tool. The source is on
+      Moreśvara Rāmacandra Kāle's <em>A Higher Sanskrit Grammar</em>, 1894 — 988 sections across
+      26 chapters, from the alphabet through sandhi, declension, compounds, the feminine bases and
+      the verb. Each section is a page here, cross-referenced to the sūtras it discusses: 656 of
+      Kāle's citations resolve to an Aṣṭādhyāyī rule, and every sūtra page links back to the
+      sections that treat it.
+    </p>
+
+    <dl>
+      <dt>author</dt>
+      <dd>मोरेश्वर रामचन्द्र काले · M. R. Kāle</dd>
+
+      <dt>published</dt>
+      <dd>1894</dd>
+
+      <dt>copyright</dt>
+      <dd>out of copyright — public domain</dd>
+
+      <dt>page scans</dt>
+      <dd>
+        <a href="https://dukrnkarane.udapaana.in" target="_blank" rel="noopener noreferrer">
+          dukrnkarane.udapaana.in
+        </a>
+      </dd>
+    </dl>
+  </section>
+
+  <section class="entry">
+    <h2>the tools underneath</h2>
+    <span class="label">open-source software this depends on</span>
+    <dl>
+      <dt>vidyut-prakriya</dt>
+      <dd>
+        derives forms from a root, step by step, with the sūtra applied at each step — it is what
+        <a href="/conjugate">conjugate</a> and <a href="/ref/prakriya">derivation</a> run on, and
+        what the paradigm grids in <a href="/usage">usage</a> are checked against
+      </dd>
+
+      <dt>shlesha</dt>
+      <dd>transliteration — every script the display toggle offers passes through it</dd>
+
+      <dt>SvelteKit</dt>
+      <dd>the application, deployed on Cloudflare Pages</dd>
+    </dl>
+  </section>
+
+  <section class="entry">
+    <h2>the source</h2>
+    <span class="label">corrections welcome</span>
+    <p>
+      An open-source project. The readings, the commentary and the glossary are hand-authored and
+      certainly contain errors; the code and the corpus are both on
       <a href="https://github.com/udapaana/anuvrtti" target="_blank" rel="noopener noreferrer"
         >GitHub</a
-      >.
+      >, and any page can be corrected from the site itself with a GitHub account.
     </p>
   </section>
 </Shell>
