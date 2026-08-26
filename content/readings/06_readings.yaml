@@ -10,6 +10,136 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd067
+  kind: attested
+  segment: 375
+  source:
+    text: पञ्चतन्त्र
+    ref: "Pañcatantra 1.310 — the greater eclipses the good"
+    curated: "the whole verse, word-separated (pausa forms; compounds kept whole); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_viSNuzarman-paJcatantra, ||Panc_1.310||)"
+  sentence: गुणवत्तरपात्रेण छाद्यन्ते गुणिनाम् गुणाः। रात्रौ दीपशिखाकान्तिः न भानौ उदिते सति॥
+  translation: By a vessel of greater merit the merits of the meritorious are eclipsed — the lamp-flame's brightness shines at night, not once the sun has risen.
+  teaches: |
+    three things you have met, working together: the passive छाद्यन्ते "are
+    covered," with its agent in the instrumental; the comparative गुणवत्तर
+    "greater in merit"; and a locative absolute made explicit — भानौ उदिते सति,
+    "the sun being risen."
+  words:
+  - form: गुणवत्तरपात्रेण
+    lemma: गुणवत्तरपात्र
+    gloss: by a vessel of greater merit
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: the agent of the passive — in the instrumental
+    - term: तरप्
+      en: contains the comparative — गुणवत् "meritorious" + तरप् → गुणवत्तर "more meritorious"
+    - term: तृतीया
+      en: instrumental
+  - form: छाद्यन्ते
+    lemma: छद्
+    gloss: are covered, eclipsed
+    vocab: true
+    notes:
+    - term: यक्
+      en: the passive विकरण
+    - cite: '3.1.67'
+      role: सार्वधातुके यक् — passive विकरण → छाद् + यक् → छाद्य…
+    - term: कर्मणि
+      en: passive
+    - term: लट्
+      en: present (passive 3pl)
+  - form: गुणिनाम्
+    lemma: गुणिन्
+    gloss: of the meritorious
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: possessive (इनि) — गुण "merit" → गुणिन् "having merit"
+    - cite: '5.2.115'
+      role: अत इनिठनौ — इनि in the "possessing" sense → गुण + इनि → गुणिन्
+    - term: षष्ठी
+      en: genitive plural
+  - form: गुणाः
+    lemma: गुण
+    gloss: the merits
+    notes:
+    - term: कर्मन्
+      en: what is covered — grammatical subject of the passive
+    - term: प्रथमा
+      en: nominative plural
+  - form: रात्रौ
+    lemma: रात्रि
+    gloss: at night
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus of time
+    - term: सप्तमी
+      en: locative (इ-stem → रात्रौ)
+  - form: दीपशिखाकान्तिः
+    lemma: दीपशिखाकान्ति
+    gloss: the glow of the lamp-flame
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: compound — दीपशिखायाः कान्तिः "the flame's radiance"
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (इ-stem feminine)
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: भानौ
+    lemma: भानु
+    gloss: the sun
+    vocab: true
+    notes:
+    - cite: '2.3.37'
+      role: यस्य च भावेन भावलक्षणम् — the noun in a locative-absolute clause stands in the सप्तमी → भानौ … उदिते सति
+    - term: अधिकरण
+      en: the absolute locus
+    - term: सप्तमी
+      en: locative (उ-stem → भानौ)
+  - form: उदिते
+    lemma: उदि
+    gloss: having risen
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of उद्-इ "rise," in the locative
+    - term: विशेषण
+      en: with भानौ
+    - term: सप्तमी
+      en: locative
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: सति
+    lemma: अस्
+    gloss: being
+    notes:
+    - term: कृदन्त
+      en: present participle (शतृ) of अस् "be," in the locative — the word that names the सति सप्तमी
+    - term: विशेषण
+      en: with भानौ
+    - term: सप्तमी
+      en: locative
+    rel:
+    - kind: विशेषण
+      to: 7
+  vyakhya: 'कर्मणि-तरप्-सतिसप्तमीनां संगमः। छाद्यन्ते इति यकि लट् कर्मणि; गुणवत्तर इति तरप् (गुणवत् + तरप्)। गुणिनाम् इति इनिः। भानौ उदिते सति इति भावलक्षणसप्तमी — "सति" इति अस्तेः शतृ, यतः "सति सप्तमी" इति नाम। दृष्टान्तेन अर्थः स्फुटः।'
+  vyakhya_en: |
+    A verse that gathers three familiar things into one image. The **passive**:
+    गुणाः छाद्यन्ते "the merits are eclipsed," agent गुणवत्तरपात्रेण "by a greater
+    vessel" in the instrumental. The **comparative**: गुणवत्-तर "more meritorious"
+    (तरप्). And the **locative absolute** in its fullest, textbook form — भानौ
+    उदिते सति, where सति is literally the participle of अस् "being," the very word
+    that gives the construction its nickname **सति सप्तमी**. The lamp outshines
+    nothing once the sun is up: so the good, beside the greater.
 - id: rd066
   kind: attested
   segment: 374
