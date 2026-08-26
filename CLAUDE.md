@@ -23,6 +23,11 @@ bun run check
 Edit `content/readings/*.yaml`, never `static/data/readings.json` — that is
 generated. `bun run build:readings` after every edit.
 
+`static/data/stats.json` is generated too, and committed: the four counts on
+the home page's doors. The threshold must not download three corpora to print
+three integers, so `bun run build:stats` reduces them at build time (it runs
+inside `npm run build`). `bun run check` fails when it goes stale.
+
 ## The grammar, as prose
 
 Two hand-edited books, both TOML, both read by a thin `.ts` that only types

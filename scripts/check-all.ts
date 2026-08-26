@@ -195,6 +195,17 @@ if (/SUTRA_COUNT is/.test(cnt)) {
   console.log('  ✓ ' + cnt.trim());
 }
 
+// 9. the home page's door counts — HARD. static/data/stats.json is generated
+// and committed; if it goes stale the threshold page advertises a corpus we no
+// longer have, and nothing else would notice.
+const stats = await run(['bun', 'scripts/build-stats.ts', '--check']);
+if (/stale|missing/.test(stats)) {
+  problems.push('door stats: static/data/stats.json is stale — run bun run build:stats');
+  console.log('  ✗ door stats: static/data/stats.json is stale');
+} else {
+  console.log('  ✓ ' + stats.trim());
+}
+
 console.log();
 if (problems.length) {
   console.log('FAILED:\n');

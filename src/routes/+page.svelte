@@ -31,11 +31,18 @@
   let resume: ResumeTarget | null = $state(null);
   let allPaths: PathMeta[] = $state([]);
 
-  // Live counts on the doors — they earn their place there, and each one counts
-  // what is BEHIND its own door. The सूत्र door used to print the distinct
-  // sūtras cited by the reader's word notes (187), which is a fact about the
-  // reader's coverage, not about /ref — the door then handed you 3983. That is
-  // /usage's kind of number, so it left rather than moved.
+  /*
+    Live counts on the doors — they earn their place there, and each one counts
+    what is BEHIND its own door. The सूत्र door used to print the distinct sūtras
+    cited by the reader's word notes (187), which is a fact about the reader's
+    coverage, not about /ref — the door then handed you 3983. That is /usage's
+    kind of number, so it left rather than moved.
+
+    The other three arrive from static/data/stats.json, eighty-three bytes built
+    by scripts/build-stats.ts. Reading them live meant fetching readings.json,
+    usage.json and balabodhini.json — 5.9 MB of corpora — to end up with three
+    integers, on the first page anyone loads.
+  */
   let stat = $state({ readings: 0, lessons: 0, cells: 0, sutras: SUTRA_COUNT });
 
   onMount(async () => {
@@ -51,32 +58,11 @@
 
   async function loadStats() {
     try {
-      const r = await fetch(dataUrl('/data/readings.json'));
-      if (r.ok) {
-        const d = await r.json();
-        stat.readings = (d.sequence ?? []).length;
-      }
-    } catch {}
-    try {
-      const r = await fetch(dataUrl('/data/balabodhini.json'));
-      if (r.ok) {
-        const b = await r.json();
-        stat.lessons = (b.parts ?? []).reduce((a: number, p: any) => a + p.lessons.length, 0);
-      }
-    } catch {}
-    try {
-      const r = await fetch(dataUrl('/data/usage.json'));
-      if (r.ok) {
-        const u = await r.json();
-        // The door's count is the cells the corpus actually attests, which is
-        // what each entry records as `filled`.
-        stat.cells = (u.sections ?? []).reduce(
-          (a: number, s: any) =>
-            a + (s.entries ?? []).reduce((b: number, e: any) => b + (e.filled ?? 0), 0),
-          0
-        );
-      }
-    } catch {}
+      const r = await fetch(dataUrl('/data/stats.json'));
+      if (r.ok) Object.assign(stat, await r.json());
+    } catch {
+      // fail soft — count() prints an em dash for a zero, and the doors work
+    }
   }
 
   // Only the opening still follows the script toggle; the term table that used
