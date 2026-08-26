@@ -10,6 +10,141 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd073
+  kind: attested
+  segment: 384
+  source:
+    text: विष्णुपुराण
+    ref: "Viṣṇu Purāṇa 1.11.7 — 'why this vain wish?'"
+    curated: "the whole verse, word-separated (pausa forms; compounds kept whole); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_viSNupurANa, ViP_1,11.7)"
+  sentence: क्रियते किम् वृथा वत्स महान् एषः मनोरथः। अन्यस्त्रीगर्भजातेन हि असंभूय मम उदरे॥
+  translation: Why, child, is this great wish cherished in vain — by one born of another woman's womb, one who did not come to be within my belly?
+  teaches: |
+    the cruel speech opens in the passive — क्रियते "is it cherished," its doer
+    thrown into the instrumental (अन्यस्त्रीगर्भजातेन "by one born of another's
+    womb"); with the vocative वत्स and a नञ्-prefixed gerund असंभूय "not having come to be."
+  words:
+  - form: क्रियते
+    lemma: कृ
+    gloss: is (it) cherished
+    notes:
+    - term: यक्
+      en: the passive विकरण
+    - cite: '3.1.67'
+      role: सार्वधातुके यक् — passive विकरण → कृ + यक् → क्रिय…
+    - term: कर्मणि
+      en: passive
+    - term: लट्
+      en: present (passive 3sg)
+  - form: किम्
+    lemma: किम्
+    gloss: why
+    notes:
+    - term: अव्यय
+      en: interrogative — "why, to what end?"
+  - form: वृथा
+    lemma: वृथा
+    gloss: in vain
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: adverb — "uselessly, for nothing"
+  - form: वत्स
+    lemma: वत्स
+    gloss: O child
+    vocab: true
+    notes:
+    - cite: '2.3.47'
+      role: सम्बोधने च — in address, the सम्बोधन form → वत्स
+    - term: सम्बोधन
+      en: vocative — an affectionate "child, my dear"
+  - form: महान्
+    lemma: महत्
+    gloss: great
+    notes:
+    - term: विशेषण
+      en: qualifying मनोरथः
+    - term: प्रथमा
+      en: nominative (अत्-stem महत् → महान्)
+    rel:
+    - kind: विशेषण
+      to: 6
+  - form: एषः
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: pronoun (एतद्)
+    - term: प्रथमा
+      en: nominative
+  - form: मनोरथः
+    lemma: मनोरथ
+    gloss: wish, longing
+    notes:
+    - text: 'विग्रह: मनसः रथः इव — "a chariot of the mind"'
+    - term: तत्पुरुष
+      en: compound — "mind-chariot," idiomatic for a desire
+    - term: कर्मन्
+      en: what is cherished — grammatical subject of the passive
+    - term: प्रथमा
+      en: nominative
+  - form: अन्यस्त्रीगर्भजातेन
+    lemma: अन्यस्त्रीगर्भजात
+    gloss: by one born of another woman's womb
+    vocab: true
+    notes:
+    - text: 'विग्रह: अन्यस्याः स्त्रियाः गर्भे जातः — "born in the womb of another woman"'
+    - term: तत्पुरुष
+      en: compound — "born in another-woman's-womb"
+    - term: कर्तृ
+      en: the agent of the passive — in the instrumental
+    - term: तृतीया
+      en: instrumental
+  - form: हि
+    lemma: हि
+    gloss: for, indeed
+    notes:
+    - term: अव्यय
+      en: explanatory particle
+  - form: असंभूय
+    lemma: भू
+    gloss: not having come to be
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerund (ल्यप्) of सम्-भू "come to be," with नञ् — "not having been (born)"
+    - cite: '7.1.37'
+      role: समासेऽनञ्पूर्वे क्त्वो ल्यप् — a prefixed root takes ल्यप् → सम्-भू → संभूय (with नञ् → असंभूय)
+    - term: ल्यप्
+      en: the prefixed-root gerund
+  - form: मम
+    lemma: अस्मद्
+    gloss: my
+    notes:
+    - term: सर्वनाम
+      en: pronoun (1sg genitive)
+    - term: सम्बन्ध
+      en: possessor — "my (belly)"
+    - term: षष्ठी
+      en: genitive
+  - form: उदरे
+    lemma: उदर
+    gloss: in the belly, womb
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  vyakhya: 'सुरुच्याः वाक्यम् — कर्मणि प्रश्नः। क्रियते किम् वृथा इति कर्मणि लटि प्रश्नः ("किमर्थम् एषः मनोरथः क्रियते")। अन्यस्त्रीगर्भजातेन इति कर्तरि तृतीया (अनभिहिते)। असंभूय इति नञ्पूर्वात् सम्भवतेः ल्यप्। वत्स इति सम्बोधनम्। कठोरम् अपि मृदुसम्बोधनेन आरब्धम्।'
+  vyakhya_en: |
+    Suruci begins — and cruelty speaks in the **passive**. क्रियते किम् वृथा "why
+    is (this) vainly cherished?" leaves the doer unnamed in the verb and drops him
+    into the instrumental: अन्यस्त्रीगर्भजातेन, "by one born of another woman's
+    womb." Unfold that compound and the insult is bare — she will not even say
+    "you." The gerund असंभूय "not having come to be" (सम्-भू with नञ्, so a
+    prefixed ल्यप्) turns the knife: *not born in my womb.* And yet it opens वत्स
+    "child" — the soft address that makes the rest colder.
 - id: rd072
   kind: attested
   segment: 383
