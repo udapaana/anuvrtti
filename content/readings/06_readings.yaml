@@ -10,6 +10,156 @@
 # ════════════════════════════════════════════════════════════════════════
 
 readings:
+- id: rd078
+  kind: attested
+  segment: 391
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 1.51.13 — Vasiṣṭha offers hospitality"
+    curated: "the whole verse, word-separated (pausa forms); every form is Vālmīki's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_rAmAyaNa, R_1.051.013). After they had talked happily a long while, Vasiṣṭha, smiling, said this."
+  sentence: आतिथ्यम् कर्तुम् इच्छामि बलस्य अस्य महाबल। तव च एव अप्रमेयस्य यथार्हम् संप्रतीच्छ मे॥
+  translation: I wish to offer hospitality to this army of yours, O mighty one, and to you, the immeasurable — accept from me what is fitting.
+  teaches: |
+    the host's offer — a first-person present इच्छामि "I wish" with an infinitive
+    कर्तुम्, and an imperative संप्रतीच्छ "accept!"; plus the abstract आतिथ्यम्
+    "hospitality" and the adverb-compound यथार्हम् "as is fitting."
+  words:
+  - form: आतिथ्यम्
+    lemma: आतिथ्य
+    gloss: hospitality
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract noun — अतिथि "guest" → आतिथ्य "guest-treatment" (ष्यञ्)
+    - term: ष्यञ्
+      en: the abstract-noun suffix
+    - term: कर्मन्
+      en: object of कर्तुम्
+    - term: द्वितीया
+      en: accusative
+  - form: कर्तुम्
+    lemma: कृ
+    gloss: to make, to do
+    notes:
+    - term: कृदन्त
+      en: infinitive (तुमुन्) of कृ
+    - cite: '3.3.10'
+      role: तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम् — the infinitive of purpose → कर्तुम्
+    - term: तुमुन्
+      en: '"to do (hospitality)"'
+  - form: इच्छामि
+    lemma: इष्
+    gloss: I wish
+    notes:
+    - term: इष्
+      en: '"wish, want" (तुदादि)'
+    - term: लट्
+      en: present (1sg)
+  - form: बलस्य
+    lemma: बल
+    gloss: for the army
+    notes:
+    - term: सम्बन्ध
+      en: the recipient of the hospitality
+    - term: षष्ठी
+      en: genitive
+  - form: अस्य
+    lemma: इदम्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: pronoun (इदम्, masc. genitive) — qualifying बलस्य
+    - term: षष्ठी
+      en: genitive
+  - form: महाबल
+    lemma: महाबल
+    gloss: O mighty one
+    notes:
+    - text: 'विग्रह: महत् बलम् यस्य — "one whose strength is great"'
+    - term: बहुव्रीहि
+      en: possessive — "great in strength"
+    - cite: '2.3.47'
+      role: सम्बोधने च — in address, the सम्बोधन form → महाबल
+    - term: सम्बोधन
+      en: vocative
+  - form: तव
+    lemma: युष्मद्
+    gloss: your, of you
+    notes:
+    - term: सर्वनाम
+      en: pronoun (2sg genitive)
+    - term: सम्बन्ध
+      en: (also) the recipient — "and of you"
+    - term: षष्ठी
+      en: genitive
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: connective
+  - form: एव
+    lemma: एव
+    gloss: indeed
+    notes:
+    - term: अव्यय
+      en: emphatic — "you yourself as well"
+  - form: अप्रमेयस्य
+    lemma: अप्रमेय
+    gloss: of the immeasurable
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: नञ्-gerundive — न प्रमेयम् "not to be measured," qualifying तव
+    - cite: '2.2.6'
+      role: नञ् — नञ् + प्रमेय (the gerundive of प्र-मा "measure") → अप्रमेय "immeasurable"
+    - term: विशेषण
+      en: qualifying तव
+    - term: षष्ठी
+      en: genitive
+    rel:
+    - kind: विशेषण
+      to: 6
+  - form: यथार्हम्
+    lemma: यथार्ह
+    gloss: as is fitting
+    vocab: true
+    notes:
+    - text: 'विग्रह: अर्हम् अनतिक्रम्य — "not exceeding what is due"'
+    - term: अव्ययीभाव
+      en: adverbial compound — यथा + अर्ह "according to what is deserved"
+    - cite: '2.1.7'
+      role: यथाऽसादृश्ये — यथा (not in the "likeness" sense) forms an अव्ययीभाव → यथार्हम्
+    - term: अव्यय
+      en: adverb of manner
+  - form: संप्रतीच्छ
+    lemma: इष्
+    gloss: accept!
+    vocab: true
+    notes:
+    - term: इष्
+      en: सम्-प्रति-इष् "accept, receive"
+    - term: लोट्
+      en: imperative (2sg)
+  - form: मे
+    lemma: अस्मद्
+    gloss: from me
+    notes:
+    - term: सर्वनाम
+      en: pronoun (1sg genitive)
+    - term: सम्बन्ध
+      en: "(accept) of me"
+    - term: षष्ठी
+      en: genitive
+  vyakhya: 'आतिथ्यप्रस्तावः — उत्तमपुरुषे लट्, आज्ञायाम् लोट्। आतिथ्यम् कर्तुम् इच्छामि इति तुमुना सह इष्धातुः। बलस्य तव इति आतिथ्यसम्बन्धे षष्ठी। अप्रमेयस्य इति नञ्पूर्वो ण्यदन्तः। यथार्हम् इति अव्ययीभावः। संप्रतीच्छ मे इति प्रतिग्रहणे आज्ञा।'
+  vyakhya_en: |
+    The host speaks, and the verse runs on two moods of the first and second
+    person. Vasiṣṭha's **present** इच्छामि "I wish," steered by an infinitive —
+    आतिथ्यम् कर्तुम् "to do hospitality" — and then his **imperative** to the guest,
+    संप्रतीच्छ "accept!" Around them, आतिथ्यम् is the abstract noun of अतिथि "guest"
+    (ष्यञ्); अप्रमेयस्य "immeasurable" a नञ्-gerundive; and यथार्हम् "as is due" an
+    अव्ययीभाव. This courtesy is the hinge of the whole story: to feast an army,
+    Vasiṣṭha will call his wish-granting cow — and Viśvāmitra will want her.
 - id: rd077
   kind: attested
   segment: 390
