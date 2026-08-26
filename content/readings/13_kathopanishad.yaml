@@ -1,0 +1,136 @@
+# ════════════════════════════════════════════════════════════════════════
+#  13_kathopanishad.yaml — कठोपनिषद् — a full read-through (the ATTESTED track)
+#
+#  The whole Kaṭha Upaniṣad, in order, verse by verse — kind: attested.
+#  Text: Olivelle, "The Early Upaniṣads" (1998), via GRETIL's plain-text
+#  transformation (sa_kathopaniSad). Kept VERBATIM and UNACCENTED — no svara
+#  marks, no de-sandhi beyond what the reader needs to tokenize; the source's
+#  forms stand as they are.
+#
+#  This is a READ-THROUGH, not a coverage drill. Most words enter as scenery —
+#  glossed for meaning, a bare identity term, NO cite. Only genuinely notable
+#  forms carry the full apparatus and a VERIFIED citation. A form vidyut-prakriya
+#  cannot confirm (an archaic/Vedic form) is annotated conservatively — typed and
+#  glossed — and NEVER given a cite we cannot verify.
+#
+#  Reference: KaU vallī.verse. ids are ku<VV><NN> (ku0101 = vallī 1, verse 1).
+# ════════════════════════════════════════════════════════════════════════
+
+readings:
+- id: ku0101
+  kind: attested
+  segment: 420
+  source:
+    text: कठोपनिषद्
+    ref: "Kaṭha Upaniṣad 1.1.1 — Naciketas is born"
+    curated: "the whole verse, verbatim and unaccented; word-separated (pausa forms). Every form is the text's. From GRETIL's edition of Olivelle 1998 (sa_kathopaniSad, KaU 1.1)."
+  sentence: उशन् ह वै वाजश्रवसः सर्ववेदसम् ददौ। तस्य ह नचिकेता नाम पुत्र आस॥
+  translation: Desiring (its reward), Vājaśravasa gave away all his wealth. He had a son named Naciketas.
+  teaches: |
+    the opening of an Upaniṣad tale, and its two signatures — the perfect tense
+    of narration (ददौ "gave," आस "was") and the little Vedic story-particles ह
+    वै, which a reader learns to read straight past.
+  words:
+  - form: उशन्
+    lemma: वश्
+    gloss: desiring (the reward)
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: present participle (शतृ) of वश् "wish, desire" — "one who desires (the fruit of the gift)"
+    - term: विशेषण
+      en: with वाजश्रवसः / the giver
+    - term: प्रथमा
+      en: nominative
+  - form: ह
+    lemma: ह
+    gloss: (narrative particle)
+    notes:
+    - term: अव्यय
+      en: a particle of past narration, common in Upaniṣad/Brāhmaṇa prose — often left untranslated
+  - form: वै
+    lemma: वै
+    gloss: verily, indeed
+    notes:
+    - term: अव्यय
+      en: emphatic particle — like ह, a mark of the register more than of the sense
+  - form: वाजश्रवसः
+    lemma: वाजश्रवस्
+    gloss: Vājaśravasa (son of Vājaśravas)
+    vocab: true
+    notes:
+    - term: सम्बन्ध
+      en: the descendant "of Vājaśravas" — the giver, named by his lineage
+    - term: षष्ठी
+      en: genitive (स्-stem वाजश्रवस् → वाजश्रवसः)
+  - form: सर्ववेदसम्
+    lemma: सर्ववेदस्
+    gloss: all his wealth
+    vocab: true
+    notes:
+    - text: 'विग्रह: सर्वम् वेदसम् — "all (his) property"'
+    - term: समास
+      en: compound — सर्व "all" + वेदस् "wealth, possessions"
+    - term: कर्मन्
+      en: what was given
+    - term: द्वितीया
+      en: accusative
+  - form: ददौ
+    lemma: दा
+    gloss: gave (away)
+    vocab: true
+    notes:
+    - cite: '3.2.115'
+      role: परोक्षे लिट् — for the remote past, the लिट् (perfect); दा reduplicates → द-दौ
+    - term: लिट्
+      en: perfect (3sg)
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्बन्ध
+      en: "his (son)"
+    - term: षष्ठी
+      en: genitive
+  - form: नचिकेता
+    lemma: नचिकेतस्
+    gloss: Naciketas
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (स्-stem नचिकेतस् → नचिकेता)
+  - form: नाम
+    lemma: नाम
+    gloss: by name
+    notes:
+    - term: अव्यय
+      en: '"by name" — marks the preceding as a name'
+  - form: पुत्र
+    lemma: पुत्र
+    gloss: a son
+    notes:
+    - term: कर्तृ
+      en: in apposition to नचिकेता (पुत्रः → पुत्र, visarga dropped before आ)
+    - term: प्रथमा
+      en: nominative
+  - form: आस
+    lemma: अस्
+    gloss: there was, he had
+    vocab: true
+    notes:
+    - cite: '3.2.115'
+      role: परोक्षे लिट् — the perfect of अस् "be" → आस
+    - term: लिट्
+      en: perfect (3sg)
+  vyakhya: 'उपनिषदाख्यानस्य आरम्भः। ददौ आस इति लिटि प्रथमपुरुषैकवचने (परोक्षे लिट्)। ह वै इति आख्यायिकायाम् निपातौ। उशन् इति वशेः शतृ। पुत्र आस इति विसर्गलोपे "पुत्रः आस"।'
+  vyakhya_en: |
+    An Upaniṣad opens the way its stories do — in the **perfect**, the tense of
+    the remote, handed-down past: ददौ "he gave," आस "there was" (both 3.2.115).
+    And it carries the two particles that flavour this register, ह and वै — Vedic
+    narrative markers with almost no translatable weight; the reader's job is to
+    see them and move on. उशन् "desiring" is the शतृ participle of वश्, and पुत्र
+    (for पुत्रः, its visarga dropped before आ) sits in apposition to नचिकेता.
