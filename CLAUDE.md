@@ -9,6 +9,14 @@ verify `npm run build` locally before pushing.
 **Bun**, not npm, for scripts — it runs TypeScript natively. `npm ci` still
 installs deps; the build scripts are `bun scripts/*.ts`.
 
+## Where things live
+
+Read **`docs/ARCHITECTURE.md`** before moving a data file or adding a build
+step. Every data file is authored (`content/`), vendored (`data/`) or generated
+(`static/data/`), and the tree does not yet enforce that — the doc says what is
+which, and what is being moved. It also carries the migration order, so two
+sessions working at once do not collide.
+
 ## Working on the graded reader
 
 Read **`docs/AUTHORING.md` first.** It carries the constraints, the coverage

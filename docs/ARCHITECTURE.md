@@ -1,0 +1,208 @@
+# How this repository is arranged
+
+A map, written because two things are true at once: the corpus is authored
+continuously, by people and by AI sessions working in parallel, and almost
+everything the app serves is *derived* from that corpus by a build. When source
+and build output live in the same folder, every act of authoring rewrites
+megabytes of generated JSON, and the two kinds of change become impossible to
+tell apart.
+
+This document says which files are which, what the rule is for each kind, and
+what still has to move to make the rule true.
+
+---
+
+## The three kinds of file
+
+Every data file in the repository is exactly one of these. If you cannot say
+which, that is the bug.
+
+### 1. Authored — `content/`
+
+What a human or an AI session writes by hand. Prose, annotations, teaching
+glosses, editorial judgement. **This is the only material that cannot be
+regenerated**, and therefore the only material whose loss would matter.
+
+Reviewed line by line. Diffed as prose. Edited from the site through a pull
+request (see *Editing from the site*).
+
+### 2. Vendored — `data/`
+
+Third-party corpora we did not write and do not maintain: the Kāśikā, Vasu's
+translation, the Dhātupāṭha. Fetched once, committed, and updated deliberately
+when we choose to — never at build time, so a build never depends on someone
+else's server being up.
+
+Never hand-edited. A correction to a vendored file belongs upstream, or in an
+overlay under `content/` that the build applies on top.
+
+### 3. Generated — `static/data/`, `static/content/`
+
+Everything the build computes. **Reproducible from the other two by running
+`npm run build`**, and therefore not worth reviewing, not worth diffing, and —
+once the migration below is done — not worth committing.
+
+---
+
+## Where things actually are today
+
+The rule above is not yet true. `static/data/` currently holds all three kinds
+interleaved, which is the problem this document exists to fix.
+
+### Generated (4,002 files, 28.7 MB)
+
+| file | written by |
+|---|---|
+| `readings.json`, `usage.json`, `quiz-cells.json`, `tin-forms.json`, `vocabulary.json` | `build-readings.ts`, `build-quiz.ts` |
+| `sutras.json` | `build-sutras.ts` |
+| `sutra-refs/` (3,984 files), `readings-by-sutra.json` | `build-sutra-refs.ts` |
+| `balabodhini.json` | `build-balabodhini.ts` |
+| `dukrnkarane.json`, `dukrnkarane-by-sutra.json`, `sutrartha_english.json` | `build-dukrnkarane.ts` |
+| `jargon.json` | `build-jargon.ts` |
+| `dhatu-map.json` | `build-dhatu-map.ts` |
+| `stats.json` | `build-stats.ts` |
+| `paths-index.json`, `sutra-paths.json` | `build-path-index.ts` |
+| `commentary-index.json`, `layered_commentary.json` | `generate-commentary-index.ts` |
+
+### Authored, but living in the generated tree
+
+`static/data/jargon.yaml` · `static/data/systems.toml` ·
+`static/data/vocabulary.toml` · `static/data/commentary/*.toml` (3,983) ·
+`static/data/passages/` · `static/data/balabodhini/` ·
+`static/content/paths/` · `static/content/sensitive-notes/`
+
+These are hand-written and irreplaceable, and they sit in a directory whose name
+says "static asset". `content/readings/` is the only authored tree already in
+the right place.
+
+### Vendored, but living in the generated tree
+
+`kashika.json` · `kashika_english.json` · `vartika.json` ·
+`vasu_english.json` · `vasu_english_summary.json` · `vasu_rewritten.json`
+
+`data/dhatupatha.tsv` is the only vendored file already in the right place.
+
+---
+
+## Why this costs something
+
+Measured on real commits from an authoring session, one new reading is:
+
+```
+content/readings/…/rd088.yaml     133 +++++      what was actually written
+static/data/readings.json         575 +++++--    generated
+static/data/usage.json              2 +-         generated — 1.36 MB, minified,
+static/data/quiz-cells.json         2 +-         so this is the WHOLE file
+```
+
+Three consequences:
+
+1. **The review is unreadable.** Nobody reads 575 lines of JSON, so the diff
+   that is supposed to be inspected is skipped, and the artefacts are committed
+   unexamined — which defeats the reason they were committed.
+2. **Parallel authoring conflicts every time.** `usage.json` and
+   `quiz-cells.json` are minified to one line. Two sessions adding two different
+   readings produce two whole-file rewrites of the same line: a guaranteed
+   conflict on a file neither session actually edited.
+3. **Staleness needs guarding.** Three `--check` gates exist in `bun run check`
+   (`build-stats`, `build-sutras`, `build-sutra-refs`) solely because generated
+   files are committed and can drift from their source. All three become
+   unnecessary the moment they are not. The other two hard checks —
+   `check-sutra-count.ts` and `check-systems.ts` — validate a constant and a
+   join against the schema, and stay.
+
+CI already runs the full build on every push to `main`
+(`.github/workflows/deploy.yml`, with Bun and Rust), so nothing about the deploy
+depends on those files being in git.
+
+---
+
+## What replaces the diff as a review step
+
+`docs/AUTHORING.md` currently says, deliberately:
+
+> rebuild them deliberately, inspect the diff, commit it with the reading that
+> caused it
+
+The intent is right and worth keeping: **derived data is where a mis-annotation
+becomes visible.** A wrong विभक्ति is invisible in the YAML and obvious in the
+grid.
+
+But the value is in the *semantic* diff, not the JSON one. What a reviewer wants
+is:
+
+```
+rd089  +12 cells in the बाल paradigm · 2 new roots (त्यज्, पूज्)
+       3 words untyped · 1 new सूत्र cited (2.3.36)
+```
+
+So the JSON leaves git and a generated **change report** takes over the job:
+small, legible, committed with the reading that caused it. Same intent, actually
+read, and nothing to conflict on.
+
+---
+
+## Editing from the site
+
+The pull-request flow already exists and is built the right way:
+
+```ts
+scope: 'read:user'                                 // identity only
+Authorization: `Bearer ${env.GITHUB_APP_TOKEN}`    // a service account commits
+branch = `edit/${date}-${username}-${shortHash}`
+title  = `${verb}: ${titleFiles} — ${username}`
+```
+
+A reader signs in to prove who they are; a bot opens the PR and attributes them.
+**The user never grants write access to the repository.** Because identity is
+decoupled from repository permission, adding Google as a second provider is
+small — the username is used for the branch name and the attribution line, and
+nothing downstream requires a GitHub account.
+
+Two things block this from being useful:
+
+- **`ALLOWED_PREFIXES` is `['static/data/', 'static/content/']`** — the
+  generated tree. `content/readings/`, where every annotation lives, is
+  unreachable, and an edit to `readings.json` would be erased by the next build.
+  After the migration this becomes `content/`, and an in-app correction lands on
+  the source.
+- **The reader has no editor.** `setPageContext` is called on `/ref/[id]` and
+  `/workbook/[lessonId]` only. The reader's rail is where you *see* a wrong
+  कारक, and it is the one place you cannot fix it.
+
+---
+
+## The migration, in order
+
+Each step is independently landable and independently revertable.
+
+1. **This document.** Two sessions push to `main`; the map should exist before
+   files move.
+2. **Split the three trees.** Authored files to `content/`, vendored to `data/`,
+   `static/data/` gitignored and built. Touches every build script's paths,
+   `.gitignore`, and `docs/AUTHORING.md`. The three `--check` staleness gates are
+   deleted, not ported — they guard a problem that stops existing.
+3. **`ALLOWED_PREFIXES` → `content/`.** Meaningless before step 2; unblocks
+   human correction after it.
+4. **An edit affordance in the reader rail**, where annotation errors are seen.
+5. **Google auth** as a second identity provider.
+6. **The change report**, replacing the JSON diff as the review step.
+
+### Coordination
+
+The other active session is authoring only — no UI, no scripts. So the sole
+overlap with step 2 is the generated files, and removing them from git *ends*
+that collision rather than creating one. The single sequencing constraint: that
+session's in-flight commits still carry `readings.json`, so its work should land
+before `static/data/` is ignored.
+
+---
+
+## Known-stale documents
+
+`docs/DATA-INVENTORY.md` describes `sutras.json` in the old ashtadhyayi.com
+record shape (`i`, `a`, `p`, `s`, `e`, `ss`, `an`, `pc`). That file is now
+generated by `build-sutras.ts` in the parsed `Sutra` shape — `id`, `numericId`,
+`text`, `textRoman`, `anuvrtti`, `padaCcheda`. The inventory needs rewriting
+against what the build actually emits, and is a good candidate for being
+generated rather than written.
