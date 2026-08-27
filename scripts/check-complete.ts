@@ -40,7 +40,7 @@ const RELATION_BY_NAME = new Map(RELATIONS.map((r) => [r.name, r]));
 const ALL_MARKERS = new Set(WORD_TYPES.flatMap((t) => t.markers));
 const ALL_VALUES = new Set(WORD_TYPES.flatMap((t) => t.dimensions.flatMap((d) => d.values)));
 
-type LintKind = 'conflict' | 'misplaced' | 'wrong-lemma' | 'bad-relation';
+type LintKind = 'conflict' | 'misplaced' | 'wrong-lemma' | 'bad-relation' | 'root-as-tag';
 type Lint = { reading: string; form: string; type: string; kind: LintKind; detail: string };
 
 /**
@@ -72,6 +72,33 @@ function lintWord(type: WordType, w: Word, terms: Set<string>): Lint[] {
     if (myDimNames.has(t)) continue;           // a dimension name used as a flag
     if (t === w.lemma) continue;               // the word's own root, shown as a term
     out.push(mk('misplaced', `${t} is not a dimension of ${type.dev}`));
+  }
+
+  /*
+    4. ROOT-AS-TAG — a note that names the word's own root, where the root's
+       name is also a legal value of one of this type's dimensions.
+
+    230 words carry a note whose `term` is the word's own lemma, glossing what
+    the root means: `term: गम्, en: "go"`. Harmless for गम्, वस्, दृश् — those
+    are not schema values, so nothing reads them as tags. But fourteen roots
+    collide with a value: दा and धा are also तद्धित suffixes, यत् is also a कृत्
+    and a तद्धित suffix, and सु is also one of the 22 उपसर्गs.
+
+    Thirteen of the fourteen are inert, because a तिङन्त has no तद्धित or कृत्
+    dimension for the value to land in. The fourteenth was not: सुनोति in ex165
+    was tagged `term: सु` to name the root सुञ् अभिषवे, and since तिङन्त DOES
+    have an उपसर्ग dimension, it became the only word in the whole corpus
+    carrying an उपसर्ग — a preverb on a verb that has none.
+
+    Rule 2 could never catch it. It exempts `t === w.lemma` as the root-naming
+    idiom, but reaches that test only after `mine.has(t)` has already excused
+    the tag as "a legal value for this type" — which is exactly the case that
+    makes the idiom dangerous rather than harmless.
+  */
+  if (w.lemma && terms.has(w.lemma) && mine.has(w.lemma) && !ALL_MARKERS.has(w.lemma)) {
+    const dims = type.dimensions.filter((d) => d.values.includes(w.lemma!)).map((d) => d.name);
+    out.push(mk('root-as-tag',
+      `${w.lemma} names the root but reads as ${dims.join('/')} — put it in a text: note, the lemma already has it`));
   }
 
   // 3. WRONG-LEMMA — a type whose lemma dimension is a CLOSED set (सर्वनाम,
@@ -274,7 +301,13 @@ function main() {
     const misplaced = lints.filter((l) => l.kind === 'misplaced');
     const wrongLemma = lints.filter((l) => l.kind === 'wrong-lemma');
     const badRel = lints.filter((l) => l.kind === 'bad-relation');
-    console.log(`\n${lints.length} annotation error(s) — ${conflicts.length} conflict, ${misplaced.length} misplaced, ${wrongLemma.length} wrong-lemma, ${badRel.length} bad-relation\n`);
+    const rootAsTag = lints.filter((l) => l.kind === 'root-as-tag');
+    console.log(`\n${lints.length} annotation error(s) — ${conflicts.length} conflict, ${misplaced.length} misplaced, ${wrongLemma.length} wrong-lemma, ${badRel.length} bad-relation, ${rootAsTag.length} root-as-tag\n`);
+    if (rootAsTag.length) {
+      console.log('  ROOT-AS-TAG — a note naming the root, where the root name is also a real value:');
+      for (const l of rootAsTag) console.log(`    ${l.reading.padEnd(8)} ${l.form.padEnd(16)} ${l.type.padEnd(7)} ${l.detail}`);
+      console.log();
+    }
     if (conflicts.length) {
       console.log('  CONFLICT — two values of one dimension (only one can be true):');
       for (const l of conflicts) console.log(`    ${l.reading.padEnd(8)} ${l.form.padEnd(16)} ${l.type.padEnd(7)} ${l.detail}`);

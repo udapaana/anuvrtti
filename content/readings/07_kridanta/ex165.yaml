@@ -25,8 +25,11 @@
     lemma: सु
     gloss: presses (out)
     notes:
-    - term: सु
-      en: '"press, extract"'
+    # NOT `term: सु`. The root is already in `lemma`, and सु is also one of the
+    # 22 उपसर्गs — written as a term it was read as the preverb सु, making this
+    # the only word in the corpus carrying an उपसर्ग tag, wrongly. सुनोति has no
+    # preverb; it is the bare root सु (सुञ् अभिषवे, class 5).
+    - text: 'the root सु "press, extract" — here the विग्रह verb, and the second member of सोमसुत्'
     - term: लट्
       en: present (the विग्रह verb)
   vyakhya: क्विबन्तः उपपदे; प्रत्ययलोपात् धातुः अन्त्यपदम्। सोमं सुनोति = सोमसुत्।
