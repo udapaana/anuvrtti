@@ -1,0 +1,184 @@
+- id: ex188
+  kind: sangraha
+  segment: 145
+  order: 1
+  sentence: गुरुः शिष्यम् वदति — ग्रामम् गच्छ, तत्र धर्मम् पश्य। शिष्यः चिन्तयति — अहम् गच्छेयम्, किन्तु मार्गः दीर्घः। गुरुः वदति — यः धर्मम् इच्छति सः गच्छेत्। शिष्यः सुखी भूयात् इति गुरुः आशास्ते।
+  translation: The teacher says to the student — "Go to the village; see dharma there." The student thinks — "I would go, but the road is long." The teacher says — "He who wants dharma should go." "May the student be happy," the teacher blesses.
+  teaches: |
+    three moods in one exchange: गच्छ orders, गच्छेत् recommends, भूयात्
+    wishes. One root, three endings.
+  words:
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: agent — a उ-stem masculine
+    - term: प्रथमा
+      en: nominative
+  - form: शिष्यम्
+    lemma: शिष्य
+    gloss: to the student
+    notes:
+    - term: कर्मन्
+      en: object of वद्
+    - term: द्वितीया
+      en: accusative
+  - form: वदति
+    lemma: वद्
+    gloss: says
+    notes:
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: गच्छ
+    lemma: गम्
+    gloss: go
+    notes:
+    - term: लोट्
+      en: imperative — a bare command, no ending at all in the 2nd sg.
+    - cite: "3.3.162"
+      role: लोट् च — the imperative for a command → गच्छ
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: धर्मम्
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: पश्य
+    lemma: दृश्
+    gloss: see
+    notes:
+    - term: लोट्
+      en: a second imperative alongside the first
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: the student
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: चिन्तयति
+    lemma: चिन्त्
+    gloss: thinks
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: उत्तमपुरुष
+      en: the speaker
+  - form: गच्छेयम्
+    lemma: गम्
+    gloss: I would go
+    notes:
+    - term: विधिलिङ्
+      en: optative, first person — what the speaker might or would do
+    - cite: "3.3.161"
+      role: विधिनिमन्त्रण… लिङ् — the optative → गच्छेयम्
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable — adversative
+  - form: मार्गः
+    lemma: मार्ग
+    gloss: the road
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: दीर्घः
+    lemma: दीर्घ
+    gloss: (is) long
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — predicated without a verb
+  - form: 'यः'
+    lemma: यद्
+    gloss: he who
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: the relative, answered by सः
+  - form: इच्छति
+    lemma: इष्
+    gloss: wants
+    notes:
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative — answers यः
+  - form: गच्छेत्
+    lemma: गम्
+    gloss: should go
+    notes:
+    - term: विधिलिङ्
+      en: the same optative, third person — advice rather than an order
+  - form: सुखी
+    lemma: सुखिन्
+    gloss: happy
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — इन्-stem, न् drops in the nom.sg
+  - form: भूयात्
+    lemma: भू
+    gloss: may he be
+    notes:
+    - term: आशीर्लिङ्
+      en: the benedictive — a wish, distinct in form from गच्छेत्
+  - form: इति
+    lemma: इति
+    gloss: "thus"
+    notes:
+    - term: अव्यय
+      en: closes the quotation
+  - form: आशास्ते
+    lemma: शास्
+    gloss: blesses
+    vocab: true
+    notes:
+    - term: आत्मनेपद
+      en: middle voice
+  vyakhya: आज्ञा गच्छ, विधिः गच्छेत्, आशीः भूयात्। एकः अर्थः, त्रीणि रूपाणि।
+  vyakhya_en: |
+    गच्छ orders, गच्छेत् recommends, भूयात् wishes. All three point at an action
+    that has not happened yet, and nothing in the root or the sense separates
+    them — only the ending does. That is what a लकार is: not a tense in the
+    English sense, but a slot that carries mood and time together.

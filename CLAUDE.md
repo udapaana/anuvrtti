@@ -20,8 +20,11 @@ The one command:
 bun run check
 ```
 
-Edit `content/readings/*.yaml`, never `static/data/readings.json` — that is
-generated. `bun run build:readings` after every edit.
+Edit `content/readings/<chapter>/<id>.yaml`, never `static/data/readings.json`
+— that is generated. Each reading is its own file (`NN_name/` is the chapter,
+`<id>.yaml` a bare one-item sequence beginning `- id: <id>`), so you open one
+by its id with an IDE "Go to File" keystroke. `bun run build:readings` after
+every edit.
 
 `static/data/stats.json` is generated too, and committed: the four counts on
 the home page's doors. The threshold must not download three corpora to print

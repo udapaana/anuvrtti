@@ -1,0 +1,41 @@
+- id: ex123
+  segment: 50
+  sentence: बालः नृपम् अभिक्रुध्यति।
+  translation: The boy rages against the king.
+  teaches: 'add a preverb to क्रुध् and the target shifts to कर्मन् → द्वितीया'
+  words:
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: नृपम्
+    lemma: नृप
+    gloss: the king — now the direct object
+    notes:
+    - term: कर्मन्
+      en: object — when क्रुध् carries a preverb, the target becomes कर्मन्
+    - cite: 1.4.38
+      role: क्रुधद्रुहोरुपसृष्टयोः कर्म — with a preverb, the target of क्रुध्/द्रुह् is कर्मन्
+    - term: द्वितीया
+      en: accusative
+    - cite: 2.3.2
+      role: कर्मणि द्वितीया → नृपम्
+  - form: अभिक्रुध्यति
+    lemma: क्रुध्
+    gloss: rages against
+    notes:
+    - term: क्रुध्
+      en: '"be angry," here with the preverb अभि'
+    - term: उपसर्ग
+      en: अभि — the preverb that flips the government
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  vyakhya: उपसृष्टे क्रुधौ यं प्रति कोपः तत् कर्म। अभिक्रुध्यति नृपम् — द्वितीयायाम्, न चतुर्थ्याम्।
+  vyakhya_en: |
+    The same verb क्रुध्, the same target — but add the preverb अभि and the case changes. Without a preverb the target is सम्प्रदान (चतुर्थी: नृपाय, ex122); WITH one it becomes a plain कर्मन् (द्वितीया: नृपम्), by 1.4.38. The minimal pair नृपाय क्रुध्यति / नृपम् अभिक्रुध्यति is Pāṇini's own demonstration that an उपसर्ग can rewrite कारक-assignment.

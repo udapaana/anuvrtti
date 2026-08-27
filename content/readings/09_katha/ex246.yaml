@@ -1,0 +1,196 @@
+- id: ex246
+  kind: graded
+  segment: 261
+  source:
+    text: कथा (our graded retelling)
+    ref: "the craftsmen of the village — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: ग्रामे बहवः कारवः वसन्ति स्म। कुम्भकारः घटान् अकरोत्। स्वर्णकारः अलंकारान् अरचयत्। ग्रन्थकारः शास्त्राणि अलिखत्। सर्वे स्वेन कर्मणा सुखम् अलभन्त।
+  translation: In the village lived many craftsmen. The potter made pots. The goldsmith fashioned ornaments. The author wrote treatises. All of them found happiness by their own work.
+  teaches: |
+    the agent-compound — कुम्भकारः "pot-maker," स्वर्णकारः "gold-maker,"
+    ग्रन्थकारः "book-maker": a root of doing (कृ → कार) with its object built
+    right in, the everyday way Sanskrit names a trade.
+  words:
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in the village
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: बहवः
+    lemma: बहु
+    gloss: many
+    notes:
+    - term: विशेषण
+      en: qualifying कारवः
+    - term: प्रथमा
+      en: nominative plural (उ-stem → बहवः)
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: कारवः
+    lemma: कारु
+    gloss: craftsmen
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural (उ-stem कारु → कारवः)
+  - form: वसन्ति
+    lemma: वस्
+    gloss: dwell
+    notes:
+    - term: लट्
+      en: present (with स्म = narrative past)
+  - form: स्म
+    lemma: स्म
+    gloss: (past marker)
+    notes:
+    - term: अव्यय
+      en: turns present into narrative past
+  - form: कुम्भकारः
+    lemma: कुम्भकार
+    gloss: the potter
+    vocab: true
+    notes:
+    - text: 'विग्रह: कुम्भम् करोति — "one who makes pots"'
+    - term: तत्पुरुष
+      en: agent-compound — कुम्भं करोति "makes pots"
+    - cite: '3.2.1'
+      role: कर्मण्यण् — a root compounded with its object takes अण् as an agent-noun (उपपद-समास) → कुम्भ + कृ + अण् → कुम्भकार
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: घटान्
+    lemma: घट
+    gloss: pots
+    notes:
+    - term: कर्मन्
+      en: object of अकरोत्
+    - cite: '6.1.103'
+      role: तस्माच्छसो नः पुंसि — masc. अ-stem accusative plural शस् → आन् → घटान्
+    - term: द्वितीया
+      en: accusative plural
+  - form: अकरोत्
+    lemma: कृ
+    gloss: made
+    notes:
+    - term: लङ्
+      en: past
+  - form: स्वर्णकारः
+    lemma: स्वर्णकार
+    gloss: the goldsmith
+    vocab: true
+    notes:
+    - text: 'विग्रह: स्वर्णम् करोति — "one who works gold"'
+    - term: तत्पुरुष
+      en: agent-compound — स्वर्णं करोति "works gold"
+    - cite: '3.2.1'
+      role: कर्मण्यण् — object + root + अण् → स्वर्णकार
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अलंकारान्
+    lemma: अलंकार
+    gloss: ornaments
+    notes:
+    - term: कर्मन्
+      en: object of अरचयत्
+    - term: द्वितीया
+      en: accusative plural (शस् → आन्)
+  - form: अरचयत्
+    lemma: रच्
+    gloss: fashioned, made
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past (चुरादि, रचयति)
+  - form: ग्रन्थकारः
+    lemma: ग्रन्थकार
+    gloss: the author
+    vocab: true
+    notes:
+    - text: 'विग्रह: ग्रन्थम् करोति — "one who makes books"'
+    - term: तत्पुरुष
+      en: agent-compound — ग्रन्थं करोति "makes books"
+    - cite: '3.2.1'
+      role: कर्मण्यण् → ग्रन्थ + कृ + अण् → ग्रन्थकार
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: शास्त्राणि
+    lemma: शास्त्र
+    gloss: treatises
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of अलिखत्
+    - term: द्वितीया
+      en: accusative plural (neuter — शास्त्र + नुम् → शास्त्राणि)
+  - form: अलिखत्
+    lemma: लिख्
+    gloss: wrote
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past
+  - form: सर्वे
+    lemma: सर्व
+    gloss: all
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम — declines pronominally (सर्वे)
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural
+  - form: स्वेन
+    lemma: स्व
+    gloss: by his own
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम — "own"
+    - term: विशेषण
+      en: qualifying कर्मणा
+    - term: तृतीया
+      en: instrumental
+    rel:
+    - kind: विशेषण
+      to: 16
+  - form: कर्मणा
+    lemma: कर्मन्
+    gloss: by work
+    notes:
+    - term: करण
+      en: means
+    - term: तृतीया
+      en: instrumental (न्-stem कर्मन् → कर्मणा)
+  - form: सुखम्
+    lemma: सुख
+    gloss: happiness
+    notes:
+    - term: कर्मन्
+      en: object of अलभन्त
+    - term: द्वितीया
+      en: accusative
+  - form: अलभन्त
+    lemma: लभ्
+    gloss: found, obtained
+    notes:
+    - term: लङ्
+      en: past (आत्मनेपद 3pl)
+  vyakhya: 'उपपदसमासप्रधाना कथा। कुम्भकारः स्वर्णकारः ग्रन्थकारः इति कर्मण्यण् — कर्मणि उपपदे कृञः अण् (उपपदसमासः)। घटान् अलंकारान् इति पुंसि शसः आन् (तस्माच्छसो नः पुंसि)। शास्त्राणि इति नपुंसके नुम्। स्वेन कर्मणा इति करणे।'
+  vyakhya_en: |
+    A page of **agent-compounds**. Sanskrit names a trade by folding the object
+    straight into the verb: कुम्भ-कार "pot-maker," स्वर्ण-कार "gold-worker,"
+    ग्रन्थ-कार "book-maker" — each is कृ "make/do" with its object as the first
+    member, taking अण् (3.2.1, कर्मण्यण्). Notice the accusative plurals feeding
+    them: घटान्, अलंकारान् — masculine शस् surfacing as -आन् (6.1.103) — beside
+    the neuter शास्त्राणि (with its नुम्). The tools you already own, doing new work.

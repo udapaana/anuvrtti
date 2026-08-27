@@ -1,0 +1,380 @@
+- id: ex104
+  kind: graded
+  segment: 340
+  source:
+    text: "बालकृष्णकथा (our graded retelling)"
+    ref: "Bhāgavata 10.42–44 — the slaying of Kaṃsa"
+    curated: "our graded prose; the story is canonical, the sentences are ours"
+  sentence: 'यः कंसः चिरम् कृष्णस्य वधम् इच्छति स्म, सः एव अधुना भयेन कम्पते। कृष्णः मथुराम् प्रविश्य रङ्गभूमौ मल्लान् अहन्। ततः सः उच्चासनात् कंसम् आकृष्य भूमौ अपातयत्। यम् राजानम् सर्वे जनाः अबिभयुः, सः कृष्णेन क्षणेन एव हतः। एवम् अधर्मस्य अन्तः, धर्मस्य च जयः अभवत्।'
+  translation: He who for long had wished for Kṛṣṇa's death — that very one now trembles with fear. Kṛṣṇa, having entered Mathurā, killed the wrestlers in the arena. Then he dragged Kaṃsa down from his high throne and threw him to the ground. The king whom all people had feared — he was killed by Kṛṣṇa in but a moment. Thus came the end of unrighteousness, and the victory of dharma.
+  teaches: 'climax — two relative-correlatives (यः…सः on the subject, यम्…सः on the object); अपादान (भयस्य source → उच्चासनात् ablative, अबिभयुः with 5th); causative अपातयत्; षष्ठी of object with कृत् (कृष्णस्य वधम्, 2.3.65); passive close (हतः)'
+  words:
+  - form: यः
+    lemma: यद्
+    gloss: who (he who … )
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun (यद्, masc. nom.)
+    - term: प्रथमा
+      en: nominative
+  - form: कंसः
+    lemma: कंस
+    gloss: Kaṃsa
+    notes:
+    - term: कर्तृ
+      en: subject of the relative clause
+    - term: प्रथमा
+      en: nominative
+  - form: चिरम्
+    lemma: चिर
+    gloss: for a long time
+    notes:
+    - term: अव्यय
+      en: adverbial accusative — "long"
+  - form: कृष्णस्य
+    lemma: कृष्ण
+    gloss: of Kṛṣṇa
+    notes:
+    - term: कर्मन्
+      en: object of the action-noun वधम् — "(the) killing OF Kṛṣṇa"
+    - cite: '2.3.65'
+      role: कर्तृकर्मणोः कृति → object of a कृत्-noun takes षष्ठी → कृष्णस्य
+    - term: षष्ठी
+      en: genitive
+  - form: वधम्
+    lemma: वध
+    gloss: killing, slaughter
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of इच्छति — what Kaṃsa wished for
+    - term: द्वितीया
+      en: accusative
+  - form: इच्छति
+    lemma: इष्
+    gloss: wished (was wishing)
+    notes:
+    - term: इष्
+      en: '"wish"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present (with स्म = past habitual)
+  - form: स्म
+    lemma: स्म
+    gloss: (past marker)
+    notes:
+    - term: अव्यय
+      en: with लट् → past habitual — "had been wishing"
+  - form: सः
+    lemma: तद्
+    gloss: he (that very one)
+    notes:
+    - term: सर्वनाम
+      en: correlative (तद्, masc.) — answers यः
+    - term: प्रथमा
+      en: nominative
+  - form: एव
+    lemma: एव
+    gloss: very, indeed
+    notes:
+    - term: अव्यय
+      en: emphatic — "that very one"
+  - form: अधुना
+    lemma: अधुना
+    gloss: now
+    notes:
+    - term: अव्यय
+      en: temporal adverb — "now"
+  - form: भयेन
+    lemma: भय
+    gloss: with fear
+    vocab: true
+    notes:
+    - term: हेतु
+      en: cause — instrumental of cause
+    - cite: '2.3.18'
+      role: कर्तृकरणयोस्तृतीया → भयेन
+    - term: तृतीया
+      en: instrumental
+  - form: कम्पते
+    lemma: कम्प्
+    gloss: trembles, shakes
+    vocab: true
+    notes:
+    - term: कम्प्
+      en: '"tremble"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present (आत्मनेपद 3sg)
+  - form: कृष्णः
+    lemma: कृष्ण
+    gloss: Kṛṣṇa
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: मथुराम्
+    lemma: मथुरा
+    gloss: Mathurā
+    notes:
+    - term: कर्मन्
+      en: goal of प्रविश्य
+    - term: द्वितीया
+      en: accusative
+  - form: प्रविश्य
+    lemma: प्र-विश्
+    gloss: having entered
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerund (ल्यप् — क्त्वा after prefix प्र-) — prior action
+    - cite: '3.4.21'
+      role: समानकर्तृकयोः पूर्वकाले क्त्वा → ल्यप् → प्रविश्य
+  - form: रङ्गभूमौ
+    lemma: रङ्गभूमि
+    gloss: in the arena
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: रङ्ग (stage) + भूमि (ground) — "arena"
+    - term: अधिकरण
+      en: location
+    - cite: '2.3.36'
+      role: सप्तम्यधिकरणे च → रङ्गभूमौ
+    - term: सप्तमी
+      en: locative
+  - form: मल्लान्
+    lemma: मल्ल
+    gloss: the wrestlers
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of अहन्
+    - term: द्वितीया
+      en: accusative plural
+  - form: अहन्
+    lemma: हन्
+    gloss: killed, struck down
+    notes:
+    - term: हन्
+      en: '"kill, strike"'
+    - cite: '3.2.111'
+      role: अनद्यतने लङ् → अहन् (3sg)
+  - form: ततः
+    lemma: ततस्
+    gloss: then, thereupon
+    notes:
+    - term: अव्यय
+      en: temporal adverb — "then"
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्)
+    - term: प्रथमा
+      en: nominative
+  - form: उच्चासनात्
+    lemma: उच्चासन
+    gloss: from the high throne
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: उच्च (high) + आसन (seat) — "high seat"
+    - term: अपादान
+      en: source of departure (dragged FROM)
+    - cite: '2.3.28'
+      role: अपादाने पञ्चमी → उच्चासनात्
+    - term: पञ्चमी
+      en: ablative
+  - form: कंसम्
+    lemma: कंस
+    gloss: Kaṃsa
+    notes:
+    - term: कर्मन्
+      en: object of आकृष्य / अपातयत्
+    - term: द्वितीया
+      en: accusative
+  - form: आकृष्य
+    lemma: आ-कृष्
+    gloss: having dragged
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerund (ल्यप्) — prior action
+    - cite: '3.4.21'
+      role: समानकर्तृकयोः पूर्वकाले क्त्वा → ल्यप् → आकृष्य
+  - form: भूमौ
+    lemma: भूमि
+    gloss: on the ground
+    notes:
+    - term: अधिकरण
+      en: location (goal of throwing)
+    - cite: '2.3.36'
+      role: सप्तम्यधिकरणे च → भूमौ
+    - term: सप्तमी
+      en: locative
+  - form: अपातयत्
+    lemma: पत्
+    gloss: threw down, made fall
+    vocab: true
+    notes:
+    - term: पत्
+      en: causative of √पत् — "cause to fall, throw down"
+    - cite: '3.2.111'
+      role: अनद्यतने लङ् → अपातयत् (causative 3sg)
+  - form: यम्
+    lemma: यद्
+    gloss: whom (the king whom … )
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun (यद्, masc. acc.)
+    - term: द्वितीया
+      en: accusative
+  - form: राजानम्
+    lemma: राजन्
+    gloss: king
+    notes:
+    - term: कर्मन्
+      en: object of अबिभयुः — whom they feared
+    - term: द्वितीया
+      en: accusative (न्-stem, strong → राजानम्)
+  - form: सर्वे
+    lemma: सर्व
+    gloss: all
+    notes:
+    - term: सर्वादि
+      en: '"all" (सर्वादि, masc. pl.)'
+    - cite: '1.1.27'
+      role: सर्वादीनि सर्वनामानि → सर्वे
+    - term: प्रथमा
+      en: nominative plural
+  - form: जनाः
+    lemma: जन
+    gloss: people
+    notes:
+    - term: कर्तृ
+      en: subject of the relative clause
+    - term: प्रथमा
+      en: nominative plural
+  - form: अबिभयुः
+    lemma: भी
+    gloss: feared
+    vocab: true
+    notes:
+    - term: भी
+      en: '"fear"'
+    - cite: '3.2.115'
+      role: परोक्षे लिट् → बिभयुः; with augment-like reduplication, 3pl perfect
+    - term: लिट्
+      en: perfect (3pl)
+  - form: सः
+    lemma: तद्
+    gloss: he (that king)
+    notes:
+    - term: सर्वनाम
+      en: correlative (तद्, masc.) — answers यम्
+    - term: प्रथमा
+      en: nominative (कर्मणि — patient in the passive)
+  - form: कृष्णेन
+    lemma: कृष्ण
+    gloss: by Kṛṣṇa
+    notes:
+    - term: कर्तृ
+      en: agent in passive takes तृतीया
+    - cite: '2.3.18'
+      role: कर्तृकरणयोस्तृतीया → कृष्णेन
+    - term: तृतीया
+      en: instrumental
+  - form: क्षणेन
+    lemma: क्षण
+    gloss: in a moment
+    vocab: true
+    notes:
+    - term: करण
+      en: instrumental of time — "within a moment"
+    - cite: '2.3.18'
+      role: कर्तृकरणयोस्तृतीया → क्षणेन
+    - term: तृतीया
+      en: instrumental
+  - form: एव
+    lemma: एव
+    gloss: just, but
+    notes:
+    - term: अव्यय
+      en: emphatic — "in but a moment"
+  - form: हतः
+    lemma: हन्
+    gloss: was killed
+    notes:
+    - term: कृदन्त
+      en: past passive participle (क्त) of √हन् — "was killed"
+    - cite: '3.2.102'
+      role: निष्ठा → क्त → हत; passive (कर्मणि)
+    - term: प्रथमा
+      en: nominative (कर्मणि)
+  - form: एवम्
+    lemma: एवम्
+    gloss: thus
+    notes:
+    - term: अव्यय
+      en: summarizing adverb
+  - form: अधर्मस्य
+    lemma: अधर्म
+    gloss: of unrighteousness
+    vocab: true
+    notes:
+    - term: सम्बन्ध
+      en: relation — the end OF adharma
+    - cite: '2.3.50'
+      role: षष्ठी शेषे → अधर्मस्य
+    - term: षष्ठी
+      en: genitive
+  - form: अन्तः
+    lemma: अन्त
+    gloss: end
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject (of the implied "came about")
+    - term: प्रथमा
+      en: nominative
+  - form: धर्मस्य
+    lemma: धर्म
+    gloss: of dharma
+    notes:
+    - term: सम्बन्ध
+      en: relation — the victory OF dharma
+    - cite: '2.3.50'
+      role: षष्ठी शेषे → धर्मस्य
+    - term: षष्ठी
+      en: genitive
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: coordinator
+  - form: जयः
+    lemma: जय
+    gloss: victory
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अभवत्
+    lemma: भू
+    gloss: came about, happened
+    notes:
+    - term: भू
+      en: '"become, happen"'
+    - cite: '3.2.111'
+      role: अनद्यतने लङ् → अभवत्
+  vyakhya: 'कथायाः शिखरम् — द्वौ सम्बन्धौ यद्-तद्। कर्तरि यः…सः (यः इच्छति स्म सः कम्पते); कर्मणि यम्…सः (यं अबिभयुः सः हतः)। अपादानम् द्विधा — उच्चासनात् (departure), भयस्य हेतुः भी-धातुना अबिभयुः। वधम् इति कृत्, तत्र कर्म षष्ठ्याम् (कृष्णस्य वधम्)। अन्ते कर्मणि हतः — कथार्धम् सर्वम् कर्मणि समाप्यते।'
+  vyakhya_en: |
+    The climax, and it gathers everything. Two relative-correlatives frame it, one on each axis: यः … सः on the **subject** ("he who long wished Kṛṣṇa's death — that one now trembles") and यम् … सः on the **object** ("the king whom all feared — he was killed"). Two ablatives of separation: उच्चासनात् "from the high throne" (2.3.28) and the fear-source folded into अबिभयुः. The action-noun वधम् "killing" takes its object in the **genitive** — कृष्णस्य वधम् "the killing OF Kṛṣṇa" (2.3.65, the कृत्-षष्ठी). The arc that began with butter and a rope ends as it must, in the passive: हतः "was killed" — and the whole Kṛṣṇa-childhood sequence closes on its grammatical signature, the कर्मणि क्त, now carrying the weight of a death rather than a game.

@@ -1,0 +1,203 @@
+- id: ex249
+  kind: graded
+  segment: 264
+  source:
+    text: कथा (our graded retelling)
+    ref: "the king's five sons — our own telling, in numbers"
+    curated: our simple Sanskrit; not from any single source
+  sentence: राज्ञः पञ्च पुत्राः आसन्। प्रथमः शूरः आसीत्। द्वितीयः पण्डितः। तृतीयः धनी। चतुर्थः दाता। पञ्चमः तु सर्वेषु श्रेष्ठः आसीत्।
+  translation: The king had five sons. The first was brave. The second, learned. The third, rich. The fourth, a giver. But the fifth was the best of all.
+  teaches: |
+    counting — the cardinal पञ्च "five," and the ordinals प्रथम, द्वितीय …
+    पञ्चम "first, second … fifth," the पूरण ("filling-the-number") derivatives;
+    plus दाता, the तृच् agent-noun.
+  words:
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: the king's
+    notes:
+    - term: सम्बन्ध
+      en: possessor — "the king had"
+    - term: षष्ठी
+      en: genitive (न्-stem → राज्ञः)
+  - form: पञ्च
+    lemma: पञ्चन्
+    gloss: five
+    notes:
+    - term: संख्या
+      en: cardinal "five" (used without a case-ending here, agreeing with पुत्राः)
+    - term: विशेषण
+      en: qualifying पुत्राः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: पुत्राः
+    lemma: पुत्र
+    gloss: sons
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural
+  - form: आसन्
+    lemma: अस्
+    gloss: there were
+    notes:
+    - term: लङ्
+      en: past (3pl)
+  - form: प्रथमः
+    lemma: प्रथम
+    gloss: the first
+    notes:
+    - term: संख्या
+      en: ordinal "first"
+    - term: पूरण
+      en: the "which-place-in-the-count" (ordinal) sense
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: शूरः
+    lemma: शूर
+    gloss: brave
+    notes:
+    - term: विशेषण
+      en: predicate of प्रथमः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past
+  - form: द्वितीयः
+    lemma: द्वितीय
+    gloss: the second
+    notes:
+    - term: संख्या
+      en: ordinal "second"
+    - term: पूरण
+      en: ordinal sense
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: पण्डितः
+    lemma: पण्डित
+    gloss: learned
+    notes:
+    - term: विशेषण
+      en: predicate of द्वितीयः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: तृतीयः
+    lemma: तृतीय
+    gloss: the third
+    notes:
+    - term: संख्या
+      en: ordinal "third"
+    - term: पूरण
+      en: ordinal sense
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: धनी
+    lemma: धनिन्
+    gloss: rich
+    notes:
+    - term: तद्धित
+      en: possessive (इनि) — धन → धनिन् "having wealth"
+    - term: विशेषण
+      en: predicate of तृतीयः
+    - term: प्रथमा
+      en: nominative (इन्-stem → धनी)
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: चतुर्थः
+    lemma: चतुर्थ
+    gloss: the fourth
+    notes:
+    - term: संख्या
+      en: ordinal "fourth"
+    - term: पूरण
+      en: ordinal sense
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: दाता
+    lemma: दातृ
+    gloss: a giver
+    notes:
+    - term: कृदन्त
+      en: agent-noun (तृच्) of दा — "one who gives"
+    - cite: '3.1.133'
+      role: ण्वुल्तृचौ — the agent-noun suffix तृच् → दा + तृच् → दातृ
+    - cite: '7.1.94'
+      role: ऋदुशनस्… — the ऋ-stem nom.sg lengthens → दातृ → दाता
+    - term: विशेषण
+      en: predicate of चतुर्थः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: पञ्चमः
+    lemma: पञ्चम
+    gloss: the fifth
+    notes:
+    - term: संख्या
+      en: ordinal "fifth"
+    - cite: '5.2.48'
+      role: तस्य पूरणे डट् — "the one that completes the count of N" is formed with पूरण suffixes (here मट्) → पञ्चन् → पञ्चम
+    - term: पूरण
+      en: ordinal sense
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: तु
+    lemma: तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: contrastive particle
+  - form: सर्वेषु
+    lemma: सर्व
+    gloss: among all
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम — declines pronominally
+    - term: अधिकरण
+      en: the field of the superlative
+    - term: सप्तमी
+      en: locative plural
+  - form: श्रेष्ठः
+    lemma: श्रेष्ठ
+    gloss: the best
+    notes:
+    - term: तद्धित
+      en: superlative (इष्ठन्) — प्रशस्य "good" → श्रेष्ठ "best"
+    - term: विशेषण
+      en: predicate of पञ्चमः
+    - term: प्रथमा
+      en: nominative
+  vyakhya: 'संख्यापूरणप्रधाना कथा। पञ्च इति कर्मधारयवत् संख्या। प्रथमः … पञ्चमः इति पूरणाः (तस्य पूरणे डट् इत्यादि) — क्रमवाचिनः। दाता इति तृच्प्रत्ययान्तम् ऋदन्तम् (ऋदुशनस्… दाता)। श्रेष्ठः इति इष्ठन्।'
+  vyakhya_en: |
+    Counting, two ways. The **cardinal** पञ्च "five" simply numbers the sons. The
+    **ordinals** प्रथम, द्वितीय, तृतीय, चतुर्थ, पञ्चम "first … fifth" are पूरण
+    derivatives — literally "the one that *fills up* the count of N" (5.2.48 and
+    its neighbors supply the suffixes डट्/थ/म). Tucked in is दाता "a giver," the
+    तृच् agent-noun of दा (3.1.133), showing again the ऋ-stem nominative आ
+    (7.1.94), and श्रेष्ठ, the इष्ठन् superlative of प्रशस्य "good."

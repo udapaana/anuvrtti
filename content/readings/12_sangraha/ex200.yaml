@@ -1,0 +1,236 @@
+- id: ex200
+  kind: sangraha
+  segment: 165
+  order: 1
+  sentence: राजा सभायाम् आसीत्। तत्र भगवान् मुनिः आगच्छत्। राज्ञः पिता अपि तत्र। मुनिः राजानम् अवदत् — पितरम् पश्य, धनवान् सः न, तथापि श्रेष्ठः। राज्ञा तत् श्रुतम्। ततः सः पितरि भक्तिम् अकरोत्। भगवतः वचनेन राजा शान्तः अभवत्।
+  translation: The king was in the assembly. There the Blessed One, a sage, came. The king's father was there too. The sage said to the king — "Look at your father; he is not wealthy, yet he is the better man." That was heard by the king. Then he showed devotion to his father. By the Blessed One's words the king became calm.
+  teaches: |
+    consonant stems in one scene, each in both grades: राजा / राज्ञः / राजानम्,
+    भगवान् / भगवतः, पिता / पितरम्.
+  words:
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: प्रथमा
+      en: nominative — the bare form loses the final न् of राजन्
+    - cite: "8.2.7"
+      role: नलोपः प्रातिपदिकान्तस्य — the stem-final न् drops → राजा
+  - form: सभायाम्
+    lemma: सभा
+    gloss: in the assembly
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative — an आ-stem feminine
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of अस्
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: भगवान्
+    lemma: भगवत्
+    gloss: the Blessed One
+    notes:
+    - term: सर्वनामस्थान
+      en: the strong form — नुम् inserted, then the vowel lengthens
+    - cite: "7.1.70"
+      role: उगिदचां सर्वनामस्थानेऽधातोः — a उगित् stem takes नुम् in the strong cases → भगवान्
+  - form: मुनिः
+    lemma: मुनि
+    gloss: a sage
+    notes:
+    - term: प्रथमा
+      en: nominative — an इ-stem
+  - form: आगच्छत्
+    lemma: गम्
+    gloss: came
+    notes:
+    - term: लङ्
+      en: past
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: the king's
+    notes:
+    - term: षष्ठी
+      en: the WEAK stem — the अ of राजन् drops before a vowel ending, giving राज्ञ्
+  - form: पिता
+    lemma: पितृ
+    gloss: father
+    notes:
+    - term: सर्वनामस्थान
+      en: strong nom.sg — the ऋ of पितृ lengthens to आ
+    - cite: "7.3.110"
+      role: ऋतो ङिसर्वनामस्थानयोः — गुण of an ऋ-stem in the strong cases → पिता
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: राजानम्
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: सर्वनामस्थान
+      en: strong again — the न् returns and the अ lengthens
+    - term: द्वितीया
+      en: accusative
+    - cite: "6.4.8"
+      role: सर्वनामस्थाने चासम्बुद्धौ — lengthening in the strong cases → राजान्
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: पितरम्
+    lemma: पितृ
+    gloss: your father
+    notes:
+    - term: सर्वनामस्थान
+      en: strong stem पितर् — the same word as पिता, one clause later
+    - term: द्वितीया
+      en: accusative
+  - form: पश्य
+    lemma: दृश्
+    gloss: look at
+    notes:
+    - term: लोट्
+      en: imperative
+  - form: धनवान्
+    lemma: धनवत्
+    gloss: wealthy
+    notes:
+    - term: सर्वनामस्थान
+      en: a second उगित् stem taking नुम् — भगवान् and धनवान् are built alike
+    - cite: "7.1.70"
+      role: उगिदचां सर्वनामस्थानेऽधातोः — नुम् in the strong cases → धनवान्
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: 'न'
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: तथापि
+    lemma: तथापि
+    gloss: yet
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: श्रेष्ठः
+    lemma: श्रेष्ठ
+    gloss: the better
+    notes:
+    - term: प्रथमा
+      en: nominative — a superlative used as a predicate
+  - form: राज्ञा
+    lemma: राजन्
+    gloss: by the king
+    notes:
+    - term: कर्तृ
+      en: the agent of a passive participle — instrumental
+    - term: तृतीया
+      en: instrumental — the weak stem राज्ञ् again
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: what was heard — nominative under the participle
+    - term: प्रथमा
+      en: neuter nominative
+  - form: श्रुतम्
+    lemma: श्रु
+    gloss: was heard
+    notes:
+    - term: निष्ठा
+      en: past passive participle — no finite verb needed
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: पितरि
+    lemma: पितृ
+    gloss: toward his father
+    notes:
+    - term: अधिकरण
+      en: the locative of the person shown devotion
+    - term: सप्तमी
+      en: locative — a third grade of पितृ, beside पिता and पितरम्
+  - form: भक्तिम्
+    lemma: भक्ति
+    gloss: devotion
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: अकरोत्
+    lemma: कृ
+    gloss: showed, made
+    notes:
+    - term: लङ्
+      en: past — कृ is तनादि, taking उ rather than शप्
+  - form: भगवतः
+    lemma: भगवत्
+    gloss: the Blessed One's
+    notes:
+    - term: षष्ठी
+      en: the WEAK stem — plain भगवत् with no नुम्, against भगवान् above
+  - form: वचनेन
+    lemma: वचन
+    gloss: by the words
+    notes:
+    - term: करण
+      en: instrument
+    - term: तृतीया
+      en: instrumental
+  - form: शान्तः
+    lemma: शम्
+    gloss: calm
+    vocab: true
+    notes:
+    - term: निष्ठा
+      en: past participle used as a predicate adjective
+    - term: प्रथमा
+      en: nominative
+  - form: अभवत्
+    lemma: भू
+    gloss: became
+    notes:
+    - term: लङ्
+      en: past
+  vyakhya: राजा राज्ञः राज्ञा राजानम् — एकं नाम, चत्वारः आदेशाः। भगवान् भगवतः।
+  vyakhya_en: |
+    राजन् appears four times and looks different every time: राजा with the न्
+    gone, राज्ञः and राज्ञा with the अ squeezed out, राजानम् with the न् back
+    and the vowel long. भगवत् does the same in two: भगवान् with नुम् inserted,
+    भगवतः plain.
+
+    Nothing about the king or the sage changes between those forms. What
+    changes is whether the ending that follows belongs to the strong set, and
+    the stem answers accordingly. Learning consonant declension is learning to
+    read four shapes as one word.

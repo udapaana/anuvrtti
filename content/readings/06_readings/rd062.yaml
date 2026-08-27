@@ -1,0 +1,134 @@
+- id: rd062
+  kind: attested
+  segment: 370
+  source:
+    text: हितोपदेश
+    ref: "Hitopadeśa 1.38 — the three natural well-wishers"
+    curated: "the whole verse, word-separated (pausa forms; चेति and चान्ये kept fused to show the सन्धि); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, Hit_1.38)"
+  sentence: माता मित्रम् पिता चेति स्वभावात् त्रितयम् हितम्। कार्यकारणतः चान्ये भवन्ति हितबुद्धयः॥
+  translation: Mother, friend, and father — this triad is well-wishing by nature; others become well-disposed (only) out of cause and interest.
+  teaches: |
+    the तसिल् adverb — कार्यकारणतः "from cause-and-effect, out of interest"; the
+    collective त्रितयम् "the set of three"; and two सन्धि joins hiding in plain
+    sight — चेति (guṇa) and चान्ये (savarṇa lengthening).
+  words:
+  - form: माता
+    lemma: मातृ
+    gloss: mother
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (ऋ-stem → माता)
+  - form: मित्रम्
+    lemma: मित्र
+    gloss: friend
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: पिता
+    lemma: पितृ
+    gloss: father
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (ऋ-stem → पिता)
+  - form: चेति
+    lemma: च
+    gloss: — so (these)
+    notes:
+    - cite: '6.1.87'
+      role: आद्गुणः — अ + इ coalesce to the guṇa vowel ए → च + इति → चेति
+    - term: अव्यय
+      en: च "and" + इति "thus" — closing the list
+  - form: स्वभावात्
+    lemma: स्वभाव
+    gloss: by nature
+    vocab: true
+    notes:
+    - term: हेतु
+      en: the cause — "on account of (their) nature"
+    - term: पञ्चमी
+      en: ablative (of cause)
+  - form: त्रितयम्
+    lemma: त्रितय
+    gloss: the triad
+    vocab: true
+    notes:
+    - term: संख्या
+      en: collective numeral — "the set of three" (त्रि + the collective तयप्)
+    - term: कर्तृ
+      en: subject (sums up the three)
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: हितम्
+    lemma: हित
+    gloss: beneficial, well-wishing
+    notes:
+    - term: विशेषण
+      en: predicate of त्रितयम्
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 5
+  - form: कार्यकारणतः
+    lemma: कार्यकारण
+    gloss: out of cause and interest
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: adverb from a noun — कार्यकारण + तसिल् (→ तस्), "from ___"
+    - cite: '5.3.7'
+      role: पञ्चम्यास्तसिल् — in the ablative sense, तसिल् (-तस्) forms an adverb → कार्यकारण + तसिल् → कार्यकारणतः
+    - term: तसिल्
+      en: the "-tas / from ___" adverbial suffix
+    - term: अव्यय
+      en: adverb (of cause)
+  - form: चान्ये
+    lemma: अन्य
+    gloss: and others
+    notes:
+    - cite: '6.1.101'
+      role: अकः सवर्णे दीर्घः — a simple vowel + its homogeneous vowel merge into one long vowel → च (अ) + अन्ये → चान्ये
+    - term: सर्वादि
+      en: सर्वनाम अन्य "other," with च "and"
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural
+  - form: भवन्ति
+    lemma: भू
+    gloss: become
+    notes:
+    - term: लट्
+      en: present (3pl)
+  - form: हितबुद्धयः
+    lemma: हितबुद्धि
+    gloss: well-disposed
+    vocab: true
+    notes:
+    - text: 'विग्रह: हिता बुद्धिः येषाम् — "those whose thought is kindly"'
+    - term: बहुव्रीहि
+      en: possessive — "those WHOSE thought (बुद्धि) is kindly (हित)"
+    - cite: '2.2.24'
+      role: अनेकमन्यपदार्थे — a बहुव्रीहि naming the possessor → हित + बुद्धि → हितबुद्धि
+    - term: विशेषण
+      en: predicate of चान्ये
+    - term: प्रथमा
+      en: nominative plural
+    rel:
+    - kind: विशेषण
+      to: 9
+  vyakhya: 'तसिल्-सन्धि-प्रधानः श्लोकः। कार्यकारणतः इति पञ्चम्यर्थे तसिल् (पञ्चम्यास्तसिल्) — अव्ययम्। चेति इति च-इति गुणसन्धौ (आद्गुणः); चान्ये इति च-अन्ये सवर्णदीर्घे (अकः सवर्णे दीर्घः)। त्रितयम् इति समाहारे तयप्। हितबुद्धयः इति बहुव्रीहिः।'
+  vyakhya_en: |
+    Three small mechanisms in one line. **तसिल्** — कार्यकारणतः "from cause and
+    effect," the -तस् adverb that stands in for an ablative (5.3.7,
+    पञ्चम्यास्तसिल्). And two सन्धि joins that a fast reader must simply *know*:
+    चेति = च + इति (guṇa, अ+इ → ए, 6.1.87) and चान्ये = च + अन्ये (savarṇa
+    lengthening, अ+अ → आ, 6.1.101). Add the collective त्रितयम् "the triad" and
+    the बहुव्रीहि हितबुद्धयः "kindly-minded," and the verse's quiet claim lands:
+    three love you by nature; the rest, for a reason.

@@ -1,0 +1,240 @@
+- id: ex219
+  kind: graded
+  segment: 310
+  source:
+    text: कथा (our graded retelling)
+    ref: "two students — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: गुरुकुले द्वौ शिष्यौ आस्ताम्। एकः पटुः, अपरः पटुतरः। महाबुद्धिः बालः प्रश्नम् अपृच्छत्, तत् च सर्वैः अश्रूयत। गुरुः ततः तुष्टः अभवत्, श्रेष्ठाय च वरम् अददात्।
+  translation: In the teacher's school there were two students. One was clever, the other cleverer. The great-minded boy asked a question, and it was heard by all. The teacher thereupon was pleased, and gave a boon to the best one.
+  teaches: |
+    a comparative (पटुतरः), a कर्मधारय (महाबुद्धिः), a passive (अश्रूयत), a
+    तसिल् adverb (ततः), a superlative (श्रेष्ठ) — five built words, one scene.
+  words:
+  - form: गुरुकुले
+    lemma: गुरुकुल
+    gloss: in the teacher's school
+    vocab: true
+    notes:
+    - term: समास
+      en: तत्पुरुष — गुरोः कुलम्, "the household of the teacher"
+    - text: 'विग्रह: गुरोः कुलम् — "the school of the guru"'
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: द्वौ
+    lemma: द्वि
+    gloss: two
+    notes:
+    - term: संख्या
+      en: numeral — द्वि is dual only
+    - term: प्रथमा
+      en: nominative dual
+  - form: शिष्यौ
+    lemma: शिष्य
+    gloss: two students
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative dual
+  - form: आस्ताम्
+    lemma: अस्
+    gloss: the two were
+    notes:
+    - term: लङ्
+      en: imperfect, third dual
+  - form: एकः
+    lemma: एक
+    gloss: one
+    notes:
+    - term: संख्या
+      en: numeral — "one"; declines सर्वादि-style (एकस्मै) but is a number
+    - term: प्रथमा
+      en: nominative
+  - form: पटुः
+    lemma: पटु
+    gloss: clever
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: adjective — the base grade
+    - term: प्रथमा
+      en: nominative
+  - form: अपरः
+    lemma: अपर
+    gloss: the other
+    vocab: true
+    notes:
+    - term: सर्वादि
+      en: pronominal adjective — takes अपरः, अपरस्मै
+    - term: प्रथमा
+      en: nominative
+  - form: पटुतरः
+    lemma: पटुतर
+    gloss: cleverer
+    notes:
+    - term: तद्धित
+      en: comparative derivative — "more clever, of the two"
+    - term: तरप्
+      en: the तरप् comparative suffix, अर्थ = अतिशायन (of two)
+    - cite: '5.3.57'
+      role: द्विवचनविभज्योपपदे तरबीयसुनौ → तरप् for comparison of two → पटु + तर → पटुतरः
+    - term: प्रथमा
+      en: nominative
+  - form: महाबुद्धिः
+    lemma: महाबुद्धि
+    gloss: great-minded
+    vocab: true
+    notes:
+    - term: कर्मधारय
+      en: adjective + noun compound, "great-minded" (as a बहुव्रीहि qualifying the boy)
+    - text: 'विग्रह: महती बुद्धिः यस्य — "he whose intelligence is great"'
+    - cite: '1.2.42'
+      role: तत्पुरुषः समानाधिकरणः कर्मधारयः → महत् + बुद्धि, co-referential → महाबुद्धि
+    - term: प्रथमा
+      en: nominative — qualifying बालः
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: प्रश्नम्
+    lemma: प्रश्न
+    gloss: a question
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: अपृच्छत्
+    lemma: प्रच्छ्
+    gloss: asked
+    notes:
+    - term: लङ्
+      en: imperfect
+  - form: तत्
+    lemma: तद्
+    gloss: it, that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: the thing heard — subject of the passive verb below
+    - term: प्रथमा
+      en: nominative (a passive makes the कर्मन् its प्रथमा)
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: सर्वैः
+    lemma: सर्व
+    gloss: by all
+    notes:
+    - term: करण
+      en: the agent of a passive stands in the तृतीया
+    - cite: '2.3.18'
+      role: कर्तृकरणयोस्तृतीया → the agent of a passive → तृतीया → सर्वैः
+    - term: तृतीया
+      en: instrumental plural
+  - form: अश्रूयत
+    lemma: श्रु
+    gloss: was heard
+    vocab: true
+    notes:
+    - term: तिङन्त
+      en: passive verb — "it was heard"
+    - term: यक्
+      en: the passive विकरण यक् (य) between root and ending
+    - cite: '3.1.67'
+      role: सार्वधातुके यक् → यक् marks the passive stem → श्रु + य → श्रूय
+    - cite: '3.4.69'
+      role: लः कर्मणि च → the ल-affix denotes the कर्म (passive) → आत्मनेपद ending → अश्रूयत
+    - term: लङ्
+      en: imperfect
+    - term: कर्मणि
+      en: passive — the object, not the agent, governs the verb
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: ततः
+    lemma: ततस्
+    gloss: thereupon, from that
+    notes:
+    - term: तद्धित
+      en: adverb from तद् — "from that," then "thereupon"
+    - term: तसिल्
+      en: the तसिल् (-तस्) suffix, अर्थ = पञ्चमी (ablative sense)
+    - cite: '5.3.7'
+      role: पञ्चम्यास्तसिल् → तसिल् in the ablative sense → तद् + तस् → ततः
+    - term: अव्यय
+      en: indeclinable
+  - form: तुष्टः
+    lemma: तुष्
+    gloss: pleased
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: past participle — "having become pleased"
+    - term: क्त
+      en: the क्त निष्ठा suffix
+    - cite: '3.2.102'
+      role: निष्ठा → क्त past participle → तुष् + त → तुष्टः
+    - term: प्रथमा
+      en: nominative — predicated of गुरुः
+  - form: अभवत्
+    lemma: भू
+    gloss: became
+    notes:
+    - term: लङ्
+      en: imperfect
+  - form: श्रेष्ठाय
+    lemma: श्रेष्ठ
+    gloss: to the best one
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: superlative derivative — "best"
+    - term: इष्ठन्
+      en: the इष्ठन् superlative suffix, अर्थ = अतिशायन (of all)
+    - cite: '5.3.55'
+      role: अतिशायने तमबिष्ठनौ → इष्ठन् for surpassing all → प्रशस्य + इष्ठ → श्रेष्ठ
+    - term: सम्प्रदान
+      en: recipient of the giving
+    - term: चतुर्थी
+      en: dative
+  - form: वरम्
+    lemma: वर
+    gloss: a boon
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: अददात्
+    lemma: दा
+    gloss: gave
+    notes:
+    - term: लङ्
+      en: imperfect
+  vyakhya: एकस्मिन्नाख्याने तरप्, कर्मधारयः, यक्, तसिल्, इष्ठन् — पञ्च शब्दप्रकाराः।
+  vyakhya_en: |
+    Degrees and a passive, in one scene. पटुः is the plain grade; पटुतरः the
+    **comparative** — पटु + तर, "cleverer of the two"; श्रेष्ठ the **superlative**,
+    the इष्ठन्-grade of प्रशस्य, "best of all." महाबुद्धिः is a **compound** —
+    महती बुद्धिः यस्य, "he whose mind is great." अश्रूयत is a **passive**: the यक्
+    stem turns श्रु into "is heard," so तत् (the question) becomes the प्रथमा and
+    सर्वैः (all who hear) the तृतीया — the object rises to subject, the agent
+    steps back. And ततः is a **तसिल् adverb**, तद् + तस्, "from that → thereupon."

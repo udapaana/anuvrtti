@@ -46,17 +46,19 @@ follows is the **Write** process — the default.
 
 `bun run ledger` — choose an under-taught rule or cluster. A rule is **taught at
 8 distinct readings**; a story adds one encounter per rule. The proven pattern
-(AUTHORING.md): a **सङ्ग्रह passage** (`12_sangraha.yaml`) lifts a cluster to 7/8,
-then a **story** (`09_katha.yaml`) crosses each once more. Before authoring
+(AUTHORING.md): a **सङ्ग्रह passage** (`12_sangraha/`) lifts a cluster to 7/8,
+then a **story** (`09_katha/`) crosses each once more. Before authoring
 against a low number, **check it is not a tagging gap** — the ledger has
 undercounted what the corpus teaches; grep the corpus and run `bun run complete`.
 
 ### 2. Chapter and tier
 
-- `01`–`11` topical; `12_sangraha.yaml` consolidation; `09_katha.yaml` graded
-  narrative; `06_readings.yaml` attested (frozen for Vedic).
+- `01`–`11` topical; `12_sangraha/` consolidation; `09_katha/` graded
+  narrative; `06_readings/` attested (frozen for Vedic). Each chapter is a
+  directory of one-file-per-reading (`<chapter>/<id>.yaml`, a bare one-item
+  sequence beginning `- id: <id>`); a new reading is a new file in that dir.
 - `segment` = difficulty tier in **tens**; use 71–79 for insertions. Never
-  renumber ids. Next id = current max + 1 (grep `id: ex`/`id: rd`).
+  renumber ids. Next id = current max + 1 (grep `id: ex`/`id: rd` across the dirs).
 - A सङ्ग्रह passage uses **only rules at or below its tier** and introduces
   nothing — the check enforces this.
 

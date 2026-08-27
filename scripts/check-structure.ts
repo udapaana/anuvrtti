@@ -33,9 +33,20 @@ const SELF_REF = [
 type Finding = { file: string; id: string; kind: string; detail: string };
 const findings: Finding[] = [];
 
-for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith('.yaml') && !f.startsWith('_'))) {
-  const doc = parseDocument(fs.readFileSync(path.join(DIR, file), 'utf-8'));
-  const readings = (doc.toJS() as any)?.readings ?? [];
+// Each chapter is a directory (NN_name/) of one-file-per-reading; every
+// reading file is a bare one-item YAML sequence.
+const chapterDirs = fs
+  .readdirSync(DIR, { withFileTypes: true })
+  .filter((e) => e.isDirectory() && !e.name.startsWith('_'))
+  .map((e) => e.name);
+
+for (const dir of chapterDirs) {
+  const dirPath = path.join(DIR, dir);
+  for (const rf of fs.readdirSync(dirPath).filter((f) => f.endsWith('.yaml') && !f.startsWith('_'))) {
+  const file = `${dir}/${rf}`;
+  const doc = parseDocument(fs.readFileSync(path.join(dirPath, rf), 'utf-8'));
+  const parsed = doc.toJS() as any;
+  const readings = Array.isArray(parsed) ? parsed : (parsed?.readings ?? []);
   for (const r of readings) {
     const id = r.id ?? '(no id)';
     const add = (kind: string, detail: string) => findings.push({ file, id, kind, detail });
@@ -65,6 +76,7 @@ for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith('.yaml') && !f.s
         if (m) { add('SELF-REF', `${field}: ${JSON.stringify(m[0])}`); break; }
       }
     }
+  }
   }
 }
 

@@ -1,0 +1,337 @@
+- id: ex236
+  kind: graded
+  segment: 251
+  source:
+    text: कथा (our graded retelling)
+    ref: "the teacher of Mithilā — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: पुरा मिथिलायाम् एका राज्ञी वसति स्म। तस्याः नगरे विद्वान् आचार्यः आसीत्। सः प्रतिदिनम् शिष्यम् वेदम् अध्यापयत्। एकदा बालः आचार्यम् द्रष्टुम् ग्रामम् अगच्छत्। तत्र आचार्यः तम् धर्मम् अबोधयत्। बोधेन सः बालः पण्डितः अभवत्। राज्ञी अपि तम् अपूजयत्।
+  translation: Long ago in Mithilā there lived a queen. In her city there was a learned teacher. Every day he taught a student the Veda. One day a boy went to the village in order to see the teacher. There the teacher made him understand dharma. By that understanding the boy became learned. The queen too honored him.
+  teaches: |
+    the causative in the wild: शिष्यम् वेदम् अध्यापयत् "taught the student the
+    Veda" — the one made to act (शिष्यम्) turns into an object, so the causative
+    carries two accusatives. And the causer himself is the हेतु-agent.
+  words:
+  - form: पुरा
+    lemma: पुरा
+    gloss: long ago
+    notes:
+    - term: अव्यय
+      en: adverb of time
+  - form: मिथिलायाम्
+    lemma: मिथिला
+    gloss: in Mithilā
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: एका
+    lemma: एक
+    gloss: a certain, one
+    notes:
+    - term: संख्या
+      en: numeral "one," here "a certain"
+    - term: विशेषण
+      en: qualifying राज्ञी
+    - term: प्रथमा
+      en: nominative (feminine टाप् → एका)
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: राज्ञी
+    lemma: राज्ञी
+    gloss: queen
+    vocab: true
+    notes:
+    - term: ङीप्
+      en: the feminine ई-suffix — राजन् (न्-final) → राज्ञी
+    - cite: '4.1.5'
+      role: ऋन्नेभ्यो ङीप् — a stem ending in ऋ or न् takes ङीप् (ई) in the feminine → राजन् + ङीप् → राज्ञी
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: वसति
+    lemma: वस्
+    gloss: dwells
+    notes:
+    - term: वस्
+      en: '"dwell, live" (भ्वादि)'
+    - term: लट्
+      en: present (with स्म = narrative past)
+  - form: स्म
+    lemma: स्म
+    gloss: (past marker)
+    notes:
+    - term: अव्यय
+      en: turns a present into a narrative past
+  - form: तस्याः
+    lemma: तद्
+    gloss: her
+    notes:
+    - term: सर्वनाम
+      en: pronoun (feminine gen.)
+    - term: षष्ठी
+      en: genitive
+  - form: नगरे
+    lemma: नगर
+    gloss: in the city
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: विद्वान्
+    lemma: विद्वस्
+    gloss: learned
+    notes:
+    - term: कृदन्त
+      en: perfect participle (क्वसु) of विद् "know," used adjectivally
+    - term: विशेषण
+      en: qualifying आचार्यः
+    - term: प्रथमा
+      en: nominative (वस्-stem → विद्वान्)
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: आचार्यः
+    lemma: आचार्य
+    gloss: teacher
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: आसीत्
+    lemma: अस्
+    gloss: there was
+    notes:
+    - term: लङ्
+      en: past
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: the प्रयोजक (causer) agent — the हेतु of अध्यापयत्
+    - cite: '1.4.55'
+      role: तत्प्रयोजको हेतुश्च — the instigator of the action is termed हेतु (and is the कर्ता of the causative) → nominative सः
+    - term: प्रथमा
+      en: nominative
+  - form: प्रतिदिनम्
+    lemma: प्रतिदिनम्
+    gloss: every day
+    notes:
+    - term: अव्यय
+      en: adverb — "day by day"
+  - form: शिष्यम्
+    lemma: शिष्य
+    gloss: the student
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: the one made to act, turned object of the causative
+    - cite: '1.4.52'
+      role: गतिबुद्धिप्रत्यवसानार्थ… अणि कर्ता स णौ — with a verb of knowing (इ/अधि-इ), the base agent becomes कर्मन् in the causative → शिष्यम्
+    - term: द्वितीया
+      en: accusative
+  - form: वेदम्
+    lemma: वेद
+    gloss: the Veda
+    notes:
+    - term: कर्मन्
+      en: the original object (what is studied)
+    - term: द्वितीया
+      en: accusative — the second of two accusatives
+  - form: अध्यापयत्
+    lemma: इ
+    gloss: taught (caused to study)
+    vocab: true
+    notes:
+    - term: णिच्
+      en: causative of अधि-इ "study" → "make study, teach"
+    - cite: '3.1.26'
+      role: हेतुमति च — णिच् after a root when a causing agent (हेतु) is expressed → अध्यापयति
+    - term: लङ्
+      en: past (causative 3sg)
+  - form: एकदा
+    lemma: एकदा
+    gloss: one day
+    notes:
+    - term: अव्यय
+      en: adverb of time
+  - form: बालः
+    lemma: बाल
+    gloss: a boy
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: आचार्यम्
+    lemma: आचार्य
+    gloss: the teacher
+    notes:
+    - term: कर्मन्
+      en: object of द्रष्टुम्
+    - term: द्वितीया
+      en: accusative
+  - form: द्रष्टुम्
+    lemma: दृश्
+    gloss: to see
+    notes:
+    - term: कृदन्त
+      en: infinitive (तुमुन्) of √दृश् — purpose
+    - cite: '3.3.10'
+      role: तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम् → द्रष्टुम् (infinitive of purpose)
+    - term: तुमुन्
+      en: '"in order to see"'
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: the goal of a motion verb
+    - cite: '2.3.12'
+      role: गत्यर्थकर्मणि द्वितीयाचतुर्थ्यौ — the destination of a verb of motion takes द्वितीया (or चतुर्थी) → ग्रामम्
+    - term: द्वितीया
+      en: accusative (goal)
+  - form: अगच्छत्
+    lemma: गम्
+    gloss: went
+    notes:
+    - term: गम्
+      en: '"go" (भ्वादि)'
+    - term: लङ्
+      en: past
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: adverb of place
+  - form: तम्
+    lemma: तद्
+    gloss: him (the boy)
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: the base agent made object of the causative अबोधयत्
+    - cite: '1.4.52'
+      role: गतिबुद्धि… अणि कर्ता स णौ — with बुध् (a बुद्धि "knowing" verb), the base agent becomes कर्मन् in the causative → तम्
+    - term: द्वितीया
+      en: accusative
+  - form: धर्मम्
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: the original object (what is understood)
+    - term: द्वितीया
+      en: accusative — the second accusative
+  - form: अबोधयत्
+    lemma: बुध्
+    gloss: made (him) understand
+    notes:
+    - term: णिच्
+      en: causative of बुध् "understand" → "make understand"
+    - cite: '3.1.26'
+      role: हेतुमति च — णिच् when a causer is expressed → बोधयति, लङ् अबोधयत्
+    - term: लङ्
+      en: past (causative 3sg)
+  - form: बोधेन
+    lemma: बोध
+    gloss: by (that) understanding
+    notes:
+    - term: कृदन्त
+      en: action-noun (घञ्) of बुध्
+    - cite: '3.3.18'
+      role: भावे घञ् — the घञ् suffix in the sense of the action itself → बुध् + घञ् → बोधः "understanding"
+    - term: घञ्
+      en: the action-noun suffix
+    - term: करण
+      en: instrument/means
+    - term: तृतीया
+      en: instrumental
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (in apposition to बालः)
+    - term: प्रथमा
+      en: nominative
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: पण्डितः
+    lemma: पण्डित
+    gloss: learned
+    notes:
+    - term: विशेषण
+      en: predicate nominative with अभवत्
+    - term: प्रथमा
+      en: nominative
+  - form: अभवत्
+    lemma: भू
+    gloss: became
+    notes:
+    - term: लङ्
+      en: past
+  - form: राज्ञी
+    lemma: राज्ञी
+    gloss: the queen
+    notes:
+    - term: ङीप्
+      en: राजन् + ङीप् → राज्ञी (feminine)
+    - cite: '4.1.5'
+      role: ऋन्नेभ्यो ङीप् — न्-final stem → ङीप् → राज्ञी
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: also
+    notes:
+    - term: अव्यय
+      en: '"too, also"'
+  - form: तम्
+    lemma: तद्
+    gloss: him
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of अपूजयत्
+    - term: द्वितीया
+      en: accusative
+  - form: अपूजयत्
+    lemma: पूज्
+    gloss: honored
+    notes:
+    - term: लङ्
+      en: past
+  vyakhya: 'णिजन्तप्रधाना कथा। अध्यापयत् इति अधि-इणो णिचि लङ्; शिष्यम् वेदम् इति द्विकर्मकम् — बुद्ध्यर्थे मूलकर्ता कर्म भवति (गतिबुद्धि…)। सः इति प्रयोजकः हेतुः। ग्रामम् अगच्छत् इति गत्यर्थकर्मणि द्वितीया। बोधेन इति बुधेः भावे घञ्। राज्ञी इति राजन्शब्दात् ङीप्।'
+  vyakhya_en: |
+    A causative-centered story. The engine is 3.1.26 हेतुमति च — when there is a
+    हेतु (a causing agent), the root takes णिच्: बुध् → बोधयति, अधि-इ → अध्यापयति.
+    Two things follow. First, the causer is the **हेतु**-agent by 1.4.55
+    (तत्प्रयोजको हेतुश्च) — सः, nominative. Second, and the reason this reading
+    exists: with verbs of **knowing, going, and eating**, the base agent (the one
+    made to act) does not stay instrumental — it becomes the **object**
+    (1.4.52). So शिष्यम् वेदम् अध्यापयत् and तम् धर्मम् अबोधयत् each carry *two*
+    accusatives: the one taught, and the thing taught. Around this: ग्रामम्
+    अगच्छत् (2.3.12, the goal of a motion verb in the accusative), बोधेन (3.3.18
+    भावे घञ्, an action-noun as means), and the feminine राज्ञी (4.1.5, राजन् + ङीप्).

@@ -1,0 +1,176 @@
+- id: rd069
+  kind: attested
+  segment: 380
+  source:
+    text: विष्णुपुराण
+    ref: "Viṣṇu Purāṇa 1.11.3 — Sunīti, Dhruva's mother"
+    curated: "the whole verse, word-separated (pausa forms; light sandhi split); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_viSNupurANa, ViP_1,11.3)"
+  sentence: सुनीतिः नाम या राज्ञः तस्य आसीत् महिषी द्विज। सः न अति प्रीतिमान् तस्याम् अभूत् यस्याः ध्रुवः सुतः॥
+  translation: She who was named Sunīti was that king's queen, O brahmin; he was not very fond of her — she whose son was Dhruva.
+  teaches: |
+    a line of story, and with it the aorist — अभूत् "he was," the लुङ् past of भू;
+    the relative-correlative frame या … तस्य … यस्याः; and the vocative द्विज "O
+    brahmin," the narrator turning to his listener.
+  words:
+  - form: सुनीतिः
+    lemma: सुनीति
+    gloss: Sunīti
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject — a queen named "Good-Conduct" (सु + नीति)
+    - term: प्रथमा
+      en: nominative (इ-stem feminine)
+  - form: नाम
+    lemma: नाम
+    gloss: by name
+    notes:
+    - term: अव्यय
+      en: '"by name" — marks the preceding as a name'
+  - form: या
+    lemma: यद्
+    gloss: who
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun (feminine, correlative of सः/तस्य)
+    - term: प्रथमा
+      en: nominative
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: of the king
+    notes:
+    - cite: '7.1.12'
+      role: टाङसिङसामिनात्स्याः — the genitive ending here on the न्-stem राजन् → राज्ञः
+    - term: सम्बन्ध
+      en: possessor — "the king's (queen)"
+    - term: षष्ठी
+      en: genitive
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: correlative pronoun
+    - term: सम्बन्ध
+      en: possessor (resumes राज्ञः)
+    - term: षष्ठी
+      en: genitive
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past (imperfect)
+  - form: महिषी
+    lemma: महिषी
+    gloss: the chief queen
+    vocab: true
+    notes:
+    - term: विशेषण
+      en: predicate — "was (his) queen"
+    - term: प्रथमा
+      en: nominative (ई-stem feminine)
+  - form: द्विज
+    lemma: द्विज
+    gloss: O brahmin
+    notes:
+    - cite: '2.3.47'
+      role: सम्बोधने च — in address, the naming word takes the सम्बोधन form → द्विज
+    - term: सम्बोधन
+      en: vocative — the narrator addresses his listener
+  - form: सः
+    lemma: तद्
+    gloss: he (the king)
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: अति
+    lemma: अति
+    gloss: very
+    notes:
+    - term: अव्यय
+      en: intensifier — "(not) very"
+  - form: प्रीतिमान्
+    lemma: प्रीतिमत्
+    gloss: fond, affectionate
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: possessive (मतुप्) — प्रीति "affection" → प्रीतिमत् "having affection" → base + मतुप् → प्रीतिमत्
+    - term: विशेषण
+      en: predicate of सः
+    - term: प्रथमा
+      en: nominative (मत्-stem → प्रीतिमान्)
+    rel:
+    - kind: विशेषण
+      to: 8
+  - form: तस्याम्
+    lemma: तद्
+    gloss: toward her
+    notes:
+    - term: सर्वनाम
+      en: pronoun (feminine locative)
+    - term: अधिकरण
+      en: the locus of the feeling — "fond OF her" takes the locative
+    - term: सप्तमी
+      en: locative
+  - form: अभूत्
+    lemma: भू
+    gloss: was, became
+    vocab: true
+    notes:
+    - cite: '3.2.110'
+      role: लुङ् — for a past action without a time-restriction, the लुङ् (aorist) → अभूत्
+    - cite: '2.4.77'
+      role: गातिस्थाघुपाभूभ्यः सिचः (लुक्) — after भू, the सिच् of the aorist drops in the parasmaipada → अ + भू + त् → अभूत्
+    - term: लुङ्
+      en: aorist (root-aorist of भू)
+  - form: यस्याः
+    lemma: यद्
+    gloss: of whom
+    notes:
+    - term: सर्वनाम
+      en: relative pronoun (feminine genitive)
+    - term: सम्बन्ध
+      en: possessor — "she whose son…"
+    - term: षष्ठी
+      en: genitive
+  - form: ध्रुवः
+    lemma: ध्रुव
+    gloss: Dhruva
+    notes:
+    - term: कर्तृ
+      en: subject of the relative clause
+    - term: प्रथमा
+      en: nominative
+  - form: सुतः
+    lemma: सुत
+    gloss: (was) the son
+    notes:
+    - term: विशेषण
+      en: predicate — "Dhruva was (her) son"
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 15
+  vyakhya: 'आख्यानपदम् — लुङ्प्रवेशः। अभूत् इति भ्वस्तेः लुङि प्रथमपुरुषैकवचनम् (लुङ्); भूधातोः सिचो लुक् (गातिस्थाघुपाभूभ्यः…) इति अभूत्, न तु *अभावीत्। या … तस्य … यस्याः इति यत्तद्सम्बन्धः। द्विज इति सम्बोधनम्। प्रीतिमान् तस्याम् इति प्रीत्यर्थे विषयसप्तमी।'
+  vyakhya_en: |
+    Real narrative now, and the tense that carries it: **अभूत्** "he was," the
+    लुङ् (aorist) of भू — the unmarked past a story leans on. Its shape is worth a
+    look: भू would take सिच् like other roots, but 2.4.77 drops that सिच् after भू
+    (गातिस्थाघु-पा-भू…), so the form is अभूत्, not *अभावीत्. The sentence is held
+    together by the relative-correlative — या … तस्य … यस्याः, "she who … his …
+    she whose" — and द्विज "O brahmin" is the storyteller (Maitreya) turning to
+    the one he is telling it to. प्रीतिमान् तस्याम् shows the idiom "fond OF"
+    taking the locative.

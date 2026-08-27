@@ -1,0 +1,277 @@
+- id: ex206
+  kind: graded
+  segment: 500
+  source:
+    text: कथा (our graded retelling)
+    ref: "the student who went to the forest — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: शिष्यः वनम् अगच्छत्। तत्र सः फलानि अभक्षयत्, जलम् च अपिबत्। सायम् गुरुः अपृच्छत् — कुत्र आसीः। शिष्यः अवदत् — वने आसम्, गुरो। तत् श्रुत्वा गुरुः अवदत् — पठनम् एव तव कार्यम्, न तु वनगमनम्। शिष्यः अवदत् — क्षमस्व, अद्य प्रभृति पठेयम्। रामेण अपि तत् श्रुतम्, सः च अहसत्।
+  translation: The student went to the forest. There he ate fruits and drank water. In the evening the teacher asked — "Where were you?" The student said — "I was in the forest, teacher." Hearing that, the teacher said — "Studying alone is your work, not going to the forest." The student said — "Forgive me; from today I will study." Rāma too heard that, and he laughed.
+  teaches: |
+    two action-nouns set against each other — पठनम् and वनगमनम् — and the
+    optative पठेयम् answering the teacher. अभक्षयत् and अपिबत् carry the
+    narrative; तच्छ्रुत्वा shows श्चुत्व at the join.
+  words:
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: the student
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वनम्
+    lemma: वन
+    gloss: to the forest
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: अगच्छत्
+    lemma: गम्
+    gloss: went
+    notes:
+    - term: लङ्
+      en: past
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: फलानि
+    lemma: फल
+    gloss: fruits
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: बहुवचन
+      en: neuter accusative plural
+  - form: अभक्षयत्
+    lemma: भक्ष्
+    gloss: ate
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past
+  - form: जलम्
+    lemma: जल
+    gloss: water
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: neuter accusative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अपिबत्
+    lemma: पा
+    gloss: drank
+    notes:
+    - term: लङ्
+      en: past — पा appears as पिब्
+  - form: सायम्
+    lemma: सायम्
+    gloss: in the evening
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: अपृच्छत्
+    lemma: प्रच्छ्
+    gloss: asked
+    notes:
+    - term: लङ्
+      en: past
+  - form: कुत्र
+    lemma: कुत्र
+    gloss: where
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: आसीः
+    lemma: अस्
+    gloss: were you
+    notes:
+    - term: लङ्
+      en: past of अस्, second person — आसम् answers it below
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: वने
+    lemma: वन
+    gloss: in the forest
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: आसम्
+    lemma: अस्
+    gloss: I was
+    notes:
+    - term: लङ्
+      en: the first-person answer to आसीः
+  - form: गुरो
+    lemma: गुरु
+    gloss: teacher
+    notes:
+    - term: सम्बोधन
+      en: vocative — उ-stem, गुरु → गुरो
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: neuter accusative
+  - form: श्रुत्वा
+    lemma: श्रु
+    gloss: hearing
+    notes:
+    - term: क्त्वा
+      en: gerund
+  - form: पठनम्
+    lemma: पठन
+    gloss: studying
+    notes:
+    - term: ल्युट्
+      en: the action-noun — the studying itself
+    - cite: "3.3.115"
+      role: ल्युट् च — ल्युट् makes the neuter action-noun → पठनम्
+  - form: एव
+    lemma: एव
+    gloss: alone
+    notes:
+    - term: अव्यय
+      en: emphatic
+  - form: तव
+    lemma: युष्मद्
+    gloss: your
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: षष्ठी
+      en: genitive
+  - form: कार्यम्
+    lemma: कृ
+    gloss: work, what is to be done
+    notes:
+    - term: कृत्य
+      en: gerundive used as a noun
+    - term: प्रथमा
+      en: neuter nominative
+  - form: 'न'
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: तु
+    lemma: तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: वनगमनम्
+    lemma: वनगमन
+    gloss: going to the forest
+    vocab: true
+    notes:
+    - term: द्वितीया-तत्पुरुष
+      en: वनं गमनम् — the goal compounded onto the action-noun
+    - cite: "3.3.115"
+      role: ल्युट् च — a second ल्युट् noun, here inside a compound → गमनम्
+  - form: क्षमस्व
+    lemma: क्षम्
+    gloss: forgive
+    vocab: true
+    notes:
+    - term: लोट्
+      en: imperative, आत्मनेपद
+  - form: अद्य
+    lemma: अद्य
+    gloss: today
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: प्रभृति
+    lemma: प्रभृति
+    gloss: from … onward
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: पठेयम्
+    lemma: पठ्
+    gloss: I will study
+    notes:
+    - term: विधिलिङ्
+      en: the optative — a resolve, answering the teacher
+    - cite: "3.3.161"
+      role: विधिनिमन्त्रण… लिङ् — the optative → पठेयम्
+  - form: रामेण
+    lemma: राम
+    gloss: by Rāma
+    notes:
+    - term: कर्तृ
+      en: the agent of a passive participle
+    - term: तृतीया
+      en: instrumental
+    - cite: "8.4.2"
+      role: अट्कुप्वाङ्नुम्व्यवायेऽपि — णत्व across the intervening ए → रामेण
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: श्रुतम्
+    lemma: श्रु
+    gloss: was heard
+    notes:
+    - term: निष्ठा
+      en: past participle
+  - form: अहसत्
+    lemma: हस्
+    gloss: laughed
+    notes:
+    - term: लुङ्
+      en: the aorist — a single completed act, closing the scene
+    - cite: "3.2.110"
+      role: लुङ् — the aorist for a completed past act → अहसत्
+  vyakhya: पठनम् वनगमनम् च — द्वे क्रियानाम्नी। एकम् कार्यम्, अन्यत् न।
+  vyakhya_en: |
+    पठनम् and वनगमनम् are the same kind of word — an act named as a thing —
+    and the teacher sets one against the other. Sanskrit can compound the goal
+    straight into the noun: वनं गमनम् becomes वनगमनम्, going-to-the-forest, in
+    one word.

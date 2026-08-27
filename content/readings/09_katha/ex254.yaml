@@ -1,0 +1,185 @@
+- id: ex254
+  kind: graded
+  segment: 269
+  source:
+    text: कथा (our graded retelling)
+    ref: "those who set others to work — our own telling, in causatives"
+    curated: our simple Sanskrit; not from any single source
+  sentence: गुरुः शिष्यम् वेदम् अध्यापयत्। राजा दूतम् नगरम् अगमयत्। माता बालम् अन्नम् अभोजयत्। एवम् प्रयोजकाः हेतवः अन्यान् कर्मणि नियोजयन्ति।
+  translation: The teacher made the student study the Veda. The king made the messenger go to the city. The mother made the child eat food. Thus the instigators, the "causes," employ others in tasks.
+  teaches: |
+    the causative's double object — with verbs of knowing, going, and eating, the
+    one made to act (शिष्यम्, दूतम्, बालम्) turns into an accusative alongside the
+    real object (वेदम्, नगरम्, अन्नम्); and the causer is the हेतु.
+  words:
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: the प्रयोजक (causer) — the हेतु
+    - cite: '1.4.55'
+      role: तत्प्रयोजको हेतुश्च — the instigator of the action is termed हेतु (and is the कर्ता of the causative)
+    - term: प्रथमा
+      en: nominative
+  - form: शिष्यम्
+    lemma: शिष्य
+    gloss: the student
+    notes:
+    - term: कर्मन्
+      en: the one made to act — turned object
+    - cite: '1.4.52'
+      role: गतिबुद्धिप्रत्यवसानार्थ… अणि कर्ता स णौ — with a verb of knowing, the base agent becomes कर्मन् in the causative
+    - term: द्वितीया
+      en: accusative
+  - form: वेदम्
+    lemma: वेद
+    gloss: the Veda
+    notes:
+    - term: कर्मन्
+      en: the original object (what is studied)
+    - term: द्वितीया
+      en: accusative — the second of two
+  - form: अध्यापयत्
+    lemma: इ
+    gloss: made (him) study
+    notes:
+    - term: णिच्
+      en: causative of अधि-इ "study" → "teach"
+    - cite: '3.1.26'
+      role: हेतुमति च — णिच् when a causer (हेतु) is expressed
+    - term: लङ्
+      en: past (causative)
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: कर्तृ
+      en: the causer (हेतु)
+    - term: प्रथमा
+      en: nominative (न्-stem → राजा)
+  - form: दूतम्
+    lemma: दूत
+    gloss: the messenger
+    notes:
+    - term: कर्मन्
+      en: the base agent → object (with गम्, a motion verb)
+    - cite: '1.4.52'
+      role: गतिबुद्धि… — the base agent of a motion verb's causative becomes कर्मन् → दूतम्
+    - term: द्वितीया
+      en: accusative
+  - form: नगरम्
+    lemma: नगर
+    gloss: to the city
+    notes:
+    - term: कर्मन्
+      en: the goal of the motion
+    - cite: '2.3.12'
+      role: गत्यर्थकर्मणि द्वितीया — goal of a motion verb in the accusative → नगरम्
+    - term: द्वितीया
+      en: accusative
+  - form: अगमयत्
+    lemma: गम्
+    gloss: made (him) go
+    notes:
+    - term: णिच्
+      en: causative of गम् "go" → "send, make go"
+    - term: लङ्
+      en: past (causative)
+  - form: माता
+    lemma: मातृ
+    gloss: the mother
+    notes:
+    - term: कर्तृ
+      en: the causer (हेतु)
+    - term: प्रथमा
+      en: nominative (ऋ-stem → माता)
+  - form: बालम्
+    lemma: बाल
+    gloss: the child
+    notes:
+    - term: कर्मन्
+      en: the base agent → object (with भुज्, an eating verb)
+    - cite: '1.4.52'
+      role: गतिबुद्धिप्रत्यवसान… — the base agent of an eating verb's causative becomes कर्मन् → बालम्
+    - term: द्वितीया
+      en: accusative
+  - form: अन्नम्
+    lemma: अन्न
+    gloss: food
+    notes:
+    - term: कर्मन्
+      en: the original object (what is eaten)
+    - term: द्वितीया
+      en: accusative
+  - form: अभोजयत्
+    lemma: भुज्
+    gloss: made (him) eat, fed
+    vocab: true
+    notes:
+    - term: णिच्
+      en: causative of भुज् "eat" → "feed"
+    - term: लङ्
+      en: past (causative)
+  - form: एवम्
+    lemma: एवम्
+    gloss: thus
+    notes:
+    - term: अव्यय
+      en: adverb
+  - form: प्रयोजकाः
+    lemma: प्रयोजक
+    gloss: instigators
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: the causers
+    - term: प्रथमा
+      en: nominative plural
+  - form: हेतवः
+    lemma: हेतु
+    gloss: the "causes"
+    notes:
+    - term: विशेषण
+      en: in apposition to प्रयोजकाः — "the हेतु-agents"
+    - term: प्रथमा
+      en: nominative plural (उ-stem → हेतवः)
+    rel:
+    - kind: विशेषण
+      to: 13
+  - form: अन्यान्
+    lemma: अन्य
+    gloss: others
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम "other"
+    - term: कर्मन्
+      en: those set to work
+    - term: द्वितीया
+      en: accusative plural (शस् → आन्)
+  - form: कर्मणि
+    lemma: कर्मन्
+    gloss: in tasks
+    notes:
+    - term: अधिकरण
+      en: the sphere of employment
+    - term: सप्तमी
+      en: locative (न्-stem कर्मन् → कर्मणि)
+  - form: नियोजयन्ति
+    lemma: युज्
+    gloss: employ, set to work
+    vocab: true
+    notes:
+    - term: णिच्
+      en: causative of नि-युज् "engage"
+    - term: लट्
+      en: present (3pl)
+  vyakhya: 'णिजन्तद्विकर्मकप्रधाना कथा। अध्यापयत् अगमयत् अभोजयत् इति बुद्धि-गति-प्रत्यवसानार्थेषु णिचि — मूलकर्ता कर्म (गतिबुद्धिप्रत्यवसान… अणि कर्ता स णौ)। अतः द्वे कर्मणी प्रतिवाक्यम् — शिष्यम् वेदम्, दूतम् नगरम्, बालम् अन्नम्। प्रयोजकाः इति हेतवः (तत्प्रयोजको हेतुश्च)।'
+  vyakhya_en: |
+    Three causatives, three double-objects — the pattern to fix in memory. When
+    the underlying verb is one of **knowing, going, or eating** (the गतिबुद्धि-
+    प्रत्यवसान class), its causative pulls the *base agent* into the accusative
+    (1.4.52): शिष्यम् वेदम् अध्यापयत् "made the student (study) the Veda," दूतम्
+    नगरम् अगमयत् "made the messenger (go) to the city," बालम् अन्नम् अभोजयत् "made
+    the child (eat) food." The causer standing over them all is the **हेतु**
+    (1.4.55) — here named outright: प्रयोजकाः हेतवः, "the instigators, the causes."

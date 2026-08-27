@@ -52,7 +52,7 @@ Other commands: `bun run ledger` (coverage detail, `--full` for every rule),
 
 | | |
 |---|---|
-| authored source | `content/readings/*.yaml` — **edit these**, never the JSON |
+| authored source | `content/readings/<chapter>/<id>.yaml` — one file per reading, **edit these**, never the JSON. Open a reading by its id with your IDE's "Go to File" (e.g. `ku0101`). |
 | the plan | `content/readings/_syllabus.yaml` — conventions in its header |
 | the target set | `content/readings/_rules.yaml` — load-bearing vs leaf |
 | **the annotation contract** | **[`WORD-TYPES.md`](WORD-TYPES.md)** — every kind of word and what each must be tagged for |
@@ -358,7 +358,9 @@ eventually disagree — that is what produced the फलम् quiz contradictio
 कूपे-in-five-cells grid.
 
 ```
-content/readings/*.yaml          ← you write this, and nothing else
+content/readings/<chapter>/<id>.yaml   ← you write this, and nothing else
+                                         (one file per reading; NN_name/ = chapter,
+                                          <id>.yaml = a bare one-item sequence)
         │
         │  bun run build:readings        (pass 1 — no quizzes yet)
         ▼
@@ -380,14 +382,15 @@ needs the cells, and the cells are derived from the corpus's own forms.
 
 | after you… | run |
 |---|---|
-| edit any `content/readings/*.yaml` | `bun run build:readings` |
+| edit any `content/readings/<chapter>/<id>.yaml` | `bun run build:readings` |
 | add or change **words** (new forms, new lemmas, new tags) | `bun run build:quiz` |
 | anything, before pushing | `bun run check` then `npm run build` |
 
 ### Authoring a reading, end to end
 
 ```bash
-# 1. write it — content/readings/NN_chapter.yaml
+# 1. write it — content/readings/NN_chapter/<id>.yaml (one reading per file,
+#    as a bare one-item sequence: the file begins `- id: <id>`)
 # 2. see it
 bun run build:readings
 

@@ -1,0 +1,164 @@
+- id: ex248
+  kind: graded
+  segment: 263
+  source:
+    text: कथा (our graded retelling)
+    ref: "the eager student — our own telling, in desideratives"
+    curated: our simple Sanskrit; not from any single source
+  sentence: शिष्यः विद्याम् जिज्ञासते। सः गुरोः समीपम् गन्तुम् इच्छति। गुरुः अपि तम् शिक्षितुम् चिकीर्षति। एवम् द्वौ अपि ज्ञानम् इच्छतः।
+  translation: The student wishes to know knowledge. He wants to go to the teacher's side. The teacher too wishes to instruct him. Thus both of them desire knowledge.
+  teaches: |
+    the desiderative — a verb that means "wishes to ___," built by reduplicating
+    the root and adding सन्: जिज्ञासते "wants to know" (from ज्ञा), चिकीर्षति
+    "wants to do" (from कृ).
+  words:
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: the student
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: विद्याम्
+    lemma: विद्या
+    gloss: knowledge
+    notes:
+    - term: कर्मन्
+      en: object of जिज्ञासते
+    - term: द्वितीया
+      en: accusative
+  - form: जिज्ञासते
+    lemma: ज्ञा
+    gloss: wishes to know
+    vocab: true
+    notes:
+    - cite: '3.1.7'
+      role: धातोः कर्मणः समानकर्तृकादिच्छायां वा — when one wishes to do the action oneself, the root takes सन् (with reduplication) → ज्ञा → जिज्ञास "want to know"
+    - term: सन्
+      en: the desiderative suffix (reduplicating)
+    - term: लट्
+      en: present (आत्मनेपद 3sg)
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: गुरोः
+    lemma: गुरु
+    gloss: of the teacher
+    notes:
+    - term: सम्बन्ध
+      en: relation — "the teacher's (vicinity)"
+    - term: षष्ठी
+      en: genitive (उ-stem → गुरोः)
+  - form: समीपम्
+    lemma: समीप
+    gloss: to the vicinity
+    notes:
+    - term: कर्मन्
+      en: goal — "toward the near-place"
+    - term: द्वितीया
+      en: accusative
+  - form: गन्तुम्
+    lemma: गम्
+    gloss: to go
+    notes:
+    - term: कृदन्त
+      en: infinitive (तुमुन्) of गम्
+    - term: तुमुन्
+      en: '"in order to go"'
+  - form: इच्छति
+    lemma: इष्
+    gloss: wishes, wants
+    notes:
+    - term: इष्
+      en: '"wish, want" (तुदादि)'
+    - term: लट्
+      en: present (3sg)
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: "also, too"
+  - form: तम्
+    lemma: तद्
+    gloss: him
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of शिक्षितुम्
+    - term: द्वितीया
+      en: accusative
+  - form: शिक्षितुम्
+    lemma: शिक्ष्
+    gloss: to instruct
+    notes:
+    - term: कृदन्त
+      en: infinitive (तुमुन्) of शिक्ष् "teach"
+    - term: तुमुन्
+      en: '"in order to teach"'
+  - form: चिकीर्षति
+    lemma: कृ
+    gloss: wishes to do
+    vocab: true
+    notes:
+    - cite: '3.1.7'
+      role: धातोः… इच्छायां वा — कृ "do" + सन् (reduplicated) → चिकीर्ष "want to do"
+    - term: सन्
+      en: the desiderative suffix
+    - term: लट्
+      en: present (3sg)
+  - form: एवम्
+    lemma: एवम्
+    gloss: thus
+    notes:
+    - term: अव्यय
+      en: adverb
+  - form: द्वौ
+    lemma: द्वि
+    gloss: the two
+    notes:
+    - term: संख्या
+      en: "two"
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative dual
+  - form: ज्ञानम्
+    lemma: ज्ञान
+    gloss: knowledge
+    notes:
+    - term: कर्मन्
+      en: object of इच्छतः
+    - term: द्वितीया
+      en: accusative
+  - form: इच्छतः
+    lemma: इष्
+    gloss: (the two) desire
+    notes:
+    - term: लट्
+      en: present (3 dual)
+  vyakhya: 'सन्नन्तप्रधाना कथा। जिज्ञासते इति ज्ञाधातोः इच्छायां सन् (धातोः कर्मणः समानकर्तृकादिच्छायां वा); चिकीर्षति इति कृञः सन् — द्वित्वेन। "स्वयम् कर्तुम् इच्छति" इत्यर्थे सन्नन्तः, "अन्यम् प्रति इच्छति" इति तु इष्धातुना (इच्छति गन्तुम्)।'
+  vyakhya_en: |
+    The **desiderative** (सन्नन्त) — one verb for "wishes to ___," when the wisher
+    would do the deed himself. Reduplicate the root and add सन्: ज्ञा → जि-ज्ञास
+    "want to know," कृ → चि-कीर्ष "want to do" (3.1.7). Compare the two ways of
+    saying "want": जिज्ञासते / चिकीर्षति *build the wish into the verb*, whereas
+    गन्तुम् इच्छति uses a separate verb इष् "wish" + an infinitive. Sanskrit lets
+    you do either — the desiderative is the tighter, more idiomatic one.

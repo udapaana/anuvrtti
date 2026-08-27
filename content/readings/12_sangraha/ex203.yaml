@@ -1,0 +1,240 @@
+- id: ex203
+  kind: sangraha
+  segment: 495
+  order: 1
+  sentence: नद्याः तीरे तिष्ठन् राजा दूरात् आगच्छन्तम् भ्रातरम् अपश्यत्। भ्राता श्रान्तः आसीत्। राज्ञा जलम् दातव्यम् इति मन्त्री अवदत्। राजा स्वयम् जलम् अददात्। पिता तत् पश्यन् अवदत् — एतत् एव राज्ञः कर्म, न अन्यत्। स्मरणीयम् एतत् सर्वैः।
+  translation: Standing on the bank of a river, the king saw his brother coming from afar. The brother was tired. The minister said that water was to be given by the king. The king himself gave water. The father, seeing that, said — "This alone is a king's work, not anything else. This is to be remembered by all."
+  teaches: |
+    three participles set against three finite verbs, with two gerundives in
+    between: दातव्यम् and स्मरणीयम्, both stating obligation with no verb.
+  words:
+  - form: नद्याः
+    lemma: नदी
+    gloss: of a river
+    notes:
+    - term: षष्ठी
+      en: genitive — the ई of नदी becomes य् before the ending
+  - form: तीरे
+    lemma: तीर
+    gloss: on the bank
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: तिष्ठन्
+    lemma: स्था
+    gloss: standing
+    notes:
+    - term: शतृ
+      en: present participle — where he was while he saw
+    - cite: "3.2.124"
+      role: लटः शतृशानचौ — शतृ replaces लट् → तिष्ठन्
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: प्रथमा
+      en: nominative — the न् of राजन् drops
+    - cite: "8.2.7"
+      role: नलोपः प्रातिपदिकान्तस्य — the stem-final न् drops → राजा
+  - form: दूरात्
+    lemma: दूर
+    gloss: from afar
+    notes:
+    - term: अपादान
+      en: source
+    - term: पञ्चमी
+      en: ablative
+  - form: आगच्छन्तम्
+    lemma: गम्
+    gloss: coming
+    notes:
+    - term: शतृ
+      en: the same participle in the accusative, qualifying भ्रातरम्
+    - cite: "3.2.124"
+      role: लटः शतृशानचौ — शतृ replaces लट् → आगच्छन्तम्
+  - form: भ्रातरम्
+    lemma: भ्रातृ
+    gloss: his brother
+    notes:
+    - term: सर्वनामस्थान
+      en: the strong stem भ्रातर्
+    - term: द्वितीया
+      en: accusative
+    - cite: "6.4.8"
+      role: सर्वनामस्थाने चासम्बुद्धौ — lengthening in the strong cases → भ्रातर्
+  - form: अपश्यत्
+    lemma: दृश्
+    gloss: saw
+    notes:
+    - term: लङ्
+      en: past
+  - form: भ्राता
+    lemma: भ्रातृ
+    gloss: the brother
+    notes:
+    - term: सर्वनामस्थान
+      en: strong nom.sg — the ऋ lengthens to आ
+    - cite: "7.3.110"
+      role: ऋतो ङिसर्वनामस्थानयोः — गुण of the ऋ-stem in the strong cases → भ्राता
+  - form: श्रान्तः
+    lemma: श्रम्
+    gloss: tired
+    vocab: true
+    notes:
+    - term: निष्ठा
+      en: past participle used as a predicate
+    - term: प्रथमा
+      en: nominative
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of अस्
+  - form: राज्ञा
+    lemma: राजन्
+    gloss: by the king
+    notes:
+    - term: कर्तृ
+      en: the agent of a gerundive — instrumental
+    - term: तृतीया
+      en: instrumental — the weak stem राज्ञ्
+  - form: जलम्
+    lemma: जल
+    gloss: water
+    notes:
+    - term: कर्मन्
+      en: what is to be given — nominative under the gerundive
+    - term: प्रथमा
+      en: neuter nominative
+  - form: दातव्यम्
+    lemma: दा
+    gloss: is to be given
+    notes:
+    - term: कृत्य
+      en: gerundive — obligation, with no finite verb
+    - cite: "3.1.96"
+      role: तव्यत्तव्यानीयरः — तव्य forms the gerundive → दातव्यम्
+  - form: इति
+    lemma: इति
+    gloss: "thus"
+    notes:
+    - term: अव्यय
+      en: closes the reported speech
+  - form: मन्त्री
+    lemma: मन्त्रिन्
+    gloss: the minister
+    notes:
+    - term: प्रथमा
+      en: nominative — an इन्-stem, the न् dropping and the इ lengthening
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: स्वयम्
+    lemma: स्वयम्
+    gloss: himself
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: अददात्
+    lemma: दा
+    gloss: gave
+    notes:
+    - term: लङ्
+      en: past — दा reduplicates, giving अददात्
+  - form: पिता
+    lemma: पितृ
+    gloss: the father
+    notes:
+    - term: सर्वनामस्थान
+      en: strong nom.sg of an ऋ-stem, like भ्राता above
+    - cite: "7.3.110"
+      role: ऋतो ङिसर्वनामस्थानयोः — गुण in the strong cases → पिता
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of पश्यन्
+    - term: द्वितीया
+      en: neuter accusative
+  - form: पश्यन्
+    lemma: दृश्
+    gloss: seeing
+    notes:
+    - term: शतृ
+      en: a third present participle
+  - form: एतत्
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: neuter nominative
+  - form: एव
+    lemma: एव
+    gloss: alone
+    notes:
+    - term: अव्यय
+      en: emphatic
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: a king's
+    notes:
+    - term: षष्ठी
+      en: the weak stem — the अ drops before a vowel ending
+    - cite: "8.2.7"
+      role: नलोपः प्रातिपदिकान्तस्य — the stem-final न् is gone in राज्ञ् too
+  - form: कर्म
+    lemma: कर्मन्
+    gloss: work
+    notes:
+    - term: प्रथमा
+      en: neuter nominative — an अन्-stem, the न् dropping
+  - form: 'न'
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: अन्यत्
+    lemma: अन्य
+    gloss: anything else
+    notes:
+    - term: प्रथमा
+      en: neuter nominative
+  - form: स्मरणीयम्
+    lemma: स्मृ
+    gloss: is to be remembered
+    notes:
+    - term: कृत्य
+      en: the अनीयर् gerundive beside दातव्यम् above
+    - cite: "3.1.96"
+      role: तव्यत्तव्यानीयरः — अनीयर् forms the gerundive → स्मरणीयम्
+  - form: सर्वैः
+    lemma: सर्व
+    gloss: by all
+    notes:
+    - term: कर्तृ
+      en: the agent of the gerundive, again instrumental
+    - term: तृतीया
+      en: instrumental plural
+  vyakhya: तिष्ठन् आगच्छन्तम् पश्यन् — शतृ। दातव्यम् स्मरणीयम् — कृत्य। क्रिया अन्यथा अपि उच्यते।
+  vyakhya_en: |
+    Six of the words here would be verbs in English and are not. तिष्ठन्,
+    आगच्छन्तम् and पश्यन् are participles; दातव्यम् and स्मरणीयम् are
+    gerundives. Only अपश्यत्, आसीत्, अवदत् and अददात् are finite.
+
+    राज्ञा जलम् दातव्यम् has no verb at all — an instrumental agent, a
+    nominative object, and a word meaning "to-be-given". Sanskrit says a great
+    deal this way, and it reads as ordinary statement once it stops being
+    turned into an English passive.

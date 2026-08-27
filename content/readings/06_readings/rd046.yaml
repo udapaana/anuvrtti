@@ -1,0 +1,138 @@
+- id: rd046
+  kind: attested
+  segment: 310
+  source:
+    text: हितोपदेश
+    ref: "Hit_0.9 — the four books, drawn from the Pañcatantra"
+    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, ||Hit_0.9||)"
+  sentence: मित्रलाभः सुहृद्भेदो विग्रहः सन्धिर् एव च। पञ्चतन्त्रात् तथान्यस्माद् ग्रन्थाद् आकृष्य लिख्यते॥
+  translation: "Winning friends, splitting friends, war, and peace — [these four]; drawn from the Pañcatantra and from another work besides, it is written."
+  teaches: |
+    the book naming its own four parts. लाभः and भेदः are घञ् action-nouns;
+    पञ्चतन्त्रात् / ग्रन्थात् are the ablative source (पञ्चमी), and लिख्यते is passive.
+  words:
+  - form: मित्रलाभः
+    lemma: मित्रलाभ
+    gloss: winning of friends (Book I)
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: determinative — मित्रस्य लाभः, "the gaining of a friend"; लाभः is the head
+    - text: 'लाभ = लभ् + घञ् — the action-noun "gaining"'
+    - cite: '3.3.18'
+      role: भावे घञ् — घञ् forms the action-noun → लभ् + घञ् → लाभ ("gaining")
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: सुहृद्भेदो
+    lemma: सुहृद्भेद
+    gloss: splitting of friends (Book II)
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: determinative — सुहृदः भेदः, "the estranging of a friend"; भेदः is the head
+    - text: 'भेद = भिद् + घञ् — the action-noun "splitting"; सुहृद्भेदः → सुहृद्भेदो (अः + व → ओ)'
+    - cite: '3.3.18'
+      role: भावे घञ् — घञ् forms the action-noun → भिद् + घञ् → भेद ("splitting")
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: विग्रहः
+    lemma: विग्रह
+    gloss: war (Book III)
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: सन्धिर्
+    lemma: सन्धि
+    gloss: peace (Book IV)
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+    - text: 'सन्धिः + एव → सन्धिर् एव (visarga → र् before a vowel)'
+  - form: एव
+    lemma: एव
+    gloss: indeed
+    notes:
+    - term: निपात
+      en: emphatic particle
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: पञ्चतन्त्रात्
+    lemma: पञ्चतन्त्र
+    gloss: from the Pañcatantra
+    vocab: true
+    notes:
+    - term: अपादान
+      en: source — "drawn from ___"
+    - cite: '2.3.28'
+      role: अपादाने पञ्चमी — the source of an action takes पञ्चमी → पञ्चतन्त्रात्
+    - term: पञ्चमी
+      en: ablative
+  - form: तथान्यस्माद्
+    lemma: अन्य
+    gloss: and likewise from another
+    notes:
+    - term: सर्वादि
+      en: pronominal adjective अन्य ("another"), here अन्यस्मात्
+    - term: अपादान
+      en: source — "from another (work)"
+    - term: पञ्चमी
+      en: ablative
+    - text: 'तथा + अन्यस्मात् → तथान्यस्माद् (आ + अ → आ); तथा = "likewise," अन्यस्मात् → अन्यस्माद् before ग्'
+  - form: ग्रन्थाद्
+    lemma: ग्रन्थ
+    gloss: from a work
+    vocab: true
+    notes:
+    - term: अपादान
+      en: source
+    - term: पञ्चमी
+      en: ablative (ग्रन्थात् → ग्रन्थाद् before आ)
+  - form: आकृष्य
+    lemma: कृष्
+    gloss: having drawn, extracted
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerund — a कृदन्त that does not decline
+    - term: ल्यप्
+      en: the ल्यप् suffix — a क्त्वा-gerund WITH a preverb (आ), so आगत्य-style
+    - term: उपसर्ग
+      en: आ — the preverb that selects ल्यप् over क्त्वा
+    - term: अव्यय
+      en: indeclinable
+  - form: लिख्यते
+    lemma: लिख्
+    gloss: is written
+    vocab: true
+    notes:
+    - term: लट्
+      en: present
+    - term: कर्मणि
+      en: passive — the work is the thing written; no expressed agent
+    - cite: '3.4.69'
+      role: लः कर्मणि च — the ल-affix (here लट्) denotes the कर्मन् → passive लिख्यते
+  vyakhya: मित्रलाभः सुहृद्भेदः विग्रहः सन्धिः च — चत्वारि तन्त्राणि। पञ्चतन्त्रात् ग्रन्थात् च आकृष्य इदम् लिख्यते।
+  vyakhya_en: |
+    The book names its own four parts — मित्रलाभः "winning friends," सुहृद्भेदः
+    "splitting friends," विग्रहः "war," सन्धिः "peace." Two of them are घञ्
+    action-nouns: लभ् → लाभ, भिद् → भेद (3.3.18). And it says where it comes from:
+    पञ्चतन्त्रात्, ग्रन्थात् — the ablative of source (पञ्चमी) — having drawn (आकृष्य,
+    the ल्यप् gerund) from them, it लिख्यते, "is written," the passive of लिख्.

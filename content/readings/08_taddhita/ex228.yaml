@@ -1,0 +1,97 @@
+- id: ex228
+  segment: 225
+  sentence: गुणवान् शिष्यः गुरुणा पूज्यते। सः अन्येभ्यः श्रेष्ठतरः।
+  translation: A virtuous pupil is honored by his teacher. He is better than the others.
+  teaches: |
+    the possessive मतुप्, the comparative तरप्, and the passive together —
+    गुणवान् (मतुप्), श्रेष्ठतरः (तरप्, its standard अन्येभ्यः in पञ्चमी), पूज्यते (passive).
+  words:
+  - form: गुणवान्
+    lemma: गुणवत्
+    gloss: virtuous
+    notes:
+    - term: तद्धित
+      en: possessive derivative
+    - term: मतुप्
+      en: the मतुप् possessive suffix — "having virtue" (shows as -वत्)
+    - cite: '5.2.94'
+      role: तदस्यास्त्यस्मिन्निति मतुप् — गुण + मतुप् → गुणवत् → गुणवान्
+    - term: विशेषण
+      en: qualifying शिष्यः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: the pupil
+    notes:
+    - term: कर्मन्
+      en: the one honored — subject of the passive verb
+    - term: प्रथमा
+      en: nominative
+  - form: गुरुणा
+    lemma: गुरु
+    gloss: by the teacher
+    notes:
+    - term: करण
+      en: agent of the passive
+    - term: तृतीया
+      en: instrumental
+  - form: पूज्यते
+    lemma: पूज्
+    gloss: is honored
+    notes:
+    - term: लट्
+      en: present
+    - term: कर्मणि
+      en: passive — शिष्यः is honored, गुरुणा the agent
+    - cite: '3.4.69'
+      role: लः कर्मणि च — the ल-affix (लट्) denotes the कर्मन् → passive पूज्यते
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: अन्येभ्यः
+    lemma: अन्य
+    gloss: than the others
+    notes:
+    - term: सर्वादि
+      en: pronominal adjective अन्य — takes अन्येभ्यः
+    - term: अपादान
+      en: the standard of comparison → पञ्चमी
+    - cite: '2.3.42'
+      role: पञ्चमी विभक्ते — the term compared-from takes पञ्चमी → अन्येभ्यः
+    - term: पञ्चमी
+      en: ablative plural
+  - form: श्रेष्ठतरः
+    lemma: श्रेष्ठतर
+    gloss: better
+    notes:
+    - term: तद्धित
+      en: comparative derivative
+    - term: तरप्
+      en: the तरप् comparative suffix — "more/better" of two
+    - term: अतिशायन
+      en: degree of comparison — the comparative sense
+    - cite: '5.3.57'
+      role: द्विवचनविभज्योपपदे तरबीयसुनौ — तरप् for comparison → श्रेष्ठ + तर → श्रेष्ठतरः
+    - term: विशेषण
+      en: predicated of सः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 4
+  vyakhya: गुणवान् शिष्यः गुरुणा पूज्यते; सः अन्येभ्यः श्रेष्ठतरः।
+  vyakhya_en: |
+    Three तद्धित-and-voice facts in one line. गुणवान् is the possessive मतुप्
+    (5.2.94), "having virtue." पूज्यते is the passive (कर्मणि, 3.4.69): the pupil
+    is the one honored, गुरुणा — the teacher — the agent in तृतीया. And श्रेष्ठतरः
+    is the comparative तरप् (5.3.57), with the ones surpassed, अन्येभ्यः, in the
+    पञ्चमी of comparison.

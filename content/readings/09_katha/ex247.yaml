@@ -1,0 +1,176 @@
+- id: ex247
+  kind: graded
+  segment: 262
+  source:
+    text: कथा (our graded retelling)
+    ref: "what one must do — our own telling, in gerundives"
+    curated: our simple Sanskrit; not from any single source
+  sentence: राज्ञा प्रजाः रक्षणीयाः। गुरवे सेवा देया। सत्यम् वक्तव्यम्। धर्मः पालनीयः। एतत् सर्वैः ज्ञेयम्।
+  translation: The subjects must be protected by the king. Service is to be given to the teacher. The truth must be spoken. Dharma must be upheld. All this must be known by everyone.
+  teaches: |
+    the gerundive — the "must / to-be-done" verbal adjective: देया "to be given"
+    and ज्ञेयम् "to be known" (the यत् suffix on vowel-final roots), beside
+    रक्षणीयाः, वक्तव्यम्, पालनीयः (the अनीयर् and तव्य suffixes).
+  words:
+  - form: राज्ञा
+    lemma: राजन्
+    gloss: by the king
+    notes:
+    - term: कर्तृ
+      en: the agent — a gerundive puts its doer in the instrumental
+    - term: तृतीया
+      en: instrumental (न्-stem राजन् → राज्ञा)
+  - form: प्रजाः
+    lemma: प्रजा
+    gloss: the subjects
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: what is to be protected — grammatical subject
+    - term: प्रथमा
+      en: nominative plural
+  - form: रक्षणीयाः
+    lemma: रक्ष्
+    gloss: must be protected
+    notes:
+    - term: कृदन्त
+      en: gerundive (अनीयर्) of रक्ष् — "to be protected"
+    - cite: '3.1.96'
+      role: तव्यत्तव्यानीयरः — the "ought/to-be-done" sense is expressed by तव्यत्, तव्य, or अनीयर् → रक्ष् + अनीयर् → रक्षणीय
+    - term: अनीयर्
+      en: the gerundive suffix (-anīya)
+    - term: विशेषण
+      en: predicate of प्रजाः
+    - term: प्रथमा
+      en: nominative plural
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: गुरवे
+    lemma: गुरु
+    gloss: to the teacher
+    notes:
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative singular (उ-stem → गुरवे)
+  - form: सेवा
+    lemma: सेवा
+    gloss: service
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: what is to be given — subject
+    - term: प्रथमा
+      en: nominative (आ-stem feminine)
+  - form: देया
+    lemma: दा
+    gloss: is to be given
+    notes:
+    - term: कृदन्त
+      en: gerundive (यत्) of दा — "to be given"
+    - cite: '3.1.97'
+      role: अचो यत् — after a vowel-final root, the gerundive suffix is यत् → दा + यत् → देय (feminine देया)
+    - term: यत्
+      en: the gerundive suffix for vowel-final roots
+    - term: विशेषण
+      en: predicate of सेवा
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: सत्यम्
+    lemma: सत्य
+    gloss: the truth
+    notes:
+    - term: कर्मन्
+      en: what is to be spoken — subject
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: वक्तव्यम्
+    lemma: वच्
+    gloss: must be spoken
+    notes:
+    - term: कृदन्त
+      en: gerundive (तव्य) of वच् — "to be said"
+    - cite: '3.1.96'
+      role: तव्यत्तव्यानीयरः — तव्य, another gerundive suffix → वच् + तव्य → वक्तव्य
+    - term: तव्य
+      en: the gerundive suffix (-tavya)
+    - term: विशेषण
+      en: predicate of सत्यम्
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 6
+  - form: धर्मः
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: what is to be upheld — subject
+    - term: प्रथमा
+      en: nominative
+  - form: पालनीयः
+    lemma: पाल्
+    gloss: must be upheld
+    notes:
+    - term: कृदन्त
+      en: gerundive (अनीयर्) of पाल् — "to be protected/upheld"
+    - term: अनीयर्
+      en: the gerundive suffix
+    - term: विशेषण
+      en: predicate of धर्मः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 8
+  - form: एतत्
+    lemma: एतद्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: pronoun (एतद्, neuter)
+    - term: कर्मन्
+      en: what is to be known — subject
+    - term: प्रथमा
+      en: nominative
+  - form: सर्वैः
+    lemma: सर्व
+    gloss: by all
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम — declines pronominally
+    - term: कर्तृ
+      en: the agent (instrumental of the gerundive)
+    - term: तृतीया
+      en: instrumental plural
+  - form: ज्ञेयम्
+    lemma: ज्ञा
+    gloss: must be known
+    notes:
+    - term: कृदन्त
+      en: gerundive (यत्) of ज्ञा — "to be known"
+    - cite: '3.1.97'
+      role: अचो यत् — vowel-final ज्ञा takes यत् → ज्ञा + यत् → ज्ञेय
+    - term: यत्
+      en: the gerundive suffix for vowel-final roots
+    - term: विशेषण
+      en: predicate of एतत्
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 10
+  vyakhya: 'कृत्यप्रत्ययप्रधाना कथा। रक्षणीयाः पालनीयः इति अनीयर्; वक्तव्यम् इति तव्य; देया ज्ञेयम् इति अजन्तधातुभ्यः यत् (अचो यत्)। सर्वेषु कर्तरि तृतीया (राज्ञा सर्वैः), कर्म प्रथमायाम् — कृत्यानां कर्मणि प्रयोगः।'
+  vyakhya_en: |
+    The **gerundive** (कृत्य) — the verbal adjective of obligation, "to be ___,
+    must be ___." Three suffixes do the job (3.1.96 तव्यत्तव्यानीयरः): अनीयर्
+    (रक्षणीय, पालनीय), तव्य (वक्तव्य), and — after a vowel-final root — यत्
+    (देय from दा, ज्ञेय from ज्ञा; 3.1.97 अचो यत्). Like the passive, a gerundive
+    is कर्मणि: the thing-to-be-done stands in the nominative (प्रजाः, सत्यम्,
+    धर्मः) and the doer in the instrumental (राज्ञा "by the king," सर्वैः "by
+    all"). This is the register of rule and duty — half of the dharma texts speak in it.

@@ -1,0 +1,275 @@
+- id: ex218
+  kind: graded
+  segment: 250
+  source:
+    text: कथा (our graded retelling)
+    ref: "the generous king — our own telling"
+    curated: our simple Sanskrit; not from any single source
+  sentence: राजा धनवान् शूरः च आसीत्। सः दूतम् धनम् आनाययत्, ब्राह्मणेभ्यः च तत् अददात्। एवम् सः महान् दाता अभवत्। तस्य शूरत्वम् सर्वे अगायन्। राजा तत् श्रुत्वा अहसत्, किन्तु गर्वम् न अकरोत्।
+  translation: The king was wealthy and brave. He had a messenger bring wealth, and gave it to the brahmins. Thus he became a great giver. All sang of his bravery. The king, having heard that, laughed, but felt no pride.
+  teaches: |
+    one causative (आनाययत्, "had brought"), one agent-noun (दाता), one abstract
+    (शूरत्वम्, "bravery"), one possessive (धनवान्), one gerund (श्रुत्वा) — four
+    parts of speech in five clauses.
+  words:
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative — the न्-stem drops its न्, राजन् → राजा
+    - cite: '8.2.7'
+      role: नलोपः प्रातिपदिकान्तस्य — final न् of राजन् drops → राजा
+  - form: धनवान्
+    lemma: धनवत्
+    gloss: wealthy
+    vocab: true
+    rel:
+    - kind: विशेषण
+      to: 0
+    notes:
+    - term: तद्धित
+      en: possessive derivative — "having wealth"
+    - term: मतुप्
+      en: the मतुप् (वत्) possessive suffix, अर्थ = "possessing"
+    - cite: '5.2.94'
+      role: तदस्यास्त्यस्मिन्निति मतुप् — मतुप् "it is his" → धन + मतुप् → धनवत्
+    - cite: '7.1.70'
+      role: उगिदचां सर्वनामस्थाने — the वत्-stem inserts नुम् before the strong ending → धनवान्
+    - term: प्रथमा
+      en: nominative — predicated of राजा
+  - form: शूरः
+    lemma: शूर
+    gloss: brave
+    vocab: true
+    rel:
+    - kind: विशेषण
+      to: 0
+    notes:
+    - term: विशेषण
+      en: adjective qualifying राजा — same लिङ्ग/विभक्ति/वचन
+    - term: प्रथमा
+      en: nominative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle — never stands first
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: imperfect, third singular
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: दूतम्
+    lemma: दूत
+    gloss: the messenger
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object — the base agent of "bring," demoted under the causative
+    - cite: '1.4.52'
+      role: गतिबुद्धि… अणि कर्ता स णौ — the causative demotes the base agent to कर्मन् → दूतम्
+    - term: द्वितीया
+      en: accusative
+  - form: धनम्
+    lemma: धन
+    gloss: wealth
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of the bringing
+    - term: द्वितीया
+      en: accusative — the अकारान्त neuter म्, as फलम्
+  - form: आनाययत्
+    lemma: नी
+    gloss: had (it) brought
+    vocab: true
+    notes:
+    - term: तिङन्त
+      en: causative verb — "caused to bring"
+    - term: णिच्
+      en: the causative सनादि suffix, making a new धातु आनाय्
+    - cite: '3.1.26'
+      role: हेतुमति च — णिच् in the causal sense → नी + णिच् → नाययति; with आ- and लङ् → आनाययत्
+    - term: लङ्
+      en: imperfect
+    - term: कर्तरि
+      en: active — the king is the causer
+  - form: ब्राह्मणेभ्यः
+    lemma: ब्राह्मण
+    gloss: to the brahmins
+    vocab: true
+    notes:
+    - term: सम्प्रदान
+      en: recipient of the giving
+    - cite: '1.4.32'
+      role: कर्मणा यमभिप्रैति स सम्प्रदानम् — the one the gift is aimed at → सम्प्रदान
+    - term: चतुर्थी
+      en: dative plural — the अकारान्त एभ्यः ending
+  - form: तत्
+    lemma: तद्
+    gloss: it, that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative neuter
+  - form: अददात्
+    lemma: दा
+    gloss: gave
+    notes:
+    - term: लङ्
+      en: imperfect — दा reduplicates as दद
+  - form: एवम्
+    lemma: एवम्
+    gloss: thus
+    vocab: true
+    notes:
+    - term: क्रियाविशेषण
+      en: adverb (अव्यय)
+  - form: महान्
+    lemma: महत्
+    gloss: great
+    notes:
+    - term: विशेषण
+      en: adjective qualifying दाता
+    - term: प्रथमा
+      en: nominative — the त्-stem takes नुम् in the strong case → महान्
+  - form: दाता
+    lemma: दातृ
+    gloss: a giver
+    notes:
+    - term: कृदन्त
+      en: agent-noun built on दा
+    - term: तृच्
+      en: the तृच् agent suffix (कर्तरि)
+    - cite: '3.1.133'
+      role: ण्वुल्तृचौ — तृच् forms the agent-noun → दा + तृ → दातृ; nom.sg दाता
+    - term: प्रथमा
+      en: nominative — ऋ-stem, दातृ → दाता
+  - form: अभवत्
+    lemma: भू
+    gloss: became
+    notes:
+    - term: लङ्
+      en: imperfect
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्बन्ध
+      en: possession
+    - term: षष्ठी
+      en: genitive
+  - form: शूरत्वम्
+    lemma: शूरत्व
+    gloss: bravery
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract derivative — "the state of being brave"
+    - term: त्व
+      en: the त्व abstract suffix, अर्थ = भाव ("-ness")
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of ___" → शूर + त्व → शूरत्वम्
+    - term: कर्मन्
+      en: object of the singing
+    - term: द्वितीया
+      en: accusative — -त्व abstracts are neuter
+  - form: सर्वे
+    lemma: सर्व
+    gloss: all
+    notes:
+    - term: सर्वादि
+      en: pronominal adjective — takes सर्वे, not *सर्वाः
+    - term: प्रथमा
+      en: nominative plural
+  - form: अगायन्
+    lemma: गै
+    gloss: sang
+    vocab: true
+    notes:
+    - term: लङ्
+      en: imperfect, third plural
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of श्रुत्वा
+    - term: द्वितीया
+      en: accusative
+  - form: श्रुत्वा
+    lemma: श्रु
+    gloss: having heard
+    notes:
+    - term: कृदव्यय
+      en: gerund — a कृदन्त that does not decline
+    - term: क्त्वा
+      en: the क्त्वा suffix, same-subject prior action
+    - cite: '1.1.40'
+      role: क्त्वातोसुन्कसुनः — a क्त्वा-form is अव्यय, taking no endings → श्रुत्वा
+    - term: अव्यय
+      en: indeclinable
+  - form: अहसत्
+    lemma: हस्
+    gloss: laughed
+    notes:
+    - term: लङ्
+      en: imperfect
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: गर्वम्
+    lemma: गर्व
+    gloss: pride
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: negation
+      en: the verbal negator न (अव्यय)
+  - form: अकरोत्
+    lemma: कृ
+    gloss: did, made
+    notes:
+    - term: लङ्
+      en: imperfect — कृ → अकरोत्
+  vyakhya: एकस्मिन्नेव आख्याने णिच्, तृच्, त्व, मतुप्, क्त्वा — चत्वारः शब्दप्रकाराः।
+  vyakhya_en: |
+    Four ways of building a word, in one short scene. आनाययत् is a **causative**:
+    नी "lead" plus णिच् becomes आनाय् "cause to bring," and the one who would have
+    been the agent — दूतम् — drops to the accusative (1.4.52), because the king is
+    now the one causing. दाता is an **agent-noun**, दा "give" plus तृच्, "the
+    giver." शूरत्वम् is an **abstract**, शूर "brave" plus त्व, "bravery" — a quality
+    named as a thing. धनवान् is a **possessive**, धन plus मतुप्, "wealth-having."
+    And श्रुत्वा is a **gerund**: श्रु plus क्त्वा, indeclinable, "having heard."
+    The nouns around them — दूतम्, धनम्, ब्राह्मणेभ्यः, गर्वम् — sit in cases the
+    reader has long since met; only the five built words are new.

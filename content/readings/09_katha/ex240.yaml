@@ -1,0 +1,152 @@
+- id: ex240
+  kind: graded
+  segment: 255
+  source:
+    text: कथा (our graded retelling)
+    ref: "the teacher's instructions — our own telling, in commands"
+    curated: our simple Sanskrit; not from any single source
+  sentence: गुरुः शिष्यम् अवदत् — पठ। सत्यम् वद। आलस्यम् त्यज। मातरम् पितरम् च सेवस्व। ततः त्वम् सुखी भविष्यसि।
+  translation: The teacher said to the student — "Study. Speak the truth. Give up laziness. Serve your mother and father. Then you will become happy."
+  teaches: |
+    two new tenses at once — the imperative (पठ, वद, त्यज, सेवस्व, "do this!")
+    and the simple future भविष्यसि "you will become." Plus the two ऋ-stem
+    accusatives मातरम्, पितरम्.
+  words:
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (उ-stem)
+  - form: शिष्यम्
+    lemma: शिष्य
+    gloss: the student
+    notes:
+    - term: कर्मन्
+      en: the one addressed
+    - term: द्वितीया
+      en: accusative
+  - form: अवदत्
+    lemma: वद्
+    gloss: said (to)
+    notes:
+    - term: लङ्
+      en: past
+  - form: पठ
+    lemma: पठ्
+    gloss: study!, recite!
+    notes:
+    - term: लोट्
+      en: imperative (2sg) — a command
+  - form: सत्यम्
+    lemma: सत्य
+    gloss: the truth
+    notes:
+    - term: कर्मन्
+      en: object of वद
+    - term: द्वितीया
+      en: accusative
+  - form: वद
+    lemma: वद्
+    gloss: speak!
+    notes:
+    - term: लोट्
+      en: imperative (2sg)
+  - form: आलस्यम्
+    lemma: आलस्य
+    gloss: laziness
+    vocab: true
+    notes:
+    - term: तद्धित
+      en: abstract noun (ष्यञ्) — अलस "lazy" → आलस्य "laziness"
+    - term: कर्मन्
+      en: object of त्यज
+    - term: द्वितीया
+      en: accusative
+  - form: त्यज
+    lemma: त्यज्
+    gloss: give up!, abandon!
+    vocab: true
+    notes:
+    - term: लोट्
+      en: imperative (2sg)
+  - form: मातरम्
+    lemma: मातृ
+    gloss: mother
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of सेवस्व
+    - cite: '7.3.110'
+      role: ऋतो ङिसर्वनामस्थानयोः — an ऋ-stem takes गुण (ऋ → अर्) before a strong ending → मातृ + अम् → मातरम्
+    - term: द्वितीया
+      en: accusative
+  - form: पितरम्
+    lemma: पितृ
+    gloss: and father
+    notes:
+    - term: कर्मन्
+      en: object of सेवस्व
+    - term: द्वितीया
+      en: accusative (पितृ → पितरम्, गुण)
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: connective — "mother and father"
+  - form: सेवस्व
+    lemma: सेव्
+    gloss: serve!
+    vocab: true
+    notes:
+    - term: सेव्
+      en: '"serve, attend on" (आत्मनेपद)'
+    - term: लोट्
+      en: imperative (आत्मनेपद 2sg)
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: adverb — "thereupon"
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: you
+    notes:
+    - term: सर्वनाम
+      en: pronoun (2sg)
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: सुखी
+    lemma: सुखिन्
+    gloss: happy
+    notes:
+    - term: तद्धित
+      en: possessive (इनि) — सुख "happiness" → सुखिन् "having happiness, happy"
+    - term: विशेषण
+      en: predicate with भविष्यसि
+    - term: प्रथमा
+      en: nominative (इन्-stem → सुखी)
+  - form: भविष्यसि
+    lemma: भू
+    gloss: you will become
+    notes:
+    - cite: '3.3.13'
+      role: लृट् शेषे च — for the (non-immediate) future, लृट् is used → the future भविष्यति/भविष्यसि
+    - cite: '3.1.33'
+      role: स्यतासी लृलुटोः — before लृट्, the स्य marker attaches → भू + स्य → भविष्य…
+    - term: लृट्
+      en: simple future (2sg)
+  vyakhya: 'लोड्लृटोः प्रवेशः। पठ वद त्यज सेवस्व इति लोटि (आज्ञायाम्); सेवस्व इति आत्मनेपदे। भविष्यसि इति लृटि — स्यप्रत्ययः (स्यतासी लृलुटोः)। मातरम् पितरम् इति ऋदन्तयोः द्वितीयैकवचनम् (गुणः अर्)।'
+  vyakhya_en: |
+    Two moods/tenses enter here. The **imperative** (लोट्) is the mood of
+    command: पठ "study!", वद "speak!", त्यज "give up!", and the आत्मनेपद सेवस्व
+    "serve!". Then the **simple future** (लृट्): भविष्यसि "you will become," formed
+    with the स्य marker (3.1.33, 3.3.13). Set into the frame is a pair of ऋ-stem
+    accusatives — मातरम्, पितरम् — where the ऋ strengthens to अर् before the ending
+    अम्. A single sentence that quietly triples the reader's verb inventory.

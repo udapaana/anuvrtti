@@ -1,0 +1,224 @@
+- id: ex220
+  kind: sangraha
+  segment: 355
+  order: 1
+  sentence: महाबलः नृपः सभाम् आगच्छत्। तस्य पार्श्वे मन्त्रिपुरोहितौ आस्ताम्। नीलाम्बरः दूतः प्रविश्य उपसभम् अतिष्ठत्। सः महाबलम् अवदत् — शत्रुसेना पराजिता, राष्ट्रम् च रक्षितम्।
+  translation: The mighty king came to the assembly. At his side were the minister-and-priest. A blue-clad messenger, having entered, stood near the assembly. He said to the mighty one — "The enemy-army is defeated, and the kingdom protected."
+  teaches: |
+    the four compound types again, none of them new: महाबलः (बहुव्रीहि),
+    मन्त्रिपुरोहितौ (द्वन्द्व), उपसभम् (अव्ययीभाव), शत्रुसेना (तत्पुरुष).
+  words:
+  - form: महाबलः
+    lemma: महाबल
+    gloss: the mighty one (whose strength is great)
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — neither member is the head; it names the one who HAS great strength
+    - cite: '2.2.23'
+      role: शेषो बहुव्रीहिः — the remaining kind of compound is बहुव्रीहि
+    - cite: '2.2.24'
+      role: अनेकमन्यपदार्थे — several words denoting ANOTHER thing (the possessor) form a बहुव्रीहि
+    - term: विशेषण
+      en: qualifying नृपः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: नृपः
+    lemma: नृप
+    gloss: the king
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: सभाम्
+    lemma: सभा
+    gloss: the assembly
+    notes:
+    - term: कर्मन्
+      en: goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: आगच्छत्
+    lemma: गम्
+    gloss: came
+    notes:
+    - term: लङ्
+      en: past
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्बन्ध
+      en: possession
+    - term: षष्ठी
+      en: genitive
+  - form: पार्श्वे
+    lemma: पार्श्व
+    gloss: at the side
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: मन्त्रिपुरोहितौ
+    lemma: मन्त्रिपुरोहित
+    gloss: the minister and the priest
+    notes:
+    - term: द्वन्द्व
+      en: copulative — both members are heads, joined as "and"
+    - cite: '2.2.29'
+      role: चार्थे द्वन्द्वः — words standing in the sense of "च" (and) form a द्वन्द्व
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative dual
+  - form: आस्ताम्
+    lemma: अस्
+    gloss: the two were
+    notes:
+    - term: लङ्
+      en: past — dual
+  - form: नीलाम्बरः
+    lemma: नीलाम्बर
+    gloss: the blue-clad one
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — the one whose garment is blue
+    - term: विशेषण
+      en: qualifying दूतः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: दूतः
+    lemma: दूत
+    gloss: a messenger
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: प्रविश्य
+    lemma: विश्
+    gloss: having entered
+    notes:
+    - term: कृदन्त
+      en: gerund — a कृदन्त that does not decline
+    - term: ल्यप्
+      en: the ल्यप् suffix — a क्त्वा-gerund WITH a preverb (प्र), so आगत्य-style not आगत्वा
+    - term: उपसर्ग
+      en: प्र — the preverb that selects ल्यप् over क्त्वा
+    - term: अव्यय
+      en: indeclinable
+  - form: उपसभम्
+    lemma: उपसभ
+    gloss: near the assembly
+    notes:
+    - term: अव्ययीभाव
+      en: adverbial — उप heads it, and the whole compound is indeclinable
+    - cite: '2.1.5'
+      role: अव्ययीभावः — a compound headed by an indeclinable is अव्ययीभाव
+  - form: अतिष्ठत्
+    lemma: स्था
+    gloss: stood
+    notes:
+    - term: लङ्
+      en: past
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: महाबलम्
+    lemma: महाबल
+    gloss: the mighty one
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — here standing for the king himself
+    - term: कर्मन्
+      en: the one addressed
+    - term: द्वितीया
+      en: accusative
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: शत्रुसेना
+    lemma: शत्रुसेना
+    gloss: the enemy's army
+    notes:
+    - term: तत्पुरुष
+      en: determinative — सेना, the second member, is the head; शत्रोः सेना
+    - text: 'विग्रह: शत्रोः सेना — "the army of the enemy"'
+    - cite: '2.1.22'
+      role: तत्पुरुषः — a compound whose second member carries the main sense is तत्पुरुष
+    - cite: '2.2.8'
+      role: षष्ठी — a षष्ठी-relation (शत्रोः) compounded → षष्ठी-तत्पुरुष
+    - term: कर्तृ
+      en: agent — subject of the passive predicate
+    - term: प्रथमा
+      en: nominative
+  - form: पराजिता
+    lemma: पराजि
+    gloss: defeated
+    notes:
+    - term: कृदन्त
+      en: past participle
+    - term: क्त
+      en: the क्त निष्ठा suffix — passive, "was defeated"
+    - term: कर्मणि
+      en: passive — agrees with शत्रुसेना, no finite verb
+    - term: प्रथमा
+      en: nominative feminine — predicated of शत्रुसेना
+    rel:
+    - kind: विशेषण
+      to: 16
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic particle
+  - form: राष्ट्रम्
+    lemma: राष्ट्र
+    gloss: the kingdom
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: the thing protected — subject of the passive predicate
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: रक्षितम्
+    lemma: रक्ष्
+    gloss: protected
+    notes:
+    - term: कृदन्त
+      en: past participle
+    - term: क्त
+      en: the क्त निष्ठा suffix — passive, "was protected"
+    - term: कर्मणि
+      en: passive — agrees with राष्ट्रम्
+    - term: प्रथमा
+      en: nominative neuter — predicated of राष्ट्रम्
+    rel:
+    - kind: विशेषण
+      to: 19
+  vyakhya: चत्वारः समासाः एकस्मिन् दृश्ये — महाबलः, मन्त्रिपुरोहितौ, उपसभम्, शत्रुसेना।
+  vyakhya_en: |
+    All four kinds in one scene, and each doing ordinary work. महाबलः is a
+    बहुव्रीहि — not "great" and not "strength" but the one who HAS great strength,
+    the king. मन्त्रिपुरोहितौ is a द्वन्द्व, minister and priest taken as a pair.
+    उपसभम् is an अव्ययीभाव, उप carrying it and the whole going indeclinable. And
+    शत्रुसेना is a तत्पुरुष — शत्रोः सेना, the enemy's army — whose defeat the
+    passive participle पराजिता reports without a finite verb.

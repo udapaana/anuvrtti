@@ -1,0 +1,173 @@
+- id: ex227
+  segment: 220
+  sentence: धनवान् जनः बहूनि मित्राणि लभते। किन्तु गुणस्य महत्त्वम् धनतः श्रेष्ठतरम्। यतः गुणवत्ता सर्वैः पूज्यते।
+  translation: A wealthy man gains many friends. But the greatness of virtue is greater than wealth — because virtuousness is honored by all.
+  teaches: |
+    the तद्धित degrees and abstracts together: धनवान् (मतुप्), महत्त्वम् / गुणवत्ता
+    (त्व and तल्), धनतः / यतः (तसिल्), श्रेष्ठतरम् (तरप्, with the तसिल् standard).
+  words:
+  - form: धनवान्
+    lemma: धनवत्
+    gloss: wealthy
+    notes:
+    - term: तद्धित
+      en: possessive derivative
+    - term: मतुप्
+      en: the मतुप् possessive suffix — "having wealth" (shows as -वत्)
+    - cite: '5.2.94'
+      role: तदस्यास्त्यस्मिन्निति मतुप् — धन + मतुप् → धनवत् → धनवान्
+    - term: विशेषण
+      en: qualifying जनः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: जनः
+    lemma: जन
+    gloss: a man
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: बहूनि
+    lemma: बहु
+    gloss: many
+    notes:
+    - term: विशेषण
+      en: qualifying मित्राणि
+    - term: द्वितीया
+      en: accusative (neuter plural)
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: मित्राणि
+    lemma: मित्र
+    gloss: friends
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative (neuter plural)
+  - form: लभते
+    lemma: लभ्
+    gloss: gains
+    notes:
+    - term: लट्
+      en: present — आत्मनेपद
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: निपात
+      en: adversative conjunction
+  - form: गुणस्य
+    lemma: गुण
+    gloss: of virtue
+    notes:
+    - term: सम्बन्ध
+      en: possession
+    - term: षष्ठी
+      en: genitive
+  - form: महत्त्वम्
+    lemma: महत्त्व
+    gloss: the greatness
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "the state of being महत् (great)"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व for "the state of" → महत् + त्व → महत्त्वम्
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative (neuter)
+  - form: धनतः
+    lemma: धन
+    gloss: than wealth
+    notes:
+    - term: तद्धित
+      en: an indeclinable तद्धित — धन + तस् = धनतः ("from/than wealth")
+    - term: तसिल्
+      en: the तसिल् suffix (-तस्), the ablative sense
+    - cite: '5.3.7'
+      role: पञ्चम्यास्तसिल् — तसिल् in the ablative sense → धन + तस् → धनतः
+    - term: अपादान
+      en: the standard of comparison (ablative sense)
+    - term: अव्यय
+      en: indeclinable
+  - form: श्रेष्ठतरम्
+    lemma: श्रेष्ठतर
+    gloss: greater, better
+    notes:
+    - term: तद्धित
+      en: comparative derivative
+    - term: तरप्
+      en: the तरप् comparative suffix — "more/greater"
+    - term: अतिशायन
+      en: degree of comparison — the comparative sense
+    - cite: '5.3.57'
+      role: द्विवचनविभज्योपपदे तरबीयसुनौ — तरप् for comparison of two → श्रेष्ठ + तर → श्रेष्ठतर
+    - term: विशेषण
+      en: predicated of महत्त्वम्
+    - term: प्रथमा
+      en: nominative (neuter)
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: यतः
+    lemma: यद्
+    gloss: because
+    notes:
+    - term: तद्धित
+      en: an indeclinable तद्धित — यद् + तस् = यतः ("from which, because")
+    - term: तसिल्
+      en: the तसिल् suffix (-तस्)
+    - cite: '5.3.7'
+      role: पञ्चम्यास्तसिल् — तसिल् in the ablative sense → यद् + तस् → यतः
+    - term: अव्यय
+      en: indeclinable (relative adverb of cause)
+  - form: गुणवत्ता
+    lemma: गुणवत्ता
+    gloss: virtuousness
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: तल्
+      en: the तल् abstract suffix (→ -ता, feminine) — "the state of being गुणवत् (virtuous)"
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — तल् (→ ता) for "the state of" → गुणवत् + तल् → गुणवत्ता
+    - term: कर्तृ
+      en: subject of the passive
+    - term: प्रथमा
+      en: nominative (feminine)
+  - form: सर्वैः
+    lemma: सर्व
+    gloss: by all
+    notes:
+    - term: सर्वादि
+      en: pronominal adjective — takes सर्वैः
+    - term: करण
+      en: agent of the passive
+    - term: तृतीया
+      en: instrumental plural
+  - form: पूज्यते
+    lemma: पूज्
+    gloss: is honored
+    notes:
+    - term: लट्
+      en: present
+    - term: कर्मणि
+      en: passive — गुणवत्ता is honored, सर्वैः the agent
+    - cite: '3.4.69'
+      role: लः कर्मणि च — the ल-affix (लट्) denotes the कर्मन् → passive पूज्यते
+  vyakhya: तद्धिताः सुभाषिते — मतुप्, त्व-तल्, तसिल्, तरप् — गुणवत्तायाः प्रशंसा।
+  vyakhya_en: |
+    A maxim gathers the तद्धितs. धनवान् is the possessive मतुप् (5.2.94). Two
+    abstracts name qualities as things: महत्त्वम्, the त्व of महत् "greatness," and
+    गुणवत्ता, the तल् (→ता) of गुणवत् "virtuousness" (5.1.119). श्रेष्ठतरम् is the
+    comparative तरप् (5.3.57), and its standard धनतः is the तसिल् adverb (5.3.7),
+    "than wealth" — as is यतः, "because." What is virtuous सर्वैः पूज्यते, is
+    honored by all.

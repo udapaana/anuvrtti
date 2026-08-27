@@ -1,0 +1,384 @@
+- id: ex253
+  kind: graded
+  segment: 268
+  source:
+    text: कथा (our graded retelling)
+    ref: "the lion and the clever rabbit — our own longer telling (after the Pañcatantra)"
+    curated: our simple Sanskrit; a retelling, not quoting any edition
+  sentence: कस्मिन्चित् वने क्रूरः सिंहः अवसत्। सः प्रतिदिनम् बहून् पशून् अहन्। भीताः पशवः तम् उपगम्य अवदन् — वयम् प्रतिदिनम् एकम् पशुम् प्रेषयिष्यामः। एकदा एकः शशकः विलम्ब्य सिंहम् अगच्छत्। क्रुद्धः सिंहः तम् अपृच्छत्। शशकः अवदत् — अन्यः सिंहः त्वाम् द्रष्टुम् इच्छति। तत् श्रुत्वा सिंहः कूपम् अगच्छत्। तत्र स्वम् प्रतिबिम्बम् दृष्ट्वा सः कूपे अपतत्।
+  translation: In a certain forest lived a cruel lion. Every day he killed many animals. The frightened animals, approaching him, said — "We will send one animal each day." One day a rabbit went to the lion, delaying. The angry lion asked him. The rabbit said — "Another lion wishes to see you." Hearing that, the lion went to a well. Seeing his own reflection there, he fell into the well.
+  teaches: |
+    a longer read for fluency — the whole apparatus at work together: the
+    prefixed gerunds उपगम्य, विलम्ब्य; the plain gerunds श्रुत्वा, दृष्ट्वा; a
+    future प्रेषयिष्यामः; an accusative plural बहून् पशून्; and motion-verb goals.
+  words:
+  - form: कस्मिन्चित्
+    lemma: किम्
+    gloss: in a certain
+    notes:
+    - term: सर्वनाम
+      en: indefinite (किम् + चित्)
+    - term: सप्तमी
+      en: locative
+  - form: वने
+    lemma: वन
+    gloss: forest
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: क्रूरः
+    lemma: क्रूर
+    gloss: cruel
+    notes:
+    - term: विशेषण
+      en: qualifying सिंहः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: सिंहः
+    lemma: सिंह
+    gloss: a lion
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अवसत्
+    lemma: वस्
+    gloss: lived
+    notes:
+    - term: लङ्
+      en: past
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: प्रतिदिनम्
+    lemma: प्रतिदिनम्
+    gloss: every day
+    notes:
+    - term: अव्यय
+      en: adverb of time
+  - form: बहून्
+    lemma: बहु
+    gloss: many
+    notes:
+    - term: विशेषण
+      en: qualifying पशून्
+    - term: द्वितीया
+      en: accusative plural
+    rel:
+    - kind: विशेषण
+      to: 8
+  - form: पशून्
+    lemma: पशु
+    gloss: animals
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of अहन्
+    - cite: '6.1.103'
+      role: तस्माच्छसो नः पुंसि — masc. accusative plural शस् → आन् → पशून्
+    - term: द्वितीया
+      en: accusative plural
+  - form: अहन्
+    lemma: हन्
+    gloss: killed
+    vocab: true
+    notes:
+    - term: लङ्
+      en: past
+  - form: भीताः
+    lemma: भी
+    gloss: frightened
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of भी "fear"
+    - term: विशेषण
+      en: qualifying पशवः
+    - term: प्रथमा
+      en: nominative plural
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: पशवः
+    lemma: पशु
+    gloss: the animals
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural (उ-stem → पशवः)
+  - form: तम्
+    lemma: तद्
+    gloss: him
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of उपगम्य
+    - term: द्वितीया
+      en: accusative
+  - form: उपगम्य
+    lemma: गम्
+    gloss: having approached
+    notes:
+    - term: कृदन्त
+      en: gerund of उप-गम्
+    - cite: '7.1.37'
+      role: समासेऽनञ्पूर्वे क्त्वो ल्यप् — prefixed root → ल्यप् → उपगम्य
+    - term: ल्यप्
+      en: the prefixed-root gerund
+  - form: अवदन्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past (3pl)
+  - form: वयम्
+    lemma: अस्मद्
+    gloss: we
+    notes:
+    - term: सर्वनाम
+      en: pronoun (1pl)
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: एकम्
+    lemma: एक
+    gloss: one
+    notes:
+    - term: संख्या
+      en: "one"
+    - term: विशेषण
+      en: qualifying पशुम्
+    - term: द्वितीया
+      en: accusative
+    rel:
+    - kind: विशेषण
+      to: 17
+  - form: पशुम्
+    lemma: पशु
+    gloss: animal
+    notes:
+    - term: कर्मन्
+      en: object of प्रेषयिष्यामः
+    - term: द्वितीया
+      en: accusative
+  - form: प्रेषयिष्यामः
+    lemma: इष्
+    gloss: we will send
+    vocab: true
+    notes:
+    - cite: '3.3.13'
+      role: लृट् शेषे च — simple future → प्रेषयिष्यामः
+    - term: लृट्
+      en: future (1pl)
+  - form: एकदा
+    lemma: एकदा
+    gloss: one day
+    notes:
+    - term: अव्यय
+      en: adverb of time
+  - form: एकः
+    lemma: एक
+    gloss: a
+    notes:
+    - term: संख्या
+      en: "a, one"
+    - term: विशेषण
+      en: qualifying शशकः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 21
+  - form: शशकः
+    lemma: शशक
+    gloss: a rabbit
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: विलम्ब्य
+    lemma: लम्ब्
+    gloss: having delayed
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerund of वि-लम्ब् "delay"
+    - cite: '7.1.37'
+      role: क्त्वो ल्यप् — prefixed root → ल्यप् → विलम्ब्य
+    - term: ल्यप्
+      en: the prefixed-root gerund
+  - form: सिंहम्
+    lemma: सिंह
+    gloss: to the lion
+    notes:
+    - term: कर्मन्
+      en: goal of अगच्छत्
+    - cite: '2.3.12'
+      role: गत्यर्थकर्मणि द्वितीया — goal of a motion verb → सिंहम्
+    - term: द्वितीया
+      en: accusative
+  - form: अगच्छत्
+    lemma: गम्
+    gloss: went
+    notes:
+    - term: लङ्
+      en: past
+  - form: क्रुद्धः
+    lemma: क्रुध्
+    gloss: angry
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of क्रुध्
+    - term: विशेषण
+      en: qualifying सिंहः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: अपृच्छत्
+    lemma: प्रच्छ्
+    gloss: asked
+    notes:
+    - term: लङ्
+      en: past
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: past
+  - form: अन्यः
+    lemma: अन्य
+    gloss: another
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम "other"
+    - term: विशेषण
+      en: qualifying सिंहः
+    - term: प्रथमा
+      en: nominative
+  - form: त्वाम्
+    lemma: युष्मद्
+    gloss: you
+    notes:
+    - term: सर्वनाम
+      en: pronoun (2sg)
+    - term: कर्मन्
+      en: object of द्रष्टुम्
+    - term: द्वितीया
+      en: accusative
+  - form: द्रष्टुम्
+    lemma: दृश्
+    gloss: to see
+    notes:
+    - term: कृदन्त
+      en: infinitive (तुमुन्) of दृश्
+    - term: तुमुन्
+      en: '"in order to see"'
+  - form: इच्छति
+    lemma: इष्
+    gloss: wishes
+    notes:
+    - term: लट्
+      en: present (3sg)
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object of श्रुत्वा
+    - term: द्वितीया
+      en: accusative
+  - form: श्रुत्वा
+    lemma: श्रु
+    gloss: having heard
+    notes:
+    - term: कृदन्त
+      en: gerund (क्त्वा) — prior action
+    - cite: '3.4.21'
+      role: समानकर्तृकयोः पूर्वकाले क्त्वा → श्रुत्वा
+    - term: क्त्वा
+      en: the gerund
+  - form: कूपम्
+    lemma: कूप
+    gloss: to a well
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: goal of अगच्छत्
+    - term: द्वितीया
+      en: accusative
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: adverb of place
+  - form: स्वम्
+    lemma: स्व
+    gloss: his own
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम "own"
+    - term: विशेषण
+      en: qualifying प्रतिबिम्बम्
+    - term: द्वितीया
+      en: accusative
+  - form: प्रतिबिम्बम्
+    lemma: प्रतिबिम्ब
+    gloss: reflection
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of दृष्ट्वा
+    - term: द्वितीया
+      en: accusative
+  - form: दृष्ट्वा
+    lemma: दृश्
+    gloss: having seen
+    notes:
+    - term: कृदन्त
+      en: gerund (क्त्वा) of दृश्
+    - term: क्त्वा
+      en: the gerund
+  - form: कूपे
+    lemma: कूप
+    gloss: into the well
+    notes:
+    - term: अधिकरण
+      en: locus (goal of falling)
+    - term: सप्तमी
+      en: locative
+  - form: अपतत्
+    lemma: पत्
+    gloss: fell
+    notes:
+    - term: लङ्
+      en: past
+  vyakhya: 'दीर्घा कथा — पूर्वाभ्यस्तानाम् एकत्र प्रयोगः। उपगम्य विलम्ब्य इति ल्यप्; श्रुत्वा दृष्ट्वा इति क्त्वा; प्रेषयिष्यामः इति लृट्; बहून् पशून् इति शसि आन्; सिंहम् कूपम् इति गत्यर्थे द्वितीया; भीताः क्रुद्धः इति क्तप्रत्ययाः। पञ्चतन्त्रकथायाः संक्षिप्तं रूपम् — पाठनाभ्यासाय।'
+  vyakhya_en: |
+    A longer read, and a familiar one — the rabbit who drowns the lion in a well.
+    Nothing new; the point is to carry the machinery across a real narrative arc:
+    prefixed gerunds (उपगम्य, विलम्ब्य) and plain ones (श्रुत्वा, दृष्ट्वा) chaining
+    the events; a first-person plural future (प्रेषयिष्यामः) in the animals' bargain;
+    accusative plurals (बहून् पशून्), motion-goals (सिंहम्, कूपम्), and क्त
+    participles (भीताः, क्रुद्धः) coloring the actors. Read it for speed, not for
+    parsing — that is what fluency feels like.

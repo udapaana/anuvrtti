@@ -1,0 +1,229 @@
+- id: ex223
+  segment: 210
+  sentence: ग्रामे बहवः बालाः सन्ति। रामः पटुः, कृष्णः तु रामात् पटुतरः। सर्वेषु बालेषु दामोदरः पटुतमः। सः धनवान् अपि, किन्तु धनस्य गुरुत्वम् न मन्यते।
+  translation: In the village are many boys. Rāma is clever, but Kṛṣṇa is cleverer than Rāma. Among all the boys Dāmodara is the cleverest. He is wealthy too, yet does not regard the weight of wealth.
+  teaches: |
+    the four degree-and-quality तद्धितs together: रामात् पटुतरः (तरप्, with पञ्चमी),
+    सर्वेषु बालेषु पटुतमः (तमप्, निर्धारण-सप्तमी), धनवान् (मतुप्), and गुरुत्वम् (त्व).
+  words:
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in the village
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: बहवः
+    lemma: बहु
+    gloss: many
+    notes:
+    - term: विशेषण
+      en: qualifying बालाः
+    - term: प्रथमा
+      en: nominative plural (उ-stem बहु → बहवः)
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: बालाः
+    lemma: बाल
+    gloss: boys
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural
+  - form: सन्ति
+    lemma: अस्
+    gloss: there are
+    notes:
+    - term: लट्
+      en: present
+  - form: रामः
+    lemma: राम
+    gloss: Rāma
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पटुः
+    lemma: पटु
+    gloss: clever
+    notes:
+    - term: विशेषण
+      en: predicated of रामः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: कृष्णः
+    lemma: कृष्ण
+    gloss: Kṛṣṇa
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: तु
+    lemma: तु
+    gloss: but
+    notes:
+    - term: निपात
+      en: contrastive particle
+  - form: रामात्
+    lemma: राम
+    gloss: than Rāma
+    notes:
+    - term: अपादान
+      en: the standard of comparison → पञ्चमी
+    - cite: '2.3.42'
+      role: पञ्चमी विभक्ते — the term compared-from takes पञ्चमी → रामात्
+    - term: पञ्चमी
+      en: ablative
+  - form: पटुतरः
+    lemma: पटुतर
+    gloss: cleverer
+    notes:
+    - term: तद्धित
+      en: comparative derivative
+    - term: तरप्
+      en: the तरप् comparative suffix — "more" of two
+    - term: अतिशायन
+      en: degree of comparison — the comparative sense
+    - cite: '5.3.57'
+      role: द्विवचनविभज्योपपदे तरबीयसुनौ — तरप्/ईयसुन् for comparison of two → पटु + तर → पटुतरः
+    - term: विशेषण
+      en: predicated of कृष्णः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 6
+  - form: सर्वेषु
+    lemma: सर्व
+    gloss: among all
+    notes:
+    - term: निर्धारण
+      en: selection-from-a-group → सप्तमी
+    - cite: '2.3.41'
+      role: यतश्च निर्धारणम् — the group one is singled out from → सप्तमी → सर्वेषु
+    - term: सप्तमी
+      en: locative plural
+  - form: बालेषु
+    lemma: बाल
+    gloss: among the boys
+    notes:
+    - term: निर्धारण
+      en: the class — locative plural, parallel to सर्वेषु
+    - term: सप्तमी
+      en: locative plural
+  - form: दामोदरः
+    lemma: दामोदर
+    gloss: Dāmodara
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पटुतमः
+    lemma: पटुतम
+    gloss: the cleverest
+    notes:
+    - term: तद्धित
+      en: superlative derivative
+    - term: तमप्
+      en: the तमप् superlative suffix — "most" of all
+    - term: अतिशायन
+      en: degree of comparison — the superlative sense
+    - cite: '5.3.55'
+      role: अतिशायने तमबिष्ठनौ — तमप्/इष्ठन् for surpassing all → पटु + तम → पटुतमः
+    - term: विशेषण
+      en: predicated of दामोदरः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 12
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+  - form: धनवान्
+    lemma: धनवत्
+    gloss: wealthy
+    notes:
+    - term: तद्धित
+      en: possessive derivative
+    - term: मतुप्
+      en: the मतुप् possessive suffix — "having wealth" (shows as -वत्)
+    - cite: '5.2.94'
+      role: तदस्यास्त्यस्मिन्निति मतुप् — "it is his / in him" → धन + मतुप् → धनवत् → धनवान्
+    - term: विशेषण
+      en: predicated of सः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 14
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: निपात
+      en: particle — "also, even"
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: निपात
+      en: adversative conjunction
+  - form: धनस्य
+    lemma: धन
+    gloss: of wealth
+    notes:
+    - term: सम्बन्ध
+      en: possession
+    - term: षष्ठी
+      en: genitive
+  - form: गुरुत्वम्
+    lemma: गुरुत्व
+    gloss: the weight, importance
+    notes:
+    - term: तद्धित
+      en: abstract derivative
+    - term: त्व
+      en: the त्व abstract suffix — "the state/weight of"
+    - term: अर्थ
+      en: भाव — the state or quality named as a thing
+    - cite: '5.1.119'
+      role: तस्य भावस्त्वतलौ — त्व (and तल् → ता) for "the state of" → गुरु + त्व → गुरुत्वम्
+    - term: कर्मन्
+      en: object of मन्यते
+    - term: द्वितीया
+      en: accusative (neuter)
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: निपात
+      en: verbal negation
+  - form: मन्यते
+    lemma: मन्
+    gloss: regards, considers
+    notes:
+    - term: लट्
+      en: present — आत्मनेपद
+  vyakhya: चत्वारः तद्धिताः एकत्र — तरप्, तमप्, मतुप्, त्व — मानस्य च द्वे विभक्ती।
+  vyakhya_en: |
+    The degree affixes stand side by side here. रामात् पटुतरः is the comparative
+    तरप् (5.3.57), and the one surpassed takes पञ्चमी — रामात्, "than Rāma." सर्वेषु
+    बालेषु पटुतमः is the superlative तमप् (5.3.55), and the group singled out from
+    takes निर्धारण-सप्तमी — "among all the boys." धनवान् is the possessive मतुप्
+    (5.2.94), "having wealth," and गुरुत्वम् is the abstract त्व (5.1.119), the
+    weight of a thing named as a thing.

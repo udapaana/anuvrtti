@@ -74,7 +74,7 @@ map, the ROLE_VIB fallback), not the YAML.
 ## Bulk fixes — safe, because the lint guards them
 
 For a systematic fix (e.g. every pronoun missing its सर्वनाम tag), a small script
-over `content/readings/*.yaml` is fine. After ANY bulk edit:
+over `content/readings/*/*.yaml` (one file per reading) is fine. After ANY bulk edit:
 
 ```bash
 bun run build:readings && bun run lint

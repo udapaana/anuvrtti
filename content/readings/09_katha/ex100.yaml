@@ -1,0 +1,300 @@
+- id: ex100
+  kind: graded
+  segment: 260
+  source:
+    text: "बालकृष्णकथा (our graded retelling)"
+    ref: "Bhāgavata 10.16 — the कालिय-दमन episode"
+    curated: "our graded prose; the story is canonical, the sentences are ours"
+  sentence: 'कालियो नाम महासर्पः कालिन्दीनद्यां वसति स्म। तस्य विषेण जलं दूषितम् आसीत्। गावः पिबन्त्यः तत् जलम् पीत्वा मूर्च्छिताः अभवन्। तदा कृष्णः तरुम् आरुह्य नद्यां अपतत्। सः सर्पस्य फणेषु नृत्यन् तम् अदमयत्। एवम् कालियः कृष्णेन पराजितः।'
+  translation: A great serpent named Kāliya lived in the Yamunā river. By his poison the water was polluted. The cows, while drinking, drank that water and fainted. Then Kṛṣṇa climbed a tree and fell into the river. He danced on the serpent's hoods and subdued it. Thus Kāliya was defeated by Kṛṣṇa.
+  teaches: 'लिट्-style past (वसति स्म as past habitual); passive क्त with आसीत् (past passive predicate); gerund आरुह्य + अपतत्; present participle (शतृ) पिबन्त्यः, नृत्यन् (action simultaneous with main verb); passive अदमयत् → पराजितः'
+  words:
+  - form: कालियः
+    lemma: कालिय
+    gloss: Kāliya
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject of वसति स्म
+    - term: प्रथमा
+      en: nominative
+  - form: नाम
+    lemma: नामन्
+    gloss: by name, named
+    notes:
+    - term: अव्यय
+      en: '"named" — indeclinable used with names'
+  - form: महासर्पः
+    lemma: महासर्प
+    gloss: great serpent
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: महत् + सर्प — "great-serpent"
+    - term: प्रथमा
+      en: nominative — appositive to कालियः
+  - form: कालिन्दीनद्याम्
+    lemma: कालिन्दीनदी
+    gloss: in the Yamunā river
+    vocab: true
+    notes:
+    - term: तत्पुरुष
+      en: कालिन्दी + नदी — "Kālindī-river (Yamunā)"
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
+  - form: वसति
+    lemma: वस्
+    gloss: lives, dwells
+    notes:
+    - term: वस्
+      en: '"dwell, live"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present (here with स्म = past habitual)
+  - form: स्म
+    lemma: स्म
+    gloss: (past marker with present)
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: particle — with लट् makes past habitual ("used to dwell")
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्, gen. masc.)
+    - term: षष्ठी
+      en: genitive — possessive
+  - form: विषेण
+    lemma: विष
+    gloss: by/with (his) poison
+    notes:
+    - term: करण
+      en: instrument / cause — the poison is what polluted the water
+    - cite: '2.3.18'
+      role: कर्तृकरणयोस्तृतीया → विषेण
+  - form: जलम्
+    lemma: जल
+    gloss: water
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: patient in passive construction
+    - term: प्रथमा
+      en: nominative (कर्मणि)
+  - form: दूषितम्
+    lemma: दूष्
+    gloss: was polluted, made foul
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: past passive participle (क्त) of √दूष् — "polluted"
+    - cite: '3.2.102'
+      role: निष्ठा → क्त → दूषित; passive sense (कर्मणि)
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: अस्
+      en: copula — "was" (लङ् 3sg)
+    - cite: '3.2.111'
+      role: अनद्यतने लङ् → आसीत्
+  - form: गावः
+    lemma: गो
+    gloss: cows
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject (गो stem, nom. pl. → गावः)
+    - term: प्रथमा
+      en: nominative plural
+  - form: पिबन्त्यः
+    lemma: पा
+    gloss: (while) drinking
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: present participle (शतृ, fem. pl.) — simultaneous action "while drinking"
+    - cite: '3.2.124'
+      role: लटः शतृशानचौ — शतृ suffix on a present root → पिबन्त् (masc.), पिबन्ती (fem.)
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्, neut. acc.) — refers to जलम्
+    - term: द्वितीया
+      en: accusative
+  - form: जलम्
+    lemma: जल
+    gloss: water
+    notes:
+    - term: कर्मन्
+      en: object of पीत्वा
+    - term: द्वितीया
+      en: accusative
+  - form: पीत्वा
+    lemma: पा
+    gloss: having drunk
+    notes:
+    - term: कृदन्त
+      en: gerund (क्त्वा) of √पा — prior action
+    - cite: '3.4.21'
+      role: समानकर्तृकयोः पूर्वकाले क्त्वा → पीत्वा
+  - form: मूर्च्छिताः
+    lemma: मूर्च्छ्
+    gloss: fainted, fell unconscious
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: past passive participle (क्त) of √मूर्च्छ् (fem. pl.) — "fainted"
+    - cite: '3.2.102'
+      role: निष्ठा → क्त
+  - form: अभवन्
+    lemma: भू
+    gloss: became
+    notes:
+    - term: भू
+      en: '"become"'
+    - cite: '3.2.111'
+      role: अनद्यतने लङ् → अभवन् (3pl)
+  - form: तदा
+    lemma: तदा
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: temporal adverb
+  - form: कृष्णः
+    lemma: कृष्ण
+    gloss: Kṛṣṇa
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: तरुम्
+    lemma: तरु
+    gloss: tree
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of आरुह्य — what he climbed
+    - term: द्वितीया
+      en: accusative (उ-stem)
+  - form: आरुह्य
+    lemma: आ-रुह्
+    gloss: having climbed (up)
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerund (ल्यप् — क्त्वा after prefix आ-) — prior action
+    - cite: '3.4.21'
+      role: समानकर्तृकयोः पूर्वकाले क्त्वा → ल्यप् (with prefix → आरुह्य)
+  - form: नद्याम्
+    lemma: नदी
+    gloss: into the river
+    notes:
+    - term: अधिकरण
+      en: locative goal (direction into which he fell)
+    - term: सप्तमी
+      en: locative
+  - form: अपतत्
+    lemma: पत्
+    gloss: fell, leapt
+    vocab: true
+    notes:
+    - term: पत्
+      en: '"fall, fly"'
+    - cite: '3.2.111'
+      role: अनद्यतने लङ् → अपतत् (3sg)
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्, masc.)
+    - term: प्रथमा
+      en: nominative
+  - form: सर्पस्य
+    lemma: सर्प
+    gloss: of the serpent
+    notes:
+    - term: सम्बन्ध
+      en: possession — whose hoods
+    - term: षष्ठी
+      en: genitive
+  - form: फणेषु
+    lemma: फण
+    gloss: on the hoods
+    vocab: true
+    notes:
+    - cite: "8.3.59"
+      role: आदेशप्रत्ययोः — स् → ष् after the ए of the loc.pl → फणेषु
+    - term: अधिकरण
+      en: location of the dancing
+    - term: सप्तमी
+      en: locative plural
+  - form: नृत्यन्
+    lemma: नृत्
+    gloss: (while) dancing
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: present participle (शतृ, masc. nom. sg.) — simultaneous with main verb
+    - cite: '3.2.124'
+      role: लटः शतृशानचौ — शतृ → नृत्यन्
+  - form: तम्
+    lemma: तद्
+    gloss: it (Kāliya)
+    notes:
+    - term: सर्वनाम
+      en: pronoun (तद्, masc. acc.)
+    - term: द्वितीया
+      en: accusative
+  - form: अदमयत्
+    lemma: दम्
+    gloss: subdued, tamed
+    vocab: true
+    notes:
+    - term: दम्
+      en: '"subdue, tame"'
+    - cite: '3.2.111'
+      role: अनद्यतने लङ् → अदमयत् (causative 3sg लङ्)
+  - form: एवम्
+    lemma: एवम्
+    gloss: thus
+    notes:
+    - term: अव्यय
+      en: summing adverb — "thus"
+  - form: कालियः
+    lemma: कालिय
+    gloss: Kāliya
+    notes:
+    - term: कर्मन्
+      en: patient in passive
+    - term: प्रथमा
+      en: nominative (कर्मणि)
+  - form: कृष्णेन
+    lemma: कृष्ण
+    gloss: by Kṛṣṇa
+    notes:
+    - term: कर्तृ
+      en: agent in passive takes तृतीया
+    - term: तृतीया
+      en: instrumental
+  - form: पराजितः
+    lemma: परा-जि
+    gloss: was defeated, was overcome
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: past passive participle (क्त) of परा-जि — "was defeated"
+    - cite: '3.2.102'
+      role: निष्ठा → क्त; passive (कर्मणि) sense
+  vyakhya: 'द्वे नवीने — शतृप्रत्ययः (लटः शतृशानचौ) पिबन्त्यः नृत्यन् च; स्म-सहितः लट् भूतार्थे। कर्मणिप्रयोगः त्रिवारम् — दूषितम् आसीत्, मूर्च्छिताः अभवन्, पराजितः। जलचरे युद्धम् वर्णयितुम् क्त्वा-ल्यपौ बहुशः।'
+  vyakhya_en: |
+    Two new tools. First, **शतृ** (the active present participle — लटः शतृशानचौ, 3.2.124): पिबन्त्यः "while drinking" (fem. pl., simultaneous with अभवन्) and नृत्यन् "while dancing" (masc. sg., simultaneous with अदमयत्). The participle says the background action runs alongside the main verb — not before it (that's क्त्वा) and not after it. Second, **वसति स्म** — a present-tense verb with the particle स्म shifts into past habitual: "used to dwell." Passive क्त appears three times (दूषितम्, मूर्च्छिताः, पराजितः), anchoring the pattern from ex098. The gerunds आरुह्य → अपतत् chain the action sequence into one breath.

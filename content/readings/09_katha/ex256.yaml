@@ -1,0 +1,278 @@
+- id: ex256
+  kind: graded
+  segment: 271
+  source:
+    text: कथा (our graded retelling)
+    ref: "the daydreaming brahmin — our own telling (after the Pañcatantra)"
+    curated: our simple Sanskrit; a retelling, not quoting any edition
+  sentence: दरिद्रः ब्राह्मणः सक्तून् अलभत। सः अचिन्तयत् — एतान् विक्रीय अहम् अजाः क्रेष्यामि। ताभिः अहम् धनी भविष्यामि। यदि भार्या माम् न सेवेत तर्हि ताम् ताडयेयम् — इति चिन्तयन् सः पादेन घटम् अहन्। सक्तवः नष्टाः।
+  translation: A poor brahmin got some barley-meal. He thought — "Selling this, I will buy goats. By them I will become rich. If my wife does not obey me, then I would beat her" — and thinking so, he struck the pot with his foot. The barley-meal was lost.
+  teaches: |
+    the tenses of imagination — the future (क्रेष्यामि "I will buy," भविष्यामि "I
+    will become") for the daydream, and the optative in a यदि … तर्हि condition
+    (यदि … न सेवेत, तर्हि … ताडयेयम्, "if she wouldn't … then I would").
+  words:
+  - form: दरिद्रः
+    lemma: दरिद्र
+    gloss: poor
+    notes:
+    - term: विशेषण
+      en: qualifying ब्राह्मणः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: ब्राह्मणः
+    lemma: ब्राह्मण
+    gloss: a brahmin
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: सक्तून्
+    lemma: सक्तु
+    gloss: barley-meal
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of अलभत
+    - cite: '6.1.103'
+      role: तस्माच्छसो नः पुंसि — masc. accusative plural शस् → आन् → सक्तून्
+    - term: द्वितीया
+      en: accusative plural
+  - form: अलभत
+    lemma: लभ्
+    gloss: got, obtained
+    notes:
+    - term: लङ्
+      en: past (आत्मनेपद 3sg)
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अचिन्तयत्
+    lemma: चिन्त्
+    gloss: thought
+    notes:
+    - term: लङ्
+      en: past
+  - form: एतान्
+    lemma: एतद्
+    gloss: these
+    notes:
+    - term: सर्वनाम
+      en: pronoun (एतद्, masc. acc. pl.)
+    - term: कर्मन्
+      en: object of विक्रीय
+    - term: द्वितीया
+      en: accusative plural
+  - form: विक्रीय
+    lemma: क्री
+    gloss: having sold
+    vocab: true
+    notes:
+    - term: कृदन्त
+      en: gerund of वि-क्री "sell"
+    - cite: '7.1.37'
+      role: क्त्वो ल्यप् — prefixed root → ल्यप् → विक्रीय
+    - term: ल्यप्
+      en: the prefixed-root gerund
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: सर्वनाम
+      en: pronoun (1sg)
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
+  - form: अजाः
+    lemma: अजा
+    gloss: goats
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of क्रेष्यामि
+    - term: द्वितीया
+      en: accusative plural (आ-stem feminine → अजाः)
+  - form: क्रेष्यामि
+    lemma: क्री
+    gloss: I will buy
+    notes:
+    - cite: '3.3.13'
+      role: लृट् शेषे च — simple future → क्रेष्यामि
+    - term: लृट्
+      en: future (1sg)
+  - form: ताभिः
+    lemma: तद्
+    gloss: by them
+    notes:
+    - term: सर्वनाम
+      en: pronoun (feminine instr. pl.)
+    - term: करण
+      en: means
+    - term: तृतीया
+      en: instrumental plural
+  - form: धनी
+    lemma: धनिन्
+    gloss: rich
+    notes:
+    - term: तद्धित
+      en: possessive (इनि) — धन → धनिन्
+    - term: विशेषण
+      en: predicate of अहम्
+    - term: प्रथमा
+      en: nominative (इन्-stem → धनी)
+    rel:
+    - kind: विशेषण
+      to: 8
+  - form: भविष्यामि
+    lemma: भू
+    gloss: I will become
+    notes:
+    - term: लृट्
+      en: future (1sg)
+  - form: यदि
+    lemma: यदि
+    gloss: if
+    notes:
+    - term: अव्यय
+      en: conditional particle (correlative of तर्हि)
+  - form: भार्या
+    lemma: भार्या
+    gloss: wife
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject of सेवेत
+    - term: प्रथमा
+      en: nominative (आ-stem feminine)
+  - form: माम्
+    lemma: अस्मद्
+    gloss: me
+    notes:
+    - term: सर्वनाम
+      en: pronoun (1sg acc)
+    - term: कर्मन्
+      en: object of सेवेत
+    - term: द्वितीया
+      en: accusative
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: सेवेत
+    lemma: सेव्
+    gloss: would serve, obey
+    notes:
+    - cite: '3.3.161'
+      role: विधिनिमन्त्रण… लिङ् — the optative लिङ् (here in a condition) → सेव् + लिङ् → सेवेत
+    - term: लिङ्
+      en: optative (आत्मनेपद 3sg) — "if she would (not) serve"
+  - form: तर्हि
+    lemma: तर्हि
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: correlative of यदि — "then"
+  - form: ताम्
+    lemma: तद्
+    gloss: her
+    notes:
+    - term: सर्वनाम
+      en: pronoun (feminine acc)
+    - term: कर्मन्
+      en: object of ताडयेयम्
+    - term: द्वितीया
+      en: accusative
+  - form: ताडयेयम्
+    lemma: तड्
+    gloss: I would beat
+    vocab: true
+    notes:
+    - cite: '3.3.161'
+      role: विधि… लिङ् — the optative in the apodosis → ताडयेयम्
+    - term: लिङ्
+      en: optative (1sg) — "I would beat"
+  - form: इति
+    lemma: इति
+    gloss: (thus — closes the thought)
+    notes:
+    - term: अव्यय
+      en: quotative marker
+  - form: चिन्तयन्
+    lemma: चिन्त्
+    gloss: thinking
+    notes:
+    - term: कृदन्त
+      en: present participle (शतृ) of चिन्त्
+    - term: विशेषण
+      en: with सः
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: पादेन
+    lemma: पाद
+    gloss: with his foot
+    notes:
+    - term: करण
+      en: instrument
+    - term: तृतीया
+      en: instrumental
+  - form: घटम्
+    lemma: घट
+    gloss: the pot
+    notes:
+    - term: कर्मन्
+      en: object of अहन्
+    - term: द्वितीया
+      en: accusative
+  - form: अहन्
+    lemma: हन्
+    gloss: struck
+    notes:
+    - term: लङ्
+      en: past
+  - form: सक्तवः
+    lemma: सक्तु
+    gloss: the barley-meal
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural (उ-stem → सक्तवः)
+  - form: नष्टाः
+    lemma: नश्
+    gloss: (were) lost
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of नश् "perish"
+    - term: विशेषण
+      en: predicate of सक्तवः
+    - term: प्रथमा
+      en: nominative plural
+    rel:
+    - kind: विशेषण
+      to: 27
+  vyakhya: 'मनोरथकथा — लृड्लिङोः प्रयोगः। क्रेष्यामि भविष्यामि इति मनोराज्ये लृट्; यदि … सेवेत तर्हि … ताडयेयम् इति सम्भावनायां लिङ् (विधिनिमन्त्रण… लिङ्)। विक्रीय इति ल्यप्; चिन्तयन् इति शतृ। अन्ते तु लङ् — अहन् नष्टाः — स्वप्नभङ्गे।'
+  vyakhya_en: |
+    The castle-in-the-air, and the two moods that build it. The daydream runs in
+    the **future** — क्रेष्यामि "I will buy," भविष्यामि "I will become." Then the
+    **conditional**, framed यदि … तर्हि "if … then," takes the **optative** in both
+    halves: यदि भार्या न सेवेत, तर्हि ताम् ताडयेयम्, "if my wife would not obey, then
+    I would beat her" (3.3.161). And the moment the imagined arm swings, the tense
+    snaps back to plain past — पादेन घटम् अहन्, सक्तवः नष्टाः: "he struck the pot;
+    the meal was lost." Grammar telling the joke.

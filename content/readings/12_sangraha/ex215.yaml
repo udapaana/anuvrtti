@@ -1,0 +1,174 @@
+- id: ex215
+  kind: sangraha
+  segment: 135
+  order: 1
+  sentence: राजपुरुषः उपकृष्णम् आसीत्। तत्र रामकृष्णौ अपि आगच्छताम्। राजपुरुषः तौ अपश्यत् — रामः श्यामः, कृष्णः पीताम्बरः। सः पीताम्बरं ननाम, यतः पीताम्बरः एव विष्णुः।
+  translation: The king's man was near Kṛṣṇa. There Rāma-and-Kṛṣṇa also arrived. The king's man saw the two of them — Rāma dark, Kṛṣṇa yellow-clad. He bowed to the yellow-clad one, because the yellow-clad one is Viṣṇu himself.
+  teaches: |
+    all four compound types back to back, doing no new work: राजपुरुषः
+    (तत्पुरुष), उपकृष्णम् (अव्ययीभाव), रामकृष्णौ (द्वन्द्व), पीताम्बरः
+    (बहुव्रीहि).
+  words:
+  - form: राजपुरुषः
+    lemma: राजपुरुष
+    gloss: the king's man
+    notes:
+    - term: तत्पुरुष
+      en: determinative — the second member, पुरुष, is the head
+    - cite: '2.1.22'
+      role: तत्पुरुषः — a compound whose second member carries the main sense is तत्पुरुष
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: उपकृष्णम्
+    lemma: उपकृष्ण
+    gloss: near Kṛṣṇa
+    notes:
+    - term: अव्ययीभाव
+      en: adverbial — headed by the indeclinable उप, the whole compound is indeclinable
+    - cite: '2.1.5'
+      role: अव्ययीभावः — a compound headed by an indeclinable is अव्ययीभाव
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: रामकृष्णौ
+    lemma: रामकृष्ण
+    gloss: Rāma and Kṛṣṇa
+    notes:
+    - term: द्वन्द्व
+      en: copulative — both members are heads, joined as "and"
+    - cite: '2.2.29'
+      role: चार्थे द्वन्द्वः — words standing in the sense of "च" (and) form a द्वन्द्व
+    - term: द्विवचन
+      en: dual — two people
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: अपि
+    lemma: अपि
+    gloss: also
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: आगच्छताम्
+    lemma: गम्
+    gloss: the two arrived
+    notes:
+    - term: लङ्
+      en: past
+    - term: द्विवचन
+      en: dual — agrees with रामकृष्णौ
+  - form: तौ
+    lemma: तद्
+    gloss: those two
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative dual
+  - form: अपश्यत्
+    lemma: दृश्
+    gloss: saw
+    notes:
+    - term: लङ्
+      en: past
+  - form: रामः
+    lemma: राम
+    gloss: Rāma
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: श्यामः
+    lemma: श्याम
+    gloss: dark
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative — predicated of रामः
+  - form: कृष्णः
+    lemma: कृष्ण
+    gloss: Kṛṣṇa
+    notes:
+    - term: प्रथमा
+      en: nominative
+  - form: पीताम्बरः
+    lemma: पीताम्बर
+    gloss: the one whose garment is yellow
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — neither member is the head; the compound points at Kṛṣṇa
+    - cite: '2.2.23'
+      role: शेषो बहुव्रीहिः — the remaining kind of compound is बहुव्रीहि
+    - cite: '2.2.24'
+      role: अनेकमन्यपदार्थे — several words denoting ANOTHER thing (the possessor) form a बहुव्रीहि
+    - term: प्रथमा
+      en: nominative
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पीताम्बरं
+    lemma: पीताम्बर
+    gloss: the yellow-clad one
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: ननाम
+    lemma: नम्
+    gloss: bowed
+    vocab: true
+    notes:
+    - term: लिट्
+      en: perfect — a completed act, once
+  - form: यतः
+    lemma: यतस्
+    gloss: because
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: एव
+    lemma: एव
+    gloss: indeed, precisely
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: विष्णुः
+    lemma: विष्णु
+    gloss: Viṣṇu
+    vocab: true
+    notes:
+    - term: प्रथमा
+      en: nominative
+  vyakhya: चत्वारः समासाः एकत्र। राजपुरुषः, उपकृष्णम्, रामकृष्णौ, पीताम्बरः।
+  vyakhya_en: |
+    All four kinds side by side, none announced: राजपुरुषः is a तत्पुरुष (पुरुष
+    is the head), उपकृष्णम् an अव्ययीभाव (उप carries it, and the whole goes
+    indeclinable), रामकृष्णौ a द्वन्द्व (Rāma and Kṛṣṇa, equally heads), and
+    पीताम्बरः a बहुव्रीहि — it names neither "yellow" nor "garment" but the one
+    who wears them, and that one turns out to be Viṣṇu.

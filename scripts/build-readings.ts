@@ -325,13 +325,26 @@ function main() {
   const chapters: any[] = [];
   const flat: any[] = [];
 
-  const files = fs
-    .readdirSync(READINGS_DIR)
-    .filter((f) => f.endsWith('.yaml') && !f.startsWith('_'))
+  // Each chapter is a directory (NN_name/) of one-file-per-reading, so a
+  // reading opens by its id with an IDE "Go to File" keystroke. Within a
+  // chapter the readings are sorted by id — a stable, filename-driven order;
+  // the learning-path (sequence) order is data-driven and independent of this.
+  const chapterDirs = fs
+    .readdirSync(READINGS_DIR, { withFileTypes: true })
+    .filter((e) => e.isDirectory() && !e.name.startsWith('_'))
+    .map((e) => e.name)
     .sort();
 
-  for (const file of files) {
-    const src = fs.readFileSync(path.join(READINGS_DIR, file), 'utf-8');
+  for (const dir of chapterDirs) {
+    const dirPath = path.join(READINGS_DIR, dir);
+    const readingFiles = fs
+      .readdirSync(dirPath)
+      .filter((f) => f.endsWith('.yaml') && !f.startsWith('_'))
+      .sort();
+    const src = readingFiles
+      .map((f) => fs.readFileSync(path.join(dirPath, f), 'utf-8'))
+      .join('\n');
+    const file = dir; // for error messages below
     // Catch the recurring authoring slip before the YAML parser does: an
     // unquoted scalar containing a double quote. YAML reports it as
     // "Unexpected scalar at node end" with a line number and no cause, which
@@ -352,7 +365,9 @@ function main() {
       }
     });
     const doc = parseYaml(src) as any;
-    const readings = doc?.readings ?? [];
+    // Per-reading files are bare one-item sequences, so the concatenation is a
+    // sequence; a legacy monolithic file would parse to { readings: [...] }.
+    const readings = Array.isArray(doc) ? doc : (doc?.readings ?? []);
     if (!readings.length) continue;
     const stem = file.replace(/\.yaml$/, ''); // '01_karaka'
     const key = stem.includes('_') ? stem.slice(stem.indexOf('_') + 1) : stem; // 'karaka'
