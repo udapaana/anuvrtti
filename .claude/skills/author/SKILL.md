@@ -1,6 +1,6 @@
 ---
 name: author
-description: Author work on the Aṣṭādhyāyī graded reader — write new readings, fix annotations against the schema, or audit the schema itself. The single entry point for all corpus authoring. Use whenever adding or editing content/readings/*.yaml, clearing the annotation backlog, moving rule coverage, or changing src/lib/usage/schema.ts. Routes to the right process based on the task.
+description: Author work on the Aṣṭādhyāyī graded reader — write new readings, fix annotations against the schema, or audit the schema itself. The single entry point for all corpus authoring. Use whenever adding or editing content/readings/ (one file per reading), clearing the annotation backlog, moving rule coverage, or changing src/lib/usage/schema.ts. Routes to the right process based on the task.
 user-invocable: true
 allowed-tools:
   - Read

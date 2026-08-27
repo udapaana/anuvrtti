@@ -158,12 +158,12 @@ lemma whose ending belongs to an untaught cell the same way.
 
 ## The chapters
 
-`12_sangraha.yaml` holds consolidation passages. Its header carries five
+`12_sangraha/` holds consolidation passages. Its `_about.yaml` header carries five
 authoring rules; the load-bearing one is **a सङ्ग्रह passage introduces
 nothing** — every rule it cites must already appear at or below its tier. The
 check enforces this and has caught violations twice, both from mechanical edits.
 
-`09_katha.yaml` is graded narrative, `06_readings.yaml` is attested text.
+`09_katha/` is graded narrative, `06_readings/` is attested text.
 Attested is 30 Ṛgveda / 8 Hitopadeśa / 3 Pañcatantra — the Ṛgveda block from
 tier 280 up is a wall, and classical prose between the subhāṣitas and the hymns
 is where the corpus is thinnest.
