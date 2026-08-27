@@ -176,6 +176,17 @@ let PARADIGM: Record<string, Record<string, string>> = {};
     }
   }
 }
+// The tiṅanta form → parse index (built by build-quiz from vidyut generation):
+// root|form → {लकार, पुरुष, वचन, पद}. A verb form gets its full parse here with
+// no authoring — the लकार included — because vidyut GENERATES every cell and the
+// build records only the features every producing cell agrees on.
+let TIN: Record<string, Record<string, string>> = {};
+{
+  const p = path.join(process.cwd(), 'static/data/tin-forms.json');
+  if (fs.existsSync(p)) TIN = JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+const LAKARA_SET = new Set(['लट्', 'लङ्', 'लिट्', 'लुट्', 'लृट्', 'लोट्', 'लिङ्', 'विधिलिङ्', 'आशीर्लिङ्', 'लुङ्', 'लृङ्']);
+
 /** Row values that name a पुरुष rather than a विभक्ति — i.e. the word is a verb. */
 const PURUSHA_ROWS = new Set(['प्रथमपुरुष', 'मध्यमपुरुष', 'उत्तमपुरुष']);
 
@@ -214,6 +225,17 @@ function derivedFeatures(word: any): Record<string, string> | null {
   if (gana) {
     if (!terms.has('गण')) out['गण'] = gana[0];
     if (gana[1] && !terms.has('विकरण') && !terms.has(gana[1])) out['विकरण'] = gana[1];
+  }
+
+  // The full तिङन्त parse from the generated index — लकार, पुरुष, वचन, पद — for
+  // any verb form, with NO authoring. Filled only where the author has not
+  // already said it, so an authored tag always wins over the derivation.
+  const tin = TIN[deaccent(word.lemma) + '|' + deaccent(String(word.form ?? ''))];
+  if (tin) {
+    if (tin['लकार'] && ![...terms].some((t) => LAKARA_SET.has(t))) out['लकार'] = tin['लकार'];
+    if (tin['पुरुष'] && !out['पुरुष'] && ![...terms].some((t) => PURUSHA_SET.has(t))) out['पुरुष'] = tin['पुरुष'];
+    if (tin['वचन'] && !out['वचन'] && ![...terms].some((t) => VACANA_SET.has(t))) out['वचन'] = tin['वचन'];
+    if (tin['पद'] && !out['पद'] && ![...terms].some((t) => PADA_SET.has(t))) out['पद'] = tin['पद'];
   }
 
   // विभक्ति from the कारक role, as a FALLBACK. The role is the author's own

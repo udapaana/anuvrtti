@@ -979,6 +979,49 @@ async function main() {
   };
 
   fs.writeFileSync(USAGE_OUT, JSON.stringify(index, null, 0));
+
+  // ── tiṅanta form → parse index ────────────────────────────────────────────
+  // vidyut is a GENERATOR: to know what अगच्छन् IS, generate every cell of every
+  // root and see what produces it. This inverts the whole verbal paradigm —
+  // root × लकार × पुरुष × वचन × पद — into a form → features map, so a verb gets
+  // its लकार, पुरुष, वचन and पद with NO authoring (the लकार tag included). A
+  // feature is recorded only when every cell producing the form AGREES on it;
+  // ambiguous features are left out rather than guessed.
+  const TIN_OUT = path.join(process.cwd(), 'static/data/tin-forms.json');
+  const tinIndex: Record<string, Record<string, string>> = {};
+  const raw2: Record<string, { lak: Set<string>; pu: Set<string>; vc: Set<string>; pada: Set<string> }> = {};
+  for (const [root, [aup, gana]] of Object.entries(DHATU)) {
+    for (const [lakDev, lakKey] of Object.entries(LAK_KEY)) {
+      for (const pu of PURUSHAS)
+        for (const vc of VACANAS)
+          for (const pada of ['Parasmaipada', 'Atmanepada'] as const) {
+            let res: any[] = [];
+            try {
+              res = v.deriveTinantas({
+                dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: [] },
+                lakara: lakKey, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
+              });
+            } catch { continue; }
+            for (const p of res) {
+              const dev = toDeva(p.text);
+              const k = root + '|' + dev;
+              const b = (raw2[k] ??= { lak: new Set(), pu: new Set(), vc: new Set(), pada: new Set() });
+              b.lak.add(lakDev); b.pu.add(PUR_DEV[pu]); b.vc.add(VAC_DEV[vc]); b.pada.add(pada === 'Parasmaipada' ? 'परस्मैपद' : 'आत्मनेपद');
+            }
+          }
+    }
+  }
+  for (const [k, b] of Object.entries(raw2)) {
+    const out: Record<string, string> = {};
+    if (b.lak.size === 1) out['लकार'] = [...b.lak][0];
+    if (b.pu.size === 1) out['पुरुष'] = [...b.pu][0];
+    if (b.vc.size === 1) out['वचन'] = [...b.vc][0];
+    if (b.pada.size === 1) out['पद'] = [...b.pada][0];
+    if (Object.keys(out).length) tinIndex[k] = out;
+  }
+  fs.writeFileSync(TIN_OUT, JSON.stringify(tinIndex, null, 0));
+  console.log(`  tiṅanta index: ${Object.keys(tinIndex).length} forms → parse, ${Object.keys(DHATU).length} roots`);
+
   const withGrid = rich.filter((e) => e.paradigm).length;
   const unplacedTotal = rich.reduce((n, e) => n + e.unplaced.length, 0);
   const kb = Math.round(fs.statSync(USAGE_OUT).size / 1024);
