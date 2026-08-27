@@ -27,7 +27,7 @@
 
   // ── Types ──────────────────────────────────────────────────────────────
 
-  type FileType = 'commentary' | 'path' | 'jargon' | 'vocabulary' | 'passage';
+  type FileType = 'commentary' | 'path' | 'jargon' | 'vocabulary' | 'passage' | 'reading';
 
   interface FileNode {
     path: string;
@@ -228,6 +228,8 @@
       }
     } else if (path.includes('/commentary/')) {
       activeMode = 'commentary';
+    } else if (path.startsWith('content/readings/')) {
+      activeMode = 'reading';
     } else {
       activeMode = 'reference';
     }
@@ -237,6 +239,7 @@
 
   function guessFileType(path: string): FileType {
     if (path.includes('/commentary/')) return 'commentary';
+    if (path.startsWith('content/readings/')) return 'reading';
     if (path.includes('/paths/')) return 'path';
     if (path.includes('jargon')) return 'jargon';
     if (path.includes('vocabulary')) return 'vocabulary';
@@ -270,9 +273,24 @@
         originalContent = '';
         currentContent = text;
       } else {
-        const urlPath = file.path.replace(/^static\//, '/');
-        const res = await fetch(urlPath);
-        const text = res.ok ? await res.text() : '';
+        /*
+          Two ways in, because the editable files live in two places.
+
+          Anything under static/ is served as an asset and can be fetched
+          directly. content/ is source and is NOT served — that is the whole
+          point of the split — so a reading is read through /api/source, which
+          asks the GitHub API for the file on `main` using the service token.
+          Reading from the branch the suggestion will be based on is also the
+          reason to prefer it: what you edit is what the pull request diffs.
+        */
+        let text = '';
+        if (file.path.startsWith('static/')) {
+          const res = await fetch(file.path.replace(/^static\//, '/'));
+          text = res.ok ? await res.text() : '';
+        } else {
+          const res = await fetch('/api/source?path=' + encodeURIComponent(file.path));
+          text = res.ok ? ((await res.json()).content ?? '') : '';
+        }
         originalContent = text;
         currentContent = text;
       }
@@ -757,10 +775,33 @@
           <button class="mode-tab" class:active={activeMode === 'commentary'} onclick={() => { activeMode = 'commentary'; }}>
             Commentary
           </button>
+          <!-- Reached from the reader's ✎, which hands over the reading's own
+               YAML. There is no tree to browse here: 348 readings is a list
+               nobody scrolls, and you arrive already knowing which one. -->
+          <button class="mode-tab" class:active={activeMode === 'reading'} onclick={() => { activeMode = 'reading'; }}>
+            Reading
+          </button>
           <button class="mode-tab" class:active={activeMode === 'reference'} onclick={() => { activeMode = 'reference'; }}>
             Reference
           </button>
         </div>
+
+        {#if activeMode === 'reading'}
+          <div class="reading-side">
+            {#if selectedFile?.path.startsWith('content/readings/')}
+              <span class="reading-label">editing</span>
+              <span class="reading-path">{selectedFile.path.replace('content/readings/', '')}</span>
+              <p class="reading-hint">
+                The annotations for this reading — every कारक, विभक्ति and gloss
+                the rail shows. Your change becomes a pull request for review.
+              </p>
+            {:else}
+              <p class="reading-hint">
+                Open a reading from the reader: select a word, then ✎ beside the ★.
+              </p>
+            {/if}
+          </div>
+        {/if}
 
         <div class="sidebar-content">
 
@@ -1232,6 +1273,32 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+  }
+
+  .reading-side {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 12px;
+  }
+  .reading-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--quiet);
+  }
+  .reading-path {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+  .reading-hint {
+    margin: 6px 0 0;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--muted);
   }
 
   /* ── Paths mode ──────────────────────────────────────────────────────── */

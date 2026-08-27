@@ -5,7 +5,7 @@
 
 import { writable } from 'svelte/store';
 
-export type EditMode = 'paths' | 'commentary' | 'reference';
+export type EditMode = 'paths' | 'commentary' | 'reading' | 'reference';
 
 export interface EditModalState {
   open: boolean;
@@ -19,6 +19,8 @@ function modeFromPath(path: string | undefined): EditMode | undefined {
   if (!path) return undefined;
   if (path.includes('/paths/')) return 'paths';
   if (path.includes('/commentary/')) return 'commentary';
+  // content/readings/<chapter>/<id>.yaml — what the reader's ✎ points at
+  if (path.startsWith('content/readings/')) return 'reading';
   return 'reference';
 }
 
