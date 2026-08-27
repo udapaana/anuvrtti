@@ -17,7 +17,7 @@
  * THE CONTENT IS NOT HERE. Sixty-six one-line glosses and six framing sentences
  * are a grammar book, and a grammar book does not belong in a TypeScript array
  * literal where editing it means editing source. They live in
- * static/data/systems.toml, beside jargon.toml, which says the same of itself.
+ * static/data/systems.toml, beside jargon.yaml, which says the same of itself.
  * This file reads that and gives it types.
  */
 import { parse } from 'smol-toml';

@@ -1,6 +1,7 @@
 import { json, error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { parse as parseToml } from 'smol-toml';
+import { parse as parseYaml } from 'yaml';
 import { validateMarkupInObject } from '$lib/markup/validate';
 
 const GITHUB_REPO = 'udapaana/anuvrtti';
@@ -48,7 +49,7 @@ function validatePath(path: string): string | null {
   if (path.includes('..') || path.includes('//')) {
     return `invalid path: ${path}`;
   }
-  if (!/\.(toml|md|json)$/.test(path)) {
+  if (!/\.(toml|yaml|md|json)$/.test(path)) {
     return `unsupported file type: ${path}`;
   }
   return null;
@@ -66,6 +67,18 @@ function validateContent(path: string, content: string): string | null {
       }
     } catch (e) {
       return `TOML parse error in ${path}: ${e instanceof Error ? e.message : String(e)}`;
+    }
+  }
+
+  if (path.endsWith('.yaml')) {
+    try {
+      const parsed = parseYaml(content) as Record<string, unknown>;
+      const result = validateMarkupInObject(parsed);
+      if (!result.valid) {
+        return `markup errors in ${path}:\n${result.errors.join('\n')}`;
+      }
+    } catch (e) {
+      return `YAML parse error in ${path}: ${e instanceof Error ? e.message : String(e)}`;
     }
   }
 

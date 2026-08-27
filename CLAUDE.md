@@ -33,12 +33,16 @@ inside `npm run build`). `bun run check` fails when it goes stale.
 
 ## The grammar, as prose
 
-Two hand-edited books, both TOML, both read by a thin `.ts` that only types
-them. Edit the TOML, never the module:
+Two hand-edited books. Edit the source, never the generated file or the module:
 
-- `static/data/jargon.toml` — 1429 terms, the glossary notes
+- `static/data/jargon.yaml` — 1429 terms, the glossary notes. Keyed by the
+  Devanagari headword (an IDE "Go to Symbol" target, `Ctrl-Shift-O → वृद्धि`);
+  a headword that repeats holds a list of entries under its one key. `bun run
+  build:jargon` flattens it to `static/data/jargon.json`, which `src/lib/jargon.ts`
+  imports directly — no client-side parser ships. Never hand-edit the JSON.
 - `static/data/systems.toml` — the systems (तिङन्त, सुबन्त, कारक, समास,
-  तद्धित, कृत्): each one's axes, its values, and a one-line gloss apiece
+  तद्धित, कृत्): each one's axes, its values, and a one-line gloss apiece. Read
+  by a thin `.ts` that only types it; edit the TOML, never the module.
 
 Every tag in `systems.toml` is joined to `src/lib/usage/schema.ts` by exact
 string match — that is how a word in the reader lights its own cell. A typo

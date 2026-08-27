@@ -2,11 +2,13 @@
  * Sanskrit grammatical terminology (samjna) definitions
  * Used for the jargon lookup sidebar in learning paths
  *
- * DATA SOURCE: static/data/jargon.toml — edit there, not here.
+ * DATA SOURCE: static/data/jargon.yaml — edit there, not here. It is keyed by
+ * the Devanagari headword (an IDE "Go to Symbol" target); `bun run build:jargon`
+ * flattens it to static/data/jargon.json, which is imported below as a plain
+ * object (no client-side parser ships).
  */
 
-import { parse } from 'smol-toml';
-import rawToml from '../../static/data/jargon.toml?raw';
+import jargonData from '../../static/data/jargon.json';
 
 export interface Term {
   term: string;       // Devanagari
@@ -29,8 +31,7 @@ export type TermCategory =
   | "samasa"      // Compounds
   | "general";    // General terms
 
-const data = parse(rawToml) as unknown as { terms: Term[] };
-export const terms: Term[] = data.terms;
+export const terms: Term[] = (jargonData as { terms: Term[] }).terms;
 
 // Build search index
 const termIndex = new Map<string, Term>();

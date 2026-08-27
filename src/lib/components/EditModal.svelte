@@ -201,7 +201,7 @@
 
   async function loadReferenceFiles() {
     referenceFiles = [
-      { label: 'Jargon', path: 'static/data/jargon.toml', fileType: 'jargon' },
+      { label: 'Jargon', path: 'static/data/jargon.yaml', fileType: 'jargon' },
       { label: 'Vocabulary', path: 'static/data/vocabulary.toml', fileType: 'vocabulary' },
     ];
   }
@@ -209,7 +209,7 @@
   // ── File selection ─────────────────────────────────────────────────────
 
   function selectFileByPath(path: string) {
-    const label = path.split('/').pop()?.replace('.toml', '').replace('.md', '') ?? path;
+    const label = path.split('/').pop()?.replace('.toml', '').replace('.yaml', '').replace('.md', '') ?? path;
     const type = guessFileType(path);
 
     // Set mode based on path
