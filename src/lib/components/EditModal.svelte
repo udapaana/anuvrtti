@@ -1,6 +1,7 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
+  import type { SessionUser } from '$lib/server/session';
   import { onMount, onDestroy, tick } from 'svelte';
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
@@ -13,7 +14,7 @@
   import type { PathMeta } from '$lib/content/index';
 
   interface Props {
-    user: { login: string; avatar_url: string } | null;
+    user: SessionUser | null;
     /*
       Authoring is a mode now, so the editor's home is a rail beside the content
       you are editing rather than a full-screen scrim over it — the page stays
@@ -723,7 +724,7 @@
           </button>
         {/if}
         {#if !user}
-          <a href="/auth/github?returnTo={$page.url.pathname}" class="btn-signin">Sign in to submit</a>
+          <a href="/auth?returnTo={$page.url.pathname}" class="btn-signin">Sign in to submit</a>
         {/if}
         <button class="btn-close" onclick={handleClose} aria-label="Close editor">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">

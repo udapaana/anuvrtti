@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { SessionUser } from '$lib/server/session';
   import { goto } from '$app/navigation';
   import { browser } from '$app/environment';
   import { dataUrl } from '$lib/dataUrl';
@@ -36,7 +37,7 @@
     both have their own Reference page.
   */
   let { data } = $props();
-  let user = $derived(data.user as { login: string; avatar_url: string } | null);
+  let user = $derived(data.user as SessionUser | null);
 
   // Learning context: offer a way back if the reader came from a path step.
   interface LearningContext {

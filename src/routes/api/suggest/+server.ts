@@ -4,6 +4,7 @@ import { parse as parseToml } from 'smol-toml';
 import { parse as parseYaml } from 'yaml';
 import { validateMarkupInObject } from '$lib/markup/validate';
 import { validatePath } from './paths';
+import { readSession, credit, branchSlug } from '$lib/server/session';
 
 const GITHUB_REPO = 'udapaana/anuvrtti';
 const API = 'https://api.github.com';
@@ -68,15 +69,9 @@ function validateContent(path: string, content: string): string | null {
 }
 
 export async function POST({ request, cookies }) {
-  const rawUser = cookies.get('gh_user');
-  if (!rawUser) error(401, 'Not authenticated');
-
-  let username: string;
-  try {
-    username = (JSON.parse(rawUser) as { login: string }).login;
-  } catch {
-    error(401, 'Invalid session');
-  }
+  const user = readSession(cookies);
+  if (!user) error(401, 'Not authenticated');
+  const username = user.name;
 
   const { files, note }: SuggestRequest = await request.json();
   if (!files || files.length === 0) error(400, 'No files provided');
@@ -96,7 +91,13 @@ export async function POST({ request, cookies }) {
   // Create branch
   const shortHash = Math.random().toString(36).slice(2, 7);
   const date = new Date().toISOString().slice(0, 10);
-  const branch = `edit/${date}-${username}-${shortHash}`;
+  /*
+    The slug, not the raw name. A GitHub login is already a valid ref fragment;
+    a Google display name is arbitrary text, and git rejects a ref containing a
+    space or `~ ^ : ? * [ \` — so "Śrīnivāsa Rāmānujan" would have failed at
+    branch creation with a GitHub API error rather than anything legible.
+  */
+  const branch = `edit/${date}-${branchSlug(user)}-${shortHash}`;
 
   await ghFetch(`/repos/${GITHUB_REPO}/git/refs`, {
     method: 'POST',
@@ -141,7 +142,9 @@ export async function POST({ request, cookies }) {
     : `${files.length} files`;
 
   const prBody = [
-    `**Contributor:** @${username}`,
+    // credit(), not `@name`: an @mention resolves on GitHub and means nothing
+    // for a Google display name — worse, it may mention an unrelated stranger.
+    `**Contributor:** ${credit(user)}`,
     `\n**Files edited:**\n${fileList}`,
     note ? `\n**Note from contributor:**\n${note}` : '',
     '\n---\n*Submitted via anuvrtti.udapaana.in*',

@@ -1,5 +1,6 @@
 import { redirect, error } from '@sveltejs/kit';
 import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
+import { writeSession } from '$lib/server/session';
 
 export async function GET({ url, cookies }) {
   const code = url.searchParams.get('code');
@@ -35,14 +36,18 @@ export async function GET({ url, cookies }) {
   const user = await userRes.json();
   if (!user.login) error(400, 'Failed to fetch GitHub user');
 
-  // Store only identity — no token cookie (user has no write access anyway)
-  cookies.set('gh_user', JSON.stringify({ login: user.login, avatar_url: user.avatar_url }), {
-    path: '/',
-    httpOnly: false,
-    secure: url.hostname !== 'localhost',
-    sameSite: 'lax',
-    maxAge: 60 * 60 * 8,
-  });
+  // Store only identity — no token cookie (user has no write access anyway).
+  // Shape shared with Google sign-in; see src/lib/server/session.ts.
+  writeSession(
+    cookies,
+    {
+      provider: 'github',
+      login: user.login,
+      name: user.name?.trim() || user.login,
+      avatar_url: user.avatar_url ?? ''
+    },
+    url.hostname
+  );
 
   redirect(302, returnTo);
 }

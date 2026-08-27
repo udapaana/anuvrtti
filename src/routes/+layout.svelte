@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { SessionUser } from '$lib/server/session';
   import '../app.css';
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
@@ -8,7 +9,7 @@
   import { authoringMode } from '$lib/stores/preferences';
 
   let { children, data } = $props();
-  let user = $derived(data.user as { login: string; avatar_url: string } | null);
+  let user = $derived(data.user as SessionUser | null);
 
   // Onboarding is full-bleed; every other route (settings included) gets the
   // persistent nav, so navigation is consistent app-wide.

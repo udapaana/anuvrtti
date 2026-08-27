@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { SessionUser } from '$lib/server/session';
   import { page } from '$app/stores';
   import { goto, replaceState } from '$app/navigation';
   import { browser } from '$app/environment';
@@ -50,7 +51,7 @@
   */
   let { data } = $props();
 
-  let user = $derived(data.user as { login: string; avatar_url: string } | null);
+  let user = $derived(data.user as SessionUser | null);
 
   let path: LearningPath | undefined = $state(undefined);
   let pathMeta: PathMeta | undefined = $state(undefined);

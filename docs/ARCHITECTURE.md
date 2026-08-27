@@ -187,9 +187,31 @@ title  = `${verb}: ${titleFiles} — ${username}`
 
 A reader signs in to prove who they are; a bot opens the PR and attributes them.
 **The user never grants write access to the repository.** Because identity is
-decoupled from repository permission, adding Google as a second provider is
-small — the username is used for the branch name and the attribution line, and
-nothing downstream requires a GitHub account.
+decoupled from repository permission, **Google works as a second provider** —
+`/auth` is the chooser both edit controls now link to, and `src/lib/server/session.ts`
+is the one shape both fill.
+
+Neither provider is asked for an email. GitHub gets `read:user`, Google gets
+`profile` — not `email`, and not `openid`, whose id_token carries the address
+anyway. A suggestion becomes a public pull request, and an address never
+collected cannot be published by accident.
+
+Two things differ per provider and both are quiet enough to get wrong:
+
+- **Attribution.** `@login` is a GitHub mention that resolves to a person.
+  A Google display name written the same way mentions a stranger who happens to
+  hold that handle, or nobody. `credit()` writes the mention for GitHub and
+  plain text plus *(via Google)* otherwise.
+- **Branch names.** A GitHub login is already a legal ref fragment. A display
+  name is arbitrary text, and git rejects a ref containing a space or
+  `~ ^ : ? * [ \` — so "Śrīnivāsa Rāmānujan" would have failed at branch
+  creation with an opaque GitHub API error. `branchSlug()` reduces to ASCII, and
+  falls back to `reader` for a name that legitimately reduces to nothing.
+
+`scripts/check-session.ts` covers both, plus the promise about email, as a hard
+check. Google needs `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` and
+`<origin>/auth/google/callback` registered; without them `/auth/google`
+redirects back saying so rather than bouncing the reader to a Google error.
 
 Both things that blocked it are fixed.
 
@@ -231,7 +253,7 @@ Each step is independently landable and independently revertable.
    list, gated by `scripts/check-suggest-paths.ts`.
 4. ~~**An edit affordance in the reader rail.**~~ Done — the ✎ beside the ★,
    sign-in aware.
-5. **Google auth** as a second identity provider.
+5. ~~**Google auth.**~~ Done, pending credentials — see *Editing from the site*.
 6. **The change report**, replacing the JSON diff as the review step.
 
 ### Coordination

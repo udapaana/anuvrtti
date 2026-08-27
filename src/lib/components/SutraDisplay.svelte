@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { SessionUser } from '$lib/server/session';
   import type { Sutra, Commentary, LayeredSutraCommentary, CommentaryDepth } from '$lib/data/types';
   import Sanskrit from './Sanskrit.svelte';
   import CommentaryText from './CommentaryText.svelte';
@@ -25,7 +26,7 @@
     fallbackCommentary?: string;
     onDepthChange?: (depth: CommentaryDepth) => void;
     onEdit?: () => void;
-    user?: { login: string; avatar_url: string } | null;
+    user?: SessionUser | null;
     href?: string;
     onClick?: (id: string) => void;
   }
@@ -159,7 +160,7 @@
                 </svg>
               </button>
             {:else}
-              <a href="/auth/github?returnTo=/ref/{sutra.id}" class="edit-btn edit-btn-signin" title="Sign in to suggest edits">
+              <a href="/auth?returnTo=/ref/{sutra.id}" class="edit-btn edit-btn-signin" title="Sign in to suggest edits">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.992.596l-2.502.834a.25.25 0 0 1-.315-.316l.834-2.501c.12-.361.32-.686.596-.993z" />
                 </svg>

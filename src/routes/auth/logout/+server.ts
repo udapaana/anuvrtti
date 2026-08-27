@@ -1,7 +1,8 @@
+import { clearSession } from '$lib/server/session';
 import { redirect } from '@sveltejs/kit';
 
 export function POST({ cookies, url }) {
-  cookies.delete('gh_user', { path: '/' });
+  clearSession(cookies);
   const returnTo = url.searchParams.get('returnTo') || '/';
   redirect(302, returnTo);
 }

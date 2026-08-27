@@ -510,7 +510,7 @@
       reading they were on.
     */
     if (!$appPage.data.user) {
-      goto('/auth/github?returnTo=' + encodeURIComponent($appPage.url.pathname + $appPage.url.search));
+      goto('/auth?returnTo=' + encodeURIComponent($appPage.url.pathname + $appPage.url.search));
       return;
     }
     // Opening the editor turns the mode on, the way the sūtra page does.

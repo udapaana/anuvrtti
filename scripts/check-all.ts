@@ -222,6 +222,17 @@ if (/case\(s\) wrong/.test(sp)) {
   console.log('  ✓ ' + sp.trim());
 }
 
+// 10. sign-in and attribution — HARD. Two providers now, and the ways they
+// differ are quiet ones: an @mention that resolves on GitHub and mentions a
+// stranger for a Google display name, and a branch name git will not accept.
+const ses = await run(['bun', 'scripts/check-session.ts']);
+if (/check\(s\) failed/.test(ses)) {
+  problems.push('session: ' + ses.trim().split('\n').pop());
+  console.log('  ✗ ' + ses.trim().split('\n').pop());
+} else {
+  console.log('  ✓ ' + ses.trim());
+}
+
 console.log();
 if (problems.length) {
   console.log('FAILED:\n');

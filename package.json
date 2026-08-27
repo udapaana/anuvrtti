@@ -26,7 +26,8 @@
     "build:commentary-index": "bun scripts/generate-commentary-index.ts",
     "build:data": "bun run build:paths && bun run build:jargon && bun run build:quiz && bun run build:balabodhini && bun run build:dukrnkarane && bun run build:commentary-index && bun run build:dhatu-map && bun run build:sutras && bun run build:sutra-refs && bun run build:stats",
     "build:dhatu-map": "bun scripts/build-dhatu-map.ts",
-    "suggest-paths": "bun scripts/check-suggest-paths.ts"
+    "suggest-paths": "bun scripts/check-suggest-paths.ts",
+    "session": "bun scripts/check-session.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.0",
