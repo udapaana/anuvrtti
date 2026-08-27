@@ -18,7 +18,7 @@ const OUT = path.join(process.cwd(), 'static/data/jargon.json');
 
 const CATEGORIES = new Set([
   'samjna', 'pratyahara', 'karaka', 'vibhakti', 'pratyaya',
-  'sandhi', 'lakara', 'gana', 'samasa', 'general',
+  'sandhi', 'lakara', 'gana', 'samasa', 'phonetics', 'general',
 ]);
 
 type Entry = { termRoman: string; category: string; meaning: string; sutraRef?: string; related?: string[] };

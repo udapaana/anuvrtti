@@ -29,6 +29,7 @@ export type TermCategory =
   | "lakara"      // Tenses and moods
   | "gana"        // Verb classes
   | "samasa"      // Compounds
+  | "phonetics"   // Articulation — place, effort, organs of speech
   | "general";    // General terms
 
 export const terms: Term[] = (jargonData as { terms: Term[] }).terms;
@@ -190,6 +191,7 @@ export function getCategories(): {
     lakara: "Tenses & Moods",
     gana: "Verb Classes",
     samasa: "Compounds",
+    phonetics: "Phonetics",
     general: "General",
   };
 
