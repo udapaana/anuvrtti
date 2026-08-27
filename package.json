@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build:paths": "bun scripts/build-path-index.ts",
-    "dev": "bun run build:paths && bun run build:jargon && bun run build:readings && bun run build:balabodhini && bun run build:dukrnkarane && bun run build:sutras && bun run build:sutra-refs && bun run build:stats && vite dev",
-    "build": "bun run build:paths && bun run build:jargon && bun run build:readings && bun run build:balabodhini && bun run build:dukrnkarane && bun run build:sutras && bun run build:sutra-refs && bun run build:stats && vite build",
+    "dev": "bun run build:paths && bun run build:jargon && bun run build:quiz && bun run build:balabodhini && bun run build:dukrnkarane && bun run build:commentary-index && bun run build:dhatu-map && bun run build:sutras && bun run build:sutra-refs && bun run build:stats && vite dev",
+    "build": "bun run build:paths && bun run build:jargon && bun run build:quiz && bun run build:balabodhini && bun run build:dukrnkarane && bun run build:commentary-index && bun run build:dhatu-map && bun run build:sutras && bun run build:sutra-refs && bun run build:stats && vite build",
     "preview": "vite preview",
     "build:readings": "bun scripts/build-readings.ts",
     "build:jargon": "bun scripts/build-jargon.ts",
@@ -22,7 +22,10 @@
     "build:quiz": "bun scripts/build-readings.ts && bun scripts/build-quiz.ts && bun scripts/build-readings.ts",
     "complete": "bun scripts/check-complete.ts",
     "lint": "bun scripts/check-complete.ts --lint",
-    "systems": "bun scripts/check-systems.ts"
+    "systems": "bun scripts/check-systems.ts",
+    "build:commentary-index": "bun scripts/generate-commentary-index.ts",
+    "build:data": "bun run build:paths && bun run build:jargon && bun run build:quiz && bun run build:balabodhini && bun run build:dukrnkarane && bun run build:commentary-index && bun run build:dhatu-map && bun run build:sutras && bun run build:sutra-refs && bun run build:stats",
+    "build:dhatu-map": "bun scripts/build-dhatu-map.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.0",

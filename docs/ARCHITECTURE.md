@@ -39,25 +39,50 @@ overlay under `content/` that the build applies on top.
 ### 3. Generated — `static/data/`, `static/content/`
 
 Everything the build computes. **Reproducible from the other two by running
-`npm run build`**, and therefore not worth reviewing, not worth diffing, and —
-once the migration below is done — not worth committing.
+`npm run build:data`**, and therefore not worth reviewing, not worth diffing and
+not committed. All of it is gitignored.
+
+The invariant, and the way to check it:
+
+```bash
+git clean -Xfd static/data static/content && npm run build:data
+```
+
+If anything is missing afterwards, either a generator is not in the chain or the
+file is not really generated. Both happened during the migration — see
+*What the cold build caught*.
 
 ---
 
-## Where things actually are today
+## What the cold build caught
 
-The rule above is not yet true. `static/data/` currently holds all three kinds
-interleaved, which is the problem this document exists to fix.
+The rule is enforced now, but it took a cold build to find where the inventory
+was wrong. Both errors were mine, and both were the same mistake — reading a
+path constant in a script and assuming it was a write:
 
-### Generated (4,002 files, 28.7 MB)
+- **`vocabulary.json` is authored, not generated.** build-quiz *reads* it for
+  gender hints and never writes it; the 42-entry lexicon is hand-maintained
+  source. Ignoring it would have silently deleted it.
+- **The three dukrnkarane payloads are vendored, not generated.**
+  `build-dukrnkarane.ts` reads a checkout of a *separate repository*
+  (`$DUKR_SRC`) and, when it is absent, skips with a notice and keeps the
+  committed payload. On a clean CI machine that repository does not exist, so
+  ignoring `dukrnkarane.json` would have shipped a grammar door with 988 rules
+  replaced by nothing — which is exactly what the first cold build printed:
+  `stats.json` said `0 rules`.
+
+Also removed: `layered_commentary.json`, 6.5 MB, referenced nowhere in `src/`
+and read only by the one-shot script that already split it into the per-sūtra
+TOMLs which are now the source.
+
+### Generated — gitignored (4,002 files, 28.7 MB removed from git)
 
 | file | written by |
 |---|---|
-| `readings.json`, `usage.json`, `quiz-cells.json`, `tin-forms.json`, `vocabulary.json` | `build-readings.ts`, `build-quiz.ts` |
+| `readings.json`, `usage.json`, `quiz-cells.json`, `tin-forms.json` | `build-readings.ts`, `build-quiz.ts` |
 | `sutras.json` | `build-sutras.ts` |
 | `sutra-refs/` (3,984 files), `readings-by-sutra.json` | `build-sutra-refs.ts` |
 | `balabodhini.json` | `build-balabodhini.ts` |
-| `dukrnkarane.json`, `dukrnkarane-by-sutra.json`, `sutrartha_english.json` | `build-dukrnkarane.ts` |
 | `jargon.json` | `build-jargon.ts` |
 | `dhatu-map.json` | `build-dhatu-map.ts` |
 | `stats.json` | `build-stats.ts` |
@@ -75,12 +100,19 @@ These are hand-written and irreplaceable, and they sit in a directory whose name
 says "static asset". `content/readings/` is the only authored tree already in
 the right place.
 
-### Vendored, but living in the generated tree
+### Vendored — still committed
 
 `kashika.json` · `kashika_english.json` · `vartika.json` ·
-`vasu_english.json` · `vasu_english_summary.json` · `vasu_rewritten.json`
+`vasu_english.json` · `vasu_english_summary.json` · `vasu_rewritten.json` ·
+`dukrnkarane.json` · `dukrnkarane-by-sutra.json` · `sutrartha_english.json`
 
-`data/dhatupatha.tsv` is the only vendored file already in the right place.
+`data/dhatupatha.tsv` is the only one in the right directory. Moving the rest to
+`data/` is tidying, not correctness, and is deferred: five of these trees are
+also **fetched by the browser at runtime** (`/data/commentary`, `/data/passages`,
+`/data/balabodhini`, `/content/paths`, `/content/sensitive-notes`), so moving
+them out of `static/` requires a staging step that copies them back in. Worth
+doing, but it buys clarity rather than the diff and conflict relief that
+gitignoring the generated files already bought.
 
 ---
 
@@ -176,12 +208,13 @@ Two things block this from being useful:
 
 Each step is independently landable and independently revertable.
 
-1. **This document.** Two sessions push to `main`; the map should exist before
-   files move.
-2. **Split the three trees.** Authored files to `content/`, vendored to `data/`,
-   `static/data/` gitignored and built. Touches every build script's paths,
-   `.gitignore`, and `docs/AUTHORING.md`. The three `--check` staleness gates are
-   deleted, not ported — they guard a problem that stops existing.
+1. ~~**This document.**~~ Done.
+2. ~~**Gitignore the generated tree.**~~ Done. `npm run build:data` is the one
+   chain, `build:quiz`, `build:commentary-index` and `build:dhatu-map` are in it
+   (they were run by hand before, which is why their output had to be
+   committed), and the three `--check` staleness gates are deleted — they
+   guarded a problem that no longer exists. Moving the authored and vendored
+   trees into `content/` and `data/` is deferred; see *Vendored*.
 3. **`ALLOWED_PREFIXES` → `content/`.** Meaningless before step 2; unblocks
    human correction after it.
 4. **An edit affordance in the reader rail**, where annotation errors are seen.

@@ -195,38 +195,20 @@ if (/SUTRA_COUNT is/.test(cnt)) {
   console.log('  ✓ ' + cnt.trim());
 }
 
-// 9. the home page's door counts — HARD. static/data/stats.json is generated
-// and committed; if it goes stale the threshold page advertises a corpus we no
-// longer have, and nothing else would notice.
-const stats = await run(['bun', 'scripts/build-stats.ts', '--check']);
-if (/stale|missing/.test(stats)) {
-  problems.push('door stats: static/data/stats.json is stale — run bun run build:stats');
-  console.log('  ✗ door stats: static/data/stats.json is stale');
-} else {
-  console.log('  ✓ ' + stats.trim());
-}
+/*
+  The three staleness gates that stood here are gone.
 
-// 10. the sūtra payload — HARD. static/data/sutras.json is generated from
-// src/lib/data/sutras/*.yaml and committed; stale, it serves an Aṣṭādhyāyī that
-// no longer matches its own source, and every /ref page reads it.
-const sut = await run(['bun', 'scripts/build-sutras.ts', '--check']);
-if (/stale/.test(sut)) {
-  problems.push('sūtra payload: static/data/sutras.json is stale — run bun run build:sutras');
-  console.log('  ✗ sūtra payload: static/data/sutras.json is stale');
-} else {
-  console.log('  ✓ ' + sut.trim());
-}
+  They compared a committed generated file against what its source would produce
+  now — stats.json, sutras.json, sutra-refs/. That was a real hazard while those
+  files were in git: nothing else would have noticed the door counts advertising
+  a corpus we no longer had. They are build output now, rebuilt from source on
+  every build and on every deploy, so there is no committed copy left to drift.
 
-// 11. the per-sūtra ref files — HARD. Generated from the six imported corpora
-// and committed; every /ref/[id] page fetches one, and stale means a sūtra page
-// shows commentary that no longer matches the corpus it was split from.
-const refs = await run(['bun', 'scripts/build-sutra-refs.ts', '--check']);
-if (/stale/.test(refs)) {
-  problems.push('sūtra refs: static/data/sutra-refs/ is stale — run bun run build:sutra-refs');
-  console.log('  ✗ sūtra refs: static/data/sutra-refs/ is stale');
-} else {
-  console.log('  ✓ ' + refs.trim());
-}
+  What remains above are checks of a different kind and they stay: the sūtra
+  count validates a hand-written constant against the YAML it summarises, and the
+  systems check validates a hand-edited book against the schema it joins to.
+  Both compare two things a human wrote. Neither is about build freshness.
+*/
 
 console.log();
 if (problems.length) {

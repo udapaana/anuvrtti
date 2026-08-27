@@ -8,3 +8,49 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .playwright-mcp/
 .claude/worktrees/
+
+# ── build output ────────────────────────────────────────────────────────────
+#
+# Everything below is computed by `npm run build:data` from content/ and data/,
+# and none of it is worth reviewing, diffing or committing. It used to be: 4002
+# files and 28.7 MB of generated JSON in git, so a single new reading arrived as
+# 133 lines of authored YAML plus 575 lines of readings.json and two whole-file
+# rewrites of minified payloads. Nobody read those diffs, and two sessions
+# authoring at once conflicted on files neither had edited.
+#
+# CI runs the same chain before deploying (.github/workflows/deploy.yml), and it
+# already builds the vidyut WASM that build:quiz needs — measured at 13s, which
+# is why the expensive step can run there rather than being carried in the repo.
+#
+# See docs/ARCHITECTURE.md. If you add a generated file, add it here too, or it
+# will be committed and start rotting the moment its source changes.
+
+static/data/readings.json
+static/data/usage.json
+static/data/quiz-cells.json
+static/data/tin-forms.json
+static/data/sutras.json
+static/data/sutra-refs/
+static/data/readings-by-sutra.json
+static/data/balabodhini.json
+static/data/jargon.json
+static/data/dhatu-map.json
+static/data/stats.json
+static/data/commentary-index.json
+
+# NOT ignored, and each for a reason the cold-build test found:
+#
+#   vocabulary.json          authored. build-quiz READS it for gender hints and
+#                            never writes it — the 42-entry lexicon is source.
+#   dukrnkarane.json         imported from a sibling repository.
+#   dukrnkarane-by-sutra.json  build-dukrnkarane.ts reads a checkout of the
+#   sutrartha_english.json     dukrnkarane project ($DUKR_SRC) and skips with a
+#                            notice when it is absent, keeping the committed
+#                            payload. Not reproducible here, so not ignorable
+#                            here — they are vendored, not generated.
+#
+# The invariant to preserve: everything ignored above can be rebuilt by
+# `npm run build:data` from a clean checkout. Verify with
+#   git clean -Xfd static/data static/content && npm run build:data
+static/content/paths-index.json
+static/content/sutra-paths.json
