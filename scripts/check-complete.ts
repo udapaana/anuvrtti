@@ -144,7 +144,10 @@ function missingFor(type: WordType, w: Word, terms: Set<string>): string[] {
   const derived = w.derived ?? {};
 
   for (const d of type.dimensions) {
-    if (d.source === 'optional') continue;
+    // A conditional dimension may genuinely not exist on this word — गच्छति has
+    // no उपसर्ग — so its absence is never a gap. It is reported separately
+    // rather than skipped silently; see the conditional block below.
+    if (d.source === 'conditional') continue;
 
     // A कृदन्त owes विभक्ति only if its suffix declines. क्त्वा and तुमुन् are
     // अव्यय by 1.1.40 and take nothing further.
@@ -177,6 +180,16 @@ function main() {
   const byReading = new Map<string, number>();
   const untyped: Array<{ reading: string; form: string; tags: string[] }> = [];
   const unknownTags = new Map<string, number>();
+  /*
+    Conditional coverage — counted rather than hidden.
+
+    `optional` used to mean "not counted", and forty-three of the sixty-odd
+    dimensions were in it, so nothing anywhere could tell a dimension nobody
+    had ever filled from one the language genuinely never asks for. These are
+    the ones that may legitimately be absent, so they are never demanded — but
+    they are now measured, keyed type|dimension.
+  */
+  const cond = new Map<string, { n: number; total: number }>();
 
   for (const r of corpus.sequence ?? []) {
     if (one && r.id !== one) continue;
@@ -194,6 +207,15 @@ function main() {
         byReading.set(r.id, (byReading.get(r.id) ?? 0) + 1);
         continue;
       }
+      for (const d of wt.dimensions) {
+        if (d.source !== 'conditional' || !d.values.length) continue;
+        const key = `${wt.dev}|${d.name}`;
+        const e = cond.get(key) ?? { n: 0, total: 0 };
+        e.total++;
+        if (d.values.some((v) => terms.has(v))) e.n++;
+        cond.set(key, e);
+      }
+
       for (const l of lintWord(wt, w, terms)) lints.push({ ...l, reading: r.id });
       const missing = missingFor(wt, w, terms);
       if (!missing.length) { byType[type].complete++; continue; }
@@ -303,6 +325,21 @@ function main() {
 
   const need: Record<string, number> = {};
   for (const f of findings) for (const m of f.missing) need[m] = (need[m] ?? 0) + 1;
+  /*
+    A 0% line here is the one worth looking at: it usually means the tag has no
+    author, not that the language never uses it. But it is a prompt, never an
+    error — demanding उपसर्ग on गच्छति is not a stricter standard, it is an
+    impossible one.
+  */
+  console.log('\n  conditional — may not exist on a word; measured, never demanded:');
+  for (const [key, e] of [...cond].sort((a, b) => a[1].n / a[1].total - b[1].n / b[1].total)) {
+    const [type, dim] = key.split('|');
+    const pct = Math.round((100 * e.n) / e.total);
+    console.log(
+      `    ${type.padEnd(9)} ${dim.padEnd(14)} ${String(e.n).padStart(5)} / ${String(e.total).padEnd(5)} ${String(pct).padStart(3)}%`
+    );
+  }
+
   console.log('\n  most-needed tag:');
   for (const [k, v] of Object.entries(need).sort((a, b) => b[1] - a[1])) {
     console.log(`    ${String(v).padStart(5)}  ${k}`);

@@ -80,6 +80,7 @@ function lengthOf(r: any): 'short' | 'passage' | 'long' {
  * churn for no reason.
  */
 const VIBHAKTI = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
+const PRAYOGA = ['कर्तरि', 'कर्मणि', 'भावे'];
 const LAKARA = ['लट्', 'लङ्', 'लिट्', 'लृट्', 'लोट्', 'विधिलिङ्', 'लुङ्'];
 const ROLES = ['कर्तृ', 'कर्मन्', 'करण', 'सम्प्रदान', 'अपादान', 'अधिकरण'];
 
@@ -237,6 +238,25 @@ function derivedFeatures(word: any): Record<string, string> | null {
     if (tin['वचन'] && !out['वचन'] && ![...terms].some((t) => VACANA_SET.has(t))) out['वचन'] = tin['वचन'];
     if (tin['पद'] && !out['पद'] && ![...terms].some((t) => PADA_SET.has(t))) out['पद'] = tin['पद'];
   }
+
+  /*
+    प्रयोग on a finite verb, which is कर्तरि unless the author says otherwise.
+
+    Every तिङन्त has a voice — there is no such thing as a verb outside
+    कर्तरि/कर्मणि/भावे — but the form almost never shows it, so 3% of verbs
+    carried the tag and the other 97% were simply blank. Blank read as "unknown"
+    when it means "the default", which is why the schema calls this derived
+    rather than authored: 2.3.x treats कर्तरि as the unmarked case, so absence of
+    कर्मणि/भावे IS the assertion. Written out here so the rail, the quiz and
+    /usage all see a value instead of inferring one separately.
+
+    तिङन्त only. A कृदन्त's voice follows its suffix — क्त is usually कर्मणि,
+    शतृ and क्तवतु कर्तरि, तव्य and ण्यत् कर्मणि — so there is no safe default
+    and it stays authored.
+  */
+  const isTin = [...terms].some((t) => LAKARA_SET.has(t) || PADA_SET.has(t))
+    || !!out['लकार'] || !!out['पद'];
+  if (isTin && ![...terms].some((t) => PRAYOGA.includes(t))) out['प्रयोग'] = 'कर्तरि';
 
   // विभक्ति from the कारक role, as a FALLBACK. The role is the author's own
   // assertion (कर्मन् → द्वितीया, 2.3.x), so this is not the engine guessing — it

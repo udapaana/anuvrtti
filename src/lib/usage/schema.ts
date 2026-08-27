@@ -19,13 +19,38 @@
  */
 
 /** Where a dimension's value comes from. */
+/*
+  WHY A WORD MAY LACK A TAG — and the difference that matters.
+
+  There used to be one bucket for "may be absent", called `optional`, and
+  check-complete skipped every dimension in it. Forty-three of the sixty-odd
+  dimensions were in that bucket, so the completeness figures — सुबन्त 53%,
+  तिङन्त 60% — were percentages of the fields we had decided to count, and the
+  ones we had not counted were invisible in every report. कारक sat there:
+  present on 67% of nouns, absent on a third of them, and never once named as
+  missing by anything.
+
+  The distinction the single bucket lost is between a value that is ABSENT and
+  a value that does not EXIST. गच्छति has no उपसर्ग — there is nothing to write,
+  and demanding one is not a stricter standard but an impossible one. देवम् has
+  a कारक; if none is written, that is a gap. Both were `optional`, so neither
+  could be told from the other, and absence meant nothing at all.
+*/
 export type Source =
-  /** The sentence or the analysis decides it. Nothing can derive it. */
+  /** The sentence or the analysis decides it. Nothing can derive it, and every
+   *  word of this type owes one — a missing value is a gap. */
   | 'authored'
-  /** vidyut settles it once the authored dimensions are known. */
+  /** vidyut or the index settles it once the authored dimensions are known.
+   *  Always filled, never by hand. */
   | 'derived'
-  /** Authored, but only when the sentence assigns one — absence is not a defect. */
-  | 'optional';
+  /**
+   * The value may genuinely not exist on this word: most verbs carry no
+   * उपसर्ग, most nouns are not compounds, most words show no सन्धि at their
+   * boundary. Absence here is a fact about the word, not a gap in the corpus —
+   * which is exactly why it cannot be made required. Reported separately by
+   * check-complete rather than silently skipped.
+   */
+  | 'conditional';
 
 export interface Dimension {
   /** The tag as it appears in `notes[].term`. */
@@ -325,9 +350,9 @@ export const AVYAYA_SUBTYPES = [
  * word's surface shows the change / the source marks the accent.
  */
 export const OVERLAY_DIMENSIONS: Dimension[] = [
-  { name: 'सन्धि', values: SANDHI, source: 'optional',
+  { name: 'सन्धि', values: SANDHI, source: 'conditional',
     note: 'a boundary process; the split and cite are authored alongside in free text' },
-  { name: 'स्वर', values: SVARA, source: 'optional',
+  { name: 'स्वर', values: SVARA, source: 'conditional',
     note: 'display-only — vidyut emits no accents; write it where the source has it' }
 ];
 
@@ -352,13 +377,13 @@ export const WORD_TYPES: WordType[] = [
       { name: 'पद', values: PADA, source: 'derived' },
       { name: 'गण', values: GANA, source: 'derived',
         note: 'the root class; derivable, and it fixes the विकरण' },
-      { name: 'विकरण', values: VIKARANA, source: 'optional',
+      { name: 'विकरण', values: VIKARANA, source: 'conditional',
         note: 'derived from गण, but अदादि (लुक्) and जुहोत्यादि (श्लु) have no शप्-like विकरण, so it is not required' },
-      { name: 'प्रयोग', values: PRAYOGA, source: 'optional',
+      { name: 'प्रयोग', values: PRAYOGA, source: 'derived',
         note: 'कर्तरि is the default; tag only कर्मणि and भावे, which the form rarely shows' },
-      { name: 'उपसर्ग', values: UPASARGA, source: 'optional',
+      { name: 'उपसर्ग', values: UPASARGA, source: 'conditional',
         note: 'आगच्छति is not गच्छति — the preverb makes a different verb' },
-      { name: 'सनादि', values: SANADI, source: 'optional', note: 'गमयति is not गच्छति' },
+      { name: 'सनादि', values: SANADI, source: 'conditional', note: 'गमयति is not गच्छति' },
       ...OVERLAY_DIMENSIONS
     ]
   },
@@ -377,19 +402,19 @@ export const WORD_TYPES: WordType[] = [
         note: 'only when the suffix declines' },
       { name: 'वचन', values: VACANA, source: 'derived' },
       { name: 'लिङ्ग', values: LINGA, source: 'derived', note: 'only when the suffix declines' },
-      { name: 'कारक', values: KARAKA, source: 'optional',
+      { name: 'कारक', values: KARAKA, source: 'conditional',
         note: 'a declining कृदन्त plays a कारक role like any noun — गमनम् can be the कर्मन्' },
-      { name: 'प्रयोग', values: PRAYOGA, source: 'optional',
+      { name: 'प्रयोग', values: PRAYOGA, source: 'authored',
         note: 'a participle has voice: क्त is usually कर्मणि (कृतः "done"), शतृ/क्तवतु कर्तरि, तव्य/ण्यत् कर्मणि' },
-      { name: 'उपसर्ग', values: UPASARGA, source: 'optional',
+      { name: 'उपसर्ग', values: UPASARGA, source: 'conditional',
         note: 'the कृदन्त is built on the whole verb — प्रस्थाय is प्र + स्था + ल्यप्' },
-      { name: 'सनादि', values: SANADI, source: 'optional',
+      { name: 'सनादि', values: SANADI, source: 'conditional',
         note: 'a causative participle (गमयित्वा, बोधयन्) carries णिच्' },
-      { name: 'विकरण', values: VIKARANA, source: 'optional',
+      { name: 'विकरण', values: VIKARANA, source: 'conditional',
         note: 'a passive participle (पठ्यमान) carries यक्, the passive विकरण' },
-      { name: 'समास', values: SAMASA, source: 'optional',
+      { name: 'समास', values: SAMASA, source: 'conditional',
         note: 'a कृदन्त can be a compound member (सर्वस्वामिगुणोपेत)' },
-      { name: 'अव्यय-भेद', values: AVYAYA_SUBTYPES, source: 'optional',
+      { name: 'अव्यय-भेद', values: AVYAYA_SUBTYPES, source: 'conditional',
         note: 'an indeclinable कृदन्त (श्रुत्वा) is a कृदव्यय' },
       ...OVERLAY_DIMENSIONS
     ]
@@ -411,9 +436,9 @@ export const WORD_TYPES: WordType[] = [
         note: 'when it declines; an adverbial तद्धित (ग्रामतः) is अव्यय and takes none' },
       { name: 'वचन', values: VACANA, source: 'derived' },
       { name: 'लिङ्ग', values: LINGA, source: 'derived' },
-      { name: 'कारक', values: KARAKA, source: 'optional',
+      { name: 'कारक', values: KARAKA, source: 'authored',
         note: 'a declining तद्धित plays a कारक role — श्रेष्ठाय is the सम्प्रदान' },
-      { name: 'अव्यय-भेद', values: AVYAYA_SUBTYPES, source: 'optional',
+      { name: 'अव्यय-भेद', values: AVYAYA_SUBTYPES, source: 'conditional',
         note: 'some तद्धितs (तसिल्, धा) are indeclinable — ग्रामतः, द्विधा' },
       ...OVERLAY_DIMENSIONS
     ]
@@ -430,16 +455,16 @@ export const WORD_TYPES: WordType[] = [
     markers: ['सर्वनाम', ...SARVANAMA],
     dimensions: [
       { name: 'lemma', values: SARVANAMA, source: 'authored', note: 'the pronominal stem' },
-      { name: 'सर्वनाम-भेद', values: SARVANAMA_SUBTYPE, source: 'optional' },
+      { name: 'सर्वनाम-भेद', values: SARVANAMA_SUBTYPE, source: 'authored' },
       { name: 'विभक्ति', values: VIBHAKTI, source: 'authored' },
       { name: 'वचन', values: VACANA, source: 'derived' },
-      { name: 'लिङ्ग', values: LINGA, source: 'optional',
+      { name: 'लिङ्ग', values: LINGA, source: 'conditional',
         note: 'the gender of the REFERENT, not of the word — authored only when it disambiguates; अस्मद्/युष्मद् have none at all' },
-      { name: 'पुरुष', values: PURUSHA, source: 'optional',
+      { name: 'पुरुष', values: PURUSHA, source: 'conditional',
         note: 'अस्मद्/युष्मद् carry a person — अहम् is उत्तम, त्वम् मध्यम' },
-      { name: 'कारक', values: KARAKA, source: 'optional',
+      { name: 'कारक', values: KARAKA, source: 'authored',
         note: 'a pronoun plays a कारक role like any nominal' },
-      { name: 'सम्बन्धार्थ', values: SENSE_ROLE, source: 'optional',
+      { name: 'सम्बन्धार्थ', values: SENSE_ROLE, source: 'conditional',
         note: 'a pronoun can bear a sense-role too — तेन हेतु "for that reason"' },
       ...OVERLAY_DIMENSIONS
     ]
@@ -458,7 +483,7 @@ export const WORD_TYPES: WordType[] = [
       { name: 'वचन', values: VACANA, source: 'derived' },
       { name: 'लिङ्ग', values: LINGA, source: 'derived',
         note: 'its OWN gender, agreeing with the noun — unlike a pronoun' },
-      { name: 'कारक', values: KARAKA, source: 'optional' },
+      { name: 'कारक', values: KARAKA, source: 'authored' },
       ...OVERLAY_DIMENSIONS
     ]
   },
@@ -469,9 +494,9 @@ export const WORD_TYPES: WordType[] = [
     markers: ['संख्या', ...SANKHYA_SUBTYPE],
     dimensions: [
       { name: 'lemma', values: [], source: 'authored' },
-      { name: 'संख्या-भेद', values: SANKHYA_SUBTYPE, source: 'optional',
+      { name: 'संख्या-भेद', values: SANKHYA_SUBTYPE, source: 'authored',
         note: 'द्वि is dual-only, पञ्चन्+ genderless — the sub-type governs which forms exist' },
-      { name: 'कारक', values: KARAKA, source: 'optional' },
+      { name: 'कारक', values: KARAKA, source: 'authored' },
       { name: 'विभक्ति', values: VIBHAKTI, source: 'authored' },
       { name: 'वचन', values: VACANA, source: 'derived' },
       { name: 'लिङ्ग', values: LINGA, source: 'derived', note: 'त्रि/चतुर् only; पञ्चन्+ have none' },
@@ -494,15 +519,15 @@ export const WORD_TYPES: WordType[] = [
         note: 'the sentence decides; देवे could be five cells' },
       { name: 'वचन', values: VACANA, source: 'derived' },
       { name: 'लिङ्ग', values: LINGA, source: 'derived' },
-      { name: 'कारक', values: KARAKA, source: 'optional',
+      { name: 'कारक', values: KARAKA, source: 'authored',
         note: 'supplies the विभक्ति where it is absent, and answers "what is it doing here?"' },
-      { name: 'सम्बन्धार्थ', values: SENSE_ROLE, source: 'optional',
+      { name: 'सम्बन्धार्थ', values: SENSE_ROLE, source: 'conditional',
         note: 'a case assigned by a meaning-rule (हेतु, निर्धारण) rather than a कारक' },
-      { name: 'समास', values: SAMASA, source: 'optional',
+      { name: 'समास', values: SAMASA, source: 'conditional',
         note: 'with a विग्रह — an analysis, never a computation' },
-      { name: 'विशेषण', values: [], source: 'optional',
+      { name: 'विशेषण', values: [], source: 'conditional',
         note: 'an adjective agrees with its विशेष्य in लिङ्ग/विभक्ति/वचन; that link is the fact worth recording' },
-      { name: 'स्त्रीप्रत्यय', values: STRI_PRATYAYA, source: 'optional',
+      { name: 'स्त्रीप्रत्यय', values: STRI_PRATYAYA, source: 'conditional',
         note: 'the feminine-forming affix, when the stem is a derived feminine — नदी (ङीप्), सेना (टाप्)' },
       ...OVERLAY_DIMENSIONS
     ]
@@ -518,7 +543,7 @@ export const WORD_TYPES: WordType[] = [
     markers: ['अव्यय', 'निपात', 'उपसर्ग', 'कर्मप्रवचनीय', 'क्रियाविशेषण', 'कृदव्यय', 'negation'],
     dimensions: [
       { name: 'lemma', values: [], source: 'authored' },
-      { name: 'अव्यय-भेद', values: AVYAYA_SUBTYPES, source: 'optional',
+      { name: 'अव्यय-भेद', values: AVYAYA_SUBTYPES, source: 'authored',
         note: 'nothing inflects; the subtype is for browsing, not for placing' },
       ...OVERLAY_DIMENSIONS
     ]
