@@ -210,6 +210,18 @@ if (/SUTRA_COUNT is/.test(cnt)) {
   Both compare two things a human wrote. Neither is about build freshness.
 */
 
+// 9. the suggestion allowlist — HARD. /api/suggest opens a pull request with a
+// service token, so its path rules are a boundary, not a preference: too loose
+// and a reader can write anywhere in the repo, too tight and the annotations
+// most likely to be wrong cannot be corrected from the site.
+const sp = await run(['bun', 'scripts/check-suggest-paths.ts']);
+if (/case\(s\) wrong/.test(sp)) {
+  problems.push('suggest paths: ' + sp.trim().split('\n').pop());
+  console.log('  ✗ ' + sp.trim().split('\n').pop());
+} else {
+  console.log('  ✓ ' + sp.trim());
+}
+
 console.log();
 if (problems.length) {
   console.log('FAILED:\n');

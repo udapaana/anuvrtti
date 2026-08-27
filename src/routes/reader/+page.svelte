@@ -16,9 +16,12 @@
   import { systemForTerm, systemsForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
-  import { displayScript } from '$lib/stores/preferences';
+  import { displayScript, authoringMode } from '$lib/stores/preferences';
   import { transliterate } from '$lib/transliteration';
   import { isNarrow } from '$lib/stores/viewport';
+  import { editModal } from '$lib/stores/editModal';
+  // aliased: this route already has a `page` of its own (the reading list's)
+  import { page as appPage } from '$app/stores';
   import SheetButton from '$lib/components/ui/SheetButton.svelte';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
@@ -470,6 +473,50 @@
 
   /** The clicked word — the grammar block. */
   const selWord = $derived(sel ? tokenAt(sel.id, sel.ti) : null);
+
+  /*
+    The file the selected word is annotated in.
+
+    Every annotation the rail shows — the कारक, the विभक्ति, the gloss — is
+    authored in one YAML file, and until now the reader was the one place you
+    could see a wrong tag and not fix it: the edit control was wired on
+    /ref/[id] and /workbook/[lessonId] only. build-readings stamps each reading
+    with its source path (`content/readings/06_readings/rd088.yaml`), because
+    the payload knows its chapter as a slug and cannot reconstruct the
+    directory. A suggestion against that path is a pull request against the
+    annotation itself, not against a build artefact that the next build erases.
+  */
+  const selFile = $derived.by(() => {
+    if (!sel) return undefined;
+    return (list.find((x) => x.id === sel.id) as any)?.file as string | undefined;
+  });
+
+  // The shelf's authoring control follows the selection, so "edit" always means
+  // the reading in front of you.
+  $effect(() => {
+    editModal.setPageContext(selFile);
+    return () => editModal.setPageContext(undefined);
+  });
+
+  function editThisReading() {
+    if (!selFile) return;
+    /*
+      The editor only mounts for a signed-in user — +layout.svelte gates it on
+      `!!user && $authoringMode` — so for everyone else this button did nothing
+      at all, which is worse than not offering it. A reader who has just spotted
+      a wrong tag is exactly the person worth asking to sign in, and signing in
+      costs them nothing: the OAuth scope is `read:user`, and the pull request
+      is opened by a service account on their behalf. They come back to the
+      reading they were on.
+    */
+    if (!$appPage.data.user) {
+      goto('/auth/github?returnTo=' + encodeURIComponent($appPage.url.pathname + $appPage.url.search));
+      return;
+    }
+    // Opening the editor turns the mode on, the way the sūtra page does.
+    authoringMode.set(true);
+    editModal.open(selFile);
+  }
 
   // A tapped term chip opens its concept card: the glossary explains what the
   // tag MEANS and how to recognise it, so the quiz question has an answer the
@@ -1737,6 +1784,19 @@
               title={inDeck ? 'in your deck' : 'keep for review'}
               aria-label={inDeck ? 'in your deck' : 'keep for review'}
             >★</button>
+            {#if selFile}
+              <!-- The rail is where a wrong tag is visible, so it is where the
+                   correction starts. Opens a pull request against the reading's
+                   own YAML — see docs/ARCHITECTURE.md. -->
+              <button
+                class="wh-act"
+                onclick={editThisReading}
+                title={$appPage.data.user
+                  ? 'suggest a correction to this reading'
+                  : 'sign in to suggest a correction'}
+                aria-label="suggest a correction to this reading"
+              >✎</button>
+            {/if}
           {/if}
           <!-- widening is a desktop affordance: the sheet is already the width
                of the phone, and its detents do what widening does -->

@@ -392,7 +392,28 @@ function main() {
     const stem = file.replace(/\.yaml$/, ''); // '01_karaka'
     const key = stem.includes('_') ? stem.slice(stem.indexOf('_') + 1) : stem; // 'karaka'
     chapters.push({ id: key, title: titles[key] ?? key, readings });
-    for (const r of readings) flat.push({ ...r, chapter: key, length: lengthOf(r) });
+    /*
+      Each reading carries the file it came from.
+
+      A reading knows its `chapter` as a slug — 'karaka' — but the directory is
+      '01_karaka', so the path cannot be reconstructed from the payload. That
+      mattered the moment the reader gained an edit control: to open a pull
+      request against the annotation you are looking at, the page has to know
+      which file to write. Derived from the id rather than tracked through the
+      concatenation, because one-file-per-reading is the convention and the
+      filename IS the id — the check below refuses to guess when it is not.
+    */
+    for (const r of readings) {
+      const src = `content/readings/${dir}/${r.id}.yaml`;
+      if (!fs.existsSync(path.join(process.cwd(), src))) {
+        throw new Error(
+          `${dir}/${r.id}: no file at ${src}.\n` +
+            `  A reading's id must match its filename — that is what lets the ` +
+            `reader open an edit against it.`
+        );
+      }
+      flat.push({ ...r, chapter: key, file: src, length: lengthOf(r) });
+    }
   }
 
   for (const r of flat) {

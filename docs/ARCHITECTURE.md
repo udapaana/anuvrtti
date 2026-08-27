@@ -191,16 +191,28 @@ decoupled from repository permission, adding Google as a second provider is
 small — the username is used for the branch name and the attribution line, and
 nothing downstream requires a GitHub account.
 
-Two things block this from being useful:
+Both things that blocked it are fixed.
 
-- **`ALLOWED_PREFIXES` is `['static/data/', 'static/content/']`** — the
-  generated tree. `content/readings/`, where every annotation lives, is
-  unreachable, and an edit to `readings.json` would be erased by the next build.
-  After the migration this becomes `content/`, and an in-app correction lands on
-  the source.
-- **The reader has no editor.** `setPageContext` is called on `/ref/[id]` and
-  `/workbook/[lessonId]` only. The reader's rail is where you *see* a wrong
-  कारक, and it is the one place you cannot fix it.
+**The allowlist names sources.** It was `['static/data/', 'static/content/']`,
+wrong in both directions at once: it admitted everything the build computes, so
+a reader could open a pull request against `readings.json` and have it erased by
+the next build; and it covered no annotation, since those live in
+`content/readings/`. It is now an explicit list of authored paths, in
+`src/routes/api/suggest/paths.ts`, with `scripts/check-suggest-paths.ts` proving
+25 cases — including that traversal (`content/../static/data/readings.json`) is
+rejected, which a prefix test alone admits. It is a hard check.
+
+**The reader has the control.** `build-readings.ts` stamps every reading with
+its source path, because the payload knows its chapter as a slug (`karaka`) and
+cannot reconstruct the directory (`01_karaka`); the build refuses to guess and
+fails if a reading's id does not match its filename. The rail's ✎ sits beside
+the ★ and opens a suggestion against that YAML.
+
+Signed out, it does not go dead — it says *sign in to suggest a correction* and
+sends the reader to OAuth with `returnTo` set to the reading they were on. A
+reader who has just spotted a wrong tag is exactly the person worth asking, and
+the ask is small: `read:user`, no repository access, the pull request opened by
+a service account on their behalf.
 
 ---
 
@@ -215,9 +227,10 @@ Each step is independently landable and independently revertable.
    committed), and the three `--check` staleness gates are deleted — they
    guarded a problem that no longer exists. Moving the authored and vendored
    trees into `content/` and `data/` is deferred; see *Vendored*.
-3. **`ALLOWED_PREFIXES` → `content/`.** Meaningless before step 2; unblocks
-   human correction after it.
-4. **An edit affordance in the reader rail**, where annotation errors are seen.
+3. ~~**`ALLOWED_PREFIXES` → `content/`.**~~ Done — an explicit authored-paths
+   list, gated by `scripts/check-suggest-paths.ts`.
+4. ~~**An edit affordance in the reader rail.**~~ Done — the ✎ beside the ★,
+   sign-in aware.
 5. **Google auth** as a second identity provider.
 6. **The change report**, replacing the JSON diff as the review step.
 

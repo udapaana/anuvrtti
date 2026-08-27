@@ -3,15 +3,10 @@ import { env } from '$env/dynamic/private';
 import { parse as parseToml } from 'smol-toml';
 import { parse as parseYaml } from 'yaml';
 import { validateMarkupInObject } from '$lib/markup/validate';
+import { validatePath } from './paths';
 
 const GITHUB_REPO = 'udapaana/anuvrtti';
 const API = 'https://api.github.com';
-
-// Only paths under these prefixes may be edited
-const ALLOWED_PREFIXES = [
-  'static/data/',
-  'static/content/',
-];
 
 interface FileEdit {
   path: string;    // repo-relative e.g. "static/data/commentary/1/1/1.toml"
@@ -40,19 +35,6 @@ async function ghFetch(path: string, options: RequestInit = {}) {
     throw new Error(`GitHub API ${path} → ${res.status}: ${body}`);
   }
   return res.json();
-}
-
-function validatePath(path: string): string | null {
-  if (!ALLOWED_PREFIXES.some(p => path.startsWith(p))) {
-    return `path not allowed: ${path}`;
-  }
-  if (path.includes('..') || path.includes('//')) {
-    return `invalid path: ${path}`;
-  }
-  if (!/\.(toml|yaml|md|json)$/.test(path)) {
-    return `unsupported file type: ${path}`;
-  }
-  return null;
 }
 
 function validateContent(path: string, content: string): string | null {
