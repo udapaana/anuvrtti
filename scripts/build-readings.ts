@@ -81,6 +81,10 @@ function lengthOf(r: any): 'short' | 'passage' | 'long' {
  */
 const VIBHAKTI = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
 const PRAYOGA = ['कर्तरि', 'कर्मणि', 'भावे'];
+const UPASARGA_SET = new Set([
+  'प्र', 'परा', 'अप', 'सम्', 'अनु', 'अव', 'निस्', 'निर्', 'दुस्', 'दुर्', 'वि',
+  'आङ्', 'नि', 'अधि', 'अपि', 'अति', 'सु', 'उद्', 'अभि', 'प्रति', 'परि', 'उप'
+]);
 const LAKARA = ['लट्', 'लङ्', 'लिट्', 'लृट्', 'लोट्', 'विधिलिङ्', 'लुङ्'];
 const ROLES = ['कर्तृ', 'कर्मन्', 'करण', 'सम्प्रदान', 'अपादान', 'अधिकरण'];
 
@@ -237,6 +241,15 @@ function derivedFeatures(word: any): Record<string, string> | null {
     if (tin['पुरुष'] && !out['पुरुष'] && ![...terms].some((t) => PURUSHA_SET.has(t))) out['पुरुष'] = tin['पुरुष'];
     if (tin['वचन'] && !out['वचन'] && ![...terms].some((t) => VACANA_SET.has(t))) out['वचन'] = tin['वचन'];
     if (tin['पद'] && !out['पद'] && ![...terms].some((t) => PADA_SET.has(t))) out['पद'] = tin['पद'];
+    /*
+      The preverb the derivation needed, carried through.
+
+      build-quiz resolves आगच्छति by trying आ + गम् and अधीते by trying अधि + इङ्;
+      when a prefix is what made the form derive, that is a fact about the word
+      and it was being discovered and thrown away. Only where the author has not
+      written one, like every other derived value.
+    */
+    if (tin['उपसर्ग'] && ![...terms].some((t) => UPASARGA_SET.has(t))) out['उपसर्ग'] = tin['उपसर्ग'];
   }
 
   /*

@@ -1019,8 +1019,142 @@ async function main() {
     if (b.pada.size === 1) out['पद'] = [...b.pada][0];
     if (Object.keys(out).length) tinIndex[k] = out;
   }
+  /*
+    THE SECOND PASS: the verbs the first pass cannot see.
+
+    The enumeration above walks the thirty hand-written roots with `prefixes:
+    []`, so two whole classes of form fall out of the index and reach the reader
+    with no लकार, no पुरुष, no वचन and no पद:
+
+      A PREVERB FUSES INTO THE STEM. आगच्छति is आ + गम् and अधीते is अधि + इ;
+      neither derives from the bare root, so neither is a key. 208 of 666 finite
+      verbs were unmatched.
+
+      THE ROOT IS NOT IN THE HAND TABLE, or is the wrong homonym of it. अधीते is
+      the sharper case: `इ` is three dhātus — इण् gatau, इङ् adhyayane, इक्
+      smaraṇe — and the hand table has only इण्, which is parasmaipada. अधि + इण्
+      derives अध्येति. The form on the page is अधीते, and only इङ् produces it.
+
+    So this pass takes the forms the index still misses and asks the Dhātupāṭha
+    proper (static/data/dhatu-map.json, 1579 roots with every candidate kept)
+    with the preverbs the form could plausibly carry. A candidate that produces
+    the attested form is the right one — derivation settles the homonym, which
+    is why build-dhatu-map refuses to choose and hands over the whole list.
+
+    Cost is held down two ways: only prefixes whose surface the form actually
+    starts with are tried, and each (candidate, prefix) paradigm is enumerated
+    once and cached, since many forms share a root.
+  */
+  const DHATU_MAP: Record<string, [string, string][]> = fs.existsSync(
+    path.join(process.cwd(), 'static/data/dhatu-map.json')
+  )
+    ? JSON.parse(fs.readFileSync(path.join(process.cwd(), 'static/data/dhatu-map.json'), 'utf-8'))
+    : {};
+
+  /*
+    A cheap pre-filter on which preverbs are worth trying for a given form.
+
+    It matches the preverb's FIRST LETTER only, deliberately. Matching the whole
+    preverb looks tighter and is wrong: अधि + इ fuses to अधीते, which does not
+    start with "अधि" at all, so a literal test skipped the very word that
+    prompted this. Sandhi rewrites the join — आ + गम् keeps आ, but अधि loses its
+    इ, नि and वि become न्य and व्य before a vowel — and enumerating every
+    surface form of every preverb is a second grammar to maintain.
+
+    A first-letter test cannot produce a wrong answer, only wasted work: the
+    candidate still has to actually DERIVE the attested form to be accepted. So
+    the filter is allowed to be generous, and it costs one cached paradigm
+    enumeration per false lead.
+  */
+  const PFX_FIRST: Record<string, string> = {
+    A: 'आ', pra: 'प', sam: 'स', vi: 'व', ni: 'न', anu: 'अ', upa: 'उ', aDi: 'अ',
+    ava: 'अ', ud: 'उ', pari: 'प', prati: 'प', apa: 'अ', aBi: 'अ', nis: 'न',
+    dus: 'द', su: 'स', parA: 'प', api: 'अ', ati: 'अ'
+  };
+  const PFX_DEV: Record<string, string> = {
+    A: 'आङ्', pra: 'प्र', sam: 'सम्', vi: 'वि', ni: 'नि', anu: 'अनु', upa: 'उप', aDi: 'अधि',
+    ava: 'अव', ud: 'उद्', pari: 'परि', prati: 'प्रति', apa: 'अप', aBi: 'अभि', nis: 'निस्',
+    dus: 'दुस्', su: 'सु', parA: 'परा', api: 'अपि', ati: 'अति'
+  };
+
+  /** (aupadeśika|gaṇa|prefix) → form → the cells that produce it. */
+  const paraCache = new Map<string, Map<string, { lak: string; pu: string; vc: string; pada: string }[]>>();
+  function tinParadigm(aup: string, gana: string, pre: string) {
+    const key = `${aup}|${gana}|${pre}`;
+    const hit = paraCache.get(key);
+    if (hit) return hit;
+    const m = new Map<string, { lak: string; pu: string; vc: string; pada: string }[]>();
+    for (const [lakDev, lakKey] of Object.entries(LAK_KEY))
+      for (const pu of PURUSHAS)
+        for (const vc of VACANAS)
+          for (const pada of ['Parasmaipada', 'Atmanepada'] as const) {
+            let res: any[] = [];
+            try {
+              res = v.deriveTinantas({
+                dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: pre ? [pre] : [] },
+                lakara: lakKey, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
+              });
+            } catch { continue; }
+            for (const pr of res) {
+              const dev = toDeva(pr.text);
+              (m.get(dev) ?? m.set(dev, []).get(dev)!).push({
+                lak: lakDev, pu: PUR_DEV[pu], vc: VAC_DEV[vc],
+                pada: pada === 'Parasmaipada' ? 'परस्मैपद' : 'आत्मनेपद'
+              });
+            }
+          }
+    paraCache.set(key, m);
+    return m;
+  }
+
+  // every finite verb the corpus attests, as (lemma, form)
+  const wanted = new Map<string, { lemma: string; form: string }>();
+  for (const r of corpus)
+    for (const w of r.words ?? []) {
+      const tags = [...(w.notes ?? []).map((n: any) => n.term).filter(Boolean),
+                    ...Object.values(w.derived ?? {})] as string[];
+      if (!tags.some((t) => LAK_KEY[t] !== undefined || t === 'परस्मैपद' || t === 'आत्मनेपद')) continue;
+      if (!w.lemma) continue;
+      const lemma = deaccent(w.lemma), form = deaccent(String(w.form ?? ''));
+      if (!form || tinIndex[`${lemma}|${form}`]) continue;
+      wanted.set(`${lemma}|${form}`, { lemma, form });
+    }
+
+  let rescued = 0, withPrefix = 0;
+  for (const { lemma, form } of wanted.values()) {
+    const cands = DHATU_MAP[lemma] ?? (DHATU[lemma] ? [DHATU[lemma]] : []);
+    if (!cands.length) continue;
+    // '' first: a bare form should never be credited with a preverb
+    const prefixes = ['', ...Object.keys(PFX_FIRST).filter((k) => form.startsWith(PFX_FIRST[k]))];
+    let found: { cells: { lak: string; pu: string; vc: string; pada: string }[]; pre: string } | null = null;
+    for (const pre of prefixes) {
+      for (const [aup, gana] of cands) {
+        const cells = tinParadigm(aup, gana, pre).get(form);
+        if (cells?.length) { found = { cells, pre }; break; }
+      }
+      if (found) break;
+    }
+    if (!found) continue;
+    const agree = (f: (c: any) => string) => {
+      const set = new Set(found!.cells.map(f));
+      return set.size === 1 ? [...set][0] : undefined;
+    };
+    const out: Record<string, string> = {};
+    const lak = agree((c) => c.lak); if (lak) out['लकार'] = lak;
+    const pu = agree((c) => c.pu); if (pu) out['पुरुष'] = pu;
+    const vc = agree((c) => c.vc); if (vc) out['वचन'] = vc;
+    const pd = agree((c) => c.pada); if (pd) out['पद'] = pd;
+    // The preverb the derivation NEEDED is a fact about the word, not a guess.
+    if (found.pre && PFX_DEV[found.pre]) { out['उपसर्ग'] = PFX_DEV[found.pre]; withPrefix++; }
+    if (Object.keys(out).length) { tinIndex[`${lemma}|${form}`] = out; rescued++; }
+  }
+
   fs.writeFileSync(TIN_OUT, JSON.stringify(tinIndex, null, 0));
-  console.log(`  tiṅanta index: ${Object.keys(tinIndex).length} forms → parse, ${Object.keys(DHATU).length} roots`);
+  console.log(
+    `  tiṅanta index: ${Object.keys(tinIndex).length} forms → parse, ${Object.keys(DHATU).length} roots` +
+      `\n    + ${rescued} of ${wanted.size} unmatched corpus form(s) resolved from the dhātupāṭha` +
+      ` (${withPrefix} needed a preverb)`
+  );
 
   const withGrid = rich.filter((e) => e.paradigm).length;
   const unplacedTotal = rich.reduce((n, e) => n + e.unplaced.length, 0);

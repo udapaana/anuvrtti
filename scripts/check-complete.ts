@@ -239,7 +239,14 @@ function main() {
         const key = `${wt.dev}|${d.name}`;
         const e = cond.get(key) ?? { n: 0, total: 0 };
         e.total++;
-        if (d.values.some((v) => terms.has(v))) e.n++;
+        /*
+          Derived counts too. A conditional dimension can be filled by the
+          build rather than by hand — उपसर्ग is resolved by derivation, not
+          authored — and counting only `terms` reported 0/631 for a tag the
+          reader was already displaying on the page.
+        */
+        const der = Object.values(w.derived ?? {}) as string[];
+        if (d.values.some((val) => terms.has(val) || der.includes(val))) e.n++;
         cond.set(key, e);
       }
 
