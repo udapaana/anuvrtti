@@ -20,12 +20,31 @@
  * sentence genuinely settles.
  *
  * Gender is an input to derivation, not an output, so vidyut cannot supply it.
- * Two sources narrow it:
+ * Three sources narrow it, in this order of authority:
  *   1. the corpus — intersect the lingas that can produce EVERY attested form
  *      of the stem. ग्रामः only exists as Pum, so ग्राम is masculine and its
  *      ग्रामम् is unambiguously द्वितीया.
  *   2. static/data/vocabulary.json — `partOfSpeech: n.noun` etc., for stems the
  *      corpus does not disambiguate (वन appears only as वनम्/वने).
+ *   3. data/mw-linga.tsv — Monier-Williams, the lexicon Ambuda seeds from.
+ *      See scripts/import-mw.ts for how it is projected out of MW.
+ *
+ * WHY MW IS THIRD AND NOT FIRST. It is a union over every sense of a headword,
+ * so it is generous where the corpus is exact: गृह comes back f,m,n and सुख
+ * comes back m,n. Used as the answer it would assert a gender the text does not
+ * support; used as a BOUND it is exactly right — it says which genders are
+ * possible, and derivation against the annotated विभक्ति says which one is here.
+ * That is the same shape as the dhātupāṭha fix for verbs: the dictionary
+ * proposes, the derivation disposes.
+ *
+ * Where the corpus offers no evidence at all — a stem attested once, in a form
+ * every gender produces — MW's own answer stands, but only when MW gives ONE
+ * gender. This is what closes most of the backlog: of the 382 stems with no
+ * settled गender, MW knows 344 and 199 of those are unambiguous in MW itself.
+ *
+ * A stem MW records with no gender is not a gap. `m:f:n` is the mfn adjective
+ * pattern and `ind` is an indeclinable; neither has a gender of its own to
+ * carry, so those stems are left unset deliberately rather than guessed at.
  *
  * Emits a cache so the reader build does not pay the WASM cost on every run.
  */
@@ -39,6 +58,7 @@ import {
 
 const CORPUS = path.join(process.cwd(), 'static/data/readings.json');
 const VOCAB = path.join(process.cwd(), 'static/data/vocabulary.json');
+const MW = path.join(process.cwd(), 'data/mw-linga.tsv');
 const WASM_DIR = path.join(process.cwd(), 'static/wasm/vidyut-prakriya/');
 const OUT = path.join(process.cwd(), 'static/data/quiz-cells.json');
 const USAGE_OUT = path.join(process.cwd(), 'static/data/usage.json');
@@ -199,6 +219,47 @@ async function main() {
     }
   }
 
+  /*
+    Monier-Williams, as a bound on which genders a stem can take.
+
+    Two maps, because "MW says this stem is masculine or neuter" and "MW says
+    this stem has no gender" are different facts and only the first is a
+    candidate list. `mwNone` holds the adjectives and indeclinables — stems that
+    correctly have no लिङ्ग — so a later report can tell them apart from stems
+    MW has simply never heard of.
+  */
+  const mwGender = new Map<string, string[]>();
+  const mwNone = new Set<string>();
+  const MW_DEV: Record<string, string> = { m: 'Pum', f: 'Stri', n: 'Napumsaka' };
+  if (fs.existsSync(MW)) {
+    for (const line of fs.readFileSync(MW, 'utf-8').split('\n')) {
+      if (!line || line.startsWith('#')) continue;
+      const [stem, g, kind] = line.split('\t');
+      const gs = (g ?? '').split(',').filter(Boolean).map((x) => MW_DEV[x]).filter(Boolean);
+      /*
+        Stems MW records both as a noun and as an mfn adjective still vote.
+
+        They are the obvious thing to distrust, because the genders listed
+        belong to the noun senses and the corpus may mean the adjective —
+        पुस्तक is exactly that trap: MW gives `m.` for "a protuberant ornament"
+        and `mf(ikA)n.` for "a manuscript, book", which is the only sense this
+        corpus ever uses, so the m. broke a tie the wrong way and printed
+        पुंलिङ्ग on a neuter.
+
+        Excluding them was measured against scripts/check-linga.ts and is not
+        worth it: 201/201 right and 66 stems left blank, against 227/228 right
+        and 39 blank when they vote. Twenty-six true answers is a bad price for
+        one false one, and the false one has a proper home — vocabulary.json is
+        consulted BEFORE this and is where a stem MW is wrong about belongs.
+        The fixture is what makes that a measurement instead of a preference.
+      */
+      if (gs.length) mwGender.set(stem, gs);
+      else mwNone.add(stem);
+    }
+  } else {
+    console.log(`  note: ${path.relative(process.cwd(), MW)} absent — gender falls back to corpus evidence alone`);
+  }
+
   // Every surface form the corpus uses, grouped by stem.
   //
   // Deaccented on the way in. The Ṛgveda readings carry Vedic accents (दे॒वम्,
@@ -245,6 +306,13 @@ async function main() {
     { linga: string | null; vibhaktis: string[]; cells: Array<[string, string]> }
   > = {};
   let resolved = 0, ambiguous = 0, underivable = 0;
+  /** Genders MW supplied where the corpus had nothing to weigh, and the tie-breaks it settled. */
+  const mwOnly = new Map<string, string>();
+  const mwConflicts: string[] = [];
+  /** Stems left without a लिङ्ग, split by whether MW says there is one to find. */
+  const mwRightlyBlank: string[] = [];
+  const mwStillUnknown: string[] = [];
+  let mwBroke = 0;
 
   /** अस्मद् and युष्मद् have no gender at all — one paradigm, not three. */
   const GENDERLESS = new Set(['अस्मद्', 'युष्मद्']);
@@ -260,6 +328,8 @@ async function main() {
   // not a guess. Intersecting the two settles 96% of forms; asking the engine
   // alone smeared one word across five cells.
   const annot = new Map<string, { vib: Set<string>; vac: Set<string> }>();
+  /** Every annotated occurrence of a stem, kept separate — see the note below. */
+  const annotOcc = new Map<string, Array<{ form: string; vib: string; vac: string | null }>>();
   const VIB_SET = new Set(Object.values(VIB_DEV));
   const VAC_SET = new Set(Object.values(VAC_DEV));
 
@@ -280,11 +350,26 @@ async function main() {
 
   /** Stems the corpus tags सर्वनाम anywhere — they inflect for all three genders. */
   const pronouns = new Set<string>();
+  /*
+    Stems the corpus tags विशेषण anywhere.
+
+    An adjective's gender is a fact about the occurrence, not about the stem —
+    सुन्दरः and सुन्दरी are the same word agreeing with different nouns. MW
+    marks the obvious ones (`m:f:n`) and they are excluded already, but it also
+    lists plenty of adjectives under a single gender because that is the sense
+    it happened to record. Asserting that as the stem's gender would print
+    "पुंलिङ्ग" beside a word standing next to a feminine noun. The corpus's own
+    tag is the more reliable signal here, so it vetoes.
+  */
+  const adjectives = new Set<string>();
   for (const r of corpus) {
     for (const w of r.words ?? []) {
       if (!w.lemma) continue;
       if ((w.notes ?? []).some((n: any) => n.term === 'सर्वनाम')) {
         pronouns.add(deaccent(w.lemma));
+      }
+      if ((w.notes ?? []).some((n: any) => n.term === 'विशेषण')) {
+        adjectives.add(deaccent(w.lemma));
       }
     }
   }
@@ -302,6 +387,22 @@ async function main() {
       if (!annot.has(key)) annot.set(key, { vib: new Set(), vac: new Set() });
       annot.get(key)!.vib.add(vib);
       if (n) annot.get(key)!.vac.add(n.term);
+
+      /*
+        The same annotation, kept per OCCURRENCE as well as unioned.
+
+        `annot` answers "which cells can this form occupy anywhere in the
+        corpus", which is the right question for the quiz cache. It is the wrong
+        question for gender, and unioning actively destroys the evidence: सुखम्
+        is tagged प्रथमा in one reading and द्वितीया in another, so the union is
+        {प्रथमा, द्वितीया} — and a masculine सुख can make द्वितीया सुखम्, so the
+        masculine survives a test the corpus had already failed it on. The one
+        occurrence tagged प्रथमा settles it, because only a neuter has प्रथमा
+        सुखम् at all. Scoring per occurrence keeps that.
+      */
+      const st = deaccent(w.lemma);
+      if (!annotOcc.has(st)) annotOcc.set(st, []);
+      annotOcc.get(st)!.push({ form: deaccent(w.form), vib, vac: n ? n.term : null });
     }
   }
 
@@ -344,6 +445,10 @@ async function main() {
     // all plainly masculine, but the Ṛgvedic vocative नरा derives only as a
     // feminine, and that one form emptied the intersection and left नर
     // genderless. Counting instead, a single odd form cannot outvote four.
+    //
+    // Counted per OCCURRENCE, not per distinct form. A form annotated two
+    // different ways in two readings is two pieces of evidence and the stricter
+    // one is usually the decisive one — see the note where `annotOcc` is built.
     const lingaScore = new Map<string, number>(LINGAS.map((l) => [l, 0]));
     const derivable: Array<[string, string]> = [];
     for (const form of forms) {
@@ -352,12 +457,55 @@ async function main() {
       const cs = cellsFor(stemSlp, slp);
       if (!cs.length) continue;           // not a subanta of this stem (verb, indeclinable)
       derivable.push([form, slp]);
-      const { cells: fit } = resolveCells(stem, form, cs);
+    }
+    for (const occ of annotOcc.get(stem) ?? []) {
+      const slp = toSlp1(occ.form);
+      if (!slp) continue;
+      const cs = cellsFor(stemSlp, slp);
+      if (!cs.length) continue;
+      let fit = cs.filter((c) => VIB_DEV[c[1]] === occ.vib);
+      // The engine and the annotation disagreeing is itself information we do
+      // not have — fall back to the engine's candidates rather than scoring
+      // nothing, exactly as resolveCells does.
+      if (!fit.length) fit = cs;
+      else if (occ.vac) {
+        const k = fit.filter((c) => VAC_DEV[c[2]] === occ.vac);
+        if (k.length) fit = k;
+      }
       for (const lg of new Set(fit.map((c) => c[0]))) {
         lingaScore.set(lg, (lingaScore.get(lg) ?? 0) + 1);
       }
     }
-    if (!derivable.length) { underivable++; continue; }
+    /*
+      Forms the corpus never annotated still count, once each. Without this a
+      stem whose every occurrence lacks a विभक्ति tag would score zero and lose
+      the gender it used to have — the annotated evidence is better, not the
+      only evidence.
+    */
+    if (![...lingaScore.values()].some((n) => n > 0)) {
+      for (const [form, slp] of derivable) {
+        const { cells: fit } = resolveCells(stem, form, cellsFor(stemSlp, slp));
+        for (const lg of new Set(fit.map((c) => c[0]))) {
+          lingaScore.set(lg, (lingaScore.get(lg) ?? 0) + 1);
+        }
+      }
+    }
+    if (!derivable.length) {
+      underivable++;
+      /*
+        No form of this stem derives as a सुबन्त, so there is no grid to build
+        and no corpus evidence to weigh — but MW may still know what the word
+        is. भगवत् appears seven times and its stem does not decline through
+        vidyut's basic pratipadika; MW says masculine, and that is worth showing
+        even though the paradigm is not. Recorded on its own so the paradigm
+        pass below is untouched: this only reaches the लिङ्ग tag.
+      */
+      const only = mwGender.get(stem);
+      if (only?.length === 1 && !isSarvanama(stem) && !pronouns.has(stem) && !adjectives.has(stem)) {
+        mwOnly.set(stem, only[0]);
+      }
+      continue;
+    }
 
     // A सर्वनाम has no gender of its own — it takes the gender of whatever it
     // points at, so तद् really does appear as सः, सा and तत् in one corpus. That
@@ -374,6 +522,19 @@ async function main() {
     const lex = lexGender.get(stem);
     const best = Math.max(...lingaScore.values());
     const top = LINGAS.filter((l) => (lingaScore.get(l) ?? 0) === best && best > 0);
+    /*
+      MW as the last tie-break, under the corpus and under our own lexicon.
+
+      The ordering is the whole point. Derivation against the annotated विभक्ति
+      is evidence about THIS text; MW is a union over every sense a headword ever
+      had, so it is a wider net and a weaker claim. It gets consulted only where
+      the corpus genuinely could not choose — and even then it must agree with
+      one of the candidates derivation left standing, so it can narrow a tie but
+      never overrule the text. A stem the corpus tags विशेषण is skipped: its
+      gender belongs to the occurrence.
+    */
+    const mw = adjectives.has(stem) ? undefined : mwGender.get(stem);
+    const mwTop = mw ? top.filter((l) => mw.includes(l)) : [];
     const linga = isPronoun
       ? null
       : top.length === 1
@@ -382,7 +543,27 @@ async function main() {
         // stems the corpus's own forms leave balanced.
         : lex && top.includes(lex)
           ? lex
-          : null;
+          : mwTop.length === 1
+            ? mwTop[0]
+            : null;
+
+    /*
+      A blank is not always a gap. MW records some of these stems with no gender
+      at all — they are mfn adjectives or indeclinables, and having no gender is
+      the correct answer rather than a missing one. Counted apart so the backlog
+      figure is not inflated by words that will never have a लिङ्ग to find.
+    */
+    if (!linga && !isPronoun) (mwNone.has(stem) ? mwRightlyBlank : mwStillUnknown).push(stem);
+
+    // Where the corpus DID settle a gender and MW lists genders that exclude it,
+    // one of the two is wrong about this stem. Neither is silently preferred —
+    // the corpus wins, as it must, and the disagreement is reported so it can be
+    // looked at rather than absorbed.
+    if (linga && top.length === 1 && mw && !mw.includes(linga)) {
+      mwConflicts.push(`${stem}: corpus ${LINGA_DEV[linga]}, MW ${mw.map((l) => LINGA_DEV[l]).join('/')}`);
+    }
+    // MW was the deciding vote: the corpus tied and our own lexicon was silent.
+    if (!isPronoun && top.length > 1 && !(lex && top.includes(lex)) && mwTop.length === 1) mwBroke++;
 
     for (const [form, slp] of derivable) {
       const cs = cellsFor(stemSlp, slp).filter((c) => (linga ? c[0] === linga : true));
@@ -404,7 +585,13 @@ async function main() {
   fs.writeFileSync(OUT, JSON.stringify(cells, null, 0));
   console.log(
     `Wrote ${Object.keys(cells).length} forms → ${path.relative(process.cwd(), OUT)}\n` +
-      `  ${resolved} determine one विभक्ति, ${ambiguous} do not, ${underivable} stems not derivable as subantas`
+      `  ${resolved} determine one विभक्ति, ${ambiguous} do not, ${underivable} stems not derivable as subantas\n` +
+      `  लिङ्ग from MW: ${mwBroke} tie(s) broken, ${mwOnly.size} stem(s) answered where nothing derived\n` +
+      `  still unset: ${mwStillUnknown.length} stem(s) undetermined, ${mwRightlyBlank.length} that MW gives no gender (adjective or indeclinable)` +
+      (mwConflicts.length
+        ? `\n  ${mwConflicts.length} stem(s) where MW disagrees with the corpus (corpus kept): ` +
+          mwConflicts.slice(0, 6).join('; ')
+        : '')
   );
 
   // ── the प्रयोग index ───────────────────────────────────────────────────
@@ -694,6 +881,68 @@ async function main() {
     return ans || null;
   }
 
+  const DHATU_MAP: Record<string, [string, string][]> = fs.existsSync(
+    path.join(process.cwd(), 'static/data/dhatu-map.json')
+  )
+    ? JSON.parse(fs.readFileSync(path.join(process.cwd(), 'static/data/dhatu-map.json'), 'utf-8'))
+    : {};
+
+  /*
+    A cheap pre-filter on which preverbs are worth trying for a given form.
+
+    It matches the preverb's FIRST LETTER only, deliberately. Matching the whole
+    preverb looks tighter and is wrong: अधि + इ fuses to अधीते, which does not
+    start with "अधि" at all, so a literal test skipped the very word that
+    prompted this. Sandhi rewrites the join — आ + गम् keeps आ, but अधि loses its
+    इ, नि and वि become न्य and व्य before a vowel — and enumerating every
+    surface form of every preverb is a second grammar to maintain.
+
+    A first-letter test cannot produce a wrong answer, only wasted work: the
+    candidate still has to actually DERIVE the attested form to be accepted. So
+    the filter is allowed to be generous, and it costs one cached paradigm
+    enumeration per false lead.
+  */
+  const PFX_FIRST: Record<string, string> = {
+    A: 'आ', pra: 'प', sam: 'स', vi: 'व', ni: 'न', anu: 'अ', upa: 'उ', aDi: 'अ',
+    ava: 'अ', ud: 'उ', pari: 'प', prati: 'प', apa: 'अ', aBi: 'अ', nis: 'न',
+    dus: 'द', su: 'स', parA: 'प', api: 'अ', ati: 'अ'
+  };
+  const PFX_DEV: Record<string, string> = {
+    A: 'आङ्', pra: 'प्र', sam: 'सम्', vi: 'वि', ni: 'नि', anu: 'अनु', upa: 'उप', aDi: 'अधि',
+    ava: 'अव', ud: 'उद्', pari: 'परि', prati: 'प्रति', apa: 'अप', aBi: 'अभि', nis: 'निस्',
+    dus: 'दुस्', su: 'सु', parA: 'परा', api: 'अपि', ati: 'अति'
+  };
+
+  /** (aupadeśika|gaṇa|prefix) → form → the cells that produce it. */
+  const paraCache = new Map<string, Map<string, { lak: string; pu: string; vc: string; pada: string }[]>>();
+  function tinParadigm(aup: string, gana: string, pre: string) {
+    const key = `${aup}|${gana}|${pre}`;
+    const hit = paraCache.get(key);
+    if (hit) return hit;
+    const m = new Map<string, { lak: string; pu: string; vc: string; pada: string }[]>();
+    for (const [lakDev, lakKey] of Object.entries(LAK_KEY))
+      for (const pu of PURUSHAS)
+        for (const vc of VACANAS)
+          for (const pada of ['Parasmaipada', 'Atmanepada'] as const) {
+            let res: any[] = [];
+            try {
+              res = v.deriveTinantas({
+                dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: pre ? [pre] : [] },
+                lakara: lakKey, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
+              });
+            } catch { continue; }
+            for (const pr of res) {
+              const dev = toDeva(pr.text);
+              (m.get(dev) ?? m.set(dev, []).get(dev)!).push({
+                lak: lakDev, pu: PUR_DEV[pu], vc: VAC_DEV[vc],
+                pada: pada === 'Parasmaipada' ? 'परस्मैपद' : 'आत्मनेपद'
+              });
+            }
+          }
+    paraCache.set(key, m);
+    return m;
+  }
+
   const LAK_SET = new Set(Object.keys(LAK_KEY));
   type TinOcc = Occ & { lakara: string };
   const tinByRoot = new Map<string, Map<string, TinOcc[]>>();  // root → lakāra → occurrences
@@ -726,9 +975,63 @@ async function main() {
     }
   }
 
+  /*
+    Which dhātupāṭha entry each root actually is, settled by derivation.
+
+    The grids used to come from DHATU alone — thirty roots transcribed by hand,
+    because a wrong गण derives a different verb silently and guessing is worse
+    than omitting. Everything else was reported as "root not in the dhātu table",
+    which was never quite true: पूज्, त्यज्, हस् and विश् are all in
+    dhatu-map.json. What was missing was not the entry but a way to choose
+    between its candidates — धृ alone offers three — and to know which preverb
+    the corpus's form carries.
+
+    That is the same problem the tiṅanta rescue below already solves, and the
+    same answer: enumerate each candidate's paradigm and keep the one that
+    actually produces a form the corpus attests. The corpus is the arbiter, so
+    nothing is guessed; a root whose candidates all fail to derive any attested
+    form stays unmapped, exactly as before.
+
+    A root the hand table names keeps that entry. It was checked by a person and
+    outranks a match — and where both agree, nothing changes anyway.
+  */
+  const resolvedRoot = new Map<string, [string, string, string]>();
+  let rootsResolved = 0;
+  for (const [root, byLak] of tinByRoot) {
+    if (DHATU[root]) continue;
+    /*
+      The corpus cites a root with a final virāma (कथ्, चुर्); the dhātupāṭha
+      spells several of the Curādi ones without it (कथ = kaTa), because there the
+      अ is part of the entry rather than an inherent vowel to be cut. Trying the
+      bare stem costs one lookup and the candidate still has to derive an
+      attested form, so a wrong match cannot get through.
+    */
+    const cands = DHATU_MAP[root] ?? DHATU_MAP[root.replace(/्$/, '')];
+    if (!cands?.length) continue;
+    const forms = new Set<string>();
+    for (const list of byLak.values()) for (const o of list) forms.add(o.form);
+    let hit: [string, string, string] | null = null;
+    for (const form of forms) {
+      // '' first, so a bare form is never credited with a preverb it lacks.
+      const prefixes = ['', ...Object.keys(PFX_FIRST).filter((k) => form.startsWith(PFX_FIRST[k]))];
+      for (const pre of prefixes) {
+        for (const [aup, gana] of cands) {
+          if (tinParadigm(aup, gana, pre).get(form)?.length) { hit = [aup, gana, pre]; break; }
+        }
+        if (hit) break;
+      }
+      if (hit) break;
+    }
+    if (hit) { resolvedRoot.set(root, hit); rootsResolved++; }
+  }
+
   const tinEntries: any[] = [];
   for (const [root, byLak] of tinByRoot) {
-    const spec = DHATU[root];
+    const resolved = resolvedRoot.get(root);
+    const spec: [string, string] | undefined = DHATU[root] ?? (resolved ? [resolved[0], resolved[1]] : undefined);
+    // The preverb the corpus's own forms needed, so the grid is built for the
+    // verb the reader actually met — अधीते belongs in अधि+इ's paradigm, not इ's.
+    const rootPre = DHATU[root] ? '' : (resolved?.[2] ?? '');
     if (!spec) {
       let n = 0; for (const list of byLak.values()) n += list.length;
       tinUnmapped += n;
@@ -776,7 +1079,12 @@ async function main() {
         for (const vc of VACANAS) {
           try {
             const res = v.deriveTinantas({
-              dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
+              dhatu: {
+                aupadeshika: spec[0], gana: spec[1], sanadi: [],
+                // The preverb the corpus's forms needed. Without it the grid
+                // beside अधीते would be इ's — एति, इतः, यन्ति — a different verb.
+                prefixes: rootPre ? [rootPre] : []
+              },
               lakara: LAK_KEY[lak], prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null
             });
             const forms = [...new Set(res.map((p: any) => p.text))] as string[];
@@ -832,6 +1140,11 @@ async function main() {
   const lingaIndex: Record<string, string> = {};
   for (const [stem, info] of stemInfo) {
     if (info.linga && !info.isPronoun) lingaIndex[stem] = LINGA_DEV[info.linga];
+  }
+  // Stems with no derivable form, where MW alone answers. Added after the loop
+  // above, and never over it: a gender the corpus settled always stands.
+  for (const [stem, lg] of mwOnly) {
+    if (!lingaIndex[stem]) lingaIndex[stem] = LINGA_DEV[lg];
   }
   // root → [गण, विकरण], straight from the dhātupāṭha spelling the DHATU table
   // already records. गण is a fixed property of the root, and its विकरण follows
@@ -1045,68 +1358,6 @@ async function main() {
     starts with are tried, and each (candidate, prefix) paradigm is enumerated
     once and cached, since many forms share a root.
   */
-  const DHATU_MAP: Record<string, [string, string][]> = fs.existsSync(
-    path.join(process.cwd(), 'static/data/dhatu-map.json')
-  )
-    ? JSON.parse(fs.readFileSync(path.join(process.cwd(), 'static/data/dhatu-map.json'), 'utf-8'))
-    : {};
-
-  /*
-    A cheap pre-filter on which preverbs are worth trying for a given form.
-
-    It matches the preverb's FIRST LETTER only, deliberately. Matching the whole
-    preverb looks tighter and is wrong: अधि + इ fuses to अधीते, which does not
-    start with "अधि" at all, so a literal test skipped the very word that
-    prompted this. Sandhi rewrites the join — आ + गम् keeps आ, but अधि loses its
-    इ, नि and वि become न्य and व्य before a vowel — and enumerating every
-    surface form of every preverb is a second grammar to maintain.
-
-    A first-letter test cannot produce a wrong answer, only wasted work: the
-    candidate still has to actually DERIVE the attested form to be accepted. So
-    the filter is allowed to be generous, and it costs one cached paradigm
-    enumeration per false lead.
-  */
-  const PFX_FIRST: Record<string, string> = {
-    A: 'आ', pra: 'प', sam: 'स', vi: 'व', ni: 'न', anu: 'अ', upa: 'उ', aDi: 'अ',
-    ava: 'अ', ud: 'उ', pari: 'प', prati: 'प', apa: 'अ', aBi: 'अ', nis: 'न',
-    dus: 'द', su: 'स', parA: 'प', api: 'अ', ati: 'अ'
-  };
-  const PFX_DEV: Record<string, string> = {
-    A: 'आङ्', pra: 'प्र', sam: 'सम्', vi: 'वि', ni: 'नि', anu: 'अनु', upa: 'उप', aDi: 'अधि',
-    ava: 'अव', ud: 'उद्', pari: 'परि', prati: 'प्रति', apa: 'अप', aBi: 'अभि', nis: 'निस्',
-    dus: 'दुस्', su: 'सु', parA: 'परा', api: 'अपि', ati: 'अति'
-  };
-
-  /** (aupadeśika|gaṇa|prefix) → form → the cells that produce it. */
-  const paraCache = new Map<string, Map<string, { lak: string; pu: string; vc: string; pada: string }[]>>();
-  function tinParadigm(aup: string, gana: string, pre: string) {
-    const key = `${aup}|${gana}|${pre}`;
-    const hit = paraCache.get(key);
-    if (hit) return hit;
-    const m = new Map<string, { lak: string; pu: string; vc: string; pada: string }[]>();
-    for (const [lakDev, lakKey] of Object.entries(LAK_KEY))
-      for (const pu of PURUSHAS)
-        for (const vc of VACANAS)
-          for (const pada of ['Parasmaipada', 'Atmanepada'] as const) {
-            let res: any[] = [];
-            try {
-              res = v.deriveTinantas({
-                dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: pre ? [pre] : [] },
-                lakara: lakKey, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
-              });
-            } catch { continue; }
-            for (const pr of res) {
-              const dev = toDeva(pr.text);
-              (m.get(dev) ?? m.set(dev, []).get(dev)!).push({
-                lak: lakDev, pu: PUR_DEV[pu], vc: VAC_DEV[vc],
-                pada: pada === 'Parasmaipada' ? 'परस्मैपद' : 'आत्मनेपद'
-              });
-            }
-          }
-    paraCache.set(key, m);
-    return m;
-  }
-
   // every finite verb the corpus attests, as (lemma, form)
   const wanted = new Map<string, { lemma: string; form: string }>();
   for (const r of corpus)
@@ -1151,7 +1402,8 @@ async function main() {
 
   fs.writeFileSync(TIN_OUT, JSON.stringify(tinIndex, null, 0));
   console.log(
-    `  tiṅanta index: ${Object.keys(tinIndex).length} forms → parse, ${Object.keys(DHATU).length} roots` +
+    `  tiṅanta index: ${Object.keys(tinIndex).length} forms → parse, ` +
+      `${Object.keys(DHATU).length} hand-checked roots + ${rootsResolved} resolved by derivation` +
       `\n    + ${rescued} of ${wanted.size} unmatched corpus form(s) resolved from the dhātupāṭha` +
       ` (${withPrefix} needed a preverb)`
   );

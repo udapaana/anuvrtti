@@ -36,6 +36,22 @@ else's server being up.
 Never hand-edited. A correction to a vendored file belongs upstream, or in an
 overlay under `content/` that the build applies on top.
 
+Two are **projections, not copies**, because their sources are far too large to
+carry in a repository to read one field out of. Each has an importer that is run
+deliberately — the way Ambuda's own seeders are — and the committed artefact is
+the small thing it emits:
+
+| artefact | from | via |
+|---|---|---|
+| `data/dhatupatha.tsv` | vidyut's dhātupāṭha | vendored whole (55 KB) |
+| `data/mw-linga.tsv` | Monier-Williams, 50 MB | `scripts/import-mw.ts` |
+
+MW is the lexicon Ambuda seeds from, so "Ambuda's dictionary" and "MW/CDSL" are
+the same corpus. **Cologne's own host is blocked from this environment** — a 403
+at the agent proxy, an organisation policy denial rather than an outage — so the
+importer's usage line points at the sanskrit-lexicon GitHub mirror of the
+identical file. That is a standing constraint, not a transient failure.
+
 ### 3. Generated — `static/data/`, `static/content/`
 
 Everything the build computes. **Reproducible from the other two by running
@@ -106,7 +122,8 @@ the right place.
 `vasu_english.json` · `vasu_english_summary.json` · `vasu_rewritten.json` ·
 `dukrnkarane.json` · `dukrnkarane-by-sutra.json` · `sutrartha_english.json`
 
-`data/dhatupatha.tsv` is the only one in the right directory. Moving the rest to
+`data/dhatupatha.tsv` and `data/mw-linga.tsv` are the only ones in the right
+directory. Moving the rest to
 `data/` is tidying, not correctness, and is deferred: five of these trees are
 also **fetched by the browser at runtime** (`/data/commentary`, `/data/passages`,
 `/data/balabodhini`, `/content/paths`, `/content/sensitive-notes`), so moving

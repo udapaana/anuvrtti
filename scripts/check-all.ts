@@ -222,6 +222,19 @@ if (/case\(s\) wrong/.test(sp)) {
   console.log('  ✓ ' + sp.trim());
 }
 
+// 9b. the लिङ्ग fixture — HARD on a wrong answer, silent on a missing one.
+// Gender is the one सुबन्त dimension vidyut cannot derive, so build-quiz infers
+// it from three sources of differing authority. A blank is honest and expected;
+// a WRONG gender is a defect, and without a hand-written scoreboard neither is
+// distinguishable from "the number went up".
+const lg = await run(['bun', 'scripts/check-linga.ts']);
+if (/WRONG gender/.test(lg)) {
+  problems.push('लिङ्ग: ' + lg.split('\n').filter((l) => /WRONG|^\s{4}\S/.test(l)).join('\n'));
+  console.log('  ✗ ' + lg.trim().split('\n')[0]);
+} else {
+  console.log('  ✓ ' + lg.trim().split('\n')[0]);
+}
+
 // 10. sign-in and attribution — HARD. Two providers now, and the ways they
 // differ are quiet ones: an @mention that resolves on GitHub and mentions a
 // stranger for a Google display name, and a branch name git will not accept.
