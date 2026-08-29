@@ -222,6 +222,19 @@ if (/case\(s\) wrong/.test(sp)) {
   console.log('  ✓ ' + sp.trim());
 }
 
+// 9a. the lexical tables — HARD. src/lib/usage/lexical.ts maps a closed set to
+// a tag, and both halves join to the schema by exact string match. A bad value
+// writes a tag no dimension owns; a bad KEY matches nothing and does nothing,
+// which nothing else would ever report — the dimension just stays empty and
+// reads as an authoring backlog.
+const lx = await run(['bun', 'scripts/check-lexical.ts']);
+if (/lexical table error/.test(lx)) {
+  problems.push('lexical tables:\n' + lx.split('\n').filter((l) => /^\s{4}\S/.test(l)).join('\n'));
+  console.log('  ✗ ' + lx.trim().split('\n')[0]);
+} else {
+  console.log('  ✓ ' + lx.trim());
+}
+
 // 9b. the लिङ्ग fixture — HARD on a wrong answer, silent on a missing one.
 // Gender is the one सुबन्त dimension vidyut cannot derive, so build-quiz infers
 // it from three sources of differing authority. A blank is honest and expected;

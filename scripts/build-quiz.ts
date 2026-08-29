@@ -1213,6 +1213,144 @@ async function main() {
       }
     }
   }
+  /*
+    ── कृदन्त ──────────────────────────────────────────────────────────────
+
+    A participle is the one place where लिङ्ग really is a fact about the
+    occurrence rather than the stem. गच्छन् declines in all three genders,
+    because it agrees with whatever it describes, so गच्छन्तम् IS masculine and
+    गच्छन्तीम् IS feminine — the form settles it, and the stem cannot.
+
+    Nothing was settling it. 204 of 250 कृदन्त had no लिङ्ग and 209 no वचन,
+    because the सुबन्त pass keys on the lemma and a participle's lemma is a
+    ROOT: it tried to decline गम् as a प्रातिपदिक, which is not a word. The
+    missing step is the one vidyut entry point the build never used —
+    deriveKrdantas, which turns (root, कृत्) into the stem that then declines.
+
+        गम् + शतृ  →  गच्छत्  →  गच्छन्तम्   (पुंलिङ्ग द्वितीया एकवचन)
+
+    So: derive the stem, decline it in every cell, and keep the cells that
+    produce the attested form. Same generate-and-match as everywhere else, and
+    the same rule about ambiguity — a form two cells produce settles neither.
+
+    The अव्यय कृत् (क्त्वा, ल्यप्, तुमुन्, णमुल्) take no ending at all. For
+    those the derived string IS the word, so a match confirms the affix and the
+    preverb and stops there; asking for their विभक्ति would be asking what case
+    an indeclinable is in.
+  */
+  const krtLinga: Record<string, string> = {};
+  let krtResolved = 0, krtAvyaya = 0, krtUnderivable = 0, krtNoSlp = 0, krtNoRoot = 0, krtPlacedNoAgree = 0;
+  {
+    /** corpus tag → vidyut's affix name. */
+    const KRT_KEY: Record<string, string> = {
+      'क्त': 'kta', 'क्तवतु': 'ktavatu', 'शतृ': 'Satf', 'शानच्': 'SAnac',
+      'क्वसु': 'kvasu', 'कानच्': 'kAnac', 'तव्य': 'tavya', 'अनीयर्': 'anIyar',
+      'ण्यत्': 'Ryat', 'यत्': 'yat', 'क्यप्': 'kyap', 'तृच्': 'tfc',
+      'तृन्': 'tfn', 'ण्वुल्': 'Rvul', 'णिनि': 'Rini', 'घञ्': 'GaY',
+      'ल्युट्': 'lyuw', 'क्तिन्': 'ktin', 'अच्': 'ac', 'अङ्': 'aN',
+      'क्विप्': 'kvip', 'विच्': 'vic', 'क्त्वा': 'ktvA', 'तुमुन्': 'tumun',
+      'णमुल्': 'Ramul',
+      /*
+        ल्यप् is the only one vidyut rejects by name, and rightly: by 7.1.37 it
+        is not an affix you choose but what क्त्वा BECOMES after a preverb —
+        प्रकृत्य, not *प्रकृत्वा. So it is asked for as क्त्वा, and the preverb
+        the corpus's own form carries is what turns it into ल्यप्.
+      */
+      'ल्यप्': 'ktvA'
+    };
+    /** निष्ठा names the pair क्त + क्तवतु (1.1.26); try both. */
+    const KRT_ALIAS: Record<string, string[]> = { 'निष्ठा': ['kta', 'ktavatu'],
+      'कृत्य': ['tavya', 'anIyar', 'Ryat', 'yat', 'kyap'] };
+    const AVYAYA_KRT = new Set(['ktvA', 'tumun', 'Ramul']);
+
+    /** (aupadeśika|gana|prefix|krt) → the stems it makes. */
+    const krtStems = new Map<string, string[]>();
+    function stemsFor(aup: string, gana: string, pre: string, krt: string): string[] {
+      const key = `${aup}|${gana}|${pre}|${krt}`;
+      const hit = krtStems.get(key);
+      if (hit) return hit;
+      let out: string[] = [];
+      try {
+        const res = v.deriveKrdantas({
+          dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: pre ? [pre] : [] }, krt
+        });
+        out = [...new Set(res.map((p: any) => p.text))] as string[];
+      } catch { /* this root does not take this affix */ }
+      krtStems.set(key, out);
+      return out;
+    }
+
+    for (const r of corpus) {
+      for (const w of r.words ?? []) {
+        if (!w.lemma) continue;
+        const terms = new Set<string>((w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term));
+        const named = [...terms].filter((t) => KRT_KEY[t] || KRT_ALIAS[t]);
+        if (!named.length) continue;
+        const root = deaccent(w.lemma), form = deaccent(String(w.form ?? ''));
+        const formSlp = toSlp1(form);
+        if (!formSlp) { krtNoSlp++; continue; }
+
+        const cands = DHATU_MAP[root] ?? DHATU_MAP[root.replace(/्$/, '')]
+          ?? (DHATU[root] ? [DHATU[root]] : []);
+        if (!cands?.length) { krtNoRoot++; continue; }
+        const krts = named.flatMap((t) => KRT_ALIAS[t] ?? [KRT_KEY[t]]);
+        const prefixes = ['', ...Object.keys(PFX_FIRST).filter((k) => form.startsWith(PFX_FIRST[k]))];
+
+        let placed = false;
+        outer:
+        for (const pre of prefixes) {
+          for (const [aup, gana] of cands) {
+            for (const krt of krts) {
+              for (const stem of stemsFor(aup, gana, pre, krt)) {
+                // Indeclinable: the derived string is the whole word.
+                if (AVYAYA_KRT.has(krt)) {
+                  if (stem === formSlp) { krtAvyaya++; placed = true; break outer; }
+                  continue;
+                }
+                const raw = cellsFor(stem, formSlp);
+                if (!raw.length) continue;
+                /*
+                  Narrowed by what THIS occurrence is annotated as.
+
+                  गतम् is neuter प्रथमा, neuter द्वितीया and masculine द्वितीया
+                  all at once, so the string alone settles neither gender nor
+                  case — 35 occurrences came back ambiguous on exactly this. But
+                  the author has already written the विभक्ति on the word, and
+                  once it says प्रथमा only the neuter survives. The annotation is
+                  not competing with the derivation here; it is the second
+                  coordinate the derivation needs.
+                */
+                const aVib = [...terms].find((t) => VIB_SET.has(t));
+                const aVac = [...terms].find((t) => VAC_SET.has(t));
+                let cells = aVib ? raw.filter((c) => VIB_DEV[c[1]] === aVib) : raw;
+                if (!cells.length) cells = raw;      // engine and author disagree — trust neither
+                else if (aVac) {
+                  const k = cells.filter((c) => VAC_DEV[c[2]] === aVac);
+                  if (k.length) cells = k;
+                }
+                const key = root + '|' + form;
+                const lg = new Set(cells.map((c) => c[0]));
+                const vb = new Set(cells.map((c) => VIB_DEV[c[1]] + '|' + VAC_DEV[c[2]]));
+                // Only what every producing cell agrees on. गच्छन्तम् is
+                // masculine in all of them; a form that is two cases is neither.
+                if (lg.size === 1) krtLinga[key] = LINGA_DEV[[...lg][0]];
+                if (vb.size === 1 && !(key in cellIndex)) cellIndex[key] = [...vb][0];
+                if (lg.size === 1 || vb.size === 1) krtResolved++; else krtPlacedNoAgree++;
+                placed = true;
+                break outer;
+              }
+            }
+          }
+        }
+        if (!placed) krtUnderivable++;
+      }
+    }
+    console.log(
+      `  कृदन्त: ${krtResolved} placed, ${krtAvyaya} indeclinable, ${krtUnderivable} not derivable, ` +
+        `${krtPlacedNoAgree} ambiguous, ${krtNoRoot} lemma not a dhātu, ${krtNoSlp} form not convertible`
+    );
+  }
+
   const ambiguousKeys = new Set<string>();
   for (const e of [...entries, ...tinEntries]) {
     for (const [cell, list] of Object.entries(e.grid as any)) {
@@ -1236,6 +1374,9 @@ async function main() {
     cells: cellIndex,
     padas: padaIndex,
     lingas: lingaIndex,
+    // Per-OCCURRENCE gender, for participles. Keyed (lemma|form) rather than by
+    // stem, because a participle agrees and so has no one gender of its own.
+    krtLingas: krtLinga,
     ganas: ganaIndex,
     nounParadigms,
     verbParadigms,

@@ -263,8 +263,18 @@ export const TADDHITA_SUFFIX = [
   'अण्', 'इञ्', 'ढक्', 'यञ्',
   // तस्येदम् / तत्र भवः belonging & origin
   'छ', 'यत्', 'ठक्',
-  // मतुप् possession
-  'मतुप्', 'विनि', 'इन्', 'वत्',
+  /*
+    मतुप् possession.
+
+    इनि is the affix 5.2.115 अत इनिठनौ actually names, and it is what rd053
+    annotates धनिनाम् with. `इन्` — the stem the affix leaves behind rather than
+    the affix — was the only spelling here, so that annotation matched nothing
+    in the schema and simply went unread. Both are listed: इनि because it is the
+    correct name, इन् because the corpus may already use it elsewhere and
+    dropping it would break those silently, which is the very failure being
+    fixed.
+  */
+  'मतुप्', 'विनि', 'इनि', 'इन्', 'वत्',
   // भाव abstract
   'त्व', 'तल्', 'ष्यञ्', 'इमनिच्',
   // अतिशायन comparison
@@ -455,7 +465,20 @@ export const WORD_TYPES: WordType[] = [
     markers: ['सर्वनाम', ...SARVANAMA],
     dimensions: [
       { name: 'lemma', values: SARVANAMA, source: 'authored', note: 'the pronominal stem' },
-      { name: 'सर्वनाम-भेद', values: SARVANAMA_SUBTYPE, source: 'authored' },
+      /*
+        Derived, because the pronoun stems are a closed list of nine and each
+        belongs to exactly one class — किम् is प्रश्नवाचक in every sentence it
+        will ever stand in. It was authored, and so it was missing on all 393
+        सर्वनाम in the corpus, which read as a deep backlog and was really a
+        lookup table nobody had written down. It is now SARVANAMA_BHEDA in
+        src/lib/usage/lexical.ts.
+
+        The neighbouring tables there — संख्या-भेद, कृदन्त प्रयोग, तद्धित अर्थ,
+        अव्यय-भेद — deliberately did NOT move to `derived`. Each covers most of
+        its dimension and not all of it, and a dimension marked derived promises
+        the build supplies it. Half a promise is worse than none.
+      */
+      { name: 'सर्वनाम-भेद', values: SARVANAMA_SUBTYPE, source: 'derived' },
       { name: 'विभक्ति', values: VIBHAKTI, source: 'authored' },
       { name: 'वचन', values: VACANA, source: 'derived' },
       { name: 'लिङ्ग', values: LINGA, source: 'conditional',

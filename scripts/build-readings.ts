@@ -14,6 +14,10 @@ import * as path from 'path';
 import { parse as parseYaml } from 'yaml';
 import { parseGrid, isRectangular } from '../src/lib/reader/paradigm';
 import { deaccent } from '../src/lib/usage/normalize';
+import { WORD_TYPES } from '../src/lib/usage/schema';
+import {
+  SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA
+} from '../src/lib/usage/lexical';
 
 const READINGS_DIR = path.join(process.cwd(), 'content/readings');
 const SYLLABUS = path.join(READINGS_DIR, '_syllabus.yaml');
@@ -81,6 +85,18 @@ function lengthOf(r: any): 'short' | 'passage' | 'long' {
  */
 const VIBHAKTI = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
 const PRAYOGA = ['कर्तरि', 'कर्मणि', 'भावे'];
+/*
+  Read off the schema rather than restated, because these two exist only to
+  answer "has the author already said this?" — and a hand-copied list that
+  drifts from the schema answers it wrongly and silently, overwriting an
+  authored tag with a derived one.
+*/
+const dimValues = (typeId: string, dim: string) =>
+  new Set(
+    WORD_TYPES.find((t) => t.id === typeId)?.dimensions.find((d) => d.name === dim)?.values ?? []
+  );
+const ARTHA_SET = dimValues('taddhita', 'अर्थ');
+const AVYAYA_BHEDA_SET = dimValues('avyaya', 'अव्यय-भेद');
 const UPASARGA_SET = new Set([
   'प्र', 'परा', 'अप', 'सम्', 'अनु', 'अव', 'निस्', 'निर्', 'दुस्', 'दुर्', 'वि',
   'आङ्', 'नि', 'अधि', 'अपि', 'अति', 'सु', 'उद्', 'अभि', 'प्रति', 'परि', 'उप'
@@ -157,6 +173,16 @@ function phraseAround(sentence: string, form: string): string | null {
 let USAGE: Record<string, string> = {};
 let PADAS: Record<string, string> = {};
 let LINGAS: Record<string, string> = {};
+/*
+  Gender for a participle, keyed (lemma|form) rather than by stem.
+
+  LINGAS answers "what gender is this stem", which is the right question for a
+  noun and the wrong one for a कृदन्त: गच्छन् is masculine, feminine and neuter
+  by turns, because it agrees with what it describes. So the gender belongs to
+  the occurrence, and this map — built by declining the derived participle stem
+  and matching the attested form — is what carries it.
+*/
+let KRT_LINGAS: Record<string, string> = {};
 let GANAS: Record<string, [string, string?]> = {};
 // stem → (विभक्ति|वचन) → form, from the vidyut-built paradigm grids. This is what
 // a PRODUCTION quiz needs: given a cell, the form that fills it, plus the other
@@ -169,6 +195,7 @@ let PARADIGM: Record<string, Record<string, string>> = {};
     USAGE = u.cells ?? {};
     PADAS = u.padas ?? {};
     LINGAS = u.lingas ?? {};
+    KRT_LINGAS = u.krtLingas ?? {};
     GANAS = u.ganas ?? {};
     const sub = (u.sections ?? []).find((s: any) => s.kind === 'subanta');
     for (const e of sub?.entries ?? []) {
@@ -220,7 +247,9 @@ function derivedFeatures(word: any): Record<string, string> | null {
   // The gender is a property of the stem, not the occurrence, so it is keyed
   // on the lemma alone. Narrowed from the attested forms in build-quiz; a stem
   // the corpus never disambiguates simply has none.
-  const linga = LINGAS[deaccent(word.lemma)];
+  // The occurrence's own gender first: for a participle it is the only true
+  // answer, and LINGAS holds a stem-level gender that a root simply has not got.
+  const linga = KRT_LINGAS[key] ?? LINGAS[deaccent(word.lemma)];
   if (linga && ![...terms].some((t) => LINGA_SET.has(t))) out['लिङ्ग'] = linga;
 
   // गण and विकरण are fixed properties of the root, keyed on the lemma. A verb
@@ -282,6 +311,41 @@ function derivedFeatures(word: any): Record<string, string> | null {
   if (![...terms].some((t) => VIBHAKTI.includes(t))) {
     const role = [...terms].find((t) => ROLE_VIB[t]);
     if (role) out['विभक्ति'] = ROLE_VIB[role];
+  }
+
+  /*
+    The tags a closed set settles — see src/lib/usage/lexical.ts.
+
+    Each is keyed on something already fixed before the sentence starts: the
+    pronoun stem, the numeral stem, the कृत् affix, the तद्धित affix, the
+    indeclinable itself. None of them can differ between two occurrences of the
+    same word, which is what makes them derivable at all, and every one is
+    written only where the author has not already spoken.
+
+    They are matched on `terms` rather than on the word type, because the type
+    is what the marker tag establishes: a word carrying शतृ IS a कृदन्त, and
+    asking typeOf() first would just be asking the same question twice.
+  */
+  const lemma = word.lemma ? deaccent(String(word.lemma)) : '';
+
+  const svBheda = SARVANAMA_BHEDA[lemma];
+  if (svBheda && terms.has('सर्वनाम') && !terms.has(svBheda)) out['सर्वनाम-भेद'] = svBheda;
+
+  const snBheda = SANKHYA_BHEDA[lemma];
+  if (snBheda && terms.has('संख्या') && !terms.has(snBheda)) out['संख्या-भेद'] = snBheda;
+
+  // The affix is itself a tag on the word, so the lookup is over what is there.
+  const krt = [...terms].find((t) => KRT_PRAYOGA[t]);
+  if (krt && ![...terms].some((t) => PRAYOGA.includes(t)) && !out['प्रयोग']) {
+    out['प्रयोग'] = KRT_PRAYOGA[krt];
+  }
+
+  const tad = [...terms].find((t) => TADDHITA_ARTHA[t]);
+  if (tad && ![...terms].some((t) => ARTHA_SET.has(t))) out['अर्थ'] = TADDHITA_ARTHA[tad];
+
+  const avBheda = AVYAYA_BHEDA[lemma];
+  if (avBheda && terms.has('अव्यय') && ![...terms].some((t) => AVYAYA_BHEDA_SET.has(t))) {
+    out['अव्यय-भेद'] = avBheda;
   }
 
   if (!cell) return Object.keys(out).length ? out : null;
