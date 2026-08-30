@@ -14,7 +14,7 @@ import * as path from 'path';
 import { parse as parseYaml } from 'yaml';
 import { parseGrid, isRectangular } from '../src/lib/reader/paradigm';
 import { deaccent } from '../src/lib/usage/normalize';
-import { WORD_TYPES } from '../src/lib/usage/schema';
+import { WORD_TYPES, KARAKA, SENSE_ROLE } from '../src/lib/usage/schema';
 import {
   SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA
 } from '../src/lib/usage/lexical';
@@ -96,6 +96,7 @@ const dimValues = (typeId: string, dim: string) =>
     WORD_TYPES.find((t) => t.id === typeId)?.dimensions.find((d) => d.name === dim)?.values ?? []
   );
 const ARTHA_SET = dimValues('taddhita', 'अर्थ');
+const KRT_SET = dimValues('kridanta', 'कृत्');
 const AVYAYA_BHEDA_SET = dimValues('avyaya', 'अव्यय-भेद');
 const UPASARGA_SET = new Set([
   'प्र', 'परा', 'अप', 'सम्', 'अनु', 'अव', 'निस्', 'निर्', 'दुस्', 'दुर्', 'वि',
@@ -183,6 +184,15 @@ let LINGAS: Record<string, string> = {};
   and matching the attested form — is what carries it.
 */
 let KRT_LINGAS: Record<string, string> = {};
+/*
+  The कृत् affix, where the author wrote none.
+
+  91 कृदन्त carried the bare `कृदन्त` marker and nothing else, and the affix is
+  what everything else hangs off — प्रयोग comes from it, and without it there is
+  no stem to decline and so no लिङ्ग, विभक्ति or वचन either. build-quiz derives
+  all twenty-six from the root and keeps the answer only when exactly one fits.
+*/
+let KRTS: Record<string, string> = {};
 let GANAS: Record<string, [string, string?]> = {};
 // stem → (विभक्ति|वचन) → form, from the vidyut-built paradigm grids. This is what
 // a PRODUCTION quiz needs: given a cell, the form that fills it, plus the other
@@ -196,6 +206,7 @@ let PARADIGM: Record<string, Record<string, string>> = {};
     PADAS = u.padas ?? {};
     LINGAS = u.lingas ?? {};
     KRT_LINGAS = u.krtLingas ?? {};
+    KRTS = u.krts ?? {};
     GANAS = u.ganas ?? {};
     const sub = (u.sections ?? []).find((s: any) => s.kind === 'subanta');
     for (const e of sub?.entries ?? []) {
@@ -234,7 +245,7 @@ const PURUSHA_SET = new Set(['प्रथमपुरुष', 'मध्यम�
 const PADA_SET = new Set(['परस्मैपद', 'आत्मनेपद']);
 const LINGA_SET = new Set(['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग']);
 
-function derivedFeatures(word: any): Record<string, string> | null {
+function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1): Record<string, string> | null {
   if (!word.lemma) return null;
   const key = deaccent(word.lemma) + '|' + deaccent(String(word.form ?? ''));
   const cell = USAGE[key];
@@ -314,6 +325,50 @@ function derivedFeatures(word: any): Record<string, string> | null {
   }
 
   /*
+    …and the कारक back from the विभक्ति, which is the larger half.
+
+    2.3.x assigns the case FROM the role, so reading it backwards is reading a
+    rule against its grain — but for five of the eight cases the sūtra names one
+    role and no other, and 879 words with no कारक is the corpus's biggest single
+    gap by a factor of two:
+
+      द्वितीया  → कर्मन्      2.3.2  कर्मणि द्वितीया
+      चतुर्थी   → सम्प्रदान   2.3.13 चतुर्थी सम्प्रदाने
+      पञ्चमी    → अपादान     2.3.28 अपादाने पञ्चमी
+      षष्ठी     → सम्बन्ध    2.3.50 षष्ठी शेषे
+      सप्तमी    → अधिकरण     2.3.36 सप्तम्यधिकरणे च
+
+    प्रथमा and तृतीया are deliberately absent, and the reason is in the sūtras
+    themselves. 2.3.18 कर्तृकरणयोस्तृतीया names TWO roles for the instrumental:
+    तृतीया is करण in the active and कर्तृ in the passive — देवदत्तेन is the agent
+    of ओदनः पच्यते. And प्रथमा by 2.3.1 अनभिहिते marks whatever the verb has not
+    already expressed, which is the कर्तृ in कर्तरि and the कर्मन् in कर्मणि. To
+    read either backwards you must already know the प्रयोग of the verb this word
+    depends on, and that is a sentence-level fact this function does not have.
+
+    Two guards, both for the exceptions the tradition itself names:
+      - a सम्बन्धार्थ tag (हेतु, निर्धारण, सति सप्तमी…) means the case comes from
+        a rule about MEANING rather than from a कारक, so there is no role to
+        infer — and the corpus already marks these.
+      - a कर्मप्रवचनीय governing the word (the गोवत् relation) puts it in a case
+        by 1.4.83 ff. rather than by its own role: जपम् अनु is द्वितीया and no
+        कर्मन् at all.
+  */
+  const VIB_ROLE: Record<string, string> = {
+    'द्वितीया': 'कर्मन्', 'चतुर्थी': 'सम्प्रदान', 'पञ्चमी': 'अपादान',
+    'षष्ठी': 'सम्बन्ध', 'सप्तमी': 'अधिकरण'
+  };
+  if (
+    !terms.has('कारक') && ![...terms].some((t) => KARAKA.includes(t))
+    && ![...terms].some((t) => SENSE_ROLE.includes(t))
+    && !(word.rel ?? []).some((r: any) => r.kind === 'गोवत्')
+    && !governed.has(wi)
+  ) {
+    const vib = [...terms].find((t) => VIB_ROLE[t]);
+    if (vib) out['कारक'] = VIB_ROLE[vib];
+  }
+
+  /*
     The tags a closed set settles — see src/lib/usage/lexical.ts.
 
     Each is keyed on something already fixed before the sentence starts: the
@@ -335,7 +390,17 @@ function derivedFeatures(word: any): Record<string, string> | null {
   if (snBheda && terms.has('संख्या') && !terms.has(snBheda)) out['संख्या-भेद'] = snBheda;
 
   // The affix is itself a tag on the word, so the lookup is over what is there.
-  const krt = [...terms].find((t) => KRT_PRAYOGA[t]);
+  /*
+    The affix first, because प्रयोग below reads it. A derived कृत् feeds the
+    affix table exactly as an authored one does — it is the same fact, arrived
+    at by derivation rather than by hand.
+  */
+  const krtDerived = KRTS[key];
+  if (krtDerived && !terms.has(krtDerived) && !KRT_SET.has([...terms].find((t) => KRT_SET.has(t)) ?? '')) {
+    out['कृत्'] = krtDerived;
+  }
+
+  const krt = [...terms, ...(out['कृत्'] ? [out['कृत्']] : [])].find((t) => KRT_PRAYOGA[t]);
   if (krt && ![...terms].some((t) => PRAYOGA.includes(t)) && !out['प्रयोग']) {
     out['प्रयोग'] = KRT_PRAYOGA[krt];
   }
@@ -495,8 +560,17 @@ function main() {
 
   for (const r of flat) {
     const ws = r.words ?? [];
+    /*
+      Which words a कर्मप्रवचनीय puts in a case. The edge runs FROM the particle
+      TO the word it governs, so the governed word cannot see it on itself —
+      it has to be collected from the reading first.
+    */
+    const governed = new Set<number>();
+    for (const w of ws) {
+      for (const rel of w.rel ?? []) if (rel.kind === 'गोवत्' && typeof rel.to === 'number') governed.add(rel.to);
+    }
     ws.forEach((w: any, wi: number) => {
-      const feats = derivedFeatures(w);
+      const feats = derivedFeatures(w, governed, wi);
       if (feats) w.derived = feats;
       else delete w.derived;
 

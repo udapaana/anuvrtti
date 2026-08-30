@@ -248,6 +248,20 @@ if (/WRONG gender/.test(lg)) {
   console.log('  ✓ ' + lg.trim().split('\n')[0]);
 }
 
+// 9c. the coverage ratchet — HARD, and the one check that guards the FUTURE
+// rather than the present. Everything else here asks whether the corpus is
+// correct now; this asks whether it is still as complete as it was. A broken
+// derivation makes no word look wrong and no build fail — it just empties a
+// dimension — and a batch of thinly-authored readings dilutes a percentage two
+// points at a time, invisibly in any single diff.
+const cov = await run(['bun', 'scripts/check-coverage.ts']);
+if (/coverage regression/.test(cov)) {
+  problems.push('coverage:\n' + cov.split('\n').filter((l) => /^\s{4}\S/.test(l)).join('\n'));
+  console.log('  ✗ ' + cov.split('\n').find((l) => /regression/.test(l))!.trim());
+} else {
+  console.log('  ✓ ' + cov.trim().split('\n')[0]);
+}
+
 // 10. sign-in and attribution — HARD. Two providers now, and the ways they
 // differ are quiet ones: an @mention that resolves on GitHub and mentions a
 // stranger for a Google display name, and a branch name git will not accept.

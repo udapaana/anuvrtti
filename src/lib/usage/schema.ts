@@ -574,6 +574,18 @@ export const WORD_TYPES: WordType[] = [
 ];
 
 /** Which type a word is, by its tags. Order matters — see `markers`. */
+/**
+ * Every tag that establishes a word type, across all types.
+ *
+ * A marker is identity rather than a coordinate — शतृ says "this is a कृदन्त"
+ * the way लट् says "this is a तिङन्त" — so it is legal on any word of its type
+ * and is what `typeOf` matches on. Exported because two callers need the same
+ * set and a second hand-built copy would drift: check-complete uses it to tell
+ * a marker from a misplaced value, and build-quiz to tell whether a word has
+ * been typed at all before spending a derivation on finding out.
+ */
+export const ALL_MARKERS = new Set(WORD_TYPES.flatMap((t) => t.markers));
+
 export function typeOf(terms: Set<string>): WordType | null {
   for (const t of WORD_TYPES) {
     if (t.markers.some((m) => terms.has(m))) return t;

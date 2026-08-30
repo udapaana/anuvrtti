@@ -34,6 +34,13 @@ Edit `content/readings/<chapter>/<id>.yaml`, never `static/data/readings.json`
 by its id with an IDE "Go to File" keystroke. `bun run build:readings` after
 every edit.
 
+`bun run check` also holds a **coverage ratchet**: `content/coverage-floors.json`
+records how full each dimension currently is, and a drop fails the build — that
+is what stops a broken derivation or a thinly-annotated batch from going
+unnoticed. Raise the floors deliberately with `bun scripts/check-coverage.ts
+--update` and commit them with the work that earned them. See *The ratchet* in
+`docs/AUTHORING.md`.
+
 `static/data/stats.json` is generated too, and committed: the four counts on
 the home page's doors. The threshold must not download three corpora to print
 three integers, so `bun run build:stats` reduces them at build time (it runs

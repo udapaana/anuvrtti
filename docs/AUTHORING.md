@@ -342,11 +342,56 @@ the tag:
   works only when the cases are annotated. For a सर्वनाम, लिङ्ग is the referent's
   and `optional` — a pronoun owes no gender of its own.
 
+- **The tags a closed set settles are derived too**, from
+  `src/lib/usage/lexical.ts`: सर्वनाम-भेद from the pronoun stem (किम् is
+  प्रश्नवाचक in every sentence there will ever be), संख्या-भेद from the numeral,
+  प्रयोग from the कृत् affix, अर्थ from the तद्धित affix, अव्यय-भेद from the
+  indeclinable. Do not write these by hand; if one is wrong, the table is wrong.
+  Deliberately partial where the affix does not decide — क्त is कर्मणि or कर्तरि
+  depending on the root's transitivity (3.4.72), so it is not in the table.
+- **कारक is derived from the विभक्ति for five of the eight cases** — द्वितीया →
+  कर्मन्, चतुर्थी → सम्प्रदान, पञ्चमी → अपादान, षष्ठी → सम्बन्ध, सप्तमी →
+  अधिकरण. प्रथमा and तृतीया are not, because 2.3.1 and 2.3.18 each name two
+  roles and which applies depends on the verb's प्रयोग. Write those two, and
+  write any of the other five where the default is wrong — a सम्बन्धार्थ tag or
+  a कर्मप्रवचनीय governing the word already suppresses it.
+- **कृत् is recovered by derivation** where you leave it off: all twenty-six
+  affixes are derived from the root and the one that produces this form wins,
+  provided it is unique (तृच् and तृन् both make कर्तृ, so neither is asserted)
+  and provided it contradicts nothing you wrote.
+
 **Vedic accents are display data.** दे॒वेषु॑ and देवेषु are one word for every
 lookup: vidyut emits no accents and cannot parse them. The build deaccents on
 the way in. Write the accent where the source has it; never rely on it matching.
 (And per the freeze above, do not author *new* accents — the existing ones are
 verbatim from a verified source; new ones cannot be checked.)
+
+### The ratchet — why you cannot quietly author less
+
+`bun run check` fails if coverage drops. `content/coverage-floors.json` records,
+per word type and per dimension, the share currently filled; a number may rise
+freely and a fall is an error.
+
+It guards two things that are otherwise invisible:
+
+- **A derivation that breaks.** Most of what a word shows is inferred through a
+  chain several steps long — root candidates → derivation picks → stem → the
+  cell that matches. Sever any link and no word looks *wrong*; a dimension just
+  empties, and the build still passes.
+- **Readings authored thinner than the corpus standard.** Two points per session
+  is invisible in a diff and obvious in a quarter.
+
+Shares, not counts, because a count rises whenever you add a reading — a
+count-based floor would pass while the corpus got thinner per word.
+
+After clearing backlog or improving derivation, lock the gain in:
+
+```bash
+bun scripts/check-coverage.ts --update   # then commit the floors with the work
+```
+
+Lower a floor only with a reason in the commit message. "The check is failing"
+is not one — that is the check working.
 
 ### The rule of thumb
 

@@ -26,7 +26,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import {
-  WORD_TYPES, typeOf, krtDeclines, KNOWN_VALUES, RELATIONS, type WordType
+  WORD_TYPES, typeOf, krtDeclines, KNOWN_VALUES, RELATIONS, ALL_MARKERS, type WordType
 } from '../src/lib/usage/schema';
 
 const RELATION_BY_NAME = new Map(RELATIONS.map((r) => [r.name, r]));
@@ -37,7 +37,6 @@ const RELATION_BY_NAME = new Map(RELATIONS.map((r) => [r.name, r]));
  * else that is a value of SOME dimension but not one THIS type carries is a
  * misplaced tag — the lint's core signal.
  */
-const ALL_MARKERS = new Set(WORD_TYPES.flatMap((t) => t.markers));
 const ALL_VALUES = new Set(WORD_TYPES.flatMap((t) => t.dimensions.flatMap((d) => d.values)));
 
 type LintKind = 'conflict' | 'misplaced' | 'wrong-lemma' | 'bad-relation' | 'root-as-tag';
@@ -217,12 +216,28 @@ function main() {
     they are now measured, keyed type|dimension.
   */
   const cond = new Map<string, { n: number; total: number }>();
+  const dimFilled = new Map<string, { filled: number; total: number }>();
 
   for (const r of corpus.sequence ?? []) {
     if (one && r.id !== one) continue;
     for (const w of r.words ?? []) {
       const terms = new Set<string>((w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term));
-      const wt = typeOf(terms);
+      /*
+        Typed by what is known about the word, not only by what was written.
+
+        A type marker is a tag like any other and the build derives plenty of
+        them: आगच्छति carries the single note [गम्] because its reading teaches
+        the preverb, and the तिङन्त index then works out that it is लट् —
+        which IS the marker for तिङन्त. Reading only `notes` threw that away and
+        counted the word as untyped, so 165 words sat outside every paradigm
+        while the build already knew what most of them were.
+
+        Only for TYPING. Completeness still distinguishes the two, because
+        `missingFor` checks `derived` separately — a derived tag satisfies a
+        derived dimension and an authored one still has to be authored.
+      */
+      const typing = new Set<string>([...terms, ...Object.values(w.derived ?? {}) as string[]]);
+      const wt = typeOf(typing);
       const type = wt?.dev ?? 'untyped';
       byType[type] ??= { total: 0, complete: 0 };
       byType[type].total++;
@@ -234,6 +249,26 @@ function main() {
         byReading.set(r.id, (byReading.get(r.id) ?? 0) + 1);
         continue;
       }
+      /*
+        How full every dimension is, conditional or not.
+
+        The bars above answer "is this WORD complete", which is what an author
+        wants. The ratchet needs the other cut — "is this DIMENSION still being
+        filled" — because that is what breaks when a derivation quietly stops
+        working. A refactor that severs deriveKrdantas does not make any word
+        look wrong; it makes लिङ्ग on कृदन्त fall from 60% to 4%, and nothing
+        would have noticed.
+      */
+      for (const d of wt.dimensions) {
+        if (!d.values.length) continue;   // an open set (a lemma) has nothing to count
+        const dk = `${wt.dev}|${d.name}`;
+        const de = dimFilled.get(dk) ?? { filled: 0, total: 0 };
+        de.total++;
+        const der0 = Object.values(w.derived ?? {}) as string[];
+        if (d.values.some((val) => terms.has(val) || der0.includes(val))) de.filled++;
+        dimFilled.set(dk, de);
+      }
+
       for (const d of wt.dimensions) {
         if (d.source !== 'conditional' || !d.values.length) continue;
         const key = `${wt.dev}|${d.name}`;
@@ -259,6 +294,29 @@ function main() {
     // Relations are edges between words, so they are linted per-reading, with the
     // whole words[] in hand to resolve `to` and check agreement.
     if (r.words) lints.push(...lintRelations(r.words, r.id));
+  }
+
+  /*
+    Machine-readable coverage, for scripts/check-coverage.ts.
+
+    Emitted from HERE rather than measured again over there, because a second
+    implementation of "is this word complete?" would drift from this one and the
+    ratchet would then be guarding a number nobody else computes. One
+    measurement, two readers: a person reads the bars above, the ratchet reads
+    this.
+  */
+  if (args.includes('--json')) {
+    const perDimension: Record<string, { filled: number; total: number }> = {};
+    for (const [key, e] of dimFilled) perDimension[key] = e;
+    console.log(JSON.stringify({
+      types: Object.fromEntries(
+        Object.entries(byType).map(([k, v]) => [k, { complete: v.complete, total: v.total }])
+      ),
+      dimensions: perDimension,
+      untyped: untyped.length,
+      lints: lints.length
+    }));
+    return;
   }
 
   // ── one reading, word by word ──────────────────────────────────────────

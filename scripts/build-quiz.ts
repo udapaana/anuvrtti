@@ -52,6 +52,28 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { deaccent, phraseAround } from '../src/lib/usage/normalize';
 import {
+  ALL_MARKERS as ALL_TYPE_MARKERS, KNOWN_VALUES, WORD_TYPES
+} from '../src/lib/usage/schema';
+
+/*
+  Every tag that is legal on a कृदन्त — its own dimension values and names, plus
+  any type marker, which is identity and legal anywhere.
+
+  Used to stop a GUESS from contradicting the author. रd032 annotates the Vedic
+  ग॒त as मध्यमपुरुष, a second-person imperative of गम् — and गत is also, as a
+  string, the क्त participle of the same root. The derivation cannot tell them
+  apart and happily called it a कृदन्त, which made the author's own मध्यमपुरुष a
+  misplaced tag on a type that has no पुरुष. A derivation may fill a silence; it
+  may not overrule a sentence someone has already read.
+*/
+const KRIDANTA_LEGAL = (() => {
+  const t = WORD_TYPES.find((x) => x.id === 'kridanta')!;
+  return new Set<string>([
+    ...t.dimensions.flatMap((d) => d.values), ...t.dimensions.map((d) => d.name),
+    ...ALL_TYPE_MARKERS
+  ]);
+})();
+import {
   groupFor, sarvanamaGroupFor, isSarvanama, GANA_DEV, LAKARA_ORDER,
   SUBANTA_GROUPS, SARVANAMA_GROUPS, finalSound
 } from '../src/lib/usage/taxonomy';
@@ -1240,6 +1262,9 @@ async function main() {
   */
   const krtLinga: Record<string, string> = {};
   let krtResolved = 0, krtAvyaya = 0, krtUnderivable = 0, krtNoSlp = 0, krtNoRoot = 0, krtPlacedNoAgree = 0;
+  let krtNamed = 0, krtNameAmbiguous = 0, krtContradicts = 0;
+  /** (lemma|form) → the कृत् affix, where the author wrote none and derivation found exactly one. */
+  const krtIndex: Record<string, string> = {};
   {
     /** corpus tag → vidyut's affix name. */
     const KRT_KEY: Record<string, string> = {
@@ -1262,6 +1287,18 @@ async function main() {
     const KRT_ALIAS: Record<string, string[]> = { 'निष्ठा': ['kta', 'ktavatu'],
       'कृत्य': ['tavya', 'anIyar', 'Ryat', 'yat', 'kyap'] };
     const AVYAYA_KRT = new Set(['ktvA', 'tumun', 'Ramul']);
+    /*
+      vidyut's affix name back to the corpus's, for reporting a guess.
+
+      Only ktvA is not one-to-one, and the exception is the same 7.1.37 as
+      before: क्त्वा after a preverb IS ल्यप्, so the prefix that made the form
+      derive is exactly what tells the two apart.
+    */
+    const KRT_DEV: Record<string, string> = Object.fromEntries(
+      Object.entries(KRT_KEY).filter(([dev]) => dev !== 'ल्यप्').map(([dev, k]) => [k, dev])
+    );
+    const krtName = (krt: string, pre: string) =>
+      krt === 'ktvA' ? (pre ? 'ल्यप्' : 'क्त्वा') : KRT_DEV[krt] ?? krt;
 
     /** (aupadeśika|gana|prefix|krt) → the stems it makes. */
     const krtStems = new Map<string, string[]>();
@@ -1285,7 +1322,27 @@ async function main() {
         if (!w.lemma) continue;
         const terms = new Set<string>((w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term));
         const named = [...terms].filter((t) => KRT_KEY[t] || KRT_ALIAS[t]);
-        if (!named.length) continue;
+        /*
+          Which affix, when the author did not say.
+
+          91 कृदन्त carry the bare `कृदन्त` marker and no कृत्, and the affix is
+          the one thing everything else about the word hangs off — its प्रयोग
+          comes from the affix table, and without it there is no stem to decline
+          and so no लिङ्ग, no विभक्ति and no वचन either. But the affix is
+          recoverable the same way everything else here is: derive all
+          twenty-six from the root and see which one produces this form.
+
+          Asserted only when the answer is UNIQUE. तृच् and तृन् both make कर्तृ
+          and no form can tell them apart, so a word whose stem two affixes
+          produce keeps its silence — the derivation says "one of these", which
+          is not an annotation.
+        */
+        const guessing = !named.length;
+        if (guessing) {
+          if (!terms.has('कृदन्त') && [...terms].some((t) => ALL_TYPE_MARKERS.has(t))) continue;
+          // Never guess against something the author already wrote.
+          if ([...terms].some((t) => KNOWN_VALUES.has(t) && !KRIDANTA_LEGAL.has(t))) { krtContradicts++; continue; }
+        }
         const root = deaccent(w.lemma), form = deaccent(String(w.form ?? ''));
         const formSlp = toSlp1(form);
         if (!formSlp) { krtNoSlp++; continue; }
@@ -1293,61 +1350,91 @@ async function main() {
         const cands = DHATU_MAP[root] ?? DHATU_MAP[root.replace(/्$/, '')]
           ?? (DHATU[root] ? [DHATU[root]] : []);
         if (!cands?.length) { krtNoRoot++; continue; }
-        const krts = named.flatMap((t) => KRT_ALIAS[t] ?? [KRT_KEY[t]]);
+        const krts = guessing
+          ? [...new Set(Object.values(KRT_KEY))]
+          : named.flatMap((t) => KRT_ALIAS[t] ?? [KRT_KEY[t]]);
         const prefixes = ['', ...Object.keys(PFX_FIRST).filter((k) => form.startsWith(PFX_FIRST[k]))];
 
+        const key = root + '|' + form;
+        /**
+         * Record what the declined participle stem says about this occurrence.
+         *
+         * Narrowed by what THIS occurrence is annotated as. गतम् is neuter
+         * प्रथमा, neuter द्वितीया and masculine द्वितीया all at once, so the
+         * string alone settles neither gender nor case — 35 came back ambiguous
+         * on exactly that. But the author has already written the विभक्ति, and
+         * once it says प्रथमा only the neuter survives. The annotation is not
+         * competing with the derivation here; it is the second coordinate the
+         * derivation needs.
+         */
+        function place(stem: string): void {
+          const raw = cellsFor(stem, formSlp!);
+          if (!raw.length) return;
+          const aVib = [...terms].find((t) => VIB_SET.has(t));
+          const aVac = [...terms].find((t) => VAC_SET.has(t));
+          let cells = aVib ? raw.filter((c) => VIB_DEV[c[1]] === aVib) : raw;
+          if (!cells.length) cells = raw;      // engine and author disagree — trust neither
+          else if (aVac) {
+            const k = cells.filter((c) => VAC_DEV[c[2]] === aVac);
+            if (k.length) cells = k;
+          }
+          const lg = new Set(cells.map((c) => c[0]));
+          const vb = new Set(cells.map((c) => VIB_DEV[c[1]] + '|' + VAC_DEV[c[2]]));
+          // Only what every producing cell agrees on. गच्छन्तम् is masculine in
+          // all of them; a form that is two cases is neither.
+          if (lg.size === 1) krtLinga[key] = LINGA_DEV[[...lg][0]];
+          if (vb.size === 1 && !(key in cellIndex)) cellIndex[key] = [...vb][0];
+          if (lg.size === 1 || vb.size === 1) krtResolved++; else krtPlacedNoAgree++;
+        }
+
+        /** Affix name → the stem that produced this form ('' for an indeclinable). */
+        const fits = new Map<string, string>();
         let placed = false;
         outer:
         for (const pre of prefixes) {
           for (const [aup, gana] of cands) {
             for (const krt of krts) {
               for (const stem of stemsFor(aup, gana, pre, krt)) {
-                // Indeclinable: the derived string is the whole word.
-                if (AVYAYA_KRT.has(krt)) {
-                  if (stem === formSlp) { krtAvyaya++; placed = true; break outer; }
-                  continue;
+                const indeclinable = AVYAYA_KRT.has(krt);
+                if (indeclinable ? stem !== formSlp : !cellsFor(stem, formSlp).length) continue;
+                if (guessing) {
+                  if (!fits.has(krtName(krt, pre))) fits.set(krtName(krt, pre), indeclinable ? '' : stem);
+                  break;
                 }
-                const raw = cellsFor(stem, formSlp);
-                if (!raw.length) continue;
-                /*
-                  Narrowed by what THIS occurrence is annotated as.
-
-                  गतम् is neuter प्रथमा, neuter द्वितीया and masculine द्वितीया
-                  all at once, so the string alone settles neither gender nor
-                  case — 35 occurrences came back ambiguous on exactly this. But
-                  the author has already written the विभक्ति on the word, and
-                  once it says प्रथमा only the neuter survives. The annotation is
-                  not competing with the derivation here; it is the second
-                  coordinate the derivation needs.
-                */
-                const aVib = [...terms].find((t) => VIB_SET.has(t));
-                const aVac = [...terms].find((t) => VAC_SET.has(t));
-                let cells = aVib ? raw.filter((c) => VIB_DEV[c[1]] === aVib) : raw;
-                if (!cells.length) cells = raw;      // engine and author disagree — trust neither
-                else if (aVac) {
-                  const k = cells.filter((c) => VAC_DEV[c[2]] === aVac);
-                  if (k.length) cells = k;
-                }
-                const key = root + '|' + form;
-                const lg = new Set(cells.map((c) => c[0]));
-                const vb = new Set(cells.map((c) => VIB_DEV[c[1]] + '|' + VAC_DEV[c[2]]));
-                // Only what every producing cell agrees on. गच्छन्तम् is
-                // masculine in all of them; a form that is two cases is neither.
-                if (lg.size === 1) krtLinga[key] = LINGA_DEV[[...lg][0]];
-                if (vb.size === 1 && !(key in cellIndex)) cellIndex[key] = [...vb][0];
-                if (lg.size === 1 || vb.size === 1) krtResolved++; else krtPlacedNoAgree++;
+                if (indeclinable) { krtAvyaya++; placed = true; break outer; }
+                place(stem);
                 placed = true;
                 break outer;
               }
             }
           }
         }
+        /*
+          The guess, resolved. One fitting affix is an answer; several is not —
+          तृच् and तृन् both make कर्तृ and the word cannot say which it is.
+          Recorded on (lemma|form) so build-readings can fill कृत्, which then
+          feeds प्रयोग through the affix table like any authored one would; and
+          the stem that produced it is declined here and now, since a word whose
+          affix we have just worked out is owed its लिङ्ग and वचन as much as one
+          whose affix was written down.
+        */
+        if (guessing) {
+          if (fits.size === 1) {
+            const [[name, stem]] = [...fits];
+            krtIndex[key] = name;
+            krtNamed++;
+            if (stem) place(stem); else krtAvyaya++;
+          } else if (fits.size > 1) krtNameAmbiguous++;
+          continue;
+        }
         if (!placed) krtUnderivable++;
       }
     }
     console.log(
       `  कृदन्त: ${krtResolved} placed, ${krtAvyaya} indeclinable, ${krtUnderivable} not derivable, ` +
-        `${krtPlacedNoAgree} ambiguous, ${krtNoRoot} lemma not a dhātu, ${krtNoSlp} form not convertible`
+        `${krtPlacedNoAgree} ambiguous, ${krtNoRoot} lemma not a dhātu\n` +
+        `    कृत् recovered: ${krtNamed} affix(es) named by derivation, ${krtNameAmbiguous} form(s) fit more than one, ` +
+        `${krtContradicts} refused (would contradict an authored tag)`
     );
   }
 
@@ -1377,6 +1464,8 @@ async function main() {
     // Per-OCCURRENCE gender, for participles. Keyed (lemma|form) rather than by
     // stem, because a participle agrees and so has no one gender of its own.
     krtLingas: krtLinga,
+    // (lemma|form) → कृत्, recovered by derivation where the author wrote none.
+    krts: krtIndex,
     ganas: ganaIndex,
     nounParadigms,
     verbParadigms,
@@ -1499,14 +1588,35 @@ async function main() {
     starts with are tried, and each (candidate, prefix) paradigm is enumerated
     once and cached, since many forms share a root.
   */
-  // every finite verb the corpus attests, as (lemma, form)
+  /*
+    Every finite verb the corpus attests, as (lemma, form) — plus every word
+    that might be one and was never asked.
+
+    This pass used to consider only words the author had ALREADY marked as
+    verbs, by a लकार or a पद tag. That is circular, and it is why 165 words are
+    untyped: आगच्छति carries the single note [गम्] because its reading is
+    teaching the preverb, गम्यते carries [यक्, गम्, कर्मणि] because its reading
+    is teaching the passive, and neither ever reached the derivation that would
+    have said what they are. A word with no type tag is precisely the word most
+    worth asking about, and the derivation answers without being told:
+    आगच्छति derives from आ + गम् in लट् and nothing else does, so it is a
+    तिङन्त and its लकार, पुरुष, वचन and पद all follow.
+
+    Candidates are still gated on having a lemma and on that lemma being a
+    dhātu, so the extra work is bounded — and a word that derives from nothing
+    simply gets no answer, exactly as before.
+  */
   const wanted = new Map<string, { lemma: string; form: string }>();
   for (const r of corpus)
     for (const w of r.words ?? []) {
+      if (!w.lemma) continue;
       const tags = [...(w.notes ?? []).map((n: any) => n.term).filter(Boolean),
                     ...Object.values(w.derived ?? {})] as string[];
-      if (!tags.some((t) => LAK_KEY[t] !== undefined || t === 'परस्मैपद' || t === 'आत्मनेपद')) continue;
-      if (!w.lemma) continue;
+      const saysVerb = tags.some((t) => LAK_KEY[t] !== undefined || t === 'परस्मैपद' || t === 'आत्मनेपद');
+      // Untyped means no marker of ANY word type — not merely no verb marker.
+      // A word already known to be a सुबन्त must not be re-litigated as a verb.
+      const untyped = !tags.some((t) => ALL_TYPE_MARKERS.has(t));
+      if (!saysVerb && !untyped) continue;
       const lemma = deaccent(w.lemma), form = deaccent(String(w.form ?? ''));
       if (!form || tinIndex[`${lemma}|${form}`]) continue;
       wanted.set(`${lemma}|${form}`, { lemma, form });
