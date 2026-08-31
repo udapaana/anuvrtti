@@ -69,6 +69,19 @@ unlights it silently rather than raising, so `bun run check` verifies them
 - `/reader` — the graded reader (`src/routes/reader/+page.svelte`)
 - `/balabodhini` — the primer, from `static/data/balabodhini/`
 - `/ref/[id]` — per-sūtra commentary, three tiers, all 3983
-- `src/lib/prakriya.ts` — vidyut-prakriya WASM wrapper. `sanadi` and
-  `prefixes` are **required** despite reading as optional; omitting them traps
-  the module with a bare "unreachable" and no message.
+- `src/lib/prakriya.ts` — vidyut-prakriya WASM wrapper. `sanadi`, `prefixes`
+  and `skip_at_agama` are **required** despite reading as optional; omitting any
+  of them traps the module with a bare "unreachable" and no message.
+
+## The grammar engine is pinned
+
+vidyut-prakriya decides what the corpus *means* — every लिङ्ग, विभक्ति, वचन,
+पुरुष, पद and गण the reader shows — so it is pinned to a commit, in
+`VIDYUT_REV` in `.github/workflows/deploy.yml`. It was not, and CI cloned HEAD
+on the day of each deploy while local builds used a binary committed months
+earlier: two different grammars, no diff, nothing to say so.
+
+`./scripts/build-wasm.sh` rebuilds `static/wasm/` at that same pin, so local
+matches CI. To move it: bump `VIDYUT_REV`, rerun the script, run `bun run
+check`, and commit the three together. **If the baselines move, that is the
+review** — an engine change that alters the corpus should be visible as one.

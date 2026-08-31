@@ -22,76 +22,79 @@
 // --------
 //
 // For various examples, see the tests in www/unit-tests.html
-//
+// 
 // Notes for maintainers
 // ---------------------
-//
+// 
 // wasm enums (Purusha, Vacana, ...) map ints to strings and strings to ints:
-//
+// 
 // - Vacana.Eka is an int.
 // - Vacana[Vacana.Eka] is a string.
 //
 // Rust generally expects strings, but enums are good for ergonomics and documentation.
 // So, do some goofy enum juggling so that clients have a clean API and Rust gets what it needs.
-import init, {
-  BaseKrt,
-  Vidyut as VidyutWasm,
-  Lakara,
-  Prayoga,
-  Purusha,
-  Vacana,
-  DhatuPada,
-  Sanadi,
-  Linga,
-  Vibhakti,
-  Gana,
-  Antargana,
-} from "./vidyut_prakriya.js";
+import init, { BaseKrt, Unadi, Vidyut as VidyutWasm, Lakara, Prayoga, Purusha, Vacana, DhatuPada, Sanadi,
+    Linga, Vibhakti, Gana, Antargana } from "./vidyut_prakriya.js";
 
 export {
-  init as initWasm,
-  Lakara,
-  Prayoga,
-  Purusha,
-  Vacana,
-  DhatuPada,
-  Sanadi,
-  Linga,
-  Vibhakti,
-  Gana,
-  Antargana,
-  BaseKrt as Krt,
+    init as initWasm,
+    Lakara,
+    Prayoga,
+    Purusha,
+    Vacana,
+    DhatuPada,
+    Sanadi,
+    Linga,
+    Vibhakti,
+    Gana,
+    Antargana,
+    BaseKrt as Krt,
+    Unadi
 };
 
 function isMissing(x) {
-  return x === null || x === undefined;
+    return x === null || x === undefined;
 }
 
-function createWasmDhatu({ aupadeshika, gana, antargana, sanadi, prefixes }) {
-  return {
-    aupadeshika,
-    gana: Gana[gana],
-    antargana: isMissing(antargana) ? null : Antargana[antargana],
-    sanadi: (sanadi || []).map((x) => Sanadi[x]),
-    prefixes: prefixes || [],
-  };
+function createWasmDhatu({aupadeshika, gana, antargana, sanadi, prefixes}) {
+    return {
+        aupadeshika,
+        gana: Gana[gana],
+        antargana: isMissing(antargana) ? null : Antargana[antargana],
+        sanadi: (sanadi || []).map(x => Sanadi[x]),
+        prefixes: prefixes || [],
+    };
 }
 
-function createWasmKrdanta({ dhatu, krt, lakara = null, prayoga = null }) {
-  return {
-    dhatu: createWasmDhatu(dhatu),
-    krt: BaseKrt[krt],
-    lakara: isMissing(lakara) ? null : Lakara[lakara],
-    prayoga: isMissing(prayoga) ? null : Prayoga[prayoga],
-  };
+function createWasmKrdanta({ dhatu, krt, lakara = null, prayoga = null , unadi = null, upapada = null }) {
+    // console.log(`Calling WasmKrdanta ${ isMissing(upapada) ? "null": upapada["linga"]}`);
+    let upapada_tmp = {}
+    if (upapada !== null) {
+        if (isMissing(upapada["stem"])) {
+            upapada_tmp = null
+        } else {
+            upapada_tmp["stem"] = upapada["stem"];
+            upapada_tmp["vacana"] = isMissing(upapada["vacana"]) ? Vacana[Vacana.Eka] : Vacana[upapada["vacana"]];
+            upapada_tmp["linga"] = isMissing(upapada["linga"]) ? Linga[Linga.Pum] : Linga[upapada["linga"]];
+            upapada_tmp["vibhakti"] = isMissing(upapada["vibhakti"]) ? Vibhakti[Vibhakti.Prathama] : Vibhakti[upapada["vibhakti"]];
+        }
+    }
+    return {
+        dhatu: createWasmDhatu(dhatu),
+        krt: BaseKrt[krt],
+        unadi: Unadi[unadi],
+        lakara: isMissing(lakara) ? null : Lakara[lakara],
+        prayoga: isMissing(prayoga) ? null : Prayoga[prayoga],
+        upapada:  upapada_tmp
+    }
 }
 
 function createWasmPratipadika({ basic, krdanta }) {
-  if (basic) {
-    return { basic };
-  } else {
-    return { krdanta: createWasmKrdanta(krdanta) };
-  }
+    if (basic) {
+        return { basic };
+    } else {
+        return { krdanta: createWasmKrdanta(krdanta) };
+    }
 }
 
 // Ergonomic wrapper over vidyut-prakriya wasm build.
@@ -106,7 +109,7 @@ function createWasmPratipadika({ basic, krdanta }) {
 //
 // Dhatus require `aupadeshika` and `gana` and may optionally take `sanadi`, `prefixes`, or
 // `antargana`:
-//
+// 
 // - { aupadeshika: "BU", gana: Gana.Bhvadi }
 // - { aupadeshika: "BU", gana: Gana.Bhvadi, sanadi: [Sanadi.san] }
 // - { aupadeshika: "BU", gana: Gana.Bhvadi, prefixes: ["pari"], sanadi: [Sanadi.san] }
@@ -119,98 +122,98 @@ function createWasmPratipadika({ basic, krdanta }) {
 //
 // For more examples, see unit-tests.html in the Vidyut repository.
 export class Vidyut {
-  // Call `init()` before using Vidyut so that you correctly initialize the WASM environment.
-  //
-  // Example:
-  //
-  // ```
-  // // NOTE: `init()` is async!
-  // await init();
-  // const vidyut = new Vidyut();
-  // ```
-  constructor() {
-    this.wasm = VidyutWasm.init();
-  }
+    // Call `init()` before using Vidyut so that you correctly initialize the WASM environment.
+    //
+    // Example:
+    //
+    // ```
+    // // NOTE: `init()` is async!
+    // await init();
+    // const vidyut = new Vidyut();
+    // ```
+    constructor() {
+        this.wasm = VidyutWasm.init();
+    }
 
-  /**
-   * Derives all dhatus that match the input conditions.
-   *
-   * dhatu: an object that defines a dhatu. For details, see the comments on `class Vidyut`.
-   * linga: a `Linga`
-   * vibhakti: a `Vibhakti`
-   * vacana: a `Vacana`
-   */
-  deriveDhatus({ aupadeshika, gana, antargana, sanadi, prefixes }) {
-    // For argument order, see wasm.rs.
-    return this.wasm.deriveDhatus(
-      createWasmDhatu({
-        aupadeshika,
-        gana,
-        antargana,
-        sanadi,
-        prefixes,
-      }),
-    );
-  }
+    /**
+     * Derives all dhatus that match the input conditions.
+     *
+     * dhatu: an object that defines a dhatu. For details, see the comments on `class Vidyut`.
+     * linga: a `Linga`
+     * vibhakti: a `Vibhakti`
+     * vacana: a `Vacana`
+     */
+    deriveDhatus({ aupadeshika, gana, antargana, sanadi, prefixes }) {
+        // For argument order, see wasm.rs.
+        return this.wasm.deriveDhatus(createWasmDhatu({
+            aupadeshika,
+            gana,
+            antargana,
+            sanadi,
+            prefixes
+        }));
+    }
 
-  /**
-   * Derives all krdantas that match the input conditions.
-   *
-   * dhatu: an object that defines a dhatu. For details, see the comments on `class Vidyut`.
-   * krt: a `Krt`.
-   *
-   * lakara?: (for Satf and SAnac only) the lakAra to use.
-   * prayoga?: (for Satf and SAnac only) the prayoga to use.
-   */
-  deriveKrdantas({ dhatu, krt, lakara = null, prayoga = null }) {
-    return this.wasm.deriveKrdantas(
-      createWasmKrdanta({
-        dhatu,
-        krt,
-        lakara,
-        prayoga,
-      }),
-    );
-  }
+    /**
+     * Derives all krdantas that match the input conditions.
+     *
+     * dhatu: an object that defines a dhatu. For details, see the comments on `class Vidyut`.
+     * krt: a `Krt`.
+     *
+     * lakara?: (for Satf and SAnac only) the lakAra to use.
+     * prayoga?: (for Satf and SAnac only) the prayoga to use.
+     */
+    deriveKrdantas({ dhatu, krt, lakara = null, prayoga = null, unadi = null, upapada = null }) {
+        return this.wasm.deriveKrdantas(createWasmKrdanta({
+            dhatu,
+            krt,
+            lakara,
+            prayoga,
+            unadi,
+            upapada
+        }));
+    }
 
-  /**
-   * Derives all subantas that match the input conditions.
-   *
-   * pratipadika: an object that defines a pratipadika.
-   *              For details, see the comments on `class Vidyut`.
-   * linga: a `Linga`
-   * vibhakti: a `Vibhakti`
-   * vacana: a `Vacana`
-   */
-  deriveSubantas({ pratipadika, linga, vibhakti, vacana }) {
-    // For argument order, see wasm.rs.
-    return this.wasm.deriveSubantas({
-      pratipadika: createWasmPratipadika(pratipadika),
-      linga: Linga[linga],
-      vibhakti: Vibhakti[vibhakti],
-      vacana: Vacana[vacana],
-    });
-  }
+    /**
+     * Derives all subantas that match the input conditions.
+     *
+     * pratipadika: an object that defines a pratipadika.
+     *              For details, see the comments on `class Vidyut`.
+     * linga: a `Linga`
+     * vibhakti: a `Vibhakti`
+     * vacana: a `Vacana`
+     */
+    deriveSubantas({ pratipadika, linga, vibhakti, vacana }) {
+        // For argument order, see wasm.rs.
+        return this.wasm.deriveSubantas({
+            pratipadika: createWasmPratipadika(pratipadika),
+            linga: Linga[linga],
+            vibhakti: Vibhakti[vibhakti],
+            vacana: Vacana[vacana],
+        });
+    }
 
-  /**
-   * Derives all tinantas that match the input conditions.
-   *
-   * dhatu: an object that defines a dhatu. For details, see the comments on `class Vidyut`.
-   * lakara: a `Lakara`
-   * purusha: a `Purusha`
-   * vacana: a `Vacana`
-   * pada: a `DhatuPada`
-   * sanadi: a list of strings. Valid values are "san", "Ric", "yaN", and "yaNluk".
-   * upasargas: a list of strings. For the upasarga "A", pass "AN".
-   */
-  deriveTinantas({ dhatu, lakara, prayoga, purusha, vacana, pada = null }) {
-    return this.wasm.deriveTinantas({
-      dhatu: createWasmDhatu(dhatu),
-      lakara: Lakara[lakara],
-      prayoga: Prayoga[prayoga],
-      purusha: Purusha[purusha],
-      vacana: Vacana[vacana],
-      pada: isMissing(pada) ? null : DhatuPada[pada],
-    });
-  }
+    /**
+     * Derives all tinantas that match the input conditions.
+     *
+     * dhatu: an object that defines a dhatu. For details, see the comments on `class Vidyut`.
+     * lakara: a `Lakara`
+     * purusha: a `Purusha`
+     * vacana: a `Vacana`
+     * pada: a `DhatuPada`
+     * skipAtAgama: whether to skip AtAgama or not (for "mAN")
+     * sanadi: a list of strings. Valid values are "san", "Ric", "yaN", and "yaNluk".
+     * upasargas: a list of strings. For the upasarga "A", pass "AN".
+     */
+    deriveTinantas({ dhatu, lakara, prayoga, purusha, vacana, pada = null, skipAtAgama = false }) {
+        return this.wasm.deriveTinantas({
+            dhatu: createWasmDhatu(dhatu),
+            lakara: Lakara[lakara],
+            prayoga: Prayoga[prayoga],
+            purusha: Purusha[purusha],
+            vacana: Vacana[vacana],
+            skip_at_agama: skipAtAgama,
+            pada: isMissing(pada) ? null : DhatuPada[pada],
+        });
+    }
 }

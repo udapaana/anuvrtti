@@ -193,7 +193,8 @@ async function main() {
           try {
             const res = w.deriveTinantas({
               dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
-              lakara: lak, prayoga, purusha: pn[0], vacana: pn[1], pada: null
+              lakara: lak, prayoga, purusha: pn[0], vacana: pn[1], pada: null,
+              skip_at_agama: false
             });
             for (const p of res) {
               const set = new Set<string>(p.history.map((s: any) => s.rule.code));

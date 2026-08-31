@@ -368,14 +368,20 @@ async function main() {
     const hit = memo.get(key);
     if (hit) return hit;
     const out: Array<[string, string, string]> = [];
-    for (const lg of LINGAS)
-      for (const vb of VIBHAKTIS)
-        for (const vc of VACANAS) {
-          try {
-            const res = v.deriveSubantas({ pratipadika: { basic: stemSlp }, linga: lg, vibhakti: vb, vacana: vc });
-            for (const p of res) if (p.text === form) out.push([lg, vb, vc]);
-          } catch { /* this cell does not derive */ }
-        }
+    const seen = new Set<string>();
+    for (const pratipadika of pratipadikas(stemSlp))
+      for (const lg of LINGAS)
+        for (const vb of VIBHAKTIS)
+          for (const vc of VACANAS) {
+            try {
+              const res = v.deriveSubantas({ pratipadika, linga: lg, vibhakti: vb, vacana: vc });
+              if (!res.some((p: any) => p.text === form)) continue;
+              const k = `${lg}|${vb}|${vc}`;
+              if (seen.has(k)) continue;
+              seen.add(k);
+              out.push([lg, vb, vc]);
+            } catch { /* this cell does not derive */ }
+          }
     memo.set(key, out);
     return out;
   }
@@ -389,7 +395,7 @@ async function main() {
     string,
     { linga: string | null; vibhaktis: string[]; cells: Array<[string, string]> }
   > = {};
-  let resolved = 0, ambiguous = 0, underivable = 0, reSpelt = 0;
+  let resolved = 0, ambiguous = 0, underivable = 0;
   /** Genders MW supplied where the corpus had nothing to weigh, and the tie-breaks it settled. */
   const mwOnly = new Map<string, string>();
   const mwConflicts: string[] = [];
@@ -544,44 +550,34 @@ async function main() {
     safely — a stem whose spelling was already right sees no change, and one
     that neither spelling derives keeps what it had.
   */
-  function stemSpellings(slp: string): string[] {
-    const out = [slp];
-    // Only ā. The ī of ङीप् (नदी, देवी) cannot be expressed through this API at
-    // all — neither `nadI` nor `nad` derives नदी — so stripping it would trade
-    // one wrong paradigm for another. Left alone, and reported by the check.
-    // The final ā becomes a short a — the प्रातिपदिक is सेन (`sena`), not `sen`.
-    // Dropping the character instead leaves a consonant-final stem, which
-    // derives nothing and made this whole substitution look like a no-op.
-    if (/A$/.test(slp) && slp.length > 2) out.push(slp.replace(/A$/, 'a'));
-    return out;
+  /**
+   * How to hand a stem to vidyut.
+   *
+   * A stem the corpus cites with its स्त्रीप्रत्यय already on it — सेना, नदी,
+   * देवी — is a `nyap` प्रātipadika, not a `basic` one. vidyut's own word: the
+   * flag says "this already ends in a नी/आप् pratyaya", so it declines from
+   * there instead of trying to add one. Handed `senA` as `basic` it declines an
+   * ā-final stem that never took टाप् and makes प्रथमा एकवचन सेनाः.
+   *
+   * This replaces a workaround that fed it `sena` — the pre-टाप् stem — and let
+   * derivation choose between the two spellings. That got the ā-stems right and
+   * could do nothing for the ī-stems, because there is no pre-ङीप् spelling
+   * that derives नदी. `nyap` handles both and is what the API is for.
+   */
+  function pratipadikas(slp: string): Array<Record<string, string>> {
+    // धी and स्त्री end in ī and are NOT ङीप् formations; सेना and नदी are.
+    // Nothing about the spelling says which, and the gender that would hint at
+    // it is what this derivation exists to find out — so offer both and let the
+    // attested forms decide, exactly as with everything else here.
+    return /[AI]$/.test(slp) && slp.length > 2
+      ? [{ basic: slp }, { nyap: slp }]
+      : [{ basic: slp }];
   }
 
   for (const [stem, forms] of formsByStem) {
     const spelt = toSlp1(stem);
     if (!spelt) continue;
-    /*
-      Scored by AGREEMENT WITH THE ANNOTATION, not by whether a form derives at
-      all. Both spellings derive सेना — that is the whole trouble: `senA` makes
-      it तृतीया एकवचन and `sena` makes it प्रथमा एकवचन, so counting derivations
-      is a tie and tells us nothing. What separates them is the corpus, which
-      says प्रथमा. The author is the arbiter here because this is precisely the
-      question the author can answer and the engine cannot.
-    */
-    const stemSlp = stemSpellings(spelt)
-      .map((s) => {
-        let agree = 0;
-        for (const form of forms) {
-          const f = toSlp1(form);
-          const said = annot.get(stem + '|' + form)?.vib;
-          if (!f || !said?.size) continue;
-          if (cellsFor(s, f).some((c) => said.has(VIB_DEV[c[1]]))) agree++;
-        }
-        return { s, agree };
-      })
-      // `>` not `>=`, so the corpus's own spelling keeps a tie and only a
-      // strictly better fit can displace it.
-      .reduce((best, c) => (c.agree > best.agree ? c : best)).s;
-    if (stemSlp !== spelt) reSpelt++;
+    const stemSlp = spelt;
 
     // Narrow the gender: keep only lingas that can produce EVERY attested form
     // IN THE CASE THE CORPUS ASSIGNS IT.
@@ -737,7 +733,7 @@ async function main() {
   console.log(
     `Wrote ${Object.keys(cells).length} forms → ${path.relative(process.cwd(), OUT)}\n` +
       `  ${resolved} determine one विभक्ति, ${ambiguous} do not, ${underivable} stems not derivable as subantas` +
-      (reSpelt ? ` (${reSpelt} stem(s) re-spelt for vidyut: सेना → sena)` : '') + '\n' +
+      '\n' +
       `  लिङ्ग from MW: ${mwBroke} tie(s) broken, ${mwOnly.size} stem(s) answered where nothing derived\n` +
       `  still unset: ${mwStillUnknown.length} stem(s) undetermined, ${mwRightlyBlank.length} that MW gives no gender (adjective or indeclinable)` +
       (mwConflicts.length
@@ -980,7 +976,8 @@ async function main() {
             try {
               const res = v.deriveTinantas({
                 dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: pre ? [pre] : [] },
-                lakara: lak, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
+                lakara: lak, prayoga: 'Kartari', purusha: pu, vacana: vc, pada,
+                skip_at_agama: false
               });
               if (res.some((p: any) => p.text === formSlp)) {
                 out.push([PUR_DEV[pu], VAC_DEV[vc]]);
@@ -1021,7 +1018,8 @@ async function main() {
           try {
             const res = v.deriveTinantas({
               dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: [] },
-              lakara: lak, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
+              lakara: lak, prayoga: 'Kartari', purusha: pu, vacana: vc, pada,
+              skip_at_agama: false
             });
             if (res.some((p: any) => p.text === formSlp)) hits.add(pada);
           } catch { /* not this cell */ }
@@ -1080,7 +1078,8 @@ async function main() {
             try {
               res = v.deriveTinantas({
                 dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: pre ? [pre] : [] },
-                lakara: lakKey, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
+                lakara: lakKey, prayoga: 'Kartari', purusha: pu, vacana: vc, pada,
+                skip_at_agama: false
               });
             } catch { continue; }
             for (const pr of res) {
@@ -1237,7 +1236,8 @@ async function main() {
                 // beside अधीते would be इ's — एति, इतः, यन्ति — a different verb.
                 prefixes: rootPre ? [rootPre] : []
               },
-              lakara: LAK_KEY[lak], prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null
+              lakara: LAK_KEY[lak], prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null,
+              skip_at_agama: false
             });
             const forms = [...new Set(res.map((p: any) => p.text))] as string[];
             if (forms.length) paradigm[PUR_DEV[pu] + '|' + VAC_DEV[vc]] = forms.map(toDeva);
@@ -1345,7 +1345,8 @@ async function main() {
         try {
           const res = v.deriveTinantas({
             dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
-            lakara: 'Lat', prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null
+            lakara: 'Lat', prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null,
+            skip_at_agama: false
           });
           const f = [...new Set(res.map((p: any) => p.text))][0] as string | undefined;
           if (f) flat[PUR_DEV[pu] + '|' + VAC_DEV[vc]] = toDeva(f);
@@ -1672,7 +1673,8 @@ async function main() {
             try {
               res = v.deriveTinantas({
                 dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: [] },
-                lakara: lakKey, prayoga: 'Kartari', purusha: pu, vacana: vc, pada
+                lakara: lakKey, prayoga: 'Kartari', purusha: pu, vacana: vc, pada,
+                skip_at_agama: false
               });
             } catch { continue; }
             for (const p of res) {

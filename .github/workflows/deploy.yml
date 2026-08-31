@@ -1,5 +1,10 @@
 name: Deploy अनुवृत्ति to anuvrtti.udapaana.in
 
+env:
+  # The vidyut commit the grammar engine is built from. See the pin note in
+  # the WASM build step below before changing it.
+  VIDYUT_REV: 8da2f90bee3ce1c07505fa432fc3729e3f7e02ea
+
 on:
   push:
     branches: [main]
@@ -45,8 +50,26 @@ jobs:
       - name: Build vidyut-prakriya WASM
         run: |
           echo "🔧 Building vidyut-prakriya WASM..."
-          git clone --depth 1 https://github.com/ambuda-org/vidyut.git /tmp/vidyut
-          cd /tmp/vidyut/vidyut-prakriya
+          # PINNED, and it must stay pinned.
+          #
+          # This was `--depth 1` of HEAD, which made the deploy non-deterministic
+          # in the one dependency that decides what the corpus MEANS. vidyut is
+          # the grammar engine: it settles लिङ्ग, विभक्ति, वचन, पुरुष, पद and
+          # गण for every word the reader shows. An unpinned clone meant two
+          # deploys a week apart could ship different grammar, with no diff, no
+          # review and nothing in the repo to say so — while every number the
+          # checks are ratcheted against (the लिङ्ग fixture, the derivation
+          # baseline, the coverage floors) was measured locally against the
+          # committed binary, which was ten months older still.
+          #
+          # To move it: bump this SHA, rebuild static/wasm/ locally at the same
+          # SHA (scripts/build-wasm.sh), run `bun run check`, and commit the two
+          # together. If the baselines move, that IS the review — an engine
+          # change that alters the corpus should be visible as one.
+          git clone https://github.com/ambuda-org/vidyut.git /tmp/vidyut
+          cd /tmp/vidyut
+          git checkout ${{ env.VIDYUT_REV }}
+          cd vidyut-prakriya
           wasm-pack build --target web --out-dir $GITHUB_WORKSPACE/static/wasm/vidyut-prakriya
           cp www/static/vidyut-prakriya.js $GITHUB_WORKSPACE/static/wasm/vidyut-prakriya/
           sed -i 's|from "./wasm/vidyut_prakriya.js"|from "./vidyut_prakriya.js"|' $GITHUB_WORKSPACE/static/wasm/vidyut-prakriya/vidyut-prakriya.js

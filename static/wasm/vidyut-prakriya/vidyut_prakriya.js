@@ -832,6 +832,33 @@ export const Lakara = Object.freeze({
     Lrn: 10, "10": "Lrn",
 });
 /**
+ * Which stem to use under *leṬ*.
+ *
+ * Vedic *leṬ* (the subjunctive) is attested on three distinct stems:
+ * the present (*laṬ*) stem, the aorist (*luṄ*) stem, and the perfect
+ * (*liṬ*) stem. Pāṇini's sūtras do not name this distinction directly,
+ * but Vedic usage and traditional commentary recognize it. We expose
+ * the choice as a builder option on `Tinanta`.
+ *
+ * When unset, the derivation uses `Lat` (the present-stem path), which
+ * is vidyut's historical default and the most common stem in the corpus.
+ * @enum {0 | 1 | 2}
+ */
+export const LetStem = Object.freeze({
+    /**
+     * Build *leṬ* on the *laṬ* (present) stem. This is the default.
+     */
+    Lat: 0, "0": "Lat",
+    /**
+     * Build *leṬ* on the *luṄ* (aorist) stem.
+     */
+    Lun: 1, "1": "Lun",
+    /**
+     * Build *leṬ* on the *liṬ* (perfect / reduplicated) stem.
+     */
+    Lit: 2, "2": "Lit",
+});
+/**
  * The gender of some *subanta*.
  * @enum {0 | 1 | 2}
  */
@@ -3019,14 +3046,13 @@ export class Vidyut {
         wasm.__wbg_vidyut_free(ptr, 0);
     }
     /**
-     * Creates a new API manager.
-     *
-     * This constructor is not called `new` because `new` is a reserved word in JavaScript.
-     * @returns {Vidyut}
+     * Wrapper for `Vyakarana::derive_dhatus`.
+     * @param {any} val
+     * @returns {any}
      */
-    static init() {
-        const ret = wasm.vidyut_init();
-        return Vidyut.__wrap(ret);
+    deriveDhatus(val) {
+        const ret = wasm.vidyut_deriveDhatus(this.__wbg_ptr, val);
+        return ret;
     }
     /**
      * Wrapper for `Vyakarana::derive_krdantas`.
@@ -3035,15 +3061,6 @@ export class Vidyut {
      */
     deriveKrdantas(val) {
         const ret = wasm.vidyut_deriveKrdantas(this.__wbg_ptr, val);
-        return ret;
-    }
-    /**
-     * Wrapper for `Vyakarana::derive_dhatus`.
-     * @param {any} val
-     * @returns {any}
-     */
-    deriveDhatus(val) {
-        const ret = wasm.vidyut_deriveDhatus(this.__wbg_ptr, val);
         return ret;
     }
     /**
@@ -3065,6 +3082,34 @@ export class Vidyut {
     deriveTinantas(val) {
         const ret = wasm.vidyut_deriveTinantas(this.__wbg_ptr, val);
         return ret;
+    }
+    /**
+     * Wrapper for `Vyakarana::derive_stryantas`.
+     * @param {any} val
+     * @returns {any}
+     */
+    deriveStryantas(val) {
+        const ret = wasm.vidyut_deriveStryantas(this.__wbg_ptr, val);
+        return ret;
+    }
+    /**
+     * Wrapper for `Vyakarana::derive_taddhitantas`.
+     * @param {any} val
+     * @returns {any}
+     */
+    deriveTaddhitantas(val) {
+        const ret = wasm.vidyut_deriveTaddhitantas(this.__wbg_ptr, val);
+        return ret;
+    }
+    /**
+     * Creates a new API manager.
+     *
+     * This constructor is not called `new` because `new` is a reserved word in JavaScript.
+     * @returns {Vidyut}
+     */
+    static init() {
+        const ret = wasm.vidyut_init();
+        return Vidyut.__wrap(ret);
     }
 }
 
@@ -3110,6 +3155,9 @@ function __wbg_get_imports() {
         const ret = arg0.call(arg1);
         return ret;
     }, arguments) };
+    imports.wbg.__wbg_debug_fac91d3e1dcb5682 = function(arg0, arg1) {
+        console.debug(getStringFromWasm0(arg0, arg1));
+    };
     imports.wbg.__wbg_done_f22c1561fa919baa = function(arg0) {
         const ret = arg0.done;
         return ret;

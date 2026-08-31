@@ -116,10 +116,23 @@ interface TinantaArgs {
   purusha: Purusha;
   vacana: Vacana;
   pada?: string | null;
+  /**
+   * Required, and a plain `bool` rather than an `Option` — so a missing value
+   * is a deserialization failure, not a default. Same trap as `sanadi` and
+   * `prefixes` below: the WASM answers with a bare "unreachable" and no message.
+   * It appeared in vidyut after the binary this repo had pinned, so every verb
+   * derivation broke silently the moment CI rebuilt from a newer revision.
+   */
+  skip_at_agama: boolean;
 }
 
 interface SubantaArgs {
-  pratipadika: { basic: string } | { krdanta: KrdantaArgs };
+  /**
+   * `nyap` is for a stem that already carries its स्त्रीप्रत्यय — सेना, नदी,
+   * देवी. Handed to `basic`, vidyut declines an ā/ī-final stem that never took
+   * टाप्/ङीप् and produces सेनाः for प्रथमा एकवचन.
+   */
+  pratipadika: { basic: string } | { nyap: string } | { krdanta: KrdantaArgs };
   linga: Linga;
   vibhakti: Vibhakti;
   vacana: Vacana;
@@ -228,7 +241,8 @@ export async function deriveTinanta(
       prayoga: Prayoga[prayoga],
       purusha: Purusha[purusha],
       vacana: Vacana[vacana],
-      pada: null
+      pada: null,
+      skip_at_agama: false
     });
 
     return results.map(toPrakriya);
