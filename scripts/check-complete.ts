@@ -28,6 +28,8 @@ import * as path from 'path';
 import {
   WORD_TYPES, typeOf, krtDeclines, KNOWN_VALUES, RELATIONS, ALL_MARKERS, type WordType
 } from '../src/lib/usage/schema';
+// One definition of "what does this word owe", shared with exemplars.ts.
+import { missingFor } from '../src/lib/usage/complete';
 
 const RELATION_BY_NAME = new Map(RELATIONS.map((r) => [r.name, r]));
 
@@ -165,31 +167,6 @@ function lintRelations(words: Word[], reading: string): Lint[] {
  * the build filled them in, since the reader sees them either way; what is
  * left is exactly what an author can act on.
  */
-function missingFor(type: WordType, w: Word, terms: Set<string>): string[] {
-  const miss: string[] = [];
-  const derived = w.derived ?? {};
-
-  for (const d of type.dimensions) {
-    // A conditional dimension may genuinely not exist on this word — गच्छति has
-    // no उपसर्ग — so its absence is never a gap. It is reported separately
-    // rather than skipped silently; see the conditional block below.
-    if (d.source === 'conditional') continue;
-
-    // A कृदन्त owes विभक्ति only if its suffix declines. क्त्वा and तुमुन् are
-    // अव्यय by 1.1.40 and take nothing further.
-    if (type.id === 'kridanta' && (d.name === 'विभक्ति' || d.name === 'वचन')
-        && !krtDeclines(terms)) continue;
-
-    if (d.name === 'lemma') {
-      if (!w.lemma) miss.push('lemma');
-      continue;
-    }
-    const authored = d.values.some((v) => terms.has(v));
-    if (authored || d.name in derived) continue;
-    miss.push(d.name);
-  }
-  return miss;
-}
 
 function main() {
   const corpus = JSON.parse(fs.readFileSync(CORPUS, 'utf-8'));
@@ -217,6 +194,15 @@ function main() {
   */
   const cond = new Map<string, { n: number; total: number }>();
   const dimFilled = new Map<string, { filled: number; total: number }>();
+  /*
+    Per reading, because the average hides the shape.
+
+    The corpus is 55% complete and that number is nearly meaningless on its own:
+    67 readings are under 20% and only 25 of 348 are finished. An author needs
+    to know WHICH reading is thin, and the ratchet needs to know whether the
+    thin ones are multiplying — neither is visible in a mean.
+  */
+  const perReading = new Map<string, { complete: number; total: number }>();
 
   for (const r of corpus.sequence ?? []) {
     if (one && r.id !== one) continue;
@@ -287,6 +273,10 @@ function main() {
 
       for (const l of lintWord(wt, w, terms)) lints.push({ ...l, reading: r.id });
       const missing = missingFor(wt, w, terms);
+      const rs = perReading.get(r.id) ?? { complete: 0, total: 0 };
+      rs.total++;
+      if (!missing.length) rs.complete++;
+      perReading.set(r.id, rs);
       if (!missing.length) { byType[type].complete++; continue; }
       findings.push({ reading: r.id, form: w.form, type, missing });
       byReading.set(r.id, (byReading.get(r.id) ?? 0) + 1);
@@ -314,7 +304,8 @@ function main() {
       ),
       dimensions: perDimension,
       untyped: untyped.length,
-      lints: lints.length
+      lints: lints.length,
+      readings: Object.fromEntries(perReading)
     }));
     return;
   }

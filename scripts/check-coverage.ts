@@ -46,6 +46,7 @@ type Shape = {
   types: Record<string, { complete: number; total: number }>;
   dimensions: Record<string, { filled: number; total: number }>;
   untyped: number;
+  readings: Record<string, { complete: number; total: number }>;
 };
 
 /**
@@ -92,6 +93,32 @@ for (const [k, v] of Object.entries(now.dimensions)) {
 // share of anything — there is no denominator it belongs to.
 current['untyped'] = now.untyped;
 
+/*
+  Two more, because the per-dimension shares above cannot see either.
+
+  THIN READINGS. A mean hides its own shape: the corpus is ~55% complete, 118
+  readings are under half, and 29 of 332 are finished. Every share above can
+  hold steady while the work polarises — a few immaculate readings pulling the
+  average up as the thin tail lengthens. Ratcheted as a CEILING on how many
+  readings sit under half, so a batch of thin new ones fails even if the totals
+  look fine.
+
+  EXEMPLARY CELLS. The number that decides whether this can be read as a grammar
+  reference at all: how many (type × dimension × value) cells have at least one
+  FULLY annotated example to show. It is not implied by any average — a corpus
+  annotated 55% everywhere can have nothing clean for any particular cell. See
+  scripts/exemplars.ts.
+*/
+const thin = Object.values(now.readings ?? {})
+  .filter((v) => v.total && v.complete / v.total < 0.5).length;
+current['readings-under-half'] = thin;
+
+{
+  const p = Bun.spawnSync(['bun', 'scripts/exemplars.ts', '--json'], { stdout: 'pipe', stderr: 'pipe' });
+  const out = new TextDecoder().decode(p.stdout).trim();
+  if (out.startsWith('{')) current['exemplary-cells'] = JSON.parse(out).exemplary;
+}
+
 if (process.argv.includes('--update')) {
   fs.mkdirSync(path.dirname(FLOORS), { recursive: true });
   fs.writeFileSync(FLOORS, JSON.stringify(current, null, 2) + '\n');
@@ -115,9 +142,17 @@ for (const [k, floor] of Object.entries(floors)) {
     dropped.push(`${k}: no longer measured (floor ${floor})`);
     continue;
   }
-  if (k === 'untyped') {
-    if (val > floor) dropped.push(`untyped words rose to ${val} (ceiling ${floor})`);
-    else if (val < floor) gained.push(`untyped ${floor} → ${val}`);
+  // Ceilings — fewer is better, so a RISE is the regression.
+  if (k === 'untyped' || k === 'readings-under-half') {
+    if (val > floor) dropped.push(`${k} rose to ${val} (ceiling ${floor})`);
+    else if (val < floor) gained.push(`${k} ${floor} → ${val}`);
+    continue;
+  }
+  // A plain count floor rather than a share: every cell of the grammar is worth
+  // the same, so what matters is how many are covered, not a proportion.
+  if (k === 'exemplary-cells') {
+    if (val < floor) dropped.push(`grammar cells with a clean example fell to ${val} (floor ${floor})`);
+    else if (val > floor) gained.push(`exemplary cells ${floor} → ${val}`);
     continue;
   }
   if (val < floor) dropped.push(`${k}: ${val}% (floor ${floor}%)`);

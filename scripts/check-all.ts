@@ -155,6 +155,19 @@ if (need.length) {
   );
 }
 
+// 5b. the grammar as examples — soft, and the number that says whether this
+// corpus can be READ as a reference. Not implied by any average above: a corpus
+// annotated 55% everywhere can still have nothing clean to show for a given
+// cell. `bun run exemplars --fix` ranks the ones nearest to done.
+const ex = await run(['bun', 'scripts/exemplars.ts', '--json']);
+if (ex.trim().startsWith('{')) {
+  const e = JSON.parse(ex.trim());
+  console.log(
+    `  · reference: ${e.exemplary}/${e.cells} grammar cells have a fully annotated example` +
+      ` (${e.toFix} attested but unfinished, ${e.toWrite} unattested)`
+  );
+}
+
 // 6. annotation lint — HARD. Completeness (missing) is a backlog and stays soft;
 // correctness (wrong) is always an error and the corpus is at zero, so any new
 // conflict or misplaced tag fails the build the way a सङ्ग्रह violation does.

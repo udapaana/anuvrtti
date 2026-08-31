@@ -366,13 +366,52 @@ the way in. Write the accent where the source has it; never rely on it matching.
 (And per the freeze above, do not author *new* accents — the existing ones are
 verbatim from a verified source; new ones cannot be checked.)
 
+### What to work on next — `bun run exemplars`
+
+The goal is a grammar reference *by example*: someone arrives wanting चतुर्थी
+बहुवचन, or ण्यत्, or जुहोत्यादि, and gets one example that is completely
+labelled. That is a different target from "the corpus is 55% annotated", and it
+is not implied by it — a corpus annotated 55% everywhere can have nothing clean
+to show for any particular cell.
+
+So the measure is per CELL — every (word type × dimension × value) the schema
+defines — and the bar is a **fully annotated** example, because a half-labelled
+one teaches the reader to expect half-labelled answers.
+
+```
+647 cells      attested somewhere 248 (38%)      clean example 179 (28%)
+```
+
+Two queues, and they are different work:
+
+```bash
+bun run exemplars --fix     # 69 cells whose example exists and needs finishing
+bun run exemplars --write   # 399 cells with no example at all
+```
+
+**Start with `--fix`.** It is ranked by how many attestations a cell already
+has, so the ones nearest to done come first, and it names the closest word and
+exactly what it lacks:
+
+```
+सुबन्त · विभक्ति · सम्बोधन   57 attested   closest: ex186 वीर needs कारक
+कृदन्त · कृत् · निष्ठा       24 attested   closest: ex074 गतः needs प्रयोग
+```
+
+Twenty-four attestations of निष्ठा and not one clean is the shape of the whole
+problem: the text is there, the annotation around it stops short.
+
+`--write` is the other half and needs new readings — no amount of tidying
+produces a जुहोत्यादि example if none is attested. It groups by system so a
+session can take a whole area.
+
 ### The ratchet — why you cannot quietly author less
 
 `bun run check` fails if coverage drops. `content/coverage-floors.json` records,
 per word type and per dimension, the share currently filled; a number may rise
 freely and a fall is an error.
 
-It guards two things that are otherwise invisible:
+It guards four things that are otherwise invisible:
 
 - **A derivation that breaks.** Most of what a word shows is inferred through a
   chain several steps long — root candidates → derivation picks → stem → the
@@ -380,6 +419,13 @@ It guards two things that are otherwise invisible:
   empties, and the build still passes.
 - **Readings authored thinner than the corpus standard.** Two points per session
   is invisible in a diff and obvious in a quarter.
+- **The work polarising.** A mean hides its own shape. The corpus is ~55%
+  complete, 118 readings are under half, and 29 of 332 are finished — every
+  average can hold steady while a few immaculate readings pull it up and the
+  thin tail lengthens. `readings-under-half` is a ceiling on that count.
+- **The reference getting no closer.** `exemplary-cells` is a floor on how many
+  grammar cells have a clean example. It is the one number that says whether
+  this can be read as a reference at all, and nothing else implies it.
 
 Shares, not counts, because a count rises whenever you add a reading — a
 count-based floor would pass while the corpus got thinner per word.
