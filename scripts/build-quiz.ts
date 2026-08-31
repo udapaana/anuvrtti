@@ -327,7 +327,7 @@ async function main() {
     string,
     { linga: string | null; vibhaktis: string[]; cells: Array<[string, string]> }
   > = {};
-  let resolved = 0, ambiguous = 0, underivable = 0;
+  let resolved = 0, ambiguous = 0, underivable = 0, reSpelt = 0;
   /** Genders MW supplied where the corpus had nothing to weigh, and the tie-breaks it settled. */
   const mwOnly = new Map<string, string>();
   const mwConflicts: string[] = [];
@@ -439,9 +439,14 @@ async function main() {
     const a = annot.get(stem + '|' + form);
     if (!a || !a.vib.size) return { cells: cands, byAnnotation: false };
     let keep = cands.filter((c) => a.vib.has(VIB_DEV[c[1]]));
-    // The engine and the annotation have never disagreed across the corpus
-    // (0 conflicts in 507 pairs). If one ever appears, trust neither silently:
-    // fall back to the candidates and let the cell show as ambiguous.
+    /*
+      They DO disagree, and this silence is how a real bug hid for months.
+      Falling back makes a wrong cell indistinguishable from an ambiguous one,
+      so 44 ā-stem feminines declined by the wrong paradigm looked like ordinary
+      under-determination. The fallback is still right — trusting neither is
+      better than picking one — but it is no longer the only record:
+      scripts/check-derivation.ts counts every disagreement out loud.
+    */
     if (!keep.length) return { cells: cands, byAnnotation: false };
     if (a.vac.size) {
       const k = keep.filter((c) => a.vac.has(VAC_DEV[c[2]]));
@@ -450,9 +455,71 @@ async function main() {
     return { cells: keep, byAnnotation: true };
   }
 
+  /*
+    How to spell a stem for vidyut — which is not always how the corpus cites it.
+
+    सेना is cited with its स्त्रीप्रत्यय already on it, but vidyut's प्रातिपदिक
+    is what stands BEFORE टाप् (4.1.4 अजाद्यतष्टाप्), and it adds the आ itself
+    once you say the gender is feminine. Handed `senA`, it declines an ā-final
+    stem that never took टाप् at all, and produces a paradigm no grammar has:
+
+        basic senA  →  सेनाः  सेनौ  सेनाः …   प्रथमा एकवचन is सेनाः
+        basic sena  →  सेना   सेने  सेनाः …   प्रथमा एकवचन is सेना   ✓
+
+    That was wrong for every ā-stem feminine in the corpus — कन्या, विद्या,
+    कथा, सेना, गङ्गा, यशोदा, पूतना, सभा — which is the second declension every
+    beginner learns. The quiz asked for the case of सेना and wanted तृतीया.
+
+    Nothing caught it because the engine and the annotation never argue out
+    loud: resolveCells falls back to the raw candidates whenever they disagree,
+    so 44 wrong cells looked exactly like 44 ambiguous ones. The corpus was
+    right every single time and had been saying so all along —
+    scripts/check-derivation.ts now makes it say so where someone can hear.
+
+    Rather than special-case the affix, offer both spellings and let the corpus
+    choose: the one that derives more of the forms actually attested wins. That
+    is the same generate-and-match used for roots and genders, and it degrades
+    safely — a stem whose spelling was already right sees no change, and one
+    that neither spelling derives keeps what it had.
+  */
+  function stemSpellings(slp: string): string[] {
+    const out = [slp];
+    // Only ā. The ī of ङीप् (नदी, देवी) cannot be expressed through this API at
+    // all — neither `nadI` nor `nad` derives नदी — so stripping it would trade
+    // one wrong paradigm for another. Left alone, and reported by the check.
+    // The final ā becomes a short a — the प्रातिपदिक is सेन (`sena`), not `sen`.
+    // Dropping the character instead leaves a consonant-final stem, which
+    // derives nothing and made this whole substitution look like a no-op.
+    if (/A$/.test(slp) && slp.length > 2) out.push(slp.replace(/A$/, 'a'));
+    return out;
+  }
+
   for (const [stem, forms] of formsByStem) {
-    const stemSlp = toSlp1(stem);
-    if (!stemSlp) continue;
+    const spelt = toSlp1(stem);
+    if (!spelt) continue;
+    /*
+      Scored by AGREEMENT WITH THE ANNOTATION, not by whether a form derives at
+      all. Both spellings derive सेना — that is the whole trouble: `senA` makes
+      it तृतीया एकवचन and `sena` makes it प्रथमा एकवचन, so counting derivations
+      is a tie and tells us nothing. What separates them is the corpus, which
+      says प्रथमा. The author is the arbiter here because this is precisely the
+      question the author can answer and the engine cannot.
+    */
+    const stemSlp = stemSpellings(spelt)
+      .map((s) => {
+        let agree = 0;
+        for (const form of forms) {
+          const f = toSlp1(form);
+          const said = annot.get(stem + '|' + form)?.vib;
+          if (!f || !said?.size) continue;
+          if (cellsFor(s, f).some((c) => said.has(VIB_DEV[c[1]]))) agree++;
+        }
+        return { s, agree };
+      })
+      // `>` not `>=`, so the corpus's own spelling keeps a tie and only a
+      // strictly better fit can displace it.
+      .reduce((best, c) => (c.agree > best.agree ? c : best)).s;
+    if (stemSlp !== spelt) reSpelt++;
 
     // Narrow the gender: keep only lingas that can produce EVERY attested form
     // IN THE CASE THE CORPUS ASSIGNS IT.
@@ -607,7 +674,8 @@ async function main() {
   fs.writeFileSync(OUT, JSON.stringify(cells, null, 0));
   console.log(
     `Wrote ${Object.keys(cells).length} forms → ${path.relative(process.cwd(), OUT)}\n` +
-      `  ${resolved} determine one विभक्ति, ${ambiguous} do not, ${underivable} stems not derivable as subantas\n` +
+      `  ${resolved} determine one विभक्ति, ${ambiguous} do not, ${underivable} stems not derivable as subantas` +
+      (reSpelt ? ` (${reSpelt} stem(s) re-spelt for vidyut: सेना → sena)` : '') + '\n' +
       `  लिङ्ग from MW: ${mwBroke} tie(s) broken, ${mwOnly.size} stem(s) answered where nothing derived\n` +
       `  still unset: ${mwStillUnknown.length} stem(s) undetermined, ${mwRightlyBlank.length} that MW gives no gender (adjective or indeclinable)` +
       (mwConflicts.length

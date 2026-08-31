@@ -248,6 +248,19 @@ if (/WRONG gender/.test(lg)) {
   console.log('  ✓ ' + lg.trim().split('\n')[0]);
 }
 
+// 9bb. corpus vs engine — HARD, ratcheted. The one check that can see a
+// disagreement BETWEEN two sources rather than inside one. It is how the ā-stem
+// feminine bug surfaced: every कन्या/विद्या/सेना was on the wrong paradigm, the
+// corpus had said so 44 times, and resolveCells swallowed each one by falling
+// back to the raw candidates — right to do, wrong to do silently.
+const der = await run(['bun', 'scripts/check-derivation.ts']);
+if (/new disagreement/.test(der)) {
+  problems.push('derivation: ' + der.split('\n').filter((l) => /disagree|^\s{4}\S/.test(l)).join('\n'));
+  console.log('  ✗ ' + der.trim().split('\n')[0]);
+} else {
+  console.log('  ✓ ' + der.trim().split('\n')[0]);
+}
+
 // 9c. the coverage ratchet — HARD, and the one check that guards the FUTURE
 // rather than the present. Everything else here asks whether the corpus is
 // correct now; this asks whether it is still as complete as it was. A broken
