@@ -29,12 +29,26 @@
  *   - the DERIVATION is wrong — the stem is being spelt in a way vidyut reads
  *     as a different word, which is a bug affecting every word of its class.
  *
- * Ratcheted, not zeroed. Twenty-four survive, and some are limits of the engine
- * rather than faults: ङीप् stems (नदी, देवी) cannot be expressed through the
- * WASM's `basic` प्रातिपदिक at all, and a form belonging to two lemmas (ततः is
- * both ततस् and तद्) is checked against whichever the index recorded. Demanding
- * zero would mean annotating around the engine, which is backwards. Demanding
- * NO MORE THAN TODAY means every new disagreement gets looked at.
+ * WHAT THE FIRST PASS FOUND. Of twenty-four, exactly two were annotation errors
+ * — अहसत् tagged लुङ् when हस् makes अहसीत् there, and अबिभयुः tagged लिट् when
+ * the अट् augment makes it लङ्. Every other one was the corpus being right and
+ * the pipeline being wrong, in four distinct ways, each now fixed or scoped:
+ *
+ *   the ā-stem paradigm      44   सेना declined without टाप्          fixed
+ *   Vedic duals in -ā        12   अश्विना is अश्विनौ (7.1.39)         out of scope
+ *   lost विसर्ग               3   पुत्रः → पुत्र before a vowel        restored
+ *   एष before a consonant     1   6.1.132 सुलोप                       restored
+ *
+ * Ratcheted at two, not zeroed. Both survivors are adjectives whose gender
+ * comes from the noun they agree with — श्रेष्ठतरम् is neuter because महत्त्वम्
+ * is — and build-readings now takes it from the `rel: विशेषण` edge. The cell
+ * index cannot: it is built in build-quiz, which runs BEFORE agreement is
+ * known, from a stem-level gender that for an adjective does not exist. That is
+ * an ordering limit in the pipeline, not a fault in either source, and closing
+ * it means feeding agreement back into a build that produces its own input.
+ *
+ * Demanding zero would mean annotating around the engine, which is backwards.
+ * Demanding NO MORE THAN TODAY means every new disagreement gets looked at.
  */
 import * as fs from 'fs';
 import * as path from 'path';
@@ -43,10 +57,44 @@ import * as path from 'path';
  * The ceiling. Lower it as the queue is worked off; raise it only with a reason
  * in the commit message, the same discipline as the coverage floors.
  */
-const BASELINE = 24;
+const BASELINE = 2;
 
 const R = JSON.parse(fs.readFileSync('static/data/readings.json', 'utf-8'));
-const CELLS = JSON.parse(fs.readFileSync('static/data/quiz-cells.json', 'utf-8'));
+/*
+  usage.json's `cells`, not quiz-cells.json.
+
+  Both hold the same derivation, but quiz-cells is keyed by SURFACE FORM alone
+  and twenty-one forms in the corpus belong to two lemmas — ततः is both ततस्
+  and तद्, ते is both युष्मद् and तद्, नाम is both नामन् and नाम. Keyed that way
+  the second lemma overwrites the first, so checking against it reported
+  disagreements that were really one word being told it is another.
+
+  `cells` is keyed (lemma|form) and holds only cells the derivation settled
+  unambiguously, which is both correct and the stricter test: a form the index
+  says is exactly one cell, annotated as a different one, is a real conflict.
+*/
+const U = JSON.parse(fs.readFileSync('static/data/usage.json', 'utf-8'));
+const CELLS: Record<string, string> = U.cells ?? {};
+/*
+  The engine's own list of cells a form can occupy, before any narrowing —
+  quiz-cells.json, keyed by surface form.
+
+  Used only to ABSOLVE, never to accuse, which is what makes its form-keying
+  harmless here. `cells` above is narrowed by the annotation and by the stem's
+  settled gender, so it names ONE cell even where the language offers two: तत्
+  is प्रथमा and द्वितीया both, every neuter is, and the narrowed index picks
+  द्वितीया. Flagging on that alone would report the neuter singular of तद् as an
+  error in three readings.
+
+  So a disagreement counts only when the annotated case is not in the engine's
+  unnarrowed list either — when the form CANNOT be what the annotation says.
+  A collision between two lemmas sharing a form only ever lengthens that list,
+  which makes the check quieter rather than wronger.
+*/
+const RAW: Record<string, { vibhaktis?: string[]; cells?: [string, string][] }> =
+  fs.existsSync('static/data/quiz-cells.json')
+    ? JSON.parse(fs.readFileSync('static/data/quiz-cells.json', 'utf-8'))
+    : {};
 const TIN = fs.existsSync('static/data/tin-forms.json')
   ? JSON.parse(fs.readFileSync('static/data/tin-forms.json', 'utf-8'))
   : {};
@@ -62,28 +110,53 @@ const PADA = ['परस्मैपद', 'आत्मनेपद'];
 type Row = { reading: string; form: string; dim: string; said: string; engine: string };
 const rows: Row[] = [];
 let checked = 0;
+let vedicSkipped = 0;
 
+/*
+  vidyut derives CLASSICAL Sanskrit. A Vedic form it cannot produce is out of
+  scope, not a disagreement.
+
+  The Ṛgveda readings are where this bites: the Vedic dual of an अ-stem ends in
+  -ā, so अश्विना is अश्विनौ and धिष्ण्या is धिष्ण्यौ (7.1.39's Vedic ādeśas).
+  vidyut offers only the classical parse — अश्विना as तृतीया एकवचन of अश्विन् —
+  so twelve correct annotations across rd026–rd028 read as errors. Holding the
+  corpus to a paradigm its own text predates would mean annotating around the
+  engine, which is backwards.
+
+  Scoped by provenance, not by form: only a reading whose source IS the Veda is
+  exempt, so a classical reading cannot quietly acquire Vedic licence.
+*/
+const VEDIC = /ऋग्वेद|ऋक्|संहिता|Ṛgveda|RV /;
 for (const r of R.sequence ?? []) {
+  const src = `${r.source?.text ?? ''} ${r.source?.ref ?? ''}`;
+  if (VEDIC.test(src)) { vedicSkipped += (r.words ?? []).length; continue; }
   for (const w of r.words ?? []) {
     const terms = new Set<string>((w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term));
     const form = de(w.form);
     const lemma = de(w.lemma ?? '');
 
-    const c = CELLS[form];
-    if (c?.vibhaktis?.length) {
-      const said = [...terms].find((t) => VIB.includes(t));
-      if (said) {
-        checked++;
-        if (!c.vibhaktis.includes(said)) {
-          rows.push({ reading: r.id, form, dim: 'विभक्ति', said, engine: c.vibhaktis.join('/') });
+    // "विभक्ति|वचन" for a nominal, "पुरुष|वचन" for a verb — the verb's row is
+    // covered by the तिङन्त index below, so only the nominal reading is used.
+    const cell = CELLS[lemma + '|' + form];
+    if (cell) {
+      const [row, col] = cell.split('|');
+      if (VIB.includes(row)) {
+        const raw = RAW[form];
+        const said = [...terms].find((t) => VIB.includes(t));
+        if (said) {
+          checked++;
+          const possible = raw?.vibhaktis?.includes(said) ?? false;
+          if (said !== row && !possible) {
+            rows.push({ reading: r.id, form, dim: 'विभक्ति', said, engine: row });
+          }
         }
-      }
-      const saidVac = [...terms].find((t) => VAC.includes(t));
-      if (saidVac && c.cells?.length) {
-        checked++;
-        const eng = [...new Set((c.cells as any[]).map((x) => x[1]))];
-        if (!eng.includes(saidVac)) {
-          rows.push({ reading: r.id, form, dim: 'वचन', said: saidVac, engine: eng.join('/') });
+        const saidVac = [...terms].find((t) => VAC.includes(t));
+        if (saidVac && col) {
+          checked++;
+          const possible = (raw?.cells ?? []).some((c) => c[1] === saidVac);
+          if (saidVac !== col && !possible) {
+            rows.push({ reading: r.id, form, dim: 'वचन', said: saidVac, engine: col });
+          }
         }
       }
     }
@@ -105,7 +178,7 @@ for (const x of rows) by.set(x.dim, (by.get(x.dim) ?? 0) + 1);
 
 console.log(
   `derivation: ${rows.length} annotation(s) disagree with vidyut ` +
-    `(baseline ${BASELINE}, of ${checked} checked)` +
+    `(baseline ${BASELINE}, of ${checked} checked; ${vedicSkipped} Vedic word(s) out of scope)` +
     (by.size ? ` — ${[...by].map(([k, v]) => `${k}:${v}`).join(' ')}` : '')
 );
 

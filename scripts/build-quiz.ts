@@ -290,13 +290,75 @@ async function main() {
   // pairs in the corpus were missing, including every oblique of देव. Accents are
   // display data; they never belong in a lookup key.
   const formsByStem = new Map<string, Set<string>>();
+  /*
+    Forms whose विसर्ग the sentence ate.
+
+    रामः + इति is राम इति: before a vowel, the विसर्ग of a nominative singular
+    simply goes (6.1.114 ससजुषो रुः, then 6.1.109's elision), and what stands in
+    the text is a bare stem-shaped word. vidyut is asked to place अन्ध and
+    answers सम्बोधन — correctly, for that string — while the sentence plainly
+    means अन्धः, प्रथमा. Three of the five surviving disagreements were this, and
+    one of them says so in its own note: "पुत्रः → पुत्र, visarga dropped before आ".
+
+    So the विसर्ग is offered back as a SECOND candidate, and only where the
+    sandhi could actually have happened: the word ends in a vowel and the next
+    word in the sentence begins with one. Restoring unconditionally would let
+    every vocative be read as a nominative and make the whole corpus vaguer;
+    conditioned on the environment, it recovers exactly the words the rule ate.
+  */
+  const restorable = new Set<string>();
+  const VOWEL_START = /^[अआइईउऊऋॠऌएऐओऔ]/;
+  /*
+    Vowel-final in SOUND, which is not the same as ending in a vowel SIGN.
+    अन्ध ends in the letter ध and is "andha" — the inherent अ is there and
+    unwritten. What makes a word consonant-final is the virāma, so that is what
+    to test for. Getting this backwards excluded the very three words the
+    restoration exists for.
+  */
+  const vowelFinal = (f: string) => !!f && !/[्ःं]$/.test(f);
   for (const r of corpus) {
-    for (const w of r.words ?? []) {
+    const ws = r.words ?? [];
+    for (let i = 0; i < ws.length; i++) {
+      const w = ws[i];
       if (!w.lemma) continue;
       const stem = deaccent(w.lemma);
+      const form = deaccent(w.form);
       if (!formsByStem.has(stem)) formsByStem.set(stem, new Set());
-      formsByStem.get(stem)!.add(deaccent(w.form));
+      formsByStem.get(stem)!.add(form);
+
+      const next = ws[i + 1] ? deaccent(ws[i + 1].form) : '';
+      // A consonant-final form cannot have lost a विसर्ग; an अ-final one can.
+      if (VOWEL_START.test(next) && vowelFinal(form)) {
+        restorable.add(stem + '|' + form);
+      }
+      /*
+        6.1.132 एतत्तदोः सुलोपोऽकोरनञ्समासे हलि — एतद् and तद् drop सु before a
+        CONSONANT, which is why एष धर्मः is एषः धर्मः and सः is often स. A
+        different environment from the विसर्ग rule above (that one needs a
+        following vowel), and worth its own line because these two pronouns are
+        the commonest subjects in the language.
+      */
+      if ((stem === 'तद्' || stem === 'एतद्') && next && !VOWEL_START.test(next) && vowelFinal(form)) {
+        restorable.add(stem + '|' + form);
+      }
     }
+  }
+
+  /**
+   * Cells for a form, plus the ones its lost विसर्ग would have opened.
+   *
+   * Merged rather than substituted: अन्ध really is सम्बोधन as a string, and
+   * अन्धः really is प्रथमा, so both belong in the candidate set and the
+   * annotation chooses. Callers that have a (stem, form) pair use this; the raw
+   * cellsFor stays for callers that only have a stem spelling to test.
+   */
+  function cellsWithSandhi(stemSlp: string, formSlp: string, key: string): Array<[string, string, string]> {
+    const base = cellsFor(stemSlp, formSlp);
+    if (!restorable.has(key)) return base;
+    const extra = cellsFor(stemSlp, formSlp + 'H');
+    if (!extra.length) return base;
+    const seen = new Set(base.map((c) => c.join('|')));
+    return [...base, ...extra.filter((c) => !seen.has(c.join('|')))];
   }
 
   /** Which (linga, vibhakti, vacana) cells of `stem` produce `form`? */
@@ -543,14 +605,14 @@ async function main() {
     for (const form of forms) {
       const slp = toSlp1(form);
       if (!slp) continue;
-      const cs = cellsFor(stemSlp, slp);
+      const cs = cellsWithSandhi(stemSlp, slp, stem + '|' + form);
       if (!cs.length) continue;           // not a subanta of this stem (verb, indeclinable)
       derivable.push([form, slp]);
     }
     for (const occ of annotOcc.get(stem) ?? []) {
       const slp = toSlp1(occ.form);
       if (!slp) continue;
-      const cs = cellsFor(stemSlp, slp);
+      const cs = cellsWithSandhi(stemSlp, slp, stem + '|' + occ.form);
       if (!cs.length) continue;
       let fit = cs.filter((c) => VIB_DEV[c[1]] === occ.vib);
       // The engine and the annotation disagreeing is itself information we do
@@ -573,7 +635,7 @@ async function main() {
     */
     if (![...lingaScore.values()].some((n) => n > 0)) {
       for (const [form, slp] of derivable) {
-        const { cells: fit } = resolveCells(stem, form, cellsFor(stemSlp, slp));
+        const { cells: fit } = resolveCells(stem, form, cellsWithSandhi(stemSlp, slp, stem + '|' + form));
         for (const lg of new Set(fit.map((c) => c[0]))) {
           lingaScore.set(lg, (lingaScore.get(lg) ?? 0) + 1);
         }
@@ -655,7 +717,7 @@ async function main() {
     if (!isPronoun && top.length > 1 && !(lex && top.includes(lex)) && mwTop.length === 1) mwBroke++;
 
     for (const [form, slp] of derivable) {
-      const cs = cellsFor(stemSlp, slp).filter((c) => (linga ? c[0] === linga : true));
+      const cs = cellsWithSandhi(stemSlp, slp, stem + '|' + form).filter((c) => (linga ? c[0] === linga : true));
       // The quiz cache keeps the ENGINE's view: "does this form, by its shape
       // alone, determine a case?" That is the right question for a quiz gate,
       // and narrowing it by the annotation would make the answer trivially yes.

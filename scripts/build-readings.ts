@@ -558,6 +558,7 @@ function main() {
     }
   }
 
+  let agreedLinga = 0;
   for (const r of flat) {
     const ws = r.words ?? [];
     /*
@@ -578,10 +579,46 @@ function main() {
       delete w.quizzes;
       delete w.quiz;
 
+
       const split = sandhiSplitOf(w);
       if (split) w.split = split;
       else delete w.split;
     });
+
+    /*
+      Agreement — a second pass, because an adjective's gender is its noun's.
+
+      श्रेष्ठतरम् is neuter because महत्त्वम् is; द्वे is not masculine because
+      विद्ये is not. Neither fact is in the adjective: समानाधिकरण means the
+      gender comes from the other word, so no amount of declining श्रेष्ठतर will
+      produce it, and the stem-level guess (masculine, from its other
+      occurrences) is wrong precisely where the reading is teaching agreement.
+
+      The edge is already authored — `rel: विशेषण, to: N` — and the schema
+      already declares लिङ्ग·विभक्ति·वचन as the axes that must agree. So this
+      only reads what the annotation has said and copies the value across.
+
+      Second pass because the target's own लिङ्ग may itself be derived, and a
+      single forward pass would ask before the answer existed. An authored tag
+      on the adjective still wins; this fills a silence, like everything else.
+    */
+    const LINGA_VALS = ['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग'];
+    const lingaOf = (x: any): string | undefined => {
+      const authored = (x.notes ?? []).map((n: any) => n.term).find((t: string) => LINGA_VALS.includes(t));
+      return authored ?? (x.derived ?? {})['लिङ्ग'];
+    };
+    for (const w of ws) {
+      if (lingaOf(w)) continue;
+      for (const rel of w.rel ?? []) {
+        if (rel.kind !== 'विशेषण' || typeof rel.to !== 'number') continue;
+        const target = ws[rel.to];
+        const lg = target ? lingaOf(target) : undefined;
+        if (!lg) continue;
+        (w.derived ??= {})['लिङ्ग'] = lg;
+        agreedLinga++;
+        break;
+      }
+    }
   }
 
   // reader view: DIFFICULTY order by `segment` alone — never by length.
@@ -667,6 +704,7 @@ function main() {
   sequence.forEach((r, i) => (r.position = i + 1));
 
   fs.writeFileSync(OUTPUT, JSON.stringify({ chapters, sequence }, null, 2));
+  if (agreedLinga) console.log(`  ${agreedLinga} लिङ्ग taken from the noun a विशेषण agrees with`);
   console.log(
     `Wrote ${flat.length} readings — ${chapters.length} topical chapters + sequence view → ${path.relative(process.cwd(), OUTPUT)}`
   );
