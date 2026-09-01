@@ -119,10 +119,49 @@ current['readings-under-half'] = thin;
   if (out.startsWith('{')) current['exemplary-cells'] = JSON.parse(out).exemplary;
 }
 
+/*
+  What the reader annotates but /usage cannot consume.
+
+  The pipeline from a reading to the प्रयोग page loses words at two joints, and
+  both are annotation gaps wearing different clothes: a word with no lemma
+  cannot be indexed under any stem, and a word with no type belongs to no
+  section. Both counts are ratcheted as ceilings — 143 unlemmatized words is a
+  debt, and new annotation must not add to it.
+*/
+{
+  const u = JSON.parse(fs.readFileSync('static/data/usage.json', 'utf-8'));
+  current['unlemmatized'] = u.unlemmatized ?? 0;
+}
+
+/*
+  ── the per-reading ratchet ──────────────────────────────────────────────
+
+  The finest grain, and the one the user actually asked for: no gap may APPEAR,
+  anywhere. The corpus-level shares miss a reading that individually decays —
+  an edit that drops one tag from ex042 moves no aggregate — and the
+  readings-under-half ceiling only notices decay that crosses 50%. So every
+  reading's completeness is recorded, and any reading falling below its own
+  recorded score fails the build. Improvements are locked in with --update,
+  the same discipline as every other floor.
+
+  Kept in its own file: 330+ rows would drown the dozen corpus-level floors,
+  and the two files answer different questions — "is the corpus holding" and
+  "which reading slipped".
+*/
+const READING_FLOORS = path.join(process.cwd(), 'content/reading-floors.json');
+const readingNow: Record<string, number> = {};
+for (const [rid, v] of Object.entries(now.readings ?? {})) {
+  if (v.total) readingNow[rid] = share(v.complete, v.total);
+}
+
 if (process.argv.includes('--update')) {
   fs.mkdirSync(path.dirname(FLOORS), { recursive: true });
   fs.writeFileSync(FLOORS, JSON.stringify(current, null, 2) + '\n');
-  console.log(`Recorded ${Object.keys(current).length} floors → ${path.relative(process.cwd(), FLOORS)}`);
+  fs.writeFileSync(READING_FLOORS, JSON.stringify(readingNow, null, 0) + '\n');
+  console.log(
+    `Recorded ${Object.keys(current).length} floors → ${path.relative(process.cwd(), FLOORS)}, ` +
+      `${Object.keys(readingNow).length} reading scores → ${path.relative(process.cwd(), READING_FLOORS)}`
+  );
   process.exit(0);
 }
 
@@ -143,7 +182,7 @@ for (const [k, floor] of Object.entries(floors)) {
     continue;
   }
   // Ceilings — fewer is better, so a RISE is the regression.
-  if (k === 'untyped' || k === 'readings-under-half') {
+  if (k === 'untyped' || k === 'readings-under-half' || k === 'unlemmatized') {
     if (val > floor) dropped.push(`${k} rose to ${val} (ceiling ${floor})`);
     else if (val < floor) gained.push(`${k} ${floor} → ${val}`);
     continue;
@@ -157,6 +196,23 @@ for (const [k, floor] of Object.entries(floors)) {
   }
   if (val < floor) dropped.push(`${k}: ${val}% (floor ${floor}%)`);
   else if (val > floor) gained.push(`${k}: ${floor}% → ${val}%`);
+}
+
+// Per-reading: any reading below its own recorded score is a regression. A
+// reading that vanished entirely is one too — deleting a reading is a
+// deliberate act and should say so via --update.
+if (fs.existsSync(READING_FLOORS)) {
+  const rf: Record<string, number> = JSON.parse(fs.readFileSync(READING_FLOORS, 'utf-8'));
+  let slipped = 0;
+  for (const [rid, floor] of Object.entries(rf)) {
+    const val = readingNow[rid];
+    if (val === undefined) { dropped.push(`reading ${rid}: no longer in the corpus (was ${floor}%)`); continue; }
+    if (val < floor) {
+      slipped++;
+      if (slipped <= 8) dropped.push(`reading ${rid}: ${val}% complete (was ${floor}%)`);
+    } else if (val > floor) gained.push(`${rid} ${floor}%→${val}%`);
+  }
+  if (slipped > 8) dropped.push(`… and ${slipped - 8} more reading(s) below their recorded score`);
 }
 
 const newKeys = Object.keys(current).filter((k) => !(k in floors));

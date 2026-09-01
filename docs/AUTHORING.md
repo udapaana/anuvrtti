@@ -366,6 +366,30 @@ the way in. Write the accent where the source has it; never rely on it matching.
 (And per the freeze above, do not author *new* accents — the existing ones are
 verbatim from a verified source; new ones cannot be checked.)
 
+### Starting a reading — `bun scripts/scaffold-reading.ts`
+
+Do not start from a blank file. The corpus is its own lexicon: after 348
+readings most words in a new sentence have been seen before, and their hardest
+annotations were already made by someone who thought about exactly this form.
+
+```bash
+bun scripts/scaffold-reading.ts 09_katha ex300 "रामः वनम् गच्छति। सीता अपि तत्र अगच्छत्।"
+#  7 tokens: 6 copied complete, 0 partial, 1 new
+```
+
+Known forms arrive with their lemma, gloss and kernel copied from the cleanest
+prior occurrence. Two things are deliberately NOT inherited: `cite` notes (a
+citation belongs to what its reading was teaching), and context-dependent
+values (कारक, प्रयोग, सम्बन्धार्थ) are copied but marked `CONFIRM` — देवम् is
+द्वितीया anywhere, but whether it is कर्मन् is a fact about this sentence. A
+token new to the corpus becomes a stub that states its kernel in place.
+
+Then fill the FIXMEs and run `bun run build:quiz` (readings → quiz → readings —
+a NEW stem needs the round trip so derivation can meet it) and
+`bun scripts/check-complete.ts --reading <id>`. The gate holds new readings at
+100%; in the smoke test, one new stem needed exactly two authored tags (कर्तृ,
+प्रथमा) and derivation supplied वचन and लिङ्ग.
+
 ### What to work on next — `bun run exemplars`
 
 The goal is a grammar reference *by example*: someone arrives wanting चतुर्थी
@@ -411,7 +435,7 @@ session can take a whole area.
 per word type and per dimension, the share currently filled; a number may rise
 freely and a fall is an error.
 
-It guards four things that are otherwise invisible:
+It guards six things that are otherwise invisible:
 
 - **A derivation that breaks.** Most of what a word shows is inferred through a
   chain several steps long — root candidates → derivation picks → stem → the
@@ -426,6 +450,14 @@ It guards four things that are otherwise invisible:
 - **The reference getting no closer.** `exemplary-cells` is a floor on how many
   grammar cells have a clean example. It is the one number that says whether
   this can be read as a reference at all, and nothing else implies it.
+- **A single reading decaying.** `content/reading-floors.json` records every
+  reading's completeness; a reading falling below its own recorded score fails
+  the build, and so does one vanishing. An edit that drops one tag from ex042
+  moves no corpus-level number — this is the grain that catches it.
+- **Words the reader annotates but /usage cannot consume.** `unlemmatized` and
+  `untyped` are ceilings: a word with no lemma indexes under no stem, a word
+  with no type belongs to no section, and both are gaps in the pipeline from
+  the reading to the reference.
 
 Shares, not counts, because a count rises whenever you add a reading — a
 count-based floor would pass while the corpus got thinner per word.
