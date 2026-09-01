@@ -147,9 +147,17 @@ export const AVYAYA_BHEDA: Record<string, string> = {
   // 1.4.59 उपसर्गाः क्रियायोगे — standing alone in the corpus
   प्र: 'उपसर्ग', परा: 'उपसर्ग', अप: 'उपसर्ग', सम्: 'उपसर्ग', अनु: 'उपसर्ग',
   अव: 'उपसर्ग', निस्: 'उपसर्ग', निर्: 'उपसर्ग', दुस्: 'उपसर्ग', दुर्: 'उपसर्ग',
-  वि: 'उपसर्ग', आ: 'उपसर्ग', नि: 'उपसर्ग', अधि: 'उपसर्ग', अपि: 'उपसर्ग',
+  वि: 'उपसर्ग', आ: 'उपसर्ग', नि: 'उपसर्ग', अधि: 'उपसर्ग',
   अति: 'उपसर्ग', सु: 'उपसर्ग', उद्: 'उपसर्ग', अभि: 'उपसर्ग', प्रति: 'उपसर्ग',
   परि: 'उपसर्ग', उप: 'उपसर्ग',
+  /*
+    अपि is in 1.4.59's list of twenty-two, but that designation holds only
+    क्रियायोगे — bound to a verb, where it is already carried as the verb's own
+    उपसर्ग tag. The word this table classifies is the one STANDING ALONE in a
+    sentence, and standalone अपि ("also, even") is a particle. Filing it उपसर्ग
+    put "prefix" on twenty-one occurrences of plain "also".
+  */
+  अपि: 'निपात',
 
   // 1.4.56 निपाताः — particles
   च: 'निपात', वा: 'निपात', तु: 'निपात', हि: 'निपात', एव: 'निपात',

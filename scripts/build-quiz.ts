@@ -52,8 +52,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { deaccent, phraseAround } from '../src/lib/usage/normalize';
 import {
-  ALL_MARKERS as ALL_TYPE_MARKERS, KNOWN_VALUES, WORD_TYPES
+  ALL_MARKERS as ALL_TYPE_MARKERS, KNOWN_VALUES, WORD_TYPES, typeOf
 } from '../src/lib/usage/schema';
+import { AVYAYA_BHEDA } from '../src/lib/usage/lexical';
 
 /*
   Every tag that is legal on a कृदन्त — its own dimension values and names, plus
@@ -452,6 +453,19 @@ async function main() {
     tag is the more reliable signal here, so it vetoes.
   */
   const adjectives = new Set<string>();
+  /** stem → votes for a non-सुबन्त nominal type (taddhita, sankhya). */
+  const stemTypeVotes = new Map<string, Map<string, number>>();
+  const taddhitaAffix = new Map<string, string>();
+  /** Stems the corpus types सर्वादि by marker — the सर्वनाम tag alone misses them. */
+  const sarvadiStems = new Set<string>();
+  /** indeclinables the corpus attests: stem → count, first gloss, भेद. */
+  const avyayaWords = new Map<string, { count: number; gloss: string; bheda: string }>();
+  const TADDHITA_AFFIXES = new Set(
+    WORD_TYPES.find((t) => t.id === 'taddhita')!.dimensions.find((d) => d.name === 'तद्धित')!.values
+  );
+  const AVYAYA_BHEDA_VALUES = new Set(
+    WORD_TYPES.find((t) => t.id === 'avyaya')!.dimensions.find((d) => d.name === 'अव्यय-भेद')!.values
+  );
   for (const r of corpus) {
     for (const w of r.words ?? []) {
       if (!w.lemma) continue;
@@ -460,6 +474,46 @@ async function main() {
       }
       if ((w.notes ?? []).some((n: any) => n.term === 'विशेषण')) {
         adjectives.add(deaccent(w.lemma));
+      }
+      /*
+        Which word type the corpus says this stem is, so the प्रयोग index can
+        file it there. तद्धित and संख्या stems decline exactly like nouns and
+        the machinery below declines them — but filing धनवत् and एक under
+        सुबन्त made /usage show three word types and silently absorb the rest,
+        which read as "the corpus has no तद्धित" when it has ninety-four.
+      */
+      {
+        const terms = new Set<string>([
+          ...(w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term),
+          ...(Object.values(w.derived ?? {}) as string[])
+        ]);
+        const t = typeOf(terms);
+        const st = deaccent(w.lemma);
+        if (t?.id === 'sarvadi') sarvadiStems.add(st);
+        /*
+          Every nominal type votes, not only the interesting ones. When only
+          तद्धित occurrences voted, one ग्रामतः — lemma ग्राम, typed तद्धित —
+          outvoted forty plain uses of ग्राम and filed the noun under secondary
+          derivatives. A vote needs a denominator: the stem goes where MOST of
+          its occurrences say it belongs.
+        */
+        if (t && ['subanta', 'taddhita', 'sankhya'].includes(t.id)) {
+          const m = stemTypeVotes.get(st) ?? new Map<string, number>();
+          m.set(t.id, (m.get(t.id) ?? 0) + 1);
+          stemTypeVotes.set(st, m);
+        }
+        if (t?.id === 'taddhita') {
+          const affix = [...terms].find((x) => TADDHITA_AFFIXES.has(x));
+          if (affix) taddhitaAffix.set(st, affix);
+        }
+        if (t?.id === 'avyaya') {
+          const e = avyayaWords.get(st) ?? { count: 0, gloss: '', bheda: '' };
+          e.count++;
+          if (!e.gloss && w.gloss) e.gloss = String(w.gloss);
+          const bh = [...terms].find((x) => AVYAYA_BHEDA_VALUES.has(x)) ?? AVYAYA_BHEDA[st];
+          if (bh) e.bheda = bh;
+          avyayaWords.set(st, e);
+        }
       }
     }
   }
@@ -941,13 +995,50 @@ async function main() {
   // differ (तस्मै for देवाय, तस्मिन् for देवे) under rules that apply to pronouns
   // alone, and one lemma carries three genders where a noun carries one. It
   // gets its own section rather than a group inside a list keyed by gender.
-  const nouns = entries.filter((e: any) => !e.isPronoun);
   const pronouns2 = entries.filter((e: any) => e.isPronoun);
+  /*
+    The nominal entries, filed by what the corpus says each stem IS.
+
+    धनवत् and एक decline exactly like देव, so one machine declines them all —
+    but a reference has to file them apart, because a reader looking for the
+    तद्धित formations will not think to open "nouns". The corpus's own type
+    tags decide: a stem whose occurrences are typed तद्धित goes to the तद्धित
+    section, संख्या likewise, सर्वादि by the 1.1.27 flag already computed, and
+    everything else stays सुबन्त.
+  */
+  const dominantType = (stem: string): string | null => {
+    const votes = stemTypeVotes.get(stem);
+    if (!votes) return null;
+    return [...votes].sort((a, b) => b[1] - a[1])[0][0];
+  };
+  const fileOf = (e: any): string =>
+    e.isSarvadi || sarvadiStems.has(e.subject) ? 'sarvadi' : (dominantType(e.subject) ?? 'subanta');
+
+  const nominals = entries.filter((e: any) => !e.isPronoun);
+  for (const e of nominals) {
+    const f = fileOf(e);
+    if (f !== 'subanta') e.kind = f;
+  }
+  const nouns = nominals.filter((e: any) => fileOf(e) === 'subanta');
+  const taddhitas = nominals.filter((e: any) => fileOf(e) === 'taddhita');
+  for (const e of taddhitas) {
+    const a = taddhitaAffix.get(e.subject);
+    if (a) e.pinned = { ...e.pinned, 'तद्धित': a };
+  }
+  const sankhyas = nominals.filter((e: any) => fileOf(e) === 'sankhya');
+  const sarvadis = nominals.filter((e: any) => fileOf(e) === 'sarvadi');
 
   const rich = nouns.filter((e) => e.forms >= 2);
   const sparse = nouns.filter((e) => e.forms < 2).map(summarise);
   const sarvaRich = pronouns2.filter((e) => e.forms >= 2);
   const sarvaSparse = pronouns2.filter((e) => e.forms < 2).map(summarise);
+  // The same rich/sparse split as सुबन्त: a stem attested once cannot show a
+  // paradigm, so it ships as a name and a count.
+  const split = (xs: any[]) => ({
+    rich: xs.filter((e) => e.forms >= 2),
+    sparse: xs.filter((e) => e.forms < 2).map(summarise)
+  });
+  const tadS = split(taddhitas), sanS = split(sankhyas), srvS = split(sarvadis);
 
   // ── तिङन्त ─────────────────────────────────────────────────────────────
   //
@@ -1392,6 +1483,16 @@ async function main() {
     an indeclinable is in.
   */
   const krtLinga: Record<string, string> = {};
+  /**
+   * (root, कृत्) → the derived stem and every attested occurrence, so /usage
+   * can show the कृदन्त the way it shows a noun: subject, grid, full paradigm.
+   * Collected here because this pass is the one place the affix, the stem and
+   * the cell are all in hand at once.
+   */
+  const krtGroups = new Map<string, {
+    root: string; affix: string; stemSlp: string;
+    occs: Array<{ form: string; cell: string | null }>;
+  }>();
   let krtResolved = 0, krtAvyaya = 0, krtUnderivable = 0, krtNoSlp = 0, krtNoRoot = 0, krtPlacedNoAgree = 0;
   let krtNamed = 0, krtNameAmbiguous = 0, krtContradicts = 0;
   /** (lemma|form) → the कृत् affix, where the author wrote none and derivation found exactly one. */
@@ -1498,9 +1599,9 @@ async function main() {
          * competing with the derivation here; it is the second coordinate the
          * derivation needs.
          */
-        function place(stem: string): void {
+        function place(stem: string): string | null {
           const raw = cellsFor(stem, formSlp!);
-          if (!raw.length) return;
+          if (!raw.length) return null;
           const aVib = [...terms].find((t) => VIB_SET.has(t));
           const aVac = [...terms].find((t) => VAC_SET.has(t));
           let cells = aVib ? raw.filter((c) => VIB_DEV[c[1]] === aVib) : raw;
@@ -1516,6 +1617,16 @@ async function main() {
           if (lg.size === 1) krtLinga[key] = LINGA_DEV[[...lg][0]];
           if (vb.size === 1 && !(key in cellIndex)) cellIndex[key] = [...vb][0];
           if (lg.size === 1 || vb.size === 1) krtResolved++; else krtPlacedNoAgree++;
+          return vb.size === 1 ? [...vb][0] : null;
+        }
+
+        /** File this occurrence under its (root, कृत्) for the प्रयोग section. */
+        function record(affix: string, stemSlp: string, cell: string | null): void {
+          const k = root + '|' + affix;
+          const g = krtGroups.get(k) ?? { root, affix, stemSlp, occs: [] };
+          if (!g.stemSlp && stemSlp) g.stemSlp = stemSlp;
+          g.occs.push({ form, cell });
+          krtGroups.set(k, g);
         }
 
         /** Affix name → the stem that produced this form ('' for an indeclinable). */
@@ -1532,8 +1643,12 @@ async function main() {
                   if (!fits.has(krtName(krt, pre))) fits.set(krtName(krt, pre), indeclinable ? '' : stem);
                   break;
                 }
-                if (indeclinable) { krtAvyaya++; placed = true; break outer; }
-                place(stem);
+                if (indeclinable) {
+                  krtAvyaya++; placed = true;
+                  record(krtName(krt, pre), '', null);
+                  break outer;
+                }
+                record(krtName(krt, pre), stem, place(stem));
                 placed = true;
                 break outer;
               }
@@ -1554,7 +1669,8 @@ async function main() {
             const [[name, stem]] = [...fits];
             krtIndex[key] = name;
             krtNamed++;
-            if (stem) place(stem); else krtAvyaya++;
+            if (stem) record(name, stem, place(stem));
+            else { krtAvyaya++; record(name, '', null); }
           } else if (fits.size > 1) krtNameAmbiguous++;
           continue;
         }
@@ -1586,6 +1702,77 @@ async function main() {
       }
     }
   }
+
+  /*
+    ── the कृदन्त entries ─────────────────────────────────────────────────
+    A participle browses like a noun once you know which noun it is: the
+    subject is the (root, affix) pair, the stem is derived rather than cited,
+    and it declines in all three genders because it agrees. The अव्यय कृत्
+    (क्त्वा, तुमुन्…) have one form each and no grid, so they ship the way a
+    once-seen noun does — a name and a count.
+  */
+  const kridantaRich: any[] = [];
+  const kridantaSparse: any[] = [];
+  for (const g of krtGroups.values()) {
+    const subject = `${g.root} + ${g.affix}`;
+    const distinct = new Set(g.occs.map((o) => o.form));
+    if (!g.stemSlp) {
+      kridantaSparse.push({ subject, linga: null, forms: distinct.size, filled: 0 });
+      continue;
+    }
+    const grid: Record<string, any[]> = {};
+    for (const o of g.occs) {
+      if (!o.cell) continue;
+      for (const a of (occByStem.get(g.root) ?? []).filter((x) => x.form === o.form)) {
+        (grid[o.cell] ??= []).push({ ...a, ambiguous: false, attested: true });
+      }
+    }
+    for (const k of Object.keys(grid)) {
+      const seen = new Set<string>();
+      grid[k] = grid[k].filter((a: any) => {
+        const id = a.reading + ':' + a.formRaw;
+        if (seen.has(id)) return false;
+        seen.add(id);
+        return true;
+      });
+      grid[k].sort((a: any, b: any) => a.position - b.position);
+      const total = grid[k].length;
+      grid[k] = grid[k].slice(0, 3);
+      if (total > 3) grid[k][0].more = total - 3;
+    }
+    kridantaRich.push({
+      subject,
+      kind: 'kridanta',
+      linga: null,
+      group: g.affix,
+      terminal: '',
+      pinned: { 'कृत्': g.affix },
+      forms: distinct.size,
+      filled: Object.keys(grid).length,
+      total: VIBHAKTIS.length * VACANAS.length,
+      grid,
+      // Agreement means all three genders are real; show them all, the way a
+      // pronoun does.
+      paradigm: paradigmOf(g.stemSlp, 'Pum'),
+      paradigmByLinga: {
+        'पुंलिङ्ग': paradigmOf(g.stemSlp, 'Pum'),
+        'स्त्रीलिङ्ग': paradigmOf(g.stemSlp, 'Stri'),
+        'नपुंसकलिङ्ग': paradigmOf(g.stemSlp, 'Napumsaka')
+      },
+      unplaced: []
+    });
+  }
+  kridantaRich.sort((a, b) => b.filled - a.filled || b.forms - a.forms);
+  const krtAffixGroups = [...new Set(kridantaRich.map((e) => e.group))]
+    .map((a) => ({ id: a, dev: a, en: '' }));
+
+  /* ── the अव्यय list ─────────────────────────────────────────────────────
+     No paradigm exists to grid: an indeclinable is one form for life (1.1.37).
+     What a reference wants instead is the inventory, filed by भेद, each word
+     with its gloss and how often the corpus uses it. */
+  const avyayaList = [...avyayaWords]
+    .map(([stem, e]) => ({ subject: stem, bheda: e.bheda || null, gloss: e.gloss, forms: e.count }))
+    .sort((a, b) => b.forms - a.forms);
 
   const index = {
     generated: new Date().toISOString(),
@@ -1647,6 +1834,65 @@ async function main() {
           .filter((g) => tinEntries.some((e: any) => e.group === g))
           .map((g) => ({ id: g, dev: GANA_DEV[g], en: '' })),
         groupBy: 'गण'
+      },
+      {
+        kind: 'kridanta',
+        dev: 'कृदन्त',
+        en: 'participles & verbal derivatives',
+        axes: [
+          { feature: 'विभक्ति', values: VIBHAKTIS.map((k) => VIB_DEV[k]) },
+          { feature: 'वचन', values: VACANAS.map((k) => VAC_DEV[k]) }
+        ],
+        entries: kridantaRich,
+        sparse: kridantaSparse,
+        groups: krtAffixGroups,
+        groupBy: 'कृत्'
+      },
+      {
+        kind: 'taddhita',
+        dev: 'तद्धित',
+        en: 'secondary derivatives',
+        axes: [
+          { feature: 'विभक्ति', values: VIBHAKTIS.map((k) => VIB_DEV[k]) },
+          { feature: 'वचन', values: VACANAS.map((k) => VAC_DEV[k]) }
+        ],
+        entries: tadS.rich,
+        sparse: tadS.sparse
+      },
+      {
+        kind: 'sankhya',
+        dev: 'संख्या',
+        en: 'numerals',
+        axes: [
+          { feature: 'विभक्ति', values: VIBHAKTIS.map((k) => VIB_DEV[k]) },
+          { feature: 'वचन', values: VACANAS.map((k) => VAC_DEV[k]) }
+        ],
+        entries: sanS.rich,
+        sparse: sanS.sparse
+      },
+      {
+        kind: 'sarvadi',
+        dev: 'सर्वादि',
+        en: 'pronominal adjectives',
+        axes: [
+          { feature: 'विभक्ति', values: VIBHAKTIS.map((k) => VIB_DEV[k]) },
+          { feature: 'वचन', values: VACANAS.map((k) => VAC_DEV[k]) }
+        ],
+        entries: srvS.rich,
+        sparse: srvS.sparse
+      },
+      {
+        kind: 'avyaya',
+        dev: 'अव्यय',
+        en: 'indeclinables',
+        axes: [
+          { feature: 'अव्यय-भेद', values: [...new Set(avyayaList.map((x) => x.bheda).filter(Boolean))] as string[] },
+          { feature: '', values: [] }
+        ],
+        entries: [],
+        sparse: [],
+        list: avyayaList,
+        groupBy: 'अव्यय-भेद'
       }
     ],
     unlemmatized

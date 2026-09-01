@@ -274,6 +274,32 @@ if (/new disagreement/.test(der)) {
   console.log('  ✓ ' + der.trim().split('\n')[0]);
 }
 
+// 9bc. new readings — HARD, and the per-file half of "complete on generation".
+// The ratchets judge the whole corpus, and one thin reading is a rounding error
+// in every number they check — which is how a backlog is built: one reading at
+// a time, each individually invisible. A reading ADDED vs origin/main must be
+// 100% complete after derivation; modified ones are reported, not gated.
+const nr = await run(['bun', 'scripts/check-new-readings.ts']);
+if (/below the standard/.test(nr)) {
+  problems.push('new readings:\n' + nr.split('\n').filter((l) => /^\s{4}\S/.test(l)).join('\n'));
+  console.log('  ✗ ' + nr.trim().split('\n')[0]);
+} else {
+  console.log('  ✓ ' + nr.trim().split('\n')[0]);
+}
+
+// 9bd. usage ⋈ schema — HARD. The प्रयोग page renders whatever sections
+// build-quiz emits, and for a long time that was three of the schema's eight
+// word types; the rest were declined by the same machinery and filed under
+// "nouns" or nowhere, which read as "the corpus has no तद्धित" when it had
+// ninety-four. Every attested word type must have a populated section.
+const ut = await run(['bun', 'scripts/check-usage-types.ts']);
+if (/mismatch/.test(ut)) {
+  problems.push('usage sections:\n' + ut.split('\n').filter((l) => /^\s{4}\S/.test(l)).join('\n'));
+  console.log('  ✗ ' + ut.trim().split('\n')[0]);
+} else {
+  console.log('  ✓ ' + ut.trim().split('\n')[0]);
+}
+
 // 9c. the coverage ratchet — HARD, and the one check that guards the FUTURE
 // rather than the present. Everything else here asks whether the corpus is
 // correct now; this asks whether it is still as complete as it was. A broken

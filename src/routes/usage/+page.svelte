@@ -81,6 +81,20 @@
   const section = $derived<UsageSection | null>(
     sections.find((s) => s.kind === kind) ?? sections[0] ?? null
   );
+  /** The अव्यय inventory grouped by भेद, largest class first, unclassified last. */
+  const listGroups = $derived.by(() => {
+    const list = section?.list ?? [];
+    const by = new Map<string, typeof list>();
+    for (const x of list) {
+      const k = x.bheda ?? '';
+      if (!by.has(k)) by.set(k, []);
+      by.get(k)!.push(x);
+    }
+    return [...by]
+      .sort((a, b) => (a[0] === '' ? 1 : b[0] === '' ? -1 : b[1].length - a[1].length))
+      .map(([bheda, words]) => ({ bheda, words }));
+  });
+
   const rows = $derived(section?.axes?.[0]?.values ?? []);
   const cols = $derived(section?.axes?.[1]?.values ?? []);
 
@@ -621,6 +635,36 @@
   <div class="status">{error}</div>
 {:else if !loaded}
   <div class="status">loading the usage index…</div>
+{:else if section?.list?.length}
+  <!-- अव्यय: no paradigm exists to grid (1.1.37), so the section is the
+       inventory itself — every indeclinable the corpus uses, filed by भेद. -->
+  <Shelf left={shelfLeft} right={shelfRight} />
+  <div class="av-wrap">
+    <header class="head">
+      <h1><Sanskrit text="प्रयोग" source="devanagari" /></h1>
+      <p>
+        The indeclinables the readings use. An <Sanskrit text="अव्यय" source="devanagari" /> has one
+        form for life, so there is no paradigm to show — the inventory is the reference.
+      </p>
+    </header>
+    {#each listGroups as g (g.bheda)}
+      <section class="card av-group">
+        <div class="card-head">
+          {#if g.bheda}<Sanskrit text={g.bheda} source="devanagari" />{:else}not yet classified{/if}
+          <span class="card-count">{g.words.length} words</span>
+        </div>
+        <div class="av-words">
+          {#each g.words as w (w.subject)}
+            <div class="av-word">
+              <span class="av-dev"><Sanskrit text={w.subject} source="devanagari" /></span>
+              <span class="av-gloss">{w.gloss}</span>
+              <span class="av-n">×{w.forms}</span>
+            </div>
+          {/each}
+        </div>
+      </section>
+    {/each}
+  </div>
 {:else if section && entry}
   <Shelf left={shelfLeft} right={shelfRight} />
 
@@ -1424,5 +1468,40 @@
     gap: 8px;
     font-family: var(--font-deva);
     font-size: 14px;
+  }
+
+  /* ── the अव्यय inventory ─────────────────────────────────────────────── */
+  .av-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1rem 3rem;
+  }
+  .av-group { margin-top: 1.25rem; }
+  .av-words {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.25rem 1rem;
+    padding: 0.5rem 0.75rem 0.75rem;
+  }
+  .av-word {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.15rem 0;
+  }
+  .av-dev { flex: none; }
+  .av-gloss {
+    color: var(--ink-2, #666);
+    font-size: 0.85em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .av-n {
+    margin-left: auto;
+    color: var(--ink-3, #999);
+    font-size: 0.75em;
+    font-variant-numeric: tabular-nums;
   }
 </style>

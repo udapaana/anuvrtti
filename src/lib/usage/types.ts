@@ -130,6 +130,15 @@ export interface UsageSection {
    * are listed, because "300 nouns seen once" is itself a fact about coverage.
    */
   sparse: Array<{ subject: string; linga: string | null; forms: number; filled: number }>;
+  /**
+   * The list-shaped section, for the one word type with no paradigm at all.
+   * An अव्यय is one form for life (1.1.37), so a grid would be a 1×1 table
+   * pretending to be information; what a reference wants is the inventory —
+   * every indeclinable the corpus uses, filed by भेद, with its gloss and how
+   * often it occurs. When present, `entries` is empty and the page renders
+   * this instead.
+   */
+  list?: Array<{ subject: string; bheda: string | null; gloss: string; forms: number }>;
 }
 
 export interface UsageIndex {

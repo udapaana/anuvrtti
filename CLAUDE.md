@@ -73,6 +73,20 @@ unlights it silently rather than raising, so `bun run check` verifies them
   and `skip_at_agama` are **required** despite reading as optional; omitting any
   of them traps the module with a bare "unreachable" and no message.
 
+## New readings are born complete
+
+`bun run check` gates a reading ADDED relative to `origin/main` at 100%
+completeness — every word typed, every required dimension filled after
+derivation (`scripts/check-new-readings.ts`). The authored kernel is small: the
+`source: 'authored'` dimensions in `src/lib/usage/schema.ts`; the build derives
+the rest. Modified readings are reported, not gated, so fixing one word in a
+backlog file still lands. What to write next comes from `bun run exemplars
+--write`; what to finish from `--fix`.
+
+`/usage` covers every word type in the schema, checked by
+`scripts/check-usage-types.ts` — add a ninth type and the build fails until the
+page can show it, the same join discipline as `systems.toml`.
+
 ## The grammar engine is pinned
 
 vidyut-prakriya decides what the corpus *means* — every लिङ्ग, विभक्ति, वचन,
