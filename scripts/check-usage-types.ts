@@ -61,6 +61,23 @@ for (const kind of sections.keys()) {
   }
 }
 
+/*
+  The periphery's join key. /words, /review and the workbook footprint join the
+  word bank to the corpus through quiz-cells.json at render time — deliberately
+  storing nothing — which means their entire grammar display rests on this
+  file's shape. A build-quiz refactor that renames `vibhaktis` breaks no build
+  and empties every chip; this is what would say so.
+*/
+{
+  const qc = JSON.parse(fs.readFileSync('static/data/quiz-cells.json', 'utf-8'));
+  const forms = Object.keys(qc);
+  const sample = forms.slice(0, 50).map((f) => qc[f]);
+  if (!forms.length) bad.push('quiz-cells.json is empty — the periphery join has nothing to join to');
+  else if (!sample.every((e) => Array.isArray(e.vibhaktis) && 'linga' in e)) {
+    bad.push('quiz-cells.json entries lost their {linga, vibhaktis} shape — /words, /review and the workbook footprint join on it');
+  }
+}
+
 if (bad.length) {
   console.error(`${bad.length} usage/schema mismatch(es):`);
   for (const b of bad) console.error(`    ${b}`);

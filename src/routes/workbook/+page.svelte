@@ -13,6 +13,7 @@
   import type { Script } from '$lib/transliteration';
   import { lessonLanguage } from '$lib/stores/preferences';
   import { wordBank } from '$lib/stores/wordBank';
+  import { identify, loadIdentities } from '$lib/usage/enrich';
 
   /*
     The workbook door: बालबोधिनी, the primer, plus the practice that comes off
@@ -354,6 +355,34 @@
     });
   }
   const kept = $derived(new Set($wordBank.words.map((w) => w.id)));
+
+  /*
+    ── your grammar — the deck's footprint over the paradigm ────────────────
+
+    The workbook teaches the grammar; /usage shows the whole of it; this is the
+    hinge between them: the same विभक्ति × वचन matrix, lit by the words YOU have
+    kept. Joined at render time from quiz-cells (enrich.ts) — only unambiguous
+    placements light a cell, the same rule every other surface holds itself to.
+    No data is stored: delete a word and its cell goes dark.
+  */
+  const VIBS = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
+  const VACS = ['एकवचन', 'द्विवचन', 'बहुवचन'];
+  let identReady = $state(false);
+  onMount(() => { loadIdentities().then(() => (identReady = true)); });
+  const footprint = $derived.by(() => {
+    if (!identReady) return null;
+    const lit = new Map<string, number>();
+    let placed = 0;
+    for (const w of $wordBank.words) {
+      const id = identify(w.display);
+      if (!id || id.vibhaktis.length !== 1 || !id.cells?.length) continue;
+      placed++;
+      for (const [vib, vac] of id.cells) {
+        lit.set(vib + '|' + vac, (lit.get(vib + '|' + vac) ?? 0) + 1);
+      }
+    }
+    return { lit, placed, total: VIBS.length * VACS.length };
+  });
 </script>
 
 <svelte:head><title>अभ्यास · workbook</title></svelte:head>
@@ -415,6 +444,37 @@
           </div>
         {/if}
       </header>
+
+      {#if lessonIdx === 0 && footprint && footprint.placed > 0}
+        <!-- Shown on the workbook's front lesson only: a status, not a lesson. -->
+        <section class="block fp">
+          <div class="block-head">
+            <span class="label">your grammar</span>
+            <span class="fp-n">
+              {footprint.lit.size} of {footprint.total} cells held by your kept words ·
+              <a href="/usage">the full map →</a>
+            </span>
+          </div>
+          <div class="fp-mx" role="img" aria-label="cells covered by kept words">
+            <div class="fp-corner"></div>
+            {#each VACS as vc}
+              <div class="fp-h"><Sanskrit text={vc} source="devanagari" /></div>
+            {/each}
+            {#each VIBS as vib}
+              <div class="fp-r"><Sanskrit text={vib} source="devanagari" /></div>
+              {#each VACS as vc}
+                {@const n = footprint.lit.get(vib + '|' + vc) ?? 0}
+                <a
+                  class="fp-c"
+                  class:has={n > 0}
+                  href="/words"
+                  title="{vib} {vc} — {n} kept word{n === 1 ? '' : 's'}"
+                >{n || '·'}</a>
+              {/each}
+            {/each}
+          </div>
+        </section>
+      {/if}
 
       {#each blocks as b, bi}
         <section class="block">
@@ -1008,4 +1068,29 @@
       display: none;
     }
   }
+
+  /* your-grammar footprint — the /usage matrix, personal-sized */
+  .fp-n { font-size: 12px; color: var(--quiet); }
+  .fp-n a { color: inherit; }
+  .fp-mx {
+    display: grid;
+    grid-template-columns: max-content repeat(3, minmax(44px, 64px));
+    gap: 3px;
+    margin-top: 8px;
+    align-items: center;
+  }
+  .fp-h, .fp-r { font-size: 11px; color: var(--quiet); }
+  .fp-h { text-align: center; }
+  .fp-r { padding-right: 6px; text-align: right; }
+  .fp-c {
+    display: block;
+    text-align: center;
+    padding: 3px 0;
+    font-size: 12px;
+    color: var(--faint);
+    border: 1px solid var(--rule-2);
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  .fp-c.has { color: var(--ink); border-color: var(--ink-2, #888); }
 </style>

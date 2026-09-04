@@ -9,6 +9,7 @@
   import Segmented from '$lib/components/ui/Segmented.svelte';
   import { lessonLanguage } from '$lib/stores/preferences';
   import type { LessonLanguage } from '$lib/stores/preferences';
+  import { identify, loadIdentities, cellQuestion, sourceLink } from '$lib/usage/enrich';
 
   /*
     A session over the deck, launched from it.
@@ -24,6 +25,24 @@
   lessonLanguage.subscribe((v) => {
     lang = v;
   });
+
+  /*
+    The card's grammar, joined from the corpus at render time (enrich.ts).
+
+    And where the engine says the form determines exactly one विभक्ति, the card
+    asks it before the reveal — recall of the grammar, not only of the gloss.
+    Same fairness rule as the reader's quiz: a form that is two cases is asked
+    nothing, because marking either answer wrong would contradict the language.
+    The guess does not touch the SRS verdict — knew/missed stays about the
+    word — it is practice, settled visually on reveal.
+  */
+  let identReady = $state(false);
+  onMount(() => { loadIdentities().then(() => (identReady = true)); });
+  let picked = $state<string | null>(null);
+  const question = $derived.by(() =>
+    identReady && word && !revealed ? cellQuestion(word.display) : null
+  );
+  const identity = $derived.by(() => (identReady && word ? identify(word.display) : null));
 
   const query = $derived(($page.url.searchParams.get('q') ?? '').toLowerCase());
   const fromNum = $derived(parseInt($page.url.searchParams.get('from') ?? '0', 10));
@@ -63,6 +82,7 @@
     queue = [...sessionWords].sort(() => Math.random() - 0.5);
     current = 0;
     revealed = false;
+    picked = null;
     knew = 0;
     missed = 0;
     sessionStarted = true;
@@ -193,12 +213,39 @@
         <div class="back-face">
           <span class="gloss">{lang === 'telugu' ? word.gloss : word.englishGloss}</span>
           {#if word.tag}<span class="tag">{word.tag}</span>{/if}
+          {#if identity}
+            <div class="ident-row">
+              {#if identity.linga}
+                <span class="ident"><Sanskrit text={identity.linga} source="devanagari" /></span>
+              {/if}
+              {#if identity.vibhaktis.length === 1}
+                <span class="ident" class:right={picked === identity.vibhaktis[0]} class:wrong={picked !== null && picked !== identity.vibhaktis[0]}>
+                  <Sanskrit text={identity.cells?.length === 1 ? `${identity.cells[0][0]} ${identity.cells[0][1]}` : identity.vibhaktis[0]} source="devanagari" />
+                </span>
+              {/if}
+              {#if sourceLink(word.lessonId)}
+                <a class="ident-src" href={sourceLink(word.lessonId)!.href}>{sourceLink(word.lessonId)!.label} →</a>
+              {/if}
+            </div>
+          {/if}
           <div class="verdicts">
             <button class="missed" onclick={() => answer(false)}>← missed</button>
             <button class="knew" onclick={() => answer(true)}>knew it →</button>
           </div>
         </div>
       {:else}
+        {#if question}
+          <div class="ask">
+            <span class="ask-q">which <Sanskrit text="विभक्ति" source="devanagari" />?</span>
+            <div class="ask-opts">
+              {#each question.options as o (o)}
+                <button class="opt" class:picked={picked === o} onclick={() => (picked = o)}>
+                  <Sanskrit text={o} source="devanagari" />
+                </button>
+              {/each}
+            </div>
+          </div>
+        {/if}
         <button class="reveal" onclick={() => (revealed = true)}>reveal</button>
       {/if}
     </div>
@@ -378,4 +425,41 @@
     cursor: pointer;
     text-decoration: none;
   }
+
+  /* The corpus's identity for the form — the same join the deck rows use. */
+  .ident-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ident {
+    padding: 1px 7px;
+    font-size: 12px;
+    color: var(--ink-2, #666);
+    border: 1px solid var(--rule-2);
+    border-radius: 9px;
+  }
+  .ident.right { border-color: var(--done, #2a7); color: var(--done, #2a7); }
+  .ident.wrong { border-color: #b55; color: #b55; }
+  .ident-src {
+    font-size: 12px;
+    color: var(--quiet);
+    text-decoration: none;
+  }
+  .ident-src:hover { color: var(--ink); }
+  .ask { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .ask-q { font-size: 13px; color: var(--quiet); }
+  .ask-opts { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+  .opt {
+    padding: 3px 10px;
+    font-size: 13px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule-2);
+    border-radius: 9px;
+    cursor: pointer;
+  }
+  .opt.picked { border-color: var(--ink); }
 </style>

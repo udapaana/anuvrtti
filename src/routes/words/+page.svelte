@@ -1,5 +1,13 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { browser } from '$app/environment';
+  /*
+    The deck stores what the reader tapped — a form and a gloss. Its GRAMMAR
+    comes from the corpus, joined at render time on the surface form, so the
+    deck never carries a copy that can go stale while the derivation pipeline
+    moves underneath it. See src/lib/usage/enrich.ts.
+  */
+  import { identify, loadIdentities, type FormIdentity } from '$lib/usage/enrich';
   import { page } from '$app/stores';
   import { replaceState } from '$app/navigation';
   import { wordBank, type WordEntry } from '$lib/stores/wordBank';
@@ -16,6 +24,24 @@
     whatever is filtered here as its range — the two range sliders the review
     page used to open with are gone.
   */
+  let identReady = $state(false);
+  onMount(() => { loadIdentities().then(() => (identReady = true)); });
+
+  /** The corpus's chips for a kept form: लिङ्ग, and the cell where it is unique. */
+  function chips(w: WordEntry): string[] {
+    if (!identReady) return [];
+    const id: FormIdentity | null = identify(w.display);
+    if (!id) return [];
+    const out: string[] = [];
+    if (id.linga) out.push(id.linga);
+    if (id.vibhaktis.length === 1 && id.cells?.length === 1) {
+      out.push(`${id.cells[0][0]} ${id.cells[0][1]}`);
+    } else if (id.vibhaktis.length === 1) {
+      out.push(id.vibhaktis[0]);
+    }
+    return out;
+  }
+
   let lang: LessonLanguage = $state('english');
   lessonLanguage.subscribe((v) => {
     lang = v;
@@ -152,6 +178,9 @@
           <span class="gloss">
             {lang === 'telugu' ? w.gloss : w.englishGloss}
             {#if w.tag}<span class="tag">{w.tag}</span>{/if}
+            {#each chips(w) as c (c)}
+              <span class="ident"><Sanskrit text={c} source="devanagari" /></span>
+            {/each}
           </span>
           <a class="lesson" href={lessonHref(w.lessonId)}>{lessonLabel(w.lessonId)}</a>
           <span class="dict">
@@ -181,6 +210,9 @@
             <span class="gloss">
               {lang === 'telugu' ? w.gloss : w.englishGloss}
               {#if w.tag}<span class="tag">{w.tag}</span>{/if}
+              {#each chips(w) as c (c)}
+                <span class="ident"><Sanskrit text={c} source="devanagari" /></span>
+              {/each}
             </span>
             <span class="lesson"></span>
             <span class="dict">
@@ -351,5 +383,18 @@
     .lesson {
       display: none;
     }
+  }
+
+  /* The corpus's own identity for the form, joined at render time — set apart
+     from the primer's legacy tag string, which it will eventually retire. */
+  .ident {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 0 5px;
+    font-size: 11px;
+    color: var(--ink-2, #666);
+    border: 1px solid var(--rule-2);
+    border-radius: 8px;
+    white-space: nowrap;
   }
 </style>
