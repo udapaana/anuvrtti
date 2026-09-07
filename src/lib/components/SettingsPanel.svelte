@@ -12,6 +12,10 @@
   import type { Script } from '$lib/transliteration';
   import type { LessonLanguage } from '$lib/stores/preferences';
   import type { CommentaryDepth } from '$lib/data/types';
+  import {
+    offlineStatus, offlineProgress, offlineSavedAt, offlineBytes,
+    downloadOffline, removeOffline,
+  } from '$lib/offline';
 
   type ScriptOption = { id: Script; glyph: string; font: string; name: string; italic?: boolean };
   type GlossOption = { id: LessonLanguage; label: string; font: string; italic?: boolean };
@@ -65,6 +69,22 @@
 
   function pickDepth(id: CommentaryDepth) {
     commentaryDepth.set(id);
+  }
+
+  const fmtBytes = (n: number) => n >= 1e6 ? `${(n / 1e6).toFixed(1)} MB` : `${Math.round(n / 1e3)} KB`;
+
+  function fmtAgo(ms: number): string {
+    const mins = Math.round((Date.now() - ms) / 60000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins} min ago`;
+    const hours = Math.round(mins / 60);
+    if (hours < 24) return `${hours} hour${hours === 1 ? '' : 's'} ago`;
+    const days = Math.round(hours / 24);
+    return `${days} day${days === 1 ? '' : 's'} ago`;
+  }
+
+  async function saveOffline() {
+    try { await downloadOffline(); } catch { /* status store already shows 'error' */ }
   }
 </script>
 
@@ -174,6 +194,41 @@
         </button>
       {/each}
     </div>
+  </section>
+
+  <div class="section-head">
+    <em class="section-name"><Sanskrit text="saṅgraha" source="iast" /></em>
+    <span class="section-mono">· offline</span>
+  </div>
+
+  <section class="block">
+    <p class="field-label">→ read without a connection</p>
+    <p class="field-help">
+      Saves the readings, their grammar notes, and the derivation engine to this
+      device — enough for the reader to work on a flight. Skips the full
+      commentary library, so it stays a small download.
+    </p>
+
+    {#if $offlineStatus === 'unsupported'}
+      <p class="offline-note">Not available in this browser.</p>
+    {:else if $offlineStatus === 'working'}
+      <p class="offline-note">
+        Saving… {$offlineProgress.done}/{$offlineProgress.total || '…'}
+      </p>
+    {:else if $offlineStatus === 'ready'}
+      <p class="offline-note">
+        Saved for offline{#if $offlineSavedAt} · {fmtAgo($offlineSavedAt)}{/if}{#if $offlineBytes} · {fmtBytes($offlineBytes)}{/if}
+      </p>
+      <div class="offline-row">
+        <button class="offline-btn" onclick={saveOffline}>refresh</button>
+        <button class="offline-btn quiet" onclick={() => removeOffline()}>remove — free up space</button>
+      </div>
+    {:else}
+      {#if $offlineStatus === 'error'}
+        <p class="offline-note error">Couldn't save everything — try again.</p>
+      {/if}
+      <button class="offline-btn" onclick={saveOffline}>save for offline</button>
+    {/if}
   </section>
   </div>
 
@@ -394,5 +449,45 @@
   .depth-card:hover .depth-label,
   .depth-card.active .depth-label {
     color: var(--ink);
+  }
+
+  .offline-note {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin: 0 0 0.9rem;
+  }
+  .offline-note.error { color: #b3462c; }
+
+  .offline-row {
+    display: flex;
+    gap: 1.5rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .offline-btn {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    background: none;
+    border: 1px solid var(--rule-2);
+    border-radius: 3px;
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .offline-btn:hover {
+    border-color: var(--ink);
+  }
+  .offline-btn.quiet {
+    border-color: transparent;
+    color: var(--quiet);
+    padding-left: 0;
+  }
+  .offline-btn.quiet:hover {
+    color: var(--ink);
+    border-color: transparent;
   }
 </style>
