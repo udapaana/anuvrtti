@@ -1,13 +1,16 @@
 <script lang="ts">
   import { parse as parseToml } from 'smol-toml';
   import { marked } from 'marked';
+  import { browser } from '$app/environment';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
+  import InlineMarkup from '$lib/components/InlineMarkup.svelte';
   import { lessonLanguage, displayScript } from '$lib/stores/preferences';
-  import { selectedTerm } from '$lib/stores/jargon';
-  import type { Script } from '$lib/transliteration';
+  import { lookupTerm } from '$lib/jargon';
+  import { transliterate, type Script } from '$lib/transliteration';
   import { wordBank } from '$lib/stores/wordBank';
   import { pathsForGrammarFocus } from '$lib/learning/grammarTags';
   import { loadPathIndex, type PathMeta } from '$lib/content';
+  import { loadIdentities, identify, type FormIdentity } from '$lib/usage/enrich';
 
   // Map English person labels to Sanskrit IAST for display + jargon + Telugu gloss
   const personMap: Record<string, { iast: string; deva: string; telugu: string; english: string }> = {
@@ -92,6 +95,39 @@
     }));
   }
 
+  /*
+    Every tag on a vocab word so far was hand-authored: someone decided
+    "बालः is e.v." and typed it. The reader shows a second row alongside the
+    authored one — everything vidyut-prakriya worked out from the FORM itself
+    (लिङ्ग, विभक्ति) — dashed to mark it as derived rather than written down,
+    same as the corpus does for every other word in the app.
+    See src/lib/usage/enrich.ts.
+
+    Bālabodhini's vocabulary lives in its own TOML, outside the annotated
+    reading corpus, so there is no `derived` object to read — but the SAME
+    form, if it also occurs somewhere in a reading, already has one sitting in
+    quiz-cells.json. This joins to it at render time, same as /words and
+    /review do; it says nothing about words that never occur in a reading.
+  */
+  type VocabTag = { text: string; deva: string; script: Script; derived?: boolean };
+
+  function vocabTagsFor(word: any, identity: FormIdentity | null | undefined): VocabTag[] {
+    const authored: VocabTag[] = word.tag
+      ? parseTag(word.tag).map((t) => ({ ...t, script: 'iast' as Script }))
+      : [];
+    if (!identity) return authored;
+    const derived: VocabTag[] = [];
+    if (identity.linga) derived.push({ text: identity.linga, deva: identity.linga, script: 'devanagari', derived: true });
+    // Only when the form settles ONE विभक्ति — the same fairness rule
+    // cellQuestion uses: a form that could be two cases doesn't get to claim
+    // either one as a fact worth showing.
+    if (identity.vibhaktis.length === 1) {
+      const v = identity.vibhaktis[0];
+      derived.push({ text: v, deva: v, script: 'devanagari', derived: true });
+    }
+    return [...authored, ...derived];
+  }
+
   // Case IAST → Devanagari jargon term + Telugu gloss
 
   const caseMap: Record<string, { iast: string; deva: string; telugu: string; english: string }> = {
@@ -171,6 +207,26 @@
   let sensitiveNoteHtml = $state('');
   // Path index — used to resolve grammar-bridge path IDs to titles
   let allPaths: PathMeta[] = $state([]);
+  // Vocab form (Telugu, as authored) → what the corpus knows about it, once
+  // resolved. Missing until then, and missing forever for a word that never
+  // occurs in a reading — same "degrades to nothing extra" rule as elsewhere.
+  let vocabIdentities: Record<string, FormIdentity | null> = $state({});
+
+  /*
+    Every जार्गन-term button on this page — vocab tags, and the पुरुष/वचन/
+    विभक्ति labels on every paradigm table — used to call the global
+    `selectedTerm` store. Nothing on this route ever mounted a listener for
+    it (only /ref/jargon does), so every one of those clicks was silently
+    inert: the store updated, nothing on screen responded. This is the
+    reader's own fix for the identical problem — page-local state and an
+    inline note, the same lookupTerm() the store's listener used — applied
+    here instead of there.
+  */
+  let openTerm = $state<string | null>(null);
+  const termInfo = $derived(openTerm ? lookupTerm(openTerm) : null);
+  function pickTerm(term: string) {
+    openTerm = openTerm === term ? null : term;
+  }
 
   fetch('/content/sensitive-notes/flag.md')
     .then(r => r.ok ? r.text() : '')
@@ -213,6 +269,40 @@
         fetchError = e.message;
         loading = false;
       });
+  });
+
+  // Resolve every vocab word's corpus identity for the lesson just loaded.
+  // Telugu is the script the TOML authors in; quiz-cells.json is keyed by
+  // (deaccented) Devanagari, so each form is transliterated before the
+  // lookup — the join key, not a rendering choice, so it never reaches the
+  // template.
+  $effect(() => {
+    if (!browser || !lessonData) return;
+    const forms = new Set<string>();
+    for (const section of lessonData.sections ?? []) {
+      if (section.type !== 'vocabulary') continue;
+      for (const group of section.items ?? []) {
+        for (const word of group.words ?? [group]) {
+          if (word.sanskrit_telugu) forms.add(word.sanskrit_telugu);
+        }
+      }
+    }
+    vocabIdentities = {};
+    if (!forms.size) return;
+    let cancelled = false;
+    (async () => {
+      await loadIdentities();
+      const next: Record<string, FormIdentity | null> = {};
+      for (const f of forms) {
+        try {
+          next[f] = identify(await transliterate(f, 'telugu', 'devanagari'));
+        } catch {
+          next[f] = null;
+        }
+      }
+      if (!cancelled) vocabIdentities = next;
+    })();
+    return () => { cancelled = true; };
   });
 
   const showTelugu = $derived(lang === 'telugu');
@@ -363,6 +453,29 @@
               <Sanskrit text="śabda" source="iast" /> · {showTelugu ? 'అర్థము' : 'meaning'}
             </span>
           </div>
+          {#snippet vocabTagRow(word: any, cls: string)}
+            {@const tags = vocabTagsFor(word, vocabIdentities[word.sanskrit_telugu])}
+            {#if tags.length}
+              <span class="vocab-tag-group {cls}">
+                {#each tags as t, ti}
+                  {#if ti > 0}<span class="vocab-tag-dot">·</span>{/if}
+                  {#if t.deva}
+                    <button
+                      class="vocab-tag"
+                      class:derived={t.derived}
+                      class:active={openTerm === t.deva}
+                      title={t.derived ? `${t.text} — worked out from the form` : undefined}
+                      onclick={() => pickTerm(t.deva)}
+                    >
+                      <Sanskrit text={t.text} source={t.script} />
+                    </button>
+                  {:else}
+                    <span class="vocab-tag-plain">{t.text}</span>
+                  {/if}
+                {/each}
+              </span>
+            {/if}
+          {/snippet}
           <div>
             {#each (section.items ?? []) as group}
               {@const words = group.words ?? [group]}
@@ -371,40 +484,14 @@
                   <div class="py-1">
                     <div class="text-sm font-medium leading-snug">
                       <Sanskrit text={word.sanskrit_telugu} source="telugu" />
-                      {#if word.tag}
-                        <span class="vocab-tag-group vocab-tag-group--desktop">
-                          {#each parseTag(word.tag) as t, ti}
-                            {#if ti > 0}<span class="vocab-tag-dot">·</span>{/if}
-                            {#if t.deva}
-                              <button class="vocab-tag" onclick={() => selectedTerm.set(t.deva)}>
-                                <Sanskrit text={t.text} source="iast" />
-                              </button>
-                            {:else}
-                              <span class="vocab-tag-plain">{t.text}</span>
-                            {/if}
-                          {/each}
-                        </span>
-                      {/if}
+                      {@render vocabTagRow(word, 'vocab-tag-group--desktop')}
                     </div>
                     {#if showTelugu && word.telugu_gloss}
                       <div class="font-telugu text-stone-400 text-xs mt-0.5">{word.telugu_gloss}</div>
                     {:else if !showTelugu && word.english}
                       <div class="text-stone-400 text-xs mt-0.5">{word.english}</div>
                     {/if}
-                    {#if word.tag}
-                      <span class="vocab-tag-group vocab-tag-group--mobile">
-                        {#each parseTag(word.tag) as t, ti}
-                          {#if ti > 0}<span class="vocab-tag-dot">·</span>{/if}
-                          {#if t.deva}
-                            <button class="vocab-tag" onclick={() => selectedTerm.set(t.deva)}>
-                              <Sanskrit text={t.text} source="iast" />
-                            </button>
-                          {:else}
-                            <span class="vocab-tag-plain">{t.text}</span>
-                          {/if}
-                        {/each}
-                      </span>
-                    {/if}
+                    {@render vocabTagRow(word, 'vocab-tag-group--mobile')}
                   </div>
                 {/each}
               </div>
@@ -507,7 +594,7 @@
                 <thead>
                   <tr class="border-b border-[var(--rule-2)]">
                     <th class="px-4 py-3 text-left font-normal w-20" rowspan="2">
-                      <button class="jargon-term" onclick={() => selectedTerm.set('पुरुष')}>
+                      <button class="jargon-term" onclick={() => pickTerm('पुरुष')}>
                         <Sanskrit text="puruṣa" source="iast" />
                         <span class="jargon-en">{showTelugu ? 'పురుష' : 'person'}</span>
                       </button>
@@ -515,7 +602,7 @@
                     {#each moods as mood}
                       {@const deva = moodDeva[mood]}
                       <th class="px-3 py-2 text-center font-normal border-l border-stone-100" colspan="2">
-                        <button class="jargon-term" onclick={() => deva && selectedTerm.set(deva)}>
+                        <button class="jargon-term" onclick={() => deva && pickTerm(deva)}>
                           <Sanskrit text={mood} source="iast" />
                           <span class="jargon-en">{showTelugu ? (moodTelugu[mood] ?? mood) : mood}</span>
                         </button>
@@ -525,13 +612,13 @@
                   <tr class="border-b border-[var(--rule-2)]">
                     {#each moods as _mood, mi}
                       <th class="px-3 py-1.5 text-left font-normal {mi > 0 ? 'border-l border-stone-100' : ''}">
-                        <button class="jargon-term text-xs" onclick={() => selectedTerm.set('एकवचन')}>
+                        <button class="jargon-term text-xs" onclick={() => pickTerm('एकवचन')}>
                           <Sanskrit text="eka°" source="iast" />
                           <span class="jargon-en">{showTelugu ? 'ఏకవచన' : 'sg'}</span>
                         </button>
                       </th>
                       <th class="px-3 py-1.5 text-left font-normal">
-                        <button class="jargon-term text-xs" onclick={() => selectedTerm.set('बहुवचन')}>
+                        <button class="jargon-term text-xs" onclick={() => pickTerm('बहुवचन')}>
                           <Sanskrit text="bahu°" source="iast" />
                           <span class="jargon-en">{showTelugu ? 'బహువచన' : 'pl'}</span>
                         </button>
@@ -546,7 +633,7 @@
                     {@const plArr = Array.isArray(row.plural_iast) ? row.plural_iast : (row.plural_iast != null ? [row.plural_iast] : [])}
                     <tr class="hover:bg-[var(--sunken)]">
                       <td class="px-4 py-3">
-                        <button class="jargon-term" onclick={() => p && selectedTerm.set(p.deva)}>
+                        <button class="jargon-term" onclick={() => p && pickTerm(p.deva)}>
                           <Sanskrit text={p?.iast ?? row.person} source="iast" />
                           <span class="jargon-en">{showTelugu ? (p?.telugu ?? row.person) : (p?.english ?? row.person)}</span>
                         </button>
@@ -572,7 +659,7 @@
                 <thead>
                   <tr class="border-b border-stone-200 bg-stone-50">
                     <th class="px-4 py-3 text-left font-normal min-w-[6rem]" rowspan="2">
-                      <button class="jargon-term" onclick={() => selectedTerm.set('विभक्ति')}>
+                      <button class="jargon-term" onclick={() => pickTerm('विभक्ति')}>
                         <Sanskrit text="vibhakti" source="iast" />
                         <span class="jargon-en">{showTelugu ? 'విభక్తి' : 'case'}</span>
                       </button>
@@ -588,21 +675,21 @@
                     {#each stems as _stem, si}
                       {@const hasDual = (section.items ?? []).some((r: any) => r.dual_iast != null)}
                       <th class="px-3 py-1.5 text-left font-normal {si > 0 ? 'border-l border-stone-100' : ''}">
-                        <button class="jargon-term text-xs" onclick={() => selectedTerm.set('एकवचन')}>
+                        <button class="jargon-term text-xs" onclick={() => pickTerm('एकवचन')}>
                           <Sanskrit text="eka°" source="iast" />
                           <span class="jargon-en">{showTelugu ? 'ఏక' : 'sg'}</span>
                         </button>
                       </th>
                       {#if hasDual}
                         <th class="px-3 py-1.5 text-left font-normal">
-                          <button class="jargon-term text-xs" onclick={() => selectedTerm.set('द्विवचन')}>
+                          <button class="jargon-term text-xs" onclick={() => pickTerm('द्विवचन')}>
                             <Sanskrit text="dvi°" source="iast" />
                             <span class="jargon-en">{showTelugu ? 'ద్వి' : 'du'}</span>
                           </button>
                         </th>
                       {/if}
                       <th class="px-3 py-1.5 text-left font-normal">
-                        <button class="jargon-term text-xs" onclick={() => selectedTerm.set('बहुवचन')}>
+                        <button class="jargon-term text-xs" onclick={() => pickTerm('बहुवचन')}>
                           <Sanskrit text="bahu°" source="iast" />
                           <span class="jargon-en">{showTelugu ? 'బహు' : 'pl'}</span>
                         </button>
@@ -619,7 +706,7 @@
                     {@const plArr = Array.isArray(row.plural_iast)   ? row.plural_iast   : (row.plural_iast   != null ? [row.plural_iast]   : [])}
                     <tr class="hover:bg-[var(--sunken)]">
                       <td class="px-4 py-3">
-                        <button class="jargon-term" onclick={() => c && selectedTerm.set(c.deva)}>
+                        <button class="jargon-term" onclick={() => c && pickTerm(c.deva)}>
                           <Sanskrit text={c?.iast ?? row.case} source="iast" />
                           <span class="jargon-en">{showTelugu ? (c?.telugu ?? row.case) : (c?.english ?? row.case)}</span>
                         </button>
@@ -648,19 +735,19 @@
               <thead>
                 <tr class="border-b border-stone-200 bg-stone-50">
                   <th class="px-4 py-3 text-left font-normal min-w-[6rem]">
-                    <button class="jargon-term" onclick={() => selectedTerm.set('विभक्ति')}>
+                    <button class="jargon-term" onclick={() => pickTerm('विभक्ति')}>
                       <Sanskrit text="vibhakti" source="iast" />
                       <span class="jargon-en">{showTelugu ? 'విభక్తి' : 'case'}</span>
                     </button>
                   </th>
                   <th class="px-4 py-3 text-left font-normal">
-                    <button class="jargon-term" onclick={() => selectedTerm.set('एकवचन')}>
+                    <button class="jargon-term" onclick={() => pickTerm('एकवचन')}>
                       <Sanskrit text="ekavacana" source="iast" />
                       <span class="jargon-en">{showTelugu ? 'ఏకవచన' : 'singular'}</span>
                     </button>
                   </th>
                   <th class="px-4 py-3 text-left font-normal">
-                    <button class="jargon-term" onclick={() => selectedTerm.set('बहुवचन')}>
+                    <button class="jargon-term" onclick={() => pickTerm('बहुवचन')}>
                       <Sanskrit text="bahuvacana" source="iast" />
                       <span class="jargon-en">{showTelugu ? 'బహువచన' : 'plural'}</span>
                     </button>
@@ -672,7 +759,7 @@
                   {@const c = caseMap[row.case]}
                   <tr class="hover:bg-[var(--sunken)]">
                     <td class="px-4 py-3">
-                      <button class="jargon-term" onclick={() => c && selectedTerm.set(c.deva)}>
+                      <button class="jargon-term" onclick={() => c && pickTerm(c.deva)}>
                         <Sanskrit text={c?.iast ?? row.case} source="iast" />
                         <span class="jargon-en">{showTelugu ? (c?.telugu ?? row.case) : (c?.english ?? row.case)}</span>
                       </button>
@@ -689,19 +776,19 @@
               <thead>
                 <tr class="border-b border-stone-200 bg-stone-50">
                   <th class="px-4 py-3 text-left font-normal w-16">
-                    <button class="jargon-term" onclick={() => selectedTerm.set('पुरुष')}>
+                    <button class="jargon-term" onclick={() => pickTerm('पुरुष')}>
                       <Sanskrit text="puruṣa" source="iast" />
                       <span class="jargon-en">{showTelugu ? 'పురుష' : 'person'}</span>
                     </button>
                   </th>
                   <th class="px-4 py-3 text-left font-normal">
-                    <button class="jargon-term" onclick={() => selectedTerm.set('एकवचन')}>
+                    <button class="jargon-term" onclick={() => pickTerm('एकवचन')}>
                       <Sanskrit text="ekavacana" source="iast" />
                       <span class="jargon-en">{showTelugu ? 'ఏకవచన' : 'singular'}</span>
                     </button>
                   </th>
                   <th class="px-4 py-3 text-left font-normal">
-                    <button class="jargon-term" onclick={() => selectedTerm.set('बहुवचन')}>
+                    <button class="jargon-term" onclick={() => pickTerm('बहुवचन')}>
                       <Sanskrit text="bahuvacana" source="iast" />
                       <span class="jargon-en">{showTelugu ? 'బహువచన' : 'plural'}</span>
                     </button>
@@ -713,7 +800,7 @@
                   {@const p = personMap[row.person]}
                   <tr class="hover:bg-[var(--sunken)]">
                     <td class="px-4 py-3">
-                      <button class="jargon-term" onclick={() => p && selectedTerm.set(p.deva)}>
+                      <button class="jargon-term" onclick={() => p && pickTerm(p.deva)}>
                         <Sanskrit text={p?.iast ?? row.person} source="iast" />
                         <span class="jargon-en">{showTelugu ? (p?.telugu ?? row.person) : (p?.english ?? row.person)}</span>
                       </button>
@@ -870,6 +957,39 @@
       </div>
     {/if}
   </div>
+
+  <!--
+    The term note. One at a time, docked to the bottom of the viewport rather
+    than inline where it was clicked — a paradigm table's पुरुष label and a
+    vocab word's tag can be anywhere on a long lesson page, and the reader's
+    equivalent panel is always visible because it lives in a fixed side rail.
+    This is the same note (lookupTerm, same InlineMarkup auto-linking so a
+    term mentioned inside the definition re-opens THIS panel), just docked
+    to the edge that exists on every screen width instead.
+  -->
+  {#if openTerm}
+    <div class="term-sheet">
+      <div class="term-sheet-head">
+        <span class="term-sheet-term">
+          <Sanskrit text={termInfo?.term ?? openTerm} source="devanagari" />
+        </span>
+        {#if termInfo?.termRoman}<span class="term-sheet-rom">{termInfo.termRoman}</span>{/if}
+        <button class="term-sheet-close" onclick={() => (openTerm = null)} aria-label="close the note">×</button>
+      </div>
+      {#if termInfo}
+        <p class="term-sheet-body">
+          <InlineMarkup text={termInfo.meaning} autoLink onpick={pickTerm} />
+        </p>
+        {#if termInfo.sutraRef}
+          <a class="term-sheet-ref" href="/ref/{termInfo.sutraRef}">
+            <Sanskrit text="सूत्र" source="devanagari" /> {termInfo.sutraRef} →
+          </a>
+        {/if}
+      {:else}
+        <p class="term-sheet-body term-sheet-empty">No glossary note yet for this term.</p>
+      {/if}
+    </div>
+  {/if}
 {/if}
 
 <style>
@@ -1131,6 +1251,14 @@
     border: none;
   }
   .vocab-tag:hover { color: var(--accent-ref); }
+  .vocab-tag.active { color: var(--ink); font-weight: 600; }
+  /* Worked out from the form, not authored — the same dashed-vs-solid
+     convention Chip.svelte and the reader's rail use for a derived tag. */
+  .vocab-tag.derived {
+    color: var(--muted);
+    border-bottom: 1px dashed var(--rule-2);
+  }
+  .vocab-tag.derived:hover { color: var(--ink-2); }
   .vocab-tag-plain {
     font-size: 0.65rem;
     line-height: 1;
@@ -1149,4 +1277,62 @@
     gap: 0.25rem 0.75rem;
     grid-template-columns: repeat(var(--vocab-cols, 1), minmax(0, 1fr));
   }
+
+  /* The term note, docked to the bottom edge — see the comment above its
+     markup for why a fixed sheet rather than an inline block. */
+  .term-sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    max-height: 40vh;
+    overflow-y: auto;
+    padding: 0.85rem 1.1rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
+    background: var(--paper);
+    border-top: 1px solid var(--rule-2);
+    box-shadow: 0 -6px 16px -8px rgba(0, 0, 0, 0.15);
+  }
+  .term-sheet-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .term-sheet-term {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .term-sheet-rom {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--quiet);
+  }
+  .term-sheet-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    line-height: 1;
+    color: var(--quiet);
+    cursor: pointer;
+    padding: 0.2rem 0.3rem;
+  }
+  .term-sheet-close:hover { color: var(--ink); }
+  .term-sheet-body {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0.5rem 0 0;
+    max-width: 40rem;
+  }
+  .term-sheet-empty { color: var(--quiet); font-style: italic; }
+  .term-sheet-ref {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent-ref);
+    text-decoration: none;
+  }
+  .term-sheet-ref:hover { text-decoration: underline; }
 </style>
