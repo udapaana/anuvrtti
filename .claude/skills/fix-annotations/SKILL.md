@@ -46,6 +46,14 @@ catches them immediately. That is the safety net that makes bulk fixing safe.
 
 ## Phase 2 — completeness (chip at the backlog)
 
+**Scope note.** This backlog is the *existing* corpus. A NEW reading (added vs
+`origin/main`) is not backlog — `check-new-readings` gates it at **100% complete
+after derivation**, so it must be finished when it lands (see `/author`). And the
+coverage ratchet (`check-coverage`) forbids any share falling: fixing here may
+only raise floors, never lower them. After a real gain, lock it with
+`bun scripts/check-coverage.ts --update` and commit `coverage-floors.json` /
+`reading-floors.json`.
+
 ```bash
 bun run complete              # per-type % and the most-needed tags
 bun run complete --worst 20   # the readings owing the most — the queue
@@ -86,5 +94,8 @@ edit is only done when the lint is clean.
 ## When done
 
 Report the before/after: untyped count, the type-completeness percentages that
-moved, and that the lint is clean and `bun run check` passes. Rebuild
-`build:quiz` if words/forms changed. Revert incidental rebuild-noise files.
+moved, and that `bun run check` passes — the real gate, now covering the lint,
+the coverage ratchet, corpus-vs-engine derivation, liṅga and the per-reading
+floors, not lint alone. Rebuild `build:quiz` if words/forms changed. If you
+raised a floor, run `bun scripts/check-coverage.ts --update` and commit the
+floor files. Revert incidental rebuild-noise files.

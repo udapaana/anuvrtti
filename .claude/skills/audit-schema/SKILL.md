@@ -70,10 +70,16 @@ When you add or fix a value set, type, or dimension:
    it is not a तिङन्त marker; पद (आत्मनेपद) is verb-exclusive, so it is. A marker
    that collides mis-types words — verify with `typeOf(new Set([...]))`.
 3. Update `docs/WORD-TYPES.md` to match — the prose and the file must agree.
-4. Rebuild and lint: `bun run build:readings && bun run lint`. A schema change can
+4. Rebuild and lint: `bun run build:quiz && bun run lint`. A schema change can
    newly flag corpus words (the tag was always there; now the schema checks it).
    Those are real findings — fix them with `/fix-annotations`.
 5. Type-check: `npx svelte-check --threshold error`.
+6. Run the full gate: `bun run check`. A schema change ripples past the lint —
+   it can move `check-usage-types` (a new type needs a populated /usage section),
+   `check-derivation` and `check-lexical` (if a value set or lexical key changed),
+   and the coverage floors. Fix real breaks; where a floor legitimately shifts,
+   `bun scripts/check-coverage.ts --update` and commit the floor files with the
+   schema change.
 
 ## Vedic / accent — the standing answer
 
@@ -91,6 +97,6 @@ until such a source exists.
 
 Report: what gap was found and against what authority (corpus unknown-tags, a
 Kāle chapter, or a dimension analysis), what changed in `schema.ts` and
-`WORD-TYPES.md`, and that the lint and type-check are clean after. If the audit
+`WORD-TYPES.md`, and that the lint, type-check and `bun run check` are clean after. If the audit
 found nothing, say the schema is confirmed complete against what you checked, and
 name what you checked.
