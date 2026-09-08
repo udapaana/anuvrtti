@@ -767,7 +767,16 @@ async function main() {
     if (!isPronoun && top.length > 1 && !(lex && top.includes(lex)) && mwTop.length === 1) mwBroke++;
 
     for (const [form, slp] of derivable) {
-      const cs = cellsWithSandhi(stemSlp, slp, stem + '|' + form).filter((c) => (linga ? c[0] === linga : true));
+      const all = cellsWithSandhi(stemSlp, slp, stem + '|' + form);
+      // The stem's gender is the majority one, but an adjective / सर्वादि takes
+      // the gender of the noun it qualifies — सर्व is masculine in सर्वे गोपाः
+      // and feminine in सर्वाः गोप्यः. A form that derives NOTHING under the
+      // locked gender is such a minority-gender occurrence; give it its own
+      // cells across all genders rather than an empty grid, so सर्वाः still
+      // determines a वचन. A true noun form always derives under its one gender,
+      // so this never fires for it.
+      const locked = linga ? all.filter((c) => c[0] === linga) : all;
+      const cs = locked.length ? locked : all;
       // The quiz cache keeps the ENGINE's view: "does this form, by its shape
       // alone, determine a case?" That is the right question for a quiz gate,
       // and narrowing it by the annotation would make the answer trivially yes.

@@ -413,6 +413,21 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
     out['अव्यय-भेद'] = avBheda;
   }
 
+  // वचन fallback from the per-form cells. The प्रयोग grid (USAGE) is built in
+  // the stem's majority gender, so a minority-gender adjective form — सर्वाः on
+  // masculine-locked सर्व — has no row there and reaches the early return below
+  // with no वचन. Its own quiz-cell does carry the cell, across all genders;
+  // narrow that by the authored विभक्ति and, if exactly one वचन survives, take
+  // it. Authored विभक्ति only — this never invents the case, just its number.
+  if (!out['वचन'] && ![...terms].some((t) => VACANA_SET.has(t))) {
+    const fc = CELLS[deaccent(String(word.form ?? ''))];
+    const authoredVib = [...terms].find((t) => VIBHAKTI.includes(t));
+    if (fc?.cells && authoredVib) {
+      const vac = new Set(fc.cells.filter((c) => c[0] === authoredVib).map((c) => c[1]));
+      if (vac.size === 1) out['वचन'] = [...vac][0];
+    }
+  }
+
   if (!cell) return Object.keys(out).length ? out : null;
 
   const [rowVal, colVal] = cell.split('|');
