@@ -46,6 +46,16 @@ the home page's doors. The threshold must not download three corpora to print
 three integers, so `bun run build:stats` reduces them at build time (it runs
 inside `npm run build`). `bun run check` fails when it goes stale.
 
+## Working on the sūtra path
+
+Read **`docs/PATH_AUTHORING.md` first**, especially the voice section — the
+existing paths anthropomorphize grammar ("meet five roots") and lean on
+decorative metaphor (verbs "grow from seeds," vowel grades as "gears") in a
+way nothing else on this site does, and there is no automated check for it.
+Edit `static/content/paths/vyakarana/<folder>/path.md` directly; ignore
+`docs/MARKUP_SUPPORT.md`, which documents a markup system from before this
+was a SvelteKit app.
+
 ## The grammar, as prose
 
 Two hand-edited books. Edit the source, never the generated file or the module:
