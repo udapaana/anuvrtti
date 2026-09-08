@@ -618,17 +618,21 @@ function main() {
       on the adjective still wins; this fills a silence, like everything else.
     */
     const LINGA_VALS = ['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग'];
-    const lingaOf = (x: any): string | undefined => {
-      const authored = (x.notes ?? []).map((n: any) => n.term).find((t: string) => LINGA_VALS.includes(t));
-      return authored ?? (x.derived ?? {})['लिङ्ग'];
-    };
+    const authoredLingaOf = (x: any): string | undefined =>
+      (x.notes ?? []).map((n: any) => n.term).find((t: string) => LINGA_VALS.includes(t));
+    const lingaOf = (x: any): string | undefined => authoredLingaOf(x) ?? (x.derived ?? {})['लिङ्ग'];
     for (const w of ws) {
-      if (lingaOf(w)) continue;
+      // An author's own लिङ्ग is final. A stem-DERIVED one is not: an adjective
+      // takes its noun's gender, so सर्व derived masculine still yields to the
+      // feminine of गोप्यः it qualifies. Override the derived value from the
+      // agreement target; where the target has no लिङ्ग, the stem value stays,
+      // so this only ever corrects a gender, never removes one.
+      if (authoredLingaOf(w)) continue;
       for (const rel of w.rel ?? []) {
         if (rel.kind !== 'विशेषण' || typeof rel.to !== 'number') continue;
         const target = ws[rel.to];
         const lg = target ? lingaOf(target) : undefined;
-        if (!lg) continue;
+        if (!lg || (w.derived ?? {})['लिङ्ग'] === lg) continue;
         (w.derived ??= {})['लिङ्ग'] = lg;
         agreedLinga++;
         break;
