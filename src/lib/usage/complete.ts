@@ -52,9 +52,10 @@ export function missingFor(type: WordType, w: AnnotatedWord, terms: Set<string>)
   for (const d of type.dimensions) {
     if (d.source === 'conditional') continue;
 
-    // A कृदन्त owes विभक्ति only if its suffix declines. क्त्वा and तुमुन् are
-    // अव्यय by 1.1.40 and take nothing further.
-    if (type.id === 'kridanta' && (d.name === 'विभक्ति' || d.name === 'वचन')
+    // A कृदन्त owes विभक्ति, वचन and लिङ्ग only if its suffix declines. क्त्वा,
+    // तुमुन्, ल्यप् and णमुल् are अव्यय by 1.1.40 and take no declension at all —
+    // an indeclinable has no gender any more than it has a case.
+    if (type.id === 'kridanta' && (d.name === 'विभक्ति' || d.name === 'वचन' || d.name === 'लिङ्ग')
         && !krtDeclines(terms)) continue;
 
     if (d.name === 'lemma') {
