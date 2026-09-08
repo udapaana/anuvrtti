@@ -182,6 +182,18 @@
     pathCategories.find((c) => c.id === selectedCategory) ?? pathCategories[0]
   );
 
+  /*
+    "N of M" next to the heading, not just in the shelf's right-hand count.
+    On a narrow phone the shelf is a single horizontally-scrolling row and
+    `.right` sits past the fold with no scroll-shadow hinting at it — so
+    "46 paths · 10 categories" can be true and still never render in view.
+    The heading is the one spot on this screen guaranteed visible; a reader
+    who only ever sees "ādhāraḥ" there has no way to learn it's 1 of 10.
+  */
+  const categoryPosition = $derived(
+    categoryItems.findIndex((c) => c.id === selectedCategory) + 1
+  );
+
   const categoryPaths = $derived(
     (byCategory[selectedCategory] ?? []).map((p) => {
       const done = (pathProgress[p.id] ?? []).length;
@@ -295,6 +307,19 @@
     <div class="status">loading <Sanskrit text="sūtrāṇi" source="iast" />…</div>
   {:else if mode === 'path'}
     <header class="head">
+      {#if categoryItems.length > 1}
+        {#if narrow}
+          <button class="cat-position" onclick={() => (spineOpen = true)}>
+            chapter {categoryPosition} of {categoryItems.length}
+            <span class="caret" aria-hidden="true">▾</span>
+          </button>
+        {:else}
+          <!-- The sidebar spine is already visible and already the way to
+               switch chapters here — this is just the same fact, so it's
+               plain text rather than a second, redundant control. -->
+          <span class="cat-position quiet">chapter {categoryPosition} of {categoryItems.length}</span>
+        {/if}
+      {/if}
       <h1><Sanskrit text={activeCategory.sanskrit} source="iast" /></h1>
       <p>Paths through the {activeCategory.english} sūtras, in the order they are taken.</p>
     </header>
@@ -416,6 +441,26 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+  }
+  .cat-position {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+  button.cat-position {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    align-self: flex-start;
+    color: var(--ink);
+  }
+  button.cat-position .caret {
+    color: var(--faint);
   }
   .head h1 {
     margin: 0;
