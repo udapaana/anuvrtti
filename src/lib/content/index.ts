@@ -9,6 +9,7 @@ import { parse as parseToml } from 'smol-toml';
 import type {
   LearningPath,
   LearningStep,
+  QuizData,
   Track,
   PathCategory,
 } from "$lib/learning/paths";
@@ -91,6 +92,42 @@ function parseFrontmatter(content: string): {
 }
 
 /**
+ * Parse a `## quiz - ...` step's body: **Question:**, a **Options:** checkbox
+ * list (`- [ ]` / `- [x]`), and **Explanation:**. Text is left with its raw
+ * markup intact — QuizStep renders question, option and explanation text
+ * through CommentaryText, the same as any other step's commentary.
+ */
+function parseQuiz(text: string): QuizData | undefined {
+  const questionMatch = text.match(/\*\*Question:\*\*\s*([^\n]+)/);
+  if (!questionMatch) return undefined;
+
+  const options: { text: string; correct?: boolean }[] = [];
+  const optionsMatch = text.match(
+    /\*\*Options:\*\*\s*\n([\s\S]*?)(?=\n\*\*Explanation:\*\*|$)/
+  );
+  let answer: string | undefined;
+  if (optionsMatch) {
+    for (const line of optionsMatch[1].split("\n")) {
+      const m = line.match(/^-\s*\[([ xX])\]\s*(.+)$/);
+      if (!m) continue;
+      const correct = m[1].toLowerCase() === "x";
+      const optText = m[2].trim();
+      options.push({ text: optText, correct: correct || undefined });
+      if (correct) answer = optText;
+    }
+  }
+
+  const explanationMatch = text.match(/\*\*Explanation:\*\*\s*([\s\S]*)$/);
+
+  return {
+    question: questionMatch[1].trim(),
+    options: options.length > 0 ? options : undefined,
+    answer,
+    explanation: explanationMatch ? explanationMatch[1].trim() : undefined,
+  };
+}
+
+/**
  * Parse a step section from markdown body
  */
 function parseStep(section: string): LearningStep | null {
@@ -165,11 +202,19 @@ function parseStep(section: string): LearningStep | null {
     .join("\n")
     .trim();
 
+  // A quiz step's body is Question/Options/Explanation, not prose commentary
+  // — QuizStep renders those fields itself, so they don't also belong in
+  // `commentary` (nothing reads it for a quiz step today, but a raw
+  // **Options:** checkbox list is not something CommentaryText should ever
+  // be asked to render as prose).
+  const quiz = finalSutraId === "quiz" ? parseQuiz(cleanCommentary) : undefined;
+
   return {
     sutraId: finalSutraId,
     title: title.trim(),
-    commentary: cleanCommentary || undefined,
+    commentary: quiz ? undefined : (cleanCommentary || undefined),
     keyTerms: keyTerms.length > 0 ? keyTerms : undefined,
+    quiz,
     lessonRef,
   };
 }
