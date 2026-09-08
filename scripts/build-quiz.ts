@@ -1420,6 +1420,19 @@ async function main() {
     const vik = VIKARANA_OF[gana];
     ganaIndex[root] = vik ? [gana, vik] : [gana];
   }
+  // The 30-root DHATU table pins the common verbs exactly; the full dhātupāṭha
+  // (dhatu-map.json, 1579 roots) carries the rest. Where every candidate for a
+  // root agrees on one गण, that गण is certain — add it, so हस्, क्रीड्, धाव् and
+  // the like get their गण/विकरण without a hand-table entry. A root whose
+  // candidates disagree on गण is left out rather than guessed.
+  for (const [root, cands] of Object.entries(DHATU_MAP)) {
+    if (ganaIndex[root]) continue;
+    const ganas = new Set(cands.map((c) => GANA_BARE[c[1]]).filter(Boolean));
+    if (ganas.size !== 1) continue;
+    const gana = [...ganas][0];
+    const vik = VIKARANA_OF[gana];
+    ganaIndex[root] = vik ? [gana, vik] : [gana];
+  }
 
   // stem → its FULL declension (all 24 cells, attested or not), so the reader's
   // rail can show the WORD'S OWN paradigm — नर's table for a नर-word — instead of
