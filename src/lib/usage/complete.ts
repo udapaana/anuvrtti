@@ -58,6 +58,11 @@ export function missingFor(type: WordType, w: AnnotatedWord, terms: Set<string>)
     if (type.id === 'kridanta' && (d.name === 'विभक्ति' || d.name === 'वचन' || d.name === 'लिङ्ग')
         && !krtDeclines(terms)) continue;
 
+    // A vocative takes no कारक. सम्बोधन is address, not a participant role —
+    // प्रथमा-in-address (2.3.47), outside the कारक system (1.4.23) — so a word in
+    // it owes no कारक any more than a subject owes a case it does not fill.
+    if (d.name === 'कारक' && terms.has('सम्बोधन')) continue;
+
     if (d.name === 'lemma') {
       if (!w.lemma) miss.push('lemma');
       continue;
