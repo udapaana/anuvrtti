@@ -574,6 +574,7 @@ function main() {
   }
 
   let agreedLinga = 0;
+  let agreedVacana = 0;
   for (const r of flat) {
     const ws = r.words ?? [];
     /*
@@ -618,23 +619,33 @@ function main() {
       on the adjective still wins; this fills a silence, like everything else.
     */
     const LINGA_VALS = ['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग'];
-    const authoredLingaOf = (x: any): string | undefined =>
-      (x.notes ?? []).map((n: any) => n.term).find((t: string) => LINGA_VALS.includes(t));
+    const VACANA_VALS = ['एकवचन', 'द्विवचन', 'बहुवचन'];
+    const authoredOf = (vals: string[]) => (x: any): string | undefined =>
+      (x.notes ?? []).map((n: any) => n.term).find((t: string) => vals.includes(t));
+    const authoredLingaOf = authoredOf(LINGA_VALS);
+    const authoredVacanaOf = authoredOf(VACANA_VALS);
     const lingaOf = (x: any): string | undefined => authoredLingaOf(x) ?? (x.derived ?? {})['लिङ्ग'];
+    const vacanaOf = (x: any): string | undefined => authoredVacanaOf(x) ?? (x.derived ?? {})['वचन'];
+    // A विशेषण agrees with its noun in लिङ्ग·विभक्ति·वचन (schema §6). विभक्ति is
+    // authored on both, so only the other two are filled here from the target.
     for (const w of ws) {
-      // An author's own लिङ्ग is final. A stem-DERIVED one is not: an adjective
-      // takes its noun's gender, so सर्व derived masculine still yields to the
-      // feminine of गोप्यः it qualifies. Override the derived value from the
-      // agreement target; where the target has no लिङ्ग, the stem value stays,
-      // so this only ever corrects a gender, never removes one.
-      if (authoredLingaOf(w)) continue;
       for (const rel of w.rel ?? []) {
         if (rel.kind !== 'विशेषण' || typeof rel.to !== 'number') continue;
         const target = ws[rel.to];
-        const lg = target ? lingaOf(target) : undefined;
-        if (!lg || (w.derived ?? {})['लिङ्ग'] === lg) continue;
-        (w.derived ??= {})['लिङ्ग'] = lg;
-        agreedLinga++;
+        if (!target) continue;
+        // लिङ्ग: an author's own is final; a stem-DERIVED one yields to the
+        // noun's — सर्व derived masculine still becomes the feminine of गोप्यः.
+        if (!authoredLingaOf(w)) {
+          const lg = lingaOf(target);
+          if (lg && (w.derived ?? {})['लिङ्ग'] !== lg) { (w.derived ??= {})['लिङ्ग'] = lg; agreedLinga++; }
+        }
+        // वचन: the adjective's number is its noun's. This settles a form the
+        // stem left ambiguous — इतरे is masculine-plural or neuter-dual until
+        // जनाः fixes it — which विभक्ति alone cannot narrow.
+        if (!authoredVacanaOf(w) && !(w.derived ?? {})['वचन']) {
+          const vc = vacanaOf(target);
+          if (vc) { (w.derived ??= {})['वचन'] = vc; agreedVacana++; }
+        }
         break;
       }
     }
@@ -724,6 +735,7 @@ function main() {
 
   fs.writeFileSync(OUTPUT, JSON.stringify({ chapters, sequence }, null, 2));
   if (agreedLinga) console.log(`  ${agreedLinga} लिङ्ग taken from the noun a विशेषण agrees with`);
+  if (agreedVacana) console.log(`  ${agreedVacana} वचन taken from the noun a विशेषण agrees with`);
   console.log(
     `Wrote ${flat.length} readings — ${chapters.length} topical chapters + sequence view → ${path.relative(process.cwd(), OUTPUT)}`
   );
