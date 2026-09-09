@@ -93,7 +93,17 @@ export const KRT_PRAYOGA: Record<string, string> = {
   */
   'क्त्वा': 'कर्तरि', 'ल्यप्': 'कर्तरि', 'तुमुन्': 'कर्तरि', 'णमुल्': 'कर्तरि',
   // 3.3.18 भावे and the section it governs — the action itself, named
-  घञ्: 'भावे', ल्युट्: 'भावे', क्तिन्: 'भावे', अच्: 'भावे'
+  घञ्: 'भावे', ल्युट्: 'भावे', क्तिन्: 'भावे', अच्: 'भावे',
+  /*
+    3.1.96 तव्यत्तव्यानीयरः, कृत्याः — the gerundives. "That which is TO BE done"
+    names the object, so a कृत्य is passive by nature: कर्तव्यम् कार्यम् deyam are
+    all कर्मणि. Unlike क्त (कर्मणि only when the root is transitive, 3.4.72,
+    which is why it is left off), these five are unconditional and derive safely.
+  */
+  तव्य: 'कर्मणि', अनीयर्: 'कर्मणि', ण्यत्: 'कर्मणि', यत्: 'कर्मणि', क्यप्: 'कर्मणि',
+  // The class itself is passive, so a word tagged only with the generic कृत्य
+  // (not yet its specific affix) still derives कर्मणि.
+  कृत्य: 'कर्मणि'
 };
 
 /**
