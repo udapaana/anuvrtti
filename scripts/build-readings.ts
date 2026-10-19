@@ -676,14 +676,43 @@ function main() {
   syllabusOrder().forEach((id, i) => chapterRank.set(id, i));
   const rank = (ch: string) => chapterRank.get(ch) ?? 500;
 
-  const sequence = [...flat].sort(
-    (a, b) =>
-      (a.segment ?? 9999) - (b.segment ?? 9999) ||
-      (a.order ?? 0) - (b.order ?? 0) ||
-      rank(a.chapter) - rank(b.chapter) ||
-      String(a.chapter).localeCompare(String(b.chapter)) ||
-      String(a.id).localeCompare(String(b.id))
+  const cmpReading = (a: any, b: any) =>
+    (a.segment ?? 9999) - (b.segment ?? 9999) ||
+    (a.order ?? 0) - (b.order ?? 0) ||
+    rank(a.chapter) - rank(b.chapter) ||
+    String(a.chapter).localeCompare(String(b.chapter)) ||
+    String(a.id).localeCompare(String(b.id));
+
+  // A READ-THROUGH chapter — one whose readings are ALL attested text — is read
+  // in its own order as a contiguous block, not shuffled verse-by-verse with six
+  // other texts by difficulty. (The graded chapters still braid by difficulty;
+  // that braid IS the grading, and it is left untouched.) Each block is anchored
+  // at its easiest reading's segment — the text becomes available where its
+  // gentlest verse would — and reads internally in (segment, id) order.
+  const byCh = new Map<string, any[]>();
+  for (const r of flat) (byCh.get(r.chapter) ?? byCh.set(r.chapter, []).get(r.chapter)!).push(r);
+  const readThrough = new Set(
+    [...byCh].filter(([, rs]) => rs.length && rs.every((r) => r.kind === 'attested')).map(([ch]) => ch)
   );
+
+  type Unit = { anchor: number; chRank: number; chapter: string; firstId: string; items: any[] };
+  const units: Unit[] = [];
+  for (const r of flat) {
+    if (readThrough.has(r.chapter)) continue; // handled as a block below
+    units.push({ anchor: r.segment ?? 9999, chRank: rank(r.chapter), chapter: r.chapter, firstId: r.id, items: [r] });
+  }
+  for (const ch of readThrough) {
+    const rs = byCh.get(ch)!.slice().sort(cmpReading);
+    units.push({ anchor: rs[0].segment ?? 9999, chRank: rank(ch), chapter: ch, firstId: rs[0].id, items: rs });
+  }
+  units.sort(
+    (a, b) =>
+      a.anchor - b.anchor ||
+      a.chRank - b.chRank ||
+      a.chapter.localeCompare(b.chapter) ||
+      a.firstId.localeCompare(b.firstId)
+  );
+  const sequence = units.flatMap((u) => u.items);
 
   // Gloss-coverage check. The reader matches each sentence token against the
   // `words` table by exact form; a miss renders the token bare with no gloss
