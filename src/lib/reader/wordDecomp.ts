@@ -70,13 +70,18 @@ function affixChainOf(notes: Note[]): string | null {
   return null;
 }
 
-/** The सन्धि split: the "A + B" the join was built from. Authored in the सन्धि
- *  note's `en` or a विग्रह `text` as "X + Y". */
+/** The सन्धि split: the "A + B (+ C …)" the join was built from. Authored in the
+ *  सन्धि note's `en` or a विग्रह `text` as "X + Y", sometimes with more members.
+ *
+ *  A join is not always binary — तत्र + ऋषिः + उवाच and तयोः + गुरुः + आच्छादयति
+ *  each fuse three words — so capture the WHOLE run of "A + B + C …" up to the
+ *  first — / ; / , / . / daṇḍa that ends the split and begins the explanation.
+ *  Matching only the first pair dropped every constituent past the second. */
 function sandhiSplitOf(notes: Note[]): string | null {
   for (const n of notes) {
     const src = `${n.en ?? ''} ${n.text ?? ''}`;
-    const m = src.match(/([^\s—:：]+)\s*\+\s*([^\s—;,.।]+)/);
-    if (m) return `${m[1]} + ${m[2]}`;
+    const m = src.match(/[^\s—:：]+(?:\s*\+\s*[^\s—;,.।]+)+/);
+    if (m) return m[0].replace(/\s*\+\s*/g, ' + ').trim();
   }
   return null;
 }

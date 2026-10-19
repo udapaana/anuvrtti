@@ -213,8 +213,25 @@ export function questionsFor(
     const cell = `${rowVal}|${vac}`;
     const ans = para[cell];
     if (ans && deaccent(ans) === deaccent(form)) {
-      const rivals = [...new Set(Object.values(para))].filter((f) => deaccent(f) !== deaccent(ans));
-      const distract = others('', rivals, 3);
+      // Distractors are drawn from the SAME वचन — other cases (or, for a verb,
+      // other पुरुष) with the number held fixed. Drawing them from the whole
+      // table gave the answer away: asked for सप्तमी बहुवचन of गृह against
+      // गृहे and गृहम्, a learner picks गृहेषु for being the one plural and has
+      // tested nothing about सप्तमी. Same-column rivals (गृहाः, गृहान्, गृहेभ्यः,
+      // …) force the choice onto the axis the prompt actually names. The rest of
+      // the table is a fallback only — a defective column (a pronoun's, a
+      // one-off) may not field two same-number neighbours, and a question that
+      // discriminates loosely still beats no question at all.
+      const notAns = (f: string) => deaccent(f) !== deaccent(ans);
+      const sameVac = [...new Set(
+        Object.entries(para).filter(([k]) => k.endsWith('|' + vac) && k !== cell).map(([, f]) => f)
+      )].filter(notAns);
+      let distract = others('', sameVac, 3);
+      if (distract.length < 3) {
+        const rest = [...new Set(Object.values(para))]
+          .filter((f) => notAns(f) && !distract.some((d) => deaccent(d) === deaccent(f)));
+        distract = [...distract, ...others('', rest, 3 - distract.length)];
+      }
       if (distract.length >= 2) {
         out.push({
           ui: 'produce',
