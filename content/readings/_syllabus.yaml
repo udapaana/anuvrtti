@@ -430,13 +430,38 @@ chapters:
       difficulty are separate axes. ex180 = segments 1-6 (all six कारकas +
       number + षष्ठी). The ledger reports tiers that have no passage.
 
-  # ── the ATTESTED track — real passages, curated (climbs the difficulty ladder)
-  - id: readings
-    title: "पाठाः — real passages (Hitopadeśa → Purāṇa → Upaniṣad → Saṃhitā)"
-    ranges: []                    # not range-defined; coverage tracked via the cite refs
+  # ── the ATTESTED track — one chapter per source text, each read in its own
+  #    order (was the single 06_readings catch-all; split for cohesion).
+  - id: hitopadesha
+    title: "हितोपदेश — Nārāyaṇa's nīti verses and frame (attested)"
+    ranges: []
     prereqs: [karaka, sup, tin, sandhi]
     status: in_progress
-    note: "kind:attested — curated real text, not manufactured. Vocab + (Vedic) accent come from the source. Sequenced by difficulty, not by sūtra range."
+    note: "kind:attested — the gentlest attested nīti; classical, vidyut-verifiable."
+  - id: manusmriti
+    title: "मनुस्मृति — Manu's dharma verses (attested)"
+    ranges: []
+    prereqs: [karaka, sup, tin, sandhi]
+    status: in_progress
+    note: "kind:attested — classical śloka, vidyut-verifiable."
+  - id: purana
+    title: "पुराणम् — Viṣṇu Purāṇa (Dhruva) & Bhāgavata (attested)"
+    ranges: []
+    prereqs: [karaka, sup, tin, sandhi, samasa]
+    status: in_progress
+    note: "kind:attested — classical narrative verse, vidyut-verifiable."
+  - id: ramayana
+    title: "रामायण — Vālmīki, Bāla-kāṇḍa selections (attested)"
+    ranges: []
+    prereqs: [karaka, sup, tin, sandhi, samasa]
+    status: in_progress
+    note: "kind:attested — classical epic verse, vidyut-verifiable."
+  - id: rigveda
+    title: "ऋग्वेद — Maṇḍala 1 hymns, accented with padapāṭha (attested, FROZEN)"
+    ranges: []
+    prereqs: [karaka, sup, tin, sandhi, samasa]
+    status: frozen
+    note: "kind:attested — the FROZEN Vedic block: accents and Vedic moods kept from the source but never machine-verified; no new Vedic readings or accent/mood annotations."
 
   - id: kathopanishad
     title: "कठोपनिषद् — a full read-through of the Kaṭha Upaniṣad, verse by verse"
