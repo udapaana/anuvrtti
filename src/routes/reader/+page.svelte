@@ -27,6 +27,7 @@
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
   import { questionsFor, drawQuestion, type Question } from '$lib/reader/quiz';
   import { decompose } from '$lib/reader/wordDecomp';
+  import { deaccent } from '$lib/usage/normalize';
   // Graded reader: a chapter spine (left), interlinear gloss reading with
   // word-identity tags (centre), and a scroll-synced sūtra derivation rail
   // (right), all on the shared Shell. Paginated (PAGE per page) so it scales
@@ -933,6 +934,25 @@
     return cards;
   });
 
+  // What the page is showing right now — the readings in the current slice, and
+  // every form printed in them. The deck tests RECALL of words scrolled past, so
+  // a word still on screen is not a fair card, and a form sitting anywhere on the
+  // page is not a fair ANSWER. `seen`/`i < here` treated "before the rail reading"
+  // as "scrolled away", but a page holds ~20 readings, so the ones just above the
+  // rail are still in view — and a form can recur in a different reading that is
+  // also on screen (the गृहेषु card drawn while गृहेषु sat in the reading above).
+  // normForm folds accent and a final anusvāra (व्यापारं ↔ व्यापारम्) so those
+  // spelling variants still count as the same visible word.
+  const normForm = (s: string) => deaccent(String(s ?? '')).replace(/ं$/, 'म्');
+  const visibleIds = $derived(new Set(slice.map((r) => r.id)));
+  const visibleForms = $derived.by(() => {
+    const s = new Set<string>();
+    for (const r of slice)
+      for (const w of r.words ?? [])
+        if (w.form) s.add(normForm(w.form));
+    return s;
+  });
+
   // Draw a random card from the seen deck. It sets `deckQuiz` ONLY — the
   // selection stays where the reader put it, so the line being read keeps its
   // explanation while the question sits underneath.
@@ -955,25 +975,43 @@
     const deck = deckCards.filter((c) => key(c) !== here && key(c) !== last);
     if (!deck.length) return;
 
-    const again = deck.filter((c) => missed.has(key(c)));
-    const fresh = deck.filter((c) => !checked.has(key(c)));
+    // Prefer a card whose reading is OFF the current page: its line, gloss and
+    // neighbours are not in view, so the question is recall. Fall back to the
+    // whole deck only at the head of the corpus, where everything seen is still
+    // on screen and a faintly-visible card beats no card at all.
+    const offscreen = deck.filter((c) => !visibleIds.has(c.id));
+    const base = offscreen.length ? offscreen : deck;
+
+    const again = base.filter((c) => missed.has(key(c)));
+    const fresh = base.filter((c) => !checked.has(key(c)));
     // Missed cards get priority, but not exclusively — drilling only failures
     // stops new material ever coming round.
-    const pool = again.length && (!fresh.length || Math.random() < 0.4) ? again : fresh.length ? fresh : deck;
+    const pool = again.length && (!fresh.length || Math.random() < 0.4) ? again : fresh.length ? fresh : base;
 
     // Try cards until one yields a question. A word with no annotation at all
     // produces none, and silently drawing nothing would read as a broken button.
     const order = shuffleCards(pool);
+    // A produce question whose answer FORM is printed on the page is answerable
+    // by looking up, not from memory — keep one aside and use it only if no
+    // unleaked question turns up, so the button never silently does nothing.
+    let leaked: { id: string; wi: number; q: Question } | null = null;
     for (const card of order) {
       const r = list.find((x) => x.id === card.id);
       const w = r?.words?.[card.wi];
       if (!w) continue;
       const q = drawQuestion(questionsFor(w, card.wi, r, usage, glossPool));
-      if (q) {
-        deckQuiz = { ...card, q };
-        pick = null;
-        return;
+      if (!q) continue;
+      if (q.ui === 'produce' && q.ans && visibleForms.has(normForm(q.ans))) {
+        leaked ??= { ...card, q };
+        continue;
       }
+      deckQuiz = { ...card, q };
+      pick = null;
+      return;
+    }
+    if (leaked) {
+      deckQuiz = leaked;
+      pick = null;
     }
   }
 
