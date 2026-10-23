@@ -107,6 +107,34 @@ export const KRT_PRAYOGA: Record<string, string> = {
 };
 
 /**
+ * लिङ्ग of an action noun, from its कृत् affix.
+ *
+ * A participle takes the gender of what it describes, so most कृत् carry none
+ * of their own. The भाव nouns are the exception: the affix fixes the gender.
+ * 3.3.94 स्त्रियां क्तिन् teaches क्तिन् *in the feminine*; 3.3.115 ल्युट् च sits
+ * under 3.3.114 नपुंसके भावे क्तः, so ल्युट् nouns are neuter; and the
+ * लिङ्गानुशासन's घञबन्तः puts घञ् nouns in the masculine. गमनम्, कृतिः, पाकः —
+ * the gender was never in doubt, only unrecorded. अच् is left out: it also
+ * makes agent adjectives (पचः "cooking"), which agree with their noun.
+ */
+export const KRT_LINGA: Record<string, string> = {
+  ल्युट्: 'नपुंसकलिङ्ग', क्तिन्: 'स्त्रीलिङ्ग', घञ्: 'पुंलिङ्ग'
+};
+
+/**
+ * लिङ्ग of an abstract noun, from its तद्धित affix.
+ *
+ * 5.1.119 तस्य भावस्त्वतलौ teaches त्व and तल् together, and the
+ * लिङ्गानुशासन files them apart: त्वान्तं नपुंसकम्, तलन्तं स्त्रियाम् —
+ * शूरत्वम्, शूरता. ष्यञ् (5.1.123, सौन्दर्यम्) is neuter and इमनिच् (5.1.122,
+ * महिमा) masculine. Like KRT_LINGA, only affixes whose output is a NOUN of
+ * fixed gender; मतुप् and the rest make adjectives and agree.
+ */
+export const TADDHITA_LINGA: Record<string, string> = {
+  त्व: 'नपुंसकलिङ्ग', तल्: 'स्त्रीलिङ्ग', ष्यञ्: 'नपुंसकलिङ्ग', इमनिच्: 'पुंलिङ्ग'
+};
+
+/**
  * तद्धित अर्थ, from the तद्धित affix.
  *
  * Each affix in 4.1–5.4 is taught under a heading that IS its sense: इञ् under

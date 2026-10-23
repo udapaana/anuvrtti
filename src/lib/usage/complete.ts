@@ -11,7 +11,7 @@
  * A rule with three copies has three behaviours. So it lives here, and every
  * caller asks the same question of the same function.
  */
-import { krtDeclines, type WordType } from './schema';
+import { krtDeclines, SENSE_ROLE, type WordType } from './schema';
 
 export type AnnotatedWord = {
   form: string;
@@ -62,6 +62,14 @@ export function missingFor(type: WordType, w: AnnotatedWord, terms: Set<string>)
     // प्रथमा-in-address (2.3.47), outside the कारक system (1.4.23) — so a word in
     // it owes no कारक any more than a subject owes a case it does not fill.
     if (d.name === 'कारक' && terms.has('सम्बोधन')) continue;
+
+    // Nor does a word whose case comes from MEANING. हेतु (2.3.23), सहार्थ
+    // (2.3.19), निर्धारण (2.3.41), सति सप्तमी (2.3.37) and the rest are
+    // उपपद/अर्थ cases, outside the कारक system — पुत्रेण सह is तृतीया because of
+    // सह, not because पुत्र plays a part in the action. The build already refuses
+    // to infer a कारक for these (build-readings, VIB_ROLE); demanding one here
+    // asked for a role the grammar says the word does not have.
+    if (d.name === 'कारक' && SENSE_ROLE.some((s) => terms.has(s))) continue;
 
     if (d.name === 'lemma') {
       if (!w.lemma) miss.push('lemma');

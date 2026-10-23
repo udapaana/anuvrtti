@@ -25,7 +25,8 @@
  * waiting to be useful, not an error.
  */
 import {
-  SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA
+  SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA,
+  KRT_LINGA, TADDHITA_LINGA
 } from '../src/lib/usage/lexical';
 import { WORD_TYPES } from '../src/lib/usage/schema';
 
@@ -44,7 +45,9 @@ const TABLES: Array<{
   { label: 'SANKHYA_BHEDA', table: SANKHYA_BHEDA, valuesOf: ['sankhya', 'संख्या-भेद'] },
   { label: 'KRT_PRAYOGA', table: KRT_PRAYOGA, valuesOf: ['kridanta', 'प्रयोग'], keysOf: ['kridanta', 'कृत्'] },
   { label: 'TADDHITA_ARTHA', table: TADDHITA_ARTHA, valuesOf: ['taddhita', 'अर्थ'], keysOf: ['taddhita', 'तद्धित'] },
-  { label: 'AVYAYA_BHEDA', table: AVYAYA_BHEDA, valuesOf: ['avyaya', 'अव्यय-भेद'] }
+  { label: 'AVYAYA_BHEDA', table: AVYAYA_BHEDA, valuesOf: ['avyaya', 'अव्यय-भेद'] },
+  { label: 'KRT_LINGA', table: KRT_LINGA, valuesOf: ['kridanta', 'लिङ्ग'], keysOf: ['kridanta', 'कृत्'] },
+  { label: 'TADDHITA_LINGA', table: TADDHITA_LINGA, valuesOf: ['taddhita', 'लिङ्ग'], keysOf: ['taddhita', 'तद्धित'] }
 ];
 
 const bad: string[] = [];

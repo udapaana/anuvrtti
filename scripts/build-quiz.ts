@@ -410,6 +410,17 @@ async function main() {
 
   /** Per-stem results the प्रयोग index reuses rather than recomputing. */
   const stemInfo = new Map<string, { stemSlp: string; linga: string | null; isPronoun: boolean; isSarvadi: boolean }>();
+  /*
+    A gender the FORM settles, for stems whose own gender is not settled.
+
+    An adjective has no gender of its own — द्वितीय is masculine in द्वितीयः and
+    feminine in द्वितीया — so its stem-level vote ties and the word went without.
+    But द्वितीयः derives only as a masculine: that is a fact about the form, not a
+    vote. Where every cell this form can fill (narrowed by the विभक्ति/वचन the
+    corpus wrote on it) is one gender, that gender is the occurrence's. The same
+    shape krtLinga already uses for participles, applied to every nominal.
+  */
+  const formLinga: Record<string, string> = {};
 
   // ── what the corpus itself says a form is ──────────────────────────────
   //
@@ -768,6 +779,11 @@ async function main() {
 
     for (const [form, slp] of derivable) {
       const all = cellsWithSandhi(stemSlp, slp, stem + '|' + form);
+      if (!linga && !isPronoun) {
+        const { cells: fit } = resolveCells(stem, form, all);
+        const lg = new Set(fit.map((c) => c[0]));
+        if (lg.size === 1) formLinga[stem + '|' + form] = LINGA_DEV[[...lg][0]];
+      }
       // The stem's gender is the majority one, but an adjective / सर्वादि takes
       // the gender of the noun it qualifies — सर्व is masculine in सर्वे गोपाः
       // and feminine in सर्वाः गोप्यः. A form that derives NOTHING under the
@@ -1819,6 +1835,7 @@ async function main() {
     // Per-OCCURRENCE gender, for participles. Keyed (lemma|form) rather than by
     // stem, because a participle agrees and so has no one gender of its own.
     krtLingas: krtLinga,
+    formLingas: formLinga,
     // (lemma|form) → कृत्, recovered by derivation where the author wrote none.
     krts: krtIndex,
     ganas: ganaIndex,

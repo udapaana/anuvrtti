@@ -14,9 +14,10 @@ import * as path from 'path';
 import { parse as parseYaml } from 'yaml';
 import { parseGrid, isRectangular } from '../src/lib/reader/paradigm';
 import { deaccent } from '../src/lib/usage/normalize';
-import { WORD_TYPES, KARAKA, SENSE_ROLE } from '../src/lib/usage/schema';
+import { WORD_TYPES, KARAKA, SENSE_ROLE, typeOf } from '../src/lib/usage/schema';
 import {
-  SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA
+  SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA,
+  KRT_LINGA, TADDHITA_LINGA
 } from '../src/lib/usage/lexical';
 
 const READINGS_DIR = path.join(process.cwd(), 'content/readings');
@@ -184,6 +185,7 @@ let LINGAS: Record<string, string> = {};
   and matching the attested form — is what carries it.
 */
 let KRT_LINGAS: Record<string, string> = {};
+let FORM_LINGAS: Record<string, string> = {};
 /*
   The कृत् affix, where the author wrote none.
 
@@ -206,6 +208,7 @@ let PARADIGM: Record<string, Record<string, string>> = {};
     PADAS = u.padas ?? {};
     LINGAS = u.lingas ?? {};
     KRT_LINGAS = u.krtLingas ?? {};
+    FORM_LINGAS = u.formLingas ?? {};
     KRTS = u.krts ?? {};
     GANAS = u.ganas ?? {};
     const sub = (u.sections ?? []).find((s: any) => s.kind === 'subanta');
@@ -260,7 +263,18 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
   // the corpus never disambiguates simply has none.
   // The occurrence's own gender first: for a participle it is the only true
   // answer, and LINGAS holds a stem-level gender that a root simply has not got.
-  const linga = KRT_LINGAS[key] ?? LINGAS[deaccent(word.lemma)];
+  // …and, where the stem has no gender of its own (an adjective), the one the
+  // form itself settles — द्वितीयः can only be masculine.
+  // An action noun's gender comes from its affix (lexical.ts KRT_LINGA /
+  // TADDHITA_LINGA), ahead of any stem-level guess: गमनम् is neuter because it
+  // is ल्युट्, whatever MW's union over गमन's senses says.
+  const affixLinga = (() => {
+    const kd = [...terms, KRTS[key] ?? ''].find((t) => KRT_LINGA[t]);
+    if (kd) return KRT_LINGA[kd];
+    const td = [...terms].find((t) => TADDHITA_LINGA[t]);
+    return td ? TADDHITA_LINGA[td] : undefined;
+  })();
+  const linga = affixLinga ?? KRT_LINGAS[key] ?? LINGAS[deaccent(word.lemma)] ?? FORM_LINGAS[key];
   if (linga && ![...terms].some((t) => LINGA_SET.has(t))) out['लिङ्ग'] = linga;
 
   // गण and विकरण are fixed properties of the root, keyed on the lemma. A verb
@@ -575,6 +589,8 @@ function main() {
 
   let agreedLinga = 0;
   let agreedVacana = 0;
+  let agreedKaraka = 0;
+  let agreedSubject = 0;
   for (const r of flat) {
     const ws = r.words ?? [];
     /*
@@ -626,6 +642,140 @@ function main() {
     const authoredVacanaOf = authoredOf(VACANA_VALS);
     const lingaOf = (x: any): string | undefined => authoredLingaOf(x) ?? (x.derived ?? {})['लिङ्ग'];
     const vacanaOf = (x: any): string | undefined => authoredVacanaOf(x) ?? (x.derived ?? {})['वचन'];
+    const valOf = (vals: readonly string[], key: string) => (x: any): string | undefined =>
+      (x.notes ?? []).map((n: any) => n.term).find((t: string) => vals.includes(t)) ?? (x.derived ?? {})[key];
+    const karakaOf = valOf(KARAKA, 'कारक');
+
+    /*
+      The प्रथमा word's कारक, from the verb it agrees with.
+
+      derivedFeatures reads कारक back from five cases and stops at प्रथमा, because
+      2.3.1 अनभिहिते makes the nominative mark whatever the VERB has not already
+      expressed — the कर्तृ in कर्तरि, the कर्मन् in कर्मणि — and a single word
+      cannot see the verb. A reading can. In one clause, the प्रथमा word that
+      agrees with the finite verb in पुरुष and वचन is the participant its ending
+      expresses: रामः in रामः वनं गच्छति is the कर्तृ, ओदनः in ओदनः पच्यते the
+      कर्मन्. This was the corpus's largest gap — 490 of 605 words owing a कारक
+      were nominatives — and every one of them was sitting next to its verb.
+
+      Conservative by construction; a clause is skipped, not guessed at, when:
+        - it holds no finite verb, or verbs that disagree in प्रयोग·पुरुष·वचन;
+        - the verb is भावे (no participant is expressed, so no nominative is);
+        - more than one nominative agrees — सः बालः अस्ति has a subject AND a
+          predicate, and which is which is meaning, not morphology;
+        - the subject is coordinated (रामः लक्ष्मणः च गच्छतः — two singulars, a
+          dual verb), which no single word matches.
+      Clauses are cut at the daṇḍa, over the sentence's TOKENS rather than over
+      words[]: early graded readings list each distinct form once, so words[] is
+      a lexicon, not the token stream — ex180's one बालः entry stands for four
+      occurrences. A word gets a कारक only when EVERY occurrence of it settles
+      the same one; its single annotation cannot be both the subject of
+      बालः फलम् खादति and the predicate of तस्य पुत्रः बालः.
+    */
+    {
+      const PUR_VALS = ['प्रथमपुरुष', 'मध्यमपुरुष', 'उत्तमपुरुष'];
+      const purushaOf = valOf(PUR_VALS, 'पुरुष');
+      const prayogaOf = valOf(['कर्तरि', 'कर्मणि', 'भावे'], 'प्रयोग');
+      const termsOf = (x: any) => new Set<string>([
+        ...(x.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term),
+        ...(Object.values(x.derived ?? {}) as string[])
+      ]);
+      const ownsKaraka = (x: any) => {
+        const t = typeOf(termsOf(x));
+        return !!t?.dimensions.some((d) => d.name === 'कारक');
+      };
+      const norm = (f: string) => deaccent(f).replace(/ं$/, 'म्');
+      const VIBHAKTI_VALS = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
+      const byForm = new Map<string, number>();
+      ws.forEach((w: any, i: number) => {
+        const f = String(w.form ?? '');
+        if (!f) return;
+        if (!byForm.has(f)) byForm.set(f, i);
+        if (!byForm.has(norm(f))) byForm.set(norm(f), i);
+      });
+      // clause → word indices, in token order (a word may recur within a clause)
+      const clauses: number[][] = [[]];
+      // A clause with a token nobody annotated is not fully known — the missing
+      // word may be the subject (ex165's यः … सः are unannotated, which left
+      // the predicate सोमसुत् as the "only" nominative). Such clauses are skipped.
+      const partial = new Set<number>();
+      for (const raw of String(r.sentence ?? '').split(/\s+/)) {
+        const tok = raw.replace(/^[“”"'‘’(—–-]+|[,;:!?“”"'‘’)।॥—–-]+$/g, '');
+        const wi = tok ? byForm.get(tok) ?? byForm.get(norm(tok)) : undefined;
+        if (wi !== undefined) clauses[clauses.length - 1].push(wi);
+        else if (tok && /[\u0900-\u097F]/.test(tok)) partial.add(clauses.length - 1);
+        if (/[।॥]/.test(raw)) clauses.push([]);
+      }
+      const isNom = (x: any) => {
+        const t = termsOf(x);
+        return t.has('प्रथमा')
+          && ![...t].some((y) => SENSE_ROLE.includes(y))
+          && !(x.rel ?? []).some((e: any) => e.kind === 'विशेषण')
+          && ownsKaraka(x);
+      };
+      // wi → the role each of its nominative occurrences settles (null = none)
+      const votes = new Map<number, (string | null)[]>();
+      for (const [ci, idxs] of clauses.entries()) {
+        const noms = [...new Set(idxs.filter((i) => isNom(ws[i])))];
+        if (partial.has(ci)) {
+          for (const i of noms) (votes.get(i) ?? votes.set(i, []).get(i)!).push(null);
+          continue;
+        }
+        let role: string | null = null, winner = -1;
+        const verbs = [...new Set(idxs.filter((i) => typeOf(termsOf(ws[i]))?.id === 'tinanta'))];
+        const sig = new Set(verbs.map((i) => `${prayogaOf(ws[i])}|${purushaOf(ws[i])}|${vacanaOf(ws[i])}`));
+        if (verbs.length && sig.size === 1) {
+          const v = ws[verbs[0]];
+          const pur = purushaOf(v), vac = vacanaOf(v), pr = prayogaOf(v);
+          const r0 = pr === 'कर्मणि' ? 'कर्मन्' : pr === 'कर्तरि' ? 'कर्तृ' : null;
+          if (pur && vac && r0) {
+            /*
+              Every agreeing nominative counts, INCLUDING ones already carrying a
+              कारक. Filtering those first made a predicate the "only" candidate
+              whenever the author had tagged the subject: in राजा शान्तः अभवत्
+              राजा is कर्तृ by hand, and शान्तः — the predicate — was promoted.
+            */
+            const agrees = (i: number) => {
+              const lem = deaccent(String(ws[i].lemma ?? ''));
+              const xp = lem === 'अस्मद्' ? 'उत्तमपुरुष' : lem === 'युष्मद्' ? 'मध्यमपुरुष' : 'प्रथमपुरुष';
+              const vc = vacanaOf(ws[i]);
+              return xp === pur && (!vc || vc === vac);
+            };
+            /*
+              A nominal whose case nobody recorded may be the subject too. In
+              भ्राता श्रान्तः आसीत् भ्राता carries no विभक्ति, so it was invisible,
+              and श्रान्तः — the predicate — won as the "only" nominative. Such a
+              word cannot WIN (its case is unknown), but it can veto.
+            */
+            const unknownCase = [...new Set(idxs)].filter((i) => {
+              if (noms.includes(i)) return false;
+              const x = ws[i];
+              const t = termsOf(x);
+              const id = typeOf(t)?.id;
+              if (id === 'tinanta' || id === 'avyaya' || !x.lemma) return false;
+              if ((x.rel ?? []).some((e: any) => e.kind === 'विशेषण')) return false;
+              // A neuter's द्वितीया is its प्रथमा too; the de-duplicated word list
+              // gives a form ONE tag, so जलम् tagged द्वितीया in one clause is
+              // still the subject of जलम् आसीत् in another.
+              if (t.has('द्वितीया') && lingaOf(x) === 'नपुंसकलिङ्ग') return true;
+              return !VIBHAKTI_VALS.some((v) => t.has(v));
+            });
+            const agree = [...noms, ...unknownCase].filter(agrees);
+            if (agree.length === 1 && noms.includes(agree[0]) && vacanaOf(ws[agree[0]]) === vac) {
+              role = r0; winner = agree[0];
+            }
+          }
+        }
+        for (const i of noms) (votes.get(i) ?? votes.set(i, []).get(i)!).push(i === winner ? role : null);
+      }
+      for (const [wi, vs] of votes) {
+        const w = ws[wi];
+        if (karakaOf(w) || !vs.length || vs.some((v) => v === null)) continue;
+        if (new Set(vs).size !== 1) continue;
+        (w.derived ??= {})['कारक'] = vs[0]!;
+        agreedSubject++;
+      }
+    }
     // A विशेषण agrees with its noun in लिङ्ग·विभक्ति·वचन (schema §6). विभक्ति is
     // authored on both, so only the other two are filled here from the target.
     for (const w of ws) {
@@ -641,10 +791,18 @@ function main() {
         }
         // वचन: the adjective's number is its noun's. This settles a form the
         // stem left ambiguous — इतरे is masculine-plural or neuter-dual until
-        // जनाः fixes it — which विभक्ति alone cannot narrow.
-        if (!authoredVacanaOf(w) && !(w.derived ?? {})['वचन']) {
+        // जनाः fixes it — which विभक्ति alone cannot narrow. Like लिङ्ग, a
+        // DERIVED value yields to the noun's: द्वे was derived बहुवचन while its
+        // authored edge pointed at the dual विद्ये. Only the author's own is final.
+        if (!authoredVacanaOf(w)) {
           const vc = vacanaOf(target);
-          if (vc) { (w.derived ??= {})['वचन'] = vc; agreedVacana++; }
+          if (vc && (w.derived ?? {})['वचन'] !== vc) { (w.derived ??= {})['वचन'] = vc; agreedVacana++; }
+        }
+        // कारक: an adjective plays its noun's part — बुद्धिमान् in बुद्धिमान्
+        // रामः गच्छति is the कर्तृ because रामः is. Only into a silence.
+        if (!karakaOf(w)) {
+          const k = karakaOf(target);
+          if (k) { (w.derived ??= {})['कारक'] = k; agreedKaraka++; }
         }
         break;
       }
@@ -765,6 +923,8 @@ function main() {
   fs.writeFileSync(OUTPUT, JSON.stringify({ chapters, sequence }, null, 2));
   if (agreedLinga) console.log(`  ${agreedLinga} लिङ्ग taken from the noun a विशेषण agrees with`);
   if (agreedVacana) console.log(`  ${agreedVacana} वचन taken from the noun a विशेषण agrees with`);
+  if (agreedSubject) console.log(`  ${agreedSubject} प्रथमा कारक taken from the verb the word agrees with`);
+  if (agreedKaraka) console.log(`  ${agreedKaraka} कारक taken from the noun a विशेषण agrees with`);
   console.log(
     `Wrote ${flat.length} readings — ${chapters.length} topical chapters + sequence view → ${path.relative(process.cwd(), OUTPUT)}`
   );
