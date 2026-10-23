@@ -119,6 +119,18 @@ mapped to the wrong sūtras; 8.3.23 had 32 matching words and 3 citations. The
 ledger has been wrong in the same direction repeatedly — undercounting what the
 corpus already teaches.
 
+That check is now mechanical. `bun run exhibits` re-derives every parsed word
+with vidyut and records which sūtras its prakriyā runs, and `bun run ledger`
+then files each under-taught rule three ways:
+
+- **already shown** — exhibited in ≥ 8 readings, cited in fewer. Annotate: add
+  the `cite` (or the term that implies it) to words that already exhibit it, at
+  the tiers where it should recur. Do not write a new reading for these.
+- **the authoring queue** — exhibited in fewer than 8. Write.
+- **not traced** — definitions (saṃjñā, paribhāṣā), and कृत्/तद्धित/समास or
+  sentence-sandhi formation, which the exhibit pass does not re-derive yet.
+  Judged by citation alone, as before.
+
 ## Introducing a word costs less once its cell is taught
 
 A cell is a `(stem-class × विभक्ति × वचन)` slot — आकारान्त feminine in

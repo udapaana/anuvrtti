@@ -151,20 +151,49 @@ function main() {
   console.log(`    touched    ${String(touched.length).padStart(3)} / ${lf.length}   ${pct(touched.length, lf.length)}`);
   console.log(`    untouched  ${String(untouched.length).padStart(3)} / ${lf.length}\n`);
 
-  if (untaught.length) {
-    console.log(`  ── untaught load-bearing — the authoring queue ──`);
-    for (const r of untaught) console.log(`    ${r.cite.padEnd(9)} ${r.gloss ?? ''}`);
+  /*
+    What the corpus SHOWS, beside what it cites (scripts/build-exhibits.ts).
+
+    An encounter count cannot tell a rule the corpus never shows from one it
+    shows in every other sentence and never annotated, and the two want opposite
+    work: a reading to write, or tags on words already written. Each under-taught
+    rule is filed by which it is. A rule that appears in no traced prakriyā is
+    either a definition (a saṃjñā, a paribhāṣā — vidyut applies these without
+    logging them) or a कृत्/तद्धित/समास/sentence-sandhi rule, which the exhibit
+    pass does not yet re-derive; for those the citation count is the only
+    measure there is.
+  */
+  const EXHIBITS = path.join(process.cwd(), 'static/data/rule-exhibits.json');
+  const exhibits: Record<string, string[]> | null = fs.existsSync(EXHIBITS)
+    ? JSON.parse(fs.readFileSync(EXHIBITS, 'utf-8')) : null;
+  const shown = (c: string) => exhibits?.[c]?.length ?? 0;
+  const owed = [...untaught, ...partial];
+  const annotate = exhibits ? owed.filter((r) => shown(r.cite) >= r.goal) : [];
+  const write = exhibits ? owed.filter((r) => shown(r.cite) > 0 && shown(r.cite) < r.goal) : owed;
+  const define = exhibits ? owed.filter((r) => shown(r.cite) === 0) : [];
+  const line = (r: any) => {
+    const t = viaTerm.get(r.cite) ?? 0;
+    const ex = exhibits ? `  shown in ${shown(r.cite)}` : '';
+    return `    ${r.cite.padEnd(9)} ${bar(r.n, r.goal).padEnd(12)} ${r.n}/${r.goal}${t ? ` (${t} by term)` : ''}${ex}  ${r.gloss ?? ''}`;
+  };
+
+  if (!exhibits) {
+    console.log(`  (run bun scripts/build-exhibits.ts to split this queue into annotate vs write)\n`);
+  }
+  if (annotate.length) {
+    console.log(`  ── under-taught but already SHOWN — annotate, do not write ──`);
+    console.log(`     (the corpus exhibits each in ≥ target readings; tag or cite the words)`);
+    for (const r of annotate.sort((a, b) => shown(b.cite) - shown(a.cite))) console.log(line(r));
     console.log();
   }
-
-  if (partial.length) {
-    console.log(`  ── partial load-bearing — need recurrence, not re-introduction ──`);
-    for (const r of partial) {
-      const t = viaTerm.get(r.cite) ?? 0;
-      console.log(
-        `    ${r.cite.padEnd(9)} ${bar(r.n, r.goal).padEnd(12)} ${r.n}/${r.goal}${t ? ` (${t} by term)` : ''}  ${r.gloss ?? ''}`
-      );
-    }
+  if (write.length) {
+    console.log(`  ── under-taught and under-shown — the authoring queue ──`);
+    for (const r of write) console.log(line(r));
+    console.log();
+  }
+  if (define.length) {
+    console.log(`  ── not traced (definitions; कृत्/तद्धित/समास/sandhi formation) — judged by citation alone ──`);
+    for (const r of define) console.log(line(r));
     console.log();
   }
 

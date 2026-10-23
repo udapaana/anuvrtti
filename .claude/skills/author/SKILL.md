@@ -67,8 +67,10 @@ reference-by-example goal, `bun run exemplars` instead ranks the grammar cells
 that have no clean attested example yet — the gap nothing else implies. The proven pattern
 (AUTHORING.md): a **सङ्ग्रह passage** (`12_sangraha/`) lifts a cluster to 7/8,
 then a **story** (`09_katha/`) crosses each once more. Before authoring
-against a low number, **check it is not a tagging gap** — the ledger has
-undercounted what the corpus teaches; grep the corpus and run `bun run complete`.
+against a low number, **check it is not a tagging gap**: run `bun run exhibits`
+first, and the ledger splits its queue into rules the corpus *already shows*
+(annotate those — cite them on words that exhibit them) and rules it does not
+(write those). Most low numbers have been the first kind.
 
 ### 2. Chapter and tier
 
