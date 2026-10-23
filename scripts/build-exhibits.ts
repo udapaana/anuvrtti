@@ -28,6 +28,9 @@ const CORPUS = path.join(process.cwd(), 'static/data/readings.json');
 const DHATU_MAP = path.join(process.cwd(), 'static/data/dhatu-map.json');
 const WASM_DIR = path.join(process.cwd(), 'static/wasm/vidyut-prakriya/');
 const OUT = path.join(process.cwd(), 'static/data/rule-exhibits.json');
+// rule → [reading id, word index, form]: which WORD shows it, for an author
+// (or scripts/cite-exhibited.ts) to cite on.
+const OUT_WORDS = path.join(process.cwd(), 'static/data/rule-exhibit-words.json');
 
 const VIB: Record<string, string> = {
   'प्रथमा': 'Prathama', 'द्वितीया': 'Dvitiya', 'तृतीया': 'Trtiya', 'चतुर्थी': 'Caturthi',
@@ -83,6 +86,7 @@ async function main() {
   const v = raw.Vidyut.init();
 
   const byRule = new Map<string, Set<string>>();
+  const byRuleWords = new Map<string, [string, number, string][]>();
   let words = 0, derived = 0;
   const memo = new Map<string, string[] | null>();
 
@@ -92,7 +96,7 @@ async function main() {
   };
 
   for (const r of corpus) {
-    for (const w of r.words ?? []) {
+    for (const [wi, w] of (r.words ?? []).entries()) {
       if (!w.lemma || !w.form) continue;
       const t = new Set<string>([
         ...(w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term),
@@ -149,13 +153,17 @@ async function main() {
       }
       if (!rules) continue;
       derived++;
-      for (const c of rules) (byRule.get(c) ?? byRule.set(c, new Set()).get(c)!).add(r.id);
+      for (const c of rules) {
+        (byRule.get(c) ?? byRule.set(c, new Set()).get(c)!).add(r.id);
+        (byRuleWords.get(c) ?? byRuleWords.set(c, []).get(c)!).push([r.id, wi, String(w.form)]);
+      }
     }
   }
 
   const out: Record<string, string[]> = {};
   for (const [c, ids] of [...byRule].sort((a, b) => b[1].size - a[1].size)) out[c] = [...ids];
   fs.writeFileSync(OUT, JSON.stringify(out));
+  fs.writeFileSync(OUT_WORDS, JSON.stringify(Object.fromEntries(byRuleWords)));
   console.log(
     `Wrote ${byRule.size} sūtras exhibited across the corpus → ${path.relative(process.cwd(), OUT)} ` +
     `(${derived} of ${words} lemmatized words re-derived to their attested form)`

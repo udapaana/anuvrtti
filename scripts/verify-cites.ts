@@ -179,7 +179,12 @@ async function main() {
     for (const word of r.words ?? []) {
       const cites = (word.notes ?? []).filter((n: any) => n.cite).map((n: any) => n.cite);
       if (!cites.length) continue;
-      const terms = (word.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term);
+      // Derived values too: a word whose वचन the build settled was checked as
+      // एकवचन by default, so मुनयः "did not use" 7.3.109 जसि च.
+      const terms = [
+        ...(word.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term),
+        ...(Object.values(word.derived ?? {}) as string[])
+      ];
 
       // A tiṅanta is checkable when we know the root, its gaṇa, the lakāra, and
       // can read person/number off the ending.
