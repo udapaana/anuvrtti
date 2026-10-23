@@ -291,7 +291,15 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
   const tinRaw = TIN[deaccent(word.lemma) + '|' + deaccent(String(word.form ?? ''))];
   const derivedStem = [...terms].some((t) => SANADI.includes(t) || t === 'कर्मणि' || t === 'भावे')
     || !!tinRaw?.['सनादि'] || tinRaw?.['प्रयोग'] === 'कर्मणि';
-  if (gana) {
+  /*
+    Only on a word that IS verbal. GANAS is keyed by root name, and a root name
+    can also be a noun or a particle: ग्राम is a चुरादि root and the village,
+    हि, तु and वा are dhātus too. Unguarded, 171 nouns and indeclinables showed a
+    गण in the rail — ग्रामम् "the village", गण चुरादि.
+  */
+  const verbal = [...terms].some((t) => LAKARA_SET.has(t)) || !!tinRaw
+    || typeOf(terms)?.id === 'kridanta';
+  if (gana && verbal) {
     if (!terms.has('गण')) out['गण'] = gana[0];
     if (gana[1] && !derivedStem && !terms.has('विकरण') && !terms.has(gana[1])) out['विकरण'] = gana[1];
   }
@@ -606,6 +614,7 @@ function main() {
   let agreedVacana = 0;
   let agreedKaraka = 0;
   let agreedSubject = 0;
+  let impliedWins = 0;
   for (const r of flat) {
     const ws = r.words ?? [];
     /*
@@ -739,9 +748,35 @@ function main() {
         let role: string | null = null, winner = -1;
         const verbs = [...new Set(idxs.filter((i) => typeOf(termsOf(ws[i]))?.id === 'tinanta'))];
         const sig = new Set(verbs.map((i) => `${prayogaOf(ws[i])}|${purushaOf(ws[i])}|${vacanaOf(ws[i])}`));
-        if (verbs.length && sig.size === 1) {
-          const v = ws[verbs[0]];
-          const pur = purushaOf(v), vac = vacanaOf(v), pr = prayogaOf(v);
+        /*
+          A clause with no verb has one understood: अस्तिर्भवन्तीपरः
+          प्रथमपुरुषोऽप्रयुज्यमानोऽप्यस्ति — where no verb is spoken, अस्ति is, in
+          the third person (the tradition's reading of एकतिङ् वाक्यम्). So
+          नरस्य पुत्रः बालः has a subject, the कर्तृ of that अस्ति; which of its two
+          nominatives it is, is meaning, and the one-candidate rule below
+          declines to say. Graded and सङ्ग्रह prose only: a paradigm list is not
+          a sentence, and a verbless clause in verse usually borrows its
+          neighbour's verb — passive as often as not — rather than अस्ति.
+        */
+        const impliedAsti = !verbs.length && (r.kind === 'graded' || r.kind === 'sangraha');
+        if ((verbs.length && sig.size === 1) || impliedAsti) {
+          const v = verbs.length ? ws[verbs[0]] : null;
+          const pur = v ? purushaOf(v) : 'प्रथमपुरुष';
+          // the understood अस्ति agrees with its subject, so it takes that वचन
+          const vac = v ? vacanaOf(v) : (noms.length === 1 ? vacanaOf(ws[noms[0]]) : undefined);
+          /*
+            …unless the clause's predicate is a participle, whose voice then
+            decides: गुरवे सेवा देया is "service is TO BE GIVEN" — the कृत्य is
+            कर्मणि, so सेवा is the कर्मन्, not the कर्तृ of अस्ति; सक्तवः नष्टाः
+            keeps the कर्तृ because नष्ट is intransitive and कर्तरि. A participle
+            of unknown voice leaves the clause alone.
+          */
+          const ptcs = idxs.filter((i) => typeOf(termsOf(ws[i]))?.id === 'kridanta' && termsOf(ws[i]).has('प्रथमा'));
+          const ptcVoice = new Set(ptcs.map((i) => prayogaOf(ws[i]) ?? '?'));
+          const pr = v ? prayogaOf(v)
+            : !ptcs.length ? 'कर्तरि'
+            : ptcVoice.size === 1 && !ptcVoice.has('?') ? [...ptcVoice][0]
+            : undefined;
           const r0 = pr === 'कर्मणि' ? 'कर्मन्' : pr === 'कर्तरि' ? 'कर्तृ' : null;
           if (pur && vac && r0) {
             /*
@@ -778,6 +813,7 @@ function main() {
             const agree = [...noms, ...unknownCase].filter(agrees);
             if (agree.length === 1 && noms.includes(agree[0]) && vacanaOf(ws[agree[0]]) === vac) {
               role = r0; winner = agree[0];
+              if (!v) { impliedWins++; if (process.env.DEBUG_ASTI) console.log(`    अस्ति: ${r.id} ${ws[winner].form} → ${role} «${idxs.map((i) => ws[i].form).join(" ")}»`); }
             }
           }
         }
@@ -938,7 +974,7 @@ function main() {
   fs.writeFileSync(OUTPUT, JSON.stringify({ chapters, sequence }, null, 2));
   if (agreedLinga) console.log(`  ${agreedLinga} लिङ्ग taken from the noun a विशेषण agrees with`);
   if (agreedVacana) console.log(`  ${agreedVacana} वचन taken from the noun a विशेषण agrees with`);
-  if (agreedSubject) console.log(`  ${agreedSubject} प्रथमा कारक taken from the verb the word agrees with`);
+  if (agreedSubject) console.log(`  ${agreedSubject} प्रथमा कारक taken from the verb the word agrees with (${impliedWins} clause(s) with अस्ति understood)`);
   if (agreedKaraka) console.log(`  ${agreedKaraka} कारक taken from the noun a विशेषण agrees with`);
   console.log(
     `Wrote ${flat.length} readings — ${chapters.length} topical chapters + sequence view → ${path.relative(process.cwd(), OUTPUT)}`
