@@ -1433,6 +1433,21 @@ async function main() {
     const vik = VIKARANA_OF[gana];
     ganaIndex[root] = vik ? [gana, vik] : [gana];
   }
+  // A root the तिङन्त build RESOLVED against the dhātupāṭha has a known गण even
+  // when its candidates disagree: resolvedRoot kept the one entry whose paradigm
+  // actually produced a form the corpus attests. धृ is भ्वादि/जुहोत्यादि/चुरादि
+  // in the dhātupāṭha, so candidate-unanimity leaves it गण-less — but the corpus's
+  // धारयति is derived only by the चुरादि धृ, which settles it. This is the same
+  // corpus-as-arbiter choice the grids already make, so the गण it stamps is the
+  // गण the reader's own verb was built from; a wrong one could not have derived
+  // the form in the first place.
+  for (const [root, resolved] of resolvedRoot) {
+    if (ganaIndex[root]) continue;
+    const gana = GANA_BARE[resolved[1]];
+    if (!gana) continue;
+    const vik = VIKARANA_OF[gana];
+    ganaIndex[root] = vik ? [gana, vik] : [gana];
+  }
 
   // stem → its FULL declension (all 24 cells, attested or not), so the reader's
   // rail can show the WORD'S OWN paradigm — नर's table for a नर-word — instead of

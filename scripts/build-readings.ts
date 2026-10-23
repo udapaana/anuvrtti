@@ -266,7 +266,7 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
   // गण and विकरण are fixed properties of the root, keyed on the lemma. A verb
   // whose root is in the dhātu table gets both without the author writing them;
   // अदादि/जुहोत्यादि have a गण but no शप्-like विकरण, so the tuple may be length 1.
-  const gana = GANAS[word.lemma];
+  const gana = GANAS[deaccent(word.lemma)];
   if (gana) {
     if (!terms.has('गण')) out['गण'] = gana[0];
     if (gana[1] && !terms.has('विकरण') && !terms.has(gana[1])) out['विकरण'] = gana[1];
