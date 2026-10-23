@@ -1179,10 +1179,16 @@ async function main() {
     dus: 'दुस्', su: 'सु', parA: 'परा', api: 'अपि', ati: 'अति'
   };
 
-  /** (aupadeśika|gaṇa|prefix) → form → the cells that produce it. */
+  /**
+   * (aupadeśika|gaṇa|prefix|mode) → form → the cells that produce it.
+   *
+   * `mode` is the derived stem: '' the plain root, 'Ric' the causative
+   * (धारयति), 'san' the desiderative (जिज्ञासते), 'Karmani' the passive
+   * (पच्यते). Everything else about the paradigm is the same enumeration.
+   */
   const paraCache = new Map<string, Map<string, { lak: string; pu: string; vc: string; pada: string }[]>>();
-  function tinParadigm(aup: string, gana: string, pre: string) {
-    const key = `${aup}|${gana}|${pre}`;
+  function tinParadigm(aup: string, gana: string, pre: string, mode: '' | 'Ric' | 'san' | 'Karmani' = '') {
+    const key = `${aup}|${gana}|${pre}|${mode}`;
     const hit = paraCache.get(key);
     if (hit) return hit;
     const m = new Map<string, { lak: string; pu: string; vc: string; pada: string }[]>();
@@ -1193,8 +1199,13 @@ async function main() {
             let res: any[] = [];
             try {
               res = v.deriveTinantas({
-                dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: pre ? [pre] : [] },
-                lakara: lakKey, prayoga: 'Kartari', purusha: pu, vacana: vc, pada,
+                dhatu: {
+                  aupadeshika: aup, gana,
+                  sanadi: mode === 'Ric' || mode === 'san' ? [mode] : [],
+                  prefixes: pre ? [pre] : []
+                },
+                lakara: lakKey, prayoga: mode === 'Karmani' ? 'Karmani' : 'Kartari',
+                purusha: pu, vacana: vc, pada,
                 skip_at_agama: false
               });
             } catch { continue; }
@@ -2055,16 +2066,32 @@ async function main() {
     }
 
   let rescued = 0, withPrefix = 0;
+  const derivedStem: Record<string, number> = { Ric: 0, san: 0, Karmani: 0 };
   for (const { lemma, form } of wanted.values()) {
     const cands = DHATU_MAP[lemma] ?? (DHATU[lemma] ? [DHATU[lemma]] : []);
     if (!cands.length) continue;
     // '' first: a bare form should never be credited with a preverb
     const prefixes = ['', ...Object.keys(PFX_FIRST).filter((k) => form.startsWith(PFX_FIRST[k]))];
-    let found: { cells: { lak: string; pu: string; vc: string; pada: string }[]; pre: string } | null = null;
-    for (const pre of prefixes) {
-      for (const [aup, gana] of cands) {
-        const cells = tinParadigm(aup, gana, pre).get(form);
-        if (cells?.length) { found = { cells, pre }; break; }
+    /*
+      The plain root first, then the derived stems a finite verb is most often
+      built on: the causative (धारयति, शमयति), the passive (पच्यते, भुज्यन्ते)
+      and the desiderative (जिज्ञासते). In that order, so a form that derives
+      plainly is never credited with a णिच् it lacks — the same rule as '' first
+      among the preverbs. These were the bulk of the verbs still unparsed once
+      the dhātupāṭha was in: the root was found, the stem was not.
+    */
+    const MODES = ['', 'Ric', 'Karmani', 'san'] as const;
+    let found: {
+      cells: { lak: string; pu: string; vc: string; pada: string }[];
+      pre: string; mode: typeof MODES[number]; gana: string;
+    } | null = null;
+    for (const mode of MODES) {
+      for (const pre of prefixes) {
+        for (const [aup, gana] of cands) {
+          const cells = tinParadigm(aup, gana, pre, mode).get(form);
+          if (cells?.length) { found = { cells, pre, mode, gana }; break; }
+        }
+        if (found) break;
       }
       if (found) break;
     }
@@ -2080,6 +2107,14 @@ async function main() {
     const pd = agree((c) => c.pada); if (pd) out['पद'] = pd;
     // The preverb the derivation NEEDED is a fact about the word, not a guess.
     if (found.pre && PFX_DEV[found.pre]) { out['उपसर्ग'] = PFX_DEV[found.pre]; withPrefix++; }
+    // The derived stem it needed, and the root's गण — the root a causative or
+    // passive is built on still has its class, even where candidate-unanimity
+    // left it out of the गण index.
+    if (found.mode === 'Ric') out['सनादि'] = 'णिच्';
+    if (found.mode === 'san') out['सनादि'] = 'सन्';
+    if (found.mode === 'Karmani') out['प्रयोग'] = 'कर्मणि';
+    if (found.mode) derivedStem[found.mode]++;
+    if (GANA_BARE[found.gana]) out['गण'] = GANA_BARE[found.gana];
     if (Object.keys(out).length) { tinIndex[`${lemma}|${form}`] = out; rescued++; }
   }
 
@@ -2088,7 +2123,7 @@ async function main() {
     `  tiṅanta index: ${Object.keys(tinIndex).length} forms → parse, ` +
       `${Object.keys(DHATU).length} hand-checked roots + ${rootsResolved} resolved by derivation` +
       `\n    + ${rescued} of ${wanted.size} unmatched corpus form(s) resolved from the dhātupāṭha` +
-      ` (${withPrefix} needed a preverb)`
+      ` (${withPrefix} needed a preverb; ${derivedStem.Ric} causative, ${derivedStem.Karmani} passive, ${derivedStem.san} desiderative)`
   );
 
   const withGrid = rich.filter((e) => e.paradigm).length;

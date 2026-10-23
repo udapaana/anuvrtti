@@ -14,7 +14,7 @@ import * as path from 'path';
 import { parse as parseYaml } from 'yaml';
 import { parseGrid, isRectangular } from '../src/lib/reader/paradigm';
 import { deaccent } from '../src/lib/usage/normalize';
-import { WORD_TYPES, KARAKA, SENSE_ROLE, typeOf } from '../src/lib/usage/schema';
+import { WORD_TYPES, KARAKA, SENSE_ROLE, SANADI, typeOf } from '../src/lib/usage/schema';
 import {
   SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA,
   KRT_LINGA, TADDHITA_LINGA
@@ -246,6 +246,7 @@ const PURUSHA_SET = new Set(['प्रथमपुरुष', 'मध्यम�
  * पञ्चमी *and* षष्ठी — asserting one would be the same error the quiz made.
  */
 const PADA_SET = new Set(['परस्मैपद', 'आत्मनेपद']);
+const GANA_SET = new Set(['भ्वादि', 'अदादि', 'जुहोत्यादि', 'दिवादि', 'स्वादि', 'तुदादि', 'रुधादि', 'तनादि', 'क्र्यादि', 'चुरादि']);
 const LINGA_SET = new Set(['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग']);
 
 function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1): Record<string, string> | null {
@@ -281,9 +282,18 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
   // whose root is in the dhātu table gets both without the author writing them;
   // अदादि/जुहोत्यादि have a गण but no शप्-like विकरण, so the tuple may be length 1.
   const gana = GANAS[deaccent(word.lemma)];
+  /*
+    A causative, desiderative or passive is not conjugated in its root's class:
+    every णिच् stem takes शप् (धारयति, whatever धृ's own गण), सन् stems likewise,
+    and the passive takes यक्. So the root's विकरण is stamped only on a plain
+    stem. Its गण still stands — it is a fact about the root the stem is built on.
+  */
+  const tinRaw = TIN[deaccent(word.lemma) + '|' + deaccent(String(word.form ?? ''))];
+  const derivedStem = [...terms].some((t) => SANADI.includes(t) || t === 'कर्मणि' || t === 'भावे')
+    || !!tinRaw?.['सनादि'] || tinRaw?.['प्रयोग'] === 'कर्मणि';
   if (gana) {
     if (!terms.has('गण')) out['गण'] = gana[0];
-    if (gana[1] && !terms.has('विकरण') && !terms.has(gana[1])) out['विकरण'] = gana[1];
+    if (gana[1] && !derivedStem && !terms.has('विकरण') && !terms.has(gana[1])) out['विकरण'] = gana[1];
   }
 
   // The full तिङन्त parse from the generated index — लकार, पुरुष, वचन, पद — for
@@ -304,6 +314,11 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
       written one, like every other derived value.
     */
     if (tin['उपसर्ग'] && ![...terms].some((t) => UPASARGA_SET.has(t))) out['उपसर्ग'] = tin['उपसर्ग'];
+    // The derived stem the resolver needed (a causative's णिच्, a desiderative's
+    // सन्), the passive it found, and the गण of a root the गण index left out.
+    if (tin['सनादि'] && ![...terms].some((t) => SANADI.includes(t))) out['सनादि'] = tin['सनादि'];
+    if (tin['प्रयोग'] && ![...terms].some((t) => PRAYOGA.includes(t))) out['प्रयोग'] = tin['प्रयोग'];
+    if (tin['गण'] && !out['गण'] && ![...terms].some((t) => GANA_SET.has(t))) out['गण'] = tin['गण'];
   }
 
   /*
@@ -323,7 +338,7 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
   */
   const isTin = [...terms].some((t) => LAKARA_SET.has(t) || PADA_SET.has(t))
     || !!out['लकार'] || !!out['पद'];
-  if (isTin && ![...terms].some((t) => PRAYOGA.includes(t))) out['प्रयोग'] = 'कर्तरि';
+  if (isTin && !out['प्रयोग'] && ![...terms].some((t) => PRAYOGA.includes(t))) out['प्रयोग'] = 'कर्तरि';
 
   // विभक्ति from the कारक role, as a FALLBACK. The role is the author's own
   // assertion (कर्मन् → द्वितीया, 2.3.x), so this is not the engine guessing — it
