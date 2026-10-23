@@ -19,6 +19,7 @@
  *
  *   bun scripts/cite-exhibited.ts            # the plan
  *   bun scripts/cite-exhibited.ts --write    # write the citations
+ *   … --partial                              # include rules short even after
  *
  * Needs `bun run exhibits` first.
  */
@@ -37,6 +38,9 @@ if (!fs.existsSync(WORDS_FILE)) {
 }
 const exhibitWords = JSON.parse(fs.readFileSync(WORDS_FILE, 'utf-8')) as Record<string, [string, number, string][]>;
 const WRITE = process.argv.includes('--write');
+// --partial: also cite a rule the corpus cannot carry to target alone; what
+// it still owes after this is the writing queue.
+const PARTIAL = process.argv.includes('--partial');
 
 const target = rules.defaults?.encounters_target ?? 5;
 const termImplies: Record<string, string> = rules.term_implies ?? {};
@@ -98,10 +102,11 @@ for (const rule of rules.load_bearing ?? []) {
   );
   for (const id of [...firstWord.keys()]) if (!ordinary(id) && seg(id) < intro) firstWord.delete(id);
   // Annotate-only: a rule the corpus does not show often enough needs writing.
-  if (firstWord.size + have.size < goal) continue;
+  if (!PARTIAL && firstWord.size + have.size < goal) continue;
   const cands = [...firstWord.keys()].sort((a, b) => byId.get(a)!.pos - byId.get(b)!.pos);
   const picks = new Set<string>();
-  for (let k = 0; k < owed; k++) picks.add(cands[Math.floor(((k + 0.5) * cands.length) / owed)]);
+  const n = Math.min(owed, cands.length);
+  for (let k = 0; k < n; k++) picks.add(cands[Math.floor(((k + 0.5) * cands.length) / n)]);
   // The gate's own test, applied to what was actually picked: a सङ्ग्रह pick
   // needs some OTHER reading at or below its tier citing the rule.
   for (const id of [...picks]) {
