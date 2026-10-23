@@ -138,7 +138,7 @@ function toSlp1(dev: string): string | null {
     'प': 'p', 'फ': 'P', 'ब': 'b', 'भ': 'B', 'म': 'm',
     'य': 'y', 'र': 'r', 'ल': 'l', 'व': 'v',
     'श': 'S', 'ष': 'z', 'स': 's', 'ह': 'h',
-    'ा': 'A', 'ि': 'i', 'ी': 'I', 'ु': 'u', 'ू': 'U', 'ृ': 'f',
+    'ा': 'A', 'ि': 'i', 'ी': 'I', 'ु': 'u', 'ू': 'U', 'ृ': 'f', 'ॄ': 'F',
     'े': 'e', 'ै': 'E', 'ो': 'o', 'ौ': 'O', 'ं': 'M', 'ः': 'H'
   };
   let out = '';
@@ -152,7 +152,7 @@ function toSlp1(dev: string): string | null {
     // a consonant with no following vowel-sign or virāma carries inherent 'a'
     const isCons = /[कखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह]/.test(c);
     const next = chars[i + 1];
-    if (isCons && next !== '्' && !(next && /[ािीुूृेैोौ]/.test(next))) out += 'a';
+    if (isCons && next !== '्' && !(next && /[ािीुूृॄेैोौ]/.test(next))) out += 'a';
   }
   return out;
 }

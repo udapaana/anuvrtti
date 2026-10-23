@@ -159,7 +159,7 @@ function toSlp1(dev: string): string | null {
     'ट':'w','ठ':'W','ड':'q','ढ':'Q','ण':'R','त':'t','थ':'T','द':'d','ध':'D','न':'n',
     'प':'p','फ':'P','ब':'b','भ':'B','म':'m','य':'y','र':'r','ल':'l','व':'v',
     'श':'S','ष':'z','स':'s','ह':'h',
-    'ा':'A','ि':'i','ी':'I','ु':'u','ू':'U','ृ':'f','े':'e','ै':'E','ो':'o','ौ':'O','ं':'M','ः':'H'
+    'ा':'A','ि':'i','ी':'I','ु':'u','ू':'U','ृ':'f','ॄ':'F','े':'e','ै':'E','ो':'o','ौ':'O','ं':'M','ः':'H'
   };
   let out = '';
   const chars = [...dev];
@@ -171,7 +171,7 @@ function toSlp1(dev: string): string | null {
     out += m;
     const isCons = /[कखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह]/.test(c);
     const next = chars[i + 1];
-    if (isCons && next !== '्' && !(next && /[ािीुूृेैोौ]/.test(next))) out += 'a';
+    if (isCons && next !== '्' && !(next && /[ािीुूृॄेैोौ]/.test(next))) out += 'a';
   }
   return out;
 }
