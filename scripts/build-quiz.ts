@@ -406,7 +406,7 @@ async function main() {
   // a वचन tag — so the प्रयोग grid's second axis has to come from here.
   const cells: Record<
     string,
-    { linga: string | null; vibhaktis: string[]; cells: Array<[string, string]> }
+    { linga: string | null; vibhaktis: string[]; cells: Array<[string, string]>; anyVibhaktis?: string[] }
   > = {};
   let resolved = 0, ambiguous = 0, underivable = 0;
   /** Genders MW supplied where the corpus had nothing to weigh, and the tie-breaks it settled. */
@@ -811,7 +811,18 @@ async function main() {
       const vibs = [...new Set(cs.map((c) => VIB_DEV[c[1]]))];
       const pairs = [...new Set(cs.map((c) => VIB_DEV[c[1]] + '|' + VAC_DEV[c[2]]))]
         .map((k) => k.split('|') as [string, string]);
-      cells[form] = { linga: linga ? LINGA_DEV[linga] : null, vibhaktis: vibs, cells: pairs };
+      /*
+        For a stem whose gender belongs to the occurrence (an adjective, a
+        numeral, a सर्वादि), the cases its form could be in ANY gender — used by
+        check-derivation only to absolve. Locked to the stem's majority gender,
+        neuter एकम् ("one [honey]") could only be द्वितीया, as if masculine, and a
+        correct प्रथमा read as an error. Nouns keep the locked list: for them a
+        case possible only in another gender really is a mistake.
+      */
+      const variable = adjectives.has(stem) || isSarvadi || isPronoun
+        || (stemTypeVotes.get(stem)?.has('sankhya') ?? false);
+      const anyVibhaktis = variable ? [...new Set(all.map((c) => VIB_DEV[c[1]]))] : undefined;
+      cells[form] = { linga: linga ? LINGA_DEV[linga] : null, vibhaktis: vibs, cells: pairs, ...(anyVibhaktis ? { anyVibhaktis } : {}) };
       if (vibs.length === 1) resolved++; else ambiguous++;
     }
 

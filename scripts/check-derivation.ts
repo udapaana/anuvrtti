@@ -57,7 +57,7 @@ import * as path from 'path';
  * The ceiling. Lower it as the queue is worked off; raise it only with a reason
  * in the commit message, the same discipline as the coverage floors.
  */
-const BASELINE = 2;
+const BASELINE = 0;
 
 const R = JSON.parse(fs.readFileSync('static/data/readings.json', 'utf-8'));
 /*
@@ -91,7 +91,7 @@ const CELLS: Record<string, string> = U.cells ?? {};
   A collision between two lemmas sharing a form only ever lengthens that list,
   which makes the check quieter rather than wronger.
 */
-const RAW: Record<string, { vibhaktis?: string[]; cells?: [string, string][] }> =
+const RAW: Record<string, { vibhaktis?: string[]; anyVibhaktis?: string[]; cells?: [string, string][] }> =
   fs.existsSync('static/data/quiz-cells.json')
     ? JSON.parse(fs.readFileSync('static/data/quiz-cells.json', 'utf-8'))
     : {};
@@ -145,7 +145,8 @@ for (const r of R.sequence ?? []) {
         const said = [...terms].find((t) => VIB.includes(t));
         if (said) {
           checked++;
-          const possible = raw?.vibhaktis?.includes(said) ?? false;
+          // a variable-gender stem may be in any gender here (see build-quiz)
+          const possible = (raw?.anyVibhaktis ?? raw?.vibhaktis)?.includes(said) ?? false;
           if (said !== row && !possible) {
             rows.push({ reading: r.id, form, dim: 'विभक्ति', said, engine: row });
           }

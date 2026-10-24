@@ -176,6 +176,26 @@ for (const line of rows) {
   // First entry wins: the Dhātupāṭha lists homonyms across gaṇas (भू is 01.0001
   // and also 10.xxx), and the earlier gaṇa is the one a reader means by भू.
   (map[dev] ??= []).push([aup, gana]);
+  /*
+    An इदित् root also answers to its nasalised name. 7.1.58 इदितो नुम् धातोः
+    inserts a nasal before the last consonant of a root whose इत् vowel is इ, so
+    the dhātupāṭha's कपिँ (\`kapi~\`) is कम्प् and टुनदिँ (\`wunadi~\`) is नन्द् —
+    the names every grammar and this corpus use. Stripping the marker left
+    only कप् and नद्, so कम्प्, नन्द्, वन्द् and their kind were \"not in the
+    dhātu table\" though they were in it all along. The nasal is homorganic with
+    the consonant it precedes; the root still has to derive an attested form
+    before build-quiz accepts it, so a wrong guess cannot get through.
+  */
+  if (/i~/.test(aup.replace(/[\\^]/g, ''))) {
+    const bare = bareRoot(aup);
+    const m = bare.match(/^(.*[aAiIuUfFxXeEoO])([kKgGcCjJwWqQtTdDpPbB])$/);
+    if (m) {
+      const NASAL: Record<string, string> = { k: 'N', K: 'N', g: 'N', G: 'N', c: 'Y', C: 'Y', j: 'Y', J: 'Y',
+        w: 'R', W: 'R', q: 'R', Q: 'R', t: 'n', T: 'n', d: 'n', D: 'n', p: 'm', P: 'm', b: 'm', B: 'm' };
+      const nasal = toDeva(m[1] + NASAL[m[2]] + m[2]);
+      if (nasal && nasal !== dev) (map[nasal] ??= []).push([aup, gana]);
+    }
+  }
 }
 
 /*
