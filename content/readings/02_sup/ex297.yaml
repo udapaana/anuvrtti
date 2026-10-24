@@ -2,30 +2,170 @@
   kind: graded
   segment: 180
   order: 2
-  sentence: 'राजभिः पितृभिः मातृभिः च सह जनाः गायन्ति। नदीभिः क्षेत्राणि सिच्यन्ते। रात्रिभिः उत्सवः शोभते। गोपाः गोभिः जीवन्ति। गुरुः नामभिः बालान् आह्वयति।'
-  translation: 'With the kings, the fathers and the mothers, the people sing. The fields are watered by the rivers. The festival is lovely with its nights. The cowherds live by their cattle. The teacher calls the boys by their names.'
-  teaches: 'Instrumental plurals across the stem classes — राजभिः, पितृभिः, मातृभिः, नदीभिः, रात्रिभिः, गोभिः, नामभिः.'
+  sentence: 'नृपौ राजधानीम् प्रतिगच्छतः। मार्गः नदीभिः रम्यः। कतिपयाभिः रात्रिभिः ते नगरम् प्राप्नुवन्ति। नगरे जनाः पितृभिः मातृभिः च सह स्वागतम् कुर्वन्ति। अन्यैः राजभिः सह सभा भवति। नृपौ ऋषीणाम् गुणान् वदतः — तेषाम् कर्मभिः आश्रमः पवित्रः, अस्माकम् गोभिः च सः इदानीम् समृद्धः।'
+  translation: 'The kings return to the capital. The road is lovely with rivers. In a few nights they reach the city. In the city people come out with their fathers and mothers to welcome them. There is an assembly with other kings. The kings tell of the sages'' virtues: "By their deeds the hermitage is holy — and with our cows it is now prosperous too."'
+  teaches: 'The visit, part 5 — home: the instrumental plural -भिः across the stem classes — नदीभिः, रात्रिभिः (time taken, 2.3.6), पितृभिः, मातृभिः, राजभिः, कर्मभिः, गोभिः.'
   words:
-  - form: राजभिः
-    lemma: राजन्
-    gloss: 'with the kings'
+  - form: नृपौ
+    lemma: नृप
+    gloss: 'the kings'
     notes:
-    - term: सहार्थ
-      en: 'accompaniment, with सह'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: राजधानीम्
+    lemma: राजधानी
+    gloss: 'to the capital'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: प्रतिगच्छतः
+    lemma: गम्
+    gloss: 'return'
+    notes:
+    - term: लट्
+      en: 'present, dual, with the preverb प्रति'
+  - form: मार्गः
+    lemma: मार्ग
+    gloss: 'the road'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: नदीभिः
+    lemma: नदी
+    gloss: 'with rivers'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: करण
+      en: 'instrument'
     - term: तृतीया
       en: 'instrumental plural'
+  - form: रम्यः
+    lemma: रम्य
+    gloss: 'lovely'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 3
+  - form: कतिपयाभिः
+    lemma: कतिपय
+    gloss: 'a few'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: विशेषण
+      en: 'qualifying रात्रिभिः'
+    - term: करण
+      en: 'instrument'
+    - term: तृतीया
+      en: 'instrumental plural'
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: रात्रिभिः
+    lemma: रात्रि
+    gloss: 'in nights'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: करण
+      en: 'the time an action takes to complete (2.3.6)'
+    - term: तृतीया
+      en: 'instrumental plural'
+  - form: ते
+    lemma: तद्
+    gloss: 'they'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: नगरम्
+    lemma: नगर
+    gloss: 'the city'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: प्राप्नुवन्ति
+    lemma: आप्
+    gloss: 'reach'
+    notes:
+    - term: लट्
+      en: 'present, plural, with the preverb प्र'
+  - form: नगरे
+    lemma: नगर
+    gloss: 'in the city'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: जनाः
+    lemma: जन
+    gloss: 'people'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
   - form: पितृभिः
     lemma: पितृ
-    gloss: 'with the fathers'
+    gloss: 'their fathers'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: सहार्थ
       en: 'accompaniment, with सह'
     - term: तृतीया
       en: 'instrumental plural'
   - form: मातृभिः
     lemma: मातृ
-    gloss: 'with the mothers'
+    gloss: 'mothers'
     notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
     - term: सहार्थ
       en: 'accompaniment, with सह'
     - term: तृतीया
@@ -42,113 +182,184 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — governs the तृतीया'
-  - form: जनाः
-    lemma: जन
-    gloss: 'the people'
+  - form: स्वागतम्
+    lemma: स्वागतम्
+    gloss: 'welcome'
     notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: गायन्ति
-    lemma: गै
-    gloss: 'sing'
+    - term: अव्यय
+      en: 'indeclinable — greeting'
+  - form: कुर्वन्ति
+    lemma: कृ
+    gloss: 'make'
     notes:
     - term: लट्
       en: 'present, plural'
-  - form: नदीभिः
-    lemma: नदी
-    gloss: 'by the rivers'
+  - form: अन्यैः
+    lemma: अन्य
+    gloss: 'other'
     notes:
-    - term: कर्तृ
-      en: 'the agent of a passive — तृतीया by 2.3.18'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: विशेषण
+      en: 'qualifying राजभिः'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
     - term: तृतीया
       en: 'instrumental plural'
-  - form: क्षेत्राणि
-    lemma: क्षेत्र
-    gloss: 'the fields'
+    rel:
+    - kind: विशेषण
+      to: 20
+  - form: राजभिः
+    lemma: राजन्
+    gloss: 'kings'
     notes:
-    - term: कर्मन्
-      en: 'what is watered — the प्रथमा of a passive'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: सिच्यन्ते
-    lemma: सिच्
-    gloss: 'are watered'
-    notes:
-    - term: लट्
-      en: 'present, passive (यक्)'
-  - form: रात्रिभिः
-    lemma: रात्रि
-    gloss: 'with its nights'
-    notes:
-    - term: करण
-      en: 'instrument'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
     - term: तृतीया
       en: 'instrumental plural'
-  - form: उत्सवः
-    lemma: उत्सव
-    gloss: 'the festival'
+  - form: सभा
+    lemma: सभा
+    gloss: 'an assembly'
     notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: शोभते
-    lemma: शुभ्
-    gloss: 'is lovely'
+  - form: भवति
+    lemma: भू
+    gloss: 'there is'
     notes:
     - term: लट्
-      en: 'present (आत्मनेपद)'
-  - form: गोपाः
-    lemma: गोप
-    gloss: 'the cowherds'
+      en: 'present'
+  - form: ऋषीणाम्
+    lemma: ऋषि
+    gloss: 'the sages'''
     notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: गोभिः
-    lemma: गो
-    gloss: 'by their cattle'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive plural'
+  - form: गुणान्
+    lemma: गुण
+    gloss: 'virtues'
     notes:
-    - term: करण
-      en: 'instrument'
-    - term: तृतीया
-      en: 'instrumental plural'
-  - form: जीवन्ति
-    lemma: जीव्
-    gloss: 'live'
-    notes:
-    - term: लट्
-      en: 'present, plural'
-  - form: गुरुः
-    lemma: गुरु
-    gloss: 'the teacher'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: नामभिः
-    lemma: नामन्
-    gloss: 'by their names'
-    notes:
-    - term: करण
-      en: 'instrument'
-    - term: तृतीया
-      en: 'instrumental plural'
-  - form: बालान्
-    lemma: बाल
-    gloss: 'the boys'
-    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
       en: 'accusative plural'
-  - form: आह्वयति
-    lemma: ह्वे
-    gloss: 'calls'
+  - form: वदतः
+    lemma: वद्
+    gloss: 'tell of'
     notes:
     - term: लट्
-      en: 'present, with the preverb आ'
+      en: 'present, dual'
+  - form: तेषाम्
+    lemma: तद्
+    gloss: 'their'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive plural'
+  - form: कर्मभिः
+    lemma: कर्मन्
+    gloss: 'by deeds'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: हेतु
+      en: 'the cause'
+    - term: तृतीया
+      en: 'instrumental plural'
+  - form: आश्रमः
+    lemma: आश्रम
+    gloss: 'the hermitage'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: पवित्रः
+    lemma: पवित्र
+    gloss: 'holy'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 28
+  - form: अस्माकम्
+    lemma: अस्मद्
+    gloss: 'our'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive plural'
+  - form: गोभिः
+    lemma: गो
+    gloss: 'with cows'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: हेतु
+      en: 'the cause'
+    - term: तृतीया
+      en: 'instrumental plural'
+  - form: सः
+    lemma: तद्
+    gloss: 'it'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: इदानीम्
+    lemma: इदानीम्
+    gloss: 'now'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — time'
+  - form: समृद्धः
+    lemma: समृद्ध
+    gloss: 'prosperous'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 32

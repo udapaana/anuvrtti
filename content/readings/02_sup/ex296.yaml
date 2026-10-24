@@ -2,24 +2,73 @@
   kind: graded
   segment: 180
   order: 1
-  sentence: 'उत्सवस्य रात्रयः शीघ्रम् गच्छन्ति। मातरः धेनवः च गृहम् आगच्छन्ति। बालाः पितॄन् मातॄः च नमन्ति, नदीः गाः च पश्यन्ति। राजा तेषाम् मनांसि जानाति, तेषाम् नामानि च श्रूयन्ते। सः द्वे रात्री जागर्ति, राजानौ मातरौ च आह्वयति। कन्ये नामनी लिखतः।'
-  translation: 'The festival''s nights pass quickly. The mothers and the cows come home. The boys bow to their fathers and mothers, and look at the rivers and the cattle. The king knows their minds, and their names are heard. He stays awake two nights, and summons the two kings and the two mothers. The two girls write their two names.'
-  teaches: 'Nominative and accusative plurals and duals — रात्रयः, मातरः, धेनवः, पितॄन्, मातॄः, नदीः, गाः, मनांसि, नामानि; रात्री, राजानौ, मातरौ, नामनी.'
+  sentence: 'अतिथयः द्वे रात्री आश्रमे वसन्ति। रात्रयः शीघ्रम् गच्छन्ति। उत्सवस्य सर्वाणि कर्माणि शुभानि। प्रातः नृपौ आश्रमाय अनेकाः गाः यच्छतः, ऋषीन् च पितॄन् इव नमतः। कुमारौ आश्रमस्य सर्वाः मातॄः नमतः, मातरः च तौ आशिषा वर्धयन्ति। ततः कुमारौ स्वे मातरौ अनुसरतः। ऋषी राजानौ ग्रामस्य सीमाम् यावत् अनुगच्छतः। वनवासिनः तेषाम् यशांसि गायन्ति।'
+  translation: 'The guests stay two nights in the hermitage. The nights pass quickly. All the festival''s rites are auspicious. In the morning the kings give the hermitage many cows, and bow to the sages as to fathers. The princes bow to all the hermitage''s mothers, and the mothers bless them. Then the princes follow their own two mothers. The sages accompany the two kings to the edge of the village. The forest-dwellers sing their glories.'
+  teaches: 'The visit, part 4 — leaving: the accusatives that pair and multiply — रात्री (duration), गाः, पितॄन्, मातॄः, मातरौ, राजानौ, यशांसि — beside the nominative plurals रात्रयः, मातरः, कर्माणि.'
   words:
-  - form: उत्सवस्य
-    lemma: उत्सव
-    gloss: 'the festival''s'
+  - form: अतिथयः
+    lemma: अतिथि
+    gloss: 'the guests'
     notes:
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
-  - form: रात्रयः
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: द्वे
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying the noun'
+    - term: द्वितीया
+      en: 'accusative dual'
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: रात्री
     lemma: रात्रि
     gloss: 'nights'
     notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'duration — the द्वितीया of time (2.3.5)'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: आश्रमे
+    lemma: आश्रम
+    gloss: 'in the hermitage'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: वसन्ति
+    lemma: वस्
+    gloss: 'stay'
+    notes:
+    - term: लट्
+      en: 'present, plural'
+  - form: रात्रयः
+    lemma: रात्रि
+    gloss: 'the nights'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्तृ
-      en: 'इ-stem feminine plural, गुण before जस्'
+      en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
   - form: शीघ्रम्
@@ -34,102 +83,361 @@
     notes:
     - term: लट्
       en: 'present, plural'
-  - form: मातरः
-    lemma: मातृ
-    gloss: 'the mothers'
+  - form: उत्सवस्य
+    lemma: उत्सव
+    gloss: 'the festival''s'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: सर्वाणि
+    lemma: सर्व
+    gloss: 'all'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: विशेषण
+      en: 'qualifying कर्माणि'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
-  - form: धेनवः
-    lemma: धेनु
-    gloss: 'the cows'
+    rel:
+    - kind: विशेषण
+      to: 10
+  - form: कर्माणि
+    lemma: कर्मन्
+    gloss: 'rites'
     notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
+  - form: शुभानि
+    lemma: शुभ
+    gloss: 'auspicious'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 10
+  - form: प्रातः
+    lemma: प्रातर्
+    gloss: 'in the morning'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — time'
+  - form: नृपौ
+    lemma: नृप
+    gloss: 'the kings'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: आश्रमाय
+    lemma: आश्रम
+    gloss: 'the hermitage'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative'
+  - form: अनेकाः
+    lemma: अनेक
+    gloss: 'many'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: विशेषण
+      en: 'qualifying गाः'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+    rel:
+    - kind: विशेषण
+      to: 16
+  - form: गाः
+    lemma: गो
+    gloss: 'cows'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: यच्छतः
+    lemma: यम्
+    gloss: 'give'
+    notes:
+    - term: लट्
+      en: 'present, dual'
+  - form: ऋषीन्
+    lemma: ऋषि
+    gloss: 'the sages'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
   - form: च
     lemma: च
     gloss: 'and'
     notes:
     - term: अव्यय
       en: 'indeclinable'
-  - form: गृहम्
-    lemma: गृह
-    gloss: 'home'
-    notes:
-    - term: कर्मन्
-      en: 'the goal of motion'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: आगच्छन्ति
-    lemma: गम्
-    gloss: 'come'
-    notes:
-    - term: लट्
-      en: 'present, plural, with the preverb आ'
-  - form: बालाः
-    lemma: बाल
-    gloss: 'the boys'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
   - form: पितॄन्
     lemma: पितृ
     gloss: 'fathers'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्मन्
-      en: 'ऋ lengthened, the masculine -न्'
+      en: 'in comparison, with इव'
     - term: द्वितीया
       en: 'accusative plural'
-  - form: मातॄः
-    lemma: मातृ
-    gloss: 'mothers'
+  - form: इव
+    lemma: इव
+    gloss: 'as'
     notes:
-    - term: कर्मन्
-      en: 'ऋ lengthened, the feminine -ः'
-    - term: द्वितीया
-      en: 'accusative plural'
-  - form: नमन्ति
+    - term: अव्यय
+      en: 'indeclinable — comparison'
+  - form: नमतः
     lemma: नम्
     gloss: 'bow to'
     notes:
     - term: लट्
-      en: 'present, plural'
-  - form: नदीः
-    lemma: नदी
-    gloss: 'the rivers'
+      en: 'present, dual'
+  - form: कुमारौ
+    lemma: कुमार
+    gloss: 'the princes'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: आश्रमस्य
+    lemma: आश्रम
+    gloss: 'the hermitage''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: सर्वाः
+    lemma: सर्व
+    gloss: 'all'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: विशेषण
+      en: 'qualifying मातॄः'
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
       en: 'accusative plural'
-  - form: गाः
-    lemma: गो
-    gloss: 'the cattle'
+    rel:
+    - kind: विशेषण
+      to: 26
+  - form: मातॄः
+    lemma: मातृ
+    gloss: 'the mothers'
     notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्मन्
-      en: 'गो — the irregular accusative plural'
+      en: 'object'
     - term: द्वितीया
       en: 'accusative plural'
-  - form: पश्यन्ति
-    lemma: दृश्
-    gloss: 'look at'
+  - form: मातरः
+    lemma: मातृ
+    gloss: 'the mothers'
     notes:
-    - term: लट्
-      en: 'present, plural'
-  - form: राजा
-    lemma: राजन्
-    gloss: 'the king'
-    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative'
+      en: 'nominative plural'
+  - form: तौ
+    lemma: तद्
+    gloss: 'them'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: आशिषा
+    lemma: आशिस्
+    gloss: 'with a blessing'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: करण
+      en: 'instrument'
+    - term: तृतीया
+      en: 'instrumental'
+  - form: वर्धयन्ति
+    lemma: वृध्
+    gloss: 'bless (make prosper)'
+    notes:
+    - term: लट्
+      en: 'causative present'
+    - term: णिच्
+      en: 'causative'
+  - form: ततः
+    lemma: ततः
+    gloss: 'then'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — sequence'
+  - form: स्वे
+    lemma: स्व
+    gloss: 'their own'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: विशेषण
+      en: 'qualifying मातरौ'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+    rel:
+    - kind: विशेषण
+      to: 33
+  - form: मातरौ
+    lemma: मातृ
+    gloss: 'two mothers'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: अनुसरतः
+    lemma: सृ
+    gloss: 'follow'
+    notes:
+    - term: लट्
+      en: 'present, dual, with the preverb अनु'
+  - form: ऋषी
+    lemma: ऋषि
+    gloss: 'the sages'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: राजानौ
+    lemma: राजन्
+    gloss: 'the two kings'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: ग्रामस्य
+    lemma: ग्राम
+    gloss: 'the village''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: सीमाम्
+    lemma: सीमा
+    gloss: 'the edge'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: कर्मन्
+      en: 'governed by यावत् — "as far as"'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: यावत्
+    lemma: यावत्
+    gloss: 'as far as'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — limit'
+  - form: अनुगच्छतः
+    lemma: गम्
+    gloss: 'accompany'
+    notes:
+    - term: लट्
+      en: 'present, dual, with the preverb अनु'
+  - form: वनवासिनः
+    lemma: वनवासिन्
+    gloss: 'the forest-dwellers'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
   - form: तेषाम्
     lemma: तद्
     gloss: 'their'
@@ -140,112 +448,21 @@
       en: 'relation'
     - term: षष्ठी
       en: 'genitive plural'
-  - form: मनांसि
-    lemma: मनस्
-    gloss: 'minds'
+  - form: यशांसि
+    lemma: यशस्
+    gloss: 'glories'
     notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्मन्
-      en: 'the अस्-stem neuter plural, nasalised'
+      en: 'object'
     - term: द्वितीया
       en: 'accusative plural'
-  - form: जानाति
-    lemma: ज्ञा
-    gloss: 'knows'
+  - form: गायन्ति
+    lemma: गै
+    gloss: 'sing'
     notes:
     - term: लट्
-      en: 'present (ज्ञा is क्र्यादि)'
-  - form: नामानि
-    lemma: नामन्
-    gloss: 'names'
-    notes:
-    - term: कर्मन्
-      en: 'what is heard — the प्रथमा of a passive'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: श्रूयन्ते
-    lemma: श्रु
-    gloss: 'are heard'
-    notes:
-    - term: लट्
-      en: 'present, passive (यक्)'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: द्वे
-    lemma: द्वि
-    gloss: 'two'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: द्वितीया
-      en: 'accusative dual'
-    rel:
-    - kind: विशेषण
-      to: 24
-  - form: रात्री
-    lemma: रात्रि
-    gloss: 'nights'
-    notes:
-    - term: कर्मन्
-      en: 'the duration — the accusative of time'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: जागर्ति
-    lemma: जागृ
-    gloss: 'stays awake'
-    notes:
-    - term: लट्
-      en: 'present (जागृ is अदादि)'
-  - form: राजानौ
-    lemma: राजन्
-    gloss: 'the two kings'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: मातरौ
-    lemma: मातृ
-    gloss: 'the two mothers'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: आह्वयति
-    lemma: ह्वे
-    gloss: 'summons'
-    notes:
-    - term: लट्
-      en: 'present, with the preverb आ'
-  - form: कन्ये
-    lemma: कन्या
-    gloss: 'the two girls'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: नामनी
-    lemma: नामन्
-    gloss: 'two names'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: लिखतः
-    lemma: लिख्
-    gloss: 'write'
-    notes:
-    - term: लट्
-      en: 'present, dual (तुदादि)'
+      en: 'present, plural'

@@ -2,176 +2,253 @@
   kind: graded
   segment: 179
   order: 2
-  sentence: 'शिष्यौ गुरुभ्याम् नमतः। जनाः मुनिभ्याम् राजभ्याम् च नमन्ति। राजा देवीभ्याम् माले यच्छति। बालाभ्याम् कन्दुकः पतति। लताभ्याम् पुष्पाणि पतन्ति। वनाभ्याम् मृगौ आगच्छतः। भूमिभ्याम् धान्यम् आगच्छति। बालौ पितृभ्याम् सह, कन्ये मातृभ्याम् सह क्रीडतः। सर्वे शुद्धाभ्याम् मनोभ्याम् देवम् पूजयन्ति।'
-  translation: 'Two pupils bow to their two teachers. The people bow to the two sages and the two kings. The king gives garlands to the two queens. A ball falls from the two boys. Flowers fall from the two creepers. Two deer come from the two forests. Grain comes from the two fields. The two boys play with their fathers, the two girls with their mothers. All worship the god with pure minds.'
-  teaches: 'The -भ्याम् dual in its other two cases — dative (गुरुभ्याम्, मुनिभ्याम्, राजभ्याम्, देवीभ्याम्), ablative (बालाभ्याम्, लताभ्याम्, वनाभ्याम्, भूमिभ्याम्) — and instrumental पितृभ्याम्, मातृभ्याम्, मनोभ्याम्.'
+  sentence: 'ऋषी प्रसन्नाभ्याम् मनोभ्याम् अतिथीन् पूजयतः। तौ राजभ्याम् आसने यच्छतः, देवीभ्याम् पुष्पाणि, गुरुभ्याम् फलानि। नृपौ अपि मुनिभ्याम् ते गावौ यच्छतः। ततः भोजनम्। पाकशालाभ्याम् अन्नम् आगच्छति, अतिथयः च पङ्क्त्योः उपविशन्ति। ऋषेः कन्ये कुमाराभ्याम् सह क्रीडतः, भ्रातृभ्याम् इव। कुमारौ अपि ताभ्याम् सह क्रीडतः, स्वसृभ्याम् इव। भोजनात् परम् सर्वे पङ्क्तिभ्याम् उत्तिष्ठन्ति।'
+  translation: 'The sages honour their guests with glad hearts. They give seats to the two kings, flowers to the two queens, fruit to the two teachers. The kings in turn give the two sages those two cows. Then the meal. Food comes from the two kitchens, and the guests sit in two rows. The sage''s daughters play with the princes as if with brothers, and the princes play with them as if with sisters. After the meal everyone rises from the two rows.'
+  teaches: 'The visit, part 2 — the dual''s one oblique form, -भ्याम्, in three cases: the dative of giving (राजभ्याम्, देवीभ्याम्, गुरुभ्याम्, मुनिभ्याम्), the instrumental of manner and company (मनोभ्याम्, भ्रातृभ्याम्, स्वसृभ्याम्), the ablative of source (पाकशालाभ्याम्, पङ्क्तिभ्याम्).'
   words:
-  - form: शिष्यौ
-    lemma: शिष्य
-    gloss: 'two pupils'
+  - form: ऋषी
+    lemma: ऋषि
+    gloss: 'the sages'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: गुरुभ्याम्
-    lemma: गुरु
-    gloss: 'to the two teachers'
+  - form: प्रसन्नाभ्याम्
+    lemma: प्रसन्न
+    gloss: 'glad'
     notes:
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: नमतः
-    lemma: नम्
-    gloss: 'bow'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: विशेषण
+      en: 'qualifying मनोभ्याम्'
+    - term: करण
+      en: 'instrument'
+    - term: तृतीया
+      en: 'instrumental dual'
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: मनोभ्याम्
+    lemma: मनस्
+    gloss: 'with hearts'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: द्विवचन
+      en: 'dual'
+    - term: करण
+      en: 'the manner — two sages, two hearts'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: अतिथीन्
+    lemma: अतिथि
+    gloss: 'their guests'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: पूजयतः
+    lemma: पूज्
+    gloss: 'honour'
     notes:
     - term: लट्
-      en: 'present, dual'
-  - form: जनाः
-    lemma: जन
-    gloss: 'the people'
+      en: 'present (चुरादि), dual'
+    - term: प्रथमपुरुष
+      en: '3rd person'
+    - term: द्विवचन
+      en: 'dual'
+    - term: परस्मैपद
+      en: 'parasmaipada'
+    - term: चुरादि
+      en: 'gaṇa'
+  - form: तौ
+    lemma: तद्
+    gloss: 'they'
     notes:
+    - term: सर्वनाम
+      en: 'pronoun'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative plural'
-  - form: मुनिभ्याम्
-    lemma: मुनि
-    gloss: 'to the two sages'
-    notes:
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
+      en: 'nominative dual'
   - form: राजभ्याम्
     lemma: राजन्
-    gloss: 'to the two kings'
+    gloss: 'to the kings'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
     - term: सम्प्रदान
       en: 'recipient'
     - term: चतुर्थी
       en: 'dative dual'
-  - form: च
-    lemma: च
-    gloss: 'and'
+  - form: आसने
+    lemma: आसन
+    gloss: 'seats'
     notes:
-    - term: अव्यय
-      en: 'indeclinable'
-  - form: नमन्ति
-    lemma: नम्
-    gloss: 'bow'
-    notes:
-    - term: लट्
-      en: 'present, plural'
-  - form: राजा
-    lemma: राजन्
-    gloss: 'the king'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: देवीभ्याम्
-    lemma: देवी
-    gloss: 'to the two queens'
-    notes:
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: माले
-    lemma: माला
-    gloss: 'garlands'
-    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
       en: 'accusative dual'
-  - form: यच्छति
-    lemma: दा
-    gloss: 'gives'
+  - form: यच्छतः
+    lemma: यम्
+    gloss: 'give'
     notes:
     - term: लट्
-      en: 'present (दा → यच्छ)'
-  - form: बालाभ्याम्
-    lemma: बाल
-    gloss: 'from the two boys'
+      en: 'present, dual (यम् → यच्छ)'
+  - form: देवीभ्याम्
+    lemma: देवी
+    gloss: 'to the queens'
     notes:
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: कन्दुकः
-    lemma: कन्दुक
-    gloss: 'a ball'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: पतति
-    lemma: पत्
-    gloss: 'falls'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: लताभ्याम्
-    lemma: लता
-    gloss: 'from the two creepers'
-    notes:
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
   - form: पुष्पाणि
     lemma: पुष्प
     gloss: 'flowers'
     notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: पतन्ति
-    lemma: पत्
-    gloss: 'fall'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: गुरुभ्याम्
+    lemma: गुरु
+    gloss: 'to the teachers'
     notes:
-    - term: लट्
-      en: 'present, plural'
-  - form: वनाभ्याम्
-    lemma: वन
-    gloss: 'from the two forests'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: फलानि
+    lemma: फल
+    gloss: 'fruit'
     notes:
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: मृगौ
-    lemma: मृग
-    gloss: 'two deer'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: नृपौ
+    lemma: नृप
+    gloss: 'the kings'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: आगच्छतः
-    lemma: गम्
-    gloss: 'come'
+  - form: अपि
+    lemma: अपि
+    gloss: 'in turn'
     notes:
-    - term: लट्
-      en: 'present, dual, with the preverb आ'
-  - form: भूमिभ्याम्
-    lemma: भूमि
-    gloss: 'from the two fields'
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: मुनिभ्याम्
+    lemma: मुनि
+    gloss: 'to the sages'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: ते
+    lemma: तद्
+    gloss: 'those two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: गावौ
+    lemma: गो
+    gloss: 'cows'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: ततः
+    lemma: ततः
+    gloss: 'then'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — sequence'
+  - form: भोजनम्
+    lemma: भोजन
+    gloss: 'the meal'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: पाकशालाभ्याम्
+    lemma: पाकशाला
+    gloss: 'from the two kitchens'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
     - term: अपादान
       en: 'source'
     - term: पञ्चमी
       en: 'ablative dual'
-  - form: धान्यम्
-    lemma: धान्य
-    gloss: 'grain'
+  - form: अन्नम्
+    lemma: अन्न
+    gloss: 'food'
     notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
@@ -182,18 +259,72 @@
     notes:
     - term: लट्
       en: 'present, with the preverb आ'
-  - form: बालौ
-    lemma: बाल
-    gloss: 'the two boys'
+  - form: अतिथयः
+    lemma: अतिथि
+    gloss: 'the guests'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: पङ्क्त्योः
+    lemma: पङ्क्ति
+    gloss: 'in two rows'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: उपविशन्ति
+    lemma: विश्
+    gloss: 'sit'
+    notes:
+    - term: लट्
+      en: 'present, plural, with the preverb उप'
+  - form: ऋषेः
+    lemma: ऋषि
+    gloss: 'the sage''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: कन्ये
+    lemma: कन्या
+    gloss: 'daughters'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: पितृभ्याम्
-    lemma: पितृ
-    gloss: 'with their fathers'
+  - form: कुमाराभ्याम्
+    lemma: कुमार
+    gloss: 'the princes'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
     - term: सहार्थ
       en: 'accompaniment, with सह'
     - term: तृतीया
@@ -204,66 +335,107 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — governs the तृतीया'
-  - form: कन्ये
-    lemma: कन्या
-    gloss: 'the two girls'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: मातृभ्याम्
-    lemma: मातृ
-    gloss: 'with their mothers'
-    notes:
-    - term: सहार्थ
-      en: 'accompaniment, with सह'
-    - term: तृतीया
-      en: 'instrumental dual'
   - form: क्रीडतः
     lemma: क्रीड्
     gloss: 'play'
     notes:
     - term: लट्
       en: 'present, dual'
+  - form: भ्रातृभ्याम्
+    lemma: भ्रातृ
+    gloss: 'brothers'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सहार्थ
+      en: 'in comparison, with इव'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: इव
+    lemma: इव
+    gloss: 'as if'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — comparison'
+  - form: कुमारौ
+    lemma: कुमार
+    gloss: 'the princes'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: ताभ्याम्
+    lemma: तद्
+    gloss: 'them'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: स्वसृभ्याम्
+    lemma: स्वसृ
+    gloss: 'sisters'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सहार्थ
+      en: 'in comparison, with इव'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: भोजनात्
+    lemma: भोजन
+    gloss: 'the meal'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: अपादान
+      en: 'governed by परम् — "after"'
+    - term: पञ्चमी
+      en: 'ablative'
+  - form: परम्
+    lemma: परम्
+    gloss: 'after'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the पञ्चमी'
   - form: सर्वे
     lemma: सर्व
-    gloss: 'all'
+    gloss: 'everyone'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्तृ
-      en: 'the worshippers — सर्व standing alone'
+      en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
-  - form: शुद्धाभ्याम्
-    lemma: शुद्ध
-    gloss: 'pure'
+  - form: पङ्क्तिभ्याम्
+    lemma: पङ्क्ति
+    gloss: 'from the two rows'
     notes:
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: तृतीया
-      en: 'instrumental dual'
-    rel:
-    - kind: विशेषण
-      to: 32
-  - form: मनोभ्याम्
-    lemma: मनस्
-    gloss: 'with minds'
-    notes:
-    - term: करण
-      en: 'the instrument — अस् → ओ before भ्याम्'
-    - term: तृतीया
-      en: 'instrumental dual'
-  - form: देवम्
-    lemma: देव
-    gloss: 'the god'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: पूजयन्ति
-    lemma: पूज्
-    gloss: 'worship'
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: उत्तिष्ठन्ति
+    lemma: स्था
+    gloss: 'rise'
     notes:
     - term: लट्
-      en: 'present (चुरादि)'
+      en: 'present, plural, with the preverb उद्'
