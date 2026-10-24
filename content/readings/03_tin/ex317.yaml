@@ -2,18 +2,34 @@
   kind: graded
   segment: 188
   order: 2
-  sentence: 'ऋषयः ऊचुः — हे रामलक्ष्मणौ, युवाम् राक्षसानाम् वनम् जग्मथुः इति वयम् शुश्रुम। सैनिकाः, यूयम् अपि तत्र जग्म इति जनाः वदन्ति। आवाभ्याम् राक्षसाः बिभ्यति, युवाभ्याम् अपि। यस्मै दीयते, तस्मै सः कुप्यति? याभ्याम् वृक्षाभ्याम् फलम् पतति, ययोः वृक्षयोः पक्षिणः वसन्ति, आभ्याम् अनयोः च दृश्यन्ते। काभ्याम् त्वम् फलानि ददासि? एताभ्याम्। एते लते पश्य।'
-  translation: 'The sages said: "O Rāma and Lakṣmaṇa, we have heard that you two went to the demons'' forest. Soldiers, people say you went there too." The demons fear us two, and you two as well. Is he angry with the one to whom it is given? From the two trees from which the fruit falls, in which two trees the birds live — from these two, in these two, they are seen. "To which two do you give fruit?" "To these two." "Look at these two creepers."'
-  teaches: 'The perfect''s last persons (जग्मथुः, जग्म, शुश्रुम), and the remaining pronoun cells — आवाभ्याम्, युवाभ्याम् (ablative), यस्मै, याभ्याम्, ययोः, आभ्याम्, अनयोः, काभ्याम्, एताभ्याम्, एते.'
+  sentence: 'ऋषयः रामलक्ष्मणौ ऊचुः — हे राजपुत्रौ, युवाम् राक्षसानाम् वनम् जग्मथुः इति वयम् शुश्रुम। हे सैनिकाः, यूयम् अपि तत्र जग्म। राक्षसाः युवाभ्याम् बिभ्यति। रामः उवाच — आवाभ्याम् ते पलायन्ते, न अन्येभ्यः। ऋषयः ऊचुः — याभ्याम् राक्षसाः पलायन्ते, ययोः धर्मः वसति, एताभ्याम् नमः। एकः शिष्यः पप्रच्छ — काभ्याम् फलानि यच्छामः? गुरुः उवाच — एताभ्याम् राजपुत्राभ्याम्। आभ्याम् वृक्षाभ्याम् फलानि आनयत। हे राजपुत्रौ, अनयोः पर्णशालयोः वसतम्।'
+  translation: 'The sages said to Rāma and Lakṣmaṇa: "Princes, we have heard that you two went into the demons'' forest. Soldiers, you went there too. The demons fear you two." Rāma said: "They flee from us two, not from others." The sages said: "Those from whom the demons flee, in whom dharma dwells — homage to these two." A pupil asked: "To which two shall we give fruit?" The teacher said: "To these two princes. Bring fruit from these two trees. Princes, stay in these two leaf-huts."'
+  teaches: 'The perfect of report — जग्मथुः, जग्म, शुश्रुम: the sages heard it, they did not see it — and the dual pronouns in a relative-and-correlative maxim: याभ्याम्, ययोः … एताभ्याम्; युवाभ्याम्, आवाभ्याम् (ablative); काभ्याम्; आभ्याम्, अनयोः.'
   words:
   - form: ऋषयः
     lemma: ऋषि
     gloss: 'the sages'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
+  - form: रामलक्ष्मणौ
+    lemma: रामलक्ष्मण
+    gloss: 'Rāma and Lakṣmaṇa'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'the one addressed — वच् with the द्वितीया'
+    - term: द्वितीया
+      en: 'accusative dual'
   - form: ऊचुः
     lemma: वच्
     gloss: 'said'
@@ -26,10 +42,14 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — address'
-  - form: रामलक्ष्मणौ
-    lemma: रामलक्ष्मण
-    gloss: 'Rāma and Lakṣmaṇa'
+  - form: राजपुत्रौ
+    lemma: राजपुत्र
+    gloss: 'princes'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
     - term: सम्बोधन
       en: 'vocative dual'
   - form: युवाम्
@@ -38,6 +58,8 @@
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
@@ -46,14 +68,22 @@
     lemma: राक्षस
     gloss: 'the demons'''
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: सम्बन्ध
       en: 'relation'
     - term: षष्ठी
       en: 'genitive plural'
   - form: वनम्
     lemma: वन
-    gloss: 'to the forest'
+    gloss: 'forest'
     notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
     - term: कर्मन्
       en: 'the goal of motion'
     - term: द्वितीया
@@ -63,10 +93,10 @@
     gloss: 'went'
     notes:
     - term: लिट्
-      en: 'perfect, 2nd person dual — heard of, not seen'
+      en: 'perfect (परोक्ष — reported, not witnessed), 2nd person dual'
   - form: इति
     lemma: इति
-    gloss: 'thus'
+    gloss: 'that'
     notes:
     - term: अव्यय
       en: 'indeclinable — closes the report'
@@ -76,28 +106,36 @@
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: बहुवचन
+      en: 'number'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
   - form: शुश्रुम
     lemma: श्रु
-    gloss: 'heard'
+    gloss: 'have heard'
     notes:
     - term: लिट्
-      en: 'perfect, 1st person plural'
+      en: 'perfect (परोक्ष — reported, not witnessed), 1st person plural'
   - form: सैनिकाः
     lemma: सैनिक
     gloss: 'soldiers'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: सम्बोधन
       en: 'vocative plural'
   - form: यूयम्
     lemma: युष्मद्
-    gloss: 'you (all)'
+    gloss: 'you'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: बहुवचन
+      en: 'number'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
@@ -119,256 +157,325 @@
     gloss: 'went'
     notes:
     - term: लिट्
-      en: 'perfect, 2nd person plural'
-  - form: जनाः
-    lemma: जन
-    gloss: 'people'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: वदन्ति
-    lemma: वद्
-    gloss: 'say'
-    notes:
-    - term: लट्
-      en: 'present, plural'
-  - form: आवाभ्याम्
-    lemma: अस्मद्
-    gloss: 'us two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अपादान
-      en: 'the cause of fear'
-    - term: पञ्चमी
-      en: 'ablative dual'
+      en: 'perfect (परोक्ष — reported, not witnessed), 2nd person plural'
   - form: राक्षसाः
     lemma: राक्षस
     gloss: 'the demons'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
-  - form: बिभ्यति
-    lemma: भी
-    gloss: 'fear'
-    notes:
-    - term: लट्
-      en: 'present, plural'
   - form: युवाभ्याम्
     lemma: युष्मद्
     gloss: 'you two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
     - term: अपादान
-      en: 'the cause of fear'
+      en: 'what is feared (1.4.25)'
     - term: पञ्चमी
       en: 'ablative dual'
-  - form: यस्मै
-    lemma: यद्
-    gloss: 'to whom'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative'
-  - form: दीयते
-    lemma: दा
-    gloss: 'it is given'
-    notes:
-    - term: लट्
-      en: 'present, passive'
-  - form: तस्मै
-    lemma: तद्
-    gloss: 'with that one'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्प्रदान
-      en: 'the one angered at — क्रुध्/कुप् take the चतुर्थी (1.4.37)'
-    - term: चतुर्थी
-      en: 'dative'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: कुप्यति
-    lemma: कुप्
-    gloss: 'is angry'
-    notes:
-    - term: लट्
-      en: 'present (दिवादि)'
-  - form: याभ्याम्
-    lemma: यद्
-    gloss: 'from which two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: वृक्षाभ्याम्
-    lemma: वृक्ष
-    gloss: 'trees'
-    notes:
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: फलम्
-    lemma: फल
-    gloss: 'the fruit'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: पतति
-    lemma: पत्
-    gloss: 'falls'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: ययोः
-    lemma: यद्
-    gloss: 'in which two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: वृक्षयोः
-    lemma: वृक्ष
-    gloss: 'trees'
-    notes:
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: पक्षिणः
-    lemma: पक्षिन्
-    gloss: 'the birds'
-    notes:
-    - term: कर्मन्
-      en: 'the ones seen — the प्रथमा of the passive दृश्यन्ते'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: वसन्ति
-    lemma: वस्
-    gloss: 'live'
+  - form: बिभ्यति
+    lemma: भी
+    gloss: 'fear'
     notes:
     - term: लट्
       en: 'present, plural'
-  - form: आभ्याम्
-    lemma: इदम्
-    gloss: 'from these two'
+  - form: रामः
+    lemma: राम
+    gloss: 'Rāma'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: अनयोः
-    lemma: इदम्
-    gloss: 'in these two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: च
-    lemma: च
-    gloss: 'and'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable'
-  - form: दृश्यन्ते
-    lemma: दृश्
-    gloss: 'are seen'
-    notes:
-    - term: लट्
-      en: 'present, passive'
-  - form: काभ्याम्
-    lemma: किम्
-    gloss: 'to which two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: त्वम्
-    lemma: युष्मद्
-    gloss: 'you'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: फलानि
-    lemma: फल
-    gloss: 'fruit'
+  - form: उवाच
+    lemma: वच्
+    gloss: 'said'
     notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative plural'
-  - form: ददासि
-    lemma: दा
-    gloss: 'give'
+    - term: लिट्
+      en: 'perfect'
+    - term: प्रथमपुरुष
+      en: '3rd person'
+  - form: आवाभ्याम्
+    lemma: अस्मद्
+    gloss: 'from us two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: ते
+    lemma: तद्
+    gloss: 'they'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: बहुवचन
+      en: 'number'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: पलायन्ते
+    lemma: अय्
+    gloss: 'flee'
     notes:
     - term: लट्
-      en: 'present, 2nd person'
+      en: 'present, with परा (परा + अय् → पलाय, 8.2.19)'
+    - term: प्रथमपुरुष
+      en: '3rd person'
+    - term: बहुवचन
+      en: 'plural'
+    - term: आत्मनेपद
+      en: 'ātmanepada'
+    - term: भ्वादि
+      en: 'gaṇa'
+  - form: न
+    lemma: न
+    gloss: 'not'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — negation'
+  - form: अन्येभ्यः
+    lemma: अन्य
+    gloss: 'from others'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative plural'
+  - form: याभ्याम्
+    lemma: यद्
+    gloss: 'from whom (two)'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: ययोः
+    lemma: यद्
+    gloss: 'in whom (two)'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: धर्मः
+    lemma: धर्म
+    gloss: 'dharma'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वसति
+    lemma: वस्
+    gloss: 'dwells'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: एताभ्याम्
     lemma: एतद्
     gloss: 'to these two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
     - term: सम्प्रदान
       en: 'recipient'
     - term: चतुर्थी
       en: 'dative dual'
-  - form: एते
-    lemma: एतद्
+  - form: नमः
+    lemma: नमस्
+    gloss: 'homage'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the चतुर्थी (2.3.16)'
+  - form: एकः
+    lemma: एक
+    gloss: 'a'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying the noun'
+    - term: प्रथमा
+      en: 'nominative'
+    rel:
+    - kind: विशेषण
+      to: 34
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: 'pupil'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: पप्रच्छ
+    lemma: प्रच्छ्
+    gloss: 'asked'
+    notes:
+    - term: लिट्
+      en: 'perfect'
+    - term: प्रथमपुरुष
+      en: '3rd person'
+    - term: एकवचन
+      en: 'singular'
+  - form: काभ्याम्
+    lemma: किम्
+    gloss: 'to which two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: फलानि
+    lemma: फल
+    gloss: 'fruit'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: यच्छामः
+    lemma: यम्
+    gloss: 'shall we give'
+    notes:
+    - term: लट्
+      en: 'present, 1st person plural'
+  - form: गुरुः
+    lemma: गुरु
+    gloss: 'the teacher'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: राजपुत्राभ्याम्
+    lemma: राजपुत्र
+    gloss: 'princes'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: आभ्याम्
+    lemma: इदम्
     gloss: 'these two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: लते
-    lemma: लता
-    gloss: 'creepers'
+    - term: द्विवचन
+      en: 'number'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: वृक्षाभ्याम्
+    lemma: वृक्ष
+    gloss: 'from trees'
     notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: पश्य
-    lemma: दृश्
-    gloss: 'look at'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: आनयत
+    lemma: नी
+    gloss: 'bring'
     notes:
     - term: लोट्
-      en: 'imperative, 2nd person singular'
+      en: 'imperative, 2nd person plural, with आ'
+    - term: मध्यमपुरुष
+      en: '2nd person'
+    - term: बहुवचन
+      en: 'plural'
+    - term: परस्मैपद
+      en: 'parasmaipada'
+  - form: अनयोः
+    lemma: इदम्
+    gloss: 'these two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: पर्णशालयोः
+    lemma: पर्णशाला
+    gloss: 'in leaf-huts'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: वसतम्
+    lemma: वस्
+    gloss: 'stay'
+    notes:
+    - term: लोट्
+      en: 'imperative, 2nd person dual'

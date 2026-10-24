@@ -2,86 +2,144 @@
   kind: graded
   segment: 183
   order: 6
-  sentence: 'हे वाचः, यूयम् सत्याः भवत। भ्रमराः मधुभ्यः न दूरम् गच्छन्ति।'
-  translation: 'O words, may you be true. The bees do not go far from the honeys.'
-  teaches: 'वाचः as a vocative plural, and the ablative plural मधुभ्यः.'
+  sentence: 'पितामहः पुनः वेदम् पठति — हे ऋचः, आगच्छत। मन्त्राः आगच्छन्ति। सः वेदम् सर्वेभ्यः वस्तुभ्यः श्रेष्ठम् मन्यते।'
+  translation: 'Grandfather recites the Veda again — "Verses, come!" The mantras come back. He holds the Veda dearer than all things.'
+  teaches: 'Mālatī, part 5 — the verses return: ऋचः addressed, and वस्तुभ्यः as the ablative of comparison.'
   words:
+  - form: पितामहः
+    lemma: पितामह
+    gloss: 'Grandfather'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: पुनः
+    lemma: पुनर्
+    gloss: 'again'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — repetition'
+  - form: वेदम्
+    lemma: वेद
+    gloss: 'the Veda'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: पठति
+    lemma: पठ्
+    gloss: 'recites'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: हे
     lemma: हे
     gloss: 'O'
     notes:
     - term: अव्यय
       en: 'indeclinable — address'
-  - form: वाचः
-    lemma: वाच्
-    gloss: 'O words'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: सम्बोधन
-      en: 'vocative plural'
-  - form: यूयम्
-    lemma: युष्मद्
-    gloss: 'you'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: सत्याः
-    lemma: सत्य
-    gloss: 'true'
+  - form: ऋचः
+    lemma: ऋच्
+    gloss: 'verses'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
     - term: बहुवचन
       en: 'plural'
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 2
-  - form: भवत
-    lemma: भू
-    gloss: 'be'
+    - term: सम्बोधन
+      en: 'vocative plural'
+  - form: आगच्छत
+    lemma: गम्
+    gloss: 'come'
     notes:
     - term: लोट्
-      en: 'imperative, 2nd person plural'
-  - form: भ्रमराः
-    lemma: भ्रमर
-    gloss: 'the bees'
+      en: 'imperative, 2nd person plural, with आ'
+    - term: मध्यमपुरुष
+      en: '2nd person'
+    - term: बहुवचन
+      en: 'plural'
+    - term: परस्मैपद
+      en: 'parasmaipada'
+  - form: मन्त्राः
+    lemma: मन्त्र
+    gloss: 'the mantras'
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
-  - form: मधुभ्यः
-    lemma: मधु
-    gloss: 'from the honeys'
+  - form: आगच्छन्ति
+    lemma: गम्
+    gloss: 'come back'
+    notes:
+    - term: लट्
+      en: 'present, plural, with the preverb आ'
+  - form: सः
+    lemma: तद्
+    gloss: 'he'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: एकवचन
+      en: 'number'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: सर्वेभ्यः
+    lemma: सर्व
+    gloss: 'than all'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
     - term: अपादान
-      en: 'far from — दूर takes the पञ्चमी (2.3.35)'
+      en: 'source'
     - term: पञ्चमी
       en: 'ablative plural'
-  - form: न
-    lemma: न
-    gloss: 'not'
+  - form: वस्तुभ्यः
+    lemma: वस्तु
+    gloss: 'things'
     notes:
-    - term: अव्यय
-      en: 'indeclinable — negation'
-  - form: दूरम्
-    lemma: दूरम्
-    gloss: 'far'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: अपादान
+      en: 'the standard of comparison'
+    - term: पञ्चमी
+      en: 'ablative plural'
+  - form: श्रेष्ठम्
+    lemma: श्रेष्ठ
+    gloss: 'dearer'
     notes:
-    - term: अव्यय
-      en: 'indeclinable — place'
-  - form: गच्छन्ति
-    lemma: गम्
-    gloss: 'go'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: विशेषण
+      en: 'qualifying वेदम्'
+    - term: द्वितीया
+      en: 'accusative'
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: मन्यते
+    lemma: मन्
+    gloss: 'holds'
     notes:
     - term: लट्
-      en: 'present, plural'
+      en: 'present (दिवादि, आत्मनेपद)'

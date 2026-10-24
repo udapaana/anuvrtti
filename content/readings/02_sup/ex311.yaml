@@ -2,14 +2,292 @@
   kind: graded
   segment: 185
   order: 1
-  sentence: 'देवदत्तः वदति — मित्र, माता नौ पश्यति, आवाभ्याम् च फलानि यच्छति। अस्मत् मा बिभीत, सा बालान् वदति। सा आवयोः स्निह्यति। यज्ञदत्तः वदति — युवाभ्याम् सह अहम् अपि क्रीडामि। गुरुः वाम् ग्रन्थौ यच्छति, युवयोः च प्रसीदति। युष्मत् न कः अपि बिभेति। अनयोः बालयोः पिता राजा, आभ्याम् च सः धनम् ददाति। ताभ्याम् राज्ञः भयम् न अस्ति। काभ्याम् तत् दूरम् गच्छति? एताभ्याम् एव। कयोः विश्वसिमि? एतयोः।'
-  translation: 'Devadatta says: "Friend, mother sees us two and gives us two fruit. ''Do not be afraid of us,'' she tells the boys. She is fond of us two." Yajñadatta says: "I too play with you two. The teacher gives you two two books, and is pleased with you two. No one is afraid of you." The father of these two boys is the king, and he gives these two money. Those two have no fear of the king. "From which two does it go far?" "From these two." "In which two do I trust?" "In these two."'
-  teaches: 'The last cells of the personal pronouns'' duals and plurals — the enclitic नौ and वाम्, आवाभ्याम्, अस्मत्, आवयोः, युवाभ्याम्, युवयोः, युष्मत् — and इदम्, तद्, किम्, एतद् in the dual.'
+  sentence: 'रात्रौ द्वौ छात्रौ वने मार्गम् न जानीतः। ते एकम् कुटीरम् पश्यतः, यत्र वृद्धौ वसतः। छात्रौ वदतः — आवाभ्याम् जलम् यच्छतम्। वृद्धः पृच्छति — युवाम् काभ्याम् ग्रामाभ्याम् आगच्छथः? छात्रौ वदतः — नद्याः पारे ताभ्याम् ग्रामाभ्याम्। वृद्धा वदति — आभ्याम् बालाभ्याम् भोजनम् आनय। एतयोः कटयोः युवाम् स्वपितम्। छात्रौ हसतः — कयोः कटयोः? छात्रौ पृच्छतः — प्रातः युवाम् आवाम् ग्रामम् नेष्यथः? वृद्धौ वदतः — आम्; एताभ्याम् वृक्षाभ्याम् परम् ग्रामः। आवयोः विश्वसितम्; आवयोः स्नेहः युवयोः। छात्रौ वदतः — युवाभ्याम् नमः। वृद्धः हसति — न अस्मत्, न युष्मत् — धर्मात् एव सुखम्।'
+  translation: 'At night two students cannot find the path in the forest. They see a hut where an old couple lives. The students say: "Give us water." The old man asks: "From which two villages have you come?" The students say: "From those two villages across the river." The old woman says: "Bring food for these two boys. You two sleep on these two mats." The students laugh: "On which two mats?" The students ask: "Will you two take us to the village in the morning?" The old couple say: "Yes; the village lies beyond these two trees. Trust us two; our affection is with you two." The students say: "Homage to you two." The old man laughs: "Not from us, not from you — happiness comes from dharma alone."'
+  teaches: 'The dual pronouns as a dialogue needs them — two speaking to two: आवाभ्याम्, आवाम्, आवयोः, युवयोः, युवाभ्याम्; काभ्याम्, कयोः, ताभ्याम्, आभ्याम्, एतयोः — and the ablative plurals अस्मत्, युष्मत्.'
   words:
-  - form: देवदत्तः
-    lemma: देवदत्त
-    gloss: 'Devadatta'
+  - form: रात्रौ
+    lemma: रात्रि
+    gloss: 'at night'
     notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: द्वौ
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying the noun'
+    - term: प्रथमा
+      en: 'nominative dual'
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: छात्रौ
+    lemma: छात्र
+    gloss: 'students'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: वने
+    lemma: वन
+    gloss: 'in the forest'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: मार्गम्
+    lemma: मार्ग
+    gloss: 'the path'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: न
+    lemma: न
+    gloss: 'not'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — negation'
+  - form: जानीतः
+    lemma: ज्ञा
+    gloss: 'know'
+    notes:
+    - term: लट्
+      en: 'present (क्र्यादि), dual'
+  - form: ते
+    lemma: तद्
+    gloss: 'they'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: एकम्
+    lemma: एक
+    gloss: 'a'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying the noun'
+    - term: द्वितीया
+      en: 'accusative'
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: कुटीरम्
+    lemma: कुटीर
+    gloss: 'hut'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: पश्यतः
+    lemma: दृश्
+    gloss: 'see'
+    notes:
+    - term: लट्
+      en: 'present, dual'
+  - form: यत्र
+    lemma: यत्र
+    gloss: 'where'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — place'
+  - form: वृद्धौ
+    lemma: वृद्ध
+    gloss: 'an old couple'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: वसतः
+    lemma: वस्
+    gloss: 'live'
+    notes:
+    - term: लट्
+      en: 'present, dual'
+  - form: वदतः
+    lemma: वद्
+    gloss: 'say'
+    notes:
+    - term: लट्
+      en: 'present, dual'
+  - form: आवाभ्याम्
+    lemma: अस्मद्
+    gloss: 'to us two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: जलम्
+    lemma: जल
+    gloss: 'water'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: यच्छतम्
+    lemma: यम्
+    gloss: 'give'
+    notes:
+    - term: लोट्
+      en: 'imperative, 2nd person dual'
+  - form: वृद्धः
+    lemma: वृद्ध
+    gloss: 'the old man'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: पृच्छति
+    lemma: प्रच्छ्
+    gloss: 'asks'
+    notes:
+    - term: लट्
+      en: 'present (प्रच्छ् → पृच्छ)'
+  - form: युवाम्
+    lemma: युष्मद्
+    gloss: 'you two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: काभ्याम्
+    lemma: किम्
+    gloss: 'which two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+    - term: विशेषण
+      en: 'qualifying ग्रामाभ्याम्'
+  - form: ग्रामाभ्याम्
+    lemma: ग्राम
+    gloss: 'from villages'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: आगच्छथः
+    lemma: गम्
+    gloss: 'have come'
+    notes:
+    - term: लट्
+      en: 'present, 2nd person dual, with आ'
+  - form: नद्याः
+    lemma: नदी
+    gloss: 'the river''s'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: पारे
+    lemma: पार
+    gloss: 'across'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: ताभ्याम्
+    lemma: तद्
+    gloss: 'those two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: वृद्धा
+    lemma: वृद्धा
+    gloss: 'the old woman'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
@@ -20,414 +298,311 @@
     notes:
     - term: लट्
       en: 'present'
-  - form: मित्र
-    lemma: मित्र
-    gloss: 'friend'
+  - form: आभ्याम्
+    lemma: इदम्
+    gloss: 'these two'
     notes:
-    - term: सम्बोधन
-      en: 'vocative'
-  - form: माता
-    lemma: मातृ
-    gloss: 'mother'
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: बालाभ्याम्
+    lemma: बाल
+    gloss: 'for boys'
     notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: नौ
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: भोजनम्
+    lemma: भोजन
+    gloss: 'food'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: आनय
+    lemma: नी
+    gloss: 'bring'
+    notes:
+    - term: लोट्
+      en: 'imperative, with the preverb आ'
+  - form: एतयोः
+    lemma: एतद्
+    gloss: 'these two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: कटयोः
+    lemma: कट
+    gloss: 'on mats'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: स्वपितम्
+    lemma: स्वप्
+    gloss: 'sleep'
+    notes:
+    - term: लोट्
+      en: 'imperative (अदादि), 2nd person dual'
+  - form: हसतः
+    lemma: हस्
+    gloss: 'laugh'
+    notes:
+    - term: लट्
+      en: 'present, dual'
+  - form: कयोः
+    lemma: किम्
+    gloss: 'which two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: पृच्छतः
+    lemma: प्रच्छ्
+    gloss: 'ask'
+    notes:
+    - term: लट्
+      en: 'present, dual'
+  - form: प्रातः
+    lemma: प्रातर्
+    gloss: 'in the morning'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — time'
+  - form: आवाम्
     lemma: अस्मद्
     gloss: 'us two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
-    - term: कर्मन्
-      en: 'what is seen — the enclitic dual'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: पश्यति
-    lemma: दृश्
-    gloss: 'sees'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: आवाभ्याम्
-    lemma: अस्मद्
-    gloss: 'to us two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: च
-    lemma: च
-    gloss: 'and'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable'
-  - form: फलानि
-    lemma: फल
-    gloss: 'fruit'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative plural'
-  - form: यच्छति
-    lemma: दा
-    gloss: 'gives'
-    notes:
-    - term: लट्
-      en: 'present (दा → यच्छ)'
-  - form: अस्मत्
-    lemma: अस्मद्
-    gloss: 'of us'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अपादान
-      en: 'the cause of fear'
-    - term: पञ्चमी
-      en: 'ablative plural'
-  - form: मा
-    lemma: मा
-    gloss: 'do not'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — prohibition'
-  - form: बिभीत
-    lemma: भी
-    gloss: 'be afraid'
-    notes:
-    - term: लोट्
-      en: 'imperative, 2nd person plural'
-  - form: सा
-    lemma: तद्
-    gloss: 'she'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: बालान्
-    lemma: बाल
-    gloss: 'the boys'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative plural'
-  - form: आवयोः
-    lemma: अस्मद्
-    gloss: 'toward us two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अधिकरण
-      en: 'the object of affection'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: स्निह्यति
-    lemma: स्निह्
-    gloss: 'is fond of'
-    notes:
-    - term: लट्
-      en: 'present (दिवादि)'
-  - form: यज्ञदत्तः
-    lemma: यज्ञदत्त
-    gloss: 'Yajñadatta'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: युवाभ्याम्
-    lemma: युष्मद्
-    gloss: 'with you two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सहार्थ
-      en: 'accompaniment, with सह'
-    - term: तृतीया
-      en: 'instrumental dual'
-  - form: सह
-    lemma: सह
-    gloss: 'with'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — governs the तृतीया'
-  - form: अहम्
-    lemma: अस्मद्
-    gloss: 'I'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: अपि
-    lemma: अपि
-    gloss: 'too'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable'
-  - form: क्रीडामि
-    lemma: क्रीड्
-    gloss: 'play'
-    notes:
-    - term: लट्
-      en: 'present, 1st person'
-  - form: गुरुः
-    lemma: गुरु
-    gloss: 'the teacher'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: वाम्
-    lemma: युष्मद्
-    gloss: 'to you two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्प्रदान
-      en: 'the recipients — the enclitic dual'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: ग्रन्थौ
-    lemma: ग्रन्थ
-    gloss: 'two books'
-    notes:
+    - term: द्विवचन
+      en: 'number'
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
       en: 'accusative dual'
-  - form: युवयोः
-    lemma: युष्मद्
-    gloss: 'with you two'
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: 'to the village'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अधिकरण
-      en: 'the one pleased with'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: प्रसीदति
-    lemma: सद्
-    gloss: 'is pleased'
-    notes:
-    - term: लट्
-      en: 'present, with the preverb प्र'
-  - form: युष्मत्
-    lemma: युष्मद्
-    gloss: 'of you'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अपादान
-      en: 'the cause of fear'
-    - term: पञ्चमी
-      en: 'ablative plural'
-  - form: न
-    lemma: न
-    gloss: 'not'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — negation'
-  - form: कः
-    lemma: किम्
-    gloss: 'anyone'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: बिभेति
-    lemma: भी
-    gloss: 'is afraid'
-    notes:
-    - term: लट्
-      en: 'present (जुहोत्यादि)'
-  - form: अनयोः
-    lemma: इदम्
-    gloss: 'of these two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive dual'
-  - form: बालयोः
-    lemma: बाल
-    gloss: 'boys'''
-    notes:
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive dual'
-  - form: पिता
-    lemma: पितृ
-    gloss: 'father'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: राजा
-    lemma: राजन्
-    gloss: 'the king'
-    notes:
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 34
-  - form: आभ्याम्
-    lemma: इदम्
-    gloss: 'to these two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: धनम्
-    lemma: धन
-    gloss: 'money'
-    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
     - term: कर्मन्
-      en: 'object'
+      en: 'the goal of motion'
     - term: द्वितीया
       en: 'accusative'
-  - form: ददाति
-    lemma: दा
-    gloss: 'gives'
+  - form: नेष्यथः
+    lemma: नी
+    gloss: 'will take'
     notes:
-    - term: लट्
-      en: 'present (जुहोत्यादि)'
-  - form: ताभ्याम्
-    lemma: तद्
-    gloss: 'those two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अपादान
-      en: 'the one in whom fear would be — "for those two"'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: राज्ञः
-    lemma: राजन्
-    gloss: 'of the king'
-    notes:
-    - term: अपादान
-      en: 'the cause of fear'
-    - term: पञ्चमी
-      en: 'ablative'
-  - form: भयम्
-    lemma: भय
-    gloss: 'fear'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: अस्ति
-    lemma: अस्
-    gloss: 'is'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: काभ्याम्
-    lemma: किम्
-    gloss: 'from which two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: तत्
-    lemma: तद्
-    gloss: 'it'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: दूरम्
-    lemma: दूरम्
-    gloss: 'far'
+    - term: लृट्
+      en: 'simple future, 2nd person dual'
+  - form: आम्
+    lemma: आम्
+    gloss: 'yes'
     notes:
     - term: अव्यय
-      en: 'indeclinable — place'
-  - form: गच्छति
-    lemma: गम्
-    gloss: 'goes'
-    notes:
-    - term: लट्
-      en: 'present'
+      en: 'indeclinable — assent'
   - form: एताभ्याम्
     lemma: एतद्
     gloss: 'these two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
     - term: अपादान
       en: 'source'
     - term: पञ्चमी
       en: 'ablative dual'
-  - form: एव
-    lemma: एव
-    gloss: 'just'
+  - form: वृक्षाभ्याम्
+    lemma: वृक्ष
+    gloss: 'trees'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अपादान
+      en: 'governed by परम् — "beyond"'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: परम्
+    lemma: परम्
+    gloss: 'beyond'
     notes:
     - term: अव्यय
-      en: 'indeclinable — emphasis'
-  - form: कयोः
-    lemma: किम्
-    gloss: 'in which two'
+      en: 'indeclinable — governs the पञ्चमी'
+  - form: ग्रामः
+    lemma: ग्राम
+    gloss: 'the village'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: आवयोः
+    lemma: अस्मद्
+    gloss: 'us two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: अधिकरण
+      en: 'the one trusted — विश्वस् takes the सप्तमी'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: विश्वसितम्
+    lemma: श्वस्
+    gloss: 'trust'
+    notes:
+    - term: लोट्
+      en: 'imperative (अदादि), 2nd person dual, with वि'
+    - term: मध्यमपुरुष
+      en: '2nd person'
+    - term: द्विवचन
+      en: 'dual'
+    - term: परस्मैपद
+      en: 'parasmaipada'
+    - term: अदादि
+      en: 'gaṇa'
+  - form: स्नेहः
+    lemma: स्नेह
+    gloss: 'affection'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: युवयोः
+    lemma: युष्मद्
+    gloss: 'with you two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
     - term: अधिकरण
       en: 'location'
     - term: सप्तमी
       en: 'locative dual'
-  - form: विश्वसिमि
-    lemma: श्वस्
-    gloss: 'do I trust'
+  - form: युवाभ्याम्
+    lemma: युष्मद्
+    gloss: 'to you two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: नमः
+    lemma: नमस्
+    gloss: 'homage'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the चतुर्थी (2.3.16)'
+  - form: हसति
+    lemma: हस्
+    gloss: 'laughs'
     notes:
     - term: लट्
-      en: 'present, 1st person, with the preverb वि'
-  - form: एतयोः
-    lemma: एतद्
-    gloss: 'in these two'
+      en: 'present'
+  - form: अस्मत्
+    lemma: अस्मद्
+    gloss: 'from us'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
+    - term: बहुवचन
+      en: 'number'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative plural'
+  - form: युष्मत्
+    lemma: युष्मद्
+    gloss: 'from you'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: बहुवचन
+      en: 'number'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative plural'
+  - form: धर्मात्
+    lemma: धर्म
+    gloss: 'from dharma'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative'
+  - form: एव
+    lemma: एव
+    gloss: 'alone'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — restriction'
+  - form: सुखम्
+    lemma: सुख
+    gloss: 'happiness'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'

@@ -2,16 +2,90 @@
   kind: graded
   segment: 183
   order: 5
-  sentence: 'वाचः शक्तिः महती। मधुभ्याम् मधुरः गन्धः आयाति।'
-  translation: 'The power of speech is great. From the two honeys comes a sweet scent.'
-  teaches: 'वाचः as a genitive, and the ablative dual मधुभ्याम्.'
+  sentence: 'कतिपयैः दिनैः जानुभ्याम् वेदना अपगच्छति। पितामहः वदति — वाचः शक्तिः महती; वैद्यस्य मधुरा वाक् अपि औषधम्।'
+  translation: 'In a few days the pain leaves both knees. Grandfather says: "Great is the power of speech; the doctor''s kind word was medicine too."'
+  teaches: 'Mālatī, part 4 — जानुभ्याम् as ablative (the pain leaves the knees), and वाचः as genitive.'
   words:
+  - form: कतिपयैः
+    lemma: कतिपय
+    gloss: 'a few'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: करण
+      en: 'instrument'
+    - term: तृतीया
+      en: 'instrumental plural'
+  - form: दिनैः
+    lemma: दिन
+    gloss: 'in days'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: करण
+      en: 'the time an action takes (2.3.6)'
+    - term: तृतीया
+      en: 'instrumental plural'
+  - form: जानुभ्याम्
+    lemma: जानु
+    gloss: 'from both knees'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: वेदना
+    lemma: वेदना
+    gloss: 'the pain'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: अपगच्छति
+    lemma: गम्
+    gloss: 'leaves'
+    notes:
+    - term: लट्
+      en: 'present, with the preverb अप'
+  - form: पितामहः
+    lemma: पितामह
+    gloss: 'Grandfather'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: वाचः
     lemma: वाच्
     gloss: 'of speech'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
     - term: सम्बन्ध
       en: 'relation'
     - term: षष्ठी
@@ -22,6 +96,8 @@
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
@@ -33,46 +109,65 @@
     - term: स्त्रीलिङ्ग
       en: 'feminine'
     - term: एकवचन
-      en: 'singular'
+      en: 'number'
     - term: प्रथमा
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 1
-  - form: मधुभ्याम्
-    lemma: मधु
-    gloss: 'from the two honeys'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: मधुरः
-    lemma: मधुर
-    gloss: 'sweet'
+      to: 8
+  - form: वैद्यस्य
+    lemma: वैद्य
+    gloss: 'the doctor''s'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: मधुरा
+    lemma: मधुर
+    gloss: 'kind'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
     - term: विशेषण
-      en: 'qualifying गन्धः'
+      en: 'qualifying वाक्'
     - term: प्रथमा
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 5
-  - form: गन्धः
-    lemma: गन्ध
-    gloss: 'a scent'
+      to: 12
+  - form: वाक्
+    lemma: वाच्
+    gloss: 'word'
     notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: आयाति
-    lemma: या
-    gloss: 'comes'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
     notes:
-    - term: लट्
-      en: 'present, with the preverb आ'
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: औषधम्
+    lemma: औषध
+    gloss: 'medicine'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 12
