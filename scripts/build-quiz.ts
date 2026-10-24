@@ -371,7 +371,18 @@ async function main() {
     const out: Array<[string, string, string]> = [];
     const seen = new Set<string>();
     for (const pratipadika of pratipadikas(stemSlp))
-      for (const lg of LINGAS)
+      for (const lg of LINGAS) {
+        /*
+          An ā-final stem declined as a bare (basic) FEMININE is the paradigm no
+          grammar has — सेना without टाप् gives सेनाः as a nominative singular
+          (see pratipadikas). Offered alongside the real ṭāp declension it made
+          every ā-feminine plural and dual look ambiguous in number: कन्याः
+          "could be singular", कन्ये "could be singular", and वचन went
+          underived on all of them. The masculine basic reading stays (गोपाः,
+          विश्वपाः are real ā-stem masculines), as does the feminine basic
+          ī-stem (धीः, श्रीः).
+        */
+        if ('basic' in pratipadika && /A$/.test(stemSlp) && lg === 'Stri') continue;
         for (const vb of VIBHAKTIS)
           for (const vc of VACANAS) {
             try {
@@ -383,6 +394,7 @@ async function main() {
               out.push([lg, vb, vc]);
             } catch { /* this cell does not derive */ }
           }
+      }
     memo.set(key, out);
     return out;
   }
@@ -830,23 +842,54 @@ async function main() {
 
   /** Every cell of a stem's paradigm, attested or not. Memoised per (stem, linga). */
   const paraMemo = new Map<string, Record<string, string[]>>();
+  /*
+    Which spelling of a stem to decline for its TABLE — the same question
+    cellsFor answers for a single form, and the same arbiter.
+
+    This declined every stem as \`basic\`, so every ā- and ī-feminine the corpus
+    cites with its affix on got the paradigm no grammar has: the rail showed
+    लता's nominative singular as लताः, its instrumental as लता, its dative as
+    लतै, and नदी's nominative as नदीः — and the production quiz, which draws
+    its answer from this table, would have marked लता wrong. A stem cited as
+    सेना or नदी is a \`nyap\` प्रातिपदिक; धी and श्री are \`basic\`. Nothing in
+    the spelling says which, so the one that reproduces more of the stem's
+    attested forms is the table.
+  */
+  const attestedSlp = new Map<string, Set<string>>();
+  for (const [st, fs] of formsByStem) {
+    const k = toSlp1(st);
+    if (!k) continue;
+    attestedSlp.set(k, new Set([...fs].map((f) => toSlp1(f)).filter(Boolean) as string[]));
+  }
   function paradigmOf(stemSlp: string, linga: string): Record<string, string[]> {
     const key = stemSlp + '|' + linga;
     const hit = paraMemo.get(key);
     if (hit) return hit;
-    const out: Record<string, string[]> = {};
-    for (const vb of VIBHAKTIS)
-      for (const vc of VACANAS) {
-        try {
-          const res = v.deriveSubantas({
-            pratipadika: { basic: stemSlp }, linga, vibhakti: vb, vacana: vc
-          });
-          const forms = [...new Set(res.map((p: any) => p.text))] as string[];
-          if (forms.length) out[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = forms.map(toDeva);
-        } catch { /* this cell does not derive for this stem */ }
-      }
-    paraMemo.set(key, out);
-    return out;
+    const tableFor = (pratipadika: Record<string, string>) => {
+      const out: Record<string, string[]> = {};
+      const slps = new Set<string>();
+      for (const vb of VIBHAKTIS)
+        for (const vc of VACANAS) {
+          try {
+            const res = v.deriveSubantas({ pratipadika, linga, vibhakti: vb, vacana: vc });
+            const forms = [...new Set(res.map((p: any) => p.text))] as string[];
+            forms.forEach((f) => slps.add(f));
+            if (forms.length) out[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = forms.map(toDeva);
+          } catch { /* this cell does not derive for this stem */ }
+        }
+      return { out, slps };
+    };
+    const cands = pratipadikas(stemSlp).map(tableFor);
+    const seen = attestedSlp.get(stemSlp) ?? new Set<string>();
+    const score = (c: { slps: Set<string> }) => [...seen].filter((f) => c.slps.has(f)).length;
+    // A tie goes to the affixed (nyap) reading for a feminine: a stem cited as
+    // सेना or देवी is almost always a टाप्/ङीप् formation, and धी/श्री, which are
+    // not, show forms that only the basic spelling produces. Otherwise the
+    // first candidate, the basic spelling, stands.
+    const best = cands.reduce((a, b, i) =>
+      score(b) > score(a) || (score(b) === score(a) && linga === 'Stri' && i > 0) ? b : a);
+    paraMemo.set(key, best.out);
+    return best.out;
   }
 
   // Occurrences grouped by stem, carrying the reading each one came from.
