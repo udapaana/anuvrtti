@@ -2,12 +2,28 @@
   kind: sangraha
   segment: 45
   order: 1
-  sentence: अहम् ग्रामम् गच्छामि। त्वम् अपि ग्रामम् गच्छसि। नरः ग्रामे भवति। नरौ ग्रामम् गच्छतः। बालाः ग्रामात् आगच्छन्ति। अहम् तत्र न अगच्छम्। त्वम् तत्र अगच्छः।
-  translation: I go to the village. You too go to the village. The man is in the village. The two men go to the village. The boys come back from the village. I did not go there. You went there.
-  teaches: |
-    one stem across three persons and three numbers, then the past: गच्छामि,
-    गच्छसि, गच्छति, गच्छतः, आगच्छन्ति, अगच्छम्.
+  sentence: रामः वदति — अहम् ग्रामम् गच्छामि। त्वम् अपि ग्रामम् गच्छसि? कृष्णः वदति — न। अहम् तत्र अगच्छम्; त्वम् न अगच्छः। पश्य — ग्रामात् बालाः आगच्छन्ति, नरौ च ग्रामम् गच्छतः। रामः वदति — अहम् अपि गच्छामि।
+  translation: 'Rāma says: "I am going to the village. Are you going to the village too?" Kṛṣṇa says: "No. I went there; you did not go. Look — the boys are coming back from the village, and two men are going to it." Rāma says: "I am going too."'
+  teaches: 'One verb in three persons, both numbers, and the past: गच्छामि, गच्छसि, गच्छतः, आगच्छन्ति, then अगच्छम्, अगच्छः — two friends deciding who goes to the village.
+
+    '
   words:
+  - form: रामः
+    lemma: राम
+    gloss: Rāma
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वदति
+    lemma: वद्
+    gloss: says
+    notes:
+    - term: लट्
+      en: present
   - form: अहम्
     lemma: अस्मद्
     gloss: I
@@ -18,6 +34,8 @@
       en: the speaker
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: ग्रामम्
     lemma: ग्राम
     gloss: to the village
@@ -34,7 +52,7 @@
       en: present
     - term: उत्तमपुरुष
       en: the मि ending — first person singular
-    - cite: "3.4.78"
+    - cite: 3.4.78
       role: तिप्तस्झि… — मिप् for the speaker, giving गच्छामि
   - form: त्वम्
     lemma: युष्मद्
@@ -46,6 +64,8 @@
       en: the one addressed
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: अपि
     lemma: अपि
     gloss: too
@@ -60,54 +80,49 @@
       en: present
     - term: मध्यमपुरुष
       en: the सि ending — same stem गच्छ्, different person
-  - form: नरः
-    lemma: नर
-    gloss: the man
+  - form: कृष्णः
+    lemma: कृष्ण
+    gloss: Kṛṣṇa
     notes:
+    - term: पुंलिङ्ग
+      en: masculine
     - term: कर्तृ
       en: agent
     - term: प्रथमा
       en: nominative
-  - form: ग्रामे
-    lemma: ग्राम
-    gloss: in the village
+  - form: न
+    lemma: न
+    gloss: not
     notes:
-    - term: अधिकरण
-      en: locus
-    - term: सप्तमी
-      en: locative
-  - form: भवति
-    lemma: भू
-    gloss: is
+    - term: अव्यय
+      en: negation
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    vocab: true
     notes:
-    - term: लट्
-      en: present
-    - term: प्रथमपुरुष
-      en: the ति ending — भू takes गुण before शप्, भो → भव्
-  - form: नरौ
-    lemma: नर
-    gloss: the two men
-    notes:
-    - term: द्विवचन
-      en: dual
-    - term: प्रथमा
-      en: nominative dual
-  - form: गच्छतः
+    - term: अव्यय
+      en: indeclinable
+  - form: अगच्छम्
     lemma: गम्
-    gloss: the two go
+    gloss: I went
     notes:
-    - term: लट्
-      en: present
-    - term: द्विवचन
-      en: the तस् ending — the verb answers the dual agent
-  - form: बालाः
-    lemma: बाल
-    gloss: the boys
+    - term: लङ्
+      en: the past — the augment अ in front, and the ending shortens to अम्
+    - cite: 3.2.111
+      role: अनद्यतने लङ् — the past before today → अगच्छम्
+  - form: अगच्छः
+    lemma: गम्
+    gloss: you went
     notes:
-    - term: बहुवचन
-      en: plural
-    - term: प्रथमा
-      en: nominative plural
+    - term: लङ्
+      en: the same augment, second person — अगच्छम् beside अगच्छः
+  - form: पश्य
+    lemma: दृश्
+    gloss: look
+    notes:
+    - term: लोट्
+      en: imperative
   - form: ग्रामात्
     lemma: ग्राम
     gloss: from the village
@@ -116,6 +131,16 @@
       en: source
     - term: पञ्चमी
       en: ablative
+  - form: बालाः
+    lemma: बाल
+    gloss: the boys
+    notes:
+    - term: बहुवचन
+      en: plural
+    - term: प्रथमा
+      en: nominative plural
+    - term: कर्तृ
+      en: agent
   - form: आगच्छन्ति
     lemma: गम्
     gloss: they come back
@@ -124,36 +149,37 @@
       en: present
     - term: बहुवचन
       en: the अन्ति ending — third person plural
-  - form: तत्र
-    lemma: तत्र
-    gloss: there
-    vocab: true
+  - form: नरौ
+    lemma: नर
+    gloss: the two men
+    notes:
+    - term: द्विवचन
+      en: dual
+    - term: प्रथमा
+      en: nominative dual
+    - term: कर्तृ
+      en: agent
+  - form: च
+    lemma: च
+    gloss: and
     notes:
     - term: अव्यय
       en: indeclinable
-  - form: 'न'
-    lemma: न
-    gloss: not
-    notes:
-    - term: अव्यय
-      en: negation
-  - form: अगच्छम्
+  - form: गच्छतः
     lemma: गम्
-    gloss: I went
+    gloss: the two go
     notes:
-    - term: लङ्
-      en: the past — the augment अ in front, and the ending shortens to अम्
-    - cite: "3.2.111"
-      role: अनद्यतने लङ् — the past before today → अगच्छम्
-  - form: अगच्छः
-    lemma: गम्
-    gloss: you went
-    notes:
-    - term: लङ्
-      en: the same augment, second person — अगच्छम् beside अगच्छः
+    - term: लट्
+      en: present
+    - term: द्विवचन
+      en: the तस् ending — the verb answers the dual agent
   vyakhya: एकः धातुः, नव रूपाणि। पुरुषः वचनं च अन्ते दृश्येते।
-  vyakhya_en: |
-    गम् does not change. गच्छ् is the same stem in all seven verbs here; what
+  vyakhya_en: 'गम् does not change. गच्छ् is the same stem in all seven verbs here; what
+
     moves is the ending — मि, सि, ति, तः, अन्ति — and then the augment अ that
+
     marks the past. Sanskrit puts person and number where English puts a
+
     pronoun, which is why अहम् and त्वम् can be dropped without loss.
+
+    '
