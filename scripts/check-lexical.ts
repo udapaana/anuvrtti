@@ -26,7 +26,7 @@
  */
 import {
   SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA,
-  KRT_LINGA, TADDHITA_LINGA
+  KRT_LINGA, TADDHITA_LINGA, KTA_VOICE
 } from '../src/lib/usage/lexical';
 import { WORD_TYPES } from '../src/lib/usage/schema';
 
@@ -47,6 +47,7 @@ const TABLES: Array<{
   { label: 'TADDHITA_ARTHA', table: TADDHITA_ARTHA, valuesOf: ['taddhita', 'अर्थ'], keysOf: ['taddhita', 'तद्धित'] },
   { label: 'AVYAYA_BHEDA', table: AVYAYA_BHEDA, valuesOf: ['avyaya', 'अव्यय-भेद'] },
   { label: 'KRT_LINGA', table: KRT_LINGA, valuesOf: ['kridanta', 'लिङ्ग'], keysOf: ['kridanta', 'कृत्'] },
+  { label: 'KTA_VOICE', table: KTA_VOICE, valuesOf: ['kridanta', 'प्रयोग'] },
   { label: 'TADDHITA_LINGA', table: TADDHITA_LINGA, valuesOf: ['taddhita', 'लिङ्ग'], keysOf: ['taddhita', 'तद्धित'] }
 ];
 

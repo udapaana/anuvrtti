@@ -1702,7 +1702,18 @@ async function main() {
             for (const krt of krts) {
               for (const stem of stemsFor(aup, gana, pre, krt)) {
                 const indeclinable = AVYAYA_KRT.has(krt);
-                if (indeclinable ? stem !== formSlp : !cellsFor(stem, formSlp).length) continue;
+                /*
+                  A stem fits only in the case the author wrote, when they wrote
+                  one. कृतः is the क्त participle in the प्रथमा and the genitive of
+                  the क्विप् stem कृत्; गते a क्त locative or a form of the क्तिन्
+                  noun गति. As strings they tie and the guess was abandoned; the
+                  annotated विभक्ति is the second coordinate that breaks it — the
+                  same narrowing place() applies once the affix is known.
+                */
+                const aVibFit = [...terms].find((t) => VIB_SET.has(t));
+                const fitCells = indeclinable ? [] : cellsFor(stem, formSlp);
+                if (indeclinable ? stem !== formSlp
+                  : !(aVibFit ? fitCells.filter((c) => VIB_DEV[c[1]] === aVibFit) : fitCells).length) continue;
                 if (guessing) {
                   if (!fits.has(krtName(krt, pre))) fits.set(krtName(krt, pre), indeclinable ? '' : stem);
                   break;
@@ -1713,6 +1724,13 @@ async function main() {
                   break outer;
                 }
                 record(krtName(krt, pre), stem, place(stem));
+                /*
+                  निष्ठा names a PAIR (1.1.26 क्तक्तवतू निष्ठा) and कृत्य a class of
+                  five; the derivation has just said which member this is. Record
+                  it, so the affix table can give the word its प्रयोग — a word
+                  tagged only निष्ठा was owed one and never got it.
+                */
+                if (named.every((t) => KRT_ALIAS[t])) { krtIndex[key] = krtName(krt, pre); krtNamed++; }
                 placed = true;
                 break outer;
               }

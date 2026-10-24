@@ -17,7 +17,7 @@ import { deaccent } from '../src/lib/usage/normalize';
 import { WORD_TYPES, KARAKA, SENSE_ROLE, SANADI, typeOf } from '../src/lib/usage/schema';
 import {
   SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA,
-  KRT_LINGA, TADDHITA_LINGA
+  KRT_LINGA, TADDHITA_LINGA, KTA_VOICE
 } from '../src/lib/usage/lexical';
 
 const READINGS_DIR = path.join(process.cwd(), 'content/readings');
@@ -307,7 +307,15 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
   // The full तिङन्त parse from the generated index — लकार, पुरुष, वचन, पद — for
   // any verb form, with NO authoring. Filled only where the author has not
   // already said it, so an authored tag always wins over the derivation.
-  const tin = TIN[deaccent(word.lemma) + '|' + deaccent(String(word.form ?? ''))];
+  /*
+    Never on a word the author marked a participle. A finite form and a
+    participle form can be the same string: गच्छति is the present 3sg AND the
+    locative of गच्छत् (ex103's सति सप्तमी, "while Kṛṣṇa was going"); हतः is
+    हन्'s present dual AND the क्त participle "slain". The author has read the
+    sentence; the index has not.
+  */
+  const markedKrt = terms.has('कृदन्त') || [...terms].some((t) => KRT_SET.has(t));
+  const tin = markedKrt ? undefined : TIN[deaccent(word.lemma) + '|' + deaccent(String(word.form ?? ''))];
   if (tin) {
     if (tin['लकार'] && ![...terms].some((t) => LAKARA_SET.has(t))) out['लकार'] = tin['लकार'];
     if (tin['पुरुष'] && !out['पुरुष'] && ![...terms].some((t) => PURUSHA_SET.has(t))) out['पुरुष'] = tin['पुरुष'];
@@ -433,13 +441,34 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
     at by derivation rather than by hand.
   */
   const krtDerived = KRTS[key];
-  if (krtDerived && !terms.has(krtDerived) && !KRT_SET.has([...terms].find((t) => KRT_SET.has(t)) ?? '')) {
+  // निष्ठा and कृत्य name a pair and a class, not an affix; the specific one the
+  // derivation found still belongs on the word.
+  const KRT_ALIASES = new Set(['निष्ठा', 'कृत्य']);
+  const authoredKrt = [...terms].filter((t) => KRT_SET.has(t) && !KRT_ALIASES.has(t));
+  if (krtDerived && !terms.has(krtDerived) && !authoredKrt.length) {
     out['कृत्'] = krtDerived;
   }
 
   const krt = [...terms, ...(out['कृत्'] ? [out['कृत्']] : [])].find((t) => KRT_PRAYOGA[t]);
   if (krt && ![...terms].some((t) => PRAYOGA.includes(t)) && !out['प्रयोग']) {
     out['प्रयोग'] = KRT_PRAYOGA[krt];
+  }
+
+  /*
+    क्त's voice from its root (lexical.ts KTA_VOICE, 3.4.70/72). One guard: a
+    neuter singular क्त of an intransitive root standing alone may be the भावे
+    action noun — सुप्तम् "sleep", गतम् "the going" — so it is left to the author.
+  */
+  const isKta = terms.has('क्त') || out['कृत्'] === 'क्त';
+  if (isKta && !out['प्रयोग'] && ![...terms].some((t) => PRAYOGA.includes(t))) {
+    const root = deaccent(String(word.lemma)).replace(/^.*-/, '');
+    const voice = KTA_VOICE[root];
+    const lg = [...terms].find((t) => LINGA_SET.has(t)) ?? out['लिङ्ग'];
+    const vc = [...terms].find((t) => VACANA_SET.has(t)) ?? out['वचन'];
+    // unknown gender counts as a risk too: सुप्तम् with no gender recorded may be the noun
+    const bhaveRisk = voice === 'कर्तरि' && (!lg || lg === 'नपुंसकलिङ्ग') && vc !== 'बहुवचन'
+      && !(word.rel ?? []).some((e: any) => e.kind === 'विशेषण');
+    if (voice && !bhaveRisk) out['प्रयोग'] = voice;
   }
 
   const tad = [...terms].find((t) => TADDHITA_ARTHA[t]);
