@@ -2,11 +2,514 @@
   kind: graded
   segment: 181
   order: 2
-  sentence: 'द्वाभ्याम् रात्रिभ्याम् नद्यौ पूर्णे भवतः। जनाः नदीभ्याम् क्षेत्राणि सिञ्चन्ति। कृषकाः भूमिभ्याम् बीजानि आनयन्ति। जलम् वनाभ्याम् हितम्। राजा मातृभ्याम् वस्त्रे यच्छति, राजभ्याम् कन्याभ्याम् च सह सभाम् गच्छति। प्रजाः मुन्योः विश्वसन्ति। ऋषिः शुभेभ्यः कर्मभ्यः शुद्धाभ्याम् मनोभ्याम् च नमति, वदति च — हे मनः, शाम्य।'
-  translation: 'In two nights the two rivers become full. People water the fields with the two rivers. Farmers bring seed for the two fields. Water is good for the two forests. The king gives clothes to the two mothers, and goes to the assembly with the two kings and the two girls. The subjects trust the two sages. The seer bows to good deeds and to pure minds, and says: "O mind, be still."'
-  teaches: 'The last empty duals — रात्रिभ्याम्, नद्यौ, नदीभ्याम्, भूमिभ्याम्, वनाभ्याम्, मातृभ्याम्, राजभ्याम्, कन्याभ्याम्, मुन्योः, मनोभ्याम् — with कर्मभ्यः and the neuter vocative हे मनः.'
+  sentence: 'मिथिलायाम् जनकः स्वे कन्ये — सीताम् ऊर्मिलाम् च — रामलक्ष्मणाभ्याम् यच्छति। दशरथः अपि देवीभ्याम् सह आगच्छति। जनाः ताभ्याम् राजभ्याम् सह नृत्यन्ति। ब्राह्मणाः शुभेभ्यः कर्मभ्यः आगच्छन्ति। दूताः मातृभ्याम् — कौसल्यायै सुमित्रायै च — सन्देशम् नयन्ति। राज्ञ्यः युवतिभ्याम् भूषणानि यच्छन्ति। वध्वौ मौक्तिकावलिभ्याम् शोभेते, तयोः पाण्योः कङ्कणानि। रामलक्ष्मणौ कन्याभ्याम् सह अग्निम् परिक्रामतः। सः उत्सवः सर्वेषाम् नेत्राभ्याम् आनन्दः, द्वयोः वध्वोः मनोभ्याम् सुखम्। रामः चिन्तयति — मनः, अद्य त्वम् धन्यम्।'
+  translation: 'In Mithilā Janaka gives his two daughters — Sītā and Ūrmilā — to Rāma and Lakṣmaṇa. Daśaratha comes too, with two queens. The people dance with the two kings. Brahmins come for the auspicious rites. Messengers carry the news to the two mothers — Kausalyā and Sumitrā. The queens give ornaments to the two young women. The two brides shine with their pearl strings, bangles on both their hands. Rāma and Lakṣmaṇa walk round the fire with the two maidens. That festival is a delight to everyone''s eyes, and a joy for the two brides'' hearts. Rāma thinks: "Heart, today you are blessed."'
+  teaches: 'A double wedding, where every pair is real: the dative dual (रामलक्ष्मणाभ्याम्, मातृभ्याम्, युवतिभ्याम्, नेत्राभ्याम्, मनोभ्याम्), the instrumental dual (देवीभ्याम्, राजभ्याम्, मौक्तिकावलिभ्याम्, कन्याभ्याम्), पाण्योः, कर्मभ्यः — and मनः, addressing one''s own heart.'
   words:
-  - form: द्वाभ्याम्
+  - form: मिथिलायाम्
+    lemma: मिथिला
+    gloss: 'in Mithilā'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: जनकः
+    lemma: जनक
+    gloss: 'Janaka'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: स्वे
+    lemma: स्व
+    gloss: 'his'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: विशेषण
+      en: 'qualifying कन्ये'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: कन्ये
+    lemma: कन्या
+    gloss: 'two daughters'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: सीताम्
+    lemma: सीता
+    gloss: 'Sītā'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: ऊर्मिलाम्
+    lemma: ऊर्मिला
+    gloss: 'Ūrmilā'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: रामलक्ष्मणाभ्याम्
+    lemma: रामलक्ष्मण
+    gloss: 'to Rāma and Lakṣmaṇa'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: यच्छति
+    lemma: यम्
+    gloss: 'gives'
+    notes:
+    - term: लट्
+      en: 'present'
+  - form: दशरथः
+    lemma: दशरथ
+    gloss: 'Daśaratha'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: देवीभ्याम्
+    lemma: देवी
+    gloss: 'two queens'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: सह
+    lemma: सह
+    gloss: 'with'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the तृतीया'
+  - form: आगच्छति
+    lemma: गम्
+    gloss: 'comes'
+    notes:
+    - term: लट्
+      en: 'present, with the preverb आ'
+  - form: जनाः
+    lemma: जन
+    gloss: 'the people'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: ताभ्याम्
+    lemma: तद्
+    gloss: 'those two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: राजभ्याम्
+    lemma: राजन्
+    gloss: 'kings'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: नृत्यन्ति
+    lemma: नृत्
+    gloss: 'dance'
+    notes:
+    - term: लट्
+      en: 'present (दिवादि), plural'
+  - form: ब्राह्मणाः
+    lemma: ब्राह्मण
+    gloss: 'brahmins'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: शुभेभ्यः
+    lemma: शुभ
+    gloss: 'auspicious'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: विशेषण
+      en: 'qualifying कर्मभ्यः'
+    - term: अर्थ
+      en: 'अर्थ'
+    - term: चतुर्थी
+      en: 'dative plural'
+    rel:
+    - kind: विशेषण
+      to: 20
+  - form: कर्मभ्यः
+    lemma: कर्मन्
+    gloss: 'for the rites'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: अर्थ
+      en: 'purpose — the तादर्थ्य चतुर्थी'
+    - term: चतुर्थी
+      en: 'dative plural'
+  - form: आगच्छन्ति
+    lemma: गम्
+    gloss: 'come'
+    notes:
+    - term: लट्
+      en: 'present, plural, with the preverb आ'
+  - form: दूताः
+    lemma: दूत
+    gloss: 'messengers'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: मातृभ्याम्
+    lemma: मातृ
+    gloss: 'to the two mothers'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: कौसल्यायै
+    lemma: कौसल्या
+    gloss: 'Kausalyā'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative'
+  - form: सुमित्रायै
+    lemma: सुमित्रा
+    gloss: 'Sumitrā'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative'
+  - form: सन्देशम्
+    lemma: सन्देश
+    gloss: 'the news'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: नयन्ति
+    lemma: नी
+    gloss: 'carry'
+    notes:
+    - term: लट्
+      en: 'present, plural'
+  - form: राज्ञ्यः
+    lemma: राज्ञी
+    gloss: 'the queens'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: युवतिभ्याम्
+    lemma: युवति
+    gloss: 'to the two young women'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: भूषणानि
+    lemma: भूषण
+    gloss: 'ornaments'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: यच्छन्ति
+    lemma: यम्
+    gloss: 'give'
+    notes:
+    - term: लट्
+      en: 'present, plural'
+  - form: वध्वौ
+    lemma: वधू
+    gloss: 'the two brides'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: मौक्तिकावलिभ्याम्
+    lemma: मौक्तिकावलि
+    gloss: 'with pearl strings'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: करण
+      en: 'instrument'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: शोभेते
+    lemma: शुभ्
+    gloss: 'shine'
+    notes:
+    - term: लट्
+      en: 'present, dual (आत्मनेपद)'
+  - form: तयोः
+    lemma: तद्
+    gloss: 'their'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive dual'
+  - form: पाण्योः
+    lemma: पाणि
+    gloss: 'on both hands'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: कङ्कणानि
+    lemma: कङ्कण
+    gloss: 'bangles'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: रामलक्ष्मणौ
+    lemma: रामलक्ष्मण
+    gloss: 'Rāma and Lakṣmaṇa'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: कन्याभ्याम्
+    lemma: कन्या
+    gloss: 'the two maidens'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: अग्निम्
+    lemma: अग्नि
+    gloss: 'the fire'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: परिक्रामतः
+    lemma: क्रम्
+    gloss: 'walk round'
+    notes:
+    - term: लट्
+      en: 'present, dual, with the preverb परि'
+  - form: सः
+    lemma: तद्
+    gloss: 'that'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: उत्सवः
+    lemma: उत्सव
+    gloss: 'festival'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: सर्वेषाम्
+    lemma: सर्व
+    gloss: 'everyone''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive plural'
+  - form: नेत्राभ्याम्
+    lemma: नेत्र
+    gloss: 'for the eyes'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: आनन्दः
+    lemma: आनन्द
+    gloss: 'a delight'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 43
+  - form: द्वयोः
     lemma: द्वि
     gloss: 'two'
     notes:
@@ -14,298 +517,109 @@
       en: 'numeral'
     - term: विशेषण
       en: 'qualifying the noun'
-    - term: तृतीया
-      en: 'instrumental dual'
+    - term: षष्ठी
+      en: 'genitive dual'
     rel:
     - kind: विशेषण
-      to: 1
-  - form: रात्रिभ्याम्
-    lemma: रात्रि
-    gloss: 'in two nights'
+      to: 48
+  - form: वध्वोः
+    lemma: वधू
+    gloss: 'the brides'''
     notes:
-    - term: करण
-      en: 'the time in which it is done — अपवर्गे तृतीया (2.3.6)'
-    - term: तृतीया
-      en: 'instrumental dual'
-  - form: नद्यौ
-    lemma: नदी
-    gloss: 'the two rivers'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: पूर्णे
-    lemma: पूर्ण
-    gloss: 'full'
-    notes:
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: प्रथमा
-      en: 'nominative dual'
-    rel:
-    - kind: विशेषण
-      to: 2
-  - form: भवतः
-    lemma: भू
-    gloss: 'become'
-    notes:
-    - term: लट्
-      en: 'present, dual'
-  - form: जनाः
-    lemma: जन
-    gloss: 'people'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: नदीभ्याम्
-    lemma: नदी
-    gloss: 'with the two rivers'
-    notes:
-    - term: करण
-      en: 'instrument'
-    - term: तृतीया
-      en: 'instrumental dual'
-  - form: क्षेत्राणि
-    lemma: क्षेत्र
-    gloss: 'the fields'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative plural'
-  - form: सिञ्चन्ति
-    lemma: सिच्
-    gloss: 'water'
-    notes:
-    - term: लट्
-      en: 'present, plural'
-  - form: कृषकाः
-    lemma: कृषक
-    gloss: 'farmers'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: भूमिभ्याम्
-    lemma: भूमि
-    gloss: 'for the two fields'
-    notes:
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: बीजानि
-    lemma: बीज
-    gloss: 'seed'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative plural'
-  - form: आनयन्ति
-    lemma: नी
-    gloss: 'bring'
-    notes:
-    - term: लट्
-      en: 'present, with the preverb आ'
-  - form: जलम्
-    lemma: जल
-    gloss: 'water'
-    notes:
-    - term: कर्तृ
-      en: 'the subject — अस्ति understood'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: वनाभ्याम्
-    lemma: वन
-    gloss: 'for the two forests'
-    notes:
-    - term: सम्प्रदान
-      en: 'what it is good for — हित takes the चतुर्थी'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: हितम्
-    lemma: हित
-    gloss: 'good'
-    notes:
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: प्रथमा
-      en: 'nominative'
-    rel:
-    - kind: विशेषण
-      to: 13
-  - form: राजा
-    lemma: राजन्
-    gloss: 'the king'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: मातृभ्याम्
-    lemma: मातृ
-    gloss: 'to the two mothers'
-    notes:
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: वस्त्रे
-    lemma: वस्त्र
-    gloss: 'clothes'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: यच्छति
-    lemma: दा
-    gloss: 'gives'
-    notes:
-    - term: लट्
-      en: 'present (दा → यच्छ)'
-  - form: राजभ्याम्
-    lemma: राजन्
-    gloss: 'with the two kings'
-    notes:
-    - term: सहार्थ
-      en: 'accompaniment, with सह'
-    - term: तृतीया
-      en: 'instrumental dual'
-  - form: कन्याभ्याम्
-    lemma: कन्या
-    gloss: 'and the two girls'
-    notes:
-    - term: सहार्थ
-      en: 'accompaniment, with सह'
-    - term: तृतीया
-      en: 'instrumental dual'
-  - form: च
-    lemma: च
-    gloss: 'and'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable'
-  - form: सह
-    lemma: सह
-    gloss: 'with'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — governs the तृतीया'
-  - form: सभाम्
-    lemma: सभा
-    gloss: 'to the assembly'
-    notes:
-    - term: कर्मन्
-      en: 'the goal of motion'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: गच्छति
-    lemma: गम्
-    gloss: 'goes'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: प्रजाः
-    lemma: प्रजा
-    gloss: 'the subjects'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: मुन्योः
-    lemma: मुनि
-    gloss: 'in the two sages'
-    notes:
-    - term: अधिकरण
-      en: 'the object of trust'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: विश्वसन्ति
-    lemma: श्वस्
-    gloss: 'trust'
-    notes:
-    - term: लट्
-      en: 'present, with the preverb वि'
-  - form: ऋषिः
-    lemma: ऋषि
-    gloss: 'the seer'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: शुभेभ्यः
-    lemma: शुभ
-    gloss: 'good'
-    notes:
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: चतुर्थी
-      en: 'dative plural'
-    rel:
-    - kind: विशेषण
-      to: 31
-  - form: कर्मभ्यः
-    lemma: कर्मन्
-    gloss: 'to deeds'
-    notes:
-    - term: सम्प्रदान
-      en: 'the ones bowed to'
-    - term: चतुर्थी
-      en: 'dative plural'
-  - form: शुद्धाभ्याम्
-    lemma: शुद्ध
-    gloss: 'pure'
-    notes:
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: चतुर्थी
-      en: 'dative dual'
-    rel:
-    - kind: विशेषण
-      to: 33
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive dual'
   - form: मनोभ्याम्
     lemma: मनस्
-    gloss: 'to minds'
+    gloss: 'for the hearts'
     notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: द्विवचन
+      en: 'dual'
     - term: सम्प्रदान
       en: 'recipient'
     - term: चतुर्थी
       en: 'dative dual'
-  - form: नमति
-    lemma: नम्
-    gloss: 'bows'
+  - form: सुखम्
+    lemma: सुख
+    gloss: 'a joy'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: रामः
+    lemma: राम
+    gloss: 'Rāma'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: चिन्तयति
+    lemma: चिन्त्
+    gloss: 'thinks'
     notes:
     - term: लट्
-      en: 'present'
-  - form: वदति
-    lemma: वद्
-    gloss: 'says'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: हे
-    lemma: हे
-    gloss: 'O'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — address'
+      en: 'present (चुरादि)'
+    - term: प्रथमपुरुष
+      en: '3rd person'
+    - term: एकवचन
+      en: 'singular'
+    - term: परस्मैपद
+      en: 'parasmaipada'
+    - term: चुरादि
+      en: 'gaṇa'
   - form: मनः
     lemma: मनस्
-    gloss: 'O mind'
+    gloss: 'heart'
     notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
     - term: सम्बोधन
       en: 'vocative'
-  - form: शाम्य
-    lemma: शम्
-    gloss: 'be still'
+  - form: अद्य
+    lemma: अद्य
+    gloss: 'today'
     notes:
-    - term: लोट्
-      en: 'imperative (शम् is दिवादि: शाम्य)'
+    - term: अव्यय
+      en: 'indeclinable — time'
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: 'you'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: धन्यम्
+    lemma: धन्य
+    gloss: 'blessed'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 55
