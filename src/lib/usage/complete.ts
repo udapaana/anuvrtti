@@ -38,6 +38,36 @@ export function typingTermsOf(w: AnnotatedWord): Set<string> {
 }
 
 /**
+ * Whether a word of this type, carrying these tags, owes this dimension at all.
+ *
+ * One definition, used by missingFor (what a word still owes) and by the
+ * coverage ratchet (how full a dimension is): when they disagreed, twenty
+ * vocatives — which owe no कारक — lowered the सुबन्त कारक floor as if a
+ * derivation had broken.
+ */
+export function exemptFrom(type: WordType, dim: string, terms: Set<string>): boolean {
+  // A कृदन्त owes विभक्ति, वचन and लिङ्ग only if its suffix declines. क्त्वा,
+  // तुमुन्, ल्यप् and णमुल् are अव्यय by 1.1.40 and take no declension at all —
+  // an indeclinable has no gender any more than it has a case.
+  if (type.id === 'kridanta' && (dim === 'विभक्ति' || dim === 'वचन' || dim === 'लिङ्ग')
+      && !krtDeclines(terms)) return true;
+
+  // A vocative takes no कारक. सम्बोधन is address, not a participant role —
+  // प्रथमा-in-address (2.3.47), outside the कारक system (1.4.23) — so a word in
+  // it owes no कारक any more than a subject owes a case it does not fill.
+  if (dim === 'कारक' && terms.has('सम्बोधन')) return true;
+
+  // Nor does a word whose case comes from MEANING. हेतु (2.3.23), सहार्थ
+  // (2.3.19), निर्धारण (2.3.41), सति सप्तमी (2.3.37) and the rest are
+  // उपपद/अर्थ cases, outside the कारक system — पुत्रेण सह is तृतीया because of
+  // सह, not because पुत्र plays a part in the action. The build already refuses
+  // to infer a कारक for these (build-readings, VIB_ROLE); demanding one here
+  // asked for a role the grammar says the word does not have.
+  if (dim === 'कारक' && SENSE_ROLE.some((x) => terms.has(x))) return true;
+  return false;
+}
+
+/**
  * Which required dimensions this word still owes.
  *
  * `conditional` dimensions never count: गच्छति has no उपसर्ग, and demanding one
@@ -52,24 +82,7 @@ export function missingFor(type: WordType, w: AnnotatedWord, terms: Set<string>)
   for (const d of type.dimensions) {
     if (d.source === 'conditional') continue;
 
-    // A कृदन्त owes विभक्ति, वचन and लिङ्ग only if its suffix declines. क्त्वा,
-    // तुमुन्, ल्यप् and णमुल् are अव्यय by 1.1.40 and take no declension at all —
-    // an indeclinable has no gender any more than it has a case.
-    if (type.id === 'kridanta' && (d.name === 'विभक्ति' || d.name === 'वचन' || d.name === 'लिङ्ग')
-        && !krtDeclines(terms)) continue;
-
-    // A vocative takes no कारक. सम्बोधन is address, not a participant role —
-    // प्रथमा-in-address (2.3.47), outside the कारक system (1.4.23) — so a word in
-    // it owes no कारक any more than a subject owes a case it does not fill.
-    if (d.name === 'कारक' && terms.has('सम्बोधन')) continue;
-
-    // Nor does a word whose case comes from MEANING. हेतु (2.3.23), सहार्थ
-    // (2.3.19), निर्धारण (2.3.41), सति सप्तमी (2.3.37) and the rest are
-    // उपपद/अर्थ cases, outside the कारक system — पुत्रेण सह is तृतीया because of
-    // सह, not because पुत्र plays a part in the action. The build already refuses
-    // to infer a कारक for these (build-readings, VIB_ROLE); demanding one here
-    // asked for a role the grammar says the word does not have.
-    if (d.name === 'कारक' && SENSE_ROLE.some((s) => terms.has(s))) continue;
+    if (exemptFrom(type, d.name, terms)) continue;
 
     if (d.name === 'lemma') {
       if (!w.lemma) miss.push('lemma');

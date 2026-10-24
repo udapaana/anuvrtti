@@ -29,7 +29,7 @@ import {
   WORD_TYPES, typeOf, krtDeclines, KNOWN_VALUES, RELATIONS, ALL_MARKERS, type WordType
 } from '../src/lib/usage/schema';
 // One definition of "what does this word owe", shared with exemplars.ts.
-import { missingFor } from '../src/lib/usage/complete';
+import { missingFor, exemptFrom } from '../src/lib/usage/complete';
 
 const RELATION_BY_NAME = new Map(RELATIONS.map((r) => [r.name, r]));
 
@@ -247,6 +247,8 @@ function main() {
       */
       for (const d of wt.dimensions) {
         if (!d.values.length) continue;   // an open set (a lemma) has nothing to count
+        // a word the grammar exempts is outside the dimension, not an empty slot in it
+        if (exemptFrom(wt, d.name, terms)) continue;
         const dk = `${wt.dev}|${d.name}`;
         const de = dimFilled.get(dk) ?? { filled: 0, total: 0 };
         de.total++;
