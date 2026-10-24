@@ -314,6 +314,17 @@ if (/coverage regression/.test(cov)) {
   console.log('  ✓ ' + cov.trim().split('\n')[0]);
 }
 
+// 9d. the paradigm-cell ratchet — HARD. The coverage ratchet sees how fully
+// words are tagged, not which forms exist; a rewrite could drop the corpus's
+// only गवोः and leave every percentage unchanged. This one guards the cells.
+const par = await run(['bun', 'scripts/check-paradigms.ts']);
+if (/lost/.test(par)) {
+  problems.push('paradigms:\n' + par.split('\n').filter((l) => /^\s{4}\S/.test(l)).join('\n'));
+  console.log('  ✗ ' + par.trim().split('\n')[0]);
+} else {
+  console.log('  ✓ ' + par.trim().split('\n')[0]);
+}
+
 // 10. sign-in and attribution — HARD. Two providers now, and the ways they
 // differ are quiet ones: an @mention that resolves on GitHub and mentions a
 // stranger for a Google display name, and a branch name git will not accept.

@@ -41,6 +41,11 @@ unnoticed. Raise the floors deliberately with `bun scripts/check-coverage.ts
 --update` and commit them with the work that earned them. See *The ratchet* in
 `docs/AUTHORING.md`.
 
+A second ratchet, `content/paradigm-floors.json`, guards which paradigm cells
+the corpus shows (stem class × case × number, लकार × person × number, each
+pronoun). Rewriting a reading may move a form elsewhere, not drop it; `bun
+scripts/check-paradigms.ts --update` records a deliberate change.
+
 `static/data/stats.json` is generated too, and committed: the four counts on
 the home page's doors. The threshold must not download three corpora to print
 three integers, so `bun run build:stats` reduces them at build time (it runs
