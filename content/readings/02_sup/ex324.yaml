@@ -1,0 +1,208 @@
+- id: ex324
+  kind: graded
+  segment: 184
+  order: 1
+  sentence: 'कौन्तेयः वनम् गच्छति। वैनतेयः तम् अनुगच्छति। गार्ग्यः आचार्यः। सः भारतीयान् शिष्यान् पाठयति। सः तेजस्वी मेधावी च।'
+  translation: 'Kuntī''s son goes to the forest. Vinatā''s son follows him. Garga''s descendant is a teacher. He teaches Indian pupils. He is brilliant and wise.'
+  teaches: 'तद्धित names and adjectives the corpus had not shown: ढक् (कौन्तेयः, वैनतेयः), यञ् (गार्ग्यः), छ (भारतीयान्), विनि (तेजस्वी, मेधावी).'
+  words:
+  - form: कौन्तेयः
+    lemma: कुन्ती
+    gloss: 'Kuntī''s son'
+    notes:
+    - term: तद्धित
+      en: 'a patronymic from a feminine name'
+    - term: ढक्
+      en: 'the ढक् suffix'
+    - term: अपत्य
+      en: 'sense: अपत्य'
+    - cite: "4.1.120"
+      role: 'स्त्रीभ्यो ढक् — कुन्ती + ढक् (एय) → कौन्तेय'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+    - term: एकवचन
+      en: 'number'
+  - form: वनम्
+    lemma: वन
+    gloss: 'to the forest'
+    notes:
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: गच्छति
+    lemma: गम्
+    gloss: 'goes'
+    notes:
+    - term: लट्
+      en: 'present'
+  - form: वैनतेयः
+    lemma: विनता
+    gloss: 'Vinatā''s son (Garuḍa)'
+    notes:
+    - term: तद्धित
+      en: 'a patronymic from a feminine name'
+    - term: ढक्
+      en: 'the ढक् suffix'
+    - term: अपत्य
+      en: 'sense: अपत्य'
+    - cite: "4.1.120"
+      role: 'स्त्रीभ्यो ढक् — विनता + ढक् → वैनतेय'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+    - term: एकवचन
+      en: 'number'
+  - form: तम्
+    lemma: तद्
+    gloss: 'him'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: अनुगच्छति
+    lemma: गम्
+    gloss: 'follows'
+    notes:
+    - term: लट्
+      en: 'present, with the preverb अनु'
+  - form: गार्ग्यः
+    lemma: गर्ग
+    gloss: 'Garga''s descendant'
+    notes:
+    - term: तद्धित
+      en: 'a patronymic of the गर्गादि class'
+    - term: यञ्
+      en: 'the यञ् suffix'
+    - term: अपत्य
+      en: 'sense: अपत्य'
+    - cite: "4.1.105"
+      role: 'गर्गादिभ्यो यञ् — गर्ग + यञ् → गार्ग्य'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+    - term: एकवचन
+      en: 'number'
+  - form: आचार्यः
+    lemma: आचार्य
+    gloss: 'the teacher'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 6
+  - form: सः
+    lemma: तद्
+    gloss: 'he'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: भारतीयान्
+    lemma: भारत
+    gloss: 'Indian'
+    notes:
+    - term: तद्धित
+      en: '"belonging to Bhārata"'
+    - term: छ
+      en: 'the छ suffix'
+    - term: तस्येदम्
+      en: 'sense: तस्येदम्'
+    - cite: "4.2.114"
+      role: 'वृद्धाच्छः — भारत has वृद्धि in its first vowel, so छ (ईय) → भारतीय'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: विशेषण
+      en: 'qualifying शिष्यान्'
+    - term: द्वितीया
+      en: 'accusative plural'
+    - term: बहुवचन
+      en: 'number'
+    rel:
+    - kind: विशेषण
+      to: 10
+  - form: शिष्यान्
+    lemma: शिष्य
+    gloss: 'pupils'
+    notes:
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: पाठयति
+    lemma: पठ्
+    gloss: 'teaches'
+    notes:
+    - term: लट्
+      en: 'causative present — "makes read"'
+    - term: णिच्
+      en: 'causative'
+  - form: तेजस्वी
+    lemma: तेजस्
+    gloss: 'brilliant'
+    notes:
+    - term: तद्धित
+      en: '"having splendour"'
+    - term: विनि
+      en: 'the विनि suffix'
+    - term: मतुबर्थ
+      en: 'sense: मतुबर्थ'
+    - cite: "5.2.121"
+      role: 'अस्मायामेधास्रजो विनिः — तेजस् + विनि → तेजस्विन्'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: प्रथमा
+      en: 'nominative'
+    - term: एकवचन
+      en: 'number'
+    rel:
+    - kind: विधेय
+      to: 8
+  - form: मेधावी
+    lemma: मेधा
+    gloss: 'wise'
+    notes:
+    - term: तद्धित
+      en: '"having intelligence"'
+    - term: विनि
+      en: 'the विनि suffix'
+    - term: मतुबर्थ
+      en: 'sense: मतुबर्थ'
+    - cite: "5.2.121"
+      role: 'अस्मायामेधास्रजो विनिः — मेधा + विनि → मेधाविन्'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: प्रथमा
+      en: 'nominative'
+    - term: एकवचन
+      en: 'number'
+    rel:
+    - kind: विधेय
+      to: 8
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'

@@ -52,6 +52,11 @@ export function exemptFrom(type: WordType, dim: string, terms: Set<string>, rel:
   if (type.id === 'kridanta' && (dim === 'विभक्ति' || dim === 'वचन' || dim === 'लिङ्ग')
       && !krtDeclines(terms)) return true;
 
+  // So does an adverbial तद्धित. अत्र, कदा, द्विधा, पञ्चकृत्वः are अव्यय
+  // (1.1.38 तद्धितश्चासर्वविभक्तिः) — no case, so no number, gender or role.
+  if (type.id === 'taddhita' && terms.has('अव्यय')
+      && (dim === 'विभक्ति' || dim === 'वचन' || dim === 'लिङ्ग' || dim === 'कारक')) return true;
+
   // A vocative takes no कारक. सम्बोधन is address, not a participant role —
   // प्रथमा-in-address (2.3.47), outside the कारक system (1.4.23) — so a word in
   // it owes no कारक any more than a subject owes a case it does not fill.
