@@ -2,8 +2,8 @@
   kind: graded
   segment: 183
   order: 1
-  sentence: 'गोपालः धेनुभ्याम् सह वनम् गच्छति। धेन्वोः घण्टे लम्बेते। सः गोभ्याम् तृणम् ददाति। सायम् एकः व्याघ्रः आगच्छति, गोभ्यः न दूरम्। गोपालः वदति — हे गौः, अत्र तिष्ठ। हे गावौ, मम पृष्ठतः तिष्ठतम्। सः दण्डम् उद्यच्छति, व्याघ्रः च धावति। ततः गोपालः गवोः पृष्ठयोः हस्तौ स्थापयति। गृहे माता धेनोः दुग्धम् दोग्धि; वत्सः गोः न दूरम्।'
-  translation: 'A cowherd goes to the forest with his two cows. On the two cows hang two bells. He gives grass to the two cows. At dusk a tiger comes, not far from the cows. The cowherd says: "Cow, stay here. You two, stand behind me." He raises his staff, and the tiger runs. Then the cowherd lays his hands on the two cows'' backs. At home his mother milks the cow; the calf is not far from its mother.'
+  sentence: 'गोपालः धेनुभ्याम् सह वनम् गच्छति। धेन्वोः घण्टे लम्बेते। सः गोभ्याम् तृणम् ददाति। गोपालस्य अन्याः गावः अपि ग्रामे सन्ति। सायम् एकः व्याघ्रः आगच्छति, गोभ्यः न दूरम्। गोपालः वदति — हे गौः, अत्र तिष्ठ। हे गावौ, मम पृष्ठतः तिष्ठतम्। सः दण्डम् उद्यच्छति, व्याघ्रः च धावति। ततः गोपालः गवोः पृष्ठयोः हस्तौ स्थापयति। गृहे धेनोः दुग्धम् स्रवति; वत्सः गोः न दूरम्।'
+  translation: 'A cowherd goes to the forest with his two cows. On the two cows hang two bells. He gives grass to the two cows. The cowherd has other cows too, in the village. At dusk a tiger comes, not far from the cows. The cowherd says: "Cow, stay here. You two, stand behind me." He raises his staff, and the tiger runs. Then the cowherd lays his hands on the two cows'' backs. At home milk flows from the cow; the calf is not far from its mother.'
   teaches: 'धेनु and the irregular गो — धेनुभ्याम्, धेन्वोः, धेनोः; गोभ्याम्, गोभ्यः, गवोः, गोः, and the vocatives गौः, गावौ — in one evening with a tiger.'
   words:
   - form: गोपालः
@@ -126,6 +126,71 @@
     notes:
     - term: लट्
       en: 'present'
+  - form: गोपालस्य
+    lemma: गोपाल
+    gloss: 'the cowherd''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: अन्याः
+    lemma: अन्य
+    gloss: 'other'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: विशेषण
+      en: 'qualifying गावः'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+    rel:
+    - kind: विशेषण
+      to: 14
+  - form: गावः
+    lemma: गो
+    gloss: 'cows'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: 'in the village'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: सन्ति
+    lemma: अस्
+    gloss: 'are'
+    notes:
+    - term: लट्
+      en: 'present, plural'
   - form: सायम्
     lemma: सायम्
     gloss: 'at dusk'
@@ -144,7 +209,7 @@
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 14
+      to: 20
   - form: व्याघ्रः
     lemma: व्याघ्र
     gloss: 'tiger'
@@ -347,18 +412,6 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative'
-  - form: माता
-    lemma: मातृ
-    gloss: 'his mother'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
   - form: धेनोः
     lemma: धेनु
     gloss: 'from the cow'
@@ -379,16 +432,16 @@
       en: 'neuter'
     - term: एकवचन
       en: 'singular'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: दोग्धि
-    lemma: दुह्
-    gloss: 'milks'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: स्रवति
+    lemma: स्रु
+    gloss: 'flows'
     notes:
     - term: लट्
-      en: 'present (अदादि)'
+      en: 'present'
   - form: वत्सः
     lemma: वत्स
     gloss: 'the calf'
