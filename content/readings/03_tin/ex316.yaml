@@ -1,0 +1,297 @@
+- id: ex316
+  kind: graded
+  segment: 188
+  order: 1
+  sentence: 'गुरुः शिष्यान् आशास्ते — त्वम् विद्वान् भूयाः। युवाम् सुखिनौ भूयास्तम्। यूयम् धार्मिकाः भूयास्त। एतौ बालौ दीर्घायुषौ भूयास्ताम्। सर्वे जनाः सुखिनः भूयासुः। शिष्यः वदति — अहम् अपि गुरोः योग्यः भूयासम्। आवाम् भ्रातरौ सदा मित्रे भूयास्व। वयम् सत्यवादिनः भूयास्म।'
+  translation: 'The teacher blesses the pupils: "May you be learned. May you two be happy. May you all be righteous. May these two boys be long-lived. May all people be happy." A pupil says: "May I too be worthy of my teacher. May we two brothers always be friends. May we be speakers of truth."'
+  teaches: 'The precative (आशीर्लिङ्), the mood of blessing, in all the persons the corpus lacked — भूयाः, भूयास्तम्, भूयास्त, भूयास्ताम्, भूयासुः, भूयासम्, भूयास्व, भूयास्म — each with its predicate (विधेय).'
+  words:
+  - form: गुरुः
+    lemma: गुरु
+    gloss: 'the teacher'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: शिष्यान्
+    lemma: शिष्य
+    gloss: 'the pupils'
+    notes:
+    - term: कर्मन्
+      en: 'the ones blessed'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: आशास्ते
+    lemma: शास्
+    gloss: 'blesses'
+    notes:
+    - term: लट्
+      en: 'present, with the preverb आ (आत्मनेपद)'
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: 'you'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: विद्वान्
+    lemma: विद्वस्
+    gloss: 'learned'
+    notes:
+    - term: एकवचन
+      en: 'singular'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 3
+  - form: भूयाः
+    lemma: भू
+    gloss: 'may you be'
+    notes:
+    - term: आशीर्लिङ्
+      en: 'precative (आशीर्लिङ्) — a blessing, "may … be", 2nd person singular'
+  - form: युवाम्
+    lemma: युष्मद्
+    gloss: 'you two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: सुखिनौ
+    lemma: सुखिन्
+    gloss: 'happy'
+    notes:
+    - term: प्रथमा
+      en: 'nominative dual — the predicate'
+    rel:
+    - kind: विधेय
+      to: 6
+  - form: भूयास्तम्
+    lemma: भू
+    gloss: 'may you two be'
+    notes:
+    - term: आशीर्लिङ्
+      en: 'precative (आशीर्लिङ्) — a blessing, "may … be", 2nd person dual'
+  - form: यूयम्
+    lemma: युष्मद्
+    gloss: 'you (all)'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: धार्मिकाः
+    lemma: धार्मिक
+    gloss: 'righteous'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine — the pupils'
+    - term: प्रथमा
+      en: 'nominative plural — the predicate'
+    rel:
+    - kind: विधेय
+      to: 9
+  - form: भूयास्त
+    lemma: भू
+    gloss: 'may you be'
+    notes:
+    - term: आशीर्लिङ्
+      en: 'precative (आशीर्लिङ्) — a blessing, "may … be", 2nd person plural'
+  - form: एतौ
+    lemma: एतद्
+    gloss: 'these two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: बालौ
+    lemma: बाल
+    gloss: 'boys'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: दीर्घायुषौ
+    lemma: दीर्घायुस्
+    gloss: 'long-lived'
+    notes:
+    - term: द्विवचन
+      en: 'dual'
+    - term: प्रथमा
+      en: 'nominative dual — the predicate'
+    rel:
+    - kind: विधेय
+      to: 13
+  - form: भूयास्ताम्
+    lemma: भू
+    gloss: 'may they be'
+    notes:
+    - term: आशीर्लिङ्
+      en: 'precative (आशीर्लिङ्) — a blessing, "may … be", 3rd person dual'
+  - form: सर्वे
+    lemma: सर्व
+    gloss: 'all'
+    notes:
+    - term: विशेषण
+      en: 'qualifying जनाः'
+    - term: प्रथमा
+      en: 'nominative plural'
+    rel:
+    - kind: विशेषण
+      to: 17
+  - form: जनाः
+    lemma: जन
+    gloss: 'people'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: सुखिनः
+    lemma: सुखिन्
+    gloss: 'happy'
+    notes:
+    - term: प्रथमा
+      en: 'nominative plural — the predicate'
+    rel:
+    - kind: विधेय
+      to: 17
+  - form: भूयासुः
+    lemma: भू
+    gloss: 'may they be'
+    notes:
+    - term: आशीर्लिङ्
+      en: 'precative (आशीर्लिङ्) — a blessing, "may … be", 3rd person plural'
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: 'a pupil'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: 'I'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: गुरोः
+    lemma: गुरु
+    gloss: 'of my teacher'
+    notes:
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: योग्यः
+    lemma: योग्य
+    gloss: 'worthy'
+    notes:
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 22
+  - form: भूयासम्
+    lemma: भू
+    gloss: 'may I be'
+    notes:
+    - term: आशीर्लिङ्
+      en: 'precative (आशीर्लिङ्) — a blessing, "may … be", 1st person singular'
+  - form: आवाम्
+    lemma: अस्मद्
+    gloss: 'we two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: भ्रातरौ
+    lemma: भ्रातृ
+    gloss: 'brothers'
+    notes:
+    - term: कर्तृ
+      en: 'in apposition to आवाम्'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: सदा
+    lemma: सदा
+    gloss: 'always'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — time'
+  - form: मित्रे
+    lemma: मित्र
+    gloss: 'friends'
+    notes:
+    - term: प्रथमा
+      en: 'nominative dual — the predicate'
+    rel:
+    - kind: विधेय
+      to: 27
+  - form: भूयास्व
+    lemma: भू
+    gloss: 'may we two be'
+    notes:
+    - term: आशीर्लिङ्
+      en: 'precative (आशीर्लिङ्) — a blessing, "may … be", 1st person dual'
+  - form: वयम्
+    lemma: अस्मद्
+    gloss: 'we'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: सत्यवादिनः
+    lemma: सत्यवादिन्
+    gloss: 'speakers of truth'
+    notes:
+    - term: प्रथमा
+      en: 'nominative plural — the predicate'
+    rel:
+    - kind: विधेय
+      to: 32
+  - form: भूयास्म
+    lemma: भू
+    gloss: 'may we be'
+    notes:
+    - term: आशीर्लिङ्
+      en: 'precative (आशीर्लिङ्) — a blessing, "may … be", 1st person plural'
