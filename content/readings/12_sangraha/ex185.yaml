@@ -2,20 +2,28 @@
   kind: sangraha
   segment: 215
   order: 1
-  sentence: यः अन्नम् ददाति सः दाता। दानम् तस्य धर्मः। नित्यम् कर्ता सः नरः, न तु भोक्ता। गमनम् आरभते, ग्रामम् गामी भवति। तस्य पाकः अपि रोचते। कर्तारम् तम् जनाः पश्यन्ति।
-  translation: He who gives food is a giver. Giving is his dharma. That man is a constant doer, not an enjoyer. He begins the going, becomes a goer to the village. His cooking, too, is pleasing. People see him as the doer.
-  teaches: |
-    agent-nouns beside action-nouns, so the affix makes the difference: दाता /
-    दानम्, कर्ता / गमनम्. Then कर्ता declines into कर्तारम्.
+  sentence: देवदत्तः नित्यम् अन्नम् ददाति; सः दाता। दानम् तस्य धर्मः। ग्रामे सः बहूनि कर्माणि करोति — सः कर्ता, न तु भोक्ता। एकदा सः तीर्थम् प्रति गमनम् आरभते। मार्गे सः यात्रिकेभ्यः पाकम् करोति; तस्य पाकः अपि सर्वेभ्यः रोचते। जनाः तम् कर्तारम् दातारम् च वदन्ति।
+  translation: Devadatta gives food every day; he is a giver. Giving is his dharma. In the village he does many tasks — he is a doer, not an enjoyer. One day he sets out on a journey to a pilgrimage place. On the way he cooks for the travellers; his cooking, too, pleases everyone. People call him a doer and a giver.
+  teaches: 'One man described by the agent- and action-nouns that the कृत् affixes make: दाता, कर्ता, भोक्ता (तृच्/तृन्), दानम् and गमनम् (ल्युट्), पाकः (घञ्).
+
+    '
   words:
-  - form: 'यः'
-    lemma: यद्
-    gloss: he who
+  - form: देवदत्तः
+    lemma: देवदत्त
+    gloss: Devadatta
     notes:
-    - term: सर्वनाम
-      en: pronoun
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्तृ
+      en: agent
     - term: प्रथमा
-      en: nominative — the relative, answered by सः
+      en: nominative
+  - form: नित्यम्
+    lemma: नित्य
+    gloss: constantly
+    notes:
+    - term: अव्यय
+      en: adverbial accusative — "as a habit"
   - form: अन्नम्
     lemma: अन्न
     gloss: food
@@ -38,19 +46,39 @@
       en: pronoun
     - term: प्रथमा
       en: nominative — answers यः
+    - term: कर्तृ
+      en: agent
+    - term: एकवचन
+      en: एकवचन
+    - term: कर्तृ
+      en: agent
+    - term: एकवचन
+      en: एकवचन
   - form: दाता
     lemma: दातृ
     gloss: a giver
     notes:
     - term: तृच्
       en: agent-noun from दा — the one who does the action
-    - cite: "3.1.133"
+    - cite: 3.1.133
       role: ण्वुल्तृचौ — तृच् forms the agent-noun दातृ → दाता
+    - term: पुंलिङ्ग
+      en: पुंलिङ्ग
+    - term: एकवचन
+      en: एकवचन
+    - term: प्रथमा
+      en: प्रथमा
+    - term: पुंलिङ्ग
+      en: पुंलिङ्ग
+    - term: एकवचन
+      en: एकवचन
+    - term: प्रथमा
+      en: प्रथमा
   - form: दानम्
     lemma: दा
     gloss: giving
     notes:
-    - cite: "7.1.24"
+    - cite: 7.1.24
       role: अतोऽम् — the neuter अ-stem takes अम् in प्रथमा and द्वितीया → दानम्
     - term: ल्युट्
       en: action-noun suffix — the ACT (भाव), not the actor; set directly against दाता
@@ -70,12 +98,55 @@
     notes:
     - term: प्रथमा
       en: nominative
-  - form: नित्यम्
-    lemma: नित्य
-    gloss: constantly
+    - term: कर्तृ
+      en: agent
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in the village
     notes:
-    - term: अव्यय
-      en: adverbial accusative — "as a habit"
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
+  - form: बहूनि
+    lemma: बहु
+    gloss: many
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: बहुवचन
+      en: plural
+    - term: विशेषण
+      en: qualifying कर्माणि
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative plural
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: कर्माणि
+    lemma: कर्मन्
+    gloss: tasks
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: बहुवचन
+      en: plural
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative plural
+  - form: करोति
+    lemma: कृ
+    gloss: does
+    notes:
+    - term: लट्
+      en: present
   - form: कर्ता
     lemma: कर्तृ
     gloss: a doer
@@ -84,15 +155,9 @@
       en: the HABITUAL agent — तृन्, not तृच्; the habit is what नित्यम् marks
     - term: प्रथमा
       en: nominative
-    - cite: "7.1.94"
-      role: "ऋदुशनस्… — ऋ-stem nom.sg lengthens → पिता, कर्ता → कर्ता"
-  - form: नरः
-    lemma: नर
-    gloss: man
-    notes:
-    - term: प्रथमा
-      en: nominative
-  - form: 'न'
+    - cite: 7.1.94
+      role: ऋदुशनस्… — ऋ-stem nom.sg lengthens → पिता, कर्ता → कर्ता
+  - form: न
     lemma: न
     gloss: not
     notes:
@@ -114,14 +179,42 @@
       en: another agent-noun, from भुज् — same affix, different root
     - term: प्रथमा
       en: nominative
+  - form: एकदा
+    lemma: एकदा
+    gloss: one day
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
+  - form: तीर्थम्
+    lemma: तीर्थ
+    gloss: a pilgrimage place
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: एकवचन
+      en: singular
+    - term: कर्मन्
+      en: governed by प्रति — "towards"
+    - term: द्वितीया
+      en: accusative
+  - form: प्रति
+    lemma: प्रति
+    gloss: to
+    notes:
+    - term: अव्यय
+      en: indeclinable — कर्मप्रवचनीय
   - form: गमनम्
     lemma: गमन
     gloss: the going
     notes:
     - term: ल्युट्
       en: action-noun in -अन from गम् — the going, not the goer
-    - cite: "3.3.115"
+    - cite: 3.3.115
       role: ल्युट् च — ल्युट् makes a neuter भाव action-noun → गमनम्
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: द्वितीया
   - form: आरभते
     lemma: रभ्
     gloss: begins
@@ -129,32 +222,42 @@
     notes:
     - term: आत्मनेपद
       en: middle voice
-  - form: ग्रामम्
-    lemma: ग्राम
-    gloss: to the village
+  - form: मार्गे
+    lemma: मार्ग
+    gloss: on the way
     notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
+  - form: यात्रिकेभ्यः
+    lemma: यात्रिक
+    gloss: for the travellers
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: बहुवचन
+      en: plural
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative plural
+  - form: पाकम्
+    lemma: पाक
+    gloss: cooking
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
     - term: कर्मन्
-      en: the उपपद — the goal, standing before the agent-noun
+      en: object
     - term: द्वितीया
       en: accusative
-  - form: गामी
-    lemma: गामिन्
-    gloss: a goer
-    notes:
-    - term: णिनि
-      en: habit-agent with an उपपद — ग्रामं गामी "one who goes to the village"
-    - term: प्रथमा
-      en: nominative — इन्-stem, न् drops
-  - form: भवति
-    lemma: भू
-    gloss: becomes
-    notes:
-    - term: गुण
-      en: the root vowel strengthens before शप् — भू → भो → भव्
-    - term: शप्
-      en: the thematic अ between root and ending
-    - term: लट्
-      en: present
   - form: पाकः
     lemma: पाक
     gloss: cooking
@@ -169,6 +272,18 @@
     notes:
     - term: अव्यय
       en: indeclinable
+  - form: सर्वेभ्यः
+    lemma: सर्व
+    gloss: everyone
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: बहुवचन
+      en: plural
+    - term: सम्प्रदान
+      en: the one pleased — रुच् takes the चतुर्थी (1.4.33)
+    - term: चतुर्थी
+      en: dative plural
   - form: रोचते
     lemma: रुच्
     gloss: is pleasing
@@ -179,16 +294,17 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present — the one pleased would stand in the चतुर्थी
-    - cite: "7.3.86"
-      role: "पुगन्तलघूपधस्य च — guṇa of a light penult → रोचते"
-  - form: कर्तारम्
-    lemma: कर्तृ
-    gloss: the doer (obj.)
+    - cite: 7.3.86
+      role: पुगन्तलघूपधस्य च — guṇa of a light penult → रोचते
+  - form: जनाः
+    lemma: जन
+    gloss: people
+    vocab: true
     notes:
-    - term: सर्वनामस्थान
-      en: कर्ता DECLINES — the agent-noun is an ऋ-stem, strong अर् in the acc.
-    - term: द्वितीया
-      en: accusative
+    - term: कर्तृ
+      en: agent
+    - term: बहुवचन
+      en: nominative plural
   - form: तम्
     lemma: तद्
     gloss: him
@@ -199,31 +315,58 @@
       en: object
     - term: द्वितीया
       en: accusative
-  - form: जनाः
-    lemma: जन
-    gloss: people
-    vocab: true
+  - form: कर्तारम्
+    lemma: कर्तृ
+    gloss: the doer (obj.)
     notes:
-    - term: कर्तृ
-      en: agent
-    - term: बहुवचन
-      en: nominative plural
-  - form: पश्यन्ति
-    lemma: दृश्
-    gloss: see
+    - term: सर्वनामस्थान
+      en: कर्ता DECLINES — the agent-noun is an ऋ-stem, strong अर् in the acc.
+    - term: द्वितीया
+      en: accusative
+    - term: कर्मन्
+      en: object
+    - term: एकवचन
+      en: एकवचन
+  - form: दातारम्
+    lemma: दातृ
+    gloss: a giver
     notes:
-    - term: शप्
-      en: the thematic अ between root and ending
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: तृच्
+      en: the agent suffix
+    - term: द्वितीया
+      en: accusative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: वदन्ति
+    lemma: वद्
+    gloss: call
+    notes:
     - term: लट्
-      en: present plural
+      en: present, plural
   vyakhya: दाता ददाति, दानम् दीयते। कर्ता करोति, करणम् क्रियते। कर्तुः कर्म भिन्नम्।
-  vyakhya_en: |
-    दाता and दानम् come from the same root by different affixes, and the affix
+  vyakhya_en: 'दाता and दानम् come from the same root by different affixes, and the affix
+
     is the whole difference: one names the giver, the other the giving. So with
+
     कर्ता and गमनम्, भोक्ता and पाकः. A कृत् affix does not add a meaning to the
+
     root so much as decide WHICH PART of the action the new word names — the
+
     doer, the deed, or the instrument.
 
+
     Then कर्ता becomes कर्तारम्. The agent-noun is not a frozen label; it is an
+
     ऋ-stem noun and declines like पितृ. Both facts are usually met apart from
+
     each other; here they arrive in one paragraph.
+
+    '

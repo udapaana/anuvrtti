@@ -2,12 +2,24 @@
   kind: sangraha
   segment: 155
   order: 1
-  sentence: भगवान् वदति। तस्य वचनम् पिता शृणोति। पितरम् पुत्रः पश्यति। दण्डी अपि आगच्छति। दण्डिनम् पितरः पश्यन्ति। भगवतः वचनेन ते तुष्यन्ति। ततः राजानौ अपि आगच्छतः।
-  translation: The Blessed One speaks. The father hears his words. The son sees the father. A staff-bearing ascetic also arrives. The fathers see the staff-bearer. By the Blessed One's words they are satisfied. Then the two kings also arrive.
-  teaches: |
-    three stems in both grades: भगवान् / भगवतः, दण्डी / दण्डिनम्, पिता /
-    पितरम् / पितरः. The meaning does not change between them.
+  sentence: ग्रामे भगवान् वदति। तस्य वचनम् पिता शृणोति, पितरम् च पुत्रः पश्यति। तदा एकः दण्डी अपि आगच्छति; ग्रामस्य पितरः दण्डिनम् पश्यन्ति। भगवतः वचनेन ते तुष्यन्ति। ततः भगवतः दर्शनाय राजानौ अपि आगच्छतः।
+  translation: In the village the Blessed One speaks. A father listens to his words, and his son watches the father. Then a staff-bearing ascetic arrives too; the village elders see the staff-bearer. By the Blessed One's words they are satisfied. Then two kings too come to see the Blessed One.
+  teaches: 'The strong stems in one gathering: भगवान्, पितरम्, दण्डी, पितरः, राजानौ beside the weak भगवतः, दण्डिनम् — the crowd round a teacher grows, and so does the case-work.
+
+    '
   words:
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in the village
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
   - form: भगवान्
     lemma: भगवत्
     gloss: the Blessed One
@@ -16,8 +28,16 @@
       en: the STRONG stem — नुम् augment + lengthening give भगवान्
     - term: प्रथमा
       en: nominative singular
-    - cite: "7.1.70"
+    - cite: 7.1.70
       role: उगिदचां सर्वनामस्थानेऽधातोः — नुम् in the strong cases → भगवान्
+    - term: कर्तृ
+      en: agent
+    - term: एकवचन
+      en: एकवचन
+    - term: कर्तृ
+      en: agent
+    - term: एकवचन
+      en: एकवचन
   - form: वदति
     lemma: वद्
     gloss: speaks
@@ -38,7 +58,7 @@
     lemma: वचन
     gloss: the words
     notes:
-    - cite: "7.1.24"
+    - cite: 7.1.24
       role: अतोऽम् — the neuter अ-stem takes अम् in प्रथमा and द्वितीया → वचनम्
     - term: कर्मन्
       en: object
@@ -52,14 +72,20 @@
       en: agent — ऋ-stem strong nom.sg, ऋ → आ
     - term: प्रथमा
       en: nominative
-    - cite: "6.1.68"
-      role: "हल्ङ्याब्भ्यो… — सु drops after long आ-stems and consonants → पिता"
+    - cite: 6.1.68
+      role: हल्ङ्याब्भ्यो… — सु drops after long आ-stems and consonants → पिता
   - form: शृणोति
     lemma: श्रु
     gloss: hears
     notes:
     - term: लट्
       en: present
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: पितरम्
     lemma: पितृ
     gloss: the father (obj.)
@@ -68,6 +94,14 @@
       en: strong stem पितर् — the SAME word as पिता, one clause later
     - term: द्वितीया
       en: accusative
+    - term: कर्मन्
+      en: object
+    - term: एकवचन
+      en: एकवचन
+    - term: कर्मन्
+      en: object
+    - term: एकवचन
+      en: एकवचन
   - form: पुत्रः
     lemma: पुत्र
     gloss: the son
@@ -84,6 +118,25 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present — दृश् appears as पश्य्
+  - form: तदा
+    lemma: तदा
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
+  - form: एकः
+    lemma: एक
+    gloss: a
+    notes:
+    - term: संख्या
+      en: numeral
+    - term: विशेषण
+      en: qualifying the noun
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 13
   - form: दण्डी
     lemma: दण्डिन्
     gloss: a staff-bearer
@@ -92,6 +145,14 @@
       en: strong nom.sg — the न् of दण्डिन् drops and the इ lengthens
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
+    - term: एकवचन
+      en: एकवचन
+    - term: कर्तृ
+      en: agent
+    - term: एकवचन
+      en: एकवचन
   - form: अपि
     lemma: अपि
     gloss: also
@@ -106,14 +167,16 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present
-  - form: दण्डिनम्
-    lemma: दण्डिन्
-    gloss: the staff-bearer (obj.)
+  - form: ग्रामस्य
+    lemma: ग्राम
+    gloss: the village's
     notes:
-    - term: कर्मन्
-      en: the न् RETURNS before a vowel ending — the foil to दण्डी above
-    - term: द्वितीया
-      en: accusative
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: सम्बन्ध
+      en: relation
+    - term: षष्ठी
+      en: genitive
   - form: पितरः
     lemma: पितृ
     gloss: the fathers
@@ -122,6 +185,22 @@
       en: strong plural — गुण अर्, a third grade of the same stem
     - term: बहुवचन
       en: nominative plural
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
+  - form: दण्डिनम्
+    lemma: दण्डिन्
+    gloss: the staff-bearer (obj.)
+    notes:
+    - term: कर्मन्
+      en: the न् RETURNS before a vowel ending — the foil to दण्डी above
+    - term: द्वितीया
+      en: accusative
   - form: पश्यन्ति
     lemma: दृश्
     gloss: see
@@ -136,6 +215,10 @@
     notes:
     - term: षष्ठी
       en: the WEAK stem — plain भगवत् + ङस्, no नुम्; contrast भगवान् above
+    - term: सम्बन्ध
+      en: relation
+    - term: सम्बन्ध
+      en: relation
   - form: वचनेन
     lemma: वचन
     gloss: by the words
@@ -152,6 +235,14 @@
       en: pronoun
     - term: प्रथमा
       en: nominative plural
+    - term: कर्तृ
+      en: agent
+    - term: बहुवचन
+      en: बहुवचन
+    - term: कर्तृ
+      en: agent
+    - term: बहुवचन
+      en: बहुवचन
   - form: तुष्यन्ति
     lemma: तुष्
     gloss: are satisfied
@@ -167,6 +258,18 @@
     notes:
     - term: अव्यय
       en: indeclinable
+  - form: दर्शनाय
+    lemma: दर्शन
+    gloss: to see
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: एकवचन
+      en: singular
+    - term: अर्थ
+      en: purpose — the तादर्थ्य चतुर्थी
+    - term: चतुर्थी
+      en: dative
   - form: राजानौ
     lemma: राजन्
     gloss: the two kings
@@ -175,6 +278,14 @@
       en: strong DUAL — राजन् lengthens to राजान् before the dual ending
     - term: द्विवचन
       en: nominative dual
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
   - form: आगच्छतः
     lemma: गम्
     gloss: the two arrive
@@ -182,9 +293,14 @@
     - term: द्विवचन
       en: dual verb agreeing with राजानौ
   vyakhya: एकं पदम् — बलवत् दुर्बलं च। भगवान् भगवतः, दण्डी दण्डिनम्, पिता पितरम्।
-  vyakhya_en: |
-    Three stems, each appearing twice, each time in a different grade:
+  vyakhya_en: 'Three stems, each appearing twice, each time in a different grade:
+
     भगवान् / भगवतः, दण्डी / दण्डिनम्, पिता / पितरम् / पितरः. Nothing about the
+
     meaning changes between the two forms of a pair — भगवान् and भगवतः are the
+
     same person. What changes is the ending attached, and whether that ending
+
     belongs to the सर्वनामस्थान (strong) set.
+
+    '

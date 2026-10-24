@@ -2,12 +2,30 @@
   kind: sangraha
   segment: 105
   order: 1
-  sentence: अग्निः ज्वलति। नरः जलम् नयति। बालः वनम् गच्छति। गुरुः शिष्यम् बोधति। सः धर्मम् वदति। जनाः शृण्वन्ति। अग्नयः ज्वलन्ति, नराः च पश्यन्ति।
-  translation: The fire blazes. The man leads the water. The boy goes to the forest. The teacher instructs the student. He speaks dharma. The people listen. The fires blaze, and the men watch.
-  teaches: |
-    seven present verbs built the same way: an अ between root and ending, and
-    the root vowel strengthened before it. नी → नयति, बुध् → बोधति.
+  sentence: सायम् आश्रमे अग्निः ज्वलति। शिष्यः नद्याः जलम् नयति। गुरुः शिष्यम् बोधति; सः धर्मम् वदति, जनाः च शृण्वन्ति। रात्रौ ग्रामे अपि अग्नयः ज्वलन्ति, नराः च दूरात् पश्यन्ति।
+  translation: At dusk a fire blazes in the hermitage. A pupil carries water from the river. The teacher instructs the pupil; he speaks of dharma, and the people listen. At night fires blaze in the village too, and the men watch from afar.
+  teaches: 'One evening, with the present''s शप् and guṇa running through it — ज्वलति, नयति, बोधति — and अग्निः beside the plural अग्नयः.
+
+    '
   words:
+  - form: सायम्
+    lemma: सायम्
+    gloss: at dusk
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
+  - form: आश्रमे
+    lemma: आश्रम
+    gloss: in the hermitage
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
   - form: अग्निः
     lemma: अग्नि
     gloss: the fire
@@ -16,8 +34,8 @@
       en: agent — an इ-stem masculine
     - term: प्रथमा
       en: nominative
-    - cite: "4.1.2"
-      role: "स्वौजस्… — the सुप् endings themselves → अग्निः"
+    - cite: 4.1.2
+      role: स्वौजस्… — the सुप् endings themselves → अग्निः
   - form: ज्वलति
     lemma: ज्वल्
     gloss: blazes
@@ -26,16 +44,32 @@
       en: ज्वल् + अ + ति — the अ between root and ending
     - term: लट्
       en: present
-    - cite: "3.1.68"
+    - cite: 3.1.68
       role: कर्तरि शप् — the शप् विकरण inserted after the root → ज्वल् + अ
-  - form: नरः
-    lemma: नर
-    gloss: the man
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: a pupil
     notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
     - term: कर्तृ
       en: agent
     - term: प्रथमा
       en: nominative
+  - form: नद्याः
+    lemma: नदी
+    gloss: from the river
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
+    - term: अपादान
+      en: source
+    - term: पञ्चमी
+      en: ablative
   - form: जलम्
     lemma: जल
     gloss: water
@@ -53,32 +87,8 @@
       en: the root vowel strengthens before शप् — नी → ने → नय्
     - term: शप्
       en: नी + अ + ति, and ई strengthens to ए — ने + अ gives नय्
-    - cite: "7.3.84"
+    - cite: 7.3.84
       role: सार्वधातुकार्धधातुकयोः — गुण of the root vowel before शप् → नयति
-  - form: बालः
-    lemma: बाल
-    gloss: the boy
-    notes:
-    - term: कर्तृ
-      en: agent
-    - term: प्रथमा
-      en: nominative
-  - form: वनम्
-    lemma: वन
-    gloss: to the forest
-    notes:
-    - term: कर्मन्
-      en: goal of motion
-    - term: द्वितीया
-      en: accusative
-  - form: गच्छति
-    lemma: गम्
-    gloss: goes
-    notes:
-    - term: शप्
-      en: the same अ, on a root that also changes shape — गम् appears as गच्छ्
-    - term: लट्
-      en: present
   - form: गुरुः
     lemma: गुरु
     gloss: the teacher
@@ -106,8 +116,8 @@
       en: बुध् + अ + ति, and उ strengthens to ओ — the same step as in नयति
     - term: लट्
       en: present
-    - cite: "7.3.86"
-      role: "पुगन्तलघूपधस्य च — guṇa of a light penult → बोधति"
+    - cite: 7.3.86
+      role: पुगन्तलघूपधस्य च — guṇa of a light penult → बोधति
   - form: सः
     lemma: तद्
     gloss: he
@@ -116,6 +126,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: धर्मम्
     lemma: धर्म
     gloss: dharma
@@ -140,20 +152,64 @@
       en: agent
     - term: बहुवचन
       en: nominative plural
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: शृण्वन्ति
     lemma: श्रु
     gloss: listen
     notes:
     - term: लट्
       en: present plural — श्रु takes श्नु, not शप्, so the stem is शृणो/शृण्व्
+  - form: रात्रौ
+    lemma: रात्रि
+    gloss: at night
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in the village
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: अग्नयः
     lemma: अग्नि
     gloss: the fires
     notes:
     - term: बहुवचन
       en: nominative plural — इ strengthens before the ending, अग्नि → अग्नय्
-    - cite: "7.3.109"
+    - cite: 7.3.109
       role: जसि च — गुण before the plural ending → अग्नयः
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
   - form: ज्वलन्ति
     lemma: ज्वल्
     gloss: blaze
@@ -166,12 +222,20 @@
     notes:
     - term: बहुवचन
       en: nominative plural
-  - form: च
-    lemma: च
-    gloss: and
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
+  - form: दूरात्
+    lemma: दूरात्
+    gloss: from afar
     notes:
     - term: अव्यय
-      en: indeclinable
+      en: indeclinable — place
   - form: पश्यन्ति
     lemma: दृश्
     gloss: watch
@@ -179,12 +243,19 @@
     - term: बहुवचन
       en: present plural — दृश् appears as पश्य्
   vyakhya: धातोः परं शप्, तस्मात् पूर्वं गुणः। नी → ने → नय्। बुध् → बोध्।
-  vyakhya_en: |
-    Between the root and the ending there is almost always a अ. It is not part
+  vyakhya_en: 'Between the root and the ending there is almost always a अ. It is not part
+
     of either — it is inserted, and it is why भू gives भवति rather than भूति.
+
     Once it is there, a short इ उ ऋ in the root strengthens in front of it:
+
     नी becomes ने and then नय्, बुध् becomes बोध्.
 
+
     वद् shows nothing happening, because अ cannot strengthen further. शृण्वन्ति
+
     shows a root that takes a different insert altogether. The अ is the default,
+
     not the rule without exception.
+
+    '
