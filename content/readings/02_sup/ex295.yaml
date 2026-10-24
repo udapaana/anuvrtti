@@ -2,8 +2,8 @@
   kind: graded
   segment: 179
   order: 4
-  sentence: 'सायम् ऋषी कुमारयोः नाम्नोः अर्थम् पृच्छतः। राज्ञ्यौ वदतः — एकः जयः, अपरः विजयः। कुमारौ मात्रोः वचनम् शृणुतः, पित्रोः च स्निह्यतः। ऋषेः कन्ये देव्योः स्निह्यतः, कुमारयोः च प्रीतिः नवयोः स्वस्रोः। ऋषी राज्ञोः विश्वसितः, राजानौ अपि मुन्योः वचनम् आदरेण शृणुतः।'
-  translation: 'In the evening the sages ask the meaning of the princes'' two names. The queens say: "One is Jaya, the other Vijaya." The princes listen to their two mothers'' words and love their parents. The sage''s daughters grow fond of the two queens, and the princes'' affection is for their two new sisters. The sages trust the two kings, and the kings listen with respect to the two sages'' words.'
+  sentence: 'सायम् ऋषी कुमारयोः नाम्नोः अर्थम् पृच्छतः। राज्ञ्यौ वदतः — एकः जयः, यतः सः जयति; अपरः विजयः, यतः सः विशेषेण जयति। कुमारौ मात्रोः वचनम् शृणुतः, पित्रोः च स्निह्यतः। ऋषेः कन्ये देव्योः स्निह्यतः, कुमारौ अपि नवयोः स्वस्रोः। ऋषी राज्ञोः विश्वसितः, राजानौ अपि मुन्योः वचनम् आदरेण शृणुतः।'
+  translation: 'In the evening the sages ask the meaning of the princes'' two names. The queens say: "One is Jaya, because he wins; the other Vijaya, because he wins outstandingly." The princes listen to their two mothers'' words and love their parents. The sage''s daughters grow fond of the two queens, and the princes grow fond of their two new sisters. The sages trust the two kings, and the kings listen with respect to the two sages'' words.'
   teaches: 'The visit, part 3 — the dual''s other oblique form, -ओः, as genitive (नाम्नोः, मात्रोः, मुन्योः) and as the locative of what one loves or trusts (पित्रोः, देव्योः, स्वस्रोः, राज्ञोः) — स्निह् and विश्वस् take the सप्तमी.'
   words:
   - form: सायम्
@@ -117,7 +117,29 @@
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 11
+      to: 14
+  - form: यतः
+    lemma: यतः
+    gloss: 'because'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — cause'
+  - form: सः
+    lemma: तद्
+    gloss: 'he'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: जयति
+    lemma: जि
+    gloss: 'wins'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: विजयः
     lemma: विजय
     gloss: 'Vijaya'
@@ -128,6 +150,18 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
+  - form: विशेषेण
+    lemma: विशेष
+    gloss: 'outstandingly'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: करण
+      en: 'manner'
+    - term: तृतीया
+      en: 'instrumental'
   - form: कुमारौ
     lemma: कुमार
     gloss: 'the princes'
@@ -226,16 +260,24 @@
       en: 'the object of love — स्निह् takes the सप्तमी'
     - term: सप्तमी
       en: 'locative dual'
-  - form: प्रीतिः
-    lemma: प्रीति
-    gloss: 'affection'
+  - form: कुमारौ
+    lemma: कुमार
+    gloss: 'the princes'
     notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative'
+      en: 'nominative dual'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
   - form: नवयोः
     lemma: नव
     gloss: 'new'
@@ -250,7 +292,7 @@
       en: 'locative dual'
     rel:
     - kind: विशेषण
-      to: 24
+      to: 29
   - form: स्वस्रोः
     lemma: स्वसृ
     gloss: 'for the sisters'

@@ -2,8 +2,8 @@
   kind: graded
   segment: 183
   order: 4
-  sentence: 'वैद्यः जानुभ्याम् औषधम् ददाति। पितामहः हसति — हे जानुनी, इदानीम् मम आज्ञाम् शृणुतम्। मालत्याः नेत्रयोः हर्षस्य बाष्पः; सा वदति — हे अश्रूणि, गच्छत। स्रग्भ्याम् पुष्पाणि पतन्ति। पितामहः वदति — युवाभ्याम्, वैद्येन मालत्या च, सह अहम् मन्दिरम् गमिष्यामि।'
-  translation: 'The doctor gives medicine for both knees. Grandfather laughs: "Knees, now obey me!" There are tears of joy in Mālatī''s eyes; she says: "Tears, go away." Petals fall from the two garlands. Grandfather says: "With you two — the doctor and Mālatī — I will go to the temple."'
+  sentence: 'वैद्यः तैलम् ददाति — इदम् जानुभ्याम् हितम्। पितामहः हसति — हे जानुनी, इदानीम् मम आज्ञाम् शृणुतम्। मालत्याः नेत्रयोः आनन्दबाष्पः; सा वदति — हे अश्रूणि, गच्छत। मालत्याः स्रग्भ्याम् पुष्पाणि पितामहस्य पादयोः पतन्ति। पितामहः वदति — युवाभ्याम्, वैद्येन मालत्या च, सह अहम् मन्दिरम् गमिष्यामि।'
+  translation: 'The doctor gives an oil — "this is good for both knees." Grandfather laughs: "Knees, now obey me!" There are tears of joy in Mālatī''s eyes; she says: "Tears, go away." Petals fall from Mālatī''s two garlands at Grandfather''s feet. Grandfather says: "With you two — the doctor and Mālatī — I will go to the temple."'
   teaches: 'Mālatī, part 3 — the cure: जानुभ्याम् (for the knees), जानुनी and अश्रूणि addressed, स्रग्भ्याम् (from the garlands), and युवाभ्याम् with सह.'
   words:
   - form: वैद्यः
@@ -18,21 +18,9 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: जानुभ्याम्
-    lemma: जानु
-    gloss: 'for both knees'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: द्विवचन
-      en: 'dual'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: औषधम्
-    lemma: औषध
-    gloss: 'medicine'
+  - form: तैलम्
+    lemma: तैल
+    gloss: 'an oil'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
@@ -48,6 +36,43 @@
     notes:
     - term: लट्
       en: 'present'
+  - form: इदम्
+    lemma: इदम्
+    gloss: 'this'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'subject'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: जानुभ्याम्
+    lemma: जानु
+    gloss: 'for both knees'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्प्रदान
+      en: 'the one benefited — हित takes the चतुर्थी (2.3.73)'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: हितम्
+    lemma: हित
+    gloss: 'good'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 3
   - form: पितामहः
     lemma: पितामह
     gloss: 'Grandfather'
@@ -142,21 +167,9 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative dual'
-  - form: हर्षस्य
-    lemma: हर्ष
-    gloss: 'of joy'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
-  - form: बाष्पः
-    lemma: बाष्प
-    gloss: 'tears'
+  - form: आनन्दबाष्पः
+    lemma: आनन्दबाष्प
+    gloss: 'tears of joy'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
@@ -230,6 +243,30 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
+  - form: पितामहस्य
+    lemma: पितामह
+    gloss: 'Grandfather''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: पादयोः
+    lemma: पाद
+    gloss: 'at the feet'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
   - form: पतन्ति
     lemma: पत्
     gloss: 'fall'

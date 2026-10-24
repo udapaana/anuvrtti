@@ -2,8 +2,8 @@
   kind: graded
   segment: 188
   order: 2
-  sentence: 'ऋषयः रामलक्ष्मणौ ऊचुः — हे राजपुत्रौ, युवाम् राक्षसानाम् वनम् जग्मथुः इति वयम् शुश्रुम। हे सैनिकाः, यूयम् अपि तत्र जग्म। राक्षसाः युवाभ्याम् बिभ्यति। रामः उवाच — आवाभ्याम् ते पलायन्ते, न अन्येभ्यः। ऋषयः ऊचुः — याभ्याम् राक्षसाः पलायन्ते, ययोः धर्मः वसति, एताभ्याम् नमः। एकः शिष्यः पप्रच्छ — काभ्याम् फलानि यच्छामः? गुरुः उवाच — एताभ्याम् राजपुत्राभ्याम्। आभ्याम् वृक्षाभ्याम् फलानि आनयत। हे राजपुत्रौ, अनयोः पर्णशालयोः वसतम्।'
-  translation: 'The sages said to Rāma and Lakṣmaṇa: "Princes, we have heard that you two went into the demons'' forest. Soldiers, you went there too. The demons fear you two." Rāma said: "They flee from us two, not from others." The sages said: "Those from whom the demons flee, in whom dharma dwells — homage to these two." A pupil asked: "To which two shall we give fruit?" The teacher said: "To these two princes. Bring fruit from these two trees. Princes, stay in these two leaf-huts."'
+  sentence: 'ऋषयः रामलक्ष्मणौ ऊचुः — हे राजपुत्रौ, युवाम् राक्षसानाम् वनम् जग्मथुः इति वयम् शुश्रुम। हे आश्रमवासिनः, यूयम् अपि ताभ्याम् सह तत्र जग्म। राक्षसाः युवाभ्याम् बिभ्यति। रामः उवाच — आवाभ्याम् ते पलायन्ते, न अन्येभ्यः। ऋषयः ऊचुः — याभ्याम् राक्षसाः पलायन्ते, ययोः धर्मः वसति, एताभ्याम् नमः। आश्रमम् चत्वारः अतिथयः आगच्छन्। एकः शिष्यः पप्रच्छ — काभ्याम् प्रथमम् फलानि यच्छामः? गुरुः उवाच — एताभ्याम् राजपुत्राभ्याम्। आभ्याम् वृक्षाभ्याम् फलानि आनयत। हे राजपुत्रौ, अनयोः पर्णशालयोः वसतम्।'
+  translation: 'The sages said to Rāma and Lakṣmaṇa: "Princes, we have heard that you two went into the demons'' forest. Hermits, you went there with them too. The demons fear you two." Rāma said: "They flee from us two, not from others." The sages said: "Those from whom the demons flee, in whom dharma dwells — homage to these two." Four guests came to the hermitage. A pupil asked: "To which two shall we give fruit first?" The teacher said: "To these two princes. Bring fruit from these two trees. Princes, stay in these two leaf-huts."'
   teaches: 'The perfect of report — जग्मथुः, जग्म, शुश्रुम: the sages heard it, they did not see it — and the dual pronouns in a relative-and-correlative maxim: याभ्याम्, ययोः … एताभ्याम्; युवाभ्याम्, आवाभ्याम् (ablative); काभ्याम्; आभ्याम्, अनयोः.'
   words:
   - form: ऋषयः
@@ -118,9 +118,9 @@
     notes:
     - term: लिट्
       en: 'perfect (परोक्ष — reported, not witnessed), 1st person plural'
-  - form: सैनिकाः
-    lemma: सैनिक
-    gloss: 'soldiers'
+  - form: आश्रमवासिनः
+    lemma: आश्रमवासिन्
+    gloss: 'hermits'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
@@ -146,6 +146,24 @@
     notes:
     - term: अव्यय
       en: 'indeclinable'
+  - form: ताभ्याम्
+    lemma: तद्
+    gloss: 'them'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: सह
+    lemma: सह
+    gloss: 'with'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the तृतीया'
   - form: तत्र
     lemma: तत्र
     gloss: 'there'
@@ -324,6 +342,51 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — governs the चतुर्थी (2.3.16)'
+  - form: आश्रमम्
+    lemma: आश्रम
+    gloss: 'to the hermitage'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: चत्वारः
+    lemma: चतुर्
+    gloss: 'four'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying अतिथयः'
+    - term: प्रथमा
+      en: 'nominative plural'
+    rel:
+    - kind: विशेषण
+      to: 37
+  - form: अतिथयः
+    lemma: अतिथि
+    gloss: 'guests'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: आगच्छन्
+    lemma: गम्
+    gloss: 'came'
+    notes:
+    - term: लङ्
+      en: 'imperfect, plural, with आ'
   - form: एकः
     lemma: एक
     gloss: 'a'
@@ -336,7 +399,7 @@
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 34
+      to: 40
   - form: शिष्यः
     lemma: शिष्य
     gloss: 'pupil'
@@ -371,6 +434,12 @@
       en: 'recipient'
     - term: चतुर्थी
       en: 'dative dual'
+  - form: प्रथमम्
+    lemma: प्रथमम्
+    gloss: 'first'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — order'
   - form: फलानि
     lemma: फल
     gloss: 'fruit'

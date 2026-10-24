@@ -2,8 +2,8 @@
   kind: graded
   segment: 185
   order: 1
-  sentence: 'रात्रौ द्वौ छात्रौ वने मार्गम् न जानीतः। ते एकम् कुटीरम् पश्यतः, यत्र वृद्धौ वसतः। छात्रौ वदतः — आवाभ्याम् जलम् यच्छतम्। वृद्धः पृच्छति — युवाम् काभ्याम् ग्रामाभ्याम् आगच्छथः? छात्रौ वदतः — नद्याः पारे ताभ्याम् ग्रामाभ्याम्। वृद्धा वदति — आभ्याम् बालाभ्याम् भोजनम् आनय। एतयोः कटयोः युवाम् स्वपितम्। छात्रौ हसतः — कयोः कटयोः? छात्रौ पृच्छतः — प्रातः युवाम् आवाम् ग्रामम् नेष्यथः? वृद्धौ वदतः — आम्; एताभ्याम् वृक्षाभ्याम् परम् ग्रामः। आवयोः विश्वसितम्; आवयोः स्नेहः युवयोः। छात्रौ वदतः — युवाभ्याम् नमः। वृद्धः हसति — न अस्मत्, न युष्मत् — धर्मात् एव सुखम्।'
-  translation: 'At night two students cannot find the path in the forest. They see a hut where an old couple lives. The students say: "Give us water." The old man asks: "From which two villages have you come?" The students say: "From those two villages across the river." The old woman says: "Bring food for these two boys. You two sleep on these two mats." The students laugh: "On which two mats?" The students ask: "Will you two take us to the village in the morning?" The old couple say: "Yes; the village lies beyond these two trees. Trust us two; our affection is with you two." The students say: "Homage to you two." The old man laughs: "Not from us, not from you — happiness comes from dharma alone."'
+  sentence: 'रात्रौ द्वौ छात्रौ वने मार्गम् न जानीतः। ते एकम् कुटीरम् पश्यतः, यत्र वृद्धौ वसतः। छात्रौ वदतः — आवाभ्याम् जलम् यच्छतम्। एकः छात्रः वदति — आवाम् भिन्नयोः ग्रामयोः वसावः। वृद्धः पृच्छति — युवाम् काभ्याम् ग्रामाभ्याम् आगच्छथः? छात्रौ वदतः — नद्याः पारे ताभ्याम् ग्रामाभ्याम्। वृद्धा वदति — आभ्याम् बालाभ्याम् भोजनम् आनय। छात्रौ पश्यतः — कुटीरे कटौ न स्तः। ते पृच्छतः — कयोः कटयोः? वृद्धा स्वकटौ आनयति — एतयोः कटयोः युवाम् स्वपितम्। छात्रौ पृच्छतः — प्रातः युवाम् आवाम् ग्रामम् नेष्यथः? वृद्धौ वदतः — आम्; एताभ्याम् वृक्षाभ्याम् परम् ग्रामः। आवयोः विश्वसितम्; आवयोः स्नेहः युवयोः। छात्रौ वदतः — युवाभ्याम् नमः। वृद्धः हसति — न अस्मत्, न युष्मत् — धर्मात् एव सुखम्।'
+  translation: 'At night two students cannot find the path in the forest. They see a hut where an old couple lives. The students say: "Give us water." One student says: "We live in different villages." The old man asks: "From which two villages have you come?" The students say: "From those two villages across the river." The old woman says: "Bring food for these two boys. " The students look — there are no mats in the hut. They ask: "On which two mats?" The old woman brings her own two mats: "Sleep on these two mats." The students ask: "Will you two take us to the village in the morning?" The old couple say: "Yes; the village lies beyond these two trees. Trust us two; our affection is with you two." The students say: "Homage to you two." The old man laughs: "Not from us, not from you — happiness comes from dharma alone."'
   teaches: 'The dual pronouns as a dialogue needs them — two speaking to two: आवाभ्याम्, आवाम्, आवयोः, युवयोः, युवाभ्याम्; काभ्याम्, कयोः, ताभ्याम्, आभ्याम्, एतयोः — and the ablative plurals अस्मत्, युष्मत्.'
   words:
   - form: रात्रौ
@@ -244,6 +244,66 @@
     notes:
     - term: लट्
       en: 'present, 2nd person dual, with आ'
+  - form: एकः
+    lemma: एक
+    gloss: 'one'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying the noun'
+    - term: प्रथमा
+      en: 'nominative'
+    rel:
+    - kind: विशेषण
+      to: 25
+  - form: छात्रः
+    lemma: छात्र
+    gloss: 'student'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: भिन्नयोः
+    lemma: भिन्न
+    gloss: 'different'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: विशेषण
+      en: 'qualifying ग्रामयोः'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+    rel:
+    - kind: विशेषण
+      to: 27
+  - form: ग्रामयोः
+    lemma: ग्राम
+    gloss: 'in villages'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: वसावः
+    lemma: वस्
+    gloss: 'live'
+    notes:
+    - term: लट्
+      en: 'present, 1st person dual'
   - form: नद्याः
     lemma: नदी
     gloss: 'the river''s'
@@ -340,9 +400,39 @@
     notes:
     - term: लोट्
       en: 'imperative, with the preverb आ'
-  - form: एतयोः
-    lemma: एतद्
-    gloss: 'these two'
+  - form: कुटीरे
+    lemma: कुटीर
+    gloss: 'in the hut'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: कटौ
+    lemma: कट
+    gloss: 'mats'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: स्तः
+    lemma: अस्
+    gloss: 'are'
+    notes:
+    - term: लट्
+      en: 'present, dual'
+  - form: कयोः
+    lemma: किम्
+    gloss: 'which two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
@@ -364,21 +454,27 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative dual'
-  - form: स्वपितम्
-    lemma: स्वप्
-    gloss: 'sleep'
+  - form: स्वकटौ
+    lemma: स्वकट
+    gloss: 'her own two mats'
     notes:
-    - term: लोट्
-      en: 'imperative (अदादि), 2nd person dual'
-  - form: हसतः
-    lemma: हस्
-    gloss: 'laugh'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: आनयति
+    lemma: नी
+    gloss: 'brings'
     notes:
     - term: लट्
-      en: 'present, dual'
-  - form: कयोः
-    lemma: किम्
-    gloss: 'which two'
+      en: 'present, with the preverb आ'
+  - form: एतयोः
+    lemma: एतद्
+    gloss: 'these two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
@@ -388,6 +484,12 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative dual'
+  - form: स्वपितम्
+    lemma: स्वप्
+    gloss: 'sleep'
+    notes:
+    - term: लोट्
+      en: 'imperative (अदादि), 2nd person dual'
   - form: पृच्छतः
     lemma: प्रच्छ्
     gloss: 'ask'

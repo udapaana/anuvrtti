@@ -2,9 +2,9 @@
   kind: graded
   segment: 180
   order: 4
-  sentence: 'सायम् वने ज्येष्ठा भगिनी वदति — हे स्वसारौ, शीघ्रम् आगच्छतम्। हे धेनवः, गृहम् चलत। किन्तु मार्गः न दृश्यते। कनिष्ठायाः तृष्णा महती। सा वदति — हे अम्बु, कुत्र असि? तदा ताः द्वयोः सरसोः जलम् पश्यन्ति। ज्येष्ठा हसति — हे सरसी! युवाम् अस्माकम् रक्षके। सरसोः तीरे द्वे नार्यौ तिष्ठतः। ते पृच्छतः — हे कन्ये, युवाम् कुतः? ज्येष्ठा वदति — हे युवती, अस्माकम् ग्रामम् दर्शयतम्। ग्रामस्य द्वारे द्वे सख्यौ धावतः; ज्येष्ठा वदति — हे मित्रे, वयम् क्षेमेण स्मः। ततः सा सर्वाः ग्रामस्य बालाः वदति — हे मित्राणि, हे युवतयः, अद्य तोयम् अस्मान् अरक्षत्।'
-  translation: 'At dusk in the forest the eldest sister says: "Sisters, come quickly! Cows, go home!" But the path cannot be seen. The youngest is very thirsty. She says: "Water, where are you?" Then they see the water of two lakes. The eldest laughs: "Lakes, you two are our rescuers!" On the lakes'' bank stand two women. They say: "Girls, where are you two from?" The eldest says: "Ladies, show us our village." At the village gate two friends come running; the eldest tells them: "Friends, we are safe." Then she tells all the village girls: "Friends, young women — today the water saved us!"'
-  teaches: 'The vocative across the classes, each with someone to call: स्वसारौ, धेनवः, अम्बु, सरसी, कन्ये, युवती, मित्रे, मित्राणि, युवतयः. Lost at dusk, one calls out to everything.'
+  sentence: 'सायम् तिस्रः भगिन्यः धेनुभिः सह वने मार्गम् न जानन्ति। ज्येष्ठा वदति — हे स्वसारौ, शीघ्रम् आगच्छतम्; हे धेनवः, चलत। कनिष्ठा "जलम्, जलम्" इति रोदिति। ताः द्वयोः सरसोः तीरम् गच्छन्ति, यत्र द्वे नार्यौ जलम् आनयतः। ताः सरसः जलम् पिबन्ति। नार्यौ पृच्छतः — हे कन्ये, युवाम् कुतः? ज्येष्ठा वदति — हे युवती, अस्माकम् ग्रामस्य मार्गम् दर्शयतम्। भगिन्यः युवतिभ्याम् मार्गम् जानन्ति। ग्रामस्य द्वारे द्वे सख्यौ धावतः; ज्येष्ठा वदति — हे मित्रे, वयम् क्षेमेण स्मः। ततः सा ग्रामबालाः प्रति वदति — हे मित्राणि, हे युवतयः, एते नार्यौ अस्मान् अरक्षताम्।'
+  translation: 'At dusk three sisters and their cows cannot find the path in the forest. The eldest says: "Sisters, come quickly; cows, move on." The youngest cries, "Water, water!" They go to the bank of two ponds, where two women are drawing water. They drink water from the pond. The women ask: "Girls, where are you two from?" The eldest says: "Ladies, show us the way to our village." The sisters learn the way from the two women. At the village gate two friends come running; the eldest says: "Friends, we are safe." Then she tells the village girls: "Friends, young women — these two women saved us."'
+  teaches: 'Lost at dusk, one calls to whoever is there — the vocatives स्वसारौ, धेनवः, कन्ये, युवती, मित्रे, मित्राणि, युवतयः; and the ablative of the one learnt from, युवतिभ्याम् (1.4.29), beside सरसः, the source of the water.'
   words:
   - form: सायम्
     lemma: सायम्
@@ -12,6 +12,51 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — time'
+  - form: तिस्रः
+    lemma: त्रि
+    gloss: 'three'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying भगिन्यः'
+    - term: प्रथमा
+      en: 'nominative plural'
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: भगिन्यः
+    lemma: भगिनी
+    gloss: 'sisters'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: धेनुभिः
+    lemma: धेनु
+    gloss: 'their cows'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental plural'
+  - form: सह
+    lemma: सह
+    gloss: 'with'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the तृतीया'
   - form: वने
     lemma: वन
     gloss: 'in the forest'
@@ -24,22 +69,33 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative'
-  - form: ज्येष्ठा
-    lemma: ज्येष्ठ
-    gloss: 'the eldest'
+  - form: मार्गम्
+    lemma: मार्ग
+    gloss: 'the path'
     notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: विशेषण
-      en: 'qualifying भगिनी'
-    - term: प्रथमा
-      en: 'nominative'
-    rel:
-    - kind: विशेषण
-      to: 3
-  - form: भगिनी
-    lemma: भगिनी
-    gloss: 'sister'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: न
+    lemma: न
+    gloss: 'not'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — negation'
+  - form: जानन्ति
+    lemma: ज्ञा
+    gloss: 'know'
+    notes:
+    - term: लट्
+      en: 'present (क्र्यादि), plural'
+  - form: ज्येष्ठा
+    lemma: ज्येष्ठा
+    gloss: 'the eldest'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
@@ -93,67 +149,15 @@
       en: 'plural'
     - term: सम्बोधन
       en: 'vocative plural'
-  - form: गृहम्
-    lemma: गृह
-    gloss: 'home'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्मन्
-      en: 'the goal of motion'
-    - term: द्वितीया
-      en: 'accusative'
   - form: चलत
     lemma: चल्
-    gloss: 'go'
+    gloss: 'move on'
     notes:
     - term: लोट्
       en: 'imperative, 2nd person plural'
-  - form: किन्तु
-    lemma: किन्तु
-    gloss: 'but'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — contrast'
-  - form: मार्गः
-    lemma: मार्ग
-    gloss: 'the path'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्मन्
-      en: 'what is (not) seen — the प्रथमा of the passive'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: न
-    lemma: न
-    gloss: 'not'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — negation'
-  - form: दृश्यते
-    lemma: दृश्
-    gloss: 'is seen'
-    notes:
-    - term: लट्
-      en: 'present, passive'
-  - form: कनिष्ठायाः
+  - form: कनिष्ठा
     lemma: कनिष्ठा
-    gloss: 'the youngest''s'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
-  - form: तृष्णा
-    lemma: तृष्णा
-    gloss: 'thirst'
+    gloss: 'the youngest'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
@@ -163,57 +167,30 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: महती
-    lemma: महत्
-    gloss: 'great'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'number'
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 17
-  - form: सा
-    lemma: तद्
-    gloss: 'she'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: अम्बु
-    lemma: अम्बु
+  - form: जलम्
+    lemma: जल
     gloss: 'water'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
     - term: एकवचन
       en: 'singular'
-    - term: सम्बोधन
-      en: 'vocative'
-  - form: कुत्र
-    lemma: कुत्र
-    gloss: 'where'
+    - term: कर्मन्
+      en: 'what is drawn and drunk'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: इति
+    lemma: इति
+    gloss: '(so)'
     notes:
     - term: अव्यय
-      en: 'indeclinable — place'
-  - form: असि
-    lemma: अस्
-    gloss: 'are'
+      en: 'indeclinable — closes the quotation'
+  - form: रोदिति
+    lemma: रुद्
+    gloss: 'cries'
     notes:
     - term: लट्
-      en: 'present, 2nd person'
-  - form: तदा
-    lemma: तदा
-    gloss: 'then'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — time'
+      en: 'present (अदादि)'
   - form: ताः
     lemma: तद्
     gloss: 'they'
@@ -236,10 +213,10 @@
       en: 'genitive dual'
     rel:
     - kind: विशेषण
-      to: 26
+      to: 23
   - form: सरसोः
     lemma: सरस्
-    gloss: 'of lakes'
+    gloss: 'of ponds'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
@@ -249,97 +226,30 @@
       en: 'relation'
     - term: षष्ठी
       en: 'genitive dual'
-  - form: जलम्
-    lemma: जल
-    gloss: 'the water'
+  - form: तीरम्
+    lemma: तीर
+    gloss: 'to the bank'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
     - term: एकवचन
       en: 'singular'
     - term: कर्मन्
-      en: 'object'
+      en: 'the goal of motion'
     - term: द्वितीया
       en: 'accusative'
-  - form: पश्यन्ति
-    lemma: दृश्
-    gloss: 'see'
+  - form: गच्छन्ति
+    lemma: गम्
+    gloss: 'go'
     notes:
     - term: लट्
       en: 'present, plural'
-  - form: हसति
-    lemma: हस्
-    gloss: 'laughs'
+  - form: यत्र
+    lemma: यत्र
+    gloss: 'where'
     notes:
-    - term: लट्
-      en: 'present'
-  - form: सरसी
-    lemma: सरस्
-    gloss: 'lakes'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: द्विवचन
-      en: 'dual'
-    - term: सम्बोधन
-      en: 'vocative dual'
-  - form: युवाम्
-    lemma: युष्मद्
-    gloss: 'you two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: अस्माकम्
-    lemma: अस्मद्
-    gloss: 'our'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive plural'
-  - form: रक्षके
-    lemma: रक्षक
-    gloss: 'rescuers'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: द्विवचन
-      en: 'number'
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 31
-  - form: सरसोः
-    lemma: सरस्
-    gloss: 'the lakes'''
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: द्विवचन
-      en: 'dual'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive dual'
-  - form: तीरे
-    lemma: तीर
-    gloss: 'on the bank'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'singular'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative'
+    - term: अव्यय
+      en: 'indeclinable — place'
   - form: द्वे
     lemma: द्वि
     gloss: 'two'
@@ -352,7 +262,7 @@
       en: 'nominative dual'
     rel:
     - kind: विशेषण
-      to: 37
+      to: 28
   - form: नार्यौ
     lemma: नारी
     gloss: 'women'
@@ -365,24 +275,30 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: तिष्ठतः
-    lemma: स्था
-    gloss: 'stand'
+  - form: आनयतः
+    lemma: नी
+    gloss: 'are drawing'
     notes:
     - term: लट्
-      en: 'present, dual'
-  - form: ते
-    lemma: तद्
-    gloss: 'they'
+      en: 'present, dual, with आ'
+  - form: सरसः
+    lemma: सरस्
+    gloss: 'from the pond'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: द्विवचन
-      en: 'dual'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative'
+  - form: पिबन्ति
+    lemma: पा
+    gloss: 'drink'
+    notes:
+    - term: लट्
+      en: 'present, plural (पा → पिब)'
   - form: पृच्छतः
     lemma: प्रच्छ्
     gloss: 'ask'
@@ -399,6 +315,16 @@
       en: 'dual'
     - term: सम्बोधन
       en: 'vocative dual'
+  - form: युवाम्
+    lemma: युष्मद्
+    gloss: 'you two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
   - form: कुतः
     lemma: कुतः
     gloss: 'from where'
@@ -415,18 +341,26 @@
       en: 'dual'
     - term: सम्बोधन
       en: 'vocative dual'
-  - form: ग्रामम्
+  - form: अस्माकम्
+    lemma: अस्मद्
+    gloss: 'our'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive plural'
+  - form: ग्रामस्य
     lemma: ग्राम
-    gloss: 'village'
+    gloss: 'village''s'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
   - form: दर्शयतम्
     lemma: दृश्
     gloss: 'show'
@@ -435,16 +369,18 @@
       en: 'causative imperative, 2nd person dual'
     - term: णिच्
       en: 'causative'
-  - form: ग्रामस्य
-    lemma: ग्राम
-    gloss: 'the village''s'
+  - form: युवतिभ्याम्
+    lemma: युवति
+    gloss: 'from the two women'
     notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अपादान
+      en: 'the one learnt from (1.4.29)'
+    - term: पञ्चमी
+      en: 'ablative dual'
   - form: द्वारे
     lemma: द्वार
     gloss: 'at the gate'
@@ -519,33 +455,34 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — sequence'
-  - form: सर्वाः
-    lemma: सर्व
-    gloss: 'all'
+  - form: सा
+    lemma: तद्
+    gloss: 'she'
     notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: विशेषण
-      en: 'qualifying बालाः'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative plural'
-    rel:
-    - kind: विशेषण
-      to: 56
-  - form: बालाः
-    lemma: बाला
-    gloss: 'the girls'
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: ग्रामबालाः
+    lemma: ग्रामबाला
+    gloss: 'the village girls'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
     - term: बहुवचन
       en: 'plural'
     - term: कर्मन्
-      en: 'the one addressed — वद् with the द्वितीया'
+      en: 'governed by प्रति — "to"'
     - term: द्वितीया
       en: 'accusative plural'
+  - form: प्रति
+    lemma: प्रति
+    gloss: 'to'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — कर्मप्रवचनीय'
   - form: मित्राणि
     lemma: मित्र
     gloss: 'friends'
@@ -566,24 +503,18 @@
       en: 'plural'
     - term: सम्बोधन
       en: 'vocative plural'
-  - form: अद्य
-    lemma: अद्य
-    gloss: 'today'
+  - form: एते
+    lemma: एतद्
+    gloss: 'these two'
     notes:
-    - term: अव्यय
-      en: 'indeclinable — time'
-  - form: तोयम्
-    lemma: तोय
-    gloss: 'the water'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'singular'
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative'
+      en: 'nominative dual'
   - form: अस्मान्
     lemma: अस्मद्
     gloss: 'us'
@@ -594,9 +525,9 @@
       en: 'object'
     - term: द्वितीया
       en: 'accusative plural'
-  - form: अरक्षत्
+  - form: अरक्षताम्
     lemma: रक्ष्
     gloss: 'saved'
     notes:
     - term: लङ्
-      en: 'imperfect (लङ्) — narrative past'
+      en: 'imperfect (लङ्) — narrative past, dual'

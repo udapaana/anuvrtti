@@ -2,9 +2,9 @@
   kind: graded
   segment: 183
   order: 2
-  sentence: 'मालती प्रातः स्रग्भ्यः पुष्पाणि चिनोति। सा स्रग्भ्याम् देवीम् वाचम् अलङ्करोति, स्रजोः च भ्रमराः भ्रमन्ति। सा प्रार्थयते — हे वाक्, मम पितामहस्य जिह्वायाम् वस। पितामहः वेदम् पठति, किन्तु ऋग्द्वयम् विस्मरति। सः वदति — हे ऋचौ, मम स्मृतौ तिष्ठतम्। ततः सः जानुनी स्पृशति; ते अपि रुजतः। मालती तस्मै माक्षिकम् आनयति — मधु तस्य औषधम्। पितामहस्य मुखम् अश्रुभिः आर्द्रम्। द्वयोः मनोभ्याम् चिन्ता अपगच्छति। सः गायति — हे मनांसि, यूयम् शिवसङ्कल्पानि भवत।'
-  translation: 'In the morning Mālatī gathers flowers for garlands. She adorns the goddess Speech with two garlands, and bees hover over the two garlands. She prays: "Speech, dwell on my grandfather''s tongue." Grandfather recites the Veda, but forgets two verses. He says: "Verses, stay in my memory!" Then he touches his knees; they ache too. Mālatī brings him honey — honey is his medicine. Grandfather''s face is wet with tears. Worry leaves both their minds. He sings: "Minds, be of good resolve."'
-  teaches: 'Mālatī and her grandfather, part 1 — the consonant stems स्रज् (स्रग्भ्यः, स्रग्भ्याम्, स्रजोः), वाच् (वाक् as the goddess), ऋच् (ऋचौ); जानुनी, मधु, अश्रुभिः; मनोभ्याम्, and मनांसि from the prayer that minds be "of auspicious resolve" (शिवसङ्कल्प).'
+  sentence: 'मालती स्रग्भ्यः पुष्पाणि चिनोति, स्रग्भ्याम् च वाग्देव्याः मूर्तिम् अलङ्करोति। स्रजोः भ्रमराः भ्रमन्ति। सा प्रार्थयते — हे वाक्, मम पितामहस्य जिह्वायाम् वस। तदा पितामहः वेदम् पठति, किन्तु ऋग्द्वयम् विस्मरति। सः वदति — हे ऋचौ, मम स्मृतौ तिष्ठतम्। ततः सः देव्याः पुरतः जानुनी भूमौ स्थापयति, वेदनया च "आः" इति वदति। मालती माक्षिकम् आनयति, वदति च — मधु एव औषधम्। मधुनः स्वादेन पितामहः हसति, अश्रुभिः सह। द्वयोः मनोभ्याम् चिन्ता अपगच्छति।'
+  translation: 'Mālatī gathers flowers for garlands, and with two garlands adorns the image of the goddess of Speech. Bees hover over the two garlands. She prays: "Speech, dwell on my grandfather''s tongue." Just then Grandfather recites the Veda, but forgets two verses. He says: "Verses, stay in my memory!" Then he sets both knees on the ground before the goddess, and says "Ah!" in pain. Mālatī brings honey and says: "Honey is the medicine." At the taste of the honey Grandfather laughs, with tears. Worry leaves both their minds.'
+  teaches: 'Mālatī and her grandfather, part 1 — the consonant stems स्रज् (स्रग्भ्यः, स्रग्भ्याम्, स्रजोः), वाच् (वाक्, the goddess addressed), ऋच् (ऋचौ addressed); and the neuter उ-stems जानुनी, मधु, मधुनः, अश्रुभिः; मनोभ्याम्.'
   words:
   - form: मालती
     lemma: मालती
@@ -18,12 +18,6 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: प्रातः
-    lemma: प्रातर्
-    gloss: 'in the morning'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — time'
   - form: स्रग्भ्यः
     lemma: स्रज्
     gloss: 'for garlands'
@@ -33,7 +27,7 @@
     - term: बहुवचन
       en: 'plural'
     - term: अर्थ
-      en: 'purpose — the तादर्थ्य चतुर्थी'
+      en: 'purpose — for the sake of (2.3.14)'
     - term: चतुर्थी
       en: 'dative plural'
   - form: पुष्पाणि
@@ -54,18 +48,6 @@
     notes:
     - term: लट्
       en: 'present (स्वादि)'
-  - form: सा
-    lemma: तद्
-    gloss: 'she'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: एकवचन
-      en: 'number'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
   - form: स्रग्भ्याम्
     lemma: स्रज्
     gloss: 'with two garlands'
@@ -78,21 +60,27 @@
       en: 'instrument'
     - term: तृतीया
       en: 'instrumental dual'
-  - form: देवीम्
-    lemma: देवी
-    gloss: 'the goddess'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: वाग्देव्याः
+    lemma: वाग्देवी
+    gloss: 'the goddess of Speech''s'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
     - term: एकवचन
       en: 'singular'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: वाचम्
-    lemma: वाच्
-    gloss: 'Speech'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: मूर्तिम्
+    lemma: मूर्ति
+    gloss: 'image'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
@@ -128,12 +116,6 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative dual'
-  - form: च
-    lemma: च
-    gloss: 'and'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable'
   - form: भ्रमराः
     lemma: भ्रमर
     gloss: 'bees'
@@ -152,6 +134,18 @@
     notes:
     - term: लट्
       en: 'present, plural'
+  - form: सा
+    lemma: तद्
+    gloss: 'she'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: एकवचन
+      en: 'number'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
   - form: प्रार्थयते
     lemma: अर्थ्
     gloss: 'prays'
@@ -224,6 +218,12 @@
     notes:
     - term: लोट्
       en: 'imperative'
+  - form: तदा
+    lemma: तदा
+    gloss: 'just then'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — time'
   - form: पितामहः
     lemma: पितामह
     gloss: 'Grandfather'
@@ -330,9 +330,27 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — sequence'
+  - form: देव्याः
+    lemma: देवी
+    gloss: 'the goddess'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'governed by पुरतः — "before"'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: पुरतः
+    lemma: पुरतस्
+    gloss: 'before'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — place'
   - form: जानुनी
     lemma: जानु
-    gloss: 'his knees'
+    gloss: 'both knees'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
@@ -342,48 +360,50 @@
       en: 'object'
     - term: द्वितीया
       en: 'accusative dual'
-  - form: स्पृशति
-    lemma: स्पृश्
-    gloss: 'touches'
+  - form: भूमौ
+    lemma: भूमि
+    gloss: 'on the ground'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: स्थापयति
+    lemma: स्था
+    gloss: 'sets'
     notes:
     - term: लट्
-      en: 'present (तुदादि)'
-  - form: ते
-    lemma: तद्
-    gloss: 'they'
+      en: 'causative present'
+    - term: णिच्
+      en: 'causative'
+  - form: वेदनया
+    lemma: वेदना
+    gloss: 'in pain'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: द्विवचन
-      en: 'number'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: अपि
-    lemma: अपि
-    gloss: 'too'
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: हेतु
+      en: 'the cause'
+    - term: तृतीया
+      en: 'instrumental'
+  - form: आः
+    lemma: आः
+    gloss: 'ah'
     notes:
     - term: अव्यय
-      en: 'indeclinable'
-  - form: रुजतः
-    lemma: रुज्
-    gloss: 'ache'
+      en: 'indeclinable — exclamation'
+  - form: इति
+    lemma: इति
+    gloss: '(so)'
     notes:
-    - term: लट्
-      en: 'present (तुदादि), dual'
-  - form: तस्मै
-    lemma: तद्
-    gloss: 'to him'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: एकवचन
-      en: 'number'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative'
+    - term: अव्यय
+      en: 'indeclinable — closes the quotation'
   - form: माक्षिकम्
     lemma: माक्षिक
     gloss: 'honey'
@@ -414,21 +434,15 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: तस्य
-    lemma: तद्
-    gloss: 'his'
+  - form: एव
+    lemma: एव
+    gloss: '(itself)'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: एकवचन
-      en: 'number'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
+    - term: अव्यय
+      en: 'indeclinable — emphasis'
   - form: औषधम्
     lemma: औषध
-    gloss: 'medicine'
+    gloss: 'the medicine'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
@@ -438,44 +452,55 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 41
-  - form: मुखम्
-    lemma: मुख
-    gloss: 'face'
+      to: 43
+  - form: मधुनः
+    lemma: मधु
+    gloss: 'of the honey'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
     - term: एकवचन
       en: 'singular'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: स्वादेन
+    lemma: स्वाद
+    gloss: 'at the taste'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: हेतु
+      en: 'the cause'
+    - term: तृतीया
+      en: 'instrumental'
+  - form: हसति
+    lemma: हस्
+    gloss: 'laughs'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: अश्रुभिः
     lemma: अश्रु
-    gloss: 'with tears'
+    gloss: 'tears'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
     - term: बहुवचन
       en: 'plural'
-    - term: करण
-      en: 'the cause'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
     - term: तृतीया
       en: 'instrumental plural'
-  - form: आर्द्रम्
-    lemma: आर्द्र
-    gloss: 'wet'
+  - form: सह
+    lemma: सह
+    gloss: 'with'
     notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'number'
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 44
+    - term: अव्यय
+      en: 'indeclinable — governs the तृतीया'
   - form: द्वयोः
     lemma: द्वि
     gloss: 'both of them'
@@ -516,50 +541,3 @@
     notes:
     - term: लट्
       en: 'present, with the preverb अप'
-  - form: गायति
-    lemma: गै
-    gloss: 'sings'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: मनांसि
-    lemma: मनस्
-    gloss: 'minds'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: बहुवचन
-      en: 'plural'
-    - term: सम्बोधन
-      en: 'vocative plural'
-  - form: यूयम्
-    lemma: युष्मद्
-    gloss: 'you'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: बहुवचन
-      en: 'number'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: शिवसङ्कल्पानि
-    lemma: शिवसङ्कल्प
-    gloss: 'of good resolve'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: बहुवचन
-      en: 'number'
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 53
-  - form: भवत
-    lemma: भू
-    gloss: 'be'
-    notes:
-    - term: लोट्
-      en: 'imperative, 2nd person plural'

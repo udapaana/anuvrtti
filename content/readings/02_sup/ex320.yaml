@@ -2,9 +2,9 @@
   kind: graded
   segment: 183
   order: 3
-  sentence: 'पितामहस्य जानुनोः वेदना न शाम्यति। मालती वदति — अहम् वस्तुभ्यः आपणम् गच्छामि। मार्गे सः गोपालः गोभ्याम् धेनुभ्याम् च दूरम् न गच्छति; गोः वत्सः क्रीडति, एका धेनुः जानुभ्याम् भूमौ उपविशति। आपणे मधुनः बिन्दवः पतन्ति। मालती द्वे स्रजौ विक्रीणीते — स्रजोः मूल्येन सा औषधम् क्रीणाति, स्रग्भ्याम् च नवम् सूत्रम्। स्रग्भ्यः सुगन्धः आपणे प्रसरति।'
-  translation: 'The pain in Grandfather''s knees does not ease. Mālatī says: "I am going to the market for things." On the way that cowherd does not go far from his two cows; the cow''s calf plays, and one cow sits down on the ground, knees first. In the market drops fall from the honey. Mālatī sells two garlands — with the price of the two garlands she buys medicine, and new thread for two more garlands. The fragrance of the garlands spreads through the market.'
-  teaches: 'Mālatī, part 2 — to market: जानुनोः, जानुभ्याम्, मधुनः, वस्तुभ्यः; गोभ्याम् and धेनुभ्याम् (ablative), गोः; स्रज् in the dual and plural — स्रजौ, स्रजोः, स्रग्भ्याम् (dative), स्रग्भ्यः (ablative).'
+  sentence: 'पितामहस्य जानुनोः वेदना न शाम्यति। मालती वस्तुभ्यः आपणम् गच्छति। मार्गे द्वे धेनू वत्साभ्याम् सह चरतः, वत्सौ च धेनुभ्याम् दूरम् न गच्छतः। एका धेनुः जानुभ्याम् भूमौ उपविशति, पितामहः इव। मालती हसति, गोः पृष्ठम् च स्पृशति। आपणे सा स्रजौ विक्रीणीते। स्रजोः मूल्येन सा औषधम् क्रीणाति, स्रग्भ्याम् च नवम् सूत्रम्। स्रग्भ्यः सुगन्धः आपणे प्रसरति।'
+  translation: 'The pain in Grandfather''s knees does not ease. Mālatī goes to the market for things. On the way two cows graze with their calves, and the calves do not stray from their mothers. One cow sits down on the ground knees first, just like Grandfather. Mālatī laughs and pats the cow''s back. In the market she sells the two garlands. With the price of the two garlands she buys medicine, and new thread for two more garlands. The garlands'' fragrance spreads through the market.'
+  teaches: 'Mālatī, part 2 — to market: जानुनोः, जानुभ्याम्, वस्तुभ्यः (the dative of what one goes for, 2.3.14); धेनुभ्याम् (ablative), गोः; स्रज् in the dual and plural — स्रजौ, स्रजोः, स्रग्भ्याम् (dative), स्रग्भ्यः (ablative).'
   words:
   - form: पितामहस्य
     lemma: पितामह
@@ -66,24 +66,6 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: वदति
-    lemma: वद्
-    gloss: 'says'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: अहम्
-    lemma: अस्मद्
-    gloss: 'I'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: एकवचन
-      en: 'number'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
   - form: वस्तुभ्यः
     lemma: वस्तु
     gloss: 'for things'
@@ -93,7 +75,7 @@
     - term: बहुवचन
       en: 'plural'
     - term: अर्थ
-      en: 'purpose — the तादर्थ्य चतुर्थी'
+      en: 'what one goes for — 2.3.14, as in फलेभ्यो याति'
     - term: चतुर्थी
       en: 'dative plural'
   - form: आपणम्
@@ -108,12 +90,12 @@
       en: 'the goal of motion'
     - term: द्वितीया
       en: 'accusative'
-  - form: गच्छामि
+  - form: गच्छति
     lemma: गम्
-    gloss: 'am going'
+    gloss: 'goes'
     notes:
     - term: लट्
-      en: 'present, 1st person'
+      en: 'present'
   - form: मार्गे
     lemma: मार्ग
     gloss: 'on the way'
@@ -126,33 +108,76 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative'
-  - form: सः
-    lemma: तद्
-    gloss: 'that'
+  - form: द्वे
+    lemma: द्वि
+    gloss: 'two'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: एकवचन
-      en: 'number'
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying the noun'
+    - term: प्रथमा
+      en: 'nominative dual'
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: धेनू
+    lemma: धेनु
+    gloss: 'cows'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative'
-  - form: गोपालः
-    lemma: गोपाल
-    gloss: 'cowherd'
+      en: 'nominative dual'
+  - form: वत्साभ्याम्
+    lemma: वत्स
+    gloss: 'their calves'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: सह
+    lemma: सह
+    gloss: 'with'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the तृतीया'
+  - form: चरतः
+    lemma: चर्
+    gloss: 'graze'
+    notes:
+    - term: लट्
+      en: 'present, dual'
+  - form: वत्सौ
+    lemma: वत्स
+    gloss: 'the calves'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative'
-  - form: गोभ्याम्
-    lemma: गो
-    gloss: 'from his two cows'
+      en: 'nominative dual'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: धेनुभ्याम्
+    lemma: धेनु
+    gloss: 'from their mothers'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
@@ -162,66 +187,18 @@
       en: 'far from — दूर takes the पञ्चमी'
     - term: पञ्चमी
       en: 'ablative dual'
-  - form: धेनुभ्याम्
-    lemma: धेनु
-    gloss: 'cows'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: च
-    lemma: च
-    gloss: 'and'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable'
   - form: दूरम्
     lemma: दूरम्
     gloss: 'far'
     notes:
     - term: अव्यय
       en: 'indeclinable — place'
-  - form: गच्छति
+  - form: गच्छतः
     lemma: गम्
-    gloss: 'goes'
+    gloss: 'stray'
     notes:
     - term: लट्
-      en: 'present'
-  - form: गोः
-    lemma: गो
-    gloss: 'the cow''s'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
-  - form: वत्सः
-    lemma: वत्स
-    gloss: 'calf'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: क्रीडति
-    lemma: क्रीड्
-    gloss: 'plays'
-    notes:
-    - term: लट्
-      en: 'present'
+      en: 'present, dual'
   - form: एका
     lemma: एक
     gloss: 'one'
@@ -234,7 +211,7 @@
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 23
+      to: 21
   - form: धेनुः
     lemma: धेनु
     gloss: 'cow'
@@ -277,6 +254,60 @@
     notes:
     - term: लट्
       en: 'present, with the preverb उप'
+  - form: पितामहः
+    lemma: पितामह
+    gloss: 'Grandfather'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'in comparison, with इव'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: इव
+    lemma: इव
+    gloss: 'just like'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — comparison'
+  - form: हसति
+    lemma: हस्
+    gloss: 'laughs'
+    notes:
+    - term: लट्
+      en: 'present'
+  - form: गोः
+    lemma: गो
+    gloss: 'the cow''s'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: पृष्ठम्
+    lemma: पृष्ठ
+    gloss: 'back'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: स्पृशति
+    lemma: स्पृश्
+    gloss: 'pats'
+    notes:
+    - term: लट्
+      en: 'present (तुदादि)'
   - form: आपणे
     lemma: आपण
     gloss: 'in the market'
@@ -289,49 +320,18 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative'
-  - form: मधुनः
-    lemma: मधु
-    gloss: 'from the honey'
+  - form: सा
+    lemma: तद्
+    gloss: 'she'
     notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
+    - term: सर्वनाम
+      en: 'pronoun'
     - term: एकवचन
-      en: 'singular'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative'
-  - form: बिन्दवः
-    lemma: बिन्दु
-    gloss: 'drops'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: बहुवचन
-      en: 'plural'
+      en: 'number'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative plural'
-  - form: पतन्ति
-    lemma: पत्
-    gloss: 'fall'
-    notes:
-    - term: लट्
-      en: 'present, plural'
-  - form: द्वे
-    lemma: द्वि
-    gloss: 'two'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: द्वितीया
-      en: 'accusative dual'
-    rel:
-    - kind: विशेषण
-      to: 32
+      en: 'nominative'
   - form: स्रजौ
     lemma: स्रज्
     gloss: 'garlands'
@@ -382,18 +382,6 @@
       en: 'instrument'
     - term: तृतीया
       en: 'instrumental'
-  - form: सा
-    lemma: तद्
-    gloss: 'she'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: एकवचन
-      en: 'number'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
   - form: औषधम्
     lemma: औषध
     gloss: 'medicine'
@@ -421,7 +409,7 @@
     - term: द्विवचन
       en: 'dual'
     - term: अर्थ
-      en: 'purpose — the तादर्थ्य चतुर्थी'
+      en: 'purpose — for the sake of (2.3.14)'
     - term: चतुर्थी
       en: 'dative dual'
   - form: नवम्

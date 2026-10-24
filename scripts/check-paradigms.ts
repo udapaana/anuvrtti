@@ -24,6 +24,13 @@ import { deaccent } from '../src/lib/usage/normalize';
 
 const ROOT = process.cwd();
 const FLOORS = path.join(ROOT, 'content/paradigm-floors.json');
+/*
+  Cells the corpus once showed only through a contrived example, removed on
+  purpose. The goal is a complete reference by example, so a removed cell is not
+  forgotten: it is owed, and reported until a natural example carries it again.
+    bun scripts/check-paradigms.ts --want   # move every lost cell here
+*/
+const WANTED = path.join(ROOT, 'content/paradigm-wanted.json');
 const corpus = JSON.parse(fs.readFileSync(path.join(ROOT, 'static/data/readings.json'), 'utf-8')).sequence as any[];
 
 // Consonant stems split by what decides their declension, not just "हल्".
@@ -61,19 +68,30 @@ for (const r of corpus) {
   }
 }
 
+const floor: string[] = fs.existsSync(FLOORS) ? JSON.parse(fs.readFileSync(FLOORS, 'utf-8')) : [];
+const wanted: string[] = fs.existsSync(WANTED) ? JSON.parse(fs.readFileSync(WANTED, 'utf-8')) : [];
+
 if (process.argv.includes('--update')) {
   fs.writeFileSync(FLOORS, JSON.stringify([...cells.keys()].sort(), null, 1) + '\n');
+  if (fs.existsSync(WANTED)) fs.writeFileSync(WANTED, JSON.stringify(wanted.filter((c) => !cells.has(c)), null, 1) + '\n');
   console.log(`paradigms: recorded ${cells.size} cells → content/paradigm-floors.json`);
   process.exit(0);
 }
 
-const floor: string[] = fs.existsSync(FLOORS) ? JSON.parse(fs.readFileSync(FLOORS, 'utf-8')) : [];
 const lost = floor.filter((c) => !cells.has(c));
+if (process.argv.includes('--want')) {
+  const next = [...new Set([...wanted, ...lost])].filter((c) => !cells.has(c)).sort();
+  fs.writeFileSync(WANTED, JSON.stringify(next, null, 1) + '\n');
+  fs.writeFileSync(FLOORS, JSON.stringify([...cells.keys()].sort(), null, 1) + '\n');
+  console.log(`paradigms: ${lost.length} cell(s) moved to the wanted list (${next.length} owed)`);
+  process.exit(0);
+}
+const owed = wanted.filter((c) => !cells.has(c));
 const gained = [...cells.keys()].filter((c) => !floor.includes(c));
 if (lost.length) {
   console.log(`paradigms: ${lost.length} cell(s) lost of ${floor.length}`);
   for (const c of lost) console.log(`    ${c}`);
-  console.log('\n  A rewrite may move a form to another reading, not drop it. If the loss\n  is intended, record it: bun scripts/check-paradigms.ts --update');
+  console.log('\n  A rewrite may move a form to another reading, not drop it. If the only\n  example was contrived, record it as owed: bun scripts/check-paradigms.ts --want');
   process.exit(1);
 }
-console.log(`paradigms: ${floor.length} cells held` + (gained.length ? `, ${gained.length} new (run --update to lock in)` : ''));
+console.log(`paradigms: ${floor.length} cells held` + (gained.length ? `, ${gained.length} new (run --update to lock in)` : '') + (owed.length ? `, ${owed.length} wanted (content/paradigm-wanted.json)` : ''));

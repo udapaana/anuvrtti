@@ -46,6 +46,12 @@ the corpus shows (stem class × case × number, लकार × person × number
 pronoun). Rewriting a reading may move a form elsewhere, not drop it; `bun
 scripts/check-paradigms.ts --update` records a deliberate change.
 
+The aim is a complete reference **by example** — repetition is fine, a
+contrived example is not. A cell whose only carrier is contrived (honey
+addressed as हे मधु) comes out, and `--want` records it in
+`content/paradigm-wanted.json`: owed, and reported until a natural example
+carries it again.
+
 `static/data/stats.json` is generated too, and committed: the four counts on
 the home page's doors. The threshold must not download three corpora to print
 three integers, so `bun run build:stats` reduces them at build time (it runs
