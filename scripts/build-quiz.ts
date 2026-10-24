@@ -404,6 +404,8 @@ async function main() {
   // form fills, which the same derivation already computed and then threw away.
   // Number cannot come from the annotation — only 5% of case-tagged words carry
   // a वचन tag — so the प्रयोग grid's second axis has to come from here.
+  /** (stem|form) → its (विभक्ति, वचन) pairs, for build-readings' वचन fallback. */
+  const lemmaCells: Record<string, Array<[string, string]>> = {};
   const cells: Record<
     string,
     { linga: string | null; vibhaktis: string[]; cells: Array<[string, string]>; anyVibhaktis?: string[] }
@@ -823,6 +825,9 @@ async function main() {
         || (stemTypeVotes.get(stem)?.has('sankhya') ?? false);
       const anyVibhaktis = variable ? [...new Set(all.map((c) => VIB_DEV[c[1]]))] : undefined;
       cells[form] = { linga: linga ? LINGA_DEV[linga] : null, vibhaktis: vibs, cells: pairs, ...(anyVibhaktis ? { anyVibhaktis } : {}) };
+      // the same cells keyed by (stem, form): a surface form two lemmas share —
+      // the noun नाम and the particle नाम — overwrote each other in cells[form]
+      lemmaCells[stem + '|' + form] = pairs;
       if (vibs.length === 1) resolved++; else ambiguous++;
     }
 
@@ -832,6 +837,9 @@ async function main() {
   }
 
   fs.writeFileSync(OUT, JSON.stringify(cells, null, 0));
+  // build-time only (build-readings' वचन fallback) — kept out of usage.json,
+  // which every reader downloads
+  fs.writeFileSync(path.join(process.cwd(), 'static/data/lemma-cells.json'), JSON.stringify(lemmaCells));
   console.log(
     `Wrote ${Object.keys(cells).length} forms → ${path.relative(process.cwd(), OUT)}\n` +
       `  ${resolved} determine one विभक्ति, ${ambiguous} do not, ${underivable} stems not derivable as subantas` +

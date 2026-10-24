@@ -45,7 +45,7 @@ export function typingTermsOf(w: AnnotatedWord): Set<string> {
  * vocatives — which owe no कारक — lowered the सुबन्त कारक floor as if a
  * derivation had broken.
  */
-export function exemptFrom(type: WordType, dim: string, terms: Set<string>): boolean {
+export function exemptFrom(type: WordType, dim: string, terms: Set<string>, rel: Array<{ kind?: string }> = []): boolean {
   // A कृदन्त owes विभक्ति, वचन and लिङ्ग only if its suffix declines. क्त्वा,
   // तुमुन्, ल्यप् and णमुल् are अव्यय by 1.1.40 and take no declension at all —
   // an indeclinable has no gender any more than it has a case.
@@ -64,6 +64,10 @@ export function exemptFrom(type: WordType, dim: string, terms: Set<string>): boo
   // to infer a कारक for these (build-readings, VIB_ROLE); demanding one here
   // asked for a role the grammar says the word does not have.
   if (dim === 'कारक' && SENSE_ROLE.some((x) => terms.has(x))) return true;
+
+  // A predicate (विधेय) is said OF its subject and plays no part in the action:
+  // भ्रातरौ in एतौ मम भ्रातरौ has the subject's case and no role of its own.
+  if (dim === 'कारक' && rel.some((r) => r.kind === 'विधेय')) return true;
   return false;
 }
 
@@ -82,7 +86,7 @@ export function missingFor(type: WordType, w: AnnotatedWord, terms: Set<string>)
   for (const d of type.dimensions) {
     if (d.source === 'conditional') continue;
 
-    if (exemptFrom(type, d.name, terms)) continue;
+    if (exemptFrom(type, d.name, terms, (w as any).rel ?? [])) continue;
 
     if (d.name === 'lemma') {
       if (!w.lemma) miss.push('lemma');

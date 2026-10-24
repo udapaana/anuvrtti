@@ -248,7 +248,7 @@ function main() {
       for (const d of wt.dimensions) {
         if (!d.values.length) continue;   // an open set (a lemma) has nothing to count
         // a word the grammar exempts is outside the dimension, not an empty slot in it
-        if (exemptFrom(wt, d.name, terms)) continue;
+        if (exemptFrom(wt, d.name, terms, w.rel ?? [])) continue;
         const dk = `${wt.dev}|${d.name}`;
         const de = dimFilled.get(dk) ?? { filled: 0, total: 0 };
         de.total++;

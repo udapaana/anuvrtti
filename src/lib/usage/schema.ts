@@ -136,6 +136,21 @@ export const RELATIONS: RelationKind[] = [
     name: 'कर्तृसमानाधिकरण', dev: 'कर्तृ-अन्वय', en: 'agrees with its subject',
     from: ['tinanta'], agree: ['पुरुष', 'वचन'],
     note: 'a finite verb pointing at its कर्तृ; they share पुरुष and वचन (§782)'
+  },
+  {
+    /*
+      The predicate. एतौ मम भ्रातरौ — "these two are my brothers": भ्रातरौ is
+      said OF एतौ (the उद्देश्य, the subject) and shares its case, but plays no
+      part in any action, so it has no कारक of its own. Without this edge the
+      corpus could only give it a wrong role or leave a gap, and the subject-
+      plus-predicate clause was the largest single class in the कारक backlog.
+      Agreement is on विभक्ति only: वेदाः प्रमाणम् "the Vedas are authority"
+      predicates a neuter singular of a masculine plural.
+    */
+    name: 'विधेय', dev: 'विधेय', en: 'is predicated of',
+    from: ['subanta', 'sarvanama', 'sarvadi', 'sankhya', 'kridanta', 'taddhita'],
+    agree: ['विभक्ति'],
+    note: 'a predicate nominal pointing at its subject (उद्देश्य); shares its विभक्ति, has no कारक'
   }
 ];
 

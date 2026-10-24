@@ -302,6 +302,7 @@ export function questionsFor(
       rel.kind === 'विशेषण' ? 'Which word does this qualify?'
       : rel.kind === 'कर्तृसमानाधिकरण' ? 'Which word is its subject?'
       : rel.kind === 'अवयव' ? 'Which compound is this a member of?'
+      : rel.kind === 'विधेय' ? 'What is this said of?'
       : 'Which word does this relate to?';
     out.push({
       ui: 'token',

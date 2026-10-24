@@ -447,6 +447,13 @@ are a closed set in `schema.ts` (`RELATIONS`):
 | **विशेष्य** | noun → its adjective (the reverse, optional) | लिङ्ग · विभक्ति · वचन |
 | **शासित** | a कर्मप्रवचनीय → the word whose case it governs | — |
 | **अवयव** | a compound member → the समास it belongs to | — |
+| **कर्तृसमानाधिकरण** | a finite verb → its subject | पुरुष · वचन |
+| **विधेय** | a predicate → the subject it is said of (एतौ मम **भ्रातरौ**) | विभक्ति |
+
+A **विधेय** has no कारक of its own — it is said *of* its subject, not a
+participant in an action — so the completeness check does not ask it for one,
+and the build's subject derivation skips it when choosing which nominative
+agrees with the verb. Mark a predicate and its subject derives on its own.
 
 Each `RelationKind` declares which word-types may be its **source** (`from`) and
 which dimensions must **agree** between the two ends (`agree`). The lint checks

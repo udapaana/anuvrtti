@@ -186,6 +186,11 @@ let LINGAS: Record<string, string> = {};
 */
 let KRT_LINGAS: Record<string, string> = {};
 let FORM_LINGAS: Record<string, string> = {};
+let LEMMA_CELLS: Record<string, Array<[string, string]>> = {};
+{
+  const p = path.join(process.cwd(), 'static/data/lemma-cells.json');
+  if (fs.existsSync(p)) LEMMA_CELLS = JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
 /*
   The कृत् affix, where the author wrote none.
 
@@ -209,6 +214,7 @@ let PARADIGM: Record<string, Record<string, string>> = {};
     LINGAS = u.lingas ?? {};
     KRT_LINGAS = u.krtLingas ?? {};
     FORM_LINGAS = u.formLingas ?? {};
+
     KRTS = u.krts ?? {};
     GANAS = u.ganas ?? {};
     const sub = (u.sections ?? []).find((s: any) => s.kind === 'subanta');
@@ -486,8 +492,13 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
   // narrow that by the authored विभक्ति and, if exactly one वचन survives, take
   // it. Authored विभक्ति only — this never invents the case, just its number.
   if (!out['वचन'] && ![...terms].some((t) => VACANA_SET.has(t))) {
-    const fc = CELLS[deaccent(String(word.form ?? ''))];
-    const authoredVib = [...terms].find((t) => VIBHAKTI.includes(t));
+    // keyed by lemma AND form first: a spelling two words share (the noun नाम,
+    // the particle नाम) must not lend one word the other's cells
+    const lc = LEMMA_CELLS[key];
+    const fc = lc ? { cells: lc } : CELLS[deaccent(String(word.form ?? ''))];
+    // the case the author wrote, or the one their कारक implies (कर्मन् → द्वितीया
+    // above) — both are the author's assertion, neither is the engine guessing
+    const authoredVib = [...terms].find((t) => VIBHAKTI.includes(t)) ?? out['विभक्ति'];
     if (fc?.cells && authoredVib) {
       const vac = new Set(fc.cells.filter((c) => c[0] === authoredVib).map((c) => c[1]));
       if (vac.size === 1) out['वचन'] = [...vac][0];
@@ -644,6 +655,7 @@ function main() {
   let agreedKaraka = 0;
   let agreedSubject = 0;
   let impliedWins = 0;
+  let agreedVacanaFromVerb = 0;
   for (const r of flat) {
     const ws = r.words ?? [];
     /*
@@ -763,18 +775,21 @@ function main() {
         const t = termsOf(x);
         return t.has('प्रथमा')
           && ![...t].some((y) => SENSE_ROLE.includes(y))
-          && !(x.rel ?? []).some((e: any) => e.kind === 'विशेषण')
+          // an adjective inherits its role; a predicate (विधेय) has none to win
+          && !(x.rel ?? []).some((e: any) => e.kind === 'विशेषण' || e.kind === 'विधेय')
           && ownsKaraka(x);
       };
       // wi → the role each of its nominative occurrences settles (null = none)
       const votes = new Map<number, (string | null)[]>();
+      /** wi → the वचन each occurrence's verb gave it, where it had none of its own */
+      const vacVotes = new Map<number, (string | null)[]>();
       for (const [ci, idxs] of clauses.entries()) {
         const noms = [...new Set(idxs.filter((i) => isNom(ws[i])))];
         if (partial.has(ci)) {
           for (const i of noms) (votes.get(i) ?? votes.set(i, []).get(i)!).push(null);
           continue;
         }
-        let role: string | null = null, winner = -1;
+        let role: string | null = null, winner = -1, winVac: string | null = null;
         const verbs = [...new Set(idxs.filter((i) => typeOf(termsOf(ws[i]))?.id === 'tinanta'))];
         const sig = new Set(verbs.map((i) => `${prayogaOf(ws[i])}|${purushaOf(ws[i])}|${vacanaOf(ws[i])}`));
         /*
@@ -832,7 +847,7 @@ function main() {
               const t = termsOf(x);
               const id = typeOf(t)?.id;
               if (id === 'tinanta' || id === 'avyaya' || !x.lemma) return false;
-              if ((x.rel ?? []).some((e: any) => e.kind === 'विशेषण')) return false;
+              if ((x.rel ?? []).some((e: any) => e.kind === 'विशेषण' || e.kind === 'विधेय')) return false;
               // A neuter's द्वितीया is its प्रथमा too; the de-duplicated word list
               // gives a form ONE tag, so जलम् tagged द्वितीया in one clause is
               // still the subject of जलम् आसीत् in another.
@@ -840,13 +855,31 @@ function main() {
               return !VIBHAKTI_VALS.some((v) => t.has(v));
             });
             const agree = [...noms, ...unknownCase].filter(agrees);
-            if (agree.length === 1 && noms.includes(agree[0]) && vacanaOf(ws[agree[0]]) === vac) {
-              role = r0; winner = agree[0];
+            /*
+              The verb's only agreeing nominative wins even when its own number
+              is unknown, and then takes the verb's: ते is plural or dual (or a
+              feminine/neuter dual), and once one ते in the corpus is annotated
+              dual the form-level derivation rightly gives up on all of them —
+              but ते गच्छन्ति and ते भवतः each say which they are. A reader
+              settles it from the verb; so does this.
+            */
+            const wv = agree.length ? vacanaOf(ws[agree[0]]) : undefined;
+            if (agree.length === 1 && noms.includes(agree[0]) && (!wv || wv === vac)) {
+              role = r0; winner = agree[0]; winVac = wv ? null : vac;
               if (!v) { impliedWins++; if (process.env.DEBUG_ASTI) console.log(`    अस्ति: ${r.id} ${ws[winner].form} → ${role} «${idxs.map((i) => ws[i].form).join(" ")}»`); }
             }
           }
         }
-        for (const i of noms) (votes.get(i) ?? votes.set(i, []).get(i)!).push(i === winner ? role : null);
+        for (const i of noms) {
+          (votes.get(i) ?? votes.set(i, []).get(i)!).push(i === winner ? role : null);
+          (vacVotes.get(i) ?? vacVotes.set(i, []).get(i)!).push(i === winner ? winVac : null);
+        }
+      }
+      for (const [wi, vs] of vacVotes) {
+        const w = ws[wi];
+        if (vacanaOf(w) || !vs.length || vs.some((v) => v === null) || new Set(vs).size !== 1) continue;
+        (w.derived ??= {})['वचन'] = vs[0]!;
+        agreedVacanaFromVerb++;
       }
       for (const [wi, vs] of votes) {
         const w = ws[wi];
@@ -1005,6 +1038,7 @@ function main() {
   if (agreedVacana) console.log(`  ${agreedVacana} वचन taken from the noun a विशेषण agrees with`);
   if (agreedSubject) console.log(`  ${agreedSubject} प्रथमा कारक taken from the verb the word agrees with (${impliedWins} clause(s) with अस्ति understood)`);
   if (agreedKaraka) console.log(`  ${agreedKaraka} कारक taken from the noun a विशेषण agrees with`);
+  if (agreedVacanaFromVerb) console.log(`  ${agreedVacanaFromVerb} वचन taken from the verb a subject agrees with`);
   console.log(
     `Wrote ${flat.length} readings — ${chapters.length} topical chapters + sequence view → ${path.relative(process.cwd(), OUTPUT)}`
   );
