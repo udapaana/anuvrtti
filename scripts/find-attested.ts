@@ -162,6 +162,22 @@ function report(label: string, forms: string[]) {
   if (!any) console.log('  no attested candidate in the pinned texts');
 }
 
+/*
+  --cells FILE: a JSON list of [cell, forms[]] — for each, how many verses use
+  any of those forms. The survey behind "how much of the reference could come
+  from real texts".
+*/
+if (opt('--cells')) {
+  const rows: [string, string[]][] = JSON.parse(fs.readFileSync(opt('--cells')!, 'utf-8'));
+  const out = rows.map(([c, forms]) => {
+    VOCATIVE = /सम्बोधन/.test(c);
+    const hits = new Map<string, Verse>();
+    for (const f of forms) for (const v of search(f)) hits.set(v.title + v.ref, v);
+    return { cell: c, forms, hits: hits.size, sample: [...hits.values()].slice(0, LIMIT).map((v) => `${v.title} ${v.ref}: ${tr(v.text, 'iast', 'devanagari')}`) };
+  });
+  console.log(JSON.stringify(out));
+  process.exit(0);
+}
 if (opt('--form')) report(opt('--form')!, [opt('--form')!]);
 else if (opt('--cell')) report(opt('--cell')!, formsFor(opt('--cell')!));
 else if (args.includes('--wanted')) {
