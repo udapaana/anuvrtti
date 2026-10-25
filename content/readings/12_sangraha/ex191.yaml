@@ -2,12 +2,11 @@
   kind: sangraha
   segment: 135
   order: 1
-  sentence: राजपुरुषः सभाम् आगच्छति। सः महापुरुषः, पीताम्बरः च। रामकृष्णौ तम् पश्यतः। अब्राह्मणः अपि तत्र तिष्ठति। उपकृष्णम् जनाः सीदन्ति। राज्ञः पुरुषः धर्मम् कथयति।
-  translation: The king's man comes to the assembly. He is a great man, and yellow-robed. Rāma and Kṛṣṇa see him. A non-brahmin stands there too. The people sit near Kṛṣṇa. The king's man speaks about dharma.
-  teaches: |
-    the four compound types in prose: राजपुरुषः, पीताम्बरः, रामकृष्णौ,
-    उपकृष्णम्. The passage opens on राजपुरुषः and closes on राज्ञः पुरुषः —
-    compounded and not.
+  sentence: राजपुरुषः सभाम् आगच्छति, वदति च — रामकृष्णौ आगच्छतः। ततः पीताम्बरः कृष्णः रामेण सह सभाम् आगच्छति। सः महापुरुषः। जनाः उपकृष्णम् सीदन्ति। एकः अब्राह्मणः अपि तत्र तिष्ठति, दूरे; कृष्णः तम् अपि आह्वयति। ततः सः सर्वेभ्यः धर्मम् कथयति।
+  translation: 'The king''s man comes into the assembly and announces: "Rāma and Kṛṣṇa are coming." Then yellow-robed Kṛṣṇa comes into the assembly with Rāma. He is a great man. The people sit near Kṛṣṇa. A non-brahmin stands there too, at a distance; Kṛṣṇa calls him over as well. Then he tells everyone about dharma.'
+  teaches: 'One arrival, told in the four compound classes: राजपुरुषः (तत्पुरुष), रामकृष्णौ (द्वन्द्व), पीताम्बरः (बहुव्रीहि — the one whose robe is yellow), महापुरुषः (कर्मधारय), अब्राह्मणः (नञ्), उपकृष्णम् (अव्ययीभाव).
+
+    '
   words:
   - form: राजपुरुषः
     lemma: राजपुरुष
@@ -17,8 +16,12 @@
       en: the second member is what the compound names; राजन् qualifies it
     - term: प्रथमा
       en: nominative
-    - cite: "2.1.22"
+    - cite: 2.1.22
       role: तत्पुरुषः — the class where the last member is primary
+    - term: कर्तृ
+      en: agent
+    - term: कर्तृ
+      en: agent
   - form: सभाम्
     lemma: सभा
     gloss: to the assembly
@@ -35,30 +38,12 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present
-  - form: सः
-    lemma: तद्
-    gloss: he
+  - form: वदति
+    lemma: वद्
+    gloss: announces
     notes:
-    - term: सर्वनाम
-      en: pronoun
-    - term: प्रथमा
-      en: nominative
-  - form: महापुरुषः
-    lemma: महापुरुष
-    gloss: a great man
-    notes:
-    - term: कर्मधारय
-      en: a तत्पुरुष whose members share one case — महा describes पुरुष
-    - term: प्रथमा
-      en: nominative
-  - form: पीताम्बरः
-    lemma: पीताम्बर
-    gloss: yellow-robed
-    notes:
-    - term: बहुव्रीहि
-      en: names neither पीत nor अम्बर but the man wearing them
-    - cite: "2.2.23"
-      role: शेषो बहुव्रीहिः — the compound points outside itself → पीताम्बरः
+    - term: लट्
+      en: present
   - form: च
     lemma: च
     gloss: and
@@ -71,24 +56,136 @@
     notes:
     - term: द्वन्द्व
       en: both members stand equal — the dual ending counts them
-    - cite: "2.2.29"
+    - cite: 2.2.29
       role: चार्थे द्वन्द्वः — the coordinate compound → रामकृष्णौ
-  - form: तम्
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
+  - form: आगच्छतः
+    lemma: गम्
+    gloss: are coming
+    notes:
+    - term: लट्
+      en: present, dual, with आ
+  - form: ततः
+    lemma: ततः
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable — sequence
+  - form: पीताम्बरः
+    lemma: पीताम्बर
+    gloss: yellow-robed
+    notes:
+    - term: बहुव्रीहि
+      en: names neither पीत nor अम्बर but the man wearing them
+    - cite: 2.2.23
+      role: शेषो बहुव्रीहिः — the compound points outside itself → पीताम्बरः
+    - term: प्रथमा
+      en: प्रथमा
+    - term: विशेषण
+      en: विशेषण
+    - term: प्रथमा
+      en: प्रथमा
+    - term: विशेषण
+      en: विशेषण
+    - term: कर्तृ
+      en: agent
+  - form: कृष्णः
+    lemma: कृष्ण
+    gloss: Kṛṣṇa
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: रामेण
+    lemma: राम
+    gloss: Rāma
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: सहार्थ
+      en: accompaniment, with सह
+    - term: तृतीया
+      en: instrumental
+  - form: सह
+    lemma: सह
+    gloss: with
+    notes:
+    - term: अव्यय
+      en: indeclinable — governs the तृतीया
+  - form: सः
     lemma: तद्
-    gloss: him
+    gloss: he
     notes:
     - term: सर्वनाम
       en: pronoun
-    - term: कर्मन्
-      en: object
-    - term: द्वितीया
-      en: accusative
-  - form: पश्यतः
-    lemma: दृश्
-    gloss: the two see
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent
+    - term: कर्तृ
+      en: agent
+  - form: महापुरुषः
+    lemma: महापुरुष
+    gloss: a great man
     notes:
-    - term: द्विवचन
-      en: dual verb — रामकृष्णौ is two people, so the verb follows
+    - term: कर्मधारय
+      en: a तत्पुरुष whose members share one case — महा describes पुरुष
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent
+  - form: जनाः
+    lemma: जन
+    gloss: the people
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: बहुवचन
+      en: nominative plural
+  - form: उपकृष्णम्
+    lemma: उपकृष्ण
+    gloss: near Kṛṣṇa
+    notes:
+    - term: अव्ययीभाव
+      en: the preverb उप leads, and the whole behaves as an indeclinable
+    - cite: 2.1.5
+      role: अव्ययीभावः — the first member governs and the compound is invariable
+  - form: सीदन्ति
+    lemma: सद्
+    gloss: sit
+    vocab: true
+    notes:
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present plural
+  - form: एकः
+    lemma: एक
+    gloss: a
+    notes:
+    - term: संख्या
+      en: numeral
+    - term: विशेषण
+      en: qualifying the noun
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 18
   - form: अब्राह्मणः
     lemma: अब्राह्मण
     gloss: a non-brahmin
@@ -97,6 +194,10 @@
       en: negation compounded in front — न becomes अ before a consonant
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
+    - term: कर्तृ
+      en: agent
   - form: अपि
     lemma: अपि
     gloss: too
@@ -118,43 +219,40 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present
-  - form: उपकृष्णम्
-    lemma: उपकृष्ण
-    gloss: near Kṛṣṇa
+  - form: दूरे
+    lemma: दूरे
+    gloss: at a distance
     notes:
-    - term: अव्ययीभाव
-      en: the preverb उप leads, and the whole behaves as an indeclinable
-    - cite: "2.1.5"
-      role: अव्ययीभावः — the first member governs and the compound is invariable
-  - form: जनाः
-    lemma: जन
-    gloss: the people
+    - term: अव्यय
+      en: indeclinable — place
+  - form: तम्
+    lemma: तद्
+    gloss: him
     notes:
-    - term: कर्तृ
-      en: agent
-    - term: बहुवचन
-      en: nominative plural
-  - form: सीदन्ति
-    lemma: सद्
-    gloss: sit
-    vocab: true
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: आह्वयति
+    lemma: ह्वे
+    gloss: calls over
     notes:
-    - term: शप्
-      en: the thematic अ between root and ending
     - term: लट्
-      en: present plural
-  - form: राज्ञः
-    lemma: राजन्
-    gloss: the king's
+      en: present, with the preverb आ
+  - form: सर्वेभ्यः
+    lemma: सर्व
+    gloss: everyone
     notes:
-    - term: षष्ठी
-      en: the uncompounded विग्रह of राजपुरुषः — weak stem राज्ञ्
-  - form: पुरुषः
-    lemma: पुरुष
-    gloss: man
-    notes:
-    - term: प्रथमा
-      en: nominative — two words now, where the opening had one
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: बहुवचन
+      en: plural
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative plural
   - form: धर्मम्
     lemma: धर्म
     gloss: dharma
@@ -169,13 +267,22 @@
     notes:
     - term: लट्
       en: present
+    - term: परस्मैपद
+      en: परस्मैपद
   vyakhya: राजपुरुषः इति समासः, राज्ञः पुरुषः इति विग्रहः। एकः अर्थः, द्वे रूपे।
-  vyakhya_en: |
-    The passage opens with राजपुरुषः and closes with राज्ञः पुरुषः. Same man,
+  vyakhya_en: 'The passage opens with राजपुरुषः and closes with राज्ञः पुरुषः. Same man,
+
     same sense — one written as a single word, the other with the genitive
+
     showing. That second form is the विग्रह, the analysis a compound can always
+
     be unpacked into, and knowing which विग्रह a compound answers to is what
+
     tells you its type.
 
+
     पीताम्बरः is the one that will not unpack that way. Neither पीत nor अम्बर
+
     is what the word names; it names a man neither member mentions.
+
+    '
