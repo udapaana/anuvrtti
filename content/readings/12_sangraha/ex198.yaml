@@ -2,11 +2,11 @@
   kind: sangraha
   segment: 345
   order: 1
-  sentence: गुरुणा शिष्याः पाठ्यन्ते। तैः शास्त्राणि पठ्यन्ते, वचनानि च श्रूयन्ते। गुरुः तान् द्रष्टुम् इच्छति। श्वः ते ग्रामम् गमिष्यन्ति। तत्र धनम् धान्यम् च लप्स्यन्ते। नद्याः तीरे तिष्ठन्ति, जलम् पिबन्ति च।
-  translation: The students are taught by the teacher. By them the treatises are read, and the sayings are heard. The teacher wishes to see them. Tomorrow they will go to the village. There they will obtain wealth and grain. They stand on the river's bank, and drink water.
-  teaches: |
-    four passives against two actives. The same students appear as शिष्याः,
-    तैः, ते and तान् — the case follows what the verb's ending points at.
+  sentence: गुरुणा शिष्याः पाठ्यन्ते। तैः शास्त्राणि पठ्यन्ते, गुरोः वचनानि च श्रूयन्ते। श्वः ते ग्रामम् गमिष्यन्ति, यतः तत्र शस्योत्सवः। तत्र ते धनम् धान्यम् च लप्स्यन्ते, गुरवे च दास्यन्ति। गुरुः तान् पुनः द्रष्टुम् इच्छति। अद्य तु ते नद्याः तीरे तिष्ठन्ति, जलम् च पिबन्ति।
+  translation: The pupils are taught by the teacher. By them the treatises are read, and the teacher's words are heard. Tomorrow they will go to the village, because there is a harvest festival there. There they will get wealth and grain, and give it to their teacher. The teacher wishes to see them again. Today, though, they stand on the river's bank and drink its water.
+  teaches: 'A school before the holidays, in the passive (पाठ्यन्ते, पठ्यन्ते, श्रूयन्ते — the agent in the तृतीया), the future (गमिष्यन्ति, लप्स्यन्ते, दास्यन्ति), and तुमुन् after इच्छति (द्रष्टुम्).
+
+    '
   words:
   - form: गुरुणा
     lemma: गुरु
@@ -16,10 +16,10 @@
       en: the agent of a passive — unexpressed by the ending, so it takes a case
     - term: तृतीया
       en: instrumental
-    - cite: "1.3.9"
-      role: "तस्य लोपः — इत् markers are dropped → गुरुणा"
-    - cite: "1.4.14"
-      role: "सुप्तिङन्तं पदम् — the पद saṃjñā → गुरुणा"
+    - cite: 1.3.9
+      role: तस्य लोपः — इत् markers are dropped → गुरुणा
+    - cite: 1.4.14
+      role: सुप्तिङन्तं पदम् — the पद saṃjñā → गुरुणा
   - form: शिष्याः
     lemma: शिष्य
     gloss: the students
@@ -28,7 +28,7 @@
       en: what is taught — expressed by the ending, so it stands nominative
     - term: बहुवचन
       en: nominative plural
-    - cite: "1.4.49"
+    - cite: 1.4.49
       role: कर्तुरीप्सिततमं कर्म — what the agent most aims at is the कर्मन् → शिष्याः
   - form: पाठ्यन्ते
     lemma: पठ्
@@ -36,8 +36,24 @@
     notes:
     - term: यक्
       en: the passive विकरण on a causative stem — पाठि + य + अन्ते
-    - cite: "1.3.13"
+    - cite: 1.3.13
       role: भावकर्मणोः — आत्मनेपद endings in the passive → पाठ्यन्ते
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: बहुवचन
+      en: बहुवचन
+    - term: आत्मनेपद
+      en: आत्मनेपद
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: बहुवचन
+      en: बहुवचन
+    - term: आत्मनेपद
+      en: आत्मनेपद
+    - term: लट्
+      en: लट्
+    - term: भ्वादि
+      en: भ्वादि
   - form: तैः
     lemma: तद्
     gloss: by them
@@ -48,8 +64,8 @@
       en: the agent again, again instrumental
     - term: तृतीया
       en: instrumental plural
-    - cite: "7.1.9"
-      role: "अतो भिस ऐस् — a-stem instrumental plural नरैः → तैः"
+    - cite: 7.1.9
+      role: अतो भिस ऐस् — a-stem instrumental plural नरैः → तैः
   - form: शास्त्राणि
     lemma: शास्त्र
     gloss: the treatises
@@ -58,7 +74,7 @@
       en: nominative under the passive
     - term: बहुवचन
       en: neuter nominative plural
-    - cite: "7.1.72"
+    - cite: 7.1.72
       role: नपुंसकस्य झलचः — नुम् before the neuter plural ending → शास्त्राणि
   - form: पठ्यन्ते
     lemma: पठ्
@@ -66,6 +82,30 @@
     notes:
     - term: यक्
       en: the plain passive beside the causative passive above — पठ् + य + अन्ते
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: बहुवचन
+      en: बहुवचन
+    - term: आत्मनेपद
+      en: आत्मनेपद
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: बहुवचन
+      en: बहुवचन
+    - term: आत्मनेपद
+      en: आत्मनेपद
+  - form: गुरोः
+    lemma: गुरु
+    gloss: the teacher's
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: सम्बन्ध
+      en: relation
+    - term: षष्ठी
+      en: genitive
   - form: वचनानि
     lemma: वचन
     gloss: the sayings
@@ -74,7 +114,7 @@
       en: nominative under the passive
     - term: बहुवचन
       en: neuter nominative plural — the same नुम् as शास्त्राणि
-    - cite: "7.1.72"
+    - cite: 7.1.72
       role: नपुंसकस्य झलचः — नुम् before शि → वचनानि
   - form: च
     lemma: च
@@ -88,46 +128,20 @@
     notes:
     - term: यक्
       en: a third passive — श्रु + य + अन्ते
-    - cite: "1.3.13"
+    - cite: 1.3.13
       role: भावकर्मणोः — the passive takes आत्मनेपद → श्रूयन्ते
-  - form: गुरुः
-    lemma: गुरु
-    gloss: the teacher
-    notes:
-    - term: कर्तृ
-      en: now an ACTIVE agent — nominative, because the ending expresses it
-    - term: प्रथमा
-      en: nominative
-    - cite: "8.2.66"
-      role: ससजुषो रुः — the ending स् becomes रु, then visarga → गुरुः
-  - form: तान्
-    lemma: तद्
-    gloss: them
-    notes:
-    - term: सर्वनाम
-      en: pronoun
-    - term: कर्मन्
-      en: the object of an ACTIVE verb — accusative, not nominative
-    - term: द्वितीया
-      en: accusative plural
-    - cite: "6.1.103"
-      role: "तस्माच्छसो नः पुंसि — masc. शस् → आन्, every acc.pl → तान्"
-  - form: द्रष्टुम्
-    lemma: दृश्
-    gloss: to see
-    notes:
-    - term: तुमुन्
-      en: infinitive — what the wishing is directed at
-    - cite: "3.3.10"
-      role: तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम् — the infinitive → द्रष्टुम्
-  - form: इच्छति
-    lemma: इष्
-    gloss: wishes
-    notes:
-    - term: शप्
-      en: इष् appears as इच्छ् + अ + ति
-    - term: परस्मैपद
-      en: the ending expresses the agent — contrast the four passives above
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: बहुवचन
+      en: बहुवचन
+    - term: आत्मनेपद
+      en: आत्मनेपद
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: बहुवचन
+      en: बहुवचन
+    - term: आत्मनेपद
+      en: आत्मनेपद
   - form: श्वः
     lemma: श्वस्
     gloss: tomorrow
@@ -135,7 +149,7 @@
     notes:
     - term: अव्यय
       en: indeclinable
-    - cite: "8.2.66"
+    - cite: 8.2.66
       role: ससजुषो रुः — final स् → रु → visarga → श्वः
   - form: ते
     lemma: तद्
@@ -161,16 +175,34 @@
     notes:
     - term: लृट्
       en: the future
-    - cite: "3.3.13"
+    - cite: 3.3.13
       role: लृट् शेषे च — लृट् for the future → गमिष्यन्ति
-    - cite: "3.1.33"
-      role: "स्यतासी लृलुटोः — स्य and तास्, the future markers → गमिष्यन्ति"
+    - cite: 3.1.33
+      role: स्यतासी लृलुटोः — स्य and तास्, the future markers → गमिष्यन्ति
+  - form: यतः
+    lemma: यतः
+    gloss: because
+    notes:
+    - term: अव्यय
+      en: indeclinable — cause
   - form: तत्र
     lemma: तत्र
     gloss: there
     notes:
     - term: अव्यय
       en: indeclinable
+  - form: शस्योत्सवः
+    lemma: शस्योत्सव
+    gloss: a harvest festival
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
   - form: धनम्
     lemma: धन
     gloss: wealth
@@ -179,6 +211,14 @@
       en: joined with धान्यम् by च — two things counted together
     - term: द्वितीया
       en: neuter accusative
+    - term: कर्मन्
+      en: object
+    - term: एकवचन
+      en: एकवचन
+    - term: कर्मन्
+      en: object
+    - term: एकवचन
+      en: एकवचन
   - form: धान्यम्
     lemma: धान्य
     gloss: grain
@@ -186,8 +226,16 @@
     notes:
     - term: द्वितीया
       en: neuter accusative
-    - cite: "2.2.29"
+    - cite: 2.2.29
       role: चार्थे द्वन्द्वः — the coordinate pair धनम् धान्यम् च
+    - term: कर्मन्
+      en: object
+    - term: एकवचन
+      en: एकवचन
+    - term: कर्मन्
+      en: object
+    - term: एकवचन
+      en: एकवचन
   - form: लप्स्यन्ते
     lemma: लभ्
     gloss: will obtain
@@ -195,16 +243,98 @@
     notes:
     - term: लृट्
       en: a second future, this one आत्मनेपद — लभ् is middle
-    - cite: "3.3.13"
+    - cite: 3.3.13
       role: लृट् शेषे च — the future → लप्स्यन्ते
+  - form: गुरवे
+    lemma: गुरु
+    gloss: to the teacher
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative
+  - form: दास्यन्ति
+    lemma: दा
+    gloss: will give
+    notes:
+    - term: लृट्
+      en: simple future, plural
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: now an ACTIVE agent — nominative, because the ending expresses it
+    - term: प्रथमा
+      en: nominative
+    - cite: 8.2.66
+      role: ससजुषो रुः — the ending स् becomes रु, then visarga → गुरुः
+  - form: तान्
+    lemma: तद्
+    gloss: them
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: the object of an ACTIVE verb — accusative, not nominative
+    - term: द्वितीया
+      en: accusative plural
+    - cite: 6.1.103
+      role: तस्माच्छसो नः पुंसि — masc. शस् → आन्, every acc.pl → तान्
+  - form: पुनः
+    lemma: पुनर्
+    gloss: again
+    notes:
+    - term: अव्यय
+      en: indeclinable — repetition
+  - form: द्रष्टुम्
+    lemma: दृश्
+    gloss: to see
+    notes:
+    - term: तुमुन्
+      en: infinitive — what the wishing is directed at
+    - cite: 3.3.10
+      role: तुमुन्ण्वुलौ क्रियायां क्रियार्थायाम् — the infinitive → द्रष्टुम्
+  - form: इच्छति
+    lemma: इष्
+    gloss: wishes
+    notes:
+    - term: शप्
+      en: इष् appears as इच्छ् + अ + ति
+    - term: परस्मैपद
+      en: the ending expresses the agent — contrast the four passives above
+    - term: लट्
+      en: लट्
+    - term: लट्
+      en: लट्
+  - form: अद्य
+    lemma: अद्य
+    gloss: today
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
+  - form: तु
+    lemma: तु
+    gloss: though
+    notes:
+    - term: अव्यय
+      en: indeclinable — contrast
   - form: नद्याः
     lemma: नदी
     gloss: of the river
     notes:
     - term: षष्ठी
       en: genitive — ī-stem, the ई becoming य् before the ending
-    - cite: "6.1.77"
+    - cite: 6.1.77
       role: इको यणचि — इ/ई before a vowel becomes य् → नद्याः
+    - term: सम्बन्ध
+      en: relation
+    - term: सम्बन्ध
+      en: relation
   - form: तीरे
     lemma: तीर
     gloss: on the bank
@@ -240,12 +370,19 @@
     - term: लट्
       en: present plural
   vyakhya: तैः पठ्यन्ते, ते गच्छन्ति। एकः कर्ता, द्वे विभक्ती।
-  vyakhya_en: |
-    The same students appear four times and are named three different ways.
+  vyakhya_en: 'The same students appear four times and are named three different ways.
+
     शिष्याः when the passive points at them, तैः when the passive points past
+
     them at what they read, ते when the verb is active and points at them
-    again, तान् when someone else's verb points at them.
+
+    again, तान् when someone else''s verb points at them.
+
 
     Nothing about the students changed. Each time, the case answers one
-    question: has the verb's ending already said this? If yes, प्रथमा. If no,
+
+    question: has the verb''s ending already said this? If yes, प्रथमा. If no,
+
     whatever case the role calls for.
+
+    '
