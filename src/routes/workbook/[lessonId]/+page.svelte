@@ -302,6 +302,7 @@
             }}
           />
         {:else if step.sutraId === 'concept'}
+          <span class="label">संकल्पना · concept</span>
           <h2>{step.title}</h2>
           {#if step.commentary}
             <div class="teaching"><CommentaryText text={step.commentary} /></div>
@@ -320,6 +321,7 @@
             <div class="teaching"><CommentaryText text={step.commentary} /></div>
           {/if}
         {:else if step.sutraId === 'quiz' && step.quiz}
+          <span class="label">प्रश्नः · quiz</span>
           <h2>{step.title}</h2>
           <QuizStep quiz={step.quiz} />
         {:else if sd.sutra}
@@ -471,12 +473,13 @@
     font-size: 24px;
     font-weight: 600;
   }
+  /* Plain prose, matching SutraDisplay's .section-content — no card, no
+     accent bar. A permanent left border on the whole body reads as a pull
+     quote everywhere else in the app; here it was just the paragraph. */
   .teaching {
     font-size: 17px;
     line-height: 1.65;
-    color: var(--ink-2);
-    border-left: 2px solid var(--accent);
-    padding-left: 16px;
+    color: var(--ink);
   }
   .terms {
     display: flex;
