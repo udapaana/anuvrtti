@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 105
   order: 1
-  sentence: सायम् आश्रमे अग्निः ज्वलति। शिष्यः नद्याः जलम् नयति। गुरुः शिष्यम् बोधति; सः धर्मम् वदति, जनाः च शृण्वन्ति। रात्रौ ग्रामे अपि अग्नयः ज्वलन्ति, नराः च दूरात् पश्यन्ति।
-  translation: At dusk a fire blazes in the hermitage. A pupil carries water from the river. The teacher instructs the pupil; he speaks of dharma, and the people listen. At night fires blaze in the village too, and the men watch from afar.
+  sentence: सायम् आश्रमे अग्निः ज्वलति। शिष्यः स्वपिति; गुरुः शिष्यम् बोधति, सः च नद्याः जलम् नयति। ततः गुरुः धर्मम् वदति, जनाः च शृण्वन्ति। रात्रौ ग्रामे अपि अग्नयः ज्वलन्ति, नराः च दूरात् पश्यन्ति।
+  translation: At dusk a fire blazes in the hermitage. A pupil is asleep; the teacher wakes the pupil, and he carries water from the river. Then the teacher speaks of dharma, and the people listen. At night fires blaze in the village too, and the men watch from afar.
   teaches: 'One evening, with the present''s शप् and guṇa running through it — ज्वलति, नयति, बोधति — and अग्निः beside the plural अग्नयः.
 
     '
@@ -58,37 +58,12 @@
       en: agent
     - term: प्रथमा
       en: nominative
-  - form: नद्याः
-    lemma: नदी
-    gloss: from the river
+  - form: स्वपिति
+    lemma: स्वप्
+    gloss: is asleep
     notes:
-    - term: स्त्रीलिङ्ग
-      en: feminine
-    - term: एकवचन
-      en: singular
-    - term: अपादान
-      en: source
-    - term: पञ्चमी
-      en: ablative
-  - form: जलम्
-    lemma: जल
-    gloss: water
-    vocab: true
-    notes:
-    - term: कर्मन्
-      en: object
-    - term: द्वितीया
-      en: accusative
-  - form: नयति
-    lemma: नी
-    gloss: leads
-    notes:
-    - term: गुण
-      en: the root vowel strengthens before शप् — नी → ने → नय्
-    - term: शप्
-      en: नी + अ + ति, and ई strengthens to ए — ने + अ gives नय्
-    - cite: 7.3.84
-      role: सार्वधातुकार्धधातुकयोः — गुण of the root vowel before शप् → नयति
+    - term: लट्
+      en: present (अदादि)
   - form: गुरुः
     lemma: गुरु
     gloss: the teacher
@@ -128,6 +103,51 @@
       en: nominative
     - term: कर्तृ
       en: agent
+    - term: कर्तृ
+      en: agent
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: नद्याः
+    lemma: नदी
+    gloss: from the river
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
+    - term: अपादान
+      en: source
+    - term: पञ्चमी
+      en: ablative
+  - form: जलम्
+    lemma: जल
+    gloss: water
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: नयति
+    lemma: नी
+    gloss: leads
+    notes:
+    - term: गुण
+      en: the root vowel strengthens before शप् — नी → ने → नय्
+    - term: शप्
+      en: नी + अ + ति, and ई strengthens to ए — ने + अ gives नय्
+    - cite: 7.3.84
+      role: सार्वधातुकार्धधातुकयोः — गुण of the root vowel before शप् → नयति
+  - form: ततः
+    lemma: ततः
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable — sequence
   - form: धर्मम्
     lemma: धर्म
     gloss: dharma
@@ -210,6 +230,10 @@
       en: agent
     - term: प्रथमा
       en: प्रथमा
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
   - form: ज्वलन्ति
     lemma: ज्वल्
     gloss: blaze
@@ -222,6 +246,10 @@
     notes:
     - term: बहुवचन
       en: nominative plural
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: प्रथमा
     - term: कर्तृ
       en: agent
     - term: प्रथमा
