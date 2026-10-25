@@ -29,7 +29,9 @@
     "build:dhatu-map": "bun scripts/build-dhatu-map.ts",
     "suggest-paths": "bun scripts/check-suggest-paths.ts",
     "session": "bun scripts/check-session.ts",
-    "exemplars": "bun scripts/exemplars.ts"
+    "exemplars": "bun scripts/exemplars.ts",
+    "texts": "bun scripts/fetch-texts.ts",
+    "attested": "bun scripts/find-attested.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.0",

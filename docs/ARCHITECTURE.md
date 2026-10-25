@@ -44,6 +44,7 @@ the small thing it emits:
 | artefact | from | via |
 |---|---|---|
 | `data/dhatupatha.tsv` | vidyut's dhātupāṭha | vendored whole (55 KB) |
+| `data/texts.json` → `data/texts/` | GRETIL source texts (Rāmāyaṇa, Hitopadeśa, Bhaṭṭi, Kālidāsa …) | **pinned, not vendored**: the manifest (URL + sha256) is committed, the 6.4 MB of text is fetched by `bun run texts` into a git-ignored cache. Used only by `find-attested.ts`, never shipped |
 | `data/mw-linga.tsv` | Monier-Williams, 50 MB | `scripts/import-mw.ts` |
 
 MW is the lexicon Ambuda seeds from, so "Ambuda's dictionary" and "MW/CDSL" are

@@ -490,6 +490,44 @@ paradigm — and check that the tags say all of it. If a तिङन्त says
 it is a present-tense *something*. If it says लट् · प्रथमपुरुष · एकवचन ·
 परस्मैपद, it is a cell.
 
+## Examples by example — written low, attested high
+
+The aim is a complete reference **by example**. Repetition is fine; a
+contrived example is not. Two consequences:
+
+**Below tier 200, write.** A beginner needs short sentences built from the
+vocabulary already met, and an authored scene is the right tool — but it must
+be a scene: people with a reason to say what they say, pairs that really come
+in pairs (twins, two kings on a visit, knees), address that someone would
+really call out. If the only way to show a cell is a sentence nobody would
+say, don't: remove it and record it as owed (`bun scripts/check-paradigms.ts
+--want`, see `content/paradigm-wanted.json`).
+
+**From tier 200 up, look for the author first.** By then the reader can meet
+a form where a poet or a storyteller used it, in its own context. Before
+writing a sentence to carry a form, search the pinned texts:
+
+```bash
+bun run texts                                   # fetch + verify the pinned texts (data/texts.json)
+bun run attested -- --form मधु                   # where is this form used?
+bun run attested -- --cell "सुबन्त उ·नपुंसकलिङ्ग: षष्ठी द्विवचन"
+bun run attested -- --wanted                    # candidates for every owed cell
+```
+
+A hit is a candidate, not a verdict — मनः is nominative, accusative and
+vocative alike, and only the verse says which (vocative cells are ranked by
+signs of address). Read it, and if it carries the form naturally, make it an
+attested reading (`kind: attested`, `source: {text, ref}`) at the tier its
+other grammar allows. Write a sentence only when no attested line will do,
+and treat that as the exception it is.
+
+The texts are pinned like the grammar engine: URL and sha256 in
+`data/texts.json`, fetched into the git-ignored `data/texts/` — currently the
+Rāmāyaṇa, Hitopadeśa, Bhaṭṭikāvya (written to illustrate Pāṇini), five works of
+Kālidāsa and Bhāravi, the Vetāla tales, Daśakumāracarita, Buddhacarita,
+Manusmṛti and the Mahāsubhāṣitasaṃgraha, all from GRETIL. To add one, append it
+to the manifest with its sha256.
+
 ## How a reading reaches the app
 
 One rule governs the whole chain: **the YAML is the only thing written by hand.**

@@ -52,6 +52,12 @@ addressed as हे मधु) comes out, and `--want` records it in
 `content/paradigm-wanted.json`: owed, and reported until a natural example
 carries it again.
 
+Low tiers are written; **from tier 200 up, look for an attested line first**
+— `bun run texts` fetches the pinned source texts (`data/texts.json`, cached
+in the git-ignored `data/texts/`), `bun run attested -- --form X` / `--cell` /
+`--wanted` finds where an author used a form. See *Examples by example* in
+`docs/AUTHORING.md`.
+
 `static/data/stats.json` is generated too, and committed: the four counts on
 the home page's doors. The threshold must not download three corpora to print
 three integers, so `bun run build:stats` reduces them at build time (it runs
