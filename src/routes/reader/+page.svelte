@@ -59,7 +59,10 @@
   // third mutually-exclusive mode.
   type Mode = 'recall' | 'gloss';
   let mode = $state<Mode>('recall');
-  let padaccheda = $state(false);
+  // On by default — a learner sees the padas first and turns the saṃhitā on —
+  // and remembered, like the rail width.
+  const PADACCHEDA_KEY = 'anuvrtti-padaccheda';
+  let padaccheda = $state(true);
   let sel = $state<{ id: string; ti: number } | null>(null);
   let pick = $state<string | null>(null);
   let checked = $state<Set<string>>(new Set());
@@ -896,6 +899,7 @@
   onMount(() => {
     try {
       railWide = localStorage.getItem(RAIL_WIDE_KEY) === '1';
+      padaccheda = localStorage.getItem(PADACCHEDA_KEY) !== '0';
     } catch { /* private mode: the default width is fine */ }
   });
   function toggleRailWidth() {
@@ -1573,7 +1577,10 @@
     ariaLabel="gloss mode"
   />
   <!-- independent axis: split at sandhi joins, composes with either gloss mode -->
-  <button class="toggle" class:on={padaccheda} onclick={() => (padaccheda = !padaccheda)}>
+  <button class="toggle" class:on={padaccheda} onclick={() => {
+    padaccheda = !padaccheda;
+    try { localStorage.setItem(PADACCHEDA_KEY, padaccheda ? '1' : '0'); } catch { /* session only */ }
+  }}>
     padaccheda
   </button>
   <!-- A jump inside the corpus you are already reading is not a search, so it
