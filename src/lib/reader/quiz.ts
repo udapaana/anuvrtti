@@ -66,7 +66,7 @@ export interface Question {
 export interface UsageData {
   cells?: Record<string, string>;
   nounParadigms?: Record<string, Record<string, string>>;
-  verbParadigms?: Record<string, Record<string, string>>;
+  verbParadigms?: Record<string, Record<string, Record<string, string>>>; // root → लकार → cell → form
   lingas?: Record<string, string>;
   ganas?: Record<string, string[]>;
 }
@@ -175,6 +175,9 @@ export function questionsFor(
   const vib = valueOf({ key: 'विभक्ति', pool: VIBHAKTI });
   const vac = valueOf({ key: 'वचन', pool: VACANA });
   const pur = valueOf({ key: 'पुरुष', pool: PURUSHA });
+  // a verb's table is its own लकार's — the present table cannot place अगच्छः
+  const lak = terms.find((t) => usage?.verbParadigms?.[lemma]?.[t]) ?? derived['लकार'] ?? '';
+  const verbPara = lemma && lak ? usage?.verbParadigms?.[lemma]?.[lak] : undefined;
 
   if (lemma && vib && vac && usage?.nounParadigms?.[lemma]) {
     out.push({
@@ -189,7 +192,7 @@ export function questionsFor(
       ansCol: VACANA.indexOf(vac)
     });
   }
-  if (lemma && pur && vac && usage?.verbParadigms?.[lemma]) {
+  if (lemma && pur && vac && verbPara) {
     out.push({
       ui: 'cell',
       kind: 'cell-tin',
@@ -207,7 +210,7 @@ export function questionsFor(
   // Distractors are the neighbouring cells of the same paradigm: the forms a
   // learner actually confuses, not random words. No context is shown, because
   // the answer IS the word and the clause contains it.
-  const para = lemma ? usage?.nounParadigms?.[lemma] ?? usage?.verbParadigms?.[lemma] : null;
+  const para = lemma ? usage?.nounParadigms?.[lemma] ?? verbPara : null;
   if (para && vac) {
     const rowVal = vib || pur;
     const cell = `${rowVal}|${vac}`;

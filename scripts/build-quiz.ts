@@ -1552,24 +1552,33 @@ async function main() {
     } catch { /* stem vidyut cannot decline — no table */ }
   }
 
-  // root → its लट् conjugation (पुरुष|वचन → form), so a verb-word shows its OWN
-  // present-tense table with its cell lit, not the fixed भू exemplar.
-  const verbParadigms: Record<string, Record<string, string>> = {};
+  // root → लकार → its conjugation (पुरुष|वचन → form), so a verb-word shows its
+  // OWN table in its OWN tense with its cell lit. Only लट् was shipped, and a
+  // लङ् word (अगच्छः) showed the present table with गच्छसि lit — the right
+  // person and number in the wrong tense. Every लकार the corpus uses for the
+  // root is derived, plus लट् as the reference table.
+  const verbParadigms: Record<string, Record<string, Record<string, string>>> = {};
   for (const [root, spec] of Object.entries(DHATU)) {
-    const flat: Record<string, string> = {};
-    for (const pu of PURUSHAS)
-      for (const vc of VACANAS) {
-        try {
-          const res = v.deriveTinantas({
-            dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
-            lakara: 'Lat', prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null,
-            skip_at_agama: false
-          });
-          const f = [...new Set(res.map((p: any) => p.text))][0] as string | undefined;
-          if (f) flat[PUR_DEV[pu] + '|' + VAC_DEV[vc]] = toDeva(f);
-        } catch { /* cell not derivable */ }
-      }
-    if (Object.keys(flat).length) verbParadigms[root] = flat;
+    const laks = new Set(['लट्', ...(tinByRoot.get(root)?.keys() ?? [])]);
+    const byLak: Record<string, Record<string, string>> = {};
+    for (const lak of laks) {
+      if (!LAK_KEY[lak]) continue;
+      const flat: Record<string, string> = {};
+      for (const pu of PURUSHAS)
+        for (const vc of VACANAS) {
+          try {
+            const res = v.deriveTinantas({
+              dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
+              lakara: LAK_KEY[lak], prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null,
+              skip_at_agama: false
+            });
+            const f = [...new Set(res.map((p: any) => p.text))][0] as string | undefined;
+            if (f) flat[PUR_DEV[pu] + '|' + VAC_DEV[vc]] = toDeva(f);
+          } catch { /* cell not derivable */ }
+        }
+      if (Object.keys(flat).length) byLak[lak] = flat;
+    }
+    if (Object.keys(byLak).length) verbParadigms[root] = byLak;
   }
   for (const [root, byLak] of tinByRoot) {
     const spec = DHATU[root];

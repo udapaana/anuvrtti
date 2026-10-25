@@ -36,7 +36,7 @@ export interface ResolvedParadigm {
 /** The two paradigm tables shipped in usage.json, keyed by stem/root. */
 export interface ParadigmData {
   nounParadigms: Record<string, Record<string, string>>;
-  verbParadigms: Record<string, Record<string, string>>;
+  verbParadigms: Record<string, Record<string, Record<string, string>>>; // root → लकार → cell → form
 }
 
 export function paradigmIndex(usage: any): ParadigmData {
@@ -54,6 +54,12 @@ const VIBHAKTI = ['प्रथमा', 'द्वितीया', 'तृत�
 const VACANA = ['एकवचन', 'द्विवचन', 'बहुवचन'];
 const PURUSHA = ['प्रथमपुरुष', 'मध्यमपुरुष', 'उत्तमपुरुष'];
 const LAKARA = ['लट्', 'लङ्', 'लिट्', 'लुट्', 'लृट्', 'लृङ्', 'लोट्', 'विधिलिङ्', 'आशीर्लिङ्', 'लुङ्', 'लेट्'];
+
+const LAKARA_EN: Record<string, string> = {
+  'लट्': 'present', 'लङ्': 'imperfect', 'लिट्': 'perfect', 'लुट्': 'periphrastic future',
+  'लृट्': 'future', 'लृङ्': 'conditional', 'लोट्': 'imperative', 'विधिलिङ्': 'optative',
+  'आशीर्लिङ्': 'benedictive', 'लुङ्': 'aorist', 'लेट्': 'subjunctive'
+};
 
 /** Deaccent a lemma to match the (deaccented) keys in the paradigm maps. */
 function deaccent(s: string): string {
@@ -113,7 +119,12 @@ function formIndex(map: Record<string, Record<string, string>>): Map<string, str
 
 function stemForForm(data: Indexed, form: string, verb: boolean): string | null {
   if (verb) {
-    if (!data._byFormVerb) data._byFormVerb = formIndex(data.verbParadigms);
+    if (!data._byFormVerb)
+      data._byFormVerb = formIndex(Object.fromEntries(Object.entries(data.verbParadigms).flatMap(
+        ([root, byLak]) => Object.values(byLak).map((cells, i) => [root + '\u0000' + i, cells])
+      )));
+    const hit = data._byFormVerb?.get(deaccent(form));
+    return hit ? hit.split('\u0000')[0] : null;
     return data._byFormVerb.get(deaccent(form)) ?? null;
   }
   if (!data._byForm) data._byForm = formIndex(data.nounParadigms);
@@ -133,12 +144,16 @@ export function resolve(
 
   if (isVerb) {
     const root = deaccent(lemma) || stemForForm(data as Indexed, bare, true) || '';
-    const para = data.verbParadigms[root];
+    const byLak = data.verbParadigms[root];
+    if (!byLak) return null;
+    // the word's own लकार; लट् when it is untagged or not derived
+    const lak = LAKARA.find((x) => terms.includes(x) && byLak[x]) ?? 'लट्';
+    const para = byLak[lak];
     if (!para) return null;
     const p = PURUSHA.findIndex((x) => terms.includes(x));
     const v = VACANA.findIndex((x) => terms.includes(x));
     const { grid, row, col } = toGrid(para, PURUSHA, VACANA, p, v);
-    return { stem: root, lakara: 'लट्', kind: 'present', grid, row, col };
+    return { stem: root, lakara: lak, kind: LAKARA_EN[lak] ?? '', grid, row, col };
   }
 
   // noun: the lemma when the corpus records one, otherwise the stem whose
