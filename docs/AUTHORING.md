@@ -490,6 +490,25 @@ paradigm — and check that the tags say all of it. If a तिङन्त says
 it is a present-tense *something*. If it says लट् · प्रथमपुरुष · एकवचन ·
 परस्मैपद, it is a cell.
 
+## Sandhi — write padas, the build writes the saṃhitā
+
+Author every sentence as **padas**: नरः गच्छति, सः अपि, विनयात् याति — each
+word in its own pausal form, one word per token. Never type sandhi. The build
+joins the padas with vidyut-sandhi (`scripts/lib/sandhi.ts`, the same commit
+as the grammar engine) into the saṃhitā — नरो गच्छति, सोऽपि, विनयाद्याति — and
+records which padas each written word came from. The reader shows the
+saṃhitā from tier 80 (the sandhi chapter) up; padaccheda shows the padas.
+
+So a sandhi is never wrong by typo, and padaccheda never lacks a split.
+`bun run check` fails on a token that is a sandhi surface rather than a pada
+(anusvāra at the end, -ो of an अ-stem, a voiced stop, य्/व्/स्/र्, ऽ);
+`bun scripts/padify.ts --write` restores the pada where the engine can prove
+it. Attested text goes in as padas too: transcribe the edition's words, and
+let the build put the edition's sandhi back.
+
+The exceptions are the sandhi chapter's own display syntax (क + ख → ग) and the
+Vedic text, whose sandhi is not the classical joiner's.
+
 ## Examples by example — written low, attested high
 
 The aim is a complete reference **by example**. Repetition is fine; a

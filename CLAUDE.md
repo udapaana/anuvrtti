@@ -58,6 +58,11 @@ in the git-ignored `data/texts/`), `bun run attested -- --form X` / `--cell` /
 `--wanted` finds where an author used a form. See *Examples by example* in
 `docs/AUTHORING.md`.
 
+**Write sentences as padas, never type sandhi** (नरः गच्छति, not नरो
+गच्छति): the build makes the saṃhitā with vidyut-sandhi (`scripts/lib/sandhi.ts`)
+and the reader shows it from tier 80 up; `bun run check` rejects a typed sandhi
+surface. See *Sandhi* in `docs/AUTHORING.md`.
+
 `static/data/stats.json` is generated too, and committed: the four counts on
 the home page's doors. The threshold must not download three corpora to print
 three integers, so `bun run build:stats` reduces them at build time (it runs
