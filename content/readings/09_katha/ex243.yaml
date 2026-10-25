@@ -3,14 +3,13 @@
   segment: 258
   source:
     text: कथा (our graded retelling)
-    ref: "the ascetic and the boy — our own telling, in compounds"
+    ref: the ascetic and the boy — our own telling, in compounds
     curated: our simple Sanskrit; not from any single source
-  sentence: वने एकः तपस्वी अवसत्। एकदा ग्रामगतः बालः तत्र अगच्छत्। सः सरसि नीलोत्पलम् अपश्यत्। तपस्वी बालाय फलानि अयच्छत्। इदम् बालहितम् इति सः अवदत्।
-  translation: In the forest lived an ascetic. One day a village-going boy came there. In the lake he saw a blue lotus. The ascetic gave the boy fruits. "This is for the boy's good," he said.
-  teaches: |
-    three kinds of तत्पुरुष compound in one story — ग्रामगतः "gone to the village"
-    (accusative-type), बालहितम् "good for the boy" (dative-type), and नीलोत्पलम्
-    "blue lotus" (the कर्मधारय, qualifier + qualified).
+  sentence: वने एकः तपस्वी अवसत्। एकदा ग्रामगतः बालः मार्गम् न अजानात्, तत्र च अगच्छत्। तस्य क्षुधा महती आसीत्। तपस्वी बालाय फलानि अयच्छत्; इदम् बालहितम् इति सः अवदत्। बालः सरसि नीलोत्पलम् अपश्यत्, तत् च तपस्विने अयच्छत्।
+  translation: In the forest lived an ascetic. One day a boy who had gone to the village lost his way, and came there. He was very hungry. The ascetic gave the boy fruit; "this is good for a boy," he said. The boy saw a blue lotus in the lake, and gave it to the ascetic.
+  teaches: 'A lost boy and an ascetic — ग्रामगतः, बालहितम् (तत्पुरुष), नीलोत्पलम् (कर्मधारय), and the gift given each way: बालाय, तपस्विने.
+
+    '
   words:
   - form: वने
     lemma: वन
@@ -43,6 +42,10 @@
       en: subject
     - term: प्रथमा
       en: nominative
+    - term: विनि
+      en: विनि
+    - term: मतुबर्थ
+      en: मतुबर्थ
   - form: अवसत्
     lemma: वस्
     gloss: lived, dwelt
@@ -63,7 +66,7 @@
     - text: 'विग्रह: ग्रामम् गतः — "gone to the village"'
     - term: तत्पुरुष
       en: compound — ग्रामं गतः "gone to the village"
-    - cite: '2.1.24'
+    - cite: 2.1.24
       role: द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः — an accusative combines with गत etc. into a द्वितीया-तत्पुरुष → ग्रामम् + गतः → ग्रामगतः
     - term: विशेषण
       en: qualifying बालः
@@ -80,57 +83,89 @@
       en: subject
     - term: प्रथमा
       en: nominative
+  - form: मार्गम्
+    lemma: मार्ग
+    gloss: his way
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: indeclinable — negation
+  - form: अजानात्
+    lemma: ज्ञा
+    gloss: knew
+    notes:
+    - term: लङ्
+      en: imperfect (क्र्यादि)
   - form: तत्र
     lemma: तत्र
     gloss: there
     notes:
     - term: अव्यय
       en: adverb of place
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: अगच्छत्
     lemma: गम्
     gloss: came, went
     notes:
     - term: लङ्
       en: past
-  - form: सः
+  - form: तस्य
     lemma: तद्
-    gloss: he
+    gloss: his
     notes:
     - term: सर्वनाम
       en: pronoun
+    - term: सम्बन्ध
+      en: relation
+    - term: षष्ठी
+      en: genitive
+  - form: क्षुधा
+    lemma: क्षुधा
+    gloss: hunger
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
     - term: कर्तृ
-      en: subject
+      en: agent
     - term: प्रथमा
       en: nominative
-  - form: सरसि
-    lemma: सरस्
-    gloss: in the lake
-    vocab: true
+  - form: महती
+    lemma: महत्
+    gloss: great
     notes:
-    - term: अधिकरण
-      en: locus
-    - term: सप्तमी
-      en: locative (स्-stem सरस् → सरसि)
-  - form: नीलोत्पलम्
-    lemma: नीलोत्पल
-    gloss: a blue lotus
-    vocab: true
-    notes:
-    - text: 'विग्रह: नीलम् उत्पलम् — "the lotus which is blue"'
-    - term: कर्मधारय
-      en: compound — नीलम् उत्पलम् "blue lotus," qualifier + qualified
-    - cite: '2.1.57'
-      role: विशेषणं विशेष्येण बहुलम् — a qualifier compounds with its qualified noun into a कर्मधारय → नील + उत्पल → नीलोत्पल
-    - term: कर्मन्
-      en: object of अपश्यत्
-    - term: द्वितीया
-      en: accusative
-  - form: अपश्यत्
-    lemma: दृश्
-    gloss: saw
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: number
+    - term: प्रथमा
+      en: nominative — the predicate
+    rel:
+    - kind: विधेय
+      to: 14
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
     notes:
     - term: लङ्
-      en: past
+      en: imperfect
   - form: बालाय
     lemma: बाल
     gloss: to the boy
@@ -139,8 +174,8 @@
       en: recipient
     - term: चतुर्थी
       en: dative singular
-    - cite: "7.1.13"
-      role: "ङेर्यः — a-stem dative ङे → य → देवाय → बालाय"
+    - cite: 7.1.13
+      role: ङेर्यः — a-stem dative ङे → य → देवाय → बालाय
   - form: फलानि
     lemma: फल
     gloss: fruits
@@ -163,6 +198,10 @@
       en: pronoun (इदम्, neuter)
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
+    - term: कर्तृ
+      en: agent
   - form: बालहितम्
     lemma: बालहित
     gloss: for the boy's good
@@ -171,30 +210,100 @@
     - text: 'विग्रह: बालाय हितम् — "good for the boy"'
     - term: तत्पुरुष
       en: compound — बालाय हितम् "good for the boy"
-    - cite: '2.1.36'
+    - cite: 2.1.36
       role: चतुर्थी तदर्थार्थबलिहितसुखरक्षितैः — a dative combines with हित etc. into a चतुर्थी-तत्पुरुष → बाल + हित → बालहित
     - term: विशेषण
       en: predicate of इदम्
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: इति
     lemma: इति
     gloss: (thus — closes the speech)
     notes:
     - term: अव्यय
       en: quotative marker
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
   - form: अवदत्
     lemma: वद्
     gloss: said
     notes:
     - term: लङ्
       en: past
-  vyakhya: 'समासप्रधाना कथा। ग्रामगतः इति द्वितीयातत्पुरुषः (द्वितीया श्रितातीत…)। बालहितम् इति चतुर्थीतत्पुरुषः (चतुर्थी तदर्थ…)। नीलोत्पलम् इति कर्मधारयः (विशेषणं विशेष्येण)। त्रयः समासभेदाः एकत्र।'
-  vyakhya_en: |
-    Three flavors of तत्पुरुष, side by side. In each, a case-related word is
+  - form: सरसि
+    lemma: सरस्
+    gloss: in the lake
+    vocab: true
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative (स्-stem सरस् → सरसि)
+  - form: नीलोत्पलम्
+    lemma: नीलोत्पल
+    gloss: a blue lotus
+    vocab: true
+    notes:
+    - text: 'विग्रह: नीलम् उत्पलम् — "the lotus which is blue"'
+    - term: कर्मधारय
+      en: compound — नीलम् उत्पलम् "blue lotus," qualifier + qualified
+    - cite: 2.1.57
+      role: विशेषणं विशेष्येण बहुलम् — a qualifier compounds with its qualified noun into a कर्मधारय → नील + उत्पल → नीलोत्पल
+    - term: कर्मन्
+      en: object of अपश्यत्
+    - term: द्वितीया
+      en: accusative
+  - form: अपश्यत्
+    lemma: दृश्
+    gloss: saw
+    notes:
+    - term: लङ्
+      en: past
+  - form: तत्
+    lemma: तद्
+    gloss: it
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: तपस्विने
+    lemma: तपस्विन्
+    gloss: to the ascetic
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative
+  vyakhya: समासप्रधाना कथा। ग्रामगतः इति द्वितीयातत्पुरुषः (द्वितीया श्रितातीत…)। बालहितम् इति चतुर्थीतत्पुरुषः (चतुर्थी तदर्थ…)। नीलोत्पलम् इति कर्मधारयः (विशेषणं विशेष्येण)। त्रयः समासभेदाः एकत्र।
+  vyakhya_en: 'Three flavors of तत्पुरुष, side by side. In each, a case-related word is
+
     swallowed into a compound and the case-ending disappears. **ग्रामगतः** = ग्रामं
+
     गतः "gone to the village" — an *accusative* relation (2.1.24). **बालहितम्** =
+
     बालाय हितम् "good for the boy" — a *dative* relation (2.1.36). And
+
     **नीलोत्पलम्** = नीलम् उत्पलम् "blue lotus," the कर्मधारय, where the two members
+
     simply describe one thing, adjective and noun (2.1.57). Learn to unfold a
+
     compound back into its case phrase and half of Sanskrit prose opens up.
+
+    '

@@ -1,10 +1,10 @@
 - id: ex233
   segment: 175
-  sentence: नीलोत्पलम् जले तिष्ठति। ग्रामगतः बालः तत् पश्यति। असत्यम् न वदति, गोहितम् च करोति।
-  translation: A blue lotus stands in the water. A boy who has gone to the village sees it. He speaks no untruth, and does what is good for cattle.
-  teaches: |
-    four तत्पुरुष/कर्मधारय subtypes, each named by its विग्रह — नीलोत्पलम् (कर्मधारय),
-    ग्रामगतः (द्वितीया-), असत्यम् (नञ्-), गोहितम् (चतुर्थी-तत्पुरुष).
+  sentence: नीलोत्पलम् जले तिष्ठति। ग्रामगतः बालः तत् पश्यति, गृह्णाति च। माता पृच्छति — कः तत् अगृह्णात्? बालः असत्यम् न वदति — अहम्। ततः सः गोशालाम् गच्छति, गोहितम् च करोति।
+  translation: 'A blue lotus stands in the water. A boy who has come to the village sees it and picks it. His mother asks: "Who picked that?" The boy tells no untruth — "I did." Then he goes to the cowshed and does what is good for the cows.'
+  teaches: 'A small lesson in honesty, in compounds: नीलोत्पलम् (कर्मधारय), ग्रामगतः, असत्यम्, गोहितम् (तत्पुरुषs).
+
+    '
   words:
   - form: नीलोत्पलम्
     lemma: नीलोत्पल
@@ -16,14 +16,14 @@
     - term: कर्मधारय
       en: descriptive — नीलम् उत्पलम्, both members in the same case, one qualifying the other
     - text: 'विग्रह: नीलम् उत्पलम् — "the lotus which is blue"'
-    - cite: '2.1.57'
+    - cite: 2.1.57
       role: विशेषणं विशेष्येण बहुलम् — an adjective compounds with its noun → कर्मधारय
     - term: कर्तृ
       en: agent
     - term: प्रथमा
       en: nominative (neuter)
-    - cite: "6.1.107"
-      role: "अमि पूर्वः — अ + अम् → पूर्वरूप, every acc.sg → नीलोत्पलम्"
+    - cite: 6.1.107
+      role: अमि पूर्वः — अ + अम् → पूर्वरूप, every acc.sg → नीलोत्पलम्
   - form: जले
     lemma: जल
     gloss: in the water
@@ -48,7 +48,7 @@
     - term: तत्पुरुष
       en: determinative — ग्रामम् गतः, the first member is the द्वितीया goal
     - text: 'विग्रह: ग्रामम् गतः — "gone to the village"'
-    - cite: '2.1.24'
+    - cite: 2.1.24
       role: द्वितीया श्रितातीतपतितगतात्यस्तप्राप्तापन्नैः — a द्वितीया word compounds with गत etc. → द्वितीया-तत्पुरुष
     - term: विशेषण
       en: qualifying बालः
@@ -75,14 +75,62 @@
       en: object of seeing
     - term: द्वितीया
       en: accusative (neuter)
-    - cite: "7.1.23"
-      role: "स्वमोर्नपुंसकात् — neuter सु and अम् alike (लुक् base rule) → तत्"
+    - cite: 7.1.23
+      role: स्वमोर्नपुंसकात् — neuter सु and अम् alike (लुक् base rule) → तत्
   - form: पश्यति
     lemma: दृश्
     gloss: sees
     notes:
     - term: लट्
       en: present
+  - form: गृह्णाति
+    lemma: ग्रह्
+    gloss: picks
+    notes:
+    - term: लट्
+      en: present (क्र्यादि)
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: माता
+    lemma: मातृ
+    gloss: his mother
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पृच्छति
+    lemma: प्रच्छ्
+    gloss: asks
+    notes:
+    - term: लट्
+      en: present (प्रच्छ् → पृच्छ)
+  - form: कः
+    lemma: किम्
+    gloss: who
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: एकवचन
+      en: singular
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: अगृह्णात्
+    lemma: ग्रह्
+    gloss: picked
+    notes:
+    - term: लङ्
+      en: imperfect (क्र्यादि)
   - form: असत्यम्
     lemma: असत्य
     gloss: untruth
@@ -92,7 +140,7 @@
     - term: तत्पुरुष
       en: negative — न सत्यम्, "not-truth"
     - text: 'विग्रह: न सत्यम् — "untruth"'
-    - cite: '2.2.6'
+    - cite: 2.2.6
       role: नञ् — नञ् (न) compounds with a following word → नञ्-तत्पुरुष
     - term: कर्मन्
       en: what is (not) spoken
@@ -110,6 +158,50 @@
     notes:
     - term: लट्
       en: present
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: ततः
+    lemma: ततः
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable — sequence
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: गोशालाम्
+    lemma: गोशाला
+    gloss: to the cowshed
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
+    - term: कर्मन्
+      en: the goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: गच्छति
+    lemma: गम्
+    gloss: goes
+    notes:
+    - term: लट्
+      en: present
   - form: गोहितम्
     lemma: गोहित
     gloss: what is good for cattle
@@ -120,18 +212,12 @@
     - term: तत्पुरुष
       en: determinative — गोभ्यो हितम्, the first member is the चतुर्थी beneficiary
     - text: 'विग्रह: गोभ्यो हितम् — "good for the cattle"'
-    - cite: '2.1.36'
+    - cite: 2.1.36
       role: चतुर्थी तदर्थार्थबलिहितसुखरक्षितैः — a चतुर्थी word compounds with हित etc. → चतुर्थी-तत्पुरुष
     - term: कर्मन्
       en: what is done
     - term: द्वितीया
       en: accusative
-  - form: च
-    lemma: च
-    gloss: and
-    notes:
-    - term: निपात
-      en: enclitic particle
   - form: करोति
     lemma: कृ
     gloss: does
@@ -139,10 +225,16 @@
     - term: लट्
       en: present
   vyakhya: चत्वारः तत्पुरुषभेदाः — नीलोत्पलम्, ग्रामगतः, असत्यम्, गोहितम्।
-  vyakhya_en: |
-    Four sub-classes of the same family, each told apart by its विग्रह.
+  vyakhya_en: 'Four sub-classes of the same family, each told apart by its विग्रह.
+
     नीलोत्पलम् is a कर्मधारय — नीलम् उत्पलम्, adjective and noun in one case
+
     (2.1.57). ग्रामगतः is a द्वितीया-तत्पुरुष — ग्रामम् गतः, "gone TO the village"
+
     (2.1.24). असत्यम् is the नञ्-तत्पुरुष, न सत्यम् "untruth" (2.2.6). And गोहितम्
+
     is a चतुर्थी-तत्पुरुष — गोभ्यो हितम्, "good FOR cattle" (2.1.36). The compound
+
     hides the case; the विग्रह restores it.
+
+    '

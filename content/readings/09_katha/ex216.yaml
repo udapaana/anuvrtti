@@ -2,14 +2,14 @@
   kind: graded
   segment: 165
   source:
-    text: "बालकृष्णकथा (our graded retelling)"
-    ref: "Bhāgavata 10.8 — Kṛṣṇa's childhood in Gokula"
-    curated: "our simple Sanskrit telling the well-known episode; NOT the verbatim text"
-  sentence: उपगोकुलम् एकः गोपपुत्रः वसति। सः च कृष्णः च क्रीडतः, तौ गोपकृष्णौ इति ग्रामः वदति। एकदा नीलाम्बरः कश्चन बालः आगच्छत्। यशोदा तम् अपश्यत् — नीलाम्बरः एव इन्द्रः, इति सा अमन्यत।
-  translation: Near Gokula lives a certain cowherd's son. He and Kṛṣṇa play, and the village calls those two "the cowherd-and-Kṛṣṇa." Once a blue-clad boy came. Yaśodā saw him — "the blue-clad one is Indra himself," she thought.
-  teaches: |
-    the four compound types again, in the Gokula story: गोपपुत्रः (तत्पुरुष),
-    उपगोकुलम् (अव्ययीभाव), गोपकृष्णौ (द्वन्द्व), नीलाम्बरः (बहुव्रीहि).
+    text: बालकृष्णकथा (our graded retelling)
+    ref: Bhāgavata 10.8 — Kṛṣṇa's childhood in Gokula
+    curated: our simple Sanskrit telling the well-known episode; NOT the verbatim text
+  sentence: उपगोकुलम् एकः गोपपुत्रः वसति। सः च कृष्णः च सदा क्रीडतः, तौ गोपकृष्णौ इति ग्रामः वदति। एकदा नीलाम्बरः कश्चन बालः आगच्छत्। यशोदा तम् अपश्यत्, किन्तु न अजानात्। कृष्णः अवदत् — अयम् नीलाम्बरः एव मम भ्राता बलरामः।
+  translation: 'Near Gokula lives a cowherd''s son. He and Kṛṣṇa always play together, and the village calls the two "the cowherd-and-Kṛṣṇa." One day a boy in blue clothes came. Yaśodā saw him, but did not know him. Kṛṣṇa said: "This blue-clad one is my brother Balarāma himself."'
+  teaches: 'Kṛṣṇa''s friends, in compounds: उपगोकुलम् (अव्ययीभाव, "near Gokula"), गोपपुत्रः (तत्पुरुष), गोपकृष्णौ (द्वन्द्व), and नीलाम्बरः — the बहुव्रीहि "whose clothes are blue", Balarāma''s own epithet beside Kṛṣṇa''s पीताम्बर.
+
+    '
   words:
   - form: उपगोकुलम्
     lemma: उपगोकुल
@@ -17,7 +17,7 @@
     notes:
     - term: अव्ययीभाव
       en: adverbial — उप heads it, and the whole compound is indeclinable
-    - cite: '2.1.5'
+    - cite: 2.1.5
       role: अव्ययीभावः — a compound headed by an indeclinable is अव्ययीभाव
   - form: एकः
     lemma: एक
@@ -26,13 +26,19 @@
     notes:
     - term: प्रथमा
       en: nominative
+    - term: विशेषण
+      en: विशेषण
+    - term: विशेषण
+      en: विशेषण
+    - term: कर्तृ
+      en: agent
   - form: गोपपुत्रः
     lemma: गोपपुत्र
     gloss: the cowherd's son
     notes:
     - term: तत्पुरुष
       en: determinative — पुत्रः, the second member, is the head
-    - cite: '2.1.22'
+    - cite: 2.1.22
       role: तत्पुरुषः — a compound whose second member carries the main sense is तत्पुरुष
     - term: कर्तृ
       en: agent
@@ -44,8 +50,8 @@
     notes:
     - term: लट्
       en: present
-    - cite: "1.3.3"
-      role: "हलन्त्यम् — final consonant in उपदेश is इत् → वसति"
+    - cite: 1.3.3
+      role: हलन्त्यम् — final consonant in उपदेश is इत् → वसति
   - form: सः
     lemma: तद्
     gloss: he
@@ -54,6 +60,10 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
+    - term: कर्तृ
+      en: agent
   - form: च
     lemma: च
     gloss: and
@@ -66,6 +76,16 @@
     notes:
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
+    - term: कर्तृ
+      en: agent
+  - form: सदा
+    lemma: सदा
+    gloss: always
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
   - form: क्रीडतः
     lemma: क्रीड्
     gloss: the two play
@@ -80,6 +100,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative dual
+    - term: कर्तृ
+      en: agent
   - form: गोपकृष्णौ
     lemma: गोपकृष्ण
     gloss: the cowherd-and-Kṛṣṇa
@@ -90,7 +112,7 @@
       en: dual — two boys
   - form: इति
     lemma: इति
-    gloss: "thus, as"
+    gloss: thus, as
     notes:
     - term: अव्यय
       en: closes the naming
@@ -121,12 +143,14 @@
     notes:
     - term: बहुव्रीहि
       en: possessive — neither member is the head; the compound points at Indra
-    - cite: '2.2.23'
+    - cite: 2.2.23
       role: शेषो बहुव्रीहिः — the remaining kind of compound is बहुव्रीहि
-    - cite: '2.2.24'
+    - cite: 2.2.24
       role: अनेकमन्यपदार्थे — several words denoting ANOTHER thing (the possessor) form a बहुव्रीहि
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: कश्चन
     lemma: कश्चन
     gloss: a certain, some
@@ -140,6 +164,10 @@
     notes:
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
+    - term: कर्तृ
+      en: agent
   - form: आगच्छत्
     lemma: गम्
     gloss: came
@@ -170,39 +198,93 @@
     notes:
     - term: लङ्
       en: past
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable — contrast
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: indeclinable — negation
+  - form: अजानात्
+    lemma: ज्ञा
+    gloss: knew
+    notes:
+    - term: लङ्
+      en: imperfect (क्र्यादि)
+  - form: अवदत्
+    lemma: वद्
+    gloss: said
+    notes:
+    - term: लङ्
+      en: imperfect
+  - form: अयम्
+    lemma: इदम्
+    gloss: this
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: एकवचन
+      en: singular
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
   - form: एव
     lemma: एव
     gloss: indeed
     notes:
     - term: अव्यय
       en: indeclinable
-  - form: इन्द्रः
-    lemma: इन्द्र
-    gloss: Indra
-    vocab: true
-    notes:
-    - term: प्रथमा
-      en: nominative
-  - form: सा
-    lemma: तद्
-    gloss: she
+  - form: मम
+    lemma: अस्मद्
+    gloss: my
     notes:
     - term: सर्वनाम
       en: pronoun
-    - term: कर्तृ
-      en: agent
-    - term: प्रथमा
-      en: nominative feminine
-  - form: अमन्यत
-    lemma: मन्
-    gloss: thought
-    vocab: true
+    - term: सम्बन्ध
+      en: relation
+    - term: षष्ठी
+      en: genitive
+  - form: भ्राता
+    lemma: भ्रातृ
+    gloss: brother
     notes:
-    - term: लङ्
-      en: past — आत्मनेपद, a thought held for herself
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: प्रथमा
+      en: nominative — the predicate
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विधेय
+      to: 26
+  - form: बलरामः
+    lemma: बलराम
+    gloss: Balarāma
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विधेय
+      to: 26
   vyakhya: पुनः चत्वारः समासाः, अधुना गोकुलकथायाम्। गोपपुत्रः, उपगोकुलम्, गोपकृष्णौ, नीलाम्बरः।
-  vyakhya_en: |
-    The same four types, now inside the Gokula story rather than beside it.
+  vyakhya_en: 'The same four types, now inside the Gokula story rather than beside it.
+
     गोपपुत्रः is a तत्पुरुष, उपगोकुलम् an अव्ययीभाव, गोपकृष्णौ a द्वन्द्व
+
     naming two boys together, and नीलाम्बरः a बहुव्रीहि — not "blue," not
+
     "garment," but the blue-clad one himself, whom यशोदा takes for इन्द्र.
+
+    '

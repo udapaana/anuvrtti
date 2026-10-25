@@ -1,237 +1,242 @@
 - id: ex264
   kind: graded
   segment: 90
-  sentence: 'देवः वने वसति। नरः देवम् पश्यति। सः देवेन तुष्यति। सः देवाय नमति। सः देवात् बिभेति। सः देवस्य वनम् गच्छति। सः देवे रमते। हे देव।'
-  translation: 'A god lives in the forest. A man sees the god, is pleased by the god, bows to the god, fears the god, goes to the god''s forest, and delights in the god. O god!'
-  teaches: 'one stem through all eight cases — देवः देवम् देवेन देवाय देवात् देवस्य देवे, हे देव — the अ-stem masculine endings seen as a single system.'
+  sentence: वने देवः वसति। एकः नरः वनम् गच्छति, देवम् च पश्यति। प्रथमम् सः देवात् बिभेति। किन्तु देवः हसति, नरः च देवेन तुष्यति। सः देवाय नमति। ततः सः प्रतिदिनम् देवस्य वनम् गच्छति, देवे च रमते। सः गायति — हे देव!
+  translation: 'A god lives in the forest. A man goes into the forest and sees the god. At first he fears the god. But the god smiles, and the man is pleased by the god. He bows to the god. After that he goes to the god''s forest every day, and delights in the god. He sings: "O god!"'
+  teaches: 'One stem through every case, in the order a meeting takes — देवम् (seen), देवात् (feared), देवेन (pleased by), देवाय (bowed to), देवस्य (whose forest), देवे (delighted in), and देव, called on at the end.
+
+    '
   words:
-  - form: देवः
-    lemma: देव
-    gloss: 'a god'
-    notes:
-    - term: कर्तृ
-      en: 'agent — the one who lives'
-    - term: प्रथमा
-      en: 'nominative — the naming case'
   - form: वने
     lemma: वन
-    gloss: 'in the forest'
+    gloss: in the forest
     notes:
     - term: अधिकरण
-      en: 'locus'
-      # CONFIRM: context-dependent — copied from ex181, but whether
-      # it holds HERE is a fact about this sentence, not about the form.
+      en: locus
     - term: सप्तमी
-      en: 'locative'
-    - cite: "6.1.87"
-      role: "आद्गुणः — guṇa सन्धि → वने"
+      en: locative
+    - cite: 6.1.87
+      role: आद्गुणः — guṇa सन्धि → वने
+  - form: देवः
+    lemma: देव
+    gloss: a god
+    notes:
+    - term: कर्तृ
+      en: agent — the one who lives
+    - term: प्रथमा
+      en: nominative — the naming case
   - form: वसति
     lemma: वस्
-    gloss: 'lives'
+    gloss: lives
     notes:
     - term: वस्
       en: '"dwell"'
     - term: धातु
-      en: 'verbal root'
+      en: verbal root
     - term: शप्
-      en: 'the thematic अ between root and ending'
+      en: the thematic अ between root and ending
     - term: लट्
-      en: 'present'
+      en: present
+  - form: एकः
+    lemma: एक
+    gloss: a
+    notes:
+    - term: संख्या
+      en: numeral
+    - term: विशेषण
+      en: qualifying the noun
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 4
   - form: नरः
     lemma: नर
-    gloss: 'the man'
+    gloss: the man
     notes:
     - term: कर्तृ
-      en: 'agent'
-      # CONFIRM: context-dependent — copied from ex002, but whether
-      # it holds HERE is a fact about this sentence, not about the form.
+      en: agent
     - term: प्रथमा
-      en: 'nominative'
-  - form: देवम्
-    lemma: देव
-    gloss: 'the god'
-    notes:
-    - term: कर्मन्
-      en: 'the one seen'
-      # CONFIRM: context-dependent — copied from ex224, but whether
-      # it holds HERE is a fact about this sentence, not about the form.
-    - term: द्वितीया
-      en: 'accusative'
-  - form: पश्यति
-    lemma: दृश्
-    gloss: 'sees'
-    notes:
-    - term: दृश्
-      en: '"see"'
-    - term: धातु
-      en: 'verbal root'
-    - term: शप्
-      en: 'the thematic अ between root and ending'
-    - term: लट्
-      en: 'present'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-      # CONFIRM: context-dependent — copied from ex149, but whether
-      # it holds HERE is a fact about this sentence, not about the form.
-    - term: प्रथमा
-      en: 'nominative'
-  - form: देवेन
-    lemma: देव
-    gloss: 'by the god'
-    notes:
-    - term: करण
-      en: 'the means — what he is pleased by'
-    - term: तृतीया
-      en: 'instrumental — the ending टा appears as इन'
-  - form: तुष्यति
-    lemma: तुष्
-    gloss: 'is pleased'
-    notes:
-    - term: लट्
-      en: 'present (तुष् is दिवादि: तुष्यति)'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: देवाय
-    lemma: देव
-    gloss: 'to the god'
-    notes:
-    - term: सम्प्रदान
-      en: 'recipient — the one saluted'
-    - term: चतुर्थी
-      en: 'dative — the ending ङे appears as य'
-    - cite: "7.1.13"
-      role: "ङेर्यः — a-stem dative ङे → य → देवाय → देवाय"
-  - form: नमति
-    lemma: नम्
-    gloss: 'bows to'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-      # CONFIRM: context-dependent — copied from ex149, but whether
-      # it holds HERE is a fact about this sentence, not about the form.
-    - term: प्रथमा
-      en: 'nominative'
-  - form: देवात्
-    lemma: देव
-    gloss: 'from the god'
-    notes:
-    - term: अपादान
-      en: 'the source of fear (भी takes पञ्चमी, 1.4.25)'
-    - term: पञ्चमी
-      en: 'ablative — the ending ङसि appears as आत्'
-  - form: बिभेति
-    lemma: भी
-    gloss: 'fears'
-    notes:
-    - term: भी
-      en: '"fear"'
-    - term: लट्
-      en: 'present'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-      # CONFIRM: context-dependent — copied from ex149, but whether
-      # it holds HERE is a fact about this sentence, not about the form.
-    - term: प्रथमा
-      en: 'nominative'
-  - form: देवस्य
-    lemma: देव
-    gloss: 'of the god'
-    notes:
-    - term: सम्बन्ध
-      en: 'the possessor — whose forest'
-    - term: षष्ठी
-      en: 'genitive — the ending ङस् appears as स्य'
+      en: nominative
   - form: वनम्
     lemma: वन
-    gloss: 'to the forest'
+    gloss: into the forest
     notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: एकवचन
+      en: singular
     - term: कर्मन्
-      en: 'goal of motion'
-      # CONFIRM: context-dependent — copied from ex181, but whether
-      # it holds HERE is a fact about this sentence, not about the form.
+      en: the goal of motion
     - term: द्वितीया
-      en: 'accusative'
+      en: accusative
   - form: गच्छति
     lemma: गम्
-    gloss: 'goes'
+    gloss: goes
     notes:
     - term: गम्
       en: '"go"'
     - term: धातु
-      en: 'verbal root'
+      en: verbal root
     - term: शप्
-      en: 'the thematic अ between root and ending'
+      en: the thematic अ between root and ending
     - term: लट्
-      en: 'present'
+      en: present
     - term: तिप्
-      en: '3rd person singular'
+      en: 3rd person singular
+  - form: देवम्
+    lemma: देव
+    gloss: the god
+    notes:
+    - term: कर्मन्
+      en: the one seen
+    - term: द्वितीया
+      en: accusative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: पश्यति
+    lemma: दृश्
+    gloss: sees
+    notes:
+    - term: दृश्
+      en: '"see"'
+    - term: धातु
+      en: verbal root
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: प्रथमम्
+    lemma: प्रथमम्
+    gloss: at first
+    notes:
+    - term: अव्यय
+      en: indeclinable — order
   - form: सः
     lemma: तद्
-    gloss: 'he'
+    gloss: he
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'agent'
-      # CONFIRM: context-dependent — copied from ex149, but whether
-      # it holds HERE is a fact about this sentence, not about the form.
+      en: agent
     - term: प्रथमा
-      en: 'nominative'
+      en: nominative
+  - form: देवात्
+    lemma: देव
+    gloss: from the god
+    notes:
+    - term: अपादान
+      en: the source of fear (भी takes पञ्चमी, 1.4.25)
+    - term: पञ्चमी
+      en: ablative — the ending ङसि appears as आत्
+  - form: बिभेति
+    lemma: भी
+    gloss: fears
+    notes:
+    - term: भी
+      en: '"fear"'
+    - term: लट्
+      en: present
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable — contrast
+  - form: हसति
+    lemma: हस्
+    gloss: smiles
+    notes:
+    - term: लट्
+      en: present
+  - form: देवेन
+    lemma: देव
+    gloss: by the god
+    notes:
+    - term: करण
+      en: the means — what he is pleased by
+    - term: तृतीया
+      en: instrumental — the ending टा appears as इन
+  - form: तुष्यति
+    lemma: तुष्
+    gloss: is pleased
+    notes:
+    - term: लट्
+      en: 'present (तुष् is दिवादि: तुष्यति)'
+  - form: देवाय
+    lemma: देव
+    gloss: to the god
+    notes:
+    - term: सम्प्रदान
+      en: recipient — the one saluted
+    - term: चतुर्थी
+      en: dative — the ending ङे appears as य
+    - cite: 7.1.13
+      role: ङेर्यः — a-stem dative ङे → य → देवाय → देवाय
+  - form: नमति
+    lemma: नम्
+    gloss: bows to
+    notes:
+    - term: लट्
+      en: present
+  - form: ततः
+    lemma: ततः
+    gloss: after that
+    notes:
+    - term: अव्यय
+      en: indeclinable — sequence
+  - form: प्रतिदिनम्
+    lemma: प्रतिदिनम्
+    gloss: every day
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
+  - form: देवस्य
+    lemma: देव
+    gloss: of the god
+    notes:
+    - term: सम्बन्ध
+      en: the possessor — whose forest
+    - term: षष्ठी
+      en: genitive — the ending ङस् appears as स्य
   - form: देवे
     lemma: देव
-    gloss: 'in the god'
+    gloss: in the god
     notes:
     - term: अधिकरण
-      en: 'the locus of delight'
+      en: the locus of delight
     - term: सप्तमी
-      en: 'locative — the ending ङि appears as ए'
+      en: locative — the ending ङि appears as ए
   - form: रमते
     lemma: रम्
-    gloss: 'delights, takes pleasure'
+    gloss: delights, takes pleasure
     notes:
     - term: रम्
       en: '"delight, sport" (ātmanepada)'
     - term: शप्
-      en: 'the thematic अ between root and ending'
+      en: the thematic अ between root and ending
     - term: लट्
-      en: 'present'
+      en: present
+  - form: गायति
+    lemma: गै
+    gloss: sings
+    notes:
+    - term: लट्
+      en: present
   - form: हे
     lemma: हे
-    gloss: 'O'
+    gloss: O
     notes:
     - term: अव्यय
-      en: 'vocative particle'
+      en: vocative particle
   - form: देव
     lemma: देव
-    gloss: 'O god'
+    gloss: O god
     notes:
     - term: सम्बोधन
-      en: 'vocative — the case of address, the bare stem'
+      en: vocative — the case of address, the bare stem
