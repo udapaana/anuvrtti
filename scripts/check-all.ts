@@ -325,6 +325,17 @@ if (/lost/.test(par)) {
   console.log('  ✓ ' + par.trim().split('\n')[0]);
 }
 
+// 9e. sandhi — HARD. Sentences are padas and the build makes the saṃhitā with
+// vidyut-sandhi; a token typed already joined (सोऽपि, ग्रामं, विनयाद्) puts back
+// a word padaccheda cannot split and a sandhi nothing checked.
+const sdh = await run(['bun', 'scripts/check-sandhi.ts']);
+if (/not padas/.test(sdh)) {
+  problems.push('sandhi:\n' + sdh.split('\n').filter((l) => /^\s{4}\S/.test(l)).join('\n'));
+  console.log('  ✗ ' + sdh.trim().split('\n')[0]);
+} else {
+  console.log('  ✓ ' + sdh.trim().split('\n')[0]);
+}
+
 // 10. sign-in and attribution — HARD. Two providers now, and the ways they
 // differ are quiet ones: an @mention that resolves on GitHub and mentions a
 // stranger for a Google display name, and a branch name git will not accept.

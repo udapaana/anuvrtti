@@ -2,7 +2,7 @@
   kind: sangraha
   segment: 125
   order: 1
-  sentence: रामेण सह मुनिर्गच्छति। मार्गे वनं हसति, नदी च शोभते। मुनिः सत्यं वदति, रामः तच्च शृणोति। मुनेः वाग् अत्र शुभा। आश्रमे शिष्याः तम् प्रतीक्षन्ते; संस्कृतं वचनं तेषां प्रियम्। नमस्ते गुरो, इति ते वदन्ति।
+  sentence: रामेण सह मुनिः गच्छति। मार्गे वनम् हसति, नदी च शोभते। मुनिः सत्यम् वदति, रामः तत् च शृणोति। मुनेः वाक् अत्र शुभा। आश्रमे शिष्याः तम् प्रतीक्षन्ते; संस्कृतम् वचनम् तेषाम् प्रियम्। नमः ते गुरो, इति ते वदन्ति।
   translation: A sage walks with Rāma. On the way the forest smiles with flowers, and the river shines. The sage speaks the truth, and Rāma listens to that too. The sage's speech is auspicious here. At the hermitage his pupils are waiting for him; refined speech is dear to them. "Homage to you, teacher," they say.
   teaches: 'A walk with a sage, in sandhi: वाग् (जश्त्व), तच्च (श्चुत्व), सत्यं/वनं/वचनं/तेषां (anusvāra), रामेण (णत्व across the word), मुनिर्गच्छति (visarga), संस्कृतं (the nasal made homorganic). हसति of a forest in bloom is the poets'' own word.
 
@@ -30,14 +30,22 @@
     notes:
     - term: अव्यय
       en: indeclinable governing the तृतीया
-  - form: मुनिर्गच्छति
+  - form: मुनिः
     lemma: मुनि
     gloss: the sage goes
     notes:
-    - term: सन्धि
-      en: मुनिः + गच्छति — the visarga becomes र् before a voiced sound
     - cite: 8.3.15
       role: खरवसानयोर्विसर्जनीयः — the रु/visarga alternation → मुनिर्
+  - form: गच्छति
+    lemma: गम्
+    gloss: goes
+    notes:
+    - term: लट्
+      en: लट्
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: एकवचन
+      en: एकवचन
   - form: मार्गे
     lemma: मार्ग
     gloss: on the way
@@ -50,7 +58,7 @@
       en: location
     - term: सप्तमी
       en: locative
-  - form: वनं
+  - form: वनम्
     lemma: वन
     gloss: the forest
     notes:
@@ -119,7 +127,7 @@
       en: agent
     - term: प्रथमा
       en: nominative
-  - form: सत्यं
+  - form: सत्यम्
     lemma: सत्य
     gloss: the truth
     vocab: true
@@ -156,14 +164,12 @@
       en: agent
     - term: प्रथमा
       en: nominative
-  - form: तच्च
+  - form: तत्
     lemma: तद्
     gloss: and it
     notes:
     - term: सर्वनाम
       en: pronoun
-    - term: सन्धि
-      en: तत् + च — त् becomes च् before a च्-class stop
     - cite: 8.4.40
       role: स्तोः श्चुना श्चुः — श्चुत्व assimilates the dental to the palatal → तच्च
     - term: कर्मन्
@@ -188,6 +194,12 @@
       en: द्वितीया
     - term: एकवचन
       en: एकवचन
+  - form: च
+    lemma: च
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: शृणोति
     lemma: श्रु
     gloss: listens to
@@ -206,12 +218,10 @@
       en: relation
     - term: षष्ठी
       en: genitive
-  - form: वाग्
+  - form: वाक्
     lemma: वाच्
     gloss: speech
     notes:
-    - term: सन्धि
-      en: वाक् + अत्र — the final क् voices to ग् before a vowel
     - cite: 8.2.39
       role: झलां जशोऽन्ते — a final stop takes its voiced counterpart → वाग्
     - term: प्रथमा
@@ -297,7 +307,7 @@
     notes:
     - term: लट्
       en: present, plural, with प्रति (आत्मनेपद)
-  - form: संस्कृतं
+  - form: संस्कृतम्
     lemma: संस्कृत
     gloss: refined
     notes:
@@ -305,7 +315,7 @@
       en: सम् + कृत — the nasal takes the point of the following स्क्
     - cite: 8.4.58
       role: अनुस्वारस्य ययि परसवर्णः — the nasal goes homorganic → संस्कृतम्
-  - form: वचनं
+  - form: वचनम्
     lemma: वचन
     gloss: speech
     notes:
@@ -329,7 +339,7 @@
       en: agent
     - term: एकवचन
       en: एकवचन
-  - form: तेषां
+  - form: तेषाम्
     lemma: तद्
     gloss: to them
     notes:
@@ -368,18 +378,22 @@
       en: agent
     - term: कर्तृ
       en: agent
-  - form: नमस्ते
+  - form: नमः
     lemma: नमस्
-    gloss: homage to you
+    gloss: homage
     notes:
-    - term: सन्धि
-      en: नमः + ते — the visarga becomes स् before त्
+    - term: अव्यय
+      en: indeclinable — governs the चतुर्थी (2.3.16)
+  - form: ते
+    lemma: युष्मद्
+    gloss: to you
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्प्रदान
+      en: सम्प्रदान
     - term: चतुर्थी
-      en: ते is dative — नमस् governs the चतुर्थी
-    - term: एकवचन
-      en: एकवचन
-    - term: एकवचन
-      en: एकवचन
+      en: चतुर्थी
     - term: एकवचन
       en: एकवचन
   - form: गुरो

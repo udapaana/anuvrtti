@@ -53,7 +53,8 @@
   // and the sūtras follow. The always-open list the rail used to show gave the
   // answer away before the reader had tried.
   // Two INDEPENDENT axes: `mode` is how much gloss shows (recall vs glossed);
-  // `padaccheda` is whether words are split at their sandhi joins. They compose —
+  // `padaccheda` is whether words are split at their sandhi joins — off, a
+  // reading from tier 80 up shows its saṃhitā; on, its padas. They compose —
   // you can have cheda WITH glosses — so padaccheda is its own toggle, not a
   // third mutually-exclusive mode.
   type Mode = 'recall' | 'gloss';
@@ -381,8 +382,33 @@
 
     const tokens = tokensOf(r);
 
+    /*
+      The saṃhitā — the sentence as it is written, sandhi applied — built by
+      the corpus build from the padas (scripts/lib/sandhi.ts). Each written
+      word knows the pada tokens it came from, so selecting inside सोऽपि still
+      lands on सः or अपि. Shown from the sandhi chapter (tier 80) up; below it
+      the reader has not met sandhi, and sees the padas.
+    */
+    const SANDHI_TIER = 80;
+    const written =
+      r.samhita && Number(r.segment ?? 0) >= SANDHI_TIER
+        ? r.samhita.map((g: any) => {
+            const parts = g.from.map((i: number) => tokens[i]).filter(Boolean);
+            const word = parts.find((t: any) => t.isWord);
+            return {
+              text: g.text,
+              from: g.from,
+              ti: word ? word.ti : g.from[0],
+              isWord: !!word,
+              focal: parts.some((t: any) => t.focal),
+              gloss: parts.filter((t: any) => t.isWord).map((t: any) => t.gloss).filter(Boolean).join(' + ')
+            };
+          })
+        : null;
+
     return {
       ex: true,
+      written,
       id,
       chId: r.chapter,
       indexLabel: String(n).padStart(2, '0'),
@@ -2156,6 +2182,25 @@
                  so no gloss can set the column width and pull the line apart;
                  word-for-word glossing is the rail's job now. -->
             <div class="tokens">
+              {#if !padaccheda && row.written}
+                {#each row.written as w}
+                  {#if w.isWord}
+                    <span
+                      class="token"
+                      class:hot={w.from.some((i: number) => hl(row.id, i))}
+                      class:focal={w.focal}
+                      class:sel={sel?.id === row.id && w.from.includes(sel?.ti)}
+                      role="presentation"
+                      title={w.gloss}
+                      onmouseenter={() => enterWord(row.id, w.ti)}
+                      onmouseleave={leaveWord}
+                      onclick={() => selectToken(row.id, w.ti)}
+                    ><Sanskrit text={w.text} source="devanagari" /></span>
+                  {:else}
+                    <span class="token punct"><Sanskrit text={w.text} source="devanagari" /></span>
+                  {/if}
+                {/each}
+              {:else}
               {#each row.tokens as tok}
                 {#if tok.isWord}
                   <span
@@ -2184,6 +2229,7 @@
                   <span class="token punct"><Sanskrit text={tok.text} source="devanagari" /></span>
                 {/if}
               {/each}
+              {/if}
             </div>
 
             <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>

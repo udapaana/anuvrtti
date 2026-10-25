@@ -3,13 +3,15 @@
   segment: 310
   source:
     text: हितोपदेश
-    ref: "Hit_0.9 — the four books, drawn from the Pañcatantra"
-    curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, ||Hit_0.9||)"
-  sentence: मित्रलाभः सुहृद्भेदो विग्रहः सन्धिर् एव च। पञ्चतन्त्रात् तथान्यस्माद् ग्रन्थाद् आकृष्य लिख्यते॥
-  translation: "Winning friends, splitting friends, war, and peace — [these four]; drawn from the Pañcatantra and from another work besides, it is written."
-  teaches: |
-    the book naming its own four parts. लाभः and भेदः are घञ् action-nouns;
+    ref: Hit_0.9 — the four books, drawn from the Pañcatantra
+    curated: the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, ||Hit_0.9||)
+  sentence: मित्रलाभः सुहृद्भेदः विग्रहः सन्धिः एव च। पञ्चतन्त्रात् तथा अन्यस्मात् ग्रन्थात् आकृष्य लिख्यते॥
+  translation: Winning friends, splitting friends, war, and peace — [these four]; drawn from the Pañcatantra and from another work besides, it is written.
+  teaches: 'the book naming its own four parts. लाभः and भेदः are घञ् action-nouns;
+
     पञ्चतन्त्रात् / ग्रन्थात् are the ablative source (पञ्चमी), and लिख्यते is passive.
+
+    '
   words:
   - form: मित्रलाभः
     lemma: मित्रलाभ
@@ -20,14 +22,14 @@
       en: compound
     - term: तत्पुरुष
       en: determinative — मित्रस्य लाभः, "the gaining of a friend"; लाभः is the head
-    - text: 'लाभ = लभ् + घञ् — the action-noun "gaining"'
-    - cite: '3.3.18'
+    - text: लाभ = लभ् + घञ् — the action-noun "gaining"
+    - cite: 3.3.18
       role: भावे घञ् — घञ् forms the action-noun → लभ् + घञ् → लाभ ("gaining")
     - term: कर्तृ
       en: subject
     - term: प्रथमा
       en: nominative
-  - form: सुहृद्भेदो
+  - form: सुहृद्भेदः
     lemma: सुहृद्भेद
     gloss: splitting of friends (Book II)
     vocab: true
@@ -36,8 +38,8 @@
       en: compound
     - term: तत्पुरुष
       en: determinative — सुहृदः भेदः, "the estranging of a friend"; भेदः is the head
-    - text: 'भेद = भिद् + घञ् — the action-noun "splitting"; सुहृद्भेदः → सुहृद्भेदो (अः + व → ओ)'
-    - cite: '3.3.18'
+    - text: भेद = भिद् + घञ् — the action-noun "splitting"; सुहृद्भेदः → सुहृद्भेदो (अः + व → ओ)
+    - cite: 3.3.18
       role: भावे घञ् — घञ् forms the action-noun → भिद् + घञ् → भेद ("splitting")
     - term: कर्तृ
       en: subject
@@ -52,7 +54,7 @@
       en: subject
     - term: प्रथमा
       en: nominative
-  - form: सन्धिर्
+  - form: सन्धिः
     lemma: सन्धि
     gloss: peace (Book IV)
     vocab: true
@@ -61,7 +63,7 @@
       en: subject
     - term: प्रथमा
       en: nominative
-    - text: 'सन्धिः + एव → सन्धिर् एव (visarga → र् before a vowel)'
+    - text: सन्धिः + एव → सन्धिर् एव (visarga → र् before a vowel)
   - form: एव
     lemma: एव
     gloss: indeed
@@ -81,11 +83,17 @@
     notes:
     - term: अपादान
       en: source — "drawn from ___"
-    - cite: '2.3.28'
+    - cite: 2.3.28
       role: अपादाने पञ्चमी — the source of an action takes पञ्चमी → पञ्चतन्त्रात्
     - term: पञ्चमी
       en: ablative
-  - form: तथान्यस्माद्
+  - form: तथा
+    lemma: तथा
+    gloss: and also
+    notes:
+    - term: अव्यय
+      en: indeclinable — connective
+  - form: अन्यस्मात्
     lemma: अन्य
     gloss: and likewise from another
     notes:
@@ -95,8 +103,7 @@
       en: source — "from another (work)"
     - term: पञ्चमी
       en: ablative
-    - text: 'तथा + अन्यस्मात् → तथान्यस्माद् (आ + अ → आ); तथा = "likewise," अन्यस्मात् → अन्यस्माद् before ग्'
-  - form: ग्रन्थाद्
+  - form: ग्रन्थात्
     lemma: ग्रन्थ
     gloss: from a work
     vocab: true
@@ -127,12 +134,17 @@
       en: present
     - term: कर्मणि
       en: passive — the work is the thing written; no expressed agent
-    - cite: '3.4.69'
+    - cite: 3.4.69
       role: लः कर्मणि च — the ल-affix (here लट्) denotes the कर्मन् → passive लिख्यते
   vyakhya: मित्रलाभः सुहृद्भेदः विग्रहः सन्धिः च — चत्वारि तन्त्राणि। पञ्चतन्त्रात् ग्रन्थात् च आकृष्य इदम् लिख्यते।
-  vyakhya_en: |
-    The book names its own four parts — मित्रलाभः "winning friends," सुहृद्भेदः
+  vyakhya_en: 'The book names its own four parts — मित्रलाभः "winning friends," सुहृद्भेदः
+
     "splitting friends," विग्रहः "war," सन्धिः "peace." Two of them are घञ्
+
     action-nouns: लभ् → लाभ, भिद् → भेद (3.3.18). And it says where it comes from:
+
     पञ्चतन्त्रात्, ग्रन्थात् — the ablative of source (पञ्चमी) — having drawn (आकृष्य,
+
     the ल्यप् gerund) from them, it लिख्यते, "is written," the passive of लिख्.
+
+    '

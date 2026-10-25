@@ -2,26 +2,28 @@
   kind: sangraha
   segment: 85
   order: 1
-  sentence: रामश्च लक्ष्मणश्च गुरुणा सह वनमगच्छताम्। तत्रर्षिरुवाच रामम् — नमस्ते वीर। त्वम् धर्मं रक्षसि; सोऽपि लक्ष्मणः धर्मं रक्षति। रात्रौ तौ स्वपितः; तयोर्गुरुराच्छादयति वस्त्रेण। प्रातः पुनर्ग्राममागच्छतो नरौ।
+  sentence: रामः च लक्ष्मणः च गुरुणा सह वनम् अगच्छताम्। तत्र ऋषिः उवाच रामम् — नमः ते वीर। त्वम् धर्मम् रक्षसि; सः अपि लक्ष्मणः धर्मम् रक्षति। रात्रौ तौ स्वपितः; तयोः गुरुः आच्छादयति वस्त्रेण। प्रातः पुनः ग्रामम् आगच्छतः नरौ।
   translation: 'Rāma and Lakṣmaṇa went to the forest with their teacher. There a sage said to Rāma: "Homage to you, hero. You protect dharma; he too — Lakṣmaṇa — protects dharma." At night the two sleep; their teacher covers them with a cloth. In the morning the two men come back to the village again.'
   teaches: 'The two princes in the forest, told in joined words: रामश्च (श्चुत्व), तत्रर्षिः (सवर्णदीर्घ), सोऽपि, तयोर्गुरुराच्छादयति (the तुक् before छ), पुनर्ग्राममागच्छतो (the visarga sandhis).
 
     '
   words:
-  - form: रामश्च
+  - form: रामः
     lemma: राम
     gloss: and Rāma
     notes:
-    - term: सन्धि
-      en: रामः + च — the visarga becomes श् before a च्-class stop
     - cite: 8.4.40
       role: स्तोः श्चुना श्चुः — श्चुत्व applied to the visarga-sibilant → रामश्च
-  - form: लक्ष्मणश्च
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: लक्ष्मणः
     lemma: लक्ष्मण
     gloss: and Lakṣmaṇa
     notes:
-    - term: सन्धि
-      en: लक्ष्मणः + च — the same join, immediately repeated
     - term: प्रथमा
       en: nominative
     - term: एकवचन
@@ -36,6 +38,12 @@
       en: एकवचन
     - term: कर्तृ
       en: agent
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: गुरुणा
     lemma: गुरु
     gloss: their teacher
@@ -54,12 +62,10 @@
     notes:
     - term: अव्यय
       en: indeclinable — governs the तृतीया
-  - form: वनमगच्छताम्
+  - form: वनम्
     lemma: वन
     gloss: went to the forest
     notes:
-    - term: सन्धि
-      en: वनम् + अगच्छताम् — the म् simply carries onto the following vowel
     - term: द्वितीया
       en: वनम् is कर्मन्, goal of motion; अगच्छताम् is dual past (लङ्)
     - term: एकवचन
@@ -68,26 +74,54 @@
       en: एकवचन
     - term: एकवचन
       en: एकवचन
-  - form: तत्रर्षिरुवाच
+  - form: अगच्छताम्
+    lemma: गम्
+    gloss: went
+    notes:
+    - term: लङ्
+      en: लङ्
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: द्विवचन
+      en: द्विवचन
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: indeclinable — place
+  - form: ऋषिः
     lemma: ऋषि
     gloss: there a sage said
     notes:
-    - term: सन्धि
-      en: तत्र + ऋषिः + उवाच — अ + ऋ merge, then the visarga of ऋषिः → र्
     - cite: 6.1.101
       role: अकः सवर्णे दीर्घः — तत्र + ऋषिः gives तत्रर्षिः
-  - form: नमस्ते
-    lemma: नमस्
-    gloss: homage to you
+  - form: उवाच
+    lemma: वच्
+    gloss: said
     notes:
-    - term: सन्धि
-      en: नमः + ते — the visarga becomes स् before a त्-class stop
+    - term: लिट्
+      en: लिट्
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: एकवचन
+      en: एकवचन
+  - form: नमः
+    lemma: नमस्
+    gloss: homage
+    notes:
+    - term: अव्यय
+      en: indeclinable — governs the चतुर्थी (2.3.16)
+  - form: ते
+    lemma: युष्मद्
+    gloss: to you
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्प्रदान
+      en: सम्प्रदान
     - term: चतुर्थी
-      en: ते is dative — नमस् governs the चतुर्थी
-    - term: एकवचन
-      en: एकवचन
-    - term: एकवचन
-      en: एकवचन
+      en: चतुर्थी
     - term: एकवचन
       en: एकवचन
   - form: वीर
@@ -119,7 +153,7 @@
       en: agent
     - term: प्रथमा
       en: nominative
-  - form: धर्मं
+  - form: धर्मम्
     lemma: धर्म
     gloss: dharma
     notes:
@@ -139,14 +173,12 @@
     notes:
     - term: लट्
       en: present, 2nd person
-  - form: सोऽपि
+  - form: सः
     lemma: तद्
     gloss: he too
     notes:
     - term: सर्वनाम
       en: pronoun
-    - term: सन्धि
-      en: सः + अपि — visarga → ओ, and the अ of अपि elides, marked by ऽ
     - cite: 6.1.113
       role: अतो रोरप्लुतादप्लुते — रु → उ, then गुण gives सो, and अपि loses its अ
     - term: प्रथमा
@@ -167,6 +199,12 @@
       en: एकवचन
     - term: कर्तृ
       en: agent
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: लक्ष्मणः
     lemma: लक्ष्मण
     gloss: Lakṣmaṇa
@@ -216,14 +254,36 @@
     notes:
     - term: लट्
       en: present (अदादि), dual
-  - form: तयोर्गुरुराच्छादयति
+  - form: तयोः
+    lemma: तद्
+    gloss: their
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्बन्ध
+      en: सम्बन्ध
+    - term: षष्ठी
+      en: षष्ठी
+    - term: द्विवचन
+      en: द्विवचन
+  - form: गुरुः
     lemma: गुरु
     gloss: their teacher covers
     notes:
-    - term: सन्धि
-      en: तयोः + गुरुः + आच्छादयति — two visargas → र्, then आ + छ doubles the छ
     - cite: 6.1.73
       role: छे च — a short vowel before छ takes the तुक् augment → आच्छादयति
+  - form: आच्छादयति
+    lemma: छद्
+    gloss: covers
+    notes:
+    - term: लट्
+      en: लट्
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: एकवचन
+      en: एकवचन
+    - term: णिच्
+      en: causative
   - form: वस्त्रेण
     lemma: वस्त्र
     gloss: with a cloth
@@ -242,14 +302,28 @@
     notes:
     - term: अव्यय
       en: indeclinable — time
-  - form: पुनर्ग्राममागच्छतो
+  - form: पुनः
+    lemma: पुनर्
+    gloss: again
+    notes:
+    - term: अव्यय
+      en: indeclinable — repetition
+  - form: ग्रामम्
     lemma: ग्राम
     gloss: come back to the village again
     notes:
-    - term: सन्धि
-      en: पुनः + ग्रामम् + आगच्छतः — visarga → र्, then final visarga → ओ before न्
     - cite: 8.3.15
       role: खरवसानयोर्विसर्जनीयः — the रु/visarga alternation running twice in one word-group
+  - form: आगच्छतः
+    lemma: गम्
+    gloss: come back
+    notes:
+    - term: लट्
+      en: लट्
+    - term: प्रथमपुरुष
+      en: प्रथमपुरुष
+    - term: द्विवचन
+      en: द्विवचन
   - form: नरौ
     lemma: नर
     gloss: the two men

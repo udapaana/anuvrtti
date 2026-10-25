@@ -14,6 +14,7 @@ import * as path from 'path';
 import { parse as parseYaml } from 'yaml';
 import { parseGrid, isRectangular } from '../src/lib/reader/paradigm';
 import { deaccent } from '../src/lib/usage/normalize';
+import { samhitaOf } from './lib/sandhi';
 import { WORD_TYPES, KARAKA, SENSE_ROLE, SANADI, typeOf } from '../src/lib/usage/schema';
 import {
   SARVANAMA_BHEDA, SANKHYA_BHEDA, KRT_PRAYOGA, TADDHITA_ARTHA, AVYAYA_BHEDA,
@@ -656,8 +657,31 @@ function main() {
   let agreedSubject = 0;
   let impliedWins = 0;
   let agreedVacanaFromVerb = 0;
+  let samhitaBuilt = 0;
   for (const r of flat) {
     const ws = r.words ?? [];
+
+    /*
+      The saṃhitā — the sentence as Sanskrit is written, with its sandhi.
+      Readings are authored as padas; this joins them with vidyut-sandhi (see
+      scripts/lib/sandhi.ts) and keeps, for each written word, the pada tokens
+      it came from. Kept only where it differs from the padas. Vedic text is
+      left alone: its accents and its sandhi are not the classical joiner's.
+    */
+    delete r.samhita;
+    if (r.sentence && !/rigveda/.test(r.chapter ?? '')) {
+      const anus = (x: string) => x.replace(/ं$/, 'म्');
+      let cursor = 0;
+      const sam = samhitaOf(String(r.sentence), (clean) => {
+        let w: any = null;
+        for (let k = cursor; k < ws.length; k++) if (anus(ws[k].form) === anus(clean)) { w = ws[k]; cursor = k + 1; break; }
+        w ??= ws.find((x: any) => anus(x.form) === anus(clean));
+        return w ? { lemma: w.lemma, vocative: (w.notes ?? []).some((n: any) => n.term === 'सम्बोधन') } : null;
+      });
+      const padas = String(r.sentence).replace(/॥/g, ' ॥ ').replace(/।/g, ' । ').split(/\s+/).filter(Boolean);
+      if (sam.map((x) => x.text).join(' ') !== padas.join(' ')) { r.samhita = sam; samhitaBuilt++; }
+    }
+
     /*
       Which words a कर्मप्रवचनीय puts in a case. The edge runs FROM the particle
       TO the word it governs, so the governed word cannot see it on itself —
@@ -677,8 +701,18 @@ function main() {
       delete w.quiz;
 
 
+      /*
+        A split is accepted only when vidyut-sandhi joins it back to the word.
+        Notes describe sandhi in context too — वनम् + हसति for वनं, राम + इन
+        for the णत्व inside रामेण — and those are explanations, not splits:
+        shown in padaccheda they would put a word that is not there.
+      */
       const split = sandhiSplitOf(w);
-      if (split) w.split = split;
+      const rejoins = (parts: string[]) => {
+        const norm = (x: string) => deaccent(x).replace(/ऽ/g, '').replace(/\s+/g, '');
+        return parts[0] !== w.form && norm(samhitaOf(parts.join(' '), () => null).map((x) => x.text).join(' ')) === norm(w.form);
+      };
+      if (split && rejoins(split)) w.split = split;
       else delete w.split;
     });
 
@@ -1039,6 +1073,7 @@ function main() {
   if (agreedSubject) console.log(`  ${agreedSubject} प्रथमा कारक taken from the verb the word agrees with (${impliedWins} clause(s) with अस्ति understood)`);
   if (agreedKaraka) console.log(`  ${agreedKaraka} कारक taken from the noun a विशेषण agrees with`);
   if (agreedVacanaFromVerb) console.log(`  ${agreedVacanaFromVerb} वचन taken from the verb a subject agrees with`);
+  console.log(`  ${samhitaBuilt} reading(s) given their saṃhitā by vidyut-sandhi`);
   console.log(
     `Wrote ${flat.length} readings — ${chapters.length} topical chapters + sequence view → ${path.relative(process.cwd(), OUTPUT)}`
   );
