@@ -64,9 +64,17 @@ rustup target add wasm32-unknown-unknown >/dev/null 2>&1 || true
 cp "$SRC/vidyut-prakriya/www/static/vidyut-prakriya.js" "$OUT/"
 sed -i 's|from "./wasm/vidyut_prakriya.js"|from "./vidyut_prakriya.js"|' "$OUT/vidyut-prakriya.js"
 
+# vidyut-sandhi, at the same pin: the external-sandhi joiner the corpus checks
+# its saṃhitā text against (a reading's words, joined, must give its sentence).
+# wasm-opt is skipped: it is a size optimisation, and its binary is fetched from
+# a host this environment cannot always reach.
+SOUT="$ROOT/static/wasm/vidyut-sandhi"
+( cd "$SRC/vidyut-sandhi" && wasm-pack build --target web --no-opt --out-dir "$SOUT" )
+rm -f "$SOUT/package.json" "$SOUT/.gitignore" "$SOUT/README.md" "$SOUT/LICENSE"* "$SOUT/"*.d.ts
+
 # wasm-pack leaves package metadata that only matters to npm publishing, and
 # committing it invites someone to think this directory is a package.
 rm -f "$OUT/package.json" "$OUT/.gitignore" "$OUT/README.md" "$OUT/LICENSE"*
 
-echo "✓ $OUT rebuilt at $REV"
+echo "✓ $OUT and $SOUT rebuilt at $REV"
 echo "  now run: bun run check   (baselines moving IS the review)"
