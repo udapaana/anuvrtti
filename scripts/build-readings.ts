@@ -283,7 +283,14 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
     return td ? TADDHITA_LINGA[td] : undefined;
   })();
   const linga = affixLinga ?? KRT_LINGAS[key] ?? LINGAS[deaccent(word.lemma)] ?? FORM_LINGAS[key];
-  if (linga && ![...terms].some((t) => LINGA_SET.has(t))) out['लिङ्ग'] = linga;
+  /*
+    A finite verb has no gender. LINGAS is keyed on the lemma, and a root's name
+    can also be a noun's: शी (lie) took the feminine of the ई-stem, so अधिशेते
+    showed स्त्रीलिङ्ग in the rail. A participle keeps its gender — it is a noun.
+  */
+  const finite = ([...terms].some((t) => LAKARA_SET.has(t)) || !!TIN[key])
+    && !terms.has('कृदन्त') && ![...terms].some((t) => KRT_SET.has(t));
+  if (linga && !finite && ![...terms].some((t) => LINGA_SET.has(t))) out['लिङ्ग'] = linga;
 
   // गण and विकरण are fixed properties of the root, keyed on the lemma. A verb
   // whose root is in the dhātu table gets both without the author writing them;
@@ -885,7 +892,8 @@ function main() {
               // A neuter's द्वितीया is its प्रथमा too; the de-duplicated word list
               // gives a form ONE tag, so जलम् tagged द्वितीया in one clause is
               // still the subject of जलम् आसीत् in another.
-              if (t.has('द्वितीया') && lingaOf(x) === 'नपुंसकलिङ्ग') return true;
+              // Not one already placed as कर्मन् — सः तत् चकार: तत् is the object.
+              if (t.has('द्वितीया') && lingaOf(x) === 'नपुंसकलिङ्ग') return karakaOf(x) !== 'कर्मन्';
               return !VIBHAKTI_VALS.some((v) => t.has(v));
             });
             const agree = [...noms, ...unknownCase].filter(agrees);

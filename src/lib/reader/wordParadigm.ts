@@ -159,7 +159,15 @@ export function resolve(
   // noun: the lemma when the corpus records one, otherwise the stem whose
   // declension contains this form.
   const stem = deaccent(lemma) || stemForForm(data as Indexed, bare, false) || '';
-  const para = data.nounParadigms[stem];
+  // a pronoun or ungendered stem is keyed by the gender this word is in
+  const lg = ['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग'].find((x) => terms.includes(x));
+  // …and where the form leaves the gender open (तस्य is masculine or neuter),
+  // the first gendered table that holds the form — the cell is the same either way.
+  const para = data.nounParadigms[stem]
+    ?? (lg ? data.nounParadigms[stem + '·' + lg] : undefined)
+    ?? ['पुंलिङ्ग', 'नपुंसकलिङ्ग', 'स्त्रीलिङ्ग']
+      .map((x) => data.nounParadigms[stem + '·' + x])
+      .find((t) => t && Object.values(t).some((f) => deaccent(f) === bare));
   if (!para) return null;
   const vib = VIBHAKTI.findIndex((x) => terms.includes(x));
   // वचन defaults to एकवचन (the unmarked number) when not authored.

@@ -98,6 +98,7 @@ const VIB_DEV: Record<string, string> = {
   Prathama: 'प्रथमा', Dvitiya: 'द्वितीया', Trtiya: 'तृतीया', Caturthi: 'चतुर्थी',
   Panchami: 'पञ्चमी', Sasthi: 'षष्ठी', Saptami: 'सप्तमी', Sambodhana: 'सम्बोधन'
 };
+const VIB_DEV_SET = new Set(['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन']);
 const LINGA_DEV: Record<string, string> = {
   Pum: 'पुंलिङ्ग', Stri: 'स्त्रीलिङ्ग', Napumsaka: 'नपुंसकलिङ्ग'
 };
@@ -793,7 +794,9 @@ async function main() {
 
     for (const [form, slp] of derivable) {
       const all = cellsWithSandhi(stemSlp, slp, stem + '|' + form);
-      if (!linga && !isPronoun) {
+      // A pronoun has no stem gender, but its form usually settles one: सः is
+      // only masculine, सा only feminine. अस्मद्/युष्मद् have none to settle.
+      if (!linga && stem !== 'अस्मद्' && stem !== 'युष्मद्') {
         const { cells: fit } = resolveCells(stem, form, all);
         const lg = new Set(fit.map((c) => c[0]));
         if (lg.size === 1) formLinga[stem + '|' + form] = LINGA_DEV[[...lg][0]];
@@ -1551,6 +1554,37 @@ async function main() {
       if (Object.keys(flat).length) nounParadigms[stem] = flat;
     } catch { /* stem vidyut cannot decline — no table */ }
   }
+  /*
+    A stem with no gender of its own still declines in the gender its word is
+    in. Pronouns (तद् 370 times, अस्मद्, यद्, किम्) and stems the corpus leaves
+    ungendered (मरुत्, बुद्धिमत्) had no table at all — a quarter of the corpus's
+    nouns. Keyed stem·लिङ्ग, by the gender each occurrence carries; अस्मद् and
+    युष्मद्, which have none, under the bare stem.
+  */
+  const LINGA_EN = Object.fromEntries(Object.entries(LINGA_DEV).map(([e, d]) => [d, e]));
+  for (const r of corpus) for (const w of r.words ?? []) {
+    const stem = deaccent(w.lemma ?? '');
+    if (!stem || nounParadigms[stem]) continue;
+    const terms = new Set<string>([...(w.notes ?? []).map((n: any) => n.term), ...Object.values(w.derived ?? {}) as string[]]);
+    if (![...terms].some((t) => VIB_DEV_SET.has(t))) continue;
+    const personal = stem === 'अस्मद्' || stem === 'युष्मद्';
+    const lgDev = [...terms].find((t) => LINGA_EN[t]);
+    if (!personal && !lgDev) continue;
+    const key = personal ? stem : stem + '·' + lgDev;
+    if (nounParadigms[key]) continue;
+    const slp = toSlp1(stem);
+    if (!slp) continue;
+    const flat: Record<string, string> = {};
+    for (const vb of VIBHAKTIS)
+      for (const vc of VACANAS) {
+        try {
+          const res = v.deriveSubantas({ pratipadika: { basic: slp }, linga: personal ? 'Pum' : LINGA_EN[lgDev!], vibhakti: vb, vacana: vc });
+          const f = res[0]?.text as string | undefined;
+          if (f) flat[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = toDeva(f);
+        } catch { /* cell not derivable */ }
+      }
+    if (Object.keys(flat).length) nounParadigms[key] = flat;
+  }
 
   // root → लकार → its conjugation (पुरुष|वचन → form), so a verb-word shows its
   // OWN table in its OWN tense with its cell lit. Only लट् was shipped, and a
@@ -1558,7 +1592,14 @@ async function main() {
   // person and number in the wrong tense. Every लकार the corpus uses for the
   // root is derived, plus लट् as the reference table.
   const verbParadigms: Record<string, Record<string, Record<string, string>>> = {};
-  for (const [root, spec] of Object.entries(DHATU)) {
+  // The hand table, then every root the तिङन्त pass resolved against the
+  // dhātupāṭha by derivation — 30 roots had tables; पूज्, यम्, हस् … had none.
+  // The table is the bare root's: a preverb changes the word, not the grid.
+  const tableRoots: [string, [string, string]][] = [
+    ...Object.entries(DHATU),
+    ...[...resolvedRoot].filter(([r]) => !DHATU[r]).map(([r, x]) => [r, [x[0], x[1]]] as [string, [string, string]])
+  ];
+  for (const [root, spec] of tableRoots) {
     const laks = new Set(['लट्', ...(tinByRoot.get(root)?.keys() ?? [])]);
     const byLak: Record<string, Record<string, string>> = {};
     for (const lak of laks) {
