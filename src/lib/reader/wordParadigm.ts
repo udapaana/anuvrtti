@@ -148,7 +148,8 @@ export function resolve(
     if (!byLak) return null;
     // the word's own लकार; लट् when it is untagged or not derived
     const lak = LAKARA.find((x) => terms.includes(x) && byLak[x]) ?? 'लट्';
-    const para = byLak[lak];
+    // the word's own पद: यजते lights the आत्मनेपद table, not यजति's
+    const para = (terms.includes('आत्मनेपद') ? byLak[lak + '·आत्मनेपद'] : undefined) ?? byLak[lak];
     if (!para) return null;
     const p = PURUSHA.findIndex((x) => terms.includes(x));
     const v = VACANA.findIndex((x) => terms.includes(x));

@@ -177,7 +177,10 @@ export function questionsFor(
   const pur = valueOf({ key: 'पुरुष', pool: PURUSHA });
   // a verb's table is its own लकार's — the present table cannot place अगच्छः
   const lak = terms.find((t) => usage?.verbParadigms?.[lemma]?.[t]) ?? derived['लकार'] ?? '';
-  const verbPara = lemma && lak ? usage?.verbParadigms?.[lemma]?.[lak] : undefined;
+  const atmane = terms.includes('आत्मनेपद') || derived['पद'] === 'आत्मनेपद';
+  const verbPara = lemma && lak
+    ? (atmane ? usage?.verbParadigms?.[lemma]?.[lak + '·आत्मनेपद'] : undefined) ?? usage?.verbParadigms?.[lemma]?.[lak]
+    : undefined;
 
   if (lemma && vib && vac && usage?.nounParadigms?.[lemma]) {
     out.push({

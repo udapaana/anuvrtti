@@ -1569,21 +1569,24 @@ async function main() {
     if (![...terms].some((t) => VIB_DEV_SET.has(t))) continue;
     const personal = stem === 'अस्मद्' || stem === 'युष्मद्';
     const lgDev = [...terms].find((t) => LINGA_EN[t]);
-    if (!personal && !lgDev) continue;
-    const key = personal ? stem : stem + '·' + lgDev;
-    if (nounParadigms[key]) continue;
-    const slp = toSlp1(stem);
-    if (!slp) continue;
-    const flat: Record<string, string> = {};
-    for (const vb of VIBHAKTIS)
-      for (const vc of VACANAS) {
-        try {
-          const res = v.deriveSubantas({ pratipadika: { basic: slp }, linga: personal ? 'Pum' : LINGA_EN[lgDev!], vibhakti: vb, vacana: vc });
-          const f = res[0]?.text as string | undefined;
-          if (f) flat[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = toDeva(f);
-        } catch { /* cell not derivable */ }
-      }
-    if (Object.keys(flat).length) nounParadigms[key] = flat;
+    // a form that leaves its gender open (तस्य, किम्) gets every gender's table;
+    // the reader picks the one that holds the form
+    for (const lg of personal ? [null] : lgDev ? [lgDev] : Object.keys(LINGA_EN)) {
+      const key = lg ? stem + '·' + lg : stem;
+      if (nounParadigms[key]) continue;
+      const slp = toSlp1(stem);
+      if (!slp) continue;
+      const flat: Record<string, string> = {};
+      for (const vb of VIBHAKTIS)
+        for (const vc of VACANAS) {
+          try {
+            const res = v.deriveSubantas({ pratipadika: { basic: slp }, linga: lg ? LINGA_EN[lg] : 'Pum', vibhakti: vb, vacana: vc });
+            const f = res[0]?.text as string | undefined;
+            if (f) flat[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = toDeva(f);
+          } catch { /* cell not derivable */ }
+        }
+      if (Object.keys(flat).length) nounParadigms[key] = flat;
+    }
   }
 
   // root → लकार → its conjugation (पुरुष|वचन → form), so a verb-word shows its
@@ -1602,22 +1605,34 @@ async function main() {
   for (const [root, spec] of tableRoots) {
     const laks = new Set(['लट्', ...(tinByRoot.get(root)?.keys() ?? [])]);
     const byLak: Record<string, Record<string, string>> = {};
+    /*
+      Each पद is its own table: यजति and यजते are both यज्'s present, and a word
+      in आत्मनेपद lit in the परस्मैपद grid points at a form it is not. The
+      परस्मैपद table is keyed by the लकार alone (or the आत्मनेपद one, for a
+      root that has only that), the आत्मनेपद one also as "लकार·आत्मनेपद".
+    */
     for (const lak of laks) {
       if (!LAK_KEY[lak]) continue;
-      const flat: Record<string, string> = {};
-      for (const pu of PURUSHAS)
-        for (const vc of VACANAS) {
-          try {
-            const res = v.deriveTinantas({
-              dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
-              lakara: LAK_KEY[lak], prayoga: 'Kartari', purusha: pu, vacana: vc, pada: null,
-              skip_at_agama: false
-            });
-            const f = [...new Set(res.map((p: any) => p.text))][0] as string | undefined;
-            if (f) flat[PUR_DEV[pu] + '|' + VAC_DEV[vc]] = toDeva(f);
-          } catch { /* cell not derivable */ }
-        }
-      if (Object.keys(flat).length) byLak[lak] = flat;
+      const tables: Record<string, Record<string, string>> = {};
+      for (const pada of ['Parasmaipada', 'Atmanepada']) {
+        const flat: Record<string, string> = {};
+        for (const pu of PURUSHAS)
+          for (const vc of VACANAS) {
+            try {
+              const res = v.deriveTinantas({
+                dhatu: { aupadeshika: spec[0], gana: spec[1], sanadi: [], prefixes: [] },
+                lakara: LAK_KEY[lak], prayoga: 'Kartari', purusha: pu, vacana: vc, pada,
+                skip_at_agama: false
+              });
+              const f = [...new Set(res.map((p: any) => p.text))][0] as string | undefined;
+              if (f) flat[PUR_DEV[pu] + '|' + VAC_DEV[vc]] = toDeva(f);
+            } catch { /* cell not derivable */ }
+          }
+        if (Object.keys(flat).length) tables[pada] = flat;
+      }
+      const first = tables.Parasmaipada ?? tables.Atmanepada;
+      if (first) byLak[lak] = first;
+      if (tables.Atmanepada) byLak[lak + '·आत्मनेपद'] = tables.Atmanepada;
     }
     if (Object.keys(byLak).length) verbParadigms[root] = byLak;
   }
