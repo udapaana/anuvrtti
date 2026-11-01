@@ -121,6 +121,7 @@
   .head.row {
     font-family: var(--font-deva);
     font-size: 12px;
+    white-space: nowrap;
   }
   .head.on {
     color: var(--accent);
@@ -128,6 +129,9 @@
 
   .cell {
     color: var(--muted);
+    /* a form is one word: never break it (gacchatha / ḥ). A too-wide table
+       scrolls inside .grid instead. */
+    white-space: nowrap;
   }
   .cell.dim {
     color: var(--ghost);
