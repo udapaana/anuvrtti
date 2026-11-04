@@ -2,8 +2,8 @@
   kind: graded
   segment: 284
   order: 4
-  sentence: 'एकदा मुनिः नगरम् आगच्छति। सः तस्मै राज्ञे चतुर्णाम् भ्रातॄणाम् कथाम् आचष्टे।'
-  translation: 'One day a sage comes to the city. He tells that king the story of four brothers.'
+  sentence: 'एकदा मुनिः नगरम् आगच्छति। सः तस्मै राज्ञे चतुर्णाम् भ्रातॄणाम् कथाम् आचष्टे। ते भ्रातरः कलहेन नष्टाः।'
+  translation: 'One day a sage comes to the city. He tells that king the story of four brothers. Those brothers were ruined by quarrelling.'
   teaches: 'आचष्टे "tells" (आ + चक्ष्, अदादि) with ष्टुत्व; णत्व in चतुर्णाम् भ्रातॄणाम्; तस्मै राज्ञे.'
   words:
   - form: एकदा
@@ -103,3 +103,44 @@
       en: 'present (आ + चक्ष्, अदादि, आत्मनेपद)'
     - cite: "8.4.41"
       role: 'ष्टुना ष्टुः — after ष्, the त of the ending becomes ट → आचष्टे'
+  - form: ते
+    lemma: तद्
+    gloss: those
+    notes:
+    - term: सर्वनाम
+      en: pronoun — the four brothers of the sage's tale
+    - term: प्रथमा
+      en: nominative plural masculine
+    - term: बहुवचन
+      en: plural
+    - term: कर्तृ
+      en: subject, with भ्रातरः
+  - form: भ्रातरः
+    lemma: भ्रातृ
+    gloss: brothers
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural — ऋ-stem with गुण, भ्रातृ → भ्रातरः
+  - form: कलहेन
+    lemma: कलह
+    gloss: by quarrelling
+    notes:
+    - term: हेतु
+      en: cause — what ruined them
+    - term: तृतीया
+      en: instrumental of cause
+  - form: नष्टाः
+    lemma: नश्
+    gloss: were ruined
+    notes:
+    - term: कृदन्त
+      en: past participle (क्त) of नश् "perish" — no finite verb needed
+    - term: विशेषण
+      en: predicate of भ्रातरः
+    - term: प्रथमा
+      en: nominative plural
+    rel:
+    - kind: विशेषण
+      to: 12

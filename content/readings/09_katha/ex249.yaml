@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "the king's five sons — our own telling, in numbers"
     curated: our simple Sanskrit; not from any single source
-  sentence: राज्ञः पञ्च पुत्राः आसन्। प्रथमः शूरः आसीत्। द्वितीयः पण्डितः। तृतीयः धनी। चतुर्थः दाता। पञ्चमः तु सर्वेषु श्रेष्ठः आसीत्।
-  translation: The king had five sons. The first was brave. The second, learned. The third, rich. The fourth, a giver. But the fifth was the best of all.
+  sentence: राज्ञः पञ्च पुत्राः आसन्। प्रथमः शूरः आसीत्। द्वितीयः पण्डितः। तृतीयः धनी। चतुर्थः दाता। पञ्चमः तु विनयी, अतः सर्वेषु श्रेष्ठः आसीत्।
+  translation: The king had five sons. The first was brave. The second, learned. The third, rich. The fourth, a giver. But the fifth was modest, and so he was the best of all.
   teaches: |
     counting — the cardinal पञ्च "five," and the ordinals प्रथम, द्वितीय …
     पञ्चम "first, second … fifth," the पूरण ("filling-the-number") derivatives;
@@ -106,7 +106,7 @@
     - term: संख्या
       en: ordinal "third"
     - term: पूरण
-      en: ordinal sense
+      en: ordinal — त्रि takes तीय with सम्प्रसारण, त्रि → तृ → तृतीय
     - term: कर्तृ
       en: subject
     - term: प्रथमा
@@ -121,6 +121,10 @@
       en: predicate of तृतीयः
     - term: प्रथमा
       en: nominative (इन्-stem → धनी)
+    - term: इनि
+      en: the possessive suffix इनि
+    - term: मतुबर्थ
+      en: "having wealth"
     rel:
     - kind: विशेषण
       to: 9
@@ -131,7 +135,7 @@
     - term: संख्या
       en: ordinal "fourth"
     - term: पूरण
-      en: ordinal sense
+      en: ordinal — चतुर् takes थ (थट्), चतुर् → चतुर्थ
     - term: कर्तृ
       en: subject
     - term: प्रथमा
@@ -173,6 +177,29 @@
     notes:
     - term: अव्यय
       en: contrastive particle
+  - form: विनयी
+    lemma: विनयिन्
+    gloss: modest, well-disciplined
+    notes:
+    - term: तद्धित
+      en: possessive (इनि) — विनय "discipline" → विनयिन्, like धनी above
+    - term: विशेषण
+      en: predicate of पञ्चमः
+    - term: प्रथमा
+      en: nominative (इन्-stem → विनयी)
+    - term: इनि
+      en: the possessive suffix इनि
+    - term: मतुबर्थ
+      en: "having discipline"
+    rel:
+    - kind: विधेय
+      to: 13
+  - form: अतः
+    lemma: अतः
+    gloss: therefore
+    notes:
+    - term: अव्यय
+      en: therefore — his modesty is why he is best
   - form: सर्वेषु
     lemma: सर्व
     gloss: among all

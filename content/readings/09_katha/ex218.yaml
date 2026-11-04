@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "the generous king — our own telling"
     curated: our simple Sanskrit; not from any single source
-  sentence: राजा धनवान् शूरः च आसीत्। सः दूतम् धनम् आनाययत्, ब्राह्मणेभ्यः च तत् अददात्। एवम् सः महान् दाता अभवत्। तस्य शूरत्वम् सर्वे अगायन्। राजा तत् श्रुत्वा अहसत्, किन्तु गर्वम् न अकरोत्।
-  translation: The king was wealthy and brave. He had a messenger bring wealth, and gave it to the brahmins. Thus he became a great giver. All sang of his bravery. The king, having heard that, laughed, but felt no pride.
+  sentence: राजा धनवान् शूरः च आसीत्। सः दूतम् धनम् आनाययत्, ब्राह्मणेभ्यः च तत् अददात्। एवम् सः महान् दाता अभवत्। तस्य दानम् शूरत्वम् च सर्वे अगायन्। राजा तत् श्रुत्वा अस्मयत, किन्तु गर्वम् न अकरोत्।
+  translation: The king was wealthy and brave. He had a messenger bring wealth, and gave it to the brahmins. Thus he became a great giver. All sang of his giving and his bravery. The king, having heard that, smiled, but felt no pride.
   teaches: |
     one causative (आनाययत्, "had brought"), one agent-noun (दाता), one abstract
     (शूरत्वम्, "bravery"), one possessive (धनवान्), one gerund (श्रुत्वा) — four
@@ -72,6 +72,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: दूतम्
     lemma: दूत
     gloss: the messenger
@@ -177,6 +179,14 @@
       en: possession
     - term: षष्ठी
       en: genitive
+  - form: दानम्
+    lemma: दान
+    gloss: giving
+    notes:
+    - term: कर्मन्
+      en: object of the singing
+    - term: द्वितीया
+      en: accusative — neuter, same as nominative
   - form: शूरत्वम्
     lemma: शूरत्व
     gloss: bravery
@@ -192,6 +202,12 @@
       en: object of the singing
     - term: द्वितीया
       en: accusative — -त्व abstracts are neuter
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — joins दानम् and शूरत्वम्
   - form: सर्वे
     lemma: सर्व
     gloss: all
@@ -229,12 +245,14 @@
       role: क्त्वातोसुन्कसुनः — a क्त्वा-form is अव्यय, taking no endings → श्रुत्वा
     - term: अव्यय
       en: indeclinable
-  - form: अहसत्
-    lemma: हस्
-    gloss: laughed
+  - form: अस्मयत
+    lemma: स्मि
+    gloss: smiled
     notes:
+    - term: आत्मनेपद
+      en: स्मि is आत्मनेपदी — the ending is त, not त्
     - term: लङ्
-      en: imperfect
+      en: imperfect — augment अ, गुण स्मि → स्मे → स्मय
   - form: किन्तु
     lemma: किन्तु
     gloss: but
@@ -247,7 +265,7 @@
     vocab: true
     notes:
     - term: कर्मन्
-      en: object
+      en: object of अकरोत् — गर्वम् कृ, "to make pride," is to be proud
     - term: द्वितीया
       en: accusative
   - form: न

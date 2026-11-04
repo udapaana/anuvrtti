@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "the king's messenger at Gokula — our own telling"
     curated: our simple Sanskrit; not from any single source
-  sentence: एकदा नरपतेः दूतः उपगोकुलम् आगच्छत्। सः राजपुरुषः नद्याः तीरे गोपकृष्णौ अपश्यत्। तौ ग्रामस्य पटुतमौ बालौ आस्ताम्। तयोः दामोदरः ज्येष्ठः महाबुद्धिः च आसीत्। दूतः तौ अवदत् — नरपतिः युवाम् द्रष्टुम् इच्छति इति। बालौ न अबिभीताम्, हसन्तौ च तेन सह अगच्छताम्।
-  translation: Once a king's messenger came to the vicinity of Gokula. That royal servant saw Gopa and Kṛṣṇa on the river's bank. The two were the cleverest boys of the village. Of them Dāmodara was the elder, and of great intelligence. The messenger said to them — "The king wishes to see you two." The boys were not afraid, and laughing they went with him.
+  sentence: एकदा नरपतेः दूतः उपगोकुलम् आगच्छत्। सः राजपुरुषः नद्याः तीरे रामकृष्णौ अपश्यत्। तौ ग्रामस्य पटुतमौ बालौ आस्ताम्। तयोः रामः ज्येष्ठः आसीत्, दामोदरः च महाबुद्धिः। दूतः तौ अवदत् — नरपतिः युवाम् द्रष्टुम् इच्छति इति। बालौ न अबिभीताम्, हसन्तौ च तेन सह अगच्छताम्।
+  translation: Once a king's messenger came to the vicinity of Gokula. That royal servant saw Rāma and Kṛṣṇa on the river's bank. The two were the cleverest boys of the village. Of them Rāma was the elder, and Dāmodara of great intelligence. The messenger said to them — "The king wishes to see you two." The boys were not afraid, and laughing they went with him.
   teaches: |
     the compound types across a Gokula scene: नरपतेः and राजपुरुषः (तत्पुरुष),
     उपगोकुलम् (अव्ययीभाव), गोपकृष्णौ (द्वन्द्व), दामोदरः (बहुव्रीहि), and the
@@ -101,9 +101,9 @@
       en: locus
     - term: सप्तमी
       en: locative
-  - form: गोपकृष्णौ
-    lemma: गोपकृष्ण
-    gloss: Gopa and Kṛṣṇa
+  - form: रामकृष्णौ
+    lemma: रामकृष्ण
+    gloss: Rāma (Balarāma) and Kṛṣṇa
     notes:
     - term: द्वन्द्व
       en: copulative — both members are heads, joined as "and"
@@ -127,6 +127,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative dual
+    - term: कर्तृ
+      en: subject of आस्ताम्
   - form: ग्रामस्य
     lemma: ग्राम
     gloss: of the village
@@ -180,18 +182,12 @@
       en: genitive dual
     - cite: "7.3.104"
       role: "ओसि च — अ → ए before ओस् → देवयोः → तयोः"
-  - form: दामोदरः
-    lemma: दामोदर
-    gloss: Dāmodara (Kṛṣṇa)
+  - form: रामः
+    lemma: राम
+    gloss: Rāma (Balarāma)
     notes:
-    - term: बहुव्रीहि
-      en: possessive — the one whose belly (उदर) has a cord (दाम) around it
-    - cite: '2.2.23'
-      role: शेषो बहुव्रीहिः — the remaining kind of compound is बहुव्रीहि
-    - cite: '2.2.24'
-      role: अनेकमन्यपदार्थे — several words denoting ANOTHER thing (the bearer) form a बहुव्रीहि
     - term: कर्तृ
-      en: agent
+      en: subject of आसीत्
     - term: प्रथमा
       en: nominative
   - form: ज्येष्ठः
@@ -207,12 +203,38 @@
     - cite: '5.3.55'
       role: अतिशायने तमबिष्ठनौ — तमप्/इष्ठन् in the sense of the highest degree
     - term: विशेषण
-      en: qualifying दामोदरः
+      en: qualifying रामः — the elder of the two brothers
     - term: प्रथमा
       en: nominative
     rel:
     - kind: विशेषण
       to: 17
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past
+  - form: दामोदरः
+    lemma: दामोदर
+    gloss: Dāmodara (Kṛṣṇa)
+    notes:
+    - term: बहुव्रीहि
+      en: possessive — the one whose belly (उदर) has a cord (दाम) around it
+    - cite: '2.2.23'
+      role: शेषो बहुव्रीहिः — the remaining kind of compound is बहुव्रीहि
+    - cite: '2.2.24'
+      role: अनेकमन्यपदार्थे — several words denoting ANOTHER thing (the bearer) form a बहुव्रीहि
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: निपात
+      en: enclitic "and" — follows दामोदरः, the first word of its clause
   - form: महाबुद्धिः
     lemma: महाबुद्धि
     gloss: of great intelligence
@@ -228,19 +250,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 17
-  - form: च
-    lemma: च
-    gloss: and
-    notes:
-    - term: निपात
-      en: enclitic particle
-  - form: आसीत्
-    lemma: अस्
-    gloss: was
-    notes:
-    - term: लङ्
-      en: past
+      to: 20
   - form: दूतः
     lemma: दूत
     gloss: the messenger
@@ -343,7 +353,7 @@
       en: nominative dual
     rel:
     - kind: विशेषण
-      to: 30
+      to: 31
   - form: च
     lemma: च
     gloss: and

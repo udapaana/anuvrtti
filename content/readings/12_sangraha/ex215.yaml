@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 135
   order: 1
-  sentence: राजपुरुषः उपकृष्णम् आसीत्। तत्र रामकृष्णौ अपि आगच्छताम्। राजपुरुषः तौ अपश्यत् — रामः श्यामः, कृष्णः पीताम्बरः। सः पीताम्बरम् ननाम, यतः पीताम्बरः एव विष्णुः।
-  translation: The king's man was near Kṛṣṇa. There Rāma-and-Kṛṣṇa also arrived. The king's man saw the two of them — Rāma dark, Kṛṣṇa yellow-clad. He bowed to the yellow-clad one, because the yellow-clad one is Viṣṇu himself.
+  sentence: राजपुरुषः मार्गे आसीत्। तत्र रामकृष्णौ आगच्छताम्। राजपुरुषः तौ अपश्यत् — रामः गौरः, कृष्णः पीताम्बरः। सः उपकृष्णम् आगत्य पीताम्बरम् ननाम, यतः पीताम्बरः एव विष्णुः।
+  translation: The king's man was on the road. There Rāma-and-Kṛṣṇa arrived. The king's man saw the two of them — Rāma fair, Kṛṣṇa yellow-clad. Coming up close to Kṛṣṇa, he bowed to the yellow-clad one, because the yellow-clad one is Viṣṇu himself.
   teaches: |
     all four compound types back to back, doing no new work: राजपुरुषः
     (तत्पुरुष), उपकृष्णम् (अव्ययीभाव), रामकृष्णौ (द्वन्द्व), पीताम्बरः
@@ -21,14 +21,14 @@
       en: agent
     - term: प्रथमा
       en: nominative
-  - form: उपकृष्णम्
-    lemma: उपकृष्ण
-    gloss: near Kṛṣṇa
+  - form: मार्गे
+    lemma: मार्ग
+    gloss: on the road
     notes:
-    - term: अव्ययीभाव
-      en: adverbial — headed by the indeclinable उप, the whole compound is indeclinable
-    - cite: '2.1.5'
-      role: अव्ययीभावः — a compound headed by an indeclinable is अव्ययीभाव
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
   - form: आसीत्
     lemma: अस्
     gloss: was
@@ -56,13 +56,6 @@
       en: agent
     - term: प्रथमा
       en: nominative
-  - form: अपि
-    lemma: अपि
-    gloss: also
-    vocab: true
-    notes:
-    - term: अव्यय
-      en: indeclinable
   - form: आगच्छताम्
     lemma: गम्
     gloss: the two arrived
@@ -94,19 +87,26 @@
     notes:
     - term: प्रथमा
       en: nominative
-  - form: श्यामः
-    lemma: श्याम
-    gloss: dark
+    - term: कर्तृ
+      en: subject
+  - form: गौरः
+    lemma: गौर
+    gloss: fair
     vocab: true
     notes:
     - term: प्रथमा
       en: nominative — predicated of रामः
+    rel:
+    - kind: विधेय
+      to: 8
   - form: कृष्णः
     lemma: कृष्ण
     gloss: Kṛṣṇa
     notes:
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: subject
   - form: पीताम्बरः
     lemma: पीताम्बर
     gloss: the one whose garment is yellow
@@ -119,6 +119,9 @@
       role: अनेकमन्यपदार्थे — several words denoting ANOTHER thing (the possessor) form a बहुव्रीहि
     - term: प्रथमा
       en: nominative
+    rel:
+    - kind: विधेय
+      to: 10
   - form: सः
     lemma: तद्
     gloss: he
@@ -129,6 +132,22 @@
       en: agent
     - term: प्रथमा
       en: nominative
+  - form: उपकृष्णम्
+    lemma: उपकृष्ण
+    gloss: near Kṛṣṇa
+    notes:
+    - term: अव्ययीभाव
+      en: adverbial — headed by the indeclinable उप, the whole compound is indeclinable
+    - cite: '2.1.5'
+      role: अव्ययीभावः — a compound headed by an indeclinable is अव्ययीभाव
+  - form: आगत्य
+    lemma: गम्
+    gloss: having come
+    notes:
+    - term: कृदन्त
+      en: gerund — the coming precedes the bowing, same agent
+    - term: ल्यप्
+      en: with a prefix (आ), क्त्वा becomes ल्यप् → आगत्य
   - form: पीताम्बरम्
     lemma: पीताम्बर
     gloss: the yellow-clad one
@@ -157,14 +176,14 @@
     vocab: true
     notes:
     - term: अव्यय
-      en: indeclinable
+      en: restricts — the yellow-clad one and no other is Viṣṇu
   - form: विष्णुः
     lemma: विष्णु
     gloss: Viṣṇu
     vocab: true
     notes:
     - term: प्रथमा
-      en: nominative
+      en: nominative — उ-stem masculine adds स्, predicate of पीताम्बरः
   vyakhya: चत्वारः समासाः एकत्र। राजपुरुषः, उपकृष्णम्, रामकृष्णौ, पीताम्बरः।
   vyakhya_en: |
     All four kinds side by side, none announced: राजपुरुषः is a तत्पुरुष (पुरुष

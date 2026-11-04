@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "a girl in the forest — our own telling"
     curated: our simple Sanskrit; not from any single source
-  sentence: कन्या वने तिष्ठति। सा लताम् पश्यति, मालाम् च रचयति। गङ्गायाम् जलम् अस्ति। कन्या तत्र स्नाति, देवीम् च नमति। सेना अपि आगच्छति, किन्तु कन्या न बिभेति।
-  translation: A girl stands in the forest. She sees a creeper, and makes a garland. In the Ganges there is water. The girl bathes there, and bows to the goddess. An army comes too, but the girl is not afraid.
+  sentence: कन्या वने तिष्ठति। सा लताम् पश्यति, मालाम् च रचयति। गङ्गायाम् जलम् अस्ति। कन्या तत्र स्नाति, देवीम् च नमति। मार्गेण सेना अपि आगच्छति, किन्तु कन्या न बिभेति, यतः देवी ताम् रक्षति।
+  translation: A girl stands in the forest. She sees a creeper, and makes a garland. In the Ganges there is water. The girl bathes there, and bows to the goddess. An army comes along the road too, but the girl is not afraid, because the goddess protects her.
   teaches: |
     कन्या, लता, माला, देवी — new words, all in endings already met: सेना's आ
     in the nominative, सभाम्'s द्वितीया, सभायाम्'s सप्तमी.
@@ -113,7 +113,7 @@
     vocab: true
     notes:
     - term: लट्
-      en: present
+      en: present — स्ना is अदादि, so no thematic अ, स्ना + ति
   - form: देवीम्
     lemma: देवी
     gloss: the goddess
@@ -129,14 +129,22 @@
     notes:
     - term: लट्
       en: present
+  - form: मार्गेण
+    lemma: मार्ग
+    gloss: along the road
+    notes:
+    - term: करण
+      en: means
+    - term: तृतीया
+      en: instrumental — the road the army travels by; अ-stem takes इन → एण after र
   - form: सेना
     lemma: सेना
     gloss: an army
     notes:
     - term: कर्तृ
-      en: agent
+      en: agent — the army is the one coming
     - term: प्रथमा
-      en: nominative
+      en: nominative — आ-stem feminine, no visible ending in the singular
   - form: अपि
     lemma: अपि
     gloss: also
@@ -169,6 +177,36 @@
     notes:
     - term: लट्
       en: present — reduplicated भी → बिभे
+  - form: यतः
+    lemma: यतः
+    gloss: because
+    notes:
+    - term: अव्यय
+      en: indeclinable — cause
+  - form: देवी
+    lemma: देवी
+    gloss: the goddess
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative — ई-stem feminine, no स्
+  - form: ताम्
+    lemma: तद्
+    gloss: her
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative feminine
+  - form: रक्षति
+    lemma: रक्ष्
+    gloss: protects
+    notes:
+    - term: लट्
+      en: present
   vyakhya: कन्या लता माला देवी — नूतनानि पदानि, प्रसिद्धेषु प्रत्ययेषु। सेनायाः इव आकारः।
   vyakhya_en: |
     Four new words here, and not one new ending. कन्या, लता, माला all close in

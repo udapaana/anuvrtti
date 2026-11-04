@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 495
   order: 1
-  sentence: नद्याः तीरे तिष्ठन् राजा दूरात् आगच्छन्तम् भ्रातरम् अपश्यत्। भ्राता श्रान्तः आसीत्। राज्ञा जलम् दातव्यम् इति मन्त्री अवदत्। राजा स्वयम् जलम् अददात्। पिता तत् पश्यन् अवदत् — एतत् एव राज्ञः कर्म, न अन्यत्। स्मरणीयम् एतत् सर्वैः।
-  translation: Standing on the bank of a river, the king saw his brother coming from afar. The brother was tired. The minister said that water was to be given by the king. The king himself gave water. The father, seeing that, said — "This alone is a king's work, not anything else. This is to be remembered by all."
+  sentence: नद्याः तीरे तिष्ठन् राजा दूरात् आगच्छन्तम् भ्रातरम् अपश्यत्। भ्राता श्रान्तः आसीत्। राज्ञा जलम् दातव्यम् इति राजा अचिन्तयत्। सः स्वयम् जलम् अददात्। पिता तत् पश्यन् अवदत् — एतत् एव राज्ञः कर्म, न अन्यत्। स्मरणीयम् एतत् सर्वैः।
+  translation: Standing on the bank of a river, the king saw his brother coming from afar. The brother was tired. "Water is to be given by the king," the king thought. He gave the water himself. The father, seeing that, said — "This alone is a king's work, not anything else. This is to be remembered by all."
   teaches: |
     three participles set against three finite verbs, with two gerundives in
     between: दातव्यम् and स्मरणीयम्, both stating obligation with no verb.
@@ -40,6 +40,8 @@
       role: नलोपः प्रातिपदिकान्तस्य — the stem-final न् drops → राजा
     - cite: "6.1.68"
       role: "हल्ङ्याब्भ्यो… — सु drops after long आ-stems and consonants → राजा"
+    - term: कर्तृ
+      en: agent
   - form: दूरात्
     lemma: दूर
     gloss: from afar
@@ -125,18 +127,30 @@
     notes:
     - term: अव्यय
       en: closes the reported speech
-  - form: मन्त्री
-    lemma: मन्त्रिन्
-    gloss: the minister
+  - form: राजा
+    lemma: राजन्
+    gloss: the king
     notes:
+    - term: कर्तृ
+      en: agent of अचिन्तयत् — the thought is his own, not a minister's
     - term: प्रथमा
-      en: nominative — an इन्-stem, the न् dropping and the इ lengthening
-  - form: अवदत्
-    lemma: वद्
-    gloss: said
+      en: nominative — राजन् drops its न्
+  - form: अचिन्तयत्
+    lemma: चिन्त्
+    gloss: thought
     notes:
     - term: लङ्
-      en: past
+      en: past — चिन्त् is चुरादि, stem चिन्तय्
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent
   - form: स्वयम्
     lemma: स्वयम्
     gloss: himself
@@ -236,7 +250,7 @@
   vyakhya_en: |
     Six of the words here would be verbs in English and are not. तिष्ठन्,
     आगच्छन्तम् and पश्यन् are participles; दातव्यम् and स्मरणीयम् are
-    gerundives. Only अपश्यत्, आसीत्, अवदत् and अददात् are finite.
+    gerundives. Only अपश्यत्, आसीत्, अचिन्तयत्, अददात् and अवदत् are finite.
 
     राज्ञा जलम् दातव्यम् has no verb at all — an instrumental agent, a
     nominative object, and a word meaning "to-be-given". Sanskrit says a great
