@@ -1,10 +1,10 @@
 - id: ex232
   segment: 237
-  sentence: शत्रुसेनायाः जेता वीरः। कुतः तस्य भयम्? ततः सः न बिभेति।
-  translation: The hero is a conqueror of the enemy army. Whence his fear? Therefore he does not fear.
+  sentence: शत्रुसेनायाः जेता वीरः। कुतः तस्य भयम्? सः न कस्मात् अपि बिभेति।
+  translation: The hero is a conqueror of the enemy army. Whence his fear? He fears nothing at all.
   teaches: |
     the three closed on a hero — शत्रुसेनायाः (षष्ठी-तत्पुरुष, कृत्-governed
-    षष्ठी), जेता (the तृच् agent-noun), and कुतः / ततः (the तसिल् adverb, twice).
+    षष्ठी), जेता (the तृच् agent-noun), कुतः (the तसिल् adverb), and the पञ्चमी of what is feared with भी — कस्मात् अपि.
   words:
   - form: शत्रुसेनायाः
     lemma: शत्रुसेना
@@ -67,6 +67,8 @@
     notes:
     - term: सर्वनाम
       en: pronoun
+    - term: पुंलिङ्ग
+      en: masculine — the hero
     - term: सम्बन्ध
       en: possession
     - term: षष्ठी
@@ -79,24 +81,16 @@
       en: subject of the elliptical question
     - term: प्रथमा
       en: nominative (neuter)
-  - form: ततः
-    lemma: तद्
-    gloss: therefore
-    notes:
-    - term: तद्धित
-      en: an indeclinable तद्धित — तद् + तस् = ततः
-    - term: तसिल्
-      en: the तसिल् suffix (-तस्), the ablative sense
-    - cite: '5.3.7'
-      role: पञ्चम्यास्तसिल् — तसिल् in the ablative sense → तद् + तस् → ततः
-    - term: अव्यय
-      en: indeclinable adverb of cause
   - form: सः
     lemma: तद्
     gloss: he
     notes:
     - term: सर्वनाम
       en: pronoun
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्तृ
+      en: the one who (does not) fear
     - term: प्रथमा
       en: nominative
   - form: न
@@ -105,16 +99,36 @@
     notes:
     - term: निपात
       en: verbal negation
+  - form: कस्मात्
+    lemma: किम्
+    gloss: from anything
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: नपुंसकलिङ्ग
+      en: neuter — "from any thing"
+    - term: अपादान
+      en: what is feared — भी takes the source of fear in पञ्चमी
+    - cite: '1.4.25'
+      role: भीत्रार्थानां भयहेतुः — the cause of fear is अपादान → कस्मात्
+    - term: पञ्चमी
+      en: ablative
+  - form: अपि
+    lemma: अपि
+    gloss: even, at all
+    notes:
+    - term: निपात
+      en: after कस्मात् it makes "from what" into "from anything at all"
   - form: बिभेति
     lemma: भी
     gloss: fears
     notes:
     - term: लट्
       en: present (जुहोत्यादि — भी → बिभेति)
-  vyakhya: शत्रुसेनायाः जेता वीरः; कुतः तस्य भयम्? ततः सः न बिभेति।
+  vyakhya: शत्रुसेनायाः जेता वीरः; कुतः तस्य भयम्? सः न कस्मात् अपि बिभेति।
   vyakhya_en: |
     The trio a last time, on a hero. शत्रुसेनायाः is a षष्ठी-तत्पुरुष — शत्रोः सेना
     (2.2.8) — standing in the षष्ठी that a कृत्-noun governs (2.3.65), the object of
-    जेता, the तृच् agent-noun "conqueror" (3.1.133). Twice the तसिल् adverb turns
-    (5.3.7): कुतः "whence?" and ततः "therefore" — whence would his fear come, and
-    so he has none.
+    जेता, the तृच् agent-noun "conqueror" (3.1.133). The तसिल् adverb कुतः (5.3.7)
+    asks "whence?", and the answer puts what is feared in the पञ्चमी that भी
+    governs (1.4.25): न कस्मात् अपि बिभेति, "he fears nothing at all."

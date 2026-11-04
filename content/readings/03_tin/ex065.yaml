@@ -1,8 +1,8 @@
 - id: ex065
   segment: 140
-  sentence: सः कुर्यात् इति आशीः। क्रियात् सः।
-  translation: 'May he do (it) — the blessing form kriyāt.'
-  teaches: 'आशीर्लिङ् — the benedictive, a distinct लिङ् for blessings'
+  sentence: सः सुखी भूयात्, कार्यम् च क्रियात्।
+  translation: 'May he be happy, and may he do his work.'
+  teaches: 'आशीर्लिङ् — the benedictive, a distinct लिङ् for blessings: भूयात्, क्रियात्'
   words:
   - form: सः
     lemma: तद्
@@ -10,28 +10,51 @@
     notes:
     - term: सर्वनाम
       en: pronoun (तद्)
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्तृ
+      en: the one blessed — subject of भूयात् and क्रियात्
     - term: प्रथमा
       en: nominative
-  - form: कुर्यात्
+  - form: सुखी
+    lemma: सुखिन्
+    gloss: happy
+    notes:
+    - term: तद्धित
+      en: possessive (इनि) — सुख "happiness" → सुखिन् "having happiness, happy"
+    - term: इनि
+      en: the इनि possessive suffix
+    - term: मतुबर्थ
+      en: the possessive sense — "one who has happiness"
+    - term: विशेषण
+      en: predicate with भूयात्
+    - term: प्रथमा
+      en: nominative — the इन्-stem drops its न् and lengthens, सुखिन् → सुखी
+    rel:
+    - kind: विशेषण
+      to: 0
+  - form: भूयात्
+    lemma: भू
+    gloss: may he be
+    notes:
+    - term: आशीर्लिङ्
+      en: benedictive of भू — the wish "may he be", not the optative भवेत्
+  - form: कार्यम्
     lemma: कृ
-    gloss: should do
+    gloss: the work, what is to be done
     notes:
-    - term: विधिलिङ्
-      en: optative — "should do" (cf. ex064); the लिङ् mood
-  - form: इति
-    lemma: इति
-    gloss: thus ("…")
+    - term: कृत्य
+      en: gerundive — "to be done", used as a noun, "duty, work"
+    - term: कर्मन्
+      en: object of क्रियात्
+    - term: द्वितीया
+      en: accusative
+  - form: च
+    lemma: च
+    gloss: and
     notes:
-    - term: अव्यय
-      en: quotative — closes a name/quote
-  - form: आशीः
-    lemma: आशिस्
-    gloss: a blessing
-    notes:
-    - term: आशीस्
-      en: '"blessing" — the sense that selects आशीर्लिङ्'
-    - term: प्रथमा
-      en: nominative
+    - term: निपात
+      en: and — joins the two wishes
   - form: क्रियात्
     lemma: कृ
     gloss: may he do (benediction)
@@ -44,17 +67,9 @@
       role: आशिषि लिङ्लोटौ → for a blessing, लिङ् (or लोट्) is used
     - cite: 3.4.116
       role: लिङाशिषि → this लिङ् is the आशीर्लिङ् (distinct from the विधिलिङ्) → क्रियात्
-  - form: सः
-    lemma: तद्
-    gloss: he
-    notes:
-    - term: सर्वनाम
-      en: pronoun (तद्)
-    - term: प्रथमा
-      en: nominative
-  vyakhya: आशिषि लिङ् — आशीर्लिङ्। "भूयात्", "क्रियात्" इति आशीर्वादरूपाणि।
+  vyakhya: आशिषि लिङ् — आशीर्लिङ्। सः सुखी भूयात्, कार्यम् च क्रियात् — "भूयात्", "क्रियात्" इति आशीर्वादरूपाणि।
   vyakhya_en: |
-    A blessing has its own mood. For an आशीस् (benediction, "may you…") the लिङ् is used (3.3.173), and this benedictive लिङ् is formally distinct from the optative (3.4.116) — क्रियात् "may he do," भूयात् "may (he) be / may it prosper." So √कृ has two लिङ् forms: कुर्यात् "should do" (विधिलिङ्, the norm) vs क्रियात् "may he do" (आशीर्लिङ्, the blessing). The same mood-letter ल् branches by intent.
+    A blessing has its own mood. For an आशीस् (benediction, "may you…") the लिङ् is used (3.3.173), and this benedictive लिङ् is formally distinct from the optative (3.4.116) — क्रियात् "may he do," भूयात् "may (he) be / may it prosper." A blessing on a pupil: सः सुखी भूयात्, कार्यम् च क्रियात् "may he be happy, and may he do his work." So √कृ has two लिङ् forms: कुर्यात् "should do" (विधिलिङ्, the norm) vs क्रियात् "may he do" (आशीर्लिङ्, the blessing). The same mood-letter ल् branches by intent.
 
 # ════════════════════════════════════════════════════════════════════════
 #  PARADIGM-FILL batch (parallel-authored, cites re-verified centrally).
