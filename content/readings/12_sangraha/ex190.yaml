@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 195
   order: 1
-  sentence: राजा सभाम् आगच्छति। जनाः राजानम् पश्यन्ति। गुरुः अपि तत्र। राजा गुरवे धनम् यच्छति, गुरुः च राज्ञे धर्मम् कथयति। गमनम् श्रेयः इति राजा वदति। ततः राजानौ अपि आगच्छतः।
-  translation: The king comes to the assembly. The people see the king. The teacher is there too. The king gives wealth to the teacher, and the teacher tells the king about dharma. "Going is better," says the king. Then the two kings also arrive.
+  sentence: राजा सभाम् आगच्छति। जनाः राजानम् पश्यन्ति। गुरुः अपि तत्र। राजा गुरवे धनम् यच्छति, गुरुः च राज्ञे धर्मम् कथयति। धर्मस्य मार्गे गमनम् श्रेयः इति राजा वदति। ततः अन्यौ राजानौ अपि धर्मम् श्रोतुम् आगच्छतः।
+  translation: The king comes to the assembly. The people see the king. The teacher is there too. The king gives wealth to the teacher, and the teacher tells the king about dharma. "Walking on the path of dharma is better," says the king. Then two other kings also arrive, to hear about dharma.
   teaches: |
     राजन् in four grades — राजा, राजानम्, राज्ञे, राजानौ — with गुरुः / गुरवे
     alongside. गमनम् closes as an action-noun.
@@ -16,6 +16,8 @@
       en: nominative — the bare पद loses its final न्, leaving राजा
     - cite: "8.2.7"
       role: नलोपः प्रातिपदिकान्तस्य — the final न् of राजन् drops → राजा
+    - term: कर्तृ
+      en: agent
   - form: सभाम्
     lemma: सभा
     gloss: to the assembly
@@ -65,6 +67,8 @@
     notes:
     - term: प्रथमा
       en: nominative — a उ-stem masculine
+    - term: कर्तृ
+      en: agent
   - form: अपि
     lemma: अपि
     gloss: too
@@ -129,6 +133,20 @@
     notes:
     - term: लट्
       en: present
+  - form: धर्मस्य
+    lemma: धर्म
+    gloss: of dharma
+    notes:
+    - term: षष्ठी
+      en: genitive — whose path, the path of dharma
+  - form: मार्गे
+    lemma: मार्ग
+    gloss: on the path
+    notes:
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative — where the going happens
   - form: गमनम्
     lemma: गमन
     gloss: going
@@ -137,6 +155,8 @@
       en: neuter nominative — the act itself, not the one who acts
     - cite: "3.3.115"
       role: ल्युट् च — ल्युट् makes the action-noun गमनम् from गम्
+    - term: कर्तृ
+      en: subject of the statement
   - form: श्रेयः
     lemma: श्रेयस्
     gloss: better
@@ -144,6 +164,9 @@
     notes:
     - term: प्रथमा
       en: neuter nominative — predicated of गमनम्
+    rel:
+    - kind: विधेय
+      to: 18
   - form: इति
     lemma: इति
     gloss: "thus"
@@ -164,6 +187,20 @@
     notes:
     - term: अव्यय
       en: indeclinable
+  - form: अन्यौ
+    lemma: अन्य
+    gloss: two other
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम "other"
+    - term: विशेषण
+      en: agrees with राजानौ — nominative dual
+    - term: प्रथमा
+      en: nominative
+    - term: द्विवचन
+      en: dual
+    - term: कर्तृ
+      en: agent, with राजानौ
   - form: राजानौ
     lemma: राजन्
     gloss: the two kings
@@ -172,6 +209,22 @@
       en: strong again, now in the dual — राजा, राजानम्, राज्ञे, राजानौ
     - term: द्विवचन
       en: nominative dual
+  - form: धर्मम्
+    lemma: धर्म
+    gloss: dharma
+    notes:
+    - term: कर्मन्
+      en: object of श्रोतुम्
+    - term: द्वितीया
+      en: accusative
+  - form: श्रोतुम्
+    lemma: श्रु
+    gloss: to hear
+    notes:
+    - term: कृदन्त
+      en: infinitive (तुमुन्) of श्रु — गुण, श्रु → श्रो
+    - term: तुमुन्
+      en: '"in order to hear" — the purpose of their coming'
   - form: आगच्छतः
     lemma: गम्
     gloss: the two arrive

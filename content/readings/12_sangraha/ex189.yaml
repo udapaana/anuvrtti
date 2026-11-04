@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 175
   order: 1
-  sentence: यः पठति सः जानाति। सा अपि पठति, तस्यै गुरुः पुस्तकम् यच्छति। तस्मै बालाय अपि यच्छति। ते पठन्ति, ताः च पठन्ति। गच्छन् बालः पुस्तकम् वहति। अहम् तान् पश्यामि।
-  translation: He who reads, knows. She reads too; the teacher gives her a book. He gives one to that boy as well. They read, and they (the women) read. Walking along, the boy carries the book. I see them.
+  sentence: यः पठति सः जानाति। सा अपि पठति, तस्यै गुरुः पुस्तकम् यच्छति। तस्मै बालाय अपि यच्छति। ते बालाः पठन्ति, ताः कन्याः च पठन्ति। गच्छन् बालः पुस्तकम् वहति। अहम् तान् पश्यामि।
+  translation: He who reads, knows. She reads too; the teacher gives her a book. He gives one to that boy as well. Those boys read, and those girls read. Walking along, the boy carries the book. I see them.
   teaches: |
     तद् and यद् through their forms: सः, सा, ते, ताः, तान्. तस्मै and बालाय
     sit in one clause — both datives, different endings.
@@ -18,6 +18,8 @@
       en: nominative
     - cite: "1.1.27"
       role: सर्वादीनि सर्वनामानि — यद् and तद् belong to the सर्वनाम class
+    - term: कर्तृ
+      en: agent — the one who reads
   - form: पठति
     lemma: पठ्
     gloss: reads
@@ -34,6 +36,8 @@
       en: the correlative answering यः
     - term: प्रथमा
       en: nominative masculine
+    - term: कर्तृ
+      en: agent — the correlative of यः
   - form: जानाति
     lemma: ज्ञा
     gloss: knows
@@ -50,6 +54,8 @@
       en: nominative feminine — सा beside masculine सः
     - cite: "4.1.4"
       role: "अजाद्यतष्टाप् — टाप्, the ordinary a-stem feminine → सा"
+    - term: कर्तृ
+      en: agent
   - form: अपि
     lemma: अपि
     gloss: too
@@ -111,12 +117,24 @@
       en: the ordinary noun dative — आय, beside तस्मै in the same clause
   - form: ते
     lemma: तद्
-    gloss: they
+    gloss: those
     notes:
     - term: सर्वनाम
       en: pronoun
     - term: बहुवचन
       en: nominative plural masculine
+    - term: प्रथमा
+      en: nominative plural, with बालाः
+    - term: कर्तृ
+      en: agent
+  - form: बालाः
+    lemma: बाल
+    gloss: the boys
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative (अ-stem masculine, बहुवचन)
   - form: पठन्ति
     lemma: पठ्
     gloss: read
@@ -125,12 +143,24 @@
       en: present plural
   - form: 'ताः'
     lemma: तद्
-    gloss: they (the women)
+    gloss: those (feminine)
     notes:
     - term: सर्वनाम
       en: pronoun
     - term: बहुवचन
       en: nominative plural feminine — ताः beside masculine ते
+    - term: प्रथमा
+      en: nominative, with कन्याः
+    - term: कर्तृ
+      en: agent
+  - form: कन्याः
+    lemma: कन्या
+    gloss: the girls
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural — the आ-stem adds स्, आ + अस् → आः
   - form: च
     lemma: च
     gloss: and
@@ -169,6 +199,10 @@
       en: pronoun
     - term: उत्तमपुरुष
       en: the speaker — अस्मद् has no stem-form here, अहम् is suppletive
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
   - form: तान्
     lemma: तद्
     gloss: them

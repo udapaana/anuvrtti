@@ -2,11 +2,12 @@
   kind: sangraha
   segment: 55
   order: 1
-  sentence: बालः वने वृकात् बिभेति। सः मात्रे क्रुध्यति, यतः सा तम् वनम् न नयति। मुनिः गिरिम् अधिशेते। बालः मुनये श्लाघते, मुनेः फलेभ्यः च स्पृहयति। मुनिः बालाय फलानि यच्छति। बालाय फलानि रोचन्ते। सः गृहम् आगच्छति, मातुः च न बिभेति।
-  translation: In the forest the boy is afraid of a wolf. He is angry at his mother, because she does not take him to the forest. A sage lies upon the mountain. The boy flatters the sage, and longs for the sage's fruits. The sage gives the boy fruits. The fruits please the boy. He comes home, and is no longer afraid of his mother.
+  sentence: बालः मात्रे क्रुध्यति, यतः सा तम् वनम् न नयति। सः एकः गच्छति, वने च वृकात् बिभेति। मुनिः गिरिम् अधिशेते। बालः मुनये श्लाघते, मुनेः फलेभ्यः च स्पृहयति। मुनिः बालाय फलानि यच्छति। बालाय फलानि रोचन्ते। सः गृहम् आगच्छति, मात्रे च फलानि यच्छति।
+  translation: The boy is angry at his mother, because she does not take him to the forest. He goes alone, and in the forest he is afraid of a wolf. A sage lies upon the mountain. The boy flatters the sage, and longs for the sage's fruits. The sage gives the boy fruits. The fruits please the boy. He comes home, and gives fruits to his mother.
   teaches: |
-    six verbs, each choosing its own case. वृकात् and मात्रे sit in adjacent
-    clauses: two objects of emotion, two different cases.
+    six verbs, each choosing its own case. मात्रे and वृकात् sit in adjacent
+    sentences: two objects of emotion, two different cases — and मात्रे returns
+    at the end, now the one who receives.
   words:
   - form: बालः
     lemma: बाल
@@ -14,38 +15,6 @@
     notes:
     - term: कर्तृ
       en: agent
-    - term: प्रथमा
-      en: nominative
-  - form: वने
-    lemma: वन
-    gloss: in the forest
-    notes:
-    - term: अधिकरण
-      en: locus
-    - term: सप्तमी
-      en: locative
-  - form: वृकात्
-    lemma: वृक
-    gloss: of a wolf (afraid of)
-    notes:
-    - term: अपादान
-      en: the thing feared — treated as what one shrinks away FROM
-    - term: पञ्चमी
-      en: ablative
-    - cite: "1.4.25"
-      role: भीत्रार्थानां भयहेतुः — with verbs of fearing, the cause of fear is अपादान → वृकात्
-  - form: बिभेति
-    lemma: भी
-    gloss: is afraid
-    notes:
-    - term: लट्
-      en: present — reduplicated stem बिभे-
-  - form: सः
-    lemma: तद्
-    gloss: he
-    notes:
-    - term: सर्वनाम
-      en: pronoun
     - term: प्रथमा
       en: nominative
   - form: मात्रे
@@ -81,6 +50,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative feminine
+    - term: कर्तृ
+      en: agent
   - form: तम्
     lemma: तद्
     gloss: him
@@ -96,9 +67,9 @@
     gloss: to the forest
     notes:
     - term: कर्मन्
-      en: goal of motion
+      en: goal of motion — the place one comes to stands in the accusative
     - term: द्वितीया
-      en: accusative
+      en: accusative — neuter, same shape as the nominative गृहम्
   - form: 'न'
     lemma: न
     gloss: not
@@ -117,6 +88,62 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present — नी + शप् → गुण ने → नय्
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent
+  - form: एकः
+    lemma: एक
+    gloss: alone
+    notes:
+    - term: विशेषण
+      en: एक "one," here "on his own" — qualifies सः
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent, with सः
+  - form: गच्छति
+    lemma: गम्
+    gloss: goes
+    notes:
+    - term: लट्
+      en: present — गम् has the stem गच्छ्
+  - form: वने
+    lemma: वन
+    gloss: in the forest
+    notes:
+    - term: अधिकरण
+      en: locus — where the fear comes on him
+    - term: सप्तमी
+      en: locative — अ-stem neuter, वन + इ → वने
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — follows वने, the first word of its clause
+  - form: वृकात्
+    lemma: वृक
+    gloss: of a wolf (afraid of)
+    notes:
+    - term: अपादान
+      en: the thing feared — treated as what one shrinks away FROM
+    - term: पञ्चमी
+      en: ablative
+    - cite: "1.4.25"
+      role: भीत्रार्थानां भयहेतुः — with verbs of fearing, the cause of fear is अपादान → वृकात्
+  - form: बिभेति
+    lemma: भी
+    gloss: is afraid
+    notes:
+    - term: लट्
+      en: present — reduplicated stem बिभे-
   - form: मुनिः
     lemma: मुनि
     gloss: a sage
@@ -223,6 +250,16 @@
       en: present plural — the FRUITS are the agent here, not the boy
     - cite: "1.4.33"
       role: रुच्यर्थानां प्रीयमाणः — the one pleased is सम्प्रदान → बालाय
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent
   - form: गृहम्
     lemma: गृह
     gloss: home
@@ -240,17 +277,41 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present
-  - form: मातुः
+  - form: मात्रे
     lemma: मातृ
-    gloss: of his mother
+    gloss: to his mother
     notes:
-    - term: अपादान
-      en: भी again — a SECOND meeting with the rule, different noun
-    - term: पञ्चमी
-      en: ablative — ऋ-stem, मातृ → मातुः
+    - term: सम्प्रदान
+      en: recipient — the same dative as before, now of giving, not anger
+    - term: चतुर्थी
+      en: dative — ऋ-stem, मातृ → मात्रे
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — joins the coming home and the giving
+  - form: फलानि
+    lemma: फल
+    gloss: fruits
+    notes:
+    - cite: "7.1.72"
+      role: नपुंसकस्य झलचः — नुम् before the neuter plural ending → फलानि
+    - term: कर्मन्
+      en: object
+    - term: बहुवचन
+      en: neuter plural
+  - form: यच्छति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present — दा has the stem यच्छ्
   vyakhya: क्रियया विभक्तिः नियम्यते। भीत्रार्थे पञ्चमी, क्रुधार्थे चतुर्थी — एकस्मिन् वाक्ये उभे।
   vyakhya_en: |
-    The boy fears the wolf and is angry at his mother in consecutive clauses.
+    The boy is angry at his mother and fears the wolf in consecutive sentences.
     Both are objects of an emotion; neither takes the accusative; and they take
     DIFFERENT cases — वृकात् ablative, मात्रे dative. Nothing about the nouns
     explains that. Only the verb does.

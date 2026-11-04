@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "those who set others to work — our own telling, in causatives"
     curated: our simple Sanskrit; not from any single source
-  sentence: गुरुः शिष्यम् वेदम् अध्यापयत्। राजा दूतम् नगरम् अगमयत्। माता बालम् अन्नम् अभोजयत्। एवम् प्रयोजकाः हेतवः अन्यान् कर्मणि नियोजयन्ति।
-  translation: The teacher made the student study the Veda. The king made the messenger go to the city. The mother made the child eat food. Thus the instigators, the "causes," employ others in tasks.
+  sentence: गुरुः शिष्यम् वेदम् अध्यापयत्। राजा दूतम् नगरम् अगमयत्। माता बालम् अन्नम् अभोजयत्। एवम् गृहे राज्ये च सर्वे अन्यान् कर्मणि नियोजयन्ति।
+  translation: The teacher made the student study the Veda. The king made the messenger go to the city. The mother made the child eat food. Thus, at home and in the kingdom, everyone sets others to their tasks.
   teaches: |
     the causative's double object — with verbs of knowing, going, and eating, the
     one made to act (शिष्यम्, दूतम्, बालम्) turns into an accusative alongside the
@@ -129,26 +129,38 @@
     notes:
     - term: अव्यय
       en: adverb
-  - form: प्रयोजकाः
-    lemma: प्रयोजक
-    gloss: instigators
-    vocab: true
+  - form: गृहे
+    lemma: गृह
+    gloss: at home
     notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative — the mother's sphere
+  - form: राज्ये
+    lemma: राज्य
+    gloss: in the kingdom
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative — the king's sphere
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — joins गृहे and राज्ये
+  - form: सर्वे
+    lemma: सर्व
+    gloss: everyone
+    notes:
+    - term: सर्वादि
+      en: pronominal — nominative plural सर्वे, like ते
     - term: कर्तृ
-      en: the causers
+      en: agent — teacher, king, mother, all who cause
     - term: प्रथमा
       en: nominative plural
-  - form: हेतवः
-    lemma: हेतु
-    gloss: the "causes"
-    notes:
-    - term: विशेषण
-      en: in apposition to प्रयोजकाः — "the हेतु-agents"
-    - term: प्रथमा
-      en: nominative plural (उ-stem → हेतवः)
-    rel:
-    - kind: विशेषण
-      to: 13
   - form: अन्यान्
     lemma: अन्य
     gloss: others
@@ -176,7 +188,7 @@
       en: causative of नि-युज् "engage"
     - term: लट्
       en: present (3pl)
-  vyakhya: 'णिजन्तद्विकर्मकप्रधाना कथा। अध्यापयत् अगमयत् अभोजयत् इति बुद्धि-गति-प्रत्यवसानार्थेषु णिचि — मूलकर्ता कर्म (गतिबुद्धिप्रत्यवसान… अणि कर्ता स णौ)। अतः द्वे कर्मणी प्रतिवाक्यम् — शिष्यम् वेदम्, दूतम् नगरम्, बालम् अन्नम्। प्रयोजकाः इति हेतवः (तत्प्रयोजको हेतुश्च)।'
+  vyakhya: 'णिजन्तद्विकर्मकप्रधाना कथा। अध्यापयत् अगमयत् अभोजयत् इति बुद्धि-गति-प्रत्यवसानार्थेषु णिचि — मूलकर्ता कर्म (गतिबुद्धिप्रत्यवसान… अणि कर्ता स णौ)। अतः द्वे कर्मणी प्रतिवाक्यम् — शिष्यम् वेदम्, दूतम् नगरम्, बालम् अन्नम्। अध्यापयन् गुरुः, गमयन् राजा, भोजयन्ती माता — सर्वे हेतवः (तत्प्रयोजको हेतुश्च)।'
   vyakhya_en: |
     Three causatives, three double-objects — the pattern to fix in memory. When
     the underlying verb is one of **knowing, going, or eating** (the गतिबुद्धि-
@@ -184,4 +196,4 @@
     (1.4.52): शिष्यम् वेदम् अध्यापयत् "made the student (study) the Veda," दूतम्
     नगरम् अगमयत् "made the messenger (go) to the city," बालम् अन्नम् अभोजयत् "made
     the child (eat) food." The causer standing over them all is the **हेतु**
-    (1.4.55) — here named outright: प्रयोजकाः हेतवः, "the instigators, the causes."
+    (1.4.55) — the teacher, the king, the mother: at home and in the kingdom alike, everyone sets someone else to work.

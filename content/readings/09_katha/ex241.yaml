@@ -5,13 +5,56 @@
     text: कथा (our graded retelling)
     ref: "which boy was greater — our own telling, in degrees"
     curated: our simple Sanskrit; not from any single source
-  sentence: द्वौ बालौ आस्ताम्। रामः श्यामात् बलवत्तरः आसीत्। श्यामः तु रामात् बुद्धिमत्तरः आसीत्। सर्वेषु बालेषु रामः बलवत्तमः। श्यामः तु सर्वेषु बुद्धिमत्तमः।
-  translation: There were two boys. Rāma was stronger than Śyāma. But Śyāma was more intelligent than Rāma. Among all the boys Rāma was the strongest; but Śyāma was the most intelligent of all.
+  sentence: ग्रामे बहवः बालाः आसन्। तेषु द्वौ बालौ मित्रे आस्ताम्। रामः श्यामात् बलवत्तरः आसीत्। श्यामः तु रामात् बुद्धिमत्तरः आसीत्। सर्वेषु बालेषु रामः बलवत्तमः। श्यामः तु सर्वेषु बुद्धिमत्तमः।
+  translation: In the village there were many boys. Among them two boys were friends. Rāma was stronger than Śyāma. But Śyāma was more intelligent than Rāma. Among all the boys Rāma was the strongest; but Śyāma was the most intelligent of all.
   teaches: |
     the two degrees of comparison: the comparative in -तर (बलवत्तरः "stronger,"
     with the thing compared-against in the ablative — श्यामात् "than Śyāma"),
     and the superlative in -तम (बलवत्तमः "strongest," among a locative field).
   words:
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in the village
+    notes:
+    - term: अधिकरण
+      en: locus
+    - term: सप्तमी
+      en: locative
+  - form: बहवः
+    lemma: बहु
+    gloss: many
+    notes:
+    - term: विशेषण
+      en: qualifying बालाः
+    - term: प्रथमा
+      en: nominative plural — उ-stem with गुण, बहु → बहवः
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: बालाः
+    lemma: बाल
+    gloss: boys
+    notes:
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative plural
+  - form: आसन्
+    lemma: अस्
+    gloss: were
+    notes:
+    - term: लङ्
+      en: past, third plural
+  - form: तेषु
+    lemma: तद्
+    gloss: among them
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: अधिकरण
+      en: the group the two are picked from
+    - term: सप्तमी
+      en: locative plural
   - form: द्वौ
     lemma: द्वि
     gloss: two
@@ -26,7 +69,7 @@
       role: "वृद्धिरेचि — vṛddhi सन्धि → द्वौ"
     rel:
     - kind: विशेषण
-      to: 1
+      to: 6
   - form: बालौ
     lemma: बाल
     gloss: boys
@@ -35,6 +78,15 @@
       en: subject
     - term: प्रथमा
       en: nominative dual
+  - form: मित्रे
+    lemma: मित्र
+    gloss: friends
+    notes:
+    - term: प्रथमा
+      en: nominative dual — मित्र is neuter, so the dual ends in ए, not औ
+    rel:
+    - kind: विधेय
+      to: 6
   - form: आस्ताम्
     lemma: अस्
     gloss: there were (two)
@@ -73,7 +125,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 3
+      to: 9
   - form: आसीत्
     lemma: अस्
     gloss: was
@@ -116,7 +168,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 7
+      to: 13
   - form: सर्वेषु
     lemma: सर्व
     gloss: among all
@@ -151,7 +203,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 3
+      to: 9
   - form: बुद्धिमत्तमः
     lemma: बुद्धिमत्तम
     gloss: the most intelligent
@@ -166,7 +218,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 7
+      to: 13
   vyakhya: 'तरप्तमबोः अभ्यासः। बलवत्तरः बुद्धिमत्तरः इति द्वयोः तुलने तरप् (द्विवचनविभज्ये…); श्यामात् रामात् इति तुलनायां पञ्चमी। बलवत्तमः बुद्धिमत्तमः इति अतिशायने तमप्; सर्वेषु बालेषु इति निर्धारणे सप्तमी।'
   vyakhya_en: |
     The two degrees, side by side. **Comparative** — बलवत्-तर "stronger," the

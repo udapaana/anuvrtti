@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 255
   order: 1
-  sentence: गुरुः अवदत् — शिष्यः पठेत्, न तु शयीत। तस्य पठनम् एव धर्मः। एकदा सः शिष्यः न अपठत्, वनम् अगच्छत् च। तत् श्रुत्वा गुरुः अक्रुध्यत्। रामेण तत् वचनम् श्रुतम्। सः चिन्तयत् — अहम् सदा पठेयम् इति।
-  translation: The teacher said — "A student should study, and not sleep. His studying alone is his dharma." One day that student did not study, and went to the forest. Hearing that, the teacher grew angry. Rāma heard those words. He thought — "I will always study."
+  sentence: गुरुः अवदत् — शिष्यः पठेत्, न तु शयीत। तस्य पठनम् एव धर्मः। एकदा सः शिष्यः न अपठत्, वनम् अगच्छत् च। तत् श्रुत्वा गुरुः अक्रुध्यत्। तत्र अन्यः शिष्यः रामः आसीत्। रामेण तत् वचनम् श्रुतम्। सः अचिन्तयत् — अहम् सदा पठेयम् इति।
+  translation: The teacher said — "A student should study, and not sleep. His studying alone is his dharma." One day that student did not study, and went to the forest. Hearing that, the teacher grew angry. Another student, Rāma, was there. Those words were heard by Rāma. He thought — "I will always study."
   teaches: |
     पठेत् and पठेयम् in one exchange, against अपठत् and अगच्छत्. पठनम् names
     the act rather than the actor; श्रुत्वा and श्रुतम् are built from one root.
@@ -101,6 +101,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: अपठत्
     lemma: पठ्
     gloss: did not study
@@ -149,6 +151,46 @@
     notes:
     - term: लङ्
       en: past — क्रुध् is दिवादि, so श्यन् and no गुण
+  - form: तत्र
+    lemma: तत्र
+    gloss: there
+    notes:
+    - term: अव्यय
+      en: there — at the teacher's, when he spoke
+  - form: अन्यः
+    lemma: अन्य
+    gloss: another
+    notes:
+    - term: सर्वादि
+      en: सर्वनाम "other"
+    - term: विशेषण
+      en: qualifying शिष्यः
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: student
+    notes:
+    - term: प्रथमा
+      en: nominative — in apposition to रामः
+    - term: कर्तृ
+      en: agent
+  - form: रामः
+    lemma: राम
+    gloss: Rāma
+    notes:
+    - term: कर्तृ
+      en: subject of आसीत्
+    - term: प्रथमा
+      en: nominative
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past
   - form: रामेण
     lemma: राम
     gloss: by Rāma
@@ -159,6 +201,16 @@
       en: instrumental
     - cite: "8.4.2"
       role: अट्कुप्वाङ्नुम्व्यवायेऽपि — णत्व reaches across the ए → रामेण
+  - form: तत्
+    lemma: तद्
+    gloss: those
+    notes:
+    - term: सर्वनाम
+      en: pronoun — points back to the teacher's words
+    - term: प्रथमा
+      en: neuter nominative, agreeing with वचनम्
+    - term: कर्मन्
+      en: what was heard, nominative under the participle
   - form: वचनम्
     lemma: वचन
     gloss: words
@@ -173,12 +225,12 @@
     notes:
     - term: निष्ठा
       en: past participle from the same root as श्रुत्वा above
-  - form: चिन्तयत्
+  - form: अचिन्तयत्
     lemma: चिन्त्
     gloss: thought
     notes:
     - term: लङ्
-      en: past
+      en: past — augment अ on the चुरादि stem चिन्तय्
   - form: अहम्
     lemma: अस्मद्
     gloss: I
@@ -189,6 +241,8 @@
       en: the speaker
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: सदा
     lemma: सदा
     gloss: always

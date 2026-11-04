@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 15
   order: 1
-  sentence: नरः ग्रामे वसति। नरस्य पुत्रः बालः। नरः ग्रामात् गच्छति। सः पादाभ्याम् गच्छति। वृक्षात् फलम् पतति। नरः फलम् बालाय यच्छति। ततः नरः ग्रामम् आगच्छति।
-  translation: A man lives in a village. The man's son is a boy. The man goes from the village. He goes on foot. A fruit falls from a tree. The man gives the fruit to the boy. Then the man comes back to the village.
+  sentence: नरः ग्रामे वसति। नरस्य पुत्रः बालः, सः फलम् इच्छति। नरः पुत्रेण सह ग्रामात् गच्छति। सः पादाभ्याम् गच्छति। वृक्षात् फलम् पतति। नरः फलम् बालाय यच्छति। ततः नरः ग्रामम् आगच्छति।
+  translation: A man lives in a village. The man's son is a small boy; he wants a fruit. The man goes out from the village with his son. He goes on foot. A fruit falls from a tree. The man gives the fruit to the boy. Then the man comes back to the village.
   teaches: |
     ग्राम in three cases in one passage: ग्रामे, ग्रामात्, ग्रामम्.
   words:
@@ -43,12 +43,64 @@
     notes:
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: subject
   - form: बालः
     lemma: बाल
     gloss: (is) a boy
     notes:
     - term: प्रथमा
       en: nominative — two nominatives, no verb; the sentence equates them
+    rel:
+    - kind: विधेय
+      to: 4
+  - form: सः
+    lemma: तद्
+    gloss: he
+    vocab: true
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative — stands in for the boy, so the sentence need not repeat बालः
+    - term: कर्तृ
+      en: agent
+  - form: फलम्
+    lemma: फल
+    gloss: a fruit
+    notes:
+    - term: कर्मन्
+      en: object — what the boy wants
+    - term: द्वितीया
+      en: neuter accusative
+  - form: इच्छति
+    lemma: इष्
+    gloss: wants
+    notes:
+    - term: लट्
+      en: present — इष् has the stem इच्छ्
+  - form: नरः
+    lemma: नर
+    gloss: a man
+    notes:
+    - term: कर्तृ
+      en: agent — the one acting on its own
+    - term: प्रथमा
+      en: nominative
+  - form: पुत्रेण
+    lemma: पुत्र
+    gloss: with his son
+    notes:
+    - term: तृतीया
+      en: instrumental — with सह, the companion takes तृतीया
+    - term: सहार्थ
+      en: the companion
+  - form: सह
+    lemma: सह
+    gloss: with
+    notes:
+    - term: अव्यय
+      en: indeclinable — "together with," governs पुत्रेण
   - form: ग्रामात्
     lemma: ग्राम
     gloss: from the village
@@ -74,6 +126,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative — stands in for नरः, so the sentence need not repeat it
+    - term: कर्तृ
+      en: agent
   - form: पादाभ्याम्
     lemma: पाद
     gloss: on foot (lit. by the two feet)

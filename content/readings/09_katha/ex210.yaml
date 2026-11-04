@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "the two who divided the field — our own telling"
     curated: our simple Sanskrit; not from any single source
-  sentence: द्वौ भ्रातरौ क्षेत्रम् अभजेताम्। ज्येष्ठः अवादीत् — अद्य अहम् अर्धम् अगृह्णाम्, त्वम् च अर्धम् गृहाण। कनिष्ठः तत् अश्रौषीत्, किन्तु न अतुष्यत्। सः ग्रामस्य वृद्धान् अपृच्छत् — केन एषा भूमिः विभक्ता। वृद्धाः अवादिषुः — यः स्वयम् विभजति सः न स्वयम् गृह्णाति। तत् श्रुत्वा ज्येष्ठः लज्जितः अभूत्, कनिष्ठाय च वरम् अर्धम् अददात्।
-  translation: Two brothers divided a field. The elder spoke — "Today I have taken half; you take the other half." The younger heard that, but was not satisfied. He asked the village elders — "By whom was this land divided?" The elders spoke — "He who divides himself does not himself take." Hearing that, the elder became ashamed, and gave the better half to the younger.
+  sentence: द्वौ भ्रातरौ क्षेत्रम् अभजेताम्। ज्येष्ठः अवादीत् — अद्य अहम् अर्धम् अगृह्णाम्, त्वम् च अर्धम् गृहाण। कनिष्ठः तत् अश्रौषीत्, किन्तु न अतुष्यत्। सः ग्रामस्य वृद्धान् अपृच्छत् — केन एषा भूमिः विभक्ता। वृद्धाः अवादिषुः — यः विभजति सः पश्चात् गृह्णाति। तत् श्रुत्वा ज्येष्ठः लज्जितः अभूत्, कनिष्ठाय च वरम् अर्धम् अददात्।
+  translation: Two brothers divided a field. The elder spoke — "Today I have taken half; you take the other half." The younger heard that, but was not satisfied. He asked the village elders — "By whom was this land divided?" The elders spoke — "He who divides takes last." Hearing that, the elder became ashamed, and gave the better half to the younger.
   teaches: |
     अवादीत्, अश्रौषीत्, अवादिषुः, अभूत् — the aorist across three persons and
     both numbers. विभक्ता names the act as done; वृद्धाः and अवादिषुः close on
@@ -18,19 +18,23 @@
     notes:
     - term: प्रथमा
       en: nominative dual
+    - term: कर्तृ
+      en: agent, with भ्रातरौ
   - form: भ्रातरौ
     lemma: भ्रातृ
     gloss: brothers
     notes:
     - term: प्रथमा
       en: nominative dual of an ऋ-stem — the ऋ takes गुण before the ending
+    - term: कर्तृ
+      en: agent
   - form: क्षेत्रम्
     lemma: क्षेत्र
     gloss: a field
     vocab: true
     notes:
     - term: कर्मन्
-      en: object
+      en: object of अगृह्णाम् — अर्ध is neuter as a noun, "a half"
     - term: द्वितीया
       en: accusative
   - form: अभजेताम्
@@ -48,6 +52,8 @@
       en: nominative — the superlative of वृद्ध, used as a noun
     - cite: '5.3.55'
       role: अतिशायने तमबिष्ठनौ — इष्ठन् superlative → ज्येष्ठ
+    - term: कर्तृ
+      en: agent
   - form: अवादीत्
     lemma: वद्
     gloss: spoke
@@ -72,6 +78,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: अर्धम्
     lemma: अर्ध
     gloss: half
@@ -95,6 +103,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: च
     lemma: च
     gloss: and
@@ -166,6 +176,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: ग्रामस्य
     lemma: ग्राम
     gloss: of the village
@@ -225,6 +237,8 @@
       en: nominative plural
     - cite: '8.3.15'
       role: खरवसानयोर्विसर्जनीयः — the plural स् → visarga → वृद्धाः
+    - term: कर्तृ
+      en: agent
   - form: अवादिषुः
     lemma: वद्
     gloss: spoke
@@ -239,13 +253,10 @@
     notes:
     - term: सर्वनाम
       en: relative pronoun
-  - form: स्वयम्
-    lemma: स्वयम्
-    gloss: himself
-    vocab: true
-    notes:
-    - term: अव्यय
-      en: indeclinable
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent — whoever divides
   - form: विभजति
     lemma: भज्
     gloss: divides
@@ -258,18 +269,16 @@
     notes:
     - term: सर्वनाम
       en: the correlative answering यः
-  - form: न
-    lemma: न
-    gloss: does not
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent
+  - form: पश्चात्
+    lemma: पश्चात्
+    gloss: afterwards, last
     notes:
     - term: अव्यय
-      en: indeclinable
-  - form: स्वयम्
-    lemma: स्वयम्
-    gloss: himself
-    notes:
-    - term: अव्यय
-      en: indeclinable
+      en: afterwards — the divider takes his share once the other has chosen
   - form: गृह्णाति
     lemma: ग्रह्
     gloss: take
@@ -296,6 +305,8 @@
     notes:
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: लज्जितः
     lemma: लज्ज्
     gloss: ashamed

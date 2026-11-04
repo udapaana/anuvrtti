@@ -2,8 +2,8 @@
   kind: graded
   segment: 182
   order: 2
-  sentence: 'एकदा रामः सीता च वने सुषुपतुः। प्रातः रामः सीताम् उवाच — अहम् स्वप्ने अयोध्याम् जगम, पितरम् च ददर्श। सीता उवाच — त्वम् तत्र किम् चकर्थ? रामः उवाच — अहम् पितरम् ननम, सः माम् उवाच — पुत्र, चिरम् जीव। सीता उवाच — आवाम् अपि स्वप्ने अयोध्याम् जग्मिव इति मन्ये।'
-  translation: 'Once Rāma and Sītā slept in the forest. In the morning Rāma said to Sītā: "In a dream I went to Ayodhyā and saw my father." Sītā said: "What did you do there?" Rāma said: "I bowed to my father, and he said to me: ''Son, live long.''" Sītā said: "I think we two went to Ayodhyā in a dream as well."'
+  sentence: 'एकदा रामः सीता च वने सुषुपतुः। प्रातः रामः सीताम् उवाच — अहम् स्वप्ने अयोध्याम् जगम, पितरम् च ददर्श। सीता उवाच — त्वम् तत्र किम् चकर्थ? रामः उवाच — अहम् पितरम् ननम, सः माम् उवाच — पुत्र, चिरम् जीव। सीता उवाच — अहम् अपि तम् एव स्वप्नम् ददर्श। आवाम् उभौ अयोध्याम् जग्मिव इति मन्ये।'
+  translation: 'Once Rāma and Sītā slept in the forest. In the morning Rāma said to Sītā: "In a dream I went to Ayodhyā and saw my father." Sītā said: "What did you do there?" Rāma said: "I bowed to my father, and he said to me: ''Son, live long.''" Sītā said: "I too saw that very dream. I think we both went to Ayodhyā."'
   teaches: 'The perfect in the first and second person — what one did unawares, in a dream (3.2.115 परोक्षे लिट्): जगम, ददर्श, ननम, चकर्थ, जग्मिव.'
   words:
   - form: एकदा
@@ -85,7 +85,7 @@
     gloss: 'in a dream'
     notes:
     - term: अधिकरण
-      en: 'location'
+      en: 'location — and the reason the perfect fits: in a dream one acts unawares'
     - term: सप्तमी
       en: 'locative'
   - form: अयोध्याम्
@@ -187,13 +187,59 @@
     gloss: 'long'
     notes:
     - term: अव्यय
-      en: 'indeclinable — time'
+      en: 'adverb — the neuter accusative चिरम् "for a long time," with जीव'
   - form: जीव
     lemma: जीव्
     gloss: 'live'
     notes:
     - term: लोट्
       en: 'imperative, 2nd person singular'
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: 'I'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: अपि
+    lemma: अपि
+    gloss: 'also'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: तम्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun — Rāma's dream
+    - term: द्वितीया
+      en: accusative, agreeing with स्वप्नम्
+  - form: एव
+    lemma: एव
+    gloss: very, same
+    notes:
+    - term: अव्यय
+      en: emphatic — "that very" dream
+  - form: स्वप्नम्
+    lemma: स्वप्न
+    gloss: dream
+    notes:
+    - term: कर्मन्
+      en: object of ददर्श
+    - term: द्वितीया
+      en: accusative
+  - form: ददर्श
+    lemma: दृश्
+    gloss: 'I saw'
+    notes:
+    - term: लिट्
+      en: 'perfect, 1st person singular (the same form as the 3rd)'
+    - term: उत्तमपुरुष
+      en: 'the sentence settles the person — the form alone does not'
   - form: आवाम्
     lemma: अस्मद्
     gloss: 'we two'
@@ -204,12 +250,16 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: अपि
-    lemma: अपि
-    gloss: 'also'
+  - form: उभौ
+    lemma: उभ
+    gloss: both
     notes:
-    - term: अव्यय
-      en: 'indeclinable'
+    - term: विशेषण
+      en: qualifying आवाम्
+    - term: प्रथमा
+      en: nominative dual
+    - term: कर्तृ
+      en: agent, with आवाम्
   - form: जग्मिव
     lemma: गम्
     gloss: 'went'

@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "a merchant's journey — our own telling"
     curated: our simple Sanskrit; not from any single source
-  sentence: नद्याः तीरे वणिजः वसन्ति स्म। तेषाम् गृहेषु धनम् धान्यम् च आसीत्। एकदा एकः वणिक् दूरम् देशम् गन्तुम् ऐच्छत्। मित्राणि तम् अवदन् — मार्गः दीर्घः, मा गच्छ इति। किन्तु सः अशृणोत् न। श्वः गमिष्यामि इति उक्त्वा सः रात्रौ यानम् असज्जयत्। प्रभाते तेन मित्राणि त्यक्तानि, नगरम् च त्यक्तम्।
-  translation: On the bank of a river lived merchants. In their houses were wealth and grain. One day one merchant wished to go to a distant country. His friends said to him — "The road is long; do not go." But he did not listen. Saying "I will go tomorrow," he made ready a cart in the night. At dawn the friends were left behind by him, and the city too was left.
+  sentence: नद्याः तीरे वणिजः वसन्ति स्म। तेषाम् गृहेषु धनम् धान्यम् च आसीत्। एकदा एकः वणिक् दूरम् देशम् गन्तुम् ऐच्छत्। मित्राणि तम् अवदन् — मार्गः दीर्घः, मा गच्छ इति। किन्तु सः अशृणोत् न। श्वः गमिष्यामि इति उक्त्वा सः रात्रौ यानम् असज्जयत्। प्रभाते तेन मित्राणि त्यक्तानि, नगरम् च त्यक्तम्। मार्गे चौराः तस्य धनम् अहरन्। तदा सः मित्राणाम् वचनम् अस्मरत्।
+  translation: On the bank of a river lived merchants. In their houses were wealth and grain. One day one merchant wished to go to a distant country. His friends said to him — "The road is long; do not go." But he did not listen. Saying "I will go tomorrow," he made ready a cart in the night. At dawn the friends were left behind by him, and the city too was left. On the road thieves carried off his wealth. Then he remembered his friends' words.
   teaches: |
     a merchant leaves against advice. Closes on तेन मित्राणि त्यक्तानि — two
     participles and an instrumental agent, with no finite verb.
@@ -225,6 +225,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: अशृणोत्
     lemma: श्रु
     gloss: listened
@@ -278,9 +280,9 @@
     vocab: true
     notes:
     - term: कर्मन्
-      en: object
+      en: object of असज्जयत् — what he made ready
     - term: द्वितीया
-      en: neuter accusative
+      en: neuter accusative — यान "vehicle," from या "go" with ल्युट्
   - form: असज्जयत्
     lemma: सज्ज्
     gloss: made ready
@@ -288,6 +290,14 @@
     notes:
     - term: लङ्
       en: past — a causative-shaped stem सज्जय्
+    - term: प्रथमपुरुष
+      en: third person
+    - term: एकवचन
+      en: singular
+    - term: परस्मैपद
+      en: active ending त्
+    - term: चुरादि
+      en: class 10 — stem सज्जय्
   - form: प्रभाते
     lemma: प्रभात
     gloss: at dawn
@@ -328,9 +338,89 @@
     notes:
     - term: निष्ठा
       en: the same participle, now singular for a single city
+  - form: मार्गे
+    lemma: मार्ग
+    gloss: on the road
+    notes:
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
+  - form: चौराः
+    lemma: चौर
+    gloss: thieves
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural
+    - term: पुंलिङ्ग
+      en: masculine
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्बन्ध
+      en: possession
+    - term: षष्ठी
+      en: genitive
+  - form: धनम्
+    lemma: धन
+    gloss: wealth
+    notes:
+    - term: कर्मन्
+      en: object of अहरन्
+    - term: द्वितीया
+      en: accusative
+  - form: अहरन्
+    lemma: हृ
+    gloss: carried off
+    notes:
+    - term: लङ्
+      en: past, third plural — गुण हृ → हर्
+  - form: तदा
+    lemma: तदा
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent
+  - form: मित्राणाम्
+    lemma: मित्र
+    gloss: of his friends
+    notes:
+    - term: सम्बन्ध
+      en: possession — whose words
+    - term: षष्ठी
+      en: genitive plural — नाम् with the vowel lengthened, ण after र
+  - form: वचनम्
+    lemma: वचन
+    gloss: words
+    notes:
+    - term: कर्मन्
+      en: object of अस्मरत्
+    - term: द्वितीया
+      en: accusative
+  - form: अस्मरत्
+    lemma: स्मृ
+    gloss: remembered
+    notes:
+    - term: लङ्
+      en: past — गुण स्मृ → स्मर्
   vyakhya: मा गच्छ इति उक्तम्, तथापि सः अगच्छत्। तेन मित्राणि त्यक्तानि।
   vyakhya_en: |
-    The last sentence has no finite verb in it. त्यक्तानि and त्यक्तम् are
+    The departure has no finite verb in it. त्यक्तानि and त्यक्तम् are
     participles, and they carry the whole statement — the friends left, the
     city left, and तेन telling you by whom.
 

@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "the wandering monk — our own telling, in avyayībhāvas"
     curated: our simple Sanskrit; not from any single source
-  sentence: एकः यतिः उपनदि अवसत्। सः प्रतिगृहम् अटन् यथाशक्ति भिक्षाम् अयाचत। निर्मक्षिकम् सः भोजनम् अखादत्।
-  translation: A monk lived near the river. Going house to house, he begged for alms according to his means. He ate his food in a fly-free quiet.
+  sentence: एकः यतिः उपनदि अवसत्। सः प्रतिगृहम् अटन् यथाशक्ति भिक्षाम् अयाचत। ततः सः निर्मक्षिकम् भोजनम् अखादत्।
+  translation: A monk lived near the river. Going house to house, he begged alms as far as his strength allowed. Then he ate his meal in solitude, with not even a fly about.
   teaches: |
     the अव्ययीभाव — the compound that turns into an adverb, its first member an
     indeclinable: उपनदि "near the river," प्रतिगृहम् "at each house," यथाशक्ति
@@ -33,7 +33,9 @@
     - term: कर्तृ
       en: subject
     - term: प्रथमा
-      en: nominative (इ-stem)
+      en: nominative — इ-stem masculine adds स्, यति → यतिः, like मुनिः
+    - term: पुंलिङ्ग
+      en: masculine
   - form: उपनदि
     lemma: उपनदि
     gloss: near the river
@@ -101,15 +103,31 @@
     vocab: true
     notes:
     - term: कर्मन्
-      en: object of अयाचत
+      en: object of अयाचत — याच् takes what is asked for in the accusative
     - term: द्वितीया
-      en: accusative
+      en: accusative — आ-stem adds म्, भिक्षा → भिक्षाम्
   - form: अयाचत
     lemma: याच्
     gloss: begged for
     notes:
     - term: लङ्
       en: past
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: then — after the begging round
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
   - form: निर्मक्षिकम्
     lemma: निर्मक्षिक
     gloss: free of flies (undisturbed)
@@ -121,17 +139,7 @@
     - cite: '2.1.6'
       role: अव्ययं… (अभाव "absence") — निर् in the "absence" sense forms an अव्ययीभाव → निर्मक्षिकम्
     - term: अव्यय
-      en: adverb — "in fly-free quiet"
-  - form: सः
-    lemma: तद्
-    gloss: he
-    notes:
-    - term: सर्वनाम
-      en: pronoun
-    - term: कर्तृ
-      en: subject
-    - term: प्रथमा
-      en: nominative
+      en: adverb — "with no flies about," so in solitude, undisturbed
   - form: भोजनम्
     lemma: भोजन
     gloss: food, a meal

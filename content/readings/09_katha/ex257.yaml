@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "the man and the tiger — our own telling, through the cases"
     curated: our simple Sanskrit; not from any single source
-  sentence: एकः नरः वने अवसत्। नरम् व्याघ्रः अपश्यत्। नरः वृक्षम् आरोहत्। व्याघ्रः नराय अक्रुध्यत्। नरः तस्मै फलानि अक्षिपत्। ततः नरात् व्याघ्रः अबिभेत्। नरस्य बुद्धिः महती आसीत्।
-  translation: A man lived in the forest. A tiger saw the man. The man climbed a tree. The tiger grew angry at the man. The man threw fruits at it. Then the tiger became afraid of the man. The man's wit was great.
+  sentence: एकः नरः वने अवसत्। नरम् व्याघ्रः अपश्यत्। नरः वृक्षम् आरोहत्। व्याघ्रः नराय अक्रुध्यत्। नरः उच्चैः अक्रोशत्, तस्मै फलानि च अक्षिपत्। ततः नरात् व्याघ्रः अबिभेत्। नरस्य बुद्धिः महती आसीत्।
+  translation: A man lived in the forest. A tiger saw the man. The man climbed a tree. The tiger grew angry at the man. The man shouted loudly, and pelted it with fruits. Then the tiger became afraid of the man. The man's wit was great.
   teaches: |
     one noun through its cases — नरः, नरम्, नराय, नरात्, नरस्य — and the verbs
     that pick special cases: क्रुध् "be angry" wants the dative (नराय), भी "fear"
@@ -108,6 +108,18 @@
       en: '"be angry" (दिवादि — श्यन्)'
     - term: लङ्
       en: past
+  - form: उच्चैः
+    lemma: उच्चैस्
+    gloss: loudly
+    notes:
+    - term: अव्यय
+      en: adverb — "aloud," how he shouts
+  - form: अक्रोशत्
+    lemma: क्रुश्
+    gloss: shouted
+    notes:
+    - term: लङ्
+      en: past — augment अ, गुण क्रुश् → क्रोश्
   - form: तस्मै
     lemma: तद्
     gloss: at it
@@ -118,6 +130,8 @@
       en: recipient (of the thrown fruit)
     - term: चतुर्थी
       en: dative (pronominal)
+    - term: पुंलिङ्ग
+      en: masculine — the tiger
   - form: फलानि
     lemma: फल
     gloss: fruits
@@ -128,6 +142,12 @@
       role: जश्शसोः शिः — a neuter's जस्/शस् is replaced by शि (→ ि, with नुम्) → फल → फलानि
     - term: द्वितीया
       en: accusative plural (neuter)
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — the shouting and the throwing together
   - form: अक्षिपत्
     lemma: क्षिप्
     gloss: threw
@@ -187,7 +207,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 18
+      to: 21
   - form: आसीत्
     lemma: अस्
     gloss: was

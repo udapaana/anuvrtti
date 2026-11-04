@@ -5,10 +5,10 @@
     text: कथा (our graded retelling)
     ref: "the messenger who came today — our own telling"
     curated: our simple Sanskrit; not from any single source
-  sentence: अद्य दूतः नगरम् अगमत्। सः राज्ञः पुरतः अवादीत् — शत्रवः सेनाम् अनयन्, ग्रामान् च अदहन्। राजा तत् अश्रौषीत्, क्षणम् च तूष्णीम् आसीत्। ततः सः अवादीत् — यत् त्वया उक्तम् तत् सत्यम् चेत्, अहम् अद्य एव सेनाम् प्रेषयामि। मन्त्री अवदत् — देव, धैर्यम् एव बलम्। राजा अकार्षीत् यत् मन्त्री अवदत्।
-  translation: Today a messenger went to the city. He spoke before the king — "The enemies led out an army, and burned the villages." The king heard that, and was silent a moment. Then he spoke — "If what has been said by you is true, I send the army this very day." The minister said — "Your majesty, steadiness alone is strength." The king did what the minister said.
+  sentence: अद्य दूतः नगरम् आगमत्। सः राज्ञः पुरतः अवादीत् — शत्रवः सेनाम् अनयन्, ग्रामान् च अदहन्। राजा तत् अश्रौषीत्, क्षणम् च तूष्णीम् आसीत्। ततः सः अवादीत् — यत् त्वया उक्तम् तत् सत्यम् चेत्, अहम् अद्य एव सेनाम् प्रेषयामि। मन्त्री अवदत् — देव, धैर्यम् एव बलम्। राजा अकार्षीत् यत् मन्त्री अवदत् — धैर्येण सेनाम् असज्जयत्।
+  translation: Today a messenger came to the city. He spoke before the king — "The enemies led out an army, and burned the villages." The king heard that, and was silent a moment. Then he spoke — "If what has been said by you is true, I send the army this very day." The minister said — "Your majesty, steadiness alone is strength." The king did what the minister said — steadily, he made the army ready.
   teaches: |
-    अगमत्, अवादीत्, अश्रौषीत्, अकार्षीत् — four aorists, the past of what
+    आगमत्, अवादीत्, अश्रौषीत्, अकार्षीत् — four aorists, the past of what
     happened today. शत्रवः and राज्ञः show the visarga taking a sibilant and
     a stop; तूष्णीम् holds its ष् unchanged.
   words:
@@ -35,14 +35,14 @@
       en: goal of motion
     - term: द्वितीया
       en: accusative
-  - form: अगमत्
+  - form: आगमत्
     lemma: गम्
-    gloss: went
+    gloss: came
     notes:
     - term: लुङ्
       en: aorist — the plain past, and the past used of today's events
     - cite: '3.2.110'
-      role: लुङ् — past action → अगमत्
+      role: लुङ् — past action → आ + अगमत् → आगमत्
   - form: सः
     lemma: तद्
     gloss: he
@@ -51,6 +51,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: राज्ञः
     lemma: राजन्
     gloss: of the king
@@ -119,13 +121,15 @@
     vocab: true
     notes:
     - term: लङ्
-      en: past, third plural
+      en: past, third plural — अ + दह + अन्, ordinary लङ् beside the aorists
   - form: राजा
     lemma: राजन्
     gloss: the king
     notes:
     - term: प्रथमा
       en: nominative — the न्-stem lengthens and loses its final न्
+    - term: कर्तृ
+      en: agent
   - form: तत्
     lemma: तद्
     gloss: that
@@ -188,6 +192,8 @@
       en: pronoun
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: अवादीत्
     lemma: वद्
     gloss: spoke
@@ -276,6 +282,8 @@
     notes:
     - term: प्रथमा
       en: nominative of an इन्-stem — the ending drops, the इ lengthens
+    - term: कर्तृ
+      en: agent
   - form: अवदत्
     lemma: वद्
     gloss: said
@@ -294,7 +302,9 @@
     vocab: true
     notes:
     - term: प्रथमा
-      en: neuter nominative
+      en: neuter nominative — subject; बलम् is its predicate, no verb needed
+    - term: कर्तृ
+      en: subject of the statement
   - form: एव
     lemma: एव
     gloss: alone
@@ -307,12 +317,17 @@
     notes:
     - term: प्रथमा
       en: neuter nominative — predicate
+    rel:
+    - kind: विधेय
+      to: 38
   - form: राजा
     lemma: राजन्
     gloss: the king
     notes:
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: अकार्षीत्
     lemma: कृ
     gloss: did
@@ -333,12 +348,44 @@
     notes:
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: agent
   - form: अवदत्
     lemma: वद्
     gloss: said
     notes:
     - term: लङ्
       en: past
-  vyakhya: 'अद्येति लुङः निमित्तम्। अगमत् अवादीत् अश्रौषीत् अकार्षीत् इति चत्वारः लुङः। अनयन् अदहन् अवदत् इति लङः, तयोः भेदः कालमात्रे। यत् त्वया उक्तम् इति भावे क्तम्, त्वयेति कर्तरि तृतीया। चेदिति न वाक्यादौ तिष्ठति।'
+  - form: धैर्येण
+    lemma: धैर्य
+    gloss: with steadiness
+    notes:
+    - term: करण
+      en: manner — how he acts
+    - term: तृतीया
+      en: instrumental
+  - form: सेनाम्
+    lemma: सेना
+    gloss: the army
+    notes:
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative
+  - form: असज्जयत्
+    lemma: सज्ज्
+    gloss: made ready
+    notes:
+    - term: लङ्
+      en: past — चुरादि stem सज्जय्
+    - term: प्रथमपुरुष
+      en: third person
+    - term: एकवचन
+      en: singular
+    - term: परस्मैपद
+      en: active ending त्
+    - term: चुरादि
+      en: class 10 — stem सज्जय्
+  vyakhya: 'अद्येति लुङः निमित्तम्। आगमत् अवादीत् अश्रौषीत् अकार्षीत् इति चत्वारः लुङः। अनयन् अदहन् अवदत् असज्जयत् इति लङः, तयोः भेदः कालमात्रे। यत् त्वया उक्तम् इति भावे क्तम्, त्वयेति कर्तरि तृतीया। चेदिति न वाक्यादौ तिष्ठति।'
   vyakhya_en: |
-    अद्य sets the tense: four verbs here are aorists — अगमत्, अवादीत्, अश्रौषीत्, अकार्षीत् — and three are the ordinary past in लङ् — अनयन्, अदहन्, अवदत्. The two sit side by side in one paragraph, so the difference is a matter of what the sentence is doing rather than of what happened. अश्रौषीत् shows the ष् of सिच् after वृद्धि, while तूष्णीम् carries a ष् that no join produced. यत् त्वया उक्तम् puts the agent in the instrumental and the verb in a participle — the clause has no finite verb at all, and तत् सत्यम् answers it with none either.
+    अद्य sets the tense: four verbs here are aorists — आगमत्, अवादीत्, अश्रौषीत्, अकार्षीत् — and four are the ordinary past in लङ् — अनयन्, अदहन्, अवदत्, असज्जयत्. The two sit side by side in one paragraph, so the difference is a matter of what the sentence is doing rather than of what happened. अश्रौषीत् shows the ष् of सिच् after वृद्धि, while तूष्णीम् carries a ष् that no join produced. यत् त्वया उक्तम् puts the agent in the instrumental and the verb in a participle — the clause has no finite verb at all, and तत् सत्यम् answers it with none either.
