@@ -2,8 +2,8 @@
   kind: graded
   segment: 190
   order: 2
-  sentence: 'समुद्रस्य तीरे एकः वृद्धः अवसत्। तस्य गृहे सुवर्णवर्णयोः पक्षिणोः नीडम् आसीत्। धनदत्तः तम् वणिजम् अपश्यत्, अवदत् च — हे वणिक्, अस्मभ्यम् पक्षिणौ देहि। वृद्धः अवदत् — मम मनः अस्मिन् पक्षिणि अस्ति। तथापि वणिजि दया आसीत्। धनदत्तः पक्षिभ्याम् फलानि अयच्छत्। ततः सः वणिजः पक्षिणौ रत्नानि च अक्रीणात्।'
-  translation: 'On the seashore lived an old man. In his house was the nest of two golden birds. Dhanadatta saw that merchant and said: "Merchant, give us the two birds." The old man said: "My heart is in this bird." Yet there was kindness in the merchant. Dhanadatta gave fruit to the two birds. Then he bought the birds and the jewels from the merchant.'
+  sentence: 'समुद्रस्य तीरे एकः वृद्धः वणिक् अवसत्। तस्य गृहे सुवर्णवर्णयोः पक्षिणोः नीडम् आसीत्। धनदत्तः तम् वणिजम् अपश्यत्, अवदत् च — हे वणिक्, अस्मभ्यम् पक्षिणौ देहि। वृद्धः अवदत् — मम मनः अस्मिन् पक्षिणि अस्ति। धनदत्तः पक्षिभ्याम् फलानि अयच्छत्। ततः वणिजि दया अभवत्। सः वणिजः पक्षिणौ रत्नानि च अक्रीणात्।'
+  translation: 'On the seashore lived an old merchant. In his house was the nest of two golden birds. Dhanadatta saw the merchant and said: "Merchant, give us the two birds." The old man said: "My heart is in this bird." Dhanadatta gave fruit to the two birds. Then kindness arose in the merchant. He bought the birds and the jewels from the merchant.'
   teaches: 'Part 4 — the seller: वणिजम्, वणिक् (vocative), वणिजि, वणिजः (ablative — bought from); पक्षिणोः, पक्षिणि, पक्षिभ्याम्.'
   words:
   - form: समुद्रस्य
@@ -49,6 +49,18 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
+  - form: वणिक्
+    lemma: वणिज्
+    gloss: 'merchant'
+    notes:
+    - term: कर्तृ
+      en: 'agent of अवसत्, with वृद्धः'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: प्रथमा
+      en: 'nominative — in apposition to वृद्धः; the consonant ज् becomes क् at word end'
   - form: अवसत्
     lemma: वस्
     gloss: 'lived'
@@ -87,7 +99,7 @@
       en: 'genitive dual'
     rel:
     - kind: विशेषण
-      to: 8
+      to: 9
   - form: पक्षिणोः
     lemma: पक्षिन्
     gloss: 'of two birds'
@@ -107,7 +119,7 @@
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative'
+      en: 'neuter अ-stem nom. sg in -अम् — subject of आसीत्, "there was a nest"'
   - form: आसीत्
     lemma: अस्
     gloss: 'was'
@@ -244,32 +256,6 @@
     notes:
     - term: लट्
       en: 'present'
-  - form: तथापि
-    lemma: तथापि
-    gloss: 'yet'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — concession'
-  - form: वणिजि
-    lemma: वणिज्
-    gloss: 'in the merchant'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative'
-  - form: दया
-    lemma: दया
-    gloss: 'kindness'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
   - form: पक्षिभ्याम्
     lemma: पक्षिन्
     gloss: 'to the two birds'
@@ -302,6 +288,32 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — sequence'
+  - form: वणिजि
+    lemma: वणिज्
+    gloss: 'in the merchant'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: अधिकरण
+      en: 'the seat of the feeling — kindness arose in the old merchant'
+    - term: सप्तमी
+      en: 'locative'
+  - form: दया
+    lemma: दया
+    gloss: 'kindness'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: कर्तृ
+      en: 'subject of अभवत् — आ-stem feminine, nom. sg with no ending'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: अभवत्
+    lemma: भू
+    gloss: 'arose'
+    notes:
+    - term: लङ्
+      en: 'imperfect — the old man''s mood changes once he sees the birds fed'
   - form: सः
     lemma: तद्
     gloss: 'he'

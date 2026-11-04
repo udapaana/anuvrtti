@@ -2,8 +2,8 @@
   kind: graded
   segment: 183
   order: 1
-  sentence: 'मार्गदर्शकः वदति — इमौ बालौ अत्र तिष्ठतः, इमाः कन्याः च गायन्ति। पश्य इमे लते, इमान् वृक्षान् च। आभ्याम् हस्ताभ्याम् अहम् पुष्पाणि चिनोमि, एभिः पुष्पैः च देवम् पूजयामि। अस्मै देवाय नमः, अस्यै देव्यै च। एभ्यः बालेभ्यः फलानि यच्छ। अस्मात् वृक्षात् फलम् पतति। आभ्यः नदीभ्यः जलम् आनय। अनयोः बालयोः नामनी शृणु। एषाम् वृक्षाणाम् छायायाम् उपविश। अस्मिन् मन्दिरे देवः वसति, एषु वृक्षेषु च पक्षिणः।'
-  translation: 'The guide says: "These two boys stand here, and these girls sing. Look at these two creepers, and these trees. With these two hands I gather flowers, and with these flowers I worship the god. Homage to this god, and to this goddess. Give fruit to these boys. From this tree a fruit falls. Bring water from these rivers. Hear the names of these two boys. Sit in the shade of these trees. In this temple the god dwells, and in these trees, the birds."'
+  sentence: 'मार्गदर्शकः वदति — इमौ बालौ अत्र तिष्ठतः, इमाः कन्याः च गायन्ति। पश्य इमे लते, इमान् वृक्षान् च। आभ्याम् हस्ताभ्याम् अहम् पुष्पाणि चिनोमि, एभिः पुष्पैः च देवम् पूजयामि। अस्मै देवाय नमः, अस्यै देव्यै च। एभ्यः बालेभ्यः फलानि यच्छ। अस्मात् वृक्षात् फलम् पतति। आभ्यः वापीभ्यः जलम् आनय। अनयोः बालयोः पिता पुरोहितः। एषाम् वृक्षाणाम् छायायाम् उपविश। अस्मिन् मन्दिरे देवः वसति, एषु वृक्षेषु च पक्षिणः।'
+  translation: 'The guide says: "These two boys stand here, and these girls sing. Look at these two creepers, and these trees. With these two hands I gather flowers, and with these flowers I worship the god. Homage to this god, and to this goddess. Give fruit to these boys. From this tree a fruit falls. Bring water from these wells. The father of these two boys is the priest. Sit in the shade of these trees. In this temple the god dwells, and in these trees, the birds."'
   teaches: 'इदम् "this" through fourteen cells, in all three genders — इमौ, इमाः, इमे, इमान्, आभ्याम्, एभिः, अस्मै/अस्यै, एभ्यः, अस्मात्, आभ्यः, अनयोः, एषाम्, अस्मिन्, एषु.'
   words:
   - form: मार्गदर्शकः
@@ -11,7 +11,7 @@
     gloss: 'the guide'
     notes:
     - term: कर्तृ
-      en: 'agent'
+      en: 'subject of वदति — the guide who points out each thing with इदम्'
     - term: प्रथमा
       en: 'nominative'
   - form: वदति
@@ -133,7 +133,7 @@
     gloss: 'with hands'
     notes:
     - term: करण
-      en: 'instrument'
+      en: 'instrumental dual -भ्याम्: the two hands he gathers with; आभ्याम् agrees'
     - term: तृतीया
       en: 'instrumental dual'
   - form: अहम्
@@ -298,12 +298,14 @@
       en: 'pronoun, qualifying the noun'
     - term: पञ्चमी
       en: 'ablative plural'
-  - form: नदीभ्यः
-    lemma: नदी
-    gloss: 'from the rivers'
+  - form: वापीभ्यः
+    lemma: वापी
+    gloss: 'from these wells'
     notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine ई-stem'
     - term: अपादान
-      en: 'source'
+      en: 'source — the temple wells the water is drawn from'
     - term: पञ्चमी
       en: 'ablative plural'
   - form: जलम्
@@ -336,20 +338,30 @@
       en: 'relation'
     - term: षष्ठी
       en: 'genitive dual'
-  - form: नामनी
-    lemma: नामन्
-    gloss: 'names'
+  - form: पिता
+    lemma: पितृ
+    gloss: 'the father'
     notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: शृणु
-    lemma: श्रु
-    gloss: 'hear'
+    - term: कर्तृ
+      en: 'subject — whose father: अनयोः बालयोः'
+    - term: प्रथमा
+      en: nominative
+    - cite: "7.1.94"
+      role: "ऋदुशनस्… — ऋ-stem nom.sg lengthens → पिता, कर्ता → पिता"
+    - cite: "6.1.68"
+      role: "हल्ङ्याब्भ्यो… — सु drops after long आ-stems and consonants → पिता"
+  - form: पुरोहितः
+    lemma: पुरोहित
+    gloss: 'the (temple) priest'
     notes:
-    - term: लोट्
-      en: 'imperative, 2nd person singular'
+    - term: कर्तृ
+      en: 'predicate of पिता, with अस्ति understood'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: प्रथमा
+      en: 'nominative — the predicate: "is the priest"'
   - form: एषाम्
     lemma: इदम्
     gloss: 'of these'
@@ -373,7 +385,7 @@
     - term: अधिकरण
       en: 'location'
     - term: सप्तमी
-      en: 'locative'
+      en: 'locative — आ-stem feminine takes -आयाम्: छाया → छायायाम्, "in the shade"'
   - form: उपविश
     lemma: विश्
     gloss: 'sit'
@@ -395,7 +407,7 @@
     - term: अधिकरण
       en: 'location'
     - term: सप्तमी
-      en: 'locative'
+      en: 'locative — the god dwells in the temple; अ-stem neuter in -ए'
   - form: देवः
     lemma: देव
     gloss: 'the god'

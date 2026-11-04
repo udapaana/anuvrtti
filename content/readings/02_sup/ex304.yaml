@@ -2,8 +2,8 @@
   kind: graded
   segment: 182
   order: 3
-  sentence: 'कवेः वाक् मधुरा। वाचौ तस्य द्वे — एका गीतस्य, अपरा कथायाः। सः वाग्भिः जनान् आनन्दयति। वाचे सः तपः करोति। वाचः एव तस्य यशः जायते। वाचाम् देवी सरस्वती। वाचि सत्यम् तिष्ठति, वाक्षु च धर्मः। हे वाक्, मम मुखे वस।'
-  translation: 'The poet''s speech is sweet. His speech is of two kinds — one of song, the other of story. With words he delights people. For speech he does penance. From speech alone his fame is born. Sarasvatī is the goddess of speech. Truth stands in speech, and dharma in words. "O speech, dwell in my mouth."'
+  sentence: 'कवेः वाक् मधुरा। वाचौ तस्य द्वे — एका गीतस्य, अपरा कथायाः। सः वाग्भिः जनान् आनन्दयति। वाचे सः तपः करोति। वाचः एव तस्य यशः जायते। वाचाम् देवी सरस्वती। वाचि सत्यम् तिष्ठति, सत्यासु च वाक्षु धर्मः। हे वाक्, मम मुखे वस।'
+  translation: 'The poet''s speech is sweet. His speech is of two kinds — one of song, the other of story. With words he delights people. For speech he does penance. From speech alone his fame is born. Sarasvatī is the goddess of speech. Truth stands in speech, and dharma in truthful words. "O speech, dwell in my mouth."'
   teaches: 'वाच् (consonant-stem feminine) — वाक्, वाचौ, वाग्भिः, वाचे, वाचः, वाचाम्, वाचि, वाक्षु, हे वाक्.'
   words:
   - form: कवेः
@@ -13,7 +13,7 @@
     - term: सम्बन्ध
       en: 'relation'
     - term: षष्ठी
-      en: 'genitive'
+      en: 'genitive — इ-stem takes गुण: कवि → कवेः, "the poets"'
   - form: वाक्
     lemma: वाच्
     gloss: 'speech'
@@ -97,7 +97,7 @@
     - term: सम्बन्ध
       en: 'relation'
     - term: षष्ठी
-      en: 'genitive'
+      en: 'genitive — आ-stem feminine takes -आयाः: "(one) of story"'
   - form: सः
     lemma: तद्
     gloss: 'he'
@@ -145,7 +145,7 @@
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
-      en: 'accusative'
+      en: 'object of करोति — अस्-neuter, acc. sg = nom. sg तपः'
   - form: करोति
     lemma: कृ
     gloss: 'does'
@@ -179,7 +179,7 @@
     gloss: 'is born'
     notes:
     - term: लट्
-      en: 'present (दिवादि)'
+      en: 'जन् is दिवादि and आत्मनेपदी — जा + य + ते, "is born"'
   - form: वाचाम्
     lemma: वाच्
     gloss: 'of speech'
@@ -203,7 +203,7 @@
     - term: कर्तृ
       en: 'in apposition'
     - term: प्रथमा
-      en: 'nominative'
+      en: 'ई-stem feminine nom. sg, no ending — in apposition to देवी'
   - form: वाचि
     lemma: वाच्
     gloss: 'in speech'
@@ -226,6 +226,19 @@
     notes:
     - term: लट्
       en: 'present (स्था → तिष्ठ)'
+  - form: सत्यासु
+    lemma: सत्य
+    gloss: 'truthful'
+    notes:
+    - term: विशेषण
+      en: 'qualifying वाक्षु — feminine, so सत्य takes आ'
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: सप्तमी
+      en: 'locative plural -आसु'
+    rel:
+    - kind: विशेषण
+      to: 28
   - form: वाक्षु
     lemma: वाच्
     gloss: 'in words'
@@ -271,7 +284,7 @@
     - term: अधिकरण
       en: 'location'
     - term: सप्तमी
-      en: 'locative'
+      en: 'locative — "in my mouth", where the poet asks speech to dwell'
   - form: वस
     lemma: वस्
     gloss: 'dwell'

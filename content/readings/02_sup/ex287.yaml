@@ -2,9 +2,9 @@
   kind: graded
   segment: 178
   order: 1
-  sentence: 'एकस्य राज्ञः द्वे दुहितरौ स्तः। प्रातः ते नद्यौ गच्छतः। तत्र धेनू चरतः। कन्ये द्वौ मुनी पश्यतः। एकः मुनिः तयोः बाहू स्पृशति, शुभे वाचौ च वदति — युवयोः मनसी शुद्धे भवताम्।'
-  translation: 'A king has two daughters. In the morning they go to the two rivers. There two cows are grazing. The girls see two sages. One sage touches their arms and speaks two blessings: "May your minds be pure."'
-  teaches: 'Duals across the stem classes — दुहितरौ, नद्यौ, धेनू, मुनी, बाहू, वाचौ, मनसी — and the imperative dual भवताम्.'
+  sentence: 'एकस्य राज्ञः द्वे दुहितरौ स्तः। प्रातः ते नद्यौ गच्छतः। तत्र धेनू चरतः। कन्ये द्वौ मुनी पश्यतः। एकः मुनिः तयोः बाहू स्पृशति, शुभाम् वाचम् च वदति — युवयोः मनसी शुद्धे भवताम्।'
+  translation: 'A king has two daughters. In the morning they go to the two rivers. There two cows are grazing. The girls see two sages. One sage touches their arms and speaks a blessing: "May your minds be pure."'
+  teaches: 'Duals across the stem classes — दुहितरौ, नद्यौ, धेनू, मुनी, बाहू, मनसी — and the imperative dual भवताम्.'
   words:
   - form: एकस्य
     lemma: एक
@@ -103,7 +103,7 @@
     gloss: 'graze'
     notes:
     - term: लट्
-      en: 'present, dual'
+      en: 'dual -तः agreeing with धेनू: the two cows graze'
   - form: कन्ये
     lemma: कन्या
     gloss: 'the girls'
@@ -111,7 +111,7 @@
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative dual'
+      en: 'आ-stem feminine nom. dual: आ + औ → ए'
   - form: द्वौ
     lemma: द्वि
     gloss: 'two'
@@ -183,26 +183,34 @@
     gloss: 'touches'
     notes:
     - term: लट्
-      en: 'present (तुदादि)'
-  - form: शुभे
+      en: 'स्पृश् is तुदादि — श, no गुण: स्पृशति, not स्पर्शति'
+  - form: शुभाम्
     lemma: शुभ
     gloss: 'auspicious'
     notes:
     - term: विशेषण
-      en: 'qualifying the noun'
+      en: 'qualifying वाचम् — feminine, so शुभ takes आ: शुभाम्'
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
     - term: द्वितीया
-      en: 'accusative dual'
+      en: 'accusative'
     rel:
     - kind: विशेषण
       to: 22
-  - form: वाचौ
+  - form: वाचम्
     lemma: वाच्
-    gloss: 'words, blessings'
+    gloss: 'a blessing, words'
     notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine consonant stem'
+    - term: एकवचन
+      en: 'singular'
     - term: कर्मन्
-      en: 'what is spoken — consonant-stem feminine dual'
+      en: 'what is spoken'
     - term: द्वितीया
-      en: 'accusative dual'
+      en: 'accusative — consonant stem takes -अम्: वाच् + अम्'
   - form: च
     lemma: च
     gloss: 'and'
@@ -238,7 +246,7 @@
     gloss: 'pure'
     notes:
     - term: विशेषण
-      en: 'qualifying the noun'
+      en: 'neuter nom. dual -ए, agreeing with मनसी — the blessing''s predicate'
     - term: प्रथमा
       en: 'nominative dual'
     rel:

@@ -2,8 +2,8 @@
   kind: graded
   segment: 192
   order: 1
-  sentence: 'रात्रौ उत्सवः अभवत्। राजा सर्वान् वणिजः निमन्त्रयत्। भोजने पयांसि मधूनि च आसन्। सेवकाः पात्रेषु अपः आनयन्। अपाम् शब्दः मधुरः। पक्षिणौ अद्भिः स्नानम् अकुरुताम्, अप्सु अक्रीडताम्, ततः अद्भ्यः उदपतताम्। राजा वणिग्भ्यः वस्त्राणि अयच्छत्। वणिक्षु धनदत्तः श्रेष्ठः इति जनाः अवदन्। राज्ञः वचनम् वणिजोः मनसी अहर्षयत्। तयोः मनसोः आनन्दः महान्। सः मुनिः अपि आगच्छत्, अवदत् च — हे वणिजौ, युवाम् यशोभिः पूर्णौ। जनाः युवयोः यशसाम् कथाः वदिष्यन्ति। अहम् तपोभ्यः वनम् गच्छामि।'
-  translation: 'At night there was a feast. The king invited all the merchants. At the meal there were milks and honeys. Servants brought water in vessels. The sound of the water was sweet. The two birds bathed in the water, played in the water, then flew up out of the water. The king gave clothes to the merchants. "Among merchants Dhanadatta is the best," people said. The king''s words delighted the two merchants'' hearts. The joy of their two hearts was great. That sage came too, and said: "Merchants, you two are full of glories. People will tell stories of your glories. I go to the forest for austerities."'
+  sentence: 'रात्रौ उत्सवः अभवत्। राजा सर्वान् वणिजः निमन्त्रयत्। भोजने विविधानि पयांसि मधूनि च आसन्। सेवकाः पात्रेषु अपः आनयन्। अपाम् शब्दः मधुरः। पक्षिणौ अद्भिः स्नानम् अकुरुताम्, अप्सु अक्रीडताम्, ततः अद्भ्यः उदपतताम्। राजा वणिग्भ्यः वस्त्राणि अयच्छत्। वणिक्षु धनदत्तः श्रेष्ठः इति जनाः अवदन्। राज्ञः वचनम् वणिजोः मनसी अहर्षयत्। तयोः मनसोः आनन्दः महान्। सः मुनिः अपि आगच्छत्, अवदत् च — हे वणिजौ, युवाम् यशोभिः पूर्णौ। जनाः युवयोः यशसाम् कथाः वदिष्यन्ति। अहम् तपोभ्यः वनम् गच्छामि।'
+  translation: 'At night there was a feast. The king invited all the merchants. At the meal there were milk and honey of many kinds. Servants brought water in vessels. The sound of the water was sweet. The two birds bathed in the water, played in the water, then flew up out of the water. The king gave clothes to the merchants. "Among merchants Dhanadatta is the best," people said. The king''s words delighted the two merchants'' hearts. The joy of their two hearts was great. That sage came too, and said: "Merchants, you two are rich in honours. People will tell stories of your honours. I go to the forest for austerities."'
   teaches: 'Part 7 — the feast: अप् (always plural — अपः, अपाम्, अद्भिः, अप्सु, अद्भ्यः); the अस्-neuters पयांसि, मनसी, मनसोः, यशोभिः, यशसाम्, तपोभ्यः; वणिजः, वणिग्भ्यः, वणिक्षु, वणिजौ (vocative).'
   words:
   - form: रात्रौ
@@ -91,6 +91,21 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative'
+  - form: विविधानि
+    lemma: विविध
+    gloss: 'of many kinds'
+    notes:
+    - term: विशेषण
+      en: 'qualifying पयांसि and मधूनि — the plural means "kinds of" milk and honey'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: प्रथमा
+      en: 'nominative plural -आनि'
+    rel:
+    - kind: विशेषण
+      to: 9
   - form: पयांसि
     lemma: पयस्
     gloss: 'milks'
@@ -130,7 +145,7 @@
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: कर्तृ
-      en: 'agent'
+      en: 'subject of आनयन् — the servants; अ-stem masc. nom. pl -आः'
     - term: प्रथमा
       en: 'nominative plural'
   - form: पात्रेषु
@@ -142,7 +157,7 @@
     - term: अधिकरण
       en: 'location'
     - term: सप्तमी
-      en: 'locative plural'
+      en: 'locative plural -एषु: the water is carried in the vessels'
   - form: अपः
     lemma: अप्
     gloss: 'water'
@@ -176,7 +191,7 @@
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: कर्तृ
-      en: 'agent'
+      en: 'subject of the unstated अस्ति — "the sound (is) sweet"; मधुरः agrees'
     - term: प्रथमा
       en: 'nominative'
   - form: मधुरः
@@ -191,7 +206,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 17
+      to: 18
   - form: पक्षिणौ
     lemma: पक्षिन्
     gloss: 'the two birds'
@@ -221,7 +236,7 @@
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
-      en: 'accusative'
+      en: 'object of अकुरुताम् — स्नानम् कृ "take a bath"; neuter अ-stem'
   - form: अकुरुताम्
     lemma: कृ
     gloss: 'took'
@@ -324,7 +339,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 32
+      to: 33
   - form: इति
     lemma: इति
     gloss: 'thus'
@@ -437,7 +452,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 44
+      to: 45
   - form: सः
     lemma: तद्
     gloss: 'that'
@@ -522,7 +537,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 53
+      to: 54
   - form: वदिष्यन्ति
     lemma: वद्
     gloss: 'will tell'

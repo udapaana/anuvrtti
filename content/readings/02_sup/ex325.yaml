@@ -2,10 +2,24 @@
   kind: graded
   segment: 184
   order: 2
-  sentence: 'कति शिष्याः अत्र सन्ति? गुरुः शिष्यान् द्विधा विभजति। सः पञ्चकृत्वः पाठम् वदति। यत्र गुरुः वसति, तत्र जनता आगच्छति। कदा सा न आगच्छति? सा सर्वदा आगच्छति। सर्वथा गुरोः महिमा महान्। ज्ञानम् धनात् गरीयः।'
-  translation: 'How many pupils are here? The teacher divides the pupils in two. He says the lesson five times. Where the teacher lives, there the people come. When do they not come? They always come. In every way the teacher''s greatness is great. Knowledge is weightier than wealth.'
+  sentence: 'अतिथिः पृच्छति कति शिष्याः अत्र सन्ति? गुरुः शिष्यान् द्विधा विभजति। सः पञ्चकृत्वः पाठम् वदति। यत्र गुरुः वसति, तत्र जनता आगच्छति। कदा सा न आगच्छति? सा सर्वदा आगच्छति। सर्वथा गुरोः महिमा प्रसिद्धः। ज्ञानम् धनात् गरीयः।'
+  translation: 'A visitor asks: "How many pupils are here?" The teacher divides the pupils in two. He says the lesson five times. Where the teacher lives, there the people come. "When do they not come?" They always come. In every way the teacher''s greatness is renowned. Knowledge is weightier than wealth.'
   teaches: 'The adverb-making and numeral तद्धितs — डति (कति), त्रल् (अत्र, यत्र, तत्र), धा (द्विधा), कृत्वसुच् (पञ्चकृत्वः), दा (कदा, सर्वदा), था (सर्वथा) — with तल् of the collective (जनता), इमनिच् (महिमा) and ईयसुन् (गरीयः).'
   words:
+  - form: अतिथिः
+    lemma: अतिथि
+    gloss: 'a visitor'
+    notes:
+    - term: कर्मन्
+      en: 'agent — the visitor who asks the questions'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: पृच्छति
+    lemma: प्रच्छ्
+    gloss: 'asks'
+    notes:
+    - term: लट्
+      en: 'present (प्रच्छ् → पृच्छ)'
   - form: कति
     lemma: किम्
     gloss: 'how many'
@@ -26,7 +40,7 @@
       en: 'number'
     rel:
     - kind: विशेषण
-      to: 1
+      to: 3
   - form: शिष्याः
     lemma: शिष्य
     gloss: 'pupils'
@@ -122,7 +136,7 @@
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
-      en: 'accusative'
+      en: 'object of वदति — अ-stem masculine पाठ, acc. sg in -अम्'
   - form: वदति
     lemma: वद्
     gloss: 'says'
@@ -275,19 +289,19 @@
       en: 'nominative'
     - term: एकवचन
       en: 'number'
-  - form: महान्
-    lemma: महत्
-    gloss: 'great'
+  - form: प्रसिद्धः
+    lemma: प्रसिद्ध
+    gloss: 'renowned'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: एकवचन
       en: 'singular'
     - term: प्रथमा
-      en: 'nominative — the predicate'
+      en: 'nominative — the predicate, agreeing with महिमा'
     rel:
     - kind: विधेय
-      to: 23
+      to: 25
   - form: ज्ञानम्
     lemma: ज्ञान
     gloss: 'knowledge'
@@ -324,4 +338,4 @@
       en: 'number'
     rel:
     - kind: विधेय
-      to: 25
+      to: 27
