@@ -1,8 +1,8 @@
 - id: ex108
   kind: graded
   segment: 210
-  sentence: देवदत्तः नित्यम् कर्ता।
-  translation: Devadatta is a habitual doer.
+  sentence: देवदत्तः नित्यम् यज्ञान् कर्ता।
+  translation: Devadatta is one who habitually performs sacrifices.
   teaches: तृन् forms a habitual-agent noun कर्तृ → कर्ता from कृ.
   words:
   - form: देवदत्तः
@@ -21,6 +21,16 @@
     notes:
     - term: अव्यय
       en: adverb signalling habitual sense (शील)
+  - form: यज्ञान्
+    lemma: यज्ञ
+    gloss: sacrifices
+    notes:
+    - term: कर्मन्
+      en: object of कर्ता
+    - cite: '2.3.69'
+      role: न लोकाव्ययनिष्ठाखलर्थतृनाम् — after तृन् the कृत्-genitive is barred → यज्ञान्, not यज्ञानाम्
+    - term: द्वितीया
+      en: accusative plural — with habitual तृन् the object stays accusative, unlike तृच्'s genitive
   - form: कर्ता
     lemma: कर्तृ
     gloss: '"a doer" — one who habitually acts'
@@ -28,10 +38,17 @@
     notes:
     - term: कृदन्त
       en: primary derivative naming the habitual agent
+    - term: तृन्
+      en: the तृन् suffix of habit (शील) — not तृच्
+    - term: कर्तरि
+      en: names the agent
     - cite: '3.2.135'
       role: तृन् on कृ → कर्तृ → कर्ता (habitual agent-noun)
     - term: प्रथमा
       en: nominative singular of कर्तृ-stem
+    rel:
+    - kind: विशेषण
+      to: 0
   vyakhya: तृन्प्रत्यये कृ-धातोः कर्तृशब्दः, प्रथमैकवचने कर्ता। यः शीलेन करोति स कर्ता उच्यते।
   vyakhya_en: |
-    By 3.2.135 (तृन्) the affix तृन् (तृ) comes after a root to name one who does the action habitually or by disposition (शील). On कृ "do" it gives the stem कर्तृ, nominative singular कर्ता. Unlike a plain agent, this names a characteristic doer — one whose nature it is to act.
+    By 3.2.135 (तृन्) the affix तृन् (तृ) comes after a root to name one who does the action habitually or by disposition (शील). On कृ "do" it gives the stem कर्तृ, nominative singular कर्ता. Unlike a plain agent, this names a characteristic doer — one whose nature it is to act. And its object stays in the accusative: the genitive of 2.3.65 is barred after तृन् (2.3.69), so यज्ञान् कर्ता, where the तृच् noun says यज्ञानाम् कर्ता.

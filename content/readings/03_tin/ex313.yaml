@@ -2,8 +2,8 @@
   kind: graded
   segment: 186
   order: 2
-  sentence: 'पिता वदति — श्वः वयम् नगरम् गन्तास्मः। अहम् प्रातः गन्तास्मि। त्वम् अपि गन्तासि वा? युवाम् मया सह गन्तास्थः। यूयम् सर्वे गन्तास्थ। मातरौ अपि गन्तारौ, बालाः च गन्तारः। आवाम् रथेन गन्तास्वः। नगरात् मित्रे वनम् गमिष्यतः। युवाम् नदीम् गमिष्यथः। यूयम् कुत्र गमिष्यथ? आवाम् मन्दिरम् गमिष्यावः।'
-  translation: 'Father says: "Tomorrow we will go to the city. I will go in the morning. Will you go too? You two will go with me. All of you will go. The two mothers will go as well, and the children will go. We two will go by chariot." From the city the two friends will go to the forest. "You two will go to the river. Where will you all go?" "We two will go to the temple."'
+  sentence: 'पिता वदति — श्वः वयम् नगरम् गन्तास्मः। अहम् प्रातः गन्तास्मि। त्वम् अपि गन्तासि वा? युवाम् मया सह गन्तास्थः। यूयम् सर्वे गन्तास्थ। मम पितरौ अपि गन्तारौ, बालाः च गन्तारः। आवाम् रथेन गन्तास्वः। मम मित्रे अपि सह गमिष्यतः। युवाम् नदीम् गमिष्यथः। यूयम् कुत्र गमिष्यथ? आवाम् मन्दिरम् गमिष्यावः।'
+  translation: 'Father says: "Tomorrow we will go to the city. I will go in the morning. Will you go too? You two will go with me. All of you will go. My parents will go as well, and the children will go. We two will go by chariot. My two friends will also come along. You two will go to the river. Where will you all go?" "We two will go to the temple."'
   teaches: 'The periphrastic future (लुट्, a set future) in every person the corpus lacked — गन्तास्मः, गन्तास्मि, गन्तासि, गन्तास्थः, गन्तास्थ, गन्तारौ, गन्तारः, गन्तास्वः — and the simple future (लृट्) in the dual and second plural.'
   words:
   - form: पिता
@@ -159,14 +159,28 @@
     notes:
     - term: लुट्
       en: 'periphrastic future (लुट्) — a set future, "will go", 2nd person plural'
-  - form: मातरौ
-    lemma: मातृ
-    gloss: 'the two mothers'
+  - form: मम
+    lemma: अस्मद्
+    gloss: 'my'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: षष्ठी
+      en: 'genitive — the father''s own parents'
+  - form: पितरौ
+    lemma: पितृ
+    gloss: 'parents (father and mother)'
     notes:
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative dual'
+      en: 'nominative dual — पितृ in the dual names father and mother together (एकशेष)'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
   - form: गन्तारौ
     lemma: गम्
     gloss: 'will go'
@@ -208,7 +222,7 @@
     gloss: 'by chariot'
     notes:
     - term: करण
-      en: 'instrument'
+      en: 'the means of travel — the chariot they go by, hence instrumental'
     - term: तृतीया
       en: 'instrumental'
   - form: गन्तास्वः
@@ -217,14 +231,14 @@
     notes:
     - term: लुट्
       en: 'periphrastic future (लुट्) — a set future, "will go", 1st person dual'
-  - form: नगरात्
-    lemma: नगर
-    gloss: 'from the city'
+  - form: मम
+    lemma: अस्मद्
+    gloss: 'my'
     notes:
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative'
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: षष्ठी
+      en: 'genitive'
   - form: मित्रे
     lemma: मित्र
     gloss: 'the two friends'
@@ -233,14 +247,18 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: वनम्
-    lemma: वन
-    gloss: 'to the forest'
+  - form: अपि
+    lemma: अपि
+    gloss: 'also'
     notes:
-    - term: कर्मन्
-      en: 'the goal of motion'
-    - term: द्वितीया
-      en: 'accusative'
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: सह
+    lemma: सह
+    gloss: 'along'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — "along (with us)"'
   - form: गमिष्यतः
     lemma: गम्
     gloss: 'will go'
