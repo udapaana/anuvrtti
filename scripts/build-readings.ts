@@ -256,7 +256,25 @@ const PADA_SET = new Set(['परस्मैपद', 'आत्मनेपद'
 const GANA_SET = new Set(['भ्वादि', 'अदादि', 'जुहोत्यादि', 'दिवादि', 'स्वादि', 'तुदादि', 'रुधादि', 'तनादि', 'क्र्यादि', 'चुरादि']);
 const LINGA_SET = new Set(['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग']);
 
+/*
+  An indeclinable has no gender and no number. The lemma-keyed tables do not
+  know that: न took the masculine singular of some homonym, so all 63 न in the
+  corpus showed पुंलिङ्ग · एकवचन in the rail.
+*/
 function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1): Record<string, string> | null {
+  const out = derivedFeaturesRaw(word, governed, wi);
+  if (!out) return out;
+  const terms = new Set<string>((word.notes ?? []).map((n: any) => n.term));
+  // …unless it declines after all: मन्दम् "slowly" is an adverb AND a neuter
+  // accusative singular, with a विभक्ति to show for it.
+  const declines = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'].some((v) => terms.has(v));
+  if ((terms.has('अव्यय') || out['अव्यय-भेद']) && !declines) {
+    delete out['लिङ्ग'];
+    delete out['वचन'];
+  }
+  return Object.keys(out).length ? out : null;
+}
+function derivedFeaturesRaw(word: any, governed: Set<number> = new Set(), wi = -1): Record<string, string> | null {
   if (!word.lemma) return null;
   const key = deaccent(word.lemma) + '|' + deaccent(String(word.form ?? ''));
   const cell = USAGE[key];

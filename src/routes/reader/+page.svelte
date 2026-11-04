@@ -554,6 +554,18 @@
   let openTerm = $state<string | null>(null);
   $effect(() => { sel; openTerm = null; });
   const termInfo = $derived(openTerm ? lookupTerm(openTerm) : null);
+  /*
+    What the author wrote about THIS tag on THIS word — "शी is आत्मनेपदी, the
+    ending is ते, not ति". 4,582 such notes were authored and none was shown:
+    the tag opened only the glossary's general entry. The word's note comes
+    first; the glossary follows it. A bare restatement of the tag (लट् →
+    "present") adds nothing to the glossary and is not repeated.
+  */
+  const termNote = $derived.by(() => {
+    if (!openTerm || !selWord) return '';
+    const en = ((selWord.terms ?? []) as any[]).find((t) => t.term === openTerm)?.en ?? '';
+    return en.split(/\s+/).length > 2 ? en : '';
+  });
 
   // Which cells of a system the learner has met — every tag carried by a word in
   // a reading already read. The system card under a concept card lights these, so
@@ -1953,6 +1965,11 @@
             <button class="ev-fold" onclick={() => (openTerm = null)} aria-label="close the note">×</button>
           </div>
           <div class="concept">
+            {#if termNote}
+              <div class="concept-body concept-here">
+                <InlineMarkup text={termNote} autoLink onpick={(t) => (openTerm = t)} />
+              </div>
+            {/if}
             {#if termInfo}
               <div class="concept-head">
                 <Sanskrit text={termInfo.term} source="devanagari" />
@@ -1966,7 +1983,7 @@
                   ><Sanskrit text="सूत्र" source="devanagari" /> {termInfo.sutraRef} →</a
                 >
               {/if}
-            {:else}
+            {:else if !termNote}
               <div class="concept-body concept-empty">
                 No glossary note yet for <Sanskrit text={openTerm} source="devanagari" />.
               </div>
@@ -3090,6 +3107,13 @@
   }
   .concept-empty {
     color: var(--muted);
+  }
+  /* this word's own note, above the glossary's general one */
+  .concept-here {
+    color: var(--ink);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
   }
   .concept-ref {
     display: inline-block;
