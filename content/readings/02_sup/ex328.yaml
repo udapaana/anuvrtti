@@ -2,8 +2,8 @@
   kind: graded
   segment: 190
   order: 1
-  sentence: 'परे तीरे बहवः यात्रिकाः आसन्। धनदत्तः अपृच्छत् — हे वणिजः, यूयम् कुतः आगच्छथ? एकः वृद्धः अवदत् — वयम् प्राच्याः दिशः आगच्छामः। धनदत्तः तस्मै वणिजे फलानि अयच्छत्। सागरदत्तः अपि अन्येन वणिजा सह मित्रताम् अकरोत्। ततः वणिजौ अन्यैः वणिग्भिः सह नगरम् अगच्छताम्। तेषाम् वणिजाम् मध्ये एकः मुनिः अपि आसीत्। वणिजौ भगवन्तम् अनमताम्, अवदताम् च — हे भगवन्, अस्माकम् कर्मणः सिद्धिः भवतु। वणिजौ भगवता सह रात्रिम् अवसताम्।'
-  translation: 'On the far bank were many travellers. Dhanadatta asked: "Merchants, where do you come from?" An old man said: "We come from the eastern quarter." Dhanadatta gave that merchant fruit. Sāgaradatta too made friends with another merchant. Then the two went on to the city with the other merchants. Among those merchants was a sage as well. The two bowed to the holy one and said: "Holy one, may our task succeed." They spent the night with the holy one.'
+  sentence: 'परे तीरे बहवः यात्रिकाः आसन्। धनदत्तः अपृच्छत् — हे वणिजः, यूयम् कुतः आगच्छथ? एकः वृद्धः वणिक् अवदत् — वयम् प्राच्याः दिशः आगच्छामः। धनदत्तः प्रीतः तस्मै वणिजे फलानि अयच्छत्। सागरदत्तः अपि अन्येन वणिजा सह मित्रताम् अकरोत्। ततः वणिजौ अन्यैः वणिग्भिः सह नगरम् अगच्छताम्। तेषाम् वणिजाम् मध्ये एकः मुनिः अपि आसीत्। वणिजौ भगवन्तम् अनमताम्, अवदताम् च — हे भगवन्, अस्माकम् कर्मणः सिद्धिः भवतु। वणिजौ भगवता सह रात्रिम् अवसताम्।'
+  translation: 'On the far bank were many travellers. Dhanadatta asked: "Merchants, where do you come from?" An old merchant said: "We come from the eastern quarter." Pleased, Dhanadatta gave that merchant fruit. Sāgaradatta too made friends with another merchant. Then the two went on to the city with the other merchants. Among those merchants was a sage as well. The two bowed to the holy one and said: "Holy one, may our task succeed." They spent the night with the holy one.'
   teaches: 'Part 3 — the caravan: वणिजः (vocative), वणिजे, वणिजा, वणिग्भिः, वणिजाम्; दिशः (ablative); the मत्/वत् stem भगवत् — भगवन्तम्, भगवन्, भगवता; and कर्मणः.'
   words:
   - form: परे
@@ -49,7 +49,7 @@
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: कर्तृ
-      en: 'agent'
+      en: 'subject of आसन् — अ-stem masc. nom. pl -आः; the taddhita यात्रिक "one on a journey"'
     - term: प्रथमा
       en: 'nominative plural'
   - form: आसन्
@@ -133,6 +133,18 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
+  - form: वणिक्
+    lemma: वणिज्
+    gloss: 'merchant'
+    notes:
+    - term: कर्तृ
+      en: 'agent of अवदत्, with वृद्धः'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: प्रथमा
+      en: 'nominative — in apposition to वृद्धः; final ज् becomes क्'
   - form: अवदत्
     lemma: वद्
     gloss: 'said'
@@ -156,12 +168,12 @@
     - term: स्त्रीलिङ्ग
       en: 'feminine'
     - term: विशेषण
-      en: 'qualifying दिशः'
+      en: 'fem. ablative, agreeing with दिशः: प्राची "eastern" → प्राच्याः, "from the eastern quarter"'
     - term: पञ्चमी
       en: 'ablative'
     rel:
     - kind: विशेषण
-      to: 17
+      to: 18
   - form: दिशः
     lemma: दिश्
     gloss: 'from the quarter'
@@ -178,6 +190,18 @@
     notes:
     - term: लट्
       en: 'present, 1st person plural, with आ'
+  - form: प्रीतः
+    lemma: प्रीत
+    gloss: 'pleased'
+    notes:
+    - term: कर्तृ
+      en: 'agrees with धनदत्तः, the giver'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative, agreeing with धनदत्तः — glad of the news, he rewards the old merchant'
   - form: तस्मै
     lemma: तद्
     gloss: 'to that'
@@ -244,7 +268,7 @@
       en: 'instrumental'
     rel:
     - kind: विशेषण
-      to: 26
+      to: 28
   - form: वणिजा
     lemma: वणिज्
     gloss: 'merchant'
@@ -270,7 +294,7 @@
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
-      en: 'accusative'
+      en: 'object of अकरोत् — मित्र + तल् → मित्रता "friendship", आ-stem feminine'
   - form: अकरोत्
     lemma: कृ
     gloss: 'made'
@@ -307,7 +331,7 @@
       en: 'instrumental plural'
     rel:
     - kind: विशेषण
-      to: 33
+      to: 35
   - form: वणिग्भिः
     lemma: वणिज्
     gloss: 'merchants'
@@ -357,7 +381,7 @@
     gloss: 'among'
     notes:
     - term: अव्यय
-      en: 'indeclinable — place'
+      en: 'indeclinable "among" — takes the genitive वणिजाम्: "among the merchants"'
   - form: एकः
     lemma: एक
     gloss: 'a'
@@ -370,7 +394,7 @@
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 40
+      to: 42
   - form: मुनिः
     lemma: मुनि
     gloss: 'sage'
@@ -454,7 +478,7 @@
     - term: स्त्रीलिङ्ग
       en: 'feminine'
     - term: कर्तृ
-      en: 'agent'
+      en: 'subject of भवतु — इ-stem feminine nom. sg in -इः: "may success be"'
     - term: प्रथमा
       en: 'nominative'
   - form: भवतु

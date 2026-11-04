@@ -2,8 +2,8 @@
   kind: graded
   segment: 184
   order: 2
-  sentence: 'येभ्यः विद्या रोचते, तेभ्यः गुरुः ज्ञानम् ददाति। यस्मात् भयम् उत्पद्यते, तस्मात् दूरम् गच्छ। याभ्यः नदीभ्यः जलम् आयाति, ताभ्यः एव अन्नम् अपि। ययोः बालयोः माता न अस्ति, तौ अहम् पालयामि। येषाम् गृहे अतिथिः पूज्यते, तेषाम् गृहे लक्ष्मीः वसति। यस्मिन् देशे धर्मः, तस्मिन् जयः। येषु गुरुः प्रसीदति, ते धन्याः।'
-  translation: 'To those who love learning the teacher gives knowledge. From whatever fear arises, go far from that. From the rivers water comes from, from those alone food comes too. The two boys who have no mother — them I raise. In whose house a guest is honoured, in their house Lakṣmī dwells. In whatever land dharma is, in that, victory. Those with whom the teacher is pleased are blessed.'
+  sentence: 'येभ्यः विद्या रोचते, तेभ्यः गुरुः ज्ञानम् ददाति। यस्मात् भयम् उत्पद्यते, तस्मात् दूरम् गच्छ। याभ्यः नदीभ्यः जलम् आयाति, ताभ्यः एव अन्नम् अपि जायते। ययोः बालयोः माता न अस्ति, तौ साधवः पालयन्ति। येषाम् गृहे अतिथिः पूज्यते, तेषाम् गृहे लक्ष्मीः वसति। यस्मिन् देशे धर्मः, तस्मिन् जयः। येषु गुरुः प्रसीदति, ते धन्याः।'
+  translation: 'To those who love learning the teacher gives knowledge. From whatever fear arises, go far from that. From the rivers that water comes from, from those alone food comes too. The two boys who have no mother — good people raise them. In whose house a guest is honoured, in their house Lakṣmī dwells. In whatever land dharma is, in that, victory. Those with whom the teacher is pleased are blessed.'
   teaches: 'More correlatives — येभ्यः/तेभ्यः, यस्मात्, याभ्यः/ताभ्यः, ययोः, येषाम्, यस्मिन्, येषु.'
   words:
   - form: येभ्यः
@@ -55,7 +55,7 @@
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
-      en: 'accusative'
+      en: 'object of ददाति — neuter अ-stem, acc. sg = nom. sg'
   - form: ददाति
     lemma: दा
     gloss: 'gives'
@@ -170,6 +170,12 @@
     notes:
     - term: अव्यय
       en: 'indeclinable'
+  - form: जायते
+    lemma: जन्
+    gloss: 'arises, comes'
+    notes:
+    - term: लट्
+      en: 'जन् is दिवादि and आत्मनेपदी — जा + य + ते, "is born"'
   - form: ययोः
     lemma: यद्
     gloss: 'whose (of which two)'
@@ -218,22 +224,24 @@
       en: 'object'
     - term: द्वितीया
       en: 'accusative dual'
-  - form: अहम्
-    lemma: अस्मद्
-    gloss: 'I'
+  - form: साधवः
+    lemma: साधु
+    gloss: 'good people'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
     - term: कर्तृ
-      en: 'agent'
+      en: 'agent — whoever is good raises the orphan'
     - term: प्रथमा
-      en: 'nominative'
-  - form: पालयामि
+      en: 'nominative plural — उ-stem takes गुण: साधु → साधवः'
+  - form: पालयन्ति
     lemma: पाल्
     gloss: 'raise'
     notes:
     - term: लट्
-      en: 'present, 1st person (चुरादि)'
+      en: 'present, 3rd person plural (चुरादि) — agrees with साधवः'
   - form: येषाम्
     lemma: यद्
     gloss: 'whose'
@@ -307,7 +315,7 @@
     - term: अधिकरण
       en: 'location'
     - term: सप्तमी
-      en: 'locative'
+      en: 'locative — "in whatever land"; यस्मिन् agrees with it'
   - form: धर्मः
     lemma: धर्म
     gloss: 'dharma'
@@ -372,4 +380,4 @@
       en: 'nominative plural — the predicate'
     rel:
     - kind: विधेय
-      to: 43
+      to: 44

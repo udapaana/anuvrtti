@@ -1,8 +1,8 @@
 - id: ex266
   kind: graded
   segment: 167
-  sentence: 'वृक्षे फलम् रोहति। बालः फलम् पश्यति, फलाय च धावति। सः फलेन देवम् पूजयति। फलात् बीजम् पतति। फलस्य रसः मधुरः। फले कीटः वसति। हे फल।'
-  translation: 'A fruit grows on the tree. A boy sees the fruit and runs for the fruit. He worships the god with the fruit. A seed falls from the fruit. The fruit''s juice is sweet. An insect lives in the fruit. O fruit!'
+  sentence: 'वृक्षे फलम् रोहति। बालः फलम् पश्यति, फलाय च धावति। सः फलेन देवम् पूजयति। फलात् बीजम् पतति। फलस्य रसः मधुरः। बालः फले कीटम् पश्यति, वदति च — हे फल, त्वम् कीटस्य गृहम्।'
+  translation: 'A fruit grows on the tree. A boy sees the fruit and runs for the fruit. He worships the god with the fruit. A seed falls from the fruit. The fruit''s juice is sweet. In the fruit the boy finds an insect, and says: "O fruit, you are the insect''s home!"'
   teaches: 'फल (अ-stem neuter) through all eight cases — and the neuter signature: फलम् is both प्रथमा (it grows) and द्वितीया (he sees it), one form for two cases.'
   words:
   - form: वृक्षे
@@ -162,30 +162,56 @@
     rel:
     - kind: विशेषण
       to: 17
+  - form: बालः
+    lemma: बाल
+    gloss: 'a boy'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
   - form: फले
     lemma: फल
     gloss: 'in the fruit'
     notes:
     - term: अधिकरण
-      en: 'locus — where the worm lives'
+      en: 'locus — inside the fruit, where the boy finds the insect'
     - term: सप्तमी
       en: 'locative (neuter: फल → फले)'
-  - form: कीटः
+  - form: कीटम्
     lemma: कीट
     gloss: 'an insect'
     notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative (अ-stem masculine)'
-  - form: वसति
-    lemma: वस्
-    gloss: 'lives'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्मन्
+      en: 'what the boy spots inside the fruit'
+    - term: द्वितीया
+      en: 'accusative — अ-stem masculine in -अम्'
+  - form: पश्यति
+    lemma: दृश्
+    gloss: 'sees'
     notes:
     - term: शप्
-      en: 'वस् + अ + ति'
+      en: 'the thematic अ (दृश् appears as पश्य्)'
     - term: लट्
       en: 'present'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: वद्
+      en: '"speak"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: हे
     lemma: हे
     gloss: 'O'
@@ -198,3 +224,35 @@
     notes:
     - term: सम्बोधन
       en: 'vocative — the neuter uses the bare stem (हे फल)'
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: 'you'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter — the fruit addressed'
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: कीटस्य
+    lemma: कीट
+    gloss: 'the insect''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: सम्बन्ध
+      en: 'whose home — the insect''s'
+    - term: षष्ठी
+      en: 'genitive — अ-stem masculine in -अस्य'
+  - form: गृहम्
+    lemma: गृह
+    gloss: 'home'
+    notes:
+    - term: कर्तृ
+      en: 'predicate of the subject त्वम् — the fruit is the insect''s home'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: प्रथमा
+      en: 'nominative — the predicate: "you (are) the home"'

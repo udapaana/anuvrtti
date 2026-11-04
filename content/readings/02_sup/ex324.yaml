@@ -2,8 +2,8 @@
   kind: graded
   segment: 184
   order: 1
-  sentence: 'कौन्तेयः वनम् गच्छति। वैनतेयः तम् अनुगच्छति। गार्ग्यः आचार्यः। सः भारतीयान् शिष्यान् पाठयति। सः तेजस्वी मेधावी च।'
-  translation: 'Kuntī''s son goes to the forest. Vinatā''s son follows him. Garga''s descendant is a teacher. He teaches Indian pupils. He is brilliant and wise.'
+  sentence: 'कौन्तेयः वनम् गच्छति। वैनतेयः तम् अनुगच्छति। तत्र गार्ग्यः आचार्यः वसति। सः भारतीयान् शिष्यान् पाठयति। सः तेजस्वी मेधावी च।'
+  translation: 'Kuntī''s son goes to the forest. Vinatā''s son follows him. There lives Garga''s descendant, a teacher. He teaches Indian pupils. He is brilliant and wise.'
   teaches: 'तद्धित names and adjectives the corpus had not shown: ढक् (कौन्तेयः, वैनतेयः), यञ् (गार्ग्यः), छ (भारतीयान्), विनि (तेजस्वी, मेधावी).'
   words:
   - form: कौन्तेयः
@@ -76,6 +76,12 @@
     notes:
     - term: लट्
       en: 'present, with the preverb अनु'
+  - form: तत्र
+    lemma: तत्र
+    gloss: 'there'
+    notes:
+    - term: अव्यय
+      en: 'there — in that forest; the त्रल् adverb of तद्'
   - form: गार्ग्यः
     lemma: गर्ग
     gloss: 'Garga''s descendant'
@@ -100,15 +106,26 @@
     lemma: आचार्य
     gloss: 'the teacher'
     notes:
+    - term: कर्तृ
+      en: 'agent of वसति, in apposition to गार्ग्यः'
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: एकवचन
       en: 'singular'
     - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 6
+      en: 'nominative — in apposition to गार्ग्यः'
+  - form: वसति
+    lemma: वस्
+    gloss: lives
+    notes:
+    - term: वस्
+      en: '"dwell"'
+    - term: धातु
+      en: verbal root
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
   - form: सः
     lemma: तद्
     gloss: 'he'
@@ -141,7 +158,7 @@
       en: 'number'
     rel:
     - kind: विशेषण
-      to: 10
+      to: 12
   - form: शिष्यान्
     lemma: शिष्य
     gloss: 'pupils'
@@ -178,7 +195,7 @@
       en: 'number'
     rel:
     - kind: विधेय
-      to: 8
+      to: 10
   - form: मेधावी
     lemma: मेधा
     gloss: 'wise'
@@ -199,7 +216,7 @@
       en: 'number'
     rel:
     - kind: विधेय
-      to: 8
+      to: 10
   - form: च
     lemma: च
     gloss: 'and'

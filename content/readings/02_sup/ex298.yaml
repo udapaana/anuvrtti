@@ -2,8 +2,8 @@
   kind: graded
   segment: 180
   order: 3
-  sentence: 'कन्या वदति — हे पितः, हे मातः, शृणुतम्। अहम् पितुः धर्मम् अशिक्षे, मातुः च मधुराम् वाचम्। मधुरया वाचा सर्वे प्रसीदन्ति। अस्माकम् गौः धेनुम् अनुगच्छति। अहम् गवे तृणम् ददामि, गवि च स्निह्यामि। मधुना सह क्षीरम् पिबामि। शुद्धाय मनसे नमः।'
-  translation: 'The girl says: "O father, O mother, listen, both of you. From father I learned dharma, and from mother sweet speech. With sweet speech everyone is pleased. Our cow follows the heifer. I give grass to the cow, and I am fond of the cow. I drink milk with honey. Homage to a pure mind."'
+  sentence: 'कन्या वदति — हे पितः, हे मातः, शृणुतम्। अहम् पितुः धर्मम् अशिक्षे, मातुः च मधुराम् वाचम्। मधुरया वाचा सर्वे प्रसीदन्ति। अस्माकम् गौः धेनुम् अनुगच्छति। अहम् गवे तृणम् ददामि, गवि च स्निह्यामि। तस्याः क्षीरम् मधुना सह पिबामि। युवयोः शुद्धाय मनसे नमः।'
+  translation: 'The girl says: "O father, O mother, listen, both of you. From father I learned dharma, and from mother sweet speech. With sweet speech everyone is pleased. Our bull follows the milch-cow. I give grass to the bull, and I am fond of him. I drink her milk with honey. Homage to the pure mind of you both."'
   teaches: 'Singulars of the rarer stems — हे पितः, हे मातः, पितुः and मातुः as ablatives, वाचम्/वाचा, गौः/गवे/गवि, मधुना, मनसे — and the imperative dual शृणुतम्.'
   words:
   - form: कन्या
@@ -154,7 +154,7 @@
       en: 'genitive plural'
   - form: गौः
     lemma: गो
-    gloss: 'cow'
+    gloss: 'our bull'
     notes:
     - term: कर्तृ
       en: 'गो — the वृद्धि of the nominative'
@@ -162,8 +162,10 @@
       en: 'nominative'
   - form: धेनुम्
     lemma: धेनु
-    gloss: 'the heifer'
+    gloss: 'the milch-cow'
     notes:
+    - term: एकवचन
+      en: 'singular'
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
@@ -210,6 +212,26 @@
     notes:
     - term: लट्
       en: 'present, 1st person'
+  - form: तस्याः
+    lemma: तद्
+    gloss: 'her (the milch-cow''s)'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine — refers to धेनु'
+    - term: सम्बन्ध
+      en: 'whose milk — the milch-cow (धेनु) just named'
+    - term: सर्वनाम
+      en: pronoun (feminine gen.)
+    - term: षष्ठी
+      en: genitive
+  - form: क्षीरम्
+    lemma: क्षीर
+    gloss: 'milk'
+    notes:
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'object of पिबामि — the milch-cow''s milk; neuter अ-stem acc. sg in -अम्'
   - form: मधुना
     lemma: मधु
     gloss: 'with honey'
@@ -224,20 +246,24 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — governs the तृतीया'
-  - form: क्षीरम्
-    lemma: क्षीर
-    gloss: 'milk'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
   - form: पिबामि
     lemma: पा
     gloss: 'I drink'
     notes:
     - term: लट्
-      en: 'present, 1st person'
+      en: 'पा takes the stem पिब् in the present; -आमि is 1st person sg: "I drink"'
+  - form: युवयोः
+    lemma: युष्मद्
+    gloss: 'of you two'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine dual — father and mother together take the masculine'
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'whose mind — the parents she is speaking to'
+    - term: षष्ठी
+      en: 'genitive dual'
   - form: शुद्धाय
     lemma: शुद्ध
     gloss: 'pure'
@@ -248,7 +274,7 @@
       en: 'dative'
     rel:
     - kind: विशेषण
-      to: 32
+      to: 34
   - form: मनसे
     lemma: मनस्
     gloss: 'to a mind'

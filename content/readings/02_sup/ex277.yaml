@@ -2,9 +2,9 @@
   kind: graded
   segment: 170
   order: 2
-  sentence: 'वसन्ते उद्याने द्वे लते वर्धेते। लतयोः भ्रमराः भ्रमन्ति। एकस्याः लतायाः पुष्पम् पतति। बाला सर्वाः लताः सिञ्चति, लताभ्यः जलम् च आनयति। लतानाम् पुष्पैः सा मालाम् करोति। लतासु पक्षिणः वसन्ति, बाला च लताभिः सह गायति।'
-  translation: 'In spring two creepers grow in the garden. Bees wander over the two creepers. From one creeper a flower falls. The girl waters all the creepers and brings water for them. With the creepers'' flowers she makes a garland. Birds live among the creepers, and the girl sings with them.'
-  teaches: 'लता in the dual and plural — लते, लतयोः, लताः, लताभ्यः, लतानाम्, लतासु, लताभिः — and the ablative लतायाः.'
+  sentence: 'वसन्ते उद्याने द्वे लते वर्धेते। लतयोः भ्रमराः भ्रमन्ति। एकस्याः लतायाः पुष्पम् पतति। बाला सर्वाः लताः सिञ्चति, लताभ्यः जलम् च आनयति। लतानाम् पुष्पैः सा मालाम् करोति। लतासु पक्षिणः वसन्ति, बाला च लताभिः शोभिते उद्याने गायति।'
+  translation: 'In spring two creepers grow in the garden. Bees wander over the two creepers. From one creeper a flower falls. The girl waters all the creepers and brings water for them. With the creepers'' flowers she makes a garland. Birds live among the creepers, and the girl sings in the garden the creepers adorn.'
+  teaches: 'लता in the dual and plural — लते, लतयोः, लताः, लताभ्यः, लतानाम्, लतासु, लताभिः (the agent of the participle शोभिते) — and the ablative लतायाः.'
   words:
   - form: वसन्ते
     lemma: वसन्त
@@ -13,7 +13,7 @@
     - term: अधिकरण
       en: 'when'
     - term: सप्तमी
-      en: 'locative'
+      en: 'locative of time — "in spring", अ-stem in -ए'
   - form: उद्याने
     lemma: उद्यान
     gloss: 'in the garden'
@@ -27,7 +27,7 @@
     gloss: 'two'
     notes:
     - term: संख्या
-      en: 'numeral'
+      en: 'द्वि takes feminine -ए to agree with लते: "two creepers"'
     - term: विशेषण
       en: 'qualifying the noun'
     - term: प्रथमा
@@ -70,7 +70,7 @@
     gloss: 'wander'
     notes:
     - term: लट्
-      en: 'present'
+      en: '3rd pl -अन्ति agreeing with भ्रमराः; भ्रम् "wander, hover"'
   - form: एकस्याः
     lemma: एक
     gloss: 'one'
@@ -200,7 +200,7 @@
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
-      en: 'accusative'
+      en: 'object of करोति — आ-stem feminine acc. sg in -आम्'
   - form: करोति
     lemma: कृ
     gloss: 'makes'
@@ -220,7 +220,7 @@
     gloss: 'birds'
     notes:
     - term: कर्तृ
-      en: 'agent'
+      en: 'subject of वसन्ति — इन्-stem nom. pl: पक्षिन् + अः → पक्षिणः (न → ण)'
     - term: प्रथमा
       en: 'nominative plural'
   - form: वसन्ति
@@ -231,18 +231,32 @@
       en: 'present'
   - form: लताभिः
     lemma: लता
-    gloss: 'with the creepers'
+    gloss: 'by the creepers'
     notes:
-    - term: सहार्थ
-      en: 'accompaniment, with सह'
+    - term: करण
+      en: 'the means — the garden is made beautiful by the creepers'
     - term: तृतीया
       en: 'instrumental plural'
-  - form: सह
-    lemma: सह
-    gloss: 'with'
+  - form: शोभिते
+    lemma: शोभित
+    gloss: 'adorned'
     notes:
-    - term: अव्यय
-      en: 'indeclinable — governs the तृतीया'
+    - term: विशेषण
+      en: 'qualifying उद्याने — causative of शुभ् + क्त, "made beautiful"'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: सप्तमी
+      en: 'locative, agreeing with उद्याने'
+  - form: उद्याने
+    lemma: उद्यान
+    gloss: 'in the garden'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: अधिकरण
+      en: 'location — where she sings'
+    - term: सप्तमी
+      en: 'locative'
   - form: गायति
     lemma: गै
     gloss: 'sings'
