@@ -2,9 +2,9 @@
   kind: graded
   segment: 184
   order: 1
-  sentence: 'कौन्तेयः वनम् गच्छति। वैनतेयः तम् अनुगच्छति। तत्र गार्ग्यः आचार्यः वसति। सः भारतीयान् शिष्यान् पाठयति। सः तेजस्वी मेधावी च।'
-  translation: 'Kuntī''s son goes to the forest. Vinatā''s son follows him. There lives Garga''s descendant, a teacher. He teaches Indian pupils. He is brilliant and wise.'
-  teaches: 'तद्धित names and adjectives the corpus had not shown: ढक् (कौन्तेयः, वैनतेयः), यञ् (गार्ग्यः), छ (भारतीयान्), विनि (तेजस्वी, मेधावी).'
+  sentence: 'कौन्तेयः विद्यायै वनम् गच्छति। माद्रेयः तम् अनुगच्छति। तत्र गार्ग्यः आचार्यः वसति। सः भारतीयान् शिष्यान् पाठयति। सः तेजस्वी मेधावी च। आचार्यः तौ अपि पाठयति।'
+  translation: 'Kuntī''s son goes to the forest for learning. Mādrī''s son follows him. There lives Garga''s descendant, a teacher. He teaches Indian pupils. He is brilliant and wise. The teacher teaches the two of them too.'
+  teaches: 'तद्धित names and adjectives the corpus had not shown: ढक् (कौन्तेयः, माद्रेयः), यञ् (गार्ग्यः), छ (भारतीयान्), विनि (तेजस्वी, मेधावी).'
   words:
   - form: कौन्तेयः
     lemma: कुन्ती
@@ -26,6 +26,14 @@
       en: 'nominative'
     - term: एकवचन
       en: 'number'
+  - form: विद्यायै
+    lemma: विद्या
+    gloss: 'for learning'
+    notes:
+    - term: अर्थ
+      en: 'purpose — the dative of what he goes for: आ-stem feminine -आयै'
+    - term: चतुर्थी
+      en: 'dative'
   - form: वनम्
     lemma: वन
     gloss: 'to the forest'
@@ -40,18 +48,18 @@
     notes:
     - term: लट्
       en: 'present'
-  - form: वैनतेयः
-    lemma: विनता
-    gloss: 'Vinatā''s son (Garuḍa)'
+  - form: माद्रेयः
+    lemma: माद्री
+    gloss: 'Mādrī''s son'
     notes:
     - term: तद्धित
-      en: 'a patronymic from a feminine name'
+      en: 'a patronymic from a feminine name — Arjuna''s half-brother'
     - term: ढक्
       en: 'the ढक् suffix'
     - term: अपत्य
       en: 'sense: अपत्य'
     - cite: "4.1.120"
-      role: 'स्त्रीभ्यो ढक् — विनता + ढक् → वैनतेय'
+      role: 'स्त्रीभ्यो ढक् — माद्री + ढक् (एय) → माद्रेय'
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: कर्तृ
@@ -158,7 +166,7 @@
       en: 'number'
     rel:
     - kind: विशेषण
-      to: 12
+      to: 13
   - form: शिष्यान्
     lemma: शिष्य
     gloss: 'pupils'
@@ -195,7 +203,7 @@
       en: 'number'
     rel:
     - kind: विधेय
-      to: 10
+      to: 11
   - form: मेधावी
     lemma: मेधा
     gloss: 'wise'
@@ -216,10 +224,42 @@
       en: 'number'
     rel:
     - kind: विधेय
-      to: 10
+      to: 11
   - form: च
     lemma: च
     gloss: 'and'
     notes:
     - term: अव्यय
       en: 'indeclinable'
+  - form: आचार्यः
+    lemma: आचार्य
+    gloss: 'the teacher'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: तौ
+    lemma: तद्
+    gloss: 'those two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun — the two brothers'
+    - term: कर्मन्
+      en: 'object of पाठयति'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
+    notes:
+    - term: अव्यय
+      en: 'too — they join his other pupils'
+  - form: पाठयति
+    lemma: पठ्
+    gloss: 'teaches'
+    notes:
+    - term: लट्
+      en: 'causative present — "makes read"'
+    - term: णिच्
+      en: 'causative'

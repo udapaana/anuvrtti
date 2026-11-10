@@ -2,9 +2,9 @@
   kind: graded
   segment: 180
   order: 4
-  sentence: 'सायम् तिस्रः भगिन्यः धेनुभिः सह वने मार्गम् न जानन्ति। ज्येष्ठा वदति — हे स्वसारौ, शीघ्रम् आगच्छतम्; हे धेनवः, चलत। कनिष्ठा "जलम्, जलम्" इति रोदिति। ताः द्वयोः सरसोः तीरम् गच्छन्ति, यत्र द्वे नार्यौ जलम् आनयतः। ताः सरसः जलम् पिबन्ति। नार्यौ पृच्छतः — हे कन्ये, युवाम् कुतः? ज्येष्ठा वदति — हे युवती, अस्माकम् ग्रामस्य मार्गम् दर्शयतम्। भगिन्यः युवतिभ्याम् मार्गम् जानन्ति। ग्रामस्य द्वारे द्वे सख्यौ धावतः; ज्येष्ठा वदति — हे मित्रे, वयम् क्षेमेण स्मः। ततः सा ग्रामबालाः प्रति वदति — हे मित्राणि, हे युवतयः, एते नार्यौ अस्मान् अरक्षताम्।'
-  translation: 'At dusk three sisters and their cows cannot find the path in the forest. The eldest says: "Sisters, come quickly; cows, move on." The youngest cries, "Water, water!" They go to the bank of two ponds, where two women are drawing water. They drink water from the pond. The women ask: "Girls, where are you two from?" The eldest says: "Ladies, show us the way to our village." The sisters learn the way from the two women. At the village gate two friends come running; the eldest says: "Friends, we are safe." Then she tells the village girls: "Friends, young women — these two women saved us."'
-  teaches: 'Lost at dusk, one calls to whoever is there — the vocatives स्वसारौ, धेनवः, कन्ये, युवती, मित्रे, मित्राणि, युवतयः; and the ablative of the one learnt from, युवतिभ्याम् (1.4.29), beside सरसः, the source of the water.'
+  sentence: 'सायम् तिस्रः भगिन्यः धेनुभिः सह वने मार्गम् न जानन्ति। ज्येष्ठा वदति — हे स्वसारौ, शीघ्रम् आगच्छतम्; हे धेनवः, चलत। कनिष्ठा "जलम्, जलम्" इति रोदिति। ताः सरसः तीरम् गच्छन्ति, यत्र द्वे नार्यौ जलम् आनयतः। ताः सरसः जलम् पिबन्ति, नार्यौ च नमन्ति। नार्यौ पृच्छतः — हे कन्याः, यूयम् कुतः? ज्येष्ठा वदति — हे युवती, अस्माकम् ग्रामस्य मार्गम् दर्शयतम्। भगिन्यः युवतिभ्याम् मार्गम् जानन्ति। ग्रामस्य द्वारे द्वे सख्यौ धावतः; ज्येष्ठा वदति — हे मित्रे, वयम् क्षेमेण स्मः। ततः सा ग्रामबालाः प्रति वदति — हे मित्राणि, एते नार्यौ अस्मान् अरक्षताम्।'
+  translation: 'At dusk three sisters and their cows cannot find the path in the forest. The eldest says: "Sisters, come quickly; cows, move on." The youngest cries, "Water, water!" They go to the bank of a pond, where two women are drawing water. They drink water from the pond and bow to the two women. The women ask: "Girls, where are you from?" The eldest says: "Ladies, show us the way to our village." The sisters learn the way from the two women. At the village gate two friends come running; the eldest says: "Friends, we are safe." Then she tells the village girls: "Friends, these two women saved us."'
+  teaches: 'Lost at dusk, one calls to whoever is there — the vocatives स्वसारौ, धेनवः, कन्याः, युवती, मित्रे, मित्राणि; नार्यौ as the ones bowed to; and the ablative of the one learnt from, युवतिभ्याम् (1.4.29), beside सरसः, the source of the water.'
   words:
   - form: सायम्
     lemma: सायम्
@@ -201,31 +201,14 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
-  - form: द्वयोः
-    lemma: द्वि
-    gloss: 'two'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: षष्ठी
-      en: 'genitive dual'
-    rel:
-    - kind: विशेषण
-      to: 23
-  - form: सरसोः
+  - form: सरसः
     lemma: सरस्
-    gloss: 'of ponds'
+    gloss: 'of a pond'
     notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: द्विवचन
-      en: 'dual'
     - term: सम्बन्ध
       en: 'relation'
     - term: षष्ठी
-      en: 'अस्-stem neuter genitive dual — the bank ''of the two ponds'''
+      en: 'अस्-stem neuter genitive singular: सरस् + अस् → सरसः, the bank of the pond'
   - form: तीरम्
     lemma: तीर
     gloss: 'to the bank'
@@ -262,7 +245,7 @@
       en: 'nominative dual'
     rel:
     - kind: विशेषण
-      to: 28
+      to: 27
   - form: नार्यौ
     lemma: नारी
     gloss: 'women'
@@ -299,32 +282,48 @@
     notes:
     - term: लट्
       en: 'present, plural (पा → पिब)'
+  - form: नार्यौ
+    lemma: नारी
+    gloss: 'the two women'
+    notes:
+    - term: कर्मन्
+      en: 'those bowed to — नम् takes the accusative'
+    - term: द्वितीया
+      en: 'ई-stem accusative dual, ई → य् before औ: नार्यौ'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'and — joins नमन्ति to पिबन्ति'
+  - form: नमन्ति
+    lemma: नम्
+    gloss: 'bow to'
+    notes:
+    - term: लट्
+      en: 'present, plural — the three sisters'
   - form: पृच्छतः
     lemma: प्रच्छ्
     gloss: 'ask'
     notes:
     - term: लट्
       en: 'present, dual'
-  - form: कन्ये
+  - form: कन्याः
     lemma: कन्या
     gloss: 'girls'
     notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: द्विवचन
-      en: 'dual'
     - term: सम्बोधन
-      en: 'vocative dual'
-  - form: युवाम्
+      en: 'vocative plural — the women address all three'
+  - form: यूयम्
     lemma: युष्मद्
-    gloss: 'you two'
+    gloss: 'you (all)'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
     - term: कर्तृ
-      en: 'agent'
+      en: 'the three girls — plural यूयम्, with अस्थ understood'
     - term: प्रथमा
-      en: 'nominative dual'
+      en: 'nominative plural'
   - form: कुतः
     lemma: कुतः
     gloss: 'from where'
@@ -489,16 +488,6 @@
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
-    - term: बहुवचन
-      en: 'plural'
-    - term: सम्बोधन
-      en: 'vocative plural'
-  - form: युवतयः
-    lemma: युवति
-    gloss: 'young women'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
     - term: बहुवचन
       en: 'plural'
     - term: सम्बोधन

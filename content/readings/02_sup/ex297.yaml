@@ -2,8 +2,8 @@
   kind: graded
   segment: 180
   order: 2
-  sentence: 'नृपौ राजधानीम् प्रतिगच्छतः। मार्गः नदीभिः रम्यः। कतिपयाभिः रात्रिभिः ते नगरम् प्राप्नुवन्ति। नगरे बालाः पितृभिः मातृभिः च सह नृपयोः स्वागतम् कुर्वन्ति। अन्यैः राजभिः सह सभा भवति। नृपौ ऋषीणाम् गुणान् वदतः — तेषाम् कर्मभिः आश्रमः पवित्रः, अस्माकम् गोभिः च सः इदानीम् समृद्धः।'
-  translation: 'The kings return to the capital. The road is lovely with rivers. In a few nights they reach the city. In the city children come with their fathers and mothers to welcome the kings. There is an assembly with other kings. The kings tell of the sages'' virtues: "By their deeds the hermitage is holy — and with our cows it is now prosperous too."'
+  sentence: 'नृपौ राजधानीम् प्रतिगच्छतः। मार्गः नदीभिः रम्यः। कतिपयाभिः रात्रिभिः तौ नगरम् प्राप्नुतः। नगरे बालाः पितृभिः मातृभिः च सह नृपयोः स्वागतम् कुर्वन्ति। अन्यैः राजभिः सह सभा भवति। नृपौ ऋष्योः गुणान् वदतः — तयोः कर्मभिः आश्रमः पवित्रः, गोभिः च समृद्धः।'
+  translation: 'The kings return to the capital. The road is lovely with rivers. In a few nights they reach the city. In the city children come with their fathers and mothers to welcome the kings. There is an assembly with other kings. The kings tell of the two sages'' virtues: "By their deeds the hermitage is holy, and it is rich in cows."'
   teaches: 'The visit, part 5 — home: the instrumental plural -भिः across the stem classes — नदीभिः, रात्रिभिः (time taken, 2.3.6), पितृभिः, मातृभिः, राजभिः, कर्मभिः, गोभिः.'
   words:
   - form: नृपौ
@@ -96,18 +96,16 @@
       en: 'the time an action takes to complete (2.3.6)'
     - term: तृतीया
       en: 'instrumental plural'
-  - form: ते
+  - form: तौ
     lemma: तद्
-    gloss: 'they'
+    gloss: 'they (two)'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
-    - term: बहुवचन
-      en: 'plural'
     - term: कर्तृ
-      en: 'agent'
+      en: 'the two kings — dual, so the verb is dual too'
     - term: प्रथमा
-      en: 'nominative plural'
+      en: 'nominative dual'
   - form: नगरम्
     lemma: नगर
     gloss: 'the city'
@@ -118,12 +116,12 @@
       en: 'the goal of motion'
     - term: द्वितीया
       en: 'accusative'
-  - form: प्राप्नुवन्ति
+  - form: प्राप्नुतः
     lemma: आप्
     gloss: 'reach'
     notes:
     - term: लट्
-      en: 'present, plural, with the preverb प्र'
+      en: 'present dual, प्र + आप् (स्वादि): प्राप्नोति, प्राप्नुतः'
   - form: नगरे
     lemma: नगर
     gloss: 'in the city'
@@ -249,18 +247,14 @@
     notes:
     - term: लट्
       en: 'present'
-  - form: ऋषीणाम्
+  - form: ऋष्योः
     lemma: ऋषि
-    gloss: 'the sages'''
+    gloss: 'of the two sages'
     notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: बहुवचन
-      en: 'plural'
     - term: सम्बन्ध
       en: 'relation'
     - term: षष्ठी
-      en: 'genitive plural'
+      en: 'genitive dual — इ → य् before ओः: ऋष्योः'
   - form: गुणान्
     lemma: गुण
     gloss: 'virtues'
@@ -279,16 +273,16 @@
     notes:
     - term: लट्
       en: 'present, dual'
-  - form: तेषाम्
+  - form: तयोः
     lemma: तद्
-    gloss: 'their'
+    gloss: 'their (of those two)'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
     - term: सम्बन्ध
       en: 'relation'
     - term: षष्ठी
-      en: 'genitive plural'
+      en: 'genitive dual'
   - form: कर्मभिः
     lemma: कर्मन्
     gloss: 'by deeds'
@@ -324,16 +318,6 @@
     rel:
     - kind: विधेय
       to: 29
-  - form: अस्माकम्
-    lemma: अस्मद्
-    gloss: 'our'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive plural'
   - form: गोभिः
     lemma: गो
     gloss: 'with cows'
@@ -346,22 +330,12 @@
       en: 'the cause'
     - term: तृतीया
       en: 'instrumental plural'
-  - form: सः
-    lemma: तद्
-    gloss: 'it'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: इदानीम्
-    lemma: इदानीम्
-    gloss: 'now'
+  - form: च
+    lemma: च
+    gloss: 'and'
     notes:
     - term: अव्यय
-      en: '"now" — the ashram''s present prosperity, after the gift of cows'
+      en: 'and — adds the second predicate'
   - form: समृद्धः
     lemma: समृद्ध
     gloss: 'prosperous'
@@ -374,4 +348,4 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 33
+      to: 29

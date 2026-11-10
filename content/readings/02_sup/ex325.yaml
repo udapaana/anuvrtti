@@ -2,18 +2,34 @@
   kind: graded
   segment: 184
   order: 2
-  sentence: 'अतिथिः पृच्छति कति शिष्याः अत्र सन्ति? गुरुः शिष्यान् द्विधा विभजति। सः पञ्चकृत्वः पाठम् वदति। यत्र गुरुः वसति, तत्र जनता आगच्छति। कदा सा न आगच्छति? सा सर्वदा आगच्छति। सर्वथा गुरोः महिमा प्रसिद्धः। ज्ञानम् धनात् गरीयः।'
-  translation: 'A visitor asks: "How many pupils are here?" The teacher divides the pupils in two. He says the lesson five times. Where the teacher lives, there the people come. "When do they not come?" They always come. In every way the teacher''s greatness is renowned. Knowledge is weightier than wealth.'
+  sentence: 'अतिथिः गुरोः शिष्यम् पृच्छति — कति शिष्याः अत्र सन्ति? शिष्यः वदति — बहवः; अतः गुरुः शिष्यान् द्विधा विभजति, सः पञ्चकृत्वः पाठम् वदति। अतिथिः पृच्छति — जनता कदा आगच्छति? शिष्यः वदति — सा सर्वदा आगच्छति; यत्र गुरुः वसति, तत्र जनता आगच्छति। सर्वथा गुरोः महिमा प्रसिद्धः; ज्ञानम् धनात् गरीयः।'
+  translation: 'A visitor asks the teacher''s pupil: "How many pupils are here?" The pupil says: "Many; so the teacher divides the pupils into two groups, and he says each lesson five times." The visitor asks: "When do people come?" The pupil says: "They come always; where the teacher lives, there people come. In every way the teacher''s greatness is renowned; knowledge is weightier than wealth."'
   teaches: 'The adverb-making and numeral तद्धितs — डति (कति), त्रल् (अत्र, यत्र, तत्र), धा (द्विधा), कृत्वसुच् (पञ्चकृत्वः), दा (कदा, सर्वदा), था (सर्वथा) — with तल् of the collective (जनता), इमनिच् (महिमा) and ईयसुन् (गरीयः).'
   words:
   - form: अतिथिः
     lemma: अतिथि
     gloss: 'a visitor'
     notes:
-    - term: कर्मन्
+    - term: कर्तृ
       en: 'agent — the visitor who asks the questions'
     - term: प्रथमा
       en: 'nominative'
+  - form: गुरोः
+    lemma: गुरु
+    gloss: 'the teacher''s'
+    notes:
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'उ-stem genitive: गुण, गुरु → गुरोः'
+  - form: शिष्यम्
+    lemma: शिष्य
+    gloss: 'a pupil'
+    notes:
+    - term: कर्मन्
+      en: 'the one asked — प्रच्छ् takes the person in the द्वितीया'
+    - term: द्वितीया
+      en: 'accusative'
   - form: पृच्छति
     lemma: प्रच्छ्
     gloss: 'asks'
@@ -40,7 +56,7 @@
       en: 'number'
     rel:
     - kind: विशेषण
-      to: 3
+      to: 5
   - form: शिष्याः
     lemma: शिष्य
     gloss: 'pupils'
@@ -69,6 +85,38 @@
     notes:
     - term: लट्
       en: 'present, plural'
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: 'the pupil'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
+  - form: बहवः
+    lemma: बहु
+    gloss: 'many'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine, agreeing with शिष्याः'
+    - term: कर्तृ
+      en: 'the subject of an understood सन्ति'
+    - term: विशेषण
+      en: 'the answer to कति — शिष्याः understood; उ-stem nom. pl, गुण: बहवः'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: अतः
+    lemma: अतस्
+    gloss: 'so'
+    notes:
+    - term: अव्यय
+      en: '"therefore" — because there are many'
   - form: गुरुः
     lemma: गुरु
     gloss: 'the teacher'
@@ -143,6 +191,92 @@
     notes:
     - term: लट्
       en: 'present'
+  - form: अतिथिः
+    lemma: अतिथि
+    gloss: 'the visitor'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: पृच्छति
+    lemma: प्रच्छ्
+    gloss: 'asks'
+    notes:
+    - term: लट्
+      en: 'present'
+  - form: जनता
+    lemma: जनता
+    gloss: 'the people'
+    notes:
+    - term: कर्तृ
+      en: 'agent — the collective, singular'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: कदा
+    lemma: किम्
+    gloss: 'when'
+    notes:
+    - term: तद्धित
+      en: '"at what time"'
+    - term: दा
+      en: 'the दा suffix'
+    - term: अव्ययीकरण
+      en: 'sense: अव्ययीकरण'
+    - cite: "5.3.15"
+      role: 'सर्वैकान्यकिंयत्तदः काले दा — किम् + दा → कदा'
+    - term: अव्यय
+      en: 'indeclinable — the suffix makes an adverb'
+  - form: आगच्छति
+    lemma: गम्
+    gloss: 'comes'
+    notes:
+    - term: लट्
+      en: 'present, with the preverb आ'
+  - form: शिष्यः
+    lemma: शिष्य
+    gloss: 'the pupil'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
+  - form: सा
+    lemma: तद्
+    gloss: 'they (the people)'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: सर्वदा
+    lemma: सर्व
+    gloss: 'always'
+    notes:
+    - term: तद्धित
+      en: '"at all times"'
+    - term: दा
+      en: 'the दा suffix'
+    - term: अव्ययीकरण
+      en: 'sense: अव्ययीकरण'
+    - cite: "5.3.15"
+      role: 'सर्वैकान्यकिंयत्तदः काले दा — सर्व + दा → सर्वदा'
+    - term: अव्यय
+      en: 'indeclinable — the suffix makes an adverb'
+  - form: आगच्छति
+    lemma: गम्
+    gloss: 'comes'
+    notes:
+    - term: लट्
+      en: 'present, with the preverb आ'
   - form: यत्र
     lemma: यद्
     gloss: 'where'
@@ -157,6 +291,14 @@
       role: 'सप्तम्यास्त्रल् — यद् + त्रल् → यत्र'
     - term: अव्यय
       en: 'indeclinable — the suffix makes an adverb'
+  - form: गुरुः
+    lemma: गुरु
+    gloss: 'the teacher'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
   - form: वसति
     lemma: वस्
     gloss: 'lives'
@@ -203,50 +345,6 @@
     notes:
     - term: लट्
       en: 'present, with the preverb आ'
-  - form: कदा
-    lemma: किम्
-    gloss: 'when'
-    notes:
-    - term: तद्धित
-      en: '"at what time"'
-    - term: दा
-      en: 'the दा suffix'
-    - term: अव्ययीकरण
-      en: 'sense: अव्ययीकरण'
-    - cite: "5.3.15"
-      role: 'सर्वैकान्यकिंयत्तदः काले दा — किम् + दा → कदा'
-    - term: अव्यय
-      en: 'indeclinable — the suffix makes an adverb'
-  - form: सा
-    lemma: तद्
-    gloss: 'they (the people)'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: न
-    lemma: न
-    gloss: 'not'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — negation'
-  - form: सर्वदा
-    lemma: सर्व
-    gloss: 'always'
-    notes:
-    - term: तद्धित
-      en: '"at all times"'
-    - term: दा
-      en: 'the दा suffix'
-    - term: अव्ययीकरण
-      en: 'sense: अव्ययीकरण'
-    - cite: "5.3.15"
-      role: 'सर्वैकान्यकिंयत्तदः काले दा — सर्व + दा → सर्वदा'
-    - term: अव्यय
-      en: 'indeclinable — the suffix makes an adverb'
   - form: सर्वथा
     lemma: सर्व
     gloss: 'in every way'
@@ -301,7 +399,7 @@
       en: 'nominative — the predicate, agreeing with महिमा'
     rel:
     - kind: विधेय
-      to: 25
+      to: 38
   - form: ज्ञानम्
     lemma: ज्ञान
     gloss: 'knowledge'
@@ -338,4 +436,4 @@
       en: 'number'
     rel:
     - kind: विधेय
-      to: 27
+      to: 40
