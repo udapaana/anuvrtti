@@ -2,30 +2,36 @@
   kind: graded
   segment: 196
   order: 2
-  sentence: 'मन्दिरस्य भित्तौ राजा श्लोकम् अलिखत् — हे जगत्, त्वम् एतौ स्मर। एकदा पुत्रौ पुनः मरुतौ अपश्यताम्। तौ द्वे दिशौ प्रति अचलताम्, पुत्रौ च ताभ्याम् दिग्भ्याम् नमः अकुरुताम्। मार्गे तौ बह्वीः सरितः अतरताम्, महद्भ्याम् वनाभ्याम् च निरगच्छताम्। ते देवौ उभाभ्याम् जगद्भ्याम् पूज्येते। अन्ते तौ जगद्भ्यः ऊर्ध्वम् उदपतताम्।'
-  translation: 'On the temple wall the king wrote a verse: "O world, remember these two." One day the sons saw the two winds again. The two winds set out towards two different quarters, and the sons bowed to those two directions. On the way they crossed many rivers, and came out of two great forests. Those two gods are worshipped by both worlds. At last the winds flew up, above the worlds.'
-  teaches: 'Part 15 — the inscription: जगत् as a vocative; मरुतौ, दिशौ and सरितः as accusatives; दिग्भ्याम् (dative), महद्भ्याम् (ablative), जगद्भ्याम् (instrumental — the agent of the passive), जगद्भ्यः (ablative).'
+  sentence: 'तयोः नाम्नोः अधः राजा श्लोकम् अलिखत् — हे जगत्, त्वम् एतौ मरुतौ स्मर। एतौ वणिग्भ्याम् सह बह्वीः सरितः अतरताम्, महद्भ्याम् वनाभ्याम् च निरगच्छताम्। तौ देवौ अद्य अपि उज्जयिन्याम् पूज्येते।'
+  translation: 'Below those two names the king wrote a verse: "O world, remember these two winds. With the two merchants they crossed many rivers, and came out of two great forests." Those two gods are worshipped in Ujjayinī even today.'
+  teaches: 'Part 15 — the verse on the temple: नाम्नोः (genitive dual, with अधः), जगत् (vocative), मरुतौ (accusative dual), वणिग्भ्याम् (with सह), सरितः (accusative plural), महद्भ्याम् वनाभ्याम् (ablative dual); तौ देवौ with the passive dual पूज्येते.'
   words:
-  - form: मन्दिरस्य
-    lemma: मन्दिर
-    gloss: 'the temple''s'
+  - form: तयोः
+    lemma: तद्
+    gloss: 'those two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: विशेषण
+      en: 'pointing out नाम्नोः'
+    - term: षष्ठी
+      en: 'genitive dual'
+  - form: नाम्नोः
+    lemma: नामन्
+    gloss: 'names'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
     - term: सम्बन्ध
-      en: 'relation'
+      en: 'with अधः, "below" takes the genitive'
     - term: षष्ठी
-      en: 'genitive'
-  - form: भित्तौ
-    lemma: भित्ति
-    gloss: 'on the wall'
+      en: 'genitive dual — the अ of अन् drops: नाम्नोः'
+  - form: अधः
+    lemma: अधस्
+    gloss: 'below'
     notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative — इ-stem feminine takes -औ: भित्ति → भित्तौ, "on the wall"'
+    - term: अव्यय
+      en: 'indeclinable — place, with the षष्ठी'
   - form: राजा
     lemma: राजन्
     gloss: 'the king'
@@ -45,7 +51,7 @@
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
-      en: 'object of अलिखत् — the verse the king carves; अ-stem masc. acc. sg'
+      en: 'accusative'
   - form: अलिखत्
     lemma: लिख्
     gloss: 'wrote'
@@ -58,18 +64,6 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — address'
-  - form: त्वम्
-    lemma: युष्मद्
-    gloss: 'you'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter — the world (जगत्) addressed'
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
   - form: जगत्
     lemma: जगत्
     gloss: 'world'
@@ -79,15 +73,35 @@
     - term: एकवचन
       en: 'singular'
     - term: सम्बोधन
-      en: 'vocative'
+      en: 'vocative — the verse speaks to the whole world'
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: 'you'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
   - form: एतौ
     lemma: एतद्
     gloss: 'these two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: विशेषण
+      en: 'pointing out मरुतौ'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: मरुतौ
+    lemma: मरुत्
+    gloss: 'winds'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
     - term: कर्मन्
-      en: 'object'
+      en: 'object of स्मर'
     - term: द्वितीया
       en: 'accusative dual'
   - form: स्मर
@@ -95,140 +109,33 @@
     gloss: 'remember'
     notes:
     - term: लोट्
-      en: 'imperative'
-  - form: एकदा
-    lemma: एकदा
-    gloss: 'one day'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — time'
-  - form: पुत्रौ
-    lemma: पुत्र
-    gloss: 'the sons'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: पुनः
-    lemma: पुनर्
-    gloss: 'again'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — repetition'
-  - form: मरुतौ
-    lemma: मरुत्
-    gloss: 'the two winds'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: अपश्यताम्
-    lemma: दृश्
-    gloss: 'saw'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past, dual'
-  - form: तौ
-    lemma: तद्
-    gloss: 'they'
+      en: 'imperative, 2nd person singular'
+  - form: एतौ
+    lemma: एतद्
+    gloss: 'these two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative dual'
-  - form: द्वे
-    lemma: द्वि
-    gloss: 'two'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: द्वितीया
-      en: 'accusative dual'
-    rel:
-    - kind: विशेषण
-      to: 17
-  - form: दिशौ
-    lemma: दिश्
-    gloss: 'directions'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: कर्मन्
-      en: 'governed by प्रति — "towards" (1.4.90)'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: प्रति
-    lemma: प्रति
-    gloss: 'towards'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — कर्मप्रवचनीय'
-  - form: अचलताम्
-    lemma: चल्
-    gloss: 'set out'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past, dual'
-  - form: च
-    lemma: च
-    gloss: 'and'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable'
-  - form: ताभ्याम्
-    lemma: तद्
-    gloss: 'those'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: दिग्भ्याम्
-    lemma: दिश्
-    gloss: 'to the directions'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: नमः
-    lemma: नमस्
-    gloss: 'obeisance'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — governs the चतुर्थी (2.3.16)'
-  - form: अकुरुताम्
-    lemma: कृ
-    gloss: 'made'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past, dual'
-  - form: मार्गे
-    lemma: मार्ग
-    gloss: 'on the way'
+      en: 'nominative dual — the winds'
+  - form: वणिग्भ्याम्
+    lemma: वणिज्
+    gloss: 'the two merchants'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental dual with सह — ज् becomes ग् before भ्याम्'
+  - form: सह
+    lemma: सह
+    gloss: 'with'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the तृतीया'
   - form: बह्वीः
     lemma: बहु
     gloss: 'many'
@@ -241,7 +148,7 @@
       en: 'accusative plural'
     rel:
     - kind: विशेषण
-      to: 27
+      to: 16
   - form: सरितः
     lemma: सरित्
     gloss: 'rivers'
@@ -266,13 +173,11 @@
       en: 'neuter'
     - term: विशेषण
       en: 'qualifying वनाभ्याम्'
-    - term: अपादान
-      en: 'source'
     - term: पञ्चमी
-      en: 'ablative dual'
+      en: 'ablative dual — महत् is weak before भ्याम्'
     rel:
     - kind: विशेषण
-      to: 30
+      to: 19
   - form: वनाभ्याम्
     lemma: वन
     gloss: 'from two forests'
@@ -280,62 +185,63 @@
     - term: नपुंसकलिङ्ग
       en: 'neuter'
     - term: अपादान
-      en: 'source'
+      en: 'what they came out of'
     - term: पञ्चमी
       en: 'ablative dual'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — joins the two verbs'
   - form: निरगच्छताम्
     lemma: गम्
     gloss: 'came out'
     notes:
     - term: लङ्
-      en: 'imperfect (लङ्) — narrative past, with the preverb निर्'
-  - form: ते
+      en: 'imperfect, dual, with the preverb निर् — the augment comes after निर्'
+  - form: तौ
     lemma: तद्
     gloss: 'those two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
-    - term: द्विवचन
-      en: 'dual'
-    - term: कर्मन्
-      en: 'the ones worshipped'
+    - term: कर्तृ
+      en: 'subject of the passive पूज्येते'
     - term: प्रथमा
-      en: 'nominative dual'
+      en: 'nominative dual, masculine to agree with देवौ'
   - form: देवौ
     lemma: देव
     gloss: 'gods'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
-    - term: कर्मन्
-      en: 'the ones worshipped — the प्रथमा of the passive'
+    - term: कर्तृ
+      en: 'subject of the passive'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: उभाभ्याम्
-    lemma: उभ
-    gloss: 'both'
+  - form: अद्य
+    lemma: अद्य
+    gloss: 'today'
     notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: विशेषण
-      en: 'qualifying जगद्भ्याम्'
-    - term: कर्तृ
-      en: 'agent'
-    - term: तृतीया
-      en: 'instrumental dual'
-    rel:
-    - kind: विशेषण
-      to: 35
-  - form: जगद्भ्याम्
-    lemma: जगत्
-    gloss: 'by the worlds'
+    - term: अव्यय
+      en: 'indeclinable — time'
+  - form: अपि
+    lemma: अपि
+    gloss: 'even'
     notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: कर्तृ
-      en: 'the agent of a passive takes the तृतीया (2.3.18)'
-    - term: तृतीया
-      en: 'instrumental dual'
+    - term: अव्यय
+      en: 'indeclinable — "even today"'
+  - form: उज्जयिन्याम्
+    lemma: उज्जयिनी
+    gloss: 'in Ujjayinī'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative — ई-stem feminine, आम्'
   - form: पूज्येते
     lemma: पूज्
     gloss: 'are worshipped'
@@ -347,34 +253,6 @@
     - term: द्विवचन
       en: 'dual'
     - term: आत्मनेपद
-      en: 'ātmanepada'
+      en: 'ātmanepada — the passive always takes the middle endings'
     - term: चुरादि
-      en: 'gaṇa'
-  - form: अन्ते
-    lemma: अन्ते
-    gloss: 'at last'
-    notes:
-    - term: अव्यय
-      en: '"at the end" — closes the story: last of all the winds fly off'
-  - form: जगद्भ्यः
-    lemma: जगत्
-    gloss: 'above the worlds'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative plural'
-  - form: ऊर्ध्वम्
-    lemma: ऊर्ध्वम्
-    gloss: 'up'
-    notes:
-    - term: अव्यय
-      en: '"upward" — with जगद्भ्यः, "up above the worlds"'
-  - form: उदपतताम्
-    lemma: पत्
-    gloss: 'flew up'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past, with the preverb उद्'
+      en: 'पूज् is class 10'

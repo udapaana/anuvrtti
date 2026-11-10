@@ -2,9 +2,9 @@
   kind: graded
   segment: 190
   order: 2
-  sentence: 'समुद्रस्य तीरे एकः वृद्धः वणिक् अवसत्। तस्य गृहे सुवर्णवर्णयोः पक्षिणोः नीडम् आसीत्। धनदत्तः तम् वणिजम् अपश्यत्, अवदत् च — हे वणिक्, अस्मभ्यम् पक्षिणौ देहि। वृद्धः अवदत् — मम मनः अस्मिन् पक्षिणि अस्ति। धनदत्तः पक्षिभ्याम् फलानि अयच्छत्। ततः वणिजि दया अभवत्। सः वणिजः पक्षिणौ रत्नानि च अक्रीणात्।'
-  translation: 'On the seashore lived an old merchant. In his house was the nest of two golden birds. Dhanadatta saw the merchant and said: "Merchant, give us the two birds." The old man said: "My heart is in this bird." Dhanadatta gave fruit to the two birds. Then kindness arose in the merchant. He bought the birds and the jewels from the merchant.'
-  teaches: 'Part 4 — the seller: वणिजम्, वणिक् (vocative), वणिजि, वणिजः (ablative — bought from); पक्षिणोः, पक्षिणि, पक्षिभ्याम्.'
+  sentence: 'समुद्रस्य तीरे एकः वृद्धः वणिक् अवसत्। वणिजः गृहे सुवर्णवर्णयोः पक्षिणोः नीडम् आसीत्। धनदत्तः तम् वणिजम् अपश्यत्, अवदत् च — हे वणिक्, मह्यम् पक्षिणौ देहि। वृद्धः अवदत् — मम मनः एतयोः पक्षिणोः अस्ति। धनदत्तः पक्षिभ्याम् फलानि अयच्छत्। पक्षिणौ तस्य हस्तात् फलानि अखादताम्। तदा वृद्धे वणिजि दया अभवत्। ततः धनदत्तः तस्मात् वणिजः पक्षिणौ रत्नानि च अक्रीणात्।'
+  translation: 'On the seashore lived an old merchant. In the merchant''s house was the nest of two golden birds. Dhanadatta saw the merchant and said: "Merchant, give me the two birds." The old man said: "My heart is set on these two birds." Dhanadatta gave fruit to the two birds. The birds ate the fruit from his hand. Then kindness arose in the old merchant. So Dhanadatta bought the birds and the jewels from him.'
+  teaches: 'Part 4 — the seller: वणिजम्, वणिक् (vocative), वणिजि, वणिजः (ablative — bought from); पक्षिणोः (genitive and locative), पक्षिभ्याम्.'
   words:
   - form: समुद्रस्य
     lemma: समुद्र
@@ -67,16 +67,18 @@
     notes:
     - term: लङ्
       en: 'imperfect (लङ्) — narrative past'
-  - form: तस्य
-    lemma: तद्
-    gloss: 'his'
+  - form: वणिजः
+    lemma: वणिज्
+    gloss: 'the merchant''s'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
     - term: सम्बन्ध
       en: 'relation'
     - term: षष्ठी
-      en: 'genitive'
+      en: 'genitive singular — same shape as the ablative at the end'
   - form: गृहे
     lemma: गृह
     gloss: 'in the house'
@@ -186,16 +188,16 @@
       en: 'masculine'
     - term: सम्बोधन
       en: 'vocative'
-  - form: अस्मभ्यम्
+  - form: मह्यम्
     lemma: अस्मद्
-    gloss: 'to us'
+    gloss: 'to me'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
     - term: सम्प्रदान
       en: 'recipient'
     - term: चतुर्थी
-      en: 'dative plural'
+      en: 'dative singular — Dhanadatta asks for himself, so मह्यम्, not the plural अस्मभ्यम्'
   - form: पक्षिणौ
     lemma: पक्षिन्
     gloss: 'the two birds'
@@ -232,24 +234,26 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: अस्मिन्
-    lemma: इदम्
-    gloss: 'this'
+  - form: एतयोः
+    lemma: एतद्
+    gloss: 'these two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: विशेषण
+      en: 'pointing out पक्षिणोः'
     - term: सप्तमी
-      en: 'locative'
-  - form: पक्षिणि
+      en: 'locative dual — same shape as the genitive dual'
+  - form: पक्षिणोः
     lemma: पक्षिन्
-    gloss: 'in bird'
+    gloss: 'in the birds'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: अधिकरण
-      en: 'location'
+      en: 'where his heart is set'
     - term: सप्तमी
-      en: 'locative'
+      en: 'locative dual — इन्-stem, ओः serves genitive and locative'
   - form: अस्ति
     lemma: अस्
     gloss: 'is'
@@ -282,12 +286,73 @@
     notes:
     - term: लङ्
       en: 'imperfect (लङ्) — narrative past'
-  - form: ततः
-    lemma: ततः
+  - form: पक्षिणौ
+    lemma: पक्षिन्
+    gloss: 'the two birds'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: तस्य
+    lemma: तद्
+    gloss: 'his'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive — Dhanadatta''s hand'
+  - form: हस्तात्
+    lemma: हस्त
+    gloss: 'from the hand'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: अपादान
+      en: 'where the fruit is taken from'
+    - term: पञ्चमी
+      en: 'ablative'
+  - form: फलानि
+    lemma: फल
+    gloss: 'the fruit'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: अखादताम्
+    lemma: खाद्
+    gloss: 'ate'
+    notes:
+    - term: लङ्
+      en: 'imperfect (लङ्) — dual; the birds eat from his hand'
+  - form: तदा
+    lemma: तदा
     gloss: 'then'
     notes:
     - term: अव्यय
-      en: 'indeclinable — sequence'
+      en: 'indeclinable — time: at that moment'
+  - form: वृद्धे
+    lemma: वृद्ध
+    gloss: 'old'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: विशेषण
+      en: 'qualifying वणिजि'
+    - term: सप्तमी
+      en: 'locative'
+    rel:
+    - kind: विशेषण
+      to: 38
   - form: वणिजि
     lemma: वणिज्
     gloss: 'in the merchant'
@@ -314,16 +379,32 @@
     notes:
     - term: लङ्
       en: 'imperfect — the old man''s mood changes once he sees the birds fed'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
+  - form: ततः
+    lemma: ततः
+    gloss: 'then'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
+    - term: अव्यय
+      en: 'indeclinable — sequence'
+  - form: धनदत्तः
+    lemma: धनदत्त
+    gloss: 'Dhanadatta'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
+  - form: तस्मात्
+    lemma: तद्
+    gloss: 'from that'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: विशेषण
+      en: 'pointing out वणिजः'
+    - term: पञ्चमी
+      en: 'ablative'
   - form: वणिजः
     lemma: वणिज्
     gloss: 'from the merchant'
@@ -331,9 +412,19 @@
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: अपादान
-      en: 'source'
+      en: 'source — one buys FROM the seller'
     - term: पञ्चमी
       en: 'ablative'
+  - form: पक्षिणौ
+    lemma: पक्षिन्
+    gloss: 'the two birds'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
   - form: रत्नानि
     lemma: रत्न
     gloss: 'the jewels'
@@ -344,6 +435,12 @@
       en: 'object'
     - term: द्वितीया
       en: 'accusative plural'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — joins the two objects'
   - form: अक्रीणात्
     lemma: क्री
     gloss: 'bought'
