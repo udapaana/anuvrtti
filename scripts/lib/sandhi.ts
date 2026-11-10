@@ -59,6 +59,11 @@ const pausal = (slp: string) => slp.replace(/[sr]$/, 'H');
  * before a vowel, which really does attach (वनम् + अगच्छताम् → वनमगच्छताम्).
  */
 function join(a: string, b: string): string {
+  /*
+    8.2.39 झलां जशोऽन्ते: a stop at a word's end is voiced before a vowel. vidyut
+    does it for त् (तदस्ति) but not for क्/ट्/प्, so वाक् + अत्र came out वाकत्र.
+  */
+  if (VOWEL.test(b)) a = a.replace(/[kwp]$/, (c) => ({ k: 'g', w: 'q', p: 'b' })[c]!);
   const j = ENGINE.join(a, b) as string;
   // no rule fired: two words stay apart — unless the first ends in a consonant,
   // which in Devanagari binds to whatever follows (विनयाद्याति)

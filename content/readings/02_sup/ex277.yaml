@@ -2,8 +2,8 @@
   kind: graded
   segment: 170
   order: 2
-  sentence: 'वसन्ते उद्याने द्वे लते वर्धेते। लतयोः भ्रमराः भ्रमन्ति। एकस्याः लतायाः पुष्पम् पतति। बाला सर्वाः लताः सिञ्चति, लताभ्यः जलम् च आनयति। लतानाम् पुष्पैः सा मालाम् करोति। लतासु पक्षिणः वसन्ति, बाला च लताभिः शोभिते उद्याने गायति।'
-  translation: 'In spring two creepers grow in the garden. Bees wander over the two creepers. From one creeper a flower falls. The girl waters all the creepers and brings water for them. With the creepers'' flowers she makes a garland. Birds live among the creepers, and the girl sings in the garden the creepers adorn.'
+  sentence: 'वसन्ते उद्याने अनेकाः लताः सन्ति; द्वारे द्वे लते वर्धेते। लतयोः भ्रमराः भ्रमन्ति। एकस्याः लतायाः पुष्पम् पतति। बाला सर्वाः लताः सिञ्चति, लताभ्यः जलम् च आनयति। लतानाम् पुष्पैः सा मालाम् करोति। लतासु पक्षिणः वसन्ति, बाला च लताभिः शोभिते उद्याने गायति।'
+  translation: 'In spring there are many creepers in the garden; by the gate two creepers grow. Bees wander over those two. From one creeper a flower falls. The girl waters all the creepers and brings water for them. With the creepers'' flowers she makes a garland. Birds live among the creepers, and the girl sings in the garden the creepers adorn.'
   teaches: 'लता in the dual and plural — लते, लतयोः, लताः, लताभ्यः, लतानाम्, लतासु, लताभिः (the agent of the participle शोभिते) — and the ablative लतायाः.'
   words:
   - form: वसन्ते
@@ -22,6 +22,43 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative'
+  - form: अनेकाः
+    lemma: अनेक
+    gloss: 'many'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: विशेषण
+      en: 'agrees with लताः — feminine nominative plural'
+    - term: प्रथमा
+      en: 'nominative plural'
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: लताः
+    lemma: लता
+    gloss: 'creepers'
+    notes:
+    - term: कर्तृ
+      en: 'subject of सन्ति'
+    - term: प्रथमा
+      en: 'nominative plural — आ-stem, लता + जस् → लताः'
+  - form: सन्ति
+    lemma: अस्
+    gloss: 'are'
+    notes:
+    - term: लट्
+      en: 'present 3rd plural of अस् — the अ of the root drops: सन्ति'
+  - form: द्वारे
+    lemma: द्वार
+    gloss: 'by the gate'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: अधिकरण
+      en: 'where the two creepers stand'
+    - term: सप्तमी
+      en: 'locative'
   - form: द्वे
     lemma: द्वि
     gloss: 'two'
@@ -34,7 +71,7 @@
       en: 'nominative dual'
     rel:
     - kind: विशेषण
-      to: 3
+      to: 7
   - form: लते
     lemma: लता
     gloss: 'creepers'
@@ -83,7 +120,7 @@
       en: 'ablative'
     rel:
     - kind: विशेषण
-      to: 9
+      to: 13
   - form: लतायाः
     lemma: लता
     gloss: 'from the creeper'
@@ -124,7 +161,7 @@
       en: 'accusative plural'
     rel:
     - kind: विशेषण
-      to: 14
+      to: 18
   - form: लताः
     lemma: लता
     gloss: 'the creepers'
@@ -245,6 +282,8 @@
       en: 'qualifying उद्याने — causative of शुभ् + क्त, "made beautiful"'
     - term: नपुंसकलिङ्ग
       en: 'neuter'
+    - term: अधिकरण
+      en: 'shares उद्याने''s role — where she sings'
     - term: सप्तमी
       en: 'locative, agreeing with उद्याने'
   - form: उद्याने

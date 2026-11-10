@@ -694,7 +694,9 @@ function main() {
       left alone: its accents and its sandhi are not the classical joiner's.
     */
     delete r.samhita;
-    if (r.sentence && !/rigveda/.test(r.chapter ?? '')) {
+    // …nor a sandhi chapter display (वाक् अत्र → वाग् अत्र): joining it would
+    // apply the very rule it shows, and print वागत्र → वागत्र.
+    if (r.sentence && !/rigveda/.test(r.chapter ?? '') && !/[→=+]/.test(String(r.sentence))) {
       const anus = (x: string) => x.replace(/ं$/, 'म्');
       let cursor = 0;
       const sam = samhitaOf(String(r.sentence), (clean) => {

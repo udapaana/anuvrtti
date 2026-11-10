@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 55
   order: 1
-  sentence: बालः मात्रे क्रुध्यति, यतः सा तम् वनम् न नयति। सः एकः गच्छति, वने च वृकात् बिभेति। मुनिः गिरिम् अधिशेते। बालः मुनये श्लाघते, मुनेः फलेभ्यः च स्पृहयति। मुनिः बालाय फलानि यच्छति। बालाय फलानि रोचन्ते। सः गृहम् आगच्छति, मात्रे च फलानि यच्छति।
-  translation: The boy is angry at his mother, because she does not take him to the forest. He goes alone, and in the forest he is afraid of a wolf. A sage lies upon the mountain. The boy flatters the sage, and longs for the sage's fruits. The sage gives the boy fruits. The fruits please the boy. He comes home, and gives fruits to his mother.
+  sentence: बालः मात्रे क्रुध्यति, यतः सा तम् वनम् न नयति। सः एकः गच्छति, वने च वृकात् बिभेति। सः वृकात् धावति, गिरिम् च आरोहति। मुनिः तम् गिरिम् अधिशेते। बालः मुनये श्लाघते, मुनेः फलेभ्यः च स्पृहयति। मुनिः बालाय फलानि यच्छति। बालाय फलानि रोचन्ते। सः गृहम् आगच्छति, मात्रे च फलानि यच्छति।
+  translation: The boy is angry at his mother, because she does not take him to the forest. He goes alone, and in the forest he is afraid of a wolf. He runs from the wolf and climbs a mountain. Upon that mountain a sage lies. The boy flatters the sage, and longs for the sage's fruits. The sage gives the boy fruits. The fruits please the boy. He comes home, and gives fruits to his mother.
   teaches: |
     six verbs, each choosing its own case. मात्रे and वृकात् sit in adjacent
     sentences: two objects of emotion, two different cases — and मात्रे returns
@@ -144,6 +144,52 @@
     notes:
     - term: लट्
       en: present — reduplicated stem बिभे-
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun — the boy'
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वृकात्
+    lemma: वृक
+    gloss: from the wolf
+    notes:
+    - term: अपादान
+      en: 'the point he runs away from'
+    - term: पञ्चमी
+      en: 'ablative — अ-stem, वृक → वृकात्'
+  - form: धावति
+    lemma: धाव्
+    gloss: runs
+    notes:
+    - term: लट्
+      en: present
+  - form: गिरिम्
+    lemma: गिरि
+    gloss: a mountain
+    notes:
+    - term: कर्मन्
+      en: 'what he climbs — object of आरोहति'
+    - term: द्वितीया
+      en: accusative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: 'and — joins running and climbing'
+  - form: आरोहति
+    lemma: रुह्
+    gloss: climbs
+    notes:
+    - term: लट्
+      en: 'present, with the preverb आ'
   - form: मुनिः
     lemma: मुनि
     gloss: a sage
@@ -152,6 +198,16 @@
       en: agent — an इ-stem masculine
     - term: प्रथमा
       en: nominative
+  - form: तम्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun — the same mountain he climbed'
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: द्वितीया
+      en: 'accusative, agreeing with गिरिम्'
   - form: गिरिम्
     lemma: गिरि
     gloss: upon the mountain
