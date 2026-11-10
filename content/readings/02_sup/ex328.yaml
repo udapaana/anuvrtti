@@ -2,33 +2,81 @@
   kind: graded
   segment: 190
   order: 1
-  sentence: 'परे तीरे बहवः यात्रिकाः आसन्। धनदत्तः अपृच्छत् — हे वणिजः, यूयम् कुतः आगच्छथ? एकः वृद्धः वणिक् अवदत् — वयम् प्राच्याः दिशः आगच्छामः। धनदत्तः प्रीतः तस्मै वणिजे फलानि अयच्छत्। सागरदत्तः अपि अन्येन वणिजा सह मित्रताम् अकरोत्। ततः वणिजौ अन्यैः वणिग्भिः सह नगरम् अगच्छताम्। तेषाम् वणिजाम् मध्ये एकः मुनिः अपि आसीत्। वणिजौ भगवन्तम् अनमताम्, अवदताम् च — हे भगवन्, अस्माकम् कर्मणः सिद्धिः भवतु। वणिजौ भगवता सह रात्रिम् अवसताम्।'
-  translation: 'On the far bank were many travellers. Dhanadatta asked: "Merchants, where do you come from?" An old merchant said: "We come from the eastern quarter." Pleased, Dhanadatta gave that merchant fruit. Sāgaradatta too made friends with another merchant. Then the two went on to the city with the other merchants. Among those merchants was a sage as well. The two bowed to the holy one and said: "Holy one, may our task succeed." They spent the night with the holy one.'
+  sentence: 'धनदत्तः सागरदत्तः च सरितः परम् तीरम् आगच्छताम्। तत्र बहवः यात्रिकाः आसन्। धनदत्तः अपृच्छत् — हे वणिजः, यूयम् कुतः आगच्छथ? एकः वृद्धः वणिक् अवदत् — वयम् प्राच्याः दिशः आगच्छामः। धनदत्तः प्रीतः तस्मै वणिजे फलानि अयच्छत्। सागरदत्तः अपि अन्येन वणिजा सह मित्रताम् अकरोत्। ततः वणिजौ अन्यैः वणिग्भिः सह नगरम् अगच्छताम्। तेषाम् वणिजाम् मध्ये एकः मुनिः अपि आसीत्। वणिजौ भगवन्तम् अनमताम्, अवदताम् च — हे भगवन्, अस्माकम् कर्मणः सिद्धिः भवतु। वणिजौ भगवता सह रात्रिम् अवसताम्।'
+  translation: 'Dhanadatta and Sāgaradatta reached the far bank of the river. There were many travellers there. Dhanadatta asked: "Merchants, where do you come from?" An old merchant said: "We come from the eastern quarter." Pleased, Dhanadatta gave that merchant fruit. Sāgaradatta too made friends with another merchant. Then Dhanadatta and Sāgaradatta went on to the city with the other merchants. Among those merchants was a sage as well. The two bowed to the holy one and said: "Holy one, may our task succeed." They spent the night with the holy one.'
   teaches: 'Part 3 — the caravan: वणिजः (vocative), वणिजे, वणिजा, वणिग्भिः, वणिजाम्; दिशः (ablative); the मत्/वत् stem भगवत् — भगवन्तम्, भगवन्, भगवता; and कर्मणः.'
   words:
-  - form: परे
+  - form: धनदत्तः
+    lemma: धनदत्त
+    gloss: 'Dhanadatta'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative — one of two subjects joined by च'
+  - form: सागरदत्तः
+    lemma: सागरदत्त
+    gloss: 'Sāgaradatta'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'the second subject — with धनदत्तः it makes the verb dual'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — joins the two names'
+  - form: सरितः
+    lemma: सरित्
+    gloss: 'of the river'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive — the river of part 2'
+  - form: परम्
     lemma: पर
-    gloss: 'on the far'
+    gloss: 'the far'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
     - term: विशेषण
-      en: 'qualifying तीरे'
-    - term: सप्तमी
-      en: 'locative'
+      en: 'qualifying तीरम्'
+    - term: द्वितीया
+      en: 'accusative'
     rel:
     - kind: विशेषण
-      to: 1
-  - form: तीरे
+      to: 5
+  - form: तीरम्
     lemma: तीर
     gloss: 'bank'
     notes:
     - term: नपुंसकलिङ्ग
       en: 'neuter'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative'
+    - term: कर्मन्
+      en: 'goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: आगच्छताम्
+    lemma: गम्
+    gloss: 'reached'
+    notes:
+    - term: लङ्
+      en: 'imperfect, dual, with the preverb आ — "come to"'
+  - form: तत्र
+    lemma: तत्र
+    gloss: 'there'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — place'
   - form: बहवः
     lemma: बहु
     gloss: 'many'
@@ -41,7 +89,7 @@
       en: 'nominative plural'
     rel:
     - kind: विशेषण
-      to: 3
+      to: 9
   - form: यात्रिकाः
     lemma: यात्रिक
     gloss: 'travellers'
@@ -122,7 +170,7 @@
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 13
+      to: 19
   - form: वृद्धः
     lemma: वृद्ध
     gloss: 'old man'
@@ -173,7 +221,7 @@
       en: 'ablative'
     rel:
     - kind: विशेषण
-      to: 18
+      to: 24
   - form: दिशः
     lemma: दिश्
     gloss: 'from the quarter'
@@ -268,7 +316,7 @@
       en: 'instrumental'
     rel:
     - kind: विशेषण
-      to: 28
+      to: 34
   - form: वणिजा
     lemma: वणिज्
     gloss: 'merchant'
@@ -331,7 +379,7 @@
       en: 'instrumental plural'
     rel:
     - kind: विशेषण
-      to: 35
+      to: 41
   - form: वणिग्भिः
     lemma: वणिज्
     gloss: 'merchants'
@@ -394,7 +442,7 @@
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 42
+      to: 48
   - form: मुनिः
     lemma: मुनि
     gloss: 'sage'

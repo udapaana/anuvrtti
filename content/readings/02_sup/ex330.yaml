@@ -2,9 +2,9 @@
   kind: graded
   segment: 191
   order: 1
-  sentence: 'रात्रौ वणिजौ गृहम् प्रति अचलताम्। सर्वासु दिक्षु अन्धकारः आसीत्। न दिक् न मार्गः अदृश्यत। सागरदत्तः अपृच्छत् — कस्याम् दिशि उज्जयिनी? तदा पक्षिणौ उत्तरया दिशा उदपतताम्। वणिजौ अपि ताम् एव दिशम् अगच्छताम्। मरुत् शीतः अवहत्। मरुति हिमम् आसीत्। मरुताम् वेगः महान्। मार्गे द्वे सरितौ आस्ताम्। सरितोः जलम् गभीरम्। उज्जयिनी सरिद्भ्याम् न दूरम्। प्रातः सूर्यः सर्वाः दिशः अप्रकाशयत्। सूर्यः दिशाम् स्वामी।'
-  translation: 'At night the merchants set off for home. In every direction there was darkness. Neither direction nor road could be seen. Sāgaradatta asked: "In which direction is Ujjayinī?" Then the two birds flew off by the northern direction. The merchants too went that same way. A cold wind blew. In the wind there was frost. The gusts were fierce. On the road were two rivers. The water of the two rivers was deep. Ujjayinī is not far from the two rivers. At dawn the sun lit up all the directions. The sun is the lord of the directions.'
-  teaches: 'Part 5 — the night road: दिश् (दिक्षु, दिक्, दिशि, दिशा, दिशम्, दिशः, दिशाम्), मरुत् (मरुत्, मरुति, मरुताम्), सरित् (सरितौ, सरितोः, सरिद्भ्याम्).'
+  sentence: 'रात्रौ वणिजौ गृहम् प्रति अचलताम्। सर्वासु दिक्षु अन्धकारः आसीत्। न दिक् न मार्गः अदृश्यत। सागरदत्तः अपृच्छत् — कस्याम् दिशि उज्जयिनी? तदा तयोः सुवर्णवर्णौ पक्षिणौ उत्तरया दिशा उदपतताम्। वणिजौ अपि ताम् एव दिशम् अगच्छताम्। मरुत् शीतः अवहत्। मरुति हिमम् आसीत्। मार्गे द्वे सरितौ आस्ताम्। सरितोः जलम् गभीरम्। उज्जयिनी सरिद्भ्याम् न दूरम्। प्रातः सूर्यः सर्वाः दिशः अप्रकाशयत्। सूर्यः दिशाम् स्वामी।'
+  translation: 'At night the merchants set off for home. In every direction there was darkness. Neither direction nor road could be seen. Sāgaradatta asked: "In which direction is Ujjayinī?" Then their two golden birds flew off by the northern direction. The merchants too went that same way. A cold wind blew. In the wind there was frost. On the road were two rivers. The water of the two rivers was deep. Ujjayinī is not far from the two rivers. At dawn the sun lit up all the directions. The sun is the lord of the directions.'
+  teaches: 'Part 5 — the night road: दिश् (दिक्षु, दिक्, दिशि, दिशा, दिशम्, दिशः, दिशाम्), मरुत् (मरुत्, मरुति), सरित् (सरितौ, सरितोः, सरिद्भ्याम्).'
   words:
   - form: रात्रौ
     lemma: रात्रि
@@ -173,6 +173,29 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — time'
+  - form: तयोः
+    lemma: तद्
+    gloss: 'their'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive dual — the merchants'' birds, bought in part 4'
+  - form: सुवर्णवर्णौ
+    lemma: सुवर्णवर्ण
+    gloss: 'golden'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: विशेषण
+      en: 'qualifying पक्षिणौ'
+    - term: प्रथमा
+      en: 'nominative dual'
+    rel:
+    - kind: विशेषण
+      to: 21
   - form: पक्षिणौ
     lemma: पक्षिन्
     gloss: 'the two birds'
@@ -195,7 +218,7 @@
       en: 'instrumental'
     rel:
     - kind: विशेषण
-      to: 21
+      to: 23
   - form: दिशा
     lemma: दिश्
     gloss: 'by the direction'
@@ -270,7 +293,7 @@
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 28
+      to: 30
   - form: अवहत्
     lemma: वह्
     gloss: 'blew'
@@ -297,43 +320,6 @@
       en: 'subject of आसीत् — neuter अ-stem nom. sg in -अम्'
     - term: प्रथमा
       en: 'nominative'
-  - form: मरुताम्
-    lemma: मरुत्
-    gloss: 'of the winds'
-    notes:
-    - term: बहुवचन
-      en: 'plural — the gusts'
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive plural'
-  - form: वेगः
-    lemma: वेग
-    gloss: 'the force'
-    notes:
-    - term: एकवचन
-      en: 'singular'
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्तृ
-      en: 'subject — "the force of the winds"; महान् is the predicate'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: महान्
-    lemma: महत्
-    gloss: 'great'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: एकवचन
-      en: 'number'
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 34
   - form: मार्गे
     lemma: मार्ग
     gloss: 'on the road'
@@ -356,7 +342,7 @@
       en: 'nominative dual'
     rel:
     - kind: विशेषण
-      to: 38
+      to: 37
   - form: सरितौ
     lemma: सरित्
     gloss: 'rivers'
@@ -405,7 +391,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 41
+      to: 40
   - form: सरिद्भ्याम्
     lemma: सरित्
     gloss: 'from the two rivers'
@@ -450,7 +436,7 @@
       en: 'accusative plural'
     rel:
     - kind: विशेषण
-      to: 48
+      to: 47
   - form: दिशः
     lemma: दिश्
     gloss: 'the directions'
@@ -499,4 +485,4 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 46
+      to: 45
