@@ -2,12 +2,54 @@
   kind: sangraha
   segment: 255
   order: 1
-  sentence: गुरुः अवदत् — शिष्यः पठेत्, न तु शयीत। तस्य पठनम् एव धर्मः। एकदा सः शिष्यः न अपठत्, वनम् अगच्छत् च। तत् श्रुत्वा गुरुः अक्रुध्यत्। तत्र अन्यः शिष्यः रामः आसीत्। रामेण तत् वचनम् श्रुतम्। सः अचिन्तयत् — अहम् सदा पठेयम् इति।
-  translation: The teacher said — "A student should study, and not sleep. His studying alone is his dharma." One day that student did not study, and went to the forest. Hearing that, the teacher grew angry. Another student, Rāma, was there. Those words were heard by Rāma. He thought — "I will always study."
+  sentence: "देवदत्तः रामः च गुरोः शिष्यौ आस्ताम्। गुरुः अवदत् — शिष्यः पठेत्, न तु शयीत। तस्य पठनम् एव धर्मः। एकदा देवदत्तः न अपठत्, वनम् अगच्छत् च। तत् श्रुत्वा गुरुः अक्रुध्यत्। रामेण तत् वचनम् श्रुतम्। सः अचिन्तयत् — अहम् सदा पठेयम् इति।"
+  translation: "Devadatta and Rāma were the teacher's two students. The teacher said — \"A student should study, and not sleep. His studying alone is his dharma.\" One day Devadatta did not study, and went to the forest. Hearing that, the teacher grew angry. Rāma heard those words. He thought — \"I will always study.\""
   teaches: |
     पठेत् and पठेयम् in one exchange, against अपठत् and अगच्छत्. पठनम् names
     the act rather than the actor; श्रुत्वा and श्रुतम् are built from one root.
   words:
+  - form: देवदत्तः
+    lemma: देवदत्त
+    gloss: Devadatta
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: रामः
+    lemma: राम
+    gloss: Rāma
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — joins the two names; the verb is dual
+  - form: गुरोः
+    lemma: गुरु
+    gloss: the teacher's
+    notes:
+    - term: षष्ठी
+      en: 'genitive — उ-stem with गुण: गुरु → गुरोः'
+  - form: शिष्यौ
+    lemma: शिष्य
+    gloss: two students
+    notes:
+    - term: कर्तृ
+      en: the predicate — what the two were
+    - term: प्रथमा
+      en: nominative dual
+  - form: आस्ताम्
+    lemma: अस्
+    gloss: the two were
+    notes:
+    - term: लङ्
+      en: imperfect, third dual — two subjects joined by च
   - form: गुरुः
     lemma: गुरु
     gloss: the teacher
@@ -75,6 +117,12 @@
       en: the action-noun — the studying, not the one who studies
     - cite: "3.3.115"
       role: ल्युट् च — ल्युट् makes a neuter भाव action-noun → पठनम्
+    - term: कर्तृ
+      en: subject of the verbless clause, with धर्मः as predicate
+    - term: प्रथमा
+      en: nominative (neuter)
+    - term: एकवचन
+      en: singular
   - form: एव
     lemma: एव
     gloss: alone
@@ -93,16 +141,14 @@
     notes:
     - term: अव्यय
       en: indeclinable
-  - form: सः
-    lemma: तद्
-    gloss: that
+  - form: देवदत्तः
+    lemma: देवदत्त
+    gloss: Devadatta
     notes:
-    - term: सर्वनाम
-      en: pronoun
-    - term: प्रथमा
-      en: nominative
     - term: कर्तृ
       en: agent
+    - term: प्रथमा
+      en: nominative
   - form: अपठत्
     lemma: पठ्
     gloss: did not study
@@ -151,46 +197,6 @@
     notes:
     - term: लङ्
       en: past — क्रुध् is दिवादि, so श्यन् and no गुण
-  - form: तत्र
-    lemma: तत्र
-    gloss: there
-    notes:
-    - term: अव्यय
-      en: there — at the teacher's, when he spoke
-  - form: अन्यः
-    lemma: अन्य
-    gloss: another
-    notes:
-    - term: सर्वादि
-      en: सर्वनाम "other"
-    - term: विशेषण
-      en: qualifying शिष्यः
-    - term: प्रथमा
-      en: nominative
-    - term: कर्तृ
-      en: agent
-  - form: शिष्यः
-    lemma: शिष्य
-    gloss: student
-    notes:
-    - term: प्रथमा
-      en: nominative — in apposition to रामः
-    - term: कर्तृ
-      en: agent
-  - form: रामः
-    lemma: राम
-    gloss: Rāma
-    notes:
-    - term: कर्तृ
-      en: subject of आसीत्
-    - term: प्रथमा
-      en: nominative
-  - form: आसीत्
-    lemma: अस्
-    gloss: was
-    notes:
-    - term: लङ्
-      en: past
   - form: रामेण
     lemma: राम
     gloss: by Rāma

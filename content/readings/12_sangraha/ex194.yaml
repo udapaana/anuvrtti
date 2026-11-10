@@ -2,11 +2,9 @@
   kind: sangraha
   segment: 205
   order: 1
-  sentence: दाशरथिः वनम् गच्छति। मार्गे सः माथुरम् एकम् ब्राह्मणम् पश्यति। सः ब्राह्मणः धनवान् बलवान् च, तथापि दाशरथेः गुरुत्वम् जानाति। दाशरथिः काषायम् वस्त्रम् धारयति, ब्राह्मणवत् च अधीते। ग्रामतः आगताः जनाः तम् पश्यन्ति, वदन्ति च — अयम् पटुतरः; सर्वेषु पटुषु पटुतमः इति।
-  translation: 'The son of Daśaratha goes to the forest. On the way he sees a brahmin from Mathurā. That brahmin is wealthy and strong, yet he knows the greatness of Daśaratha''s son. Rāma wears an ochre robe, and studies like a brahmin. People who have come from the village see him and say: "This one is the abler; among all the able, the ablest."'
-  teaches: 'Rāma on the forest road, named and described by तद्धितs: दाशरथिः (इञ्, the patronymic), माथुरम् (from Mathurā), धनवान्/बलवान् (मतुप्), गुरुत्वम् (त्व), काषायम् (dyed), ब्राह्मणवत् (वति), ग्रामतः (तसिल्), पटुतरः/पटुतमः.
-
-    '
+  sentence: "दाशरथिः वनम् गच्छति। मार्गे सः माथुरम् एकम् ब्राह्मणम् पश्यति। सः ब्राह्मणः धनवान् बलवान् च, अतः दाशरथेः गुरुत्वम् न जानाति। किन्तु दाशरथिः काषायम् वस्त्रम् धारयति, ब्राह्मणवत् च अधीते। ततः ब्राह्मणः तम् नमति। ग्रामतः आगताः जनाः अपि तम् पश्यन्ति, वदन्ति च — अयम् ब्राह्मणात् पटुतरः; सर्वेषु पटुषु पटुतमः इति।"
+  translation: "The son of Daśaratha goes to the forest. On the way he sees a brahmin from Mathurā. That brahmin is wealthy and strong, and so does not see the greatness of Daśaratha's son. But Rāma wears an ochre robe, and studies like a brahmin. Then the brahmin bows to him. People who have come from the village see him too, and say: \"This one is abler than the brahmin; among all the able, the ablest.\""
+  teaches: "Rāma on the forest road, doubted and then honoured, named and described by तद्धितs: दाशरथिः (इञ्, the patronymic), माथुरम् (from Mathurā), धनवान्/बलवान् (मतुप्), गुरुत्वम् (त्व), काषायम् (dyed), ब्राह्मणवत् (वति), ग्रामतः (तसिल्), पटुतरः/पटुतमः."
   words:
   - form: दाशरथिः
     lemma: दाशरथि
@@ -212,12 +210,12 @@
     notes:
     - term: अव्यय
       en: indeclinable
-  - form: तथापि
-    lemma: तथापि
-    gloss: yet
+  - form: अतः
+    lemma: अतस्
+    gloss: and so
     notes:
     - term: अव्यय
-      en: indeclinable — concession
+      en: indeclinable — 'therefore', his wealth and strength being why he does not see
   - form: दाशरथेः
     lemma: दाशरथि
     gloss: of Daśaratha's son
@@ -252,12 +250,24 @@
       en: द्वितीया
     - term: एकवचन
       en: एकवचन
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: negation
   - form: जानाति
     lemma: ज्ञा
     gloss: knows
     notes:
     - term: लट्
       en: present (क्र्यादि)
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: indeclinable — turns from the brahmin's doubt to what Rāma does
   - form: काषायम्
     lemma: काषाय
     gloss: ochre, dyed with kaṣāya
@@ -329,6 +339,38 @@
       en: प्रथमपुरुष
     - term: एकवचन
       en: एकवचन
+  - form: ततः
+    lemma: ततस्
+    gloss: then
+    notes:
+    - term: अव्यय
+      en: indeclinable — sequence
+  - form: ब्राह्मणः
+    lemma: ब्राह्मण
+    gloss: the brahmin
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: तम्
+    lemma: तद्
+    gloss: him
+    notes:
+    - term: सर्वनाम
+      en: pronoun — Rāma
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्मन्
+      en: object of नमति
+    - term: द्वितीया
+      en: accusative
+  - form: नमति
+    lemma: नम्
+    gloss: bows to
+    notes:
+    - term: लट्
+      en: present
   - form: ग्रामतः
     lemma: ग्रामतस्
     gloss: from the village
@@ -371,6 +413,12 @@
       en: agent
     - term: बहुवचन
       en: nominative plural
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable — the villagers as well as the brahmin
   - form: तम्
     lemma: तद्
     gloss: him
@@ -420,6 +468,16 @@
       en: एकवचन
     - term: कर्तृ
       en: agent
+  - form: ब्राह्मणात्
+    lemma: ब्राह्मण
+    gloss: than the brahmin
+    notes:
+    - term: अपादान
+      en: the standard of comparison — what Rāma surpasses
+    - term: पञ्चमी
+      en: ablative with the comparative पटुतरः
+    - term: एकवचन
+      en: singular
   - form: पटुतरः
     lemma: पटुतर
     gloss: cleverer

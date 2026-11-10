@@ -5,11 +5,9 @@
     text: कथा (our graded retelling)
     ref: the teacher of Mithilā — our own telling
     curated: our simple Sanskrit; not from any single source
-  sentence: पुरा मिथिलायाम् एका राज्ञी वसति स्म। तस्याः नगरे विद्वान् आचार्यः आसीत्। सः प्रतिदिनम् शिष्यम् वेदम् अध्यापयत्। एकदा एकः अजापालः बालः आचार्यम् द्रष्टुम् आगच्छत्। आचार्यः तम् धर्मम् अबोधयत्। बोधेन सः बालः पण्डितः अभवत्, सायम् च ग्रामम् अगच्छत्। तस्य यशः राज्ञी अशृणोत्; सा तम् आह्वयत्, अपूजयत् च।
-  translation: Long ago in Mithilā there lived a queen. In her city was a learned teacher. Every day he taught a pupil the Veda. One day a goatherd boy came to see the teacher. The teacher made him understand dharma. By that understanding the boy became learned, and in the evening went back to his village. The queen heard of his fame; she summoned him, and honoured him.
-  teaches: 'A goatherd boy who becomes learned — the causatives अध्यापयत्, अबोधयत् with two objects, तुमुन् (द्रष्टुम्), बोधेन (घञ्), and राज्ञी (ङीप्) at both ends of the story.
-
-    '
+  sentence: "पुरा मिथिलायाम् विद्वान् आचार्यः आसीत्। सः प्रतिदिनम् शिष्यम् वेदम् अध्यापयत्। एकदा एकः अजापालः बालः आचार्यम् द्रष्टुम् आगच्छत्। आचार्यः तम् धर्मम् अबोधयत्। ततः सः बालः प्रतिदिनम् आगच्छत्, सायम् च ग्रामम् अगच्छत्। बोधेन सः पण्डितः अभवत्। तस्य यशः नगरस्य राज्ञी अशृणोत्; सा तम् आह्वयत्, अपूजयत् च।"
+  translation: "Long ago in Mithilā there was a learned teacher. Every day he taught a pupil the Veda. One day a goatherd boy came to see the teacher. The teacher made him understand dharma. After that the boy came every day, and in the evening went back to his village. By that understanding he became learned. The queen of the city heard of his fame; she summoned him, and honoured him."
+  teaches: "A goatherd boy who becomes learned — the causatives अध्यापयत्, अबोधयत् with two objects, तुमुन् (द्रष्टुम्), बोधेन (घञ्), and राज्ञी (ङीप्)."
   words:
   - form: पुरा
     lemma: पुरा
@@ -21,62 +19,6 @@
     lemma: मिथिला
     gloss: in Mithilā
     vocab: true
-    notes:
-    - term: अधिकरण
-      en: locus
-    - term: सप्तमी
-      en: locative
-  - form: एका
-    lemma: एक
-    gloss: a certain, one
-    notes:
-    - term: संख्या
-      en: numeral "one," here "a certain"
-    - term: विशेषण
-      en: qualifying राज्ञी
-    - term: प्रथमा
-      en: nominative (feminine टाप् → एका)
-    rel:
-    - kind: विशेषण
-      to: 3
-  - form: राज्ञी
-    lemma: राज्ञी
-    gloss: queen
-    vocab: true
-    notes:
-    - term: ङीप्
-      en: the feminine ई-suffix — राजन् (न्-final) → राज्ञी
-    - cite: 4.1.5
-      role: ऋन्नेभ्यो ङीप् — a stem ending in ऋ or न् takes ङीप् (ई) in the feminine → राजन् + ङीप् → राज्ञी
-    - term: कर्तृ
-      en: subject
-    - term: प्रथमा
-      en: nominative
-  - form: वसति
-    lemma: वस्
-    gloss: dwells
-    notes:
-    - term: वस्
-      en: '"dwell, live" (भ्वादि)'
-    - term: लट्
-      en: present (with स्म = narrative past)
-  - form: स्म
-    lemma: स्म
-    gloss: (past marker)
-    notes:
-    - term: अव्यय
-      en: turns a present into a narrative past
-  - form: तस्याः
-    lemma: तद्
-    gloss: her
-    notes:
-    - term: सर्वनाम
-      en: pronoun (feminine gen.)
-    - term: षष्ठी
-      en: genitive
-  - form: नगरे
-    lemma: नगर
-    gloss: in the city
     notes:
     - term: अधिकरण
       en: locus
@@ -102,7 +44,7 @@
       en: कर्तरि
     rel:
     - kind: विशेषण
-      to: 9
+      to: 3
   - form: आचार्यः
     lemma: आचार्य
     gloss: teacher
@@ -184,7 +126,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 19
+      to: 13
   - form: अजापालः
     lemma: अजापाल
     gloss: goatherd
@@ -201,7 +143,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 19
+      to: 13
   - form: बालः
     lemma: बाल
     gloss: a boy
@@ -240,6 +182,8 @@
     notes:
     - term: सर्वनाम
       en: pronoun
+    - term: पुंलिङ्ग
+      en: masculine
     - term: कर्मन्
       en: the base agent made object of the causative अबोधयत्
     - cite: 1.4.52
@@ -264,6 +208,54 @@
       role: हेतुमति च — णिच् when a causer is expressed → बोधयति, लङ् अबोधयत्
     - term: लङ्
       en: past (causative 3sg)
+  - form: ततः
+    lemma: ततस्
+    gloss: after that
+    notes:
+    - term: अव्यय
+      en: adverb — "from then on"
+  - form: प्रतिदिनम्
+    lemma: प्रतिदिनम्
+    gloss: every day
+    notes:
+    - term: अव्यय
+      en: adverb — "day by day"
+  - form: आगच्छत्
+    lemma: गम्
+    gloss: came
+    notes:
+    - term: लङ्
+      en: imperfect, with the preverb आ
+  - form: सायम्
+    lemma: सायम्
+    gloss: in the evening
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: to the village
+    notes:
+    - term: कर्मन्
+      en: the goal of a motion verb
+    - cite: 2.3.12
+      role: गत्यर्थकर्मणि द्वितीयाचतुर्थ्यौ — the destination of a verb of motion takes द्वितीया (or चतुर्थी) → ग्रामम्
+    - term: द्वितीया
+      en: accusative (goal)
+  - form: अगच्छत्
+    lemma: गम्
+    gloss: went
+    notes:
+    - term: गम्
+      en: '"go" (भ्वादि)'
+    - term: लङ्
+      en: past
   - form: बोधेन
     lemma: बोध
     gloss: by (that) understanding
@@ -296,42 +288,14 @@
     notes:
     - term: लङ्
       en: past
-  - form: सायम्
-    lemma: सायम्
-    gloss: in the evening
-    notes:
-    - term: अव्यय
-      en: indeclinable — time
-  - form: च
-    lemma: च
-    gloss: and
-    notes:
-    - term: अव्यय
-      en: indeclinable
-  - form: ग्रामम्
-    lemma: ग्राम
-    gloss: to the village
-    notes:
-    - term: कर्मन्
-      en: the goal of a motion verb
-    - cite: 2.3.12
-      role: गत्यर्थकर्मणि द्वितीयाचतुर्थ्यौ — the destination of a verb of motion takes द्वितीया (or चतुर्थी) → ग्रामम्
-    - term: द्वितीया
-      en: accusative (goal)
-  - form: अगच्छत्
-    lemma: गम्
-    gloss: went
-    notes:
-    - term: गम्
-      en: '"go" (भ्वादि)'
-    - term: लङ्
-      en: past
   - form: तस्य
     lemma: तद्
     gloss: his
     notes:
     - term: सर्वनाम
       en: pronoun
+    - term: पुंलिङ्ग
+      en: masculine
     - term: सम्बन्ध
       en: relation
     - term: षष्ठी
@@ -348,6 +312,25 @@
       en: object
     - term: द्वितीया
       en: accusative
+  - form: नगरस्य
+    lemma: नगर
+    gloss: of the city
+    notes:
+    - term: षष्ठी
+      en: genitive — whose queen
+  - form: राज्ञी
+    lemma: राज्ञी
+    gloss: queen
+    vocab: true
+    notes:
+    - term: ङीप्
+      en: the feminine ई-suffix — राजन् (न्-final) → राज्ञी
+    - cite: 4.1.5
+      role: ऋन्नेभ्यो ङीप् — a stem ending in ऋ or न् takes ङीप् (ई) in the feminine → राजन् + ङीप् → राज्ञी
+    - term: कर्तृ
+      en: subject
+    - term: प्रथमा
+      en: nominative
   - form: अशृणोत्
     lemma: श्रु
     gloss: heard
@@ -360,6 +343,8 @@
     notes:
     - term: सर्वनाम
       en: pronoun
+    - term: स्त्रीलिङ्ग
+      en: feminine
     - term: कर्तृ
       en: agent
     - term: प्रथमा

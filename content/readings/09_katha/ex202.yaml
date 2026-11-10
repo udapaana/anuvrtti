@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "the sage, the king, and the two brothers — our own telling"
     curated: our simple Sanskrit; not from any single source
-  sentence: राजा वनम् गच्छन् एकम् मुनिम् अपश्यत्। मुनिः वृक्षस्य अधः उपविशन् शिष्यान् अवदत् — कर्तव्यम् धर्मम् जानीत। राज्ञः भ्राता अपि तत्र आसीत्। तौ कलहम् अकुरुताम्। सः पितुः वचनम् स्मरन् मुनिम् अपृच्छत् — किम् मया करणीयम्। मुनिः अवदत् — भ्रातरम् रक्ष, राजानम् सेव, पितरम् च मा त्यज। एतत् त्रयम् सर्वदा स्मरणीयम्। तत् श्रुत्वा भ्रातरौ शान्तौ अभवताम्।
-  translation: The king, going to the forest, saw a sage. The sage, sitting beneath a tree, said to his students — "Know the dharma that is to be done." The king's brother was there too. The two had quarrelled. He, remembering his father's words, asked the sage — "What is to be done by me?" The sage said — "Protect your brother, serve the king, and do not abandon your father. These three are always to be remembered." Having heard that, the two brothers became calm.
+  sentence: राजा वनम् गच्छन् एकम् मुनिम् अपश्यत्। राज्ञः भ्राता अपि तेन सह आसीत्; तौ मार्गे कलहम् अकुरुताम्। मुनिः वृक्षस्य अधः उपविशन् शिष्यान् अवदत् — कर्तव्यम् धर्मम् जानीत। भ्राता पितुः वचनम् स्मरन् मुनिम् अपृच्छत् — किम् मया करणीयम्। मुनिः अवदत् — भ्रातरम् रक्ष, राजानम् सेव, पितरम् च मा त्यज। एतत् त्रयम् सर्वदा स्मरणीयम्। तत् श्रुत्वा भ्रातरौ शान्तौ अभवताम्।
+  translation: 'The king, going to the forest, saw a sage. The king''s brother was with him too; on the way the two quarrelled. The sage, sitting beneath a tree, said to his students — "Know the dharma that is to be done." The brother, remembering his father''s words, asked the sage — "What is to be done by me?" The sage said — "Protect your brother, serve the king, and do not abandon your father. These three are always to be remembered." Having heard that, the two brothers became calm.'
   teaches: |
     three participles doing the work of "while" — गच्छन्, उपविशन्, स्मरन् —
     and three gerundives stating obligation with no verb: कर्तव्यम्, करणीयम्,
@@ -58,6 +58,80 @@
     notes:
     - term: लङ्
       en: past
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: the king's
+    notes:
+    - term: षष्ठी
+      en: the WEAK stem — the अ drops before a vowel ending
+  - form: भ्राता
+    lemma: भ्रातृ
+    gloss: brother
+    notes:
+    - term: सर्वनामस्थान
+      en: strong nom.sg — the ऋ of भ्रातृ lengthens to आ
+    - cite: "7.3.110"
+      role: ऋतो ङिसर्वनामस्थानयोः — गुण of the ऋ-stem in the strong cases → भ्राता
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: तेन
+    lemma: तद्
+    gloss: with him
+    notes:
+    - term: सर्वनाम
+      en: pronoun — the king
+    - term: करण
+      en: accompaniment, governed by सह
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: तृतीया
+      en: instrumental, governed by सह
+  - form: सह
+    lemma: सह
+    gloss: with
+    notes:
+    - term: अव्यय
+      en: indeclinable — takes the तृतीया
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: past of अस्
+  - form: तौ
+    lemma: तद्
+    gloss: the two
+    notes:
+    - term: सर्वनाम
+      en: pronoun — the king and his brother
+    - term: प्रथमा
+      en: nominative dual
+  - form: मार्गे
+    lemma: मार्ग
+    gloss: on the way
+    notes:
+    - term: अधिकरण
+      en: where the quarrel happened
+    - term: सप्तमी
+      en: locative
+  - form: कलहम्
+    lemma: कलह
+    gloss: a quarrel
+    notes:
+    - term: कर्मन्
+      en: object — कलहम् कृ, "to make a quarrel"
+    - term: द्वितीया
+      en: accusative
+  - form: अकुरुताम्
+    lemma: कृ
+    gloss: the two made
+    notes:
+    - term: लङ्
+      en: imperfect, third dual — weak stem कुरु before ताम्
   - form: मुनिः
     lemma: मुनि
     gloss: the sage
@@ -123,68 +197,14 @@
     notes:
     - term: लोट्
       en: imperative plural — ज्ञा takes श्ना, giving जानी
-  - form: राज्ञः
-    lemma: राजन्
-    gloss: the king's
-    notes:
-    - term: षष्ठी
-      en: the WEAK stem — the अ drops before a vowel ending
   - form: भ्राता
     lemma: भ्रातृ
-    gloss: brother
+    gloss: the brother
     notes:
-    - term: सर्वनामस्थान
-      en: strong nom.sg — the ऋ of भ्रातृ lengthens to आ
-    - cite: "7.3.110"
-      role: ऋतो ङिसर्वनामस्थानयोः — गुण of the ऋ-stem in the strong cases → भ्राता
-  - form: अपि
-    lemma: अपि
-    gloss: too
-    notes:
-    - term: अव्यय
-      en: indeclinable
-  - form: तत्र
-    lemma: तत्र
-    gloss: there
-    notes:
-    - term: अव्यय
-      en: indeclinable
-  - form: आसीत्
-    lemma: अस्
-    gloss: was
-    notes:
-    - term: लङ्
-      en: past of अस्
-  - form: तौ
-    lemma: तद्
-    gloss: the two
-    notes:
-    - term: सर्वनाम
-      en: pronoun — the king and his brother
+    - term: कर्तृ
+      en: the one who asks
     - term: प्रथमा
-      en: nominative dual
-  - form: कलहम्
-    lemma: कलह
-    gloss: a quarrel
-    notes:
-    - term: कर्मन्
-      en: object — कलहम् कृ, "to make a quarrel"
-    - term: द्वितीया
-      en: accusative
-  - form: अकुरुताम्
-    lemma: कृ
-    gloss: the two made
-    notes:
-    - term: लङ्
-      en: imperfect, third dual — weak stem कुरु before ताम्
-  - form: सः
-    lemma: तद्
-    gloss: he
-    notes:
-    - term: सर्वनाम
-      en: pronoun
-    - term: प्रथमा
-      en: nominative
+      en: nominative — ऋ-stem, strong आ
   - form: पितुः
     lemma: पितृ
     gloss: his father's

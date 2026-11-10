@@ -2,10 +2,52 @@
   kind: graded
   segment: 284
   order: 4
-  sentence: 'एकदा मुनिः नगरम् आगच्छति। सः तस्मै राज्ञे चतुर्णाम् भ्रातॄणाम् कथाम् आचष्टे। ते भ्रातरः कलहेन नष्टाः।'
-  translation: 'One day a sage comes to the city. He tells that king the story of four brothers. Those brothers were ruined by quarrelling.'
+  sentence: "एकस्मिन् नगरे राजा वसति। एकदा मुनिः नगरम् आगच्छति। सः तस्मै राज्ञे चतुर्णाम् भ्रातॄणाम् कथाम् आचष्टे। ते भ्रातरः कलहेन नष्टाः।"
+  translation: "In a certain city lives a king. One day a sage comes to the city. He tells that king the story of four brothers. Those brothers were ruined by quarrelling."
   teaches: 'आचष्टे "tells" (आ + चक्ष्, अदादि) with ष्टुत्व; णत्व in चतुर्णाम् भ्रातॄणाम्; तस्मै राज्ञे.'
   words:
+  - form: एकस्मिन्
+    lemma: एक
+    gloss: in a certain
+    notes:
+    - term: संख्या
+      en: '"one, a certain" — declines like a pronoun'
+    - term: विशेषण
+      en: qualifying नगरे
+    - term: एकवचन
+      en: singular
+    - term: नपुंसकलिङ्ग
+      en: neuter, with नगरे
+    - term: सप्तमी
+      en: 'locative — एक declines like a pronoun, taking स्मिन्: एकस्मिन्'
+  - form: नगरे
+    lemma: नगर
+    gloss: in the city
+    notes:
+    - term: अधिकरण
+      en: where the king lives
+    - term: सप्तमी
+      en: locative
+  - form: राजा
+    lemma: राजन्
+    gloss: a king
+    notes:
+    - term: कर्तृ
+      en: the one who lives there
+    - term: प्रथमा
+      en: nominative — the न् of राजन् drops
+    - cite: "8.2.7"
+      role: नलोपः प्रातिपदिकान्तस्य — the stem-final न् drops → राजा
+  - form: वसति
+    lemma: वस्
+    gloss: lives
+    notes:
+    - term: वस्
+      en: '"dwell"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
   - form: एकदा
     lemma: एकदा
     gloss: 'once, one day'
@@ -50,6 +92,8 @@
     notes:
     - term: सर्वनाम
       en: 'pronoun, here qualifying राज्ञे'
+    - term: पुंलिङ्ग
+      en: masculine
     - term: चतुर्थी
       en: 'dative'
     - cite: "7.1.14"
@@ -76,7 +120,7 @@
       role: 'रषाभ्यां नो णः — after र्, न becomes ण → चतुर्णाम्'
     rel:
     - kind: विशेषण
-      to: 8
+      to: 12
   - form: भ्रातॄणाम्
     lemma: भ्रातृ
     gloss: 'of brothers'
@@ -109,6 +153,8 @@
     notes:
     - term: सर्वनाम
       en: pronoun — the four brothers of the sage's tale
+    - term: पुंलिङ्ग
+      en: masculine
     - term: प्रथमा
       en: nominative plural masculine
     - term: बहुवचन
@@ -143,4 +189,4 @@
       en: nominative plural
     rel:
     - kind: विशेषण
-      to: 12
+      to: 16

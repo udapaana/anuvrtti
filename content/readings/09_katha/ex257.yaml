@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "the man and the tiger — our own telling, through the cases"
     curated: our simple Sanskrit; not from any single source
-  sentence: एकः नरः वने अवसत्। नरम् व्याघ्रः अपश्यत्। नरः वृक्षम् आरोहत्। व्याघ्रः नराय अक्रुध्यत्। नरः उच्चैः अक्रोशत्, तस्मै फलानि च अक्षिपत्। ततः नरात् व्याघ्रः अबिभेत्। नरस्य बुद्धिः महती आसीत्।
-  translation: A man lived in the forest. A tiger saw the man. The man climbed a tree. The tiger grew angry at the man. The man shouted loudly, and pelted it with fruits. Then the tiger became afraid of the man. The man's wit was great.
+  sentence: "एकः नरः वने अवसत्। एकदा नरम् व्याघ्रः अपश्यत्। व्याघ्रः नराय अक्रुध्यत्। नरः अग्नेः उल्मुकम् अगृह्णात्, उच्चैः अक्रोशत्, तस्मै च तत् अक्षिपत्। ततः नरात् व्याघ्रः अबिभेत्। नरस्य बुद्धिः महती आसीत्।"
+  translation: "A man lived in the forest. One day a tiger saw the man. The tiger grew angry at the man. The man took a burning brand from his fire, shouted loudly, and threw it at the tiger. Then the tiger became afraid of the man. The man's wit was great."
   teaches: |
     one noun through its cases — नरः, नरम्, नराय, नरात्, नरस्य — and the verbs
     that pick special cases: क्रुध् "be angry" wants the dative (नराय), भी "fear"
@@ -47,6 +47,12 @@
     notes:
     - term: लङ्
       en: past
+  - form: एकदा
+    lemma: एकदा
+    gloss: one day
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
   - form: नरम्
     lemma: नर
     gloss: the man
@@ -70,21 +76,6 @@
     notes:
     - term: लङ्
       en: past
-  - form: वृक्षम्
-    lemma: वृक्ष
-    gloss: a tree
-    notes:
-    - term: कर्मन्
-      en: goal of आरोहत्
-    - term: द्वितीया
-      en: accusative
-  - form: आरोहत्
-    lemma: रुह्
-    gloss: climbed
-    vocab: true
-    notes:
-    - term: लङ्
-      en: past (आ-रुह्)
   - form: नराय
     lemma: नर
     gloss: at the man
@@ -108,6 +99,32 @@
       en: '"be angry" (दिवादि — श्यन्)'
     - term: लङ्
       en: past
+  - form: अग्नेः
+    lemma: अग्नि
+    gloss: from the fire
+    notes:
+    - term: अपादान
+      en: the fire the brand is taken from
+    - term: पञ्चमी
+      en: 'ablative — इ-stem with गुण: अग्नि → अग्नेः'
+  - form: उल्मुकम्
+    lemma: उल्मुक
+    gloss: a burning brand
+    notes:
+    - term: कर्मन्
+      en: object of अगृह्णात्
+    - term: द्वितीया
+      en: 'accusative (neuter) — a firebrand, a stick burning at one end'
+    - term: एकवचन
+      en: singular
+    - term: नपुंसकलिङ्ग
+      en: neuter
+  - form: अगृह्णात्
+    lemma: ग्रह्
+    gloss: took
+    notes:
+    - term: लङ्
+      en: imperfect (क्र्यादि)
   - form: उच्चैः
     lemma: उच्चैस्
     gloss: loudly
@@ -132,22 +149,24 @@
       en: dative (pronominal)
     - term: पुंलिङ्ग
       en: masculine — the tiger
-  - form: फलानि
-    lemma: फल
-    gloss: fruits
-    notes:
-    - term: कर्मन्
-      en: object of अक्षिपत्
-    - cite: '7.1.20'
-      role: जश्शसोः शिः — a neuter's जस्/शस् is replaced by शि (→ ि, with नुम्) → फल → फलानि
-    - term: द्वितीया
-      en: accusative plural (neuter)
   - form: च
     lemma: च
     gloss: and
     notes:
     - term: अव्यय
       en: and — the shouting and the throwing together
+  - form: तत्
+    lemma: तद्
+    gloss: it
+    notes:
+    - term: सर्वनाम
+      en: pronoun — the brand
+    - term: नपुंसकलिङ्ग
+      en: neuter, as उल्मुक is
+    - term: कर्मन्
+      en: object of अक्षिपत्
+    - term: द्वितीया
+      en: accusative (neuter)
   - form: अक्षिपत्
     lemma: क्षिप्
     gloss: threw
@@ -207,19 +226,12 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 21
+      to: 23
   - form: आसीत्
     lemma: अस्
     gloss: was
     notes:
     - term: लङ्
       en: past
-  vyakhya: 'विभक्तिपरिचयकथा। एकम् एव नरशब्दं सर्वासु प्रायः विभक्तिषु — नरः नरम् नराय नरात् नरस्य। क्रुध्यतेः सम्प्रदानम् (क्रुधद्रुहेर्ष्या… यं प्रति कोपः) → नराय; बिभेतेः अपादानम् (भीत्रार्थानां भयहेतुः) → नरात्। तस्मै इति सर्वनाम्नः स्मै; फलानि इति जश्शसोः शिः; नराय इति ङेर्यः।'
-  vyakhya_en: |
-    Watch one word walk through the cases: नरः (nom), नरम् (acc), नराय (dat), नरात्
-    (abl), नरस्य (gen) — a whole अ-stem paradigm inside a story. And two verbs that
-    demand a case you might not expect: **क्रुध्** "be angry" takes its target in
-    the **dative** (नराय अक्रुध्यत्, 1.4.37), and **भी** "fear" takes what is feared
-    in the **ablative** (नरात् अबिभेत्, 1.4.25). Add the pronoun dative तस्मै (स्मै,
-    7.1.14) and the neuter plural फलानि (शि, 7.1.20), and the sentence is a small
-    grammar of the noun.
+  vyakhya: "विभक्तिपरिचयकथा। एकम् एव नरशब्दं सर्वासु प्रायः विभक्तिषु — नरः नरम् नराय नरात् नरस्य। क्रुध्यतेः सम्प्रदानम् (क्रुधद्रुहेर्ष्या… यं प्रति कोपः) → नराय; बिभेतेः अपादानम् (भीत्रार्थानां भयहेतुः) → नरात्, अग्नेः च आदानस्य अपादानम्। तस्मै इति सर्वनाम्नः स्मै; नराय इति ङेर्यः।"
+  vyakhya_en: "Watch one word walk through the cases: नरः (nom), नरम् (acc), नराय (dat), नरात् (abl), नरस्य (gen) — a whole अ-stem paradigm inside a story. And two verbs that demand a case you might not expect: **क्रुध्** \"be angry\" takes its target in the **dative** (नराय अक्रुध्यत्, 1.4.37), and **भी** \"fear\" takes what is feared in the **ablative** (नरात् अबिभेत्, 1.4.25). अग्नेः is the ablative of the fire the brand is taken from, and तस्मै the pronoun dative (स्मै, 7.1.14).\n"

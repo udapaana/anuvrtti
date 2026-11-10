@@ -5,9 +5,9 @@
     text: कथा (our graded retelling)
     ref: two students — our own telling
     curated: our simple Sanskrit; not from any single source
-  sentence: गुरुकुले द्वौ शिष्यौ आस्ताम्; एकः पटुः, अपरः पटुतरः। एकदा गुरुः अपृच्छत् — सर्वेषु धनेषु किम् श्रेष्ठम्? तत् च सर्वैः अश्रूयत, किन्तु न कः अपि उत्तरम् अवदत्। ततः महाबुद्धिः बालः अवदत् — विद्या एव। गुरुः ततः तुष्टः अभवत्, श्रेष्ठाय च वरम् अददात्।
-  translation: 'In the teacher''s school there were two pupils; one was able, the other abler. One day the teacher asked: "Of all riches, which is the best?" The question was heard by all, but nobody answered. Then the great-minded boy said: "Knowledge." The teacher was pleased at that, and gave a boon to the best one.'
-  teaches: 'A question in class — पटुः, पटुतरः, श्रेष्ठाय (the comparative and superlative); महाबुद्धिः (कर्मधारय); the passive अश्रूयत with its agent सर्वैः; and ततः doing two jobs, "then" and "from that".
+  sentence: गुरुकुले द्वौ शिष्यौ आस्ताम्; एकः पटुः, अपरः पटुतरः। एकदा गुरुः अपृच्छत् — सर्वेषु धनेषु किम् श्रेष्ठम्? तत् च सर्वैः अश्रूयत, किन्तु न कः अपि उत्तरम् अवदत्। ततः पटुतरः महाबुद्धिः अवदत् — विद्या एव। गुरुः ततः तुष्टः अभवत्, पटुतराय च वरम् अददात्।
+  translation: 'In the teacher''s school there were two pupils; one was able, the other abler. One day the teacher asked: "Of all riches, which is the best?" The question was heard by all, but nobody answered. Then the abler one, great of mind, said: "Knowledge." The teacher was pleased at that, and gave the boon to the abler one.'
+  teaches: 'A question in class — पटुः, पटुतरः, पटुतराय, श्रेष्ठम् (the comparative and superlative); महाबुद्धिः (कर्मधारय); the passive अश्रूयत with its agent सर्वैः; and ततः doing two jobs, "then" and "from that".
 
     '
   words:
@@ -289,6 +289,20 @@
       role: पञ्चम्यास्तसिल् → तसिल् in the ablative sense → तद् + तस् → ततः
     - term: अव्यय
       en: indeclinable
+  - form: पटुतरः
+    lemma: पटुतर
+    gloss: cleverer
+    notes:
+    - term: तद्धित
+      en: comparative derivative — "more clever, of the two"
+    - term: तरप्
+      en: the तरप् comparative suffix, अर्थ = अतिशायन (of two)
+    - cite: 5.3.57
+      role: द्विवचनविभज्योपपदे तरबीयसुनौ → तरप् for comparison of two → पटु + तर → पटुतरः
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: the one who answers
   - form: महाबुद्धिः
     lemma: महाबुद्धि
     gloss: great-minded
@@ -300,7 +314,7 @@
     - cite: 1.2.42
       role: तत्पुरुषः समानाधिकरणः कर्मधारयः → महत् + बुद्धि, co-referential → महाबुद्धि
     - term: प्रथमा
-      en: nominative — qualifying बालः
+      en: nominative — qualifying पटुतरः
     - term: कर्तृ
       en: agent
     - term: कर्तृ
@@ -311,14 +325,6 @@
       en: agent
     - term: पुंलिङ्ग
       en: पुंलिङ्ग
-  - form: बालः
-    lemma: बाल
-    gloss: the boy
-    notes:
-    - term: कर्तृ
-      en: agent
-    - term: प्रथमा
-      en: nominative
   - form: विद्या
     lemma: विद्या
     gloss: knowledge
@@ -356,21 +362,24 @@
     notes:
     - term: लङ्
       en: imperfect
-  - form: श्रेष्ठाय
-    lemma: श्रेष्ठ
-    gloss: to the best one
-    vocab: true
+  - form: पटुतराय
+    lemma: पटुतर
+    gloss: to the abler one
     notes:
     - term: तद्धित
-      en: superlative derivative — "best"
-    - term: इष्ठन्
-      en: the इष्ठन् superlative suffix, अर्थ = अतिशायन (of all)
-    - cite: 5.3.55
-      role: अतिशायने तमबिष्ठनौ → इष्ठन् for surpassing all → प्रशस्य + इष्ठ → श्रेष्ठ
+      en: comparative derivative — the abler of the two pupils, the one who answered
+    - term: तरप्
+      en: the तरप् comparative suffix, अर्थ = अतिशायन (of two)
+    - cite: 5.3.57
+      role: द्विवचनविभज्योपपदे तरबीयसुनौ → तरप् for comparison of two → पटु + तर
     - term: सम्प्रदान
       en: recipient of the giving
     - term: चतुर्थी
       en: dative
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
   - form: वरम्
     lemma: वर
     gloss: a boon
@@ -389,7 +398,7 @@
     notes:
     - term: लङ्
       en: imperfect
-  vyakhya: एकस्मिन्नाख्याने तरप्, कर्मधारयः, यक्, तसिल्, इष्ठन् — पञ्च शब्दप्रकाराः।
+  vyakhya: एकस्मिन्नाख्याने तरप्, कर्मधारयः, यक्, तसिल्, इष्ठन् (श्रेष्ठम्) — पञ्च शब्दप्रकाराः।
   vyakhya_en: 'Degrees and a passive, in one scene. पटुः is the plain grade; पटुतरः the
 
     **comparative** — पटु + तर, "cleverer of the two"; श्रेष्ठ the **superlative**,

@@ -1,7 +1,7 @@
 - id: ex233
   segment: 175
-  sentence: नीलोत्पलम् जले तिष्ठति। ग्रामगतः बालः तत् पश्यति, गृह्णाति च। माता पृच्छति — कः तत् अगृह्णात्? बालः असत्यम् न वदति — अहम्। ततः सः गोशालाम् गच्छति, गोहितम् च करोति।
-  translation: 'A blue lotus stands in the water. A boy who has come to the village sees it and picks it. His mother asks: "Who picked that?" The boy tells no untruth — "I did." Then he goes to the cowshed and does what is good for the cows.'
+  sentence: नीलोत्पलम् जले तिष्ठति। ग्रामगतः बालः तत् पश्यति, गृह्णाति च। माता पृच्छति — कः तत् अगृह्णात्? बालः असत्यम् न वदति — अहम्। ततः सः तत् नीलोत्पलम् मात्रे यच्छति। माता हसति, वदति च — गच्छ, गोहितम् कुरु। बालः गोशालाम् गच्छति।
+  translation: 'A blue lotus stands in the water. A boy who has come to the village sees it and picks it. His mother asks: "Who picked that?" The boy tells no untruth — "I did." Then he gives the blue lotus to his mother. His mother smiles and says: "Go, and do what is good for the cows." The boy goes to the cowshed.'
   teaches: 'A small lesson in honesty, in compounds: नीलोत्पलम् (कर्मधारय), ग्रामगतः, असत्यम्, गोहितम् (तत्पुरुषs).
 
     '
@@ -184,6 +184,102 @@
       en: agent
     - term: प्रथमा
       en: nominative
+  - form: तत्
+    lemma: तद्
+    gloss: that
+    notes:
+    - term: सर्वनाम
+      en: pronoun, qualifying नीलोत्पलम्
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: द्वितीया
+      en: accusative (neuter)
+  - form: नीलोत्पलम्
+    lemma: नीलोत्पल
+    gloss: blue lotus
+    notes:
+    - term: कर्मधारय
+      en: नीलम् उत्पलम् — adjective and noun in one case
+    - term: कर्मन्
+      en: what he gives
+    - term: द्वितीया
+      en: accusative
+  - form: मात्रे
+    lemma: मातृ
+    gloss: to his mother
+    notes:
+    - term: सम्प्रदान
+      en: the one given to
+    - term: चतुर्थी
+      en: 'dative — ऋ-stem takes गुण before the ending: मातृ → मात्रे'
+  - form: यच्छति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: लट्
+      en: present (दा → यच्छ)
+  - form: माता
+    lemma: मातृ
+    gloss: the mother
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: हसति
+    lemma: हस्
+    gloss: smiles
+    notes:
+    - term: लट्
+      en: present
+  - form: वदति
+    lemma: वद्
+    gloss: says
+    notes:
+    - term: लट्
+      en: present
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — joins smiling and speaking
+  - form: गच्छ
+    lemma: गम्
+    gloss: go
+    notes:
+    - term: लोट्
+      en: imperative, second person singular — the mother sends him
+  - form: गोहितम्
+    lemma: गोहित
+    gloss: what is good for cattle
+    vocab: true
+    notes:
+    - term: समास
+      en: compound
+    - term: तत्पुरुष
+      en: determinative — गोभ्यो हितम्, the first member is the चतुर्थी beneficiary
+    - text: 'विग्रह: गोभ्यो हितम् — "good for the cattle"'
+    - cite: 2.1.36
+      role: चतुर्थी तदर्थार्थबलिहितसुखरक्षितैः — a चतुर्थी word compounds with हित etc. → चतुर्थी-तत्पुरुष
+    - term: कर्मन्
+      en: what he is told to do
+    - term: द्वितीया
+      en: accusative
+  - form: कुरु
+    lemma: कृ
+    gloss: do
+    notes:
+    - term: लोट्
+      en: imperative — कृ, तनादि, करु → कुरु before the bare ending
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
   - form: गोशालाम्
     lemma: गोशाला
     gloss: to the cowshed
@@ -202,25 +298,9 @@
     notes:
     - term: लट्
       en: present
-  - form: गोहितम्
-    lemma: गोहित
-    gloss: what is good for cattle
-    vocab: true
-    notes:
-    - term: समास
-      en: compound
-    - term: तत्पुरुष
-      en: determinative — गोभ्यो हितम्, the first member is the चतुर्थी beneficiary
-    - text: 'विग्रह: गोभ्यो हितम् — "good for the cattle"'
-    - cite: 2.1.36
-      role: चतुर्थी तदर्थार्थबलिहितसुखरक्षितैः — a चतुर्थी word compounds with हित etc. → चतुर्थी-तत्पुरुष
-    - term: कर्मन्
-      en: what is done
-    - term: द्वितीया
-      en: accusative
-  - form: करोति
-    lemma: कृ
-    gloss: does
+  - form: गच्छति
+    lemma: गम्
+    gloss: goes
     notes:
     - term: लट्
       en: present

@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 345
   order: 1
-  sentence: गुरुणा शिष्याः पाठ्यन्ते। तैः शास्त्राणि पठ्यन्ते, गुरोः वचनानि च श्रूयन्ते। श्वः ते ग्रामम् गमिष्यन्ति, यतः तत्र सस्योत्सवः। तत्र ते धनम् धान्यम् च लप्स्यन्ते, गुरवे च दास्यन्ति। गुरुः तान् पुनः द्रष्टुम् इच्छति। अद्य तु ते नद्याः तीरे तिष्ठन्ति, जलम् च पिबन्ति।
-  translation: The pupils are taught by the teacher. By them the treatises are read, and the teacher's words are heard. Tomorrow they will go to the village, because there is a harvest festival there. There they will get wealth and grain, and give it to their teacher. The teacher wishes to see them again. Today, though, they stand on the river's bank and drink its water.
+  sentence: गुरुणा शिष्याः पाठ्यन्ते। तैः शास्त्राणि पठ्यन्ते, गुरोः वचनानि च श्रूयन्ते। श्वः ते ग्रामम् गमिष्यन्ति, यतः तत्र सस्योत्सवः। तत्र ते धनम् धान्यम् च लप्स्यन्ते, गुरवे च दास्यन्ति। गुरुः तान् पुनः द्रष्टुम् इच्छति। अद्य तु ते गुरोः समीपे शास्त्राणि पठन्ति।
+  translation: The pupils are taught by the teacher. By them the treatises are read, and the teacher's words are heard. Tomorrow they will go to the village, because there is a harvest festival there. There they will get wealth and grain, and give it to their teacher. The teacher wishes to see them again. Today, though, they sit by their teacher and read the treatises.
   teaches: 'A school before the holidays, in the passive (पाठ्यन्ते, पठ्यन्ते, श्रूयन्ते — the agent in the तृतीया), the future (गमिष्यन्ति, लप्स्यन्ते, दास्यन्ति), and तुमुन् after इच्छति (द्रष्टुम्).
 
     '
@@ -355,54 +355,34 @@
     notes:
     - term: अव्यय
       en: indeclinable — contrast
-  - form: नद्याः
-    lemma: नदी
-    gloss: of the river
+  - form: गुरोः
+    lemma: गुरु
+    gloss: the teacher's
     notes:
     - term: षष्ठी
-      en: genitive — ī-stem, the ई becoming य् before the ending
-    - cite: 6.1.77
-      role: इको यणचि — इ/ई before a vowel becomes य् → नद्याः
-    - term: सम्बन्ध
-      en: relation
-    - term: सम्बन्ध
-      en: relation
-    - term: सम्बन्ध
-      en: relation
-  - form: तीरे
-    lemma: तीर
-    gloss: on the bank
-    vocab: true
+      en: genitive with समीपे — 'in the teacher's nearness'
+  - form: समीपे
+    lemma: समीप
+    gloss: near
     notes:
     - term: अधिकरण
-      en: locus
+      en: where they read
     - term: सप्तमी
-      en: locative
-  - form: तिष्ठन्ति
-    lemma: स्था
-    gloss: stand
-    notes:
-    - term: शप्
-      en: स्था appears as तिष्ठ् + अ + न्ति
-    - term: लट्
-      en: present plural
-  - form: जलम्
-    lemma: जल
-    gloss: water
+      en: locative of समीप 'nearness', taking the genitive गुरोः
+  - form: शास्त्राणि
+    lemma: शास्त्र
+    gloss: the treatises
     notes:
     - term: कर्मन्
-      en: object of an active verb — accusative again
+      en: object of the active पठन्ति — now accusative, against the passive above
     - term: द्वितीया
-      en: neuter accusative
-  - form: पिबन्ति
-    lemma: पा
-    gloss: drink
-    vocab: true
+      en: neuter accusative plural, the same shape as the nominative
+  - form: पठन्ति
+    lemma: पठ्
+    gloss: they read
     notes:
-    - term: शप्
-      en: पा appears as पिब् + अ + न्ति
     - term: लट्
-      en: present plural
+      en: present, active — the students are the subject again
   vyakhya: तैः पठ्यन्ते, ते गच्छन्ति। एकः कर्ता, द्वे विभक्ती।
   vyakhya_en: 'The same students appear four times and are named three different ways.
 

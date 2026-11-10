@@ -5,8 +5,8 @@
     text: कथा (our graded retelling)
     ref: "a girl in the forest — our own telling"
     curated: our simple Sanskrit; not from any single source
-  sentence: कन्या वने तिष्ठति। सा लताम् पश्यति, मालाम् च रचयति। गङ्गायाम् जलम् अस्ति। कन्या तत्र स्नाति, देवीम् च नमति। मार्गेण सेना अपि आगच्छति, किन्तु कन्या न बिभेति, यतः देवी ताम् रक्षति।
-  translation: A girl stands in the forest. She sees a creeper, and makes a garland. In the Ganges there is water. The girl bathes there, and bows to the goddess. An army comes along the road too, but the girl is not afraid, because the goddess protects her.
+  sentence: कन्या वने तिष्ठति। सा लताम् पश्यति, मालाम् च रचयति। समीपे गङ्गा वहति। कन्या गङ्गायाम् स्नाति, देवीम् च नमति। मार्गेण राज्ञः सेना अपि आगच्छति, किन्तु कन्या न बिभेति, यतः देवी ताम् रक्षति।
+  translation: A girl stands in the forest. She sees a creeper, and makes a garland. Nearby flows the Ganges. The girl bathes in the Ganges, and bows to the goddess. A king's army comes along the road too, but the girl is not afraid, because the goddess protects her.
   teaches: |
     कन्या, लता, माला, देवी — new words, all in endings already met: सेना's आ
     in the nominative, सभाम्'s द्वितीया, सभायाम्'s सप्तमी.
@@ -42,6 +42,8 @@
     notes:
     - term: सर्वनाम
       en: pronoun
+    - term: स्त्रीलिङ्ग
+      en: feminine
     - term: प्रथमा
       en: nominative feminine
   - form: लताम्
@@ -81,32 +83,42 @@
     notes:
     - term: लट्
       en: present — causative-shaped stem रचय्
+  - form: समीपे
+    lemma: समीप
+    gloss: nearby
+    notes:
+    - term: सप्तमी
+      en: locative of समीप 'nearness', used as an adverb — 'in the vicinity'
+  - form: गङ्गा
+    lemma: गङ्गा
+    gloss: the Ganges
+    notes:
+    - term: कर्तृ
+      en: the river that flows
+    - term: प्रथमा
+      en: nominative — आ-stem feminine, no visible ending
+  - form: वहति
+    lemma: वह्
+    gloss: flows
+    notes:
+    - term: लट्
+      en: present — वह् 'carry', of a river 'flow'
+  - form: कन्या
+    lemma: कन्या
+    gloss: the girl
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
   - form: गङ्गायाम्
     lemma: गङ्गा
     gloss: in the Ganges
     notes:
     - term: अधिकरण
-      en: locus
+      en: where she bathes
     - term: सप्तमी
       en: locative — the आकारान्त feminine takes याम्, as सभायाम्
-  - form: जलम्
-    lemma: जल
-    gloss: water
-    notes:
-    - term: प्रथमा
-      en: neuter nominative
-  - form: अस्ति
-    lemma: अस्
-    gloss: there is
-    notes:
-    - term: लट्
-      en: present
-  - form: तत्र
-    lemma: तत्र
-    gloss: there
-    notes:
-    - term: अव्यय
-      en: indeclinable
   - form: स्नाति
     lemma: स्ना
     gloss: bathes
@@ -137,6 +149,12 @@
       en: means
     - term: तृतीया
       en: instrumental — the road the army travels by; अ-stem takes इन → एण after र
+  - form: राज्ञः
+    lemma: राजन्
+    gloss: a king's
+    notes:
+    - term: षष्ठी
+      en: 'genitive — the WEAK stem, the अ drops before a vowel ending → राज्ञः'
   - form: सेना
     lemma: सेना
     gloss: an army
@@ -197,6 +215,8 @@
     notes:
     - term: सर्वनाम
       en: pronoun
+    - term: स्त्रीलिङ्ग
+      en: feminine
     - term: कर्मन्
       en: object
     - term: द्वितीया
