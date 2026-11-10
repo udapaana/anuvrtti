@@ -2,8 +2,8 @@
   kind: graded
   segment: 172
   order: 2
-  sentence: 'ग्रामस्य समीपे द्वे भूमी स्तः। भूम्योः कृषकाः धान्यम् वपन्ति। भूमेः अन्नम् उत्पद्यते। वर्षाकाले मेघाः भूमीः सिञ्चन्ति। भूमिषु शस्यम् वर्धते। भूमीनाम् फलेन जनाः जीवन्ति। कृषकाः भूमिभ्यः नमन्ति।'
-  translation: 'Near the village there are two plots of land. On the two plots the farmers sow grain. From the earth food arises. In the rainy season the clouds water the fields. In the fields the crop grows. By the fruit of the fields people live. The farmers bow to the land that feeds them.'
+  sentence: 'ग्रामस्य समीपे द्वयोः भ्रात्रोः द्वे भूमी स्तः। भूम्योः कृषकाः धान्यम् वपन्ति। भूमेः अन्नम् उत्पद्यते। वर्षाकाले मेघाः भूमीः सिञ्चन्ति। भूमिषु शस्यम् वर्धते। भूमीनाम् फलेन जनाः जीवन्ति। कृषकाः भूमिभ्यः नमन्ति।'
+  translation: 'Near the village two brothers have two fields. On the two fields the farmers sow grain. From the earth food arises. In the rainy season the clouds water the fields. In the fields the crop grows. By the fruit of the fields people live. The farmers bow to the fields.'
   teaches: 'भूमि in the dual and plural — भूमी, भूम्योः, भूमीः, भूमिषु, भूमीनाम्, भूमिभ्यः — and the ablative भूमेः.'
   words:
   - form: ग्रामस्य
@@ -22,6 +22,27 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative of समीप "nearness" — with the genitive ग्रामस्य it means "near the village"'
+  - form: द्वयोः
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying भ्रात्रोः'
+    - term: षष्ठी
+      en: 'genitive dual — द्वि becomes द्वय before ओस्'
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: भ्रात्रोः
+    lemma: भ्रातृ
+    gloss: 'of the brothers'
+    notes:
+    - term: सम्बन्ध
+      en: 'whose the fields are — "of two brothers there are two fields", i.e. they own them'
+    - term: षष्ठी
+      en: 'genitive dual — ऋ-stem, भ्रातृ + ओस् → भ्रात्रोः'
   - form: द्वे
     lemma: द्वि
     gloss: 'two'
@@ -34,7 +55,7 @@
       en: 'nominative dual'
     rel:
     - kind: विशेषण
-      to: 3
+      to: 5
   - form: भूमी
     lemma: भूमि
     gloss: 'two plots of land'

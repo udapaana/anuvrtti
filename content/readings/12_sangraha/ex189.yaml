@@ -2,8 +2,8 @@
   kind: sangraha
   segment: 175
   order: 1
-  sentence: यः पठति सः जानाति। सा अपि पठति, तस्यै गुरुः पुस्तकम् यच्छति। तस्मै बालाय अपि यच्छति। ते बालाः पठन्ति, ताः कन्याः च पठन्ति। गच्छन् बालः पुस्तकम् वहति। अहम् तान् पश्यामि।
-  translation: He who reads, knows. She reads too; the teacher gives her a book. He gives one to that boy as well. Those boys read, and those girls read. Walking along, the boy carries the book. I see them.
+  sentence: यः पठति सः जानाति। सा अपि पठति, तस्यै गुरुः पुस्तकम् यच्छति। तस्मै बालाय अपि यच्छति। गुरोः शालायाम् ते बालाः ताः कन्याः च सह पठन्ति। गच्छन् बालः पुस्तकम् वहति। अहम् तान् पश्यामि।
+  translation: He who reads, knows. She reads too; the teacher gives her a book. He gives one to that boy as well. In the teacher's school those boys and those girls read together. Walking along, the boy carries the book. I see them.
   teaches: |
     तद् and यद् through their forms: सः, सा, ते, ताः, तान्. तस्मै and बालाय
     sit in one clause — both datives, different endings.
@@ -115,6 +115,20 @@
     notes:
     - term: चतुर्थी
       en: the ordinary noun dative — आय, beside तस्मै in the same clause
+  - form: गुरोः
+    lemma: गुरु
+    gloss: the teacher's
+    notes:
+    - term: षष्ठी
+      en: 'genitive — उ-stem takes गुण in the oblique, गुरु → गुरोः'
+  - form: शालायाम्
+    lemma: शाला
+    gloss: in the school
+    notes:
+    - term: अधिकरण
+      en: 'where they read'
+    - term: सप्तमी
+      en: 'locative — आ-stem feminine, शाला → शालायाम्'
   - form: ते
     lemma: तद्
     gloss: those
@@ -135,12 +149,6 @@
       en: agent
     - term: प्रथमा
       en: nominative (अ-stem masculine, बहुवचन)
-  - form: पठन्ति
-    lemma: पठ्
-    gloss: read
-    notes:
-    - term: बहुवचन
-      en: present plural
   - form: 'ताः'
     lemma: तद्
     gloss: those (feminine)
@@ -167,6 +175,18 @@
     notes:
     - term: अव्यय
       en: indeclinable
+  - form: सह
+    lemma: सह
+    gloss: together
+    notes:
+    - term: अव्यय
+      en: 'together — the boys and the girls read side by side'
+  - form: पठन्ति
+    lemma: पठ्
+    gloss: read
+    notes:
+    - term: बहुवचन
+      en: present plural
   - form: गच्छन्
     lemma: गम्
     gloss: walking, as he goes
@@ -175,6 +195,14 @@
       en: present participle — carries a second action without a second verb
     - cite: "3.2.124"
       role: लटः शतृशानचौ — शतृ replaces लट् → गच्छन्
+    - term: पुंलिङ्ग
+      en: masculine, agreeing with बालः
+    - term: एकवचन
+      en: singular
+    - term: कर्तृ
+      en: 'qualifies the agent बालः'
+    - term: प्रथमा
+      en: 'nominative — गच्छत् takes नुम् in the strong case, गच्छन्'
   - form: बालः
     lemma: बाल
     gloss: the boy

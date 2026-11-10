@@ -2,9 +2,9 @@
   kind: sangraha
   segment: 125
   order: 1
-  sentence: रामेण सह मुनिः गच्छति। मार्गे वनम् हसति, नदी च शोभते। मुनिः सत्यम् वदति, रामः तत् च शृणोति। मुनेः वाक् अत्र शुभा। आश्रमे शिष्याः तम् प्रतीक्षन्ते; संस्कृतम् वचनम् तेषाम् प्रियम्। नमः ते गुरो, इति ते वदन्ति।
-  translation: A sage walks with Rāma. On the way the forest smiles with flowers, and the river shines. The sage speaks the truth, and Rāma listens to that too. The sage's speech is auspicious here. At the hermitage his pupils are waiting for him; refined speech is dear to them. "Homage to you, teacher," they say.
-  teaches: 'A walk with a sage, in sandhi: वाग् (जश्त्व), तच्च (श्चुत्व), सत्यं/वनं/वचनं/तेषां (anusvāra), रामेण (णत्व across the word), मुनिर्गच्छति (visarga), संस्कृतं (the nasal made homorganic). हसति of a forest in bloom is the poets'' own word.
+  sentence: रामेण सह मुनिः गच्छति। मार्गे वनम् पुष्पैः हसति, नदी च शोभते। मुनिः सत्यम् वदति, रामः च तत् शृणोति। मुनेः वाक् अत्र शुभा। आश्रमे शिष्याः तम् प्रतीक्षन्ते। नमः ते गुरो, इति ते वदन्ति।
+  translation: A sage walks with Rāma. On the way the forest smiles with flowers, and the river shines. The sage speaks the truth, and Rāma listens to it. The sage's speech is auspicious here. At the hermitage his pupils are waiting for him. "Homage to you, teacher," they say.
+  teaches: 'A walk with a sage, in sandhi: वाग् (जश्त्व), रामश्च and तच्छृणोति (श्चुत्व), सत्यं/वनं (anusvāra), रामेण (णत्व across the word), मुनिर्गच्छति and पुष्पैर्हसति (visarga). हसति of a forest in bloom is the poets'' own word.
 
     '
   words:
@@ -82,6 +82,16 @@
       en: agent
     - term: एकवचन
       en: एकवचन
+  - form: पुष्पैः
+    lemma: पुष्प
+    gloss: 'with flowers'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: करण
+      en: 'what the forest smiles with — blossom as the forest''s smile'
+    - term: तृतीया
+      en: 'instrumental plural — अ-stem, भिस् → ऐस्: पुष्पैः'
   - form: हसति
     lemma: हस्
     gloss: laughs
@@ -164,14 +174,20 @@
       en: agent
     - term: प्रथमा
       en: nominative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: 'and — joins Rāma''s listening to the sage''s speaking'
   - form: तत्
     lemma: तद्
-    gloss: and it
+    gloss: it
     notes:
     - term: सर्वनाम
       en: pronoun
     - cite: 8.4.40
-      role: स्तोः श्चुना श्चुः — श्चुत्व assimilates the dental to the palatal → तच्च
+      role: स्तोः श्चुना श्चुः — श्चुत्व assimilates the dental to the palatal → तच्छृणोति
     - term: कर्मन्
       en: object
     - term: द्वितीया
@@ -194,12 +210,6 @@
       en: द्वितीया
     - term: एकवचन
       en: एकवचन
-  - form: च
-    lemma: च
-    gloss: too
-    notes:
-    - term: अव्यय
-      en: indeclinable
   - form: शृणोति
     lemma: श्रु
     gloss: listens to
@@ -307,77 +317,6 @@
     notes:
     - term: लट्
       en: present, plural, with प्रति (आत्मनेपद)
-  - form: संस्कृतम्
-    lemma: संस्कृत
-    gloss: refined
-    notes:
-    - term: सन्धि
-      en: सम् + कृत — the nasal takes the point of the following स्क्
-    - cite: 8.4.58
-      role: अनुस्वारस्य ययि परसवर्णः — the nasal goes homorganic → संस्कृतम्
-  - form: वचनम्
-    lemma: वचन
-    gloss: speech
-    notes:
-    - cite: 8.3.23
-      role: मोऽनुस्वारः — word-final म् becomes anusvāra before a consonant → वचनं
-    - term: सन्धि
-      en: वचनम् + तेषाम् — म् → anusvāra again, a second instance
-    - term: प्रथमा
-      en: neuter nominative
-    - term: कर्तृ
-      en: agent
-    - term: कर्तृ
-      en: agent
-    - term: एकवचन
-      en: एकवचन
-    - term: कर्तृ
-      en: agent
-    - term: एकवचन
-      en: एकवचन
-    - term: कर्तृ
-      en: agent
-    - term: एकवचन
-      en: एकवचन
-  - form: तेषाम्
-    lemma: तद्
-    gloss: to them
-    notes:
-    - term: सर्वनाम
-      en: pronoun
-    - cite: 8.3.23
-      role: मोऽनुस्वारः — word-final म् becomes anusvāra before a consonant → तेषां
-    - term: षष्ठी
-      en: genitive plural — "dear to them"
-    - term: सम्बन्ध
-      en: relation
-    - term: सम्बन्ध
-      en: relation
-    - term: बहुवचन
-      en: बहुवचन
-    - term: सम्बन्ध
-      en: relation
-    - term: बहुवचन
-      en: बहुवचन
-    - term: सम्बन्ध
-      en: relation
-    - term: बहुवचन
-      en: बहुवचन
-  - form: प्रियम्
-    lemma: प्रिय
-    gloss: dear
-    vocab: true
-    notes:
-    - cite: 7.1.24
-      role: अतोऽम् — the neuter अ-stem takes अम् in प्रथमा and द्वितीया → प्रियम्
-    - term: प्रथमा
-      en: neuter nominative — predicated of वचनं
-    - term: कर्तृ
-      en: agent
-    - term: कर्तृ
-      en: agent
-    - term: कर्तृ
-      en: agent
   - form: नमः
     lemma: नमस्
     gloss: homage
@@ -440,10 +379,10 @@
       en: वद् + अ + न्ति
     - term: लट्
       en: present plural
-  vyakhya: यत्र पदं पदेन मिलति तत्र सन्धिः। वाग्, तच्च, वनं, रामेण — सर्वत्र।
+  vyakhya: यत्र पदं पदेन मिलति तत्र सन्धिः। वाग्, तच्छृणोति, वनं, रामेण — सर्वत्र।
   vyakhya_en: 'Six joins here and none of them announced. वाक् voices to वाग् because a
 
-    vowel follows; त् becomes च् because च follows; म् goes to anusvāra twice;
+    vowel follows; त् becomes च् because श् follows; म् goes to anusvāra twice;
 
     न् turns ण् in रामेण because an र् sits two syllables back.
 
