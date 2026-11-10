@@ -2,8 +2,8 @@
   kind: graded
   segment: 186
   order: 1
-  sentence: 'गुरुः वदति — शिष्याः पाठशालाम् गच्छन्तु। अहम् अपि गच्छानि। देवदत्त, आवाम् सह गच्छाव, सह च पठेव। सर्वे वयम् गच्छाम। यूयम् प्रतिदिनम् पठेत। त्वम् शनैः पठेः। युवाम् सह पठेतम्। एतौ बालौ ग्रन्थम् पठेताम्। कन्याः अपि पठेयुः।'
-  translation: 'The teacher says: "Let the pupils go to school. Let me go too. Devadatta, let us two go together, and study together. Let us all go. You should study every day. You should read slowly. You two should study together. These two boys should read the book. The girls should study too."'
+  sentence: 'गुरुः वदति — शिष्याः पाठशालाम् गच्छन्तु। अहम् अपि गच्छानि। देवदत्त, आवाम् सह गच्छाव, सह च पठेव। सर्वे वयम् गच्छाम। यूयम् प्रतिदिनम् पठेत। यज्ञदत्त, त्वम् शनैः पठेः। सोम हरे, युवाम् सह पठेतम्। एतौ नवौ बालौ ग्रन्थम् पठेताम्। कन्याः अपि पठेयुः।'
+  translation: 'The teacher says: "Let the pupils go to school. Let me go too. Devadatta, let us two go together, and study together. Let us all go. You should study every day. Yajñadatta, you should read slowly. Soma and Hari, you two should study together. These two new boys should read the book. The girls should study too."'
   teaches: 'The imperative in the persons the corpus lacked — गच्छन्तु, गच्छानि, गच्छाव, गच्छाम — and the optative of advice — पठेत, पठेः, पठेतम्, पठेताम्, पठेयुः, पठेव.'
   words:
   - form: गुरुः
@@ -161,6 +161,12 @@
     notes:
     - term: विधिलिङ्
       en: 'optative (विधिलिङ्) — advice: "should", 2nd person plural'
+  - form: यज्ञदत्त
+    lemma: यज्ञदत्त
+    gloss: 'Yajñadatta'
+    notes:
+    - term: सम्बोधन
+      en: 'vocative — the अ-stem bare, no ending: one pupil singled out'
   - form: त्वम्
     lemma: युष्मद्
     gloss: 'you'
@@ -183,6 +189,18 @@
     notes:
     - term: विधिलिङ्
       en: 'optative (विधिलिङ्) — advice: "should", 2nd person singular'
+  - form: सोम
+    lemma: सोम
+    gloss: 'Soma'
+    notes:
+    - term: सम्बोधन
+      en: 'vocative — अ-stem, bare stem'
+  - form: हरे
+    lemma: हरि
+    gloss: 'Hari'
+    notes:
+    - term: सम्बोधन
+      en: 'vocative — इ-stem takes गुण: हरि → हरे'
   - form: युवाम्
     lemma: युष्मद्
     gloss: 'you two'
@@ -193,6 +211,12 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
+  - form: सह
+    lemma: सह
+    gloss: 'together'
+    notes:
+    - term: अव्यय
+      en: 'adverb here — "together", with no तृतीया'
   - form: पठेतम्
     lemma: पठ्
     gloss: 'should study'
@@ -211,6 +235,17 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
+  - form: नवौ
+    lemma: नव
+    gloss: 'new'
+    notes:
+    - term: विशेषण
+      en: 'qualifying बालौ — the two newcomers'
+    - term: प्रथमा
+      en: 'nominative dual'
+    rel:
+    - kind: विशेषण
+      to: 32
   - form: बालौ
     lemma: बाल
     gloss: 'boys'

@@ -2,9 +2,9 @@
   kind: graded
   segment: 183
   order: 6
-  sentence: 'पितामहः पुनः वेदम् पठति — हे ऋचः, आगच्छत। मन्त्राः आगच्छन्ति। सः वेदम् सर्वेभ्यः वस्तुभ्यः श्रेष्ठम् मन्यते।'
-  translation: 'Grandfather recites the Veda again — "Verses, come!" The mantras come back. He holds the Veda dearer than all things.'
-  teaches: 'Mālatī, part 5 — the verses return: ऋचः addressed, and वस्तुभ्यः as the ablative of comparison.'
+  sentence: 'पितामहः पुनः वेदम् पठति। अद्य ते द्वे ऋचौ अपि आगच्छतः। सः वेदम् सर्वेभ्यः वस्तुभ्यः श्रेष्ठम् मन्यते।'
+  translation: 'Grandfather recites the Veda again. Today those two verses come to him too. He holds the Veda dearer than all things.'
+  teaches: 'Mālatī, part 5 — the verses return: ऋचौ, the two he forgot, and वस्तुभ्यः as the ablative of comparison.'
   words:
   - form: पितामहः
     lemma: पितामह
@@ -42,52 +42,61 @@
     notes:
     - term: लट्
       en: 'present'
-  - form: हे
-    lemma: हे
-    gloss: 'O'
+  - form: अद्य
+    lemma: अद्य
+    gloss: 'today'
     notes:
     - term: अव्यय
-      en: 'indeclinable — address'
-  - form: ऋचः
+      en: 'indeclinable — time: this time, unlike before'
+  - form: ते
+    lemma: तद्
+    gloss: 'those'
+    notes:
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'with ऋचौ, the subject of आगच्छतः'
+    - term: सर्वनाम
+      en: 'pronoun — feminine dual ते: the two verses he forgot'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: द्वे
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'feminine द्वे, agreeing with ऋचौ'
+    - term: प्रथमा
+      en: 'nominative dual'
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: ऋचौ
     lemma: ऋच्
     gloss: 'verses'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
-    - term: बहुवचन
-      en: 'plural'
-    - term: सम्बोधन
-      en: 'vocative plural'
-  - form: आगच्छत
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'the two verses forgotten in part 1 — now they come'
+    - term: प्रथमा
+      en: 'consonant stem nom. dual: ऋच् + औ'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
+    notes:
+    - term: अव्यय
+      en: 'too — with the rest of the recitation'
+  - form: आगच्छतः
     lemma: गम्
     gloss: 'come'
     notes:
-    - term: लोट्
-      en: 'imperative, 2nd person plural, with आ'
-    - term: मध्यमपुरुष
-      en: '2nd person'
-    - term: बहुवचन
-      en: 'plural'
-    - term: परस्मैपद
-      en: 'parasmaipada'
-  - form: मन्त्राः
-    lemma: मन्त्र
-    gloss: 'the mantras'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: बहुवचन
-      en: 'plural'
-    - term: कर्तृ
-      en: 'agents of coming back — the verses respond to the call'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: आगच्छन्ति
-    lemma: गम्
-    gloss: 'come back'
-    notes:
     - term: लट्
-      en: 'present, plural, with the preverb आ'
+      en: 'present, dual, with the preverb आ'
   - form: सः
     lemma: तद्
     gloss: 'he'

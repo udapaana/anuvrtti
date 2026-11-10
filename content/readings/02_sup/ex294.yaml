@@ -2,26 +2,18 @@
   kind: graded
   segment: 179
   order: 3
-  sentence: 'फलानाम् राशिः राज्ञाम् सभायाम् अस्ति। मातॄणाम् गीतानि राज्ञाम् नाम्नाम् घोषः च श्रूयन्ते। प्रजाः राजसु विश्वसन्ति, पुत्राः पितृषु मातृषु च, ऋषयः तु मनःसु एव।'
-  translation: 'A heap of fruit lies in the assembly of the kings. The songs of the mothers and the announcing of the kings names are heard. Subjects trust their kings, sons their fathers and mothers — but sages only their minds.'
+  sentence: 'उत्सवे राज्ञाम् सभायाम् फलानाम् राशिः अस्ति। राज्ञाम् नाम्नाम् घोषः मातॄणाम् गीतानि च श्रूयन्ते। ततः एकः ऋषिः वदति — प्रजाः राजसु विश्वसन्ति, पुत्राः पितृषु मातृषु च, ऋषयः तु मनःसु एव।'
+  translation: 'At the festival a heap of fruit lies in the kings'' assembly. The kings'' names are proclaimed, and the mothers'' songs are heard. Then a sage says: "Subjects trust their kings, sons their fathers and mothers — but sages only their minds."'
   teaches: 'Genitive and locative plurals of the ऋ- and consonant stems — मातॄणाम्, राज्ञाम्, नाम्नाम्; राजसु, पितृषु, मातृषु, मनःसु.'
   words:
-  - form: फलानाम्
-    lemma: फल
-    gloss: 'of fruit'
+  - form: उत्सवे
+    lemma: उत्सव
+    gloss: 'at the festival'
     notes:
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive plural'
-  - form: राशिः
-    lemma: राशि
-    gloss: 'a heap'
-    notes:
-    - term: कर्तृ
-      en: 'subject of अस्ति — इ-stem masc. nom. sg -इः: "a heap"'
-    - term: प्रथमा
-      en: 'nominative'
+    - term: अधिकरण
+      en: 'the occasion — locative of time and place'
+    - term: सप्तमी
+      en: 'locative'
   - form: राज्ञाम्
     lemma: राजन्
     gloss: 'of the kings'
@@ -38,28 +30,28 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative'
+  - form: फलानाम्
+    lemma: फल
+    gloss: 'of fruit'
+    notes:
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive plural'
+  - form: राशिः
+    lemma: राशि
+    gloss: 'a heap'
+    notes:
+    - term: कर्तृ
+      en: 'subject of अस्ति — इ-stem masc. nom. sg -इः: "a heap"'
+    - term: प्रथमा
+      en: 'nominative'
   - form: अस्ति
     lemma: अस्
     gloss: 'is'
     notes:
     - term: लट्
       en: 'present'
-  - form: मातॄणाम्
-    lemma: मातृ
-    gloss: 'of the mothers'
-    notes:
-    - term: सम्बन्ध
-      en: 'ऋ lengthened before नाम्, with णत्व'
-    - term: षष्ठी
-      en: 'genitive plural'
-  - form: गीतानि
-    lemma: गीत
-    gloss: 'songs'
-    notes:
-    - term: कर्तृ
-      en: 'subject of the passive श्रूयन्ते — neuter nom. pl -आनि'
-    - term: प्रथमा
-      en: 'nominative plural'
   - form: राज्ञाम्
     lemma: राजन्
     gloss: 'of the kings'
@@ -84,6 +76,22 @@
       en: 'subject of श्रूयन्ते — the herald''s proclaiming of each king''s name'
     - term: प्रथमा
       en: 'nominative'
+  - form: मातॄणाम्
+    lemma: मातृ
+    gloss: 'of the mothers'
+    notes:
+    - term: सम्बन्ध
+      en: 'ऋ lengthened before नाम्, with णत्व'
+    - term: षष्ठी
+      en: 'genitive plural'
+  - form: गीतानि
+    lemma: गीत
+    gloss: 'songs'
+    notes:
+    - term: कर्तृ
+      en: 'subject of the passive श्रूयन्ते — neuter nom. pl -आनि'
+    - term: प्रथमा
+      en: 'nominative plural'
   - form: च
     lemma: च
     gloss: 'and'
@@ -96,6 +104,39 @@
     notes:
     - term: लट्
       en: 'present, passive (यक्)'
+  - form: ततः
+    lemma: ततस्
+    gloss: 'then'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — sequence'
+  - form: एकः
+    lemma: एक
+    gloss: 'one'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying the noun'
+    - term: प्रथमा
+      en: 'nominative'
+    rel:
+    - kind: विशेषण
+      to: 15
+  - form: ऋषिः
+    lemma: ऋषि
+    gloss: 'a sage'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: प्रजाः
     lemma: प्रजा
     gloss: 'subjects'

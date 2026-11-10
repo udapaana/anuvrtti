@@ -2,9 +2,9 @@
   kind: graded
   segment: 183
   order: 2
-  sentence: 'मालती स्रग्भ्यः पुष्पाणि चिनोति, स्रग्भ्याम् च वाग्देव्याः मूर्तिम् अलङ्करोति। स्रजोः भ्रमराः भ्रमन्ति। सा प्रार्थयते — हे वाक्, मम पितामहस्य जिह्वायाम् वस। तदा पितामहः वेदम् पठति, किन्तु ऋग्द्वयम् विस्मरति। सः वदति — हे ऋचौ, मम स्मृतौ तिष्ठतम्। ततः सः देव्याः पुरतः जानुनी भूमौ स्थापयति, वेदनया च "आः" इति वदति। मालती माक्षिकम् आनयति, वदति च — मधु एव औषधम्। मधुनः स्वादेन पितामहः हसति, अश्रुभिः सह। द्वयोः मनोभ्याम् चिन्ता अपगच्छति।'
-  translation: 'Mālatī gathers flowers for garlands, and with two garlands adorns the image of the goddess of Speech. Bees hover over the two garlands. She prays: "Speech, dwell on my grandfather''s tongue." Just then Grandfather recites the Veda, but forgets two verses. He says: "Verses, stay in my memory!" Then he sets both knees on the ground before the goddess, and says "Ah!" in pain. Mālatī brings honey and says: "Honey is the medicine." At the taste of the honey Grandfather laughs, with tears. Worry leaves both their minds.'
-  teaches: 'Mālatī and her grandfather, part 1 — the consonant stems स्रज् (स्रग्भ्यः, स्रग्भ्याम्, स्रजोः), वाच् (वाक्, the goddess addressed), ऋच् (ऋचौ addressed); and the neuter उ-stems जानुनी, मधु, मधुनः, अश्रुभिः; मनोभ्याम्.'
+  sentence: 'मालती स्रग्भ्यः पुष्पाणि चिनोति, स्रग्भ्याम् च वाग्देव्याः मूर्तिम् अलङ्करोति। स्रजोः भ्रमराः भ्रमन्ति। सा प्रार्थयते — हे वाक्, मम पितामहस्य जिह्वायाम् वस। तदा पितामहः वेदम् पठति, किन्तु ऋग्द्वयम् विस्मरति। ततः वृद्धः सः देव्याः पुरतः जानुनी भूमौ स्थापयति, वेदनया च "आः" इति वदति। मालती माक्षिकम् आनयति, वदति च — मधु एव औषधम्। मधुनः स्वादेन पितामहः हसति, अश्रुभिः सह। द्वयोः मनोभ्याम् चिन्ता अपगच्छति।'
+  translation: 'Mālatī gathers flowers for garlands, and with two garlands adorns the image of the goddess of Speech. Bees hover over the two garlands. She prays: "Speech, dwell on my grandfather''s tongue." Just then Grandfather recites the Veda, but forgets two verses. Then, old as he is, he sets both knees on the ground before the goddess, and says "Ah!" in pain. Mālatī brings honey and says: "Honey is the medicine." At the taste of the honey Grandfather laughs, with tears. Worry leaves both their minds.'
+  teaches: 'Mālatī and her grandfather, part 1 — the consonant stems स्रज् (स्रग्भ्यः, स्रग्भ्याम्, स्रजोः), वाच् (वाक्, the goddess addressed), ऋच् (in ऋग्द्वयम्); and the neuter उ-stems जानुनी, मधु, मधुनः, अश्रुभिः; मनोभ्याम्.'
   words:
   - form: मालती
     lemma: मालती
@@ -278,58 +278,33 @@
     notes:
     - term: लट्
       en: 'present, with the preverb वि'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: एकवचन
-      en: 'number'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: वदति
-    lemma: वद्
-    gloss: 'says'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: ऋचौ
-    lemma: ऋच्
-    gloss: 'verses'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: सम्बोधन
-      en: 'the two verses addressed directly — ऋच् vocative dual'
-  - form: स्मृतौ
-    lemma: स्मृति
-    gloss: 'in memory'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: अधिकरण
-      en: 'इ-stem feminine locative in औ — where the verses should stay'
-    - term: सप्तमी
-      en: 'locative'
-  - form: तिष्ठतम्
-    lemma: स्था
-    gloss: 'stay'
-    notes:
-    - term: लोट्
-      en: 'imperative, 2nd person dual'
   - form: ततः
     lemma: ततः
     gloss: 'then'
     notes:
     - term: अव्यय
       en: 'indeclinable — sequence'
+  - form: वृद्धः
+    lemma: वृद्ध
+    gloss: 'old'
+    notes:
+    - term: विशेषण
+      en: 'qualifying सः — an old man''s knees: the reason for the pain'
+    - term: प्रथमा
+      en: 'nominative'
+    rel:
+    - kind: विशेषण
+      to: 29
+  - form: सः
+    lemma: तद्
+    gloss: 'he'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
   - form: देव्याः
     lemma: देवी
     gloss: 'the goddess'
@@ -404,6 +379,12 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — closes the quotation'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: माक्षिकम्
     lemma: माक्षिक
     gloss: 'honey'
@@ -422,6 +403,12 @@
     notes:
     - term: लट्
       en: 'present, with the preverb आ'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: मधु
     lemma: मधु
     gloss: 'honey'
@@ -452,7 +439,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 43
+      to: 42
   - form: मधुनः
     lemma: मधु
     gloss: 'of the honey'

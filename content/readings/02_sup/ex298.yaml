@@ -2,8 +2,8 @@
   kind: graded
   segment: 180
   order: 3
-  sentence: 'कन्या वदति — हे पितः, हे मातः, शृणुतम्। अहम् पितुः धर्मम् अशिक्षे, मातुः च मधुराम् वाचम्। मधुरया वाचा सर्वे प्रसीदन्ति। अस्माकम् गौः धेनुम् अनुगच्छति। अहम् गवे तृणम् ददामि, गवि च स्निह्यामि। तस्याः क्षीरम् मधुना सह पिबामि। युवयोः शुद्धाय मनसे नमः।'
-  translation: 'The girl says: "O father, O mother, listen, both of you. From father I learned dharma, and from mother sweet speech. With sweet speech everyone is pleased. Our bull follows the milch-cow. I give grass to the bull, and I am fond of him. I drink her milk with honey. Homage to the pure mind of you both."'
+  sentence: 'कन्या वदति — हे पितः, हे मातः, शृणुतम्। अहम् पितुः धर्मम् अशिक्षे, मातुः च मधुराम् वाचम्। मधुरया वाचा सर्वे प्रसीदन्ति। अस्माकम् गृहे एका गौः अस्ति। अहम् गवे तृणम् ददामि, गवि च स्निह्यामि। तस्याः क्षीरम् मधुना सह पिबामि। युवयोः शुद्धाय मनसे नमः।'
+  translation: 'The girl says: "O father, O mother, listen, both of you. From father I learned dharma, and from mother sweet speech. With sweet speech everyone is pleased. At our home there is a cow. I give her grass, and I am fond of her. I drink her milk with honey. Homage to the pure mind of you both."'
   teaches: 'Singulars of the rarer stems — हे पितः, हे मातः, पितुः and मातुः as ablatives, वाचम्/वाचा, गौः/गवे/गवि, मधुना, मनसे — and the imperative dual शृणुतम्.'
   words:
   - form: कन्या
@@ -152,30 +152,41 @@
       en: 'relation'
     - term: षष्ठी
       en: 'genitive plural'
+  - form: गृहे
+    lemma: गृह
+    gloss: 'at home'
+    notes:
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative'
+  - form: एका
+    lemma: एक
+    gloss: 'one, a'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'feminine एका, agreeing with गौः — here simply "a"'
+    - term: प्रथमा
+      en: 'nominative'
+    rel:
+    - kind: विशेषण
+      to: 21
   - form: गौः
     lemma: गो
-    gloss: 'our bull'
+    gloss: 'a cow'
     notes:
     - term: कर्तृ
       en: 'गो — the वृद्धि of the nominative'
     - term: प्रथमा
       en: 'nominative'
-  - form: धेनुम्
-    lemma: धेनु
-    gloss: 'the milch-cow'
-    notes:
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: अनुगच्छति
-    lemma: गम्
-    gloss: 'follows'
+  - form: अस्ति
+    lemma: अस्
+    gloss: 'there is'
     notes:
     - term: लट्
-      en: 'present, with the preverb अनु'
+      en: 'present'
   - form: गवे
     lemma: गो
     gloss: 'to the cow'
@@ -274,7 +285,7 @@
       en: 'dative'
     rel:
     - kind: विशेषण
-      to: 34
+      to: 35
   - form: मनसे
     lemma: मनस्
     gloss: 'to a mind'

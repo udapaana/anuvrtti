@@ -2,14 +2,72 @@
   kind: graded
   segment: 186
   order: 2
-  sentence: 'पिता वदति — श्वः वयम् नगरम् गन्तास्मः। अहम् प्रातः गन्तास्मि। त्वम् अपि गन्तासि वा? युवाम् मया सह गन्तास्थः। यूयम् सर्वे गन्तास्थ। मम पितरौ अपि गन्तारौ, बालाः च गन्तारः। आवाम् रथेन गन्तास्वः। मम मित्रे अपि सह गमिष्यतः। युवाम् नदीम् गमिष्यथः। यूयम् कुत्र गमिष्यथ? आवाम् मन्दिरम् गमिष्यावः।'
-  translation: 'Father says: "Tomorrow we will go to the city. I will go in the morning. Will you go too? You two will go with me. All of you will go. My parents will go as well, and the children will go. We two will go by chariot. My two friends will also come along. You two will go to the river. Where will you all go?" "We two will go to the temple."'
-  teaches: 'The periphrastic future (लुट्, a set future) in every person the corpus lacked — गन्तास्मः, गन्तास्मि, गन्तासि, गन्तास्थः, गन्तास्थ, गन्तारौ, गन्तारः, गन्तास्वः — and the simple future (लृट्) in the dual and second plural.'
+  sentence: 'पिता पृच्छति — श्वः उत्सवः; यूयम् कुत्र गमिष्यथ? ततः सः वदति — वयम् सर्वे नगरम् गन्तास्मः। अहम् प्रातः आपणम् गन्तास्मि; पुत्र, त्वम् अपि मया सह गन्तासि वा? कन्ये, युवाम् जलाय नदीम् गन्तास्थः। मम पितरौ मन्दिरम् गन्तारौ, बालाः च ताभ्याम् सह गन्तारः। सायम् यूयम् सर्वे उत्सवम् गन्तास्थ; युष्माकम् माता अहम् च रथेन गन्तास्वः। कन्ये वदतः — आवाम् प्रातः नदीम् गमिष्यावः; आवयोः मित्रे अपि सह गमिष्यतः। पिता पृच्छति — युवाम् ततः मन्दिरम् अपि गमिष्यथः?'
+  translation: 'Father asks: "Tomorrow is the festival; where will you all go?" Then he says: "We will all go to the city. I will go to the market in the morning; son, will you come with me? Daughters, you two will go to the river for water. My parents will go to the temple, and the children will go with them. In the evening all of you will go to the festival; your mother and I will go by chariot." The daughters say: "We two will go to the river in the morning; our two friends will come along too." Father asks: "Will you two go on to the temple after that?"'
+  teaches: 'Errands for a festival day: the periphrastic future (लुट्, a set future) in every person — गन्तास्मः, गन्तास्मि, गन्तासि, गन्तास्थः, गन्तास्थ, गन्तारौ, गन्तारः, गन्तास्वः — and the simple future (लृट्) in the replies and questions: गमिष्यथ, गमिष्यावः, गमिष्यतः, गमिष्यथः.'
   words:
   - form: पिता
     lemma: पितृ
     gloss: 'father'
     notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: पृच्छति
+    lemma: प्रच्छ्
+    gloss: 'asks'
+    notes:
+    - term: लट्
+      en: 'present — प्रच्छ् is तुदादि, with सम्प्रसारण: पृच्छति'
+  - form: श्वः
+    lemma: श्वस्
+    gloss: 'tomorrow'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — time'
+  - form: उत्सवः
+    lemma: उत्सव
+    gloss: 'the festival'
+    notes:
+    - term: कर्तृ
+      en: 'subject, with the verb understood: "tomorrow is the festival"'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: यूयम्
+    lemma: युष्मद्
+    gloss: 'you (all)'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: कुत्र
+    lemma: कुत्र
+    gloss: 'where'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — place'
+  - form: गमिष्यथ
+    lemma: गम्
+    gloss: 'will go'
+    notes:
+    - term: लृट्
+      en: 'simple future (लृट्), 2nd person plural'
+  - form: ततः
+    lemma: ततस्
+    gloss: 'then'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — sequence: no one answers, so he decides'
+  - form: सः
+    lemma: तद्
+    gloss: 'he'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
@@ -20,12 +78,6 @@
     notes:
     - term: लट्
       en: 'present'
-  - form: श्वः
-    lemma: श्वस्
-    gloss: 'tomorrow'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — time'
   - form: वयम्
     lemma: अस्मद्
     gloss: 'we'
@@ -36,6 +88,19 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative plural'
+  - form: सर्वे
+    lemma: सर्व
+    gloss: 'all'
+    notes:
+    - term: बहुवचन
+      en: 'plural'
+    - term: विशेषण
+      en: 'qualifying वयम् — सर्व declines like a pronoun: सर्वे, like ते'
+    - term: प्रथमा
+      en: 'nominative plural'
+    rel:
+    - kind: विशेषण
+      to: 10
   - form: नगरम्
     lemma: नगर
     gloss: 'to the city'
@@ -66,12 +131,26 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — time'
+  - form: आपणम्
+    lemma: आपण
+    gloss: 'to the market'
+    notes:
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
   - form: गन्तास्मि
     lemma: गम्
     gloss: 'will go'
     notes:
     - term: लुट्
       en: 'periphrastic future (लुट्) — a set future, "will go", 1st person singular'
+  - form: पुत्र
+    lemma: पुत्र
+    gloss: 'son'
+    notes:
+    - term: सम्बोधन
+      en: 'vocative — the bare अ-stem'
   - form: त्वम्
     lemma: युष्मद्
     gloss: 'you'
@@ -88,28 +167,6 @@
     notes:
     - term: अव्यय
       en: 'indeclinable'
-  - form: गन्तासि
-    lemma: गम्
-    gloss: 'will go'
-    notes:
-    - term: लुट्
-      en: 'periphrastic future (लुट्) — a set future, "will go", 2nd person singular'
-  - form: वा
-    lemma: वा
-    gloss: '(question)'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — "or?", closing a question'
-  - form: युवाम्
-    lemma: युष्मद्
-    gloss: 'you two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
   - form: मया
     lemma: अस्मद्
     gloss: 'me'
@@ -126,39 +183,60 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — governs the तृतीया'
-  - form: गन्तास्थः
+  - form: गन्तासि
     lemma: गम्
     gloss: 'will go'
     notes:
     - term: लुट्
-      en: 'periphrastic future (लुट्) — a set future, "will go", 2nd person dual'
-  - form: यूयम्
+      en: 'periphrastic future (लुट्) — a set future, "will go", 2nd person singular'
+  - form: वा
+    lemma: वा
+    gloss: '(question)'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — "or?", closing a question'
+  - form: कन्ये
+    lemma: कन्या
+    gloss: 'daughters'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्बोधन
+      en: 'vocative dual — his two daughters'
+  - form: युवाम्
     lemma: युष्मद्
-    gloss: 'you (all)'
+    gloss: 'you two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative plural'
-  - form: सर्वे
-    lemma: सर्व
-    gloss: 'all'
+      en: 'nominative dual'
+  - form: जलाय
+    lemma: जल
+    gloss: 'for water'
     notes:
-    - term: विशेषण
-      en: 'qualifying यूयम्'
-    - term: प्रथमा
-      en: 'nominative plural'
-    rel:
-    - kind: विशेषण
-      to: 17
-  - form: गन्तास्थ
+    - term: अर्थ
+      en: 'purpose — the dative of what one goes for'
+    - term: चतुर्थी
+      en: 'dative'
+  - form: नदीम्
+    lemma: नदी
+    gloss: 'to the river'
+    notes:
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: गन्तास्थः
     lemma: गम्
     gloss: 'will go'
     notes:
     - term: लुट्
-      en: 'periphrastic future (लुट्) — a set future, "will go", 2nd person plural'
+      en: 'periphrastic future (लुट्) — a set future, "will go", 2nd person dual'
   - form: मम
     lemma: अस्मद्
     gloss: 'my'
@@ -175,12 +253,14 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual — पितृ in the dual names father and mother together (एकशेष)'
-  - form: अपि
-    lemma: अपि
-    gloss: 'too'
+  - form: मन्दिरम्
+    lemma: मन्दिर
+    gloss: 'to the temple'
     notes:
-    - term: अव्यय
-      en: 'indeclinable'
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
   - form: गन्तारौ
     lemma: गम्
     gloss: 'will go'
@@ -201,22 +281,105 @@
     notes:
     - term: अव्यय
       en: 'indeclinable'
+  - form: ताभ्याम्
+    lemma: तद्
+    gloss: 'them (two)'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun — the grandparents'
+    - term: सहार्थ
+      en: 'accompaniment, with सह'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: सह
+    lemma: सह
+    gloss: 'with'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the तृतीया'
   - form: गन्तारः
     lemma: गम्
     gloss: 'will go'
     notes:
     - term: लुट्
       en: 'periphrastic future (लुट्) — a set future, "will go", 3rd person plural'
-  - form: आवाम्
-    lemma: अस्मद्
-    gloss: 'we two'
+  - form: सायम्
+    lemma: सायम्
+    gloss: 'in the evening'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — time'
+  - form: यूयम्
+    lemma: युष्मद्
+    gloss: 'you (all)'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative dual'
+      en: 'nominative plural'
+  - form: सर्वे
+    lemma: सर्व
+    gloss: 'all'
+    notes:
+    - term: बहुवचन
+      en: 'plural'
+    - term: विशेषण
+      en: 'qualifying यूयम्'
+    - term: प्रथमा
+      en: 'nominative plural'
+    rel:
+    - kind: विशेषण
+      to: 40
+  - form: उत्सवम्
+    lemma: उत्सव
+    gloss: 'to the festival'
+    notes:
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: गन्तास्थ
+    lemma: गम्
+    gloss: 'will go'
+    notes:
+    - term: लुट्
+      en: 'periphrastic future (लुट्) — a set future, "will go", 2nd person plural'
+  - form: युष्माकम्
+    lemma: युष्मद्
+    gloss: 'your'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive plural'
+  - form: माता
+    lemma: मातृ
+    gloss: 'mother'
+    notes:
+    - term: कर्तृ
+      en: 'one of the two subjects of गन्तास्वः'
+    - term: प्रथमा
+      en: 'ऋ-stem nominative: मातृ → माता'
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: 'I'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'and — माता and अहम् together take the 1st dual: गन्तास्वः'
   - form: रथेन
     lemma: रथ
     gloss: 'by chariot'
@@ -231,14 +394,60 @@
     notes:
     - term: लुट्
       en: 'periphrastic future (लुट्) — a set future, "will go", 1st person dual'
-  - form: मम
+  - form: कन्ये
+    lemma: कन्या
+    gloss: 'the daughters'
+    notes:
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: वदतः
+    lemma: वद्
+    gloss: 'say'
+    notes:
+    - term: लट्
+      en: 'present, dual'
+  - form: आवाम्
     lemma: अस्मद्
-    gloss: 'my'
+    gloss: 'we two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: प्रातः
+    lemma: प्रातर्
+    gloss: 'in the morning'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — time'
+  - form: नदीम्
+    lemma: नदी
+    gloss: 'to the river'
+    notes:
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: गमिष्यावः
+    lemma: गम्
+    gloss: 'will go'
+    notes:
+    - term: लृट्
+      en: 'simple future (लृट्), 1st person dual'
+  - form: आवयोः
+    lemma: अस्मद्
+    gloss: 'our (of us two)'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'relation'
     - term: षष्ठी
-      en: 'genitive'
+      en: 'genitive dual'
   - form: मित्रे
     lemma: मित्र
     gloss: 'the two friends'
@@ -265,32 +474,36 @@
     notes:
     - term: लृट्
       en: 'simple future (लृट्), 3rd person dual'
-  - form: नदीम्
-    lemma: नदी
-    gloss: 'to the river'
+  - form: पिता
+    lemma: पितृ
+    gloss: 'father'
     notes:
-    - term: कर्मन्
-      en: 'the goal of motion'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: गमिष्यथः
-    lemma: गम्
-    gloss: 'will go'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: पृच्छति
+    lemma: प्रच्छ्
+    gloss: 'asks'
     notes:
-    - term: लृट्
-      en: 'simple future (लृट्), 2nd person dual'
-  - form: कुत्र
-    lemma: कुत्र
-    gloss: 'where'
+    - term: लट्
+      en: 'present'
+  - form: युवाम्
+    lemma: युष्मद्
+    gloss: 'you two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: ततः
+    lemma: ततस्
+    gloss: 'after that'
     notes:
     - term: अव्यय
-      en: 'indeclinable — place'
-  - form: गमिष्यथ
-    lemma: गम्
-    gloss: 'will go'
-    notes:
-    - term: लृट्
-      en: 'simple future (लृट्), 2nd person plural'
+      en: 'indeclinable — sequence'
   - form: मन्दिरम्
     lemma: मन्दिर
     gloss: 'to the temple'
@@ -299,9 +512,15 @@
       en: 'the goal of motion'
     - term: द्वितीया
       en: 'accusative'
-  - form: गमिष्यावः
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: गमिष्यथः
     lemma: गम्
     gloss: 'will go'
     notes:
     - term: लृट्
-      en: 'simple future (लृट्), 1st person dual'
+      en: 'simple future (लृट्), 2nd person dual'

@@ -2,9 +2,9 @@
   kind: graded
   segment: 183
   order: 1
-  sentence: 'गोपालः धेनुभ्याम् सह वनम् गच्छति। धेन्वोः घण्टे लम्बेते। सः ताभ्याम् तृणम् ददाति। सायम् एकः व्याघ्रः आगच्छति, गोभ्याम् न दूरम्। गोपालः वदति — हे कपिले गौः, अत्र तिष्ठ। हे गावौ, मम पृष्ठतः तिष्ठतम्। सः दण्डम् उद्यच्छति, व्याघ्रः च धावति। ततः गोपालः गवोः पृष्ठयोः हस्तौ स्थापयति। गृहे अन्याः गावः प्रतीक्षन्ते; सर्वाभ्यः गोभ्यः माता दुग्धम् प्राप्नोति। द्वौ वत्सौ — एकः वत्सः धेनोः न दूरम् गच्छति, अपरः गोः।'
-  translation: 'A cowherd goes to the forest with his two cows. On the two cows hang two bells. He gives them grass. At dusk a tiger comes, not far from the two cows. The cowherd says: "Kapilā, stay here. You two, stand behind me." He raises his staff, and the tiger runs. Then the cowherd lays his hands on the two cows'' backs. At home the other cows are waiting; from all the cows his mother gets milk. Two calves — one does not stray from its mother, nor the other from its own.'
-  teaches: 'धेनु and the irregular गो — धेनुभ्याम्, धेन्वोः, धेनोः; गोभ्याम् (far from), गवोः, गोभ्यः, गोः, and the vocatives गौः, गावौ — in one evening with a tiger.'
+  sentence: 'गोपालः द्वे धेनू वनम् नयति। धेन्वोः घण्टे लम्बेते। सः ताभ्याम् तृणम् ददाति। सायम् एकः व्याघ्रः आगच्छति, गोभ्याम् न दूरम्। गोपालः वदति — हे गावौ, मम पृष्ठतः तिष्ठतम्। सः दण्डम् उद्यच्छति, व्याघ्रः च धावति। ततः गोपालः गवोः पृष्ठयोः हस्तौ स्थापयति, धेनुभ्याम् सह च गृहम् गच्छति।'
+  translation: 'A cowherd leads two cows to the forest. On the two cows hang two bells. He gives them grass. At dusk a tiger comes, not far from the two cows. The cowherd says: "You two, stand behind me." He raises his staff, and the tiger runs. Then the cowherd lays his hands on the two cows'' backs and goes home with them.'
+  teaches: 'धेनु and the irregular गो in the dual — धेनू, धेनुभ्याम्, धेन्वोः; गोभ्याम् (far from), गवोः, and the vocative गावौ — in one evening with a tiger.'
   words:
   - form: गोपालः
     lemma: गोपाल
@@ -18,24 +18,27 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: धेनुभ्याम्
+  - form: द्वे
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'feminine द्वे, agreeing with धेनू'
+    - term: द्वितीया
+      en: 'accusative dual'
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: धेनू
     lemma: धेनु
-    gloss: 'his two cows'
+    gloss: 'two cows'
     notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: सहार्थ
-      en: 'accompaniment, with सह'
-    - term: तृतीया
-      en: 'instrumental dual'
-  - form: सह
-    lemma: सह
-    gloss: 'with'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — governs the तृतीया'
+    - term: कर्मन्
+      en: 'what is led'
+    - term: द्वितीया
+      en: 'उ-stem feminine acc. dual — the vowel lengthened: धेनू'
   - form: वनम्
     lemma: वन
     gloss: 'to the forest'
@@ -48,9 +51,9 @@
       en: 'the goal of motion'
     - term: द्वितीया
       en: 'accusative'
-  - form: गच्छति
-    lemma: गम्
-    gloss: 'goes'
+  - form: नयति
+    lemma: नी
+    gloss: 'leads'
     notes:
     - term: लट्
       en: 'present'
@@ -199,38 +202,6 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — address'
-  - form: कपिले
-    lemma: कपिला
-    gloss: 'Kapilā'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: सम्बोधन
-      en: 'आ-stem feminine vocative: कपिला → कपिले, calling one cow by name'
-  - form: गौः
-    lemma: गो
-    gloss: 'cow'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: सम्बोधन
-      en: 'vocative'
-  - form: अत्र
-    lemma: अत्र
-    gloss: 'here'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — place'
-  - form: तिष्ठ
-    lemma: स्था
-    gloss: 'stay'
-    notes:
-    - term: लोट्
-      en: 'imperative'
   - form: गावौ
     lemma: गो
     gloss: 'you two'
@@ -345,201 +316,37 @@
       en: 'causative present — "makes stand"'
     - term: णिच्
       en: 'causative'
-  - form: गृहे
-    lemma: गृह
-    gloss: 'at home'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'singular'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative'
-  - form: अन्याः
-    lemma: अन्य
-    gloss: 'other'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: बहुवचन
-      en: 'plural'
-    - term: विशेषण
-      en: 'qualifying गावः'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-    rel:
-    - kind: विशेषण
-      to: 40
-  - form: गावः
-    lemma: गो
-    gloss: 'cows'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: बहुवचन
-      en: 'plural'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: प्रतीक्षन्ते
-    lemma: ईक्ष्
-    gloss: 'are waiting'
-    notes:
-    - term: लट्
-      en: 'present, plural, with the preverb प्रति (आत्मनेपद)'
-  - form: सर्वाभ्यः
-    lemma: सर्व
-    gloss: 'all'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: बहुवचन
-      en: 'plural'
-    - term: विशेषण
-      en: 'qualifying गोभ्यः'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative plural'
-    rel:
-    - kind: विशेषण
-      to: 43
-  - form: गोभ्यः
-    lemma: गो
-    gloss: 'from the cows'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: बहुवचन
-      en: 'plural'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative plural'
-  - form: माता
-    lemma: मातृ
-    gloss: 'his mother'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: दुग्धम्
-    lemma: दुग्ध
-    gloss: 'milk'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative — what the mother obtains from all the cows'
-  - form: प्राप्नोति
-    lemma: आप्
-    gloss: 'gets'
-    notes:
-    - term: लट्
-      en: 'present, with the preverb प्र'
-  - form: द्वौ
-    lemma: द्वि
-    gloss: 'two'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: प्रथमा
-      en: 'nominative dual'
-    rel:
-    - kind: विशेषण
-      to: 48
-  - form: वत्सौ
-    lemma: वत्स
-    gloss: 'calves'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: एकः
-    lemma: एक
-    gloss: 'one'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: प्रथमा
-      en: 'nominative'
-    rel:
-    - kind: विशेषण
-      to: 50
-  - form: वत्सः
-    lemma: वत्स
-    gloss: 'calf'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: धेनोः
+  - form: धेनुभ्याम्
     lemma: धेनु
-    gloss: 'from its mother'
+    gloss: 'with the two cows'
     notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: अपादान
-      en: 'far from — दूर takes the पञ्चमी'
-    - term: पञ्चमी
-      en: 'ablative'
+    - term: सहार्थ
+      en: 'accompaniment, with सह — instrumental dual -भ्याम्'
+    - term: तृतीया
+      en: 'instrumental dual'
+  - form: सह
+    lemma: सह
+    gloss: 'with'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the तृतीया'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'and — joins गच्छति to स्थापयति'
+  - form: गृहम्
+    lemma: गृह
+    gloss: 'home'
+    notes:
+    - term: कर्मन्
+      en: 'the goal of motion'
+    - term: द्वितीया
+      en: 'accusative'
   - form: गच्छति
     lemma: गम्
-    gloss: 'strays'
+    gloss: 'goes'
     notes:
     - term: लट्
       en: 'present'
-  - form: अपरः
-    lemma: अपर
-    gloss: 'the other'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: गोः
-    lemma: गो
-    gloss: 'from its own'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: अपादान
-      en: 'far from — दूर takes the पञ्चमी'
-    - term: पञ्चमी
-      en: 'ablative'

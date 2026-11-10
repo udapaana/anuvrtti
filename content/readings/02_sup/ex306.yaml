@@ -2,8 +2,8 @@
   kind: graded
   segment: 183
   order: 1
-  sentence: 'मार्गदर्शकः वदति — इमौ बालौ अत्र तिष्ठतः, इमाः कन्याः च गायन्ति। पश्य इमे लते, इमान् वृक्षान् च। आभ्याम् हस्ताभ्याम् अहम् पुष्पाणि चिनोमि, एभिः पुष्पैः च देवम् पूजयामि। अस्मै देवाय नमः, अस्यै देव्यै च। एभ्यः बालेभ्यः फलानि यच्छ। अस्मात् वृक्षात् फलम् पतति। आभ्यः वापीभ्यः जलम् आनय। अनयोः बालयोः पिता पुरोहितः। एषाम् वृक्षाणाम् छायायाम् उपविश। अस्मिन् मन्दिरे देवः वसति, एषु वृक्षेषु च पक्षिणः।'
-  translation: 'The guide says: "These two boys stand here, and these girls sing. Look at these two creepers, and these trees. With these two hands I gather flowers, and with these flowers I worship the god. Homage to this god, and to this goddess. Give fruit to these boys. From this tree a fruit falls. Bring water from these wells. The father of these two boys is the priest. Sit in the shade of these trees. In this temple the god dwells, and in these trees, the birds."'
+  sentence: 'मार्गदर्शकः वदति — इमौ बालौ अत्र तिष्ठतः, इमाः कन्याः च गायन्ति। पश्य इमे लते, इमान् वृक्षान् च। आभ्याम् हस्ताभ्याम् अहम् पुष्पाणि चिनोमि, एभिः पुष्पैः च देवम् पूजयामि। अस्मै देवाय नमः, अस्यै देव्यै च। एभ्यः बालेभ्यः फलानि यच्छ। अस्मात् वृक्षात् फलम् पतति। अनयोः बालयोः पिता पुरोहितः; इमौ आभ्यः वापीभ्यः जलम् आनयतः। एषाम् वृक्षाणाम् छायायाम् उपविश। अस्मिन् मन्दिरे देवः वसति, एषु वृक्षेषु च पक्षिणः।'
+  translation: 'The guide says: "These two boys stand here, and these girls sing. Look at these two creepers, and these trees. With these two hands I gather flowers, and with these flowers I worship the god. Homage to this god, and to this goddess. Give fruit to these boys. From this tree a fruit falls. The father of these two boys is the priest; they fetch water from these wells. Sit in the shade of these trees. In this temple the god dwells, and in these trees, the birds."'
   teaches: 'इदम् "this" through fourteen cells, in all three genders — इमौ, इमाः, इमे, इमान्, आभ्याम्, एभिः, अस्मै/अस्यै, एभ्यः, अस्मात्, आभ्यः, अनयोः, एषाम्, अस्मिन्, एषु.'
   words:
   - form: मार्गदर्शकः
@@ -290,38 +290,6 @@
     notes:
     - term: लट्
       en: 'present'
-  - form: आभ्यः
-    lemma: इदम्
-    gloss: 'these'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun, qualifying the noun'
-    - term: पञ्चमी
-      en: 'ablative plural'
-  - form: वापीभ्यः
-    lemma: वापी
-    gloss: 'from these wells'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine ई-stem'
-    - term: अपादान
-      en: 'source — the temple wells the water is drawn from'
-    - term: पञ्चमी
-      en: 'ablative plural'
-  - form: जलम्
-    lemma: जल
-    gloss: 'water'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: आनय
-    lemma: नी
-    gloss: 'bring'
-    notes:
-    - term: लोट्
-      en: 'imperative, with the preverb आ'
   - form: अनयोः
     lemma: इदम्
     gloss: 'of these two'
@@ -362,6 +330,48 @@
       en: 'singular'
     - term: प्रथमा
       en: 'nominative — the predicate: "is the priest"'
+  - form: इमौ
+    lemma: इदम्
+    gloss: 'these two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun — the same two boys, pointed at again'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: आभ्यः
+    lemma: इदम्
+    gloss: 'these'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun, qualifying the noun'
+    - term: पञ्चमी
+      en: 'ablative plural'
+  - form: वापीभ्यः
+    lemma: वापी
+    gloss: 'from these wells'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine ई-stem'
+    - term: अपादान
+      en: 'source — the temple wells the water is drawn from'
+    - term: पञ्चमी
+      en: 'ablative plural'
+  - form: जलम्
+    lemma: जल
+    gloss: 'water'
+    notes:
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: आनयतः
+    lemma: नी
+    gloss: 'fetch'
+    notes:
+    - term: लट्
+      en: 'present dual, आ + नी: "they two bring"'
   - form: एषाम्
     lemma: इदम्
     gloss: 'of these'
