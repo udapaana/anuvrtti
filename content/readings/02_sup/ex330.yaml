@@ -2,9 +2,9 @@
   kind: graded
   segment: 191
   order: 1
-  sentence: 'रात्रौ वणिजौ गृहम् प्रति अचलताम्। सर्वासु दिक्षु अन्धकारः आसीत्। न दिक् न मार्गः अदृश्यत। सागरदत्तः अपृच्छत् — कस्याम् दिशि उज्जयिनी? तदा तयोः सुवर्णवर्णौ पक्षिणौ उत्तरया दिशा उदपतताम्। वणिजौ अपि ताम् एव दिशम् अगच्छताम्। मरुत् शीतः अवहत्। मरुति हिमम् आसीत्। मार्गे द्वे सरितौ आस्ताम्। सरितोः जलम् गभीरम्। उज्जयिनी सरिद्भ्याम् न दूरम्। प्रातः सूर्यः सर्वाः दिशः अप्रकाशयत्। सूर्यः दिशाम् स्वामी।'
-  translation: 'At night the merchants set off for home. In every direction there was darkness. Neither direction nor road could be seen. Sāgaradatta asked: "In which direction is Ujjayinī?" Then their two golden birds flew off by the northern direction. The merchants too went that same way. A cold wind blew. In the wind there was frost. On the road were two rivers. The water of the two rivers was deep. Ujjayinī is not far from the two rivers. At dawn the sun lit up all the directions. The sun is the lord of the directions.'
-  teaches: 'Part 5 — the night road: दिश् (दिक्षु, दिक्, दिशि, दिशा, दिशम्, दिशः, दिशाम्), मरुत् (मरुत्, मरुति), सरित् (सरितौ, सरितोः, सरिद्भ्याम्).'
+  sentence: 'रात्रौ वणिजौ गृहम् प्रति अचलताम्। सर्वासु दिक्षु अन्धकारः आसीत्। न दिक् न मार्गः अदृश्यत। सागरदत्तः अपृच्छत् — कस्याम् दिशि उज्जयिनी? तदा धनदत्तस्य द्वौ सुवर्णवर्णौ पक्षिणौ उत्तरया दिशा उदपतताम्। वणिजौ अपि ताम् एव दिशम् अगच्छताम्। प्रातः सूर्यः सर्वाः दिशः अप्रकाशयत्, वणिजौ च उज्जयिन्याः मार्गम् अपश्यताम्।'
+  translation: 'At night the merchants set off for home. In every direction there was darkness. Neither direction nor road could be seen. Sāgaradatta asked: "In which direction is Ujjayinī?" Then Dhanadatta''s two golden birds flew off by the northern direction. The merchants too went that same way. At dawn the sun lit up all the directions, and the merchants saw the road to Ujjayinī.'
+  teaches: 'Part 5 — the night road: दिश् through the cases — दिक्षु, दिक्, दिशि, दिशा, दिशम्, दिशः (accusative plural).'
   words:
   - form: रात्रौ
     lemma: रात्रि
@@ -107,6 +107,12 @@
       en: 'what was (not) seen — the प्रथमा of the passive'
     - term: प्रथमा
       en: 'nominative'
+  - form: न
+    lemma: न
+    gloss: 'neither'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — negation'
   - form: मार्गः
     lemma: मार्ग
     gloss: 'road'
@@ -173,16 +179,35 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — time'
-  - form: तयोः
-    lemma: तद्
-    gloss: 'their'
+  - form: धनदत्तस्य
+    lemma: धनदत्त
+    gloss: 'Dhanadatta''s'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
     - term: सम्बन्ध
-      en: 'relation'
+      en: 'whose birds — he bought them from the old merchant'
     - term: षष्ठी
-      en: 'genitive dual — the merchants'' birds, bought in part 4'
+      en: 'genitive'
+  - form: द्वौ
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: विशेषण
+      en: 'qualifying पक्षिणौ'
+    - term: कर्तृ
+      en: 'with पक्षिणौ, the subject'
+    - term: प्रथमा
+      en: 'nominative dual'
+    rel:
+    - kind: विशेषण
+      to: 23
   - form: सुवर्णवर्णौ
     lemma: सुवर्णवर्ण
     gloss: 'golden'
@@ -195,7 +220,7 @@
       en: 'nominative dual'
     rel:
     - kind: विशेषण
-      to: 21
+      to: 23
   - form: पक्षिणौ
     lemma: पक्षिन्
     gloss: 'the two birds'
@@ -218,7 +243,7 @@
       en: 'instrumental'
     rel:
     - kind: विशेषण
-      to: 23
+      to: 25
   - form: दिशा
     lemma: दिश्
     gloss: 'by the direction'
@@ -235,6 +260,16 @@
     notes:
     - term: लङ्
       en: 'imperfect (लङ्) — narrative past, with the preverb उद्'
+  - form: वणिजौ
+    lemma: वणिज्
+    gloss: 'the merchants'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
   - form: अपि
     lemma: अपि
     gloss: 'too'
@@ -271,143 +306,6 @@
     notes:
     - term: लङ्
       en: 'imperfect (लङ्) — narrative past, dual'
-  - form: मरुत्
-    lemma: मरुत्
-    gloss: 'a wind'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: शीतः
-    lemma: शीत
-    gloss: 'cold'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: विशेषण
-      en: 'masc. nom., agreeing with मरुत् — "a cold wind"'
-    - term: प्रथमा
-      en: 'nominative'
-    rel:
-    - kind: विशेषण
-      to: 30
-  - form: अवहत्
-    lemma: वह्
-    gloss: 'blew'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past'
-  - form: मरुति
-    lemma: मरुत्
-    gloss: 'in the wind'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative'
-  - form: हिमम्
-    lemma: हिम
-    gloss: 'frost'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: कर्तृ
-      en: 'subject of आसीत् — neuter अ-stem nom. sg in -अम्'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: मार्गे
-    lemma: मार्ग
-    gloss: 'on the road'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative'
-  - form: द्वे
-    lemma: द्वि
-    gloss: 'two'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: प्रथमा
-      en: 'nominative dual'
-    rel:
-    - kind: विशेषण
-      to: 37
-  - form: सरितौ
-    lemma: सरित्
-    gloss: 'rivers'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: आस्ताम्
-    lemma: अस्
-    gloss: 'were'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past, dual'
-  - form: सरितोः
-    lemma: सरित्
-    gloss: 'of the two rivers'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive dual'
-  - form: जलम्
-    lemma: जल
-    gloss: 'the water'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: गभीरम्
-    lemma: गभीर
-    gloss: 'deep'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'number'
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 40
-  - form: सरिद्भ्याम्
-    lemma: सरित्
-    gloss: 'from the two rivers'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: अपादान
-      en: 'far from — दूर takes the पञ्चमी (2.3.35)'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: दूरम्
-    lemma: दूरम्
-    gloss: 'far'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — place'
   - form: प्रातः
     lemma: प्रातर्
     gloss: 'at dawn'
@@ -436,7 +334,7 @@
       en: 'accusative plural'
     rel:
     - kind: विशेषण
-      to: 47
+      to: 36
   - form: दिशः
     lemma: दिश्
     gloss: 'the directions'
@@ -463,26 +361,49 @@
       en: 'parasmaipada'
     - term: भ्वादि
       en: 'gaṇa'
-  - form: दिशाम्
-    lemma: दिश्
-    gloss: 'of the directions'
+  - form: वणिजौ
+    lemma: वणिज्
+    gloss: 'the merchants'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: '"and" — joins the merchants'' seeing to the sunrise'
+  - form: उज्जयिन्याः
+    lemma: उज्जयिनी
+    gloss: 'to Ujjayinī'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
     - term: सम्बन्ध
-      en: 'relation'
+      en: 'the road''s destination'
     - term: षष्ठी
-      en: 'genitive plural'
-  - form: स्वामी
-    lemma: स्वामिन्
-    gloss: 'the lord'
+      en: 'genitive — ई-stem feminine आः'
+  - form: मार्गम्
+    lemma: मार्ग
+    gloss: 'the road'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: एकवचन
-      en: 'number'
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 45
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: अपश्यताम्
+    lemma: दृश्
+    gloss: 'saw'
+    notes:
+    - term: लङ्
+      en: 'imperfect (लङ्) — narrative past, dual'

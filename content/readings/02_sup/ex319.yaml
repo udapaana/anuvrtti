@@ -2,8 +2,8 @@
   kind: graded
   segment: 183
   order: 2
-  sentence: 'मालती स्रग्भ्यः पुष्पाणि चिनोति, स्रग्भ्याम् च वाग्देव्याः मूर्तिम् अलङ्करोति। स्रजोः भ्रमराः भ्रमन्ति। सा प्रार्थयते — हे वाक्, मम पितामहस्य जिह्वायाम् वस। तदा पितामहः वेदम् पठति, किन्तु ऋग्द्वयम् विस्मरति। ततः वृद्धः सः देव्याः पुरतः जानुनी भूमौ स्थापयति, वेदनया च "आः" इति वदति। मालती माक्षिकम् आनयति, वदति च — मधु एव औषधम्। मधुनः स्वादेन पितामहः हसति, अश्रुभिः सह। द्वयोः मनोभ्याम् चिन्ता अपगच्छति।'
-  translation: 'Mālatī gathers flowers for garlands, and with two garlands adorns the image of the goddess of Speech. Bees hover over the two garlands. She prays: "Speech, dwell on my grandfather''s tongue." Just then Grandfather recites the Veda, but forgets two verses. Then, old as he is, he sets both knees on the ground before the goddess, and says "Ah!" in pain. Mālatī brings honey and says: "Honey is the medicine." At the taste of the honey Grandfather laughs, with tears. Worry leaves both their minds.'
+  sentence: 'मालती उद्याने स्रग्भ्यः पुष्पाणि चिनोति, स्रग्भ्याम् च वाग्देव्याः मूर्तिम् अलङ्करोति। स्रजोः भ्रमराः भ्रमन्ति। सा प्रार्थयते — हे वाक्, मम पितामहस्य जिह्वायाम् वस। तदा पितामहः वेदम् पठति, किन्तु तस्य कण्ठः शुष्कः, सः ऋग्द्वयम् विस्मरति। ततः सः देव्याः पुरतः जानुनी भूमौ स्थापयति; सः वृद्धः, अतः वेदनया "आः" इति वदति। मालती माक्षिकम् आनयति, वदति च — मधु एव कण्ठस्य औषधम्। मधुनः स्वादेन पितामहः हसति, अश्रुभिः सह। द्वयोः मनोभ्याम् चिन्ता अपगच्छति।'
+  translation: 'In the garden Mālatī gathers flowers for garlands, and with two garlands adorns the image of the goddess of Speech. Bees hover over the two garlands. She prays: "Speech, dwell on my grandfather''s tongue." Just then Grandfather recites the Veda, but his throat is dry, and he forgets two verses. Then he sets both knees on the ground before the goddess; he is old, so he says "Ah!" in pain. Mālatī brings honey and says: "Honey is the medicine for a throat." At the taste of the honey Grandfather laughs, with tears. Worry leaves both their minds.'
   teaches: 'Mālatī and her grandfather, part 1 — the consonant stems स्रज् (स्रग्भ्यः, स्रग्भ्याम्, स्रजोः), वाच् (वाक्, the goddess addressed), ऋच् (in ऋग्द्वयम्); and the neuter उ-stems जानुनी, मधु, मधुनः, अश्रुभिः; मनोभ्याम्.'
   words:
   - form: मालती
@@ -18,6 +18,14 @@
       en: 'ई-stem feminine nominative — no visible ending'
     - term: प्रथमा
       en: 'nominative'
+  - form: उद्याने
+    lemma: उद्यान
+    gloss: 'in the garden'
+    notes:
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative उद्यान → उद्याने — the setting where the creeper grows'
   - form: स्रग्भ्यः
     lemma: स्रज्
     gloss: 'for garlands'
@@ -27,7 +35,7 @@
     - term: बहुवचन
       en: 'plural'
     - term: अर्थ
-      en: 'purpose — for the sake of (2.3.14)'
+      en: 'purpose — the flowers are for garlands not yet made (2.3.14); the plural shape is dative, not ablative, here'
     - term: चतुर्थी
       en: 'dative plural'
   - form: पुष्पाणि
@@ -260,6 +268,49 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — contrast'
+  - form: तस्य
+    lemma: तद्
+    gloss: 'his'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: षष्ठी
+      en: 'genitive — a relation, not a कारक'
+  - form: कण्ठः
+    lemma: कण्ठ
+    gloss: 'throat'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'subject of a verbless clause'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: शुष्कः
+    lemma: शुष्क
+    gloss: 'dry'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate: "his throat (is) dry"'
+    rel:
+    - kind: विधेय
+      to: 27
+  - form: सः
+    lemma: तद्
+    gloss: 'he'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
   - form: ऋग्द्वयम्
     lemma: ऋग्द्वय
     gloss: 'two verses'
@@ -284,17 +335,6 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — sequence'
-  - form: वृद्धः
-    lemma: वृद्ध
-    gloss: 'old'
-    notes:
-    - term: विशेषण
-      en: 'qualifying सः — an old man''s knees: the reason for the pain'
-    - term: प्रथमा
-      en: 'nominative'
-    rel:
-    - kind: विशेषण
-      to: 29
   - form: सः
     lemma: तद्
     gloss: 'he'
@@ -355,6 +395,35 @@
       en: 'causative present'
     - term: णिच्
       en: 'causative'
+  - form: सः
+    lemma: तद्
+    gloss: 'he'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वृद्धः
+    lemma: वृद्ध
+    gloss: 'old'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate: "he (is) old", the reason for the pain'
+    rel:
+    - kind: विधेय
+      to: 39
+  - form: अतः
+    lemma: अतः
+    gloss: 'so'
+    notes:
+    - term: अव्यय
+      en: '"so" — his age is why kneeling hurts'
   - form: वेदनया
     lemma: वेदना
     gloss: 'in pain'
@@ -385,6 +454,18 @@
     notes:
     - term: लट्
       en: 'present'
+  - form: मालती
+    lemma: मालती
+    gloss: 'Mālatī'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'ई-stem feminine nominative — no visible ending'
+    - term: प्रथमा
+      en: 'nominative'
   - form: माक्षिकम्
     lemma: माक्षिक
     gloss: 'honey'
@@ -409,6 +490,12 @@
     notes:
     - term: लट्
       en: 'present'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
   - form: मधु
     lemma: मधु
     gloss: 'honey'
@@ -427,6 +514,18 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — emphasis'
+  - form: कण्ठस्य
+    lemma: कण्ठ
+    gloss: 'for the throat'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'what the medicine is for — the throat named before'
+    - term: षष्ठी
+      en: 'genitive — अ-stem स्य'
   - form: औषधम्
     lemma: औषध
     gloss: 'the medicine'
@@ -439,7 +538,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 42
+      to: 51
   - form: मधुनः
     lemma: मधु
     gloss: 'of the honey'
@@ -464,6 +563,18 @@
       en: 'the cause — pleased because of the taste'
     - term: तृतीया
       en: 'instrumental'
+  - form: पितामहः
+    lemma: पितामह
+    gloss: 'Grandfather'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
   - form: हसति
     lemma: हस्
     gloss: 'laughs'

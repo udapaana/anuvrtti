@@ -2,9 +2,9 @@
   kind: graded
   segment: 183
   order: 6
-  sentence: 'पितामहः पुनः वेदम् पठति। अद्य ते द्वे ऋचौ अपि आगच्छतः। सः वेदम् सर्वेभ्यः वस्तुभ्यः श्रेष्ठम् मन्यते।'
-  translation: 'Grandfather recites the Veda again. Today those two verses come to him too. He holds the Veda dearer than all things.'
-  teaches: 'Mālatī, part 5 — the verses return: ऋचौ, the two he forgot, and वस्तुभ्यः as the ablative of comparison.'
+  sentence: 'पितामहः पुनः वेदम् पठति। पूर्वम् सः द्वे ऋचौ विस्मरति स्म; अद्य ते ऋचौ अपि तस्य स्मृतिम् आगच्छतः। सः वेदम् सर्वेभ्यः वस्तुभ्यः श्रेष्ठम् मन्यते।'
+  translation: 'Grandfather recites the Veda again. Before, he had forgotten two verses; today those verses too come back to his memory. He holds the Veda dearer than all things.'
+  teaches: 'Mālatī, part 5 — the verses return: ऋचौ, accusative and then nominative dual; लट् with स्म for the past; वस्तुभ्यः, the ablative of comparison.'
   words:
   - form: पितामहः
     lemma: पितामह
@@ -42,6 +42,63 @@
     notes:
     - term: लट्
       en: 'present'
+  - form: पूर्वम्
+    lemma: पूर्वम्
+    gloss: 'formerly, once'
+    notes:
+    - term: अव्यय
+      en: 'adverb of time'
+  - form: सः
+    lemma: तद्
+    gloss: 'he'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: एकवचन
+      en: 'number'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: द्वे
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'feminine द्वे, agreeing with ऋचौ'
+    - term: कर्मन्
+      en: 'with ऋचौ, what he forgot'
+    - term: द्वितीया
+      en: 'accusative dual'
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: ऋचौ
+    lemma: ऋच्
+    gloss: 'verses'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'what he forgot'
+    - term: द्वितीया
+      en: 'consonant stem acc. dual: ऋच् + औ, the same shape as the nominative'
+  - form: विस्मरति
+    lemma: स्मृ
+    gloss: 'forgets'
+    notes:
+    - term: लट्
+      en: 'present, with the preverb वि'
+  - form: स्म
+    lemma: स्म
+    gloss: '(past marker with present)'
+    notes:
+    - term: अव्यय
+      en: 'particle — with लट् it makes a past: "had forgotten"'
   - form: अद्य
     lemma: अद्य
     gloss: 'today'
@@ -57,22 +114,9 @@
     - term: कर्तृ
       en: 'with ऋचौ, the subject of आगच्छतः'
     - term: सर्वनाम
-      en: 'pronoun — feminine dual ते: the two verses he forgot'
+      en: 'pronoun — feminine dual ते: those two verses'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: द्वे
-    lemma: द्वि
-    gloss: 'two'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'feminine द्वे, agreeing with ऋचौ'
-    - term: प्रथमा
-      en: 'nominative dual'
-    rel:
-    - kind: विशेषण
-      to: 7
   - form: ऋचौ
     lemma: ऋच्
     gloss: 'verses'
@@ -82,7 +126,7 @@
     - term: द्विवचन
       en: 'dual'
     - term: कर्तृ
-      en: 'the two verses forgotten in part 1 — now they come'
+      en: 'the same two verses, now the subject'
     - term: प्रथमा
       en: 'consonant stem nom. dual: ऋच् + औ'
   - form: अपि
@@ -91,6 +135,26 @@
     notes:
     - term: अव्यय
       en: 'too — with the rest of the recitation'
+  - form: तस्य
+    lemma: तद्
+    gloss: 'his'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: षष्ठी
+      en: 'genitive — a relation, not a कारक'
+  - form: स्मृतिम्
+    lemma: स्मृति
+    gloss: 'to his memory'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'the goal of आगच्छतः — they come back to memory'
+    - term: द्वितीया
+      en: 'accusative — इ-stem इम्'
   - form: आगच्छतः
     lemma: गम्
     gloss: 'come'
@@ -109,6 +173,18 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
+  - form: वेदम्
+    lemma: वेद
+    gloss: 'the Veda'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
   - form: सर्वेभ्यः
     lemma: सर्व
     gloss: 'than all'
@@ -145,7 +221,7 @@
       en: 'accusative'
     rel:
     - kind: विशेषण
-      to: 2
+      to: 18
   - form: मन्यते
     lemma: मन्
     gloss: 'holds'

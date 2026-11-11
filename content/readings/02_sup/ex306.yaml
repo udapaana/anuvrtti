@@ -2,8 +2,8 @@
   kind: graded
   segment: 183
   order: 1
-  sentence: 'मार्गदर्शकः वदति — इमौ बालौ अत्र तिष्ठतः, इमाः कन्याः च गायन्ति। पश्य इमे लते, इमान् वृक्षान् च। आभ्याम् हस्ताभ्याम् अहम् पुष्पाणि चिनोमि, एभिः पुष्पैः च देवम् पूजयामि। अस्मै देवाय नमः, अस्यै देव्यै च। एभ्यः बालेभ्यः फलानि यच्छ। अस्मात् वृक्षात् फलम् पतति। अनयोः बालयोः पिता पुरोहितः; इमौ आभ्यः वापीभ्यः जलम् आनयतः। एषाम् वृक्षाणाम् छायायाम् उपविश। अस्मिन् मन्दिरे देवः वसति, एषु वृक्षेषु च पक्षिणः।'
-  translation: 'The guide says: "These two boys stand here, and these girls sing. Look at these two creepers, and these trees. With these two hands I gather flowers, and with these flowers I worship the god. Homage to this god, and to this goddess. Give fruit to these boys. From this tree a fruit falls. The father of these two boys is the priest; they fetch water from these wells. Sit in the shade of these trees. In this temple the god dwells, and in these trees, the birds."'
+  sentence: 'मार्गदर्शकः वदति — इमौ बालौ अत्र तिष्ठतः, इमाः कन्याः च गायन्ति। पश्य इमे लते, इमान् वृक्षान् च। आभ्याम् हस्ताभ्याम् अहम् पुष्पाणि चिनोमि, एभिः पुष्पैः च देवम् पूजयामि। अस्मै देवाय नमः, अस्यै देव्यै च। अस्मात् वृक्षात् फलानि पतन्ति; एभ्यः बालेभ्यः फलानि यच्छ। अनयोः बालयोः पिता पुरोहितः; इमौ आभ्यः वापीभ्यः जलम् आनयतः। एषाम् वृक्षाणाम् छायायाम् उपविश। अस्मिन् मन्दिरे देवः वसति, एषु वृक्षेषु च पक्षिणः।'
+  translation: 'The guide says: "These two boys stand here, and these girls sing. Look at these two creepers, and these trees. With these two hands I gather flowers, and with these flowers I worship the god. Homage to this god, and to this goddess. Fruit falls from this tree; give the fruit to these boys. The father of these two boys is the priest; they fetch water from these wells. Sit in the shade of these trees. In this temple the god dwells, and in these trees, the birds."'
   teaches: 'इदम् "this" through fourteen cells, in all three genders — इमौ, इमाः, इमे, इमान्, आभ्याम्, एभिः, अस्मै/अस्यै, एभ्यः, अस्मात्, आभ्यः, अनयोः, एषाम्, अस्मिन्, एषु.'
   words:
   - form: मार्गदर्शकः
@@ -118,6 +118,12 @@
       en: 'object'
     - term: द्वितीया
       en: 'accusative plural'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
   - form: आभ्याम्
     lemma: इदम्
     gloss: 'these two'
@@ -178,6 +184,12 @@
       en: 'instrument'
     - term: तृतीया
       en: 'instrumental plural'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
   - form: देवम्
     lemma: देव
     gloss: 'the god'
@@ -230,6 +242,42 @@
       en: 'governed by नमः'
     - term: चतुर्थी
       en: 'dative'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: अस्मात्
+    lemma: इदम्
+    gloss: 'this'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun, qualifying the noun'
+    - term: पञ्चमी
+      en: 'ablative'
+  - form: वृक्षात्
+    lemma: वृक्ष
+    gloss: 'from the tree'
+    notes:
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative'
+  - form: फलानि
+    lemma: फल
+    gloss: 'fruit'
+    notes:
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative plural'
+  - form: पतन्ति
+    lemma: पत्
+    gloss: 'fall'
+    notes:
+    - term: लट्
+      en: 'present, plural'
   - form: एभ्यः
     lemma: इदम्
     gloss: 'these'
@@ -260,36 +308,6 @@
     notes:
     - term: लोट्
       en: 'imperative, 2nd person singular'
-  - form: अस्मात्
-    lemma: इदम्
-    gloss: 'this'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun, qualifying the noun'
-    - term: पञ्चमी
-      en: 'ablative'
-  - form: वृक्षात्
-    lemma: वृक्ष
-    gloss: 'from the tree'
-    notes:
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative'
-  - form: फलम्
-    lemma: फल
-    gloss: 'a fruit'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: पतति
-    lemma: पत्
-    gloss: 'falls'
-    notes:
-    - term: लट्
-      en: 'present'
   - form: अनयोः
     lemma: इदम्
     gloss: 'of these two'
@@ -313,11 +331,11 @@
     - term: कर्तृ
       en: 'subject — whose father: अनयोः बालयोः'
     - term: प्रथमा
-      en: nominative
-    - cite: "7.1.94"
-      role: "ऋदुशनस्… — ऋ-stem nom.sg lengthens → पिता, कर्ता → पिता"
-    - cite: "6.1.68"
-      role: "हल्ङ्याब्भ्यो… — सु drops after long आ-stems and consonants → पिता"
+      en: 'nominative'
+    - cite: 7.1.94
+      role: 'ऋदुशनस्… — ऋ-stem nom.sg lengthens → पिता, कर्ता → पिता'
+    - cite: 6.1.68
+      role: 'हल्ङ्याब्भ्यो… — सु drops after long आ-stems and consonants → पिता'
   - form: पुरोहितः
     lemma: पुरोहित
     gloss: 'the (temple) priest'
@@ -448,6 +466,12 @@
       en: 'location'
     - term: सप्तमी
       en: 'locative plural'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
   - form: पक्षिणः
     lemma: पक्षिन्
     gloss: 'the birds'

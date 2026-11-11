@@ -2,9 +2,9 @@
   kind: graded
   segment: 180
   order: 3
-  sentence: 'कन्या वदति — हे पितः, हे मातः, शृणुतम्। अहम् पितुः धर्मम् अशिक्षे, मातुः च मधुराम् वाचम्। मधुरया वाचा सर्वे प्रसीदन्ति। अस्माकम् गृहे एका गौः अस्ति। अहम् गवे तृणम् ददामि, गवि च स्निह्यामि। तस्याः क्षीरम् मधुना सह पिबामि। युवयोः शुद्धाय मनसे नमः।'
-  translation: 'The girl says: "O father, O mother, listen, both of you. From father I learned dharma, and from mother sweet speech. With sweet speech everyone is pleased. At our home there is a cow. I give her grass, and I am fond of her. I drink her milk with honey. Homage to the pure mind of you both."'
-  teaches: 'Singulars of the rarer stems — हे पितः, हे मातः, पितुः and मातुः as ablatives, वाचम्/वाचा, गौः/गवे/गवि, मधुना, मनसे — and the imperative dual शृणुतम्.'
+  sentence: 'कन्या वदति — हे पितः, हे मातः, शृणुतम्। अहम् पितुः धर्मम् अशिक्षे, मातुः च मधुराम् वाचम्। मधुरया वाचा सर्वे प्रसीदन्ति, अस्माकम् गौः अपि। अहम् गवे तृणम् ददामि, गवि च स्निह्यामि। तस्याः क्षीरम् मधुना सह पिबामि। युवाम् मम गुरू।'
+  translation: 'The girl says: "O father, O mother, listen, both of you. From father I learned dharma, and from mother sweet speech. With sweet speech everyone is pleased — even our cow. I give her grass, and I am fond of her. I drink her milk with honey. You two are my teachers."'
+  teaches: 'Singulars of the rarer stems — हे पितः, हे मातः, पितुः and मातुः as ablatives, वाचम्/वाचा, गौः/गवे/गवि, मधुना — and the imperative dual शृणुतम्.'
   words:
   - form: कन्या
     lemma: कन्या
@@ -32,6 +32,12 @@
     notes:
     - term: सम्बोधन
       en: 'vocative — the गुण, -अः'
+  - form: हे
+    lemma: हे
+    gloss: 'O'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — address'
   - form: मातः
     lemma: मातृ
     gloss: 'O mother'
@@ -100,7 +106,7 @@
       en: 'accusative'
     rel:
     - kind: विशेषण
-      to: 13
+      to: 14
   - form: वाचम्
     lemma: वाच्
     gloss: 'speech'
@@ -119,7 +125,7 @@
       en: 'instrumental'
     rel:
     - kind: विशेषण
-      to: 15
+      to: 16
   - form: वाचा
     lemma: वाच्
     gloss: 'with speech'
@@ -152,41 +158,30 @@
       en: 'relation'
     - term: षष्ठी
       en: 'genitive plural'
-  - form: गृहे
-    lemma: गृह
-    gloss: 'at home'
-    notes:
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative'
-  - form: एका
-    lemma: एक
-    gloss: 'one, a'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'feminine एका, agreeing with गौः — here simply "a"'
-    - term: प्रथमा
-      en: 'nominative'
-    rel:
-    - kind: विशेषण
-      to: 21
   - form: गौः
     lemma: गो
-    gloss: 'a cow'
+    gloss: 'the cow'
     notes:
     - term: कर्तृ
-      en: 'गो — the वृद्धि of the nominative'
+      en: 'one of those pleased — गो, with वृद्धि in the nominative: गौः'
     - term: प्रथमा
       en: 'nominative'
-  - form: अस्ति
-    lemma: अस्
-    gloss: 'there is'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
     notes:
-    - term: लट्
-      en: 'present'
+    - term: अव्यय
+      en: '"even" — the cow is pleased too'
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: 'I'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
   - form: गवे
     lemma: गो
     gloss: 'to the cow'
@@ -217,6 +212,12 @@
       en: 'the object of affection'
     - term: सप्तमी
       en: 'locative'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
   - form: स्निह्यामि
     lemma: स्निह्
     gloss: 'am fond of'
@@ -232,9 +233,9 @@
     - term: सम्बन्ध
       en: 'whose milk — the milch-cow (धेनु) just named'
     - term: सर्वनाम
-      en: pronoun (feminine gen.)
+      en: 'pronoun (feminine gen.)'
     - term: षष्ठी
-      en: genitive
+      en: 'genitive'
   - form: क्षीरम्
     lemma: क्षीर
     gloss: 'milk'
@@ -263,40 +264,33 @@
     notes:
     - term: लट्
       en: 'पा takes the stem पिब् in the present; -आमि is 1st person sg: "I drink"'
-  - form: युवयोः
+  - form: युवाम्
     lemma: युष्मद्
-    gloss: 'of you two'
+    gloss: 'you two'
     notes:
-    - term: पुंलिङ्ग
-      en: 'masculine dual — father and mother together take the masculine'
     - term: सर्वनाम
       en: 'pronoun'
-    - term: सम्बन्ध
-      en: 'whose mind — the parents she is speaking to'
+    - term: कर्तृ
+      en: 'subject of a verbless sentence — father and mother together'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: मम
+    lemma: अस्मद्
+    gloss: 'my'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
     - term: षष्ठी
-      en: 'genitive dual'
-  - form: शुद्धाय
-    lemma: शुद्ध
-    gloss: 'pure'
+      en: 'genitive — whose teachers'
+  - form: गुरू
+    lemma: गुरु
+    gloss: 'teachers'
     notes:
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: चतुर्थी
-      en: 'dative'
-    rel:
-    - kind: विशेषण
-      to: 35
-  - form: मनसे
-    lemma: मनस्
-    gloss: 'to a mind'
-    notes:
-    - term: सम्प्रदान
-      en: 'governed by नमः'
-    - term: चतुर्थी
-      en: 'dative'
-  - form: नमः
-    lemma: नमस्
-    gloss: 'homage'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — governs the चतुर्थी'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'the predicate of युवाम्'
+    - term: प्रथमा
+      en: 'nominative dual — उ-stem, the उ lengthened: गुरू'

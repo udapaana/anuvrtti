@@ -2,9 +2,9 @@
   kind: graded
   segment: 194
   order: 1
-  sentence: 'ततः वणिजौ हिमवन्तम् प्रति अचलताम्। मार्गे गङ्गा नाम सरित् आसीत्। तौ सरितः जलम् अपिबताम्। यमुना अपि तया सरिता सह मिलति। ताभ्याम् सरिद्भ्याम् भूमिः शस्यवती। सरिताम् गङ्गा श्रेष्ठा। सरित्सु स्नानम् पुण्यम्। तौ सरिते पुष्पाणि अयच्छताम्। हिमवान् उदीच्याः दिशः भूषणम्। सः द्वयोः दिशोः समुद्रौ स्पृशति। द्वाभ्याम् दिग्भ्याम् मेघाः आगच्छन्। वणिजौ उदीच्यै दिशे नमः अकुरुताम्।'
-  translation: 'Then the merchants went on towards the Himālaya. On the way was a river called Gaṅgā. They drank water from the river. The Yamunā too joins that river. Through those two rivers the land is fruitful. Of rivers the Gaṅgā is the best. Bathing in rivers is holy. They offered flowers to the river. The Himālaya is the ornament of the northern quarter. On its two sides, east and west, it touches the two oceans. From those two quarters the clouds came. The merchants bowed to the northern quarter.'
-  teaches: 'Part 11 — the rivers and the mountain: सरित् in the singular and the oblique plural (सरित्, सरितः, सरिता, सरिते, सरिद्भ्याम्, सरिताम्, सरित्सु); दिश् — दिशः, दिशोः, दिग्भ्याम्, दिशे. The mountain spanning the two oceans is Kālidāsa''s (कुमारसंभव 1.1).'
+  sentence: 'ततः वणिजौ हिमवन्तम् प्रति अचलताम्। मार्गे गङ्गा नाम सरित् आसीत्। तौ सरितः जलम् अपिबताम्। यमुना अपि तया सरिता सह मिलति। ताभ्याम् सरिद्भ्याम् भूमिः शस्यवती। सरिताम् गङ्गा श्रेष्ठा। सागरदत्तः अवदत् — सरित्सु स्नानम् पुण्यम्; तौ सरिते पुष्पाणि अयच्छताम्। हिमवान् उदीच्याः दिशः भूषणम्। सः द्वयोः दिशोः समुद्रौ स्पृशति। वणिजौ उदीच्यै दिशे नमः अकुरुताम्।'
+  translation: 'Then the merchants went on towards the Himālaya. On the way was a river called Gaṅgā. They drank water from the river. The Yamunā too joins that river. Through those two rivers the land is fruitful. Of rivers the Gaṅgā is the best. Sāgaradatta said: "Bathing in rivers is holy"; and they offered flowers to the river. The Himālaya is the ornament of the northern quarter. On its two sides, east and west, it touches the two oceans. The merchants bowed to the northern quarter.'
+  teaches: 'Part 11 — the rivers and the mountain: सरित् in the singular and the oblique plural (सरित्, सरितः, सरिता, सरिते, सरिद्भ्याम्, सरिताम्, सरित्सु); दिश् — दिशः, दिशोः, दिशे. The mountain spanning the two oceans is Kālidāsa''s (कुमारसंभव 1.1).'
   words:
   - form: ततः
     lemma: ततः
@@ -250,6 +250,22 @@
     rel:
     - kind: विधेय
       to: 25
+  - form: सागरदत्तः
+    lemma: सागरदत्त
+    gloss: 'Sāgaradatta'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: अवदत्
+    lemma: वद्
+    gloss: 'said'
+    notes:
+    - term: लङ्
+      en: 'imperfect'
   - form: सरित्सु
     lemma: सरित्
     gloss: 'in rivers'
@@ -282,7 +298,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 28
+      to: 30
   - form: तौ
     lemma: तद्
     gloss: 'they'
@@ -343,7 +359,7 @@
       en: 'genitive'
     rel:
     - kind: विशेषण
-      to: 36
+      to: 38
   - form: दिशः
     lemma: दिश्
     gloss: 'of the quarter'
@@ -366,7 +382,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 34
+      to: 36
   - form: सः
     lemma: तद्
     gloss: 'it'
@@ -389,7 +405,7 @@
       en: 'locative dual'
     rel:
     - kind: विशेषण
-      to: 40
+      to: 42
   - form: दिशोः
     lemma: दिश्
     gloss: 'in directions'
@@ -416,47 +432,6 @@
     notes:
     - term: लट्
       en: 'present (तुदादि)'
-  - form: द्वाभ्याम्
-    lemma: द्वि
-    gloss: 'two'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'qualifying the noun'
-    - term: पञ्चमी
-      en: 'ablative dual'
-    rel:
-    - kind: विशेषण
-      to: 44
-  - form: दिग्भ्याम्
-    lemma: दिश्
-    gloss: 'from directions'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: मेघाः
-    lemma: मेघ
-    gloss: 'the clouds'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: आगच्छन्
-    lemma: गम्
-    gloss: 'came'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past, plural, with the preverb आ'
   - form: वणिजौ
     lemma: वणिज्
     gloss: 'the merchants'
@@ -479,7 +454,7 @@
       en: 'dative'
     rel:
     - kind: विशेषण
-      to: 49
+      to: 47
   - form: दिशे
     lemma: दिश्
     gloss: 'to the quarter'

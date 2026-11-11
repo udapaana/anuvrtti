@@ -2,8 +2,8 @@
   kind: graded
   segment: 183
   order: 4
-  sentence: 'वैद्यः तैलम् ददाति — इदम् जानुभ्याम् हितम्। तैलेन पितामहः पुनः चलति। सः हसति — हे जानुनी, इदानीम् मम आज्ञाम् शृणुतम्। मालत्याः नेत्रयोः आनन्दबाष्पः; सा वदति — हे अश्रूणि, गच्छत। मालत्याः स्रग्भ्याम् पुष्पाणि पितामहस्य पादयोः पतन्ति। पितामहः वदति — युवाभ्याम्, वैद्येन मालत्या च, सह अहम् मन्दिरम् गमिष्यामि।'
-  translation: 'The doctor gives an oil — "this is good for both knees." With the oil Grandfather walks again. He laughs: "Knees, now obey me!" There are tears of joy in Mālatī''s eyes; she says: "Tears, go away." Petals fall from Mālatī''s two garlands at Grandfather''s feet. Grandfather says: "With you two — the doctor and Mālatī — I will go to the temple."'
+  sentence: 'वैद्यः तैलम् ददाति — इदम् जानुभ्याम् हितम्। तैलेन पितामहः पुनः चलति। सः हसति — हे जानुनी, इदानीम् मम आज्ञाम् शृणुतम्। मालती मन्दिराय द्वे स्रजौ धारयति; हर्षेण सा नृत्यति, स्रग्भ्याम् च पुष्पाणि पितामहस्य पादयोः पतन्ति। तस्याः नेत्रयोः आनन्दबाष्पः; सा वदति — हे अश्रूणि, गच्छत। पितामहः वदति — युवाभ्याम्, वैद्येन मालत्या च, सह अहम् मन्दिरम् गमिष्यामि।'
+  translation: 'The doctor gives an oil — "this is good for both knees." With the oil Grandfather walks again. He laughs: "Knees, now obey me!" Mālatī is carrying two garlands for the temple; she dances for joy, and petals fall from the two garlands at Grandfather''s feet. There are tears of joy in her eyes; she says: "Tears, go away." Grandfather says: "With you two — the doctor and Mālatī — I will go to the temple."'
   teaches: 'Mālatī, part 3 — the cure: जानुभ्याम् (for the knees), तैलेन (the means), जानुनी and अश्रूणि addressed, स्रग्भ्याम् (from the garlands), and युवाभ्याम् with सह.'
   words:
   - form: वैद्यः
@@ -175,16 +175,171 @@
     notes:
     - term: लोट्
       en: 'imperative, 2nd person dual'
-  - form: मालत्याः
+  - form: मालती
     lemma: मालती
-    gloss: 'Mālatī''s'
+    gloss: 'Mālatī'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
     - term: एकवचन
       en: 'singular'
+    - term: कर्तृ
+      en: 'ई-stem feminine nominative — no visible ending'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: मन्दिराय
+    lemma: मन्दिर
+    gloss: 'for the temple'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: अर्थ
+      en: 'purpose — the garlands are meant for the temple'
+    - term: चतुर्थी
+      en: 'dative — अ-stem आय'
+  - form: द्वे
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'द्वि takes feminine -ए to agree with स्रजौ'
+    - term: विशेषण
+      en: 'qualifying स्रजौ'
+    - term: कर्मन्
+      en: 'with स्रजौ, what she carries'
+    - term: द्वितीया
+      en: 'accusative dual'
+    rel:
+    - kind: विशेषण
+      to: 21
+  - form: स्रजौ
+    lemma: स्रज्
+    gloss: 'garlands'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: धारयति
+    lemma: धृ
+    gloss: 'carries'
+    notes:
+    - term: लट्
+      en: 'present — धारि, causative of धृ: "holds, carries"'
+  - form: हर्षेण
+    lemma: हर्ष
+    gloss: 'for joy'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: हेतु
+      en: 'the cause of her dancing'
+    - term: तृतीया
+      en: 'instrumental of cause'
+  - form: सा
+    lemma: तद्
+    gloss: 'she'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: एकवचन
+      en: 'number'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: नृत्यति
+    lemma: नृत्
+    gloss: 'dances'
+    notes:
+    - term: लट्
+      en: 'present — दिवादि नृत्, stem नृत्य'
+    - term: प्रथमपुरुष
+      en: '3rd person'
+    - term: एकवचन
+      en: 'singular'
+    - term: परस्मैपद
+      en: 'parasmaipada'
+    - term: दिवादि
+      en: 'gaṇa'
+  - form: स्रग्भ्याम्
+    lemma: स्रज्
+    gloss: 'from the two garlands'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अपादान
+      en: 'source'
+    - term: पञ्चमी
+      en: 'ablative dual'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: पुष्पाणि
+    lemma: पुष्प
+    gloss: 'petals'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: पितामहस्य
+    lemma: पितामह
+    gloss: 'Grandfather''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
     - term: सम्बन्ध
       en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: पादयोः
+    lemma: पाद
+    gloss: 'at the feet'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: पतन्ति
+    lemma: पत्
+    gloss: 'fall'
+    notes:
+    - term: लट्
+      en: 'present, plural'
+  - form: तस्याः
+    lemma: तद्
+    gloss: 'her'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine — Mālatī'
+    - term: सम्बन्ध
+      en: 'whose eyes — Mālatī''s'
+    - term: सर्वनाम
+      en: 'pronoun (feminine gen.)'
     - term: षष्ठी
       en: 'genitive'
   - form: नेत्रयोः
@@ -229,6 +384,12 @@
     notes:
     - term: लट्
       en: 'present'
+  - form: हे
+    lemma: हे
+    gloss: 'O'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — address'
   - form: अश्रूणि
     lemma: अश्रु
     gloss: 'tears'
@@ -251,60 +412,24 @@
       en: 'plural'
     - term: परस्मैपद
       en: 'parasmaipada'
-  - form: स्रग्भ्याम्
-    lemma: स्रज्
-    gloss: 'from the two garlands'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: पुष्पाणि
-    lemma: पुष्प
-    gloss: 'petals'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: बहुवचन
-      en: 'plural'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: पितामहस्य
+  - form: पितामहः
     lemma: पितामह
-    gloss: 'Grandfather''s'
+    gloss: 'Grandfather'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: एकवचन
       en: 'singular'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
-  - form: पादयोः
-    lemma: पाद
-    gloss: 'at the feet'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: पतन्ति
-    lemma: पत्
-    gloss: 'fall'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
     notes:
     - term: लट्
-      en: 'present, plural'
+      en: 'present'
   - form: युवाभ्याम्
     lemma: युष्मद्
     gloss: 'you two'

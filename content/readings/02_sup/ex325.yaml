@@ -2,8 +2,8 @@
   kind: graded
   segment: 184
   order: 2
-  sentence: 'अतिथिः गुरोः शिष्यम् पृच्छति — कति शिष्याः अत्र सन्ति? शिष्यः वदति — बहवः; अतः गुरुः शिष्यान् द्विधा विभजति, सः पञ्चकृत्वः पाठम् वदति। अतिथिः पृच्छति — जनता कदा आगच्छति? शिष्यः वदति — सा सर्वदा आगच्छति; यत्र गुरुः वसति, तत्र जनता आगच्छति। सर्वथा गुरोः महिमा प्रसिद्धः; ज्ञानम् धनात् गरीयः।'
-  translation: 'A visitor asks the teacher''s pupil: "How many pupils are here?" The pupil says: "Many; so the teacher divides the pupils into two groups, and he says each lesson five times." The visitor asks: "When do people come?" The pupil says: "They come always; where the teacher lives, there people come. In every way the teacher''s greatness is renowned; knowledge is weightier than wealth."'
+  sentence: 'अतिथिः गुरोः शिष्यम् पृच्छति — कति शिष्याः अत्र सन्ति? शिष्यः वदति — बहवः; अतः गुरुः शिष्यान् द्विधा विभजति। सः पञ्चकृत्वः पाठम् वदति, यतः जनता अपि आगच्छति। अतिथिः पृच्छति — जनता कदा आगच्छति? शिष्यः वदति — सर्वदा; यत्र गुरुः वसति, तत्र जनता आगच्छति। अतिथिः वदति — सर्वथा गुरोः महिमा प्रसिद्धः; ज्ञानम् धनात् गरीयः।'
+  translation: 'A visitor asks the teacher''s pupil: "How many pupils are here?" The pupil says: "Many; so the teacher divides the pupils into two groups. He says each lesson five times, because the people come too." The visitor asks: "When do the people come?" The pupil says: "Always; where the teacher lives, there the people come." The visitor says: "In every way the teacher''s greatness is renowned; knowledge is weightier than wealth."'
   teaches: 'The adverb-making and numeral तद्धितs — डति (कति), त्रल् (अत्र, यत्र, तत्र), धा (द्विधा), कृत्वसुच् (पञ्चकृत्वः), दा (कदा, सर्वदा), था (सर्वथा) — with तल् of the collective (जनता), इमनिच् (महिमा) and ईयसुन् (गरीयः).'
   words:
   - form: अतिथिः
@@ -46,7 +46,7 @@
       en: 'the डति suffix'
     - term: संख्या
       en: 'sense: संख्या'
-    - cite: "5.2.41"
+    - cite: 5.2.41
       role: 'किमः संख्यापरिमाणे डति च — किम् + डति → कति'
     - term: विशेषण
       en: 'qualifying शिष्याः'
@@ -75,7 +75,7 @@
       en: 'the त्रल् suffix'
     - term: अव्ययीकरण
       en: 'sense: अव्ययीकरण'
-    - cite: "5.3.10"
+    - cite: 5.3.10
       role: 'सप्तम्यास्त्रल् — इदम् + त्रल् → अत्र'
     - term: अव्यय
       en: 'indeclinable — the suffix makes an adverb'
@@ -143,7 +143,7 @@
       en: 'the धा suffix'
     - term: संख्या
       en: 'sense: संख्या'
-    - cite: "5.3.42"
+    - cite: 5.3.42
       role: 'संख्याया विधार्थे धा — द्वि + धा → द्विधा'
     - term: अव्यय
       en: 'indeclinable — the suffix makes an adverb'
@@ -173,7 +173,7 @@
       en: 'the कृत्वसुच् suffix'
     - term: संख्या
       en: 'sense: संख्या'
-    - cite: "5.4.17"
+    - cite: 5.4.17
       role: 'संख्यायाः क्रियाभ्यावृत्तिगणने कृत्वसुच् — पञ्चन् + कृत्वसुच् → पञ्चकृत्वः'
     - term: अव्यय
       en: 'indeclinable — the suffix makes an adverb'
@@ -191,6 +191,44 @@
     notes:
     - term: लट्
       en: 'present'
+  - form: यतः
+    lemma: यतस्
+    gloss: 'because'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — subordinating connective'
+  - form: जनता
+    lemma: जन
+    gloss: 'the people'
+    notes:
+    - term: तद्धित
+      en: 'a collective — "the body of people"'
+    - term: तल्
+      en: 'the तल् suffix'
+    - term: समूह
+      en: 'sense: समूह'
+    - cite: 4.2.43
+      role: 'ग्रामजनबन्धुसहायेभ्यस्तल् — जन + तल् → जनता'
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+    - term: एकवचन
+      en: 'number'
+  - form: अपि
+    lemma: अपि
+    gloss: 'too'
+    notes:
+    - term: अव्यय
+      en: '"too" — the people come as well as the pupils'
+  - form: आगच्छति
+    lemma: गम्
+    gloss: 'comes'
+    notes:
+    - term: लट्
+      en: 'present, with the preverb आ'
   - form: अतिथिः
     lemma: अतिथि
     gloss: 'the visitor'
@@ -223,7 +261,7 @@
       en: 'the दा suffix'
     - term: अव्ययीकरण
       en: 'sense: अव्ययीकरण'
-    - cite: "5.3.15"
+    - cite: 5.3.15
       role: 'सर्वैकान्यकिंयत्तदः काले दा — किम् + दा → कदा'
     - term: अव्यय
       en: 'indeclinable — the suffix makes an adverb'
@@ -247,16 +285,6 @@
     notes:
     - term: लट्
       en: 'present'
-  - form: सा
-    lemma: तद्
-    gloss: 'they (the people)'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
   - form: सर्वदा
     lemma: सर्व
     gloss: 'always'
@@ -267,16 +295,10 @@
       en: 'the दा suffix'
     - term: अव्ययीकरण
       en: 'sense: अव्ययीकरण'
-    - cite: "5.3.15"
+    - cite: 5.3.15
       role: 'सर्वैकान्यकिंयत्तदः काले दा — सर्व + दा → सर्वदा'
     - term: अव्यय
       en: 'indeclinable — the suffix makes an adverb'
-  - form: आगच्छति
-    lemma: गम्
-    gloss: 'comes'
-    notes:
-    - term: लट्
-      en: 'present, with the preverb आ'
   - form: यत्र
     lemma: यद्
     gloss: 'where'
@@ -287,7 +309,7 @@
       en: 'the त्रल् suffix'
     - term: अव्ययीकरण
       en: 'sense: अव्ययीकरण'
-    - cite: "5.3.10"
+    - cite: 5.3.10
       role: 'सप्तम्यास्त्रल् — यद् + त्रल् → यत्र'
     - term: अव्यय
       en: 'indeclinable — the suffix makes an adverb'
@@ -315,36 +337,38 @@
       en: 'the त्रल् suffix'
     - term: अव्ययीकरण
       en: 'sense: अव्ययीकरण'
-    - cite: "5.3.10"
+    - cite: 5.3.10
       role: 'सप्तम्यास्त्रल् — तद् + त्रल् → तत्र'
     - term: अव्यय
       en: 'indeclinable — the suffix makes an adverb'
   - form: जनता
-    lemma: जन
+    lemma: जनता
     gloss: 'the people'
     notes:
-    - term: तद्धित
-      en: 'a collective — "the body of people"'
-    - term: तल्
-      en: 'the तल् suffix'
-    - term: समूह
-      en: 'sense: समूह'
-    - cite: "4.2.43"
-      role: 'ग्रामजनबन्धुसहायेभ्यस्तल् — जन + तल् → जनता'
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
     - term: कर्तृ
-      en: 'agent'
+      en: 'agent — the collective, singular'
     - term: प्रथमा
       en: 'nominative'
-    - term: एकवचन
-      en: 'number'
   - form: आगच्छति
     lemma: गम्
     gloss: 'comes'
     notes:
     - term: लट्
       en: 'present, with the preverb आ'
+  - form: अतिथिः
+    lemma: अतिथि
+    gloss: 'a visitor'
+    notes:
+    - term: कर्तृ
+      en: 'agent — the visitor who asks the questions'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: सर्वथा
     lemma: सर्व
     gloss: 'in every way'
@@ -355,7 +379,7 @@
       en: 'the था suffix'
     - term: अव्ययीकरण
       en: 'sense: अव्ययीकरण'
-    - cite: "5.3.23"
+    - cite: 5.3.23
       role: 'प्रकारवचने थाल् — सर्व + थाल् → सर्वथा'
     - term: अव्यय
       en: 'indeclinable — the suffix makes an adverb'
@@ -377,7 +401,7 @@
       en: 'the इमनिच् suffix'
     - term: भाव
       en: 'sense: भाव'
-    - cite: "5.1.122"
+    - cite: 5.1.122
       role: 'पृथ्वादिभ्य इमनिज्वा — महत् + इमनिच् → महिमन्'
     - term: पुंलिङ्ग
       en: 'masculine'
@@ -399,7 +423,7 @@
       en: 'nominative — the predicate, agreeing with महिमा'
     rel:
     - kind: विधेय
-      to: 38
+      to: 42
   - form: ज्ञानम्
     lemma: ज्ञान
     gloss: 'knowledge'
@@ -426,7 +450,7 @@
       en: 'the ईयसुन् suffix'
     - term: अतिशायन
       en: 'sense: अतिशायन'
-    - cite: "5.3.57"
+    - cite: 5.3.57
       role: 'द्विवचनविभज्योपपदे तरबीयसुनौ — गुरु + ईयसुन् → गरीयस्'
     - term: नपुंसकलिङ्ग
       en: 'neuter'
@@ -436,4 +460,4 @@
       en: 'number'
     rel:
     - kind: विधेय
-      to: 40
+      to: 44

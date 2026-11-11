@@ -2,9 +2,9 @@
   kind: graded
   segment: 195
   order: 1
-  sentence: 'वणिजौ मरुतौ च हिमवतः प्रयागम् आगच्छन्, यत्र गङ्गा यमुना च मिलतः। वणिजौ अवदताम् — हे सरितौ, युवाम् पवित्रे। हे गङ्गे, सरित्, त्वम् श्रेष्ठा। तौ सरितोः अस्नाताम्, सरिद्भ्याम् दीपौ च अयच्छताम्। तत्र मरुतौ अवदताम् — हे धीमन्तौ, युवयोः कर्मभ्याम् आवाम् तुष्टौ। अधुना आवाम् गच्छावः। वणिजौ मरुतोः वाचः अशृणुताम्। मरुतौ धीमद्भ्याम् वणिग्भ्याम् पुष्पाणि अगृह्णीताम्। तयोः स्नेहः धीमतोः वणिजोः आसीत्। ततः मरुतौ द्वे दिशौ प्रति उदपतताम् — तयोः एकः पूर्वाम्, अपरः पश्चिमाम्। वणिजौ ताभ्याम् दिग्भ्याम् नमः अकुरुताम्।'
-  translation: 'The merchants and the two winds came down from the Himālaya to Prayāga, where the Gaṅgā and the Yamunā meet. The merchants said: "O two rivers, you are pure. O Gaṅgā, O river, you are the best." They bathed in the two rivers, and offered two lamps to the rivers. There the winds said: "Clever ones, we two are pleased by your two deeds. Now we go." The merchants heard the winds'' words. The winds accepted flowers from the two clever merchants. Their affection rested on the clever merchants. Then the winds flew up towards two directions — one of them to the east, the other to the west. The merchants bowed to those two directions.'
-  teaches: 'Part 13 — the parting at the confluence: the vocatives सरितौ, सरित्, धीमन्तौ; सरितोः (locative), सरिद्भ्याम् (dative); धीमद्भ्याम् and वणिग्भ्याम् (ablative), धीमतोः (locative); कर्मभ्याम्; मरुतोः; दिशौ, दिग्भ्याम्; वाचः.'
+  sentence: 'वणिजौ मरुतौ च हिमवतः प्रयागम् आगच्छन्, यत्र गङ्गा यमुना च मिलतः। वणिजौ अवदताम् — हे गङ्गे, हे यमुने, युवाम् पवित्रे। तौ सरितोः सङ्गमे अस्नाताम्। तदा मरुतौ अवदताम् — हे धीमन्तौ, अधुना आवाम् गच्छावः। ततः मरुतौ द्वे दिशौ प्रति उदपतताम् — तयोः एकः पूर्वाम्, अपरः पश्चिमाम्। वणिजौ ताभ्याम् दिग्भ्याम् नमः अकुरुताम्।'
+  translation: 'The merchants and the two winds came down from the Himālaya to Prayāga, where the Gaṅgā and the Yamunā meet. The merchants said: "O Gaṅgā, O Yamunā, you two are pure." They bathed at the meeting of the two rivers. Then the winds said: "Wise ones, now we two go." Then the winds flew up towards two directions — one of them to the east, the other to the west. The merchants bowed to those two directions.'
+  teaches: 'Part 13 — the parting at the confluence: the vocatives गङ्गे, यमुने, धीमन्तौ; पवित्रे (feminine dual); सरितोः (genitive dual); दिशौ, and दिग्भ्याम् with नमः.'
   words:
   - form: वणिजौ
     lemma: वणिज्
@@ -118,14 +118,32 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — address'
-  - form: सरितौ
-    lemma: सरित्
-    gloss: 'two rivers'
+  - form: गङ्गे
+    lemma: गङ्गा
+    gloss: 'Gaṅgā'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
     - term: सम्बोधन
-      en: 'vocative dual'
+      en: 'vocative'
+  - form: हे
+    lemma: हे
+    gloss: 'O'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — address'
+  - form: यमुने
+    lemma: यमुना
+    gloss: 'Yamunā'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बोधन
+      en: 'vocative — आ-stem: यमुना → यमुने, like गङ्गे'
   - form: युवाम्
     lemma: युष्मद्
     gloss: 'you two'
@@ -133,7 +151,7 @@
     - term: सर्वनाम
       en: 'pronoun'
     - term: कर्तृ
-      en: 'agent'
+      en: 'the two rivers, addressed'
     - term: प्रथमा
       en: 'nominative dual'
   - form: पवित्रे
@@ -148,98 +166,53 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 15
-  - form: गङ्गे
-    lemma: गङ्गा
-    gloss: 'Gaṅgā'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: सम्बोधन
-      en: 'vocative'
-  - form: सरित्
-    lemma: सरित्
-    gloss: 'river'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: सम्बोधन
-      en: 'vocative'
-  - form: त्वम्
-    lemma: युष्मद्
-    gloss: 'you'
+      to: 17
+  - form: तौ
+    lemma: तद्
+    gloss: 'the two of them'
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: 'pronoun — the two merchants'
     - term: कर्तृ
       en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: श्रेष्ठा
-    lemma: श्रेष्ठ
-    gloss: 'the best'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'number'
-    - term: प्रथमा
-      en: 'nominative — the predicate'
-    rel:
-    - kind: विधेय
-      to: 19
+    - term: द्विवचन
+      en: 'dual'
   - form: सरितोः
     lemma: सरित्
-    gloss: 'in the two rivers'
+    gloss: 'of the two rivers'
     notes:
     - term: स्त्रीलिङ्ग
       en: 'feminine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्बन्ध
+      en: 'whose meeting — the Gaṅgā''s and the Yamunā''s'
+    - term: षष्ठी
+      en: 'genitive dual'
+  - form: सङ्गमे
+    lemma: सङ्गम
+    gloss: 'at the meeting'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
     - term: अधिकरण
-      en: 'location'
+      en: 'where they bathe'
     - term: सप्तमी
-      en: 'locative dual'
+      en: 'locative — सम् + गम: the confluence'
   - form: अस्नाताम्
     lemma: स्ना
     gloss: 'bathed'
     notes:
     - term: लङ्
       en: 'imperfect (लङ्) — narrative past (अदादि), dual'
-  - form: सरिद्भ्याम्
-    lemma: सरित्
-    gloss: 'to the rivers'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: दीपौ
-    lemma: दीप
-    gloss: 'two lamps'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'object of अयच्छताम् — one lamp to each river; अ-stem masc. acc. dual -औ'
-  - form: अयच्छताम्
-    lemma: यम्
-    gloss: 'offered'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past, dual'
-  - form: तत्र
-    lemma: तत्र
-    gloss: 'there'
+  - form: तदा
+    lemma: तदा
+    gloss: 'then'
     notes:
     - term: अव्यय
-      en: 'indeclinable — place'
+      en: '"then" — the next thing that happened'
   - form: मरुतौ
     lemma: मरुत्
     gloss: 'the two winds'
@@ -272,49 +245,6 @@
       en: 'dual'
     - term: सम्बोधन
       en: 'vocative dual — strong stem धीमन्त्'
-  - form: युवयोः
-    lemma: युष्मद्
-    gloss: 'your'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive dual'
-  - form: कर्मभ्याम्
-    lemma: कर्मन्
-    gloss: 'by the two deeds'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: हेतु
-      en: 'the cause — the two tasks the king set'
-    - term: तृतीया
-      en: 'instrumental dual — the न् drops before भ्याम्'
-  - form: आवाम्
-    lemma: अस्मद्
-    gloss: 'we two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: तुष्टौ
-    lemma: तुष्ट
-    gloss: 'pleased'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: द्विवचन
-      en: 'number'
-    - term: प्रथमा
-      en: 'nominative dual — the predicate'
-    rel:
-    - kind: विधेय
-      to: 33
   - form: अधुना
     lemma: अधुना
     gloss: 'now'
@@ -337,152 +267,6 @@
     notes:
     - term: लट्
       en: 'present, 1st person dual'
-  - form: वणिजौ
-    lemma: वणिज्
-    gloss: 'the merchants'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: मरुतोः
-    lemma: मरुत्
-    gloss: 'of the winds'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive dual'
-  - form: वाचः
-    lemma: वाच्
-    gloss: 'words'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: बहुवचन
-      en: 'number'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative plural — च् becomes the guttural only before consonants'
-  - form: अशृणुताम्
-    lemma: श्रु
-    gloss: 'heard'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past, dual'
-  - form: मरुतौ
-    lemma: मरुत्
-    gloss: 'the two winds'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: धीमद्भ्याम्
-    lemma: धीमत्
-    gloss: 'clever'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: विशेषण
-      en: 'qualifying वणिग्भ्याम्'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-    rel:
-    - kind: विशेषण
-      to: 44
-  - form: वणिग्भ्याम्
-    lemma: वणिज्
-    gloss: 'from the merchants'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: अपादान
-      en: 'the givers — the winds take FROM them'
-    - term: पञ्चमी
-      en: 'ablative dual — same shape as dative and instrumental'
-  - form: पुष्पाणि
-    lemma: पुष्प
-    gloss: 'flowers'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative plural'
-  - form: अगृह्णीताम्
-    lemma: ग्रह्
-    gloss: 'accepted'
-    notes:
-    - term: लङ्
-      en: 'imperfect, dual — ग्रह् is क्र्यादि: गृह्णी before a consonant ending'
-    - term: प्रथमपुरुष
-      en: 'third person'
-    - term: द्विवचन
-      en: 'dual'
-    - term: परस्मैपद
-      en: 'active endings'
-  - form: तयोः
-    lemma: तद्
-    gloss: 'their'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive dual — the winds'''
-  - form: स्नेहः
-    lemma: स्नेह
-    gloss: 'affection'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: धीमतोः
-    lemma: धीमत्
-    gloss: 'clever'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: विशेषण
-      en: 'qualifying वणिजोः'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
-    rel:
-    - kind: विशेषण
-      to: 50
-  - form: वणिजोः
-    lemma: वणिज्
-    gloss: 'in the merchants'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: अधिकरण
-      en: 'where the affection rests'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: आसीत्
-    lemma: अस्
-    gloss: 'was'
-    notes:
-    - term: लङ्
-      en: 'imperfect of अस्'
   - form: ततः
     lemma: ततः
     gloss: 'then'
@@ -511,7 +295,7 @@
       en: 'accusative dual, feminine'
     rel:
     - kind: विशेषण
-      to: 55
+      to: 34
   - form: दिशौ
     lemma: दिश्
     gloss: 'directions'
@@ -541,7 +325,7 @@
     - term: सर्वनाम
       en: 'pronoun'
     - term: निर्धारण
-      en: 'the pair one is singled out from'
+      en: 'the pair one is singled out from (2.3.41)'
     - term: षष्ठी
       en: 'genitive dual'
   - form: एकः

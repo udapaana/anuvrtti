@@ -2,9 +2,9 @@
   kind: graded
   segment: 185
   order: 1
-  sentence: 'रात्रौ द्वौ छात्रौ वने मार्गम् न जानीतः। ते एकम् कुटीरम् पश्यतः, यत्र वृद्धौ वसतः। छात्रौ वदतः — आवाभ्याम् जलम् यच्छतम्। एकः छात्रः वदति — आवाम् भिन्नयोः ग्रामयोः वसावः। वृद्धः पृच्छति — युवाम् काभ्याम् ग्रामाभ्याम् आगच्छथः? छात्रौ वदतः — नद्याः पारे ताभ्याम् ग्रामाभ्याम्। वृद्धा वदति — आभ्याम् बालाभ्याम् भोजनम् आनय। वृद्धा वदति — युवाम् कटयोः स्वपितम्। छात्रौ पश्यतः — कुटीरे कटौ न स्तः। ते पृच्छतः — कयोः कटयोः? वृद्धा स्वकटौ आनयति — एतयोः। छात्रौ पृच्छतः — प्रातः युवाम् आवाम् ग्रामम् नेष्यथः? वृद्धौ वदतः — आम्; एताभ्याम् वृक्षाभ्याम् परम् ग्रामः। आवयोः विश्वसितम्; आवयोः स्नेहः युवयोः। छात्रौ वदतः — युवाभ्याम् नमः। वृद्धः हसति — धर्मात् एव सुखम्।'
-  translation: 'At night two students cannot find the path in the forest. They see a hut where an old couple lives. The students say: "Give us water." One student says: "We live in different villages." The old man asks: "From which two villages have you come?" The students say: "From those two villages across the river." The old woman says: "Bring food for these two boys." Then she says: "You two sleep on mats." The students look — there are no mats in the hut. They ask: "On which two mats?" The old woman brings her own two mats: "On these two." The students ask: "Will you two take us to the village in the morning?" The old couple say: "Yes; the village lies beyond these two trees. Trust us two; our affection is with you two." The students say: "Homage to you two." The old man laughs: "Happiness comes from dharma alone."'
-  teaches: 'The dual pronouns as a dialogue needs them — two speaking to two: आवाभ्याम्, आवाम्, आवयोः, युवयोः, युवाभ्याम्; काभ्याम्, कयोः, ताभ्याम्, आभ्याम्, एतयोः.'
+  sentence: 'रात्रौ द्वौ छात्रौ वने मार्गम् न जानीतः। तौ एकम् कुटीरम् पश्यतः, यत्र वृद्धः वृद्धा च वसतः। वृद्धः पृच्छति — युवाम् कौ? छात्रौ वदतः — आवाम् छात्रौ; मार्गम् न जानीवः। आवाभ्याम् जलम् यच्छतम्। वृद्धा वदति — आभ्याम् बालाभ्याम् भोजनम् आनयामि। सा द्वौ कटौ आनयति — युवाम् एतयोः कटयोः स्वपितम्। छात्रौ पृच्छतः — प्रातः युवाम् आवाम् ग्रामम् नेष्यथः? वृद्धः वदति — आम्; एताभ्याम् वृक्षाभ्याम् परम् ग्रामः। छात्रौ वदतः — युवाभ्याम् नमः।'
+  translation: 'At night two students cannot find the path in the forest. They see a hut where an old man and an old woman live. The old man asks: "Who are you two?" The students say: "We are students; we do not know the way. Give us water." The old woman says: "I will bring food for these two boys." She brings two mats: "You two sleep on these two mats." The students ask: "In the morning will you take us to the village?" The old man says: "Yes; the village lies beyond these two trees." The students say: "Our homage to you both."'
+  teaches: 'The dual pronouns as two speaking to two need them: युवाम्, आवाम् (nominative and accusative), आवाभ्याम्, युवाभ्याम्; and इदम्/एतद् pointing at pairs — आभ्याम्, एतयोः, एताभ्याम्.'
   words:
   - form: रात्रौ
     lemma: रात्रि
@@ -79,18 +79,16 @@
     notes:
     - term: लट्
       en: 'present (क्र्यादि), dual'
-  - form: ते
+  - form: तौ
     lemma: तद्
-    gloss: 'they'
+    gloss: 'the two of them'
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
-    - term: द्विवचन
-      en: 'number'
+      en: 'pronoun — the two students'
     - term: कर्तृ
       en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
+    - term: द्विवचन
+      en: 'dual — the two students'
   - form: एकम्
     lemma: एक
     gloss: 'a'
@@ -128,60 +126,42 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — place'
-  - form: वृद्धौ
+  - form: वृद्धः
     lemma: वृद्ध
-    gloss: 'an old couple'
+    gloss: 'the old man'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
-    - term: द्विवचन
-      en: 'एकशेष — one masculine dual names the old man and woman (1.2.67)'
+    - term: एकवचन
+      en: 'singular'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative dual'
+      en: 'nominative'
+  - form: वृद्धा
+    lemma: वृद्धा
+    gloss: 'the old woman'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'feminine of वृद्ध — the old woman speaks'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: '"and" — joins the old man and the old woman, so the verb is dual'
   - form: वसतः
     lemma: वस्
     gloss: 'live'
     notes:
     - term: लट्
       en: 'present, dual'
-  - form: वदतः
-    lemma: वद्
-    gloss: 'say'
-    notes:
-    - term: लट्
-      en: 'present, dual'
-  - form: आवाभ्याम्
-    lemma: अस्मद्
-    gloss: 'to us two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: द्विवचन
-      en: 'number'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative dual'
-  - form: जलम्
-    lemma: जल
-    gloss: 'water'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: यच्छतम्
-    lemma: यम्
-    gloss: 'give'
-    notes:
-    - term: लोट्
-      en: 'imperative, 2nd person dual'
   - form: वृद्धः
     lemma: वृद्ध
     gloss: 'the old man'
@@ -212,134 +192,112 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: काभ्याम्
+  - form: कौ
     lemma: किम्
-    gloss: 'which two'
+    gloss: 'who (two)'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
-    - term: द्विवचन
-      en: 'dual'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-    - term: विशेषण
-      en: 'qualifying ग्रामाभ्याम्'
-  - form: ग्रामाभ्याम्
-    lemma: ग्राम
-    gloss: 'from villages'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
-  - form: आगच्छथः
-    lemma: गम्
-    gloss: 'have come'
-    notes:
-    - term: लट्
-      en: 'present, 2nd person dual, with आ'
-  - form: एकः
-    lemma: एक
-    gloss: 'one'
-    notes:
-    - term: संख्या
-      en: 'numeral'
-    - term: विशेषण
-      en: 'qualifying the noun'
+    - term: कर्तृ
+      en: 'the subject asked about'
     - term: प्रथमा
-      en: 'nominative'
-    rel:
-    - kind: विशेषण
-      to: 25
-  - form: छात्रः
+      en: 'nominative dual'
+  - form: छात्रौ
     lemma: छात्र
-    gloss: 'student'
+    gloss: 'students'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative'
-  - form: भिन्नयोः
-    lemma: भिन्न
-    gloss: 'different'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: विशेषण
-      en: 'agrees with ग्रामयोः — locative dual in योः'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
-    rel:
-    - kind: विशेषण
-      to: 27
-  - form: ग्रामयोः
-    lemma: ग्राम
-    gloss: 'in villages'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: वसावः
-    lemma: वस्
-    gloss: 'live'
+      en: 'nominative dual in औ — agrees with the dual verb'
+  - form: वदतः
+    lemma: वद्
+    gloss: 'say'
     notes:
     - term: लट्
-      en: 'present, 1st person dual'
-  - form: नद्याः
-    lemma: नदी
-    gloss: 'the river''s'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
-  - form: पारे
-    lemma: पार
-    gloss: 'across'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'singular'
-    - term: अधिकरण
-      en: '''across'' — the far side, with the river in the genitive'
-    - term: सप्तमी
-      en: 'locative'
-  - form: ताभ्याम्
-    lemma: तद्
-    gloss: 'those two'
+      en: 'present, dual'
+  - form: आवाम्
+    lemma: अस्मद्
+    gloss: 'we two'
     notes:
     - term: सर्वनाम
       en: 'pronoun'
     - term: द्विवचन
       en: 'number'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative dual'
+    - term: कर्तृ
+      en: 'subject of a verbless sentence'
+    - term: प्रथमा
+      en: 'nominative dual — the same shape as the accusative later on'
+  - form: छात्रौ
+    lemma: छात्र
+    gloss: 'students'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual in औ — agrees with the dual verb'
+  - form: मार्गम्
+    lemma: मार्ग
+    gloss: 'the path'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: न
+    lemma: न
+    gloss: 'not'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — negation'
+  - form: जानीवः
+    lemma: ज्ञा
+    gloss: 'know'
+    notes:
+    - term: लट्
+      en: 'present, 1st person dual — क्र्यादि ज्ञा: जानीमः, here जानीवः'
+  - form: आवाभ्याम्
+    lemma: अस्मद्
+    gloss: 'to us two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative dual'
+  - form: जलम्
+    lemma: जल
+    gloss: 'water'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: यच्छतम्
+    lemma: यम्
+    gloss: 'give'
+    notes:
+    - term: लोट्
+      en: 'imperative, 2nd person dual'
   - form: वृद्धा
     lemma: वृद्धा
     gloss: 'the old woman'
@@ -349,7 +307,7 @@
     - term: एकवचन
       en: 'singular'
     - term: कर्तृ
-      en: 'feminine of वृद्ध — the old woman speaks'
+      en: 'agent'
     - term: प्रथमा
       en: 'nominative'
   - form: वदति
@@ -394,30 +352,63 @@
       en: 'object'
     - term: द्वितीया
       en: 'accusative'
-  - form: आनय
+  - form: आनयामि
     lemma: नी
-    gloss: 'bring'
-    notes:
-    - term: लोट्
-      en: 'imperative, with the preverb आ'
-  - form: वृद्धा
-    lemma: वृद्धा
-    gloss: 'the old woman'
-    notes:
-    - term: स्त्रीलिङ्ग
-      en: 'feminine'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: वदति
-    lemma: वद्
-    gloss: 'says'
+    gloss: 'I will bring'
     notes:
     - term: लट्
-      en: 'present'
+      en: 'present, with आ — the present for what one is about to do'
+    - term: उत्तमपुरुष
+      en: '1st person'
+    - term: एकवचन
+      en: 'singular'
+    - term: परस्मैपद
+      en: 'parasmaipada'
+    - term: भ्वादि
+      en: 'gaṇa'
+  - form: सा
+    lemma: तद्
+    gloss: 'she'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: प्रथमा
+      en: 'nominative feminine'
+    - term: कर्तृ
+      en: 'agent'
+  - form: द्वौ
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying कटौ'
+    - term: कर्मन्
+      en: 'with कटौ, what she brings'
+    - term: द्वितीया
+      en: 'accusative dual'
+    rel:
+    - kind: विशेषण
+      to: 38
+  - form: कटौ
+    lemma: कट
+    gloss: 'mats'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्मन्
+      en: 'what she brings — one mat for each student'
+    - term: द्वितीया
+      en: 'accusative dual'
+  - form: आनयति
+    lemma: नी
+    gloss: 'brings'
+    notes:
+    - term: लट्
+      en: 'present, with the preverb आ'
   - form: युवाम्
     lemma: युष्मद्
     gloss: 'you two'
@@ -425,9 +416,21 @@
     - term: सर्वनाम
       en: 'pronoun'
     - term: कर्तृ
-      en: 'agent'
+      en: 'the two students, told to sleep'
     - term: प्रथमा
       en: 'nominative dual'
+  - form: एतयोः
+    lemma: एतद्
+    gloss: 'these two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative dual'
   - form: कटयोः
     lemma: कट
     gloss: 'on two mats'
@@ -442,90 +445,18 @@
     notes:
     - term: लोट्
       en: 'imperative (अदादि), 2nd person dual'
-  - form: कुटीरे
-    lemma: कुटीर
-    gloss: 'in the hut'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'singular'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative'
-  - form: कटौ
-    lemma: कट
-    gloss: 'mats'
+  - form: छात्रौ
+    lemma: छात्र
+    gloss: 'students'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
     - term: द्विवचन
       en: 'dual'
     - term: कर्तृ
-      en: 'the two mats that are there — nominative dual'
+      en: 'agent'
     - term: प्रथमा
-      en: 'nominative dual'
-  - form: स्तः
-    lemma: अस्
-    gloss: 'are'
-    notes:
-    - term: लट्
-      en: 'present, dual'
-  - form: कयोः
-    lemma: किम्
-    gloss: 'which two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: द्विवचन
-      en: 'number'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: कटयोः
-    lemma: कट
-    gloss: 'on mats'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: स्वकटौ
-    lemma: स्वकट
-    gloss: 'her own two mats'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: द्विवचन
-      en: 'dual'
-    - term: कर्मन्
-      en: 'स्व ''own'' + कट — her own two mats, accusative dual'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: आनयति
-    lemma: नी
-    gloss: 'brings'
-    notes:
-    - term: लट्
-      en: 'present, with the preverb आ'
-  - form: एतयोः
-    lemma: एतद्
-    gloss: 'these two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: द्विवचन
-      en: 'number'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
+      en: 'nominative dual in औ — agrees with the dual verb'
   - form: पृच्छतः
     lemma: प्रच्छ्
     gloss: 'ask'
@@ -538,6 +469,18 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — time'
+  - form: युवाम्
+    lemma: युष्मद्
+    gloss: 'you two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: द्विवचन
+      en: 'number'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
   - form: आवाम्
     lemma: अस्मद्
     gloss: 'us two'
@@ -568,6 +511,24 @@
     notes:
     - term: लृट्
       en: 'simple future, 2nd person dual'
+  - form: वृद्धः
+    lemma: वृद्ध
+    gloss: 'the old man'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: आम्
     lemma: आम्
     gloss: 'yes'
@@ -616,56 +577,24 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
-  - form: आवयोः
-    lemma: अस्मद्
-    gloss: 'us two'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: द्विवचन
-      en: 'number'
-    - term: अधिकरण
-      en: 'the one trusted — विश्वस् takes the सप्तमी'
-    - term: सप्तमी
-      en: 'locative dual'
-  - form: विश्वसितम्
-    lemma: श्वस्
-    gloss: 'trust'
-    notes:
-    - term: लोट्
-      en: 'imperative (अदादि), 2nd person dual, with वि'
-    - term: मध्यमपुरुष
-      en: '2nd person'
-    - term: द्विवचन
-      en: 'dual'
-    - term: परस्मैपद
-      en: 'parasmaipada'
-    - term: अदादि
-      en: 'gaṇa'
-  - form: स्नेहः
-    lemma: स्नेह
-    gloss: 'affection'
+  - form: छात्रौ
+    lemma: छात्र
+    gloss: 'students'
     notes:
     - term: पुंलिङ्ग
       en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
+    - term: द्विवचन
+      en: 'dual'
     - term: कर्तृ
       en: 'agent'
     - term: प्रथमा
-      en: 'nominative'
-  - form: युवयोः
-    lemma: युष्मद्
-    gloss: 'with you two'
+      en: 'nominative dual in औ — agrees with the dual verb'
+  - form: वदतः
+    lemma: वद्
+    gloss: 'say'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: द्विवचन
-      en: 'number'
-    - term: अधिकरण
-      en: 'location'
-    - term: सप्तमी
-      en: 'locative dual'
+    - term: लट्
+      en: 'present, dual'
   - form: युवाभ्याम्
     lemma: युष्मद्
     gloss: 'to you two'
@@ -684,39 +613,3 @@
     notes:
     - term: अव्यय
       en: 'indeclinable — governs the चतुर्थी (2.3.16)'
-  - form: हसति
-    lemma: हस्
-    gloss: 'laughs'
-    notes:
-    - term: लट्
-      en: 'present'
-  - form: धर्मात्
-    lemma: धर्म
-    gloss: 'from dharma'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: एकवचन
-      en: 'singular'
-    - term: अपादान
-      en: 'source'
-    - term: पञ्चमी
-      en: 'ablative'
-  - form: एव
-    lemma: एव
-    gloss: 'alone'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — restriction'
-  - form: सुखम्
-    lemma: सुख
-    gloss: 'happiness'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: एकवचन
-      en: 'singular'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'

@@ -2,10 +2,77 @@
   kind: graded
   segment: 196
   order: 2
-  sentence: 'तयोः नाम्नोः अधः राजा श्लोकम् अलिखत् — हे जगत्, त्वम् एतौ मरुतौ स्मर। एतौ वणिग्भ्याम् सह बह्वीः सरितः अतरताम्, महद्भ्याम् वनाभ्याम् च निरगच्छताम्। तौ देवौ अद्य अपि उज्जयिन्याम् पूज्येते।'
-  translation: 'Below those two names the king wrote a verse: "O world, remember these two winds. With the two merchants they crossed many rivers, and came out of two great forests." Those two gods are worshipped in Ujjayinī even today.'
+  sentence: 'उज्जयिन्याम् एकस्याम् शिलायाम् वणिजोः नामनी स्तः। तयोः नाम्नोः अधः राजा श्लोकम् अलिखत् — हे जगत्, त्वम् एतौ मरुतौ स्मर। एतौ वणिग्भ्याम् सह बह्वीः सरितः अतरताम्, महद्भ्याम् वनाभ्याम् च निरगच्छताम्। तौ देवौ अद्य अपि उज्जयिन्याम् पूज्येते।'
+  translation: 'In Ujjayinī the two merchants'' names stand on a stone. Below those two names the king wrote a verse: "O world, remember these two winds. With the two merchants they crossed many rivers, and came out of two great forests." Those two gods are worshipped in Ujjayinī even today.'
   teaches: 'Part 15 — the verse on the temple: नाम्नोः (genitive dual, with अधः), जगत् (vocative), मरुतौ (accusative dual), वणिग्भ्याम् (with सह), सरितः (accusative plural), महद्भ्याम् वनाभ्याम् (ablative dual); तौ देवौ with the passive dual पूज्येते.'
   words:
+  - form: उज्जयिन्याम्
+    lemma: उज्जयिनी
+    gloss: 'in Ujjayinī'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative — ई-stem feminine, आम्'
+  - form: एकस्याम्
+    lemma: एक
+    gloss: 'a'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: विशेषण
+      en: 'qualifying शिलायाम्'
+    - term: अधिकरण
+      en: 'with शिलायाम्, where the names stand'
+    - term: सप्तमी
+      en: 'locative — एक declines like a pronoun: एकस्याम्'
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: शिलायाम्
+    lemma: शिला
+    gloss: 'on a stone'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: अधिकरण
+      en: 'where the names stand'
+    - term: सप्तमी
+      en: 'locative — आ-stem feminine आयाम्'
+  - form: वणिजोः
+    lemma: वणिज्
+    gloss: 'the merchants'''
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive dual'
+  - form: नामनी
+    lemma: नामन्
+    gloss: 'the two names'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual — अन्-neuter, ई in the dual'
+  - form: स्तः
+    lemma: अस्
+    gloss: 'are'
+    notes:
+    - term: लट्
+      en: 'present, dual'
   - form: तयोः
     lemma: तद्
     gloss: 'those two'
@@ -148,7 +215,7 @@
       en: 'accusative plural'
     rel:
     - kind: विशेषण
-      to: 16
+      to: 22
   - form: सरितः
     lemma: सरित्
     gloss: 'rivers'
@@ -177,7 +244,7 @@
       en: 'ablative dual — महत् is weak before भ्याम्'
     rel:
     - kind: विशेषण
-      to: 19
+      to: 25
   - form: वनाभ्याम्
     lemma: वन
     gloss: 'from two forests'
