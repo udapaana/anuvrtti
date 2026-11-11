@@ -2,11 +2,19 @@
   kind: sangraha
   segment: 155
   order: 1
-  sentence: ग्रामे भगवान् वदति। तस्य वचनम् पिता शृणोति, पितरम् च पुत्रः पश्यति। तदा एकः दण्डी अपि आगच्छति; ग्रामस्य पितरः दण्डिनम् पश्यन्ति। भगवतः वचनेन ते तुष्यन्ति। ततः भगवतः यशः श्रुत्वा राजानौ अपि तस्य दर्शनाय आगच्छतः।
-  translation: In the village the Blessed One speaks. A father listens to his words, and his son watches the father. Then a staff-bearing ascetic arrives too; the village elders see the staff-bearer. By the Blessed One's words they are satisfied. Then, hearing of the Blessed One's fame, two kings too come to see him.
-  teaches: 'The strong stems in one gathering: भगवान्, पितरम्, दण्डी, पितरः, राजानौ beside the weak भगवतः, दण्डिनम् — the crowd round a teacher grows, and so does the case-work.
+  sentence: ग्रामे भगवान् वदति। एकः पिता पुत्रेण सह तस्य वचनम् शृणोति। तदा एकः दण्डी अपि आगच्छति, भगवन्तम् च पृच्छति। भगवतः उत्तरेण सः तुष्यति। ततः भगवतः यशः श्रुत्वा राजानौ अपि तस्य दर्शनाय आगच्छतः।
+  translation: In the village the Blessed One speaks. A father, with his son, listens to his words. Then a staff-bearing ascetic arrives too, and questions the Blessed One. He is satisfied by the Blessed One's answer. Then, hearing of the Blessed One's fame, two kings too come to see him.
+  teaches: 'The strong stems beside the weak: भगवान्, भगवन्तम्, दण्डी, राजानौ beside भगवतः — the crowd round a teacher grows, and so does the case-work.'
+  vyakhya_en: 'One stem in two grades: भगवान् and भगवन्तम् against भगवतः. Nothing about the
+
+    meaning changes — they are the same person. What changes is the ending attached,
+
+    and whether that ending belongs to the सर्वनामस्थान (strong) set: the strong
+
+    endings keep the न्, the weak ones drop it. दण्डी and राजानौ are strong forms too.
 
     '
+  vyakhya: एकं पदम् — बलवत् दुर्बलं च। भगवान् भगवन्तम्, भगवतः।
   words:
   - form: ग्रामे
     lemma: ग्राम
@@ -50,6 +58,50 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present
+  - form: एकः
+    lemma: एक
+    gloss: a
+    notes:
+    - term: संख्या
+      en: numeral
+    - term: विशेषण
+      en: qualifying the noun
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: पिता
+    lemma: पितृ
+    gloss: the father
+    notes:
+    - term: कर्तृ
+      en: agent — ऋ-stem strong nom.sg, ऋ → आ
+    - term: प्रथमा
+      en: nominative
+    - cite: 6.1.68
+      role: हल्ङ्याब्भ्यो… — सु drops after long आ-stems and consonants → पिता
+  - form: पुत्रेण
+    lemma: पुत्र
+    gloss: with the son
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: सहार्थ
+      en: accompaniment
+    - term: तृतीया
+      en: instrumental — here the sense "along with"
+    - cite: 2.3.19
+      role: सहयुक्तेऽप्रधाने — with सह, the accompanying (non-principal) thing takes तृतीया
+    - term: एकवचन
+      en: singular
+  - form: सह
+    lemma: सह
+    gloss: with, together
+    notes:
+    - term: अव्यय
+      en: indeclinable
+    - text: the particle governing पुत्रेण
   - form: तस्य
     lemma: तद्
     gloss: his
@@ -68,64 +120,12 @@
       en: object
     - term: द्वितीया
       en: neuter accusative
-  - form: पिता
-    lemma: पितृ
-    gloss: the father
-    notes:
-    - term: कर्तृ
-      en: agent — ऋ-stem strong nom.sg, ऋ → आ
-    - term: प्रथमा
-      en: nominative
-    - cite: 6.1.68
-      role: हल्ङ्याब्भ्यो… — सु drops after long आ-stems and consonants → पिता
   - form: शृणोति
     lemma: श्रु
     gloss: hears
     notes:
     - term: लट्
       en: present
-  - form: च
-    lemma: च
-    gloss: and
-    notes:
-    - term: अव्यय
-      en: indeclinable
-  - form: पितरम्
-    lemma: पितृ
-    gloss: the father (obj.)
-    notes:
-    - term: सर्वनामस्थान
-      en: strong stem पितर् — the SAME word as पिता, one clause later
-    - term: द्वितीया
-      en: accusative
-    - term: कर्मन्
-      en: object
-    - term: एकवचन
-      en: एकवचन
-    - term: कर्मन्
-      en: object
-    - term: एकवचन
-      en: एकवचन
-    - term: कर्मन्
-      en: object
-    - term: एकवचन
-      en: एकवचन
-  - form: पुत्रः
-    lemma: पुत्र
-    gloss: the son
-    notes:
-    - term: कर्तृ
-      en: agent
-    - term: प्रथमा
-      en: nominative
-  - form: पश्यति
-    lemma: दृश्
-    gloss: sees
-    notes:
-    - term: शप्
-      en: the thematic अ between root and ending
-    - term: लट्
-      en: present — दृश् appears as पश्य्
   - form: तदा
     lemma: तदा
     gloss: then
@@ -144,7 +144,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 13
+      to: 12
   - form: दण्डी
     lemma: दण्डिन्
     gloss: a staff-bearer
@@ -179,52 +179,30 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present
-  - form: ग्रामस्य
-    lemma: ग्राम
-    gloss: the village's
+  - form: भगवन्तम्
+    lemma: भगवत्
+    gloss: the holy one
     notes:
     - term: पुंलिङ्ग
       en: masculine
-    - term: सम्बन्ध
-      en: relation
-    - term: षष्ठी
-      en: genitive
-  - form: पितरः
-    lemma: पितृ
-    gloss: the fathers
-    notes:
-    - term: सर्वनामस्थान
-      en: strong plural — गुण अर्, a third grade of the same stem
-    - term: बहुवचन
-      en: nominative plural
-    - term: कर्तृ
-      en: agent
-    - term: प्रथमा
-      en: प्रथमा
-    - term: कर्तृ
-      en: agent
-    - term: प्रथमा
-      en: प्रथमा
-    - term: कर्तृ
-      en: agent
-    - term: प्रथमा
-      en: प्रथमा
-  - form: दण्डिनम्
-    lemma: दण्डिन्
-    gloss: the staff-bearer (obj.)
-    notes:
+    - term: एकवचन
+      en: singular
     - term: कर्मन्
-      en: the न् RETURNS before a vowel ending — the foil to दण्डी above
+      en: object
     - term: द्वितीया
       en: accusative
-  - form: पश्यन्ति
-    lemma: दृश्
-    gloss: see
+  - form: च
+    lemma: च
+    gloss: and
     notes:
-    - term: शप्
-      en: the thematic अ between root and ending
+    - term: अव्यय
+      en: indeclinable
+  - form: पृच्छति
+    lemma: प्रच्छ्
+    gloss: asks
+    notes:
     - term: लट्
-      en: present plural
+      en: present (प्रच्छ् → पृच्छ)
   - form: भगवतः
     lemma: भगवत्
     gloss: the Blessed One's
@@ -237,49 +215,50 @@
       en: relation
     - term: सम्बन्ध
       en: relation
-  - form: वचनेन
-    lemma: वचन
-    gloss: by the words
+  - form: उत्तरेण
+    lemma: उत्तर
+    gloss: by the answer
     notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: एकवचन
+      en: singular
     - term: करण
       en: instrument
     - term: तृतीया
-      en: instrumental
-  - form: ते
+      en: instrumental — the cause of his satisfaction with तुष्यति
+  - form: सः
     lemma: तद्
-    gloss: they
+    gloss: he
     notes:
     - term: सर्वनाम
-      en: pronoun
+      en: pronoun (तद्)
     - term: प्रथमा
-      en: nominative plural
-    - term: कर्तृ
-      en: agent
-    - term: बहुवचन
-      en: बहुवचन
-    - term: कर्तृ
-      en: agent
-    - term: बहुवचन
-      en: बहुवचन
-    - term: कर्तृ
-      en: agent
-    - term: बहुवचन
-      en: बहुवचन
-  - form: तुष्यन्ति
+      en: nominative
+  - form: तुष्यति
     lemma: तुष्
-    gloss: are satisfied
-    vocab: true
+    gloss: is pleased
     notes:
-    - term: शप्
-      en: the thematic अ between root and ending
     - term: लट्
-      en: present plural
+      en: 'present (तुष् is दिवादि: तुष्यति)'
   - form: ततः
     lemma: ततस्
     gloss: then
     notes:
     - term: अव्यय
       en: indeclinable
+  - form: भगवतः
+    lemma: भगवत्
+    gloss: the Blessed One's
+    notes:
+    - term: षष्ठी
+      en: the WEAK stem — plain भगवत् + ङस्, no नुम्; contrast भगवान् above
+    - term: सम्बन्ध
+      en: relation
+    - term: सम्बन्ध
+      en: relation
+    - term: सम्बन्ध
+      en: relation
   - form: यशः
     lemma: यशस्
     gloss: fame
@@ -287,15 +266,15 @@
     - term: नपुंसकलिङ्ग
       en: neuter
     - term: कर्मन्
-      en: 'object of श्रुत्वा — what the kings hear of'
+      en: object of श्रुत्वा — what the kings hear of
     - term: द्वितीया
-      en: 'accusative — स्-stem neuter, यशस् → यशः, same as the nominative'
+      en: accusative — स्-stem neuter, यशस् → यशः, same as the nominative
   - form: श्रुत्वा
     lemma: श्रु
     gloss: having heard
     notes:
     - term: क्त्वा
-      en: 'gerund — the kings hear first, then come'
+      en: gerund — the kings hear first, then come
   - form: राजानौ
     lemma: राजन्
     gloss: the two kings
@@ -321,7 +300,7 @@
     gloss: too
     notes:
     - term: अव्यय
-      en: 'too — the kings join the crowd'
+      en: too — the kings join the crowd
   - form: तस्य
     lemma: तद्
     gloss: his
@@ -329,7 +308,7 @@
     - term: सर्वनाम
       en: pronoun
     - term: षष्ठी
-      en: 'genitive — "his", the Blessed One, whose sight they seek'
+      en: genitive — "his", the Blessed One, whose sight they seek
     - term: पुंलिङ्ग
       en: masculine
   - form: दर्शनाय
@@ -350,15 +329,3 @@
     notes:
     - term: द्विवचन
       en: dual verb agreeing with राजानौ
-  vyakhya: एकं पदम् — बलवत् दुर्बलं च। भगवान् भगवतः, दण्डी दण्डिनम्, पिता पितरम्।
-  vyakhya_en: 'Three stems, each appearing twice, each time in a different grade:
-
-    भगवान् / भगवतः, दण्डी / दण्डिनम्, पिता / पितरम् / पितरः. Nothing about the
-
-    meaning changes between the two forms of a pair — भगवान् and भगवतः are the
-
-    same person. What changes is the ending attached, and whether that ending
-
-    belongs to the सर्वनामस्थान (strong) set.
-
-    '

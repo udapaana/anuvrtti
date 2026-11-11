@@ -2,133 +2,36 @@
   kind: sangraha
   segment: 175
   order: 1
-  sentence: यः पठति सः जानाति। सा अपि पठति, तस्यै गुरुः पुस्तकम् यच्छति। तस्मै बालाय अपि यच्छति। गुरोः शालायाम् ते बालाः ताः कन्याः च सह पठन्ति। गच्छन् बालः पुस्तकम् वहति। अहम् तान् पश्यामि।
-  translation: He who reads, knows. She reads too; the teacher gives her a book. He gives one to that boy as well. In the teacher's school those boys and those girls read together. Walking along, the boy carries the book. I see them.
-  teaches: |
-    तद् and यद् through their forms: सः, सा, ते, ताः, तान्. तस्मै and बालाय
-    sit in one clause — both datives, different endings.
+  sentence: गुरोः शालायाम् ते बालाः ताः कन्याः च सह पठन्ति; अहम् तान् पश्यामि। एका कन्या पठति; तस्यै गुरुः पुस्तकम् यच्छति। तस्मै बालाय अपि यच्छति। गृहम् गच्छन् बालः पुस्तकम् वहति। गुरुः वदति — यः पठति, सः जानाति।
+  translation: 'In the teacher''s school those boys and those girls read together; I watch them. One girl reads, and the teacher gives her a book. He gives one to that boy as well. Walking home, the boy carries his book. The teacher says: "He who reads, knows."'
+  teaches: 'तद् and यद् through their forms: ते, ताः, तान्, and the maxim यः … सः that closes it. तस्मै and बालाय sit in one clause — both datives, different endings; तस्यै is the feminine.'
+  vyakhya_en: 'तस्मै and बालाय stand side by side in one clause, both datives, both
+
+    pointing at the same boy. One takes स्मै because तद् is a सर्वनाम; the
+
+    other takes आय because बाल is an ordinary noun. The सर्वनाम class is not
+
+    a meaning — it is a list of stems that decline differently, and this is
+
+    where the difference shows.
+
+    '
+  vyakhya: सर्वनाम्नः स्मै, नाम्नः आय। तस्मै बालाय — एकस्मिन् वाक्ये उभे।
   words:
-  - form: 'यः'
-    lemma: यद्
-    gloss: he who
-    notes:
-    - term: सर्वनाम
-      en: the relative pronoun, opening the correlative frame
-    - term: प्रथमा
-      en: nominative
-    - cite: "1.1.27"
-      role: सर्वादीनि सर्वनामानि — यद् and तद् belong to the सर्वनाम class
-    - term: कर्तृ
-      en: agent — the one who reads
-  - form: पठति
-    lemma: पठ्
-    gloss: reads
-    notes:
-    - term: शप्
-      en: the thematic अ between root and ending
-    - term: लट्
-      en: present
-  - form: सः
-    lemma: तद्
-    gloss: he
-    notes:
-    - term: सर्वनाम
-      en: the correlative answering यः
-    - term: प्रथमा
-      en: nominative masculine
-    - term: कर्तृ
-      en: agent — the correlative of यः
-  - form: जानाति
-    lemma: ज्ञा
-    gloss: knows
-    notes:
-    - term: लट्
-      en: present
-  - form: सा
-    lemma: तद्
-    gloss: she
-    notes:
-    - term: सर्वनाम
-      en: pronoun
-    - term: प्रथमा
-      en: nominative feminine — सा beside masculine सः
-    - cite: "4.1.4"
-      role: "अजाद्यतष्टाप् — टाप्, the ordinary a-stem feminine → सा"
-    - term: कर्तृ
-      en: agent
-  - form: अपि
-    lemma: अपि
-    gloss: too
-    notes:
-    - term: अव्यय
-      en: indeclinable
-  - form: तस्यै
-    lemma: तद्
-    gloss: to her
-    notes:
-    - term: सर्वनाम
-      en: pronoun
-    - term: सम्प्रदान
-      en: recipient
-    - term: चतुर्थी
-      en: the सर्वनाम dative — स्यै, where a noun would take आय
-  - form: गुरुः
-    lemma: गुरु
-    gloss: the teacher
-    notes:
-    - term: कर्तृ
-      en: agent
-    - term: प्रथमा
-      en: nominative
-  - form: पुस्तकम्
-    lemma: पुस्तक
-    gloss: a book
-    vocab: true
-    notes:
-    - cite: "7.1.24"
-      role: अतोऽम् — the neuter अ-stem takes अम् in प्रथमा and द्वितीया → पुस्तकम्
-    - term: कर्मन्
-      en: object
-    - term: द्वितीया
-      en: neuter accusative
-  - form: यच्छति
-    lemma: दा
-    gloss: gives
-    notes:
-    - term: शप्
-      en: the thematic अ between root and ending
-    - term: लट्
-      en: present
-  - form: तस्मै
-    lemma: तद्
-    gloss: to that
-    notes:
-    - term: सर्वनाम
-      en: pronoun
-    - term: चतुर्थी
-      en: the masculine of तस्यै — स्मै, again not the noun ending
-    - cite: "7.1.14"
-      role: सर्वनाम्नः स्मै — the सर्वनाम dative singular → तस्मै
-  - form: बालाय
-    lemma: बाल
-    gloss: to the boy
-    notes:
-    - term: चतुर्थी
-      en: the ordinary noun dative — आय, beside तस्मै in the same clause
   - form: गुरोः
     lemma: गुरु
     gloss: the teacher's
     notes:
     - term: षष्ठी
-      en: 'genitive — उ-stem takes गुण in the oblique, गुरु → गुरोः'
+      en: genitive — उ-stem takes गुण in the oblique, गुरु → गुरोः
   - form: शालायाम्
     lemma: शाला
     gloss: in the school
     notes:
     - term: अधिकरण
-      en: 'where they read'
+      en: where they read
     - term: सप्तमी
-      en: 'locative — आ-stem feminine, शाला → शालायाम्'
+      en: locative — आ-stem feminine, शाला → शालायाम्
   - form: ते
     lemma: तद्
     gloss: those
@@ -149,7 +52,7 @@
       en: agent
     - term: प्रथमा
       en: nominative (अ-stem masculine, बहुवचन)
-  - form: 'ताः'
+  - form: ताः
     lemma: तद्
     gloss: those (feminine)
     notes:
@@ -180,45 +83,13 @@
     gloss: together
     notes:
     - term: अव्यय
-      en: 'together — the boys and the girls read side by side'
+      en: together — the boys and the girls read side by side
   - form: पठन्ति
     lemma: पठ्
     gloss: read
     notes:
     - term: बहुवचन
       en: present plural
-  - form: गच्छन्
-    lemma: गम्
-    gloss: walking, as he goes
-    notes:
-    - term: शतृ
-      en: present participle — carries a second action without a second verb
-    - cite: "3.2.124"
-      role: लटः शतृशानचौ — शतृ replaces लट् → गच्छन्
-    - term: पुंलिङ्ग
-      en: masculine, agreeing with बालः
-    - term: एकवचन
-      en: singular
-    - term: कर्तृ
-      en: 'qualifies the agent बालः'
-    - term: प्रथमा
-      en: 'nominative — गच्छत् takes नुम् in the strong case, गच्छन्'
-  - form: बालः
-    lemma: बाल
-    gloss: the boy
-    notes:
-    - term: कर्तृ
-      en: agent
-    - term: प्रथमा
-      en: nominative
-  - form: वहति
-    lemma: वह्
-    gloss: carries
-    notes:
-    - term: शप्
-      en: the thematic अ between root and ending
-    - term: लट्
-      en: present
   - form: अहम्
     lemma: अस्मद्
     gloss: I
@@ -247,10 +118,204 @@
     notes:
     - term: उत्तमपुरुष
       en: first person singular
-  vyakhya: सर्वनाम्नः स्मै, नाम्नः आय। तस्मै बालाय — एकस्मिन् वाक्ये उभे।
-  vyakhya_en: |
-    तस्मै and बालाय stand side by side in one clause, both datives, both
-    pointing at the same boy. One takes स्मै because तद् is a सर्वनाम; the
-    other takes आय because बाल is an ordinary noun. The सर्वनाम class is not
-    a meaning — it is a list of stems that decline differently, and this is
-    where the difference shows.
+  - form: एका
+    lemma: एक
+    gloss: a, one
+    notes:
+    - term: संख्या
+      en: numeral
+    - term: विशेषण
+      en: qualifying the noun
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 13
+  - form: कन्या
+    lemma: कन्या
+    gloss: the girl
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पठति
+    lemma: पठ्
+    gloss: reads
+    notes:
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: तस्यै
+    lemma: तद्
+    gloss: to her
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: the सर्वनाम dative — स्यै, where a noun would take आय
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पुस्तकम्
+    lemma: पुस्तक
+    gloss: a book
+    vocab: true
+    notes:
+    - cite: 7.1.24
+      role: अतोऽम् — the neuter अ-stem takes अम् in प्रथमा and द्वितीया → पुस्तकम्
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: neuter accusative
+  - form: यच्छति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: तस्मै
+    lemma: तद्
+    gloss: to that
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: चतुर्थी
+      en: the masculine of तस्यै — स्मै, again not the noun ending
+    - cite: 7.1.14
+      role: सर्वनाम्नः स्मै — the सर्वनाम dative singular → तस्मै
+  - form: बालाय
+    lemma: बाल
+    gloss: to the boy
+    notes:
+    - term: चतुर्थी
+      en: the ordinary noun dative — आय, beside तस्मै in the same clause
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: यच्छति
+    lemma: दा
+    gloss: gives
+    notes:
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: गृहम्
+    lemma: गृह
+    gloss: (to) the house
+    notes:
+    - term: कर्मन्
+      en: goal / object
+    - term: द्वितीया
+      en: accusative
+  - form: गच्छन्
+    lemma: गम्
+    gloss: walking, as he goes
+    notes:
+    - term: शतृ
+      en: present participle — carries a second action without a second verb
+    - cite: 3.2.124
+      role: लटः शतृशानचौ — शतृ replaces लट् → गच्छन्
+    - term: पुंलिङ्ग
+      en: masculine, agreeing with बालः
+    - term: एकवचन
+      en: singular
+    - term: कर्तृ
+      en: qualifies the agent बालः
+    - term: प्रथमा
+      en: nominative — गच्छत् takes नुम् in the strong case, गच्छन्
+  - form: बालः
+    lemma: बाल
+    gloss: the boy
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पुस्तकम्
+    lemma: पुस्तक
+    gloss: a book
+    vocab: true
+    notes:
+    - cite: 7.1.24
+      role: अतोऽम् — the neuter अ-stem takes अम् in प्रथमा and द्वितीया → पुस्तकम्
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: neuter accusative
+  - form: वहति
+    lemma: वह्
+    gloss: carries
+    notes:
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: गुरुः
+    lemma: गुरु
+    gloss: the teacher
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: वद्
+      en: '"speak"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: यः
+    lemma: यद्
+    gloss: he who
+    notes:
+    - term: सर्वनाम
+      en: the relative pronoun, opening the correlative frame
+    - term: प्रथमा
+      en: nominative
+    - cite: 1.1.27
+      role: सर्वादीनि सर्वनामानि — यद् and तद् belong to the सर्वनाम class
+    - term: कर्तृ
+      en: agent — the one who reads
+  - form: पठति
+    lemma: पठ्
+    gloss: reads
+    notes:
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: सः
+    lemma: तद्
+    gloss: he
+    notes:
+    - term: सर्वनाम
+      en: the correlative answering यः
+    - term: प्रथमा
+      en: nominative masculine
+    - term: कर्तृ
+      en: agent — the correlative of यः
+  - form: जानाति
+    lemma: ज्ञा
+    gloss: knows
+    notes:
+    - term: लट्
+      en: present

@@ -2,12 +2,34 @@
   kind: sangraha
   segment: 55
   order: 1
-  sentence: बालः मात्रे क्रुध्यति, यतः सा तम् वनम् न नयति। सः एकः गच्छति, वने च वृकात् बिभेति। सः वृकात् धावति, गिरिम् च आरोहति। मुनिः तम् गिरिम् अधिशेते। बालः मुनये श्लाघते, मुनेः फलेभ्यः च स्पृहयति। मुनिः बालाय फलानि यच्छति। बालाय फलानि रोचन्ते। सः गृहम् आगच्छति, मात्रे च फलानि यच्छति।
-  translation: The boy is angry at his mother, because she does not take him to the forest. He goes alone, and in the forest he is afraid of a wolf. He runs from the wolf and climbs a mountain. Upon that mountain a sage lies. The boy flatters the sage, and longs for the sage's fruits. The sage gives the boy fruits. The fruits please the boy. He comes home, and gives fruits to his mother.
-  teaches: |
-    six verbs, each choosing its own case. मात्रे and वृकात् sit in adjacent
+  sentence: बालः मात्रे क्रुध्यति, यतः सा तम् वनम् न नयति। सः एकः गच्छति, वने च वृकात् बिभेति। सः वृकात् धावति, गिरिम् च आरोहति। मुनिः तम् गिरिम् अधिशेते। बालः मुनये श्लाघते, यतः मुनिः वृकात् न बिभेति; मुनेः फलेभ्यः च स्पृहयति। मुनिः बालाय फलानि यच्छति। बालाय फलानि रोचन्ते। सः गृहम् आगच्छति, मात्रे च फलानि यच्छति।
+  translation: The boy is angry at his mother, because she does not take him to the forest. He goes alone, and in the forest he is afraid of a wolf. He runs from the wolf and climbs a mountain. On that mountain a sage is lying at rest. The boy praises the sage, because the sage is not afraid of the wolf; and he longs for the sage's fruits. The sage gives the boy fruits. The fruits please the boy. He comes home, and gives fruits to his mother.
+  teaches: 'six verbs, each choosing its own case. मात्रे and वृकात् sit in adjacent
+
     sentences: two objects of emotion, two different cases — and मात्रे returns
+
     at the end, now the one who receives.
+
+    '
+  vyakhya_en: 'The boy is angry at his mother and fears the wolf in consecutive sentences.
+
+    Both are objects of an emotion; neither takes the accusative; and they take
+
+    DIFFERENT cases — वृकात् ablative, मात्रे dative. Nothing about the nouns
+
+    explains that. Only the verb does.
+
+
+    That is the whole content of special government, and a sentence like
+
+    बालः वृकेभ्यः बिभेति cannot show it, because with one verb on the page
+
+    there is no choice being made. Here the verb arrives first and the case
+
+    follows from it.
+
+    '
+  vyakhya: क्रियया विभक्तिः नियम्यते। भीत्रार्थे पञ्चमी, क्रुधार्थे चतुर्थी — एकस्मिन् वाक्ये उभे।
   words:
   - form: बालः
     lemma: बाल
@@ -25,7 +47,7 @@
       en: the one angered at — NOT the accusative one might expect
     - term: चतुर्थी
       en: dative
-    - cite: "1.4.37"
+    - cite: 1.4.37
       role: क्रुधद्रुहोरुपसृष्टयोः… — the target of क्रुध् is सम्प्रदान → मात्रे
   - form: क्रुध्यति
     lemma: क्रुध्
@@ -35,7 +57,7 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present
-  - form: 'यतः'
+  - form: यतः
     lemma: यतस्
     gloss: because
     vocab: true
@@ -70,7 +92,7 @@
       en: goal of motion — the place one comes to stands in the accusative
     - term: द्वितीया
       en: accusative — neuter, same shape as the nominative गृहम्
-  - form: 'न'
+  - form: न
     lemma: न
     gloss: not
     vocab: true
@@ -136,7 +158,7 @@
       en: the thing feared — treated as what one shrinks away FROM
     - term: पञ्चमी
       en: ablative
-    - cite: "1.4.25"
+    - cite: 1.4.25
       role: भीत्रार्थानां भयहेतुः — with verbs of fearing, the cause of fear is अपादान → वृकात्
   - form: बिभेति
     lemma: भी
@@ -149,7 +171,7 @@
     gloss: he
     notes:
     - term: सर्वनाम
-      en: 'pronoun — the boy'
+      en: pronoun — the boy
     - term: पुंलिङ्ग
       en: masculine
     - term: कर्तृ
@@ -161,9 +183,9 @@
     gloss: from the wolf
     notes:
     - term: अपादान
-      en: 'the point he runs away from'
+      en: the point he runs away from
     - term: पञ्चमी
-      en: 'ablative — अ-stem, वृक → वृकात्'
+      en: ablative — अ-stem, वृक → वृकात्
   - form: धावति
     lemma: धाव्
     gloss: runs
@@ -175,7 +197,7 @@
     gloss: a mountain
     notes:
     - term: कर्मन्
-      en: 'what he climbs — object of आरोहति'
+      en: what he climbs — object of आरोहति
     - term: द्वितीया
       en: accusative
   - form: च
@@ -183,13 +205,13 @@
     gloss: and
     notes:
     - term: अव्यय
-      en: 'and — joins running and climbing'
+      en: and — joins running and climbing
   - form: आरोहति
     lemma: रुह्
     gloss: climbs
     notes:
     - term: लट्
-      en: 'present, with the preverb आ'
+      en: present, with the preverb आ
   - form: मुनिः
     lemma: मुनि
     gloss: a sage
@@ -203,11 +225,11 @@
     gloss: that
     notes:
     - term: सर्वनाम
-      en: 'pronoun — the same mountain he climbed'
+      en: pronoun — the same mountain he climbed
     - term: पुंलिङ्ग
       en: masculine
     - term: द्वितीया
-      en: 'accusative, agreeing with गिरिम्'
+      en: accusative, agreeing with गिरिम्
   - form: गिरिम्
     lemma: गिरि
     gloss: upon the mountain
@@ -216,7 +238,7 @@
       en: the locus turned OBJECT — अधि+शी makes it द्वितीया, not सप्तमी
     - term: द्वितीया
       en: accusative
-    - cite: "1.4.46"
+    - cite: 1.4.46
       role: अधिशीङ्स्थासां कर्म — with अधि + शी/स्था/आस्, the locus becomes कर्मन् → गिरिम्
   - form: अधिशेते
     lemma: शी
@@ -238,6 +260,44 @@
     notes:
     - term: आत्मनेपद
       en: middle voice
+  - form: यतः
+    lemma: यतस्
+    gloss: because
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: indeclinable — subordinating connective
+  - form: मुनिः
+    lemma: मुनि
+    gloss: a sage
+    notes:
+    - term: कर्तृ
+      en: agent — an इ-stem masculine
+    - term: प्रथमा
+      en: nominative
+  - form: वृकात्
+    lemma: वृक
+    gloss: of a wolf (afraid of)
+    notes:
+    - term: अपादान
+      en: the thing feared — treated as what one shrinks away FROM
+    - term: पञ्चमी
+      en: ablative
+    - cite: 1.4.25
+      role: भीत्रार्थानां भयहेतुः — with verbs of fearing, the cause of fear is अपादान → वृकात्
+  - form: न
+    lemma: न
+    gloss: not
+    vocab: true
+    notes:
+    - term: अव्यय
+      en: negation
+  - form: बिभेति
+    lemma: भी
+    gloss: is afraid
+    notes:
+    - term: लट्
+      en: present — reduplicated stem बिभे-
   - form: मुनेः
     lemma: मुनि
     gloss: the sage's
@@ -252,7 +312,7 @@
       en: the thing desired — स्पृह् makes its object सम्प्रदान
     - term: चतुर्थी
       en: dative plural
-    - cite: "1.4.36"
+    - cite: 1.4.36
       role: स्पृहेरीप्सितः — what is longed for is सम्प्रदान → फलेभ्यः
   - form: च
     lemma: च
@@ -280,7 +340,7 @@
     lemma: फल
     gloss: fruits
     notes:
-    - cite: "7.1.72"
+    - cite: 7.1.72
       role: नपुंसकस्य झलचः — नुम् before the neuter plural ending → फलानि
     - term: कर्मन्
       en: object
@@ -304,7 +364,7 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present plural — the FRUITS are the agent here, not the boy
-    - cite: "1.4.33"
+    - cite: 1.4.33
       role: रुच्यर्थानां प्रीयमाणः — the one pleased is सम्प्रदान → बालाय
   - form: सः
     lemma: तद्
@@ -351,7 +411,7 @@
     lemma: फल
     gloss: fruits
     notes:
-    - cite: "7.1.72"
+    - cite: 7.1.72
       role: नपुंसकस्य झलचः — नुम् before the neuter plural ending → फलानि
     - term: कर्मन्
       en: object
@@ -365,14 +425,3 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present — दा has the stem यच्छ्
-  vyakhya: क्रियया विभक्तिः नियम्यते। भीत्रार्थे पञ्चमी, क्रुधार्थे चतुर्थी — एकस्मिन् वाक्ये उभे।
-  vyakhya_en: |
-    The boy is angry at his mother and fears the wolf in consecutive sentences.
-    Both are objects of an emotion; neither takes the accusative; and they take
-    DIFFERENT cases — वृकात् ablative, मात्रे dative. Nothing about the nouns
-    explains that. Only the verb does.
-
-    That is the whole content of special government, and a sentence like
-    बालः वृकेभ्यः बिभेति cannot show it, because with one verb on the page
-    there is no choice being made. Here the verb arrives first and the case
-    follows from it.

@@ -1,98 +1,127 @@
 - id: ex266
   kind: graded
   segment: 167
-  sentence: 'वृक्षे फलम् रोहति। बालः फलम् पश्यति, फलाय च धावति। सः फलेन तुष्यति। फलात् बीजम् पतति। फलस्य रसः मधुरः। बालः फले कीटम् पश्यति, वदति च — हे फल, त्वम् कीटस्य गृहम्।'
-  translation: 'A fruit grows on the tree. A boy sees the fruit and runs for the fruit. He is delighted with the fruit. A seed falls from the fruit. The fruit''s juice is sweet. In the fruit the boy finds an insect, and says: "O fruit, you are the insect''s home!"'
+  sentence: वृक्षे फलम् रोहति। बालः फलम् पश्यति, फलाय च धावति। फलस्य रसः मधुरः; सः फलेन तुष्यति। ततः फलात् बीजम् पतति, बालः च फले कीटम् पश्यति, वदति च — हे फल, त्वम् कीटस्य गृहम्!
+  translation: 'A fruit grows on the tree. A boy sees the fruit and runs for it. The fruit''s juice is sweet; he is delighted with the fruit. Then a seed falls from the fruit, and in the fruit the boy finds an insect, and says: "O fruit, you are the insect''s home!"'
   teaches: 'फल (अ-stem neuter) through all eight cases — and the neuter signature: फलम् is both प्रथमा (it grows) and द्वितीया (he sees it), one form for two cases.'
   words:
   - form: वृक्षे
     lemma: वृक्ष
-    gloss: 'on the tree'
+    gloss: on the tree
     notes:
     - term: अधिकरण
-      en: 'locus'
+      en: locus
     - term: सप्तमी
-      en: 'locative'
+      en: locative
   - form: फलम्
     lemma: फल
-    gloss: 'a fruit'
+    gloss: a fruit
     notes:
     - term: कर्तृ
-      en: 'agent — the one that grows'
+      en: agent — the one that grows
     - term: प्रथमा
-      en: 'nominative — neuter अ-stem'
+      en: nominative — neuter अ-stem
   - form: रोहति
     lemma: रुह्
-    gloss: 'grows'
+    gloss: grows
     notes:
     - term: शप्
-      en: 'रुह् + अ + ति → रोहति'
+      en: रुह् + अ + ति → रोहति
     - term: लट्
-      en: 'present'
+      en: present
   - form: बालः
     lemma: बाल
-    gloss: 'a boy'
+    gloss: a boy
     notes:
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative'
+      en: nominative
   - form: फलम्
     lemma: फल
-    gloss: 'the fruit'
+    gloss: the fruit
     notes:
     - term: कर्मन्
-      en: 'the one seen'
+      en: the one seen
     - term: द्वितीया
-      en: 'accusative — identical to the प्रथमा (फलम्), as every neuter is'
+      en: accusative — identical to the प्रथमा (फलम्), as every neuter is
   - form: पश्यति
     lemma: दृश्
-    gloss: 'sees'
+    gloss: sees
     notes:
     - term: शप्
-      en: 'the thematic अ (दृश् appears as पश्य्)'
+      en: the thematic अ (दृश् appears as पश्य्)
     - term: लट्
-      en: 'present'
+      en: present
   - form: फलाय
     lemma: फल
-    gloss: 'for the fruit'
+    gloss: for the fruit
     notes:
     - term: सम्प्रदान
-      en: 'the purpose — what he runs for (तादर्थ्ये चतुर्थी)'
+      en: the purpose — what he runs for (तादर्थ्ये चतुर्थी)
     - term: चतुर्थी
-      en: 'dative'
-    - cite: "7.1.13"
-      role: "ङेर्यः — a-stem dative ङे → य → देवाय → फलाय"
-  - form: 'च'
-    lemma: 'च'
-    gloss: 'and'
+      en: dative
+    - cite: 7.1.13
+      role: ङेर्यः — a-stem dative ङे → य → देवाय → फलाय
+  - form: च
+    lemma: च
+    gloss: and
     notes:
     - term: अव्यय
-      en: 'the connective particle'
+      en: the connective particle
   - form: धावति
     lemma: धाव्
-    gloss: 'runs'
+    gloss: runs
     notes:
     - term: शप्
-      en: 'धाव् + अ + ति'
+      en: धाव् + अ + ति
     - term: लट्
-      en: 'present'
+      en: present
+  - form: फलस्य
+    lemma: फल
+    gloss: of the fruit
+    notes:
+    - term: सम्बन्ध
+      en: the possessor — whose juice
+    - term: षष्ठी
+      en: 'genitive (neuter: फल → फलस्य, same as masculine)'
+  - form: रसः
+    lemma: रस
+    gloss: the juice
+    notes:
+    - term: कर्तृ
+      en: the subject — what is sweet
+    - term: प्रथमा
+      en: nominative
+  - form: मधुरः
+    lemma: मधुर
+    gloss: sweet
+    notes:
+    - term: विशेषण
+      en: qualifies रसः, agreeing in gender, case and number
+    - term: कर्तृ
+      en: shares रसः's role — the predicate of the verbless sentence
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 10
   - form: सः
     lemma: तद्
-    gloss: 'he'
+    gloss: he
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative'
+      en: nominative
   - form: फलेन
     lemma: फल
-    gloss: 'with the fruit'
+    gloss: with the fruit
     notes:
     - term: करण
-      en: 'what pleases him — the fruit is the instrument of his delight'
+      en: what pleases him — the fruit is the instrument of his delight
     - term: तृतीया
       en: 'instrumental (neuter: फल → फलेन)'
   - form: तुष्यति
@@ -101,96 +130,79 @@
     notes:
     - term: लट्
       en: 'present (तुष् is दिवादि: तुष्यति)'
+  - form: ततः
+    lemma: ततः
+    gloss: after that
+    notes:
+    - term: अव्यय
+      en: '"then, from then on" — तद् + तसिल्, marking what follows'
   - form: फलात्
     lemma: फल
-    gloss: 'from the fruit'
+    gloss: from the fruit
     notes:
     - term: अपादान
-      en: 'the source — where the seed leaves'
+      en: the source — where the seed leaves
     - term: पञ्चमी
       en: 'ablative (neuter: फल → फलात्)'
   - form: बीजम्
     lemma: बीज
-    gloss: 'a seed'
+    gloss: a seed
     notes:
     - term: कर्तृ
-      en: 'agent — the one that falls'
+      en: agent — the one that falls
     - term: प्रथमा
-      en: 'nominative (neuter)'
+      en: nominative (neuter)
   - form: पतति
     lemma: पत्
-    gloss: 'falls'
+    gloss: falls
     notes:
     - term: शप्
-      en: 'पत् + अ + ति'
+      en: पत् + अ + ति
     - term: लट्
-      en: 'present'
-  - form: फलस्य
-    lemma: फल
-    gloss: 'of the fruit'
-    notes:
-    - term: सम्बन्ध
-      en: 'the possessor — whose juice'
-    - term: षष्ठी
-      en: 'genitive (neuter: फल → फलस्य, same as masculine)'
-  - form: रसः
-    lemma: रस
-    gloss: 'the juice'
-    notes:
-    - term: कर्तृ
-      en: 'the subject — what is sweet'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: मधुरः
-    lemma: मधुर
-    gloss: 'sweet'
-    notes:
-    - term: विशेषण
-      en: 'qualifies रसः, agreeing in gender, case and number'
-    - term: कर्तृ
-      en: 'shares रसः''s role — the predicate of the verbless sentence'
-    - term: प्रथमा
-      en: 'nominative'
-    rel:
-    - kind: विशेषण
-      to: 16
+      en: present
   - form: बालः
     lemma: बाल
-    gloss: 'a boy'
+    gloss: a boy
     notes:
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative'
+      en: nominative
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: the connective particle
   - form: फले
     lemma: फल
-    gloss: 'in the fruit'
+    gloss: in the fruit
     notes:
     - term: अधिकरण
-      en: 'locus — inside the fruit, where the boy finds the insect'
+      en: locus — inside the fruit, where the boy finds the insect
     - term: सप्तमी
       en: 'locative (neuter: फल → फले)'
   - form: कीटम्
     lemma: कीट
-    gloss: 'an insect'
+    gloss: an insect
     notes:
     - term: पुंलिङ्ग
-      en: 'masculine'
+      en: masculine
     - term: कर्मन्
-      en: 'what the boy spots inside the fruit'
+      en: what the boy spots inside the fruit
     - term: द्वितीया
-      en: 'accusative — अ-stem masculine in -अम्'
+      en: accusative — अ-stem masculine in -अम्
   - form: पश्यति
     lemma: दृश्
-    gloss: 'sees'
+    gloss: sees
     notes:
     - term: शप्
-      en: 'the thematic अ (दृश् appears as पश्य्)'
+      en: the thematic अ (दृश् appears as पश्य्)
     - term: लट्
-      en: 'present'
+      en: present
   - form: वदति
     lemma: वद्
-    gloss: 'says'
+    gloss: says
     notes:
     - term: वद्
       en: '"speak"'
@@ -206,45 +218,45 @@
       en: indeclinable
   - form: हे
     lemma: हे
-    gloss: 'O'
+    gloss: O
     notes:
     - term: अव्यय
-      en: 'vocative particle'
+      en: vocative particle
   - form: फल
     lemma: फल
-    gloss: 'O fruit'
+    gloss: O fruit
     notes:
     - term: सम्बोधन
-      en: 'vocative — the neuter uses the bare stem (हे फल)'
+      en: vocative — the neuter uses the bare stem (हे फल)
   - form: त्वम्
     lemma: युष्मद्
-    gloss: 'you'
+    gloss: you
     notes:
     - term: नपुंसकलिङ्ग
-      en: 'neuter — the fruit addressed'
+      en: neuter — the fruit addressed
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative'
+      en: nominative
   - form: कीटस्य
     lemma: कीट
-    gloss: 'the insect''s'
+    gloss: the insect's
     notes:
     - term: पुंलिङ्ग
-      en: 'masculine'
+      en: masculine
     - term: सम्बन्ध
-      en: 'whose home — the insect''s'
+      en: whose home — the insect's
     - term: षष्ठी
-      en: 'genitive — अ-stem masculine in -अस्य'
+      en: genitive — अ-stem masculine in -अस्य
   - form: गृहम्
     lemma: गृह
-    gloss: 'home'
+    gloss: home
     notes:
     - term: कर्तृ
-      en: 'predicate of the subject त्वम् — the fruit is the insect''s home'
+      en: predicate of the subject त्वम् — the fruit is the insect's home
     - term: नपुंसकलिङ्ग
-      en: 'neuter'
+      en: neuter
     - term: प्रथमा
       en: 'nominative — the predicate: "you (are) the home"'

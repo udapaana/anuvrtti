@@ -1,83 +1,101 @@
 - id: ex261
   kind: graded
   segment: 163
-  sentence: 'विश्वे देवाः यज्ञम् इच्छन्ति। इतरे जनाः यज्ञम् न जानन्ति, अतः ते देवान् न यजन्ति।'
-  translation: 'All the gods want the sacrifice. Other people do not know the sacrifice, so they do not worship the gods.'
-  teaches: 'more सर्वादि — विश्व "all" (विश्वे, beside सर्व) and इतर "the other", each taking तद्-type endings and agreeing with its noun.'
+  sentence: विश्वे देवाः यज्ञम् इच्छन्ति। ब्राह्मणाः यज्ञम् जानन्ति, इतरे जनाः न जानन्ति; अतः ते ब्राह्मणान् पृच्छन्ति।
+  translation: All the gods want the sacrifice. The brahmins know the sacrifice; other people do not, so they ask the brahmins.
+  teaches: more सर्वादि — विश्व "all" (विश्वे, beside सर्व) and इतर "the other", each taking तद्-type endings and agreeing with its noun.
   words:
   - form: विश्वे
     lemma: विश्व
-    gloss: 'all'
+    gloss: all
     notes:
     - term: सर्वादि
-      en: 'pronominal adjective — विश्वे, like तद् (a synonym of सर्व)'
+      en: pronominal adjective — विश्वे, like तद् (a synonym of सर्व)
     - term: कर्तृ
-      en: 'agent — qualifies देवाः, who want'
+      en: agent — qualifies देवाः, who want
     - term: प्रथमा
-      en: 'nominative'
+      en: nominative
     rel:
     - kind: विशेषण
       to: 1
   - form: देवाः
     lemma: देव
-    gloss: 'the gods'
+    gloss: the gods
     notes:
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative (अ-stem masculine, बहुवचन)'
+      en: nominative (अ-stem masculine, बहुवचन)
   - form: यज्ञम्
     lemma: यज्ञ
-    gloss: 'the sacrifice'
+    gloss: the sacrifice
     notes:
     - term: कर्मन्
-      en: 'object — what is wanted'
+      en: object — what is wanted
     - term: द्वितीया
-      en: 'accusative'
+      en: accusative
   - form: इच्छन्ति
     lemma: इष्
-    gloss: 'want'
+    gloss: want
     notes:
     - term: लट्
       en: 'present (इष् is तुदादि: इच्छति)'
-  - form: इतरे
-    lemma: इतर
-    gloss: 'the others'
+  - form: ब्राह्मणाः
+    lemma: ब्राह्मण
+    gloss: brahmins
     notes:
-    - term: सर्वादि
-      en: 'pronominal adjective — इतरे, the counterpart to one group'
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: बहुवचन
+      en: plural
     - term: कर्तृ
-      en: 'agent — qualifies जनाः, who do not know'
+      en: agents of 'come' — they come for the rites
     - term: प्रथमा
-      en: 'nominative'
-    rel:
-    - kind: विशेषण
-      to: 5
-  - form: जनाः
-    lemma: जन
-    gloss: 'people'
-    notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative (अ-stem masculine, बहुवचन)'
+      en: nominative plural
   - form: यज्ञम्
     lemma: यज्ञ
-    gloss: 'the sacrifice'
+    gloss: the sacrifice
     notes:
     - term: कर्मन्
-      en: 'object — what is wanted'
+      en: object — what is wanted
     - term: द्वितीया
-      en: 'accusative'
-  - form: 'न'
-    lemma: 'न'
-    gloss: 'not'
-    notes:
-    - term: अव्यय
-      en: 'the verbal negator'
+      en: accusative
   - form: जानन्ति
     lemma: ज्ञा
-    gloss: 'know'
+    gloss: know
+    notes:
+    - term: लट्
+      en: 'present (ज्ञा is क्र्यादि: जानाति)'
+  - form: इतरे
+    lemma: इतर
+    gloss: the others
+    notes:
+    - term: सर्वादि
+      en: pronominal adjective — इतरे, the counterpart to one group
+    - term: कर्तृ
+      en: agent — qualifies जनाः, who do not know
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 8
+  - form: जनाः
+    lemma: जन
+    gloss: people
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative (अ-stem masculine, बहुवचन)
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: the verbal negator
+  - form: जानन्ति
+    lemma: ज्ञा
+    gloss: know
     notes:
     - term: लट्
       en: 'present (ज्ञा is क्र्यादि: जानाति)'
@@ -86,38 +104,36 @@
     gloss: so, therefore
     notes:
     - term: अव्यय
-      en: 'therefore — not knowing the rite is why they do not worship'
+      en: therefore — not knowing the rite is why they do not worship
   - form: ते
     lemma: तद्
     gloss: they
     notes:
     - term: सर्वनाम
-      en: 'pronoun — picks up इतरे जनाः'
+      en: pronoun — picks up इतरे जनाः
     - term: पुंलिङ्ग
       en: masculine
     - term: कर्तृ
-      en: 'agent of यजन्ति'
+      en: agent of यजन्ति
     - term: बहुवचन
-      en: 'plural, like the जनाः it stands for'
+      en: plural, like the जनाः it stands for
     - term: प्रथमा
-      en: 'nominative plural'
-  - form: देवान्
-    lemma: देव
-    gloss: the gods
+      en: nominative plural
+  - form: ब्राह्मणान्
+    lemma: ब्राह्मण
+    gloss: the brahmins
     notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: बहुवचन
+      en: plural
     - term: कर्मन्
-      en: 'object — whom they fail to worship'
+      en: object
     - term: द्वितीया
-      en: 'accusative plural (शस् → आन्)'
-  - form: 'न'
-    lemma: 'न'
-    gloss: 'not'
-    notes:
-    - term: अव्यय
-      en: 'the verbal negator'
-  - form: यजन्ति
-    lemma: यज्
-    gloss: worship
+      en: accusative plural — the ones asked; अ-stem -आन्
+  - form: पृच्छन्ति
+    lemma: प्रच्छ्
+    gloss: ask
     notes:
     - term: लट्
-      en: 'present (यज् is भ्वादि: यजति)'
+      en: present, 3rd plural (प्रच्छ् → पृच्छ)
