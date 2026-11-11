@@ -1,8 +1,8 @@
 - id: ex076
   segment: 170
-  sentence: गच्छन् नरः पश्यति।
-  translation: The man, (while) going, sees.
-  teaches: 'शतृ — the present active participle (replaces लट्)'
+  sentence: गच्छन् नरः सर्पम् पश्यति।
+  translation: The man, while going, sees a snake.
+  teaches: शतृ — the present active participle (replaces लट्)
   words:
   - form: गच्छन्
     lemma: गम्
@@ -12,14 +12,20 @@
       en: a present participle
     - term: शतृ
       en: the शतृ affix — present active participle, replacing लट्
-    - cite: '3.2.124'
+    - cite: 3.2.124
       role: लटः शतृशानचौ → शतृ/शानच् replace लट् for a participle → गच्छत् → गच्छन्
-    - cite: '3.2.127'
+    - cite: 3.2.127
       role: तौ सत् → these two are termed सत् (the "present-participle" साधन)
-    - cite: '7.1.70'
+    - cite: 7.1.70
       role: उगिदचां सर्वनामस्थाने → the त-stem inserts नुम् before strong endings → गच्छन्
     - term: विशेषण
       en: agrees with नरः (the agent)
+    - term: प्रथमा
+      en: nominative
+    - term: एकवचन
+      en: singular
+    - term: पुंलिङ्ग
+      en: masculine
   - form: नरः
     lemma: नर
     gloss: the man
@@ -28,6 +34,16 @@
       en: agent
     - term: प्रथमा
       en: nominative
+  - form: सर्पम्
+    lemma: सर्प
+    gloss: a snake
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्मन्
+      en: what the man sees — the object of पश्यति
+    - term: द्वितीया
+      en: accusative
   - form: पश्यति
     lemma: दृश्
     gloss: sees
@@ -39,5 +55,6 @@
     - term: लट्
       en: present
   vyakhya: लटः स्थाने शतृ — वर्तमाने कर्तरि। गच्छत् → गच्छन् नुमा। "गच्छन् पश्यति" = गच्छन् सन् पश्यति।
-  vyakhya_en: |
-    The present participle: शतृ (active) replaces the present लट् (3.2.124) when the form is a participle agreeing with the agent — गम् → गच्छत्, which surfaces as गच्छन् (नुम्-insertion before strong endings, 7.1.70). "गच्छन् नरः पश्यति" = "the man, going, sees" = "while he goes, he sees." It is a त्-stem consonant participle, declining राजन्-style (strong/weak). The middle counterpart is शानच् (यजमानः "sacrificing").
+  vyakhya_en: 'The present participle: शतृ (active) replaces the present लट् (3.2.124) when the form is a participle agreeing with the agent — गम् → गच्छत्, which surfaces as गच्छन् (नुम्-insertion before strong endings, 7.1.70). "गच्छन् नरः सर्पम् पश्यति" = "the man, going, sees a snake" = "while he goes, he sees a snake." It is a त्-stem consonant participle, declining राजन्-style (strong/weak). The middle counterpart is शानच् (यजमानः "sacrificing").
+
+    '
