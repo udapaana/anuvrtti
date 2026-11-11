@@ -2,266 +2,326 @@
   kind: graded
   segment: 183
   order: 2
-  sentence: 'गुरुः पृच्छति — कौ एतौ? शिष्यः वदति — एतौ मम भ्रातरौ। के त्वम् पश्यसि? एते लते। काः गायन्ति? कन्याः। कान् त्वम् इच्छसि? मोदकान्। केन लिखसि? एतेन कलमेन। काभ्याम् चलसि? एताभ्याम् पादाभ्याम्। कैः क्रीडसि? एतैः कन्दुकैः।'
-  translation: 'The teacher asks: "Who are these two?" The pupil says: "These two are my brothers." "Which two do you see?" "These two creepers." "Who sing?" "Girls." "What do you want?" "Sweets." "With what do you write?" "With this pen." "With which two do you walk?" "With these two feet." "With what do you play?" "With these balls."'
-  teaches: 'किम् in question and एतद् in answer, cell for cell — कौ/एतौ, के/एते, काः, कान्, केन/एतेन, काभ्याम्/एताभ्याम्, कैः/एतैः.'
+  sentence: गुरुः पृच्छति — कौ एतौ? शिष्यः वदति — एतौ मम भ्रातरौ। के पुस्तके त्वम् पठसि? एते पुस्तके। काः गायन्ति? कन्याः। कान् त्वम् इच्छसि? मोदकान्। केन लिखसि? एतेन कलमेन। काभ्याम् चलसि? एताभ्याम् पादाभ्याम्। कैः क्रीडसि? एतैः कन्दुकैः।
+  translation: 'The teacher asks: "Who are these two?" The pupil says: "These two are my brothers." "Which two books do you read?" "These two books." "Who sing?" "Girls." "What do you want?" "Sweets." "With what do you write?" "With this pen." "With which two do you walk?" "With these two feet." "With what do you play?" "With these balls."'
+  teaches: किम् in question and एतद् in answer, cell for cell — कौ/एतौ, के/एते, काः, कान्, केन/एतेन, काभ्याम्/एताभ्याम्, कैः/एतैः.
   words:
   - form: गुरुः
     lemma: गुरु
-    gloss: 'the teacher'
+    gloss: the teacher
     notes:
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative'
+      en: nominative
   - form: पृच्छति
     lemma: प्रच्छ्
-    gloss: 'asks'
+    gloss: asks
     notes:
     - term: लट्
-      en: 'present (प्रच्छ् → पृच्छ)'
+      en: present (प्रच्छ् → पृच्छ)
   - form: कौ
     lemma: किम्
-    gloss: 'who (two)'
+    gloss: who (two)
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'the subject asked about'
+      en: the subject asked about
     - term: प्रथमा
-      en: 'nominative dual'
+      en: nominative dual
   - form: एतौ
     lemma: एतद्
-    gloss: 'these two'
+    gloss: these two
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'the subject — अस्ति understood'
+      en: the subject — अस्ति understood
     - term: प्रथमा
-      en: 'nominative dual'
+      en: nominative dual
   - form: शिष्यः
     lemma: शिष्य
-    gloss: 'the pupil'
+    gloss: the pupil
     notes:
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative'
+      en: nominative
   - form: वदति
     lemma: वद्
-    gloss: 'says'
+    gloss: says
     notes:
     - term: लट्
-      en: 'present'
-  - form: मम
-    lemma: अस्मद्
-    gloss: 'my'
+      en: present
+  - form: एतौ
+    lemma: एतद्
+    gloss: these two
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
+    - term: पुंलिङ्ग
+      en: masculine, with बालौ
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative dual
+  - form: मम
+    lemma: अस्मद्
+    gloss: my
+    notes:
+    - term: सर्वनाम
+      en: pronoun
     - term: सम्बन्ध
-      en: 'relation'
+      en: relation
     - term: षष्ठी
-      en: 'genitive'
+      en: genitive
   - form: भ्रातरौ
     lemma: भ्रातृ
-    gloss: 'brothers'
+    gloss: brothers
     notes:
     - term: प्रथमा
-      en: 'nominative dual — the predicate, said of एतौ'
+      en: nominative dual — the predicate, said of एतौ
     rel:
     - kind: विधेय
       to: 3
   - form: के
     lemma: किम्
-    gloss: 'which two'
+    gloss: which (two)
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: interrogative pronoun
+    - term: नपुंसकलिङ्ग
+      en: neuter — agreeing with पुस्तके
+    - term: द्विवचन
+      en: dual
     - term: कर्मन्
-      en: 'object'
+      en: asks for the object of पठसि
     - term: द्वितीया
-      en: 'accusative dual'
+      en: accusative — neuter dual के, same as the nominative
+  - form: पुस्तके
+    lemma: पुस्तक
+    gloss: two books
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: द्विवचन
+      en: dual
+    - term: कर्मन्
+      en: object of पठसि
+    - term: द्वितीया
+      en: accusative — neuter अ-stem dual in ए
   - form: त्वम्
     lemma: युष्मद्
-    gloss: 'you'
+    gloss: you
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative'
-  - form: पश्यसि
-    lemma: दृश्
-    gloss: 'see'
+      en: nominative
+  - form: पठसि
+    lemma: पठ्
+    gloss: you read
     notes:
+    - term: पठ्
+      en: '"read, recite"'
+    - term: शप्
+      en: the thematic अ
     - term: लट्
-      en: 'present, 2nd person'
+      en: present
+    - term: मध्यमपुरुष
+      en: second person, with त्वम्
+    - term: एकवचन
+      en: singular
+    - term: परस्मैपद
+      en: active ending सि
   - form: एते
     lemma: एतद्
-    gloss: 'these two'
+    gloss: these two
     notes:
     - term: सर्वनाम
-      en: 'pronoun, qualifying the noun'
-    - term: द्वितीया
-      en: 'accusative dual'
-  - form: लते
-    lemma: लता
-    gloss: 'creepers'
-    notes:
+      en: pronoun
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: द्विवचन
+      en: dual
     - term: कर्मन्
-      en: 'the answer — पश्यामि understood'
+      en: object — answers के cell for cell
     - term: द्वितीया
-      en: 'accusative dual'
+      en: accusative
+  - form: पुस्तके
+    lemma: पुस्तक
+    gloss: two books
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: द्विवचन
+      en: dual
+    - term: कर्मन्
+      en: object of पठसि
+    - term: द्वितीया
+      en: accusative — neuter अ-stem dual in ए
   - form: काः
     lemma: किम्
-    gloss: 'who'
+    gloss: who
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative plural'
+      en: nominative plural
   - form: गायन्ति
     lemma: गै
-    gloss: 'sing'
+    gloss: sing
     notes:
     - term: लट्
-      en: 'present, plural'
+      en: present, plural
   - form: कन्याः
     lemma: कन्या
-    gloss: 'girls'
+    gloss: girls
     notes:
     - term: कर्तृ
-      en: 'the answer — गायन्ति understood'
+      en: the answer — गायन्ति understood
     - term: प्रथमा
-      en: 'nominative plural'
+      en: nominative plural
   - form: कान्
     lemma: किम्
-    gloss: 'what'
+    gloss: what
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्मन्
-      en: 'object'
+      en: object
     - term: द्वितीया
-      en: 'accusative plural'
+      en: accusative plural
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: you
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter — the fruit addressed
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
   - form: इच्छसि
     lemma: इष्
-    gloss: 'want'
+    gloss: want
     notes:
     - term: लट्
-      en: 'present, 2nd person (तुदादि)'
+      en: present, 2nd person (तुदादि)
   - form: मोदकान्
     lemma: मोदक
-    gloss: 'sweets'
+    gloss: sweets
     notes:
     - term: कर्मन्
-      en: 'the answer — इच्छामि understood'
+      en: the answer — इच्छामि understood
     - term: द्वितीया
-      en: 'accusative plural'
+      en: accusative plural
   - form: केन
     lemma: किम्
-    gloss: 'with what'
+    gloss: with what
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: करण
-      en: 'instrument'
+      en: instrument
     - term: तृतीया
-      en: 'instrumental'
+      en: instrumental
   - form: लिखसि
     lemma: लिख्
-    gloss: 'write'
+    gloss: write
     notes:
     - term: लट्
-      en: 'present, 2nd person (तुदादि)'
+      en: present, 2nd person (तुदादि)
   - form: एतेन
     lemma: एतद्
-    gloss: 'this'
+    gloss: this
     notes:
     - term: सर्वनाम
-      en: 'pronoun, qualifying the noun'
+      en: pronoun, qualifying the noun
     - term: करण
-      en: 'instrument'
+      en: instrument
     - term: तृतीया
-      en: 'instrumental'
+      en: instrumental
   - form: कलमेन
     lemma: कलम
-    gloss: 'with the pen'
+    gloss: with the pen
     notes:
     - term: करण
-      en: 'the pen, the means of writing — अ-stem instrumental in एन'
+      en: the pen, the means of writing — अ-stem instrumental in एन
     - term: तृतीया
-      en: 'instrumental'
+      en: instrumental
   - form: काभ्याम्
     lemma: किम्
-    gloss: 'with which two'
+    gloss: with which two
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: करण
-      en: 'instrument'
+      en: instrument
     - term: तृतीया
-      en: 'instrumental dual'
+      en: instrumental dual
   - form: चलसि
     lemma: चल्
-    gloss: 'walk'
+    gloss: walk
     notes:
     - term: लट्
-      en: 'present, 2nd person'
+      en: present, 2nd person
   - form: एताभ्याम्
     lemma: एतद्
-    gloss: 'these two'
+    gloss: these two
     notes:
     - term: सर्वनाम
-      en: 'pronoun, qualifying the noun'
+      en: pronoun, qualifying the noun
     - term: करण
-      en: 'instrument'
+      en: instrument
     - term: तृतीया
-      en: 'instrumental dual'
+      en: instrumental dual
   - form: पादाभ्याम्
     lemma: पाद
-    gloss: 'with the feet'
+    gloss: with the feet
     notes:
     - term: करण
-      en: 'instrument'
+      en: instrument
     - term: तृतीया
-      en: 'instrumental dual'
+      en: instrumental dual
   - form: कैः
     lemma: किम्
-    gloss: 'with what'
+    gloss: with what
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: करण
-      en: 'instrument'
+      en: instrument
     - term: तृतीया
-      en: 'instrumental plural'
+      en: instrumental plural
   - form: क्रीडसि
     lemma: क्रीड्
-    gloss: 'play'
+    gloss: play
     notes:
     - term: लट्
-      en: 'present, 2nd person'
+      en: present, 2nd person
   - form: एतैः
     lemma: एतद्
-    gloss: 'these'
+    gloss: these
     notes:
     - term: सर्वनाम
-      en: 'pronoun, qualifying the noun'
+      en: pronoun, qualifying the noun
     - term: करण
-      en: 'instrument'
+      en: instrument
     - term: तृतीया
-      en: 'instrumental plural'
+      en: instrumental plural
   - form: कन्दुकैः
     lemma: कन्दुक
-    gloss: 'with balls'
+    gloss: with balls
     notes:
     - term: करण
-      en: 'अ-stem instrumental plural in ऐः — the means of play'
+      en: अ-stem instrumental plural in ऐः — the means of play
     - term: तृतीया
-      en: 'instrumental plural'
+      en: instrumental plural

@@ -2,12 +2,12 @@
   kind: graded
   segment: 160
   source:
-    text: "बालकृष्णकथा (our graded retelling)"
-    ref: "Bhāgavata 10.8 — Kṛṣṇa's childhood in Gokula"
-    curated: "our simple Sanskrit telling the well-known episode; NOT the verbatim text"
-  sentence: गोकुले कृष्णः नाम बालः वसति। यशोदा तस्य माता। सः गोपानाम् गृहेषु क्रीडति। सर्वे गोपाः तम् बालम् पश्यन्ति, सर्वाः गोप्यः च तम् कामयन्ते।
-  translation: In Gokula lives a boy named Kṛṣṇa. Yaśodā is his mother. He plays in the houses of the cowherds. All the cowherds see the boy, and all the cowherd-women love him.
-  teaches: 'the story opens. Connected prose, and the cast is introduced here'
+    text: बालकृष्णकथा (our graded retelling)
+    ref: Bhāgavata 10.8 — Kṛṣṇa's childhood in Gokula
+    curated: our simple Sanskrit telling the well-known episode; NOT the verbatim text
+  sentence: गोकुले कृष्णः नाम बालः वसति। यशोदा तस्य माता। सः गोपानाम् गृहेषु क्रीडति। सर्वे गोपाः तस्य क्रीडाम् पश्यन्ति, सर्वाः गोप्यः च तम् कामयन्ते।
+  translation: In Gokula lives a boy named Kṛṣṇa. Yaśodā is his mother. He plays in the houses of the cowherds. All the cowherds watch his play, and all the gopīs adore him.
+  teaches: the story opens. Connected prose, and the cast is introduced here
   words:
   - form: गोकुले
     lemma: गोकुल
@@ -15,7 +15,7 @@
     notes:
     - term: अधिकरण
       en: locus — where the story is set
-    - cite: '2.3.36'
+    - cite: 2.3.36
       role: सप्तम्यधिकरणे च → सप्तमी for the locus → गोकुले
   - form: कृष्णः
     lemma: कृष्ण
@@ -33,6 +33,8 @@
     notes:
     - term: अव्यय
       en: '"by name" — in apposition (कृष्णः नाम बालः = a boy named Kṛṣṇa)'
+    - term: निपात
+      en: particle — "by name"
   - form: बालः
     lemma: बाल
     gloss: the boy
@@ -69,7 +71,7 @@
       en: pronoun
     - term: षष्ठी
       en: genitive of सः — "his"
-    - cite: '2.3.50'
+    - cite: 2.3.50
       role: षष्ठी शेषे → तस्य
   - form: माता
     lemma: मातृ
@@ -79,6 +81,8 @@
       en: predicate noun (ऋ-stem fem. nom.)
     - term: प्रथमा
       en: nominative
+    - term: कर्तृ
+      en: predicate nominative with यशोदा
   - form: सः
     lemma: तद्
     gloss: he
@@ -91,7 +95,7 @@
     lemma: गोप
     gloss: of the cowherds
     notes:
-    - cite: "8.3.23"
+    - cite: 8.3.23
       role: मोऽनुस्वारः — word-final म् becomes anusvāra before a consonant → गोपानां
     - term: षष्ठी
       en: genitive plural
@@ -101,14 +105,14 @@
     lemma: गृह
     gloss: in the houses
     notes:
-    - cite: "8.3.59"
+    - cite: 8.3.59
       role: आदेशप्रत्ययोः — स् → ष् after the ए of the loc.pl → गृहेषु
     - term: सप्तमी
       en: locative plural (neuter a-stem → एषु, as देवेषु)
     - term: बहुवचन
       en: plural
-    - cite: "7.3.103"
-      role: "बहुवचने झल्येत् — अ → ए before भ्यस्/सुप् → देवेभ्यः, देवेषु → गृहेषु"
+    - cite: 7.3.103
+      role: बहुवचने झल्येत् — अ → ए before भ्यस्/सुप् → देवेभ्यः, देवेषु → गृहेषु
   - form: क्रीडति
     lemma: क्रीड्
     gloss: plays
@@ -141,26 +145,30 @@
       en: agents
     - term: बहुवचन
       en: nominative plural
-  - form: तम्
+  - form: तस्य
     lemma: तद्
-    gloss: him
+    gloss: its
     notes:
-    - cite: "8.3.23"
-      role: मोऽनुस्वारः — word-final म् becomes anusvāra before a consonant → तं
     - term: सर्वनाम
-      en: pronoun (तद्)
-    - term: द्वितीया
-      en: accusative
-  - form: बालम्
-    lemma: बाल
-    gloss: the boy
+      en: pronoun
+    - term: एकवचन
+      en: number
+    - term: सम्बन्ध
+      en: relation
+    - term: षष्ठी
+      en: genitive
+  - form: क्रीडाम्
+    lemma: क्रीडा
+    gloss: play, sport
     notes:
-    - cite: "8.3.23"
-      role: मोऽनुस्वारः — word-final म् becomes anusvāra before a consonant → बालं
+    - term: स्त्रीलिङ्ग
+      en: feminine
     - term: कर्मन्
-      en: object
+      en: what the cowherds watch — object of पश्यन्ति
     - term: द्वितीया
-      en: accusative
+      en: accusative — आ-stem, क्रीडा → क्रीडाम्
+    - term: एकवचन
+      en: singular
   - form: पश्यन्ति
     lemma: दृश्
     gloss: (they) see
@@ -171,8 +179,8 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present, plural
-    - cite: "8.4.58"
-      role: "अनुस्वारस्य ययि परसवर्णः — homorganic nasal → पश्यन्ति"
+    - cite: 8.4.58
+      role: अनुस्वारस्य ययि परसवर्णः — homorganic nasal → पश्यन्ति
   - form: सर्वाः
     lemma: सर्व
     gloss: all
@@ -205,7 +213,7 @@
     lemma: तद्
     gloss: him
     notes:
-    - cite: "8.3.23"
+    - cite: 8.3.23
       role: मोऽनुस्वारः — word-final म् becomes anusvāra before a consonant → तं
     - term: सर्वनाम
       en: pronoun (तद्)
@@ -222,15 +230,7 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present
-  - form: गोपानाम्
-    lemma: गोप
-    gloss: of the cowherds
-    vocab: true
-    notes:
-    - term: षष्ठी
-      en: genitive plural (a-stem → आनाम्, as देवानाम्)
-    - term: बहुवचन
-      en: plural
   vyakhya: कथायाः आरम्भः। गोकुलम् अधिकरणम्, कृष्णः कर्ता, यशोदा माता। ज्ञातमेव व्याकरणम् — केवलं कथा नूतना।
-  vyakhya_en: |
-    Your first connected story — and almost every form is grammar you already hold: a locative setting (गोकुले), genitive plurals (गोपानाम्), the सः/तस्य/तं pronoun, present verbs singular and plural. Nothing new to learn — that is the point. Meet the cast: कृष्णः the boy, यशोदा his mother, the गोपाः (cowherds) and गोप्यः (gopīs). They return in every episode, so their forms grow familiar. From here the sentences lengthen.
+  vyakhya_en: 'Your first connected story — and almost every form is grammar you already hold: a locative setting (गोकुले), genitive plurals (गोपानाम्), the सः/तस्य/तं pronoun, present verbs singular and plural. Nothing new to learn — that is the point. Meet the cast: कृष्णः the boy, यशोदा his mother, the गोपाः (cowherds) and गोप्यः (gopīs). They return in every episode, so their forms grow familiar. From here the sentences lengthen.
+
+    '

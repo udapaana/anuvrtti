@@ -2,239 +2,601 @@
   kind: graded
   segment: 187
   order: 2
-  sentence: 'यदि त्वम् ह्यः उत्सवम् अगमिष्यः, नर्तकीः अद्रक्ष्यः। यदि अहम् अगमिष्यम्, अहम् अपि ताः अद्रक्ष्यम्। यदि आवाम् अगमिष्याव, गीतानि अश्रोष्याव। यदि युवाम् अगमिष्यतम्, युवाम् अपि अनर्तिष्यतम्। यदि बालौ अगमिष्यताम्, मोदकान् अखादिष्यताम्। यदि बालाः अगमिष्यन्, अक्रीडिष्यन्। यदि यूयम् अगमिष्यत, यूयम् अनन्दिष्यत। यदि वयम् अगमिष्याम, वयम् अपि अनर्तिष्याम।'
-  translation: 'If you had gone to the festival yesterday, you would have seen the dancers. If I had gone, I too would have seen them. If we two had gone, we would have heard the songs. If you two had gone, you too would have danced. If the two boys had gone, they would have eaten sweets. If the children had gone, they would have played. If you all had gone, you would have rejoiced. If we had gone, we too would have danced.'
-  teaches: 'The conditional (लृङ्) — what would have been, but was not — in every person: अगमिष्यः, अगमिष्यम्, अगमिष्याव, अगमिष्यतम्, अगमिष्यताम्, अगमिष्यन्, अगमिष्यत, अगमिष्याम, each paired with its consequence.'
+  sentence: ह्यः ग्रामे उत्सवः आसीत्, किन्तु यज्ञदत्तः तस्य भ्राता च गृहे अतिष्ठताम्। देवदत्तः यज्ञदत्तम् वदति — यदि त्वम् उत्सवम् अगमिष्यः, नर्तकीः अद्रक्ष्यः। यज्ञदत्तः वदति — यदि अहम् अगमिष्यम्, अहम् अपि ताः अद्रक्ष्यम्। यदि आवाम् अगमिष्याव, गीतानि अश्रोष्याव। देवदत्तः वदति — यदि युवाम् अगमिष्यतम्, युवाम् अपि अनर्तिष्यतम्। माता पितरम् वदति — यदि बालौ अगमिष्यताम्, मोदकान् अखादिष्यताम्। यदि वयम् अगमिष्याम, वयम् अपि अनर्तिष्याम। पिता वदति — यदि यूयम् अगमिष्यत, यूयम् अनन्दिष्यत; किन्तु यदि सर्वे अगमिष्यन्, गृहम् कः अरक्षिष्यत्?
+  translation: 'Yesterday there was a festival in the village, but Yajñadatta and his brother stayed at home. Devadatta says to Yajñadatta: "If you had gone to the festival, you would have seen the dancers." Yajñadatta says: "If I had gone, I too would have seen them. If we two had gone, we would have heard the songs." Devadatta says: "If you two had gone, you too would have danced." The mother says to the father: "If the two boys had gone, they would have eaten sweets. If we had gone, we too would have danced." The father says: "If you all had gone, you would have enjoyed it; but if everyone had gone, who would have guarded the house?"'
+  teaches: 'The conditional (लृङ्) — what would have been, but was not — in every person, spread through a family''s regret: अगमिष्यः, अगमिष्यम्, अगमिष्याव, अगमिष्यतम्, अगमिष्यताम्, अगमिष्याम, अगमिष्यत, अगमिष्यन्, each paired with its consequence.'
   words:
-  - form: यदि
-    lemma: यदि
-    gloss: 'if'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — condition'
-  - form: त्वम्
-    lemma: युष्मद्
-    gloss: 'you'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative'
   - form: ह्यः
     lemma: ह्यस्
-    gloss: 'yesterday'
+    gloss: yesterday
     notes:
     - term: अव्यय
-      en: 'indeclinable — time'
+      en: indeclinable — time
+  - form: ग्रामे
+    lemma: ग्राम
+    gloss: in the village
+    notes:
+    - term: अधिकरण
+      en: locus — the substratum of the action
+    - cite: 1.4.45
+      role: आधारोऽधिकरणम् — the locus (आधार) is termed अधिकरण
+    - cite: 2.3.36
+      role: सप्तम्यधिकरणे च — सप्तमी after the अधिकरण कारक
+    - term: सप्तमी
+      en: locative
+    - term: एकवचन
+      en: singular
+    - text: ग्राम + ङि (loc.sg); the a-stem before ङि yields ग्रामे
+  - form: उत्सवः
+    lemma: उत्सव
+    gloss: festival
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: अस्
+      en: copula — "was" (लङ् 3sg)
+    - cite: 3.2.111
+      role: अनद्यतने लङ् → आसीत्
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: '"but" — turns from the man''s fear to the god''s smile'
+  - form: यज्ञदत्तः
+    lemma: यज्ञदत्त
+    gloss: Yajñadatta
+    notes:
+    - term: कर्तृ
+      en: the second speaker — agent of the saying verb
+    - term: प्रथमा
+      en: nominative
+  - form: तस्य
+    lemma: तद्
+    gloss: its
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: एकवचन
+      en: number
+    - term: सम्बन्ध
+      en: relation
+    - term: षष्ठी
+      en: genitive
+  - form: भ्राता
+    lemma: भ्रातृ
+    gloss: brother
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: प्रथमा
+      en: nominative — the predicate
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: second subject of अतिष्ठताम्
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: indeclinable
+  - form: गृहे
+    lemma: गृह
+    gloss: in the house
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: अधिकरण
+      en: location
+    - term: सप्तमी
+      en: locative
+  - form: अतिष्ठताम्
+    lemma: स्था
+    gloss: stayed (the two)
+    notes:
+    - term: स्था
+      en: '"stand, stay" — तिष्ठ before शप्'
+    - term: लङ्
+      en: imperfect, 3rd dual — two subjects joined by च
+  - form: देवदत्तः
+    lemma: देवदत्त
+    gloss: Devadatta
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: यज्ञदत्तम्
+    lemma: यज्ञदत्त
+    gloss: to Yajñadatta
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्मन्
+      en: the one spoken to — वद् takes the hearer in the accusative
+    - term: द्वितीया
+      en: accusative
+    - term: एकवचन
+      en: singular
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: वद्
+      en: '"speak"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: यदि
+    lemma: यदि
+    gloss: if
+    notes:
+    - term: अव्यय
+      en: indeclinable — condition
+  - form: त्वम्
+    lemma: युष्मद्
+    gloss: you
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
   - form: उत्सवम्
     lemma: उत्सव
-    gloss: 'to the festival'
+    gloss: to the festival
     notes:
     - term: कर्मन्
-      en: 'the goal of motion'
+      en: the goal of motion
     - term: द्वितीया
-      en: 'accusative'
+      en: accusative
   - form: अगमिष्यः
     lemma: गम्
-    gloss: 'had you gone'
+    gloss: had you gone
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 2nd person singular'
+      en: conditional (लृङ्) — what would have happened, but did not, 2nd person singular
   - form: नर्तकीः
     lemma: नर्तकी
-    gloss: 'the dancers'
+    gloss: the dancers
     notes:
     - term: कर्मन्
-      en: 'object'
+      en: object
     - term: द्वितीया
-      en: 'ई-stem feminine accusative plural ends in ईः — object of अद्रक्ष्यः'
+      en: ई-stem feminine accusative plural ends in ईः — object of अद्रक्ष्यः
   - form: अद्रक्ष्यः
     lemma: दृश्
-    gloss: 'you would have seen'
+    gloss: you would have seen
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 2nd person singular'
-  - form: अहम्
-    lemma: अस्मद्
-    gloss: 'I'
+      en: conditional (लृङ्) — what would have happened, but did not, 2nd person singular
+  - form: यज्ञदत्तः
+    lemma: यज्ञदत्त
+    gloss: Yajñadatta
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
     - term: कर्तृ
-      en: 'agent'
+      en: the second speaker — agent of the saying verb
     - term: प्रथमा
-      en: 'nominative'
-  - form: अगमिष्यम्
-    lemma: गम्
-    gloss: 'had I gone'
+      en: nominative
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
     notes:
-    - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 1st person singular'
-  - form: अपि
-    lemma: अपि
-    gloss: 'too'
+    - term: वद्
+      en: '"speak"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: यदि
+    lemma: यदि
+    gloss: if
     notes:
     - term: अव्यय
-      en: 'indeclinable'
+      en: '"if" — marks the counterfactual condition'
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: अगमिष्यम्
+    lemma: गम्
+    gloss: had I gone
+    notes:
+    - term: लृङ्
+      en: conditional (लृङ्) — what would have happened, but did not, 1st person singular
+  - form: अहम्
+    lemma: अस्मद्
+    gloss: I
+    notes:
+    - term: सर्वनाम
+      en: pronoun — अस्मद् ("I/we") is of the सर्व-class
+    - cite: 1.1.27
+      role: सर्वादीनि सर्वनामानि — अस्मद् is a सर्वनाम
+    - cite: 7.2.94
+      role: त्वाहौ सौ — before सु (nom.sg) अस्म् → अह; अस्मद् → अह + म् → अहम्
+    - term: प्रथमा
+      en: nominative
+    - text: so अहम् is suppletive — built on अह-, not the मद्/अस्म् stem of the oblique (मम, मया, मयि)
+    - term: कर्तृ
+      en: agent
+  - form: अपि
+    lemma: अपि
+    gloss: too
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: ताः
     lemma: तद्
-    gloss: 'them'
+    gloss: them
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्मन्
-      en: 'object'
+      en: object
     - term: द्वितीया
-      en: 'accusative plural'
+      en: accusative plural
   - form: अद्रक्ष्यम्
     lemma: दृश्
-    gloss: 'I would have seen'
+    gloss: I would have seen
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 1st person singular'
+      en: conditional (लृङ्) — what would have happened, but did not, 1st person singular
+  - form: यदि
+    lemma: यदि
+    gloss: if
+    notes:
+    - term: अव्यय
+      en: '"if" — marks the counterfactual condition'
   - form: आवाम्
     lemma: अस्मद्
-    gloss: 'we two'
+    gloss: we two
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative dual'
+      en: nominative dual
   - form: अगमिष्याव
     lemma: गम्
-    gloss: 'had we two gone'
+    gloss: had we two gone
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 1st person dual'
+      en: conditional (लृङ्) — what would have happened, but did not, 1st person dual
   - form: गीतानि
     lemma: गीत
-    gloss: 'the songs'
+    gloss: the songs
     notes:
     - term: कर्मन्
-      en: 'object'
+      en: object
     - term: द्वितीया
-      en: 'accusative plural'
+      en: accusative plural
   - form: अश्रोष्याव
     lemma: श्रु
-    gloss: 'we would have heard'
+    gloss: we would have heard
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 1st person dual'
+      en: conditional (लृङ्) — what would have happened, but did not, 1st person dual
+  - form: देवदत्तः
+    lemma: देवदत्त
+    gloss: Devadatta
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: वद्
+      en: '"speak"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: यदि
+    lemma: यदि
+    gloss: if
+    notes:
+    - term: अव्यय
+      en: '"if" — marks the counterfactual condition'
   - form: युवाम्
     lemma: युष्मद्
-    gloss: 'you two'
+    gloss: you two
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative dual'
+      en: nominative dual
   - form: अगमिष्यतम्
     lemma: गम्
-    gloss: 'had you two gone'
+    gloss: had you two gone
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 2nd person dual'
+      en: conditional (लृङ्) — what would have happened, but did not, 2nd person dual
+  - form: युवाम्
+    lemma: युष्मद्
+    gloss: you two
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: द्विवचन
+      en: number
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative dual
+  - form: अपि
+    lemma: अपि
+    gloss: also
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: अनर्तिष्यतम्
     lemma: नृत्
-    gloss: 'you would have danced'
+    gloss: you would have danced
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 2nd person dual'
+      en: conditional (लृङ्) — what would have happened, but did not, 2nd person dual
+  - form: माता
+    lemma: मातृ
+    gloss: his mother
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+  - form: पितरम्
+    lemma: पितृ
+    gloss: to the father
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्मन्
+      en: the one spoken to
+    - term: द्वितीया
+      en: 'accusative — ऋ-stem with गुण: पितरम्'
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: वद्
+      en: '"speak"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: यदि
+    lemma: यदि
+    gloss: if
+    notes:
+    - term: अव्यय
+      en: '"if" — marks the counterfactual condition'
   - form: बालौ
     lemma: बाल
-    gloss: 'the two boys'
+    gloss: the two boys
     notes:
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative dual'
+      en: nominative dual
   - form: अगमिष्यताम्
     lemma: गम्
-    gloss: 'had gone'
+    gloss: had gone
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 3rd person dual'
+      en: conditional (लृङ्) — what would have happened, but did not, 3rd person dual
   - form: मोदकान्
     lemma: मोदक
-    gloss: 'sweets'
+    gloss: sweets
     notes:
     - term: कर्मन्
-      en: 'object'
+      en: object
     - term: द्वितीया
-      en: 'accusative plural'
+      en: accusative plural
   - form: अखादिष्यताम्
     lemma: खाद्
-    gloss: 'would have eaten'
+    gloss: would have eaten
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 3rd person dual'
-  - form: बालाः
-    lemma: बाल
-    gloss: 'the children'
+      en: conditional (लृङ्) — what would have happened, but did not, 3rd person dual
+  - form: यदि
+    lemma: यदि
+    gloss: if
     notes:
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: अगमिष्यन्
-    lemma: गम्
-    gloss: 'had gone'
-    notes:
-    - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 3rd person plural'
-  - form: अक्रीडिष्यन्
-    lemma: क्रीड्
-    gloss: 'would have played'
-    notes:
-    - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 3rd person plural'
-  - form: यूयम्
-    lemma: युष्मद्
-    gloss: 'you (all)'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative plural'
-  - form: अगमिष्यत
-    lemma: गम्
-    gloss: 'had gone'
-    notes:
-    - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 2nd person plural'
-  - form: अनन्दिष्यत
-    lemma: नन्द्
-    gloss: 'would have rejoiced'
-    notes:
-    - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 2nd person plural'
+    - term: अव्यय
+      en: '"if" — marks the counterfactual condition'
   - form: वयम्
     lemma: अस्मद्
-    gloss: 'we'
+    gloss: we
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: कर्तृ
-      en: 'agent'
+      en: agent
     - term: प्रथमा
-      en: 'nominative plural'
+      en: nominative plural
   - form: अगमिष्याम
     lemma: गम्
-    gloss: 'had we gone'
+    gloss: had we gone
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 1st person plural'
+      en: conditional (लृङ्) — what would have happened, but did not, 1st person plural
+  - form: वयम्
+    lemma: अस्मद्
+    gloss: we
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: बहुवचन
+      en: number
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural
+  - form: अपि
+    lemma: अपि
+    gloss: also
+    notes:
+    - term: अव्यय
+      en: indeclinable
   - form: अनर्तिष्याम
     lemma: नृत्
-    gloss: 'we would have danced'
+    gloss: we would have danced
     notes:
     - term: लृङ्
-      en: 'conditional (लृङ्) — what would have happened, but did not, 1st person plural'
+      en: conditional (लृङ्) — what would have happened, but did not, 1st person plural
+  - form: पिता
+    lemma: पितृ
+    gloss: the father
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative
+    - term: एकवचन
+      en: singular
+    - cite: 7.1.94
+      role: ऋदुशनस्… — an ऋ-stem in the nom.sg lengthens to आ; पितृ + सु → पिता
+    - cite: 4.1.2
+      role: स्वौजस्… — the सुप् endings themselves → पिता
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: वद्
+      en: '"speak"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: यदि
+    lemma: यदि
+    gloss: if
+    notes:
+    - term: अव्यय
+      en: '"if" — marks the counterfactual condition'
+  - form: यूयम्
+    lemma: युष्मद्
+    gloss: you (all)
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural
+  - form: अगमिष्यत
+    lemma: गम्
+    gloss: had gone
+    notes:
+    - term: लृङ्
+      en: conditional (लृङ्) — what would have happened, but did not, 2nd person plural
+  - form: यूयम्
+    lemma: युष्मद्
+    gloss: you (all)
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural
+  - form: अनन्दिष्यत
+    lemma: नन्द्
+    gloss: would have rejoiced
+    notes:
+    - term: लृङ्
+      en: conditional (लृङ्) — what would have happened, but did not, 2nd person plural
+  - form: किन्तु
+    lemma: किन्तु
+    gloss: but
+    notes:
+    - term: अव्यय
+      en: '"but" — turns from the man''s fear to the god''s smile'
+  - form: यदि
+    lemma: यदि
+    gloss: if
+    notes:
+    - term: अव्यय
+      en: '"if" — marks the counterfactual condition'
+  - form: सर्वे
+    lemma: सर्व
+    gloss: everyone
+    notes:
+    - term: सर्वादि
+      en: pronominal — nominative plural in ए like ते
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: प्रथमा
+      en: nominative
+    - term: कर्तृ
+      en: agent of अगमिष्यन्
+  - form: अगमिष्यन्
+    lemma: गम्
+    gloss: had gone
+    notes:
+    - term: लृङ्
+      en: conditional (लृङ्) — what would have happened, but did not, 3rd person plural
+  - form: गृहम्
+    lemma: गृह
+    gloss: home
+    notes:
+    - term: कर्तृ
+      en: predicate of the subject त्वम् — the fruit is the insect's home
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: प्रथमा
+      en: 'nominative — the predicate: "you (are) the home"'
+  - form: कः
+    lemma: किम्
+    gloss: who
+    notes:
+    - term: सर्वनाम
+      en: interrogative
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: कर्तृ
+      en: agent of अरक्षिष्यत्
+    - term: प्रथमा
+      en: nominative
+  - form: अरक्षिष्यत्
+    lemma: रक्ष्
+    gloss: would have guarded
+    notes:
+    - term: रक्ष्
+      en: '"guard, protect"'
+    - term: लृङ्
+      en: conditional, 3rd singular — अ + रक्ष् + इट् + स्य + त्
