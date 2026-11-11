@@ -5,7 +5,7 @@
     text: हितोपदेश
     ref: "Hitopadeśa 1.38 — the three natural well-wishers"
     curated: "the whole verse, word-separated (pausa forms; चेति and चान्ये kept fused to show the सन्धि); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, Hit_1.38)"
-  sentence: माता मित्रम् पिता चेति स्वभावात् त्रितयम् हितम्। कार्यकारणतः चान्ये भवन्ति हितबुद्धयः॥
+  sentence: माता मित्रम् पिता च इति स्वभावात् त्रितयम् हितम्। कार्यकारणतः च अन्ये भवन्ति हितबुद्धयः॥
   translation: Mother, friend, and father — this triad is well-wishing by nature; others become well-disposed (only) out of cause and interest.
   teaches: |
     the तसिल् adverb — कार्यकारणतः "from cause-and-effect, out of interest"; the
@@ -36,14 +36,20 @@
       en: subject
     - term: प्रथमा
       en: nominative (ऋ-stem → पिता)
-  - form: चेति
+  - form: च
     lemma: च
-    gloss: — so (these)
+    gloss: 'and'
     notes:
     - cite: '6.1.87'
-      role: आद्गुणः — अ + इ coalesce to the guṇa vowel ए → च + इति → चेति
+      role: आद्गुणः — च + इति join as चेति (अ + इ → ए)
     - term: अव्यय
-      en: च "and" + इति "thus" — closing the list
+      en: '"and" — joins the list'
+  - form: इति
+    lemma: इति
+    gloss: 'thus'
+    notes:
+    - term: अव्यय
+      en: 'इति — closes the named words, "so called"'
   - form: स्वभावात्
     lemma: स्वभाव
     gloss: by nature
@@ -74,7 +80,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 5
+      to: 6
   - form: कार्यकारणतः
     lemma: कार्यकारण
     gloss: out of cause and interest
@@ -88,18 +94,24 @@
       en: the "-tas / from ___" adverbial suffix
     - term: अव्यय
       en: adverb (of cause)
-  - form: चान्ये
-    lemma: अन्य
-    gloss: and others
+  - form: च
+    lemma: च
+    gloss: 'and'
     notes:
     - cite: '6.1.101'
-      role: अकः सवर्णे दीर्घः — a simple vowel + its homogeneous vowel merge into one long vowel → च (अ) + अन्ये → चान्ये
+      role: अकः सवर्णे दीर्घः — च + अन्ये join as चान्ये (अ + अ → आ)
+    - term: अव्यय
+      en: '"and" — joins the list'
+  - form: अन्ये
+    lemma: अन्य
+    gloss: 'others'
+    notes:
     - term: सर्वादि
-      en: सर्वनाम अन्य "other," with च "and"
+      en: 'सर्वनाम अन्य "other" — declines like a pronoun: अन्ये, not *अन्याः'
     - term: कर्तृ
-      en: subject
+      en: 'subject'
     - term: प्रथमा
-      en: nominative plural
+      en: 'nominative plural'
   - form: भवन्ति
     lemma: भू
     gloss: become
@@ -122,7 +134,7 @@
       en: nominative plural
     rel:
     - kind: विशेषण
-      to: 9
+      to: 11
   vyakhya: 'तसिल्-सन्धि-प्रधानः श्लोकः। कार्यकारणतः इति पञ्चम्यर्थे तसिल् (पञ्चम्यास्तसिल्) — अव्ययम्। चेति इति च-इति गुणसन्धौ (आद्गुणः); चान्ये इति च-अन्ये सवर्णदीर्घे (अकः सवर्णे दीर्घः)। त्रितयम् इति समाहारे तयप्। हितबुद्धयः इति बहुव्रीहिः।'
   vyakhya_en: |
     Three small mechanisms in one line. **तसिल्** — कार्यकारणतः "from cause and

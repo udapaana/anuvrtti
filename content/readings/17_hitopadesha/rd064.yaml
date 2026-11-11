@@ -5,7 +5,7 @@
     text: हितोपदेश
     ref: "Hitopadeśa 1.19 — where trust is misplaced"
     curated: "the whole verse, word-separated (pausa forms; नैव kept fused to show the सन्धि; compounds kept whole); every form is the text's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_nArAyaNa-hitopadeza, Hit_1.19)"
-  sentence: नदीनाम् शस्त्रपाणीनाम् नखिनाम् शृङ्गिणाम् तथा। विश्वासः नैव कर्तव्यः स्त्रीषु राजकुलेषु च॥
+  sentence: नदीनाम् शस्त्रपाणीनाम् नखिनाम् शृङ्गिणाम् तथा। विश्वासः न एव कर्तव्यः स्त्रीषु राजकुलेषु च॥
   translation: In rivers, in men with weapons in hand, in the clawed and the horned — and in women and royal houses — trust should never be placed.
   teaches: |
     the gerundive of obligation कर्तव्यः "is to be made / should be done"; the
@@ -67,14 +67,20 @@
       en: what is to be done — grammatical subject of the gerundive
     - term: प्रथमा
       en: nominative
-  - form: नैव
+  - form: न
     lemma: न
-    gloss: never
+    gloss: 'not'
     notes:
     - cite: '6.1.88'
-      role: वृद्धिरेचि — न + एव → नैव (a + e → the वृद्धि vowel ऐ)
+      role: वृद्धिरेचि — न + एव join as नैव (अ + ए → ऐ)
     - term: अव्यय
-      en: न "not" + एव "at all" — emphatic negation
+      en: 'negation'
+  - form: एव
+    lemma: एव
+    gloss: 'at all'
+    notes:
+    - term: अव्यय
+      en: 'एव after न — emphatic: "never, not at all"'
   - form: कर्तव्यः
     lemma: कृ
     gloss: should be placed
@@ -91,7 +97,7 @@
       en: nominative
     rel:
     - kind: विशेषण
-      to: 6
+      to: 5
   - form: स्त्रीषु
     lemma: स्त्री
     gloss: in women

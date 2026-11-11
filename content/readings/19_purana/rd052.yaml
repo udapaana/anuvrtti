@@ -5,7 +5,7 @@
     text: भागवतपुराण
     ref: "Bhāgavata 1.2.11 — Brahman, Paramātman, Bhagavān"
     curated: "the whole verse; text from Ambuda's GRETIL edition (ambuda-org/gretil, sa_bhAgavatapurANa, ||BhP_01.02.011||)"
-  sentence: वदन्ति तत् तत्त्वविदः तत्त्वम् यत् ज्ञानम् अद्वयम्। ब्रह्मेति परमात्मेति भगवान् इति शब्द्यते॥
+  sentence: वदन्ति तत् तत्त्वविदः तत्त्वम् यत् ज्ञानम् अद्वयम्। ब्रह्म इति परमात्मा इति भगवान् इति शब्द्यते॥
   translation: The knowers of truth declare that truth — the knowledge that is without-a-second — and it is named "Brahman," "Paramātman," "Bhagavān."
   teaches: |
     the नञ्-तत्पुरुष अद्वयम् ("not-two"), and a passive naming — शब्द्यते, "is
@@ -80,20 +80,36 @@
     rel:
     - kind: विशेषण
       to: 5
-  - form: ब्रह्मेति
+  - form: ब्रह्म
     lemma: ब्रह्मन्
-    gloss: '"Brahman," thus'
+    gloss: 'Brahman'
     vocab: true
     notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter ब्रह्मन् — nominative ब्रह्म'
     - term: प्रथमा
-      en: nominative — the name given; ब्रह्म + इति → ब्रह्मेति (अ + इ → ए)
-  - form: परमात्मेति
+      en: 'nominative — the name given; ब्रह्म + इति join as ब्रह्मेति (अ + इ → ए, 6.1.87)'
+  - form: इति
+    lemma: इति
+    gloss: 'thus'
+    notes:
+    - term: अव्यय
+      en: 'इति — closes the named words, "so called"'
+  - form: परमात्मा
     lemma: परमात्मन्
-    gloss: '"Paramātman," thus'
+    gloss: 'the Supreme Self'
     vocab: true
     notes:
+    - term: पुंलिङ्ग
+      en: 'masculine अन्-stem: परमात्मन् → परमात्मा'
     - term: प्रथमा
-      en: nominative — a second name; परमात्मा + इति → परमात्मेति (आ + इ → ए)
+      en: 'nominative — a second name; परमात्मा + इति join as परमात्मेति (आ + इ → ए)'
+  - form: इति
+    lemma: इति
+    gloss: 'thus'
+    notes:
+    - term: अव्यय
+      en: 'इति — closes the named words, "so called"'
   - form: भगवान्
     lemma: भगवत्
     gloss: '"Bhagavān"'
