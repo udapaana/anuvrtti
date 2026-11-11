@@ -2,8 +2,8 @@
   kind: graded
   segment: 184
   order: 1
-  sentence: 'कौन्तेयः विद्यायै वनम् गच्छति। माद्रेयः तम् अनुगच्छति। तत्र गार्ग्यः आचार्यः वसति। सः भारतीयान् शिष्यान् पाठयति। सः तेजस्वी मेधावी च। आचार्यः तौ अपि पाठयति।'
-  translation: 'Kuntī''s son goes to the forest for learning. Mādrī''s son follows him. There lives Garga''s descendant, a teacher. He teaches Indian pupils. He is brilliant and wise. The teacher teaches the two of them too.'
+  sentence: 'कौन्तेयः विद्यायै वनम् गच्छति। माद्रेयः तम् अनुगच्छति। तत्र गार्ग्यः आचार्यः वसति। सः भारतीयान् शिष्यान् पाठयति। सः तेजस्वी मेधावी च। आचार्यः तौ अपि वेदम् पाठयति, तौ च प्रतिदिनम् पठतः।'
+  translation: 'Kuntī''s son goes to the forest for learning. Mādrī''s son follows him. There lives Garga''s descendant, a teacher. He teaches pupils of the Bharata line. He is brilliant and wise. The teacher teaches the two of them the Veda too, and they study every day.'
   teaches: 'तद्धित names and adjectives the corpus had not shown: ढक् (कौन्तेयः, माद्रेयः), यञ् (गार्ग्यः), छ (भारतीयान्), विनि (तेजस्वी, मेधावी).'
   words:
   - form: कौन्तेयः
@@ -16,7 +16,7 @@
       en: 'the ढक् suffix'
     - term: अपत्य
       en: 'sense: अपत्य'
-    - cite: "4.1.120"
+    - cite: 4.1.120
       role: 'स्त्रीभ्यो ढक् — कुन्ती + ढक् (एय) → कौन्तेय'
     - term: पुंलिङ्ग
       en: 'masculine'
@@ -58,7 +58,7 @@
       en: 'the ढक् suffix'
     - term: अपत्य
       en: 'sense: अपत्य'
-    - cite: "4.1.120"
+    - cite: 4.1.120
       role: 'स्त्रीभ्यो ढक् — माद्री + ढक् (एय) → माद्रेय'
     - term: पुंलिङ्ग
       en: 'masculine'
@@ -100,7 +100,7 @@
       en: 'the यञ् suffix'
     - term: अपत्य
       en: 'sense: अपत्य'
-    - cite: "4.1.105"
+    - cite: 4.1.105
       role: 'गर्गादिभ्यो यञ् — गर्ग + यञ् → गार्ग्य'
     - term: पुंलिङ्ग
       en: 'masculine'
@@ -124,16 +124,16 @@
       en: 'nominative — in apposition to गार्ग्यः'
   - form: वसति
     lemma: वस्
-    gloss: lives
+    gloss: 'lives'
     notes:
     - term: वस्
       en: '"dwell"'
     - term: धातु
-      en: verbal root
+      en: 'verbal root'
     - term: शप्
-      en: the thematic अ between root and ending
+      en: 'the thematic अ between root and ending'
     - term: लट्
-      en: present
+      en: 'present'
   - form: सः
     lemma: तद्
     gloss: 'he'
@@ -154,7 +154,7 @@
       en: 'the छ suffix'
     - term: तस्येदम्
       en: 'sense: तस्येदम्'
-    - cite: "4.2.114"
+    - cite: 4.2.114
       role: 'वृद्धाच्छः — भारत has वृद्धि in its first vowel, so छ (ईय) → भारतीय'
     - term: पुंलिङ्ग
       en: 'masculine'
@@ -183,6 +183,16 @@
       en: 'causative present — "makes read"'
     - term: णिच्
       en: 'causative'
+  - form: सः
+    lemma: तद्
+    gloss: 'he'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
   - form: तेजस्वी
     lemma: तेजस्
     gloss: 'brilliant'
@@ -193,7 +203,7 @@
       en: 'the विनि suffix'
     - term: मतुबर्थ
       en: 'sense: मतुबर्थ'
-    - cite: "5.2.121"
+    - cite: 5.2.121
       role: 'अस्मायामेधास्रजो विनिः — तेजस् + विनि → तेजस्विन्'
     - term: पुंलिङ्ग
       en: 'masculine'
@@ -203,7 +213,7 @@
       en: 'number'
     rel:
     - kind: विधेय
-      to: 11
+      to: 15
   - form: मेधावी
     lemma: मेधा
     gloss: 'wise'
@@ -214,7 +224,7 @@
       en: 'the विनि suffix'
     - term: मतुबर्थ
       en: 'sense: मतुबर्थ'
-    - cite: "5.2.121"
+    - cite: 5.2.121
       role: 'अस्मायामेधास्रजो विनिः — मेधा + विनि → मेधाविन्'
     - term: पुंलिङ्ग
       en: 'masculine'
@@ -224,7 +234,7 @@
       en: 'number'
     rel:
     - kind: विधेय
-      to: 11
+      to: 15
   - form: च
     lemma: च
     gloss: 'and'
@@ -246,7 +256,7 @@
     - term: सर्वनाम
       en: 'pronoun — the two brothers'
     - term: कर्मन्
-      en: 'object of पाठयति'
+      en: 'one of the two objects of पाठयति — whom he teaches'
     - term: द्वितीया
       en: 'accusative dual'
   - form: अपि
@@ -255,6 +265,18 @@
     notes:
     - term: अव्यय
       en: 'too — they join his other pupils'
+  - form: वेदम्
+    lemma: वेद
+    gloss: 'the Veda'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्मन्
+      en: 'the second object of पाठयति — what he teaches'
+    - term: द्वितीया
+      en: 'accusative'
   - form: पाठयति
     lemma: पठ्
     gloss: 'teaches'
@@ -263,3 +285,31 @@
       en: 'causative present — "makes read"'
     - term: णिच्
       en: 'causative'
+  - form: तौ
+    lemma: तद्
+    gloss: 'those two'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun — the two brothers'
+    - term: कर्तृ
+      en: 'agent — now they study'
+    - term: प्रथमा
+      en: 'nominative dual'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable'
+  - form: प्रतिदिनम्
+    lemma: प्रतिदिनम्
+    gloss: 'every day'
+    notes:
+    - term: अव्यय
+      en: '"every day" — an अव्ययीभाव, प्रति + दिन'
+  - form: पठतः
+    lemma: पठ्
+    gloss: 'study'
+    notes:
+    - term: लट्
+      en: 'present dual — the two brothers'

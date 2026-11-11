@@ -2,10 +2,71 @@
   kind: graded
   segment: 183
   order: 5
-  sentence: 'कतिपयैः दिनैः जानुभ्याम् वेदना अपगच्छति। पितामहः वदति — वाचः शक्तिः महती; मालत्याः मधुरा वाक् अपि औषधम्।'
-  translation: 'In a few days the pain leaves both knees. Grandfather says: "Great is the power of speech; Mālatī''s sweet word was medicine too."'
+  sentence: 'मालती प्रतिदिनम् पितामहाय मधुराः वाचः वदति। कतिपयैः दिनैः पितामहस्य जानुभ्याम् वेदना अपगच्छति। पितामहः वदति — वाचः शक्तिः महती; मालत्याः मधुरा वाक् अपि औषधम्।'
+  translation: 'Every day Mālatī speaks sweet words to her grandfather. In a few days the pain leaves his knees. Grandfather says: "Great is the power of speech; Mālatī''s sweet word was medicine too."'
   teaches: 'Mālatī, part 4 — जानुभ्याम् as ablative (the pain leaves the knees), and वाचः as genitive.'
   words:
+  - form: मालती
+    lemma: मालती
+    gloss: 'Mālatī'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: एकवचन
+      en: 'singular'
+    - term: कर्तृ
+      en: 'ई-stem feminine nominative — no visible ending'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: प्रतिदिनम्
+    lemma: प्रतिदिनम्
+    gloss: 'every day'
+    notes:
+    - term: अव्यय
+      en: '"every day" — an अव्ययीभाव, प्रति + दिन'
+  - form: पितामहाय
+    lemma: पितामह
+    gloss: 'to Grandfather'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्प्रदान
+      en: 'the one spoken to'
+    - term: चतुर्थी
+      en: 'dative — अ-stem आय'
+  - form: मधुराः
+    lemma: मधुर
+    gloss: 'sweet'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: विशेषण
+      en: 'qualifying वाचः'
+    - term: द्वितीया
+      en: 'accusative plural'
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: वाचः
+    lemma: वाच्
+    gloss: 'words'
+    notes:
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
+    - term: बहुवचन
+      en: 'plural'
+    - term: कर्मन्
+      en: 'what she speaks'
+    - term: द्वितीया
+      en: 'accusative plural — च्-stem वाच् + अः'
+  - form: वदति
+    lemma: वद्
+    gloss: 'says'
+    notes:
+    - term: लट्
+      en: 'present'
   - form: कतिपयैः
     lemma: कतिपय
     gloss: 'a few'
@@ -30,6 +91,18 @@
       en: 'the time an action takes (2.3.6)'
     - term: तृतीया
       en: 'instrumental plural'
+  - form: पितामहस्य
+    lemma: पितामह
+    gloss: 'grandfather''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'whose knees — the grandfather''s'
+    - term: षष्ठी
+      en: 'genitive'
   - form: जानुभ्याम्
     lemma: जानु
     gloss: 'from both knees'
@@ -114,7 +187,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 8
+      to: 15
   - form: मालत्याः
     lemma: मालती
     gloss: 'Mālatī''s'
@@ -135,7 +208,7 @@
       en: 'nominative'
     rel:
     - kind: विशेषण
-      to: 12
+      to: 19
   - form: वाक्
     lemma: वाच्
     gloss: 'word'
@@ -166,4 +239,4 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 12
+      to: 19

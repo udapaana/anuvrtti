@@ -2,8 +2,8 @@
   kind: graded
   segment: 194
   order: 2
-  sentence: 'हिमवतः शिखरे वणिजौ तम् एव मुनिम् अपश्यताम्। सः तत्र तपः अकरोत्। वणिजौ मुनिम् अनमताम्। मरुतौ मुनये सर्वम् अवदताम्। तस्य प्रीतिः बुद्धिमति सागरदत्ते आसीत्, यतः सः मरुतः प्रश्नस्य उत्तरम् अवदत्। ततः मुनिः दिशः सरितः मरुतः च आह्वयत् — हे दिशः, हे सरितः, हे मरुतः, एतौ वणिजौ रक्षत। सरिद्भ्यः दिग्भ्यः मरुद्भ्यः च नमः। सः गुणवद्भ्याम् वणिग्भ्याम् आशिषम् अयच्छत्। वणिजौ मुनये एकम् रत्नम् अयच्छताम्।'
-  translation: 'On the Himālaya''s peak the merchants found that same sage. He was practising austerities there. The merchants bowed to the sage. The two winds told the sage everything. His affection went to clever Sāgaradatta, because he had answered the wind''s question. Then the sage called on the directions, the rivers and the winds: "O directions, O rivers, O winds, guard these two merchants. Homage to the rivers, the directions and the winds." He gave his blessing to the two worthy merchants. The merchants gave the sage a jewel.'
+  sentence: 'हिमवतः शिखरे वणिजौ एकम् मुनिम् अपश्यताम्, यः तत्र तपः अकरोत्। वणिजौ मुनिम् अनमताम्, तस्मै यात्रायाः कथाम् च अवदताम्। सागरदत्तः मरुतः प्रश्नस्य उत्तरम् अवदत् इति मुनिः अशृणोत्; तस्य प्रीतिः बुद्धिमति सागरदत्ते अभवत्। ततः मुनिः दिशः सरितः मरुतः च आह्वयत् — हे दिशः, हे सरितः, हे मरुतः, गृहस्य मार्गे एतौ वणिजौ रक्षत। सरिद्भ्यः दिग्भ्यः मरुद्भ्यः च नमः। सः गुणवद्भ्याम् वणिग्भ्याम् आशिषम् अयच्छत्। वणिजौ मुनये एकम् रत्नम् अयच्छताम्।'
+  translation: 'On a peak of the Himālaya the merchants found a sage who was practising austerities there. They bowed to the sage and told him the story of their journey. The sage heard that Sāgaradatta had answered the wind''s question, and his affection went to clever Sāgaradatta. Then the sage called on the directions, the rivers and the winds: "O directions, O rivers, O winds, guard these two merchants on the road home. Homage to the rivers, the directions and the winds." He gave his blessing to the two worthy merchants. The merchants gave the sage a jewel.'
   teaches: 'Part 12 — the sage''s blessing: the vocative plurals दिशः, सरितः, मरुतः, the same shapes as the accusatives just before them; नमः with the dative सरिद्भ्यः, दिग्भ्यः, मरुद्भ्यः; बुद्धिमति (locative of affection), गुणवद्भ्याम्; मरुतः (genitive).'
   words:
   - form: हिमवतः
@@ -36,22 +36,21 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
-  - form: तम्
-    lemma: तद्
-    gloss: 'that'
+  - form: एकम्
+    lemma: एक
+    gloss: 'a'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
+    - term: संख्या
+      en: 'numeral'
+    - term: कर्मन्
+      en: 'object'
     - term: विशेषण
-      en: 'pointing out मुनिम् — the sage of parts 3 and 7'
+      en: 'qualifying the noun'
     - term: द्वितीया
       en: 'accusative'
-  - form: एव
-    lemma: एव
-    gloss: 'same'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — "that very" sage'
+    rel:
+    - kind: विशेषण
+      to: 4
   - form: मुनिम्
     lemma: मुनि
     gloss: 'sage'
@@ -68,16 +67,16 @@
     notes:
     - term: लङ्
       en: 'imperfect (लङ्) — dual'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
+  - form: यः
+    lemma: यद्
+    gloss: 'who'
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
+      en: 'the relative pronoun — refers back to मुनिम्'
     - term: प्रथमा
       en: 'nominative'
+    - term: कर्तृ
+      en: 'agent of अकरोत्'
   - form: तत्र
     lemma: तत्र
     gloss: 'there'
@@ -99,7 +98,7 @@
     gloss: 'was practising'
     notes:
     - term: लङ्
-      en: 'imperfect (लङ्) — "did tapas", the forest retreat he announced at the feast'
+      en: 'imperfect (लङ्) — "did tapas"'
   - form: वणिजौ
     lemma: वणिज्
     gloss: 'the merchants'
@@ -126,46 +125,118 @@
     notes:
     - term: लङ्
       en: 'imperfect (लङ्) — dual'
-  - form: मरुतौ
-    lemma: मरुत्
-    gloss: 'the two winds'
+  - form: तस्मै
+    lemma: तद्
+    gloss: 'to him'
     notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative dual'
-  - form: मुनये
-    lemma: मुनि
-    gloss: 'to the sage'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
+    - term: सर्वनाम
+      en: 'pronoun'
     - term: सम्प्रदान
       en: 'recipient'
     - term: चतुर्थी
-      en: 'dative — इ-stem with गुण: मुनि → मुनये'
-  - form: सर्वम्
-    lemma: सर्व
-    gloss: 'everything'
+      en: 'dative'
+  - form: यात्रायाः
+    lemma: यात्रा
+    gloss: 'of the journey'
     notes:
-    - term: सर्वादि
-      en: 'pronominal adjective — but neuter सर्वम् ends like an अ-stem, not like तत्'
+    - term: स्त्रीलिङ्ग
+      en: 'feminine'
     - term: एकवचन
-      en: 'number'
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'what the story is about'
+    - term: षष्ठी
+      en: 'genitive — आ-stem feminine आयाः'
+  - form: कथाम्
+    lemma: कथा
+    gloss: 'the story'
+    notes:
     - term: कर्मन्
-      en: 'object'
+      en: 'what is told'
     - term: द्वितीया
-      en: 'accusative — सर्व alone, "all that happened"'
+      en: 'accusative'
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: '"and" — joins the two verbs'
   - form: अवदताम्
     lemma: वद्
     gloss: 'told'
     notes:
     - term: लङ्
       en: 'imperfect (लङ्) — dual'
+  - form: सागरदत्तः
+    lemma: सागरदत्त
+    gloss: 'Sāgaradatta'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative — subject inside the reported clause closed by इति'
+  - form: मरुतः
+    lemma: मरुत्
+    gloss: 'the wind''s'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: सम्बन्ध
+      en: 'whose question it was — the wind at the river'
+    - term: षष्ठी
+      en: 'genitive singular — the wind at the river in part 10'
+  - form: प्रश्नस्य
+    lemma: प्रश्न
+    gloss: 'to the question'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: उत्तरम्
+    lemma: उत्तर
+    gloss: 'the answer'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: अवदत्
+    lemma: वद्
+    gloss: 'had given'
+    notes:
+    - term: लङ्
+      en: 'imperfect (लङ्) — narrative past'
+  - form: इति
+    lemma: इति
+    gloss: 'thus (closes a quotation)'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — marks the end of reported speech'
+  - form: मुनिः
+    lemma: मुनि
+    gloss: 'the sage'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: अशृणोत्
+    lemma: श्रु
+    gloss: 'heard'
+    notes:
+    - term: लङ्
+      en: 'imperfect (लङ्) — narrative past'
   - form: तस्य
     lemma: तद्
     gloss: 'his'
@@ -198,7 +269,7 @@
       en: 'locative — मत्-stem, weak form before a vowel'
     rel:
     - kind: विशेषण
-      to: 21
+      to: 29
   - form: सागरदत्ते
     lemma: सागरदत्त
     gloss: 'in Sāgaradatta'
@@ -211,66 +282,12 @@
       en: 'the one the affection rests on'
     - term: सप्तमी
       en: 'locative — feeling is placed "in" its object'
-  - form: आसीत्
-    lemma: अस्
-    gloss: 'was'
+  - form: अभवत्
+    lemma: भू
+    gloss: 'became'
     notes:
     - term: लङ्
-      en: 'imperfect of अस्'
-  - form: यतः
-    lemma: यतः
-    gloss: 'because'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable — gives the reason'
-  - form: सः
-    lemma: तद्
-    gloss: 'he'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्तृ
-      en: 'agent'
-    - term: प्रथमा
-      en: 'nominative — Sāgaradatta'
-  - form: मरुतः
-    lemma: मरुत्
-    gloss: 'the wind''s'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: सम्बन्ध
-      en: 'whose question it was'
-    - term: षष्ठी
-      en: 'genitive singular — the wind at the river in part 10'
-  - form: प्रश्नस्य
-    lemma: प्रश्न
-    gloss: 'to the question'
-    notes:
-    - term: पुंलिङ्ग
-      en: 'masculine'
-    - term: एकवचन
-      en: 'number'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
-  - form: उत्तरम्
-    lemma: उत्तर
-    gloss: 'the answer'
-    notes:
-    - term: नपुंसकलिङ्ग
-      en: 'neuter'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: अवदत्
-    lemma: वद्
-    gloss: 'had given'
-    notes:
-    - term: लङ्
-      en: 'imperfect (लङ्) — narrative past'
+      en: 'past'
   - form: ततः
     lemma: ततः
     gloss: 'then'
@@ -328,7 +345,7 @@
     gloss: 'and'
     notes:
     - term: अव्यय
-      en: 'indeclinable — joins the three objects'
+      en: '"and" — joins the three objects'
   - form: आह्वयत्
     lemma: ह्वे
     gloss: 'called on'
@@ -383,6 +400,30 @@
       en: 'number'
     - term: सम्बोधन
       en: 'vocative plural'
+  - form: गृहस्य
+    lemma: गृह
+    gloss: 'home'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: एकवचन
+      en: 'singular'
+    - term: सम्बन्ध
+      en: 'the road''s goal — "the road home"'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: मार्गे
+    lemma: मार्ग
+    gloss: 'on the way'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: अधिकरण
+      en: 'location — on the road'
+    - term: सप्तमी
+      en: 'locative'
   - form: एतौ
     lemma: एतद्
     gloss: 'these two'
@@ -450,7 +491,7 @@
     gloss: 'and'
     notes:
     - term: अव्यय
-      en: 'indeclinable — joins the three datives'
+      en: '"and" — joins the three datives'
   - form: नमः
     lemma: नमस्
     gloss: 'homage'
@@ -479,7 +520,7 @@
       en: 'dative dual — वत्-stem, त् becomes द् before भ्याम्'
     rel:
     - kind: विशेषण
-      to: 52
+      to: 56
   - form: वणिग्भ्याम्
     lemma: वणिज्
     gloss: 'to the merchants'
@@ -527,7 +568,7 @@
     - term: सम्प्रदान
       en: 'recipient'
     - term: चतुर्थी
-      en: 'dative'
+      en: 'dative — इ-stem with गुण: मुनि → मुनये'
   - form: एकम्
     lemma: एक
     gloss: 'a'
@@ -542,7 +583,7 @@
       en: 'accusative'
     rel:
     - kind: विशेषण
-      to: 58
+      to: 62
   - form: रत्नम्
     lemma: रत्न
     gloss: 'jewel'
@@ -552,7 +593,7 @@
     - term: कर्मन्
       en: 'object'
     - term: द्वितीया
-      en: 'accusative — one of the sea jewels of part 4'
+      en: 'accusative'
   - form: अयच्छताम्
     lemma: यम्
     gloss: 'gave'

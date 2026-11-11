@@ -2,8 +2,8 @@
   kind: graded
   segment: 180
   order: 2
-  sentence: 'नृपौ राजधानीम् प्रतिगच्छतः। मार्गः नदीभिः रम्यः। कतिपयाभिः रात्रिभिः तौ नगरम् प्राप्नुतः। नगरे बालाः पितृभिः मातृभिः च सह नृपयोः स्वागतम् कुर्वन्ति। अन्यैः राजभिः सह सभा भवति। नृपौ ऋष्योः गुणान् वदतः — तयोः कर्मभिः आश्रमः पवित्रः, गोभिः च समृद्धः।'
-  translation: 'The kings return to the capital. The road is lovely with rivers. In a few nights they reach the city. In the city children come with their fathers and mothers to welcome the kings. There is an assembly with other kings. The kings tell of the two sages'' virtues: "By their deeds the hermitage is holy, and it is rich in cows."'
+  sentence: 'नृपौ ऋष्योः आश्रमात् राजधानीम् प्रतिगच्छतः। मार्गः नदीभिः रम्यः। कतिपयाभिः रात्रिभिः तौ नगरम् प्राप्नुतः। नगरे बालाः पितृभिः मातृभिः च सह नृपयोः स्वागतम् कुर्वन्ति। अन्यैः राजभिः सह सभा भवति। नृपौ ऋष्योः गुणान् वदतः — तयोः कर्मभिः आश्रमः पवित्रः, गोभिः च समृद्धः।'
+  translation: 'The two kings return from the two sages'' hermitage to the capital. The road is lovely with rivers. In a few nights they reach the city. In the city children come with their fathers and mothers to welcome the kings. There is an assembly with other kings. The kings tell of the two sages'' virtues: "By their deeds the hermitage is holy, and it is rich in cows."'
   teaches: 'The visit, part 5 — home: the instrumental plural -भिः across the stem classes — नदीभिः, रात्रिभिः (time taken, 2.3.6), पितृभिः, मातृभिः, राजभिः, कर्मभिः, गोभिः.'
   words:
   - form: नृपौ
@@ -18,6 +18,30 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative dual'
+  - form: ऋष्योः
+    lemma: ऋषि
+    gloss: 'from the two sages'''
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सम्बन्ध
+      en: 'whose hermitage — the two sages'''
+    - term: षष्ठी
+      en: 'genitive dual — इ → य् before ओः: ऋष्योः'
+  - form: आश्रमात्
+    lemma: आश्रम
+    gloss: 'from the hermitage'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'singular'
+    - term: अपादान
+      en: 'the point the kings set out from'
+    - term: पञ्चमी
+      en: 'ablative — अ-stem आत्: आश्रम → आश्रमात्'
   - form: राजधानीम्
     lemma: राजधानी
     gloss: 'to the capital'
@@ -68,7 +92,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 3
+      to: 5
   - form: कतिपयाभिः
     lemma: कतिपय
     gloss: 'a few'
@@ -83,7 +107,7 @@
       en: 'instrumental of time taken: "in a few nights"; feminine plural agreeing with रात्रिभिः'
     rel:
     - kind: विशेषण
-      to: 7
+      to: 9
   - form: रात्रिभिः
     lemma: रात्रि
     gloss: 'in nights'
@@ -218,7 +242,7 @@
       en: 'instrumental plural'
     rel:
     - kind: विशेषण
-      to: 21
+      to: 23
   - form: राजभिः
     lemma: राजन्
     gloss: 'kings'
@@ -231,6 +255,12 @@
       en: 'accompaniment, with सह'
     - term: तृतीया
       en: 'instrumental plural'
+  - form: सह
+    lemma: सह
+    gloss: 'with'
+    notes:
+    - term: अव्यय
+      en: 'indeclinable — governs the तृतीया'
   - form: सभा
     lemma: सभा
     gloss: 'an assembly'
@@ -247,6 +277,18 @@
     notes:
     - term: लट्
       en: 'present'
+  - form: नृपौ
+    lemma: नृप
+    gloss: 'the kings'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: द्विवचन
+      en: 'dual'
+    - term: कर्तृ
+      en: 'agent'
+    - term: प्रथमा
+      en: 'nominative dual'
   - form: ऋष्योः
     lemma: ऋषि
     gloss: 'of the two sages'
@@ -317,7 +359,7 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 29
+      to: 33
   - form: गोभिः
     lemma: गो
     gloss: 'with cows'
@@ -348,4 +390,4 @@
       en: 'nominative — the predicate'
     rel:
     - kind: विधेय
-      to: 29
+      to: 33
