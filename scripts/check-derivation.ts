@@ -152,7 +152,15 @@ for (const r of R.sequence ?? []) {
           }
         }
         const saidVac = [...terms].find((t) => VAC.includes(t));
-        if (saidVac && col) {
+        /*
+          The cells are the stem's locked gender's. A word the author put in
+          another gender is outside them: महत् settled neuter once attested
+          महता/महद्भिः arrived, and the feminine predicate महती (एकवचन) read
+          as the neuter dual. Its number cannot be judged from that table.
+        */
+        const saidLinga = [...terms].find((t) => /लिङ्ग$/.test(t));
+        const otherGender = !!saidLinga && !!raw?.linga && saidLinga !== raw.linga;
+        if (saidVac && col && !otherGender) {
           checked++;
           const possible = (raw?.cells ?? []).some((c) => c[1] === saidVac);
           if (saidVac !== col && !possible) {
