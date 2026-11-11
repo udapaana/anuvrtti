@@ -45,7 +45,13 @@ export function typingTermsOf(w: AnnotatedWord): Set<string> {
  * vocatives — which owe no कारक — lowered the सुबन्त कारक floor as if a
  * derivation had broken.
  */
-export function exemptFrom(type: WordType, dim: string, terms: Set<string>, rel: Array<{ kind?: string }> = []): boolean {
+export function exemptFrom(type: WordType, dim: string, terms: Set<string>, rel: Array<{ kind?: string }> = [], lemma = ''): boolean {
+  // अस्मद् and युष्मद् have no gender at all (the schema's own note on सर्वनाम
+  // लिङ्ग): अहम् is said by a man or a woman alike. Counted as an empty slot,
+  // every new reading with "I" or "you" lowered the ratchet, and authors
+  // started tagging अहम् पुंलिङ्ग to hold it.
+  if (dim === 'लिङ्ग' && (lemma === 'अस्मद्' || lemma === 'युष्मद्')) return true;
+
   // A कृदन्त owes विभक्ति, वचन and लिङ्ग only if its suffix declines. क्त्वा,
   // तुमुन्, ल्यप् and णमुल् are अव्यय by 1.1.40 and take no declension at all —
   // an indeclinable has no gender any more than it has a case.
@@ -91,7 +97,7 @@ export function missingFor(type: WordType, w: AnnotatedWord, terms: Set<string>)
   for (const d of type.dimensions) {
     if (d.source === 'conditional') continue;
 
-    if (exemptFrom(type, d.name, terms, (w as any).rel ?? [])) continue;
+    if (exemptFrom(type, d.name, terms, (w as any).rel ?? [], (w as any).lemma ?? '')) continue;
 
     if (d.name === 'lemma') {
       if (!w.lemma) miss.push('lemma');
