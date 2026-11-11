@@ -2,9 +2,9 @@
   kind: graded
   segment: 284
   order: 4
-  sentence: "एकस्मिन् नगरे राजा वसति। एकदा मुनिः नगरम् आगच्छति। सः तस्मै राज्ञे चतुर्णाम् भ्रातॄणाम् कथाम् आचष्टे। ते भ्रातरः कलहेन नष्टाः।"
-  translation: "In a certain city lives a king. One day a sage comes to the city. He tells that king the story of four brothers. Those brothers were ruined by quarrelling."
-  teaches: 'आचष्टे "tells" (आ + चक्ष्, अदादि) with ष्टुत्व; णत्व in चतुर्णाम् भ्रातॄणाम्; तस्मै राज्ञे.'
+  sentence: एकस्मिन् नगरे राजा वसति; तस्य पुत्राः सदा कलहम् कुर्वन्ति। एकदा मुनिः नगरम् आगच्छति। सः तस्मै राज्ञे चतुर्णाम् भ्रातॄणाम् कथाम् आचष्टे — ते भ्रातरः कलहेन नष्टाः। ततः राजा पुत्रान् वदति — कलहम् त्यजत।
+  translation: 'In a certain city lives a king; his sons are always quarrelling. One day a sage comes to the city. He tells that king the story of four brothers: those brothers were ruined by quarrelling. Then the king says to his sons: "Give up quarrelling."'
+  teaches: 'आचष्टे "tells" (आ + चक्ष्, अदादि) with ष्टुत्व; णत्व in चतुर्णाम् भ्रातॄणाम्; तस्मै राज्ञे. The tale is told for a reason: the king''s own sons, and the imperative त्यजत at the end.'
   words:
   - form: एकस्मिन्
     lemma: एक
@@ -36,7 +36,7 @@
       en: the one who lives there
     - term: प्रथमा
       en: nominative — the न् of राजन् drops
-    - cite: "8.2.7"
+    - cite: 8.2.7
       role: नलोपः प्रातिपदिकान्तस्य — the stem-final न् drops → राजा
   - form: वसति
     lemma: वस्
@@ -48,105 +48,143 @@
       en: the thematic अ between root and ending
     - term: लट्
       en: present
-  - form: एकदा
-    lemma: एकदा
-    gloss: 'once, one day'
+  - form: तस्य
+    lemma: तद्
+    gloss: his
+    notes:
+    - term: सर्वनाम
+      en: pronoun
+    - term: सम्बन्ध
+      en: relation
+    - term: षष्ठी
+      en: genitive
+  - form: पुत्राः
+    lemma: पुत्र
+    gloss: sons
+    notes:
+    - term: कर्तृ
+      en: agent
+    - term: प्रथमा
+      en: nominative plural
+  - form: सदा
+    lemma: सदा
+    gloss: always
     notes:
     - term: अव्यय
-      en: 'indeclinable — time'
-  - form: मुनिः
-    lemma: मुनि
-    gloss: 'a sage'
-    notes:
-    - term: कर्तृ
-      en: 'the one who comes'
-    - term: प्रथमा
-      en: 'nominative'
-  - form: नगरम्
-    lemma: नगर
-    gloss: 'the city'
+      en: adverb of time — "always", with the wish वह
+  - form: कलहम्
+    lemma: कलह
+    gloss: a quarrel
     notes:
     - term: कर्मन्
-      en: 'the goal of motion'
+      en: object — कलहम् कृ, "to make a quarrel"
     - term: द्वितीया
-      en: 'accusative'
-  - form: आगच्छति
-    lemma: गम्
-    gloss: 'comes'
+      en: accusative
+  - form: कुर्वन्ति
+    lemma: कृ
+    gloss: make
     notes:
     - term: लट्
-      en: 'present, with the preverb आ'
+      en: present, plural
+  - form: एकदा
+    lemma: एकदा
+    gloss: once, one day
+    notes:
+    - term: अव्यय
+      en: indeclinable — time
+  - form: मुनिः
+    lemma: मुनि
+    gloss: a sage
+    notes:
+    - term: कर्तृ
+      en: the one who comes
+    - term: प्रथमा
+      en: nominative
+  - form: नगरम्
+    lemma: नगर
+    gloss: the city
+    notes:
+    - term: कर्मन्
+      en: the goal of motion
+    - term: द्वितीया
+      en: accusative
+  - form: आगच्छति
+    lemma: गम्
+    gloss: comes
+    notes:
+    - term: लट्
+      en: present, with the preverb आ
   - form: सः
     lemma: तद्
-    gloss: 'he'
+    gloss: he
     notes:
     - term: सर्वनाम
-      en: 'pronoun'
+      en: pronoun
     - term: प्रथमा
-      en: 'nominative'
+      en: nominative
     - term: कर्तृ
-      en: 'the teller'
+      en: the teller
   - form: तस्मै
     lemma: तद्
-    gloss: 'that'
+    gloss: that
     notes:
     - term: सर्वनाम
-      en: 'pronoun, here qualifying राज्ञे'
+      en: pronoun, here qualifying राज्ञे
     - term: पुंलिङ्ग
       en: masculine
     - term: चतुर्थी
-      en: 'dative'
-    - cite: "7.1.14"
-      role: 'सर्वनाम्नः स्मै — the pronoun dative in स्मै → तस्मै'
+      en: dative
+    - cite: 7.1.14
+      role: सर्वनाम्नः स्मै — the pronoun dative in स्मै → तस्मै
   - form: राज्ञे
     lemma: राजन्
-    gloss: 'to the king'
+    gloss: to the king
     notes:
     - term: सम्प्रदान
-      en: 'the one told'
+      en: the one told
     - term: चतुर्थी
-      en: 'dative'
+      en: dative
   - form: चतुर्णाम्
     lemma: चतुर्
-    gloss: 'four'
+    gloss: four
     notes:
     - term: संख्या
-      en: 'numeral'
+      en: numeral
     - term: विशेषण
-      en: 'qualifying भ्रातॄणाम्'
+      en: qualifying भ्रातॄणाम्
     - term: षष्ठी
-      en: 'genitive plural'
-    - cite: "8.4.1"
-      role: 'रषाभ्यां नो णः — after र्, न becomes ण → चतुर्णाम्'
+      en: genitive plural
+    - cite: 8.4.1
+      role: रषाभ्यां नो णः — after र्, न becomes ण → चतुर्णाम्
     rel:
     - kind: विशेषण
-      to: 12
+      to: 17
   - form: भ्रातॄणाम्
     lemma: भ्रातृ
-    gloss: 'of brothers'
+    gloss: of brothers
     notes:
     - term: सम्बन्ध
-      en: 'whose story'
+      en: whose story
     - term: षष्ठी
-      en: 'genitive plural'
-    - cite: "8.4.1"
-      role: 'रषाभ्यां नो णः — after ऋ, न becomes ण → भ्रातॄणाम्'
+      en: genitive plural
+    - cite: 8.4.1
+      role: रषाभ्यां नो णः — after ऋ, न becomes ण → भ्रातॄणाम्
   - form: कथाम्
     lemma: कथा
-    gloss: 'the story'
+    gloss: the story
     notes:
     - term: कर्मन्
-      en: 'what is told'
+      en: what is told
     - term: द्वितीया
-      en: 'accusative'
+      en: accusative
   - form: आचष्टे
     lemma: चक्ष्
-    gloss: 'tells'
+    gloss: tells
     notes:
     - term: लट्
-      en: 'present (आ + चक्ष्, अदादि, आत्मनेपद)'
-    - cite: "8.4.41"
-      role: 'ष्टुना ष्टुः — after ष्, the त of the ending becomes ट → आचष्टे'
+      en: present (आ + चक्ष्, अदादि, आत्मनेपद)
+    - cite: 8.4.41
+      role: ष्टुना ष्टुः — after ष्, the त of the ending becomes ट → आचष्टे
   - form: ते
     lemma: तद्
     gloss: those
@@ -189,4 +227,62 @@
       en: nominative plural
     rel:
     - kind: विशेषण
-      to: 16
+      to: 21
+  - form: ततः
+    lemma: ततः
+    gloss: after that
+    notes:
+    - term: अव्यय
+      en: '"then, from then on" — तद् + तसिल्, marking what follows'
+  - form: राजा
+    lemma: राजन्
+    gloss: a king
+    notes:
+    - term: कर्तृ
+      en: the one who lives there
+    - term: प्रथमा
+      en: nominative — the न् of राजन् drops
+    - cite: 8.2.7
+      role: नलोपः प्रातिपदिकान्तस्य — the stem-final न् drops → राजा
+  - form: पुत्रान्
+    lemma: पुत्र
+    gloss: his sons
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: बहुवचन
+      en: plural
+    - term: कर्मन्
+      en: object
+    - term: द्वितीया
+      en: accusative plural — the ones spoken to; अ-stem -आन्
+  - form: वदति
+    lemma: वद्
+    gloss: speaks
+    notes:
+    - term: वद्
+      en: '"speak"'
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
+  - form: कलहम्
+    lemma: कलह
+    gloss: a quarrel
+    notes:
+    - term: कर्मन्
+      en: object — कलहम् कृ, "to make a quarrel"
+    - term: द्वितीया
+      en: accusative
+  - form: त्यजत
+    lemma: त्यज्
+    gloss: give up
+    notes:
+    - term: परस्मैपद
+      en: parasmaipada
+    - term: बहुवचन
+      en: plural
+    - term: मध्यमपुरुष
+      en: 2nd person
+    - term: लोट्
+      en: imperative, 2nd plural — the king to all his sons

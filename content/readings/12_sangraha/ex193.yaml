@@ -2,11 +2,26 @@
   kind: sangraha
   segment: 125
   order: 1
-  sentence: रामेण सह मुनिः गच्छति। मार्गे वनम् पुष्पैः हसति, नदी च शोभते। मुनिः सत्यम् वदति, रामः च तत् शृणोति। मुनेः वाक् अत्र शुभा। आश्रमे शिष्याः तम् प्रतीक्षन्ते। नमः ते गुरो, इति ते वदन्ति।
-  translation: A sage walks with Rāma. On the way the forest smiles with flowers, and the river shines. The sage speaks the truth, and Rāma listens to it. The sage's speech is auspicious here. At the hermitage his pupils are waiting for him. "Homage to you, teacher," they say.
+  sentence: रामेण सह मुनिः गच्छति। मार्गे वनम् पुष्पैः हसति, नदी च शोभते। मुनिः सत्यम् वदति, रामः च तत् शृणोति। मुनेः वाक् रामाय रोचते। आश्रमे शिष्याः तम् प्रतीक्षन्ते। नमः ते गुरो, इति ते वदन्ति।
+  translation: A sage walks with Rāma. On the way the forest smiles with flowers, and the river shines. The sage speaks the truth, and Rāma listens to it. The sage's words please Rāma. At the hermitage his pupils are waiting for him. "Homage to you, teacher," they say.
   teaches: 'A walk with a sage, in sandhi: वाग् (जश्त्व), रामश्च and तच्छृणोति (श्चुत्व), सत्यं/वनं (anusvāra), रामेण (णत्व across the word), मुनिर्गच्छति and पुष्पैर्हसति (visarga). हसति of a forest in bloom is the poets'' own word.
 
     '
+  vyakhya_en: 'Six joins here and none of them announced. वाक् voices to वाग् because a
+
+    vowel follows; त् becomes च् because श् follows; म् goes to anusvāra twice;
+
+    न् turns ण् in रामेण because an र् sits two syllables back.
+
+
+    That last one is worth noticing — the trigger is not adjacent. र् and न्
+
+    are separated by ए, and the rule still reaches across. Sandhi is not only
+
+    about what touches what.
+
+    '
+  vyakhya: यत्र पदं पदेन मिलति तत्र सन्धिः। वाग्, तच्छृणोति, वनं, रामेण — सर्वत्र।
   words:
   - form: रामेण
     lemma: राम
@@ -55,7 +70,7 @@
     - term: एकवचन
       en: singular
     - term: अधिकरण
-      en: 'where the forest smiles — on the road they walk'
+      en: where the forest smiles — on the road they walk
     - term: सप्तमी
       en: locative
   - form: वनम्
@@ -84,12 +99,12 @@
       en: एकवचन
   - form: पुष्पैः
     lemma: पुष्प
-    gloss: 'with flowers'
+    gloss: with flowers
     notes:
     - term: नपुंसकलिङ्ग
       en: neuter
     - term: करण
-      en: 'what the forest smiles with — blossom as the forest''s smile'
+      en: what the forest smiles with — blossom as the forest's smile
     - term: तृतीया
       en: 'instrumental plural — अ-stem, भिस् → ऐस्: पुष्पैः'
   - form: हसति
@@ -179,7 +194,7 @@
     gloss: and
     notes:
     - term: अव्यय
-      en: 'and — joins Rāma''s listening to the sage''s speaking'
+      en: and — joins Rāma's listening to the sage's speaking
   - form: तत्
     lemma: तद्
     gloss: it
@@ -244,39 +259,30 @@
       en: agent
     - term: कर्तृ
       en: agent
-  - form: अत्र
-    lemma: अत्र
-    gloss: here
-    vocab: true
+  - form: रामाय
+    lemma: राम
+    gloss: Rāma (is pleased)
     notes:
-    - term: अव्यय
-      en: '''here'' — points to the place where the sage speaks'
-  - form: शुभा
-    lemma: शुभ
-    gloss: auspicious
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: सम्प्रदान
+      en: recipient
+    - term: चतुर्थी
+      en: dative with रुच् — the one whom something pleases (1.4.33)
+  - form: रोचते
+    lemma: रुच्
+    gloss: is pleasing, pleases
     notes:
-    - term: प्रथमा
-      en: nominative feminine — predicated of वाग्
-    - term: स्त्रीलिङ्ग
-      en: स्त्रीलिङ्ग
-    - term: स्त्रीलिङ्ग
-      en: स्त्रीलिङ्ग
-    - term: एकवचन
-      en: एकवचन
-    - term: कर्तृ
-      en: agent
-    - term: स्त्रीलिङ्ग
-      en: स्त्रीलिङ्ग
-    - term: एकवचन
-      en: एकवचन
-    - term: कर्तृ
-      en: agent
-    - term: स्त्रीलिङ्ग
-      en: स्त्रीलिङ्ग
-    - term: एकवचन
-      en: एकवचन
-    - term: कर्तृ
-      en: agent
+    - term: रुच्
+      en: '"please, be agreeable" (आत्मनेपद)'
+    - term: गुण
+      en: the root vowel strengthens before शप् — रुच् → रोच्
+    - term: शप्
+      en: the thematic अ between root and ending
+    - term: लट्
+      en: present
   - form: आश्रमे
     lemma: आश्रम
     gloss: at the hermitage
@@ -379,18 +385,3 @@
       en: वद् + अ + न्ति
     - term: लट्
       en: present plural
-  vyakhya: यत्र पदं पदेन मिलति तत्र सन्धिः। वाग्, तच्छृणोति, वनं, रामेण — सर्वत्र।
-  vyakhya_en: 'Six joins here and none of them announced. वाक् voices to वाग् because a
-
-    vowel follows; त् becomes च् because श् follows; म् goes to anusvāra twice;
-
-    न् turns ण् in रामेण because an र् sits two syllables back.
-
-
-    That last one is worth noticing — the trigger is not adjacent. र् and न्
-
-    are separated by ए, and the rule still reaches across. Sandhi is not only
-
-    about what touches what.
-
-    '

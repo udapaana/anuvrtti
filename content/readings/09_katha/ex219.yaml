@@ -5,11 +5,23 @@
     text: कथा (our graded retelling)
     ref: two students — our own telling
     curated: our simple Sanskrit; not from any single source
-  sentence: गुरुकुले द्वौ शिष्यौ आस्ताम्; एकः पटुः, अपरः पटुतरः। एकदा गुरुः अपृच्छत् — सर्वेषु धनेषु किम् श्रेष्ठम्? तत् च सर्वैः अश्रूयत, किन्तु न कः अपि उत्तरम् अवदत्। ततः पटुतरः महाबुद्धिः अवदत् — विद्या एव। गुरुः ततः तुष्टः अभवत्, पटुतराय च वरम् अददात्।
-  translation: 'In the teacher''s school there were two pupils; one was able, the other abler. One day the teacher asked: "Of all riches, which is the best?" The question was heard by all, but nobody answered. Then the abler one, great of mind, said: "Knowledge." The teacher was pleased at that, and gave the boon to the abler one.'
-  teaches: 'A question in class — पटुः, पटुतरः, पटुतराय, श्रेष्ठम् (the comparative and superlative); महाबुद्धिः (कर्मधारय); the passive अश्रूयत with its agent सर्वैः; and ततः doing two jobs, "then" and "from that".
+  sentence: गुरुकुले द्वौ शिष्यौ आस्ताम्; एकः पटुः, अपरः पटुतरः। एकदा गुरुः अपृच्छत् — सर्वेषु धनेषु किम् श्रेष्ठम्? सर्वे अशृण्वन्, किन्तु कः अपि उत्तरम् न अवदत्। ततः पटुतरः महाबुद्धिः अवदत् — विद्या एव। गुरुः ततः तुष्टः अभवत्, पटुतराय च आशीर्वादम् अददात्।
+  translation: 'In the teacher''s school there were two pupils; one was able, the other abler. One day the teacher asked: "Of all riches, which is the best?" All of them heard, but no one gave an answer. Then the abler one, great of mind, said: "Knowledge." The teacher was pleased at that, and gave his blessing to the abler one.'
+  teaches: A question in class — पटुः, पटुतरः, पटुतराय, श्रेष्ठम् (the comparative and superlative); महाबुद्धिः (कर्मधारय); the imperfects अशृण्वन्, अवदत्, अददात्; and ततः doing two jobs, "then" and "from that".
+  vyakhya_en: 'Degrees in one scene. पटुः is the plain grade; पटुतरः the
+
+    **comparative** — पटु + तर, "cleverer of the two"; श्रेष्ठ the **superlative**,
+
+    the इष्ठन्-grade of प्रशस्य, "best of all." महाबुद्धिः is a **compound** —
+
+    महती बुद्धिः यस्य, "he whose mind is great." The story runs in the imperfect:
+
+    अशृण्वन्, अवदत्, अददात्, each with the augment अ. And ततः is a **तसिल् adverb**,
+
+    तद् + तस्, "from that → thereupon."
 
     '
+  vyakhya: एकस्मिन्नाख्याने तरप्, कर्मधारयः, तसिल्, इष्ठन् (श्रेष्ठम्) — चत्वारः शब्दप्रकाराः।
   words:
   - form: गुरुकुले
     lemma: गुरुकुल
@@ -184,63 +196,28 @@
     rel:
     - kind: विधेय
       to: 13
-  - form: तत्
-    lemma: तद्
-    gloss: it, that
-    notes:
-    - term: सर्वनाम
-      en: pronoun
-    - term: कर्मन्
-      en: the thing heard — subject of the passive verb below
-    - term: प्रथमा
-      en: nominative (a passive makes the कर्मन् its प्रथमा)
-  - form: च
-    lemma: च
-    gloss: and
-    notes:
-    - term: निपात
-      en: enclitic particle
-  - form: सर्वैः
+  - form: सर्वे
     lemma: सर्व
-    gloss: by all
+    gloss: all
     notes:
-    - term: करण
-      en: the agent of a passive stands in the तृतीया
-    - cite: 2.3.18
-      role: कर्तृकरणयोस्तृतीया → the agent of a passive → तृतीया → सर्वैः
-    - term: तृतीया
-      en: instrumental plural
-    - cite: 7.1.9
-      role: अतो भिस ऐस् — a-stem instrumental plural नरैः → सर्वैः
-  - form: अश्रूयत
+    - term: सर्वादि
+      en: pronominal adjective — takes तद्-type endings (सर्वे, not *सर्वाः-masc)
+    - term: कर्तृ
+      en: agent — qualifies मुनयः, who dwell
+    - term: प्रथमा
+      en: nominative
+  - form: अशृण्वन्
     lemma: श्रु
-    gloss: was heard
-    vocab: true
+    gloss: heard
     notes:
-    - term: तिङन्त
-      en: passive verb — "it was heard"
-    - term: यक्
-      en: the passive विकरण यक् (य) between root and ending
-    - cite: 3.1.67
-      role: सार्वधातुके यक् → यक् marks the passive stem → श्रु + य → श्रूय
-    - cite: 3.4.69
-      role: लः कर्मणि च → the ल-affix denotes the कर्म (passive) → आत्मनेपद ending → अश्रूयत
     - term: लङ्
-      en: imperfect
-    - term: कर्मणि
-      en: passive — the object, not the agent, governs the verb
+      en: imperfect, 3rd plural — the augment अ, and श्रु → शृणु before the ending
   - form: किन्तु
     lemma: किन्तु
     gloss: but
     notes:
     - term: अव्यय
       en: indeclinable — contrast
-  - form: न
-    lemma: न
-    gloss: not
-    notes:
-    - term: अव्यय
-      en: indeclinable — negation
   - form: कः
     lemma: किम्
     gloss: anyone
@@ -271,6 +248,12 @@
       en: object
     - term: द्वितीया
       en: accusative
+  - form: न
+    lemma: न
+    gloss: not
+    notes:
+    - term: अव्यय
+      en: indeclinable — negation
   - form: अवदत्
     lemma: वद्
     gloss: said
@@ -380,37 +363,27 @@
       en: masculine
     - term: एकवचन
       en: singular
-  - form: वरम्
-    lemma: वर
-    gloss: a boon
+  - form: च
+    lemma: च
+    gloss: and
     notes:
+    - term: अव्यय
+      en: '"and" — joins the two things the teacher did'
+  - form: आशीर्वादम्
+    lemma: आशीर्वाद
+    gloss: a blessing
+    notes:
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
     - term: कर्मन्
-      en: 'the boon the teacher gives the best pupil'
+      en: object
     - term: द्वितीया
-      en: accusative
-    - term: पुंलिङ्ग
-      en: पुंलिङ्ग
-    - term: पुंलिङ्ग
-      en: पुंलिङ्ग
+      en: accusative — what the teacher gives, with अददात्
   - form: अददात्
     lemma: दा
     gloss: gave
     notes:
     - term: लङ्
       en: imperfect
-  vyakhya: एकस्मिन्नाख्याने तरप्, कर्मधारयः, यक्, तसिल्, इष्ठन् (श्रेष्ठम्) — पञ्च शब्दप्रकाराः।
-  vyakhya_en: 'Degrees and a passive, in one scene. पटुः is the plain grade; पटुतरः the
-
-    **comparative** — पटु + तर, "cleverer of the two"; श्रेष्ठ the **superlative**,
-
-    the इष्ठन्-grade of प्रशस्य, "best of all." महाबुद्धिः is a **compound** —
-
-    महती बुद्धिः यस्य, "he whose mind is great." अश्रूयत is a **passive**: the यक्
-
-    stem turns श्रु into "is heard," so तत् (the question) becomes the प्रथमा and
-
-    सर्वैः (all who hear) the तृतीया — the object rises to subject, the agent
-
-    steps back. And ततः is a **तसिल् adverb**, तद् + तस्, "from that → thereupon."
-
-    '
