@@ -1,0 +1,131 @@
+- id: ex450
+  kind: graded
+  segment: 184
+  order: 11
+  sentence: 'ग्रामस्य समीपे द्वे महती वने स्तः। तयोः महतोः वनयोः व्याघ्राः वसन्ति।'
+  translation: 'Near the village there are two great forests. In those two great forests tigers live.'
+  teaches: 'महत् with a neuter dual: महती वने (nominative), महतोः वनयोः (locative).'
+  words:
+  - form: ग्रामस्य
+    lemma: ग्राम
+    gloss: 'of the village'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: सम्बन्ध
+      en: 'relation — समीप takes the genitive'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: समीपे
+    lemma: समीप
+    gloss: 'near'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: अधिकरण
+      en: 'location'
+    - term: सप्तमी
+      en: 'locative — "in the vicinity"'
+  - form: द्वे
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: विशेषण
+      en: 'qualifying वने'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: प्रथमा
+      en: 'nominative dual — neuter द्वे, like वने'
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: महती
+    lemma: महत्
+    gloss: 'great'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: विशेषण
+      en: 'qualifying वने'
+    - term: द्विवचन
+      en: 'dual'
+    - term: प्रथमा
+      en: 'neuter dual takes ई: महत् → महती, the same shape as the feminine'
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: वने
+    lemma: वन
+    gloss: 'forests'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: कर्तृ
+      en: 'agent'
+    - term: द्विवचन
+      en: 'dual'
+    - term: प्रथमा
+      en: 'अ-stem neuter dual in -ए'
+  - form: स्तः
+    lemma: अस्
+    gloss: 'are'
+    notes:
+    - term: लट्
+      en: 'present, 3rd person dual — two forests'
+  - form: तयोः
+    lemma: तद्
+    gloss: 'those'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun — picks up the two forests'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: महतोः
+    lemma: महत्
+    gloss: 'great'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: विशेषण
+      en: 'qualifying वनयोः'
+    - term: द्विवचन
+      en: 'dual'
+    - term: सप्तमी
+      en: 'locative dual -ओः; the weak stem महत्, no नुम्'
+    rel:
+    - kind: विशेषण
+      to: 8
+  - form: वनयोः
+    lemma: वन
+    gloss: 'forests'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: द्विवचन
+      en: 'dual'
+    - term: अधिकरण
+      en: 'where the tigers live'
+    - term: सप्तमी
+      en: 'locative dual'
+  - form: व्याघ्राः
+    lemma: व्याघ्र
+    gloss: 'tigers'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'agent'
+    - term: बहुवचन
+      en: 'plural'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: वसन्ति
+    lemma: वस्
+    gloss: 'live'
+    notes:
+    - term: लट्
+      en: 'present, plural'

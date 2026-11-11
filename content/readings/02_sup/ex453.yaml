@@ -1,0 +1,87 @@
+- id: ex453
+  kind: graded
+  segment: 184
+  order: 14
+  sentence: 'अयम् विवाहः द्वाभ्याम् महद्भ्याम् कुलाभ्याम् हितः।'
+  translation: 'This marriage is good for both great families.'
+  teaches: 'महत् neuter dative dual: महद्भ्याम् कुलाभ्याम्, with हित.'
+  words:
+  - form: अयम्
+    lemma: इदम्
+    gloss: 'this'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun — points at the marriage in hand'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'the subject, with विवाहः'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: विवाहः
+    lemma: विवाह
+    gloss: 'marriage'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: कर्तृ
+      en: 'the subject'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative'
+  - form: द्वाभ्याम्
+    lemma: द्वि
+    gloss: 'two'
+    notes:
+    - term: संख्या
+      en: 'numeral'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: विशेषण
+      en: 'qualifying कुलाभ्याम्'
+    - term: चतुर्थी
+      en: 'dative dual'
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: महद्भ्याम्
+    lemma: महत्
+    gloss: 'great'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: विशेषण
+      en: 'qualifying कुलाभ्याम्'
+    - term: द्विवचन
+      en: 'dual'
+    - term: चतुर्थी
+      en: 'dative dual — same shape as the instrumental'
+    rel:
+    - kind: विशेषण
+      to: 4
+  - form: कुलाभ्याम्
+    lemma: कुल
+    gloss: 'for the families'
+    notes:
+    - term: नपुंसकलिङ्ग
+      en: 'neuter'
+    - term: सम्प्रदान
+      en: 'the ones benefited — हित takes the चतुर्थी (2.3.73)'
+    - term: द्विवचन
+      en: 'dual'
+    - term: चतुर्थी
+      en: 'dative'
+  - form: हितः
+    lemma: हित
+    gloss: 'good'
+    notes:
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: एकवचन
+      en: 'number'
+    - term: प्रथमा
+      en: 'nominative — the predicate'
+    rel:
+    - kind: विधेय
+      to: 1
