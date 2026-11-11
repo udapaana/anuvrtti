@@ -2,9 +2,9 @@
   kind: graded
   segment: 176
   order: 1
-  sentence: 'देवदत्तः वदति — मित्र, ह्यः त्वम् कुत्र अगच्छः? अहम् त्वाम् ग्रामे न अपश्यम्, त्वम् अपि माम् न अपश्यः। यज्ञदत्तः वदति — अहम् मम पितुः गृहम् अगच्छम्। पिता मह्यम् फलानि अयच्छत्, मया सह उद्याने अक्रीडत् च। देवदत्तः वदति — तव पिता त्वयि स्निह्यति, मयि अपि। अहम् अपि तुभ्यम् फलम् यच्छामि। किम् त्वम् मत् बिभेषि? यज्ञदत्तः हसति — अहम् त्वत् न बिभेमि। त्वया सह अहम् सदा क्रीडामि।'
-  translation: 'Devadatta says: "Friend, where did you go yesterday? I did not see you in the village, and you did not see me." Yajñadatta says: "I went to my father''s house. Father gave me fruit and played with me in the garden." Devadatta says: "Your father is fond of you — and of me too. I will give you a fruit as well. Are you afraid of me?" Yajñadatta laughs: "I am not afraid of you. I always play with you."'
-  teaches: 'अहम् and त्वम् through every case of the singular, and the imperfect in the first and second person — अगच्छम्, अगच्छः, अपश्यम्, अपश्यः.'
+  sentence: 'देवदत्तः वदति — मित्र, ह्यः त्वम् मम पुस्तकम् नद्याम् अक्षिपः, ततः कुत्र अगच्छः? अहम् त्वाम् ग्रामे न अपश्यम्। यज्ञदत्तः वदति — अहम् मम पितुः गृहम् अगच्छम्। पिता मह्यम् फलानि अयच्छत्, मया सह उद्याने अक्रीडत् च। देवदत्तः वदति — तव पिता त्वयि स्निह्यति, मयि अपि। किम् त्वम् मत् बिभेषि? माम् पश्य — अहम् अपि तुभ्यम् फलम् यच्छामि। यज्ञदत्तः हसति — अहम् त्वत् न बिभेमि। त्वया सह अहम् सदा क्रीडामि।'
+  translation: 'Devadatta says: "Friend, yesterday you threw my book into the river — then where did you go? I did not see you in the village." Yajñadatta says: "I went to my father''s house. Father gave me fruit and played with me in the garden." Devadatta says: "Your father is fond of you — and of me too. Are you afraid of me? Look at me — I will give you a fruit as well." Yajñadatta laughs: "I am not afraid of you. I always play with you."'
+  teaches: 'अहम् and त्वम् through every case of the singular, and the imperfect in the first and second person — अगच्छम्, अगच्छः, अपश्यम्, अक्षिपः.'
   words:
   - form: देवदत्तः
     lemma: देवदत्त
@@ -42,6 +42,50 @@
       en: 'agent'
     - term: प्रथमा
       en: 'nominative'
+  - form: मम
+    lemma: अस्मद्
+    gloss: 'my'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्बन्ध
+      en: 'relation'
+    - term: षष्ठी
+      en: 'genitive'
+  - form: पुस्तकम्
+    lemma: पुस्तक
+    gloss: book
+    notes:
+    - term: कर्मन्
+      en: what was thrown — object of अक्षिपः
+    - term: द्वितीया
+      en: neuter accusative — अ-stem + अम् (7.1.24)
+  - form: नद्याम्
+    lemma: नदी
+    gloss: into the river
+    notes:
+    - term: अधिकरण
+      en: locative of the place the book landed
+    - term: सप्तमी
+      en: locative — ई-stem takes आम् (7.3.116)
+  - form: अक्षिपः
+    lemma: क्षिप्
+    gloss: you threw
+    notes:
+    - term: लङ्
+      en: imperfect, 2nd person singular — अ + क्षिप + स् → अक्षिपः
+    - term: मध्यमपुरुष
+      en: 'you — Devadatta accuses his friend'
+    - term: एकवचन
+      en: singular
+    - term: परस्मैपद
+      en: क्षिप् (तुदादि) takes परस्मैपद endings
+  - form: ततः
+    lemma: ततस्
+    gloss: after that
+    notes:
+    - term: अव्यय
+      en: adverb — "then", after the book went in
   - form: कुत्र
     lemma: कुत्र
     gloss: 'where'
@@ -94,28 +138,6 @@
     notes:
     - term: लङ्
       en: 'imperfect, 1st person singular — अ + पश्य + अम्'
-  - form: अपि
-    lemma: अपि
-    gloss: 'also'
-    notes:
-    - term: अव्यय
-      en: 'indeclinable'
-  - form: माम्
-    lemma: अस्मद्
-    gloss: 'me'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: अपश्यः
-    lemma: दृश्
-    gloss: 'you saw'
-    notes:
-    - term: लङ्
-      en: 'imperfect, 2nd person singular'
   - form: यज्ञदत्तः
     lemma: यज्ञदत्त
     gloss: 'Yajñadatta'
@@ -124,16 +146,6 @@
       en: 'the second speaker — agent of the saying verb'
     - term: प्रथमा
       en: 'nominative'
-  - form: मम
-    lemma: अस्मद्
-    gloss: 'my'
-    notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्बन्ध
-      en: 'relation'
-    - term: षष्ठी
-      en: 'genitive'
   - form: पितुः
     lemma: पितृ
     gloss: 'father''s'
@@ -260,30 +272,12 @@
       en: 'the object of affection'
     - term: सप्तमी
       en: 'locative'
-  - form: तुभ्यम्
-    lemma: युष्मद्
-    gloss: 'to you'
+  - form: अपि
+    lemma: अपि
+    gloss: 'also'
     notes:
-    - term: सर्वनाम
-      en: 'pronoun'
-    - term: सम्प्रदान
-      en: 'recipient'
-    - term: चतुर्थी
-      en: 'dative'
-  - form: फलम्
-    lemma: फल
-    gloss: 'a fruit'
-    notes:
-    - term: कर्मन्
-      en: 'object'
-    - term: द्वितीया
-      en: 'accusative'
-  - form: यच्छामि
-    lemma: दा
-    gloss: 'I give'
-    notes:
-    - term: लट्
-      en: 'present, 1st person singular'
+    - term: अव्यय
+      en: 'indeclinable'
   - form: किम्
     lemma: किम्
     gloss: '(question)'
@@ -308,6 +302,46 @@
     notes:
     - term: लट्
       en: 'present, 2nd person (भी is जुहोत्यादि: reduplicated)'
+  - form: माम्
+    lemma: अस्मद्
+    gloss: 'me'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: कर्मन्
+      en: 'object of पश्य — "look at me", a reassurance'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: पश्य
+    lemma: दृश्
+    gloss: look
+    notes:
+    - term: लोट्
+      en: imperative, 2nd person singular — दृश् takes the stem पश्य (7.3.78)
+  - form: तुभ्यम्
+    lemma: युष्मद्
+    gloss: 'to you'
+    notes:
+    - term: सर्वनाम
+      en: 'pronoun'
+    - term: सम्प्रदान
+      en: 'recipient'
+    - term: चतुर्थी
+      en: 'dative'
+  - form: फलम्
+    lemma: फल
+    gloss: 'a fruit'
+    notes:
+    - term: कर्मन्
+      en: 'object'
+    - term: द्वितीया
+      en: 'accusative'
+  - form: यच्छामि
+    lemma: दा
+    gloss: 'I give'
+    notes:
+    - term: लट्
+      en: 'present, 1st person singular'
   - form: हसति
     lemma: हस्
     gloss: 'laughs'
