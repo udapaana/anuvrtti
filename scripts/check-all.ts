@@ -43,10 +43,11 @@ const REVEAL_CEILING = 45;
  */
 const TEACHES_CEILING = 240;
 
+let lastExit = 0;
 async function run(cmd: string[]): Promise<string> {
   const p = Bun.spawn(cmd, { stdout: 'pipe', stderr: 'pipe' });
   const [out, err] = await Promise.all([new Response(p.stdout).text(), new Response(p.stderr).text()]);
-  await p.exited;
+  lastExit = await p.exited;
   return out + err;
 }
 
@@ -56,6 +57,18 @@ console.log('\n═══ corpus checks ═══\n');
 
 // 1. build — emits gloss/token mismatches
 const build = await run(['bun', 'scripts/build-readings.ts']);
+/*
+  A build that fails leaves the previous readings.json in place, and every
+  check below would then pass against stale data. That happened: a note with
+  an unquoted ': ' broke ex192's YAML, build-readings threw, and the check
+  reported all green on the corpus as it had been before the edit.
+*/
+if (lastExit !== 0) {
+  const why = build.split('\n').find((l) => /Error|error:/.test(l)) ?? 'see bun scripts/build-readings.ts';
+  console.log(`  ✗ build-readings failed — every check below would read stale data\n    ${why.trim()}`);
+  console.log('\nFAILED: the corpus does not build. Fix that first.');
+  process.exit(1);
+}
 const glossMatch = build.match(/gloss\/token mismatches in (\d+) reading/);
 const gloss = glossMatch ? Number(glossMatch[1]) : 0;
 if (gloss > GLOSS_BASELINE) {
