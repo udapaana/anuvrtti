@@ -82,6 +82,7 @@ export function samhitaOf(sentence: string, padaAt: (clean: string, ti: number) 
   const raw = sentence.replace(/॥/g, ' ॥ ').replace(/।/g, ' । ').split(/\s+/).filter(Boolean);
   const out: { slp: string; trail: string; from: number[]; punct?: string }[] = [];
   let open = false;   // can the last written token still join the next?
+  let lastPada = '';  // the pada most recently written, as authored
   raw.forEach((tx, ti) => {
     const clean = tx.replace(PUNCT, '').trim();
     const trail = tx.slice(tx.replace(/[।॥,;—"“”?!:()]+$/, '').length);
@@ -90,6 +91,17 @@ export function samhitaOf(sentence: string, padaAt: (clean: string, ti: number) 
     if (/[→+=]/.test(clean)) { out.push({ slp: '', trail: '', from: [ti], punct: tx }); open = false; return; }
     const cur = underlying(tr(clean, 'devanagari', 'slp1'), padaAt(clean, ti));
     const last = out[out.length - 1];
+    /*
+      6.1.132 एतत्तदोः सुलोपोऽकोरनञ्समासे हलि: सः and एषः lose their ending
+      before a consonant — स गच्छति, स च, एष नरः — where the general visarga
+      rules would write सो गच्छति and सश्च. vidyut-sandhi does not know which
+      word it is joining, so the build does.
+    */
+    if (open && last && lastPada && /^(सः|एषः)$/.test(lastPada) && !VOWEL.test(cur)) {
+      last.slp = last.slp.replace(/s$/, '');
+      out.push({ slp: cur, trail, from: [ti] });
+      lastPada = clean; open = !trail; return;
+    }
     if (open && last) {
       const j = join(last.slp, cur);
       const sp = j.lastIndexOf(' ');
@@ -99,6 +111,7 @@ export function samhitaOf(sentence: string, padaAt: (clean: string, ti: number) 
       out.push({ slp: cur, trail, from: [ti] });
     }
     open = !trail;   // punctuation is a pause: no sandhi across it
+    lastPada = clean;
   });
   return out.map((o) =>
     o.punct !== undefined
