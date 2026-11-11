@@ -1,0 +1,166 @@
+- id: rd105
+  kind: attested
+  segment: 404
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 3.62.3 — how Rāma was won"
+    curated: "the whole verse, word-separated (pausa forms; compounds kept whole); every form is Vālmīki's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_rAmAyaNa, R_3.062.003). Sītā is gone and Rāma is lost in grief; Lakṣmaṇa, pressing his feet, reminds him what his life cost their father."
+  sentence: महता तपसा राम महता च अपि कर्मणा। राज्ञा दशरथेन आसीत् लब्धः अमृतम् इव अमरैः॥
+  translation: By great austerity, O Rāma, and by great rites as well, you were won by King Daśaratha — as the immortals won the nectar.
+  teaches: |
+    the neuter instrumental of महत् — महता, twice: महता तपसा "by great
+    austerity" (an अस्-stem neuter) and महता कर्मणा "by great rites" (an
+    अन्-stem neuter); the agent of a passive participle in the instrumental,
+    राज्ञा दशरथेन; and a simile with इव.
+  words:
+  - form: महता
+    lemma: महत्
+    gloss: great
+    notes:
+    - term: विशेषण
+      en: qualifying तपसा — महत् takes the gender of its noun, here neuter
+    - term: नपुंसकलिङ्ग
+      en: 'neuter, agreeing with तपस्'
+    - term: तृतीया
+      en: 'instrumental — the weak stem महत् + आ (टा); the strong महान्त् is only for the direct cases'
+    rel:
+    - kind: विशेषण
+      to: 1
+  - form: तपसा
+    lemma: तपस्
+    gloss: by austerity
+    vocab: true
+    notes:
+    - term: करण
+      en: the means by which the son was won
+    - term: तृतीया
+      en: 'instrumental — अस्-stem neuter तपस् + आ → तपसा'
+  - form: राम
+    lemma: राम
+    gloss: O Rāma
+    notes:
+    - cite: '2.3.47'
+      role: सम्बोधने च — in address, the सम्बोधन form → राम
+    - term: एकवचन
+      en: singular
+    - term: सम्बोधन
+      en: 'vocative — Lakṣmaṇa speaks to his brother; the bare stem, no ending'
+  - form: महता
+    lemma: महत्
+    gloss: great
+    notes:
+    - term: विशेषण
+      en: qualifying कर्मणा — again neuter, since कर्मन् is neuter
+    - term: नपुंसकलिङ्ग
+      en: 'neuter, agreeing with कर्मन्'
+    - term: तृतीया
+      en: 'instrumental — the same महता, now with a second neuter noun'
+    rel:
+    - kind: विशेषण
+      to: 6
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — joins the rites to the austerity
+  - form: अपि
+    lemma: अपि
+    gloss: also, as well
+    notes:
+    - term: अव्यय
+      en: '"as well" — with च, "and also"'
+  - form: कर्मणा
+    lemma: कर्मन्
+    gloss: by rites, by ritual acts
+    notes:
+    - term: करण
+      en: the second means — the sacrifices Daśaratha performed
+    - term: तृतीया
+      en: 'instrumental — अन्-stem कर्मन् loses its अ before the vowel ending: कर्म्न् + आ → कर्मणा'
+  - form: राज्ञा
+    lemma: राजन्
+    gloss: by the king
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: the agent of the passive participle लब्धः
+    - cite: '2.3.18'
+      role: कर्तृकरणयोस्तृतीया — the agent of a passive stands in the तृतीया
+    - term: तृतीया
+      en: 'instrumental — राजन् drops its अ: राज्न् + आ → राज्ञा'
+  - form: दशरथेन
+    lemma: दशरथ
+    gloss: Daśaratha
+    notes:
+    - term: विशेषण
+      en: in apposition to राज्ञा — "by the king, Daśaratha"
+    - term: कर्तृ
+      en: names the agent, with राज्ञा
+    - term: तृतीया
+      en: instrumental, agreeing with राज्ञा
+    rel:
+    - kind: विशेषण
+      to: 7
+  - form: आसीत्
+    lemma: अस्
+    gloss: was
+    notes:
+    - term: लङ्
+      en: 'imperfect of अस् "be" — with लब्धः, "(you) were won"'
+  - form: लब्धः
+    lemma: लभ्
+    gloss: won, obtained
+    notes:
+    - term: कृदन्त
+      en: 'past participle of लभ् "obtain," passive — "obtained"'
+    - term: क्त
+      en: 'क्त → त; भ् + त becomes ब्ध (8.2.40), लभ् → लब्ध'
+    - term: कर्मणि
+      en: 'passive: Rāma is what was obtained, the king the one who obtained'
+    - term: प्रथमा
+      en: nominative — it describes Rāma, the one addressed
+    - term: पुंलिङ्ग
+      en: masculine, for Rāma
+    - term: एकवचन
+      en: singular
+  - form: अमृतम्
+    lemma: अमृत
+    gloss: the nectar of immortality
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: what the immortals won — the standard of the simile
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: एकवचन
+      en: singular
+    - term: प्रथमा
+      en: 'nominative — it stands where Rāma stands in the sentence: "as nectar (was won)"'
+  - form: इव
+    lemma: इव
+    gloss: as, like
+    notes:
+    - term: अव्यय
+      en: marks the simile — Rāma won as the nectar was won
+  - form: अमरैः
+    lemma: अमर
+    gloss: by the immortals
+    notes:
+    - term: कर्तृ
+      en: the agent of the compared winning, parallel to राज्ञा
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: बहुवचन
+      en: plural
+    - term: तृतीया
+      en: instrumental plural
+  vyakhya: 'लक्ष्मणवचनम्। महता तपसा महता कर्मणा इति करणे तृतीया; महता इति नपुंसके महच्छब्दस्य तृतीयैकवचनम्। राज्ञा दशरथेन इति कर्तरि तृतीया, लब्धः इति कर्मणि क्तः। अमरैः अमृतम् इव इति उपमा।'
+  vyakhya_en: |
+    Lakṣmaṇa reminds his grieving brother what he is worth: Daśaratha won him
+    **महता तपसा, महता कर्मणा** — "by great austerity, by great rites." The one
+    adjective serves two neuter nouns, तपस् and कर्मन्, and so stands twice in
+    its neuter instrumental, महता: the weak stem महत् with the ending आ. The
+    sentence is passive — लब्धः "obtained," with the winner, राज्ञा दशरथेन, in
+    the instrumental — and it closes on the oldest of comparisons: as the gods
+    won the nectar from the churned ocean.

@@ -1,0 +1,148 @@
+- id: rd109
+  kind: attested
+  segment: 408
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 5.25.31 — Trijaṭā's counsel"
+    curated: "the whole verse, word-separated (pausa forms; compounds kept whole); every form is Vālmīki's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_rAmAyaNa, R_5.025.031). Trijaṭā has dreamt of Rāvaṇa's fall, and tells the rākṣasīs guarding Sītā to beg her pardon."
+  sentence: प्रणिपातप्रसन्ना हि मैथिली जनकात्मजा। अलम् एषा परित्रातुम् राक्षस्यः महतः भयात्॥
+  translation: For Maithilī, Janaka's daughter, is won over by a bow at her feet; she is able, rākṣasīs, to save you from great danger.
+  teaches: |
+    the neuter ablative of महत् — महतः भयात् "from great danger," the ablative
+    of what one is saved from; अलम् with an infinitive, "able to (save)"; and
+    a feminine vocative plural in address, राक्षस्यः.
+  words:
+  - form: प्रणिपातप्रसन्ना
+    lemma: प्रणिपातप्रसन्न
+    gloss: won over by a bow
+    vocab: true
+    notes:
+    - text: 'विग्रह: प्रणिपातेन प्रसन्ना — "pleased by prostration"'
+    - term: तत्पुरुष
+      en: 'compound — प्रणिपातेन प्रसन्ना, "appeased by a bow at the feet" (तृतीया-तत्पुरुष)'
+    - term: विशेषण
+      en: predicate of मैथिली
+    - term: स्त्रीलिङ्ग
+      en: feminine, with टाप्
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: हि
+    lemma: हि
+    gloss: for
+    notes:
+    - term: अव्यय
+      en: '"for" — gives the reason the rākṣasīs should bow to her'
+  - form: मैथिली
+    lemma: मैथिली
+    gloss: Maithilī, the princess of Mithilā
+    notes:
+    - term: तद्धित
+      en: 'मिथिला + अण् "of Mithilā," feminine in ई — Sītā by her city'
+    - term: अण्
+      en: 'अण् with वृद्धि: मि → मै, मिथिला → मैथिल, feminine मैथिली'
+    - term: तस्येदम्
+      en: '"belonging to Mithilā"'
+    - term: कर्तृ
+      en: the subject — Sītā
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
+    - term: प्रथमा
+      en: nominative
+  - form: जनकात्मजा
+    lemma: जनकात्मजा
+    gloss: Janaka's daughter
+    notes:
+    - text: 'विग्रह: जनकस्य आत्मजा — "the daughter of Janaka"'
+    - term: तत्पुरुष
+      en: 'compound — जनकस्य आत्मजा (षष्ठी-तत्पुरुष)'
+    - term: विशेषण
+      en: in apposition to मैथिली
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 2
+  - form: अलम्
+    lemma: अलम्
+    gloss: able, enough
+    notes:
+    - term: अव्यय
+      en: '"able" — with the infinitive परित्रातुम्, "able to save"'
+    - term: निपात
+      en: a particle of capacity
+  - form: एषा
+    lemma: एतद्
+    gloss: she
+    notes:
+    - term: सर्वनाम
+      en: '"this one" — Sītā, sitting before them'
+    - term: कर्तृ
+      en: subject of अलम्
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: प्रथमा
+      en: nominative
+  - form: परित्रातुम्
+    lemma: त्रै
+    gloss: to save, protect
+    vocab: true
+    notes:
+    - term: उपसर्ग
+      en: 'परि + त्रै "protect all round"'
+    - term: तुमुन्
+      en: 'infinitive — त्रै + तुमुन् → त्रातुम्, completing अलम्'
+  - form: राक्षस्यः
+    lemma: राक्षसी
+    gloss: O rākṣasīs
+    notes:
+    - cite: '2.3.47'
+      role: सम्बोधने च — in address, the सम्बोधन form → राक्षस्यः
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: बहुवचन
+      en: plural
+    - term: सम्बोधन
+      en: 'vocative — Trijaṭā turns to the guards; ई-stem plural, ई → य् before अस्'
+  - form: महतः
+    lemma: महत्
+    gloss: great
+    notes:
+    - term: विशेषण
+      en: qualifying भयात् — neuter, as भय is
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: एकवचन
+      en: singular
+    - term: पञ्चमी
+      en: 'ablative — weak stem महत् + अस् (ङसि) → महतः'
+    rel:
+    - kind: विशेषण
+      to: 9
+  - form: भयात्
+    lemma: भय
+    gloss: from danger
+    vocab: true
+    notes:
+    - term: अपादान
+      en: 'what one is saved from'
+    - cite: '1.4.25'
+      role: भीत्रार्थानां भयहेतुः — with verbs of fear and protection, the source of danger is अपादान
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: एकवचन
+      en: singular
+    - term: पञ्चमी
+      en: ablative
+  vyakhya: 'त्रिजटावचनम्। अलम् इति शक्तौ, परित्रातुम् इति तुमुन्। महतः भयात् इति भीत्रार्थानां भयहेतुः इत्यपादाने पञ्चमी; महतः इति नपुंसके महच्छब्दस्य पञ्चम्येकवचनम्। राक्षस्यः इति सम्बोधनबहुवचनम्।'
+  vyakhya_en: |
+    Trijaṭā has dreamt of Laṅkā's ruin and counsels her fellow guards: bow to
+    Sītā, for she forgives at a bow, and अलम् एषा परित्रातुम् — "she is able to
+    save (you)." From what? **महतः भयात्**, "from great danger": with a verb of
+    protecting, the danger stands in the ablative (1.4.25), and महत् follows
+    the neuter भय into the ablative singular, महतः. राक्षस्यः is the address —
+    the feminine ई-stem plural, said to the rākṣasīs themselves.

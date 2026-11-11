@@ -1,0 +1,172 @@
+- id: rd108
+  kind: attested
+  segment: 407
+  source:
+    text: रामायण
+    ref: "Rāmāyaṇa 4.36.26 — the monkey army gathers"
+    curated: "the whole verse, word-separated (pausa forms; compounds kept whole); every form is Vālmīki's. From Ambuda's GRETIL edition (ambuda-org/gretil, sa_rAmAyaNa, R_4.036.026). Sugrīva has summoned the monkeys of every land to search for Sītā, and they pour in."
+  sentence: वनेभ्यः गह्वरेभ्यः च सरिद्भ्यः च महाजवाः। आगच्छत् वानरी सेना पिबन्ती इव दिवाकरम्॥
+  translation: From the forests, from the caves and from the rivers the swift ones came — a monkey army, as if drinking up the sun.
+  teaches: |
+    three ablative plurals of "whence" — वनेभ्यः, गह्वरेभ्यः and सरिद्भ्यः
+    "from the rivers," the last a feminine त्-stem, सरित् + भ्यस् with त्
+    voiced to द्; a feminine present participle, पिबन्ती "drinking," in an
+    इव simile.
+  words:
+  - form: वनेभ्यः
+    lemma: वन
+    gloss: from the forests
+    notes:
+    - term: अपादान
+      en: the point they set out from
+    - cite: '1.4.24'
+      role: ध्रुवमपायेऽपादानम् — the fixed point of departure is the अपादान
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: बहुवचन
+      en: plural
+    - term: पञ्चमी
+      en: 'ablative plural — अ-stem + भ्यस्, अ lengthened to ए: वनेभ्यः'
+  - form: गह्वरेभ्यः
+    lemma: गह्वर
+    gloss: from the caves
+    vocab: true
+    notes:
+    - term: अपादान
+      en: a second point of departure
+    - term: नपुंसकलिङ्ग
+      en: neuter
+    - term: बहुवचन
+      en: plural
+    - term: पञ्चमी
+      en: ablative plural
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — joins the caves to the forests
+  - form: सरिद्भ्यः
+    lemma: सरित्
+    gloss: from the rivers
+    vocab: true
+    notes:
+    - term: अपादान
+      en: the third point of departure
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: बहुवचन
+      en: plural
+    - term: पञ्चमी
+      en: 'ablative plural — त्-stem सरित् + भ्यस्; त् voiced to द् before भ्: सरिद्भ्यः'
+  - form: च
+    lemma: च
+    gloss: and
+    notes:
+    - term: अव्यय
+      en: and — adds the rivers
+  - form: महाजवाः
+    lemma: महाजव
+    gloss: the swift ones
+    vocab: true
+    notes:
+    - text: 'विग्रह: महान् जवः येषाम् — "whose speed is great"'
+    - term: बहुव्रीहि
+      en: '"having great speed" — महत् shortens to महा in the compound'
+    - term: विशेषण
+      en: describes the monkeys of the army — plural by sense, though सेना is singular
+    - term: कर्तृ
+      en: the comers, named by their speed — the army's monkeys
+    - term: पुंलिङ्ग
+      en: masculine, for the monkeys
+    - term: बहुवचन
+      en: plural
+    - term: प्रथमा
+      en: nominative
+  - form: आगच्छत्
+    lemma: गम्
+    gloss: came
+    notes:
+    - term: उपसर्ग
+      en: 'आ + गम् "go towards," i.e. come'
+    - term: लङ्
+      en: 'imperfect — the augment अ fuses with आ: आ + अगच्छत् → आगच्छत्'
+  - form: वानरी
+    lemma: वानर
+    gloss: of monkeys
+    notes:
+    - term: तद्धित
+      en: 'वानर + अण् "belonging to monkeys," feminine with ङीप् to agree with सेना'
+    - term: अण्
+      en: 'अण् brings वृद्धि of the first vowel — वानर already has आ'
+    - term: तस्येदम्
+      en: '"its" — the army that is the monkeys'''
+    - term: विशेषण
+      en: qualifying सेना
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 8
+  - form: सेना
+    lemma: सेना
+    gloss: army
+    vocab: true
+    notes:
+    - term: कर्तृ
+      en: subject of आगच्छत्
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
+    - term: प्रथमा
+      en: nominative
+  - form: पिबन्ती
+    lemma: पा
+    gloss: drinking
+    notes:
+    - term: कृदन्त
+      en: 'present participle of पा "drink" (stem पिब)'
+    - term: शतृ
+      en: 'शतृ → पिबत्, feminine with ङीप् and the nasal: पिबन्ती'
+    - term: विशेषण
+      en: qualifying सेना
+    - term: स्त्रीलिङ्ग
+      en: feminine
+    - term: एकवचन
+      en: singular
+    - term: प्रथमा
+      en: nominative
+    rel:
+    - kind: विशेषण
+      to: 8
+  - form: इव
+    lemma: इव
+    gloss: as if
+    notes:
+    - term: अव्यय
+      en: '"as if" — the dust of the army seems to swallow the sun'
+  - form: दिवाकरम्
+    lemma: दिवाकर
+    gloss: the sun
+    vocab: true
+    notes:
+    - term: कर्मन्
+      en: object of पिबन्ती
+    - term: पुंलिङ्ग
+      en: masculine
+    - term: एकवचन
+      en: singular
+    - term: द्वितीया
+      en: accusative
+  vyakhya: 'सुग्रीवाज्ञया वानराः आगच्छन्। वनेभ्यः गह्वरेभ्यः सरिद्भ्यः इति अपादाने पञ्चमी; सरिद्भ्यः इति सरिच्छब्दस्य स्त्रीलिङ्गे पञ्चमीबहुवचनम्। वानरी इति तस्येदम् इत्यण्, ङीप्। पिबन्ती इति शत्रन्तं स्त्रियाम्।'
+  vyakhya_en: |
+    Sugrīva's summons has gone out, and the monkeys come from everywhere — the
+    three sources stand in the ablative of separation: वनेभ्यः "from the
+    forests," गह्वरेभ्यः "from the caves," **सरिद्भ्यः** "from the rivers."
+    सरित् is a feminine त्-stem; before भ्यस् its त् is voiced, सरिद्भ्यः. The
+    army, singular and feminine (सेना, qualified by वानरी "of monkeys"), is
+    pictured with a feminine participle — पिबन्ती इव दिवाकरम्, "as if drinking
+    up the sun," so thick is their dust.
