@@ -1545,12 +1545,18 @@ async function main() {
   // rail can show the WORD'S OWN paradigm — नर's table for a नर-word — instead of
   // one of four fixed exemplars. Devanagari lemma key → {विभक्ति|वचन → form}.
   const nounParadigms: Record<string, Record<string, string>> = {};
+  const nounVariants: Record<string, Record<string, string[]>> = {};
   for (const [stem, info] of stemInfo) {
     if (info.isPronoun || info.isSarvadi || !info.linga) continue;
     try {
       const grid = paradigmOf(info.stemSlp, info.linga); // {cell → forms[]}
       const flat: Record<string, string> = {};
       for (const [cell, forms] of Object.entries(grid)) if (forms[0]) flat[cell] = forms[0];
+      // a cell with more than one correct form (रात्र्याम् / रात्रौ, 7.3.117–
+      // 7.3.119 for इ-feminines) keeps the rest, so the rail can show the one
+      // the word actually is
+      for (const [cell, forms] of Object.entries(grid))
+        if (forms.length > 1) ((nounVariants[stem] ??= {})[cell] = forms);
       if (Object.keys(flat).length) nounParadigms[stem] = flat;
     } catch { /* stem vidyut cannot decline — no table */ }
   }
@@ -1997,6 +2003,7 @@ async function main() {
     ganas: ganaIndex,
     nounParadigms,
     verbParadigms,
+    nounVariants,
     sections: [
       {
         kind: 'subanta',

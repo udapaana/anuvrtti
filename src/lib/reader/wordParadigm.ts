@@ -37,12 +37,14 @@ export interface ResolvedParadigm {
 export interface ParadigmData {
   nounParadigms: Record<string, Record<string, string>>;
   verbParadigms: Record<string, Record<string, Record<string, string>>>; // root → लकार → cell → form
+  nounVariants?: Record<string, Record<string, string[]>>; // stem → cell → every correct form
 }
 
 export function paradigmIndex(usage: any): ParadigmData {
   return {
     nounParadigms: usage?.nounParadigms ?? {},
-    verbParadigms: usage?.verbParadigms ?? {}
+    verbParadigms: usage?.verbParadigms ?? {},
+    nounVariants: usage?.nounVariants ?? {}
   };
 }
 
@@ -175,5 +177,14 @@ export function resolve(
   const vacIdx = VACANA.findIndex((x) => terms.includes(x));
   const col = vacIdx >= 0 ? vacIdx : 0;
   const { grid, row, col: c } = toGrid(para, VIBHAKTI, VACANA, vib, col);
+  /*
+    A cell can hold two correct forms — रात्र्याम् and रात्रौ are both the
+    locative of रात्रि — and the table shows one. When the word is the other,
+    the lit cell shows the word first, so the table never contradicts it.
+  */
+  const lit = row >= 0 && c >= 0 ? grid.rows[row].cells[c] : '';
+  const alts = data.nounVariants?.[stem]?.[`${VIBHAKTI[row]}|${VACANA[c]}`] ?? [];
+  if (lit && deaccent(lit) !== bare && alts.some((f) => deaccent(f) === bare))
+    grid.rows[row].cells[c] = `${form} / ${lit}`;
   return { stem, lakara: null, kind: 'declension', grid, row, col: c };
 }
