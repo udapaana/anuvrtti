@@ -61,47 +61,51 @@ The locative can express simultaneous action.
 
 ---
 
-## reading - Truth and Kindness
+## reading - Lift Yourself
 
-**Source:** Manusmṛti
+**Source:** Bhagavad Gītā 6.5
 
-@deva[सत्यं ब्रूयात् प्रियं ब्रूयात् न ब्रूयात् सत्यमप्रियम्]
+@deva[उद्धरेदात्मनात्मानं नात्मानमवसादयेत्]
 
 Split:
-- @deva[सत्यमप्रियम्] = @deva[सत्यम् अप्रियम्] (a + a → ā)
+- @deva[उद्धरेदात्मनात्मानम्] = @deva[उद्धरेत् आत्मना आत्मानम्] (त् → द् before a vowel; a + ā → ā)
+- @deva[नात्मानमवसादयेत्] = @deva[न आत्मानम् अवसादयेत्] (a + ā → ā)
 
 Parse:
-- @deva[सत्यम्] — "truth" (acc.)
-- @deva[ब्रूयात्] — "one should speak" (optative)
-- @deva[प्रियम्] — "pleasant" (acc.)
-- @deva[अप्रियम्] — "unpleasant"
+- @deva[उद्धरेत्] — "one should lift up" (optative of उद् + हृ)
+- @deva[आत्मना] — "by oneself" (instr.)
+- @deva[आत्मानम्] — "oneself" (acc.)
+- @deva[अवसादयेत्] — "one should cause to sink" (optative, causative of अव + सद्)
 
-**Translation:** "One should speak truth; one should speak pleasantly; one should not speak truth that is unpleasant."
+**Translation:** "One should lift oneself up by oneself; one should not let oneself sink."
 
 ---
 
 ## reading - Continued
 
-@deva[प्रियं च नानृतं ब्रूयात् एष धर्मः सनातनः]
+@deva[आत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः]
 
 Split:
-- @deva[नानृतम्] = @deva[न अनृतम्] (a + a → ā)
+- @deva[आत्मैव] = @deva[आत्मा एव] (ā + e → ai)
+- @deva[ह्यात्मनो] = @deva[हि आत्मनः] (i → y before a vowel; aḥ → o before a voiced sound)
+- @deva[बन्धुरात्मैव] = @deva[बन्धुः आत्मा एव] (visarga → r before a vowel)
+- @deva[रिपुरात्मनः] = @deva[रिपुः आत्मनः]
 
 Parse:
-- @deva[प्रियम्] — "pleasant"
-- @deva[च] — "and"
-- @deva[अनृतम्] — "falsehood"
-- @deva[एषः] — "this"
-- @deva[धर्मः] — "dharma"
-- @deva[सनातनः] — "eternal"
+- @deva[आत्मा] — "the self" (nom.)
+- @deva[एव] — "alone, indeed"
+- @deva[हि] — "for"
+- @deva[आत्मनः] — "of oneself" (gen.)
+- @deva[बन्धुः] — "friend"
+- @deva[रिपुः] — "enemy"
 
-**Translation:** "Nor should one speak pleasant falsehood — this is the eternal dharma."
+**Translation:** "For the self alone is one's friend, the self alone one's enemy."
 
 ---
 
 ## concept - The Optative Mood
 
-@deva[ब्रूयात्] "one should speak" is the **optative** — expressing what ought to be done:
+@deva[उद्धरेत्] "one should lift up" is the **optative** — expressing what ought to be done:
 
 - @deva[गच्छेत्] — "one should go"
 - @deva[वदेत्] — "one should speak"
@@ -116,7 +120,7 @@ We'll learn this fully later.
 You've read verses with:
 - Sandhi splitting (@deva[नानृतम्] = @deva[न अनृतम्])
 - Locative absolute (@deva[सुप्तेषु])
-- Optative mood (@deva[ब्रूयात्])
+- Optative mood (@deva[उद्धरेत्], @deva[अवसादयेत्])
 - Compounds (@deva[दुरतिक्रमः])
 
 **Next:** Simple compounds — tatpuruṣa and more.
