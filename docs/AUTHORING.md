@@ -544,7 +544,7 @@ The texts are pinned like the grammar engine: URL and sha256 in
 `data/texts.json`, fetched into the git-ignored `data/texts/` — currently the
 Rāmāyaṇa, Hitopadeśa, Bhaṭṭikāvya (written to illustrate Pāṇini), five works of
 Kālidāsa and Bhāravi, the Vetāla tales, Daśakumāracarita, Buddhacarita,
-Manusmṛti and the Mahāsubhāṣitasaṃgraha, all from GRETIL. To add one, append it
+Bhartṛhari's Nītiśataka and the Mahāsubhāṣitasaṃgraha, all from GRETIL. To add one, append it
 to the manifest with its sha256.
 
 ## How a reading reaches the app
