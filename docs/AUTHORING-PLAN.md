@@ -59,15 +59,21 @@ frequency.
 ## Whole texts
 
 ### Which, and in what order
-The traditional first-reader sequence still holds, and all but one are pinned:
+Order is set by the readiness score below, not by tradition — the owner's
+condition is that each text is calibrated to where the reader is. Candidates,
+all pinned or already read from:
 
-| # | text | why first/next | length | pinned |
-|---|------|----------------|--------|--------|
-| 1 | **Hitopadeśa — one complete kathā** (e.g. Mitralābha's crow, deer and jackal) | prose + verse, the plainest narrative Sanskrit, already a chapter | ~80 sentences | yes |
-| 2 | **Vetālapañcaviṃśati — tale 1** | continuous prose narrative, a frame and a riddle | ~120 sentences | yes |
-| 3 | **Nalopākhyāna** (Mahābhārata 3.50–78) | the classic first long text; plain epic śloka | ~1,000 verses, read in sections | **no — pin GRETIL MBh** |
-| 4 | **Kaṭhopaniṣad**, whole (chapter exists, 3 readings) | short, famous, a dialogue | 119 verses | partly |
-| 5 | **Raghuvaṃśa canto 1 / Meghadūta** | the step to kāvya | 95 / 111 verses | yes |
+| text | shape | notes |
+|------|-------|-------|
+| **Pañcatantra — one complete tale** | prose frame + embedded verses | already a chapter (12 attested readings, GRETIL Jha ed.); its prose is the plainest narrative Sanskrit — the Hitopadeśa is a later reworking of it |
+| **Hitopadeśa — one complete kathā** | prose + verse | already a chapter; slightly more ornate than the Pañcatantra |
+| **Vetālapañcaviṃśati — tale 1** (from the Kathāsaritsāgara) | continuous narrative with a frame and a riddle | pinned; the way into the Kathāsaritsāgara (≈22,000 ślokas whole) |
+| **Kaṭhopaniṣad**, whole | 119 verses, a dialogue | three verses already read |
+| **Nalopākhyāna** (MBh 3.50–78) | ~1,000 epic ślokas, read in sections | needs the Mahābhārata pinned — deferred by the owner |
+| **Raghuvaṃśa canto 1 / Meghadūta** | kāvya | pinned; later |
+
+The likely first is a Pañcatantra tale; the readiness score decides between it
+and the Hitopadeśa kathā.
 
 ### When a reader can handle one — measured, not guessed
 "Graded" can be made exact. Every annotated word already resolves to a cell
@@ -89,27 +95,45 @@ Nala belongs relative to the Hitopadeśa, instead of tradition saying so.
 - Saṃhitā by default (a whole text is read as written), padaccheda on demand,
   verse numbers in the margin, the rail and quiz exactly as for readings.
 
-### How a text is annotated — the real cost
-The "born complete" gate (every word fully typed and noted) is what today's
-readings meet, and it is slow: the whole corpus so far is ~7,700 words, and
-Nala alone is roughly as long again. So texts get a lighter contract:
-- **Required**: padas (sandhi undone), lemma and gloss for every word, the
-  case/लकार tags the build cannot derive. The build already derives gender,
-  number, person, pada, gaṇa and kṛt from vidyut; for texts it also proposes
-  the lemma and cell for every token and the author confirms.
-- **Notes only where they teach**: a word's first meeting in the corpus, a
-  form not yet met, a hard construction. Everything else falls back on the
-  glossary, which now covers every tag.
-- `check-new-readings` gets a `text` profile that gates on the required set,
-  not on notes.
+### How a text is annotated — generated, not hand-typed
+Owner's direction: generate the data with vidyut rather than hard-coding it,
+and link out to a dictionary rather than writing glosses. So a text is
+annotated by the build, and the author only confirms and adds:
+
+- **Segmentation and analysis from vidyut.** The repo builds two vidyut crates
+  today (prakriya, sandhi). The same project has **vidyut-cheda** (splits a
+  saṃhitā into padas) and **vidyut-kosha** (every derivable form → lemma and
+  analysis). Built at the pinned `VIDYUT_REV` and run at build time (Node, not
+  the browser — the kosha is large), they give each token its padas, lemma,
+  case/number/gender or लकार/person/number, with alternatives where a form is
+  ambiguous.
+- **Disambiguation is the author's one job.** Where vidyut returns more than
+  one analysis (देवौ: nominative or accusative dual), the author picks; a
+  small overrides file per section holds only those choices. Everything else
+  is regenerated on every build, so an engine improvement improves every text.
+- **Meanings from the dictionary.** Monier-Williams is already imported
+  (`scripts/import-mw.ts`, used for genders). The rail shows the MW headword
+  sense for the lemma and links to the full entry (Cologne digital MW / Ambuda);
+  a hand gloss only where the sense in context is not MW's first.
+- **Notes only where they teach**: a form the corpus has not met, a hard
+  construction. The glossary covers every tag, so the rail always explains.
+- `check-new-readings` gets a `text` profile: every token segmented and
+  analysed (vidyut or override), every lemma linked; no notes required.
 
 ### First milestone
-One Hitopadeśa kathā, end to end: the readiness script, the `text` kind and
-shelf, the lighter gate, the kathā itself annotated. That proves the pipeline
-on ~80 sentences before committing to Nala.
+1. The readiness script, run over the candidate texts — so the first choice is
+   measured.
+2. vidyut-cheda and vidyut-kosha built at the pin; a build step that analyses
+   a text's sections and reports what it could not settle.
+3. The `text` kind, shelf and gate, with MW meanings and links.
+4. One complete Pañcatantra (or Hitopadeśa) tale through it end to end.
 
-## Decisions for the owner
-1. First text: a Hitopadeśa kathā (recommended), or straight to Nala?
-2. The lighter annotation contract for texts — acceptable?
-3. Pin the Mahābhārata (GRETIL) for Nala now, so the readiness numbers can be
-   run on it early?
+## Decisions taken
+- First text: any of the candidates, chosen by measured readiness (owner).
+- Annotation: generated by vidyut, meanings linked to a dictionary (owner).
+- Mahābhārata: not pinned yet (owner).
+
+## Notes
+- The 18 owed paradigm cells were searched for in all 13 pinned texts: none
+  occurs as an address or in that case. They stay owed; a text that addresses
+  seasons, rivers or directions (Ṛtusaṃhāra, stotras) is where they live.
