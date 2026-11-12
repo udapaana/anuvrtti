@@ -225,18 +225,43 @@ for (const e of entries as (Entry & { _s?: number[]; _h?: string[]; _i?: number[
     delete e._s; delete e._h; delete e._i;
   }
 }
+/*
+  Human review, applied on top of the matcher and kept across re-runs. Every
+  content/texts/mahabharata-condensed/review-*.json is a list of decisions
+  keyed by the OCR line the entry starts on (stable while the OCR pin holds):
+    { "ocr_line": 1234, "sarit_id": "adi-1-152-8", "reason": "…" }   place it
+    { "ocr_line": 1234, "critical": "14,071.012", "reason": "…" }     only in the critical edition
+    { "ocr_line": 1234, "skip": true, "reason": "…" }                 not a verse (invocation, junk)
+  A reviewed entry is band 'reviewed'; the matcher never overrides it.
+*/
+const REVIEW_DIR = path.join(process.cwd(), 'content/texts/mahabharata-condensed');
+const reviews = new Map<number, any>();
+for (const f of fs.existsSync(REVIEW_DIR) ? fs.readdirSync(REVIEW_DIR).filter((f) => /^review-.*\.json$/.test(f)) : [])
+  for (const r of JSON.parse(fs.readFileSync(path.join(REVIEW_DIR, f), 'utf-8'))) reviews.set(r.ocr_line, { ...r, file: f });
+for (let i = entries.length - 1; i >= 0; i--) {
+  const r = reviews.get(entries[i].ocr_line);
+  if (!r) continue;
+  const e = entries[i] as any;
+  if (r.skip) { entries.splice(i, 1); continue; }
+  if (r.sarit_id && byId.has(r.sarit_id)) {
+    e.sarit_id = r.sarit_id; e.parvan = parvan(r.sarit_id); e.edition = byId.get(r.sarit_id)!.join(' / ');
+  } else if (r.critical) {
+    e.sarit_id = null; e.critical = r.critical; e.parvan = r.parvan ?? e.parvan;
+  } else continue;
+  e.band = 'reviewed'; e.confidence = 1; e.review = r.reason; delete e.placed_by;
+}
 entries.forEach((e, i) => (e.seq = i + 1));
 
 const order = [...new Set(L.map((x) => parvan(x.id)))];
 const per: Record<string, Record<string, number>> = {};
-for (const e of entries) if (e.parvan) { const p = (per[e.parvan] ??= { high: 0, medium: 0, low: 0 }); p[e.band]++; }
+for (const e of entries) if (e.parvan) { const p = (per[e.parvan] ??= { high: 0, medium: 0, low: 0, reviewed: 0 }); p[e.band]++; }
 const count = (b: string) => entries.filter((e) => e.band === b).length;
 const summary = {
   ocr_verse_lines: O.length,
   entries: entries.length,
   matched: entries.length - count('unmatched'),
-  high: count('high'), medium: count('medium'), low: count('low'), unmatched: count('unmatched'),
-  by_parvan: Object.fromEntries(order.filter((p) => per[p]).map((p) => [p, { verses: per[p].high + per[p].medium + per[p].low, ...per[p] }])),
+  high: count('high'), medium: count('medium'), low: count('low'), reviewed: count('reviewed'), unmatched: count('unmatched'),
+  by_parvan: Object.fromEntries(order.filter((p) => per[p]).map((p) => [p, { verses: per[p].high + per[p].medium + per[p].low + per[p].reviewed, ...per[p] }])),
 };
 fs.mkdirSync(OUT_DIR, { recursive: true });
 fs.writeFileSync(path.join(OUT_DIR, 'selection.json'), JSON.stringify({
