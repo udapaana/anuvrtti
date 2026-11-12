@@ -58,7 +58,10 @@ git -C "$SRC" fetch --quiet origin
 git -C "$SRC" checkout --quiet "$REV"
 
 rustup target add wasm32-unknown-unknown >/dev/null 2>&1 || true
-( cd "$SRC/vidyut-prakriya" && wasm-pack build --target web --out-dir "$OUT" )
+# wasm-opt (fetched from GitHub releases) is a size optimisation only; where it
+# cannot be downloaded, build without it rather than fail. CI builds its own.
+( cd "$SRC/vidyut-prakriya" && wasm-pack build --target web --out-dir "$OUT" ) \
+  || ( cd "$SRC/vidyut-prakriya" && wasm-pack build --target web --no-opt --out-dir "$OUT" )
 
 # The wrapper the app imports, and the one-line path fixup CI also applies.
 cp "$SRC/vidyut-prakriya/www/static/vidyut-prakriya.js" "$OUT/"
