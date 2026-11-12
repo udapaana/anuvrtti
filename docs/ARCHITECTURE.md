@@ -47,6 +47,12 @@ the small thing it emits:
 | `data/texts.json` → `data/texts/` | GRETIL source texts (Rāmāyaṇa, Hitopadeśa, Bhaṭṭi, Kālidāsa …) | **pinned, not vendored**: the manifest (URL + sha256) is committed, the 6.4 MB of text is fetched by `bun run texts` into a git-ignored cache. Used only by `find-attested.ts`, never shipped |
 | `data/mbh-condensed.json` → `data/texts/` | archive.org OCR of *The Mahabharata Condensed in the Poet's Own Words*, and the SARIT Kumbhakonam TEI | pinned like `texts.json`, but a separate manifest so `find-attested` never searches the OCR. `bun run mbh` emits `content/texts/mahabharata-condensed/selection.json` — committed in `content/` because, once a human corrects entries, the selection is authored |
 | `data/mw-linga.tsv` | Monier-Williams, 50 MB | `scripts/import-mw.ts` |
+| `data/mw/` (git-ignored) | Monier-Williams senses, csl-orig pinned by commit + sha256 (CC BY-SA 4.0) | **pinned, not vendored**: `scripts/import-mw-gloss.ts` fetches `mw.txt` and writes `gloss.tsv`. Build-time input to `analyze-text.ts` only |
+| `data/vidyut/` (git-ignored) | vidyut-cheda + vidyut-kosha, native, at `VIDYUT_REV`, plus vidyut's `data-0.4.0.zip` (sha256-checked) | `scripts/build-vidyut-native.sh`. Machine annotation of whole texts (`scripts/analyze-text.ts`); see `docs/AUTO-ANNOTATION-EVAL.md`. Never shipped |
+
+Machine-annotation output (`static/data/analyses/`, from `analyze-text.ts`,
+`analyze-samples.ts` and `eval-auto-annotation.ts`) is generated and
+git-ignored, and nothing in the app reads it yet.
 
 MW is the lexicon Ambuda seeds from, so "Ambuda's dictionary" and "MW/CDSL" are
 the same corpus. **Cologne's own host is blocked from this environment** — a 403
