@@ -19,7 +19,8 @@ sessions working at once do not collide.
 
 ## Working on the graded reader
 
-Read **`docs/AUTHORING.md` first.** It carries the constraints, the coverage
+Read **`docs/AUTHORING.md` first**, and **`docs/AUTHORING-PLAN.md`** for what
+to write next (the backlog, and the road to whole texts). It carries the constraints, the coverage
 method, and the register rules that four separate passes had to fix.
 
 The one command:
