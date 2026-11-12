@@ -1,0 +1,13 @@
+diff --git a/vidyut-cheda/src/scoring.rs b/vidyut-cheda/src/scoring.rs
+index 1e570e6..f0f0778 100644
+--- a/vidyut-cheda/src/scoring.rs
++++ b/vidyut-cheda/src/scoring.rs
+@@ -68,7 +68,7 @@ impl<'a> From<&Option<PadaEntry<'a>>> for State {
+     fn from(val: &Option<PadaEntry>) -> Self {
+         match val {
+             Some(PadaEntry::Subanta(s)) => {
+-                if s.pratipadika_entry().is_avyaya() {
++                if !s.pratipadika_entry().is_avyaya() {
+                     State::Subanta(s.linga(), s.vibhakti(), s.vacana())
+                 } else {
+                     State::Avyaya
