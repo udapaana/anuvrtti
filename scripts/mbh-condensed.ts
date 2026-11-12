@@ -272,7 +272,7 @@ fs.writeFileSync(path.join(OUT_DIR, 'selection.json'), JSON.stringify({
   entries.map((e) => '  ' + JSON.stringify({ ...e, edition: undefined })).join(',\n') + '\n ]\n}\n');
 
 // ── report ──────────────────────────────────────────────────────────────────
-console.log(`OCR verse lines ${O.length} → ${entries.length} entries: ${summary.matched} matched (high ${summary.high}, medium ${summary.medium}, low ${summary.low}), ${summary.unmatched} unmatched`);
+console.log(`OCR verse lines ${O.length} → ${entries.length} entries: ${summary.matched} matched (high ${summary.high}, medium ${summary.medium}, reviewed ${summary.reviewed}, low ${summary.low}), ${summary.unmatched} unmatched`);
 for (const [p, v] of Object.entries(summary.by_parvan)) console.log(`  ${p.padEnd(9)} ${String(v.verses).padStart(4)}  (h ${v.high} m ${v.medium} l ${v.low})`);
 console.log('\nunmatched, for manual review:');
 for (const e of entries) if (!e.sarit_id) console.log(`  #${e.seq} ocr:${e.ocr_line}  ${e.ocr.slice(0, 110)}`);
