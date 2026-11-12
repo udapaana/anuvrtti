@@ -1,5 +1,5 @@
 {
- "note": "Pinned source texts (GRETIL, Göttingen Register of Electronic Texts in Indian Languages). Fetched by scripts/fetch-texts.ts into data/texts/ (git-ignored) and verified by sha256. GRETIL texts are provided for scholarly and educational use; cite the edition named in each file header.",
+ "note": "Pinned source texts (GRETIL, Göttingen Register of Electronic Texts in Indian Languages; and SARIT for the Kumbhakonam Mahābhārata, a TEI file marked \"format\": \"tei\"). Fetched by scripts/fetch-texts.ts into data/texts/ (git-ignored) and verified by sha256. GRETIL texts are provided for scholarly and educational use; cite the edition named in each file header.",
  "texts": [
   {
    "slug": "sa_nArAyaNa-hitopadeza",
@@ -91,6 +91,14 @@
    "en": "Mahāsubhāṣitasaṃgraha 1–9979",
    "url": "https://gretil.sub.uni-goettingen.de/gretil/corpustei/transformations/plaintext/sa_mahAsubhASitasaMgraha-1-9979.txt",
    "sha256": "82b7e825fca1b1a0aad6cb294306e7cf2d3d9afea0f787993d5638b853cfa452"
+  },
+  {
+   "slug": "sa_mahAbhArata-kumbhakonam-sarit",
+   "title": "महाभारतम् (कुम्भकोणम्)",
+   "en": "Mahābhārata, Kumbhakonam ed. (Krishnacharya & Vyasacharya, 1906–14), SARIT TEI, CC BY-SA 3.0",
+   "format": "tei",
+   "url": "https://raw.githubusercontent.com/sarit/SARIT-corpus/1eac9ee0b055c8d11147edac4a75c76008ccc363/mahabharata-devanagari.xml",
+   "sha256": "35f6808ac45c6ee7386db70afea1f79f4b83a60760904c308fcea0bff2272100"
   }
  ]
 }

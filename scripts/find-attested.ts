@@ -45,6 +45,9 @@ type Verse = { title: string; ref: string; text: string; tokens: Set<string> };
 const verses: Verse[] = [];
 const REF = /\b([A-Za-z]+_[0-9][0-9.,a-z]*)/;
 for (const t of manifest.texts) {
+  // a TEI source (the Kumbhakonam Mahābhārata) is not GRETIL plain text; it is
+  // read by its own scripts (scripts/mbh-condensed.ts), not searched here
+  if (t.format === 'tei') continue;
   const file = path.join(ROOT, 'data/texts', t.slug + '.txt');
   if (!fs.existsSync(file)) { console.error(`missing ${t.slug} — run bun scripts/fetch-texts.ts`); process.exit(1); }
   const lines = fs.readFileSync(file, 'utf-8').split('\n');
