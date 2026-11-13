@@ -122,11 +122,20 @@ annotated by the build, and the author only confirms and adds:
 
 ### First milestone
 1. The readiness script, run over the candidate texts — so the first choice is
-   measured.
-2. vidyut-cheda and vidyut-kosha built at the pin; a build step that analyses
-   a text's sections and reports what it could not settle.
-3. The `text` kind, shelf and gate, with MW meanings and links.
-4. One complete Pañcatantra (or Hitopadeśa) tale through it end to end.
+   measured. *(Not built: the first tale was the one the eval had already run.)*
+2. ~~vidyut-cheda and vidyut-kosha built at the pin; a build step that analyses
+   a text's sections and reports what it could not settle.~~ Done —
+   `scripts/snapshot-text.ts` (local) → committed snapshot → `build-texts.ts`.
+3. ~~The `text` kind, shelf and gate, with MW meanings and links.~~ Done —
+   `/reader/text/<id>`, the "texts" shelf under the chapters, `check-texts.ts`.
+4. ~~One complete Pañcatantra tale through it end to end.~~ Done — the monkey
+   and the wedge (`content/texts/pancatantra-kilotpatin/`); the author pass is
+   measured in `docs/AUTO-ANNOTATION-EVAL.md` §7.
+
+To add a text: `content/texts/<id>/text.yaml` (sections verbatim), then
+`bun scripts/snapshot-text.ts <id>`, read `bun scripts/build-texts.ts`'s
+report, write `overrides.yaml`, re-snapshot (new lemmas and split padas are
+looked up), and `bun run check` until the `texts` line is green.
 
 ## Decisions taken
 - First text: any of the candidates, chosen by measured readiness (owner).

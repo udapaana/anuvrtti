@@ -69,6 +69,18 @@ the home page's doors. The threshold must not download three corpora to print
 three integers, so `bun run build:stats` reduces them at build time (it runs
 inside `npm run build`). `bun run check` fails when it goes stale.
 
+## Whole texts
+
+`content/texts/<id>/` holds `text.yaml` (the text, verbatim) and
+`overrides.yaml` (the author's decisions only). The annotation is vidyut's,
+committed as a snapshot in `data/text-analyses/<id>.json` because CI cannot
+run the native engine: after editing either file, `bun scripts/snapshot-text.ts
+<id>` (needs `./scripts/build-vidyut-native.sh` and `bun
+scripts/import-mw-gloss.ts` once) and commit the snapshot with the change —
+`bun run check` fails on a stale one. See *Whole texts* in
+`docs/ARCHITECTURE.md`. The glosses are Monier-Williams, CC BY-SA 4.0: keep the
+credit on the text page and at `/about#credits`.
+
 ## Working on the sūtra path
 
 Read **`docs/PATH_AUTHORING.md` first**, especially the voice section — the

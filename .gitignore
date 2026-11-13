@@ -40,6 +40,10 @@ static/data/jargon.json
 static/data/dhatu-map.json
 static/data/stats.json
 static/data/commentary-index.json
+# whole texts for the reader (build-texts.ts). Its input data/text-analyses/ is
+# NOT ignored: vidyut's output, committed because CI cannot run the native
+# engine — see docs/ARCHITECTURE.md, "Whole texts".
+static/data/texts/
 
 # NOT ignored, and each for a reason the cold-build test found:
 #
