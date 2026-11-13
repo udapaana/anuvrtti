@@ -50,9 +50,11 @@ the small thing it emits:
 | `data/mw/` (git-ignored) | Monier-Williams senses, csl-orig pinned by commit + sha256 (CC BY-SA 4.0) | **pinned, not vendored**: `scripts/import-mw-gloss.ts` fetches `mw.txt` and writes `gloss.tsv`. Build-time input to `analyze-text.ts` only |
 | `data/vidyut/` (git-ignored) | vidyut-cheda + vidyut-kosha, native, at `VIDYUT_REV`, plus vidyut's `data-0.4.0.zip` (sha256-checked) | `scripts/build-vidyut-native.sh`. Machine annotation of whole texts (`scripts/analyze-text.ts`); see `docs/AUTO-ANNOTATION-EVAL.md`. Never shipped |
 
+| `data/text-analyses/<id>.json` (committed) | vidyut's analysis of a whole text in `content/texts/<id>/` | `scripts/snapshot-text.ts`, **local only**. A snapshot, not a cache — see *Whole texts* below |
+
 Machine-annotation output (`static/data/analyses/`, from `analyze-text.ts`,
 `analyze-samples.ts` and `eval-auto-annotation.ts`) is generated and
-git-ignored, and nothing in the app reads it yet.
+git-ignored; the reader reads only the whole-text snapshots above.
 
 MW is the lexicon Ambuda seeds from, so "Ambuda's dictionary" and "MW/CDSL" are
 the same corpus. **Cologne's own host is blocked from this environment** — a 403
@@ -75,6 +77,60 @@ git clean -Xfd static/data static/content && npm run build:data
 If anything is missing afterwards, either a generator is not in the chain or the
 file is not really generated. Both happened during the migration — see
 *What the cold build caught*.
+
+---
+
+## Whole texts
+
+A whole text (the first: Pañcatantra 1, the monkey and the wedge, at
+`/reader/text/pancatantra-kilotpatin`) is annotated by vidyut, not by hand.
+Three files, one of each kind, and one generated payload:
+
+| file | kind | what |
+|---|---|---|
+| `content/texts/<id>/text.yaml` | authored | the text verbatim: sections in order, Devanagari saṃhitā, GRETIL's IAST line kept for audit |
+| `content/texts/<id>/overrides.yaml` | authored | the author's decisions **only**: a corrected segmentation (`split`, compound members marked `member`), a chosen or supplied analysis (`fix`), a gloss in context, notes. Keyed by section id + surface word, so regenerating keeps them |
+| `data/text-analyses/<id>.json` | snapshot (committed) | what vidyut said: every word's padas, every analysis the kosha holds (one line each), vidyut's own pick, the kosha's entries for every pada an author split out, and MW's entry for every lemma any of it names |
+| `static/data/texts/` | generated | `build-texts.ts` (in `build:data`): snapshot + overrides → the reader's payload, with a paradigm for each inflected word from the committed vidyut-prakriya WASM |
+
+**Why the snapshot is committed rather than built in CI.** The two options
+were (a) commit vidyut's output and check it for staleness, as
+`static/data/stats.json` once was, or (b) give CI the native build: a Rust
+compile of vidyut-cheda + kosha at the pin (~1 min warm, several cold) and a
+32 MB data download on every deploy. (a), because:
+
+- **The engine's output is the thing to review.** CLAUDE.md already says an
+  engine move that alters the corpus "should be visible as one". Built in CI,
+  a `VIDYUT_REV` bump would silently change what every text says; committed,
+  it is a diff — one line per alternative, ~1,300 lines for this tale — that
+  shows exactly which words moved, next to the overrides that may now be moot.
+- **No new network dependency at deploy.** The 32 MB release zip and the 50 MB
+  MW source come from GitHub; the deploy should not fail when they are slow.
+- **Size is small.** ~285 KB for a 59-word tale is dominated by the
+  alternatives list (up to 116 analyses for ये); it grows linearly, ~5 KB a word.
+  A long text (Nala, ~1,000 ślokas) would be ~40 MB and would want the
+  alternatives trimmed to the top few — revisit then.
+
+The cost of (a) is that the snapshot can go stale, so `bun run check` holds a
+**freshness gate** (`scripts/check-texts.ts`): the snapshot records hashes of
+what it was computed from — the text, `VIDYUT_REV`, `analyze-text.ts`, the
+cheda patch, the MW pin — and fails when any has moved, or when an override
+names a lemma or splits out a pada the snapshot never looked up. The fix is
+always `bun scripts/snapshot-text.ts <id>` (it needs
+`./scripts/build-vidyut-native.sh` and `bun scripts/import-mw-gloss.ts` once)
+and committing the result. Where the engine exists, `snapshot-text.ts --check`
+regenerates and diffs in full.
+
+**The `text` gate**, in the same script: every word segmented, every pada
+analysed (vidyut or override), every lemma glossed — MW's entry, or the
+author's gloss where MW has none; every override names a real word. Notes are
+not required.
+
+**Licences.** The glosses are Monier-Williams as digitised by CDSL, **CC BY-SA
+4.0**. They ship in `static/data/texts/`, so the text page carries the
+attribution in its footer, `/about#credits` names MW, CDSL and the licence, and
+says the adaptation and the author's glosses are shared under the same licence.
+The GRETIL text is CC BY-NC-SA 4.0 and is credited the same way.
 
 ---
 

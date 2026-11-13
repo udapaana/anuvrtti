@@ -40,6 +40,9 @@
   let chapters = $state<Chapter[]>([]);
   let sequence = $state<Reading[]>([]);
   let usage = $state<any>(null); // usage.json — carries per-word paradigms
+  // whole texts (scripts/build-texts.ts): the shelf beside the chapters
+  let texts = $state<{ id: string; title: string; title_en: string; sections: number }[]>([]);
+  let textAt = $state<Record<string, number>>({});
   let error = $state('');
   let loaded = $state(false);
 
@@ -92,6 +95,13 @@
       // usage.json carries the per-word paradigms (all cells, from vidyut) that
       // the rail's table needs. Best-effort: no table if it fails to load.
       try { usage = await (await fetch(dataUrl('/data/usage.json'))).json(); } catch { usage = null; }
+      try {
+        texts = await (await fetch(dataUrl('/data/texts/index.json'))).json();
+        // where each text was left off, to say "§ 4 of 9" on the shelf
+        for (const t of texts) {
+          try { const n = localStorage.getItem(`anuvrtti:text-progress:${t.id}`); if (n) textAt[t.id] = Number(n); } catch { /* none */ }
+        }
+      } catch { texts = []; }
       loaded = true;
       focusedId = sequence[0]?.id ?? null;
       requestAnimationFrame(observe);
@@ -1650,6 +1660,22 @@
       spineOpen = false;
     }}
   />
+  {#if texts.length}
+    <!-- Whole texts: read through, not graded line by line. Each opens on its
+         own page, back where it was left. -->
+    <div class="texts-shelf">
+      <Spine
+        title="texts"
+        items={texts.map((t) => ({
+          id: t.id,
+          label: t.title,
+          script: 'devanagari' as const,
+          sub: t.title_en + (textAt[t.id] ? ` · ${textAt[t.id] + 1}/${t.sections}` : ''),
+          href: `/reader/text/${t.id}`
+        }))}
+      />
+    </div>
+  {/if}
 {/snippet}
 
 {#snippet quizBlock()}
@@ -2280,6 +2306,13 @@
 {/if}
 
 <style>
+  .texts-shelf {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+  }
   .status {
     font-family: var(--font-mono);
     font-size: 12px;

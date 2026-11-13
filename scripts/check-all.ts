@@ -349,6 +349,17 @@ if (/not padas/.test(sdh)) {
   console.log('  ✓ ' + sdh.trim().split('\n')[0]);
 }
 
+// 9f. whole texts — HARD. The `text` profile of "born complete": every word
+// of a text segmented, analysed and glossed (vidyut or an override), and the
+// committed vidyut snapshot fresh against the text, the pin and the generator.
+const txt = await run(['bun', 'scripts/check-texts.ts']);
+if (lastExit !== 0) {
+  problems.push('texts:\n' + txt.split('\n').filter((l) => /^\s{4}\S/.test(l)).join('\n'));
+  console.log('  ✗ ' + txt.trim().split('\n').find((l) => l.startsWith('texts:')));
+} else {
+  console.log('  ✓ ' + txt.trim().split('\n').find((l) => l.startsWith('texts:')));
+}
+
 // 10. sign-in and attribution — HARD. Two providers now, and the ways they
 // differ are quiet ones: an @mention that resolves on GitHub and mentions a
 // stranger for a Google display name, and a branch name git will not accept.

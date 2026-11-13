@@ -1,0 +1,239 @@
+# The author's decisions on top of vidyut's analysis — and nothing else.
+#
+# Everything not named here is what vidyut said (data/text-analyses/<id>.json,
+# its best-ranked analysis of each pada). Keyed by section id, then the surface
+# word exactly as text.yaml prints it ("#2" for its second occurrence in one
+# section), so regenerating the snapshot keeps every decision.
+#
+# Per word:
+#   split: [pada, …]   vidyut's segmentation was wrong — these padas replace it
+#   fix: {n: pada}     pada n (1-based) of vidyut's segmentation, corrected
+#   note: …            a note on the whole word
+# Per pada (all optional):
+#   form    the pada (sandhi undone, pausal)        lemma   its stem or root
+#   a       its analysis in the reader's terms: "सप्तमी एकवचन पुंलिङ्ग",
+#           "लिट् प्रथमपुरुष एकवचन आत्मनेपद", "अव्यय", "प्रथमा एकवचन नपुंसकलिङ्ग क्त"
+#           — matched against vidyut's alternatives; one that matches is a pick,
+#           one that does not is the author's own analysis
+#   member  true: a compound member (a bare stem, no ending)
+#   gloss   the sense in context, where MW's first sense is not it
+#   note    what the form teaches
+#
+# bun scripts/build-texts.ts reports how many words each kind of fix touched.
+
+'1.21':
+  अव्यापरेषु:
+    split:
+      - form: अव्यापारेषु
+        lemma: अव्यापार
+        a: सप्तमी बहुवचन पुंलिङ्ग
+        gloss: in what is not one's business
+    note: >-
+      The edition prints अव्यापरेषु here; the tale's last line quotes the verse
+      as अव्यापारेषु, which the sense needs (अ + व्यापार, "not one's affair").
+      Read as a misprint.
+  कर्तुमिच्छति:
+    fix:
+      2: { gloss: 'wishes, wants (with an infinitive: "wants to do")' }
+  स:
+    fix:
+      1:
+        a: प्रथमा एकवचन पुंलिङ्ग
+        note: सः loses its visarga before any consonant (6.1.132), so स here is the nominative, not a vocative.
+  निधनं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'death, destruction' }
+  याति:
+    fix:
+      1: { gloss: 'goes; with निधनम्, "meets (his) death"' }
+  कीलोत्पाटीव:
+    fix:
+      1: { form: कील, lemma: कील, member: true, gloss: a wedge, pin }
+    note: कील-उत्पाटी इव — "like the wedge-puller", an उपपद compound in -इन्.
+
+'1':
+  कस्मिंश्चिन्नगराभ्याशे:
+    split:
+      - { form: कस्मिन्, lemma: किम्, a: सप्तमी एकवचन पुंलिङ्ग, gloss: 'in which? — with चित्, "in some"' }
+      - { form: चित्, lemma: चित्, a: अव्यय, gloss: 'with an interrogative: "some-" (कस्मिंश्चित् "in some")' }
+      - { form: नगर, lemma: नगर, member: true }
+      - { form: अभ्याशे, lemma: अभ्याश, a: सप्तमी एकवचन पुंलिङ्ग, gloss: 'the vicinity, neighbourhood' }
+    note: 'The tale''s first word is the storyteller''s "once, somewhere": किम् + चित् makes the indefinite "some".'
+  केनापि:
+    fix:
+      2: { gloss: 'even; with an interrogative, "some-" (केनापि "by someone")' }
+  वणिक्पुत्रेण:
+    fix:
+      1: { form: वणिक्, lemma: वणिज्, member: true }
+  तरुखण्डमध्ये:
+    split:
+      - { form: तरु, lemma: तरु, member: true }
+      - { form: खण्ड, lemma: खण्ड, member: true, gloss: 'a clump, group (तरुखण्ड "a clump of trees")' }
+      - { form: मध्ये, lemma: मध्य, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: 'in the middle of' }
+  देवतायतनं:
+    split:
+      - { form: देवता, lemma: देवता, member: true }
+      - { form: आयतनम्, lemma: आयतन, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: 'a sanctuary (देवतायतन "a temple")' }
+  कर्तुमारब्धम्:
+    fix:
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग }
+    note: >-
+      कर्तुम् आरब्धम् — "was begun to be built": the passive participle agrees
+      with देवतायतनम्, and the one who began it stands in the instrumental
+      (केनापि वणिक्पुत्रेण).
+
+'2':
+  तत्र:
+    fix:
+      1: { gloss: 'there' }
+  स्थापनादयः:
+    split:
+      - { form: स्थापन, lemma: स्थापन, member: true, gloss: 'the setter-up, i.e. the master-builder' }
+      - { form: आदयः, lemma: आदि, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: 'and the rest, and others' }
+    note: 'A बहुव्रीहि in आदि — "those of whom the builder is first": the builder and his men.'
+
+'3':
+  ते:
+    fix:
+      1: { a: प्रथमा बहुवचन पुंलिङ्ग }
+  मध्याह्नबेलायामाहारार्थं:
+    split:
+      - { form: मध्याह्न, lemma: मध्याह्न, member: true, gloss: 'midday, noon' }
+      - { form: बेलायाम्, lemma: वेला, a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: 'the time, hour' }
+      - { form: आहार, lemma: आहार, member: true, gloss: 'food, a meal' }
+      - { form: अर्थम्, lemma: अर्थ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: 'for the sake of (an accusative used as an adverb)' }
+    note: बेला is the edition's spelling of वेला. -अर्थम् at the end of a compound means "for (the sake of)" — आहारार्थम् "for food".
+  नगरमध्ये:
+    split:
+      - { form: नगर, lemma: नगर, member: true }
+      - { form: मध्ये, lemma: मध्य, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: 'in the middle of, into' }
+
+'4':
+  कदाचित्तत्रानुषङ्गिकं:
+    split:
+      - { form: कदाचित्, lemma: कदाचित्, a: अव्यय, gloss: 'once, one day' }
+      - { form: तत्र, lemma: तत्र, a: अव्यय, gloss: 'there' }
+      - { form: आनुषङ्गिकम्, lemma: आनुषङ्गिक, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: 'incidental — here "by chance", in passing' }
+  वानरयूथमितश्चेतश्च:
+    split:
+      - { form: वानर, lemma: वानर, member: true }
+      - { form: यूथम्, lemma: यूथ, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: 'a herd, troop' }
+      - { form: इतः, lemma: इतस्, a: अव्यय, gloss: 'from here; इतश्च इतश्च "hither and thither"' }
+      - { form: च, lemma: च, a: अव्यय }
+      - { form: इतः, lemma: इतस्, a: अव्यय }
+      - { form: च, lemma: च, a: अव्यय }
+    note: इतः च इतः च — the second इतः has fused with the च before it (च + इतः → चेतः).
+  परिभ्रमदागतम्:
+    split:
+      - { form: परिभ्रमत्, lemma: परिभ्रम्, a: प्रथमा एकवचन नपुंसकलिङ्ग शतृ, gloss: 'roaming about' }
+      - { form: आगतम्, lemma: आगम्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: 'came, arrived' }
+    note: Both participles agree with वानरयूथम् (neuter); the क्त participle stands for the finite verb, "a troop … came".
+
+'5':
+  कस्यचिच्छिल्पिनोऽर्धस्फाटितोऽञ्जनवृक्षदारुमयः:
+    split:
+      - { form: कस्य, lemma: किम्, a: षष्ठी एकवचन पुंलिङ्ग }
+      - { form: चित्, lemma: चित्, a: अव्यय }
+      - { form: शिल्पिनः, lemma: शिल्पिन्, a: षष्ठी एकवचन पुंलिङ्ग, gloss: 'an artisan, craftsman' }
+      - { form: अर्ध, lemma: अर्ध, member: true, gloss: 'half' }
+      - { form: स्फाटितः, lemma: स्फाटित, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'split (the causative participle of स्फट्)' }
+      - { form: अञ्जन, lemma: अञ्जन, member: true, gloss: 'the añjana tree' }
+      - { form: वृक्ष, lemma: वृक्ष, member: true }
+      - { form: दारुमयः, lemma: दारुमय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'made of wood' }
+    note: >-
+      Three words run together by sandhi (कस्यचित् शिल्पिनः अर्धस्फाटितः …), the
+      longest chunk in the tale. -मय "made of" closes a compound naming the
+      material: अञ्जनवृक्षदारुमयः "made of the wood of an añjana tree".
+  खदिरकीलकेन:
+    split:
+      - { form: खदिर, lemma: खदिर, member: true, gloss: 'the khadira tree (Acacia catechu)' }
+      - { form: कीलकेन, lemma: कीलक, a: तृतीया एकवचन पुंलिङ्ग, gloss: 'a wedge' }
+  तिष्ठति:
+    note: तिष्ठति with an instrumental — "stands with a khadira wedge set in its middle".
+
+'6':
+  एतस्मिन्नन्तरे:
+    fix:
+      1: { a: सप्तमी एकवचन नपुंसकलिङ्ग }
+      2: { a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: 'interval, meantime' }
+    note: एतस्मिन्नन्तरे "in this interval" — the narrator's "meanwhile".
+  ते:
+    fix:
+      1: { a: प्रथमा बहुवचन पुंलिङ्ग }
+  वानरास्तरुशिखरप्रसादशृङ्गदारुपर्यन्तेषु:
+    split:
+      - { form: वानराः, lemma: वानर, a: प्रथमा बहुवचन पुंलिङ्ग }
+      - { form: तरु, lemma: तरु, member: true }
+      - { form: शिखर, lemma: शिखर, member: true, gloss: 'top, summit' }
+      - { form: प्रसाद, lemma: प्रासाद, member: true, gloss: 'the temple building' }
+      - { form: शृङ्ग, lemma: शृङ्ग, member: true, gloss: 'peak, pinnacle' }
+      - { form: दारु, lemma: दारु, member: true, gloss: 'timber' }
+      - { form: पर्यन्तेषु, lemma: पर्यन्त, a: सप्तमी बहुवचन पुंलिङ्ग, gloss: 'edges, ends — "all over"' }
+    note: The edition prints प्रसाद ("grace"); the sense is प्रासाद, the temple being built. "All over the treetops, the temple's pinnacles and the timber".
+  यथेच्छया:
+    fix:
+      1: { gloss: 'at will, as they pleased' }
+
+'7':
+  तेषां:
+    fix:
+      1: { a: षष्ठी बहुवचन पुंलिङ्ग }
+  प्रत्यासन्नमृत्युश्चापल्यात्तस्मिन्नर्धस्फोटितस्तम्भे:
+    split:
+      - { form: प्रत्यासन्न, lemma: प्रत्यासन्न, member: true, gloss: 'near at hand, imminent' }
+      - { form: मृत्युः, lemma: मृत्यु, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'death' }
+      - { form: चापल्यात्, lemma: चापल्य, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: 'out of restlessness, mischief' }
+      - { form: तस्मिन्, lemma: तद्, a: सप्तमी एकवचन पुंलिङ्ग }
+      - { form: अर्ध, lemma: अर्ध, member: true, gloss: 'half' }
+      - { form: स्फोटित, lemma: स्फोटित, member: true, gloss: 'split' }
+      - { form: स्तम्भे, lemma: स्तम्भ, a: सप्तमी एकवचन पुंलिङ्ग }
+    note: प्रत्यासन्नमृत्युः is a बहुव्रीहि, "one whose death was near"; the पञ्चमी चापल्यात् gives the cause.
+  पाणिभ्यां:
+    fix:
+      1: { gloss: 'the hand — "with both hands"' }
+  यावदुत्पादयितुमारेभे:
+    split:
+      - { form: यावत्, lemma: यावत्, a: अव्यय, gloss: 'as soon as, just when (answered by तावत्)' }
+      - { form: उत्पादयितुम्, a: अव्यय तुमुन्, gloss: 'to pull out' }
+      - { form: आरेभे, lemma: रभ्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद }
+    note: >-
+      यावत् … तावत् "no sooner … than". The edition prints उत्पादयितुम् (from
+      उद् + पद्, "to produce"); the story needs उत्पाटयितुम् (उद् + पट्, "to pull
+      out"), the root of the verse's कीलोत्पाटी.
+  तावत्तस्य:
+    fix:
+      1: { gloss: 'then (answering यावत्)' }
+      2: { a: षष्ठी एकवचन पुंलिङ्ग }
+  स्तम्भमध्यगतवृषणस्य:
+    split:
+      - { form: स्तम्भ, lemma: स्तम्भ, member: true }
+      - { form: मध्य, lemma: मध्य, member: true }
+      - { form: गत, lemma: गत, member: true, gloss: 'gone (into)' }
+      - { form: वृषणस्य, lemma: वृषण, a: षष्ठी एकवचन पुंलिङ्ग, gloss: 'the testicles' }
+    note: A बहुव्रीहि agreeing with तस्य — "of him whose testicles had gone into the middle of the post".
+  स्वस्थानाच्चलितकीलकेन:
+    split:
+      - { form: स्व, lemma: स्व, member: true, gloss: 'its own' }
+      - { form: स्थानात्, lemma: स्थान, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: 'place' }
+      - { form: चलित, lemma: चलित, member: true, gloss: 'moved, dislodged' }
+      - { form: कीलकेन, lemma: कीलक, a: तृतीया एकवचन पुंलिङ्ग, gloss: 'a wedge' }
+    note: स्वस्थानात् stands outside the compound चलितकीलक and depends on its member चलित — "by the wedge, moved from its place".
+  यद्वृत्तं:
+    split:
+      - { form: यत्, lemma: यद्, a: प्रथमा एकवचन नपुंसकलिङ्ग }
+      - { form: वृत्तम्, lemma: वृत्त, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: 'what happened' }
+    note: Two words, यत् … तत् — "what happened, that has been told already". The dictionary's यद्वृत्त is a compound that is not this.
+  तत्प्रागेव:
+    split:
+      - { form: तत्, lemma: तद्, a: प्रथमा एकवचन नपुंसकलिङ्ग }
+      - { form: प्राक्, lemma: प्राक्, a: अव्यय, gloss: 'before, already' }
+      - { form: एव, lemma: एव, a: अव्यय }
+  निवेदितम्:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: 'told, related (causative of विद्, "made known")' }
+    note: 'The tale does not tell the end — the verse already has. The passive participle निवेदितम् agrees with तत्: "that has been told".'
+
+'8':
+  अव्यापारेषु:
+    fix:
+      1: { gloss: "in what is not one's business" }

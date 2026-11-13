@@ -20,8 +20,9 @@
  * LICENCE. csl-orig is CC BY-SA 4.0 (its LICENSE at that commit). The
  * projection written here is a derivative: anything that ships it must credit
  * "Monier-Williams, A Sanskrit-English Dictionary (1899), digitised by the
- * Cologne Digital Sanskrit Dictionaries" and stay CC BY-SA. Nothing ships it
- * yet — it is a build-time input only.
+ * Cologne Digital Sanskrit Dictionaries" and stay CC BY-SA. Its senses ship in
+ * the reader's whole texts (through data/text-analyses/), credited on each
+ * text's page and at /about#credits.
  *
  * NOT COMMITTED. mw.txt is 50 MB and the projection ~14 MB; both live in the
  * git-ignored cache data/mw/, rebuilt by running this script (it fetches the

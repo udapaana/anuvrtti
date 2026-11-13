@@ -80,6 +80,8 @@ export type Analysis = {
   विभक्ति?: string; वचन?: string; लिङ्ग?: string;
   लकार?: string; पुरुष?: string; पद?: string; प्रयोग?: string;
   कृत्?: string; उपसर्ग?: string[]; सनादि?: string[]; गण?: string;
+  /** the root as the dhātupāṭha spells it (SLP1), for re-deriving its paradigm */
+  aupadeshika?: string;
   /** the stem's own lingas, per the kosha (basic stems only) */
   lingas?: string[];
   /** raw krt name, for the reranker */
@@ -89,6 +91,9 @@ export type Analysis = {
 function dhatuFields(d: any, a: Analysis) {
   if (!d) return;
   if (d.gana && GANA[d.gana]) a.गण = GANA[d.gana];
+  // the dhātupāṭha spelling, which is what vidyut-prakriya needs to conjugate
+  // the root again (scripts/build-texts.ts derives each verb's paradigm from it)
+  if (d.aupadeshika) a.aupadeshika = d.aupadeshika;
   if (d.prefixes?.length) {
     a.उपसर्ग = d.prefixes.map((p: string) => UPASARGA[p] ?? deva(p));
     // The kosha's lemma for a prefixed root is the whole verb (Agam); the reader

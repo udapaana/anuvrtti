@@ -134,11 +134,45 @@
         what the paradigm grids in <a href="/usage">usage</a> are checked against
       </dd>
 
+      <dt>vidyut-cheda, vidyut-kosha</dt>
+      <dd>
+        split a whole text into words and list every analysis of each — the first draft of every
+        word in the reader's <a href="/reader/text/pancatantra-kilotpatin">texts</a>, which an
+        editor then checks (MIT licence)
+      </dd>
+
       <dt>shlesha</dt>
       <dd>transliteration — every script the display toggle offers passes through it</dd>
 
       <dt>SvelteKit</dt>
       <dd>the application, deployed on Cloudflare Pages</dd>
+    </dl>
+  </section>
+
+  <section class="entry" id="credits">
+    <h2>texts and dictionary</h2>
+    <span class="label">credits and licences</span>
+    <dl>
+      <dt>Monier-Williams</dt>
+      <dd>
+        the meanings shown for words in the reader's whole texts are the first senses of
+        Monier-Williams, <i>A Sanskrit-English Dictionary</i> (1899), as digitised by the
+        <a href="https://www.sanskrit-lexicon.uni-koeln.de/" target="_blank" rel="noopener noreferrer"
+          >Cologne Digital Sanskrit Dictionaries</a
+        > (csl-orig), under
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer"
+          >CC BY-SA 4.0</a
+        >. They are abridged and lightly cleaned; that adaptation, and the glosses written for
+        these texts, are shared under the same licence. Each word links to its full entry.
+      </dd>
+
+      <dt>GRETIL</dt>
+      <dd>
+        the texts themselves (the Pañcatantra in Jha's edition) come from the
+        <a href="https://gretil.sub.uni-goettingen.de/" target="_blank" rel="noopener noreferrer"
+          >Göttingen Register of Electronic Texts in Indian Languages</a
+        >, CC BY-NC-SA 4.0 per their headers
+      </dd>
     </dl>
   </section>
 

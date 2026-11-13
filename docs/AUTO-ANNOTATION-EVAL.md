@@ -45,7 +45,7 @@ from here.
 **Licences.** csl-orig, and therefore MW as digitised by CDSL, is **CC BY-SA
 4.0**. Anything that ships these glosses must credit "Monier-Williams, *A
 Sanskrit-English Dictionary* (1899), digitised by the Cologne Digital Sanskrit
-Dictionaries" and stay share-alike. Nothing ships them yet. vidyut is MIT. The
+Dictionaries" and stay share-alike. The reader's whole texts ship them now, credited on the text page and at `/about#credits` (§7). vidyut is MIT. The
 GRETIL texts are CC BY-NC-SA 4.0 according to their own headers.
 
 **Times** (this machine):
@@ -830,3 +830,66 @@ Not generated at all, and still entirely the author's job:
 4. Make the MW lookup pick the homonym and record that matches the analysis
    (a "to …" record for verbs, the matching `<lex>` gender for nouns) before
    showing a sense.
+
+---
+
+## 7. The first author pass: the monkey and the wedge, end to end
+
+§5 judged the tale; this is the tale *fixed*, through the workflow the reader
+now uses (`content/texts/pancatantra-kilotpatin/`, `docs/ARCHITECTURE.md`
+"Whole texts"). Every token was read against vidyut's best pick and its
+alternatives; every fix is a line in `overrides.yaml`, and
+`bun scripts/build-texts.ts` counts them by kind, so the numbers below are
+recomputed on every build rather than remembered.
+
+Unit: the **surface word** as the edition prints it (59 in the verse and the
+eight prose sentences; 121 padas once compounds are opened). §6 counts padas,
+so the two tables are comparable in kind, not to the decimal.
+
+| kind of fix | words | per 100 words |
+|---|---|---|
+| right as vidyut gave it (segmentation, lemma, every field) | 30 | **51** |
+| — of which only the gloss was rewritten | 8 | 14 |
+| compound members marked / rejoined | 15 | **25** |
+| other segmentation (a run of words, a misprint, a false lexical compound) | 6 | 10 |
+| analysis picked from vidyut's list (vidyut's segmentation kept) | 8 | **14** |
+| analysis supplied: not in any list vidyut or the kosha offered | 4 | 7 |
+| gloss written in context (MW's first sense wrong, or too bare) | 31 | 53 |
+| a note (none required) | 19 | 32 |
+
+A word can need more than one kind, so the rows overlap. What they say:
+
+- **Half the words were right as generated**, which is §5's 45% with the
+  strictness the same and the unit coarser. The fixes concentrate where §6
+  predicted: segmentation is a third of all words (25 + 10), almost all of it
+  compounds — all nine chunks vidyut could not analyse were compounds or runs
+  of words, and every one is now split.
+- **When the author splits correctly, the kosha usually knows the pieces.**
+  The snapshot looks up every pada an author writes in a `split`; of the
+  non-member padas written that way, 40 of 43 were found in the kosha with the
+  analysis the author meant, and so inherit vidyut's root, गण and paradigm.
+  The engine's weakness is cutting, not knowing.
+- **Picks were genders and cases in context**, the §5 pattern exactly: तद्
+  forms in the neuter where the sentence is masculine (ते, तेषाम्, तस्य, तस्मिन्),
+  आरब्धम् and निधनम् in the wrong case or gender.
+- **Supplied analyses were four**: स (the kosha has no सः-before-a-consonant
+  form), बेलायाम् (the edition's spelling of वेला), कदाचित् and परिभ्रमत्
+  (not in the kosha at all).
+- **Glosses were the largest single cost** and the least mechanical: half the
+  words got one. A third of those correct a wrong MW sense or homonym (निधन
+  "having no property", पाणि "a place of sale", अपि as a grammatical note);
+  the rest narrow MW to the sense the tale needs (इष् "to wish", याति "meets
+  (death)").
+- **The edition's three misprints** (अव्यापरेषु, प्रसाद for प्रासाद,
+  उत्पादयितुम् for उत्पाटयितुम्) needed a human who knows the story; the
+  text keeps them and the overrides read through them, with a note.
+
+**Time.** The pass was made by an AI author working from a dump of vidyut's
+best picks and alternatives: about 2 minutes to write `overrides.yaml` for all
+59 words, then three corrections after the build's report (a कृत् label the
+kosha does not use, a lemma written differently from the kosha's, one gloss) —
+roughly 10 minutes wall-clock in all. That is not a human's cost and should not
+be read as one. What it does fix is the *shape* of the work: per 100 words,
+about 35 segmentation decisions, 20 analysis decisions (14 of them a choice from
+a list) and 50 glosses. A human editor's time per 100 words is the number still
+to measure, on the next tale, with a clock.
