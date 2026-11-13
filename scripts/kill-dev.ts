@@ -35,9 +35,17 @@ for (const pid of sh(`lsof -ti tcp:${PORT} -sTCP:LISTEN`).split(/\s+/).filter(Bo
   if (/\bvite\b|node/.test(cmd)) pids.add(pid);
 }
 
-if (!pids.size) process.exit(0);
+const holder = () => sh(`lsof -ti tcp:${PORT} -sTCP:LISTEN`).split(/\s+/).filter(Boolean)
+  .map((pid) => `pid ${pid}: ${sh(`ps -o command= -p ${pid}`).trim()}`);
+if (!pids.size) {
+  const h = holder();
+  if (h.length) console.log(`port ${PORT} is held by something this script does not stop:\n  ${h.join('\n  ')}\n  stop it yourself (kill <pid>), or it was started from another checkout`);
+  process.exit(0);
+}
 for (const pid of pids) { try { process.kill(pid, 'SIGTERM'); } catch { /* already gone */ } }
 // give them a moment to release the port, then make sure
 await Bun.sleep(600);
 for (const pid of pids) { try { process.kill(pid, 0); process.kill(pid, 'SIGKILL'); } catch { /* exited */ } }
 console.log(`stopped the running dev server (pid ${[...pids].join(', ')})`);
+const still = holder();
+if (still.length) console.log(`port ${PORT} is still held:\n  ${still.join('\n  ')}`);
