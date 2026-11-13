@@ -826,7 +826,7 @@ Not generated at all, and still entirely the author's job:
    segmentation work and most of the nonsense output on real texts. A
    compound splitter that knows stem-form members, or using GRETIL's own
    hyphens as hints, would move the real-text figure the most.
-3. Send the cheda patch upstream and bump `VIDYUT_REV` once it lands.
+3. The cheda patch is upstream as ambuda-org/vidyut PR #274; bump `VIDYUT_REV` and delete the patch once it lands.
 4. Make the MW lookup pick the homonym and record that matches the analysis
    (a "to …" record for verbs, the matching `<lex>` gender for nouns) before
    showing a sense.

@@ -55,7 +55,8 @@ cp "$SRC/Cargo.lock" "$OUT/crate/Cargo.lock" 2>/dev/null || true
 # and every avyaya to a Subanta state (an inverted `if` in scoring.rs, `From<&
 # Option<PadaEntry>> for State`), so its lemma model never fires for nouns and
 # it segments वने as वन + इ. One character fixes it; the eval measures both.
-# The patch belongs upstream; drop it here once VIDYUT_REV includes the fix.
+# The patch belongs upstream: ambuda-org/vidyut PR #274 (branch skmnktl/vidyut:cheda-avyaya-state).
+# Drop it here once VIDYUT_REV includes that fix.
 build() {
   ( cd "$OUT/crate" && cargo build --release --quiet )
   cp "$OUT/crate/target/release/anuvrtti-cheda" "$OUT/bin/$1"
