@@ -1,0 +1,215 @@
+- id: ex519
+  kind: graded
+  segment: 185
+  sentence: 'पथिकाः ग्रामम् आगच्छन्ति। ते तृषिताः। नद्याः जलम् मलिनम्, न पेयम्। कूपस्य जलम् शुद्धम्, पेयम् च। ग्रामस्य जनाः पथिकेभ्यः खाद्यम् अपि ददति।'
+  translation: 'Travellers come to the village. They are thirsty. The river''s water is muddy — not fit to drink. The well''s water is clean and fit to drink. The village people also give the travellers something to eat.'
+  teaches: 'यत् and ण्यत् gerundives — पेयम् "drinkable" (पा + यत्), खाद्यम् "edible" (खाद् + ण्यत्)'
+  words:
+  - form: पथिकाः
+    lemma: पथिक
+    gloss: 'travellers'
+    notes:
+    - term: कर्तृ
+      en: 'those who come'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: ग्रामम्
+    lemma: ग्राम
+    gloss: 'to the village'
+    notes:
+    - term: कर्मन्
+      en: 'goal of coming'
+    - term: द्वितीया
+      en: 'accusative of destination'
+  - form: आगच्छन्ति
+    lemma: गम्
+    gloss: 'come'
+    notes:
+    - term: लट्
+      en: 'present plural'
+    - term: आङ्
+      en: 'preverb आ — "come"'
+  - form: ते
+    lemma: तद्
+    gloss: 'they'
+    notes:
+    - term: सर्वनाम
+      en: 'the travellers'
+    - term: प्रथमा
+      en: 'nominative plural'
+    - term: कर्तृ
+      en: 'subject of an understood सन्ति'
+    - term: बहुवचन
+      en: 'plural'
+  - form: तृषिताः
+    lemma: तृष्
+    gloss: 'thirsty'
+    notes:
+    - term: क्त
+      en: 'तृष् + इट् + क्त — "having become thirsty"'
+    - term: प्रथमा
+      en: 'nominative plural, with ते'
+    - term: कर्तरि
+      en: 'an intransitive root, so क्त describes the subject'
+    - term: पुंलिङ्ग
+      en: 'masculine'
+    - term: बहुवचन
+      en: 'plural'
+    rel:
+    - kind: विशेषण
+      to: 3
+  - form: नद्याः
+    lemma: नदी
+    gloss: 'the river''s'
+    notes:
+    - term: षष्ठी
+      en: 'genitive — ई-stem takes याः'
+    - term: सम्बन्ध
+      en: 'whose water'
+  - form: जलम्
+    lemma: जल
+    gloss: 'water'
+    notes:
+    - term: प्रथमा
+      en: 'nominative'
+    - term: कर्तृ
+      en: 'subject of an understood अस्ति'
+  - form: मलिनम्
+    lemma: मलिन
+    gloss: 'muddy'
+    notes:
+    - term: विशेषण
+      en: 'predicate of जलम्'
+    - term: प्रथमा
+      en: 'nominative neuter'
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: न
+    lemma: न
+    gloss: 'not'
+    notes:
+    - term: अव्यय
+      en: 'negates पेयम्'
+    - term: negation
+      en: '"not"'
+  - form: पेयम्
+    lemma: पा
+    gloss: 'drinkable'
+    notes:
+    - term: यत्
+      en: 'पा + यत् — आ → ई, then गुण: पेय'
+    - term: प्रथमा
+      en: 'nominative neuter, with जलम्'
+    - term: कर्मणि
+      en: 'water is what gets drunk'
+    - cite: '3.1.97'
+      role: 'अचो यत् → पा + यत् → पेयम्'
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: कूपस्य
+    lemma: कूप
+    gloss: 'the well''s'
+    notes:
+    - term: षष्ठी
+      en: 'genitive'
+    - term: सम्बन्ध
+      en: 'whose water'
+  - form: जलम्
+    lemma: जल
+    gloss: 'water'
+    notes:
+    - term: प्रथमा
+      en: 'nominative'
+    - term: कर्तृ
+      en: 'subject'
+  - form: शुद्धम्
+    lemma: शुद्ध
+    gloss: 'clean'
+    notes:
+    - term: विशेषण
+      en: 'predicate of जलम्'
+    - term: प्रथमा
+      en: 'nominative neuter'
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: पेयम्
+    lemma: पा
+    gloss: 'fit to drink'
+    notes:
+    - term: यत्
+      en: 'the same gerundive'
+    - term: प्रथमा
+      en: 'nominative neuter'
+    - term: कर्मणि
+      en: 'passive in sense'
+    rel:
+    - kind: विशेषण
+      to: 11
+  - form: च
+    lemma: च
+    gloss: 'and'
+    notes:
+    - term: अव्यय
+      en: '"and" — adds the second quality'
+    - term: निपात
+      en: 'particle'
+  - form: ग्रामस्य
+    lemma: ग्राम
+    gloss: 'of the village'
+    notes:
+    - term: षष्ठी
+      en: 'genitive'
+    - term: सम्बन्ध
+      en: 'the village''s people'
+  - form: जनाः
+    lemma: जन
+    gloss: 'people'
+    notes:
+    - term: कर्तृ
+      en: 'the givers'
+    - term: प्रथमा
+      en: 'nominative plural'
+  - form: पथिकेभ्यः
+    lemma: पथिक
+    gloss: 'to the travellers'
+    notes:
+    - term: चतुर्थी
+      en: 'dative plural'
+    - term: सम्प्रदान
+      en: 'recipients'
+  - form: खाद्यम्
+    lemma: खाद्
+    gloss: 'something to eat'
+    notes:
+    - term: ण्यत्
+      en: 'खाद् + ण्यत् — "fit to be eaten"'
+    - term: द्वितीया
+      en: 'accusative — what they give'
+    - term: कर्मन्
+      en: 'object of ददति'
+    - term: कर्मणि
+      en: 'food is what gets eaten'
+    - cite: '3.1.124'
+      role: 'ऋहलोर्ण्यत् → खाद् + ण्यत् → खाद्यम्'
+    - term: नपुंसकलिङ्ग
+      en: 'neuter — "something to eat"'
+  - form: अपि
+    lemma: अपि
+    gloss: 'also'
+    notes:
+    - term: अव्यय
+      en: '"also" — food as well as water'
+    - term: निपात
+      en: 'particle'
+  - form: ददति
+    lemma: दा
+    gloss: 'give'
+    notes:
+    - term: लट्
+      en: 'present plural — the reduplicated stem drops its न्: ददति'
+  vyakhya: 'पातुम् योग्यम् पेयम् — पा-धातोः यत्, आकारस्य ईकारः, गुणः। खादितुम् योग्यम् खाद्यम् — ण्यत्।'
+  vyakhya_en: |
+    पेयम् is पा "drink" + यत् (3.1.97): the root's आ becomes ई (6.4.65) and then takes गुण, पे + य. खाद्यम् is खाद् + ण्यत् (3.1.124), the consonant-final root's gerundive. Both mean "fit to be —ed", so water is पेयम् or न पेयम्, and food given to guests is खाद्यम्.
