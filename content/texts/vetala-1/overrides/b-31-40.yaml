@@ -1,0 +1,259 @@
+# Kathāsaritsāgara 12.8.31–40 — the author's decisions on vidyut's analysis.
+# Format: see content/texts/pancatantra-kilotpatin/overrides.yaml.
+
+'8.31':
+  ऊचिवाननुमतो:
+    split:
+      - { form: ऊचिवान्, lemma: वच्, a: प्रथमा एकवचन पुंलिङ्ग लिट् क्वसु, gloss: 'having spoken' }
+      - { form: अनुमतः, lemma: अनुमत, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'given leave, dismissed' }
+  रज्ञा:
+    split:
+      - { form: राज्ञा, lemma: राजन्, a: तृतीया एकवचन पुंलिङ्ग, gloss: 'by the king' }
+    note: The edition prints रज्ञा; read राज्ञा ("by the king"), as sense and metre need. A misprint.
+  क्षणेन:
+    fix:
+      1: { gloss: 'in a moment' }
+  कोषाध्यक्षः:
+    fix:
+      1: { form: कोष, lemma: कोष, member: true, gloss: 'treasury' }
+  प्रभुं:
+    fix:
+      1: { lemma: प्रभु, a: द्वितीया एकवचन पुंलिङ्ग, gloss: 'master, lord' }
+  व्यज्ञापयत्पुनः:
+    split:
+      - form: व्यज्ञापयत्
+        lemma: ज्ञा
+        a: लङ् प्रथमपुरुष एकवचन परस्मैपद
+        gloss: 'informed, reported (वि + ज्ञा, causative)'
+        note: वि-अ-ज्ञापयत् — the augment अ sits between the उपसर्ग and the causative stem ज्ञापय.
+      - { form: पुनर्, lemma: पुनर्, a: अव्यय }
+
+'8.32':
+  नात्र:
+    fix:
+      2: { gloss: 'here' }
+  तु:
+    fix:
+      1: { gloss: 'but' }
+  कोषे:
+    fix:
+      1: { gloss: 'treasury' }
+  फलान्यहम्:
+    fix:
+      2: { lemma: अस्मद्, a: प्रथमा एकवचन पुंलिङ्ग }
+  रश्मिज्वालाकुलं:
+    split:
+      - { form: रश्मि, lemma: रश्मि, member: true, gloss: 'ray' }
+      - { form: ज्वाला, lemma: ज्वाला, member: true, gloss: 'flame, blaze' }
+      - { form: आकुलम्, lemma: आकुल, a: द्वितीया एकवचन पुंलिङ्ग, gloss: 'filled with' }
+  विभो:
+    fix:
+      1: { lemma: विभु, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: 'lord, sovereign' }
+
+'8.33':
+  तान्मनीन्दत्त्वा:
+    split:
+      - { form: तान्, lemma: तद्, a: द्वितीया बहुवचन पुंलिङ्ग }
+      - { form: मणीन्, lemma: मणि, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: 'jewels, gems' }
+      - { form: दत्त्वा, lemma: दा, a: अव्यय क्त्वा, gloss: 'having given' }
+    note: The edition prints मनीन्; read मणीन् ("the jewels" found inside the fruits). A misprint.
+  तुष्टोऽस्मै:
+    split:
+      - { form: तुष्टः, lemma: तुष्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: 'pleased' }
+      - { form: अस्मै, lemma: इदम्, a: चतुर्थी एकवचन पुंलिङ्ग }
+  कोषरक्षिणे:
+    split:
+      - { form: कोष, lemma: कोष, member: true, gloss: 'treasury' }
+      - { form: रक्षिणे, lemma: रक्षिन्, a: चतुर्थी एकवचन पुंलिङ्ग, gloss: 'keeper, guardian' }
+  राजान्येद्युरपृच्छत्स:
+    fix:
+      4: { lemma: तद्, a: प्रथमा एकवचन पुंलिङ्ग }
+  तं:
+    fix:
+      1: { lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग }
+  प्राग्वदागतम्:
+    fix:
+      2: { lemma: गम्, a: द्वितीया एकवचन पुंलिङ्ग क्त, gloss: 'come, arrived' }
+
+'8.34':
+  भिक्षो:
+    fix:
+      1: { form: भिक्षो, lemma: भिक्षु, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: 'mendicant' }
+  मां:
+    fix:
+      1: { lemma: अस्मद्, a: द्वितीया एकवचन पुंलिङ्ग }
+  किमन्वहम्:
+    fix:
+      1: { gloss: 'why?' }
+  यावन्न:
+    fix:
+      1: { gloss: 'until (यावत् न "as long as … not")' }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: षष्ठी एकवचन पुंलिङ्ग, gloss: 'from you' }
+
+'8.35':
+  भिक्षुस्तं:
+    fix:
+      2: { lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग }
+  विजनेऽब्रवीत्:
+    fix:
+      1: { gloss: 'in private, in a solitary place' }
+  वीरसाचिव्यसापेक्षं:
+    split:
+      - { form: वीर, lemma: वीर, member: true, gloss: 'hero' }
+      - { form: साचिव्य, lemma: साचिव्य, member: true, gloss: 'help, assistance' }
+      - { form: सापेक्षम्, lemma: सापेक्ष, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: 'requiring, dependent on' }
+  मन्त्रसाधनमस्ति:
+    split:
+      - { form: मन्त्र, lemma: मन्त्र, member: true, gloss: 'spell, mantra' }
+      - { form: साधनम्, lemma: साधन, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: 'rite for gaining mastery (of a spell)' }
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद }
+  मे:
+    fix:
+      1: { lemma: अस्मद्, a: षष्ठी एकवचन पुंलिङ्ग }
+
+'8.36':
+  वीरेन्द्र:
+    fix:
+      1: { form: वीर, lemma: वीर, member: true }
+      2: { gloss: 'chief, lord (वीरेन्द्र "chief of heroes")' }
+  साहाय्यं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'help, assistance' }
+  क्रियमानं:
+    fix:
+      1: { lemma: कृ, a: द्वितीया एकवचन नपुंसकलिङ्ग लट् शानच्, gloss: 'being done (passive participle)' }
+  त्वयार्थये:
+    split:
+      - { form: त्वया, lemma: युष्मद्, a: तृतीया एकवचन पुंलिङ्ग }
+      - { form: अर्थये, lemma: अर्थ्, a: लट् उत्तमपुरुष एकवचन आत्मनेपद, gloss: 'I ask, request' }
+  तत्तथेत्यस्य:
+    split:
+      - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग }
+      - { form: तथा, lemma: तथा, a: अव्यय, gloss: 'so (तथा इति "so be it")' }
+      - { form: इति, lemma: इति, a: अव्यय }
+      - { form: अस्य, lemma: इदम्, a: षष्ठी एकवचन पुंलिङ्ग }
+  प्रतिपेदे:
+    fix:
+      1: { gloss: 'agreed to, promised' }
+  स:
+    fix:
+      1: { lemma: तद्, a: प्रथमा एकवचन पुंलिङ्ग }
+  भूपतिः:
+    fix:
+      1: { gloss: 'king' }
+
+'8.37':
+  स:
+    fix:
+      1: { lemma: तद्, a: प्रथमा एकवचन पुंलिङ्ग }
+  श्रमणस्तुष्टो:
+    fix:
+      1: { lemma: श्रमण, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'ascetic, (Buddhist) mendicant' }
+      2: { gloss: 'pleased' }
+  पुन:
+    fix:
+      1: { form: पुनर्, lemma: पुनर्, a: अव्यय }
+    note: पुनर् with its र् dropped before उवाच — the edition's hiatus, where regular sandhi gives पुनरुवाच.
+  उवाच:
+    fix:
+      1: { lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद }
+  तम्:
+    fix:
+      1: { lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग }
+  कृष्णचतुर्दश्यामागामिन्यां:
+    fix:
+      1: { gloss: 'the fourteenth night of the dark fortnight' }
+      2: { lemma: गम्, a: सप्तमी एकवचन स्त्रीलिङ्ग णिनि, gloss: 'coming, next' }
+  निशागमे:
+    fix:
+      1: { form: निशा, lemma: निशा, member: true }
+      2: { lemma: आगम, a: सप्तमी एकवचन पुंलिङ्ग, gloss: 'onset, coming (निशागम "nightfall")' }
+
+'8.38':
+  इतो:
+    fix:
+      1: { lemma: इतस्, a: अव्यय, gloss: 'from here' }
+  महाश्मशानान्तःवटस्याधः:
+    split:
+      - { form: महाश्मशान, lemma: महाश्मशान, member: true, gloss: 'great cremation ground' }
+      - { form: अन्तर्, lemma: अन्तर्, a: अव्यय, gloss: 'within' }
+      - { form: वटस्य, lemma: वट, a: षष्ठी एकवचन पुंलिङ्ग, gloss: 'banyan tree' }
+      - { form: अधस्, lemma: अधस्, a: अव्यय, gloss: 'beneath (with a genitive)' }
+    note: Beneath the banyan within the great cremation ground; the edition prints अन्तःवट without sandhi.
+  स्थितस्य:
+    fix:
+      1: { lemma: स्था, a: षष्ठी एकवचन पुंलिङ्ग क्त, gloss: 'standing, staying' }
+  मे:
+    fix:
+      1: { lemma: अस्मद्, a: षष्ठी एकवचन पुंलिङ्ग }
+  आगन्तव्यं:
+    fix:
+      1: { lemma: गम्, a: प्रथमा एकवचन नपुंसकलिङ्ग तव्य, gloss: 'is to be come (impersonal: "you must come")' }
+  त्वया:
+    fix:
+      1: { lemma: युष्मद्, a: तृतीया एकवचन पुंलिङ्ग }
+  देव:
+    fix:
+      1: { gloss: 'Your Majesty (addressing the king)' }
+  प्रतिपालयतोऽन्तिकम्:
+    split:
+      - { form: प्रतिपालयतः, lemma: पाल्, a: षष्ठी एकवचन पुंलिङ्ग लट् शतृ, gloss: 'waiting (for you)' }
+      - { form: अन्तिकम्, lemma: अन्तिक, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'to the presence (of)' }
+
+'8.39':
+  करिष्यामीत्युक्ते:
+    fix:
+      3: { lemma: वच्, a: सप्तमी एकवचन नपुंसकलिङ्ग क्त, gloss: 'said', note: 'उक्ते तेन — a locative absolute, "when it had been said by him".' }
+  तेन:
+    fix:
+      1: { lemma: तद्, a: तृतीया एकवचन पुंलिङ्ग }
+  स:
+    fix:
+      1: { lemma: तद्, a: प्रथमा एकवचन पुंलिङ्ग }
+  श्रमणो:
+    fix:
+      1: { lemma: श्रमण, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'ascetic, (Buddhist) mendicant' }
+  हृष्टः:
+    fix:
+      1: { gloss: 'delighted' }
+  स्वनिलयं:
+    split:
+      - { form: स्व, lemma: स्व, member: true, gloss: 'own' }
+      - { form: निलयम्, lemma: निलय, a: द्वितीया एकवचन पुंलिङ्ग, gloss: 'dwelling, abode' }
+  ययौ:
+    fix:
+      1: { gloss: 'went' }
+
+'8.40':
+  अथ:
+    fix:
+      1: { gloss: 'then, now' }
+  तां:
+    fix:
+      1: { lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग }
+  'तां#2':
+    fix:
+      1: { lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग }
+  स:
+    fix:
+      1: { lemma: तद्, a: प्रथमा एकवचन पुंलिङ्ग }
+  महासत्त्वः:
+    fix:
+      1: { gloss: 'great-hearted, of noble nature' }
+  प्राप्य:
+    split:
+      - { form: प्राप्य, lemma: आप्, a: अव्यय ल्यप्, gloss: 'having reached' }
+  प्रार्थनां:
+    fix:
+      1: { gloss: 'request' }
+  प्रतिपन्नां:
+    fix:
+      1: { gloss: 'agreed to, promised' }
+  भिक्षोस्तस्य:
+    fix:
+      2: { lemma: तद्, a: षष्ठी एकवचन पुंलिङ्ग }
+  स्मरन्:
+    fix:
+      1: { gloss: 'remembering' }
