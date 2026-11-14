@@ -29,6 +29,7 @@ export interface ResolvedParadigm {
   lakara: string | null; // लट् — Sanskrit, verbs only
   kind: string; // "declension" / "present" — English, never transliterated
   grid: Paradigm;
+  source?: string; // "Kāle §115" — a table constructed from the grammar, not derived
   row: number; // index into grid.rows of the highlighted cell, or -1
   col: number; // index into a row's cells, or -1
 }
@@ -39,6 +40,8 @@ export interface ParadigmData {
   verbParadigms: Record<string, Record<string, Record<string, string>>>; // root → लकार → cell → form
   nounVariants?: Record<string, Record<string, string[]>>; // stem → cell → every correct form
   verbByForm?: Record<string, string>; // root|form → the key of the word's own table in verbParadigms[root]
+  nounByForm?: Record<string, string>; // lemma|form → the word's own stem's table, when the lemma is its base (कौन्तेयः under कुन्ती)
+  nounSources?: Record<string, string>; // table key → the Kāle section it was constructed from
 }
 
 export function paradigmIndex(usage: any): ParadigmData {
@@ -46,7 +49,9 @@ export function paradigmIndex(usage: any): ParadigmData {
     nounParadigms: usage?.nounParadigms ?? {},
     verbParadigms: usage?.verbParadigms ?? {},
     nounVariants: usage?.nounVariants ?? {},
-    verbByForm: usage?.verbByForm ?? {}
+    verbByForm: usage?.verbByForm ?? {},
+    nounByForm: usage?.nounByForm ?? {},
+    nounSources: usage?.nounSources ?? {}
   };
 }
 
@@ -160,6 +165,11 @@ export function resolve(
   form: string,
   terms: string[]
 ): ResolvedParadigm | null {
+  // an indeclinable has no paradigm, whatever case-sense it carries (ग्रामतः
+  // is the तस् of Kāle §130, "from the village", not an ablative form)
+  // — but an adverbial accusative (समीपम्, tagged अव्यय) is a noun's own form and keeps it
+  if (terms.includes('तसिल्') || (terms.includes('अव्यय') && terms.includes('तद्धित'))) return null;
+  form = form.replace(/^हे\s+/, ''); // हे देव: the particle is not the word
   const r0 = resolveAny(data, lemma, form, terms);
   // a lemma written with its preverb (परा-जि, आ-गम्) whose table is the root's
   const r = r0 || !lemma.includes('-') ? r0 : resolveAny(data, (lemma = lemma.split('-').at(-1)!), form, terms);
@@ -226,26 +236,42 @@ function resolveAny(
   */
   // (a kṛdanta whose lemma is its own stem — दातृ, not दा — has no root+affix
   // table and declines as that stem, below)
-  const isKrt = terms.includes('कृदन्त') && Object.keys(data.nounParadigms).some((k) => k.startsWith(stem + '+'));
+  const ownKey0 = data.nounByForm?.[deaccent(lemma) + '|' + look];
+  const isKrt = (terms.includes('कृदन्त') && Object.keys(data.nounParadigms).some((k) => k.startsWith(stem + '+')))
+    || (!!ownKey0 && /\+(क्त|क्तवतु|शतृ|शानच्|कर्मणि|णिच्|यत्|ण्यत्|तव्यत्|अनीयर्)/.test(ownKey0) && !!data.nounParadigms[ownKey0]);
   if (isKrt) {
     const keys = Object.keys(data.nounParadigms).filter((k) => k.startsWith(stem + '+'));
-    const holds = (k: string) => Object.values(data.nounParadigms[k]).some((f) => sp(f) === bare);
-    const key = keys.find((k) => (!lg || k.endsWith('·' + lg)) && holds(k))
+    const holds = (k: string) => Object.values(data.nounParadigms[k]).some((f) => f.split(' / ').some((x) => sp(x) === bare));
+    // the word's own kṛdanta, when the build had to respell the root (मूर्च्छ् → मुर्छ्)
+    const ownK = data.nounByForm?.[deaccent(lemma) + '|' + look];
+    const key = (ownK && data.nounParadigms[ownK] && ownK.includes('+') ? ownK : undefined)
+      ?? keys.find((k) => (!lg || k.endsWith('·' + lg)) && holds(k))
       ?? keys.find(holds)
       ?? terms.map((t) => `${stem}+${t}·${lg}`).find((k) => data.nounParadigms[k]);
     if (key) {
     const vib = VIBHAKTI.findIndex((x) => terms.includes(x));
     const vacIdx = VACANA.findIndex((x) => terms.includes(x));
-    const { grid, row, col } = toGrid(data.nounParadigms[key], VIBHAKTI, VACANA, vib, vacIdx >= 0 ? vacIdx : 0);
-    const affix = key.slice(stem.length + 1).split('·')[0];
-    return { stem: `${stem} + ${affix}`, lakara: null, kind: 'participle', grid, row, col };
+    const t = data.nounParadigms[key];
+    // an untagged number: the column of the row that holds the form
+    const kc = vacIdx >= 0 || vib < 0 ? Math.max(vacIdx, 0)
+      : Math.max(0, VACANA.findIndex((v) => (t[`${VIBHAKTI[vib]}|${v}`] ?? '').split(' / ').some((f) => sp(f) === bare)));
+    const { grid, row, col } = toGrid(t, VIBHAKTI, VACANA, vib, kc);
+    const affix = key.split('·')[0].split('+').slice(1).join(' + ');
+    const kstem = key.split('·')[0].split('+')[0];
+    return { stem: `${kstem} + ${affix}`, lakara: null, kind: 'participle', grid, row, col };
     }
   }
   // …and where the form leaves the gender open (तस्य is masculine or neuter),
   // the first gendered table that holds the form — the cell is the same either way.
   // the word's gender's table first (an adjective's मधुरः is not its stem's
   // मधुरा), then the stem's own, then any gender that holds the form
+  // the word's own stem, when its lemma is the base it was formed from
+  const own = data.nounByForm?.[deaccent(lemma) + '|' + look];
+  // किम् + चित्/चन/अपि (Kāle §141): कस्मिंश्चित्, केनापि
+  const part = stem === 'किम्' ? ['चित्', 'चन', 'अपि'].find((x) => bare.endsWith(x) || bare.endsWith(x.replace(/^अ/, ''))) : undefined;
   const keyOf = [
+    ...(own ? [own] : []),
+    ...(part ? (lg ? [`किम्+${part}·${lg}`] : ['पुंलिङ्ग', 'नपुंसकलिङ्ग', 'स्त्रीलिङ्ग'].map((x) => `किम्+${part}·${x}`)) : []),
     ...(lg ? [stem + '·' + lg] : []), stem,
     ...['पुंलिङ्ग', 'नपुंसकलिङ्ग', 'स्त्रीलिङ्ग'].map((x) => stem + '·' + x)
   ];
@@ -257,14 +283,17 @@ function resolveAny(
   const col = vacIdx >= 0 ? vacIdx : 0;
   // Of the candidate tables, the one whose lit cell IS the word wins: ते
   // tagged प्रथमा·द्विवचन is the feminine or neuter (the masculine is तौ).
-  const cellKey = vib >= 0 ? `${VIBHAKTI[vib]}|${VACANA[col]}` : '';
-  const atCell = (k: string) => !!cellKey && (sp(data.nounParadigms[k][cellKey] ?? '') === bare
+  const cellKeys = vib < 0 ? [] : vacIdx >= 0 ? [`${VIBHAKTI[vib]}|${VACANA[col]}`] : VACANA.map((v) => `${VIBHAKTI[vib]}|${v}`);
+  const atCell = (k: string) => cellKeys.some((cellKey) => (data.nounParadigms[k][cellKey] ?? '').split(' / ').some((f) => sp(f) === bare)
     || (data.nounVariants?.[k]?.[cellKey] ?? []).some((f) => sp(f) === bare));
   const have = keyOf.filter((k) => data.nounParadigms[k]);
   const pkey = have.find(atCell) ?? have.slice(0, 2).find((k) => keyOf.indexOf(k) < 2) ?? have.find(holdsBare);
   const para = pkey ? data.nounParadigms[pkey] : undefined;
   if (!para) return null;
-  const { grid, row, col: c } = toGrid(para, VIBHAKTI, VACANA, vib, col);
+  // an untagged number: the column of the word's row that holds the form
+  const colAt = vacIdx >= 0 || vib < 0 ? col
+    : Math.max(0, VACANA.findIndex((v) => (para[`${VIBHAKTI[vib]}|${v}`] ?? '').split(' / ').some((f) => sp(f) === bare)));
+  const { grid, row, col: c } = toGrid(para, VIBHAKTI, VACANA, vib, colAt);
   /*
     A cell can hold two correct forms — रात्र्याम् and रात्रौ are both the
     locative of रात्रि — and the table shows one. When the word is the other,
@@ -274,5 +303,6 @@ function resolveAny(
   const alts = data.nounVariants?.[pkey!]?.[`${VIBHAKTI[row]}|${VACANA[c]}`] ?? [];
   if (lit && sp(lit) !== bare && alts.some((f) => sp(f) === bare))
     grid.rows[row].cells[c] = `${form} / ${lit}`;
-  return { stem, lakara: null, kind: 'declension', grid, row, col: c };
+  const shown = pkey!.split('·')[0].split('+').join(' + ');
+  return { stem: shown, lakara: null, kind: 'declension', grid, row, col: c, ...(data.nounSources?.[pkey!] ? { source: data.nounSources[pkey!] } : {}) };
 }

@@ -155,9 +155,15 @@ looked up), and `bun run check` until the `texts` line is green.
   for a stem or root (दाता, दिक्, विद्वान्, कर्तव्यम्), the stem plain or ṅyāp
   (लक्ष्मीः, बालिका) — kept only if its cell is the word. The check also
   surfaced ~20 wrong tags (लते as एकवचन, कृतवती as नपुंसक, a passive's subject
-  as द्वितीया), now fixed. ~105 words still have no table: lemmas given as the
-  base of a taddhita or compound (कौन्तेयः under कुन्ती, वेदवित् under विद्),
-  महत्, आशिस्, किम् + चित्, -तः adverbs tagged पञ्चमी.
+  as द्वितीया), now fixed. Then every remaining word but four got its own
+  table: derived from its tags (कुन्ती + ढक् → कौन्तेय, सत्य + वद् + णिनि), from
+  its preverbs fused or respelled (उदि → उद् + इ, मूर्च्छ् → मुर्छ्), as the a-stem
+  it attests (तृषित, where vidyut gives तृष्ट), or — where vidyut declines a stem
+  wrongly — constructed from Kāle in `content/paradigms-constructed.yaml` and
+  cited beside the table: महत् §115, आशिष् §114, उदञ्च् §104, कामदुह् §97,
+  दीर्घायुस् §42 (ṣatva), एतद्'s एन- doublets §135, किम् + चित्/चन/अपि §141.
+  Left without a table: three Vedic forms (स्वे, धिष्ण्या, हरिवः) and the
+  āmreḍita एकैकम्.
 - The kṛt-affix guess (`krts` in `scripts/build-quiz.ts`) also guesses for
   finite verbs (अस्ति → `अस्+क्तिन्`); it should only run on non-finite forms.
 

@@ -2102,6 +2102,11 @@
                   text={selParadigm.lakara}
                   source="devanagari"
                 /> ({selParadigm.kind}){:else}{selParadigm.kind}{/if}
+              {#if selParadigm.source}
+                <!-- a table vidyut cannot derive, built from the grammar's rule -->
+                · <a class="ev-cite" href="/grammar?s={selParadigm.source.replace(/\D/g, '')}"
+                  title="constructed from this section of Kāle's grammar">{selParadigm.source}</a>
+              {/if}
             </span>
             <button
               class="ev-fold"

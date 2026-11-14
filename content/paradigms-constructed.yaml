@@ -1,0 +1,137 @@
+# Paradigms vidyut cannot derive, constructed from Kāle's rule — AUTHORED.
+#
+# A word's table comes from vidyut (scripts/build-quiz.ts). A few stems it
+# declines wrongly; for those, the table is built here from Kāle, A Higher
+# Sanskrit Grammar (the /grammar door, static/data/dukrnkarane.json), and the
+# reader cites the section beside the table.
+#
+# Per stem, per gender:
+#   kale    the section the construction follows (shown in the rail, linked)
+#   base    a vidyut pratipadika for the cells the rule leaves regular
+#           ("the rest like धीमत्"); omit to state every cell
+#   cells   विभक्ति|वचन → form, the cells the rule itself decides; they
+#           replace the base's. Several correct forms: "a / b".
+#   note    what the rule says, in a line
+#
+# bun scripts/check-paradigm-lit.ts holds every word to the cell it lights,
+# here as anywhere.
+
+महत्:
+  पुंलिङ्ग:
+    kale: 115
+    note: अ is lengthened and न् inserted in the strong cases (महान्, महान्तम्); vocative महन्; the rest like धीमत्
+    base: { basic: mahat }
+    cells:
+      प्रथमा|एकवचन: महान्
+      प्रथमा|द्विवचन: महान्तौ
+      प्रथमा|बहुवचन: महान्तः
+      सम्बोधन|एकवचन: महन्
+      सम्बोधन|द्विवचन: महान्तौ
+      सम्बोधन|बहुवचन: महान्तः
+      द्वितीया|एकवचन: महान्तम्
+      द्वितीया|द्विवचन: महान्तौ
+  नपुंसकलिङ्ग:
+    kale: 115
+    note: neuter N. V. A. महत्, महती, महान्ति; the rest like the masculine
+    base: { basic: mahat }
+    cells:
+      प्रथमा|एकवचन: महत्
+      प्रथमा|द्विवचन: महती
+      प्रथमा|बहुवचन: महान्ति
+      सम्बोधन|एकवचन: महत्
+      सम्बोधन|द्विवचन: महती
+      सम्बोधन|बहुवचन: महान्ति
+      द्वितीया|एकवचन: महत्
+      द्वितीया|द्विवचन: महती
+      द्वितीया|बहुवचन: महान्ति
+
+आशिष्:
+  स्त्रीलिङ्ग:
+    kale: 114
+    note: the penultimate इ is lengthened before a consonantal ending, and the final becomes visarga in the nominative singular (8.3.58 for ःषु / ष्षु)
+    base: { basic: ASiz }
+    cells:
+      प्रथमा|एकवचन: आशीः
+      सम्बोधन|एकवचन: आशीः
+      तृतीया|द्विवचन: आशीर्भ्याम्
+      चतुर्थी|द्विवचन: आशीर्भ्याम्
+      पञ्चमी|द्विवचन: आशीर्भ्याम्
+      तृतीया|बहुवचन: आशीर्भिः
+      चतुर्थी|बहुवचन: आशीर्भ्यः
+      पञ्चमी|बहुवचन: आशीर्भ्यः
+      सप्तमी|बहुवचन: आशीःषु / आशीष्षु
+
+# §135 gives एतद्'s enclitic doublets beside the full forms (एतम्-एनम्,
+# एतेन-एनेन, एतयोः-एनयोः), used when the thing is mentioned again (अन्वादेश).
+एतद्:
+  पुंलिङ्ग:
+    kale: 135
+    note: in re-mention the अ., I. sing. and G. L. dual have एन- doublets
+    base: { basic: etad }
+    cells:
+      द्वितीया|एकवचन: एतम् / एनम्
+      द्वितीया|द्विवचन: एतौ / एनौ
+      द्वितीया|बहुवचन: एतान् / एनान्
+      तृतीया|एकवचन: एतेन / एनेन
+      षष्ठी|द्विवचन: एतयोः / एनयोः
+      सप्तमी|द्विवचन: एतयोः / एनयोः
+  स्त्रीलिङ्ग:
+    kale: 135
+    note: in re-mention the अ., I. sing. and G. L. dual have एन- doublets
+    base: { basic: etad }
+    cells:
+      द्वितीया|एकवचन: एताम् / एनाम्
+      द्वितीया|द्विवचन: एते / एने
+      द्वितीया|बहुवचन: एताः / एनाः
+      तृतीया|एकवचन: एतया / एनया
+      षष्ठी|द्विवचन: एतयोः / एनयोः
+      सप्तमी|द्विवचन: एतयोः / एनयोः
+  नपुंसकलिङ्ग:
+    kale: 135
+    note: in re-mention the अ. has एन- doublets; the rest like the masculine
+    base: { basic: etad }
+    cells:
+      द्वितीया|एकवचन: एतत् / एनत्
+      द्वितीया|द्विवचन: एते / एने
+      द्वितीया|बहुवचन: एतानि / एनानि
+      तृतीया|एकवचन: एतेन / एनेन
+      षष्ठी|द्विवचन: एतयोः / एनयोः
+      सप्तमी|द्विवचन: एतयोः / एनयोः
+
+# §104: the directional अञ्च् nouns; उदञ्च्'s feminine is उदीची, an ई-stem.
+उदञ्च्:
+  स्त्रीलिङ्ग:
+    kale: 104
+    note: the feminine of उदञ्च् is उदीची, declined as an ई-stem
+    base: { nyap: udIcI }
+
+# §97: root nouns in ह् (द्रुह्, लिह्); दुह् aspirates its initial and ends
+# in क्/ग् before a consonantal ending or at the end (8.2.32, 8.2.37): कामधुक्.
+कामदुह्:
+  स्त्रीलिङ्ग:
+    kale: 97
+    note: before a consonantal ending and in the nominative singular दुह् becomes धुक्/धुग्
+    base: { basic: kAmaduh }
+    cells: &kamaduh
+      प्रथमा|एकवचन: कामधुक् / कामधुग्
+      सम्बोधन|एकवचन: कामधुक् / कामधुग्
+      तृतीया|द्विवचन: कामधुग्भ्याम्
+      चतुर्थी|द्विवचन: कामधुग्भ्याम्
+      पञ्चमी|द्विवचन: कामधुग्भ्याम्
+      तृतीया|बहुवचन: कामधुग्भिः
+      चतुर्थी|बहुवचन: कामधुग्भ्यः
+      पञ्चमी|बहुवचन: कामधुग्भ्यः
+      सप्तमी|बहुवचन: कामधुक्षु
+  पुंलिङ्ग:
+    kale: 97
+    note: before a consonantal ending and in the nominative singular दुह् becomes धुक्/धुग्
+    base: { basic: kAmaduh }
+    cells: *kamaduh
+
+# §42 (ṣatva, 8.3.59): the स् of -उस् is retroflex before a vowel — दीर्घायुषौ.
+दीर्घायुस्:
+  पुंलिङ्ग:
+    kale: 42
+    note: स् after उ becomes ष् before a vowel ending (ṣatva)
+    base: { basic: dIrGAyus }
+    replace: [युस, युष]

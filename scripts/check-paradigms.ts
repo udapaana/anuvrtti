@@ -36,7 +36,7 @@ const corpus = JSON.parse(fs.readFileSync(path.join(ROOT, 'static/data/readings.
 // Consonant stems split by what decides their declension, not just "हल्".
 const HAL: [RegExp, string][] = [
   [/[क-ह]न्$/, 'अन्'], [/िन्$/, 'इन्'], [/[वम]त्$/, 'वत्/मत्'], [/[क-ह]त्$/, 'अत्'],
-  [/[क-ह]स्$/, 'अस्'], [/[िु]स्$/, 'इस्/उस्'], [/[तद]्$/, 'त्/द्'], [/[चज]्$/, 'च्/ज्'],
+  [/[क-ह]स्$/, 'अस्'], [/[िु][सष]्$/, 'इस्/उस्'] /* आशिष् is the same stem, written with its ṣatva (Kāle §114) */, [/[तद]्$/, 'त्/द्'], [/[चज]्$/, 'च्/ज्'],
   [/[शष]्$/, 'श्/ष्'], [/ह्$/, 'ह्'],
 ];
 const pick = (t: Set<string>, pool: readonly string[]) => [...t].find((x) => pool.includes(x));
