@@ -1,0 +1,209 @@
+# Kathāsaritsāgara 12.8.41–49: the king goes out to the cremation ground and
+# the mendicant sends him for the corpse. Format as in
+# content/texts/pancatantra-kilotpatin/overrides.yaml.
+
+'8.41':
+  प्रदोषे:
+    fix:
+      1: { lemma: प्रदोष, a: सप्तमी एकवचन पुंलिङ्ग, gloss: 'at nightfall, in the evening' }
+  नीलवसनस्तमालकृतशेखरः:
+    split:
+      - { form: नील, lemma: नील, member: true, gloss: 'dark blue' }
+      - { form: वसनः, lemma: वसन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'clothing (नीलवसन "dark-clad")' }
+      - { form: तमाल, lemma: तमाल, member: true, gloss: 'the tamāla tree (dark-leaved)' }
+      - { form: कृत, lemma: कृत, member: true, gloss: 'made' }
+      - { form: शेखरः, lemma: शेखर, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'a crest, chaplet worn on the head' }
+    note: >-
+      Two बहुव्रीहि compounds describing the king, both masculine to agree with
+      him: नीलवसनः "whose clothes are dark", तमालकृतशेखरः "by whom a chaplet of
+      tamāla was made" — dark dress and dark leaves, to go unseen.
+  राजधानीतः:
+    split:
+      - { form: राजधानीतः, lemma: राजधानी, a: अव्यय, gloss: 'from the royal city' }
+    note: -तः (तसिल्) makes an ablative adverb from a noun — राजधानीतः "from the capital".
+  खड्गपाणिरलक्षितः:
+    split:
+      - { form: खड्ग, lemma: खड्ग, member: true, gloss: 'a sword' }
+      - { form: पाणिः, lemma: पाणि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'hand (खड्गपाणि "sword in hand")' }
+      - { form: अलक्षितः, lemma: अलक्षित, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'unseen, unobserved' }
+
+'8.42':
+  घोरनिबिडध्वान्तव्रातमलीमसम्:
+    split:
+      - { form: घोर, lemma: घोर, member: true, gloss: 'terrible' }
+      - { form: निबिड, lemma: निबिड, member: true, gloss: 'dense, thick' }
+      - { form: ध्वान्त, lemma: ध्वान्त, member: true, gloss: 'darkness' }
+      - { form: व्रात, lemma: व्रात, member: true, gloss: 'a mass, multitude' }
+      - { form: मलीमसम्, lemma: मलीमस, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'dark, foul' }
+    note: >-
+      This and the next five compounds (through 8.44) all describe श्मशानम्
+      in 8.45, the object of ययौ — the verb comes first, its object a verse
+      and a half later.
+  चितानलोग्रनयनज्वालादारुणदर्शनम्:
+    split:
+      - { form: चिता, lemma: चिता, member: true, gloss: 'a funeral pyre' }
+      - { form: अनल, lemma: अनल, member: true, gloss: 'fire' }
+      - { form: उग्र, lemma: उग्र, member: true, gloss: 'fierce' }
+      - { form: नयन, lemma: नयन, member: true, gloss: 'eye' }
+      - { form: ज्वाला, lemma: ज्वाला, member: true, gloss: 'flame' }
+      - { form: दारुण, lemma: दारुण, member: true, gloss: 'dreadful' }
+      - { form: दर्शनम्, lemma: दर्शन, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'aspect, look' }
+    note: >-
+      "Dreadful to look on with the flames of its fierce eyes, the pyre-fires":
+      the burning pyres are the ground's glaring eyes.
+
+'8.43':
+  असंख्यनरकङ्कालकपालास्थिविशङ्कटम्:
+    split:
+      - { form: असंख्य, lemma: असंख्य, member: true, gloss: 'countless' }
+      - { form: नर, lemma: नर, member: true }
+      - { form: कङ्काल, lemma: कङ्काल, member: true, gloss: 'a skeleton' }
+      - { form: कपाल, lemma: कपाल, member: true, gloss: 'a skull' }
+      - { form: अस्थि, lemma: अस्थि, member: true, gloss: 'a bone' }
+      - { form: विशङ्कटम्, lemma: विशङ्कट, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'thick with, crowded' }
+  हृष्यत्संनिहितोत्तालभूतवेतालवेष्टितम्:
+    split:
+      - { form: हृष्यत्, lemma: हृष्यत्, member: true, gloss: 'exulting (present participle of हृष्)' }
+      - { form: संनिहित, lemma: संनिहित, member: true, gloss: 'present, near at hand' }
+      - { form: उत्ताल, lemma: उत्ताल, member: true, gloss: 'tall, huge' }
+      - { form: भूत, lemma: भूत, member: true, gloss: 'a ghost, goblin' }
+      - { form: वेताल, lemma: वेताल, member: true, gloss: 'a vetāla, a spirit that animates corpses' }
+      - { form: वेष्टितम्, lemma: वेष्टित, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'surrounded, beset' }
+
+'8.44':
+  भैरवस्यापरं:
+    fix:
+      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'another, a second' }
+  रूपमिव:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'form, shape' }
+  गम्भीरभीषणम्:
+    split:
+      - { form: गम्भीर, lemma: गम्भीर, member: true, gloss: 'deep, profound' }
+      - { form: भीषणम्, lemma: भीषण, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'terrifying' }
+    note: Like a second form of Bhairava (Śiva the terrible) — the ground is that god made visible.
+
+'8.45':
+  स्फूर्जन्महाशिवारावं:
+    split:
+      - { form: स्फूर्जत्, lemma: स्फूर्जत्, member: true, gloss: 'resounding (present participle of स्फूर्ज्)' }
+      - { form: महा, lemma: महत्, member: true, gloss: 'great' }
+      - { form: शिवा, lemma: शिवा, member: true, gloss: 'a jackal' }
+      - { form: आरावम्, lemma: आराव, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'a cry, howl' }
+    note: >-
+      A बहुव्रीहि, neuter to agree with श्मशानम्: "where the howls of great
+      jackals resound". स्फूर्जत् ends in त्, which becomes न् before the
+      nasal म (8.4.45).
+  तदविह्वलः:
+    fix:
+      2: { gloss: 'undismayed, steady' }
+  विचित्य:
+    fix:
+      1: { gloss: 'having searched through' }
+  तं:
+    fix:
+      1: { lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग }
+  प्राप्य:
+    split:
+      - { form: प्राप्य, lemma: आप्, a: अव्यय क्त्वा, gloss: 'having reached, found' }
+  वटतरोरधः:
+    split:
+      - { form: वट, lemma: वट, member: true, gloss: 'the banyan' }
+      - { form: तरोः, lemma: तरु, a: षष्ठी एकवचन पुंलिङ्ग, gloss: 'a tree' }
+      - { form: अधः, lemma: अधस्, a: अव्यय, gloss: 'below; with a genitive, "under"' }
+  कुर्वाणं:
+    fix:
+      1: { a: द्वितीया एकवचन पुंलिङ्ग चानश् }
+  मण्डलन्यासमुपसृत्य:
+    split:
+      - { form: मण्डल, lemma: मण्डल, member: true, gloss: 'a magic circle' }
+      - { form: न्यासम्, lemma: न्यास, a: द्वितीया एकवचन पुंलिङ्ग, gloss: 'laying out, drawing' }
+      - { form: उपसृत्य, lemma: सृ, a: अव्यय क्त्वा, gloss: 'having approached' }
+  सः:
+    fix:
+      1: { lemma: तद्, a: प्रथमा एकवचन पुंलिङ्ग }
+
+'8.46':
+  एषोऽहमागतो:
+    fix:
+      2: { lemma: अस्मद्, a: प्रथमा एकवचन पुंलिङ्ग }
+  भिक्षो:
+    fix:
+      1: { form: भिक्षो, lemma: भिक्षु, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: 'a mendicant' }
+  किं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: चतुर्थी एकवचन पुंलिङ्ग, gloss: 'for you (enclitic)' }
+  स:
+    fix:
+      1:
+        lemma: तद्
+        a: प्रथमा एकवचन पुंलिङ्ग
+        note: सः loses its visarga before any consonant (6.1.132), so स here is the nominative.
+  तम्:
+    fix:
+      1: { lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग }
+
+'8.47':
+  राजन्कृतः:
+    fix:
+      1: { lemma: राजन्, a: सम्बोधन एकवचन पुंलिङ्ग }
+  प्रसादश्चेत्तदितो:
+    fix:
+      2: { form: चेद्, lemma: चेद्, a: अव्यय, gloss: 'if' }
+      4: { lemma: इतस्, a: अव्यय, gloss: 'from here' }
+    note: 'कृतः प्रसादः चेत् — "if (you have) done (me this) favour", a polite formula.'
+  दक्षिणामुखम्:
+    fix:
+      1: { a: अव्यय, gloss: 'facing south, southwards' }
+  विदूरमेकाकी:
+    fix:
+      1: { a: अव्यय, gloss: 'far off' }
+  शिंशपातरुः:
+    split:
+      - { form: शिंशपा, lemma: शिंशपा, member: true, gloss: 'the śiṃśapā tree' }
+      - { form: तरुः, lemma: तरु, a: प्रथमा एकवचन पुंलिङ्ग }
+
+'8.48':
+  तस्मिन्नुल्लम्बितमृतः:
+    split:
+      - { form: तस्मिन्, lemma: तद्, a: सप्तमी एकवचन पुंलिङ्ग }
+      - { form: उल्लम्बित, lemma: उल्लम्बित, member: true, gloss: 'hung up' }
+      - { form: मृतः, lemma: मृत, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'dead' }
+  कोऽप्येकः:
+    fix:
+      1: { form: कः, lemma: किम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'who? — with अपि, "some"' }
+  तमिहानय:
+    fix:
+      1: { lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग }
+      3: { form: आनय, lemma: नी, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: 'bring' }
+  त्वं:
+    fix:
+      1: { lemma: युष्मद्, a: प्रथमा एकवचन पुंलिङ्ग }
+  सानाथ्यं:
+    fix:
+      1: { gloss: 'help, assistance' }
+  मे:
+    fix:
+      1: { lemma: अस्मद्, a: षष्ठी एकवचन पुंलिङ्ग }
+
+'8.49':
+  तच्छृउत्वैव:
+    split:
+      - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग }
+      - { form: श्रुत्वा, lemma: श्रु, a: अव्यय क्त्वा }
+      - { form: एव, lemma: एव, a: अव्यय }
+    note: The edition prints तच्छृउत्वैव, a misprint for तच्छ्रुत्वैव (तत् श्रुत्वा एव), as in 8.46.
+  स:
+    fix:
+      1: { lemma: तद्, a: प्रथमा एकवचन पुंलिङ्ग }
+  सत्यसंगरः:
+    split:
+      - { form: सत्य, lemma: सत्य, member: true }
+      - { form: संगरः, lemma: संगर, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'a promise (सत्यसंगर "true to his word")' }
+  दिशमालम्ब्य:
+    fix:
+      1: { lemma: दिश्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: 'direction, quarter' }
+      2: { gloss: 'having taken (a direction)' }
