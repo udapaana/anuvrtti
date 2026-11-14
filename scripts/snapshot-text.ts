@@ -52,6 +52,9 @@ export function overrideLemmas(id: string): string[] {
   return [...out];
 }
 
+/** How many of vidyut's ranked alternatives a snapshot keeps per pada. */
+const MAX_ALTS = 12;
+
 async function snapshot(engine: Engine, id: string): Promise<Snapshot> {
   const t = readText(id);
   const sections: Snapshot['sections'] = [];
@@ -68,8 +71,18 @@ async function snapshot(engine: Engine, id: string): Promise<Snapshot> {
         const wi = tk.word !== undefined && tk.word >= 0 ? tk.word : last;
         last = wi;
         tk.alts.forEach((a) => { lemmas.add(a.lemma_slp1); if (a.lemma_full) lemmas.add(slp(a.lemma_full)); });
-        const alts = [...new Set(tk.alts.map(enc))];
-        const v = tk.vidyut ? alts.indexOf(enc(tk.vidyut)) : -1;
+        /*
+          Only the top alternatives are kept: one pada (ये) had 116, and at ~5 KB
+          a word a long text's snapshot would run to tens of MB. They arrive
+          ranked best-first, so the cut drops only the improbable tail; vidyut's
+          own pick is kept even when it ranks lower, and an author who needs a
+          dropped reading writes it in the override (counted as supplied).
+        */
+        const ranked = [...new Set(tk.alts.map(enc))];
+        const pick = tk.vidyut ? enc(tk.vidyut) : null;
+        const alts = ranked.slice(0, MAX_ALTS);
+        if (pick && ranked.includes(pick) && !alts.includes(pick)) alts.push(pick);
+        const v = pick ? alts.indexOf(pick) : -1;
         words[base + Math.min(wi, n - 1)].padas.push({ form: tk.form, slp1: tk.slp1, alts, vidyut: v });
       }
       base += n;

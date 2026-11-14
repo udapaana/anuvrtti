@@ -164,6 +164,25 @@ export function resolve(
   const stem = deaccent(lemma) || stemForForm(data as Indexed, bare, false) || '';
   // a pronoun or ungendered stem is keyed by the gender this word is in
   const lg = ['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग'].find((x) => terms.includes(x));
+  /*
+    A participle's lemma is its root, so its table is the kṛdanta's own,
+    keyed root + affix: सन्तम् → अस्+शतृ, declined सन्, सन्तौ, सन्तः … — not the
+    root read as a noun stem.
+  */
+  const isKrt = terms.includes('कृदन्त');
+  if (isKrt) {
+    const keys = Object.keys(data.nounParadigms).filter((k) => k.startsWith(stem + '+'));
+    const holds = (k: string) => Object.values(data.nounParadigms[k]).some((f) => deaccent(f) === bare);
+    const key = terms.map((t) => `${stem}+${t}·${lg}`).find((k) => data.nounParadigms[k])
+      ?? keys.find((k) => (!lg || k.endsWith('·' + lg)) && holds(k))
+      ?? keys.find(holds);
+    if (!key) return null;
+    const vib = VIBHAKTI.findIndex((x) => terms.includes(x));
+    const vacIdx = VACANA.findIndex((x) => terms.includes(x));
+    const { grid, row, col } = toGrid(data.nounParadigms[key], VIBHAKTI, VACANA, vib, vacIdx >= 0 ? vacIdx : 0);
+    const affix = key.slice(stem.length + 1).split('·')[0];
+    return { stem: `${stem} + ${affix}`, lakara: null, kind: 'participle', grid, row, col };
+  }
   // …and where the form leaves the gender open (तस्य is masculine or neuter),
   // the first gendered table that holds the form — the cell is the same either way.
   const para = data.nounParadigms[stem]

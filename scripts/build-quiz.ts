@@ -1573,6 +1573,9 @@ async function main() {
     if (!stem || nounParadigms[stem]) continue;
     const terms = new Set<string>([...(w.notes ?? []).map((n: any) => n.term), ...Object.values(w.derived ?? {}) as string[]]);
     if (![...terms].some((t) => VIB_DEV_SET.has(t))) continue;
+    // a participle's lemma is its root — declined as a noun it made nonsense
+    // (अस् → "āḥ, asau"); it gets its own table from the kṛt pass below
+    if (terms.has('कृदन्त') || (w.derived ?? {})['कृत्']) continue;
     const personal = stem === 'अस्मद्' || stem === 'युष्मद्';
     const lgDev = [...terms].find((t) => LINGA_EN[t]);
     // a form that leaves its gender open (तस्य, किम्) gets every gender's table;
@@ -1686,6 +1689,8 @@ async function main() {
    * Collected here because this pass is the one place the affix, the stem and
    * the cell are all in hand at once.
    */
+  /** (root|affix name) → the dhātupāṭha entry and affix that made it, for its paradigm. */
+  const krtSpec = new Map<string, { aup: string; gana: string; pre: string; krt: string }>();
   const krtGroups = new Map<string, {
     root: string; affix: string; stemSlp: string;
     occs: Array<{ form: string; cell: string | null }>;
@@ -1828,6 +1833,7 @@ async function main() {
 
         /** Affix name → the stem that produced this form ('' for an indeclinable). */
         const fits = new Map<string, string>();
+        const fitSpec = new Map<string, { aup: string; gana: string; pre: string; krt: string }>();
         let placed = false;
         outer:
         for (const pre of prefixes) {
@@ -1848,7 +1854,7 @@ async function main() {
                 if (indeclinable ? stem !== formSlp
                   : !(aVibFit ? fitCells.filter((c) => VIB_DEV[c[1]] === aVibFit) : fitCells).length) continue;
                 if (guessing) {
-                  if (!fits.has(krtName(krt, pre))) fits.set(krtName(krt, pre), indeclinable ? '' : stem);
+                  if (!fits.has(krtName(krt, pre))) { fits.set(krtName(krt, pre), indeclinable ? '' : stem); fitSpec.set(krtName(krt, pre), { aup, gana, pre, krt }); }
                   break;
                 }
                 if (indeclinable) {
@@ -1856,6 +1862,7 @@ async function main() {
                   record(krtName(krt, pre), '', null);
                   break outer;
                 }
+                krtSpec.set(root + '|' + krtName(krt, pre), { aup, gana, pre, krt });
                 record(krtName(krt, pre), stem, place(stem));
                 /*
                   निष्ठा names a PAIR (1.1.26 क्तक्तवतू निष्ठा) and कृत्य a class of
@@ -1884,7 +1891,7 @@ async function main() {
             const [[name, stem]] = [...fits];
             krtIndex[key] = name;
             krtNamed++;
-            if (stem) record(name, stem, place(stem));
+            if (stem) { krtSpec.set(root + '|' + name, fitSpec.get(name)!); record(name, stem, place(stem)); }
             else { krtAvyaya++; record(name, '', null); }
           } else if (fits.size > 1) krtNameAmbiguous++;
           continue;
@@ -1898,6 +1905,31 @@ async function main() {
         `    कृत् recovered: ${krtNamed} affix(es) named by derivation, ${krtNameAmbiguous} form(s) fit more than one, ` +
         `${krtContradicts} refused (would contradict an authored tag)`
     );
+  }
+
+  /*
+    A participle's own table. Its lemma is its ROOT, so looking the lemma up
+    declined the root as a noun: सन्तम् (अस् + शतृ) showed अस् as "āḥ, asau,
+    asam". The stem has to be declined AS a kṛdanta — a bare 'sat' loses the
+    नुम् of the strong cases (सन्, सन्तौ) — so the table is built from the root
+    and affix, in all three genders (a participle agrees), and keyed
+    "root+affix·लिङ्ग" for the rail.
+  */
+  for (const [k, spec] of krtSpec) {
+    if (['ktvA', 'tumun', 'Ramul'].includes(spec.krt)) continue;   // indeclinable: no table
+    const pratipadika = { krdanta: { dhatu: { aupadeshika: spec.aup, gana: spec.gana, sanadi: [], prefixes: spec.pre ? [spec.pre] : [] }, krt: spec.krt } };
+    const [root, affix] = k.split('|');
+    for (const [lgEn, lgDev] of Object.entries(LINGA_DEV)) {
+      const flat: Record<string, string> = {};
+      for (const vb of VIBHAKTIS)
+        for (const vc of VACANAS) {
+          try {
+            const f = v.deriveSubantas({ pratipadika, linga: lgEn, vibhakti: vb, vacana: vc })[0]?.text as string | undefined;
+            if (f) flat[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = toDeva(f);
+          } catch { /* cell not derivable */ }
+        }
+      if (Object.keys(flat).length) nounParadigms[`${root}+${affix}·${lgDev}`] = flat;
+    }
   }
 
   const ambiguousKeys = new Set<string>();
