@@ -1,4 +1,4 @@
-# Kathāsaritsāgara 12.8.21–58 — the frame of the Vetāla's tales (tale 1, 8.59–196, follows).
+# Kathāsaritsāgara 12.8.21–196 — the frame of the Vetāla's tales (8.21–58) and his first tale (8.59–196).
 #
 # AUTHORED SOURCE of a whole text: the text verbatim, in order — see
 # content/texts/pancatantra-kilotpatin/text.yaml for the format. Devanagari
@@ -6,14 +6,14 @@
 # `iast` is GRETIL's line exactly. Section ids are the Kathāsaritsāgara verse
 # numbers (taraṅga.verse): never renumber one.
 id: vetala-1
-title: वेतालपञ्चविंशतिका — प्रस्तावः
-title_en: The Vetāla — the frame
+title: वेतालपञ्चविंशतिका — प्रस्तावः प्रथमा कथा च
+title_en: The Vetāla, the frame and the first tale
 work: कथासरित्सागरः
-place: Lambaka 12, taraṅga 8, verses 21–58 (the frame; tale 1 to follow)
+place: Lambaka 12, taraṅga 8, verses 21–196 (the frame, 21–58; tale 1, 59–196)
 source:
   edition: Kathāsaritsāgara, Vetālapañcaviṃśatikā, input by Elena Artesani, via GRETIL
   file: sa_somadeva-kathAsaritsAgaravetAlapaJcaviMzatikA # data/texts.json (sha256-pinned)
-  lines: '47–158'
+  lines: '47–572'
   licence: GRETIL text, CC BY-NC-SA 4.0 (per its header)
 sections:
   - id: '8.21'
@@ -243,3 +243,831 @@ sections:
       - यान्तं च तं शवान्तःस्थो वेतालोऽंसस्थितोऽब्रवीत्
       - राजन्नध्वविनोदाय कथामाख्यामि ते शृणु
     iast: "yāntaṃ ca taṃ śavāntaḥstho vetālo 'ṃsasthito 'bravīt | rājann adhvavinodāya kathām ākhyāmi te śṛṇu"
+  - id: '8.59'
+    kind: verse
+    lines:
+      - अस्ति वाराणसी नाम पुरारिवसतिः पुरी
+      - स्थलीव कैलासगिरेर्या पुण्यजनसेविता
+    iast: "asti vārāṇasī nāma purārivasatiḥ purī | sthalīva kailāsagirer yā puṇyajanasevitā"
+  - id: '8.60'
+    kind: verse
+    lines:
+      - भूरिवारिभृता शश्वदुपकण्ठनिवेशिनी
+      - हारयष्टिरिवाभाति यस्याः स्वर्गतरङ्गिणी
+    iast: "bhūrivāribhṛtā śaśvadupakaṇṭhaniveśinī | hārayaṣṭir ivābhāti yasyāḥ svargataraṅgiṇī"
+  - id: '8.61'
+    kind: verse
+    lines:
+      - प्रतापानलनिर्दग्धविपक्षकुलकाननः
+      - तस्यां प्रतापमुकुटो नाम राजाभवत्पुरा
+    iast: "pratāpānalanirdagdhavipakṣakulakānanaḥ | tasyāṃ pratāpamukuṭo nāma rājābhavat purā"
+  - id: '8.62'
+    kind: verse
+    lines:
+      - तस्याभूद्वज्रमुकुटस्तनयो रूपशौर्ययोः
+      - कुर्वाणो दर्पदलनं स्मरस्यारिजनस्य च
+    iast: "tasyābhūd vajramukuṭas tanayo rūpaśauryayoḥ | kurvāṇo darpadalanaṃ smarasyārijanasya ca"
+  - id: '8.63'
+    kind: verse
+    lines:
+      - राजपुत्रस्य तस्यात्र मन्त्रिपुत्रो महामतिः
+      - आसीद्बुद्धिशरीराख्यः शरीराभ्यधिकः सखा
+    iast: "rājaputrasya tasyātra mantriputro mahāmatiḥ | āsīd buddhiśarīrākhyaḥ śarīrābhyadhikaḥ sakhā"
+  - id: '8.64'
+    kind: verse
+    lines:
+      - तेन सख्या सह क्रीडन्स कदाचिन्नृपात्मजः
+      - जगाम दूरमध्वानं मृगयाति प्रसङ्गतः
+    iast: "tena sakhyā saha krīḍan sa kadācin nṛpātmajaḥ | jagāma dūram adhvānaṃ mṛgayāti prasaṅgataḥ"
+  - id: '8.65'
+    kind: verse
+    lines:
+      - शौर्यशृईचामरानीव सिंहानां मस्तकानि सः
+      - छिन्दच्छरैः सटालानि विवेशैकं महावनम्
+    iast: "śauryaśṛīcāmarānīva siṃhānāṃ mastakāni saḥ | chindac charaiḥ saṭālāni viveśaikaṃ mahāvanam"
+  - id: '8.66'
+    kind: verse
+    lines:
+      - तत्रास्थाने स्मरस्येव पठत्कोकिलबन्दिनि
+      - दत्तोपकारे तरुभिर्मञ्जरीचलचामरैः
+    iast: "tatrāsthāne smarasyeva paṭhat kokilabandini | dattopakāre tarubhir mañjarīcalacāmaraiḥ"
+  - id: '8.67'
+    kind: verse
+    lines:
+      - सोऽन्वितो मन्त्रिपुत्रेण तेनापश्यत्सरःवरम्
+      - विचित्रकमलोत्पत्तिधामाम्बुधिमिवापरम्
+    iast: "so 'nvito mantriputreṇa tenāpaśyat saraḥvaram | vicitrakamalotpattidhāmāmbudhim ivāparam"
+  - id: '8.68'
+    kind: verse
+    lines:
+      - तस्मिंस्तदैव सरसि स्नानार्थं काचिदागता
+      - तेन दिव्याकृतिः कन्या ददृशे सपरिच्छदा
+    iast: "tasmiṃs tadaiva sarasi snānārthaṃ kācid āgatā | tena divyākṛtiḥ kanyā dadṛśe saparicchadā"
+  - id: '8.69'
+    kind: verse
+    lines:
+      - पूरयन्तीव लावण्यनिःझरेण सरःवरम्
+      - दृष्टिपातैः सृजन्तीव तत्रोत्पलवनं नवम्
+    iast: "pūrayantīva lāvaṇyaniḥjhareṇa saraḥvaram | dṛṣṭipātaiḥ sṛjantīva tatrotpalavanaṃ navam"
+  - id: '8.70'
+    kind: verse
+    lines:
+      - प्रत्यादिशन्तीव मुखेनाम्बुजानि जितेन्दुना
+      - सा जहार मनस्तस्य राजपुत्रस्य तत्क्षणम्
+    iast: "pratyādiśantīva mukhenāmbujāni jitendunā | sā jahāra manas tasya rājaputrasya tatkṣaṇam"
+  - id: '8.71'
+    kind: verse
+    lines:
+      - सोऽप्यहार्षीत्तथा तस्या युवा दृष्ट्वा विलोचने
+      - यथा नैक्षत सा कन्या लज्जां स्वामप्यलंकृतिम्
+    iast: "so 'py ahārṣīt tathā tasyā yuvā dṛṣṭvā vilocane | yathā naikṣata sā kanyā lajjāṃ svām apy alaṃkṛtim"
+  - id: '8.72'
+    kind: verse
+    lines:
+      - यूनि पश्यति तस्मिन्सा केयं स्यादिति सानुगे
+      - संज्ञां स्वदेशाद्याख्यातुं विलासछद्मनाकरोत्
+    iast: "yūni paśyati tasmin sā keyaṃ syāditi sānuge | saṃjñāṃ svadeśādyākhyātuṃ vilāsachadmanākarot"
+  - id: '8.73'
+    kind: verse
+    lines:
+      - करोति स्मौत्पलं कर्णे गृहीत्वा पुष्पशेखरात्
+      - चिरं च दन्तरचनां चकारादाय च व्यधात्
+    iast: "karoti smautpalaṃ karṇe gṛhītvā puṣpaśekharāt | ciraṃ ca dantaracanāṃ cakārādāya ca vyadhāt"
+  - id: '8.74'
+    kind: verse
+    lines:
+      - पद्मं शिरसि साकूतं हृदये चादधे करम्
+      - राजपुत्रश्च तस्यास्तां संज्ञां न ज्ञातवांस्तदा
+    iast: "padmaṃ śirasi sākūtaṃ hṛdaye cādadhe karam | rājaputraś ca tasyās tāṃ saṃjñāṃ na jñātavāṃs tadā"
+  - id: '8.75'
+    kind: verse
+    lines:
+      - मन्त्रिपुत्रस्तु बुबुधे स सखा तस्य बुद्धिमान्
+      - क्षणाच्च सा ययौ कन्या नीयमानानुगैस्ततः
+    iast: "mantriputras tu bubudhe sa sakhā tasya buddhimān | kṣaṇāc ca sā yayau kanyā nīyamānānugais tataḥ"
+  - id: '8.76'
+    kind: verse
+    lines:
+      - प्राप्य च स्वगृहं तस्थौ पर्यङ्गेऽङ्गं निधाय सा
+      - चित्तं तु निजसंज्ञार्थमास्थात्तस्मिन्नृपात्मजे
+    iast: "prāpya ca svagṛhaṃ tasthau paryaṅge 'ṅgaṃ nidhāya sā | cittaṃ tu nijasaṃjñārtham āsthāt tasmin nṛpātmaje"
+  - id: '8.77'
+    kind: verse
+    lines:
+      - सोऽपि राजसुतो भ्रष्टविद्यो विद्याधरो यथा
+      - गत्वा स्वनगरीं कृच्छ्रां प्रापावस्थां तया विना
+    iast: "so 'pi rājasuto bhraṣṭavidyo vidyādharo yathā | gatvā svanagarīṃ kṛcchrāṃ prāpāvasthāṃ tayā vinā"
+  - id: '8.78'
+    kind: verse
+    lines:
+      - सख्या च मन्त्रिपुत्रेण तेन पृष्टस्तदा रहः
+      - शंसता तामदुष्प्रापां त्यक्तधैर्यो जगाद सः
+    iast: "sakhyā ca mantriputreṇa tena pṛṣṭas tadā rahaḥ | śaṃsatā tām aduṣprāpāṃ tyaktadhairyo jagāda saḥ"
+  - id: '8.79'
+    kind: verse
+    lines:
+      - यस्या न नाम न ग्रामो नान्वयो वावबुध्यते
+      - सा कथं प्राप्यते तन्मामाश्वासयसि किं मृषा
+    iast: "yasyā na nāma na grāmo nānvayo vāvabudhyate | sā kathaṃ prāpyate tan mām āśvāsayasi kiṃ mṛṣā"
+  - id: '8.80'
+    kind: verse
+    lines:
+      - इत्युक्तो राजपुत्रेण मन्त्रिपुत्रस्तमभ्यधात्
+      - किं न दृष्टं त्वया तद्यत्संज्ञया सूचितं तया
+    iast: "ity ukto rājaputreṇa mantriputras tam abhyadhāt | kiṃ na dṛṣṭaṃ tvayā tad yat saṃjñayā sūcitaṃ tayā"
+  - id: '8.81'
+    kind: verse
+    lines:
+      - न्यस्तं यदुत्पलं कर्णे तेनैतत्ते तयोदितम्
+      - कर्णोत्पलस्य राष्ट्रेऽहं निवसामि महीभृतः
+    iast: "nyastaṃ yad utpalaṃ karṇe tenaitat te tayoditam | karṇotpalasya rāṣṭre 'haṃ nivasāmi mahībhṛtaḥ"
+  - id: '8.82'
+    kind: verse
+    lines:
+      - कृता यद्दन्तरचना तेनैतत्कथितं तया
+      - तत्र जानीहि मां दन्तघाटकस्य सुतामिति
+    iast: "kṛtā yad dantaracanā tenaitat kathitaṃ tayā | tatra jānīhi māṃ dantaghāṭakasya sutām iti"
+  - id: '8.83'
+    kind: verse
+    lines:
+      - पद्मावतीति नामोक्तं तयोत्तंसितपद्मया
+      - त्वयि प्राणा इति प्रोक्तं हृदयार्पितहस्तया
+    iast: "padmāvatīti nāmoktaṃ tayottaṃsitapadmayā | tvayi prāṇā iti proktaṃ hṛdayārpitahastayā"
+  - id: '8.84'
+    kind: verse
+    lines:
+      - कलिङ्गदेशे ह्यस्त्यत्र ख्यातः कर्णोत्पलो नृपः
+      - तस्य प्रसादवित्तोऽस्ति महान्यो दन्तघटकः
+    iast: "kaliṅgadeśe hy asty atra khyātaḥ karṇotpalo nṛpaḥ | tasya prasādavitto 'sti mahān yo dantaghaṭakaḥ"
+  - id: '8.85'
+    kind: verse
+    lines:
+      - सङ्ग्रामवर्धनाख्यस्य तस्याप्यस्ति जगत्त्रये
+      - रत्नं पद्मावती नाम कन्या प्राणाधिकप्रिया
+    iast: "saṅgrāmavardhanākhyasya tasyāpy asti jagattraye | ratnaṃ padmāvatī nāma kanyā prāṇādhikapriyā"
+  - id: '8.86'
+    kind: verse
+    lines:
+      - एतच्च लोकतो देव यथावद्विदितं मम
+      - अतो ज्ञाता मया संज्ञा तस्या देशादिशंसिनी
+    iast: "etac ca lokato deva yathāvad viditaṃ mama | ato jñātā mayā saṃjñā tasyā deśādiśaṃsinī"
+  - id: '8.87'
+    kind: verse
+    lines:
+      - इत्युक्तो मन्त्रिपुत्रेन तेन राजसुतोऽथ सः
+      - तुतोष तस्मै सुधिये लब्धोपायो जहर्ष च
+    iast: "ity ukto mantriputrena tena rājasuto 'tha saḥ | tutoṣa tasmai sudhiye labdhopāyo jaharṣa ca"
+  - id: '8.88'
+    kind: verse
+    lines:
+      - संमन्त्र्य च समं तेन स तद्युक्तः स्वमन्दिरात्
+      - प्रियार्थी मृगयाव्याजात्पुनस्तामगमद्दिशम्
+    iast: "saṃmantrya ca samaṃ tena sa tadyuktaḥ svamandirāt | priyārthī mṛgayāvyājāt punas tām agamad diśam"
+  - id: '8.89'
+    kind: verse
+    lines:
+      - अर्धमार्गे च वाताश्ववेगवञ्चितसैनिकः
+      - तं मन्त्रिपुत्रैकयुतः कलिङ्गविषयं ययौ
+    iast: "ardhamārge ca vātāśvavegavañcitasainikaḥ | taṃ mantriputraikayutaḥ kaliṅgaviṣayaṃ yayau"
+  - id: '8.90'
+    kind: verse
+    lines:
+      - तत्र तौ प्राप्य नगरं कर्णोत्पलमहीभृतः
+      - अन्विष्य दृष्ट्वा भवनं दन्तघाटस्य तस्य च
+    iast: "tatra tau prāpya nagaraṃ karṇotpalamahībhṛtaḥ | anviṣya dṛṣṭvā bhavanaṃ dantaghāṭasya tasya ca"
+  - id: '8.91'
+    kind: verse
+    lines:
+      - तददूरे च वासार्थमेकस्य वृद्धयोषितः
+      - गृहं प्राविशतां मन्त्रिपुत्रराजसुतावुभौ
+    iast: "tadadūre ca vāsārtham ekasya vṛddhayoṣitaḥ | gṛhaṃ prāviśatāṃ mantriputrarājasutāv ubhau"
+  - id: '8.92'
+    kind: verse
+    lines:
+      - दत्ताम्बुयवसौ वाहौ गुप्तेऽवस्थाप्य चात्र सः
+      - राजपुत्रे स्थिते वृद्धां मन्त्रिपुत्रो जगाद ताम्
+    iast: "dattāmbuyavasau vāhau gupte 'vasthāpya cātra saḥ | rājaputre sthite vṛddhāṃ mantriputro jagāda tām"
+  - id: '8.93'
+    kind: verse
+    lines:
+      - कच्चिद्वेत्स्यम्ब सङ्ग्रामवर्धनं दन्तघाटकम्
+      - तच्छृउत्वा सा जरद्योषित्सश्रद्धा तमभाषत
+    iast: "kaccid vetsy amba saṅgrāmavardhanaṃ dantaghāṭakam | tac chṛutvā sā jaradyoṣit saśraddhā tam abhāṣata"
+  - id: '8.94'
+    kind: verse
+    lines:
+      - वेद्म्येव धात्री तस्यास्मि स्थापिता तेन चाधुना
+      - पद्मावत्याः स्वदुहितुः पार्श्वे ज्येष्ठतरेत्यहम्
+    iast: "vedmy eva dhātrī tasyāsmi sthāpitā tena cādhunā | padmāvatyāḥ svaduhituḥ pārśve jyeṣṭhatarety aham"
+  - id: '8.95'
+    kind: verse
+    lines:
+      - किं त्वहं न सदा तत्र गच्छाम्युपहताम्बरा
+      - कुपुत्रः कितवो वस्त्रं दृष्ट्वा हि हरते मम
+    iast: "kiṃ tv ahaṃ na sadā tatra gacchāmy upahatāmbarā | kuputraḥ kitavo vastraṃ dṛṣṭvā hi harate mama"
+  - id: '8.96'
+    kind: verse
+    lines:
+      - एवमुक्तवतीं प्रीतः स्वोत्तरीयादिदानतः
+      - संतोष्य सोऽत्र वृद्धां तां मन्त्रिपुत्रोऽब्रवीत्पुनः
+    iast: "evam uktavatīṃ prītaḥ svottarīyādidānataḥ | saṃtoṣya so 'tra vṛddhāṃ tāṃ mantriputro 'bravīt punaḥ"
+  - id: '8.97'
+    kind: verse
+    lines:
+      - माता त्वं तद्वदामस्ते गुप्तं यत्तत्कुरुष्व नः
+      - दन्तघाटसुतामेतां गत्वा पद्मावतीं वद
+    iast: "mātā tvaṃ tad vadāmas te guptaṃ yat tat kuruṣva naḥ | dantaghāṭasutām etāṃ gatvā padmāvatīṃ vada"
+  - id: '8.98'
+    kind: verse
+    lines:
+      - सोऽत्रागतो राजपुत्रो दृष्टो यः सरसि त्वया
+      - तेन चेह तदाख्यातुं प्रेषिता प्रणयादहम्
+    iast: "so 'trāgato rājaputro dṛṣṭo yaḥ sarasi tvayā | tena ceha tad ākhyātuṃ preṣitā praṇayād aham"
+  - id: '8.99'
+    kind: verse
+    lines:
+      - तच्छृउत्वा सा तथेत्युक्त्वा वृद्धा दानवशीकृता
+      - गत्वा पद्मावतीपार्श्वमाजगाम क्षणान्तरे
+    iast: "tac chṛutvā sā tathety uktvā vṛddhā dānavaśīkṛtā | gatvā padmāvatīpārśvam ājagāma kṣaṇāntare"
+  - id: '8.100'
+    kind: verse
+    lines:
+      - पृष्टा जगाद तौ राजसुतमन्त्रिसुतौ च सा
+      - युष्मदागमनं गत्वा गुप्तं तस्या मयोदितम्
+    iast: "pṛṣṭā jagāda tau rājasutamantrisutau ca sā | yuṣmadāgamanaṃ gatvā guptaṃ tasyā mayoditam"
+  - id: '8.101'
+    kind: verse
+    lines:
+      - तया श्रुत्वा च निर्भर्त्स्य पाणिभ्यामहमाहता
+      - द्वाभ्यां कर्पूरलिप्ताभ्यामुभयोर्गण्डयोर्मुखे
+    iast: "tayā śrutvā ca nirbhartsya pāṇibhyām aham āhatā | dvābhyāṃ karpūraliptābhyām ubhayor gaṇḍayor mukhe"
+  - id: '8.102'
+    kind: verse
+    lines:
+      - ततः परिभवोद्विग्ना रुदत्यहमिहागता
+      - एतास्तदङ्गुलीमुद्राः पुत्रौ मे पश्यतं मुखे
+    iast: "tataḥ paribhavodvignā rudaty aham ihāgatā | etās tad aṅgulīmudrāḥ putrau me paśyataṃ mukhe"
+  - id: '8.103'
+    kind: verse
+    lines:
+      - एवं तयोक्ते नैराश्यविषण्णं तं नृपात्मजम्
+      - जगाद स महाप्राज्ञो मन्त्रिपुत्रो जनान्तिकम्
+    iast: "evaṃ tayokte nairāśyaviṣaṇṇaṃ taṃ nṛpātmajam | jagāda sa mahāprājño mantriputro janāntikam"
+  - id: '8.104'
+    kind: verse
+    lines:
+      - मा गा विषादं रक्षन्त्या मन्त्रं निर्भर्त्स्य यत्तया
+      - कर्पूरशुभ्रा वक्त्रेऽस्याः स्वाङ्गुल्यो दश पातिताः
+    iast: "mā gā viṣādaṃ rakṣantyā mantraṃ nirbhartsya yat tayā | karpūraśubhrā vaktre 'syāḥ svāṅgulyo daśa pātitāḥ"
+  - id: '8.105'
+    kind: verse
+    lines:
+      - तदेतदुक्तं पक्षेऽस्मिञ्शुक्ले चन्द्रवतीरिमाः
+      - रात्रीर्दश प्रतीक्षध्वं संगमानुचिता इति
+    iast: "tad etad uktaṃ pakṣe 'smiñ śukle candravatīr imāḥ | rātrīr daśa pratīkṣadhvaṃ saṃgamānucitā iti"
+  - id: '8.106'
+    kind: verse
+    lines:
+      - इत्याश्वास्य स तं राजसुतं मन्त्रिसुतस्ततः
+      - विक्रीय गुप्तं हस्तस्थं काञ्चनं किम्चिदापणे
+    iast: "ity āśvāsya sa taṃ rājasutaṃ mantrisutas tataḥ | vikrīya guptaṃ hastasthaṃ kāñcanaṃ kimcid āpaṇe"
+  - id: '8.107'
+    kind: verse
+    lines:
+      - वृद्धया साधयामास महार्हं भोजनं तया
+      - ततस्तौ बुभुजाते द्वौ तत्तया सह वृद्धया
+    iast: "vṛddhayā sādhayāmāsa mahārhaṃ bhojanaṃ tayā | tatas tau bubhujāte dvau tat tayā saha vṛddhayā"
+  - id: '8.108'
+    kind: verse
+    lines:
+      - एवं नीत्वा दशाहानि जिज्ञासार्थं पुनः स ताम्
+      - पद्मावत्यन्तिकं वृद्धां मन्त्रिपुत्रो विसृष्टवान्
+    iast: "evaṃ nītvā daśāhāni jijñāsārthaṃ punaḥ sa tām | padmāvatyantikaṃ vṛddhāṃ mantriputro visṛṣṭavān"
+  - id: '8.109'
+    kind: verse
+    lines:
+      - सापि मृष्टान्नपानादिलुब्धा तदनुरोधतः
+      - गत्वा वासगृहं तस्या भूयोऽभ्येत्य जगाद तौ
+    iast: "sāpi mṛṣṭānnapānādilubdhā tad anurodhataḥ | gatvā vāsagṛhaṃ tasyā bhūyo 'bhyetya jagāda tau"
+  - id: '8.110'
+    kind: verse
+    lines:
+      - इतो गत्वाद्य तूष्णीमप्यहं तत्र स्थिता तया
+      - युष्मत्कथापराधं तमुद्गिरन्त्या स्वयं पुनः
+    iast: "ito gatvādya tūṣṇīm apy ahaṃ tatra sthitā tayā | yuṣmatkathāparādhaṃ tam udgirantyā svayaṃ punaḥ"
+  - id: '8.111'
+    kind: verse
+    lines:
+      - सा लक्तकाभिस्तिसृभिः कराङ्गुलिभिराहता
+      - उरस्यस्मिन्नथैषाहमिहायाता तदन्तिकात्
+    iast: "sā laktakābhis tisṛbhiḥ karāṅgulibhir āhatā | urasy asminn athaiṣāham ihāyātā tad antikāt"
+  - id: '8.112'
+    kind: verse
+    lines:
+      - तच्छ्रुत्वा राजपुत्रं तं स्वैरं मन्त्रिसुतोऽब्रवीत्
+      - मा कार्षीरन्यथा शङ्कामस्या हि हृदये तया
+    iast: "tac chrutvā rājaputraṃ taṃ svairaṃ mantrisuto 'bravīt | mā kārṣīr anyathā śaṅkām asyā hi hṛdaye tayā"
+  - id: '8.113'
+    kind: verse
+    lines:
+      - सा लक्तकाङ्गुलीमुद्रात्रयं विन्यस्य युक्तितः
+      - रजस्वला निशास्तिस्रः स्थिताहमिति सूचितम्
+    iast: "sā laktakāṅgulīmudrātrayaṃ vinyasya yuktitaḥ | rajasvalā niśās tisraḥ sthitāham iti sūcitam"
+  - id: '8.114'
+    kind: verse
+    lines:
+      - एवमुक्त्वा नृपसुतं मन्त्रिपुत्रस्त्र्यहे गते
+      - पद्मावत्यै पुनस्तस्यै वृद्धां तां प्रजिघाय सः
+    iast: "evam uktvā nṛpasutaṃ mantriputras tryahe gate | padmāvatyai punas tasyai vṛddhāṃ tāṃ prajighāya saḥ"
+  - id: '8.115'
+    kind: verse
+    lines:
+      - सा गता मन्दिरं तस्यास्तया संमान्य भोजिता
+      - प्रीत्या पानादिलीलाभिर्दिनं चात्र विनोदिता
+    iast: "sā gatā mandiraṃ tasyās tayā saṃmānya bhojitā | prītyā pānādilīlābhir dinaṃ cātra vinoditā"
+  - id: '8.116'
+    kind: verse
+    lines:
+      - सायं च यावत्सा वृद्धा गृहमागन्तुमिच्छति
+      - उदभूद्भयकृत्तावत्तत्र कोलाहलो बहिः
+    iast: "sāyaṃ ca yāvat sā vṛddhā gṛham āgantum icchati | udabhūd bhayakṛt tāvat tatra kolāhalo bahiḥ"
+  - id: '8.117'
+    kind: verse
+    lines:
+      - हा हा भ्रष्टोऽयमालानाज्जनान्मथ्नन्प्रधावति
+      - मत्तहस्तीति लोकस्य तत्राक्रन्दोऽथ शुश्रुवे
+    iast: "hā hā bhraṣṭo 'yam ālānāj janān mathnan pradhāvati | mattahastīti lokasya tatrākrando 'tha śuśruve"
+  - id: '8.118'
+    kind: verse
+    lines:
+      - ततः पद्मावती सा तां वृद्धामेवमभाषत
+      - स्पष्टेन हस्तिरुद्धेन गन्तुं युक्तं न ते पथा
+    iast: "tataḥ padmāvatī sā tāṃ vṛddhām evam abhāṣata | spaṣṭena hastiruddhena gantuṃ yuktaṃ na te pathā"
+  - id: '8.119'
+    kind: verse
+    lines:
+      - तत्पीठिकां समारोप्य बद्धालम्बनरज्जुकाम्
+      - बृहद्गवाक्षेणानेन त्वामत्र प्रक्षिपामहे
+    iast: "tat pīṭhikāṃ samāropya baddhālambanarajjukām | bṛhadgavākṣeṇānena tvām atra prakṣipāmahe"
+  - id: '8.120'
+    kind: verse
+    lines:
+      - गृहोद्याने ततो वृक्षमारुह्यामुं विलङ्घ्य च
+      - प्राकारमवरुह्यान्यवृक्षेण स्वगृहं व्रज
+    iast: "gṛhodyāne tato vṛkṣam āruhyāmuṃ vilaṅghya ca | prākāram avaruhyānyavṛkṣeṇa svagṛhaṃ vraja"
+  - id: '8.121'
+    kind: verse
+    lines:
+      - इत्युक्त्वा सा गवाक्षेण क्षेपयामास तत्र ताम्
+      - वृद्धां चेटीभिरुद्याने रज्जुपीठिकया ततः
+    iast: "ity uktvā sā gavākṣeṇa kṣepayāmāsa tatra tām | vṛddhāṃ ceṭībhir udyāne rajjupīṭhikayā tataḥ"
+  - id: '8.122'
+    kind: verse
+    lines:
+      - साथ गत्वा यथोक्तेन पथा सर्वं शशंस तत्
+      - यथावद्राजपुत्राय तस्मै मन्त्रिसुताय च
+    iast: "sātha gatvā yathoktena pathā sarvaṃ śaśaṃsa tat | yathāvad rājaputrāya tasmai mantrisutāya ca"
+  - id: '8.123'
+    kind: verse
+    lines:
+      - ततः स मन्त्रिपुत्रस्तं राजपुत्रमभाषत
+      - सिद्धं तवेष्टं मार्गो हि युक्त्या ते दर्शितस्तया
+    iast: "tataḥ sa mantriputras taṃ rājaputram abhāṣata | siddhaṃ taveṣṭaṃ mārgo hi yuktyā te darśitas tayā"
+  - id: '8.124'
+    kind: verse
+    lines:
+      - तद्गच्छाद्यैव तत्र त्वं प्रदोषेऽस्मिन्नृपागते
+      - एतेनैव पथा तस्याः प्रियाया मन्दिरं विश
+    iast: "tad gacchādyaiva tatra tvaṃ pradoṣe 'smin nṛpāgate | etenaiva pathā tasyāḥ priyāyā mandiraṃ viśa"
+  - id: '8.125'
+    kind: verse
+    lines:
+      - इत्युक्तस्तेन तद्युक्तो राजपुत्रो ययौ स तत्
+      - उद्यानं वृद्धयोक्तेन तेन प्राकारवर्त्मना
+    iast: "ity uktas tena tadyukto rājaputro yayau sa tat | udyānaṃ vṛddhayoktena tena prākāravartmanā"
+  - id: '8.126'
+    kind: verse
+    lines:
+      - तत्रापश्यच्च रज्जुं तां लम्बमानां सपीठिकाम्
+      - मार्गोन्मुखाभिश्चेटीभिरुपरिष्टादधिष्ठिताम्
+    iast: "tatrāpaśyac ca rajjuṃ tāṃ lambamānāṃ sapīṭhikām | mārgonmukhābhiś ceṭībhir upariṣṭād adhiṣṭhitām"
+  - id: '8.127'
+    kind: verse
+    lines:
+      - आरूढस्तां च दृष्ट्वैव दासीभिस्ताभिराशु सः
+      - रज्जूत्क्षिप्तो गवाक्षेण प्रविवेश प्रियान्तिकम्
+    iast: "ārūḍhas tāṃ ca dṛṣṭvaiva dāsībhis tābhir āśu saḥ | rajjūtkṣipto gavākṣeṇa praviveśa priyāntikam"
+  - id: '8.128'
+    kind: verse
+    lines:
+      - तस्मिन्प्रविष्टे स ययौ मन्त्रिपुत्रः स्वमास्पदम्
+      - राजपुत्रस्तु तां पद्मावतीं तत्र ददर्श सः
+    iast: "tasmin praviṣṭe sa yayau mantriputraḥ svam āspadam | rājaputras tu tāṃ padmāvatīṃ tatra dadarśa saḥ"
+  - id: '8.129'
+    kind: verse
+    lines:
+      - पूर्णामृताम्शुवदनां प्रसरत्कान्तिचन्द्रकाम्
+      - कृष्णपक्षभयाद्गुप्तस्थितां राकानिशामिव
+    iast: "pūrṇāmṛtāmśuvadanāṃ prasaratkānticandrakām | kṛṣṇapakṣabhayād guptasthitāṃ rākāniśām iva"
+  - id: '8.130'
+    kind: verse
+    lines:
+      - सापि दृष्ट्वा तमुत्थाय चिरौत्सुक्योचितैस्ततः
+      - कण्ठग्रहादिभिस्तैस्तैरुपचारैरमानयत्
+    iast: "sāpi dṛṣṭvā tam utthāya cirautsukyocitais tataḥ | kaṇṭhagrahādibhis tais tair upacārair amānayat"
+  - id: '8.131'
+    kind: verse
+    lines:
+      - ततस्तया स गान्धर्वविधिनोदूढया सह
+      - गुप्तं राजसुतस्तस्थौ पूर्णेच्छस्तत्र कान्तया
+    iast: "tatas tayā sa gāndharvavidhinodūḍhayā saha | guptaṃ rājasutas tasthau pūrṇecchas tatra kāntayā"
+  - id: '8.132'
+    kind: verse
+    lines:
+      - स्थित्वा चाहानि कतिचिद्रात्रौ तामवदत्प्रियाम्
+      - सखा मम सहायातो मन्त्रिपुत्र इति स्थितः
+    iast: "sthitvā cāhāni katicid rātrau tām avadat priyām | sakhā mama sahāyāto mantriputra iti sthitaḥ"
+  - id: '8.133'
+    kind: verse
+    lines:
+      - स चात्र तिष्ठत्येकाकी त्वज्ज्येष्ठतरिकागृहे
+      - गत्वा संभाव्य तं तन्वि पुन एष्यामि तेऽन्तिकम्
+    iast: "sa cātra tiṣṭhaty ekākī tvajjyeṣṭhatarikāgṛhe | gatvā saṃbhāvya taṃ tanvi puna eṣyāmi te 'ntikam"
+  - id: '8.134'
+    kind: verse
+    lines:
+      - तच्छृउत्वा तमवोचत्सा धूर्ता पद्मावती प्रियम्
+      - हन्तार्यपुत्र पृच्छामि ताः संज्ञा मत्कृतास्त्वया
+    iast: "tac chṛutvā tam avocat sā dhūrtā padmāvatī priyam | hantāryaputra pṛcchāmi tāḥ saṃjñā matkṛtās tvayā"
+  - id: '8.135'
+    kind: verse
+    lines:
+      - ज्ञाता किं किमुवा तेन सख्या मन्त्रिसुतेन ते
+      - एवमुक्तवतीमेतां राजपुत्रो जगाद सः
+    iast: "jñātā kiṃ kim uvā tena sakhyā mantrisutena te | evam uktavatīm etāṃ rājaputro jagāda saḥ"
+  - id: '8.136'
+    kind: verse
+    lines:
+      - न ज्ञातं तन्मया किम्चिज्ज्ञात्वा सर्वं च तेन मे
+      - आख्यातं मन्त्रिपुत्रेण दिव्यप्रज्ञानशालिना
+    iast: "na jñātaṃ tan mayā kimcij jñātvā sarvaṃ ca tena me | ākhyātaṃ mantriputreṇa divyaprajñānaśālinā"
+  - id: '8.137'
+    kind: verse
+    lines:
+      - एतच्छृउत्वा विचिन्त्यैव भामिनी सा जगाद तम्
+      - तर्ह्ययुक्तं कृतं यन्मे चिरात्स कथितस्त्वया
+    iast: "etac chṛutvā vicintyaiva bhāminī sā jagāda tam | tarhy ayuktaṃ kṛtaṃ yan me cirāt sa kathitas tvayā"
+  - id: '8.138'
+    kind: verse
+    lines:
+      - स मे भ्राता सखा यस्ते तस्य च प्रथमं मया
+      - ताम्बूलादिसमाचारः कर्तव्यो हि सदा भवेत्
+    iast: "sa me bhrātā sakhā yas te tasya ca prathamaṃ mayā | tāmbūlādisamācāraḥ kartavyo hi sadā bhavet"
+  - id: '8.139'
+    kind: verse
+    lines:
+      - इत्युक्तवत्यानुमतस्तया पूर्वपथेन सः
+      - रजापुत्रोऽन्तिकं तस्य सख्युरागात्ततो निशि
+    iast: "ity uktavatyānumatas tayā pūrvapathena saḥ | rajāputro 'ntikaṃ tasya sakhyur āgāt tato niśi"
+  - id: '8.140'
+    kind: verse
+    lines:
+      - शशंस च कथामध्ये तत्तस्मै यत्तदाश्रयम्
+      - संज्ञाविज्ञानकथनं कृतं तेन प्रियान्तिके
+    iast: "śaśaṃsa ca kathāmadhye tat tasmai yat tadāśrayam | saṃjñāvijñānakathanaṃ kṛtaṃ tena priyāntike"
+  - id: '8.141'
+    kind: verse
+    lines:
+      - मन्त्रिपुत्रस्तु सोऽयुक्तमिति न श्रद्दधेऽस्य तत्
+      - तावच्च सा तयोस्तत्र विभाताभूद्विभावरी
+    iast: "mantriputras tu so 'yuktam iti na śraddadhe 'sya tat | tāvac ca sā tayos tatra vibhātābhūd vibhāvarī"
+  - id: '8.142'
+    kind: verse
+    lines:
+      - अथैतयोर्विधौ सांध्ये निवृत्ते कुर्वतोः कथाः
+    iast: "athaitayor vidhau sāṃdhye nivṛtte kurvatoḥ kathāḥ"
+  - id: '8.143'
+    kind: verse
+    lines:
+      - आगात्पक्वान्नताम्बूलहस्ता पद्मावतीसखी
+      - सा मन्त्रिपुत्रं कुशलं पृष्ट्वा दत्तोपचारिका
+      - निषेद्धुं रजापुत्रस्य भोजनं तत्र युक्तितः
+    iast: "āgāt pakvānnatāmbūlahastā padmāvatīsakhī | sā mantriputraṃ kuśalaṃ pṛṣṭvā dattopacārikā | niṣeddhuṃ rajāputrasya bhojanaṃ tatra yuktitaḥ"
+  - id: '8.144'
+    kind: verse
+    lines:
+      - कथान्तरे स्वामिनीं स्वां भोजनादौ तदागमम्
+      - प्रतीक्षमाणामावेद्य क्षणाद्गुप्तं ततो ययौ
+    iast: "kathāntare svāminīṃ svāṃ bhojanādau tadāgamam | pratīkṣamāṇām āvedya kṣaṇād guptaṃ tato yayau"
+  - id: '8.145'
+    kind: verse
+    lines:
+      - ततस्तं मन्त्रिपुत्रः स राजपुत्रमभाषत
+      - कौतुकं पश्य देवैकं दर्शयाम्यधुना तव
+    iast: "tatas taṃ mantriputraḥ sa rājaputram abhāṣata | kautukaṃ paśya devaikaṃ darśayāmy adhunā tava"
+  - id: '8.146'
+    kind: verse
+    lines:
+      - इत्युक्त्वा भक्ष्यमेकं स पक्वान्नं दत्तवांस्ततः
+      - सारमेयाय स च तत्खादित्वैव व्यपद्यत
+    iast: "ity uktvā bhakṣyam ekaṃ sa pakvānnaṃ dattavāṃs tataḥ | sārameyāya sa ca tat khāditvaiva vyapadyata"
+  - id: '8.147'
+    kind: verse
+    lines:
+      - तद्दृष्ट्वा किमिदं चित्रमिति राजसुतोऽत्र सः
+      - पप्रच्छ मन्त्रिपुत्रं तं स चैतं प्रत्यभाषत
+    iast: "tad dṛṣṭvā kim idaṃ citram iti rājasuto 'tra saḥ | papraccha mantriputraṃ taṃ sa caitaṃ pratyabhāṣata"
+  - id: '8.148'
+    kind: verse
+    lines:
+      - संज्ञाज्ञानेन धूर्तं मां विदित्वा हन्तुकामया
+      - तया विषान्नं प्रहितं मम त्वदनुरक्तया
+    iast: "saṃjñājñānena dhūrtaṃ māṃ viditvā hantukāmayā | tayā viṣānnaṃ prahitaṃ mama tvadanuraktayā"
+  - id: '8.149'
+    kind: verse
+    lines:
+      - नास्मिन्सति मदेकाग्रो राजपुत्रो भवेदयम्
+      - एतद्वशश्च मुक्त्वा मां नगरीं स्वां व्रजेदिति
+    iast: "nāsmin sati madekāgro rājaputro bhaved ayam | etadvaśaś ca muktvā māṃ nagarīṃ svāṃ vrajed iti"
+  - id: '8.150'
+    kind: verse
+    lines:
+      - तन्मुञ्च मन्युमेतस्यां बन्धुत्यागान्महात्मनः
+      - कुर्यास्त्वं हरणे युक्तिं वक्ष्याम्यालोच्य यामहम्
+    iast: "tan muñca manyum etasyāṃ bandhutyāgān mahātmanaḥ | kuryās tvaṃ haraṇe yuktiṃ vakṣyāmy ālocya yām aham"
+  - id: '8.151'
+    kind: verse
+    lines:
+      - इत्युक्तवन्तं तं मन्त्रिसुतो राजसुतोऽत्र सः
+      - सत्यं बुद्धिशरीरस्त्वमिति यावत्प्रशंसति
+    iast: "ity uktavantaṃ taṃ mantrisuto rājasuto 'tra saḥ | satyaṃ buddhiśarīras tvam iti yāvat praśaṃsati"
+  - id: '8.152'
+    kind: verse
+    lines:
+      - अशङ्कितं बहिस्तावद्दुःखाकुलजनारवः
+      - हा धिग्राज्ञः सुतो बालो विपन्न इति शुश्रुवे
+    iast: "aśaṅkitaṃ bahis tāvad duḥkhākulajanāravaḥ | hā dhig rājñaḥ suto bālo vipanna iti śuśruve"
+  - id: '8.153'
+    kind: verse
+    lines:
+      - तदाकर्णनहृष्टोऽथ मन्त्रिपुत्रो नृपात्मजम्
+      - जगाद हन्त गच्छाद्य पद्मावत्या गृहं निशि
+    iast: "tadākarṇanahṛṣṭo 'tha mantriputro nṛpātmajam | jagāda hanta gacchādya padmāvatyā gṛhaṃ niśi"
+  - id: '8.154'
+    kind: verse
+    lines:
+      - तत्र तां पाययेस्तावद्यावत्पानमदेन सा
+      - निःसंज्ञा नष्टचेष्टा च गतजीवेव जायते
+    iast: "tatra tāṃ pāyayes tāvad yāvat pānamadena sā | niḥsaṃjñā naṣṭaceṣṭā ca gatajīveva jāyate"
+  - id: '8.155'
+    kind: verse
+    lines:
+      - ततस्तस्याः सनिद्रायाः शूलेनाङ्कं कटीतटे
+      - दत्त्वाग्नितप्तेनादाय तदाभरणसंचयम्
+    iast: "tatas tasyāḥ sanidrāyāḥ śūlenāṅkaṃ kaṭītaṭe | dattvāgnitaptenādāya tadābharaṇasaṃcayam"
+  - id: '8.156'
+    kind: verse
+    lines:
+      - आगच्छेस्त्वं गवाक्षेण रज्जुलम्बविनिर्गतः
+      - ततः परं यथा भद्रं भवेज्ज्ञास्याम्यहं तथा
+    iast: "āgacches tvaṃ gavākṣeṇa rajjulambavinirgataḥ | tataḥ paraṃ yathā bhadraṃ bhavej jñāsyāmy ahaṃ tathā"
+  - id: '8.157'
+    kind: verse
+    lines:
+      - इत्युक्त्वा कारयित्वा च क्रोडवालनिभाश्रिकम्
+      - मन्त्रिपुत्रो ददौ तस्मै त्रिशूलं राजसूनवे
+    iast: "ity uktvā kārayitvā ca kroḍavālanibhāśrikam | mantriputro dadau tasmai triśūlaṃ rājasūnave"
+  - id: '8.158'
+    kind: verse
+    lines:
+      - राजपुत्रः स हस्ते तत्कृत्वा कुटिलकर्कशम्
+      - कालायस दृढं चित्तमिव कान्तावयस्ययोः
+    iast: "rājaputraḥ sa haste tat kṛtvā kuṭilakarkaśam | kālāyasa dṛḍhaṃ cittam iva kāntāvayasyayoḥ"
+  - id: '8.159'
+    kind: verse
+    lines:
+      - तथेति पूर्ववद्रात्रावगात्पद्मावतीगृहम्
+      - अविचार्यं प्रभूणां हि शुचेर्वाक्यं स्वमन्त्रिणः
+    iast: "tatheti pūrvavad rātrāv agāt padmāvatīgṛham | avicāryaṃ prabhūṇāṃ hi śucer vākyaṃ svamantriṇaḥ"
+  - id: '8.160'
+    kind: verse
+    lines:
+      - तत्र तां मद्यनिःचेष्टां शूलेन जघनेऽङ्किताम्
+      - हृतालंकरणां कृत्वा तस्यागात्सख्युरन्तिकम्
+    iast: "tatra tāṃ madyaniḥceṣṭāṃ śūlena jaghane 'ṅkitām | hṛtālaṃkaraṇāṃ kṛtvā tasyāgāt sakhyur antikam"
+  - id: '8.161'
+    kind: verse
+    lines:
+      - दर्शिताभरणस्तस्मै शशंस च यथाकृतम्
+      - ततः स मन्त्रिपुत्रोऽपि सिद्धं मेने मनीषितम्
+    iast: "darśitābharaṇas tasmai śaśaṃsa ca yathākṛtam | tataḥ sa mantriputro 'pi siddhaṃ mene manīṣitam"
+  - id: '8.162'
+    kind: verse
+    lines:
+      - प्रातर्गत्वा श्मशानं च सोऽभूत्तापसवेषभृत्
+      - स्वैरं राजसुतं तं च विदधे शिष्यरूपिणम्
+    iast: "prātar gatvā śmaśānaṃ ca so 'bhūt tāpasaveṣabhṛt | svairaṃ rājasutaṃ taṃ ca vidadhe śiṣyarūpiṇam"
+  - id: '8.163'
+    kind: verse
+    lines:
+      - अब्रवीत्तं च गच्छैकमितोऽलंकरणादिमाम्
+      - मुक्तावलीं समादाय त्वं विक्रेतुमिवापणे
+    iast: "abravīt taṃ ca gacchaikam ito 'laṃkaraṇād imām | muktāvalīṃ samādāya tvaṃ vikretum ivāpaṇe"
+  - id: '8.164'
+    kind: verse
+    lines:
+      - बहुमूल्यं वदेश्चास्या येनैतां नैव कश्चने
+      - गृह्णीयाद्भ्राम्यमाणां च सर्वः कोऽपि विलोकयेत्
+    iast: "bahumūlyaṃ vadeś cāsyā yenaitāṃ naiva kaś cane | gṛhṇīyād bhrāmyamāṇāṃ ca sarvaḥ ko 'pi vilokayet"
+  - id: '8.165'
+    kind: verse
+    lines:
+      - गुरुणा मम विक्रेतुमियं दत्तेत्यनाकुलः
+      - ब्रूयाश्च यदि गृह्णीयुरत्र त्वां पुररक्षिणः
+    iast: "guruṇā mama vikretum iyaṃ dattety anākulaḥ | brūyāś ca yadi gṛhṇīyur atra tvāṃ purarakṣiṇaḥ"
+  - id: '8.166'
+    kind: verse
+    lines:
+      - इति स प्रेषितस्तेन गत्वा राजसुतस्तदा
+      - अतिष्ठदापणे भ्राम्यन्व्यक्तं मुक्तावलीं दधत्
+    iast: "iti sa preṣitas tena gatvā rājasutas tadā | atiṣṭhad āpaṇe bhrāmyan vyaktaṃ muktāvalīṃ dadhat"
+  - id: '8.167'
+    kind: verse
+    lines:
+      - तथाभूतश्च जगृहे स दृष्ट्वा पुररक्षिभिः
+      - दन्तघाटसुतामोषज्ञप्तेश्चौरेगवेषिभिः
+    iast: "tathābhūtaś ca jagṛhe sa dṛṣṭvā purarakṣibhiḥ | dantaghāṭasutāmoṣajñapteś cauregaveṣibhiḥ"
+  - id: '8.168'
+    kind: verse
+    lines:
+      - निन्ये च नगराध्यक्षनिकटं तैः स तत्क्षणात्
+      - स च तं तापसाकारं दृष्ट्वा पप्रच्छ सान्त्वतः
+    iast: "ninye ca nagarādhyakṣanikaṭaṃ taiḥ sa tatkṣaṇāt | sa ca taṃ tāpasākāraṃ dṛṣṭvā papraccha sāntvataḥ"
+  - id: '8.169'
+    kind: verse
+    lines:
+      - कुतो मुक्तावलीयं ते भगवन्निह हारिता
+      - दन्तघाटककन्याया हृतं ह्याभरणं निशि
+    iast: "kuto muktāvalīyaṃ te bhagavann iha hāritā | dantaghāṭakakanyāyā hṛtaṃ hy ābharaṇaṃ niśi"
+  - id: '8.170'
+    kind: verse
+    lines:
+      - तच्छृउत्वा राजपुत्रस्तं सोऽवादीत्तापसाकृतिः
+      - गुरुणा मम दत्तेयमेत्यासौ पृच्छ्यतामिति
+    iast: "tac chṛutvā rājaputras taṃ so 'vādīt tāpasākṛtiḥ | guruṇā mama datteyam etyāsau pṛcchyatām iti"
+  - id: '8.171'
+    kind: verse
+    lines:
+      - ततश्चोपेत्य तं नत्वा पप्रच्छ नगराधिपः
+      - मुक्तावलीयं भगवन्कुतस्ते शिष्यहस्तगा
+    iast: "tataś copetya taṃ natvā papraccha nagarādhipaḥ | muktāvalīyaṃ bhagavan kutas te śiṣyahastagā"
+  - id: '8.172'
+    kind: verse
+    lines:
+      - शृउत्वैतद्विजनं कृत्वा स धूर्तस्तमभाषत
+      - अहं तपस्वी भ्राम्यामि सदारण्येष्वितस्ततः
+    iast: "śṛutvaitad vijanaṃ kṛtvā sa dhūrtas tam abhāṣata | ahaṃ tapasvī bhrāmyāmi sadāraṇyeṣv itas tataḥ"
+  - id: '8.173'
+    kind: verse
+    lines:
+      - सोऽहं दैवादिह प्राप्तः श्मशानेऽत्र स्थितो निशि
+      - अपश्यं योगिनीचक्रं समागतमितस्ततः
+    iast: "so 'haṃ daivād iha prāptaḥ śmaśāne 'tra sthito niśi | apaśyaṃ yoginīcakraṃ samāgatam itas tataḥ"
+  - id: '8.174'
+    kind: verse
+    lines:
+      - तन्मध्ये चैकयानीय योगिन्या राजपुत्रकः
+      - उद्घाटितहृदम्भोजो भैरवाय निवेदितः
+    iast: "tanmadhye caikayānīya yoginyā rājaputrakaḥ | udghāṭitahṛdambhojo bhairavāya niveditaḥ"
+  - id: '8.175'
+    kind: verse
+    lines:
+      - पानमत्ता च सा हर्तुं जपतो मेऽक्षमालिकाम्
+      - प्रावर्तत महामाया विकारान्कुर्वती मुखे
+    iast: "pānamattā ca sā hartuṃ japato me 'kṣamālikām | prāvartata mahāmāyā vikārān kurvatī mukhe"
+  - id: '8.176'
+    kind: verse
+    lines:
+      - अतिप्रवृत्ता च मया क्रुद्धेन जघनस्थले
+      - अङ्किता सा त्रिशूलेन मन्त्रप्रज्वालिताश्रिणा
+    iast: "atipravṛttā ca mayā kruddhena jaghanasthale | aṅkitā sā triśūlena mantraprajvālitāśriṇā"
+  - id: '8.177'
+    kind: verse
+    lines:
+      - हृता मुक्तावली चेयं तस्याः कण्ठान्मया तदा
+      - सैषाद्य तापसानर्हा विक्रेया मम वर्तते
+    iast: "hṛtā muktāvalī ceyaṃ tasyāḥ kaṇṭhān mayā tadā | saiṣādya tāpasānarhā vikreyā mama vartate"
+  - id: '8.178'
+    kind: verse
+    lines:
+      - एतच्छृउत्वा पुराध्यक्षो गत्वा भूपं व्यजिज्ञपत्
+      - भूपोऽप्याकर्ण्य तत्तां च बुद्ध्वा तन्मौक्तिकावलीम्
+    iast: "etac chṛutvā purādhyakṣo gatvā bhūpaṃ vyajijñapat | bhūpo 'py ākarṇya tat tāṃ ca buddhvā tanmauktikāvalīm"
+  - id: '8.179'
+    kind: verse
+    lines:
+      - प्रेक्षणप्रेषितायातवृद्धाप्तवनितामुखात्
+      - श्रुत्वा च दृश्यशूलाङ्कां जघने सत्यमेव ताम्
+    iast: "prekṣaṇapreṣitāyātavṛddhāptavanitāmukhāt | śrutvā ca dṛśyaśūlāṅkāṃ jaghane satyam eva tām"
+  - id: '8.180'
+    kind: verse
+    lines:
+      - ग्रस्तः सुतो मे डकिन्या तयेत्युत्पन्ननिश्चयः
+      - स्वयं तस्यान्तिकं गत्वा मन्त्रिपुत्रतपस्विनः
+    iast: "grastaḥ suto me ḍakinyā tayety utpannaniścayaḥ | svayaṃ tasyāntikaṃ gatvā mantriputratapasvinaḥ"
+  - id: '8.181'
+    kind: verse
+    lines:
+      - पृष्ट्वा च निग्रहं तस्याः पद्मावत्याः स तद्गिरा
+      - पितृभ्यां शोच्यमानायाः पुरान्निःवासनं व्यधात्
+    iast: "pṛṣṭvā ca nigrahaṃ tasyāḥ padmāvatyāḥ sa tadgirā | pitṛbhyāṃ śocyamānāyāḥ purān niḥvāsanaṃ vyadhāt"
+  - id: '8.182'
+    kind: verse
+    lines:
+      - निर्वासिताटवीस्था सा विग्नापि न जहौ तनुम्
+      - उपायं मन्त्रिपुत्रेण तं संभाव्य तथा कृतम्
+    iast: "nirvāsitāṭavīsthā sā vignāpi na jahau tanum | upāyaṃ mantriputreṇa taṃ saṃbhāvya tathā kṛtam"
+  - id: '8.183'
+    kind: verse
+    lines:
+      - दिनान्ते तां च शोचन्तीमश्वारूढावुपेयतुः
+      - त्यक्ततापसवेषौ तौ मन्त्रिपुत्रनृपात्मजौ
+    iast: "dinānte tāṃ ca śocantīm aśvārūḍhāv upeyatuḥ | tyaktatāpasaveṣau tau mantriputranṛpātmajau"
+  - id: '8.184'
+    kind: verse
+    lines:
+      - आश्वास्यारोप्य तुरगे स्वराष्ट्रं निन्यतुश्च ताम्
+      - तत्र तस्थौ तया साकं राजपुत्रः स निर्वृतः
+    iast: "āśvāsyāropya turage svarāṣṭraṃ ninyatuś ca tām | tatra tasthau tayā sākaṃ rājaputraḥ sa nirvṛtaḥ"
+  - id: '8.185'
+    kind: verse
+    lines:
+      - दन्तघाटस्त्वरण्ये तां क्रव्यादैर्भक्षितां सुताम्
+      - मत्वा व्यपादि शोकेन भार्या चानुजगाम तम्
+    iast: "dantaghāṭas tv araṇye tāṃ kravyādair bhakṣitāṃ sutām | matvā vyapādi śokena bhāryā cānujagāma tam"
+  - id: '8.186'
+    kind: verse
+    lines:
+      - इत्याख्याय स भूयस्तं वेतालो नृपमब्रवीत्
+      - तन्मेऽत्र संशयं छिन्द्धि दंपत्योरेतयोर्वधात्
+    iast: "ity ākhyāya sa bhūyas taṃ vetālo nṛpam abravīt | tan me 'tra saṃśayaṃ chinddhi daṃpatyor etayor vadhāt"
+  - id: '8.187'
+    kind: verse
+    lines:
+      - मन्त्रिपुत्रस्य किं पापं राजपुत्रस्य किं नु वा
+      - पद्मावत्याः किमथ वा त्वं हि बुद्धिमतां वरः
+    iast: "mantriputrasya kiṃ pāpaṃ rājaputrasya kiṃ nu vā | padmāvatyāḥ kim atha vā tvaṃ hi buddhimatāṃ varaḥ"
+  - id: '8.188'
+    kind: verse
+    lines:
+      - जानानश्च न चेद्राजन्मम तत्त्वं वदिष्यसि
+      - तदेष शतधा मूर्धा निःचितं ते स्फुटिष्यति
+    iast: "jānānaś ca na ced rājan mama tattvaṃ vadiṣyasi | tad eṣa śatadhā mūrdhā niḥcitaṃ te sphuṭiṣyati"
+  - id: '8.189'
+    kind: verse
+    lines:
+      - इत्युक्तवन्तं वेतालं विजानञ्शापभीतितः
+      - स त्रिविक्रमसेनस्तमेवं प्रत्यब्रवीन्नृपः
+    iast: "ity uktavantaṃ vetālaṃ vijānañ śāpabhītitaḥ | sa trivikramasenas tam evaṃ pratyabravīn nṛpaḥ"
+  - id: '8.190'
+    kind: verse
+    lines:
+      - योगेश्वर किमज्ञेयमेतन्नैषां हि पातकम्
+      - त्रयाणामपि राज्ञस्तु पापं कर्णोत्पलस्य तत्
+    iast: "yogeśvara kim ajñeyam etan naiṣāṃ hi pātakam | trayāṇām api rājñas tu pāpaṃ karṇotpalasya tat"
+  - id: '8.191'
+    kind: verse
+    lines:
+      - वेतालोऽप्याह राज्ञः किं ते हि तत्कारिणस्त्रयः
+      - काकाः किमपराध्यन्ति हंसैर्जग्धेषु शालिषु
+    iast: "vetālo 'py āha rājñaḥ kiṃ te hi tatkāriṇas trayaḥ | kākāḥ kim aparādhyanti haṃsair jagdheṣu śāliṣu"
+  - id: '8.192'
+    kind: verse
+    lines:
+      - राजा ततोऽब्रवीच्चैनं न दुष्यन्ति त्रयोऽपि ते
+      - मन्त्रिसूनोर्हि तत्तावत्प्रभुकार्यमपातकम्
+    iast: "rājā tato 'bravīc cainaṃ na duṣyanti trayo 'pi te | mantrisūnor hi tat tāvat prabhukāryam apātakam"
+  - id: '8.193'
+    kind: verse
+    lines:
+      - पद्मावतीराजपुत्रौ तौ हि कामशराग्निना
+      - संतप्तावविचारार्हावदोषौ स्वार्थमुद्यतौ
+    iast: "padmāvatīrājaputrau tau hi kāmaśarāgninā | saṃtaptāv avicārārhāv adoṣau svārtham udyatau"
+  - id: '8.194'
+    kind: verse
+    lines:
+      - कर्णोत्पलस्तु राजा स नीतिशास्त्रेष्वशिक्षितः
+      - चरैः प्रजास्वनन्विष्यंस्तत्त्वशुद्धिं निजास्वपि
+    iast: "karṇotpalas tu rājā sa nītiśāstreṣv aśikṣitaḥ | caraiḥ prajāsv ananviṣyaṃs tattvaśuddhiṃ nijāsv api"
+  - id: '8.195'
+    kind: verse
+    lines:
+      - अजानन्धूर्तचरितानीङ्गिताद्यविचक्षणः
+      - तथा तन्निःविचारं यच्चक्रे तेन स पापभाक्
+    iast: "ajānan dhūrtacaritānīṅgitādyavicakṣaṇaḥ | tathā tan niḥvicāraṃ yac cakre tena sa pāpabhāk"
+  - id: '8.196'
+    kind: verse
+    lines:
+      - इत्याकर्ण्य विमुक्तमौनमुदिते सम्यङ्नृपेणोत्तरे स्कन्धात्तस्य स दार्ढ्यमाकलयितुं मायाबलात्तत्क्षणम्
+      - वेतालो नृकलेवरान्तरगतः क्वाप्यप्रतर्क्यो ययौ निःकम्पः स च भूपतिः पुनरमुं प्राप्तुं व्यधान्निःचयम्
+    iast: "ity ākarṇya vimuktamaunam udite samyaṅ nṛpeṇottare skandhāt tasya sa dārḍhyam ākalayituṃ māyābalāt tatkṣaṇam | vetālo nṛkalevarāntaragataḥ kvāpy apratarkyo yayau niḥkampaḥ sa ca bhūpatiḥ punar amuṃ prāptuṃ vyadhān niḥcayam"
