@@ -26,7 +26,7 @@ const FLOOR = path.join(ROOT, 'content/paradigm-lit-floor.json');
 const args = process.argv.slice(2);
 
 /** One spelling for comparison: no accents, final anusvāra as म्, final स् as visarga. */
-const norm = (s: string) => deaccent(s).trim().replace(/ऽ/g, '').replace(/ं$/, 'म्').replace(/स्$/, 'ः').replace(/र्$/, 'ः')
+const norm = (s: string) => deaccent(s).trim().replace(/ऽ/g, '').replace(/[ङञणनम]्(?=[क-ह])/g, 'ं').replace(/ं$/, 'म्').replace(/स्$/, 'ः').replace(/र्$/, 'ः')
   // सः/एषः before a consonant (6.1.132): the pada is स, the cell सः
   .replace(/^(स|एष)$/, '$1ः');
 const holds = (cell: string, form: string) => cell.split('/').some((c) => norm(c) === norm(form));

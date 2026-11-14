@@ -150,10 +150,14 @@ looked up), and `bun run check` until the `texts` line is green.
   आगच्छति lights आङ् + गम्, not गच्छति); adjectives get their word's gender;
   pronoun doublets (मम / मे) show both; prefixed kṛdantas their own table;
   ā/ī feminines are ṅyāp stems. Where no correct table exists the rail now
-  shows none (~170 words), rather than a wrong one. Still owed — stems vidyut
-  declines wrongly as plain stems, which need their taddhita/kṛt derivation:
-  -मत्/-वत् (भगवत्, बुद्धिमत्), agent -तृ (दातृ, कर्तृ), दिश्, विद्वस्, आशिस्,
-  and some prefixed participles (आगतः).
+  shows none, rather than a wrong one. A rescue pass in build-quiz then gives
+  such words their real derivation — मतुप् for -मत्/-वत् (भगवान्), the kṛdanta
+  for a stem or root (दाता, दिक्, विद्वान्, कर्तव्यम्), the stem plain or ṅyāp
+  (लक्ष्मीः, बालिका) — kept only if its cell is the word. The check also
+  surfaced ~20 wrong tags (लते as एकवचन, कृतवती as नपुंसक, a passive's subject
+  as द्वितीया), now fixed. ~105 words still have no table: lemmas given as the
+  base of a taddhita or compound (कौन्तेयः under कुन्ती, वेदवित् under विद्),
+  महत्, आशिस्, किम् + चित्, -तः adverbs tagged पञ्चमी.
 - The kṛt-affix guess (`krts` in `scripts/build-quiz.ts`) also guesses for
   finite verbs (अस्ति → `अस्+क्तिन्`); it should only run on non-finite forms.
 

@@ -1593,11 +1593,24 @@ async function main() {
       const slp = toSlp1(stem);
       if (!slp) continue;
       const flat: Record<string, string> = {};
+      /*
+        A feminine in -ā/-ī is usually a टाप्/ङीप् stem (basic declined बालिका as
+        बालिकाः) — but not always: लक्ष्मीः, श्रीः, धीः keep the visarga. The word
+        decides: basic when basic derives the word in its own cell.
+      */
+      const femCand = lg === 'स्त्रीलिङ्ग' && /[AI]$/.test(slp) && slp.length > 2;
+      let fem = femCand;
+      if (femCand) {
+        const vbW = Object.keys(VIB_DEV).find((k) => terms.has(VIB_DEV[k]));
+        const vcW = Object.keys(VAC_DEV).find((k) => terms.has(VAC_DEV[k])) ?? 'Eka';
+        try {
+          if (vbW && v.deriveSubantas({ pratipadika: { basic: slp }, linga: 'Stri', vibhakti: vbW, vacana: vcW })
+            .some((x: any) => toDeva(x.text) === deaccent(w.form ?? ''))) fem = false;
+        } catch { /* keep ṅyāp */ }
+      }
       for (const vb of VIBHAKTIS)
         for (const vc of VACANAS) {
           try {
-            // a feminine in -ā/-ī is a टाप्/ङीप् stem: basic declined बालिका as बालिकाः
-            const fem = lg === 'स्त्रीलिङ्ग' && /[AI]$/.test(slp) && slp.length > 2;
             const res = v.deriveSubantas({ pratipadika: fem ? { nyap: slp } : { basic: slp }, linga: lg ? LINGA_EN[lg] : 'Pum', vibhakti: vb, vacana: vc });
             const f = res[0]?.text as string | undefined;
             if (f) flat[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = toDeva(f);
@@ -1996,6 +2009,87 @@ async function main() {
       // गतः and आगतः are two tables: the preverb is part of the kṛdanta
       if (Object.keys(flat).length) nounParadigms[`${root}+${affix}${spec.pre ? '·pre=' + spec.pre : ''}·${lgDev}`] = flat;
     }
+  }
+
+  /*
+    The last resort for a word still without a table whose lit cell is the
+    word (scripts/check-paradigm-lit.ts). Declined as a plain stem, vidyut
+    gets several stem types wrong — भगवत् as *भगवतम्, दातृ as *दातरम्, दिश् as
+    *दिट् — and a kṛdanta the corpus never tagged (कर्तव्यम्, श्रान्तः) gets its
+    root declined as a noun. Each wants its real derivation: -मत्/-वत् is the
+    taddhita मतुप्, a stem that is a root (or a root + affix) is a kṛdanta. Try
+    those, and keep one only if its cell IS the word — the corpus as arbiter.
+  */
+  {
+    const { paradigmIndex, resolve } = await import('../src/lib/reader/wordParadigm');
+    const RESCUE_KRT = ['kta', 'ktavatu', 'Satf', 'SAnac', 'tavyat', 'anIyar', 'yat', 'Ryat', 'kyap', 'tfc', 'Rvul', 'lyuw', 'GaY', 'Rini', 'kvip', 'kvin', 'kvasu', 'ac', 'ap', 'ka', 'ktin', 'lyu', 'u', 'yuc'];
+    const KRT_NAME: Record<string, string> = {
+      kta: 'क्त', ktavatu: 'क्तवतु', Satf: 'शतृ', SAnac: 'शानच्', tavyat: 'तव्यत्', anIyar: 'अनीयर्', yat: 'यत्',
+      Ryat: 'ण्यत्', kyap: 'क्यप्', tfc: 'तृच्', Rvul: 'ण्वुल्', lyuw: 'ल्युट्', GaY: 'घञ्', Rini: 'णिनि', kvip: 'क्विप्',
+      kvin: 'क्विन्', kvasu: 'क्वसु', ac: 'अच्', ap: 'अप्', ka: 'क', ktin: 'क्तिन्', lyu: 'ल्यु', u: 'उ', yuc: 'युच्'
+    };
+    const decline = (pratipadika: any, lgEn: string) => {
+      const flat: Record<string, string> = {};
+      for (const vb of VIBHAKTIS) for (const vc of VACANAS) {
+        try {
+          const res = v.deriveSubantas({ pratipadika, linga: lgEn, vibhakti: vb, vacana: vc });
+          const fs = [...new Set(res.map((x: any) => toDeva(x.text)))] as string[];
+          if (fs.length) flat[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = fs.join(' / ');
+        } catch { /* cell not derivable */ }
+      }
+      return flat;
+    };
+    let rescued = 0, tried = 0;
+    const idx = () => paradigmIndex({ nounParadigms, verbParadigms, nounVariants, verbByForm });
+    for (const r of corpus) for (const w of r.words ?? []) {
+      const lemma = deaccent(w.lemma ?? '');
+      const form = deaccent(w.form ?? '').replace(/ं$/, 'म्');
+      if (!lemma || !form || /[॒॑]/.test(w.form ?? '')) continue;
+      const terms = [...(w.notes ?? []).filter((n: any) => n.term).map((n: any) => n.term), ...Object.values(w.derived ?? {})] as string[];
+      const vib = terms.find((t) => VIB_DEV_SET.has(t));
+      if (!vib || terms.some((t) => LAK_KEY[t])) continue;
+      if (resolve(idx(), lemma, form, terms)) continue;
+      tried++;
+      const vac = ['एकवचन', 'द्विवचन', 'बहुवचन'].find((t) => terms.includes(t)) ?? 'एकवचन';
+      const cell = vib + '|' + vac;
+      const lgs = (() => { const l = terms.find((t) => LINGA_EN[t]); return l ? [l] : Object.keys(LINGA_EN); })();
+      const slp = toSlp1(lemma) ?? '';
+      // candidates: [table key, pratipadika]
+      const cands: [string, any][] = [];
+      // the lemma itself, as a plain stem and as a ṅyāp stem (लक्ष्मीः keeps its visarga; बालिका does not)
+      if (slp) cands.push([lemma, { basic: slp }]);
+      if (/[AI]$/.test(slp)) cands.push([lemma, { nyap: slp }]);
+      const m = slp.match(/^(.+)([mv]at)$/);
+      if (m) cands.push([lemma, { taddhitanta: { stem: m[1], taddhita: 'matup' } }]);
+      // the lemma is a root (कृ for कर्तव्यम्), or a root + an agent/action affix (दातृ, दिश्)
+      // the lemma as a root, or a root under an agent or participle stem:
+      // दातृ → दा, विद्वस् → विद्, परा-जि → जि
+      const lem = lemma.split('-').at(-1)!;
+      const roots: string[] = [lem, lem.replace(/तृ$/, ''), lem.replace(/(ि|ी)?न्$/, ''), lem.replace(/्?वस्$/, '्')];
+      for (const rt of [...new Set(roots)]) {
+        const dh = DHATU_MAP[rt] ?? DHATU[rt] ? [...(DHATU[rt] ? [DHATU[rt] as [string, string]] : []), ...(DHATU_MAP[rt] ?? [])] : [];
+        const pres = ['', ...Object.keys(PFX_FIRST).filter((k) => form.startsWith(PFX_FIRST[k]))];
+        for (const [aup, gana] of dh) for (const pre of pres) for (const krt of RESCUE_KRT)
+          // the lemma IS the root (कृ for कर्तव्यम्): a kṛdanta table, root + affix;
+          // otherwise the lemma is the stem (दातृ, दिश्) and its table is its own
+          cands.push([rt === lem ? `${rt}+${KRT_NAME[krt] ?? krt}${pre ? '·pre=' + pre : ''}` : lemma, { krdanta: { dhatu: { aupadeshika: aup, gana, sanadi: [], prefixes: pre ? [pre] : [] }, krt } }]);
+      }
+      let hit = false;
+      for (const [base, pr] of cands) {
+        for (const lg of lgs) {
+          let f: string | undefined;
+          try { f = v.deriveSubantas({ pratipadika: pr, linga: LINGA_EN[lg], vibhakti: Object.keys(VIB_DEV).find((k) => VIB_DEV[k] === vib)!, vacana: Object.keys(VAC_DEV).find((k) => VAC_DEV[k] === vac)! }).map((x: any) => toDeva(x.text)).join(' / '); } catch { continue; }
+          if (!f || !f.split(' / ').includes(form)) continue;
+          const key = `${base}·${lg}`;
+          if (!nounParadigms[key] || !(nounParadigms[key][cell] ?? '').split(' / ').includes(form)) nounParadigms[key] = decline(pr, LINGA_EN[lg]);
+          hit = true;
+          break;
+        }
+        if (hit) break;
+      }
+      if (hit) rescued++;
+    }
+    console.log(`  paradigm rescue: ${rescued} of ${tried} words without a true table got one (मतुप्, or the kṛdanta that derives them)`);
   }
 
   const ambiguousKeys = new Set<string>();

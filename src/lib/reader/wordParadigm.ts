@@ -65,6 +65,12 @@ const LAKARA_EN: Record<string, string> = {
   'आशीर्लिङ्': 'benedictive', 'लुङ्': 'aorist', 'लेट्': 'subjunctive'
 };
 
+/** A form spelled one way for comparison: a nasal before a stop as anusvāra
+ *  (अलंकारः = अलङ्कारः), the way the corpus and vidyut differ. */
+function sp(s: string): string {
+  return deaccent(s).replace(/[ङञणनम]्(?=[क-ह])/g, 'ं');
+}
+
 /** Deaccent a lemma to match the (deaccented) keys in the paradigm maps. */
 function deaccent(s: string): string {
   return s.replace(/[॒॑᳚꣡ऽ]/g, '');
@@ -146,7 +152,7 @@ function stemForForm(data: Indexed, form: string, verb: boolean): string | null 
 const VEDIC = /[\u0951\u0952\u1CD0-\u1CFF]/;
 const sameForm = (cell: string, bare: string) =>
   // (सः/एषः before a consonant are written स/एष, 6.1.132)
-  cell.split(' / ').some((c) => deaccent(c).replace(/ऽ/g, '') === bare || (/^(स|एष)$/.test(bare) && c === bare + 'ः'));
+  cell.split(' / ').some((c) => sp(c).replace(/ऽ/g, '') === bare || (/^(स|एष)$/.test(bare) && c === bare + 'ः'));
 
 export function resolve(
   data: ParadigmData,
@@ -154,9 +160,11 @@ export function resolve(
   form: string,
   terms: string[]
 ): ResolvedParadigm | null {
-  const r = resolveAny(data, lemma, form, terms);
+  const r0 = resolveAny(data, lemma, form, terms);
+  // a lemma written with its preverb (परा-जि, आ-गम्) whose table is the root's
+  const r = r0 || !lemma.includes('-') ? r0 : resolveAny(data, (lemma = lemma.split('-').at(-1)!), form, terms);
   if (!r || r.row < 0 || r.col < 0 || VEDIC.test(form)) return r;
-  const bare = deaccent(form).replace(/ऽ/g, '').replace(/ं$/, 'म्');
+  const bare = sp(form).replace(/ऽ/g, '').replace(/ं$/, 'म्');
   if (sameForm(r.grid.rows[r.row].cells[r.col], bare)) return r;
   // a kṛdanta the corpus did not tag as one: its root+affix table, if one holds it
   if (!terms.includes('कृदन्त') && r.kind === 'declension') {
@@ -175,10 +183,11 @@ function resolveAny(
   const isVerb = terms.some((t) => LAKARA.includes(t));
   // The corpus writes both ग्रामं and ग्रामम् for one word; the paradigm tables
   // use the full form, so normalise before looking either up.
-  const bare = deaccent(form).replace(/ं$/, 'म्');
+  const bare = sp(form).replace(/ं$/, 'म्');           // for comparing with a cell
+  const look = deaccent(form).replace(/ं$/, 'म्');      // for keyed lookups, spelled as the build keyed it
 
   if (isVerb) {
-    const root = deaccent(lemma) || stemForForm(data as Indexed, bare, true) || '';
+    const root = deaccent(lemma) || stemForForm(data as Indexed, look, true) || '';
     const byLak = data.verbParadigms[root];
     if (!byLak) return null;
     const p = PURUSHA.findIndex((x) => terms.includes(x));
@@ -188,7 +197,7 @@ function resolveAny(
       the bare root's grid lit गच्छति for both (the build finds which dhātu,
       preverb and stem derive the form: verbByForm).
     */
-    const ownKey = data.verbByForm?.[root + '|' + bare];
+    const ownKey = data.verbByForm?.[root + '|' + look];
     if (ownKey && byLak[ownKey]) {
       const [lk, , ...rest] = ownKey.split('·');
       const tag = (k: string) => rest.find((x) => x.startsWith(k + '='))?.slice(k.length + 1);
@@ -207,7 +216,7 @@ function resolveAny(
 
   // noun: the lemma when the corpus records one, otherwise the stem whose
   // declension contains this form.
-  const stem = deaccent(lemma) || stemForForm(data as Indexed, bare, false) || '';
+  const stem = deaccent(lemma) || stemForForm(data as Indexed, look, false) || '';
   // a pronoun or ungendered stem is keyed by the gender this word is in
   const lg = ['पुंलिङ्ग', 'स्त्रीलिङ्ग', 'नपुंसकलिङ्ग'].find((x) => terms.includes(x));
   /*
@@ -215,19 +224,22 @@ function resolveAny(
     keyed root + affix: सन्तम् → अस्+शतृ, declined सन्, सन्तौ, सन्तः … — not the
     root read as a noun stem.
   */
-  const isKrt = terms.includes('कृदन्त');
+  // (a kṛdanta whose lemma is its own stem — दातृ, not दा — has no root+affix
+  // table and declines as that stem, below)
+  const isKrt = terms.includes('कृदन्त') && Object.keys(data.nounParadigms).some((k) => k.startsWith(stem + '+'));
   if (isKrt) {
     const keys = Object.keys(data.nounParadigms).filter((k) => k.startsWith(stem + '+'));
-    const holds = (k: string) => Object.values(data.nounParadigms[k]).some((f) => deaccent(f) === bare);
+    const holds = (k: string) => Object.values(data.nounParadigms[k]).some((f) => sp(f) === bare);
     const key = keys.find((k) => (!lg || k.endsWith('·' + lg)) && holds(k))
       ?? keys.find(holds)
       ?? terms.map((t) => `${stem}+${t}·${lg}`).find((k) => data.nounParadigms[k]);
-    if (!key) return null;
+    if (key) {
     const vib = VIBHAKTI.findIndex((x) => terms.includes(x));
     const vacIdx = VACANA.findIndex((x) => terms.includes(x));
     const { grid, row, col } = toGrid(data.nounParadigms[key], VIBHAKTI, VACANA, vib, vacIdx >= 0 ? vacIdx : 0);
     const affix = key.slice(stem.length + 1).split('·')[0];
     return { stem: `${stem} + ${affix}`, lakara: null, kind: 'participle', grid, row, col };
+    }
   }
   // …and where the form leaves the gender open (तस्य is masculine or neuter),
   // the first gendered table that holds the form — the cell is the same either way.
@@ -237,8 +249,8 @@ function resolveAny(
     ...(lg ? [stem + '·' + lg] : []), stem,
     ...['पुंलिङ्ग', 'नपुंसकलिङ्ग', 'स्त्रीलिङ्ग'].map((x) => stem + '·' + x)
   ];
-  const holdsBare = (k: string) => Object.values(data.nounParadigms[k]).some((f) => deaccent(f) === bare)
-    || Object.values(data.nounVariants?.[k] ?? {}).some((fs) => fs.some((f) => deaccent(f) === bare));
+  const holdsBare = (k: string) => Object.values(data.nounParadigms[k]).some((f) => sp(f) === bare)
+    || Object.values(data.nounVariants?.[k] ?? {}).some((fs) => fs.some((f) => sp(f) === bare));
   const vib = VIBHAKTI.findIndex((x) => terms.includes(x));
   // वचन defaults to एकवचन (the unmarked number) when not authored.
   const vacIdx = VACANA.findIndex((x) => terms.includes(x));
@@ -246,8 +258,8 @@ function resolveAny(
   // Of the candidate tables, the one whose lit cell IS the word wins: ते
   // tagged प्रथमा·द्विवचन is the feminine or neuter (the masculine is तौ).
   const cellKey = vib >= 0 ? `${VIBHAKTI[vib]}|${VACANA[col]}` : '';
-  const atCell = (k: string) => !!cellKey && (deaccent(data.nounParadigms[k][cellKey] ?? '') === bare
-    || (data.nounVariants?.[k]?.[cellKey] ?? []).some((f) => deaccent(f) === bare));
+  const atCell = (k: string) => !!cellKey && (sp(data.nounParadigms[k][cellKey] ?? '') === bare
+    || (data.nounVariants?.[k]?.[cellKey] ?? []).some((f) => sp(f) === bare));
   const have = keyOf.filter((k) => data.nounParadigms[k]);
   const pkey = have.find(atCell) ?? have.slice(0, 2).find((k) => keyOf.indexOf(k) < 2) ?? have.find(holdsBare);
   const para = pkey ? data.nounParadigms[pkey] : undefined;
@@ -260,7 +272,7 @@ function resolveAny(
   */
   const lit = row >= 0 && c >= 0 ? grid.rows[row].cells[c] : '';
   const alts = data.nounVariants?.[pkey!]?.[`${VIBHAKTI[row]}|${VACANA[c]}`] ?? [];
-  if (lit && deaccent(lit) !== bare && alts.some((f) => deaccent(f) === bare))
+  if (lit && sp(lit) !== bare && alts.some((f) => sp(f) === bare))
     grid.rows[row].cells[c] = `${form} / ${lit}`;
   return { stem, lakara: null, kind: 'declension', grid, row, col: c };
 }
