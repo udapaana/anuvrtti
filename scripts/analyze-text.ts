@@ -227,14 +227,16 @@ export function rerank(alts: Analysis[], vidyutPick: Analysis | null): Analysis[
     if (m.has(a.lemma_slp1)) s += 2;
     if (a._krt && RARE_KRT.has(a._krt)) s -= 4;
     if (a.stem === 'basic') s += 1;
-    if (a.lingas?.length && a.लिङ्ग && a.lingas.includes(a.लिङ्ग)) s += 2;
-    if (a.lingas?.length && a.लिङ्ग && !a.lingas.includes(a.लिङ्ग)) s -= 2;
+    // a pronoun takes any gender: its stem's listed लिङ्ग says nothing
+    const pron = SARVANAMA.has(a.lemma_slp1);
+    if (!pron && a.lingas?.length && a.लिङ्ग && a.lingas.includes(a.लिङ्ग)) s += 2;
+    if (!pron && a.lingas?.length && a.लिङ्ग && !a.lingas.includes(a.लिङ्ग)) s -= 2;
     if (a.विभक्ति === 'सम्बोधन') s -= 1;
     if (SARVANAMA.has(a.lemma_slp1)) {
       s += 8;
       // Among a pronoun's homographs: the masculine is the narrative default
       // (तस्य, तेन), the dual the rare one (ते is they or to you, seldom those two).
-      if (a.लिङ्ग === 'पुंलिङ्ग') s += 0.6;
+      if (a.लिङ्ग === 'पुंलिङ्ग') s += 2; // outweighs vidyut's own neuter pick (+1.5)
       if (a.वचन === 'द्विवचन') s -= 1;
       if (a.विभक्ति === 'सम्बोधन') s -= 3;
     }
