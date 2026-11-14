@@ -60,10 +60,28 @@ export type WordOverride = {
 /** section id → surface word (with "#2" for a repeat in one section) → override */
 export type Overrides = Record<string, Record<string, WordOverride>>;
 
+/**
+ * overrides.yaml, plus overrides/*.yaml for a long text (one file per stretch
+ * of sections, so a passage can be authored without touching the rest). A
+ * section named in two files is an error, not a silent merge.
+ */
 export function readOverrides(id: string): Overrides {
-  const f = path.join(TEXTS_DIR, id, 'overrides.yaml');
-  if (!fs.existsSync(f)) return {};
-  return (parse(fs.readFileSync(f, 'utf-8')) ?? {}) as Overrides;
+  const dir = path.join(TEXTS_DIR, id);
+  const files = [path.join(dir, 'overrides.yaml')];
+  const sub = path.join(dir, 'overrides');
+  if (fs.existsSync(sub)) files.push(...fs.readdirSync(sub).filter((f) => f.endsWith('.yaml')).sort().map((f) => path.join(sub, f)));
+  const out: Overrides = {};
+  const from: Record<string, string> = {};
+  for (const f of files) {
+    if (!fs.existsSync(f)) continue;
+    const o = (parse(fs.readFileSync(f, 'utf-8')) ?? {}) as Overrides;
+    for (const [sid, sec] of Object.entries(o)) {
+      if (from[sid]) throw new Error(`${id}: section ${sid} has overrides in both ${from[sid]} and ${path.relative(dir, f)}`);
+      from[sid] = path.relative(dir, f);
+      out[sid] = sec;
+    }
+  }
+  return out;
 }
 /** The override key of each surface word in a section: the word, "#n" on a repeat. */
 export function wordKeys(s: Section): string[] {
