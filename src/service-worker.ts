@@ -42,6 +42,13 @@ sw.addEventListener('install', (event) => {
   async function addFilesToCache() {
     const cache = await caches.open(CACHE);
     await cache.addAll(ASSETS);
+    // Without this, a new deploy sits "waiting" until every open tab on the
+    // old worker is closed — not reloaded, closed. A reload re-requests the
+    // same old-controlled page, so a reader can refresh all day and still
+    // run yesterday's JS. Activate the new worker as soon as it's installed;
+    // the next load picks up the new code instead of the one that shipped
+    // whatever this deploy just fixed.
+    await sw.skipWaiting();
   }
   event.waitUntil(addFilesToCache());
 });
@@ -57,6 +64,11 @@ sw.addEventListener('activate', (event) => {
         await caches.delete(key);
       }
     }
+    // Take control of tabs already open, the other half of skipWaiting above
+    // — without it an already-open tab keeps talking to the OLD worker
+    // (which is still alive until its last client drops) even after this
+    // one has activated.
+    await sw.clients.claim();
   }
   event.waitUntil(deleteOldCaches());
 });
