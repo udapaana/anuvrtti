@@ -515,6 +515,22 @@
   const selWord = $derived(sel ? tokenAt(sel.id, sel.ti) : null);
 
   /*
+    When the selection lands inside a word saṃhitā fused with its neighbour —
+    देवोऽत्र is देवः + अत्र, written as one run — this is that written group.
+    Two things read it: the passage shows the group's own padas in place of
+    the fused text while it's selected (independent of the padaccheda
+    toggle, and collapsing again on deselect, same as any other click), and
+    the rail surfaces the group's already-computed combined gloss, which
+    until now only reached the DOM as this span's invisible hover title.
+  */
+  const selFused = $derived.by(() => {
+    if (!sel) return null;
+    const r = rows.find((x: any) => x.id === sel.id);
+    const w = r?.written?.find((g: any) => g.from.length > 1 && g.from.includes(sel!.ti));
+    return w ?? null;
+  });
+
+  /*
     The file the selected word is annotated in.
 
     Every annotation the rail shows — the कारक, the विभक्ति, the gloss — is
@@ -1926,6 +1942,12 @@
           {#if selWord.lemma}
             <span class="wh-stem">← <Sanskrit text={selWord.lemma} source="devanagari" /></span>
           {/if}
+          {#if selFused}
+            <!-- The group's combined gloss was already computed for the title
+                 tooltip on the fused span; selecting it is the one place a
+                 reader is already looking, so it surfaces here too. -->
+            <span class="wh-stem">written together: <Sanskrit text={selFused.gloss} source="devanagari" /></span>
+          {/if}
         </div>
         {#if selWord.terms.length}
           <!--
@@ -2240,6 +2262,7 @@
               {#if !padaccheda && row.written}
                 {#each row.written as w}
                   {#if w.isWord}
+                    {@const splitOpen = w.from.length > 1 && sel?.id === row.id && w.from.includes(sel?.ti)}
                     <span
                       class="token"
                       class:hot={w.from.some((i: number) => hl(row.id, i))}
@@ -2250,7 +2273,7 @@
                       onmouseenter={() => enterWord(row.id, w.ti)}
                       onmouseleave={leaveWord}
                       onclick={() => selectToken(row.id, w.ti)}
-                    ><Sanskrit text={w.text} source="devanagari" /></span>
+                    >{#if splitOpen}{#each w.from as i, pi}{#if pi > 0}<span class="split-plus">+</span>{/if}<Sanskrit text={row.tokens[i].text} source="devanagari" />{/each}{:else}<Sanskrit text={w.text} source="devanagari" />{/if}</span>
                   {:else}
                     <span class="token punct"><Sanskrit text={w.text} source="devanagari" /></span>
                   {/if}
