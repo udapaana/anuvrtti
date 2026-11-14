@@ -1,0 +1,498 @@
+# Kaṭha Upaniṣad, vallī 6 (6.1–6.18): the author's decisions on vidyut's reading.
+# Format: see the header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+
+'6.1':
+  ऊर्ध्वमूलो:
+    split:
+      - { form: ऊर्ध्व, lemma: ऊर्ध्व, member: true, gloss: "upward, above" }
+      - { form: मूलः, lemma: मूल, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "a root" }
+    note: "A बहुव्रीहि with अश्वत्थः — \"whose roots are above\". The Vedic text keeps ऊर्ध्वमूलो अवाक् in hiatus, where classical sandhi would write ऊर्ध्वमूलोऽवाक्."
+  अवाक्शाख:
+    split:
+      - { form: अवाक्, lemma: अवाञ्च्, member: true, gloss: "downward" }
+      - { form: शाखः, lemma: शाखा, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "a branch" }
+    note: "A बहुव्रीहि, \"whose branches are below\" — masculine with अश्वत्थः; the visarga drops before the vowel of एषः."
+  शुक्रं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "the bright, the pure" }
+  तद्ब्रह्म:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग }
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "brahman" }
+  तदेवामृतमुच्यते:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग }
+      3: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "the immortal" }
+      4: { gloss: "is called" }
+  तस्मिंल्लोकाः:
+    fix:
+      1: { a: सप्तमी एकवचन नपुंसकलिङ्ग }
+      2: { gloss: "a world" }
+  श्रिताः:
+    fix:
+      1: { gloss: "resting on" }
+  तदु:
+    fix:
+      2: { gloss: "(emphatic particle)" }
+  नात्येति:
+    split:
+      - { form: न, lemma: न, a: अव्यय }
+      - { form: अत्येति, lemma: अती, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "goes beyond, passes over" }
+  एतद्वै:
+    fix:
+      2: { gloss: "truly, indeed" }
+
+'6.2':
+  यदिदं:
+    fix:
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग }
+  किंच:
+    fix:
+      1: { gloss: "(with यत् … च) whatever" }
+  जगत्सर्वं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "the world, all that moves" }
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग }
+  प्राण:
+    fix:
+      1: { form: प्राणे, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "breath, life" }
+    note: "प्राणे — the final ए becomes अ before the ए of एजति (its य dropped): \"stirs within the breath\"."
+  निःसृतम्:
+    split:
+      - { form: निःसृतम्, lemma: निःसृ, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "gone forth, issued" }
+  महद्भयं:
+    fix:
+      1: { lemma: महत्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "great" }
+  वज्रमुद्यतं:
+    fix:
+      1: { gloss: "a thunderbolt" }
+      2: { lemma: उद्यम्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "raised, uplifted" }
+  य:
+    fix:
+      1: { form: ये, a: प्रथमा बहुवचन पुंलिङ्ग }
+    note: "ये — the ए becomes अ before the ए of एतत्, its य dropped; plural with विदुः."
+  एतद्विदुरमृतास्ते:
+    split:
+      - { form: एतत्, lemma: एतद्, a: द्वितीया एकवचन नपुंसकलिङ्ग }
+      - { form: विदुः, lemma: विद्, a: लिट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "know" }
+      - { form: अमृताः, lemma: अमृत, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "immortal" }
+      - { form: ते, lemma: तद्, a: प्रथमा बहुवचन पुंलिङ्ग }
+  भवन्ति:
+    fix:
+      1: { lemma: भू, a: लट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "become" }
+
+'6.3':
+  भयादस्याग्निस्तपति:
+    split:
+      - { form: भयात्, lemma: भय, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "fear" }
+      - { form: अस्य, lemma: इदम्, a: षष्ठी एकवचन नपुंसकलिङ्ग }
+      - { form: अग्निः, lemma: अग्नि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "fire, Agni" }
+      - { form: तपति, lemma: तप्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "burns, gives heat" }
+  भयात्तपति:
+    fix:
+      2: { gloss: "burns, gives heat" }
+  सूर्यः:
+    fix:
+      1: { lemma: सूर्य, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the sun" }
+  मृत्युर्धावति:
+    fix:
+      2: { lemma: धाव्, gloss: "runs" }
+
+'6.4':
+  चेदशकद्बोद्धुं:
+    split:
+      - { form: चेत्, lemma: चेद्, a: अव्यय, gloss: "if" }
+      - { form: अशकत्, lemma: शक्, a: लुङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "was able" }
+      - { form: बोद्धुम्, lemma: बुध्, a: अव्यय तुमुन्, gloss: "to perceive, understand" }
+  विस्रसः:
+    fix:
+      1: { a: पञ्चमी एकवचन स्त्रीलिङ्ग, gloss: "falling apart, dissolution" }
+  ततः:
+    fix:
+      1: { gloss: "then, thereupon" }
+  सर्गेषु:
+    fix:
+      1: { gloss: "a creation, a created world" }
+  शरीरत्वाय:
+    split:
+      - { form: शरीरत्वाय, lemma: शरीरत्व, a: चतुर्थी एकवचन नपुंसकलिङ्ग, gloss: "embodiment, taking a body" }
+  कल्पते:
+    fix:
+      1: { gloss: "is fit for, becomes ready for (with a dative)" }
+
+'6.5':
+  यथादर्शे:
+    fix:
+      2: { gloss: "a mirror" }
+  तथात्मनि:
+    fix:
+      2: { gloss: "the self" }
+  पितृलोके:
+    fix:
+      1: { gloss: "the world of the fathers" }
+  यथाप्सु:
+    fix:
+      2: { a: सप्तमी बहुवचन स्त्रीलिङ्ग, gloss: "water" }
+  परीव:
+    fix:
+      1: { gloss: "round about (as if dimly, all around)" }
+  ददृशे:
+    fix:
+      1: { gloss: "is seen" }
+    note: "Vedic: a perfect used with present sense, \"is seen\"."
+  छायातपयोरिव:
+    split:
+      - { form: छाया, lemma: छाया, member: true, gloss: "shade, shadow" }
+      - { form: आतपयोः, lemma: आतप, a: सप्तमी द्विवचन पुंलिङ्ग, gloss: "sunlight" }
+      - { form: इव, lemma: इव, a: अव्यय }
+
+'6.6':
+  इन्द्रियाणां:
+    fix:
+      1: { a: षष्ठी बहुवचन नपुंसकलिङ्ग, gloss: "a sense, a sense-organ" }
+  पृथग्भावमुदयास्तमयौ:
+    split:
+      - { form: पृथग्भावम्, lemma: पृथग्भाव, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "separate nature, distinctness" }
+      - { form: उदय, lemma: उदय, member: true, gloss: "rising" }
+      - { form: अस्तमयौ, lemma: अस्तमय, a: द्वितीया द्विवचन पुंलिङ्ग, gloss: "setting" }
+  यत्:
+    fix:
+      1: { a: अव्यय, gloss: "that" }
+  पृथगुत्पद्यमानानां:
+    split:
+      - { form: पृथक्, lemma: पृथक्, a: अव्यय, gloss: "separately" }
+      - { form: उत्पद्यमानानाम्, lemma: उत्पद्, a: षष्ठी बहुवचन नपुंसकलिङ्ग शानच्, gloss: "arising, coming into being" }
+  मत्वा:
+    fix:
+      1: { gloss: "having understood" }
+  शोचति:
+    fix:
+      1: { gloss: "grieves" }
+
+'6.7':
+  इन्द्रियेभ्यः:
+    fix:
+      1: { a: पञ्चमी बहुवचन नपुंसकलिङ्ग, gloss: "a sense, a sense-organ" }
+  परं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "higher, beyond" }
+  मनो:
+    fix:
+      1: { lemma: मनस्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "the mind" }
+  सत्त्वमुत्तमम्:
+    fix:
+      1: { gloss: "the intellect (sattva)" }
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "higher, highest" }
+  सत्त्वादधि:
+    fix:
+      2: { gloss: "above (with an ablative)" }
+  महानात्मा:
+    fix:
+      2: { gloss: "the self" }
+  महतोऽव्यक्तमुत्तमम्:
+    fix:
+      1: { a: पञ्चमी एकवचन पुंलिङ्ग }
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "the unmanifest" }
+      3: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "higher, highest" }
+
+'6.8':
+  अव्यक्तात्तु:
+    fix:
+      1: { a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "the unmanifest" }
+      2: { gloss: "but" }
+  परः:
+    fix:
+      1: { gloss: "higher, beyond" }
+  पुरुषो:
+    fix:
+      1: { gloss: "the person, the cosmic Person" }
+  व्यापकोऽलिङ्ग:
+    split:
+      - { form: व्यापकः, lemma: व्याप्, a: प्रथमा एकवचन पुंलिङ्ग ण्वुल्, gloss: "pervading" }
+      - { form: अलिङ्गः, lemma: अलिङ्ग, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "without distinguishing marks" }
+  मुच्यते:
+    fix:
+      1: { gloss: "is freed" }
+  जन्तुरमृतत्वं:
+    split:
+      - { form: जन्तुः, lemma: जन्तु, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "a creature, a person" }
+      - { form: अमृतत्वम्, lemma: अमृतत्व, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "immortality" }
+
+'6.9':
+  संदृशे:
+    fix:
+      1: { gloss: "to be seen, for sight" }
+    note: "Vedic: a dative infinitive of सम् + दृश् — \"his form does not stand to be seen\"."
+  रूपमस्य:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "form, appearance" }
+  कश्चनैनम्:
+    split:
+      - { form: कः, lemma: किम्, a: प्रथमा एकवचन पुंलिङ्ग }
+      - { form: चन, lemma: चन, a: अव्यय, gloss: "(with कः) anyone" }
+      - { form: एनम्, lemma: एनद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
+  मनीषा:
+    fix:
+      1: { a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "insight, understanding" }
+    note: "Vedic instrumental in -आ, classical मनीषया — the third of three instrumentals, हृदा मनीषा मनसा."
+  मनसाभिकॢप्तो:
+    split:
+      - { form: मनसा, lemma: मनस्, a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "the mind" }
+      - { form: अभिकॢप्तः, lemma: अभिकॢप्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "framed, grasped" }
+  य:
+    fix:
+      1: { form: ये, a: प्रथमा बहुवचन पुंलिङ्ग }
+    note: "ये — the ए becomes अ before the ए of एतत्, its य dropped; plural with विदुः."
+  एतद्विदुरमृतास्ते:
+    split:
+      - { form: एतत्, lemma: एतद्, a: द्वितीया एकवचन नपुंसकलिङ्ग }
+      - { form: विदुः, lemma: विद्, a: लिट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "know" }
+      - { form: अमृताः, lemma: अमृत, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "immortal" }
+      - { form: ते, lemma: तद्, a: प्रथमा बहुवचन पुंलिङ्ग }
+  भवन्ति:
+    fix:
+      1: { lemma: भू, a: लट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "become" }
+
+'6.10':
+  पञ्चावतिष्ठन्ते:
+    fix:
+      1: { a: प्रथमा बहुवचन नपुंसकलिङ्ग, gloss: "five" }
+      2: { gloss: "come to rest, stand still" }
+  ज्ञानानि:
+    fix:
+      1: { gloss: "an organ of perception" }
+  सह:
+    fix:
+      1: { gloss: "together with (with an instrumental)" }
+  विचेष्टति:
+    split:
+      - { form: विचेष्टति, lemma: विचेष्ट्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "stirs, moves about" }
+    note: "चेष्ट् is classically आत्मनेपद (विचेष्टते); the Upaniṣad has the परस्मैपद."
+  परमां:
+    fix:
+      1: { gloss: "highest" }
+  गतिम्:
+    fix:
+      1: { gloss: "a state, a goal" }
+
+'6.11':
+  योगमिति:
+    fix:
+      1: { gloss: "yoga, the yoking (of the senses)" }
+  मन्यन्ते:
+    fix:
+      1: { gloss: "consider, regard as" }
+  स्थिरामिन्द्रियधारणाम्:
+    split:
+      - { form: स्थिराम्, lemma: स्थिर, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "firm, steady" }
+      - { form: इन्द्रिय, lemma: इन्द्रिय, member: true, gloss: "a sense, a sense-organ" }
+      - { form: धारणाम्, lemma: धारणा, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "holding, restraint" }
+  हि:
+    fix:
+      1: { gloss: "for" }
+  प्रभवाप्ययौ:
+    split:
+      - { form: प्रभव, lemma: प्रभव, member: true, gloss: "origin, coming into being" }
+      - { form: अप्ययौ, lemma: अप्यय, a: प्रथमा द्विवचन पुंलिङ्ग, gloss: "passing away, dissolution" }
+
+'6.12':
+  वाचा:
+    fix:
+      1: { form: वाचा, lemma: वाच्, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "speech" }
+  प्राप्तुं:
+    split:
+      - { form: प्राप्तुम्, lemma: प्राप्, a: अव्यय तुमुन्, gloss: "to reach, attain" }
+  शक्यो:
+    fix:
+      1: { gloss: "can be, is possible" }
+  ब्रुवतोऽन्यत्र:
+    fix:
+      1: { gloss: "saying" }
+      2: { gloss: "except, other than" }
+  तदुपलभ्यते:
+    fix:
+      2: { gloss: "is perceived, is grasped" }
+
+'6.13':
+  अस्तीत्येवोपलब्धव्यस्तत्त्वभावेन:
+    split:
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "is" }
+      - { form: इति, lemma: इति, a: अव्यय }
+      - { form: एव, lemma: एव, a: अव्यय }
+      - { form: उपलब्धव्यः, lemma: उपलभ्, a: प्रथमा एकवचन पुंलिङ्ग तव्य, gloss: "to be perceived" }
+      - { form: तत्त्व, lemma: तत्त्व, member: true, gloss: "reality, true nature" }
+      - { form: भावेन, lemma: भाव, a: तृतीया एकवचन पुंलिङ्ग, gloss: "being, nature" }
+  चोभयोः:
+    split:
+      - { form: च, lemma: च, a: अव्यय }
+      - { form: उभयोः, lemma: उभ, a: षष्ठी द्विवचन पुंलिङ्ग, gloss: "both" }
+  अस्तीत्येवोपलब्धस्य:
+    fix:
+      4: { gloss: "perceived" }
+  तत्त्वभावः:
+    split:
+      - { form: तत्त्व, lemma: तत्त्व, member: true, gloss: "reality, true nature" }
+      - { form: भावः, lemma: भाव, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "being, nature" }
+  प्रसीदति:
+    fix:
+      1: { gloss: "becomes clear, is revealed" }
+
+'6.14':
+  प्रमुच्यन्ते:
+    fix:
+      1: { gloss: "are let go, are released" }
+  कामा:
+    fix:
+      1: { form: कामाः, lemma: काम, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "desire" }
+  हृदि:
+    fix:
+      1: { gloss: "the heart" }
+  श्रिताः:
+    fix:
+      1: { gloss: "lodged in" }
+  अथ:
+    fix:
+      1: { gloss: "then" }
+  मर्त्योऽमृतो:
+    fix:
+      1: { gloss: "a mortal" }
+      2: { gloss: "immortal" }
+  भवत्यत्र:
+    fix:
+      2: { gloss: "here, in this world" }
+  समश्नुते:
+    fix:
+      1: { gloss: "attains" }
+
+'6.15':
+  प्रभिद्यन्ते:
+    fix:
+      1: { gloss: "are cut, split apart" }
+  हृदयस्येह:
+    fix:
+      1: { gloss: "the heart" }
+  ग्रन्थयः:
+    fix:
+      1: { gloss: "a knot" }
+  अथ:
+    fix:
+      1: { gloss: "then" }
+  मर्त्योऽमृतो:
+    fix:
+      1: { gloss: "a mortal" }
+      2: { gloss: "immortal" }
+  भवत्येतावद्ध्यनुशासनम्:
+    fix:
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this much" }
+      3: { gloss: "for, indeed" }
+      4: { gloss: "teaching, instruction" }
+
+'6.16':
+  हृदयस्य:
+    fix:
+      1: { gloss: "the heart" }
+  नाड्यस्तासां:
+    fix:
+      1: { gloss: "a channel, a vein of the body" }
+  मूर्धानमभिनिःसृतैका:
+    split:
+      - { form: मूर्धानम्, lemma: मूर्धन्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "the head, the crown" }
+      - { form: अभिनिःसृता, lemma: अभिनिःसृ, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "gone out towards" }
+      - { form: एका, lemma: एक, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "one" }
+  तयोर्ध्वमायन्नमृतत्वमेति:
+    split:
+      - { form: तया, lemma: तद्, a: तृतीया एकवचन स्त्रीलिङ्ग }
+      - { form: ऊर्ध्वम्, lemma: ऊर्ध्वम्, a: अव्यय, gloss: "upward" }
+      - { form: आयन्, lemma: आइ, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: "going" }
+      - { form: अमृतत्वम्, lemma: अमृतत्व, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "immortality" }
+      - { form: एति, lemma: इ, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "goes to, reaches" }
+  विष्वङ्ङन्या:
+    split:
+      - { form: विष्वक्, lemma: विष्वञ्च्, a: अव्यय, gloss: "in every direction" }
+      - { form: अन्याः, lemma: अन्य, a: प्रथमा बहुवचन स्त्रीलिङ्ग, gloss: "other" }
+    note: "विष्वक् with its क् nasalised before the vowel and the ङ् doubled (विष्वङ्ङ्); अन्याः loses its visarga before उत्क्रमणे. Other editions read भवन्ति for this edition's भवति, agreeing with the plural."
+  उत्क्रमणे:
+    fix:
+      1: { gloss: "going out, departure (at death)" }
+  भवति:
+    fix:
+      1: { gloss: "serve, are (for)" }
+
+'6.17':
+  अङ्गुष्ठमात्रः:
+    split:
+      - { form: अङ्गुष्ठ, lemma: अङ्गुष्ठ, member: true, gloss: "the thumb" }
+      - { form: मात्रः, lemma: मात्र, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "measure; at the end of a compound, \"the size of\"" }
+  पुरुषोऽन्तरात्मा:
+    fix:
+      1: { gloss: "the person" }
+      2: { gloss: "the inner self" }
+  जनानां:
+    fix:
+      1: { lemma: जन, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "a person, people" }
+  हृदये:
+    fix:
+      1: { lemma: हृदय, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "the heart" }
+  संनिविष्टः:
+    fix:
+      1: { gloss: "settled, seated" }
+  स्वाच्छरीरात्प्रवृहेन्मुञ्जादिवेषीकां:
+    fix:
+      1: { gloss: "own" }
+      3: { gloss: "should draw out" }
+      4: { gloss: "muñja grass" }
+      6: { gloss: "the inner stalk (of a reed)" }
+  धैर्येण:
+    fix:
+      1: { gloss: "steadiness, resolve" }
+  विद्याच्छुक्रममृतं:
+    fix:
+      1: { a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "one should know" }
+      2: { gloss: "bright, pure" }
+      3: { gloss: "immortal" }
+  विद्याच्छुक्रममृतमिति:
+    fix:
+      1: { a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "one should know" }
+      2: { gloss: "bright, pure" }
+      3: { gloss: "immortal" }
+
+'6.18':
+  मृत्युप्रोक्तां:
+    split:
+      - { form: मृत्यु, lemma: मृत्यु, member: true, gloss: "Death" }
+      - { form: प्रोक्ताम्, lemma: प्रवच्, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "taught, proclaimed" }
+  नचिकेतोऽथ:
+    fix:
+      1: { gloss: "Naciketas" }
+      2: { gloss: "then" }
+    note: "Here an अ-stem, नचिकेतः, beside the usual स्-stem नचिकेताः of 1.1."
+  लब्ध्वा:
+    fix:
+      1: { gloss: "having obtained" }
+  विद्यामेतां:
+    fix:
+      1: { gloss: "knowledge" }
+  योगविधिं:
+    split:
+      - { form: योग, lemma: योग, member: true, gloss: "yoga" }
+      - { form: विधिम्, lemma: विधि, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "rule, procedure" }
+  कृत्स्नम्:
+    fix:
+      1: { gloss: "whole, entire" }
+  ब्रह्मप्राप्तो:
+    split:
+      - { form: ब्रह्म, lemma: ब्रह्मन्, member: true, gloss: "brahman" }
+      - { form: प्राप्तः, lemma: प्राप्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "having attained" }
+  विरजोऽभूद्विमृत्युरन्योऽप्येवं:
+    split:
+      - { form: विरजः, lemma: विरज, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "free from stain, free from passion" }
+      - { form: अभूत्, lemma: भू, a: लुङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "became" }
+      - { form: विमृत्युः, lemma: विमृत्यु, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "free from death" }
+      - { form: अन्यः, lemma: अन्य, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "another" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "also" }
+      - { form: एवम्, lemma: एवम्, a: अव्यय, gloss: "thus" }
+  विदध्यात्ममेव:
+    fix:
+      1: { gloss: "knowing, one who knows" }
+      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "what concerns the self" }
+    note: "Vedic: वित् (\"knowing\") governs अध्यात्मम् as a verb would — \"whoever knows thus what concerns the self\"."
