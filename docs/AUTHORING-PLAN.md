@@ -143,11 +143,17 @@ looked up), and `bun run check` until the `texts` line is green.
 - Mahābhārata: not pinned yet (owner).
 
 ## Owed checks
-- **The lit cell must be the word.** For every annotated word with a paradigm
-  table, check that the cell the word panel highlights holds that word's own
-  form (deaccented, any variant). सन्तम् once lit a table of अस् declined as a
-  noun; a check over readings and texts would have caught it at build time.
-  (Owner, Nov 2026.)
+- ~~**The lit cell must be the word.**~~ Done — `scripts/check-paradigm-lit.ts`,
+  a ratchet at 0 (`content/paradigm-lit-floor.json`), run by `bun run check`
+  and inside `npm run build`. It found 914 of 8,035 lit cells wrong. Fixed:
+  each verb word gets its own table (preverb, णिच्/सन्/passive, dhātu entry:
+  आगच्छति lights आङ् + गम्, not गच्छति); adjectives get their word's gender;
+  pronoun doublets (मम / मे) show both; prefixed kṛdantas their own table;
+  ā/ī feminines are ṅyāp stems. Where no correct table exists the rail now
+  shows none (~170 words), rather than a wrong one. Still owed — stems vidyut
+  declines wrongly as plain stems, which need their taddhita/kṛt derivation:
+  -मत्/-वत् (भगवत्, बुद्धिमत्), agent -तृ (दातृ, कर्तृ), दिश्, विद्वस्, आशिस्,
+  and some prefixed participles (आगतः).
 - The kṛt-affix guess (`krts` in `scripts/build-quiz.ts`) also guesses for
   finite verbs (अस्ति → `अस्+क्तिन्`); it should only run on non-finite forms.
 

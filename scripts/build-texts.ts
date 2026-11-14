@@ -207,7 +207,8 @@ function paradigms(v: any, r: Resolved): Record<string, Table> {
   const tables: Record<string, Table> = {};
   const deriveNoun = (lemma: string, lg: string): string[][] | null => {
     const s = slp(lemma);
-    const cands = /[AI]$/.test(s) && s.length > 2 ? [{ basic: s }, { nyap: s }] : [{ basic: s }];
+    // a feminine in -ā/-ī is ṅyāp-derived (धात्री, not *धात्रीः): nyap first
+    const cands = /[AI]$/.test(s) && s.length > 2 ? [{ nyap: s }, { basic: s }] : [{ basic: s }];
     const grids = cands.map((pr) =>
       VIB.map((vb) => VAC.map((vc) => {
         try { return deva(v.deriveSubantas({ pratipadika: pr, linga: LING[lg] ?? 'Pum', vibhakti: vb, vacana: vc })[0]?.text ?? ''); } catch { return ''; }
@@ -237,21 +238,35 @@ function paradigms(v: any, r: Resolved): Record<string, Table> {
             }
           } else if (a.type === 'tinanta' && a.aupadeshika && a.गण && GANA[a.गण] && a.लकार && LAK[a.लकार] && a.पुरुष && a.वचन) {
             const pada = a.पद === 'आत्मनेपद' ? 'Atmanepada' : 'Parasmaipada';
-            const key = `${a.aupadeshika}|${a.गण}|${a.लकार}|${pada}`;
+            /*
+              The word's own verb: its preverbs, its derived stem, its voice. The
+              bare root's grid lit अगात् for निरगात्, ययौ for प्रययौ — a cell that
+              is not the word (scripts/check-paradigm-lit.ts).
+            */
+            const prefixes = (a.उपसर्ग ?? []).map((u) => (u === 'आङ्' ? 'AN' : slp(u)));
+            const sanadi = (a.सनादि ?? []).map((x) => slp(x));
+            const prayoga = a.प्रयोग === 'कर्मणि' ? 'Karmani' : a.प्रयोग === 'भावे' ? 'Bhave' : 'Kartari';
+            const key = [a.aupadeshika, a.गण, a.लकार, pada, ...prefixes, ...sanadi, prayoga].join('|');
             if (!(key in tables)) {
               const rows = PUR.map((pu) => VAC.map((vc) => {
                 try {
                   const res = v.deriveTinantas({
-                    dhatu: { aupadeshika: a.aupadeshika, gana: GANA[a.गण!], sanadi: [], prefixes: [] },
-                    lakara: LAK[a.लकार!], prayoga: 'Kartari', purusha: pu, vacana: vc, pada, skip_at_agama: false
+                    dhatu: { aupadeshika: a.aupadeshika, gana: GANA[a.गण!], sanadi, prefixes },
+                    lakara: LAK[a.लकार!], prayoga, purusha: pu, vacana: vc, pada, skip_at_agama: false
                   });
-                  return deva(res[0]?.text ?? '');
+                  // every correct form (ब्रूहि / ब्रूतात्), so the word is in its cell
+                  return [...new Set(res.map((x: any) => deva(x.text)))].join(' / ');
                 } catch { return ''; }
               }));
+              const stem = [...(a.उपसर्ग ?? []), a.lemma, ...(a.सनादि ?? [])].join(' + ');
               if (rows.flat().some(Boolean))
-                tables[key] = { stem: a.lemma, lakara: a.लकार, kind: LAK_EN[a.लकार] ?? '', colHeads: VAC_D, rowHeads: PUR_D, rows };
+                tables[key] = { stem, lakara: a.लकार, kind: LAK_EN[a.लकार] ?? '', colHeads: VAC_D, rowHeads: PUR_D, rows };
             }
-            if (tables[key]) p.para = { key, row: PUR_D.indexOf(a.पुरुष), col: VAC_D.indexOf(a.वचन) };
+            if (tables[key]) {
+              const row = PUR_D.indexOf(a.पुरुष), col = VAC_D.indexOf(a.वचन);
+              const cell = tables[key].rows[row]?.[col] ?? '';
+              if (cell.split(' / ').some((c) => bare(c) === bare(p.form))) p.para = { key, row, col };
+            }
           }
         } catch { /* no table for this word */ }
       }

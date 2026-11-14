@@ -190,7 +190,7 @@ const SLP_VOWEL: Record<string, string> = {
   e: 'ए', E: 'ऐ', o: 'ओ', O: 'औ'
 };
 const SLP_MATRA: Record<string, string> = {
-  a: '', A: 'ा', i: 'ि', I: 'ी', u: 'ु', U: 'ू', f: 'ृ',
+  a: '', A: 'ा', i: 'ि', I: 'ी', u: 'ु', U: 'ू', f: 'ृ', F: 'ॄ', x: 'ॢ',
   e: 'े', E: 'ै', o: 'ो', O: 'ौ'
 };
 const SLP_CONS: Record<string, string> = {
@@ -1570,9 +1570,16 @@ async function main() {
   const LINGA_EN = Object.fromEntries(Object.entries(LINGA_DEV).map(([e, d]) => [d, e]));
   for (const r of corpus) for (const w of r.words ?? []) {
     const stem = deaccent(w.lemma ?? '');
-    if (!stem || nounParadigms[stem]) continue;
+    if (!stem) continue;
     const terms = new Set<string>([...(w.notes ?? []).map((n: any) => n.term), ...Object.values(w.derived ?? {}) as string[]]);
     if (![...terms].some((t) => VIB_DEV_SET.has(t))) continue;
+    // a stem with its own table is skipped — unless this word is in another
+    // gender (an adjective: मधुरः beside the stem's feminine मधुरा)
+    if (nounParadigms[stem]) {
+      const own = stemInfo.get(stem)?.linga;
+      const lgW = [...terms].find((t) => LINGA_EN[t]);
+      if (!lgW || !own || LINGA_EN[lgW] === own) continue;
+    }
     // a participle's lemma is its root — declined as a noun it made nonsense
     // (अस् → "āḥ, asau"); it gets its own table from the kṛt pass below
     if (terms.has('कृदन्त') || (w.derived ?? {})['कृत्']) continue;
@@ -1589,9 +1596,14 @@ async function main() {
       for (const vb of VIBHAKTIS)
         for (const vc of VACANAS) {
           try {
-            const res = v.deriveSubantas({ pratipadika: { basic: slp }, linga: lg ? LINGA_EN[lg] : 'Pum', vibhakti: vb, vacana: vc });
+            // a feminine in -ā/-ī is a टाप्/ङीप् stem: basic declined बालिका as बालिकाः
+            const fem = lg === 'स्त्रीलिङ्ग' && /[AI]$/.test(slp) && slp.length > 2;
+            const res = v.deriveSubantas({ pratipadika: fem ? { nyap: slp } : { basic: slp }, linga: lg ? LINGA_EN[lg] : 'Pum', vibhakti: vb, vacana: vc });
             const f = res[0]?.text as string | undefined;
             if (f) flat[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = toDeva(f);
+            // मम / मे, माम् / मा: every correct form, so the rail shows the word's
+            const all = [...new Set(res.map((x: any) => toDeva(x.text)))] as string[];
+            if (all.length > 1) ((nounVariants[key] ??= {})[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = all);
           } catch { /* cell not derivable */ }
         }
       if (Object.keys(flat).length) nounParadigms[key] = flat;
@@ -1644,6 +1656,59 @@ async function main() {
       if (tables.Atmanepada) byLak[lak + '·आत्मनेपद'] = tables.Atmanepada;
     }
     if (Object.keys(byLak).length) verbParadigms[root] = byLak;
+  }
+  /*
+    A verb word's OWN table. The tables above are the bare root's, so आगच्छति
+    lit गच्छति, गमयति lit गच्छति, दृश्यते lit पश्यति — a cell that is not the word
+    (scripts/check-paradigm-lit.ts). For each word the plain table does not
+    hold, find the dhātu entry, preverb and derived stem (णिच्, सन्, the
+    passive) whose paradigm DERIVES the form in the word's लकार — the corpus
+    as arbiter, as everywhere here — and ship that table, keyed
+    "लकार·पद·pre=…·mode=…", with verbByForm[root|form] pointing at it.
+  */
+  const verbByForm: Record<string, string> = {};
+  const PFX_OF_DEV = Object.fromEntries(Object.entries(PFX_DEV).map(([k, d]) => [d, k]));
+  const MODE_DEV: Record<string, string> = { Ric: 'णिच्', san: 'सन्', Karmani: 'कर्मणि' };
+  const holdsForm = (t: Record<string, string> | undefined, f: string) => !!t && Object.values(t).some((x) => x.split(' / ').includes(f));
+  for (const r of corpus) for (const w of r.words ?? []) {
+    const root = deaccent(w.lemma ?? '');
+    const form = deaccent(w.form ?? '').replace(/ं$/, 'म्');
+    if (!root || !form || verbByForm[root + '|' + form]) continue;
+    const terms = new Set<string>([...(w.notes ?? []).map((n: any) => n.term).filter(Boolean), ...Object.values(w.derived ?? {}) as string[]]);
+    const lak = [...terms].find((t) => LAK_KEY[t]);
+    if (!lak) continue;
+    const own = verbParadigms[root];
+    if (holdsForm(own?.[lak], form) || holdsForm(own?.[lak + '·आत्मनेपद'], form)) continue;
+    const tagged = terms.has('णिच्') ? 'Ric' : terms.has('सन्') ? 'san' : terms.has('कर्मणि') || terms.has('भावे') || terms.has('यक्') ? 'Karmani' : '';
+    const modes = [...new Set([tagged, '', 'Ric', 'Karmani', 'san'])] as ('' | 'Ric' | 'san' | 'Karmani')[];
+    const cands: [string, string][] = [...(DHATU[root] ? [DHATU[root] as [string, string]] : []), ...(DHATU_MAP[root] ?? DHATU_MAP[root.replace(/्$/, '')] ?? [])];
+    const pres = [...new Set(['', ...[...terms].map((t) => PFX_OF_DEV[t]).filter(Boolean), ...Object.keys(PFX_FIRST).filter((k) => form.startsWith(PFX_FIRST[k]))])];
+    const wantPada = terms.has('आत्मनेपद') ? 'आत्मनेपद' : terms.has('परस्मैपद') ? 'परस्मैपद' : null;
+    let done = false;
+    for (const mode of modes) {
+      for (const pre of pres) {
+        for (const [aup, gana] of cands) {
+          const m = tinParadigm(aup, gana, pre, mode);
+          const cells = (m.get(form) ?? []).filter((c) => c.lak === lak);
+          if (!cells.length) continue;
+          const pada = (wantPada && cells.find((c) => c.pada === wantPada)?.pada) || cells[0].pada;
+          const flat: Record<string, string> = {};
+          for (const [f, cs] of m) for (const c of cs) {
+            if (c.lak !== lak || c.pada !== pada) continue;
+            const k = c.pu + '|' + c.vc;
+            if (!flat[k]) flat[k] = f;
+            else if (!flat[k].split(' / ').includes(f)) flat[k] += ' / ' + f;
+          }
+          const key = [lak, pada, pre ? 'pre=' + PFX_DEV[pre] : '', mode ? 'mode=' + MODE_DEV[mode] : '', 'gana=' + gana].filter(Boolean).join('·');
+          (verbParadigms[root] ??= {})[key] = flat;
+          verbByForm[root + '|' + form] = key;
+          done = true;
+          break;
+        }
+        if (done) break;
+      }
+      if (done) break;
+    }
   }
   for (const [root, byLak] of tinByRoot) {
     const spec = DHATU[root];
@@ -1862,7 +1927,7 @@ async function main() {
                   record(krtName(krt, pre), '', null);
                   break outer;
                 }
-                krtSpec.set(root + '|' + krtName(krt, pre), { aup, gana, pre, krt });
+                krtSpec.set(root + '|' + krtName(krt, pre) + '|' + pre, { aup, gana, pre, krt });
                 record(krtName(krt, pre), stem, place(stem));
                 /*
                   निष्ठा names a PAIR (1.1.26 क्तक्तवतू निष्ठा) and कृत्य a class of
@@ -1891,7 +1956,7 @@ async function main() {
             const [[name, stem]] = [...fits];
             krtIndex[key] = name;
             krtNamed++;
-            if (stem) { krtSpec.set(root + '|' + name, fitSpec.get(name)!); record(name, stem, place(stem)); }
+            if (stem) { krtSpec.set(root + '|' + name + '|' + fitSpec.get(name)!.pre, fitSpec.get(name)!); record(name, stem, place(stem)); }
             else { krtAvyaya++; record(name, '', null); }
           } else if (fits.size > 1) krtNameAmbiguous++;
           continue;
@@ -1928,7 +1993,8 @@ async function main() {
             if (f) flat[VIB_DEV[vb] + '|' + VAC_DEV[vc]] = toDeva(f);
           } catch { /* cell not derivable */ }
         }
-      if (Object.keys(flat).length) nounParadigms[`${root}+${affix}·${lgDev}`] = flat;
+      // गतः and आगतः are two tables: the preverb is part of the kṛdanta
+      if (Object.keys(flat).length) nounParadigms[`${root}+${affix}${spec.pre ? '·pre=' + spec.pre : ''}·${lgDev}`] = flat;
     }
   }
 
@@ -2035,6 +2101,7 @@ async function main() {
     ganas: ganaIndex,
     nounParadigms,
     verbParadigms,
+    verbByForm,
     nounVariants,
     sections: [
       {

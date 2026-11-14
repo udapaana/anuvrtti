@@ -338,6 +338,19 @@ if (/lost/.test(par)) {
   console.log('  ✓ ' + par.trim().split('\n')[0]);
 }
 
+// 9d'. the lit cell is the word — HARD. The word panel shows a word's own
+// paradigm with one cell lit; that cell must hold the word (सन्तम् once lit
+// the root अस् declined as a noun). Reads the built usage.json and texts, so
+// it reports rather than fails when they have not been built here; `npm run
+// build` runs it too, after building them, so CI always does.
+if (await Bun.file('static/data/usage.json').exists()) {
+  const lit = await run(['bun', 'scripts/check-paradigm-lit.ts']);
+  if (lastExit !== 0) {
+    problems.push('paradigm-lit:\n' + lit.trim());
+    console.log('  ' + lit.trim().split('\n').at(-1));
+  } else console.log('  ' + lit.trim().split('\n').at(-1));
+} else console.log('  · paradigm-lit: static/data/usage.json not built — bun run build:data');
+
 // 9e. sandhi — HARD. Sentences are padas and the build makes the saṃhitā with
 // vidyut-sandhi; a token typed already joined (सोऽपि, ग्रामं, विनयाद्) puts back
 // a word padaccheda cannot split and a sandhi nothing checked.
