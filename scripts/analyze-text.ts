@@ -127,7 +127,9 @@ export function toAnalysis(e: any): Analysis {
   if (e.type === 'subanta') {
     a.विभक्ति = VIBHAKTI[e.vibhakti];
     a.वचन = VACANA[e.vacana];
-    a.लिङ्ग = LINGA[e.linga];
+    // अस्मद्/युष्मद् have no gender of their own: vidyut lists each form three
+    // times, once per लिङ्ग, and the reader exempts them from लिङ्ग anyway.
+    if (!['asmad', 'yuzmad'].includes(e.lemma)) a.लिङ्ग = LINGA[e.linga];
   } else if (e.type === 'tinanta') {
     a.लकार = LAKARA[e.lakara];
     a.पुरुष = PURUSHA[e.purusha];
@@ -228,7 +230,14 @@ export function rerank(alts: Analysis[], vidyutPick: Analysis | null): Analysis[
     if (a.lingas?.length && a.लिङ्ग && a.lingas.includes(a.लिङ्ग)) s += 2;
     if (a.lingas?.length && a.लिङ्ग && !a.lingas.includes(a.लिङ्ग)) s -= 2;
     if (a.विभक्ति === 'सम्बोधन') s -= 1;
-    if (SARVANAMA.has(a.lemma_slp1)) s += 8;
+    if (SARVANAMA.has(a.lemma_slp1)) {
+      s += 8;
+      // Among a pronoun's homographs: the masculine is the narrative default
+      // (तस्य, तेन), the dual the rare one (ते is they or to you, seldom those two).
+      if (a.लिङ्ग === 'पुंलिङ्ग') s += 0.6;
+      if (a.वचन === 'द्विवचन') s -= 1;
+      if (a.विभक्ति === 'सम्बोधन') s -= 3;
+    }
     if (a.type === 'tinanta' && a.लकार) s += LAKARA_PRIOR[a.लकार] ?? 0;
     const g = a.type === 'subanta' && a.stem === 'basic' && a.लिङ्ग && !SARVANAMA.has(a.lemma_slp1) ? mwGenders(a.lemma) : undefined;
     if (g) s += g.has(a.लिङ्ग!) ? 2 : -2;
@@ -292,6 +301,13 @@ function toToken(t: any): Token {
     const a = toAnalysis(e);
     const k = key(a);
     if (!seen.has(k)) { seen.add(k); alts.push(a); }
+  }
+  // सः/एषः before a consonant lose their ending (6.1.132): cheda hands back
+  // the bare sa/eza, which the kosha knows only as a vocative or a particle.
+  if (t.text === 'sa' || t.text === 'eza') {
+    const lemma = t.text === 'sa' ? 'tad' : 'etad';
+    if (!alts.some((a) => a.lemma_slp1 === lemma && a.विभक्ति === 'प्रथमा'))
+      alts.unshift({ type: 'subanta', lemma: deva(lemma), lemma_slp1: lemma, stem: 'basic', विभक्ति: 'प्रथमा', वचन: 'एकवचन', लिङ्ग: 'पुंलिङ्ग' } as Analysis);
   }
   const vidyut = t.pick ? toAnalysis(t.pick) : null;
   const ranked = rerank(alts, vidyut);
