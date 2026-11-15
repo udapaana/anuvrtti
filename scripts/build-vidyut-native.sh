@@ -49,24 +49,18 @@ sed "s|@VIDYUT@|$SRC|g" "$ROOT/scripts/vidyut-native/Cargo.toml.in" > "$OUT/crat
 cp "$ROOT/scripts/vidyut-native/src/main.rs" "$OUT/crate/src/main.rs"
 cp "$SRC/Cargo.lock" "$OUT/crate/Cargo.lock" 2>/dev/null || true
 
-# Two binaries. anuvrtti-cheda-pinned is VIDYUT_REV exactly. anuvrtti-cheda
-# (the one analyze-text.ts uses) adds scripts/vidyut-native/patches/ on top:
-# at this rev cheda's scoring maps every non-avyaya subanta to the Avyaya state
-# and every avyaya to a Subanta state (an inverted `if` in scoring.rs, `From<&
-# Option<PadaEntry>> for State`), so its lemma model never fires for nouns and
-# it segments वने as वन + इ. One character fixes it; the eval measures both.
-# The patch belongs upstream: ambuda-org/vidyut PR #274 (branch skmnktl/vidyut:cheda-avyaya-state).
-# Drop it here once VIDYUT_REV includes that fix.
-build() {
-  ( cd "$OUT/crate" && cargo build --release --quiet )
-  cp "$OUT/crate/target/release/anuvrtti-cheda" "$OUT/bin/$1"
-}
-build anuvrtti-cheda-pinned
+# One binary, at VIDYUT_REV. scripts/vidyut-native/patches/*.patch, if any,
+# go on top — a fix not yet upstream. The one there was (cheda's inverted
+# avyaya check, which segmented वने as वन + इ) merged as ambuda-org/vidyut
+# #274 and is in the pin; the directory is empty until the next one.
+shopt -s nullglob
 trap 'git -C "$SRC" checkout --quiet -- .' EXIT
 for p in "$ROOT"/scripts/vidyut-native/patches/*.patch; do git -C "$SRC" apply "$p"; done
-build anuvrtti-cheda
+( cd "$OUT/crate" && cargo build --release --quiet )
+cp "$OUT/crate/target/release/anuvrtti-cheda" "$OUT/bin/anuvrtti-cheda"
 git -C "$SRC" checkout --quiet -- .
 trap - EXIT
+rm -f "$OUT/bin/anuvrtti-cheda-pinned"
 
 if [ ! -f "$OUT/data/kosha/padas.fst" ]; then
   ZIP="$OUT/data-0.4.0.zip"
@@ -76,4 +70,4 @@ if [ ! -f "$OUT/data/kosha/padas.fst" ]; then
   unzip -q "$ZIP" -d "$OUT/data"
 fi
 
-echo "✓ $OUT/bin/anuvrtti-cheda (+ -pinned), data in $OUT/data"
+echo "✓ $OUT/bin/anuvrtti-cheda, data in $OUT/data"

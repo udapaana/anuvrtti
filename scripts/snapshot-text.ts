@@ -103,7 +103,7 @@ async function snapshot(engine: Engine, id: string): Promise<Snapshot> {
   for (const l of [...lemmas].sort()) lexicon[l] = gloss({ type: 'subanta', lemma: '', lemma_slp1: l } as any);
   return {
     id,
-    engine: 'vidyut-cheda + vidyut-kosha (patched, see scripts/vidyut-native/patches) at VIDYUT_REV, data-0.4.0; glosses: Monier-Williams (CDSL, CC BY-SA 4.0)',
+    engine: 'vidyut-cheda + vidyut-kosha at VIDYUT_REV, data-0.4.0; glosses: Monier-Williams (CDSL, CC BY-SA 4.0)',
     inputs: inputsOf(id),
     sections,
     kosha,

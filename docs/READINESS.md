@@ -54,8 +54,8 @@ as the first long text.**
 
 ## How the generator's error rate enters
 
-The text side is machine-analysed (`scripts/analyze-text.ts`, patched cheda
-plus the re-ranker). `docs/AUTO-ANNOTATION-EVAL.md` measures its top choice on
+The text side is machine-analysed (`scripts/analyze-text.ts`, vidyut-cheda
+with the #274 fix, plus the re-ranker). `docs/AUTO-ANNOTATION-EVAL.md` measures its top choice on
 attested saṃhitā at **lemma 86%, विभक्ति 79%, लिङ्ग 74%, लकार 77%**, with all
 stated fields right on **66%** of words and 9% of words segmented wrongly.
 Here is how that error enters each number:

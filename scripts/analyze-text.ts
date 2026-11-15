@@ -37,8 +37,8 @@ import * as path from 'path';
 import { createRequire } from 'module';
 
 const ROOT = process.cwd();
-/** ANUVRTTI_CHEDA=pinned runs VIDYUT_REV exactly, without scripts/vidyut-native/patches/. */
-const BIN = path.join(ROOT, 'data/vidyut/bin', process.env.ANUVRTTI_CHEDA === 'pinned' ? 'anuvrtti-cheda-pinned' : 'anuvrtti-cheda');
+/** cheda + kosha at VIDYUT_REV (scripts/build-vidyut-native.sh). */
+const BIN = path.join(ROOT, 'data/vidyut/bin', 'anuvrtti-cheda');
 const DATA = path.join(ROOT, 'data/vidyut/data');
 const GLOSS = path.join(ROOT, 'data/mw/gloss.tsv');
 

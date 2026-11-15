@@ -27,7 +27,7 @@ import { Engine, analyzeSentence, slp, lcsMap, type Token, type Analysis } from 
 
 const ROOT = process.cwd();
 const R = JSON.parse(fs.readFileSync(path.join(ROOT, 'static/data/readings.json'), 'utf-8'));
-const OUT = path.join(ROOT, `static/data/analyses/eval${process.env.ANUVRTTI_CHEDA === 'pinned' ? '-pinned' : ''}.json`);
+const OUT = path.join(ROOT, 'static/data/analyses/eval.json');
 
 const SETS: Record<string, string[]> = {
   विभक्ति: ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'],

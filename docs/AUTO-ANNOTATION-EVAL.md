@@ -5,8 +5,9 @@ instead of by hand, how good is the tagging and the meaning? This document
 records the generator that was built, the measurement against the corpus's
 ~7,700 hand-annotated words, and two real tales run cold.
 
-**In short.** At the pinned `VIDYUT_REV`, vidyut-cheda has a one-character bug
-that disables its lemma model for every noun. With that bug patched and a small
+**In short.** At the time of this measurement, vidyut-cheda had a one-character
+bug that disabled its lemma model for every noun (fixed upstream as
+ambuda-org/vidyut #274, now in the pin). With that bug fixed and a small
 dictionary-aware re-ranker added, running saṃhitā gives **87% of words
 segmented exactly**, and on those words **90% of lemmas, 80% of विभक्ति, 81%
 of लिङ्ग, 93% of वचन and 83–87% of the verb fields** are right as the top
@@ -64,13 +65,12 @@ To reproduce:
 ./scripts/build-vidyut-native.sh            # VIDYUT_SRC=… to reuse a checkout
 bun scripts/import-mw-gloss.ts
 bun run texts
-bun scripts/eval-auto-annotation.ts          # patched engine (default)
-ANUVRTTI_CHEDA=pinned bun scripts/eval-auto-annotation.ts   # the pin, untouched
+bun scripts/eval-auto-annotation.ts
 bun scripts/analyze-samples.ts --md 15
 bun scripts/analyze-text.ts "रामो वनं गच्छति ।"
 ```
 
-### The bug in cheda at `VIDYUT_REV`
+### The bug in cheda (fixed upstream, #274)
 
 In `vidyut-cheda/src/scoring.rs`, `impl From<&Option<PadaEntry>> for State`
 gets an `if` the wrong way round:
@@ -91,12 +91,10 @@ falls back to "unknown" for every noun. The segmenter then has no reason to
 prefer वने over वन + इ, or ओदनम् over अ + उत् + अनम्, and it outputs exactly
 those splits.
 
-The build script produces two binaries:
-
-- `anuvrtti-cheda-pinned`: `VIDYUT_REV` exactly.
-- `anuvrtti-cheda`: the same source with
-  `scripts/vidyut-native/patches/0001-cheda-state-avyaya-inverted.patch`
-  applied. This is the one `analyze-text.ts` uses.
+The build script once produced two binaries, the pin exactly and the pin with a
+local one-line patch. The fix merged upstream as ambuda-org/vidyut #274
+(cf61c6f); `VIDYUT_REV` now includes it, the patch is gone, and there is one
+binary. The "pinned" column of the figures below is the engine before the fix.
 
 The patch is applied to the checkout only for the build and reverted
 afterwards, so `build-wasm.sh` still sees a clean tree. **This is a fix that
