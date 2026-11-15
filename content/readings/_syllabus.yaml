@@ -433,46 +433,53 @@ chapters:
   # ── the ATTESTED track — one chapter per source text, each read in its own
   #    order (was the single 06_readings catch-all; split for cohesion).
   - id: hitopadesha
-    title: "हितोपदेश — Nārāyaṇa's nīti verses and frame (attested)"
+    title: "हितोपदेश — Nārāyaṇa's nīti verses and frame"
     ranges: []
     prereqs: [karaka, sup, tin, sandhi]
     status: in_progress
     note: "kind:attested — the gentlest attested nīti; classical, vidyut-verifiable."
   - id: nitishataka
-    title: "नीतिशतक — Bhartṛhari's verses on conduct (attested)"
+    title: "नीतिशतक — Bhartṛhari's verses on conduct"
     ranges: []
     prereqs: [karaka, sup, tin, sandhi]
     status: in_progress
     note: "kind:attested — classical verse (āryā, upajāti), vidyut-verifiable."
   - id: purana
-    title: "पुराणम् — Viṣṇu Purāṇa (Dhruva) & Bhāgavata (attested)"
+    title: "पुराणम् — Viṣṇu Purāṇa (Dhruva) & Bhāgavata"
     ranges: []
     prereqs: [karaka, sup, tin, sandhi, samasa]
     status: in_progress
     note: "kind:attested — classical narrative verse, vidyut-verifiable."
   - id: ramayana
-    title: "रामायण — Vālmīki, Bāla-kāṇḍa selections (attested)"
+    title: "रामायण — Vālmīki, Bāla-kāṇḍa selections"
     ranges: []
     prereqs: [karaka, sup, tin, sandhi, samasa]
     status: in_progress
     note: "kind:attested — classical epic verse, vidyut-verifiable."
   - id: rigveda
-    title: "ऋग्वेद — Maṇḍala 1 hymns, accented with padapāṭha (attested, FROZEN)"
+    title: "ऋग्वेद — Maṇḍala 1 hymns, accented with padapāṭha (FROZEN)"
     ranges: []
     prereqs: [karaka, sup, tin, sandhi, samasa]
     status: frozen
     note: "kind:attested — the FROZEN Vedic block: accents and Vedic moods kept from the source but never machine-verified; no new Vedic readings or accent/mood annotations."
 
   - id: kathopanishad
-    title: "कठोपनिषद् — the opening verses (1.1–1.3), word by word; the whole Upaniṣad is on the texts shelf"
+    title: "कठोपनिषद् — the opening verses (1.1–1.3), word by word"
     ranges: []                    # a continuous attested text; coverage via cite refs
     prereqs: [karaka, sup, tin, sandhi, samasa]
     status: in_progress
+    # The whole Upaniṣad is content/texts/kathopanishad — one source, linked, not
+    # a second shelf. See "sources" in docs/ARCHITECTURE.md.
+    text_id: kathopanishad
     note: "kind:attested — the whole Kaṭha Upaniṣad in order (Olivelle's text via GRETIL), unaccented, verbatim. A scenery-light read-through: most words glossed for meaning only; only notable forms carry a verified cite. Forms vidyut cannot confirm are annotated conservatively and flagged, never cited."
 
   - id: pancatantra
-    title: "पञ्चतन्त्रम् — Viṣṇuśarman's tales, read verbatim (attested prose & verse)"
+    title: "पञ्चतन्त्रम् — Viṣṇuśarman's tales, read verbatim (prose & verse)"
     ranges: []                    # continuous attested text; coverage via cite refs
     prereqs: [karaka, sup, tin, sandhi, samasa, kridanta, taddhita]
     status: in_progress
+    # Only the kīlotpāṭin tale (pt01xx) has a whole-text twin,
+    # content/texts/pancatantra-kilotpatin — the rest of this chapter is excerpts
+    # with no full text behind them yet.
+    text_id: pancatantra-kilotpatin
     note: "kind:attested — Viṣṇuśarman's Pañcatantra (Jha/Chowkhamba ed., consulting Kāle, via GRETIL), transliterated to Devanāgarī, verbatim. Classical Sanskrit, so every form is vidyut-verifiable; the सुभाषित verses lead, the frame prose follows. Compounds and the narrative perfect carry the full apparatus."

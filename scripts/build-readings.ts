@@ -41,6 +41,26 @@ function chapterTitles(): Record<string, string> {
 }
 
 /**
+ * Which chapters are a SOURCE (a handful of verses picked out of a real text)
+ * rather than a graded grammar chapter — "kind:attested" on the chapter's own
+ * `note`, the one place this is already said in prose — and, for the two
+ * sources that also have a whole-text twin on content/texts/, which one.
+ *
+ * Read by the reader to put sources in their own list instead of mixed into
+ * the graded chapters, and to link a source straight to its full text instead
+ * of showing it twice. See "sources" in docs/ARCHITECTURE.md.
+ */
+function chapterMeta(): Record<string, { attested: boolean; textId?: string }> {
+  if (!fs.existsSync(SYLLABUS)) return {};
+  const syl = parseYaml(fs.readFileSync(SYLLABUS, 'utf-8')) as any;
+  const meta: Record<string, { attested: boolean; textId?: string }> = {};
+  for (const c of syl.chapters ?? []) {
+    meta[c.id] = { attested: /^kind:attested\b/.test(String(c.note ?? '')), textId: c.text_id };
+  }
+  return meta;
+}
+
+/**
  * Length bucket — the axis SPLIT OUT from `segment`.
  *
  * `segment` used to carry difficulty and length at once, which forced long
@@ -602,6 +622,7 @@ function sandhiSplitOf(word: any): string[] | null {
 
 function main() {
   const titles = chapterTitles();
+  const meta = chapterMeta();
   const chapters: any[] = [];
   const flat: any[] = [];
 
@@ -651,7 +672,13 @@ function main() {
     if (!readings.length) continue;
     const stem = file.replace(/\.yaml$/, ''); // '01_karaka'
     const key = stem.includes('_') ? stem.slice(stem.indexOf('_') + 1) : stem; // 'karaka'
-    chapters.push({ id: key, title: titles[key] ?? key, readings });
+    chapters.push({
+      id: key,
+      title: titles[key] ?? key,
+      attested: meta[key]?.attested ?? false,
+      textId: meta[key]?.textId,
+      readings
+    });
     /*
       Each reading carries the file it came from.
 
@@ -733,14 +760,35 @@ function main() {
         Notes describe sandhi in context too — वनम् + हसति for वनं, राम + इन
         for the णत्व inside रामेण — and those are explanations, not splits:
         shown in padaccheda they would put a word that is not there.
+
+        वृत्ति/समास members are the same field, authored directly: vidyut has no
+        compound segmenter (docs/AUTO-ANNOTATION-EVAL.md), so a compound's
+        padaccheda — साहित्य+सङ्गीत+कला+विहीनः, not just the वाक्+अत्र kind of
+        split — only exists where a person has written `split: [...]` on the
+        word by hand. An authored split wins over the note-derived guess, but
+        still has to pass the same rejoin check, so a typo'd member list fails
+        the build instead of shipping a word that doesn't reconstruct.
       */
-      const split = sandhiSplitOf(w);
+      const authoredSplit = Array.isArray(w.split) ? (w.split as string[]) : null;
       const rejoins = (parts: string[]) => {
         const norm = (x: string) => deaccent(x).replace(/ऽ/g, '').replace(/\s+/g, '');
         return parts[0] !== w.form && norm(samhitaOf(parts.join(' '), () => null).map((x) => x.text).join(' ')) === norm(w.form);
       };
-      if (split && rejoins(split)) w.split = split;
-      else delete w.split;
+      if (authoredSplit) {
+        // Authored, not guessed from a note — a typo here ships a wrong word,
+        // so it fails the build instead of silently vanishing.
+        if (!rejoins(authoredSplit)) {
+          throw new Error(
+            `${r.id} — ${w.form}: split [${authoredSplit.join(' + ')}] does not rejoin to the word.\n` +
+              `  Check the member spellings (and that vidyut-sandhi actually joins them).`
+          );
+        }
+        w.split = authoredSplit;
+      } else {
+        const split = sandhiSplitOf(w);
+        if (split && rejoins(split)) w.split = split;
+        else delete w.split;
+      }
     });
 
     /*

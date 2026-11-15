@@ -35,7 +35,7 @@
   const PAGE = 20;
 
   type Reading = any;
-  type Chapter = { id: string; title: string; readings: Reading[] };
+  type Chapter = { id: string; title: string; attested?: boolean; textId?: string; readings: Reading[] };
 
   let chapters = $state<Chapter[]>([]);
   let sequence = $state<Reading[]>([]);
@@ -162,6 +162,48 @@
     return m;
   });
 
+  /*
+    "Chapters" (graded grammar, pedagogical order) and "sources" (a handful of
+    verses picked from a real text, annotated like any reading) used to sit in
+    one undifferentiated list, with nothing saying which was which. Worse: a
+    source with a whole-text twin — the Kaṭha, the one Pañcatantra tale —
+    appeared a SECOND time on an unrelated "texts" shelf below, with no link
+    between the two faces of the same work.
+    One place per source instead: its excerpt stays a normal chapter entry,
+    and where a full text exists (chapterMeta().textId, build-readings.ts),
+    the same entry also carries a "read it all" link straight to it. A whole
+    text with no excerpt chapter of its own (the Vetāla) still needs a way in,
+    so it gets a source entry too — just one that opens the text directly.
+  */
+  const gradedChapters = $derived(chapters.filter((c) => !c.attested));
+  const sourceChapters = $derived(chapters.filter((c) => c.attested));
+  const sourceItems = $derived.by(() => {
+    const linkedTextIds = new Set(sourceChapters.map((c) => c.textId).filter(Boolean));
+    const fromChapters = sourceChapters.map((c) => {
+      const t = titles[c.id] ?? { dev: c.id, en: '' };
+      const text = c.textId ? texts.find((x) => x.id === c.textId) : undefined;
+      return {
+        id: c.id,
+        label: t.dev,
+        script: 'devanagari' as const,
+        sub: shortEn(t.en),
+        extra: text ? { label: `read it all · ${text.sections}`, href: `/reader/text/${text.id}` } : undefined
+      };
+    });
+    // A whole text with no excerpt chapter (asymmetric, e.g. the Vetāla) is
+    // still a source — it just opens straight to the full text, no verses view.
+    const orphanTexts = texts
+      .filter((t) => !linkedTextIds.has(t.id))
+      .map((t) => ({
+        id: `text:${t.id}`,
+        label: t.title,
+        script: 'devanagari' as const,
+        sub: t.title_en + (textAt[t.id] ? ` · ${textAt[t.id] + 1}/${t.sections}` : ''),
+        href: `/reader/text/${t.id}`
+      }));
+    return [...fromChapters, ...orphanTexts];
+  });
+
   // ── the reading list (graded order), paginated. The chapter spine is the only
   //    table of contents; readings stay in their authored difficulty sequence. ──
   // The four paradigm readings (देव, फल, नदी, भू) are tables, not readings, and
@@ -172,39 +214,36 @@
   const paradigms = $derived(paradigmIndex(usage));
   const paradigmIds = new Set(PARADIGM_READING_IDS);
   const list = $derived(sequence.filter((r) => !paradigmIds.has(r.id)).map((r) => ({ ...r })));
-  // ── page boundaries: cut where the CONTENT breaks, not every PAGE readings ──
+  // ── page boundaries: one chapter per page, never several bundled together ──
   //
-  // Fixed 20-reading slices cut across a sequence ordered by difficulty, so
-  // chapters landed wherever they landed. Late in the corpus that was severe:
-  // pāṭhāḥ spans 37 tiers (210-570) and kathā spans 160-460, so past tier 220
-  // they braid one reading at a time. Page 10 held THIRTEEN chapter switches
-  // across 20 readings, nine of them a single reading, with pāṭhāḥ marked five
-  // separate times — 11,819px of scrolling past markers that said nothing.
+  // Fixed 20-reading slices used to cut across a sequence ordered by
+  // difficulty, so a page could hold readings from several different chapters
+  // at once — clicking a chapter in the spine landed you on "page 4 of 14"
+  // alongside bits of its neighbours, not inside the chapter itself. Late in
+  // the corpus that was severe: pāṭhāḥ spans 37 tiers (210-570) and kathā
+  // spans 160-460, so past tier 220 they braid one reading at a time. Page 10
+  // held THIRTEEN chapter switches across 20 readings.
   //
-  // So: accumulate readings into a page until adding the next chapter-run would
-  // overshoot PAGE, then break. A run longer than PAGE gets a page to itself and
-  // overflows rather than being split mid-chapter. Pages come out uneven, which
-  // is correct — they follow the material.
+  // So a page is now exactly one chapter's run — never two chapters sharing a
+  // page. A run longer than PAGE still splits into PAGE-sized pages of its
+  // own chapter, so one page never grows unbounded; a run of 1 still gets a
+  // page to itself. Pages come out uneven, which is correct — they follow the
+  // material, and "page" now means "chapter," the thing the spine names.
   const bounds = $derived.by(() => {
-    const runs: { start: number; len: number }[] = [];
+    const runs: { start: number; len: number; chapter: string }[] = [];
     for (let i = 0; i < list.length; i++) {
       const prev = runs[runs.length - 1];
-      if (prev && list[i].chapter === list[prev.start].chapter) prev.len++;
-      else runs.push({ start: i, len: 1 });
+      if (prev && list[i].chapter === prev.chapter) prev.len++;
+      else runs.push({ start: i, len: 1, chapter: list[i].chapter });
     }
-    const out: { start: number; end: number }[] = [];
-    let start = 0;
-    let count = 0;
+    const out: { start: number; end: number; chapter: string }[] = [];
     for (const run of runs) {
-      if (count > 0 && count + run.len > PAGE) {
-        out.push({ start, end: run.start });
-        start = run.start;
-        count = 0;
+      const end = run.start + run.len;
+      for (let s = run.start; s < end; s += PAGE) {
+        out.push({ start: s, end: Math.min(s + PAGE, end), chapter: run.chapter });
       }
-      count += run.len;
     }
-    if (start < list.length) out.push({ start, end: list.length });
-    return out.length ? out : [{ start: 0, end: list.length }];
+    return out.length ? out : [{ start: 0, end: list.length, chapter: list[0]?.chapter ?? '' }];
   });
 
   const totalPages = $derived(bounds.length);
@@ -1666,7 +1705,7 @@
   {/if}
   <Spine
     title={narrow ? null : 'chapters'}
-    items={chapters.map((c) => {
+    items={gradedChapters.map((c) => {
       const t = titles[c.id] ?? { dev: c.id, en: '' };
       return { id: c.id, label: t.dev, script: 'devanagari' as const, sub: shortEn(t.en) };
     })}
@@ -1676,19 +1715,19 @@
       spineOpen = false;
     }}
   />
-  {#if texts.length}
-    <!-- Whole texts: read through, not graded line by line. Each opens on its
-         own page, back where it was left. -->
-    <div class="texts-shelf">
+  {#if sourceItems.length}
+    <!-- Sources: verses picked from a real text, and, where one exists, the
+         whole text itself — one entry each, not a chapter plus a separate
+         shelf entry for the same work. -->
+    <div class="sources-shelf">
       <Spine
-        title="texts"
-        items={texts.map((t) => ({
-          id: t.id,
-          label: t.title,
-          script: 'devanagari' as const,
-          sub: t.title_en + (textAt[t.id] ? ` · ${textAt[t.id] + 1}/${t.sections}` : ''),
-          href: `/reader/text/${t.id}`
-        }))}
+        title="sources"
+        items={sourceItems}
+        activeId={focusedChapter}
+        onpick={(id) => {
+          jumpToChapter(id);
+          spineOpen = false;
+        }}
       />
     </div>
   {/if}
@@ -2316,12 +2355,18 @@
       {/each}
 
       {#if totalPages > 1}
+        {@const chId = bounds[clampedPage]?.chapter ?? null}
+        {@const ct = chapterTitle(chId)}
+        {@const siblings = bounds.filter((b) => b.chapter === chId)}
+        {@const part = siblings.length > 1 ? siblings.indexOf(bounds[clampedPage]) + 1 : 0}
         <div class="pager">
           <button disabled={clampedPage <= 0} onclick={() => setPage(clampedPage - 1)}>
             ← previous
           </button>
           <span class="range">
-            page {clampedPage + 1} / {totalPages} · {startIdx + 1}–{endIdx} of {list.length}
+            <Sanskrit text={ct.dev} source="devanagari" />{#if part}
+              · part {part}/{siblings.length}{/if}
+            · {startIdx + 1}–{endIdx} of {list.length}
           </span>
           <button disabled={clampedPage >= totalPages - 1} onclick={() => setPage(clampedPage + 1)}>
             next →
@@ -2334,7 +2379,7 @@
 {/if}
 
 <style>
-  .texts-shelf {
+  .sources-shelf {
     margin-top: 18px;
     padding-top: 12px;
     border-top: 1px solid var(--rule);
@@ -3319,12 +3364,14 @@
     .railframe.at-peek .wh-tags {
       flex-wrap: nowrap;
       overflow: hidden;
-      padding-right: 54px;
+      /* room for both ★ and, when the reader can edit, ✎ beside it: two 26px
+         buttons + their 6px gap, clear of the 18px they sit in from the edge. */
+      padding-right: 86px;
     }
     /*
-      ★ moves to the end of the tag row. On the first line the form, its gloss
-      and the pull-up hint already fill 390px, and a 44px target crushed into
-      what is left is a target you miss.
+      ★ (and ✎, when it renders) move to the end of the tag row. On the first
+      line the form, its gloss and the pull-up hint already fill 390px, and a
+      44px target crushed into what is left is a target you miss.
     */
     .railframe.at-peek .wh-acts {
       position: absolute;

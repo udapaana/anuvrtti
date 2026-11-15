@@ -34,24 +34,35 @@
 
 {#each items as item (item.id)}
   {@const on = item.id === activeId}
-  {#if item.href}
-    <a class="item" class:on class:done={item.done} href={item.href}>
-      <span class="name">
-        {#if item.script}<Sanskrit text={item.label} source={item.script} />{:else}{item.label}{/if}
-      </span>
-      {#if meta(item)}<span class="meta">{meta(item)}</span>{/if}
-    </a>
-  {:else}
-    <button class="item" class:on class:done={item.done} onclick={() => onpick?.(item.id)}>
-      <span class="name">
-        {#if item.script}<Sanskrit text={item.label} source={item.script} />{:else}{item.label}{/if}
-      </span>
-      {#if meta(item)}<span class="meta">{meta(item)}</span>{/if}
-    </button>
-  {/if}
+  <div class="row">
+    {#if item.href}
+      <a class="item" class:on class:done={item.done} href={item.href}>
+        <span class="name">
+          {#if item.script}<Sanskrit text={item.label} source={item.script} />{:else}{item.label}{/if}
+        </span>
+        {#if meta(item)}<span class="meta">{meta(item)}</span>{/if}
+      </a>
+    {:else}
+      <button class="item" class:on class:done={item.done} onclick={() => onpick?.(item.id)}>
+        <span class="name">
+          {#if item.script}<Sanskrit text={item.label} source={item.script} />{:else}{item.label}{/if}
+        </span>
+        {#if meta(item)}<span class="meta">{meta(item)}</span>{/if}
+      </button>
+    {/if}
+    {#if item.extra}
+      <a class="item-extra" href={item.extra.href}>{item.extra.label}</a>
+    {/if}
+  </div>
 {/each}
 
 <style>
+  .row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
   .item {
     display: flex;
     flex-direction: column;
@@ -67,6 +78,18 @@
     color: var(--muted);
     text-decoration: none;
     font: inherit;
+  }
+  /* a source's second action — "read it all" beside its verses */
+  .item-extra {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--quiet);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .item-extra:hover {
+    color: var(--accent);
+    text-decoration: underline;
   }
   .item:hover {
     color: var(--ink);
@@ -121,11 +144,19 @@
     }
 
     /* a sheet is touched, not pointed at, so the row grows to a real target */
+    :global(nav.spine.sheeted) .row {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
     :global(nav.spine.sheeted) .item {
       border-left-width: 3px;
       padding: 11px 18px;
       gap: 2px;
       width: 100%;
+    }
+    :global(nav.spine.sheeted) .item-extra {
+      padding-left: 21px;
     }
     :global(nav.spine.sheeted) .item.on {
       background: var(--sunken);

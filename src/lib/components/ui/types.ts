@@ -24,6 +24,11 @@ export type SpineItem = {
   /** Marks the item complete — takes the done accent. */
   done?: boolean;
   href?: string;
+  /**
+   * A second action on the same row, alongside the item's own — e.g. a
+   * source's "read it all" link to the whole text its excerpt sits beside.
+   */
+  extra?: { label: string; href: string };
 };
 
 /** One cell of a paradigm or matrix. */

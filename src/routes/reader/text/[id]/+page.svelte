@@ -148,7 +148,7 @@
     <SheetButton label={secLabel} onopen={() => (spineOpen = true)} title="sections" />
     <span class="shelf-rule" aria-hidden="true"></span>
   {:else}
-    <a class="back" href="/reader">← chapters</a>
+    <a class="back" href="/reader">← reader</a>
   {/if}
   <button
     class="toggle"
@@ -168,7 +168,7 @@
 
 {#snippet spine()}
   {#if text}
-    {#if narrow}<a class="back sheet-back" href="/reader">← chapters</a>{/if}
+    {#if narrow}<a class="back sheet-back" href="/reader">← reader</a>{/if}
     <Spine
       title="sections"
       items={text.sections.map((s, i) => ({
