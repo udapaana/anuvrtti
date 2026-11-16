@@ -151,6 +151,9 @@
   कौरवान्:
     fix:
       1: { gloss: "the Kauravas, the Kuru house" }
+  धृतराष्ट्राय:
+    fix:
+      1: { gloss: "to Dhṛtarāṣṭra" }
   ददौ:
     fix:
       1: { gloss: "gave" }
@@ -751,7 +754,7 @@
   कालोऽयमागतः:
     fix:
       1: { gloss: "time" }
-      3: { gloss: "has come" }
+      3: { lemma: आगम्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "has come" }
   अनुज्ञाता:
     split:
       - { form: अनुज्ञाता, lemma: अनुज्ञा, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "permitted" }
@@ -1099,7 +1102,7 @@
       3: { gloss: "exceedingly strong" }
   जातं:
     fix:
-      1: { gloss: "born" }
+      1: { lemma: जन्, a: द्वितीया एकवचन पुंलिङ्ग क्त, gloss: "born" }
   वागुवाचाशरीरिणी:
     split:
       - { form: वाक्, lemma: वाच्, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "a voice" }
@@ -1171,7 +1174,9 @@
 'adi-1-129-68':
   यस्मिन्नहनि:
     fix:
+      1: { a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "on which" }
       2: { gloss: "day" }
+    note: "यस्मिन् agrees with अहनि, and अहन् is neuter."
   भमस्तु:
     split:
       - { form: भीमः, lemma: भीम, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Bhīma" }
@@ -1689,16 +1694,18 @@
       2: { gloss: "invincible" }
   यशस्ते:
     fix:
-      1: { gloss: "fame" }
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "fame" }
       2: { lemma: युष्मद्, a: षष्ठी एकवचन, gloss: "your" }
+    note: "यशः is the object of प्रथयिष्यति: 'he will spread your fame'."
   प्रथयिष्यति:
     split:
       - { form: प्रथयिष्यति, lemma: प्रथ्, a: लृट् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "will spread" }
 
 'adi-1-132-21':
   अदित्या:
-    fix:
-      1: { gloss: "for Aditi" }
+    split:
+      - { form: अदित्याः, lemma: अदिति, a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "Aditi's" }
+    note: "अदित्याः प्रीतिः, 'Aditi's joy': the visarga after आ drops before a voiced sound (8.3.17, 8.3.22)."
   विष्णुना:
     fix:
       1: { gloss: "by Viṣṇu" }
@@ -2541,8 +2548,9 @@
 'adi-1-137-18':
   शतमेकोत्तरं:
     fix:
-      1: { gloss: "a hundred" }
-      2: { gloss: "more by one (शतमेकोत्तरम् 'a hundred and one')" }
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "a hundred" }
+      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "more by one (शतमेकोत्तरम् 'a hundred and one')" }
+    note: "शतम् एकोत्तरम् is the object of निगृह्णाति: Bhīma alone overpowers the hundred and one."
   तेषां:
     fix:
       1: { gloss: "of those" }
