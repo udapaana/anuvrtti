@@ -12,19 +12,23 @@
 # 0 verses come from the book's scan (marked scan:, ids +n after the
 # edition verse before them).
 #
-# Left out: 143 entries the matcher could not place, and 0 verses the
+# Left out: 11 entries the matcher could not place, and 5 verses the
 # edition lacks, not yet settled from the scan.
 id: bhagavata-condensed
 title: भागवतम् (संक्षिप्तम्)
 title_en: "The Bhāgavata, condensed in the poet's own words"
 work: भागवतपुराणम्
-place: 1185 verses chosen by A. M. Srinivasachariar and V. Raghavan (1937), in order
+place: 1296 verses chosen by A. M. Srinivasachariar and V. Raghavan (1937), in order
 source:
   edition: "Bhāgavata Purāṇa, data entry Ulrich Stiehl, via GRETIL and Ambuda. Selection from A. M. Srinivasachariar and V. Raghavan, Bhagavata (Condensed) (G. A. Natesan, Madras, 1937)"
   file: sa_bhAgavatapurANa # data/texts.json (sha256-pinned)
   ref: by section id, skandha.adhyāya.verse
   licence: GRETIL text, CC BY-NC-SA 4.0 (per its header)
 parts:
+  - id: '11'
+    title: एकादशः स्कन्धः
+    first: '11.11.29'
+    last: '11.11.30'
   - id: '1'
     title: प्रथमः स्कन्धः
     first: '1.1.1'
@@ -43,23 +47,23 @@ parts:
     last: '4.31.29'
   - id: '5'
     title: पञ्चमः स्कन्धः
-    first: '5.1.17'
-    last: '5.13.20'
+    first: '5.1.6'
+    last: '5.13.25'
   - id: '6'
     title: षष्ठः स्कन्धः
     first: '6.1.9'
-    last: '6.14.6'
+    last: '6.13.20'
   - id: '7'
     title: सप्तमः स्कन्धः
     first: '7.1.26'
     last: '7.10.33'
   - id: '8'
     title: अष्टमः स्कन्धः
-    first: '8.2.20'
+    first: '8.2.14'
     last: '8.24.58'
   - id: '9'
     title: नवमः स्कन्धः
-    first: '9.5.12'
+    first: '9.10.2'
     last: '9.16.26'
   - id: '10'
     title: दशमः स्कन्धः
@@ -74,6 +78,18 @@ parts:
     first: '12.2.12'
     last: '12.13.15'
 sections:
+  - id: '11.11.29'
+    kind: verse
+    lines:
+      - "कृपालुरकृतद्रोहस्तितिक्षुः सर्वदेहिनाम्"
+      - "सत्यसारोऽनवद्यात्मा समः सर्वोपकारकः"
+    iast: "kṛpālur akṛta-drohas titikṣuḥ sarva-dehinām | satya-sāro 'navadyātmā samaḥ sarvopakārakaḥ"
+  - id: '11.11.30'
+    kind: verse
+    lines:
+      - "कामैरहतधीर्दान्तो मृदुः शुचिरकिञ्चनः"
+      - "अनीहो मितभुक्शान्तः स्थिरो मच्छरणो मुनिः"
+    iast: "kāmair ahata-dhīr dānto mṛduḥ śucir akiñcanaḥ | anīho mita-bhuk śāntaḥ sthiro mac-charaṇo muniḥ"
   - id: '1.1.1'
     kind: verse
     lines:
@@ -110,6 +126,12 @@ sections:
       - "अथाख्याहि हरेर्धीमन्नवतारकथाः शुभाः"
       - "ईला विदधतः स्वैरमीश्वरस्यात्ममायया"
     iast: "athākhyāhi harerdhīmann avatārakathāḥ śubhāḥ | īlā vidadhataḥ svairam īśvarasyātmamāyayā"
+  - id: '1.2.1'
+    kind: verse
+    lines:
+      - "इति सम्प्रश्नसंहृष्टो विप्राणां रौमहर्शणिः"
+      - "प्रतिपूज्य वचस्तेशां प्रवक्तुमुपचक्रमे"
+    iast: "iti sampraśnasaṃhṛṣṭo viprāṇāṃ raumaharśaṇiḥ | pratipūjya vacasteśāṃ pravaktum upacakrame"
   - id: '1.2.5'
     kind: verse
     lines:
@@ -164,6 +186,12 @@ sections:
       - "सर्ववेदेतिहासानां सारं सारं समुद्धृतम्"
       - "स तु संश्रावयामासमहाराजं परीक्षितम्"
     iast: "sarvavedetihāsānāṃ sāraṃ sāraṃ samuddhṛtam | sa tu saṃśrāvayām āsamahārājaṃ parīkṣitam"
+  - id: '1.4.18'
+    kind: verse
+    lines:
+      - "दुर्भगांश्च जनान्वीक्ष्य मुनिर्दिव्येन चक्षुषा"
+      - "सर्ववर्णाश्रमाणां यद्दध्यौ हितममोघदृक्"
+    iast: "durbhagāṃśca janān vīkṣya munirdivyena cakṣuṣā | sarvavarṇāśramāṇāṃ yaddadhyau hitam amoghadṛk"
   - id: '1.4.28'
     kind: verse
     lines:
@@ -188,6 +216,12 @@ sections:
       - "तस्यैवं खिलमात्मानं मन्यमानस्य खिद्यतः"
       - "कृष्णस्य नारदोऽभ्यागादाश्रमं प्रागुदाहृतम्"
     iast: "tasyaivaṃ khilam ātmānaṃ manyamānasya khidyataḥ | kṛṣṇasya nārado 'bhyāgādāśramaṃ prāg udāhṛtam"
+  - id: '1.5.1'
+    kind: verse
+    lines:
+      - "अथ तं सुखमासीन उपासीनं बृहच्छ्रवाः"
+      - "देवर्षिः प्राह विप्रर्षिं वीणापाणिः स्मयन्निव"
+    iast: "atha taṃ sukham āsīna upāsīnaṃ bṛhacchravāḥ | devarṣiḥ prāha viprarṣiṃ vīṇāpāṇiḥ smayann iva"
   - id: '1.5.3'
     kind: verse
     lines:
@@ -525,6 +559,30 @@ sections:
       - "स कर्मबीजं रजसोपरक्तः प्रजाः सिसृक्षन्नियदेव दृष्ट्वा"
       - "अस्तौद्विसर्गाभिमुखस्तमीड्यमव्यक्तवर्त्मन्यभिवेशितात्मा"
     iast: "sa karma-bījaṃ rajasoparaktaḥ prajāḥ sisṛkṣann iyad eva dṛṣṭvā | astaud visargābhimukhas tam īḍyam avyakta-vartmany abhiveśitātmā"
+  - id: '3.9.2'
+    kind: verse
+    lines:
+      - "रूपं यदेतदवबोधरसोदयेन शश्वन्निवृत्ततमसः सदनुग्रहाय"
+      - "आदौ गृहीतमवतारशतैकबीजं यन्नाभिपद्मभवनादहमाविरासम्"
+    iast: "rūpaṃ yad etad avabodha-rasodayena śaśvan-nivṛtta-tamasaḥ sad-anugrahāya | ādau gṛhītam avatāra-śataika-bījaṃ yan-nābhi-padma-bhavanād aham āvirāsam"
+  - id: '3.9.3'
+    kind: verse
+    lines:
+      - "नातः परं परम यद्भवतः स्वरूपमानन्दमात्रमविकल्पमविद्धवर्चः"
+      - "पश्यामि विश्वसृजमेकमविश्वमात्मन्भूतेन्द्रियात्मकमदस्त उपाश्रितोऽस्मि"
+    iast: "nātaḥ paraṃ parama yad bhavataḥ svarūpam ānanda-mātram avikalpam aviddha-varcaḥ | paśyāmi viśva-sṛjam ekam aviśvam ātman bhūtendriyātmaka-madas ta upāśrito 'smi"
+  - id: '3.9.22'
+    kind: verse
+    lines:
+      - "सोऽयं समस्तजगतां सुहृदेक आत्मा सत्त्वेन यन्मृडयते भगवान्भगेन"
+      - "तेनैव मे दृशमनुस्पृशताद्यथाहं स्रक्ष्यामि पूर्ववदिदं प्रणतप्रियोऽसौ"
+    iast: "so 'yaṃ samasta-jagatāṃ suhṛd eka ātmā sattvena yan mṛḍayate bhagavān bhagena | tenaiva me dṛśam anuspṛśatād yathāhaṃ srakṣyāmi pūrvavad idaṃ praṇata-priyo 'sau"
+  - id: '3.9.23'
+    kind: verse
+    lines:
+      - "एष प्रपन्नवरदो रमयात्मशक्त्या यद्यत्करिष्यति गृहीतगुणावतारः"
+      - "तस्मिन्स्वविक्रममिदं सृजतोऽपि चेतो युञ्जीत कर्मशमलं च यथा विजह्याम्"
+    iast: "eṣa prapanna-varado ramayātma-śaktyā yad yat kariṣyati gṛhīta-guṇāvatāraḥ | tasmin sva-vikramam idaṃ sṛjato 'pi ceto yuñjīta karma-śamalaṃ ca yathā vijahyām"
   - id: '3.9.29'
     kind: verse
     lines:
@@ -549,6 +607,12 @@ sections:
       - "सर्ववेदमयेनेदमात्मनात्मात्मयोनिना"
       - "प्रजाः सृज यथापूर्वं याश्च मय्यनुशेरते"
     iast: "sarva-veda-mayenedam ātmanātmātma-yoninā | prajāḥ sṛja yathā-pūrvaṃ yāś ca mayy anuśerate"
+  - id: '3.10.7'
+    kind: verse
+    lines:
+      - "तद्विलोक्य वियद्व्यापि पुष्करं यदधिष्ठितम्"
+      - "अनेन लोकान्प्राग्लीनान्कल्पितास्मीत्यचिन्तयत्"
+    iast: "tad vilokya viyad-vyāpi puṣkaraṃ yad-adhiṣṭhitam | anena lokān prāg-līnān kalpitāsmīty acintayat"
   - id: '3.13.16'
     kind: verse
     lines:
@@ -592,6 +656,12 @@ sections:
       - "तमालनीलं सितदन्तकोट्या क्ष्मामुत्क्षिपन्तं गजलीलयाङ्ग"
       - "प्रज्ञाय बद्धाञ्जलयोऽनुवाकैर्विरिञ्चिमुख्या उपतस्थुरीशम्"
     iast: "tamāla-nīlaṃ sita-danta-koṭyā kṣmām utkṣipantaṃ gaja-līlayāṅga | prajñāya baddhāñjalayo 'nuvākair viriñci-mukhyā upatasthur īśam"
+  - id: '3.13.48'
+    kind: verse
+    lines:
+      - "स इत्थं भगवानुर्वीं विष्वक्सेनः प्रजापतिः"
+      - "रसाया लीलयोन्नीतामप्सु न्यस्य ययौ हरिः"
+    iast: "sa itthaṃ bhagavān urvīṃ viṣvaksenaḥ prajāpatiḥ | rasāyā līlayonnītām apsu nyasya yayau hariḥ"
   - id: '3.21.6'
     kind: verse
     lines:
@@ -610,12 +680,24 @@ sections:
       - "तावत्प्रसन्नो भगवान्पुष्कराक्षः कृते युगे"
       - "दर्शयामास तं क्षत्तः शाब्दं ब्रह्म दधद्वपुः"
     iast: "tāvat prasanno bhagavān puṣkarākṣaḥ kṛte yuge | darśayām āsa taṃ kṣattaḥ śābdaṃ brahma dadhad vapuḥ"
+  - id: '3.21.26'
+    kind: verse
+    lines:
+      - "स चेह विप्र राजर्षिर्महिष्या शतरूपया"
+      - "आयास्यति दिदृक्षुस्त्वां परश्वो धर्मकोविदः"
+    iast: "sa ceha vipra rājarṣir mahiṣyā śatarūpayā | āyāsyati didṛkṣus tvāṃ paraśvo dharma-kovidaḥ"
   - id: '3.21.27'
     kind: verse
     lines:
       - "आत्मजामसितापाङ्गीं वयःशीलगुणान्विताम्"
       - "मृगयन्तीं पतिं दास्यत्यनुरूपाय ते प्रभो"
     iast: "ātmajām asitāpāṅgīṃ vayaḥ-śīla-guṇānvitām | mṛgayantīṃ patiṃ dāsyaty anurūpāya te prabho"
+  - id: '3.21.37'
+    kind: verse
+    lines:
+      - "तस्मिन्सुधन्वन्नहनि भगवान्यत्समादिशत्"
+      - "उपायादाश्रमपदं मुनेः शान्तव्रतस्य तत्"
+    iast: "tasmin sudhanvann ahani bhagavān yat samādiśat | upāyād āśrama-padaṃ muneḥ śānta-vratasya tat"
   - id: '3.22.9'
     kind: verse
     lines:
@@ -1012,6 +1094,24 @@ sections:
       - "स वै तदैव प्रतिपादितां गिरं दैवीं परिज्ञातपरात्मनिर्णयः"
       - "तं भक्तिभावोऽभ्यगृणादसत्वरं परिश्रुतोरुश्रवसं ध्रुवक्षितिः"
     iast: "sa vai tadaiva pratipāditāṃ giraṃ daivīṃ parijñāta-parātma-nirṇayaḥ | taṃ bhakti-bhāvo 'bhyagṛṇād asatvaraṃ pariśrutoru-śravasaṃ dhruva-kṣitiḥ"
+  - id: '4.9.6'
+    kind: verse
+    lines:
+      - "योऽन्तः प्रविश्य मम वाचमिमां प्रसुप्तां सञ्जीवयत्यखिलशक्तिधरः स्वधाम्ना"
+      - "अन्यांश्च हस्तचरणश्रवणत्वगादीन्प्राणान्नमो भगवते पुरुषाय तुभ्यम्"
+    iast: "yo 'ntaḥ praviśya mama vācam imāṃ prasuptāṃ sañjīvayaty akhila-śakti-dharaḥ sva-dhāmnā | anyāṃś ca hasta-caraṇa-śravaṇa-tvag-ādīn prāṇān namo bhagavate puruṣāya tubhyam"
+  - id: '4.9.16'
+    kind: verse
+    lines:
+      - "यस्मिन्विरुद्धगतयो ह्यनिशं पतन्ति विद्यादयो विविधशक्तय आनुपूर्व्यात्"
+      - "तद्ब्रह्म विश्वभवमेकमनन्तमाद्यमानन्दमात्रमविकारमहं प्रपद्ये"
+    iast: "yasmin viruddha-gatayo hy aniśaṃ patanti vidyādayo vividha-śaktaya ānupūrvyāt | tad brahma viśva-bhavam ekam anantam ādyam ānanda-mātram avikāram ahaṃ prapadye"
+  - id: '4.9.18'
+    kind: verse
+    lines:
+      - "अथाभिष्टुत एवं वै सत्सङ्कल्पेन धीमता"
+      - "भृत्यानुरक्तो भगवान्प्रतिनन्द्येदमब्रवीत्"
+    iast: "athābhiṣṭuta evaṃ vai sat-saṅkalpena dhīmatā | bhṛtyānurakto bhagavān pratinandyedam abravīt"
   - id: '4.9.19'
     kind: verse
     lines:
@@ -1103,6 +1203,12 @@ sections:
       - "तमेवं शीलसम्पन्नं ब्रह्मण्यं दीनवत्सलम्"
       - "गोप्तारं धर्मसेतूनां मेनिरे पितरं प्रजाः"
     iast: "tam evaṃ śīla-sampannaṃ brahmaṇyaṃ dīna-vatsalam | goptāraṃ dharma-setūnāṃ menire pitaraṃ prajāḥ"
+  - id: '4.12.14'
+    kind: verse
+    lines:
+      - "एवं बहुसवं कालं महात्माविचलेन्द्रियः"
+      - "त्रिवर्गौपयिकं नीत्वा पुत्रायादान्नृपासनम्"
+    iast: "evaṃ bahu-savaṃ kālaṃ mahātmāvicalendriyaḥ | tri-vargaupayikaṃ nītvā putrāyādān nṛpāsanam"
   - id: '4.12.38'
     kind: verse
     lines:
@@ -1230,6 +1336,12 @@ sections:
       - "अथ तस्य पुनर्विप्रैरपुत्रस्य महीपतेः"
       - "बाहुभ्यां मथ्यमानाभ्यां मिथुनं समपद्यत"
     iast: "atha tasya punar viprair aputrasya mahīpateḥ | bāhubhyāṃ mathyamānābhyāṃ mithunaṃ samapadyata"
+  - id: '4.15.4'
+    kind: verse
+    lines:
+      - "अयं तु प्रथमो राज्ञां पुमान्प्रथयिता यशः"
+      - "पृथुर्नाम महाराजो भविष्यति पृथुश्रवाः"
+    iast: "ayaṃ tu prathamo rājñāṃ pumān prathayitā yaśaḥ | pṛthur nāma mahārājo bhaviṣyati pṛthu-śravāḥ"
   - id: '4.15.11'
     kind: verse
     lines:
@@ -1375,6 +1487,11 @@ sections:
       - "सोऽयमद्य महायोगिन्भवता करुणात्मना"
       - "दर्शितस्तमसः पारो यत्राकिञ्चनगो हरिः"
     iast: "so 'yam adya mahā-yogin bhavatā karuṇātmanā | darśitas tamasaḥ pāro yatrākiñcana-go hariḥ"
+  - id: '5.1.6'
+    kind: verse
+    lines:
+      - "_* यर्हि वाव ह राजन्स राजपुत्रः प्रियव्रतः परमभागवतो नारदस्य चरणोपसेवयाञ्जसावगतपरमार्थसतत्त्वो ब्रह्मसत्रेण दीक्षिष्यमाणोऽवनितलपरिपालनायाम्नातप्रवरगुणगणैकान्तभाजनतया स्वपित्रोपामन्त्रितो भगवति वासुदेव एवाव्यवधानसमाधियोगेन समावेशितसकलकारकक्रियाकलापो नैवाभ्यनन्दद्यद्यपि तदप्रत्याम्नातव्यं तदधिकरण आत्मनोऽन्यस्मादसतोऽपि पराभवमन्वीक्षमाणः"
+    iast: "_* yarhi vāva ha rājan sa rāja-putraḥ priyavrataḥ parama-bhāgavato nāradasya caraṇopasevayāñjasāvagata-paramārtha-satattvo brahma-satreṇa dīkṣiṣyamāṇo 'vani-tala-paripālanāyāmnāta-pravara-guṇa-gaṇaikānta-bhājanatayā sva-pitropāmantrito bhagavati vāsudeva evāvyavadhāna-samādhi-yogena samāveśita-sakala-kāraka-kriyā-kalāpo naivābhyanandad yadyapi tad apratyāmnātavyaṃ tad-adhikaraṇa ātmano 'nyasmād asato 'pi parābhavam anvīkṣamāṇaḥ"
   - id: '5.1.17'
     kind: verse
     lines:
@@ -1387,6 +1504,11 @@ sections:
       - "त्वं त्वब्जनाभाङ्घ्रिसरोजकोश दुर्गाश्रितो निर्जितषट्सपत्नः"
       - "भुङ्क्ष्वेह भोगान्पुरुषातिदिष्टान्विमुक्तसङ्गः प्रकृतिं भजस्व"
     iast: "tvaṃ tv abja-nābhāṅghri-saroja-kośa- durgāśrito nirjita-ṣaṭ-sapatnaḥ | bhuṅkṣveha bhogān puruṣātidiṣṭān vimukta-saṅgaḥ prakṛtiṃ bhajasva"
+  - id: '5.1.23'
+    kind: verse
+    lines:
+      - "_* इति ह वाव स जगतीपतिरीश्वरेच्छयाधिनिवेशितकर्माधिकारोऽखिलजगद्बन्धध्वंसनपरानुभावस्य भगवत आदिपुरुषस्याङ्घ्रियुगलानवरतध्यानानुभावेन परिरन्धितकषायाशयोऽवदातोऽपि मानवर्धनो महतां महीतलमनुशशास"
+    iast: "_* iti ha vāva sa jagatī-patir īśvarecchayādhiniveśita-karmādhikāro 'khila-jagad-bandha-dhvaṃsana-parānubhāvasya bhagavata ādi-puruṣasyāṅghri-yugalānavarata-dhyānānubhāvena parirandhita-kaṣāyāśayo 'vadāto 'pi māna-vardhano mahatāṃ mahītalam anuśaśāsa"
   - id: '5.1.38'
     kind: verse
     lines:
@@ -1399,6 +1521,46 @@ sections:
       - "भूसंस्थानं कृतं येन सरिद्गिरिवनादिभिः"
       - "सीमा च भूतनिर्वृत्यै द्वीपे द्वीपे विभागशः"
     iast: "bhū-saṃsthānaṃ kṛtaṃ yena sarid-giri-vanādibhiḥ | sīmā ca bhūta-nirvṛtyai dvīpe dvīpe vibhāgaśaḥ"
+  - id: '5.3.1'
+    kind: verse
+    lines:
+      - "_* Bह्P_०५.०३.००१ ० श्रीशुक उवाच नाभिरपत्यकामोऽप्रजया मेरुदेव्या भगवन्तं यज्ञपुरुषमवहितात्मायजत"
+    iast: "_* BhP_05.03.001 0 śrī-śuka uvāca nābhir apatya-kāmo 'prajayā merudevyā bhagavantaṃ yajña-puruṣam avahitātmāyajata"
+  - id: '5.4.5'
+    kind: verse
+    lines:
+      - "_* विदितानुरागमापौरप्रकृति जनपदो राजा नाभिरात्मजं समयसेतुरक्षायामभिषिच्य ब्राह्मणेषूपनिधाय सह मेरुदेव्या विशालायां प्रसन्ननिपुणेन तपसा समाधियोगेन नरनारायणाख्यं भगवन्तं वासुदेवमुपासीनः कालेन तन्महिमानमवाप"
+    iast: "_* viditānurāgam āpaura-prakṛti jana-pado rājā nābhir ātmajaṃ samaya-setu-rakṣāyām abhiṣicya brāhmaṇeṣūpanidhāya saha merudevyā viśālāyāṃ prasanna-nipuṇena tapasā samādhi-yogena nara-nārāyaṇākhyaṃ bhagavantaṃ vāsudevam upāsīnaḥ kālena tan-mahimānam avāpa"
+  - id: '5.4.8'
+    kind: verse
+    lines:
+      - "अथ ह भगवानृषभदेवः स्ववर्षं कर्मक्षेत्रमनुमन्यमानः प्रदर्शितगुरुकुलवासो लब्धवरैर्गुरुभिरनुज्ञातो गृहमेधिनां धर्माननुशिक्षमाणो जयन्त्यामिन्द्रदत्तायामुभयलक्षणं कर्म समाम्नायाम्नातमभियुञ्जन्नात्मजानामात्मसमानानां शतं जनयामास"
+    iast: "atha ha bhagavān ṛṣabhadevaḥ sva-varṣaṃ karma-kṣetram anumanyamānaḥ pradarśita-gurukula-vāso labdha-varair gurubhir anujñāto gṛhamedhināṃ dharmān anuśikṣamāṇo jayantyām indra-dattāyām ubhaya-lakṣaṇaṃ karma samāmnāyāmnātam abhiyuñjann ātmajānām ātma-samānānāṃ śataṃ janayām āsa"
+  - id: '5.4.9'
+    kind: verse
+    lines:
+      - "_* येषां खलु महायोगी भरतो ज्येष्ठः श्रेष्ठगुण आसीद्येनेदं वर्षं भारतमिति व्यपदिशन्ति"
+    iast: "_* yeṣāṃ khalu mahā-yogī bharato jyeṣṭhaḥ śreṣṭha-guṇa āsīd yenedaṃ varṣaṃ bhāratam iti vyapadiśanti"
+  - id: '5.4.14'
+    kind: verse
+    lines:
+      - "_* भगवानृषभसंज्ञ आत्मतन्त्रः स्वयं नित्यनिवृत्तानर्थपरम्परः केवलानन्दानुभव ईश्वर एव विपरीतवत्कर्माण्यारभमाणः कालेनानुगतं धर्ममाचरणेनोपशिक्षयन्नतद्विदां सम उपशान्तो मैत्रः कारुणिको धर्मार्थयशःप्रजानन्दामृतावरोधेन गृहेषु लोकं नियमयत्"
+    iast: "_* bhagavān ṛṣabha-saṃjña ātma-tantraḥ svayaṃ nitya-nivṛttānartha-paramparaḥ kevalānandānubhava īśvara eva viparītavat karmāṇy ārabhamāṇaḥ kālenānugataṃ dharmam ācaraṇenopaśikṣayann atad-vidāṃ sama upaśānto maitraḥ kāruṇiko dharmārtha-yaśaḥ-prajānandāmṛtāvarodhena gṛheṣu lokaṃ niyamayat"
+  - id: '5.4.15'
+    kind: verse
+    lines:
+      - "_* यद्यच्छीर्षण्याचरितं तत्तदनुवर्तते लोकः"
+    iast: "_* yad yac chīrṣaṇyācaritaṃ tat tad anuvartate lokaḥ"
+  - id: '5.4.18'
+    kind: verse
+    lines:
+      - "_* भगवतर्षभेण परिरक्ष्यमाण एतस्मिन्वर्षे न कश्चन पुरुषो वाञ्छत्यविद्यमानमिवात्मनोऽन्यस्मात्कथञ्चन किमपि कर्हिचिदवेक्षते भर्तर्यनुसवनं विजृम्भितस्नेहातिशयमन्तरेण"
+    iast: "_* bhagavatarṣabheṇa parirakṣyamāṇa etasmin varṣe na kaścana puruṣo vāñchaty avidyamānam ivātmano 'nyasmāt kathañcana kimapi karhicid avekṣate bhartary anusavanaṃ vijṛmbhita-snehātiśayam antareṇa"
+  - id: '5.4.19'
+    kind: verse
+    lines:
+      - "_* स कदाचिदटमानो भगवानृषभो ब्रह्मावर्तगतो ब्रह्मर्षिप्रवरसभायां प्रजानां निशामयन्तीनामात्मजानवहितात्मनः प्रश्रयप्रणयभरसुयन्त्रितानप्युपशिक्षयन्निति होवाच"
+    iast: "_* sa kadācid aṭamāno bhagavān ṛṣabho brahmāvarta-gato brahmarṣi-pravara-sabhāyāṃ prajānāṃ niśāmayantīnām ātmajān avahitātmanaḥ praśraya-praṇaya-bhara-suyantritān apy upaśikṣayann iti hovāca"
   - id: '5.5.1'
     kind: verse
     lines:
@@ -1429,12 +1591,158 @@ sections:
       - "मनोवचोदृक्करणेहितस्य साक्षात्कृतं मे परिबर्हणं हि"
       - "विना पुमान्येन महाविमोहात्कृतान्तपाशान्न विमोक्तुमीशेत्"
     iast: "mano-vaco-dṛk-karaṇehitasya sākṣāt-kṛtaṃ me paribarhaṇaṃ hi | vinā pumān yena mahā-vimohāt kṛtānta-pāśān na vimoktum īśet"
+  - id: '5.5.28'
+    kind: verse
+    lines:
+      - "Bह्P_०५.०५.०२८ ० श्रीशुक उवाच एवमनुशास्यात्मजान्स्वयमनुशिष्टानपि लोकानुशासनार्थं महानुभावः परमसुहृद्भगवानृषभापदेश उपशमशीलानामुपरतकर्मणां महामुनीनां भक्तिज्ञानवैराग्यलक्षणं पारमहंस्यधर्ममुपशिक्षमाणः स्वतनयशतज्येष्ठं परमभागवतं भगवज्जनपरायणं भरतं धरणिपालनायाभिषिच्य स्वयं भवन एवोर्वरितशरीरमात्रपरिग्रह उन्मत्त इव गगनपरिधानः प्रकीर्णकेश आत्मन्यारोपिताहवनीयो ब्रह्मावर्तात्प्रवव्राज"
+    iast: "BhP_05.05.028 0 śrī-śuka uvāca evam anuśāsyātmajān svayam anuśiṣṭān api lokānuśāsanārthaṃ mahānubhāvaḥ parama-suhṛd bhagavān ṛṣabhāpadeśa upaśama-śīlānām uparata-karmaṇāṃ mahā-munīnāṃ bhakti-jñāna-vairāgya-lakṣaṇaṃ pāramahaṃsya-dharmam upaśikṣamāṇaḥ sva-tanaya-śata-jyeṣṭhaṃ parama-bhāgavataṃ bhagavaj-jana-parāyaṇaṃ bharataṃ dharaṇi-pālanāyābhiṣicya svayaṃ bhavana evorvarita-śarīra-mātra-parigraha unmatta iva gagana-paridhānaḥ prakīrṇa-keśa ātmany āropitāhavanīyo brahmāvartāt pravavrāja"
+  - id: '5.7.2'
+    kind: verse
+    lines:
+      - "_* तस्यामु ह वा आत्मजान्कार्त्स्न्येनानुरूपानात्मनः पञ्च जनयामास भूतादिरिव भूतसूक्ष्माणि सुमतिं राष्ट्रभृतं सुदर्शनमावरणं धूम्रकेतुमिति"
+    iast: "_* tasyām u ha vā ātmajān kārtsnyenānurūpān ātmanaḥ pañca janayām āsa bhūtādir iva bhūta-sūkṣmāṇi sumatiṃ rāṣṭrabhṛtaṃ sudarśanam āvaraṇaṃ dhūmraketum iti"
+  - id: '5.7.4'
+    kind: verse
+    lines:
+      - "_* स बहुविन्महीपतिः पितृपितामहवदुरुवत्सलतया स्वे स्वे कर्मणि वर्तमानाः प्रजाः स्वधर्ममनुवर्तमानः पर्यपालयत्"
+    iast: "_* sa bahuvin mahī-patiḥ pitṛ-pitāmahavad uru-vatsalatayā sve sve karmaṇi vartamānāḥ prajāḥ sva-dharmam anuvartamānaḥ paryapālayat"
+  - id: '5.7.8'
+    kind: verse
+    lines:
+      - "_* एवं वर्षायुतसहस्रपर्यन्तावसितकर्मनिर्वाणावसरोऽधिभुज्यमानं स्वतनयेभ्यो रिक्थं पितृपैतामहं यथादायं विभज्य स्वयं सकलसम्पन्निकेतात्स्वनिकेतात्पुलहाश्रमं प्रवव्राज"
+    iast: "_* evaṃ varṣāyuta-sahasra-paryantāvasita-karma-nirvāṇāvasaro 'dhibhujyamānaṃ sva-tanayebhyo rikthaṃ pitṛ-paitāmahaṃ yathā-dāyaṃ vibhajya svayaṃ sakala-sampan-niketāt sva-niketāt pulahāśramaṃ pravavrāja"
+  - id: '5.7.11'
+    kind: verse
+    lines:
+      - "_* तस्मिन्वाव किल स एकलः पुलहाश्रमोपवने विविधकुसुमकिसलयतुलसिकाम्बुभिः कन्दमूलफलोपहारैश्च समीहमानो भगवत आराधनं विविक्त उपरतविषयाभिलाष उपभृतोपशमः परां निर्वृतिमवाप"
+    iast: "_* tasmin vāva kila sa ekalaḥ pulahāśramopavane vividha-kusuma-kisalaya-tulasikāmbubhiḥ kanda-mūla-phalopahāraiś ca samīhamāno bhagavata ārādhanaṃ vivikta uparata-viṣayābhilāṣa upabhṛtopaśamaḥ parāṃ nirvṛtim avāpa"
+  - id: '5.8.2'
+    kind: verse
+    lines:
+      - "_* तत्र तदा राजन्हरिणी पिपासया जलाशयाभ्याशमेकैवोपजगाम"
+    iast: "_* tatra tadā rājan hariṇī pipāsayā jalāśayābhyāśam ekaivopajagāma"
+  - id: '5.8.4'
+    kind: verse
+    lines:
+      - "_* तमुपश्रुत्य सा मृगवधूः प्रकृतिविक्लवा चकितनिरीक्षणा सुतरामपि हरिभयाभिनिवेशव्यग्रहृदया पारिप्लवदृष्टिरगततृषा भयात्सहसैवोच्चक्राम"
+    iast: "_* tam upaśrutya sā mṛga-vadhūḥ prakṛti-viklavā cakita-nirīkṣaṇā sutarām api hari-bhayābhiniveśa-vyagra-hṛdayā pāriplava-dṛṣṭir agata-tṛṣā bhayāt sahasaivoccakrāma"
+  - id: '5.8.5'
+    kind: verse
+    lines:
+      - "_* तस्या उत्पतन्त्या अन्तर्वत्न्या उरुभयावगलितो योनिनिर्गतो गर्भः स्रोतसि निपपात"
+    iast: "_* tasyā utpatantyā antarvatnyā uru-bhayāvagalito yoni-nirgato garbhaḥ srotasi nipapāta"
+  - id: '5.8.6'
+    kind: verse
+    lines:
+      - "_* तत्प्रसवोत्सर्पणभयखेदातुरा स्वगणेन वियुज्यमाना कस्याञ्चिद्दर्यां कृष्णसारसती निपपाताथ च ममार"
+    iast: "_* tat-prasavotsarpaṇa-bhaya-khedāturā sva-gaṇena viyujyamānā kasyāñcid daryāṃ kṛṣṇa-sārasatī nipapātātha ca mamāra"
+  - id: '5.8.7'
+    kind: verse
+    lines:
+      - "_* तं त्वेणकुणकं कृपणं स्रोतसानूह्यमानमभिवीक्ष्यापविद्धं बन्धुरिवानुकम्पया राजर्षिर्भरत आदाय मृतमातरमित्याश्रमपदमनयत्"
+    iast: "_* taṃ tv eṇa-kuṇakaṃ kṛpaṇaṃ srotasānūhyamānam abhivīkṣyāpaviddhaṃ bandhur ivānukampayā rājarṣir bharata ādāya mṛta-mātaram ity āśrama-padam anayat"
+  - id: '5.8.8'
+    kind: verse
+    lines:
+      - "_* तस्य ह वा एणकुणक उच्चैरेतस्मिन्कृतनिजाभिमानस्याहरहस्तत्पोषणपालनलालनप्रीणनानुध्यानेनात्मनियमाः सहयमाः पुरुषपरिचर्यादय एकैकशः कतिपयेनाहर्गणेन वियुज्यमानाः किल सर्व एवोदवसन्"
+    iast: "_* tasya ha vā eṇa-kuṇaka uccair etasmin kṛta-nijābhimānasyāhar-ahas tat-poṣaṇa-pālana-lālana-prīṇanānudhyānenātma-niyamāḥ saha-yamāḥ puruṣa-paricaryādaya ekaikaśaḥ katipayenāhar-gaṇena viyujyamānāḥ kila sarva evodavasan"
+  - id: '5.8.26'
+    kind: verse
+    lines:
+      - "_* एवमघटमानमनोरथाकुलहृदयो मृगदारकाभासेन स्वारब्धकर्मणा योगारम्भणतो विभ्रंशितः स योगतापसो भगवदाराधनलक्षणाच्च कथमितरथा जात्यन्तर एणकुणक आसङ्गः साक्षान्निःश्रेयसप्रतिपक्षतया प्राक्परित्यक्तदुस्त्यजहृदयाभिजातस्य तस्यैवमन्तरायविहतयोगारम्भणस्य राजर्षेर्भरतस्य तावन्मृगार्भकपोषणपालनप्रीणनलालनानुषङ्गेणाविगणयत आत्मानमहिरिवाखुबिलं दुरतिक्रमः कालः करालरभस आपद्यत"
+    iast: "_* evam aghaṭamāna-manorathākula-hṛdayo mṛga-dārakābhāsena svārabdha-karmaṇā yogārambhaṇato vibhraṃśitaḥ sa yoga-tāpaso bhagavad-ārādhana-lakṣaṇāc ca katham itarathā jāty-antara eṇa-kuṇaka āsaṅgaḥ sākṣān niḥśreyasa-pratipakṣatayā prāk-parityakta-dustyaja-hṛdayābhijātasya tasyaivam antarāya-vihata-yogārambhaṇasya rājarṣer bharatasya tāvan mṛgārbhaka-poṣaṇa-pālana-prīṇana-lālanānuṣaṅgeṇāvigaṇayata ātmānam ahir ivākhu-bilaṃ duratikramaḥ kālaḥ karāla-rabhasa āpadyata"
+  - id: '5.8.27'
+    kind: verse
+    lines:
+      - "_* तदानीमपि पार्श्ववर्तिनमात्मजमिवानुशोचन्तमभिवीक्षमाणो मृग एवाभिनिवेशितमना विसृज्य लोकमिमं सह मृगेण कलेवरं मृतमनु न मृतजन्मानुस्मृतिरितरवन्मृगशरीरमवाप"
+    iast: "_* tadānīm api pārśva-vartinam ātmajam ivānuśocantam abhivīkṣamāṇo mṛga evābhiniveśita-manā visṛjya lokam imaṃ saha mṛgeṇa kalevaraṃ mṛtam anu na mṛta-janmānusmṛtir itaravan mṛga-śarīram avāpa"
+  - id: '5.8.31'
+    kind: verse
+    lines:
+      - "_* तस्मिन्नपि कालं प्रतीक्षमाणः सङ्गाच्च भृशमुद्विग्न आत्मसहचरः शुष्कपर्णतृणवीरुधा वर्तमानो मृगत्वनिमित्तावसानमेव गणयन्मृगशरीरं तीर्थोदकक्लिन्नमुत्ससर्ज"
+    iast: "_* tasminn api kālaṃ pratīkṣamāṇaḥ saṅgāc ca bhṛśam udvigna ātma-sahacaraḥ śuṣka-parṇa-tṛṇa-vīrudhā vartamāno mṛgatva-nimittāvasānam eva gaṇayan mṛga-śarīraṃ tīrthodaka-klinnam ut-sasarja"
+  - id: '5.9.1'
+    kind: verse
+    lines:
+      - "_* Bह्P_०५.०९.००१ ० श्रीशुक उवाच अथ कस्यचिद्द्विजवरस्याङ्गिरःप्रवरस्य शमदमतपःस्वाध्यायाध्ययनत्यागसन्तोषतितिक्षाप्रश्रयविद्यानसूयात्मज्ञानानन्दयुक्तस्यात्मसदृशश्रुतशीलाचाररूपौदार्यगुणा नव सोदर्या अङ्गजा बभूवुर्मिथुनं च यवीयस्यां भार्यायाम्"
+    iast: "_* BhP_05.09.001 0 śrī-śuka uvāca atha kasyacid dvija-varasyāṅgiraḥ-pravarasya śama-dama-tapaḥ-svādhyāyādhyayana-tyāga-santoṣa-titikṣā-praśraya-vidyānasūyātma-jñānānanda-yuktasyātma-sadṛśa-śruta-śīlācāra-rūpaudārya-guṇā nava sodaryā aṅgajā babhūvur mithunaṃ ca yavīyasyāṃ bhāryāyām"
+  - id: '5.9.2'
+    kind: verse
+    lines:
+      - "_* यस्तु तत्र पुमांस्तं परमभागवतं राजर्षिप्रवरं भरतमुत्सृष्टमृगशरीरं चरमशरीरेण विप्रत्वं गतमाहुः"
+    iast: "_* yas tu tatra pumāṃs taṃ parama-bhāgavataṃ rājarṣi-pravaraṃ bharatam utsṛṣṭa-mṛga-śarīraṃ carama-śarīreṇa vipratvaṃ gatam āhuḥ"
+  - id: '5.9.3'
+    kind: verse
+    lines:
+      - "_* तत्रापि स्वजनसङ्गाच्च भृशमुद्विजमानो भगवतः कर्मबन्धविध्वंसनश्रवणस्मरणगुणविवरणचरणारविन्दयुगलं मनसा विदधदात्मनः प्रतिघातमाशङ्कमानो भगवदनुग्रहेणानुस्मृतस्वपूर्वजन्मावलिरात्मानमुन्मत्तजडान्धबधिरस्वरूपेण दर्शयामास लोकस्य"
+    iast: "_* tatrāpi svajana-saṅgāc ca bhṛśam udvijamāno bhagavataḥ karma-bandha-vidhvaṃsana-śravaṇa-smaraṇa-guṇa-vivaraṇa-caraṇāravinda-yugalaṃ manasā vidadhad ātmanaḥ pratighātam āśaṅkamāno bhagavad-anugraheṇānusmṛta-sva-pūrva-janmāvalir ātmānam unmatta-jaḍāndha-badhira-svarūpeṇa darśayām āsa lokasya"
+  - id: '5.9.12'
+    kind: verse
+    lines:
+      - "_* अथ कदाचित्कश्चिद्वृषलपतिर्भद्रकाल्यै पुरुषपशुमालभतापत्यकामः"
+    iast: "_* atha kadācit kaścid vṛṣala-patir bhadra-kālyai puruṣa-paśum ālabhatāpatya-kāmaḥ"
+  - id: '5.9.16'
+    kind: verse
+    lines:
+      - "_* अथ वृषलराजपणिः पुरुषपशोरसृगासवेन देवीं भद्रकालीं यक्ष्यमाणस्तदभिमन्त्रितमसिमतिकरालनिशितमुपाददे"
+    iast: "_* atha vṛṣala-rāja-paṇiḥ puruṣa-paśor asṛg-āsavena devīṃ bhadra-kālīṃ yakṣyamāṇas tad-abhimantritam asim ati-karāla-niśitam upādade"
+  - id: '5.9.17'
+    kind: verse
+    lines:
+      - "_* इति तेषां वृषलानां रजस्तमःप्रकृतीनां धनमदरजौत्सिक्तमनसां भगवत्कलावीरकुलं कदर्थीकृत्योत्पथेन स्वैरं विहरतां हिंसाविहाराणां कर्मातिदारुणं यद्ब्रह्मभूतस्य साक्षाद्ब्रह्मर्षिसुतस्य निर्वैरस्य सर्वभूतसुहृदः सूनायामप्यननुमतमालम्भनं तदुपलभ्य ब्रह्मतेजसातिदुर्विषहेण दन्दह्यमानेन वपुषा सहसोच्चचाट सैव देवी भद्रकाली"
+    iast: "_* iti teṣāṃ vṛṣalānāṃ rajas-tamaḥ-prakṛtīnāṃ dhana-mada-raja-utsikta-manasāṃ bhagavat-kalā-vīra-kulaṃ kadarthī-kṛtyotpathena svairaṃ viharatāṃ hiṃsā-vihārāṇāṃ karmāti-dāruṇaṃ yad brahma-bhūtasya sākṣād brahmarṣi-sutasya nirvairasya sarva-bhūta-suhṛdaḥ sūnāyām apy ananumatam ālambhanaṃ tad upalabhya brahma-tejasāti-durviṣaheṇa dandahyamānena vapuṣā sahasoccacāṭa saiva devī bhadra-kālī"
+  - id: '5.9.19'
+    kind: verse
+    lines:
+      - "_* एवमेव खलु महदभिचारातिक्रमः कार्त्स्न्येनात्मने फलति"
+    iast: "_* evam eva khalu mahad-abhicārāti-kramaḥ kārtsnyenātmane phalati"
+  - id: '5.9.20'
+    kind: verse
+    lines:
+      - "_* न वा एतद्विष्णुदत्त महदद्भुतं यदसम्भ्रमः स्वशिरश्छेदन आपतितेऽपि विमुक्तदेहाद्यात्मभावसुदृढहृदयग्रन्थीनां सर्वसत्त्वसुहृदात्मनां निर्वैराणां साक्षाद्भगवतानिमिषारिवरायुधेनाप्रमत्तेन तैस्तैर्भावैः परिरक्ष्यमाणानां तत्पादमूलमकुतश्चिद्भयमुपसृतानां भागवतपरमहंसानाम्"
+    iast: "_* na vā etad viṣṇudatta mahad-adbhutaṃ yad asambhramaḥ sva-śiraś-chedana āpatite 'pi vimukta-dehādy-ātma-bhāva-sudṛḍha-hṛdaya-granthīnāṃ sarva-sattva-suhṛd-ātmanāṃ nirvairāṇāṃ sākṣād bhagavatānimiṣāri-varāyudhenāpramattena tais tair bhāvaiḥ parirakṣyamāṇānāṃ tat-pāda-mūlam akutaścid-bhayam upasṛtānāṃ bhāgavata-paramahaṃsānām"
+  - id: '5.10.1'
+    kind: verse
+    lines:
+      - "_* Bह्P_०५.१०.००१ ० श्रीशुक उवाच अथ सिन्धुसौवीरपते रहूगणस्य व्रजत इक्षुमत्यास्तटे तत्कुलपतिना शिबिकावाहपुरुषान्वेषणसमये दैवेनोपसादितः स द्विजवर उपलब्ध एष पीवा युवा संहननाङ्गो गोखरवद्धुरं वोढुमलमिति पूर्वविष्टिगृहीतैः सह गृहीतः प्रसभमतदर्ह उवाह शिबिकां स महानुभावः"
+    iast: "_* BhP_05.10.001 0 śrī-śuka uvāca atha sindhu-sauvīra-pate rahūgaṇasya vrajata ikṣumatyās taṭe tat-kula-patinā śibikā-vāha-puruṣānveṣaṇa-samaye daivenopasāditaḥ sa dvija-vara upalabdha eṣa pīvā yuvā saṃhananāṅgo go-kharavad dhuraṃ voḍhum alam iti pūrva-viṣṭi-gṛhītaiḥ saha gṛhītaḥ prasabham atad-arha uvāha śibikāṃ sa mahānubhāvaḥ"
+  - id: '5.10.2'
+    kind: verse
+    lines:
+      - "_* यदा हि द्विजवरस्येषुमात्रावलोकानुगतेर्न समाहिता पुरुषगतिस्तदा विषमगतां स्वशिबिकां रहूगण उपधार्य पुरुषानधिवहत आह हे वोढारः साध्वतिक्रमत किमिति विषममुह्यते यानमिति"
+    iast: "_* yadā hi dvija-varasyeṣu-mātrāvalokānugater na samāhitā puruṣa-gatis tadā viṣama-gatāṃ sva-śibikāṃ rahūgaṇa upadhārya puruṣān adhivahata āha he voḍhāraḥ sādhv atikramata kim iti viṣamam uhyate yānam iti"
+  - id: '5.10.4'
+    kind: verse
+    lines:
+      - "_* न वयं नरदेव प्रमत्ता भवन्नियमानुपथाः साध्वेव वहामः अयमधुनैव नियुक्तोऽपि न द्रुतं व्रजति नानेन सह वोढुमु ह वयं पारयाम इति"
+    iast: "_* na vayaṃ nara-deva pramattā bhavan-niyamānupathāḥ sādhv eva vahāmaḥ ayam adhunaiva niyukto 'pi na drutaṃ vrajati nānena saha voḍhum u ha vayaṃ pārayāma iti"
+  - id: '5.10.6'
+    kind: verse
+    lines:
+      - "_* अहो कष्टं भ्रातर्व्यक्तमुरुपरिश्रान्तो दीर्घमध्वानमेक एव ऊहिवान्सुचिरं नातिपीवा न संहननाङ्गो जरसा चोपद्रुतो भवान्सखे नो एवापर एते सङ्घट्टिन इति बहुविप्रलब्धोऽप्यविद्यया रचितद्रव्यगुणकर्माशयस्वचरमकलेवरेऽवस्तुनि संस्थानविशेषेऽहं ममेत्यनध्यारोपितमिथ्याप्रत्ययो ब्रह्मभूतस्तूष्णीं शिबिकां पूर्ववदुवाह"
+    iast: "_* aho kaṣṭaṃ bhrātar vyaktam uru-pariśrānto dīrgham adhvānam eka eva ūhivān suciraṃ nāti-pīvā na saṃhananāṅgo jarasā copadruto bhavān sakhe no evāpara ete saṅghaṭṭina iti bahu-vipralabdho 'py avidyayā racita-dravya-guṇa-karmāśaya-sva-carama-kalevare 'vastuni saṃsthāna-viśeṣe 'haṃ mamety anadhyāropita-mithyā-pratyayo brahma-bhūtas tūṣṇīṃ śibikāṃ pūrvavad uvāha"
+  - id: '5.10.7'
+    kind: verse
+    lines:
+      - "_* अथ पुनः स्वशिबिकायां विषमगतायां प्रकुपित उवाच रहूगणः किमिदमरे त्वं जीवन्मृतो मां कदर्थीकृत्य भर्तृशासनमतिचरसि प्रमत्तस्य च ते करोमि चिकित्सां दण्डपाणिरिव जनताया यथा प्रकृतिं स्वां भजिष्यस इति"
+    iast: "_* atha punaḥ sva-śibikāyāṃ viṣama-gatāyāṃ prakupita uvāca rahūgaṇaḥ kim idam are tvaṃ jīvan-mṛto māṃ kadarthī-kṛtya bhartṛ-śāsanam aticarasi pramattasya ca te karomi cikitsāṃ daṇḍa-pāṇir iva janatāyā yathā prakṛtiṃ svāṃ bhajiṣyasa iti"
+  - id: '5.10.8'
+    kind: verse
+    lines:
+      - "_* एवं बह्वबद्धमपि भाषमाणं नरदेवाभिमानं रजसा तमसानुविद्धेन मदेन तिरस्कृताशेषभगवत्प्रियनिकेतं पण्डितमानिनं स भगवान्ब्राह्मणो ब्रह्मभूतसर्वभूतसुहृदात्मा योगेश्वरचर्यायां नातिव्युत्पन्नमतिं स्मयमान इव विगतस्मय इदमाह"
+    iast: "_* evaṃ bahv abaddham api bhāṣamāṇaṃ nara-devābhimānaṃ rajasā tamasānuviddhena madena tiraskṛtāśeṣa-bhagavat-priya-niketaṃ paṇḍita-māninaṃ sa bhagavān brāhmaṇo brahma-bhūta-sarva-bhūta-suhṛd-ātmā yogeśvara-caryāyāṃ nāti-vyutpanna-matiṃ smayamāna iva vigata-smaya idam āha"
   - id: '5.10.10'
     kind: verse
     lines:
       - "स्थौल्यं कार्श्यं व्याधय आधयश्च क्षुत्तृड्भयं कलिरिच्छा जरा च"
       - "निद्रा रतिर्मन्युरहं मदः शुचो देहेन जातस्य हि मे न सन्ति"
     iast: "sthaulyaṃ kārśyaṃ vyādhaya ādhayaś ca kṣut tṛḍ bhayaṃ kalir icchā jarā ca | nidrā ratir manyur ahaṃ madaḥ śuco dehena jātasya hi me na santi"
+  - id: '5.10.11'
+    kind: verse
+    lines:
+      - "जीवन्मृतत्वं नियमेन राजनाद्यन्तवद्यद्विकृतस्य दृष्टम्"
+      - "स्वस्वाम्यभावो ध्रुव ईड्य यत्र तर्ह्युच्यतेऽसौ विधिकृत्ययोगः"
+    iast: "jīvan-mṛtatvaṃ niyamena rājan ādyantavad yad vikṛtasya dṛṣṭam | sva-svāmya-bhāvo dhruva īḍya yatra tarhy ucyate 'sau vidhikṛtya-yogaḥ"
   - id: '5.10.12'
     kind: verse
     lines:
@@ -1447,18 +1755,41 @@ sections:
       - "उन्मत्तमत्तजडवत्स्वसंस्थां गतस्य मे वीर चिकित्सितेन"
       - "अर्थः कियान्भवता शिक्षितेन स्तब्धप्रमत्तस्य च पिष्टपेषः"
     iast: "unmatta-matta-jaḍavat sva-saṃsthāṃ gatasya me vīra cikitsitena | arthaḥ kiyān bhavatā śikṣitena stabdha-pramattasya ca piṣṭapeṣaḥ"
+  - id: '5.10.14'
+    kind: verse
+    lines:
+      - "Bह्P_०५.१०.०१४ ० श्रीशुक उवाच एतावदनुवादपरिभाषया प्रत्युदीर्य मुनिवर उपशमशील उपरतानात्म्यनिमित्त उपभोगेन कर्मारब्धं व्यपनयन्राजयानमपि तथोवाह"
+    iast: "BhP_05.10.014 0 śrī-śuka uvāca etāvad anuvāda-paribhāṣayā pratyudīrya muni-vara upaśama-śīla uparatānātmya-nimitta upabhogena karmārabdhaṃ vyapanayan rāja-yānam api tathovāha"
+  - id: '5.10.15'
+    kind: verse
+    lines:
+      - "_* स चापि पाण्डवेय सिन्धुसौवीरपतिस्तत्त्वजिज्ञासायां सम्यक्श्रद्धयाधिकृताधिकारस्तद्धृदयग्रन्थिमोचनं द्विजवच आश्रुत्य बहुयोगग्रन्थसम्मतं त्वरयावरुह्य शिरसा पादमूलमुपसृतः क्षमापयन्विगतनृपदेवस्मय उवाच"
+    iast: "_* sa cāpi pāṇḍaveya sindhu-sauvīra-patis tattva-jijñāsāyāṃ samyak-śraddhayādhikṛtādhikāras tad dhṛdaya-granthi-mocanaṃ dvija-vaca āśrutya bahu-yoga-grantha-sammataṃ tvarayāvaruhya śirasā pāda-mūlam upasṛtaḥ kṣamāpayan vigata-nṛpa-deva-smaya uvāca"
   - id: '5.10.19'
     kind: verse
     lines:
       - "अहं च योगेश्वरमात्मतत्त्व विदां मुनीनां परमं गुरुं वै"
       - "प्रष्टुं प्रवृत्तः किमिहारणं तत्साक्षाद्धरिं ज्ञानकलावतीर्णम्"
     iast: "ahaṃ ca yogeśvaram ātma-tattva- vidāṃ munīnāṃ paramaṃ guruṃ vai | praṣṭuṃ pravṛttaḥ kim ihāraṇaṃ tat sākṣād dhariṃ jñāna-kalāvatīrṇam"
+  - id: '5.10.20'
+    kind: verse
+    lines:
+      - "स वै भवा लोकनिरीक्षणार्थमव्यक्तलिङ्गो विचरत्यपि स्वित्"
+      - "योगेश्वराणां गतिमन्धबुद्धिः कथं विचक्षीत गृहानुबन्धः"
+    iast: "sa vai bhavā loka-nirīkṣaṇārtham avyakta-liṅgo vicaraty api svit | yogeśvarāṇāṃ gatim andha-buddhiḥ kathaṃ vicakṣīta gṛhānubandhaḥ"
   - id: '5.10.24'
     kind: verse
     lines:
       - "तन्मे भवान्नरदेवाभिमान मदेन तुच्छीकृतसत्तमस्य"
       - "कृषीष्ट मैत्रीदृशमार्तबन्धो यथा तरे सदवध्यानमंहः"
     iast: "tan me bhavān nara-devābhimāna- madena tucchīkṛta-sattamasya | kṛṣīṣṭa maitrī-dṛśam ārta-bandho yathā tare sad-avadhyānam aṃhaḥ"
+  - id: '5.11.8'
+    kind: verse
+    lines:
+      - "गुणानुरक्तं व्यसनाय जन्तोः क्षेमाय नैर्गुण्यमथो मनः स्यात्"
+      - "यथा प्रदीपो घृतवर्तिमश्नन्शिखाः सधूमा भजति ह्यन्यदा स्वम्"
+      - "पदं तथा गुणकर्मानुबद्धं वृत्तीर्मनः श्रयतेऽन्यत्र तत्त्वम्"
+    iast: "guṇānuraktaṃ vyasanāya jantoḥ kṣemāya nairguṇyam atho manaḥ syāt | yathā pradīpo ghṛta-vartim aśnan śikhāḥ sadhūmā bhajati hy anyadā svam | padaṃ tathā guṇa-karmānubaddhaṃ vṛttīr manaḥ śrayate 'nyatra tattvam"
   - id: '5.11.15'
     kind: verse
     lines:
@@ -1513,6 +1844,16 @@ sections:
       - "रहूगण त्वमपि ह्यध्वनोऽस्य सन्न्यस्तदण्डः कृतभूतमैत्रः"
       - "असज्जितात्मा हरिसेवया शितं ज्ञानासिमादाय तरातिपारम्"
     iast: "rahūgaṇa tvam api hy adhvano 'sya sannyasta-daṇḍaḥ kṛta-bhūta-maitraḥ | asaj-jitātmā hari-sevayā śitaṃ jñānāsim ādāya tarāti-pāram"
+  - id: '5.13.24'
+    kind: verse
+    lines:
+      - "Bह्P_०५.१३.०२४ ० श्रीशुक उवाच इत्येवमुत्तरामातः स वै ब्रह्मर्षिसुतः सिन्धुपतय आत्मसतत्त्वं विगणयतः परानुभावः परमकारुणिकतयोपदिश्य रहूगणेन सकरुणमभिवन्दितचरण आपूर्णार्णव इव निभृतकरणोर्म्याशयो धरणिमिमां विचचार"
+    iast: "BhP_05.13.024 0 śrī-śuka uvāca ity evam uttarā-mātaḥ sa vai brahmarṣi-sutaḥ sindhu-pataya ātma-satattvaṃ vigaṇayataḥ parānubhāvaḥ parama-kāruṇikatayopadiśya rahūgaṇena sakaruṇam abhivandita-caraṇa āpūrṇārṇava iva nibhṛta-karaṇormy-āśayo dharaṇim imāṃ vicacāra"
+  - id: '5.13.25'
+    kind: verse
+    lines:
+      - "_* सौवीरपतिरपि सुजनसमवगतपरमात्मसतत्त्व आत्मन्यविद्याध्यारोपितां च देहात्ममतिं विससर्ज एवं हि नृप भगवदाश्रिताश्रितानुभावः"
+    iast: "_* sauvīra-patir api sujana-samavagata-paramātma-satattva ātmany avidyādhyāropitāṃ ca dehātma-matiṃ visasarja evaṃ hi nṛpa bhagavad-āśritāśritānubhāvaḥ"
   - id: '6.1.9'
     kind: verse
     lines:
@@ -1879,6 +2220,12 @@ sections:
       - "तद्विश्वरूपं भजताशु विप्रं तपस्विनं त्वाष्ट्रमथात्मवन्तम्"
       - "सभाजितोऽर्थान्स विधास्यते वो यदि क्षमिष्यध्वमुतास्य कर्म"
     iast: "tadviśvarūpaṃ bhajatāśu vipraṃ tapasvinaṃ tvāṣṭramathātmavantam | sabhājito 'rthān sa vidhāsyate vo yadi kṣamiṣyadhvamutāsya karma"
+  - id: '6.7.26'
+    kind: verse
+    lines:
+      - "त एवमुदिता राजन्ब्रह्मणा विगतज्वराः"
+      - "ऋषिं त्वाष्ट्रमुपव्रज्य परिष्वज्येदमब्रुवन्"
+    iast: "ta evamuditā rājan brahmaṇā vigatajvarāḥ | ṛṣiṃ tvāṣṭramupavrajya pariṣvajyedamabruvan"
   - id: '6.7.32'
     kind: verse
     lines:
@@ -1957,6 +2304,12 @@ sections:
       - "ततस्ते विस्मिताः सर्वे विषण्णा ग्रस्ततेजसः"
       - "प्रत्यञ्चमादिपुरुषमुपतस्थुः समाहिताः"
     iast: "tataste vismitāḥ sarve viṣaṇṇā grastatejasaḥ | pratyañcamādipuruṣamupatasthuḥ samāhitāḥ"
+  - id: '6.9.47'
+    kind: verse
+    lines:
+      - "प्रीतोऽहं वः सुरश्रेष्ठा मदुपस्थानविद्यया"
+      - "आत्मैश्वर्यस्मृतिः पुंसां भक्तिश्चैव यया मयि"
+    iast: "prīto 'haṃ vaḥ suraśreṣṭhā madupasthānavidyayā | ātmaiśvaryasmṛtiḥ puṃsāṃ bhaktiścaiva yayā mayi"
   - id: '6.9.51'
     kind: verse
     lines:
@@ -2163,12 +2516,6 @@ sections:
       - "स वै त्वाष्ट्रवधो भूयानपि पापचयो नृप"
       - "नीतस्तेनैव शून्याय नीहार इव भानुना"
     iast: "sa vai tvāṣṭravadho bhūyān api pāpacayo nṛpa | nītastenaiva śūnyāya nīhāra iva bhānunā"
-  - id: '6.14.6'
-    kind: verse
-    lines:
-      - "वृत्रस्तु स कथं पापः सर्वलोकोपतापनः"
-      - "इत्थं दृढमतिः कृष्ण आसीत्सङ्ग्राम उल्बणे"
-    iast: "vṛtrastu sa kathaṃ pāpaḥ sarvalokopatāpanaḥ | itthaṃ dṛḍhamatiḥ kṛṣṇa āsīt saṅgrāma ulbaṇe"
   - id: '7.1.26'
     kind: verse
     lines:
@@ -2205,6 +2552,12 @@ sections:
       - "भ्रातर्येवं विनिहते हरिणा क्रोडमूर्तिना"
       - "हिरण्यकशिपू राजन्पर्यतप्यद्रुषा शुचा"
     iast: "bhrātaryevaṃ vinihate hariṇā kroḍamūrtinā | hiraṇyakaśipū rājan paryatapyadruṣā śucā"
+  - id: '7.2.2'
+    kind: verse
+    lines:
+      - "आह चेदं रुषा पूर्णः सन्दष्टदशनच्छदः"
+      - "कोपोज्ज्वलद्भ्यां चक्षुर्भ्यां निरीक्षन्धूम्रमम्बरम्"
+    iast: "āha cedaṃ ruṣā pūrṇaḥ sandaṣṭadaśanacchadaḥ | kopojjvaladbhyāṃ cakṣurbhyāṃ nirīkṣan dhūmramambaram"
   - id: '7.2.12'
     kind: verse
     lines:
@@ -2544,6 +2897,12 @@ sections:
       - "अप्रमेयानुभावोऽयमकुतश्चिद्भयोऽमरः"
       - "नूनमेतद्विरोधेन मृत्युर्मे भविता न वा"
     iast: "aprameyānubhāvo 'yamakutaścidbhayo 'maraḥ | nūnametadvirodhena mṛtyurme bhavitā na vā"
+  - id: '7.5.55'
+    kind: verse
+    lines:
+      - "अथ तान्श्लक्ष्णया वाचा प्रत्याहूय महाबुधः"
+      - "उवाच विद्वांस्तन्निष्ठां कृपया प्रहसन्निव"
+    iast: "atha tān ślakṣṇayā vācā pratyāhūya mahābudhaḥ | uvāca vidvāṃstanniṣṭhāṃ kṛpayā prahasanniva"
   - id: '7.6.1'
     kind: verse
     lines:
@@ -2760,6 +3119,66 @@ sections:
       - "अस्तौषीद्धरिमेकाग्र मनसा सुसमाहितः"
       - "प्रेमगद्गदया वाचा तन्न्यस्तहृदयेक्षणः"
     iast: "astauṣīddharimekāgra manasā susamāhitaḥ | premagadgadayā vācā tannyastahṛdayekṣaṇaḥ"
+  - id: '7.9.10'
+    kind: verse
+    lines:
+      - "विप्राद्द्विषड्गुणयुतादरविन्दनाभ पादारविन्दविमुखात्श्वपचं वरिष्ठम्"
+      - "मन्ये तदर्पितमनोवचनेहितार्थ प्राणं पुनाति स कुलं न तु भूरिमानः"
+    iast: "viprāddviṣaḍguṇayutādaravindanābha pādāravindavimukhāt śvapacaṃ variṣṭham | manye tadarpitamanovacanehitārtha prāṇaṃ punāti sa kulaṃ na tu bhūrimānaḥ"
+  - id: '7.9.11'
+    kind: verse
+    lines:
+      - "नैवात्मनः प्रभुरयं निजलाभपूर्णो मानं जनादविदुषः करुणो वृणीते"
+      - "यद्यज्जनो भगवते विदधीत मानं तच्चात्मने प्रतिमुखस्य यथा मुखश्रीः"
+    iast: "naivātmanaḥ prabhurayaṃ nijalābhapūrṇo mānaṃ janādaviduṣaḥ karuṇo vṛṇīte | yadyaj jano bhagavate vidadhīta mānaṃ tac cātmane pratimukhasya yathā mukhaśrīḥ"
+  - id: '7.9.13'
+    kind: verse
+    lines:
+      - "सर्वे ह्यमी विधिकरास्तव सत्त्वधाम्नो ब्रह्मादयो वयमिवेश न चोद्विजन्तः"
+      - "क्षेमाय भूतय उतात्मसुखाय चास्य विक्रीडितं भगवतो रुचिरावतारैः"
+    iast: "sarve hyamī vidhikarāstava sattvadhāmno brahmādayo vayamiveśa na codvijantaḥ | kṣemāya bhūtaya utātmasukhāya cāsya vikrīḍitaṃ bhagavato rucirāvatāraiḥ"
+  - id: '7.9.14'
+    kind: verse
+    lines:
+      - "तद्यच्छ मन्युमसुरश्च हतस्त्वयाद्य मोदेत साधुरपि वृश्चिकसर्पहत्या"
+      - "लोकाश्च निर्वृतिमिताः प्रतियन्ति सर्वे रूपं नृसिंह विभयाय जनाः स्मरन्ति"
+    iast: "tadyaccha manyumasuraśca hatastvayādya modeta sādhurapi vṛścikasarpahatyā | lokāśca nirvṛtimitāḥ pratiyanti sarve rūpaṃ nṛsiṃha vibhayāya janāḥ smaranti"
+  - id: '7.9.15'
+    kind: verse
+    lines:
+      - "नाहं बिभेम्यजित तेऽतिभयानकास्य जिह्वार्कनेत्रभ्रुकुटीरभसोग्रदंष्ट्रात्"
+      - "आन्त्रस्रजःक्षतजकेशरशङ्कुकर्णान्निर्ह्रादभीतदिगिभादरिभिन्नखाग्रात्"
+    iast: "nāhaṃ bibhemyajita te 'tibhayānakāsya jihvārkanetrabhrukuṭīrabhasogradaṃṣṭrāt | āntrasrajaḥkṣatajakeśaraśaṅkukarṇān nirhrādabhītadigibhādaribhinnakhāgrāt"
+  - id: '7.9.16'
+    kind: verse
+    lines:
+      - "त्रस्तोऽस्म्यहं कृपणवत्सल दुःसहोग्र संसारचक्रकदनाद्ग्रसतां प्रणीतः"
+      - "बद्धः स्वकर्मभिरुशत्तम तेऽङ्घ्रिमूलं प्रीतोऽपवर्गशरणं ह्वयसे कदा नु"
+    iast: "trasto 'smyahaṃ kṛpaṇavatsala duḥsahogra saṃsāracakrakadanādgrasatāṃ praṇītaḥ | baddhaḥ svakarmabhiruśattama te 'ṅghrimūlaṃ prīto 'pavargaśaraṇaṃ hvayase kadā nu"
+  - id: '7.9.19'
+    kind: verse
+    lines:
+      - "बालस्य नेह शरणं पितरौ नृसिंह नार्तस्य चागदमुदन्वति मज्जतो नौः"
+      - "तप्तस्य तत्प्रतिविधिर्य इहाञ्जसेष्टस्तावद्विभो तनुभृतां त्वदुपेक्षितानाम्"
+    iast: "bālasya neha śaraṇaṃ pitarau nṛsiṃha nārtasya cāgadamudanvati majjato nauḥ | taptasya tatpratividhirya ihāñjaseṣṭas tāvadvibho tanubhṛtāṃ tvadupekṣitānām"
+  - id: '7.9.45'
+    kind: verse
+    lines:
+      - "यन्मैथुनादिगृहमेधिसुखं हि तुच्छं कण्डूयनेन करयोरिव दुःखदुःखम्"
+      - "तृप्यन्ति नेह कृपणा बहुदुःखभाजः कण्डूतिवन्मनसिजं विषहेत धीरः"
+    iast: "yan maithunādigṛhamedhisukhaṃ hi tucchaṃ kaṇḍūyanena karayoriva duḥkhaduḥkham | tṛpyanti neha kṛpaṇā bahuduḥkhabhājaḥ kaṇḍūtivan manasijaṃ viṣaheta dhīraḥ"
+  - id: '7.9.46'
+    kind: verse
+    lines:
+      - "मौनव्रतश्रुततपोऽध्ययनस्वधर्म व्याख्यारहोजपसमाधय आपवर्ग्याः"
+      - "प्रायः परं पुरुष ते त्वजितेन्द्रियाणां वार्ता भवन्त्युत न वात्र तु दाम्भिकानाम्"
+    iast: "maunavrataśrutatapo 'dhyayanasvadharma vyākhyārahojapasamādhaya āpavargyāḥ | prāyaḥ paraṃ puruṣa te tvajitendriyāṇāṃ vārtā bhavantyuta na vātra tu dāmbhikānām"
+  - id: '7.9.50'
+    kind: verse
+    lines:
+      - "तत्तेऽर्हत्तम नमः स्तुतिकर्मपूजाः कर्म स्मृतिश्चरणयोः श्रवणं कथायाम्"
+      - "संसेवया त्वयि विनेति षडङ्गया किं भक्तिं जनः परमहंसगतौ लभेत"
+    iast: "tat te 'rhattama namaḥ stutikarmapūjāḥ karma smṛtiścaraṇayoḥ śravaṇaṃ kathāyām | saṃsevayā tvayi vineti ṣaḍaṅgayā kiṃ bhaktiṃ janaḥ paramahaṃsagatau labheta"
   - id: '7.9.52'
     kind: verse
     lines:
@@ -2808,6 +3227,12 @@ sections:
       - "ततः काव्यादिभिः सार्धं मुनिभिः कमलासनः"
       - "दैत्यानां दानवानां च प्रह्रादमकरोत्पतिम्"
     iast: "tataḥ kāvyādibhiḥ sārdhaṃ munibhiḥ kamalāsanaḥ | daityānāṃ dānavānāṃ ca prahrādamakarot patim"
+  - id: '8.2.14'
+    kind: verse
+    lines:
+      - "बिल्वैः कपित्थैर्जम्बीरैर्वृतो भल्लातकादिभिः"
+      - "तस्मिन्सरः सुविपुलं लसत्काञ्चनपङ्कजम्"
+    iast: "bilvaiḥ kapitthairjambīrairvṛto bhallātakādibhiḥ | tasmin saraḥ suvipulaṃ lasatkāñcanapaṅkajam"
   - id: '8.2.20'
     kind: verse
     lines:
@@ -2874,6 +3299,24 @@ sections:
       - "जिजीविषे नाहमिहामुया किमन्तर्बहिश्चावृतयेभयोन्या"
       - "इच्छामि कालेन न यस्य विप्लवस्तस्यात्मलोकावरणस्य मोक्षम्"
     iast: "jijīviṣe nāhamihāmuyā kim antarbahiścāvṛtayebhayonyā | icchāmi kālena na yasya viplavas tasyātmalokāvaraṇasya mokṣam"
+  - id: '8.3.31'
+    kind: verse
+    lines:
+      - "तं तद्वदार्तमुपलभ्य जगन्निवासः स्तोत्रं निशम्य दिविजैः सह संस्तुवद्भिः"
+      - "छन्दोमयेन गरुडेन समुह्यमानश्चक्रायुधोऽभ्यगमदाशु यतो गजेन्द्रः"
+    iast: "taṃ tadvadārtamupalabhya jagannivāsaḥ stotraṃ niśamya divijaiḥ saha saṃstuvadbhiḥ | chandomayena garuḍena samuhyamānaś cakrāyudho 'bhyagamadāśu yato gajendraḥ"
+  - id: '8.3.32'
+    kind: verse
+    lines:
+      - "सोऽन्तःसरस्युरुबलेन गृहीत आर्तो दृष्ट्वा गरुत्मति हरिं ख उपात्तचक्रम्"
+      - "उत्क्षिप्य साम्बुजकरं गिरमाह कृच्छ्रान्नारायणाखिलगुरो भगवन्नमस्ते"
+    iast: "so 'ntaḥsarasy urubalena gṛhīta ārto dṛṣṭvā garutmati hariṃ kha upāttacakram | utkṣipya sāmbujakaraṃ giramāha kṛcchrān nārāyaṇākhilaguro bhagavan namaste"
+  - id: '8.3.33'
+    kind: verse
+    lines:
+      - "तं वीक्ष्य पीडितमजः सहसावतीर्य सग्राहमाशु सरसः कृपयोज्जहार"
+      - "ग्राहाद्विपाटितमुखादरिणा गजेन्द्रं संपश्यतां हरिरमूमुचदुच्छ्रियाणाम्"
+    iast: "taṃ vīkṣya pīḍitamajaḥ sahasāvatīrya sagrāhamāśu sarasaḥ kṛpayojjahāra | grāhādvipāṭitamukhādariṇā gajendraṃ saṃpaśyatāṃ hariramūmucaducchriyāṇām"
   - id: '8.4.3'
     kind: verse
     lines:
@@ -2922,12 +3365,6 @@ sections:
       - "एवं विमोक्ष्य गजयूथपमब्जनाभस्तेनापि पार्षदगतिं गमितेन युक्तः अम्प्;"
       - "गन्धर्वसिद्धविबुधैरुपगीयमान कर्माद्भुतं स्वभवनं गरुडासनोऽगात्"
     iast: "evaṃ vimokṣya gajayūthapamabjanābhas tenāpi pārṣadagatiṃ gamitena yuktaḥ amp; | gandharvasiddhavibudhairupagīyamāna karmādbhutaṃ svabhavanaṃ garuḍāsano 'gāt"
-  - id: '8.4.16'
-    kind: verse
-    lines:
-      - "इदमाह हरिः प्रीतो गजेन्द्रं कुरुसत्तम"
-      - "शृण्वतां सर्वभूतानां सर्वभूतमयो विभुः"
-    iast: "idamāha hariḥ prīto gajendraṃ kurusattama | śṛṇvatāṃ sarvabhūtānāṃ sarvabhūtamayo vibhuḥ"
   - id: '8.5.17'
     kind: verse
     lines:
@@ -3036,6 +3473,12 @@ sections:
       - "ते नागराजमामन्त्र्य फलभागेन वासुकिम्"
       - "परिवीय गिरौ तस्मिन्नेत्रमब्धिं मुदान्विताः"
     iast: "te nāgarājamāmantrya phalabhāgena vāsukim | parivīya girau tasmin netramabdhiṃ mudānvitāḥ"
+  - id: '8.7.2'
+    kind: verse
+    lines:
+      - "आरेभिरे सुरा यत्ता अमृतार्थे कुरूद्वह"
+      - "हरिः पुरस्ताज्जगृहे पूर्वं देवास्ततोऽभवन्"
+    iast: "ārebhire surā yattā amṛtārthe kurūdvaha | hariḥ purastāj jagṛhe pūrvaṃ devāstato 'bhavan"
   - id: '8.7.7'
     kind: verse
     lines:
@@ -3308,12 +3751,6 @@ sections:
       - "साधयित्वामृतं राजन्पाययित्वा स्वकान्सुरान्"
       - "पश्यतां सर्वभूतानां ययौ गरुडवाहनः"
     iast: "sādhayitvāmṛtaṃ rājan pāyayitvā svakān surān | paśyatāṃ sarvabhūtānāṃ yayau garuḍavāhanaḥ"
-  - id: '8.14.11'
-    kind: verse
-    lines:
-      - "एतत्कल्पविकल्पस्य प्रमाणं परिकीर्तितम्"
-      - "यत्र मन्वन्तराण्याहुश्चतुर्दश पुराविदः"
-    iast: "etat kalpavikalpasya pramāṇaṃ parikīrtitam | yatra manvantarāṇy āhuścaturdaśa purāvidaḥ"
   - id: '8.15.4'
     kind: verse
     lines:
@@ -3332,12 +3769,12 @@ sections:
       - "अथारुह्य रथं दिव्यं भृगुदत्तं महारथः"
       - "सुस्रग्धरोऽथ सन्नह्य धन्वी खड्गी धृतेषुधिः"
     iast: "athāruhya rathaṃ divyaṃ bhṛgudattaṃ mahārathaḥ | susragdharo 'tha sannahya dhanvī khaḍgī dhṛteṣudhiḥ"
-  - id: '8.15.15'
+  - id: '8.15.11'
     kind: verse
     lines:
-      - "रुक्मपट्टकपाटैश्च द्वारैः स्फटिकगोपुरैः"
-      - "जुष्टां विभक्तप्रपथां विश्वकर्मविनिर्मिताम्"
-    iast: "rukmapaṭṭakapāṭaiśca dvāraiḥ sphaṭikagopuraiḥ | juṣṭāṃ vibhaktaprapathāṃ viśvakarmavinirmitām"
+      - "वृतो विकर्षन्महतीमासुरीं ध्वजिनीं विभुः"
+      - "ययाविन्द्रपुरीं स्वृद्धां कम्पयन्निव रोदसी"
+    iast: "vṛto vikarṣan mahatīmāsurīṃ dhvajinīṃ vibhuḥ | yayāvindrapurīṃ svṛddhāṃ kampayanniva rodasī"
   - id: '8.15.22'
     kind: verse
     lines:
@@ -3518,6 +3955,12 @@ sections:
       - "श्रुत्वाश्वमेधैर्यजमानमूर्जितं बलिं भृगूणामुपकल्पितैस्ततः"
       - "जगाम तत्राखिलसारसम्भृतो भारेण गां सन्नमयन्पदे पदे"
     iast: "śrutvāśvamedhairyajamānamūrjitaṃ baliṃ bhṛgūṇāmupakalpitaistataḥ | jagāma tatrākhilasārasambhṛto bhāreṇa gāṃ sannamayan pade pade"
+  - id: '8.18.25'
+    kind: verse
+    lines:
+      - "प्रविष्टं वीक्ष्य भृगवः सशिष्यास्ते सहाग्निभिः"
+      - "प्रत्यगृह्णन्समुत्थाय सङ्क्षिप्तास्तस्य तेजसा"
+    iast: "praviṣṭaṃ vīkṣya bhṛgavaḥ saśiṣyāste sahāgnibhiḥ | pratyagṛhṇan samutthāya saṅkṣiptāstasya tejasā"
   - id: '8.18.27'
     kind: verse
     lines:
@@ -3627,6 +4070,12 @@ sections:
       - "स चाहं वित्तलोभेन प्रत्याचक्षे कथं द्विजम्"
       - "प्रतिश्रुत्य ददामीति प्राह्रादिः कितवो यथा"
     iast: "sa cāhaṃ vittalobhena pratyācakṣe kathaṃ dvijam | pratiśrutya dadāmīti prāhrādiḥ kitavo yathā"
+  - id: '8.20.5'
+    kind: verse
+    lines:
+      - "नाहं बिभेमि निरयान्नाधन्यादसुखार्णवात्"
+      - "न स्थानच्यवनान्मृत्योर्यथा विप्रप्रलम्भनात्"
+    iast: "nāhaṃ bibhemi nirayān nādhanyādasukhārṇavāt | na sthānacyavanān mṛtyoryathā viprapralambhanāt"
   - id: '8.20.21'
     kind: verse
     lines:
@@ -3669,6 +4118,12 @@ sections:
       - "यद्युत्तमश्लोक भवान्ममेरितं वचो व्यलीकं सुरवर्य मन्यते"
       - "करोम्यृतं तन्न भवेत्प्रलम्भनं पदं तृतीयं कुरु शीर्ष्णि मे निजम्"
     iast: "yady uttamaśloka bhavān mameritaṃ vaco vyalīkaṃ suravarya manyate | karomy ṛtaṃ tan na bhavet pralambhanaṃ padaṃ tṛtīyaṃ kuru śīrṣṇi me nijam"
+  - id: '8.22.3'
+    kind: verse
+    lines:
+      - "बिभेमि नाहं निरयात्पदच्युतो न पाशबन्धाद्व्यसनाद्दुरत्ययात्"
+      - "नैवार्थकृच्छ्राद्भवतो विनिग्रहादसाधुवादाद्भृशमुद्विजे यथा"
+    iast: "bibhemi nāhaṃ nirayāt padacyuto na pāśabandhādvyasanādduratyayāt | naivārthakṛcchrādbhavato vinigrahād asādhuvādādbhṛśamudvije yathā"
   - id: '8.22.6'
     kind: verse
     lines:
@@ -3729,6 +4184,12 @@ sections:
       - "नित्यं द्रष्टासि मां तत्र गदापाणिमवस्थितम्"
       - "मद्दर्शनमहाह्लाद ध्वस्तकर्मनिबन्धनः"
     iast: "nityaṃ draṣṭāsi māṃ tatra gadāpāṇimavasthitam | maddarśanamahāhlāda dhvastakarmanibandhanaḥ"
+  - id: '8.23.12'
+    kind: verse
+    lines:
+      - "परिक्रम्यादिपुरुषं सर्वासुरचमूपतिः"
+      - "प्रणतस्तदनुज्ञातः प्रविवेश महाबिलम्"
+    iast: "parikramyādipuruṣaṃ sarvāsuracamūpatiḥ | praṇatastadanujñātaḥ praviveśa mahābilam"
   - id: '8.23.19'
     kind: verse
     lines:
@@ -3843,6 +4304,12 @@ sections:
       - "इत्थमादिश्य राजानं हरिरन्तरधीयत"
       - "सोऽन्ववैक्षत तं कालं यं हृषीकेश आदिशत्"
     iast: "itthamādiśya rājānaṃ harirantaradhīyata | so 'nvavaikṣata taṃ kālaṃ yaṃ hṛṣīkeśa ādiśat"
+  - id: '8.24.40'
+    kind: verse
+    lines:
+      - "आस्तीर्य दर्भान्प्राक्कूलान्राजर्षिः प्रागुदङ्मुखः"
+      - "निषसाद हरेः पादौ चिन्तयन्मत्स्यरूपिणः"
+    iast: "āstīrya darbhān prākkūlān rājarṣiḥ prāgudaṅmukhaḥ | niṣasāda hareḥ pādau cintayan matsyarūpiṇaḥ"
   - id: '8.24.41'
     kind: verse
     lines:
@@ -3861,6 +4328,12 @@ sections:
       - "सोऽनुध्यातस्ततो राज्ञा प्रादुरासीन्महार्णवे"
       - "एकशृङ्गधरो मत्स्यो हैमो नियुतयोजनः"
     iast: "so 'nudhyātastato rājñā prādurāsīn mahārṇave | ekaśṛṅgadharo matsyo haimo niyutayojanaḥ"
+  - id: '8.24.55'
+    kind: verse
+    lines:
+      - "पुराणसंहितां दिव्यां साङ्ख्ययोगक्रियावतीम्"
+      - "सत्यव्रतस्य राजर्षेरात्मगुह्यमशेषतः"
+    iast: "purāṇasaṃhitāṃ divyāṃ sāṅkhyayogakriyāvatīm | satyavratasya rājarṣerātmaguhyamaśeṣataḥ"
   - id: '8.24.57'
     kind: verse
     lines:
@@ -3873,12 +4346,6 @@ sections:
       - "स तु सत्यव्रतो राजा ज्ञानविज्ञानसंयुतः"
       - "विष्णोः प्रसादात्कल्पेऽस्मिन्नासीद्वैवस्वतो मनुः"
     iast: "sa tu satyavrato rājā jñānavijñānasaṃyutaḥ | viṣṇoḥ prasādāt kalpe 'sminnāsīdvaivasvato manuḥ"
-  - id: '9.5.12'
-    kind: verse
-    lines:
-      - "इति संस्तुवतो राज्ञो विष्णुचक्रं सुदर्शनम्"
-      - "अशाम्यत्सर्वतो विप्रं प्रदहद्राजयाच्ञया"
-    iast: "iti saṃstuvato rājño viṣṇucakraṃ sudarśanam | aśāmyat sarvato vipraṃ pradahadrājayācñayā"
   - id: '9.10.2'
     kind: verse
     lines:
@@ -4036,6 +4503,12 @@ sections:
       - "अग्निहोत्रीमुपावर्त्य सवत्सां परवीरहा"
       - "समुपेत्याश्रमं पित्रे परिक्लिष्टां समर्पयत्"
     iast: "agnihotrīmupāvartya savatsāṃ paravīrahā | samupetyāśramaṃ pitre parikliṣṭāṃ samarpayat"
+  - id: '9.15.37'
+    kind: verse
+    lines:
+      - "स्वकर्म तत्कृतं रामः पित्रे भ्रातृभ्य एव च"
+      - "वर्णयामास तच्छ्रुत्वाजमदग्निरभाषत"
+    iast: "svakarma tat kṛtaṃ rāmaḥ pitre bhrātṛbhya eva ca | varṇayāmāsa tac chrutvājamadagnirabhāṣata"
   - id: '9.15.38'
     kind: verse
     lines:
@@ -4210,6 +4683,12 @@ sections:
       - "श्लाघनीयगुणः शूरैर्भवान्भोजयशस्करः"
       - "स कथं भगिनीं हन्यात्स्त्रियमुद्वाहपर्वणि"
     iast: "ślāghanīya-guṇaḥ śūrair bhavān bhoja-yaśaskaraḥ | sa kathaṃ bhaginīṃ hanyāt striyam udvāha-parvaṇi"
+  - id: '10.1.46'
+    kind: verse
+    lines:
+      - "एवं स सामभिर्भेदैर्बोध्यमानोऽपि दारुणः"
+      - "न न्यवर्तत कौरव्य पुरुषादाननुव्रतः"
+    iast: "evaṃ sa sāmabhir bhedair bodhyamāno 'pi dāruṇaḥ | na nyavartata kauravya puruṣādān anuvrataḥ"
   - id: '10.1.47'
     kind: verse
     lines:
@@ -4850,6 +5329,12 @@ sections:
       - "तमापतन्तं स निगृह्य तुण्डयोर्दोर्भ्यां बकं कंससखं सतां पतिः"
       - "पश्यत्सु बालेषु ददार लीलया मुदावहो वीरणवद्दिवौकसाम्"
     iast: "tam āpatantaṃ sa nigṛhya tuṇḍayor dorbhyāṃ bakaṃ kaṃsa-sakhaṃ satāṃ patiḥ | paśyatsu bāleṣu dadāra līlayā mudāvaho vīraṇavad divaukasām"
+  - id: '10.12.1'
+    kind: verse
+    lines:
+      - "क्वचिद्वनाशाय मनो दधद्व्रजात्प्रातः समुत्थाय वयस्यवत्सपान्"
+      - "प्रबोधयञ्छृङ्गरवेण चारुणा विनिर्गतो वत्सपुरःसरो हरिः"
+    iast: "kvacid vanāśāya mano dadhad vrajāt prātaḥ samutthāya vayasya-vatsapān | prabodhayañ chṛṅga-raveṇa cāruṇā vinirgato vatsa-puraḥsaro hariḥ"
   - id: '10.12.2'
     kind: verse
     lines:
@@ -4892,6 +5377,12 @@ sections:
       - "तान्वीक्ष्य कृष्णः सकलाभयप्रदो ह्यनन्यनाथान्स्वकरादवच्युतानम्प्;"
       - "दीनांश्च मृत्योर्जठराग्निघासान्घृणार्दितो दिष्टकृतेन विस्मितः"
     iast: "tān vīkṣya kṛṣṇaḥ sakalābhaya-prado hy ananya-nāthān sva-karād avacyutān amp; | dīnāṃś ca mṛtyor jaṭharāgni-ghāsān ghṛṇārdito diṣṭa-kṛtena vismitaḥ"
+  - id: '10.12.28'
+    kind: verse
+    lines:
+      - "कृत्यं किमत्रास्य खलस्य जीवनं न वा अमीषां च सतां विहिंसनम्"
+      - "द्वयं कथं स्यादिति संविचिन्त्य ज्ञात्वाविशत्तुण्डमशेषदृग्घरिः"
+    iast: "kṛtyaṃ kim atrāsya khalasya jīvanaṃ na vā amīṣāṃ ca satāṃ vihiṃsanam | dvayaṃ kathaṃ syād iti saṃvicintya jñātvāviśat tuṇḍam aśeṣa-dṛg ghariḥ"
   - id: '10.12.30'
     kind: verse
     lines:
@@ -5060,6 +5551,12 @@ sections:
       - "तं चण्डवेगविषवीर्यमवेक्ष्य तेन दुष्टां नदीं च खलसंयमनावतारः अम्प्;"
       - "कृष्णः कदम्बमधिरुह्य ततोऽतितुङ्गमास्फोट्य गाढरशनो न्यपतद्विषोदे"
     iast: "taṃ caṇḍa-vega-viṣa-vīryam avekṣya tena duṣṭāṃ nadīṃ ca khala-saṃyamanāvatāraḥ amp; | kṛṣṇaḥ kadambam adhiruhya tato 'ti-tuṅgam āsphoṭya gāḍha-raśano nyapatad viṣode"
+  - id: '10.16.8'
+    kind: verse
+    lines:
+      - "तस्य ह्रदे विहरतो भुजदण्डघूर्ण वार्घोषमङ्ग वरवारणविक्रमस्य"
+      - "आश्रुत्य तत्स्वसदनाभिभवं निरीक्ष्य चक्षुःश्रवाः समसरत्तदमृष्यमाणः"
+    iast: "tasya hrade viharato bhuja-daṇḍa-ghūrṇa- vār-ghoṣam aṅga vara-vāraṇa-vikramasya | āśrutya tat sva-sadanābhibhavaṃ nirīkṣya cakṣuḥ-śravāḥ samasarat tad amṛṣyamāṇaḥ"
   - id: '10.16.9'
     kind: verse
     lines:
@@ -5078,6 +5575,19 @@ sections:
       - "तस्याक्षिभिर्गरलमुद्वमतः शिरःसु यद्यत्समुन्नमति निःश्वसतो रुषोच्चैः"
       - "नृत्यन्पदानुनमयन्दमयां बभूव पुष्पैः प्रपूजित इवेह पुमान्पुराणः"
     iast: "tasyākṣibhir garalam udvamataḥ śiraḥsu yad yat samunnamati niḥśvasato ruṣoccaiḥ | nṛtyan padānunamayan damayāṃ babhūva puṣpaiḥ prapūjita iveha pumān purāṇaḥ"
+  - id: '10.16.67'
+    kind: verse
+    lines:
+      - "सकलत्रसुहृत्पुत्रो द्वीपमब्धेर्जगाम ह"
+      - "तदैव सामृतजला यमुना निर्विषाभवत्"
+      - "अनुग्रहाद्भगवतः क्रीडामानुषरूपिणः"
+    iast: "sa-kalatra-suhṛt-putro dvīpam abdher jagāma ha | tadaiva sāmṛta-jalā yamunā nirviṣābhavat | anugrahād bhagavataḥ krīḍā-mānuṣa-rūpiṇaḥ"
+  - id: '10.18.2'
+    kind: verse
+    lines:
+      - "व्रजे विक्रीडतोरेवं गोपालच्छद्ममायया"
+      - "ग्रीष्मो नामर्तुरभवन्नातिप्रेयाञ्छरीरिणाम्"
+    iast: "vraje vikrīḍator evaṃ gopāla-cchadma-māyayā | grīṣmo nāmartur abhavan nāti-preyāñ charīriṇām"
   - id: '10.18.17'
     kind: verse
     lines:
@@ -5222,6 +5732,12 @@ sections:
       - "तं तात वयमन्ये च वार्मुचां पतिमीश्वरम्"
       - "द्रव्यैस्तद्रेतसा सिद्धैर्यजन्ते क्रतुभिर्नराः"
     iast: "taṃ tāta vayam anye ca vārmucāṃ patim īśvaram | dravyais tad-retasā siddhair yajante kratubhir narāḥ"
+  - id: '10.24.10'
+    kind: verse
+    lines:
+      - "तच्छेषेणोपजीवन्ति त्रिवर्गफलहेतवे"
+      - "पुंसां पुरुषकाराणां पर्जन्यः फलभावनः"
+    iast: "tac-cheṣeṇopajīvanti tri-varga-phala-hetave | puṃsāṃ puruṣa-kārāṇāṃ parjanyaḥ phala-bhāvanaḥ"
   - id: '10.24.13'
     kind: verse
     lines:
@@ -5342,6 +5858,12 @@ sections:
       - "रजन्येषा घोररूपा घोरसत्त्वनिषेविता"
       - "प्रतियात व्रजं नेह स्थेयं स्त्रीभिः सुमध्यमाः"
     iast: "rajany eṣā ghora-rūpā ghora-sattva-niṣevitā | pratiyāta vrajaṃ neha stheyaṃ strībhiḥ su-madhyamāḥ"
+  - id: '10.29.31'
+    kind: verse
+    lines:
+      - "मैवं विभोऽर्हति भवान्गदितुं नृशंसं सन्त्यज्य सर्वविषयांस्तव पादमूलम्"
+      - "भक्ता भजस्व दुरवग्रह मा त्यजास्मान्देवो यथादिपुरुषो भजते मुमुक्षून्"
+    iast: "maivaṃ vibho 'rhati bhavān gadituṃ nṛ-śaṃsaṃ santyajya sarva-viṣayāṃs tava pāda-mūlam | bhaktā bhajasva duravagraha mā tyajāsmān devo yathādi-puruṣo bhajate mumukṣūn"
   - id: '10.29.42'
     kind: verse
     lines:
@@ -5480,6 +6002,12 @@ sections:
       - "आरभ्यतां धनुर्यागश्चतुर्दश्यां यथाविधि"
       - "विशसन्तु पशून्मेध्यान्भूतराजाय मीढुषे"
     iast: "ārabhyatāṃ dhanur-yāgaś caturdaśyāṃ yathā-vidhi | viśasantu paśūn medhyān bhūta-rājāya mīḍhuṣe"
+  - id: '10.36.27'
+    kind: verse
+    lines:
+      - "इत्याज्ञाप्यार्थतन्त्रज्ञ आहूय यदुपुङ्गवम्"
+      - "गृहीत्वा पाणिना पाणिं ततोऽक्रूरमुवाच ह"
+    iast: "ity ājñāpyārtha-tantra-jña āhūya yadu-puṅgavam | gṛhītvā pāṇinā pāṇiṃ tato 'krūram uvāca ha"
   - id: '10.36.31'
     kind: verse
     lines:
@@ -5655,6 +6183,12 @@ sections:
       - "धनुषो भज्यमानस्य शब्दः खं रोदसी दिशः"
       - "पूरयामास यं श्रुत्वा कंसस्त्रासमुपागमत्"
     iast: "dhanuṣo bhajyamānasya śabdaḥ khaṃ rodasī diśaḥ | pūrayām āsa yaṃ śrutvā kaṃsas trāsam upāgamat"
+  - id: '10.42.19'
+    kind: verse
+    lines:
+      - "तद्रक्षिणः सानुचरं कुपिता आततायिनः"
+      - "गृहीतुकामा आवव्रुर्गृह्यतां वध्यतामिति"
+    iast: "tad-rakṣiṇaḥ sānucaraṃ kupitā ātatāyinaḥ | gṛhītu-kāmā āvavrur gṛhyatāṃ vadhyatām iti"
   - id: '10.42.20'
     kind: verse
     lines:
@@ -5679,6 +6213,12 @@ sections:
       - "अवनिक्ताङ्घ्रियुगलौ भुक्त्वा क्षीरोपसेचनम्"
       - "ऊषतुस्तां सुखं रात्रिं ज्ञात्वा कंसचिकीर्षितम्"
     iast: "avaniktāṅghri-yugalau bhuktvā kṣīropasecanam | ūṣatus tāṃ sukhaṃ rātriṃ jñātvā kaṃsa-cikīrṣitam"
+  - id: '10.42.27'
+    kind: verse
+    lines:
+      - "दीर्घप्रजागरो भीतो दुर्निमित्तानि दुर्मतिः"
+      - "बहून्यचष्टोभयथा मृत्योर्दौत्यकराणि च"
+    iast: "dīrgha-prajāgaro bhīto durnimittāni durmatiḥ | bahūny acaṣṭobhayathā mṛtyor dautya-karāṇi ca"
   - id: '10.42.31'
     kind: verse
     lines:
@@ -5733,6 +6273,12 @@ sections:
       - "रङ्गद्वारं समासाद्य तस्मिन्नागमवस्थितम्"
       - "अपश्यत्कुवलयापीडं कृष्णोऽम्बष्ठप्रचोदितम्"
     iast: "raṅga-dvāraṃ samāsādya tasmin nāgam avasthitam | apaśyat kuvalayāpīḍaṃ kṛṣṇo 'mbaṣṭha-pracoditam"
+  - id: '10.43.13'
+    kind: verse
+    lines:
+      - "तमापतन्तमासाद्य भगवान्मधुसूदनः"
+      - "निगृह्य पाणिना हस्तं पातयामास भूतले"
+    iast: "tam āpatantam āsādya bhagavān madhusūdanaḥ | nigṛhya pāṇinā hastaṃ pātayām āsa bhū-tale"
   - id: '10.43.14'
     kind: verse
     lines:
@@ -5763,6 +6309,12 @@ sections:
       - "हस्ताभ्यां हस्तयोर्बद्ध्वा पद्भ्यामेव च पादयोः"
       - "विचकर्षतुरन्योन्यं प्रसह्य विजिगीषया"
     iast: "hastābhyāṃ hastayor baddhvā padbhyām eva ca pādayoḥ | vicakarṣatur anyonyaṃ prasahya vijigīṣayā"
+  - id: '10.44.24'
+    kind: verse
+    lines:
+      - "तथैव मुष्टिकः पूर्वं स्वमुष्ट्याभिहतेन वै"
+      - "बलभद्रेण बलिना तलेनाभिहतो भृशम्"
+    iast: "tathaiva muṣṭikaḥ pūrvaṃ sva-muṣṭyābhihatena vai | balabhadreṇa balinā talenābhihato bhṛśam"
   - id: '10.44.34'
     kind: verse
     lines:
@@ -5835,6 +6387,12 @@ sections:
       - "अथो गुरुकुले वासमिच्छन्तावुपजग्मतुः"
       - "काश्यं सान्दीपनिं नाम ह्यवन्तिपुरवासिनम्"
     iast: "atho guru-kule vāsam icchantāv upajagmatuḥ | kāśyaṃ sāndīpaniṃ nāma hy avanti-pura-vāsinam"
+  - id: '10.46.1'
+    kind: verse
+    lines:
+      - "वृष्णीनां प्रवरो मन्त्री कृष्णस्य दयितः सखा"
+      - "शिष्यो बृहस्पतेः साक्षादुद्धवो बुद्धिसत्तमः"
+    iast: "vṛṣṇīnāṃ pravaro mantrī kṛṣṇasya dayitaḥ sakhā | śiṣyo bṛhaspateḥ sākṣād uddhavo buddhi-sattamaḥ"
   - id: '10.46.2'
     kind: verse
     lines:
@@ -5979,6 +6537,36 @@ sections:
       - "द्वारकां स समभ्येत्य प्रतीहारैः प्रवेशितः"
       - "अपश्यदाद्यं पुरुषमासीनं काञ्चनासने"
     iast: "dvārakāṃ sa samabhyetya pratīhāraiḥ praveśitaḥ | apaśyad ādyaṃ puruṣam āsīnaṃ kāñcanāsane"
+  - id: '10.52.37'
+    kind: verse
+    lines:
+      - "श्रुत्वा गुणान्भुवनसुन्दर शृण्वतां ते निर्विश्य कर्णविवरैर्हरतोऽङ्गतापम्"
+      - "रूपं दृशां दृशिमतामखिलार्थलाभं त्वय्यच्युताविशति चित्तमपत्रपं मे"
+    iast: "śrutvā guṇān bhuvana-sundara śṛṇvatāṃ te nirviśya karṇa-vivarair harato 'ṅga-tāpam | rūpaṃ dṛśāṃ dṛśimatām akhilārtha-lābhaṃ tvayy acyutāviśati cittam apatrapaṃ me"
+  - id: '10.52.38'
+    kind: verse
+    lines:
+      - "का त्वा मुकुन्द महती कुलशीलरूप विद्यावयोद्रविणधामभिरात्मतुल्यम्"
+      - "धीरा पतिं कुलवती न वृणीत कन्या काले नृसिंह नरलोकमनोऽभिरामम्"
+    iast: "kā tvā mukunda mahatī kula-śīla-rūpa- vidyā-vayo-draviṇa-dhāmabhir ātma-tulyam | dhīrā patiṃ kulavatī na vṛṇīta kanyā kāle nṛ-siṃha nara-loka-mano-'bhirāmam"
+  - id: '10.52.39'
+    kind: verse
+    lines:
+      - "तन्मे भवान्खलु वृतः पतिरङ्ग जायामात्मार्पितश्च भवतोऽत्र विभो विधेहि"
+      - "मा वीरभागमभिमर्शतु चैद्य आराद्गोमायुवन्मृगपतेर्बलिमम्बुजाक्ष"
+    iast: "tan me bhavān khalu vṛtaḥ patir aṅga jāyām ātmārpitaś ca bhavato 'tra vibho vidhehi | mā vīra-bhāgam abhimarśatu caidya ārād gomāyu-van mṛga-pater balim ambujākṣa"
+  - id: '10.52.41'
+    kind: verse
+    lines:
+      - "श्वो भाविनि त्वमजितोद्वहने विदर्भान्गुप्तः समेत्य पृतनापतिभिः परीतः"
+      - "निर्मथ्य चैद्यमगधेन्द्रबलं प्रसह्य मां राक्षसेन विधिनोद्वह वीर्यशुल्काम्"
+    iast: "śvo bhāvini tvam ajitodvahane vidarbhān guptaḥ sametya pṛtanā-patibhiḥ parītaḥ | nirmathya caidya-magadhendra-balaṃ prasahya māṃ rākṣasena vidhinodvaha vīrya-śulkām"
+  - id: '10.52.42'
+    kind: verse
+    lines:
+      - "अन्तःपुरान्तरचरीमनिहत्य बन्धून्त्वामुद्वहे कथमिति प्रवदाम्युपायम्"
+      - "पूर्वेद्युरस्ति महती कुलदेवयात्रा यस्यां बहिर्नववधूर्गिरिजामुपेयात्"
+    iast: "antaḥ-purāntara-carīm anihatya bandhūn tvām udvahe katham iti pravadāmy upāyam | pūrve-dyur asti mahatī kula-deva-yātrā yasyāṃ bahir nava-vadhūr girijām upeyāt"
   - id: '10.53.1'
     kind: verse
     lines:
@@ -6131,6 +6719,12 @@ sections:
       - "निष्किञ्चनो ननु भवान्न यतोऽस्ति किञ्चिद्यस्मै बलिं बलिभुजोऽपि हरन्त्यजाद्याः"
       - "न त्वा विदन्त्यसुतृपोऽन्तकमाढ्यतान्धाः प्रेष्ठो भवान्बलिभुजामपि तेऽपि तुभ्यम्"
     iast: "niṣkiñcano nanu bhavān na yato 'sti kiñcid yasmai baliṃ bali-bhujo 'pi haranty ajādyāḥ | na tvā vidanty asu-tṛpo 'ntakam āḍhyatāndhāḥ preṣṭho bhavān bali-bhujām api te 'pi tubhyam"
+  - id: '10.60.46'
+    kind: verse
+    lines:
+      - "अस्त्वम्बुजाक्ष मम ते चरणानुराग आत्मन्रतस्य मयि चानतिरिक्तदृष्टेः"
+      - "यर्ह्यस्य वृद्धय उपात्तरजोऽतिमात्रो मामीक्षसे तदु ह नः परमानुकम्पा"
+    iast: "astv ambujākṣa mama te caraṇānurāga ātman ratasya mayi cānatirikta-dṛṣṭeḥ | yarhy asya vṛddhaya upātta-rajo-'ti-mātro mām īkṣase tad u ha naḥ paramānukampā"
   - id: '10.62.2'
     kind: verse
     lines:
@@ -6324,6 +6918,12 @@ sections:
       - "अन्तःपुरजनैः प्रीत्या मुकुन्दः फुल्ललोचनैः"
       - "ससम्भ्रमैरभ्युपेतः प्राविशद्राजमन्दिरम्"
     iast: "antaḥ-pura-janaiḥ prītyā mukundaḥ phulla-locanaiḥ | sa-sambhramair abhyupetaḥ prāviśad rāja-mandiram"
+  - id: '10.71.38'
+    kind: verse
+    lines:
+      - "पृथा विलोक्य भ्रात्रेयं कृष्णं त्रिभुवनेश्वरम्"
+      - "प्रीतात्मोत्थाय पर्यङ्कात्सस्नुषा परिषस्वजे"
+    iast: "pṛthā vilokya bhrātreyaṃ kṛṣṇaṃ tri-bhuvaneśvaram | prītātmotthāya paryaṅkāt sa-snuṣā pariṣasvaje"
   - id: '10.72.3'
     kind: verse
     lines:
@@ -6384,6 +6984,12 @@ sections:
       - "तयोरेवं प्रहरतोः समशिक्षाबलौजसोः"
       - "निर्विशेषमभूद्युद्धमक्षीणजवयोर्नृप"
     iast: "tayor evaṃ praharatoḥ sama-śikṣā-balaujasoḥ | nirviśeṣam abhūd yuddham akṣīṇa-javayor nṛpa"
+  - id: '10.72.40'
+    kind: verse
+    lines:
+      - "शत्रोर्जन्ममृती विद्वाञ्जीवितं च जराकृतम्"
+      - "पार्थमाप्याययन्स्वेन तेजसाचिन्तयद्धरिः"
+    iast: "śatror janma-mṛtī vidvāñ jīvitaṃ ca jarā-kṛtam | pārtham āpyāyayan svena tejasācintayad dhariḥ"
   - id: '10.72.41'
     kind: verse
     lines:
@@ -6415,6 +7021,18 @@ sections:
       - "अभ्यषिञ्चदमेयात्मा मगधानां पतिं प्रभुः"
       - "मोचयामास राजन्यान्संरुद्धा मागधेन ये"
     iast: "sahadevaṃ tat-tanayaṃ bhagavān bhūta-bhāvanaḥ | abhyaṣiñcad ameyātmā magadhānāṃ patiṃ prabhuḥ | mocayām āsa rājanyān saṃruddhā māgadhena ye"
+  - id: '10.74.1'
+    kind: verse
+    lines:
+      - "एवं युधिष्ठिरो राजा जरासन्धवधं विभोः"
+      - "कृष्णस्य चानुभावं तं श्रुत्वा प्रीतस्तमब्रवीत्"
+    iast: "evaṃ yudhiṣṭhiro rājā jarāsandha-vadhaṃ vibhoḥ | kṛṣṇasya cānubhāvaṃ taṃ śrutvā prītas tam abravīt"
+  - id: '10.74.26'
+    kind: verse
+    lines:
+      - "श्रुत्वा द्विजेरितं राजा ज्ञात्वा हार्दं सभासदाम्"
+      - "समर्हयद्धृषीकेशं प्रीतः प्रणयविह्वलः"
+    iast: "śrutvā dvijeritaṃ rājā jñātvā hārdaṃ sabhā-sadām | samarhayad dhṛṣīkeśaṃ prītaḥ praṇaya-vihvalaḥ"
   - id: '10.74.38'
     kind: verse
     lines:
@@ -6758,6 +7376,12 @@ sections:
       - "एवं भगवतादिष्टा यादवाः कुरुनन्दन"
       - "गन्तुं कृतधियस्तीर्थं स्यन्दनान्समयूयुजन्"
     iast: "evaṃ bhagavatādiṣṭā yādavāḥ kuru-nandana | gantuṃ kṛta-dhiyas tīrthaṃ syandanān samayūyujan"
+  - id: '11.6.40'
+    kind: verse
+    lines:
+      - "तन्निरीक्ष्योद्धवो राजन्श्रुत्वा भगवतोदितम्"
+      - "दृष्ट्वारिष्टानि घोराणि नित्यं कृष्णमनुव्रतः"
+    iast: "tan nirīkṣyoddhavo rājan śrutvā bhagavatoditam | dṛṣṭvāriṣṭāni ghorāṇi nityaṃ kṛṣṇam anuvrataḥ"
   - id: '11.6.41'
     kind: verse
     lines:
@@ -6813,13 +7437,13 @@ sections:
       - "तस्माद्युक्तेन्द्रियग्रामो युक्तचित्त इदम्जगत्"
       - "आत्मनीक्षस्व विततमात्मानं मय्यधीश्वरे"
     iast: "tasmād yuktendriya-grāmo yukta-citta idam jagat | ātmanīkṣasva vitatam ātmānaṃ mayy adhīśvare"
-  - id: '11.11.29'
+  - id: '11.11.29#2'
     kind: verse
     lines:
       - "कृपालुरकृतद्रोहस्तितिक्षुः सर्वदेहिनाम्"
       - "सत्यसारोऽनवद्यात्मा समः सर्वोपकारकः"
     iast: "kṛpālur akṛta-drohas titikṣuḥ sarva-dehinām | satya-sāro 'navadyātmā samaḥ sarvopakārakaḥ"
-  - id: '11.11.30'
+  - id: '11.11.30#2'
     kind: verse
     lines:
       - "कामैरहतधीर्दान्तो मृदुः शुचिरकिञ्चनः"
@@ -6993,6 +7617,12 @@ sections:
       - "विद्रावितो मोहमहान्धकारो य आश्रितो मे तव सन्निधानात्"
       - "विभावसोः किं नु समीपगस्य शीतं तमो भीः प्रभवन्त्यजाद्य"
     iast: "vidrāvito moha-mahāndhakāro ya āśrito me tava sannidhānāt | vibhāvasoḥ kiṃ nu samīpa-gasya śītaṃ tamo bhīḥ prabhavanty ajādya"
+  - id: '11.29.38'
+    kind: verse
+    lines:
+      - "प्रत्यर्पितो मे भवतानुकम्पिना भृत्याय विज्ञानमयः प्रदीपः"
+      - "हित्वा कृतज्ञस्तव पादमूलं कोऽन्यं समीयाच्छरणं त्वदीयम्"
+    iast: "pratyarpito me bhavatānukampinā bhṛtyāya vijñāna-mayaḥ pradīpaḥ | hitvā kṛta-jñas tava pāda-mūlaṃ ko 'nyaṃ samīyāc charaṇaṃ tvadīyam"
   - id: '11.29.41'
     kind: verse
     lines:
@@ -7030,6 +7660,12 @@ sections:
       - "ततस्तस्मिन्महापानं पपुर्मैरेयकं मधु"
       - "दिष्टविभ्रंशितधियो यद्द्रवैर्भ्रश्यते मतिः"
     iast: "tatas tasmin mahā-pānaṃ papur maireyakaṃ madhu | diṣṭa-vibhraṃśita-dhiyo yad-dravair bhraśyate matiḥ"
+  - id: '11.30.13'
+    kind: verse
+    lines:
+      - "महापानाभिमत्तानां वीराणां दृप्तचेतसाम्"
+      - "कृष्णमायाविमूढानां सङ्घर्षः सुमहानभूत्"
+    iast: "mahā-pānābhimattānāṃ vīrāṇāṃ dṛpta-cetasām | kṛṣṇa-māyā-vimūḍhānāṃ saṅgharṣaḥ su-mahān abhūt"
   - id: '11.30.19'
     kind: verse
     lines:
@@ -7096,12 +7732,6 @@ sections:
       - "यदावतीर्णो भगवान्कल्किर्धर्मपतिर्हरिः"
       - "कृतं भविष्यति तदा प्रजासूतिश्च सात्त्विकी"
     iast: "yadāvatīrṇo bhagavān kalkir dharma-patir hariḥ | kṛtaṃ bhaviṣyati tadā prajā-sūtiś ca sāttvikī"
-  - id: '12.2.36'
-    kind: verse
-    lines:
-      - "एतेषां नामलिङ्गानां पुरुषाणां महात्मनाम्"
-      - "कथामात्रावशिष्टानां कीर्तिरेव स्थिता भुवि"
-    iast: "eteṣāṃ nāma-liṅgānāṃ puruṣāṇāṃ mahātmanām | kathā-mātrāvaśiṣṭānāṃ kīrtir eva sthitā bhuvi"
   - id: '12.2.40'
     kind: verse
     lines:

@@ -79,7 +79,22 @@ export function readTei(slug: string): Block[] {
     if (lines.length) blocks.push({ kind: 'verse', div: [...div], ...(id ? { id } : {}), ...(ref ? { ref } : {}), lines });
   };
   const prose = (text: string) => {
-    const t = clean(text);
+    let t = clean(text);
+    if (!t) return;
+    // a long paragraph may carry several numbered passages, each closed by its
+    // own marker inside it (the Bhāgavata's gadya: … // BhP_05.01.007 // …):
+    // each passage is a block with that number. Only an id-like marker
+    // (letters, underscore, number) splits; a bare "|| 66 ||" closes the whole.
+    const INLINE = /\s*(?:\/\/|\|\|)\s*([A-Za-z]+_[0-9][0-9.,]*\*?)\s*(?:\/\/|\|\|)\s*/g;
+    let m: RegExpExecArray | null, from = 0;
+    const pieces: { text: string; ref: string }[] = [];
+    while ((m = INLINE.exec(t))) {
+      if (m.index + m[0].length >= t.length) break; // a closing marker: takeRef's
+      pieces.push({ text: t.slice(from, m.index).trim(), ref: m[1] });
+      from = m.index + m[0].length;
+    }
+    for (const p of pieces) if (p.text) blocks.push({ kind: 'prose', div: [...div], ref: p.ref, lines: [p.text] });
+    t = t.slice(from).trim();
     if (!t) return;
     const lines = [t];
     const ref = takeRef(lines);

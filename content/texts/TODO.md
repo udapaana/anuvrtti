@@ -41,3 +41,27 @@ placed. Their text can come from the book's scan exactly as the Rāmāyaṇa's
 vulgate verses did: archive.org item `dli.ernet.242274` has the same layout
 file (`_djvu.xml`) and page images (`_jp2.zip`). Generalise
 `scripts/condensed-reocr.ts` to it, double-key, and add them.
+
+## Bhāgavata (condensed): 16 lines owed
+
+After review: 1,319 verses placed, 5 the book quotes that Ambuda's text lacks
+(among them 5.3.20, absent from the file: it runs 5.3.18 → 5.4.1), and 11
+OCR lines not yet placed. Read them from the book's scan as the Rāmāyaṇa's
+were (`condensed-reocr.ts`, generalised; the archive.org item is the same as
+the Rāmāyaṇa's).
+
+## Section ids numbered "+n" depend on the source and the builder
+
+A text whose prose or unnumbered verses take ids after the last numbered one
+(`1.21+3` in the Pañcatantra, `1.14.6+1` for the Rāmāyaṇa's scan verses) keeps
+them only while its source and builder stay fixed: a reader fix that found
+five more Pañcatantra verses shifted every +n after them. Overrides are keyed
+by these ids, so before changing a source or a builder of an authored text,
+rebuild into a scratch copy, diff the ids, and re-key the overrides.
+
+## Retire the one-tale Pañcatantra
+
+`content/texts/pancatantra-kilotpatin` is now a part of the full
+`pancatantra` (its overrides carried over as `overrides/kilotpatin.yaml`).
+About forty files cite it as the format example; repoint those, then remove
+the text, its snapshot and its page.
