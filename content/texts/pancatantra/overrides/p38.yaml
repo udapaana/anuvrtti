@@ -9,6 +9,9 @@
       2: { gloss: "by the third (brother)" }
       3: { lemma: अभिधा, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "(it was) said" }
       4: { gloss: "oh!" }
+  एवं:
+    fix:
+      1: { gloss: "thus, so" }
   युज्यते:
     fix:
       1: { a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "is proper, is fitting" }
@@ -585,6 +588,9 @@
       1: { gloss: "they study" }
 
 '5.38+7':
+  एवं:
+    fix:
+      1: { gloss: "thus, in this way" }
   द्वादशाब्दानि:
     split:
       - { form: द्वादश, lemma: द्वादशन्, member: true, gloss: "twelve" }
@@ -678,7 +684,7 @@
   यावत्किञ्चिन्मार्गं:
     split:
       - { form: यावत्, lemma: यावत्, a: अव्यय, gloss: "when" }
-      - { form: किञ्चित्, lemma: किञ्चित्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "some (distance of)" }
+      - { form: किञ्चित्, lemma: किञ्चित्, a: अव्यय, gloss: "a little, some (way)" }
       - { form: मार्गम्, lemma: मार्ग, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "road" }
   यान्ति,:
     fix:
@@ -759,7 +765,7 @@
     note: चतूर्णां is a typing slip for चतुर्णाम्, the genitive plural of चतुर् (short u).
   मध्यादेकेन:
     fix:
-      1: { gloss: "from among" }
+      1: { a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "from among" }
       2: { gloss: "by one" }
   पुस्तकमवलोकितम्महाजनो:
     fix:
@@ -1188,7 +1194,7 @@
       1: { gloss: "does, carries on" }
   कार्यं:
     fix:
-      1: { gloss: "his business" }
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "his business" }
   सर्वनाशो:
     split:
       - { form: सर्व, lemma: सर्व, member: true, gloss: "total" }
@@ -1282,6 +1288,7 @@
 '5.40+5':
   एवमुक्त्वा:
     fix:
+      1: { gloss: "thus" }
       2: { gloss: "having said" }
   भोजनं:
     fix:
@@ -1328,7 +1335,7 @@
   तद्भवेन्न:
     fix:
       1: { gloss: "that" }
-      2: { gloss: "will be" }
+      2: { gloss: "would be" }
       3: { gloss: "not" }
   चिरायुषम्:
     split:
@@ -1385,6 +1392,9 @@
       - { form: बहुलीभवन्ति, lemma: बहुलीभू, a: लट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "multiply" }
 
 '5.40+11':
+  एवं:
+    fix:
+      1: { gloss: "thus, in this way" }
   ते:
     fix:
       1: { gloss: "those" }
@@ -1678,6 +1688,9 @@
       1: { gloss: "came to — 'became (their) friend'" }
 
 '5.43+5':
+  एवं:
+    fix:
+      1: { gloss: "thus, in this way" }
   ते:
     fix:
       1: { gloss: "they" }
@@ -1773,6 +1786,7 @@
 '5.43+9':
   एवमुक्त्वा:
     fix:
+      1: { gloss: "thus" }
       2: { gloss: "having said" }
   स्वगृहं:
     split:
@@ -2052,7 +2066,8 @@
       1: { gloss: "for, indeed" }
   किञ्चन:
     split:
-      - { form: किञ्चन, lemma: किञ्चन, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "anything (with न, 'nothing')" }
+      - { form: किम्, lemma: किम्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "what — with चन, 'anything'" }
+      - { form: चन, lemma: चन, a: अव्यय, gloss: "(indefinite) any-; with न, 'nothing'" }
   बुद्ध्या:
     fix:
       1: { form: बुद्ध्या, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "by intelligence" }
@@ -2230,7 +2245,8 @@
   सभार्यो:
     split:
       - { form: स, lemma: स, member: true, gloss: "with" }
-      - { form: भार्यः, lemma: भार्या, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "wife — 'with my wife'" }
+      - { form: भार्यः, lemma: भार्य, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "wife — 'with my wife'" }
+    note: "A बहुव्रीहि: भार्या shortens to भार्य- and takes the masculine of the frog it describes (1.2.48)."
   यास्यामि:
     fix:
       1: { gloss: "will go" }
@@ -2238,6 +2254,7 @@
 '5.47+5':
   एवमुक्त्वा:
     fix:
+      1: { gloss: "thus" }
       2: { gloss: "having said" }
   स:
     fix:
@@ -2297,7 +2314,8 @@
   सभार्यौ:
     split:
       - { form: स, lemma: स, member: true, gloss: "with" }
-      - { form: भार्यौ, lemma: भार्या, a: प्रथमा द्विवचन पुंलिङ्ग, gloss: "wife — 'with their wives'" }
+      - { form: भार्यौ, lemma: भार्य, a: प्रथमा द्विवचन पुंलिङ्ग, gloss: "wife — 'with their wives'" }
+    note: "A बहुव्रीहि: भार्या shortens to भार्य- and takes the masculine of the two fish (1.2.48)."
   पलायमानौ:
     split:
       - { form: पलायमानौ, lemma: पलाय्, a: प्रथमा द्विवचन पुंलिङ्ग शानच्, gloss: "fleeing" }
@@ -2763,6 +2781,9 @@
       1: { gloss: "enters" }
 
 '5.49+8':
+  एवं:
+    fix:
+      1: { gloss: "thus" }
   तौ:
     fix:
       1: { gloss: "the two" }

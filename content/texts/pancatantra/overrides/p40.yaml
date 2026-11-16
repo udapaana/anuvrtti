@@ -88,11 +88,12 @@
     split:
       - { form: सन्त्यक्त, lemma: सन्त्यक्त, member: true, gloss: "given up" }
       - { form: आहार, lemma: आहार, member: true, gloss: "food" }
-      - { form: क्रियः, lemma: क्रिया, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the taking (of)" }
+      - { form: क्रियः, lemma: क्रिय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the taking (of)" }
     note: A बहुव्रीहि, "he by whom the taking of food was given up" — क्रिया shortens to -क्रिय as the masculine final of the compound.
   वनाद्वनं:
     fix:
-      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग }
+      1: { gloss: "from forest" }
+      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "to forest" }
     note: वनात् वनम् "from forest to forest".
   पर्यटति:
     split:
@@ -278,6 +279,9 @@
   प्रवेशं:
     fix:
       1: { gloss: "entering" }
+  करोति:
+    fix:
+      1: { gloss: "makes (प्रवेशं करोति 'enters')" }
   स:
     fix:
       1: { gloss: "he" }
@@ -292,6 +296,7 @@
   तन्नास्ति:
     fix:
       1: { a: अव्यय, gloss: "so" }
+      3: { gloss: "there is" }
   धूर्ततरस्त्वत्समोऽन्यो:
     split:
       - { form: धूर्ततरः, lemma: धूर्ततर, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "more cunning" }
@@ -443,6 +448,9 @@
   वचस्तस्य:
     fix:
       1: { lemma: वचस्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "words, speech" }
+  श्रुत्वा:
+    fix:
+      1: { gloss: "having heard" }
   दत्त्वा:
     fix:
       1: { gloss: "having given" }
@@ -1405,6 +1413,9 @@
       - { form: स्थानम्, lemma: स्थान, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "a place" }
 
 '5.82+3':
+  नास्ति:
+    fix:
+      2: { gloss: "there is" }
   कस्यापि:
     split:
       - { form: कस्य, lemma: किम्, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "whose? (with अपि, 'anyone's')" }
@@ -2111,10 +2122,11 @@
   लब्धप्रत्याशौ:
     split:
       - { form: लब्ध, lemma: लब्ध, member: true, gloss: "obtained" }
-      - { form: प्रत्याशौ, lemma: प्रत्याशा, a: प्रथमा द्विवचन पुंलिङ्ग, gloss: "hope (लब्धप्रत्याश 'having regained hope')" }
+      - { form: प्रत्याशौ, lemma: प्रत्याश, a: प्रथमा द्विवचन पुंलिङ्ग, gloss: "hope (लब्धप्रत्याश 'having regained hope')" }
+    note: "A बहुव्रीहि of the two: प्रत्याशा shortens to प्रत्याश- and takes the masculine (1.2.48)."
   सम्पन्नौ:
     fix:
-      1: { gloss: "became" }
+      1: { lemma: सम्पद्, a: प्रथमा द्विवचन पुंलिङ्ग क्त, gloss: "became" }
 
 '5.83+29':
   तत्र:
