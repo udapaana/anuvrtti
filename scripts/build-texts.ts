@@ -108,7 +108,9 @@ function ordinaryParticiple(a: Analysis | null, pool: Analysis[], spec?: PadaSpe
 function resolveSpec(spec: PadaSpec, base: Analysis | null, pool: Analysis[]): { a: Analysis; source: Source } {
   if (spec.member) return { a: { type: 'member', lemma: spec.lemma ?? base?.lemma ?? spec.form ?? '' }, source: 'author' };
   if (!spec.a && !spec.lemma && base) return { a: base, source: 'vidyut' };
-  const lemma = spec.lemma ?? base?.lemma ?? '';
+  // an author who corrects the analysis but names no lemma keeps vidyut's full
+  // lemma, preverb and all (आगत्य: आगम्, not गम्)
+  const lemma = spec.lemma ?? base?.lemma_full ?? base?.lemma ?? '';
   const want = parseA(spec.a ?? (base ? fmtA(base) : ''), lemma);
   if (!spec.a && base) Object.assign(want, { ...base, lemma });
   // An author who names a lemma and an analysis without a कृत् means a plain

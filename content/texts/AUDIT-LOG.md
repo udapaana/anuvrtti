@@ -355,3 +355,12 @@ The readers worked from scripts/audit-worklist.ts (new), which prints a run's
 unchanged padas and its mechanical flags. The builder fixes found in the
 Rāmāyaṇa's sample (pronoun glosses, शानच्, सनादि) were in place before this
 pass. A blind sample (150 padas, seed 4242) is being judged.
+
+**Blind sample:** 150 padas (seed 4242: 51 vidyut's own, 57 picks, 42
+authors'), judged as the Rāmāyaṇa's second sample was: 148 right, 2 wrong, both
+the same builder fault. An author who corrected a pada's analysis without
+naming its lemma got vidyut's short lemma, the root without its preverb
+(आगत्य: गम्, आक्रम्य: क्रम्). build-texts.ts now keeps vidyut's full lemma in that
+case. Across the whole texts, ल्यप् forms in आ- with a bare-root lemma: 27 → 0
+(Rāmāyaṇa), 37 → 0 (Bhāgavata), 65 → 0 (Mahābhārata); every text still 0
+problems.
