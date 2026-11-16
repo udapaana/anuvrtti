@@ -46,7 +46,7 @@ if (work === 'ramayana') {
   // Ambuda's Bhāgavata marks pādas of a long metre with $ & %, and repeats a
   // long line once; the id is the closing marker (BhP_01.01.004, * on a few)
   for (const b of readTei('sa_bhAgavatapurANa')) {
-    if (b.kind !== 'verse' || !b.ref) continue;
+    if (b.kind === 'head' || !b.ref) continue; // numbered prose (skandha 5) counts
     const ls = b.lines.map((l) => tidy(l.replace(/[$&%]/g, ' '))).filter(Boolean).filter((l, i, a) => l !== a[i - 1]);
     verses.set(b.ref.replace(/\*$/, ''), ls);
   }

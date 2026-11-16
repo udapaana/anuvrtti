@@ -97,11 +97,17 @@ export function readTei(slug: string): Block[] {
     else if (tok.startsWith('<lg')) verse(tok.slice(0, tok.indexOf('>') + 1), tok);
     else if (tok.startsWith('<p')) {
       // a <p> may hold verses (Bhāgavata: a speaker's line, then his verse)
+      // — or loose <l>s with no <lg> (the Bhāgavata's stotras, its starred
+      // verses): a run of them is a verse, closed by the line carrying a marker
       const inner = tok.slice(tok.indexOf('>') + 1, -4);
       let last = 0;
-      for (const v of inner.matchAll(/<lg\b[^>]*>[\s\S]*?<\/lg>/g)) {
+      for (const v of inner.matchAll(/<lg\b[^>]*>[\s\S]*?<\/lg>|(?:<l\b[^>]*>[\s\S]*?<\/l>\s*)+/g)) {
         prose(inner.slice(last, v.index));
-        verse(v[0].slice(0, v[0].indexOf('>') + 1), v[0]);
+        if (v[0].startsWith('<lg')) verse(v[0].slice(0, v[0].indexOf('>') + 1), v[0]);
+        else {
+          for (const l of v[0].matchAll(/<l\b[^>]*>([\s\S]*?)<\/l>/g)) { loose.push(clean(l[1])); if (takeRefNow(loose)) flushLoose(); }
+          flushLoose();
+        }
         last = v.index! + v[0].length;
       }
       prose(inner.slice(last));

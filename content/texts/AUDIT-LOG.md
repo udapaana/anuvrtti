@@ -262,3 +262,43 @@ overrides with a note.
 **Still open.** Six readings the adjudicator called best-effort on damaged
 print (1038, 4123, 9245, 1832, 7546, 17341/17400); and the whole set is to
 be replaced by the Kumbhakonam text when it comes (TODO.md).
+
+---
+
+## 2026-11-16 · Calibrating the screeners, on the Nītiśataka
+
+**Question.** Which cheap checks can stand in for a careful reader, and how
+much do they miss?
+
+**Answer key.** The Nītiśataka rebuilt as it stood after its author pass,
+before either audit (overrides from commit e88e728, no particle table), set
+against today's: 50 words whose analysis or segmentation the audits changed,
+193 whose gloss alone they changed.
+
+**Measured** (a "catch" is a flag on a word the audits corrected):
+
+| tier | flags | analysis errors caught | gloss errors caught |
+|---|---|---|---|
+| mechanical (`audit-mechanical.ts`: derive the form the analysis claims) | 41 words | 3 / 50 | 7 / 193 |
+| Haiku screener, one pass over the text | 93 | 15 / 50 (30%) | 43 / 193 (22%) |
+| Sonnet screener, verses 1–27 only | 12 | 1 / 6 | 3 / 37 |
+| Haiku screener, verses 1–27 (same range) | 9 | 1 / 6 | 3 / 37 |
+
+**Read.** The mechanical check is free but sees little: most errors make a
+real form (भूषणम् is accusative masculine and nominative neuter alike). One
+screening pass catches a quarter to a third of errors, Haiku and Sonnet alike —
+the method, not the model, is the limit. What caught the errors was the
+exhaustive second review of every unreviewed pada (the second audit above).
+
+Of the screeners' high-confidence flags on words the audits had left alone,
+most were wrong: six were deliberate emendations whose notes the worklist did
+not show (fixed: `text-worklist.ts` now prints notes), others misread a
+bahuvrīhi or an ablative. Two were real misses of both strong audits, now
+fixed: verse 69 हि glossed "and" (→ "for, indeed"), verse 98 कृथाः glossed
+"place, put" (→ "do"). Independent cheap eyes find what careful ones missed;
+they cannot replace them.
+
+**So the audit of a text is** (`docs/AUDITING.md`): the mechanical check;
+the exhaustive strong review of every pada an author did not touch; Haiku
+screeners as an extra independent layer, each flag judged by a strong model;
+and a blind strong sample to measure what remains.

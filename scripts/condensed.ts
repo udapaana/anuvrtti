@@ -44,7 +44,8 @@ type Line = { id: string; text: string };
 const linesOf = (blocks: Block[], idOf: (b: Block) => string | undefined, clean = (s: string) => s): Line[] => {
   const out: Line[] = [];
   for (const b of blocks) {
-    if (b.kind !== 'verse') continue;
+    // a numbered prose passage (the Bhāgavata's gadya) is edition text as much as a verse
+    if (b.kind === 'head' || (b.kind === 'prose' && !idOf(b))) continue;
     const id = idOf(b);
     if (!id) continue;
     let prev = '';

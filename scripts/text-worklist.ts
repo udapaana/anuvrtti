@@ -34,8 +34,8 @@ if (!onlyProblems) {
     console.log(`\n## ${s.id}${(src as any).scan ? '  (read from the book\'s scan)' : ''}`);
     for (const l of src.lines ?? [src.text ?? '']) console.log(`   ${l}`);
     for (const w of s.words) {
-      const ps = w.padas.map((p) => `${p.form}${p.member ? '-' : ''} | ${p.lemma} | ${p.a} | ${p.gloss ?? '—'}  (${p.source})`);
-      console.log(`  ${w.surface}: ${ps.join('  ‖  ')}`);
+      const ps = w.padas.map((p: any) => `${p.form}${p.member ? '-' : ''} | ${p.lemma} | ${p.a} | ${p.gloss ?? '—'}  (${p.source})${p.note ? `  [note: ${p.note}]` : ''}`);
+      console.log(`  ${w.surface}: ${ps.join('  ‖  ')}${(w as any).note ? `\n      [note on the word: ${(w as any).note}]` : ''}`);
     }
   }
 }
