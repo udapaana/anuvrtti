@@ -1,0 +1,436 @@
+# Mahābhārata condensed, Ādi adi-1-119-6 – adi-1-142-22 (batch m02). Format: see the
+# header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+# SARIT prints the Kumbhakonam text in saṃhitā without compound hyphens; the
+# compound boundaries below are the author's. SARIT's typing slips stay in
+# text.yaml and are read correctly here, each with a note.
+
+'adi-1-119-6':
+  कुलीना:
+    split:
+      - { form: कुलीनाः, lemma: कुलीन, a: प्रथमा बहुवचन स्त्रीलिङ्ग, gloss: "of good family, well-born" }
+    note: "कुलीनाः before र: a visarga after आ drops before a voiced sound (8.3.17, 8.3.22)."
+  रूपवत्यश्च:
+    fix:
+      1: { gloss: "beautiful" }
+  कन्याः:
+    split:
+      - { form: कन्याः, lemma: कन्या, a: प्रथमा बहुवचन स्त्रीलिङ्ग, gloss: "maidens" }
+  सर्वशः:
+    fix:
+      1: { gloss: "in every respect" }
+  उचिताश्चैव:
+    fix:
+      1: { gloss: "suitable, fit" }
+    note: "उचिताः agrees with ते … क्षत्रियर्षभाः: 'and those chiefs of warriors (the girls' houses) are fit for alliance with us'."
+  संबन्धे:
+    split:
+      - { form: संबन्धे, lemma: संबन्ध, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "for alliance (by marriage)" }
+  क्षत्रियर्षभाः:
+    fix:
+      1: { form: क्षत्रिय, lemma: क्षत्रिय, member: true, gloss: "a warrior, kṣatriya" }
+      2: { gloss: "bull; at a compound's end, chief of (क्षत्रियर्षभ 'chief among warriors')" }
+
+'adi-1-119-7':
+  मन्ये:
+    split:
+      - { form: मन्ये, lemma: मन्, a: लट् उत्तमपुरुष एकवचन आत्मनेपद, gloss: "I think" }
+  वरयितव्यास्ता:
+    split:
+      - { form: वरयितव्याः, lemma: वृ, a: प्रथमा बहुवचन स्त्रीलिङ्ग तव्य णिच्, gloss: "to be chosen, sought in marriage" }
+      - { form: ताः, lemma: तद्, a: प्रथमा बहुवचन स्त्रीलिङ्ग }
+  धीमतां:
+    fix:
+      1: { gloss: "of the wise" }
+  वर:
+    fix:
+      1: { gloss: "best (धीमतां वर 'best of the wise')" }
+  सन्तानार्थं:
+    fix:
+      1: { form: सन्तान, lemma: संतान, member: true, gloss: "offspring, continuance of the line" }
+      2: { a: द्वितीया एकवचन पुंलिङ्ग, gloss: "for the sake of (सन्तानार्थम् 'for offspring')" }
+  कुलस्यास्य:
+    fix:
+      1: { gloss: "family, lineage" }
+      2: { a: षष्ठी एकवचन नपुंसकलिङ्ग }
+  यद्वा:
+    split:
+      - { form: यत्, lemma: यद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "what" }
+      - { form: वा, lemma: वा, a: अव्यय, gloss: "or" }
+  विदुर:
+    fix:
+      1: { gloss: "Vidura" }
+  मन्यसे:
+    fix:
+      1: { gloss: "you think" }
+  विदुर#2:
+    fix:
+      1: { gloss: "Vidura" }
+  उवाच:
+    fix:
+      1: { gloss: "said" }
+
+'adi-1-119-8':
+  भवान्पिता:
+    fix:
+      1: { form: भवान्, lemma: भवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "you (respectful)" }
+      2: { gloss: "father" }
+  भावन्माता:
+    split:
+      - { form: भवान्, lemma: भवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "you (respectful)" }
+      - { form: माता, lemma: मातृ, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "mother" }
+    note: "SARIT prints भावन्; the line's threefold भवान् … भवान् … भवान् needs भवान्. Read as a typing slip."
+  भवान्नः:
+    split:
+      - { form: भवान्, lemma: भवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "you (respectful)" }
+      - { form: नः, lemma: अस्मद्, a: षष्ठी बहुवचन, gloss: "our" }
+  परमो:
+    fix:
+      1: { gloss: "highest, supreme" }
+  गुरुः:
+    fix:
+      1: { gloss: "teacher, elder" }
+  तस्मात्स्वयं:
+    fix:
+      1: { a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "therefore" }
+  कुलस्यास्य:
+    fix:
+      1: { gloss: "family, lineage" }
+      2: { a: षष्ठी एकवचन नपुंसकलिङ्ग }
+  विचार्य:
+    split:
+      - { form: विचार्य, lemma: विचर्, a: अव्यय ल्यप् णिच्, gloss: "having considered" }
+  यद्धितम्:
+    split:
+      - { form: यत्, lemma: यद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "what" }
+      - { form: हितम्, lemma: हित, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "good, beneficial" }
+  वैशंपायन:
+    split:
+      - { form: वैशंपायनः, lemma: वैशंपायन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Vaiśaṃpāyana, the narrator" }
+  उवाच:
+    fix:
+      1: { gloss: "said" }
+
+'adi-1-119-15':
+  नाभ्यसूयां:
+    fix:
+      2: { gloss: "resentment, finding fault" }
+    note: "Gāndhārī blindfolds herself: '(I will show) no resentment toward my husband' — that is, she will not see where he cannot. अभ्यसूयाम् is read as the noun, with the verb left unsaid."
+  पतिमहमित्येवं:
+    fix:
+      1: { gloss: "husband" }
+  कृतनिश्चया:
+    split:
+      - { form: कृत, lemma: कृत, member: true, gloss: "made" }
+      - { form: निश्चया, lemma: निश्चय, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "resolve (कृतनिश्चया 'having made up her mind')" }
+    note: "A बहुव्रीहि of Gāndhārī, so the feminine stem निश्चया."
+  ततो:
+    fix:
+      1: { gloss: "then" }
+  गान्धारराजस्य:
+    fix:
+      1: { gloss: "the king of Gāndhāra (Subala)" }
+  पुत्रः:
+    fix:
+      1: { gloss: "son" }
+  शकुनिरभ्ययात्:
+    fix:
+      1: { gloss: "Śakuni" }
+      2: { gloss: "came" }
+
+'adi-1-119-16':
+  परया:
+    fix:
+      1: { lemma: पर, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "supreme, great" }
+  लक्ष्म्या:
+    fix:
+      1: { gloss: "beauty, splendour" }
+  युक्तामादाय:
+    fix:
+      1: { lemma: युज्, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "endowed (with)" }
+      2: { a: अव्यय ल्यप्, gloss: "taking, bringing" }
+  कौरवान्:
+    fix:
+      1: { gloss: "the Kauravas, the Kuru house" }
+  ददौ:
+    fix:
+      1: { gloss: "gave" }
+  परमसत्कृताम्:
+    split:
+      - { form: परम, lemma: परम, member: true, gloss: "highest" }
+      - { form: सत्कृताम्, lemma: सत्कृ, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "honoured (परमसत्कृता 'received with the highest honour')" }
+  भीष्मस्यानुमते:
+    fix:
+      1: { gloss: "Bhīṣma" }
+      2: { form: अनुमते, lemma: अनुमत, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "consent (भीष्मस्य अनुमते 'with Bhīṣma's consent')" }
+  विवाहं:
+    fix:
+      1: { gloss: "marriage, wedding" }
+  समकारयत्:
+    split:
+      - { form: समकारयत्, lemma: संकृ, a: लङ् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "had (it) performed" }
+
+'adi-1-120-1':
+  शूरो:
+    fix:
+      1: { gloss: "Śūra, a Yādava chief" }
+  यदुश्रेष्ठो:
+    split:
+      - { form: यदु, lemma: यदु, member: true, gloss: "Yadu, the Yādavas" }
+      - { form: श्रेष्ठः, lemma: श्रेष्ठ, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "best (यदुश्रेष्ठ 'chief of the Yadus')" }
+  वसुदेवपिताऽभवत्:
+    split:
+      - { form: वसुदेव, lemma: वसुदेव, member: true, gloss: "Vasudeva" }
+      - { form: पिता, lemma: पितृ, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "father (वसुदेवपिता 'Vasudeva's father')" }
+      - { form: अभवत्, lemma: भू, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "was" }
+  कन्या:
+    fix:
+      1: { gloss: "daughter" }
+  पृथा:
+    fix:
+      1: { gloss: "Pṛthā (later Kuntī)" }
+  रूपेणाप्रतिमा:
+    fix:
+      1: { gloss: "beauty" }
+      2: { gloss: "matchless" }
+  भुवि:
+    split:
+      - { form: भुवि, lemma: भू, a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: "on earth" }
+
+'adi-1-121-9':
+  यथागतं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "as they had come, the way they came" }
+  समाजग्मुर्गजैरश्वै:
+    fix:
+      1: { gloss: "went (back) together" }
+      3: { gloss: "horses" }
+  रथैस्तथा:
+    fix:
+      1: { gloss: "chariots" }
+      2: { gloss: "and also" }
+  ततस्तस्याः:
+    split:
+      - { form: ततः, lemma: ततस्, a: अव्यय, gloss: "then" }
+      - { form: तस्याः, lemma: तद्, a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "her" }
+  पिता:
+    fix:
+      1: { gloss: "father (Kuntibhoja)" }
+  राजन्विवाहमकरोत्प्रभुः:
+    fix:
+      1: { gloss: "O king" }
+      2: { gloss: "marriage, wedding" }
+      3: { gloss: "made, performed" }
+      4: { gloss: "the lord" }
+
+'adi-1-122-2':
+  सोऽमात्यैः:
+    fix:
+      2: { gloss: "ministers" }
+  स्थविरैः:
+    fix:
+      1: { gloss: "elders" }
+  ब्राह्मणैश्च:
+    fix:
+      1: { gloss: "brahmins" }
+  बलेन:
+    fix:
+      1: { gloss: "army, force" }
+  चतुरङ्गेण:
+    fix:
+      1: { gloss: "fourfold (elephants, chariots, horse and foot)" }
+  ययौ:
+    fix:
+      1: { gloss: "went" }
+  मद्रपतेः:
+    split:
+      - { form: मद्र, lemma: मद्र, member: true, gloss: "the Madras" }
+      - { form: पतेः, lemma: पति, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "lord (मद्रपति 'king of the Madras', Śalya)" }
+  पुरम्:
+    fix:
+      1: { lemma: पुर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "city" }
+
+'adi-1-122-17':
+  माद्रीमुपादाय:
+    split:
+      - { form: माद्रीम्, lemma: माद्री, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "Mādrī, the Madra princess" }
+      - { form: उपादाय, lemma: उपादा, a: अव्यय ल्यप्, gloss: "taking (with him)" }
+  भीष्मः:
+    fix:
+      1: { gloss: "Bhīṣma" }
+  सागरगासुतः:
+    split:
+      - { form: सागरगा, lemma: सागरगा, member: true, gloss: "the sea-goer, the Gaṅgā" }
+      - { form: सुतः, lemma: सुत, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "son (सागरगासुत 'son of the Gaṅgā')" }
+  आजगाम:
+    fix:
+      1: { gloss: "came (back)" }
+  पुरीं:
+    fix:
+      1: { gloss: "city" }
+  धीमान्प्रविष्टो:
+    fix:
+      1: { gloss: "the wise one" }
+      2: { gloss: "entered" }
+  गजसाह्वयम्:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "Gajasāhvaya, the city named for the elephant (Hāstinapura)" }
+
+'adi-1-122-18':
+  तत:
+    fix:
+      1: { gloss: "then" }
+  इष्टेऽहनि:
+    fix:
+      1: { lemma: इष्, a: सप्तमी एकवचन नपुंसकलिङ्ग क्त, gloss: "chosen, auspicious" }
+      2: { gloss: "day" }
+  प्राप्ते:
+    fix:
+      1: { a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "come, arrived" }
+    note: "A locative absolute: इष्टे अहनि प्राप्ते, 'when the chosen day had come'."
+  मुहूर्ते:
+    fix:
+      1: { gloss: "at an hour (an auspicious moment)" }
+  साधुसंमते:
+    split:
+      - { form: साधु, lemma: साधु, member: true, gloss: "the good, the wise" }
+      - { form: संमते, lemma: संमत, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "approved (साधुसंमत 'approved by the wise')" }
+  विवाहं:
+    fix:
+      1: { gloss: "marriage, wedding" }
+  कारायामास:
+    split:
+      - { form: कारयामास, lemma: कृ, a: लिट् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "had (it) performed" }
+    note: "SARIT prints कारायामास; the periphrastic perfect of the causative is कारयाम् आस. Read as a typing slip."
+  भीष्मः:
+    fix:
+      1: { gloss: "Bhīṣma" }
+  पाण्डोर्महात्मनः:
+    fix:
+      1: { gloss: "Pāṇḍu" }
+      2: { gloss: "great-souled" }
+  जग्राह:
+    fix:
+      1: { gloss: "took" }
+  विधिवत्पाणिं:
+    fix:
+      2: { gloss: "hand" }
+  माद्र्याः:
+    fix:
+      1: { gloss: "Mādrī" }
+  पाण्डुर्नराधिपः:
+    fix:
+      1: { gloss: "Pāṇḍu" }
+      2: { gloss: "lord of men, king" }
+
+'adi-1-122-21':
+  कौरवो:
+    fix:
+      1: { gloss: "the Kaurava, Kuru's descendant" }
+  राजा:
+    fix:
+      1: { gloss: "king" }
+  विहृत्य:
+    fix:
+      1: { a: अव्यय ल्यप्, gloss: "having taken his pleasure" }
+  त्रिदशा:
+    split:
+      - { form: त्रिदशाः, lemma: त्रिदश, a: द्वितीया बहुवचन स्त्रीलिङ्ग, gloss: "thirty" }
+    note: "त्रिदशाः निशाः, an accusative of time: 'for thirty nights'."
+  निशाः:
+    fix:
+      1: { a: द्वितीया बहुवचन स्त्रीलिङ्ग, gloss: "nights" }
+  जिगीषया:
+    fix:
+      1: { gloss: "with the wish to conquer" }
+  महीं:
+    fix:
+      1: { gloss: "the earth" }
+  पाण्डुर्निरक्रामत्पुरात्प्रभो:
+    fix:
+      1: { gloss: "Pāṇḍu" }
+      2: { gloss: "went out, set out" }
+      3: { gloss: "city" }
+      4: { gloss: "O lord" }
+
+'adi-1-122-32':
+  तेन:
+    fix:
+      1: { gloss: "by him" }
+  निर्जिताः:
+    fix:
+      1: { gloss: "conquered" }
+  सर्वे:
+    fix:
+      1: { gloss: "all" }
+  पृथिव्यां:
+    fix:
+      1: { gloss: "on earth" }
+  सर्वपार्थिवाः:
+    split:
+      - { form: सर्व, lemma: सर्व, member: true, gloss: "all" }
+      - { form: पार्थिवाः, lemma: पार्थिव, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "kings" }
+  तमेकं:
+    fix:
+      2: { gloss: "alone, the one" }
+  मेनिरे:
+    fix:
+      1: { gloss: "considered, held" }
+  शूरं:
+    fix:
+      1: { gloss: "hero" }
+  देवेष्विव:
+    fix:
+      1: { gloss: "among the gods" }
+  पुरन्दरम्:
+    fix:
+      1: { gloss: "Purandara (Indra)" }
+
+'adi-1-123-6':
+  संप्रयुक्तस्तु:
+    split:
+      - { form: संप्रयुक्तः, lemma: संप्रयुज्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "joined, accompanied" }
+      - { form: तु, lemma: तु, a: अव्यय }
+  कुन्त्या:
+    fix:
+      1: { gloss: "Kuntī" }
+  माद्र्या:
+    fix:
+      1: { gloss: "Mādrī" }
+  भरतर्षभ:
+    fix:
+      1: { form: भरत, lemma: भरत, member: true, gloss: "Bharata, his line" }
+      2: { gloss: "bull (भरतर्षभ 'best of the Bharatas', Janamejaya)" }
+  जिततन्द्रिस्तदा:
+    split:
+      - { form: जित, lemma: जित, member: true, gloss: "conquered" }
+      - { form: तन्द्रिः, lemma: तन्द्रि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "sloth (जिततन्द्रि 'who had overcome sloth')" }
+      - { form: तदा, lemma: तदा, a: अव्यय, gloss: "then" }
+  पाण्डुर्बभूव:
+    fix:
+      1: { gloss: "Pāṇḍu" }
+      2: { gloss: "became" }
+  वनगोचरः:
+    fix:
+      1: { gloss: "a forest-dweller" }
+
+'adi-1-126-1':
+  पारसवीं:
+    split:
+      - { form: पारसवीम्, lemma: पारसवी, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "born of a brahmin father and a śūdra mother" }
+  कन्यां:
+    fix:
+      1: { gloss: "daughter" }
+  देवकस्य:
+    fix:
+      1: { gloss: "Devaka (a king)" }
+  रूपयौवनसंपन्नां:
+    split:
+      - { form: रूप, lemma: रूप, member: true, gloss: "beauty" }
+      - { form: यौवन, lemma: यौवन, member: true, gloss: "youth" }
+      - { form: संपन्नाम्, lemma: संपद्, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "endowed with" }
+  सुश्रावापगासुतः:
+    split:
+      - { form: शुश्राव, lemma: श्रु, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "heard (of)" }
+      - { form: आपगा, lemma: आपगा, member: true, gloss: "the river (the Gaṅgā)" }
+      - { form: सुतः, lemma: सुत, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "son (आपगासुत 'son of the river', Bhīṣma)" }
+    note: "SARIT prints सुश्राव; the perfect of श्रु is शुश्राव. Read as a typing slip."
