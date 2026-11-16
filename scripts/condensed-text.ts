@@ -12,8 +12,8 @@
  * recension) are left out and counted in the header.
  *
  * Section ids are kāṇḍa.sarga.verse, from the edition id: R_1.001.001 → 1.1.1
- * (the Baroda critical edition), RamS_2,1.1 → 2.1.1 (Krishnacharya's Southern
- * Ayodhyākāṇḍa). A verse the book quotes twice gets "#2". Parts are the kāṇḍas.
+ * (the Baroda critical edition, Ambuda's GRETIL text). A verse the book quotes
+ * twice gets "#2". Parts are the kāṇḍas.
  */
 import * as fs from 'fs';
 import * as path from 'path';
@@ -31,15 +31,10 @@ const sel = JSON.parse(fs.readFileSync(path.join(DIR, 'selection.json'), 'utf-8'
 const verses = new Map<string, string[]>();
 const tidy = (l: string) => l.replace(/[|/।॥]+/g, ' ').replace(/\s+/g, ' ').trim();
 for (const b of readTei('sa_rAmAyaNa')) if (b.kind === 'verse' && b.id) verses.set(b.id, b.lines.map(tidy).filter(Boolean));
-for (const b of readTei('sa_vAlmIki-rAmAyaNa-southern-2'))
-  if (b.kind === 'verse' && b.ref) verses.set(b.ref, b.lines.filter((l) => !/^Rāmāyaṇa,/.test(l)).map(tidy).filter(Boolean));
 
 const sectionId = (eid: string) => {
   let m = eid.match(/^R_(\d)\.(\d+)\.(\d+)$/);
   if (m) return `${+m[1]}.${+m[2]}.${+m[3]}`;
-  // Krishnacharya marks an inserted verse with * (RamS_2,9.16*); the id keeps it
-  m = eid.match(/^RamS_(\d),(\d+)\.(\d+)(\*?)$/);
-  if (m) return `${+m[1]}.${+m[2]}.${+m[3]}${m[4]}`;
   throw new Error(`unexpected edition id ${eid}`);
 };
 const KANDA = ['', 'बालकाण्डम्', 'अयोध्याकाण्डम्', 'अरण्यकाण्डम्', 'किष्किन्धाकाण्डम्', 'सुन्दरकाण्डम्', 'युद्धकाण्डम्', 'उत्तरकाण्डम्'];
@@ -80,20 +75,20 @@ const y: string[] = [
   '# selection belong in a review file, to vidyut\'s analysis in overrides.',
   '#',
   '# Every verse is the edition\'s, not the book\'s OCR: the Baroda critical edition',
-  '# (Ambuda\'s GRETIL text) for every kāṇḍa but the Ayodhyā, which is T. R.',
-  '# Krishnacharya\'s Southern recension (Kumbhakonam, 1905). `lines` is Devanagari',
-  '# saṃhitā, a line to a half-verse; `iast` the edition\'s lines exactly.',
+  '# (Ambuda\'s GRETIL text). `lines` is Devanagari saṃhitā, a line to a half-verse;',
+  '# `iast` the edition\'s lines exactly. The book follows the Southern/vulgate',
+  '# text; a Kumbhakonam edition to supply its other verses is still owed.',
   '#',
   `# Left out: ${left.unmatched} entries the matcher could not place, and ${left.elsewhere} found only`,
-  '# in the Southern/vulgate text, which has no digital edition outside the Ayodhyā.',
+  '# in the Southern/vulgate text, which has no digital edition here yet.',
   'id: ramayana-condensed',
   'title: रामायणम् (संक्षिप्तम्)',
   'title_en: "The Rāmāyaṇa, condensed in the poet\'s own words"',
   'work: रामायणम्',
   `place: ${sections.length} verses chosen by P. P. S. Sastri (1935), Bāla to Yuddha, in order`,
   'source:',
-  '  edition: "Vālmīki, Rāmāyaṇa: the Baroda critical edition via GRETIL and Ambuda; the Ayodhyākāṇḍa in T. R. Krishnacharya\'s Southern recension (Kumbhakonam, 1905). Selection from P. P. S. Sastri, Valmiki Ramayana Condensed in the Poet\'s Own Words (G. A. Natesan, Madras, 1935)"',
-  '  file: sa_rAmAyaNa, sa_vAlmIki-rAmAyaNa-southern-2 # data/texts.json (sha256-pinned)',
+  '  edition: "Vālmīki, Rāmāyaṇa: the Baroda critical edition via GRETIL and Ambuda. Selection from P. P. S. Sastri, Valmiki Ramayana Condensed in the Poet\'s Own Words (G. A. Natesan, Madras, 1935)"',
+  '  file: sa_rAmAyaNa # data/texts.json (sha256-pinned)',
   '  ref: by section id, kāṇḍa.sarga.verse',
   '  licence: GRETIL text, CC BY-NC-SA 4.0 (per its header)',
   'parts:',

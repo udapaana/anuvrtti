@@ -217,3 +217,17 @@ its verse, and verse 66 is a `<p>` of its own. The TEI reader reports markup
 as it is; the Nītiśataka builder mends these and says so in its header. The
 Pañcatantra has a stray `>` inside a word (`praṇay>atirekād`), outside the
 tale we carry.
+
+---
+
+## 2026-11-16 · Rāmāyaṇa sources: the "Southern" Ayodhyā is not
+
+GRETIL's `sa_vAlmIki-rAmAyaNa-southern-2`, headed as T. R. Krishnacharya's
+Southern recension (Kumbhakonam, 1905), was compared verse by verse with the
+critical Ayodhyākāṇḍa: 2,624 of 3,160 verses identical, most of the rest a
+typo or a numbering shifted one place, 86 absent. It is the critical text,
+renumbered, not the Southern recension. It stays vendored, with this note,
+and is not used. The condensed Rāmāyaṇa is matched into the critical text
+throughout; its 15 placements in the file were mapped to the critical verse
+of the same number (at most two letters apart). The 214 verses the 1935 book
+quotes from the vulgate wait for a Kumbhakonam text.

@@ -243,6 +243,9 @@ export function matchCondensed(opts: MatchOptions) {
     ocr_verse_lines: O.length,
     entries: entries.length,
     matched: entries.length - count('unmatched'),
+    // matched includes verses a review found but not in this edition; placed does not
+    placed: entries.filter((e) => e[ID]).length,
+    elsewhere: entries.filter((e) => !e[ID] && (e.elsewhere || e.critical)).length,
     high: count('high'), medium: count('medium'), low: count('low'), reviewed: count('reviewed'), unmatched: count('unmatched'),
     [`by_${GROUP}`]: Object.fromEntries(order.filter((p) => per[p]).map((p) => [p, { verses: per[p].high + per[p].medium + per[p].low + per[p].reviewed, ...per[p] }])),
   };
@@ -255,7 +258,7 @@ export function matchCondensed(opts: MatchOptions) {
     entries.map((e) => '  ' + JSON.stringify({ ...e, edition: undefined })).join(',\n') + '\n ]\n}\n');
 
   // ── report ────────────────────────────────────────────────────────────────
-  console.log(`OCR verse lines ${O.length} → ${entries.length} entries: ${summary.matched} matched (high ${summary.high}, medium ${summary.medium}, reviewed ${summary.reviewed}, low ${summary.low}), ${summary.unmatched} unmatched`);
+  console.log(`OCR verse lines ${O.length} → ${entries.length} entries: ${summary.placed} placed in this edition, ${summary.elsewhere} found only elsewhere, ${summary.unmatched} unmatched (high ${summary.high}, medium ${summary.medium}, reviewed ${summary.reviewed}, low ${summary.low})`);
   for (const [p, v] of Object.entries(summary[`by_${GROUP}`] as Record<string, any>)) console.log(`  ${p.padEnd(9)} ${String(v.verses).padStart(4)}  (h ${v.high} m ${v.medium} l ${v.low})`);
   console.log('\nunmatched, for manual review:');
   for (const e of entries) if (!e[ID]) console.log(`  #${e.seq} ocr:${e.ocr_line}  ${e.ocr.slice(0, 110)}`);

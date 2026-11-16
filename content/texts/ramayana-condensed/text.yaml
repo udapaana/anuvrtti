@@ -6,20 +6,20 @@
 # selection belong in a review file, to vidyut's analysis in overrides.
 #
 # Every verse is the edition's, not the book's OCR: the Baroda critical edition
-# (Ambuda's GRETIL text) for every kāṇḍa but the Ayodhyā, which is T. R.
-# Krishnacharya's Southern recension (Kumbhakonam, 1905). `lines` is Devanagari
-# saṃhitā, a line to a half-verse; `iast` the edition's lines exactly.
+# (Ambuda's GRETIL text). `lines` is Devanagari saṃhitā, a line to a half-verse;
+# `iast` the edition's lines exactly. The book follows the Southern/vulgate
+# text; a Kumbhakonam edition to supply its other verses is still owed.
 #
-# Left out: 246 entries the matcher could not place, and 0 found only
-# in the Southern/vulgate text, which has no digital edition outside the Ayodhyā.
+# Left out: 0 entries the matcher could not place, and 214 found only
+# in the Southern/vulgate text, which has no digital edition here yet.
 id: ramayana-condensed
 title: रामायणम् (संक्षिप्तम्)
 title_en: "The Rāmāyaṇa, condensed in the poet's own words"
 work: रामायणम्
-place: 1352 verses chosen by P. P. S. Sastri (1935), Bāla to Yuddha, in order
+place: 1369 verses chosen by P. P. S. Sastri (1935), Bāla to Yuddha, in order
 source:
-  edition: "Vālmīki, Rāmāyaṇa: the Baroda critical edition via GRETIL and Ambuda; the Ayodhyākāṇḍa in T. R. Krishnacharya's Southern recension (Kumbhakonam, 1905). Selection from P. P. S. Sastri, Valmiki Ramayana Condensed in the Poet's Own Words (G. A. Natesan, Madras, 1935)"
-  file: sa_rAmAyaNa, sa_vAlmIki-rAmAyaNa-southern-2 # data/texts.json (sha256-pinned)
+  edition: "Vālmīki, Rāmāyaṇa: the Baroda critical edition via GRETIL and Ambuda. Selection from P. P. S. Sastri, Valmiki Ramayana Condensed in the Poet's Own Words (G. A. Natesan, Madras, 1935)"
+  file: sa_rAmAyaNa # data/texts.json (sha256-pinned)
   ref: by section id, kāṇḍa.sarga.verse
   licence: GRETIL text, CC BY-NC-SA 4.0 (per its header)
 parts:
@@ -276,6 +276,12 @@ sections:
       - "तदहं यष्टुमिच्छामि शास्त्रदृष्टेन कर्मणा"
       - "ऋषिपुत्रप्रभावेन कामान्प्राप्स्यामि चाप्यहम्"
     iast: "tad ahaṃ yaṣṭum icchāmi śāstradṛṣṭena karmaṇā | ṛṣiputraprabhāvena kāmān prāpsyāmi cāpy aham"
+  - id: '1.11.10'
+    kind: verse
+    lines:
+      - "ततः साध्विति तद्वाक्यं ब्राह्मणाः प्रत्यपूजयन्"
+      - "वसिष्ठप्रमुखाः सर्वे पार्थिवस्य मुखाच्च्युतम्"
+    iast: "tataḥ sādhv iti tad vākyaṃ brāhmaṇāḥ pratyapūjayan | vasiṣṭhapramukhāḥ sarve pārthivasya mukhāc cyutam"
   - id: '1.11.12'
     kind: verse
     lines:
@@ -422,6 +428,12 @@ sections:
       - "वसिष्ठः परमप्रीतो नामानि कृतवांस्तदा"
       - "तेषां जन्मक्रियादीनि सर्वकर्माण्यकारयत्"
     iast: "saumitriṃ lakṣmaṇam iti śatrughnam aparaṃ tathā | vasiṣṭhaḥ paramaprīto nāmāni kṛtavāṃs tadā | teṣāṃ janmakriyādīni sarvakarmāṇy akārayat"
+  - id: '1.17.16'
+    kind: verse
+    lines:
+      - "रामस्य लोकरामस्य भ्रातुर्ज्येष्ठस्य नित्यशः"
+      - "सर्वप्रियकरस्तस्य रामस्यापि शरीरतः"
+    iast: "rāmasya lokarāmasya bhrātur jyeṣṭhasya nityaśaḥ | sarvapriyakaras tasya rāmasyāpi śarīrataḥ"
   - id: '1.17.20'
     kind: verse
     lines:
@@ -1122,7 +1134,7 @@ sections:
       - "तेषामपि महातेजा रामो रतिकरः पितुः"
       - "स्वयम्भूरिव भूतानां बभूव गुणवत्तरः"
     iast: "teṣām api mahātejā rāmo ratikaraḥ pituḥ | svayambhūr iva bhūtānāṃ babhūva guṇavattaraḥ"
-  - id: '2.1.33'
+  - id: '2.1.34'
     kind: verse
     lines:
       - "तं समीक्ष्य महाराजो युक्तं समुदितैर्गुणैः"
@@ -1144,8 +1156,8 @@ sections:
     kind: verse
     lines:
       - "इदं शरीरं कृत्स्नस्य लोकस्य चरता हितम्"
-      - "पाण्डुरस्यातपत्रस्य छायायां जरितं मया"
-    iast: "idaṃ śarīraṃ kṛtsnasya lokasya caratā hitam | pāṇḍur asyātapatrasya chāyāyāṃ jaritaṃ mayā"
+      - "पाण्डुरस्यातपत्रस्यच्छायायां जरितं मया"
+    iast: "idaṃ śarīraṃ kṛtsnasya lokasya caratā hitam | pāṇḍur asyātapatrasyac chāyāyāṃ jaritaṃ mayā"
   - id: '2.2.9'
     kind: verse
     lines:
@@ -1216,8 +1228,8 @@ sections:
     kind: verse
     lines:
       - "स तथेति प्रतिज्ञाय सुमन्त्रो राजशासनात्"
-      - "रामं तत्रानयांचक्रे रथेन रथिनां वरम्"
-    iast: "sa tatheti pratijñāya sumantro rājaśāsanāt | rāmaṃ tatrānayāṃcakre rathena rathināṃ varam"
+      - "रामं तत्रानयां चक्रे रथेन रथिनां वरम्"
+    iast: "sa tatheti pratijñāya sumantro rājaśāsanāt | rāmaṃ tatrānayāṃ cakre rathena rathināṃ varam"
   - id: '2.3.21'
     kind: verse
     lines:
@@ -1330,16 +1342,16 @@ sections:
   - id: '2.7.5'
     kind: verse
     lines:
-      - "राममाता धनं किं नु जनेभ्यः सम्प्रयच्छति"
+      - "राममाता धनं किं नु जनेभ्यः संप्रयच्छति"
       - "अतिमात्रं प्रहर्षोऽयं किं जनस्य च शंस मे"
-      - "कारयिष्यति किं वापि सम्प्रहृष्टो महीपतिः"
-    iast: "rāmamātā dhanaṃ kiṃ nu janebhyaḥ samprayacchati | atimātraṃ praharṣo 'yaṃ kiṃ janasya ca śaṃsa me | kārayiṣyati kiṃ vāpi samprahṛṣṭo mahīpatiḥ"
+      - "कारयिष्यति किं वापि संप्रहृष्टो महीपतिः"
+    iast: "rāmamātā dhanaṃ kiṃ nu janebhyaḥ saṃprayacchati | atimātraṃ praharṣo 'yaṃ kiṃ janasya ca śaṃsa me | kārayiṣyati kiṃ vāpi saṃprahṛṣṭo mahīpatiḥ"
   - id: '2.7.8'
     kind: verse
     lines:
       - "धात्र्यास्तु वचनं श्रुत्वा कुब्जा क्षिप्रममर्षिता"
-      - "कैलासशिखराकारात्प्रासादादवरोहत"
-    iast: "dhātryās tu vacanaṃ śrutvā kubjā kṣipram amarṣitā | kailāsaśikharākārāt prāsādād avarohata"
+      - "कैलास शिखराकारात्प्रासादादवरोहत"
+    iast: "dhātryās tu vacanaṃ śrutvā kubjā kṣipram amarṣitā | kailāsa śikharākārāt prāsādād avarohata"
   - id: '2.7.9'
     kind: verse
     lines:
@@ -1350,8 +1362,8 @@ sections:
     kind: verse
     lines:
       - "अनिष्टे सुभगाकारे सौभाग्येन विकत्थसे"
-      - "चलं हि तव सौभाग्यं नद्याः स्रोत इवोष्णगे"
-    iast: "aniṣṭe subhagākāre saubhāgyena vikatthase | calaṃ hi tava saubhāgyaṃ nadyāḥ srota ivoṣṇage"
+      - "चलं हि तव सौभाग्यं नद्यः स्रोत इवोष्णगे"
+    iast: "aniṣṭe subhagākāre saubhāgyena vikatthase | calaṃ hi tava saubhāgyaṃ nadyaḥ srota ivoṣṇage"
   - id: '2.7.19'
     kind: verse
     lines:
@@ -1364,6 +1376,12 @@ sections:
       - "अपवाह्य स दुष्टात्मा भरतं तव बन्धुषु"
       - "काल्यं स्थापयिता रामं राज्ये निहतकण्टके"
     iast: "apavāhya sa duṣṭātmā bharataṃ tava bandhuṣu | kālyaṃ sthāpayitā rāmaṃ rājye nihatakaṇṭake"
+  - id: '2.7.27'
+    kind: verse
+    lines:
+      - "मन्थराया वचः श्रुत्वा शयनात्सा शुभानना"
+      - "एकमाभरणं तस्यै कुब्जायै प्रददौ शुभम्"
+    iast: "mantharāyā vacaḥ śrutvā śayanāt sā śubhānanā | ekam ābharaṇaṃ tasyai kubjāyai pradadau śubham"
   - id: '2.7.28'
     kind: verse
     lines:
@@ -1400,7 +1418,7 @@ sections:
     lines:
       - "तस्माद्राजगृहादेव वनं गच्छतु ते सुतः"
       - "एतद्धि रोचते मह्यं भृशं चापि हितं तव"
-    iast: "tasmād rājagṛhād eva vanaṃ gacchatu te sutaḥ | etaddhi rocate mahyaṃ bhṛśaṃ cāpi hitaṃ tava"
+    iast: "tasmād rājagṛhād eva vanaṃ gacchatu te sutaḥ | etad dhi rocate mahyaṃ bhṛśaṃ cāpi hitaṃ tava"
   - id: '2.8.26'
     kind: verse
     lines:
@@ -1411,21 +1429,21 @@ sections:
     kind: verse
     lines:
       - "श्रुत्वैवं वचनं तस्या मन्थरायास्तु कैकयी"
-      - "किंचिदुत्थाय शयनात्स्वास्तीर्णादिदमब्रवीत्"
-    iast: "śrutvaivaṃ vacanaṃ tasyā mantharāyās tu kaikayī | kiṃcid utthāya śayanāt svāstīrṇād idam abravīt"
+      - "किं चिदुत्थाय शयनात्स्वास्तीर्णादिदमब्रवीत्"
+    iast: "śrutvaivaṃ vacanaṃ tasyā mantharāyās tu kaikayī | kiṃ cid utthāya śayanāt svāstīrṇād idam abravīt"
   - id: '2.9.7'
     kind: verse
     lines:
       - "कथय त्वं ममोपायं केनोपायेन मन्थरे"
-      - "भरतः प्राप्नुयाद्राज्यं न तु रामः कथंचन"
-    iast: "kathaya tvaṃ mamopāyaṃ kenopāyena manthare | bharataḥ prāpnuyād rājyaṃ na tu rāmaḥ kathaṃcana"
-  - id: '2.9.16*'
+      - "भरतः प्राप्नुयाद्राज्यं न तु रामः कथं चन"
+    iast: "kathaya tvaṃ mamopāyaṃ kenopāyena manthare | bharataḥ prāpnuyād rājyaṃ na tu rāmaḥ kathaṃ cana"
+  - id: '2.9.16'
     kind: verse
     lines:
       - "क्रोधागारं प्रविश्याद्य क्रुद्धेवाश्वपतेः सुते"
       - "शेष्वानन्तर्हितायां त्वं भूमौ मलिनवासिनी"
       - "मा स्मैनं प्रत्युदीक्षेथा मा चैनमभिभाषथाः"
-    iast: "krodhāgāraṃ praviśyādya kruddhevāśvapateḥ sute | śeṣvān antarhitāyāṃ tvaṃ bhūmau malinavāsinī | mā smainaṃ pratyudīkṣethā mā cainam abhibhāṣathāḥ"
+    iast: "krodhāgāraṃ praviśyādya kruddhevāśvapateḥ sute | śeṣvānantarhitāyāṃ tvaṃ bhūmau malinavāsinī | mā smainaṃ pratyudīkṣethā mā cainam abhibhāṣathāḥ"
   - id: '2.9.17'
     kind: verse
     lines:
@@ -1472,8 +1490,8 @@ sections:
     kind: verse
     lines:
       - "परिमृश्य च पाणिभ्यामभिसंत्रस्तचेतनः"
-      - "कामी कमलपत्त्राक्षीमुवाच वनितामिदम्"
-    iast: "parimṛśya ca pāṇibhyām abhisaṃtrastacetanaḥ | kāmī kamalapattrākṣīm uvāca vanitām idam"
+      - "कामी कमलपत्राक्षीमुवाच वनितामिदम्"
+    iast: "parimṛśya ca pāṇibhyām abhisaṃtrastacetanaḥ | kāmī kamalapatrākṣīm uvāca vanitām idam"
   - id: '2.10.12'
     kind: verse
     lines:
@@ -1501,9 +1519,9 @@ sections:
   - id: '2.10.27'
     kind: verse
     lines:
-      - "अभिषेकसमारम्भो राघवस्योपकल्पितः"
+      - "अभिषेक समारम्भो राघवस्योपकल्पितः"
       - "अनेनैवाभिषेकेण भरतो मेऽभिषिच्यताम्"
-    iast: "abhiṣekasamārambho rāghavasyopakalpitaḥ | anenaivābhiṣekeṇa bharato me 'bhiṣicyatām"
+    iast: "abhiṣeka samārambho rāghavasyopakalpitaḥ | anenaivābhiṣekeṇa bharato me 'bhiṣicyatām"
   - id: '2.10.28'
     kind: verse
     lines:
@@ -1513,9 +1531,9 @@ sections:
   - id: '2.10.30'
     kind: verse
     lines:
-      - "ततः श्रुत्वा महाराज कैकेय्या दारुणं वचः"
-      - "व्यथितो विलवश्चैव व्याघ्रीं दृष्ट्वा यथा मृगः"
-    iast: "tataḥ śrutvā mahārāja kaikeyyā dāruṇaṃ vacaḥ | vyathito vilavaś caiva vyāghrīṃ dṛṣṭvā yathā mṛgaḥ"
+      - "ततः श्रुत्वा महाराजः कैकेय्या दारुणं वचः"
+      - "व्यथितो विक्लवश्चैव व्याघ्रीं दृष्ट्वा यथा मृगः"
+    iast: "tataḥ śrutvā mahārājaḥ kaikeyyā dāruṇaṃ vacaḥ | vyathito viklavaś caiva vyāghrīṃ dṛṣṭvā yathā mṛgaḥ"
   - id: '2.10.32'
     kind: verse
     lines:
@@ -1531,9 +1549,9 @@ sections:
   - id: '2.10.34'
     kind: verse
     lines:
-      - "सदा ते जननीतुल्यां वृत्तिं वहति राघवः"
+      - "सदा ते जननी तुल्यां वृत्तिं वहति राघवः"
       - "तस्यैव त्वमनर्थाय किंनिमित्तमिहोद्यता"
-    iast: "sadā te jananītulyāṃ vṛttiṃ vahati rāghavaḥ | tasyaiva tvam anarthāya kiṃnimittam ihodyatā"
+    iast: "sadā te jananī tulyāṃ vṛttiṃ vahati rāghavaḥ | tasyaiva tvam anarthāya kiṃnimittam ihodyatā"
   - id: '2.10.36'
     kind: verse
     lines:
@@ -1552,12 +1570,6 @@ sections:
       - "तिष्ठेल्लोको विना सूर्यं सस्यं वा सलिलं विना"
       - "न तु रामं विना देहे तिष्ठेत्तु मम जीवितम्"
     iast: "tiṣṭhel loko vinā sūryaṃ sasyaṃ vā salilaṃ vinā | na tu rāmaṃ vinā dehe tiṣṭhet tu mama jīvitam"
-  - id: '2.11.4'
-    kind: verse
-    lines:
-      - "एवमुक्तस्तु कैकेय्या राजा दशरथस्तदा"
-      - "प्रत्युवाच ततः क्रुद्धो मुहूर्तं विह्वलन्निव"
-    iast: "evam uktas tu kaikeyyā rājā daśarathas tadā | pratyuvāca tataḥ kruddho muhūrtaṃ vihvalann iva"
   - id: '2.12.2'
     kind: verse
     lines:
@@ -1591,15 +1603,15 @@ sections:
   - id: '2.14.11'
     kind: verse
     lines:
-      - "कौसल्या सुप्रभा देव पिता त्वां द्रष्टुमिच्छति"
+      - "कौसल्या सुप्रभा देव पिता त्वं द्रष्टुमिच्छति"
       - "महिष्या सह कैकेय्या गम्यतां तत्र माचिरम्"
-    iast: "kausalyā suprabhā deva pitā tvāṃ draṣṭum icchati | mahiṣyā saha kaikeyyā gamyatāṃ tatra māciram"
+    iast: "kausalyā suprabhā deva pitā tvaṃ draṣṭum icchati | mahiṣyā saha kaikeyyā gamyatāṃ tatra māciram"
   - id: '2.15.4'
     kind: verse
     lines:
       - "आशीर्वादान्बहूञ्शृण्वन्सुहृद्भिः समुदीरितान्"
-      - "यथार्हं चापि सम्पूज्य सर्वानेव नरान्ययौ"
-    iast: "āśīrvādān bahūñ śṛṇvan suhṛdbhiḥ samudīritān | yathārhaṃ cāpi sampūjya sarvān eva narān yayau"
+      - "यथार्हं चापि संपूज्य सर्वानेव नरान्ययौ"
+    iast: "āśīrvādān bahūñ śṛṇvan suhṛdbhiḥ samudīritān | yathārhaṃ cāpi saṃpūjya sarvān eva narān yayau"
   - id: '2.16.1'
     kind: verse
     lines:
@@ -1621,16 +1633,16 @@ sections:
   - id: '2.16.11'
     kind: verse
     lines:
-      - "कच्चिन्मया नापराधमज्ञानाद्येन मे पिता"
+      - "कच्चिन्मया नापराद्धमज्ञानाद्येन मे पिता"
       - "कुपितस्तन्ममाचक्ष्व त्वं चैवैनं प्रसादय"
-    iast: "kaccin mayā nāparādham ajñānād yena me pitā | kupitas tan mamācakṣva tvaṃ caivainaṃ prasādaya"
+    iast: "kaccin mayā nāparāddham ajñānād yena me pitā | kupitas tan mamācakṣva tvaṃ caivainaṃ prasādaya"
   - id: '2.16.17'
     kind: verse
     lines:
       - "एतदाचक्ष्व मे देवि तत्त्वेन परिपृच्छतः"
       - "किंनिमित्तमपूर्वोऽयं विकारो मनुजाधिपे"
     iast: "etad ācakṣva me devi tattvena paripṛcchataḥ | kiṃnimittam apūrvo 'yaṃ vikāro manujādhipe"
-  - id: '2.16.18*'
+  - id: '2.16.18'
     kind: verse
     lines:
       - "अहं हि वचनाद्राज्ञः पतेयमपि पावके"
@@ -1665,8 +1677,8 @@ sections:
     kind: verse
     lines:
       - "यदि सत्यप्रतिज्ञं त्वं पितरं कर्तुमिच्छसि"
-      - "आत्मानं च नरश्रेष्ठ मम वाक्यमिदं शृणु"
-    iast: "yadi satyapratijñaṃ tvaṃ pitaraṃ kartum icchasi | ātmānaṃ ca naraśreṣṭha mama vākyam idaṃ śṛṇu"
+      - "आत्मानं च नररेष्ठ मम वाक्यमिदं शृणु"
+    iast: "yadi satyapratijñaṃ tvaṃ pitaraṃ kartum icchasi | ātmānaṃ ca narareṣṭha mama vākyam idaṃ śṛṇu"
   - id: '2.16.25'
     kind: verse
     lines:
@@ -1712,9 +1724,9 @@ sections:
   - id: '2.16.48'
     kind: verse
     lines:
-      - "न ह्यतो धर्मचरणं किंचिदस्ति महत्तरम्"
+      - "न ह्यतो धर्मचरणं किं चिदस्ति महत्तरम्"
       - "यथा पितरि शुश्रूषा तस्य वा वचनक्रिया"
-    iast: "na hy ato dharmacaraṇaṃ kiṃcid asti mahattaram | yathā pitari śuśrūṣā tasya vā vacanakriyā"
+    iast: "na hy ato dharmacaraṇaṃ kiṃ cid asti mahattaram | yathā pitari śuśrūṣā tasya vā vacanakriyā"
   - id: '2.16.49'
     kind: verse
     lines:
@@ -1724,9 +1736,9 @@ sections:
   - id: '2.16.50'
     kind: verse
     lines:
-      - "न नूनं मयि कैकेयि किंचिदाशंससे गुणम्"
+      - "न नूनं मयि कैकेयि किं चिदाशंससे गुणम्"
       - "यद्राजानमवोचस्त्वं ममेश्वरतरा सती"
-    iast: "na nūnaṃ mayi kaikeyi kiṃcid āśaṃsase guṇam | yad rājānam avocas tvaṃ mameśvaratarā satī"
+    iast: "na nūnaṃ mayi kaikeyi kiṃ cid āśaṃsase guṇam | yad rājānam avocas tvaṃ mameśvaratarā satī"
   - id: '2.16.51'
     kind: verse
     lines:
@@ -1761,20 +1773,20 @@ sections:
     kind: verse
     lines:
       - "भरताय महाराजो यौवराज्यं प्रयच्छति"
-      - "मां पुनर्दण्डकारण्यं विवासयति तापसम्"
-    iast: "bharatāya mahārājo yauvarājyaṃ prayacchati | māṃ punar daṇḍakāraṇyaṃ vivāsayati tāpasam"
+      - "मां पुनर्दण्डकारण्यं विवासयति तापसं"
+    iast: "bharatāya mahārājo yauvarājyaṃ prayacchati | māṃ punar daṇḍakāraṇyaṃ vivāsayati tāpasaṃ"
   - id: '2.17.17'
     kind: verse
     lines:
       - "तामदुःखोचितां दृष्ट्वा पतितां कदलीमिव"
-      - "रामस्तूत्थापयामास मातरं गतचेतसम्"
-    iast: "tām aduḥkhocitāṃ dṛṣṭvā patitāṃ kadalīm iva | rāmas tūtthāpayāmāsa mātaraṃ gatacetasam"
+      - "रामस्तूत्थापयामास मातरं गतचेतसं"
+    iast: "tām aduḥkhocitāṃ dṛṣṭvā patitāṃ kadalīm iva | rāmas tūtthāpayām āsa mātaraṃ gatacetasaṃ"
   - id: '2.17.18'
     kind: verse
     lines:
-      - "उपावृत्योत्थितां दीनां वडबामिव वाहिताम्"
-      - "पांशुगुण्ठितसर्वाङ्गीं विममर्श च पाणिना"
-    iast: "upāvṛtyotthitāṃ dīnāṃ vaḍabām iva vāhitām | pāṃśuguṇṭhitasarvāṅgīṃ vimamarśa ca pāṇinā"
+      - "उपावृत्योत्थितां दीनां वडवामिव वाहिताम्"
+      - "पांशुगुण्ठितसर्वाग्नीं विममर्श च पाणिना"
+    iast: "upāvṛtyotthitāṃ dīnāṃ vaḍavām iva vāhitām | pāṃśuguṇṭhitasarvāgnīṃ vimamarśa ca pāṇinā"
   - id: '2.17.19'
     kind: verse
     lines:
@@ -1888,8 +1900,8 @@ sections:
     lines:
       - "तदेतत्तु मया कार्यं क्रियते भुवि नान्यथा"
       - "पितुर्हि वचनं कुर्वन्न कश्चिन्नाम हीयते"
-    iast: "tad etat tu mayā kāryaṃ kriyate bhuvi nānyathā | pitur hi vacanaṃ kurvan na kaścin nāma hīyate"
-  - id: '2.18.32*'
+    iast: "tad etat tu mayā kāryaṃ kriyate bhuvi nānyathā | pitur hi vacanaṃ kurvan na kaś cin nāma hīyate"
+  - id: '2.18.32'
     kind: verse
     lines:
       - "तामेवमुक्त्वा जननीं लक्ष्मणं पुनरब्रवीत्"
@@ -1936,8 +1948,8 @@ sections:
     kind: verse
     lines:
       - "सुखदुःखे भयक्रोधौ लाभालाभौ भवाभवौ"
-      - "यस्य किंचित्तथा भूतं ननु दैवस्य कर्म तत्"
-    iast: "sukhaduḥkhe bhayakrodhau lābhālābhau bhavābhavau | yasya kiṃcit tathā bhūtaṃ nanu daivasya karma tat"
+      - "यस्य किं चित्तथाभूतं ननु दैवस्य कर्म तत्"
+    iast: "sukhaduḥkhe bhayakrodhau lābhālābhau bhavābhavau | yasya kiṃ cit tathābhūtaṃ nanu daivasya karma tat"
   - id: '2.20.1'
     kind: verse
     lines:
@@ -1948,14 +1960,14 @@ sections:
     kind: verse
     lines:
       - "अग्राक्ष्णा वीक्षमाणस्तु तिर्यग्भ्रातरमब्रवीत्"
-      - "अस्थाने सम्भ्रमो यस्य जातो वै सुमहानयम्"
-    iast: "agrākṣṇā vīkṣamāṇas tu tiryag bhrātaram abravīt | asthāne sambhramo yasya jāto vai sumahān ayam"
+      - "अस्थाने संभ्रमो यस्य जातो वै सुमहानयम्"
+    iast: "agrākṣṇā vīkṣamāṇas tu tiryag bhrātaram abravīt | asthāne saṃbhramo yasya jāto vai sumahān ayam"
   - id: '2.20.6'
     kind: verse
     lines:
       - "धर्मदोषप्रसङ्गेन लोकस्यानतिशङ्कया"
-      - "कथं ह्येतदसम्भ्रान्तस्त्वद्विधो वक्तुमर्हति"
-    iast: "dharmadoṣaprasaṅgena lokasyānatiśaṅkayā | kathaṃ hy etad asambhrāntas tvadvidho vaktum arhati"
+      - "कथं ह्येतदसंभ्रान्तस्त्वद्विधो वक्तुमर्हति"
+    iast: "dharmadoṣaprasaṅgena lokasyānatiśaṅkayā | kathaṃ hy etad asaṃbhrāntas tvadvidho vaktum arhati"
   - id: '2.20.7'
     kind: verse
     lines:
@@ -1965,22 +1977,22 @@ sections:
   - id: '2.20.8'
     kind: verse
     lines:
-      - "पापयोस्तु कथं नाम तयोः शङ्का न विद्यते"
+      - "पापयोस्ते कथं नाम तयोः शङ्का न विद्यते"
       - "सन्ति धर्मोपधाः श्लक्ष्णा धर्मात्मन्किं न बुध्यसे"
-    iast: "pāpayos tu kathaṃ nāma tayoḥ śaṅkā na vidyate | santi dharmopadhāḥ ślakṣṇā dharmātman kiṃ na budhyase"
+    iast: "pāpayos te kathaṃ nāma tayoḥ śaṅkā na vidyate | santi dharmopadhāḥ ślakṣṇā dharmātman kiṃ na budhyase"
   - id: '2.21.15'
     kind: verse
     lines:
       - "एवमुक्ता प्रियं पुत्रं बाष्पपूर्णानना तदा"
       - "उवाच परमार्ता तु कौसल्या पुत्रवत्सला"
     iast: "evam uktā priyaṃ putraṃ bāṣpapūrṇānanā tadā | uvāca paramārtā tu kausalyā putravatsalā"
-  - id: '2.21.16*'
+  - id: '2.21.16'
     kind: verse
     lines:
       - "आसां राम सपत्नीनां वस्तुं मध्ये न मे क्षमम्"
-      - "नय मामपि काकुत्स्थ वनं वन्यां मृगीं यथा"
+      - "नय मामपि काकुत्स्थ वनं वन्यं मृगीं यथा"
       - "यदि ते गमने बुद्धिः कृता पितुरपेक्षया"
-    iast: "āsāṃ rāma sapatnīnāṃ vastuṃ madhye na me kṣamam | naya mām api kākutstha vanaṃ vanyāṃ mṛgīṃ yathā | yadi te gamane buddhiḥ kṛtā pitur apekṣayā"
+    iast: "āsāṃ rāma sapatnīnāṃ vastuṃ madhye na me kṣamam | naya mām api kākutstha vanaṃ vanyaṃ mṛgīṃ yathā | yadi te gamane buddhiḥ kṛtā pitur apekṣayā"
   - id: '2.21.18'
     kind: verse
     lines:
@@ -2017,7 +2029,7 @@ sections:
       - "स्मृतिर्धृतिश्च धर्मश्च पान्तु त्वां पुत्र सर्वतः"
       - "स्कन्दश्च भगवान्देवः सोमश्च सबृहस्पतिः"
     iast: "smṛtir dhṛtiś ca dharmaś ca pāntu tvāṃ putra sarvataḥ | skandaś ca bhagavān devaḥ somaś ca sabṛhaspatiḥ"
-  - id: '2.22.5*'
+  - id: '2.22.5'
     kind: verse
     lines:
       - "सप्तर्षयो नारदश्च ते त्वां रक्षन्तु सर्वतः"
@@ -2033,33 +2045,33 @@ sections:
   - id: '2.23.1'
     kind: verse
     lines:
-      - "अभिवाद्य तु कौसल्यां रामः सम्प्रस्थितो वनम्"
+      - "अभिवाद्य तु कौसल्यां रामः संप्रस्थितो वनम्"
       - "कृतस्वस्त्ययनो मात्रा धर्मिष्ठे वर्त्मनि स्थितः"
-    iast: "abhivādya tu kausalyāṃ rāmaḥ samprasthito vanam | kṛtasvastyayano mātrā dharmiṣṭhe vartmani sthitaḥ"
+    iast: "abhivādya tu kausalyāṃ rāmaḥ saṃprasthito vanam | kṛtasvastyayano mātrā dharmiṣṭhe vartmani sthitaḥ"
   - id: '2.23.5'
     kind: verse
     lines:
       - "प्रविवेशाथ रामस्तु स्ववेश्म सुविभूषितम्"
-      - "प्रहृष्टजनसम्पूर्णं ह्रिया किंचिदवाङ्मुखः"
-    iast: "praviveśātha rāmas tu svaveśma suvibhūṣitam | prahṛṣṭajanasampūrṇaṃ hriyā kiṃcid avāṅmukhaḥ"
+      - "प्रहृष्टजनसंपूर्णं ह्रिया किं चिदवाङ्मुखः"
+    iast: "praviveśātha rāmas tu svaveśma suvibhūṣitam | prahṛṣṭajanasaṃpūrṇaṃ hriyā kiṃ cid avāṅmukhaḥ"
   - id: '2.23.6'
     kind: verse
     lines:
       - "अथ सीता समुत्पत्य वेपमाना च तं पतिम्"
-      - "अपश्यच्छोकसंतप्तं चिन्ताव्याकुलितेन्द्रियम्"
-    iast: "atha sītā samutpatya vepamānā ca taṃ patim | apaśyac chokasaṃtaptaṃ cintāvyākulitendriyam"
+      - "अपश्यच्छोकसंतप्तं चिन्ताव्याकुलिलेन्द्रियम्"
+    iast: "atha sītā samutpatya vepamānā ca taṃ patim | apaśyac chokasaṃtaptaṃ cintāvyākulilendriyam"
   - id: '2.23.18'
     kind: verse
     lines:
       - "इतीव विलपन्तीं तां प्रोवाच रघुनन्दनः"
-      - "सीते तत्रभवांस्तातः प्रव्राजयति मां वनम्"
-    iast: "itīva vilapantīṃ tāṃ provāca raghunandanaḥ | sīte tatrabhavāṃs tātaḥ pravrājayati māṃ vanam"
+      - "सीते तत्रभवांस्तात प्रव्राजयति मां वनम्"
+    iast: "itīva vilapantīṃ tāṃ provāca raghunandanaḥ | sīte tatrabhavāṃs tāta pravrājayati māṃ vanam"
   - id: '2.23.19'
     kind: verse
     lines:
-      - "कुले महति सम्भूते धर्मज्ञे धर्मचारिणि"
+      - "कुले महति संभूते धर्मज्ञे धर्मचारिणि"
       - "शृणु जानकि येनेदं क्रमेणाभ्यागतं मम"
-    iast: "kule mahati sambhūte dharmajñe dharmacāriṇi | śṛṇu jānaki yenedaṃ krameṇābhyāgataṃ mama"
+    iast: "kule mahati saṃbhūte dharmajñe dharmacāriṇi | śṛṇu jānaki yenedaṃ krameṇābhyāgataṃ mama"
   - id: '2.23.20'
     kind: verse
     lines:
@@ -2072,20 +2084,20 @@ sections:
       - "तयाद्य मम सज्जेऽस्मिन्नभिषेके नृपोद्यते"
       - "प्रचोदितः स समयो धर्मेण प्रतिनिर्जितः"
     iast: "tayādya mama sajje 'sminn abhiṣeke nṛpodyate | pracoditaḥ sa samayo dharmeṇa pratinirjitaḥ"
-  - id: '2.23.22*'
+  - id: '2.23.22'
     kind: verse
     lines:
       - "चतुर्दश हि वर्षाणि वस्तव्यं दण्डके मया"
       - "पित्रा मे भरतश्चापि यौवराज्ये नियोजितः"
       - "सोऽहं त्वामागतो द्रष्टुं प्रस्थितो विजनं वनम्"
     iast: "caturdaśa hi varṣāṇi vastavyaṃ daṇḍake mayā | pitrā me bharataś cāpi yauvarājye niyojitaḥ | so 'haṃ tvām āgato draṣṭuṃ prasthito vijanaṃ vanam"
-  - id: '2.23.23*'
+  - id: '2.23.23'
     kind: verse
     lines:
-      - "भरतस्य समीपे ते नाहं कथ्यः कदाचन"
+      - "भरतस्य समीपे ते नाहं कथ्यः कदा चन"
       - "ऋद्धियुक्ता हि पुरुषा न सहन्ते परस्तवम्"
       - "तस्मान्न ते गुणाः कथ्या भरतस्याग्रतो मम"
-    iast: "bharatasya samīpe te nāhaṃ kathyaḥ kadācana | ṛddhiyuktā hi puruṣā na sahante parastavam | tasmān na te guṇāḥ kathyā bharatasyāgrato mama"
+    iast: "bharatasya samīpe te nāhaṃ kathyaḥ kadā cana | ṛddhiyuktā hi puruṣā na sahante parastavam | tasmān na te guṇāḥ kathyā bharatasyāgrato mama"
   - id: '2.23.26'
     kind: verse
     lines:
@@ -2102,14 +2114,14 @@ sections:
     kind: verse
     lines:
       - "माता च मम कौसल्या वृद्धा संतापकर्शिता"
-      - "धर्ममेवाग्रतः कृत्वा त्वत्तः सम्मानमर्हति"
-    iast: "mātā ca mama kausalyā vṛddhā saṃtāpakarśitā | dharmam evāgrataḥ kṛtvā tvattaḥ sammānam arhati"
+      - "धर्ममेवाग्रतः कृत्वा त्वत्तः संमानमर्हति"
+    iast: "mātā ca mama kausalyā vṛddhā saṃtāpakarśitā | dharmam evāgrataḥ kṛtvā tvattaḥ saṃmānam arhati"
   - id: '2.23.29'
     kind: verse
     lines:
       - "वन्दितव्याश्च ते नित्यं याः शेषा मम मातरः"
-      - "स्नेहप्रणयसम्भोगैः समा हि मम मातरः"
-    iast: "vanditavyāś ca te nityaṃ yāḥ śeṣā mama mātaraḥ | snehapraṇayasambhogaiḥ samā hi mama mātaraḥ"
+      - "स्नेहप्रणयसंभोगैः समा हि मम मातरः"
+    iast: "vanditavyāś ca te nityaṃ yāḥ śeṣā mama mātaraḥ | snehapraṇayasaṃbhogaiḥ samā hi mama mātaraḥ"
   - id: '2.24.1'
     kind: verse
     lines:
@@ -2143,9 +2155,9 @@ sections:
   - id: '2.24.6'
     kind: verse
     lines:
-      - "ईर्ष्यारोषौ बहिष्कृत्य भुक्तशेषमिवोदकम्"
+      - "ईर्ष्या रोषौ बहिष्कृत्य भुक्तशेषमिवोदकम्"
       - "नय मां वीर विश्रब्धः पापं मयि न विद्यते"
-    iast: "īrṣyāroṣau bahiṣkṛtya bhuktaśeṣam ivodakam | naya māṃ vīra viśrabdhaḥ pāpaṃ mayi na vidyate"
+    iast: "īrṣyā roṣau bahiṣkṛtya bhuktaśeṣam ivodakam | naya māṃ vīra viśrabdhaḥ pāpaṃ mayi na vidyate"
   - id: '2.24.12'
     kind: verse
     lines:
@@ -2240,9 +2252,9 @@ sections:
     kind: verse
     lines:
       - "न देवि तव दुःखेन स्वर्गमप्यभिरोचये"
-      - "न हि मेऽस्ति भयं किंचित्स्वयम्भोरिव सर्वतः"
-    iast: "na devi tava duḥkhena svargam apy abhirocaye | na hi me 'sti bhayaṃ kiṃcit svayambhor iva sarvataḥ"
-  - id: '2.27.30*'
+      - "न हि मेऽस्ति भयं किं चित्स्वयम्भोरिव सर्वतः"
+    iast: "na devi tava duḥkhena svargam apy abhirocaye | na hi me 'sti bhayaṃ kiṃ cit svayambhor iva sarvataḥ"
+  - id: '2.27.30'
     kind: verse
     lines:
       - "स मां पिता यथा शास्ति सत्यधर्मपथे स्थितः"
@@ -2312,9 +2324,9 @@ sections:
   - id: '2.31.2'
     kind: verse
     lines:
-      - "आलोक्य तु महाप्राज्ञः परमाकुलचेतसं"
+      - "आलोक्य तु महाप्राज्ञः परमाकुल चेतसं"
       - "राममेवानुशोचन्तं सूतः प्राञ्जलिरासदत्"
-    iast: "ālokya tu mahāprājñaḥ paramākulacetasaṃ | rāmam evānuśocantaṃ sūtaḥ prāñjalir āsadat"
+    iast: "ālokya tu mahāprājñaḥ paramākula cetasaṃ | rāmam evānuśocantaṃ sūtaḥ prāñjalir āsadat"
   - id: '2.31.3'
     kind: verse
     lines:
@@ -2336,9 +2348,9 @@ sections:
   - id: '2.31.7'
     kind: verse
     lines:
-      - "सुमन्त्रानय मे दारान्ये केचिदिह मामकाः"
+      - "सुमन्त्रानय मे दारान्ये के चिदिह मामकाः"
       - "दारैः परिवृतः सर्वैर्द्रष्टुमिच्छामि राघवम्"
-    iast: "sumantrānaya me dārān ye kecid iha māmakāḥ | dāraiḥ parivṛtaḥ sarvair draṣṭum icchāmi rāghavam"
+    iast: "sumantrānaya me dārān ye ke cid iha māmakāḥ | dāraiḥ parivṛtaḥ sarvair draṣṭum icchāmi rāghavam"
   - id: '2.31.10'
     kind: verse
     lines:
@@ -2354,9 +2366,9 @@ sections:
   - id: '2.31.14'
     kind: verse
     lines:
-      - "सोऽभिदुद्राव वेगेन रामं दृष्ट्वा विशांपतिः"
+      - "सोऽभिदुद्राव वेगेन रामं दृष्ट्वा विशां पतिः"
       - "तमसंप्राप्य दुःखार्तः पपात भुवि मूर्छितः"
-    iast: "so 'bhidudrāva vegena rāmaṃ dṛṣṭvā viśāṃpatiḥ | tam asaṃprāpya duḥkhārtaḥ papāta bhuvi mūrchitaḥ"
+    iast: "so 'bhidudrāva vegena rāmaṃ dṛṣṭvā viśāṃ patiḥ | tam asaṃprāpya duḥkhārtaḥ papāta bhuvi mūrchitaḥ"
   - id: '2.31.18'
     kind: verse
     lines:
@@ -2468,9 +2480,9 @@ sections:
   - id: '2.40.7'
     kind: verse
     lines:
-      - "स हि कल्याणचारित्रः कैकेय्यानन्दवर्धनः"
+      - "स हि कल्याण चारित्रः कैकेय्यानन्दवर्धनः"
       - "करिष्यति यथावद्वः प्रियाणि च हितानि च"
-    iast: "sa hi kalyāṇacāritraḥ kaikeyyānandavardhanaḥ | kariṣyati yathāvad vaḥ priyāṇi ca hitāni ca"
+    iast: "sa hi kalyāṇa cāritraḥ kaikeyyānandavardhanaḥ | kariṣyati yathāvad vaḥ priyāṇi ca hitāni ca"
   - id: '2.43.2'
     kind: verse
     lines:
@@ -2483,6 +2495,12 @@ sections:
       - "विशालान्कोसलान्रम्यान्यात्वा लक्ष्मणपूर्वजः"
       - "आससाद महाबाहुः शृङ्गवेरपुरं प्रति"
     iast: "viśālān kosalān ramyān yātvā lakṣmaṇapūrvajaḥ | āsasāda mahābāhuḥ śṛṅgaverapuraṃ prati"
+  - id: '2.44.9'
+    kind: verse
+    lines:
+      - "तत्र राजा गुहो नाम रामस्यात्मसमः सखा"
+      - "निषादजात्यो बलवान्स्थपतिश्चेति विश्रुतः"
+    iast: "tatra rājā guho nāma rāmasyātmasamaḥ sakhā | niṣādajātyo balavān sthapatiś ceti viśrutaḥ"
   - id: '2.44.11'
     kind: verse
     lines:
@@ -2498,21 +2516,21 @@ sections:
   - id: '2.46.52'
     kind: verse
     lines:
-      - "परितुष्टा हि सा देवी वनवासं गते मयि"
+      - "परितुष्टा हि सा देवि वनवासं गते मयि"
       - "राजानं नातिशङ्केत मिथ्यावादीति धार्मिकम्"
-    iast: "parituṣṭā hi sā devī vanavāsaṃ gate mayi | rājānaṃ nātiśaṅketa mithyāvādīti dhārmikam"
+    iast: "parituṣṭā hi sā devi vanavāsaṃ gate mayi | rājānaṃ nātiśaṅketa mithyāvādīti dhārmikam"
   - id: '2.46.54'
     kind: verse
     lines:
       - "मम प्रियार्थं राज्ञश्च सरथस्त्वं पुरीं व्रज"
       - "संदिष्टश्चासि यानर्थांस्तांस्तान्ब्रूयास्तथातथा"
-    iast: "mama priyārthaṃ rājñaś ca sarathas tvaṃ purīṃ vraja | saṃdiṣṭaś cāsi yānarthāṃs tāṃs tān brūyās tathātathā"
-  - id: '2.46.66'
+    iast: "mama priyārthaṃ rājñaś ca sarathas tvaṃ purīṃ vraja | saṃdiṣṭaś cāsi yān arthāṃs tāṃs tān brūyās tathātathā"
+  - id: '2.46.65'
     kind: verse
     lines:
-      - "ततस्तैश्चोदिता सा नौः कर्णधारसमाहिता"
-      - "शुभस्फ्यवेगाभिहता शीघ्रं सलिलमत्यगात्"
-    iast: "tatas taiś coditā sā nauḥ karṇadhārasamāhitā | śubhasphyavegābhihatā śīghraṃ salilam atyagāt"
+      - "अनुज्ञाय सुमन्त्रं च सबलं चैव तं गुहम्"
+      - "आस्थाय नावं रामस्तु चोदयामास नाविकान्"
+    iast: "anujñāya sumantraṃ ca sabalaṃ caiva taṃ guham | āsthāya nāvaṃ rāmas tu codayām āsa nāvikān"
   - id: '2.48.8'
     kind: verse
     lines:
@@ -2547,8 +2565,8 @@ sections:
     kind: verse
     lines:
       - "तस्य तद्वचनं श्रुत्वा सौमित्रिर्विविधान्द्रुमान्"
-      - "आजहार ततश्चक्रे पर्णशालामरिंदमः"
-    iast: "tasya tadvacanaṃ śrutvā saumitrir vividhān drumān | ājahāra tataś cakre parṇaśālām ariṃdamaḥ"
+      - "आजहार ततश्चक्रे पर्ण शालामरिं दम"
+    iast: "tasya tad vacanaṃ śrutvā saumitrir vividhān drumān | ājahāra tataś cakre parṇa śālām ariṃ dama"
   - id: '2.51.4'
     kind: verse
     lines:
@@ -2595,27 +2613,21 @@ sections:
     kind: verse
     lines:
       - "न सुहृद्भिर्न चामात्यैर्मन्त्रयित्वा न नैगमैः"
-      - "मयायमर्थः सम्मोहात्स्त्रीहेतोः सहसा कृतः"
-    iast: "na suhṛdbhir na cāmātyair mantrayitvā na naigamaiḥ | mayāyam arthaḥ sammohāt strīhetoḥ sahasā kṛtaḥ"
-  - id: '2.53.24*'
+      - "मयायमर्थः संमोहात्स्त्रीहेतोः सहसा कृतः"
+    iast: "na suhṛdbhir na cāmātyair mantrayitvā na naigamaiḥ | mayāyam arthaḥ saṃmohāt strīhetoḥ sahasā kṛtaḥ"
+  - id: '2.53.24'
     kind: verse
     lines:
-      - "हा राम रामानुज हा हा वैदेहि तपस्विनि"
+      - "हा राम रामानुज हा हा वैदेहि तपस्विनी"
       - "न मां जानीत दुःखेन म्रियमाणमनाथवत्"
       - "दुस्तरो जीवता देवि मयायं शोकसागरः"
-    iast: "hā rāma rāmānuja hā hā vaidehi tapasvini | na māṃ jānīta duḥkhena mriyamāṇam anāthavat | dustaro jīvatā devi mayāyaṃ śokasāgaraḥ"
+    iast: "hā rāma rāmānuja hā hā vaidehi tapasvinī | na māṃ jānīta duḥkhena mriyamāṇam anāthavat | dustaro jīvatā devi mayāyaṃ śokasāgaraḥ"
   - id: '2.58.56'
     kind: verse
     lines:
-      - "हा राघव महाबाहो हा ममायासनाशन"
+      - "हा राघव महाबाहो हा ममायास नाशन"
       - "राजा दशरथः शोचञ्जीवितान्तमुपागमत्"
-    iast: "hā rāghava mahābāho hā mamāyāsanāśana | rājā daśarathaḥ śocañ jīvitāntam upāgamat"
-  - id: '2.60.1'
-    kind: verse
-    lines:
-      - "तमग्निमिव संशान्तमम्बुहीनमिवार्णवम्"
-      - "हतप्रभमिवादित्यं स्वर्गस्थं प्रेक्ष्य भूमिपम्"
-    iast: "tam agnim iva saṃśāntam ambuhīnam ivārṇavam | hataprabham ivādityaṃ svargasthaṃ prekṣya bhūmipam"
+    iast: "hā rāghava mahābāho hā mamāyāsa nāśana | rājā daśarathaḥ śocañ jīvitāntam upāgamat"
   - id: '2.60.12'
     kind: verse
     lines:
@@ -2625,9 +2637,9 @@ sections:
   - id: '2.60.13'
     kind: verse
     lines:
-      - "न तु संकालनं राज्ञो विना पुत्रेण मन्त्रिणः"
+      - "न तु संकलनं राज्ञो विना पुत्रेण मन्त्रिणः"
       - "सर्वज्ञाः कर्तुमीषुस्ते ततो रक्षन्ति भूमिपम्"
-    iast: "na tu saṃkālanaṃ rājño vinā putreṇa mantriṇaḥ | sarvajñāḥ kartum īṣus te tato rakṣanti bhūmipam"
+    iast: "na tu saṃkalanaṃ rājño vinā putreṇa mantriṇaḥ | sarvajñāḥ kartum īṣus te tato rakṣanti bhūmipam"
   - id: '2.61.1'
     kind: verse
     lines:
@@ -2638,14 +2650,14 @@ sections:
     kind: verse
     lines:
       - "एते द्विजाः सहामात्यैः पृथग्वाचमुदीरयन्"
-      - "वसिष्ठमेवाभिमुखाः श्रेष्ठं राजपुरोहितम्"
-    iast: "ete dvijāḥ sahāmātyaiḥ pṛthag vācam udīrayan | vasiṣṭham evābhimukhāḥ śreṣṭhaṃ rājapurohitam"
+      - "वसिष्ठमेवाभिमुखाः श्रेष्ठो राजपुरोहितम्"
+    iast: "ete dvijāḥ sahāmātyaiḥ pṛthag vācam udīrayan | vasiṣṭham evābhimukhāḥ śreṣṭho rājapurohitam"
   - id: '2.62.1'
     kind: verse
     lines:
       - "तेषां तद्वचनं श्रुत्वा वसिष्ठः प्रत्युवाच ह"
       - "मित्रामात्यगणान्सर्वान्ब्राह्मणांस्तानिदं वचः"
-    iast: "teṣāṃ tadvacanaṃ śrutvā vasiṣṭhaḥ pratyuvāca ha | mitrāmātyagaṇān sarvān brāhmaṇāṃs tān idaṃ vacaḥ"
+    iast: "teṣāṃ tad vacanaṃ śrutvā vasiṣṭhaḥ pratyuvāca ha | mitrāmātyagaṇān sarvān brāhmaṇāṃs tān idaṃ vacaḥ"
   - id: '2.62.2'
     kind: verse
     lines:
@@ -2658,7 +2670,7 @@ sections:
       - "तच्छीघ्रं जवना दूता गच्छन्तु त्वरितैर्हयैः"
       - "आनेतुं भ्रातरौ वीरौ किं समीक्षामहे वयम्"
     iast: "tac chīghraṃ javanā dūtā gacchantu tvaritair hayaiḥ | ānetuṃ bhrātarau vīrau kiṃ samīkṣāmahe vayam"
-  - id: '2.62.9*'
+  - id: '2.62.9'
     kind: verse
     lines:
       - "कौशेयानि च वस्त्राणि भूषणानि वराणि च"
@@ -2669,8 +2681,8 @@ sections:
     kind: verse
     lines:
       - "ते श्रान्तवाहना दूता विकृष्टेन सता पथा"
-      - "गिरिव्रजं पुरवरं शीघ्रमासेदुरञ्जसा"
-    iast: "te śrāntavāhanā dūtā vikṛṣṭena satā pathā | girivrajaṃ puravaraṃ śīghram āsedur añjasā"
+      - "गिरि व्रजं पुर वरं शीघ्रमासेदुरञ्जसा"
+    iast: "te śrāntavāhanā dūtā vikṛṣṭena satā pathā | giri vrajaṃ pura varaṃ śīghram āsedur añjasā"
   - id: '2.64.3'
     kind: verse
     lines:
@@ -2705,8 +2717,8 @@ sections:
     kind: verse
     lines:
       - "अनुप्राप्तं तु तं दृष्ट्वा कैकेयी प्रोषितं सुतम्"
-      - "उत्पपात तदा हृष्टा त्यक्त्वा सौवर्णमानसम्"
-    iast: "anuprāptaṃ tu taṃ dṛṣṭvā kaikeyī proṣitaṃ sutam | utpapāta tadā hṛṣṭā tyaktvā sauvarṇamānasam"
+      - "उत्पपात तदा हृष्टा त्यक्त्वा सौवर्णमानसं"
+    iast: "anuprāptaṃ tu taṃ dṛṣṭvā kaikeyī proṣitaṃ sutam | utpapāta tadā hṛṣṭā tyaktvā sauvarṇamānasaṃ"
   - id: '2.66.41'
     kind: verse
     lines:
@@ -2728,15 +2740,15 @@ sections:
   - id: '2.67.1'
     kind: verse
     lines:
-      - "श्रुत्वा तु पितरं वृत्तं भ्रातरौ च विवासितौ"
+      - "श्रुत्वा तु पितरं वृत्तं भ्रातरु च विवासितौ"
       - "भरतो दुःखसंतप्त इदं वचनमब्रवीत्"
-    iast: "śrutvā tu pitaraṃ vṛttaṃ bhrātarau ca vivāsitau | bharato duḥkhasaṃtapta idaṃ vacanam abravīt"
+    iast: "śrutvā tu pitaraṃ vṛttaṃ bhrātaru ca vivāsitau | bharato duḥkhasaṃtapta idaṃ vacanam abravīt"
   - id: '2.67.2'
     kind: verse
     lines:
-      - "किं नु कार्यं हतस्येह मम राज्येन शोचतः"
+      - "किं नुण्कार्यं हतस्येह मम राज्येन शोचतः"
       - "विहीनस्याथ पित्रा च भ्रात्रा पितृसमेन च"
-    iast: "kiṃ nu kāryaṃ hatasyeha mama rājyena śocataḥ | vihīnasyātha pitrā ca bhrātrā pitṛsamena ca"
+    iast: "kiṃ nuṇkāryaṃ hatasyeha mama rājyena śocataḥ | vihīnasyātha pitrā ca bhrātrā pitṛsamena ca"
   - id: '2.67.4'
     kind: verse
     lines:
@@ -2758,9 +2770,9 @@ sections:
   - id: '2.67.8'
     kind: verse
     lines:
-      - "तस्याः पुत्रं कृतात्मानं चीरवल्कलवाससम्"
+      - "तस्याः पुत्रं कृतात्मानं चीरवल्कलवाससं"
       - "प्रस्थाप्य वनवासाय कथं पापे न शोचसि"
-    iast: "tasyāḥ putraṃ kṛtātmānaṃ cīravalkalavāsasam | prasthāpya vanavāsāya kathaṃ pāpe na śocasi"
+    iast: "tasyāḥ putraṃ kṛtātmānaṃ cīravalkalavāsasaṃ | prasthāpya vanavāsāya kathaṃ pāpe na śocasi"
   - id: '2.67.10'
     kind: verse
     lines:
@@ -2773,7 +2785,7 @@ sections:
       - "अहं हि पुरुषव्याघ्रावपश्यन्रामलक्ष्मणौ"
       - "केन शक्तिप्रभावेन राज्यं रक्षितुमुत्सहे"
     iast: "ahaṃ hi puruṣavyāghrāv apaśyan rāmalakṣmaṇau | kena śaktiprabhāvena rājyaṃ rakṣitum utsahe"
-  - id: '2.67.14*'
+  - id: '2.67.14'
     kind: verse
     lines:
       - "अथ वा मे भवेच्छक्तिर्योगैर्बुद्धिबलेन वा"
@@ -2802,8 +2814,8 @@ sections:
     kind: verse
     lines:
       - "किं नावबुध्यसे क्रूरे नियतं बन्धुसंश्रयम्"
-      - "ज्येष्ठं पितृसमं रामं कौसल्याया आत्मसम्भवम्"
-    iast: "kiṃ nāvabudhyase krūre niyataṃ bandhusaṃśrayam | jyeṣṭhaṃ pitṛsamaṃ rāmaṃ kausalyāyā ātmasambhavam"
+      - "ज्येष्ठं पितृसमं रामं कौसल्यायात्मसंभवम्"
+    iast: "kiṃ nāvabudhyase krūre niyataṃ bandhusaṃśrayam | jyeṣṭhaṃ pitṛsamaṃ rāmaṃ kausalyāyātmasaṃbhavam"
   - id: '2.70.1'
     kind: verse
     lines:
@@ -2821,7 +2833,7 @@ sections:
     lines:
       - "वसिष्ठस्य वचः श्रुत्वा भरतो धारणां गतः"
       - "प्रेतकार्याणि सर्वाणि कारयामास धर्मवित्"
-    iast: "vasiṣṭhasya vacaḥ śrutvā bharato dhāraṇāṃ gataḥ | pretakāryāṇi sarvāṇi kārayāmāsa dharmavit"
+    iast: "vasiṣṭhasya vacaḥ śrutvā bharato dhāraṇāṃ gataḥ | pretakāryāṇi sarvāṇi kārayām āsa dharmavit"
   - id: '2.73.3'
     kind: verse
     lines:
@@ -2879,9 +2891,9 @@ sections:
   - id: '2.87.6'
     kind: verse
     lines:
-      - "स यात्वा दूरमध्वानं सुपरिश्रान्तवाहनः"
+      - "स यात्वा दूरमध्वानं सुपरिश्रान्त वाहनः"
       - "उवाच भरतः श्रीमान्वसिष्ठं मन्त्रिणां वरम्"
-    iast: "sa yātvā dūram adhvānaṃ supariśrāntavāhanaḥ | uvāca bharataḥ śrīmān vasiṣṭhaṃ mantriṇāṃ varam"
+    iast: "sa yātvā dūram adhvānaṃ supariśrānta vāhanaḥ | uvāca bharataḥ śrīmān vasiṣṭhaṃ mantriṇāṃ varam"
   - id: '2.90.2'
     kind: verse
     lines:
@@ -2892,8 +2904,8 @@ sections:
     kind: verse
     lines:
       - "तांश्च विद्रवतो दृष्ट्वा तं च श्रुत्वा स निःस्वनम्"
-      - "उवाच रामः सौमित्रिं लक्ष्मणं दीप्ततेजसम्"
-    iast: "tāṃś ca vidravato dṛṣṭvā taṃ ca śrutvā sa niḥsvanam | uvāca rāmaḥ saumitriṃ lakṣmaṇaṃ dīptatejasam"
+      - "उवाच रामः सौमित्रिं लक्ष्मणं दीप्ततेजसं"
+    iast: "tāṃś ca vidravato dṛṣṭvā taṃ ca śrutvā sa niḥsvanam | uvāca rāmaḥ saumitriṃ lakṣmaṇaṃ dīptatejasaṃ"
   - id: '2.90.5'
     kind: verse
     lines:
@@ -2903,9 +2915,9 @@ sections:
   - id: '2.90.9'
     kind: verse
     lines:
-      - "तामश्वगजसम्पूर्णां रथध्वजविभूषिताम्"
+      - "तामश्वगजसंपूर्णां रथध्वजविभूषिताम्"
       - "शशंस सेनां रामाय वचनं चेदमब्रवीत्"
-    iast: "tām aśvagajasampūrṇāṃ rathadhvajavibhūṣitām | śaśaṃsa senāṃ rāmāya vacanaṃ cedam abravīt"
+    iast: "tām aśvagajasaṃpūrṇāṃ rathadhvajavibhūṣitām | śaśaṃsa senāṃ rāmāya vacanaṃ cedam abravīt"
   - id: '2.90.10'
     kind: verse
     lines:
@@ -2915,15 +2927,15 @@ sections:
   - id: '2.90.13'
     kind: verse
     lines:
-      - "सम्पन्नं राज्यमिच्छंस्तु व्यक्तं प्राप्याभिषेचनम्"
+      - "संपन्नं राज्यमिच्छंस्तु व्यक्तं प्राप्याभिषेचनम्"
       - "आवां हन्तुं समभ्येति कैकेय्या भरतः सुतः"
-    iast: "sampannaṃ rājyam icchaṃs tu vyaktaṃ prāpyābhiṣecanam | āvāṃ hantuṃ samabhyeti kaikeyyā bharataḥ sutaḥ"
+    iast: "saṃpannaṃ rājyam icchaṃs tu vyaktaṃ prāpyābhiṣecanam | āvāṃ hantuṃ samabhyeti kaikeyyā bharataḥ sutaḥ"
   - id: '2.90.18'
     kind: verse
     lines:
-      - "यन्निमित्तं भवान्राज्याच्च्युतो राघव शाश्वतात्"
-      - "सम्प्राप्तोऽयमरिर्वीर भरतो वध्य एव मे"
-    iast: "yannimittaṃ bhavān rājyāc cyuto rāghava śāśvatāt | samprāpto 'yam arir vīra bharato vadhya eva me"
+      - "यन्निमित्तं भवान्राज्याच्च्युतो राघव शाश्वतीम्"
+      - "संप्राप्तोऽयमरिर्वीर भरतो वध्य एव मे"
+    iast: "yannimittaṃ bhavān rājyāc cyuto rāghava śāśvatīm | saṃprāpto 'yam arir vīra bharato vadhya eva me"
   - id: '2.91.1'
     kind: verse
     lines:
@@ -2940,8 +2952,8 @@ sections:
     kind: verse
     lines:
       - "प्राप्तकालं यदेषोऽस्मान्भरतो द्रष्टुमिच्छति"
-      - "अस्मासु मनसाप्येष नाहितं किंचिदाचरेत्"
-    iast: "prāptakālaṃ yad eṣo 'smān bharato draṣṭum icchati | asmāsu manasāpy eṣa nāhitaṃ kiṃcid ācaret"
+      - "अस्मासु मनसाप्येष नाहितं किं चिदाचरेत्"
+    iast: "prāptakālaṃ yad eṣo 'smān bharato draṣṭum icchati | asmāsu manasāpy eṣa nāhitaṃ kiṃ cid ācaret"
   - id: '2.91.5'
     kind: verse
     lines:
@@ -2951,9 +2963,9 @@ sections:
   - id: '2.91.6'
     kind: verse
     lines:
-      - "कथं नु पुत्राः पितरं हन्युः कस्यांचिदापदि"
+      - "कथं नु पुत्राः पितरं हन्युः कस्यां चिदापदि"
       - "भ्राता वा भ्रातरं हन्यात्सौमित्रे प्राणमात्मनः"
-    iast: "kathaṃ nu putrāḥ pitaraṃ hanyuḥ kasyāṃcid āpadi | bhrātā vā bhrātaraṃ hanyāt saumitre prāṇam ātmanaḥ"
+    iast: "kathaṃ nu putrāḥ pitaraṃ hanyuḥ kasyāṃ cid āpadi | bhrātā vā bhrātaraṃ hanyāt saumitre prāṇam ātmanaḥ"
   - id: '2.91.7'
     kind: verse
     lines:
@@ -2972,6 +2984,12 @@ sections:
       - "गच्छन्नेवाथ भरतस्तापसालयसंस्थिताम्"
       - "भ्रातुः पर्णकुटीं श्रीमानुटजं च ददर्श ह"
     iast: "gacchann evātha bharatas tāpasālayasaṃsthitām | bhrātuḥ parṇakuṭīṃ śrīmān uṭajaṃ ca dadarśa ha"
+  - id: '2.93.27'
+    kind: verse
+    lines:
+      - "उपविष्टं महाबाहुं ब्रह्माणमिव शाश्वतम्"
+      - "स्थण्डिले दर्भसस्म्तीर्णे सीतया लक्ष्मणेन च"
+    iast: "upaviṣṭaṃ mahābāhuṃ brahmāṇam iva śāśvatam | sthaṇḍile darbhasasmtīrṇe sītayā lakṣmaṇena ca"
   - id: '2.93.28'
     kind: verse
     lines:
@@ -2987,9 +3005,9 @@ sections:
   - id: '2.93.38'
     kind: verse
     lines:
-      - "बाष्पापिहितकण्ठश्च प्रेक्ष्य रामं यशस्विनम्"
+      - "बाष्पापिहित कण्ठश्च प्रेक्ष्य रामं यशस्विनम्"
       - "आर्येत्येवाभिसंक्रुश्य व्याहर्तुं नाशकत्ततः"
-    iast: "bāṣpāpihitakaṇṭhaś ca prekṣya rāmaṃ yaśasvinam | āryety evābhisaṃkruśya vyāhartuṃ nāśakat tataḥ"
+    iast: "bāṣpāpihita kaṇṭhaś ca prekṣya rāmaṃ yaśasvinam | āryety evābhisaṃkruśya vyāhartuṃ nāśakat tataḥ"
   - id: '2.93.39'
     kind: verse
     lines:
@@ -3002,12 +3020,6 @@ sections:
       - "आघ्राय रामस्तं मूर्ध्नि परिष्वज्य च राघवः"
       - "अङ्के भरतमारोप्य पर्यपृच्छत्समाहितः"
     iast: "āghrāya rāmas taṃ mūrdhni pariṣvajya ca rāghavaḥ | aṅke bharatam āropya paryapṛcchat samāhitaḥ"
-  - id: '2.94.58'
-    kind: verse
-    lines:
-      - "मङ्गलस्याप्रयोगं च प्रत्युत्थानं च सर्वशः"
-      - "कच्चित्त्वं वर्जयस्येतान्राजदोषांश्चतुर्दश"
-    iast: "maṅgalasyāprayogaṃ ca pratyutthānaṃ ca sarvaśaḥ | kaccit tvaṃ varjayasy etān rājadoṣāṃś caturdaśa"
   - id: '2.95.1'
     kind: verse
     lines:
@@ -3018,8 +3030,8 @@ sections:
     kind: verse
     lines:
       - "शाश्वतोऽयं सदा धर्मः स्थितोऽस्मासु नरर्षभ"
-      - "ज्येष्ठपुत्रे स्थिते राजन्न कनीयान्भवेन्नृपः"
-    iast: "śāśvato 'yaṃ sadā dharmaḥ sthito 'smāsu nararṣabha | jyeṣṭhaputre sthite rājan na kanīyān bhaven nṛpaḥ"
+      - "ज्येष्ठ पुत्रे स्थिते राजन्न कनीयान्भवेन्नृपः"
+    iast: "śāśvato 'yaṃ sadā dharmaḥ sthito 'smāsu nararṣabha | jyeṣṭha putre sthite rājan na kanīyān bhaven nṛpaḥ"
   - id: '2.95.3'
     kind: verse
     lines:
@@ -3059,9 +3071,9 @@ sections:
   - id: '2.95.29'
     kind: verse
     lines:
-      - "ततो मन्दाकिनीतीरात्प्रत्युत्तीर्य स राघवः"
+      - "ततो मन्दाकिनी तीरात्प्रत्युत्तीर्य स राघवः"
       - "पितुश्चकार तेजस्वी निवापं भ्रातृभिः सह"
-    iast: "tato mandākinītīrāt pratyuttīrya sa rāghavaḥ | pituś cakāra tejasvī nivāpaṃ bhrātṛbhiḥ saha"
+    iast: "tato mandākinī tīrāt pratyuttīrya sa rāghavaḥ | pituś cakāra tejasvī nivāpaṃ bhrātṛbhiḥ saha"
   - id: '2.95.30'
     kind: verse
     lines:
@@ -3071,9 +3083,9 @@ sections:
   - id: '2.95.31'
     kind: verse
     lines:
-      - "इदं भुङ्क्ष्व महाराज प्रीतो यदशना वयम्"
+      - "इदं भुङ्क्ष्व महाराजप्रीतो यदशना वयम्"
       - "यदन्नः पुरुषो भवति तदन्नास्तस्य देवताः"
-    iast: "idaṃ bhuṅkṣva mahārāja prīto yadaśanā vayam | yadannaḥ puruṣo bhavati tadannās tasya devatāḥ"
+    iast: "idaṃ bhuṅkṣva mahārājaprīto yad aśanā vayam | yadannaḥ puruṣo bhavati tadannās tasya devatāḥ"
   - id: '2.95.33'
     kind: verse
     lines:
@@ -3096,14 +3108,14 @@ sections:
     kind: verse
     lines:
       - "तासां रामः समुत्थाय जग्राह चरणाञ्शुभान्"
-      - "मात्ःणां मनुजव्याघ्रः सर्वासां सत्यसंगरः"
-    iast: "tāsāṃ rāmaḥ samutthāya jagrāha caraṇāñ śubhān | mātḥṇāṃ manujavyāghraḥ sarvāsāṃ satyasaṃgaraḥ"
+      - "मातॄणां मनुजव्याघ्रः सर्वासां सत्यसंगरः"
+    iast: "tāsāṃ rāmaḥ samutthāya jagrāha caraṇāñ śubhān | mātṝṇāṃ manujavyāghraḥ sarvāsāṃ satyasaṃgaraḥ"
   - id: '2.96.17'
     kind: verse
     lines:
-      - "सौमित्रिरपि ताः सर्वा मात्ःन्सम्प्रेक्ष्य दुःखितः"
+      - "सौमित्रिरपि ताः सर्वा मातॄः संप्रेक्ष्य दुःखितः"
       - "अभ्यवादयतासक्तं शनै रामादनन्तरम्"
-    iast: "saumitrir api tāḥ sarvā mātḥn samprekṣya duḥkhitaḥ | abhyavādayatāsaktaṃ śanai rāmād anantaram"
+    iast: "saumitrir api tāḥ sarvā mātṝḥ saṃprekṣya duḥkhitaḥ | abhyavādayatāsaktaṃ śanai rāmād anantaram"
   - id: '2.96.19'
     kind: verse
     lines:
@@ -3122,6 +3134,12 @@ sections:
       - "यन्निमित्तमिमं देशं कृष्णाजिनजटाधरः"
       - "हित्वा राज्यं प्रविष्टस्त्वं तत्सर्वं वक्तुमर्हसि"
     iast: "yannimittam imaṃ deśaṃ kṛṣṇājinajaṭādharaḥ | hitvā rājyaṃ praviṣṭas tvaṃ tat sarvaṃ vaktum arhasi"
+  - id: '2.97.4'
+    kind: verse
+    lines:
+      - "इत्युक्तः केकयीपुत्रः काकुत्स्थेन महात्मना"
+      - "प्रगृह्य बलवद्भूयः प्राञ्जलिर्वाक्यमब्रवीत्"
+    iast: "ity uktaḥ kekayīputraḥ kākutsthena mahātmanā | pragṛhya balavad bhūyaḥ prāñjalir vākyam abravīt"
   - id: '2.97.8'
     kind: verse
     lines:
@@ -3131,9 +3149,9 @@ sections:
   - id: '2.97.9'
     kind: verse
     lines:
-      - "इमाः प्रकृतयः सर्वा विधवा मातरश्च याः"
+      - "इमाः प्रकृतयः सर्वा विधवा मातुरश्च याः"
       - "त्वत्सकाशमनुप्राप्ताः प्रसादं कर्तुमर्हसि"
-    iast: "imāḥ prakṛtayaḥ sarvā vidhavā mātaraś ca yāḥ | tvatsakāśam anuprāptāḥ prasādaṃ kartum arhasi"
+    iast: "imāḥ prakṛtayaḥ sarvā vidhavā māturaś ca yāḥ | tvat sakāśam anuprāptāḥ prasādaṃ kartum arhasi"
   - id: '2.98.4'
     kind: verse
     lines:
@@ -3174,8 +3192,8 @@ sections:
     kind: verse
     lines:
       - "पुनरेवं ब्रुवाणं तु भरतं लक्ष्मणाग्रजः"
-      - "प्रत्युवाच ततः श्रीमाञ्ज्ञातिमध्येऽतिसत्कृतः"
-    iast: "punar evaṃ bruvāṇaṃ tu bharataṃ lakṣmaṇāgrajaḥ | pratyuvāca tataḥ śrīmāñ jñātimadhye 'tisatkṛtaḥ"
+      - "प्रत्युवच ततः श्रीमाञ्ज्ञातिमध्येऽतिसत्कृतः"
+    iast: "punar evaṃ bruvāṇaṃ tu bharataṃ lakṣmaṇāgrajaḥ | pratyuvaca tataḥ śrīmāñ jñātimadhye 'tisatkṛtaḥ"
   - id: '2.99.5'
     kind: verse
     lines:
@@ -3222,8 +3240,8 @@ sections:
     kind: verse
     lines:
       - "साधु राघव मा भूत्ते बुद्धिरेवं निरर्थका"
-      - "प्राकृतस्य नरस्येव आर्यबुद्धेस्तपस्विनः"
-    iast: "sādhu rāghava mā bhūt te buddhir evaṃ nirarthakā | prākṛtasya narasyeva āryabuddhes tapasvinaḥ"
+      - "प्राकृतस्य नरस्येव आर्य बुद्धेस्तपस्विनः"
+    iast: "sādhu rāghava mā bhūt te buddhir evaṃ nirarthakā | prākṛtasya narasyeva ārya buddhes tapasvinaḥ"
   - id: '2.100.7'
     kind: verse
     lines:
@@ -3254,7 +3272,7 @@ sections:
       - "सोऽहं पितुर्निदेशं तु किमर्थं नानुपालये"
       - "सत्यप्रतिश्रवः सत्यं सत्येन समयीकृतः"
     iast: "so 'haṃ pitur nideśaṃ tu kimarthaṃ nānupālaye | satyapratiśravaḥ satyaṃ satyena samayīkṛtaḥ"
-  - id: '2.102.1*'
+  - id: '2.102.1'
     kind: verse
     lines:
       - "क्रुद्धमाज्ञाय रामं तु वसिष्ठः प्रत्युवाच ह"
@@ -3265,8 +3283,8 @@ sections:
     kind: verse
     lines:
       - "इक्ष्वाकूणां हि सर्वेषां राजा भवति पूर्वजः"
-      - "पूर्वजेनावरः पुत्रो ज्येष्ठो राज्येऽभिषिच्यते"
-    iast: "ikṣvākūṇāṃ hi sarveṣāṃ rājā bhavati pūrvajaḥ | pūrvajenāvaraḥ putro jyeṣṭho rājye 'bhiṣicyate"
+      - "पूर्वजे नावरः पुत्रो ज्येष्ठो राज्येऽभिषिच्यते"
+    iast: "ikṣvākūṇāṃ hi sarveṣāṃ rājā bhavati pūrvajaḥ | pūrvaje nāvaraḥ putro jyeṣṭho rājye 'bhiṣicyate"
   - id: '2.103.2'
     kind: verse
     lines:
@@ -3372,9 +3390,9 @@ sections:
   - id: '2.107.1'
     kind: verse
     lines:
-      - "ततो निक्षिप्य मात्ःन्स अयोध्यायां दृढव्रतः"
+      - "ततो निक्षिप्य मातॄः स अयोध्यायां दृढव्रतः"
       - "भरतः शोकसंतप्तो गुरूनिदमथाब्रवीत्"
-    iast: "tato nikṣipya mātḥn sa ayodhyāyāṃ dṛḍhavrataḥ | bharataḥ śokasaṃtapto gurūn idam athābravīt"
+    iast: "tato nikṣipya mātṝḥ sa ayodhyāyāṃ dṛḍhavrataḥ | bharataḥ śokasaṃtapto gurūn idam athābravīt"
   - id: '2.107.22'
     kind: verse
     lines:
@@ -3386,7 +3404,7 @@ sections:
     lines:
       - "प्रतिप्रयाते भरते वसन्रामस्तपोवने"
       - "लक्षयामास सोद्वेगमथौत्सुक्यं तपस्विनाम्"
-    iast: "pratiprayāte bharate vasan rāmas tapovane | lakṣayāmāsa sodvegam athautsukyaṃ tapasvinām"
+    iast: "pratiprayāte bharate vasan rāmas tapovane | lakṣayām āsa sodvegam athautsukyaṃ tapasvinām"
   - id: '2.109.1'
     kind: verse
     lines:
@@ -3627,12 +3645,12 @@ sections:
       - "तथा संवसतस्तस्य मुनीनामाश्रमेषु वै"
       - "रमतश्चानुकुल्येन ययुः संवत्सरा दश"
     iast: "trīn māsān aṣṭamāsāṃś ca rāghavo nyavasat sukham | tathā saṃvasatas tasya munīnām āśrameṣu vai | ramataś cānukulyena yayuḥ saṃvatsarā daśa"
-  - id: '3.11.1'
+  - id: '3.11.21'
     kind: verse
     lines:
-      - "स प्रविश्याश्रमपदं लक्ष्मणो राघवानुजः"
-      - "अगस्त्यशिष्यमासाद्य वाक्यमेतदुवाच ह"
-    iast: "sa praviśyāśramapadaṃ lakṣmaṇo rāghavānujaḥ | agastyaśiṣyam āsādya vākyam etad uvāca ha"
+      - "एवमुक्त्वा महाबाहुरगस्त्यं सूर्यवर्चसं"
+      - "जग्राह परमप्रीतस्तस्य पादौ परंतपः"
+    iast: "evam uktvā mahābāhur agastyaṃ sūryavarcasaṃ | jagrāha paramaprītas tasya pādau paraṃtapaḥ"
   - id: '3.11.22'
     kind: verse
     lines:
@@ -3693,6 +3711,12 @@ sections:
       - "तस्माज्जातोऽहमरुणात्संपातिश्च ममाग्रजः"
       - "जटायुरिति मां विद्धि श्येनीपुत्रमरिंदम"
     iast: "tasmāj jāto 'ham aruṇāt saṃpātiś ca mamāgrajaḥ | jaṭāyur iti māṃ viddhi śyenīputram ariṃdama"
+  - id: '3.14.1'
+    kind: verse
+    lines:
+      - "ततः पञ्चवटीं गत्वा नानाव्यालमृगायुताम्"
+      - "उवाच भ्रातरं रामो लक्ष्मणं दीप्ततेजसं"
+    iast: "tataḥ pañcavaṭīṃ gatvā nānāvyālamṛgāyutām | uvāca bhrātaraṃ rāmo lakṣmaṇaṃ dīptatejasaṃ"
   - id: '3.14.10'
     kind: verse
     lines:
@@ -3723,6 +3747,13 @@ sections:
       - "जटी तापसरूपेण सभार्यः शरचापधृक्"
       - "आगतस्त्वमिमं देशं कथं राक्षससेवितम्"
     iast: "jaṭī tāpasarūpeṇa sabhāryaḥ śaracāpadhṛk | āgatas tvam imaṃ deśaṃ kathaṃ rākṣasasevitam"
+  - id: '3.16.21'
+    kind: verse
+    lines:
+      - "तानहं समतिक्रान्ता राम त्वापूर्वदर्शनात्"
+      - "समुपेतास्मि भावेन भर्तारं पुरुषोत्तमम्"
+      - "चिराय भव भर्ता मे सीतया किं करिष्यसि"
+    iast: "tān ahaṃ samatikrāntā rāma tvāpūrvadarśanāt | samupetāsmi bhāvena bhartāraṃ puruṣottamam | cirāya bhava bhartā me sītayā kiṃ kariṣyasi"
   - id: '3.17.16'
     kind: verse
     lines:
@@ -3981,6 +4012,12 @@ sections:
       - "रकारादीनि नामानि रामत्रस्तस्य रावण"
       - "रत्नानि च रथाश्चैव त्रासं संजनयन्ति मे"
     iast: "rakārādīni nāmāni rāmatrastasya rāvaṇa | ratnāni ca rathāś caiva trāsaṃ saṃjanayanti me"
+  - id: '3.48.13'
+    kind: verse
+    lines:
+      - "यदि शूर्पणखाहेतोर्जनस्थानगतः खरः"
+      - "अतिवृत्तो हतः पूर्वं रामेणाक्लिष्टकर्मणा"
+    iast: "yadi śūrpaṇakhāhetor janasthānagataḥ kharaḥ | ativṛtto hataḥ pūrvaṃ rāmeṇākliṣṭakarmaṇā"
   - id: '3.38.2'
     kind: verse
     lines:
@@ -4024,12 +4061,12 @@ sections:
       - "त्वां तु मायामृगं दृष्ट्वा काञ्चनं जातविस्मया"
       - "आनयैनमिति क्षिप्रं रामं वक्ष्यति मैथिली"
     iast: "tvāṃ tu māyāmṛgaṃ dṛṣṭvā kāñcanaṃ jātavismayā | ānayainam iti kṣipraṃ rāmaṃ vakṣyati maithilī"
-  - id: '3.38.17'
+  - id: '3.38.20'
     kind: verse
     lines:
-      - "अपक्रान्ते च काकुत्स्थे लक्ष्मणे च यथासुखम्"
-      - "आनयिष्यामि वैदेहीं सहस्राक्षः शचीमिव"
-    iast: "apakrānte ca kākutsthe lakṣmaṇe ca yathāsukham | ānayiṣyāmi vaidehīṃ sahasrākṣaḥ śacīm iva"
+      - "एतत्कार्यमवश्यं मे बलादपि करिष्यसि"
+      - "राज्ञो हि प्रतिकूलस्थो न जातु सुखमेधते"
+    iast: "etat kāryam avaśyaṃ me balād api kariṣyasi | rājño hi pratikūlastho na jātu sukham edhate"
   - id: '3.40.12'
     kind: verse
     lines:
@@ -4237,12 +4274,6 @@ sections:
       - "नैव चाहं क्व चिद्भद्रे करिष्ये तव विप्रियम्"
       - "त्यज्यतां मानुषो भावो मयि भावः प्रणीयताम्"
     iast: "māṃ bhajasva cirāya tvam ahaṃ ślāghyas tava priyaḥ | naiva cāhaṃ kva cid bhadre kariṣye tava vipriyam | tyajyatāṃ mānuṣo bhāvo mayi bhāvaḥ praṇīyatām"
-  - id: '3.47.15'
-    kind: verse
-    lines:
-      - "इत्युक्त्वा मैथिलीं वाक्यं प्रियार्हां प्रियवादिनीम्"
-      - "जग्राह रावणः सीतां बुधः खे रोहिणीमिव"
-    iast: "ity uktvā maithilīṃ vākyaṃ priyārhāṃ priyavādinīm | jagrāha rāvaṇaḥ sītāṃ budhaḥ khe rohiṇīm iva"
   - id: '3.47.16'
     kind: verse
     lines:
@@ -4335,6 +4366,12 @@ sections:
       - "न हि ते परितुष्यामि त्यक्त्वा यद्यासि मैथिलीम्"
       - "क्रुद्धायाः परुषं श्रुत्वा स्त्रिया यत्त्वमिहागतः"
     iast: "na hi te parituṣyāmi tyaktvā yad yāsi maithilīm | kruddhāyāḥ paruṣaṃ śrutvā striyā yat tvam ihāgataḥ"
+  - id: '3.57.22'
+    kind: verse
+    lines:
+      - "सर्वथा त्वपनीतं ते सीतया यत्प्रचोदितः"
+      - "क्रोधस्य वशमागम्य नाकरोः शासनं मम"
+    iast: "sarvathā tv apanītaṃ te sītayā yat pracoditaḥ | krodhasya vaśam āgamya nākaroḥ śāsanaṃ mama"
   - id: '3.58.3'
     kind: verse
     lines:
@@ -4474,6 +4511,12 @@ sections:
       - "तौ कबन्धेन तं मार्गं पम्पाया दर्शितं वने"
       - "आतस्थतुर्दिशं गृह्य प्रतीचीं नृवरात्मजौ"
     iast: "tau kabandhena taṃ mārgaṃ pampāyā darśitaṃ vane | ātasthatur diśaṃ gṛhya pratīcīṃ nṛvarātmajau"
+  - id: '3.70.3'
+    kind: verse
+    lines:
+      - "कृत्वा च शैलपृष्ठे तु तौ वासं रघुनन्दनौ"
+      - "पम्पायाः पश्चिमं तीरं राघवावुपतस्थतुः"
+    iast: "kṛtvā ca śailapṛṣṭhe tu tau vāsaṃ raghunandanau | pampāyāḥ paścimaṃ tīraṃ rāghavāv upatasthatuḥ"
   - id: '3.71.19'
     kind: verse
     lines:
@@ -4620,6 +4663,24 @@ sections:
       - "ततोऽग्निं दीप्यमानं तौ चक्रतुश्च प्रदक्षिणम्"
       - "सुग्रीवो राघवश्चैव वयस्यत्वमुपागतौ"
     iast: "tato 'gniṃ dīpyamānaṃ tau cakratuś ca pradakṣiṇam | sugrīvo rāghavaś caiva vayasyatvam upāgatau"
+  - id: '4.8.15'
+    kind: verse
+    lines:
+      - "ततः प्रहृष्टः सुग्रीवः श्लक्ष्णं मधुरया गिरा"
+      - "उवाच प्रणयाद्रामं हर्षव्याकुलिताक्षरम्"
+    iast: "tataḥ prahṛṣṭaḥ sugrīvaḥ ślakṣṇaṃ madhurayā girā | uvāca praṇayād rāmaṃ harṣavyākulitākṣaram"
+  - id: '4.8.18'
+    kind: verse
+    lines:
+      - "वालिनो मे भयार्तस्य सर्वलोकाभयंकर"
+      - "ममापि त्वमनाथस्य प्रसादं कर्तुमर्हसि"
+    iast: "vālino me bhayārtasya sarvalokābhayaṃkara | mamāpi tvam anāthasya prasādaṃ kartum arhasi"
+  - id: '4.8.20'
+    kind: verse
+    lines:
+      - "उपकारफलं मित्रमपकारोऽरिलक्षणम्"
+      - "अद्यैव तं हनिष्यामि तव भार्यापहारिणम्"
+    iast: "upakāraphalaṃ mitram apakāro 'rilakṣaṇam | adyaiva taṃ haniṣyāmi tava bhāryāpahāriṇam"
   - id: '4.6.1'
     kind: verse
     lines:
@@ -4698,7 +4759,7 @@ sections:
       - "सत्यं तु प्रतिजानामि त्यज शोकमरिंदम"
       - "करिष्यामि तथा यत्नं यथा प्राप्स्यसि मैथिलीम्"
     iast: "satyaṃ tu pratijānāmi tyaja śokam ariṃdama | kariṣyāmi tathā yatnaṃ yathā prāpsyasi maithilīm"
-  - id: '4.8.18'
+  - id: '4.8.18#2'
     kind: verse
     lines:
       - "वालिनो मे भयार्तस्य सर्वलोकाभयंकर"
@@ -4710,7 +4771,7 @@ sections:
       - "एवमुक्तस्तु तेजस्वी धर्मज्ञो धर्मवत्सलः"
       - "प्रत्युवाच स काकुत्स्थः सुग्रीवं प्रहसन्निव"
     iast: "evam uktas tu tejasvī dharmajño dharmavatsalaḥ | pratyuvāca sa kākutsthaḥ sugrīvaṃ prahasann iva"
-  - id: '4.8.20'
+  - id: '4.8.20#2'
     kind: verse
     lines:
       - "उपकारफलं मित्रमपकारोऽरिलक्षणम्"
@@ -4746,12 +4807,12 @@ sections:
       - "श्रुत्वा तु तस्य निनदं सर्वभूतप्रकम्पनम्"
       - "मदश्चैकपदे नष्टः क्रोधश्चापतितो महान्"
     iast: "śrutvā tu tasya ninadaṃ sarvabhūtaprakampanam | madaś caikapade naṣṭaḥ krodhaś cāpatito mahān"
-  - id: '4.16.12'
+  - id: '4.16.11'
     kind: verse
     lines:
-      - "स निःश्वस्य महावेगो वाली परमरोषणः"
-      - "सर्वतश्चारयन्दृष्टिं शत्रुदर्शनकाङ्क्षया"
-    iast: "sa niḥśvasya mahāvego vālī paramaroṣaṇaḥ | sarvataś cārayan dṛṣṭiṃ śatrudarśanakāṅkṣayā"
+      - "प्रविष्टायां तु तारायां सह स्त्रीभिः स्वमालयम्"
+      - "नगरान्निर्ययौ क्रुद्धो महासर्प इव श्वसन्"
+    iast: "praviṣṭāyāṃ tu tārāyāṃ saha strībhiḥ svam ālayam | nagarān niryayau kruddho mahāsarpa iva śvasan"
   - id: '4.16.25'
     kind: verse
     lines:
@@ -4770,13 +4831,19 @@ sections:
       - "स दृष्ट्वा राघवं वाली लक्ष्मणं च महाबलम्"
       - "अब्रवीत्प्रश्रितं वाक्यं परुषं धर्मसंहितम्"
     iast: "sa dṛṣṭvā rāghavaṃ vālī lakṣmaṇaṃ ca mahābalam | abravīt praśritaṃ vākyaṃ paruṣaṃ dharmasaṃhitam"
+  - id: '4.17.14'
+    kind: verse
+    lines:
+      - "कुलीनः सत्त्वसंपन्नस्तेजस्वी चरितव्रतः"
+      - "रामः करुणवेदी च प्रजानां च हिते रतः"
+    iast: "kulīnaḥ sattvasaṃpannas tejasvī caritavrataḥ | rāmaḥ karuṇavedī ca prajānāṃ ca hite rataḥ"
   - id: '4.17.13'
     kind: verse
     lines:
       - "पराङ्मुखवधं कृत्वा को नु प्राप्तस्त्वया गुणः"
       - "यदहं युद्धसंरब्धस्त्वत्कृते निधनं गतः"
     iast: "parāṅmukhavadhaṃ kṛtvā ko nu prāptas tvayā guṇaḥ | yad ahaṃ yuddhasaṃrabdhas tvatkṛte nidhanaṃ gataḥ"
-  - id: '4.17.14'
+  - id: '4.17.14#2'
     kind: verse
     lines:
       - "कुलीनः सत्त्वसंपन्नस्तेजस्वी चरितव्रतः"
@@ -5246,6 +5313,12 @@ sections:
       - "अनेकशतसाहस्रीं विषण्णां हरिवाहिनीम्"
       - "जाम्बवान्समुदीक्ष्यैवं हनुमन्तमथाब्रवीत्"
     iast: "anekaśatasāhasrīṃ viṣaṇṇāṃ harivāhinīm | jāmbavān samudīkṣyaivaṃ hanumantam athābravīt"
+  - id: '4.65.2'
+    kind: verse
+    lines:
+      - "वीर वानरलोकस्य सर्वशास्त्रविदां वर"
+      - "तूष्णीमेकान्तमाश्रित्य हनुमन्किं न जल्पसि"
+    iast: "vīra vānaralokasya sarvaśāstravidāṃ vara | tūṣṇīm ekāntam āśritya hanuman kiṃ na jalpasi"
   - id: '4.65.27'
     kind: verse
     lines:
@@ -5488,6 +5561,12 @@ sections:
       - "अस्या देव्या मनस्तस्मिंस्तस्य चास्यां प्रतिष्ठितम्"
       - "तेनेयं स च धर्मात्मा मुहूर्तमपि जीवति"
     iast: "asyā devyā manas tasmiṃs tasya cāsyāṃ pratiṣṭhitam | teneyaṃ sa ca dharmātmā muhūrtam api jīvati"
+  - id: '5.14.27'
+    kind: verse
+    lines:
+      - "दुष्करं कुरुते रामो हीनो यदनया प्रभुः"
+      - "धारयत्यात्मनो देहं न दुःखेनावसीदति"
+    iast: "duṣkaraṃ kurute rāmo hīno yad anayā prabhuḥ | dhārayaty ātmano dehaṃ na duḥkhenāvasīdati"
   - id: '5.13.52'
     kind: verse
     lines:
@@ -5990,6 +6069,12 @@ sections:
       - "यदि नोत्सहसे यातुं मया सार्धमनिन्दिते"
       - "अभिज्ञानं प्रयच्छ त्वं जानीयाद्राघवो हि यत्"
     iast: "yadi notsahase yātuṃ mayā sārdham anindite | abhijñānaṃ prayaccha tvaṃ jānīyād rāghavo hi yat"
+  - id: '5.36.11'
+    kind: verse
+    lines:
+      - "एवमुक्ता हनुमता सीता सुरसुतोपमा"
+      - "उवाच वचनं मन्दं बाष्पप्रग्रथिताक्षरम्"
+    iast: "evam uktā hanumatā sītā surasutopamā | uvāca vacanaṃ mandaṃ bāṣpapragrathitākṣaram"
   - id: '5.36.47'
     kind: verse
     lines:
@@ -6009,6 +6094,12 @@ sections:
       - "स ममार्थाय कुशलं वक्तव्यो वचनान्मम"
       - "मृदुर्नित्यं शुचिर्दक्षः प्रियो रामस्य लक्ष्मणः"
     iast: "yaṃ dṛṣṭvā rāghavo naiva vṛddham āryam anusmarat | sa mamārthāya kuśalaṃ vaktavyo vacanān mama | mṛdur nityaṃ śucir dakṣaḥ priyo rāmasya lakṣmaṇaḥ"
+  - id: '5.37.4'
+    kind: verse
+    lines:
+      - "त्वमस्मिन्कार्यनिर्योगे प्रमाणं हरिसत्तम"
+      - "तस्य चिन्तय यो यत्नो दुःखक्षयकरो भवेत्"
+    iast: "tvam asmin kāryaniryoge pramāṇaṃ harisattama | tasya cintaya yo yatno duḥkhakṣayakaro bhavet"
   - id: '5.36.50'
     kind: verse
     lines:
@@ -6288,6 +6379,12 @@ sections:
       - "ततः प्रदीप्तलाङ्गूलः सविद्युदिव तोयदः"
       - "भवनाग्रेषु लङ्काया विचचार महाकपिः"
     iast: "tataḥ pradīptalāṅgūlaḥ savidyud iva toyadaḥ | bhavanāgreṣu laṅkāyā vicacāra mahākapiḥ"
+  - id: '5.5.15'
+    kind: verse
+    lines:
+      - "गृहाद्गृहं राक्षसानामुद्यानानि च वानरः"
+      - "वीक्षमाणो ह्यसंत्रस्तः प्रासादांश्च चचार सः"
+    iast: "gṛhād gṛhaṃ rākṣasānām udyānāni ca vānaraḥ | vīkṣamāṇo hy asaṃtrastaḥ prāsādāṃś ca cacāra saḥ"
   - id: '5.52.17'
     kind: verse
     lines:
@@ -6663,12 +6760,6 @@ sections:
       - "सोऽहं परुषितस्तेन दासवच्चावमानितः"
       - "त्यक्त्वा पुत्रांश्च दारांश्च राघवं शरणं गतः"
     iast: "so 'haṃ paruṣitas tena dāsavac cāvamānitaḥ | tyaktvā putrāṃś ca dārāṃś ca rāghavaṃ śaraṇaṃ gataḥ"
-  - id: '6.11.16'
-    kind: verse
-    lines:
-      - "एतत्तु वचनं श्रुत्वा सुग्रीवो लघुविक्रमः"
-      - "लक्ष्मणस्याग्रतो रामं संरब्धमिदमब्रवीत्"
-    iast: "etat tu vacanaṃ śrutvā sugrīvo laghuvikramaḥ | lakṣmaṇasyāgrato rāmaṃ saṃrabdham idam abravīt"
   - id: '6.11.18'
     kind: verse
     lines:
@@ -6784,6 +6875,12 @@ sections:
       - "एष सेतुं महोत्साहः करोतु मयि वानरः"
       - "तमहं धारयिष्यामि तथा ह्येष यथा पिता"
     iast: "eṣa setuṃ mahotsāhaḥ karotu mayi vānaraḥ | tam ahaṃ dhārayiṣyāmi tathā hy eṣa yathā pitā"
+  - id: '6.15.20'
+    kind: verse
+    lines:
+      - "दशयोजनविस्तीर्णं शतयोजनमायतम्"
+      - "नलश्चक्रे महासेतुं मध्ये नदनदीपतेः"
+    iast: "daśayojanavistīrṇaṃ śatayojanam āyatam | nalaś cakre mahāsetuṃ madhye nadanadīpateḥ"
   - id: '6.31.48'
     kind: verse
     lines:
@@ -7140,12 +7237,6 @@ sections:
       - "सोऽभिवाद्य गुरोः पादौ कृत्वा चापि प्रदक्षिणम्"
       - "निकुम्भिलामभिययौ चैत्यं रावणिपालितम्"
     iast: "so 'bhivādya guroḥ pādau kṛtvā cāpi pradakṣiṇam | nikumbhilām abhiyayau caityaṃ rāvaṇipālitam"
-  - id: '6.72.32'
-    kind: verse
-    lines:
-      - "स संप्राप्य धनुष्पाणिर्मायायोगमरिंदम"
-      - "तस्थौ ब्रह्मविधानेन विजेतुं रघुनन्दनः"
-    iast: "sa saṃprāpya dhanuṣpāṇir māyāyogam ariṃdama | tasthau brahmavidhānena vijetuṃ raghunandanaḥ"
   - id: '6.73.5'
     kind: verse
     lines:
@@ -7497,6 +7588,12 @@ sections:
       - "यदैव हि जनस्थाने राक्षसैर्बहुभिर्वृतः"
       - "खरस्तव हतो भ्राता तदैवासौ न मानुषः"
     iast: "yadaiva hi janasthāne rākṣasair bahubhir vṛtaḥ | kharas tava hato bhrātā tadaivāsau na mānuṣaḥ"
+  - id: '6.99.9'
+    kind: verse
+    lines:
+      - "इन्द्रियाणि पुरा जित्वा जितं त्रिभुवणं त्वया"
+      - "स्मरद्भिरिव तद्वैरमिन्द्रियैरेव निर्जितः"
+    iast: "indriyāṇi purā jitvā jitaṃ tribhuvaṇaṃ tvayā | smaradbhir iva tad vairam indriyair eva nirjitaḥ"
   - id: '6.99.16'
     kind: verse
     lines:
@@ -7732,6 +7829,12 @@ sections:
       - "ततः सीतां शिरःस्नातां युवतीभिरलंकृताम्"
       - "महार्हाभरणोपेतां महार्हाम्बरधारिणीम्"
     iast: "tataḥ sītāṃ śiraḥsnātāṃ yuvatībhir alaṃkṛtām | mahārhābharaṇopetāṃ mahārhāmbaradhāriṇīm"
+  - id: '6.102.14'
+    kind: verse
+    lines:
+      - "आरोप्य शिबिकां दीप्तां परार्ध्याम्बरसंवृताम्"
+      - "रक्षोभिर्बहुभिर्गुप्तामाजहार विभीषणः"
+    iast: "āropya śibikāṃ dīptāṃ parārdhyāmbarasaṃvṛtām | rakṣobhir bahubhir guptām ājahāra vibhīṣaṇaḥ"
   - id: '6.102.16'
     kind: verse
     lines:
@@ -8075,12 +8178,6 @@ sections:
       - "अनुजानीहि मां सौम्य पूजितोऽस्मि विभीषण"
       - "मन्युर्न खलु कर्तव्यस्त्वरितस्त्वानुमानये"
     iast: "anujānīhi māṃ saumya pūjito 'smi vibhīṣaṇa | manyur na khalu kartavyas tvaritas tvānumānaye"
-  - id: '6.109.22'
-    kind: verse
-    lines:
-      - "ततः काञ्चनचित्राङ्गं वैदूर्यमणिवेदिकम्"
-      - "कूटागारैः परिक्षिप्तं सर्वतो रजतप्रभम्"
-    iast: "tataḥ kāñcanacitrāṅgaṃ vaidūryamaṇivedikam | kūṭāgāraiḥ parikṣiptaṃ sarvato rajataprabham"
   - id: '6.109.27'
     kind: verse
     lines:
@@ -8165,6 +8262,12 @@ sections:
       - "ततो यानान्युपारूढाः सर्वा दशरथस्त्रियः"
       - "कौसल्यां प्रमुखे कृत्वा सुमित्रां चापि निर्ययुः"
     iast: "tato yānāny upārūḍhāḥ sarvā daśarathastriyaḥ | kausalyāṃ pramukhe kṛtvā sumitrāṃ cāpi niryayuḥ"
+  - id: '6.115.12'
+    kind: verse
+    lines:
+      - "कृत्स्नं च नगरं तत्तु नन्दिग्राममुपागमत्"
+      - "द्विजातिमुख्यैर्धर्मात्मा श्रेणीमुख्यैः सनैगमैः"
+    iast: "kṛtsnaṃ ca nagaraṃ tat tu nandigrāmam upāgamat | dvijātimukhyair dharmātmā śreṇīmukhyaiḥ sanaigamaiḥ"
   - id: '6.115.26'
     kind: verse
     lines:
