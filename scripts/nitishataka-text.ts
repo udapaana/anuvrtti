@@ -23,7 +23,12 @@
  */
 import * as fs from 'fs';
 import * as path from 'path';
+import { createRequire } from 'module';
 import { iastToDeva } from './analyze-text';
+
+const require = createRequire(import.meta.url);
+const { initSync, transliterate } = require('shlesha');
+initSync({ module: fs.readFileSync(require.resolve('shlesha/shlesha_bg.wasm')) });
 
 const ROOT = process.cwd();
 const SRC = path.join(ROOT, 'data/texts/sa_bhatRhari-zatakatraya.txt');
@@ -83,6 +88,15 @@ const sections = verses.map((v) => {
     iast: halves.map((h) => h.join(' ')).join(' | '),
   };
 });
+// A GRETIL typo that Devanagari cannot spell (avaokate, naivaa: two vowels
+// in hiatus) comes out of the transliterator quietly changed. Name each one,
+// so the Devanagari is not taken for GRETIL's exact typing.
+const bare = (x: string) => x.replace(/[\s'|-]/g, '').replace(/ṁ/g, 'ṃ');
+const respelled = sections
+  .filter((s) => bare(transliterate(s.lines.join(' '), 'devanagari', 'iast')) !== bare(s.iast))
+  .map((s) => s.id);
+// a bare YAML scalar must not hold ': ' or ' #'
+for (const s of sections) for (const l of s.lines) if (/: | #/.test(l)) problems.push(`${s.id}: line needs quoting: ${l}`);
 if (problems.length) { console.error(problems.join('\n')); process.exit(1); }
 
 const esc = (s: string) => JSON.stringify(s);
@@ -102,6 +116,10 @@ const y: string[] = [
   '#',
   `# GRETIL types ${supplied.length} verses (${supplied.join(', ')}) without the half-verse daṇḍa;`,
   '# the script supplies it after the second pāda, in `iast` as well as `lines`.',
+  ...(respelled.length ? [
+    `# In ${respelled.join(', ')} GRETIL types two vowels in hiatus, a typo Devanagari cannot`,
+    '# spell, so `lines` differs from `iast` there; each is noted in the overrides.',
+  ] : []),
   'id: nitishataka',
   'title: नीतिशतकम्',
   'title_en: Bhartṛhari’s Nītiśataka',
@@ -110,7 +128,7 @@ const y: string[] = [
   'source:',
   '  edition: Nītiśataka, ed. Śrīkṛṣṇamaṇi Tripāṭhī (Chaukhamba Vidya Bhavan, 1990), input by J. K. Brzezinski, via GRETIL',
   '  file: sa_bhatRhari-zatakatraya # data/texts.json (sha256-pinned)',
-  `  lines: '${start + 1}–${end - 1}'`,
+  `  lines: '${start + 2}–${end - 1}'`,
   '  licence: GRETIL text, CC BY-NC-SA 4.0 (per its header)',
   'sections:',
 ];

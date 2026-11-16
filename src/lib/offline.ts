@@ -40,32 +40,50 @@ export const offlineBytes = writable<number>(
   browser ? Number(localStorage.getItem(BYTES_KEY)) || 0 : 0
 );
 
+/** The worker, or null — never a promise that waits forever for one. */
 async function activeWorker(): Promise<ServiceWorker | null> {
   if (!browser || !('serviceWorker' in navigator)) return null;
-  const reg = await navigator.serviceWorker.ready.catch(() => null);
+  const timeout = new Promise<null>((r) => setTimeout(() => r(null), 10_000));
+  const reg = await Promise.race([navigator.serviceWorker.ready.catch(() => null), timeout]);
   return reg?.active ?? null;
 }
+
+/** How long a download may go without a word from the worker before it is given up. */
+const SILENCE_MS = 60_000;
 
 /**
  * Post one caching message and follow it to OFFLINE_DONE. Messages carry a
  * tag so two downloads in flight (the Settings bundle and a text) do not
- * read each other's progress.
+ * read each other's progress. Rejects when any file failed, when the worker
+ * falls silent, or when a deploy replaces the worker mid-download.
  */
 function runCache(message: { type: string; urls?: string[] }, tag: string,
   onProgress: (p: { done: number; total: number }) => void): Promise<number> {
   return new Promise((resolve, reject) => {
     activeWorker().then((worker) => {
       if (!worker) { reject(new Error('no service worker')); return; }
+      let timer: ReturnType<typeof setTimeout>;
+      const finish = (err: Error | null, bytes = 0) => {
+        clearTimeout(timer);
+        navigator.serviceWorker.removeEventListener('message', onMessage);
+        navigator.serviceWorker.removeEventListener('controllerchange', onChange);
+        if (err) reject(err); else resolve(bytes);
+      };
+      const arm = () => { clearTimeout(timer); timer = setTimeout(() => finish(new Error('the download stalled')), SILENCE_MS); };
+      const onChange = () => finish(new Error('the site updated during the download — save again'));
       const onMessage = (event: MessageEvent) => {
-        const data = event.data as { type?: string; tag?: string; done?: number; total?: number; bytes?: number };
+        const data = event.data as { type?: string; tag?: string; done?: number; total?: number; bytes?: number; failed?: number };
         if (data?.tag !== tag) return;
+        arm();
         if (data.type === 'OFFLINE_PROGRESS') onProgress({ done: data.done ?? 0, total: data.total ?? 0 });
         else if (data.type === 'OFFLINE_DONE') {
-          navigator.serviceWorker.removeEventListener('message', onMessage);
-          resolve(data.bytes ?? 0);
+          if (data.failed) finish(new Error(`${data.failed} file(s) could not be fetched`));
+          else finish(null, data.bytes ?? 0);
         }
       };
       navigator.serviceWorker.addEventListener('message', onMessage);
+      navigator.serviceWorker.addEventListener('controllerchange', onChange);
+      arm();
       worker.postMessage({ ...message, tag });
     });
   });
@@ -126,7 +144,9 @@ export async function saveText(id: string): Promise<void> {
     if (!localStorage.getItem(SAVED_KEY)) {
       const now = Date.now();
       localStorage.setItem(SAVED_KEY, String(now));
+      localStorage.setItem(BYTES_KEY, String(bytes));
       offlineSavedAt.set(now);
+      offlineBytes.set(bytes);
       offlineStatus.set('ready');
     }
   } finally {
@@ -148,6 +168,8 @@ export function removeText(id: string): Promise<void> {
         }
       };
       navigator.serviceWorker.addEventListener('message', onMessage);
+      // the record is already gone; never leave the caller waiting on a silent worker
+      setTimeout(() => { navigator.serviceWorker.removeEventListener('message', onMessage); resolve(); }, 10_000);
       // the shared index stays: other saved texts list each other through it
       worker.postMessage({ type: 'UNCACHE_URLS', urls: textUrls(id).filter((u) => !u.endsWith('index.json')), tag });
     });

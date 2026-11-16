@@ -27,6 +27,7 @@
 
   let building = $state(false);
   let failed = $state(false);
+  let dlFailed = $state(false);
 
   const progress = $derived(kind === 'text' ? $textProgress[id] : ($offlineStatus === 'working' ? $offlineProgress : undefined));
   const saved = $derived(kind === 'text' ? !!$savedTexts[id] : $offlineStatus === 'ready');
@@ -38,7 +39,8 @@
   }
   async function download() {
     building = true;
-    try { saveFile(filename, await html()); } finally { building = false; }
+    dlFailed = false;
+    try { saveFile(filename, await html()); } catch { dlFailed = true; } finally { building = false; }
   }
 </script>
 
@@ -60,6 +62,7 @@
     <span class="sep" aria-hidden="true">·</span>
   {/if}
   <button onclick={download} disabled={building}>{building ? 'preparing…' : 'download'}</button>
+  {#if dlFailed}<span class="state err">couldn't build the file — try again</span>{/if}
 </div>
 
 <style>

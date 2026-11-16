@@ -18,6 +18,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { slp, deva, mwUrl } from './analyze-text';
+import { parse as parseYaml } from 'yaml';
 import {
   ROOT, textIds, readText, readOverrides, readSnapshot, wordsOf, wordKeys, linesOf,
   parseA, agrees, decodeA, fmtA, type Analysis, type PadaSpec, type MwEntry, type Snapshot
@@ -42,6 +43,12 @@ export type FixKind = 'compound' | 'split' | 'pick' | 'supplied' | 'gloss' | 'no
 
 /** Pausal form of a pada as cheda gives it (नरस् → नरः). */
 const pausal = (s: string) => deva(s.replace(/[sr]$/, 'H'));
+
+/** content/texts/particles.yaml: the gloss of a common indeclinable, by lemma. */
+const PARTICLES: Record<string, string> = (() => {
+  const f = path.join(ROOT, 'content/texts/particles.yaml');
+  return fs.existsSync(f) ? (parseYaml(fs.readFileSync(f, 'utf-8')) ?? {}) : {};
+})();
 
 function termsOf(a: Analysis): string[] {
   if (a.type === 'member') return ['समास'];
@@ -76,7 +83,12 @@ function resolveSpec(spec: PadaSpec, base: Analysis | null, pool: Analysis[]): {
   const lemma = spec.lemma ?? base?.lemma ?? '';
   const want = parseA(spec.a ?? (base ? fmtA(base) : ''), lemma);
   if (!spec.a && base) Object.assign(want, { ...base, lemma });
-  const hit = pool.find((x) => agrees(x, want, lemma));
+  // An author who names a lemma and an analysis without a कृत् means a plain
+  // word: दिक्षु as दिश्, not vidyut's प्रतिदिश् + क्विन्, whose short lemma is
+  // also दिश्. A कृत्-bearing alternative is taken only when none other fits.
+  const plain = (x: Analysis) => !!want.कृत् || !x.कृत्;
+  const hit = (spec.lemma && spec.a ? pool.find((x) => plain(x) && agrees(x, want, lemma)) : undefined)
+    ?? (spec.lemma && spec.a ? undefined : pool.find((x) => agrees(x, want, lemma)));
   return hit ? { a: hit, source: 'pick' } : { a: want, source: 'author' };
 }
 
@@ -145,12 +157,14 @@ export function resolveText(id: string): Resolved {
           return { form: r.form, lemma: '', a: '', terms: [], gloss: null, glossBy: null, mw: null, source: 'none', alts: 0 };
         }
         const m = mwFor(snap.lexicon, a);
-        const gloss = r.spec?.gloss ?? m?.senses[0] ?? null;
+        // an indeclinable nobody glossed takes content/texts/particles.yaml, not MW's root homonym
+        const particle = !r.spec?.gloss && fmtA(a) === 'अव्यय' ? PARTICLES[a.lemma_full ?? a.lemma] : undefined;
+        const gloss = r.spec?.gloss ?? particle ?? m?.senses[0] ?? null;
         if (!gloss) problems.push(`${s.id}/${w.surface}: ${r.form} (${a.lemma}) — no MW entry and no gloss; add gloss: in overrides.yaml`);
         return {
           form: r.form, lemma: a.lemma_full ?? a.lemma, a: fmtA(a), terms: termsOf(a),
           ...(a.type === 'member' ? { member: true } : {}),
-          gloss, glossBy: r.spec?.gloss ? 'author' : m ? 'mw' : null,
+          gloss, glossBy: r.spec?.gloss || particle ? 'author' : m ? 'mw' : null,
           mw: m ? { key: m.key, url: m.url ?? mwUrl(m.key), lex: m.lex, senses: m.senses } : null,
           ...(r.spec?.note ? { note: r.spec.note } : {}),
           source: r.source, alts: r.alts,

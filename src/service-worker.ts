@@ -7,7 +7,10 @@ import { build, files, version } from '$service-worker';
 
 const sw = self as unknown as ServiceWorkerGlobalScope;
 const CACHE = `anuvrtti-${version}`;
-const OFFLINE_CACHE = `anuvrtti-offline-${version}`;
+// Not versioned: what a reader saved must survive the next deploy, and this
+// site deploys on every push. (It was versioned once; activate merges those.)
+const OFFLINE_CACHE = 'anuvrtti-offline';
+const isOfflineCache = (k: string) => k === OFFLINE_CACHE || k.startsWith('anuvrtti-offline-');
 
 // Precached on install: the app shell only. `files` is everything under
 // /static — 8,000+ files once the per-sūtra commentary is counted — and
@@ -56,11 +59,19 @@ sw.addEventListener('install', (event) => {
 sw.addEventListener('activate', (event) => {
   async function deleteOldCaches() {
     for (const key of await caches.keys()) {
-      // Both this version's caches are kept; only a PREVIOUS version's
-      // runtime cache is dropped. The offline bundle, once a reader has
-      // asked for it, survives a deploy — it just goes stale until the next
-      // download, same as any other cached copy.
-      if (key !== CACHE && !key.startsWith('anuvrtti-offline-')) {
+      // Only a PREVIOUS version's runtime cache is dropped. The offline copy
+      // a reader asked for survives a deploy: stale until they refresh it,
+      // but whole — the saved pages and the app code they were served with.
+      if (key !== CACHE && !isOfflineCache(key)) await caches.delete(key);
+      // a versioned offline cache from before: fold it into the one cache
+      else if (key !== OFFLINE_CACHE && isOfflineCache(key)) {
+        const from = await caches.open(key);
+        const to = await caches.open(OFFLINE_CACHE);
+        for (const req of await from.keys()) {
+          if (await to.match(req)) continue;
+          const res = await from.match(req);
+          if (res) await to.put(req, res);
+        }
         await caches.delete(key);
       }
     }
@@ -107,26 +118,53 @@ sw.addEventListener('activate', (event) => {
 */
 const READER_PAGES = ['/reader', '/reader/__data.json'];
 
+const CORE_MARK = '/__offline-core-version';
+const isPage = (path: string) => path !== CORE_MARK && !path.startsWith('/_app/') && !path.startsWith('/data/') && !path.startsWith('/wasm/') && !/\.[a-z0-9]+$/i.test(path);
+
+/**
+ * Fetch each URL and store it — only on success, so a failed refresh never
+ * costs the copy already held. Reports progress, then OFFLINE_DONE with the
+ * number that failed; the page decides whether that is a failure.
+ */
 async function cacheAll(urls: string[], client: Client | null, tag: string | undefined, skipHeld: boolean) {
   const cache = await caches.open(OFFLINE_CACHE);
-  let done = 0;
-  let bytes = 0;
-  for (const url of urls) {
+  // the pages saved before are refreshed too, so that each one's HTML points
+  // at this build's code — and the old code can then go
+  const pages = (await cache.keys()).map((r) => new URL(r.url).pathname).filter((u) => isPage(u) || u.endsWith('/__data.json'));
+  const all = [...new Set([...urls, ...pages])];
+  // the core's data files keep their paths across builds, so "held" means
+  // current only if the core was saved by this build
+  const marker = await cache.match(CORE_MARK);
+  const coreCurrent = skipHeld && (marker ? (await marker.text()) === version : false);
+  let done = 0, bytes = 0, failed = 0;
+  for (const url of all) {
     try {
-      if (skipHeld && (await cache.match(url, { ignoreSearch: true }))) { done++; continue; }
+      // the shared core, already held, need not be fetched again for each text
+      if (coreCurrent && CORE_ASSETS.includes(url) && (await cache.match(url, { ignoreSearch: true }))) {
+        done++;
+        continue;
+      }
       const res = await fetch(url, { cache: 'reload' });
       if (res.ok) {
         bytes += Number(res.headers.get('content-length') ?? 0);
         await cache.put(url, res.clone());
-      }
+      } else failed++;
     } catch {
-      // One missing asset shouldn't sink the whole bundle; the reader
-      // still gets everything else, and can retry.
+      failed++;
     }
     done++;
-    client?.postMessage({ type: 'OFFLINE_PROGRESS', tag, done, total: urls.length, bytes });
+    client?.postMessage({ type: 'OFFLINE_PROGRESS', tag, done, total: all.length, bytes });
   }
-  client?.postMessage({ type: 'OFFLINE_DONE', tag, done, total: urls.length, bytes });
+  // app code from an older build, now referenced by no saved page
+  if (!failed) {
+    const current = new Set(build);
+    for (const req of await cache.keys()) {
+      const path = new URL(req.url).pathname;
+      if (path.startsWith('/_app/') && !current.has(path)) await cache.delete(req);
+    }
+  }
+  if (!failed && CORE_ASSETS.every((u) => all.includes(u))) await cache.put(CORE_MARK, new Response(version));
+  client?.postMessage({ type: 'OFFLINE_DONE', tag, done, total: all.length, bytes, failed });
 }
 
 sw.addEventListener('message', (event) => {
@@ -137,14 +175,8 @@ sw.addEventListener('message', (event) => {
     event.waitUntil(cacheAll([...CORE_ASSETS, ...READER_PAGES], client, data.tag, false));
   } else if (data?.type === 'CACHE_URLS') {
     const own = data.urls ?? [];
-    // the text's own files are always refreshed; the shared core only if missing
-    event.waitUntil(
-      (async () => {
-        const cache = await caches.open(OFFLINE_CACHE);
-        for (const u of own) await cache.delete(u, { ignoreSearch: true });
-        await cacheAll([...own, ...CORE_ASSETS, ...READER_PAGES], client, data.tag, true);
-      })()
-    );
+    // a text's own files are always fetched afresh; the shared core only if missing
+    event.waitUntil(cacheAll([...own, ...CORE_ASSETS, ...READER_PAGES], client, data.tag, true));
   } else if (data?.type === 'UNCACHE_URLS') {
     event.waitUntil(
       (async () => {
@@ -155,7 +187,10 @@ sw.addEventListener('message', (event) => {
     );
   } else if (data?.type === 'CLEAR_OFFLINE') {
     event.waitUntil(
-      caches.delete(OFFLINE_CACHE).then(() => client?.postMessage({ type: 'OFFLINE_CLEARED' }))
+      (async () => {
+        for (const k of await caches.keys()) if (isOfflineCache(k)) await caches.delete(k);
+        client?.postMessage({ type: 'OFFLINE_CLEARED' });
+      })()
     );
   }
 });

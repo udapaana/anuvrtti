@@ -13,6 +13,8 @@
 #
 # GRETIL types 4 verses (8, 14, 46, 48) without the half-verse daṇḍa;
 # the script supplies it after the second pāda, in `iast` as well as `lines`.
+# In 93, 96 GRETIL types two vowels in hiatus, a typo Devanagari cannot
+# spell, so `lines` differs from `iast` there; each is noted in the overrides.
 id: nitishataka
 title: नीतिशतकम्
 title_en: Bhartṛhari’s Nītiśataka
@@ -21,7 +23,7 @@ place: the whole śataka, verses 1–109
 source:
   edition: Nītiśataka, ed. Śrīkṛṣṇamaṇi Tripāṭhī (Chaukhamba Vidya Bhavan, 1990), input by J. K. Brzezinski, via GRETIL
   file: sa_bhatRhari-zatakatraya # data/texts.json (sha256-pinned)
-  lines: '56–595'
+  lines: '57–595'
   licence: GRETIL text, CC BY-NC-SA 4.0 (per its header)
 sections:
   - id: '1'
