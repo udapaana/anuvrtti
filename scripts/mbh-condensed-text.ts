@@ -169,7 +169,7 @@ yaml.push(`id: mahabharata-condensed`);
 yaml.push(`title: महाभारतम् (संक्षिप्तम्)`);
 yaml.push(`title_en: "The Mahabharata Condensed in the Poet's Own Words — the verse selection"`);
 yaml.push(`work: महाभारतम्`);
-yaml.push(`place: ${selection.entries.length} selected verses, Ādi through Svargārohaṇa parvans, in sequence`);
+yaml.push(`place: ${sections.length} selected verses, Ādi through Svargārohaṇa parvans, in sequence`);
 yaml.push(`source:`);
 yaml.push(`  edition: Mahābhārata, Kumbhakonam ed. (Southern Recension, Krishnacharya & Vyasacharya 1906-14), SARIT TEI`);
 yaml.push(`  file: sa_mahAbhArata-kumbhakonam-sarit # data/texts.json (sha256-pinned)`);

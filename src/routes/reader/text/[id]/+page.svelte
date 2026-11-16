@@ -163,6 +163,19 @@
   const isSel = (s: number, w: number, p = -1) => !!sel && sel.s === s && sel.w === w && (p < 0 || sel.p === p);
 
   const sectionLabel = (sec: Section, _i: number) => sec.id;
+  /*
+    The number printed beside a verse and in its closing ॥ ॥: the section's place
+    within its part, not its whole id, which outgrows the margin. The part names
+    the rest. Mahābhārata adi-1-1-1 (in the Ādiparvan) → 1.1, chapter and verse;
+    Bhāgavata 11.11.29 (in skandha 11) → 11.29; Pañcatantra 1.21+3 (in tantra 1)
+    → 21+3. The whole id stays in the picker, the links and the aria-label.
+  */
+  const shortId = (sec: Section) => {
+    const named = sec.id.match(/^[A-Za-z]+-\d+-(.+)$/); // parvan-number-chapter-verse
+    if (named) return named[1].replace(/-/g, '.');
+    const head = meta?.parts[partIdx]?.id.match(/^\d+/)?.[0];
+    return head && sec.id.startsWith(head + '.') && sec.id.length > head.length + 1 ? sec.id.slice(head.length + 1) : sec.id;
+  };
   // the Latin reading under the word, only while the page shows Devanagari
   let roman = $state('');
   $effect(() => {
@@ -404,7 +417,7 @@
 
       {#each text.sections as sec, si}
         <article class="sec" class:verse={sec.kind === 'verse'} data-si={si}>
-          <span class="num" aria-label={`section ${sec.id}`}>{sec.id}</span>
+          <span class="num" aria-label={`section ${sec.id}`}>{shortId(sec)}</span>
           <div class="lines">
             {#each sec.lines as line, li}
               <div class="tokens">
@@ -425,7 +438,7 @@
                     ><Sanskrit text={w.surface} source="devanagari" /></span>
                   {/if}
                 {/each}
-                <span class="token punct">{sec.kind === 'verse' ? (li === sec.lines.length - 1 ? `॥ ${sec.id} ॥` : '।') : '।'}</span>
+                <span class="token punct">{sec.kind === 'verse' ? (li === sec.lines.length - 1 ? `॥ ${shortId(sec)} ॥` : '।') : '।'}</span>
               </div>
             {/each}
           </div>
@@ -482,10 +495,10 @@
 
   /* the number in the margin, the text beside it */
   .sec {
-    display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 4px;
+    display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px;
     scroll-margin-top: calc(var(--sticky-rail) + 14px);
   }
-  .num { font-family: var(--font-mono); font-size: 11px; color: var(--faint); padding-top: 12px; text-align: right; padding-right: 8px; }
+  .num { font-family: var(--font-mono); font-size: 11px; color: var(--faint); padding-top: 12px; text-align: right; padding-right: 8px; white-space: nowrap; }
   .sec.verse .num { color: var(--accent); }
   .lines { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .sec.verse .lines { padding-left: 14px; border-left: 2px solid var(--rule); }
@@ -557,8 +570,8 @@
   .concept-ref { display: inline-block; margin-top: 6px; font-family: var(--font-mono); font-size: 11px; color: var(--accent-ref); text-decoration: none; }
 
   @media (max-width: 960px) {
-    .sec { grid-template-columns: 26px minmax(0, 1fr); }
-    .num { padding-right: 4px; }
+    .sec { grid-template-columns: 38px minmax(0, 1fr); }
+    .num { padding-right: 4px; font-size: 10px; }
     .token { font-size: 22px; }
     .tokens { column-gap: 13px; }
     .railframe.sheeted { height: 100%; overflow: hidden; }
