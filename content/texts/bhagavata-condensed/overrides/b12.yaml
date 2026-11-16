@@ -700,7 +700,7 @@
       2: { gloss: "you look at" }
   तदु:
     fix:
-      1: { gloss: "that" }
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "that (is)" }
       2: { gloss: "indeed" }
   ह:
     fix:
@@ -1288,7 +1288,8 @@
       1: { gloss: "is done" }
   किं:
     fix:
-      1: { gloss: "what?" }
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "what?" }
+    note: "किम् is the subject of the passive क्रियते: \"what is done (for the complete) by the incomplete?\""
   नु:
     fix:
       1: { gloss: "pray" }
@@ -2690,10 +2691,11 @@
   ब्रह्मन्भगवतः:
     fix:
       1: { a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "O brahmin" }
-      2: { gloss: "of the Lord" }
+      2: { gloss: "of (you,) the venerable one" }
+    note: "भगवतः is genitive with सखा, said of the brahmin himself (the commentators: भगवद्भक्तस्य, \"of you, the Lord's devotee\"); the subject is श्रियः पतिः: \"Śrī's husband himself is your friend\"."
   सखा:
     fix:
-      1: { gloss: "(you are) the friend" }
+      1: { gloss: "the friend (of yours)" }
   साक्षाच्छ्रियः:
     split:
       - { form: साक्षात्, lemma: साक्षात्, a: अव्यय, gloss: "himself, in person" }
