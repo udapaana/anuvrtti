@@ -177,7 +177,8 @@
 
   const sectionLabel = (sec: Section, _i: number) => sec.id;
   /*
-    The number printed beside a verse and in its closing ॥ ॥: the section's place
+    The number printed beside a verse (the closing daṇḍa carries none — it was
+    printed twice): the section's place
     within its part, not its whole id, which outgrows the margin. The part names
     the rest. Mahābhārata adi-1-1-1 (in the Ādiparvan) → 1.1, chapter and verse;
     Bhāgavata 11.11.29 (in skandha 11) → 11.29; Pañcatantra 1.21+3 (in tantra 1)
@@ -451,7 +452,7 @@
                     ><Sanskrit text={w.surface} source="devanagari" /></span>
                   {/if}
                 {/each}
-                <span class="token punct">{sec.kind === 'verse' ? (li === sec.lines.length - 1 ? `॥ ${shortId(sec)} ॥` : '।') : '।'}</span>
+                <span class="token punct">{sec.kind === 'verse' ? (li === sec.lines.length - 1 ? '॥' : '।') : '।'}</span>
               </div>
             {/each}
           </div>
