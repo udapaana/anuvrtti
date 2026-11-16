@@ -160,8 +160,9 @@
     fix:
       1: { gloss: "my lord, prince" }
   त्वं:
-    fix:
-      1: { gloss: "you" }
+    split:
+      - { form: त्वाम्, lemma: युष्मद्, a: द्वितीया एकवचन, gloss: "you" }
+    note: 'The edition prints त्वं, but त्वम् cannot be the object of द्रष्टुम्; the southern text reads त्वां ("your father wishes to see you"). Read as त्वाम्.'
   महिष्या:
     fix:
       1: { gloss: "the queen" }
@@ -218,7 +219,7 @@
   ददर्शासने:
     fix:
       1: { gloss: "saw" }
-      2: { lemma: आसन, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "on a seat" }
+      2: { form: आसने, lemma: आसन, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "on a seat" }
   रामो:
     fix:
       1: { gloss: "Rāma" }
@@ -1013,7 +1014,7 @@
       1: { gloss: "O Kaikeyī" }
   किं:
     fix:
-      1: { a: द्वितीया एकवचन पुंलिङ्ग, gloss: "what? (with चित्, 'any')" }
+      1: { a: अव्यय, gloss: "with चित्, 'any, at all' (किंचित् is fixed here; a masculine with गुणम् would be कंचित्)" }
   चिदाशंससे:
     fix:
       1: { a: अव्यय, gloss: "with an interrogative, 'any' (किंचित् गुणम् 'any merit')" }
@@ -1568,7 +1569,7 @@
   गच्छेत्स्त्रिया:
     fix:
       1: { gloss: "should go" }
-      2: { gloss: "of a woman" }
+      2: { gloss: "by a woman (स्त्रिया वाक्यवशं गतः 'brought under a woman's word')" }
   वाक्यवशं:
     split:
       - { form: वाक्य, lemma: वाक्य, member: true, gloss: "word" }
