@@ -230,6 +230,9 @@
       1: { gloss: "astonished" }
 
 '10.12.28':
+  स्यादिति:
+    fix:
+      1: { gloss: "could be (brought about)" }
   कृत्यं:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "what is to be done" }
@@ -276,6 +279,7 @@
   तच्छ्रुत्वा:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+      2: { gloss: "having heard" }
   भगवान्कृष्णस्त्वव्ययः:
     fix:
       1: { gloss: "the Lord" }
@@ -733,6 +737,9 @@
       2: { gloss: "the cowherd village" }
 
 '10.13.27':
+  सः:
+    fix:
+      1: { gloss: "he" }
   इत्थमात्मात्मनात्मानं:
     split:
       - { form: इत्थम्, lemma: इत्थम्, a: अव्यय, gloss: "thus" }
@@ -870,6 +877,7 @@
   भाग्यमहो:
     fix:
       1: { gloss: "good fortune" }
+      2: { gloss: "oh!" }
   भाग्यं:
     fix:
       1: { gloss: "good fortune" }
@@ -965,7 +973,7 @@
       1: { gloss: "seizing" }
   प्रपदोर्भ्रामयित्वैकपाणिना:
     split:
-      - { form: प्रपदोः, lemma: प्रपद, a: षष्ठी द्विवचन नपुंसकलिङ्ग, gloss: "by the (hind) feet" }
+      - { form: प्रपदोः, lemma: प्रपद्, a: सप्तमी द्विवचन पुंलिङ्ग, gloss: "by the (hind) feet", note: "प्रपदोः declines the consonant stem प्रपद् (like पद्, पदोः); the vowel stem प्रपद would give प्रपदयोः. The part seized stands in the locative." }
       - { form: भ्रामयित्वा, lemma: भ्रम्, a: अव्यय क्त्वा णिच्, gloss: "whirling (him) round" }
       - { form: एक, lemma: एक, member: true, gloss: "one" }
       - { form: पाणिना, lemma: पाणि, a: तृतीया एकवचन पुंलिङ्ग, gloss: "with (one) hand" }
@@ -1036,10 +1044,13 @@
       - { form: पश्चात्, lemma: पश्चात्, member: true, gloss: "behind, hind" }
       - { form: चरणान्, lemma: चरण, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "feet (a बहुव्रीहि: 'seized by their hind feet')" }
       - { form: प्राहिणोत्, lemma: प्रहि, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "hurled" }
-      - { form: तृणराजसु, lemma: तृणराज, a: सप्तमी बहुवचन पुंलिङ्ग, gloss: "into the palm trees" }
+      - { form: तृणराजसु, lemma: तृणराजन्, a: सप्तमी बहुवचन पुंलिङ्ग, gloss: "into the palm trees", note: "Declined like राजन् (राजसु): the compound keeps the न्-stem instead of taking टच् (5.4.91), which would give तृणराजेषु." }
     note: "प्राहिणोत् is singular with two subjects joined by च — each brother hurled them."
 
 '10.15.47':
+  एवं:
+    fix:
+      1: { gloss: "thus" }
   स:
     fix:
       1: { gloss: "he" }
@@ -1140,7 +1151,7 @@
   गाढरशनो:
     split:
       - { form: गाढ, lemma: गाढ, member: true, gloss: "tight" }
-      - { form: रशनः, lemma: रशना, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "girdle (गाढरशन 'his girdle tied tight')" }
+      - { form: रशनः, lemma: रशन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "girdle (गाढरशन 'his girdle tied tight')" }
   न्यपतद्विषोदे:
     split:
       - { form: न्यपतत्, lemma: निपत्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "leapt down" }
@@ -1379,6 +1390,7 @@
   विक्रीडतोरेवं:
     fix:
       1: { gloss: "while the two (brothers) played" }
+      2: { gloss: "thus" }
   गोपालच्छद्ममायया:
     split:
       - { form: गोपाल, lemma: गोपाल, member: true, gloss: "a cowherd" }
@@ -2226,6 +2238,9 @@
       - { form: भावनः, lemma: भावन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "bringing about (फलभावन 'who makes effort bear fruit')" }
 
 '10.24.13':
+  कर्मणैव:
+    fix:
+      1: { gloss: "by karma, by one's deeds" }
   कर्मणा:
     fix:
       1: { gloss: "by karma, deeds" }
@@ -2252,6 +2267,7 @@
       1: { gloss: "safety, well-being" }
   कर्मणैवाभिपद्यते:
     fix:
+      1: { gloss: "by karma, by one's deeds" }
       3: { gloss: "comes upon, meets with" }
 
 '10.24.15':
@@ -2734,7 +2750,7 @@
     split:
       - { form: रमा, lemma: रमा, member: true, gloss: "Ramā (Lakṣmī)" }
       - { form: आनन, lemma: आनन, member: true, gloss: "face" }
-      - { form: आभम्, lemma: आभा, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "like (रमाननाभ 'like Lakṣmī's face')" }
+      - { form: आभम्, lemma: आभ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "like (रमाननाभ 'like Lakṣmī's face')" }
   नवकुङ्कुमारुणम्:
     split:
       - { form: नव, lemma: नव, member: true, gloss: "fresh" }
@@ -3253,7 +3269,7 @@
       - { form: उत्तस्थुः, lemma: उत्था, a: लिट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "rose up" }
       - { form: युगपत्, lemma: युगपद्, a: अव्यय, gloss: "all at once" }
       - { form: सर्वाः, lemma: सर्व, a: प्रथमा बहुवचन स्त्रीलिङ्ग, gloss: "all" }
-      - { form: तन्वः, lemma: तनु, a: प्रथमा बहुवचन स्त्रीलिङ्ग, gloss: "bodies" }
+      - { form: तन्वः, lemma: तनू, a: प्रथमा बहुवचन स्त्रीलिङ्ग, gloss: "bodies" }
     note: "A simile: they rose as bodies rise when the breath of life returns (तन्वः प्राणम् इव आगतम्)."
   प्राणमिवागतम्:
     fix:
@@ -3269,7 +3285,7 @@
       1: { a: अव्यय ल्यप्, gloss: "taking (with him)" }
   कालिन्द्या:
     fix:
-      1: { a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "of the Kālindī (Yamunā)" }
+      1: { form: कालिन्द्याः, a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "of the Kālindī (Yamunā)" }
   निर्विश्य:
     fix:
       1: { a: अव्यय ल्यप्, gloss: "entering" }
@@ -3422,7 +3438,7 @@
       1: { a: अव्यय ल्यप्, gloss: "seizing" }
   शृङ्गयोः:
     fix:
-      1: { gloss: "by the two horns" }
+      1: { a: सप्तमी द्विवचन नपुंसकलिङ्ग, gloss: "by the two horns", note: "With a verb of seizing, the part seized stands in the locative." }
   पदा:
     fix:
       1: { lemma: पद्, gloss: "with his foot" }

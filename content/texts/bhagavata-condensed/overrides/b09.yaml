@@ -778,6 +778,7 @@
     fix:
       2: { gloss: "approached" }
       3: { gloss: "Kaṃsa" }
+      4: { gloss: afraid }
   सुविस्मिता:
     fix:
       1: { gloss: "greatly amazed" }
@@ -824,7 +825,7 @@
   विश्वात्मन्नदो:
     fix:
       1: { gloss: "O Soul of the universe" }
-      2: { lemma: अदस्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
+      2: { lemma: अदस्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this", form: अदः }
   रूपमलौकिकम्:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "form" }
@@ -857,7 +858,7 @@
       1: { gloss: "son" }
   समादाय:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "taking up" }
+      1: { a: अव्यय ल्यप्, gloss: "taking up", lemma: समादा }
   सूतिकागृहात्:
     split:
       - { form: सूतिका, lemma: सूतिका, member: true, gloss: "a woman lately delivered" }
@@ -882,6 +883,9 @@
     split:
       - { form: नन्द, lemma: नन्द, member: true, gloss: "Nanda" }
       - { form: जायया, lemma: जाया, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "wife (नन्दजायया 'of Nanda's wife')" }
+  ततश्च:
+    fix:
+      1: { gloss: then }
 
 '10.3.48':
   हृतप्रत्ययसर्ववृत्तिषु:
@@ -977,7 +981,7 @@
       1: { gloss: "those" }
       2: { gloss: "cowherds" }
       3: { gloss: "fast asleep" }
-      4: { gloss: "finding" }
+      4: { gloss: "finding", a: अव्यय ल्यप् }
   निद्रया:
     fix:
       1: { gloss: "in sleep" }
@@ -990,7 +994,7 @@
       - { form: शयने, lemma: शयन, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "bed" }
   निधाय:
     fix:
-      1: { gloss: "laying down" }
+      1: { gloss: "laying down", a: अव्यय ल्यप् }
   तत्:
     fix:
       1: { lemma: तद्, member: true, gloss: "her (तत्सुता 'her daughter')" }
@@ -1037,7 +1041,7 @@
       1: { gloss: "they" }
   तूर्णमुपव्रज्य:
     fix:
-      2: { a: अव्यय ल्यप्, gloss: "going up to (him)" }
+      2: { a: अव्यय ल्यप्, gloss: "going up to (him)", lemma: उपव्रज् }
   देवक्या:
     fix:
       1: { a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "Devakī" }
@@ -1118,7 +1122,7 @@
   हन्तुमर्हसि:
     fix:
       1: { lemma: हन्, a: अव्यय तुमुन्, gloss: "to kill" }
-      2: { gloss: "you ought" }
+      2: { gloss: "you ought", a: लट् मध्यमपुरुष एकवचन परस्मैपद भ्वादि }
 
 '10.4.8':
   तां:
@@ -1207,6 +1211,9 @@
     fix:
       1: { gloss: "the helpless" }
       2: { gloss: "for nothing, in vain" }
+  क्व:
+    fix:
+      1: { gloss: where }
 
 '10.4.29':
   तस्यां:
@@ -1396,7 +1403,7 @@
   शुचिरलङ्कृतः:
     fix:
       1: { gloss: "pure" }
-      2: { gloss: "adorned" }
+      2: { gloss: "adorned", lemma: अलङ्कृ, a: प्रथमा एकवचन पुंलिङ्ग क्त }
 
 '10.5.2':
   वाचयित्वा:
@@ -1567,7 +1574,7 @@
       1: { gloss: "from then" }
   आरभ्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "beginning (तत आरभ्य 'from then on')" }
+      1: { a: अव्यय ल्यप्, gloss: "beginning (तत आरभ्य 'from then on')", lemma: आरभ् }
   नन्दस्य:
     fix:
       1: { gloss: "Nanda" }
@@ -1655,7 +1662,7 @@
 '10.6.8':
   विबुध्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "recognizing" }
+      1: { a: अव्यय ल्यप्, gloss: "recognizing", lemma: विबुध् }
   तां:
     fix:
       1: { gloss: "her" }
@@ -2025,7 +2032,7 @@
       1: { gloss: "son" }
   यशोदा:
     fix:
-      1: { a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "Yaśodā" }
+      1: { a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "Yaśodā", form: यशोदा }
   नापश्यत्तस्मिन्न्यस्तवती:
     fix:
       2: { gloss: "saw" }
@@ -2426,7 +2433,7 @@
       1: { gloss: "the housemaids" }
   यशोदा:
     fix:
-      1: { a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "Yaśodā" }
+      1: { a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "Yaśodā", form: यशोदा }
   नन्दगेहिनी:
     split:
       - { form: नन्द, lemma: नन्द, member: true, gloss: "Nanda" }
@@ -2472,7 +2479,7 @@
   दधिमन्थानं:
     split:
       - { form: दधि, lemma: दधि, member: true, gloss: "curds" }
-      - { form: मन्थानम्, lemma: मन्थिन्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "churning-stick" }
+      - { form: मन्थानम्, lemma: मथिन्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "churning-stick" }
   न्यषेधत्प्रीतिमावहन्:
     fix:
       1: { gloss: "stopped" }
@@ -2502,7 +2509,7 @@
   अतृप्तमुत्सृज्य:
     fix:
       1: { a: द्वितीया एकवचन पुंलिङ्ग, gloss: "unsatisfied" }
-      2: { gloss: "putting down" }
+      2: { gloss: "putting down", a: अव्यय ल्यप् }
   जवेन:
     fix:
       1: { gloss: "quickly" }
@@ -2575,7 +2582,7 @@
     fix:
       1: { gloss: "in haste" }
       2: { gloss: "from there" }
-      3: { a: अव्यय ल्यप्, gloss: "climbing down" }
+      3: { a: अव्यय ल्यप्, gloss: "climbing down", lemma: अवरुह् }
       4: { gloss: "ran off" }
   भीतवत्:
     split:
@@ -3138,7 +3145,7 @@
       - { form: धृक्, lemma: धृक्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "bearing (बकरूपधृक् 'in a crane's shape')" }
   आगत्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "coming" }
+      1: { a: अव्यय ल्यप्, gloss: "coming", lemma: आगम् }
   सहसा:
     split:
       - { form: सहसा, lemma: सहसा, a: अव्यय, gloss: "suddenly" }
@@ -3152,6 +3159,9 @@
       - { form: अग्रसत्, lemma: ग्रस्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "swallowed" }
       - { form: बली, lemma: बलिन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the strong one" }
     note: "अग्रसत्, a parasmaipada imperfect of the ātmanepada ग्रस् (classically अग्रसत): an epic licence."
+  नाम:
+    fix:
+      1: { gloss: by name }
 
 '10.11.49':
   कृष्णं:
@@ -3232,7 +3242,7 @@
       - { form: आपतन्तम्, lemma: आपत्, a: द्वितीया एकवचन पुंलिङ्ग शतृ, gloss: "rushing at (him)" }
   निगृह्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "seizing" }
+      1: { a: अव्यय ल्यप्, gloss: "seizing", lemma: निग्रह् }
   तुण्डयोर्दोर्भ्यां:
     fix:
       1: { a: सप्तमी द्विवचन नपुंसकलिङ्ग, gloss: "by the two halves of the beak" }
