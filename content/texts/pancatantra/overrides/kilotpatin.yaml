@@ -70,7 +70,7 @@
       1: { form: वणिक्, lemma: वणिज्, member: true }
   तरुखण्डमध्ये:
     split:
-      - { form: तरु, lemma: तरु, member: true }
+      - { form: तरु, lemma: तरु, member: true, gloss: 'a tree' }
       - { form: खण्ड, lemma: खण्ड, member: true, gloss: 'a clump, group (तरुखण्ड "a clump of trees")' }
       - { form: मध्ये, lemma: मध्य, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: 'in the middle of' }
   देवतायतनं:
@@ -166,7 +166,7 @@
   वानरास्तरुशिखरप्रसादशृङ्गदारुपर्यन्तेषु:
     split:
       - { form: वानराः, lemma: वानर, a: प्रथमा बहुवचन पुंलिङ्ग }
-      - { form: तरु, lemma: तरु, member: true }
+      - { form: तरु, lemma: तरु, member: true, gloss: 'a tree' }
       - { form: शिखर, lemma: शिखर, member: true, gloss: 'top, summit' }
       - { form: प्रसाद, lemma: प्रासाद, member: true, gloss: 'the temple building' }
       - { form: शृङ्ग, lemma: शृङ्ग, member: true, gloss: 'peak, pinnacle' }
@@ -198,7 +198,7 @@
     split:
       - { form: यावत्, lemma: यावत्, a: अव्यय, gloss: 'as soon as, just when (answered by तावत्)' }
       - { form: उत्पादयितुम्, a: अव्यय तुमुन्, gloss: 'to pull out' }
-      - { form: आरेभे, lemma: रभ्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद }
+      - { form: आरेभे, lemma: रभ्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: 'began' }
     note: >-
       यावत् … तावत् "no sooner … than". The edition prints उत्पादयितुम् (from
       उद् + पद्, "to produce"); the story needs उत्पाटयितुम् (उद् + पट्, "to pull
@@ -237,6 +237,9 @@
     note: 'The tale does not tell the end — the verse already has. The passive participle निवेदितम् agrees with तत्: "that has been told".'
 
 '1.21+8':
+  अतोऽहं:
+    fix:
+      1: { gloss: "therefore" }
   अव्यापारेषु:
     fix:
       1: { gloss: "in what is not one's business" }
