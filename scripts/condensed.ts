@@ -9,6 +9,8 @@
  *   bun scripts/condensed.ts bhagavata            → content/texts/bhagavata-condensed/selection.json
  *   bun scripts/condensed.ts ramayana --k2 critical   (Ayodhyā from the critical text, to compare)
  *   … --sample 20                                 print N matches to check by eye
+ *   bun scripts/condensed.ts ramayana --find "<Devanagari line>"   the closest edition lines, with ids
+ *                                                 (for reviewing an unmatched entry by hand)
  *
  * The editions, all committed under data/sources/ (data/texts.json):
  *   Rāmāyaṇa  Ambuda's GRETIL text (the Baroda critical edition), except the
@@ -24,7 +26,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { createRequire } from 'module';
 import { readTei, type Block } from './lib/tei';
-import { matchCondensed } from './lib/condensed-match';
+import { matchCondensed, skel, sim } from './lib/condensed-match';
 
 const require = createRequire(import.meta.url);
 const { initSync, transliterate } = require('shlesha');
@@ -58,6 +60,14 @@ const linesOf = (blocks: Block[], idOf: (b: Block) => string | undefined, clean 
 
 const KANDA = ['', 'bala', 'ayodhya', 'aranya', 'kishkindha', 'sundara', 'yuddha', 'uttara'];
 
+/** --find: the edition lines nearest a (damaged) OCR line, by the matcher's own measure. */
+function find(lines: Line[], q: string) {
+  const k = skel(q);
+  const top = lines.map((l) => ({ l, s: sim(k, skel(l.text)) })).sort((a, b) => b.s - a.s).slice(0, 8);
+  for (const t of top) console.log(`${t.s.toFixed(2)}  ${t.l.id}  ${t.l.text}`);
+}
+const FIND = opt('--find');
+
 if (work === 'ramayana') {
   const k2 = opt('--k2') ?? 'southern';
   const crit = readTei('sa_rAmAyaNa');
@@ -71,6 +81,7 @@ if (work === 'ramayana') {
     ...south,
     ...critLines.filter((l) => kOf(l.id) >= 3)
   ];
+  if (FIND) { find(args.includes('--all') ? [...lines, ...critLines.filter((l) => kOf(l.id) === 2)] : lines, FIND); process.exit(0); }
   matchCondensed({
     ocrText: ocr('ramayana-condensed'), lines, group: (id) => KANDA[kOf(id)] ?? '?',
     idField: 'edition_id', groupField: 'kanda',
@@ -80,6 +91,7 @@ if (work === 'ramayana') {
   });
 } else if (work === 'bhagavata') {
   const lines = linesOf(readTei('sa_bhAgavatapurANa'), (b) => b.ref?.replace(/\*$/, ''), (s) => s.replace(/[$&%]/g, ' '));
+  if (FIND) { find(lines, FIND); process.exit(0); }
   matchCondensed({
     ocrText: ocr('bhagavata-condensed'), lines, group: (id) => `skandha-${Number(id.slice(4, 6))}`,
     idField: 'edition_id', groupField: 'skandha',

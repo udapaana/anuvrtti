@@ -77,7 +77,7 @@ function fit(a: string, b: string): number {
 // whole-line similarity, or — when the book quotes one pāda pair of a long
 // line, or the OCR ran two of the edition's lines together — the shorter
 // inside the longer, slightly discounted
-function sim(a: string, b: string): number {
+export function sim(a: string, b: string): number {
   const g = 1 - lev(a, b) / Math.max(a.length, b.length);
   const [s, l] = a.length <= b.length ? [a, b] : [b, a];
   if (s.length < 8 || l.length < s.length * 1.3) return g;
@@ -212,7 +212,8 @@ export function matchCondensed(opts: MatchOptions) {
     review-*.json beside the output is a list of decisions keyed by the OCR line
     the entry starts on (stable while the OCR pin holds):
       { "ocr_line": 1234, "<idField>": "…", "reason": "…" }   place it
-      { "ocr_line": 1234, "critical": "…", "reason": "…" }     only in another edition
+      { "ocr_line": 1234, "critical": "…", "reason": "…" }     only in the critical edition, at …
+      { "ocr_line": 1234, "elsewhere": "…", "reason": "…" }    only in another recension (named)
       { "ocr_line": 1234, "skip": true, "reason": "…" }         not a verse (invocation, junk)
     A reviewed entry is band 'reviewed'; the matcher never overrides it.
   */
@@ -226,8 +227,9 @@ export function matchCondensed(opts: MatchOptions) {
     if (r.skip) { entries.splice(i, 1); continue; }
     if (r[ID] && byId.has(r[ID])) {
       e[ID] = r[ID]; e[GROUP] = group(r[ID]); e.edition = byId.get(r[ID])!.join(' / ');
-    } else if (r.critical) {
-      e[ID] = null; e.critical = r.critical; e[GROUP] = r[GROUP] ?? e[GROUP];
+    } else if (r.critical || r.elsewhere) {
+      // found, but not in this edition: the verse stays out of the text
+      e[ID] = null; if (r.critical) e.critical = r.critical; if (r.elsewhere) e.elsewhere = r.elsewhere; e[GROUP] = r[GROUP] ?? e[GROUP];
     } else continue;
     e.band = 'reviewed'; e.confidence = 1; e.review = r.reason; delete e.placed_by;
   }
