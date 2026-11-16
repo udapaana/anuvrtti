@@ -1,0 +1,237 @@
+# Mahābhārata condensed, Ādi adi-1-238-3 – Sabhā sabha-2-76-75 (batch m06). Format: see the
+# header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+# SARIT prints the Kumbhakonam text in saṃhitā without compound hyphens; the
+# compound boundaries below are the author's. SARIT's typing slips stay in
+# text.yaml and are corrected here, each with a note.
+
+'adi-1-238-3':
+  चिन्तयामास:
+    fix:
+      1: { a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "thought of, pondered" }
+    note: "A periphrastic perfect (चिन्तयाम् + आस): a stem in -अय् takes आम् and an auxiliary (3.1.35)."
+  रात्रौ:
+    fix:
+      1: { gloss: "at night" }
+  गदेन:
+    fix:
+      1: { gloss: "by Gada (Kṛṣṇa's brother)" }
+  कथितं:
+    fix:
+      1: { lemma: कथ्, a: द्वितीया एकवचन नपुंसकलिङ्ग क्त, gloss: "what had been told" }
+  सुभद्रायाश्च:
+    fix:
+      1: { gloss: "Subhadrā, Kṛṣṇa's sister" }
+  माधुर्यरूपसंपद्गुणानि:
+    split:
+      - { form: माधुर्य, lemma: माधुर्य, member: true, gloss: "sweetness, charm" }
+      - { form: रूप, lemma: रूप, member: true, gloss: "beauty" }
+      - { form: संपद्, lemma: संपद्, member: true, gloss: "excellence, wealth" }
+      - { form: गुणानि, lemma: गुण, a: द्वितीया बहुवचन नपुंसकलिङ्ग, gloss: "qualities, virtues" }
+    note: "A द्वन्द्व, object of चिन्तयामास. गुण is masculine; the epic gives it a neuter plural here."
+
+'adi-1-241-21':
+  पाण्डवस्य:
+    fix:
+      1: { gloss: "of the Pāṇḍava (Arjuna)" }
+  सुभद्रायाः:
+    fix:
+      1: { gloss: "Subhadrā" }
+  सकाशे:
+    fix:
+      1: { gloss: "in the presence of, towards" }
+  यशस्विनः:
+    fix:
+      1: { a: षष्ठी एकवचन पुंलिङ्ग, gloss: "glorious" }
+    note: "Genitive singular with पाण्डवस्य, not a nominative plural."
+  समुत्पत्तिः:
+    fix:
+      1: { gloss: "the arising, birth (of his love)" }
+  प्रभावश्च:
+    fix:
+      1: { gloss: "power, strength (of it)" }
+  गदेन:
+    fix:
+      1: { gloss: "by Gada (Kṛṣṇa's brother)" }
+  कथितः:
+    fix:
+      1: { lemma: कथ्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "told, related" }
+
+'adi-1-241-26':
+  तस्मात्सुभद्रा:
+    fix:
+      1: { gloss: "therefore" }
+      2: { gloss: "Subhadrā" }
+  चकमे:
+    split:
+      - { form: चकमे, lemma: कम्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "loved, desired" }
+  पौरुषाद्भरतर्षभम्:
+    split:
+      - { form: पौरुषात्, lemma: पौरुष, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "for his manliness" }
+      - { form: भरत, lemma: भरत, member: true, gloss: "the Bharatas" }
+      - { form: ऋषभम्, lemma: ऋषभ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "bull, the best (भरतर्षभ 'the bull of the Bharatas')" }
+  सत्यसन्धस्य:
+    fix:
+      1: { gloss: "true to his word" }
+  रूपेण:
+    fix:
+      1: { gloss: "by his beauty" }
+  चातुर्येण:
+    fix:
+      1: { gloss: "by his cleverness, charm" }
+  मोहिता:
+    split:
+      - { form: मोहिता, lemma: मुह्, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "captivated, infatuated" }
+    note: "The participle of the causative मोहयति, agreeing with सुभद्रा."
+
+'adi-1-247-36':
+  प्रीतिकरो:
+    fix:
+      1: { gloss: "delightful, giving joy" }
+  यूनां:
+    fix:
+      1: { lemma: युवन्, gloss: "of the young" }
+  विवाहपरमोत्सवः:
+    split:
+      - { form: विवाह, lemma: विवाह, member: true, gloss: "wedding" }
+      - { form: परम, lemma: परम, member: true, gloss: "supreme, great" }
+      - { form: उत्सवः, lemma: उत्सव, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "festival" }
+  भद्रवत्यै:
+    fix:
+      1: { lemma: भद्रवत्, gloss: "auspicious, blessed" }
+  सुभद्रायै:
+    fix:
+      1: { gloss: "for Subhadrā" }
+  सप्तरात्रमवर्तत:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "for seven nights" }
+      2: { gloss: "went on, took place" }
+    note: "सप्तरात्रम् is an accusative of duration (2.3.5)."
+
+'adi-1-247-62':
+  दीर्घबाहुं:
+    fix:
+      1: { gloss: "long-armed" }
+  वृषभाक्षमरिन्दमम्:
+    split:
+      - { form: वृषभ, lemma: वृषभ, member: true, gloss: "a bull" }
+      - { form: अक्षम्, lemma: अक्ष, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "-eyed (वृषभाक्ष 'bull-eyed')" }
+      - { form: अरिन्दमम्, lemma: अरिंदम, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "tamer of foes" }
+    note: "अक्षि at the end of a बहुव्रीहि becomes -अक्ष (5.4.113)."
+  सुभद्रा:
+    fix:
+      1: { gloss: "Subhadrā" }
+  सुषुवे:
+    fix:
+      1: { gloss: "gave birth to" }
+  वीरमभिमन्युं:
+    fix:
+      1: { gloss: "hero" }
+      2: { gloss: "Abhimanyu, son of Arjuna and Subhadrā" }
+  नरर्षभम्:
+    split:
+      - { form: नर, lemma: नर, member: true, gloss: "a man" }
+      - { form: ऋषभम्, lemma: ऋषभ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "bull (नरर्षभ 'a bull among men')" }
+
+'adi-1-247-73':
+  कृष्णस्य:
+    fix:
+      1: { gloss: "Kṛṣṇa" }
+  सदृशं:
+    fix:
+      1: { a: द्वितीया एकवचन पुंलिङ्ग, gloss: "like, equal to (with the genitive)" }
+    note: "Agrees with पुत्रम्: a son like Kṛṣṇa in valour, strength and looks."
+  शौर्ये:
+    fix:
+      1: { gloss: "in valour" }
+  वीर्ये:
+    fix:
+      1: { gloss: "in strength" }
+  रूपे:
+    fix:
+      1: { gloss: "in beauty" }
+  तथाऽऽकृतौ:
+    split:
+      - { form: तथा, lemma: तथा, a: अव्यय, gloss: "and also" }
+      - { form: आकृतौ, lemma: आकृति, a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: "in bearing, figure" }
+  ददर्श:
+    fix:
+      1: { gloss: "looked upon" }
+  बीभत्सुर्मघवानिव:
+    split:
+      - { form: बीभत्सुः, lemma: बीभत्सु, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Bībhatsu (Arjuna)" }
+      - { form: मघवान्, lemma: मघवन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Maghavan (Indra)" }
+      - { form: इव, lemma: इव, a: अव्यय, gloss: "like, as" }
+  तं:
+    fix:
+      1: { gloss: "him (Arjuna)" }
+    note: "'Arjuna looked on his son as Indra (had looked on) him': Arjuna is Indra's son."
+
+'adi-1-247-75':
+  युधिष्ठिरात्प्रतिविन्ध्यं:
+    fix:
+      1: { gloss: "from (by) Yudhiṣṭhira" }
+      2: { gloss: "Prativindhya" }
+  सुतसोमं:
+    fix:
+      1: { gloss: "Sutasoma" }
+  वृकोदरात्:
+    fix:
+      1: { gloss: "from (by) Vṛkodara (Bhīma)" }
+  अर्जुनाच्छ्रुतकर्माणं:
+    fix:
+      1: { gloss: "from (by) Arjuna" }
+      2: { gloss: "Śrutakarman" }
+  शतानीकं:
+    fix:
+      1: { gloss: "Śatānīka" }
+  नाकुलिम्:
+    fix:
+      1: { gloss: "Nakula's son" }
+
+'adi-1-247-76':
+  सहदेवाच्छ्रुतसेनमेतान्पञ्च:
+    split:
+      - { form: सहदेवात्, lemma: सहदेव, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "from (by) Sahadeva" }
+      - { form: श्रुतसेनम्, lemma: श्रुतसेन, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "Śrutasena" }
+      - { form: एतान्, lemma: एतद्, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "these" }
+      - { form: पञ्च, lemma: पञ्चन्, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "five" }
+  महारथान्:
+    fix:
+      1: { gloss: "great chariot-warriors" }
+  पाञ्चाली:
+    fix:
+      1: { gloss: "the Pāñcāla princess (Draupadī)" }
+  सुषुवे:
+    fix:
+      1: { gloss: "bore" }
+  वीरानादित्यानदितिर्यथा:
+    fix:
+      1: { gloss: "heroes" }
+      2: { gloss: "the Ādityas" }
+      3: { gloss: "Aditi, mother of the gods" }
+
+'adi-1-247-85':
+  दिव्यगर्भोपमैः:
+    split:
+      - { form: दिव्य, lemma: दिव्य, member: true, gloss: "divine" }
+      - { form: गर्भ, lemma: गर्भ, member: true, gloss: "child, offspring" }
+      - { form: उपमैः, lemma: उपम, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "like, resembling" }
+  पुत्रैर्व्यूढोरस्कैर्महारथैः:
+    split:
+      - { form: पुत्रैः, lemma: पुत्र, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "by sons" }
+      - { form: व्यूढ, lemma: व्यूढ, member: true, gloss: "broad" }
+      - { form: उरस्कैः, lemma: उरस्क, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "-chested (व्यूढोरस्क 'broad-chested')" }
+      - { form: महारथैः, lemma: महारथ, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "great chariot-warriors" }
+    note: "उरस् at the end of a बहुव्रीहि takes the suffix क (5.4.151)."
+  अन्विता:
+    split:
+      - { form: अन्विताः, lemma: अन्वि, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "accompanied by, blessed with" }
+    note: "अन्विताः with पाण्डवाः; the visarga of -आः drops before a voiced sound (8.3.17, 8.3.22)."
+  राजशार्दूल:
+    fix:
+      1: { gloss: "O tiger among kings (Janamejaya)" }
+  मुदमाप्नुवन्:
+    split:
+      - { form: मुदम्, lemma: मुद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "joy" }
+      - { form: आप्नुवन्, lemma: आप्, a: लङ् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "obtained, felt" }
+    note: "आप्नुवन् is the imperfect (आ + आप्नुवन्, the augment merging with the root's आ), not the present participle."

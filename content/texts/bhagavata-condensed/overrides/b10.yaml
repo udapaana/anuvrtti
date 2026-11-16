@@ -201,7 +201,7 @@
       - { form: सकल, lemma: सकल, member: true, gloss: "all" }
       - { form: अभय, lemma: अभय, member: true, gloss: "fearlessness, safety" }
       - { form: प्रदः, lemma: प्रद, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "giver (सकलाभयप्रद 'who gives safety to all')" }
-  ह्यनन्यनाथान्स्वकरादवच्युतानम्प्;:
+  ह्यनन्यनाथान्स्वकरादवच्युतान्:
     split:
       - { form: हि, lemma: हि, a: अव्यय, gloss: "indeed" }
       - { form: अनन्य, lemma: अनन्य, member: true, gloss: "no other" }
@@ -209,7 +209,6 @@
       - { form: स्व, lemma: स्व, member: true, gloss: "his own" }
       - { form: करात्, lemma: कर, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "from the hand" }
       - { form: अवच्युतान्, lemma: अवच्यु, a: द्वितीया बहुवचन पुंलिङ्ग क्त, gloss: "slipped (from)" }
-    note: "The trailing अम्प्; is not part of the word: the edition marks the pāda break with &, which reached text.yaml as the HTML entity &amp; and was transliterated."
   दीनांश्च:
     split:
       - { form: दीनान्, lemma: दीन, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "helpless, wretched" }
@@ -499,9 +498,6 @@
     fix:
       1: { member: true, gloss: "the cowherd village" }
       2: { gloss: "boys" }
-  अम्प्;:
-    split: []
-    note: "Not a word: the edition marks the pāda break with &, which reached text.yaml as the HTML entity &amp; and was transliterated. Read past it."
   सहोपविष्टा:
     fix:
       1: { gloss: "together" }
@@ -583,6 +579,7 @@
 '10.13.13':
   तान्दृष्ट्वा:
     fix:
+      2: { gloss: "seeing" }
       1: { gloss: "them (the boys)" }
   भयसन्त्रस्तानूचे:
     split:
@@ -591,6 +588,7 @@
       - { form: ऊचे, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "said (to)" }
   कृष्णोऽस्य:
     fix:
+      1: { gloss: "Kṛṣṇa" }
       2: { gloss: "of this (world)" }
   भीभयम्:
     split:
@@ -644,6 +642,9 @@
       1: { gloss: "went" }
 
 '10.13.16':
+  कृष्णो:
+    fix:
+      1: { gloss: "Kṛṣṇa" }
   ततो:
     fix:
       1: { gloss: "then" }
@@ -674,6 +675,9 @@
       - { form: समन्ततः, lemma: समन्ततस्, a: अव्यय, gloss: "on every side" }
 
 '10.13.17':
+  कृष्णः:
+    fix:
+      1: { gloss: "Kṛṣṇa" }
   क्वाप्यदृष्ट्वान्तर्विपिने:
     split:
       - { form: क्व, lemma: क्व, a: अव्यय, gloss: "where" }
@@ -979,6 +983,9 @@
       - { form: जीवितम्, lemma: जीवित, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "life (a बहुव्रीहि: 'who had lost his life in the whirling')" }
 
 '10.15.36':
+  कृष्णं:
+    fix:
+      1: { gloss: "Kṛṣṇa" }
   ततः:
     fix:
       1: { gloss: "then" }
@@ -1006,6 +1013,9 @@
       1: { gloss: "whose kinsman had been slain" }
 
 '10.15.37':
+  रामश्च:
+    fix:
+      1: { gloss: "Rāma (Balarāma)" }
   तांस्तानापततः:
     fix:
       1: { gloss: "them" }
@@ -1035,6 +1045,7 @@
       1: { gloss: "he" }
   भगवान्कृष्णो:
     fix:
+      2: { gloss: "Kṛṣṇa" }
       1: { gloss: "the Lord" }
   वृन्दावनचरः:
     split:
@@ -1090,6 +1101,9 @@
       1: { gloss: "birds" }
 
 '10.16.6':
+  कृष्णः:
+    fix:
+      1: { gloss: "Kṛṣṇa" }
   तं:
     fix:
       1: { gloss: "him (Kāliya)" }
@@ -1114,9 +1128,6 @@
       - { form: खल, lemma: खल, member: true, gloss: "the wicked" }
       - { form: संयमन, lemma: संयमन, member: true, gloss: "curbing" }
       - { form: अवतारः, lemma: अवतार, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "descent (a बहुव्रीहि: 'who came down to curb the wicked')" }
-  अम्प्;:
-    split: []
-    note: "Not a word: the edition marks the pāda break with &, which reached text.yaml as the HTML entity &amp; and was transliterated. Read past it."
   कदम्बमधिरुह्य:
     fix:
       1: { gloss: "a kadamba tree" }
@@ -1450,6 +1461,7 @@
       - { form: उपाहूय, lemma: उपह्वे, a: अव्यय ल्यप्, gloss: "calling together" }
   गोपालान्कृष्णः:
     fix:
+      2: { gloss: "Kṛṣṇa" }
       1: { gloss: "the cowherd boys" }
   प्राह:
     fix:
@@ -1550,9 +1562,6 @@
   वपुः:
     fix:
       1: { lemma: वपुस्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "form, body" }
-  अम्प्;:
-    split: []
-    note: "Not a word: the edition marks the pāda break with &, which reached text.yaml as the HTML entity &amp; and was transliterated. Read past it."
   स:
     fix:
       1: { gloss: "he" }
@@ -1788,6 +1797,9 @@
       - { form: कर्शिताः, lemma: कृश्, a: प्रथमा बहुवचन स्त्रीलिङ्ग क्त णिच्, gloss: "made thin (व्रतकर्शित 'worn thin by the vow')" }
 
 '10.22.12':
+  दृष्ट्वा:
+    fix:
+      1: { gloss: "seeing" }
   तस्य:
     fix:
       1: { gloss: "his" }
@@ -2723,12 +2735,11 @@
       - { form: रमा, lemma: रमा, member: true, gloss: "Ramā (Lakṣmī)" }
       - { form: आनन, lemma: आनन, member: true, gloss: "face" }
       - { form: आभम्, lemma: आभा, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "like (रमाननाभ 'like Lakṣmī's face')" }
-  नवकुङ्कुमारुणमम्प्;:
+  नवकुङ्कुमारुणम्:
     split:
       - { form: नव, lemma: नव, member: true, gloss: "fresh" }
       - { form: कुङ्कुम, lemma: कुङ्कुम, member: true, gloss: "saffron" }
       - { form: अरुणम्, lemma: अरुण, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "red (… 'red as fresh saffron')" }
-    note: "The trailing अम्प्; is not part of the word: the edition marks the pāda break with &, which reached text.yaml as the HTML entity &amp; and was transliterated."
   वनं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "the forest" }
@@ -3334,3 +3345,186 @@
   लीलया:
     fix:
       1: { gloss: "in play" }
+
+'10.36.1':
+  अथ:
+    fix:
+      1: { gloss: "then" }
+  तर्ह्यागतो:
+    fix:
+      1: { gloss: "at that time" }
+      2: { lemma: आगम्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "came" }
+  गोष्ठमरिष्टो:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "to the cow-pen" }
+      2: { gloss: "Ariṣṭa (the bull-demon)" }
+  वृषभासुरः:
+    split:
+      - { form: वृषभ, lemma: वृषभ, member: true, gloss: "a bull" }
+      - { form: असुरः, lemma: असुर, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "demon (वृषभासुर 'the bull-demon')" }
+  महीम्महाककुत्कायः:
+    split:
+      - { form: महीम्, lemma: मही, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "the earth" }
+      - { form: महा, lemma: महत्, member: true, gloss: "huge" }
+      - { form: ककुत्, lemma: ककुद्, member: true, gloss: "hump" }
+      - { form: कायः, lemma: काय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "body (a बहुव्रीहि: 'with huge hump and body')" }
+    note: "The text keeps म् before म (महीम्महा-); the saṃhitā is महीं महा-."
+  कम्पयन्खुरविक्षताम्:
+    split:
+      - { form: कम्पयन्, lemma: कम्प्, a: प्रथमा एकवचन पुंलिङ्ग शतृ णिच्, gloss: "making (it) shake" }
+      - { form: खुर, lemma: खुर, member: true, gloss: "hoof" }
+      - { form: विक्षताम्, lemma: विक्षत, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "torn up (खुरविक्षत 'torn by his hooves')" }
+
+'10.36.5':
+  पशवो:
+    fix:
+      1: { gloss: "the cattle" }
+  दुद्रुवुर्भीता:
+    fix:
+      1: { gloss: "fled" }
+      2: { gloss: "terrified" }
+  राजन्सन्त्यज्य:
+    fix:
+      1: { gloss: "O king" }
+      2: { a: अव्यय ल्यप्, gloss: "leaving" }
+  गोकुलम्:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "the cow-settlement" }
+  कृष्ण:
+    fix:
+      1: { gloss: "Kṛṣṇa!" }
+  कृष्णेति:
+    fix:
+      1: { gloss: "Kṛṣṇa!" }
+  ते:
+    fix:
+      1: { gloss: "they" }
+  गोविन्दं:
+    fix:
+      1: { gloss: "Govinda" }
+  शरणं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "for refuge" }
+  ययुः:
+    fix:
+      1: { gloss: "went to" }
+
+'10.36.13':
+  तमापतन्तं:
+    split:
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
+      - { form: आपतन्तम्, lemma: आपत्, a: द्वितीया एकवचन पुंलिङ्ग शतृ, gloss: "charging" }
+  स:
+    fix:
+      1: { gloss: "he (Kṛṣṇa)" }
+  निगृह्य:
+    fix:
+      1: { a: अव्यय ल्यप्, gloss: "seizing" }
+  शृङ्गयोः:
+    fix:
+      1: { gloss: "by the two horns" }
+  पदा:
+    fix:
+      1: { lemma: पद्, gloss: "with his foot" }
+  समाक्रम्य:
+    split:
+      - { form: समाक्रम्य, lemma: समाक्रम्, a: अव्यय ल्यप्, gloss: "treading on (him)" }
+  निपात्य:
+    split:
+      - { form: निपात्य, lemma: निपत्, a: अव्यय ल्यप् णिच्, gloss: "throwing (him) down" }
+  भूतले:
+    split:
+      - { form: भू, lemma: भू, member: true, gloss: "the earth" }
+      - { form: तले, lemma: तल, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "on the surface (भूतल 'the ground')" }
+  निष्पीडयामास:
+    split:
+      - { form: निष्पीडयामास, lemma: निष्पीड्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "wrung, squeezed" }
+    note: "निष्पीडयामास is the periphrastic perfect (-आम् + अस्) of निष्पीडयति."
+  यथार्द्रमम्बरं:
+    fix:
+      1: { gloss: "like" }
+      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "wet" }
+      3: { gloss: "a cloth" }
+  कृत्वा:
+    fix:
+      1: { gloss: "having done so" }
+  विषाणेन:
+    fix:
+      1: { gloss: "with (his own) horn" }
+  जघान:
+    fix:
+      1: { gloss: "struck" }
+  सोऽपतत्:
+    fix:
+      1: { gloss: "he (the bull)" }
+      2: { gloss: "fell" }
+
+'10.36.14':
+  असृग्वमन्मूत्रशकृत्समुत्सृजन्क्षिपंश्च:
+    split:
+      - { form: असृक्, lemma: असृज्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "blood" }
+      - { form: वमन्, lemma: वम्, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: "vomiting" }
+      - { form: मूत्र, lemma: मूत्र, member: true, gloss: "urine" }
+      - { form: शकृत्, lemma: शकृत्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "dung (मूत्रशकृत् 'urine and dung')" }
+      - { form: समुत्सृजन्, lemma: समुत्सृज्, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: "voiding" }
+      - { form: क्षिपन्, lemma: क्षिप्, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: "flailing" }
+      - { form: च, lemma: च, a: अव्यय }
+  पादाननवस्थितेक्षणः:
+    split:
+      - { form: पादान्, lemma: पाद, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "his legs" }
+      - { form: अनवस्थित, lemma: अनवस्थित, member: true, gloss: "unsteady, rolling" }
+      - { form: ईक्षणः, lemma: ईक्षण, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "eyes (a बहुव्रीहि: 'his eyes rolling')" }
+  जगाम:
+    fix:
+      1: { gloss: "went" }
+  कृच्छ्रं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "in agony (adverbial)" }
+  निरृतेरथ:
+    fix:
+      1: { gloss: "of Nirṛti (death)" }
+      2: { gloss: "then" }
+  क्षयं:
+    fix:
+      1: { gloss: "abode (निरृतेः क्षयम् 'the house of death')" }
+  पुष्पैः:
+    fix:
+      1: { gloss: "flowers" }
+  किरन्तो:
+    fix:
+      1: { gloss: "scattering" }
+  हरिमीडिरे:
+    split:
+      - { form: हरिम्, lemma: हरि, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "Hari" }
+      - { form: ईडिरे, lemma: ईड्, a: लिट् प्रथमपुरुष बहुवचन आत्मनेपद, gloss: "praised" }
+  सुराः:
+    fix:
+      1: { gloss: "the gods" }
+
+'10.36.21':
+  ततो:
+    fix:
+      1: { gloss: "then" }
+  मुष्टिकचाणूर:
+    split:
+      - { form: मुष्टिक, lemma: मुष्टिक, member: true, gloss: "Muṣṭika (a wrestler)" }
+      - { form: चाणूर, lemma: चाणूर, member: true, gloss: "Cāṇūra (a wrestler)" }
+    note: "The print breaks the compound मुष्टिकचाणूरशलतोशलकादिकान् at a space."
+  शलतोशलकादिकान्:
+    split:
+      - { form: शल, lemma: शल, member: true, gloss: "Śala (a wrestler)" }
+      - { form: तोशलक, lemma: तोशलक, member: true, gloss: "Tośalaka (a wrestler)" }
+      - { form: आदिकान्, lemma: आदिक, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "and the others" }
+  अमात्यान्हस्तिपांश्चैव:
+    fix:
+      1: { gloss: "ministers" }
+      2: { gloss: "elephant-keepers" }
+      4: { gloss: "too" }
+  समाहूयाह:
+    split:
+      - { form: समाहूय, lemma: समाह्वे, a: अव्यय ल्यप्, gloss: "summoning" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+  भोजराट्:
+    split:
+      - { form: भोज, lemma: भोज, member: true, gloss: "the Bhojas" }
+      - { form: राट्, lemma: राज्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "king (भोजराज् 'king of the Bhojas', Kaṃsa)" }

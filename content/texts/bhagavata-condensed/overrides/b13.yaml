@@ -298,7 +298,7 @@
     split:
       - { form: पाण्डु, lemma: पाण्डु, member: true, gloss: "Pāṇḍu" }
       - { form: सुताः, lemma: सुत, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "sons" }
-  सपत्नैर्दुर्द्यूतहेलनकचग्रहणादिभिस्तानम्प्;:
+  सपत्नैर्दुर्द्यूतहेलनकचग्रहणादिभिस्तान्:
     split:
       - { form: सपत्नैः, lemma: सपत्न, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "by their rivals" }
       - { form: दुर्द्यूत, lemma: दुर्द्यूत, member: true, gloss: "the crooked dicing" }
@@ -307,7 +307,6 @@
       - { form: ग्रहण, lemma: ग्रहण, member: true, gloss: "seizing (कचग्रहण 'dragging (Draupadī) by the hair')" }
       - { form: आदिभिः, lemma: आदि, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "and the rest" }
       - { form: तान्, lemma: तद्, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "them (the Pāṇḍavas)" }
-    note: "The source's तान् is followed by an HTML ampersand (&amp;) that the text keeps as अम्प्;; it is no word and is dropped here."
   कृत्वा:
     fix:
       1: { gloss: "making (them)" }
@@ -356,6 +355,9 @@
       3: { lemma: आश्रि, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "staying in" }
 
 '11.6.21':
+  प्रभो:
+    fix:
+      1: { gloss: "O lord" }
   भूमेर्भारावताराय:
     split:
       - { form: भूमेः, lemma: भूमि, a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "of the earth" }
@@ -380,6 +382,12 @@
     note: "अशेषात्मन् + तत् gives -आत्मंस्तत् in strict saṃhitā (8.3.7); the text writes the bare न्."
 
 '11.6.22':
+  धर्मश्च:
+    fix:
+      1: { gloss: "dharma, righteousness" }
+  कीर्तिश्च:
+    fix:
+      1: { gloss: "fame, glory" }
   स्थापितः:
     split:
       - { form: स्थापितः, lemma: स्था, a: प्रथमा एकवचन पुंलिङ्ग क्त णिच्, gloss: "established" }
@@ -501,6 +509,9 @@
       1: { gloss: "the great ocean" }
 
 '11.6.30':
+  यदूनां:
+    fix:
+      1: { gloss: "of the Yadus" }
   यद्यसंहृत्य:
     split:
       - { form: यदि, lemma: यदि, a: अव्यय, gloss: "if" }
@@ -521,12 +532,17 @@
       2: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "by this (race)" }
   लोकोऽयमुद्वेलेन:
     fix:
+      1: { gloss: "the world" }
       3: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "overflowing its bounds" }
   विनङ्क्ष्यति:
     fix:
       1: { gloss: "will perish" }
 
 '11.6.33':
+  भगवानाह:
+    fix:
+      1: { gloss: "the Lord" }
+      2: { gloss: "said" }
   तस्यां:
     split:
       - { form: तस्याम्, lemma: तद्, a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: "in that" }
@@ -597,6 +613,9 @@
     note: "समयूयुजन् is the reduplicated (चङ्) aorist of the causative of युज् with सम्."
 
 '11.6.40':
+  कृष्णमनुव्रतः:
+    fix:
+      1: { gloss: "Kṛṣṇa" }
   तन्निरीक्ष्योद्धवो:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
@@ -695,6 +714,9 @@
     note: "यत् ईश्वरः, not यदि: \"since the Lord, though able, did not ward off the brahmins' curse\"."
 
 '11.6.43':
+  केशव:
+    fix:
+      1: { gloss: "O Keśava (Kṛṣṇa)" }
   नाहं:
     split:
       - { form: न, lemma: न, a: अव्यय, gloss: "not" }
@@ -786,6 +808,9 @@
       - { form: प्लावयिष्यति, lemma: प्लु, a: लृट् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "will flood" }
 
 '11.7.4':
+  लोकोऽयं:
+    fix:
+      1: { gloss: "the world" }
   यर्ह्येवायं:
     fix:
       1: { gloss: "when" }
@@ -1059,6 +1084,7 @@
   अहमात्मोद्धवामीषां:
     fix:
       2: { gloss: "the Self" }
+      3: { gloss: "O Uddhava" }
       4: { a: षष्ठी बहुवचन नपुंसकलिङ्ग, gloss: "of these" }
   भूतानां:
     fix:
@@ -1218,6 +1244,9 @@
       2: { gloss: "a portion" }
 
 '11.17.21':
+  धर्मोऽयं:
+    fix:
+      1: { gloss: "dharma, duty" }
   अहिंसा:
     fix:
       1: { gloss: "non-injury" }
@@ -1239,6 +1268,9 @@
       1: { gloss: "common to all classes" }
 
 '11.20.6':
+  भक्तिश्च:
+    fix:
+      1: { gloss: "devotion" }
   योगास्त्रयो:
     fix:
       1: { gloss: "paths, disciplines" }
@@ -1816,6 +1848,7 @@
   गच्छोद्धव:
     fix:
       1: { gloss: "go" }
+      2: { gloss: "O Uddhava" }
   मयादिष्टो:
     split:
       - { form: मया, lemma: अस्मद्, a: तृतीया एकवचन, gloss: "by me" }
@@ -1929,6 +1962,9 @@
       3: { gloss: "state, goal" }
 
 '11.30.4':
+  कृष्णः:
+    fix:
+      1: { gloss: "Kṛṣṇa" }
   दिवि:
     fix:
       1: { a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: "in heaven" }
@@ -1947,9 +1983,13 @@
       3: { gloss: "in Sudharmā (the assembly hall)" }
   यदूनिदम्:
     fix:
+      1: { gloss: "the Yadus" }
       2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
 
 '11.30.10':
+  प्रभासं:
+    fix:
+      1: { gloss: "Prabhāsa (the holy place by the sea)" }
   सर्वे:
     fix:
       1: { gloss: "all" }
@@ -2199,6 +2239,9 @@
       1: { gloss: "of men" }
 
 '12.2.13':
+  वै:
+    fix:
+      1: { gloss: "indeed" }
   पाषण्डप्रचुरे:
     split:
       - { form: पाषण्ड, lemma: पाषण्ड, member: true, gloss: "heresy" }
@@ -2512,6 +2555,9 @@
       1: { gloss: "again" }
 
 '12.5.11':
+  ब्रह्माहं:
+    fix:
+      1: { gloss: "Brahman" }
   ब्रह्म:
     fix:
       1: { gloss: "Brahman" }
@@ -2532,6 +2578,8 @@
       1: { a: अव्यय ल्यप्, gloss: "reflecting" }
   चात्मानमात्मन्याधाय:
     fix:
+      2: { gloss: "the self" }
+      3: { gloss: "in the Self" }
       4: { a: अव्यय ल्यप्, gloss: "placing" }
   निष्कले:
     fix:
@@ -2657,15 +2705,16 @@
       2: { gloss: "life-breaths" }
 
 '12.6.8':
+  भगवान्बादरायणिः:
+    fix:
+      1: { gloss: "the blessed (sage)" }
+      2: { gloss: "Bādarāyaṇi (Śuka)" }
   इत्युक्तस्तमनुज्ञाप्य:
     split:
       - { form: इति, lemma: इति, a: अव्यय, gloss: "thus" }
       - { form: उक्तः, lemma: वच्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "addressed" }
       - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
       - { form: अनुज्ञाप्य, lemma: अनुज्ञा, a: अव्यय ल्यप् णिच्, gloss: "taking leave of" }
-  भगवान्बादरायणिः:
-    fix:
-      2: { gloss: "Bādarāyaṇi (Śuka)" }
   भिक्षुभिः:
     fix:
       1: { gloss: "with mendicants" }
@@ -2683,6 +2732,9 @@
   राजर्षिरात्मन्यात्मानमात्मना:
     fix:
       1: { gloss: "royal sage" }
+      2: { gloss: "in the Self" }
+      3: { gloss: "the self" }
+      4: { gloss: "by the self, by himself" }
   समाधाय:
     split:
       - { form: समाधाय, lemma: समाधा, a: अव्यय ल्यप्, gloss: "concentrating" }

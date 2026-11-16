@@ -1,8 +1,6 @@
 # Bhāgavata condensed, 8.7.2–8.20.21 (batch b07): the churning of the ocean,
 # Mohinī, Bali's conquest and Vāmana. Format: see the header of
 # content/texts/pancatantra-kilotpatin/overrides.yaml.
-# "अम्प्;" in the e-text is a garbled "&amp;" (a line-end marker), not a word:
-# it is split away to nothing, with a note.
 
 '8.7.2':
   आरेभिरे:
@@ -367,6 +365,9 @@
       1: { a: षष्ठी एकवचन, gloss: "through me, from me" }
 
 '8.7.43':
+  ततः:
+    fix:
+      1: { gloss: "then" }
   करतलीकृत्य:
     split:
       - { form: करतली, lemma: करतल, member: true, gloss: "the palm of the hand" }
@@ -541,6 +542,7 @@
 '8.8.8':
   ततश्चाप्सरसो:
     fix:
+      1: { gloss: "then" }
       3: { gloss: "the Apsarases, celestial nymphs" }
   जाता:
     fix:
@@ -890,14 +892,13 @@
       - { form: नव, lemma: नव, member: true, gloss: "fresh" }
       - { form: कञ्ज, lemma: कञ्ज, member: true, gloss: "lotus" }
       - { form: मालाम्, lemma: माला, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "garland" }
-  माद्यन्मधुव्रतवरूथगिरोपघुष्टामम्प्;:
+  माद्यन्मधुव्रतवरूथगिरोपघुष्टाम्:
     split:
       - { form: माद्यत्, lemma: मद्, member: true, gloss: "drunken" }
       - { form: मधुव्रत, lemma: मधुव्रत, member: true, gloss: "bee" }
       - { form: वरूथ, lemma: वरूथ, member: true, gloss: "swarm" }
       - { form: गिरा, lemma: गिर्, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "with the voice, the hum" }
       - { form: उपघुष्टाम्, lemma: उपघुष्, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "ringing (with)" }
-    note: "The trailing अम्प्; is a garbled '&amp;' in the e-text, not part of the word."
   तस्थौ:
     fix:
       1: { gloss: "stood" }
@@ -1165,6 +1166,9 @@
       1: { gloss: "O lord (Parīkṣit)" }
 
 '8.8.42':
+  विष्णुः:
+    fix:
+      1: { gloss: "Viṣṇu" }
   एतस्मिन्नन्तरे:
     fix:
       1: { a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "this" }
@@ -1513,9 +1517,6 @@
   विकल्पाः:
     fix:
       1: { gloss: "differing" }
-  अम्प्;:
-    split: []
-    note: "Not a word: a garbled '&amp;' in the e-text."
   तत्रामृतं:
     fix:
       1: { gloss: "there, in that" }
@@ -2464,6 +2465,7 @@
       - { form: अन्तरधीयत, lemma: अन्तर्धा, a: लङ् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "vanished" }
   अदितिर्दुर्लभं:
     fix:
+      1: { gloss: "Aditi" }
       2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "rare, hard to win" }
   लब्ध्वा:
     fix:

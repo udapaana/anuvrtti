@@ -1,0 +1,606 @@
+# Mahābhārata condensed, Sabhā sabha-2-76-76 – sabha-2-89-51 (batch m07). Format: see the
+# header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+# SARIT prints the Kumbhakonam text in saṃhitā without compound hyphens; the
+# compound boundaries below are the author's. SARIT's typing slips stay in
+# text.yaml and are corrected here, each with a note.
+
+'sabha-2-76-76':
+  अपृष्ट्वा:
+    split:
+      - { form: अपृष्ट्वा, lemma: प्रच्छ्, a: अव्यय क्त्वा, gloss: "without asking" }
+    note: "अ- negates the absolutive: 'without having asked (Vidura)'."
+  विदुरं:
+    fix:
+      1: { gloss: "Vidura" }
+  स्वस्यन:
+    split:
+      - { form: स्वस्य, lemma: स्व, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "his own" }
+    note: "SARIT's स्वस्यन repeats the न of the next word; read स्वस्य न-आसीत् as स्वस्य नासीत् — 'of his own (mind) there was no decision'. Other editions read ह्यस्य."
+  नासीत्कश्चिद्विनिश्चयः:
+    fix:
+      2: { gloss: "was" }
+      4: { a: अव्यय, gloss: 'with an interrogative: "some-, any" (कश्चित् "any")' }
+      5: { gloss: "decision, settled resolve" }
+  दोषांश्च:
+    fix:
+      1: { gloss: "faults, evils" }
+  जानन्स:
+    fix:
+      1: { gloss: "knowing" }
+  पुत्रस्नेहादकृष्यत:
+    split:
+      - { form: पुत्र, lemma: पुत्र, member: true, gloss: "son" }
+      - { form: स्नेहात्, lemma: स्नेह, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "out of affection, love" }
+      - { form: अकृष्यत, lemma: कृष्, a: लङ् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "was drawn along, was carried away" }
+
+'sabha-2-76-77':
+  तच्छ्रुत्वा:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+      2: { gloss: "having heard" }
+  विदुरो:
+    fix:
+      1: { gloss: "Vidura" }
+  धीमान्कलिद्वारमुपस्थितम्:
+    split:
+      - { form: धीमान्, lemma: धीमत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "wise" }
+      - { form: कलि, lemma: कलि, member: true, gloss: "Kali, strife (the losing throw of the dice)" }
+      - { form: द्वारम्, lemma: द्वार, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "door, gateway" }
+      - { form: उपस्थितम्, lemma: उपस्था, a: द्वितीया एकवचन नपुंसकलिङ्ग क्त, gloss: "at hand, approaching" }
+  विनाशमुखमुत्पन्नं:
+    split:
+      - { form: विनाश, lemma: विनाश, member: true, gloss: "destruction" }
+      - { form: मुखम्, lemma: मुख, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "mouth, opening" }
+      - { form: उत्पन्नम्, lemma: उत्पद्, a: द्वितीया एकवचन नपुंसकलिङ्ग क्त, gloss: "arisen, opened" }
+    note: "कलिद्वारम् उपस्थितम् and विनाशमुखम् उत्पन्नम् are two neuter accusatives on श्रुत्वा's object तत्: 'hearing that — the door of Kali at hand, the mouth of ruin opened'."
+  धृतराष्ट्रमुपाद्रवत्:
+    fix:
+      1: { gloss: "Dhṛtarāṣṭra" }
+      2: { gloss: "hurried to" }
+
+'sabha-2-76-79':
+  नाभिनन्दामि:
+    fix:
+      2: { gloss: "approve of, welcome" }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: षष्ठी एकवचन, gloss: "your" }
+  राजन्व्यवसायमिमं:
+    split:
+      - { form: राजन्, lemma: राजन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "O king" }
+      - { form: व्यवसायम्, lemma: व्यवसाय, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "resolve, undertaking" }
+      - { form: इमम्, lemma: इदम्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "this" }
+  प्रभो:
+    fix:
+      1: { gloss: "O lord" }
+  पुत्रैर्भेदो:
+    fix:
+      1: { gloss: "(your) sons" }
+      2: { gloss: "a breach, falling-out" }
+  स्थाद््द्यूतहेतोस्तथा:
+    split:
+      - { form: स्यात्, lemma: अस्, a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "may be" }
+      - { form: द्यूत, lemma: द्यूत, member: true, gloss: "gambling, dicing" }
+      - { form: हेतोः, lemma: हेतु, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "on account of (द्यूतहेतोः 'because of the game')" }
+      - { form: तथा, lemma: तथा, a: अव्यय, gloss: "so" }
+    note: "SARIT types स्थाद्् for स्याद् (स्यात् before द्यूत-). यथा … तथा कुरु: 'act so that there be no breach'."
+  धृतराष्ट्र:
+    fix:
+      1: { gloss: "Dhṛtarāṣṭra" }
+
+'sabha-2-76-81':
+  अशुभं:
+    fix:
+      1: { gloss: "evil, unlucky" }
+  शुभं:
+    fix:
+      1: { lemma: शुभ, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "good, auspicious" }
+  वापि:
+    split:
+      - { form: वा, lemma: वा, a: अव्यय, gloss: "or" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even, also" }
+  हितं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "beneficial, good" }
+  वाऽहितम्:
+    split:
+      - { form: वा, lemma: वा, a: अव्यय, gloss: "or" }
+      - { form: अहितम्, lemma: अहित, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "harmful" }
+    note: "यदि वा … 'or else'. The avagraha marks the a of अहितम् elided after वा."
+
+'sabha-2-76-82':
+  सन्निहिते:
+    fix:
+      1: { lemma: सन्निधा, a: सप्तमी एकवचन पुंलिङ्ग क्त, gloss: "present, at hand" }
+    note: "A locative absolute: 'while I, Droṇa, Bhīṣma and you are at hand'."
+  द्रोणे:
+    fix:
+      1: { a: सप्तमी एकवचन पुंलिङ्ग, gloss: "Droṇa" }
+  भीष्मे:
+    fix:
+      1: { a: सप्तमी एकवचन पुंलिङ्ग, gloss: "Bhīṣma" }
+  त्वयि:
+    split:
+      - { form: त्वयि, lemma: युष्मद्, a: सप्तमी एकवचन, gloss: "you" }
+  भारत:
+    fix:
+      1: { gloss: "O Bhārata (descendant of Bharata)" }
+  अनयो:
+    fix:
+      1: { gloss: "misfortune, mischief" }
+  दैवविहितो:
+    split:
+      - { form: दैव, lemma: दैव, member: true, gloss: "fate" }
+      - { form: विहितः, lemma: विधा, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "ordained (दैवविहित 'ordained by fate')" }
+  कथञ्चिद्भविष्यति:
+    split:
+      - { form: कथञ्चित्, lemma: कथञ्चित्, a: अव्यय, gloss: "in any way; with न, 'by no means'" }
+      - { form: भविष्यति, lemma: भू, a: लृट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "will come about" }
+
+'sabha-2-76-83':
+  रथमास्थाय:
+    fix:
+      1: { gloss: "chariot" }
+      2: { a: अव्यय ल्यप्, gloss: "mounting" }
+  हयैर्वातसमैर्जवे:
+    split:
+      - { form: हयैः, lemma: हय, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "with horses" }
+      - { form: वात, lemma: वात, member: true, gloss: "the wind" }
+      - { form: समैः, lemma: सम, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "equal to (वातसम 'like the wind')" }
+      - { form: जवे, lemma: जव, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "in speed" }
+  खाण्डवप्रस्थमद्यैव:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "Khāṇḍavaprastha (Indraprastha, the Pāṇḍavas' city)" }
+      2: { gloss: "today" }
+  समानय:
+    fix:
+      1: { gloss: "bring here" }
+
+'sabha-2-83-1':
+  प्रायाद्विदुरोऽश्वैरुदारैर्महाजवैर्बलिभिः:
+    fix:
+      1: { gloss: "set out" }
+      2: { gloss: "Vidura" }
+      3: { gloss: "horses" }
+      4: { gloss: "noble, excellent" }
+      5: { gloss: "very swift" }
+      6: { lemma: बलिन्, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "strong" }
+  साधु:
+    fix:
+      1: { a: अव्यय, gloss: "well" }
+  दान्तैः:
+    fix:
+      1: { gloss: "tamed, broken in (साधु दान्त 'well trained')" }
+  बलान्नियुक्तो:
+    fix:
+      1: { gloss: "perforce, against his will" }
+      2: { lemma: नियुज्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "commissioned, charged" }
+  धृतराष्ट्रेण:
+    fix:
+      1: { gloss: "Dhṛtarāṣṭra" }
+  मनीषिणां:
+    fix:
+      1: { lemma: मनीषिन्, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "wise" }
+  सकाशे:
+    fix:
+      1: { gloss: "into the presence (of)" }
+
+'sabha-2-83-4':
+  वै:
+    fix:
+      1: { gloss: "indeed" }
+  सत्यधृतिर्महात्मा:
+    fix:
+      1: { gloss: "steadfast in truth" }
+  अजातशत्रुर्विदुरं:
+    fix:
+      1: { gloss: "Ajātaśatru, 'whose foe is unborn' (Yudhiṣṭhira)" }
+      2: { gloss: "Vidura" }
+  पूजापूर्वं:
+    split:
+      - { form: पूजा, lemma: पूजा, member: true, gloss: "honour, worship" }
+      - { form: पूर्वम्, lemma: पूर्व, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "preceded by (पूजापूर्वम् 'with honour', an adverb)" }
+  प्रतिगृह्याजमीढस्ततोऽपृच्छद्धृतराष्ट्रं:
+    fix:
+      1: { a: अव्यय ल्यप्, gloss: "having received" }
+      2: { gloss: "the descendant of Ajamīḍha (Yudhiṣṭhira)" }
+      3: { gloss: "then" }
+      4: { gloss: "asked after" }
+      5: { gloss: "Dhṛtarāṣṭra" }
+  सपुत्रम्:
+    split:
+      - { form: सपुत्रम्, lemma: सपुत्र, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "together with his sons" }
+    note: "स- 'with' + पुत्र, a बहुव्रीहि agreeing with धृतराष्ट्रम्; not the pronoun सः."
+
+'sabha-2-83-6':
+  कुशली:
+    fix:
+      1: { lemma: कुशलिन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "well, in good health" }
+  सपुत्र:
+    split:
+      - { form: सपुत्रः, lemma: सपुत्र, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "with his sons" }
+  आस्ते:
+    fix:
+      1: { gloss: "lives, is" }
+  वृतो:
+    fix:
+      1: { gloss: "surrounded" }
+  ज्ञातिभिरिन्द्रकल्पः:
+    fix:
+      1: { gloss: "by kinsmen" }
+  प्रीतो:
+    fix:
+      1: { gloss: "pleased" }
+  राजन्पुत्रगुणैर्विनीतो:
+    split:
+      - { form: राजन्, lemma: राजन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "O king" }
+      - { form: पुत्र, lemma: पुत्र, member: true, gloss: "son" }
+      - { form: गुणैः, lemma: गुण, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "by the virtues" }
+      - { form: विनीतः, lemma: विनी, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "well-disciplined, modest" }
+  विशोक:
+    fix:
+      1: { gloss: "free from sorrow" }
+  एवात्मरतिर्महात्मा:
+    split:
+      - { form: एव, lemma: एव, a: अव्यय, gloss: "indeed" }
+      - { form: आत्म, lemma: आत्मन्, member: true, gloss: "self" }
+      - { form: रतिः, lemma: रति, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "delight (आत्मरति 'content in himself')" }
+      - { form: महात्मा, lemma: महात्मन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the great-souled one" }
+    note: "आत्मरतिः is a बहुव्रीहि on the king, so masculine: 'whose delight is in himself'."
+
+'sabha-2-83-7':
+  इदं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
+  कुरुराजोऽभ्युवाच:
+    split:
+      - { form: कुरुराजः, lemma: कुरुराज, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the Kuru king (here Dhṛtarāṣṭra)" }
+      - { form: अभ्युवाच, lemma: अभिवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said to, addressed" }
+  पूर्वं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "first, beforehand" }
+  पृष्ट्वा:
+    fix:
+      1: { lemma: प्रच्छ्, gloss: "having asked" }
+  कुशलं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "welfare, health" }
+  चाव्ययं:
+    fix:
+      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "freedom from loss, prosperity" }
+  त्वत्सभातुल्यरूपा:
+    split:
+      - { form: त्वत्, lemma: युष्मद्, member: true, gloss: "your" }
+      - { form: सभा, lemma: सभा, member: true, gloss: "hall" }
+      - { form: तुल्य, lemma: तुल्य, member: true, gloss: "equal" }
+      - { form: रूपा, lemma: रूप, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "form (बहुव्रीहि: 'whose form equals your hall')" }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: षष्ठी एकवचन, gloss: "your" }
+  दृस्यतामेत्य:
+    split:
+      - { form: दृश्यताम्, lemma: दृश्, a: लोट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "let it be seen" }
+      - { form: एत्य, lemma: इ, a: अव्यय ल्यप्, gloss: "having come (आ + इ)" }
+    note: "SARIT's दृस्यताम् is a slip for दृश्यताम्. एत्य is आ-इत्य: 'come and see it'."
+  पुत्र:
+    fix:
+      1: { gloss: "son (Dhṛtarāṣṭra's address to Yudhiṣṭhira)" }
+
+'sabha-2-83-8':
+  समागम्य:
+    fix:
+      1: { a: अव्यय ल्यप्, gloss: "meeting with" }
+  पार्थ:
+    fix:
+      1: { gloss: "O Pārtha (son of Pṛthā)" }
+  तस्यां:
+    split:
+      - { form: तस्याम्, lemma: तद्, a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: "in it (the hall)" }
+  सुहृद्द्यूतं:
+    fix:
+      1: { form: सुहृद्, lemma: सुहृद्, member: true, gloss: "friend (सुहृद्द्यूत 'a friendly game')" }
+      2: { gloss: "game of dice" }
+  क्रियतां:
+    fix:
+      1: { gloss: "let it be played" }
+  रम्यतां:
+    fix:
+      1: { gloss: "let there be enjoyment (an impersonal passive)" }
+  प्रीयामहे:
+    fix:
+      1: { gloss: "we are pleased" }
+  भवतां:
+    fix:
+      1: { gloss: "of you (honorific)" }
+  सङ्गमेन:
+    fix:
+      1: { gloss: "by the meeting" }
+  समागताः:
+    fix:
+      1: { lemma: समागम्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "assembled" }
+  कुरवश्चापि:
+    fix:
+      1: { gloss: "the Kurus" }
+
+'sabha-2-83-11':
+  द्यूतमनर्थमूलं:
+    split:
+      - { form: द्यूतम्, lemma: द्यूत, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "gambling" }
+      - { form: अनर्थ, lemma: अनर्थ, member: true, gloss: "evil, calamity" }
+      - { form: मूलम्, lemma: मूल, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "root (अनर्थमूल 'the root of evil')" }
+  कृतश्च:
+    fix:
+      1: { lemma: कृ, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "made" }
+  यत्नोऽस्य:
+    fix:
+      1: { gloss: "effort" }
+      2: { a: षष्ठी एकवचन नपुंसकलिङ्ग, gloss: "its (of the game)" }
+  मया:
+    fix:
+      1: { form: मया, lemma: अस्मद्, a: तृतीया एकवचन, gloss: "by me" }
+  निवारणे:
+    fix:
+      1: { gloss: "in preventing" }
+  प्राहिमोत्त्वत्सकाशं:
+    split:
+      - { form: प्राहिणोत्, lemma: प्रहि, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "sent" }
+      - { form: त्वत्, lemma: युष्मद्, member: true, gloss: "you" }
+      - { form: सकाशम्, lemma: सकाश, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "presence (त्वत्सकाशम् 'to you')" }
+    note: "SARIT's प्राहिमोत् is a slip for प्राहिणोत्, the imperfect of प्र-हि 'send' (ण by 8.4.15)."
+  विद्वञ्श्रेय:
+    split:
+      - { form: विद्वन्, lemma: विद्वस्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "O wise one" }
+      - { form: श्रेयः, lemma: श्रेयस्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "what is best" }
+  इहाचरस्व:
+    split:
+      - { form: इह, lemma: इह, a: अव्यय, gloss: "here" }
+      - { form: आचरस्व, lemma: आचर्, a: लोट् मध्यमपुरुष एकवचन आत्मनेपद, gloss: "do, act" }
+
+'sabha-2-83-16':
+  चाकामः:
+    fix:
+      2: { gloss: "unwilling" }
+  शकुनिना:
+    fix:
+      1: { gloss: "Śakuni" }
+  देविताहं:
+    fix:
+      1: { gloss: "one who will play (देविता अहम् 'I would play')" }
+  चेन्मां:
+    split:
+      - { form: चेत्, lemma: चेद्, a: अव्यय, gloss: "if" }
+      - { form: माम्, lemma: अस्मद्, a: द्वितीया एकवचन, gloss: "me" }
+  जिष्णुराह्वयिता:
+    split:
+      - { form: जिष्णुः, lemma: जिष्णु, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the victorious one (Śakuni, sure of winning)" }
+      - { form: आह्वयिता, lemma: आह्वे, a: लुट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "will challenge" }
+  आहूतोऽहं:
+    split:
+      - { form: आहूतः, lemma: आह्वे, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "challenged" }
+      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: "I" }
+  निवर्ते:
+    split:
+      - { form: निवर्ते, lemma: निवृत्, a: लट् उत्तमपुरुष एकवचन आत्मनेपद, gloss: "turn back" }
+  कदाचित्:
+    split:
+      - { form: कदाचित्, lemma: कदाचित्, a: अव्यय, gloss: "ever; with न, 'never'" }
+  तदाहितं:
+    fix:
+      1: { gloss: "that" }
+      2: { lemma: आधा, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "undertaken, taken on" }
+  वै:
+    fix:
+      1: { gloss: "indeed" }
+  व्रतं:
+    fix:
+      1: { gloss: "vow" }
+  मे:
+    fix:
+      1: { a: षष्ठी एकवचन, gloss: "my" }
+  वैशम्पायन:
+    fix:
+      1: { gloss: "Vaiśampāyana (the narrator)" }
+
+'sabha-2-83-17':
+  विदुरं:
+    fix:
+      1: { gloss: "Vidura" }
+  धर्मराजः:
+    fix:
+      1: { gloss: "the Dharma-king (Yudhiṣṭhira)" }
+  प्रायात्रिकं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "what is needed for the journey" }
+  सर्वमाज्ञाप्य:
+    split:
+      - { form: सर्वम्, lemma: सर्व, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "all" }
+      - { form: आज्ञाप्य, lemma: आज्ञा, a: अव्यय ल्यप्, gloss: "having ordered (causative)" }
+  प्रायाच्छ्वोभूते:
+    fix:
+      1: { gloss: "set out" }
+      2: { a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "the next day (when the morrow had come)" }
+  सगणः:
+    fix:
+      1: { gloss: "with his retinue" }
+  सानुयात्रः:
+    split:
+      - { form: सानुयात्रः, lemma: सानुयात्र, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "with his followers" }
+  सह:
+    fix:
+      1: { gloss: "with" }
+  स्त्रीभिर्दौपदामादि:
+    split:
+      - { form: स्त्रीभिः, lemma: स्त्री, a: तृतीया बहुवचन स्त्रीलिङ्ग, gloss: "the women" }
+      - { form: द्रौपदीम्, lemma: द्रौपदी, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "Draupadī" }
+      - { form: आदितः, lemma: आदितस्, a: अव्यय, gloss: "first, at the head" }
+    note: "SARIT's दौपदामादि is garbled; read द्रौपदीम् आदितः कृत्वा, 'putting Draupadī first', as other editions print it."
+  कृत्वा:
+    fix:
+      1: { gloss: "making, putting" }
+
+'sabha-2-83-47':
+  हास्तिनपुरं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "Hāstinapura (the Kuru capital)" }
+  धृतराष्ट्रगृहं:
+    split:
+      - { form: धृतराष्ट्र, lemma: धृतराष्ट्र, member: true, gloss: "Dhṛtarāṣṭra" }
+      - { form: गृहम्, lemma: गृह, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "house, palace" }
+  ययौ:
+    fix:
+      1: { gloss: "went" }
+  समियाय:
+    fix:
+      1: { gloss: "met" }
+  धृतराष्ट्रेण:
+    fix:
+      1: { gloss: "Dhṛtarāṣṭra" }
+  पाण्डवः:
+    fix:
+      1: { gloss: "the Pāṇḍava (Yudhiṣṭhira)" }
+
+'sabha-2-83-51':
+  जयद्रथेन:
+    fix:
+      1: { gloss: "Jayadratha" }
+  कुरुभिश्चापि:
+    fix:
+      1: { gloss: "the Kurus" }
+  सर्वशः:
+    fix:
+      1: { gloss: "all together" }
+  सर्वैर्महाबाहुर्भ्रातृभिः:
+    fix:
+      2: { gloss: "the mighty-armed one" }
+      3: { gloss: "brothers" }
+  पिरवारितः:
+    split:
+      - { form: परिवारितः, lemma: परिवृ, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "surrounded (causative participle)" }
+    note: "SARIT's पिरवारितः is a slip for परिवारितः."
+
+'sabha-2-83-63':
+  मुखोषितास्ते:
+    split:
+      - { form: सुख, lemma: सुख, member: true, gloss: "comfortably" }
+      - { form: उषिताः, lemma: वस्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "having stayed, passed (the night)" }
+      - { form: ते, lemma: तद्, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "they" }
+    note: "SARIT's मुखोषिताः is a slip for सुखोषिताः, 'having spent the night comfortably' (रजनीम्, accusative of time)."
+  रजनीं:
+    fix:
+      1: { gloss: "the night" }
+  प्रातः:
+    fix:
+      1: { gloss: "in the morning" }
+  कृताह्निकाः:
+    split:
+      - { form: कृत, lemma: कृत, member: true, gloss: "done" }
+      - { form: आह्निकाः, lemma: आह्निक, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "daily rite (कृताह्निक 'having done the morning rites')" }
+  रम्यां:
+    fix:
+      1: { lemma: रम्य, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "delightful" }
+  प्रविविशुः:
+    fix:
+      1: { gloss: "entered" }
+  कितवैरभिनन्दिताः:
+    fix:
+      1: { gloss: "by the gamblers" }
+      2: { gloss: "greeted" }
+
+'sabha-2-84-3':
+  तत्रोपविष्टेषु:
+    fix:
+      2: { gloss: "seated" }
+  नृपेषु:
+    fix:
+      1: { gloss: "the kings" }
+  शकुनिः:
+    fix:
+      1: { gloss: "Śakuni" }
+  सौबलस्तत्र:
+    fix:
+      1: { gloss: "son of Subala" }
+  युधिष्ठिरमभाषत:
+    fix:
+      2: { gloss: "spoke to" }
+  शकुनिरुवाच:
+    fix:
+      1: { gloss: "Śakuni" }
+
+'sabha-2-84-4':
+  उपस्तीर्णा:
+    split:
+      - { form: उपस्तीर्णा, lemma: उपस्तॄ, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "spread (with carpets), made ready" }
+  त्वयि:
+    split:
+      - { form: त्वयि, lemma: युष्मद्, a: सप्तमी एकवचन, gloss: "on you" }
+  कृतक्षणाः:
+    fix:
+      1: { gloss: "waiting (on you)" }
+  अक्षानुप्त्वा:
+    fix:
+      1: { gloss: "the dice" }
+      2: { gloss: "having cast" }
+  देवनस्य:
+    fix:
+      1: { gloss: "of play" }
+  समयोऽस्तु:
+    fix:
+      1: { gloss: "agreement, the terms (of play)" }
+      2: { gloss: "let there be" }
+
+'sabha-2-84-5':
+  नितिर्देवनं:
+    split:
+      - { form: निकृतिः, lemma: निकृति, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "fraud, deceit" }
+      - { form: देवनम्, lemma: देवन, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "gambling" }
+    note: "SARIT's नितिः drops a syllable: read निकृतिर्देवनम्, 'gambling is fraud'."
+  पापं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "sinful" }
+  क्षात्रोऽत्र:
+    fix:
+      1: { gloss: "befitting a kṣatriya" }
+      2: { gloss: "here" }
+  पराक्रमः:
+    fix:
+      1: { gloss: "valour" }
+  नीतिर्ध्रुवा:
+    fix:
+      1: { gloss: "policy, right conduct" }
+      2: { form: ध्रुवा, lemma: ध्रुव, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "fixed, certain" }
+  राजन्किं:
+    fix:
+      2: { gloss: "why?" }
+  द्यूतं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "gambling" }
+  प्रशंससि:
+    fix:
+      1: { gloss: "praise" }
+
+'sabha-2-84-18': &sabha-2-84-18
+  आहूतो:
+    split:
+      - { form: आहूतः, lemma: आह्वे, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "challenged" }
+  निवर्तेयमिति:
+    split:
+      - { form: निवर्तेयम्, lemma: निवृत्, a: विधिलिङ् उत्तमपुरुष एकवचन आत्मनेपद, gloss: "I would turn back" }
+      - { form: इति, lemma: इति, a: अव्यय, gloss: "thus (closing the vow)" }
+  मे:
+    fix:
+      1: { a: षष्ठी एकवचन, gloss: "my" }
+  व्रतमाहितम्:
+    fix:
+      1: { gloss: "vow" }
+      2: { lemma: आधा, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "undertaken, taken on" }
+  विधिश्च:
+    fix:
+      1: { gloss: "fate, destiny" }
+  बलवान्राजन्दिष्टस्यास्मि:
+    fix:
+      1: { gloss: "strong" }
+      3: { a: षष्ठी एकवचन नपुंसकलिङ्ग, gloss: "fate" }
+  वशे:
+    fix:
+      1: { lemma: वश, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "power (वशे स्थितः 'under the control of')" }
+'sabha-2-84-18#2': *sabha-2-84-18

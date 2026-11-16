@@ -50,7 +50,8 @@ if (work === 'ramayana') {
     // the encoding's own marks are not text: the prose paragraph mark `_*`, and
     // a stray reference with its speaker number (BhP_05.03.001 0, BhP_01.01.006/0)
     const unmark = (l: string) => l.replace(/_\*/g, ' ').replace(/\b[A-Za-z]+_[0-9][0-9.]*\*?(?:\/\d+)?(?:\s+\d+\b)?/g, ' ');
-    const ls = b.lines.map((l) => tidy(unmark(l.replace(/[$&%]/g, ' ')))).filter(Boolean).filter((l, i, a) => l !== a[i - 1]);
+    // a pāda mark escaped twice in the TEI (&amp;amp;) survives one decoding as "amp;"
+    const ls = b.lines.map((l) => tidy(unmark(l.replace(/&?amp;/g, ' ').replace(/[$&%]/g, ' ')))).filter(Boolean).filter((l, i, a) => l !== a[i - 1]);
     verses.set(b.ref.replace(/\*$/, ''), ls);
   }
 }
