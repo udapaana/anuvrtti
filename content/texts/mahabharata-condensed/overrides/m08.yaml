@@ -49,7 +49,7 @@
     note: "महात्मनः अपि: the print drops the avagraha (महात्मनोऽपि)."
   लक्षयन्ति:
     fix:
-      1: { gloss: "notice, perceive" }
+      1: { lemma: लक्ष्, a: लट् प्रथमपुरुष बहुवचन परस्मैपद चुरादि, gloss: "notice, perceive" }
   कुरुवृद्धमुख्याः:
     split:
       - { form: कुरु, lemma: कुरु, member: true, gloss: "the Kurus" }
@@ -383,7 +383,8 @@
       1: { gloss: "a husband" }
   स्त्रिया:
     fix:
-      1: { gloss: "for a woman" }
+      1: { form: स्त्रियाः, a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "of a woman" }
+    note: "स्त्रियाः देवैः: the visarga after आ drops before the voiced द, so स्त्रिया here is the genitive — 'one husband of a woman'."
   देवैर्विहितः:
     fix:
       1: { gloss: "the gods" }
@@ -510,12 +511,13 @@
 'sabha-2-90-42':
   महत्यापदि:
     fix:
-      1: { a: सप्तमी एकवचन स्त्रीलिङ्ग }
+      1: { a: सप्तमी एकवचन पुंलिङ्ग, gloss: "great" }
       2: { gloss: "calamity, distress" }
+    note: "महति आपदि: the epic gives the feminine आपद् the masculine-neuter locative महति (classical महत्याम्, which would print महत्यामापदि)."
   सम्प्राप्ते:
     split:
-      - { form: सम्प्राप्ते, lemma: सम्प्राप्, a: सप्तमी एकवचन स्त्रीलिङ्ग क्त, gloss: "having come" }
-    note: "A locative absolute: महत्याम् आपदि सम्प्राप्ते 'when great calamity has come'."
+      - { form: सम्प्राप्ते, lemma: सम्प्राप्, a: सप्तमी एकवचन पुंलिङ्ग क्त, gloss: "having come" }
+    note: "A locative absolute: महति आपदि सम्प्राप्ते 'when great calamity has come'. Like महति, the participle takes the masculine-neuter form with the feminine आपद् (classical सम्प्राप्तायाम्) — an epic licence."
   स्मर्तव्यो:
     fix:
       1: { gloss: "is to be remembered" }
@@ -704,7 +706,7 @@
       - { form: तत्र, lemma: तत्र, a: अव्यय, gloss: "there" }
       - { form: आसीत्, lemma: अस्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "was, arose" }
       - { form: घोर, lemma: घोर, member: true, gloss: "terrible" }
-      - { form: दर्शनः, lemma: दर्शन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "to behold" }
+      - { form: दर्शनः, lemma: दर्शन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "appearance (घोरदर्शनः 'terrible to behold')" }
   तदद्भुततमं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग }
@@ -1019,6 +1021,9 @@
       - { form: विचिन्तय, lemma: विचिन्त्, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "think of, bring about" }
 
 'sabha-2-92-56':
+  ततो:
+    fix:
+      1: { gloss: "then" }
   एतच्छुत्वा:
     split:
       - { form: एतत्, lemma: एतद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
@@ -1102,6 +1107,9 @@
       1: { gloss: "in the thigh" }
 
 'sabha-2-92-80':
+  यस्माच्चैवं:
+    fix:
+      1: { gloss: "since, because" }
   क्लेशयति:
     split:
       - { form: क्लेशयति, lemma: क्लिश्, a: लट् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "torments" }
