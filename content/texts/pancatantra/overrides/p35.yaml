@@ -759,7 +759,7 @@
   मृतभार्योऽहम्:
     split:
       - { form: मृत, lemma: मृत, member: true, gloss: "dead" }
-      - { form: भार्यः, lemma: भार्या, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "whose wife (is) — 'a widower'" }
+      - { form: भार्यः, lemma: भार्य, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "whose wife (is) — 'a widower'" }
       - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: "I" }
     note: "A बहुव्रीहि, 'one whose wife is dead'; the feminine भार्या shortens to -भार्य at the end of a masculine compound (1.2.48)."
 
@@ -840,6 +840,9 @@
   येन:
     fix:
       1: { a: अव्यय, gloss: "so that" }
+  त्वया:
+    fix:
+      1: { gloss: "you — त्वया सह 'with you'" }
   सहान्यत्र:
     fix:
       1: { gloss: "with" }
@@ -899,6 +902,9 @@
   जीवलोकः:
     fix:
       1: { gloss: "life in this world" }
+  त्वया:
+    fix:
+      1: { gloss: "you — त्वया सह 'with you'" }
   सफलीक्रियते:
     split:
       - { form: सफली, lemma: सफल, member: true, gloss: "fruitful (made so)" }
@@ -1259,6 +1265,9 @@
       - { form: का, lemma: किम्, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "which? — with चित्, 'a certain'" }
       - { form: चित्, lemma: चित्, a: अव्यय, gloss: "with an interrogative: 'some-'" }
       - { form: शृगालिका, lemma: शृगालिका, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "a she-jackal" }
+  मांसपिण्डगृहीतवदना:
+    fix:
+      1: { gloss: "with a lump of meat held in her mouth" }
   तत्राजगाम:
     fix:
       2: { gloss: "came" }
@@ -1314,9 +1323,8 @@
     split:
       - { form: समुत्सृज्य, lemma: समुत्सृज्, a: अव्यय ल्यप्, gloss: "dropping" }
   प्रत्युपाद्रवत्:
-    fix:
-      1: { gloss: "at, towards" }
-      2: { gloss: "rushed" }
+    split:
+      - { form: प्रत्युपाद्रवत्, lemma: प्रत्युपद्रु, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "rushed at" }
 
 '4.69+33':
   अत्रान्तरं:
@@ -2099,7 +2107,7 @@
     fix:
       2: { gloss: "here, in this" }
       3: { gloss: "town" }
-      4: { gloss: "is worth (anything), is in demand" }
+      4: { a: लट् प्रथमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "is worth (anything), is in demand" }
 
 '4.74+7':
   यतः:
