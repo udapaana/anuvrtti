@@ -1,0 +1,545 @@
+# Mahābhārata condensed, Śānti shanti-12-86-24 – Anuśāsana anuzAsana-13-273-26 (batch m22).
+# Format: see the header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+# The print's slips (आर्हेसा for अहिंसा, शुश्रुम् for शुश्रुम …) stay in text.yaml and
+# are corrected here, each with a note.
+
+'shanti-12-86-24':
+  कृपणानाथवृद्धानां:
+    split:
+      - { form: कृपण, lemma: कृपण, member: true, gloss: "the wretched, the poor" }
+      - { form: अनाथ, lemma: अनाथ, member: true, gloss: "the unprotected, orphans" }
+      - { form: वृद्धानाम्, lemma: वृद्ध, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "the aged" }
+    note: "A द्वन्द्व: of the wretched, the unprotected and the old."
+  योषिताम्:
+    fix:
+      1: { lemma: योषित्, a: षष्ठी बहुवचन स्त्रीलिङ्ग, gloss: "women" }
+  योगक्षेमं:
+    fix:
+      1: { gloss: "acquiring and keeping, provision and security" }
+  वृत्तिं:
+    fix:
+      1: { gloss: "maintenance, livelihood" }
+  प्रकल्पयेत्:
+    split:
+      - { form: प्रकल्पयेत्, lemma: प्रक्लृप्, a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "should arrange, provide for" }
+
+'shanti-12-88-24':
+  मा:
+    fix:
+      1: { lemma: मा, a: अव्यय, gloss: "let not (prohibitive)" }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: षष्ठी एकवचन, gloss: "your" }
+  राष्ट्रे:
+    fix:
+      1: { a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "in the kingdom" }
+  याचनका:
+    fix:
+      1: { gloss: "beggars" }
+  भवेयुर्मा:
+    fix:
+      1: { gloss: "there should be" }
+      2: { lemma: मा, a: अव्यय, gloss: "nor (prohibitive)" }
+  दस्यवः:
+    fix:
+      1: { gloss: "robbers" }
+  उपादातार:
+    split:
+      - { form: उपादातारः, lemma: उपादा, a: प्रथमा बहुवचन पुंलिङ्ग तृच्, gloss: "takers, those who seize" }
+    note: "उप-आ-दा + तृच्: they only take; the visarga is lost before the vowel of एव."
+  भूतस्य:
+    fix:
+      1: { a: षष्ठी एकवचन नपुंसकलिङ्ग, gloss: "of living beings, of the world" }
+  भावकाः:
+    fix:
+      1: { lemma: भावक, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "promoters (of welfare), those who make thrive" }
+
+'shanti-12-91-14':
+  यच्चक्षुर्मुनेराशीविषस्य:
+    fix:
+      2: { lemma: चक्षुस्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "eye, gaze" }
+      3: { gloss: "of a sage" }
+      4: { gloss: "of a venomous snake" }
+  अविषह्यतमं:
+    split:
+      - { form: अविषह्यतमम्, lemma: अविषह्यतम, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "most unbearable" }
+  मन्ये:
+    split:
+      - { form: मन्ये, lemma: मन्, a: लट् उत्तमपुरुष एकवचन आत्मनेपद दिवादि, gloss: "I think, deem" }
+  मा:
+    fix:
+      1: { lemma: मा, a: अव्यय, gloss: "do not (prohibitive)" }
+  स्म:
+    fix:
+      1: { gloss: "with मा: never, by no means" }
+  दुर्बलमासदः:
+    fix:
+      2: { form: आसदः, lemma: आसद्, a: लुङ् मध्यमपुरुष एकवचन परस्मैपद, gloss: "assail, attack" }
+    note: "मा स्म takes the aorist without its augment (6.4.74): मा स्म आसदः, 'never assail the weak'."
+
+'shanti-12-91-15':
+  दुर्बलांस्तात:
+    fix:
+      2: { gloss: "dear son (affectionate address)" }
+  मन्येथा:
+    fix:
+      1: { a: विधिलिङ् मध्यमपुरुष एकवचन आत्मनेपद दिवादि, gloss: "you should regard" }
+  नित्यमेवाविमानि:
+    split:
+      - { form: नित्यम्, lemma: नित्यम्, a: अव्यय, gloss: "always" }
+      - { form: एव, lemma: एव, a: अव्यय }
+      - { form: अविमानितान्, lemma: अविमानित, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "not to be slighted, unhumbled" }
+    note: "The print divides one word, अविमानितान्, as अविमानि तान्; read as one ('regard the weak as never to be slighted')."
+  तान्:
+    note: "The last syllable of अविमानितान्, which the print divides off (see the word before)."
+  मा:
+    fix:
+      1: { lemma: मा, a: अव्यय, gloss: "lest, let not" }
+  दुर्बलचक्षूंषि:
+    split:
+      - { form: दुर्बल, lemma: दुर्बल, member: true, gloss: "the weak" }
+      - { form: चक्षूंषि, lemma: चक्षुस्, a: प्रथमा बहुवचन नपुंसकलिङ्ग, gloss: "eyes (दुर्बलचक्षूंषि 'the eyes of the weak')" }
+  प्रदहेयुः:
+    fix:
+      1: { gloss: "burn up" }
+  सबान्धवम्:
+    split:
+      - { form: सबान्धवम्, lemma: सबान्धव, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "together with your kin" }
+
+'shanti-12-91-18':
+  विमानितो:
+    split:
+      - { form: विमानितः, lemma: विमन्, a: प्रथमा एकवचन पुंलिङ्ग क्त णिच्, gloss: "dishonoured, slighted" }
+  हतः:
+    fix:
+      1: { gloss: "struck, beaten" }
+  क्लिष्टस्त्रातारं:
+    fix:
+      1: { gloss: "harassed, afflicted" }
+      2: { gloss: "a protector" }
+  चेन्न:
+    split:
+      - { form: चेत्, lemma: चेद्, a: अव्यय, gloss: "if" }
+      - { form: न, lemma: न, a: अव्यय, gloss: "not" }
+  विन्दन्ते:
+    fix:
+      1: { a: लट् प्रथमपुरुष बहुवचन आत्मनेपद तुदादि, gloss: "find" }
+    note: "विद् 'find' (तुदादि, विन्दति), not विद् 'know'; the plural generalises the three singular sufferers."
+  अमानुषकृतस्तत्र:
+    split:
+      - { form: अमानुष, lemma: अमानुष, member: true, gloss: "not human, superhuman" }
+      - { form: कृतः, lemma: कृ, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "made (अमानुषकृत 'wrought by no man, divine')" }
+      - { form: तत्र, lemma: तत्र, a: अव्यय, gloss: "then, in that case" }
+  दण्डो:
+    fix:
+      1: { gloss: "punishment" }
+  हन्ति:
+    split:
+      - { form: हन्ति, lemma: हन्, a: लट् प्रथमपुरुष एकवचन परस्मैपद अदादि, gloss: "strikes down, destroys" }
+  नराधिपम्:
+    fix:
+      1: { gloss: "the king, lord of men" }
+
+'shanti-12-91-19':
+  मा:
+    fix:
+      1: { lemma: मा, a: अव्यय, gloss: "do not (prohibitive)" }
+  स्म:
+    fix:
+      1: { gloss: "with मा: never" }
+  तात:
+    fix:
+      1: { gloss: "dear son (affectionate address)" }
+  बलस्थस्त्वं:
+    fix:
+      1: { gloss: "being in power, strong" }
+  भुञ्जीथा:
+    fix:
+      1: { a: विधिलिङ् मध्यमपुरुष एकवचन आत्मनेपद रुधादि, gloss: "exploit, devour (lit. enjoy)" }
+    note: "भुज् 'enjoy, consume' (रुधादि), not भुज् 'bend'; after मा स्म the epic allows the optative for a prohibition."
+  जनम्:
+    fix:
+      1: { gloss: "people" }
+  'मा#2':
+    fix:
+      1: { lemma: मा, a: अव्यय, gloss: "lest, let not" }
+  दुर्बलचक्षूंषि:
+    split:
+      - { form: दुर्बल, lemma: दुर्बल, member: true, gloss: "the weak" }
+      - { form: चक्षूंषि, lemma: चक्षुस्, a: प्रथमा बहुवचन नपुंसकलिङ्ग, gloss: "eyes (दुर्बलचक्षूंषि 'the eyes of the weak')" }
+  दहन्त्वग्निरिवाशयम्:
+    fix:
+      1: { gloss: "burn" }
+      4: { gloss: "its resting place (the wood that feeds it)" }
+
+'shanti-12-91-20':
+  मिथ्याभिशस्तानां:
+    fix:
+      1: { form: मिथ्या, lemma: मिथ्या, member: true, gloss: "falsely" }
+      2: { gloss: "accused" }
+  पतन्त्यश्रूणि:
+    fix:
+      1: { a: लट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "fall" }
+      2: { gloss: "tears" }
+  रोदताम्:
+    split:
+      - { form: रोदताम्, lemma: रुद्, a: षष्ठी बहुवचन पुंलिङ्ग शतृ, gloss: "weeping" }
+    note: "The epic's thematic रोदताम् (as if रोदति) for classical रुदताम्, of रुद् (अदादि)."
+  तानि:
+    split:
+      - { form: तानि, lemma: तद्, a: प्रथमा बहुवचन नपुंसकलिङ्ग, gloss: "they (those tears)" }
+  पुत्रान्पशून्घ्नन्ति:
+    split:
+      - { form: पुत्रान्, lemma: पुत्र, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "sons" }
+      - { form: पशून्, lemma: पशु, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "cattle" }
+      - { form: घ्नन्ति, lemma: हन्, a: लट् प्रथमपुरुष बहुवचन परस्मैपद अदादि, gloss: "destroy" }
+  तेषां:
+    split:
+      - { form: तेषाम्, lemma: तद्, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "of those" }
+  मिथ्याभिशंसिनां:
+    split:
+      - { form: मिथ्या, lemma: मिथ्या, member: true, gloss: "falsely" }
+      - { form: अभिशंसिनाम्, lemma: अभिशंसिन्, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "accusers (मिथ्याभिशंसिन् 'false accuser')" }
+
+'shanti-12-94-1':
+  अयुद्धेनैव:
+    fix:
+      1: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "without battle" }
+  विजयं:
+    fix:
+      1: { gloss: "victory" }
+  वर्धयेद्वसुधाधिपः:
+    fix:
+      1: { a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "should increase, extend" }
+      2: { gloss: "a king, lord of the earth" }
+  जघन्यमाहुर्विजयं:
+    fix:
+      1: { gloss: "lowest, meanest" }
+      2: { gloss: "they call" }
+      3: { gloss: "victory" }
+  युद्धेन:
+    fix:
+      1: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "by battle" }
+  नराधिप:
+    fix:
+      1: { gloss: "O king" }
+
+'shanti-12-95-21':
+  कर्म:
+    fix:
+      1: { gloss: "the deed, the way" }
+  चैतदसाधूनां:
+    fix:
+      3: { gloss: "of the wicked" }
+  साधून्योऽसाधुना:
+    fix:
+      1: { gloss: "the good" }
+      3: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "by foul means" }
+  जयेत्:
+    fix:
+      1: { gloss: "would conquer" }
+  धर्मेण:
+    fix:
+      1: { gloss: "with righteousness, fighting fair" }
+  निधनं:
+    fix:
+      1: { gloss: "death" }
+  श्रेयो:
+    fix:
+      1: { gloss: "better" }
+  जयः:
+    fix:
+      1: { gloss: "victory" }
+  पापकर्मणा:
+    split:
+      - { form: पाप, lemma: पाप, member: true, gloss: "evil" }
+      - { form: कर्मणा, lemma: कर्मन्, a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "deed (पापकर्मन् 'by evil conduct')" }
+
+'shanti-12-156-2':
+  पापस्य:
+    fix:
+      1: { a: षष्ठी एकवचन नपुंसकलिङ्ग, gloss: "of sin" }
+  यदधिष्ठानं:
+    fix:
+      2: { gloss: "seat, basis" }
+  तच्छृणुष्व:
+    split:
+      - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+      - { form: शृणुष्व, lemma: श्रु, a: लोट् मध्यमपुरुष एकवचन आत्मनेपद, gloss: "hear" }
+  नराधिप:
+    fix:
+      1: { gloss: "O king" }
+  लोभो:
+    fix:
+      1: { gloss: "greed" }
+  महाग्राहो:
+    split:
+      - { form: महा, lemma: महत्, member: true, gloss: "great" }
+      - { form: ग्राहः, lemma: ग्राह, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "crocodile, sea monster (महाग्राह 'a great monster')" }
+  लोभात्पापं:
+    fix:
+      1: { gloss: "from greed" }
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "sin" }
+  प्रवर्तते:
+    fix:
+      1: { gloss: "arises, proceeds" }
+
+'shanti-12-156-3':
+  अतः:
+    fix:
+      1: { gloss: "from this (greed)" }
+  पापमधर्मश्च:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "sin" }
+  दुःखमनुत्तमम्:
+    fix:
+      1: { gloss: "sorrow" }
+      2: { gloss: "unsurpassed, utmost" }
+  निकृत्या:
+    fix:
+      1: { lemma: निकृति, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "with deceit, through fraud" }
+  मूलमेतद्धि:
+    fix:
+      1: { gloss: "the root" }
+  येन:
+    fix:
+      1: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "by which" }
+  पापकृतो:
+    split:
+      - { form: पाप, lemma: पाप, member: true, gloss: "sin" }
+      - { form: कृतः, lemma: कृ, a: प्रथमा बहुवचन पुंलिङ्ग क्विप्, gloss: "doers (पापकृत् 'sinner')" }
+  जनाः:
+    fix:
+      1: { lemma: जन, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "people" }
+
+'shanti-12-156-14':
+  ज्ञायते:
+    fix:
+      1: { gloss: "is known" }
+  तत्त्वेन:
+    fix:
+      1: { gloss: "truly, in its real nature" }
+  सर्वैर्भूतगणैस्तथा:
+    split:
+      - { form: सर्वैः, lemma: सर्व, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "all" }
+      - { form: भूत, lemma: भूत, member: true, gloss: "beings" }
+      - { form: गणैः, lemma: गण, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "hosts (भूतगण 'the hosts of creatures')" }
+      - { form: तथा, lemma: तथा, a: अव्यय, gloss: "so, likewise" }
+  लोभः:
+    fix:
+      1: { gloss: "greed" }
+  सह:
+    fix:
+      1: { gloss: "with, together with" }
+  मोहेन:
+    fix:
+      1: { gloss: "delusion" }
+  विजेतव्यो:
+    fix:
+      1: { gloss: "is to be conquered" }
+  जितात्मना:
+    split:
+      - { form: जित, lemma: जित, member: true, gloss: "conquered, mastered" }
+      - { form: आत्मना, lemma: आत्मन्, a: तृतीया एकवचन पुंलिङ्ग, gloss: "self (जितात्मन् 'one who has mastered himself')" }
+
+'shanti-12-157-6':
+  रागो:
+    fix:
+      1: { gloss: "passion, attachment" }
+  हर्षः:
+    fix:
+      1: { gloss: "elation, exultation" }
+  शोकोऽभिमानिता:
+    split:
+      - { form: शोकः, lemma: शोक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "grief" }
+      - { form: अभिमानिता, lemma: अभिमानिता, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "conceit, arrogance" }
+  तन्द्री:
+    fix:
+      1: { lemma: तन्द्री, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "lassitude, sloth" }
+  चालस्यमेव:
+    split:
+      - { form: च, lemma: च, a: अव्यय, gloss: "and" }
+      - { form: आलस्यम्, lemma: आलस्य, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "idleness" }
+      - { form: एव, lemma: एव, a: अव्यय }
+
+'shanti-12-157-7':
+  इच्छा:
+    fix:
+      1: { a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "desire" }
+  तापः:
+    fix:
+      1: { gloss: "torment, distress" }
+  परवृद्ध्युपतापिता:
+    split:
+      - { form: पर, lemma: पर, member: true, gloss: "others" }
+      - { form: वृद्धि, lemma: वृद्धि, member: true, gloss: "prosperity" }
+      - { form: उपतापिता, lemma: उपतापिता, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "being pained (at others' prosperity: envy)" }
+  अज्ञानमेन्निर्दिष्टं:
+    split:
+      - { form: अज्ञानम्, lemma: अज्ञान, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "ignorance" }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
+      - { form: निर्दिष्टम्, lemma: निर्दिश्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "is declared" }
+    note: "The print drops a syllable: अज्ञानमेन्निर्दिष्टं for अज्ञानमेतन्निर्दिष्टं."
+  पापानां:
+    fix:
+      1: { a: षष्ठी बहुवचन नपुंसकलिङ्ग, gloss: "of sins" }
+  क्रियाः:
+    fix:
+      1: { lemma: क्रिया, a: प्रथमा बहुवचन स्त्रीलिङ्ग, gloss: "acts, deeds" }
+
+'shanti-12-158-10':
+  दमेन:
+    fix:
+      1: { gloss: "self-restraint" }
+  सदृशं:
+    fix:
+      1: { gloss: "equal to" }
+  धर्मं:
+    fix:
+      1: { gloss: "virtue, duty" }
+  नान्यं:
+    split:
+      - { form: न, lemma: न, a: अव्यय, gloss: "not" }
+      - { form: अन्यम्, lemma: अन्य, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "other" }
+  शुश्रुम्:
+    split:
+      - { form: शुश्रुम, lemma: श्रु, a: लिट् उत्तमपुरुष बहुवचन परस्मैपद, gloss: "we have heard" }
+    note: "The print's शुश्रुम् is a slip for शुश्रुम, the perfect 'we have heard'."
+  दमो:
+    fix:
+      1: { lemma: दम, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "self-restraint" }
+  परमो:
+    fix:
+      1: { gloss: "highest" }
+  लोके:
+    fix:
+      1: { gloss: "in the world" }
+  सर्वधर्मिणाम्:
+    split:
+      - { form: सर्व, lemma: सर्व, member: true, gloss: "all" }
+      - { form: धर्मिणाम्, lemma: धर्मिन्, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "the righteous" }
+
+'shanti-12-158-15':
+  क्षमा:
+    fix:
+      1: { gloss: "forbearance" }
+  धृतिरार्हेसा:
+    split:
+      - { form: धृतिः, lemma: धृति, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "steadfastness" }
+      - { form: अहिंसा, lemma: अहिंसा, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "non-violence" }
+    note: "The print's आर्हेसा is a slip for अहिंसा: धृतिरहिंसा."
+  समता:
+    fix:
+      1: { gloss: "equanimity" }
+  सत्यमार्जवम्:
+    fix:
+      1: { gloss: "truthfulness" }
+      2: { gloss: "uprightness" }
+  इन्द्रियाभिजयो:
+    split:
+      - { form: इन्द्रिय, lemma: इन्द्रिय, member: true, gloss: "the senses" }
+      - { form: अभिजयः, lemma: अभिजय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "mastery" }
+  दाक्ष्यं:
+    fix:
+      1: { gloss: "diligence, skill" }
+  मार्दवं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "gentleness" }
+  ह्रीरचापलम्:
+    split:
+      - { form: ह्रीः, lemma: ह्री, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "modesty" }
+      - { form: अचापलम्, lemma: अचापल, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "steadiness, freedom from fickleness" }
+
+'shanti-12-158-16':
+  अकार्पण्यमसंरम्भः:
+    split:
+      - { form: अकार्पण्यम्, lemma: अकार्पण्य, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "freedom from meanness, generosity" }
+      - { form: असंरम्भः, lemma: असंरम्भ, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "freedom from anger" }
+  संतोषः:
+    split:
+      - { form: संतोषः, lemma: संतोष, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "contentment" }
+  प्रियवादिता:
+    split:
+      - { form: प्रियवादिता, lemma: प्रियवादिता, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "kindly speech" }
+  अविहसाऽनसूया:
+    split:
+      - { form: अविहिंसा, lemma: अविहिंसा, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "harmlessness" }
+      - { form: अनसूया, lemma: अनसूया, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "freedom from envy" }
+    note: "The print's अविहसा is a slip for अविहिंसा."
+  चाप्येषां:
+    fix:
+      3: { gloss: "of these" }
+  समुदयो:
+    fix:
+      1: { gloss: "the sum, the whole together" }
+  दमः:
+    fix:
+      1: { lemma: दम, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "self-restraint" }
+
+'shanti-12-160-5':
+  सत्यं:
+    fix:
+      1: { gloss: "truth" }
+  धर्मस्तपोयोगः:
+    fix:
+      1: { gloss: "righteousness, duty" }
+      2: { gloss: "austerity" }
+      3: { gloss: "yoga, discipline" }
+  'सत्यं#2':
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "truth" }
+  ब्रह्म:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "Brahman, the absolute" }
+  सनातनम्:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग }
+  'सत्यं#3':
+    fix:
+      1: { gloss: "truth" }
+  यज्ञः:
+    fix:
+      1: { gloss: "sacrifice" }
+  परः:
+    fix:
+      1: { gloss: "highest" }
+  प्रोक्तः:
+    fix:
+      1: { gloss: "is declared" }
+  सर्वं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "everything" }
+  सत्ये:
+    fix:
+      1: { lemma: सत्य, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "in truth" }
+  प्रतिष्ठितम्:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "rests on, is founded on" }
+
+'shanti-12-160-7':
+  प्राप्यते:
+    split:
+      - { form: प्राप्यते, lemma: प्राप्, a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "is attained" }
+  सत्यं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "truth" }
+  तच्च:
+    fix:
+      1: { gloss: "that" }
+  वेत्तुमिहार्हसि:
+    fix:
+      3: { gloss: "you ought (with an infinitive)" }
+  'सत्यं#2':
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "truth" }
+  त्रयोदशावधं:
+    split:
+      - { form: त्रयोदश, lemma: त्रयोदशन्, member: true, gloss: "thirteen" }
+      - { form: विधम्, lemma: विध, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "kind, -fold (त्रयोदशविध 'thirteenfold')" }
+    note: "The print's त्रयोदशावधं is a slip for त्रयोदशविधम्, 'of thirteen kinds'."
+  सर्वलोकेषु:
+    fix:
+      1: { gloss: "in all the worlds" }
+  भारत:
+    fix:
+      1: { gloss: "O Bhārata" }
