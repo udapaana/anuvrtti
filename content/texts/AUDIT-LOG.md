@@ -346,3 +346,12 @@ general:
   reader's terms carried णिच् all along.
 The other two (an epic ātmanepada future tagged passive; विहाय's lemma without
 its preverb) are single faults; the second waits on the lemma convention.
+
+## 2026-11-16 · Condensed Bhāgavata: second-reader audit
+
+**Tier 2:** 13 batches, 7,724 padas the authors let stand, read again: 137
+corrected (1.8%); per batch 2–27. The mechanical flags: 550 raised, 40 upheld.
+The readers worked from scripts/audit-worklist.ts (new), which prints a run's
+unchanged padas and its mechanical flags. The builder fixes found in the
+Rāmāyaṇa's sample (pronoun glosses, शानच्, सनादि) were in place before this
+pass. A blind sample (150 padas, seed 4242) is being judged.
