@@ -509,10 +509,10 @@
     fix:
       1: { gloss: "here" }
       3: { gloss: "I shall accomplish" }
-      4: { gloss: "the other (vow)" }
+      4: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "the other (promise)", note: "अपरं द्वितीयं (neuter, with संश्रुतम् understood) is the object of आप्स्यामि; दुर्योधनं यज्ञपशुं is the object of विशस्य." }
   द्वितीयं:
     fix:
-      1: { gloss: "the second" }
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "the second (promise)" }
   यज्ञपशुं:
     fix:
       1: { gloss: "a sacrificial beast" }
@@ -836,7 +836,7 @@
       - { form: प्रतिपीड्य, lemma: प्रतिपीड्, a: अव्यय ल्यप्, gloss: "pressing" }
   सान्त्वयन्:
     fix:
-      1: { gloss: "soothing" }
+      1: { lemma: सान्त्व्, gloss: "soothing" }
   प्रसीद:
     fix:
       1: { gloss: "be appeased" }
@@ -1199,7 +1199,10 @@
   ततोऽग्रसन्मही:
     fix:
       1: { gloss: "then" }
-      2: { gloss: "swallowed" }
+      2:
+        a: लङ् प्रथमपुरुष एकवचन परस्मैपद भ्वादि
+        gloss: "swallowed"
+        note: ग्रस् is आत्मनेपद in the धातुपाठ (ग्रसते); the epic uses it परस्मैपद, अग्रसत्. Not the causative अग्रासयत्.
       3: { gloss: "the earth" }
   चक्रं:
     fix:
