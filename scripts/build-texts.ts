@@ -188,14 +188,14 @@ export function resolveText(id: string): Resolved {
 }
 
 // ── paradigms, from the committed WASM ─────────────────────────────────────
-const VIB = ['Prathama', 'Dvitiya', 'Trtiya', 'Caturthi', 'Panchami', 'Sasthi', 'Saptami', 'Sambodhana'];
-const VIB_D = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
-const VAC = ['Eka', 'Dvi', 'Bahu'];
-const VAC_D = ['एकवचन', 'द्विवचन', 'बहुवचन'];
-const PUR = ['Prathama', 'Madhyama', 'Uttama'];
-const PUR_D = ['प्रथमपुरुष', 'मध्यमपुरुष', 'उत्तमपुरुष'];
-const LING: Record<string, string> = { 'पुंलिङ्ग': 'Pum', 'स्त्रीलिङ्ग': 'Stri', 'नपुंसकलिङ्ग': 'Napumsaka' };
-const LAK: Record<string, string> = {
+export const VIB = ['Prathama', 'Dvitiya', 'Trtiya', 'Caturthi', 'Panchami', 'Sasthi', 'Saptami', 'Sambodhana'];
+export const VIB_D = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
+export const VAC = ['Eka', 'Dvi', 'Bahu'];
+export const VAC_D = ['एकवचन', 'द्विवचन', 'बहुवचन'];
+export const PUR = ['Prathama', 'Madhyama', 'Uttama'];
+export const PUR_D = ['प्रथमपुरुष', 'मध्यमपुरुष', 'उत्तमपुरुष'];
+export const LING: Record<string, string> = { 'पुंलिङ्ग': 'Pum', 'स्त्रीलिङ्ग': 'Stri', 'नपुंसकलिङ्ग': 'Napumsaka' };
+export const LAK: Record<string, string> = {
   'लट्': 'Lat', 'लङ्': 'Lan', 'लिट्': 'Lit', 'लुट्': 'Lut', 'लृट्': 'Lrt', 'लोट्': 'Lot',
   'विधिलिङ्': 'VidhiLin', 'आशीर्लिङ्': 'AshirLin', 'लुङ्': 'Lun', 'लृङ्': 'Lrn'
 };
@@ -203,13 +203,13 @@ const LAK_EN: Record<string, string> = {
   'लट्': 'present', 'लङ्': 'imperfect', 'लिट्': 'perfect', 'लुट्': 'periphrastic future', 'लृट्': 'future',
   'लृङ्': 'conditional', 'लोट्': 'imperative', 'विधिलिङ्': 'optative', 'आशीर्लिङ्': 'benedictive', 'लुङ्': 'aorist'
 };
-const GANA: Record<string, string> = {
+export const GANA: Record<string, string> = {
   'भ्वादि': 'Bhvadi', 'अदादि': 'Adadi', 'जुहोत्यादि': 'Juhotyadi', 'दिवादि': 'Divadi', 'स्वादि': 'Svadi',
   'तुदादि': 'Tudadi', 'रुधादि': 'Rudhadi', 'तनादि': 'Tanadi', 'क्र्यादि': 'Kryadi', 'चुरादि': 'Curadi'
 };
 export type Table = { stem: string; lakara: string | null; kind: string; colHeads: string[]; rowHeads: string[]; rows: string[][] };
 
-async function loadVidyut() {
+export async function loadVidyut() {
   const quiet = console.error;
   console.error = () => {};
   const raw = await import(WASM_DIR + 'vidyut_prakriya.js');
@@ -218,7 +218,7 @@ async function loadVidyut() {
   console.error = quiet;
   return v;
 }
-const bare = (f: string) => f.replace(/ं$/, 'म्').replace(/ः$/, 'स्');
+export const bare = (f: string) => f.replace(/ं$/, 'म्').replace(/ः$/, 'स्');
 
 function paradigms(v: any, r: Resolved): Record<string, Table> {
   const tables: Record<string, Table> = {};
