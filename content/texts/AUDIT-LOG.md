@@ -302,3 +302,24 @@ they cannot replace them.
 the exhaustive strong review of every pada an author did not touch; Haiku
 screeners as an extra independent layer, each flag judged by a strong model;
 and a blind strong sample to measure what remains.
+
+## 2026-11-16 · Condensed Rāmāyaṇa: second-reader audit, and a blind sample
+
+**Tier 2 (an independent strong reader, every pada the author let stand):**
+16 batches, 10,894 padas, 109 corrected (1.0%); per batch 0–15. The mechanical
+flags were mostly noise here: 657 raised, 14 upheld. One batch (r15, 6.83.31–
+6.101.31) corrected nothing in 595 padas, unlike every other, and is being read
+a second time.
+
+**Blind sample (tier 5):** 120 padas drawn at random from the whole text
+(seeded; 62 vidyut's own, 42 an author's pick, 16 an author's), judged without
+knowing their source: 119 right, 1 wrong — अहम् glossed "base of the first
+person, as used in comp.", which is Monier-Williams's note on the stem अस्मद्,
+not a meaning. The judge worked quickly; a second sample is owed before the
+figure is relied on.
+
+**The fault was general.** 2,398 padas across the whole texts (1,657 अस्मद्,
+741 युष्मद्) showed MW's stem note as their gloss. Fixed at the source:
+content/texts/pronouns.yaml glosses the personal pronouns by number and case
+(अहम् "I", मम "my", त्वया "by you"), applied by build-texts.ts as the particles
+table is, where no override gives a gloss.

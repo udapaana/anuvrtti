@@ -53,6 +53,21 @@ const PARTICLES: Record<string, string> = (() => {
   return fs.existsSync(f) ? (parseYaml(fs.readFileSync(f, 'utf-8')) ?? {}) : {};
 })();
 
+/** content/texts/pronouns.yaml: the personal pronouns' glosses, by number and case. */
+const PRONOUNS: Record<string, Record<string, string[] | string>> = (() => {
+  const f = path.join(ROOT, 'content/texts/pronouns.yaml');
+  return fs.existsSync(f) ? (parseYaml(fs.readFileSync(f, 'utf-8')) ?? {}) : {};
+})();
+const CASES = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी'];
+function pronounGloss(a: Analysis): string | undefined {
+  const p = PRONOUNS[a.lemma_full ?? a.lemma];
+  if (!p) return undefined;
+  if (a.type === 'member') return p.member as string | undefined;
+  const row = a.वचन ? p[a.वचन] : undefined;
+  const i = a.विभक्ति ? CASES.indexOf(a.विभक्ति) : -1;
+  return Array.isArray(row) && i >= 0 ? row[i] : undefined;
+}
+
 function termsOf(a: Analysis): string[] {
   if (a.type === 'member') return ['समास'];
   const t: string[] = [];
@@ -161,7 +176,8 @@ export function resolveText(id: string): Resolved {
         }
         const m = mwFor(snap.lexicon, a);
         // an indeclinable nobody glossed takes content/texts/particles.yaml, not MW's root homonym
-        const particle = !r.spec?.gloss && fmtA(a) === 'अव्यय' ? PARTICLES[a.lemma_full ?? a.lemma] : undefined;
+        // and a personal pronoun takes content/texts/pronouns.yaml, not MW's note on the stem
+        const particle = r.spec?.gloss ? undefined : fmtA(a) === 'अव्यय' ? PARTICLES[a.lemma_full ?? a.lemma] : pronounGloss(a);
         const gloss = r.spec?.gloss ?? particle ?? m?.senses[0] ?? null;
         if (!gloss) problems.push(`${s.id}/${w.surface}: ${r.form} (${a.lemma}) — no MW entry and no gloss; add gloss: in overrides.yaml`);
         return {

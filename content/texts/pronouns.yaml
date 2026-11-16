@@ -1,0 +1,18 @@
+# The glosses of the personal pronouns, for every whole text.
+#
+# AUTHORED. Monier-Williams glosses अस्मद् and युष्मद् with a note on the
+# stems ("base of the first person, as used in comp."), not with a meaning; a
+# whole text otherwise shows that note under अहम्, मम, त्वम्. A pada with one of
+# these lemmas takes the gloss here, by number and case, unless its text's
+# overrides give one; a compound member takes `member`. Cases in order:
+# प्रथमा द्वितीया तृतीया चतुर्थी पञ्चमी षष्ठी सप्तमी. scripts/build-texts.ts reads it.
+अस्मद्:
+  एकवचन: [I, me, by me, to/for me, from me, my, in me]
+  द्विवचन: [we two, us two, by us two, to/for us two, from us two, of us two, in us two]
+  बहुवचन: [we, us, by us, to/for us, from us, our, in us]
+  member: I, we (in compound — my, our)
+युष्मद्:
+  एकवचन: [you, you, by you, to/for you, from you, your, in you]
+  द्विवचन: [you two, you two, by you two, to/for you two, from you two, of you two, in you two]
+  बहुवचन: [you, you, by you, to/for you, from you, your, in you]
+  member: you (in compound — your)
