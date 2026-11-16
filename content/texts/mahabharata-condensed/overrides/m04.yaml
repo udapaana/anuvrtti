@@ -1,0 +1,125 @@
+# Mahābhārata condensed, Ādi adi-1-151-55 – adi-1-200-7 (batch m04). Format: see the
+# header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+# SARIT prints the Kumbhakonam text in saṃhitā without compound hyphens; the
+# compound boundaries below are the author's.
+
+'adi-1-151-55':
+  ततो:
+    fix:
+      1: { gloss: "then" }
+  बलमतिख्यातं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग }
+      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग क्त, gloss: "far-famed, renowned" }
+  विज्ञाय:
+    fix:
+      1: { a: अव्यय ल्यप्, gloss: "having learned, perceiving" }
+  दृढधन्विनाम्:
+    fix:
+      1: { gloss: "of the firm-bowed (archers), i.e. the Pāṇḍavas" }
+  दूषितः:
+    split:
+      - { form: दूषितः, lemma: दुष्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "corrupted, turned bad" }
+    note: "दूषित is the participle of the causative दूषयति (दुष्): Dhṛtarāṣṭra's feeling 'was spoiled'."
+  सहसा:
+    fix:
+      1: { lemma: सहसा, a: अव्यय, gloss: "suddenly" }
+  भावो:
+    fix:
+      1: { gloss: "disposition, feeling" }
+  धृतराष्ट्रस्य:
+    fix:
+      1: { gloss: "Dhṛtarāṣṭra" }
+  पाण्डुषु:
+    fix:
+      1: { gloss: "towards the Pāṇḍus (Pāṇḍu's sons)" }
+  चिन्तापरमो:
+    split:
+      - { form: चिन्ता, lemma: चिन्ता, member: true, gloss: "anxiety, care" }
+      - { form: परमः, lemma: परम, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "given wholly to (चिन्तापरम 'consumed by anxiety')" }
+  निद्रामलभन्निशि:
+    split:
+      - { form: निद्राम्, lemma: निद्रा, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "sleep" }
+      - { form: अलभत्, lemma: लभ्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "got, found" }
+      - { form: निशि, lemma: निश्, a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: "at night" }
+    note: "अलभन्निशि is अलभत् + निशि (t becomes n before a nasal, 8.4.45). लभ् is आत्मनेपद in the classical language; the epic often uses it as परस्मैपद."
+
+'adi-1-152-4':
+  गुणैः:
+    fix:
+      1: { gloss: "virtues, good qualities" }
+  समुदितान्दृष्ट्वा:
+    fix:
+      1: { lemma: समुदि, gloss: "endowed with, possessed of" }
+      2: { gloss: "seeing" }
+  पौराः:
+    fix:
+      1: { gloss: "the citizens, townsfolk" }
+  पाण्डुसुतांस्तदा:
+    split:
+      - { form: पाण्डु, lemma: पाण्डु, member: true, gloss: "Pāṇḍu" }
+      - { form: सुतान्, lemma: सुत, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "sons" }
+      - { form: तदा, lemma: तदा, a: अव्यय, gloss: "then" }
+  कथयाञ्चक्रिरे:
+    fix:
+      1: { gloss: "told, spoke of" }
+    note: "A periphrastic perfect (कथयाम् + चक्रिरे): a stem in -अय् cannot take the plain लिट् endings (3.1.35)."
+  गुणान्संसत्सु:
+    fix:
+      1: { gloss: "virtues" }
+      2: { gloss: "in assemblies, gatherings" }
+  भारत:
+    fix:
+      1: { gloss: "O Bhārata (Janamejaya)" }
+
+'adi-1-152-5':
+  राज्यप्राप्तिं:
+    split:
+      - { form: राज्य, lemma: राज्य, member: true, gloss: "kingship" }
+      - { form: प्राप्तिम्, lemma: प्राप्ति, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "attainment" }
+  संप्राप्तं:
+    split:
+      - { form: संप्राप्तम्, lemma: संप्राप्, a: द्वितीया एकवचन पुंलिङ्ग क्त, gloss: "who has come to, reached" }
+  ज्येष्ठं:
+    fix:
+      1: { gloss: "eldest" }
+  पाण्डुसुतं:
+    split:
+      - { form: पाण्डु, lemma: पाण्डु, member: true, gloss: "Pāṇḍu" }
+      - { form: सुतम्, lemma: सुत, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "son" }
+  कथयन्ति:
+    fix:
+      1: { a: लट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "tell, talk of" }
+    note: "A finite verb, not a participle: with स्म the present tells of the past (3.2.118), 'they used to talk'."
+  स्म:
+    fix:
+      1: { gloss: "with a present tense: marks past time" }
+  संभूय:
+    fix:
+      1: { lemma: संभू, a: अव्यय ल्यप्, gloss: "gathering together" }
+  चत्वरेषु:
+    fix:
+      1: { gloss: "in squares, at crossroads" }
+
+'adi-1-152-6':
+  प्रज्ञाश्चक्षुरचक्षुष्ट्वाद्धृतराष्ट्रो:
+    split:
+      - { form: प्रज्ञा, lemma: प्रज्ञा, member: true, gloss: "wisdom" }
+      - { form: चक्षुः, lemma: चक्षुस्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "eye (प्रज्ञाचक्षुस् 'whose eye is wisdom', i.e. blind)" }
+      - { form: अचक्षुष्ट्वात्, lemma: अचक्षुष्ट्व, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "because of blindness" }
+      - { form: धृतराष्ट्रः, lemma: धृतराष्ट्र, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Dhṛtarāṣṭra" }
+    note: "The print has प्रज्ञाश्चक्षुः; the epithet is the बहुव्रीहि प्रज्ञाचक्षुस् (as the other recensions read), so the श् is taken as a misprint."
+  जनेश्वरः:
+    split:
+      - { form: जन, lemma: जन, member: true, gloss: "people" }
+      - { form: ईश्वरः, lemma: ईश्वर, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "lord (जनेश्वर 'lord of men, king')" }
+  राज्यं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "the kingship, the throne" }
+  प्राप्तवान्पूर्वं:
+    split:
+      - { form: प्राप्तवान्, lemma: प्राप्, a: प्रथमा एकवचन पुंलिङ्ग क्तवतु, gloss: "obtained" }
+      - { form: पूर्वम्, lemma: पूर्वम्, a: अव्यय, gloss: "before, formerly" }
+  नृपतिर्भवेत्:
+    fix:
+      2: { gloss: "could become" }
