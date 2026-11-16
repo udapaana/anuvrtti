@@ -66,7 +66,7 @@
     split:
       - { form: च, lemma: च, a: अव्यय, gloss: "and" }
       - { form: अप्रियवादिनीम्, lemma: अप्रियवादिन्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "who speaks unkindly" }
-    note: "The edition prints चापिर्यवादिनीम्, with the र and य transposed; the verse (Mahābhārata 5.37) reads चाप्रियवादिनीम्, च अप्रियवादिनीम्."
+    note: "The edition prints चापिर्यवादिनीम्, with the र and य transposed; the verse reads चाप्रियवादिनीम्, च अप्रियवादिनीम्."
 
 '3.73+2':
   ग्रामकामं:
@@ -101,6 +101,7 @@
     note: "Read सञ्चिन्त्य ('having thought it over'): सञ्चित्य, from सम् + चि 'having heaped up', makes no sense here, and the anusvāra is easily lost in print."
   कश्चिद्राजा:
     fix:
+      1: { gloss: "who? (कश्चित् 'some')" }
       2: { a: अव्यय, gloss: "with an interrogative: 'some-' (कश्चित् 'some')" }
   विहङ्गमानां:
     fix:
@@ -445,6 +446,7 @@
     split: []
   कश्चिद्विहङ्गमानां:
     fix:
+      1: { gloss: "who? (कश्चित् 'any')" }
       2: { a: अव्यय, gloss: "with an interrogative: 'some-' (कश्चित् 'any')" }
       3: { lemma: विहङ्गम, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "of the birds" }
   तदस्योलूकस्य:
