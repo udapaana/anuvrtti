@@ -10,8 +10,8 @@
     reader's graded sequence leads to. The reader keeps its excerpts — a
     passage chosen for its level, with "read it all" pointing here — and this
     page holds the works themselves. A text opens at /reader/text/<id>, where it
-    always has (saved copies and old links still work), and this door lights
-    there too.
+    always has (saved copies and old links still work), read through the graded
+    reader's own page, and this door lights there too.
 
     Two shelves: works given whole, and the epics as the Natesan books condense
     them — the poet's own verses, chosen and kept in order.
