@@ -36,8 +36,18 @@
       The edition prints अव्यापरेषु here; the tale's last line quotes the verse
       as अव्यापारेषु, which the sense needs (अ + व्यापार, "not one's affair").
       Read as a misprint.
+  व्यापारं:
+    fix:
+      1: { gloss: 'business, concern' }
+  यो:
+    fix:
+      1: { gloss: 'who' }
+  नरः:
+    fix:
+      1: { gloss: 'a man' }
   कर्तुमिच्छति:
     fix:
+      1: { gloss: 'to do, to take up' }
       2: { gloss: 'wishes, wants (with an infinitive: "wants to do")' }
   स:
     fix:
@@ -53,7 +63,11 @@
   कीलोत्पाटीव:
     fix:
       1: { form: कील, lemma: कील, member: true, gloss: "a wedge, pin" }
+      2: { gloss: "pulling out" }
     note: कील-उत्पाटी इव — "like the wedge-puller", an उपपद compound in -इन्.
+  वानरः:
+    fix:
+      1: { gloss: "a monkey" }
 
 '1.21+1':
   कस्मिंश्चिन्नगराभ्याशे:
@@ -65,10 +79,12 @@
     note: 'The tale''s first word is the storyteller''s "once, somewhere": किम् + चित् makes the indefinite "some".'
   केनापि:
     fix:
+      1: { gloss: 'by whom? — with अपि, "by someone"' }
       2: { gloss: 'even; with an interrogative, "some-" (केनापि "by someone")' }
   वणिक्पुत्रेण:
     fix:
       1: { form: वणिक्, lemma: वणिज्, member: true }
+      2: { gloss: "son (वणिक्पुत्र 'a merchant's son', i.e. a merchant)" }
   तरुखण्डमध्ये:
     split:
       - { form: तरु, lemma: तरु, member: true, gloss: 'a tree' }
@@ -80,6 +96,7 @@
       - { form: आयतनम्, lemma: आयतन, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: 'a sanctuary (देवतायतन "a temple")' }
   कर्तुमारब्धम्:
     fix:
+      1: { gloss: 'to make, build' }
       2: { a: प्रथमा एकवचन नपुंसकलिङ्ग }
     note: >-
       कर्तुम् आरब्धम् — "was begun to be built": the passive participle agrees
@@ -90,6 +107,12 @@
   तत्र:
     fix:
       1: { gloss: 'there' }
+  ये:
+    fix:
+      1: { gloss: 'who' }
+  कर्मकराः:
+    fix:
+      1: { gloss: 'workmen, labourers' }
   स्थापनादयः:
     split:
       - { form: स्थापन, lemma: स्थापन, member: true, gloss: 'the setter-up, i.e. the master-builder' }
@@ -99,7 +122,7 @@
 '1.21+3':
   ते:
     fix:
-      1: { a: प्रथमा बहुवचन पुंलिङ्ग }
+      1: { a: प्रथमा बहुवचन पुंलिङ्ग, gloss: 'they' }
   मध्याह्नबेलायामाहारार्थं:
     split:
       - { form: मध्याह्न, lemma: मध्याह्न, member: true, gloss: 'midday, noon' }
@@ -111,6 +134,9 @@
     split:
       - { form: नगर, lemma: नगर, member: true }
       - { form: मध्ये, lemma: मध्य, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: 'in the middle of, into' }
+  गच्छन्ति:
+    fix:
+      1: { gloss: 'go' }
 
 '1.21+4':
   कदाचित्तत्रानुषङ्गिकं:
@@ -152,7 +178,12 @@
     split:
       - { form: खदिर, lemma: खदिर, member: true, gloss: 'the khadira tree (Acacia catechu)' }
       - { form: कीलकेन, lemma: कीलक, a: तृतीया एकवचन पुंलिङ्ग, gloss: 'a wedge' }
+  स्तम्भः:
+    fix:
+      1: { gloss: 'a post, beam' }
   तिष्ठति:
+    fix:
+      1: { gloss: 'stands' }
     note: तिष्ठति with an instrumental — "stands with a khadira wedge set in its middle".
 
 '1.21+6':
@@ -177,6 +208,9 @@
   यथेच्छया:
     fix:
       1: { gloss: 'at will, as they pleased' }
+  क्रीडितुमारब्धाः:
+    fix:
+      1: { gloss: 'to play' }
 
 '1.21+7':
   तेषां:
@@ -192,9 +226,15 @@
       - { form: स्फोटित, lemma: स्फोटित, member: true, gloss: 'split' }
       - { form: स्तम्भे, lemma: स्तम्भ, a: सप्तमी एकवचन पुंलिङ्ग }
     note: प्रत्यासन्नमृत्युः is a बहुव्रीहि, "one whose death was near"; the पञ्चमी चापल्यात् gives the cause.
+  उपविश्य:
+    fix:
+      1: { gloss: 'sitting down (on it)' }
   पाणिभ्यां:
     fix:
       1: { gloss: 'the hand — "with both hands"' }
+  संगृह्य:
+    fix:
+      1: { gloss: 'grasping, seizing' }
   यावदुत्पादयितुमारेभे:
     split:
       - { form: यावत्, lemma: यावत्, a: अव्यय, gloss: 'as soon as, just when (answered by तावत्)' }
@@ -241,6 +281,9 @@
   अतोऽहं:
     fix:
       1: { gloss: "therefore" }
+  ब्रवीमि:
+    fix:
+      1: { gloss: "I say" }
   अव्यापारेषु:
     fix:
       1: { gloss: "in what is not one's business" }
