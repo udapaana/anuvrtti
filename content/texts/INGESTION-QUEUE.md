@@ -12,7 +12,7 @@ edition. Update this file as status changes; it is the backlog, not a log.
 | source | partial (reader) | full text | notes |
 |---|---|---|---|
 | कठोपनिषद् | `13_kathopanishad` (1.1–1.3) | `kathopanishad` — whole Upaniṣad, 119 verses | |
-| पञ्चतन्त्रम् | `14_pancatantra` (scattered) | `pancatantra-kilotpatin` — one tale (1.21) | full Pañcatantra source is pinned (`sa_viSNuzarman-paJcatantra`); only this tale is ingested as a whole text so far — other tales are a straightforward repeat of the same pipeline |
+| पञ्चतन्त्रम् | `14_pancatantra` (scattered) | `pancatantra` — the whole work, five tantras | Jha's edition via Ambuda's GRETIL (`sa_viSNuzarman-paJcatantra`); the one-tale text that came first is merged into it |
 | वेतालपञ्चविंशतिका | *(no excerpt chapter)* | `vetala-1` — frame + tale 1 (176 sections) | asymmetric by design: a whole text needs no partial twin |
 | नीतिशतक | `18_nitishataka` | `nitishataka` — the whole śataka, 109 verses, 1,749 words | cut from GRETIL's combined Śatakatraya by its own headings (`scripts/nitishataka-text.ts`); four verses typed without the half-verse daṇḍa get it supplied. Author pass in `overrides/v1–v4.yaml`: 439 words split, ~45 GRETIL typos corrected with notes; every pada has now been read by a reviewer — two audits, 82 corrections in all, recorded in `AUDIT-LOG.md`, with the lemma conventions they left open. Snapshot 3.4 MB (~1.9 KB a word). |
 

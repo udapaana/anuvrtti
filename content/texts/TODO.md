@@ -59,12 +59,12 @@ five more Pañcatantra verses shifted every +n after them. Overrides are keyed
 by these ids, so before changing a source or a builder of an authored text,
 rebuild into a scratch copy, diff the ids, and re-key the overrides.
 
-## Retire the one-tale Pañcatantra
+## ~~Retire the one-tale Pañcatantra~~ (done)
 
-`content/texts/pancatantra-kilotpatin` is now a part of the full
-`pancatantra` (its overrides carried over as `overrides/kilotpatin.yaml`).
-About forty files cite it as the format example; repoint those, then remove
-the text, its snapshot and its page.
+`content/texts/pancatantra-kilotpatin` was removed: its overrides live on as
+`pancatantra/overrides/kilotpatin.yaml`, its format notes as
+`content/texts/OVERRIDES.md`, and its old address redirects to the tale's part
+of the whole Pañcatantra.
 
 ## Two limits of the override resolver (build-texts.ts), found by authors
 
