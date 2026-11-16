@@ -65,6 +65,12 @@ function pronounGloss(a: Analysis): string | undefined {
   const p = PRONOUNS[a.lemma_full ?? a.lemma];
   if (!p) return undefined;
   if (a.type === 'member') return p.member as string | undefined;
+  // a pronoun with gender (तद्, यद्, किम् …) is glossed by gender and number
+  const byGender = a.लिङ्ग ? (p as any)[a.लिङ्ग] : undefined;
+  // the genitive reads as a possessive ("his", "whose"), where one is given
+  if (byGender && a.वचन && a.विभक्ति === 'षष्ठी' && typeof byGender.षष्ठी?.[a.वचन] === 'string') return byGender.षष्ठी[a.वचन];
+  if (byGender && a.वचन && typeof byGender[a.वचन] === 'string') return byGender[a.वचन];
+  if (typeof p.any === 'string') return p.any;
   const row = a.वचन ? p[a.वचन] : undefined;
   const i = a.विभक्ति ? CASES.indexOf(a.विभक्ति) : -1;
   return Array.isArray(row) && i >= 0 ? row[i] : undefined;
