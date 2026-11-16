@@ -162,7 +162,7 @@ export type TextReading = {
   words: any[];
   /** the tokens, built here rather than split from `sentence` */
   tokens: any[];
-  samhita: { text: string; from: number[]; br?: boolean }[];
+  samhita: { text: string; from: number[]; ti?: number; br?: boolean }[];
 };
 
 /** One section as a reading. */
@@ -185,6 +185,11 @@ export function sectionAsReading(
     for (const wIdx of line) {
       const w = sec.words[wIdx];
       if (!w) continue;
+      // no pada: punctuation the edition printed, or its mark for a verse
+      if (!w.padas.length) {
+        punct(w.surface);
+        continue;
+      }
       const from: number[] = [];
       for (const p of w.padas) {
         const wi = words.length;
@@ -224,7 +229,10 @@ export function sectionAsReading(
         from.push(ti);
         forms.push(p.form);
       }
-      if (from.length) samhita.push({ text: w.surface, from });
+      // a tap on the written word opens its first inflected pada, not a bare
+      // compound member
+      const firstInflected = w.padas.findIndex((p) => !p.member);
+      if (from.length) samhita.push({ text: w.surface, from, ti: from[Math.max(0, firstInflected)] });
     }
     const last = li === sec.lines.length - 1;
     punct(sec.kind === 'verse' && last ? '॥' : '।');

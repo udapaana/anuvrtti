@@ -24,7 +24,10 @@
   import { page as appPage } from '$app/stores';
   import SheetButton from '$lib/components/ui/SheetButton.svelte';
   import SaveControls from '$lib/components/reader/SaveControls.svelte';
-  import { chapterToHtml } from '$lib/export';
+  import { chapterToHtml, textToHtml, type ExportText } from '$lib/export';
+  import {
+    partAsChapter, partLabel, type TextMeta, type PartMeta, type TextPart, type TextExtra
+  } from '$lib/reader/textAsReadings';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
   import { questionsFor, drawQuestion, type Question } from '$lib/reader/quiz';
@@ -34,7 +37,21 @@
   // word-identity tags (centre), and a scroll-synced sūtra derivation rail
   // (right), all on the shared Shell. Paginated (PAGE per page) so it scales
   // past a few thousand readings. Colour comes from the tokens in app.css.
-  const PAGE = 20;
+  /*
+    A whole text reads through this same page. `text` names it — its id, and
+    the path its pages live under — and the page loads that text's parts in
+    place of the graded corpus (textAsReadings.ts maps a part into readings).
+    Everything a graded reading has, a section has; what only a text has —
+    its parts, the dictionary, the editor's notes, the save controls for a
+    text — is drawn where `textMode` says so. Without `text` the page is the
+    graded reader exactly as it was.
+  */
+  let { text = null }: { text?: { id: string; base: string } | null } = $props();
+  // fixed for the component's life: the route remounts it per text ({#key})
+  // svelte-ignore state_referenced_locally
+  const textMode = !!text;
+  /* a whole part is one page: its sections are read through, not paged */
+  const PAGE = textMode ? Infinity : 20;
 
   type Reading = any;
   type Chapter = { id: string; title: string; attested?: boolean; textId?: string; readings: Reading[] };
@@ -66,7 +83,7 @@
   // On by default — a learner sees the padas first and turns the saṃhitā on —
   // and remembered, like the rail width.
   const PADACCHEDA_KEY = 'anuvrtti-padaccheda';
-  let padaccheda = $state(true);
+  let padaccheda = $state(!textMode);
   let sel = $state<{ id: string; ti: number } | null>(null);
   let pick = $state<string | null>(null);
   let checked = $state<Set<string>>(new Set());
@@ -86,7 +103,114 @@
   let io: IntersectionObserver | null = null;
   let vis = new Map<string, number>();
 
+  // ── a whole text ───────────────────────────────────────────────────────
+  let tMeta = $state<TextMeta | null>(null);
+  let tPart = $state<TextPart | null>(null);
+  let partIdx = $state(0);
+  let others = $state<{ id: string; title: string; title_en: string }[]>([]);
+  const T_PADACCHEDA_KEY = 'anuvrtti:text-padaccheda';
+  const progressKey = (tid: string) => `anuvrtti:text-progress:${tid}`;
+  const tBase = (tid: string) => `/data/texts/${tid}`;
+  const partUrl = (tid: string, p: PartMeta) => `${tBase(tid)}/${p.file}`;
+  /* A text merged into another keeps its address: it opens its new home at the
+     part it became. */
+  const RETIRED: Record<string, { to: string; part: string }> = {
+    'pancatantra-kilotpatin': { to: 'pancatantra', part: '1.1' }
+  };
+  async function fetchPart(p: PartMeta): Promise<TextPart> {
+    const r = await fetch(dataUrl(partUrl(text!.id, p)));
+    if (!r.ok) throw new Error(`no part “${p.id}” of “${text!.id}”`);
+    return r.json();
+  }
+  /** Open a part at a section (by its index in the part), and select its first word. */
+  async function openPart(i: number, at = 0) {
+    const p = tMeta!.parts[i];
+    const data = await fetchPart(p);
+    const mapped = partAsChapter(tMeta!, p, data);
+    tokenCache.clear();
+    sel = null;
+    deckQuiz = null;
+    pick = null;
+    // the line opened on counts as read, so the quiz has a deck at once (as
+    // the graded reader marks its first line)
+    seen = new Set([mapped.readings[Math.max(0, Math.min(at, mapped.readings.length - 1))]?.id].filter(Boolean) as string[]);
+    page = 0;
+    partIdx = i;
+    tPart = data;
+    usage = mapped.usage;
+    chapters = [mapped.chapter];
+    sequence = mapped.readings;
+    const target = mapped.readings[Math.max(0, Math.min(at, mapped.readings.length - 1))];
+    focusedId = target?.id ?? null;
+    saveProgress();
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (target && at > 0) {
+        const el = document.querySelector('[data-ex-id="' + target.id + '"]') as HTMLElement | null;
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - ANCHOR });
+      } else window.scrollTo({ top: 0 });
+      observe();
+      if (target) {
+        // the first inflected pada, not a bare compound member
+        const toks = tokensOf(target).filter((t: any) => t.isWord);
+        const first = toks.find((t: any) => !String(t.text).endsWith('-')) ?? toks[0];
+        if (first) selectToken(target.id, first.ti);
+        focusedId = target.id;
+      }
+    }));
+  }
+  function saveProgress() {
+    if (!text || !tMeta) return;
+    const s = Math.max(0, list.findIndex((r) => r.id === focusedId));
+    try { localStorage.setItem(progressKey(text.id), JSON.stringify({ part: tMeta.parts[partIdx]?.id, s })); } catch { /* session only */ }
+  }
+  // where the reader is, kept as they go
+  $effect(() => {
+    focusedId;
+    if (textMode && tPart) saveProgress();
+  });
+  async function loadText(id: string) {
+    const gone = RETIRED[id];
+    // a full load: the same page component would be reused for the new id
+    // without running this again
+    if (gone) { location.replace(`${text!.base}/${gone.to}?part=${encodeURIComponent(gone.part)}`); return; }
+    const [m, idx] = await Promise.all([
+      fetch(dataUrl(`${tBase(id)}/index.json`)).then((r) => { if (!r.ok) throw new Error(`no text “${id}”`); return r.json(); }),
+      fetch(dataUrl('/data/texts/index.json')).then((r) => (r.ok ? r.json() : []))
+    ]);
+    tMeta = m;
+    others = idx;
+    // back to where the reader left off: a part and a section in it (an
+    // older bare number is a section of the whole text)
+    let at = { part: m.parts[0].id as string, s: 0 };
+    try {
+      const v = localStorage.getItem(progressKey(id));
+      if (v) at = /^\d+$/.test(v) ? { part: m.parts[0].id, s: Number(v) } : { ...at, ...JSON.parse(v) };
+    } catch { /* none */ }
+    // ?part=… names a part to open at its start (a link, or a retired text)
+    const asked = $appPage.url.searchParams.get('part');
+    if (asked && m.parts.some((p: PartMeta) => p.id === asked)) at = { part: asked, s: 0 };
+    loaded = true;
+    await openPart(Math.max(0, m.parts.findIndex((p: PartMeta) => p.id === at.part)), at.s);
+  }
+  /* the downloads: the whole text (every part), this part, this section */
+  async function wholeText(): Promise<ExportText> {
+    const parts = await Promise.all(tMeta!.parts.map(fetchPart));
+    return { ...(tMeta as any), sections: parts.flatMap((x) => x.sections) } as ExportText;
+  }
+  const slugOf = (s: string) => s.replace(/[^A-Za-z0-9._-]/g, '_');
+  const tPartMeta = $derived(tMeta ? tMeta.parts[partIdx] : null);
+
   onMount(async () => {
+    if (text) {
+      try {
+        await loadText(text.id);
+      } catch (e) {
+        error = String((e as Error).message || e);
+      }
+      window.addEventListener('keydown', onKeydown);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return;
+    }
     try {
       const res = await fetch(dataUrl('/data/readings.json'));
       if (!res.ok) throw new Error('could not load readings (' + res.status + ')');
@@ -352,6 +476,11 @@
   function tokensOf(r: Reading): any[] {
     const hit = tokenCache.get(r.id);
     if (hit) return hit;
+    // a text's section comes with its tokens built (textAsReadings.ts)
+    if (r.tokens) {
+      tokenCache.set(r.id, r.tokens);
+      return r.tokens;
+    }
 
     // Normalise anusvāra when indexing: the corpus writes both ग्रामं and
     // ग्रामम् for the same word, and an unnormalised lookup silently drops the
@@ -438,8 +567,10 @@
             return {
               text: g.text,
               from: g.from,
-              ti: word ? word.ti : g.from[0],
+              // a text names the pada a tap on the written word opens (textAsReadings.ts)
+              ti: g.ti ?? (word ? word.ti : g.from[0]),
               isWord: !!word,
+              br: !!g.br,
               focal: parts.some((t: any) => t.focal),
               gloss: parts.filter((t: any) => t.isWord).map((t: any) => t.gloss).filter(Boolean).join(' · ')
             };
@@ -451,7 +582,8 @@
       written,
       id,
       chId: r.chapter,
-      indexLabel: String(n).padStart(2, '0'),
+      indexLabel: r.label ?? String(n).padStart(2, '0'),
+      verse: r.kind === 'verse',
       teaches: r.teaches || '',
       tokens,
       words,
@@ -518,7 +650,9 @@
       .filter(([, v]) => v && !authored.has(v as string))
       .map(([dim, v]) => ({ term: v as string, en: `${dim} — worked out from the form`, dim }));
     const cites = (w.notes ?? []).filter((n: any) => n.cite).map((n: any) => ({ cite: n.cite, role: n.role ?? '' }));
-    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quizzes: (w.quizzes ?? []) as any[], terms, derivedTerms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '' };
+    return { id: r.id, wi, form: w.form, lemma: w.lemma ?? '', gloss: w.gloss ?? '', quizzes: (w.quizzes ?? []) as any[], terms, derivedTerms, cites, notes: w.notes ?? [], derived: w.derived ?? {}, sentence: r.sentence ?? '', translation: r.translation ?? '',
+      // a text's word: its own table and what the rail shows of it beyond this
+      paradigm: (w.paradigm ?? null) as any, text: (w.text ?? null) as TextExtra | null };
   }
 
   /**
@@ -678,7 +812,8 @@
   });
   const newHere = $derived.by(() => {
     const r = railReading;
-    if (!r) return [] as string[];
+    // a text is not a curriculum: no tag is introduced by a verse
+    if (!r || textMode) return [] as string[];
     const out: string[] = [];
     const seenLocal = new Set<string>();
     for (const w of r.words ?? [])
@@ -821,6 +956,8 @@
   // no table, rather than guessing).
   const selParadigm = $derived.by(() => {
     if (!selWord) return null;
+    // a text's word has its own table, built with the text; no table, none shown
+    if (textMode) return selWord.paradigm;
     // Include DERIVED features (पुरुष/वचन/विभक्ति the build filled from vidyut) so
     // the cell lights up even when the word doesn't author them — verbs rarely do.
     const termNames = [...(selWord.terms ?? []).map((t: any) => t.term), ...Object.values(selWord.derived ?? {})];
@@ -833,7 +970,7 @@
   // सन्धि. Null when the word declines (its paradigm shows instead) or when no
   // decomposition is authored.
   const selDecomp = $derived.by(() => {
-    if (!selWord) return null;
+    if (!selWord || textMode) return null;
     const termNames = (selWord.terms ?? []).map((t: any) => t.term);
     return decompose(termNames, selWord.notes ?? []);
   });
@@ -966,7 +1103,8 @@
   onMount(() => {
     try {
       railWide = localStorage.getItem(RAIL_WIDE_KEY) === '1';
-      padaccheda = localStorage.getItem(PADACCHEDA_KEY) !== '0';
+      // a text is read as written: saṃhitā unless asked
+      padaccheda = textMode ? localStorage.getItem(T_PADACCHEDA_KEY) === '1' : localStorage.getItem(PADACCHEDA_KEY) !== '0';
     } catch { /* private mode: the default width is fine */ }
   });
   function toggleRailWidth() {
@@ -1003,7 +1141,8 @@
   // is allowed — and expected, since the question is about another reading.
   function selectToken(id: string, ti: number) {
     formedOpen = false;
-    paraOpen = false;
+    // a text's rail opened with its table, as the text page always did
+    paraOpen = textMode;
     if (sel && sel.id === id && sel.ti === ti) { sel = null; return; }
     sel = { id, ti };
   }
@@ -1615,11 +1754,18 @@
     if ((e.target as HTMLElement | null)?.closest('.wh-act')) return;
     railDetent = 1;
   }
+  /** Whose analysis a text's word carries, for the rail's last line. */
+  const SOURCE: Record<string, string> = {
+    vidyut: 'vidyut’s analysis',
+    pick: 'vidyut’s alternative, chosen by the editor',
+    author: 'the editor’s analysis (vidyut had none that fits)',
+    none: 'unanalysed'
+  };
   const swipeWord = swipe((d) => stepWord(d));
   const swipeLine = swipe((d) => stepLine(d));
 </script>
 
-<svelte:head><title>पठनम् · graded reader</title></svelte:head>
+<svelte:head><title>{textMode ? (tMeta ? `${tMeta.title_en} · texts · पठनम्` : 'texts · पठनम्') : 'पठनम् · graded reader'}</title></svelte:head>
 
 {#snippet shelfLeft()}
   {#if narrow}
@@ -1627,9 +1773,16 @@
          phone the spine is a sheet, so it needs a door on the shelf; on the
          desktop it is a column that is simply there. -->
     {#snippet chapterLabel()}
-      <Sanskrit text={chapterTitle(focusedChapter).dev} source="devanagari" />
+      {#if textMode}
+        <!-- a text: the section being read (the part is named in the head and
+             the sheet; beside the gloss mode a long part name pushes the
+             padaccheda toggle off the phone) -->
+        § {focused?.label ?? ''}
+      {:else}
+        <Sanskrit text={chapterTitle(focusedChapter).dev} source="devanagari" />
+      {/if}
     {/snippet}
-    <SheetButton label={chapterLabel} onopen={() => (spineOpen = true)} title="chapters" />
+    <SheetButton label={chapterLabel} onopen={() => (spineOpen = true)} title={textMode ? 'sections' : 'chapters'} />
     <span class="shelf-rule" aria-hidden="true"></span>
   {:else}
     <span class="quiet">gloss</span>
@@ -1646,14 +1799,14 @@
   <!-- independent axis: split at sandhi joins, composes with either gloss mode -->
   <button class="toggle" class:on={padaccheda} onclick={() => {
     padaccheda = !padaccheda;
-    try { localStorage.setItem(PADACCHEDA_KEY, padaccheda ? '1' : '0'); } catch { /* session only */ }
+    try { localStorage.setItem(textMode ? T_PADACCHEDA_KEY : PADACCHEDA_KEY, padaccheda ? '1' : '0'); } catch { /* session only */ }
   }}>
     padaccheda
   </button>
   <!-- A jump inside the corpus you are already reading is not a search, so it
        stays here rather than folding into ⌘K. On the phone it travels with the
        spine into its sheet, where there is room for it. -->
-  {#if !narrow}
+  {#if !narrow && !textMode}
     <form class="jump" onsubmit={jumpFromQuery}>
       <label class="quiet" for="jumpto">go to</label>
       <input id="jumpto" bind:value={jumpQuery} placeholder="ex210 or tier 210" spellcheck="false" />
@@ -1670,14 +1823,51 @@
   -->
   {#if !narrow}
     <span class="keys">← → word · ↑ ↓ line</span>
+    {#if textMode}
+      <!-- a text: where in it you are, as the text page said it -->
+      {#if tMeta && tPartMeta && focused}
+        {@const at = list.findIndex((r) => r.id === focused.id)}
+        <span>{#if tMeta.parts.length > 1}<Sanskrit text={partLabel(tPartMeta)} source="devanagari" /> ({partIdx + 1} of {tMeta.parts.length}){' · '}{/if}§ {focused.id} · {at + 1} of {list.length}</span>
+      {/if}
+    {:else}
     <!-- `checked` and `read` moved to the rail's own footer, beside the drill
          they describe. What stays here is the review bank's due count, which is
          a different deck and belongs to no one pane. -->
     <span>{deckCount} in deck</span>
+    {/if}
   {/if}
 {/snippet}
 
 {#snippet spine()}
+  {#if textMode}
+    <!-- a text's spine: its parts, the sections of the part open, the other texts -->
+    {#if narrow}<a class="back sheet-back" href="/texts">← texts</a>{/if}
+    {#if tMeta && tMeta.parts.length > 1}
+      <Spine
+        title="parts"
+        items={tMeta.parts.map((p, i) => ({ id: String(i), label: partLabel(p), script: 'devanagari' as const, sub: `${p.sections.length} sections` }))}
+        activeId={String(partIdx)}
+        onpick={(i) => { spineOpen = false; openPart(Number(i)); }}
+      />
+    {/if}
+    <div class={tMeta && tMeta.parts.length > 1 ? 'sources-shelf' : ''}>
+      <Spine
+        title="sections"
+        items={list.map((r: any) => ({ id: r.id, label: r.kind === 'verse' ? `verse ${r.id}` : `§ ${r.id}` }))}
+        activeId={focused?.id ?? null}
+        onpick={(id) => { spineOpen = false; jumpToReading(id); }}
+      />
+    </div>
+    {#if others.length > 1 && text}
+      <div class="sources-shelf">
+        <Spine
+          title="texts"
+          items={others.map((o) => ({ id: o.id, label: o.title, script: 'devanagari' as const, sub: o.title_en, href: `${text.base}/${o.id}` }))}
+          activeId={text.id}
+        />
+      </div>
+    {/if}
+  {:else}
   {#if narrow}
     <!-- the sheet's own head: what this is, and the jump that came with it -->
     <div class="spinehead">
@@ -1720,6 +1910,7 @@
         }}
       />
     </div>
+  {/if}
   {/if}
 {/snippet}
 
@@ -1978,7 +2169,8 @@
             <span class="wh-stem">written together: <Sanskrit text={selFused.gloss} source="devanagari" /></span>
           {/if}
         </div>
-        {#if selWord.terms.length}
+        <!-- (a text's word may carry only vidyut's tags, which are derived) -->
+        {#if selWord.terms.length || (textMode && selWord.derivedTerms.length)}
           <!--
             Newness is a DOT on the tag, not a block of its own.
 
@@ -2031,6 +2223,22 @@
 
     <!-- ── scrolls: the evidence, always this order ─────────────────────── -->
     <div class="evidence">
+
+      {#if textMode && selFused && selWord}
+        <!-- a text's saṃhitā word is several padas: each one is its own entry -->
+        {@const fusedTokens = tokensOf(list.find((x) => x.id === selWord.id))}
+        <div class="ev">
+          <div class="ev-head"><span class="ev-label quiet">in this word</span>
+            <span class="ev-meta"><Sanskrit text={selFused.text} source="devanagari" /></span></div>
+          <div class="padarow">
+            {#each selFused.from as ti}
+              <button class="padabtn" class:on={sel?.ti === ti} onclick={() => sel?.ti !== ti && selectToken(selWord.id, ti)}>
+                <Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" />
+              </button>
+            {/each}
+          </div>
+        </div>
+      {/if}
 
       {#if openTerm}
         <!-- The tapped tag's note. The tags are pinned in the head, so their
@@ -2101,6 +2309,38 @@
                 <button class="also-btn back" onclick={() => (systemPin = null)}>← this word's</button>
               {/if}
             </div>
+          {/if}
+        </div>
+      {/if}
+
+      {#if selWord?.text}
+        {@const tx = selWord.text}
+        {#if tx.note || tx.wordNote}
+          <div class="ev">
+            <div class="ev-head"><span class="ev-label">note</span></div>
+            {#if tx.note}<p class="tnote"><Sanskrit text={tx.note} source="devanagari" /></p>{/if}
+            {#if tx.wordNote}<p class="tnote"><Sanskrit text={tx.wordNote} source="devanagari" /></p>{/if}
+          </div>
+        {/if}
+        <!-- the dictionary: Monier-Williams' first senses, or the editor's
+             gloss for this text where it differs -->
+        <div class="ev">
+          <div class="ev-head">
+            <span class="ev-label">dictionary</span>
+            {#if tx.mw}<span class="ev-meta rom">Monier-Williams{tx.mw.lex ? ` · ${tx.mw.lex}` : ''}</span>{/if}
+          </div>
+          {#if tx.glossBy === 'author'}
+            <p class="sense">{tx.gloss} <span class="by">— in this text</span></p>
+          {/if}
+          {#if tx.mw}
+            <ol class="senses">
+              {#each tx.mw.senses.slice(0, 3) as sense}<li>{sense}</li>{/each}
+            </ol>
+            <a class="mwlink" href={tx.mw.url} target="_blank" rel="noopener">
+              <Sanskrit text={selWord.lemma} source="devanagari" /> in Monier-Williams (Cologne) ↗
+            </a>
+          {:else}
+            <p class="sense quietp">Not a headword in Monier-Williams.</p>
           {/if}
         </div>
       {/if}
@@ -2185,7 +2425,7 @@
              sentence look like a property of the word — and made it vanish
              whenever nothing was selected. -->
         <div class="ev reading">
-          <span class="ev-label quiet">the reading · {railReading.id}</span>
+          <span class="ev-label quiet">{textMode ? (railReading.kind === 'verse' ? 'the verse' : 'the section') : 'the reading'} · {railReading.id}</span>
 
           {#if runRows.length}
             <div class="run">
@@ -2211,6 +2451,14 @@
             </div>
           {/if}
 
+        </div>
+      {/if}
+
+      {#if selWord?.text}
+        <!-- whose analysis this is: vidyut's, or the editor's -->
+        <div class="ev provenance">
+          <span>{SOURCE[selWord.text.source]}{selWord.text.alts > 1 ? ` · ${selWord.text.alts} analyses offered` : ''}</span>
+          <span>§ {selWord.text.section}</span>
         </div>
       {/if}
     </div>
@@ -2258,6 +2506,28 @@
           <div data-ch-id={row.chId} class="ch-resume">
             <span class="ch-resume-dev"><Sanskrit text={row.dev} source="devanagari" /></span>
           </div>
+        {:else if row.head && textMode}
+          <!-- a text's head: the work, its title, the part open, and the ways
+               to take it away — the text, this part, this section -->
+          <div data-ch-id={row.chId} class="ch-head">
+            {#if tMeta}
+              {@const tm = tMeta}
+              {@const p = tm.parts[partIdx]}
+              {@const sec = tPart?.sections.find((x) => x.id === focused?.id) ?? tPart?.sections[0]}
+              <span class="label"><Sanskrit text={tm.work} source="devanagari" /> · {tm.place}</span>
+              <span class="ch-dev"><Sanskrit text={tm.title} source="devanagari" /></span>
+              <span class="ch-en">{tm.title_en}{#if tm.parts.length > 1}{' · '}<Sanskrit text={partLabel(p)} source="devanagari" />{/if}</span>
+              <SaveControls kind="text" id={tm.id}
+                files={[`${tBase(tm.id)}/index.json`, ...tm.parts.map((q) => partUrl(tm.id, q))]}
+                downloads={[
+                  { label: 'the text', filename: `${tm.id}.html`, html: async () => textToHtml(await wholeText()) },
+                  ...(tm.parts.length > 1 ? [{ label: partLabel(p), filename: `${tm.id}-${slugOf(p.id)}.html`,
+                    html: async () => textToHtml({ ...(tm as any), sections: tPart!.sections, place: `${tm.place ?? ''} · ${partLabel(p)}` } as ExportText) }] : []),
+                  ...(sec ? [{ label: `§ ${sec.id}`, filename: `${tm.id}-${slugOf(sec.id)}.html`,
+                    html: async () => textToHtml({ ...(tm as any), sections: [sec], place: `§ ${sec.id}` } as ExportText) }] : [])
+                ]} />
+            {/if}
+          </div>
         {:else if row.head}
           <div data-ch-id={row.chId} class="ch-head">
             <span class="label">chapter</span>
@@ -2274,6 +2544,7 @@
             class:grouped={row.grouped}
             class:runstart={row.runStart}
             class:runend={row.runEnd}
+            class:verse={row.verse}
             role="presentation"
             onmouseenter={() => enterReading(row.id)}
             onmouseleave={() => leaveReading(row.id)}
@@ -2292,7 +2563,9 @@
             <div class="tokens">
               {#if !padaccheda && row.written}
                 {#each row.written as w}
-                  {#if w.isWord}
+                  {#if w.br}
+                    <span class="line-br" aria-hidden="true"></span>
+                  {:else if w.isWord}
                     {@const splitOpen = w.from.length > 1 && sel?.id === row.id && w.from.includes(sel?.ti)}
                     <span
                       class="token"
@@ -2304,14 +2577,16 @@
                       onmouseenter={() => enterWord(row.id, w.ti)}
                       onmouseleave={leaveWord}
                       onclick={() => selectToken(row.id, w.ti)}
-                    >{#if splitOpen}{#each w.from as i, pi}{#if pi > 0}<span class="split-plus">+</span>{/if}<Sanskrit text={row.tokens[i].text} source="devanagari" />{/each}{:else}<Sanskrit text={w.text} source="devanagari" />{/if}</span>
+                    >{#if splitOpen}{#each w.from as i, pi}{#if pi > 0 && !row.tokens[w.from[pi - 1]].text.endsWith('-')}<span class="split-plus">+</span>{/if}<Sanskrit text={row.tokens[i].text} source="devanagari" />{/each}{:else}<Sanskrit text={w.text} source="devanagari" />{/if}</span>
                   {:else}
                     <span class="token punct"><Sanskrit text={w.text} source="devanagari" /></span>
                   {/if}
                 {/each}
               {:else}
               {#each row.tokens as tok}
-                {#if tok.isWord}
+                {#if tok.br}
+                  <span class="line-br" aria-hidden="true"></span>
+                {:else if tok.isWord}
                   <span
                     class="token"
                     class:hot={hl(row.id, tok.ti)}
@@ -2341,7 +2616,9 @@
               {/if}
             </div>
 
-            <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
+            {#if row.translation || !textMode}
+              <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
+            {/if}
           </article>
         {/if}
       {/each}
@@ -2364,6 +2641,32 @@
             next →
           </button>
         </div>
+      {/if}
+
+      {#if textMode && tMeta}
+        {#if tMeta.parts.length > 1}
+          <!-- a text's pager walks its parts -->
+          <nav class="pager" aria-label="parts">
+            <button disabled={partIdx <= 0} onclick={() => openPart(partIdx - 1)}>
+              ← {#if partIdx > 0}<Sanskrit text={partLabel(tMeta.parts[partIdx - 1])} source="devanagari" />{/if}
+            </button>
+            <span class="range"><Sanskrit text={partLabel(tMeta.parts[partIdx])} source="devanagari" /> · {partIdx + 1} of {tMeta.parts.length}</span>
+            <button disabled={partIdx >= tMeta.parts.length - 1} onclick={() => openPart(partIdx + 1)}>
+              {#if partIdx < tMeta.parts.length - 1}<Sanskrit text={partLabel(tMeta.parts[partIdx + 1])} source="devanagari" />{/if} →
+            </button>
+          </nav>
+        {/if}
+        <footer class="credit">
+          <p>{tMeta.source.edition}; source <code>{tMeta.source.file}</code>{#if tMeta.source.ref}, {tMeta.source.ref}{/if}.</p>
+          <p>
+            Segmentation and analysis by <a href="https://github.com/ambuda-org/vidyut" target="_blank" rel="noopener">vidyut</a>,
+            checked and corrected by the editor. Meanings from Monier-Williams, <i>A Sanskrit-English Dictionary</i> (1899),
+            digitised by the <a href="https://www.sanskrit-lexicon.uni-koeln.de/" target="_blank" rel="noopener">Cologne Digital Sanskrit Dictionaries</a>,
+            used under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>
+            (first senses only, lightly cleaned); this text's glosses are shared under the same licence.
+            <a href="/about#credits">Credits</a>.
+          </p>
+        </footer>
       {/if}
 
     </div>
@@ -3492,5 +3795,106 @@
       position: static;
       border: 1px solid var(--rule-2);
     }
+  }
+
+  /* ── a whole text (textMode) ─────────────────────────────────────────── */
+  /* a verse's lines each start a row of their own */
+  .line-br {
+    flex-basis: 100%;
+    height: 0;
+  }
+  .back {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .back:hover {
+    color: var(--accent);
+  }
+  .sheet-back {
+    display: block;
+    padding: 4px 0 12px;
+  }
+  .padarow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .padabtn {
+    font-family: var(--font-deva);
+    font-size: 16px;
+    padding: 3px 9px;
+    background: var(--paper);
+    color: var(--ink-2);
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .padabtn.on {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .tnote {
+    margin: 0;
+    font-family: var(--font-prose);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .tnote :global(span) {
+    font-family: inherit;
+  }
+  .sense {
+    margin: 0;
+    font-family: var(--font-prose);
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .sense .by {
+    color: var(--quiet);
+    font-size: 12px;
+  }
+  .quietp {
+    color: var(--muted);
+  }
+  .senses {
+    margin: 0;
+    padding-left: 18px;
+    font-family: var(--font-prose);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .mwlink {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-ref);
+    text-decoration: none;
+  }
+  .mwlink:hover {
+    text-decoration: underline;
+  }
+  .ev.provenance {
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--quiet);
+    border-bottom: none;
+  }
+  .credit {
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+    font-family: var(--font-prose);
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .credit p {
+    margin: 0 0 6px;
+  }
+  .credit a {
+    color: var(--accent-ref);
   }
 </style>
