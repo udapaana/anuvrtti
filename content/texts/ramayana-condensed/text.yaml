@@ -10,8 +10,15 @@
 # `iast` the edition's lines exactly. The book follows the Southern/vulgate
 # text; a Kumbhakonam edition to supply its other verses is still owed.
 #
-# Left out: 0 entries the matcher could not place, and 214 found only
-# in the Southern/vulgate text, which has no digital edition here yet.
+# 0 verses the critical edition lacks (the book follows the vulgate) come from
+# the book itself: cut from its scan, transcribed twice independently, every
+# difference settled by a third reading (keyed.json; crops in
+# data/sources/ocr/ramayana-condensed-crops/). Their ids are the critical verse
+# the book quotes before them, plus +n; each carries `scan:`. A Kumbhakonam
+# text is to replace them (content/texts/TODO.md).
+#
+# Left out: 0 entries the matcher could not place, and 214 vulgate
+# verses not yet settled from the scan.
 id: ramayana-condensed
 title: रामायणम् (संक्षिप्तम्)
 title_en: "The Rāmāyaṇa, condensed in the poet's own words"

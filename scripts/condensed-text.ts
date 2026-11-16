@@ -19,6 +19,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { readTei } from './lib/tei';
 import { iastToDeva } from './analyze-text';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const { initSync, transliterate } = require('shlesha');
+initSync({ module: fs.readFileSync(require.resolve('shlesha/shlesha_bg.wasm')) });
 
 const ROOT = process.cwd();
 const work = process.argv[2];
@@ -26,6 +31,11 @@ if (work !== 'ramayana') { console.error('usage: bun scripts/condensed-text.ts r
 
 const DIR = path.join(ROOT, 'content/texts/ramayana-condensed');
 const sel = JSON.parse(fs.readFileSync(path.join(DIR, 'selection.json'), 'utf-8'));
+// verses the edition lacks, read from the book's scan and settled by double keying
+// (condensed-reocr.ts → transcribe-*.json → condensed-keyed.ts)
+const keyedFile = path.join(DIR, 'keyed.json');
+const keyed = new Map<number, { section: string; text: string; by: string }>(
+  fs.existsSync(keyedFile) ? JSON.parse(fs.readFileSync(keyedFile, 'utf-8')).map((k: any) => [k.ocr_line, k]) : []);
 
 // the editions' verses, by id: lines of IAST, daṇḍas and running heads dropped
 const verses = new Map<string, string[]>();
@@ -39,12 +49,23 @@ const sectionId = (eid: string) => {
 };
 const KANDA = ['', 'बालकाण्डम्', 'अयोध्याकाण्डम्', 'अरण्यकाण्डम्', 'किष्किन्धाकाण्डम्', 'सुन्दरकाण्डम्', 'युद्धकाण्डम्', 'उत्तरकाण्डम्'];
 
-type Sec = { id: string; lines: string[]; iast: string; eid: string };
+type Sec = { id: string; lines: string[]; iast: string; eid: string; scan?: string };
 const sections: Sec[] = [];
 const seen = new Map<string, number>();
 const left = { unmatched: 0, elsewhere: 0, missing: 0 };
+let fromScan = 0;
 for (const e of sel.entries) {
-  if (!e.edition_id) { if (e.elsewhere || e.critical) left.elsewhere++; else left.unmatched++; continue; }
+  if (!e.edition_id) {
+    const k = keyed.get(e.ocr_line);
+    if (k) {
+      const lines = k.text.split(' / ').map((l) => l.trim()).filter(Boolean);
+      sections.push({ id: k.section, lines, iast: lines.map((l) => transliterate(l, 'devanagari', 'iast')).join(' | '), eid: '', scan: k.by });
+      fromScan++;
+      continue;
+    }
+    if (e.elsewhere || e.critical) left.elsewhere++; else left.unmatched++;
+    continue;
+  }
   const v = verses.get(e.edition_id);
   if (!v?.length) { left.missing++; console.error(`no verse text for ${e.edition_id}`); continue; }
   const base = sectionId(e.edition_id);
@@ -79,8 +100,15 @@ const y: string[] = [
   '# `iast` the edition\'s lines exactly. The book follows the Southern/vulgate',
   '# text; a Kumbhakonam edition to supply its other verses is still owed.',
   '#',
-  `# Left out: ${left.unmatched} entries the matcher could not place, and ${left.elsewhere} found only`,
-  '# in the Southern/vulgate text, which has no digital edition here yet.',
+  `# ${fromScan} verses the critical edition lacks (the book follows the vulgate) come from`,
+  '# the book itself: cut from its scan, transcribed twice independently, every',
+  '# difference settled by a third reading (keyed.json; crops in',
+  '# data/sources/ocr/ramayana-condensed-crops/). Their ids are the critical verse',
+  '# the book quotes before them, plus +n; each carries `scan:`. A Kumbhakonam',
+  '# text is to replace them (content/texts/TODO.md).',
+  '#',
+  `# Left out: ${left.unmatched} entries the matcher could not place, and ${left.elsewhere} vulgate`,
+  '# verses not yet settled from the scan.',
   'id: ramayana-condensed',
   'title: रामायणम् (संक्षिप्तम्)',
   'title_en: "The Rāmāyaṇa, condensed in the poet\'s own words"',
@@ -96,9 +124,9 @@ const y: string[] = [
   'sections:'
 ];
 for (const s of sections) {
-  y.push(`  - id: '${s.id}'`, '    kind: verse', '    lines:');
+  y.push(`  - id: '${s.id}'`, '    kind: verse', ...(s.scan ? [`    scan: ${s.scan} # read from the book's scan, double-keyed`] : []), '    lines:');
   for (const l of s.lines) y.push(`      - ${JSON.stringify(l)}`);
   y.push(`    iast: ${esc(s.iast)}`);
 }
 fs.writeFileSync(path.join(DIR, 'text.yaml'), y.join('\n') + '\n');
-console.log(`wrote content/texts/ramayana-condensed/text.yaml: ${sections.length} verses, ${words} words, ${parts.length} parts; left out ${left.unmatched} unmatched, ${left.elsewhere} elsewhere`);
+console.log(`wrote content/texts/ramayana-condensed/text.yaml: ${sections.length} verses (${fromScan} from the scan), ${words} words, ${parts.length} parts; left out ${left.unmatched} unmatched, ${left.elsewhere} vulgate verses not yet settled`);
