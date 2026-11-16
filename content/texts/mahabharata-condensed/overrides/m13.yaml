@@ -43,8 +43,8 @@
   आभ्यामन्यतरं:
     split:
       - { form: आभ्याम्, lemma: इदम्, a: पञ्चमी द्विवचन पुंलिङ्ग, gloss: "of these two" }
-      - { form: अन्यतरम्, lemma: अन्यतर, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "one or the other (of two)" }
-    note: "The ablative of the whole a choice is made from, with a -तर word (2.3.42)."
+      - { form: अन्यतरम्, lemma: अन्यतर, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "one or the other (of two)" }
+    note: "The ablative of the whole a choice is made from, with a -तर word (2.3.42). अन्यतर is a सर्वनाम whose neuter is अन्यतरत् (7.1.25), so अन्यतरम् is the masculine accusative, the object of वृणीताम्."
   पार्थ:
     fix:
       1: { gloss: "son of Pṛthā (Arjuna)" }
@@ -197,7 +197,7 @@
       - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
       - { form: भवान्, lemma: भवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "you (respectful)" }
       - { form: कर्तुम्, lemma: कृ, a: अव्यय तुमुन्, gloss: "to do, fulfil" }
-      - { form: अर्हति, lemma: अर्ह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "ought, should" }
+      - { form: अर्हति, lemma: अर्ह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "ought, should" }
     note: "भवत् takes a third-person verb: भवान् … अर्हति 'your honour should'."
   वासुदेव:
     fix:
@@ -240,7 +240,7 @@
       1: { gloss: "wish" }
   संपद्यतां:
     split:
-      - { form: संपद्यताम्, lemma: संपद्, a: लोट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "let it be fulfilled" }
+      - { form: संपद्यताम्, lemma: संपद्, a: लोट् प्रथमपुरुष एकवचन आत्मनेपद कर्तरि, gloss: "let it be fulfilled" }
     note: "पद् is दिवादि आत्मनेपद, so पद्यते is active, not passive: 'let it come to pass'."
   तव:
     fix:
@@ -490,7 +490,7 @@
     fix:
       1: { lemma: भवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "you (respectful)" }
       2: { gloss: "to be" }
-      3: { gloss: "ought, should" }
+      3: { a: लट् प्रथमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "ought, should" }
 
 'udyoga-5-8-20':
   कृतमित्यब्रवीच्छल्यः:
@@ -876,17 +876,18 @@
     split:
       - { form: प्रियः, lemma: प्रिय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "dear" }
       - { form: च, lemma: च, a: अव्यय, gloss: "and" }
-      - { form: एषाम्, lemma: एतद्, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "to them" }
+      - { form: एषाम्, lemma: इदम्, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "to them" }
       - { form: आत्म, lemma: आत्मन्, member: true, gloss: "self" }
       - { form: समः, lemma: सम, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "equal (आत्मसम 'as their own self')" }
       - { form: च, lemma: च, a: अव्यय, gloss: "and" }
+    note: "एषाम् is the genitive plural of इदम्; एतद् would give एतेषाम्."
   कृष्णो:
     fix:
       1: { gloss: "Kṛṣṇa" }
   विद्वांश्चैषां:
     fix:
       1: { gloss: "wise, knowing" }
-      3: { lemma: एतद्, gloss: "their" }
+      3: { lemma: इदम्, gloss: "their" }
     note: "विद्वान्: विद् with शतृ, which becomes वसु (7.1.36)."
   कर्मणि:
     fix:
@@ -1153,7 +1154,8 @@
     note: "सः loses its visarga before a consonant (6.1.132): स चेद्."
   प्रतिपद्येत:
     fix:
-      1: { a: विधिलिङ् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "would adopt" }
+      1: { a: विधिलिङ् प्रथमपुरुष एकवचन आत्मनेपद कर्तरि, gloss: "would adopt" }
+    note: "पद् is दिवादि आत्मनेपद, so प्रतिपद्येत is active: 'would adopt (this resolve)', not a passive."
   बुद्धिं:
     fix:
       1: { gloss: "resolve, mind" }
@@ -2882,7 +2884,7 @@
   कर्तुमर्हसि:
     fix:
       1: { gloss: "to do, follow" }
-      2: { gloss: "you should" }
+      2: { a: लट् मध्यमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "you should" }
 
 'udyoga-5-49-46':
   पुरा:
@@ -3217,7 +3219,7 @@
   गन्तुमर्हसि:
     split:
       - { form: गन्तुम्, lemma: गम्, a: अव्यय तुमुन्, gloss: "to go (into)" }
-      - { form: अर्हसि, lemma: अर्ह्, a: लट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "you should" }
+      - { form: अर्हसि, lemma: अर्ह्, a: लट् मध्यमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "you should" }
 
 'udyoga-5-58-2':
   दुर्योधन:
