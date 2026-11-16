@@ -381,20 +381,15 @@
     fix:
       1: { gloss: 'then' }
       2: { gloss: 'made, built' }
-  पर्ण:
+  पर्णशालामरिंदम:
     split:
       - { form: पर्ण, lemma: पर्ण, member: true, gloss: 'leaf' }
+      - { form: शालाम्, lemma: शाला, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: 'a hut (पर्णशाला "a hut of leaves")' }
+      - { form: अरिम्, lemma: अरि, member: true, gloss: 'an enemy (अरिंदम keeps the accusative ending inside the compound)' }
+      - { form: दम, lemma: अरिंदम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: 'tamer (अरिंदम "O tamer of foes")', note: 'अरिंदम is an अलुक् compound (अरिम् + दम, 6.3.67 type).' }
     note: >-
       The book prints पर्ण शालामरिं दम apart; the words are पर्णशालाम्
       अरिंदम — "a hut of leaves, O tamer of foes".
-  शालामरिं:
-    split:
-      - { form: शालाम्, lemma: शाला, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: 'a hut (पर्णशाला "a hut of leaves")' }
-      - { form: अरिम्, lemma: अरि, member: true, gloss: 'an enemy (अरिंदम keeps the accusative ending inside the compound)' }
-  दम:
-    split:
-      - { form: दम, lemma: अरिंदम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: 'tamer (अरिंदम "O tamer of foes")' }
-    note: 'The last part of अरिंदम, an अलुक् compound (अरिम् + दम, 6.3.67 type), printed apart.'
 
 '2.51.4':
   ततः:
@@ -1070,22 +1065,18 @@
   पथा:
     fix:
       1: { gloss: 'by the road' }
-  गिरि:
+  गिरिव्रजं:
     split:
       - { form: गिरि, lemma: गिरि, member: true, gloss: 'mountain' }
+      - { form: व्रजम्, lemma: व्रज, a: द्वितीया एकवचन पुंलिङ्ग, gloss: 'a pen, enclosure (गिरिव्रज "Girivraja", the Kekaya capital)' }
     note: >-
       The book prints गिरि व्रजं पुर वरं apart; the words are गिरिव्रजम्
       पुरवरम् — "Girivraja, best of cities", the Kekaya capital (called
       Rājagṛha in 2.62.2).
-  व्रजं:
-    fix:
-      1: { gloss: 'a pen, enclosure (गिरिव्रज "Girivraja", the Kekaya capital)' }
-  पुर:
+  पुरवरं:
     split:
       - { form: पुर, lemma: पुर, member: true, gloss: 'city' }
-  वरं:
-    fix:
-      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'best (पुरवर "the finest of cities")' }
+      - { form: वरम्, lemma: वर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'best (पुरवर "the finest of cities")' }
   शीघ्रमासेदुरञ्जसा:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'quickly' }

@@ -2795,15 +2795,12 @@
   रामं:
     fix:
       1: { gloss: 'Rāma' }
-  कमल:
-    fix:
-      1: { form: कमल, lemma: कमल, member: true, gloss: 'lotus' }
-    note: The edition prints कमल पत्राक्षम् apart, but it is one compound, कमलपत्राक्षम्.
-  पत्राक्षं:
+  कमलपत्राक्षं:
     split:
+      - { form: कमल, lemma: कमल, member: true, gloss: 'lotus' }
       - { form: पत्र, lemma: पत्र, member: true, gloss: 'petal' }
-      - { form: अक्षम्, lemma: अक्ष, a: द्वितीया एकवचन पुंलिङ्ग, gloss: 'eye (कमलपत्राक्ष "with eyes like lotus petals")' }
-    note: अक्षि "eye" becomes अक्ष at the end of a बहुव्रीहि (5.4.113 षच्).
+      - { form: अक्षम्, lemma: अक्ष, a: द्वितीया एकवचन पुंलिङ्ग, gloss: 'eye (कमलपत्राक्ष "with eyes like lotus petals")', note: 'अक्षि "eye" becomes अक्ष at the end of a बहुव्रीहि (5.4.113 षच्).' }
+    note: The edition prints कमल पत्राक्षम् apart, but it is one compound, कमलपत्राक्षम्.
   मन्दं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'slowly (an adverb)' }

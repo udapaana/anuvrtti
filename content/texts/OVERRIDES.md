@@ -55,11 +55,29 @@ keys, the build and the reader all see the corrected word; `text.yaml` itself
 and its IAST line are never edited. The built word carries the source's
 reading as `printed` (and the note as `printedNote`), and the reader's rail
 shows it as a quiet line, "printed: ईशयः". A key that names no word of the
-section, or a `to` that is not one word, fails `bun run check`.
+section, or a `to` that is not one word (or ""), fails `bun run check`.
+
+A word the edition broke in two is joined the same way: the first piece takes
+the whole word and the stray piece is dropped with `to: ""`:
+
+```
+'1.311+3':
+  प्रतिवस: { to: प्रतिवसति, note: The edition breaks प्रतिवसति in two }
+  ति: { to: '', note: The edition breaks प्रतिवसति in two }
+```
+
+A dropped piece's printed reading goes with the word that took its place (the
+corrected word before it, else the corrected word after it, else the word
+before), so the rail shows "printed: प्रतिवस ति"; the dropped piece itself is
+gone from the line and the snapshot. `to: ""` also drops a stray token (a
+character of the source's encoding, a word printed twice). A correction never
+splits one printed word into two.
 
 A correction changes the override key: overrides key the word as the line now
 reads it. After adding corrections, `bun scripts/apply-corrections.ts <id>`
-re-keys the existing overrides (and any "#n" the correction renumbers), then
+re-keys the existing overrides (and any "#n" the correction renumbers), and
+moves a dropped piece's split padas into the word that took its place (a
+dropped piece with a `fix` must be turned into a `split` by hand first), then
 `bun scripts/snapshot-text.ts <id>` re-snapshots the text.
 
 A correction is for a true slip with one right form. An editorial choice, a

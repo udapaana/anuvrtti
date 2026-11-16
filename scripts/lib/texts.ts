@@ -60,8 +60,8 @@ export function readText(id: string): TextSource {
  * content/texts/<id>/corrections.yaml: a slip of the source's typing, put
  * right in the printed line. Keyed by section id, then the word exactly as
  * text.yaml prints it ("#n" for a repeat, as overrides key words). One word
- * becomes one word: a correction never splits or joins words, so the snapshot's
- * word numbering stands. See content/texts/OVERRIDES.md.
+ * becomes one word, or none: `to: ""` drops a printed token — the stray half of
+ * a word the edition broke in two, whose other half takes the whole word. See content/texts/OVERRIDES.md.
  */
 export type Correction = { to: string; note?: string };
 export type Corrections = Record<string, Record<string, Correction>>;
@@ -70,9 +70,14 @@ export function readCorrections(id: string): Corrections {
   return fs.existsSync(f) ? ((parse(fs.readFileSync(f, 'utf-8')) ?? {}) as Corrections) : {};
 }
 /** Apply corrections to a text; what cannot be applied is a problem, not a throw. */
-export function correctText(t: TextSource, c: Corrections): { text: TextSource; problems: string[] } {
+export function correctText(t: TextSource, c: Corrections): {
+  text: TextSource; problems: string[];
+  /** section id → each printed word's index in the corrected section (null: dropped), and the word a dropped one went to */
+  maps: Record<string, { to: (number | null)[]; into: Record<number, number> }>;
+} {
   const problems: string[] = [];
-  if (!Object.keys(c).length) return { text: t, problems };
+  const maps: Record<string, { to: (number | null)[]; into: Record<number, number> }> = {};
+  if (!Object.keys(c).length) return { text: t, problems, maps };
   const byId = new Map(t.sections.map((s) => [s.id, s]));
   for (const sid of Object.keys(c)) if (!byId.has(sid)) problems.push(`${sid}: corrections.yaml names a section the text does not have`);
   const sections = t.sections.map((s) => {
@@ -84,26 +89,58 @@ export function correctText(t: TextSource, c: Corrections): { text: TextSource; 
       const i = keys.indexOf(k);
       const to = typeof v?.to === 'string' ? v.to.trim() : '';
       if (i < 0) problems.push(`${s.id}/${k}: corrections.yaml names no word of the text`);
-      else if (!to || /\s/.test(to)) problems.push(`${s.id}/${k}: corrections.yaml — \`to\` must be one word`);
+      else if (/\s/.test(to)) problems.push(`${s.id}/${k}: corrections.yaml — \`to\` must be one word, or "" to drop it`);
       else if (to === k.replace(/#\d+$/, '')) problems.push(`${s.id}/${k}: corrections.yaml — \`to\` is the printed word`);
       else at.set(i, { to, ...(v.note ? { note: v.note } : {}) });
     }
     if (!at.size) return s;
+    const words = wordsOf(s).map((w) => w.surface);
+    const dropped = (i: number) => at.get(i)?.to === '';
+    /*
+      A dropped word (`to: ""`) is a piece of a word the edition broke in two,
+      or a stray token. Its printed reading goes with the word that takes its
+      place: the word before it, if that word is corrected, else the word after
+      it, if that one is; else the word before.
+    */
+    const into: Record<number, number> = {};
+    for (let d = 0; d < words.length; d++) {
+      if (!dropped(d)) continue;
+      let p = d - 1; while (p >= 0 && dropped(p)) p--;
+      let n = d + 1; while (n < words.length && dropped(n)) n++;
+      const r = p >= 0 && at.has(p) ? p : n < words.length && at.has(n) ? n : p >= 0 ? p : n < words.length ? n : -1;
+      if (r < 0) { problems.push(`${s.id}/${keys[d]}: corrections.yaml drops the section's only word`); continue; }
+      into[d] = r;
+    }
+    const to: (number | null)[] = [];
+    let k = 0;
+    words.forEach((_, i) => to.push(dropped(i) ? null : k++));
+    maps[s.id] = { to, into };
     const printed: NonNullable<Section['printed']> = {};
-    let n = 0;
-    const fix = (l: string) => l.replace(/\S+/g, (w) => {
-      const i = n++;
-      const k = at.get(i);
-      if (!k) return w;
-      printed[i] = { word: w, ...(k.note ? { note: k.note } : {}) };
-      return k.to;
+    words.forEach((w, i) => {
+      if (dropped(i)) return;
+      const pieces = Object.keys(into).map(Number).filter((d) => into[d] === i);
+      if (!at.has(i) && !pieces.length) return;
+      const all = [i, ...pieces].sort((x, y) => x - y);
+      const note = at.get(i)?.note ?? pieces.map((d) => at.get(d)?.note).find(Boolean);
+      printed[to[i]!] = { word: all.map((j) => words[j]).join(' '), ...(note ? { note } : {}) };
     });
+    let n = 0;
     // linesOf trims and wordsOf splits on whitespace, so \S+ counts the same words
+    const fix = (l: string) => {
+      let drop = false;
+      const out = l.replace(/\S+/g, (w) => {
+        const x = at.get(n++);
+        if (!x) return w;
+        if (!x.to) drop = true;
+        return x.to;
+      });
+      return drop ? out.replace(/\s+/g, ' ').trim() : out;
+    };
     const out: Section = s.lines ? { ...s, lines: s.lines.map(fix) } : { ...s, text: fix(s.text ?? '') };
     out.printed = printed;
     return out;
   });
-  return { text: { ...t, sections }, problems };
+  return { text: { ...t, sections }, problems, maps };
 }
 /** A text's corrections that name no word, or are malformed. */
 export const correctionProblems = (id: string) => correctText(readSourceText(id), readCorrections(id)).problems;

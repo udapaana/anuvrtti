@@ -440,11 +440,11 @@ re-snapshotted.
 - 22 an editorial emendation or another edition's reading where the printed
   word is a real form (प्राप्यसे → प्राप्स्यसे, नद्यः → नद्याः);
 - 17 where the right form is two words, or the edition breaks one word in two
-  — a correction is one word for one word, so these wait for a way to join or
-  split printed words: Rāmāyaṇa 2.50.14, 2.62.14, 2.67.2, 6.55.79+1;
-  Bhāgavata 1.19.4, 10.3.8, 10.13.10 (two words), 10.13.13; Mahābhārata
-  adi-1-107-52, adi-1-174-4, drona-7-191-54, bhisma-6-119-66 (two words),
-  shanti-12-91-15; Nītiśataka 74, 87;
+  — a correction was one word for one word. The breaks are joined since (see
+  below); what is left needs one printed word split into two, or is a break
+  tangled with a misprint: Rāmāyaṇa 2.67.2, 6.55.79+1; Bhāgavata 10.3.8;
+  Mahābhārata adi-1-107-52, adi-1-174-4, drona-7-191-54, bhisma-6-119-66;
+  Nītiśataka 74, 87;
 - 12 orthographic conventions or variant spellings (सत्व, किल्विष, सांत्वयामास,
   a sandhi left unmade);
 - 11 the author marked doubtful or a guess;
@@ -454,3 +454,32 @@ re-snapshotted.
 
 The candidates were found by the notes' wording, so a slip whose note says it
 some other way, or that has no note, is not here yet.
+
+**The Pañcatantra, after its audit closed.** The same search and review over
+its overrides (the authors' and the auditors' notes): 498 candidates.
+- *Corrected, 292 words*, of the same kinds — and one stray character of the
+  e-text's encoding (æ, 1.224+32) dropped.
+- *Rejected, 206*: 94 editorial readings where the printed word is a real
+  form (the critical text's, the verse as usually read, a grammatical
+  emendation); 53 notes on grammar or sense, or the edition's free-standing
+  "!" and "?"; 24 conventions or variant spellings (an unmade sandhi, ञ्च for
+  ं); 18 correct sandhi; 10 marked doubtful; 6 that need two words; 1 bad
+  join.
+
+**Broken words joined.** A correction can now drop a printed token (`to: ""`):
+the first piece takes the whole word, the stray piece goes, and its printed
+reading shows with the whole ("printed: प्रतिवस ति"); its override padas move
+into the whole word's (`scripts/apply-corrections.ts`). Joined:
+- Pañcatantra, 11: 1.119+4, 1.248+31, 1.311+3 (प्रतिवस ति, the last problem
+  `bun run check` had), 1.343, 2.18+1, 3.122, 3.215+10, 3.226, 4.7, 4.43+2,
+  5.73+3; and तस्य printed twice at 1.258+5, one dropped.
+- Rāmāyaṇa, 4: 1.75.12, 2.50.14 (three pieces), 2.62.14 (two words).
+- Bhāgavata, 2: 1.19.4, 10.13.10; and 10.13.13, where the space falls in the
+  wrong place, re-divided (विरमत इहानेष्ये) without a drop.
+- Mahābhārata, 1: shanti-12-91-15.
+Not joined: Pañcatantra 1.326, where the break falls across a line and the
+second piece is itself misprinted (नान्यवद्धृष्यन्ति).
+
+Totals in `corrections.yaml`: Mahābhārata 368, Pañcatantra 316, Rāmāyaṇa 61,
+Bhāgavata 31, Nītiśataka 26 entries. `bun run check` passes with no problem in
+any text.
