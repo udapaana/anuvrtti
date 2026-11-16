@@ -402,3 +402,55 @@ Twenty-six ātmanepada perfects still read passive, vidyut offering no active
 reading of them; with the ~70 causative absolutives lacking णिच् (some are
 चुरादि, rightly unmarked), they wait on the lemma convention's harmonising
 pass (TODO.md).
+
+---
+
+## 2026-11-16 · Source slips corrected in the printed line
+
+**Scope.** The Rāmāyaṇa, Bhāgavata and Mahābhārata condensations and the
+Nītiśataka. Not the Pañcatantra, whose overrides were being audited at the
+same time.
+
+**Why.** Where the source mistyped a word, the authors corrected it only in
+the analysis (an override `split` with a note, e.g. Bhāgavata 1.1.4's ईशयः
+split as ऋषयः): the reader still printed the slip. Now
+`content/texts/<id>/corrections.yaml` corrects the printed line, and the
+reader's rail shows the source's reading as "printed: …"
+(`content/texts/OVERRIDES.md`, *Corrections*). `text.yaml` is untouched.
+
+**Method.** Candidates: every override whose note says the source has a slip,
+misprint or typo, reads or prints one word for another, drops an avagraha
+and the like — 602 words with a different form in view. For a `split`, the
+padas joined by the build's sandhi (`scripts/lib/sandhi.ts`, with the next
+word in view for the final sound) gave the proposed form; for a `fix`, it was
+written by hand. Each candidate was read against its note.
+
+**Corrected, 469 words:** Mahābhārata 366, Rāmāyaṇa 52, Nītiśataka 26,
+Bhāgavata 25 — letters dropped, doubled or transposed (राकसः, पार्तः,
+युधिष्ठिष्ठिरे), व/ब, प/ष, म/भ confusions, stray vowel signs (रूपेणि), dropped
+avagrahas (सोभिवाद्य), garbled encodings (रातृईः). Where the edition runs two
+words together, only the slip inside was corrected (धर्मपरंलके →
+धर्मपरंलोके), leaving the run-together for later. The overrides were re-keyed
+to the corrected word (`scripts/apply-corrections.ts`) and the four texts
+re-snapshotted.
+
+**Rejected, 135** — left as override notes, the line as printed:
+- 55 notes on grammar or sense, with no slip in the word (a visarga dropped
+  by sandhi, a construction explained);
+- 22 an editorial emendation or another edition's reading where the printed
+  word is a real form (प्राप्यसे → प्राप्स्यसे, नद्यः → नद्याः);
+- 17 where the right form is two words, or the edition breaks one word in two
+  — a correction is one word for one word, so these wait for a way to join or
+  split printed words: Rāmāyaṇa 2.50.14, 2.62.14, 2.67.2, 6.55.79+1;
+  Bhāgavata 1.19.4, 10.3.8, 10.13.10 (two words), 10.13.13; Mahābhārata
+  adi-1-107-52, adi-1-174-4, drona-7-191-54, bhisma-6-119-66 (two words),
+  shanti-12-91-15; Nītiśataka 74, 87;
+- 12 orthographic conventions or variant spellings (सत्व, किल्विष, सांत्वयामास,
+  a sandhi left unmade);
+- 11 the author marked doubtful or a guess;
+- 10 where the printed form is correct sandhi;
+- 5 metrical licences (आर्ष);
+- 3 where the join was not the right printed form.
+
+The candidates were found by the notes' wording, so a slip whose note says it
+some other way, or that has no note, is not here yet.

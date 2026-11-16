@@ -66,6 +66,9 @@ const files = [path.join(dir, 'overrides.yaml')];
 if (fs.existsSync(path.join(dir, 'overrides'))) files.push(...fs.readdirSync(path.join(dir, 'overrides')).filter((f) => f.endsWith('.yaml')).sort().map((f) => path.join(dir, 'overrides', f)));
 
 const unq = (k: string) => k.replace(/^(["'])(.*)\1$/, '$2');
+// a repeated verse's section can alias another's overrides (`'x#2': *x`): its
+// keys are moved where they are written, under the anchor
+const anchorOf = new Map<string, string>(), aliasOf = new Map<string, string>();
 let n = 0;
 for (const f of files) {
   if (!fs.existsSync(f)) continue;
@@ -73,8 +76,14 @@ for (const f of files) {
   let sec: string | null = null;
   let changed = false;
   for (let i = 0; i < lines.length; i++) {
-    const top = lines[i].match(/^([^\s#][^:]*|"[^"]*"|'[^']*'):\s*$/);
-    if (top) { sec = unq(top[1].trim()); continue; }
+    // a section: `'1.1.4':`, or with an anchor (`&x`) a repeated verse aliases (`*x`)
+    const top = lines[i].match(/^('[^']*'|"[^"]*"|[^\s#'"][^:]*):\s*(?:([&*])(\S+))?\s*$/);
+    if (top) {
+      sec = unq(top[1].trim());
+      if (top[2] === '&') anchorOf.set(top[3], sec);
+      if (top[2] === '*') aliasOf.set(sec, top[3]);
+      continue;
+    }
     if (!sec || !moves[sec]) continue;
     // a word key: two spaces in, as every override file writes them
     const m = lines[i].match(/^ {2}(["']?)([^\s"':][^"':]*?)\1:(\s.*|)$/);
@@ -88,6 +97,9 @@ for (const f of files) {
   }
   if (changed && !dry) fs.writeFileSync(f, lines.join('\n'));
 }
-const want = Object.values(moves).reduce((a, m) => a + m.size, 0);
+const same = (a?: Map<string, string>, b?: Map<string, string>) => !!a && !!b && JSON.stringify([...a]) === JSON.stringify([...b]);
+const want = Object.entries(moves)
+  .filter(([sid, m]) => !(aliasOf.has(sid) && same(m, moves[anchorOf.get(aliasOf.get(sid)!) ?? ''])))
+  .reduce((a, [, m]) => a + m.size, 0);
 console.log(`${id}: ${n} override key(s) ${dry ? 'would move' : 'moved'}${n !== want ? ` — expected ${want}; check by hand` : ''}`);
 if (n !== want) process.exit(1);
