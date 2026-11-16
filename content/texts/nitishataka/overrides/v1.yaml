@@ -99,7 +99,7 @@
 '4':
   प्रसह्य:
     fix:
-      1: { gloss: "by force" }
+      1: { a: अव्यय ल्यप्, gloss: "by force" }
   मणिमुद्धरेन्मकरवक्त्रदंष्ट्रान्तरात्:
     split:
       - { form: मणिम्, lemma: मणि, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "a jewel" }
@@ -125,7 +125,8 @@
       2: { gloss: "even" }
   कोपितं:
     fix:
-      1: { gloss: "angered" }
+      1: { lemma: कोपि, a: द्वितीया एकवचन पुंलिङ्ग क्त, gloss: "angered" }
+    note: "कोपित is the क्त of the causative कोपि (कुप् + णिच्), 'made angry', not of चुरादि कुप् 'to speak'."
   शिरसि:
     fix:
       1: { gloss: "on the head" }
@@ -377,7 +378,7 @@
       - { form: स्थम्, lemma: स्थ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "standing" }
   विलोक्य:
     fix:
-      1: { gloss: "seeing" }
+      1: { a: अव्यय ल्यप्, gloss: "seeing" }
   शङ्कते:
     fix:
       1: { gloss: "is abashed, hesitates" }
@@ -614,6 +615,9 @@
   वनचरैः:
     fix:
       1: { gloss: "forest-dwellers" }
+  सह:
+    fix:
+      1: { gloss: "with" }
   मूर्खजनसम्पर्कः:
     split:
       - { form: मूर्ख, lemma: मूर्ख, member: true, gloss: "foolish" }
@@ -666,6 +670,7 @@
     note: "GRETIL types वसुधादिपस्य for वसुधाधिपस्य."
   कवयस्त्वर्थं:
     fix:
+      1: { gloss: "poets" }
       2: { gloss: "but" }
       3: { gloss: "wealth" }
   विनापीश्वराः:
@@ -704,7 +709,7 @@
       1: { gloss: "within the reach" }
   किमपि:
     fix:
-      1: { gloss: "some" }
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "some" }
       2: { gloss: "(indescribable)" }
   शं:
     fix:
@@ -889,7 +894,7 @@
       1: { gloss: "flowers" }
   नालङ्कृता:
     fix:
-      2: { gloss: "dressed, decked" }
+      2: { lemma: अलंकृ, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "dressed, decked" }
   मूर्धजाः:
     fix:
       1: { gloss: "hair" }
@@ -1028,6 +1033,9 @@
   दुर्जनाः:
     fix:
       1: { gloss: "the wicked" }
+  किमु:
+    fix:
+      2: { gloss: "then (emphatic, with किम्)" }
   धनैर्विद्याऽनवद्या:
     split:
       - { form: धनैः, lemma: धन, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "riches" }
@@ -1293,8 +1301,9 @@
     fix:
       1: { lemma: हरि, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "Hari (Viṣṇu)" }
   सम्प्राप्यते:
-    fix:
-      3: { gloss: "is obtained" }
+    split:
+      - { form: सम्प्राप्यते, lemma: सम्प्राप्, a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "is obtained" }
+    note: "सम् + प्र + आप् + यक्: one passive verb; the preverbs are not separate words."
   देहिना:
     fix:
       1: { gloss: "by an embodied being" }
