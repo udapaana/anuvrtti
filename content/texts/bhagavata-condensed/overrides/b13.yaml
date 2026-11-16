@@ -586,6 +586,9 @@
   मा:
     split:
       - { form: मा, lemma: मा, a: अव्यय, gloss: "not (मा चिरम् 'without delay')" }
+  चिरम्:
+    fix:
+      1: { gloss: "for long (मा चिरम् 'without delay')" }
 
 '11.6.39':
   भगवतादिष्टा:
@@ -1039,7 +1042,7 @@
   वाग्गद्गदा:
     fix:
       1: { gloss: "voice" }
-      2: { lemma: गद्गद, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "faltering, choked" }
+      2: { form: गद्गदा, lemma: गद्गद, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "faltering, choked" }
   द्रवते:
     split:
       - { form: द्रवते, lemma: द्रु, a: लट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "melts" }
@@ -1331,7 +1334,7 @@
   जातश्रद्धस्तु:
     split:
       - { form: जात, lemma: जात, member: true, gloss: "born" }
-      - { form: श्रद्धः, lemma: श्रद्धा, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "faith (जातश्रद्ध 'in whom faith has arisen')" }
+      - { form: श्रद्धः, lemma: श्रद्ध, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "faith (जातश्रद्ध 'in whom faith has arisen')" }
       - { form: तु, lemma: तु, a: अव्यय, gloss: "but" }
     note: "A बहुव्रीहि: the feminine श्रद्धा shortens to -श्रद्ध for the man (1.2.48)."
   पुमान्:
@@ -1675,7 +1678,7 @@
     split:
       - { form: जिज्ञासोः, lemma: जिज्ञासु, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "for one who seeks to know" }
       - { form: ज्ञातव्यम्, lemma: ज्ञा, a: प्रथमा एकवचन नपुंसकलिङ्ग तव्य, gloss: "anything to be known" }
-      - { form: अवशिष्यते, lemma: अवशिष्, a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "remains" }
+      - { form: अवशिष्यते, lemma: अवशिष्, a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि रुधादि, gloss: "remains" }
   पीत्वा:
     fix:
       1: { gloss: "having drunk" }
@@ -1686,6 +1689,9 @@
   पातव्यं:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग तव्य, gloss: "anything to be drunk" }
+  नावशिष्यते:
+    fix:
+      2: { a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि रुधादि, gloss: "remains" }
 
 '11.29.35':
   स:
@@ -1854,7 +1860,7 @@
   बदर्याख्यं:
     split:
       - { form: बदरी, lemma: बदरी, member: true, gloss: "Badarī" }
-      - { form: आख्यम्, lemma: आख्या, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "named (बदर्याख्य 'called Badarī')" }
+      - { form: आख्यम्, lemma: आख्य, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "named (बदर्याख्य 'called Badarī')" }
   ममाश्रमम्:
     split:
       - { form: मम, lemma: अस्मद्, a: षष्ठी एकवचन, gloss: "my" }
@@ -2208,6 +2214,9 @@
       1: { gloss: "went" }
 
 '12.2.12':
+  देहेषु:
+    fix:
+      1: { gloss: "bodies" }
   क्षीयमाणेषु:
     fix:
       1: { a: सप्तमी बहुवचन पुंलिङ्ग शानच् कर्मणि, gloss: "wasting away" }
@@ -2316,6 +2325,7 @@
       1: { a: षष्ठी एकवचन पुंलिङ्ग, gloss: "Viṣṇuyaśas (Kalki's father)" }
   प्रादुर्भविष्यति:
     fix:
+      1: { gloss: "forth, into view" }
       2: { gloss: "will appear (प्रादुर्भू 'to be manifest')" }
 
 '12.2.19':
