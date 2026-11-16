@@ -678,11 +678,9 @@
   /*
     When the selection lands inside a word saṃhitā fused with its neighbour —
     देवोऽत्र is देवः + अत्र, written as one run — this is that written group.
-    Two things read it: the passage shows the group's own padas in place of
-    the fused text while it's selected (independent of the padaccheda
-    toggle, and collapsing again on deselect, same as any other click), and
-    the rail surfaces the group's already-computed combined gloss, which
-    until now only reached the DOM as this span's invisible hover title.
+    The rail reads it for its "in this word" chips, one per pada, each
+    selectable. The line keeps the word as written: rewriting it in place as
+    padas joined by pluses was rejected, and the chips are that breakdown.
   */
   const selFused = $derived.by(() => {
     if (!sel) return null;
@@ -2162,12 +2160,6 @@
           {#if selWord.lemma}
             <span class="wh-stem">← <Sanskrit text={selWord.lemma} source="devanagari" /></span>
           {/if}
-          {#if selFused}
-            <!-- The group's combined gloss was already computed for the title
-                 tooltip on the fused span; selecting it is the one place a
-                 reader is already looking, so it surfaces here too. -->
-            <span class="wh-stem">written together: <Sanskrit text={selFused.gloss} source="devanagari" /></span>
-          {/if}
         </div>
         <!-- (a text's word may carry only vidyut's tags, which are derived) -->
         {#if selWord.terms.length || (textMode && selWord.derivedTerms.length)}
@@ -2224,8 +2216,10 @@
     <!-- ── scrolls: the evidence, always this order ─────────────────────── -->
     <div class="evidence">
 
-      {#if textMode && selFused && selWord}
-        <!-- a text's saṃhitā word is several padas: each one is its own entry -->
+      {#if selFused && selWord}
+        <!-- a word written as several padas: each one is its own entry (this
+             replaces both the plus-joined split the line used to show on
+             selection and the head's "written together" gloss) -->
         {@const fusedTokens = tokensOf(list.find((x) => x.id === selWord.id))}
         <div class="ev">
           <div class="ev-head"><span class="ev-label quiet">in this word</span>
@@ -2566,7 +2560,6 @@
                   {#if w.br}
                     <span class="line-br" aria-hidden="true"></span>
                   {:else if w.isWord}
-                    {@const splitOpen = w.from.length > 1 && sel?.id === row.id && w.from.includes(sel?.ti)}
                     <span
                       class="token"
                       class:hot={w.from.some((i: number) => hl(row.id, i))}
@@ -2577,7 +2570,10 @@
                       onmouseenter={() => enterWord(row.id, w.ti)}
                       onmouseleave={leaveWord}
                       onclick={() => selectToken(row.id, w.ti)}
-                    >{#if splitOpen}{#each w.from as i, pi}{#if pi > 0 && !row.tokens[w.from[pi - 1]].text.endsWith('-')}<span class="split-plus">+</span>{/if}<Sanskrit text={row.tokens[i].text} source="devanagari" />{/each}{:else}<Sanskrit text={w.text} source="devanagari" />{/if}</span>
+                    >
+                      <!-- a word written as several padas stays as written when
+                           selected: the rail's "in this word" chips carry them -->
+                      <Sanskrit text={w.text} source="devanagari" /></span>
                   {:else}
                     <span class="token punct"><Sanskrit text={w.text} source="devanagari" /></span>
                   {/if}
@@ -3660,25 +3656,36 @@
     .railframe.at-peek .wh-legend {
       display: none;
     }
+    /*
+      One line at peek: the form, its gloss, the pull-up and ★ (and ✎). The
+      form never breaks mid-word — a long compound ends in an ellipsis, and the
+      gloss gives way before it does; the buttons keep their size. They used
+      to sit absolutely at the end of the tag row, which a word with few or no
+      tags does not have, and ★ landed on top of "pull up".
+    */
+    .railframe.at-peek .wh-top {
+      flex-wrap: nowrap;
+      align-items: center;
+      min-width: 0;
+    }
     .railframe.at-peek .wh-form {
       font-size: 24px;
+      flex: 0 1 auto;
+      max-width: 45%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      overflow-wrap: normal;
+    }
+    .railframe.at-peek .wh-en.peek {
+      flex: 1 1 0;
     }
     .railframe.at-peek .wh-tags {
       flex-wrap: nowrap;
       overflow: hidden;
-      /* room for both ★ and, when the reader can edit, ✎ beside it: two 26px
-         buttons + their 6px gap, clear of the 18px they sit in from the edge. */
-      padding-right: 86px;
     }
-    /*
-      ★ (and ✎, when it renders) move to the end of the tag row. On the first
-      line the form, its gloss and the pull-up hint already fill 390px, and a
-      44px target crushed into what is left is a target you miss.
-    */
     .railframe.at-peek .wh-acts {
-      position: absolute;
-      right: 18px;
-      bottom: 12px;
+      margin-left: 0;
     }
     .wh-en.peek {
       font-size: 15.5px;
