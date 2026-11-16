@@ -540,12 +540,14 @@ attested reading (`kind: attested`, `source: {text, ref}`) at the tier its
 other grammar allows. Write a sentence only when no attested line will do,
 and treat that as the exception it is.
 
-The texts are pinned like the grammar engine: URL and sha256 in
-`data/texts.json`, fetched into the git-ignored `data/texts/` — currently the
-Rāmāyaṇa, Hitopadeśa, Bhaṭṭikāvya (written to illustrate Pāṇini), five works of
-Kālidāsa and Bhāravi, the Vetāla tales, Daśakumāracarita, Buddhacarita,
-Bhartṛhari's Nītiśataka and the Mahāsubhāṣitasaṃgraha, all from GRETIL. To add one, append it
-to the manifest with its sha256.
+The texts are committed under `data/sources/` and pinned by sha256 in
+`data/texts.json` — currently the Rāmāyaṇa, Hitopadeśa, Bhaṭṭikāvya (written to
+illustrate Pāṇini), five works of Kālidāsa and Bhāravi, the Vetāla tales,
+Daśakumāracarita, Buddhacarita, Bhartṛhari's Nītiśataka, the
+Mahāsubhāṣitasaṃgraha, the Bhāgavata, the Kaṭha and the Pañcatantra, all from
+Ambuda's fork of GRETIL (TEI, read through `scripts/lib/tei.ts`). To add one,
+copy the file into `data/sources/`, append it to the manifest with its `url`
+and sha256, and run `bun run texts`.
 
 ## How a reading reaches the app
 

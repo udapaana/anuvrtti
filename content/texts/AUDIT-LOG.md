@@ -184,3 +184,36 @@ question in several forms and left the words as they were:
   (नमः as noun or अव्यय; तत् in तद्व्यक्तम् as pronoun or adverb).
 One rule for each, written into `docs/AUTHORING.md`, and a pass applying it
 across all whole texts, would close these.
+
+---
+
+## 2026-11-16 · Sources moved to Ambuda's GRETIL fork, and vendored
+
+**Scope.** Every source text, and the four whole texts built from them.
+
+**Done.** GRETIL is closing, so the sources are now committed under
+`data/sources/` and pinned by sha256 in `data/texts.json`: Ambuda's fork of
+GRETIL (`ambuda-org/gretil`, TEI, commit `96e9622`) for the fifteen GRETIL
+texts, plus its Bhāgavata and Krishnacharya's Southern Ayodhyākāṇḍa;
+SARIT's Kumbhakonam Mahābhārata, unchanged; GRETIL's own plain text, kept
+beside each as `archive`; and the OCR of the three condensed books.
+`scripts/lib/tei.ts` reads them all.
+
+**Checked.** Each section of each whole text against Ambuda's TEI, ignoring
+punctuation and spacing:
+- Kaṭha (119 sections), Pañcatantra tale (9), Vetāla (176): every section
+  found verbatim. Only their source references changed: GRETIL line numbers
+  became TEI references (KaU_1.1–6.18, Panc_1.21 …, SoKs_12.8.21–196).
+- Nītiśataka (109): rebuilt from the TEI by `scripts/nitishataka-text.ts`.
+  One word differs from GRETIL: verse 4, where Ambuda corrects मूऋख to
+  मूर्ख. Its override was re-keyed and its note now says so. Ambuda keeps
+  GRETIL's other typos here (विशेषाअतः, सन्त्यजनति …), so their overrides stand.
+- The Mahābhārata matcher (`bun run mbh`) reproduces `selection.json` byte
+  for byte from the vendored copies.
+
+**Found in Ambuda's TEI** (a mass conversion, as GRETIL's was): in the
+Nītiśataka, the first pāda of verses 8, 14, 46 and 48 sits in a `<p>` before
+its verse, and verse 66 is a `<p>` of its own. The TEI reader reports markup
+as it is; the Nītiśataka builder mends these and says so in its header. The
+Pañcatantra has a stray `>` inside a word (`praṇay>atirekād`), outside the
+tale we carry.

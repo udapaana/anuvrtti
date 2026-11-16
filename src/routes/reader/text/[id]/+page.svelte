@@ -375,7 +375,7 @@
       {/each}
 
       <footer class="credit">
-        <p>{text.source.edition}; GRETIL file <code>{text.source.file}</code>, lines {text.source.lines}.</p>
+        <p>{text.source.edition}; source <code>{text.source.file}</code>{#if text.source.ref}, {text.source.ref}{/if}.</p>
         <p>
           Segmentation and analysis by <a href="https://github.com/ambuda-org/vidyut" target="_blank" rel="noopener">vidyut</a>,
           checked and corrected by the editor. Meanings from Monier-Williams, <i>A Sanskrit-English Dictionary</i> (1899),

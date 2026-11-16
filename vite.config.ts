@@ -34,7 +34,7 @@ export default defineConfig({
     strictPort: true,
     // .claude/worktrees holds whole copies of the repo (agents' git worktrees);
     // watching them doubles the work and crashes the server when one is removed
-    watch: { ignored: ['**/.claude/**', '**/data/texts/**', '**/data/vidyut/**'] },
+    watch: { ignored: ['**/.claude/**', '**/data/sources/**', '**/data/vidyut/**'] },
   },
   optimizeDeps: {
     exclude: ["shlesha"],

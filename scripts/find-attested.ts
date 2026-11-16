@@ -23,6 +23,7 @@
  */
 import * as fs from 'fs';
 import * as path from 'path';
+import { readTei, cite } from './lib/tei';
 import { createRequire } from 'module';
 import { typeOf, VIBHAKTI, VACANA, LINGA } from '../src/lib/usage/schema';
 import { typingTermsOf } from '../src/lib/usage/complete';
@@ -43,28 +44,15 @@ const LIMIT = Number(opt('--limit') ?? 5);
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/texts.json'), 'utf-8'));
 type Verse = { title: string; ref: string; text: string; tokens: Set<string> };
 const verses: Verse[] = [];
-const REF = /\b([A-Za-z]+_[0-9][0-9.,a-z]*)/;
 for (const t of manifest.texts) {
-  // a TEI source (the Kumbhakonam Mahābhārata) is not GRETIL plain text; it is
+  // SARIT's Mahābhārata is Devanagari, and this search compares IAST; it is
   // read by its own scripts (scripts/mbh-condensed.ts), not searched here
-  if (t.format === 'tei') continue;
-  const file = path.join(ROOT, 'data/texts', t.slug + '.txt');
-  if (!fs.existsSync(file)) { console.error(`missing ${t.slug} — run bun scripts/fetch-texts.ts`); process.exit(1); }
-  const lines = fs.readFileSync(file, 'utf-8').split('\n');
-  const body = lines.findIndex((l) => /^# Text/.test(l));
-  let buf: string[] = [];
-  lines.slice(body >= 0 ? body + 1 : 0).forEach((line, i) => {
-    const l = line.trim();
-    if (!l) return;
-    const m = l.match(REF);
-    buf.push(l.replace(/\/*\s*\(?[A-Za-z]+_[0-9][0-9.,a-z]*\)?.*$/, '').replace(/[|/]+\s*$/, '').trim());
-    // Prose has no verse numbers: a sentence (ending in /) stands alone.
-    if (m || /\/\s*$/.test(l) || buf.length >= 4) {
-      const text = buf.join(' ').trim();
-      const tokens = new Set(text.toLowerCase().split(/[\s\-–—,.;:!?|/()'"‘’“”]+/).filter(Boolean));
-      if (text) verses.push({ title: t.title, ref: m ? m[1] : `line ${i + 1}`, text, tokens });
-      buf = [];
-    }
+  if (t.via === 'sarit') continue;
+  readTei(t.slug).forEach((b, i) => {
+    if (b.kind === 'head') return;
+    const text = b.lines.join(' ').replace(/[|/।॥]+/g, ' ').replace(/\s+/g, ' ').trim();
+    const tokens = new Set(text.toLowerCase().split(/[\s\-–—,.;:!?|/()'"‘’“”]+/).filter(Boolean));
+    if (text) verses.push({ title: t.title, ref: cite(t.slug, b, i), text, tokens });
   });
 }
 

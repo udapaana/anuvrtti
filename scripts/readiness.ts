@@ -38,10 +38,10 @@ import {
 import { typingTermsOf } from '../src/lib/usage/complete';
 import { finalSound } from '../src/lib/usage/taxonomy';
 import { deaccent } from '../src/lib/usage/normalize';
+import { archiveFile } from './lib/tei';
 import { Engine, analyzeSentence, iastToDeva, slp, type Analysis, type Token } from './analyze-text';
 
 const ROOT = process.cwd();
-const TEXTS = path.join(ROOT, 'data/texts');
 const args = process.argv.slice(2);
 const opt = (k: string) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : undefined; };
 
@@ -184,11 +184,8 @@ function textNeeds(sents: Token[][]): Need[] {
 }
 
 // ── the candidate texts ────────────────────────────────────────────────────
-const read = (slug: string) => {
-  const f = path.join(TEXTS, slug + '.txt');
-  if (!fs.existsSync(f)) throw new Error(`${f} missing — run bun run texts`);
-  return fs.readFileSync(f, 'utf-8');
-};
+// GRETIL's plain text, archived beside the TEI (data/texts.json `archive`)
+const read = (slug: string) => fs.readFileSync(archiveFile(slug)!, 'utf-8');
 const between = (t: string, a: string, b: string) => {
   const i = t.indexOf(a); const j = t.indexOf(b, i);
   if (i < 0 || j < 0) throw new Error(`text markers not found: ${a} … ${b}`);

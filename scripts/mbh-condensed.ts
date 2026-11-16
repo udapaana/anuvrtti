@@ -8,8 +8,8 @@
  * summaries. All we have is archive.org's OCR, which read the English as junk
  * Devanagari and the Sanskrit with damage (श्रुत्वा → शत्वा, lost conjuncts).
  *
- *   1. fetch the OCR into data/texts/ (git-ignored), pinned by sha256 in
- *      data/mbh-condensed.json; the Kumbhakonam TEI must already be there.
+ *   1. read the OCR and the Kumbhakonam TEI, both committed under
+ *      data/sources/ and pinned by sha256 in data/texts.json.
  *   2. keep the OCR lines that look like Sanskrit verse: Devanagari ratio, and
  *      what fraction of their consonant trigrams occur anywhere in the epic.
  *   3. compare lines on a consonant skeleton (vowel signs, anusvāra, virama,
@@ -33,29 +33,20 @@ import * as path from 'path';
 import { createHash } from 'crypto';
 
 const ROOT = process.cwd();
-const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/mbh-condensed.json'), 'utf-8'));
-const CACHE = path.join(ROOT, 'data/texts');
+const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/texts.json'), 'utf-8'));
 const OUT_DIR = path.join(ROOT, 'content/texts/mahabharata-condensed');
 const JOIN = process.argv.includes('--join');
 const sampleN = Number(process.argv[process.argv.indexOf('--sample') + 1]) || 0;
 
-// ── 1. sources ──────────────────────────────────────────────────────────────
-async function source(s: { file: string; url?: string; sha256: string }): Promise<string> {
-  const file = path.join(CACHE, s.file);
-  if (!fs.existsSync(file)) {
-    if (!s.url) { console.error(`missing ${file} — ${manifest.edition.note}`); process.exit(1); }
-    fs.mkdirSync(CACHE, { recursive: true });
-    const res = await fetch(s.url);
-    if (!res.ok) { console.error(`HTTP ${res.status} for ${s.url}`); process.exit(1); }
-    fs.writeFileSync(file, Buffer.from(await res.arrayBuffer()));
-  }
-  const buf = fs.readFileSync(file);
+// ── 1. sources: committed under data/sources/, pinned in data/texts.json ────
+function source(s: { file: string; sha256: string }): string {
+  const buf = fs.readFileSync(path.join(ROOT, s.file));
   const sha = createHash('sha256').update(buf).digest('hex');
   if (sha !== s.sha256) console.warn(`  ! ${s.file}: sha256 differs from the pin — results may not reproduce`);
   return buf.toString('utf-8');
 }
-const ocrText = await source(manifest.ocr);
-const xml = await source(manifest.edition);
+const ocrText = source(manifest.ocr.find((o: { id: string }) => o.id === 'mahabharata-condensed'));
+const xml = source(manifest.texts.find((t: { slug: string }) => t.slug === 'sa_mahAbhArata-kumbhakonam-sarit'));
 
 // ── normalisation ───────────────────────────────────────────────────────────
 const IND: Record<string, string> = { 'आ': 'अ', 'ई': 'इ', 'ऊ': 'उ', 'ऐ': 'ए', 'औ': 'ओ', 'ॠ': 'ऋ' };

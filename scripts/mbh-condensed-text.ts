@@ -11,8 +11,8 @@
  * text.yaml in the same commit as its snapshot.
  *
  * For each selected entry, looks up its sarit_id's actual verse (all <l>
- * lines of that <lg>) in the SARIT Kumbhakonam TEI (data/texts/
- * sa_mahAbhArata-kumbhakonam-sarit.txt, pinned in data/texts.json — run
+ * lines of that <lg>) in the SARIT Kumbhakonam TEI (data/sources/
+ * sa_mahAbhArata-kumbhakonam-sarit.xml, pinned in data/texts.json — run
  * `bun run texts` first if it is missing), strips the daṇḍa/double-daṇḍa the
  * same way the other whole texts do (lines carry none; see the template),
  * and transliterates to IAST with shlesha, the same library analyze-text.ts
@@ -47,13 +47,13 @@ initSync({ module: fs.readFileSync(require.resolve('shlesha/shlesha_bg.wasm')) }
 const tr = (s: string, a: string, b: string) => transliterate(s, a, b) as string;
 
 const SEL_DIR = path.join(ROOT, 'content/texts/mahabharata-condensed');
-const TEI_PATH = path.join(ROOT, 'data/texts/sa_mahAbhArata-kumbhakonam-sarit.txt');
+const TEI_PATH = path.join(ROOT, 'data/sources/sa_mahAbhArata-kumbhakonam-sarit.xml');
 const args = process.argv.slice(2);
 const limit = Number(args[args.indexOf('--limit') + 1]) || 0;
 const outName = limit ? 'text.sample.yaml' : 'text.draft.yaml';
 
 if (!fs.existsSync(TEI_PATH)) {
-  console.error(`missing ${TEI_PATH} — run \`bun run texts\` first (data/texts.json, slug sa_mahAbhArata-kumbhakonam-sarit)`);
+  console.error(`missing ${TEI_PATH} — it is committed; check out data/sources/ (data/texts.json, slug sa_mahAbhArata-kumbhakonam-sarit)`);
   process.exit(1);
 }
 const xml = fs.readFileSync(TEI_PATH, 'utf-8');

@@ -26,7 +26,7 @@
  *
  * NOT COMMITTED. mw.txt is 50 MB and the projection ~14 MB; both live in the
  * git-ignored cache data/mw/, rebuilt by running this script (it fetches the
- * pinned file when absent). Like data/texts/, pinned rather than vendored.
+ * pinned file when absent). Pinned rather than vendored (unlike data/sources/).
  *
  *   bun scripts/import-mw-gloss.ts      → data/mw/gloss.tsv
  *

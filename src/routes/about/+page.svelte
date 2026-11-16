@@ -166,12 +166,24 @@
         these texts, are shared under the same licence. Each word links to its full entry.
       </dd>
 
-      <dt>GRETIL</dt>
+      <dt>GRETIL, through Ambuda</dt>
       <dd>
-        the texts themselves (the Pañcatantra in Jha's edition) come from the
+        the texts themselves (the Kaṭha Upaniṣad, the Pañcatantra in Jha's edition, the Vetāla
+        tales, Bhartṛhari's Nītiśataka) were entered for the
         <a href="https://gretil.sub.uni-goettingen.de/" target="_blank" rel="noopener noreferrer"
           >Göttingen Register of Electronic Texts in Indian Languages</a
-        >, CC BY-NC-SA 4.0 per their headers
+        >, CC BY-NC-SA 4.0 per their headers, and are read from
+        <a href="https://github.com/ambuda-org/gretil" target="_blank" rel="noopener noreferrer"
+          >Ambuda's corrected edition</a
+        > of that corpus. A copy of every source is kept in this project's repository.
+      </dd>
+
+      <dt>SARIT</dt>
+      <dd>
+        the Mahābhārata in the Kumbhakonam edition (the Southern recension), from the
+        <a href="https://github.com/sarit/SARIT-corpus" target="_blank" rel="noopener noreferrer"
+          >SARIT corpus</a
+        >, CC BY-SA 3.0
       </dd>
     </dl>
   </section>

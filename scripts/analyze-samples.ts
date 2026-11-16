@@ -15,16 +15,14 @@
  */
 import * as fs from 'fs';
 import * as path from 'path';
+import { archiveFile } from './lib/tei';
 import { Engine, analyzeSentence, iastToDeva, type Token, type Analysis } from './analyze-text';
 
 const ROOT = process.cwd();
-const TEXTS = path.join(ROOT, 'data/texts');
 const OUT = path.join(ROOT, 'static/data/analyses');
-const read = (slug: string) => {
-  const f = path.join(TEXTS, slug + '.txt');
-  if (!fs.existsSync(f)) throw new Error(`${f} missing — run bun run texts`);
-  return fs.readFileSync(f, 'utf-8');
-};
+// GRETIL's plain text, archived beside the TEI (data/texts.json `archive`): the
+// samples were cut from it, so they are cut from it still
+const read = (slug: string) => fs.readFileSync(archiveFile(slug)!, 'utf-8');
 
 /** GRETIL plaintext (IAST) → sentences of Devanagari saṃhitā. */
 function pancatantra(): string[] {

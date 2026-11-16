@@ -17,10 +17,10 @@ India, `dli.ernet.242274`). It read the English as junk Devanagari and the
 Sanskrit with damage. `bun run mbh` (`scripts/mbh-condensed.ts`) rebuilds the
 file:
 
-1. fetches the OCR into the git-ignored `data/texts/`, pinned by sha256 in
-   `data/mbh-condensed.json` (not in `data/texts.json`, which `find-attested`
-   searches); the SARIT TEI must already be at
-   `data/texts/sa_mahAbhArata-kumbhakonam-sarit.txt`;
+1. reads the OCR (`data/sources/ocr/mahabharata-condensed.txt`) and the SARIT
+   TEI (`data/sources/sa_mahAbhArata-kumbhakonam-sarit.xml`), both committed and
+   pinned by sha256 in `data/texts.json` (the OCR under `ocr`, which
+   `find-attested` does not search);
 2. keeps OCR lines that look like verse — mostly Devanagari letters, and most
    consonant trigrams known to the epic;
 3. compares on a consonant skeleton (vowel signs, anusvāra, virāma and

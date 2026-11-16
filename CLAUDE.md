@@ -54,8 +54,9 @@ addressed as हे मधु) comes out, and `--want` records it in
 carries it again.
 
 Low tiers are written; **from tier 200 up, look for an attested line first**
-— `bun run texts` fetches the pinned source texts (`data/texts.json`, cached
-in the git-ignored `data/texts/`), `bun run attested -- --form X` / `--cell` /
+— the source texts are committed under `data/sources/` (Ambuda's GRETIL fork,
+SARIT, the condensed books' OCR; pinned in `data/texts.json`, verified by `bun
+run texts`), and `bun run attested -- --form X` / `--cell` /
 `--wanted` finds where an author used a form. See *Examples by example* in
 `docs/AUTHORING.md`.
 
