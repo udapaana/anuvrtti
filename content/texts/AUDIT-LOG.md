@@ -71,3 +71,116 @@ parallel passes the same day), plus the build code that resolves overrides.
 - 1,216 of 2,743 padas carried vidyut's analysis unchanged, and nothing
   recorded whether an author had looked at them.
 - Verse 71.
+
+---
+
+## 2026-11-16 · Nītiśataka, second audit: every unreviewed pada
+
+**Scope.** Every pada whose analysis was still vidyut's own, which no author
+had confirmed or changed — 1,236 padas, nearly half the text.
+
+**Method.** One worklist per override file (v1–v4), listing each such pada
+with its verse. Four reviewers, each confined to its range and its file,
+judged every pada in context — case, number, gender, person, tense, voice,
+lemma, gloss — and corrected only what was wrong. Then the snapshot was
+rebuilt and `bun run check` and `npm run build` passed.
+
+**Found.** 69 corrections in 1,236 padas (5.6%): about 30 wrong analyses —
+genders that did not agree (येन, तस्मै with कर्मणे; तेन with पयसा),
+wrong stems (सूर्यः read as feminine सूरी, पुरम् as पुर्, महताम् as
+feminine महता, मा as a form of अस्मद्), क्त्वा for ल्यप् after a preverb —
+and about 40 glosses where Monier-Williams's first sense is not the sense
+here (किल "play, trifling", रिपुः "deceitful", शीलम् "habit, custom").
+After this pass every pada in the text has been read by a reviewer; the
+1.5% morphology rate of the first sample now stands for the remainder.
+
+**Also decided.**
+- Verse 71: GRETIL's दूरावलम्बिनो breaks the वंशस्थ; emended to the vulgate's
+  भूरिविलम्बिनः, as 72, 74 and 109 were on metrical grounds. The edition's
+  text stays in text.yaml; the overrides carry the reading, with a note.
+- Verse 38: गम्यताम् is भावे (impersonal; गम् takes no object), not कर्मणि.
+
+**Fixed.** Each line: verse | word | was | now | why.
+
+- 4 | प्रसह्य | अव्यय क्त्वा | अव्यय ल्यप् | preverb प्र selects ल्यप्
+- 4 | कोपितं | lemma कुप् (चुरादि 'speak') क्त | lemma कोपि, द्वितीया एकवचन पुंलिङ्ग क्त | causative कुप्+णिच् 'made angry'
+- 9 | विलोक्य | अव्यय क्त्वा | अव्यय ल्यप् | preverb वि selects ल्यप्
+- 14 | सह | gloss "powerful, mighty" | gloss "with" | postposition with वनचरैः
+- 15 | कवयस्त्वर्थं (1) | gloss "gifted with insight…" | gloss "poets" | noun, not adjective
+- 16 | किमपि (1) | किम् अव्यय | द्वितीया एकवचन नपुंसकलिङ्ग | agrees with शं, object of पुष्णाति
+- 19 | नालङ्कृता (2) | lemma अलंकृत, प्रथमा बहुवचन पुंलिङ्ग | lemma अलंकृ, … क्त | participle, as संस्कृता
+- 21 | किमु (2) | gloss "the fifth letter…" | gloss "then (emphatic, with किम्)" | particle उ, not the letter
+- 25 | सम्प्राप्यते | सम् / प्र / आप्यते (lemma आप्) | one pada, lemma सम्प्राप्, लट् … कर्मणि | preverbs split off; lemma keeps preverb
+- 28 | महतां | महता, द्वितीया एकवचन स्त्रीलिङ्ग, "greatness" | महत्, षष्ठी बहुवचन पुंलिङ्ग, "of the great" | gen. pl. of महत्, not a fem. noun
+- 32 | परिवर्तिनि | सम्बोधन एकवचन स्त्रीलिङ्ग | सप्तमी एकवचन पुंलिङ्ग | agrees with संसारे
+- 32 | याति | gloss "going; a car" (mw) | "goes to, attains" | finite verb, MW noun gloss
+- 33 | द्वयी | lemma द्वयी | lemma द्वय | fem. of द्वय; stem is the masc. base
+- 35 | महतां | महता, द्वितीया एकवचन स्त्रीलिङ्ग | महत्, षष्ठी बहुवचन पुंलिङ्ग | gloss had been fixed, analysis not
+- 39 | मृतस्य | मृत, षष्ठी एकवचन नपुंसकलिङ्ग | मृ, षष्ठी एकवचन पुंलिङ्ग क्त | the dead man; matches मृतः in 32
+- 40 | भवतीति (1) | gloss "to become, be, arise…" (mw) | "becomes" | sense in context
+- 46 | तेनाद्य (1) | तृतीया एकवचन पुंलिङ्ग | तृतीया एकवचन नपुंसकलिङ्ग | तेन "therefore" is neuter instr.
+- 47 | परुषा | lemma परुषा | lemma परुष | fem. adj., masc. base as stem
+- 47 | हिंस्रा | lemma हिंस्रा | lemma हिंस्र | fem. adj., masc. base as stem
+- 48 | प्रवृत्ताः | प्रवृत्ता, प्रथमा बहुवचन स्त्रीलिङ्ग | प्रवृत्, प्रथमा बहुवचन पुंलिङ्ग क्त | agrees with षड्गुणाः
+- 49 | पयोनिधावपि (2) | gloss "or" | "even" | अपि, "even in the ocean"
+- 51 | मा | अस्मद्, द्वितीया एकवचन | मा, अव्यय | prohibitive particle with ब्रूहि
+- 54 | स्थिरे | स्थिरा, प्रथमा द्विवचन स्त्रीलिङ्ग | स्थिर, सप्तमी एकवचन पुंलिङ्ग | "in the steady man", like शूरे, मुनौ
+- 38 | गम्यताम् | कर्मणि | भावे | intransitive गम्: impersonal, not passive (checked against the schema's PRAYOGA)
+- 55 | सत्यं | gloss "true, real…" | gloss "truth" | noun here: if there is truth
+- 57 | जुह्वानं | द्वितीया एकवचन पुंलिङ्ग चानश् | द्वितीया एकवचन पुंलिङ्ग शानच्, gloss "offering (oblations)" | हु आत्मनेपद participle is शानच्, not चानश्
+- 57 | स्पृष्टो | gloss "to touch…" | gloss "touched" | participle, not the root
+- 60 | दिनस्य | षष्ठी एकवचन पुंलिङ्ग | षष्ठी एकवचन नपुंसकलिङ्ग | दिनम् n.; matches rd096
+- 64 | केनोद्दिष्टं (1) | gloss "what? how?…" | gloss "by whom" | केन instrumental agent
+- 68 | हितमिच्छति (2) | gloss "to seek, search, : 4. and 9…" | gloss "wishes, desires" | garbled MW gloss; sense here
+- 71 | नवाम्बुभिर्दूरावलम्बिनो | दूर + अवलम्बिनः (edition kept) | भूरि + विलम्बिनः (lemma विलम्बिन्) | emended to vulgate; GRETIL breaks the वंशस्थ
+- 75 | ते | gloss "he she it, that, this" | gloss "they" | context
+- 75 | के | gloss "what? how? whence?…" | gloss "who" | masc. pl. interrogative
+- 76 | तेन | तृतीया एकवचन पुंलिङ्ग | तृतीया एकवचन नपुंसकलिङ्ग, gloss "that" | agrees with पयसा (n.)
+- 76 | तेन#2 | तृतीया एकवचन पुंलिङ्ग | तृतीया एकवचन नपुंसकलिङ्ग, gloss "that" | agrees with जलेन (n.)
+- 76 | सतां | gloss "being, existing…" | gloss "of the good" | सत् as noun, the good
+- 83 | प्रभवितुर्धर्मस्य (2) धर्मस्य | gloss "steadfast decree, statute" (mw) | gloss "of righteousness" | MW first sense wrong in context
+- 83 | शीलं | gloss "habit, custom, usage" (mw) | gloss "good character" | sense in context
+- 85 | कृत्वाखुर्विवरं (1) कृत्वा | gloss "to do, make, perform…" (mw) | "having made" | gloss for the absolutive
+- 85 | कृत्वाखुर्विवरं (3) विवरम् | द्वितीया एकवचन पुंलिङ्ग | द्वितीया एकवचन नपुंसकलिङ्ग | विवर is neuter
+- 86 | मनुष्याणां | gloss "human, manly" (mw) | "of men" | noun, not adjective
+- 86 | महान्रिपुः (1) महान् | gloss long mw list | "great" | trim to sense
+- 86 | महान्रिपुः (2) रिपुः | gloss "deceitful, treacherous" (mw) | "an enemy" | wrong sense
+- 86 | बन्धुः | gloss "connection, relation" (mw) | "friend, kinsman" | wrong sense
+- 87 | सन्तः | lemma सन्त, प्रथमा एकवचन पुंलिङ्ग | lemma सत्, प्रथमा बहुवचन पुंलिङ्ग | plural of सत्, agrees with सन्तप्यन्ते
+- 87 | रोहति | gloss "to ascend, mount" (mw) | "grows again" | sense in context (tree)
+- 87 | पुनश्चन्द्रः (2) चन्द्रः | gloss "glittering, shining" (mw) | "the moon" | noun sense
+- 87 | दुःखेषु | gloss "uneasy, uncomfortable" (mw) | "in sorrows" | noun, not adjective
+- 88 | यस्य | gloss "who, which, what…" (mw) | "whose" | genitive gloss
+- 88 | किल | gloss "play, trifling" (mw) | "indeed, as is known" | particle, not noun
+- 88 | तद्व्यक्तं (1) तत् | प्रथमा एकवचन नपुंसकलिङ्ग, gloss "he she it" | अव्यय, "so, therefore" | adverbial तत्
+- 88 | तद्व्यक्तं (2) व्यक्तम् | द्वितीया एकवचन पुंलिङ्ग | प्रथमा एकवचन नपुंसकलिङ्ग | predicate "it is clear"
+- 89 | सुविचार्यैव (1) सुविचार्य | lemma सुविचार्य, अव्यय | lemma विचर्, अव्यय ल्यप् | ल्यप् absolutive (वि + चर् णिच्)
+- 90 | यान्त्यापदः (1) यान्ति | gloss "going; a car" (mw) | "go, come" | verb, not noun
+- 91 | विलोक्य | अव्यय क्त्वा | अव्यय ल्यप् | prefixed root takes ल्यप्
+- 93 | क्षमः | lemma क्षम्, प्रथमा बहुवचन स्त्रीलिङ्ग | lemma क्षम, प्रथमा एकवचन पुंलिङ्ग | agrees with कः
+- 95 | येन | तृतीया एकवचन पुंलिङ्ग, gloss mw | तृतीया एकवचन नपुंसकलिङ्ग, "by which" | refers to कर्मन् (n.)
+- 95 | विष्णुर्येन (2) येन | तृतीया एकवचन पुंलिङ्ग | तृतीया एकवचन नपुंसकलिङ्ग | refers to कर्मन् (n.)
+- 95 | येन#2 | तृतीया एकवचन पुंलिङ्ग | तृतीया एकवचन नपुंसकलिङ्ग | refers to कर्मन् (n.)
+- 95 | सूर्यो | lemma सूरी, प्रथमा बहुवचन स्त्रीलिङ्ग | lemma सूर्य, प्रथमा एकवचन पुंलिङ्ग | wrong stem
+- 95 | तस्मै | चतुर्थी एकवचन पुंलिङ्ग | चतुर्थी एकवचन नपुंसकलिङ्ग | agrees with कर्मणे
+- 96 | काले | lemma काला, प्रथमा द्विवचन स्त्रीलिङ्ग | lemma काल, सप्तमी एकवचन पुंलिङ्ग | "in time"
+- 98 | मा | lemma अस्मद्, द्वितीया एकवचन | lemma मा, अव्यय | prohibitive particle with कृथाः
+- 99 | गुणवदगुणवद्वा (1) गुणवत् | प्रथमा एकवचन नपुंसकलिङ्ग | द्वितीया एकवचन नपुंसकलिङ्ग | agrees with object कार्यजातम्
+- 99 | गुणवदगुणवद्वा (2) अगुणवत् | प्रथमा एकवचन नपुंसकलिङ्ग | द्वितीया एकवचन नपुंसकलिङ्ग | agrees with object कार्यजातम्
+- 102 | पुरं | lemma पुर्, द्वितीया एकवचन स्त्रीलिङ्ग | lemma पुर, प्रथमा एकवचन नपुंसकलिङ्ग | predicate nominative with भवति
+- 102 | यस्यास्ति (2) अस्ति | gloss "to be, live, exist…" (mw) | "is, there is" | trim to sense
+- 105 | कृतस्य | lemma कृत, षष्ठी एकवचन पुंलिङ्ग | lemma कृ, … क्त | participle of कृ
+- 109 | स्वाम् | lemma स्वा | lemma स्व | stem is स्व
+
+**Still open — conventions, not errors.** The reviewers met the same
+question in several forms and left the words as they were:
+- *Derived verbs.* A causative is filed now under its stem (विलोकि, संकोचि,
+  कोपि), now under the root (वृ for वारयितुम्, अवधृ for अवधार्या).
+- *Past participles.* Some under the participle (हुत, जात, उद्दिष्ट), some
+  under the root with क्त (अलंकृ, कृ).
+- *Prefixed lemmas.* The text keeps the preverb (प्राप्, सम्प्राप्); the graded
+  reader uses the bare root (आप्). A learner moving between them sees both.
+- *Two-gendered nouns* (दिन, पार्श्व) and readings where both are defensible
+  (नमः as noun or अव्यय; तत् in तद्व्यक्तम् as pronoun or adverb).
+One rule for each, written into `docs/AUTHORING.md`, and a pass applying it
+across all whole texts, would close these.
