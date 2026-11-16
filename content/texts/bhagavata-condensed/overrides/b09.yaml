@@ -1,8 +1,5 @@
 # Bhāgavata condensed, 10.2.5–10.12.2 (batch b09). Format: see the header of
 # content/texts/pancatantra-kilotpatin/overrides.yaml.
-# "अम्प्;" in this stretch is the edition's "&amp;" (a verse-half mark in its
-# markup) transliterated as if it were Sanskrit: it is no word, and each
-# occurrence is split into nothing.
 
 '10.2.5':
   बभूव:
@@ -118,7 +115,7 @@
   शेषाख्यं:
     split:
       - { form: शेष, lemma: शेष, member: true, gloss: "Śeṣa" }
-      - { form: आख्यम्, lemma: आख्या, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "name (शेषाख्य 'called Śeṣa')" }
+      - { form: आख्यम्, lemma: आख्य, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "name (शेषाख्य 'called Śeṣa')" }
   धाम:
     fix:
       1: { gloss: "portion, manifestation" }
@@ -128,7 +125,7 @@
   तत्सन्निकृष्य:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "it" }
-      2: { gloss: "drawing out" }
+      2: { gloss: "drawing out", a: अव्यय ल्यप् }
   रोहिण्या:
     fix:
       1: { a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "Rohiṇī" }
@@ -188,7 +185,7 @@
       - { form: वचः, lemma: वचस्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "word, command" }
   प्रतिगृह्य:
     fix:
-      1: { gloss: "accepting" }
+      1: { gloss: "accepting", a: अव्यय ल्यप् }
   परिक्रम्य:
     fix:
       1: { lemma: परिक्रम्, a: अव्यय ल्यप्, gloss: "walking round (him) reverently" }
@@ -265,7 +262,7 @@
       2: { gloss: "who is the very Self" }
   काष्ठा:
     fix:
-      1: { lemma: काष्ठा, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "a quarter of the sky (the east)" }
+      1: { lemma: काष्ठा, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "a quarter of the sky (the east)", form: काष्ठा }
   यथानन्दकरं:
     fix:
       2: { gloss: "the joy-maker (the moon)" }
@@ -337,11 +334,10 @@
   भवनं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "the house" }
-  शुचिस्मितामम्प्;:
+  शुचिस्मिताम्:
     split:
       - { form: शुचि, lemma: शुचि, member: true, gloss: "bright" }
       - { form: स्मिताम्, lemma: स्मित, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "smile (शुचिस्मिता 'brightly smiling')" }
-    note: "शुचिस्मिताम् with the edition's \"&amp;\" fused to it (अम्प्;), which is no word and is dropped."
   आहैष:
     fix:
       1: { gloss: "said" }
@@ -862,11 +858,10 @@
   समादाय:
     fix:
       1: { a: अव्यय ल्यप्, gloss: "taking up" }
-  सूतिकागृहातम्प्;:
+  सूतिकागृहात्:
     split:
       - { form: सूतिका, lemma: सूतिका, member: true, gloss: "a woman lately delivered" }
       - { form: गृहात्, lemma: गृह, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "house (सूतिकागृह 'the lying-in chamber')" }
-    note: "सूतिकागृहात् with the edition's \"&amp;\" fused to it (अम्प्;), which is no word and is dropped."
   बहिर्गन्तुमियेष:
     fix:
       1: { gloss: "out" }
@@ -2582,10 +2577,9 @@
       2: { gloss: "from there" }
       3: { a: अव्यय ल्यप्, gloss: "climbing down" }
       4: { gloss: "ran off" }
-  भीतवतम्प्;:
+  भीतवत्:
     split:
       - { form: भीतवत्, lemma: भीतवत्, a: अव्यय, gloss: "as if afraid" }
-    note: "भीतवत् with the edition's \"&amp;\" fused to it (अम्प्;), which is no word and is dropped."
   गोप्यन्वधावन्न:
     fix:
       1: { gloss: "the cowherdess" }
