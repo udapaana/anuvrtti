@@ -50,7 +50,7 @@ the small thing it emits:
 | `data/mw/` (git-ignored) | Monier-Williams senses, csl-orig pinned by commit + sha256 (CC BY-SA 4.0) | **pinned, not vendored**: `scripts/import-mw-gloss.ts` fetches `mw.txt` and writes `gloss.tsv`. Build-time input to `analyze-text.ts` only |
 | `data/vidyut/` (git-ignored) | vidyut-cheda + vidyut-kosha, native, at `VIDYUT_REV`, plus vidyut's `data-0.4.0.zip` (sha256-checked) | `scripts/build-vidyut-native.sh`. Machine annotation of whole texts (`scripts/analyze-text.ts`); see `docs/AUTO-ANNOTATION-EVAL.md`. Never shipped |
 
-| `data/text-analyses/<id>.json` (committed) | vidyut's analysis of a whole text in `content/texts/<id>/` | `scripts/snapshot-text.ts`, **local only**. A snapshot, not a cache — see *Whole texts* below |
+| `data/text-analyses/<id>/<part>.json` (committed) | vidyut's analysis of a whole text in `content/texts/<id>/`, one file per part | `scripts/snapshot-text.ts`, **local only**. A snapshot, not a cache — see *Whole texts* below |
 
 Machine-annotation output (`static/data/analyses/`, from `analyze-text.ts`,
 `analyze-samples.ts` and `eval-auto-annotation.ts`) is generated and
@@ -93,8 +93,9 @@ Three files, one of each kind, and one generated payload:
 |---|---|---|
 | `content/texts/<id>/text.yaml` | authored | the text verbatim: sections in order, Devanagari saṃhitā, GRETIL's IAST line kept for audit |
 | `content/texts/<id>/overrides.yaml` | authored | the author's decisions **only**: a corrected segmentation (`split`, compound members marked `member`), a chosen or supplied analysis (`fix`), a gloss in context, notes. Keyed by section id + surface word, so regenerating keeps them |
-| `data/text-analyses/<id>.json` | snapshot (committed) | what vidyut said: every word's padas, every analysis the kosha holds (one line each), vidyut's own pick, the kosha's entries for every pada an author split out, and MW's entry for every lemma any of it names |
-| `static/data/texts/` | generated | `build-texts.ts` (in `build:data`): snapshot + overrides → the reader's payload, with a paradigm for each inflected word from the committed vidyut-prakriya WASM |
+| `data/text-analyses/<id>/<part>.json` | snapshot (committed), one file per part | what vidyut said: every word's padas, every analysis the kosha holds (one line each), vidyut's own pick, the kosha's entries for every pada an author split out, and MW's entry for every lemma any of it names |
+| `static/data/texts/` | generated | `build-texts.ts` (in `build:data`): snapshot + overrides → the reader's payload, with a paradigm for each inflected word from the committed vidyut-prakriya WASM. `index.json` lists the texts; each text is `<id>/index.json` (metadata and parts) and `<id>/<part>.json` (a part's sections and only the paradigms they light). The reader loads one part at a time; downloads come in three sizes (text, part, section) |
+| *parts* | authored rule | `partsOf` in `scripts/lib/texts.ts`: `parts:` in `text.yaml` if given, else one part per section-id prefix (a vallī, a sarga), else the whole text. `part_label:` names them. The same parts split the snapshot, so no committed file grows with the text |
 
 **Why the snapshot is committed rather than built in CI.** The two options
 were (a) commit vidyut's output and check it for staleness, as

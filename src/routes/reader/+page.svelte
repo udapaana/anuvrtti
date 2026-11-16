@@ -2275,8 +2275,8 @@
             <span class="label">chapter</span>
             <span class="ch-dev"><Sanskrit text={row.dev} source="devanagari" /></span>
             <span class="ch-en"><Sanskrit text={row.en} source="devanagari" /></span>
-            <SaveControls kind="chapter" id={row.chId} filename={`${row.chId}.html`}
-              html={() => chapterToHtml({ id: row.chId, dev: row.dev, en: row.en }, list.filter((r) => r.chapter === row.chId))} />
+            <SaveControls kind="chapter" id={row.chId} downloads={[{ label: 'chapter', filename: `${row.chId}.html`,
+              html: () => chapterToHtml({ id: row.chId, dev: row.dev, en: row.en }, list.filter((r) => r.chapter === row.chId)) }]} />
           </div>
         {:else}
           <article

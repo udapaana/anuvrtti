@@ -2,7 +2,7 @@
 /**
  * snapshot-text.ts — run vidyut over a whole text and commit what it says.
  *
- *   bun scripts/snapshot-text.ts [<id> …]     → data/text-analyses/<id>.json
+ *   bun scripts/snapshot-text.ts [<id> …]     → data/text-analyses/<id>/<part>.json
  *   bun scripts/snapshot-text.ts --check      regenerate in memory, fail on any difference
  *
  * LOCAL ONLY. It needs the native engine and the MW cache, neither of which CI
@@ -22,7 +22,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Engine, analyzeSentence, analyzeWord, gloss, slp, type Token } from './analyze-text';
 import {
-  SNAP_DIR, textIds, readText, readOverrides, linesOf, wordsOf, inputsOf, snapPath,
+  SNAP_DIR, textIds, readText, readOverrides, linesOf, wordsOf, inputsOf, snapPath, snapDir, partsOf,
   encodeA, type Snapshot, type SnapWord, type Analysis
 } from './lib/texts';
 
@@ -55,11 +55,21 @@ export function overrideLemmas(id: string): string[] {
 /** How many of vidyut's ranked alternatives a snapshot keeps per pada. */
 const MAX_ALTS = 12;
 
-async function snapshot(engine: Engine, id: string): Promise<Snapshot> {
+/** What each section draws on, so each part's file carries only its own lexicon and kosha. */
+type Uses = Record<string, { lemmas: Set<string>; forms: Set<string> }>;
+
+async function snapshot(engine: Engine, id: string): Promise<Snapshot & { uses: Uses }> {
   const t = readText(id);
+  const ov = readOverrides(id);
   const sections: Snapshot['sections'] = [];
   const lemmas = new Set<string>();
+  const uses: Uses = {};
   for (const s of t.sections) {
+    const use = (uses[s.id] = { lemmas: new Set<string>(), forms: new Set<string>() });
+    for (const w of Object.values(ov[s.id] ?? {})) {
+      for (const p of [...(w.split ?? []), ...Object.values(w.fix ?? {})]) for (const l of [p.lemma, p.root]) if (l) use.lemmas.add(slp(l));
+      for (const p of w.split ?? []) if (p.form && !p.member) use.forms.add(kfKey(p.form));
+    }
     const words: SnapWord[] = wordsOf(s).map((w) => ({ ...w, padas: [] }));
     let base = 0;
     for (const [li, line] of linesOf(s).entries()) {
@@ -70,7 +80,9 @@ async function snapshot(engine: Engine, id: string): Promise<Snapshot> {
         // a pada cheda produced but could not place goes with the word before it
         const wi = tk.word !== undefined && tk.word >= 0 ? tk.word : last;
         last = wi;
-        tk.alts.forEach((a) => { lemmas.add(a.lemma_slp1); if (a.lemma_full) lemmas.add(slp(a.lemma_full)); });
+        tk.alts.forEach((a) => {
+          for (const l of [a.lemma_slp1, a.lemma_full && slp(a.lemma_full)]) if (l) { lemmas.add(l); use.lemmas.add(l); }
+        });
         /*
           Only the top alternatives are kept: one pada (ये) had 116, and at ~5 KB
           a word a long text's snapshot would run to tens of MB. They arrive
@@ -94,11 +106,15 @@ async function snapshot(engine: Engine, id: string): Promise<Snapshot> {
   // the word and only cut the chunk wrong, the author's pada is a pick, and
   // inherits the engine's whole analysis (root, गण — what a paradigm needs)
   const kosha: Snapshot['kosha'] = {};
+  const koshaLemmas: Record<string, string[]> = {};
   for (const f of splitForms(id)) {
     const tk = await analyzeWord(engine, f);
-    tk.alts.forEach((a) => { lemmas.add(a.lemma_slp1); if (a.lemma_full) lemmas.add(slp(a.lemma_full)); });
+    koshaLemmas[f] = tk.alts.flatMap((a) => [a.lemma_slp1, ...(a.lemma_full ? [slp(a.lemma_full)] : [])]);
+    koshaLemmas[f].forEach((l) => lemmas.add(l));
     kosha[f] = [...new Set(tk.alts.map(enc))];
   }
+  // a split pada's kosha lemmas belong to the section that splits it
+  for (const u of Object.values(uses)) for (const f of u.forms) for (const l of koshaLemmas[f] ?? []) u.lemmas.add(l);
   const lexicon: Snapshot['lexicon'] = {};
   for (const l of [...lemmas].sort()) lexicon[l] = gloss({ type: 'subanta', lemma: '', lemma_slp1: l } as any);
   return {
@@ -107,7 +123,8 @@ async function snapshot(engine: Engine, id: string): Promise<Snapshot> {
     inputs: inputsOf(id),
     sections,
     kosha,
-    lexicon
+    lexicon,
+    uses
   };
 }
 
@@ -146,23 +163,45 @@ function serialize(s: Snapshot): string {
   return out.join('\n') + '\n';
 }
 
+/** One file per part: its sections, and only the kosha and lexicon they use. */
+function partFiles(snap: Snapshot & { uses: Uses }): { file: string; json: string }[] {
+  return partsOf(readText(snap.id)).map((part) => {
+    const ids = new Set(part.sections.map((x) => x.id));
+    const lem = new Set<string>(), forms = new Set<string>();
+    for (const sid of ids) { snap.uses[sid]?.lemmas.forEach((l) => lem.add(l)); snap.uses[sid]?.forms.forEach((f) => forms.add(f)); }
+    const pick = <T>(o: Record<string, T>, keep: Set<string>) => Object.fromEntries(Object.entries(o).filter(([k]) => keep.has(k)));
+    const piece: Snapshot = {
+      id: snap.id, engine: snap.engine, inputs: snap.inputs,
+      sections: snap.sections.filter((x) => ids.has(x.id)),
+      kosha: pick(snap.kosha, forms),
+      lexicon: pick(snap.lexicon, lem)
+    };
+    return { file: snapPath(snap.id, part.id), json: serialize(piece) };
+  });
+}
+
 const engine = new Engine();
 let stale = 0;
 fs.mkdirSync(SNAP_DIR, { recursive: true });
 for (const id of ids.length ? ids : textIds()) {
   const t0 = performance.now();
   const snap = await snapshot(engine, id);
-  const json = serialize(snap);
-  const rel = path.relative(process.cwd(), snapPath(id));
+  const files = partFiles(snap);
+  const rel = path.relative(process.cwd(), snapDir(id));
   if (check) {
-    const old = fs.existsSync(snapPath(id)) ? fs.readFileSync(snapPath(id), 'utf-8') : '';
-    if (old !== json) { stale++; console.log(`✗ ${rel} differs from what vidyut gives now — rerun bun scripts/snapshot-text.ts ${id}`); }
-    else console.log(`✓ ${rel} matches the engine`);
+    for (const f of files) {
+      const old = fs.existsSync(f.file) ? fs.readFileSync(f.file, 'utf-8') : '';
+      if (old !== f.json) { stale++; console.log(`✗ ${path.relative(process.cwd(), f.file)} differs from what vidyut gives now — rerun bun scripts/snapshot-text.ts ${id}`); }
+    }
+    if (!stale) console.log(`✓ ${rel} matches the engine`);
   } else {
-    fs.writeFileSync(snapPath(id), json);
+    // a part that no longer exists (the parts were redrawn) must not linger
+    fs.rmSync(snapDir(id), { recursive: true, force: true });
+    fs.mkdirSync(snapDir(id), { recursive: true });
+    for (const f of files) fs.writeFileSync(f.file, f.json);
     const padas = snap.sections.flatMap((s) => s.words.flatMap((w) => w.padas)).length;
     const words = snap.sections.flatMap((s) => s.words).length;
-    console.log(`✓ ${rel}: ${snap.sections.length} sections, ${words} words, ${padas} padas, ${Object.keys(snap.lexicon).length} lemmas (${Math.round(performance.now() - t0)} ms)`);
+    console.log(`✓ ${rel}/ (${files.length} part${files.length > 1 ? 's' : ''}): ${snap.sections.length} sections, ${words} words, ${padas} padas, ${Object.keys(snap.lexicon).length} lemmas (${Math.round(performance.now() - t0)} ms)`);
   }
 }
 engine.close();

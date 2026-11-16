@@ -56,9 +56,12 @@ for (const ch of readings.chapters)
 
 // ── whole texts, from the cell the build attached ────────────────────────
 const tdir = path.join(ROOT, 'static/data/texts');
-for (const f of fs.existsSync(tdir) ? fs.readdirSync(tdir) : []) {
-  if (f === 'index.json' || !f.endsWith('.json')) continue;
-  const t = JSON.parse(fs.readFileSync(path.join(tdir, f), 'utf-8'));
+// each text is a directory of parts (static/data/texts/<id>/<part>.json)
+const partFiles = (fs.existsSync(tdir) ? fs.readdirSync(tdir) : [])
+  .filter((d) => fs.statSync(path.join(tdir, d)).isDirectory())
+  .flatMap((d) => fs.readdirSync(path.join(tdir, d)).filter((f) => f !== 'index.json' && f.endsWith('.json')).map((f) => path.join(tdir, d, f)));
+for (const file of partFiles) {
+  const t = JSON.parse(fs.readFileSync(file, 'utf-8'));
   for (const s of t.sections)
     for (const w of s.words)
       for (const p of w.padas) {

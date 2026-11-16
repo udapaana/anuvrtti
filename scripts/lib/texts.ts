@@ -1,7 +1,7 @@
 /**
  * texts.ts — shared by the three scripts of the whole-texts track:
  *
- *   scripts/snapshot-text.ts   run vidyut over a text → data/text-analyses/<id>.json
+ *   scripts/snapshot-text.ts   run vidyut over a text → data/text-analyses/<id>/<part>.json
  *                              (local only: needs the native engine and MW cache)
  *   scripts/build-texts.ts     snapshot + overrides → static/data/texts/  (CI)
  *   scripts/check-texts.ts     the snapshot is fresh, and the `text` gate  (CI)
@@ -18,8 +18,13 @@ export const TEXTS_DIR = path.join(ROOT, 'content/texts');
 export const SNAP_DIR = path.join(ROOT, 'data/text-analyses');
 
 export type Section = { id: string; kind?: 'verse' | 'prose'; text?: string; lines?: string[]; iast?: string };
+export type PartSpec = { id: string; title?: string; first: string; last: string };
 export type TextSource = {
   id: string; title: string; title_en: string; work: string; place?: string;
+  /** optional: the text's parts, by first and last section id; see partsOf */
+  parts?: PartSpec[];
+  /** optional: what a part is called, where the parts are drawn by id prefix (vallī, sarga) */
+  part_label?: string;
   source: Record<string, string>;
   sections: Section[];
 };
@@ -34,6 +39,44 @@ export function readText(id: string): TextSource {
   if (t.id !== id) throw new Error(`content/texts/${id}/text.yaml: id is ${t.id}, not ${id}`);
   return t;
 }
+/**
+ * A text's parts: the unit a reader loads, saves offline and downloads, and the
+ * unit its snapshot is stored in. A part never splits a section.
+ *   - `parts:` in text.yaml, each from its first to its last section id;
+ *   - else, section ids with a prefix (1.2, 1.1.3): one part per prefix — a
+ *     vallī, a sarga, an adhyāya — when there is more than one prefix;
+ *   - else the whole text is one part, "all".
+ */
+export type Part = { id: string; title?: string; sections: Section[] };
+export function partsOf(t: TextSource): Part[] {
+  if (t.parts?.length) {
+    const ids = t.sections.map((s) => s.id);
+    const out = t.parts.map((p) => {
+      const a = ids.indexOf(p.first), b = ids.indexOf(p.last);
+      if (a < 0 || b < a) throw new Error(`${t.id}: part ${p.id} runs ${p.first}–${p.last}, not a run of its sections`);
+      return { id: p.id, ...(p.title ? { title: p.title } : {}), sections: t.sections.slice(a, b + 1) };
+    });
+    const covered = out.reduce((n, p) => n + p.sections.length, 0);
+    if (covered !== t.sections.length) throw new Error(`${t.id}: its parts cover ${covered} of ${t.sections.length} sections`);
+    return out;
+  }
+  const prefix = (id: string) => (id.includes('.') ? id.slice(0, id.lastIndexOf('.')) : null);
+  const prefixes = t.sections.map((s) => prefix(s.id));
+  if (prefixes.every(Boolean) && new Set(prefixes).size > 1) {
+    const out: Part[] = [];
+    t.sections.forEach((s, i) => {
+      const p = prefixes[i]!;
+      if (out.at(-1)?.id === p) out.at(-1)!.sections.push(s);
+      else out.push({ id: p, ...(t.part_label ? { title: `${t.part_label} ${p}` } : {}), sections: [s] });
+    });
+    if (new Set(out.map((p) => p.id)).size !== out.length) throw new Error(`${t.id}: a part's sections are not contiguous`);
+    return out;
+  }
+  return [{ id: 'all', sections: t.sections }];
+}
+/** A part id as a file name. */
+export const partFile = (id: string) => id.replace(/[^A-Za-z0-9._-]/g, '_') + '.json';
+
 /** A section's lines (a prose section is one line). */
 export const linesOf = (s: Section) => (s.lines ?? [s.text ?? '']).map((l) => l.trim());
 
@@ -184,10 +227,26 @@ export type Snapshot = {
   /** lemma (SLP1) → MW's entry, or null where MW has none: every lemma in any alt or override */
   lexicon: Record<string, MwEntry>;
 };
-export const snapPath = (id: string) => path.join(SNAP_DIR, `${id}.json`);
+/** A text's snapshot is stored one file per part: data/text-analyses/<id>/<part>.json. */
+export const snapDir = (id: string) => path.join(SNAP_DIR, id);
+export const snapPath = (id: string, part: string) => path.join(snapDir(id), partFile(part));
+/**
+ * The whole snapshot, reassembled from its parts. Null if any part is missing,
+ * or if the parts were not written by one run (their inputs differ) — both are
+ * a stale snapshot, and check-texts says so.
+ */
 export function readSnapshot(id: string): Snapshot | null {
-  const f = snapPath(id);
-  return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf-8')) : null;
+  const parts = partsOf(readText(id));
+  const files = parts.map((p) => snapPath(id, p.id));
+  if (!files.every((f) => fs.existsSync(f))) return null;
+  const snaps = files.map((f) => JSON.parse(fs.readFileSync(f, 'utf-8')) as Snapshot);
+  if (new Set(snaps.map((x) => JSON.stringify(x.inputs))).size > 1) return null;
+  return {
+    id, engine: snaps[0].engine, inputs: snaps[0].inputs,
+    sections: snaps.flatMap((x) => x.sections),
+    kosha: Object.assign({}, ...snaps.map((x) => x.kosha)),
+    lexicon: Object.assign({}, ...snaps.map((x) => x.lexicon))
+  };
 }
 
 /**

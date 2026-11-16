@@ -44,14 +44,47 @@
     id: string; title: string; title_en: string; work: string; place?: string;
     source: Record<string, string>; credit: string; sections: Section[]; paradigms: Record<string, Table>;
   };
+  /* A text is published as an index and its parts (scripts/build-texts.ts): a
+     sarga, a vallī, or the whole of a short text. The page reads one part at a
+     time; `text` is the index with that part's sections, so the rest of the
+     page sees one shape whichever part is open. */
+  type PartMeta = { id: string; title?: string; file: string; sections: string[]; words: number };
+  type Meta = Omit<Text, 'sections' | 'paradigms'> & { parts: PartMeta[] };
 
   const id = $derived($appPage.params.id ?? '');
+  let meta = $state<Meta | null>(null);
+  let partIdx = $state(0);
   let text = $state<Text | null>(null);
   let others = $state<{ id: string; title: string; title_en: string }[]>([]);
   let error = $state('');
 
   const PADACCHEDA_KEY = 'anuvrtti:text-padaccheda';
   const progressKey = (tid: string) => `anuvrtti:text-progress:${tid}`;
+  const base = (tid: string) => `/data/texts/${tid}`;
+  const partUrl = (tid: string, p: PartMeta) => `${base(tid)}/${p.file}`;
+  const partLabel = (p: PartMeta) => p.title ?? (p.id === 'all' ? 'the whole text' : `part ${p.id}`);
+  async function fetchPart(p: PartMeta): Promise<{ sections: Section[]; paradigms: Record<string, Table> }> {
+    const r = await fetch(dataUrl(partUrl(id, p)));
+    if (!r.ok) throw new Error(`no part “${p.id}” of “${id}”`);
+    return r.json();
+  }
+  async function openPart(i: number, at = 0) {
+    const p = meta!.parts[i];
+    const data = await fetchPart(p);
+    partIdx = i;
+    sel = null;
+    text = { ...meta!, sections: data.sections, paradigms: data.paradigms };
+    current = Math.min(at, data.sections.length - 1);
+    saveProgress();
+    requestAnimationFrame(() => {
+      if (current > 0) scrollToSection(current, 'instant');
+      else window.scrollTo({ top: 0 });
+      observe();
+    });
+  }
+  function saveProgress() {
+    try { localStorage.setItem(progressKey(id), JSON.stringify({ part: meta?.parts[partIdx]?.id, s: current })); } catch { /* session only */ }
+  }
   /* saṃhitā by default: a whole text is read as written */
   let padaccheda = $state(false);
   let sel = $state<{ s: number; w: number; p: number } | null>(null);
@@ -65,25 +98,31 @@
   onMount(async () => {
     try { padaccheda = localStorage.getItem(PADACCHEDA_KEY) === '1'; } catch { /* session only */ }
     try {
-      const [t, idx] = await Promise.all([
-        fetch(dataUrl(`/data/texts/${id}.json`)).then((r) => { if (!r.ok) throw new Error(`no text “${id}”`); return r.json(); }),
+      const [m, idx] = await Promise.all([
+        fetch(dataUrl(`${base(id)}/index.json`)).then((r) => { if (!r.ok) throw new Error(`no text “${id}”`); return r.json(); }),
         fetch(dataUrl('/data/texts/index.json')).then((r) => (r.ok ? r.json() : []))
       ]);
-      text = t;
+      meta = m;
       others = idx;
+      // back to where the reader left off: a part and a section in it (an
+      // older bare number is a section of the whole text)
+      let at = { part: m.parts[0].id as string, s: 0 };
+      try {
+        const v = localStorage.getItem(progressKey(id));
+        if (v) at = /^\d+$/.test(v) ? { part: m.parts[0].id, s: Number(v) } : { ...at, ...JSON.parse(v) };
+      } catch { /* none */ }
+      await openPart(Math.max(0, m.parts.findIndex((p: PartMeta) => p.id === at.part)), at.s);
     } catch (e) {
       error = String((e as Error).message ?? e);
-      return;
     }
-    // back to where the reader left off
-    let last = 0;
-    try { last = Number(localStorage.getItem(progressKey(id)) ?? 0) || 0; } catch { /* none */ }
-    current = Math.min(last, (text?.sections.length ?? 1) - 1);
-    requestAnimationFrame(() => {
-      if (current > 0) scrollToSection(current, 'instant');
-      observe();
-    });
   });
+
+  /* the downloads: the whole text (every part), this part, this section */
+  async function wholeText(): Promise<ExportText> {
+    const parts = await Promise.all(meta!.parts.map(fetchPart));
+    return { ...(meta as any), sections: parts.flatMap((x) => x.sections) } as ExportText;
+  }
+  const slugOf = (s: string) => s.replace(/[^A-Za-z0-9._-]/g, '_');
 
   let io: IntersectionObserver | null = null;
   function observe() {
@@ -94,7 +133,7 @@
         const vis = es.filter((e) => e.isIntersecting).map((e) => Number((e.target as HTMLElement).dataset.si));
         if (!vis.length) return;
         current = Math.min(...vis);
-        try { localStorage.setItem(progressKey(id), String(current)); } catch { /* session only */ }
+        saveProgress();
       },
       { rootMargin: '-20% 0px -60% 0px' }
     );
@@ -145,7 +184,7 @@
 {#snippet shelfLeft()}
   {#if narrow}
     {#snippet secLabel()}
-      § {text ? sectionLabel(text.sections[current], current) : ''}
+      {#if meta && meta.parts.length > 1}{partLabel(meta.parts[partIdx])} · {/if}§ {text ? sectionLabel(text.sections[current], current) : ''}
     {/snippet}
     <SheetButton label={secLabel} onopen={() => (spineOpen = true)} title="sections" />
     <span class="shelf-rule" aria-hidden="true"></span>
@@ -164,13 +203,21 @@
 
 {#snippet shelfRight()}
   {#if text && !narrow}
-    <span>§ {sectionLabel(text.sections[current], current)} · {current + 1} of {text.sections.length}</span>
+    <span>{#if meta && meta.parts.length > 1}{partLabel(meta.parts[partIdx])} ({partIdx + 1} of {meta.parts.length}) · {/if}§ {sectionLabel(text.sections[current], current)} · {current + 1} of {text.sections.length}</span>
   {/if}
 {/snippet}
 
 {#snippet spine()}
   {#if text}
     {#if narrow}<a class="back sheet-back" href="/reader">← reader</a>{/if}
+    {#if meta && meta.parts.length > 1}
+      <Spine
+        title="parts"
+        items={meta.parts.map((p, i) => ({ id: String(i), label: partLabel(p), sub: `${p.sections.length} sections` }))}
+        activeId={String(partIdx)}
+        onpick={(i) => { spineOpen = false; openPart(Number(i)); }}
+      />
+    {/if}
     <Spine
       title="sections"
       items={text.sections.map((s, i) => ({
@@ -340,8 +387,19 @@
         <span class="label"><Sanskrit text={text.work} source="devanagari" /> · {text.place}</span>
         <span class="ch-dev"><Sanskrit text={text.title} source="devanagari" /></span>
         <span class="ch-en">{text.title_en}</span>
-        <SaveControls kind="text" id={text.id} filename={`${text.id}.html`}
-          html={() => textToHtml(text as unknown as ExportText)} />
+        {#if meta}
+          {@const p = meta.parts[partIdx]}
+          {@const sec = text.sections[current]}
+          <SaveControls kind="text" id={text.id}
+            files={[`${base(id)}/index.json`, ...meta.parts.map((q) => partUrl(id, q))]}
+            downloads={[
+              { label: 'the text', filename: `${id}.html`, html: async () => textToHtml(await wholeText()) },
+              ...(meta.parts.length > 1 ? [{ label: partLabel(p), filename: `${id}-${slugOf(p.id)}.html`,
+                html: () => textToHtml({ ...(text as any), place: `${text!.place ?? ''} · ${partLabel(p)}` } as ExportText) }] : []),
+              ...(sec ? [{ label: `§ ${sec.id}`, filename: `${id}-${slugOf(sec.id)}.html`,
+                html: () => textToHtml({ ...(text as any), sections: [sec], place: `§ ${sec.id}` } as ExportText) }] : [])
+            ]} />
+        {/if}
       </header>
 
       {#each text.sections as sec, si}
@@ -373,6 +431,14 @@
           </div>
         </article>
       {/each}
+
+      {#if meta && meta.parts.length > 1}
+        <nav class="pager" aria-label="parts">
+          <button disabled={partIdx <= 0} onclick={() => openPart(partIdx - 1)}>← {partIdx > 0 ? partLabel(meta.parts[partIdx - 1]) : ''}</button>
+          <span class="range">{partLabel(meta.parts[partIdx])} · {partIdx + 1} of {meta.parts.length}</span>
+          <button disabled={partIdx >= meta.parts.length - 1} onclick={() => openPart(partIdx + 1)}>{partIdx < meta.parts.length - 1 ? partLabel(meta.parts[partIdx + 1]) : ''} →</button>
+        </nav>
+      {/if}
 
       <footer class="credit">
         <p>{text.source.edition}; source <code>{text.source.file}</code>{#if text.source.ref}, {text.source.ref}{/if}.</p>
@@ -406,6 +472,13 @@
   .label { font-family: var(--font-mono); font-size: 11px; color: var(--faint); letter-spacing: 0.04em; }
   .ch-dev { font-family: var(--font-deva); font-size: 27px; font-weight: 600; }
   .ch-en { font-family: var(--font-prose); font-size: 15px; color: var(--muted); font-style: italic; }
+  .pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--rule); padding-top: 14px; }
+  .pager button {
+    font-family: var(--font-mono); font-size: 12px; background: transparent; border: 1px solid var(--rule-2);
+    border-radius: var(--radius); color: var(--muted); padding: 6px 12px; cursor: pointer;
+  }
+  .pager button:disabled { opacity: 0.35; cursor: default; }
+  .pager .range { font-family: var(--font-mono); font-size: 11px; color: var(--faint); text-align: center; }
 
   /* the number in the margin, the text beside it */
   .sec {

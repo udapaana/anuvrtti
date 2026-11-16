@@ -11,6 +11,11 @@
 
     A graded-reader chapter has no files of its own — every chapter is in
     one data file — so saving one saves the reader, and the control says so.
+    A whole text names the files it is made of (`files`: its index and every
+    part), so saving it saves them all.
+
+    `downloads` lists the sizes on offer — the text, this part, this section —
+    each its own link, labelled.
   */
   import {
     offlineStatus, offlineProgress, downloadOffline,
@@ -18,14 +23,15 @@
   } from '$lib/offline';
   import { saveFile } from '$lib/export';
 
-  let { kind, id, filename, html }: {
+  type Download = { label: string; filename: string; html: () => Promise<string> };
+  let { kind, id, files = [], downloads }: {
     kind: 'text' | 'chapter';
     id: string;
-    filename: string;
-    html: () => Promise<string>;
+    files?: string[];
+    downloads: Download[];
   } = $props();
 
-  let building = $state(false);
+  let building = $state<string | null>(null);
   let failed = $state(false);
   let dlFailed = $state(false);
 
@@ -35,12 +41,12 @@
 
   async function save() {
     failed = false;
-    try { await (kind === 'text' ? saveText(id) : downloadOffline()); } catch { failed = true; }
+    try { await (kind === 'text' ? saveText(id, files) : downloadOffline()); } catch { failed = true; }
   }
-  async function download() {
-    building = true;
+  async function download(d: Download) {
+    building = d.label;
     dlFailed = false;
-    try { saveFile(filename, await html()); } catch { dlFailed = true; } finally { building = false; }
+    try { saveFile(d.filename, await d.html()); } catch { dlFailed = true; } finally { building = null; }
   }
 </script>
 
@@ -61,7 +67,10 @@
     {/if}
     <span class="sep" aria-hidden="true">·</span>
   {/if}
-  <button onclick={download} disabled={building}>{building ? 'preparing…' : 'download'}</button>
+  <span class="state">download</span>
+  {#each downloads as d}
+    <button onclick={() => download(d)} disabled={!!building}>{building === d.label ? 'preparing…' : d.label}</button>
+  {/each}
   {#if dlFailed}<span class="state err">couldn't build the file — try again</span>{/if}
 </div>
 

@@ -113,7 +113,7 @@ export async function downloadOffline(): Promise<void> {
 // app shell). Which texts are saved is kept in localStorage, as above.
 
 const TEXTS_KEY = 'anuvrtti-offline-texts';
-export type SavedText = { at: number; bytes: number };
+export type SavedText = { at: number; bytes: number; urls?: string[] };
 
 function readSavedTexts(): Record<string, SavedText> {
   if (!browser) return {};
@@ -123,8 +123,9 @@ export const savedTexts = writable<Record<string, SavedText>>(readSavedTexts());
 /** Progress of a text being saved, by id; absent when none is. */
 export const textProgress = writable<Record<string, { done: number; total: number }>>({});
 
-const textUrls = (id: string) =>
-  [`/data/texts/${id}.json`, '/data/texts/index.json', `/reader/text/${id}`, `/reader/text/${id}/__data.json`];
+/** A text's own files: what its page names (its index and every part), and the page itself. */
+const textUrls = (id: string, files: string[]) =>
+  [...new Set([...files, '/data/texts/index.json', `/reader/text/${id}`, `/reader/text/${id}/__data.json`])];
 
 function writeSavedTexts(f: (m: Record<string, SavedText>) => void) {
   const m = readSavedTexts();
@@ -133,13 +134,14 @@ function writeSavedTexts(f: (m: Record<string, SavedText>) => void) {
   savedTexts.set(m);
 }
 
-export async function saveText(id: string): Promise<void> {
+export async function saveText(id: string, files: string[]): Promise<void> {
   const setP = (p: { done: number; total: number } | null) =>
     textProgress.update((m) => { const n = { ...m }; if (p) n[id] = p; else delete n[id]; return n; });
   setP({ done: 0, total: 0 });
   try {
-    const bytes = await runCache({ type: 'CACHE_URLS', urls: textUrls(id) }, `text:${id}`, setP);
-    writeSavedTexts((m) => { m[id] = { at: Date.now(), bytes }; });
+    const urls = textUrls(id, files);
+    const bytes = await runCache({ type: 'CACHE_URLS', urls }, `text:${id}`, setP);
+    writeSavedTexts((m) => { m[id] = { at: Date.now(), bytes, urls }; });
     // the core came along with it, so the Settings bundle is saved too
     if (!localStorage.getItem(SAVED_KEY)) {
       const now = Date.now();
@@ -155,6 +157,7 @@ export async function saveText(id: string): Promise<void> {
 }
 
 export function removeText(id: string): Promise<void> {
+  const urls = readSavedTexts()[id]?.urls ?? [];
   return new Promise((resolve) => {
     activeWorker().then((worker) => {
       writeSavedTexts((m) => { delete m[id]; });
@@ -171,7 +174,7 @@ export function removeText(id: string): Promise<void> {
       // the record is already gone; never leave the caller waiting on a silent worker
       setTimeout(() => { navigator.serviceWorker.removeEventListener('message', onMessage); resolve(); }, 10_000);
       // the shared index stays: other saved texts list each other through it
-      worker.postMessage({ type: 'UNCACHE_URLS', urls: textUrls(id).filter((u) => !u.endsWith('index.json')), tag });
+      worker.postMessage({ type: 'UNCACHE_URLS', urls: urls.filter((u) => u !== '/data/texts/index.json'), tag });
     });
   });
 }

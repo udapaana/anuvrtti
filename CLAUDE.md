@@ -74,7 +74,7 @@ inside `npm run build`). `bun run check` fails when it goes stale.
 
 `content/texts/<id>/` holds `text.yaml` (the text, verbatim) and
 `overrides.yaml` (the author's decisions only). The annotation is vidyut's,
-committed as a snapshot in `data/text-analyses/<id>.json` because CI cannot
+committed as a snapshot in `data/text-analyses/<id>/` (a file per part) because CI cannot
 run the native engine: after editing either file, `bun scripts/snapshot-text.ts
 <id>` (needs `./scripts/build-vidyut-native.sh` and `bun
 scripts/import-mw-gloss.ts` once) and commit the snapshot with the change —

@@ -3,7 +3,7 @@
  * check-texts.ts — the `text` profile of "born complete", and the snapshot's
  * freshness. HARD, in `bun run check`.
  *
- * Freshness. data/text-analyses/<id>.json is vidyut's output, committed
+ * Freshness. data/text-analyses/<id>/ (a file per part) is vidyut's output, committed
  * because CI cannot run the native engine (docs/ARCHITECTURE.md, "Whole
  * texts"). It is stale when anything it was computed from has moved — the
  * text, VIDYUT_REV, the generator, the cheda patch, the MW pin — or when an

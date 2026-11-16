@@ -26,28 +26,16 @@ edition. Update this file as status changes; it is the backlog, not a log.
 | हितोपदेश | `17_hitopadesha` (scattered) | `sa_nArAyaNa-hitopadeza` (GRETIL, pinned — whole work) | **full** — 4 books + frame story, hundreds of verses + prose | not started. Large; no natural sub-unit to bound it to (unlike Rāmāyaṇa's kāṇḍa or Nītiśataka's śataka) — ingest in book-sized chunks, or accept the full size. |
 | ऋग्वेद | `15_rigveda` (1.1–1.3 only, of Maṇḍala 1's 191 hymns) | **none pinned** — no automated source at all; existing excerpts are typed by hand from an accented padapāṭha edition (the chapter is marked FROZEN for this reason) | finish **1.1–1.3** by hand, matching how the existing hymns were sourced — no GRETIL plaintext carries Vedic accents reliably, so this likely stays a manual add, not a pipeline | not started |
 
-## A real constraint to budget around: snapshot size
+## Snapshot size: settled by parts (2026-11-16)
 
-**Measured 2026-11-16**, with GRETIL reachable: Bāla-kāṇḍa is 1,941 verses in 76
-sargas, ~21,700 words; the Hitopadeśa ~24,400 words in four books (marked
-`ii. suhṛd-bhedaḥ` …); the condensed Mahābhārata ~21,200. At the Nītiśataka's
-1.9 KB a word, each would be a ~40 MB snapshot. Alternatives are ~70% of a
-snapshot's bytes; deduplicating them saves only about a third (9,983 unique of
-16,167 in the Nītiśataka). So the format decision — fewer alternatives, a terser
-encoding of each, or both — gates Rāmāyaṇa, Hitopadeśa and Mahābhārata alike.
-The condensed Mahābhārata is held as `text.draft.yaml` until then: the build
-publishes every `text.yaml` and fails without its snapshot.
+A text's snapshot and its published payload are now stored one file per part
+(a sarga, a vallī — `partsOf` in `scripts/lib/texts.ts`), so no single file
+grows with the text. Measured on the Nītiśataka: ~2.7 KB a word raw, and git
+stores it compressed to about a tenth. Bāla-kāṇḍa (~21,700 words in 76
+sargas) comes to ~0.8 MB raw per sarga; the condensed Mahābhārata, split by
+parvan, likewise. A terser encoding of the alternatives was measured too: it
+saves ~40% raw but almost nothing once git compresses, and costs the
+reviewable one-line-per-analysis diff, so it was not adopted.
 
-`data/text-analyses/<id>.json` stores every candidate analysis for every word,
-not just the one picked — `docs/ARCHITECTURE.md` already flags this as
-"~5 KB a word," and that a text the size of the Nala episode (~1,000 ślokas)
-would be ~40 MB and "would want the alternatives trimmed to the top few —
-revisit then." Bāla-kāṇḍa (~2,000 verses), the Mahābhārata selection (several
-thousand entries), and a full Bhāgavata (~18,000 verses) are all past that
-line. Ingesting any of them at the current per-word-alternatives-dump format
-would produce a multi-hundred-MB committed snapshot — not something to do
-before the trimming `analyze-text.ts` was already expected to eventually need.
-**Revisit the snapshot format (trim to the top few alternatives) before
-running the annotate/snapshot step on any of these at full scale** — the
-`text.yaml` authoring and source-pinning steps don't depend on this and can
-proceed first.
+What still bounds a text is authoring time, not storage: every pada needs an
+author's pass and an audit (see `AUDIT-LOG.md`).

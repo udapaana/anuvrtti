@@ -5,8 +5,11 @@
  *
  *   content/texts/<id>/text.yaml        the text, verbatim         (authored)
  *   content/texts/<id>/overrides.yaml   the author's decisions     (authored)
- *   data/text-analyses/<id>.json        what vidyut said           (snapshot; scripts/snapshot-text.ts)
- *     → static/data/texts/index.json, static/data/texts/<id>.json  (generated)
+ *   data/text-analyses/<id>/<part>.json what vidyut said           (snapshot; scripts/snapshot-text.ts)
+ *     → static/data/texts/index.json          every text, for the shelf
+ *       static/data/texts/<id>/index.json     one text: its metadata and its parts
+ *       static/data/texts/<id>/<part>.json    one part: its sections and their paradigms
+ *   (generated). A reader loads a text's index, then only the part it reads.
  *
  * Runs in CI: it reads only the snapshot, never the native engine. Paradigms
  * come from the vidyut-prakriya WASM already committed under static/wasm/, the
@@ -20,7 +23,7 @@ import * as path from 'path';
 import { slp, deva, mwUrl } from './analyze-text';
 import { parse as parseYaml } from 'yaml';
 import {
-  ROOT, textIds, readText, readOverrides, readSnapshot, wordsOf, wordKeys, linesOf,
+  ROOT, textIds, readText, readOverrides, readSnapshot, wordsOf, wordKeys, linesOf, partsOf, partFile,
   parseA, agrees, decodeA, fmtA, type Analysis, type PadaSpec, type MwEntry, type Snapshot
 } from './lib/texts';
 
@@ -103,7 +106,7 @@ export type Resolved = {
 export function resolveText(id: string): Resolved {
   const t = readText(id);
   const snap = readSnapshot(id);
-  if (!snap) throw new Error(`data/text-analyses/${id}.json missing — run bun scripts/snapshot-text.ts ${id}`);
+  if (!snap) throw new Error(`data/text-analyses/${id}/ missing or stale — run bun scripts/snapshot-text.ts ${id}`);
   const ov = readOverrides(id);
   const fixes: Record<FixKind, number> = { compound: 0, split: 0, pick: 0, supplied: 0, gloss: 0, note: 0 };
   const problems: string[] = [];
@@ -318,14 +321,23 @@ if (import.meta.main) {
     const tables = paradigms(v, r);
     const lit = r.sections.flatMap((s) => s.words.flatMap((w) => w.padas)).filter((p) => p.para).length;
     console.log(`  ${Object.keys(tables).length} paradigm tables, ${lit} of ${r.padas} padas lit in one`);
-    const out = {
-      id, title: t.title, title_en: t.title_en, work: t.work, place: t.place, source: t.source,
-      credit: CREDIT,
-      sections: r.sections.map((s) => ({ ...s, text: linesOf(t.sections.find((x) => x.id === s.id)!) })),
-      paradigms: tables
-    };
-    fs.writeFileSync(path.join(OUT, `${id}.json`), JSON.stringify(out));
-    index.push({ id, title: t.title, title_en: t.title_en, work: t.work, place: t.place, sections: r.sections.length, words: r.words });
+    const parts = partsOf(t);
+    const dir = path.join(OUT, id);
+    fs.rmSync(dir, { recursive: true, force: true });
+    fs.mkdirSync(dir, { recursive: true });
+    const meta = { id, title: t.title, title_en: t.title_en, work: t.work, place: t.place, source: t.source, credit: CREDIT, parts: [] as any[] };
+    for (const part of parts) {
+      const ids = new Set(part.sections.map((x) => x.id));
+      const secs = r.sections.filter((x) => ids.has(x.id)).map((x) => ({ ...x, text: linesOf(t.sections.find((y) => y.id === x.id)!) }));
+      // only the tables this part's words light
+      const keys = new Set(secs.flatMap((x) => x.words.flatMap((w) => w.padas.map((p) => (p as any).para?.key).filter(Boolean))));
+      const used = Object.fromEntries(Object.entries(tables).filter(([k]) => keys.has(k)));
+      fs.writeFileSync(path.join(dir, partFile(part.id)), JSON.stringify({ id, part: part.id, sections: secs, paradigms: used }));
+      meta.parts.push({ id: part.id, ...(part.title ? { title: part.title } : {}), file: partFile(part.id), sections: secs.map((x) => x.id), words: secs.reduce((n, x) => n + x.words.length, 0) });
+    }
+    fs.writeFileSync(path.join(dir, 'index.json'), JSON.stringify(meta));
+    fs.rmSync(path.join(OUT, `${id}.json`), { force: true }); // the single file of before
+    index.push({ id, title: t.title, title_en: t.title_en, work: t.work, place: t.place, sections: r.sections.length, words: r.words, parts: parts.length });
   }
   if (!only) {
     fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(index));
