@@ -206,7 +206,13 @@ export function resolveText(id: string): Resolved {
         // an indeclinable nobody glossed takes content/texts/particles.yaml, not MW's root homonym
         // and a personal pronoun takes content/texts/pronouns.yaml, not MW's note on the stem
         const particle = r.spec?.gloss ? undefined : fmtA(a) === 'अव्यय' ? PARTICLES[a.lemma_full ?? a.lemma] : pronounGloss(a);
-        const gloss = r.spec?.gloss ?? particle ?? m?.senses[0] ?? null;
+        // a verb form nobody glossed shows its root's MW entry, which runs on
+        // ("to do, make, perform, accomplish, cause, …" to the cut): keep the
+        // first sense group, at most three senses ("to do, make, perform")
+        const verbal = a.type === 'tinanta' || !!a.कृत्;
+        const first = (g: string) => g.split(/;\s/)[0].split(/,\s/).slice(0, 3).join(', ').replace(/[,.\s…]+$/, '');
+        const mwGloss = m?.senses[0] ? (verbal ? first(m.senses[0]) : m.senses[0]) : null;
+        const gloss = r.spec?.gloss ?? particle ?? mwGloss ?? null;
         if (!gloss) problems.push(`${s.id}/${w.surface}: ${r.form} (${a.lemma}) — no MW entry and no gloss; add gloss: in overrides.yaml`);
         return {
           form: r.form, lemma: a.lemma_full ?? a.lemma, a: fmtA(a), terms: termsOf(a),
