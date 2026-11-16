@@ -441,7 +441,7 @@
               ti: word ? word.ti : g.from[0],
               isWord: !!word,
               focal: parts.some((t: any) => t.focal),
-              gloss: parts.filter((t: any) => t.isWord).map((t: any) => t.gloss).filter(Boolean).join(' + ')
+              gloss: parts.filter((t: any) => t.isWord).map((t: any) => t.gloss).filter(Boolean).join(' · ')
             };
           })
         : null;
@@ -808,7 +808,9 @@
       .map((t: any) => ({
         ti: t.ti,
         on: t.ti === s?.ti,
-        form: padaccheda && t.split ? t.split.join(' + ') : t.text,
+        // a sandhi word under padaccheda: its padas, each its own chip (as the
+        // text page's "in this word"), not one string joined by pluses
+        padas: (padaccheda && t.split?.length ? t.split : [t.text]) as string[],
         gloss: t.gloss ?? ''
       }));
   });
@@ -2189,7 +2191,7 @@
             <div class="run">
               {#each runRows as g (g.ti)}
                 <button class="run-row" class:on={g.on} onclick={() => selectToken(railReading.id, g.ti)}>
-                  <span class="run-form"><Sanskrit text={g.form} source="devanagari" /></span>
+                  <span class="run-form">{#each g.padas as p}<span class="run-pada" class:split={g.padas.length > 1}><Sanskrit text={p} source="devanagari" /></span>{/each}</span>
                   <span class="run-gloss"><Sanskrit text={g.gloss} source="devanagari" /></span>
                 </button>
               {/each}
@@ -2893,6 +2895,13 @@
   }
   .run-row.on .run-form {
     color: var(--accent);
+  }
+  /* a sandhi word's padas, each a chip like the text page's "in this word" */
+  .run-form { display: flex; flex-wrap: wrap; gap: 4px; }
+  .run-pada.split {
+    border: 1px solid var(--rule-2);
+    padding: 0 6px;
+    line-height: 1.5;
   }
   .run-gloss {
     font-size: 13px;
