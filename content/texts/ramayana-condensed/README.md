@@ -24,8 +24,32 @@ references in the reviews are from the reviewer's knowledge, not yet checked
 against a vulgate edition. A `review-*.json` records one decision per OCR line
 (see `scripts/lib/condensed-match.ts`).
 
-`text.yaml` (`bun scripts/condensed-text.ts ramayana`) carries the placed verses,
-1,369 sections after a verse quoted twice in a row is joined, 12,877 words.
+## The 214 vulgate verses, from the book's scan
+
+No digital Southern edition exists (`content/texts/TODO.md`), so their only
+witness is the book. `bun scripts/condensed-reocr.ts ramayana` finds each
+verse's lines in archive.org's OCR layout (`data/sources/ocr/
+ramayana-condensed_djvu.xml`), cuts it from the scan, and reads it with
+Tesseract; the crops are committed (`data/sources/ocr/ramayana-condensed-crops/`)
+and both machine readings kept (`reocr.json`). Neither is clean.
+
+The text was settled by double keying:
+- two independent transcribers read every crop as printed
+  (`transcribe-A-*.json`, `transcribe-B-*.json`);
+- `bun scripts/condensed-keyed.ts ramayana` accepts a verse only where they
+  agree letter for letter — 174 of 214 (81%);
+- a third reader decided the other 40 from the image (`adjudicate-1.json`):
+  24 confirmed the shared reading over a flagged doubt, 4 sided with A, 6 with
+  B, 6 with neither — among them misprints in the book itself, kept as printed
+  (वर्पाणि for वर्षाणि; overrides correct them, as with GRETIL's typos);
+- the same reader re-transcribed 20 random agreed verses blind: 20 of 20
+  identical (`blind-check.json`).
+`keyed.json` is the result.
+
+`text.yaml` (`bun scripts/condensed-text.ts ramayana`): 1,585 sections —
+1,371 from the critical edition and 214 from the scan, each of these marked
+`scan:` and numbered after the critical verse the book quotes before it
+(`1.14.6+1`) — 14,208 words.
 
 Licence: the verse ids point into GRETIL texts (CC BY-NC-SA 4.0 per their
 headers). The book contributes only the selection and its order.

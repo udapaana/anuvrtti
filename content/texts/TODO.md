@@ -25,3 +25,10 @@ OCR them, align each verse to the critical edition by order (the same
 matcher as the condensed books, `scripts/lib/condensed-match.ts`), and keep
 only the verses and readings that differ — the diff — as a vendored overlay.
 Then replace the book-OCR text of the 214 verses with the edition's.
+
+## The reader should say when a verse comes from a scan
+
+`text.yaml` marks the 214 scan-read verses of the condensed Rāmāyaṇa with
+`scan:` (agreed / adjudicated), but `build-texts.ts` does not pass it through,
+so the text page shows them like any edition verse. It should say "read from
+the 1935 book's scan" beside them, and link the crop.

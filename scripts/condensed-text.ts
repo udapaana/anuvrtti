@@ -59,7 +59,7 @@ for (const e of sel.entries) {
     const k = keyed.get(e.ocr_line);
     if (k) {
       const lines = k.text.split(' / ').map((l) => l.trim()).filter(Boolean);
-      sections.push({ id: k.section, lines, iast: lines.map((l) => transliterate(l, 'devanagari', 'iast')).join(' | '), eid: '', scan: k.by });
+      sections.push({ id: k.section, lines, iast: lines.map((l) => (transliterate(l, 'devanagari', 'iast') as string).replace(/ṁ/g, 'ṃ')).join(' | '), eid: '', scan: k.by });
       fromScan++;
       continue;
     }

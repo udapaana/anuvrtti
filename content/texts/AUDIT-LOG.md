@@ -231,3 +231,34 @@ and is not used. The condensed Rāmāyaṇa is matched into the critical text
 throughout; its 15 placements in the file were mapped to the critical verse
 of the same number (at most two letters apart). The 214 verses the 1935 book
 quotes from the vulgate wait for a Kumbhakonam text.
+
+---
+
+## 2026-11-16 · Condensed Rāmāyaṇa: 214 verses read from the scan
+
+**Scope.** The verses the 1935 book quotes from the vulgate, absent from the
+critical edition, whose text could come only from the book's scan.
+
+**Method.** Each verse cropped from the scan (archive.org layout →
+page and box; crops committed). Two machine readings (archive.org's OCR,
+Tesseract san+hin) as hints only. Two independent transcribers per crop;
+agreement letter for letter settles a verse; every disagreement, and every
+shared reading either flagged as uncertain, decided by a third reader from
+the image. A blind re-reading of 20 random agreed verses measured the
+agreed set.
+
+**Found.** Keyers agreed on 174 of 214 (81.3%). Of the 40 adjudicated, 24
+confirmed the shared reading, 4 went to A, 6 to B, 6 to neither. Blind check:
+20 of 20 identical — no residual error found; at that sample size the agreed
+set's error rate is very probably below 15%, and independent agreement makes
+it likelier far lower. The machine readings were wrong in almost every
+verse (ददो for ददौ, broken conjuncts): double keying, not OCR, is what makes
+this text trustworthy.
+
+**Kept as printed.** Misprints in the 1935 book (वर्पाणि, नगराचूर्णं,
+वपुरार्स्थाय …) stay in the text, as GRETIL's do, to be corrected in the
+overrides with a note.
+
+**Still open.** Six readings the adjudicator called best-effort on damaged
+print (1038, 4123, 9245, 1832, 7546, 17341/17400); and the whole set is to
+be replaced by the Kumbhakonam text when it comes (TODO.md).
