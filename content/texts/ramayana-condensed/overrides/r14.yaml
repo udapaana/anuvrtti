@@ -1,0 +1,324 @@
+# Rāmāyaṇa (condensed), sections 6.12.3 – 6.83.30 (batch r14).
+# Format: see the header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+
+'6.12.3':
+  मित्रभावेन:
+    split:
+      - { form: मित्र, lemma: मित्र, member: true, gloss: "friend" }
+      - { form: भावेन, lemma: भाव, a: तृतीया एकवचन पुंलिङ्ग, gloss: "in the guise of (मित्रभावेन: as a friend)" }
+  संप्राप्तं:
+    split:
+      - { form: संप्राप्तम्, lemma: संप्राप्, a: द्वितीया एकवचन पुंलिङ्ग क्त, gloss: "one who has come (to me)" }
+  त्यजेयं:
+    fix:
+      1: { gloss: "I could abandon" }
+  कथं:
+    fix:
+      1: { gloss: "how? (with न … चन: by no means)" }
+  चन:
+    fix:
+      1: { gloss: "at all (कथं चन with न: in no way)" }
+  दोषो:
+    fix:
+      1: { gloss: "a fault" }
+  तस्य:
+    fix:
+      1: { gloss: "his" }
+  स्यात्सतामेतदगर्हितम्:
+    fix:
+      1: { gloss: "there should be" }
+      2: { gloss: "the good, the virtuous" }
+      4: { gloss: "not blamed, blameless" }
+
+'6.12.9':
+  सुदुष्टो:
+    fix:
+      1: { gloss: "very wicked" }
+  वाप्यदुष्टो:
+    split:
+      - { form: वा, lemma: वा, a: अव्यय, gloss: "or" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+      - { form: अदुष्टः, lemma: अदुष्ट, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "not wicked" }
+  किमेष:
+    fix:
+      1: { gloss: "what (does it matter)?" }
+  रजनीचरः:
+    fix:
+      1: { gloss: "night-walker, a rākṣasa" }
+  सूक्ष्ममप्यहितं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "the slightest" }
+      3: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "harm" }
+  ममाशक्तः:
+    fix:
+      1: { gloss: "to me" }
+      2: { gloss: "unable" }
+  कथं:
+    fix:
+      1: { gloss: "how? (with चन: in any way)" }
+  चन:
+    fix:
+      1: { gloss: "at all (कथं चन: in any way)" }
+
+'6.12.15':
+  आर्तो:
+    fix:
+      1: { gloss: "in distress" }
+  दृप्तः:
+    fix:
+      1: { gloss: "proud, arrogant" }
+  परेषां:
+    fix:
+      1: { gloss: "others, enemies (here: his foes)" }
+  शरणं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "refuge, protection" }
+  गतः:
+    fix:
+      1: { gloss: "gone (शरणं गतः: come for refuge)" }
+  अरिः:
+    fix:
+      1: { gloss: "an enemy" }
+  प्राणान्परित्यज्य:
+    split:
+      - { form: प्राणान्, lemma: प्राण, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "life (the vital breaths)" }
+      - { form: परित्यज्य, lemma: परित्यज्, a: अव्यय ल्यप्, gloss: "giving up" }
+  रक्षितव्यः:
+    fix:
+      1: { gloss: "is to be protected" }
+  कृतात्मना:
+    fix:
+      1: { gloss: "by one whose self is disciplined" }
+
+'6.12.20':
+  सकृदेव:
+    fix:
+      1: { gloss: "once" }
+  प्रपन्नाय:
+    fix:
+      1: { gloss: "to one who has come for refuge" }
+  तवास्मीति:
+    split:
+      - { form: तव, lemma: युष्मद्, a: षष्ठी एकवचन, gloss: "yours" }
+      - { form: अस्मि, lemma: अस्, a: लट् उत्तमपुरुष एकवचन परस्मैपद, gloss: "I am" }
+      - { form: इति, lemma: इति, a: अव्यय, gloss: "(closing his words)" }
+  याचते:
+    fix:
+      1: { lemma: याच्, a: चतुर्थी एकवचन पुंलिङ्ग शतृ, gloss: "to one who begs" }
+    note: >-
+      याचते here is not a verb but the dative of a present participle, parallel
+      to प्रपन्नाय: "to one who begs, saying 'I am yours'". The commentators gloss
+      it याचमानाय; the active participle of an ātmanepada root is epic usage.
+  अभयं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "safety, freedom from fear" }
+  सर्वभूतेभ्यो:
+    split:
+      - { form: सर्व, lemma: सर्व, member: true, gloss: "all" }
+      - { form: भूतेभ्यः, lemma: भूत, a: पञ्चमी बहुवचन नपुंसकलिङ्ग, gloss: "beings (from all beings)" }
+    note: "अभयं सर्वभूतेभ्यः: safety from all creatures, the ablative of what is feared; it could also be read as a dative, 'to all creatures'."
+  ददाम्येतद्व्रतं:
+    fix:
+      1: { gloss: "I grant" }
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (is)" }
+      3: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "a vow" }
+  मम:
+    fix:
+      1: { gloss: "my" }
+
+'6.13.1':
+  राघवेणाभये:
+    fix:
+      1: { gloss: "by Rāghava (Rāma)" }
+      2: { lemma: अभय, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "safety, protection" }
+  दत्ते:
+    fix:
+      1: { lemma: दा, a: सप्तमी एकवचन नपुंसकलिङ्ग क्त, gloss: "given" }
+    note: "राघवेण अभये दत्ते: a locative absolute, 'when Rāghava had granted protection'."
+  संनतो:
+    fix:
+      1: { gloss: "bowing low" }
+  रावणानुजः:
+    split:
+      - { form: रावण, lemma: रावण, member: true, gloss: "Rāvaṇa" }
+      - { form: अनुजः, lemma: अनुज, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "younger brother" }
+  खात्पपातावनिं:
+    fix:
+      1: { lemma: ख, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "from the sky" }
+      2: { gloss: "descended" }
+      3: { gloss: "to the earth" }
+  हृष्टो:
+    fix:
+      1: { gloss: "delighted" }
+  भक्तैरनुचरैः:
+    fix:
+      1: { gloss: "devoted" }
+      2: { gloss: "followers" }
+  सह:
+    fix:
+      1: { gloss: "together with" }
+
+'6.13.3':
+  रामं:
+    fix:
+      1: { gloss: "Rāma" }
+  वाक्यं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "words, speech" }
+  विभीषणः:
+    fix:
+      1: { gloss: "Vibhīṣaṇa" }
+  धर्मयुक्तं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "righteous" }
+  युक्तं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "fitting, apt" }
+  साम्प्रतं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "timely" }
+  संप्रहर्षणम्:
+    split:
+      - { form: संप्रहर्षणम्, lemma: संप्रहर्षण, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "gladdening" }
+
+'6.13.8':
+  तेन:
+    fix:
+      1: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "with that (sea-water)" }
+    note: "तेन is the water Rāma has just had brought from the sea (समुद्राज्जलम्, the verse before), hence neuter."
+  चेमं:
+    split:
+      - { form: च, lemma: च, a: अव्यय, gloss: "and" }
+      - { form: इमम्, lemma: इदम्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "this" }
+  महाप्राज्ञमभिषिञ्च:
+    split:
+      - { form: महा, lemma: महत्, member: true, gloss: "very" }
+      - { form: प्राज्ञम्, lemma: प्राज्ञ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "wise" }
+      - { form: अभिषिञ्च, lemma: अभिषिच्, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "consecrate" }
+  विभीषणम्:
+    fix:
+      1: { gloss: "Vibhīṣaṇa" }
+  राजानं:
+    fix:
+      1: { gloss: "as king" }
+  रक्षसां:
+    fix:
+      1: { a: षष्ठी बहुवचन नपुंसकलिङ्ग, gloss: "of the rākṣasas" }
+  प्रसन्ने:
+    fix:
+      1: { lemma: प्रसन्न, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "pleased, gracious" }
+  मयि:
+    fix:
+      1: { gloss: "I (मयि प्रसन्ने: since I am pleased)" }
+  मानद:
+    fix:
+      1: { gloss: "O giver of honour" }
+
+'6.13.9':
+  एवमुक्तस्तु:
+    fix:
+      2: { lemma: वच्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "addressed" }
+  सौमित्रिरभ्यषिञ्चद्विभीषणम्:
+    fix:
+      1: { gloss: "Saumitri (Lakṣmaṇa, Sumitrā's son)" }
+      2: { gloss: "consecrated" }
+      3: { gloss: "Vibhīṣaṇa" }
+  मध्ये:
+    fix:
+      1: { lemma: मध्य, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "in the midst of" }
+  वानरमुख्यानां:
+    split:
+      - { form: वानर, lemma: वानर, member: true, gloss: "monkey" }
+      - { form: मुख्यानाम्, lemma: मुख्य, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "chiefs" }
+  राजानं:
+    fix:
+      1: { gloss: "as king" }
+  रामशासनात्:
+    split:
+      - { form: राम, lemma: राम, member: true, gloss: "Rāma" }
+      - { form: शासनात्, lemma: शासन, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "at the command" }
+
+'6.13.9+1':
+  ततः:
+    fix:
+      1: { gloss: "then" }
+  सागरवेलायां:
+    split:
+      - { form: सागर, lemma: सागर, member: true, gloss: "the ocean" }
+      - { form: वेलायाम्, lemma: वेला, a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: "on the shore" }
+  दर्भानास्तीर्य:
+    split:
+      - { form: दर्भान्, lemma: दर्भ, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "darbha grass" }
+      - { form: आस्तीर्य, lemma: आस्तॄ, a: अव्यय ल्यप्, gloss: "having spread" }
+  राघवः:
+    fix:
+      1: { gloss: "Rāghava (Rāma)" }
+  अञ्जलिं:
+    fix:
+      1: { gloss: "the hollowed hands joined in reverence" }
+  प्राङ्मुखः:
+    fix:
+      1: { gloss: "facing east" }
+  प्रतिशिश्ये:
+    fix:
+      1: { gloss: "lay down (to entreat)" }
+  महोदधेः:
+    fix:
+      1: { gloss: "the great ocean (before it)" }
+
+'6.14.2':
+  दर्शयते:
+    fix:
+      1: { gloss: "showed himself" }
+  मन्दस्तदा:
+    fix:
+      1: { gloss: "dull, sluggish" }
+  रामस्य:
+    fix:
+      1: { gloss: "to Rāma" }
+  सागरः:
+    fix:
+      1: { gloss: "the ocean" }
+  प्रयतेनापि:
+    fix:
+      1: { gloss: "self-restrained, devout" }
+  रामेण:
+    fix:
+      1: { gloss: "by Rāma" }
+  यथार्हमभिपूजितः:
+    split:
+      - { form: यथार्हम्, lemma: यथार्हम्, a: अव्यय, gloss: "as is due" }
+      - { form: अभिपूजितः, lemma: अभिपूज्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "honoured, worshipped" }
+
+'6.14.3':
+  समुद्रस्य:
+    fix:
+      1: { gloss: "with the ocean" }
+  ततः:
+    fix:
+      1: { gloss: "then" }
+  क्रुद्धो:
+    fix:
+      1: { gloss: "angry" }
+  रामो:
+    fix:
+      1: { gloss: "Rāma" }
+  रक्तान्तलोचनः:
+    split:
+      - { form: रक्त, lemma: रक्त, member: true, gloss: "red" }
+      - { form: अन्त, lemma: अन्त, member: true, gloss: "corner" }
+      - { form: लोचनः, lemma: लोचन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "eye (रक्तान्तलोचन: his eyes red at the corners)" }
+  समीपस्थमुवाचेदं:
+    split:
+      - { form: समीप, lemma: समीप, member: true, gloss: "nearby" }
+      - { form: स्थम्, lemma: स्थ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "standing" }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
+  लक्ष्मणं:
+    fix:
+      1: { gloss: "Lakṣmaṇa" }
+  शुभलक्ष्मणम्:
+    split:
+      - { form: शुभ, lemma: शुभ, member: true, gloss: "auspicious" }
+      - { form: लक्ष्मणम्, lemma: लक्ष्मण, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "a mark (शुभलक्ष्मण: bearing auspicious marks)" }
+    note: "A बहुव्रीहि on the neuter लक्ष्मण 'a mark', agreeing with लक्ष्मणम् — the poet's play on the name."

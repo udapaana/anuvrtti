@@ -1,0 +1,604 @@
+# Rāmāyaṇa condensed, 5.16.26–5.40.17 (batch r12). Format: see the header of
+# content/texts/pancatantra-kilotpatin/overrides.yaml.
+
+'5.16.26':
+  रावणोऽयं:
+    fix:
+      1: { gloss: "Rāvaṇa" }
+      2: { gloss: "this (is)" }
+  संचिन्त्य:
+    split:
+      - { form: संचिन्त्य, lemma: संचिन्त्, a: अव्यय ल्यप्, gloss: "having reflected, thinking it over" }
+  अवप्लुतो:
+    fix:
+      1: { gloss: "leapt down" }
+  हनूमान्मारुतात्मजः:
+    split:
+      - { form: हनूमान्, lemma: हनूमत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Hanumān" }
+      - { form: मारुत, lemma: मारुत, member: true, gloss: "the wind, the wind-god" }
+      - { form: आत्मजः, lemma: आत्मज, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "son (मारुतात्मज 'son of the Wind')" }
+
+'5.16.27':
+  स:
+    fix:
+      1: { gloss: "he" }
+  तथाप्युग्रतेजाः:
+    fix:
+      1: { gloss: "so; with अपि, 'even so, for all that'" }
+      2: { gloss: "even, though" }
+      3: { gloss: "of fierce energy" }
+  सन्निर्धूतस्तस्य:
+    fix:
+      1: { lemma: अस्, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: "being, though he was" }
+      2: { lemma: निर्धू, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "shaken off, overpowered" }
+      3: { gloss: "his (Rāvaṇa's)" }
+  तेजसा:
+    fix:
+      1: { gloss: "by the splendour, power" }
+  पत्रगुह्यान्तरे:
+    split:
+      - { form: पत्र, lemma: पत्र, member: true, gloss: "leaf, foliage" }
+      - { form: गुह्य, lemma: गुह्य, member: true, gloss: "hidden, concealed" }
+      - { form: अन्तरे, lemma: अन्तर, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "in the interior, in a gap" }
+    note: "पत्र-गुह्य-अन्तरे — \"in a hidden gap among the leaves\" of the tree where he sat."
+  सक्तो:
+    fix:
+      1: { form: सक्तः, lemma: सञ्ज्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "clinging, holding fast" }
+  हनूमान्संवृतोऽभवत्:
+    split:
+      - { form: हनूमान्, lemma: हनूमत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Hanumān" }
+      - { form: संवृतः, lemma: संवृ, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "covered, concealed" }
+      - { form: अभवत्, lemma: भू, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "became, was" }
+
+'5.16.28':
+  स:
+    fix:
+      1: { gloss: "he" }
+  तामसितकेशान्तां:
+    split:
+      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "her" }
+      - { form: असित, lemma: असित, member: true, gloss: "dark, black" }
+      - { form: केश, lemma: केश, member: true, gloss: "hair" }
+      - { form: अन्ताम्, lemma: अन्त, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "end, tip (असितकेशान्ता 'whose hair is black to the tips')" }
+  सुश्रोणीं:
+    fix:
+      1: { gloss: "with lovely hips" }
+  संहतस्तनीम्:
+    split:
+      - { form: संहत, lemma: संहत, member: true, gloss: "close, firm" }
+      - { form: स्तनीम्, lemma: स्तन, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "breast (संहतस्तनी 'with firm, close-set breasts')" }
+  दिदृक्षुरसितापाङ्गीमुपावर्तत:
+    split:
+      - { form: दिदृक्षुः, lemma: दिदृक्षु, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "wishing to see" }
+      - { form: असित, lemma: असित, member: true, gloss: "dark, black" }
+      - { form: अपाङ्गीम्, lemma: अपाङ्ग, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "the outer corner of the eye (असितापाङ्गी 'dark-eyed')" }
+      - { form: उपावर्तत, lemma: उपावृत्, a: लङ् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "approached, came up to" }
+  रावणः:
+    fix:
+      1: { gloss: "Rāvaṇa" }
+
+'5.18.1':
+  स:
+    fix:
+      1: { gloss: "he" }
+  तां:
+    fix:
+      1: { gloss: "her" }
+  परिवृतां:
+    fix:
+      1: { lemma: परिवृ, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "surrounded (by the rākṣasīs)" }
+  दीनां:
+    fix:
+      1: { lemma: दीन, gloss: "wretched, dejected" }
+  तपस्विनीम्:
+    fix:
+      1: { gloss: "pitiable; living like an ascetic" }
+  साकारैर्मधुरैर्वाक्यैर्न्यदर्शयत:
+    split:
+      - { form: साकारैः, lemma: साकार, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "expressive, full of meaning" }
+      - { form: मधुरैः, lemma: मधुर, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "sweet, honeyed" }
+      - { form: वाक्यैः, lemma: वाक्य, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "with words" }
+      - { form: न्यदर्शयत, lemma: निदृश्, a: लङ् प्रथमपुरुष एकवचन आत्मनेपद णिच्, gloss: "made (his mind) plain, addressed" }
+  रावणः:
+    fix:
+      1: { gloss: "Rāvaṇa" }
+
+'5.18.16':
+  भव:
+    fix:
+      1: { gloss: "be, become" }
+  मैथिलि:
+    fix:
+      1: { gloss: "O Maithilī (Sītā, princess of Mithilā)" }
+  मे:
+    fix:
+      1: { a: षष्ठी एकवचन, gloss: "my" }
+  मोहमेनं:
+    split:
+      - { form: मोहम्, lemma: मोह, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "delusion, infatuation (her clinging to Rāma)" }
+      - { form: एनम्, lemma: एनद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "this" }
+  विसर्जय:
+    split:
+      - { form: विसर्जय, lemma: विसृज्, a: लोट् मध्यमपुरुष एकवचन परस्मैपद णिच्, gloss: "give up, let go" }
+  बह्वीनामुत्तमस्त्रीणां:
+    split:
+      - { form: बह्वीनाम्, lemma: बहु, a: षष्ठी बहुवचन स्त्रीलिङ्ग, gloss: "many" }
+      - { form: उत्तम, lemma: उत्तम, member: true, gloss: "finest, best" }
+      - { form: स्त्रीणाम्, lemma: स्त्री, a: षष्ठी बहुवचन स्त्रीलिङ्ग, gloss: "of women" }
+    note: "A partitive genitive: \"chief queen over many excellent women\"."
+  ममाग्रमहिषी:
+    fix:
+      1: { gloss: "my" }
+      2: { gloss: "the chief queen" }
+  भव#2:
+    fix:
+      1: { gloss: "be, become" }
+
+'5.18.25':
+  निक्षिप्तविजयो:
+    split:
+      - { form: निक्षिप्त, lemma: निक्षिप्त, member: true, gloss: "thrown down, laid aside" }
+      - { form: विजयः, lemma: विजय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "conquest (निक्षिप्तविजय 'who has given up conquest')" }
+  रामो:
+    fix:
+      1: { gloss: "Rāma" }
+  गतश्रीर्वनगोचरः:
+    split:
+      - { form: गत, lemma: गत, member: true, gloss: "gone" }
+      - { form: श्रीः, lemma: श्री, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "fortune, royal glory (गतश्री 'whose fortune is gone')" }
+      - { form: वनगोचरः, lemma: वनगोचर, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "roaming the forest" }
+    note: "गतश्रीः is a बहुव्रीहि in -श्री, masculine because it qualifies Rāma."
+  व्रती:
+    fix:
+      1: { gloss: "under a vow" }
+  स्थण्डिलशायी:
+    fix:
+      1: { gloss: "sleeping on the bare ground" }
+  शङ्के:
+    fix:
+      1: { lemma: शङ्क्, a: लट् उत्तमपुरुष एकवचन आत्मनेपद, gloss: "I doubt, I wonder (whether)" }
+  जीवति:
+    fix:
+      1: { gloss: "lives, is alive" }
+
+'5.19.3':
+  तृणमन्तरतः:
+    split:
+      - { form: तृणम्, lemma: तृण, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "a blade of grass" }
+      - { form: अन्तरतः, lemma: अन्तरतस्, a: अव्यय, gloss: "in between" }
+    note: "She speaks with a blade of grass set between herself and Rāvaṇa — she will not address him directly."
+  कृत्वा:
+    fix:
+      1: { gloss: "having put, placing" }
+  प्रत्युवाच:
+    fix:
+      1: { gloss: "replied" }
+  शुचिस्मिता:
+    split:
+      - { form: शुचि, lemma: शुचि, member: true, gloss: "pure, bright" }
+      - { form: स्मिता, lemma: स्मित, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "smile (शुचिस्मिता 'she of the bright smile')" }
+  निवर्तय:
+    fix:
+      1: { lemma: निवृत्, a: लोट् मध्यमपुरुष एकवचन परस्मैपद णिच्, gloss: "turn back, withdraw" }
+  मनो:
+    fix:
+      1: { form: मनः, lemma: मनस्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "mind, heart" }
+  मत्तः:
+    fix:
+      1: { lemma: अस्मद्, a: पञ्चमी एकवचन, gloss: "from me" }
+    note: "मत्तः is अस्मद् with -तस् (मत् + तस्), \"from me\" — not मत्त \"drunk\"."
+  स्वजने:
+    split:
+      - { form: स्व, lemma: स्व, member: true, gloss: "one's own" }
+      - { form: जने, lemma: जन, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "people (स्वजन 'one's own people, one's wives')" }
+  क्रियतां:
+    fix:
+      1: { gloss: "let (your mind) be set (on)" }
+  मनः:
+    fix:
+      1: { lemma: मनस्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "mind, heart" }
+
+'5.19.4':
+  मां:
+    fix:
+      1: { gloss: "me" }
+  प्रार्थयितुं:
+    fix:
+      1: { lemma: प्रार्थ्, a: अव्यय तुमुन्, gloss: "to woo, to court" }
+  युक्तस्त्वं:
+    fix:
+      1: { gloss: "fit, right (for you to)" }
+      2: { gloss: "you" }
+  सिद्धिमिव:
+    fix:
+      1: { gloss: "perfection, final beatitude" }
+    note: "As a sinner cannot hope to win perfection (सिद्धि), so Rāvaṇa cannot win her."
+  पापकृत्:
+    split:
+      - { form: पाप, lemma: पाप, member: true, gloss: "evil, sin" }
+      - { form: कृत्, lemma: कृ, a: प्रथमा एकवचन पुंलिङ्ग क्विप्, gloss: "doing (पापकृत् 'an evil-doer')" }
+  अकार्यं:
+    fix:
+      1: { gloss: "a wrong deed, what ought not to be done" }
+  मया:
+    fix:
+      1: { gloss: "by me" }
+  कार्यमेकपत्न्या:
+    fix:
+      1: { gloss: "to be done" }
+      2: { gloss: "by a woman faithful to one husband" }
+  विगर्हितम्:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "condemned, blameworthy" }
+  कुलं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "family (the one she married into)" }
+  संप्राप्तया:
+    split:
+      - { form: सम्प्राप्तया, lemma: सम्प्राप्, a: तृतीया एकवचन स्त्रीलिङ्ग क्त, gloss: "who has come into (a family, by marriage)" }
+  पुण्यं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "holy, virtuous" }
+  कुले:
+    fix:
+      1: { gloss: "in a family" }
+  महति:
+    fix:
+      1: { lemma: महत्, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "great, noble" }
+  जातया:
+    fix:
+      1: { lemma: जन्, a: तृतीया एकवचन स्त्रीलिङ्ग क्त, gloss: "born" }
+
+'5.19.6':
+  नाहमौपयिकी:
+    split:
+      - { form: न, lemma: न, a: अव्यय, gloss: "not" }
+      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: "I" }
+      - { form: औपयिकी, lemma: औपयिक, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "fit, suitable" }
+  भार्या:
+    fix:
+      1: { gloss: "a wife" }
+  परभार्या:
+    split:
+      - { form: पर, lemma: पर, member: true, gloss: "another" }
+      - { form: भार्या, lemma: भार्या, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "wife (परभार्या 'another's wife')" }
+  सती:
+    fix:
+      1: { lemma: अस्, a: प्रथमा एकवचन स्त्रीलिङ्ग शतृ, gloss: "being; also 'a faithful wife'" }
+  तव:
+    fix:
+      1: { gloss: "for you, your" }
+  साधु:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "well, rightly (as an adverb)" }
+  धर्ममवेक्षस्व:
+    split:
+      - { form: धर्मम्, lemma: धर्म, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "duty, righteousness" }
+      - { form: अवेक्षस्व, lemma: अवेक्ष्, a: लोट् मध्यमपुरुष एकवचन आत्मनेपद, gloss: "look to, consider" }
+  साधु#2:
+    fix:
+      1: { gloss: "well, rightly (as an adverb)" }
+  साधुव्रतं:
+    split:
+      - { form: साधु, lemma: साधु, member: true, gloss: "good, virtuous" }
+      - { form: व्रतम्, lemma: व्रत, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "vow, rule of conduct (साधुव्रत 'the conduct of the good')" }
+  चर:
+    fix:
+      1: { gloss: "practise, observe" }
+
+'5.19.7':
+  तव:
+    fix:
+      1: { gloss: "your" }
+  तथान्येषां:
+    fix:
+      2: { gloss: "of others" }
+  रक्ष्या:
+    fix:
+      1: { form: रक्ष्याः, lemma: रक्ष्, a: प्रथमा बहुवचन पुंलिङ्ग ण्यत्, gloss: "to be protected" }
+  दारा:
+    fix:
+      1: { form: दाराः, lemma: दार, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "wives (दार 'wife' is masculine and plural)" }
+  निशाचर:
+    fix:
+      1: { gloss: "night-roamer, demon" }
+  आत्मानमुपमां:
+    fix:
+      1: { gloss: "oneself" }
+      2: { gloss: "comparison, standard (आत्मानम् उपमां कृत्वा 'taking yourself as the measure')" }
+  कृत्वा:
+    fix:
+      1: { gloss: "making" }
+  स्वेषु:
+    fix:
+      1: { gloss: "your own" }
+  दारेषु:
+    fix:
+      1: { gloss: "wives" }
+  रम्यताम्:
+    fix:
+      1: { gloss: "let pleasure be taken (impersonal passive: 'take your pleasure')" }
+
+'5.19.9':
+  सन्तो:
+    fix:
+      1: { form: सन्तः, lemma: सत्, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "the good, virtuous men" }
+  सन्ति:
+    fix:
+      1: { gloss: "are, exist" }
+  सतो:
+    fix:
+      1: { form: सतः, lemma: सत्, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "the good" }
+  नानुवर्तसे:
+    split:
+      - { form: न, lemma: न, a: अव्यय, gloss: "not" }
+      - { form: अनुवर्तसे, lemma: अनुवृत्, a: लट् मध्यमपुरुष एकवचन आत्मनेपद, gloss: "you follow" }
+  वचो:
+    fix:
+      1: { form: वचः, lemma: वचस्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "word, counsel" }
+  मिथ्या:
+    fix:
+      1: { gloss: "wrongly (मिथ्याप्रणीतात्मा 'whose mind is wrongly led')" }
+  प्रणीतात्मा:
+    split:
+      - { form: प्रणीत, lemma: प्रणीत, member: true, gloss: "led, guided" }
+      - { form: आत्मा, lemma: आत्मन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "mind, self" }
+    note: "Other editions print मिथ्याप्रणीतात्मा as one word: a बहुव्रीहि, \"you whose mind is wrongly led\"."
+  पथ्यमुक्तं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "wholesome, salutary" }
+      2: { lemma: वच्, a: द्वितीया एकवचन नपुंसकलिङ्ग क्त, gloss: "spoken" }
+  विचक्षणैः:
+    fix:
+      1: { gloss: "by the wise" }
+
+'5.19.9+1':
+  विपरीता:
+    fix:
+      1: { lemma: विपरीत, gloss: "perverse, contrary" }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: षष्ठी एकवचन, gloss: "your" }
+  बुद्धिराचारवर्जिता:
+    split:
+      - { form: बुद्धिः, lemma: बुद्धि, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "mind, understanding" }
+      - { form: आचार, lemma: आचार, member: true, gloss: "good conduct" }
+      - { form: वर्जिता, lemma: वृज्, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "devoid of, without" }
+
+'5.19.9+2':
+  विदितः:
+    fix:
+      1: { gloss: "well known" }
+  स:
+    fix:
+      1: { gloss: "he (Rāma)" }
+  शरणागतवत्सलः:
+    split:
+      - { form: शरण, lemma: शरण, member: true, gloss: "refuge, shelter" }
+      - { form: आगत, lemma: आगत, member: true, gloss: "come" }
+      - { form: वत्सलः, lemma: वत्सल, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "tender towards (शरणागत 'one come for refuge')" }
+  तेन:
+    fix:
+      1: { gloss: "with him" }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: षष्ठी एकवचन, gloss: "your" }
+  जीवितुमिच्छसि:
+    fix:
+      2: { gloss: "you wish" }
+
+'5.19.9+3':
+  मां:
+    fix:
+      1: { gloss: "me" }
+  चास्मै:
+    split:
+      - { form: च, lemma: च, a: अव्यय, gloss: "and" }
+      - { form: अस्मै, lemma: इदम्, a: चतुर्थी एकवचन पुंलिङ्ग, gloss: "to him" }
+  प्रयतो:
+    fix:
+      1: { gloss: "self-restrained, humbled" }
+  भूत्वा:
+    fix:
+      1: { gloss: "becoming, being" }
+  निर्यातयितुमर्हसि:
+    split:
+      - { form: निर्यातयितुम्, lemma: निर्यत्, a: अव्यय तुमुन् णिच्, gloss: "to give back, restore" }
+      - { form: अर्हसि, lemma: अर्ह्, a: लट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "you ought" }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: चतुर्थी एकवचन, gloss: "for you" }
+  भवेत्:
+    fix:
+      1: { gloss: "there would be" }
+  स्वस्ति:
+    fix:
+      1: { a: अव्यय, gloss: "well-being, safety" }
+  संप्रदाय:
+    split:
+      - { form: सम्प्रदाय, lemma: सम्प्रदा, a: अव्यय ल्यप्, gloss: "having handed over" }
+  रघूत्तमे:
+    fix:
+      1: { gloss: "to the best of the Raghus (Rāma)" }
+
+'5.20.1':
+  सीताया:
+    fix:
+      1: { gloss: "Sītā's" }
+  वचनं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "words, speech" }
+  परुषं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "harsh" }
+  राक्षसाधिपः:
+    fix:
+      1: { form: राक्षस, member: true, gloss: "the Rākṣasas" }
+      2: { gloss: "lord, king" }
+  प्रत्युवाच:
+    fix:
+      1: { gloss: "replied" }
+  ततः:
+    fix:
+      1: { gloss: "then" }
+  सीतां:
+    fix:
+      1: { gloss: "Sītā" }
+  विप्रियं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "something unkind, unpleasant (words)" }
+  प्रियदर्शनाम्:
+    fix:
+      1: { lemma: प्रियदर्शन, gloss: "lovely to look at" }
+
+'5.20.4':
+  वामः:
+    fix:
+      1: { gloss: "contrary, perverse" }
+  कामो:
+    fix:
+      1: { gloss: "love, desire" }
+  मनुष्याणां:
+    fix:
+      1: { gloss: "of men" }
+  यस्मिन्किल:
+    fix:
+      1: { gloss: "on whom" }
+      2: { gloss: "indeed, they say" }
+  निबध्यते:
+    fix:
+      1: { gloss: "is fastened, is fixed" }
+  जने:
+    fix:
+      1: { lemma: जन, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "person" }
+  तस्मिंस्त्वनुक्रोशः:
+    fix:
+      1: { gloss: "towards that one" }
+      3: { gloss: "tenderness, compassion" }
+  स्नेहश्च:
+    fix:
+      1: { gloss: "affection, love" }
+  किल:
+    fix:
+      1: { gloss: "indeed, as is said" }
+  जायते:
+    fix:
+      1: { gloss: "arises, is born" }
+
+'5.20.5':
+  एतस्मात्कारणान्न:
+    fix:
+      1: { gloss: "this" }
+      2: { gloss: "reason (एतस्मात् कारणात् 'for this reason')" }
+  तां:
+    fix:
+      1: { gloss: "her — i.e. you, the woman before him" }
+    note: "Most editions read त्वाम् here (न त्वां घातयामि); the condensed book prints ताम्, kept as printed."
+  घतयामि:
+    split:
+      - { form: घातयामि, lemma: हन्, a: लट् उत्तमपुरुष एकवचन परस्मैपद णिच्, gloss: "I have (you) killed" }
+    note: "The book prints घतयामि, a misprint for घातयामि — the causative of हन् (घात-)."
+  वरानने:
+    fix:
+      1: { a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "O fair-faced lady" }
+  वधार्हामवमानार्हां:
+    split:
+      - { form: वध, lemma: वध, member: true, gloss: "death, execution" }
+      - { form: अर्हाम्, lemma: अर्ह, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "deserving" }
+      - { form: अवमान, lemma: अवमान, member: true, gloss: "contempt, disgrace" }
+      - { form: अर्हाम्, lemma: अर्ह, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "deserving" }
+  मिथ्याप्रव्रजिते:
+    split:
+      - { form: मिथ्या, lemma: मिथ्या, member: true, gloss: "false" }
+      - { form: प्रव्रजिते, lemma: प्रव्रजित, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "an ascetic, one gone into the wandering life (Rāma, a 'sham ascetic')" }
+  रताम्:
+    fix:
+      1: { lemma: रम्, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "devoted to, attached to" }
+
+'5.20.8':
+  द्वौ:
+    fix:
+      1: { gloss: "two" }
+  मासौ:
+    fix:
+      1: { gloss: "months" }
+  रक्षितव्यौ:
+    fix:
+      1: { gloss: "to be waited out, observed" }
+  मे:
+    fix:
+      1: { a: षष्ठी एकवचन, gloss: "by me (the agent of a gerundive)" }
+  योऽवधिस्ते:
+    fix:
+      1: { gloss: "which" }
+      2: { gloss: "term, time-limit" }
+      3: { lemma: युष्मद्, a: चतुर्थी एकवचन, gloss: "for you" }
+  मया:
+    fix:
+      1: { gloss: "by me" }
+  कृतः:
+    fix:
+      1: { gloss: "set, fixed" }
+  ततः:
+    fix:
+      1: { gloss: "after that" }
+  शयनमारोह:
+    split:
+      - { form: शयनम्, lemma: शयन, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "bed" }
+      - { form: आरोह, lemma: आरुह्, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "climb into, mount" }
+  मम:
+    fix:
+      1: { gloss: "my" }
+  त्वं:
+    split:
+      - { form: त्वम्, lemma: युष्मद्, a: प्रथमा एकवचन, gloss: "you" }
+  वरवर्णिनि:
+    split:
+      - { form: वरवर्णिनि, lemma: वरवर्णिनी, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "O fair lady" }
+
+'5.20.9':
+  द्वाभ्यामूर्ध्वं:
+    split:
+      - { form: द्वाभ्याम्, lemma: द्वि, a: पञ्चमी द्विवचन पुंलिङ्ग, gloss: "two" }
+      - { form: ऊर्ध्वम्, lemma: ऊर्ध्वम्, a: अव्यय, gloss: "after, beyond (with an ablative)" }
+  मासाभ्यां:
+    fix:
+      1: { a: पञ्चमी द्विवचन पुंलिङ्ग, gloss: "months" }
+  भर्तारं:
+    fix:
+      1: { lemma: भर्तृ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "husband" }
+  मामनिच्छतीम्:
+    split:
+      - { form: माम्, lemma: अस्मद्, a: द्वितीया एकवचन, gloss: "me" }
+      - { form: अनिच्छतीम्, lemma: अनिच्छत्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "not wanting, unwilling" }
+  मम:
+    fix:
+      1: { gloss: "my, for me" }
+  त्वां:
+    fix:
+      1: { gloss: "you" }
+  प्रातराशार्थमारभन्ते:
+    fix:
+      1: { form: प्रातराश, member: true, gloss: "the morning meal, breakfast" }
+      2: { gloss: "for the sake of (प्रातराशार्थम् 'for breakfast')" }
+      3: { gloss: "(they) will cut up (present for future)" }
+  महानसे:
+    fix:
+      1: { gloss: "in the kitchen" }
+
+'5.20.9+1':
+  प्रस्थितः:
+    fix:
+      1: { gloss: "set out, went off" }
+  स:
+    fix:
+      1: { gloss: "he" }
+  दशग्रीवः:
+    fix:
+      1: { gloss: "the Ten-necked (Rāvaṇa)" }
+  कम्पयन्निव:
+    fix:
+      1: { lemma: कम्प्, a: प्रथमा एकवचन पुंलिङ्ग शतृ णिच्, gloss: "making tremble" }
+  मेदिनीम्:
+    fix:
+      1: { gloss: "the earth" }
