@@ -117,8 +117,12 @@ function resolveSpec(spec: PadaSpec, base: Analysis | null, pool: Analysis[]): {
   // word: दिक्षु as दिश्, not vidyut's प्रतिदिश् + क्विन्, whose short lemma is
   // also दिश्. A कृत्-bearing alternative is taken only when none other fits.
   const plain = (x: Analysis) => !!want.कृत् || !x.कृत्;
-  const hit = (spec.lemma && spec.a ? pool.find((x) => plain(x) && agrees(x, want, lemma)) : undefined)
-    ?? (spec.lemma && spec.a ? undefined : pool.find((x) => agrees(x, want, lemma)));
+  // and one who names no voice means the active: जहृषाते is "they rejoiced",
+  // not vidyut's first match, a passive. A passive is taken when it is named,
+  // or when nothing else fits.
+  const voiced = (xs: Analysis[]) => (want.प्रयोग ? xs : [...xs.filter((x) => !x.प्रयोग || x.प्रयोग === 'कर्तरि'), ...xs.filter((x) => x.प्रयोग && x.प्रयोग !== 'कर्तरि')]);
+  const hit = (spec.lemma && spec.a ? voiced(pool).find((x) => plain(x) && agrees(x, want, lemma)) : undefined)
+    ?? (spec.lemma && spec.a ? undefined : voiced(pool).find((x) => agrees(x, want, lemma)));
   return hit ? { a: hit, source: 'pick' } : { a: want, source: 'author' };
 }
 

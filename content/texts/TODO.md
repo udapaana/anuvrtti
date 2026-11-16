@@ -99,3 +99,11 @@ running authors): let wordsOf() skip a token with no Devanagari letter, keep
 the punctuation in the displayed line (also a stray "æ" and bracketed numbers such as "(२१८)", and bare tale numbers "६"), strip the starred marker in the builder
 (those verses stay +n), then delete the overrides keyed on "!", "?" and the
 marker, and re-snapshot.
+
+## Harmonising pass (after the lemma convention is decided)
+
+- ātmanepada perfects still tagged passive where vidyut offers no active
+  reading (26: Rāmāyaṇa 2, Bhāgavata 9, Mahābhārata 6, Pañcatantra 13):
+  write `कर्तरि` in their analysis.
+- causative absolutives in -यित्वा without णिच् (~70): add णिच् unless the root
+  is चुरादि; how the lemma is cited (भक्षि or भक्ष् + णिच्) is the convention.

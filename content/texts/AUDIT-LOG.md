@@ -388,3 +388,17 @@ to count 36 whole-text padas as mismatches that were only sandhi: a visarga
 dropped before a vowel or a voiced sound (देवक्या for देवक्याः). The check now
 accepts the cell's form less its final visarga for whole texts (counted
 apart); the graded readings, typed as padas, keep the strict comparison.
+
+**Blind sample:** 150 padas (seed 9119: 81 vidyut's own, 45 picks, 24
+authors'): 147 right, 3 wrong — an ātmanepada perfect tagged passive (जहृषाते),
+a printed word's gloss on its first pada (अद्य "even now"), and a causative
+absolutive without णिच् (मोक्षयित्वा).
+
+The first was general: an author who wrote an analysis without naming a voice
+got vidyut's first match, often a passive. build-texts.ts now prefers the
+active (or voiceless) reading in that case, taking a passive only when named
+or when nothing else fits: picks tagged कर्मणि across the texts, 280 → 194.
+Twenty-six ātmanepada perfects still read passive, vidyut offering no active
+reading of them; with the ~70 causative absolutives lacking णिच् (some are
+चुरादि, rightly unmarked), they wait on the lemma convention's harmonising
+pass (TODO.md).
