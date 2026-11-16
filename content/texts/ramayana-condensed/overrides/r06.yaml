@@ -448,10 +448,10 @@
       1: { gloss: 'with the head (bowed)' }
   वन्दनीयस्य:
     fix:
-      1: { gloss: 'to be revered' }
+      1: { lemma: वन्द्, a: षष्ठी एकवचन पुंलिङ्ग अनीयर्, gloss: 'to be revered' }
   वन्द्यौ:
     fix:
-      1: { gloss: 'to be saluted' }
+      1: { lemma: वन्द्, a: प्रथमा द्विवचन पुंलिङ्ग ण्यत्, gloss: 'to be saluted' }
   पादौ:
     fix:
       1: { gloss: 'the two feet' }
@@ -532,10 +532,10 @@
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: '(news of my) well-being' }
   वाच्यो:
     fix:
-      1: { gloss: 'is to be told' }
+      1: { lemma: वच्, a: प्रथमा एकवचन पुंलिङ्ग ण्यत्, gloss: 'is to be told' }
   'वाच्यो#2':
     fix:
-      1: { gloss: 'is to be told' }
+      1: { lemma: वच्, a: प्रथमा एकवचन पुंलिङ्ग ण्यत्, gloss: 'is to be told' }
   मद्वचनेन:
     fix:
       1: { form: मत्, lemma: अस्मद्, member: true, gloss: 'my' }
@@ -664,7 +664,7 @@
       1: { lemma: सहसा, a: अव्यय, gloss: 'rashly, suddenly' }
   कृतः:
     fix:
-      1: { gloss: 'done' }
+      1: { lemma: कृ, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: 'done' }
 
 '2.53.24':
   हा:
@@ -868,8 +868,9 @@
     fix:
       1: { gloss: 'the brahmins' }
   सहामात्यैः:
-    fix:
-      1: { gloss: 'together with the ministers' }
+    split:
+      - { form: सह, lemma: सह, a: अव्यय, gloss: 'together with' }
+      - { form: अमात्यैः, lemma: अमात्य, a: तृतीया बहुवचन पुंलिङ्ग, gloss: 'the ministers' }
   पृथग्वाचमुदीरयन्:
     split:
       - { form: पृथक्, lemma: पृथक्, a: अव्यय, gloss: 'each separately' }
@@ -1442,7 +1443,7 @@
   नुण्कार्यं:
     split:
       - { form: नु, lemma: नु, a: अव्यय, gloss: 'pray, then (in a question)' }
-      - { form: कार्यम्, lemma: कार्य, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: 'to be done (किं कार्यं … राज्येन "what have I to do with the kingdom?")' }
+      - { form: कार्यम्, lemma: कृ, a: प्रथमा एकवचन नपुंसकलिङ्ग ण्यत्, gloss: 'to be done (किं कार्यं … राज्येन "what have I to do with the kingdom?")' }
     note: 'Printed नुण्कार्यं, a misprint for नु कार्यम्.'
   हतस्येह:
     fix:
@@ -1624,7 +1625,7 @@
       1: { gloss: 'greedy (genitive with विदितः: "to you, greedy one")' }
   विदितो:
     fix:
-      1: { gloss: 'known' }
+      1: { lemma: विद्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: 'known' }
   मन्ये:
     split:
       - { form: मन्ये, lemma: मन्, a: लट् उत्तमपुरुष एकवचन आत्मनेपद, gloss: 'I think' }
@@ -2602,7 +2603,7 @@
       1: { gloss: 'with a bow' }
   कार्यमसिना:
     fix:
-      1: { gloss: 'to be done (with an instrumental: "use for")' }
+      1: { lemma: कृ, a: प्रथमा एकवचन नपुंसकलिङ्ग ण्यत्, gloss: 'to be done (with an instrumental: "use for")' }
       2: { gloss: 'a sword' }
   सचर्मणा:
     split:
@@ -2627,10 +2628,10 @@
   पितुस्सत्यं:
     fix:
       1: { lemma: पितृ, a: षष्ठी एकवचन पुंलिङ्ग, gloss: 'father''s' }
-      2: { gloss: 'truth, (his) promise' }
+      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'truth, (his) promise' }
   प्रतिश्रुत्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: 'having promised' }
+      1: { lemma: प्रतिश्रु, a: अव्यय ल्यप्, gloss: 'having promised' }
   हत्वा:
     fix:
       1: { gloss: 'killing' }
@@ -2793,7 +2794,7 @@
   दातुमागतः:
     fix:
       1: { gloss: 'to give' }
-      2: { gloss: 'has come' }
+      2: { lemma: आगम्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: 'has come' }
 
 '2.91.3':
   प्राप्तकालं:
@@ -2838,7 +2839,7 @@
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'harsh (word)' }
   वाच्यो:
     fix:
-      1: { gloss: 'is to be told' }
+      1: { lemma: वच्, a: प्रथमा एकवचन पुंलिङ्ग ण्यत्, gloss: 'is to be told' }
   भरतो:
     fix:
       1: { gloss: 'Bharata' }
