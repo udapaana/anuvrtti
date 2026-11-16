@@ -84,31 +84,73 @@ sw.addEventListener('activate', (event) => {
   copy" reclaims exactly what it downloaded and nothing the lazy path had
   already cached for other reasons.
 */
+/*
+  The offline controls. Three messages:
+
+    CACHE_CORE    fetch + store CORE_ASSETS and the reader's page, reporting
+                  progress as it goes (Settings, and "save offline" on a
+                  graded-reader chapter: the chapters share one data file).
+    CACHE_URLS    the same, plus a whole text's own files ({urls, tag}); what
+                  the core bundle already holds is not fetched twice.
+    UNCACHE_URLS  drop one text's own files ({urls, tag}); the core stays.
+    CLEAR_OFFLINE drop the whole bundle — the "stop wasting my storage,
+                  I've landed" control.
+
+  Kept in a cache separate from the general runtime cache so "remove offline
+  copy" reclaims exactly what it downloaded and nothing the lazy path had
+  already cached for other reasons.
+
+  A page needs its HTML and, for a navigation inside the app, its
+  `__data.json` (the root layout has a server load); both are stored under
+  the bare path and matched ignoring the query, as are the data files, which
+  the app requests with a ?v= build stamp.
+*/
+const READER_PAGES = ['/reader', '/reader/__data.json'];
+
+async function cacheAll(urls: string[], client: Client | null, tag: string | undefined, skipHeld: boolean) {
+  const cache = await caches.open(OFFLINE_CACHE);
+  let done = 0;
+  let bytes = 0;
+  for (const url of urls) {
+    try {
+      if (skipHeld && (await cache.match(url, { ignoreSearch: true }))) { done++; continue; }
+      const res = await fetch(url, { cache: 'reload' });
+      if (res.ok) {
+        bytes += Number(res.headers.get('content-length') ?? 0);
+        await cache.put(url, res.clone());
+      }
+    } catch {
+      // One missing asset shouldn't sink the whole bundle; the reader
+      // still gets everything else, and can retry.
+    }
+    done++;
+    client?.postMessage({ type: 'OFFLINE_PROGRESS', tag, done, total: urls.length, bytes });
+  }
+  client?.postMessage({ type: 'OFFLINE_DONE', tag, done, total: urls.length, bytes });
+}
+
 sw.addEventListener('message', (event) => {
-  const data = event.data as { type?: string } | undefined;
+  const data = event.data as { type?: string; urls?: string[]; tag?: string } | undefined;
   const client = event.source as Client | null;
 
   if (data?.type === 'CACHE_CORE') {
+    event.waitUntil(cacheAll([...CORE_ASSETS, ...READER_PAGES], client, data.tag, false));
+  } else if (data?.type === 'CACHE_URLS') {
+    const own = data.urls ?? [];
+    // the text's own files are always refreshed; the shared core only if missing
     event.waitUntil(
       (async () => {
         const cache = await caches.open(OFFLINE_CACHE);
-        let done = 0;
-        let bytes = 0;
-        for (const url of CORE_ASSETS) {
-          try {
-            const res = await fetch(url, { cache: 'reload' });
-            if (res.ok) {
-              bytes += Number(res.headers.get('content-length') ?? 0);
-              await cache.put(url, res.clone());
-            }
-          } catch {
-            // One missing asset shouldn't sink the whole bundle; the reader
-            // still gets everything else, and can retry.
-          }
-          done++;
-          client?.postMessage({ type: 'OFFLINE_PROGRESS', done, total: CORE_ASSETS.length, bytes });
-        }
-        client?.postMessage({ type: 'OFFLINE_DONE', done, total: CORE_ASSETS.length, bytes });
+        for (const u of own) await cache.delete(u, { ignoreSearch: true });
+        await cacheAll([...own, ...CORE_ASSETS, ...READER_PAGES], client, data.tag, true);
+      })()
+    );
+  } else if (data?.type === 'UNCACHE_URLS') {
+    event.waitUntil(
+      (async () => {
+        const cache = await caches.open(OFFLINE_CACHE);
+        for (const u of data.urls ?? []) await cache.delete(u, { ignoreSearch: true });
+        client?.postMessage({ type: 'OFFLINE_UNCACHED', tag: data.tag });
       })()
     );
   } else if (data?.type === 'CLEAR_OFFLINE') {
@@ -149,9 +191,12 @@ sw.addEventListener('fetch', (event) => {
       // covers (it was fetched deliberately, not just in passing), so check
       // it before the general lazy cache.
       const offlineCache = await caches.open(OFFLINE_CACHE);
-      const fromOffline = await offlineCache.match(event.request);
+      const fromOffline =
+        (await offlineCache.match(event.request)) ??
+        (await offlineCache.match(url.pathname, { ignoreSearch: true }));
       if (fromOffline) return fromOffline;
-      const cachedResponse = await cache.match(event.request);
+      const cachedResponse =
+        (await cache.match(event.request)) ?? (await cache.match(event.request, { ignoreSearch: true }));
       if (cachedResponse) return cachedResponse;
       throw new Error('Network error and no cache available');
     }

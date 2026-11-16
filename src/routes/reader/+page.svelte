@@ -23,6 +23,8 @@
   // aliased: this route already has a `page` of its own (the reading list's)
   import { page as appPage } from '$app/stores';
   import SheetButton from '$lib/components/ui/SheetButton.svelte';
+  import SaveControls from '$lib/components/reader/SaveControls.svelte';
+  import { chapterToHtml } from '$lib/export';
 
   import { paradigmIndex, resolve as resolveParadigm, PARADIGM_READING_IDS } from '$lib/reader/wordParadigm';
   import { questionsFor, drawQuestion, type Question } from '$lib/reader/quiz';
@@ -2273,6 +2275,8 @@
             <span class="label">chapter</span>
             <span class="ch-dev"><Sanskrit text={row.dev} source="devanagari" /></span>
             <span class="ch-en"><Sanskrit text={row.en} source="devanagari" /></span>
+            <SaveControls kind="chapter" id={row.chId} filename={`${row.chId}.html`}
+              html={() => chapterToHtml({ id: row.chId, dev: row.dev, en: row.en }, list.filter((r) => r.chapter === row.chId))} />
           </div>
         {:else}
           <article

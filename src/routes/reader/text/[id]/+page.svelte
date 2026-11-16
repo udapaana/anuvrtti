@@ -23,6 +23,8 @@
   import Grid from '$lib/components/ui/Grid.svelte';
   import Chip from '$lib/components/ui/Chip.svelte';
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
+  import SaveControls from '$lib/components/reader/SaveControls.svelte';
+  import { textToHtml, type ExportText } from '$lib/export';
   import { lookupTerm } from '$lib/jargon';
   import { isNarrow } from '$lib/stores/viewport';
   import { transliterate } from '$lib/transliteration';
@@ -338,6 +340,8 @@
         <span class="label"><Sanskrit text={text.work} source="devanagari" /> · {text.place}</span>
         <span class="ch-dev"><Sanskrit text={text.title} source="devanagari" /></span>
         <span class="ch-en">{text.title_en}</span>
+        <SaveControls kind="text" id={text.id} filename={`${text.id}.html`}
+          html={() => textToHtml(text as unknown as ExportText)} />
       </header>
 
       {#each text.sections as sec, si}
