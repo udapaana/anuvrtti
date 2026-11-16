@@ -59,7 +59,7 @@
 'adi-1-241-26':
   तस्मात्सुभद्रा:
     fix:
-      1: { gloss: "therefore" }
+      1: { a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "therefore" }
       2: { gloss: "Subhadrā" }
   चकमे:
     split:
@@ -164,6 +164,7 @@
       - { form: बीभत्सुः, lemma: बीभत्सु, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Bībhatsu (Arjuna)" }
       - { form: मघवान्, lemma: मघवन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Maghavan (Indra)" }
       - { form: इव, lemma: इव, a: अव्यय, gloss: "like, as" }
+    note: "मघवान्, beside मघवा: मघवन् may take the substitute तृ (6.4.128 मघवा बहुलम्) and then declines like an उगित् stem, with नुम् (7.1.70)."
   तं:
     fix:
       1: { gloss: "him (Arjuna)" }
@@ -950,7 +951,7 @@
 'sabha-2-2-2':
   गमनाय:
     fix:
-      1: { gloss: "to going, departure" }
+      1: { gloss: "for going, departure (गमनाय मतिं चक्रे 'resolved to go')" }
   मतिं:
     fix:
       1: { gloss: "mind, resolve (मतिं चक्रे 'resolved')" }
@@ -979,11 +980,15 @@
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that (material)" }
       2: { a: अव्यय ल्यप्, gloss: "having brought" }
+  तां:
+    fix:
+      1: { gloss: "it (the hall)" }
   चक्रे:
     fix:
       1: { gloss: "built, made" }
   सोऽसुरोऽप्रतिमां:
     fix:
+      1: { gloss: "he" }
       2: { gloss: "the asura (Maya)" }
       3: { gloss: "peerless" }
   सभाम्:
@@ -1010,6 +1015,9 @@
       1: { lemma: शुभ, gloss: "beautiful" }
 
 'sabha-2-4-1':
+  तां:
+    fix:
+      1: { gloss: "that" }
   तु:
     fix:
       1: { gloss: "and, now" }
@@ -1064,6 +1072,9 @@
   चोपविष्टेषु:
     fix:
       2: { gloss: "seated" }
+  गन्धर्वेषु:
+    fix:
+      1: { gloss: "the Gandharvas" }
   भारत:
     fix:
       1: { gloss: "O Bhārata (Janamejaya)" }
@@ -1086,6 +1097,7 @@
       1: { gloss: "from Yudhiṣṭhira" }
   सोऽर्चितः:
     fix:
+      1: { gloss: "he (Nārada)" }
       2: { gloss: "honoured" }
   पाण्डवैः:
     fix:
@@ -1602,7 +1614,7 @@
       1: { gloss: "(your) father" }
   त्वाऽऽह:
     split:
-      - { form: त्वा, lemma: युष्मद्, a: द्वितीया एकवचन, gloss: "to you" }
+      - { form: त्वा, lemma: युष्मद्, a: द्वितीया एकवचन, gloss: "you (आह त्वा 'says to you')" }
       - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "says" }
     note: "आह replaces ब्रवीति in the present (3.4.84); त्वा is the enclitic accusative of युष्मद् (8.1.23)."
   कौन्तेय:
@@ -1749,7 +1761,7 @@
     split:
       - { form: धनपतेः, lemma: धनपति, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "of the lord of wealth (Kubera)" }
       - { form: इष्टाम्, lemma: इष्, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "dear to (the north)" }
-      - { form: अजयत्, lemma: जि, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "conquered" }
+      - { form: अजयत्, lemma: जि, a: लङ् प्रथमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "conquered" }
       - { form: पाकशासनिः, lemma: पाकशासनि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the son of Indra (Arjuna)" }
 
 'sabha-2-26-12':
@@ -2024,7 +2036,8 @@
       1: { gloss: "to Kṛpa" }
   भ्रातृणां:
     split:
-      - { form: भ्रातृणाम्, lemma: भ्रातृ, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "of the brothers (his cousins)" }
+      - { form: भ्रातॄणाम्, lemma: भ्रातृ, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "of the brothers (his cousins)" }
+    note: "SARIT prints भ्रातृणां for भ्रातॄणां: the stem vowel lengthens before नाम् (6.4.3)."
   सर्वेणां:
     split:
       - { form: सर्वेषाम्, lemma: सर्व, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "all" }
@@ -2294,7 +2307,7 @@
   माधवार्हसि:
     fix:
       1: { gloss: "O Mādhava (Kṛṣṇa)" }
-      2: { gloss: "you deserve" }
+      2: { a: लट् मध्यमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "you deserve" }
 
 'sabha-2-40-27':
   अयुक्तामात्मनः:
@@ -2611,7 +2624,7 @@
       - { form: गमिष्यामः, lemma: गम्, a: लृट् उत्तमपुरुष बहुवचन परस्मैपद, gloss: "we shall go" }
       - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
       - { form: अनुज्ञातुम्, lemma: अनुज्ञा, a: अव्यय तुमुन्, gloss: "to permit" }
-      - { form: अर्हसि, lemma: अर्ह्, a: लट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "please (lit. 'you ought')" }
+      - { form: अर्हसि, lemma: अर्ह्, a: लट् मध्यमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "please (lit. 'you ought')" }
     note: "अर्हसि with an infinitive is a polite request (3.3.169 and the usage after it)."
   श्रुत्वा:
     fix:
@@ -3075,7 +3088,7 @@
     split:
       - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
       - { form: अनुज्ञातुम्, lemma: अनुज्ञा, a: अव्यय तुमुन्, gloss: "to permit" }
-      - { form: अर्हसि, lemma: अर्ह्, a: लट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "please (lit. 'you ought')" }
+      - { form: अर्हसि, lemma: अर्ह्, a: लट् मध्यमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "please (lit. 'you ought')" }
   धृतराष्ट्र:
     fix:
       1: { gloss: "Dhṛtarāṣṭra" }

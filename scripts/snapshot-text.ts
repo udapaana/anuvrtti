@@ -73,7 +73,12 @@ async function snapshot(engine: Engine, id: string): Promise<Snapshot & { uses: 
     const words: SnapWord[] = wordsOf(s).map((w) => ({ ...w, padas: [] }));
     let base = 0;
     for (const [li, line] of linesOf(s).entries()) {
-      const n = words.filter((w) => w.line === li).length;
+      const mine = words.filter((w) => w.line === li);
+      const n = mine.length;
+      // cheda numbers only the words it reads: a token with no Devanagari letter
+      // (the Pañcatantra's free-standing "!" and "?") is not one of them, and a
+      // pada must not slide onto the word before its own
+      const read = mine.map((w, i) => (/[\u0900-\u097F]/.test(w.surface) ? i : -1)).filter((i) => i >= 0);
       const toks: Token[] = await analyzeSentence(engine, line);
       let last = 0;
       for (const tk of toks) {
@@ -95,7 +100,7 @@ async function snapshot(engine: Engine, id: string): Promise<Snapshot & { uses: 
         const alts = ranked.slice(0, MAX_ALTS);
         if (pick && ranked.includes(pick) && !alts.includes(pick)) alts.push(pick);
         const v = pick ? alts.indexOf(pick) : -1;
-        words[base + Math.min(wi, n - 1)].padas.push({ form: tk.form, slp1: tk.slp1, alts, vidyut: v });
+        words[base + (read[wi] ?? Math.min(wi, n - 1))].padas.push({ form: tk.form, slp1: tk.slp1, alts, vidyut: v });
       }
       base += n;
     }

@@ -364,3 +364,15 @@ naming its lemma got vidyut's short lemma, the root without its preverb
 case. Across the whole texts, ल्यप् forms in आ- with a bare-root lemma: 27 → 0
 (Rāmāyaṇa), 37 → 0 (Bhāgavata), 65 → 0 (Mahābhārata); every text still 0
 problems.
+
+## 2026-11-16 · Pañcatantra: padas shifted after a free-standing "!" or "?"
+
+Reported by two authors. Jha's edition sets "!" and "?" apart from the word;
+cheda does not count such a token as a word, so its word numbers ran one short
+of ours after it, and each pada landed on the word before its own. 2,358 words
+stood after such a mark in their line. Where an author noticed, they re-split
+the word whole (none had fixed one by pada number, so nothing was misapplied);
+where none did, the reader showed a neighbour's analysis with no problem
+reported. snapshot-text.ts now maps cheda's numbering onto the words that hold
+Devanagari; the Pañcatantra was re-snapshotted, and the finished batches
+(p01–p04) still report 0 problems. No other text has such tokens.
