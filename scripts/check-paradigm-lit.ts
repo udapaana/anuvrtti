@@ -35,6 +35,7 @@ type Miss = { where: string; form: string; table: string; cell: string };
 const misses: Miss[] = [];
 let checked = 0;
 let vedic = 0;
+let lost = 0; // a whole text's pada whose visarga sandhi dropped (8.3.17, 8.3.22)
 
 // ── readings, through the reader's resolver ──────────────────────────────
 const usage = JSON.parse(fs.readFileSync(path.join(ROOT, 'static/data/usage.json'), 'utf-8'));
@@ -70,7 +71,12 @@ for (const file of partFiles) {
         if (!tb) continue;
         checked++;
         const cell = tb.rows[p.para.row]?.[p.para.col] ?? '';
-        if (!holds(cell, p.form)) misses.push({ where: `${t.id} ${s.id}`, form: p.form, table: tb.stem, cell });
+        if (holds(cell, p.form)) continue;
+        // a whole text's pada is cut from the printed line, where a visarga
+        // before a vowel or a voiced sound is gone: देवक्या for देवक्याः. The
+        // cell holds the pausal form; the word is the same.
+        if (!p.form.endsWith('ः') && holds(cell, p.form + 'ः')) { lost++; continue; }
+        misses.push({ where: `${t.id} ${s.id}`, form: p.form, table: tb.stem, cell });
       }
 }
 
@@ -80,6 +86,6 @@ if (args.includes('--update')) {
   fs.writeFileSync(FLOOR, JSON.stringify({ mismatches: misses.length, note: 'words whose lit paradigm cell holds another form — scripts/check-paradigm-lit.ts' }, null, 2) + '\n');
   console.log(`recorded ${misses.length} as the floor`);
 }
-const msg = `${checked} lit cells, ${misses.length} hold another form than the word (${vedic} Vedic forms lit at their classical cell, not counted)`;
+const msg = `${checked} lit cells, ${misses.length} hold another form than the word (${vedic} Vedic forms lit at their classical cell, not counted; ${lost} whole-text padas whose visarga sandhi dropped)`;
 if (misses.length > floor) { console.log(`✗ paradigm-lit: ${msg} (floor ${floor}) — --list to see them`); process.exit(1); }
 console.log(`✓ paradigm-lit: ${msg}${Number.isFinite(floor) ? ` (floor ${floor})` : ''}`);
