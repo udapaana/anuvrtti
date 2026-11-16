@@ -47,7 +47,10 @@ if (work === 'ramayana') {
   // long line once; the id is the closing marker (BhP_01.01.004, * on a few)
   for (const b of readTei('sa_bhAgavatapurANa')) {
     if (b.kind === 'head' || !b.ref) continue; // numbered prose (skandha 5) counts
-    const ls = b.lines.map((l) => tidy(l.replace(/[$&%]/g, ' '))).filter(Boolean).filter((l, i, a) => l !== a[i - 1]);
+    // the encoding's own marks are not text: the prose paragraph mark `_*`, and
+    // a stray reference with its speaker number (BhP_05.03.001 0, BhP_01.01.006/0)
+    const unmark = (l: string) => l.replace(/_\*/g, ' ').replace(/\b[A-Za-z]+_[0-9][0-9.]*\*?(?:\/\d+)?(?:\s+\d+\b)?/g, ' ');
+    const ls = b.lines.map((l) => tidy(unmark(l.replace(/[$&%]/g, ' ')))).filter(Boolean).filter((l, i, a) => l !== a[i - 1]);
     verses.set(b.ref.replace(/\*$/, ''), ls);
   }
 }
