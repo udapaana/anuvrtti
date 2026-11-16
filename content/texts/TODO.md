@@ -65,3 +65,13 @@ rebuild into a scratch copy, diff the ids, and re-key the overrides.
 `pancatantra` (its overrides carried over as `overrides/kilotpatin.yaml`).
 About forty files cite it as the format example; repoint those, then remove
 the text, its snapshot and its page.
+
+## Two limits of the override resolver (build-texts.ts), found by authors
+
+- An analysis holds one कृत् tag: "तुमुन् णिच्" (a causative infinitive)
+  resolves to "णिच्" alone. Authors of the Rāmāyaṇa dropped णिच् to keep
+  तुमुन्, so its causatives show only in their lemma. `parseA` should keep
+  every derivational tag (कृत् and सनादि) and the paradigm code read them.
+- A `fix` that names a lemma but no analysis can still show vidyut's longer
+  lemma (संभूय showed समस्): the resolver should prefer the author's lemma
+  whenever one is given.
