@@ -75,3 +75,12 @@ the text, its snapshot and its page.
 - A `fix` that names a lemma but no analysis can still show vidyut's longer
   lemma (संभूय showed समस्): the resolver should prefer the author's lemma
   whenever one is given.
+
+## Causative lemmas: two conventions in use
+
+The Bhāgavata's authors give a causative's lemma as vidyut does, the stem in
+-इ (दर्शि, जनि, उपधारि); the Rāmāyaṇa's give the root and, because the resolver
+keeps one कृत् tag (above), dropped the णिच् tag. Both read; neither is wrong;
+together they are inconsistent across texts. Once the convention is chosen
+(causatives, past participles, preverbs — see the second audit entry in
+AUDIT-LOG.md), a mechanical pass over every overrides file brings them in line.
