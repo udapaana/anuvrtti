@@ -17,7 +17,11 @@ export const ROOT = process.cwd();
 export const TEXTS_DIR = path.join(ROOT, 'content/texts');
 export const SNAP_DIR = path.join(ROOT, 'data/text-analyses');
 
-export type Section = { id: string; kind?: 'verse' | 'prose'; text?: string; lines?: string[]; iast?: string };
+export type Section = {
+  id: string; kind?: 'verse' | 'prose'; text?: string; lines?: string[]; iast?: string;
+  /** set by readText, never authored: word index → the source's own reading of a corrected word */
+  printed?: Record<number, { word: string; note?: string }>;
+};
 export type PartSpec = { id: string; title?: string; first: string; last: string };
 export type TextSource = {
   id: string; title: string; title_en: string; work: string; place?: string;
@@ -34,11 +38,75 @@ export function textIds(): string[] {
   if (!fs.existsSync(TEXTS_DIR)) return [];
   return fs.readdirSync(TEXTS_DIR).filter((d) => fs.existsSync(path.join(TEXTS_DIR, d, 'text.yaml'))).sort();
 }
-export function readText(id: string): TextSource {
+/** text.yaml as the source prints it, slips and all. */
+export function readSourceText(id: string): TextSource {
   const t = parse(fs.readFileSync(path.join(TEXTS_DIR, id, 'text.yaml'), 'utf-8')) as TextSource;
   if (t.id !== id) throw new Error(`content/texts/${id}/text.yaml: id is ${t.id}, not ${id}`);
   return t;
 }
+/**
+ * The text as it is read: text.yaml with corrections.yaml applied. Everything
+ * downstream — the snapshot, the override keys, the build, the reader — sees
+ * the corrected word; the source's own reading rides on the section as
+ * `printed` (by word index), for the reader to show. A text with no
+ * corrections.yaml is text.yaml exactly.
+ */
+export function readText(id: string): TextSource {
+  return correctText(readSourceText(id), readCorrections(id)).text;
+}
+
+// ── corrections ─────────────────────────────────────────────────────────────
+/**
+ * content/texts/<id>/corrections.yaml: a slip of the source's typing, put
+ * right in the printed line. Keyed by section id, then the word exactly as
+ * text.yaml prints it ("#n" for a repeat, as overrides key words). One word
+ * becomes one word: a correction never splits or joins words, so the snapshot's
+ * word numbering stands. See content/texts/OVERRIDES.md.
+ */
+export type Correction = { to: string; note?: string };
+export type Corrections = Record<string, Record<string, Correction>>;
+export function readCorrections(id: string): Corrections {
+  const f = path.join(TEXTS_DIR, id, 'corrections.yaml');
+  return fs.existsSync(f) ? ((parse(fs.readFileSync(f, 'utf-8')) ?? {}) as Corrections) : {};
+}
+/** Apply corrections to a text; what cannot be applied is a problem, not a throw. */
+export function correctText(t: TextSource, c: Corrections): { text: TextSource; problems: string[] } {
+  const problems: string[] = [];
+  if (!Object.keys(c).length) return { text: t, problems };
+  const byId = new Map(t.sections.map((s) => [s.id, s]));
+  for (const sid of Object.keys(c)) if (!byId.has(sid)) problems.push(`${sid}: corrections.yaml names a section the text does not have`);
+  const sections = t.sections.map((s) => {
+    const sc = c[s.id];
+    if (!sc || !Object.keys(sc).length) return s;
+    const keys = wordKeys(s);
+    const at = new Map<number, Correction>();
+    for (const [k, v] of Object.entries(sc)) {
+      const i = keys.indexOf(k);
+      const to = typeof v?.to === 'string' ? v.to.trim() : '';
+      if (i < 0) problems.push(`${s.id}/${k}: corrections.yaml names no word of the text`);
+      else if (!to || /\s/.test(to)) problems.push(`${s.id}/${k}: corrections.yaml — \`to\` must be one word`);
+      else if (to === k.replace(/#\d+$/, '')) problems.push(`${s.id}/${k}: corrections.yaml — \`to\` is the printed word`);
+      else at.set(i, { to, ...(v.note ? { note: v.note } : {}) });
+    }
+    if (!at.size) return s;
+    const printed: NonNullable<Section['printed']> = {};
+    let n = 0;
+    const fix = (l: string) => l.replace(/\S+/g, (w) => {
+      const i = n++;
+      const k = at.get(i);
+      if (!k) return w;
+      printed[i] = { word: w, ...(k.note ? { note: k.note } : {}) };
+      return k.to;
+    });
+    // linesOf trims and wordsOf splits on whitespace, so \S+ counts the same words
+    const out: Section = s.lines ? { ...s, lines: s.lines.map(fix) } : { ...s, text: fix(s.text ?? '') };
+    out.printed = printed;
+    return out;
+  });
+  return { text: { ...t, sections }, problems };
+}
+/** A text's corrections that name no word, or are malformed. */
+export const correctionProblems = (id: string) => correctText(readSourceText(id), readCorrections(id)).problems;
 /**
  * A text's parts: the unit a reader loads, saves offline and downloads, and the
  * unit its snapshot is stored in. A part never splits a section.

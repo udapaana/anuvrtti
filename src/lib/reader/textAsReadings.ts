@@ -52,7 +52,8 @@ export type TextPada = {
   alts: number;
   para?: { key: string; row: number; col: number };
 };
-export type TextWord = { surface: string; padas: TextPada[]; note?: string };
+/** `printed`: the source's own reading of a word corrections.yaml put right (`surface` is the corrected word) */
+export type TextWord = { surface: string; padas: TextPada[]; note?: string; printed?: string; printedNote?: string };
 export type TextSection = { id: string; kind: string; lines: number[][]; words: TextWord[]; text: string[] };
 export type TextTable = {
   stem: string;
@@ -91,6 +92,9 @@ export type TextExtra = {
   wordNote: string | null;
   /** the written word this pada belongs to */
   surface: string;
+  /** the source's own reading of that word, where it was a slip put right; and why */
+  printed: string | null;
+  printedNote: string | null;
 };
 
 export const partLabel = (p: PartMeta) => p.title ?? (p.id === 'all' ? 'the whole text' : `part ${p.id}`);
@@ -204,7 +208,9 @@ export function sectionAsReading(
           alts: p.alts,
           note: p.note ?? null,
           wordNote: w.note ?? null,
-          surface: w.surface
+          surface: w.surface,
+          printed: w.printed ?? null,
+          printedNote: w.printedNote ?? null
         };
         words.push({
           form: p.form,

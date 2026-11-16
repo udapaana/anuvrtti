@@ -2309,11 +2309,14 @@
 
       {#if selWord?.text}
         {@const tx = selWord.text}
-        {#if tx.note || tx.wordNote}
+        {#if tx.note || tx.wordNote || tx.printed}
           <div class="ev">
             <div class="ev-head"><span class="ev-label">note</span></div>
             {#if tx.note}<p class="tnote"><Sanskrit text={tx.note} source="devanagari" /></p>{/if}
             {#if tx.wordNote}<p class="tnote"><Sanskrit text={tx.wordNote} source="devanagari" /></p>{/if}
+            <!-- the source's own reading of a slip the line prints corrected
+                 (content/texts/<id>/corrections.yaml) -->
+            {#if tx.printed}<p class="tnote printed" title={tx.printedNote ?? undefined}>printed: <Sanskrit text={tx.printed} source="devanagari" /></p>{/if}
           </div>
         {/if}
         <!-- the dictionary: Monier-Williams' first senses, or the editor's
@@ -3857,6 +3860,10 @@
   }
   .tnote :global(span) {
     font-family: inherit;
+  }
+  .tnote.printed {
+    color: var(--quiet);
+    font-size: 13px;
   }
   .sense {
     margin: 0;

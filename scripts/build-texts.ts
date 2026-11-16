@@ -4,6 +4,7 @@
  * the author's overrides on top, a paradigm for every inflected word.
  *
  *   content/texts/<id>/text.yaml        the text, verbatim         (authored)
+ *   content/texts/<id>/corrections.yaml the source's slips, put right in the line (authored, optional)
  *   content/texts/<id>/overrides.yaml   the author's decisions     (authored)
  *   data/text-analyses/<id>/<part>.json what vidyut said           (snapshot; scripts/snapshot-text.ts)
  *     → static/data/texts/index.json          every text, for the shelf
@@ -23,7 +24,7 @@ import * as path from 'path';
 import { slp, deva, mwUrl } from './analyze-text';
 import { parse as parseYaml } from 'yaml';
 import {
-  ROOT, textIds, readText, readOverrides, readSnapshot, wordsOf, wordKeys, linesOf, partsOf, partFile,
+  ROOT, textIds, readText, readOverrides, correctionProblems, readSnapshot, wordsOf, wordKeys, linesOf, partsOf, partFile,
   parseA, agrees, decodeA, fmtA, type Analysis, type PadaSpec, type MwEntry, type Snapshot
 } from './lib/texts';
 
@@ -41,7 +42,8 @@ export type OutPada = {
   note?: string; source: Source; alts: number;
   para?: { key: string; row: number; col: number };
 };
-export type OutWord = { surface: string; padas: OutPada[]; note?: string };
+/** `printed`: the source's own reading, where corrections.yaml put a slip right (`surface` is the corrected word) */
+export type OutWord = { surface: string; padas: OutPada[]; note?: string; printed?: string; printedNote?: string };
 export type FixKind = 'compound' | 'split' | 'pick' | 'supplied' | 'gloss' | 'note';
 
 /** Pausal form of a pada as cheda gives it (नरस् → नरः). */
@@ -140,7 +142,7 @@ export function resolveText(id: string): Resolved {
   if (!snap) throw new Error(`data/text-analyses/${id}/ missing or stale — run bun scripts/snapshot-text.ts ${id}`);
   const ov = readOverrides(id);
   const fixes: Record<FixKind, number> = { compound: 0, split: 0, pick: 0, supplied: 0, gloss: 0, note: 0 };
-  const problems: string[] = [];
+  const problems: string[] = correctionProblems(id);
   let words = 0, padas = 0;
   const sections: Resolved['sections'] = [];
   const used = new Set<string>();
@@ -212,7 +214,11 @@ export function resolveText(id: string): Resolved {
       });
       if (o?.note) kinds.add('note');
       for (const k of kinds) fixes[k]++;
-      out.push({ surface: w.surface, padas: outPadas, ...(o?.note ? { note: o.note } : {}) });
+      const pr = s.printed?.[wi];
+      out.push({
+        surface: w.surface, padas: outPadas, ...(o?.note ? { note: o.note } : {}),
+        ...(pr ? { printed: pr.word, ...(pr.note ? { printedNote: pr.note } : {}) } : {})
+      });
     });
     const lines = linesOf(s).map((_, li) => ws.map((w, i) => (w.line === li ? i : -1)).filter((i) => i >= 0));
     sections.push({ id: s.id, kind: s.kind ?? 'prose', lines, words: out });

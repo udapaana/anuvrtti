@@ -35,3 +35,32 @@ bun scripts/build-texts.ts reports how many words each kind of fix touched.
 
 Examples: `content/texts/nitishataka/overrides/v1.yaml`,
 `content/texts/pancatantra/overrides/kilotpatin.yaml`.
+
+## Corrections: a slip of the source, put right in the line
+
+`text.yaml` is the source verbatim, slips and all. Where the source mistyped a
+word (the Bhāgavata's ईशयः for ऋषयः), `content/texts/<id>/corrections.yaml`
+puts it right in the line the reader prints, and the source's reading stays
+recoverable:
+
+```
+'1.1.4':                          # section id
+  ईशयः:                            # the word exactly as text.yaml prints it ("#2" for a repeat)
+    to: ऋषयः                      # the corrected word — one word, never two
+    note: an encoding slip for ऋषयः
+```
+
+`readText` (`scripts/lib/texts.ts`) applies it, so the snapshot, the override
+keys, the build and the reader all see the corrected word; `text.yaml` itself
+and its IAST line are never edited. The built word carries the source's
+reading as `printed` (and the note as `printedNote`), and the reader's rail
+shows it as a quiet line, "printed: ईशयः". A key that names no word of the
+section, or a `to` that is not one word, fails `bun run check`.
+
+A correction changes the override key: overrides key the word as the line now
+reads it. After adding corrections, `bun scripts/apply-corrections.ts <id>`
+re-keys the existing overrides (and any "#n" the correction renumbers), then
+`bun scripts/snapshot-text.ts <id>` re-snapshots the text.
+
+A correction is for a true slip with one right form. An editorial choice, a
+doubtful metrical emendation or a variant reading stays an override `note`.
