@@ -3106,10 +3106,10 @@
       - { form: ज्या, lemma: ज्या, member: true, gloss: "bowstring" }
       - { form: घात, lemma: घात, member: true, gloss: "stroke, blow" }
     note: >-
-      GRETIL divides ज्याघाता कौ; read ज्याघाताङ्कौ, one compound — on sense
-      (the arms are "marked by the bowstring's blows", not "who?") and metre
-      (हरिणी needs ता-ङ्कौ as two heavy syllables, which कौ alone, after a
-      word break, does not give). The last member, अङ्कौ, is on कौ.
+      GRETIL divides ज्याघाता कौ; read ज्याघाताङ्कौ, one compound, on sense —
+      the arms are "marked by the bowstring's blows"; a bare कौ "which two?"
+      has no place in the line, and ज्याघाता is no word. The metre (हरिणी)
+      scans either way. The last member, अङ्कौ, is on कौ.
   कौ:
     split:
       - { form: अङ्कौ, lemma: अङ्क, a: प्रथमा द्विवचन पुंलिङ्ग, gloss: "mark, scar — 'scarred by the bowstring'" }
@@ -3202,9 +3202,13 @@
       - { form: मत्स्य, lemma: मत्स्य, member: true, gloss: "Matsya (King Virāṭa's country)" }
       - { form: भवने, lemma: भवन, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "house, palace" }
   नोषितं:
-    fix:
-      2: { lemma: वस्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "lived — 'did (Bhīma) not live?'" }
-    note: An impersonal passive with the agent in the instrumental (भीमेन … उषितम्).
+    split:
+      - { form: न, lemma: न, a: अव्यय, gloss: "not" }
+      - { form: उषितम्, lemma: आवस्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "lived, dwelt — 'did (Bhīma) not live?'" }
+    note: >-
+      An impersonal passive with the agent in the instrumental (भीमेन …
+      उषितम्). नोषितम् is न + उषितम् or न + आ-उषितम् (आ + उ → ओ); वस् and
+      आवस् both mean "dwell", and the engine reads आवस्.
   सूदवत्:
     split:
       - { form: सूदवत्, lemma: सूदवत्, a: अव्यय, gloss: "like a cook (सूद + वत्)" }
