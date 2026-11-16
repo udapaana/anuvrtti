@@ -1061,3 +1061,283 @@
       1: { a: अव्यय, gloss: "well, rightly" }
       2: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
       3: { gloss: "is said" }
+
+'2.117':
+  मित्रं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "a friend" }
+  कोऽपि:
+    fix:
+      1: { gloss: "anyone (कोऽपि … न 'no one')" }
+  कस्यापि:
+    split:
+      - { form: कस्य, lemma: किम्, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "of anyone (with अपि)" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "(with an interrogative) any-" }
+  नितान्तं:
+    split:
+      - { form: नितान्तम्, lemma: नितान्त, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "wholly, for ever (adverb)" }
+  वैरकृत्:
+    split:
+      - { form: वैर, lemma: वैर, member: true, gloss: "enmity" }
+      - { form: कृत्, lemma: कृत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "making — 'an enemy'" }
+  दृश्यते:
+    fix:
+      1: { gloss: "is seen" }
+  मित्रविध्वस्तात्कार्याद्वैरी:
+    split:
+      - { form: मित्र, lemma: मित्र, member: true, gloss: "friend" }
+      - { form: विध्वस्तात्, lemma: विध्वंस्, a: पञ्चमी एकवचन नपुंसकलिङ्ग क्त, gloss: "ruined — 'in which a friend is ruined'" }
+      - { form: कार्यात्, lemma: कार्य, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "from a deed, by an act" }
+      - { form: वैरी, lemma: वैरिन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "an enemy" }
+  परीक्षितः:
+    fix:
+      1: { lemma: परीक्ष्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "tested, proven" }
+    note: "'No one is a friend, or an enemy, of anyone for good: an enemy is proven by an act that ruins a friend.'"
+
+'2.117+1':
+  तत्स्वागतं:
+    fix:
+      1: { a: अव्यय, gloss: "so" }
+      2: { gloss: "welcome" }
+  भवतः:
+    fix:
+      1: { a: षष्ठी एकवचन पुंलिङ्ग, gloss: "your (sir's) — 'you are welcome'" }
+
+'2.117+2':
+  स्वगृहवदास्यतामत्र:
+    split:
+      - { form: स्व, lemma: स्व, member: true, gloss: "your own" }
+      - { form: गृहवत्, lemma: गृहवत्, a: अव्यय, gloss: "as in (one's) house" }
+      - { form: आस्यताम्, lemma: आस्, a: लोट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "let it be stayed — 'stay, make yourself at home'" }
+      - { form: अत्र, lemma: अत्र, a: अव्यय, gloss: "here" }
+  सरस्तीरे:
+    fix:
+      1: { form: सरस्, lemma: सरस्, member: true, gloss: "lake" }
+      2: { gloss: "on the shore" }
+
+'2.117+3':
+  यच्च:
+    fix:
+      1: { a: अव्यय, gloss: "as for (the fact) that" }
+  वित्त्नाशो:
+    split:
+      - { form: वित्त, lemma: वित्त, member: true, gloss: "wealth" }
+      - { form: नाशः, lemma: नाश, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "loss" }
+    note: "The edition prints वित्त्नाशो, a stray virāma: read वित्तनाशः."
+  विदेशवासश्च:
+    fix:
+      1: { gloss: "living abroad, exile" }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: षष्ठी एकवचन, gloss: "your, to you" }
+  सञ्जातस्तत्र:
+    fix:
+      1: { gloss: "has befallen" }
+      2: { gloss: "in that" }
+  विषये:
+    fix:
+      1: { gloss: "matter" }
+  सन्तापो:
+    fix:
+      1: { gloss: "grief, distress" }
+  कर्तव्यः:
+    fix:
+      1: { lemma: कृ, a: प्रथमा एकवचन पुंलिङ्ग तव्य, gloss: "to be made — 'you must not grieve'" }
+
+'2.117+4':
+  उक्तं:
+    fix:
+      1: { lemma: वच्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "it has been said" }
+
+'2.118':
+  अभ्रच्छाया:
+    split:
+      - { form: अभ्र, lemma: अभ्र, member: true, gloss: "cloud" }
+      - { form: छाया, lemma: छाया, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "shade" }
+  खलप्रीतिः:
+    split:
+      - { form: खल, lemma: खल, member: true, gloss: "a villain" }
+      - { form: प्रीतिः, lemma: प्रीति, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "affection, friendship" }
+  समुद्रान्ते:
+    split:
+      - { form: समुद्र, lemma: समुद्र, member: true, gloss: "the sea" }
+      - { form: अन्ते, lemma: अन्त, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "at the edge — 'land at the sea's edge'" }
+  मेदिनी:
+    fix:
+      1: { gloss: "the earth, land" }
+  अल्पेनैव:
+    fix:
+      1: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "a little — 'in a moment'" }
+      2: { gloss: "just, only" }
+  विनश्यन्ति:
+    fix:
+      1: { a: लट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "perish, vanish" }
+  यौवनानि:
+    fix:
+      1: { gloss: "youth (the plural, of all men's youth)" }
+  धनानि:
+    fix:
+      1: { gloss: "riches" }
+
+'2.118+1':
+  अत:
+    fix:
+      1: { gloss: "hence (अत एव 'for this very reason')" }
+  विवेकिनो:
+    fix:
+      1: { gloss: "the discerning" }
+  जितात्मानो:
+    fix:
+      1: { gloss: "self-controlled" }
+  धनस्पृहां:
+    split:
+      - { form: धन, lemma: धन, member: true, gloss: "wealth" }
+      - { form: स्पृहाम्, lemma: स्पृहा, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "longing, desire" }
+  कुर्वन्ति:
+    fix:
+      1: { gloss: "do, have (स्पृहां कृ 'to long')" }
+
+'2.118+2':
+  उक्तं:
+    fix:
+      1: { lemma: वच्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "it has been said" }
+
+'2.119':
+  सुसञ्चितैर्जीवनवत्सुरक्षितैर्:
+    split:
+      - { form: सुसञ्चितैः, lemma: सुसञ्चित, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "well amassed" }
+      - { form: जीवनवत्, lemma: जीवनवत्, a: अव्यय, gloss: "like life itself" }
+      - { form: सुरक्षितैः, lemma: सुरक्षित, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "well guarded" }
+  निजेऽपि:
+    fix:
+      1: { lemma: निज, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "one's own" }
+      2: { gloss: "even" }
+  देहे:
+    fix:
+      1: { lemma: देह, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "(from) the body" }
+  वियोजितैः:
+    split:
+      - { form: वियोजितैः, lemma: वियुज्, a: तृतीया बहुवचन नपुंसकलिङ्ग क्त णिच्, gloss: "separated, parted" }
+  क्वचित्:
+    split:
+      - { form: क्वचित्, lemma: क्वचित्, a: अव्यय, gloss: "ever, at any time" }
+  पुंसो:
+    fix:
+      1: { a: षष्ठी एकवचन पुंलिङ्ग, gloss: "to a man (genitive for dative)" }
+  यमान्तं:
+    fix:
+      1: { form: यम, lemma: यम, member: true, gloss: "Yama, the god of death" }
+      2: { gloss: "presence, abode — 'to Yama's abode'" }
+  व्रजतोऽपि:
+    fix:
+      1: { gloss: "going" }
+      2: { gloss: "even (when)" }
+  निष्ठुरैर्:
+    split:
+      - { form: निष्ठुरैः, lemma: निष्ठुर, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "cruel, hard-hearted" }
+  एतैर्धनैः:
+    fix:
+      1: { a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "these" }
+      2: { gloss: "riches" }
+  पञ्चपदी:
+    fix:
+      1: { gloss: "five steps (of company)" }
+    note: "'These cruel riches, amassed, guarded like life, never parted from the body, will not go five steps with a man on his way to Yama.'"
+  दीयते:
+    fix:
+      1: { gloss: "is given" }
+
+'2.120':
+  अन्यच्च:
+    fix:
+      1: { gloss: "another (saying)" }
+  यथामिषं:
+    fix:
+      1: { gloss: "as" }
+      2: { gloss: "meat, a bait of flesh" }
+  जले:
+    fix:
+      1: { lemma: जल, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "in the water" }
+  मत्स्यैर्भक्ष्यते:
+    fix:
+      1: { gloss: "by fish" }
+      2: { lemma: भक्ष्, a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "is eaten" }
+  श्वापदैर्भुवि:
+    split:
+      - { form: श्वापदैः, lemma: श्वापद, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "by beasts of prey" }
+      - { form: भुवि, lemma: भू, a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: "on the ground, on land" }
+  आकाशे:
+    fix:
+      1: { gloss: "in the sky" }
+  पक्षिभिश्चैव:
+    fix:
+      1: { lemma: पक्षिन्, gloss: "by birds" }
+  तथा:
+    fix:
+      1: { gloss: "so" }
+  वित्तवान्:
+    fix:
+      1: { lemma: वित्तवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "a rich man" }
+
+'2.121':
+  निर्दोषमपि:
+    fix:
+      1: { a: द्वितीया एकवचन पुंलिङ्ग, gloss: "faultless, innocent" }
+      2: { gloss: "even (though)" }
+  वित्ताढ्य:
+    split:
+      - { form: वित्त, lemma: वित्त, member: true, gloss: "wealth" }
+      - { form: आढ्यम्, lemma: आढ्य, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "rich in — 'a wealthy man'" }
+    note: "The edition prints वित्ताढ्य without its anusvāra; the object of योजयते, agreeing with निर्दोषम्, must be वित्ताढ्यम्."
+  दोषैर्योजयते:
+    fix:
+      1: { gloss: "with faults, crimes" }
+      2: { gloss: "joins, charges (him) with" }
+  नृपः:
+    fix:
+      1: { gloss: "the king" }
+  निधनः:
+    fix:
+      1: { gloss: "a poor man, one without property" }
+  प्राप्तदोषोऽपि:
+    split:
+      - { form: प्राप्त, lemma: प्राप्त, member: true, gloss: "incurred, committed" }
+      - { form: दोषः, lemma: दोष, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "fault — 'though he has done wrong'" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even (though)" }
+  सर्वत्र:
+    fix:
+      1: { gloss: "everywhere" }
+  निरुपद्रवः:
+    fix:
+      1: { gloss: "unmolested, untroubled" }
+
+'2.122':
+  अर्थानामर्जनं:
+    fix:
+      1: { gloss: "of wealth" }
+      2: { gloss: "acquiring" }
+  कार्यं:
+    fix:
+      1: { lemma: कृ, a: प्रथमा एकवचन नपुंसकलिङ्ग ण्यत्, gloss: "to be done, must be practised" }
+  वर्धनं:
+    fix:
+      1: { gloss: "increasing" }
+  रक्षणं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "guarding" }
+  तथा:
+    fix:
+      1: { gloss: "and also" }
+  भक्ष्यमाणो:
+    fix:
+      1: { gloss: "being eaten, consumed" }
+  निरादायः:
+    split:
+      - { form: निरादायः, lemma: निरादाय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "with no income, nothing added" }
+  सुमेरुरपि:
+    fix:
+      1: { gloss: "Mount Sumeru" }
+      2: { gloss: "even" }
+  हीयते:
+    fix:
+      1: { gloss: "dwindles, is used up" }
