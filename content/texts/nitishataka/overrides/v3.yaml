@@ -16,6 +16,9 @@
     split:
       - { form: चेत्, lemma: चेद्, a: अव्यय, gloss: "if" }
       - { form: तपसा, lemma: तपस्, a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "austerity" }
+  सत्यं:
+    fix:
+      1: { gloss: "truth" }
   शुचि:
     fix:
       1: { gloss: "pure" }
@@ -107,6 +110,13 @@
   नाम:
     fix:
       1: { gloss: "indeed" }
+  जुह्वानं:
+    fix:
+      1: { a: द्वितीया एकवचन पुंलिङ्ग शानच्, gloss: "offering (oblations)" }
+    note: "हु is उभयपदी; जुह्वान is its आत्मनेपद participle, शानच्"
+  स्पृष्टो:
+    fix:
+      1: { gloss: "touched" }
   वहति:
     fix:
       1: { form: दहति, lemma: दह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "burns" }
@@ -225,7 +235,7 @@
       1: { gloss: "growing" }
   दिनस्य:
     fix:
-      1: { gloss: "of the day" }
+      1: { a: षष्ठी एकवचन नपुंसकलिङ्ग, gloss: "of the day" }
   पूर्वार्धपरार्धभिन्ना:
     split:
       - { form: पूर्वार्ध, lemma: पूर्वार्ध, member: true, gloss: "the first half" }
@@ -415,6 +425,7 @@
       1: { gloss: "of the good" }
   केनोद्दिष्टं:
     fix:
+      1: { gloss: "by whom" }
       2: { gloss: "taught, prescribed" }
   विषममसिधाराव्रतमिदम्:
     fix:
@@ -575,6 +586,7 @@
   हितमिच्छति:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "good, welfare" }
+      2: { gloss: "wishes, desires" }
   तन्मित्रमापदि:
     fix:
       2: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "a friend" }
@@ -726,9 +738,9 @@
     split:
       - { form: नव, lemma: नव, member: true, gloss: "new" }
       - { form: अम्बुभिः, lemma: अम्बु, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "waters" }
-      - { form: दूर, lemma: दूर, member: true, gloss: "far" }
-      - { form: अवलम्बिनः, lemma: अवलम्बिन्, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "hanging down" }
-    note: "the वंशस्थ wants भूरिविलम्बिनो here, the vulgate reading; the edition's दूरावलम्बिनो is kept"
+      - { form: भूरि, lemma: भूरि, member: true, gloss: "far, heavily" }
+      - { form: विलम्बिनः, lemma: विलम्बिन्, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "hanging down" }
+    note: "GRETIL दूरावलम्बिनो, which breaks the वंशस्थ (दूरा- puts a long where the metre wants ⏑); read the vulgate's भूरिविलम्बिनो: the clouds hang low, heavy with new water"
   घनाः:
     fix:
       1: { lemma: घन, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "clouds" }
@@ -923,6 +935,12 @@
   तु:
     fix:
       1: { gloss: "but" }
+  ते:
+    fix:
+      1: { gloss: "they" }
+  के:
+    fix:
+      1: { gloss: "who" }
   निरर्थकं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "for no purpose" }
@@ -961,6 +979,10 @@
       - { form: क्षीर, lemma: क्षीर, member: true, gloss: "milk" }
       - { form: उत्तापम्, lemma: उत्ताप, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "heating" }
       - { form: अवेक्ष्य, lemma: अवेक्ष्, a: अव्यय ल्यप्, gloss: "seeing" }
+  तेन:
+    fix:
+      1: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+    note: "neuter, with पयसा"
   पयसा:
     fix:
       1: { gloss: "by the water" }
@@ -990,12 +1012,19 @@
   युक्तं:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "united" }
+  तेन#2:
+    fix:
+      1: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+    note: "neuter, with जलेन"
   जलेन:
     fix:
       1: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "with water" }
   शाम्यति:
     fix:
       1: { gloss: "is calmed" }
+  सतां:
+    fix:
+      1: { gloss: "of the good" }
   पुनस्त्वीदृशी:
     split:
       - { form: पुनः, lemma: पुनर्, a: अव्यय, gloss: "again, moreover" }
