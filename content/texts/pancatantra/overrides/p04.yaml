@@ -114,7 +114,8 @@
 '1.136+17':
   मन्त्रि:
     fix:
-      1: { lemma: मन्त्रिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "O minister, counsellor" }
+      1: { form: मन्त्रिन्, lemma: मन्त्रिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "O minister, counsellor" }
+    note: "The text prints मन्त्रि, which is the compound stem, not a vocative; read the vocative मन्त्रिन्."
   श्रोत्रिय:
     fix:
       1: { gloss: "O learned one (lit. versed in the Veda)" }
@@ -276,8 +277,8 @@
   प्रसादसंमुखी:
     split:
       - { form: प्रसाद, lemma: प्रसाद, member: true, gloss: "favour, grace" }
-      - { form: संमुखी, lemma: संमुख, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "turned towards, inclined to (प्रसादसंमुखी 'favourably disposed')" }
-    note: "The edition prints संमुखी; with स्वामी the sense needs the masculine, perhaps a compound in -इन् (संमुखिन्). Read as the nominative singular masculine."
+      - { form: संमुखी, lemma: संमुखिन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "turned towards, inclined to (प्रसादसंमुखी 'favourably disposed')" }
+    note: "संमुखी is the nominative singular masculine of संमुखिन् 'facing' (MW), agreeing with स्वामी — not the feminine of संमुख."
   नः:
     fix:
       1: { lemma: अस्मद्, a: षष्ठी बहुवचन, gloss: "our" }
@@ -1660,8 +1661,9 @@
       1: { a: अव्यय ल्यप्, gloss: "having lamented, complained" }
   तत्प्रभृति:
     fix:
-      1: { a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "that (time)" }
+      1: { member: true, gloss: "that (time)" }
       2: { gloss: "from — तत्प्रभृति 'from then on'" }
+    note: "तत्प्रभृति is a compound with the bare stem तत् standing for the ablative ('from that'); the uncompounded phrase is ततः प्रभृति."
   दन्तिलस्य:
     split:
       - { form: दन्तिलस्य, lemma: दन्तिल, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "to Dantila" }

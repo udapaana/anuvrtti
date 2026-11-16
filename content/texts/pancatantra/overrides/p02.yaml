@@ -53,6 +53,9 @@
     fix:
       1: { lemma: जन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "a person, a man" }
       2: { gloss: "contempt, disregard" }
+  शक्तोऽपि:
+    fix:
+      1: { lemma: शक्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "able, capable" }
   लभते:
     fix:
       1: { gloss: "meets with, gets" }
@@ -153,6 +156,7 @@
   मैवं:
     fix:
       1: { lemma: मा, a: अव्यय, gloss: "not (prohibitive)" }
+      2: { gloss: "thus, so" }
     note: "मा मा एवं वद — 'no, don't say so': मा with the लोट् (more classically with the augmentless लुङ्)."
   वद:
     fix:
@@ -379,7 +383,7 @@
       1: { lemma: प्रसद्, a: सप्तमी एकवचन पुंलिङ्ग क्त, gloss: "pleased, gracious" }
   सति:
     fix:
-      1: { gloss: "being — प्रसन्ने सति भूपतौ, a locative absolute: 'when the king is pleased'" }
+      1: { lemma: अस्, a: सप्तमी एकवचन पुंलिङ्ग शतृ, gloss: "being — प्रसन्ने सति भूपतौ, a locative absolute: 'when the king is pleased'" }
   भूपतौ:
     fix:
       1: { gloss: "a king" }
@@ -791,7 +795,7 @@
       serving".
   सेव्यः:
     fix:
-      1: { gloss: "to be served" }
+      1: { lemma: सेव्, a: प्रथमा एकवचन पुंलिङ्ग ण्यत्, gloss: "to be served" }
   सेव्यगुणान्वितः:
     split:
       - { form: सेव्य, lemma: सेव्य, member: true, gloss: "worth serving" }
@@ -1032,7 +1036,7 @@
     fix:
       1: { a: षष्ठी एकवचन पुंलिङ्ग, gloss: "of the master" }
       2: { form: द्वार, lemma: द्वार, member: true, gloss: "door" }
-      3: { gloss: "keeping to, stationed at" }
+      3: { lemma: आश्रि, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "keeping to, stationed at" }
   हर्म्ये:
     fix:
       1: { gloss: "in the palace" }
@@ -1040,10 +1044,11 @@
 '1.59':
   सम्मतोऽहं:
     fix:
-      1: { gloss: "esteemed, favoured" }
+      1: { lemma: सम्मन्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "esteemed, favoured" }
   विभोर्नित्यमिति:
     fix:
       1: { lemma: विभु, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "the lord, master" }
+      2: { gloss: "always" }
   मत्वा:
     fix:
       1: { gloss: "thinking" }
@@ -1392,7 +1397,7 @@
   मन्त्रसाध्याश्च:
     split:
       - { form: मन्त्र, lemma: मन्त्र, member: true, gloss: "counsel (of snakes, a charm)" }
-      - { form: साध्याः, lemma: साध्य, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "to be mastered, managed" }
+      - { form: साध्याः, lemma: साध्, a: प्रथमा बहुवचन पुंलिङ्ग ण्यत्, gloss: "to be mastered, managed" }
       - { form: च, lemma: च, a: अव्यय, gloss: "and" }
     note: "A śleṣa throughout: kings and snakes are alike भोगिन्, wrapped in a कञ्चुक, crooked, and mastered only by मन्त्र — counsel for the one, a charm for the other."
   पन्नगा:
@@ -1563,6 +1568,9 @@
   गृह्यन्ते:
     fix:
       1: { gloss: "are won over, captivated" }
+  नित्यं:
+    fix:
+      1: { gloss: "always" }
   छन्दानुवर्तिभिः:
     split:
       - { form: छन्द, lemma: छन्द, member: true, gloss: "wish, will" }
@@ -1589,6 +1597,9 @@
     split:
       - { form: तत्, lemma: तद्, member: true, gloss: "his, that one's" }
       - { form: द्विषि, lemma: द्विष्, a: सप्तमी एकवचन पुंलिङ्ग क्विप्, gloss: "an enemy" }
+  द्वेषः:
+    fix:
+      1: { gloss: "hatred" }
   तद्दानस्य:
     fix:
       1: { form: तत्, lemma: तद्, member: true, gloss: "his, that one's" }
@@ -1615,7 +1626,8 @@
       1: { gloss: "says, said" }
   यद्येवमभिमतं:
     fix:
-      3: { gloss: "intended, resolved" }
+      2: { gloss: "thus, so" }
+      3: { lemma: अभिमन्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "intended, resolved" }
   तर्हि:
     fix:
       1: { gloss: "then (answering यदि)" }
@@ -1730,7 +1742,7 @@
   प्राप्तानुज्ञ:
     split:
       - { form: प्राप्त, lemma: प्राप्त, member: true, gloss: "obtained" }
-      - { form: अनुज्ञः, lemma: अनुज्ञा, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "permission (प्राप्तानुज्ञ 'having got leave')" }
+      - { form: अनुज्ञः, lemma: अनुज्ञ, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "permission (प्राप्तानुज्ञ 'having got leave')" }
     note: "A बहुव्रीहि of दमनकः: अनुज्ञा shortens its final as the subordinate member (1.2.48), and the visarga drops before उपविष्टः."
   उपविष्टः:
     fix:
@@ -2095,6 +2107,7 @@
   स्वाम्येवं:
     fix:
       1: { gloss: "the master" }
+      2: { gloss: "thus, so" }
   वदति:
     fix:
       1: { gloss: "says" }
@@ -2323,7 +2336,7 @@
     note: "च + अराः, not चाराः 'spies': the spokes hold up the hub, and in the hub the spokes are fixed."
   प्रतिष्ठिताः:
     fix:
-      1: { gloss: "fixed, set" }
+      1: { lemma: प्रतिस्था, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "fixed, set" }
   स्वामिसेवकयोरेवं:
     split:
       - { form: स्वामि, lemma: स्वामिन्, member: true, gloss: "master" }
@@ -2343,6 +2356,9 @@
   विधृता:
     fix:
       1: { form: विधृताः, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "borne, carried" }
+  नित्यं:
+    fix:
+      1: { gloss: "always" }
   स्नेहेन:
     fix:
       1: { gloss: "with oil; with affection (a pun)" }
@@ -2369,7 +2385,7 @@
 '1.91':
   तुष्टो:
     fix:
-      1: { gloss: "pleased" }
+      1: { lemma: तुष्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "pleased" }
   भृत्यानामर्थमात्रं:
     split:
       - { form: भृत्यानाम्, lemma: भृत्य, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "to servants" }
@@ -2388,6 +2404,9 @@
       3: { lemma: उपकृ, a: लट् प्रथमपुरुष बहुवचन आत्मनेपद, gloss: "serve, do (him) service" }
 
 '1.92':
+  एवं:
+    fix:
+      1: { gloss: "thus, so" }
   ज्ञात्वा:
     fix:
       1: { gloss: "knowing" }
@@ -2412,10 +2431,10 @@
       - { form: संयुक्ताः, lemma: संयुज्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "endowed with" }
   शक्ता:
     fix:
-      1: { gloss: "able" }
+      1: { lemma: शक्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "able" }
   भक्ताः:
     fix:
-      1: { gloss: "devoted, loyal" }
+      1: { lemma: भज्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "devoted, loyal" }
   क्रमागताः:
     split:
       - { form: क्रम, lemma: क्रम, member: true, gloss: "succession, due order" }
