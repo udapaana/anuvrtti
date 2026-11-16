@@ -376,3 +376,15 @@ where none did, the reader showed a neighbour's analysis with no problem
 reported. snapshot-text.ts now maps cheda's numbering onto the words that hold
 Devanagari; the Pañcatantra was re-snapshotted, and the finished batches
 (p01–p04) still report 0 problems. No other text has such tokens.
+
+## 2026-11-16 · Condensed Mahābhārata: second-reader audit
+
+**Tier 2:** 24 batches, 16,372 padas the authors let stand, read again: 182
+corrected (1.1%); per batch 2–24. The mechanical flags: 666 raised, 63 upheld.
+A blind sample (150 padas, seed 9119) is being judged.
+
+While this ran, the build's paradigm check (check-paradigm-lit.ts) was found
+to count 36 whole-text padas as mismatches that were only sandhi: a visarga
+dropped before a vowel or a voiced sound (देवक्या for देवक्याः). The check now
+accepts the cell's form less its final visarga for whole texts (counted
+apart); the graded readings, typed as padas, keep the strict comparison.
