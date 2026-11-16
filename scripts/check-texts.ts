@@ -45,6 +45,9 @@ for (const id of textIds()) {
   problems.push(...r.problems.map((p) => `${id}: ${p}`));
   for (const s of r.sections)
     for (const w of s.words) {
+      // a token with no Devanagari letter is the edition's punctuation ("!",
+      // "?", a bracketed number): it has no padas and needs none
+      if (!/[\u0904-\u0939\u093D\u0950\u0958-\u0961\u0972-\u097F]/.test(w.surface)) continue; // digits and marks are not letters
       if (!w.padas.length) problems.push(`${id}: ${s.id}/${w.surface} — not segmented`);
       for (const p of w.padas) {
         if (!p.lemma || (!p.a && !p.member)) problems.push(`${id}: ${s.id}/${w.surface} — ${p.form} has no analysis`);

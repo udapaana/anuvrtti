@@ -40,6 +40,9 @@ const bareHead = (t: string) => t.replace(/^(?:[a-zāīūṛṣṭṇśṃ-]+\s+
 const isTantra = (t: string) => Object.keys(TANTRA).some((k) => bareHead(t) === k.replace(/\s/g, ''));
 const story = (t: string) => t.match(/^kathā\s+(\d+)\s+(.+?)\s*\|?$/);
 const tidy = (s: string) => s.replace(/\s+/g, ' ').trim();
+// the edition's own apparatus, left in the text by the TEI: a starred verse's
+// number ("||Panc_1.[*100]", no closing marks) and "(alt.)" before a variant
+const strip = (s: string) => s.replace(/\s*\|\|\s*Panc_\S*\s*$/, '').replace(/\(alt\.\)\s*/g, '');
 
 type Sec = { id: string; kind: 'verse' | 'prose'; lines: string[]; iast: string };
 type Part = { id: string; title: string; first?: string; last?: string };
@@ -77,11 +80,11 @@ for (const b of readTei('sa_viSNuzarman-paJcatantra')) {
       seenBase.add(b0);
       base = b0; plus = 0; id = base;
     } else id = nextId();
-    const ls = b.lines.map((l) => tidy(l.replace(/[|/।॥]+\s*$/g, ''))).filter(Boolean);
+    const ls = b.lines.map((l) => tidy(strip(l).replace(/[|/।॥]+\s*$/g, ''))).filter(Boolean);
     sections.push({ id, kind: 'verse', lines: ls.map((l) => l.split(/\s*\|\s*/).map(iastToDeva).join(' ')), iast: ls.join(' | ') });
   } else {
     // prose: one section per sentence; a closing marker number, if any, is dropped
-    for (const sent of b.lines.join(' ').split(/\s*\|\s*/).map(tidy).filter((x) => x && !/^[\d.]+$/.test(x)))
+    for (const sent of strip(b.lines.join(' ')).split(/\s*\|\s*/).map(tidy).filter((x) => x && !/^[\d.]+$/.test(x)))
       sections.push({ id: nextId(), kind: 'prose', lines: [iastToDeva(sent)], iast: sent });
   }
   // only a block that added sections moves its part's range

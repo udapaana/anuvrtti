@@ -88,17 +88,14 @@ together they are inconsistent across texts. Once the convention is chosen
 (causatives, past participles, preverbs — see the second audit entry in
 AUDIT-LOG.md), a mechanical pass over every overrides file brings them in line.
 
-## Pañcatantra: punctuation and starred-verse markers counted as words
+## ~~Pañcatantra: punctuation and starred-verse markers counted as words~~ (done)
 
-Jha's edition sets "!" (432) and "?" (217) apart from the word, and
-wordsOf() makes each a word with no analysis: authors clear them one by one
-with `split: []`. Three starred verses keep their marker ("||Panc_1.[*100]"),
-which pancatantra-text.ts does not recognise, as a word "Pअन्च्_१.[*…]". After
-the author pass (changing the tokenizer mid-pass reindexes the words under the
-running authors): let wordsOf() skip a token with no Devanagari letter, keep
-the punctuation in the displayed line (also a stray "æ" and bracketed numbers such as "(२१८)", and bare tale numbers "६"), strip the starred marker in the builder
-(those verses stay +n), then delete the overrides keyed on "!", "?" and the
-marker, and re-snapshot.
+check-texts.ts treats a token with no Devanagari letter ("!", "?", "(२१८)") as
+the edition's punctuation: no padas wanted, none flagged (717 problems → 0);
+the reader already showed such a word as punctuation. pancatantra-text.ts
+strips the starred verses' "||Panc_…" and the "(alt.)" tags (4 sections), and
+the overrides keyed on them are gone. The authors' `split: []` entries for
+punctuation are now redundant and harmless.
 
 ## Harmonising pass (after the lemma convention is decided)
 

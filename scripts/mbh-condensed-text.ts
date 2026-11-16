@@ -106,8 +106,10 @@ const stripMarks = (s: string) =>
     .replace(/[`'’‘"]/g, '')            // quotation marks
     .replace(/[*0-9a-zA-Z]/g, '')       // stray asterisk / inline verse numbers / stray Latin letters
     .replace(/[।॥]+/g, '');             // daṇḍa / double daṇḍa
-const clean = (s: string) => stripMarks(s).replace(/\s+/g, ' ').trim();
-const toIast = (s: string) => tr(stripMarks(s), 'devanagari', 'iast').replace(/ṁ/g, 'ṃ').replace(/\s+/g, ' ').trim();
+// a nukta has no place in Sanskrit: SARIT's पाण़्डव is a typing slip for पाण्डव
+const noNukta = (s: string) => s.replace(/\u093C/g, '');
+const clean = (s: string) => noNukta(stripMarks(s)).replace(/\s+/g, ' ').trim();
+const toIast = (s: string) => tr(noNukta(stripMarks(s)), 'devanagari', 'iast').replace(/ṁ/g, 'ṃ').replace(/\s+/g, ' ').trim();
 
 // ── walk the selection in order ──────────────────────────────────────────────
 type Section = { id: string; kind: 'verse'; lines: string[]; iast: string };
