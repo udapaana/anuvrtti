@@ -34,7 +34,10 @@ const TANTRA: Record<string, string> = {
   'mitra-samprāptiḥ': 'मित्रसम्प्राप्तिः', 'kākolūkīyam': 'काकोलूकीयम्', 'labdha-praṇāśam': 'लब्धप्रणाशम्',
   'aparīkṣita-kārakam': 'अपरीक्षितकारकम्'
 };
-const isTantra = (t: string) => Object.keys(TANTRA).some((k) => t.replace(/\s|\|/g, '') === k.replace(/\s/g, ''));
+// a tantra's heading, as the edition gives it: "mitra-bhedaḥ", "atha
+// mitra-samprāptiḥ", "tṛtīyaṃ tantram atha kākolūkīyam", "atha labdha-praṇāśam"
+const bareHead = (t: string) => t.replace(/^(?:[a-zāīūṛṣṭṇśṃ-]+\s+tantram\s+)?(?:atha\s+)?/, '').replace(/\s|\|/g, '');
+const isTantra = (t: string) => Object.keys(TANTRA).some((k) => bareHead(t) === k.replace(/\s/g, ''));
 const story = (t: string) => t.match(/^kathā\s+(\d+)\s+(.+?)\s*\|?$/);
 const tidy = (s: string) => s.replace(/\s+/g, ' ').trim();
 
@@ -51,9 +54,9 @@ for (const b of readTei('sa_viSNuzarman-paJcatantra')) {
   if (b.kind === 'head') continue;
   const first = tidy(b.lines[0] ?? '');
   if (b.kind === 'prose' && b.lines.length === 1) {
-    if (first === 'pañcatantram') continue;
+    if (first === 'pañcatantram' || /^[a-zāīūṛṣṭṇśṃ-]+[ -]tantram$/.test(first)) continue;
     if (isTantra(first)) {
-      const key = Object.keys(TANTRA).find((k) => first.replace(/\s|\|/g, '') === k.replace(/\s/g, ''))!;
+      const key = Object.keys(TANTRA).find((k) => bareHead(first) === k.replace(/\s/g, ''))!;
       if (key !== 'kathā-mukham') tantra++;
       storyNo = 0;
       open(`${tantra}`, TANTRA[key]);

@@ -98,6 +98,12 @@ for (const s of sections) {
   if (parts.at(-1)?.id === k) parts.at(-1)!.last = s.id;
   else parts.push({ id: k, title: partTitle(k), first: s.id, last: s.id });
 }
+// a book can quote a skandha out of turn (the Bhāgavata opens with 11.11.29):
+// a part id that recurs takes a letter on each run, 11a, 11b
+for (const k of new Set(parts.map((p) => p.id))) {
+  const runs = parts.filter((p) => p.id === k);
+  if (runs.length > 1) runs.forEach((p, i) => { p.id = `${k}${'abcdefgh'[i]}`; });
+}
 
 const esc = (s: string) => JSON.stringify(s);
 const words = sections.reduce((n, s) => n + s.lines.join(' ').split(/\s+/).length, 0);

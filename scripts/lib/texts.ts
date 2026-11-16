@@ -56,6 +56,9 @@ export function partsOf(t: TextSource): Part[] {
       if (a < 0 || b < a) throw new Error(`${t.id}: part ${p.id} runs ${p.first}–${p.last}, not a run of its sections`);
       return { id: p.id, ...(p.title ? { title: p.title } : {}), sections: t.sections.slice(a, b + 1) };
     });
+    const dup = out.map((p) => p.id).find((x, i, a) => a.indexOf(x) !== i);
+    // two parts with one id would write one snapshot file and lose a part
+    if (dup) throw new Error(`${t.id}: part id ${dup} is used twice`);
     const covered = out.reduce((n, p) => n + p.sections.length, 0);
     if (covered !== t.sections.length) throw new Error(`${t.id}: its parts cover ${covered} of ${t.sections.length} sections`);
     return out;

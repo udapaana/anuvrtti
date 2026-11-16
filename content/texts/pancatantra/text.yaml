@@ -13,7 +13,7 @@ id: pancatantra
 title: पञ्चतन्त्रम्
 title_en: The Pañcatantra
 work: पञ्चतन्त्रम्
-place: the whole work — the introduction and five tantras, 31 parts
+place: the whole work — the introduction and five tantras, 34 parts
 source:
   edition: Pañcatantra, ed. Ramchandra Jha (Chowkhamba, 1991), via GRETIL and Ambuda
   file: sa_viSNuzarman-paJcatantra # data/texts.json (sha256-pinned; Ambuda's GRETIL fork)
@@ -55,92 +55,104 @@ parts:
   - id: '1.22'
     title: "जीर्णधननामवणिक्पुत्रकथा"
     first: '1.442+2'
+    last: '1.461+2'
+  - id: '2'
+    title: "मित्रसम्प्राप्तिः"
+    first: '1.461+3'
     last: '2.65+6'
-  - id: '1.1'
+  - id: '2.1'
     title: "हिरण्यकताम्रचूडकथा"
     first: '2.65+7'
     last: '2.71+2'
-  - id: '1.2'
+  - id: '2.2'
     title: "तिलचूर्णविक्रयकथा"
     first: '2.71+3'
     last: '2.111+2'
-  - id: '1.4'
+  - id: '2.4'
     title: "सागरदत्तकथा"
     first: '2.111+3'
     last: '2.141+2'
-  - id: '1.6'
+  - id: '2.6'
     title: "तीक्ष्णविषाणशृगालकथा"
     first: '2.141+3'
+    last: '2.196+1'
+  - id: '3'
+    title: "काकोलूकीयम्"
+    first: '2.196+2'
     last: '3.121+2'
-  - id: '1.4'
+  - id: '3.4'
     title: "अतिदर्पनामसर्पकथा"
     first: '3.121+3'
     last: '3.191+2'
-  - id: '1.10'
+  - id: '3.10'
     title: "वल्मीकोदरगतसर्पकथा"
     first: '3.191+3'
     last: '3.199+2'
-  - id: '1.11'
+  - id: '3.11'
     title: "शालङ्कायनरक्षितमूषिकाकथा"
     first: '3.199+3'
     last: '3.238+2'
-  - id: '1.15'
+  - id: '3.15'
     title: "मन्दविषसर्पकथा"
     first: '3.238+3'
+    last: '3.260+2'
+  - id: '4'
+    title: "लब्धप्रणाशम्"
+    first: '3.260+3'
     last: '4.16+2'
-  - id: '1.1'
+  - id: '4.1'
     title: "गङ्गदत्तप्रियदर्शनकथा"
     first: '4.16+3'
     last: '4.44+2'
-  - id: '1.5'
+  - id: '4.5'
     title: "ब्राह्मणकथा"
     first: '4.44+3'
     last: '4.47+2'
-  - id: '1.8'
+  - id: '4.8'
     title: "शुद्धपटनामरजककथा"
     first: '4.47+3'
     last: '4.49+2'
-  - id: '1.10'
+  - id: '4.10'
     title: "रथकारकथा"
     first: '4.49+3'
     last: '4.55+2'
-  - id: '1.11'
+  - id: '4.11'
     title: "कामातुरकथा"
     first: '4.55+3'
     last: '4.83+2'
-  - id: '1.15'
+  - id: '4.15'
     title: "चित्राङ्गनामसारमेयकथा"
     first: '4.83+3'
     last: '4.84+2'
-  - id: '2'
+  - id: '5'
     title: "अपरीक्षितकारकम्"
     first: '4.84+3'
     last: '5.17+2'
-  - id: '2.1'
+  - id: '5.1'
     title: "ब्राह्मणीनकुलकथा"
     first: '5.17+3'
     last: '5.21+2'
-  - id: '2.2'
+  - id: '5.2'
     title: "लोभाविष्टचक्रधरकथा"
     first: '5.21+3'
     last: '5.35+2'
-  - id: '2.3'
+  - id: '5.3'
     title: "सिंहकारकमूर्खब्राह्मणकथा"
     first: '5.35+3'
     last: '5.69+2'
-  - id: '2.9'
+  - id: '5.9'
     title: "चन्द्रभूपतिकथा"
     first: '5.69+3'
     last: '5.88+2'
-  - id: '2.12'
+  - id: '5.12'
     title: "चण्डकर्मनामराक्षसकथा"
     first: '5.88+3'
     last: '5.94+2'
-  - id: '2.13'
+  - id: '5.13'
     title: "भारुण्डपक्षिकथा"
     first: '5.94+3'
     last: '5.96+2'
-  - id: '2.14'
+  - id: '5.14'
     title: "ब्राह्मणकर्कटककथा"
     first: '5.96+3'
     last: '5.98+4'
@@ -9550,13 +9562,9 @@ sections:
     iast: "iti śrī-viṣṇu-śarma-viracite pañcatantre mitra-bhedo nāma prathamaṃ tantram"
   - id: '1.461+3'
     kind: prose
-    text: "अथ मित्रसम्प्राप्तिः"
-    iast: "atha mitra-samprāptiḥ"
-  - id: '1.461+4'
-    kind: prose
     text: "अथेदमारभ्यते मित्रसम्प्राप्तिर्नाम द्वितीयं तन्त्रम्"
     iast: "athedam ārabhyate mitra-samprāptir nāma dvitīyaṃ tantram"
-  - id: '1.461+5'
+  - id: '1.461+4'
     kind: prose
     text: "यस्यायमाद्यः श्लोकः"
     iast: "yasyāyam ādyaḥ ślokaḥ-"
@@ -13506,17 +13514,13 @@ sections:
     iast: "iti śrī-viṣṇu-śarma-viracite pañcatantre mitra-samprāptir nāma dvitīyaṃ tantraṃ samāptam"
   - id: '2.196+2'
     kind: prose
-    text: "तृतीयं तन्त्रमथ काकोलूकीयम्"
-    iast: "tṛtīyaṃ tantram atha kākolūkīyam"
-  - id: '2.196+3'
-    kind: prose
     text: "प्रस्तावना कथा मेघवर्णारिमर्दनवृत्तान्तः"
     iast: "prastāvanā kathā meghavarṇārimardana-vṛttāntaḥ"
-  - id: '2.196+4'
+  - id: '2.196+3'
     kind: prose
     text: "अथेदमारभ्यते काकोलूकीयं नाम तृतीयं तन्त्रम्"
     iast: "athedam ārabhyate kākolūkīyaṃ nāma tṛtīyaṃ tantram"
-  - id: '2.196+5'
+  - id: '2.196+4'
     kind: prose
     text: "यस्यायमाद्यः श्लोकः"
     iast: "yasyāyam ādyaḥ ślokaḥ-"
@@ -18404,17 +18408,9 @@ sections:
     iast: "iti śrī-viṣṇu-śarma-viracite pañcatantre kākolūkīyaṃ nāma tṛtīyaṃ tantraṃ samāptam"
   - id: '3.260+3'
     kind: prose
-    text: "चतुर्थतन्त्रम्"
-    iast: "caturtha-tantram"
-  - id: '3.260+4'
-    kind: prose
-    text: "अथ लब्धप्रणाशम्"
-    iast: "atha labdha-praṇāśam"
-  - id: '3.260+5'
-    kind: prose
     text: "अथेदमारभते लब्धप्रणाशं नाम चतुर्थं तन्त्रम्"
     iast: "athedam ārabhate labdha-praṇāśaṃ nāma caturthaṃ tantram"
-  - id: '3.260+6'
+  - id: '3.260+4'
     kind: prose
     text: "यस्यायमादिमः श्लोकः"
     iast: "yasyāyam ādimaḥ ślokaḥ-"
