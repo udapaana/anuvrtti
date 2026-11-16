@@ -1,0 +1,314 @@
+# Pañcatantra, Tantra 1, sections 1.282+4 to 1.311+31: the blue jackal
+# (Caṇḍarava) to the opening of the tale of the lion Madotkaṭa and the camel.
+# Format: see the header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+
+'1.282+4':
+  स:
+    fix:
+      1: { gloss: "he (the jackal)" }
+  कदाचित्क्षुधाविष्टो:
+    split:
+      - { form: कदाचित्, lemma: कदाचित्, a: अव्यय, gloss: "once, one day" }
+      - { form: क्षुधा, lemma: क्षुधा, member: true, gloss: "hunger" }
+      - { form: आविष्टः, lemma: आविश्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "possessed, overcome (by)" }
+  जिह्वालौल्यान्नगरमध्ये:
+    split:
+      - { form: जिह्वा, lemma: जिह्वा, member: true, gloss: "the tongue" }
+      - { form: लौल्यात्, lemma: लौल्य, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "out of greed, craving" }
+      - { form: नगर, lemma: नगर, member: true, gloss: "a town" }
+      - { form: मध्ये, lemma: मध्य, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "into the middle of" }
+    note: "जिह्वालौल्यात् 'out of the tongue's greed', the ablative of cause."
+  प्रविष्टः:
+    fix:
+      1: { gloss: "entered" }
+
+'1.282+5':
+  अवलोक्य:
+    fix:
+      1: { a: अव्यय ल्यप्, gloss: "having seen" }
+  शब्दायमानाः:
+    split:
+      - { form: शब्दायमानाः, lemma: शब्दाय, a: प्रथमा बहुवचन पुंलिङ्ग शानच्, gloss: "making a noise, barking" }
+    note: "शब्दायते, a denominative from शब्द 'sound' (शब्दवैरकलहाभ्रकण्वमेघेभ्यः करणे 3.1.17): 'makes a noise'."
+  परिधाव्य:
+    split:
+      - { form: परिधाव्य, lemma: परिधाव्, a: अव्यय ल्यप्, gloss: "running round (him)" }
+  तीक्ष्णदंष्टृआग्रैर्भक्षितुमारब्धाः:
+    split:
+      - { form: तीक्ष्ण, lemma: तीक्ष्ण, member: true, gloss: "sharp" }
+      - { form: दंष्ट्रा, lemma: दंष्ट्रा, member: true, gloss: "a fang, tooth" }
+      - { form: अग्रैः, lemma: अग्र, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "points, tips" }
+      - { form: भक्षितुम्, lemma: भक्ष्, a: अव्यय तुमुन्, gloss: "to devour" }
+      - { form: आरब्धाः, lemma: आरभ्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "began" }
+    note: "The e-text prints दंष्टृआग्रैः, a slip for दंष्ट्राग्रैः (दंष्ट्रा + अग्रैः). आरब्धाः is active in sense: 'the dogs began to devour (him)'."
+
+'1.282+6':
+  तैर्भक्ष्यमाणः:
+    fix:
+      2: { gloss: "being bitten, set upon" }
+  प्राणभयात्प्रत्यासन्नरजकगृहं:
+    split:
+      - { form: प्राण, lemma: प्राण, member: true, gloss: "life" }
+      - { form: भयात्, lemma: भय, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "out of fear (for)" }
+      - { form: प्रत्यासन्न, lemma: प्रत्यासन्न, member: true, gloss: "near by" }
+      - { form: रजक, lemma: रजक, member: true, gloss: "a washerman, dyer" }
+      - { form: गृहम्, lemma: गृह, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "a house" }
+  प्रविष्टः:
+    fix:
+      1: { gloss: "entered" }
+
+'1.282+7':
+  नीलीरसपरिपूर्णं:
+    split:
+      - { form: नीली, lemma: नीली, member: true, gloss: "indigo" }
+      - { form: रस, lemma: रस, member: true, gloss: "liquid, dye" }
+      - { form: परिपूर्णम्, lemma: परिपूर्ण, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "filled (with)" }
+  महाभाण्डम्सज्जीकृतमासीत्:
+    split:
+      - { form: महा, lemma: महत्, member: true, gloss: "great" }
+      - { form: भाण्डम्, lemma: भाण्ड, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "a vessel, vat" }
+      - { form: सज्जीकृतम्, lemma: सज्जीकृ, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "made ready" }
+      - { form: आसीत्, lemma: अस्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "was, stood" }
+    note: "The edition runs three words together (महाभाण्डं सज्जीकृतम् आसीत्). सज्जीकृत is a च्वि compound: सज्ज 'ready' + कृ, 'made ready' (5.4.50)."
+
+'1.282+8':
+  सारमेयैराक्रान्तो:
+    fix:
+      2: { gloss: "set upon, pressed hard" }
+  भाण्डमध्ये:
+    split:
+      - { form: भाण्ड, lemma: भाण्ड, member: true, gloss: "the vat" }
+      - { form: मध्ये, lemma: मध्य, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "into the middle of" }
+  पतितः:
+    fix:
+      1: { lemma: पत्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "fell" }
+
+'1.282+9':
+  यावन्निष्क्रान्तस्तावन्नीलीवर्णः:
+    split:
+      - { form: यावत्, lemma: यावत्, a: अव्यय, gloss: "when, as soon as" }
+      - { form: निष्क्रान्तः, lemma: निष्क्रम्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "came out" }
+      - { form: तावत्, lemma: तावत्, a: अव्यय, gloss: "then, by then" }
+      - { form: नीली, lemma: नीली, member: true, gloss: "indigo" }
+      - { form: वर्णः, lemma: वर्ण, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "colour; नीलीवर्णः 'indigo-coloured'" }
+    note: "यावत् … तावत् 'no sooner … than'. नीलीवर्णः is a बहुव्रीहि, 'whose colour is indigo'."
+  सञ्जातः:
+    fix:
+      1: { gloss: "became, turned" }
+
+'1.282+10':
+  तत्रापरे:
+    split:
+      - { form: तत्र, lemma: तत्र, a: अव्यय, gloss: "there" }
+      - { form: अपरे, lemma: अपर, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "the others" }
+  सारमेयास्तं:
+    split:
+      - { form: सारमेयाः, lemma: सारमेय, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "dogs" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "that" }
+  शृगालमजानन्तो:
+    split:
+      - { form: शृगालम्, lemma: शृगाल, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "jackal" }
+      - { form: अजानन्तः, lemma: अजानत्, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "not recognizing" }
+    note: "अजानन्तः: the present participle of ज्ञा (जानत्) with the negative अ-."
+  यथाभीष्टदिशं:
+    split:
+      - { form: यथा, lemma: यथा, member: true, gloss: "according to" }
+      - { form: अभीष्ट, lemma: अभीष्ट, member: true, gloss: "wished, liked" }
+      - { form: दिशम्, lemma: दिश्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "direction, quarter" }
+    note: "'Each in the direction he liked': the goal of जग्मुः stands in the accusative."
+  जग्मुः:
+    fix:
+      1: { gloss: "went (away)" }
+
+'1.282+11':
+  दूरतरं:
+    split:
+      - { form: दूरतरम्, lemma: दूरतर, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "farther off, more distant" }
+  प्रदेशमासाद्य:
+    fix:
+      1: { gloss: "a place, region" }
+      2: { lemma: आसद्, a: अव्यय ल्यप् णिच्, gloss: "having reached" }
+  काननाभिमुखं:
+    split:
+      - { form: कानन, lemma: कानन, member: true, gloss: "a forest" }
+      - { form: अभिमुखम्, lemma: अभिमुख, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "towards, facing" }
+  प्रतस्थे:
+    fix:
+      1: { gloss: "set out" }
+
+'1.282+12':
+  नीलवर्णेन:
+    split:
+      - { form: नील, lemma: नील, member: true, gloss: "blue, dark-blue" }
+      - { form: वर्णेन, lemma: वर्ण, a: तृतीया एकवचन पुंलिङ्ग, gloss: "colour" }
+  कदाचिन्निजरङ्गस्त्यज्यते:
+    split:
+      - { form: कदाचित्, lemma: कदाचित्, a: अव्यय, gloss: "ever; with न, never" }
+      - { form: निज, lemma: निज, member: true, gloss: "its own" }
+      - { form: रङ्गः, lemma: रङ्ग, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "colour, hue" }
+      - { form: त्यज्यते, lemma: त्यज्, a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "is given up" }
+    note: "'And the dark-blue colour never gives up its own hue' — indigo does not wash out, so the jackal stays blue."
+
+'1.282+13':
+  उक्तं:
+    fix:
+      1: { lemma: वच्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "(it is) said" }
+
+'1.282+14':
+  वज्रलेपस्य:
+    fix:
+      1: { gloss: "of adamantine cement" }
+  मूर्खस्य:
+    fix:
+      1: { gloss: "of a fool" }
+
+'1.282+15':
+  ग्रहस्तु:
+    fix:
+      1: { gloss: "grip, hold" }
+  नीलीमद्यपयोर्यथा:
+    split:
+      - { form: नीली, lemma: नीली, member: true, gloss: "indigo" }
+      - { form: मद्यपयोः, lemma: मद्यप, a: षष्ठी द्विवचन पुंलिङ्ग, gloss: "a drunkard" }
+      - { form: यथा, lemma: यथा, a: अव्यय, gloss: "as, like" }
+    note: "नीलीमद्यपयोः is a द्वन्द्व in the genitive dual, 'of indigo and of a drunkard'. Cement, a fool, women, a crab, fish, indigo and a drunkard each have one grip: what they seize they do not let go."
+
+'1.282+16':
+  हरगलगरलतमालसमप्रभमपूर्वं:
+    split:
+      - { form: हर, lemma: हर, member: true, gloss: "Hara, i.e. Śiva" }
+      - { form: गल, lemma: गल, member: true, gloss: "the throat" }
+      - { form: गरल, lemma: गरल, member: true, gloss: "poison" }
+      - { form: तमाल, lemma: तमाल, member: true, gloss: "the tamāla tree (dark-barked)" }
+      - { form: सम, lemma: सम, member: true, gloss: "like, equal to" }
+      - { form: प्रभम्, lemma: प्रभा, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "lustre, colour; -प्रभ 'whose colour is'" }
+      - { form: अपूर्वम्, lemma: अपूर्व, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "never seen before, strange" }
+    note: "A बहुव्रीहि on सत्त्वम्: 'whose colour was like the poison in Śiva's throat, or like the tamāla tree' — both dark blue. प्रभा shortens to -प्रभ at the end of a बहुव्रीहि (1.2.48)."
+  सत्त्वमवलोक्य:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "a creature, animal" }
+      2: { a: अव्यय ल्यप्, gloss: "having seen" }
+  सिंहव्याघ्रद्वीपिवृकप्रभृतयोऽरण्यनिवासिनो:
+    split:
+      - { form: सिंह, lemma: सिंह, member: true, gloss: "a lion" }
+      - { form: व्याघ्र, lemma: व्याघ्र, member: true, gloss: "a tiger" }
+      - { form: द्वीपि, lemma: द्वीपिन्, member: true, gloss: "a leopard" }
+      - { form: वृक, lemma: वृक, member: true, gloss: "a wolf" }
+      - { form: प्रभृतयः, lemma: प्रभृति, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "beginning with, and the rest" }
+      - { form: अरण्य, lemma: अरण्य, member: true, gloss: "a forest" }
+      - { form: निवासिनः, lemma: निवासिन्, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "dwellers" }
+    note: "Two words: सिंहव्याघ्रद्वीपिवृकप्रभृतयः, a बहुव्रीहि in प्रभृति 'lions, tigers, leopards, wolves and the rest', and अरण्यनिवासिनः 'the forest-dwellers'."
+  भयव्याकुलितचित्ताः:
+    split:
+      - { form: भय, lemma: भय, member: true, gloss: "fear" }
+      - { form: व्याकुलित, lemma: व्याकुलित, member: true, gloss: "confounded, agitated" }
+      - { form: चित्ताः, lemma: चित्त, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "mind; -चित्ताः 'whose minds were'" }
+    note: "A बहुव्रीहि: 'whose minds were agitated with fear'."
+  समन्तात्पलायनक्रियां:
+    split:
+      - { form: समन्तात्, lemma: समन्तात्, a: अव्यय, gloss: "on all sides" }
+      - { form: पलायन, lemma: पलायन, member: true, gloss: "flight" }
+      - { form: क्रियाम्, lemma: क्रिया, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "the act (of)" }
+    note: "पलायनक्रियां कुर्वन्ति 'they take to flight' — the historic present."
+
+'1.282+17':
+  कथयन्ति:
+    fix:
+      1: { lemma: कथ्, a: लट् प्रथमपुरुष बहुवचन परस्मैपद चुरादि, gloss: "they say" }
+  चन:
+    split:
+      - { form: च, lemma: च, a: अव्यय, gloss: "and" }
+      - { form: न, lemma: न, a: अव्यय, gloss: "not" }
+    note: "The edition prints चन, which here is च न: 'and they say, \"it is not known …\"', not the particle चन."
+  ज्ञायतेऽस्य:
+    fix:
+      1: { gloss: "is known" }
+  कीदृग्विचेष्टितं:
+    split:
+      - { form: कीदृक्, lemma: कीदृश्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "of what kind? what (sort of)?" }
+      - { form: विचेष्टितम्, lemma: विचेष्टित, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "conduct, behaviour" }
+    note: "Two words: कीदृक् agrees with विचेष्टितम् (and पौरुषम्): 'what its conduct is, and its strength'."
+  पौरुषं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "manly strength, prowess" }
+
+'1.282+18':
+  तद्दूरतरं:
+    split:
+      - { form: तत्, lemma: तद्, a: अव्यय, gloss: "so, therefore" }
+      - { form: दूरतरम्, lemma: दूरतर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "farther away (adverb)" }
+  गच्छामः:
+    fix:
+      1: { gloss: "let us go" }
+    note: "The present for a proposal: 'let us go'."
+
+'1.282+19':
+  उक्तं:
+    fix:
+      1: { lemma: वच्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "(it is) said" }
+
+'1.284':
+  चेष्टितं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "conduct, behaviour" }
+  विद्यान्न:
+    fix:
+      1: { a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "one knows, may know" }
+    note: "विद्यात् is the optative of विद् 'know' (अदादि), not the benedictive: 'whose conduct one does not know'."
+  कुलं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "family, lineage" }
+  पराक्रमम्:
+    fix:
+      1: { gloss: "valour, strength" }
+  विश्वसेत्प्राज्ञो:
+    split:
+      - { form: विश्वसेत्, lemma: विश्वस्, a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "should trust" }
+      - { form: प्राज्ञः, lemma: प्राज्ञ, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "a wise man" }
+    note: "विश्वस् takes the genitive of the one trusted: न तस्य विश्वसेत् 'let him not trust him'."
+  यदीच्छेच्छ्रियमात्मनः:
+    split:
+      - { form: यदि, lemma: यदि, a: अव्यय, gloss: "if" }
+      - { form: इच्छेत्, lemma: इष्, a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "he wishes" }
+      - { form: श्रियम्, lemma: श्री, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "prosperity, welfare" }
+      - { form: आत्मनः, lemma: आत्मन्, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "his own" }
+
+'1.284+1':
+  भयव्याकुलितान्विज्ञायेदमाहभो:
+    split:
+      - { form: भय, lemma: भय, member: true, gloss: "fear" }
+      - { form: व्याकुलितान्, lemma: व्याकुलित, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "agitated, alarmed" }
+      - { form: विज्ञाय, lemma: विज्ञा, a: अव्यय ल्यप्, gloss: "perceiving, seeing (that they were)" }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! O! (calling someone)" }
+    note: "The e-text runs the verb into the speech; भो is भोः with its visarga dropped before the next भ (8.3.17, 8.3.22)."
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! O!" }
+  श्वापदाः:
+    split:
+      - { form: श्वापदाः, lemma: श्वापद, a: सम्बोधन बहुवचन पुंलिङ्ग, gloss: "O beasts of prey" }
+  '!':
+    split: []
+    note: The snapshot gives the "!" the next word's pada; each word after it is re-stated here.
+  किं:
+    split:
+      - { form: किम्, lemma: किम्, a: अव्यय, gloss: "why?" }
+  यूयं:
+    split:
+      - { form: यूयम्, lemma: युष्मद्, a: प्रथमा बहुवचन, gloss: "you" }
+  मां:
+    split:
+      - { form: माम्, lemma: अस्मद्, a: द्वितीया एकवचन, gloss: "me" }
+  दृष्ट्वैव:
+    split:
+      - { form: दृष्ट्वा, lemma: दृश्, a: अव्यय क्त्वा, gloss: "on seeing" }
+      - { form: एव, lemma: एव, a: अव्यय, gloss: "merely, just" }
+  संत्रस्ता:
+    split:
+      - { form: संत्रस्ताः, lemma: संत्रस्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "terrified" }
+    note: "संत्रस्ताः, its visarga dropped before व (8.3.17, 8.3.22)."
+  व्रजथ:
+    split:
+      - { form: व्रजथ, lemma: व्रज्, a: लट् मध्यमपुरुष बहुवचन परस्मैपद, gloss: "you run away" }
