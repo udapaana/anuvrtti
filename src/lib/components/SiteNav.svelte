@@ -13,10 +13,10 @@
 
   /*
     The app's persistent chrome, 52px, and nothing page-specific ever lands
-    here — that is what pushed the old bar to nine targets. Five doors, one
+    here — that is what pushed the old bar to nine targets. Six doors, one
     search, one preferences popover:
 
-      read · workbook · usage · sūtra · grammar
+      read · texts · workbook · usage · sūtra · grammar
 
     The script pills, the lesson language and the settings link all moved into
     the `aa` popover, and the floating authoring pencil became a mode switch
@@ -41,7 +41,9 @@
     made it reachable only by knowing it was there.
   */
   const doors = [
-    { href: '/reader', label: 'read', owns: ['/reader'] },
+    // the graded readings; a whole text (/reader/text/…) belongs to "texts"
+    { href: '/reader', label: 'read', owns: ['/reader'], not: ['/reader/text'] },
+    { href: '/texts', label: 'texts', owns: ['/texts', '/reader/text'] },
     {
       href: '/workbook',
       label: 'workbook',
@@ -52,8 +54,9 @@
     { href: '/grammar', label: 'grammar', owns: ['/grammar', '/dukrnkarane'] }
   ];
 
-  function on(owns: string[]): boolean {
-    return owns.some((prefix) => path === prefix || path.startsWith(prefix + '/'));
+  const under = (prefix: string) => path === prefix || path.startsWith(prefix + '/');
+  function on(owns: string[], not: string[] = []): boolean {
+    return owns.some(under) && !not.some(under);
   }
 
   const scripts: { id: Script; label: string }[] = [
@@ -78,7 +81,7 @@
 
     <nav class="doors">
       {#each doors as door (door.href)}
-        <a class:on={on(door.owns)} href={door.href}>{door.label}</a>
+        <a class:on={on(door.owns, door.not)} href={door.href}>{door.label}</a>
       {/each}
     </nav>
 

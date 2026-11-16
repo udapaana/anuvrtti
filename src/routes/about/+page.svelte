@@ -137,7 +137,7 @@
       <dt>vidyut-cheda, vidyut-kosha</dt>
       <dd>
         split a whole text into words and list every analysis of each — the first draft of every
-        word in the reader's <a href="/reader/text/pancatantra-kilotpatin">texts</a>, which an
+        word in the <a href="/texts">texts</a>, which an
         editor then checks (MIT licence)
       </dd>
 

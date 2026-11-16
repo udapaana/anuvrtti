@@ -129,7 +129,8 @@ annotated by the build, and the author only confirms and adds:
 3. ~~The `text` kind, shelf and gate, with MW meanings and links.~~ Done —
    `/reader/text/<id>`, the "texts" shelf under the chapters, `check-texts.ts`.
 4. ~~One complete Pañcatantra tale through it end to end.~~ Done — the monkey
-   and the wedge (`content/texts/pancatantra-kilotpatin/`); the author pass is
+   and the wedge (first `content/texts/pancatantra-kilotpatin/`, since merged
+   into `content/texts/pancatantra/`); the author pass is
    measured in `docs/AUTO-ANNOTATION-EVAL.md` §7.
 
 To add a text: `content/texts/<id>/text.yaml` (sections verbatim), then

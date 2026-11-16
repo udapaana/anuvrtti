@@ -30,6 +30,11 @@
       entries: [{ href: '/reader', sa: 'पठनम्', label: 'reader', meta: 'the graded sequence' }]
     },
     {
+      door: 'texts',
+      dev: 'ग्रन्थाः',
+      entries: [{ href: '/texts', sa: 'ग्रन्थाः', label: 'texts', meta: 'whole works, read in order' }]
+    },
+    {
       door: 'workbook',
       dev: 'अभ्यास',
       entries: [

@@ -85,8 +85,9 @@ file is not really generated. Both happened during the migration — see
 See `content/texts/INGESTION-QUEUE.md` for which sources have a whole text
 yet, which are queued, and why (pinned source text, scope, size risk).
 
-A whole text (the first: Pañcatantra 1, the monkey and the wedge, at
-`/reader/text/pancatantra-kilotpatin`) is annotated by vidyut, not by hand.
+A whole text (the first was Pañcatantra 1, the monkey and the wedge, since
+merged into the whole Pañcatantra at `/reader/text/pancatantra`) is annotated by
+vidyut, not by hand; the author's overrides follow `content/texts/OVERRIDES.md`.
 Three files, one of each kind, and one generated payload:
 
 | file | kind | what |

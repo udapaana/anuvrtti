@@ -95,7 +95,17 @@
   let current = $state(0);
   const narrow = $derived($isNarrow);
 
+  /* A text merged into another keeps its address: it opens its new home at the
+     part it became. */
+  const RETIRED: Record<string, { to: string; part: string }> = {
+    'pancatantra-kilotpatin': { to: 'pancatantra', part: '1.1' }
+  };
+
   onMount(async () => {
+    const gone = RETIRED[id];
+    // a full load: the same page component would be reused for the new id
+    // without running this again
+    if (gone) { location.replace(`/reader/text/${gone.to}?part=${encodeURIComponent(gone.part)}`); return; }
     try { padaccheda = localStorage.getItem(PADACCHEDA_KEY) === '1'; } catch { /* session only */ }
     try {
       const [m, idx] = await Promise.all([
@@ -111,6 +121,9 @@
         const v = localStorage.getItem(progressKey(id));
         if (v) at = /^\d+$/.test(v) ? { part: m.parts[0].id, s: Number(v) } : { ...at, ...JSON.parse(v) };
       } catch { /* none */ }
+      // ?part=… names a part to open at its start (a link, or a retired text)
+      const asked = $appPage.url.searchParams.get('part');
+      if (asked && m.parts.some((p: PartMeta) => p.id === asked)) at = { part: asked, s: 0 };
       await openPart(Math.max(0, m.parts.findIndex((p: PartMeta) => p.id === at.part)), at.s);
     } catch (e) {
       error = String((e as Error).message ?? e);
@@ -416,7 +429,7 @@
       </header>
 
       {#each text.sections as sec, si}
-        <article class="sec" class:verse={sec.kind === 'verse'} data-si={si}>
+        <article class="sec" class:verse={sec.kind === 'verse'} class:roman={$displayScript === 'iast'} data-si={si}>
           <span class="num" aria-label={`section ${sec.id}`}>{shortId(sec)}</span>
           <div class="lines">
             {#each sec.lines as line, li}
@@ -573,6 +586,9 @@
     .sec { grid-template-columns: 38px minmax(0, 1fr); }
     .num { padding-right: 4px; font-size: 10px; }
     .token { font-size: 22px; }
+    /* roman runs wider than Devanagari for the same word: a long compound in
+       IAST wraps at 22px where its akṣaras fit */
+    .sec.roman .token { font-size: 19px; }
     .tokens { column-gap: 13px; }
     .railframe.sheeted { height: 100%; overflow: hidden; }
     .railframe.at-peek .evidence { display: none; }

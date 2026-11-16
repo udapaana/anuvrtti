@@ -44,7 +44,6 @@
   let usage = $state<any>(null); // usage.json — carries per-word paradigms
   // whole texts (scripts/build-texts.ts): the shelf beside the chapters
   let texts = $state<{ id: string; title: string; title_en: string; sections: number }[]>([]);
-  let textAt = $state<Record<string, number>>({});
   let error = $state('');
   let loaded = $state(false);
 
@@ -99,10 +98,6 @@
       try { usage = await (await fetch(dataUrl('/data/usage.json'))).json(); } catch { usage = null; }
       try {
         texts = await (await fetch(dataUrl('/data/texts/index.json'))).json();
-        // where each text was left off, to say "§ 4 of 9" on the shelf
-        for (const t of texts) {
-          try { const n = localStorage.getItem(`anuvrtti:text-progress:${t.id}`); if (n) textAt[t.id] = Number(n); } catch { /* none */ }
-        }
       } catch { texts = []; }
       loaded = true;
       focusedId = sequence[0]?.id ?? null;
@@ -180,7 +175,6 @@
   const gradedChapters = $derived(chapters.filter((c) => !c.attested));
   const sourceChapters = $derived(chapters.filter((c) => c.attested));
   const sourceItems = $derived.by(() => {
-    const linkedTextIds = new Set(sourceChapters.map((c) => c.textId).filter(Boolean));
     const fromChapters = sourceChapters.map((c) => {
       const t = titles[c.id] ?? { dev: c.id, en: '' };
       const text = c.textId ? texts.find((x) => x.id === c.textId) : undefined;
@@ -192,18 +186,10 @@
         extra: text ? { label: `read it all · ${text.sections}`, href: `/reader/text/${text.id}` } : undefined
       };
     });
-    // A whole text with no excerpt chapter (asymmetric, e.g. the Vetāla) is
-    // still a source — it just opens straight to the full text, no verses view.
-    const orphanTexts = texts
-      .filter((t) => !linkedTextIds.has(t.id))
-      .map((t) => ({
-        id: `text:${t.id}`,
-        label: t.title,
-        script: 'devanagari' as const,
-        sub: t.title_en + (textAt[t.id] ? ` · ${textAt[t.id] + 1}/${t.sections}` : ''),
-        href: `/reader/text/${t.id}`
-      }));
-    return [...fromChapters, ...orphanTexts];
+    // A whole text with no excerpt chapter is not listed here: the works live
+    // under the "texts" door (/texts). The reader holds the excerpts — passages
+    // chosen for their level — each linked to its whole text by "read it all".
+    return fromChapters;
   });
 
   // ── the reading list (graded order), paginated. The chapter spine is the only
