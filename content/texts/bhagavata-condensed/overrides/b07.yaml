@@ -115,7 +115,7 @@
       - { form: अचलम्, lemma: अचल, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "mountain" }
   समुद्यता:
     fix:
-      1: { a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "ready, set (to)" }
+      1: { form: समुद्यताः, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "ready, set (to)" }
     note: "समुद्यताः, its visarga lost before the voiced न (8.3.17, 8.3.22)."
   निर्मथितुं:
     split:
@@ -275,6 +275,9 @@
       - { form: उद्भूतात्, lemma: उद्भू, a: पञ्चमी एकवचन पुंलिङ्ग क्त, gloss: "arisen" }
       - { form: कालकूटात्, lemma: कालकूट, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "from the Kālakūṭa poison" }
       - { form: उपस्थितम्, lemma: उपस्था, a: द्वितीया एकवचन नपुंसकलिङ्ग क्त, gloss: "come upon (them)" }
+  अहो:
+    fix:
+      1: { gloss: "ah! alas!" }
 
 '8.7.39':
   आसां:
@@ -594,7 +597,7 @@
       1: { a: द्वितीया बहुवचन स्त्रीलिङ्ग, gloss: "the quarters" }
   कान्त्या:
     fix:
-      1: { a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "with her radiance" }
+      1: { form: कान्त्या, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "with her radiance" }
   विद्युत्सौदामनी:
     fix:
       1: { a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "lightning" }
@@ -868,7 +871,7 @@
       - { form: अपेक्षितम्, lemma: अपेक्ष्, a: द्वितीया एकवचन पुंलिङ्ग क्त, gloss: "looked to, sought" }
   रमा:
     fix:
-      1: { a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "Ramā, Lakṣmī" }
+      1: { form: रमा, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "Ramā, Lakṣmī" }
   मुकुन्दं:
     fix:
       1: { gloss: "Mukunda, Viṣṇu" }
@@ -876,6 +879,9 @@
     split:
       - { form: निरपेक्षम्, lemma: निरपेक्ष, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "indifferent, needing no one" }
       - { form: ईप्सितम्, lemma: आप्, a: द्वितीया एकवचन पुंलिङ्ग क्त सन्, gloss: "longed for" }
+  एवं:
+    fix:
+      1: { gloss: "thus" }
 
 '8.8.25':
   तस्यांसदेश:
@@ -942,7 +948,7 @@
       1: { gloss: "the father" }
   जनन्या:
     fix:
-      1: { lemma: जननी, a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "mother" }
+      1: { form: जनन्याः, lemma: जननी, a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "mother", note: "जनन्याः, its visarga lost before the voiced व (8.3.17, 8.3.22)." }
   वक्षो:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "his breast" }
@@ -1001,7 +1007,7 @@
       - { form: लोचना, lemma: लोचन, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "eye (कमललोचना 'lotus-eyed')" }
   असुरा:
     fix:
-      1: { lemma: असुर, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "the demons" }
+      1: { form: असुराः, lemma: असुर, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "the demons" }
   जगृहुस्तां:
     fix:
       1: { gloss: "took" }
@@ -1013,6 +1019,9 @@
     fix:
       1: { gloss: "of Hari" }
       2: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "with the consent" }
+  ते:
+    fix:
+      1: { gloss: "they (the demons)" }
 
 '8.8.35':
   अमृतापूर्णकलसं:
@@ -1148,6 +1157,7 @@
     fix:
       1: { gloss: "strife, a quarrel" }
       2: { gloss: "arose" }
+      3: { gloss: "among them" }
   तदर्थे:
     split:
       - { form: तद्, lemma: तद्, member: true, gloss: "that" }
@@ -1224,7 +1234,7 @@
     split:
       - { form: कञ्ज, lemma: कञ्ज, member: true, gloss: "lotus" }
       - { form: पलाश, lemma: पलाश, member: true, gloss: "petal" }
-      - { form: अक्षि, lemma: अक्षि, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "eye (कञ्जपलाशाक्षि 'O you with eyes like lotus petals')" }
+      - { form: अक्षि, lemma: अक्षी, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "eye (कञ्जपलाशाक्षि 'O you with eyes like lotus petals')" }
     note: "A बहुव्रीहि in -अक्षी, the feminine of a compound ending in अक्षि 'eye' (5.4.113 with ङीष्); its vocative shortens to -अक्षि."
   कुतो:
     fix:
@@ -1348,7 +1358,7 @@
       1: { lemma: कृ, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "done" }
   मया:
     fix:
-      1: { lemma: अस्मद्, a: तृतीया एकवचन, gloss: "by me" }
+      1: { form: मया, lemma: अस्मद्, a: तृतीया एकवचन, gloss: "by me" }
   वो:
     fix:
       1: { a: चतुर्थी बहुवचन, gloss: "for you" }
@@ -1538,6 +1548,9 @@
   दैत्याः:
     fix:
       1: { lemma: दैत्य, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "the Daityas" }
+  एवं:
+    fix:
+      1: { gloss: "thus" }
 
 '8.10.2':
   साधयित्वामृतं:
@@ -1777,11 +1790,14 @@
       - { form: भयम्, lemma: भय, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "fear" }
       - { form: इन्द्र, lemma: इन्द्र, member: true, gloss: "Indra" }
       - { form: योषिताम्, lemma: योषित्, a: षष्ठी बहुवचन स्त्रीलिङ्ग, gloss: "women (इन्द्रयोषिताम् 'in the women of Indra's city')" }
+  तां:
+    fix:
+      1: { gloss: "that (city)" }
 
 '8.15.24':
   मघवांस्तमभिप्रेत्य:
     split:
-      - { form: मघवान्, lemma: मघवन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Maghavan, Indra" }
+      - { form: मघवान्, lemma: मघवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Maghavan, Indra", note: "मघवन् has a by-stem मघवत् (6.4.128 मघवा बहुलम्), whose nominative is मघवान्; मघवन् itself gives मघवा." }
       - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "that" }
       - { form: अभिप्रेत्य, lemma: अभिप्रे, a: अव्यय ल्यप्, gloss: "perceiving, understanding" }
   बलेः:
@@ -1874,6 +1890,7 @@
   समर्थोऽस्ति:
     fix:
       1: { gloss: "able" }
+      2: { gloss: "is" }
   कश्चन:
     fix:
       1: { gloss: "who? (with चन, 'anyone')" }
@@ -1902,7 +1919,7 @@
     split:
       - { form: कः, lemma: किम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "who? (with अपि, 'anyone')" }
       - { form: अपि, lemma: अपि, a: अव्यय, gloss: "with an interrogative: 'any-'" }
-      - { form: एनम्, lemma: एनद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
+      - { form: एनम्, lemma: एतद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him", note: "एनम् replaces एतद् when it refers back to one already named (2.4.34 द्वितीयाटौस्स्वेनः)." }
   ब्रह्मतेजःसमेधितम्:
     split:
       - { form: ब्रह्मतेजस्, lemma: ब्रह्मतेजस्, member: true, gloss: "brahminical power" }
@@ -2010,6 +2027,9 @@
     split:
       - { form: पर्यतप्यत्, lemma: परितप्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "grieved" }
       - { form: अनाथवत्, lemma: अनाथवत्, a: अव्यय, gloss: "like one who has no protector" }
+  एवं:
+    fix:
+      1: { gloss: "thus" }
 
 '8.16.3':
   स:
@@ -2236,6 +2256,12 @@
     fix:
       1: { gloss: "the Lord" }
       2: { gloss: "the primal Person" }
+  पीतवासाश्चतुर्बाहुः:
+    fix:
+      1: { gloss: "dressed in yellow" }
+  शङ्खचक्रगदाधरः:
+    fix:
+      1: { gloss: "bearing conch, discus and mace" }
 
 '8.17.5':
   तं:
@@ -2399,7 +2425,7 @@
       2: { gloss: "worship" }
   नार्हति:
     fix:
-      2: { gloss: "can, ought to" }
+      2: { a: लट् प्रथमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "can, ought to" }
   गन्तुमन्यथा:
     fix:
       1: { lemma: गम्, a: अव्यय तुमुन्, gloss: "to go, turn out" }
@@ -2568,7 +2594,7 @@
       1: { gloss: "dwarf" }
   मोदमाना:
     fix:
-      1: { gloss: "rejoicing" }
+      1: { lemma: मुद्, a: प्रथमा बहुवचन पुंलिङ्ग शानच्, gloss: "rejoicing" }
   महर्षयः:
     fix:
       1: { gloss: "the great sages" }
@@ -2584,6 +2610,9 @@
   प्रजापतिम्:
     fix:
       1: { gloss: "Prajāpati (Kaśyapa)" }
+  दृष्ट्वा:
+    fix:
+      1: { gloss: "seeing" }
 
 '8.18.18':
   ब्रह्मवर्चसेनैवं:
@@ -2673,6 +2702,7 @@
   सङ्क्षिप्तास्तस्य:
     fix:
       1: { lemma: संक्षिप्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "eclipsed, cast in the shade" }
+      2: { gloss: "his" }
   तेजसा:
     fix:
       1: { gloss: "by the radiance" }
@@ -2927,6 +2957,9 @@
   यथा:
     fix:
       1: { gloss: "like (one who is)" }
+  अहो:
+    fix:
+      1: { gloss: "ah! (in wonder)" }
 
 '8.19.19':
   मां:
@@ -2969,7 +3002,7 @@
   याचितुमर्हति:
     fix:
       1: { gloss: "to beg" }
-      2: { gloss: "ought, should need" }
+      2: { a: लट् प्रथमपुरुष एकवचन परस्मैपद भ्वादि, gloss: "ought, should need" }
   तस्माद्वृत्तिकरीं:
     split:
       - { form: तस्मात्, lemma: तद्, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "therefore" }

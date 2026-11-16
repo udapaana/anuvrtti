@@ -51,7 +51,7 @@
       - { form: च, lemma: च, a: अव्यय, gloss: "and" }
   निपत्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "falling down" }
+      1: { lemma: निपत्, a: अव्यय ल्यप्, gloss: "falling down" }
   योधाः:
     fix:
       1: { gloss: "warriors" }
@@ -85,7 +85,7 @@
   रथादवप्लुत्य:
     fix:
       1: { gloss: "from the chariot" }
-      2: { a: अव्यय ल्यप्, gloss: "jumping down" }
+      2: { lemma: अवप्लु, a: अव्यय ल्यप्, gloss: "jumping down" }
   विराटपुत्रः:
     split:
       - { form: विराट, lemma: विराट, member: true, gloss: "Virāṭa (king of the Matsyas)" }
@@ -173,7 +173,7 @@
       2: { a: द्वितीया बहुवचन नपुंसकलिङ्ग, gloss: "army, troops" }
   निरीक्ष्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "seeing" }
+      1: { lemma: निरीक्ष्, a: अव्यय ल्यप्, gloss: "seeing" }
   पार्थो:
     fix:
       1: { gloss: "Pārtha, son of Pṛthā (Arjuna)" }
@@ -209,7 +209,7 @@
       - { form: दूरतरम्, lemma: दूरतर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "farther off (adverbial)" }
   विभज्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "separating (them from the cattle)" }
+      1: { lemma: विभज्, a: अव्यय ल्यप्, gloss: "separating (them from the cattle)" }
   धनं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "wealth (the cattle)" }
@@ -243,7 +243,7 @@
   सर्वानभिवाद्य:
     fix:
       1: { gloss: "all" }
-      2: { a: अव्यय ल्यप्, gloss: "saluting" }
+      2: { lemma: अभिवद्, a: अव्यय ल्यप्, gloss: "saluting (causative)" }
   बाणैर्न्यवर्ततोदग्रमनाः:
     split:
       - { form: बाणैः, lemma: बाण, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "with arrows" }
@@ -292,7 +292,7 @@
 'virata-4-69-1':
   विजित्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "having won (back)" }
+      1: { lemma: विजि, a: अव्यय ल्यप्, gloss: "having won (back)" }
   धनं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "wealth (the cattle)" }
@@ -321,8 +321,8 @@
       2: { gloss: "by Uttara (Virāṭa's son)" }
   प्रहिता:
     fix:
-      1: { lemma: प्रहि, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "sent" }
-    note: "Masculine plural with दूताः; the visarga is lost before the vowel-initial word that follows in the verse."
+      1: { form: प्रहिताः, lemma: प्रहि, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "sent" }
+    note: "Masculine plural with दूताः: -आः loses its visarga before a voiced sound (8.3.17, 8.3.22), here the द of दूताः."
   दूतास्ते:
     split:
       - { form: दूताः, lemma: दूत, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "messengers" }
@@ -417,13 +417,13 @@
       - { form: पुरस्कृत्य, lemma: पुरस्कृ, a: अव्यय ल्यप्, gloss: "placing in front, at their head" }
   अभिपन्ना:
     fix:
-      1: { a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "came forward" }
+      1: { form: अभिपन्नाः, lemma: अभिपद्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "came forward" }
   महाभागा:
     fix:
-      1: { lemma: महाभाग, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "illustrious" }
+      1: { form: महाभागाः, lemma: महाभाग, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "illustrious" }
   भ्राजमाना:
     fix:
-      1: { a: प्रथमा बहुवचन पुंलिङ्ग शानच्, gloss: "shining" }
+      1: { form: भ्राजमानाः, lemma: भ्राज्, a: प्रथमा बहुवचन पुंलिङ्ग शानच्, gloss: "shining" }
     note: "अभिपन्ना, महाभागा, भ्राजमाना are masculine plurals with महारथाः: the visarga is lost before a vowel or voiced sound (8.3.17, 8.3.22)."
   महारथाः:
     fix:
@@ -520,9 +520,12 @@
     split:
       - { form: परिहास, lemma: परिहास, member: true, gloss: "jest" }
       - { form: इच्छया, lemma: इच्छा, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "with the wish (परिहासेच्छा 'a wish to jest')" }
+  विराटस्य:
+    fix:
+      1: { gloss: "of Virāṭa" }
   निशम्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "hearing" }
+      1: { lemma: निशम्, a: अव्यय ल्यप्, gloss: "hearing" }
   तत्:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
@@ -559,7 +562,7 @@
       1: { gloss: "fame" }
   स्थिता:
     fix:
-      1: { a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "stands, is established" }
+      1: { form: स्थिता, lemma: स्था, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "stands, is established" }
   लोके:
     fix:
       1: { gloss: "in the world" }
@@ -1259,7 +1262,7 @@
       1: { gloss: "that" }
   निवृत्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "returning" }
+      1: { lemma: निवृत्, a: अव्यय ल्यप्, gloss: "returning" }
   दूतो:
     fix:
       1: { gloss: "messenger" }
@@ -1374,7 +1377,7 @@
       1: { gloss: "the agreement" }
   निशम्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "hearing" }
+      1: { lemma: निशम्, a: अव्यय ल्यप्, gloss: "hearing" }
   तीर्णप्रतिज्ञस्य:
     fix:
       1: { gloss: "who had fulfilled his vow" }
@@ -1449,7 +1452,7 @@
       2: { lemma: काल, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "time" }
   निशम्याथ:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "hearing" }
+      1: { lemma: निशम्, a: अव्यय ल्यप्, gloss: "hearing" }
       2: { gloss: "then" }
   दूतवाक्यं:
     split:
@@ -1480,7 +1483,7 @@
       1: { gloss: "Abhimanyu" }
   समादाय:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "taking with him" }
+      1: { lemma: समादा, a: अव्यय ल्यप्, gloss: "taking with him" }
   रामेण:
     fix:
       1: { gloss: "Rāma (Balarāma)" }
@@ -1749,7 +1752,7 @@
   तामुद्यम्य:
     fix:
       1: { gloss: "her" }
-      2: { a: अव्यय ल्यप्, gloss: "raising" }
+      2: { lemma: उद्यम्, a: अव्यय ल्यप्, gloss: "raising" }
   सुकेशान्तां:
     split:
       - { form: सु, lemma: सु, member: true, gloss: "beautiful" }
@@ -1945,7 +1948,7 @@
       1: { gloss: "with their partisans" }
   विश्रम्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "resting" }
+      1: { lemma: विश्रम्, a: अव्यय ल्यप्, gloss: "resting" }
   रात्रावुषसि:
     fix:
       1: { gloss: "at night" }
@@ -1990,7 +1993,7 @@
       - { form: सिंहाः, lemma: सिंह, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "lions (राजसिंह 'lions among kings')" }
   सहिता:
     fix:
-      1: { lemma: सहित, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "together" }
+      1: { form: सहिताः, lemma: सहित, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "together" }
   ह्यश्रृण्वन्वाक्यं:
     split:
       - { form: हि, lemma: हि, a: अव्यय, gloss: "indeed" }
@@ -2094,7 +2097,7 @@
 'udyoga-5-1-25':
   निशम्य:
     fix:
-      1: { a: अव्यय ल्यप्, gloss: "hearing" }
+      1: { lemma: निशम्, a: अव्यय ल्यप्, gloss: "hearing" }
   वाक्यं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "speech" }
@@ -2433,7 +2436,7 @@
       1: { gloss: "the wedding" }
   मुदिता:
     fix:
-      1: { lemma: मुद्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "glad" }
+      1: { form: मुदिताः, lemma: मुद्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "glad" }
   गमिष्यामो:
     fix:
       1: { gloss: "we shall go" }

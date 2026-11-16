@@ -195,8 +195,8 @@ export function fmtA(a: Analysis | null): string {
   if (a.type === 'member') return 'समास';
   if (a.type === 'avyaya') return ['अव्यय', a.कृत्].filter(Boolean).join(' ');
   if (a.type === 'tinanta')
-    return [a.लकार, a.पुरुष, a.वचन, a.पद, a.प्रयोग && a.प्रयोग !== 'कर्तरि' ? a.प्रयोग : ''].filter(Boolean).join(' ');
-  return [a.विभक्ति, a.वचन, a.लिङ्ग, a.कृत्].filter(Boolean).join(' ');
+    return [a.लकार, a.पुरुष, a.वचन, a.पद, a.प्रयोग && a.प्रयोग !== 'कर्तरि' ? a.प्रयोग : '', ...(a.सनादि ?? [])].filter(Boolean).join(' ');
+  return [a.विभक्ति, a.वचन, a.लिङ्ग, a.कृत्, ...(a.सनादि ?? [])].filter(Boolean).join(' ');
 }
 
 // ── freshness ───────────────────────────────────────────────────────────────
