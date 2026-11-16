@@ -96,6 +96,6 @@ with `split: []`. Three starred verses keep their marker ("||Panc_1.[*100]"),
 which pancatantra-text.ts does not recognise, as a word "Pअन्च्_१.[*…]". After
 the author pass (changing the tokenizer mid-pass reindexes the words under the
 running authors): let wordsOf() skip a token with no Devanagari letter, keep
-the punctuation in the displayed line, strip the starred marker in the builder
+the punctuation in the displayed line (also a stray "æ" and bracketed numbers such as "(२१८)", and bare tale numbers "६"), strip the starred marker in the builder
 (those verses stay +n), then delete the overrides keyed on "!", "?" and the
 marker, and re-snapshot.
