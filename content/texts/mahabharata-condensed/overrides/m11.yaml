@@ -635,7 +635,7 @@
     note: "The print has कामच्च; read कामाच्च (कामात् + च), parallel to अर्थाच्च. Taken as a misprint."
   आनृशंस्यं:
     fix:
-      1: { gloss: "kindness" }
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "kindness" }
   परं:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "higher, highest" }
@@ -1167,7 +1167,8 @@
       1: { gloss: "intention, plan" }
   दामग्रन्थीति:
     fix:
-      1: { a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Dāmagranthi (Nakula's assumed name)" }
+      1: { form: दामग्रन्थी, lemma: दामग्रन्थिन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Dāmagranthi (Nakula's assumed name)" }
+    note: "दामग्रन्थी + इति: the long ई shows a nominative in -ई, so the name is taken as the इन्-stem दामग्रन्थिन् ('he of the rope-knots'); an इ-stem nominative दामग्रन्थिः would give दामग्रन्थिरिति."
       2: { gloss: "thus (closing the name)" }
   नाम्नाऽहं:
     split:
@@ -1830,7 +1831,7 @@
       1: { gloss: "of the king" }
   मत्स्यस्य:
     fix:
-      1: { gloss: "of the Matsyas" }
+      1: { gloss: "of Matsya (the Matsya king, Virāṭa)" }
   कीचकेन:
     fix:
       1: { gloss: "Kīcaka" }
@@ -2054,6 +2055,7 @@
       - { form: मत्स्य, lemma: मत्स्य, member: true, gloss: "the Matsyas" }
       - { form: मही, lemma: मही, member: true, gloss: "the earth" }
       - { form: पतेः, lemma: पति, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "lord (महीपति 'king')" }
+    note: "पतेः, not पत्युः: पति declines like हरि only at the end of a compound (1.4.8 पतिः समास एव)."
   संनद्धा:
     fix:
       1: { form: संनद्धाः, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "armed, in armour" }
@@ -2513,7 +2515,7 @@
       - { form: दिवस्पृक्, lemma: दिवस्पृश्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "touching the sky" }
       - { form: कुरु, lemma: कुरु, member: true, gloss: "the Kurus" }
       - { form: सत्तम, lemma: सत्तम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "best (कुरुसत्तम 'best of the Kurus')" }
-    note: "दिवस्पृश् keeps the genitive दिवः inside the compound (an अलुक् समास); its final श् becomes क् at the end of the word (8.2.36, 8.2.39)."
+    note: "दिवस्पृश् keeps the genitive दिवः inside the compound (an अलुक् समास); its final श् becomes क् at the end of the word, because स्पृश् here takes क्विन् (3.2.58) and a क्विन्-final turns to a velar (8.2.62), not the ट् of 8.2.36."
   तदनीकमथो:
     split:
       - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
@@ -3128,7 +3130,7 @@
     note: "A locative absolute: 'when the armies had been drawn up thus'."
   कौरवेयैर्महारथैः:
     fix:
-      1: { gloss: "by the Kaurava" }
+      1: { gloss: "by the Kauravas (Kuru's descendants)" }
       2: { gloss: "great chariot-warriors" }
   उपायादर्जुनंस्तूर्णं:
     split:
@@ -3175,7 +3177,7 @@
       1: { gloss: "first" }
   क्रमात्:
     fix:
-      1: { gloss: "in due order" }
+      1: { lemma: क्रम, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "in due order (an adverbial ablative of क्रम 'order')" }
 
 'virata-4-54-9':
   द्रोणं:
