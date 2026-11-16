@@ -107,8 +107,8 @@
       - { form: संवृताम्, lemma: संवृ, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "covered, curtained" }
   रक्षोभिर्बहुभिर्गुप्तामाजहार:
     fix:
-      1: { gloss: "Rākṣasas, demons" }
-      2: { gloss: "many" }
+      1: { a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "Rākṣasas, demons" }
+      2: { a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "many" }
       3: { form: गुप्ताम्, lemma: गुप्, a: द्वितीया एकवचन स्त्रीलिङ्ग क्त, gloss: "guarded" }
       4: { gloss: "brought" }
   विभीषणः:
@@ -444,6 +444,12 @@
       2: { form: महत्, lemma: महत्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "great, noble" }
 
 '6.103.21':
+  मया:
+    fix:
+      1: { gloss: "by me" }
+  नास्ति:
+    fix:
+      2: { gloss: "is (न अस्ति मे 'I have no')" }
   तदर्थं:
     fix:
       1: { form: तद्, member: true, gloss: "that" }
@@ -554,7 +560,7 @@
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "harsh" }
   श्रावयसे:
     fix:
-      1: { gloss: "you make (me) hear" }
+      1: { lemma: श्रु, a: लट् मध्यमपुरुष एकवचन आत्मनेपद णिच्, gloss: "you make (me) hear" }
   वीर:
     fix:
       1: { gloss: "O hero" }
@@ -566,6 +572,9 @@
       1: { gloss: "a common woman" }
 
 '6.104.6':
+  तथास्मि:
+    fix:
+      2: { gloss: "I am" }
   महाबाहो:
     fix:
       1: { gloss: "O mighty-armed one" }
@@ -628,6 +637,9 @@
       1: { lemma: परीक्ष्, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "tested, proved" }
 
 '6.104.8':
+  यद्यहं:
+    fix:
+      2: { gloss: "I" }
   गात्रसंस्पर्शं:
     split:
       - { form: गात्र, lemma: गात्र, member: true, gloss: "the body" }
@@ -1461,7 +1473,7 @@
       1: { gloss: "I renounce" }
   यदुक्ता:
     fix:
-      1: { gloss: "that which, the words" }
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "what (you said)", note: "With a passive of ब्रू/वच् the person addressed becomes the subject (उक्ता कैकयी) and the thing said stays in the accusative (1.4.51), so यत् here is accusative." }
       2: { gloss: "told" }
   कैकयी:
     fix:
@@ -1778,7 +1790,7 @@
   राघवायाभ्यवादयन्:
     fix:
       1: { gloss: "Rāghava (Rāma)" }
-      2: { gloss: "saluted" }
+      2: { a: लङ् प्रथमपुरुष बहुवचन परस्मैपद णिच्, gloss: "saluted" }
 
 '6.108.14':
   काकुत्स्थं:
@@ -2166,7 +2178,7 @@
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "human" }
   धारयन्रूपमयोध्यां:
     fix:
-      1: { gloss: "assuming, taking on" }
+      1: { lemma: धृ, a: प्रथमा एकवचन पुंलिङ्ग शतृ णिच्, gloss: "assuming, taking on" }
       2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "form" }
       3: { gloss: "Ayodhyā" }
   त्वरितो:
