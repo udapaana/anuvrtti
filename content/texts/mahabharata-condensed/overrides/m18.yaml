@@ -1,0 +1,428 @@
+# Mahābhārata condensed, drona-7-49-15 – karna-8-86-15 (batch m18). Format: see
+# the header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+# SARIT prints the Kumbhakonam text in saṃhitā without compound hyphens; the
+# compound boundaries below are the author's.
+
+'drona-7-49-15':
+  एवं:
+    fix:
+      1: { gloss: "thus" }
+  विनिहतो:
+    fix:
+      1: { lemma: विनिहन्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "struck down, slain" }
+  राजन्नेको:
+    fix:
+      1: { gloss: "O king" }
+      2: { gloss: "alone, single-handed" }
+  बहुभिराहवे:
+    fix:
+      1: { gloss: "by many" }
+      2: { gloss: "in battle" }
+  क्षोभयित्वा:
+    fix:
+      1: { lemma: क्षुभ्, a: अव्यय क्त्वा णिच्, gloss: "having thrown into turmoil" }
+  चमूं:
+    fix:
+      1: { gloss: "army, host" }
+  सर्वां:
+    fix:
+      1: { gloss: "whole, entire" }
+  नलिनीमिव:
+    fix:
+      1: { gloss: "a lotus pond" }
+
+'drona-7-49-19':
+  पूर्णचन्द्राभवदनं:
+    split:
+      - { form: पूर्ण, lemma: पूर्ण, member: true, gloss: "full" }
+      - { form: चन्द्र, lemma: चन्द्र, member: true, gloss: "the moon" }
+      - { form: आभ, lemma: आभ, member: true, gloss: "like, resembling" }
+      - { form: वदनम्, lemma: वदन, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "whose face (is)" }
+    note: "A बहुव्रीहि agreeing with तम्, Abhimanyu: 'whose face was like the full moon'."
+  काकपक्षवृतालिकम्:
+    split:
+      - { form: काकपक्ष, lemma: काकपक्ष, member: true, gloss: "a boy's side-locks" }
+      - { form: वृत, lemma: वृत, member: true, gloss: "covered" }
+      - { form: अलिकम्, lemma: अलिक, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "whose forehead (is)" }
+    note: "A second बहुव्रीहि of Abhimanyu: 'whose forehead was framed by a boy's side-locks' — he is still a youth."
+  तं:
+    fix:
+      1: { gloss: "him (Abhimanyu)" }
+  पतितं:
+    fix:
+      1: { lemma: पत्, a: द्वितीया एकवचन पुंलिङ्ग क्त, gloss: "fallen" }
+  दृष्ट्वा:
+    fix:
+      1: { gloss: "seeing" }
+  तावकास्ते:
+    split:
+      - { form: तावकाः, lemma: तावक, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "your (men)" }
+      - { form: ते, lemma: तद्, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "those" }
+  महारथाः:
+    fix:
+      1: { gloss: "great chariot-warriors" }
+  मुदा:
+    fix:
+      1: { lemma: मुद्, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "with joy" }
+  परमया:
+    fix:
+      1: { gloss: "supreme, great" }
+  युक्ताश्चुक्रुशुः:
+    fix:
+      1: { lemma: युज्, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "filled (with)" }
+      2: { gloss: "shouted, roared" }
+  सिंहवन्मुहुः:
+    split:
+      - { form: सिंहवत्, lemma: सिंहवत्, a: अव्यय, gloss: "like lions" }
+      - { form: मुहुः, lemma: मुहुस्, a: अव्यय, gloss: "again and again" }
+
+'drona-7-49-20':
+  आसीत्परमको:
+    fix:
+      1: { gloss: "there was" }
+      2: { gloss: "supreme, very great" }
+  हर्षस्तावकानां:
+    fix:
+      1: { gloss: "joy" }
+      2: { lemma: तावक, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "of your (men)" }
+  विशाम्पते:
+    fix:
+      1: { gloss: "of the people" }
+      2: { gloss: "O lord (विशाम्पते 'lord of the people', O king)" }
+    note: "An अलुक् compound: the genitive विशाम् keeps its ending inside the compound."
+  इतरेषां:
+    fix:
+      1: { gloss: "of the others (the Pāṇḍavas)" }
+  वीराणां:
+    fix:
+      1: { lemma: वीर, a: षष्ठी बहुवचन पुंलिङ्ग, gloss: "heroes" }
+  नेत्रेभ्यः:
+    fix:
+      1: { a: पञ्चमी बहुवचन नपुंसकलिङ्ग, gloss: "from the eyes" }
+  प्रापतज्जलम्:
+    fix:
+      1: { gloss: "fell" }
+      2: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "water, tears" }
+
+'drona-7-49-21':
+  अन्तरिक्षे:
+    fix:
+      1: { gloss: "in the sky" }
+  भूतानि:
+    fix:
+      1: { lemma: भूत, a: प्रथमा बहुवचन नपुंसकलिङ्ग, gloss: "beings, creatures" }
+  प्राक्रोशन्त:
+    split:
+      - { form: प्राक्रोशन्त, lemma: प्रक्रुश्, a: लङ् प्रथमपुरुष बहुवचन आत्मनेपद, gloss: "cried out" }
+    note: "One verb, not प्राक्रोशन् + त: the epic gives the परस्मैपद root क्रुश् an आत्मनेपद ending here."
+  विशाम्पते:
+    fix:
+      1: { gloss: "of the people" }
+      2: { gloss: "O lord (विशाम्पते 'lord of the people', O king)" }
+  दृष्ट्वा:
+    fix:
+      1: { gloss: "seeing" }
+  निपतितं:
+    fix:
+      1: { gloss: "fallen" }
+  वीरं:
+    fix:
+      1: { gloss: "the hero" }
+  च्युतं:
+    fix:
+      1: { gloss: "fallen" }
+  चन्द्रमिवाम्बरात्:
+    fix:
+      1: { gloss: "the moon" }
+      3: { gloss: "from the sky" }
+
+'drona-7-49-22':
+  द्रोणकर्णमुखैः:
+    split:
+      - { form: द्रोण, lemma: द्रोण, member: true, gloss: "Droṇa" }
+      - { form: कर्ण, lemma: कर्ण, member: true, gloss: "Karṇa" }
+      - { form: मुखैः, lemma: मुख, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "headed by" }
+    note: "A बहुव्रीहि in -मुख agreeing with महारथैः: 'six great warriors with Droṇa and Karṇa at their head'."
+  षड्भिर्धार्तराष्ट्रैर्महारथैः:
+    fix:
+      1: { gloss: "six" }
+      2: { gloss: "of Dhṛtarāṣṭra's side, Kauravas" }
+      3: { gloss: "great chariot-warriors" }
+  एकोऽयं:
+    fix:
+      1: { gloss: "alone" }
+      2: { gloss: "this one" }
+  निहतः:
+    fix:
+      1: { gloss: "slain" }
+  शेते:
+    fix:
+      1: { gloss: "lies" }
+  धर्मो:
+    fix:
+      1: { gloss: "right, the law (of battle)" }
+  मतो:
+    fix:
+      1: { lemma: मन्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "deemed, held" }
+  नः:
+    fix:
+      1: { gloss: "by us" }
+    note: "A genitive of the agent with a क्त of thinking (मतः, 2.3.67): 'is not held right by us'."
+
+'drona-7-72-8':
+  व्यपयातेषु:
+    fix:
+      1: { gloss: "having withdrawn" }
+    note: "A locative absolute with सर्वेषु: 'when all had withdrawn'."
+  वासाय:
+    fix:
+      1: { gloss: "to rest, for the night" }
+  सर्वेषु:
+    fix:
+      1: { gloss: "all" }
+  भरतर्षभ:
+    fix:
+      1: { member: true, gloss: "the Bharatas" }
+      2: { gloss: "bull (भरतर्षभ 'best of the Bharatas')" }
+  हत्वा:
+    fix:
+      1: { gloss: "having slain" }
+  संशप्तकव्रातान्दिव्यैरस्त्रैः:
+    split:
+      - { form: संशप्तक, lemma: संशप्तक, member: true, gloss: "the Saṃśaptakas (warriors sworn to fight to the death)" }
+      - { form: व्रातान्, lemma: व्रात, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "troops, bands" }
+      - { form: दिव्यैः, lemma: दिव्य, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "divine" }
+      - { form: अस्त्रैः, lemma: अस्त्र, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "weapons, missiles" }
+  कपिध्वजः:
+    fix:
+      1: { gloss: "the ape-bannered one (Arjuna)" }
+
+'drona-7-72-9':
+  प्रायात्स्वशिबिरं:
+    split:
+      - { form: प्रायात्, lemma: प्रया, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "went (back)" }
+      - { form: स्व, lemma: स्व, member: true, gloss: "his own" }
+      - { form: शिबिरम्, lemma: शिबिर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "camp" }
+  जिष्णुर्जैत्रमास्थाय:
+    fix:
+      1: { gloss: "Jiṣṇu (Arjuna)" }
+      2: { gloss: "victorious" }
+      3: { gloss: "having mounted" }
+  तं:
+    fix:
+      1: { gloss: "that" }
+  रथम्:
+    fix:
+      1: { gloss: "chariot" }
+  गच्छन्नेव:
+    fix:
+      1: { gloss: "going" }
+      2: { gloss: "even (as he went)" }
+  गोविन्दं:
+    fix:
+      1: { gloss: "Govinda (Kṛṣṇa)" }
+  साश्रुकण्ठोऽभ्यभाषत:
+    split:
+      - { form: साश्रु, lemma: साश्रु, member: true, gloss: "tearful" }
+      - { form: कण्ठः, lemma: कण्ठ, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "whose throat (is) — 'his voice choked with tears'" }
+      - { form: अभ्यभाषत, lemma: अभिभाष्, a: लङ् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "spoke to, addressed" }
+
+'drona-7-72-24':
+  दृष्ट्वा:
+    fix:
+      1: { gloss: "seeing" }
+  भ्रातृंश्च:
+    split:
+      - { form: भ्रातॄन्, lemma: भ्रातृ, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "brothers" }
+      - { form: च, lemma: च, a: अव्यय, gloss: "and" }
+  पुत्रांश्च:
+    fix:
+      1: { gloss: "sons" }
+  विमना:
+    fix:
+      1: { gloss: "dejected, downcast" }
+  वानरध्वजः:
+    fix:
+      1: { gloss: "the ape-bannered one (Arjuna)" }
+  अपश्यंश्चैव:
+    fix:
+      1: { lemma: अपश्यत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "not seeing" }
+    note: "अपश्यन् is the negated present participle (अ + पश्यत्), nominative with वानरध्वजः — not the imperfect 'they saw'."
+  सौभद्रमिदं:
+    fix:
+      1: { gloss: "Saubhadra (Abhimanyu, Subhadrā's son)" }
+      2: { lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
+  वचनमब्रवीत्:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "speech, words" }
+      2: { gloss: "spoke" }
+
+'drona-7-72-25':
+  मुखवर्णोऽप्रसन्नो:
+    split:
+      - { form: मुख, lemma: मुख, member: true, gloss: "face" }
+      - { form: वर्णः, lemma: वर्ण, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "colour, complexion" }
+      - { form: अप्रसन्नः, lemma: अप्रसन्न, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "clouded, cheerless" }
+  सर्वेषामेव:
+    fix:
+      1: { gloss: "of all" }
+  लक्ष्यते:
+    fix:
+      1: { lemma: लक्ष्, a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि चुरादि, gloss: "is seen, appears" }
+  चाभिमन्युं:
+    fix:
+      2: { gloss: "Abhimanyu" }
+  पश्यामि:
+    fix:
+      1: { gloss: "I see" }
+  प्रतिनन्दथ:
+    fix:
+      1: { gloss: "you greet (me) gladly" }
+
+'drona-7-73-1':
+  त्वयि:
+    split:
+      - { form: त्वयि, lemma: युष्मद्, a: सप्तमी एकवचन, gloss: "you" }
+    note: "A locative absolute with याते: 'when you had gone'."
+  याते:
+    fix:
+      1: { lemma: या, a: सप्तमी एकवचन पुंलिङ्ग क्त, gloss: "gone" }
+  महाबाहो:
+    fix:
+      1: { gloss: "O mighty-armed one" }
+  संशप्तकबलं:
+    split:
+      - { form: संशप्तक, lemma: संशप्तक, member: true, gloss: "the Saṃśaptakas" }
+      - { form: बलम्, lemma: बल, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "army, force" }
+  प्रति:
+    fix:
+      1: { gloss: "against (with an accusative)" }
+  प्रयत्नमकरोत्तीव्रमाचार्यो:
+    split:
+      - { form: प्रयत्नम्, lemma: प्रयत्न, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "effort" }
+      - { form: अकरोत्, lemma: कृ, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "made" }
+      - { form: तीव्रम्, lemma: तीव्र, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "intense, fierce" }
+      - { form: आचार्यः, lemma: आचार्य, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the teacher (Droṇa)" }
+  प्रहणे:
+    split:
+      - { form: ग्रहणे, lemma: ग्रहण, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "in seizing, to capture" }
+    note: "The print's प्रहणे is a misprint for ग्रहणे, Droṇa's vow to capture Yudhiṣṭhira; the sandhi आचार्यो before it already wants a voiced sound (ग्), which प् is not."
+
+'drona-7-73-4':
+  ते:
+    fix:
+      1: { gloss: "we (lit. those of us)" }
+  पीड्यमाना:
+    split:
+      - { form: पीड्यमानाः, lemma: पीड्, a: प्रथमा बहुवचन पुंलिङ्ग शानच् कर्मणि चुरादि, gloss: "being hard pressed" }
+  द्रोणेन:
+    fix:
+      1: { lemma: द्रोण, a: तृतीया एकवचन पुंलिङ्ग, gloss: "by Droṇa" }
+  द्रोणानीकं:
+    split:
+      - { form: द्रोण, lemma: द्रोण, member: true, gloss: "Droṇa" }
+      - { form: अनीकम्, lemma: अनीक, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "army, battle-array" }
+  शक्नुमः:
+    fix:
+      1: { gloss: "we are able" }
+  प्रतिवीक्षितुमप्याजौ:
+    split:
+      - { form: प्रतिवीक्षितुम्, lemma: प्रतिवीक्ष्, a: अव्यय तुमुन्, gloss: "to look at, face" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+      - { form: आजौ, lemma: आजि, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "in battle" }
+  भेत्तुं:
+    fix:
+      1: { gloss: "to break (through)" }
+  तत्कुत:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "it (the army)" }
+      2: { gloss: "how? whence?" }
+    note: "भेत्तुं तत् कुत एव — 'how then (could we) break it?': कुतः loses its visarga before the vowel of एव."
+
+'drona-7-73-5':
+  ततस्तमप्रतिरथमहं:
+    split:
+      - { form: ततः, lemma: ततस्, a: अव्यय, gloss: "then" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
+      - { form: अप्रतिरथम्, lemma: अप्रतिरथ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "matchless warrior" }
+      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: "I" }
+  सौभद्रमब्रवम्:
+    fix:
+      1: { a: द्वितीया एकवचन पुंलिङ्ग, gloss: "Saubhadra (Abhimanyu)" }
+      2: { gloss: "I said (to)" }
+  द्रोणानीकमिदं:
+    split:
+      - { form: द्रोण, lemma: द्रोण, member: true, gloss: "Droṇa" }
+      - { form: अनीकम्, lemma: अनीक, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "army, battle-array" }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
+  भिन्द्धि:
+    fix:
+      1: { gloss: "break through" }
+  द्वारं:
+    fix:
+      1: { gloss: "an opening, a way in" }
+  सञ्जनयस्व:
+    split:
+      - { form: सञ्जनयस्व, lemma: सञ्जन्, a: लोट् मध्यमपुरुष एकवचन आत्मनेपद णिच्, gloss: "make, open up" }
+  नः:
+    fix:
+      1: { lemma: अस्मद्, a: चतुर्थी बहुवचन, gloss: "for us" }
+
+'drona-7-73-7':
+  स:
+    fix:
+      1: { gloss: "he" }
+  तवास्त्रोपदेशेन:
+    split:
+      - { form: तव, lemma: युष्मद्, a: षष्ठी एकवचन, gloss: "your" }
+      - { form: अस्त्र, lemma: अस्त्र, member: true, gloss: "weapons" }
+      - { form: उपदेशेन, lemma: उपदेश, a: तृतीया एकवचन पुंलिङ्ग, gloss: "teaching, instruction" }
+  वीर्येण:
+    fix:
+      1: { gloss: "valour" }
+  समन्वितः:
+    split:
+      - { form: समन्वितः, lemma: समन्वि, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "endowed with" }
+  प्राविशत्तद्बलं:
+    fix:
+      1: { gloss: "entered" }
+      2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+      3: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "army" }
+  बालः:
+    fix:
+      1: { gloss: "a boy (as he was)" }
+  सुपर्ण:
+    split:
+      - { form: सुपर्णः, lemma: सुपर्ण, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Suparṇa (Garuḍa)" }
+    note: "सुपर्णः drops its visarga before इव (8.3.17, 8.3.19)."
+  सागरम्:
+    fix:
+      1: { gloss: "the ocean" }
+
+'drona-7-73-8':
+  तेऽनुयाता:
+    fix:
+      1: { gloss: "we (lit. those of us)" }
+      2: { form: अनुयाताः, lemma: अनुया, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "followed" }
+  वीरं:
+    fix:
+      1: { gloss: "the hero" }
+  सात्वतीपुत्रमाहवे:
+    split:
+      - { form: सात्वती, lemma: सात्वती, member: true, gloss: "Sātvatī (Subhadrā)" }
+      - { form: पुत्रम्, lemma: पुत्र, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "son" }
+      - { form: आहवे, lemma: आहव, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "in battle" }
+  प्रवेष्टुकामास्तेनैव:
+    split:
+      - { form: प्रवेष्टु, lemma: प्रवेष्टुम्, member: true, gloss: "to enter" }
+      - { form: कामाः, lemma: काम, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "wishing (प्रवेष्टुकाम 'wishing to enter')" }
+      - { form: तेन, lemma: तद्, a: तृतीया एकवचन पुंलिङ्ग, gloss: "by that (way)" }
+      - { form: एव, lemma: एव, a: अव्यय, gloss: "very, same" }
+    note: "An infinitive drops its म् before काम and मनस् (तुं काममनसोरपि): प्रवेष्टुम् + काम → प्रवेष्टुकाम."
+  येन:
+    fix:
+      1: { gloss: "by which (way)" }
+  प्राविशच्चमूम्:
+    fix:
+      1: { gloss: "entered" }
+      2: { gloss: "the army" }
