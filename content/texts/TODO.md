@@ -72,6 +72,9 @@ the text, its snapshot and its page.
   resolves to "णिच्" alone. Authors of the Rāmāyaṇa dropped णिच् to keep
   तुमुन्, so its causatives show only in their lemma. `parseA` should keep
   every derivational tag (कृत् and सनादि) and the paradigm code read them.
+- An override cannot choose a verb's गण: where vidyut picks the wrong class for
+  a root with two (अर्हति as चुरादि, not भ्वादि), the form and its tags are
+  right but the paradigm and gaṇa shown are not. The format needs a `gana:`.
 - A `fix` that names a lemma but no analysis can still show vidyut's longer
   lemma (संभूय showed समस्): the resolver should prefer the author's lemma
   whenever one is given.
