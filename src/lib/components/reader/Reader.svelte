@@ -2534,6 +2534,7 @@
           <article
             data-ex-id={row.id}
             class="ex"
+            class:roman={$displayScript === 'iast'}
             class:active={railReading?.id === row.id}
             class:grouped={row.grouped}
             class:runstart={row.runStart}
@@ -2836,6 +2837,11 @@
   }
   .token.punct {
     color: var(--faint);
+  }
+  /* On a phone, roman runs wider than Devanagari for the same word: a long
+     compound in IAST takes a whole line at 26px. A size smaller, roman only. */
+  @media (max-width: 560px) {
+    .ex.roman .token { font-size: 21px; }
   }
   .split-plus {
     color: var(--faint);
