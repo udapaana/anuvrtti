@@ -195,10 +195,25 @@ for (const id of ids.length ? ids : textIds()) {
     }
     if (!stale) console.log(`✓ ${rel} matches the engine`);
   } else {
-    // a part that no longer exists (the parts were redrawn) must not linger
-    fs.rmSync(snapDir(id), { recursive: true, force: true });
-    fs.mkdirSync(snapDir(id), { recursive: true });
-    for (const f of files) fs.writeFileSync(f.file, f.json);
+    // Written whole, then swapped in: several authors may snapshot one text at
+    // once, and a reader must never meet a half-written directory. A part that
+    // no longer exists (the parts were redrawn) goes with the old directory.
+    const tmp = `${snapDir(id)}.tmp-${process.pid}`;
+    fs.rmSync(tmp, { recursive: true, force: true });
+    fs.mkdirSync(tmp, { recursive: true });
+    for (const f of files) fs.writeFileSync(path.join(tmp, path.basename(f.file)), f.json);
+    for (let attempt = 0; ; attempt++) {
+      try {
+        const old = `${snapDir(id)}.old-${process.pid}`;
+        if (fs.existsSync(snapDir(id))) fs.renameSync(snapDir(id), old);
+        fs.renameSync(tmp, snapDir(id));
+        fs.rmSync(old, { recursive: true, force: true });
+        break;
+      } catch (e) {
+        if (attempt > 20) throw e;
+        await new Promise((r) => setTimeout(r, 200 + Math.random() * 400)); // another run is swapping
+      }
+    }
     const padas = snap.sections.flatMap((s) => s.words.flatMap((w) => w.padas)).length;
     const words = snap.sections.flatMap((s) => s.words).length;
     console.log(`✓ ${rel}/ (${files.length} part${files.length > 1 ? 's' : ''}): ${snap.sections.length} sections, ${words} words, ${padas} padas, ${Object.keys(snap.lexicon).length} lemmas (${Math.round(performance.now() - t0)} ms)`);

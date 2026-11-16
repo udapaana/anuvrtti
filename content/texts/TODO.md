@@ -32,3 +32,12 @@ Then replace the book-OCR text of the 214 verses with the edition's.
 `scan:` (agreed / adjudicated), but `build-texts.ts` does not pass it through,
 so the text page shows them like any edition verse. It should say "read from
 the 1935 book's scan" beside them, and link the crop.
+
+## Mahābhārata (condensed): 17 verses owed
+
+14 verses the book quotes from the Āśramavāsikaparvan are not in SARIT's
+Kumbhakonam TEI (its Āśramavāsika is thin), and 3 OCR lines were never
+placed. Their text can come from the book's scan exactly as the Rāmāyaṇa's
+vulgate verses did: archive.org item `dli.ernet.242274` has the same layout
+file (`_djvu.xml`) and page images (`_jp2.zip`). Generalise
+`scripts/condensed-reocr.ts` to it, double-key, and add them.

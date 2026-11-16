@@ -2,13 +2,10 @@
 /**
  * mbh-condensed-text.ts — turn content/texts/mahabharata-condensed/selection.json
  * (the ordered sarit_id list recovered by scripts/mbh-condensed.ts) into
- * content/texts/mahabharata-condensed/text.draft.yaml, in this project's
- * standard whole-text format (see content/texts/pancatantra-kilotpatin/text.yaml).
- *
- * Draft, not text.yaml: the build treats every text.yaml as a text to publish
- * and fails without its snapshot, and this one cannot be snapshotted until the
- * snapshot format is trimmed (~40 MB at today's ~1.9 KB a word). Rename it to
- * text.yaml in the same commit as its snapshot.
+ * content/texts/mahabharata-condensed/text.yaml, in this project's standard
+ * whole-text format (see content/texts/pancatantra-kilotpatin/text.yaml), with
+ * one part per parvan. (It was held as text.draft.yaml until snapshots were
+ * stored by part, which keeps each file small.)
  *
  * For each selected entry, looks up its sarit_id's actual verse (all <l>
  * lines of that <lg>) in the SARIT Kumbhakonam TEI (data/sources/
@@ -50,7 +47,7 @@ const SEL_DIR = path.join(ROOT, 'content/texts/mahabharata-condensed');
 const TEI_PATH = path.join(ROOT, 'data/sources/sa_mahAbhArata-kumbhakonam-sarit.xml');
 const args = process.argv.slice(2);
 const limit = Number(args[args.indexOf('--limit') + 1]) || 0;
-const outName = limit ? 'text.sample.yaml' : 'text.draft.yaml';
+const outName = limit ? 'text.sample.yaml' : 'text.yaml';
 
 if (!fs.existsSync(TEI_PATH)) {
   console.error(`missing ${TEI_PATH} — it is committed; check out data/sources/ (data/texts.json, slug sa_mahAbhArata-kumbhakonam-sarit)`);
@@ -133,7 +130,7 @@ for (const e of selection.entries) {
 
   const lines = rawLines.map(clean).filter(Boolean);
   const iast = rawLines.map(toIast).filter(Boolean).join(' | ');
-  sections.push({ id, kind: 'verse', lines, iast });
+  sections.push({ id, kind: 'verse', lines, iast, parvan: e.parvan });
   included++;
   totalDevChars += lines.join('').length;
   totalWords += lines.join(' ').split(/\s+/).filter(Boolean).length;
@@ -176,8 +173,18 @@ yaml.push(`place: ${selection.entries.length} selected verses, Ādi through Svar
 yaml.push(`source:`);
 yaml.push(`  edition: Mahābhārata, Kumbhakonam ed. (Southern Recension, Krishnacharya & Vyasacharya 1906-14), SARIT TEI`);
 yaml.push(`  file: sa_mahAbhArata-kumbhakonam-sarit # data/texts.json (sha256-pinned)`);
-yaml.push(`  lines: whole file (TEI, not line-numbered plaintext)`);
+yaml.push(`  ref: by section id, the SARIT xml:id`);
 yaml.push(`  licence: SARIT TEI text, CC BY-SA 3.0 (per data/texts.json)`);
+// parts: one per parvan, in the book's order (the ids carry no dots to draw them by)
+const PARVA: Record<string, string> = { adi: 'आदिपर्व', sabha: 'सभापर्व', vana: 'वनपर्व', virata: 'विराटपर्व', udyoga: 'उद्योगपर्व', bhisma: 'भीष्मपर्व', drona: 'द्रोणपर्व', karna: 'कर्णपर्व', shalya: 'शल्यपर्व', sauptika: 'सौप्तिकपर्व', stri: 'स्त्रीपर्व', shanti: 'शान्तिपर्व', anushasana: 'अनुशासनपर्व', ashvamedhika: 'आश्वमेधिकपर्व', ashramavasika: 'आश्रमवासिकपर्व', mausala: 'मौसलपर्व', mahaprasthanika: 'महाप्रस्थानिकपर्व', svargarohana: 'स्वर्गारोहणपर्व' };
+const parts: { id: string; first: string; last: string }[] = [];
+for (const sct of sections as any[]) {
+  if (parts.at(-1)?.id === sct.parvan) parts.at(-1)!.last = sct.id;
+  else parts.push({ id: sct.parvan, first: sct.id, last: sct.id });
+}
+if (new Set(parts.map((x) => x.id)).size !== parts.length) throw new Error('a parvan recurs out of order: the parts would not be runs');
+yaml.push(`parts:`);
+for (const pt of parts) yaml.push(`  - id: ${pt.id}`, `    title: ${PARVA[pt.id] ?? pt.id}`, `    first: '${pt.first}'`, `    last: '${pt.last}'`);
 yaml.push(`sections:`);
 for (const s of sections) {
   yaml.push(`  - id: '${s.id}'`);
