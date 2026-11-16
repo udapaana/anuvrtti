@@ -108,6 +108,14 @@ for (const k of new Set(parts.map((p) => p.id))) {
   const runs = parts.filter((p) => p.id === k);
   if (runs.length > 1) runs.forEach((p, i) => { p.id = `${k}${'abcdefgh'[i]}`; });
 }
+// a run quoted before the book's narrative begins is its prelude, and is named
+// so: the Bhāgavata's opening 11.11.29–30 is not "the eleventh skandha"
+const ABL: Record<string, string> = { 'स्कन्धः': 'स्कन्धात्', 'काण्डम्': 'काण्डात्' };
+if (parts.length > 1 && parts.slice(1).some((p) => p.id.replace(/[a-h]$/, '') === parts[0].id.replace(/[a-h]$/, ''))) {
+  const [ord, noun] = parts[0].title.split(' ');
+  const from = ABL[noun] ? `${ord.replace(/ः$/, 'ात्')} ${ABL[noun]}` : parts[0].title;
+  parts[0].title = `उपोद्घातः (${from})`;
+}
 
 const esc = (s: string) => JSON.stringify(s);
 const words = sections.reduce((n, s) => n + s.lines.join(' ').split(/\s+/).length, 0);
