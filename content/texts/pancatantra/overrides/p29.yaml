@@ -1,0 +1,829 @@
+# Pañcatantra 3.214+7 – 3.228: the mouse-maiden's suitors (end of कथा 12),
+# Sthirajīvin in the owls' fort, the gold-dropping bird (कथा 13), the lion
+# and the talking cave (कथा 14), the burning of the owls, and Sthirajīvin's
+# verses on serving an enemy.
+# Format: see the header of content/texts/pancatantra-kilotpatin/overrides.yaml.
+# GRETIL types the speech-dash away, so "प्रोवाच-पुत्रि" prints as one word;
+# those are split into their padas without a note.
+
+'3.214+7':
+  प्रोवाचपुत्रि:
+    split:
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: पुत्रि, lemma: पुत्री, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "daughter" }
+  '!':
+    split: []
+  तव:
+    fix:
+      1: { gloss: "to you (the genitive standing for the dative with रुच्)" }
+  रोचत:
+    fix:
+      1: { gloss: "pleases, is agreeable (to)" }
+  एष:
+    fix:
+      1: { gloss: "this one" }
+  भगवांस्त्रैलोक्यदीपः:
+    split:
+      - { form: भगवान्, lemma: भगवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the blessed one, the lord (the sun)" }
+      - { form: त्रैलोक्य, lemma: त्रैलोक्य, member: true, gloss: "the three worlds" }
+      - { form: दीपः, lemma: दीप, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "lamp — 'the lamp of the three worlds'" }
+  '?':
+    split: []
+
+'3.214+8':
+  सा:
+    fix:
+      1: { gloss: "she" }
+  प्राहतात:
+    split:
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "father" }
+  '!':
+    split: []
+  अतिदहनात्मकोऽयम्:
+    split:
+      - { form: अतिदहन, lemma: अतिदहन, member: true, gloss: "excessive burning, scorching" }
+      - { form: आत्मकः, lemma: आत्मक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "having the nature of — 'scorching by nature'" }
+      - { form: अयम्, lemma: इदम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "he, this one" }
+
+'3.214+9':
+  नाहमेनमभिलषामि:
+    split:
+      - { form: न, lemma: न, a: अव्यय }
+      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन }
+      - { form: एनम्, lemma: एनद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
+      - { form: अभिलषामि, lemma: अभिलष्, a: लट् उत्तमपुरुष एकवचन परस्मैपद, gloss: "desire, want" }
+
+'3.214+10':
+  अस्मादपि:
+    split:
+      - { form: अस्मात्, lemma: इदम्, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "than this one" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+  य:
+    fix:
+      1: { gloss: "who" }
+  उत्कृष्टतरः:
+    split:
+      - { form: उत्कृष्टतरः, lemma: उत्कृष्टतर, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "more eminent, superior" }
+  स:
+    fix:
+      1: { gloss: "he" }
+  आहूयताम्:
+    fix:
+      1: { lemma: आह्वे, a: लोट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "let (him) be called" }
+
+'3.214+11':
+  तस्यास्तद्वचनमाकर्ण्य:
+    split:
+      - { form: तस्याः, lemma: तद्, a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "her" }
+      - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+      - { form: वचनम्, lemma: वचन, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "word, speech" }
+      - { form: आकर्ण्य, lemma: आकर्ण्, a: अव्यय ल्यप्, gloss: "having heard" }
+  भास्वरोऽपि:
+    fix:
+      1: { gloss: "the shining one, the sun" }
+  मूषिकां:
+    fix:
+      1: { gloss: "a she-mouse" }
+  विदित्वा:
+    fix:
+      1: { gloss: "knowing (her to be)" }
+  निःस्पृहस्तमुवाचभगवन्!:
+    split:
+      - { form: निःस्पृहः, lemma: निःस्पृह, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "free from desire, indifferent" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him (the sage)" }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
+      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "holy one, revered sir" }
+  ममाप्यधिको:
+    fix:
+      1: { gloss: "than me (a genitive of comparison)" }
+      3: { gloss: "greater, superior" }
+  मेघो:
+    fix:
+      1: { gloss: "a cloud" }
+  येनाच्छादितस्य:
+    split:
+      - { form: येन, lemma: यद्, a: तृतीया एकवचन पुंलिङ्ग, gloss: "by whom" }
+      - { form: आच्छादितस्य, lemma: आच्छद्, a: षष्ठी एकवचन पुंलिङ्ग क्त णिच्, gloss: "covered (over)" }
+  मे:
+    fix:
+      1: { a: षष्ठी एकवचन, gloss: "of me, my" }
+  नामाइ:
+    split:
+      - { form: नाम, lemma: नामन्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "name" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+    note: >-
+      The GRETIL text types नामाइ, which is no Sanskrit sequence; read नामापि
+      ("not even my name is known"), on sense and orthography — the typist's
+      slip of इ for पि.
+  ज्ञायते:
+    fix:
+      1: { gloss: "is known" }
+  '?':
+    split: []
+
+'3.214+12':
+  मुनिना:
+    fix:
+      1: { gloss: "the sage" }
+  मेघमप्याहूय:
+    split:
+      - { form: मेघम्, lemma: मेघ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "the cloud" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "too, also" }
+      - { form: आहूय, lemma: आह्वे, a: अव्यय ल्यप्, gloss: "having summoned" }
+  कन्याभिहिताएष:
+    split:
+      - { form: कन्या, lemma: कन्या, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "the girl, the daughter" }
+      - { form: अभिहिता, lemma: अभिधा, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "was addressed, was told" }
+      - { form: एषः, lemma: एतद्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "this one" }
+    note: "कन्या अभिहिता — the passive participle stands for the finite verb: 'the girl was asked'."
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: चतुर्थी एकवचन, gloss: "to you" }
+  रोचते:
+    fix:
+      1: { gloss: "pleases" }
+  '?':
+    split: []
+
+'3.214+13':
+  सा:
+    fix:
+      1: { gloss: "she" }
+  प्राहकृष्णवर्णोऽयं:
+    split:
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: कृष्ण, lemma: कृष्ण, member: true, gloss: "black, dark" }
+      - { form: वर्णः, lemma: वर्ण, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "colour — 'dark-coloured'" }
+      - { form: अयम्, lemma: इदम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "he, this one" }
+  जडात्मा:
+    fix:
+      1: { form: जड, lemma: जड, member: true, gloss: "cold; dull, stupid" }
+      2: { gloss: "nature — 'cold (dull) by nature'" }
+    note: A pun the tale relies on — the cloud is जड "cold, watery" and so "dull-witted".
+
+'3.214+14':
+  तदस्मादन्यस्य:
+    split:
+      - { form: तत्, lemma: तद्, a: अव्यय, gloss: "so, therefore" }
+      - { form: अस्मात्, lemma: इदम्, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "than this one" }
+      - { form: अन्यस्य, lemma: अन्य, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "other — 'other than this one'" }
+  कस्यचित्प्रधानस्य:
+    split:
+      - { form: कस्य, lemma: किम्, a: षष्ठी एकवचन पुंलिङ्ग }
+      - { form: चित्, lemma: चित्, a: अव्यय, gloss: "some- (कस्यचित् 'to someone')" }
+      - { form: प्रधानस्य, lemma: प्रधान, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "eminent, chief" }
+    note: The genitive stands for the dative of the one given to, as often in this text.
+  मां:
+    fix:
+      1: { gloss: "me" }
+  प्रयच्छ:
+    fix:
+      1: { gloss: "give (in marriage)" }
+
+'3.214+15':
+  मुनिना:
+    fix:
+      1: { gloss: "the sage" }
+  मेघोऽपि:
+    fix:
+      1: { gloss: "the cloud" }
+  पृष्टःभोः:
+    split:
+      - { form: पृष्टः, lemma: प्रच्छ्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "was asked" }
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! sir!" }
+  '!':
+    split: []
+  त्वत्तोऽप्यधिकः:
+    split:
+      - { form: त्वत्तः, lemma: युष्मद्, a: पञ्चमी एकवचन, gloss: "than you" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+      - { form: अधिकः, lemma: अधिक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "greater, superior" }
+  कोऽप्यस्ति:
+    fix:
+      1: { gloss: "who — with अपि, 'anyone'" }
+      3: { gloss: "is, there is" }
+  '?':
+    split: []
+
+'3.214+16':
+  स:
+    fix:
+      1: { gloss: "he" }
+  आहमत्तोऽप्यधिकोऽस्ति:
+    split:
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: मत्तः, lemma: अस्मद्, a: पञ्चमी एकवचन, gloss: "than me" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+      - { form: अधिकः, lemma: अधिक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "greater, superior" }
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "there is" }
+  वायुः:
+    fix:
+      1: { gloss: "the wind" }
+
+'3.214+17':
+  वायुना:
+    fix:
+      1: { gloss: "by the wind" }
+  हतोऽहं:
+    fix:
+      1: { gloss: "struck" }
+  सहस्रधा:
+    fix:
+      1: { gloss: "into a thousand pieces" }
+  यामि:
+    fix:
+      1: { gloss: "go — 'I go (scatter) in a thousand pieces'" }
+
+'3.214+18':
+  तच्छ्रुत्वा:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+      2: { gloss: "having heard" }
+  मुनिना:
+    fix:
+      1: { gloss: "by the sage" }
+  वायुराहूतः,:
+    split:
+      - { form: वायुः, lemma: वायु, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the wind" }
+      - { form: आहूतः, lemma: आह्वे, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "was summoned" }
+  आह:
+    fix:
+      1: { gloss: "said" }
+  चपुत्रिके:
+    split:
+      - { form: च, lemma: च, a: अव्यय, gloss: "and" }
+      - { form: पुत्रिके, lemma: पुत्रिका, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "little daughter" }
+  वायुस्ते:
+    fix:
+      1: { gloss: "the wind" }
+      2: { lemma: युष्मद्, a: चतुर्थी एकवचन, gloss: "to you" }
+  विवाहाय:
+    fix:
+      1: { gloss: "for marriage" }
+  उत्तमः:
+    fix:
+      1: { gloss: "best, excellent" }
+  प्रतिभाति:
+    fix:
+      1: { a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "seems, appears" }
+  '?':
+    split: []
+
+'3.214+19':
+  सा:
+    fix:
+      1: { lemma: तद्, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "she" }
+  आहप्रबलोऽप्ययं:
+    split:
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: प्रबलः, lemma: प्रबल, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "strong, mighty" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "though" }
+      - { form: अयम्, lemma: इदम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "he, this one" }
+  चञ्चलः:
+    fix:
+      1: { gloss: "fickle, unsteady" }
+
+'3.214+20':
+  तदभ्यधिकः:
+    fix:
+      1: { a: अव्यय, gloss: "so, therefore" }
+      2: { gloss: "superior, greater" }
+  कश्चिदाहूयताम्:
+    split:
+      - { form: कः, lemma: किम्, a: प्रथमा एकवचन पुंलिङ्ग }
+      - { form: चित्, lemma: चित्, a: अव्यय, gloss: "some- (कश्चित् 'someone')" }
+      - { form: आहूयताम्, lemma: आह्वे, a: लोट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "let (him) be called" }
+
+'3.214+21':
+  मुनिराहभो:
+    split:
+      - { form: मुनिः, lemma: मुनि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the sage" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+  वायो:
+    fix:
+      1: { gloss: "O wind" }
+  '!':
+    split: []
+  त्वत्तोऽप्यधिकोऽस्ति:
+    split:
+      - { form: त्वत्तः, lemma: युष्मद्, a: पञ्चमी एकवचन, gloss: "than you" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+      - { form: अधिकः, lemma: अधिक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "greater, superior" }
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "is there" }
+  कश्चित्?:
+    fix:
+      2: { a: अव्यय, gloss: "some- (कश्चित् 'anyone')" }
+
+'3.214+22':
+  स:
+    fix:
+      1: { gloss: "he" }
+  आहमत्तोऽप्यधिकोऽस्ति:
+    split:
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: मत्तः, lemma: अस्मद्, a: पञ्चमी एकवचन, gloss: "than me" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+      - { form: अधिकः, lemma: अधिक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "greater, superior" }
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "there is" }
+  पर्वतो:
+    fix:
+      1: { gloss: "a mountain" }
+  येन:
+    fix:
+      1: { gloss: "by which" }
+  संस्तभ्य:
+    fix:
+      1: { a: अव्यय ल्यप्, gloss: "stopping, checking" }
+  बलवानप्यहं:
+    fix:
+      1: { gloss: "strong, mighty" }
+      2: { gloss: "though" }
+  ध्रिये:
+    fix:
+      1: { gloss: "am held fast, am stopped" }
+
+'3.214+23':
+  मुनिः:
+    fix:
+      1: { gloss: "the sage" }
+  पर्वतमाहूय:
+    split:
+      - { form: पर्वतम्, lemma: पर्वत, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "the mountain" }
+      - { form: आहूय, lemma: आह्वे, a: अव्यय ल्यप्, gloss: "having summoned" }
+  कन्याया:
+    fix:
+      1: { gloss: "to the girl" }
+  अदर्शयत्पुत्रिके:
+    split:
+      - { form: अदर्शयत्, lemma: दृश्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "showed" }
+      - { form: पुत्रिके, lemma: पुत्रिका, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "little daughter" }
+  '!':
+    split: []
+  त्वामस्मै:
+    split:
+      - { form: त्वाम्, lemma: युष्मद्, a: द्वितीया एकवचन, gloss: "you" }
+      - { form: अस्मै, lemma: इदम्, a: चतुर्थी एकवचन पुंलिङ्ग, gloss: "to him, to this one" }
+  प्रयच्छामि:
+    fix:
+      1: { gloss: "give (in marriage) — 'shall I give you?'" }
+  '?':
+    split: []
+
+'3.214+24':
+  सा:
+    fix:
+      1: { gloss: "she" }
+  आहतात:
+    split:
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "father" }
+  '!':
+    split: []
+  कठिनात्मकोऽयं:
+    split:
+      - { form: कठिन, lemma: कठिन, member: true, gloss: "hard" }
+      - { form: आत्मकः, lemma: आत्मक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "having the nature of — 'hard by nature'" }
+      - { form: अयम्, lemma: इदम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "he, this one" }
+  स्तब्धश्च:
+    fix:
+      1: { gloss: "stiff, unbending (also: haughty)" }
+
+'3.214+25':
+  तदन्यस्मै:
+    fix:
+      1: { a: अव्यय, gloss: "so, therefore" }
+      2: { gloss: "to another" }
+  देहि:
+    fix:
+      1: { gloss: "give" }
+  माम्:
+    fix:
+      1: { gloss: "me" }
+
+'3.214+26':
+  स:
+    fix:
+      1: { gloss: "he (the mountain)" }
+  मुनिना:
+    fix:
+      1: { gloss: "by the sage" }
+  पृष्टः,:
+    fix:
+      1: { lemma: प्रच्छ्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "was asked" }
+  यद्भोः:
+    split:
+      - { form: यत्, lemma: यद्, a: अव्यय, gloss: "that (introducing the words asked)" }
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+  पर्वतराज:
+    fix:
+      1: { gloss: "king of mountains" }
+  '!':
+    split: []
+  त्वत्तोऽप्यधिकोऽस्ति:
+    split:
+      - { form: त्वत्तः, lemma: युष्मद्, a: पञ्चमी एकवचन, gloss: "than you" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+      - { form: अधिकः, lemma: अधिक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "greater, superior" }
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "is there" }
+  कश्चित्?:
+    fix:
+      2: { a: अव्यय, gloss: "some- (कश्चित् 'anyone')" }
+
+'3.214+27':
+  स:
+    fix:
+      1: { gloss: "he" }
+  आहसन्ति:
+    split:
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: सन्ति, lemma: अस्, a: लट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "there are" }
+  मत्तोऽप्यधिका:
+    fix:
+      1: { lemma: अस्मद्, a: पञ्चमी एकवचन, gloss: "than me" }
+      3: { gloss: "greater, superior" }
+  मूषिकाः,:
+    fix:
+      1: { gloss: "mice" }
+  ये:
+    fix:
+      1: { gloss: "who" }
+  मद्देहं:
+    fix:
+      1: { form: मत्, lemma: अस्मद्, member: true, gloss: "my" }
+  बलात्सर्वतो:
+    fix:
+      1: { gloss: "by force" }
+      2: { gloss: "on all sides" }
+  भेदयन्ति:
+    fix:
+      1: { lemma: भिद्, a: लट् प्रथमपुरुष बहुवचन परस्मैपद णिच्, gloss: "pierce, bore through" }
+
+'3.214+28':
+  तदाकर्ण्य:
+    split:
+      - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+      - { form: आकर्ण्य, lemma: आकर्ण्, a: अव्यय ल्यप्, gloss: "having heard" }
+  मुनिर्मूषकमाहूय:
+    split:
+      - { form: मुनिः, lemma: मुनि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the sage" }
+      - { form: मूषकम्, lemma: मूषक, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "the mouse" }
+      - { form: आहूय, lemma: आह्वे, a: अव्यय ल्यप्, gloss: "having summoned" }
+  तस्या:
+    split:
+      - { form: तस्याः, lemma: तद्, a: षष्ठी एकवचन स्त्रीलिङ्ग, gloss: "to her" }
+  अदर्शयत्पुत्रिके:
+    split:
+      - { form: अदर्शयत्, lemma: दृश्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "showed" }
+      - { form: पुत्रिके, lemma: पुत्रिका, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "little daughter" }
+  '!':
+    split: []
+  एष:
+    fix:
+      1: { gloss: "this" }
+  ते:
+    fix:
+      1: { lemma: युष्मद्, a: चतुर्थी एकवचन, gloss: "to you" }
+  प्रतिभाति:
+    fix:
+      1: { gloss: "seems (good), pleases" }
+  मूषकराजो:
+    split:
+      - { form: मूषक, lemma: मूषक, member: true, gloss: "a mouse" }
+      - { form: राजः, lemma: राज, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "king — 'the king of mice'" }
+    note: राजन् becomes राज at the end of a तत्पुरुष (5.4.91 राजाहःसखिभ्यष्टच्).
+  येन:
+    fix:
+      1: { gloss: "whereby, so that" }
+  यथोचितमनुष्ठीयते:
+    split:
+      - { form: यथा, lemma: यथा, member: true, gloss: "as" }
+      - { form: उचितम्, lemma: उचित, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "fitting — यथोचितम् 'what is proper'" }
+      - { form: अनुष्ठीयते, lemma: अनुष्ठा, a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "is carried out, is done" }
+
+'3.214+29':
+  सापि:
+    fix:
+      1: { form: सा, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "she" }
+  तं:
+    fix:
+      1: { gloss: "him" }
+  स्वजातीय:
+    split:
+      - { form: स्व, lemma: स्व, member: true, gloss: "one's own" }
+      - { form: जातीयः, lemma: जातीय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "of the kind — 'of my own kind'" }
+  एष:
+    fix:
+      1: { gloss: "this one" }
+  मन्यमाना:
+    fix:
+      1: { gloss: "thinking" }
+  पुलकोद्भूषितशरीरा:
+    split:
+      - { form: पुलक, lemma: पुलक, member: true, gloss: "bristling of the hair (with delight)" }
+      - { form: उद्भूषित, lemma: उद्भूषित, member: true, gloss: "adorned" }
+      - { form: शरीरा, lemma: शरीर, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "body — 'her body adorned with thrilling hair'" }
+    note: A बहुव्रीहि of the girl, so the neuter शरीर takes the feminine ending.
+  प्रोवाचतात:
+    split:
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "father" }
+  '!':
+    split: []
+  मां:
+    fix:
+      1: { gloss: "me" }
+  मूषिकां:
+    fix:
+      1: { gloss: "a she-mouse" }
+  कृत्वास्मै:
+    split:
+      - { form: कृत्वा, lemma: कृ, a: अव्यय क्त्वा, gloss: "having made (me into)" }
+      - { form: अस्मै, lemma: इदम्, a: चतुर्थी एकवचन पुंलिङ्ग, gloss: "to him, to this one" }
+  प्रयच्छ:
+    fix:
+      1: { gloss: "give (in marriage)" }
+  येन:
+    fix:
+      1: { gloss: "so that" }
+  स्वजातिविहितं:
+    split:
+      - { form: स्व, lemma: स्व, member: true, gloss: "one's own" }
+      - { form: जाति, lemma: जाति, member: true, gloss: "kind, species" }
+      - { form: विहितम्, lemma: विधा, a: द्वितीया एकवचन पुंलिङ्ग क्त, gloss: "ordained, prescribed — 'proper to my own kind'" }
+  गृहधर्ममनुतिष्ठामि:
+    split:
+      - { form: गृह, lemma: गृह, member: true, gloss: "house, home" }
+      - { form: धर्मम्, lemma: धर्म, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "duty — गृहधर्म 'the duties of a household'" }
+      - { form: अनुतिष्ठामि, lemma: अनुष्ठा, a: लट् उत्तमपुरुष एकवचन परस्मैपद, gloss: "carry out, practise" }
+
+'3.214+30':
+  तच्छ्रुत्वा:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+      2: { gloss: "having heard" }
+  तेन:
+    fix:
+      1: { gloss: "by him (the sage)" }
+  स्त्रीधर्मविचक्षणेन:
+    split:
+      - { form: स्त्री, lemma: स्त्री, member: true, gloss: "a woman" }
+      - { form: धर्म, lemma: धर्म, member: true, gloss: "duty, law" }
+      - { form: विचक्षणेन, lemma: विचक्षण, a: तृतीया एकवचन पुंलिङ्ग, gloss: "versed in — 'who knew the law of women'" }
+  तां:
+    fix:
+      1: { gloss: "her" }
+  मूषिकां:
+    fix:
+      1: { gloss: "a she-mouse" }
+  कृत्वा:
+    fix:
+      1: { gloss: "having made (her into)" }
+  मूषकाय:
+    fix:
+      1: { gloss: "to the mouse" }
+  प्रदत्ता:
+    split:
+      - { form: प्रदत्ता, lemma: प्रदा, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "was given (in marriage)" }
+    note: >-
+      The sentence shifts construction: तां … कृत्वा keeps her as object, then
+      प्रदत्ता makes her (सा understood) the subject of the passive.
+
+'3.214+31':
+  अतोऽहं:
+    split:
+      - { form: अतः, lemma: अतस्, a: अव्यय, gloss: "therefore" }
+      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन }
+  ब्रवीमिसूर्यं:
+    split:
+      - { form: ब्रवीमि, lemma: ब्रू, a: लट् उत्तमपुरुष एकवचन परस्मैपद, gloss: "say" }
+      - { form: सूर्यम्, lemma: सूर्य, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "the sun" }
+  भर्तारमुत्सृज्य:
+    split:
+      - { form: भर्तारम्, lemma: भर्तृ, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "husband" }
+      - { form: उत्सृज्य, lemma: उत्सृज्, a: अव्यय ल्यप्, gloss: "passing over, leaving aside" }
+  इत्यादि:
+    fix:
+      1: { gloss: "and so on (the verse cited by its opening)" }
+
+'3.214+32':
+  रक्ताक्षवचनमनादृत्य:
+    split:
+      - { form: रक्ताक्ष, lemma: रक्ताक्ष, member: true, gloss: "Raktākṣa (the owls' minister)" }
+      - { form: वचनम्, lemma: वचन, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "word, counsel" }
+      - { form: अनादृत्य, lemma: आदृ, a: अव्यय ल्यप्, gloss: "disregarding" }
+  तैः:
+    fix:
+      1: { gloss: "by them (the owls)" }
+  स्ववंशविनाशाय:
+    split:
+      - { form: स्व, lemma: स्व, member: true, gloss: "one's own" }
+      - { form: वंश, lemma: वंश, member: true, gloss: "race, clan" }
+      - { form: विनाशाय, lemma: विनाश, a: चतुर्थी एकवचन पुंलिङ्ग, gloss: "destruction — 'to the ruin of their own race'" }
+  स:
+    fix:
+      1: { gloss: "he (Sthirajīvin)" }
+  स्वदुर्गमुपनीतः:
+    split:
+      - { form: स्व, lemma: स्व, member: true, gloss: "one's own" }
+      - { form: दुर्गम्, lemma: दुर्ग, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "fortress" }
+      - { form: उपनीतः, lemma: उपनी, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "was brought, was led" }
+
+'3.214+33':
+  नीयमानश्चान्तर्लीनमवहस्य:
+    split:
+      - { form: नीयमानः, lemma: नी, a: प्रथमा एकवचन पुंलिङ्ग शानच्, gloss: "being led" }
+      - { form: च, lemma: च, a: अव्यय, gloss: "and" }
+      - { form: अन्तर्लीनम्, lemma: अन्तर्लीन, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "hidden within — 'inwardly'" }
+      - { form: अवहस्य, lemma: अवहस्, a: अव्यय ल्यप्, gloss: "laughing (at them)" }
+  स्थिरजीव्यचिन्तयत्:
+    split:
+      - { form: स्थिरजीवी, lemma: स्थिरजीविन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Sthirajīvin (the crows' old minister)" }
+      - { form: अचिन्तयत्, lemma: चिन्त्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "thought" }
+
+'3.215':
+  हन्यतामिति:
+    fix:
+      1: { gloss: "let him be killed" }
+  येनोक्तं:
+    fix:
+      1: { gloss: "by whom" }
+      2: { lemma: वच्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "was said" }
+  स्वामिनो:
+    fix:
+      1: { gloss: "of the master, the lord" }
+  हितवादिना:
+    split:
+      - { form: हित, lemma: हित, member: true, gloss: "good, welfare" }
+      - { form: वादिना, lemma: वादिन्, a: तृतीया एकवचन पुंलिङ्ग, gloss: "speaker — 'who spoke for (his lord's) good'" }
+  स:
+    fix:
+      1: { gloss: "he" }
+  एवैकोऽत्र:
+    fix:
+      1: { gloss: "alone, only" }
+      2: { gloss: "one — 'he alone'" }
+      3: { gloss: "here, among them" }
+  सर्वेषां:
+    fix:
+      1: { gloss: "of all" }
+  नीतिशास्त्रार्थतत्त्ववित्:
+    split:
+      - { form: नीति, lemma: नीति, member: true, gloss: "policy, statecraft" }
+      - { form: शास्त्र, lemma: शास्त्र, member: true, gloss: "treatise, science" }
+      - { form: अर्थ, lemma: अर्थ, member: true, gloss: "meaning" }
+      - { form: तत्त्व, lemma: तत्त्व, member: true, gloss: "truth, essence" }
+      - { form: वित्, lemma: विद्, a: प्रथमा एकवचन पुंलिङ्ग क्विप्, gloss: "knower — 'who knows the true meaning of the science of policy'" }
+
+'3.215+1':
+  तद्यदि:
+    fix:
+      1: { a: अव्यय, gloss: "so, then" }
+  तस्य:
+    fix:
+      1: { gloss: "his (Raktākṣa's)" }
+  वचनमचरिष्यन्नेते,:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "word, counsel" }
+      2: { gloss: "had acted on, had followed" }
+      3: { gloss: "these (owls)" }
+    note: >-
+      Both verbs are लृङ्, the conditional of what did not happen: "if these had
+      followed his word, not even a small misfortune would have befallen them".
+  ततो:
+    fix:
+      1: { gloss: "then" }
+  स्वल्पोऽप्यनर्थोऽभविष्यदेतेषाम्:
+    fix:
+      1: { gloss: "very small" }
+      3: { gloss: "misfortune, calamity" }
+      4: { gloss: "would have come about" }
+      5: { gloss: "to them" }
+
+'3.215+2':
+  दुर्गद्वारं:
+    split:
+      - { form: दुर्ग, lemma: दुर्ग, member: true, gloss: "fortress" }
+      - { form: द्वारम्, lemma: द्वार, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "gate" }
+  प्राप्यारिमर्दनोऽब्रवीत्भो:
+    split:
+      - { form: प्राप्य, lemma: प्राप्, a: अव्यय ल्यप्, gloss: "reaching" }
+      - { form: अरिमर्दनः, lemma: अरिमर्दन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Arimardana (the owl king, 'foe-crusher')" }
+      - { form: अब्रवीत्, lemma: ब्रू, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+  हितैषिणोऽस्य:
+    split:
+      - { form: हित, lemma: हित, member: true, gloss: "good, welfare" }
+      - { form: एषिणः, lemma: एषिन्, a: सम्बोधन बहुवचन पुंलिङ्ग, gloss: "seekers — 'O well-wishers'" }
+      - { form: अस्य, lemma: इदम्, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "this" }
+  स्थिरजीविनो:
+    fix:
+      1: { a: षष्ठी एकवचन पुंलिङ्ग, gloss: "to Sthirajīvin" }
+    note: The genitive stands for the dative of the one given to.
+  यथासमीहितं:
+    split:
+      - { form: यथा, lemma: यथा, member: true, gloss: "as" }
+      - { form: समीहितम्, lemma: समीह्, a: द्वितीया एकवचन नपुंसकलिङ्ग क्त, gloss: "wished for — 'as he wishes'" }
+  स्थानं:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "a place, quarters" }
+  प्रयच्छत:
+    fix:
+      1: { gloss: "give" }
+
+'3.215+3':
+  तच्च:
+    fix:
+      1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
+  श्रुत्वा:
+    fix:
+      1: { gloss: "having heard" }
+  स्थिरजीवी:
+    fix:
+      1: { gloss: "Sthirajīvin" }
+  व्यचिन्तयत्मया:
+    split:
+      - { form: व्यचिन्तयत्, lemma: विचिन्त्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "reflected" }
+      - { form: मया, lemma: अस्मद्, a: तृतीया एकवचन, gloss: "by me" }
+  तावदेतेषां:
+    fix:
+      1: { gloss: "now, first of all" }
+      2: { gloss: "of these" }
+  वधोपायश्चिन्तनीयः:
+    split:
+      - { form: वध, lemma: वध, member: true, gloss: "killing, slaughter" }
+      - { form: उपायः, lemma: उपाय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "means, way" }
+      - { form: चिन्तनीयः, lemma: चिन्त्, a: प्रथमा एकवचन पुंलिङ्ग अनीयर्, gloss: "to be thought out" }
+
+'3.215+4':
+  स:
+    fix:
+      1: { gloss: "it (the means)" }
+  मया:
+    fix:
+      1: { lemma: अस्मद्, a: तृतीया एकवचन, gloss: "by me" }
+  मध्यस्थेन:
+    fix:
+      1: { gloss: "staying in the middle, inside (the fort)" }
+  साध्यते:
+    fix:
+      1: { a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि णिच्, gloss: "is accomplished" }
+
+'3.215+5':
+  यतो:
+    fix:
+      1: { lemma: यतस्, a: अव्यय, gloss: "because" }
+  मदीयमिङ्गितादिकं:
+    split:
+      - { form: मदीयम्, lemma: मदीय, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "my" }
+      - { form: इङ्गित, lemma: इङ्गित, member: true, gloss: "a gesture, sign" }
+      - { form: आदिकम्, lemma: आदिक, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "and the rest — 'my gestures and so on'" }
+  विचारयन्तस्तेऽपि:
+    split:
+      - { form: विचारयन्तः, lemma: विचर्, a: प्रथमा बहुवचन पुंलिङ्ग शतृ णिच्, gloss: "observing, weighing" }
+      - { form: ते, lemma: तद्, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "they" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "too" }
+  सावधाना:
+    fix:
+      1: { a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "attentive, on their guard" }
+  भविष्यन्ति:
+    fix:
+      1: { gloss: "will be" }
+
+'3.215+6':
+  तद्दुर्गद्वारमधिश्रितोऽभिप्रेतं:
+    split:
+      - { form: तत्, lemma: तद्, a: अव्यय, gloss: "so, therefore" }
+      - { form: दुर्ग, lemma: दुर्ग, member: true, gloss: "fortress" }
+      - { form: द्वारम्, lemma: द्वार, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "gate" }
+      - { form: अधिश्रितः, lemma: अधिश्रि, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "staying at, keeping to" }
+      - { form: अभिप्रेतम्, lemma: अभिप्रेत, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "what is intended, my purpose" }
+  साधयामि:
+    split:
+      - { form: साधयामि, lemma: साध्, a: लट् उत्तमपुरुष एकवचन परस्मैपद णिच्, gloss: "will accomplish" }
+
+'3.215+7':
+  निश्चित्योलूकपतिमाहदेव:
+    split:
+      - { form: निश्चित्य, lemma: निश्चि, a: अव्यय ल्यप्, gloss: "having resolved" }
+      - { form: उलूक, lemma: उलूक, member: true, gloss: "an owl" }
+      - { form: पतिम्, lemma: पति, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "lord — 'the lord of the owls'" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty" }
+  '!':
+    split: []
+  युक्तमिदं:
+    fix:
+      1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "right, proper" }
+      2: { lemma: इदम्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
+  यत्स्वामिना:
+    fix:
+      1: { gloss: "what" }
+      2: { gloss: "by (my) lord" }
+  प्रोक्तम्:
+    fix:
+      1: { gloss: "was said" }
