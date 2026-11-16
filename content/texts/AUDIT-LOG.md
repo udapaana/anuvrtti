@@ -483,3 +483,21 @@ second piece is itself misprinted (नान्यवद्धृष्यन्
 Totals in `corrections.yaml`: Mahābhārata 368, Pañcatantra 316, Rāmāyaṇa 61,
 Bhāgavata 31, Nītiśataka 26 entries. `bun run check` passes with no problem in
 any text.
+
+## 2026-11-16 · Pañcatantra: second-reader audit and blind sample
+
+**Tier 2:** 36 batches, 23,290 padas the authors let stand, read again: 332
+corrected (1.4%); per batch 2–44. The mechanical flags: 881 raised, 74 upheld.
+One batch (t18) corrected nothing; read a second time, it gave 3. The first
+batch's 44 were mostly the pronouns' MW stem notes ("he she it, that, this"),
+fixed for every text in the builder (pronouns.yaml by gender and number).
+
+**Blind sample:** 150 padas (seed 3131: 66 vidyut's own, 52 picks, 32
+authors'): 148 right, 2 wrong, both glosses — one author's (स्थान- "the
+city"), and one general: a verb form nobody glossed showed its root's whole MW
+entry, cut off mid-word (करोषि, 798 such forms in the texts). build-texts.ts now
+keeps the root's first sense group, at most three senses.
+
+The judge also noted that passive participles (भक्ष्यमाणः, शानच्) carry no
+कर्मणि marker where finite passives (उच्यते) do. Left as is, with the lemma
+convention, for the harmonising pass.
