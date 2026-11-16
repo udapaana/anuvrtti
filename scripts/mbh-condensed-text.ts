@@ -2,8 +2,13 @@
 /**
  * mbh-condensed-text.ts — turn content/texts/mahabharata-condensed/selection.json
  * (the ordered sarit_id list recovered by scripts/mbh-condensed.ts) into
- * content/texts/mahabharata-condensed/text.yaml, in this project's standard
- * whole-text format (see content/texts/pancatantra-kilotpatin/text.yaml).
+ * content/texts/mahabharata-condensed/text.draft.yaml, in this project's
+ * standard whole-text format (see content/texts/pancatantra-kilotpatin/text.yaml).
+ *
+ * Draft, not text.yaml: the build treats every text.yaml as a text to publish
+ * and fails without its snapshot, and this one cannot be snapshotted until the
+ * snapshot format is trimmed (~40 MB at today's ~1.9 KB a word). Rename it to
+ * text.yaml in the same commit as its snapshot.
  *
  * For each selected entry, looks up its sarit_id's actual verse (all <l>
  * lines of that <lg>) in the SARIT Kumbhakonam TEI (data/texts/
@@ -45,7 +50,7 @@ const SEL_DIR = path.join(ROOT, 'content/texts/mahabharata-condensed');
 const TEI_PATH = path.join(ROOT, 'data/texts/sa_mahAbhArata-kumbhakonam-sarit.txt');
 const args = process.argv.slice(2);
 const limit = Number(args[args.indexOf('--limit') + 1]) || 0;
-const outName = limit ? 'text.sample.yaml' : 'text.yaml';
+const outName = limit ? 'text.sample.yaml' : 'text.draft.yaml';
 
 if (!fs.existsSync(TEI_PATH)) {
   console.error(`missing ${TEI_PATH} — run \`bun run texts\` first (data/texts.json, slug sa_mahAbhArata-kumbhakonam-sarit)`);

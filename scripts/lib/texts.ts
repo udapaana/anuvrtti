@@ -24,7 +24,7 @@ export type TextSource = {
   sections: Section[];
 };
 
-/** Every text directory that holds a text.yaml (mahabharata-condensed does not). */
+/** Every text directory that holds a text.yaml (a text.draft.yaml, awaiting its snapshot, is not one). */
 export function textIds(): string[] {
   if (!fs.existsSync(TEXTS_DIR)) return [];
   return fs.readdirSync(TEXTS_DIR).filter((d) => fs.existsSync(path.join(TEXTS_DIR, d, 'text.yaml'))).sort();
