@@ -2423,10 +2423,11 @@
     split:
       - { form: सर्वाः, lemma: सर्व, a: प्रथमा बहुवचन स्त्रीलिङ्ग, gloss: "all" }
   वनस्थस्याभवन्घनैः:
-    fix:
-      1: { gloss: "for him who was in the forest" }
-      2: { form: अभवन्, lemma: भू, a: लङ् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "became" }
-      3: { gloss: "with clouds" }
+    split:
+      - { form: वनस्थस्य, lemma: वनस्थ, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "for him who was in the forest" }
+      - { form: अभवन्, lemma: भू, a: लङ् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "became" }
+      - { form: घनैः, lemma: घन, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "with clouds" }
+    note: "वनस्थस्य अभवन्: the plain imperfect of भू, not आ-भू."
 
 '3.140':
   वातवृष्टिश्च:
