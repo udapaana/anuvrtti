@@ -94,6 +94,16 @@ function mwFor(lex: Snapshot['lexicon'], a: Analysis): MwEntry {
   return null;
 }
 
+/**
+ * चानश् (habit, age, ability: 3.2.129) and the ordinary present participle
+ * शानच् spell alike (कुर्वाणः), and vidyut lists चानश् first. Where it offers
+ * शानच् for the same lemma, case, number and gender, that is the reading.
+ */
+function ordinaryParticiple(a: Analysis | null, pool: Analysis[], spec?: PadaSpec): Analysis | null {
+  if (!a || a.कृत् !== 'चानश्' || spec?.a?.includes('चानश्')) return a;
+  return pool.find((x) => x.कृत् === 'शानच्' && x.lemma === a.lemma && x.विभक्ति === a.विभक्ति && x.वचन === a.वचन && x.लिङ्ग === a.लिङ्ग) ?? a;
+}
+
 /** An author's pada, resolved against what vidyut offered for that word. */
 function resolveSpec(spec: PadaSpec, base: Analysis | null, pool: Analysis[]): { a: Analysis; source: Source } {
   if (spec.member) return { a: { type: 'member', lemma: spec.lemma ?? base?.lemma ?? spec.form ?? '' }, source: 'author' };
@@ -149,16 +159,20 @@ export function resolveText(id: string): Resolved {
         kinds.add(o.split.some((p) => p.member) ? 'compound' : 'split');
         resolved = o.split.map((spec) => {
           const known = spec.form ? snap.kosha?.[slp(spec.form).replace(/H$/, 's')] ?? [] : [];
-          const r = resolveSpec(spec, null, [...known.map(decodeA), ...pool]);
+          const all = [...known.map(decodeA), ...pool];
+          const r = resolveSpec(spec, null, all);
+          r.a = ordinaryParticiple(r.a, all, spec)!;
           if (r.source === 'author' && !spec.member) kinds.add('supplied');
           return { ...r, spec, form: spec.form ?? '', alts: 0 };
         });
       } else {
         resolved = sw.padas.map((p, pi) => {
-          const base = p.alts[0] ? decodeA(p.alts[0]) : null;
+          const alts = p.alts.map(decodeA);
           const spec = o?.fix?.[String(pi + 1)];
+          const base = ordinaryParticiple(alts[0] ?? null, alts, spec);
           if (!spec) return { a: base, source: base ? ('vidyut' as Source) : ('none' as Source), form: pausal(p.slp1), alts: p.alts.length };
-          const r = resolveSpec(spec, base, p.alts.map(decodeA));
+          const r = resolveSpec(spec, base, alts);
+          r.a = ordinaryParticiple(r.a, alts, spec)!;
           if (spec.member) kinds.add('compound');
           else if (r.source === 'pick' && (spec.a || spec.lemma)) kinds.add('pick');
           else if (r.source === 'author') kinds.add('supplied');

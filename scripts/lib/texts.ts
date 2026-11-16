@@ -158,6 +158,10 @@ export type Analysis = {
   aupadeshika?: string; stem?: string;
 };
 
+/** The गण and the सनादि suffixes an author may name in an analysis (not shown in its one-line form). */
+export const GANAS = ['भ्वादि', 'अदादि', 'जुहोत्यादि', 'दिवादि', 'स्वादि', 'तुदादि', 'रुधादि', 'तनादि', 'क्र्यादि', 'चुरादि'] as const;
+export const SANADI = ['णिच्', 'सन्', 'यङ्', 'यङ्लुक्', 'क्यच्', 'काम्यच्', 'क्यङ्', 'क्यष्', 'णिङ्', 'आय', 'ईयङ्'] as const;
+
 /** "सप्तमी एकवचन पुंलिङ्ग" → the fields it names. Unknown words are कृत् names
  *  (क्त, क्त्वा, तुमुन्, शतृ …), the only open set an author writes here. */
 export function parseA(a: string | undefined, lemma: string, member = false): Analysis {
@@ -167,7 +171,9 @@ export function parseA(a: string | undefined, lemma: string, member = false): An
     for (const [k, vs] of Object.entries(T))
       if ((vs as readonly string[]).includes(w)) { (out as any)[k] = w; hit = true; }
     if (hit) continue;
-    if (w === 'अव्यय') out.type = 'avyaya';
+    if ((GANAS as readonly string[]).includes(w)) out.गण = w;
+    else if ((SANADI as readonly string[]).includes(w)) (out.सनादि ??= []).push(w);
+    else if (w === 'अव्यय') out.type = 'avyaya';
     else if (w === 'समास') out.type = 'member';
     else out.कृत् = w;
   }
@@ -179,6 +185,8 @@ const FIELDS = ['विभक्ति', 'वचन', 'लिङ्ग', 'लक
 export function agrees(x: Analysis, want: Analysis, lemma?: string): boolean {
   if (lemma && x.lemma !== lemma && x.lemma_full !== lemma) return false; // no lemma: the analysis alone decides
   if (want.type !== x.type) return false;
+  if (want.गण && want.गण !== x.गण) return false;
+  if (want.सनादि?.some((k) => !x.सनादि?.includes(k))) return false;
   return FIELDS.every((f) => !(want as any)[f] || (want as any)[f] === (x as any)[f]);
 }
 /** The analysis as one line of the reader's terms — the inverse of parseA. */

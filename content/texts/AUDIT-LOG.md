@@ -323,3 +323,26 @@ figure is relied on.
 content/texts/pronouns.yaml glosses the personal pronouns by number and case
 (अहम् "I", मम "my", त्वया "by you"), applied by build-texts.ts as the particles
 table is, where no override gives a gloss.
+
+**r15, read again:** 595 padas, 4 corrected (the first reader found none), and 9
+wrong गण tags the override format could not then express (below).
+
+**Second blind sample:** 150 padas (seed 7741: 80 vidyut's own, 49 picks, 21
+authors'), a slower judge told to construe each verse first: 145 right, 5 wrong
+(3.3%). Three of the five were the builder's, not any author's, and each was
+general:
+
+- **चानश् for शानच्.** The two suffixes spell alike (कुर्वाणः), and vidyut lists
+  चानश् (habit, age, ability) first. build-texts.ts now takes शानच्, the plain
+  present participle, wherever vidyut offers it for the same lemma, case,
+  number and gender: 92 padas retagged across the texts (136 चानश् → 44, the
+  rest having no शानच् reading to take). An author who writes चानश् keeps it.
+- **"क्त णिच्" read as कृत् णिच्.** parseA took any unknown term for the कृत्, so
+  an author's "क्त णिच्" (396 analyses so written) lost the क्त and named णिच्
+  as the suffix. parseA now knows the सनादि suffixes and the ten गणs: 208
+  causative participles now read क्त + णिच्. An author may also name a गण now
+  (भ्वादि, चुरादि …), which the r15 re-reader needed.
+- One causative (अरोचयत्) looked unmarked only in the one-line analysis; the
+  reader's terms carried णिच् all along.
+The other two (an epic ātmanepada future tagged passive; विहाय's lemma without
+its preverb) are single faults; the second waits on the lemma convention.
