@@ -19,9 +19,9 @@ export interface Term {
   related?: string[]; // Related terms (by termRoman)
 }
 
-/** A section of a grammar book that treats a term: its number, its title,
- *  why it was chosen, and (for a book read off-site) where the scan is. */
-export interface BookCite { s: number; title?: string; why?: string; href?: string }
+/** A section of Kāle's grammar that treats a term: its number, its title,
+ *  and why it was chosen. */
+export interface BookCite { s: number; title?: string; why?: string }
 
 export type TermCategory =
   | "samjna"      // Technical names
@@ -38,10 +38,9 @@ export type TermCategory =
 
 export const terms: Term[] = (jargonData as { terms: Term[] }).terms;
 
-/** Where the grammars treat a tag: Kāle's sections and Apte's (the authored
- *  maps in content/grammar-refs/). Keyed by the tag, so a tag with no
- *  glossary note of its own still has its reading. */
-export type BookCites = { kale?: BookCite[]; apte?: BookCite[] };
+/** Where Kāle's grammar treats a tag (content/grammar-refs/kale.yaml). Keyed
+ *  by the tag, so a tag with no glossary note of its own still has it. */
+export type BookCites = { kale?: BookCite[] };
 const citeIndex = (jargonData as { cites?: Record<string, BookCites> }).cites ?? {};
 export function citesFor(tag: string): BookCites | null {
   return citeIndex[tag] ?? null;

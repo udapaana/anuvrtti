@@ -2315,28 +2315,15 @@
                 No glossary note yet for <Sanskrit text={openTerm} source="devanagari" />.
               </div>
             {/if}
-            {#if termInfo?.sutraRef || termCites?.kale?.length || termCites?.apte?.length}
+            {#if termInfo?.sutraRef || termCites?.kale?.length}
               <!--
-                Where to read more, one book a line: Pāṇini's rule, then the
-                two grammars that explain it in prose — Kāle's (on this site,
-                /grammar) and Apte's Student's Guide (the scan, off-site),
-                which is the gentler of the two. Each names its section, so
-                the reader knows what a link opens before opening it.
+                Where to read more, one book a line: Kāle's grammar, which
+                explains the term in prose (on this site, /grammar), then
+                Pāṇini's rule. Each names its section, so the reader knows
+                what a link opens before opening it.
               -->
               <dl class="readmore">
-                  {#if termCites?.apte?.length}
-                  <dt>Apte</dt>
-                  <dd>
-                    {#each termCites.apte as c}
-                      {#if c.href}
-                        <a href={c.href} target="_blank" rel="noopener" title={c.why ?? ''}><span class="cite-n"><span class="sec">§</span>{c.s}</span><span class="cite-t">{c.title}<span class="ext" aria-label="opens the scan"> ↗</span></span></a>
-                      {:else}
-                        <span title={c.why ?? ''}><span class="cite-n"><span class="sec">§</span>{c.s}</span><span class="cite-t">{c.title}</span></span>
-                      {/if}
-                    {/each}
-                  </dd>
-                {/if}
-                  {#if termCites?.kale?.length}
+                {#if termCites?.kale?.length}
                   <dt>Kāle</dt>
                   <dd>
                     {#each termCites.kale as c}
@@ -2344,11 +2331,11 @@
                     {/each}
                   </dd>
                 {/if}
-                  {#if termInfo?.sutraRef}
+                {#if termInfo?.sutraRef}
                   <dt>Pāṇini</dt>
                   <dd><a class="sutra" href={`/ref/${termInfo.sutraRef}`}><span class="cite-n">{termInfo.sutraRef}</span></a></dd>
                 {/if}
-                </dl>
+              </dl>
             {/if}
           </div>
           {#if openSystem}
@@ -3635,8 +3622,7 @@
     min-width: 0;
   }
   /* one citation: the number in a fixed column, the title wrapping beside it */
-  .readmore a,
-  .readmore dd > span {
+  .readmore a {
     display: grid;
     grid-template-columns: 3.4em minmax(0, 1fr);
     align-items: baseline;
@@ -3664,10 +3650,6 @@
     font-size: 14px;
     line-height: 1.35;
     color: var(--ink-2);
-  }
-  .readmore .ext {
-    font-size: 11px;
-    color: var(--accent-ref);
   }
 
   /* a tag with more than one home says so, rather than the rail picking one */
