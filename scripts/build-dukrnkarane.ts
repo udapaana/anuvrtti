@@ -24,6 +24,7 @@
  */
 import * as fs from 'fs';
 import * as path from 'path';
+import { dropRoman, ALPHABET_LAST } from './lib/kale-roman';
 
 const SRC =
   process.env.DUKR_SRC ??
@@ -178,13 +179,16 @@ function loadDir(dir: string, kind: Rule['kind'], offset: number): Rule[] {
       continue;
     }
     const fm = parseFrontmatter(m[1]);
-    const body = m[2].trim();
     const fileNum = Number(file.slice(0, 3));
+    // the roman Kāle printed beside his Devanagari: the script toggle does that
+    // now (scripts/lib/kale-roman.ts)
+    const keepPairs = offset + fileNum <= ALPHABET_LAST && kind === 'rule';
+    const body = dropRoman(m[2].trim(), { keepPairs }).text;
 
     rules.push({
       n: offset + fileNum,
       id: str(fm, 'rule_id') || `§ ${fileNum}`,
-      title: str(fm, 'title'),
+      title: dropRoman(str(fm, 'title'), { keepPairs }).text,
       chapter: str(fm, 'chapter'),
       section: str(fm, 'section'),
       kind,
