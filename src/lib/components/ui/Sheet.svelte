@@ -192,14 +192,15 @@
   /*
     The bar is 4px; the TARGET is not. A grip you have to hit precisely is a
     grip nobody uses — which is what happened here, since the sheet's only
-    opening control was this hairline. The padding makes it a 30px band, and
-    the region inside can offer a bigger handle still (the reader's whole word
-    head opens the drawer).
+    opening control was this hairline. The padding makes it a 20px band; it
+    was 30, but the reader's sheet, the one that rests open, has a bigger handle inside it (its
+    whole word head opens the drawer), and at the reader's peek those ten
+    pixels were a tenth of the sheet.
   */
   .grip {
     flex: none;
-    min-height: 30px;
-    padding: 12px 0 10px;
+    min-height: 20px;
+    padding: 8px 0;
     display: flex;
     align-items: center;
     justify-content: center;

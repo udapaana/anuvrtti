@@ -2095,10 +2095,6 @@
                word without its meaning is not worth the space. -->
           {#if narrow && railDetent === 0}
             <span class="wh-en peek"><Sanskrit text={selWord.gloss} source="devanagari" /></span>
-            <!-- A hint you cannot press is a hint you have to already know how
-                 to act on. The grip still takes swipes; this is the same move
-                 as a button, for a thumb that would rather tap. -->
-            <button class="wh-pull" onclick={() => (railDetent = 1)}>↑ pull up</button>
           {:else if wordRoman}
             <!-- the Latin reading, only while it differs from the page's own script -->
             <span class="wh-rom">{wordRoman}</span>
@@ -2110,14 +2106,6 @@
         <span class="wh-acts">
           <!-- the other half of "pull up": once the sheet is open, the way back
                down is a button too, not only a swipe -->
-          {#if narrow && railDetent > 0}
-            <button
-              class="wh-act"
-              onclick={() => (railDetent = railDetent - 1)}
-              title="collapse"
-              aria-label="collapse the panel"
-            >↓</button>
-          {/if}
           {#if selWord}
             <!-- banking was the last button under a long column; it is the
                  word's own action, so it lives beside the word -->
@@ -2152,6 +2140,16 @@
               title={railWide ? 'narrow the rail' : 'widen the rail'}
               aria-label={railWide ? 'narrow the rail' : 'widen the rail'}
             >⤢</button>
+          {/if}
+          <!-- Up at peek, down once open: the grip and the head take the same
+               moves, and this is them as a button, for a thumb that would
+               rather tap. It sits last, where the eye ends the row. -->
+          {#if narrow && (selWord || railDetent > 0)}
+            {#if railDetent === 0}
+              <button class="wh-act wh-pull" onclick={() => (railDetent = 1)} title="open the panel" aria-label="open the panel"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 8 7 2l6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+            {:else}
+              <button class="wh-act wh-pull" onclick={() => (railDetent = railDetent - 1)} title="collapse" aria-label="collapse the panel"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+            {/if}
           {/if}
         </span>
       </div>
@@ -3656,11 +3654,18 @@
     .railframe.at-peek .railfoot {
       display: none;
     }
+    /*
+      PEEK is the one place the sheet's height is the word's, so every pixel
+      the head spends is a pixel of the line hidden behind it. Two rows, no
+      more: the word, its meaning and its actions; then its tags. The grip
+      above is thin, since the whole head is a handle too.
+    */
     .railframe.at-peek .wordhead {
       position: relative;
       border-bottom: none;
-      padding: 2px 18px 16px;
-      gap: 10px;
+      padding: 0 12px 10px 16px;
+      gap: 6px;
+      cursor: pointer;
     }
     /* the gloss rides on the top line at peek, and the legend has no room */
     .railframe.at-peek .wh-mean,
@@ -3668,21 +3673,19 @@
       display: none;
     }
     /*
-      One line at peek: the form, its gloss, the pull-up and ★ (and ✎). The
-      form never breaks mid-word — a long compound ends in an ellipsis, and the
-      gloss gives way before it does; the buttons keep their size. They used
-      to sit absolutely at the end of the tag row, which a word with few or no
-      tags does not have, and ★ landed on top of "pull up".
+      The form never breaks mid-word — a long compound ends in an ellipsis —
+      and the gloss takes whatever the form and the three small actions leave.
     */
     .railframe.at-peek .wh-top {
       flex-wrap: nowrap;
       align-items: center;
+      gap: 8px;
       min-width: 0;
     }
     .railframe.at-peek .wh-form {
-      font-size: 24px;
+      font-size: 22px;
       flex: 0 1 auto;
-      max-width: 45%;
+      max-width: 42%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -3691,41 +3694,59 @@
     .railframe.at-peek .wh-en.peek {
       flex: 1 1 0;
     }
-    .railframe.at-peek .wh-tags {
-      flex-wrap: nowrap;
-      overflow: hidden;
-    }
-    .railframe.at-peek .wh-acts {
-      margin-left: 0;
-    }
     .wh-en.peek {
-      font-size: 15.5px;
+      font-size: 15px;
       color: var(--ink-2);
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    /* it says "pull up", so it has to look like something you can press */
-    .wh-pull {
-      margin-left: auto;
+    /*
+      One line of tags, which scrolls sideways rather than wrapping: a sixth
+      tag costs nothing in height. The chips lose their padding here, not
+      their borders, so authored and derived still read apart.
+    */
+    .railframe.at-peek .wh-tags {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 4px;
+      margin-right: -12px;
+      padding-right: 12px;
+    }
+    .railframe.at-peek .wh-tags::-webkit-scrollbar {
+      display: none;
+    }
+    .railframe.at-peek .wh-tags .chip-btn {
       flex: none;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--ink-2);
-      background: var(--paper);
-      border: 1px solid var(--rule-2);
-      border-radius: var(--radius);
-      padding: 6px 9px;
-      cursor: pointer;
     }
-    .wh-pull:active {
-      border-color: var(--accent);
-      color: var(--accent);
+    .railframe.at-peek .wh-tags :global(.chip) {
+      padding: 0 6px;
+      line-height: 1.6;
     }
-    /* the whole head is the handle at peek, and says so */
-    .railframe.at-peek .wordhead {
-      cursor: pointer;
+    /*
+      The actions at peek are glyphs, not boxes: a 44px square drawn around ★
+      spent a fifth of the row on a border. The TARGET stays a thumb's width —
+      the button is 40px tall and 36 wide — only the drawing shrinks.
+    */
+    .railframe.at-peek .wh-acts {
+      margin-left: 0;
+      gap: 0;
+      margin-block: -8px;
+    }
+    .railframe.at-peek .wh-act {
+      width: 36px;
+      height: 40px;
+      border-color: transparent;
+      background: none;
+      font-size: 17px;
+    }
+    .railframe.at-peek .wh-act.on {
+      border-color: transparent;
+    }
+    .wh-pull {
+      font-size: 17px;
     }
 
     /* touch targets: a pointer is 1px, a thumb is 44 */
