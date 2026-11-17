@@ -2129,33 +2129,7 @@
     >
       <div class="wh-top">
         {#if selWord}
-          {#if selFused}
-            <!--
-              A word written as several padas (श्रद्धाविवेश is श्रद्धा + आविवेश)
-              names them here, in the word's own place: the one shown large,
-              the others a tap away. This used to be a block in the scrolling
-              middle, which the sheet's peek hides — so on the phone a fused
-              word showed its first pada and no way to the rest.
-            -->
-            {@const fusedTokens = tokensOf(list.find((x) => x.id === sel?.id))}
-            <span class="wh-form wh-split">
-              {#each selFused.from.filter((ti: number) => fusedTokens[ti]?.isWord) as ti, k}
-                {#if k > 0}<span class="wh-plus" aria-hidden="true">+</span>{/if}
-                {#if sel?.ti === ti}
-                  <span class="wh-pada on"><Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" /></span>
-                {:else}
-                  <button
-                    class="wh-pada"
-                    type="button"
-                    aria-label="show this pada"
-                    onclick={() => selectToken(sel!.id, ti)}
-                  ><Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" /></button>
-                {/if}
-              {/each}
-            </span>
-          {:else}
-            <span class="wh-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
-          {/if}
+          <span class="wh-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
           <!-- At peek the gloss rides on this line: the head is ~112px, and the
                word without its meaning is not worth the space. -->
           {#if narrow && railDetent === 0}
@@ -2232,7 +2206,7 @@
           {/if}
         </div>
         <!-- (a text's word may carry only vidyut's tags, which are derived) -->
-        {#if selWord.terms.length || (textMode && selWord.derivedTerms.length)}
+        {#if selFused || selWord.terms.length || (textMode && selWord.derivedTerms.length)}
           <!--
             Newness is a DOT on the tag, not a block of its own.
 
@@ -2243,6 +2217,29 @@
             about, and the tag is already the way into the term's note.
           -->
           <div class="wh-tags">
+            {#if selFused}
+              <!--
+                A word written as several padas (बहूनामेमि is बहूनाम् + एमि)
+                is shown here as what it is: the written word, cut into its
+                padas, the one in the head filled. It used to stand in the
+                head's own place, the shown pada large and the rest beside
+                it — which put the gloss after the LAST pada, so "of many"
+                read as the meaning of एमि. The head now names one pada and
+                its meaning, as for any word; this switches between them.
+              -->
+              {@const fusedTokens = tokensOf(list.find((x) => x.id === sel?.id))}
+              <span class="wh-padas" role="group" aria-label="the padas of this written word">
+                {#each selFused.from.filter((ti: number) => fusedTokens[ti]?.isWord) as ti}
+                  <button
+                    class="wh-pada"
+                    class:on={sel?.ti === ti}
+                    type="button"
+                    aria-pressed={sel?.ti === ti}
+                    onclick={() => sel?.ti !== ti && selectToken(sel!.id, ti)}
+                  ><Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" /></button>
+                {/each}
+              </span>
+            {/if}
             {#each selWord.terms as t}
               <button
                 class="chip-btn"
@@ -3807,18 +3804,8 @@
     .railframe.at-peek .wh-en.peek {
       flex: 1 1 0;
     }
-    /* a fused word's padas get more of the line than one form, and scroll
-       sideways rather than end in an ellipsis that would hide a button */
-    .railframe.at-peek .wh-form.wh-split {
-      max-width: 62%;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      text-overflow: clip;
-      scrollbar-width: none;
-    }
-    .railframe.at-peek button.wh-pada {
-      flex: none;
-      padding: 5px 9px;
+    .railframe.at-peek .wh-pada {
+      padding: 4px 10px;
     }
     .wh-en.peek {
       font-size: 15px;
@@ -3986,36 +3973,32 @@
     display: block;
     padding: 4px 0 12px;
   }
-  /* a fused word in the head: the shown pada large, the others small buttons */
-  .wh-split {
+  /* a fused word's padas: one control, the written word cut where it joins */
+  .wh-padas {
+    flex: none;
     display: inline-flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    column-gap: 6px;
-  }
-  .wh-plus {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--faint);
+    margin-right: 6px;
+    border: 1px solid var(--ink-2);
+    border-radius: var(--radius);
+    overflow: hidden;
   }
   .wh-pada {
-    font: inherit;
-    color: inherit;
-  }
-  button.wh-pada {
-    font-size: 0.62em;
-    font-weight: 400;
+    font-family: var(--font-deva);
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 2px 9px;
     color: var(--ink-2);
     background: var(--paper);
-    border: 1px solid var(--rule-2);
-    border-radius: var(--radius);
-    padding: 1px 7px;
+    border: none;
     cursor: pointer;
   }
-  button.wh-pada:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+  .wh-pada + .wh-pada {
+    border-left: 1px solid var(--ink-2);
+  }
+  .wh-pada.on {
+    background: var(--ink);
+    color: var(--paper);
+    cursor: default;
   }
   .tnote {
     margin: 0;
