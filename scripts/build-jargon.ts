@@ -21,8 +21,9 @@ const CATEGORIES = new Set([
   'sandhi', 'lakara', 'gana', 'samasa', 'phonetics', 'general',
 ]);
 
+type Cite = { s: number; why?: string; title?: string; href?: string };
 type Entry = { termRoman: string; category: string; meaning: string; sutraRef?: string; related?: string[] };
-type Term = Entry & { term: string };
+type Term = Entry & { term: string; kale?: Cite[]; apte?: Cite[] };
 
 const root = parseYaml(fs.readFileSync(SRC, 'utf-8')) as Record<string, Entry | Entry[]>;
 
@@ -44,6 +45,53 @@ for (const [term, value] of Object.entries(root)) {
   }
 }
 
+/*
+  Where else to read about a term, besides its sūtra: the sections of Kāle's
+  grammar and of Apte's Student's Guide that treat it. Both maps are authored
+  (content/grammar-refs/), hand-checked against the books; here they are only
+  joined to the glossary, with each section's title, so the note can name it.
+  A section that does not exist in the book is a fatal problem, not a dead link.
+*/
+const REFS = path.join(process.cwd(), 'content/grammar-refs');
+const readRefs = (f: string): Record<string, Cite[]> =>
+  fs.existsSync(path.join(REFS, f)) ? (parseYaml(fs.readFileSync(path.join(REFS, f), 'utf-8')) ?? {}) : {};
+
+const kaleBook = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'static/data/dukrnkarane.json'), 'utf-8'));
+const kaleTitle = new Map<number, string>(kaleBook.rules.map((r: any) => [r.n, r.title]));
+
+const APTE = path.join(process.cwd(), 'content/apte');
+const apteSource = fs.existsSync(path.join(APTE, 'source.yaml')) ? parseYaml(fs.readFileSync(path.join(APTE, 'source.yaml'), 'utf-8')) : null;
+const apteSections: { n: number; title: string; leaf?: number }[] =
+  fs.existsSync(path.join(APTE, 'sections.yaml')) ? parseYaml(fs.readFileSync(path.join(APTE, 'sections.yaml'), 'utf-8')) ?? [] : [];
+const apteBy = new Map(apteSections.map((x) => [Number(x.n), x]));
+const apteHref = (leaf?: number) =>
+  apteSource?.identifier && leaf != null ? `https://archive.org/details/${apteSource.identifier}/page/n${leaf}/mode/1up` : undefined;
+
+const byTerm = new Map<string, Term[]>();
+for (const t of terms) byTerm.set(t.term, [...(byTerm.get(t.term) ?? []), t]);
+const attach = (book: 'kale' | 'apte', refs: Record<string, Cite[]>) => {
+  for (const [term, cites] of Object.entries(refs)) {
+    const ts = byTerm.get(term);
+    if (!ts) { warnings.push(`${book}: ${term} is not a glossary headword`); continue; }
+    const out: Cite[] = [];
+    for (const c of cites ?? []) {
+      const s = Number(c.s);
+      if (book === 'kale') {
+        if (!kaleTitle.has(s)) { problems.push(`kale: ${term} cites § ${s}, which the book does not have`); continue; }
+        out.push({ s, title: kaleTitle.get(s), ...(c.why ? { why: c.why } : {}) });
+      } else {
+        const sec = apteBy.get(s);
+        if (!sec) { problems.push(`apte: ${term} cites § ${s}, which content/apte/sections.yaml does not index`); continue; }
+        const href = apteHref(sec.leaf);
+        out.push({ s, title: sec.title, ...(c.why ? { why: c.why } : {}), ...(href ? { href } : {}) });
+      }
+    }
+    if (out.length) for (const t of ts) t[book] = out;
+  }
+};
+attach('kale', readRefs('kale.yaml'));
+attach('apte', readRefs('apte.yaml'));
+
 if (problems.length) {
   console.error(`  jargon: ${problems.length} problem(s):`);
   for (const p of problems.slice(0, 30)) console.error(`    ${p}`);
@@ -55,4 +103,5 @@ if (warnings.length) {
 
 fs.writeFileSync(OUT, JSON.stringify({ terms }, null, 2) + '\n', 'utf-8');
 const headwords = Object.keys(root).length;
-console.log(`  jargon: ${terms.length} terms across ${headwords} headwords → ${path.relative(process.cwd(), OUT)}`);
+const cited = (b: 'kale' | 'apte') => terms.filter((t) => t[b]).length;
+console.log(`  jargon: ${terms.length} terms across ${headwords} headwords (Kāle cited on ${cited('kale')}, Apte on ${cited('apte')}) → ${path.relative(process.cwd(), OUT)}`);

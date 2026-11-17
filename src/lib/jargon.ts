@@ -17,7 +17,15 @@ export interface Term {
   sutraRef?: string;  // Defining sūtra if applicable
   category: TermCategory;
   related?: string[]; // Related terms (by termRoman)
+  /** Kāle's sections on the term (content/grammar-refs/kale.yaml) */
+  kale?: BookCite[];
+  /** Apte's Student's Guide sections on it (content/grammar-refs/apte.yaml) */
+  apte?: BookCite[];
 }
+
+/** A section of a grammar book that treats a term: its number, its title,
+ *  why it was chosen, and (for a book read off-site) where the scan is. */
+export interface BookCite { s: number; title?: string; why?: string; href?: string }
 
 export type TermCategory =
   | "samjna"      // Technical names

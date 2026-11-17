@@ -16,7 +16,7 @@
   import { systemForTerm, systemsForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
-  import { displayScript, authoringMode } from '$lib/stores/preferences';
+  import { displayScript, authoringMode, romanAside } from '$lib/stores/preferences';
   import { transliterate } from '$lib/transliteration';
   import { isNarrow } from '$lib/stores/viewport';
   import { editModal } from '$lib/stores/editModal';
@@ -2284,15 +2284,45 @@
             {#if termInfo}
               <div class="concept-head">
                 <Sanskrit text={termInfo.term} source="devanagari" />
-                <span class="concept-rom">{termInfo.termRoman}</span>
+                {#if $romanAside}<span class="concept-rom">{termInfo.termRoman}</span>{/if}
               </div>
               <div class="concept-body">
                 <InlineMarkup text={termInfo.meaning} autoLink onpick={(t) => (openTerm = t)} />
               </div>
-              {#if termInfo.sutraRef}
-                <a class="concept-ref" href={`/ref/${termInfo.sutraRef}`}
-                  ><Sanskrit text="सूत्र" source="devanagari" /> {termInfo.sutraRef} →</a
-                >
+              {#if termInfo.sutraRef || termInfo.kale?.length || termInfo.apte?.length}
+                <!--
+                  Where to read more, one book a line: Pāṇini's rule, then the
+                  two grammars that explain it in prose — Kāle's (on this site,
+                  /grammar) and Apte's Student's Guide (the scan, off-site),
+                  which is the gentler of the two. Each names its section, so
+                  the reader knows what a link opens before opening it.
+                -->
+                <dl class="cites">
+                  {#if termInfo.sutraRef}
+                    <dt>Pāṇini</dt>
+                    <dd><a href={`/ref/${termInfo.sutraRef}`}>{termInfo.sutraRef}</a></dd>
+                  {/if}
+                  {#if termInfo.kale?.length}
+                    <dt>Kāle</dt>
+                    <dd>
+                      {#each termInfo.kale as c}
+                        <a href={`/grammar?s=${c.s}`} title={c.why ?? ''}>§ {c.s}<span class="cite-t"><InlineMarkup text={c.title ?? ''} /></span></a>
+                      {/each}
+                    </dd>
+                  {/if}
+                  {#if termInfo.apte?.length}
+                    <dt>Apte</dt>
+                    <dd>
+                      {#each termInfo.apte as c}
+                        {#if c.href}
+                          <a href={c.href} target="_blank" rel="noopener" title={c.why ?? ''}>§ {c.s}<span class="cite-t">{c.title}</span><span class="ext" aria-label="opens the scan">↗</span></a>
+                        {:else}
+                          <span title={c.why ?? ''}>§ {c.s}<span class="cite-t">{c.title}</span></span>
+                        {/if}
+                      {/each}
+                    </dd>
+                  {/if}
+                </dl>
               {/if}
             {:else if !termNote}
               <div class="concept-body concept-empty">
@@ -3560,16 +3590,48 @@
     margin-bottom: 8px;
     border-bottom: 1px solid var(--rule);
   }
-  .concept-ref {
-    display: inline-block;
-    margin-top: 6px;
+  /* where to read more: the book in a narrow mono column, its sections beside */
+  .cites {
+    margin: 10px 0 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 12px;
+    row-gap: 6px;
+    align-items: baseline;
+  }
+  .cites dt {
     font-family: var(--font-mono);
     font-size: 11px;
+    color: var(--quiet);
+  }
+  .cites dd {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+  .cites a,
+  .cites dd > span {
+    font-family: var(--font-mono);
+    font-size: 12px;
     color: var(--accent-ref);
     text-decoration: none;
   }
-  .concept-ref:hover {
+  .cites a:hover {
     text-decoration: underline;
+  }
+  .cite-t {
+    margin-left: 8px;
+    font-family: var(--font-prose);
+    font-size: 13.5px;
+    color: var(--ink-2);
+  }
+  .cites .ext {
+    margin-left: 4px;
+    font-size: 11px;
   }
 
   /* a tag with more than one home says so, rather than the rail picking one */
