@@ -11,6 +11,7 @@
   import { page } from '$app/stores';
   import { replaceState } from '$app/navigation';
   import { wordBank, type WordEntry } from '$lib/stores/wordBank';
+  import { dataUrl } from '$lib/dataUrl';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Shell from '$lib/components/ui/Shell.svelte';
   import Shelf from '$lib/components/ui/Shelf.svelte';
@@ -102,17 +103,38 @@
     return `https://ambuda.org/tools/dictionaries/mw/${encodeURIComponent(stem)}`;
   }
 
+  /*
+    Where a word was kept. A bālabodhinī lesson is "1.5"; a graded reading, its
+    id; a text, its English title and the section. Words starred in the reader
+    before the source was a reading's id kept the word's own index instead,
+    which names nothing ("1"), so those say only "reader".
+  */
+  let textTitles = $state<Record<string, string>>({});
+  onMount(async () => {
+    if (!allWords.some((w) => w.lessonId.startsWith('text:'))) return;
+    try {
+      const idx: { id: string; title_en: string }[] = await (await fetch(dataUrl('/data/texts/index.json'))).json();
+      textTitles = Object.fromEntries(idx.map((t) => [t.id, t.title_en]));
+    } catch { /* the id will do */ }
+  });
+  const READING_ID = /^[a-z][\w-]*\d/i;
+
   function lessonLabel(lessonId: string): string {
     const m = lessonId.match(/balabodhini-(\d+)-(\d+)/);
     if (m) return `${m[1]}.${parseInt(m[2])}`;
+    const t = lessonId.match(/^text:([^:]+):([^:]+):(.+)$/);
+    if (t) return `${textTitles[t[1]] ?? t[1]} § ${t[3]}`;
     const r = lessonId.match(/^reader:(.+)$/);
-    if (r) return r[1];
+    if (r) return READING_ID.test(r[1]) ? r[1] : 'reader';
     return lessonId;
   }
 
   function lessonHref(lessonId: string): string {
+    const t = lessonId.match(/^text:([^:]+):([^:]+):(.+)$/);
+    if (t) return `/reader/text/${t[1]}?part=${encodeURIComponent(t[2])}&section=${encodeURIComponent(t[3])}`;
     const r = lessonId.match(/^reader:(.+)$/);
-    return r ? `/reader?reading=${r[1]}` : `/workbook/${lessonId}`;
+    if (r) return READING_ID.test(r[1]) ? `/reader?reading=${r[1]}` : '/reader';
+    return `/workbook/${lessonId}`;
   }
 </script>
 

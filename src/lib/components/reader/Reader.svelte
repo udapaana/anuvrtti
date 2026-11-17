@@ -189,6 +189,10 @@
     // ?part=… names a part to open at its start (a link, or a retired text)
     const asked = $appPage.url.searchParams.get('part');
     if (asked && m.parts.some((p: PartMeta) => p.id === asked)) at = { part: asked, s: 0 };
+    // …and ?section=… a section in it (a word kept in the deck links back here)
+    const askedSec = $appPage.url.searchParams.get('section');
+    const inPart = m.parts.find((p: PartMeta) => p.id === at.part);
+    if (asked && askedSec && inPart) at.s = Math.max(0, inPart.sections.indexOf(askedSec));
     loaded = true;
     await openPart(Math.max(0, m.parts.findIndex((p: PartMeta) => p.id === at.part)), at.s);
   }
@@ -1300,7 +1304,12 @@
       iast: null,
       englishGloss: w.gloss,
       tag: w.terms.map((t: any) => t.term).join(' '),
-      sourceId: 'reader:' + w.id
+      // where it was met, so the deck can name the place and link back: the
+      // reading's id (not the word's own index, which is what it once kept),
+      // or a text's part and section
+      sourceId: textMode && tMeta && tPartMeta
+        ? `text:${tMeta.id}:${tPartMeta.id}:${sel!.id}`
+        : 'reader:' + sel!.id
     });
     inDeck = true;
   }
