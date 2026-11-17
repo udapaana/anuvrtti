@@ -12,7 +12,7 @@
   import Chip from '$lib/components/ui/Chip.svelte';
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
   import SystemCard from '$lib/components/SystemCard.svelte';
-  import { lookupTerm } from '$lib/jargon';
+  import { lookupTerm, citesFor } from '$lib/jargon';
   import { systemForTerm, systemsForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
@@ -743,6 +743,7 @@
   let openTerm = $state<string | null>(null);
   $effect(() => { sel; openTerm = null; });
   const termInfo = $derived(openTerm ? lookupTerm(openTerm) : null);
+  const termCites = $derived(openTerm ? citesFor(openTerm) : null);
   /*
     What the author wrote about THIS tag on THIS word — "शी is आत्मनेपदी, the
     ending is ते, not ति". 4,582 such notes were authored and none was shown:
@@ -2308,45 +2309,46 @@
               <div class="concept-body">
                 <InlineMarkup text={termInfo.meaning} autoLink onpick={(t) => (openTerm = t)} />
               </div>
-              {#if termInfo.sutraRef || termInfo.kale?.length || termInfo.apte?.length}
-                <!--
-                  Where to read more, one book a line: Pāṇini's rule, then the
-                  two grammars that explain it in prose — Kāle's (on this site,
-                  /grammar) and Apte's Student's Guide (the scan, off-site),
-                  which is the gentler of the two. Each names its section, so
-                  the reader knows what a link opens before opening it.
-                -->
-                <dl class="cites">
-                  {#if termInfo.sutraRef}
-                    <dt>Pāṇini</dt>
-                    <dd><a href={`/ref/${termInfo.sutraRef}`}>{termInfo.sutraRef}</a></dd>
-                  {/if}
-                  {#if termInfo.kale?.length}
-                    <dt>Kāle</dt>
-                    <dd>
-                      {#each termInfo.kale as c}
-                        <a href={`/grammar?s=${c.s}`} title={c.why ?? ''}>§ {c.s}<span class="cite-t"><InlineMarkup text={c.title ?? ''} /></span></a>
-                      {/each}
-                    </dd>
-                  {/if}
-                  {#if termInfo.apte?.length}
-                    <dt>Apte</dt>
-                    <dd>
-                      {#each termInfo.apte as c}
-                        {#if c.href}
-                          <a href={c.href} target="_blank" rel="noopener" title={c.why ?? ''}>§ {c.s}<span class="cite-t">{c.title}</span><span class="ext" aria-label="opens the scan">↗</span></a>
-                        {:else}
-                          <span title={c.why ?? ''}>§ {c.s}<span class="cite-t">{c.title}</span></span>
-                        {/if}
-                      {/each}
-                    </dd>
-                  {/if}
-                </dl>
-              {/if}
+
             {:else if !termNote}
               <div class="concept-body concept-empty">
                 No glossary note yet for <Sanskrit text={openTerm} source="devanagari" />.
               </div>
+            {/if}
+            {#if termInfo?.sutraRef || termCites?.kale?.length || termCites?.apte?.length}
+              <!--
+                Where to read more, one book a line: Pāṇini's rule, then the
+                two grammars that explain it in prose — Kāle's (on this site,
+                /grammar) and Apte's Student's Guide (the scan, off-site),
+                which is the gentler of the two. Each names its section, so
+                the reader knows what a link opens before opening it.
+              -->
+              <dl class="readmore">
+                  {#if termCites?.apte?.length}
+                  <dt>Apte</dt>
+                  <dd>
+                    {#each termCites.apte as c}
+                      {#if c.href}
+                        <a href={c.href} target="_blank" rel="noopener" title={c.why ?? ''}><span class="cite-n"><span class="sec">§</span>{c.s}</span><span class="cite-t">{c.title}<span class="ext" aria-label="opens the scan"> ↗</span></span></a>
+                      {:else}
+                        <span title={c.why ?? ''}><span class="cite-n"><span class="sec">§</span>{c.s}</span><span class="cite-t">{c.title}</span></span>
+                      {/if}
+                    {/each}
+                  </dd>
+                {/if}
+                  {#if termCites?.kale?.length}
+                  <dt>Kāle</dt>
+                  <dd>
+                    {#each termCites.kale as c}
+                      <a href={`/grammar?s=${c.s}`} title={c.why ?? ''}><span class="cite-n"><span class="sec">§</span>{c.s}</span><span class="cite-t"><InlineMarkup text={c.title ?? ''} /></span></a>
+                    {/each}
+                  </dd>
+                {/if}
+                  {#if termInfo?.sutraRef}
+                  <dt>Pāṇini</dt>
+                  <dd><a class="sutra" href={`/ref/${termInfo.sutraRef}`}><span class="cite-n">{termInfo.sutraRef}</span></a></dd>
+                {/if}
+                </dl>
             {/if}
           </div>
           {#if openSystem}
@@ -3610,7 +3612,7 @@
     border-bottom: 1px solid var(--rule);
   }
   /* where to read more: the book in a narrow mono column, its sections beside */
-  .cites {
+  .readmore {
     margin: 10px 0 0;
     padding-top: 8px;
     border-top: 1px solid var(--rule);
@@ -3620,37 +3622,52 @@
     row-gap: 6px;
     align-items: baseline;
   }
-  .cites dt {
+  .readmore dt {
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--quiet);
   }
-  .cites dd {
+  .readmore dd {
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 3px;
     min-width: 0;
   }
-  .cites a,
-  .cites dd > span {
+  /* one citation: the number in a fixed column, the title wrapping beside it */
+  .readmore a,
+  .readmore dd > span {
+    display: grid;
+    grid-template-columns: 3.4em minmax(0, 1fr);
+    align-items: baseline;
+    text-decoration: none;
+  }
+  .cite-n {
     font-family: var(--font-mono);
     font-size: 12px;
     color: var(--accent-ref);
-    text-decoration: none;
   }
-  .cites a:hover {
+  .cite-n .sec {
+    font-family: var(--font-prose);
+    font-size: 13px;
+    margin-right: 2px;
+  }
+  .readmore a.sutra {
+    display: inline;
+  }
+  .readmore a:hover .cite-t,
+  .readmore a.sutra:hover .cite-n {
     text-decoration: underline;
   }
   .cite-t {
-    margin-left: 8px;
     font-family: var(--font-prose);
-    font-size: 13.5px;
+    font-size: 14px;
+    line-height: 1.35;
     color: var(--ink-2);
   }
-  .cites .ext {
-    margin-left: 4px;
+  .readmore .ext {
     font-size: 11px;
+    color: var(--accent-ref);
   }
 
   /* a tag with more than one home says so, rather than the rail picking one */

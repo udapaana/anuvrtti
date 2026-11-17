@@ -23,7 +23,7 @@ const CATEGORIES = new Set([
 
 type Cite = { s: number; why?: string; title?: string; href?: string };
 type Entry = { termRoman: string; category: string; meaning: string; sutraRef?: string; related?: string[] };
-type Term = Entry & { term: string; kale?: Cite[]; apte?: Cite[] };
+type Term = Entry & { term: string };
 
 const root = parseYaml(fs.readFileSync(SRC, 'utf-8')) as Record<string, Entry | Entry[]>;
 
@@ -67,14 +67,13 @@ const apteBy = new Map(apteSections.map((x) => [Number(x.n), x]));
 const apteHref = (leaf?: number) =>
   apteSource?.identifier && leaf != null ? `https://archive.org/details/${apteSource.identifier}/page/n${leaf}/mode/1up` : undefined;
 
-const byTerm = new Map<string, Term[]>();
-for (const t of terms) byTerm.set(t.term, [...(byTerm.get(t.term) ?? []), t]);
+// keyed by the TAG, not the glossary entry: a tag with no glossary note yet
+// (a root, an ending) still has its sections in the books
+const cites: Record<string, { kale?: Cite[]; apte?: Cite[] }> = {};
 const attach = (book: 'kale' | 'apte', refs: Record<string, Cite[]>) => {
-  for (const [term, cites] of Object.entries(refs)) {
-    const ts = byTerm.get(term);
-    if (!ts) { warnings.push(`${book}: ${term} is not a glossary headword`); continue; }
+  for (const [term, list] of Object.entries(refs)) {
     const out: Cite[] = [];
-    for (const c of cites ?? []) {
+    for (const c of list ?? []) {
       const s = Number(c.s);
       if (book === 'kale') {
         if (!kaleTitle.has(s)) { problems.push(`kale: ${term} cites § ${s}, which the book does not have`); continue; }
@@ -86,7 +85,7 @@ const attach = (book: 'kale' | 'apte', refs: Record<string, Cite[]>) => {
         out.push({ s, title: sec.title, ...(c.why ? { why: c.why } : {}), ...(href ? { href } : {}) });
       }
     }
-    if (out.length) for (const t of ts) t[book] = out;
+    if (out.length) (cites[term] ??= {})[book] = out;
   }
 };
 attach('kale', readRefs('kale.yaml'));
@@ -101,7 +100,7 @@ if (warnings.length) {
   console.warn(`  jargon: ${warnings.length} warning(s): ${warnings.slice(0, 6).join('; ')}${warnings.length > 6 ? ' …' : ''}`);
 }
 
-fs.writeFileSync(OUT, JSON.stringify({ terms }, null, 2) + '\n', 'utf-8');
+fs.writeFileSync(OUT, JSON.stringify({ terms, cites }, null, 2) + '\n', 'utf-8');
 const headwords = Object.keys(root).length;
-const cited = (b: 'kale' | 'apte') => terms.filter((t) => t[b]).length;
-console.log(`  jargon: ${terms.length} terms across ${headwords} headwords (Kāle cited on ${cited('kale')}, Apte on ${cited('apte')}) → ${path.relative(process.cwd(), OUT)}`);
+const cited = (b: 'kale' | 'apte') => Object.values(cites).filter((c) => c[b]).length;
+console.log(`  jargon: ${terms.length} terms across ${headwords} headwords (tags citing Kāle: ${cited('kale')}, Apte: ${cited('apte')}) → ${path.relative(process.cwd(), OUT)}`);

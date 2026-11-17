@@ -17,10 +17,6 @@ export interface Term {
   sutraRef?: string;  // Defining sūtra if applicable
   category: TermCategory;
   related?: string[]; // Related terms (by termRoman)
-  /** Kāle's sections on the term (content/grammar-refs/kale.yaml) */
-  kale?: BookCite[];
-  /** Apte's Student's Guide sections on it (content/grammar-refs/apte.yaml) */
-  apte?: BookCite[];
 }
 
 /** A section of a grammar book that treats a term: its number, its title,
@@ -41,6 +37,15 @@ export type TermCategory =
   | "general";    // General terms
 
 export const terms: Term[] = (jargonData as { terms: Term[] }).terms;
+
+/** Where the grammars treat a tag: Kāle's sections and Apte's (the authored
+ *  maps in content/grammar-refs/). Keyed by the tag, so a tag with no
+ *  glossary note of its own still has its reading. */
+export type BookCites = { kale?: BookCite[]; apte?: BookCite[] };
+const citeIndex = (jargonData as { cites?: Record<string, BookCites> }).cites ?? {};
+export function citesFor(tag: string): BookCites | null {
+  return citeIndex[tag] ?? null;
+}
 
 // Build search index
 const termIndex = new Map<string, Term>();
