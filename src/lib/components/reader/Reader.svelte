@@ -2182,18 +2182,13 @@
           {/if}
           <!--
             The sheet's three heights as buttons: ⌃ raises it one, ⌄ lowers it
-            one, and each shows only where there is somewhere to go — so the
-            middle height has both, and the full sheet can be reached by
-            pressing, not only by a swipe. They sit last, where the eye ends
-            the row.
+            one. Both are always there, the one with nowhere to go greyed out,
+            so neither moves as the sheet does — ⌃ is always under the same
+            thumb. They sit last, where the eye ends the row.
           -->
           {#if narrow && (selWord || railDetent > 0)}
-            {#if railDetent < RAIL_TOP}
-              <button class="wh-act wh-pull" onclick={() => (railDetent = railDetent + 1)} title={railDetent === 0 ? 'open the panel' : 'open it fully'} aria-label={railDetent === 0 ? 'open the panel' : 'open the panel fully'}><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 8 7 2l6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
-            {/if}
-            {#if railDetent > 0}
-              <button class="wh-act wh-pull" onclick={() => (railDetent = railDetent - 1)} title="lower the panel" aria-label="lower the panel"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
-            {/if}
+            <button class="wh-act wh-pull" disabled={railDetent >= RAIL_TOP} onclick={() => (railDetent = Math.min(RAIL_TOP, railDetent + 1))} title={railDetent === 0 ? 'open the panel' : 'open it fully'} aria-label={railDetent === 0 ? 'open the panel' : 'open the panel fully'}><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 8 7 2l6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+            <button class="wh-act wh-pull" disabled={railDetent <= 0} onclick={() => (railDetent = Math.max(0, railDetent - 1))} title="lower the panel" aria-label="lower the panel"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
           {/if}
         </span>
       </div>
@@ -3773,7 +3768,8 @@
     .railframe.at-peek .wordhead {
       position: relative;
       border-bottom: none;
-      padding: 10px 12px 10px 16px;
+      /* the same side padding as the open sheet, so ⌃ ⌄ do not shift */
+      padding: 10px 18px;
       gap: 6px;
       cursor: pointer;
     }
@@ -3825,8 +3821,8 @@
       overflow-x: auto;
       scrollbar-width: none;
       gap: 4px;
-      margin-right: -12px;
-      padding-right: 12px;
+      margin-right: -18px;
+      padding-right: 18px;
     }
     .railframe.at-peek .wh-tags::-webkit-scrollbar {
       display: none;
@@ -3859,6 +3855,10 @@
     }
     .railframe.sheeted .wh-act.on {
       border-color: transparent;
+    }
+    .railframe.sheeted .wh-act:disabled {
+      color: var(--ghost);
+      cursor: default;
     }
     .railframe.sheeted .wh-acts {
       gap: 0;
