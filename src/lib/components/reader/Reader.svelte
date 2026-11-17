@@ -1292,6 +1292,8 @@
   function bankWord() {
     const w = selWord;
     if (!w) return;
+    // a second press takes the word back out of the deck
+    if (wordBank.has('rdr:' + w.form)) { wordBank.removeWord('rdr:' + w.form); inDeck = false; return; }
     wordBank.addWord({
       id: 'rdr:' + w.form,
       display: w.form,
@@ -2123,9 +2125,9 @@
               class="wh-act"
               class:on={inDeck}
               onclick={bankWord}
-              disabled={inDeck}
-              title={inDeck ? 'in your deck' : 'keep for review'}
-              aria-label={inDeck ? 'in your deck' : 'keep for review'}
+              aria-pressed={inDeck}
+              title={inDeck ? 'in your deck — press again to remove it' : 'keep for review'}
+              aria-label={inDeck ? 'in your deck; press to remove' : 'keep for review'}
             >★</button>
             {#if selFile}
               <!-- The rail is where a wrong tag is visible, so it is where the

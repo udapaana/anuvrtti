@@ -187,6 +187,7 @@
             {#if ambudaUrl(w)}
               <a href={ambudaUrl(w)!} target="_blank" rel="noopener" title="Monier-Williams">MW</a>
             {/if}
+            <button class="drop" onclick={() => wordBank.removeWord(w.id)} title="remove from your deck" aria-label={`remove ${w.display} from your deck`}>×</button>
           </span>
         </div>
       {/each}
@@ -219,6 +220,7 @@
               {#if ambudaUrl(w)}
                 <a href={ambudaUrl(w)!} target="_blank" rel="noopener" title="Monier-Williams">MW</a>
               {/if}
+              <button class="drop" onclick={() => wordBank.removeWord(w.id)} title="remove from your deck" aria-label={`remove ${w.display} from your deck`}>×</button>
             </span>
           </div>
         {/each}
@@ -232,6 +234,12 @@
 </Shell>
 
 <style>
+  .dict { display: flex; gap: 10px; justify-content: flex-end; align-items: baseline; }
+  .drop {
+    background: none; border: none; padding: 0 2px; cursor: pointer;
+    font-size: 16px; line-height: 1; color: var(--faint);
+  }
+  .drop:hover, .drop:focus-visible { color: var(--accent); }
   .quiet {
     color: var(--faint);
   }
@@ -281,7 +289,7 @@
   }
   .deck-head {
     display: grid;
-    grid-template-columns: minmax(7rem, 2fr) minmax(0, 3fr) 5rem 2.5rem;
+    grid-template-columns: minmax(7rem, 2fr) minmax(0, 3fr) 5rem 4rem;
     gap: 14px;
     font-family: var(--font-mono);
     font-size: 11px;
@@ -375,7 +383,7 @@
       display: none;
     }
     .row {
-      grid-template-columns: minmax(0, 1fr) 2.5rem;
+      grid-template-columns: minmax(0, 1fr) 4rem;
     }
     .gloss {
       grid-column: 1 / -1;

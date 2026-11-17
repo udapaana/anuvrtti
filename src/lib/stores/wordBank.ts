@@ -112,6 +112,11 @@ function createWordBank() {
       });
     },
 
+    /** Take a word out of the deck, its review history with it. */
+    removeWord(id: string) {
+      update(state => ({ ...state, words: state.words.filter(w => w.id !== id) }));
+    },
+
     /** Is this word already banked? */
     has(id: string): boolean {
       let state: WordBankState = defaultState;
