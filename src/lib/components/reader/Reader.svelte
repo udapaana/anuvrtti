@@ -2201,7 +2201,30 @@
           {/if}
         </div>
         <!-- (a text's word may carry only vidyut's tags, which are derived) -->
-        {#if selFused || selWord.terms.length || (textMode && selWord.derivedTerms.length)}
+          {#if selFused}
+            <!--
+              A word written as several padas (बहूनामेमि is बहूनाम् + एमि)
+              gets a line of its own, above the tags: the written word, cut
+              into its padas, the one in the head filled. It used to stand in the
+              head's own place, the shown pada large and the rest beside
+              it — which put the gloss after the LAST pada, so "of many"
+              read as the meaning of एमि. The head now names one pada and
+              its meaning, as for any word; this switches between them.
+            -->
+            {@const fusedTokens = tokensOf(list.find((x) => x.id === sel?.id))}
+            <div class="wh-padas" role="group" aria-label="the padas of this written word">
+              {#each selFused.from.filter((ti: number) => fusedTokens[ti]?.isWord) as ti}
+                <button
+                  class="wh-pada"
+                  class:on={sel?.ti === ti}
+                  type="button"
+                  aria-pressed={sel?.ti === ti}
+                  onclick={() => sel?.ti !== ti && selectToken(sel!.id, ti)}
+                ><Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" /></button>
+              {/each}
+            </div>
+          {/if}
+        {#if selWord.terms.length || (textMode && selWord.derivedTerms.length)}
           <!--
             Newness is a DOT on the tag, not a block of its own.
 
@@ -2212,29 +2235,6 @@
             about, and the tag is already the way into the term's note.
           -->
           <div class="wh-tags">
-            {#if selFused}
-              <!--
-                A word written as several padas (बहूनामेमि is बहूनाम् + एमि)
-                is shown here as what it is: the written word, cut into its
-                padas, the one in the head filled. It used to stand in the
-                head's own place, the shown pada large and the rest beside
-                it — which put the gloss after the LAST pada, so "of many"
-                read as the meaning of एमि. The head now names one pada and
-                its meaning, as for any word; this switches between them.
-              -->
-              {@const fusedTokens = tokensOf(list.find((x) => x.id === sel?.id))}
-              <span class="wh-padas" role="group" aria-label="the padas of this written word">
-                {#each selFused.from.filter((ti: number) => fusedTokens[ti]?.isWord) as ti}
-                  <button
-                    class="wh-pada"
-                    class:on={sel?.ti === ti}
-                    type="button"
-                    aria-pressed={sel?.ti === ti}
-                    onclick={() => sel?.ti !== ti && selectToken(sel!.id, ti)}
-                  ><Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" /></button>
-                {/each}
-              </span>
-            {/if}
             {#each selWord.terms as t}
               <button
                 class="chip-btn"
@@ -3975,14 +3975,20 @@
   }
   /* a fused word's padas: one control, the written word cut where it joins */
   .wh-padas {
-    flex: none;
-    display: inline-flex;
-    margin-right: 6px;
+    display: flex;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
     border: 1px solid var(--ink-2);
     border-radius: var(--radius);
     overflow: hidden;
   }
+  .wh-padas::-webkit-scrollbar {
+    display: none;
+  }
   .wh-pada {
+    flex: none;
     font-family: var(--font-deva);
     font-size: 13px;
     line-height: 1.5;
