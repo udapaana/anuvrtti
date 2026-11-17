@@ -34,6 +34,10 @@
     label = 'panel',
     /** Called when the scrim is tapped or Escape is pressed. */
     ondismiss,
+    /** Draw the grip. A sheet whose content carries its own controls for
+        every detent (the reader's word head: ⌃ ⌄ and vertical swipes) has
+        no use for a grey bar that does the same thing without saying so. */
+    grip = true,
     children
   }: {
     detents?: string[];
@@ -41,6 +45,7 @@
     scrim?: boolean;
     label?: string;
     ondismiss?: () => void;
+    grip?: boolean;
     children: Snippet;
   } = $props();
 
@@ -140,6 +145,7 @@
 <div class="sheet" class:dragging style="height:{height}">
   <!-- The grip is the whole gesture surface, not just the 38px bar: a 4px line
        is a target you miss. -->
+  {#if grip}
   <div
     class="grip"
     role="slider"
@@ -155,6 +161,7 @@
   >
     <span class="bar"></span>
   </div>
+  {/if}
 
   <div class="body">
     {@render children()}

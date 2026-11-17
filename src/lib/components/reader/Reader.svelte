@@ -1717,12 +1717,15 @@
     detents, and a gesture that means two things means neither.
 
       on the sheet head   ← → step word   (the desktop's ← →)
+                          ↑ ↓ raise or lower the sheet (it has no grip)
       on the text         ← → step line   (the desktop's ↑ ↓)
   */
   const SWIPE_X = 40;
+  /** The word sheet's highest detent (Shell.svelte: peek, 62dvh, full). */
+  const RAIL_TOP = 2;
   /** When a swipe last fired, so the click it drags behind it can be ignored. */
   let swipedAt = 0;
-  function swipe(onstep: (dir: 1 | -1) => void) {
+  function swipe(onstep: (dir: 1 | -1) => void, onlift?: (dir: 1 | -1) => void) {
     let x = 0;
     let y = 0;
     let live = false;
@@ -1738,6 +1741,14 @@
         if (!live) return;
         live = false;
         const dx = e.clientX - x;
+        const dy = e.clientY - y;
+        // up or down, where the caller takes it: the word head is the sheet's
+        // handle now that the sheet has no grip
+        if (onlift && Math.abs(dy) >= SWIPE_X && Math.abs(dy) >= Math.abs(dx) * 1.5) {
+          swipedAt = performance.now();
+          onlift(dy < 0 ? 1 : -1);
+          return;
+        }
         const swiped =
           e.pointerType !== 'mouse' &&
           Math.abs(dx) >= SWIPE_X &&
@@ -1785,7 +1796,10 @@
     author: 'the editor’s analysis (vidyut had none that fits)',
     none: 'unanalysed'
   };
-  const swipeWord = swipe((d) => stepWord(d));
+  const swipeWord = swipe(
+    (d) => stepWord(d),
+    (d) => (railDetent = Math.max(0, Math.min(RAIL_TOP, railDetent + d)))
+  );
   const swipeLine = swipe((d) => stepLine(d));
 </script>
 
@@ -2191,14 +2205,19 @@
               aria-label={railWide ? 'narrow the rail' : 'widen the rail'}
             >⤢</button>
           {/if}
-          <!-- Up at peek, down once open: the grip and the head take the same
-               moves, and this is them as a button, for a thumb that would
-               rather tap. It sits last, where the eye ends the row. -->
+          <!--
+            The sheet's three heights as buttons: ⌃ raises it one, ⌄ lowers it
+            one, and each shows only where there is somewhere to go — so the
+            middle height has both, and the full sheet can be reached by
+            pressing, not only by a swipe. They sit last, where the eye ends
+            the row.
+          -->
           {#if narrow && (selWord || railDetent > 0)}
-            {#if railDetent === 0}
-              <button class="wh-act wh-pull" onclick={() => (railDetent = 1)} title="open the panel" aria-label="open the panel"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 8 7 2l6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
-            {:else}
-              <button class="wh-act wh-pull" onclick={() => (railDetent = railDetent - 1)} title="collapse" aria-label="collapse the panel"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+            {#if railDetent < RAIL_TOP}
+              <button class="wh-act wh-pull" onclick={() => (railDetent = railDetent + 1)} title={railDetent === 0 ? 'open the panel' : 'open it fully'} aria-label={railDetent === 0 ? 'open the panel' : 'open the panel fully'}><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 8 7 2l6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+            {/if}
+            {#if railDetent > 0}
+              <button class="wh-act wh-pull" onclick={() => (railDetent = railDetent - 1)} title="lower the panel" aria-label="lower the panel"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
             {/if}
           {/if}
         </span>
@@ -3751,13 +3770,14 @@
     /*
       PEEK is the one place the sheet's height is the word's, so every pixel
       the head spends is a pixel of the line hidden behind it. Two rows, no
-      more: the word, its meaning and its actions; then its tags. The grip
-      above is thin, since the whole head is a handle too.
+      more: the word, its meaning and its actions; then its tags. There is no
+      grip above: the head is the handle (tap, or swipe up and down), and ⌃
+      ⌄ say what it does.
     */
     .railframe.at-peek .wordhead {
       position: relative;
       border-bottom: none;
-      padding: 0 12px 10px 16px;
+      padding: 10px 12px 10px 16px;
       gap: 6px;
       cursor: pointer;
     }
@@ -3842,15 +3862,20 @@
       gap: 0;
       margin-block: -8px;
     }
-    .railframe.at-peek .wh-act {
+    /* the same glyphs at every height of the sheet, so ⌃ ⌄ ★ ✎ do not
+       change their look as the sheet moves */
+    .railframe.sheeted .wh-act {
       width: 36px;
       height: 40px;
       border-color: transparent;
       background: none;
       font-size: 17px;
     }
-    .railframe.at-peek .wh-act.on {
+    .railframe.sheeted .wh-act.on {
       border-color: transparent;
+    }
+    .railframe.sheeted .wh-acts {
+      gap: 0;
     }
     .wh-pull {
       font-size: 17px;

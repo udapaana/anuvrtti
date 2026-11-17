@@ -157,7 +157,7 @@
     which is the co-presence the desktop layout gets for free.
   -->
   {#if rail && railFrame}
-    <Sheet detents={['auto', '62dvh', '100dvh']} bind:detent={railDetent} label="word detail">
+    <Sheet detents={['auto', '62dvh', '100dvh']} bind:detent={railDetent} label="word detail" grip={false}>
       <aside class="rail framed sheeted">{@render rail()}</aside>
     </Sheet>
   {:else if rail && railOpen}
