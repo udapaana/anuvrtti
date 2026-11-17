@@ -124,6 +124,35 @@
   </section>
 
   <section class="entry">
+    <h2>The Student's Guide to Sanskrit Composition</h2>
+    <span class="label">cited in the reader</span>
+    <p>
+      Vāman Śivarām Āpṭe's <em>The Student's Guide to Sanskrit Composition</em>, a book on
+      syntax: how the cases, the tenses, the participles and the particles are used, each rule
+      shown in sentences from the classical authors. When a tag's note in the reader cites
+      "Apte §", it is this book's section, opened on its page in the scan.
+    </p>
+
+    <dl>
+      <dt>author</dt>
+      <dd>वामन शिवराम आपटे · V. S. Apte</dd>
+
+      <dt>edition</dt>
+      <dd>ninth, Bombay, 1925 (first edition 1881)</dd>
+
+      <dt>copyright</dt>
+      <dd>out of copyright — public domain</dd>
+
+      <dt>page scans</dt>
+      <dd>
+        <a href="https://archive.org/details/students-guide-to-sanskrit-composition-vs-apte-1925" target="_blank" rel="noopener noreferrer">
+          archive.org
+        </a>
+      </dd>
+    </dl>
+  </section>
+
+  <section class="entry">
     <h2>the tools underneath</h2>
     <span class="label">open-source software this depends on</span>
     <dl>
