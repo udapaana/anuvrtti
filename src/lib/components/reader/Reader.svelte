@@ -1149,6 +1149,21 @@
     sel = { id, ti };
   }
 
+  /*
+    A tap on a written word. One pada: select it, or let it go. Several
+    (सोऽपि): the first tap opens the one the text names, and each tap after
+    steps to the next pada, the last letting go — so the line itself walks
+    a fused word, as the head's buttons do.
+  */
+  function tapWritten(id: string, w: { ti: number; from: number[] }) {
+    const toks = tokensOf(list.find((x) => x.id === id));
+    const padas = w.from.filter((i) => toks[i]?.isWord);
+    if (padas.length < 2 || sel?.id !== id || !padas.includes(sel.ti)) return selectToken(id, w.ti);
+    const next = padas[padas.indexOf(sel.ti) + 1];
+    if (next === undefined) sel = null;
+    else selectToken(id, next);
+  }
+
   // Every (reading, word-index) that has a quiz and lives in a SEEN reading —
   // the deck. A word you have scrolled past is fair game; the one you are
   // currently looking at (sel) is not, so the quiz tests recall, not the obvious.
@@ -1760,7 +1775,7 @@
   function openFromHead(e: MouseEvent) {
     if (!narrow || railDetent > 0) return;
     if (performance.now() - swipedAt < 400) return;
-    if ((e.target as HTMLElement | null)?.closest('.wh-act')) return;
+    if ((e.target as HTMLElement | null)?.closest('.wh-act, .wh-pada')) return;
     railDetent = 1;
   }
   /** Whose analysis a text's word carries, for the rail's last line. */
@@ -2099,7 +2114,33 @@
     >
       <div class="wh-top">
         {#if selWord}
-          <span class="wh-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
+          {#if selFused}
+            <!--
+              A word written as several padas (श्रद्धाविवेश is श्रद्धा + आविवेश)
+              names them here, in the word's own place: the one shown large,
+              the others a tap away. This used to be a block in the scrolling
+              middle, which the sheet's peek hides — so on the phone a fused
+              word showed its first pada and no way to the rest.
+            -->
+            {@const fusedTokens = tokensOf(list.find((x) => x.id === sel?.id))}
+            <span class="wh-form wh-split">
+              {#each selFused.from.filter((ti: number) => fusedTokens[ti]?.isWord) as ti, k}
+                {#if k > 0}<span class="wh-plus" aria-hidden="true">+</span>{/if}
+                {#if sel?.ti === ti}
+                  <span class="wh-pada on"><Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" /></span>
+                {:else}
+                  <button
+                    class="wh-pada"
+                    type="button"
+                    aria-label="show this pada"
+                    onclick={() => selectToken(sel!.id, ti)}
+                  ><Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" /></button>
+                {/if}
+              {/each}
+            </span>
+          {:else}
+            <span class="wh-form"><Sanskrit text={selWord.form} source="devanagari" /></span>
+          {/if}
           <!-- At peek the gloss rides on this line: the head is ~112px, and the
                word without its meaning is not worth the space. -->
           {#if narrow && railDetent === 0}
@@ -2224,24 +2265,6 @@
 
     <!-- ── scrolls: the evidence, always this order ─────────────────────── -->
     <div class="evidence">
-
-      {#if selFused && selWord}
-        <!-- a word written as several padas: each one is its own entry (this
-             replaces both the plus-joined split the line used to show on
-             selection and the head's "written together" gloss) -->
-        {@const fusedTokens = tokensOf(list.find((x) => x.id === selWord.id))}
-        <div class="ev">
-          <div class="ev-head"><span class="ev-label quiet">in this word</span>
-            <span class="ev-meta"><Sanskrit text={selFused.text} source="devanagari" /></span></div>
-          <div class="padarow">
-            {#each selFused.from as ti}
-              <button class="padabtn" class:on={sel?.ti === ti} onclick={() => sel?.ti !== ti && selectToken(selWord.id, ti)}>
-                <Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" />
-              </button>
-            {/each}
-          </div>
-        </div>
-      {/if}
 
       {#if openTerm}
         <!-- The tapped tag's note. The tags are pinned in the head, so their
@@ -2582,10 +2605,10 @@
                       title={w.gloss}
                       onmouseenter={() => enterWord(row.id, w.ti)}
                       onmouseleave={leaveWord}
-                      onclick={() => selectToken(row.id, w.ti)}
+                      onclick={() => tapWritten(row.id, w)}
                     >
                       <!-- a word written as several padas stays as written when
-                           selected: the rail's "in this word" chips carry them -->
+                           selected: the head names its padas -->
                       <Sanskrit text={w.text} source="devanagari" /></span>
                   {:else}
                     <span class="token punct"><Sanskrit text={w.text} source="devanagari" /></span>
@@ -3703,6 +3726,19 @@
     .railframe.at-peek .wh-en.peek {
       flex: 1 1 0;
     }
+    /* a fused word's padas get more of the line than one form, and scroll
+       sideways rather than end in an ellipsis that would hide a button */
+    .railframe.at-peek .wh-form.wh-split {
+      max-width: 62%;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      text-overflow: clip;
+      scrollbar-width: none;
+    }
+    .railframe.at-peek button.wh-pada {
+      flex: none;
+      padding: 5px 9px;
+    }
     .wh-en.peek {
       font-size: 15px;
       color: var(--ink-2);
@@ -3864,22 +3900,34 @@
     display: block;
     padding: 4px 0 12px;
   }
-  .padarow {
-    display: flex;
+  /* a fused word in the head: the shown pada large, the others small buttons */
+  .wh-split {
+    display: inline-flex;
+    align-items: baseline;
     flex-wrap: wrap;
-    gap: 6px;
+    column-gap: 6px;
   }
-  .padabtn {
-    font-family: var(--font-deva);
-    font-size: 16px;
-    padding: 3px 9px;
-    background: var(--paper);
+  .wh-plus {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--faint);
+  }
+  .wh-pada {
+    font: inherit;
+    color: inherit;
+  }
+  button.wh-pada {
+    font-size: 0.62em;
+    font-weight: 400;
     color: var(--ink-2);
+    background: var(--paper);
     border: 1px solid var(--rule-2);
     border-radius: var(--radius);
+    padding: 1px 7px;
     cursor: pointer;
   }
-  .padabtn.on {
+  button.wh-pada:hover {
     border-color: var(--accent);
     color: var(--accent);
   }
