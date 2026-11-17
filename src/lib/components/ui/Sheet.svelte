@@ -111,13 +111,17 @@
   }
 
   /*
-    Above the first detent the sheet owns the screen, so the page behind it must
-    not scroll under your thumb. Locked on the root element rather than <body>
-    so a page that sets its own body background keeps it.
+    The page behind stops scrolling only when the sheet has taken the screen:
+    a one-detent sheet (the spine, over a scrim) or a sheet at its highest
+    detent. Half way up, the page still shows above the sheet and is still
+    being read — the line, the next one — so it scrolls as it would without
+    the sheet. Locked on the root element rather than <body> so a page that
+    sets its own body background keeps it.
   */
+  const locks = $derived(top === 0 || detent >= top);
   $effect(() => {
     if (typeof document === 'undefined') return;
-    const lock = covering;
+    const lock = locks;
     const el = document.documentElement;
     const had = el.style.overflow;
     if (lock) el.style.overflow = 'hidden';
