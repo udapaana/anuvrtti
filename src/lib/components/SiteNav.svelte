@@ -3,7 +3,9 @@
   import {
     displayScript,
     lessonLanguage,
-    authoringMode
+    authoringMode,
+    textSize,
+    type TextSize
   } from '$lib/stores/preferences';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import Palette from '$lib/components/ui/Palette.svelte';
@@ -114,6 +116,18 @@
             value={$lessonLanguage}
             onchange={(id) => lessonLanguage.set(id as 'english' | 'telugu')}
             ariaLabel="gloss language"
+          />
+
+          <span class="label">text size</span>
+          <Segmented
+            options={[
+              { id: 'small', label: 'S', title: 'small' },
+              { id: 'medium', label: 'M', title: 'medium' },
+              { id: 'large', label: 'L', title: 'large' }
+            ]}
+            value={$textSize}
+            onchange={(id) => textSize.set(id as TextSize)}
+            ariaLabel="text size"
           />
 
           {#if user}

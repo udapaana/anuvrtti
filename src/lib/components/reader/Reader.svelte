@@ -2934,7 +2934,8 @@
   }
   .token {
     font-family: var(--font-deva);
-    font-size: 26px;
+    /* --read-scale is the reader's text size (the aa menu; preferences.ts) */
+    font-size: calc(26px * var(--read-scale, 1));
     color: var(--ink);
     line-height: 1.35;
     border-bottom: 2px solid transparent;
@@ -2947,7 +2948,7 @@
   /* On a phone, roman runs wider than Devanagari for the same word: a long
      compound in IAST takes a whole line at 26px. A size smaller, roman only. */
   @media (max-width: 560px) {
-    .ex.roman .token { font-size: 21px; }
+    .ex.roman .token { font-size: calc(21px * var(--read-scale, 1)); }
   }
   .split-plus {
     color: var(--faint);
@@ -2969,7 +2970,7 @@
 
   .translation {
     margin: 0;
-    font-size: 16px;
+    font-size: calc(16px * var(--read-scale, 1));
     color: var(--muted);
     font-style: italic;
   }

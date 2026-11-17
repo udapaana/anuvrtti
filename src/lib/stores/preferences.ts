@@ -36,6 +36,39 @@ export const romanAside = derived(displayScript, (s) =>
   !["iast", "iso15919", "slp1", "hk", "itrans", "velthuis", "english"].includes(s)
 );
 
+/**
+ * The size of the text being read: the line and its translation, in the
+ * reader and in a whole text. Three steps, not a slider — a reading size is
+ * a choice made once, and three can be told apart at a glance. Applied as
+ * --read-scale on the root, so any page can size its reading text by it.
+ */
+export type TextSize = "small" | "medium" | "large";
+const TEXT_SIZE_KEY = "anuvrtti-text-size";
+export const TEXT_SCALE: Record<TextSize, number> = { small: 0.85, medium: 1, large: 1.2 };
+
+function createTextSizeStore() {
+  let initial: TextSize = "medium";
+  if (browser) {
+    const v = localStorage.getItem(TEXT_SIZE_KEY);
+    if (v === "small" || v === "medium" || v === "large") initial = v;
+  }
+  const { subscribe, set } = writable<TextSize>(initial);
+  const apply = (v: TextSize) => {
+    if (browser) document.documentElement.style.setProperty("--read-scale", String(TEXT_SCALE[v]));
+  };
+  apply(initial);
+  return {
+    subscribe,
+    set: (v: TextSize) => {
+      if (browser) localStorage.setItem(TEXT_SIZE_KEY, v);
+      apply(v);
+      set(v);
+    },
+  };
+}
+
+export const textSize = createTextSizeStore();
+
 /** User's preferred commentary depth */
 const DEPTH_KEY = "anuvrtti-commentary-depth";
 
