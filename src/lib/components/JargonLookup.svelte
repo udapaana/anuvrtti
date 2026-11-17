@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { romanAside } from '$lib/stores/preferences';
   import { searchTerms, getCategories, getTermsByCategory, lookupTerm, type Term, type TermCategory } from '$lib/jargon';
   import { selectedTerm as selectedTermStore } from '$lib/stores/jargon';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
@@ -117,7 +118,7 @@
         >
           <div class="flex items-baseline gap-2">
             <span class="italic"><Sanskrit text={term.term} /></span>
-            <span class="text-[var(--quiet)] text-xs font-mono">{term.termRoman}</span>
+            {#if $romanAside}<span class="text-[var(--quiet)] text-xs font-mono">{term.termRoman}</span>{/if}
           </div>
         </button>
       {/each}
@@ -147,7 +148,7 @@
       <div class="text-lg font-medium mb-1">
         <Sanskrit text={selectedTerm.term} />
       </div>
-      <div class="text-xs text-stone-500 mb-2">{selectedTerm.termRoman}</div>
+      {#if $romanAside}<div class="text-xs text-stone-500 mb-2">{selectedTerm.termRoman}</div>{/if}
       <p class="text-sm text-stone-700 leading-relaxed"><CommentaryText text={selectedTerm.meaning} /></p>
       {#if selectedTerm.sutraRef}
         <a href="/ref/{selectedTerm.sutraRef}" class="text-xs text-indigo-600 hover:underline mt-2 inline-block">

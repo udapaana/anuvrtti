@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { writable, derived } from "svelte/store";
 import { browser } from "$app/environment";
 import type { Script } from "$lib/transliteration";
 import type { CommentaryDepth } from "$lib/data/types";
@@ -25,6 +25,16 @@ function createDisplayScriptStore() {
 
 /** User's preferred display script */
 export const displayScript = createDisplayScriptStore();
+
+/**
+ * Whether a term's roman spelling says anything the page does not. In a
+ * Latin script the term is already shown in roman, so printing termRoman
+ * beside it gives "karman karman"; in Devanagari or another Indic script it
+ * is the reading aid it was meant to be.
+ */
+export const romanAside = derived(displayScript, (s) =>
+  !["iast", "iso15919", "slp1", "hk", "itrans", "velthuis", "english"].includes(s)
+);
 
 /** User's preferred commentary depth */
 const DEPTH_KEY = "anuvrtti-commentary-depth";

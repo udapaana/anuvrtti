@@ -4,7 +4,7 @@
   import { browser } from '$app/environment';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
-  import { lessonLanguage, displayScript } from '$lib/stores/preferences';
+  import { lessonLanguage, displayScript, romanAside } from '$lib/stores/preferences';
   import { lookupTerm } from '$lib/jargon';
   import { transliterate, type Script } from '$lib/transliteration';
   import { wordBank } from '$lib/stores/wordBank';
@@ -973,7 +973,7 @@
         <span class="term-sheet-term">
           <Sanskrit text={termInfo?.term ?? openTerm} source="devanagari" />
         </span>
-        {#if termInfo?.termRoman}<span class="term-sheet-rom">{termInfo.termRoman}</span>{/if}
+        {#if termInfo?.termRoman && $romanAside}<span class="term-sheet-rom">{termInfo.termRoman}</span>{/if}
         <button class="term-sheet-close" onclick={() => (openTerm = null)} aria-label="close the note">×</button>
       </div>
       {#if termInfo}

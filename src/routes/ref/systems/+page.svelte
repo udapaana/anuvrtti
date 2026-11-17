@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { romanAside } from '$lib/stores/preferences';
   import { onMount } from 'svelte';
   import { dataUrl } from '$lib/dataUrl';
   import Shell from '$lib/components/ui/Shell.svelte';
@@ -74,7 +75,7 @@
       {#if termInfo}
         <div class="concept-head">
           <Sanskrit text={termInfo.term} source="devanagari" />
-          <span class="concept-rom">{termInfo.termRoman}</span>
+          {#if $romanAside}<span class="concept-rom">{termInfo.termRoman}</span>{/if}
           {#if systemForTerm(termInfo.term)}
             <span class="concept-sys">· {systemForTerm(termInfo.term)!.scope}</span>
           {/if}
