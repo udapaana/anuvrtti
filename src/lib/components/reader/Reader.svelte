@@ -1797,6 +1797,45 @@
     author: 'the editor’s analysis (vidyut had none that fits)',
     none: 'unanalysed'
   };
+  /*
+    A line that scrolls sideways says so: a hairline under it with a short
+    dark bar for the part in view, drawn only while the content is wider
+    than the line. A phone hides its own scrollbars, and a row of tags cut
+    at the edge otherwise looks like the whole row. The bar is a background
+    image, so it stays put while the content moves under it.
+  */
+  function scrollHint(node: HTMLElement) {
+    const update = () => {
+      const { scrollWidth: sw, clientWidth: cw, scrollLeft: sl } = node;
+      const scrolls = sw > cw + 1;
+      node.classList.toggle('scrolls', scrolls);
+      if (!scrolls) return;
+      node.style.setProperty('--thumb-w', `${(cw / sw) * 100}%`);
+      node.style.setProperty('--thumb-x', `${(sl / (sw - cw)) * 100}%`);
+    };
+    // the line's own box AND each thing in it: the content widens without the
+    // line changing size (a web font arriving, a tag added), and only the
+    // children's boxes say so
+    const size = new ResizeObserver(update);
+    const watch = () => {
+      size.disconnect();
+      size.observe(node);
+      for (const c of node.children) size.observe(c);
+      update();
+    };
+    const content = new MutationObserver(watch);
+    content.observe(node, { childList: true, subtree: true });
+    node.addEventListener('scroll', update, { passive: true });
+    document.fonts?.ready.then(update);
+    watch();
+    return {
+      destroy() {
+        size.disconnect();
+        content.disconnect();
+        node.removeEventListener('scroll', update);
+      }
+    };
+  }
   const swipeWord = swipe(
     (d) => stepWord(d),
     (d) => (railDetent = Math.max(0, Math.min(RAIL_TOP, railDetent + d)))
@@ -2212,6 +2251,7 @@
               its meaning, as for any word; this switches between them.
             -->
             {@const fusedTokens = tokensOf(list.find((x) => x.id === sel?.id))}
+            <div class="wh-padrow" use:scrollHint>
             <div class="wh-padas" role="group" aria-label="the padas of this written word">
               {#each selFused.from.filter((ti: number) => fusedTokens[ti]?.isWord) as ti}
                 <button
@@ -2222,6 +2262,7 @@
                   onclick={() => sel?.ti !== ti && selectToken(sel!.id, ti)}
                 ><Sanskrit text={fusedTokens[ti]?.text ?? ''} source="devanagari" /></button>
               {/each}
+            </div>
             </div>
           {/if}
         {#if selWord.terms.length || (textMode && selWord.derivedTerms.length)}
@@ -2234,7 +2275,7 @@
             reader to match them up. The dot puts the fact on the tag it is
             about, and the tag is already the way into the term's note.
           -->
-          <div class="wh-tags">
+          <div class="wh-tags" use:scrollHint>
             {#each selWord.terms as t}
               <button
                 class="chip-btn"
@@ -3124,6 +3165,15 @@
     align-items: center;
     gap: 6px;
   }
+  /* the scroll hint (scrollHint): a hairline track, a short bar for the view */
+  .wh-padrow:global(.scrolls),
+  .wh-tags:global(.scrolls) {
+    padding-bottom: 7px;
+    background-image: linear-gradient(var(--rule-2), var(--rule-2)), linear-gradient(var(--muted), var(--muted));
+    background-repeat: no-repeat;
+    background-size: 100% 1px, var(--thumb-w, 30%) 2px;
+    background-position: 0 100%, var(--thumb-x, 0%) 100%;
+  }
   /* what the dot on a tag means, said once at the end of the row */
   .wh-legend {
     font-family: var(--font-mono);
@@ -3821,8 +3871,6 @@
       overflow-x: auto;
       scrollbar-width: none;
       gap: 4px;
-      margin-right: -18px;
-      padding-right: 18px;
     }
     .railframe.at-peek .wh-tags::-webkit-scrollbar {
       display: none;
@@ -3974,18 +4022,19 @@
     padding: 4px 0 12px;
   }
   /* a fused word's padas: one control, the written word cut where it joins */
+  .wh-padrow {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .wh-padrow::-webkit-scrollbar {
+    display: none;
+  }
   .wh-padas {
     display: flex;
     width: max-content;
-    max-width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
     border: 1px solid var(--ink-2);
     border-radius: var(--radius);
     overflow: hidden;
-  }
-  .wh-padas::-webkit-scrollbar {
-    display: none;
   }
   .wh-pada {
     flex: none;
