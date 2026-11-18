@@ -15,6 +15,7 @@
   import { transliterate, type Script } from '$lib/transliteration';
   import { detectScript, fold } from '$lib/search/fold';
   import type { UsageIndex, UsageSection, ParadigmEntry, Attestation } from '$lib/usage/types';
+  import { entryKey, type UsageTexts, type TextCell } from '$lib/usage/textsKey';
 
   // प्रयोग — the corpus indexed by what the language declines, rather than by
   // what the reader meets next. सूत्र (/ref) keeps Pāṇini's order; this is the
@@ -346,6 +347,12 @@
     } catch (e) {
       error = String((e as Error).message || e);
     }
+    // the whole texts' layer (build-usage-texts.ts): best-effort, after the
+    // graded index, and never in its place
+    try {
+      const r = await fetch(dataUrl('/data/usage-texts.json'));
+      if (r.ok) textLayer = await r.json();
+    } catch { /* the page is whole without it */ }
   });
 
   function go(opts: {
@@ -400,6 +407,22 @@
     return e.grid?.[k] ?? [];
   }
 
+  /*
+    The whole texts, as a layer beside the graded corpus: the same cell in
+    the Pañcatantra, the epics, the Nītiśataka — vidyut's analysis, each form
+    checked against the cell's paradigm before it was kept. It never stands
+    in for a reading's attestation: a cell the readings fill shows the
+    reading, and says how often the texts have it too.
+  */
+  let textLayer = $state<UsageTexts | null>(null);
+  function textCell(e: ParadigmEntry, k: string): TextCell | null {
+    if (!textLayer || !section) return null;
+    const pinned = section.kind === 'tinanta' ? e.pinned?.['लकार'] : e.linga;
+    return textLayer.entries[entryKey(section.kind, e.subject, pinned)]?.[k] ?? null;
+  }
+  const textHref = (x: { t: string; p: string; s: string }) =>
+    `/reader/text/${x.t}?part=${encodeURIComponent(x.p)}&section=${encodeURIComponent(x.s)}`;
+
   /** What vidyut derives for a cell — shown when the corpus does not attest it. */
   function expected(e: ParadigmEntry, k: string): string[] {
     return e.paradigm?.[k] ?? [];
@@ -420,7 +443,7 @@
   const selected = $derived.by(() => {
     if (!entry || !cell) return null;
     const a = atts(entry, cell);
-    return { key: cell, atts: a, expected: expected(entry, cell) };
+    return { key: cell, atts: a, expected: expected(entry, cell), texts: textCell(entry, cell) };
   });
 </script>
 
@@ -596,14 +619,31 @@
       {/each}
     {:else}
       <p class="prompt">
-        No reading attests this cell.
-        {#if selected.expected.length}
+        No reading attests this cell{#if selected.texts}; the texts do{/if}.
+        {#if !selected.texts && selected.expected.length}
           The form would be
           <span class="ghost-inline"
             ><Sanskrit text={selected.expected[0]} source="devanagari" /></span
           >.
         {/if}
       </p>
+    {/if}
+    {#if selected.texts}
+      <div class="in-texts">
+        <span class="label">in the texts · {selected.texts.n}</span>
+        {#each selected.texts.ex as x}
+          <div class="spec">
+            <span class="spec-form"><Sanskrit text={x.form} source="devanagari" /></span>
+            <span class="spec-phrase"><Sanskrit text={x.phrase} source="devanagari" /></span>
+            <div class="spec-meta">
+              <a class="hand-off" href={textHref(x)}><Sanskrit text={textLayer?.titles[x.t] ?? x.t} source="devanagari" /> § {x.s} →</a>
+            </div>
+          </div>
+        {/each}
+        <p class="prompt small">
+          vidyut's analysis of the whole texts, each form checked against this cell's paradigm.
+        </p>
+      </div>
     {/if}
   {:else}
     <p class="prompt">
@@ -673,7 +713,8 @@
       <h1><Sanskrit text="प्रयोग" source="devanagari" /></h1>
       <p>
         Forms that occur in the readings, arranged by paradigm. A filled cell records the reading
-        it occurs in, and the sūtra that derives it where one is noted.
+        it occurs in, and the sūtra that derives it where one is noted. A form in plain ink occurs
+        only in the whole texts; its cell lists where.
       </p>
     </header>
 
@@ -772,9 +813,11 @@
                   {@const k = cellKey(r, c)}
                   {@const a = atts(card, k)}
                   {@const exp = expected(card, k)}
+                  {@const tc = textCell(card, k)}
                   <button
                     class="st-cell"
                     class:has={a.length > 0}
+                    class:texts={!a.length && !!tc}
                     class:sel={cell === k && card === entry}
                     aria-label="{r} {c} — {a.length ? a[0].form : 'not attested'}"
                     onclick={() => pickCell(k, card)}
@@ -788,7 +831,10 @@
                         {#if a[0].phrase}
                           <span class="phrase"><Sanskrit text={a[0].phrase} source="devanagari" /></span>
                         {/if}
-                        <span class="meta">{a[0].reading}</span>
+                        <span class="meta">{a[0].reading}{#if tc} · {tc.n} in texts{/if}</span>
+                      {:else if tc}
+                        <span class="form from-texts"><Sanskrit text={tc.ex[0].form} source="devanagari" /></span>
+                        <span class="unwritten">in the texts · {tc.n}</span>
                       {:else if exp.length}
                         <span class="form ghost"><Sanskrit text={exp[0]} source="devanagari" /></span>
                         <span class="unwritten">no reading attests this</span>
@@ -814,9 +860,11 @@
                   {@const k = cellKey(r, c)}
                   {@const a = atts(card, k)}
                   {@const exp = expected(card, k)}
+                  {@const tc = textCell(card, k)}
                   <button
                     class="cell"
                     class:has={a.length > 0}
+                    class:texts={!a.length && !!tc}
                     class:sel={cell === k && card === entry}
                     aria-label="{r} {c} — {a.length ? a[0].form : 'not attested'}"
                     onclick={() => pickCell(k, card)}
@@ -834,8 +882,11 @@
                             title="this form fills more than one cell"
                           >
                             ↔</span
-                          >{/if}
+                          >{/if}{#if tc} · {tc.n} in texts{/if}
                       </span>
+                    {:else if tc}
+                      <span class="form from-texts"><Sanskrit text={tc.ex[0].form} source="devanagari" /></span>
+                      <span class="unwritten">in the texts · {tc.n}</span>
                     {:else if exp.length}
                       <span class="form ghost"><Sanskrit text={exp[0]} source="devanagari" /></span>
                       <span class="unwritten">no reading attests this</span>
@@ -1327,6 +1378,19 @@
   }
   .cell .form.ghost {
     color: var(--ghost);
+  }
+  /* a form only the whole texts attest: written, so not a ghost, but ink
+     rather than saffron — saffron is the graded readings' */
+  .form.from-texts {
+    color: var(--ink-2);
+  }
+  .in-texts {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
   .cell .phrase {
     font-family: var(--font-deva);
