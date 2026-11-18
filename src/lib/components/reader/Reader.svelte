@@ -167,16 +167,28 @@
   }
   function saveProgress() {
     if (!text || !tMeta) return;
-    // the reading of the word last tapped, else the one in focus (as below)
-    const here = sel?.id ?? focusedId;
-    const s = Math.max(0, list.findIndex((r) => r.id === here));
+    const s = Math.max(0, list.findIndex((r) => r.id === (hereId ?? focusedId)));
     try { localStorage.setItem(progressKey(text.id), JSON.stringify({ part: tMeta.parts[partIdx]?.id, s })); } catch { /* session only */ }
   }
   // where the reader is, kept as they go
+  /*
+    Where you are: the reading you were LAST on, by whichever came last — a
+    word tapped in it, or scrolling it into focus. Not the furthest: tap
+    verse 12, scroll back to verse 5, and you are at 5. Each effect below
+    watches one of the two, so the later change is the one that holds.
+  */
+  let hereId = $state<string | null>(null);
   $effect(() => {
-    focusedId;
-    sel;
-    if (textMode && tPart) saveProgress();
+    const f = focusedId;
+    if (f) untrack(() => (hereId = f));
+  });
+  $effect(() => {
+    const t = sel?.id;
+    if (t) untrack(() => (hereId = t));
+  });
+  $effect(() => {
+    hereId;
+    if (textMode && tPart) untrack(saveProgress);
   });
   /*
     A reading you have been on — focused, or a word in it tapped — counts as
@@ -200,9 +212,7 @@
   });
   // the graded reader's place and what has been read
   $effect(() => {
-    // where you are is the reading of the word you last tapped, else the one
-    // in focus: on a short page the focus does not move as you read down it
-    const at = sel?.id ?? focusedId;
+    const at = hereId;
     const read = seen;
     if (textMode || !loaded || !at) return;
     saveReaderProgress(at, read);
