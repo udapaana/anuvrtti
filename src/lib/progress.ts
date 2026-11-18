@@ -87,3 +87,20 @@ export function importProgress(file: unknown): number {
   }
   return n;
 }
+
+/*
+  A line rearranged into the reader's own order (Arrange.svelte): the pada
+  tokens' indices, in the order placed. Kept like the rest of the progress,
+  so an order built yesterday is there to finish today.
+*/
+const arrangeKey = (readingId: string) => `anuvrtti:arrange:${readingId}`;
+export function loadArrangement(readingId: string): number[] {
+  const v = read<number[]>(arrangeKey(readingId));
+  return Array.isArray(v) ? v.filter((x) => Number.isInteger(x)) : [];
+}
+export function saveArrangement(readingId: string, order: number[]) {
+  if (order.length) write(arrangeKey(readingId), order);
+  else {
+    try { localStorage.removeItem(arrangeKey(readingId)); } catch { /* none */ }
+  }
+}

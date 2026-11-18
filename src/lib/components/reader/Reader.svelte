@@ -14,6 +14,8 @@
   import SystemCard from '$lib/components/SystemCard.svelte';
   import { lookupTerm, citesFor } from '$lib/jargon';
   import { scrollHint } from '$lib/actions/scrollHint';
+  import Arrange from './Arrange.svelte';
+  import { featuresOf } from '$lib/reader/agreement';
   import { loadReaderProgress, saveReaderProgress, loadTextRead, saveTextRead } from '$lib/progress';
   import { systemForTerm, systemsForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
@@ -179,6 +181,13 @@
     watches one of the two, so the later change is the one that holds.
   */
   let hereId = $state<string | null>(null);
+  /* the reading whose line is being rearranged (Arrange.svelte), if any */
+  let arranging = $state<string | null>(null);
+  function arrangeTiles(r: Reading) {
+    return tokensOf(r)
+      .filter((t: any) => t.isWord && t.wi >= 0)
+      .map((t: any) => ({ ti: t.ti, text: t.text, feats: featuresOf(wordAt(r.id, t.wi) ?? {}) }));
+  }
   $effect(() => {
     const f = focusedId;
     if (f) untrack(() => (hereId = f));
@@ -2761,6 +2770,26 @@
               {/if}
             </div>
 
+            <!-- rebuild the line in your own order (Arrange.svelte); offered on
+                 the card being read, so it does not crowd every card, and under
+                 the line, since a card inside a run hides its head -->
+            {#if railReading?.id === row.id || arranging === row.id}
+              <div class="ex-tools">
+                <button
+                  class="ex-arrange"
+                  class:on={arranging === row.id}
+                  onclick={() => (arranging = arranging === row.id ? null : row.id)}
+                  aria-expanded={arranging === row.id}
+                >arrange the line</button>
+              </div>
+            {/if}
+            {#if arranging === row.id}
+              {@const r = list.find((x) => x.id === row.id)}
+              {#if r}
+                <Arrange readingId={row.id} tiles={arrangeTiles(r)} fromText={textMode} onclose={() => (arranging = null)} />
+              {/if}
+            {/if}
+
             {#if row.translation || !textMode}
               <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
             {/if}
@@ -3010,6 +3039,26 @@
     color: var(--accent);
   }
 
+  .ex-tools {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+  }
+  .ex-arrange {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-ref);
+    background: none;
+    border: 1px solid var(--rule-2);
+    border-radius: var(--radius);
+    padding: 3px 8px;
+    cursor: pointer;
+  }
+  .ex-arrange.on {
+    color: var(--paper);
+    background: var(--ink);
+    border-color: var(--ink);
+  }
   .translation {
     margin: 0;
     font-size: calc(16px * var(--read-scale, 1));
