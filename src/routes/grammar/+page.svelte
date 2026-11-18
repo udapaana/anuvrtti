@@ -14,6 +14,8 @@
   import Chip from '$lib/components/ui/Chip.svelte';
   import { MATRIX_RULES } from './sandhi-matrix';
   import type { Rule, Chapter } from './+page';
+  import { onMount } from 'svelte';
+  import { dataUrl } from '$lib/dataUrl';
 
   let { data }: {
     data: {
@@ -74,6 +76,23 @@
 
   /** The rail's one disclosure row. */
   let wordsOpen = $state(false);
+
+  /*
+    The language doing what the section describes: words in the corpus that
+    carry a tag citing this section (build-kale-examples.ts) — the graded
+    readings first, hand-annotated, then a few from the whole texts. Loaded
+    after the page, and the page is whole without it.
+  */
+  type Ex = { tag: string; form: string; sentence: string; translation?: string; reading?: string; t?: string; p?: string; s?: string };
+  let examples = $state<{ titles: Record<string, string>; sections: Record<string, { graded: Ex[]; texts: Ex[] }> } | null>(null);
+  onMount(async () => {
+    try {
+      const r = await fetch(dataUrl('/data/kale-examples.json'));
+      if (r.ok) examples = await r.json();
+    } catch { /* none */ }
+  });
+  const here = $derived(examples?.sections[String(current.n)] ?? null);
+  const textHref = (x: Ex) => `/reader/text/${x.t}?part=${encodeURIComponent(x.p ?? '')}&section=${encodeURIComponent(x.s ?? '')}`;
 
   /** Marker-free form of a title, for the document <title>. */
   function plain(t: string): string {
@@ -294,6 +313,42 @@
     <SandhiMatrix rule={current.n} onpick={open} />
   {/if}
 
+  {#if here}
+    <section class="examples">
+      {#if here.graded.length}
+        <span class="label">in the readings</span>
+        {#each here.graded as x}
+          <a class="ex" href={`/reader?reading=${x.reading}`}>
+            <span class="ex-top">
+              <span class="ex-form"><Sanskrit text={x.form} source="devanagari" /></span>
+              <span class="ex-tag"><Sanskrit text={x.tag} source="devanagari" /></span>
+              <span class="ex-id">{x.reading} →</span>
+            </span>
+            <span class="ex-line"><Sanskrit text={x.sentence} source="devanagari" /></span>
+            {#if x.translation}<span class="ex-en">{x.translation}</span>{/if}
+          </a>
+        {/each}
+      {/if}
+      {#if here.texts.length}
+        <span class="label">in the texts</span>
+        {#each here.texts as x}
+          <a class="ex" href={textHref(x)}>
+            <span class="ex-top">
+              <span class="ex-form"><Sanskrit text={x.form} source="devanagari" /></span>
+              <span class="ex-tag"><Sanskrit text={x.tag} source="devanagari" /></span>
+              <span class="ex-id"><Sanskrit text={examples?.titles[x.t ?? ''] ?? x.t ?? ''} source="devanagari" /> § {x.s} →</span>
+            </span>
+            <span class="ex-line"><Sanskrit text={`… ${x.sentence} …`} source="devanagari" /></span>
+          </a>
+        {/each}
+      {/if}
+      <p class="ex-note">
+        Words in the corpus that carry a tag citing this section. The readings are annotated by
+        hand; the texts are vidyut's analysis, where it is settled.
+      </p>
+    </section>
+  {/if}
+
   <nav class="pager">
     {#if prev}
       <button onclick={() => open(prev.n)}>
@@ -405,6 +460,71 @@
     font-size: 27px;
     font-weight: 600;
     line-height: 1.2;
+  }
+
+  /* the corpus's examples of the section */
+  .examples {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+  .examples .label {
+    margin-top: 10px;
+  }
+  .ex {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+  }
+  .ex:hover .ex-form {
+    text-decoration: underline;
+  }
+  .ex-top {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
+  }
+  .ex-form {
+    font-family: var(--font-deva);
+    font-size: 17px;
+    color: var(--accent);
+  }
+  .ex-tag {
+    font-family: var(--font-deva);
+    font-size: 12px;
+    color: var(--quiet);
+  }
+  .ex-id {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-ref);
+    white-space: nowrap;
+  }
+  .ex-line {
+    font-family: var(--font-deva);
+    font-size: 15px;
+    color: var(--ink-2);
+  }
+  .ex-en {
+    font-family: var(--font-prose);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--muted);
+  }
+  .ex-note {
+    margin: 8px 0 0;
+    font-family: var(--font-prose);
+    font-size: 13px;
+    color: var(--quiet);
   }
 
   .derivations {
