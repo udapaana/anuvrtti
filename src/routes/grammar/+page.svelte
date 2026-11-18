@@ -134,9 +134,6 @@
   </span>
 {/snippet}
 
-{#snippet shelfRight()}
-  <span>rule {index + 1} / {rules.length}</span>
-{/snippet}
 
 {#snippet spine()}
   <!-- A filter over this corpus, in the spine that holds it. -->
@@ -247,7 +244,7 @@
   {/if}
 {/snippet}
 
-<Shelf left={shelfLeft} right={shelfRight} progress={((index + 1) / rules.length) * 100} />
+<Shelf left={shelfLeft} progress={((index + 1) / rules.length) * 100} />
 
 <Shell
   {spine}
@@ -265,7 +262,7 @@
     <h1><Title text={current.title} /></h1>
   </header>
 
-  <RuleBody text={current.body} knownSutraIds={data.knownSutraIds} />
+  <RuleBody text={current.body} title={current.title} knownSutraIds={data.knownSutraIds} />
 
   {#if current.derivations.length}
     <section class="derivations">
