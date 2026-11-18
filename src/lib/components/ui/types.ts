@@ -21,6 +21,8 @@ export type SpineItem = {
   sub?: string;
   /** A count shown beside the gloss. */
   count?: number;
+  /** How far through it the reader is, e.g. "12/40" — shown after the gloss. */
+  progress?: string;
   /** Marks the item complete — takes the done accent. */
   done?: boolean;
   href?: string;

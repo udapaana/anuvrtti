@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy, untrack } from 'svelte';
   import { dataUrl } from '$lib/dataUrl';
   import { goto } from '$app/navigation';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
@@ -13,6 +13,7 @@
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
   import SystemCard from '$lib/components/SystemCard.svelte';
   import { lookupTerm, citesFor } from '$lib/jargon';
+  import { loadReaderProgress, saveReaderProgress } from '$lib/progress';
   import { systemForTerm, systemsForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
@@ -168,6 +169,29 @@
     focusedId;
     if (textMode && tPart) saveProgress();
   });
+  /*
+    A reading you have been on — focused, or a word in it tapped — counts as
+    read, not only one scrolled off the top. Pages are one chapter's run, often six or seven cards that never
+    leave the screen, so "scrolled past" alone left most readings unread
+    however long you spent on them.
+  */
+  $effect(() => {
+    const ids = [focusedId, sel?.id].filter(Boolean) as string[];
+    if (!loaded || !ids.length) return;
+    untrack(() => {
+      if (ids.every((id) => seen.has(id))) return;
+      seen = new Set([...seen, ...ids]);
+    });
+  });
+  // the graded reader's place and what has been read (a text's are below)
+  $effect(() => {
+    // where you are is the reading of the word you last tapped, else the one
+    // in focus: on a short page the focus does not move as you read down it
+    const at = sel?.id ?? focusedId;
+    const read = seen;
+    if (textMode || !loaded || !at) return;
+    saveReaderProgress(at, read);
+  });
   async function loadText(id: string) {
     const gone = RETIRED[id];
     // a full load: the same page component would be reused for the new id
@@ -234,7 +258,23 @@
       // cell. Runs after the corpus is in hand, since the page a reading sits
       // on depends on the content boundaries computed from it.
       const want = new URLSearchParams(location.search).get('reading');
+      // Back where you were: the reading you were on, and every reading you
+      // had scrolled past (src/lib/progress.ts) — which is also the quiz's
+      // deck, so it does not start empty on every visit.
+      const saved = loadReaderProgress();
+      const ids = new Set(list.map((r) => r.id));
+      const kept = saved.read.filter((id) => ids.has(id));
+      if (kept.length) seen = new Set(kept);
       if (want) requestAnimationFrame(() => jumpToReading(want));
+      else if (saved.at && ids.has(saved.at)) {
+        const at = saved.at;
+        requestAnimationFrame(() => {
+          jumpToReading(at);
+          const r = list.find((x) => x.id === at);
+          const tis = r ? wordTis(r) : [];
+          if (r && tis.length) selectToken(r.id, tis[0]);
+        });
+      }
       // Open on the first word of the first line. Without a selection, ↑↓ only
       // scrolls (it never selects), so the rail and the quiz stayed empty until
       // the reader clicked a word — "read a line first" with no way in. Marking
@@ -330,6 +370,16 @@
   const paradigms = $derived(paradigmIndex(usage));
   const paradigmIds = new Set(PARADIGM_READING_IDS);
   const list = $derived(sequence.filter((r) => !paradigmIds.has(r.id)).map((r) => ({ ...r })));
+  /** Of each chapter's readings, how many have been read — for the spine. */
+  const chapterRead = $derived.by(() => {
+    const m: Record<string, { read: number; total: number }> = {};
+    for (const r of list) {
+      const c = (m[r.chapter] ??= { read: 0, total: 0 });
+      c.total++;
+      if (seen.has(r.id)) c.read++;
+    }
+    return m;
+  });
   // ── page boundaries: one chapter per page, never several bundled together ──
   //
   // Fixed 20-reading slices used to cut across a sequence ordered by
@@ -1965,7 +2015,12 @@
     title={narrow ? null : 'chapters'}
     items={gradedChapters.map((c) => {
       const t = titles[c.id] ?? { dev: c.id, en: '' };
-      return { id: c.id, label: t.dev, script: 'devanagari' as const, sub: shortEn(t.en) };
+      const p = chapterRead[c.id];
+      return {
+        id: c.id, label: t.dev, script: 'devanagari' as const, sub: shortEn(t.en),
+        progress: p && p.read ? `${p.read}/${p.total}` : undefined,
+        done: !!p && p.read === p.total
+      };
     })}
     activeId={focusedChapter}
     onpick={(id) => {

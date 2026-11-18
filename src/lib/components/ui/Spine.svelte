@@ -24,6 +24,7 @@
     const parts: string[] = [];
     if (item.sub) parts.push(item.sub);
     if (item.count !== undefined) parts.push(String(item.count));
+    if (item.progress) parts.push(item.progress);
     return parts.join(' · ');
   }
 </script>
