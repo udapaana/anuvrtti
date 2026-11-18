@@ -16,6 +16,7 @@
     offlineStatus, offlineProgress, offlineSavedAt, offlineBytes,
     downloadOffline, removeOffline,
   } from '$lib/offline';
+  import { exportProgress, importProgress } from '$lib/progress';
 
   type ScriptOption = { id: Script; glyph: string; font: string; name: string; italic?: boolean };
   type GlossOption = { id: LessonLanguage; label: string; font: string; italic?: boolean };
@@ -81,6 +82,43 @@
     if (hours < 24) return `${hours} hour${hours === 1 ? '' : 's'} ago`;
     const days = Math.round(hours / 24);
     return `${days} day${days === 1 ? '' : 's'} ago`;
+  }
+
+  /*
+    Progress lives in this browser only, so a file is the way to move it: to
+    another device, or back after clearing the browser. The file carries
+    every key the site keeps — places, what has been read, the deck, the
+    workbook, these settings.
+  */
+  let progressNote = $state('');
+  let progressError = $state(false);
+  function downloadProgress() {
+    const file = exportProgress();
+    const blob = new Blob([JSON.stringify(file, null, 1)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `anuvrtti-progress-${file.saved.slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    progressError = false;
+    progressNote = `Saved ${Object.keys(file.data).length} entries to a file.`;
+  }
+  async function loadProgress(e: Event) {
+    const input = e.currentTarget as HTMLInputElement;
+    const f = input.files?.[0];
+    input.value = '';
+    if (!f) return;
+    try {
+      const parsed = JSON.parse(await f.text());
+      if (!confirm('Load this file into this browser? What the file holds replaces what is here; anything the file does not hold is kept.')) return;
+      const n = importProgress(parsed);
+      progressError = false;
+      progressNote = `Loaded ${n} entries. Reloading…`;
+      setTimeout(() => location.reload(), 600);
+    } catch (err) {
+      progressError = true;
+      progressNote = `That file could not be read: ${(err as Error).message}.`;
+    }
   }
 
   async function saveOffline() {
@@ -228,6 +266,30 @@
         <p class="offline-note error">Couldn't save everything — try again.</p>
       {/if}
       <button class="offline-btn" onclick={saveOffline}>save for offline</button>
+    {/if}
+  </section>
+
+  <div class="section-head">
+    <em class="section-name"><Sanskrit text="smṛti" source="iast" /></em>
+    <span class="section-mono">· your progress</span>
+  </div>
+
+  <section class="block">
+    <p class="field-label">→ kept in this browser</p>
+    <p class="field-help">
+      Where you are in each text and in the graded reader, what you have read, your deck
+      and the workbook are saved on this device only. Download them as a file to keep a
+      copy, or to load on another device.
+    </p>
+    <div class="offline-row">
+      <button class="offline-btn" onclick={downloadProgress}>download progress</button>
+      <label class="offline-btn quiet">
+        load from a file
+        <input type="file" accept="application/json,.json" onchange={loadProgress} hidden />
+      </label>
+    </div>
+    {#if progressNote}
+      <p class="offline-note" class:error={progressError}>{progressNote}</p>
     {/if}
   </section>
   </div>
