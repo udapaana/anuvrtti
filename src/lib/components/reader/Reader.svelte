@@ -13,7 +13,7 @@
   import InlineMarkup from '$lib/components/InlineMarkup.svelte';
   import SystemCard from '$lib/components/SystemCard.svelte';
   import { lookupTerm, citesFor } from '$lib/jargon';
-  import { loadReaderProgress, saveReaderProgress } from '$lib/progress';
+  import { loadReaderProgress, saveReaderProgress, loadTextRead, saveTextRead } from '$lib/progress';
   import { systemForTerm, systemsForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
@@ -134,7 +134,13 @@
     pick = null;
     // the line opened on counts as read, so the quiz has a deck at once (as
     // the graded reader marks its first line)
-    seen = new Set([mapped.readings[Math.max(0, Math.min(at, mapped.readings.length - 1))]?.id].filter(Boolean) as string[]);
+    // and what of it was read before (src/lib/progress.ts), so the section
+    // list shows it and the quiz has the deck it had
+    const before = loadTextRead(text!.id);
+    seen = new Set([
+      ...mapped.readings.map((r: any) => r.id).filter((id: string) => before.has(id)),
+      ...([mapped.readings[Math.max(0, Math.min(at, mapped.readings.length - 1))]?.id].filter(Boolean) as string[])
+    ]);
     page = 0;
     partIdx = i;
     tPart = data;
@@ -161,12 +167,15 @@
   }
   function saveProgress() {
     if (!text || !tMeta) return;
-    const s = Math.max(0, list.findIndex((r) => r.id === focusedId));
+    // the reading of the word last tapped, else the one in focus (as below)
+    const here = sel?.id ?? focusedId;
+    const s = Math.max(0, list.findIndex((r) => r.id === here));
     try { localStorage.setItem(progressKey(text.id), JSON.stringify({ part: tMeta.parts[partIdx]?.id, s })); } catch { /* session only */ }
   }
   // where the reader is, kept as they go
   $effect(() => {
     focusedId;
+    sel;
     if (textMode && tPart) saveProgress();
   });
   /*
@@ -183,7 +192,13 @@
       seen = new Set([...seen, ...ids]);
     });
   });
-  // the graded reader's place and what has been read (a text's are below)
+  // a text's read sections, added to its record as they are read
+  $effect(() => {
+    const read = seen;
+    if (!textMode || !text || !tPart) return;
+    saveTextRead(text.id, read);
+  });
+  // the graded reader's place and what has been read
   $effect(() => {
     // where you are is the reading of the word you last tapped, else the one
     // in focus: on a short page the focus does not move as you read down it
@@ -1981,7 +1996,7 @@
     <div class={tMeta && tMeta.parts.length > 1 ? 'sources-shelf' : ''}>
       <Spine
         title="sections"
-        items={list.map((r: any) => ({ id: r.id, label: r.kind === 'verse' ? `verse ${r.id}` : `§ ${r.id}` }))}
+        items={list.map((r: any) => ({ id: r.id, label: r.kind === 'verse' ? `verse ${r.id}` : `§ ${r.id}`, done: seen.has(r.id) }))}
         activeId={focused?.id ?? null}
         onpick={(id) => { spineOpen = false; jumpToReading(id); }}
       />

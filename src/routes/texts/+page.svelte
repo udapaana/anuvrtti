@@ -4,6 +4,7 @@
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import { displayScript } from '$lib/stores/preferences';
   import { dataUrl } from '$lib/dataUrl';
+  import { loadTextRead } from '$lib/progress';
 
   /*
     The whole texts, read from the first verse to the last: the shelf the
@@ -20,6 +21,8 @@
   let texts = $state<T[]>([]);
   let failed = $state(false);
   let at = $state<Record<string, string>>({});
+  /** sections read of each text (src/lib/progress.ts) */
+  let readOf = $state<Record<string, number>>({});
 
   onMount(async () => {
     try {
@@ -41,6 +44,7 @@
       } catch { /* none */ }
     }
     at = marks;
+    readOf = Object.fromEntries(texts.map((t) => [t.id, loadTextRead(t.id).size]));
   });
 
   const condensed = (t: T) => t.id.endsWith('-condensed');
@@ -79,6 +83,7 @@
           </span>
           <span class="meta">
             {count(t.sections)} sections · {count(t.words)} words{t.parts > 1 ? ` · ${t.parts} parts` : ''}
+            {#if readOf[t.id]}<span class="at"> · {count(Math.min(readOf[t.id], t.sections))} of {count(t.sections)} read</span>{/if}
             {#if at[t.id]}<span class="at"> · left at {at[t.id]}</span>{/if}
             {#if t.place}<span class="place">{t.place}</span>{/if}
           </span>
