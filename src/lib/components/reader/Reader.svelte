@@ -14,6 +14,10 @@
   import SystemCard from '$lib/components/SystemCard.svelte';
   import { lookupTerm, citesFor } from '$lib/jargon';
   import { scrollHint } from '$lib/actions/scrollHint';
+  import Construe from './Construe.svelte';
+  import { construal, construeOn } from '$lib/stores/construal';
+  import { ROLE } from '$lib/reader/construe';
+  import { featuresOf } from '$lib/reader/agreement';
   import { loadReaderProgress, saveReaderProgress, loadTextRead, saveTextRead } from '$lib/progress';
   import { systemForTerm, systemsForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
@@ -179,6 +183,25 @@
     watches one of the two, so the later change is the one that holds.
   */
   let hereId = $state<string | null>(null);
+  /*
+    Construing (Construe.svelte): the words of a line as the panel needs them
+    — each pada with its features and tags — and, while construing, the
+    rail keeps the kāraka tags to itself: they are the answers.
+  */
+  function construeWords(r: Reading) {
+    return tokensOf(r)
+      .filter((t: any) => t.isWord && t.wi >= 0)
+      .map((t: any) => {
+        const w = wordAt(r.id, t.wi);
+        const tags = new Set<string>([...(w?.notes ?? []).map((n: any) => n.term).filter(Boolean), ...Object.values(w?.derived ?? {}).map(String)]);
+        return { ti: t.ti, text: t.text, feats: featuresOf(w ?? {}), tags };
+      });
+  }
+  const isKaraka = (term: string) => lookupTerm(term)?.category === 'karaka';
+  $effect(() => {
+    if (!$construeOn) return;
+    for (const r of slice) construal.ensure(r.id);
+  });
   $effect(() => {
     const f = focusedId;
     if (f) untrack(() => (hereId = f));
@@ -1222,7 +1245,9 @@
     formedOpen = false;
     // a text's rail opened with its table, as the text page always did
     paraOpen = textMode;
-    if (sel && sel.id === id && sel.ti === ti) { sel = null; return; }
+    // a second tap lets the word go — except while construing, where the
+    // word stays chosen so its answer can be changed
+    if (sel && sel.id === id && sel.ti === ti) { if (!$construeOn) sel = null; return; }
     sel = { id, ti };
   }
 
@@ -1905,7 +1930,7 @@
   <Segmented
     options={[
       { id: 'recall', label: 'recall' },
-      { id: 'gloss', label: 'glossed' }
+      { id: 'gloss', label: narrow ? 'gloss' : 'glossed', title: 'glossed' }
     ]}
     value={mode}
     onchange={(id) => (mode = id as Mode)}
@@ -1915,8 +1940,15 @@
   <button class="toggle" class:on={padaccheda} onclick={() => {
     padaccheda = !padaccheda;
     try { localStorage.setItem(textMode ? T_PADACCHEDA_KEY : PADACCHEDA_KEY, padaccheda ? '1' : '0'); } catch { /* session only */ }
-  }}>
-    padaccheda
+  }} title="padaccheda: split the words at their sandhi joins">
+    <!-- a phone's shelf holds three controls and this toggle; the short name
+         is what lets the fourth, anvaya, fit beside it -->
+    {narrow ? 'cheda' : 'padaccheda'}
+  </button>
+  <!-- anvaya: construe the line — tap a word, say which question it answers
+       (Construe.svelte). The tradition's own name for it. -->
+  <button class="toggle construe-t" class:on={$construeOn} onclick={() => construeOn.set(!$construeOn)} title="construe the line: tap a word, say which question it answers">
+    anvaya
   </button>
   <!-- A jump inside the corpus you are already reading is not a search, so it
        stays here rather than folding into ⌘K. On the phone it travels with the
@@ -2318,7 +2350,7 @@
             about, and the tag is already the way into the term's note.
           -->
           <div class="wh-tags" use:scrollHint>
-            {#each selWord.terms as t}
+            {#each selWord.terms.filter((t: any) => !($construeOn && isKaraka(t.term))) as t}
               <button
                 class="chip-btn"
                 type="button"
@@ -2703,8 +2735,8 @@
             <!-- A token is the word and nothing else. Nothing sits beneath it,
                  so no gloss can set the column width and pull the line apart;
                  word-for-word glossing is the rail's job now. -->
-            <div class="tokens">
-              {#if !padaccheda && row.written}
+            <div class="tokens" class:construing={$construeOn}>
+              {#if !padaccheda && !$construeOn && row.written}
                 {#each row.written as w}
                   {#if w.br}
                     <span class="line-br" aria-hidden="true"></span>
@@ -2743,7 +2775,10 @@
                     onmouseleave={leaveWord}
                     onclick={() => selectToken(row.id, tok.ti)}
                   >
-                    {#if padaccheda && tok.split}
+                    {#if $construeOn && $construal[row.id]?.[tok.ti]}
+                      <span class="cq" aria-hidden="true"><Sanskrit text={ROLE[$construal[row.id][tok.ti].role].q} source="devanagari" /></span>
+                    {/if}
+                    {#if (padaccheda || $construeOn) && tok.split}
                       {#each tok.split as part, pi}
                         {#if pi > 0}<span class="split-plus">+</span>{/if}<Sanskrit
                           text={part}
@@ -2760,6 +2795,13 @@
               {/each}
               {/if}
             </div>
+
+            {#if $construeOn && (sel?.id === row.id || Object.keys($construal[row.id] ?? {}).length)}
+              {@const r = list.find((x) => x.id === row.id)}
+              {#if r}
+                <Construe readingId={row.id} words={construeWords(r)} selected={sel?.id === row.id ? sel.ti : null} />
+              {/if}
+            {/if}
 
             {#if row.translation || !textMode}
               <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
@@ -2983,6 +3025,24 @@
     border-bottom: 2px solid transparent;
     padding-bottom: 2px;
     cursor: default;
+  }
+  /* construing: the question a word answers, above it, with room for it */
+  .tokens.construing {
+    row-gap: 24px;
+    padding-top: 14px;
+  }
+  .token {
+    position: relative;
+  }
+  .cq {
+    position: absolute;
+    left: 0;
+    top: -1.15em;
+    font-size: 11px;
+    line-height: 1;
+    color: var(--accent-ref);
+    white-space: nowrap;
+    pointer-events: none;
   }
   .token.punct {
     color: var(--faint);
@@ -4022,6 +4082,11 @@
        than one run of controls */
     .toggle {
       margin-left: auto;
+      padding: 4px 8px;
+    }
+    /* the two toggles sit together at the far edge */
+    .toggle + .toggle {
+      margin-left: 6px;
     }
 
     /*
