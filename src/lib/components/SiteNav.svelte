@@ -5,6 +5,7 @@
     lessonLanguage,
     authoringMode,
     textSize,
+    agreementColours,
     type TextSize
   } from '$lib/stores/preferences';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
@@ -129,6 +130,13 @@
             onchange={(id) => textSize.set(id as TextSize)}
             ariaLabel="text size"
           />
+
+          <!-- in the reader: tap a word and the words agreeing with it share
+               its colour (agreement.ts) -->
+          <button class="mode" class:on={$agreementColours} onclick={() => agreementColours.set(!$agreementColours)}>
+            <span>agreement colours</span>
+            <span class="state">{$agreementColours ? 'on' : 'off'}</span>
+          </button>
 
           {#if user}
             <button class="mode" class:on={$authoringMode} onclick={() => authoringMode.toggle()}>

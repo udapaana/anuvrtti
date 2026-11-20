@@ -14,11 +14,13 @@
   import SystemCard from '$lib/components/SystemCard.svelte';
   import { lookupTerm, citesFor } from '$lib/jargon';
   import { scrollHint } from '$lib/actions/scrollHint';
+  import { featuresOf, familyOf } from '$lib/reader/agreement';
+  import { families } from '$lib/stores/families';
   import { loadReaderProgress, saveReaderProgress, loadTextRead, saveTextRead } from '$lib/progress';
   import { systemForTerm, systemsForTerm } from '$lib/systems';
   import { KARAKA, VIBHAKTI, impliedTerms } from '$lib/usage/schema';
   import { wordBank } from '$lib/stores/wordBank';
-  import { displayScript, authoringMode, romanAside } from '$lib/stores/preferences';
+  import { displayScript, authoringMode, romanAside, agreementColours } from '$lib/stores/preferences';
   import { transliterate } from '$lib/transliteration';
   import { isNarrow } from '$lib/stores/viewport';
   import { editModal } from '$lib/stores/editModal';
@@ -179,6 +181,35 @@
     watches one of the two, so the later change is the one that holds.
   */
   let hereId = $state<string | null>(null);
+  /*
+    Agreement colours: with them on (the aa menu), a tapped word and the words
+    its ending ties it to take one colour — the line's next — so the families
+    of a verse show at a glance which words go together. What the endings say,
+    nothing more; the reading is still the reader's (agreement.ts familyOf).
+  */
+  function lineWords(r: Reading) {
+    return tokensOf(r)
+      .filter((t: any) => t.isWord && t.wi >= 0)
+      .map((t: any) => ({ ti: t.ti, feats: featuresOf(wordAt(r.id, t.wi) ?? {}), member: String(t.text).endsWith('-') }));
+  }
+  function paintFamily(id: string, ti: number) {
+    if (!$agreementColours || $families[id]?.[ti] != null) return;
+    const r = list.find((x) => x.id === id);
+    if (!r) return;
+    const fam = familyOf(lineWords(r), ti);
+    if (fam.length > 1) families.paint(id, fam);
+  }
+  /** a written word (saṃhitā) takes the colour of its first painted pada */
+  const famOf = (id: string, tis: number[]) => {
+    const line = $families[id];
+    if (!line) return null;
+    for (const ti of tis) if (line[ti] != null) return line[ti];
+    return null;
+  };
+  $effect(() => {
+    if (!$agreementColours) return;
+    for (const r of slice) families.ensure(r.id);
+  });
   $effect(() => {
     const f = focusedId;
     if (f) untrack(() => (hereId = f));
@@ -2704,7 +2735,9 @@
                  so no gloss can set the column width and pull the line apart;
                  word-for-word glossing is the rail's job now. -->
             <div class="tokens">
-              {#if !padaccheda && row.written}
+              <!-- a line with agreement colours shows its padas: a colour belongs
+                   to a pada, and जीर्णमङ्गे is two of them, only one in the family -->
+              {#if !padaccheda && row.written && !($agreementColours && Object.keys($families[row.id] ?? {}).length)}
                 {#each row.written as w}
                   {#if w.br}
                     <span class="line-br" aria-hidden="true"></span>
@@ -2714,11 +2747,12 @@
                       class:hot={w.from.some((i: number) => hl(row.id, i))}
                       class:focal={w.focal}
                       class:sel={sel?.id === row.id && w.from.includes(sel?.ti)}
+                      data-fam={$agreementColours ? famOf(row.id, w.from) : null}
                       role="presentation"
                       title={w.gloss}
                       onmouseenter={() => enterWord(row.id, w.ti)}
                       onmouseleave={leaveWord}
-                      onclick={() => tapWritten(row.id, w)}
+                      onclick={() => { tapWritten(row.id, w); if (sel?.id === row.id) paintFamily(row.id, sel.ti); }}
                     >
                       <!-- a word written as several padas stays as written when
                            selected: the head names its padas -->
@@ -2737,11 +2771,12 @@
                     class:hot={hl(row.id, tok.ti)}
                     class:focal={tok.focal}
                     class:sel={sel?.id === row.id && sel?.ti === tok.ti}
+                    data-fam={$agreementColours ? famOf(row.id, [tok.ti]) : null}
                     role="presentation"
                     title={tok.gloss}
                     onmouseenter={() => enterWord(row.id, tok.ti)}
                     onmouseleave={leaveWord}
-                    onclick={() => selectToken(row.id, tok.ti)}
+                    onclick={() => { selectToken(row.id, tok.ti); paintFamily(row.id, tok.ti); }}
                   >
                     {#if padaccheda && tok.split}
                       {#each tok.split as part, pi}
@@ -2760,6 +2795,10 @@
               {/each}
               {/if}
             </div>
+
+            {#if $agreementColours && Object.keys($families[row.id] ?? {}).length}
+              <button class="fam-clear" onclick={() => families.clear(row.id)}>clear colours</button>
+            {/if}
 
             {#if row.translation || !textMode}
               <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
@@ -2983,6 +3022,39 @@
     border-bottom: 2px solid transparent;
     padding-bottom: 2px;
     cursor: default;
+  }
+  /*
+    Agreement colours: five families, each a soft tint behind the word and
+    an underline of its own style, so the families stay apart without colour
+    — solid, dashed, dotted, double, and a heavier solid.
+  */
+  .token[data-fam] {
+    border-radius: 3px;
+    border-bottom-width: 2px;
+  }
+  .token[data-fam='0'] { background: var(--fam-0-bg); border-bottom: 2px solid var(--fam-0); }
+  .token[data-fam='1'] { background: var(--fam-1-bg); border-bottom: 2px dashed var(--fam-1); }
+  .token[data-fam='2'] { background: var(--fam-2-bg); border-bottom: 2px dotted var(--fam-2); }
+  .token[data-fam='3'] { background: var(--fam-3-bg); border-bottom: 3px double var(--fam-3); }
+  .token[data-fam='4'] { background: var(--fam-4-bg); border-bottom: 3px solid var(--fam-4); }
+  .ex {
+    --fam-0: #2f6fa8; --fam-0-bg: rgba(47, 111, 168, 0.12);
+    --fam-1: #b4532a; --fam-1-bg: rgba(180, 83, 42, 0.12);
+    --fam-2: #3d8a5a; --fam-2-bg: rgba(61, 138, 90, 0.13);
+    --fam-3: #8a4fa0; --fam-3-bg: rgba(138, 79, 160, 0.12);
+    --fam-4: #9a7b12; --fam-4-bg: rgba(154, 123, 18, 0.14);
+  }
+  .fam-clear {
+    align-self: flex-start;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--quiet);
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
   }
   .token.punct {
     color: var(--faint);
