@@ -169,6 +169,19 @@ export function resolve(
   // is the तस् of Kāle §130, "from the village", not an ablative form)
   // — but an adverbial accusative (समीपम्, tagged अव्यय) is a noun's own form and keeps it
   if (terms.includes('तसिल्') || (terms.includes('अव्यय') && terms.includes('तद्धित'))) return null;
+  /*
+    Nor does any word that does not decline. इति, न, च, एव (tagged अव्यय,
+    निपात or उपसर्ग) and the kṛt indeclinables — गत्वा, आगत्य, गन्तुम्, the
+    -अम् of णमुल् — used to fall through to a noun table for a look-alike
+    stem: इति opened इतिः / इती / इतयः, गत्वा a "गम् declension". 509 of the
+    graded reader's 1,197 indeclinable tokens did. An indeclinable that does
+    carry a case (समीपम्, an adverbial accusative) is a noun's own form, and
+    keeps its noun's table.
+  */
+  const CASES = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'];
+  const indeclinable = ['अव्यय', 'निपात', 'उपसर्ग'].some((t) => terms.includes(t));
+  if (indeclinable && !CASES.some((c) => terms.includes(c))) return null;
+  if (['क्त्वा', 'ल्यप्', 'तुमुन्', 'णमुल्'].some((t) => terms.includes(t))) return null;
   form = form.replace(/^हे\s+/, ''); // हे देव: the particle is not the word
   const r0 = resolveAny(data, lemma, form, terms);
   // a lemma written with its preverb (परा-जि, आ-गम्) whose table is the root's
