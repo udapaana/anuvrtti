@@ -105,6 +105,8 @@
   }
   /* a modernized translation's original, shown on request, per section */
   let originalShown = $state<Set<string>>(new Set());
+  /* glossed: the translator's name waits until the translation is tapped (or hovered) */
+  let trTapped = $state<string | null>(null);
   function toggleOriginal(id: string) {
     const next = new Set(originalShown);
     if (next.has(id)) next.delete(id); else next.add(id);
@@ -2850,7 +2852,8 @@
               {@const shown = mode === 'gloss' || revealed.has(row.id) || !row.translation}
               {@const who = (tMeta as any)?.translation?.translator?.split(' ').at(-1) ?? 'translator'}
               {#if shown}
-                <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
+                <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+                <p class="translation" onclick={() => (trTapped = row.id)}><Sanskrit text={row.translation} source="devanagari" /></p>
                 {#if row.translationOriginal && originalShown.has(row.id)}
                   <p class="translation original"><Sanskrit text={row.translationOriginal} source="devanagari" /></p>
                 {/if}
@@ -2865,7 +2868,7 @@
                     </button>
                   {/if}
                   {#if row.translationOriginal && shown}
-                    <button class="tr-ctl tr-who" aria-pressed={originalShown.has(row.id)} onclick={() => toggleOriginal(row.id)}
+                    <button class="tr-ctl tr-who" class:ondemand={mode === 'gloss' && trTapped !== row.id && !originalShown.has(row.id)} aria-pressed={originalShown.has(row.id)} onclick={() => toggleOriginal(row.id)}
                       title={`${originalShown.has(row.id) ? 'hide' : 'show'} ${who}'s own wording`}>{who}</button>
                   {/if}
                 </div>
@@ -3167,6 +3170,15 @@
   .tr-ctl:hover,
   .tr-ctl[aria-pressed='true'] {
     color: var(--ink-2);
+  }
+  /* in glossed mode the name is there only when asked for: hover, or a tap on the translation */
+  .tr-who.ondemand {
+    visibility: hidden;
+  }
+  @media (hover: hover) {
+    article:hover .tr-who.ondemand {
+      visibility: visible;
+    }
   }
   .tr-who[aria-pressed='true'] {
     text-decoration: underline;
