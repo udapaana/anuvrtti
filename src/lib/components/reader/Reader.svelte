@@ -626,9 +626,32 @@
         const split = wi >= 0 ? (wordsRaw[wi].split ?? null) : null;
         return { ti, text: tx, wi, gloss: wi >= 0 ? wordsRaw[wi].gloss || '' : '', isWord: wi >= 0, focal, split };
       });
+    /*
+      A Ṛgveda verse is stored as its saṃhitā (पूर्वे॑भि॒र्ऋषि॑भि॒रीड्यो॒) and its
+      words as the pada-pāṭha (पूर्वे॑भिः ऋषि॑ऽभिः ईड्यः॑), and these readings
+      are frozen, so no saṃhitā was ever built from the padas to match them:
+      split at spaces, a joined word finds no pada, and 157 words in 28
+      verses could not be tapped (rd012 and rd017 not one). When an accented
+      verse's words mostly go unmatched, the line is its pada-pāṭha instead —
+      the way the Veda is learned word by word — and the saṃhitā is shown
+      beneath it as written (`vedicSamhita`).
+    */
+    const matched = new Set(out.filter((t) => t.wi >= 0).map((t) => t.wi)).size;
+    if (/[॒॑]/.test(String(r.sentence ?? '')) && wordsRaw.length && matched < wordsRaw.length * 0.6) {
+      const padas = wordsRaw.map((w: any, wi: number) => ({
+        ti: wi, text: w.form, wi, gloss: w.gloss || '', isWord: true,
+        focal: (w.notes || []).some((nt: any) => nt.cite), split: null
+      }));
+      padas.push({ ti: padas.length, text: '॥', wi: -1, gloss: '', isWord: false, focal: false, split: null });
+      vedicSamhita.add(r.id);
+      tokenCache.set(r.id, padas);
+      return padas;
+    }
     tokenCache.set(r.id, out);
     return out;
   }
+  /** readings shown as pada-pāṭha, whose saṃhitā goes beneath the line */
+  const vedicSamhita = new Set<string>();
 
   // ── interlinear token + word identity processing (matches design) ───────────
   function processEx(r: Reading, n: number) {
@@ -2770,6 +2793,10 @@
               {/if}
             </div>
 
+            {#if vedicSamhita.has(row.id)}
+              <p class="samhita-line" lang="sa"><Sanskrit text={list.find((x) => x.id === row.id)?.sentence ?? ''} source="devanagari" /></p>
+            {/if}
+
             {#if row.translation || !textMode}
               {#if mode === 'gloss' || revealed.has(row.id) || !row.translation}
                 <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
@@ -3023,6 +3050,13 @@
     color: var(--accent);
   }
 
+  /* a Vedic verse's saṃhitā, under its pada-pāṭha line */
+  .samhita-line {
+    margin: 0;
+    font-family: var(--font-deva);
+    font-size: calc(17px * var(--read-scale, 1));
+    color: var(--muted);
+  }
   .tr-reveal {
     align-self: flex-start;
     font-family: var(--font-mono);
