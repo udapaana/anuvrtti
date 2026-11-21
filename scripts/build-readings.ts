@@ -288,7 +288,17 @@ function derivedFeatures(word: any, governed: Set<number> = new Set(), wi = -1):
   // …unless it declines after all: मन्दम् "slowly" is an adverb AND a neuter
   // accusative singular, with a विभक्ति to show for it.
   const declines = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी', 'सम्बोधन'].some((v) => terms.has(v));
-  if ((terms.has('अव्यय') || out['अव्यय-भेद']) && !declines) {
+  // The indeclinable is known by any of its tags — अव्यय, निपात, or a
+  // particle's own sense (negation) — or by being in the closed list
+  // (lexical.ts AVYAYA_BHEDA). न is tagged 'negation' and इति 'निपात', and
+  // both slipped past a test for अव्यय alone: 47 tokens kept a gender.
+  const lemma0 = word.lemma ? deaccent(String(word.lemma)) : '';
+  // (not उपसर्ग: a prefixed verb carries it for its preverb, and is no
+  // indeclinable — अभिक्रुध्यति lost its वचन to that)
+  const verbal = [...terms].some((t) => LAKARA_SET.has(t) || PURUSHA_SET.has(t)) || !!out['लकार'] || !!out['पुरुष'];
+  const indeclinable = !verbal && (terms.has('अव्यय') || terms.has('निपात') || terms.has('negation')
+    || !!out['अव्यय-भेद'] || !!AVYAYA_BHEDA[lemma0]);
+  if (indeclinable && !declines) {
     delete out['लिङ्ग'];
     delete out['वचन'];
   }
@@ -353,7 +363,25 @@ function derivedFeaturesRaw(word: any, governed: Set<number> = new Set(), wi = -
     || typeOf(terms)?.id === 'kridanta';
   if (gana && verbal) {
     if (!terms.has('गण')) out['गण'] = gana[0];
-    if (gana[1] && !derivedStem && !terms.has('विकरण') && !terms.has(gana[1])) out['विकरण'] = gana[1];
+    /*
+      A root's class gives its विकरण — with the exceptions the sūtras make by
+      name: श्रु is भ्वादि, but 3.1.74 श्रुवः शृ च gives it श्नु (शृणोति), and
+      all 28 of its forms showed शप्.
+    */
+    const VIKARANA_BY_RULE: Record<string, string> = { 'श्रु': 'श्नु' };
+    const vik = VIKARANA_BY_RULE[deaccent(word.lemma).replace(/^.*-/, '')] ?? gana[1];
+    /*
+      And only in the present system. A विकरण is the affix of the
+      sārvadhātuka forms — लट्, लङ्, लोट्, विधिलिङ् and the participles शतृ,
+      शानच् — and nothing else: गतः, गत्वा, गन्तुम्, जगाम have none. 278
+      words outside it carried one. A word whose tense is not known at all
+      gets none either; no evidence, no chip.
+    */
+    const SARVADHATUKA = ['लट्', 'लङ्', 'लोट्', 'विधिलिङ्', 'शतृ', 'शानच्'];
+    const present = [...terms].some((t) => SARVADHATUKA.includes(t))
+      || SARVADHATUKA.includes(tinRaw?.['लकार'] ?? '')
+      || SARVADHATUKA.includes(KRTS[deaccent(word.lemma) + '|' + deaccent(String(word.form ?? ''))] ?? '');
+    if (vik && present && !derivedStem && !terms.has('विकरण') && !terms.has(vik) && !terms.has('शप्')) out['विकरण'] = vik;
   }
 
   // The full तिङन्त parse from the generated index — लकार, पुरुष, वचन, पद — for
@@ -497,7 +525,18 @@ function derivedFeaturesRaw(word: any, governed: Set<number> = new Set(), wi = -
   // derivation found still belongs on the word.
   const KRT_ALIASES = new Set(['निष्ठा', 'कृत्य']);
   const authoredKrt = [...terms].filter((t) => KRT_SET.has(t) && !KRT_ALIASES.has(t));
-  if (krtDerived && !terms.has(krtDerived) && !authoredKrt.length) {
+  /*
+    Never on a finite verb. गच्छति is a present 3sg and also the locative of
+    the participle गच्छत्, and the कृत् index, keyed on the form, does not
+    know which: 90 finite verbs — गच्छति in the first reading among them —
+    showed a शतृ chip. A word with a person, a tense or a personal ending (as
+    tagged, or as derived above) is finite; the participle reading, where it
+    is meant, is the author's to tag (as ex103's सति सप्तमी is).
+  */
+  const TIN_ENDINGS = ['तिप्', 'तस्', 'झि', 'सिप्', 'थस्', 'थ', 'मिप्', 'वस्', 'मस्', 'त', 'आताम्', 'झ', 'थास्', 'आथाम्', 'ध्वम्', 'इट्', 'वहि', 'महिङ्'];
+  const isFinite = [...terms].some((t) => LAKARA_SET.has(t) || PURUSHA_SET.has(t) || TIN_ENDINGS.includes(t))
+    || !!out['लकार'] || !!out['पुरुष'];
+  if (krtDerived && !terms.has(krtDerived) && !authoredKrt.length && !isFinite) {
     out['कृत्'] = krtDerived;
   }
 
