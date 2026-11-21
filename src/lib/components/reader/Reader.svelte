@@ -2870,6 +2870,10 @@
         {/if}
         <footer class="credit">
           <p>{tMeta.source.edition}; source <code>{tMeta.source.file}</code>{#if tMeta.source.ref}, {tMeta.source.ref}{/if}.</p>
+          {#if (tMeta as any).translation}
+            {@const tr = (tMeta as any).translation}
+            <p>Translation: {tr.translator}, <i>{tr.title}</i> ({tr.publisher}, {tr.year}); public domain.</p>
+          {/if}
           <p>
             Segmentation and analysis by <a href="https://github.com/ambuda-org/vidyut" target="_blank" rel="noopener">vidyut</a>,
             checked and corrected by the editor. Meanings from Monier-Williams, <i>A Sanskrit-English Dictionary</i> (1899),

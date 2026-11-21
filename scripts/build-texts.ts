@@ -391,10 +391,26 @@ if (import.meta.main) {
     const dir = path.join(OUT, id);
     fs.rmSync(dir, { recursive: true, force: true });
     fs.mkdirSync(dir, { recursive: true });
-    const meta = { id, title: t.title, title_en: t.title_en, work: t.work, place: t.place, source: t.source, credit: CREDIT, parts: [] as any[] };
+    /*
+      A published translation of the text, where one is free to set under it
+      (content/texts/<id>/translation.yaml — the Kaṭha's is Hume's, 1921):
+      each section's English, and who made it, for the credit line. The reader
+      hides it until asked for in recall, as it does the graded readings'.
+    */
+    const trFile = path.join(process.cwd(), 'content/texts', id, 'translation.yaml');
+    const tr: any = fs.existsSync(trFile) ? parseYaml(fs.readFileSync(trFile, 'utf-8')) ?? {} : {};
+    const translationOf = (sid: string): string | undefined => {
+      const e = tr[sid];
+      return typeof e === 'string' ? e : e?.text;
+    };
+    const meta = { id, title: t.title, title_en: t.title_en, work: t.work, place: t.place, source: t.source, credit: CREDIT,
+      ...(tr.source ? { translation: tr.source } : {}), parts: [] as any[] };
     for (const part of parts) {
       const ids = new Set(part.sections.map((x) => x.id));
-      const secs = r.sections.filter((x) => ids.has(x.id)).map((x) => ({ ...x, text: linesOf(t.sections.find((y) => y.id === x.id)!) }));
+      const secs = r.sections.filter((x) => ids.has(x.id)).map((x) => {
+        const en = translationOf(x.id);
+        return { ...x, text: linesOf(t.sections.find((y) => y.id === x.id)!), ...(en ? { translation: en } : {}) };
+      });
       // only the tables this part's words light
       const keys = new Set(secs.flatMap((x) => x.words.flatMap((w) => w.padas.map((p) => (p as any).para?.key).filter(Boolean))));
       const used = Object.fromEntries(Object.entries(tables).filter(([k]) => keys.has(k)));
