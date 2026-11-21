@@ -52,13 +52,14 @@
   प्रबोधिता:
     fix:
       1: { lemma: प्रबुध्, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त णिच्, gloss: "persuaded, brought round" }
-  ब्राह्मण्याहयद्येवं:
+  ब्राह्मण्याह:
     split:
-      - { form: ब्राह्मणी, lemma: ब्राह्मणी, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "the Brahmin's wife" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: यदि, lemma: यदि, a: अव्यय, gloss: "if" }
+      - { form: ब्राह्मणी, lemma: ब्राह्मणी, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: the Brahmin's wife }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  यद्येवं:
+    split:
+      - { form: यदि, lemma: यदि, a: अव्यय, gloss: if }
       - { form: एवम्, lemma: एवम्, a: अव्यय, gloss: "so, thus" }
-    note: "ब्राह्मणी आह → ब्राह्मण्याह; the e-text then runs the verb into the speech (आह — यद्येवम् …)."
   तदस्ति:
     fix:
       1: { lemma: तत्, a: अव्यय, gloss: "then" }
@@ -431,11 +432,12 @@
     fix:
       1: { gloss: "again (भूयः अपि 'once more')" }
       2: { gloss: "too" }
-  प्राहथ:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  अथ:
+    split:
       - { form: अथ, lemma: अथ, a: अव्यय, gloss: "now, well then" }
-    note: "The e-text runs the verb into the speech: प्राह — अथ …"
   ज्ञायते:
     fix:
       1: { gloss: "is known" }
@@ -452,11 +454,12 @@
     fix:
       1: { gloss: "Tāmracūḍa (the mendicant)" }
     note: "ताम्रचूडः loses its visarga before the vowel आ."
-  आहभगवन्,:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "venerable sir!" }
-    note: The e-text runs the verb into the speech.
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भगवन्,:
+    split:
+      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: venerable sir! }
   ज्ञायते:
     fix:
       1: { gloss: "it is known" }
@@ -507,11 +510,12 @@
     fix:
       1: { gloss: "the guest" }
     note: "अभ्यागतः loses its visarga before the vowel आ."
-  आहस्ति:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "is there" }
-    note: "The e-text runs the verb into the speech and drops the अ of अस्ति: आह — अस्ति …"
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  अस्ति:
+    split:
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: is there }
   किञ्चित्खनित्रकम्:
     split:
       - { form: किम्, lemma: किम्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "what? — with चित्, 'any'" }
@@ -522,12 +526,13 @@
   स:
     fix:
       1: { gloss: "he" }
-  आहबाढमस्ति:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  बाढमस्ति:
+    split:
       - { form: बाढम्, lemma: बाढम्, a: अव्यय, gloss: "certainly, yes" }
-      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "there is" }
-    note: The e-text runs the verb into the speech.
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: there is }
 
 '2.84+23':
   एषा:
@@ -544,11 +549,12 @@
     fix:
       1: { gloss: "the guest" }
     note: "अभ्यागतः loses its visarga before the vowel आ."
-  आहतर्हि:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  तर्हि:
+    split:
       - { form: तर्हि, lemma: तर्हि, a: अव्यय, gloss: "then, in that case" }
-    note: The e-text runs the verb into the speech.
   प्रत्यूषे:
     split:
       - { form: प्रत्यूषे, lemma: प्रत्यूष, a: सप्तमी एकवचन पुंलिङ्ग, gloss: "at daybreak" }
@@ -1085,12 +1091,13 @@
     fix:
       1: { gloss: "enemy" }
       2: { a: अव्यय ल्यप्, gloss: "laughing" }
-  ताम्रचूडमुवाचभोः:
+  ताम्रचूडमुवाच:
     split:
-      - { form: ताम्रचूडम्, lemma: ताम्रचूड, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "Tāmracūḍa" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! look here!" }
-    note: The e-text runs the verb into the speech.
+      - { form: ताम्रचूडम्, lemma: ताम्रचूड, a: द्वितीया एकवचन पुंलिङ्ग, gloss: Tāmracūḍa }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! look here! }
   '!':
     split: []
     note: Punctuation, not a word.
@@ -3414,14 +3421,15 @@
       - { form: विकसित, lemma: विकसित, member: true, gloss: "blossomed" }
       - { form: वदन, lemma: वदन, member: true, gloss: "face" }
       - { form: कमला, lemma: कमल, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "lotus (बहुव्रीहि: 'her lotus face blooming')" }
-  तमाहकिमद्यापि:
+  तमाह:
     split:
-      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: किम्, lemma: किम्, a: अव्यय, gloss: "why?" }
-      - { form: अद्य, lemma: अद्य, a: अव्यय, gloss: "now" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: him }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+  किमद्यापि:
+    split:
+      - { form: किम्, lemma: किम्, a: अव्यय, gloss: why? }
+      - { form: अद्य, lemma: अद्य, a: अव्यय, gloss: now }
       - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even, still" }
-    note: The e-text runs the verb into the speech.
   मया:
     fix:
       1: { gloss: "me (with सह)" }

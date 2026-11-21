@@ -298,11 +298,13 @@
   स:
     fix:
       1: { a: प्रथमा एकवचन पुंलिङ्ग, gloss: "he" }
-  आहधिङ्मूर्ख:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: धिक्, lemma: धिक्, a: अव्यय, gloss: "fie!" }
-      - { form: मूर्ख, lemma: मूर्ख, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "fool!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  धिङ्मूर्ख:
+    split:
+      - { form: धिक्, lemma: धिक्, a: अव्यय, gloss: fie! }
+      - { form: मूर्ख, lemma: मूर्ख, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: fool! }
   '!':
     split: []
   नाहं:
@@ -413,9 +415,7 @@
     fix:
       1: { form: च, lemma: च, a: अव्यय, gloss: "and" }
     note: >-
-      A nominative स has nothing to agree with beside the instrumental
-      सुवर्णसिद्धिना ("it was said by Suvarṇasiddhi"); read च, the usual उक्तं
-      च, as a typing slip.
+      A nominative स has nothing to agree with beside the instrumental सुवर्णसिद्धिना ("it was said by Suvarṇasiddhi"); read च, the usual उक्तं च, as a typing slip.
   सुवर्णसिद्धिना:
     split:
       - { form: सुवर्णसिद्धिना, lemma: सुवर्णसिद्धि, a: तृतीया एकवचन पुंलिङ्ग, gloss: "by Suvarṇasiddhi (the narrator)" }
@@ -455,11 +455,13 @@
   चक्रधर:
     fix:
       1: { gloss: "Cakradhara (the name)" }
-  आहकथमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (story)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (story) }
 
 '5.38+2':
   सोऽब्रवीत्:
@@ -523,8 +525,7 @@
       - { form: देश, lemma: देश, member: true, gloss: "a country" }
       - { form: अन्तरम्, lemma: अन्तर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "another — 'another country'" }
     note: >-
-      वेशान्तरं is a typing slip for देशान्तरम्, "another country", which the
-      sense needs (they go abroad to study and later plan to return स्वदेशम्).
+      वेशान्तरं is a typing slip for देशान्तरम्, "another country", which the sense needs (they go abroad to study and later plan to return स्वदेशम्).
   गत्वा:
     fix:
       1: { gloss: "having gone" }
@@ -637,9 +638,7 @@
       - { form: उपाध्यायम्, lemma: उपाध्याय, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "the teacher" }
       - { form: उत्कलापयित्वा, lemma: उत्कलापय्, a: अव्यय क्त्वा, gloss: "having taken leave of" }
     note: >-
-      उत्कलापयति, "takes leave of, bids farewell to", is a verb of the
-      Pañcatantra's own idiom, not of the grammarians' lists; vidyut cannot
-      parse it.
+      उत्कलापयति, "takes leave of, bids farewell to", is a verb of the Pañcatantra's own idiom, not of the grammarians' lists; vidyut cannot parse it.
   स्वदेशं:
     split:
       - { form: स्व, lemma: स्व, member: true, gloss: "own" }
@@ -710,11 +709,13 @@
   तत्रैकः:
     fix:
       2: { gloss: "one (of them)" }
-  प्रोवाचकेन:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: केन, lemma: किम्, a: तृतीया एकवचन पुंलिङ्ग, gloss: "by which?" }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after प्रोवाच.
+  केन:
+    split:
+      - { form: केन, lemma: किम्, a: तृतीया एकवचन पुंलिङ्ग, gloss: by which? }
   मार्गेण:
     fix:
       1: { gloss: "road" }
@@ -773,9 +774,7 @@
       2: { lemma: अवलोक्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "was consulted" }
       3: { gloss: "the great (people) — in the proverb 'the great', taken by the fool as 'the crowd'" }
     note: >-
-      The proverb is the Mahābhārata's (the Yakṣa's questions), महाजनो येन गतः
-      स पन्थाः, "the path is the one the great have gone by"; the fool reads
-      महाजन as the crowd at the funeral. GRETIL omits the dash before it.
+      The proverb is the Mahābhārata's (the Yakṣa's questions), महाजनो येन गतः स पन्थाः, "the path is the one the great have gone by"; the fool reads महाजन as the crowd at the funeral. GRETIL omits the dash before it.
   येन:
     fix:
       1: { gloss: "by which (way)" }
@@ -948,9 +947,7 @@
       - { form: चित्, lemma: चित्, a: अव्यय, gloss: "with an interrogative: 'some-'" }
       - { form: उष्ट्रः, lemma: उष्ट्र, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "a camel" }
     note: >-
-      दुष्टो is a typing slip for उष्ट्रो (कश्चिदुष्ट्रो): the beast they see is
-      the camel whose swift gait they take for धर्म (धर्मस्य त्वरिता गतिः), and
-      they tie the donkey उष्ट्रग्रीवायाम्, to the camel's neck.
+      दुष्टो is a typing slip for उष्ट्रो (कश्चिदुष्ट्रो): the beast they see is the camel whose swift gait they take for धर्म (धर्मस्य त्वरिता गतिः), and they tie the donkey उष्ट्रग्रीवायाम्, to the camel's neck.
   दृष्टः:
     split:
       - { form: दृष्टः, lemma: दृश्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "was seen" }
@@ -1071,8 +1068,7 @@
       1: { form: यावत्, lemma: यावत्, a: अव्यय, gloss: "when" }
       2: { lemma: अग्र, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "ahead, further on" }
     note: >-
-      Read यावत्: the clause is closed by तावत् (… यान्ति तावत् काचिन्नदी), and
-      ततो stands in sandhi only before a soft sound (ततो यावत्, not ततो तावत्).
+      Read यावत्: the clause is closed by तावत् (… यान्ति तावत् काचिन्नदी), and ततो stands in sandhi only before a soft sound (ततो यावत्, not ततो तावत्).
   किञ्चित्स्तोकं:
     split:
       - { form: किञ्चित्, lemma: किञ्चित्, a: अव्यय, gloss: "somewhat" }
@@ -1279,8 +1275,7 @@
       1: { a: अव्यय, gloss: "(introducing the quotation)" }
       2: { gloss: "one who spins long threads, a procrastinator" }
     note: >-
-      The saying is दीर्घसूत्री विनश्यति, "the procrastinator perishes"; the fool
-      hears दीर्घसूत्र, "long threads", in his dish of vermicelli.
+      The saying is दीर्घसूत्री विनश्यति, "the procrastinator perishes"; the fool hears दीर्घसूत्र, "long threads", in his dish of vermicelli.
   विनश्यति:
     fix:
       1: { gloss: "perishes" }
@@ -1311,9 +1306,7 @@
     split:
       - { form: मण्डकाः, lemma: मण्डक, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "flat cakes" }
     note: >-
-      Read मण्डकाः, MW's maṇḍaka "a kind of baked flour-cake": the fool's
-      "what is spread too wide will not live long" needs a wide flat cake, and
-      भ/म is an easy slip. भण्डक is no food.
+      Read मण्डकाः, MW's maṇḍaka "a kind of baked flour-cake": the fool's "what is spread too wide will not live long" needs a wide flat cake, and भ/म is an easy slip. भण्डक is no food.
   दत्ताः:
     split:
       - { form: दत्ताः, lemma: दा, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "were given" }
@@ -1329,9 +1322,7 @@
       - { form: विस्तार, lemma: विस्तार, member: true, gloss: "breadth" }
       - { form: विस्तीर्णम्, lemma: विस्तॄ, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "spread out — 'spread out too wide'" }
     note: >-
-      तेनायुक्तं is a typing slip for तेनाप्युक्तम् (तेन अपि उक्तम्, "he too
-      said", as the second fool follows the first); GRETIL also drops the dash
-      before the quotation.
+      तेनायुक्तं is a typing slip for तेनाप्युक्तम् (तेन अपि उक्तम्, "he too said", as the second fool follows the first); GRETIL also drops the dash before the quotation.
   तद्भवेन्न:
     fix:
       1: { gloss: "that" }
@@ -1364,8 +1355,7 @@
     fix:
       1: { gloss: "a ring-shaped fried cake (vaṭikā, vaḍā)" }
     note: >-
-      Not MW's vāṭikā "a garden" but the fried cake with a hole in it (वटिका),
-      whence the fool's "in holes misfortunes multiply".
+      Not MW's vāṭikā "a garden" but the fried cake with a hole in it (वटिका), whence the fool's "in holes misfortunes multiply".
   भोजने:
     fix:
       1: { a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "for his meal" }
@@ -1425,13 +1415,15 @@
       1: { gloss: "went" }
 
 '5.40+12':
-  सुवर्णसिद्धिराहयत्त्वं:
+  सुवर्णसिद्धिराह:
     split:
-      - { form: सुवर्णसिद्धिः, lemma: सुवर्णसिद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Suvarṇasiddhi" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: यत्, lemma: यद्, a: अव्यय, gloss: "because" }
-      - { form: त्वम्, lemma: युष्मद्, a: प्रथमा एकवचन, gloss: "you" }
+      - { form: सुवर्णसिद्धिः, lemma: सुवर्णसिद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: Suvarṇasiddhi }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  यत्त्वं:
+    split:
+      - { form: यत्, lemma: यद्, a: अव्यय, gloss: because }
+      - { form: त्वम्, lemma: युष्मद्, a: प्रथमा एकवचन, gloss: you }
   लोकव्यवहारमजानन्मया:
     split:
       - { form: लोक, lemma: लोक, member: true, gloss: "the world" }
@@ -1454,8 +1446,7 @@
       - { form: अवस्थाम्, lemma: अवस्था, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "a state, plight" }
       - { form: उपगतः, lemma: उपगम्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "have come to" }
     note: >-
-      अवस्थातुम् is a typing slip for अवस्थाम्: the feminine ईदृशीम् needs a
-      feminine noun, and an infinitive cannot be its object.
+      अवस्थातुम् is a typing slip for अवस्थाम्: the feminine ईदृशीम् needs a feminine noun, and an infinitive cannot be its object.
 
 '5.40+13':
   अतोऽहं:
@@ -1484,11 +1475,13 @@
   चक्रधर:
     fix:
       1: { gloss: "Cakradhara" }
-  आहहो:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: हो, lemma: हो, a: अव्यय, gloss: "ho! (calling)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  अहो:
+    split:
+      - { form: हो, lemma: हो, a: अव्यय, gloss: ho! (calling) }
   अकारणमेतत्:
     fix:
       1: { gloss: "no cause, not the reason" }
@@ -1617,12 +1610,14 @@
       1: { lemma: जल, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "in the water" }
 
 '5.43+1':
-  सुवर्णसिद्धिराहकथमेतत्?:
+  सुवर्णसिद्धिराह:
     split:
-      - { form: सुवर्णसिद्धिः, lemma: सुवर्णसिद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Suvarṇasiddhi" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (story)" }
+      - { form: सुवर्णसिद्धिः, lemma: सुवर्णसिद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: Suvarṇasiddhi }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (story) }
 
 '5.43+2':
   स:
@@ -1821,11 +1816,13 @@
   मण्डूक:
     fix:
       1: { gloss: "the frog" }
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   शतबुद्धे:
     split:
       - { form: शत, lemma: शत, member: true, gloss: "a hundred" }
@@ -1892,11 +1889,13 @@
   प्रहस्य:
     fix:
       1: { lemma: प्रहस्, a: अव्यय ल्यप्, gloss: "laughing" }
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   मित्र:
     fix:
       1: { gloss: "friend!" }
@@ -2014,13 +2013,15 @@
     split:
       - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
       - { form: आकर्ण्य, lemma: आकर्णय्, a: अव्यय ल्यप्, gloss: "having heard" }
-  शतबुद्धिराहभोः:
+  शतबुद्धिराह:
     split:
-      - { form: शत, lemma: शत, member: true, gloss: "a hundred" }
-      - { form: बुद्धिः, lemma: बुद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "wits — 'Hundred-Wits'" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
+      - { form: शत, lemma: शत, member: true, gloss: a hundred }
+      - { form: बुद्धिः, lemma: बुद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: wits — 'Hundred-Wits' }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   युक्तमुक्तं:
     fix:
       1: { lemma: युज्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "rightly" }
@@ -2210,11 +2211,13 @@
   मण्डूक:
     fix:
       1: { gloss: "the frog" }
-  आहभद्रौ:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भद्रौ, lemma: भद्र, a: सम्बोधन द्विवचन पुंलिङ्ग, gloss: "good friends! (to the two fish)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  भद्रौ:
+    split:
+      - { form: भद्रौ, lemma: भद्र, a: सम्बोधन द्विवचन पुंलिङ्ग, gloss: good friends! (to the two fish) }
   '!':
     split: []
   मम:
@@ -2519,14 +2522,16 @@
   सुवर्णसिद्धिः:
     split:
       - { form: सुवर्णसिद्धिः, lemma: सुवर्णसिद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Suvarṇasiddhi" }
-  प्राहयद्यप्येतदस्ति,:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: यदि, lemma: यदि, a: अव्यय, gloss: "if" }
-      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even — यद्यपि 'although'" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "is (so)" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after प्राह.
+  यद्यप्येतदस्ति,:
+    split:
+      - { form: यदि, lemma: यदि, a: अव्यय, gloss: if }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: even — यद्यपि 'although' }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: is (so) }
   तथापि:
     fix:
       1: { gloss: "so" }
@@ -2620,11 +2625,13 @@
   चक्रधर:
     fix:
       1: { gloss: "Cakradhara" }
-  आहकथमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (story)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (story) }
 
 '5.49+2':
   सोऽब्रवीत्:
@@ -2889,11 +2896,13 @@
   स:
     fix:
       1: { a: प्रथमा एकवचन पुंलिङ्ग, gloss: "he" }
-  आहमाम:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "uncle! (a familiar address)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  माम:
+    split:
+      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: uncle! (a familiar address) }
   '!':
     split: []
   किमनेन:
@@ -2938,9 +2947,7 @@
     split:
       - { form: कासी, lemma: कासिन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "one with a cough" }
     note: >-
-      कांसी is a typing slip for कासी, "one who coughs": the verse pairs each
-      weakness with what it betrays (a cough, theft; sleepiness, a harlot;
-      illness, a greedy tongue).
+      कांसी is a typing slip for कासी, "one who coughs": the verse pairs each weakness with what it betrays (a cough, theft; sleepiness, a harlot; illness, a greedy tongue).
   विवर्जयेच्चौर्यं:
     split:
       - { form: विवर्जयेत्, lemma: विवृज्, a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद णिच्, gloss: "should avoid" }
@@ -3074,11 +3081,13 @@
     split:
       - { form: रासभः, lemma: रासभ, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the donkey" }
     note: राभस is a typing slip for रासभ (the स and भ swapped).
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   वनाश्रयत्वात्त्वं:
     split:
       - { form: वन, lemma: वन, member: true, gloss: "the forest" }
@@ -3140,11 +3149,13 @@
   शृगाल:
     fix:
       1: { gloss: "the jackal" }
-  आहमाम,:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "uncle!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  माम,:
+    split:
+      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: uncle! }
   अस्त्येतत्:
     fix:
       1: { a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "is (so)" }
@@ -3190,13 +3201,15 @@
   रासभ:
     fix:
       1: { gloss: "the donkey" }
-  आहधिग्धिङ्मूर्ख:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: धिक्, lemma: धिक्, a: अव्यय, gloss: "fie!" }
-      - { form: धिक्, lemma: धिक्, a: अव्यय, gloss: "fie!" }
-      - { form: मूर्ख, lemma: मूर्ख, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "fool!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  धिग्धिङ्मूर्ख:
+    split:
+      - { form: धिक्, lemma: धिक्, a: अव्यय, gloss: fie! }
+      - { form: धिक्, lemma: धिक्, a: अव्यय, gloss: fie! }
+      - { form: मूर्ख, lemma: मूर्ख, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: fool! }
   '!':
     split: []
   किमहं:
@@ -3237,9 +3250,7 @@
       - { form: च, lemma: च, a: अव्यय, gloss: "and" }
       - { form: एकविंशतिः, lemma: एकविंशति, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "twenty-one" }
     note: >-
-      Two slips for मूर्च्छनाश्चैकविंशतिः: music counts twenty-one मूर्च्छनाs
-      (seven on each of the three ग्रामs); the -त्रिंशति- has crept in from the
-      next verse's षट्त्रिंशतिः.
+      Two slips for मूर्च्छनाश्चैकविंशतिः: music counts twenty-one मूर्च्छनाs (seven on each of the three ग्रामs); the -त्रिंशति- has crept in from the next verse's षट्त्रिंशतिः.
   तानास्त्वेकोनपञ्चाशत्तिस्रो:
     split:
       - { form: तानाः, lemma: तान, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "tones (tāna)" }
@@ -3288,8 +3299,7 @@
       - { form: चत्वारिंशत्, lemma: चत्वारिंशत्, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "forty" }
       - { form: ततः, lemma: ततस्, a: अव्यय, gloss: "then, next" }
     note: >-
-      त्रिंशतिः for the usual त्रिंशत् is kept: the line needs its eight
-      syllables (रागाः षट्त्रिंशतिर्भावाः), so the verse's own form.
+      त्रिंशतिः for the usual त्रिंशत् is kept: the line needs its eight syllables (रागाः षट्त्रिंशतिर्भावाः), so the verse's own form.
   स्मृताः:
     fix:
       1: { lemma: स्मृ, a: प्रथमा बहुवचन पुंलिङ्ग क्त, gloss: "are reckoned, are taught" }
@@ -3386,11 +3396,13 @@
   शृगाल:
     fix:
       1: { gloss: "the jackal" }
-  आहमाम:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "uncle!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: GRETIL runs the speech on without the edition's dash after आह.
+  माम:
+    split:
+      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: uncle! }
   '!':
     split: []
   यद्येवं:

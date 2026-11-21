@@ -88,11 +88,13 @@
       - { form: कर, lemma: कर, member: true, gloss: "hand" }
       - { form: युगलः, lemma: युगल, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "pair" }
     note: A बहुव्रीहि, "with his two hands joined" in supplication.
-  सविनयमुवाचस्वामिन्!:
+  सविनयमुवाच:
     split:
       - { form: सविनयम्, lemma: सविनयम्, a: अव्यय, gloss: "humbly, respectfully" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: स्वामिन्, lemma: स्वामिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "lord!" }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  स्वामिन्!:
+    split:
+      - { form: स्वामिन्, lemma: स्वामिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: lord! }
   त्वदीयोऽहं:
     fix:
       1: { gloss: "your (servant)" }
@@ -137,10 +139,12 @@
   सिंहः:
     fix:
       1: { gloss: "the lion" }
-  प्राहभोः:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्राह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+      - { form: प्राह, lemma: प्राह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! }
   "!":
     split: []
   नाहमन्येन:
@@ -185,12 +189,14 @@
   शृगालः:
     fix:
       1: { gloss: "the jackal" }
-  सानन्दमाहयुक्तमिदं:
+  सानन्दमाह:
     split:
-      - { form: सानन्दम्, lemma: सानन्दम्, a: अव्यय, gloss: "joyfully" }
-      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: सानन्दम्, lemma: सानन्दम्, a: अव्यय, gloss: joyfully }
+      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  युक्तमिदं:
+    split:
       - { form: युक्तम्, lemma: युज्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "fitting, proper" }
-      - { form: इदम्, lemma: इदम्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
+      - { form: इदम्, lemma: इदम्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
   स्वामिनो:
     fix:
       1: { a: षष्ठी एकवचन पुंलिङ्ग, gloss: "of a master" }
@@ -429,12 +435,14 @@
       - { form: गर्वात्, lemma: गर्व, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "out of pride, haughtily" }
       - { form: उन्नत, lemma: उन्नत, member: true, gloss: "raised" }
       - { form: कन्धरः, lemma: कन्धर, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "neck (उन्नतकन्धर \"with neck held high\")" }
-  ससम्भ्रममुवाचमाम:
+  ससम्भ्रममुवाच:
     split:
       - { form: ससम्भ्रमम्, lemma: ससम्भ्रमम्, a: अव्यय, gloss: "in agitation, hurriedly" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "uncle!" }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: माम (vocative of माम, "uncle") is the jackal's familiar address to the tiger.
+  माम:
+    split:
+      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: uncle! }
   "!":
     split: []
   कथमत्र:
@@ -592,11 +600,13 @@
   व्याघ्रः:
     fix:
       1: { gloss: "the tiger" }
-  सन्त्रस्तमाहभो:
+  सन्त्रस्तमाह:
     split:
-      - { form: सन्त्रस्तम्, lemma: सन्त्रस्तम्, a: अव्यय, gloss: "in terror" }
-      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+      - { form: सन्त्रस्तम्, lemma: सन्त्रस्तम्, a: अव्यय, gloss: in terror }
+      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! }
   भागिनेय:
     fix:
       1: { gloss: "nephew!" }
@@ -722,12 +732,14 @@
   निश्चित्य:
     fix:
       1: { a: अव्यय ल्यप्, gloss: "having decided" }
-  तमप्युवाचभो:
+  तमप्युवाच:
     split:
-      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
-      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "too" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: him }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: too }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! }
   भगिनीसुत:
     split:
       - { form: भगिनी, lemma: भगिनी, member: true, gloss: "sister" }
@@ -841,10 +853,12 @@
   स:
     fix:
       1: { gloss: "he (the leopard)" }
-  आहमाम,:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "uncle!" }
+      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  माम,:
+    split:
+      - { form: माम, lemma: माम, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: uncle! }
   तदेवं:
     fix:
       1: { a: अव्यय, gloss: "if" }
@@ -941,10 +955,12 @@
   शृगाल:
     fix:
       1: { gloss: "the jackal" }
-  आहभो:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! }
   अधीर:
     fix:
       1: { a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "timid one!" }
@@ -1271,11 +1287,13 @@
   मकर:
     fix:
       1: { gloss: "the crocodile" }
-  आहकथमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
+      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
 
 '4.83+2':
   वानरोऽब्रवीत्:
@@ -1564,10 +1582,12 @@
   स:
     fix:
       1: { gloss: "he" }
-  आहकिं:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: किम्, lemma: किम्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "what?" }
+      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  किं:
+    split:
+      - { form: किम्, lemma: किम्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: what? }
   कथ्यते:
     split:
       - { form: कथ्यते, lemma: कथ्, a: लट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि चुरादि, gloss: "is (there) to be told" }
@@ -2349,10 +2369,12 @@
   दत्त्वा:
     fix:
       1: { gloss: "having given" }
-  प्रोवाचभोः:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "spoke" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: spoke }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! }
   श्रेष्ठिन्!:
     fix:
       1: { a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "merchant!" }
@@ -2644,12 +2666,14 @@
   सन्तोष्य:
     split:
       - { form: सन्तोष्य, lemma: सन्तुष्, a: अव्यय ल्यप् णिच्, gloss: "having satisfied, paid off" }
-  प्रोवाचतदेतद्धनं:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: तत्, lemma: तद्, a: अव्यय, gloss: "so" }
-      - { form: एतत्, lemma: एतद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: धनम्, lemma: धन, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "money" }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  तदेतद्धनं:
+    split:
+      - { form: तत्, lemma: तद्, a: अव्यय, gloss: so }
+      - { form: एतत्, lemma: एतद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: धनम्, lemma: धन, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: money }
   वस्त्राणि:
     fix:
       1: { a: द्वितीया बहुवचन नपुंसकलिङ्ग, gloss: "clothes" }
@@ -3056,13 +3080,15 @@
       - { form: उत्तरीय, lemma: उत्तरीय, member: true, gloss: "upper garment" }
       - { form: निबद्ध, lemma: निबद्ध, member: true, gloss: "tied" }
       - { form: ग्रन्थिः, lemma: ग्रन्थि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "knot (with a knot tied in his upper cloth)" }
-  सप्रश्रयमिदमाहभगवनद्य:
+  सप्रश्रयमिदमाह:
     split:
-      - { form: सप्रश्रयम्, lemma: सप्रश्रयम्, a: अव्यय, gloss: "respectfully" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "venerable sir!" }
-      - { form: अद्य, lemma: अद्य, a: अव्यय, gloss: "today" }
+      - { form: सप्रश्रयम्, lemma: सप्रश्रयम्, a: अव्यय, gloss: respectfully }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भगवनद्य:
+    split:
+      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: venerable sir! }
+      - { form: अद्य, lemma: अद्य, a: अव्यय, gloss: today }
   विहरणक्रिया:
     split:
       - { form: विहरण, lemma: विहरण, member: true, gloss: "the alms-round" }
@@ -3088,10 +3114,12 @@
     fix:
       1: { gloss: "the barber" }
     note: As printed, the barber goes on speaking (आह) as if answering an objection — "I know your rule; but many lay followers invite you…"; the monk's refusal itself is not in Jha's text.
-  आहभगवन्!:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "venerable sir!" }
+      - { form: आह, lemma: अह्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भगवन्!:
+    split:
+      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: venerable sir! }
   वेद्म्यहं:
     split:
       - { form: वेद्मि, lemma: विद्, a: लट् उत्तमपुरुष एकवचन परस्मैपद, gloss: "know" }

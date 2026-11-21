@@ -199,10 +199,12 @@
   सिंहः:
     fix:
       1: { gloss: "the lion" }
-  शृगालमाहपाप:
+  शृगालमाह:
     split:
-      - { form: शृगालम्, lemma: शृगाल, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "to the jackal" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: शृगालम्, lemma: शृगाल, a: द्वितीया एकवचन पुंलिङ्ग, gloss: to the jackal }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  पाप:
+    split:
       - { form: पाप, lemma: पाप, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "wretch, villain" }
   '!':
     split: []
@@ -234,10 +236,12 @@
   शृगालः:
     fix:
       1: { gloss: "the jackal" }
-  'सविनयमाहस्वामिन्!':
+  सविनयमाह:
     split:
       - { form: सविनयम्, lemma: सविनय, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "humbly, politely" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  स्वामिन्!:
+    split:
       - { form: स्वामिन्, lemma: स्वामिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "master, lord" }
   मा:
     fix:
@@ -403,11 +407,13 @@
   मकर:
     fix:
       1: { gloss: "the crocodile" }
-  'आहकथमेतत्?':
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (story)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (story) }
 
 '4.38+2':
   स:
@@ -819,10 +825,12 @@
   स:
     fix:
       1: { gloss: "he" }
-  आहदेव:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  देव:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty }
   '!':
     split: []
   नायं:
@@ -910,11 +918,13 @@
   राजा:
     fix:
       1: { gloss: "the king" }
-  सव्रीडमाहहो:
+  सव्रीडमाह:
     split:
       - { form: सव्रीडम्, lemma: सव्रीड, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "with shame, abashed" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अहो, lemma: अहो, a: अव्यय, gloss: "ah! alas!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  अहो:
+    split:
+      - { form: अहो, lemma: अहो, a: अव्यय, gloss: ah! alas! }
   वञ्चितोऽहं:
     fix:
       1: { a: प्रथमा एकवचन पुंलिङ्ग क्त णिच्, gloss: "deceived" }
@@ -951,10 +961,12 @@
   कुम्भकार:
     fix:
       1: { gloss: "the potter" }
-  आहमा:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: मा, lemma: मा, a: अव्यय, gloss: "do not (prohibitive)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  मा:
+    split:
+      - { form: मा, lemma: मा, a: अव्यय, gloss: do not (prohibitive) }
   मैवं:
     split:
       - { form: मा, lemma: मा, a: अव्यय, gloss: 'do not (मा मा "no, no")' }
@@ -982,12 +994,14 @@
   राजा:
     fix:
       1: { gloss: "the king" }
-  प्राहसर्वगुणसम्पन्नो:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: सर्व, lemma: सर्व, member: true, gloss: "all" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  सर्वगुणसम्पन्नो:
+    split:
+      - { form: सर्व, lemma: सर्व, member: true, gloss: all }
       - { form: गुण, lemma: गुण, member: true, gloss: "virtue, merit" }
-      - { form: सम्पन्नः, lemma: सम्पद्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "endowed with" }
+      - { form: सम्पन्नः, lemma: सम्पद्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: endowed with }
   भवान्:
     fix:
       1: { lemma: भवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "you (respectful)" }
@@ -1043,11 +1057,13 @@
   कुलाल:
     fix:
       1: { gloss: "the potter" }
-  'आहकथमेतत्?':
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (story)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (story) }
 
 '4.39+2':
   राजा:
@@ -1232,10 +1248,12 @@
   सिंह:
     fix:
       1: { gloss: "the lion" }
-  आहप्रिये:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: प्रिये, lemma: प्रिया, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "my dear" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  प्रिये:
+    split:
+      - { form: प्रिये, lemma: प्रिया, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: my dear }
   '!':
     split: []
   मयाद्यैनं:
@@ -1346,10 +1364,12 @@
   सा:
     fix:
       1: { gloss: "she" }
-  प्राहभोः:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O! (a call)" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! (a call) }
   कान्त:
     fix:
       1: { gloss: "dear husband" }
@@ -1744,13 +1764,15 @@
   तौ:
     fix:
       1: { a: द्वितीया द्विवचन पुंलिङ्ग, gloss: "the two of them" }
-  निर्भर्त्सयन्परुषतरवचनान्युवाचततः:
+  निर्भर्त्सयन्परुषतरवचनान्युवाच:
     split:
-      - { form: निर्भर्त्सयन्, lemma: निर्भर्त्स्, a: प्रथमा एकवचन पुंलिङ्ग शतृ चुरादि, gloss: "scolding" }
+      - { form: निर्भर्त्सयन्, lemma: निर्भर्त्स्, a: प्रथमा एकवचन पुंलिङ्ग शतृ चुरादि, gloss: scolding }
       - { form: परुषतर, lemma: परुषतर, member: true, gloss: "harsher, very harsh" }
-      - { form: वचनानि, lemma: वचन, a: द्वितीया बहुवचन नपुंसकलिङ्ग, gloss: "words" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "spoke" }
-      - { form: ततः, lemma: ततस्, a: अव्यय, gloss: "then" }
+      - { form: वचनानि, lemma: वचन, a: द्वितीया बहुवचन नपुंसकलिङ्ग, gloss: words }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: spoke }
+  ततः:
+    split:
+      - { form: ततः, lemma: ततस्, a: अव्यय, gloss: then }
   सिंह्यैकान्ते:
     split:
       - { form: सिंह्या, lemma: सिंही, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "by the lioness" }
@@ -1787,16 +1809,18 @@
   अथासौ:
     fix:
       2: { gloss: "he" }
-  प्रभूतकोपाविष्टस्तामुवाचकिमहमेताभ्यां:
+  प्रभूतकोपाविष्टस्तामुवाच:
     split:
       - { form: प्रभूत, lemma: प्रभूत, member: true, gloss: "great, abundant" }
-      - { form: कोप, lemma: कोप, member: true, gloss: "anger" }
+      - { form: कोप, lemma: कोप, member: true, gloss: anger }
       - { form: आविष्टः, lemma: आविश्, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "possessed by, filled with" }
-      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "to her" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: किम्, lemma: किम्, a: अव्यय, gloss: "(marks a question)" }
-      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: "I" }
-      - { form: एताभ्याम्, lemma: एतद्, a: पञ्चमी द्विवचन पुंलिङ्ग, gloss: "than these two" }
+      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: to her }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  किमहमेताभ्यां:
+    split:
+      - { form: किम्, lemma: किम्, a: अव्यय, gloss: (marks a question) }
+      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: I }
+      - { form: एताभ्याम्, lemma: एतद्, a: पञ्चमी द्विवचन पुंलिङ्ग, gloss: than these two }
   शौर्येण:
     fix:
       1: { gloss: "in valour" }
@@ -1851,12 +1875,14 @@
       2: { gloss: "wishing (to save)" }
       3: { gloss: "inwardly" }
       4: { a: अव्यय ल्यप्, gloss: "laughing — 'laughing to herself'" }
-  प्राहतत्सम्यक्शृणु:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  तत्सम्यक्शृणु:
+    split:
       - { form: तत्, lemma: तद्, a: अव्यय, gloss: "then, so" }
       - { form: सम्यक्, lemma: सम्यक्, a: अव्यय, gloss: "properly, carefully" }
-      - { form: शृणु, lemma: श्रु, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "listen" }
+      - { form: शृणु, lemma: श्रु, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: listen }
 
 '4.43+7':
   त्वं:
@@ -2145,11 +2171,13 @@
   मकर:
     fix:
       1: { gloss: "the crocodile" }
-  'आहकथमेतत्?':
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (story)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (story) }
 
 '4.44+2':
   वानर:
@@ -3227,10 +3255,12 @@
   सा:
     fix:
       1: { gloss: "she" }
-  'प्राहदेव,':
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  देव,:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty }
   मया:
     split:
       - { form: मया, lemma: अस्मद्, a: तृतीया एकवचन, gloss: "by me" }
@@ -3246,11 +3276,13 @@
   ब्राह्मण:
     fix:
       1: { gloss: "the brahmin" }
-  आहयन्मया:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: यत्, lemma: यद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "which" }
-      - { form: मया, lemma: अस्मद्, a: तृतीया एकवचन, gloss: "by me" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  यन्मया:
+    split:
+      - { form: यत्, lemma: यद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: which }
+      - { form: मया, lemma: अस्मद्, a: तृतीया एकवचन, gloss: by me }
   त्रिवाचिकं:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "declared three times" }
@@ -3360,10 +3392,12 @@
   वानरः:
     fix:
       1: { gloss: "the monkey" }
-  पुनराहसाधु:
+  पुनराह:
     split:
       - { form: पुनः, lemma: पुनर्, a: अव्यय, gloss: "again, further" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  साधु:
+    split:
       - { form: साधु, lemma: साधु, a: अव्यय, gloss: "well, aptly" }
   चेदमुपाख्यानकं:
     split:
@@ -3420,11 +3454,13 @@
   मकर:
     fix:
       1: { gloss: "the crocodile" }
-  'आहकथमेतत्?':
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (story)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (story) }
 
 '4.45+2':
   वानरः:

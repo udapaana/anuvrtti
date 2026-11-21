@@ -120,12 +120,14 @@
   सकरुणं:
     split:
       - { form: सकरुणम्, lemma: सकरुण, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "piteously (an accusative used as an adverb)" }
-  विलप्येदमाहभो:
+  विलप्येदमाह:
     split:
-      - { form: विलप्य, lemma: विलप्, a: अव्यय ल्यप्, gloss: "lamenting" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
+      - { form: विलप्य, lemma: विलप्, a: अव्यय ल्यप्, gloss: lamenting }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   मित्राणि:
     split:
       - { form: मित्राणि, lemma: मित्र, a: सम्बोधन बहुवचन नपुंसकलिङ्ग, gloss: "friends" }
@@ -735,10 +737,12 @@
       - { form: आर्द्र, lemma: आर्द्र, member: true, gloss: "moist, softened" }
       - { form: हृदयः, lemma: हृदय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "heart (-हृदयः 'whose heart')" }
     note: "A बहुव्रीहि: 'his heart softened by remembering his (Sañjīvaka's) virtues'."
-  प्रोवाचभोः,:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ah!" }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः,:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ah! }
   अयुक्तं:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "a wrong thing, improper" }
@@ -942,12 +946,14 @@
   समेत्य:
     split:
       - { form: समेत्य, lemma: समि, a: अव्यय ल्यप्, gloss: "approaching" }
-  सहर्षमिदमाहदेव,:
+  सहर्षमिदमाह:
     split:
-      - { form: सहर्षम्, lemma: सहर्ष, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "joyfully (an accusative used as an adverb)" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty" }
+      - { form: सहर्षम्, lemma: सहर्ष, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: joyfully (an accusative used as an adverb) }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  देव,:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty }
   कातरतमस्तवैष:
     split:
       - { form: कातरतमः, lemma: कातरतम, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "most faint-hearted" }
@@ -1580,12 +1586,14 @@
   गत्वा:
     fix:
       1: { gloss: "going (to)" }
-  सर्वान्विहङ्गमान्प्रोवाचभोः:
+  सर्वान्विहङ्गमान्प्रोवाच:
     split:
-      - { form: सर्वान्, lemma: सर्व, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "all" }
-      - { form: विहङ्गमान्, lemma: विहङ्गम, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "birds" }
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! (calling attention)" }
+      - { form: सर्वान्, lemma: सर्व, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: all }
+      - { form: विहङ्गमान्, lemma: विहङ्गम, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: birds }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! (calling attention) }
   '!':
     split: []
   अयं:
@@ -1982,13 +1990,15 @@
   दृष्ट्वा:
     fix:
       1: { gloss: "seeing" }
-  तान्कपोतानूचेअहो,:
+  तान्कपोतानूचे:
     fix:
-      1: { gloss: "those" }
-      2: { gloss: "pigeons" }
-      3: { a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "said (to)" }
-      4: { gloss: "ho!" }
-    note: "ऊचे, the ātmanepada perfect of वच्, is used in this text as 'said', with the hearers in the accusative."
+      "1": { gloss: those }
+      "2": { gloss: pigeons }
+      "3": { a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: said (to) }
+    note: ऊचे, the ātmanepada perfect of वच्, is used in this text as 'said', with the hearers in the accusative.
+  अहो,:
+    fix:
+      "1": { gloss: ho! }
   भेतव्यम्:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग तव्य, gloss: "to be feared (न भेतव्यम् 'do not be afraid')" }
@@ -2399,11 +2409,13 @@
   ज्ञात्वा:
     fix:
       1: { gloss: "knowing" }
-  तानुवाचभोः:
+  तानुवाच:
     split:
-      - { form: तान्, lemma: तद्, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "them" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! (calling attention)" }
+      - { form: तान्, lemma: तद्, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: them }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! (calling attention) }
   '!':
     split: []
   निवृत्तः:
@@ -2670,11 +2682,13 @@
     split:
       - { form: तार, lemma: तार, member: true, gloss: "loud, high" }
       - { form: स्वरेण, lemma: स्वर, a: तृतीया एकवचन पुंलिङ्ग, gloss: "in a voice" }
-  प्रोवाचभो:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "called out" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: called out }
     note: "भोः before a voiced sound loses its visarga (8.3.17, 8.3.22): भो भो मित्र."
+  भो#2:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! }
   भो:
     split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
@@ -2720,11 +2734,13 @@
       - { form: बिल, lemma: बिल, member: true, gloss: "a hole, burrow" }
       - { form: दुर्ग, lemma: दुर्ग, member: true, gloss: "a fortress" }
       - { form: अन्तर्गतः, lemma: अन्तर्गत, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "being inside" }
-  सन्प्रोवाचभोः:
+  सन्प्रोवाच:
     split:
-      - { form: सन्, lemma: अस्, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: "being" }
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "sir!" }
+      - { form: सन्, lemma: अस्, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: being }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: sir! }
   '!':
     split: []
   को:
@@ -2770,10 +2786,12 @@
     fix:
       1: { gloss: "Citragrīva" }
     note: "चित्रग्रीवः before a vowel loses its visarga (8.3.17, 8.3.19): चित्रग्रीव आह."
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "sir!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: sir! }
   '!':
     split: []
   चित्रग्रीवो:
@@ -2960,12 +2978,14 @@
   हिरण्यकः:
     fix:
       1: { gloss: "Hiraṇyaka" }
-  सविषादमिदमाहभोः,:
+  सविषादमिदमाह:
     split:
-      - { form: सविषादम्, lemma: सविषाद, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "sadly (an accusative used as an adverb)" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "sir!" }
+      - { form: सविषादम्, lemma: सविषाद, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: sadly (an accusative used as an adverb) }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः,:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: sir! }
   किमेतत्?:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "what?" }
@@ -2976,10 +2996,12 @@
     fix:
       1: { gloss: "he" }
     note: "सः before a vowel other than अ loses its visarga (8.3.17, 8.3.19): स आह."
-  आहभोः,:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "sir!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः,:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: sir! }
   जानन्नपि:
     fix:
       1: { gloss: "knowing" }

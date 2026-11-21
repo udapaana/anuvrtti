@@ -2859,11 +2859,13 @@
   दमनक:
     fix:
       1: { gloss: "Damanaka (a jackal)" }
-  आहभोः:
+  आह:
     split:
       - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "says, said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "sir!" }
-    note: "The edition runs आह and भोः together."
+    note: The edition runs आह and भोः together.
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: sir! }
   सत्यमभिहितं:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "truly, rightly" }
@@ -2956,13 +2958,15 @@
     split:
       - { form: पिङ्गलक, lemma: पिङ्गलक, member: true, gloss: "Piṅgalaka" }
       - { form: सकाशम्, lemma: सकाश, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "presence (… 'up to Piṅgalaka')" }
-  गत्वेदमाहस्वामिन्न:
+  गत्वेदमाह:
     split:
-      - { form: गत्वा, lemma: गम्, a: अव्यय क्त्वा, gloss: "having gone" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: स्वामिन्, lemma: स्वामिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "master" }
-      - { form: न, lemma: न, a: अव्यय, gloss: "not" }
+      - { form: गत्वा, lemma: गम्, a: अव्यय क्त्वा, gloss: having gone }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  स्वामिन्न:
+    split:
+      - { form: स्वामिन्, lemma: स्वामिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: master }
+      - { form: न, lemma: न, a: अव्यय, gloss: not }
   तत्प्राकृतं:
     fix:
       1: { gloss: "that" }
@@ -3117,13 +3121,15 @@
   दमनक:
     fix:
       1: { gloss: "Damanaka (a jackal)" }
-  आहस्वामिनेतदभिहितं:
+  आह:
     split:
       - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "says, said" }
-      - { form: स्वामिन्, lemma: स्वामिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "master" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: अभिहितम्, lemma: अभिधा, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "was said" }
-    note: "The edition runs आह into the next word and prints स्वामिनेतत् for स्वामिन्नेतत् (a final न् after a short vowel doubles before a vowel, 8.3.32)."
+    note: The edition runs आह into the next word and prints स्वामिनेतत् for स्वामिन्नेतत् (a final न् after a short vowel doubles before a vowel, 8.3.32).
+  स्वामिनेतदभिहितं:
+    split:
+      - { form: स्वामिन्, lemma: स्वामिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: master }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: अभिहितम्, lemma: अभिधा, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: was said }
   मया:
     fix:
       1: { form: मया, lemma: अस्मद्, a: तृतीया एकवचन, gloss: "by me" }

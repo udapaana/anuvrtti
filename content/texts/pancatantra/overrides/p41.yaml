@@ -743,12 +743,14 @@
     fix:
       1: { lemma: गृह, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "home" }
       2: { gloss: "having come to" }
-  तामाहसुभगे:
+  तामाह:
     split:
-      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "to her" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: "said" }
-      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "my lovely!" }
+      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: to her }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: said }
     note: "GRETIL runs the speech into आह (the edition's dash is lost): read आह — सुभगे."
+  सुभगे:
+    split:
+      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: my lovely! }
   '!':
     split: []
   लब्धोऽयं:
@@ -868,13 +870,15 @@
     split:
       - { form: विकल, lemma: विकल, member: true, gloss: "impaired" }
       - { form: अक्षम्, lemma: अक्ष, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "eye (अक्षि, -अक्ष ending a बहुव्रीहि) — 'the blind man'" }
-  सप्रश्रयमुवाचार्यपुत्र:
+  सप्रश्रयमुवाच:
     split:
       - { form: सप्रश्रयम्, lemma: सप्रश्रयम्, a: अव्यय, gloss: "courteously, respectfully" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: "said" }
-      - { form: आर्य, lemma: आर्य, member: true, gloss: "noble" }
-      - { form: पुत्र, lemma: पुत्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "son — आर्यपुत्र 'my lord' (a wife to her husband)" }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: said }
     note: "GRETIL runs the speech into उवाच (the edition's dash is lost): read उवाच — आर्यपुत्र."
+  आर्यपुत्र:
+    split:
+      - { form: आर्य, lemma: आर्य, member: true, gloss: noble }
+      - { form: पुत्र, lemma: पुत्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: son — आर्यपुत्र 'my lord' (a wife to her husband) }
   '!':
     split: []
   तवाभीष्टं:
@@ -1293,13 +1297,15 @@
       - { form: इति, lemma: इति, a: अव्यय, gloss: "thus (closing the quotation)" }
 
 '5.93+25':
-  सुवर्णसिद्धिराहभोः:
+  सुवर्णसिद्धिराह:
     split:
-      - { form: सुवर्ण, lemma: सुवर्ण, member: true, gloss: "gold" }
+      - { form: सुवर्ण, lemma: सुवर्ण, member: true, gloss: gold }
       - { form: सिद्धिः, lemma: सिद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "success — Suvarṇasiddhi, 'Gold-Winner' (a name)" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "sir!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: said }
     note: "GRETIL runs the speech into आह (the edition's dash is lost): read आह — भोः. The name is a बहुव्रीहि, masculine."
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: sir! }
   सत्यमेतत्:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "true" }
@@ -1406,12 +1412,14 @@
   चक्रधर:
     fix:
       1: { gloss: "Cakradhara, 'the wheel-bearer' (the man with the wheel on his head)" }
-  आहकथमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: said }
     note: "GRETIL runs the question into आह (the edition's dash is lost): read आह — कथम् एतत्?"
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
 
 '5.94+2':
   सोऽब्रवीत्:
@@ -1480,13 +1488,15 @@
     fix:
       1: { gloss: "it (the bird)" }
       2: { gloss: "too, and" }
-  भक्षयन्निदमाहहो:
+  भक्षयन्निदमाह:
     split:
-      - { form: भक्षयन्, lemma: भक्ष्, a: प्रथमा एकवचन पुंलिङ्ग शतृ चुरादि, gloss: "eating (it)" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: "said" }
-      - { form: अहो, lemma: अहो, a: अव्यय, gloss: "oh!" }
+      - { form: भक्षयन्, lemma: भक्ष्, a: प्रथमा एकवचन पुंलिङ्ग शतृ चुरादि, gloss: eating (it) }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: said }
     note: "GRETIL runs the speech into आह (the edition's dash is lost): read आह — अहो."
+  अहो:
+    split:
+      - { form: अहो, lemma: अहो, a: अव्यय, gloss: oh! }
   '!':
     split: []
   बहूनि:
@@ -1728,14 +1738,16 @@
       - { form: प्राप्तम्, lemma: प्राप्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "was found" }
 
 '5.94+16':
-  तद्दृष्ट्वापरमाहभो:
+  तद्दृष्ट्वापरमाह:
     split:
-      - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "it" }
-      - { form: दृष्ट्वा, lemma: दृश्, a: अव्यय क्त्वा, gloss: "having seen" }
-      - { form: अपरम्, lemma: अपर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "the other (mouth)" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: "said (to)" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "you!" }
+      - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: it }
+      - { form: दृष्ट्वा, lemma: दृश्, a: अव्यय क्त्वा, gloss: having seen }
+      - { form: अपरम्, lemma: अपर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: the other (mouth) }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: said (to) }
     note: "GRETIL runs the speech into आह (the edition's dash is lost): read आह — भो. भोः drops its visarga before the voiced न."
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: you! }
   निस्त्रिंश:
     fix:
       1: { a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "merciless one!" }
@@ -1864,12 +1876,14 @@
   चक्रधर:
     fix:
       1: { gloss: "Cakradhara (the man with the wheel)" }
-  आहसत्यमेतत्:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: "said" }
-      - { form: सत्यम्, lemma: सत्य, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "true" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: said }
     note: "GRETIL runs the speech into आह (the edition's dash is lost): read आह — सत्यम्."
+  सत्यमेतत्:
+    split:
+      - { form: सत्यम्, lemma: सत्य, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "true" }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
 
 '5.94+24':
   तद्गच्छ:
@@ -1966,12 +1980,14 @@
     split:
       - { form: सुवर्ण, lemma: सुवर्ण, member: true, gloss: "gold" }
       - { form: सिद्धिः, lemma: सिद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "success — Suvarṇasiddhi (a name)" }
-  प्राहकथमेतत्?:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: said }
     note: "GRETIL runs the question into प्राह (the edition's dash is lost): read प्राह — कथम् एतत्?"
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
 
 '5.96+2':
   सोऽब्रवीत्:
@@ -2048,11 +2064,13 @@
   स:
     fix:
       1: { gloss: "he" }
-  आहम्ब:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: "said" }
-      - { form: अम्ब, lemma: अम्बा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "mother!" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद कर्तरि, gloss: said }
     note: "GRETIL runs the speech into आह (the edition's dash is lost): read आह — अम्ब."
+  अम्ब:
+    split:
+      - { form: अम्ब, lemma: अम्बा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: mother! }
   '!':
     split: []
   मा:

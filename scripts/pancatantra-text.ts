@@ -40,6 +40,22 @@ const bareHead = (t: string) => t.replace(/^(?:[a-zāīūṛṣṭṇśṃ-]+\s+
 const isTantra = (t: string) => Object.keys(TANTRA).some((k) => bareHead(t) === k.replace(/\s/g, ''));
 const story = (t: string) => t.match(/^kathā\s+(\d+)\s+(.+?)\s*\|?$/);
 const tidy = (s: string) => s.replace(/\s+/g, ' ').trim();
+/*
+  The edition marks two things with one hyphen: a compound's join
+  (śāstra-vimukhān) and the start of what someone says or quotes, after the
+  verb that introduces it (provāca-bhoḥ, āha-deva, prāha-aśāśvato, and
+  ucyate- / yataḥ- before a verse). iastToDeva joins at every hyphen, so the
+  speech verb was welded to the first word of the speech — प्रोवाचभोः, आहभद्रे,
+  some 700 times — and the only cue that speech begins was gone. After these
+  words (exactly these: varāha-, vivāha-, utsāha- are compound stems ending in
+  -āha) the hyphen is a word break. The `iast` line keeps the edition's text.
+*/
+const SPEECH = new Set([
+  'āha', 'prāha', 'uvāca', 'provāca', 'pratyuvāca', 'abravīt', 'ūce', 'ūcuḥ', 'āhuḥ', 'prāhuḥ',
+  'ucyate', 'yataḥ', 'vyacintayat', 'acintayat', "'cintayat", 'cintayat', 'pṛṣṭavān', 'cāha',
+  'vihasyāha', 'samāgatyāha'
+]);
+const speechBreak = (s: string) => s.replace(/(^|[\s>])([^\s-]+)-(?=\S)/g, (all, pre, w) => (SPEECH.has(w) ? `${pre}${w} ` : all));
 // the edition's own apparatus, left in the text by the TEI: a starred verse's
 // number ("||Panc_1.[*100]", no closing marks) and "(alt.)" before a variant
 const strip = (s: string) => s.replace(/\s*\|\|\s*Panc_\S*\s*$/, '').replace(/\(alt\.\)\s*/g, '');
@@ -81,11 +97,11 @@ for (const b of readTei('sa_viSNuzarman-paJcatantra')) {
       base = b0; plus = 0; id = base;
     } else id = nextId();
     const ls = b.lines.map((l) => tidy(strip(l).replace(/[|/।॥]+\s*$/g, ''))).filter(Boolean);
-    sections.push({ id, kind: 'verse', lines: ls.map((l) => l.split(/\s*\|\s*/).map(iastToDeva).join(' ')), iast: ls.join(' | ') });
+    sections.push({ id, kind: 'verse', lines: ls.map((l) => l.split(/\s*\|\s*/).map((x) => iastToDeva(speechBreak(x))).join(' ')), iast: ls.join(' | ') });
   } else {
     // prose: one section per sentence; a closing marker number, if any, is dropped
     for (const sent of strip(b.lines.join(' ')).split(/\s*\|\s*/).map(tidy).filter((x) => x && !/^[\d.]+$/.test(x)))
-      sections.push({ id: nextId(), kind: 'prose', lines: [iastToDeva(sent)], iast: sent });
+      sections.push({ id: nextId(), kind: 'prose', lines: [iastToDeva(speechBreak(sent))], iast: sent });
   }
   // only a block that added sections moves its part's range
   if (sections.length > before) {

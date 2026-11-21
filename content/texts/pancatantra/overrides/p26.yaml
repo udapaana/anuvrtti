@@ -28,16 +28,17 @@
       - { form: हृष्ट, lemma: हृष्ट, member: true, gloss: "glad, delighted" }
       - { form: मनाः, lemma: मनस्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "mind (हृष्टमनस् 'glad at heart')" }
     note: "A बहुव्रीहि, 'whose mind is glad', so the neuter मनस् takes the masculine ending of its subject: हृष्टमनाः."
-  वन्दिभिरभिष्टूयमानोऽरिमर्दनस्तान्परिजनान्प्रोवाचहो:
+  वन्दिभिरभिष्टूयमानोऽरिमर्दनस्तान्परिजनान्प्रोवाच:
     split:
       - { form: वन्दिभिः, lemma: वन्दिन्, a: तृतीया बहुवचन पुंलिङ्ग, gloss: "by bards, panegyrists" }
-      - { form: अभिष्टूयमानः, lemma: अभिष्टु, a: प्रथमा एकवचन पुंलिङ्ग शानच्, gloss: "being praised" }
+      - { form: अभिष्टूयमानः, lemma: अभिष्टु, a: प्रथमा एकवचन पुंलिङ्ग शानच्, gloss: being praised }
       - { form: अरिमर्दनः, lemma: अरिमर्दन, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Arimardana ('Foe-crusher'), the owl-king" }
       - { form: तान्, lemma: तद्, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "those, his" }
       - { form: परिजनान्, lemma: परिजन, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "attendants, followers" }
       - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said, spoke" }
-      - { form: अहो, lemma: अहो, a: अव्यय, gloss: "ho! (a call)" }
-    note: "The e-text runs the verb into the speech it introduces. अभिष्टूयमानः is the passive present participle of अभि-स्तु (ष by 8.3.65)."
+  अहो:
+    split:
+      - { form: अहो, lemma: अहो, a: अव्यय, gloss: ho! (a call) }
   '!':
     split: []
     note: Punctuation, not a word.
@@ -154,9 +155,7 @@
       - { form: अस्मद्, lemma: अस्मद्, member: true, gloss: "our" }
       - { form: वृत्तान्ताः, lemma: वृत्तान्त, a: प्रथमा बहुवचन पुंलिङ्ग, gloss: "news, whereabouts" }
     note: >-
-      The e-text runs the verb into the thought it introduces. It prints
-      अनुलब्ध-, which gives no sense; read अनुपलब्धास्मद्वृत्तान्ताः, a बहुव्रीहि
-      "who have not found out what became of us". यत् … ततः is "if … then".
+      The e-text runs the verb into the thought it introduces. It prints अनुलब्ध-, which gives no sense; read अनुपलब्धास्मद्वृत्तान्ताः, a बहुव्रीहि "who have not found out what became of us". यत् … ततः is "if … then".
   यथागतमेव:
     fix:
       1: { a: अव्यय, gloss: "back the way they came" }
@@ -357,11 +356,12 @@
   गत्वा:
     fix:
       1: { gloss: "going" }
-  प्रोवाचभोः:
+  प्रोवाच:
     split:
       - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said, spoke" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! sir!" }
-    note: The e-text runs the verb into the speech it introduces.
+  भोः#2:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! sir! }
   भोः:
     split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! sir!" }
@@ -387,11 +387,12 @@
   स्थिरजीवी:
     fix:
       1: { gloss: "Sthirajīvin" }
-  प्राहदेव:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty (lit. O god)" }
-    note: The e-text runs the verb into the speech it introduces.
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  देव:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty (lit. O god) }
   '!':
     split: []
     note: Punctuation, not a word.
@@ -767,11 +768,12 @@
   रक्ताक्ष:
     fix:
       1: { gloss: "Raktākṣa" }
-  आहदेव:
+  आह:
     split:
       - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "says, said" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty (lit. O god)" }
-    note: The e-text runs the verb into the speech it introduces.
+  देव:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty (lit. O god) }
   '!':
     split: []
     note: Punctuation, not a word.
@@ -934,12 +936,13 @@
   अरिमर्दनः:
     fix:
       1: { gloss: "Arimardana" }
-  प्राहकथमेतत्?:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
-    note: The e-text runs the verb into the speech it introduces.
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
 
 '3.132+2':
   रक्ताक्षः:
@@ -1383,11 +1386,7 @@
       - { form: जीवितः, lemma: जीवित, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "life (अमुक्तजीवित 'still alive')" }
       - { form: एव, lemma: एव, a: अव्यय, gloss: "still, yet" }
     note: >-
-      The print joins -जीवितेव, which would be -जीवित(ः) इव "as if not robbed of
-      life" with a coalescence the rules forbid after the lost visarga (8.2.2
-      makes the loss invisible to 6.1.87). The snake really did survive, so read
-      अमुक्तजीवितः एव "still alive" (a बहुव्रीहि, "whose life was not lost"); a
-      doubtful reading.
+      The print joins -जीवितेव, which would be -जीवित(ः) इव "as if not robbed of life" with a coalescence the rules forbid after the lost visarga (8.2.2 makes the loss invisible to 6.1.87). The snake really did survive, so read अमुक्तजीवितः एव "still alive" (a बहुव्रीहि, "whose life was not lost"); a doubtful reading.
   रोषात्तमेव:
     split:
       - { form: रोषात्, lemma: रोष, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "from anger" }
@@ -1958,11 +1957,12 @@
   ब्राह्मणं:
     fix:
       1: { gloss: "the Brahmin" }
-  प्रत्युवाचत्वं:
+  प्रत्युवाच:
     split:
-      - { form: प्रत्युवाच, lemma: प्रतिवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "answered" }
-      - { form: त्वम्, lemma: युष्मद्, a: प्रथमा एकवचन, gloss: "you" }
-    note: The e-text runs the verb into the speech it introduces.
+      - { form: प्रत्युवाच, lemma: प्रतिवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: answered }
+  त्वं:
+    split:
+      - { form: त्वम्, lemma: युष्मद्, a: प्रथमा एकवचन, gloss: you }
   लोभादत्रागतः:
     fix:
       1: { gloss: "out of greed" }

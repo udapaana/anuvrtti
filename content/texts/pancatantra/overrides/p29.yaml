@@ -7,10 +7,12 @@
 # those are split into their padas without a note.
 
 '3.214+7':
-  प्रोवाचपुत्रि:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: पुत्रि, lemma: पुत्री, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "daughter" }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  पुत्रि:
+    split:
+      - { form: पुत्रि, lemma: पुत्री, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: daughter }
   '!':
     split: []
   तव:
@@ -34,10 +36,12 @@
   सा:
     fix:
       1: { gloss: "she" }
-  प्राहतात:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "father" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  तात:
+    split:
+      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: father }
   '!':
     split: []
   अतिदहनात्मकोऽयम्:
@@ -94,11 +98,13 @@
   विदित्वा:
     fix:
       1: { gloss: "knowing (her to be)" }
-  निःस्पृहस्तमुवाचभगवन्!:
+  निःस्पृहस्तमुवाच:
     split:
       - { form: निःस्पृहः, lemma: निःस्पृह, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "free from desire, indifferent" }
-      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him (the sage)" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: him (the sage) }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+  भगवन्!:
+    split:
       - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "holy one, revered sir" }
   ममाप्यधिको:
     fix:
@@ -119,9 +125,7 @@
       - { form: नाम, lemma: नामन्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "name" }
       - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
     note: >-
-      The GRETIL text types नामाइ, which is no Sanskrit sequence; read नामापि
-      ("not even my name is known"), on sense and orthography — the typist's
-      slip of इ for पि.
+      The GRETIL text types नामाइ, which is no Sanskrit sequence; read नामापि ("not even my name is known"), on sense and orthography — the typist's slip of इ for पि.
   ज्ञायते:
     fix:
       1: { gloss: "is known" }
@@ -156,11 +160,13 @@
   सा:
     fix:
       1: { gloss: "she" }
-  प्राहकृष्णवर्णोऽयं:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कृष्णवर्णोऽयं:
+    split:
       - { form: कृष्ण, lemma: कृष्ण, member: true, gloss: "black, dark" }
-      - { form: वर्णः, lemma: वर्ण, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "colour — 'dark-coloured'" }
+      - { form: वर्णः, lemma: वर्ण, a: प्रथमा एकवचन पुंलिङ्ग, gloss: colour — 'dark-coloured' }
       - { form: अयम्, lemma: इदम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "he, this one" }
   जडात्मा:
     fix:
@@ -216,13 +222,15 @@
   स:
     fix:
       1: { gloss: "he" }
-  आहमत्तोऽप्यधिकोऽस्ति:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: मत्तः, lemma: अस्मद्, a: पञ्चमी एकवचन, gloss: "than me" }
-      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  मत्तोऽप्यधिकोऽस्ति:
+    split:
+      - { form: मत्तः, lemma: अस्मद्, a: पञ्चमी एकवचन, gloss: than me }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: even }
       - { form: अधिकः, lemma: अधिक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "greater, superior" }
-      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "there is" }
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: there is }
   वायुः:
     fix:
       1: { gloss: "the wind" }
@@ -284,11 +292,13 @@
   सा:
     fix:
       1: { form: सा, lemma: तद्, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "she" }
-  आहप्रबलोऽप्ययं:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  प्रबलोऽप्ययं:
+    split:
       - { form: प्रबलः, lemma: प्रबल, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "strong, mighty" }
-      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "though" }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: though }
       - { form: अयम्, lemma: इदम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "he, this one" }
   चञ्चलः:
     fix:
@@ -306,11 +316,13 @@
       - { form: आहूयताम्, lemma: आह्वे, a: लोट् प्रथमपुरुष एकवचन आत्मनेपद कर्मणि, gloss: "let (him) be called" }
 
 '3.214+21':
-  मुनिराहभो:
+  मुनिराह:
     split:
-      - { form: मुनिः, lemma: मुनि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the sage" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+      - { form: मुनिः, lemma: मुनि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: the sage }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! }
   वायो:
     fix:
       1: { gloss: "O wind" }
@@ -331,13 +343,15 @@
   स:
     fix:
       1: { gloss: "he" }
-  आहमत्तोऽप्यधिकोऽस्ति:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: मत्तः, lemma: अस्मद्, a: पञ्चमी एकवचन, gloss: "than me" }
-      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "even" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  मत्तोऽप्यधिकोऽस्ति:
+    split:
+      - { form: मत्तः, lemma: अस्मद्, a: पञ्चमी एकवचन, gloss: than me }
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: even }
       - { form: अधिकः, lemma: अधिक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "greater, superior" }
-      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "there is" }
+      - { form: अस्ति, lemma: अस्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: there is }
   पर्वतो:
     fix:
       1: { gloss: "a mountain" }
@@ -386,10 +400,12 @@
   सा:
     fix:
       1: { gloss: "she" }
-  आहतात:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "father" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  तात:
+    split:
+      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: father }
   '!':
     split: []
   कठिनात्मकोऽयं:
@@ -447,10 +463,12 @@
   स:
     fix:
       1: { gloss: "he" }
-  आहसन्ति:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: सन्ति, lemma: अस्, a: लट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: "there are" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  सन्ति:
+    split:
+      - { form: सन्ति, lemma: अस्, a: लट् प्रथमपुरुष बहुवचन परस्मैपद, gloss: there are }
   मत्तोऽप्यधिका:
     fix:
       1: { lemma: अस्मद्, a: पञ्चमी एकवचन, gloss: "than me" }
@@ -541,10 +559,12 @@
       - { form: उद्भूषित, lemma: उद्भूषित, member: true, gloss: "adorned" }
       - { form: शरीरा, lemma: शरीर, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "body — 'her body adorned with thrilling hair'" }
     note: A बहुव्रीहि of the girl, so the neuter शरीर takes the feminine ending.
-  प्रोवाचतात:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "father" }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  तात:
+    split:
+      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: father }
   '!':
     split: []
   मां:
@@ -603,8 +623,7 @@
     split:
       - { form: प्रदत्ता, lemma: प्रदा, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "was given (in marriage)" }
     note: >-
-      The sentence shifts construction: तां … कृत्वा keeps her as object, then
-      प्रदत्ता makes her (सा understood) the subject of the passive.
+      The sentence shifts construction: तां … कृत्वा keeps her as object, then प्रदत्ता makes her (सा understood) the subject of the passive.
 
 '3.214+31':
   अतोऽहं:
@@ -705,8 +724,7 @@
       2: { gloss: "had acted on, had followed" }
       3: { gloss: "these (owls)" }
     note: >-
-      Both verbs are लृङ्, the conditional of what did not happen: "if these had
-      followed his word, not even a small misfortune would have befallen them".
+      Both verbs are लृङ्, the conditional of what did not happen: "if these had followed his word, not even a small misfortune would have befallen them".
   ततो:
     fix:
       1: { gloss: "then" }
@@ -823,13 +841,15 @@
       - { form: साधयामि, lemma: साध्, a: लट् उत्तमपुरुष एकवचन परस्मैपद णिच्, gloss: "will accomplish" }
 
 '3.215+7':
-  निश्चित्योलूकपतिमाहदेव:
+  निश्चित्योलूकपतिमाह:
     split:
-      - { form: निश्चित्य, lemma: निश्चि, a: अव्यय ल्यप्, gloss: "having resolved" }
-      - { form: उलूक, lemma: उलूक, member: true, gloss: "an owl" }
-      - { form: पतिम्, lemma: पति, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "lord — 'the lord of the owls'" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty" }
+      - { form: निश्चित्य, lemma: निश्चि, a: अव्यय ल्यप्, gloss: having resolved }
+      - { form: उलूक, lemma: उलूक, member: true, gloss: an owl }
+      - { form: पतिम्, lemma: पति, a: द्वितीया एकवचन पुंलिङ्ग, gloss: lord — 'the lord of the owls' }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+  देव:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty }
   '!':
     split: []
   युक्तमिदं:
@@ -903,8 +923,7 @@
       - { form: पवित्रीकृत, lemma: पवित्रीकृत, member: true, gloss: "made pure, purified (च्वि: पवित्र + कृ)" }
       - { form: तनुः, lemma: तनु, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "body — 'whose body is purified'" }
     note: >-
-      Printed apart, but one compound with the next word: भवत्पादपद्मरजः-
-      पवित्रीकृततनुः, "my body purified by the dust of your lotus feet".
+      Printed apart, but one compound with the next word: भवत्पादपद्मरजः- पवित्रीकृततनुः, "my body purified by the dust of your lotus feet".
   सेवां:
     split:
       - { form: सेवाम्, lemma: सेवा, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "service, attendance" }
@@ -986,10 +1005,12 @@
   राजानं:
     fix:
       1: { gloss: "the king" }
-  प्रत्याहहो:
+  प्रत्याह:
     split:
-      - { form: प्रत्याह, lemma: प्रतिब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said to" }
-      - { form: अहो, lemma: अहो, a: अव्यय, gloss: "oh!" }
+      - { form: प्रत्याह, lemma: प्रतिब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said to }
+  अहो:
+    split:
+      - { form: अहो, lemma: अहो, a: अव्यय, gloss: oh! }
   मूर्खोऽयं:
     fix:
       1: { gloss: "a fool, foolish" }
@@ -1051,11 +1072,13 @@
   ते:
     fix:
       1: { gloss: "they" }
-  प्राहुःकथमेतत्?:
+  प्राहुः:
     fix:
-      1: { gloss: "said" }
-      2: { gloss: "how?" }
-      3: { gloss: "this" }
+      "1": { gloss: said }
+  कथमेतत्?:
+    fix:
+      "1": { gloss: how? }
+      "2": { gloss: this }
 
 '3.216+2':
   रक्ताक्षः:
@@ -1582,10 +1605,12 @@
   रहः:
     fix:
       1: { lemma: रहस्, a: अव्यय, gloss: "in private, secretly" }
-  प्रोवाचहो:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अहो, lemma: अहो, a: अव्यय, gloss: "alas!" }
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  अहो:
+    split:
+      - { form: अहो, lemma: अहो, a: अव्यय, gloss: alas! }
   '!':
     split: []
   एतावदेवास्मद्भूपतेः:
@@ -1863,8 +1888,7 @@
     split:
       - { form: प्रविष्टा, lemma: प्रविश्, a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "went in" }
     note: >-
-      The text prints प्रविष्टः; read प्रविष्टा, on grammar — the subject is
-      पद्धतिः (feminine), and the parallel निष्क्रान्ता agrees with it.
+      The text prints प्रविष्टः; read प्रविष्टा, on grammar — the subject is पद्धतिः (feminine), and the parallel निष्क्रान्ता agrees with it.
   निष्क्रान्ता:
     fix:
       1: { a: प्रथमा एकवचन स्त्रीलिङ्ग क्त, gloss: "came out" }
@@ -1994,9 +2018,7 @@
     fix:
       3: { form: आकारणीयः, lemma: आकृ, a: प्रथमा एकवचन पुंलिङ्ग अनीयर् णिच्, gloss: "to be called (in)" }
     note: >-
-      The text prints आकरणीयः; read आकारणीयः, on sense — the compact is that
-      the cave "calls in" the jackal, and "to call, summon" is the causative
-      आकारय् (आ-कृ णिच्), whose अनीयर् is आकारणीय.
+      The text prints आकरणीयः; read आकारणीयः, on sense — the compact is that the cave "calls in" the jackal, and "to call, summon" is the causative आकारय् (आ-कृ णिच्), whose अनीयर् is आकारणीय.
 
 '3.217+11':
   तद्यदि:
@@ -2276,9 +2298,7 @@
       - { form: यत्, lemma: यद्, a: अव्यय, gloss: "that, in that" }
       - { form: रक्ताक्षः, lemma: रक्ताक्ष, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Raktākṣa" }
     note: >-
-      The text prints रक्तांशः, which names no one; read रक्ताक्षः, on sense —
-      the clause is about the far-sighted minister who has just left (रक्ताक्षे
-      गते, earlier in this sentence).
+      The text prints रक्तांशः, which names no one; read रक्ताक्षः, on sense — the clause is about the far-sighted minister who has just left (रक्ताक्षे गते, earlier in this sentence).
   गतः:
     fix:
       1: { gloss: "has gone" }
@@ -2546,10 +2566,12 @@
   गत्वा:
     fix:
       1: { gloss: "going (to)" }
-  मेघवर्णमाहस्वामिन्!:
+  मेघवर्णमाह:
     split:
-      - { form: मेघवर्णम्, lemma: मेघवर्ण, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "Meghavarṇa (the crow king)" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
+      - { form: मेघवर्णम्, lemma: मेघवर्ण, a: द्वितीया एकवचन पुंलिङ्ग, gloss: Meghavarṇa (the crow king) }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+  स्वामिन्!:
+    split:
       - { form: स्वामिन्, lemma: स्वामिन्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "master, lord" }
   दाहसाध्या:
     split:
@@ -2574,9 +2596,7 @@
       - { form: समेत्य, lemma: समि, a: अव्यय ल्यप्, gloss: "coming together" }
       - { form: एकैकाम्, lemma: एकैक, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "one each" }
     note: >-
-      The text prints एकैका … ज्वलन्ती; read एकैकां … ज्वलन्तीं, on grammar —
-      both qualify वनकाष्ठिकाम्, the object of गृहीत्वा, as the same words do
-      in 3.223+1.
+      The text prints एकैका … ज्वलन्ती; read एकैकां … ज्वलन्तीं, on grammar — both qualify वनकाष्ठिकाम्, the object of गृहीत्वा, as the same words do in 3.223+1.
   वनकाष्ठिकां:
     fix:
       1: { gloss: "a stick of wood" }
@@ -2628,10 +2648,12 @@
   मेघवर्ण:
     fix:
       1: { gloss: "Meghavarṇa (the crow king)" }
-  आहतात:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "father (to an elder)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  तात:
+    split:
+      - { form: तात, lemma: तात, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: father (to an elder) }
   '!':
     split: []
   कथयात्मवृत्तान्तम्:
@@ -2654,9 +2676,11 @@
   स:
     fix:
       1: { gloss: "he" }
-  आहवत्स:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  वत्स:
+    split:
       - { form: वत्स, lemma: वत्स, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "child, my dear" }
   '!':
     split: []
@@ -2683,9 +2707,7 @@
     split:
       - { form: रिपोः, lemma: रिपु, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "enemy — 'of that enemy'" }
     note: >-
-      The text prints रिपो, a vocative that fits nothing here; read रिपोः, on
-      grammar — the genitive with तस्य, "some spy of that enemy". The visarga
-      stands before क, so its loss is a typing slip.
+      The text prints रिपो, a vocative that fits nothing here; read रिपोः, on grammar — the genitive with तस्य, "some spy of that enemy". The visarga stands before क, so its loss is a typing slip.
   कश्चित्प्रणिधिर्ममेहागमनं:
     fix:
       1: { gloss: "some (with चित्)" }
@@ -3025,10 +3047,12 @@
     split:
       - { form: तत्, lemma: तद्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "that" }
       - { form: आकर्ण्य, lemma: आकर्ण्, a: अव्यय ल्यप्, gloss: "having heard" }
-  स्थिरजीव्याहभद्र:
+  स्थिरजीव्याह:
     split:
-      - { form: स्थिरजीवी, lemma: स्थिरजीविन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Sthirajīvin" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: स्थिरजीवी, lemma: स्थिरजीविन्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: Sthirajīvin }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भद्र:
+    split:
       - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "good sir, my dear" }
   '!':
     split: []
@@ -3140,10 +3164,7 @@
       - { form: घात, lemma: घात, member: true, gloss: "stroke, blow" }
       - { form: अङ्कौ, lemma: अङ्क, a: प्रथमा द्विवचन पुंलिङ्ग, gloss: "mark, scar — 'scarred by the bowstring'" }
     note: >-
-      GRETIL divides ज्याघाता कौ; read ज्याघाताङ्कौ, one compound, on sense —
-      the arms are "marked by the bowstring's blows"; a bare कौ "which two?"
-      has no place in the line, and ज्याघाता is no word. The metre (हरिणी)
-      scans either way. The last member, अङ्कौ, is on कौ.
+      GRETIL divides ज्याघाता कौ; read ज्याघाताङ्कौ, one compound, on sense — the arms are "marked by the bowstring's blows"; a bare कौ "which two?" has no place in the line, and ज्याघाता is no word. The metre (हरिणी) scans either way. The last member, अङ्कौ, is on कौ.
   महास्त्रविशारदौ:
     split:
       - { form: महा, lemma: महत्, member: true, gloss: "great" }
@@ -3217,9 +3238,7 @@
       - { form: आयास, lemma: आयास, member: true, gloss: "toil, exertion" }
       - { form: युक्तेन, lemma: युज्, a: तृतीया एकवचन पुंलिङ्ग क्त, gloss: "full of — 'worn with toil'" }
     note: >-
-      The text prints युक्ते; read युक्तेन, on metre and grammar — the
-      शार्दूलविक्रीडित line is a syllable short without -न, and the word agrees
-      with भीमेन like every other word of the line.
+      The text prints युक्ते; read युक्तेन, on metre and grammar — the शार्दूलविक्रीडित line is a syllable short without -न, and the word agrees with भीमेन like every other word of the line.
   च:
     fix:
       1: { gloss: "and" }
@@ -3236,9 +3255,7 @@
       - { form: न, lemma: न, a: अव्यय, gloss: "not" }
       - { form: उषितम्, lemma: आवस्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "lived, dwelt — 'did (Bhīma) not live?'" }
     note: >-
-      An impersonal passive with the agent in the instrumental (भीमेन …
-      उषितम्). नोषितम् is न + उषितम् or न + आ-उषितम् (आ + उ → ओ); वस् and
-      आवस् both mean "dwell", and the engine reads आवस्.
+      An impersonal passive with the agent in the instrumental (भीमेन … उषितम्). नोषितम् is न + उषितम् or न + आ-उषितम् (आ + उ → ओ); वस् and आवस् both mean "dwell", and the engine reads आवस्.
   सूदवत्:
     split:
       - { form: सूदवत्, lemma: सूदवत्, a: अव्यय, gloss: "like a cook (सूद + वत्)" }

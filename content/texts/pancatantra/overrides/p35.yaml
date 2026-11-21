@@ -83,10 +83,7 @@
       - { form: व्याकुलित, lemma: व्याकुलित, member: true, gloss: "distraught" }
       - { form: हृदयः, lemma: हृदय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "whose heart (was)" }
     note: >-
-      The edition prints आकर्ण्यातीव्रव्याकुलित-; आकर्ण्य अतीव व्याकुलितहृदयः
-      ("having heard, exceedingly distraught at heart") gives आकर्ण्यातीवव्याकुलित-,
-      and no division of the printed letters makes words. Read as a misprint of
-      व्र for व. व्याकुलितहृदयः is a बहुव्रीहि of the crocodile.
+      The edition prints आकर्ण्यातीव्रव्याकुलित-; आकर्ण्य अतीव व्याकुलितहृदयः ("having heard, exceedingly distraught at heart") gives आकर्ण्यातीवव्याकुलित-, and no division of the printed letters makes words. Read as a misprint of व्र for व. व्याकुलितहृदयः is a बहुव्रीहि of the crocodile.
   प्रलपितमेवं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "lament, wailing" }
@@ -542,9 +539,11 @@
   मकर:
     fix:
       1: { gloss: "the crocodile" }
-  आहभो:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho (a call)" }
   मित्र:
     fix:
@@ -648,11 +647,13 @@
   वानर:
     fix:
       1: { gloss: "the monkey" }
-  आहकथमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (was)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (was) }
 
 '4.69+2':
   मकरोऽब्रवीत्:
@@ -1082,11 +1083,13 @@
   निश्चित्य:
     fix:
       1: { a: अव्यय ल्यप्, gloss: "having decided" }
-  तामुवाचप्रिये:
+  तामुवाच:
     split:
-      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "to her" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: प्रिये, lemma: प्रिया, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "dear one!" }
+      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: to her }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  प्रिये:
+    split:
+      - { form: प्रिये, lemma: प्रिया, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: dear one! }
   "!":
     split: []
   सुदुस्तरेयं:
@@ -1135,10 +1138,12 @@
   सा:
     fix:
       1: { gloss: "she" }
-  प्राहसुभग:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: सुभग, lemma: सुभग, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "handsome one!" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  सुभग:
+    split:
+      - { form: सुभग, lemma: सुभग, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: handsome one! }
   "!":
     split: []
   एवं:
@@ -1155,10 +1160,7 @@
       - { form: उक्त्वा, lemma: वच्, a: अव्यय क्त्वा, gloss: "having said" }
       - { form: अशेषम्, lemma: अशेष, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "entire, all" }
     note: >-
-      The edition prints इत्युक्त्वाशिषं, which makes no sense with वित्तम्
-      ("a blessing"?). इत्युक्त्वाशेषं — इति उक्त्वा अशेषं वित्तम् "having said
-      this, (she gave him) all the money" — is what the sense needs; read as
-      a misprint of ि for े.
+      The edition prints इत्युक्त्वाशिषं, which makes no sense with वित्तम् ("a blessing"?). इत्युक्त्वाशेषं — इति उक्त्वा अशेषं वित्तम् "having said this, (she gave him) all the money" — is what the sense needs; read as a misprint of ि for े.
   वित्तं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "wealth, money" }
@@ -1332,9 +1334,7 @@
       - { form: अत्र, lemma: अत्र, a: अव्यय, gloss: "here" }
       - { form: अन्तरम्, lemma: अन्तर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "interval — 'meanwhile'" }
     note: >-
-      This line is a garbled doublet of the next (4.69+34), as the e-text has
-      it: आकाशादावतीर्थं for आकाशादवतीर्य, and the verb borrowed from 4.69+32.
-      Read by 4.69+34.
+      This line is a garbled doublet of the next (4.69+34), as the e-text has it: आकाशादावतीर्थं for आकाशादवतीर्य, and the verb borrowed from 4.69+32. Read by 4.69+34.
   आकाशादावतीर्थं:
     split:
       - { form: आकाशात्, lemma: आकाश, a: पञ्चमी एकवचन पुंलिङ्ग, gloss: "from the sky" }
@@ -1783,10 +1783,12 @@
   स:
     fix:
       1: { gloss: "he (the monkey)" }
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "you! (a rough call)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: you! (a rough call) }
   कृतघ्न:
     fix:
       1: { a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "ingrate!" }
@@ -1837,10 +1839,12 @@
   मकरः:
     fix:
       1: { gloss: "the crocodile" }
-  प्राहभो:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O (a call)" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O (a call) }
   मित्र:
     fix:
       1: { gloss: "friend" }
@@ -1868,11 +1872,13 @@
   वानर:
     fix:
       1: { gloss: "the monkey" }
-  आहनाहं:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: न, lemma: न, a: अव्यय, gloss: "not" }
-      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: "I" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  नाहं:
+    split:
+      - { form: न, lemma: न, a: अव्यय, gloss: not }
+      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: I }
   ते:
     fix:
       1: { lemma: युष्मद्, a: चतुर्थी एकवचन, gloss: "to you" }
@@ -2005,11 +2011,13 @@
   मकर:
     fix:
       1: { gloss: "the crocodile" }
-  आहकथमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (was)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (was) }
 
 '4.74+2':
   सोऽब्रवीत्:
@@ -2416,9 +2424,7 @@
       - { form: परिपालनात्, lemma: परिपालन, a: पञ्चमी एकवचन नपुंसकलिङ्ग, gloss: "from tending, keeping" }
       - { form: अस्य, lemma: इदम्, a: षष्ठी एकवचन नपुंसकलिङ्ग, gloss: "this" }
     note: >-
-      The edition prints उष्ट्रापरिपालनात्, and उष्ट्र + अपरिपालन ("not tending")
-      makes nonsense of the sentence. Read उष्ट्रीपरिपालनात्, "from keeping
-      the she-camel", whose milk feeds the family (4.74+18).
+      The edition prints उष्ट्रापरिपालनात्, and उष्ट्र + अपरिपालन ("not tending") makes nonsense of the sentence. Read उष्ट्रीपरिपालनात्, "from keeping the she-camel", whose milk feeds the family (4.74+18).
   कुटुम्बस्य:
     fix:
       1: { gloss: "household, family" }
@@ -2452,11 +2458,13 @@
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "home" }
       2: { a: अव्यय ल्यप्, gloss: "coming" }
-  प्रियामाहभद्रे:
+  प्रियामाह:
     split:
-      - { form: प्रियाम्, lemma: प्रिया, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "to (his) wife" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भद्रे, lemma: भद्रा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "good lady!" }
+      - { form: प्रियाम्, lemma: प्रिया, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: to (his) wife }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भद्रे:
+    split:
+      - { form: भद्रे, lemma: भद्रा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: good lady! }
   "!":
     split: []
   समीचीनोऽयं:
@@ -3130,10 +3138,12 @@
   वानरः:
     fix:
       1: { gloss: "the monkey" }
-  प्राहभद्र:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "good friend!" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भद्र:
+    split:
+      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: good friend! }
   "!":
     split: []
   यद्येवं:
@@ -3231,11 +3241,13 @@
   मकर:
     fix:
       1: { gloss: "the crocodile" }
-  आहकथमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this (was)" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this (was) }
 
 '4.78+2':
   सोऽब्रवीत्:

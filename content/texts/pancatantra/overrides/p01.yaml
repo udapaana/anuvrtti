@@ -273,11 +273,12 @@
     split:
       - { form: सचिवान्, lemma: सचिव, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "ministers, counsellors" }
       - { form: आहूय, lemma: आह्वे, a: अव्यय ल्यप्, gloss: "having summoned" }
-  प्रोवाचभोः:
+  प्रोवाच:
     split:
       - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said, spoke" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "sirs! (a call to attention)" }
-    note: The e-text runs the verb into the speech it introduces; प्रोवाच and भोः are two words.
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: sirs! (a call to attention) }
   ज्ञातमेतद्भवद्भिर्यन्ममैते:
     split:
       - { form: ज्ञातम्, lemma: ज्ञा, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "known" }
@@ -545,11 +546,12 @@
     fix:
       1: { gloss: "thereupon; among them" }
       2: { gloss: "one (of them)" }
-  प्रोवाचदेव:
+  प्रोवाच:
     split:
       - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said, spoke" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty (lit. O god)" }
-    note: The e-text runs the verb into the speech it introduces; प्रोवाच and देव are two words.
+  देव:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty (lit. O god) }
   द्वादशभिर्वर्षैर्व्याकरणं:
     split:
       - { form: द्वादशभिः, lemma: द्वादशन्, a: तृतीया बहुवचन नपुंसकलिङ्ग, gloss: "twelve" }
@@ -629,12 +631,14 @@
   सचिवः:
     fix:
       1: { gloss: "a minister, counsellor" }
-  प्राहशाश्वतोऽयं:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अशाश्वतः, lemma: अशाश्वत, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "not lasting, transient" }
-      - { form: अयम्, lemma: इदम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "this" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: "प्राह, the लट् of ब्रू (आह, 3.4.84) used for the past. The e-text runs it into the speech and drops the अ of अशाश्वतः: the argument (life is short, grammar takes long) needs 'not lasting', the reading of the other editions."
+  अशाश्वतोऽयं:
+    split:
+      - { form: अशाश्वतः, lemma: अशाश्वत, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "not lasting, transient" }
+      - { form: अयम्, lemma: इदम्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: this }
   जीवितव्यविषयः:
     split:
       - { form: जीवितव्य, lemma: जीवितव्य, member: true, gloss: "living, life (lit. what is to be lived)" }
@@ -796,11 +800,12 @@
     split:
       - { form: विष्णुशर्माणम्, lemma: विष्णुशर्मन्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "Viṣṇuśarman" }
       - { form: आहूय, lemma: आह्वे, a: अव्यय ल्यप्, gloss: "having summoned" }
-  प्रोवाचभो:
+  प्रोवाच:
     split:
       - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said, spoke" }
+  भो:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, sir! (a call to attention)" }
-    note: "The e-text runs the verb into the speech; भोः loses its visarga before the भ of भगवन् (8.3.17, 8.3.22)."
   भगवन्मदनुग्रहार्थमेतानर्थशास्त्रं:
     split:
       - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "venerable sir" }
@@ -848,12 +853,14 @@
   तं:
     fix:
       1: { gloss: "that (king)" }
-  राजानमाहदेव:
+  राजानमाह:
     split:
-      - { form: राजानम्, lemma: राजन्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "the king" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty (lit. O god)" }
-    note: "आह, the लट् of ब्रू (3.4.84), is the storyteller's 'said'; the e-text runs it into the speech."
+      - { form: राजानम्, lemma: राजन्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: the king }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: आह, the लट् of ब्रू (3.4.84), is the storyteller's 'said'; the e-text runs it into the speech.
+  देव:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty (lit. O god) }
   श्रूयतां:
     fix:
       1: { gloss: "let (it) be heard" }

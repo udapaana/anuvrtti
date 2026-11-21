@@ -10,12 +10,14 @@
   पुरुष:
     fix:
       1: { gloss: "the man (the supernatural figure Somilaka meets)" }
-  आहकिमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: किम्, lemma: किम्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "what?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: "आह is the defective perfect-form that does duty for ब्रू's present (3.4.84): 'says, said'."
+  किमेतत्?:
+    split:
+      - { form: किम्, lemma: किम्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: what? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
 
 '2.141+2':
   सोऽब्रवीत्:
@@ -57,8 +59,7 @@
       - { form: निज, lemma: निज, member: true, gloss: "his own" }
       - { form: यूथः, lemma: यूथ, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "herd (परित्यक्तनिजयूथ 'having left his own herd')" }
     note: >-
-      The edition prints यूठः, a misprint for यूथः "herd". परित्यक्तनिजयूथः is a
-      बहुव्रीहि agreeing with सः: "he by whom his own herd was abandoned".
+      The edition prints यूठः, a misprint for यूथः "herd". परित्यक्तनिजयूथः is a बहुव्रीहि agreeing with सः: "he by whom his own herd was abandoned".
   शृङ्गाभ्यां:
     fix:
       1: { gloss: "with (his two) horns" }
@@ -226,10 +227,12 @@
   शृगाल:
     fix:
       1: { gloss: "the jackal" }
-  आहप्रिये:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: प्रिये, lemma: प्रिया, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "my dear" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  प्रिये:
+    split:
+      - { form: प्रिये, lemma: प्रिया, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: my dear }
   '!':
     split: []
   ज्ञायते:
@@ -359,11 +362,13 @@
       2: { gloss: "already, as good as" }
 
 '2.142+1':
-  शृगाल्याहभोः:
+  शृगाल्याह:
     split:
-      - { form: शृगाली, lemma: शृगाली, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: "the she-jackal" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "you there! (a call)" }
+      - { form: शृगाली, lemma: शृगाली, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: the she-jackal }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: you there! (a call) }
   कापुरुषस्त्वं:
     fix:
       1: { gloss: "a coward, a wretch" }
@@ -763,12 +768,14 @@
   वर्षे:
     fix:
       1: { lemma: वर्ष, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "in the year" }
-  स्वभार्यामाहशिथिलौ:
+  स्वभार्यामाह:
     split:
-      - { form: स्व, lemma: स्व, member: true, gloss: "his own" }
-      - { form: भार्याम्, lemma: भार्या, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "wife" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: शिथिलौ, lemma: शिथिल, a: प्रथमा द्विवचन पुंलिङ्ग, gloss: "loose" }
+      - { form: स्व, lemma: स्व, member: true, gloss: his own }
+      - { form: भार्याम्, lemma: भार्या, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: wife }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+  शिथिलौ:
+    split:
+      - { form: शिथिलौ, lemma: शिथिल, a: प्रथमा द्विवचन पुंलिङ्ग, gloss: loose }
   शृगालः:
     fix:
       1: { gloss: "the jackal" }
@@ -832,11 +839,13 @@
   पुरुष:
     fix:
       1: { gloss: "the man (the supernatural figure)" }
-  आहयद्येवं:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: यदि, lemma: यदि, a: अव्यय, gloss: "if" }
-      - { form: एवम्, lemma: एवम्, a: अव्यय, gloss: "so" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  यद्येवं:
+    split:
+      - { form: यदि, lemma: यदि, a: अव्यय, gloss: if }
+      - { form: एवम्, lemma: एवम्, a: अव्यय, gloss: so }
   तद्गच्छ:
     fix:
       1: { gloss: "then" }
@@ -1090,9 +1099,11 @@
     fix:
       1: { gloss: "there, of them" }
       2: { gloss: "one" }
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho there!" }
   कर्तः:
     fix:
@@ -1138,9 +1149,11 @@
   स:
     fix:
       1: { gloss: "he (the other)" }
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho there!" }
   कर्मन्!:
     fix:
@@ -1254,9 +1267,7 @@
       - { form: अभ्युत्थान, lemma: अभ्युत्थान, member: true, gloss: "rising to greet a guest" }
       - { form: आदिना, lemma: आदि, a: तृतीया एकवचन पुंलिङ्ग, gloss: "and the rest (of the courtesies)" }
     note: >-
-      The edition prints अभ्युत्थादिना; read अभ्युत्थानादिना "with rising to greet
-      him and the other courtesies" — अभ्युत्थ is not a noun, and the syllable
-      न has dropped out before आदि.
+      The edition prints अभ्युत्थादिना; read अभ्युत्थानादिना "with rising to greet him and the other courtesies" — अभ्युत्थ is not a noun, and the syllable न has dropped out before आदि.
   सत्कृतो:
     fix:
       1: { lemma: सत्कृ, a: प्रथमा एकवचन पुंलिङ्ग क्त, gloss: "hospitably received, honoured" }
@@ -1314,9 +1325,11 @@
     fix:
       1: { gloss: "of the two" }
       2: { gloss: "one" }
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho there!" }
   कर्तः:
     fix:
@@ -1371,9 +1384,11 @@
   स:
     fix:
       1: { gloss: "he (the other)" }
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho there!" }
   कर्मन्!:
     fix:
@@ -2123,10 +2138,12 @@
   वायस:
     split:
       - { form: वायसः, lemma: वायस, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the crow" }
-  आहभद्र:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "my good friend" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भद्र:
+    split:
+      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: my good friend }
   मन्थरको:
     split:
       - { form: मन्थरकः, lemma: मन्थरक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Mantharaka" }
@@ -2296,12 +2313,14 @@
     split:
       - { form: सम्यक्, lemma: सम्यक्, a: अव्यय, gloss: "properly, clearly" }
       - { form: परिज्ञाय, lemma: परिज्ञा, a: अव्यय ल्यप्, gloss: "recognizing" }
-  मन्थरकमुवाचेह्येहि:
+  मन्थरकमुवाच:
     split:
-      - { form: मन्थरकम्, lemma: मन्थरक, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "to Mantharaka" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: एहि, lemma: ए, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "come!" }
-      - { form: एहि, lemma: ए, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: "come!" }
+      - { form: मन्थरकम्, lemma: मन्थरक, a: द्वितीया एकवचन पुंलिङ्ग, gloss: to Mantharaka }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  एह्येहि:
+    split:
+      - { form: एहि, lemma: ए, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: come! }
+      - { form: एहि, lemma: ए, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: come! }
   सखे:
     fix:
       1: { gloss: "friend" }
@@ -2348,12 +2367,14 @@
   मन्थरको:
     fix:
       1: { gloss: "Mantharaka" }
-  देशकालोचितमाहभो:
+  देशकालोचितमाह:
     split:
-      - { form: देश, lemma: देश, member: true, gloss: "place" }
-      - { form: काल, lemma: काल, member: true, gloss: "time" }
-      - { form: उचितम्, lemma: उचित, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "fitting (देशकालोचित 'suited to the place and time')" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: देश, lemma: देश, member: true, gloss: place }
+      - { form: काल, lemma: काल, member: true, gloss: time }
+      - { form: उचितम्, lemma: उचित, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: fitting (देशकालोचित 'suited to the place and time') }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho there!" }
   लघुपतनक:
     fix:
@@ -2466,9 +2487,11 @@
   चित्राङ्ग:
     fix:
       1: { gloss: "Citrāṅga (the deer)" }
-  आहभो:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho there!" }
   मन्थरक:
     fix:
@@ -2548,11 +2571,13 @@
   मन्थरक:
     fix:
       1: { gloss: "Mantharaka" }
-  आहभोश्चित्राङ्ग:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोश्चित्राङ्ग:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho there!" }
-      - { form: चित्राङ्ग, lemma: चित्राङ्ग, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Citrāṅga" }
+      - { form: चित्राङ्ग, lemma: चित्राङ्ग, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Citrāṅga }
   '!':
     split: []
   श्रूयतां:
@@ -2737,8 +2762,7 @@
       - { form: रोमाञ्च, lemma: रोमाञ्च, member: true, gloss: "the thrill of hair standing on end" }
       - { form: कञ्चुकम्, lemma: कञ्चुक, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "a jacket, armour" }
     note: >-
-      A बहुव्रीहि agreeing with सुखम्: the poets' delight "wears as its jacket the
-      thrill raised by tasting the flavour of fine verses".
+      A बहुव्रीहि agreeing with सुखम्: the poets' delight "wears as its jacket the thrill raised by tasting the flavour of fine verses".
   विनापि:
     fix:
       1: { lemma: विना, a: अव्यय, gloss: "without (with the accusative)" }
@@ -2946,10 +2970,12 @@
   मन्थरको:
     fix:
       1: { gloss: "Mantharaka" }
-  वायसमाहभो:
+  वायसमाह:
     split:
-      - { form: वायसम्, lemma: वायस, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "to the crow" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: वायसम्, lemma: वायस, a: द्वितीया एकवचन पुंलिङ्ग, gloss: to the crow }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho there!" }
   लघुपतनकाहं:
     fix:
@@ -3126,10 +3152,12 @@
   चित्राङ्गो:
     fix:
       1: { gloss: "Citrāṅga" }
-  लघुपतनकमाहभो:
+  लघुपतनकमाह:
     split:
-      - { form: लघुपतनकम्, lemma: लघुपतनक, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "to Laghupatanaka" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: लघुपतनकम्, lemma: लघुपतनक, a: द्वितीया एकवचन पुंलिङ्ग, gloss: to Laghupatanaka }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O, ho there!" }
   मित्र:
     fix:

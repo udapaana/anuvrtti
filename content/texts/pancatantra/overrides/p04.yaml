@@ -99,11 +99,13 @@
   पिङ्गलक:
     fix:
       1: { gloss: "Piṅgalaka (the lion king)" }
-  आहसाधु:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: साधु, lemma: साधु, a: अव्यय, gloss: "well done! good!" }
-    note: "The edition's dash after आह (opening the speech) is lost in the text; read आह — साधु. आह is taken, with Pāṇini (3.4.84), as a लट् form of ब्रू, used of the past in narrative."
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह (opening the speech) is lost in the text; read आह — साधु. आह is taken, with Pāṇini (3.4.84), as a लट् form of ब्रू, used of the past in narrative.
+  साधु#2:
+    split:
+      - { form: साधु, lemma: साधु, a: अव्यय, gloss: well done! good! }
   सुमते:
     fix:
       1: { lemma: सुमति, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "O wise one" }
@@ -348,11 +350,13 @@
       - { form: संजीवक, lemma: संजीवक, member: true, gloss: "Sañjīvaka (the bull)" }
       - { form: सकाशम्, lemma: सकाश, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "the presence of" }
       - { form: आसाद्य, lemma: आसद्, a: अव्यय ल्यप् णिच्, gloss: "having reached" }
-  सप्रश्रयमुवाचभो:
+  सप्रश्रयमुवाच:
     split:
       - { form: सप्रश्रयम्, lemma: सप्रश्रय, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "courteously, respectfully" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O! (calling someone)" }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! (calling someone) }
   मित्र:
     fix:
       1: { lemma: मित्र, a: सम्बोधन एकवचन नपुंसकलिङ्ग, gloss: "O friend" }
@@ -549,11 +553,13 @@
   संजीवक:
     split:
       - { form: संजीवकः, lemma: संजीवक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Sañjīvaka (the bull)" }
-  "आहकथमेतत्?":
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this — 'how was that?'" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this — 'how was that?' }
   सोऽब्रवीत्:
     fix:
       1: { gloss: "he (Damanaka)" }
@@ -997,13 +1003,15 @@
   मार्जनं:
     fix:
       1: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "sweeping, cleaning" }
-  कुर्वन्निदमाहहो:
+  कुर्वन्निदमाह:
     split:
-      - { form: कुर्वन्, lemma: कृ, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: "doing" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अहो, lemma: अहो, a: अव्यय, gloss: "oh! (in astonishment)" }
-    note: "The edition's आह—अहो, with its dash lost, runs together as आहहो."
+      - { form: कुर्वन्, lemma: कृ, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: doing }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's आह—अहो, with its dash lost, runs together as आहहो.
+  अहो:
+    split:
+      - { form: अहो, lemma: अहो, a: अव्यय, gloss: oh! (in astonishment) }
   दन्तिलस्य:
     split:
       - { form: दन्तिलस्य, lemma: दन्तिल, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "Dantila's" }
@@ -1031,11 +1039,13 @@
     split:
       - { form: ससम्भ्रमम्, lemma: ससम्भ्रम, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "in agitation, hastily" }
       - { form: उत्थाय, lemma: उत्था, a: अव्यय ल्यप्, gloss: "having got up" }
-  तमुवाचभो:
+  तमुवाच:
     split:
-      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! (a call)" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: him }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो#2:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! (a call) }
   भो:
     split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
@@ -1070,10 +1080,12 @@
   गोरम्भः:
     split:
       - { form: गोरम्भः, lemma: गोरम्भ, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Gorambha" }
-  प्राहदेव:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty" }
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  देव:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty }
   "!":
     split: []
     note: "Punctuation, not a word: the stray pada vidyut placed here belongs to the next word."
@@ -1968,12 +1980,14 @@
   विहस्य:
     fix:
       1: { a: अव्यय ल्यप्, gloss: "laughing" }
-  द्वारपालानिदमूचेभो:
+  द्वारपालानिदमूचे:
     split:
-      - { form: द्वारपालान्, lemma: द्वारपाल, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "the doorkeepers" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: ऊचे, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
+      - { form: द्वारपालान्, lemma: द्वारपाल, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: the doorkeepers }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: ऊचे, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: said }
+  भो#2:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! }
   भो:
     split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho!" }
@@ -2167,12 +2181,14 @@
   वस्त्रयुगलेन:
     fix:
       1: { gloss: "with a pair of garments" }
-  संमान्येदमुवाचभद्र:
+  संमान्येदमुवाच:
     split:
-      - { form: संमान्य, lemma: संमन्, a: अव्यय ल्यप् णिच्, gloss: "having honoured" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "my good man" }
+      - { form: संमान्य, lemma: संमन्, a: अव्यय ल्यप् णिच्, gloss: having honoured }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भद्र:
+    split:
+      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: my good man }
   "!":
     split: []
     note: "Punctuation, not a word: the snapshot gives the '!' the next word's padas; each word after it is re-stated here."
@@ -2247,11 +2263,13 @@
   गत्वा:
     fix:
       1: { gloss: "having come to, feeling" }
-  तमुवाचभोः:
+  तमुवाच:
     split:
-      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: him }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   "श्रेष्ठिन्!":
     fix:
       1: { a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "merchant, guild-master" }
@@ -2375,13 +2393,15 @@
     split:
       - { form: संमार्जन, lemma: संमार्जन, member: true, gloss: "sweeping" }
       - { form: क्रियाम्, lemma: क्रिया, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "the work (of sweeping)" }
-  कुर्वन्निदमाहहो:
+  कुर्वन्निदमाह:
     split:
-      - { form: कुर्वन्, lemma: कृ, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: "doing" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अहो, lemma: अहो, a: अव्यय, gloss: "oh!" }
-    note: "As at 1.143+1, the edition's आह—अहो runs together as आहहो."
+      - { form: कुर्वन्, lemma: कृ, a: प्रथमा एकवचन पुंलिङ्ग शतृ, gloss: doing }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: As at 1.143+1, the edition's आह—अहो runs together as आहहो.
+  अहो:
+    split:
+      - { form: अहो, lemma: अहो, a: अव्यय, gloss: oh! }
   अविवेकोऽस्मद्भूपतेः:
     split:
       - { form: अविवेकः, lemma: अविवेक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "want of sense, folly" }
@@ -2413,11 +2433,13 @@
   सविस्मयं:
     split:
       - { form: सविस्मयम्, lemma: सविस्मय, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "in astonishment" }
-  तमुवाचरे:
+  तमुवाच:
     split:
-      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: रे, lemma: रे, a: अव्यय, gloss: "hey! (calling an inferior)" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: him }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  रे#2:
+    split:
+      - { form: रे, lemma: रे, a: अव्यय, gloss: hey! (calling an inferior) }
   रे:
     split:
       - { form: रे, lemma: रे, a: अव्यय, gloss: "hey!" }
@@ -2735,10 +2757,12 @@
   संजीवक:
     split:
       - { form: संजीवकः, lemma: संजीवक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Sañjīvaka" }
-  आहभद्र:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "my friend" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भद्र:
+    split:
+      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: my friend }
   एवमेवैतत्:
     fix:
       1: { gloss: "so" }
@@ -2860,13 +2884,15 @@
   दत्त्वा:
     fix:
       1: { gloss: "having placed" }
-  मानपुरःसरमुवाचपि:
+  मानपुरःसरमुवाच:
     split:
       - { form: मान, lemma: मान, member: true, gloss: "respect, honour" }
-      - { form: पुरःसरम्, lemma: पुरःसर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "with (respect)" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अपि, lemma: अपि, a: अव्यय, gloss: "(opening a question)" }
+      - { form: पुरःसरम्, lemma: पुरःसर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: with (respect) }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: "उवाच — अपि: the edition's dash is lost, so उवाच + अपि is printed उवाचपि. अपि opening a sentence asks a question."
+  अपि:
+    split:
+      - { form: अपि, lemma: अपि, a: अव्यय, gloss: (opening a question) }
   शिवं:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "well-being — 'is all well?'" }
@@ -2939,11 +2965,13 @@
   सादरतरं:
     split:
       - { form: सादरतरम्, lemma: सादरतर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "still more kindly" }
-  तमुवाचवयस्य:
+  तमुवाच:
     split:
-      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: वयस्य, lemma: वयस्य, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "friend" }
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: him }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  वयस्य:
+    split:
+      - { form: वयस्य, lemma: वयस्य, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: friend }
   न:
     fix:
       1: { gloss: "not" }

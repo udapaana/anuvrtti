@@ -280,15 +280,16 @@
       - { form: आत्मनः, lemma: आत्मन्, a: षष्ठी एकवचन पुंलिङ्ग, gloss: "his own" }
 
 '1.284+1':
-  भयव्याकुलितान्विज्ञायेदमाहभो:
+  भयव्याकुलितान्विज्ञायेदमाह:
     split:
-      - { form: भय, lemma: भय, member: true, gloss: "fear" }
+      - { form: भय, lemma: भय, member: true, gloss: fear }
       - { form: व्याकुलितान्, lemma: व्याकुलित, a: द्वितीया बहुवचन पुंलिङ्ग, gloss: "agitated, alarmed" }
       - { form: विज्ञाय, lemma: विज्ञा, a: अव्यय ल्यप्, gloss: "perceiving, seeing (that they were)" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! O! (calling someone)" }
-    note: "The e-text runs the verb into the speech; भो is भोः with its visarga dropped before the next भ (8.3.17, 8.3.22)."
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ho! O! (calling someone) }
   भोः:
     split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ho! O!" }
@@ -734,11 +735,12 @@
     fix:
       1: { gloss: "Piṅgalaka (the lion king)" }
     note: "पिङ्गलकः, its visarga dropped before the vowel of आह (8.3.17, 8.3.19)."
-  आहभो:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O! (calling someone)" }
-    note: The e-text runs the verb into the speech; भो is भोः before the voiced द.
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! (calling someone) }
   दमनक:
     fix:
       1: { gloss: "O Damanaka" }
@@ -769,11 +771,13 @@
       - { form: दुष्टबुद्धिः, lemma: दुष्टबुद्धि, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "evil-minded, ill-disposed" }
 
 '1.284+24':
-  आहयदद्य:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: यत्, lemma: यत्, a: अव्यय, gloss: "that (opening the words quoted)" }
-      - { form: अद्य, lemma: अद्य, a: अव्यय, gloss: "today" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  यदद्य:
+    split:
+      - { form: यत्, lemma: यत्, a: अव्यय, gloss: that (opening the words quoted) }
+      - { form: अद्य, lemma: अद्य, a: अव्यय, gloss: today }
   ममाग्रे:
     fix:
       2: { gloss: "before, in the presence of" }
@@ -885,12 +889,13 @@
     split:
       - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
       - { form: उद्वीक्ष्य, lemma: उद्वीक्ष्, a: अव्यय ल्यप्, gloss: "looking up at, seeing" }
-  सादरतरमुवाचभो:
+  सादरतरमुवाच:
     split:
-      - { form: सादरतरम्, lemma: सादरतर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "most cordially (adverb)" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
-    note: "The e-text runs the verb into the speech; भो is भोः before the voiced म (8.3.17, 8.3.22)."
+      - { form: सादरतरम्, lemma: सादरतर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: most cordially (adverb) }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   मित्र:
     split:
       - { form: मित्र, lemma: मित्र, a: सम्बोधन एकवचन नपुंसकलिङ्ग, gloss: "O friend" }
@@ -985,11 +990,12 @@
   दमनक:
     fix:
       1: { gloss: "Damanaka (the jackal)" }
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
       - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O! ah, sir!" }
-    note: The e-text runs the verb into the speech it introduces.
   '!':
     split: []
     note: Punctuation, not a word.
@@ -1292,11 +1298,12 @@
     fix:
       1: { gloss: "Sañjīvaka (the bull)" }
     note: "सञ्जीवकः, its visarga dropped before the vowel of आह."
-  आहथ:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  अथ:
+    split:
       - { form: अथ, lemma: अथ, a: अव्यय, gloss: "well then, now" }
-    note: "The e-text runs the verb into the speech: आह — अथ …, not a verb आहथ."
   भवान्किं:
     split:
       - { form: भवान्, lemma: भवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "you (sir), the polite pronoun" }
@@ -1812,14 +1819,15 @@
   लब्ध्वा:
     fix:
       1: { gloss: "regaining" }
-  सवैराग्यमिदमाहभो:
+  सवैराग्यमिदमाह:
     split:
-      - { form: स, lemma: स, member: true, gloss: "with" }
-      - { form: वैराग्यम्, lemma: वैराग्य, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "despondency; सवैराग्यम् 'despondently' (adverb)" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "ah!" }
-    note: "The e-text runs the verb into the speech, and prints भो for भोः even before स, where the visarga would stay; read भोः."
+      - { form: स, lemma: स, member: true, gloss: with }
+      - { form: वैराग्यम्, lemma: वैराग्य, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: despondency; सवैराग्यम् 'despondently' (adverb) }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: ah! }
   साध्विदमुच्यते:
     fix:
       1: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "well, rightly" }
@@ -2353,11 +2361,12 @@
   दमनक:
     fix:
       1: { gloss: "Damanaka (the jackal)" }
-  आहभो:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
-    note: The e-text runs the verb into the speech; भो is भोः before the voiced म.
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   मित्र:
     split:
       - { form: मित्र, lemma: मित्र, a: सम्बोधन एकवचन नपुंसकलिङ्ग, gloss: "O friend" }
@@ -2407,11 +2416,12 @@
   स:
     fix:
       1: { gloss: "he (the bull)" }
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O! ah!" }
-    note: The e-text runs the verb into the speech it introduces.
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! ah! }
   '!':
     split: []
     note: Punctuation, not a word.
@@ -2504,12 +2514,13 @@
     split:
       - { form: दमनकः, lemma: दमनक, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "Damanaka (the jackal)" }
     note: "The edition prints दमक, a slip for दमनक; its visarga is dropped before the vowel of आह."
-  आहकथमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this; कथम् एतत् 'how was that?'" }
-    note: The e-text runs the verb into the speech it introduces.
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this; कथम् एतत् 'how was that?' }
 
 '1.311+2':
   सोऽब्रवीत्:
@@ -2605,11 +2616,12 @@
     fix:
       1: { gloss: "the lion" }
     note: "सिंहः, its visarga dropped before the vowel of आह."
-  आहहो:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अहो, lemma: अहो, a: अव्यय, gloss: "oh! (wonder)" }
-    note: "The e-text runs the verb into the speech. अहो ends in ओ, a प्रगृह्य, so it stays unchanged before अपूर्वम् (1.1.15, 6.1.125)."
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  अहो:
+    split:
+      - { form: अहो, lemma: अहो, a: अव्यय, gloss: oh! (wonder) }
   अपूर्वमिदं:
     fix:
       1: { gloss: "never seen before, strange" }
@@ -2644,11 +2656,12 @@
     fix:
       1: { gloss: "the crow" }
     note: "वायसः, its visarga dropped before the vowel of आह."
-  आहभोः:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
-    note: The e-text runs the verb into the speech it introduces.
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   स्वामिन्!:
     fix:
       1: { gloss: "O master" }
@@ -2679,12 +2692,13 @@
     fix:
       1: { gloss: "the lion" }
     note: "सिंहः, its visarga dropped before the vowel of आह."
-  आहनाहं:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: न, lemma: न, a: अव्यय, gloss: "not" }
-      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: "I" }
-    note: The e-text runs the verb into the speech it introduces.
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  नाहं:
+    split:
+      - { form: न, lemma: न, a: अव्यय, gloss: not }
+      - { form: अहम्, lemma: अस्मद्, a: प्रथमा एकवचन, gloss: I }
   गृहमागतं:
     split:
       - { form: गृहम्, lemma: गृह, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "a house, home" }
@@ -3001,11 +3015,12 @@
     fix:
       1: { gloss: "them" }
       2: { gloss: "the lion" }
-  प्राहभोः:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
-    note: The e-text runs the verb into the speech it introduces.
+      - { form: प्राह, lemma: प्रब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भोः:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   '!':
     split: []
     note: Punctuation, not a word.
@@ -3084,11 +3099,12 @@
     fix:
       1: { gloss: "the jackal" }
     note: "शृगालः, its visarga dropped before the vowel of आह."
-  आहभो:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
-    note: The e-text runs the verb into the speech; भो is भोः before the voiced व.
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   वायस:
     fix:
       1: { gloss: "O crow" }
@@ -3141,12 +3157,13 @@
     fix:
       1: { gloss: "the crow" }
     note: "वायसः, its visarga dropped before the vowel of आह."
-  आहयुक्तमुक्तं:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  युक्तमुक्तं:
+    split:
       - { form: युक्तम्, lemma: युक्त, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "rightly, fitting" }
-      - { form: उक्तम्, lemma: वच्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "said" }
-    note: The e-text runs the verb into the speech it introduces.
+      - { form: उक्तम्, lemma: वच्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: said }
   भवता:
     fix:
       1: { gloss: "by you (sir), the polite pronoun" }
@@ -3179,11 +3196,12 @@
     fix:
       1: { gloss: "the jackal" }
     note: "शृगालः, its visarga dropped before the vowel of आह."
-  आहभो:
+  आह:
     split:
-      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: "O!" }
-    note: The e-text runs the verb into the speech; भो is भोः before the voiced व.
+      - { form: आह, lemma: ब्रू, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+  भो:
+    split:
+      - { form: भोः, lemma: भोस्, a: अव्यय, gloss: O! }
   वायस:
     fix:
       1: { gloss: "O crow" }

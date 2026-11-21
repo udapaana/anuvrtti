@@ -154,13 +154,15 @@
       - { form: तत्, lemma: तद्, member: true, gloss: "his" }
       - { form: वचनम्, lemma: वचन, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "words, speech" }
       - { form: आकर्ण्य, lemma: आकर्ण्, a: अव्यय ल्यप्, gloss: "having heard" }
-  सस्मितमिदमाहवयस्य:
+  सस्मितमिदमाह:
     split:
-      - { form: सस्मितम्, lemma: सस्मित, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "with a smile (adverbial)" }
-      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: वयस्य, lemma: वयस्य, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "friend!" }
-    note: "The edition's dash after आह (opening the speech) is lost in the text; read आह — वयस्य."
+      - { form: सस्मितम्, lemma: सस्मित, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: with a smile (adverbial) }
+      - { form: इदम्, lemma: इदम्, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: this }
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह (opening the speech) is lost in the text; read आह — वयस्य.
+  वयस्य:
+    split:
+      - { form: वयस्य, lemma: वयस्य, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: friend! }
   '!':
     split: []
     note: "A punctuation mark standing as a word of its own: no padas."
@@ -206,11 +208,13 @@
   कौलिक:
     fix:
       1: { gloss: "the weaver" }
-  आहवयस्य,:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: वयस्य, lemma: वयस्य, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "friend!" }
-    note: "The edition's dash after आह is lost in the text; read आह — वयस्य."
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह is lost in the text; read आह — वयस्य.
+  वयस्य,:
+    split:
+      - { form: वयस्य, lemma: वयस्य, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: friend! }
   कन्यान्तःपुरे:
     fix:
       1: { form: कन्या, lemma: कन्या, member: true, gloss: "a maiden, the princess" }
@@ -262,11 +266,13 @@
   रथकार:
     fix:
       1: { gloss: "the wheelwright, the carpenter" }
-  आहमित्र,:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: मित्र, lemma: मित्र, a: सम्बोधन एकवचन नपुंसकलिङ्ग, gloss: "friend!" }
-    note: "The edition's dash after आह is lost in the text; read आह — मित्र."
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह is lost in the text; read आह — मित्र.
+  मित्र,:
+    split:
+      - { form: मित्र, lemma: मित्र, a: सम्बोधन एकवचन नपुंसकलिङ्ग, gloss: friend! }
   मे:
     fix:
       1: { a: षष्ठी एकवचन, gloss: "my" }
@@ -338,11 +344,13 @@
   दर्शयित्वा:
     split:
       - { form: दर्शयित्वा, lemma: दृश्, a: अव्यय क्त्वा णिच्, gloss: "having shown" }
-  प्रोवाचवयस्य,:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: वयस्य, lemma: वयस्य, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "friend!" }
-    note: "The edition's dash after प्रोवाच is lost in the text."
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after प्रोवाच is lost in the text.
+  वयस्य,:
+    split:
+      - { form: वयस्य, lemma: वयस्य, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: friend! }
   अनेन:
     fix:
       1: { a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "this" }
@@ -410,12 +418,14 @@
   तथारूपस्तत्र:
     fix:
       1: { gloss: "in that guise" }
-  तामाहराजपुत्रि,:
+  तामाह:
     split:
-      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "her" }
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: राजपुत्रि, lemma: राजपुत्री, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "princess!" }
-    note: "The edition's dash after आह is lost in the text."
+      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: her }
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+    note: The edition's dash after आह is lost in the text.
+  राजपुत्रि,:
+    split:
+      - { form: राजपुत्रि, lemma: राजपुत्री, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: princess! }
   सुप्ता:
     fix:
       1: { gloss: "asleep" }
@@ -485,11 +495,13 @@
     fix:
       1: { gloss: "from the bed" }
       2: { a: अव्यय ल्यप्, gloss: "rising" }
-  प्रोवाचभगवन्!:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Lord!" }
-    note: "The edition's dash after प्रोवाच is lost in the text."
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after प्रोवाच is lost in the text.
+  भगवन्!:
+    split:
+      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Lord! }
   मानुषी:
     fix:
       1: { gloss: "a mortal woman" }
@@ -519,11 +531,13 @@
   कौलिक:
     fix:
       1: { gloss: "the weaver" }
-  आहसुभगे,:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "fair lady!" }
-    note: "The edition's dash after आह is lost in the text."
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह is lost in the text.
+  सुभगे,:
+    split:
+      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: fair lady! }
   सत्यमभिहितं:
     split:
       - { form: सत्यम्, lemma: सत्य, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "true" }
@@ -585,11 +599,13 @@
   सा:
     fix:
       1: { gloss: "she" }
-  प्राहभगवन्,:
+  प्राह:
     split:
-      - { form: प्राह, lemma: प्राह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Lord!" }
-    note: "The edition's dash after प्राह is lost in the text."
+      - { form: प्राह, lemma: प्राह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after प्राह is lost in the text.
+  भगवन्,:
+    split:
+      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Lord! }
   तन्मे:
     fix:
       1: { a: अव्यय, gloss: "then" }
@@ -610,11 +626,13 @@
   कौलिक:
     fix:
       1: { gloss: "the weaver" }
-  आहसुभगे,:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "fair lady!" }
-    note: "The edition's dash after आह is lost in the text."
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह is lost in the text.
+  सुभगे,:
+    split:
+      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: fair lady! }
   नाहं:
     split:
       - { form: न, lemma: न, a: अव्यय }
@@ -1052,11 +1070,13 @@
     split:
       - { form: रहस्, lemma: रहस्, member: true, gloss: "privacy, a private place" }
       - { form: स्थाम्, lemma: स्थ, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "being (in)" }
-  प्रोवाचदेवि,:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: देवि, lemma: देवी, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "my queen!" }
-    note: "The edition's dash after प्रोवाच is lost in the text."
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after प्रोवाच is lost in the text.
+  देवि,:
+    split:
+      - { form: देवि, lemma: देवी, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: my queen! }
   ज्ञायतां:
     fix:
       1: { gloss: "let it be found out" }
@@ -1206,11 +1226,13 @@
       - { form: लज्जा, lemma: लज्जा, member: true, gloss: "shame" }
       - { form: नत, lemma: नत, member: true, gloss: "bowed" }
       - { form: आननम्, lemma: आनन, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: "face (adverbial: 'with her face bowed in fear and shame')" }
-  प्रोवाचम्ब,:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अम्ब, lemma: अम्बा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "mother!" }
-    note: "प्रोवाच — अम्ब, run together in the text without its dash."
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: प्रोवाच — अम्ब, run together in the text without its dash.
+  अम्ब,:
+    split:
+      - { form: अम्ब, lemma: अम्बा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: mother! }
   साक्षान्नारायणः:
     fix:
       1: { gloss: "in person" }
@@ -1279,12 +1301,14 @@
   सत्वरं:
     split:
       - { form: सत्वरम्, lemma: सत्वरम्, a: अव्यय, gloss: "quickly" }
-  राजानमूचेदेव,:
+  राजानमूचे:
     split:
-      - { form: राजानम्, lemma: राजन्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "the king" }
-      - { form: ऊचे, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "said (to)" }
-      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Your Majesty!" }
-    note: "The edition's dash after ऊचे is lost in the text."
+      - { form: राजानम्, lemma: राजन्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: the king }
+      - { form: ऊचे, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: said (to) }
+    note: The edition's dash after ऊचे is lost in the text.
+  देव,:
+    split:
+      - { form: देव, lemma: देव, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Your Majesty! }
   दिष्ट्या:
     split:
       - { form: दिष्ट्या, lemma: दिष्टि, a: तृतीया एकवचन स्त्रीलिङ्ग, gloss: "by good fortune" }
@@ -1448,13 +1472,15 @@
       - { form: प्लावितम्, lemma: प्लु, a: द्वितीया एकवचन पुंलिङ्ग क्त णिच्, gloss: "drenched, bathed" }
       - { form: इव, lemma: इव, a: अव्यय, gloss: "as if" }
       - { form: आत्मानम्, lemma: आत्मन्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "himself" }
-  मन्यमानस्तामुवाचप्रिये:
+  मन्यमानस्तामुवाच:
     split:
       - { form: मन्यमानः, lemma: मन्, a: प्रथमा एकवचन पुंलिङ्ग शानच्, gloss: "thinking, feeling" }
-      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "her" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: प्रिये, lemma: प्रिया, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "my dear!" }
-    note: "The edition's dash after उवाच is lost in the text."
+      - { form: ताम्, lemma: तद्, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: her }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+    note: The edition's dash after उवाच is lost in the text.
+  प्रिये:
+    split:
+      - { form: प्रिये, lemma: प्रिया, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: my dear! }
   '!':
     split: []
     note: "A punctuation mark standing as a word of its own: no padas."
@@ -1577,12 +1603,14 @@
   तां:
     fix:
       1: { gloss: "her" }
-  दुहितरमुवाचपुत्रि,:
+  दुहितरमुवाच:
     split:
-      - { form: दुहितरम्, lemma: दुहितृ, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: "daughter" }
-      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: पुत्रि, lemma: पुत्री, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "daughter!" }
-    note: "The edition's dash after उवाच is lost in the text."
+      - { form: दुहितरम्, lemma: दुहितृ, a: द्वितीया एकवचन स्त्रीलिङ्ग, gloss: daughter }
+      - { form: उवाच, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+    note: The edition's dash after उवाच is lost in the text.
+  पुत्रि,:
+    split:
+      - { form: पुत्रि, lemma: पुत्री, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: daughter! }
   त्वयि:
     split:
       - { form: त्वयि, lemma: युष्मद्, a: सप्तमी एकवचन, gloss: "you" }
@@ -1705,11 +1733,13 @@
   कौलिक:
     fix:
       1: { gloss: "the weaver" }
-  आहसुभगे:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "fair lady!" }
-    note: "The edition's dash after आह is lost in the text."
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह is lost in the text.
+  सुभगे:
+    split:
+      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: fair lady! }
   '!':
     split: []
     note: "A punctuation mark standing as a word of its own: no padas."
@@ -1813,12 +1843,14 @@
       - { form: प्रेषयन्, lemma: प्रेष्, a: प्रथमा एकवचन पुंलिङ्ग शतृ णिच्, gloss: "sending" }
       - { form: दुहितृ, lemma: दुहितृ, member: true, gloss: "a daughter" }
       - { form: मुखेन, lemma: मुख, a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: "mouth (दुहितृमुखेन 'through his daughter')" }
-  तमूचेभगवन्,:
+  तमूचे:
     split:
-      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: "him" }
-      - { form: ऊचे, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: "said (to)" }
-      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "Lord!" }
-    note: "The edition's dash after ऊचे is lost in the text."
+      - { form: तम्, lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग, gloss: him }
+      - { form: ऊचे, lemma: वच्, a: लिट् प्रथमपुरुष एकवचन आत्मनेपद, gloss: said (to) }
+    note: The edition's dash after ऊचे is lost in the text.
+  भगवन्,:
+    split:
+      - { form: भगवन्, lemma: भगवत्, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: Lord! }
   प्रभाते:
     split:
       - { form: प्रभाते, lemma: प्रभात, a: सप्तमी एकवचन नपुंसकलिङ्ग, gloss: "at daybreak, tomorrow morning" }
@@ -2088,11 +2120,13 @@
   तां:
     fix:
       1: { gloss: "her" }
-  प्रोवाचसुभगे:
+  प्रोवाच:
     split:
-      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said (to)" }
-      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: "fair lady!" }
-    note: "The edition's dash after प्रोवाच is lost in the text."
+      - { form: प्रोवाच, lemma: प्रवच्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said (to) }
+    note: The edition's dash after प्रोवाच is lost in the text.
+  सुभगे:
+    split:
+      - { form: सुभगे, lemma: सुभगा, a: सम्बोधन एकवचन स्त्रीलिङ्ग, gloss: fair lady! }
   '!':
     split: []
     note: "A punctuation mark standing as a word of its own: no padas."
@@ -2403,13 +2437,15 @@
       - { form: साम्प्रतम्, lemma: साम्प्रतम्, a: अव्यय, gloss: "now" }
 
 '1.227+13':
-  श्रीभगवानाहद्य:
+  श्रीभगवानाह:
     split:
       - { form: श्री, lemma: श्री, member: true, gloss: "holy, blessed (an honorific)" }
-      - { form: भगवान्, lemma: भगवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: "the Lord" }
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: अद्य, lemma: अद्य, a: अव्यय, gloss: "today" }
+      - { form: भगवान्, lemma: भगवत्, a: प्रथमा एकवचन पुंलिङ्ग, gloss: the Lord }
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
     note: "आह — अद्य: the text lost the edition's dash and, with it, the अ of अद्य."
+  अद्य:
+    split:
+      - { form: अद्य, lemma: अद्य, a: अव्यय, gloss: today }
   कौलिको:
     fix:
       1: { gloss: "the weaver" }
@@ -2802,11 +2838,13 @@
   करटक:
     fix:
       1: { gloss: "Karaṭaka (the jackal)" }
-  आहभद्र,:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "my good friend!" }
-    note: "The edition's dash after आह is lost in the text."
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह is lost in the text.
+  भद्र,:
+    split:
+      - { form: भद्र, lemma: भद्र, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: my good friend! }
   अस्त्येवम्:
     fix:
       1: { gloss: "it is" }
@@ -2861,11 +2899,13 @@
   दमनक:
     fix:
       1: { gloss: "Damanaka (the jackal)" }
-  आहभ्रातः:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: भ्रातः, lemma: भ्रातृ, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: "brother!" }
-    note: "The edition's dash after आह is lost in the text."
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह is lost in the text.
+  भ्रातः:
+    split:
+      - { form: भ्रातः, lemma: भ्रातृ, a: सम्बोधन एकवचन पुंलिङ्ग, gloss: brother! }
   '!':
     split: []
     note: "A punctuation mark standing as a word of its own: no padas."
@@ -2915,12 +2955,14 @@
   करटक:
     fix:
       1: { gloss: "Karaṭaka (the jackal)" }
-  आहकथमेतत्?:
+  आह:
     split:
-      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "said" }
-      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: "how?" }
-      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "this" }
-    note: "The edition's dash after आह is lost in the text."
+      - { form: आह, lemma: अह्, a: लिट् प्रथमपुरुष एकवचन परस्मैपद, gloss: said }
+    note: The edition's dash after आह is lost in the text.
+  कथमेतत्?:
+    split:
+      - { form: कथम्, lemma: कथम्, a: अव्यय, gloss: how? }
+      - { form: एतत्, lemma: एतद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: this }
 
 '1.228+2':
   कथा:
