@@ -56,7 +56,7 @@ export type TextPada = {
 export type TextWord = { surface: string; padas: TextPada[]; note?: string; printed?: string; printedNote?: string };
 /** `translation`: a published translation of the section, where the text has one (Hume's Kaṭha) —
  *  modernized where `translationOriginal` holds the translator's own wording */
-export type TextSection = { id: string; kind: string; lines: number[][]; words: TextWord[]; text: string[]; translation?: string; translationOriginal?: string };
+export type TextSection = { id: string; kind: string; lines: number[][]; words: TextWord[]; text: string[]; translation?: string; translationOriginal?: string; translationWith?: { id: string; above: boolean } };
 export type TextTable = {
   stem: string;
   lakara: string | null;
@@ -257,6 +257,8 @@ export function sectionAsReading(
     sentence: said.join(' '),
     translation: sec.translation ?? '',
     translationOriginal: sec.translationOriginal ?? '',
+    // rendered by the translator together with an earlier verse
+    translationWith: sec.translationWith ? (sec.translationWith.above ? 'translated with the verse above' : `translated with ${shortId(sec.translationWith.id, partId)}`) : '',
     words,
     tokens,
     samhita

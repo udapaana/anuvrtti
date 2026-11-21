@@ -721,6 +721,7 @@
       words,
       translation: r.translation || '',
       translationOriginal: r.translationOriginal || '',
+      translationWith: (r as any).translationWith || '',
       vyakhya: r.vyakhya || '',
       vyakhya_en: (r.vyakhya_en || '').trim()
     };
@@ -2832,7 +2833,9 @@
               <p class="samhita-line" lang="sa"><Sanskrit text={list.find((x) => x.id === row.id)?.sentence ?? ''} source="devanagari" /></p>
             {/if}
 
-            {#if row.translation || !textMode}
+            {#if row.translationWith}
+              <p class="tr-with">{row.translationWith}</p>
+            {:else if row.translation || !textMode}
               {#if mode === 'gloss' || revealed.has(row.id) || !row.translation}
                 <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
                 {#if row.translationOriginal}
@@ -2841,7 +2844,7 @@
                     <p class="translation original"><Sanskrit text={row.translationOriginal} source="devanagari" /></p>
                   {/if}
                   <button class="tr-original" onclick={() => toggleOriginal(row.id)}>
-                    {originalShown.has(row.id) ? 'hide' : 'show'} {(tMeta as any)?.translation?.translator ?? 'the translator'}'s wording
+                    {originalShown.has(row.id) ? 'hide' : 'show'} {(tMeta as any)?.translation?.translator?.split(' ').at(-1) ?? 'the translator'}'s wording
                   </button>
                 {/if}
               {:else}
@@ -3120,6 +3123,12 @@
     font-size: calc(14.5px * var(--read-scale, 1));
     border-left: 2px solid var(--rule-2);
     padding-left: 10px;
+  }
+  .tr-with {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--quiet);
   }
   .tr-original {
     align-self: flex-start;
