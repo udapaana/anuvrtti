@@ -650,6 +650,19 @@
     tokenCache.set(r.id, out);
     return out;
   }
+  /** **bold** and *italic* in an explanation, as runs to set in their weight */
+  function emphasis(text: string): { t: string; b?: boolean; i?: boolean }[] {
+    const out: { t: string; b?: boolean; i?: boolean }[] = [];
+    const re = /\*\*([^*]+)\*\*|\*([^*\s][^*]*?)\*/g;
+    let at = 0;
+    for (const m of text.matchAll(re)) {
+      if (m.index! > at) out.push({ t: text.slice(at, m.index) });
+      out.push(m[1] != null ? { t: m[1], b: true } : { t: m[2], i: true });
+      at = m.index! + m[0].length;
+    }
+    if (at < text.length) out.push({ t: text.slice(at) });
+    return out;
+  }
   /** readings shown as pada-pāṭha, whose saṃhitā goes beneath the line */
   const vedicSamhita = new Set<string>();
 
@@ -2618,8 +2631,12 @@
                 <span class="vyakhya-dev"><Sanskrit text={railReading.vyakhya} source="devanagari" /></span>
               {/if}
               {#if railReading.vyakhya_en}
+                <!-- the explanations are written with **bold** and *italic*; 94 of
+                     them showed the asterisks -->
                 <p class="vyakhya-en">
-                  <Sanskrit text={railReading.vyakhya_en.trim()} source="devanagari" />
+                  {#each emphasis(railReading.vyakhya_en.trim()) as part}
+                    {#if part.b}<strong><Sanskrit text={part.t} source="devanagari" /></strong>{:else if part.i}<em><Sanskrit text={part.t} source="devanagari" /></em>{:else}<Sanskrit text={part.t} source="devanagari" />{/if}
+                  {/each}
                 </p>
               {/if}
             </div>
