@@ -150,6 +150,7 @@
   नास्त्येकमपि:
     fix:
       3: { a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "one" }
+      2: { gloss: 'there is' }
   यद्येषां:
     fix:
       2: { lemma: इदम्, a: षष्ठी बहुवचन नपुंसकलिङ्ग, gloss: "of these" }
@@ -363,6 +364,9 @@
     split:
       - { form: कदाचित्, lemma: कदाचित्, a: अव्यय, gloss: "ever (with न, 'never')" }
       - { form: उपसर्पति, lemma: उपसृप्, a: लट् प्रथमपुरुष एकवचन परस्मैपद, gloss: "moves, advances" }
+  नास्ति:
+    fix:
+      2: { gloss: 'there is' }
 
 '3.23':
   शत्रुणा:
@@ -467,6 +471,7 @@
   भवेद्रिपुः:
     fix:
       2: { gloss: "an enemy" }
+      1: { gloss: 'would be' }
 
 '3.25+1':
   अपरं:
@@ -631,6 +636,7 @@
   स्युर्बलेन:
     fix:
       2: { gloss: "by force" }
+      1: { gloss: 'are, would be' }
   स्त्रीरूपमास्थाय:
     split:
       - { form: स्त्री, lemma: स्त्री, member: true, gloss: "a woman" }
@@ -804,6 +810,7 @@
   भवेद्यानं:
     fix:
       2: { gloss: "going, a march (yāna)" }
+      1: { gloss: 'is, would be' }
   भवेत्प्राणार्थरक्षणम्:
     split:
       - { form: भवेत्, lemma: भू, a: विधिलिङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: "is" }
@@ -1064,11 +1071,15 @@
   मेदिनीम्:
     fix:
       1: { gloss: "the earth, (his) land" }
+  करोति:
+    fix:
+      1: { gloss: 'makes (deśatyāgaṃ karoti: leaves the country)' }
 
 '3.44':
   युध्यतेऽहङ्कृतिं:
     fix:
       2: { gloss: "pride, egotism" }
+      1: { gloss: 'fights' }
   दुर्बलो:
     fix:
       1: { gloss: "a weak (king)" }
@@ -1081,6 +1092,7 @@
   कुर्यादात्मनश्च:
     fix:
       2: { a: षष्ठी एकवचन पुंलिङ्ग, gloss: "of himself, his own" }
+      1: { gloss: 'would bring about' }
   कुलक्षयम्:
     fix:
       1: { gloss: "the ruin of the family" }
@@ -1730,6 +1742,9 @@
   सौहृदम्:
     fix:
       1: { gloss: "friendship" }
+  भवति:
+    fix:
+      1: { gloss: 'becomes' }
 
 '3.58+1':
   अथवा:
@@ -1757,6 +1772,9 @@
   रक्षायै:
     fix:
       1: { gloss: "for protection" }
+  भवति:
+    fix:
+      1: { gloss: 'serves (rakṣāyai bhavati: serves to protect)' }
 
 '3.58+3':
   उक्तं:
@@ -1810,6 +1828,9 @@
   उक्तं:
     fix:
       1: { lemma: वच्, a: प्रथमा एकवचन नपुंसकलिङ्ग क्त, gloss: "(it is) said" }
+  भवति:
+    fix:
+      1: { gloss: 'is' }
 
 '3.60':
   महाजनस्य:
@@ -1861,6 +1882,9 @@
     fix:
       1: { a: षष्ठी एकवचन, gloss: "my" }
       2: { gloss: "opinion" }
+  भवति:
+    fix:
+      1: { gloss: 'is' }
 
 '3.60+2':
   एवं:
@@ -1957,6 +1981,9 @@
       - { form: तत्, lemma: तद्, a: प्रथमा एकवचन नपुंसकलिङ्ग, gloss: "that" }
       - { form: समादेश्यम्, lemma: समादिश्, a: प्रथमा एकवचन नपुंसकलिङ्ग ण्यत्, gloss: "should be prescribed" }
     note: "The print has तस्समादेश्यम्; read तत्समादेश्यम् (तत् समादेश्यम्)."
+  भवति:
+    fix:
+      1: { gloss: 'is' }
 
 '3.60+5':
   आहवत्स:
@@ -2116,9 +2143,13 @@
     fix:
       2: { gloss: "single-minded, trusting" }
       3: { gloss: "towards these" }
+      1: { gloss: 'would be' }
   मानवः:
     fix:
       1: { gloss: "a man" }
+  जीवति:
+    fix:
+      1: { gloss: 'lives' }
 
 '3.64':
   कृत्यं:
@@ -2219,6 +2250,9 @@
   व्यापादयिष्यसि:
     split:
       - { form: व्यापादयिष्यसि, lemma: व्यापद्, a: लृट् मध्यमपुरुष एकवचन परस्मैपद णिच्, gloss: "you will kill" }
+  'भविष्यति,':
+    fix:
+      1: { gloss: 'will be' }
 
 '3.65+2':
   मेघवर्ण:
@@ -2548,6 +2582,12 @@
   स्यादिति:
     fix:
       1: { gloss: "it will be" }
+  भवति:
+    fix:
+      1: { gloss: 'is' }
+  'भवति#2':
+    fix:
+      1: { gloss: 'is' }
 
 '3.68+3':
   तद्यथामन्त्री,:
