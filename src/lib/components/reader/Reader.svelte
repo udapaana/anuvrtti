@@ -2326,6 +2326,16 @@
             <span class="wh-stem">← <Sanskrit text={selWord.lemma} source="devanagari" /></span>
           {/if}
         </div>
+        <!--
+          The pada-pāṭha's ऽ is not the classical avagraha. In सोऽपि it marks an
+          elided अ; in a Vedic pada (ऋषि॑ऽभिः) it marks where the stem meets an
+          ending in भ् or स्, or one member of a compound the next — nothing is
+          lost. A learner who knows only the first reads the second wrong, so
+          the pane says which it is, wherever such a word is open.
+        -->
+        {#if sel && vedicSamhita.has(sel.id) && /.ऽ/.test(selWord.form)}
+          <p class="wh-seam"><Sanskrit text="ऽ" source="devanagari" /> here marks where the stem meets its ending, or one part of a compound the next, as the pada-pāṭha writes it — not an elided a.</p>
+        {/if}
         <!-- (a text's word may carry only vidyut's tags, which are derived) -->
           {#if selFused}
             <!--
@@ -3067,6 +3077,13 @@
     color: var(--accent);
   }
 
+  .wh-seam {
+    margin: 0;
+    font-family: var(--font-prose);
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--muted);
+  }
   /* a Vedic verse's saṃhitā, under its pada-pāṭha line */
   .samhita-line {
     margin: 0;
