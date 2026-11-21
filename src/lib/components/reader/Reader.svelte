@@ -2859,7 +2859,7 @@
                 {/if}
               {/if}
               {#if row.translation && (mode !== 'gloss' || row.translationOriginal)}
-                <div class="tr-bar">
+                <div class="tr-bar" class:idle={mode === 'gloss' && trTapped !== row.id && !originalShown.has(row.id)}>
                   {#if mode !== 'gloss'}
                     <button class="tr-ctl" aria-pressed={revealed.has(row.id)} onclick={() => toggleReveal(row.id)}
                       title={revealed.has(row.id) ? 'hide the translation' : 'show the translation'}
@@ -3162,7 +3162,9 @@
     align-items: center;
     background: none;
     border: none;
-    padding: 3px 0;
+    /* a finger-sized target around a small mark */
+    padding: 10px 8px;
+    margin: -10px -8px;
     font: inherit;
     color: inherit;
     cursor: pointer;
@@ -3178,6 +3180,12 @@
   @media (hover: hover) {
     article:hover .tr-who.ondemand {
       visibility: visible;
+    }
+  }
+  /* a phone cannot hover: the empty row would only be a gap, so it waits for the tap */
+  @media (hover: none) {
+    .tr-bar.idle {
+      display: none;
     }
   }
   .tr-who[aria-pressed='true'] {
