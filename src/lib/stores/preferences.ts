@@ -166,25 +166,3 @@ function createAuthoringStore() {
 }
 
 export const authoringMode = createAuthoringStore();
-
-/**
- * Agreement colours (the reader): with this on, tapping a word paints the
- * words its ending ties it to in one colour (agreement.ts familyOf). Off by
- * default — an aid to construing, not a way of reading.
- */
-const FAMILIES_KEY = "anuvrtti-agreement-colours";
-function createFamiliesToggle() {
-  let initial = false;
-  if (browser) {
-    try { initial = localStorage.getItem(FAMILIES_KEY) === "1"; } catch { /* off */ }
-  }
-  const { subscribe, set } = writable<boolean>(initial);
-  return {
-    subscribe,
-    set: (v: boolean) => {
-      try { if (browser) localStorage.setItem(FAMILIES_KEY, v ? "1" : "0"); } catch { /* session only */ }
-      set(v);
-    },
-  };
-}
-export const agreementColours = createFamiliesToggle();
