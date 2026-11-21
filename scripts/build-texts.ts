@@ -399,9 +399,14 @@ if (import.meta.main) {
     */
     const trFile = path.join(process.cwd(), 'content/texts', id, 'translation.yaml');
     const tr: any = fs.existsSync(trFile) ? parseYaml(fs.readFileSync(trFile, 'utf-8')) ?? {} : {};
+    // Hume prints who speaks a verse in brackets before it ("[Death:]"), and
+    // so does the page: the Kaṭha is a dialogue, and its Sanskrit names no
+    // speaker
     const translationOf = (sid: string): string | undefined => {
       const e = tr[sid];
-      return typeof e === 'string' ? e : e?.text;
+      if (typeof e === 'string') return e;
+      if (!e?.text) return undefined;
+      return e.speaker ? `${e.speaker}\n${e.text}` : e.text;
     };
     const meta = { id, title: t.title, title_en: t.title_en, work: t.work, place: t.place, source: t.source, credit: CREDIT,
       ...(tr.source ? { translation: tr.source } : {}), parts: [] as any[] };

@@ -3112,6 +3112,8 @@
   }
   .translation {
     margin: 0;
+    /* a verse translation keeps its translator's lines */
+    white-space: pre-line;
     font-size: calc(16px * var(--read-scale, 1));
     color: var(--muted);
     font-style: italic;

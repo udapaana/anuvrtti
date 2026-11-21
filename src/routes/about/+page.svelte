@@ -166,6 +166,16 @@
         these texts, are shared under the same licence. Each word links to its full entry.
       </dd>
 
+      <dt>Hume's Upaniṣads</dt>
+      <dd>
+        the translation shown under each verse of the Kaṭha Upaniṣad is R. E. Hume's, from
+        <i>The Thirteen Principal Upanishads</i> (Oxford University Press, 1921), read from the
+        <a href="https://archive.org/details/thirteenprincipa00hume" target="_blank" rel="noopener noreferrer"
+          >scan on archive.org</a
+        > and checked against its page images; public domain. His bracketed speakers ("[Death:]")
+        are kept; his footnotes are not shown.
+      </dd>
+
       <dt>GRETIL, through Ambuda</dt>
       <dd>
         the texts themselves (the Kaṭha Upaniṣad, the Pañcatantra in Jha's edition, the Vetāla
