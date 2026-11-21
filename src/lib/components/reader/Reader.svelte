@@ -89,7 +89,16 @@
   let sel = $state<{ id: string; ti: number } | null>(null);
   let pick = $state<string | null>(null);
   let checked = $state<Set<string>>(new Set());
-  let showTr = $state(false);
+  /*
+    Recall hides each reading's translation until the reader asks for it:
+    read the line first, then check. The switch existed and did nothing —
+    `mode` was set and never read, and every translation was always shown,
+    so the reader was never asked to read unaided before reaching the texts,
+    which have none. Glossed shows them all, as before. A translation once
+    opened stays open for the visit.
+  */
+  let revealed = $state<Set<string>>(new Set());
+  const reveal = (id: string) => (revealed = new Set([...revealed, id]));
   let hoverEx = $state<string | null>(null);
   let hoverWi = $state<number | null>(null);
 
@@ -2762,7 +2771,11 @@
             </div>
 
             {#if row.translation || !textMode}
-              <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
+              {#if mode === 'gloss' || revealed.has(row.id) || !row.translation}
+                <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
+              {:else}
+                <button class="tr-reveal" onclick={() => reveal(row.id)}>show the translation</button>
+              {/if}
             {/if}
           </article>
         {/if}
@@ -3010,6 +3023,21 @@
     color: var(--accent);
   }
 
+  .tr-reveal {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--quiet);
+    background: none;
+    border: 1px dashed var(--rule-2);
+    border-radius: var(--radius);
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+  .tr-reveal:hover {
+    color: var(--ink-2);
+    border-color: var(--muted);
+  }
   .translation {
     margin: 0;
     font-size: calc(16px * var(--read-scale, 1));
