@@ -188,6 +188,15 @@
         few verses; our 39 has no counterpart in his book.
       </dd>
 
+      <dt>Tawney's Kathāsaritsāgara</dt>
+      <dd>
+        the translation under each śloka of the Vetāla tales is adapted from C. H. Tawney,
+        <i>The Kathá Sarit Ságara</i>, vol. 2 (Calcutta, 1884), chapter LXXV, read from the
+        <a href="https://archive.org/details/kathsaritsga02somauoft" target="_blank" rel="noopener noreferrer"
+          >scan on archive.org</a
+        >; public domain. Tawney writes prose without verse numbers; his sentences are set under the
+        ślokas they translate.
+      </dd>
 
       <dt>GRETIL, through Ambuda</dt>
       <dd>
