@@ -98,7 +98,11 @@
     opened stays open for the visit.
   */
   let revealed = $state<Set<string>>(new Set());
-  const reveal = (id: string) => (revealed = new Set([...revealed, id]));
+  function toggleReveal(id: string) {
+    const next = new Set(revealed);
+    if (next.has(id)) next.delete(id); else next.add(id);
+    revealed = next;
+  }
   /* a modernized translation's original, shown on request, per section */
   let originalShown = $state<Set<string>>(new Set());
   function toggleOriginal(id: string) {
@@ -2833,22 +2837,38 @@
               <p class="samhita-line" lang="sa"><Sanskrit text={list.find((x) => x.id === row.id)?.sentence ?? ''} source="devanagari" /></p>
             {/if}
 
+            <!--
+              The translation and its controls. One quiet row under the verse:
+              the eye shows or hides the translation (in recall; glossed shows
+              it always), and the translator's name shows his own wording under
+              a modernized one. A verse he rendered with another says so, in
+              the same row.
+            -->
             {#if row.translationWith}
-              <p class="tr-with">{row.translationWith}</p>
+              <div class="tr-bar"><span class="tr-with">{row.translationWith}</span></div>
             {:else if row.translation || !textMode}
-              {#if mode === 'gloss' || revealed.has(row.id) || !row.translation}
+              {@const shown = mode === 'gloss' || revealed.has(row.id) || !row.translation}
+              {@const who = (tMeta as any)?.translation?.translator?.split(' ').at(-1) ?? 'translator'}
+              {#if shown}
                 <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
-                {#if row.translationOriginal}
-                  <!-- a modernized translation: the translator's own words, one tap away -->
-                  {#if originalShown.has(row.id)}
-                    <p class="translation original"><Sanskrit text={row.translationOriginal} source="devanagari" /></p>
-                  {/if}
-                  <button class="tr-original" onclick={() => toggleOriginal(row.id)}>
-                    {originalShown.has(row.id) ? 'hide' : 'show'} {(tMeta as any)?.translation?.translator?.split(' ').at(-1) ?? 'the translator'}'s wording
-                  </button>
+                {#if row.translationOriginal && originalShown.has(row.id)}
+                  <p class="translation original"><Sanskrit text={row.translationOriginal} source="devanagari" /></p>
                 {/if}
-              {:else}
-                <button class="tr-reveal" onclick={() => reveal(row.id)}>show the translation</button>
+              {/if}
+              {#if row.translation && (mode !== 'gloss' || row.translationOriginal)}
+                <div class="tr-bar">
+                  {#if mode !== 'gloss'}
+                    <button class="tr-ctl" aria-pressed={revealed.has(row.id)} onclick={() => toggleReveal(row.id)}
+                      title={revealed.has(row.id) ? 'hide the translation' : 'show the translation'}
+                      aria-label={revealed.has(row.id) ? 'hide the translation' : 'show the translation'}>
+                      <svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M1 6s2.6-5 7-5 7 5 7 5-2.6 5-7 5-7-5-7-5z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.3"/>{#if revealed.has(row.id)}<path d="M2 11 14 1" stroke="currentColor" stroke-width="1.3"/>{/if}</svg>
+                    </button>
+                  {/if}
+                  {#if row.translationOriginal && shown}
+                    <button class="tr-ctl tr-who" aria-pressed={originalShown.has(row.id)} onclick={() => toggleOriginal(row.id)}
+                      title={`${originalShown.has(row.id) ? 'hide' : 'show'} ${who}'s own wording`}>{who}</button>
+                  {/if}
+                </div>
               {/if}
             {/if}
           </article>
@@ -3124,37 +3144,33 @@
     border-left: 2px solid var(--rule-2);
     padding-left: 10px;
   }
-  .tr-with {
-    margin: 0;
+  /* the translation's controls: one row, one size, one colour */
+  .tr-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 20px;
     font-family: var(--font-mono);
     font-size: 10.5px;
     color: var(--quiet);
   }
-  .tr-original {
-    align-self: flex-start;
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    color: var(--quiet);
+  .tr-ctl {
+    display: inline-flex;
+    align-items: center;
     background: none;
     border: none;
-    padding: 0;
-    text-decoration: underline;
+    padding: 3px 0;
+    font: inherit;
+    color: inherit;
     cursor: pointer;
   }
-  .tr-reveal {
-    align-self: flex-start;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--quiet);
-    background: none;
-    border: 1px dashed var(--rule-2);
-    border-radius: var(--radius);
-    padding: 4px 10px;
-    cursor: pointer;
-  }
-  .tr-reveal:hover {
+  .tr-ctl:hover,
+  .tr-ctl[aria-pressed='true'] {
     color: var(--ink-2);
-    border-color: var(--muted);
+  }
+  .tr-who[aria-pressed='true'] {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   .translation {
     margin: 0;
