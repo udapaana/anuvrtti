@@ -47,6 +47,7 @@
   सोऽपश्यल्लम्बमानं:
     fix:
       1: { lemma: तद्, a: प्रथमा एकवचन पुंलिङ्ग }
+      2: { gloss: 'saw' }
   तं:
     fix:
       1: { lemma: तद्, a: द्वितीया एकवचन पुंलिङ्ग }
@@ -78,6 +79,7 @@
   सोऽकस्माच्चक्रन्द:
     fix:
       1: { lemma: तद्, a: प्रथमा एकवचन पुंलिङ्ग }
+      3: { gloss: 'cried out' }
   यथा:
     fix:
       1: { gloss: 'as if' }
@@ -136,12 +138,15 @@
       1: { gloss: 'why?' }
   हसस्येहि:
     split:
-      - { form: हससि, lemma: हस्, a: लट् मध्यमपुरुष एकवचन परस्मैपद }
+      - { form: हससि, lemma: हस्, a: लट् मध्यमपुरुष एकवचन परस्मैपद, gloss: 'you laugh' }
       - { form: इहि, lemma: इ, a: लोट् मध्यमपुरुष एकवचन परस्मैपद, gloss: 'come!' }
   यावदकम्पितः:
     fix:
       1: { gloss: 'while — with तावत् (8.55), "no sooner … than"' }
       2: { gloss: 'unshaken, undaunted' }
+  गच्छाव:
+    fix:
+      1: { gloss: 'let us (two) go' }
 
 '8.55':
   तावन्न:
@@ -154,6 +159,15 @@
     split:
       - { form: सवेतालम्, lemma: सवेताल, a: द्वितीया एकवचन पुंलिङ्ग, gloss: 'with the Vetāla (in it)' }
     note: स-वेताल, a बहुव्रीहि with स "together with" — not सः.
+  वक्ति:
+    fix:
+      1: { gloss: 'says, was saying' }
+  शवमैक्षत:
+    fix:
+      2: { gloss: 'saw' }
+  ऐक्षतात्रैव:
+    fix:
+      1: { gloss: 'saw' }
 
 '8.56':
   ततोऽधिरुह्य:
@@ -202,6 +216,9 @@
   गन्तुं:
     fix:
       1: { lemma: गम्, a: अव्यय तुमुन्, gloss: 'to go' }
+  प्रचक्रमे:
+    fix:
+      1: { gloss: 'began' }
 
 '8.58':
   तं:
@@ -216,7 +233,7 @@
       - { form: वेतालः, lemma: वेताल, a: प्रथमा एकवचन पुंलिङ्ग }
       - { form: अंस, lemma: अंस, member: true, gloss: 'the shoulder' }
       - { form: स्थितः, lemma: स्था, a: प्रथमा एकवचन पुंलिङ्ग क्त }
-      - { form: अब्रवीत्, lemma: ब्रू, a: लङ् प्रथमपुरुष एकवचन परस्मैपद }
+      - { form: अब्रवीत्, lemma: ब्रू, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: 'said' }
   राजन्नध्वविनोदाय:
     split:
       - { form: राजन्, lemma: राजन्, a: सम्बोधन एकवचन पुंलिङ्ग }
@@ -226,3 +243,9 @@
   ते:
     fix:
       1: { lemma: युष्मद्, a: चतुर्थी एकवचन पुंलिङ्ग, gloss: 'to you (enclitic of त्वम्)' }
+  कथामाख्यामि:
+    fix:
+      2: { gloss: 'I (will) tell' }
+  शृणु:
+    fix:
+      1: { gloss: 'listen' }

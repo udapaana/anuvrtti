@@ -22,6 +22,9 @@
     note: >-
       पुण्यजन is a pun: the city is thronged by the virtuous, as Kailāsa by
       the Yakṣas (also called पुण्यजन) of Kubera.
+  अस्ति:
+    fix:
+      1: { gloss: 'there is' }
 
 '8.60':
   भूरिवारिभृता:
@@ -60,12 +63,15 @@
   तस्यां:
     split:
       - { form: तस्याम्, lemma: तद्, a: सप्तमी एकवचन स्त्रीलिङ्ग, gloss: 'in it (the city)' }
+  राजाभवत्पुरा:
+    fix:
+      2: { gloss: 'there was' }
 
 '8.62':
   तस्याभूद्वज्रमुकुटस्तनयो:
     split:
       - { form: तस्य, lemma: तद्, a: षष्ठी एकवचन पुंलिङ्ग }
-      - { form: अभूत्, lemma: भू, a: लुङ् प्रथमपुरुष एकवचन परस्मैपद }
+      - { form: अभूत्, lemma: भू, a: लुङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: 'there was (tasya abhūt: he had)' }
       - { form: वज्रमुकुटः, lemma: वज्रमुकुट, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'Vajramukuṭa, the prince' }
       - { form: तनयः, lemma: तनय, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'a son' }
   रूपशौर्ययोः:
@@ -91,7 +97,7 @@
       1: { lemma: तद्, a: षष्ठी एकवचन पुंलिङ्ग }
   आसीद्बुद्धिशरीराख्यः:
     split:
-      - { form: आसीत्, lemma: अस्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद }
+      - { form: आसीत्, lemma: अस्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: 'there was' }
       - { form: बुद्धिशरीर, lemma: बुद्धिशरीर, member: true, gloss: 'Buddhiśarīra, the minister''s son' }
       - { form: आख्यः, lemma: आख्य, a: प्रथमा एकवचन पुंलिङ्ग, gloss: 'ifc. named, called' }
   शरीराभ्यधिकः:
@@ -124,6 +130,9 @@
   प्रसङ्गतः:
     split:
       - { form: प्रसङ्गतः, lemma: प्रसङ्गतस्, a: अव्यय, gloss: 'from attachment, through devotion (to) — प्रसङ्ग + तस्' }
+  जगाम:
+    fix:
+      1: { gloss: 'went' }
 
 '8.65':
   शौर्यशृईचामरानीव:
@@ -149,6 +158,7 @@
   विवेशैकं:
     fix:
       2: { a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'one, a certain' }
+      1: { gloss: 'entered' }
   महावनम्:
     split:
       - { form: महा, lemma: महत्, member: true, gloss: 'great' }
@@ -185,7 +195,7 @@
   तेनापश्यत्सरःवरम्:
     split:
       - { form: तेन, lemma: तद्, a: तृतीया एकवचन पुंलिङ्ग }
-      - { form: अपश्यत्, lemma: दृश्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद }
+      - { form: अपश्यत्, lemma: दृश्, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: 'saw' }
       - { form: सरस्, lemma: सरस्, member: true, gloss: 'a lake, pool' }
       - { form: वरम्, lemma: वर, a: द्वितीया एकवचन नपुंसकलिङ्ग, gloss: 'best; ifc. "an excellent (lake)"' }
     note: >-
@@ -225,6 +235,9 @@
     split:
       - { form: स, lemma: स, member: true, gloss: 'with (= सह)' }
       - { form: परिच्छदा, lemma: परिच्छद, a: प्रथमा एकवचन स्त्रीलिङ्ग, gloss: 'retinue, attendants' }
+  ददृशे:
+    fix:
+      1: { gloss: 'was seen' }
 
 '8.69':
   पूरयन्तीव:
@@ -326,10 +339,13 @@
     split:
       - { form: विलास, lemma: विलास, member: true, gloss: 'playfulness, coquetry' }
       - { form: छद्मना, lemma: छद्मन्, a: तृतीया एकवचन नपुंसकलिङ्ग, gloss: 'a pretext, disguise' }
-      - { form: अकरोत्, lemma: कृ, a: लङ् प्रथमपुरुष एकवचन परस्मैपद }
+      - { form: अकरोत्, lemma: कृ, a: लङ् प्रथमपुरुष एकवचन परस्मैपद, gloss: 'made' }
     note: >-
       The edition prints विलासछद्मना; a छ after a short vowel is doubled
       (6.1.73), विलासच्छद्मना.
+  स्यादिति:
+    fix:
+      1: { gloss: 'could be, might be' }
 
 '8.73':
   स्मौत्पलं:
@@ -352,9 +368,13 @@
   चकारादाय:
     fix:
       2: { gloss: 'taking (आ + दा)' }
+      1: { gloss: 'made' }
   व्यधात्:
     fix:
       1: { gloss: 'placed, put (वि + धा)' }
+  करोति:
+    fix:
+      1: { gloss: 'put (karoti sma: she put)' }
 
 '8.74':
   पद्मं:
