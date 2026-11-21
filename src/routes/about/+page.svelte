@@ -173,8 +173,21 @@
         <a href="https://archive.org/details/thirteenprincipa00hume" target="_blank" rel="noopener noreferrer"
           >scan on archive.org</a
         > and checked against its page images; public domain. His bracketed speakers ("[Death:]")
-        are kept; his footnotes are not shown.
+        are kept; his footnotes are not shown. Each of these translations is modernized here, in plain
+        present-day English that keeps the translator's sense; his own wording is one tap away under
+        each verse.
       </dd>
+
+      <dt>Wortham's Bhartṛhari</dt>
+      <dd>
+        the translation under each verse of the Nītiśataka is adapted from B. Hale Wortham,
+        <i>The Śatakas of Bhartrihari</i> (Trübner, 1886), read from the
+        <a href="https://archive.org/details/satakasofbhartri00bharuoft" target="_blank" rel="noopener noreferrer"
+          >scan on archive.org</a
+        >; public domain. Wortham translated Telang's Bombay edition, which differs from ours in a
+        few verses; our 39 has no counterpart in his book.
+      </dd>
+
 
       <dt>GRETIL, through Ambuda</dt>
       <dd>
