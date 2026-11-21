@@ -211,7 +211,19 @@ export function resolveText(id: string): Resolved {
         // first sense group, at most three senses ("to do, make, perform")
         const verbal = a.type === 'tinanta' || !!a.कृत्;
         const first = (g: string) => g.split(/;\s/)[0].split(/,\s/).slice(0, 3).join(', ').replace(/[,.\s…]+$/, '');
-        const mwGloss = m?.senses[0] ? (verbal ? first(m.senses[0]) : m.senses[0]) : null;
+        /*
+          …and any MW gloss loses what the dictionary meant for a reader of
+          the entry, not of the line: a cross-reference after a colon ("to die,
+          decease, : …") and an aside the cut left open ("thus, in this way,
+          (it is not found in the old…" — 174 एवम्, before particles.yaml had it).
+        */
+        const clean = (g: string) => {
+          let out = g.split(/\s*:\s/)[0];
+          const open = out.lastIndexOf('(');
+          if (open > out.lastIndexOf(')')) out = out.slice(0, open);
+          return out.replace(/[,;.\s…:]+$/, '').trim() || g;
+        };
+        const mwGloss = m?.senses[0] ? clean(verbal ? first(m.senses[0]) : m.senses[0]) : null;
         const gloss = r.spec?.gloss ?? particle ?? mwGloss ?? null;
         if (!gloss) problems.push(`${s.id}/${w.surface}: ${r.form} (${a.lemma}) — no MW entry and no gloss; add gloss: in overrides.yaml`);
         return {
