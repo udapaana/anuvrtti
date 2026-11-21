@@ -198,6 +198,16 @@
         ślokas they translate.
       </dd>
 
+      <dt>Dutt's Rāmāyaṇa</dt>
+      <dd>
+        the translation under the Rāmāyaṇa's verses is adapted from Manmatha Nath Dutt,
+        <i>The Ramayana, translated into English prose</i> (Calcutta, 1891–94), read from the
+        <a href="https://archive.org/details/thermyanavolumeo57265gut" target="_blank" rel="noopener noreferrer"
+          >Project Gutenberg text</a
+        > and archive.org scans; public domain. Dutt translated the vulgate, and our text follows
+        the critical edition; a verse he has no sentence for is left without one.
+      </dd>
+
       <dt>Ganguli's Mahābhārata</dt>
       <dd>
         the translation under the Mahābhārata's verses is adapted from Kisari Mohan Ganguli,
