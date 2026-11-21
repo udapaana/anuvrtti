@@ -46,7 +46,16 @@ function underlying(slp: string, info: PadaInfo): string {
   if (slp.endsWith('M')) return slp.slice(0, -1) + 'm';
   if (!slp.endsWith('H')) return slp;
   const lem = info?.lemma ? tr(info.lemma, 'devanagari', 'slp1') : '';
-  const r = /r$/.test(lem) || (info?.vocative && /f$/.test(lem));
+  /*
+    …and only where the word stands at that stem: पुनः is पुनर्, गीः is गिर्
+    with its vowel long. A र्-stem's plural is not — चतस्रः (lemma चतुर्) ends
+    in the स् of जस्, so चतस्रो मुख्याः, not चतस्रर्मुख्याः (ex335).
+  */
+  const LONG: Record<string, string> = { a: 'A', i: 'I', u: 'U', f: 'F' };
+  const stem = lem.replace(/r$/, '');
+  const bare = slp.slice(0, -1);
+  const atStem = bare === stem || (stem && bare === stem.slice(0, -1) + (LONG[stem.slice(-1)] ?? '~'));
+  const r = (/r$/.test(lem) && atStem) || (info?.vocative && /f$/.test(lem));
   return slp.slice(0, -1) + (r ? 'r' : 's');
 }
 /** At a pause the underlying स्/र् is visarga again, and म् is written म्. */
