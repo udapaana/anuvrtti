@@ -402,19 +402,27 @@ if (import.meta.main) {
     // Hume prints who speaks a verse in brackets before it ("[Death:]"), and
     // so does the page: the Kaṭha is a dialogue, and its Sanskrit names no
     // speaker
-    const translationOf = (sid: string): string | undefined => {
-      const e = tr[sid];
-      if (typeof e === 'string') return e;
-      if (!e?.text) return undefined;
-      return e.speaker ? `${e.speaker}\n${e.text}` : e.text;
-    };
+    const original = (e: any): string | undefined =>
+      typeof e === 'string' ? e : e?.text ? (e.speaker ? `${e.speaker}\n${e.text}` : e.text) : undefined;
+    /*
+      A translation may also be MODERNIZED: the translator's sense in plain
+      present-day English (`modern`, `speakerModern`), his own wording kept
+      beside it (`text`). The page shows the modern one and offers the
+      original under it, so the adaptation can always be checked.
+    */
+    const modern = (e: any): string | undefined =>
+      e?.modern ? ((e.speakerModern ?? e.speaker) ? `${e.speakerModern ?? e.speaker}\n${e.modern}` : e.modern) : undefined;
+    const translationOf = (sid: string): string | undefined => modern(tr[sid]) ?? original(tr[sid]);
+    const originalOf = (sid: string): string | undefined => (modern(tr[sid]) ? original(tr[sid]) : undefined);
+    const adapted = Object.entries(tr).some(([k, e]) => k !== 'source' && (e as any)?.modern);
     const meta = { id, title: t.title, title_en: t.title_en, work: t.work, place: t.place, source: t.source, credit: CREDIT,
-      ...(tr.source ? { translation: tr.source } : {}), parts: [] as any[] };
+      ...(tr.source ? { translation: { ...tr.source, ...(adapted ? { adapted: true } : {}) } } : {}), parts: [] as any[] };
     for (const part of parts) {
       const ids = new Set(part.sections.map((x) => x.id));
       const secs = r.sections.filter((x) => ids.has(x.id)).map((x) => {
         const en = translationOf(x.id);
-        return { ...x, text: linesOf(t.sections.find((y) => y.id === x.id)!), ...(en ? { translation: en } : {}) };
+        const orig = originalOf(x.id);
+        return { ...x, text: linesOf(t.sections.find((y) => y.id === x.id)!), ...(en ? { translation: en } : {}), ...(orig ? { translationOriginal: orig } : {}) };
       });
       // only the tables this part's words light
       const keys = new Set(secs.flatMap((x) => x.words.flatMap((w) => w.padas.map((p) => (p as any).para?.key).filter(Boolean))));

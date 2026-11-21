@@ -54,8 +54,9 @@ export type TextPada = {
 };
 /** `printed`: the source's own reading of a word corrections.yaml put right (`surface` is the corrected word) */
 export type TextWord = { surface: string; padas: TextPada[]; note?: string; printed?: string; printedNote?: string };
-/** `translation`: a published translation of the section, where the text has one (Hume's Kaṭha) */
-export type TextSection = { id: string; kind: string; lines: number[][]; words: TextWord[]; text: string[]; translation?: string };
+/** `translation`: a published translation of the section, where the text has one (Hume's Kaṭha) —
+ *  modernized where `translationOriginal` holds the translator's own wording */
+export type TextSection = { id: string; kind: string; lines: number[][]; words: TextWord[]; text: string[]; translation?: string; translationOriginal?: string };
 export type TextTable = {
   stem: string;
   lakara: string | null;
@@ -255,6 +256,7 @@ export function sectionAsReading(
     teaches: '',
     sentence: said.join(' '),
     translation: sec.translation ?? '',
+    translationOriginal: sec.translationOriginal ?? '',
     words,
     tokens,
     samhita

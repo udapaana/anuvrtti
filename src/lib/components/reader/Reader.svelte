@@ -99,6 +99,13 @@
   */
   let revealed = $state<Set<string>>(new Set());
   const reveal = (id: string) => (revealed = new Set([...revealed, id]));
+  /* a modernized translation's original, shown on request, per section */
+  let originalShown = $state<Set<string>>(new Set());
+  function toggleOriginal(id: string) {
+    const next = new Set(originalShown);
+    if (next.has(id)) next.delete(id); else next.add(id);
+    originalShown = next;
+  }
   let hoverEx = $state<string | null>(null);
   let hoverWi = $state<number | null>(null);
 
@@ -713,6 +720,7 @@
       tokens,
       words,
       translation: r.translation || '',
+      translationOriginal: r.translationOriginal || '',
       vyakhya: r.vyakhya || '',
       vyakhya_en: (r.vyakhya_en || '').trim()
     };
@@ -2827,6 +2835,15 @@
             {#if row.translation || !textMode}
               {#if mode === 'gloss' || revealed.has(row.id) || !row.translation}
                 <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
+                {#if row.translationOriginal}
+                  <!-- a modernized translation: the translator's own words, one tap away -->
+                  {#if originalShown.has(row.id)}
+                    <p class="translation original"><Sanskrit text={row.translationOriginal} source="devanagari" /></p>
+                  {/if}
+                  <button class="tr-original" onclick={() => toggleOriginal(row.id)}>
+                    {originalShown.has(row.id) ? 'hide' : 'show'} {(tMeta as any)?.translation?.translator ?? 'the translator'}'s wording
+                  </button>
+                {/if}
               {:else}
                 <button class="tr-reveal" onclick={() => reveal(row.id)}>show the translation</button>
               {/if}
@@ -2872,7 +2889,11 @@
           <p>{tMeta.source.edition}; source <code>{tMeta.source.file}</code>{#if tMeta.source.ref}, {tMeta.source.ref}{/if}.</p>
           {#if (tMeta as any).translation}
             {@const tr = (tMeta as any).translation}
-            <p>Translation: {tr.translator}, <i>{tr.title}</i> ({tr.publisher}, {tr.year}); public domain.</p>
+            {#if tr.adapted}
+              <p>Translation adapted from {tr.translator}, <i>{tr.title}</i> ({tr.publisher}, {tr.year}; public domain), modernized for this site; his own wording is one tap away under each section.</p>
+            {:else}
+              <p>Translation: {tr.translator}, <i>{tr.title}</i> ({tr.publisher}, {tr.year}); public domain.</p>
+            {/if}
           {/if}
           <p>
             Segmentation and analysis by <a href="https://github.com/ambuda-org/vidyut" target="_blank" rel="noopener">vidyut</a>,
@@ -3094,6 +3115,22 @@
     font-family: var(--font-deva);
     font-size: calc(17px * var(--read-scale, 1));
     color: var(--muted);
+  }
+  .translation.original {
+    font-size: calc(14.5px * var(--read-scale, 1));
+    border-left: 2px solid var(--rule-2);
+    padding-left: 10px;
+  }
+  .tr-original {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--quiet);
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    cursor: pointer;
   }
   .tr-reveal {
     align-self: flex-start;
