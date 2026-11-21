@@ -198,6 +198,16 @@
         ślokas they translate.
       </dd>
 
+      <dt>Ganguli's Mahābhārata</dt>
+      <dd>
+        the translation under the Mahābhārata's verses is adapted from Kisari Mohan Ganguli,
+        <i>The Mahabharata of Krishna-Dwaipayana Vyasa</i> (Calcutta, 1883–96), from the proofread
+        <a href="https://www.gutenberg.org/ebooks/15474" target="_blank" rel="noopener noreferrer"
+          >Project Gutenberg text</a
+        >; public domain. Ganguli translated the Calcutta edition, and our text is the Southern;
+        the few verses he has no sentence for are left without one.
+      </dd>
+
       <dt>GRETIL, through Ambuda</dt>
       <dd>
         the texts themselves (the Kaṭha Upaniṣad, the Pañcatantra in Jha's edition, the Vetāla
