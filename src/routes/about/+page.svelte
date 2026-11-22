@@ -210,12 +210,12 @@
 
       <dt>Dutt's Bhāgavata</dt>
       <dd>
-        the translation under the Bhāgavata's verses, Books I–IX, is adapted from Manmatha Nath
+        the translation under the Bhāgavata's verses, Books I–IX and the first seven chapters of X, is adapted from Manmatha Nath
         Dutt, <i>A Prose English Translation of Srimadbhagavatam</i> (Calcutta, 1895–96), read from
         <a href="https://archive.org/details/in.ernet.dli.2015.272582" target="_blank" rel="noopener noreferrer"
           >scans on archive.org</a
         >; public domain. The scans are damaged in places, and a verse whose English cannot be read
-        with certainty is left without one. No free translation of Books X–XII has been found.
+        with certainty is left without one. No free translation of the rest of Book X, or of XI–XII, has been found.
       </dd>
 
       <dt>Ryder's Pañcatantra</dt>
