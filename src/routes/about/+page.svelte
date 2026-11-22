@@ -218,6 +218,17 @@
         with certainty is left without one. No free translation of Books X–XII has been found.
       </dd>
 
+      <dt>Ryder's Pañcatantra</dt>
+      <dd>
+        the translation under the Pañcatantra is adapted from Arthur W. Ryder,
+        <i>The Panchatantra</i> (University of Chicago Press, 1925), read from the
+        <a href="https://archive.org/details/panchatantra035159mbp" target="_blank" rel="noopener noreferrer"
+          >scan on archive.org</a
+        >; public domain. Ryder translated a different recension, Pūrṇabhadra's: a passage of
+        ours has his English only where he tells the same thing, and a verse only where his stanza
+        is the same verse. Elsewhere, and on six pages the scan lacks, there is none.
+      </dd>
+
       <dt>Ganguli's Mahābhārata</dt>
       <dd>
         the translation under the Mahābhārata's verses is adapted from Kisari Mohan Ganguli,
