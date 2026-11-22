@@ -226,7 +226,8 @@
           >scan on archive.org</a
         >; public domain. Ryder translated a different recension, Pūrṇabhadra's: a passage of
         ours has his English only where he tells the same thing, and a verse only where his stanza
-        is the same verse. Elsewhere, and on six pages the scan lacks, there is none.
+        is the same verse. Elsewhere there is none. Six pages the scan lacks are read from
+        a second copy of the same edition.
       </dd>
 
       <dt>Ganguli's Mahābhārata</dt>
