@@ -80,7 +80,7 @@
   // reading from tier 80 up shows its saṃhitā; on, its padas. They compose —
   // you can have cheda WITH glosses — so padaccheda is its own toggle, not a
   // third mutually-exclusive mode.
-  type Mode = 'recall' | 'gloss';
+  type Mode = 'recall' | 'marked' | 'gloss';
   let mode = $state<Mode>('recall');
   // On by default — a learner sees the padas first and turns the saṃhitā on —
   // and remembered, like the rail width.
@@ -124,6 +124,8 @@
     eye in the verse's corner, as it does in recall.
   */
   const interlinear = $derived(textMode && mode === 'gloss');
+  const marked = $derived(mode === 'marked');
+  const MARK_TITLE = (m: Mark) => (!m ? '' : m.k === 'verb' ? 'finite verb' : m.k === 'voc' ? 'सम्बोधन (address)' : `${m.name} (${m.n})`);
   /* is the translation open? A whole text's only when asked; a graded
      reading's always in glossed mode, as before */
   const trOpen = (row: any) => (textMode ? revealed.has(row.id) : mode === 'gloss' || revealed.has(row.id)) || !row.translation;
@@ -600,8 +602,11 @@
     if (hit) return hit;
     // a text's section comes with its tokens built (textAsReadings.ts)
     if (r.tokens) {
-      tokenCache.set(r.id, r.tokens);
-      return r.tokens;
+      // …and its marks are read here, from each pada's tags
+      const ws = r.words || [];
+      const toks = r.tokens.map((t: any) => ({ ...t, mark: t.isWord && !String(t.text).endsWith('-') ? markOf(ws[t.wi]) : null }));
+      tokenCache.set(r.id, toks);
+      return toks;
     }
 
     // Normalise anusvāra when indexing: the corpus writes both ग्रामं and
@@ -657,7 +662,9 @@
         const focal = wi >= 0 && (wordsRaw[wi].notes || []).some((nt: any) => nt.cite);
         // padaccheda: the pre-sandhi split (देवोऽत्र → देवः + अत्र), when authored.
         const split = wi >= 0 ? (wordsRaw[wi].split ?? null) : null;
-        return { ti, text: tx, wi, gloss: wi >= 0 ? wordsRaw[wi].gloss || '' : '', isWord: wi >= 0, focal, split };
+        // a compound's inner member (written with a trailing hyphen) takes no mark
+        const mark = wi >= 0 && !tx.trim().endsWith('-') ? markOf(wordsRaw[wi]) : null;
+        return { ti, text: tx, wi, gloss: wi >= 0 ? wordsRaw[wi].gloss || '' : '', isWord: wi >= 0, focal, split, mark };
       });
     /*
       A Ṛgveda verse is stored as its saṃhitā (पूर्वे॑भि॒र्ऋषि॑भि॒रीड्यो॒) and its
@@ -673,9 +680,9 @@
     if (/[॒॑]/.test(String(r.sentence ?? '')) && wordsRaw.length && matched < wordsRaw.length * 0.6) {
       const padas = wordsRaw.map((w: any, wi: number) => ({
         ti: wi, text: w.form, wi, gloss: w.gloss || '', isWord: true,
-        focal: (w.notes || []).some((nt: any) => nt.cite), split: null
+        focal: (w.notes || []).some((nt: any) => nt.cite), split: null, mark: markOf(w)
       }));
-      padas.push({ ti: padas.length, text: '॥', wi: -1, gloss: '', isWord: false, focal: false, split: null });
+      padas.push({ ti: padas.length, text: '॥', wi: -1, gloss: '', isWord: false, focal: false, split: null, mark: null });
       vedicSamhita.add(r.id);
       tokenCache.set(r.id, padas);
       return padas;
@@ -695,6 +702,29 @@
     }
     if (at < text.length) out.push({ t: text.slice(at) });
     return out;
+  }
+  /*
+    Marked mode: a small sign over each word for what it does in the sentence,
+    and nothing else. A case ending shows its number as dots (Sanskrit numbers
+    its cases: prathamā one, dvitīyā two … saptamī seven), address a ring, a
+    finite verb a bar. An indeclinable, a gerund, a compound's inner member
+    has none. The reader sees subject, object and verb at a glance and still
+    has to find the meanings.
+  */
+  type Mark = { k: 'case'; n: number; name: string } | { k: 'voc' } | { k: 'verb' } | null;
+  const CASES = ['प्रथमा', 'द्वितीया', 'तृतीया', 'चतुर्थी', 'पञ्चमी', 'षष्ठी', 'सप्तमी'];
+  function markOf(w: any): Mark {
+    if (!w) return null;
+    const tags = new Set<string>([...((w.notes ?? []).map((n: any) => n.term)), ...Object.values(w.derived ?? {}).map(String)]);
+    if (tags.has('प्रथमपुरुष') || tags.has('मध्यमपुरुष') || tags.has('उत्तमपुरुष')) return { k: 'verb' };
+    if (tags.has('सम्बोधन')) return { k: 'voc' };
+    const n = CASES.findIndex((c) => tags.has(c));
+    return n >= 0 ? { k: 'case', n: n + 1, name: CASES[n] } : null;
+  }
+  /** a written word of several padas: its verb if it has one, else its last case */
+  function markOfParts(parts: any[]): Mark {
+    const ms = parts.map((t) => t.mark).filter(Boolean) as Exclude<Mark, null>[];
+    return ms.find((m) => m.k === 'verb') ?? ms[ms.length - 1] ?? null;
   }
   /** readings shown as pada-pāṭha, whose saṃhitā goes beneath the line */
   const vedicSamhita = new Set<string>();
@@ -730,6 +760,7 @@
               isWord: !!word,
               br: !!g.br,
               focal: parts.some((t: any) => t.focal),
+              mark: markOfParts(parts),
               gloss: parts.filter((t: any) => t.isWord).map((t: any) => t.gloss).filter(Boolean).join(' · ')
             };
           })
@@ -1985,6 +2016,7 @@
   <Segmented
     options={[
       { id: 'recall', label: 'recall' },
+      { id: 'marked', label: 'marked' },
       { id: 'gloss', label: 'glossed' }
     ]}
     value={mode}
@@ -2804,7 +2836,7 @@
             <!-- A token is the word and nothing else. Nothing sits beneath it,
                  so no gloss can set the column width and pull the line apart;
                  word-for-word glossing is the rail's job now. -->
-            <div class="tokens" class:il={interlinear}>
+            <div class="tokens" class:il={interlinear} class:mkd={marked}>
               {#if !padaccheda && row.written}
                 {#each row.written as w}
                   {#if w.br}
@@ -2820,7 +2852,7 @@
                       onmouseenter={() => enterWord(row.id, w.ti)}
                       onmouseleave={leaveWord}
                       onclick={() => tapWritten(row.id, w)}
-                    >
+                    >{#if marked}<span class="mk" aria-hidden="true" title={MARK_TITLE(w.mark)}>{#if w.mark?.k === 'case'}{#each Array(w.mark.n) as _}<i class="dot"></i>{/each}{:else if w.mark?.k === 'voc'}<i class="ring"></i>{:else if w.mark?.k === 'verb'}<i class="bar"></i>{/if}</span>{/if}
                       <!-- a word written as several padas stays as written when
                            selected: the head names its padas -->
                       <Sanskrit text={w.text} source="devanagari" />{#if interlinear}<span class="ilg">{w.gloss || ' '}</span>{/if}</span>
@@ -2843,7 +2875,7 @@
                     onmouseenter={() => enterWord(row.id, tok.ti)}
                     onmouseleave={leaveWord}
                     onclick={() => selectToken(row.id, tok.ti)}
-                  >
+                  >{#if marked}<span class="mk" aria-hidden="true" title={MARK_TITLE(tok.mark)}>{#if tok.mark?.k === 'case'}{#each Array(tok.mark.n) as _}<i class="dot"></i>{/each}{:else if tok.mark?.k === 'voc'}<i class="ring"></i>{:else if tok.mark?.k === 'verb'}<i class="bar"></i>{/if}</span>{/if}
                     {#if padaccheda && tok.split}
                       {#each tok.split as part, pi}
                         {#if pi > 0}<span class="split-plus">+</span>{/if}<Sanskrit
@@ -3204,6 +3236,37 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin-top: 2px;
+  }
+  /* marked: a sign above each word for its function (dots = the case's number) */
+  .tokens.mkd .token {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mk {
+    display: flex;
+    gap: 2px;
+    height: 7px;
+    align-items: center;
+    margin-bottom: 1px;
+  }
+  .mk .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+  .mk .ring {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1.2px solid var(--muted);
+  }
+  .mk .bar {
+    width: 16px;
+    height: 3px;
+    border-radius: 1px;
+    background: var(--ink-2);
   }
   /* the translation's controls: one row, one size, one colour */
   .tr-bar {
