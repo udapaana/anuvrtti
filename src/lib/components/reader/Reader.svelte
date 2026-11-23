@@ -118,8 +118,15 @@
   }
   /* a modernized translation's original, shown on request, per section */
   let originalShown = $state<Set<string>>(new Set());
-  /* glossed: the translator's name waits until the translation is tapped (or hovered) */
-  let trTapped = $state<string | null>(null);
+  /*
+    A whole text in glossed mode reads interlinear: each word's meaning under
+    it, the same gloss the pane shows. The translation then waits behind the
+    eye in the verse's corner, as it does in recall.
+  */
+  const interlinear = $derived(textMode && mode === 'gloss');
+  /* is the translation open? A whole text's only when asked; a graded
+     reading's always in glossed mode, as before */
+  const trOpen = (row: any) => (textMode ? revealed.has(row.id) : mode === 'gloss' || revealed.has(row.id)) || !row.translation;
   function toggleOriginal(id: string) {
     const next = new Set(originalShown);
     if (next.has(id)) next.delete(id); else next.add(id);
@@ -2782,6 +2789,13 @@
             <div class="ex-head">
               <span class="ex-index">{row.indexLabel}</span>
               <span class="ex-teaches"><Sanskrit text={row.teaches} source="devanagari" /></span>
+              {#if row.translation && !row.translationWith && !(!textMode && mode === 'gloss')}
+                <button class="tr-ctl tr-eye" aria-pressed={revealed.has(row.id)} onclick={() => toggleReveal(row.id)}
+                  title={revealed.has(row.id) ? 'hide the translation' : 'show the translation'}
+                  aria-label={revealed.has(row.id) ? 'hide the translation' : 'show the translation'}>
+                  <svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M1 6s2.6-5 7-5 7 5 7 5-2.6 5-7 5-7-5-7-5z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.3"/>{#if revealed.has(row.id)}<path d="M2 11 14 1" stroke="currentColor" stroke-width="1.3"/>{/if}</svg>
+                </button>
+              {/if}
             </div>
 
             <!-- interlinear sentence. Paradigm readings (देव, फल, नदी, भू) are
@@ -2790,7 +2804,7 @@
             <!-- A token is the word and nothing else. Nothing sits beneath it,
                  so no gloss can set the column width and pull the line apart;
                  word-for-word glossing is the rail's job now. -->
-            <div class="tokens">
+            <div class="tokens" class:il={interlinear}>
               {#if !padaccheda && row.written}
                 {#each row.written as w}
                   {#if w.br}
@@ -2809,7 +2823,7 @@
                     >
                       <!-- a word written as several padas stays as written when
                            selected: the head names its padas -->
-                      <Sanskrit text={w.text} source="devanagari" /></span>
+                      <Sanskrit text={w.text} source="devanagari" />{#if interlinear}<span class="ilg">{w.gloss || ' '}</span>{/if}</span>
                   {:else}
                     <span class="token punct"><Sanskrit text={w.text} source="devanagari" /></span>
                   {/if}
@@ -2840,6 +2854,7 @@
                     {:else}
                       <Sanskrit text={tok.text} source="devanagari" />
                     {/if}
+                    {#if interlinear}<span class="ilg">{tok.gloss || ' '}</span>{/if}
                   </span>
                 {:else}
                   <span class="token punct"><Sanskrit text={tok.text} source="devanagari" /></span>
@@ -2860,33 +2875,22 @@
               the same row.
             -->
             {#if row.translationWith}
-              <div class="tr-bar"><span class="tr-with">{row.translationWith}</span></div>
+              {#if trOpen(row) || interlinear || mode === 'gloss'}<div class="tr-bar"><span class="tr-with">{row.translationWith}</span></div>{/if}
             {:else if row.translation || !textMode}
-              {@const shown = mode === 'gloss' || revealed.has(row.id) || !row.translation}
               {@const who = (tMeta as any)?.translation?.translator?.split(' ').at(-1) ?? 'translator'}
-              {#if shown}
-                <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
+              {#if trOpen(row)}
                 {@const sp = splitSpeaker(row.translation)}
                 {#if sp.who}<p class="tr-speaker">{sp.who}</p>{/if}
-                <p class="translation" onclick={() => (trTapped = row.id)}><Sanskrit text={sp.said} source="devanagari" /></p>
+                <p class="translation"><Sanskrit text={sp.said} source="devanagari" /></p>
                 {#if row.translationOriginal && originalShown.has(row.id)}
                   <p class="translation original"><Sanskrit text={row.translationOriginal} source="devanagari" /></p>
                 {/if}
-              {/if}
-              {#if row.translation && (mode !== 'gloss' || row.translationOriginal)}
-                <div class="tr-bar" class:idle={mode === 'gloss' && trTapped !== row.id && !originalShown.has(row.id)}>
-                  {#if mode !== 'gloss'}
-                    <button class="tr-ctl" aria-pressed={revealed.has(row.id)} onclick={() => toggleReveal(row.id)}
-                      title={revealed.has(row.id) ? 'hide the translation' : 'show the translation'}
-                      aria-label={revealed.has(row.id) ? 'hide the translation' : 'show the translation'}>
-                      <svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M1 6s2.6-5 7-5 7 5 7 5-2.6 5-7 5-7-5-7-5z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.3"/>{#if revealed.has(row.id)}<path d="M2 11 14 1" stroke="currentColor" stroke-width="1.3"/>{/if}</svg>
-                    </button>
-                  {/if}
-                  {#if row.translationOriginal && shown}
-                    <button class="tr-ctl tr-who" class:ondemand={mode === 'gloss' && trTapped !== row.id && !originalShown.has(row.id)} aria-pressed={originalShown.has(row.id)} onclick={() => toggleOriginal(row.id)}
+                {#if row.translationOriginal}
+                  <div class="tr-bar">
+                    <button class="tr-ctl tr-who" aria-pressed={originalShown.has(row.id)} onclick={() => toggleOriginal(row.id)}
                       title={`${originalShown.has(row.id) ? 'hide' : 'show'} ${who}'s own wording`}>{who}</button>
-                  {/if}
-                </div>
+                  </div>
+                {/if}
               {/if}
             {/if}
           </article>
@@ -3168,6 +3172,39 @@
     font-size: 10.5px;
     color: var(--quiet);
   }
+  /* the eye sits in the verse's top corner */
+  .tr-ctl.tr-eye {
+    margin: -10px -8px -10px auto;
+  }
+  .ex-head:has(.tr-eye) {
+    align-self: stretch;
+  }
+  /* interlinear: each word over its meaning, the meaning small and clipped so
+     a long gloss cannot pull the line apart (the whole sense is in the pane) */
+  .tokens.il {
+    align-items: flex-start;
+    row-gap: 14px;
+  }
+  .tokens.il .token {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ilg {
+    font-family: var(--font-serif, Georgia, serif);
+    font-style: italic;
+    font-size: calc(12.5px * var(--read-scale, 1));
+    line-height: 1.25;
+    color: var(--muted);
+    /* a short word may take a gloss up to this wide; a longer one wraps */
+    max-width: 8.5em;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 2px;
+  }
   /* the translation's controls: one row, one size, one colour */
   .tr-bar {
     display: flex;
@@ -3193,21 +3230,6 @@
   .tr-ctl:hover,
   .tr-ctl[aria-pressed='true'] {
     color: var(--ink-2);
-  }
-  /* in glossed mode the name is there only when asked for: hover, or a tap on the translation */
-  .tr-who.ondemand {
-    visibility: hidden;
-  }
-  @media (hover: hover) {
-    article:hover .tr-who.ondemand {
-      visibility: visible;
-    }
-  }
-  /* a phone cannot hover: the empty row would only be a gap, so it waits for the tap */
-  @media (hover: none) {
-    .tr-bar.idle {
-      display: none;
-    }
   }
   .tr-who[aria-pressed='true'] {
     text-decoration: underline;
