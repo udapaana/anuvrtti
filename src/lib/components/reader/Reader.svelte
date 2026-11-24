@@ -125,6 +125,13 @@
   */
   const interlinear = $derived(textMode && mode === 'gloss');
   const marked = $derived(mode === 'marked');
+  /*
+    How wide a word's column should be for its gloss, in gloss characters: the
+    gloss itself no longer sets the width (it fills whatever the word is), so
+    a short word is given room for it here — half the gloss, so it wraps to
+    two even lines, between 6 and 14 characters.
+  */
+  const glossWidth = (g: string | undefined) => Math.max(6, Math.min(14, Math.ceil((g ?? '').length / 2)));
   const MARK_TITLE = (m: Mark) => (!m ? '' : m.k === 'verb' ? 'finite verb' : m.k === 'voc' ? 'सम्बोधन (address)' : `${m.name} (${m.n})`);
   /* is the translation open? A whole text's only when asked; a graded
      reading's always in glossed mode, as before */
@@ -2849,6 +2856,7 @@
                       class:sel={sel?.id === row.id && w.from.includes(sel?.ti)}
                       role="presentation"
                       title={w.gloss}
+                      style={interlinear ? `--gw:${glossWidth(w.gloss)}` : undefined}
                       onmouseenter={() => enterWord(row.id, w.ti)}
                       onmouseleave={leaveWord}
                       onclick={() => tapWritten(row.id, w)}
@@ -2872,6 +2880,7 @@
                     class:sel={sel?.id === row.id && sel?.ti === tok.ti}
                     role="presentation"
                     title={tok.gloss}
+                    style={interlinear ? `--gw:${glossWidth(tok.gloss)}` : undefined}
                     onmouseenter={() => enterWord(row.id, tok.ti)}
                     onmouseleave={leaveWord}
                     onclick={() => selectToken(row.id, tok.ti)}
@@ -3220,7 +3229,18 @@
   .tokens.il .token {
     display: inline-flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    /* room for the gloss under a short word (glossWidth); a long word is wider anyway */
+    min-width: calc(var(--gw, 0) * 0.52 * 12.5px * var(--read-scale, 1));
+  }
+  /* a daṇḍa takes no room of its own, so it never wraps to a line alone */
+  .tokens.il .token.punct {
+    width: 0;
+    min-width: 0;
+    overflow: visible;
+    /* cancel the column gap entirely, then set the mark a little off the word */
+    margin-left: -20px;
+    transform: translateX(7px);
   }
   .ilg {
     font-family: var(--font-serif, Georgia, serif);
@@ -3228,8 +3248,9 @@
     font-size: calc(12.5px * var(--read-scale, 1));
     line-height: 1.25;
     color: var(--muted);
-    /* a short word may take a gloss up to this wide; a longer one wraps */
-    max-width: 8.5em;
+    /* the gloss takes the word's width and does not widen it: a long word
+       gives its gloss the whole span, a short one the room glossWidth made */
+    contain: inline-size;
     white-space: normal;
     display: -webkit-box;
     -webkit-line-clamp: 2;
