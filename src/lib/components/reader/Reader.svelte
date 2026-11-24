@@ -98,19 +98,6 @@
     opened stays open for the visit.
   */
   let revealed = $state<Set<string>>(new Set());
-  /*
-    A whole text's translation may open with who speaks: Hume's "[Death:]",
-    Ganguli's "Vaisampayana said:". It is stage direction, not translation,
-    so it is set apart as a label. Only a short first line in brackets or
-    ending in a colon counts, and only in a whole text.
-  */
-  function splitSpeaker(t: string): { who: string; said: string } {
-    const nl = t.indexOf('\n');
-    if (!textMode || nl < 0) return { who: '', said: t };
-    const first = t.slice(0, nl).trim();
-    const m = first.match(/^\[(.{1,60})\]$/) ?? first.match(/^([^.?!]{1,60}):$/);
-    return m ? { who: m[1].replace(/:$/, ''), said: t.slice(nl + 1) } : { who: '', said: t };
-  }
   function toggleReveal(id: string) {
     const next = new Set(revealed);
     if (next.has(id)) next.delete(id); else next.add(id);
@@ -786,6 +773,7 @@
       translation: r.translation || '',
       translationOriginal: r.translationOriginal || '',
       translationWith: (r as any).translationWith || '',
+      translationSpeaker: (r as any).translationSpeaker || '',
       vyakhya: r.vyakhya || '',
       vyakhya_en: (r.vyakhya_en || '').trim()
     };
@@ -2920,9 +2908,9 @@
             {:else if row.translation || !textMode}
               {@const who = (tMeta as any)?.translation?.translator?.split(' ').at(-1) ?? 'translator'}
               {#if trOpen(row)}
-                {@const sp = splitSpeaker(row.translation)}
-                {#if sp.who}<p class="tr-speaker">{sp.who}</p>{/if}
-                <p class="translation"><Sanskrit text={sp.said} source="devanagari" /></p>
+                <!-- who speaks: its own field (build-texts.ts), never guessed from the text -->
+                {#if row.translationSpeaker}<p class="tr-speaker">{row.translationSpeaker}</p>{/if}
+                <p class="translation"><Sanskrit text={row.translation} source="devanagari" /></p>
                 {#if row.translationOriginal && originalShown.has(row.id)}
                   <p class="translation original"><Sanskrit text={row.translationOriginal} source="devanagari" /></p>
                 {/if}

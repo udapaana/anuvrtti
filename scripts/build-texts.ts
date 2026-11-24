@@ -418,7 +418,14 @@ if (import.meta.main) {
       gets no translation of its own, only a pointer to where it is.
     */
     const withOf = (sid: string): string | undefined => String(tr[sid]?.text ?? '').match(/^\(with (\S+)\)\s*$/)?.[1];
-    const translationOf = (sid: string): string | undefined => (withOf(sid) ? undefined : modern(tr[sid]) ?? original(tr[sid]));
+    const translationOf = (sid: string): string | undefined => (withOf(sid) ? undefined : tr[sid]?.modern ? String(tr[sid].modern) : original(tr[sid]));
+    /* who speaks, kept apart so the page can set it as a label (only a
+       modernized entry: an unmodernized one shows the translator's own form) */
+    const speakerOf = (sid: string): string | undefined => {
+      const e = tr[sid];
+      const who = e?.modern ? (e.speakerModern ?? e.speaker) : undefined;
+      return who ? String(who).replace(/^\[|\]$/g, '').replace(/[.:]+$/, '').trim() : undefined;
+    };
     const originalOf = (sid: string): string | undefined => (modern(tr[sid]) ? original(tr[sid]) : undefined);
     const adapted = Object.entries(tr).some(([k, e]) => k !== 'source' && (e as any)?.modern);
     const meta = { id, title: t.title, title_en: t.title_en, work: t.work, place: t.place, source: t.source, credit: CREDIT,
@@ -431,7 +438,7 @@ if (import.meta.main) {
         const w = withOf(x.id);
         const at = r.sections.findIndex((y) => y.id === x.id);
         const joined = w ? { translationWith: { id: w, above: r.sections[at - 1]?.id === w || withOf(r.sections[at - 1]?.id ?? '') === w } } : {};
-        return { ...x, text: linesOf(t.sections.find((y) => y.id === x.id)!), ...(en ? { translation: en } : {}), ...(orig ? { translationOriginal: orig } : {}), ...joined };
+        return { ...x, text: linesOf(t.sections.find((y) => y.id === x.id)!), ...(en ? { translation: en } : {}), ...(orig ? { translationOriginal: orig } : {}), ...(speakerOf(x.id) ? { translationSpeaker: speakerOf(x.id) } : {}), ...joined };
       });
       // only the tables this part's words light
       const keys = new Set(secs.flatMap((x) => x.words.flatMap((w) => w.padas.map((p) => (p as any).para?.key).filter(Boolean))));
