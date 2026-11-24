@@ -113,12 +113,33 @@
   const interlinear = $derived(textMode && mode === 'gloss');
   const marked = $derived(mode === 'marked');
   /*
-    How wide a word's column should be for its gloss, in gloss characters: the
-    gloss itself no longer sets the width (it fills whatever the word is), so
-    a short word is given room for it here — half the gloss, so it wraps to
-    two even lines, between 6 and 14 characters.
+    How wide a word's column should be for its gloss, in ems of the gloss's
+    own size. The gloss does not set the width itself (it fills whatever the
+    word is), so it is measured here, in its real face: one line if it fits
+    within GLOSS_CAP, else the cap, and it wraps to two lines there. A count of
+    characters undershot italic and cut glosses short with room to spare.
   */
-  const glossWidth = (g: string | undefined) => Math.max(6, Math.min(14, Math.ceil((g ?? '').length / 2)));
+  const GLOSS_CAP = 18;
+  const glossEm = new Map<string, number>();
+  let glossCtx: CanvasRenderingContext2D | null = null;
+  function glossWidth(g: string | undefined): number {
+    const text = (g ?? '').trim();
+    if (!text) return 0;
+    const hit = glossEm.get(text);
+    if (hit !== undefined) return hit;
+    let em = text.length * 0.5;
+    try {
+      glossCtx ??= document.createElement('canvas').getContext('2d');
+      if (glossCtx) {
+        const face = getComputedStyle(document.documentElement).getPropertyValue('--font-serif').trim() || 'Georgia, serif';
+        glossCtx.font = `italic 100px ${face}`;
+        em = (glossCtx.measureText(text).width / 100) * 1.04; // a hair over, for the face still loading
+      }
+    } catch { /* no canvas: the estimate stands */ }
+    const w = Math.min(GLOSS_CAP, Math.max(2, em));
+    glossEm.set(text, w);
+    return w;
+  }
   const MARK_TITLE = (m: Mark) => (!m ? '' : m.k === 'verb' ? 'finite verb' : m.k === 'voc' ? 'सम्बोधन (address)' : `${m.name} (${m.n})`);
   /* is the translation open? A whole text's only when asked; a graded
      reading's always in glossed mode, as before */
@@ -3219,7 +3240,7 @@
     flex-direction: column;
     align-items: stretch;
     /* room for the gloss under a short word (glossWidth); a long word is wider anyway */
-    min-width: calc(var(--gw, 0) * 0.52 * 12.5px * var(--read-scale, 1));
+    min-width: calc(var(--gw, 0) * 12.5px * var(--read-scale, 1));
   }
   /* a daṇḍa takes no room of its own, so it never wraps to a line alone */
   .tokens.il .token.punct {
