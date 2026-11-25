@@ -136,6 +136,12 @@
   // Page scans live in the dukrnkarane repo and are already served from its
   // own site — 162MB of PNGs, too much to duplicate here just to link them.
   const SCANS = 'https://dukrnkarane.udapaana.in/assets/images/rules';
+  // Leaves the scan site lacks (it answers 404): no link rather than a dead one.
+  const NO_SCAN = new Set([
+    '023', '027', '028', '082', '085', '086', '091', '102', '106', '156', '157', '174', '176', '177', '412', '413',
+    ...Array.from({ length: 28 }, (_, i) => String(535 + i))
+  ]);
+  const scanned = (r: Rule) => r.images.filter((img) => !NO_SCAN.has(img.replace('.png', '')));
 
   // On a phone the rule list and the apparatus are sheets, not columns, and
   // the apparatus a section most needs (its sūtras, its page) is set under it.
@@ -248,8 +254,8 @@
 {/snippet}
 
 {#snippet scanLinks(r: Rule)}
-  {#if r.images.length && r.scan === 'verified'}
-    {#each r.images as img}
+  {#if scanned(r).length && r.scan === 'verified'}
+    {#each scanned(r) as img}
       <a class="leaf" href="{SCANS}/{img}" target="_blank" rel="noopener" title="the printed page, as scanned">page scan {img.replace('.png', '')} ↗</a>
     {/each}
   {/if}
