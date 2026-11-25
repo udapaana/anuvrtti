@@ -5,11 +5,13 @@
   import type { Rule } from './+page';
 
   // Search over section titles, the corpus's own word index (7,530 unique
-  // entries), and topic tags. Sanskrit is matched in Devanagari regardless of
+  // entries), topic tags, and the text of every section — a form or an
+  // English phrase anywhere in Kāle (a stem's final consonant is let go, so
+  // बलिन् finds बली and बलिना). Sanskrit is matched in Devanagari regardless of
   // the display script — the reader may be reading Telugu but typing IAST, or
   // pasting Devanagari, so the query is folded to both before matching.
 
-  let { rules, onpick }: { rules: Rule[]; onpick: (n: number) => void } = $props();
+  let { rules, onpick, label = (r: Rule) => r.id }: { rules: Rule[]; onpick: (n: number) => void; label?: (r: Rule) => string } = $props();
 
   let open = $state(false);
   let q = $state('');
@@ -48,11 +50,21 @@
     return t.replace(/@deva\[([^\]]+)\]/g, '$1').replace(/@\[([^\]]+)\]/g, '$1');
   }
 
+  // each section's text, markup gone, made once
+  const plainBody = $derived(new Map(rules.map((r) => [r.n, strip(r.body).replace(/\[\^\d+\]:?/g, '').replace(/[|#*_]/g, ' ').replace(/\s+/g, ' ')])));
+  function snippet(text: string, at: number, len: number): string {
+    const a = Math.max(0, at - 24), b = Math.min(text.length, at + len + 24);
+    return `${a > 0 ? '…' : ''}${text.slice(a, b).trim()}${b < text.length ? '…' : ''}`;
+  }
+
   let results = $derived.by(() => {
     const needle = q.trim().toLowerCase();
     if (needle.length < 2) return [];
     const dev = devQuery.trim();
+    // a stem without its final virāma matches the forms built on it (बलिन् → बलिना, बलिनौ)
+    const devStem = dev.length > 2 ? dev.replace(/्$/, '') : dev;
     const out: { rule: Rule; why: string }[] = [];
+    const inBody: { rule: Rule; why: string }[] = [];
     for (const r of rules) {
       const title = strip(r.title);
       if (title.toLowerCase().includes(needle) || (dev && title.includes(dev))) {
@@ -65,10 +77,14 @@
         continue;
       }
       const t = r.topics.find((x) => x.toLowerCase().includes(needle));
-      if (t) out.push({ rule: r, why: t });
+      if (t) { out.push({ rule: r, why: t }); continue; }
+      const body = plainBody.get(r.n) ?? '';
+      const i = devStem ? body.indexOf(devStem) : body.toLowerCase().indexOf(needle);
+      if (i >= 0 && inBody.length < 80) inBody.push({ rule: r, why: snippet(body, i, (devStem || needle).length) });
       if (out.length >= 60) break;
     }
-    return out;
+    // named matches first, then where the text uses it
+    return [...out, ...inBody].slice(0, 80);
   });
 
   function show() {
@@ -111,7 +127,7 @@
         bind:value={q}
         class="field"
         type="text"
-        placeholder="title, Sanskrit word, or topic"
+        placeholder="a title, a form (balin, बलिन्), or words in the text"
         autocomplete="off"
         spellcheck="false"
       />
@@ -122,7 +138,7 @@
           {:else}
             {#each results as { rule, why }}
               <button class="hit" onclick={() => pick(rule.n)}>
-                <span class="hid">{rule.id}</span>
+                <span class="hid">{label(rule)}</span>
                 <span class="htitle"><Title text={rule.title} /></span>
                 {#if why !== 'title'}<span class="hwhy">{why}</span>{/if}
               </button>
@@ -165,12 +181,10 @@
     padding: 0 3px;
     color: var(--quiet);
   }
+  /* in the spine's own width: floating, the spine's edge clipped it */
   .panel {
-    position: absolute;
-    z-index: 40;
-    top: calc(100% + 5px);
-    left: 0;
-    width: 330px;
+    margin-top: 6px;
+    width: 100%;
     background: #fff;
     border: 1px solid var(--rule-2);
     border-radius: 8px;
@@ -194,6 +208,7 @@
   }
   .hit {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
     gap: 8px;
     width: 100%;
@@ -221,7 +236,8 @@
     white-space: nowrap;
   }
   .hwhy {
-    flex: none;
+    flex: 1 1 100%;
+    white-space: normal;
     font-size: 11px;
     color: var(--accent);
     font-family: 'Noto Sans Devanagari', 'Noto Sans Telugu', sans-serif;

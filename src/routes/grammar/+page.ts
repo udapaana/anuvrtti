@@ -37,17 +37,20 @@ export async function load({ url }) {
     cache = await resp.json();
   }
 
-  const requested = Number(url.searchParams.get('s'));
+  /*
+    With no section asked for, the grammar opens on its contents; a section
+    that does not exist says so over the contents, rather than quietly
+    showing something else.
+  */
+  const raw = url.searchParams.get('s');
   const rules = cache!.rules;
-  // With no section asked for, open at the Preface — it is the book's own
-  // front matter and says what the text is, which § 19 does not.
-  const current =
-    rules.find((r) => r.n === requested) ?? rules.find((r) => r.n === 0) ?? rules[0];
+  const current = raw === null ? null : (rules.find((r) => r.n === Number(raw)) ?? null);
 
   return {
     chapters: cache!.chapters,
     rules,
     current,
+    missing: raw !== null && current === null ? raw : null,
     coreCount: cache!.coreCount,
     knownSutraIds: cache!.knownSutraIds ?? [],
   };
