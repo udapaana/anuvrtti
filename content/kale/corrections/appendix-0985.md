@@ -14,6 +14,7 @@ doubts:
   - "पञ्चचामर Ex. line 2 'सुराङ्गनाभवल्लीकर...' is badly inked on alt p.16; kept draft's reading"
   - "गजगति … 8–12 syllable metres (alt pp.3–6) confirmed; small-type example verses elsewhere read at 2× zoom"
   - "No ⏑/– lines were printed for 13-syllable metres onward; none added"
+  - "English misprints corrected: Metree → Metres"
 ---
 ## Section I. Samavṛttas
 
@@ -651,7 +652,7 @@ Ex. @deva[व्यधित स विधिर्नेत्रं नीत�
 
 ---
 
-*Metree with 18 syllable in a quarter.*
+*Metres with 18 syllable in a quarter.*
 
 (@deva[धृतिः])
 
