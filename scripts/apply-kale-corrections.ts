@@ -40,6 +40,23 @@ const wordsOf = (body: string) => {
   return [...out];
 };
 
+/*
+  The chapters, as content/kale/chapters.yaml lists them: the payload's own
+  list split Gender and the Avyayas into five fragments. Each section takes
+  its chapter's title, and a chapter's count is recounted.
+*/
+const CHAPTERS = path.join(ROOT, 'content/kale/chapters.yaml');
+if (fs.existsSync(CHAPTERS)) {
+  const list = (parseYaml(fs.readFileSync(CHAPTERS, 'utf-8')) ?? []) as { title: string; first: number; last: number }[];
+  data.chapters = list.map((c) => {
+    const inside = data.rules.filter((r: any) => r.n >= c.first && r.n <= c.last);
+    for (const r of inside) r.chapter = c.title;
+    return { title: c.title, first: c.first, last: c.last, count: inside.length };
+  });
+  const lost = data.rules.filter((r: any) => !list.some((c) => r.n >= c.first && r.n <= c.last));
+  if (lost.length) { console.error(`  kale chapters: no chapter holds § ${lost.map((r: any) => r.n).join(', ')}`); process.exit(1); }
+}
+
 let applied = 0;
 const unknown: string[] = [];
 for (const f of fs.readdirSync(DIR).filter((x) => x.endsWith('.md')).sort()) {
