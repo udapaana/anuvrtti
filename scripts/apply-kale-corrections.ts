@@ -72,6 +72,36 @@ for (const f of fs.readdirSync(DIR).filter((x) => x.endsWith('.md')).sort()) {
   r.words = wordsOf(r.body);
   applied++;
 }
+/*
+  House style for Kāle's romanised English. He marks long vowels with a
+  circumflex (Pân., Vârt., sûtra) and the Ātmanepada with "Â." or "Âtm.";
+  the site writes a macron, and one label, "Ātm." The correction files keep
+  what Kāle printed; this is applied over every section, outside the
+  Devanagari, so the two spellings never show side by side. "Pāṇ." is also
+  the form the grammar page links to the sūtra.
+*/
+const MACRON: Record<string, string> = { â: 'ā', î: 'ī', û: 'ū', Â: 'Ā', Î: 'Ī', Û: 'Ū' };
+const houseStyle = (t: string) =>
+  t
+    .split(/(@deva\[[^\]]*\])/)
+    .map((seg, i) =>
+      i % 2
+        ? seg
+        : seg
+            .replace(/\bPân(?=[.,\s])/g, 'Pāṇ')
+            .replace(/\bPânini/g, 'Pāṇini')
+            .replace(/(?<![A-Za-zâÂ])(?:Âtm\.|Â\.|Â(?![A-Za-z]))/g, 'Ātm.')
+            .replace(/[âîûÂÎÛ]/g, (c) => MACRON[c])
+    )
+    .join('');
+let styled = 0;
+for (const r of data.rules) {
+  const t = houseStyle(r.title), b = houseStyle(r.body);
+  if (t !== r.title || b !== r.body) styled++;
+  r.title = t;
+  r.body = b;
+}
+console.log(`  kale house style: macrons and "Ātm." in ${styled} section(s)`);
 fs.writeFileSync(PAYLOAD, JSON.stringify(data));
 console.log(`  kale corrections: ${applied} section(s) applied from content/kale/corrections`);
 if (unknown.length) { console.error(`  kale corrections: no such section for ${unknown.join(', ')}`); process.exit(1); }
