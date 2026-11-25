@@ -29,6 +29,27 @@
   let prefs = $state(false);
   let settingsOpen = $state(false);
   let palette = $state<Palette | null>(null);
+  /*
+    On a phone the doors scroll, and the later ones start off the end: the
+    door you are in is brought into view whenever the page changes, so a
+    reader in the grammar can see "grammar" without hunting for it.
+  */
+  let doorsEl = $state<HTMLElement | null>(null);
+  /* the fade says "more this way": not once the row is scrolled to its end */
+  let doorsEnd = $state(false);
+  const doorsAt = () => { if (doorsEl) doorsEnd = doorsEl.scrollLeft + doorsEl.clientWidth >= doorsEl.scrollWidth - 2; };
+  $effect(() => {
+    $page.url.pathname;
+    const el = doorsEl;
+    if (!el) return;
+    requestAnimationFrame(() => {
+      const on = el.querySelector('a.on') as HTMLElement | null;
+      if (!on || el.scrollWidth <= el.clientWidth) return;
+      const want = on.offsetLeft - (el.clientWidth - on.offsetWidth) / 2;
+      el.scrollLeft = Math.max(0, Math.min(want, el.scrollWidth - el.clientWidth));
+      doorsAt();
+    });
+  });
 
   const path = $derived($page.url.pathname);
 
@@ -81,7 +102,7 @@
       <span class="wm-short" aria-hidden="true"><Sanskrit text="अ" source="devanagari" /></span>
     </a>
 
-    <nav class="doors">
+    <nav class="doors" class:end={doorsEnd} bind:this={doorsEl} onscroll={doorsAt}>
       {#each doors as door (door.href)}
         <a class:on={on(door.owns, door.not)} href={door.href}>{door.label}</a>
       {/each}
@@ -339,6 +360,10 @@
     }
     .doors::-webkit-scrollbar {
       display: none;
+    }
+    .doors.end {
+      -webkit-mask-image: none;
+      mask-image: none;
     }
     .doors a {
       flex: none;
