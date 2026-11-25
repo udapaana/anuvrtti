@@ -10,7 +10,7 @@
     "build:readings": "bun scripts/build-readings.ts",
     "build:jargon": "bun scripts/build-jargon.ts",
     "build:balabodhini": "bun scripts/build-balabodhini.ts",
-    "build:dukrnkarane": "bun scripts/build-dukrnkarane.ts",
+    "build:dukrnkarane": "bun scripts/build-dukrnkarane.ts && bun scripts/apply-kale-corrections.ts",
     "build:sutras": "bun scripts/build-sutras.ts",
     "build:sutra-refs": "bun scripts/build-sutra-refs.ts",
     "build:stats": "bun scripts/build-stats.ts",
