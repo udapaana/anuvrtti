@@ -93,6 +93,17 @@ function termsOf(a: Analysis): string[] {
 }
 
 /** MW's entry for a lemma: the prefixed verb first (MW heads उपविश् apart from विश्). */
+/*
+  MW files homographs under one key: pramad is the verb pra-√mad ("to be
+  careless") and a feminine noun ("lust, desire"), and the merged entry took
+  the noun's "f.". A verb form or a participle is the verb: keep its "to …"
+  senses and no noun's gender. A key with no verbal sense is left whole.
+*/
+function verbalSenses(m: NonNullable<MwEntry>, verbal: boolean): { lex: string; senses: string[] } {
+  const v = verbal ? m.senses.filter((x) => /^to /.test(x)) : [];
+  return v.length ? { lex: '', senses: v } : { lex: m.lex, senses: m.senses };
+}
+
 function mwFor(lex: Snapshot['lexicon'], a: Analysis): MwEntry {
   for (const l of [a.lemma_full, a.lemma]) {
     if (!l) continue;
@@ -230,7 +241,7 @@ export function resolveText(id: string): Resolved {
           form: r.form, lemma: a.lemma_full ?? a.lemma, a: fmtA(a), terms: termsOf(a),
           ...(a.type === 'member' ? { member: true } : {}),
           gloss, glossBy: r.spec?.gloss || particle ? 'author' : m ? 'mw' : null,
-          mw: m ? { key: m.key, url: m.url ?? mwUrl(m.key), lex: m.lex, senses: m.senses } : null,
+          mw: m ? { key: m.key, url: m.url ?? mwUrl(m.key), ...verbalSenses(m, verbal) } : null,
           ...(r.spec?.note ? { note: r.spec.note } : {}),
           source: r.source, alts: r.alts,
           _a: a
@@ -306,7 +317,39 @@ function paradigms(v: any, r: Resolved): Record<string, Table> {
         delete p._a;
         if (!a) continue;
         try {
-          if (a.type === 'subanta' && a.विभक्ति && a.वचन && !(a.कृत् && a.stem !== 'basic' && !a.lemma_full && a.aupadeshika)) {
+          if (a.type === 'subanta' && a.विभक्ति && a.वचन && a.कृत् && a.stem !== 'basic' && a.aupadeshika && a.गण && GANA[a.गण]) {
+            /*
+              A participle (प्रमाद्यन्तम्, गच्छन्, कृतम्) is declined as root +
+              affix: its lemma is the root, and the root declined as a noun is
+              not its table. vidyut takes the kṛdanta itself — root, gaṇa,
+              preverbs, affix — as the stem, the same as for a verb's own table.
+            */
+            const lg = a.लिङ्ग ?? 'पुंलिङ्ग';
+            const prefixes = (a.उपसर्ग ?? []).map((u) => (u === 'आङ्' ? 'AN' : slp(u)));
+            const sanadi = (a.सनादि ?? []).map((x) => slp(x));
+            const krt = slp(a.कृत्.replace(/ँ/g, ''));
+            const extra: Record<string, string> = {};
+            if (a.लकार && LAK[a.लकार]) extra.lakara = LAK[a.लकार];
+            if (a.प्रयोग === 'कर्मणि') extra.prayoga = 'Karmani';
+            const key = ['krt', a.aupadeshika, a.गण, ...prefixes, ...sanadi, krt, extra.lakara ?? '', extra.prayoga ?? '', lg].join('|');
+            if (!(key in tables)) {
+              const pratipadika = { krdanta: { dhatu: { aupadeshika: a.aupadeshika, gana: GANA[a.गण], sanadi, prefixes }, krt, ...extra } };
+              const rows = VIB.map((vb) => VAC.map((vc) => {
+                try {
+                  const res = v.deriveSubantas({ pratipadika, linga: LING[lg] ?? 'Pum', vibhakti: vb, vacana: vc });
+                  return [...new Set(res.map((x: any) => deva(x.text)))].join(' / ');
+                } catch { return ''; }
+              }));
+              const stem = [...(a.उपसर्ग ?? []), a.lemma, ...(a.सनादि ?? []), a.कृत्].join(' + ');
+              if (rows.flat().some(Boolean))
+                tables[key] = { stem, lakara: null, kind: 'participle', colHeads: VAC_D, rowHeads: VIB_D, rows };
+            }
+            if (tables[key]) {
+              const row = VIB_D.indexOf(a.विभक्ति), col = VAC_D.indexOf(a.वचन);
+              const cell = tables[key].rows[row]?.[col] ?? '';
+              if (cell.split(' / ').some((c) => bare(c) === bare(p.form) || c.replace(/ः$/, '') === p.form)) p.para = { key, row, col };
+            }
+          } else if (a.type === 'subanta' && a.विभक्ति && a.वचन && !(a.कृत् && a.stem !== 'basic' && !a.lemma_full && a.aupadeshika)) {
             const lg = a.लिङ्ग ?? 'पुंलिङ्ग';
             const key = `${a.lemma}|${lg}`;
             if (!(key in tables)) {
