@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto, replaceState } from '$app/navigation';
+  import { page } from '$app/stores';
   import { tick } from 'svelte';
   import Sanskrit from '$lib/components/Sanskrit.svelte';
   import RuleBody from './RuleBody.svelte';
@@ -72,15 +73,29 @@
     if (!el) return false;
     window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - shelfLine() - 4, behavior: smooth ? 'smooth' : 'auto' });
     here = n;
-    try { if (new URL(location.href).searchParams.get('s') !== String(n)) replaceState(`?s=${n}`, {}); } catch { /* not yet */ }
+    try { if (new URL(location.href).searchParams.get('s') !== String(n)) replaceState(withS(n), {}); } catch { /* not yet */ }
     return true;
   }
+  /*
+    Where the reader came from, kept while the page rewrites ?s= as you
+    scroll: a link from a line in the reader or a text carries `from`, and
+    the page offers the way back to that line and word.
+  */
+  const fromParam = () => { try { return new URL(location.href).searchParams.get('from'); } catch { return null; } };
+  const withS = (n: number) => { const f = fromParam(); return `?s=${n}` + (f && f.startsWith('/reader') ? `&from=${encodeURIComponent(f)}` : ''); };
+  const backTo = $derived.by(() => {
+    const f = $page.url.searchParams.get('from') ?? '';
+    if (!f.startsWith('/reader')) return null;
+    const q = new URL(f, 'http://x').searchParams;
+    const t = /^\/reader\/text\/([^?]+)/.exec(f)?.[1];
+    return { href: f, label: t ? `${t} ${q.get('section') ?? ''}`.trim() : `the reader${q.get('reading') ? ', ' + q.get('reading') : ''}` };
+  });
   function open(n: number) {
     // within this chapter: scroll there; elsewhere: load that chapter
     if (siblings.some((r) => r.n === n)) {
       scrollToSection(n, true);
-      try { replaceState(`?s=${n}`, {}); } catch { /* before the router is ready */ }
-    } else goto(`?s=${n}`, { noScroll: false, keepFocus: false });
+      try { replaceState(withS(n), {}); } catch { /* before the router is ready */ }
+    } else goto(withS(n), { noScroll: false, keepFocus: false });
   }
 
   // a new address: scroll to its section once the chapter is drawn
@@ -118,7 +133,7 @@
         n ??= secs.length ? Number(secs[0].dataset.n) : null;
         if (n !== null && n !== here) {
           here = n;
-          try { replaceState(`?s=${n}`, {}); } catch { /* not yet */ }
+          try { replaceState(withS(n), {}); } catch { /* not yet */ }
         }
       });
     }, { rootMargin: '-90px 0px -40% 0px', threshold: [0, 1] });
@@ -176,7 +191,8 @@
   const exOf = (n: number) => examples?.sections[String(n)] ?? null;
   let exOpen = $state<Set<number>>(new Set());
   const toggleEx = (n: number) => { const s = new Set(exOpen); s.has(n) ? s.delete(n) : s.add(n); exOpen = s; };
-  const textHref = (x: Ex) => `/reader/text/${x.t}?part=${encodeURIComponent(x.p ?? '')}&section=${encodeURIComponent(x.s ?? '')}`;
+  const back = (n: number, form?: string) => `&from=${encodeURIComponent(`/grammar?s=${n}`)}${form ? `&form=${encodeURIComponent(form)}` : ''}`;
+  const textHref = (x: Ex, n: number) => `/reader/text/${x.t}?part=${encodeURIComponent(x.p ?? '')}&section=${encodeURIComponent(x.s ?? '')}${back(n, x.form)}`;
 
   /** Marker-free form of a title, for the document <title>. */
   function plain(t: string): string {
@@ -347,6 +363,7 @@
       {/each}
     </ol>
   {:else}
+    {#if backTo}<a class="backto" href={backTo.href}>← back to {backTo.label}</a>{/if}
     <header class="ch-head">
       <span class="ch-kicker">chapter {chIdx + 1} of {data.chapters.length} · {chapter ? range(chapter) : ''}</span>
       <h1>{chapter?.title}</h1>
@@ -408,7 +425,7 @@
         {#if ex && exOpen.has(r.n)}
           <section class="examples">
             {#each ex.graded as x}
-              <a class="ex" href={`/reader?reading=${x.reading}`}>
+              <a class="ex" href={`/reader?reading=${x.reading}${back(r.n, x.form)}`}>
                 <span class="ex-top">
                   <span class="ex-form"><Sanskrit text={x.form} source="devanagari" /></span>
                   <span class="ex-tag"><Sanskrit text={x.tag} source="devanagari" /></span>
@@ -419,7 +436,7 @@
               </a>
             {/each}
             {#each ex.texts as x}
-              <a class="ex" href={textHref(x)}>
+              <a class="ex" href={textHref(x, r.n)}>
                 <span class="ex-top">
                   <span class="ex-form"><Sanskrit text={x.form} source="devanagari" /></span>
                   <span class="ex-tag"><Sanskrit text={x.tag} source="devanagari" /></span>
@@ -883,5 +900,25 @@
     font-size: 11px;
     color: var(--accent-ref);
     text-decoration: none;
+  }
+  /* back to the line in the reader or a text that sent you here; it stays
+     under the shelf while you read on */
+  .backto {
+    position: sticky;
+    top: calc(var(--sticky-rail) + 8px);
+    z-index: 5;
+    display: block;
+    width: fit-content;
+    margin-bottom: 12px;
+    padding: 4px 10px;
+    border: 1px solid var(--rule-2);
+    border-radius: 999px;
+    background: var(--paper, #fff);
+    font: 400 12px/1.4 var(--font-mono);
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .backto:hover {
+    border-color: var(--accent);
   }
 </style>

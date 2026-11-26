@@ -304,6 +304,7 @@
     if (asked && askedSec && inPart) at.s = Math.max(0, inPart.sections.indexOf(askedSec));
     loaded = true;
     await openPart(Math.max(0, m.parts.findIndex((p: PartMeta) => p.id === at.part)), at.s);
+    if (asked && askedSec) requestAnimationFrame(() => requestAnimationFrame(() => pickFromUrl(askedSec)));
   }
   /* the downloads: the whole text (every part), this part, this section */
   async function wholeText(): Promise<ExportText> {
@@ -350,7 +351,7 @@
       const ids = new Set(list.map((r) => r.id));
       const kept = saved.read.filter((id) => ids.has(id));
       if (kept.length) seen = new Set(kept);
-      if (want) requestAnimationFrame(() => jumpToReading(want));
+      if (want) requestAnimationFrame(() => { jumpToReading(want); pickFromUrl(want); });
       else if (saved.at && ids.has(saved.at)) {
         const at = saved.at;
         requestAnimationFrame(() => {
@@ -1650,6 +1651,39 @@
     return tokensOf(r).filter((t: any) => t.isWord).map((t: any) => t.ti);
   }
 
+  /*
+    To the grammar and back. A link out to Kāle carries `from`, this line and
+    word, so the grammar page can offer the way back; a link in from the
+    grammar names the word (`word`, its position, or `form`, as an example
+    gives it) so the reader lands on it, lit, and offers the way back there.
+  */
+  const enc = encodeURIComponent;
+  function hereHref(): string {
+    const id = sel?.id ?? focused?.id ?? '';
+    const w = sel ? `&word=${sel.ti}` : '';
+    if (textMode && text && tMeta) return `/reader/text/${text.id}?part=${enc(tMeta.parts[partIdx]?.id ?? '')}&section=${enc(id)}${w}`;
+    return `/reader?reading=${enc(id)}${w}`;
+  }
+  const grammarHref = (n: string | number) => `/grammar?s=${n}&from=${enc(hereHref())}`;
+  /** The word a link names in its line, selected once the line is open. */
+  function pickFromUrl(id: string) {
+    const q = $appPage.url.searchParams;
+    const r = list.find((x) => x.id === id);
+    if (!r) return;
+    const tis = wordTis(r);
+    const w = q.get('word'), f = q.get('form');
+    let ti = w !== null && tis.includes(Number(w)) ? Number(w) : undefined;
+    const bare = (s: string) => s.replace(/ं$/, 'म्');
+    if (ti === undefined && f) ti = tis.find((t) => bare(tokenAt(id, t)?.form ?? '') === bare(f));
+    if (ti !== undefined) selectToken(id, ti);
+  }
+  /** Back to the grammar section that sent the reader here. */
+  const backTo = $derived.by(() => {
+    const f = $appPage.url.searchParams.get('from') ?? '';
+    const m = /^\/grammar\?s=(\d+)/.exec(f);
+    return m ? { href: f, label: `Kāle § ${m[1]}` } : null;
+  });
+
   function stepWord(dir: 1 | -1) {
     if (!list.length) return;
     const s = sel;
@@ -2540,7 +2574,7 @@
                   <dt>Kāle</dt>
                   <dd>
                     {#each termCites.kale as c}
-                      <a href={`/grammar?s=${c.s}`} title={c.why ?? ''}><span class="cite-n"><span class="sec">§</span>{c.s}</span><span class="cite-t"><InlineMarkup text={c.title ?? ''} /></span></a>
+                      <a href={grammarHref(c.s)} title={c.why ?? ''}><span class="cite-n"><span class="sec">§</span>{c.s}</span><span class="cite-t"><InlineMarkup text={c.title ?? ''} /></span></a>
                     {/each}
                   </dd>
                 {/if}
@@ -2675,7 +2709,7 @@
                 /> ({selParadigm.kind}){:else}{selParadigm.kind}{/if}
               {#if selParadigm.source}
                 <!-- a table vidyut cannot derive, built from the grammar's rule -->
-                · <a class="ev-cite" href="/grammar?s={selParadigm.source.replace(/\D/g, '')}"
+                · <a class="ev-cite" href={grammarHref(selParadigm.source.replace(/\D/g, ''))}
                   title="constructed from this section of Kāle's grammar">{selParadigm.source}</a>
               {/if}
             </span>
@@ -2783,6 +2817,7 @@
       onpointerup={narrow ? swipeLine.onpointerup : undefined}
       onpointercancel={narrow ? swipeLine.onpointercancel : undefined}
     >
+      {#if backTo}<a class="backto" href={backTo.href}>← back to {backTo.label}</a>{/if}
       {#each rows as row}
         {#if row.head && row.resumed}
           <!-- a chapter already opened: one hairline with the name inline, so a
@@ -4483,5 +4518,25 @@
   }
   .credit a {
     color: var(--accent-ref);
+  }
+  /* back to the grammar section that sent the reader here */
+  .backto {
+    position: sticky;
+    top: calc(var(--sticky-rail) + 8px);
+    z-index: 5;
+    display: block;
+    width: fit-content;
+    margin-bottom: 12px;
+    margin: 4px 0 10px;
+    padding: 4px 10px;
+    border: 1px solid var(--rule-2);
+    border-radius: 999px;
+    background: var(--paper, #fff);
+    font: 400 12px/1.4 var(--font-mono);
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .backto:hover {
+    border-color: var(--accent);
   }
 </style>
