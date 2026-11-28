@@ -2332,6 +2332,32 @@
   {/if}
 {/snippet}
 
+{#snippet wordActs()}
+            <!-- banking was the last button under a long column; it is the
+                 word's own action, so it lives beside the word -->
+            <button
+              class="wh-act"
+              class:on={inDeck}
+              onclick={bankWord}
+              aria-pressed={inDeck}
+              title={inDeck ? 'in your deck — press again to remove it' : 'keep for review'}
+              aria-label={inDeck ? 'in your deck; press to remove' : 'keep for review'}
+            >★</button>
+            {#if selFile}
+              <!-- The rail is where a wrong tag is visible, so it is where the
+                   correction starts. Opens a pull request against the reading's
+                   own YAML — see docs/ARCHITECTURE.md. -->
+              <button
+                class="wh-act"
+                onclick={editThisReading}
+                title={$appPage.data.user
+                  ? 'suggest a correction to this reading'
+                  : 'sign in to suggest a correction'}
+                aria-label="suggest a correction to this reading"
+              >✎</button>
+            {/if}
+{/snippet}
+
 {#snippet rail()}
   <!--
     The rail is a PANEL, not a scroll of blocks.
@@ -2388,31 +2414,8 @@
         <span class="wh-acts">
           <!-- the other half of "pull up": once the sheet is open, the way back
                down is a button too, not only a swipe -->
-          {#if selWord}
-            <!-- banking was the last button under a long column; it is the
-                 word's own action, so it lives beside the word -->
-            <button
-              class="wh-act"
-              class:on={inDeck}
-              onclick={bankWord}
-              aria-pressed={inDeck}
-              title={inDeck ? 'in your deck — press again to remove it' : 'keep for review'}
-              aria-label={inDeck ? 'in your deck; press to remove' : 'keep for review'}
-            >★</button>
-            {#if selFile}
-              <!-- The rail is where a wrong tag is visible, so it is where the
-                   correction starts. Opens a pull request against the reading's
-                   own YAML — see docs/ARCHITECTURE.md. -->
-              <button
-                class="wh-act"
-                onclick={editThisReading}
-                title={$appPage.data.user
-                  ? 'suggest a correction to this reading'
-                  : 'sign in to suggest a correction'}
-                aria-label="suggest a correction to this reading"
-              >✎</button>
-            {/if}
-          {/if}
+          <!-- at rest they ride at the end of the tag row, so the meaning has this one -->
+          {#if selWord && !(narrow && railDetent === 0)}{@render wordActs()}{/if}
           <!-- widening is a desktop affordance: the sheet is already the width
                of the phone, and its detents do what widening does -->
           {#if !narrow}
@@ -2431,7 +2434,7 @@
           -->
           {#if narrow && (selWord || railDetent > 0)}
             <button class="wh-act wh-pull" disabled={railDetent >= RAIL_TOP} onclick={() => (railDetent = Math.min(RAIL_TOP, railDetent + 1))} title={railDetent === 0 ? 'open the panel' : 'open it fully'} aria-label={railDetent === 0 ? 'open the panel' : 'open the panel fully'}><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 8 7 2l6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
-            <button class="wh-act wh-pull" disabled={railDetent <= 0} onclick={() => (railDetent = Math.max(0, railDetent - 1))} title="lower the panel" aria-label="lower the panel"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+            {#if railDetent > 0}<button class="wh-act wh-pull" disabled={railDetent <= 0} onclick={() => (railDetent = Math.max(0, railDetent - 1))} title="lower the panel" aria-label="lower the panel"><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>{/if}
           {/if}
         </span>
       </div>
@@ -2439,7 +2442,8 @@
       {#if selWord}
         <div class="wh-mean">
           <span class="wh-en"><Sanskrit text={selWord.gloss} source="devanagari" /></span>
-          {#if selWord.lemma}
+          <!-- the stem, unless it is the word itself (a vocative, an indeclinable) -->
+          {#if selWord.lemma && selWord.lemma.replace(/[ःं]$/, '') !== selWord.form.replace(/[ःं]$/, '')}
             <span class="wh-stem">← <Sanskrit text={selWord.lemma} source="devanagari" /></span>
           {/if}
         </div>
@@ -2479,7 +2483,8 @@
             </div>
             </div>
           {/if}
-        {#if selWord.terms.length || (textMode && selWord.derivedTerms.length)}
+        {#if selWord.terms.length || (textMode && selWord.derivedTerms.length) || (narrow && railDetent === 0)}
+        <div class="wh-row2">
           <!--
             Newness is a DOT on the tag, not a block of its own.
 
@@ -2526,6 +2531,8 @@
               <span class="wh-legend">• new here</span>
             {/if}
           </div>
+          {#if narrow && railDetent === 0}<span class="wh-acts wh-acts2">{@render wordActs()}</span>{/if}
+        </div>
         {/if}
       {/if}
     </div>
@@ -3556,6 +3563,21 @@
     font-family: var(--font-deva);
     font-size: 13px;
     color: var(--quiet);
+  }
+  /* the tags, and at rest on a phone the word's ★ ✎ at the row's end */
+  .wh-row2 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+  }
+  .wh-row2 > .wh-tags {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .wh-acts2 {
+    flex: none;
+    margin-left: auto;
   }
   .wh-tags {
     display: flex;
